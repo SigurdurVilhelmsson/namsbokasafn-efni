@@ -24,7 +24,6 @@ import {
 } from '../ai-review/compile-ruling-set.js';
 import { loadRulingSet } from '../ai-review/ruling-set.js';
 import { offeredRulings } from '../ai-review/worklist.js';
-import { DEFAULT_RULING_SET } from '../ai-review/term-pass.js';
 
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 const DIR = 'experiments/terminology-consistency/results';
@@ -186,9 +185,8 @@ describe('the committed 2026-11-01 artifact', () => {
     expect(isCandidate(set01(), 'Súlfat er fjölfrumeinda jón.')).toBe(true);
   });
 
-  it('the AI pass reads this set by default', () => {
-    expect(DEFAULT_RULING_SET).toBe(SET01_REL);
-  });
+  // The runner's default moved to the 2026-11-02 set; ai-review-ruling-senses-2026-11-02.test.js
+  // pins that. This set stays byte-pinned here because the 2026-11-01 ch10 runs used it.
 });
 
 describe('CLI', () => {

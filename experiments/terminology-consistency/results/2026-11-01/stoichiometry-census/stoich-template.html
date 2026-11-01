@@ -1,0 +1,339 @@
+<title>Stoichiometry Sense Check</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+/* Layout: one reading column. Two questions first (headword, ruling), then the 77 other matches sorted by sense, each with a flip. */
+:root {
+  --bg: #f6f7f5; --surface: #ffffff; --fg: #1d2421; --muted: #5d6963;
+  --line: #d9dfdb; --accent: #1f6f5c; --accent-soft: #e2f0eb;
+  --ins-bg: #fff0b8; --ins-fg: #4a3b00; --open: #a35a00; --done: #1f6f5c;
+  --text: "Literata", Georgia, "Times New Roman", serif;
+  --ui: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121816; --surface: #1a2220; --fg: #e4ebe7; --muted: #9aa8a1;
+  --line: #2c3834; --accent: #6cc4a8; --accent-soft: #1d3a32;
+  --ins-bg: #5a4a10; --ins-fg: #fff3c4; --open: #f0a84a; --done: #6cc4a8; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121816; --surface: #1a2220; --fg: #e4ebe7; --muted: #9aa8a1;
+  --line: #2c3834; --accent: #6cc4a8; --accent-soft: #1d3a32;
+  --ins-bg: #5a4a10; --ins-fg: #fff3c4; --open: #f0a84a; --done: #6cc4a8; color-scheme: dark }
+body { background: var(--bg); color: var(--fg); font-family: var(--ui); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 1000px; margin: 0 auto; padding-block: 24px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 22px; }
+header { display: grid; gap: 8px; }
+h1 { font-family: var(--text); font-weight: 600; font-size: 1.7rem; margin: 0; text-wrap: balance; }
+h2 { font-family: var(--text); font-weight: 600; font-size: 1.25rem; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.lede { color: var(--muted); max-width: 70ch; }
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg);
+  display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; padding-block: 10px; border-bottom: 1px solid var(--line); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.st { font-size: .9rem; font-variant-numeric: tabular-nums; }
+.st b { font-weight: 700; }
+.st .o { color: var(--open); font-weight: 700; }
+.st .k { color: var(--done); font-weight: 700; }
+.conn { font-size: .85rem; color: var(--muted); margin-left: auto; }
+.facts { display: grid; gap: 6px; max-width: 72ch; padding-left: 1.1em; margin: 0; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 18px; display: grid; gap: 14px; min-width: 0; }
+.panel[data-state="saved"] { border-left: 4px solid var(--done); }
+.panel[data-state="open"] { border-left: 4px solid var(--open); }
+.phead { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; justify-content: space-between; }
+.lbl { font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+.txt { font-family: var(--text); font-size: 1rem; line-height: 1.6; overflow-wrap: anywhere; }
+.en .txt { color: var(--muted); font-size: .93rem; }
+.ph { color: var(--muted); font-family: var(--ui); font-size: .85em; }
+ins { text-decoration: none; background: var(--ins-bg); color: var(--ins-fg); border-radius: 3px; padding: 0 2px; }
+.pill { font-size: .78rem; padding: 2px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); white-space: nowrap; }
+.pill.open { background: transparent; color: var(--open); border: 1px solid var(--open); }
+.gloss { display: grid; gap: 8px; border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; }
+.gloss dt { font-weight: 700; }
+.gloss dd { margin: 0 0 4px; font-family: var(--text); }
+.choices { display: grid; gap: 8px; }
+.choices label { display: flex; gap: 10px; align-items: flex-start; border: 1px solid var(--line); border-radius: 6px; padding: 8px 12px; cursor: pointer; }
+.choices label > span { display: grid; gap: 2px; }
+.choices small { color: var(--muted); font-size: .85rem; }
+.choices input { margin-top: 4px; }
+.choices input:checked + span > b { color: var(--accent); }
+textarea { width: 100%; box-sizing: border-box; min-height: 56px; font: inherit; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 8px; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.msg { font-size: .88rem; color: var(--muted); }
+button { font: inherit; font-weight: 700; border: 1px solid var(--accent); background: var(--accent); color: var(--surface); border-radius: 6px; padding: 7px 14px; cursor: pointer; }
+button:disabled { opacity: .5; cursor: not-allowed; }
+button:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.group { display: grid; gap: 12px; }
+.ghead { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; justify-content: space-between; }
+.gdesc { color: var(--muted); max-width: 72ch; }
+.items { display: grid; gap: 10px; }
+.item { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px; display: grid; gap: 10px; min-width: 0; }
+.item[data-flipped="1"] { border-left: 4px solid var(--open); }
+.ihead { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; }
+.iid { font-weight: 700; font-variant-numeric: tabular-nums; }
+.kind { font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.note { font-size: .88rem; color: var(--muted); border-left: 2px solid var(--line); padding-left: 10px; }
+.flip { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; font-size: .9rem; border-top: 1px solid var(--line); padding-top: 10px; }
+.flip label { display: inline-flex; gap: 5px; align-items: center; cursor: pointer; }
+.flip input:checked + span { font-weight: 700; color: var(--accent); }
+.flip .fmsg { color: var(--muted); font-size: .82rem; }
+.confirm { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; border: 1px dashed var(--line); border-radius: 8px; padding: 12px; }
+details.fold > summary { cursor: pointer; font-weight: 700; color: var(--accent); padding: 6px 0; }
+details.fold[open] > summary { margin-bottom: 10px; }
+.foot { color: var(--muted); font-size: .9rem; max-width: 72ch; display: grid; gap: 8px; }
+.nostore { color: var(--open); font-weight: 700; }
+@media (max-width: 560px) { h1 { font-size: 1.4rem; } .conn { margin-left: 0; } }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Stoichiometry: one ruling, two senses</h1>
+    <p class="lede">The AI term pass rules <b>stoichiometry → hlutfallaefnafræði</b> in every segment. In ch10 you twice preferred plain <i>hlutfallið</i> where the English meant only a ratio. Below are all 78 places the ruling matches in the book, sorted by sense. The sort is my proposal: flip any item you read differently. Two questions decide the outcome; the sort is the evidence for them.</p>
+  </header>
+
+  <div class="bar" role="status">
+    <span class="st">Headword: <span id="stHead" class="o">open</span></span>
+    <span class="st">Ruling: <span id="stRule" class="o">open</span></span>
+    <span class="st">Groups confirmed: <b id="stGroups">0 of 3</b></span>
+    <span class="st">Flips: <b id="stFlips">0</b></span>
+    <span class="conn" id="conn">Connecting to the answer store…</span>
+  </div>
+  <p class="nostore" id="nostore" hidden>Answers can't be saved in this view. Open the page on claude.ai while signed in.</p>
+
+  <section class="panel" aria-labelledby="hFacts">
+    <h2 id="hFacts">What the count found</h2>
+    <ul class="facts" id="facts"></ul>
+  </section>
+
+  <section class="panel" id="qHead" data-state="open" aria-labelledby="hHead">
+    <div class="phead"><h2 id="hHead">1. The key term itself</h2><span class="pill open" id="pHead">Not answered</span></div>
+    <p>Your 2026-10-10 verdict on this segment chose <b>hlutfallaefnafræði</b> over <i>magnhlutföll</i>. The book's own definition, in the next segment, is the ratio sense. The MT currently reads <i>magnhlutföll</i>.</p>
+    <div class="en"><div class="lbl">English (key term, ch04)</div><div class="txt" id="headEn"></div></div>
+    <div class="en"><div class="lbl">English (its definition)</div><div class="txt">relationships between the amounts of reactants and products of a chemical reaction</div></div>
+    <div><div class="lbl">Icelandic now</div><div class="txt" id="headIs"></div></div>
+    <div class="choices" role="radiogroup" aria-label="Key term">
+      <label><input type="radio" name="head" id="head-hlutfallaefnafraedi" value="hlutfallaefnafraedi"><span><b>hlutfallaefnafræði</b><small>Your 10-10 verdict stands: the key term names the subject.</small></span></label>
+      <label><input type="radio" name="head" id="head-magnhlutfoll" value="magnhlutfoll"><span><b>magnhlutföll</b><small>Follow the book's definition (the ratios). This would change a ruled value, so it needs its own dated record.</small></span></label>
+      <label><input type="radio" name="head" id="head-other" value="other"><span><b>Something else</b><small>Write it in the note.</small></span></label>
+    </div>
+    <label class="lbl" for="head-note">Note</label>
+    <textarea id="head-note"></textarea>
+    <div class="row"><button id="head-save" disabled>Save answer</button><span class="msg" id="head-msg"></span></div>
+  </section>
+
+  <section class="panel" id="qRule" data-state="open" aria-labelledby="hRule">
+    <div class="phead"><h2 id="hRule">2. The ruling in running text</h2><span class="pill open" id="pRule">Not answered</span></div>
+    <div class="choices" role="radiogroup" aria-label="Ruling">
+      <label><input type="radio" name="rule" id="rule-restrict" value="restrict"><span><b>Restrict it to the subject sense, as for heat</b><small id="costRestrict"></small></span></label>
+      <label><input type="radio" name="rule" id="rule-keep" value="keep"><span><b>Keep it for every use</b><small id="costKeep"></small></span></label>
+      <label><input type="radio" name="rule" id="rule-other" value="other"><span><b>Something else</b><small>Write it in the note.</small></span></label>
+    </div>
+    <dl class="gloss">
+      <div class="lbl">Proposed sense glosses if you restrict (the model reads these; edit the wording in the note)</div>
+      <dt>Ruled sense: the subject</dt>
+      <dd>stoichiometry as the name of the subject or of a kind of calculation: chapter and section titles, “reaction stoichiometry calculations”, “the chapter on stoichiometry”, “chemical stoichiometry describes …”</dd>
+      <dt>Other sense: a ratio</dt>
+      <dd>the amount ratios of one particular reaction, compound or process: “the reaction’s stoichiometry”, “a 1:1 stoichiometry”, “depending on the stoichiometry”</dd>
+    </dl>
+    <label class="lbl" for="rule-note">Note</label>
+    <textarea id="rule-note"></textarea>
+    <div class="row"><button id="rule-save" disabled>Save answer</button><span class="msg" id="rule-msg"></span></div>
+  </section>
+
+  <section class="group" id="g-topic"></section>
+  <section class="group" id="g-mixed"></section>
+  <section class="group" id="g-ratio"></section>
+
+  <section class="panel" aria-labelledby="hDone">
+    <h2 id="hDone">Done?</h2>
+    <p class="msg" id="leftMsg"></p>
+    <div class="row"><button id="complete" disabled>Mark review complete</button><span class="msg" id="completeMsg"></span></div>
+  </section>
+
+  <footer class="foot">
+    <p id="adjNote"></p>
+    <p id="srcNote"></p>
+  </footer>
+</div>
+
+<script>
+const ITEMS = /*ITEMS*/[];
+const FACTS = /*FACTS*/{};
+const GROUPS = [
+  { g: "topic", title: "Names the subject", desc: "Titles, kinds of calculation, the subject in general. Under a restriction these are where hlutfallaefnafræði would be proposed." },
+  { g: "mixed", title: "Both senses in one segment", desc: "One use names the subject, another means a ratio. Under a restriction the model would judge each use." },
+  { g: "ratio", title: "One reaction's or compound's ratios", desc: "Under a restriction these keep the MT's own wording (hlutföll, efnajöfnuhlutföll and so on). Under “keep”, each would get a proposal for hlutfallaefnafræði." },
+];
+const SENSE_LABEL = { topic: "Subject", ratio: "Ratio", mixed: "Both", unsure: "Unsure" };
+let db = null;
+const flips = {}, groupsDone = {}, answers = {};
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+function renderFacts() {
+  const c = FACTS.counts;
+  const li = [
+    `The ruling matches <b>${FACTS.matched}</b> segments. The AI pass would send <b>${FACTS.candidates}</b> of them today; the other ${FACTS.matched - FACTS.candidates} already carry hlutfallaefnafræði (titles, or a list item naming a section).`,
+    `My sort: <b>${c.topic}</b> name the subject, <b>${c.mixed}</b> mix both, <b>${c.ratio}</b> mean one reaction's or compound's ratios, and <b>1</b> is the key term itself.`,
+    `The book defines the key term in the ratio sense, and the MT renders the word many ways: hlutföll, efnajöfnuhlutfall, efnismagnshlutföll, magnhlutföll, efnajöfnureikningur and more. Only ${FACTS.carries} segments carry hlutfallaefnafræði.`,
+    `A restriction changes how the ruling is sent, not how often: a ruling with a sense is sent for every segment it matches, with both glosses, and the prompt tells the model to judge the sense from the English and edit only the ruled one.`,
+    `Either way, the change goes into a new amendments file dated 2026-11-02 (one file per date) and must land before the prompt freeze. The ch10 runs you have used the 2026-11-01 set.`,
+  ];
+  $("facts").innerHTML = li.map((x) => `<li>${x}</li>`).join("");
+  $("costKeep").textContent = `The AI pass proposes hlutfallaefnafræði in up to ${FACTS.candidates} segments, ${FACTS.keepRatio} of them where (by this sort) the English means a ratio.`;
+  $("costRestrict").textContent = `All ${FACTS.matched} segments are sent with both glosses; edits only where the model reads the subject sense (about ${c.topic + c.mixed} segments by this sort). A new ruling: a dated amendments file and its test.`;
+  $("adjNote").textContent = `Not part of this question: ${FACTS.adjOnly} more segments use only the adjective “stoichiometric”. ${FACTS.adjFactor} fall under stoichiometric factor → hlutfallaþáttur and ${FACTS.adjNone} under no ruling.`;
+  $("srcNote").textContent = `Source: the term pass's own inputs (layer 1 with its overlay, 02-for-mt English) and matching, ruling set ${FACTS.rulingSet} (sha256 ${FACTS.sha256.slice(0, 12)}…). Counted 2026-11-01; nothing was sent to any model.`;
+}
+
+function itemCard(it) {
+  const opts = ["topic", "ratio", "mixed", "unsure"].map((s) =>
+    `<label><input type="radio" name="${it.id}-f" id="${it.id}-${s}" value="${s}"${s === it.sense ? " checked" : ""}><span>${SENSE_LABEL[s]}</span></label>`).join("");
+  return `<article class="item" id="${it.id}" data-flipped="0">
+    <div class="ihead"><span class="iid">${it.n}</span><span class="kind">${esc(it.chapter)} · ${esc(it.kind)}</span>
+      ${it.carries ? '<span class="pill">already hlutfallaefnafræði</span>' : ""}</div>
+    <div class="en"><div class="lbl">English</div><div class="txt">${it.en}</div></div>
+    <div><div class="lbl">Icelandic now</div><div class="txt">${it.is || '<span class="ph">(empty)</span>'}</div></div>
+    ${it.note ? `<p class="note">${esc(it.note)}</p>` : ""}
+    <div class="flip" role="radiogroup" aria-label="Sense of item ${it.n}"><span class="lbl">Sense</span>${opts}<span class="fmsg" id="${it.id}-fmsg"></span></div>
+  </article>`;
+}
+
+function renderGroups() {
+  for (const G of GROUPS) {
+    const list = ITEMS.filter((it) => it.sense === G.g);
+    const cards = list.map(itemCard).join("");
+    const body = G.g === "ratio"
+      ? `<details class="fold" id="fold-ratio"><summary>Show all ${list.length}</summary><div class="items">${cards}</div></details>`
+      : `<div class="items">${cards}</div>`;
+    $(`g-${G.g}`).innerHTML = `
+      <div class="ghead"><h2>${esc(G.title)} <span class="kind">(${list.length}, my proposal)</span></h2><span class="pill open" id="gp-${G.g}">Not confirmed</span></div>
+      <p class="gdesc">${esc(G.desc)}</p>
+      ${body}
+      <div class="confirm"><button id="gc-${G.g}" disabled>Confirm this group's sort</button><span class="msg" id="gm-${G.g}">Confirming saves the sort as it stands, with any flips you made.</span></div>`;
+  }
+  const head = ITEMS.find((it) => it.sense === "head");
+  $("headEn").innerHTML = head.en;
+  $("headIs").innerHTML = head.is;
+}
+
+function refresh() {
+  const nGroups = GROUPS.filter((G) => groupsDone[G.g]).length;
+  $("stGroups").textContent = `${nGroups} of ${GROUPS.length}`;
+  const nFlips = Object.keys(flips).filter((id) => { const it = ITEMS.find((x) => x.id === id); return it && flips[id].sense !== it.sense; }).length;
+  $("stFlips").textContent = String(nFlips);
+  for (const [q, st, pill, panel] of [["head", "stHead", "pHead", "qHead"], ["rule", "stRule", "pRule", "qRule"]]) {
+    const a = answers[q];
+    $(st).textContent = a ? "answered" : "open"; $(st).className = a ? "k" : "o";
+    $(pill).textContent = a ? "Saved" : "Not answered"; $(pill).className = a ? "pill" : "pill open";
+    $(panel).dataset.state = a ? "saved" : "open";
+  }
+  for (const G of GROUPS) {
+    const done = groupsDone[G.g];
+    const p = $(`gp-${G.g}`);
+    p.textContent = done ? "Confirmed" : "Not confirmed"; p.className = done ? "pill" : "pill open";
+  }
+  for (const it of ITEMS) {
+    const el = $(it.id); if (!el) continue;
+    const f = flips[it.id];
+    el.dataset.flipped = f && f.sense !== it.sense ? "1" : "0";
+  }
+  const left = [];
+  if (!answers.head) left.push("question 1");
+  if (!answers.rule) left.push("question 2");
+  for (const G of GROUPS) if (!groupsDone[G.g]) left.push(`the “${G.title}” group`);
+  $("leftMsg").textContent = left.length ? `Still open: ${left.join(", ")}.` : "Everything is answered. Mark the review complete so I read it back.";
+}
+
+function fillAnswer(q, a) {
+  const r = $(`${q}-${a.choice}`); if (r) r.checked = true;
+  const note = $(`${q}-note`); if (document.activeElement !== note) note.value = a.note || "";
+}
+
+async function saveAnswer(q) {
+  const choice = document.querySelector(`input[name="${q}"]:checked`)?.value;
+  const msg = $(`${q}-msg`);
+  if (!choice) { msg.textContent = "Pick an answer first."; return; }
+  const btn = $(`${q}-save`); btn.disabled = true; msg.textContent = "Saving…";
+  try {
+    await db.doc(`answers/${q}`).set({ choice, note: $(`${q}-note`).value.trim(), savedAt: new Date().toISOString() });
+    msg.textContent = "Saved.";
+  } catch (e) { msg.textContent = "Not saved: " + (e && e.message ? e.message : "the store refused the write") + ". Try again."; }
+  finally { btn.disabled = false; }
+}
+
+async function saveFlip(id, sense) {
+  const m = $(`${id}-fmsg`);
+  if (!db) { m.textContent = "Can't save here."; return; }
+  m.textContent = "Saving…";
+  try {
+    await db.collection("flips").doc(id).set({ sense, savedAt: new Date().toISOString() });
+    m.textContent = "Saved.";
+  } catch (e) { m.textContent = "Not saved: " + (e && e.message ? e.message : "refused"); }
+}
+
+async function confirmGroup(g) {
+  const m = $(`gm-${g}`), btn = $(`gc-${g}`);
+  btn.disabled = true; m.textContent = "Saving…";
+  try {
+    const ids = ITEMS.filter((it) => it.sense === g).map((it) => it.id);
+    const changed = ids.filter((id) => flips[id] && flips[id].sense !== g);
+    await db.collection("groups").doc(g).set({ confirmed: true, items: ids.length, flipped: changed, savedAt: new Date().toISOString() });
+    m.textContent = `Confirmed (${changed.length} flipped).`;
+  } catch (e) { m.textContent = "Not saved: " + (e && e.message ? e.message : "the store refused the write"); }
+  finally { btn.disabled = false; }
+}
+
+async function complete() {
+  const m = $("completeMsg");
+  try {
+    await db.doc("meta/review").set({ complete: true, head: answers.head?.choice ?? null, rule: answers.rule?.choice ?? null,
+      groupsConfirmed: GROUPS.filter((G) => groupsDone[G.g]).map((G) => G.g), at: new Date().toISOString() });
+    m.textContent = "Marked complete.";
+  } catch (e) { m.textContent = "Not saved: " + (e && e.message ? e.message : "the store refused the write"); }
+}
+
+renderFacts(); renderGroups(); refresh();
+
+for (const it of ITEMS) {
+  for (const s of ["topic", "ratio", "mixed", "unsure"]) {
+    const r = $(`${it.id}-${s}`);
+    if (r) r.addEventListener("change", () => { if (r.checked) saveFlip(it.id, s); });
+  }
+}
+
+(async () => {
+  const conn = $("conn");
+  const timer = setTimeout(() => { conn.textContent = "The answer store isn't answering yet."; }, 10000);
+  try { db = await window.claude?.use?.("db"); } catch { db = null; }
+  if (!db) { clearTimeout(timer); conn.textContent = "Answers can't be saved here."; $("nostore").hidden = false; return; }
+  conn.textContent = "Answers save to this page.";
+  for (const q of ["head", "rule"]) { const b = $(`${q}-save`); b.disabled = false; b.addEventListener("click", () => saveAnswer(q)); }
+  for (const G of GROUPS) { const b = $(`gc-${G.g}`); b.disabled = false; b.addEventListener("click", () => confirmGroup(G.g)); }
+  const done = $("complete"); done.disabled = false; done.addEventListener("click", complete);
+  const lost = () => { clearTimeout(timer); conn.textContent = "Lost contact with the answer store; reload to retry."; };
+  db.collection("answers").onSnapshot((snap) => {
+    clearTimeout(timer);
+    for (const d of snap.docs) { const v = d.data(); if (v) { answers[d.id] = v; fillAnswer(d.id, v); } }
+    refresh();
+  }, lost);
+  db.collection("flips").onSnapshot((snap) => {
+    for (const d of snap.docs) {
+      const v = d.data(); if (!v) continue;
+      flips[d.id] = v;
+      const r = $(`${d.id}-${v.sense}`); if (r) r.checked = true;
+    }
+    refresh();
+  }, lost);
+  db.collection("groups").onSnapshot((snap) => {
+    for (const d of snap.docs) { const v = d.data(); if (v && v.confirmed) groupsDone[d.id] = v; }
+    refresh();
+  }, lost);
+  db.doc("meta/review").onSnapshot((d) => {
+    const v = d.exists ? d.data() : null;
+    if (v && v.complete) $("completeMsg").textContent = "Marked complete.";
+  }, () => {});
+})();
+</script>

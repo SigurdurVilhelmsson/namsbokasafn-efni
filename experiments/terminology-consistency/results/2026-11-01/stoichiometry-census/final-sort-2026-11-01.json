@@ -1,0 +1,766 @@
+{
+ "about": "final sense sort of the stoichiometry census (see README.md); built by final_sort.py",
+ "answers": {
+  "head": {
+   "choice": "hlutfallaefnafraedi",
+   "note": ""
+  },
+  "rule": {
+   "choice": "restrict",
+   "note": "Hlutföll and magnhlutföll could both be suitable replacements depending on context."
+  }
+ },
+ "proposedCounts": {
+  "head": 1,
+  "topic": 18,
+  "mixed": 3,
+  "ratio": 56
+ },
+ "finalCounts": {
+  "head": 1,
+  "topic": 20,
+  "mixed": 4,
+  "ratio": 53
+ },
+ "changed": [
+  {
+   "id": "s03",
+   "from": "ratio",
+   "to": "mixed"
+  },
+  {
+   "id": "s05",
+   "from": "topic",
+   "to": "ratio"
+  },
+  {
+   "id": "s06",
+   "from": "topic",
+   "to": "ratio"
+  },
+  {
+   "id": "s22",
+   "from": "ratio",
+   "to": "topic"
+  },
+  {
+   "id": "s32",
+   "from": "ratio",
+   "to": "topic"
+  },
+  {
+   "id": "s49",
+   "from": "ratio",
+   "to": "topic"
+  },
+  {
+   "id": "s54",
+   "from": "ratio",
+   "to": "topic"
+  }
+ ],
+ "items": [
+  {
+   "id": "s01",
+   "chapter": "ch04",
+   "key": "m68713:title:auto-1",
+   "kind": "title",
+   "candidate": false,
+   "proposed": "topic",
+   "final": "topic"
+  },
+  {
+   "id": "s02",
+   "chapter": "ch04",
+   "key": "m68713:abstract-item:abstract-item-1",
+   "kind": "abstract-item",
+   "candidate": true,
+   "proposed": "topic",
+   "final": "topic"
+  },
+  {
+   "id": "s03",
+   "chapter": "ch04",
+   "key": "m68713:para:fs-idp65325120",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "mixed"
+  },
+  {
+   "id": "s04",
+   "chapter": "ch04",
+   "key": "m68713:para:fs-idp222914448",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "mixed",
+   "final": "mixed"
+  },
+  {
+   "id": "s05",
+   "chapter": "ch04",
+   "key": "m68713:para:fs-idp90689472",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "topic",
+   "final": "ratio"
+  },
+  {
+   "id": "s06",
+   "chapter": "ch04",
+   "key": "m68713:caption:CNX_Chem_04_03_flowchart-caption",
+   "kind": "caption",
+   "candidate": true,
+   "proposed": "topic",
+   "final": "ratio"
+  },
+  {
+   "id": "s07",
+   "chapter": "ch04",
+   "key": "m68713:para:fs-idm3728016",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s08",
+   "chapter": "ch04",
+   "key": "m68713:glossary-term:fs-idp127462672-term",
+   "kind": "glossary-term",
+   "candidate": true,
+   "proposed": "head",
+   "final": "head"
+  },
+  {
+   "id": "s09",
+   "chapter": "ch04",
+   "key": "m68714:para:fs-idp22005824",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s10",
+   "chapter": "ch04",
+   "key": "m68714:para:fs-idm22072192",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s11",
+   "chapter": "ch04",
+   "key": "m68714:para:fs-idp59920960",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "topic",
+   "final": "topic"
+  },
+  {
+   "id": "s12",
+   "chapter": "ch04",
+   "key": "m68714:para:fs-idm5314032",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s13",
+   "chapter": "ch04",
+   "key": "m68714:solution:fs-idm48114608",
+   "kind": "solution",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s14",
+   "chapter": "ch04",
+   "key": "m68714:glossary-def:fs-idm46343008-def",
+   "kind": "glossary-def",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s15",
+   "chapter": "ch04",
+   "key": "m68714:glossary-def:fs-idp182610272-def",
+   "kind": "glossary-def",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s16",
+   "chapter": "ch04",
+   "key": "m68714:glossary-def:fs-idp30967968-def",
+   "kind": "glossary-def",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s17",
+   "chapter": "ch04",
+   "key": "m68716:para:fs-idp43277952",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s18",
+   "chapter": "ch04",
+   "key": "m68716:para:fs-idm12137328",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "topic",
+   "final": "topic"
+  },
+  {
+   "id": "s19",
+   "chapter": "ch04",
+   "key": "m68716:para:fs-idp27521328",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s20",
+   "chapter": "ch04",
+   "key": "m68716:para:fs-idp61279744",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "mixed",
+   "final": "mixed"
+  },
+  {
+   "id": "s21",
+   "chapter": "ch04",
+   "key": "m68730:abstract-item:abstract-item-3",
+   "kind": "abstract-item",
+   "candidate": true,
+   "proposed": "topic",
+   "final": "topic"
+  },
+  {
+   "id": "s22",
+   "chapter": "ch04",
+   "key": "m68730:para:fs-idm17418752",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "topic"
+  },
+  {
+   "id": "s23",
+   "chapter": "ch04",
+   "key": "chapter:title:ch04",
+   "kind": "title",
+   "candidate": false,
+   "proposed": "topic",
+   "final": "topic"
+  },
+  {
+   "id": "s24",
+   "chapter": "ch05",
+   "key": "m68727:para:fs-idm14305808",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s25",
+   "chapter": "ch09",
+   "key": "m68748:abstract-item:abstract-item-3",
+   "kind": "abstract-item",
+   "candidate": false,
+   "proposed": "topic",
+   "final": "topic"
+  },
+  {
+   "id": "s26",
+   "chapter": "ch09",
+   "key": "m68752:title:auto-1",
+   "kind": "title",
+   "candidate": false,
+   "proposed": "topic",
+   "final": "topic"
+  },
+  {
+   "id": "s27",
+   "chapter": "ch09",
+   "key": "m68752:para:fs-idm31863392",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "mixed",
+   "final": "mixed"
+  },
+  {
+   "id": "s28",
+   "chapter": "ch09",
+   "key": "m68752:title:fs-idp132626656-title",
+   "kind": "title",
+   "candidate": true,
+   "proposed": "topic",
+   "final": "topic"
+  },
+  {
+   "id": "s29",
+   "chapter": "ch09",
+   "key": "m68752:para:fs-idp137887648",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "topic",
+   "final": "topic"
+  },
+  {
+   "id": "s30",
+   "chapter": "ch09",
+   "key": "m68752:para:fs-idm7424624",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "topic",
+   "final": "topic"
+  },
+  {
+   "id": "s31",
+   "chapter": "ch09",
+   "key": "m68759:para:fs-idm10764416",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "topic",
+   "final": "topic"
+  },
+  {
+   "id": "s32",
+   "chapter": "ch10",
+   "key": "m68773:example-title:fs-idp118444096-title",
+   "kind": "example-title",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "topic"
+  },
+  {
+   "id": "s33",
+   "chapter": "ch10",
+   "key": "m68773:para:fs-idm42504800",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s34",
+   "chapter": "ch10",
+   "key": "m68773:para:fs-idp36716000",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s35",
+   "chapter": "ch11",
+   "key": "m68781:para:fs-idm4855136",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "topic",
+   "final": "topic"
+  },
+  {
+   "id": "s36",
+   "chapter": "ch12",
+   "key": "m68786:para:fs-idm26303136",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s37",
+   "chapter": "ch12",
+   "key": "m68786:para:fs-idm219494144",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s38",
+   "chapter": "ch12",
+   "key": "m68786:caption:CNX_Chem_12_01_NH3Decomp-caption",
+   "kind": "caption",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s39",
+   "chapter": "ch12",
+   "key": "m68786:para:fs-idm42014656",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s40",
+   "chapter": "ch12",
+   "key": "m68786:para:fs-idm41764016",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s41",
+   "chapter": "ch12",
+   "key": "m68786:para:continueon",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s42",
+   "chapter": "ch12",
+   "key": "m68789:para:fs-idm284144576",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s43",
+   "chapter": "ch12",
+   "key": "m68789:para:fs-idm262547408",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s44",
+   "chapter": "ch12",
+   "key": "m68794:problem:fs-idp72418144",
+   "kind": "problem",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s45",
+   "chapter": "ch12",
+   "key": "m68794:solution:fs-idp77008528",
+   "kind": "solution",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s46",
+   "chapter": "ch13",
+   "key": "m68797:para:fs-idp53505568",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s47",
+   "chapter": "ch13",
+   "key": "m68798:para:fs-idp11973152",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s48",
+   "chapter": "ch13",
+   "key": "m68799:para:fs-idm191541472",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s49",
+   "chapter": "ch13",
+   "key": "m68799:para:fs-idm173238784",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "topic"
+  },
+  {
+   "id": "s50",
+   "chapter": "ch13",
+   "key": "m68799:para:fs-idp38799824",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s51",
+   "chapter": "ch13",
+   "key": "m68801:para:fs-idp292035664",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s52",
+   "chapter": "ch13",
+   "key": "m68801:para:fs-idp42253680",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s53",
+   "chapter": "ch13",
+   "key": "m68801:para:fs-idp218682752",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s54",
+   "chapter": "ch14",
+   "key": "m68805:para:fs-idm163389088",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "topic"
+  },
+  {
+   "id": "s55",
+   "chapter": "ch14",
+   "key": "m68808:para:fs-idm174460304",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s56",
+   "chapter": "ch14",
+   "key": "m68809:para:fs-idm43847120",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "topic",
+   "final": "topic"
+  },
+  {
+   "id": "s57",
+   "chapter": "ch15",
+   "key": "m68811:para:fs-idp15206752",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s58",
+   "chapter": "ch15",
+   "key": "m68811:para:fs-idp15515696",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s59",
+   "chapter": "ch15",
+   "key": "m68811:para:fs-idp827984",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s60",
+   "chapter": "ch15",
+   "key": "m68811:para:fs-idp53410000",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s61",
+   "chapter": "ch15",
+   "key": "m68811:para:fs-idp15521184",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s62",
+   "chapter": "ch15",
+   "key": "m68811:para:fs-idp15393408",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s63",
+   "chapter": "ch15",
+   "key": "m68814:para:fs-idm378998352",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s64",
+   "chapter": "ch17",
+   "key": "m68821:para:fs-idm204695200",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "topic",
+   "final": "topic"
+  },
+  {
+   "id": "s65",
+   "chapter": "ch17",
+   "key": "m68824:para:fs-idp58835888",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s66",
+   "chapter": "ch17",
+   "key": "m68824:problem:fs-idp166722736",
+   "kind": "problem",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s67",
+   "chapter": "ch17",
+   "key": "m68824:problem:fs-idp99097696",
+   "kind": "problem",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s68",
+   "chapter": "ch17",
+   "key": "m68825:para:fs-idm162456704",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s69",
+   "chapter": "ch17",
+   "key": "m68826:para:fs-idm55785904",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s70",
+   "chapter": "ch17",
+   "key": "m68827:para:fs-idm90272368",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s71",
+   "chapter": "ch17",
+   "key": "m68827:para:fs-idm2746496",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s72",
+   "chapter": "ch18",
+   "key": "m68829:para:fs-idp6930208",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s73",
+   "chapter": "ch18",
+   "key": "m68831:para:fs-idp125396304",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s74",
+   "chapter": "ch18",
+   "key": "m68831:para:fs-idp28729488",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s75",
+   "chapter": "ch18",
+   "key": "m68833:item:fs-idp73406480-item-2",
+   "kind": "item",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s76",
+   "chapter": "ch18",
+   "key": "m68839:para:fs-idm67915760",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  },
+  {
+   "id": "s77",
+   "chapter": "ch18",
+   "key": "m68839:para:fs-idm12706304",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "topic",
+   "final": "topic"
+  },
+  {
+   "id": "s78",
+   "chapter": "ch19",
+   "key": "m68842:para:fs-idm231487104",
+   "kind": "para",
+   "candidate": true,
+   "proposed": "ratio",
+   "final": "ratio"
+  }
+ ]
+}

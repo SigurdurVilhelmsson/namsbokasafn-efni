@@ -86,7 +86,7 @@ import { LAYER_DIRS, CHAPTER_DIR_RE } from '../lib/mt-layers.js';
 /** The one book this runner processes (the register's owed item 1). */
 export const BOOK = 'efnafraedi-2e';
 export const DEFAULT_RULING_SET =
-  'experiments/terminology-consistency/results/2026-11-01/ruling-set-2026-11-01.json';
+  'experiments/terminology-consistency/results/2026-11-02/ruling-set-2026-11-02.json';
 export const DEFAULT_MODEL = 'claude-opus-5-5';
 export const DEFAULT_EFFORT = 'high';
 export const DEFAULT_MAX_TOKENS = 16000;
