@@ -1,0 +1,36 @@
+{
+  "schema": "ai-review-run/1",
+  "runId": "20261101T101143Z-0a3bb55e",
+  "use": "term-pass",
+  "mode": "batch",
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "max_tokens": 16000,
+  "prompts": [
+    {
+      "path": "tools/ai-review/prompts/term-pass-v2.md",
+      "sha256": "7f9b1b3518bb6454d799a03d3a53b490376f37d2e25a6c4a89e42f6c299e559b"
+    }
+  ],
+  "rulingSet": {
+    "path": "experiments/terminology-consistency/results/2026-11-01/ruling-set-2026-11-01.json",
+    "sha256": "30155b418b2e4c6ff6912cf62962a32e568e3fd22e7bd97f9de6a544a0890158"
+  },
+  "sdk": {
+    "name": "@anthropic-ai/sdk",
+    "version": "1.3.0"
+  },
+  "anthropicVersion": "2026-10-21",
+  "harnessCommit": "38f574cdd4540fbf186464c83e8010a02ef2535a",
+  "harnessDirty": false,
+  "cap": {
+    "usd": 100,
+    "ledger": "ledger.jsonl"
+  },
+  "pricing": {
+    "source": "claude-api skill reference, model table (USD per million tokens)",
+    "cachedOn": "2026-10-06"
+  },
+  "startedAt": "2026-11-01T10:11:43.408Z",
+  "requestCount": 55
+}

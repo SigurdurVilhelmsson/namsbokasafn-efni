@@ -1,0 +1,161 @@
+{
+ "schema": "ai-review-blind-comparison/1",
+ "about": "[USER]'s blind comparison of the ch10 AI term pass re-run at effort high vs xhigh, 2026-11-01 (both batch; prompt v2; ruling set 2026-11-01; high --max-tokens 16000, xhigh 32000): every segment where the two runs' final text differs after the gate (16 segments; dry apply, nothing written). No segment is excluded: both runs answered all 403 presented segments. A/B assigned at random per item (seed below); the key was not shown until all 16 were saved and the review marked complete. Verdicts copied verbatim from the review page's store.",
+ "runs": {
+  "high": "20261101T101143Z-0a3bb55e",
+  "xhigh": "20261101T101529Z-137d40e8"
+ },
+ "seed": 20261101,
+ "differingTotal": 16,
+ "excludedUnanswered": [],
+ "tally": {
+  "high": 5,
+  "xhigh": 11
+ },
+ "verdicts": [
+  {
+   "item": "i01",
+   "segment": "m68768:para:fs-idm12378064",
+   "A": "xhigh",
+   "B": "high",
+   "choice": "A",
+   "preferredRun": "xhigh",
+   "note": "Adheres better to terminology"
+  },
+  {
+   "item": "i02",
+   "segment": "m68773:para:fs-idp83773936",
+   "A": "xhigh",
+   "B": "high",
+   "choice": "A",
+   "preferredRun": "xhigh",
+   "note": "Consistent terminology."
+  },
+  {
+   "item": "i03",
+   "segment": "m68768:para:fs-idm238047040",
+   "A": "xhigh",
+   "B": "high",
+   "choice": "A",
+   "preferredRun": "xhigh",
+   "note": "Better terminology"
+  },
+  {
+   "item": "i04",
+   "segment": "m68773:problem:fs-idp173591264",
+   "A": "high",
+   "B": "xhigh",
+   "choice": "B",
+   "preferredRun": "xhigh",
+   "note": "Better grammar."
+  },
+  {
+   "item": "i05",
+   "segment": "m68773:para:fs-idp36716000",
+   "A": "high",
+   "B": "xhigh",
+   "choice": "A",
+   "preferredRun": "high",
+   "note": "Incorrect terminology in B. The term may be correct, but the original is plain speech so \"hlutfallið\" is better."
+  },
+  {
+   "item": "i06",
+   "segment": "m68773:problem:fs-idp80463840",
+   "A": "xhigh",
+   "B": "high",
+   "choice": "A",
+   "preferredRun": "xhigh",
+   "note": "Better grammar."
+  },
+  {
+   "item": "i07",
+   "segment": "m68773:para:fs-idp31912208",
+   "A": "high",
+   "B": "xhigh",
+   "choice": "A",
+   "preferredRun": "high",
+   "note": "Fixes spelling error."
+  },
+  {
+   "item": "i08",
+   "segment": "m68761:para:fs-idp29466368",
+   "A": "high",
+   "B": "xhigh",
+   "choice": "B",
+   "preferredRun": "xhigh",
+   "note": "Personal preference."
+  },
+  {
+   "item": "i09",
+   "segment": "m68769:caption:CNX_Chem_10_04_CritFluid-caption",
+   "A": "high",
+   "B": "xhigh",
+   "choice": "B",
+   "preferredRun": "xhigh",
+   "note": ""
+  },
+  {
+   "item": "i10",
+   "segment": "m68770:para:fs-idm75890720",
+   "A": "xhigh",
+   "B": "high",
+   "choice": "A",
+   "preferredRun": "xhigh",
+   "note": "Correct terminology"
+  },
+  {
+   "item": "i11",
+   "segment": "m68768:para:fs-idm149636464",
+   "A": "high",
+   "B": "xhigh",
+   "choice": "B",
+   "preferredRun": "xhigh",
+   "note": "Correct terminology"
+  },
+  {
+   "item": "i12",
+   "segment": "m68770:entry:auto-45",
+   "A": "high",
+   "B": "xhigh",
+   "choice": "B",
+   "preferredRun": "xhigh",
+   "note": "Correct terminology"
+  },
+  {
+   "item": "i13",
+   "segment": "m68773:para:fs-idm42504800",
+   "A": "high",
+   "B": "xhigh",
+   "choice": "A",
+   "preferredRun": "high",
+   "note": "As before, simple \"hlutfallið\" is correct from context."
+  },
+  {
+   "item": "i14",
+   "segment": "m68768:para:fs-idm10799984",
+   "A": "xhigh",
+   "B": "high",
+   "choice": "A",
+   "preferredRun": "xhigh",
+   "note": "Better terminology"
+  },
+  {
+   "item": "i15",
+   "segment": "m68764:para:fs-idm245342800",
+   "A": "xhigh",
+   "B": "high",
+   "choice": "B",
+   "preferredRun": "high",
+   "note": "Better terminology"
+  },
+  {
+   "item": "i16",
+   "segment": "m68773:solution:fs-idm17016160",
+   "A": "xhigh",
+   "B": "high",
+   "choice": "B",
+   "preferredRun": "high",
+   "note": "Correct terminology"
+  }
+ ]
+}

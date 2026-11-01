@@ -439,3 +439,9 @@
 {"type":"reserve","id":"res-1b54b4e8-e4ca-4f66-8846-4ead781b318e","runId":"20261029T054345Z-d6df8f0d","use":"term-pass","usd":0.404824,"at":"2026-10-29T06:27:18.816Z"}
 {"type":"settle","id":"res-1b54b4e8-e4ca-4f66-8846-4ead781b318e","runId":"20261029T054345Z-d6df8f0d","use":"term-pass","usd":0.0535732,"at":"2026-10-29T06:27:38.528Z"}
 {"type":"release","id":"res-1b54b4e8-e4ca-4f66-8846-4ead781b318e","runId":"20261029T054345Z-d6df8f0d","use":"term-pass","usd":0.3512508,"at":"2026-10-29T06:27:38.528Z"}
+{"type":"reserve","id":"res-00d89421-b026-49ad-8482-37081f0f67ce","runId":"20261101T101143Z-0a3bb55e","use":"term-pass","usd":11.738308,"at":"2026-11-01T10:11:57.539Z"}
+{"type":"settle","id":"res-00d89421-b026-49ad-8482-37081f0f67ce","runId":"20261101T101143Z-0a3bb55e","use":"term-pass","usd":3.322888,"at":"2026-11-01T10:15:00.825Z"}
+{"type":"release","id":"res-00d89421-b026-49ad-8482-37081f0f67ce","runId":"20261101T101143Z-0a3bb55e","use":"term-pass","usd":8.41542,"at":"2026-11-01T10:15:00.826Z"}
+{"type":"reserve","id":"res-b2edf56b-c434-4a85-87f9-d410b12ab278","runId":"20261101T101529Z-137d40e8","use":"term-pass","usd":20.538308,"at":"2026-11-01T10:15:42.932Z"}
+{"type":"settle","id":"res-b2edf56b-c434-4a85-87f9-d410b12ab278","runId":"20261101T101529Z-137d40e8","use":"term-pass","usd":3.805606,"at":"2026-11-01T10:20:48.536Z"}
+{"type":"release","id":"res-b2edf56b-c434-4a85-87f9-d410b12ab278","runId":"20261101T101529Z-137d40e8","use":"term-pass","usd":16.732702,"at":"2026-11-01T10:20:48.536Z"}

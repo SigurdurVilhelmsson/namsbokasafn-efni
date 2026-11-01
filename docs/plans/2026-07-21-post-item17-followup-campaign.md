@@ -4,6 +4,37 @@
 
 ## ⏩ RESUME — state as of **2026-10-09 — ✅ '6' PR-B IS MERGED ([#546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546)) AND DEPLOYED, with the 7 Dependabot PRs; R-22's condition is met and the LIVE-RUN HOLD's condition is met on `main`. ⏹ The whole-book re-render and the chemistry sync are HELD for [USER]. ▶ [CODE] in parallel: the ② code batch (end of this block)** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence) ✏️ *Heading re-dated 2026-10-09; it had said PR-B was BUILT and UNPUSHED, with step 2b and the LIVE-RUN HOLD outstanding, after all three had changed. The bullets directly under the SINGLE NEXT ACTION are PR-B's record.*
 
+### ⏭ 2026-11-01 (ch10 re-run) — ADDS TO THE ENTRY DIRECTLY BELOW AND SUPERSEDES ITS NEXT: **✅ THE PAID ch10 RE-RUN RAN, HIGH AND XHIGH, BOTH COMPLETE: every answer usable, USD 7.13 together (first two bullets). ✅ [USER] JUDGED THE 16 FINAL-TEXT DIFFERENCES BLIND: xhigh preferred on 11, high on 5, against 6 of 9 on 2026-10-29, now with nothing excluded (fourth bullet). The run records and the ledger are in `books/efnafraedi-2e/ai-review/` (where the runner writes and `apply` reads them); the blind result and its evidence are in [`experiments/ai-review-pilot/ch10-2026-11-01/`](../../experiments/ai-review-pilot/ch10-2026-11-01/). ▶ NEXT, [USER]'s: the effort for the full run (the evidence favours xhigh); whether *stoichiometry* gets a sense restriction (last bullet). Nothing was applied: layer 2 stays unwritten until the prompt is frozen.**
+- **The runs** ([USER]'s go, 2026-11-01):
+  - both in batch mode ([USER] chose batch for high as well, so the two efforts ran under identical conditions), one after the other, from the main checkout;
+  - layer 1 at `38f574cdd`; prompt v2 (sha256 `7f9b1b35…`); the 2026-11-01 ruling set (sha256 `30155b41…`, 399 rulings, *antibonding orbital* included). Both hashes were checked against the files before paying;
+  - plan: 403 items in 55 requests (the pilot had 362 in 49), because the newer rulings offer more segments.
+
+  | | high (`--max-tokens 16000`) | xhigh (`--max-tokens 32000`) |
+  |---|---|---|
+  | Run | `20261101T101143Z-0a3bb55e` | `20261101T101529Z-137d40e8` |
+  | Cost (ledger) | USD 3.32 | USD 3.81 |
+  | Usable / truncated / refused / errored / not sent | 55 / 0 / 0 / 0 / 0 | 55 / 0 / 0 / 0 / 0 |
+  | Output tokens mean / p95 / max | 3,161 / 8,076 / 8,592 | 6,212 / 15,562 / 20,510 |
+
+  Two xhigh answers went over 16,000 output tokens, so the pilot's limit would have cut them off; 32,000 cut off none. Batch halved the price: in the pilot (interactive), high cost USD 3.88 and xhigh USD 6.77.
+- **Ledger:** USD 14.02 settled before, USD 21.15 after, no open reservations, USD 78.85 left under the runner's USD 100 cap. The ledger change is append-only: 6 rows, and the 441 earlier rows are byte-identical.
+- **The answers, compared** (scripts and output in the experiments folder above):
+  - raw proposals, before the gate: 469 changes at high and 471 at xhigh; they differ on 41 of 403 segments;
+  - a dry `apply` of each run (no `--write`; reports kept outside the repo): accepted 389 / 406, rejected 80 / 65, occurrences changed 262 / 266, leftover old forms flagged 26 / 28;
+  - final text after the gate differs on **16 occurrences in 16 segments**: xhigh alone changed 7, high alone changed 3, both changed 6 differently. The blind-page builder found the same 16 independently, from the reports;
+  - high answered one segment id that no request presented, `m68768:para:fp-idp12376064` (a garbled `fs-`, with a sense note and no changes). It also answered the real segment. `apply` drops the garbled one as `response-unknown-segment`, and no segment is missing.
+- **[USER]'s blind judgement** (page built as on 2026-10-29: A/B random per item, seed 20261101, the key shown only after all 16 were saved and the review marked complete; verdicts verbatim in `blind-high-vs-xhigh.json`):
+  - **xhigh 11, high 5**, no "both fine" and no "neither good". 2026-10-29: xhigh 6, high 3, with 17 truncated xhigh segments excluded;
+  - on the 12 segments where one side follows the ruling set, [USER] chose that side every time: xhigh on 9 (dispersion force, vapor pressure of water, intermolecular force, three noun uses of *heat*, critical point, *kolefnisatóma*, *beygir* for diffract), high on 3 (each an occurrence xhigh skipped: a typo fix *pólonatóms*, *IMFs → millisameindakraftar*, *girðitala*);
+  - the four judgement calls split 2–2. *beygja* takes the accusative (*röntgengeisla*), so xhigh won both ("Better grammar"). For *stoichiometry*, plain *hlutfallið* won both, so high: "The term may be correct, but the original is plain speech".
+- **The AI provider's output terms, re-checked 2026-11-01 at 11:16Z:** <https://www.anthropic.com/legal/commercial-terms> still shows "Effective Jun 17, 2025", and the clause-B sentence the 2026-10-28 record quotes is present verbatim. So that record (`docs/decisions/2026-10-28-ai-provider-output-terms.md`) covers these runs, and no new record is needed. A text hash taken this time differs from the recorded one, but the original stripping method is not reproducible from the record, so the hashes are not compared.
+- **Comparability:** these runs differ from the pilot's in prompt (v2 against v1), ruling set (2026-11-01 against 2026-10-26) and mode (batch against interactive). So pilot-versus-re-run differences cannot be pinned on one change. High against xhigh within each pair is a clean comparison.
+- **Open for [USER]:**
+  - the full run's effort. xhigh is preferred on 69% of differing segments here and on 67% on 2026-10-29, costs USD 0.48 more per chapter in batch, and with `--max-tokens 32000` nothing was cut off;
+  - *stoichiometry* also fires where the English means only a ratio, and [USER]'s verdict favours plain *hlutfallið* there. Restricting the ruling to one sense, as for *heat*, would be a new ruling;
+  - the "second chapter" the 2026-10-29 plan named for this re-run was not run.
+
 ### ⏭ 2026-11-01 (10:00Z) — ADDS TO THE ENTRIES BELOW AND SUPERSEDES THE (08:00Z) ENTRY'S NEXT: **✅ THE 2026-10-29/30 RULINGS AND THE TWO 2026-11-01 RULINGS ARE LIVE IN CHEMISTRY'S TERM SOURCES:**
 - **#596 deployed at 08:02Z** (051: 61 house-style concepts);
 - **#597 and #598 merged;**
