@@ -4,7 +4,35 @@
 
 ## ⏩ RESUME — state as of **2026-10-09 — ✅ '6' PR-B IS MERGED ([#546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546)) AND DEPLOYED, with the 7 Dependabot PRs; R-22's condition is met and the LIVE-RUN HOLD's condition is met on `main`. ⏹ The whole-book re-render and the chemistry sync are HELD for [USER]. ▶ [CODE] in parallel: the ② code batch (end of this block)** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence) ✏️ *Heading re-dated 2026-10-09; it had said PR-B was BUILT and UNPUSHED, with step 2b and the LIVE-RUN HOLD outstanding, after all three had changed. The bullets directly under the SINGLE NEXT ACTION are PR-B's record.*
 
-### ⏭ 2026-11-01 — ADDS TO THE 2026-10-31 ENTRY; ITS NEXT AFTER THE TAG STANDS: **✅ THE S TAG IS MADE AND PUSHED (00:01:31Z): annotated `s-2026-11-01` on `62dd13975` (#593's merge), and the two tip tags, each pushed by its own refspec and checked with `ls-remote` and the GitHub API (first bullet). Every check in the 2026-10-31 entry's last bullet passed first, against prod's 00:00Z content tick (second bullet). ✏️ The pre-S plan's §7 line on G1.19 and the old bundles is corrected (third bullet). ▶ NEXT: the same rulings in the server's term sources (the *bonding orbital* house-style edit) and the two glossary rows can merge now; then the paid re-run of high and xhigh on ch10 and a second chapter, on [USER]'s go.**
+### ⏭ 2026-11-01 (morning) — ADDS TO THE ENTRY DIRECTLY BELOW AND SUPERSEDES ITS NEXT: **🔨 THE FIRST POST-TAG TERM CHANGES ARE BUILT, on `feat/term-sources-2026-11-01`: the house-style file gets *bonding orbital → tengisvigrúm* (replacing *bindandi svigrúm*), a new *antibonding orbital → andtengisvigrúm*, and *valence → gildistala* with its five compounds (52 → 59 entries); the removal script gets the physics-tier *concentrated* headword. ✅ [USER] answered (l) and the PR's scope (first bullet). ▶ NEXT: CI and [USER]'s merge; then deploy, which applies the house style on boot; the removal script on prod, dry run first and `--apply` on [USER]'s word; the next export, and pull (last bullet). After that, the other 2026-10-29/30 conflict rulings in production's per-book term preferences, scoped separately; then the paid re-run of high and xhigh on ch10 and a second chapter, on [USER]'s go.**
+- **[USER]'s answers (06:1xZ):**
+  - (l) *antibonding*: a house-style row *antibonding orbital → andtengisvigrúm*. The Íðorðabankinn chemistry row for the adjective, *antibonding → andbindandi*, stays.
+  - Scope: these three changes only. The other conflict rulings' per-book term preferences come in a later PR.
+- **What the branch changes:**
+  - `server/lib/houseStyleTerms.js`: *bonding orbital → tengisvigrúm*, with its `ruled` and `why` rewritten (the old `why` argued that antibonding needed no entry because of the *bindandi*/*andbindandi* pair); new *antibonding orbital → andtengisvigrúm*; new *valence → gildistala*, *valence electron → gildisrafeind*, *valence bond → gildistengi*, *valence band → gildisborði*, *valence shell → gildishvolf*, *valence orbital → gildissvigrúm*, targets copied from the 2026-10-30 ruling set.
+  - `server/scripts/remove-wrong-sense-headwords.js`: `{ english: 'concentrated', domain: 'physics' }`. House style can outrank a row but never remove one, so the removal goes through this script's list.
+  - Tests: a new `server/__tests__/houseStyleTerms2026-11-01.test.js` (14 tests; against `main`'s two files, 12 fail and the 2 controls pass), and `houseStyleTerms.test.js`'s value pin for *bonding orbital*.
+- **Read on prod before building (read-only; a CommonJS read script, deleted after):**
+  - *valence → girðitala* is Íðorðabankinn's chemistry concept 4764 (id 931715), and *coordination number → girðitala* is 4763. The house-style *valence* wins the same-domain tie (§C164) and 4764 stays in place;
+  - *concentrated → megn | sterkur* is the physics concept 2348 (id 323173), the only *concentrated* concept in chemistry's domain chain (chemistry, physics, biology). Anatomy-physiology's 24881 is outside that chain;
+  - *antibonding → andbindandi* is chemistry concept 4639;
+  - the house-style *bonding orbital → bindandi svigrúm* is concept 70198. Migration 051 updates it in place, so the concept keeps its id.
+- **The September MT, for the record (177 segment files under `02-mt-output`):**
+  - *bindandi svigrúm* 51, *tengisvigrúm* 0;
+  - *andbindandi* 39, *andtengi-* 0;
+  - *gildistala* 0, *girðitala* 13;
+  - *gildisrafeind* 205, *gildishvolf* 17, *gildissvigrúm* 14, *gildistengi* 2, *gildisborð-* 2.
+
+  So *bonding orbital*, *antibonding orbital* and bare *valence* are rulings of forms that text does not use, and editors introduce them. The five compounds pin forms the MT already writes.
+- **Not in this branch, logged:**
+  - the AI pass's ruling set has no plain *antibonding orbital* ruling (only the σ\*/π\* forms); it belongs in the next amendments input;
+  - the removal script's closing line prescribes `export-terminology.js --force`. Removing one row cannot trip the shrink guard, which gates only halving, so the cron's export writes on its own.
+- **Release path after merge (merging alone changes nothing on prod):**
+  1. Deploy. 051 runs on boot: it replaces concept 70198's Icelandic in place and adds 7 concepts.
+  2. `node server/scripts/remove-wrong-sense-headwords.js` on prod, a dry run first, then `--apply` on [USER]'s word (a write to production's database). The whole list re-runs; earlier entries report "already absent" unless an import re-added them, and the dry run shows exactly what would go.
+  3. The next 2-hourly content tick exports the glossary and pushes it; then pull.
+
+### ⏭ 2026-11-01 — ADDS TO THE 2026-10-31 ENTRY; ITS NEXT AFTER THE TAG STANDS: **✅ THE S TAG IS MADE AND PUSHED (00:01:31Z): annotated `s-2026-11-01` on `62dd13975` (#593's merge), and the two tip tags, each pushed by its own refspec and checked with `ls-remote` and the GitHub API (first bullet). Every check in the 2026-10-31 entry's last bullet passed first, against prod's 00:00Z content tick (second bullet). ✏️ The pre-S plan's §7 line on G1.19 and the old bundles is corrected (third bullet). ▶ NEXT: the same rulings in the server's term sources (the house-style file and production's per-book term preferences, as the 2026-10-29 entry says) and the two glossary rows can merge now; then the paid re-run of high and xhigh on ch10 and a second chapter, on [USER]'s go.** ✏️ *Corrected the same morning: this NEXT had narrowed the term sources to "the* bonding orbital *house-style edit". The entry above splits them into a first PR and a later one.*
 - **The tags.** All three carry the tagger date `2026-11-01T00:01:31Z` and the messages [USER] approved on 2026-10-31:
   - `s-2026-11-01`: tag object `1ed5152f0751300444e588b4cf9a63229bbdaffb` → `62dd13975928e5fdca85cb421a46754c8a59189e` (`main`, #593's merge);
   - `s-2026-11-01-tip/content-c2-whole-book-reinject`: tag object `6081364039337ba5ca68b24dfcc2895431d4157f` → `bed24f4415d6f4f3285ff56ca4ce1d38439aaece` (the held re-inject);

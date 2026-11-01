@@ -144,13 +144,26 @@ const HOUSE_STYLE_TERMS = Object.freeze([
   }),
   Object.freeze({
     en: Object.freeze(['bonding orbital']),
-    is: 'bindandi svigrúm',
-    ruled: '2026-09-19 [USER]',
+    is: 'tengisvigrúm',
+    ruled: '2026-10-11 [USER], kept 2026-10-29 [USER]',
     why:
-      'Chemistry ch08, 25 segments, key term, no row. The MT splits bindandi svigrúm ~37 ' +
-      'against tengisvigrúm ~6. [USER] ruled the majority, which also pairs with the ' +
-      'unanimous andbindandi for antibonding — and antibonding therefore needs NO entry, ' +
-      'per the rule that a row is for a choice the model cannot make on its own.',
+      'REVERSES the 2026-09-19 ruling bindandi svigrúm, which the March MT preferred ~37 to ~6. ' +
+      '[USER] ruled tengisvigrúm on 2026-10-11 (one word throughout: σ-/π-tengisvigrúm, ' +
+      'σ*-/π*-andtengisvigrúm, keeping and- for antibonding) and kept it on 2026-10-29 ' +
+      '(docs/decisions/2026-10-29-glossary-ruling-conflicts-resolved.md). This file kept the old ' +
+      'value until after the S tag, which pins the file the SD3 baseline read. ⚠️ The September ' +
+      'MT writes bindandi svigrúm 51 times and tengisvigrúm 0, so editors introduce the ruled form ' +
+      'throughout.',
+  }),
+  Object.freeze({
+    en: Object.freeze(['antibonding orbital']),
+    is: 'andtengisvigrúm',
+    ruled: '2026-11-01 [USER]',
+    why:
+      'The pair of bonding orbital above, ruled once that entry became tengisvigrúm (register ' +
+      'item (l)). It matches the σ*-/π*-andtengisvigrúm forms of the 2026-10-11 ruling. The ' +
+      'Íðorðabankinn chemistry row for the adjective, antibonding → andbindandi, stays. ⚠️ The ' +
+      'September MT writes andbindandi 39 times and andtengi- 0, so editors introduce this form too.',
   }),
   Object.freeze({
     en: Object.freeze(['Lewis structure']),
@@ -550,6 +563,50 @@ const HOUSE_STYLE_TERMS = Object.freeze([
       'A NEW head, the pair of the approved `ionic compound → jónaefni`: common Icelandic usage, ' +
       'while bare compound stays efnasamband. It titles section 2.6 ("Jónaefni og sameindaefni"). ' +
       'The MT writes sameindaefni in 11 of 19 segments, sameindasamband in 7.',
+  }),
+  // ── 2026-10-29 [USER]: valence and its five compounds, one change ──────────────────────────
+  // Record: docs/decisions/2026-10-29-glossary-ruling-conflicts-resolved.md. Bare valence is
+  // about 18 uses in the book's English and its compounds about 270, so the bare ruling must not
+  // land without them. Held until after the S tag, which pins the file the SD3 baseline read.
+  Object.freeze({
+    en: Object.freeze(['valence']),
+    is: 'gildistala',
+    ruled: '2026-10-29 [USER]',
+    why:
+      "Supersedes Íðorðabankinn's chemistry row valence → girðitala, which [USER] read as a typo: " +
+      "girðitala is the same glossary's term for coordination number, a different concept. That " +
+      'row is left in place (this file never edits an Íðorðabankinn concept); this entry wins the ' +
+      'same-domain tie (§C164). ⚠️ The September MT writes girðitala 13 times and gildistala 0.',
+  }),
+  Object.freeze({
+    en: Object.freeze(['valence electron']),
+    is: 'gildisrafeind',
+    ruled: '2026-10-29 [USER]',
+    why: 'About 149 uses in the English. The September MT already writes gildisrafeind- 205 times.',
+  }),
+  Object.freeze({
+    en: Object.freeze(['valence bond']),
+    is: 'gildistengi',
+    ruled: '2026-10-29 [USER]',
+    why: 'About 29 uses in the English (valence bond theory). The September MT writes gildistengi 2 times.',
+  }),
+  Object.freeze({
+    en: Object.freeze(['valence band']),
+    is: 'gildisborði',
+    ruled: '2026-10-29 [USER]',
+    why: 'About 7 uses in the English. The September MT writes gildisborð- 2 times.',
+  }),
+  Object.freeze({
+    en: Object.freeze(['valence shell']),
+    is: 'gildishvolf',
+    ruled: '2026-10-29 [USER]',
+    why: 'About 62 uses in the English. The September MT writes gildishvolf- 17 times.',
+  }),
+  Object.freeze({
+    en: Object.freeze(['valence orbital']),
+    is: 'gildissvigrúm',
+    ruled: '2026-10-29 [USER]',
+    why: 'About 14 uses in the English. The September MT writes gildissvigrúm- 14 times.',
   }),
 ]);
 
