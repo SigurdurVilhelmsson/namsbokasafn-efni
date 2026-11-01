@@ -1,5 +1,5 @@
 {
-  "about": "Amendments that carry out docs/decisions/2026-11-01-polyatomic-ion-two-words.md, [USER]'s correction of 2026-11-01. Applied on top of amendments-2026-10-29.json and amendments-2026-10-30.json (give all three to tools/ai-review/compile-ruling-set.js, oldest first). One retarget: polyatomic ion becomes the two-word fjölatóma jón, the form Íðorðabankinn's chemistry concept already lists and the machine translation already writes; the withdrawn one-word target survives as a competitor. Hand-written input: its sha256 is recorded in the compiled artifact, so any edit must be followed by a recompile.",
+  "about": "Amendments that carry out [USER]'s two decisions of 2026-11-01: docs/decisions/2026-11-01-polyatomic-ion-two-words.md (the file's record) and docs/decisions/2026-11-01-antibonding-orbital-andtengisvigrum.md (named by its own entry). Applied on top of amendments-2026-10-29.json and amendments-2026-10-30.json (give all three to tools/ai-review/compile-ruling-set.js, oldest first). One retarget: polyatomic ion becomes the two-word fjölatóma jón, the form Íðorðabankinn's chemistry concept already lists and the machine translation already writes; the withdrawn one-word target survives as a competitor. One add: antibonding orbital → andtengisvigrúm, the plain form of the σ*-/π*-andtengisvigrúm rulings, matching the house-style entry of the same day. Hand-written input: its sha256 is recorded in the compiled artifact, so any edit must be followed by a recompile.",
   "recordedAt": "2026-11-01",
   "record": "docs/decisions/2026-11-01-polyatomic-ion-two-words.md",
   "amendments": [
@@ -9,6 +9,13 @@
       "from": "fjölatómajón",
       "to": "fjölatóma jón",
       "decision": "polyatomic ion is fjölatóma jón, two words; it supersedes the 2026-10-29 record's polyatomic ion row (fjölatómajón)"
+    },
+    {
+      "op": "add",
+      "en": "antibonding orbital",
+      "is": "andtengisvigrúm",
+      "decision": "antibonding orbital is andtengisvigrúm, the pair of bonding orbital → tengisvigrúm (register item (l))",
+      "record": "docs/decisions/2026-11-01-antibonding-orbital-andtengisvigrum.md"
     }
   ]
 }
