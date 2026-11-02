@@ -19,7 +19,7 @@ import {
 import { TERM_PASS_RECORD } from '../ai-review/term-pass-apply.js';
 import { listChapterUnits, verifyRevision } from '../lib/mt-layers.js';
 import { makeGit } from '../ai-review/provenance.js';
-import { loadPrompt, PROMPT_PATH } from '../ai-review/term-pass-request.js';
+import { loadPrompt, PROMPT_PATH, parseUserMessage } from '../ai-review/term-pass-request.js';
 import { loadRulingSet } from '../ai-review/ruling-set.js';
 import { readLedger, reserve, summarizeLedger } from '../ai-review/ledger.js';
 import {
@@ -1243,7 +1243,7 @@ describe('run --request sends only the named requests', () => {
       S = setup();
       keys = (await planKeys(S)).ch02;
       t = mockTransport();
-    });
+    }, 120_000);
     const refuses = async (args, re) => {
       await expect(main([...args, '--yes'], S.deps({ transport: t }))).rejects.toThrow(re);
       expect(t.calls.send).toBe(0);
@@ -1285,7 +1285,7 @@ describe('run --request sends only the named requests', () => {
       S = setup({ chapters: ['ch02', 'ch03'] });
       keys = await planKeys(S, ['ch02', 'ch03']);
       t = mockTransport();
-    });
+    }, 120_000);
     const two = ['--mode', 'interactive', ...UNDER_SDK_LIMIT, '--yes'];
 
     it('a key whose chapter is not among --chapter', async () => {
@@ -1336,6 +1336,73 @@ describe('run --request sends only the named requests', () => {
     expect(res).toMatchObject({ status: 'complete', exitCode: 0 });
     expect(record(S, runId, 'run.json').requestCount).toBe(1);
   });
+});
+
+// The whole-branch review of --request (2026-11-02, Opus, Important): --request is the first
+// selector that is not a prefix of the plan, so two runs can share no request key, and then no
+// request body is compared between them. Runs that cut the chapter into requests differently
+// could be applied together and read complete with a segment no request presented.
+describe('apply refuses runs that cut the chapter into requests differently', () => {
+  const planOf = async (S, flags = []) =>
+    (await main(['plan', '--chapter', 'ch02', ...UNDER_SDK_LIMIT, ...flags], S.deps())).rows[0]
+      .requests;
+  const idsOf = (q) => parseUserMessage(q.body.messages[0].content).segments.map((x) => x.id);
+  const runNamed = async (S, keys, flags = []) =>
+    (
+      await main(
+        [
+          'run',
+          '--chapter',
+          'ch02',
+          '--mode',
+          'interactive',
+          ...UNDER_SDK_LIMIT,
+          ...flags,
+          ...keys.flatMap((k) => ['--request', k]),
+          '--yes',
+        ],
+        S.deps({ transport: mockTransport() })
+      )
+    ).results[0].runId;
+
+  it('runs at another --char-budget, with the same request keys and none in common', async () => {
+    const S = setup();
+    const base = await planOf(S);
+    const alt = await planOf(S, ['--char-budget', '12000']);
+    // The premise: the same keys, and a request that presents other segments at 12000.
+    expect(alt.map((q) => q.key)).toEqual(base.map((q) => q.key));
+    const i = alt.findIndex((q, j) => idsOf(q).join() !== idsOf(base[j]).join());
+    expect(i).toBeGreaterThanOrEqual(0);
+    const keys = base.map((q) => q.key);
+    // One request each, none in common: checkRuns refuses before coverage is measured.
+    const a = await runNamed(S, [keys[(i + 1) % keys.length]]);
+    const b = await runNamed(S, [keys[i]], ['--char-budget', '12000']);
+    await expect(
+      main(['apply', '--chapter', 'ch02', '--run', a, '--run', b], S.deps())
+    ).rejects.toThrow(/mixed-runs.*charBudget/);
+  });
+
+  it('a request that presents other segments than its plan cut, with every key covered', async () => {
+    const S = setup();
+    const keys = (await planOf(S)).map((q) => q.key);
+    const a = await runNamed(S, keys.slice(1));
+    const b = await runNamed(S, [keys[0]]);
+    // Control: the same split at one cut presents every segment once, and reads complete.
+    const ok = await main(['apply', '--chapter', 'ch02', '--run', a, '--run', b], S.deps());
+    expect(ok.result.coverage).toMatchObject({ complete: true, requestsUsable: keys.length });
+    // What a run cut by other code would hold: b's request presents one segment fewer.
+    const file = path.join(S.fx.records, 'runs', b, 'requests.jsonl');
+    const [first, ...rest] = fs.readFileSync(file, 'utf8').split('\n');
+    const req = JSON.parse(first);
+    const doc = JSON.parse(req.body.messages[0].content);
+    expect(doc.segments.length).toBeGreaterThan(1);
+    doc.segments.pop();
+    req.body.messages[0].content = JSON.stringify(doc);
+    fs.writeFileSync(file, [JSON.stringify(req), ...rest].join('\n'));
+    await expect(
+      main(['apply', '--chapter', 'ch02', '--run', a, '--run', b], S.deps())
+    ).rejects.toThrow(/stale-presented.*presented by no request/);
+  }, 120_000);
 });
 
 // The same findings at apply level (layer2-integrity: the parser-side pre-fail was unpinned

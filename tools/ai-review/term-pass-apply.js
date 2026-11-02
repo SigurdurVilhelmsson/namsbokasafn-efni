@@ -350,6 +350,24 @@ function checkRuns(runs, { chapterDir, prompt, rulingSet }) {
     if (termPass.params.userFormat !== first.termPass.params.userFormat) {
       throw refusal('mixed-runs', `${where}: user format differs from run ${first.runId}`);
     }
+    // How the chapter is cut into requests: equal keys do not mean equal requests (a key is a
+    // module's request number), and runs that share no key have no body compared at all, so
+    // runs cut differently could leave a segment that no chosen request presents.
+    for (const k of ['segmentsPerRequest', 'charBudget']) {
+      if (termPass.params[k] !== first.termPass.params[k]) {
+        throw refusal(
+          'mixed-runs',
+          `${where}: ${k} ${termPass.params[k]} differs from run ${first.runId}'s ` +
+            `${first.termPass.params[k]} (the runs cut the chapter into requests differently)`
+        );
+      }
+    }
+    if (!Number.isSafeInteger(termPass.workListCounts?.items)) {
+      throw refusal('bad-record', `${where}: ${TERM_PASS_RECORD} has no workListCounts.items`);
+    }
+    if (termPass.workListCounts.items !== first.termPass.workListCounts.items) {
+      throw refusal('mixed-runs', `${where}: its work list differs from run ${first.runId}'s`);
+    }
     const planned = termPass.plannedRequestKeys;
     if (
       !Array.isArray(planned) ||
@@ -469,6 +487,7 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
   const usableKeys = new Set(); // planned requests with a usable answer (isUsableParse)
   const unanswered = new Set(); // presented segment ids no usable answer reviewed
   const truncatedKeys = new Set(); // requests whose chosen answer was cut off at max_tokens
+  const presentedBy = new Map(); // segment id → the chosen request that presents it
 
   for (const req of pickResponses(runs)) {
     c.requests += 1;
@@ -516,6 +535,16 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
           );
         }
       }
+    }
+    for (const s of doc.segments) {
+      if (presentedBy.has(s.id)) {
+        throw refusal(
+          'stale-presented',
+          `segment ${s.id} is presented by request ${presentedBy.get(s.id)} and by request ` +
+            `${req.key}: the runs cut the chapter into requests differently`
+        );
+      }
+      presentedBy.set(s.id, req.key);
     }
     c.segmentsPresented += doc.segments.length;
     const base = { requestKey: req.key, runId: req.runId, module: stem };
@@ -689,6 +718,23 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
         }
       });
     }
+  }
+
+  // With every planned request chosen, the chosen requests must present exactly the work list
+  // the runs recorded. A difference means they were cut differently (by flags checkRuns
+  // compares, or by code that changed between the runs), and a segment no request showed the
+  // model would be written as reviewed.
+  const workListItems = runs[0].termPass.workListCounts.items;
+  if (c.requests === plannedKeys.length && presentedBy.size !== workListItems) {
+    throw refusal(
+      'stale-presented',
+      `the chosen requests present ${presentedBy.size} segments, and the chapter's work list ` +
+        `had ${workListItems} when it was run: ` +
+        (presentedBy.size < workListItems
+          ? 'a segment is presented by no request'
+          : 'they present segments outside it') +
+        ' (the runs cut the chapter into requests differently)'
+    );
   }
 
   const units = inputs.map((u) => {

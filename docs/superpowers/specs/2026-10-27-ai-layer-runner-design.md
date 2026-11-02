@@ -21,6 +21,13 @@
 > - **Unchanged, and the operator's trap:** each request's answer comes from the LAST run listed that has one, and a
 >   cut-off answer counts as one. A re-send is therefore listed last; listed first, it loses to the answer it was meant
 >   to replace. The partial-coverage refusal now says so, and a test pins both orders.
+> - **Added with `run --request`** (the branch's whole-branch review, 2026-11-02): runs must also agree on how the
+>   chapter is cut into requests (`segmentsPerRequest`, `charBudget`) and on the recorded work-list size (`mixed-runs`).
+>   When every planned request is chosen, the chosen requests must present exactly that work list, each segment once
+>   (`stale-presented`). **Why:** `--request` is the first way to send requests that are not a prefix of the plan, so
+>   two runs can share no request key, and then no request body is compared between them. Equal keys do not mean equal
+>   requests (a key is a module's request number), so runs cut differently could read complete while a segment no
+>   request showed the model was written as reviewed.
 > - **Not in this amendment:** a flag that sends named requests (`run --request`), a separate change with its own
 >   plan (`docs/superpowers/plans/2026-11-02-term-pass-request-flag.md`).
 
