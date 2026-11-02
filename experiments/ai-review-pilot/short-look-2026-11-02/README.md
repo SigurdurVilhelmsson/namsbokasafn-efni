@@ -18,6 +18,7 @@ Cost: USD 0. No API call; [USER]'s time only. Everything here was produced local
 | `items.json` | The 60 blind items. |
 | `build-page.mjs`, `page.html` | The review page built from `items.json`, published as a private artifact. |
 | `answers/verdicts/i01..i60.json` | [USER]'s saved verdicts and notes, read from the page's store. |
+| `answers/meta/review.json` | The page's completion record (complete, 60 of 60 saved, at 12:03:53Z), read from the same store. |
 | `unblind.mjs`, `unblinded.json` | Joins the verdicts to the key and applies the drop rule. Run from this folder; it reproduces `unblinded.json` byte for byte. |
 | `drop-set.mjs`, `drop-set.json` | The changes the drop removes, with the replay check (below). Usage: `node drop-set.mjs <repo> <out.json>`. |
 
@@ -54,7 +55,8 @@ Cost: USD 0. No API call; [USER]'s time only. Everything here was produced local
   neuter).
 - **[USER]'s rulings (2026-11-02):** (1) the three agreement verdicts stand; (2) agreement is
   dropped together with the term changes it follows, so that no editor is shown a term change with
-  a broken ending.
+  a broken ending, confirmed at the corrected cost below. Recorded in
+  `docs/decisions/2026-11-02-short-look-drops-agreement-with-its-term-groups.md`.
 
 ## The drop set (`drop-set.json`)
 
