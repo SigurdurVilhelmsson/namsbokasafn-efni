@@ -45,8 +45,8 @@ const UNDER_SDK_LIMIT = ['--max-tokens', '16000'];
 let clock = Date.parse('2026-10-27T10:00:00Z');
 const now = () => new Date((clock += 1000));
 
-function setup() {
-  const fx = makeTempRepo();
+function setup({ chapters } = {}) {
+  const fx = makeTempRepo({ chapters });
   const lines = [];
   const deps = (extra = {}) => ({
     repoRoot: fx.root,
@@ -1164,6 +1164,154 @@ describe('apply combines runs that differ only in max_tokens, the run listed las
     await expect(
       main(['apply', '--chapter', 'ch02', '--run', a, '--run', b], S.deps())
     ).rejects.toThrow(/bad-record.*max_tokens/);
+  });
+});
+
+// The 2026-11-01 full run left three answers apply cannot use, and the decision record
+// (docs/decisions/2026-11-01-full-run-truncation-and-unusable-answers.md) re-sends them
+// without re-running their chapters: run --request sends only the named requests.
+describe('run --request sends only the named requests', () => {
+  /** Each chapter's planned request keys, in plan order, from a free `plan`. */
+  const planKeys = async (S, chapters = ['ch02']) => {
+    const p = await main(
+      ['plan', ...chapters.flatMap((c) => ['--chapter', c]), ...UNDER_SDK_LIMIT],
+      S.deps()
+    );
+    return Object.fromEntries(p.rows.map((r) => [r.chapterDir, r.requests.map((q) => q.key)]));
+  };
+  const record = (S, runId, name) =>
+    JSON.parse(fs.readFileSync(path.join(S.fx.records, 'runs', runId, name), 'utf8'));
+  const interactive = ['run', '--chapter', 'ch02', '--mode', 'interactive', ...UNDER_SDK_LIMIT];
+
+  it('sends only the named requests, in plan order, and records them', async () => {
+    const S = setup();
+    const keys = (await planKeys(S)).ch02;
+    const t = mockTransport();
+    const r = await main(
+      [...interactive, '--request', keys[2], '--request', keys[0], '--yes'],
+      S.deps({ transport: t })
+    );
+    expect(r.exitCode).toBe(0);
+    expect(t.calls.send).toBe(2);
+    const runId = r.results[0].runId;
+    const tp = record(S, runId, TERM_PASS_RECORD);
+    expect(tp.requestKeys).toEqual([keys[0], keys[2]]);
+    expect(tp.plannedRequestKeys).toEqual(keys);
+    expect(tp.params.request).toEqual([keys[0], keys[2]]);
+    const dry = await main(['apply', '--chapter', 'ch02', '--run', runId], S.deps());
+    expect(dry.result.coverage.requestsUsable).toBe(2);
+    expect(dry.result.coverage.requestsMissing).toHaveLength(keys.length - 2);
+  });
+
+  it('control: without --request, params.request is null', async () => {
+    const S = setup();
+    const r = await main(
+      [...interactive, '--limit', '1', '--yes'],
+      S.deps({ transport: mockTransport() })
+    );
+    expect(record(S, r.results[0].runId, TERM_PASS_RECORD).params.request).toBeNull();
+  });
+
+  describe('refuses before anything is sent', () => {
+    let S;
+    let keys;
+    let t;
+    beforeAll(async () => {
+      S = setup();
+      keys = (await planKeys(S)).ch02;
+      t = mockTransport();
+    });
+    const refuses = async (args, re) => {
+      await expect(main([...args, '--yes'], S.deps({ transport: t }))).rejects.toThrow(re);
+      expect(t.calls.send).toBe(0);
+    };
+
+    it('--request with --limit', () =>
+      refuses(
+        [...interactive, '--request', keys[0], '--limit', '1'],
+        /bad-flag.*--request and --limit cannot be combined/
+      ));
+
+    it('--request with --all', () =>
+      refuses(
+        ['run', '--all', '--mode', 'interactive', ...UNDER_SDK_LIMIT, '--request', keys[0]],
+        /bad-flag.*--request needs --chapter, not --all/
+      ));
+
+    it('a key named twice', () =>
+      refuses(
+        [...interactive, '--request', keys[0], '--request', keys[0]],
+        /bad-flag.*is named twice/
+      ));
+
+    it('a key not in the plan', () =>
+      refuses([...interactive, '--request', 'ch02/m00000/999'], /bad-flag.*is not in ch02's plan/));
+
+    it('an unpadded key, which names no request', async () => {
+      const unpadded = keys[0].replace(/\/0*(\d+)$/, '/$1');
+      expect(unpadded).not.toBe(keys[0]);
+      await refuses([...interactive, '--request', unpadded], /bad-flag.*is not in ch02's plan/);
+    });
+  });
+
+  describe('refuses a key and a chapter that do not match, across two chapters', () => {
+    let S;
+    let keys;
+    let t;
+    beforeAll(async () => {
+      S = setup({ chapters: ['ch02', 'ch03'] });
+      keys = await planKeys(S, ['ch02', 'ch03']);
+      t = mockTransport();
+    });
+    const two = ['--mode', 'interactive', ...UNDER_SDK_LIMIT, '--yes'];
+
+    it('a key whose chapter is not among --chapter', async () => {
+      expect(keys.ch03.length).toBeGreaterThan(0);
+      await expect(
+        main(
+          ['run', '--chapter', 'ch02', '--request', keys.ch03[0], ...two],
+          S.deps({ transport: t })
+        )
+      ).rejects.toThrow(/bad-flag.*is not among --chapter/);
+      expect(t.calls.send).toBe(0);
+    });
+
+    it('a --chapter with no --request', async () => {
+      await expect(
+        main(
+          ['run', '--chapter', 'ch02', '--chapter', 'ch03', '--request', keys.ch02[0], ...two],
+          S.deps({ transport: t })
+        )
+      ).rejects.toThrow(/bad-flag.*--chapter ch03 has no --request/);
+      expect(t.calls.send).toBe(0);
+    });
+  });
+
+  it('a batch --request run whose polling stopped is resumed and judged against its own requests', async () => {
+    const S = setup();
+    const keys = (await planKeys(S)).ch02;
+    const t = mockTransport({ batchStates: ['in_progress', 'ended'] });
+    const extra = { transport: t, sleep: async () => {}, pollIntervalMs: 0 };
+    const r = await main(
+      [
+        'run',
+        '--chapter',
+        'ch02',
+        '--mode',
+        'batch',
+        '--max-polls',
+        '1',
+        '--request',
+        keys[0],
+        '--yes',
+      ],
+      S.deps(extra)
+    );
+    expect(r.results[0].status).toBe('pending');
+    const runId = r.results[0].runId;
+    const res = await main(['resume', '--run', runId], S.deps(extra));
+    expect(res).toMatchObject({ status: 'complete', exitCode: 0 });
+    expect(record(S, runId, 'run.json').requestCount).toBe(1);
   });
 });
 
