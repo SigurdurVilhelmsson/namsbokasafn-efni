@@ -5,6 +5,32 @@
 > If this file disagrees with the register, the register wins. If it disagrees with the code and its tests,
 > the code wins.
 
+> **✏️ AMENDED 2026-11-02: runs at different `max_tokens` are applied together** ([USER] 2026-11-02). It overrides
+> the remedy in the 2026-10-27 (evening) block below: "re-run the whole chapter and apply that run alone (runs with
+> different `max_tokens` cannot be applied together)".
+>
+> - **Why:** `max_tokens` is a limit the model does not see. An answer that finishes under both limits is the same
+>   answer, and one cut off at the lower limit is not usable anyway
+>   (`docs/decisions/2026-11-01-full-run-truncation-and-unusable-answers.md`). [USER] chose to keep ch07's 49 usable
+>   answers from the full run (at 32,000) and re-send only its two cut-off requests at 64,000, over re-running the
+>   whole chapter.
+> - **What changed in `apply`:** `checkRuns` no longer compares `max_tokens`. Model, effort, SDK, layer-1 commit, user
+>   format, plan and `anthropic-version` must still agree. The per-request body check ignores `max_tokens` and nothing
+>   else, and refuses (`bad-record`) a body whose `max_tokens` is not its run's. The summary (`ai-review-apply/3`)
+>   records `maxTokensByRun`, and `maxTokens` is null when the runs differ.
+> - **Unchanged, and the operator's trap:** each request's answer comes from the LAST run listed that has one, and a
+>   cut-off answer counts as one. A re-send is therefore listed last; listed first, it loses to the answer it was meant
+>   to replace. The partial-coverage refusal now says so, and a test pins both orders.
+> - **Added with `run --request`** (the branch's whole-branch review, 2026-11-02): runs must also agree on how the
+>   chapter is cut into requests (`segmentsPerRequest`, `charBudget`) and on the recorded work-list size (`mixed-runs`).
+>   When every planned request is chosen, the chosen requests must present exactly that work list, each segment once
+>   (`stale-presented`). **Why:** `--request` is the first way to send requests that are not a prefix of the plan, so
+>   two runs can share no request key, and then no request body is compared between them. Equal keys do not mean equal
+>   requests (a key is a module's request number), so runs cut differently could read complete while a segment no
+>   request showed the model was written as reviewed.
+> - **Not in this amendment:** a flag that sends named requests (`run --request`), a separate change with its own
+>   plan (`docs/superpowers/plans/2026-11-02-term-pass-request-flag.md`).
+
 > **✏️ AMENDED 2026-10-30: the leftover-form check (pilot item i02).** It adds to the 2026-10-29 block, which
 > left the check out.
 >

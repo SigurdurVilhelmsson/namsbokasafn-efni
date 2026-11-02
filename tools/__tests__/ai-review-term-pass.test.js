@@ -19,7 +19,7 @@ import {
 import { TERM_PASS_RECORD } from '../ai-review/term-pass-apply.js';
 import { listChapterUnits, verifyRevision } from '../lib/mt-layers.js';
 import { makeGit } from '../ai-review/provenance.js';
-import { loadPrompt, PROMPT_PATH } from '../ai-review/term-pass-request.js';
+import { loadPrompt, PROMPT_PATH, parseUserMessage } from '../ai-review/term-pass-request.js';
 import { loadRulingSet } from '../ai-review/ruling-set.js';
 import { readLedger, reserve, summarizeLedger } from '../ai-review/ledger.js';
 import {
@@ -45,8 +45,8 @@ const UNDER_SDK_LIMIT = ['--max-tokens', '16000'];
 let clock = Date.parse('2026-10-27T10:00:00Z');
 const now = () => new Date((clock += 1000));
 
-function setup() {
-  const fx = makeTempRepo();
+function setup({ chapters } = {}) {
+  const fx = makeTempRepo({ chapters });
   const lines = [];
   const deps = (extra = {}) => ({
     repoRoot: fx.root,
@@ -617,7 +617,7 @@ describe('apply flags an old form left after an accepted fix, and changes nothin
     const a = await main(['apply', '--chapter', 'ch02', '--run', runId], S.deps());
     expect(a.result.leftovers).toEqual([]);
     expect(a.result.counts.leftovers).toBe(0);
-    expect(a.result.summary.schema).toBe('ai-review-apply/2');
+    expect(a.result.summary.schema).toBe('ai-review-apply/3');
   });
 
   it('flags the use the answer left, naming the ruling and the word', async () => {
@@ -1058,6 +1058,403 @@ describe('apply measures coverage against the full plan, and --write refuses a p
   });
 });
 
+// [USER] 2026-11-02: a re-send at a higher max_tokens is applied together with the run it
+// repairs (ch07's two cut-off answers, re-sent at 64,000 beside its 49 answers at 32,000).
+// max_tokens is a limit the model does not see, so it, and nothing else, may differ.
+describe('apply combines runs that differ only in max_tokens, the run listed last winning', () => {
+  const RAISED = ['--max-tokens', '20000']; // higher, and still under the SDK's non-streaming limit
+  const truncatingFirst = () => {
+    const t = mockTransport();
+    const send = t.send;
+    t.send = async (body) => {
+      if (t.calls.send === 0) {
+        t.calls.send += 1;
+        return messageFor(scriptedAnswer(body), { stopReason: 'max_tokens' });
+      }
+      return send(body);
+    };
+    return t;
+  };
+  const runWith = async (S, flags, transport = mockTransport()) =>
+    (
+      await main(
+        ['run', '--chapter', 'ch02', '--mode', 'interactive', ...flags, '--yes'],
+        S.deps({ transport })
+      )
+    ).results[0].runId;
+  const recordOf = (S, runId, name) => path.join(S.fx.records, 'runs', runId, name);
+  /** A cut-off run, then a re-send of only its cut-off request at a higher limit. */
+  async function cutOffThenResend(S) {
+    const a = await runWith(S, UNDER_SDK_LIMIT, truncatingFirst());
+    const b = await runWith(S, [...RAISED, '--limit', '1']);
+    const alone = await main(['apply', '--chapter', 'ch02', '--run', a], S.deps());
+    const resent = JSON.parse(fs.readFileSync(recordOf(S, b, TERM_PASS_RECORD), 'utf8'));
+    // The re-send must carry exactly the request the first run lost, or this tests nothing.
+    expect(alone.result.coverage.requestsMissing).toEqual(resent.requestKeys);
+    return { a, b };
+  }
+
+  it('writes a complete chapter from a cut-off run and a re-send at a higher limit', async () => {
+    const S = setup();
+    const { a, b } = await cutOffThenResend(S);
+    const w = await main(
+      ['apply', '--chapter', 'ch02', '--run', a, '--run', b, '--write'],
+      S.deps()
+    );
+    expect(w.result.coverage).toMatchObject({ complete: true, requestsTruncated: 0 });
+    const summary = JSON.parse(
+      fs.readFileSync(path.join(S.fx.book, 'ai-review', 'applied', 'ch02', 'apply.json'), 'utf8')
+    );
+    expect(summary).toMatchObject({
+      schema: 'ai-review-apply/3',
+      maxTokens: null,
+      maxTokensByRun: { [a]: 16000, [b]: 20000 },
+    });
+  });
+
+  it('control: listed first, the re-send loses to the cut-off answer, which still counts', async () => {
+    const S = setup();
+    const { a, b } = await cutOffThenResend(S);
+    const d = await main(['apply', '--chapter', 'ch02', '--run', b, '--run', a], S.deps());
+    expect(d.result.coverage).toMatchObject({ complete: false, requestsTruncated: 1 });
+  });
+
+  it('control: runs at one limit record it as maxTokens, and per run', async () => {
+    const S = setup();
+    const a = await runWith(S, UNDER_SDK_LIMIT);
+    const d = await main(['apply', '--chapter', 'ch02', '--run', a], S.deps());
+    expect(d.result.summary).toMatchObject({ maxTokens: 16000, maxTokensByRun: { [a]: 16000 } });
+  });
+
+  it('control: runs that differ in effort still refuse', async () => {
+    const S = setup();
+    const a = await runWith(S, [...UNDER_SDK_LIMIT, '--effort', 'high']);
+    const b = await runWith(S, [...UNDER_SDK_LIMIT, '--effort', 'xhigh']);
+    await expect(
+      main(['apply', '--chapter', 'ch02', '--run', a, '--run', b], S.deps())
+    ).rejects.toThrow(/mixed-runs.*effort/);
+  });
+
+  /** Rewrite the first request line of a run's requests.jsonl. */
+  function editFirstRequest(S, runId, edit) {
+    const f = recordOf(S, runId, 'requests.jsonl');
+    const [first, ...rest] = fs.readFileSync(f, 'utf8').split('\n');
+    const line = JSON.parse(first);
+    edit(line.body);
+    fs.writeFileSync(f, [JSON.stringify(line), ...rest].join('\n'));
+  }
+
+  it('refuses a re-sent request whose body differs in anything besides max_tokens', async () => {
+    const S = setup();
+    const { a, b } = await cutOffThenResend(S);
+    editFirstRequest(S, b, (body) => {
+      body.temperature = 0.5;
+    });
+    await expect(
+      main(['apply', '--chapter', 'ch02', '--run', a, '--run', b], S.deps())
+    ).rejects.toThrow(/mixed-runs.*differs between run/);
+  });
+
+  it('refuses a request whose max_tokens is not its run’s', async () => {
+    const S = setup();
+    const { a, b } = await cutOffThenResend(S);
+    editFirstRequest(S, b, (body) => {
+      body.max_tokens = 99999;
+    });
+    await expect(
+      main(['apply', '--chapter', 'ch02', '--run', a, '--run', b], S.deps())
+    ).rejects.toThrow(/bad-record.*max_tokens/);
+  });
+});
+
+// The 2026-11-01 full run left three answers apply cannot use, and the decision record
+// (docs/decisions/2026-11-01-full-run-truncation-and-unusable-answers.md) re-sends them
+// without re-running their chapters: run --request sends only the named requests.
+describe('run --request sends only the named requests', () => {
+  /** Each chapter's planned request keys, in plan order, from a free `plan`. */
+  const planKeys = async (S, chapters = ['ch02']) => {
+    const p = await main(
+      ['plan', ...chapters.flatMap((c) => ['--chapter', c]), ...UNDER_SDK_LIMIT],
+      S.deps()
+    );
+    return Object.fromEntries(p.rows.map((r) => [r.chapterDir, r.requests.map((q) => q.key)]));
+  };
+  const record = (S, runId, name) =>
+    JSON.parse(fs.readFileSync(path.join(S.fx.records, 'runs', runId, name), 'utf8'));
+  const interactive = ['run', '--chapter', 'ch02', '--mode', 'interactive', ...UNDER_SDK_LIMIT];
+
+  it('sends only the named requests, in plan order, and records them', async () => {
+    const S = setup();
+    const keys = (await planKeys(S)).ch02;
+    const t = mockTransport();
+    const r = await main(
+      [...interactive, '--request', keys[2], '--request', keys[0], '--yes'],
+      S.deps({ transport: t })
+    );
+    expect(r.exitCode).toBe(0);
+    expect(t.calls.send).toBe(2);
+    const runId = r.results[0].runId;
+    const tp = record(S, runId, TERM_PASS_RECORD);
+    expect(tp.requestKeys).toEqual([keys[0], keys[2]]);
+    expect(tp.plannedRequestKeys).toEqual(keys);
+    expect(tp.params.request).toEqual([keys[0], keys[2]]);
+    const dry = await main(['apply', '--chapter', 'ch02', '--run', runId], S.deps());
+    expect(dry.result.coverage.requestsUsable).toBe(2);
+    expect(dry.result.coverage.requestsMissing).toHaveLength(keys.length - 2);
+  });
+
+  it("without --yes, a --request run prints the named requests' worst case and sends nothing", async () => {
+    const S = setup();
+    const p = await main(['plan', '--chapter', 'ch02', ...UNDER_SDK_LIMIT], S.deps());
+    const keys = p.rows[0].requests.map((q) => q.key);
+    const whole = p.rows[0].estimate.worstCaseUsd;
+    const t = mockTransport();
+    const r = await main([...interactive, '--request', keys[0]], S.deps({ transport: t }));
+    expect(r.sent).toBe(false);
+    expect(t.calls.send).toBe(0);
+    const m = S.lines
+      .join('')
+      .match(
+        new RegExp(
+          `sending 1 of ${keys.length} planned requests of ch02 \\(--request\\): ` +
+            'worst case USD ([\\d.]+) interactive / ([\\d.]+) batch'
+        )
+      );
+    expect(m).not.toBeNull();
+    // One request of the chapter's plan, not the whole chapter.
+    expect(Number(m[1])).toBeLessThan(whole.interactive);
+    expect(Number(m[2])).toBeLessThan(whole.batch);
+  });
+
+  // The whole-branch review (2026-11-02, Fable, Important): the whole-chapter TOTAL printed
+  // first and read as a cap alarm (USD 105 against a cap of 100) on a USD 2 re-send.
+  it('without --yes, a two-chapter --request run totals what it would send, after the whole-chapter table', async () => {
+    const S = setup({ chapters: ['ch02', 'ch03'] });
+    const keys = await planKeys(S, ['ch02', 'ch03']);
+    S.lines.length = 0; // only the run's output below, not the plan call's
+    const r = await main(
+      [
+        'run',
+        '--chapter',
+        'ch02',
+        '--chapter',
+        'ch03',
+        '--mode',
+        'interactive',
+        ...UNDER_SDK_LIMIT,
+        '--request',
+        keys.ch02[0],
+        '--request',
+        keys.ch03[0],
+      ],
+      S.deps({ transport: mockTransport() })
+    );
+    expect(r.sent).toBe(false);
+    const out = S.lines.join('');
+    const per = [
+      ...out.matchAll(/\(--request\): worst case USD ([\d.]+) interactive \/ ([\d.]+) batch/g),
+    ];
+    expect(per).toHaveLength(2);
+    const total = out.match(
+      new RegExp(
+        `TOTAL \\(--request\\): sending 2 of ${keys.ch02.length + keys.ch03.length} planned ` +
+          'requests: worst case USD ([\\d.]+) interactive / ([\\d.]+) batch'
+      )
+    );
+    expect(total).not.toBeNull();
+    const sum = (k) => Math.round((Number(per[0][k]) + Number(per[1][k])) * 100) / 100;
+    expect(Number(total[1])).toBe(sum(1));
+    expect(Number(total[2])).toBe(sum(2));
+    // The whole-chapter TOTAL says what it prices, and no longer claims a batch reserves it.
+    const whole = out.split('\n').find((l) => l.startsWith('TOTAL  '));
+    expect(whole).toMatch(/whole chapters, not what this run sends/);
+    expect(whole).not.toMatch(/a batch reserves its whole worst case/);
+    expect(out.indexOf('TOTAL (--request)')).toBeGreaterThan(out.indexOf(whole));
+    // Control: without --request the whole-chapter TOTAL keeps its cap note.
+    S.lines.length = 0;
+    await main(['plan', '--chapter', 'ch02', ...UNDER_SDK_LIMIT], S.deps());
+    expect(S.lines.join('')).toMatch(/TOTAL .*a batch reserves its whole worst case/);
+  }, 120_000);
+
+  it('control: without --request, params.request is null', async () => {
+    const S = setup();
+    const r = await main(
+      [...interactive, '--limit', '1', '--yes'],
+      S.deps({ transport: mockTransport() })
+    );
+    expect(record(S, r.results[0].runId, TERM_PASS_RECORD).params.request).toBeNull();
+  });
+
+  describe('refuses before anything is sent', () => {
+    let S;
+    let keys;
+    let t;
+    beforeAll(async () => {
+      S = setup();
+      keys = (await planKeys(S)).ch02;
+      t = mockTransport();
+    }, 120_000);
+    const refuses = async (args, re) => {
+      await expect(main([...args, '--yes'], S.deps({ transport: t }))).rejects.toThrow(re);
+      expect(t.calls.send).toBe(0);
+    };
+
+    it('--request with --limit', () =>
+      refuses(
+        [...interactive, '--request', keys[0], '--limit', '1'],
+        /bad-flag.*--request and --limit cannot be combined/
+      ));
+
+    it('--request with --all', () =>
+      refuses(
+        ['run', '--all', '--mode', 'interactive', ...UNDER_SDK_LIMIT, '--request', keys[0]],
+        /bad-flag.*--request needs --chapter, not --all/
+      ));
+
+    it('a key named twice', () =>
+      refuses(
+        [...interactive, '--request', keys[0], '--request', keys[0]],
+        /bad-flag.*is named twice/
+      ));
+
+    it('a key not in the plan', () =>
+      refuses([...interactive, '--request', 'ch02/m00000/999'], /bad-flag.*is not in ch02's plan/));
+
+    it('an unpadded key, which names no request', async () => {
+      const unpadded = keys[0].replace(/\/0*(\d+)$/, '/$1');
+      expect(unpadded).not.toBe(keys[0]);
+      await refuses([...interactive, '--request', unpadded], /bad-flag.*is not in ch02's plan/);
+    });
+  });
+
+  describe('refuses a key and a chapter that do not match, across two chapters', () => {
+    let S;
+    let keys;
+    let t;
+    beforeAll(async () => {
+      S = setup({ chapters: ['ch02', 'ch03'] });
+      keys = await planKeys(S, ['ch02', 'ch03']);
+      t = mockTransport();
+    }, 120_000);
+    const two = ['--mode', 'interactive', ...UNDER_SDK_LIMIT, '--yes'];
+
+    it('a key whose chapter is not among --chapter', async () => {
+      expect(keys.ch03.length).toBeGreaterThan(0);
+      await expect(
+        main(
+          ['run', '--chapter', 'ch02', '--request', keys.ch03[0], ...two],
+          S.deps({ transport: t })
+        )
+      ).rejects.toThrow(/bad-flag.*is not among --chapter/);
+      expect(t.calls.send).toBe(0);
+    });
+
+    it('a --chapter with no --request', async () => {
+      await expect(
+        main(
+          ['run', '--chapter', 'ch02', '--chapter', 'ch03', '--request', keys.ch02[0], ...two],
+          S.deps({ transport: t })
+        )
+      ).rejects.toThrow(/bad-flag.*--chapter ch03 has no --request/);
+      expect(t.calls.send).toBe(0);
+    });
+  });
+
+  it('a batch --request run whose polling stopped is resumed and judged against its own requests', async () => {
+    const S = setup();
+    const keys = (await planKeys(S)).ch02;
+    const t = mockTransport({ batchStates: ['in_progress', 'ended'] });
+    const extra = { transport: t, sleep: async () => {}, pollIntervalMs: 0 };
+    const r = await main(
+      [
+        'run',
+        '--chapter',
+        'ch02',
+        '--mode',
+        'batch',
+        '--max-polls',
+        '1',
+        '--request',
+        keys[0],
+        '--yes',
+      ],
+      S.deps(extra)
+    );
+    expect(r.results[0].status).toBe('pending');
+    const runId = r.results[0].runId;
+    const res = await main(['resume', '--run', runId], S.deps(extra));
+    expect(res).toMatchObject({ status: 'complete', exitCode: 0 });
+    expect(record(S, runId, 'run.json').requestCount).toBe(1);
+  });
+});
+
+// The whole-branch review of --request (2026-11-02, Opus, Important): --request is the first
+// selector that is not a prefix of the plan, so two runs can share no request key, and then no
+// request body is compared between them. Runs that cut the chapter into requests differently
+// could be applied together and read complete with a segment no request presented.
+describe('apply refuses runs that cut the chapter into requests differently', () => {
+  const planOf = async (S, flags = []) =>
+    (await main(['plan', '--chapter', 'ch02', ...UNDER_SDK_LIMIT, ...flags], S.deps())).rows[0]
+      .requests;
+  const idsOf = (q) => parseUserMessage(q.body.messages[0].content).segments.map((x) => x.id);
+  const runNamed = async (S, keys, flags = []) =>
+    (
+      await main(
+        [
+          'run',
+          '--chapter',
+          'ch02',
+          '--mode',
+          'interactive',
+          ...UNDER_SDK_LIMIT,
+          ...flags,
+          ...keys.flatMap((k) => ['--request', k]),
+          '--yes',
+        ],
+        S.deps({ transport: mockTransport() })
+      )
+    ).results[0].runId;
+
+  it('runs at another --char-budget, with the same request keys and none in common', async () => {
+    const S = setup();
+    const base = await planOf(S);
+    const alt = await planOf(S, ['--char-budget', '12000']);
+    // The premise: the same keys, and a request that presents other segments at 12000.
+    expect(alt.map((q) => q.key)).toEqual(base.map((q) => q.key));
+    const i = alt.findIndex((q, j) => idsOf(q).join() !== idsOf(base[j]).join());
+    expect(i).toBeGreaterThanOrEqual(0);
+    const keys = base.map((q) => q.key);
+    // One request each, none in common: checkRuns refuses before coverage is measured.
+    const a = await runNamed(S, [keys[(i + 1) % keys.length]]);
+    const b = await runNamed(S, [keys[i]], ['--char-budget', '12000']);
+    await expect(
+      main(['apply', '--chapter', 'ch02', '--run', a, '--run', b], S.deps())
+    ).rejects.toThrow(/mixed-runs.*charBudget/);
+  });
+
+  it('a request that presents other segments than its plan cut, with every key covered', async () => {
+    const S = setup();
+    const keys = (await planOf(S)).map((q) => q.key);
+    const a = await runNamed(S, keys.slice(1));
+    const b = await runNamed(S, [keys[0]]);
+    // Control: the same split at one cut presents every segment once, and reads complete.
+    const ok = await main(['apply', '--chapter', 'ch02', '--run', a, '--run', b], S.deps());
+    expect(ok.result.coverage).toMatchObject({ complete: true, requestsUsable: keys.length });
+    // What a run cut by other code would hold: b's request presents one segment fewer.
+    const file = path.join(S.fx.records, 'runs', b, 'requests.jsonl');
+    const [first, ...rest] = fs.readFileSync(file, 'utf8').split('\n');
+    const req = JSON.parse(first);
+    const doc = JSON.parse(req.body.messages[0].content);
+    expect(doc.segments.length).toBeGreaterThan(1);
+    doc.segments.pop();
+    req.body.messages[0].content = JSON.stringify(doc);
+    fs.writeFileSync(file, [JSON.stringify(req), ...rest].join('\n'));
+    await expect(
+      main(['apply', '--chapter', 'ch02', '--run', a, '--run', b], S.deps())
+    ).rejects.toThrow(/stale-presented.*presented by no request/);
+  }, 120_000);
+});
+
 // The same findings at apply level (layer2-integrity: the parser-side pre-fail was unpinned
 // there too): through the CLI, with the real parser, gate and change records.
 describe('apply withdraws a ruling the model flagged, and one whose op the parser converted', () => {
@@ -1262,11 +1659,11 @@ describe('usable means every presented segment answered, in apply and in run ali
     );
     await expect(
       main(['apply', '--chapter', 'ch02', '--run', r.results[0].runId, '--write'], S.deps())
-    ).rejects.toThrow(/max-tokens.*apply that run alone/);
+    ).rejects.toThrow(/--request.*--max-tokens.*listed last/);
     const { S: S2, runId } = await ch02Run(() => ({ segments: [] }));
     await expect(
       main(['apply', '--chapter', 'ch02', '--run', runId, '--write'], S2.deps())
-    ).rejects.toThrow(/apply the runs together/);
+    ).rejects.toThrow(/--request.*apply the runs together/);
   });
 });
 
