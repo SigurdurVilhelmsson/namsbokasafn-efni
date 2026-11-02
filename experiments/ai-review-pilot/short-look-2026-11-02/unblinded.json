@@ -1,0 +1,640 @@
+{
+  "rule": "drop on any wrong-changed or >=2 wrong per category",
+  "summary": {
+    "term-sense": {
+      "total": 20,
+      "right": 19,
+      "wrongKept": 1,
+      "wrongChanged": 0,
+      "cantJudge": 0,
+      "open": 0,
+      "wrong": 1,
+      "drop": false,
+      "reason": null
+    },
+    "agreement": {
+      "total": 20,
+      "right": 17,
+      "wrongKept": 2,
+      "wrongChanged": 1,
+      "cantJudge": 0,
+      "open": 0,
+      "wrong": 3,
+      "drop": true,
+      "reason": "a wrong-changed"
+    },
+    "term": {
+      "total": 20,
+      "right": 20,
+      "wrongKept": 0,
+      "wrongChanged": 0,
+      "cantJudge": 0,
+      "open": 0,
+      "wrong": 0,
+      "drop": false,
+      "reason": null
+    }
+  },
+  "rows": [
+    {
+      "id": "i01",
+      "opId": "ch09/m68752/001.op4",
+      "chapter": "ch09",
+      "segmentId": "m68752:para:fs-idm31863392",
+      "segmentType": "para",
+      "category": "term-sense",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i02",
+      "opId": "ch07/m68740/002.op6",
+      "chapter": "ch07",
+      "segmentId": "m68740:item:fs-idm30182496-item-3",
+      "segmentType": "item",
+      "category": "agreement",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i03",
+      "opId": "ch04/m68710/009.op8",
+      "chapter": "ch04",
+      "segmentId": "m68710:glossary-def:fs-idp55089136-def",
+      "segmentType": "glossary-def",
+      "category": "term",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i04",
+      "opId": "ch05/m68727/010.op2",
+      "chapter": "ch05",
+      "segmentId": "m68727:problem:fs-idp165246960",
+      "segmentType": "problem",
+      "category": "term-sense",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i05",
+      "opId": "ch04/m68713/003.op9",
+      "chapter": "ch04",
+      "segmentId": "m68713:glossary-term:fs-idp127462672-term",
+      "segmentType": "glossary-term",
+      "category": "term-sense",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i06",
+      "opId": "ch12/m68793/004.op2",
+      "chapter": "ch12",
+      "segmentId": "m68793:problem:fs-idm1605904",
+      "segmentType": "problem",
+      "category": "term",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i07",
+      "opId": "ch08/m68747/004.op16",
+      "chapter": "ch08",
+      "segmentId": "m68747:para:fs-idm72448704",
+      "segmentType": "para",
+      "category": "agreement",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i08",
+      "opId": "ch18/m68831/007.op2",
+      "chapter": "ch18",
+      "segmentId": "m68831:glossary-term:fs-idp17081184-term",
+      "segmentType": "glossary-term",
+      "category": "term",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i09",
+      "opId": "ch04/m68716/003.op2",
+      "chapter": "ch04",
+      "segmentId": "m68716:para:fs-idp91356704",
+      "segmentType": "para",
+      "category": "term",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i10",
+      "opId": "ch11/m68783/010.op7",
+      "chapter": "ch11",
+      "segmentId": "m68783:caption:CNX_Chem_11_04_rvosmosis-caption",
+      "segmentType": "caption",
+      "category": "term",
+      "choice": "right",
+      "note": "\"Leysisameindum úr lausninni\" should preferably be \"Sameindum leysisins í lausninni\", although that is outside the scope of this particular judgement."
+    },
+    {
+      "id": "i11",
+      "opId": "ch11/m68784/001.op8",
+      "chapter": "ch11",
+      "segmentId": "m68784:para:fs-idm25079776",
+      "segmentType": "para",
+      "category": "term",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i12",
+      "opId": "ch19/m68842/001.op6",
+      "chapter": "ch19",
+      "segmentId": "m68842:caption:CNX_Chem_19_01_PeriodicEConfig-caption",
+      "segmentType": "caption",
+      "category": "term-sense",
+      "choice": "right",
+      "note": "Transition metals should be translated as \"Hliðarmálmar\" ekki \"Hliðarfrumefni\"."
+    },
+    {
+      "id": "i13",
+      "opId": "ch09/m68752/004.op4",
+      "chapter": "ch09",
+      "segmentId": "m68752:title:fs-idp132626656-title",
+      "segmentType": "title",
+      "category": "term-sense",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i14",
+      "opId": "ch01/m68674/001.op6",
+      "chapter": "ch01",
+      "segmentId": "m68674:para:fs-idp3379184",
+      "segmentType": "para",
+      "category": "term",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i15",
+      "opId": "ch17/m68827/004.op3",
+      "chapter": "ch17",
+      "segmentId": "m68827:problem:fs-idp7133216",
+      "segmentType": "problem",
+      "category": "agreement",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i16",
+      "opId": "ch05/m68727/003.op1",
+      "chapter": "ch05",
+      "segmentId": "m68727:para:fs-idm14305808",
+      "segmentType": "para",
+      "category": "term-sense",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i17",
+      "opId": "ch20/m68846/003.op3",
+      "chapter": "ch20",
+      "segmentId": "m68846:title:fs-idp52681872-title",
+      "segmentType": "title",
+      "category": "agreement",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i18",
+      "opId": "ch07/m68742/006.op4",
+      "chapter": "ch07",
+      "segmentId": "m68742:example-title:fs-idm16663792-title",
+      "segmentType": "example-title",
+      "category": "term",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i19",
+      "opId": "ch09/m68758/001.op8",
+      "chapter": "ch09",
+      "segmentId": "m68758:alt:fs-idm82315616-alt",
+      "segmentType": "alt",
+      "category": "agreement",
+      "choice": "wrong-kept",
+      "note": "\"Hitastig hækkað\" would be more correct."
+    },
+    {
+      "id": "i20",
+      "opId": "ch18/m68830/002.op15",
+      "chapter": "ch18",
+      "segmentId": "m68830:alt:fs-idp293911136-alt",
+      "segmentType": "alt",
+      "category": "term",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i21",
+      "opId": "ch02/m68693/004.op2",
+      "chapter": "ch02",
+      "segmentId": "m68693:glossary-term:fs-idp1084128-term",
+      "segmentType": "glossary-term",
+      "category": "term",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i22",
+      "opId": "ch06/m68729/002.op20",
+      "chapter": "ch06",
+      "segmentId": "m68729:para:fs-idm64346880",
+      "segmentType": "para",
+      "category": "agreement",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i23",
+      "opId": "ch05/m68724/007.op3",
+      "chapter": "ch05",
+      "segmentId": "m68724:alt:fs-idm14724048-alt",
+      "segmentType": "alt",
+      "category": "term-sense",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i24",
+      "opId": "ch11/m68782/003.op6",
+      "chapter": "ch11",
+      "segmentId": "m68782:caption:CNX_Chem_11_03_handwarmer-caption",
+      "segmentType": "caption",
+      "category": "term-sense",
+      "choice": "wrong-kept",
+      "note": "Although the translation is correct, and fits the source, I would write \"Þessi handhitapoki losar varma\" as it releases heat but doesn't really produce it. This would most likely be changed in human editing though."
+    },
+    {
+      "id": "i25",
+      "opId": "ch05/m68726/006.op1",
+      "chapter": "ch05",
+      "segmentId": "m68726:note-title:fs-idm9530672-title",
+      "segmentType": "note-title",
+      "category": "term",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i26",
+      "opId": "ch05/m68727/007.op3",
+      "chapter": "ch05",
+      "segmentId": "m68727:problem:fs-idp161292160",
+      "segmentType": "problem",
+      "category": "term-sense",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i27",
+      "opId": "ch20/m68846/008.op2",
+      "chapter": "ch20",
+      "segmentId": "m68846:alt:fs-idp53238032-alt",
+      "segmentType": "alt",
+      "category": "agreement",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i28",
+      "opId": "appendices/m68871/001.op2",
+      "chapter": "appendices",
+      "segmentId": "m68871:table-summary:fs-idp343615296-summary",
+      "segmentType": "table-summary",
+      "category": "term",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i29",
+      "opId": "ch07/m68739/011.op3",
+      "chapter": "ch07",
+      "segmentId": "m68739:alt:fs-idp792848-alt",
+      "segmentType": "alt",
+      "category": "term",
+      "choice": "right",
+      "note": "This particular change is correct, but the sentence still contains \"frumeind\" instead of \"atóm."
+    },
+    {
+      "id": "i30",
+      "opId": "ch21/m68858/004.op3",
+      "chapter": "ch21",
+      "segmentId": "m68858:solution:fs-idp58420992",
+      "segmentType": "solution",
+      "category": "term",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i31",
+      "opId": "ch11/m68783/013.op9",
+      "chapter": "ch11",
+      "segmentId": "m68783:entry:auto-262",
+      "segmentType": "entry",
+      "category": "term",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i32",
+      "opId": "ch05/m68724/001.op1",
+      "chapter": "ch05",
+      "segmentId": "m68724:abstract-item:abstract-item-2",
+      "segmentType": "abstract-item",
+      "category": "term-sense",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i33",
+      "opId": "ch02/m68695/003.op4",
+      "chapter": "ch02",
+      "segmentId": "m68695:para:fs-idm293266416",
+      "segmentType": "para",
+      "category": "term-sense",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i34",
+      "opId": "ch08/m68746/002.op4",
+      "chapter": "ch08",
+      "segmentId": "m68746:caption:CNX_Chem_08_03_C6H6-caption",
+      "segmentType": "caption",
+      "category": "agreement",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i35",
+      "opId": "ch08/m68747/005.op10",
+      "chapter": "ch08",
+      "segmentId": "m68747:para:fs-idm113916160",
+      "segmentType": "para",
+      "category": "agreement",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i36",
+      "opId": "ch19/m68842/001.op4",
+      "chapter": "ch19",
+      "segmentId": "m68842:para:fs-idm272953936",
+      "segmentType": "para",
+      "category": "term-sense",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i37",
+      "opId": "ch02/m68692/002.op9",
+      "chapter": "ch02",
+      "segmentId": "m68692:example-title:fs-idm233489360-title",
+      "segmentType": "example-title",
+      "category": "agreement",
+      "choice": "wrong-kept",
+      "note": "This is repetitive. \"fjöldahlutfalli\" would be enough. An extra \"hlutfallslegu\" is not necessary."
+    },
+    {
+      "id": "i38",
+      "opId": "ch07/m68740/002.op5",
+      "chapter": "ch07",
+      "segmentId": "m68740:item:fs-idm30182496-item-3",
+      "segmentType": "item",
+      "category": "term",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i39",
+      "opId": "ch05/m68724/005.op1",
+      "chapter": "ch05",
+      "segmentId": "m68724:example-title:fs-idp1783792-title",
+      "segmentType": "example-title",
+      "category": "term-sense",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i40",
+      "opId": "ch11/m68783/010.op9",
+      "chapter": "ch11",
+      "segmentId": "m68783:note-title:fs-idm17300528-title",
+      "segmentType": "note-title",
+      "category": "agreement",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i41",
+      "opId": "ch08/m68745/006.op7",
+      "chapter": "ch08",
+      "segmentId": "m68745:solution:fs-idp50482432",
+      "segmentType": "solution",
+      "category": "term-sense",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i42",
+      "opId": "ch01/m68664/001.op5",
+      "chapter": "ch01",
+      "segmentId": "m68664:problem:fs-idm59206592",
+      "segmentType": "problem",
+      "category": "agreement",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i43",
+      "opId": "ch11/m68784/001.op23",
+      "chapter": "ch11",
+      "segmentId": "m68784:table-summary:fs-idm28163488-summary",
+      "segmentType": "table-summary",
+      "category": "agreement",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i44",
+      "opId": "ch05/m68724/007.op8",
+      "chapter": "ch05",
+      "segmentId": "m68724:solution:fs-idm40947104",
+      "segmentType": "solution",
+      "category": "term-sense",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i45",
+      "opId": "ch04/m68714/002.op16",
+      "chapter": "ch04",
+      "segmentId": "m68714:para:fs-idp59920960",
+      "segmentType": "para",
+      "category": "agreement",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i46",
+      "opId": "ch05/m68724/005.op4",
+      "chapter": "ch05",
+      "segmentId": "m68724:para:fs-idm1147904",
+      "segmentType": "para",
+      "category": "term-sense",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i47",
+      "opId": "ch02/m68693/001.op4",
+      "chapter": "ch02",
+      "segmentId": "m68693:caption:CNX_Chem_02_04_TiO2-caption",
+      "segmentType": "caption",
+      "category": "agreement",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i48",
+      "opId": "ch18/m68829/001.op1",
+      "chapter": "ch18",
+      "segmentId": "m68829:abstract-item:abstract-item-2",
+      "segmentType": "abstract-item",
+      "category": "term",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i49",
+      "opId": "ch17/m68821/002.op1",
+      "chapter": "ch17",
+      "segmentId": "m68821:para:fs-idm251970912",
+      "segmentType": "para",
+      "category": "term",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i50",
+      "opId": "ch18/m68830/001.op21",
+      "chapter": "ch18",
+      "segmentId": "m68830:para:fs-idp122485616",
+      "segmentType": "para",
+      "category": "term-sense",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i51",
+      "opId": "ch18/m68830/004.op3",
+      "chapter": "ch18",
+      "segmentId": "m68830:glossary-def:fs-idp11434288-def",
+      "segmentType": "glossary-def",
+      "category": "agreement",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i52",
+      "opId": "ch05/m68727/010.op1",
+      "chapter": "ch05",
+      "segmentId": "m68727:problem:fs-idp211832480",
+      "segmentType": "problem",
+      "category": "term-sense",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i53",
+      "opId": "ch04/m68714/003.op6",
+      "chapter": "ch04",
+      "segmentId": "m68714:problem:fs-idp5068384",
+      "segmentType": "problem",
+      "category": "term",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i54",
+      "opId": "ch21/m68856/006.op2",
+      "chapter": "ch21",
+      "segmentId": "m68856:item:eip-idm652671392-item-3",
+      "segmentType": "item",
+      "category": "term-sense",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i55",
+      "opId": "ch04/m68714/002.op7",
+      "chapter": "ch04",
+      "segmentId": "m68714:para:fs-idp47540336",
+      "segmentType": "para",
+      "category": "agreement",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i56",
+      "opId": "ch05/m68727/011.op2",
+      "chapter": "ch05",
+      "segmentId": "m68727:glossary-def:fs-idp102382096-def",
+      "segmentType": "glossary-def",
+      "category": "term-sense",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i57",
+      "opId": "ch07/m68739/004.op3",
+      "chapter": "ch07",
+      "segmentId": "m68739:title:fs-idm53492672-title",
+      "segmentType": "title",
+      "category": "term",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i58",
+      "opId": "ch02/m68692/002.op2",
+      "chapter": "ch02",
+      "segmentId": "m68692:entry:auto-128",
+      "segmentType": "entry",
+      "category": "agreement",
+      "choice": "wrong-changed",
+      "note": "Natural abundance would translate as \"Náttúrulegt fjöldahlutfall\"."
+    },
+    {
+      "id": "i59",
+      "opId": "ch07/m68739/012.op9",
+      "chapter": "ch07",
+      "segmentId": "m68739:solution:fs-idm7862384",
+      "segmentType": "solution",
+      "category": "agreement",
+      "choice": "right",
+      "note": ""
+    },
+    {
+      "id": "i60",
+      "opId": "ch17/m68825/002.op11",
+      "chapter": "ch17",
+      "segmentId": "m68825:para:fs-idm118882144",
+      "segmentType": "para",
+      "category": "agreement",
+      "choice": "right",
+      "note": ""
+    }
+  ]
+}

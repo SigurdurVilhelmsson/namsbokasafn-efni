@@ -1,0 +1,592 @@
+{
+  "commit": "4868c83d6cbc3f4429c071afa216219324a046bc",
+  "seed": "short-look-2026-11-02",
+  "perCategory": 20,
+  "method": "one per segment type present, the rest proportional by largest remainder; within a stratum the lowest sha256(seed|opId)",
+  "populationTotal": 3021,
+  "allocation": {
+    "agreement": {
+      "population": 105,
+      "byType": {
+        "problem": 12,
+        "entry": 2,
+        "para": 59,
+        "example-title": 1,
+        "caption": 7,
+        "alt": 9,
+        "solution": 1,
+        "item": 6,
+        "note-title": 1,
+        "table-summary": 1,
+        "glossary-def": 5,
+        "title": 1
+      },
+      "drawn": {
+        "alt": 2,
+        "caption": 2,
+        "entry": 1,
+        "example-title": 1,
+        "glossary-def": 1,
+        "item": 1,
+        "note-title": 1,
+        "para": 6,
+        "problem": 2,
+        "solution": 1,
+        "table-summary": 1,
+        "title": 1
+      }
+    },
+    "term": {
+      "population": 2780,
+      "byType": {
+        "para": 1481,
+        "table-summary": 67,
+        "entry": 48,
+        "alt": 173,
+        "title": 46,
+        "abstract-item": 43,
+        "problem": 374,
+        "caption": 114,
+        "solution": 102,
+        "glossary-term": 146,
+        "example-title": 38,
+        "glossary-def": 95,
+        "note-title": 6,
+        "item": 47
+      },
+      "drawn": {
+        "abstract-item": 1,
+        "alt": 2,
+        "caption": 1,
+        "entry": 1,
+        "example-title": 1,
+        "glossary-def": 1,
+        "glossary-term": 2,
+        "item": 1,
+        "note-title": 1,
+        "para": 4,
+        "problem": 2,
+        "solution": 1,
+        "table-summary": 1,
+        "title": 1
+      }
+    },
+    "term-sense": {
+      "population": 136,
+      "byType": {
+        "solution": 10,
+        "para": 74,
+        "alt": 5,
+        "glossary-def": 7,
+        "caption": 7,
+        "glossary-term": 1,
+        "abstract-item": 4,
+        "example-title": 1,
+        "problem": 25,
+        "title": 1,
+        "item": 1
+      },
+      "drawn": {
+        "abstract-item": 1,
+        "alt": 1,
+        "caption": 2,
+        "example-title": 1,
+        "glossary-def": 1,
+        "glossary-term": 1,
+        "item": 1,
+        "para": 6,
+        "problem": 3,
+        "solution": 2,
+        "title": 1
+      }
+    }
+  },
+  "chaptersPerCategory": {
+    "agreement": 11,
+    "term": 11,
+    "term-sense": 9
+  },
+  "problems": [],
+  "key": [
+    {
+      "id": "i01",
+      "opId": "ch09/m68752/001.op4",
+      "chapter": "ch09",
+      "segmentId": "m68752:para:fs-idm31863392",
+      "segmentType": "para",
+      "category": "term-sense"
+    },
+    {
+      "id": "i02",
+      "opId": "ch07/m68740/002.op6",
+      "chapter": "ch07",
+      "segmentId": "m68740:item:fs-idm30182496-item-3",
+      "segmentType": "item",
+      "category": "agreement"
+    },
+    {
+      "id": "i03",
+      "opId": "ch04/m68710/009.op8",
+      "chapter": "ch04",
+      "segmentId": "m68710:glossary-def:fs-idp55089136-def",
+      "segmentType": "glossary-def",
+      "category": "term"
+    },
+    {
+      "id": "i04",
+      "opId": "ch05/m68727/010.op2",
+      "chapter": "ch05",
+      "segmentId": "m68727:problem:fs-idp165246960",
+      "segmentType": "problem",
+      "category": "term-sense"
+    },
+    {
+      "id": "i05",
+      "opId": "ch04/m68713/003.op9",
+      "chapter": "ch04",
+      "segmentId": "m68713:glossary-term:fs-idp127462672-term",
+      "segmentType": "glossary-term",
+      "category": "term-sense"
+    },
+    {
+      "id": "i06",
+      "opId": "ch12/m68793/004.op2",
+      "chapter": "ch12",
+      "segmentId": "m68793:problem:fs-idm1605904",
+      "segmentType": "problem",
+      "category": "term"
+    },
+    {
+      "id": "i07",
+      "opId": "ch08/m68747/004.op16",
+      "chapter": "ch08",
+      "segmentId": "m68747:para:fs-idm72448704",
+      "segmentType": "para",
+      "category": "agreement"
+    },
+    {
+      "id": "i08",
+      "opId": "ch18/m68831/007.op2",
+      "chapter": "ch18",
+      "segmentId": "m68831:glossary-term:fs-idp17081184-term",
+      "segmentType": "glossary-term",
+      "category": "term"
+    },
+    {
+      "id": "i09",
+      "opId": "ch04/m68716/003.op2",
+      "chapter": "ch04",
+      "segmentId": "m68716:para:fs-idp91356704",
+      "segmentType": "para",
+      "category": "term"
+    },
+    {
+      "id": "i10",
+      "opId": "ch11/m68783/010.op7",
+      "chapter": "ch11",
+      "segmentId": "m68783:caption:CNX_Chem_11_04_rvosmosis-caption",
+      "segmentType": "caption",
+      "category": "term"
+    },
+    {
+      "id": "i11",
+      "opId": "ch11/m68784/001.op8",
+      "chapter": "ch11",
+      "segmentId": "m68784:para:fs-idm25079776",
+      "segmentType": "para",
+      "category": "term"
+    },
+    {
+      "id": "i12",
+      "opId": "ch19/m68842/001.op6",
+      "chapter": "ch19",
+      "segmentId": "m68842:caption:CNX_Chem_19_01_PeriodicEConfig-caption",
+      "segmentType": "caption",
+      "category": "term-sense"
+    },
+    {
+      "id": "i13",
+      "opId": "ch09/m68752/004.op4",
+      "chapter": "ch09",
+      "segmentId": "m68752:title:fs-idp132626656-title",
+      "segmentType": "title",
+      "category": "term-sense"
+    },
+    {
+      "id": "i14",
+      "opId": "ch01/m68674/001.op6",
+      "chapter": "ch01",
+      "segmentId": "m68674:para:fs-idp3379184",
+      "segmentType": "para",
+      "category": "term"
+    },
+    {
+      "id": "i15",
+      "opId": "ch17/m68827/004.op3",
+      "chapter": "ch17",
+      "segmentId": "m68827:problem:fs-idp7133216",
+      "segmentType": "problem",
+      "category": "agreement"
+    },
+    {
+      "id": "i16",
+      "opId": "ch05/m68727/003.op1",
+      "chapter": "ch05",
+      "segmentId": "m68727:para:fs-idm14305808",
+      "segmentType": "para",
+      "category": "term-sense"
+    },
+    {
+      "id": "i17",
+      "opId": "ch20/m68846/003.op3",
+      "chapter": "ch20",
+      "segmentId": "m68846:title:fs-idp52681872-title",
+      "segmentType": "title",
+      "category": "agreement"
+    },
+    {
+      "id": "i18",
+      "opId": "ch07/m68742/006.op4",
+      "chapter": "ch07",
+      "segmentId": "m68742:example-title:fs-idm16663792-title",
+      "segmentType": "example-title",
+      "category": "term"
+    },
+    {
+      "id": "i19",
+      "opId": "ch09/m68758/001.op8",
+      "chapter": "ch09",
+      "segmentId": "m68758:alt:fs-idm82315616-alt",
+      "segmentType": "alt",
+      "category": "agreement"
+    },
+    {
+      "id": "i20",
+      "opId": "ch18/m68830/002.op15",
+      "chapter": "ch18",
+      "segmentId": "m68830:alt:fs-idp293911136-alt",
+      "segmentType": "alt",
+      "category": "term"
+    },
+    {
+      "id": "i21",
+      "opId": "ch02/m68693/004.op2",
+      "chapter": "ch02",
+      "segmentId": "m68693:glossary-term:fs-idp1084128-term",
+      "segmentType": "glossary-term",
+      "category": "term"
+    },
+    {
+      "id": "i22",
+      "opId": "ch06/m68729/002.op20",
+      "chapter": "ch06",
+      "segmentId": "m68729:para:fs-idm64346880",
+      "segmentType": "para",
+      "category": "agreement"
+    },
+    {
+      "id": "i23",
+      "opId": "ch05/m68724/007.op3",
+      "chapter": "ch05",
+      "segmentId": "m68724:alt:fs-idm14724048-alt",
+      "segmentType": "alt",
+      "category": "term-sense"
+    },
+    {
+      "id": "i24",
+      "opId": "ch11/m68782/003.op6",
+      "chapter": "ch11",
+      "segmentId": "m68782:caption:CNX_Chem_11_03_handwarmer-caption",
+      "segmentType": "caption",
+      "category": "term-sense"
+    },
+    {
+      "id": "i25",
+      "opId": "ch05/m68726/006.op1",
+      "chapter": "ch05",
+      "segmentId": "m68726:note-title:fs-idm9530672-title",
+      "segmentType": "note-title",
+      "category": "term"
+    },
+    {
+      "id": "i26",
+      "opId": "ch05/m68727/007.op3",
+      "chapter": "ch05",
+      "segmentId": "m68727:problem:fs-idp161292160",
+      "segmentType": "problem",
+      "category": "term-sense"
+    },
+    {
+      "id": "i27",
+      "opId": "ch20/m68846/008.op2",
+      "chapter": "ch20",
+      "segmentId": "m68846:alt:fs-idp53238032-alt",
+      "segmentType": "alt",
+      "category": "agreement"
+    },
+    {
+      "id": "i28",
+      "opId": "appendices/m68871/001.op2",
+      "chapter": "appendices",
+      "segmentId": "m68871:table-summary:fs-idp343615296-summary",
+      "segmentType": "table-summary",
+      "category": "term"
+    },
+    {
+      "id": "i29",
+      "opId": "ch07/m68739/011.op3",
+      "chapter": "ch07",
+      "segmentId": "m68739:alt:fs-idp792848-alt",
+      "segmentType": "alt",
+      "category": "term"
+    },
+    {
+      "id": "i30",
+      "opId": "ch21/m68858/004.op3",
+      "chapter": "ch21",
+      "segmentId": "m68858:solution:fs-idp58420992",
+      "segmentType": "solution",
+      "category": "term"
+    },
+    {
+      "id": "i31",
+      "opId": "ch11/m68783/013.op9",
+      "chapter": "ch11",
+      "segmentId": "m68783:entry:auto-262",
+      "segmentType": "entry",
+      "category": "term"
+    },
+    {
+      "id": "i32",
+      "opId": "ch05/m68724/001.op1",
+      "chapter": "ch05",
+      "segmentId": "m68724:abstract-item:abstract-item-2",
+      "segmentType": "abstract-item",
+      "category": "term-sense"
+    },
+    {
+      "id": "i33",
+      "opId": "ch02/m68695/003.op4",
+      "chapter": "ch02",
+      "segmentId": "m68695:para:fs-idm293266416",
+      "segmentType": "para",
+      "category": "term-sense"
+    },
+    {
+      "id": "i34",
+      "opId": "ch08/m68746/002.op4",
+      "chapter": "ch08",
+      "segmentId": "m68746:caption:CNX_Chem_08_03_C6H6-caption",
+      "segmentType": "caption",
+      "category": "agreement"
+    },
+    {
+      "id": "i35",
+      "opId": "ch08/m68747/005.op10",
+      "chapter": "ch08",
+      "segmentId": "m68747:para:fs-idm113916160",
+      "segmentType": "para",
+      "category": "agreement"
+    },
+    {
+      "id": "i36",
+      "opId": "ch19/m68842/001.op4",
+      "chapter": "ch19",
+      "segmentId": "m68842:para:fs-idm272953936",
+      "segmentType": "para",
+      "category": "term-sense"
+    },
+    {
+      "id": "i37",
+      "opId": "ch02/m68692/002.op9",
+      "chapter": "ch02",
+      "segmentId": "m68692:example-title:fs-idm233489360-title",
+      "segmentType": "example-title",
+      "category": "agreement"
+    },
+    {
+      "id": "i38",
+      "opId": "ch07/m68740/002.op5",
+      "chapter": "ch07",
+      "segmentId": "m68740:item:fs-idm30182496-item-3",
+      "segmentType": "item",
+      "category": "term"
+    },
+    {
+      "id": "i39",
+      "opId": "ch05/m68724/005.op1",
+      "chapter": "ch05",
+      "segmentId": "m68724:example-title:fs-idp1783792-title",
+      "segmentType": "example-title",
+      "category": "term-sense"
+    },
+    {
+      "id": "i40",
+      "opId": "ch11/m68783/010.op9",
+      "chapter": "ch11",
+      "segmentId": "m68783:note-title:fs-idm17300528-title",
+      "segmentType": "note-title",
+      "category": "agreement"
+    },
+    {
+      "id": "i41",
+      "opId": "ch08/m68745/006.op7",
+      "chapter": "ch08",
+      "segmentId": "m68745:solution:fs-idp50482432",
+      "segmentType": "solution",
+      "category": "term-sense"
+    },
+    {
+      "id": "i42",
+      "opId": "ch01/m68664/001.op5",
+      "chapter": "ch01",
+      "segmentId": "m68664:problem:fs-idm59206592",
+      "segmentType": "problem",
+      "category": "agreement"
+    },
+    {
+      "id": "i43",
+      "opId": "ch11/m68784/001.op23",
+      "chapter": "ch11",
+      "segmentId": "m68784:table-summary:fs-idm28163488-summary",
+      "segmentType": "table-summary",
+      "category": "agreement"
+    },
+    {
+      "id": "i44",
+      "opId": "ch05/m68724/007.op8",
+      "chapter": "ch05",
+      "segmentId": "m68724:solution:fs-idm40947104",
+      "segmentType": "solution",
+      "category": "term-sense"
+    },
+    {
+      "id": "i45",
+      "opId": "ch04/m68714/002.op16",
+      "chapter": "ch04",
+      "segmentId": "m68714:para:fs-idp59920960",
+      "segmentType": "para",
+      "category": "agreement"
+    },
+    {
+      "id": "i46",
+      "opId": "ch05/m68724/005.op4",
+      "chapter": "ch05",
+      "segmentId": "m68724:para:fs-idm1147904",
+      "segmentType": "para",
+      "category": "term-sense"
+    },
+    {
+      "id": "i47",
+      "opId": "ch02/m68693/001.op4",
+      "chapter": "ch02",
+      "segmentId": "m68693:caption:CNX_Chem_02_04_TiO2-caption",
+      "segmentType": "caption",
+      "category": "agreement"
+    },
+    {
+      "id": "i48",
+      "opId": "ch18/m68829/001.op1",
+      "chapter": "ch18",
+      "segmentId": "m68829:abstract-item:abstract-item-2",
+      "segmentType": "abstract-item",
+      "category": "term"
+    },
+    {
+      "id": "i49",
+      "opId": "ch17/m68821/002.op1",
+      "chapter": "ch17",
+      "segmentId": "m68821:para:fs-idm251970912",
+      "segmentType": "para",
+      "category": "term"
+    },
+    {
+      "id": "i50",
+      "opId": "ch18/m68830/001.op21",
+      "chapter": "ch18",
+      "segmentId": "m68830:para:fs-idp122485616",
+      "segmentType": "para",
+      "category": "term-sense"
+    },
+    {
+      "id": "i51",
+      "opId": "ch18/m68830/004.op3",
+      "chapter": "ch18",
+      "segmentId": "m68830:glossary-def:fs-idp11434288-def",
+      "segmentType": "glossary-def",
+      "category": "agreement"
+    },
+    {
+      "id": "i52",
+      "opId": "ch05/m68727/010.op1",
+      "chapter": "ch05",
+      "segmentId": "m68727:problem:fs-idp211832480",
+      "segmentType": "problem",
+      "category": "term-sense"
+    },
+    {
+      "id": "i53",
+      "opId": "ch04/m68714/003.op6",
+      "chapter": "ch04",
+      "segmentId": "m68714:problem:fs-idp5068384",
+      "segmentType": "problem",
+      "category": "term"
+    },
+    {
+      "id": "i54",
+      "opId": "ch21/m68856/006.op2",
+      "chapter": "ch21",
+      "segmentId": "m68856:item:eip-idm652671392-item-3",
+      "segmentType": "item",
+      "category": "term-sense"
+    },
+    {
+      "id": "i55",
+      "opId": "ch04/m68714/002.op7",
+      "chapter": "ch04",
+      "segmentId": "m68714:para:fs-idp47540336",
+      "segmentType": "para",
+      "category": "agreement"
+    },
+    {
+      "id": "i56",
+      "opId": "ch05/m68727/011.op2",
+      "chapter": "ch05",
+      "segmentId": "m68727:glossary-def:fs-idp102382096-def",
+      "segmentType": "glossary-def",
+      "category": "term-sense"
+    },
+    {
+      "id": "i57",
+      "opId": "ch07/m68739/004.op3",
+      "chapter": "ch07",
+      "segmentId": "m68739:title:fs-idm53492672-title",
+      "segmentType": "title",
+      "category": "term"
+    },
+    {
+      "id": "i58",
+      "opId": "ch02/m68692/002.op2",
+      "chapter": "ch02",
+      "segmentId": "m68692:entry:auto-128",
+      "segmentType": "entry",
+      "category": "agreement"
+    },
+    {
+      "id": "i59",
+      "opId": "ch07/m68739/012.op9",
+      "chapter": "ch07",
+      "segmentId": "m68739:solution:fs-idm7862384",
+      "segmentType": "solution",
+      "category": "agreement"
+    },
+    {
+      "id": "i60",
+      "opId": "ch17/m68825/002.op11",
+      "chapter": "ch17",
+      "segmentId": "m68825:para:fs-idm118882144",
+      "segmentType": "para",
+      "category": "agreement"
+    }
+  ]
+}
