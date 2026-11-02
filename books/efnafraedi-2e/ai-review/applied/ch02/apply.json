@@ -1,0 +1,124 @@
+{
+  "schema": "ai-review-apply/3",
+  "book": "efnafraedi-2e",
+  "chapterDir": "ch02",
+  "runIds": [
+    "20261101T184249Z-c57177c3"
+  ],
+  "layer1Commit": "0093d8da4620a2041e583d3f84d39e9b49f055a2",
+  "rulingSet": {
+    "path": "experiments/terminology-consistency/results/2026-11-02/ruling-set-2026-11-02.json",
+    "sha256": "0aa33690ca829be4baa4da2b34fbea1455517d426e939c3544b3a86b3049c3bd"
+  },
+  "prompt": {
+    "path": "tools/ai-review/prompts/term-pass-v2.md",
+    "sha256": "7f9b1b3518bb6454d799a03d3a53b490376f37d2e25a6c4a89e42f6c299e559b"
+  },
+  "model": "claude-opus-5-5",
+  "effort": "xhigh",
+  "maxTokens": 32000,
+  "maxTokensByRun": {
+    "20261101T184249Z-c57177c3": 32000
+  },
+  "applyCommit": "f75110ebfe93da33a35a73ae99e2e159b7d8b995",
+  "units": [
+    {
+      "stem": "m68684",
+      "layer1Sha256": "37184e4315f963f57802541e056798dc0884667c05c3f415628cf886cc404ba9",
+      "overlaySha256": null,
+      "enSha256": "b48323784c37768a8f92e8e987f74876c70f3bfc9a4fd37ffefa3fe28f28cc2c"
+    },
+    {
+      "stem": "m68685",
+      "layer1Sha256": "61f2c2e911b3fd46a0cd36d81cd88ba295b1b8683b52103cbc5f06a130b02c10",
+      "overlaySha256": null,
+      "enSha256": "7051ec59ae8c584d51b93cf9d4576b97cfd8d15569eff8f87f85959d16d1e2cb"
+    },
+    {
+      "stem": "m68687",
+      "layer1Sha256": "9e132a480b5b764ebf3090cb07ba90b3adefb893ace015f86ba6e68abf13f057",
+      "overlaySha256": null,
+      "enSha256": "6d29e91bc43f3fe65f997c95d3296a79f4129fbc2a1e9377b0e4e4d28e997e88"
+    },
+    {
+      "stem": "m68692",
+      "layer1Sha256": "5fae8ca2d74b6a2765fcf8573194ae9778e04702119b346fe3ff5bb345396a70",
+      "overlaySha256": null,
+      "enSha256": "2d6a20115f05e30e5c75830e6badfdda746d724e2b3d441b19a1183615200655"
+    },
+    {
+      "stem": "m68693",
+      "layer1Sha256": "89e464ac0130d304aef3316945faa0153decc4e2a6889080e9614b09aa455c25",
+      "overlaySha256": null,
+      "enSha256": "d4f2b0305613deb516cfc761148f64f09a31b5e0f53e73da1c65e49f85fef247"
+    },
+    {
+      "stem": "m68695",
+      "layer1Sha256": "b2972da9a1ab754dc6f1e8d072753d4d09e2f27f82b820c2890157a352df021c",
+      "overlaySha256": null,
+      "enSha256": "7ed74c4ee3f96f811417f5f492deef4dc511930ed628ce3693b69ab372d76e96"
+    },
+    {
+      "stem": "m68696",
+      "layer1Sha256": "a566946cef2f7d96b8224b41b4b576b72190ff6e9a3fb22b6b400274f3465c02",
+      "overlaySha256": null,
+      "enSha256": "3071076c483d52eb20b52d2398a9ad4413e8ef53e4ee1742e5a7cfc5b3c32336"
+    },
+    {
+      "stem": "m68698",
+      "layer1Sha256": "bc36ddb791ff8f856b42732f42097865c7c65c680eacbe59b1f1c048871051d2",
+      "overlaySha256": null,
+      "enSha256": "22ee46bfed33aa9b24fe262408475d308b45689a8e15382a8120e01b1b32bcba"
+    },
+    {
+      "stem": "chapter-metadata",
+      "layer1Sha256": "1623e9359324e43ed2c8e2121462f0d9c5a5d10008b84e265afbd713d6e368a5",
+      "overlaySha256": null,
+      "enSha256": "1a8838b1f166f8f9e96f16faa779ace1a1043fb80fc1deccb815d51d46c9c1eb"
+    }
+  ],
+  "counts": {
+    "requests": 30,
+    "requestProblems": {},
+    "segmentsPresented": 197,
+    "segmentsAnswered": 197,
+    "segmentsMissing": 0,
+    "entriesDropped": 0,
+    "opsProposed": 206,
+    "accepted": 149,
+    "rejected": 57,
+    "unclearConverted": 0,
+    "acceptedByCategory": {
+      "agreement": 9,
+      "term": 134,
+      "term-sense": 6
+    },
+    "rejectedByReason": {
+      "agreement-without-term": 1,
+      "barred-word": 1,
+      "find-ambiguous": 1,
+      "flagged-no-edit": 10,
+      "group-incomplete": 4,
+      "quantifier-agreement": 2,
+      "term-target-already": 37,
+      "term-target-missing": 2
+    },
+    "flagsByKind": {
+      "compound-term": 21,
+      "mistranslation-suspected": 1,
+      "needs-rewrite": 20,
+      "target-other-sense": 3
+    },
+    "changes": 149,
+    "occurrencesChanged": 87,
+    "leftovers": 7
+  },
+  "coverage": {
+    "requestsPlanned": 30,
+    "requestsUsable": 30,
+    "requestsMissing": [],
+    "requestsTruncated": 0,
+    "segmentsUnanswered": [],
+    "complete": true
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "schema": "ai-review-apply/3",
+  "book": "efnafraedi-2e",
+  "chapterDir": "ch19",
+  "runIds": [
+    "20261101T201847Z-738d5a95"
+  ],
+  "layer1Commit": "0093d8da4620a2041e583d3f84d39e9b49f055a2",
+  "rulingSet": {
+    "path": "experiments/terminology-consistency/results/2026-11-02/ruling-set-2026-11-02.json",
+    "sha256": "0aa33690ca829be4baa4da2b34fbea1455517d426e939c3544b3a86b3049c3bd"
+  },
+  "prompt": {
+    "path": "tools/ai-review/prompts/term-pass-v2.md",
+    "sha256": "7f9b1b3518bb6454d799a03d3a53b490376f37d2e25a6c4a89e42f6c299e559b"
+  },
+  "model": "claude-opus-5-5",
+  "effort": "xhigh",
+  "maxTokens": 64000,
+  "maxTokensByRun": {
+    "20261101T201847Z-738d5a95": 64000
+  },
+  "applyCommit": "f75110ebfe93da33a35a73ae99e2e159b7d8b995",
+  "units": [
+    {
+      "stem": "m68841",
+      "layer1Sha256": "ccba4d237d5142d332f564307cf86c7b3ec852a9f7569d5284e4448f337fceea",
+      "overlaySha256": null,
+      "enSha256": "efc5c906b09f1b059423f078369f2483dec95ac5653f3899adec7001ec28e142"
+    },
+    {
+      "stem": "m68842",
+      "layer1Sha256": "bf175119ed3479ca5ac4169dd84330fc52763c35a7c407af4fd88bdfd4ca9fff",
+      "overlaySha256": null,
+      "enSha256": "6d24413456b94a63a1048b1533f0036b01f4dcdcf7495df65977aa4b0811d21f"
+    },
+    {
+      "stem": "m68843",
+      "layer1Sha256": "b20ebaeca7d84b60753cd04b189876867febd20972597710ded9d6ce11ca1120",
+      "overlaySha256": null,
+      "enSha256": "cfce13ad7d42a3b8201827fbb8a944dacda95180339c0fd955bcc7d0a95d3605"
+    },
+    {
+      "stem": "m68844",
+      "layer1Sha256": "f44d8badcd3ad630575120dbc4a38ebe4886ee337a7d6f96dabe46ec5afe4f49",
+      "overlaySha256": null,
+      "enSha256": "544117ec8600f324bb82529c71e17fb51308de761d02681407add02428e46573"
+    },
+    {
+      "stem": "chapter-metadata",
+      "layer1Sha256": "882e5e09fd3120551ce61cb4dd54d9699982805c773d95dd3eb86026390acb99",
+      "overlaySha256": null,
+      "enSha256": "f32d8224b2ce99dcfc15e9351c012f3521e9d7f66b1f9d171f0256f69616f56c"
+    }
+  ],
+  "counts": {
+    "requests": 29,
+    "requestProblems": {},
+    "segmentsPresented": 209,
+    "segmentsAnswered": 209,
+    "segmentsMissing": 0,
+    "entriesDropped": 0,
+    "opsProposed": 162,
+    "accepted": 145,
+    "rejected": 17,
+    "unclearConverted": 0,
+    "acceptedByCategory": {
+      "agreement": 8,
+      "term": 128,
+      "term-sense": 9
+    },
+    "rejectedByReason": {
+      "flagged-no-edit": 2,
+      "group-incomplete": 4,
+      "quantifier-agreement": 2,
+      "term-target-already": 4,
+      "term-target-missing": 5
+    },
+    "flagsByKind": {
+      "compound-term": 21,
+      "mistranslation-suspected": 4,
+      "needs-rewrite": 18,
+      "target-other-sense": 1
+    },
+    "changes": 145,
+    "occurrencesChanged": 95,
+    "leftovers": 12
+  },
+  "coverage": {
+    "requestsPlanned": 29,
+    "requestsUsable": 29,
+    "requestsMissing": [],
+    "requestsTruncated": 0,
+    "segmentsUnanswered": [],
+    "complete": true
+  }
+}

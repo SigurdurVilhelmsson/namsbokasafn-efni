@@ -1,0 +1,109 @@
+{
+  "schema": "ai-review-apply/3",
+  "book": "efnafraedi-2e",
+  "chapterDir": "ch06",
+  "runIds": [
+    "20261101T190240Z-672b50b9"
+  ],
+  "layer1Commit": "0093d8da4620a2041e583d3f84d39e9b49f055a2",
+  "rulingSet": {
+    "path": "experiments/terminology-consistency/results/2026-11-02/ruling-set-2026-11-02.json",
+    "sha256": "0aa33690ca829be4baa4da2b34fbea1455517d426e939c3544b3a86b3049c3bd"
+  },
+  "prompt": {
+    "path": "tools/ai-review/prompts/term-pass-v2.md",
+    "sha256": "7f9b1b3518bb6454d799a03d3a53b490376f37d2e25a6c4a89e42f6c299e559b"
+  },
+  "model": "claude-opus-5-5",
+  "effort": "xhigh",
+  "maxTokens": 32000,
+  "maxTokensByRun": {
+    "20261101T190240Z-672b50b9": 32000
+  },
+  "applyCommit": "f75110ebfe93da33a35a73ae99e2e159b7d8b995",
+  "units": [
+    {
+      "stem": "m68728",
+      "layer1Sha256": "86c9ca7bbad78abf1c6dfaca13656fbc4344047b47ec2a4fde1335b0438cf9f1",
+      "overlaySha256": null,
+      "enSha256": "69416a8027c684afd4e89dddc3614c4f037c2011bc23f748dedca782258ec17b"
+    },
+    {
+      "stem": "m68729",
+      "layer1Sha256": "ab2fb988708084eb89e9935dc7edaafddb36e830f1f6368c5b3130858b6589f4",
+      "overlaySha256": null,
+      "enSha256": "19111705ce67f6de219de78e1313a8ada926702de72bd09f16191423bd5f6a04"
+    },
+    {
+      "stem": "m68732",
+      "layer1Sha256": "66048f88f4c9b1a3855ce61a3e5018c38a0fc41257fda9bca22f9557b5298fef",
+      "overlaySha256": null,
+      "enSha256": "728c70e9447cb7db4dbcb8c8fae125935e5dfb8e23975feeb2c4b5acadfbdbae"
+    },
+    {
+      "stem": "m68733",
+      "layer1Sha256": "515ac6df81837ad038aa44af503d0dfbed5a9e91eed6f9732a712e73f3a0abf3",
+      "overlaySha256": null,
+      "enSha256": "8cda85128b825fbc34024014aa0101a3c5843a8384c4ca713434014a29488d2a"
+    },
+    {
+      "stem": "m68734",
+      "layer1Sha256": "3943e2421589f8e6630cf8e11c9573de057206b4dfc374c32dce110a07d8b7e3",
+      "overlaySha256": null,
+      "enSha256": "db07cd4952c4df059ee607b53b0a7d678bf8445bd90184d5f159ff02acf4a57a"
+    },
+    {
+      "stem": "m68735",
+      "layer1Sha256": "7db1a25a56bbc02ac1111782c34f6aa4e5b4e256abd45f83f1e93edab89125b1",
+      "overlaySha256": null,
+      "enSha256": "a5f162f53fdc597f0d1415be7cdb62a9e27a90c5a8f936ba45a4be16240e44cc"
+    },
+    {
+      "stem": "chapter-metadata",
+      "layer1Sha256": "f8505854e3de4353d0e7a4299c7e1f7f2686d35249cb3b371ef67567de0129b3",
+      "overlaySha256": null,
+      "enSha256": "a3ca97187b228ccd80b795694e8edab84da9327b829023c14099a24d5f75fa13"
+    }
+  ],
+  "counts": {
+    "requests": 21,
+    "requestProblems": {},
+    "segmentsPresented": 149,
+    "segmentsAnswered": 149,
+    "segmentsMissing": 0,
+    "entriesDropped": 0,
+    "opsProposed": 149,
+    "accepted": 128,
+    "rejected": 21,
+    "unclearConverted": 0,
+    "acceptedByCategory": {
+      "agreement": 10,
+      "term": 117,
+      "term-sense": 1
+    },
+    "rejectedByReason": {
+      "flagged-no-edit": 8,
+      "group-incomplete": 4,
+      "quantifier-agreement": 2,
+      "term-target-already": 1,
+      "term-target-missing": 6
+    },
+    "flagsByKind": {
+      "compound-term": 12,
+      "mistranslation-suspected": 2,
+      "needs-rewrite": 14,
+      "target-other-sense": 1
+    },
+    "changes": 128,
+    "occurrencesChanged": 70,
+    "leftovers": 11
+  },
+  "coverage": {
+    "requestsPlanned": 21,
+    "requestsUsable": 21,
+    "requestsMissing": [],
+    "requestsTruncated": 0,
+    "segmentsUnanswered": [],
+    "complete": true
+  }
+}

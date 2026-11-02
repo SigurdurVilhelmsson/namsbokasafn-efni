@@ -1,0 +1,118 @@
+{
+  "schema": "ai-review-apply/3",
+  "book": "efnafraedi-2e",
+  "chapterDir": "ch14",
+  "runIds": [
+    "20261101T200038Z-3447d772"
+  ],
+  "layer1Commit": "0093d8da4620a2041e583d3f84d39e9b49f055a2",
+  "rulingSet": {
+    "path": "experiments/terminology-consistency/results/2026-11-02/ruling-set-2026-11-02.json",
+    "sha256": "0aa33690ca829be4baa4da2b34fbea1455517d426e939c3544b3a86b3049c3bd"
+  },
+  "prompt": {
+    "path": "tools/ai-review/prompts/term-pass-v2.md",
+    "sha256": "7f9b1b3518bb6454d799a03d3a53b490376f37d2e25a6c4a89e42f6c299e559b"
+  },
+  "model": "claude-opus-5-5",
+  "effort": "xhigh",
+  "maxTokens": 64000,
+  "maxTokensByRun": {
+    "20261101T200038Z-3447d772": 64000
+  },
+  "applyCommit": "f75110ebfe93da33a35a73ae99e2e159b7d8b995",
+  "units": [
+    {
+      "stem": "m68802",
+      "layer1Sha256": "5462e11983490fdfb99cb72ddb1ed37ea6c7472b9421a784daecc09b6ba454ea",
+      "overlaySha256": null,
+      "enSha256": "555e4bebc0fae1df1db346b7657f833503137b342f30e85297ee08f021801d5b"
+    },
+    {
+      "stem": "m68803",
+      "layer1Sha256": "21ad0a0be60d0a559df0ec67f8edb1dc34923f099488b125a64d88ac6fadf4da",
+      "overlaySha256": null,
+      "enSha256": "ad76bbe44af1d853369209e98c3e5eeec370ef897d965c56cd504a83465f5552"
+    },
+    {
+      "stem": "m68804",
+      "layer1Sha256": "f0ee8e2096aa57792d60dded9a7e5fb665a098add37072516f77220a45a9e724",
+      "overlaySha256": null,
+      "enSha256": "8d9a5493c3cf8765c45299834eca9b08d53dfc94fe1637fd0e448bc652ca5cf8"
+    },
+    {
+      "stem": "m68805",
+      "layer1Sha256": "e446145e4cc5c030483dc263ff1bb072c6b32c3b241d459007850b309e550a45",
+      "overlaySha256": null,
+      "enSha256": "9f3d993977a0cb5f2b87e8c0f4bfd140de8359d8c3b1c2c03eded6cf00218573"
+    },
+    {
+      "stem": "m68806",
+      "layer1Sha256": "c73e77273216b3c439c405771cae4852d9a3063e6e68ec160a168aed7722988d",
+      "overlaySha256": null,
+      "enSha256": "8d3d8ef61a8a72710d10ba79bfe5705c63a4f48dc6ecc14ab85f49bce5018b2e"
+    },
+    {
+      "stem": "m68807",
+      "layer1Sha256": "e25d783edb2cbddb9edb49b8edc2f0b91cd26074e7fa76f7cf8b4f3ed9e9e89a",
+      "overlaySha256": null,
+      "enSha256": "3d6e67fefb4aef7f31da6b29dd6715a0fb1323246141724809acc300b99adf46"
+    },
+    {
+      "stem": "m68808",
+      "layer1Sha256": "233c95dbaf08b73c9597d1c2c16e6e764925034bff47908b08ffa4058c111db0",
+      "overlaySha256": null,
+      "enSha256": "0b99333130d2c1b74f5913c1d27a8b4fb44c87c608655a3b70c27999a7e1651e"
+    },
+    {
+      "stem": "m68809",
+      "layer1Sha256": "f6c9fd2d59a06eb15c2405dd51c1f0964d09024b81290794b71f510cbb562bcc",
+      "overlaySha256": null,
+      "enSha256": "2ee9d301a8c1bd214f1e9ded87bdab8db64c77da82485561bdd22775f11e86ca"
+    },
+    {
+      "stem": "chapter-metadata",
+      "layer1Sha256": "715f51fac1ad7f5fa84a978b613014f2c380dd63ccc900273cdf6f1b16cdd9d9",
+      "overlaySha256": null,
+      "enSha256": "94643bf586aab31d4ed44fabf0782755ef6366992925a77f695e5a3ada591076"
+    }
+  ],
+  "counts": {
+    "requests": 22,
+    "requestProblems": {},
+    "segmentsPresented": 156,
+    "segmentsAnswered": 156,
+    "segmentsMissing": 0,
+    "entriesDropped": 0,
+    "opsProposed": 120,
+    "accepted": 112,
+    "rejected": 8,
+    "unclearConverted": 0,
+    "acceptedByCategory": {
+      "agreement": 1,
+      "term": 109,
+      "term-sense": 2
+    },
+    "rejectedByReason": {
+      "flagged-no-edit": 5,
+      "term-target-already": 1,
+      "term-target-missing": 2
+    },
+    "flagsByKind": {
+      "compound-term": 29,
+      "needs-rewrite": 23,
+      "target-other-sense": 2
+    },
+    "changes": 112,
+    "occurrencesChanged": 75,
+    "leftovers": 4
+  },
+  "coverage": {
+    "requestsPlanned": 22,
+    "requestsUsable": 22,
+    "requestsMissing": [],
+    "requestsTruncated": 0,
+    "segmentsUnanswered": [],
+    "complete": true
+  }
+}
