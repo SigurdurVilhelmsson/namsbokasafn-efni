@@ -1203,6 +1203,29 @@ describe('run --request sends only the named requests', () => {
     expect(dry.result.coverage.requestsMissing).toHaveLength(keys.length - 2);
   });
 
+  it("without --yes, a --request run prints the named requests' worst case and sends nothing", async () => {
+    const S = setup();
+    const p = await main(['plan', '--chapter', 'ch02', ...UNDER_SDK_LIMIT], S.deps());
+    const keys = p.rows[0].requests.map((q) => q.key);
+    const whole = p.rows[0].estimate.worstCaseUsd;
+    const t = mockTransport();
+    const r = await main([...interactive, '--request', keys[0]], S.deps({ transport: t }));
+    expect(r.sent).toBe(false);
+    expect(t.calls.send).toBe(0);
+    const m = S.lines
+      .join('')
+      .match(
+        new RegExp(
+          `sending 1 of ${keys.length} planned requests of ch02 \\(--request\\): ` +
+            'worst case USD ([\\d.]+) interactive / ([\\d.]+) batch'
+        )
+      );
+    expect(m).not.toBeNull();
+    // One request of the chapter's plan, not the whole chapter.
+    expect(Number(m[1])).toBeLessThan(whole.interactive);
+    expect(Number(m[2])).toBeLessThan(whole.batch);
+  });
+
   it('control: without --request, params.request is null', async () => {
     const S = setup();
     const r = await main(
@@ -1519,11 +1542,11 @@ describe('usable means every presented segment answered, in apply and in run ali
     );
     await expect(
       main(['apply', '--chapter', 'ch02', '--run', r.results[0].runId, '--write'], S.deps())
-    ).rejects.toThrow(/max-tokens.*new run listed last/);
+    ).rejects.toThrow(/--request.*--max-tokens.*listed last/);
     const { S: S2, runId } = await ch02Run(() => ({ segments: [] }));
     await expect(
       main(['apply', '--chapter', 'ch02', '--run', runId, '--write'], S2.deps())
-    ).rejects.toThrow(/apply the runs together/);
+    ).rejects.toThrow(/--request.*apply the runs together/);
   });
 });
 

@@ -681,9 +681,26 @@ async function cmdRun(ctx, values, deps) {
   const limit = positiveInt(values.limit, 'limit');
   const { rulingSet, prompt, params, rows, totals } = planAll(ctx, values);
   const named = namedRequests(values, rows);
+  /** A chapter's requests that --request named, in plan order. */
+  const namedOf = (row) => row.requests.filter((q) => named.get(row.chapterDir).has(q.key));
   const plans = new Map(rows.map((r) => [r.chapterDir, r]));
   const chapters = rows.map((r) => r.chapterDir);
   printPlan(ctx, rows, totals);
+  if (named) {
+    // The plan table prices whole chapters; this is what the run would actually send.
+    for (const row of rows) {
+      const sending = namedOf(row);
+      const { worstCaseUsd } = estimateRequests(sending, {
+        model: params.model,
+        maxTokens: params.maxTokens,
+      });
+      ctx.out(
+        `sending ${sending.length} of ${row.requests.length} planned requests of ` +
+          `${row.chapterDir} (--request): worst case USD ${worstCaseUsd.interactive} ` +
+          `interactive / ${worstCaseUsd.batch} batch\n`
+      );
+    }
+  }
   const layer1Commit = preflight(ctx, {
     rulingSet,
     prompt,
@@ -707,9 +724,7 @@ async function cmdRun(ctx, values, deps) {
   for (const chapterDir of chapters) {
     if (budget <= 0) break;
     const plan = plans.get(chapterDir);
-    const requests = named
-      ? plan.requests.filter((r) => named.get(chapterDir).has(r.key))
-      : plan.requests.slice(0, budget);
+    const requests = named ? namedOf(plan) : plan.requests.slice(0, budget);
     if (requests.length === 0) continue;
     budget -= requests.length;
     const runId = mintRunId(ctx.now());
@@ -950,10 +965,11 @@ async function cmdApply(ctx, values) {
           `${result.coverage.requestsPlanned} planned requests have no usable answer ` +
           `(first: ${result.coverage.requestsMissing.slice(0, 3).join(', ')}). ` +
           (result.coverage.requestsTruncated > 0
-            ? `${result.coverage.requestsTruncated} were cut off at max_tokens: raise --max-tokens, ` +
-              'send the chapter again, and apply the runs together with the new run listed ' +
-              'last (a cut-off answer still counts as an answer, so the run listed last decides).'
-            : 'Run the chapter again and apply the runs together.')
+            ? `${result.coverage.requestsTruncated} were cut off at max_tokens: re-send them ` +
+              'with run --request at a higher --max-tokens, and apply the runs together with ' +
+              'the re-send listed last (a cut-off answer still counts as an answer, so the run ' +
+              'listed last decides).'
+            : 'Re-send them with run --request and apply the runs together, the re-send listed last.')
       );
     }
     const written = writeApplied({
