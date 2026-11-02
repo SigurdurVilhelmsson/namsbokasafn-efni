@@ -51,7 +51,11 @@ export const TERM_PASS_SCHEMA = 'ai-review-term-pass/2';
  * /2 (2026-10-30) adds the leftover-form check: `counts.leftovers` and `leftovers.jsonl`. A /1
  * summary has no count, so "checked, none found" and "never checked" stay distinguishable.
  */
-export const APPLY_SCHEMA = 'ai-review-apply/2';
+/**
+ * /3 (2026-11-02) adds `maxTokensByRun`: runs at different max_tokens may be applied together, so
+ * `maxTokens` is the runs' one limit, or null when they differ.
+ */
+export const APPLY_SCHEMA = 'ai-review-apply/3';
 export const APPLIED_DIR = 'applied';
 export const APPLIED_FILES = Object.freeze({
   summary: 'apply.json',
@@ -94,6 +98,12 @@ const refusal = (code, message) => Object.assign(new Error(`[${code}] ${message}
 const sha256 = (data) => crypto.createHash('sha256').update(data).digest('hex');
 const byString = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
 const sameJson = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+/** A request body without max_tokens, the one field runs may differ in (checkRuns). */
+const withoutLimit = (body) => {
+  const rest = { ...body };
+  delete rest.max_tokens;
+  return rest;
+};
 
 // ── Inputs ───────────────────────────────────────────────────────────────────────────────
 
@@ -319,7 +329,11 @@ function checkRuns(runs, { chapterDir, prompt, rulingSet }) {
         `${where} used another ruling set than ${rulingSet.path} at ${rulingSet.sha256}`
       );
     }
-    for (const k of ['model', 'effort', 'max_tokens']) {
+    // Not max_tokens ([USER] 2026-11-02): it is a limit the model does not see, so an answer
+    // that finishes under both limits is the same answer, and one cut off at the lower limit
+    // is not usable anyway. A re-send at a higher limit is applied with the run it repairs
+    // (docs/decisions/2026-11-01-full-run-truncation-and-unusable-answers.md).
+    for (const k of ['model', 'effort']) {
       if (run[k] !== first.run[k])
         throw refusal('mixed-runs', `${where}: ${k} differs from run ${first.runId}`);
     }
@@ -367,8 +381,16 @@ function pickResponses(runs) {
       if (e.custom_id) errById.set(e.custom_id, [...(errById.get(e.custom_id) ?? []), e]);
     }
     for (const req of r.requests) {
+      // The body's limit is what was sent, and the summary reports the run's: they must agree.
+      if (req.body?.max_tokens !== r.run.max_tokens) {
+        throw refusal(
+          'bad-record',
+          `run ${r.runId}: request ${req.key} has max_tokens ${req.body?.max_tokens}, ` +
+            `its run ${r.run.max_tokens}`
+        );
+      }
       const prev = byKey.get(req.key);
-      if (prev && !sameJson(prev.body, req.body)) {
+      if (prev && !sameJson(withoutLimit(prev.body), withoutLimit(req.body))) {
         throw refusal(
           'mixed-runs',
           `request ${req.key} differs between run ${prev.runId} and run ${r.runId}`
@@ -730,7 +752,8 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
     prompt: revision.prompt,
     model: first.run.model,
     effort: first.run.effort,
-    maxTokens: first.run.max_tokens,
+    maxTokens: new Set(runs.map((r) => r.run.max_tokens)).size === 1 ? first.run.max_tokens : null,
+    maxTokensByRun: Object.fromEntries(runs.map((r) => [r.runId, r.run.max_tokens])),
     applyCommit,
     units: prints,
     counts,

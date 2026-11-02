@@ -900,8 +900,8 @@ async function cmdApply(ctx, values) {
           `(first: ${result.coverage.requestsMissing.slice(0, 3).join(', ')}). ` +
           (result.coverage.requestsTruncated > 0
             ? `${result.coverage.requestsTruncated} were cut off at max_tokens: raise --max-tokens, ` +
-              're-run the whole chapter, and apply that run alone (runs with different ' +
-              'max_tokens cannot be applied together).'
+              'send the chapter again, and apply the runs together with the new run listed ' +
+              'last (a cut-off answer still counts as an answer, so the run listed last decides).'
             : 'Run the chapter again and apply the runs together.')
       );
     }

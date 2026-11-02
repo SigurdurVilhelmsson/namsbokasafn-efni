@@ -617,7 +617,7 @@ describe('apply flags an old form left after an accepted fix, and changes nothin
     const a = await main(['apply', '--chapter', 'ch02', '--run', runId], S.deps());
     expect(a.result.leftovers).toEqual([]);
     expect(a.result.counts.leftovers).toBe(0);
-    expect(a.result.summary.schema).toBe('ai-review-apply/2');
+    expect(a.result.summary.schema).toBe('ai-review-apply/3');
   });
 
   it('flags the use the answer left, naming the ruling and the word', async () => {
@@ -1058,6 +1058,115 @@ describe('apply measures coverage against the full plan, and --write refuses a p
   });
 });
 
+// [USER] 2026-11-02: a re-send at a higher max_tokens is applied together with the run it
+// repairs (ch07's two cut-off answers, re-sent at 64,000 beside its 49 answers at 32,000).
+// max_tokens is a limit the model does not see, so it, and nothing else, may differ.
+describe('apply combines runs that differ only in max_tokens, the run listed last winning', () => {
+  const RAISED = ['--max-tokens', '20000']; // higher, and still under the SDK's non-streaming limit
+  const truncatingFirst = () => {
+    const t = mockTransport();
+    const send = t.send;
+    t.send = async (body) => {
+      if (t.calls.send === 0) {
+        t.calls.send += 1;
+        return messageFor(scriptedAnswer(body), { stopReason: 'max_tokens' });
+      }
+      return send(body);
+    };
+    return t;
+  };
+  const runWith = async (S, flags, transport = mockTransport()) =>
+    (
+      await main(
+        ['run', '--chapter', 'ch02', '--mode', 'interactive', ...flags, '--yes'],
+        S.deps({ transport })
+      )
+    ).results[0].runId;
+  const recordOf = (S, runId, name) => path.join(S.fx.records, 'runs', runId, name);
+  /** A cut-off run, then a re-send of only its cut-off request at a higher limit. */
+  async function cutOffThenResend(S) {
+    const a = await runWith(S, UNDER_SDK_LIMIT, truncatingFirst());
+    const b = await runWith(S, [...RAISED, '--limit', '1']);
+    const alone = await main(['apply', '--chapter', 'ch02', '--run', a], S.deps());
+    const resent = JSON.parse(fs.readFileSync(recordOf(S, b, TERM_PASS_RECORD), 'utf8'));
+    // The re-send must carry exactly the request the first run lost, or this tests nothing.
+    expect(alone.result.coverage.requestsMissing).toEqual(resent.requestKeys);
+    return { a, b };
+  }
+
+  it('writes a complete chapter from a cut-off run and a re-send at a higher limit', async () => {
+    const S = setup();
+    const { a, b } = await cutOffThenResend(S);
+    const w = await main(
+      ['apply', '--chapter', 'ch02', '--run', a, '--run', b, '--write'],
+      S.deps()
+    );
+    expect(w.result.coverage).toMatchObject({ complete: true, requestsTruncated: 0 });
+    const summary = JSON.parse(
+      fs.readFileSync(path.join(S.fx.book, 'ai-review', 'applied', 'ch02', 'apply.json'), 'utf8')
+    );
+    expect(summary).toMatchObject({
+      schema: 'ai-review-apply/3',
+      maxTokens: null,
+      maxTokensByRun: { [a]: 16000, [b]: 20000 },
+    });
+  });
+
+  it('control: listed first, the re-send loses to the cut-off answer, which still counts', async () => {
+    const S = setup();
+    const { a, b } = await cutOffThenResend(S);
+    const d = await main(['apply', '--chapter', 'ch02', '--run', b, '--run', a], S.deps());
+    expect(d.result.coverage).toMatchObject({ complete: false, requestsTruncated: 1 });
+  });
+
+  it('control: runs at one limit record it as maxTokens, and per run', async () => {
+    const S = setup();
+    const a = await runWith(S, UNDER_SDK_LIMIT);
+    const d = await main(['apply', '--chapter', 'ch02', '--run', a], S.deps());
+    expect(d.result.summary).toMatchObject({ maxTokens: 16000, maxTokensByRun: { [a]: 16000 } });
+  });
+
+  it('control: runs that differ in effort still refuse', async () => {
+    const S = setup();
+    const a = await runWith(S, [...UNDER_SDK_LIMIT, '--effort', 'high']);
+    const b = await runWith(S, [...UNDER_SDK_LIMIT, '--effort', 'xhigh']);
+    await expect(
+      main(['apply', '--chapter', 'ch02', '--run', a, '--run', b], S.deps())
+    ).rejects.toThrow(/mixed-runs.*effort/);
+  });
+
+  /** Rewrite the first request line of a run's requests.jsonl. */
+  function editFirstRequest(S, runId, edit) {
+    const f = recordOf(S, runId, 'requests.jsonl');
+    const [first, ...rest] = fs.readFileSync(f, 'utf8').split('\n');
+    const line = JSON.parse(first);
+    edit(line.body);
+    fs.writeFileSync(f, [JSON.stringify(line), ...rest].join('\n'));
+  }
+
+  it('refuses a re-sent request whose body differs in anything besides max_tokens', async () => {
+    const S = setup();
+    const { a, b } = await cutOffThenResend(S);
+    editFirstRequest(S, b, (body) => {
+      body.temperature = 0.5;
+    });
+    await expect(
+      main(['apply', '--chapter', 'ch02', '--run', a, '--run', b], S.deps())
+    ).rejects.toThrow(/mixed-runs.*differs between run/);
+  });
+
+  it('refuses a request whose max_tokens is not its run’s', async () => {
+    const S = setup();
+    const { a, b } = await cutOffThenResend(S);
+    editFirstRequest(S, b, (body) => {
+      body.max_tokens = 99999;
+    });
+    await expect(
+      main(['apply', '--chapter', 'ch02', '--run', a, '--run', b], S.deps())
+    ).rejects.toThrow(/bad-record.*max_tokens/);
+  });
+});
+
 // The same findings at apply level (layer2-integrity: the parser-side pre-fail was unpinned
 // there too): through the CLI, with the real parser, gate and change records.
 describe('apply withdraws a ruling the model flagged, and one whose op the parser converted', () => {
@@ -1262,7 +1371,7 @@ describe('usable means every presented segment answered, in apply and in run ali
     );
     await expect(
       main(['apply', '--chapter', 'ch02', '--run', r.results[0].runId, '--write'], S.deps())
-    ).rejects.toThrow(/max-tokens.*apply that run alone/);
+    ).rejects.toThrow(/max-tokens.*new run listed last/);
     const { S: S2, runId } = await ch02Run(() => ({ segments: [] }));
     await expect(
       main(['apply', '--chapter', 'ch02', '--run', runId, '--write'], S2.deps())
