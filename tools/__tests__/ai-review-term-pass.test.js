@@ -1226,6 +1226,56 @@ describe('run --request sends only the named requests', () => {
     expect(Number(m[2])).toBeLessThan(whole.batch);
   });
 
+  // The whole-branch review (2026-11-02, Fable, Important): the whole-chapter TOTAL printed
+  // first and read as a cap alarm (USD 105 against a cap of 100) on a USD 2 re-send.
+  it('without --yes, a two-chapter --request run totals what it would send, after the whole-chapter table', async () => {
+    const S = setup({ chapters: ['ch02', 'ch03'] });
+    const keys = await planKeys(S, ['ch02', 'ch03']);
+    S.lines.length = 0; // only the run's output below, not the plan call's
+    const r = await main(
+      [
+        'run',
+        '--chapter',
+        'ch02',
+        '--chapter',
+        'ch03',
+        '--mode',
+        'interactive',
+        ...UNDER_SDK_LIMIT,
+        '--request',
+        keys.ch02[0],
+        '--request',
+        keys.ch03[0],
+      ],
+      S.deps({ transport: mockTransport() })
+    );
+    expect(r.sent).toBe(false);
+    const out = S.lines.join('');
+    const per = [
+      ...out.matchAll(/\(--request\): worst case USD ([\d.]+) interactive \/ ([\d.]+) batch/g),
+    ];
+    expect(per).toHaveLength(2);
+    const total = out.match(
+      new RegExp(
+        `TOTAL \\(--request\\): sending 2 of ${keys.ch02.length + keys.ch03.length} planned ` +
+          'requests: worst case USD ([\\d.]+) interactive / ([\\d.]+) batch'
+      )
+    );
+    expect(total).not.toBeNull();
+    const sum = (k) => Math.round((Number(per[0][k]) + Number(per[1][k])) * 100) / 100;
+    expect(Number(total[1])).toBe(sum(1));
+    expect(Number(total[2])).toBe(sum(2));
+    // The whole-chapter TOTAL says what it prices, and no longer claims a batch reserves it.
+    const whole = out.split('\n').find((l) => l.startsWith('TOTAL  '));
+    expect(whole).toMatch(/whole chapters, not what this run sends/);
+    expect(whole).not.toMatch(/a batch reserves its whole worst case/);
+    expect(out.indexOf('TOTAL (--request)')).toBeGreaterThan(out.indexOf(whole));
+    // Control: without --request the whole-chapter TOTAL keeps its cap note.
+    S.lines.length = 0;
+    await main(['plan', '--chapter', 'ch02', ...UNDER_SDK_LIMIT], S.deps());
+    expect(S.lines.join('')).toMatch(/TOTAL .*a batch reserves its whole worst case/);
+  }, 120_000);
+
   it('control: without --request, params.request is null', async () => {
     const S = setup();
     const r = await main(

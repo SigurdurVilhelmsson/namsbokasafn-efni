@@ -162,7 +162,14 @@ node tools/ai-review/term-pass.js run --chapter ch07 --chapter ch08 \
   --request ch07/m68742/012 --request ch07/m68742/013 --request ch08/m68747/003 \
   --mode batch --max-tokens 64000 --layer1-commit 0093d8da4
 ```
-Expected: `preflight passed: layer 1 at 0093d8da4…`; `sending 2 of 51 planned requests of ch07 (--request)` and `sending 1 of 26 planned requests of ch08 (--request)`, about USD 0.7 per request at batch prices; `not sending: add --yes to spend.` The ledger's headroom on 2026-11-02 was USD 39.72 (100 − 60.28).
+Expected, in this order (✏️ 2026-11-02, after the whole-branch review; measured by both reviewers on the real book):
+- the plan table, whose `TOTAL` prices **whole chapters** (about USD 105 interactive / 53 batch) and says `(whole chapters, not what this run sends: see the --request lines below)`;
+- `sending 2 of 51 planned requests of ch07 (--request): worst case USD 2.72 interactive / 1.36 batch` and `sending 1 of 26 planned requests of ch08 (--request): … / 0.69 batch`;
+- `TOTAL (--request): sending 3 of 77 planned requests: worst case USD … / 2.05 batch` — **about what the run reserves** (an estimate; each chapter's batch reserves on counted tokens);
+- `preflight passed: layer 1 at 0093d8da4…`;
+- `not sending: add --yes to spend.`
+
+The ledger's headroom on 2026-11-02 was USD 39.72 (100 − 60.28).
 
 - [ ] **Step 5: [USER]'s go, then the paid run**
 

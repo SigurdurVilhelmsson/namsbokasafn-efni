@@ -431,7 +431,11 @@ function runParams(values) {
   };
 }
 
-function printPlan(ctx, rows, totals) {
+/**
+ * The plan table and its TOTAL. With `named` (run --request) the table still prices whole
+ * chapters, so its TOTAL says so instead of the cap note, which holds only for what is sent.
+ */
+function printPlan(ctx, rows, totals, { named = false } = {}) {
   ctx.out(
     'chapter      units items occ   pairs requests input~tok  worst$ int  worst$ batch  skipped(identical/empty/no-en/no-is)\n'
   );
@@ -442,7 +446,10 @@ function printPlan(ctx, rows, totals) {
     );
   }
   ctx.out(
-    `TOTAL        requests ${totals.requests}, input ~${totals.inputTokensEstimate} tokens, worst case USD ${round2(totals.worstInteractive)} interactive / ${round2(totals.worstBatch)} batch (the cap is USD ${CAP_USD}; a batch reserves its whole worst case, so batches run one chapter at a time)\n`
+    `TOTAL        requests ${totals.requests}, input ~${totals.inputTokensEstimate} tokens, worst case USD ${round2(totals.worstInteractive)} interactive / ${round2(totals.worstBatch)} batch ` +
+      (named
+        ? '(whole chapters, not what this run sends: see the --request lines below)\n'
+        : `(the cap is USD ${CAP_USD}; a batch reserves its whole worst case, so batches run one chapter at a time)\n`)
   );
 }
 
@@ -685,9 +692,10 @@ async function cmdRun(ctx, values, deps) {
   const namedOf = (row) => row.requests.filter((q) => named.get(row.chapterDir).has(q.key));
   const plans = new Map(rows.map((r) => [r.chapterDir, r]));
   const chapters = rows.map((r) => r.chapterDir);
-  printPlan(ctx, rows, totals);
+  printPlan(ctx, rows, totals, { named: Boolean(named) });
   if (named) {
     // The plan table prices whole chapters; this is what the run would actually send.
+    const sent = { requests: 0, planned: 0, interactive: 0, batch: 0 };
     for (const row of rows) {
       const sending = namedOf(row);
       const { worstCaseUsd } = estimateRequests(sending, {
@@ -699,7 +707,16 @@ async function cmdRun(ctx, values, deps) {
           `${row.chapterDir} (--request): worst case USD ${worstCaseUsd.interactive} ` +
           `interactive / ${worstCaseUsd.batch} batch\n`
       );
+      sent.requests += sending.length;
+      sent.planned += row.requests.length;
+      sent.interactive += worstCaseUsd.interactive;
+      sent.batch += worstCaseUsd.batch;
     }
+    ctx.out(
+      `TOTAL (--request): sending ${sent.requests} of ${sent.planned} planned requests: ` +
+        `worst case USD ${round2(sent.interactive)} interactive / ${round2(sent.batch)} batch ` +
+        `(the cap is USD ${CAP_USD}; a batch reserves its chapter's share of this)\n`
+    );
   }
   const layer1Commit = preflight(ctx, {
     rulingSet,
