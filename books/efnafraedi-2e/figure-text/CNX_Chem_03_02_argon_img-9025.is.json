@@ -1,10 +1,11 @@
 {
  "version": 1,
  "basename": "CNX_Chem_03_02_argon_img-9025",
- "renderHash": "d464b666bb8e8b75",
+ "state": "flagged",
+ "renderHash": "fe09ccb940d3d97a",
  "composedHash": "d464b666bb8e8b75",
  "composedVersion": "6",
- "composerVersion": "1",
+ "composerVersion": "6",
  "blocks": {
   "Moles of|Ar atoms (mol)": "Mól af Ar atómum (mól)",
   "Mass of|Ar atoms (g)": "Massi Ar atóma (g)",
