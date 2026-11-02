@@ -1,0 +1,116 @@
+<!-- SEG:m68864:title:auto-1 -->
+Samsetning algengra sýra og basa
+
+<!-- SEG:m68864:table-summary:fs-idp8700128-summary -->
+Tafla með yfirskriftinni „Samsetning algengra sýra og basa“ hefur fjóra dálka með yfirskriftunum „Sýra eða basi“, „Eðlismassi (g/ml)“, „Massaprósenta“ og „Mólstyrkur“. Fyrir ediksýru, hreina, er eðlismassinn 1,05, massaprósentan 99,5 og mólstyrkurinn 17,4. Fyrir vatnslausn ammóníaks er eðlismassinn 0,90, massaprósentan 28 og mólstyrkurinn 14,8. Fyrir saltsýru er eðlismassinn 1,18, massaprósentan 36 og mólstyrkurinn 11,6. Fyrir saltpéturssýru er eðlismassinn 1,42, massaprósentan 71 og mólstyrkurinn 16,0. Fyrir perklórsýru er eðlismassinn 1,67, massaprósentan 70 og mólstyrkurinn 11,65. Fyrir fosfórsýru er eðlismassinn 1,70, massaprósentan 85 og mólstyrkurinn 14,7. Fyrir natríumhýdroxíð er eðlismassinn 1,53, massaprósentan 50 og mólstyrkurinn 19,1. Fyrir brennisteinssýru er eðlismassinn 1,84, massaprósentan 96 og mólstyrkurinn 18,0.
+
+<!-- SEG:m68864:entry:auto-2 -->
+Samsetning algengra sýra og basa
+
+<!-- SEG:m68864:entry:auto-3 -->
+Sýra eða basi [[fn:Sýrur og basar eru fáanlegir í verslunum sem vatnslausnir. Þessi tafla sýnir eiginleika (eðlismassa og styrk) algengra sýru- og basalausna. Nafngildi eru gefin upp í tilvikum þar sem framleiðandi gefur upp bil fyrir styrk og eðlismassa.|fs-idm38171904]]
+
+<!-- SEG:m68864:entry:auto-4 -->
+Eðlismassi (g/ml) [[fn:Þessi dálkur inniheldur gögn um eðlisþyngd. Í þessari töflu er eðlisþyngd hlutfall eðlismassa efnis og eðlismassa hreins vatns við sömu aðstæður. Eðlisþyngd er oft tilgreind á umbúðum.|fs-idp90181920]]
+
+<!-- SEG:m68864:entry:auto-5 -->
+Massaprósenta
+
+<!-- SEG:m68864:entry:auto-6 -->
+Mólstyrkur
+
+<!-- SEG:m68864:entry:auto-7 -->
+Ísedikssýra
+
+<!-- SEG:m68864:entry:auto-8 -->
+1,05
+
+<!-- SEG:m68864:entry:auto-9 -->
+99,5%
+
+<!-- SEG:m68864:entry:auto-10 -->
+17,4
+
+<!-- SEG:m68864:entry:auto-11 -->
+Vatnslausn ammóníaks [[fn:Þessi lausn er stundum kölluð „ammóníumhýdroxíð“ þótt það hugtak sé ekki efnafræðilega rétt.|fs-idp11725888]]
+
+<!-- SEG:m68864:entry:auto-12 -->
+0,90
+
+<!-- SEG:m68864:entry:auto-13 -->
+28%
+
+<!-- SEG:m68864:entry:auto-14 -->
+14,8
+
+<!-- SEG:m68864:entry:auto-15 -->
+Saltsýra
+
+<!-- SEG:m68864:entry:auto-16 -->
+1,18
+
+<!-- SEG:m68864:entry:auto-17 -->
+36%
+
+<!-- SEG:m68864:entry:auto-18 -->
+11,6
+
+<!-- SEG:m68864:entry:auto-19 -->
+Saltpéturssýra
+
+<!-- SEG:m68864:entry:auto-20 -->
+1,42
+
+<!-- SEG:m68864:entry:auto-21 -->
+71%
+
+<!-- SEG:m68864:entry:auto-22 -->
+16,0
+
+<!-- SEG:m68864:entry:auto-23 -->
+Perklórsýra
+
+<!-- SEG:m68864:entry:auto-24 -->
+1,67
+
+<!-- SEG:m68864:entry:auto-25 -->
+70%
+
+<!-- SEG:m68864:entry:auto-26 -->
+11,65
+
+<!-- SEG:m68864:entry:auto-27 -->
+Fosfórsýra
+
+<!-- SEG:m68864:entry:auto-28 -->
+1,70
+
+<!-- SEG:m68864:entry:auto-29 -->
+85%
+
+<!-- SEG:m68864:entry:auto-30 -->
+14,7
+
+<!-- SEG:m68864:entry:auto-31 -->
+Natríumhýdroxíð
+
+<!-- SEG:m68864:entry:auto-32 -->
+1,53
+
+<!-- SEG:m68864:entry:auto-33 -->
+50%
+
+<!-- SEG:m68864:entry:auto-34 -->
+19,1
+
+<!-- SEG:m68864:entry:auto-35 -->
+Brennisteinssýra
+
+<!-- SEG:m68864:entry:auto-36 -->
+1,84
+
+<!-- SEG:m68864:entry:auto-37 -->
+96%
+
+<!-- SEG:m68864:entry:auto-38 -->
+18,0

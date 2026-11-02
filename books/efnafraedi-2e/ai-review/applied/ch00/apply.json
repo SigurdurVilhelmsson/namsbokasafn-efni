@@ -1,0 +1,60 @@
+{
+  "schema": "ai-review-apply/3",
+  "book": "efnafraedi-2e",
+  "chapterDir": "ch00",
+  "runIds": [
+    "20261101T183602Z-201860ac"
+  ],
+  "layer1Commit": "0093d8da4620a2041e583d3f84d39e9b49f055a2",
+  "rulingSet": {
+    "path": "experiments/terminology-consistency/results/2026-11-02/ruling-set-2026-11-02.json",
+    "sha256": "0aa33690ca829be4baa4da2b34fbea1455517d426e939c3544b3a86b3049c3bd"
+  },
+  "prompt": {
+    "path": "tools/ai-review/prompts/term-pass-v2.md",
+    "sha256": "7f9b1b3518bb6454d799a03d3a53b490376f37d2e25a6c4a89e42f6c299e559b"
+  },
+  "model": "claude-opus-5-5",
+  "effort": "xhigh",
+  "maxTokens": 32000,
+  "maxTokensByRun": {
+    "20261101T183602Z-201860ac": 32000
+  },
+  "applyCommit": "f75110ebfe93da33a35a73ae99e2e159b7d8b995",
+  "units": [
+    {
+      "stem": "m68662",
+      "layer1Sha256": "dc339c65d892f60195243e8b1e44bbcf0d76265ef9aadc4cbef1b3b7b9992309",
+      "overlaySha256": null,
+      "enSha256": "a884e6bc1ea203e8f2eefe55a51201bd5763cfa57fef884b794ef05b94bed704"
+    }
+  ],
+  "counts": {
+    "requests": 1,
+    "requestProblems": {},
+    "segmentsPresented": 3,
+    "segmentsAnswered": 3,
+    "segmentsMissing": 0,
+    "entriesDropped": 0,
+    "opsProposed": 2,
+    "accepted": 2,
+    "rejected": 0,
+    "unclearConverted": 0,
+    "acceptedByCategory": {
+      "term": 2
+    },
+    "rejectedByReason": {},
+    "flagsByKind": {},
+    "changes": 2,
+    "occurrencesChanged": 2,
+    "leftovers": 0
+  },
+  "coverage": {
+    "requestsPlanned": 1,
+    "requestsUsable": 1,
+    "requestsMissing": [],
+    "requestsTruncated": 0,
+    "segmentsUnanswered": [],
+    "complete": true
+  }
+}
