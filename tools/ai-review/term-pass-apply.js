@@ -51,7 +51,11 @@ export const TERM_PASS_SCHEMA = 'ai-review-term-pass/2';
  * /2 (2026-10-30) adds the leftover-form check: `counts.leftovers` and `leftovers.jsonl`. A /1
  * summary has no count, so "checked, none found" and "never checked" stay distinguishable.
  */
-export const APPLY_SCHEMA = 'ai-review-apply/2';
+/**
+ * /3 (2026-11-02) adds `maxTokensByRun`: runs at different max_tokens may be applied together, so
+ * `maxTokens` is the runs' one limit, or null when they differ.
+ */
+export const APPLY_SCHEMA = 'ai-review-apply/3';
 export const APPLIED_DIR = 'applied';
 export const APPLIED_FILES = Object.freeze({
   summary: 'apply.json',
@@ -94,6 +98,12 @@ const refusal = (code, message) => Object.assign(new Error(`[${code}] ${message}
 const sha256 = (data) => crypto.createHash('sha256').update(data).digest('hex');
 const byString = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
 const sameJson = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+/** A request body without max_tokens, the one field runs may differ in (checkRuns). */
+const withoutLimit = (body) => {
+  const rest = { ...body };
+  delete rest.max_tokens;
+  return rest;
+};
 
 // ── Inputs ───────────────────────────────────────────────────────────────────────────────
 
@@ -319,7 +329,11 @@ function checkRuns(runs, { chapterDir, prompt, rulingSet }) {
         `${where} used another ruling set than ${rulingSet.path} at ${rulingSet.sha256}`
       );
     }
-    for (const k of ['model', 'effort', 'max_tokens']) {
+    // Not max_tokens ([USER] 2026-11-02): it is a limit the model does not see, so an answer
+    // that finishes under both limits is the same answer, and one cut off at the lower limit
+    // is not usable anyway. A re-send at a higher limit is applied with the run it repairs
+    // (docs/decisions/2026-11-01-full-run-truncation-and-unusable-answers.md).
+    for (const k of ['model', 'effort']) {
       if (run[k] !== first.run[k])
         throw refusal('mixed-runs', `${where}: ${k} differs from run ${first.runId}`);
     }
@@ -335,6 +349,24 @@ function checkRuns(runs, { chapterDir, prompt, rulingSet }) {
     }
     if (termPass.params.userFormat !== first.termPass.params.userFormat) {
       throw refusal('mixed-runs', `${where}: user format differs from run ${first.runId}`);
+    }
+    // How the chapter is cut into requests: equal keys do not mean equal requests (a key is a
+    // module's request number), and runs that share no key have no body compared at all, so
+    // runs cut differently could leave a segment that no chosen request presents.
+    for (const k of ['segmentsPerRequest', 'charBudget']) {
+      if (termPass.params[k] !== first.termPass.params[k]) {
+        throw refusal(
+          'mixed-runs',
+          `${where}: ${k} ${termPass.params[k]} differs from run ${first.runId}'s ` +
+            `${first.termPass.params[k]} (the runs cut the chapter into requests differently)`
+        );
+      }
+    }
+    if (!Number.isSafeInteger(termPass.workListCounts?.items)) {
+      throw refusal('bad-record', `${where}: ${TERM_PASS_RECORD} has no workListCounts.items`);
+    }
+    if (termPass.workListCounts.items !== first.termPass.workListCounts.items) {
+      throw refusal('mixed-runs', `${where}: its work list differs from run ${first.runId}'s`);
     }
     const planned = termPass.plannedRequestKeys;
     if (
@@ -367,8 +399,16 @@ function pickResponses(runs) {
       if (e.custom_id) errById.set(e.custom_id, [...(errById.get(e.custom_id) ?? []), e]);
     }
     for (const req of r.requests) {
+      // The body's limit is what was sent, and the summary reports the run's: they must agree.
+      if (req.body?.max_tokens !== r.run.max_tokens) {
+        throw refusal(
+          'bad-record',
+          `run ${r.runId}: request ${req.key} has max_tokens ${req.body?.max_tokens}, ` +
+            `its run ${r.run.max_tokens}`
+        );
+      }
       const prev = byKey.get(req.key);
-      if (prev && !sameJson(prev.body, req.body)) {
+      if (prev && !sameJson(withoutLimit(prev.body), withoutLimit(req.body))) {
         throw refusal(
           'mixed-runs',
           `request ${req.key} differs between run ${prev.runId} and run ${r.runId}`
@@ -447,6 +487,7 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
   const usableKeys = new Set(); // planned requests with a usable answer (isUsableParse)
   const unanswered = new Set(); // presented segment ids no usable answer reviewed
   const truncatedKeys = new Set(); // requests whose chosen answer was cut off at max_tokens
+  const presentedBy = new Map(); // segment id → the chosen request that presents it
 
   for (const req of pickResponses(runs)) {
     c.requests += 1;
@@ -494,6 +535,16 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
           );
         }
       }
+    }
+    for (const s of doc.segments) {
+      if (presentedBy.has(s.id)) {
+        throw refusal(
+          'stale-presented',
+          `segment ${s.id} is presented by request ${presentedBy.get(s.id)} and by request ` +
+            `${req.key}: the runs cut the chapter into requests differently`
+        );
+      }
+      presentedBy.set(s.id, req.key);
     }
     c.segmentsPresented += doc.segments.length;
     const base = { requestKey: req.key, runId: req.runId, module: stem };
@@ -669,6 +720,23 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
     }
   }
 
+  // With every planned request chosen, the chosen requests must present exactly the work list
+  // the runs recorded. A difference means they were cut differently (by flags checkRuns
+  // compares, or by code that changed between the runs), and a segment no request showed the
+  // model would be written as reviewed.
+  const workListItems = runs[0].termPass.workListCounts.items;
+  if (c.requests === plannedKeys.length && presentedBy.size !== workListItems) {
+    throw refusal(
+      'stale-presented',
+      `the chosen requests present ${presentedBy.size} segments, and the chapter's work list ` +
+        `had ${workListItems} when it was run: ` +
+        (presentedBy.size < workListItems
+          ? 'a segment is presented by no request'
+          : 'they present segments outside it') +
+        ' (the runs cut the chapter into requests differently)'
+    );
+  }
+
   const units = inputs.map((u) => {
     const finals = finalByStem.get(u.stem);
     const order = new Map(u.base.parsed.records.map((r, i) => [r.key, i]));
@@ -730,7 +798,8 @@ export function applyChapter({ bookDir, chapterDir, rulingSet, prompt, runs, app
     prompt: revision.prompt,
     model: first.run.model,
     effort: first.run.effort,
-    maxTokens: first.run.max_tokens,
+    maxTokens: new Set(runs.map((r) => r.run.max_tokens)).size === 1 ? first.run.max_tokens : null,
+    maxTokensByRun: Object.fromEntries(runs.map((r) => [r.runId, r.run.max_tokens])),
     applyCommit,
     units: prints,
     counts,

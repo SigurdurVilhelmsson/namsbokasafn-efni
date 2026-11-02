@@ -12,7 +12,12 @@
  *           time, so only one reservation is ever open (a whole-book batch would exceed the
  *           cap on its reservation alone). Stops at the first chapter that does not end
  *           complete, or whose answers are not all usable (truncated, refused, errored or
- *           missing); each chapter's line prints those counts.
+ *           missing); each chapter's line prints those counts. --request KEY (repeatable)
+ *           sends only those requests of their chapters' plans, in plan order, and every
+ *           --chapter needs at least one; the record keeps the whole plan, so apply measures
+ *           coverage as after --limit. It re-sends answers apply cannot use, applied together
+ *           with the run they repair
+ *           (docs/decisions/2026-11-01-full-run-truncation-and-unusable-answers.md).
  *   resume  Resume a batch run whose polling stopped (`pending`). It collects against the
  *           recorded requests; apply, not resume, refuses results whose inputs changed. On an
  *           interactive run that was killed before it ended, `resume --yes` closes it as
@@ -113,7 +118,7 @@ function usage() {
     'usage: node tools/ai-review/term-pass.js <plan|run|resume|apply> [flags]',
     '  plan    (--chapter chNN ... | --all) [--segments-per-request N] [--char-budget N] [--max-tokens N] [--out FILE]',
     '  run     (--chapter chNN ... | --all) --mode interactive|batch [--effort E] [--max-tokens N]',
-    '          [--timeout-ms N] [--layer1-commit REF] [--limit N] [--ruling-set PATH] [--yes]',
+    '          [--timeout-ms N] [--layer1-commit REF] [--limit N | --request KEY ...] [--ruling-set PATH] [--yes]',
     '  resume  --run RUNID [--max-polls N] [--yes]   (--yes closes a killed interactive run)',
     '  apply   --chapter chNN --run RUNID [--run RUNID ...] [--report FILE] [--write] [--overwrite]',
     `The book is ${BOOK}. FILE paths must be absolute, and land (symlinks resolved) outside the repository and outside any books/ directory.`,
@@ -130,6 +135,7 @@ const OPTIONS = {
   'timeout-ms': { type: 'string' },
   'layer1-commit': { type: 'string' },
   limit: { type: 'string' },
+  request: { type: 'string', multiple: true },
   'ruling-set': { type: 'string' },
   'segments-per-request': { type: 'string' },
   'char-budget': { type: 'string' },
@@ -165,6 +171,7 @@ const ALLOWED = {
     'timeout-ms',
     'layer1-commit',
     'limit',
+    'request',
     'ruling-set',
     'segments-per-request',
     'char-budget',
@@ -424,7 +431,11 @@ function runParams(values) {
   };
 }
 
-function printPlan(ctx, rows, totals) {
+/**
+ * The plan table and its TOTAL. With `named` (run --request) the table still prices whole
+ * chapters, so its TOTAL says so instead of the cap note, which holds only for what is sent.
+ */
+function printPlan(ctx, rows, totals, { named = false } = {}) {
   ctx.out(
     'chapter      units items occ   pairs requests input~tok  worst$ int  worst$ batch  skipped(identical/empty/no-en/no-is)\n'
   );
@@ -435,7 +446,10 @@ function printPlan(ctx, rows, totals) {
     );
   }
   ctx.out(
-    `TOTAL        requests ${totals.requests}, input ~${totals.inputTokensEstimate} tokens, worst case USD ${round2(totals.worstInteractive)} interactive / ${round2(totals.worstBatch)} batch (the cap is USD ${CAP_USD}; a batch reserves its whole worst case, so batches run one chapter at a time)\n`
+    `TOTAL        requests ${totals.requests}, input ~${totals.inputTokensEstimate} tokens, worst case USD ${round2(totals.worstInteractive)} interactive / ${round2(totals.worstBatch)} batch ` +
+      (named
+        ? '(whole chapters, not what this run sends: see the --request lines below)\n'
+        : `(the cap is USD ${CAP_USD}; a batch reserves its whole worst case, so batches run one chapter at a time)\n`)
   );
 }
 
@@ -604,6 +618,7 @@ function termPassPayload({
   plannedRequests,
   workList,
   limit,
+  request,
 }) {
   return {
     schema: TERM_PASS_SCHEMA,
@@ -619,12 +634,51 @@ function termPassPayload({
       promptPath: prompt.path,
       rulingSetPath: rulingSet.path,
       limit: limit ?? null,
+      // The keys sent because of --request, in plan order; null without the flag.
+      request: request ?? null,
     },
     requestKeys: requests.map((r) => r.key),
-    // The chapter's WHOLE plan, before --limit: apply measures coverage against it.
+    // The chapter's WHOLE plan, before --limit or --request: apply measures coverage against it.
     plannedRequestKeys: plannedRequests.map((r) => r.key),
     workListCounts: workList.counts,
   };
+}
+
+/**
+ * The requests `run --request KEY` names, by chapter, checked against the plans: a key that
+ * is named twice, names a chapter not among --chapter, or is not in its chapter's plan
+ * refuses, and so does a --chapter with no key, so a typo never sends less than was meant.
+ * @returns {Map<string, Set<string>> | null} chapter dir → its named keys; null without the flag
+ */
+function namedRequests(values, rows) {
+  const keys = values.request;
+  if (!keys?.length) return null;
+  if (values.limit !== undefined)
+    throw refusal('bad-flag', '--request and --limit cannot be combined');
+  if (values.all) throw refusal('bad-flag', '--request needs --chapter, not --all');
+  const seen = new Set();
+  for (const key of keys) {
+    if (seen.has(key)) throw refusal('bad-flag', `--request ${key} is named twice`);
+    seen.add(key);
+  }
+  const plans = new Map(rows.map((r) => [r.chapterDir, new Set(r.requests.map((q) => q.key))]));
+  const named = new Map(rows.map((r) => [r.chapterDir, new Set()]));
+  for (const key of keys) {
+    const ch = key.split('/')[0];
+    const planned = plans.get(ch);
+    if (!planned)
+      throw refusal('bad-flag', `--request ${key}: chapter ${ch} is not among --chapter`);
+    if (!planned.has(key))
+      throw refusal(
+        'bad-flag',
+        `--request ${key} is not in ${ch}'s plan (${planned.size} requests)`
+      );
+    named.get(ch).add(key);
+  }
+  for (const [ch, set] of named) {
+    if (set.size === 0) throw refusal('bad-flag', `--chapter ${ch} has no --request`);
+  }
+  return named;
 }
 
 async function cmdRun(ctx, values, deps) {
@@ -633,9 +687,37 @@ async function cmdRun(ctx, values, deps) {
   const timeoutMs = positiveInt(values['timeout-ms'], 'timeout-ms');
   const limit = positiveInt(values.limit, 'limit');
   const { rulingSet, prompt, params, rows, totals } = planAll(ctx, values);
+  const named = namedRequests(values, rows);
+  /** A chapter's requests that --request named, in plan order. */
+  const namedOf = (row) => row.requests.filter((q) => named.get(row.chapterDir).has(q.key));
   const plans = new Map(rows.map((r) => [r.chapterDir, r]));
   const chapters = rows.map((r) => r.chapterDir);
-  printPlan(ctx, rows, totals);
+  printPlan(ctx, rows, totals, { named: Boolean(named) });
+  if (named) {
+    // The plan table prices whole chapters; this is what the run would actually send.
+    const sent = { requests: 0, planned: 0, interactive: 0, batch: 0 };
+    for (const row of rows) {
+      const sending = namedOf(row);
+      const { worstCaseUsd } = estimateRequests(sending, {
+        model: params.model,
+        maxTokens: params.maxTokens,
+      });
+      ctx.out(
+        `sending ${sending.length} of ${row.requests.length} planned requests of ` +
+          `${row.chapterDir} (--request): worst case USD ${worstCaseUsd.interactive} ` +
+          `interactive / ${worstCaseUsd.batch} batch\n`
+      );
+      sent.requests += sending.length;
+      sent.planned += row.requests.length;
+      sent.interactive += worstCaseUsd.interactive;
+      sent.batch += worstCaseUsd.batch;
+    }
+    ctx.out(
+      `TOTAL (--request): sending ${sent.requests} of ${sent.planned} planned requests: ` +
+        `worst case USD ${round2(sent.interactive)} interactive / ${round2(sent.batch)} batch ` +
+        `(the cap is USD ${CAP_USD}; a batch reserves its chapter's share of this)\n`
+    );
+  }
   const layer1Commit = preflight(ctx, {
     rulingSet,
     prompt,
@@ -659,7 +741,7 @@ async function cmdRun(ctx, values, deps) {
   for (const chapterDir of chapters) {
     if (budget <= 0) break;
     const plan = plans.get(chapterDir);
-    const requests = plan.requests.slice(0, budget);
+    const requests = named ? namedOf(plan) : plan.requests.slice(0, budget);
     if (requests.length === 0) continue;
     budget -= requests.length;
     const runId = mintRunId(ctx.now());
@@ -697,6 +779,7 @@ async function cmdRun(ctx, values, deps) {
             plannedRequests: plan.requests,
             workList: plan.workList,
             limit,
+            request: named ? requests.map((r) => r.key) : null,
           }),
         },
       ],
@@ -899,10 +982,11 @@ async function cmdApply(ctx, values) {
           `${result.coverage.requestsPlanned} planned requests have no usable answer ` +
           `(first: ${result.coverage.requestsMissing.slice(0, 3).join(', ')}). ` +
           (result.coverage.requestsTruncated > 0
-            ? `${result.coverage.requestsTruncated} were cut off at max_tokens: raise --max-tokens, ` +
-              're-run the whole chapter, and apply that run alone (runs with different ' +
-              'max_tokens cannot be applied together).'
-            : 'Run the chapter again and apply the runs together.')
+            ? `${result.coverage.requestsTruncated} were cut off at max_tokens: re-send them ` +
+              'with run --request at a higher --max-tokens, and apply the runs together with ' +
+              'the re-send listed last (a cut-off answer still counts as an answer, so the run ' +
+              'listed last decides).'
+            : 'Re-send them with run --request and apply the runs together, the re-send listed last.')
       );
     }
     const written = writeApplied({
