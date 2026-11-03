@@ -3,21 +3,23 @@
 - **Date:** 2026-11-03
 - **Item:** Skerfur plan §3.1, gate rows G1.1 and G1.2, with G1.4's consent record and G1.20's research database file
 - **Decided by:** [USER], in a brainstorming session on 2026-11-03 (the six rulings in §4) and in three answers the
-  same day to this draft's questions (A1–A3, §14). Everything marked *(Claude's call: …)* is a default for [USER] to
-  check, not something [USER] decided; §14 lists every one.
+  same day to this draft's questions (A1–A3, §14); approved as written on 2026-11-03. Everything marked *(Claude's
+  call: …)* was a default Claude proposed and [USER] approved with the rest, not something [USER] chose among options;
+  §14 lists every one. The nine rulings are also recorded, as cross-cutting decisions, in
+  `docs/decisions/2026-11-03-research-capture-consent-and-retention-rulings.md`.
 - **Status of the work:** the active register's newest ⏩ RESUME entry, never this file.
 
-> **DRAFT DESIGN RECORD — awaiting [USER]'s approval.** On approval the banner becomes: **FROZEN DESIGN RECORD —
-> owned by the G1.1 + G1.2 project (with G1.4's data side and G1.20's research file), banner-dated <date> ([USER]
-> approved it as written).** It is evidence of what was designed and why; it carries no status. If it disagrees with
-> the active register, the register wins. Do not sync it or edit it in place. Supersede it with a new record instead.
+> **FROZEN DESIGN RECORD — owned by the G1.1 + G1.2 project (with G1.4's data side and G1.20's research file),
+> banner-dated 2026-11-03 ([USER] approved it as written).** It is evidence of what was designed and why; it carries
+> no status. If it disagrees with the active register, the register wins. Do not sync it or edit it in place.
+> Supersede it with a new record instead.
 
-**What [USER] is asked to approve.**
-1. §4 records the six rulings and [USER]'s three answers (A1–A3) as decided. Nothing in them needs approving again.
+**What [USER] approved (2026-11-03, as written).**
+1. §4 records the six rulings and [USER]'s three answers (A1–A3) as decided.
 2. The Claude's calls in §14.
-3. One choice that check G-1d may raise (§9): if chemistry already holds assignment rows, either [USER] removes them
-   before the opening step ships, or those units are recorded as opened before the switch-on and never get
-   suggestions.
+3. One choice that check G-1d may raise (§9), made when G-1d runs, not at approval: if chemistry already holds
+   assignment rows, either [USER] removes them before the opening step ships, or those units are recorded as opened
+   before the switch-on and never get suggestions.
 4. Where this design departs from the Skerfur rows or a ruling's wording: R5's two pieces replace the per-unit
    manifest; G1.1's "freeze commit" column is dropped, since whether a version is the frozen base is a join on G1.7's
    manifest (§5.2); acceptance rows get no origin column (§5.8); the English text is stored (§5.2); research backups go
@@ -132,7 +134,8 @@ which parts G1.23 waits for.
 
 [USER] chose from options in the brainstorm. Each was the recommended option. The same day [USER] answered this draft's
 three questions, again with the recommended option (§14): **A1** reads R3, **A2** fixes R5's export, and **A3** accepts
-loss notes that outlive R2's 7 days, with the consent text saying so. §12 item 0 moves all nine to a decision record,
+loss notes that outlive R2's 7 days, with the consent text saying so. §12 item 0 moves all nine to a decision record
+(`docs/decisions/2026-11-03-research-capture-consent-and-retention-rulings.md`),
 since they bind items beyond this project.
 
 **R1. Decliners: "Finished text only".**

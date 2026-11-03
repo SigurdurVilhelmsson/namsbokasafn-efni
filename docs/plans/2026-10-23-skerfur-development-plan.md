@@ -206,6 +206,37 @@ pre-registration no longer applies.*
 ✏️ *2026-10-28, G1.23: the rule layer's edits (10-10 3.1) appear in the same view, labelled as rule edits, with
 accept-all per ruling ([rule layer](../decisions/2026-10-28-rule-layer-edits-as-editor-suggestions.md)).*
 
+✏️ *2026-11-03, G1.1 ([design](../superpowers/specs/2026-11-03-served-version-and-event-log-design.md), approved as written; [rulings](../decisions/2026-11-03-research-capture-consent-and-retention-rulings.md)): the client echoes the hash of the
+**base text** the server served (the loader's `is`), not of "the version it displays". The in-flight edit on screen is
+checked separately, and a save on a displayed edit that has since changed is refused. The per-unit manifest is
+replaced by G1.7's freeze manifest and an end-of-editing export (R5). "Holding … the freeze commit" is dropped:
+whether a version is the frozen base is a join on G1.7's manifest. The row's cited lines have drifted, substance
+intact: `routes/segment-editor.js:394` → `:395`, `:423` → `:424`, `:1507` → `:1514`, `:1475` → `:1482`;
+`segmentEditorService.js:147` → `:148`, `:111` → `:110-112`, `:214` → `:215`; `scripts/backup-db.sh:45` → `:46`.*
+
+✏️ *2026-11-03, G1.2 ([design](../superpowers/specs/2026-11-03-served-version-and-event-log-design.md)): of the assists the row says the client reports, three are not client
+reports. Propagation is a server route, re-attach is a script that calls the save service, and note-apply has no
+code; the server stamps those origins itself. A propagated row differs from a typed one in more than its note: a
+server-derived base, no activity row, no MT lock, and it can overwrite a typed pending row in place. "Acceptance rows
+carry an origin too": the origin goes in the research event only, because how an editor accepted is behaviour the
+tool does not need (R3).*
+
+✏️ *2026-11-03, G1.4 ([rulings](../decisions/2026-11-03-research-capture-consent-and-retention-rulings.md)): "An editor who declines is not used in research" now reads with R1. A
+decliner's finished, licensed text counts in the per-unit change figure, and nothing about how or when they worked is
+captured. What the consent text must name is listed in the design's §6 until G1.4's text exists, including the
+research file's 7-day backup lifetime (R2), the editing records kept for everyone and never used as research data
+(R3), and the loss notes that outlive those 7 days (A3).*
+
+✏️ *2026-11-03, G1.12 and G1.13 ([rulings](../decisions/2026-11-03-research-capture-consent-and-retention-rulings.md)): G1.12 lands before any of the 83 duplicate-id modules opens;
+until then a save or accept on a duplicated id that cannot be placed is refused (R4). G1.13 assigns chapters only
+after G1.23 is switched on in production (R6), and only to an editor whose consent decision and signed licence clause
+are recorded (design §8).*
+
+✏️ *2026-11-03, G1.20 ([rulings](../decisions/2026-11-03-research-capture-consent-and-retention-rulings.md), R2): the research file has its own 7-day backup rotation, locally and in its
+own off-box bucket with versioning off, apart from the long-lived tier. The versioning planned here for the editorial
+database must never cover research copies. Before any consent is collected, a read-only check confirms that no
+whole-disk backup or `tar` job also copies the file (design §9).*
+
 **Conditional on SD4 (b), before approvals begin:**
 - a per-book refusal of self-approval (head editors may approve their own edits today, `segmentEditorService.js:404`);
 - approval rights without pipeline or publication rights;
@@ -569,6 +600,11 @@ cannot cover the gap, the follow-on grant's fund is told in month 1. The figures
 | G3.8 | **The stale claims, before the S tag.** Correct `books/efnafraedi-2e/metadata.json` (`humanVerifiedTM: true`, `catTool: Matecat`). Add a note to `books/efnafraedi-2e/tm/` that the June files are carried-over MT | this plan · prep · S | The S tag would freeze them as "what existed" |
 
 ✏️ *2026-10-28, G3.1–G3.2: table summaries keep their own tier and are never marked human-verified; see the 2026-10-28 note under G2.2 ([answers](../decisions/2026-10-28-d12-and-editor-licence-answers.md)).*
+
+✏️ *2026-11-03, G3.2 ([rulings](../decisions/2026-11-03-research-capture-consent-and-retention-rulings.md), R5 and A2): "read from G1.1's committed manifest" becomes the end-of-editing
+export, one line per segment with the served version its final text was made on, that text's sha256 and its state
+(complete, reviewed but unapplied, unreviewed), plus G1.7's freeze manifest. Neither carries a name, an editor key or
+a time.*
 
 ### 5.3 Credits
 
