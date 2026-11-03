@@ -398,8 +398,9 @@ the list of duplicated ids, which get no served version (§5.2).
   supersedes older rows before a module opens, so the step writes a server warning only when the snapshot holds an
   in-flight row whose `origin` is not `re-attach`. On production today chemistry's in-flight human text sits in
   approved-but-unapplied rows (§12, correction 1).
-- A failed step is never retried on a later serve: the serve that should have recorded it answers 503 instead (§5.4),
-  so the opened time and the snapshot always come from the first serve that met the predicate and reached the editor.
+- A failed step is never recorded late: the serve that met the predicate answers 503 (§5.4), and the next serve that
+  meets it runs the step afresh. So the opened time and the snapshot always come from the first serve that met the
+  predicate and reached the editor.
 
 ### 5.6 Refusing a stale base at save and accept
 
@@ -1025,7 +1026,9 @@ This replaces the per-unit manifest in Skerfur G1.1's row.
   - `final_sha256`: `sha256Text` of the final text: the `03-faithful-translation` text at the end-of-editing tag for
     a `complete` segment, the approved text for a `reviewed-but-unapplied` one, the served base for an `unreviewed` one;
   - `state`: `complete` (its approved edit or accepted MT is in the text at the tag), `reviewed-but-unapplied` (an
-    approved edit or active acceptance exists that the tag does not hold) or `unreviewed`.
+    approved edit or active acceptance exists that the tag does not hold) or `unreviewed`. The newest approved edit or
+    active acceptance decides the state, `version_key` and `final_sha256`; an older applied one does not make the
+    segment complete.
 
   The served versions it references are listed by `version_key` with their texts, hashes and layer, without ids. **No
   attempts, no status history, no editor key, no username, no edit id and no time:** it says what each segment ended
@@ -1094,14 +1097,18 @@ no person and holds no time. Research figures read only:
 They never read an editing record: `segment_edits`, `segment_acceptances`, the opening times in `module_openings`,
 the switch times in `book_switch_events`, G1.23's editing rows, `research_consent`, `activity_log`,
 `analytics_events` or the request log. A test fails when any `server/scripts/research-*` file names one of those
-tables. The end-of-editing export (§5.19) and the contract figure (R1) are not research figures.
+tables, with two exceptions, which may name `research_consent` and no other forbidden table: `research-withdrawal.js`,
+to find withdrawn intervals and set `deletion_done_at_ms` (§5.15), and the paper-consent admin script (§5.14), if it
+is given a `research-` name, to record a decision or a withdrawal. Neither uses it to compute a figure. The test lists
+each exception with its reason. The end-of-editing export (§5.19) and the contract figure (R1) are not research
+figures.
 
 ## 6. What the consent text must name
 
 This is the list G1.4's text must cover, as of approval. G1.4's text, once written, owns it, and this section becomes
 evidence. Until then a change to the list is made by a superseding record (or a dated note under G1.4's row in the
 Skerfur plan), never by editing this file. The list is the union of five sources (Skerfur G1.4; its 2026-10-28 notes;
-the rule-layer record; G1.23 §8 item 5; SD6) plus R1, R2, R3, A2 and A3.
+the rule-layer record; G1.23 §8 item 5; SD6) plus R1, R2, R3, A1, A2 and A3.
 
 **Who is recorded, where, and for how long.**
 
@@ -1147,7 +1154,8 @@ long-lived tier); that lifetime is filled in before the text goes to the data pr
 **Everyone, whatever they decide**
 12. Every editor sees suggestions; only consenting editors' decisions are captured.
 13. **A decliner's approved text counts** in the per-unit change figure (pure MT → approved final), which is computed
-    from the published, licensed text alone. Nothing about how or when a decliner worked is captured for research.
+    from the published, licensed text and each segment's state in the end-of-editing export (item 16), with no name or
+    time. Nothing about how or when a decliner worked is captured for research.
     When a consenting reviewer acts on a decliner's edit, the reviewer's act is logged with a reference to the edit
     (its row number in the editing record) and with no research key or link for the edit's author (R1). The edit row
     itself is an editing record (item 14) and is never used as research data.
@@ -1158,7 +1166,9 @@ long-lived tier); that lifetime is filled in before the text goes to the data pr
     submissions; the activity log; the server's request log; and, until G2.3 makes it private before the hold lifts,
     the review-status file, which records who applied each segment and when and is published. They are kept under the
     ordinary retention rule (G1.15), copies stay in the editorial backups (above), and they are **never used as
-    research data** for anyone.
+    research data** for anyone. Research reads only two things derived from them, neither carrying a name or a time:
+    which segments held an unfinished edit when a unit was opened, and whether each unit was opened after suggestions
+    were switched on (A1, §5.22).
 15. The consent record itself: kept after a withdrawal, as proof of the decision, until a stated period after the
     retention date.
 16. What the open corpus needs is kept and released under the licence clause: for each segment, the served version
@@ -1267,12 +1277,12 @@ test carries a positive control in the same fixture, so a system that does nothi
 | T14 | **Flags.** Flip G1.23's switch and emit an event: the snapshot differs from the previous one in that flag only, compared key by key. Both coverage tests fail on a planted unregistered read (a `book_settings` column; a `process.env` read in a temporary root). A later switch row with an earlier time does not move the first switch-on time | The unflipped book's snapshot is unchanged |
 | T15 | **Reviewer on a decliner's edit.** A consenting head editor approves a decliner's edit: the event has `editing_id` and a text hash, and no text, no author key, no author time; each before-image field follows the field table (§5.9). A propagation whose preview text is a decliner's live edit stores only its hash: the decliner's sentinel text is absent from `research.db`'s bytes | The same approval of a consenting author's edit is matched by hash to that author's save event |
 | T16 | **Propagation.** The target row's `original_content`, `served_version_id`, `occurrence` and `origin` come from the target's server-loaded text, on insert and on in-place update; the event records the client text and the preview hash, and flags a difference | A target whose text equals the preview's shows no flag |
-| T17 | **Nothing reaches a browser or a route.** The module JSON carries no research field and no opened or switch time; every new `segment_edits` and `segment_acceptances` column is on an allowlist; no file under `server/routes/` references `researchDb` or `editor_keys`; no file under `server/routes/` or `server/services/` requires the admin reader module; no `server/scripts/research-*` file names a table §5.22 forbids; the eligibility script's output holds only book, chapter, module and the yes/no; `record`'s failure log for a forced failure holds no sentinel text and no key | The check detects a planted reference; `researchLog.js` does reference `researchDb` |
+| T17 | **Nothing reaches a browser or a route.** The module JSON carries no research field and no opened or switch time; every new `segment_edits` and `segment_acceptances` column is on an allowlist; no file under `server/routes/` references `researchDb` or `editor_keys`; no file under `server/routes/` or `server/services/` requires the admin reader module; no `server/scripts/research-*` file names a table §5.22 forbids, except the two `research_consent` exceptions §5.22 lists with their reasons; the eligibility script's output holds only book, chapter, module and the yes/no; `record`'s failure log for a forced failure holds no sentinel text and no key | The check detects a planted reference, including `research-withdrawal.js` naming `segment_edits`; `researchLog.js` does reference `researchDb` |
 | T18 | **Scope.** The study allowlist contains chemistry and never `lifraen-efnafraedi`; an organic serve mints nothing; an organic save, accept or propagation answers 409 `BOOK_NOT_MINTED`, even with a correct hash in the body; an event for a non-study book writes nothing and counts nothing | A chemistry event writes its row |
 | T19 | **Backups.** `backup-db.sh`'s local glob and remote and verify prefixes match only `sessions.`; the research job writes to its own directory under `research.`, with mode `0600`, and to its own remote, never the editorial one; the age cut-off and the health threshold are derived from `install-cron.sh`; a failing upload still prunes; a failing deletion step takes no copy; a failing remote prune exits non-zero with no heartbeat | A copy older than the cut-off is pruned |
 | T20 | **Times.** A replayed save carries `replayed` 1 and the client's original action time; two saves by one editor in one second are ordered by `key_seq` and carry distinct millisecond times; event ids are not monotone in insertion order | A live save carries `replayed` 0 |
 | T21 | **MT lock.** In a study-book unit that already holds a freeze marker, the first save and the first accept leave every file under `books/` unchanged | Without the marker, the first save writes one (today's behaviour) |
-| T22 | **Export.** A fixture holds a segment with a rejected and an applied edit; one edited in two rounds on two served versions; one with an approved, unapplied edit; one with an applied MT acceptance; an untouched one; and one whose approved edit predates G1.1 (NULL `served_version_id`), as all of production's chemistry rows do. The export has exactly one line per segment occurrence, with the expected `state`; `version_key` is the final text's version (the second round's), and `null` for the MT-accepted, untouched and pre-G1.1 lines; `final_sha256` equals `sha256Text` of the final text; there is no integer id, edit id, status history or time; two exports whose served-version ids were assigned in different orders are byte-identical | The applied edit's version key matches its served version's content |
+| T22 | **Export.** A fixture holds a segment with a rejected and an applied edit; one edited in two rounds on two served versions, whose first-round edit is applied and whose second-round edit is approved and unapplied; one with an approved, unapplied edit; one with an applied MT acceptance; an untouched one; and one whose approved edit predates G1.1 (NULL `served_version_id`), as all of production's chemistry rows do. The export has exactly one line per segment occurrence, with the expected `state` (the two-round line is `reviewed-but-unapplied`, not `complete`); `version_key` is the final text's version (the second round's), and `null` for the MT-accepted, untouched and pre-G1.1 lines; `final_sha256` equals `sha256Text` of the final text (the second round's approved text for the two-round line); there is no integer id, edit id, status history or time; two exports whose served-version ids were assigned in different orders are byte-identical | The applied edit's version key matches its served version's content |
 | T23 | **Client.** The saved and accepted values are read from the row's DOM after a declined re-render; a draft keeps its base and its assists through a refused save and a restore, and the next save lists both the earlier insert and `draft-restore`; a legacy bare-text draft restores with `{legacy: true}`; `saveRetry` errors carry `code` | A save with no re-render sends the same values |
 
 **The sweep's 19 risks, mapped to tests.**
