@@ -60,11 +60,11 @@ G1.12 for the 83 affected modules (R4), and assignment only after G1.23's switch
 
 Each is a §13 item, a seam the spec leaves open (handoff §3), or a placement §13a does not make.
 
-1. **`server/lib/researchScope.js` ships in PR1, not PR3. ⚠️ This changes §13a's table and needs [USER]'s yes.** Two
-   consumers come before PR3: the id-based re-attach script must refuse the study book once `saveOnServedBase` exists
-   (spec §5.6, decision 7), and PR2's opening predicate requires the book to be on the allowlist (§5.5). Once
-   approved, a dated `✏️ AMENDED` block on the spec records the move (precedent:
-   `docs/superpowers/specs/2026-10-27-ai-layer-runner-design.md:8`); the spec is not otherwise edited.
+1. **`server/lib/researchScope.js` ships in PR1, not PR3. ✅ [USER] approved this change to §13a's table on
+   2026-11-03,** and the spec carries a dated `✏️ AMENDED` block recording it (precedent:
+   `docs/superpowers/specs/2026-10-27-ai-layer-runner-design.md:8`); the spec is not otherwise edited. Two consumers
+   come before PR3: the id-based re-attach script must refuse the study book once `saveOnServedBase` exists (spec
+   §5.6, decision 7), and PR2's opening predicate requires the book to be on the allowlist (§5.5).
 2. **PR1 and PR2 refuse and open without logging; PR3 adds the emission at those points** (handoff §3 item 2).
    `record` does not exist before PR3, so `write-refused` (§5.6, §5.7) and `module-opened` (§5.5) are emitted from
    PR3. T4, T5 and T16 split along that line: their `sessions.db` halves are PR1's tests, their event halves PR3's.

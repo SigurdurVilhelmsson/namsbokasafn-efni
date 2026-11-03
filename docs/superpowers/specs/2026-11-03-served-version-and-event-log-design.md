@@ -14,6 +14,16 @@
 > no status. If it disagrees with the active register, the register wins. Do not sync it or edit it in place.
 > Supersede it with a new record instead.
 
+> **✏️ AMENDED 2026-11-03: `server/lib/researchScope.js` ships in PR1, not PR3** ([USER] 2026-11-03, approving
+> decision 1 of the implementation plan's index, `docs/superpowers/plans/2026-11-03-g11-g12-served-versions-and-event-log.md`).
+> It overrides one cell of §13a's table: PR3's "Holds" listed `researchScope.js`.
+>
+> - **Why:** two consumers come before PR3. Once `saveOnServedBase` exists (PR1), the id-based re-attach script must
+>   refuse the study book (§5.6), and PR2's opening predicate requires the book to be on the allowlist (§5.5). PR3
+>   was the first to need it only in the table, not in the design.
+> - **Unchanged:** what the module holds (the study allowlist, chemistry, pinned by a test that fails if organic ever
+>   appears; §11), and everything else in §13a.
+
 **What [USER] approved (2026-11-03, as written).**
 1. §4 records the six rulings and [USER]'s three answers (A1–A3) as decided.
 2. The Claude's calls in §14.
