@@ -48,7 +48,7 @@ JS with no build step (`server/public/js/`, `sourceType: 'script'`), Vitest from
 | PR | Plan | Holds (spec §13a, with decision 1) | Gate | Needs on `main` first | Migration (predicted) |
 |---|---|---|---|---|---|
 | **PR1** | [G1.1 core](2026-11-03-g11-g12-pr1-served-versions-core.md) | `servedText.js`, **`researchScope.js` (moved from PR3)**, `served_text_versions` and the new editing columns, the serve hook (steps 1–3, 6), `servedEdit.js` and every refusal, propagation minting, the re-attach script's refusal, the client changes (§5.18), the test bodies (G-5), `checks.schema` (first part) | none | — | `053` |
-| **PR2** | [the opening record](2026-11-03-g11-g12-pr2-opening-record.md) | `module_openings`, `module_opening_inflight`, the predicate, the 503, the read-only production probe (G-1c…G-1g) | merged only after G-1d has run on production and [USER] has made the §9 choice if chemistry holds assignment rows | PR1 | `054` |
+| **PR2** | [the opening record](2026-11-03-g11-g12-pr2-opening-record.md) | `module_openings`, `module_opening_inflight`, the predicate, the 503, the read-only production probe (G-1c…G-1g), `close-pending-edits.js` refusing once a unit of its book has opened (§5.6's last bullet; PR2's decision 29) | merged only after G-1d has run on production and [USER] has made the §9 choice if chemistry holds assignment rows | PR1 | `054` |
 | **PR3** | [G1.2, the event log](2026-11-03-g11-g12-pr3-event-log.md) | the research path, connection and schema; the consent tables (`research_consent`, `research_capture_losses`), `researchConsentText.js` (empty) and routes; `editor_keys`; `record`; `book_switch_events`; the flag registry; the server commit (with `deploy.sh`); emission at every write route (including `write-refused` from PR1 and `module-opened` from PR2), with the services returning before-images; `checks.research_db`; `research-status.js` | inert until an approved text is listed; **G1.23 may start once PR1–PR3 are on `main`** | PR1, PR2 | `055` |
 | **PR4** | [deletion and backups](2026-11-03-g11-g12-pr4-deletion-and-backups.md) | `research_deletions`, `research_derived_datasets`; the withdrawal and retention scripts and the withdraw route's immediate deletion; the admin reader module; the paper-consent script; the research backup job, its own remote and bucket, its cron line, heartbeat and `backup-stale`; the restore script; the prune and prefix tests; the checklist and backup-doc corrections; the probe's G-1a (crontab) and G-1h parts | gates consent collection, not G1.23. Before the first *consented* row: G-1a, G-1b, G-1h, the data protection officer's review, then [USER] lists the text | PR3 | `056` |
 | **PR5** | [the end-of-editing export](2026-11-03-g11-g12-pr5-end-of-editing-export.md) | `export-served-versions.js`, `opening-eligibility.js`, the raw research export (§5.19's last bullet) | any time before G3.2, but only after PR3 (`opening-eligibility.js` reads PR2's and PR3's tables) and, for the raw research export, PR4 (its admin reader) | PR4 | none |
@@ -102,7 +102,8 @@ Each is a §13 item, a seam the spec leaves open (handoff §3), or a placement �
     database and compares `PRAGMA table_info(segment_edits)` with the hand copy's by column name and type, so the next
     PR that adds a column and forgets the copy turns `test` red instead of passing suites against a stale table.
 12. **The refused-save experience (§13):** on a refusal (`STALE_BASE`, `STALE_DISPLAYED`, `BASE_MISSING`,
-    `DUPLICATE_ID`, `BOOK_NOT_MINTED`, or any 409 to a replay), the client moves the typed text and its assist list
+    `DUPLICATE_ID`, `BOOK_NOT_MINTED`, `NO_LAYER`, or any non-5xx answer to a replay: §5.6's wording, a superset of
+    §5.18's "any 409"; PR1's decisions 5, 28 and 30), the client moves the typed text and its assist list
     into the module's draft, keyed by segment, with the `baseSha256` it was typed on, then reloads. On restore, a draft
     whose `baseSha256` differs from the row's newly served one opens in that segment's edit pane with a notice above
     it: the text it was typed on has changed, the row shows the new text, redo the change and save. A `DUPLICATE_ID`
@@ -113,8 +114,10 @@ Each is a §13 item, a seam the spec leaves open (handoff §3), or a placement �
     strings in `server/public/js/ui-strings.js` (guarded by `ui-strings.test.js`), server messages beside each code.
     **[USER] checks the wording before the PR is opened.**
 14. **The production probe is one committed read-only script, `server/scripts/read-research-preconditions.js`,** sent
-    on stdin as `server/scripts/read-pending-edits.js:13-18` describes. PR2 builds it with the database and file-system
-    checks (G-1c, G-1d, G-1e, G-1f, G-1g), because G-1d gates PR2's merge; PR4 adds G-1a's crontab half and G-1h. G-1a's
+    on stdin as `server/scripts/read-pending-edits.js:13-18` describes. PR2 builds it with the database, file-system
+    and service-configuration checks (G-1c, G-1d, G-1e, G-1f, G-1g; G-1c and G-1d also read `journalctl` and
+    `systemctl` through a never-throw child-process wrapper), because G-1d gates PR2's merge; it runs from the PR2
+    branch before the merge (stdin needs no deploy). PR4 adds G-1a's crontab half and G-1h. G-1a's
     Linode half and G-1b are console checks [USER] makes. Its output names no editor (counts and ids only), so it can
     be pasted into the register.
 15. **Test-file placement for the cross-cutting tests:** T17 is one file, `server/__tests__/researchBoundary.test.js`,
@@ -142,7 +145,7 @@ Every T-test is carried by exactly one PR, or split as listed. A split names whi
 | T8 consent gate | PR3 | the withdrawn editor is set up by the PR3 route (no deletion yet) |
 | T9 withdrawal | PR4 | |
 | T10 the research file down | PR3 | |
-| T11 replay | PR3 | |
+| T11 replay | PR3 | the spec's "non-held fixture book" cannot produce a recorded apply event, since `record` captures only study books (§5.11 step 1) and the study book is held; PR3's decision 60 runs the apply arm on chemistry in a temporary books root with the apply hold stubbed for that test, **which needs [USER]'s yes** |
 | T12 no deferred write | PR3 | |
 | T13 server commit | PR3 | |
 | T14 flags | PR3 | |
@@ -163,14 +166,22 @@ consume them by name. The names:
 
 - `server/lib/servedText.js`: `sha256Text(s)`; the not-minted book list and its predicate.
 - `server/lib/researchScope.js`: the study allowlist and `isStudyBook(book)`.
+- `server/lib/editOrigins.js`: the write-path vocabulary (`EDIT_ORIGINS`, `RESERVED_EDIT_ORIGINS`), which PR3's
+  `record` validates against.
 - `server/services/servedVersions.js`: annotate a served list (occurrence, `baseSha256`, the duplicated ids) and mint
   versions in one `sessions.db` transaction, returning their ids.
 - `server/services/servedEdit.js`: `saveOnServedBase(…)` and its refusal codes.
 - `server/lib/schemaHealth.js`: the expected tables and columns, and the check.
 - `server/__tests__/researchBoundary.test.js`: the boundary assertions, extended per PR.
+- `server/public/js/segment-save-state.js` (client, DOM-free): the row values, request bodies, drafts and the assist
+  item shape, including `ITEM_SOURCES`, which G1.23 extends and PR3 reads; and `saveRetry.js`'s key policies and
+  parking (`setKeyPolicy`, `takeParked`).
 
-PR3's plan owns `researchLog.record(…)`'s input (spec §5.9's list) and the before-image shape each service returns;
-PR4 and PR5 consume them.
+PR2's plan owns the opening step's seam (`moduleOpenings.js`, and what the `module-opened` event receives). PR3's plan
+owns `researchLog.record(…)`'s input (spec §5.9's list, plus `editingContentSha256`) and the before-image shape each
+service returns; where PR1's plan proposed one (its "before-state PR3 needs" table), PR3's supersedes it, notably
+propagation's per-target facts, which travel in a separate `writes` key the route strips, never on the entries the
+route sends. PR4 and PR5 consume them.
 
 ## Global Constraints (every PR)
 
@@ -201,7 +212,8 @@ PR4 and PR5 consume them.
 - **A mutation check restores from a golden `cp`, never `git checkout`; `git status --porcelain` after any agent that
   mutates files goes quiet** (CLAUDE.md § Commands).
 - **Nothing committed names a grant or fund.** Commit messages end with the executing session's attribution trailer
-  lines, after a blank line.
+  lines, after a blank line. The `git commit` lines in the PR plans carry no trailer, so the executing session
+  appends its own.
 - **No count, test total or CI verdict in prose** in any document a PR touches.
 
 ## Review Focus (cross-PR)
@@ -227,7 +239,7 @@ PR4 and PR5 consume them.
 
 | Check | When | By |
 |---|---|---|
-| G-1d | before PR2 merges | the probe (PR2), sent on stdin; [USER] makes the §9 choice if chemistry holds rows |
+| G-1d | before PR2 merges | the probe (PR2), sent on stdin from the PR2 branch (PR2's last task); [USER] makes the §9 choice if chemistry holds rows |
 | G-1c, G-1e, G-1f, G-1g | with G-1d (same run) | the probe |
 | G-1a | before the first consented row | [USER] in Linode's console; the probe's crontab half (PR4) |
 | G-1b | before the first consented row, and again after G1.20 lands | [USER] or the builder, in the provider's console |
@@ -254,4 +266,5 @@ Every production run is read-only and is recorded in the register by its output.
 G1.3's tick capture; G1.4's consent wording and the officer's review; G1.5's protocol and the derived dataset;
 G1.6's analysis; G1.7's freeze manifest and markers; G1.12's duplicate-id fix; G1.13's assignments; G1.15's retention
 rule for editing records; G1.20's editorial backup changes; G1.23's suggestion view, its switch route and its events'
-emission; re-attach by content (10-10 plan 4.2).
+emission; re-attach by content (10-10 plan 4.2), and with it §5.9's re-attach emission, whose call shape PR3's
+handoff records.
