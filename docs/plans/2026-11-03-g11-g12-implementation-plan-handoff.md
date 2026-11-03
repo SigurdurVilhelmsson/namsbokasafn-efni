@@ -25,7 +25,8 @@
 5. This file.
 
 **The spec's premises are hypotheses.** CLAUDE.md § One source of truth: open the code a document says is missing
-before you write it. The spec's own cited lines drifted once already (its §12 item 5), and G-5 says "re-grep before
+before you write it. The Skerfur plan's cited lines drifted (spec §12 item 5), the spec has at least one off citation
+of its own (§5.6 gives `propagationService.js` `currentIs` at `:216`; it is at `:213`), and G-5 says "re-grep before
 building".
 
 ## 1. The house format for an implementation plan
@@ -37,7 +38,8 @@ The newest full examples: `2026-11-02-term-pass-request-flag.md`, `2026-10-03-ch
 
 - **File:** `docs/superpowers/plans/YYYY-MM-DD-<slug>.md`, dated the day it is written. Title
   `# <scope> — <what> — Implementation Plan`.
-- **Opening:** the "For agentic workers" blockquote on line 3 (copy it from a recent plan), then `**Goal:**` (one
+- **Opening:** the "For agentic workers" blockquote on line 3. It names `superpowers:*` skills that are not installed
+  here, so reword it or keep it knowingly. Then `**Goal:**` (one
   sentence), `**Architecture:**`, `**Tech Stack:**`, `**Spec:**` (relative link, what to read first). A live plan has
   no banner and no status.
 - **Before the tasks:** `## Global Constraints` (branch, gates, module systems, never-push rules, the commit trailer)
@@ -67,13 +69,13 @@ The newest full examples: `2026-11-02-term-pass-request-flag.md`, `2026-10-03-ch
 | `audit` | `npm audit --audit-level=high` in root and `server/` | bites only if a dependency is added |
 | `check-docs` | `npm run docs:generate`, then fails if `docs/_generated/` is dirty | path-filtered (`tools/**`, `server/routes/**`, `scripts/**`); root `npm ci` only. A new `router.<verb>('…')` line, or a new file in `server/routes/`, changes `docs/_generated/routes.md`, which must be committed |
 
-- **Vitest header:** `server/__tests__/importConcepts.test.js:8-11` (`import` vitest, `createRequire(import.meta.url)`
+- **Vitest header:** `server/__tests__/importConcepts.test.js:9-11` (`import` vitest, `createRequire(import.meta.url)`
   for server modules).
 - **`freshMigratedDb`** (`server/__tests__/helpers/freshMigratedDb.js`) applies every file in `server/migrations/`:
   that is why the research schema must not live there (spec §5.1).
-- **`SESSIONS_DB_PATH` before `require`**, then `runAllMigrations()`: `segmentEditBackstop.test.js:48-51`, `:99-101`.
+- **`SESSIONS_DB_PATH` before `require`**, then `runAllMigrations()`: `segmentEditBackstop.test.js:48-51`, `:97-101`.
 - **`_setTestDb` seams:** `segmentEditorService.js:1546`, `acceptanceService.js:439`, `propagationService.js:27`,
-  `userService.js:20`, `activityLog.js:61-73` (the model for `researchDb.js`). Books: `segmentParser._setTestBooksDir`
+  `userService.js:20`, `activityLog.js:55-59` (with its lazy handle at `:61-73`, the model for `researchDb.js`). Books: `segmentParser._setTestBooksDir`
   (`segmentParser.js:475`) and `segmentEditorService._setTestBooksDir` (`:1551`).
 - **A real route handler without HTTP:** take the layer from `router.stack` by path and method, call
   `route.stack.at(-1).handle` with fake `req`/`res` (`segmentEditBackstop.test.js:53-67`, `:104-108`).
@@ -97,7 +99,7 @@ The newest full examples: `2026-11-02-term-pass-request-flag.md`, `2026-10-03-ch
 1. **The study allowlist is needed before PR3.** PR2's opening predicate requires the book to be on it (§11), but
    `server/lib/researchScope.js` is listed under PR3. Move it to PR1 or PR2.
 2. **`write-refused` (PR1) and `module-opened` (PR2) need `record` (PR3).** PR1 and PR2 refuse or open without
-   logging; PR3 adds the emission at those points. T4, T5, T7 and T16 split along that line.
+   logging; PR3 adds the emission at those points. T4, T5 and T16 split along that line (T6 and T7 assert no event).
 3. **`checks.schema`** (§5.20) names tables from PR1–PR4. Grow it per PR, or production reads `degraded` until PR4.
 4. **PR1 ships the §5.18 client fields** (`clientActionId`, `clientActionTime`, `assists`, `acceptOrigin`,
    `reviewedEditSha256`, `replayed`) whose only consumer is PR3; PR1's server accepts and ignores them.
@@ -122,12 +124,12 @@ The newest full examples: `2026-11-02-term-pass-request-flag.md`, `2026-10-03-ch
 - **New:** `server/lib/servedText.js` (`sha256Text`), `server/services/servedEdit.js` (`saveOnServedBase`), the next
   migration in `server/migrations/` (all absent at `d24681b8`).
 - **`server/routes/segment-editor.js`:** the module GET `:264-332` (loader `:272`, all editors' edits `:279`, single
-  `res.json` `:320-326`); `/edit` `:338-490` (`checkEditConflict` `:370-376` stays first; baseline `.find` `:390-395`;
+  `res.json` `:320-326`); `/edit` `:338-489` (`checkEditConflict` `:370-376` stays first; baseline `.find` `:390-395`;
   `validateStructure` `:405-417`; `saveSegmentEdit` `:419-431`, storing the client's `originalContent || ''` at
-  `:424`; 409 mapping `:482-484`); `/accept` `:871-939`; `/propagate` `:1477-1525`.
+  `:424`; 409 mapping `:482-484`); `/accept` `:871-934`; `/propagate` `:1477-1524`.
 - **Services:** `segmentEditorService.saveSegmentEdit` `:82-233` (withdraw `:110-116`, re-save UPDATE `:145-151`,
   INSERT `:182-198`, MT lock `:209-231`; `checkEditConflict` `:58-77` skips at `:59` when `baseEditId` is absent);
-  `acceptanceService.acceptSegment` `:79-225`; `propagationService.createPropagatedEdits` `:63-165` (in-place UPDATE
+  `acceptanceService.acceptSegment` `:79-225`; `propagationService.createPropagatedEdits` `:65-165` (in-place UPDATE
   `:92-96`) and `findOccurrences` `:189-219`.
 - **`saveSegmentEdit` has many direct test calls** (89 across 8 suites, measured). Keeping its signature and having
   `saveOnServedBase` pass the server's base as `originalContent` (§5.6 step 6) gives the "withdraw = current base"
@@ -146,10 +148,12 @@ The newest full examples: `2026-11-02-term-pass-request-flag.md`, `2026-10-03-ch
   `close-pending-edits.js:138`, `scripts/render-segment-edits-md.js:104`, `scripts/reattach-segment-edits.js:103`, and
   every `SELECT *` consumer (`segmentEditorService.js:242` reaches the browser).
 - **Unit tests that post bodies the PR changes:** `segmentEditBackstop.test.js` posts `/edit` with no hash at `:186`,
-  `:211`, `:237`, `:261`, `:275`, `:328`, `:346`; each needs the hash from a module load, and one `BASE_MISSING` case
-  stays. Its case 6 (`:250-280`) pins that the conflict check runs before the structural guard, which the new order
-  keeps; the structural-400 cases (`:186`, `:211`, `:237`) will hit `BASE_MISSING` first unless they carry the hash.
-  `acceptanceRoutes.test.js`' accept bodies are not forced (accept keeps its value check).
+  `:211`, `:237`, `:275`, `:328` and `:346` (`:261` is inside a direct `saveSegmentEdit` call that seeds case 6, and
+  its signature stays). Cases 1–4 (`:186`, `:211`, `:237`, `:328`) need the hash from a module load: without it, the
+  structural-400 cases (`:186`, `:211`) and the identity-edit 200 case (`:237`, asserted at `:246`) all turn 409
+  `BASE_MISSING`. Cases 5 and 6 reach their refusal first: case 6 (`:250-286`) at `checkEditConflict`, which the new
+  order keeps first, and case 5 (`:346`, an unknown segment) at placement, before the hash check. One `BASE_MISSING`
+  case is added. `acceptanceRoutes.test.js`' accept bodies are not forced (accept keeps its value check).
 - **E2E specs:**
 
   | Spec:line | Change |
@@ -162,7 +166,8 @@ The newest full examples: `2026-11-02-term-pass-request-flag.md`, `2026-10-03-ch
   | `editor-lifecycle.spec.js:272-283`, `:294-310` | pin today's draft format (`{ts, drafts:{segId: …}}` under `seg-draft:…`); §5.18 changes it and requires legacy drafts to restore, so Test 7 becomes the legacy-draft case |
   | `acceptance.spec.js`, `segment-editor.spec.js:249` | ride the client's DOM-read values (T23) |
 
-  No module the E2E specs use has a duplicated id (fixture m68663, m68664; chemistry m68663, m68664), so
+  No module the E2E specs use has a duplicated id (fixture m68663, m68664; chemistry m68663, m68664, m68667; biology
+  m66437), so
   `DUPLICATE_ID` cannot fire there. The fixture has `02-mt-output`, so "no layer → refuse" does not break it; any new
   unit fixture for `servedEdit` must write an MT or faithful file.
 - **Deploy note:** static JS has no cache-busting (`server/index.js:173`). A page loaded before the deploy sends no
@@ -187,15 +192,17 @@ The newest full examples: `2026-11-02-term-pass-request-flag.md`, `2026-10-03-ch
   `server/lib/researchSchema.js`, `server/lib/researchScope.js` (unless moved earlier, §3 item 1),
   `server/lib/researchConsentText.js`, `server/services/researchLog.js`, `server/lib/featureFlags.js`, a migration for
   the consent, loss and switch tables, and the consent routes (a new route file needs a mount in `server/index.js`
-  `:214-242` before the API 404 handler, which `startup.test.js:131` pins last, and a regenerated `routes.md`).
+  `:214-242`, before the API 404 handler at `:374`, and a regenerated `routes.md`; `startup.test.js:131` pins
+  `app.use(errorHandler)` as the last `app.use`).
 - **`server/index.js`:** research schema after the editorial migrations (`:33-45`), never stopping boot; the server
   commit read near `:93`; `checks.research_db`.
-- **`scripts/deploy.sh`:** write `pipeline-output/.deployed-commit` after the pull (`:73`). Tests that read
-  `deploy.sh`: `tools/__tests__/deployPathSingleSource.test.js`, `scripts/__tests__/shell-syntax.test.mjs`,
-  `deploy-health-readout.test.mjs`, `git-backup.test.mjs`, `server/__tests__/glossaryExportHealth.test.js`. The first
+- **`scripts/deploy.sh`:** write `pipeline-output/.deployed-commit` after the pull (`:73`). The tests that read
+  `deploy.sh` are `scripts/__tests__/shell-syntax.test.mjs` and `scripts/__tests__/deploy-health-readout.test.mjs`;
+  `tools/__tests__/deployPathSingleSource.test.js` pins that `deploy.yml` delegates to it. The first
   deploy after PR3 still runs the old `deploy.sh`, so `commit_source='git-head'` is expected once.
 - **`server/e2e/playwright.config.js`:** the `rm -f` at `:35` adds the derived research file and its `-wal`/`-shm`.
-- **`record` at every write route** in `segment-editor.js`: save `:338`, accept `:871`, revoke `:942`, delete `:976`,
+- **`record` at every segment write route** in `segment-editor.js` (the two figure POSTs, `:704` and `:782`, are out of
+  scope per spec §3): save `:338`, accept `:871`, revoke `:942`, delete `:976`,
   submit `:1001`, approve `:1091`, reject `:1125`, discuss `:1158`, unapprove `:1191`, return-to-pending `:1218`,
   review-complete `:1246`, comment `:1306`, propagate `:1477`, apply `:1636`, apply-and-render `:1684`, restore
   `:1818`. Services return their before-images (the list is in spec §5.9).
@@ -218,7 +225,7 @@ The newest full examples: `2026-11-02-term-pass-request-flag.md`, `2026-10-03-ch
 
 - **New:** `server/scripts/export-served-versions.js` (writes `pipeline-output/served-version-exports/`, never
   `books/`), `server/scripts/opening-eligibility.js` (writes `pipeline-output/research-exports/`).
-- Module enumeration as `segmentParser.listChapterModules` (`:408-430`; its `endsWith('-segments.en.md')` at `:421`
+- Module enumeration as `segmentParser.listChapterModules` (`:408-447`; its `endsWith('-segments.en.md')` at `:421`
   is what skips the legacy `*-segments(b).en.md` files). `check-docs` does not run while the PR touches only
   `server/scripts/**`.
 
@@ -246,8 +253,8 @@ The newest full examples: `2026-11-02-term-pass-request-flag.md`, `2026-10-03-ch
   `npm run lint`, `npm run format:check`, `npm run docs:check` where it applies, E2E with `CI=1` for anything touching
   routes or the client, and `git status --porcelain` empty.
 - **Whole-branch adversarial review before each PR.** The newest practice is a blind pair (Opus and Fable, same brief,
-  neither sees the other's findings; the register's 2026-11-02 entry). **Ask [USER] before commissioning the Fable
-  half** (the register cites a standing rule to ask first, held in project memory that is not on every box). The
+  neither sees the other's findings; the register's 2026-11-02 entry). The register records earlier Fable reviews as
+  [USER]-authorised, so **ask [USER] before commissioning the Fable half**. The
   alternative is a review workflow with several lenses and a skeptic per finding; a mutation pass restores from a
   golden `cp`, never `git checkout`.
 - **Push, PR and deploy only on [USER]'s go.** Merge as a **merge commit**, never squash or rebase (the register cites
