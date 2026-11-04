@@ -228,4 +228,56 @@ test.describe('G1.1 client: the row is what the save and the accept echo', () =>
     const after = await loadModuleJson(page);
     expect(after.acceptances[target.segmentId]).toBeUndefined(); // nothing written
   });
+
+  test('a save lists the repetition insert, the wraps and the term insert since the pane opened (§5.10)', async ({
+    page,
+  }) => {
+    const [target, other] = middleVirginRows(await loadModuleJson(page), { plain: true });
+    // A repetition suggestion for the target, stubbed: the fixture holds no applied twin.
+    const suggestion = {
+      is_text: `${target.is}${SUFFIX}`,
+      book: 'efnafraedi-2e',
+      chapter: 3,
+      module_id: 'm68000',
+    };
+    await page.route(`**${MODULE_URL}/repetitions`, (route) =>
+      route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({ repetitions: [{ segmentId: target.segmentId, suggestion }] }),
+      })
+    );
+    await openModule(page);
+    const row = rowOf(page, target.segmentId);
+    const ta = row.locator('textarea');
+    await row.getByRole('button', { name: 'Nota þessa þýðingu' }).click(); // whole text, tm
+    await expect(ta).toHaveValue(suggestion.is_text);
+    await ta.evaluate((el) => el.setSelectionRange(0, 3));
+    await row.locator('.format-toolbar .tb-bold').click(); // markup-wrap, toolbar
+    await ta.press('Control+i'); // markup-wrap, keyboard
+    // A term goes into the LAST-FOCUSED textarea: the target's, though another pane opened after it.
+    await rowOf(page, other.segmentId).locator('.btn-edit').click();
+    await ta.focus();
+    await page.evaluate(() => window.insertTermFromLookup('hugtak'));
+    const { posted } = await captureAndStub(page, 'edit', 200, STUB_SAVED);
+    page.on('dialog', (d) => d.accept()); // the validation warning an empty '*' pair raises
+    await row.getByRole('button', { name: 'Vista', exact: true }).click();
+    const body = await posted;
+    expect(body.assists.map((a) => [a.itemType, a.source])).toEqual([
+      ['repetition-insert', 'tm'],
+      ['markup-wrap', 'toolbar'],
+      ['markup-wrap', 'keyboard'],
+      ['term-insert', 'termbase'],
+    ]);
+    expect(body.assists[0].detail).toEqual({
+      text: suggestion.is_text,
+      book: 'efnafraedi-2e',
+      chapter: 3,
+      moduleId: 'm68000',
+    });
+    expect(body.assists[1].detail).toEqual({ marker: '**' });
+    expect(body.assists[2].detail).toEqual({ marker: '*' });
+    expect(body.assists[3].detail).toEqual({ term: 'hugtak' });
+    for (const a of body.assists) expect(typeof a.clientTimeMs).toBe('number');
+  });
 });

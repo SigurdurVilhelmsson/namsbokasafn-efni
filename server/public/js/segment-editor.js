@@ -27,6 +27,9 @@
   const recentlySaved = new Set(); // Track recently saved segment IDs for indicators
   let lastFocusedTextarea = null; // Track last-focused edit textarea for term insertion
   let cursorSegmentId = null; // keyboard accept-and-advance cursor (item 20b)
+  // §5.10 / §5.18: per open pane, the assists since it opened, the base its text
+  // was started from, and (Task 19) why a refused save kept it.
+  const paneState = new Map();
 
   // Track textarea focus so term lookup can insert at the right place
   document.addEventListener('focusin', (e) => {
@@ -178,6 +181,28 @@
     const tr = document.querySelector('#segments-body tr[data-displayed-edit-id="' + id + '"]');
     const row = segmentSaveState.readRowValues(tr);
     return row && row.displayedEditId === id ? row.displayedEditSha256 : null;
+  }
+
+  function freshPaneState(segmentId) {
+    const row = rowValues(segmentId);
+    return {
+      baseSha256: row ? row.baseSha256 : null,
+      occurrence: row ? row.occurrence : null,
+      assists: [],
+      refused: null,
+    };
+  }
+  /** Attribute the item to the segment whose textarea received it (§5.10). */
+  function addAssist(segmentId, item) {
+    if (!paneState.has(segmentId)) paneState.set(segmentId, freshPaneState(segmentId));
+    paneState.get(segmentId).assists.push(item);
+  }
+  function paneAssists(segmentId) {
+    const st = paneState.get(segmentId);
+    return st ? st.assists : [];
+  }
+  function clearPaneState(segmentId) {
+    paneState.delete(segmentId);
   }
 
   // ================================================================
@@ -909,6 +934,15 @@
     const ta = document.getElementById('textarea-' + cssId(segmentId));
     if (ta) {
       ta.value = rep.suggestion.is_text;
+      addAssist(
+        segmentId,
+        segmentSaveState.assistItem('repetition-insert', 'tm', Date.now(), {
+          text: ta.value, // the whole text right after the item (§5.10)
+          book: rep.suggestion.book,
+          chapter: rep.suggestion.chapter,
+          moduleId: rep.suggestion.module_id,
+        })
+      );
       ta.dispatchEvent(new Event('input', { bubbles: true }));
       ta.focus();
     }
@@ -1240,6 +1274,7 @@
       if (row) row.classList.remove('editing');
     });
     dirtyEdits.clear();
+    paneState.clear(); // a re-render closes every pane
     // O4: Clear stale DOM reference
     lastFocusedTextarea = null;
     updateSaveStatusBar();
@@ -1834,6 +1869,7 @@
   function openEditPanel(segmentId) {
     const panel = document.getElementById('edit-' + cssId(segmentId));
     if (panel) {
+      if (!paneState.has(segmentId)) paneState.set(segmentId, freshPaneState(segmentId));
       panel.classList.add('active');
       // Add copper left-border to the row
       const row = document.getElementById('row-' + cssId(segmentId));
@@ -1911,6 +1947,7 @@
       }
     }
     dirtyEdits.delete(segmentId);
+    clearPaneState(segmentId);
     updateSaveStatusBar();
   }
 
@@ -1926,6 +1963,7 @@
     const latestEdit = moduleData.edits[segmentId]?.[0];
     textarea.value = baselineTextFor(seg, latestEdit);
     dirtyEdits.delete(segmentId);
+    paneState.set(segmentId, freshPaneState(segmentId)); // the pane stays open; its list starts again
     const ind = document.getElementById('seg-ind-' + cssId(segmentId));
     if (ind) {
       ind.textContent = UI.segmentEditor.reverted;
@@ -2046,7 +2084,7 @@
           editedContent,
           category,
           editorNote,
-          assists: [], // Task 10: the pane's assist list
+          assists: paneAssists(segmentId),
           clientActionId: segmentSaveState.newClientActionId(window.crypto),
           clientActionTime: Date.now(),
         })
@@ -2102,6 +2140,7 @@
 
       applySaveEcho(segmentId, saveResult);
       dirtyEdits.delete(segmentId);
+      clearPaneState(segmentId);
       lastServerSaveTime = Date.now();
       recentlySaved.add(segmentId);
       setTimeout(() => {
@@ -3327,6 +3366,14 @@
       const insertion = '__' + icelandicTerm + '__';
       ta.value = text.slice(0, start) + insertion + text.slice(end);
       ta.selectionStart = ta.selectionEnd = start + insertion.length;
+      if (ta._segmentId) {
+        addAssist(
+          ta._segmentId,
+          segmentSaveState.assistItem('term-insert', 'termbase', Date.now(), {
+            term: icelandicTerm,
+          })
+        );
+      }
       ta.dispatchEvent(new Event('input', { bubbles: true }));
       if (ta._segmentId) refreshBackdrop(ta._segmentId);
       termLookupInput.value = '';
@@ -3364,7 +3411,7 @@
    * If no selection, inserts both markers and places cursor between them.
    * Fires an input event so live preview and dirty tracking update.
    */
-  function wrapSelection(textareaId, prefix, suffix) {
+  function wrapSelection(textareaId, prefix, suffix, source = 'toolbar') {
     const ta = document.getElementById(textareaId);
     if (!ta) return;
     ta.focus();
@@ -3389,6 +3436,17 @@
 
     // Trigger input event for live preview and dirty tracking
     ta.dispatchEvent(new Event('input', { bubbles: true }));
+    if (ta._segmentId) {
+      addAssist(
+        ta._segmentId,
+        segmentSaveState.assistItem(
+          'markup-wrap',
+          source === 'keyboard' ? 'keyboard' : 'toolbar',
+          Date.now(),
+          { marker: prefix }
+        )
+      );
+    }
     refreshBackdrop(ta._segmentId);
   }
 
@@ -3443,6 +3501,7 @@
             }
           }
           dirtyEdits.delete(segId);
+          clearPaneState(segId);
           updateSaveStatusBar();
         }
       }
@@ -3499,13 +3558,13 @@
       const taId = document.activeElement.id;
       if (e.key === 'b') {
         e.preventDefault();
-        wrapSelection(taId, '**', '**');
+        wrapSelection(taId, '**', '**', 'keyboard');
       } else if (e.key === 'i') {
         e.preventDefault();
-        wrapSelection(taId, '*', '*');
+        wrapSelection(taId, '*', '*', 'keyboard');
       } else if (e.key === 't') {
         e.preventDefault();
-        wrapSelection(taId, '__', '__');
+        wrapSelection(taId, '__', '__', 'keyboard');
       }
     }
   });

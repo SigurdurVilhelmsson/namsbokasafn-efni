@@ -48,3 +48,24 @@ describe('the save and the accept read the row, not moduleData (§5.18, T23)', (
     );
   });
 });
+
+describe('assists are recorded at their three sites and sent (§5.10)', () => {
+  it('each site adds its own item type to the pane that received it', () => {
+    expect(fnBody('insertRepetition', 'highlightQuery')).toMatch(
+      /addAssist\(\s*segmentId,[\s\S]*'repetition-insert',\s*'tm'/
+    );
+    expect(fnBody('insertTermFromLookup', 'wrapSelection')).toMatch(
+      /addAssist\(\s*ta\._segmentId,[\s\S]*'term-insert',\s*'termbase'/
+    );
+    expect(fnBody('wrapSelection', 'waitFor')).toMatch(
+      /'markup-wrap',\s*source === 'keyboard' \? 'keyboard' : 'toolbar'/
+    );
+    expect(src).toMatch(/wrapSelection\(taId, '\*\*', '\*\*', 'keyboard'\)/);
+  });
+
+  it("saveEdit sends the pane's list and clears it on success", () => {
+    const save = fnBody('saveEdit', 'latestEditIdForSegment');
+    expect(save).toMatch(/assists:\s*paneAssists\(segmentId\)/);
+    expect(save).toContain('clearPaneState(segmentId)');
+  });
+});
