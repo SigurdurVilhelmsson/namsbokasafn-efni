@@ -40,6 +40,17 @@ JS with no build step (`server/public/js/`, `sourceType: 'script'`), Vitest from
 
 ## State of this plan (read first)
 
+- ✏️ **2026-11-04: `main` has moved since this plan was pinned to `ed10180c`.** Two merges changed services this plan
+  touches, both scoping `chapter-metadata` (one module id for all 21 chapters) to its chapter:
+  - [#621](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/621) (§C209): the apply path, `acceptanceService.lapseDrifted`
+    and `stampApplied` (which now take a required chapter), restore, `getApplyStatus` and `concordanceService.indexModule`;
+  - [#623](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/623) (§C209's follow-ups, if merged): module review
+    submission and `getModuleStats` (now chapter-aware), and `contentVersionService.getModuleVersions` / `getVersionContent`
+    (now taking a required chapter).
+
+  Neither added a migration, so the predicted numbers stand. **Re-derive every cited line in `segmentEditorService.js`,
+  `acceptanceService.js`, `contentVersionService.js` and `concordanceService.js` before editing it (the tree wins).**
+  A snippet below that keys those tables on (book, module id) alone predates this scoping: never copy it as written.
 - **Written 2026-11-03 as one of the five PR plans the index lists. ✅ [USER] approved it on 2026-11-04** ("Yes for
   all" to the index's questions, with four clarifications the same day; § Answers, at the end). **The spec's
   `✏️ AMENDED 2026-11-04` block (`4c35d71b`) records every departure this plan builds (decisions 3, 7, 36 and 39), so no
