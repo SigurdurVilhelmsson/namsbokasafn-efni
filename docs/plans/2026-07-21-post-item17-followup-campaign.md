@@ -4,6 +4,20 @@
 
 ## ⏩ RESUME — state as of **2026-10-09 — ✅ '6' PR-B IS MERGED ([#546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546)) AND DEPLOYED, with the 7 Dependabot PRs; R-22's condition is met and the LIVE-RUN HOLD's condition is met on `main`. ⏹ The whole-book re-render and the chemistry sync are HELD for [USER]. ▶ [CODE] in parallel: the ② code batch (end of this block)** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence) ✏️ *Heading re-dated 2026-10-09; it had said PR-B was BUILT and UNPUSHED, with step 2b and the LIVE-RUN HOLD outstanding, after all three had changed. The bullets directly under the SINGLE NEXT ACTION are PR-B's record.*
 
+### ⏭ 2026-11-04 (both merged) — ADDS TO THE ENTRY DIRECTLY BELOW AND SUPERSEDES ITS NEXT: **✅ #620 MERGED (`59543653`) AND #621 MERGED (`c2c765e6`), both as merge commits, on [USER]'s instruction. The G1.1 + G1.2 plan, its spec amendments and §C209's fix are on `main`. ⚠️ #621 is server code, so §C209's fix reaches production only with the next deploy, and these merges put prod's content backup behind until that deploy (CLAUDE.md § Content delivery). ▶ NEXT: the deploy, on [USER]'s go. Then PR1 of G1.1 + G1.2, in a new session, from its plan (`docs/superpowers/plans/2026-11-03-g11-g12-pr1-served-versions-core.md`), on its own branch cut from `main`. Before PR1's PR opens, [USER] checks the four Icelandic strings named in the entry below.**
+- **The merge.** GitHub's pull requests were in a partial outage at the time (githubstatus): the merge call answered 502 for #621 three times, and its merge commit appeared on `main` after the third.
+  - Both merge commits' second parents are the reviewed heads (`ae8e6a47`, `57df6400`).
+  - `server/` on `main` is byte-identical to #621's reviewed head.
+- **CI on `main`'s new head was not checked here** (Actions were degraded). Read it in the Actions tab.
+- **Still owed, unchanged** (the entry below has the details):
+  - the four Icelandic strings;
+  - whether a replay exhausted by network errors is kept too;
+  - the follow-ups the yes asked for later;
+  - §C209's two same-class sites (module review submission; `content_versions` history);
+  - the deploy that brings layer 2 to production;
+  - ch10's question;
+  - [USER]'s confirmation of the 1 November re-run's billing period.
+
 ### ⏭ 2026-11-04 (the plan is approved) — ADDS TO THE ENTRY DIRECTLY BELOW AND SUPERSEDES ITS NEXT: **✅ [USER] APPROVED THE G1.1 + G1.2 IMPLEMENTATION PLAN ON 2026-11-04 ("Yes for all", with four clarifications; the index's "Answers" section holds them). The twenty departures are in the spec's `✏️ AMENDED 2026-11-04` block (`4c35d71b`). The plans carry the five adopted changes, the verdict-only backup log and the export on the production host. All of it is on [PR #620](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/620) (draft, docs only). ✅ §C209's fix is a separate draft PR, [#621](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/621). ▶ NEXT: [USER] checks the four Icelandic strings below, then merges #620 when ready. PR1 is then built from its plan, in a new session, on its own branch cut from `main`. #621 goes through its review and merges on [USER]'s go.**
 - **The four strings for [USER]'s check** (all others are approved as proposed):
   - PR1's server `BASE_MISSING` message, which now says how an old page keeps its text before F5 (PR1 decision 20);
