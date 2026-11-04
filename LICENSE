@@ -117,10 +117,11 @@ published.)*
 >      (also `:28` → `server/services/segmentParser.js` and `:140` →
 >      `server/lib/dbPath.js`, both lazy — but `:23` already makes the file
 >      load-time)
->    - `scripts/reattach-segment-edits.js:43` → `server/lib/chapterLabel.js` and
->      `:49` → `server/lib/researchScope.js` (also `:60` →
->      `server/services/segmentParser.js` and `:340` →
->      `server/services/segmentEditorService.js`, both lazy — but `:43` already
+>    - `scripts/reattach-segment-edits.js:47` → `server/lib/chapterLabel.js`,
+>      `:53` → `server/lib/researchScope.js` and `:58` →
+>      `server/lib/servedText.js` (also `:69` →
+>      `server/services/segmentParser.js` and `:376` →
+>      `server/services/segmentEditorService.js`, both lazy — but `:47` already
 >      makes the file load-time)
 >
 >    **(b) At run time, not import time — the module imports fine without

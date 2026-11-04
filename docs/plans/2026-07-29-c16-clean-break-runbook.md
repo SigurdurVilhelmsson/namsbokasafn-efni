@@ -330,8 +330,11 @@ node -e "console.log(require('./server/lib/researchScope.js').isStudyBook('efnaf
 ```
 
 - [ ] Printed: ______ — `true` (as it printed when this note was written) means **Appendix A
-      cannot run on this migration**: take Step 4a's hand path, which never writes to
-      `segment_edits`.
+      cannot run on this migration**: take Step 4a's hand path, in which the migration itself
+      writes nothing to prod's `segment_edits`.
+      *(✏️ 2026-11-04: this said the hand path "never writes to `segment_edits`". Re-applying an
+      edit by hand in Ritstjóri does write a row, through that same editor save; what writes
+      nothing there is the migration.)*
 
 **Do not start here.** Step 4's hand path is the default, and at this migration's measured size
 it is the right one. This appendix is for the case where Step 1's row count is large enough that
@@ -449,7 +452,7 @@ from then on.
 | 2 | A module is absent from the new extraction | **STOP.** Re-extraction failed. Do not continue. ⚠️ **Exit 2 can hide an exit 4** — a missing module's rows go to `unmatched`, never to the restore list where collisions are counted, so once you fix the extraction the next dry run may surface a *new* fatal code. Expect to run it twice. |
 | 3 | The buckets did not reconcile | **STOP.** Rows are unaccounted for. |
 | 4 | One editor+segment key carries more than one restorable row | **STOP.** See below. |
-| 6 | The snapshot holds a book on the research study's allowlist (`server/lib/researchScope.js`) | **STOP.** The script refuses that book before planning, in a dry run too, and opens no database; no flag overrides it, so Appendix A cannot run on that book. Re-apply its edits by hand (Step 4a), or by content once that tool exists ([10-10 plan](2026-10-10-chemistry-finish-preparation-plan.md) 4.2). |
+| 6 | The snapshot holds a book this script must not write: the study book (on the research study's allowlist, `server/lib/researchScope.js`) or a not-minted book (`server/lib/servedText.js`) | **STOP.** The script refuses that book before planning, in a dry run too, and opens no database; no flag overrides it, so Appendix A cannot run on that book. The study book: re-apply its edits by hand (Step 4a), or by content once that tool exists ([10-10 plan](2026-10-10-chemistry-finish-preparation-plan.md) 4.2). A not-minted book: every write to it is refused, by hand too (CLAUDE.md § Organic), so there is nothing to re-apply. |
 
 ⚠️ **Exit 1 is NOT exclusively "unmatched rows".** It is also Node's code for any
 failure the table does not enumerate — a usage error, a missing or malformed snapshot file, an

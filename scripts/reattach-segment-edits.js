@@ -16,7 +16,11 @@
  * edits are written only through servedEdit.saveOnServedBase, which records the
  * served base each edit was made on, and this script cannot (G1.1, spec §5.6).
  *
- * That refusal exits 6. The C16 runbook's exit-code table (Appendix A,
+ * It refuses a book that is never minted (server/lib/servedText.js) the same
+ * way, with its own code: that book is not translated, and every write to it
+ * is refused (CLAUDE.md § Organic; spec §5.4, §11).
+ *
+ * Both refusals exit 6. The C16 runbook's exit-code table (Appendix A,
  * Step A-2) owns what every code means; this header does not restate it.
  *
  *   node scripts/reattach-segment-edits.js --snapshot <path> [--db]
@@ -47,6 +51,11 @@ const { chapterDir } = require(path.join(REPO_ROOT, 'server', 'lib', 'chapterLab
 // decision 7). Re-attach by content (10-10 plan 4.2) is the route for that book. researchScope.js
 // requires nothing, so loading it here opens no database.
 const { isStudyBook } = require(path.join(REPO_ROOT, 'server', 'lib', 'researchScope.js'));
+// A book that is never minted (Organic Chemistry, not translated: CLAUDE.md § Organic) refuses
+// every write, in every other writer, so this script refuses it too, at the same points as the
+// study book (PR1 review C16). servedText.js requires only node's crypto, so loading it here opens
+// no database either.
+const { isNotMintedBook } = require(path.join(REPO_ROOT, 'server', 'lib', 'servedText.js'));
 
 function readNewMt(booksDir, book, chapter, moduleId) {
   const file = path.join(
@@ -69,6 +78,12 @@ function readNewMt(booksDir, book, chapter, moduleId) {
   return map;
 }
 
+/** Every book a snapshot (its top-level `book` or any row's) or a list of rows names. */
+function booksNamedBy(snapshotOrRows) {
+  const rows = Array.isArray(snapshotOrRows) ? snapshotOrRows : snapshotOrRows.edits || [];
+  return [...new Set([snapshotOrRows.book, ...rows.map((r) => r.book)].filter(Boolean))];
+}
+
 /**
  * Throws `STUDY_BOOK` when a snapshot (its top-level `book` or any row's) or a
  * list of rows names a book in the research study. The list is read from
@@ -77,9 +92,7 @@ function readNewMt(booksDir, book, chapter, moduleId) {
  * @param {{book?: string, edits?: object[]} | object[]} snapshotOrRows
  */
 export function refuseStudyBook(snapshotOrRows) {
-  const rows = Array.isArray(snapshotOrRows) ? snapshotOrRows : snapshotOrRows.edits || [];
-  const books = [...new Set([snapshotOrRows.book, ...rows.map((r) => r.book)].filter(Boolean))];
-  const study = books.filter((b) => isStudyBook(b));
+  const study = booksNamedBy(snapshotOrRows).filter((b) => isStudyBook(b));
   if (study.length) {
     throw Object.assign(
       new Error(
@@ -92,9 +105,31 @@ export function refuseStudyBook(snapshotOrRows) {
   }
 }
 
+/**
+ * Throws `BOOK_NOT_MINTED` when a snapshot (its top-level `book` or any row's)
+ * or a list of rows names a book that is never minted. The list is read from
+ * server/lib/servedText.js and never restated here.
+ *
+ * @param {{book?: string, edits?: object[]} | object[]} snapshotOrRows
+ */
+export function refuseNotMintedBook(snapshotOrRows) {
+  const notMinted = booksNamedBy(snapshotOrRows).filter((b) => isNotMintedBook(b));
+  if (notMinted.length) {
+    throw Object.assign(
+      new Error(
+        `BOOK_NOT_MINTED: REFUSING — ${notMinted.join(', ')} is never minted (server/lib/servedText.js). ` +
+          'It is not translated and every write to it is refused (CLAUDE.md § Organic), so there is ' +
+          'nothing to re-attach.'
+      ),
+      { code: 'BOOK_NOT_MINTED' }
+    );
+  }
+}
+
 export function planReattach({ snapshot, booksDir }) {
-  // First, before any file is read (index decision 7).
+  // First, before any file is read (index decision 7; PR1 review C16).
   refuseStudyBook(snapshot);
+  refuseNotMintedBook(snapshot);
   const plan = {
     restore: [],
     converged: [],
@@ -215,6 +250,7 @@ export function applyReattach({ plan, saveSegmentEdit }) {
   // Pre-flight, first: applyReattach is exported and must not depend on a caller
   // having run planReattach's refusal (index decision 7).
   refuseStudyBook(plan.restore.map((item) => item.row));
+  refuseNotMintedBook(plan.restore.map((item) => item.row));
   // Pre-flight, before a single write: two restorable rows on one
   // saveSegmentEdit key would collapse into one row — the second call takes the
   // UPDATE branch and overwrites the first row's text. Refuse the whole run.
@@ -314,14 +350,14 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   // migration script — so the CLI's exit codes can be driven from a temp tree
   // instead of the committed one. Production never sets it.
   const booksDir = process.env.BOOKS_ROOT_OVERRIDE || path.join(REPO_ROOT, 'books');
-  // The study-book refusal comes before any planning output and before the --db
-  // branch can open a database. Exit 6, not a bare re-throw: an uncaught throw
-  // exits 1, which the runbook's gate table reads as "proceed".
+  // The study-book and not-minted refusals come before any planning output and
+  // before the --db branch can open a database. Exit 6, not a bare re-throw: an
+  // uncaught throw exits 1, which the runbook's gate table reads as "proceed".
   let plan = null;
   try {
     plan = planReattach({ snapshot, booksDir });
   } catch (err) {
-    if (err.code !== 'STUDY_BOOK') throw err;
+    if (err.code !== 'STUDY_BOOK' && err.code !== 'BOOK_NOT_MINTED') throw err;
     console.error(err.message);
     process.exitCode = 6; // never process.exit() with output in flight (CLAUDE.md § Commands)
   }

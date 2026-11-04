@@ -50,7 +50,7 @@ function edit(over = {}) {
   };
 }
 
-function runDryRun(edits, { book = 'testbook' } = {}) {
+function runDryRun(edits, { book = 'testbook', dbPath } = {}) {
   const snap = path.join(tmp, 'snap.json');
   fs.writeFileSync(snap, JSON.stringify({ schema: 1, book, modules: ['m001'], edits }));
   return spawnSync('node', [SCRIPT, '--snapshot', snap], {
@@ -58,11 +58,30 @@ function runDryRun(edits, { book = 'testbook' } = {}) {
     env: {
       ...process.env,
       BOOKS_ROOT_OVERRIDE: booksDir,
-      // Pointed at a path that cannot exist: the dry run must never open a DB.
+      // By default, a path under a directory that does not exist: the dry run
+      // must never open a DB.
       // This is what makes the "safe to run before the irreversible Step 4a"
       // claim a test rather than a one-off probe.
-      SESSIONS_DB_PATH: path.join(tmp, 'nope', 'not-a-database.db'),
+      SESSIONS_DB_PATH: dbPath || path.join(tmp, 'nope', 'not-a-database.db'),
     },
+  });
+}
+
+// For a refusal's "without opening a database" check (PR1 review C24): a DB path inside a
+// directory that EXISTS, so that any open, by any route, leaves the file behind. Under a
+// directory that does not exist the check depends on the route: better-sqlite3 opened directly
+// throws and leaves nothing, and only the exit status could notice, while
+// segmentEditorService.getDb creates the directory first.
+function dbInExistingDir() {
+  return path.join(tmp, 'sessions.db');
+}
+
+function runDb(snapshotObj, dbPath) {
+  const snap = path.join(tmp, 'snap.json');
+  fs.writeFileSync(snap, JSON.stringify(snapshotObj));
+  return spawnSync('node', [SCRIPT, '--snapshot', snap, '--db'], {
+    encoding: 'utf8',
+    env: { ...process.env, BOOKS_ROOT_OVERRIDE: booksDir, SESSIONS_DB_PATH: dbPath },
   });
 }
 
@@ -144,7 +163,10 @@ describe('reattach CLI — the exit codes the runbook gates on', () => {
       env: {
         ...process.env,
         BOOKS_ROOT_OVERRIDE: booksDir,
-        // Unopenable on purpose: reaching the DB at all is the failure.
+        // Reaching the DB at all is the failure. The path is not unopenable:
+        // segmentEditorService.getDb creates the directory and an empty database
+        // (measured, PR1 review C24), and the first save then dies on a missing
+        // table with exit 5, which is what separates this case from 4.
         SESSIONS_DB_PATH: path.join(tmp, 'no-such-dir', 'sessions.db'),
       },
     });
@@ -167,8 +189,9 @@ describe('reattach CLI — the exit codes the runbook gates on', () => {
       env: {
         ...process.env,
         BOOKS_ROOT_OVERRIDE: booksDir,
-        // Directory does not exist, so the DB open fails inside the first
-        // saveSegmentEdit rather than creating a file.
+        // segmentEditorService.getDb creates this directory and an empty
+        // database (measured, PR1 review C24), so the first saveSegmentEdit
+        // dies on a missing table: a real failure part-way through the apply.
         SESSIONS_DB_PATH: path.join(tmp, 'no-such-dir', 'sessions.db'),
       },
     });
@@ -181,38 +204,66 @@ describe('reattach CLI — the exit codes the runbook gates on', () => {
   // run would plan cleanly and exit 0: only the refusal can produce 6 here.
   it('exits 6 on the study book, in a dry run, before planning and before any database', () => {
     writeMt('<!-- SEG:m001:para:fs-id1 -->\nný vélþýðing\n', 'efnafraedi-2e');
-    const res = runDryRun([edit({ book: 'efnafraedi-2e' })], { book: 'efnafraedi-2e' });
+    const dbPath = dbInExistingDir();
+    const res = runDryRun([edit({ book: 'efnafraedi-2e' })], { book: 'efnafraedi-2e', dbPath });
     expect(res.status).toBe(6);
     expect(res.stdout).not.toContain('=== C16 segment-edit re-attach ===');
     expect(res.stdout).not.toContain('DRY RUN');
     expect(res.stderr).toContain('STUDY_BOOK');
     expect(res.stderr).toContain('researchScope.js');
-    expect(fs.existsSync(path.join(tmp, 'nope'))).toBe(false);
+    expect(fs.existsSync(dbPath)).toBe(false);
   });
 
   it('exits 6 under --db too, before the write path and without opening a database', () => {
     writeMt('<!-- SEG:m001:para:fs-id1 -->\nný vélþýðing\n', 'efnafraedi-2e');
-    const snap = path.join(tmp, 'snap.json');
-    fs.writeFileSync(
-      snap,
-      JSON.stringify({
+    const dbPath = dbInExistingDir();
+    const res = runDb(
+      {
         schema: 1,
         book: 'efnafraedi-2e',
         modules: ['m001'],
         edits: [edit({ book: 'efnafraedi-2e' })],
-      })
-    );
-    const res = spawnSync('node', [SCRIPT, '--snapshot', snap, '--db'], {
-      encoding: 'utf8',
-      env: {
-        ...process.env,
-        BOOKS_ROOT_OVERRIDE: booksDir,
-        // Unopenable on purpose: reaching the DB at all would exit 5, not 6.
-        SESSIONS_DB_PATH: path.join(tmp, 'no-such-dir', 'sessions.db'),
       },
+      dbPath
+    );
+    expect(res.status).toBe(6);
+    expect(res.stdout).not.toContain('=== C16 segment-edit re-attach ===');
+    expect(fs.existsSync(dbPath)).toBe(false);
+  });
+
+  // PR1 review C16: a not-minted book (server/lib/servedText.js; organic, CLAUDE.md § Organic)
+  // is refused the same way, with its own code and the same exit 6. Its module is in the temp
+  // tree, so without the refusal the dry run would plan cleanly and exit 0.
+  it('exits 6 on a not-minted book, in a dry run, before planning and before any database', () => {
+    writeMt('<!-- SEG:m001:para:fs-id1 -->\nný vélþýðing\n', 'lifraen-efnafraedi');
+    const dbPath = dbInExistingDir();
+    const res = runDryRun([edit({ book: 'lifraen-efnafraedi' })], {
+      book: 'lifraen-efnafraedi',
+      dbPath,
     });
     expect(res.status).toBe(6);
     expect(res.stdout).not.toContain('=== C16 segment-edit re-attach ===');
-    expect(fs.existsSync(path.join(tmp, 'no-such-dir'))).toBe(false);
+    expect(res.stdout).not.toContain('DRY RUN');
+    expect(res.stderr).toContain('BOOK_NOT_MINTED');
+    expect(res.stderr).toContain('servedText.js');
+    expect(fs.existsSync(dbPath)).toBe(false);
+  });
+
+  it('exits 6 on a not-minted book under --db too, without opening a database', () => {
+    writeMt('<!-- SEG:m001:para:fs-id1 -->\nný vélþýðing\n', 'lifraen-efnafraedi');
+    const dbPath = dbInExistingDir();
+    const res = runDb(
+      {
+        schema: 1,
+        book: 'lifraen-efnafraedi',
+        modules: ['m001'],
+        edits: [edit({ book: 'lifraen-efnafraedi' })],
+      },
+      dbPath
+    );
+    expect(res.status).toBe(6);
+    expect(res.stdout).not.toContain('=== C16 segment-edit re-attach ===');
+    expect(res.stderr).toContain('BOOK_NOT_MINTED');
+    expect(fs.existsSync(dbPath)).toBe(false);
   });
 });

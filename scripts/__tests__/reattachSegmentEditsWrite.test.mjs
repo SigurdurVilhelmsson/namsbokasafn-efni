@@ -207,6 +207,59 @@ describe('applyReattach — the study book is refused', () => {
   });
 });
 
+// PR1 review C16: saveSegmentEdit itself has no organic guard, so without this refusal a
+// not-minted book's row would be written with served_version_id NULL.
+describe('applyReattach — a not-minted book is refused (PR1 review C16)', () => {
+  it('applyReattach refuses a plan holding an organic row and writes nothing', async () => {
+    const { applyReattach } = await import('../reattach-segment-edits.js');
+    const segmentParser = require(path.join(REPO_ROOT, 'server', 'services', 'segmentParser.js'));
+    segmentParser._setTestBooksDir(booksDir);
+    try {
+      const organicItem = {
+        row: { ...snapshot.edits[0], book: 'lifraen-efnafraedi' },
+        newMt: 'x',
+        editorNote: null,
+        flags: [],
+      };
+      const query = () => db.prepare('SELECT * FROM segment_edits ORDER BY id').all();
+      const before = query();
+      expect(before).toEqual([]);
+      let caught;
+      try {
+        applyReattach({
+          plan: { restore: [organicItem] },
+          saveSegmentEdit: service.saveSegmentEdit,
+        });
+      } catch (err) {
+        caught = err;
+      }
+      expect(caught?.code).toBe('BOOK_NOT_MINTED');
+      expect(query()).toEqual(before);
+
+      // Pre-flight, not mid-loop: a clean testbook row ahead of the organic row is not written.
+      const cleanItem = {
+        row: { ...snapshot.edits[0], segment_id: 'm001:para:fs-id0' },
+        newMt: 'önnur vélþýðing',
+        editorNote: null,
+        flags: [],
+      };
+      caught = undefined;
+      try {
+        applyReattach({
+          plan: { restore: [cleanItem, organicItem] },
+          saveSegmentEdit: service.saveSegmentEdit,
+        });
+      } catch (err) {
+        caught = err;
+      }
+      expect(caught?.code).toBe('BOOK_NOT_MINTED');
+      expect(query()).toEqual(before);
+    } finally {
+      segmentParser._setTestBooksDir(path.join(REPO_ROOT, 'books'));
+    }
+  });
+});
+
 describe('applyReattach — honest counts', () => {
   it('counts a first run as inserted, not merely written', async () => {
     const { planReattach, applyReattach } = await import('../reattach-segment-edits.js');

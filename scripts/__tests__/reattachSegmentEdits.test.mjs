@@ -167,6 +167,67 @@ describe('planReattach refuses the study book (index decision 7)', () => {
   });
 });
 
+// PR1 review C16: a book on server/lib/servedText.js's not-minted list (Organic Chemistry, which
+// is not translated: CLAUDE.md § Organic) is refused by every other writer, so this script refuses
+// it too, before planning, with its own code. The list is read from servedText.js, never restated.
+describe('planReattach refuses a not-minted book (PR1 review C16)', () => {
+  it('throws BOOK_NOT_MINTED when the snapshot names organic, naming servedText.js', async () => {
+    const { planReattach } = await import('../reattach-segment-edits.js');
+    writeMt('m001', 'ch01', '<!-- SEG:m001:para:fs-id1 -->\nný vélþýðing\n');
+    let caught;
+    try {
+      planReattach({
+        snapshot: { ...snapshotWith([edit()]), book: 'lifraen-efnafraedi' },
+        booksDir,
+      });
+    } catch (err) {
+      caught = err;
+    }
+    expect(caught).toBeInstanceOf(Error);
+    expect(caught.code).toBe('BOOK_NOT_MINTED');
+    expect(caught.message).toContain('servedText.js');
+  });
+
+  it('throws BOOK_NOT_MINTED when one row names organic in a testbook snapshot', async () => {
+    const { planReattach } = await import('../reattach-segment-edits.js');
+    writeMt('m001', 'ch01', '<!-- SEG:m001:para:fs-id1 -->\nný vélþýðing\n');
+    let caught;
+    try {
+      planReattach({ snapshot: snapshotWith([edit({ book: 'lifraen-efnafraedi' })]), booksDir });
+    } catch (err) {
+      caught = err;
+    }
+    expect(caught?.code).toBe('BOOK_NOT_MINTED');
+    expect(caught.message).toContain('servedText.js');
+  });
+
+  // Same "first" witness as the study book's: with no booksDir, any planning step dies on
+  // path.join(undefined, …) with a TypeError instead.
+  it('refuses before planning: no books directory is read', async () => {
+    const { planReattach } = await import('../reattach-segment-edits.js');
+    let caught;
+    try {
+      planReattach({
+        snapshot: {
+          ...snapshotWith([edit({ book: 'lifraen-efnafraedi' })]),
+          book: 'lifraen-efnafraedi',
+        },
+        booksDir: undefined,
+      });
+    } catch (err) {
+      caught = err;
+    }
+    expect(caught?.code).toBe('BOOK_NOT_MINTED');
+  });
+
+  it('control, same fixture: the testbook snapshot plans with one restore', async () => {
+    const { planReattach } = await import('../reattach-segment-edits.js');
+    writeMt('m001', 'ch01', '<!-- SEG:m001:para:fs-id1 -->\nný vélþýðing\n');
+    const plan = planReattach({ snapshot: snapshotWith([edit()]), booksDir });
+    expect(plan.restore).toHaveLength(1);
+  });
+});
+
 describe('planReattach — colliding keys must be visible in the DRY RUN', () => {
   // The runbook runs the dry run first and the apply second. A dry run that
   // reports success while the apply refuses is a rehearsal that lies, so the
