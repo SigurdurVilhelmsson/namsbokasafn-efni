@@ -73,39 +73,33 @@ function findFaithfulModules(book, booksDir = BOOKS_DIR) {
   return out;
 }
 
-function main() {
-  const args = parseArgs(process.argv.slice(2));
-
-  const books = args.book
-    ? [args.book]
-    : fs.existsSync(BOOKS_DIR)
-      ? fs.readdirSync(BOOKS_DIR).filter((b) => fs.statSync(path.join(BOOKS_DIR, b)).isDirectory())
-      : [];
-
+/**
+ * Seed v1 from the MT baseline for every faithful module of `books` that has no
+ * history in its chapter. Returns the counts main() prints.
+ *
+ * @param {{ books: string[], booksDir?: string, dryRun?: boolean, verbose?: boolean }} opts
+ * @returns {{ seeded: number, skippedExisting: number, skippedNoMt: number, segmentsTotal: number }}
+ */
+function backfill({ books, booksDir = BOOKS_DIR, dryRun = false, verbose = false }) {
   let seeded = 0;
   let skippedExisting = 0;
   let skippedNoMt = 0;
   let segmentsTotal = 0;
 
   for (const book of books) {
-    for (const { chDir, chapter, moduleId } of findFaithfulModules(book)) {
-      // Idempotent: never touch a module that already has snapshots.
+    for (const { chDir, chapter, moduleId } of findFaithfulModules(book, booksDir)) {
+      // Idempotent: never touch a module that already has snapshots. History
+      // is per chapter (§C209), so this reads the module's own chapter.
       if (contentVersionService.getModuleVersions(book, chapter, moduleId).length > 0) {
         skippedExisting++;
-        if (args.verbose) console.log(`  skip (has history): ${book}/${chDir}/${moduleId}`);
+        if (verbose) console.log(`  skip (has history): ${book}/${chDir}/${moduleId}`);
         continue;
       }
 
-      const mtPath = path.join(
-        BOOKS_DIR,
-        book,
-        '02-mt-output',
-        chDir,
-        `${moduleId}-segments.is.md`
-      );
+      const mtPath = path.join(booksDir, book, '02-mt-output', chDir, `${moduleId}-segments.is.md`);
       if (!fs.existsSync(mtPath)) {
         skippedNoMt++;
-        if (args.verbose) console.log(`  skip (no MT baseline): ${book}/${chDir}/${moduleId}`);
+        if (verbose) console.log(`  skip (no MT baseline): ${book}/${chDir}/${moduleId}`);
         continue;
       }
 
@@ -121,11 +115,11 @@ function main() {
 
       if (segments.length === 0) {
         skippedNoMt++;
-        if (args.verbose) console.log(`  skip (empty MT): ${book}/${chDir}/${moduleId}`);
+        if (verbose) console.log(`  skip (empty MT): ${book}/${chDir}/${moduleId}`);
         continue;
       }
 
-      if (args.dryRun) {
+      if (dryRun) {
         console.log(`  would seed v1: ${book}/${chDir}/${moduleId} (${segments.length} segments)`);
       } else {
         const { version, segmentsSnapshotted } = contentVersionService.snapshotModule(
@@ -144,6 +138,24 @@ function main() {
     }
   }
 
+  return { seeded, skippedExisting, skippedNoMt, segmentsTotal };
+}
+
+function main() {
+  const args = parseArgs(process.argv.slice(2));
+
+  const books = args.book
+    ? [args.book]
+    : fs.existsSync(BOOKS_DIR)
+      ? fs.readdirSync(BOOKS_DIR).filter((b) => fs.statSync(path.join(BOOKS_DIR, b)).isDirectory())
+      : [];
+
+  const { seeded, skippedExisting, skippedNoMt, segmentsTotal } = backfill({
+    books,
+    dryRun: args.dryRun,
+    verbose: args.verbose,
+  });
+
   console.log('\n' + '─'.repeat(50));
   console.log(`${args.dryRun ? '[DRY RUN] ' : ''}Backfill complete`);
   console.log(`  Modules seeded:            ${seeded}`);
@@ -156,4 +168,4 @@ if (require.main === module) {
   main();
 }
 
-module.exports = { findFaithfulModules, chapterNumFromDir };
+module.exports = { findFaithfulModules, chapterNumFromDir, backfill };

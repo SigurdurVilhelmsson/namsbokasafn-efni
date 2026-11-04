@@ -589,6 +589,44 @@ describe('§C209 (b) controls: an ordinary module versions exactly as before', (
     // As before the fix: one past the highest number this segment holds anywhere.
     expect(snap).toEqual({ version: 3, segmentsSnapshotted: 2 });
   });
+
+  it("a snapshot whose segment ids share none with the chapter's earlier ones still numbers past them", () => {
+    // A re-extraction can rename every id (adding a segment renumbers positional
+    // auto-N ids). The chapter's own highest number must still count, or the new
+    // snapshot reuses v1 (the UNIQUE key cannot stop it: segment_id differs) and
+    // the history merges old and new rows into one version.
+    const NEW = `${ORD}:para:auto-1`;
+    contentVersionService.snapshotModule(BOOK, 2, ORD, [
+      { segmentId: ORD_SEG(1), content: 'v1 a' },
+      { segmentId: ORD_SEG(2), content: 'v1 b' },
+    ]);
+    contentVersionService.snapshotModule(BOOK, 2, ORD, [
+      { segmentId: ORD_SEG(1), content: 'v2 a' },
+      { segmentId: ORD_SEG(2), content: 'v2 b' },
+    ]);
+    const snap = contentVersionService.snapshotModule(BOOK, 2, ORD, [
+      { segmentId: NEW, content: 'v3 eftir endurútdrátt' },
+    ]);
+
+    expect(snap).toEqual({ version: 3, segmentsSnapshotted: 1 });
+    expect(
+      contentVersionService
+        .getModuleVersions(BOOK, 2, ORD)
+        .map((v) => ({ version: v.version, segments: v.segments }))
+    ).toEqual([
+      { version: 3, segments: 1 },
+      { version: 2, segments: 2 },
+      { version: 1, segments: 2 },
+    ]);
+    // By value: v1 holds only the old rows, v3 only the new one.
+    expect(contentVersionService.getVersionContent(BOOK, 2, ORD, 1)).toEqual([
+      { segment_id: ORD_SEG(1), content: 'v1 a' },
+      { segment_id: ORD_SEG(2), content: 'v1 b' },
+    ]);
+    expect(contentVersionService.getVersionContent(BOOK, 2, ORD, 3)).toEqual([
+      { segment_id: NEW, content: 'v3 eftir endurútdrátt' },
+    ]);
+  });
 });
 
 describe('§C209 (b) the version readers require the chapter', () => {
