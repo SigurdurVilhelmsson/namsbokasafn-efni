@@ -2,6 +2,7 @@
 const { test, expect } = require('@playwright/test');
 const { loginAs } = require('./helpers/auth');
 const segmentValidation = require('../public/js/segment-validation');
+const { REFUSAL_MESSAGES } = require('../services/servedEdit');
 
 /**
  * G1.1, the client (spec §5.18; T23; T4's client half): a save and an accept
@@ -689,6 +690,47 @@ test.describe('G1.1 client: the row is what the save and the accept echo', () =>
     expect(saves).toEqual([other.segmentId, target.segmentId]);
     expect(previews).toEqual([other.segmentId]);
     expect(propagated).toEqual([other.segmentId]);
+  });
+
+  test("a propagation refusal shows the server's message, not its code (PR1 review C3)", async ({
+    page,
+  }) => {
+    const [target] = middleVirginRows(await loadModuleJson(page));
+    await openModule(page);
+    // Stubs only: the preview answers a refusal as sendRefusal does ({ error: CODE, message }), then, as the control,
+    // a 400 that carries no message. The pane is opened and left clean, so nothing is saved and no confirm is asked.
+    const answers = [
+      { status: 409, json: { error: 'DUPLICATE_ID', message: REFUSAL_MESSAGES.DUPLICATE_ID } },
+      { status: 400, json: { error: 'segmentId is required' } },
+    ];
+    const previews = [];
+    await page.route(
+      (url) => url.pathname === `${MODULE_URL}/propagation-preview`,
+      (route) => {
+        const { status, json } = answers[previews.length];
+        previews.push(new URL(route.request().url()).searchParams.get('segmentId'));
+        return route.fulfill({
+          status,
+          contentType: 'application/json',
+          body: JSON.stringify(json),
+        });
+      }
+    );
+    const row = rowOf(page, target.segmentId);
+    await row.locator('.btn-edit').click();
+    // The whole toast, compared by value: the newest error toast, against the page's own wording of the detail.
+    const errorToasts = page.locator('.toast-error');
+    const toastText = (detail) => page.evaluate((d) => UI.segmentEditor.propagateError(d), detail);
+
+    await row.locator('.btn-propagate').click();
+    await expect(errorToasts).toHaveCount(1);
+    await expect(errorToasts.last()).toHaveText(await toastText(REFUSAL_MESSAGES.DUPLICATE_ID));
+    await expect(errorToasts.filter({ hasText: 'DUPLICATE_ID' })).toHaveCount(0);
+
+    // Control: an answer with no message still shows the text it does carry.
+    await row.locator('.btn-propagate').click();
+    await expect(errorToasts.last()).toHaveText(await toastText('segmentId is required'));
+    expect(previews).toEqual([target.segmentId, target.segmentId]);
   });
 
   test('BASE_MISSING asks for F5 and keeps the text', async ({ page }) => {

@@ -1,13 +1,16 @@
 /**
- * Another process's write lock: a save and an accept wait it out, and an unchanged re-serve never
- * waits on it at all (G1.1; spec §5.4 step 3, §5.6 step 6, §5.6 Accept; PR1 review C2).
+ * Another process's write lock: a save, an accept and a propagation wait it out, and an unchanged
+ * re-serve never waits on it at all (G1.1; spec §5.4 step 3, §5.6 step 6, §5.6 Accept, §5.6
+ * Propagation targets; PR1 review C2).
  *
  * Why the save and the accept must open IMMEDIATE: a DEFERRED transaction whose first statement is
  * a read already holds a read lock when its first write asks for the write lock, and SQLite does
  * not run the busy handler for that upgrade. So it returns SQLITE_BUSY at once instead of waiting
  * out the connection's busy timeout, and the editor's save or accept answers 500. saveOnServedBase
- * opens with mintVersions' SELECT, and acceptSegment's mint-then-INSERT does the same. One holder
- * of that lock in production is backup-db.sh's wal_checkpoint(TRUNCATE).
+ * opens with mintVersions' SELECT, and acceptSegment's mint-then-INSERT does the same.
+ * createPropagatedEdits opens with its findEdit SELECT and then supersedes, mints and inserts, so it
+ * needs the same (case (d)). One holder of that lock in production is backup-db.sh's
+ * wal_checkpoint(TRUNCATE).
  *
  * Why the serve must stay DEFERRED: re-serving unchanged text writes nothing and never waits on
  * another writer (spec §5.4 step 3). Case (c) fails if mintVersions takes the write lock up front.
@@ -47,6 +50,10 @@ const CHEM = 'efnafraedi-2e';
 const SAVE = Object.freeze({ book: CHEM, chapter: 1, moduleId: 'm95001' });
 const ACCEPT = Object.freeze({ book: CHEM, chapter: 1, moduleId: 'm95002' });
 const SERVE = Object.freeze({ book: CHEM, chapter: 1, moduleId: 'm95003' });
+// Case (d): a source and one target sharing an English sentence no other fixture module carries.
+const PROP_SOURCE = Object.freeze({ book: CHEM, chapter: 2, moduleId: 'm95004' });
+const PROP_TARGET = Object.freeze({ book: CHEM, chapter: 2, moduleId: 'm95005' });
+const PROP_EN = 'A sentence that recurs in two modules.';
 
 // A lock a save or an accept must wait out: released by the holder's own timer, since the waiting
 // call blocks this process and cannot signal.
@@ -62,6 +69,8 @@ let segmentEditor;
 let servedVersions;
 let servedEdit;
 let acceptance;
+let propagation;
+let concordance;
 let db;
 
 beforeAll(() => {
@@ -72,6 +81,8 @@ beforeAll(() => {
   servedVersions = require('../services/servedVersions');
   servedEdit = require('../services/servedEdit');
   acceptance = require('../services/acceptanceService');
+  propagation = require('../services/propagationService');
+  concordance = require('../services/concordanceService');
   realBooksDir = segmentParser.BOOKS_DIR;
   root = path.join(work, 'books');
   mkdirSync(root, { recursive: true });
@@ -101,6 +112,18 @@ beforeAll(() => {
       [`${SERVE.moduleId}:para:b`, 'IS b'],
     ],
   });
+  for (const [{ moduleId }, is] of [
+    [PROP_SOURCE, 'IS uppruni'],
+    [PROP_TARGET, 'IS mark'],
+  ]) {
+    writeModule(root, {
+      book: CHEM,
+      chapterDir: 'ch02',
+      moduleId,
+      en: [[`${moduleId}:para:a`, PROP_EN]],
+      mt: [[`${moduleId}:para:a`, is]],
+    });
+  }
 });
 
 afterAll(() => {
@@ -108,6 +131,8 @@ afterAll(() => {
   segmentEditor._setTestBooksDir(realBooksDir);
   segmentEditor.getDb().close();
   segmentEditor._setTestDb(null);
+  propagation.getDb().close();
+  propagation._setTestDb(null);
   rmSync(work, { recursive: true, force: true });
 });
 
@@ -261,5 +286,58 @@ describe('another process holds the write lock (PR1 review C2)', () => {
     expect(run.value.again.mintOk).toBe(true);
     expect(run.value.again.servedVersionIds).toEqual(first.servedVersionIds);
     expect(allVersions()).toEqual(before);
+  });
+
+  it('(d) a propagation started while the lock is held waits for it, then writes its target row and version', async () => {
+    // createPropagatedEdits writes on the connection the route passes it, propagationService's
+    // own, opened as in production; this reads that connection's timeout and sets nothing.
+    const conn = propagation.getDb();
+    expect(conn.pragma('busy_timeout', { simple: true })).toBeGreaterThan(WAIT_HOLD_MS * 4);
+    const sourceId = `${PROP_SOURCE.moduleId}:para:a`;
+    const targetId = `${PROP_TARGET.moduleId}:para:a`;
+    // As POST /propagate does it: find the occurrences, then write them, both under the lock.
+    const run = await whileLocked(WAIT_HOLD_MS, () => {
+      const occurrences = propagation.findOccurrences(CHEM, concordance.normalizeEn(PROP_EN), {
+        excludeModuleId: PROP_SOURCE.moduleId,
+        excludeSegmentId: sourceId,
+      });
+      return propagation.createPropagatedEdits(conn, {
+        book: CHEM,
+        editorId: 'u1',
+        editorUsername: 'E',
+        propagatedText: 'IS fjölgað',
+        note: 'Sjálfvirk fjölgun',
+        occurrences,
+        sourceEn: PROP_EN,
+      });
+    });
+    expect(describeError(run.error)).toBeNull();
+    expect(run.releasingWhenDone).toBe(true);
+    expect(run.value).toEqual({
+      created: [{ moduleId: PROP_TARGET.moduleId, segmentId: targetId }],
+      skipped: [],
+    });
+    const rows = db
+      .prepare('SELECT * FROM segment_edits WHERE book = ? AND module_id IN (?, ?)')
+      .all(CHEM, PROP_SOURCE.moduleId, PROP_TARGET.moduleId);
+    expect(rows).toHaveLength(1);
+    expect(rows[0]).toMatchObject({
+      chapter: PROP_TARGET.chapter,
+      module_id: PROP_TARGET.moduleId,
+      segment_id: targetId,
+      original_content: 'IS mark',
+      edited_content: 'IS fjölgað',
+      status: 'pending',
+      occurrence: 0,
+      origin: 'propagation',
+    });
+    expect(versionRow(rows[0].served_version_id)).toMatchObject({
+      chapter: PROP_TARGET.chapter,
+      module_id: PROP_TARGET.moduleId,
+      segment_id: targetId,
+      occurrence: 0,
+      en_text: PROP_EN,
+      is_text: 'IS mark',
+    });
   });
 });

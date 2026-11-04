@@ -239,7 +239,13 @@ function createPropagatedEdits(
       created.push({ moduleId: occ.moduleId, segmentId: occ.segmentId });
     }
   });
-  tx();
+  // IMMEDIATE, because its first statement is findEdit's SELECT and it then supersedes, mints and
+  // inserts: a deferred transaction would already hold a read when it asks for the write lock, and
+  // SQLite does not run the busy handler for that upgrade, so a lock another process holds
+  // (backup-db.sh's checkpoint) would fail the propagation at once with SQLITE_BUSY instead of
+  // waiting the busy timeout, as saveOnServedBase and acceptSegment wait (PR1 review C2). Called
+  // inside another transaction, it is a savepoint.
+  tx.immediate();
   return { created, skipped };
 }
 

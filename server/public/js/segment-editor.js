@@ -2511,7 +2511,11 @@
         'success'
       );
     } catch (err) {
-      saveRetry.showToast(UI.segmentEditor.propagateError(err.message), 'error');
+      // A refusal answers { error: CODE, message } (sendRefusal; PR1 review C3), and fetchJson builds err.message
+      // from the code: show the server's message when the body carries one, else what fetchJson read.
+      const detail =
+        (err.data && typeof err.data.message === 'string' && err.data.message) || err.message;
+      saveRetry.showToast(UI.segmentEditor.propagateError(detail), 'error');
     }
   }
 
