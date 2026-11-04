@@ -27,6 +27,7 @@ const segmentParser = require('./segmentParser');
 const servedVersions = require('./servedVersions');
 const resolveDbPath = require('../lib/dbPath');
 const { pickLatest } = require('../lib/editRecency');
+const { isNotMintedBook } = require('../lib/servedText');
 const {
   normalizeWraps,
   unescapeMtMarkers,
@@ -79,6 +80,8 @@ function editorViewOf(enContent, storedText) {
  * `servedEdit.placeOnServedBase` placed, after refusing a duplicated id, organic and a module with
  * no layer), the new row records the served version of the segment compared here, and that
  * occurrence. Without it (direct callers) both columns stay NULL, "made before G1.1" (§5.8).
+ * A book that is never minted (organic) is refused here too, before anything is loaded, with the
+ * refusal placeOnServedBase throws, so a direct caller cannot write what the route refuses (§11).
  *
  * @returns {{ alreadyAccepted: boolean, acceptance: object }}
  */
@@ -92,6 +95,9 @@ function acceptSegment({
   username,
   occurrence,
 }) {
+  // Required here, not at the top: servedEdit requires segmentEditorService, which requires this
+  // module, so a top-level require would hand one of them a half-loaded export object.
+  if (isNotMintedBook(book)) throw require('./servedEdit').refuse('BOOK_NOT_MINTED');
   const conn = getDb();
 
   const data = segmentParser.loadModuleForEditing(book, chapter, moduleId);

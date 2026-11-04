@@ -93,17 +93,21 @@ function createPropagatedEdits(
       'createPropagatedEdits: sourceEn is required — omitting it would disarm the structural guard'
     );
   }
-  // G1.1: every written target's served version is minted from these three, so a caller that
-  // omits one fails loud here, before any write, as an omitted sourceEn does. `layer` may be null
-  // (findOccurrences' "no layer", which the classifier skips) but not absent.
+  // G1.1: every written target's served version is minted from en, layer, occurrence and currentIs,
+  // and `duplicated` decides the duplicate-id skip, so a caller that omits one fails loud here,
+  // before any write, as an omitted sourceEn does. `layer` may be null (findOccurrences' "no
+  // layer", which the classifier skips) but not absent; an absent `duplicated` would read as "not
+  // duplicated" and write a target that cannot be placed (PR1 review C15).
   for (const occ of occurrences) {
     if (
       typeof occ.en !== 'string' ||
       occ.layer === undefined ||
-      !Number.isInteger(occ.occurrence)
+      !Number.isInteger(occ.occurrence) ||
+      typeof occ.duplicated !== 'boolean' ||
+      typeof occ.currentIs !== 'string'
     ) {
       throw new Error(
-        `createPropagatedEdits: occurrence ${occ.moduleId}/${occ.segmentId} lacks en, layer or occurrence — the served version cannot be minted`
+        `createPropagatedEdits: occurrence ${occ.moduleId}/${occ.segmentId} lacks en, layer, occurrence, duplicated or currentIs — it cannot be placed and its served version cannot be minted`
       );
     }
   }

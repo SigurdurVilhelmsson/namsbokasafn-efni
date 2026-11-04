@@ -6,7 +6,7 @@
  * (§5.6 steps 1–6), and stores the served version it was checked against with the row. The
  * segment editor's save route, re-attach by content and any script call it; none of them calls
  * `saveSegmentEdit` directly for a study book. `placeOnServedBase` is steps 1–3 alone, which the
- * accept route shares.
+ * accept route shares, and the propagation routes for their source (PR1 review C3).
  *
  * The order, and why each step is where it is:
  *   1. a book that is never minted (organic) is refused before anything is loaded (§5.4, §11);
@@ -86,7 +86,10 @@ function refuse(code, { echoedSha256 = null, currentSha256 = null, violations } 
   return err;
 }
 
-/** Steps 1–3 of spec §5.6, shared by the save and the accept route. Throws a refusal. */
+/**
+ * Steps 1–3 of spec §5.6, shared by the save, the accept route and the propagation routes' source.
+ * Throws a refusal (`refuse`, which acceptSegment also throws for organic).
+ */
 function placeOnServedBase({ book, chapter, moduleId, segmentId, occurrence }) {
   if (isNotMintedBook(book)) throw refuse('BOOK_NOT_MINTED');
   const data = segmentParser.loadModuleForEditing(book, chapter, moduleId);
@@ -245,4 +248,4 @@ function saveOnServedBase(input) {
   return mintAndSave.immediate();
 }
 
-module.exports = { REFUSAL_MESSAGES, REFUSAL_STATUS, placeOnServedBase, saveOnServedBase };
+module.exports = { REFUSAL_MESSAGES, REFUSAL_STATUS, refuse, placeOnServedBase, saveOnServedBase };

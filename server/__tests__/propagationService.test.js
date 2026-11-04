@@ -20,9 +20,17 @@ const migration053 = require('../migrations/053-served-text-versions');
 
 // G1.1 (plan Task 16, decision 13): createPropagatedEdits refuses, before any write, an occurrence
 // without a string `en`, a defined `layer` and an integer `occurrence`, because it mints each
-// target's served version from them. findOccurrences supplies all three; the literals below get them
-// here, so each test still says only what it is about.
-const occ = (over) => ({ en: 'Acid and base.', layer: 'mt-output', occurrence: 0, ...over });
+// target's served version from them, and (PR1 review C15) without a boolean `duplicated` and a
+// string `currentIs`, because the duplicate-id skip and the base are decided from them.
+// findOccurrences supplies all five; the literals below get the first four here, and every call
+// names its currentIs, so each test still says only what it is about.
+const occ = (over) => ({
+  en: 'Acid and base.',
+  layer: 'mt-output',
+  occurrence: 0,
+  duplicated: false,
+  ...over,
+});
 
 describe('classifyOccurrence', () => {
   const P = 'Sýra og basi'; // propagated text
@@ -553,6 +561,7 @@ describe('createPropagatedEdits: each target gets its own served base (G1.1, T16
           currentIs: 'Sýra.',
           layer: 'mt-output',
           occurrence: 0,
+          duplicated: false,
         },
       ],
     });
@@ -689,13 +698,20 @@ describe('createPropagatedEdits: each target gets its own served base (G1.1, T16
     expect(rowsOf(d, 'm039')).toHaveLength(1);
   });
 
-  it('refuses before any write when an occurrence lacks en, layer or occurrence', () => {
+  it('refuses before any write when an occurrence lacks en, layer, occurrence, duplicated or currentIs', () => {
     const omissions = {
       en: (o) => delete o.en,
       layer: (o) => delete o.layer,
       occurrence: (o) => delete o.occurrence,
       'a non-string en': (o) => (o.en = 7),
       'a non-integer occurrence': (o) => (o.occurrence = '0'),
+      // PR1 review C15: an absent or falsy-but-not-false `duplicated` read as "not duplicated", so a
+      // duplicated-id target was written; a non-string currentIs got past this guard and threw only
+      // inside the write's transaction, at the mint.
+      duplicated: (o) => delete o.duplicated,
+      'a non-boolean duplicated': (o) => (o.duplicated = 0),
+      currentIs: (o) => delete o.currentIs,
+      'a non-string currentIs': (o) => (o.currentIs = null),
     };
     for (const [what, omit] of Object.entries(omissions)) {
       const d = freshDb();

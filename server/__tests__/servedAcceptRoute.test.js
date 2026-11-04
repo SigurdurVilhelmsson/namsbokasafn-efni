@@ -72,6 +72,7 @@ let realBooksDir;
 let segmentParser;
 let segmentEditor;
 let acceptance;
+let servedEdit;
 let REFUSAL_MESSAGES;
 let get;
 let accept;
@@ -111,7 +112,8 @@ beforeAll(() => {
   segmentParser = require('../services/segmentParser');
   segmentEditor = require('../services/segmentEditorService');
   acceptance = require('../services/acceptanceService');
-  ({ REFUSAL_MESSAGES } = require('../services/servedEdit'));
+  servedEdit = require('../services/servedEdit');
+  ({ REFUSAL_MESSAGES } = servedEdit);
   realBooksDir = segmentParser.BOOKS_DIR;
   root = path.join(work, 'books');
   mkdirSync(root, { recursive: true });
@@ -464,6 +466,64 @@ describe('POST /accept — placement and scope refusals (spec §5.6 steps 1–3,
     const ok = await post({ segmentId: A, acceptedContent: 'IS a' });
     expect(ok.status).toBe(200);
     expect(acceptanceRows()).toHaveLength(1);
+  });
+});
+
+describe('acceptSegment refuses organic itself, whoever calls it (PR1 review, T15 note; spec §11)', () => {
+  const call = (book, moduleId, segmentId) => () =>
+    acceptance.acceptSegment({
+      book,
+      chapter: 1,
+      moduleId,
+      segmentId,
+      acceptedContent: 'IS a',
+      userId: 'u-ed1',
+      username: 'editor1',
+    });
+  const caught = (fn) => {
+    try {
+      fn();
+    } catch (err) {
+      return err;
+    }
+    return null;
+  };
+
+  it('a direct call on organic with no occurrence throws the BOOK_NOT_MINTED refusal and writes nothing; chemistry still accepts', () => {
+    // The correct value, so only the book can refuse it.
+    expect(
+      segmentParser
+        .loadModuleForEditing(ORGANIC, 1, 'm94004')
+        .segments.find((s) => s.segmentId === 'm94004:para:a').is
+    ).toBe('IS a');
+    // The refusal placeOnServedBase throws for the same request: the shape to match.
+    const placed = caught(() =>
+      servedEdit.placeOnServedBase({
+        book: ORGANIC,
+        chapter: 1,
+        moduleId: 'm94004',
+        segmentId: 'm94004:para:a',
+      })
+    );
+    expect(placed?.code).toBe('BOOK_NOT_MINTED');
+
+    const before = snapshot();
+    const err = caught(call(ORGANIC, 'm94004', 'm94004:para:a'));
+    expect(err).toBeInstanceOf(Error);
+    expect({ code: err.code, message: err.message, refusal: err.refusal }).toEqual({
+      code: placed.code,
+      message: placed.message,
+      refusal: placed.refusal,
+    });
+    expect(snapshot()).toEqual(before);
+    expect(
+      db.prepare('SELECT COUNT(*) AS n FROM segment_acceptances WHERE book = ?').get(ORGANIC).n
+    ).toBe(0);
+
+    // Control, same test: the same direct call on chemistry accepts.
+    const ok = call(CHEM, M, A)();
+    expect(ok.alreadyAccepted).toBe(false);
+    expect(acceptanceRows().map((r) => [r.book, r.segment_id])).toEqual([[CHEM, A]]);
   });
 });
 

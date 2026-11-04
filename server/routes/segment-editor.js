@@ -1487,13 +1487,14 @@ router.get(
     try {
       const { segmentId } = req.query;
       if (!segmentId) return res.status(400).json({ error: 'segmentId is required' });
-      const data = segmentParser.loadModuleForEditing(
-        req.params.book,
-        req.chapterNum,
-        req.params.moduleId
-      );
-      const seg = data.segments.find((s) => s.segmentId === segmentId);
-      if (!seg) return res.status(404).json({ error: 'segment not found' });
+      // PR1 review C3: the source is placed as POST /propagate places it, so the preview refuses
+      // what the write refuses (organic, no layer, a duplicated id) instead of offering it.
+      const { seg } = servedEdit.placeOnServedBase({
+        book: req.params.book,
+        chapter: req.chapterNum,
+        moduleId: req.params.moduleId,
+        segmentId,
+      });
       const enNorm = concordance.normalizeEn(seg.en);
       const propagatedText =
         propagation.latestEditedText(req.params.book, req.params.moduleId, segmentId) ??
@@ -1520,6 +1521,7 @@ router.get(
       }
       res.json({ enNorm, eligible, skipped });
     } catch (err) {
+      if (sendRefusal(res, err)) return;
       log.error({ err }, 'propagation-preview failed');
       res.status(500).json({ error: err.message });
     }
@@ -1557,9 +1559,16 @@ router.post(
           message: servedEdit.REFUSAL_MESSAGES.BOOK_NOT_MINTED,
         });
       }
-      const sourceSeg = segmentParser
-        .loadModuleForEditing(req.params.book, req.chapterNum, req.params.moduleId)
-        .segments.find((s) => s.segmentId === segmentId);
+      // PR1 review C3 (spec §5.7): the source is placed, not found by .find, which takes a
+      // duplicated id's first copy's English while the client sends the served (last copy's)
+      // Icelandic. A duplicated id or a module with no layer is refused, an unknown id keeps
+      // today's 404.
+      const { seg: sourceSeg } = servedEdit.placeOnServedBase({
+        book: req.params.book,
+        chapter: req.chapterNum,
+        moduleId: req.params.moduleId,
+        segmentId,
+      });
       const enNorm = concordance.normalizeEn(sourceSeg?.en || '');
       if (!enNorm) return res.status(404).json({ error: 'segment not found' });
       const occurrences = propagation.findOccurrences(req.params.book, enNorm, {
@@ -1578,6 +1587,7 @@ router.post(
       });
       res.json(result);
     } catch (err) {
+      if (sendRefusal(res, err)) return;
       log.error({ err }, 'propagate failed');
       res.status(500).json({ error: err.message });
     }
