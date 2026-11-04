@@ -165,10 +165,10 @@ describe('applyReattach — honest counts', () => {
   });
 
   // The runbook tells the operator, on a non-zero `updated`, to note WHICH
-  // segments took the UPDATE branch and warn the editor their diff view is
-  // against a stale draft — those are exactly the rows where spec §7's
-  // "originalContent = the new MT" silently failed. Three integers cannot
-  // answer that, so the keys travel with the tally.
+  // segments took the UPDATE branch and tell the editor: those rows already
+  // held a pending text, which the run replaced in place (since G1.1 the
+  // re-save also moves their base to the new MT; the case below). Three
+  // integers cannot answer that, so the keys travel with the tally.
   it('names the segments that took the UPDATE branch, not just how many', async () => {
     const { planReattach, applyReattach } = await import('../reattach-segment-edits.js');
     const plan = planReattach({ snapshot, booksDir });
@@ -183,6 +183,33 @@ describe('applyReattach — honest counts', () => {
     applyReattach({ plan, saveSegmentEdit: service.saveSegmentEdit });
     const second = applyReattach({ plan, saveSegmentEdit: service.saveSegmentEdit });
     expect(second).toMatchObject({ inserted: 0, updated: 1 });
+  });
+
+  // G1.1 (plan Task 12, decision 10): saveSegmentEdit's re-save UPDATE now writes
+  // original_content, so a re-run whose MT moved under it records the NEW MT as the
+  // base. Reporting is unchanged: the key still took the UPDATE branch.
+  it('a re-run’s UPDATE branch now writes the new MT as original_content', async () => {
+    const { planReattach, applyReattach } = await import('../reattach-segment-edits.js');
+    applyReattach({
+      plan: planReattach({ snapshot, booksDir }),
+      saveSegmentEdit: service.saveSegmentEdit,
+    });
+    // Control: the first run wrote the MT the file held then.
+    expect(db.prepare('SELECT original_content c FROM segment_edits').get().c).toBe('ný vélþýðing');
+    fs.writeFileSync(
+      path.join(booksDir, 'testbook', '02-mt-output', 'ch01', 'm001-segments.is.md'),
+      '<!-- SEG:m001:para:fs-id0 -->\nönnur vélþýðing\n\n' +
+        '<!-- SEG:m001:para:fs-id1 -->\nnýrri vélþýðing\n'
+    );
+    const second = applyReattach({
+      plan: planReattach({ snapshot, booksDir }),
+      saveSegmentEdit: service.saveSegmentEdit,
+    });
+    expect(second.updatedKeys).toEqual(['testbook/m001/m001:para:fs-id1/u1']);
+    expect(db.prepare('SELECT COUNT(*) n FROM segment_edits').get().n).toBe(1);
+    expect(db.prepare('SELECT original_content c FROM segment_edits').get().c).toBe(
+      'nýrri vélþýðing'
+    );
   });
 
   it('attaches the partial tally to a mid-loop failure, so an aborted run is still diagnosable', async () => {

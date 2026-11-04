@@ -208,30 +208,28 @@ export function applyReattach({ plan, saveSegmentEdit }) {
   // saveSegmentEdit's own transaction (supersede sweep + INSERT commit
   // together), and run-level safety comes from repeatability: a re-run after a
   // partial failure finds the pending row it already wrote and updates it in
-  // place, so it converges instead of duplicating. Wrapping the loop would
-  // need a second connection — segmentEditorService exposes no accessor for
-  // the one it uses — which would not cover these writes and could lock
-  // against them.
+  // place, so it converges instead of duplicating. segmentEditorService now
+  // exports getDb (G1.1, for the served-version mint), so an outer transaction
+  // on the same connection is possible; a per-row transaction stays the design,
+  // because a re-run converges and a one-way migration is safer resumable.
   // Counted apart because they mean different things to an operator: `inserted`
   // is restored work, `updated` means the row was already there — the normal
   // shape of a re-run, and a surprise on a first run. A single "written" total
   // reported a repeat as fresh work.
-  // `updatedKeys` carries identity, not just a count: an UPDATE-branch write is
-  // exactly where spec §7's "originalContent = the new MT" silently fails, and
-  // the runbook has the operator warn those editors. A bare counter leaves them
-  // writing sqlite3 by hand, mid-migration, on the page that warns a mistyped
-  // sqlite3 path creates a database.
+  // `updatedKeys` carries identity, not just a count: an UPDATE-branch write
+  // replaced a pending text the editor already had, and the runbook has the
+  // operator tell those editors. A bare counter leaves them writing sqlite3 by
+  // hand, mid-migration, on the page that warns a mistyped sqlite3 path
+  // creates a database.
   const tally = { inserted: 0, updated: 0, reverted: 0, updatedKeys: [] };
   try {
     for (const item of plan.restore) {
       const { row, newMt, editorNote } = item;
-      // originalContent MUST be the new MT (spec §7). On the INSERT branch it
-      // is. It is NOT on saveSegmentEdit's UPDATE branch, which never writes
-      // original_content — so this depends on no pending row existing for the
-      // key when the run starts. Runbook Step 4a is what guarantees that (it
-      // supersedes the pre-break rows first); the dependency lives there, not
-      // here. Running this script outside the runbook, against a DB that still
-      // holds pending rows for these keys, silently keeps the OLD MT.
+      // originalContent MUST be the new MT (spec §7). Both of saveSegmentEdit's
+      // branches now write it as original_content (since G1.1, whose re-save
+      // UPDATE moves the base record), so runbook Step 4a's guarantee (no
+      // pending row for the key when the run starts) is no longer what keeps
+      // the base right. It still keeps one row per key.
       const res = saveSegmentEdit({
         book: row.book,
         chapter: row.chapter,
@@ -314,9 +312,9 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   );
   if (res.updatedKeys.length) {
     console.log(
-      '\n⚠️  These keys already had a pending row, so they took the UPDATE branch and',
-      '\n    KEPT their old original_content. Their diff view is against a stale draft —',
-      '\n    tell the editor. (Expected count on a first run: 0.)'
+      '\n⚠️  These keys already had a pending row: it was updated in place, its base now',
+      '\n    the new MT. Tell the editor their pending text was replaced.',
+      '\n    (Expected count on a first run: 0.)'
     );
     for (const k of res.updatedKeys) console.log(`      ${k}`);
   }

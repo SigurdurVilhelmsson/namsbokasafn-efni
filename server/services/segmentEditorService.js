@@ -92,6 +92,13 @@ function saveSegmentEdit(params) {
     editorId,
     editorUsername,
     baseEditId,
+    // G1.1 (spec §5.8, §5.6 step 6): the served version this save was made on, and the
+    // displayed pair. Optional; a caller that names none writes NULL ("unknown", §5.8).
+    servedVersionId = null,
+    occurrence = null,
+    origin = null,
+    displayedEditId = null,
+    displayedEditSha256 = null,
   } = params;
 
   const conn = getDb();
@@ -142,13 +149,29 @@ function saveSegmentEdit(params) {
         )
         .run(book, moduleId, segmentId, editorId);
 
+      // A re-save moves the base record (spec §5.8): the row's text is now made on this
+      // save's base; a caller that names no served version leaves it NULL (unknown), never a
+      // stale id. The before-image is the research event's (PR3).
       conn
         .prepare(
           `UPDATE segment_edits
-         SET edited_content = ?, category = ?, editor_note = ?, created_at = CURRENT_TIMESTAMP
+           SET edited_content = ?, category = ?, editor_note = ?, created_at = CURRENT_TIMESTAMP,
+               original_content = ?, served_version_id = ?, occurrence = ?, origin = ?,
+               displayed_edit_id = ?, displayed_edit_sha256 = ?
          WHERE id = ?`
         )
-        .run(editedContent, category || null, editorNote || null, existing.id);
+        .run(
+          editedContent,
+          category || null,
+          editorNote || null,
+          originalContent,
+          servedVersionId,
+          occurrence,
+          origin,
+          displayedEditId,
+          displayedEditSha256,
+          existing.id
+        );
     });
     updateWithSupersede();
     return { id: existing.id, updated: true };
@@ -183,8 +206,9 @@ function saveSegmentEdit(params) {
       .prepare(
         `INSERT INTO segment_edits
        (book, chapter, module_id, segment_id, original_content, edited_content,
-        category, editor_note, editor_id, editor_username)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+        category, editor_note, editor_id, editor_username,
+        served_version_id, occurrence, origin, displayed_edit_id, displayed_edit_sha256)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
       )
       .run(
         book,
@@ -196,7 +220,12 @@ function saveSegmentEdit(params) {
         category || null,
         editorNote || null,
         editorId,
-        editorUsername
+        editorUsername,
+        servedVersionId,
+        occurrence,
+        origin,
+        displayedEditId,
+        displayedEditSha256
       );
   });
   const result = insertWithSupersede();
