@@ -499,7 +499,7 @@ describe('lapseDrifted + stampApplied', () => {
   it('lapses when written bytes differ; keeps a matching acceptance active', () => {
     accept();
     accept('m00001:para:fs-id002', 'Önnur efnisgrein.');
-    const lapsed = acceptance.lapseDrifted(BOOK, MODULE, [
+    const lapsed = acceptance.lapseDrifted(BOOK, 1, MODULE, [
       { segmentId: 'm00001:para:fs-id001', content: 'Allt aðrir bætar.' },
       { segmentId: 'm00001:para:fs-id002', content: 'Önnur efnisgrein.' },
     ]);
@@ -513,15 +513,23 @@ describe('lapseDrifted + stampApplied', () => {
 
   it('a segment missing from the written set lapses too', () => {
     accept();
-    expect(acceptance.lapseDrifted(BOOK, MODULE, [])).toBe(1);
+    expect(acceptance.lapseDrifted(BOOK, 1, MODULE, [])).toBe(1);
+  });
+
+  it('§C209: a call in the old (book, moduleId, …) order throws instead of shifting arguments', () => {
+    accept();
+    expect(() => acceptance.lapseDrifted(BOOK, MODULE, [])).toThrow(TypeError);
+    expect(() => acceptance.stampApplied(BOOK, MODULE)).toThrow(TypeError);
+    // Control: the row is still there to act on, and the chapter-first call acts on it.
+    expect(acceptance.stampApplied(BOOK, 1, MODULE)).toBe(1);
   });
 
   it('stampApplied stamps active NULL rows only, returns the count', () => {
     accept();
     accept('m00001:para:fs-id002', 'Önnur efnisgrein.');
-    expect(acceptance.stampApplied(BOOK, MODULE)).toBe(2);
+    expect(acceptance.stampApplied(BOOK, 1, MODULE)).toBe(2);
     // Second stamp is a no-op (already applied)
-    expect(acceptance.stampApplied(BOOK, MODULE)).toBe(0);
+    expect(acceptance.stampApplied(BOOK, 1, MODULE)).toBe(0);
     const stamped = db
       .prepare(`SELECT COUNT(*) AS n FROM segment_acceptances WHERE applied_at IS NOT NULL`)
       .get().n;

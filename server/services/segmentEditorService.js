@@ -827,6 +827,14 @@ const MAX_APPLY_RETRIES = 1;
  * superseded rather than published (I12-R5), but the FILE overlay writes only
  * the winners whose applied_at is still null.
  *
+ * Every row this function reads or writes is scoped to (book, chapter,
+ * module_id) — the one file it writes (§C209). `chapter-metadata` is a single
+ * module id shared by every chapter, and a (book, module_id) scope stamped
+ * other chapters' winners applied without writing their text, and lapsed
+ * their acceptances. Every writer stores the chapter whose directory it loaded
+ * the module from, so an ordinary module's rows all carry its one chapter and
+ * the scope changes nothing for it.
+ *
  * @param {string} book - Book slug
  * @param {number} chapter - Chapter number
  * @param {string} moduleId - Module ID
@@ -849,31 +857,33 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
   const approvedEdits = conn
     .prepare(
       `SELECT id FROM segment_edits
-       WHERE book = ? AND module_id = ? AND status = 'approved' AND applied_at IS NULL`
+       WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'approved'
+         AND applied_at IS NULL`
     )
-    .all(book, moduleId);
+    .all(book, chapter, moduleId);
 
   const unappliedAcceptances = conn
     .prepare(
       `SELECT COUNT(*) AS n FROM segment_acceptances
-       WHERE book = ? AND module_id = ? AND status = 'active' AND applied_at IS NULL`
+       WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'active'
+         AND applied_at IS NULL`
     )
-    .get(book, moduleId).n;
+    .get(book, chapter, moduleId).n;
 
   if (approvedEdits.length === 0 && unappliedAcceptances === 0) {
     const anyApproved = conn
       .prepare(
         `SELECT COUNT(*) as count FROM segment_edits
-         WHERE book = ? AND module_id = ? AND status = 'approved'`
+         WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'approved'`
       )
-      .get(book, moduleId);
+      .get(book, chapter, moduleId);
 
     const anyAcceptances = conn
       .prepare(
         `SELECT COUNT(*) AS count FROM segment_acceptances
-         WHERE book = ? AND module_id = ? AND status = 'active'`
+         WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'active'`
       )
-      .get(book, moduleId);
+      .get(book, chapter, moduleId);
 
     if (anyApproved.count === 0 && anyAcceptances.count === 0) {
       throw new Error('No approved edits to apply for this module');
@@ -900,21 +910,25 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
       }
       _applyRetryState.set(retryKey, retryCount + 1);
 
-      // File was deleted — reset applied_at so edits can be re-applied
+      // File was deleted — reset applied_at so edits can be re-applied. Only
+      // this chapter's rows: another chapter's file may still hold its applied
+      // text, and its rows must stay applied (§C209).
       conn
         .prepare(
           `UPDATE segment_edits SET applied_at = NULL
-           WHERE book = ? AND module_id = ? AND status = 'approved' AND applied_at IS NOT NULL`
+           WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'approved'
+             AND applied_at IS NOT NULL`
         )
-        .run(book, moduleId);
+        .run(book, chapter, moduleId);
       // item 20b: the acceptance mirror of the reset — an acceptance-only
       // module whose faithful file vanished must also be rebuildable.
       conn
         .prepare(
           `UPDATE segment_acceptances SET applied_at = NULL
-           WHERE book = ? AND module_id = ? AND status = 'active' AND applied_at IS NOT NULL`
+           WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'active'
+             AND applied_at IS NOT NULL`
         )
-        .run(book, moduleId);
+        .run(book, chapter, moduleId);
       try {
         const result = applyApprovedEdits(book, chapter, moduleId, options);
         _applyRetryState.delete(retryKey);
@@ -938,16 +952,18 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
     const unapplied = conn
       .prepare(
         `SELECT id FROM segment_edits
-         WHERE book = ? AND module_id = ? AND status = 'approved' AND applied_at IS NULL`
+         WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'approved'
+           AND applied_at IS NULL`
       )
-      .all(book, moduleId);
+      .all(book, chapter, moduleId);
 
     const unappliedAccInTxn = conn
       .prepare(
         `SELECT COUNT(*) AS n FROM segment_acceptances
-         WHERE book = ? AND module_id = ? AND status = 'active' AND applied_at IS NULL`
+         WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'active'
+           AND applied_at IS NULL`
       )
-      .get(book, moduleId).n;
+      .get(book, chapter, moduleId).n;
     if (unapplied.length === 0 && unappliedAccInTxn === 0) {
       throw new Error('Edits were applied by a concurrent request');
     }
@@ -959,9 +975,9 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
       .prepare(
         `SELECT id, segment_id, edited_content, created_at, applied_at
          FROM segment_edits
-         WHERE book = ? AND module_id = ? AND status = 'approved'`
+         WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'approved'`
       )
-      .all(book, moduleId);
+      .all(book, chapter, moduleId);
 
     // 2. Winner per segment = canonical newest (created_at, id) — the same
     // rule buildEffectiveSegments uses. Unapplied losers are superseded;
@@ -1080,8 +1096,14 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
     // in-memory `segments` array, never re-reading disk), which is what makes
     // running them before the write behaviour-preserving. `segments` is the
     // exact array written to disk in step 7.
-    const lapsedAcceptances = acceptanceService.lapseDrifted(book, moduleId, segments, conn);
-    const acceptedCount = acceptanceService.stampApplied(book, moduleId, conn);
+    const lapsedAcceptances = acceptanceService.lapseDrifted(
+      book,
+      chapter,
+      moduleId,
+      segments,
+      conn
+    );
+    const acceptedCount = acceptanceService.stampApplied(book, chapter, moduleId, conn);
 
     // 7. Write to 03-faithful-translation/ — the LAST mutation before COMMIT.
     const savedPath = segmentParser.saveModuleSegments(book, chapter, moduleId, segments);
@@ -1188,6 +1210,12 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
 function getApplyStatus(book, moduleId, chapter) {
   const conn = getDb();
 
+  // When the chapter is known, count that chapter's rows only — the rows its
+  // apply would touch (§C209: `chapter-metadata` is one module id across every
+  // chapter). Unknown chapter (null) keeps the module-wide count.
+  const chapterKnown = chapter !== undefined && chapter !== null;
+  const chapterOrNull = chapterKnown ? chapter : null;
+
   const counts = conn
     .prepare(
       `SELECT
@@ -1195,9 +1223,9 @@ function getApplyStatus(book, moduleId, chapter) {
          COUNT(CASE WHEN applied_at IS NOT NULL THEN 1 END) as applied_count,
          COUNT(*) as total_approved
        FROM segment_edits
-       WHERE book = ? AND module_id = ? AND status = 'approved'`
+       WHERE book = ? AND module_id = ? AND (? IS NULL OR chapter = ?) AND status = 'approved'`
     )
-    .get(book, moduleId);
+    .get(book, moduleId, chapterOrNull, chapterOrNull);
 
   const accCounts = conn
     .prepare(
@@ -1205,9 +1233,9 @@ function getApplyStatus(book, moduleId, chapter) {
          COUNT(CASE WHEN applied_at IS NULL THEN 1 END) AS unapplied_acceptances,
          COUNT(CASE WHEN applied_at IS NOT NULL THEN 1 END) AS applied_acceptances
        FROM segment_acceptances
-       WHERE book = ? AND module_id = ? AND status = 'active'`
+       WHERE book = ? AND module_id = ? AND (? IS NULL OR chapter = ?) AND status = 'active'`
     )
-    .get(book, moduleId);
+    .get(book, moduleId, chapterOrNull, chapterOrNull);
 
   // When the chapter is known, report whether the faithful file actually exists.
   // If every approved edit is marked applied but the file is gone (e.g. it was
@@ -1216,7 +1244,7 @@ function getApplyStatus(book, moduleId, chapter) {
   // UI re-enable the apply button for that recovery instead of greying it out.
   let faithfulExists = null;
   let canRebuild = false;
-  if (chapter !== undefined && chapter !== null) {
+  if (chapterKnown) {
     const chDir = segmentParser.chapterDir(chapter);
     const faithfulPath = path.join(
       BOOKS_DIR,

@@ -177,9 +177,16 @@ describe('§C209 chapter-metadata: applying one chapter touches only that chapte
 
     const e5 = saveAndApprove(5, META, TITLE(5), 'Varmafræði (endurskoðuð)');
     const a3 = accept(3, META, TITLE(3), MT_TITLE[3]);
-    const e2 = saveAndApprove(2, META, TITLE(2), 'Atóm, sameindir og jónir');
     const e5Before = editRow(e5);
     const a3Before = accRow(a3);
+
+    // ch02 holds no row of its own yet: other chapters' rows give it nothing to
+    // apply (pre-fix this call published ch05's edit as ch02's work).
+    expect(() => service.applyApprovedEdits(BOOK, 2, META)).toThrow(
+      'No approved edits to apply for this module'
+    );
+
+    const e2 = saveAndApprove(2, META, TITLE(2), 'Atóm, sameindir og jónir');
 
     const result = service.applyApprovedEdits(BOOK, 2, META);
 
@@ -307,6 +314,15 @@ describe('§C209 chapter-metadata: applying one chapter touches only that chapte
     expect(service.getApplyStatus(BOOK, META, 2)).toMatchObject({
       faithful_exists: false,
       can_rebuild: true,
+    });
+
+    // No chapter given (no production caller does this): the module-wide count, as before.
+    expect(service.getApplyStatus(BOOK, META)).toMatchObject({
+      unapplied_count: 1,
+      applied_count: 1,
+      total_approved: 2,
+      unapplied_acceptances: 1,
+      faithful_exists: null,
     });
   });
 });
