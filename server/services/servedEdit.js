@@ -34,7 +34,8 @@ const { sha256Text, isNotMintedBook } = require('../lib/servedText');
 const { EDIT_ORIGINS } = require('../lib/editOrigins');
 
 // Icelandic: approved by [USER] 2026-11-04 (index decision 13; BASE_MISSING as worded in plan
-// decision 20). STRUCTURE_BLOCKED is moved verbatim from the route; SEGMENT_NOT_FOUND is today's
+// decision 20, plus the "every time it appears" clause [USER] approved the same day after the
+// PR1 review). STRUCTURE_BLOCKED is moved verbatim from the route; SEGMENT_NOT_FOUND is today's
 // 404 body.
 const REFUSAL_MESSAGES = Object.freeze({
   BOOK_NOT_MINTED: 'Þessi bók er ekki í þýðingu og ekki er tekið við breytingum á henni.',
@@ -46,14 +47,19 @@ const REFUSAL_MESSAGES = Object.freeze({
   // The only text a page loaded before G1.1's deploy shows (plan decision 33), so it gives the
   // steps that keep the typed text BEFORE it says F5, as a SEQUENCE, never as alternatives:
   //   1. wait for that page's own closePanels confirm (quoted, so it is recognised) and answer
-  //      its Hætta við (Cancel), not the pane's own Hætta við button, which discards the text;
+  //      its Hætta við (Cancel) every time it appears, not the pane's own Hætta við button,
+  //      which discards the text;
   //   2. copy from the pane;
   //   3. F5.
-  // OK at the confirm closes the pane, so copying cannot come first (plan decision 20).
+  // OK at the confirm closes the pane, so copying cannot come first (plan decision 20). The old
+  // page asks the confirm up to three times (its reload, then the terms and the repetitions
+  // refreshes each re-render), and OK at any of them loses the text: hence "every time"
+  // ([USER] 2026-11-04, after the PR1 review, C6).
   BASE_MISSING:
     'Síðunni var hlaðið fyrir uppfærslu ritilsins og vistun var hafnað. Svo að textinn glatist ' +
     'ekki: bíðið eftir spurningunni „Opnum klippispjöldum verður lokað. Viltu halda áfram?“ ' +
-    'og veljið þar Hætta við (Cancel), ekki hnappinn Hætta við í bútnum, sem fleygir textanum. ' +
+    'og veljið þar Hætta við (Cancel) í hvert sinn sem hún birtist (hún getur komið allt að ' +
+    'þrisvar), ekki hnappinn Hætta við í bútnum, sem fleygir textanum. ' +
     'Textinn er þá enn á skjánum og má afrita hann úr textareitnum. Endurhlaðið svo síðuna (F5) ' +
     'og vistið aftur.',
   STALE_BASE:

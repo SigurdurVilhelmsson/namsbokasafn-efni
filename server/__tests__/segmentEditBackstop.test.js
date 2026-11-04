@@ -375,6 +375,10 @@ describe('POST /edit — blocked structural violations (synthetic marker fixture
     const steps = [
       'Opnum klippispjöldum verður lokað. Viltu halda áfram?', // the old page's closePanels question, quoted
       'Hætta við (Cancel)', // answered in that dialog
+      // [USER] 2026-11-04, after the PR1 review (C6): the old page asks that question up to three
+      // times (its reload, then the terms and repetitions refreshes), and OK at any of them loses
+      // the text, so the message says to answer Hætta við every time it appears.
+      'í hvert sinn sem hún birtist',
       'ekki hnappinn Hætta við', // the pane's own button, named as the wrong one
       'afrita', // copying comes only after the Cancel
       'F5', // the reload comes last
