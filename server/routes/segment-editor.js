@@ -47,7 +47,7 @@ const activityLog = require('../services/activityLog');
 const notifications = require('../services/notifications');
 const servedVersions = require('../services/servedVersions');
 const servedEdit = require('../services/servedEdit');
-const { sha256Text } = require('../lib/servedText');
+const { sha256Text, isNotMintedBook } = require('../lib/servedText');
 const { isNewer } = require('../lib/editRecency');
 
 // Notify an edit's author of a head-editor decision (fire-and-forget — a
@@ -1547,6 +1547,14 @@ router.post(
       if (category && !VALID_CATEGORIES.includes(category)) {
         return res.status(400).json({
           error: `Invalid category. Must be one of: ${VALID_CATEGORIES.join(', ')}`,
+        });
+      }
+      // G1.1 (spec §11, T18): a book that is never minted takes no write, before any target is
+      // loaded. createPropagatedEdits' mint refuses it too, as a second line.
+      if (isNotMintedBook(req.params.book)) {
+        return res.status(409).json({
+          error: 'BOOK_NOT_MINTED',
+          message: servedEdit.REFUSAL_MESSAGES.BOOK_NOT_MINTED,
         });
       }
       const sourceSeg = segmentParser
