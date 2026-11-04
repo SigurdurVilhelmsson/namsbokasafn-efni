@@ -69,3 +69,20 @@ describe('assists are recorded at their three sites and sent (§5.10)', () => {
     expect(save).toContain('clearPaneState(segmentId)');
   });
 });
+
+describe('drafts are version 2 and a restore re-installs assists (§5.18)', () => {
+  it("saveDraft writes through buildDraftValue with the pane's base and assists", () => {
+    const save = fnBody('saveDraft', 'clearDraft');
+    expect(save).toContain('segmentSaveState.draftEntry(');
+    expect(save).toMatch(/writeDraft\(/);
+    expect(src).toContain('segmentSaveState.buildDraftValue(');
+  });
+
+  it('restoreDraft reads every draft under the prefix, parses either format, and installs through installDraft', () => {
+    const restore = fnBody('restoreDraft', 'installDraft');
+    expect(restore).toContain('draftValuesUnder(prefix)'); // not only findNewestDraft: Review Focus 24
+    expect(restore).toContain('segmentSaveState.mergeDraftValues(');
+    expect(restore).toMatch(/installDraft\([^)]*addRestoreItem: true/);
+    expect(src).toContain('segmentSaveState.restoredAssists(');
+  });
+});

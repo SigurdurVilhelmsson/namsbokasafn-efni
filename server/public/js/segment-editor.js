@@ -84,22 +84,39 @@
     return 'seg-draft:' + currentBook + '/' + currentChapter + '/' + currentModuleId + ':';
   }
 
-  function saveDraft() {
-    if (!currentModuleId || dirtyEdits.size === 0) {
-      if (currentModuleId) localStorage.removeItem(draftKey());
-      return;
-    }
-    const drafts = {};
-    for (const segId of dirtyEdits) {
-      const ta = document.getElementById('textarea-' + cssId(segId));
-      if (ta) drafts[segId] = ta.value;
-    }
+  function writeDraft(entries) {
     try {
-      localStorage.setItem(draftKey(), JSON.stringify({ ts: Date.now(), drafts }));
+      localStorage.setItem(
+        draftKey(),
+        JSON.stringify(segmentSaveState.buildDraftValue(entries, Date.now()))
+      );
     } catch {
       if (typeof saveRetry !== 'undefined')
         saveRetry.showToast(UI.common.localStorageFull, 'error');
     }
+  }
+
+  /** §5.18: per segment the text, the base it was started from, its occurrence and its assists. */
+  function saveDraft() {
+    if (!currentModuleId) return;
+    const entries = {};
+    for (const segId of dirtyEdits) {
+      const ta = document.getElementById('textarea-' + cssId(segId));
+      if (!ta) continue;
+      const st = paneState.get(segId) || freshPaneState(segId);
+      entries[segId] = segmentSaveState.draftEntry({
+        text: ta.value,
+        baseSha256: st.baseSha256,
+        occurrence: st.occurrence,
+        assists: st.assists,
+        refused: st.refused,
+      });
+    }
+    if (Object.keys(entries).length === 0) {
+      localStorage.removeItem(draftKey());
+      return;
+    }
+    writeDraft(entries);
   }
 
   function clearDraft() {
@@ -111,35 +128,68 @@
     draftTimer = setInterval(saveDraft, 5000);
   }
 
-  function restoreDraft() {
-    const found = tabGuard.findNewestDraft(draftPrefix());
-    if (!found) return;
-    try {
-      const draft = found.data;
-      if (Date.now() - draft.ts > 7 * 24 * 60 * 60 * 1000) {
-        tabGuard.clearDraftsByPrefix(draftPrefix());
-        return;
+  /** Every parseable draft value stored under `prefix`, in storage order (mergeDraftValues orders them by ts). */
+  function draftValuesUnder(prefix) {
+    const out = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (!k || !k.startsWith(prefix)) continue;
+      try {
+        out.push(JSON.parse(localStorage.getItem(k)));
+      } catch {
+        // a corrupt entry holds nothing usable; clearDraftsByPrefix removes it with the rest
       }
-      const ids = Object.keys(draft.drafts);
-      if (ids.length === 0) return;
-      if (!confirm(UI.confirm.draftRecovery(ids.length))) {
-        tabGuard.clearDraftsByPrefix(draftPrefix());
-        return;
-      }
-      for (const segId of ids) {
-        openEditPanel(segId);
-        const ta = document.getElementById('textarea-' + cssId(segId));
-        if (ta) {
-          ta.value = draft.drafts[segId];
-          dirtyEdits.add(segId);
-        }
-      }
-      // Clean up all tab-specific drafts after restore
-      tabGuard.clearDraftsByPrefix(draftPrefix());
-      updateSaveStatusBar();
-    } catch {
-      tabGuard.clearDraftsByPrefix(draftPrefix());
     }
+    return out;
+  }
+
+  function restoreDraft() {
+    const prefix = draftPrefix();
+    // EVERY tab's draft for this module, not only tabGuard.findNewestDraft's: a kept text can sit in an older
+    // tab's key (an F5 gives the page a new tabId), and clearDraftsByPrefix below removes them all (plan decision 31).
+    const values = draftValuesUnder(prefix);
+    const found = values.length > 0;
+    const weekAgo = Date.now() - 7 * 24 * 60 * 60 * 1000; // tabGuard's own window
+    const fromStorage = segmentSaveState.mergeDraftValues(
+      values.filter((v) => v && typeof v.ts === 'number' && v.ts >= weekAgo)
+    );
+    const entries = segmentSaveState.mergeRestoreSources(fromStorage, []);
+    // A pane already open holds its text on screen (a declined re-render): leave it.
+    const ids = Object.keys(entries).filter((id) => !paneState.has(id));
+    if (!found) return;
+    tabGuard.clearDraftsByPrefix(prefix);
+    if (ids.length > 0 && confirm(UI.confirm.draftRecovery(ids.length))) {
+      for (const segId of ids) installDraft(segId, entries[segId], { addRestoreItem: true });
+    }
+    updateSaveStatusBar();
+    saveDraft(); // the restored panes are dirty: persist them under this tab's key now
+  }
+
+  /**
+   * Put a draft entry into its pane. `addRestoreItem`: the text came back from
+   * storage, so its assists are re-installed BEFORE a draft-restore item
+   * (§5.18). Returns false when the row is not on screen (filtered out).
+   */
+  function installDraft(segId, entry, { addRestoreItem }) {
+    if (!rowElement(segId)) return false;
+    openEditPanel(segId);
+    const ta = document.getElementById('textarea-' + cssId(segId));
+    if (!ta) return false;
+    ta.value = entry.text;
+    const row = rowValues(segId);
+    paneState.set(segId, {
+      baseSha256: entry.baseSha256, // the base it was typed on; null when unknown (legacy)
+      occurrence: entry.occurrence !== null ? entry.occurrence : row ? row.occurrence : null,
+      assists: addRestoreItem
+        ? segmentSaveState.restoredAssists(entry, Date.now())
+        : entry.assists.slice(),
+      refused: entry.refused || null,
+    });
+    dirtyEdits.add(segId);
+    const previewEl = document.getElementById('preview-' + cssId(segId));
+    if (previewEl) previewEl.innerHTML = renderMarkdownPreview(ta.value);
+    refreshBackdrop(segId);
+    return true;
   }
 
   /** Get effective role (respects admin role preview override) */
