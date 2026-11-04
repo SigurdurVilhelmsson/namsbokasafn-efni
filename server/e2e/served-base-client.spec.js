@@ -130,6 +130,92 @@ async function captureAndStub(page, suffix, status, json) {
   return { posted };
 }
 
+/** The draft entry stored for `segmentId` under any tab's key, or null. */
+async function storedDraftEntry(page, segmentId) {
+  return page.evaluate((id) => {
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key.startsWith('seg-draft:')) {
+        const v = JSON.parse(localStorage.getItem(key));
+        if (v.segments && v.segments[id]) return v.segments[id];
+      }
+    }
+    return null;
+  }, segmentId);
+}
+
+/**
+ * Open the target's pane, type, and have the save refused DUPLICATE_ID (stubbed, for every save from here on): the
+ * pane then holds a kept text with its notice and Vista disabled. The refusal alert is accepted; the reload's two
+ * background loads are waited for, so no re-render is still to come when the test acts on the pane.
+ */
+async function keepDuplicateId(page, target) {
+  const row = rowOf(page, target.segmentId);
+  await row.locator('.btn-edit').click();
+  const text = `${target.is}${SUFFIX}`;
+  await row.locator('textarea').fill(text);
+  await page.route(`**${MODULE_URL}/edit`, (route) =>
+    route.fulfill({
+      status: 409,
+      contentType: 'application/json',
+      body: JSON.stringify({ error: 'DUPLICATE_ID', message: 'stub' }),
+    })
+  );
+  const background = Promise.all([
+    page.waitForResponse((r) => r.url().endsWith(`${MODULE_URL}/terms`)),
+    page.waitForResponse((r) => r.url().endsWith(`${MODULE_URL}/repetitions`)),
+  ]);
+  const acceptAll = (d) => d.accept().catch(() => {});
+  page.on('dialog', acceptAll);
+  await row.getByRole('button', { name: 'Vista', exact: true }).click();
+  await background;
+  await expect(row.locator('.draft-notice[data-notice="DUPLICATE_ID"]')).toBeVisible();
+  page.off('dialog', acceptAll);
+  await expect(row.locator('textarea')).toHaveValue(text);
+  return { row, text };
+}
+
+/** Answer the next dialog, recording its message in `asked`. */
+function answerNextDialog(page, asked, accept) {
+  page.once('dialog', (d) => {
+    asked.push(d.message());
+    (accept ? d.accept() : d.dismiss()).catch(() => {});
+  });
+}
+
+/**
+ * Every way a pane's text is discarded (Review Focus 23). The Escape close confirms with its own long-standing
+ * question: a kept pane is dirty, and the plan (Task 19) leaves that path's confirm as it was.
+ */
+const DISCARDS = [
+  {
+    how: 'Hætta við',
+    asks: 'discardKept',
+    run: (page, row) => row.getByRole('button', { name: 'Hætta við', exact: true }).click(),
+  },
+  {
+    how: 'Endurstilla',
+    asks: 'discardKept',
+    run: (page, row) => row.locator('.btn-revert').click(),
+  },
+  {
+    how: 'Escape in its textarea',
+    asks: 'discardKept',
+    run: async (page, row) => {
+      await row.locator('textarea').focus();
+      await page.keyboard.press('Escape');
+    },
+  },
+  {
+    how: 'Escape elsewhere',
+    asks: 'discardChanges',
+    run: async (page, row) => {
+      await row.locator('textarea').evaluate((el) => el.blur());
+      await page.keyboard.press('Escape');
+    },
+  },
+];
+
 test.describe('G1.1 client: the row is what the save and the accept echo', () => {
   test.beforeEach(async ({ page }) => {
     await loginAs(page, 'admin', USER_ID);
@@ -431,6 +517,115 @@ test.describe('G1.1 client: the row is what the save and the accept echo', () =>
       timeout: 10000,
     });
     await expect(rowOf(page, target.segmentId).locator('textarea')).toHaveValue(text);
+  });
+
+  for (const discard of DISCARDS) {
+    test(`${discard.how} on a kept text asks first: declined the text stays, accepted it does not come back on the next page load (PR1 review C12, C19)`, async ({
+      page,
+    }) => {
+      const [target] = middleVirginRows(await loadModuleJson(page));
+      await openModule(page);
+      const { row, text } = await keepDuplicateId(page, target);
+      const question = await page.evaluate(
+        (k) => (k === 'discardKept' ? UI.draftNotice.discardKept : UI.confirm.discardChanges),
+        discard.asks
+      );
+      // Control: a page load brings back, unasked, a kept text the draft still holds (index decision 12), so its
+      // absence after the discard below is the discard's doing. The dirty page's beforeunload prompt is accepted.
+      expect(await storedDraftEntry(page, target.segmentId)).toMatchObject({
+        text,
+        refused: 'DUPLICATE_ID',
+      });
+      const leave = (d) => d.accept().catch(() => {});
+      page.on('dialog', leave);
+      await openModule(page);
+      page.off('dialog', leave);
+      await expect(row.locator('.draft-notice[data-notice="DUPLICATE_ID"]')).toBeVisible();
+      await expect(row.locator('textarea')).toHaveValue(text);
+
+      // Declined: the kept text, its notice and the blocked Vista all stay, in the open pane.
+      const asked = [];
+      answerNextDialog(page, asked, false);
+      await discard.run(page, row);
+      await expect.poll(() => asked.length).toBe(1);
+      expect(asked).toEqual([question]);
+      await expect(row.locator('textarea')).toHaveValue(text);
+      await expect(row.locator('.draft-notice[data-notice="DUPLICATE_ID"]')).toBeVisible();
+      await expect(row.getByRole('button', { name: 'Vista', exact: true })).toBeDisabled();
+      await expect(row.locator('.edit-panel')).toHaveClass(/\bactive\b/);
+
+      // Accepted: the text is gone, from the pane AND from the draft, so a page load right away does not bring it
+      // back. Before PR1 review C12 the draft kept it until the draft timer's next tick.
+      answerNextDialog(page, asked, true);
+      await discard.run(page, row);
+      await expect.poll(() => asked.length).toBe(2);
+      expect(asked[1]).toBe(question);
+      await expect(row.locator('.draft-notice')).toHaveCount(0);
+      await expect(row.locator('textarea')).toHaveValue(target.is);
+      expect(await storedDraftEntry(page, target.segmentId)).toBeNull();
+      await openModule(page);
+      await expect(row.locator('textarea')).toHaveValue(target.is);
+      await expect(row.locator('.draft-notice')).toHaveCount(0);
+      await expect(row.locator('.edit-panel')).not.toHaveClass(/\bactive\b/);
+    });
+  }
+
+  test('the repetition insert asks before it replaces a kept text; accepted, the pane starts afresh (PR1 review C10)', async ({
+    page,
+  }) => {
+    const [target] = middleVirginRows(await loadModuleJson(page));
+    const suggestion = {
+      is_text: `${target.is}${SUFFIX} rep`,
+      book: 'efnafraedi-2e',
+      chapter: 3,
+      module_id: 'm68000',
+    };
+    await page.route(`**${MODULE_URL}/repetitions`, (route) =>
+      route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({ repetitions: [{ segmentId: target.segmentId, suggestion }] }),
+      })
+    );
+    await openModule(page);
+    const { row, text } = await keepDuplicateId(page, target);
+    const question = await page.evaluate(() => UI.draftNotice.discardKept);
+    const insert = row.getByRole('button', { name: 'Nota þessa þýðingu' });
+
+    // Declined: nothing changes.
+    const asked = [];
+    answerNextDialog(page, asked, false);
+    await insert.click();
+    await expect.poll(() => asked.length).toBe(1);
+    expect(asked).toEqual([question]);
+    await expect(row.locator('textarea')).toHaveValue(text);
+    await expect(row.locator('.draft-notice[data-notice="DUPLICATE_ID"]')).toBeVisible();
+    await expect(row.getByRole('button', { name: 'Vista', exact: true })).toBeDisabled();
+    expect(await storedDraftEntry(page, target.segmentId)).toMatchObject({
+      text,
+      refused: 'DUPLICATE_ID',
+    });
+
+    // Accepted: the suggestion replaces the kept text; the notice and the block go with it, and so does the kept
+    // entry in the draft, which now holds the new text as an ordinary one.
+    answerNextDialog(page, asked, true);
+    await insert.click();
+    await expect(row.locator('textarea')).toHaveValue(suggestion.is_text);
+    expect(asked).toEqual([question, question]);
+    await expect(row.locator('.draft-notice')).toHaveCount(0);
+    await expect(row.getByRole('button', { name: 'Vista', exact: true })).toBeEnabled();
+    const stored = await storedDraftEntry(page, target.segmentId);
+    expect([stored.text, stored.refused]).toEqual([suggestion.is_text, null]);
+
+    // The next save goes out (stubbed), on the row's base, listing the insert alone: the kept text's own items
+    // (its draft-restore) were discarded with it.
+    await page.unroute(`**${MODULE_URL}/edit`);
+    const { posted } = await captureAndStub(page, 'edit', 200, STUB_SAVED);
+    await row.getByRole('button', { name: 'Vista', exact: true }).click();
+    const body = await posted;
+    expect(body.editedContent).toBe(suggestion.is_text);
+    expect(body.baseSha256).toBe(target.baseSha256);
+    expect(body.assists.map((a) => a.itemType)).toEqual(['repetition-insert']);
   });
 
   test('a refusal reached through Beita víðar propagates nothing (R4, decision 32)', async ({

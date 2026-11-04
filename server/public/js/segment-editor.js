@@ -1161,13 +1161,18 @@
   }
 
   // Insert a repetition suggestion into a segment's edit box (still saved
-  // through the normal QA path — no silent auto-apply).
+  // through the normal QA path — no silent auto-apply). It replaces the whole
+  // text, so a kept text asks first and, replaced, takes its notice, its block
+  // and its draft entry with it (PR1 review C10).
   function insertRepetition(segmentId) {
     const rep = repetitionData?.[segmentId];
     if (!rep?.suggestion) return;
+    if (!confirmDiscardKept(segmentId)) return;
+    const discardsKept = Boolean(paneState.get(segmentId)?.refused);
     openEditPanel(segmentId);
     const ta = document.getElementById('textarea-' + cssId(segmentId));
     if (ta) {
+      if (discardsKept) clearPaneState(segmentId); // the pane starts afresh, as Endurstilla leaves it
       ta.value = rep.suggestion.is_text;
       addAssist(
         segmentId,
@@ -1180,6 +1185,7 @@
       );
       ta.dispatchEvent(new Event('input', { bubbles: true }));
       ta.focus();
+      if (discardsKept) saveDraft(); // the draft holds the new text now, not the kept one (PR1 review C12)
     }
   }
 
@@ -2194,6 +2200,7 @@
     dirtyEdits.delete(segmentId);
     clearPaneState(segmentId);
     updateSaveStatusBar();
+    saveDraft(); // a discarded text leaves the draft now, not at the next tick (PR1 review C12)
   }
 
   /**
@@ -2226,6 +2233,7 @@
     if (previewEl) previewEl.innerHTML = renderMarkdownPreview(textarea.value);
     refreshBackdrop(segmentId);
     updateSaveStatusBar();
+    saveDraft(); // a discarded text leaves the draft now, not at the next tick (PR1 review C12)
   }
 
   /**
@@ -3781,6 +3789,7 @@
           dirtyEdits.delete(segId);
           clearPaneState(segId);
           updateSaveStatusBar();
+          saveDraft(); // a discarded text leaves the draft now, not at the next tick (PR1 review C12)
         }
       }
     }
