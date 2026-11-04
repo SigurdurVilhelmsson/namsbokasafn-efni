@@ -905,6 +905,9 @@ router.post(
  * blocks (409 DISCUSS_OPEN) and so does published human text that is still the
  * live baseline (409 HUMAN_CONTENT). Eligibility is enforced HERE, not in the
  * client — this endpoint is directly reachable (MTA-R3).
+ * G1.1 (spec §5.6 Accept): placement runs first (409 BOOK_NOT_MINTED, NO_LAYER,
+ * DUPLICATE_ID; 404 for an id not served), and a new acceptance row records the
+ * served version it was made on and its occurrence.
  */
 router.post(
   '/:book/:chapter/:moduleId/accept',
@@ -925,6 +928,16 @@ router.post(
     }
 
     try {
+      // Spec §5.6 Accept: steps 1–3 first, so a duplicated id is refused before acceptSegment's
+      // existing lookup would return the first copy's row as alreadyAccepted, and organic and a
+      // module with no layer are refused before anything is written. acceptOrigin is the research
+      // event's (PR3); nothing here reads it.
+      const placed = servedEdit.placeOnServedBase({
+        book: req.params.book,
+        chapter: req.chapterNum,
+        moduleId: req.params.moduleId,
+        segmentId,
+      });
       const result = acceptanceService.acceptSegment({
         book: req.params.book,
         chapter: req.chapterNum,
@@ -933,6 +946,7 @@ router.post(
         acceptedContent,
         userId: String(req.user.id),
         username: req.user.username,
+        occurrence: placed.occurrence,
       });
 
       if (!result.alreadyAccepted) {
@@ -949,6 +963,7 @@ router.post(
 
       res.json({ success: true, ...result });
     } catch (err) {
+      if (sendRefusal(res, err)) return;
       // MTA-R3 adds DISCUSS_OPEN / HUMAN_CONTENT to the eligibility guard;
       // they are conflict states like the other two, not server errors.
       if (
