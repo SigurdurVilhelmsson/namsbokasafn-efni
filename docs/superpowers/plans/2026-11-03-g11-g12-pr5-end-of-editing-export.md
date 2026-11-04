@@ -47,7 +47,8 @@ rev-parse`, `git ls-tree`, `git cat-file`) through `child_process.execFileSync`,
    `researchBoundary.test.js` (Task 4), and the deletion that empties `exportsDir`.
 6. [The spec](../specs/2026-11-03-served-version-and-event-log-design.md), whole; for this PR §4 (R1's note, R5, A1, A2),
    §5.2, §5.3, §5.5, §5.13, §5.15 step 4, §5.16, §5.19, §5.22, §10 (T17, T22) and §11. Frozen and approved as written,
-   with one dated `✏️ AMENDED` block (`researchScope.js` in PR1); this plan does not reopen §14.
+   with two dated `✏️ AMENDED` blocks: `researchScope.js` in PR1 (2026-11-03), and the twenty departures [USER]
+   approved with the plans (2026-11-04), one of them this plan's (decision 7). This plan does not reopen §14.
 7. [The decision record](../../decisions/2026-11-03-research-capture-consent-and-retention-rulings.md): R1, R5, A1, A2.
 8. [G1.23's spec](../specs/2026-11-02-suggestion-view-design.md) §6.2 (eligibility per unit) and §8.
 9. [The handoff](../../plans/2026-11-03-g11-g12-implementation-plan-handoff.md) §4 PR5 (frozen; pinned to `d24681b8`,
@@ -55,8 +56,11 @@ rev-parse`, `git ls-tree`, `git cat-file`) through `child_process.execFileSync`,
 
 ## State of this plan (read first)
 
-- **Written 2026-11-03 for [USER]'s approval, as one of the five PR plans the index lists. No code before [USER]
-  approves it.** Status lives in the register, never here.
+- **Written 2026-11-03 as one of the five PR plans the index lists; ✅ approved by [USER] on 2026-11-04** ("Yes for
+  all", with the clarifications the index's "Answers" records). The spec's `✏️ AMENDED 2026-11-04` block records every
+  departure, this plan's decision 7 among them, so **no spec commit is owed before any task**. One clarification
+  settled decision 6: the end-of-editing export and the eligibility file run on the production host, by hand. Every
+  other behaviour choice is built as written. Status lives in the register, never here.
 - **Pinned to `main` = `ed10180c` (code byte-identical at `b6212d99`, where it was read), with PR1–PR4 assumed
   merged.** Every `path:line` below was opened at that tree. Where PR1–PR4 change a file, the text says "as PR*n* leaves
   it" and the edit is matched on the named construct. Once an earlier task here has shifted a file, do the same.
@@ -119,8 +123,9 @@ rev-parse`, `git ls-tree`, `git cat-file`) through `child_process.execFileSync`,
 ## Decisions taken in this plan
 
 Each is a §13 item, a seam the spec, the index or an earlier plan leaves open, or a reading of the tree. **Decision 7
-changes what the frozen spec says and needs [USER]'s yes** before it is built as written. Its fallback is stated. The
-questions that change nothing unless [USER] asks are under "Questions for [USER]".
+changes what the frozen spec says, and [USER] approved it on 2026-11-04** (spec `✏️ AMENDED 2026-11-04`). Decision 6
+was settled by [USER]'s answer the same day; every other decision was approved as written. "Answers ([USER],
+2026-11-04)" lists each answer.
 
 **How the end of editing enters**
 
@@ -129,10 +134,10 @@ questions that change nothing unless [USER] asks are under "Questions for [USER]
    - **The code and the data stay independent.** The index lets PR5 merge "any time before G3.2"
      (§13a), so the tag may predate this script, or predate a later fix to it. Checking the tag out would run the tag's
      code, which may not hold the script. Reading objects runs today's script over the tag's text.
-   - **It runs in any clone without touching its checkout.** On production the working tree is the server's
-     own: the editor reads it, and the content cron commits from it every two hours (CLAUDE.md § Content delivery).
-     Checking a tag out there is not possible. A `git worktree` at the tag has no `server/node_modules`, which is
-     gitignored, so better-sqlite3 would not resolve (CLAUDE.md § Tech Stack). Objects need neither.
+   - **It runs on the production host without touching its checkout** (decision 6). There the working tree is the
+     server's own: the editor reads it, and the content cron commits from it every two hours (CLAUDE.md § Content
+     delivery). Checking a tag out there is not possible. A `git worktree` at the tag has no `server/node_modules`,
+     which is gitignored, so better-sqlite3 would not resolve (CLAUDE.md § Tech Stack). Objects need neither.
    - **It is reproducible.** The same commit and the same database give the same bytes (T22), and a dirty file, a
      later commit or an untracked file cannot leak in. Task 5 plants all three and shows none reaches the output.
    - Refs beginning with `-`, or holding whitespace or a NUL, are refused before git runs (option injection). An
@@ -141,11 +146,12 @@ questions that change nothing unless [USER] asks are under "Questions for [USER]
      two-hourly backup cron (`scripts/git-backup.sh:162-163`), and a dev push strands the cron's next commit until a
      deploy (CLAUDE.md § Content delivery). A tag cut from GitHub's `main` while production holds unpushed faithful
      writes would make every such applied segment read `reviewed-but-unapplied`, with exit 0. So each report carries
-     `faithfulMatchesCheckout`: whether the clone's working tree equals the commit for
+     `faithfulMatchesCheckout`: whether the host's working tree equals the commit for
      `books/<book>/03-faithful-translation/` (same non-ignored paths, same blob ids; Task 3, writing nothing). It is
-     reported, not refused: in a development clone (decision 6) the checkout is not production's and may differ
-     legitimately. On the production host it must read `true` before `--write` (the header's usage and the Handoff).
-     It goes into the printed report only, never into the three files, so the files stay byte-identical across hosts.
+     reported, not refused: the operator reads it in the dry run, and on the production host it must read `true`
+     before `--write` (the header's usage and the Handoff). A test, or the PR's real-corpus dry run (Before the PR,
+     item 2), runs in a development checkout, where it may differ legitimately. It goes into the printed report only,
+     never into the three files, so the files do not depend on the checkout they were made from.
 2. **The export pairs each module with the loader's own pairing, lifted into a pure function, not with a copy.**
    `segmentParser.loadModuleForEditing` (`server/services/segmentParser.js:102-190`) reads files, picks the layer
    (`:112-121`), unescapes the Icelandic (`:130-136`) and pairs it (`:156-170`). Task 1 moves the layer choice,
@@ -170,36 +176,42 @@ questions that change nothing unless [USER] asks are under "Questions for [USER]
    G3.2 may release more than chemistry.
 5. **`sessions.db` is `resolveDbPath()` (`server/lib/dbPath.js:10-15`), opened `{ readonly: true, fileMustExist: true
    }`, with every read inside one transaction (a consistent snapshot even while the server runs). There is no `--db`
-   flag.** To export from a copy, set `SESSIONS_DB_PATH`: it moves `research.db` with it (§5.1's single redirect), so
-   the raw research export can never pair one database's research file with another's served versions. It moves the
-   output directories too, because they are PR4's `researchFilesFor(researchPath)`, beside the research file (decision
-   13), so PR4's deletion always empties the directory these scripts wrote into.
-6. **Where the scripts run, and what "never the running server" means here.** §5.19's "never the running server" is
-   read as "never inside the server process and never through a route". Task 9 pins that no file outside
-   `server/scripts/` and `server/__tests__/` (PR4's `nonScriptFilesNaming` walk: `server/index.js`, `lib/`,
-   `middleware/`, `routes/`, `services/` and the rest) requires any of the three scripts or their helpers. The raw
-   research export
-   runs **only on the production host**, where `research.db` lives. A copy of `research.db` anywhere else is outside
-   the deletion promise (§5.15, §5.19's last bullet), and so are files under a `research-exports/` that PR4's deletion
-   never empties. The end-of-editing export and the eligibility file may run on the production host (read-only, after
-   fetching the tag) or in a development clone with a copy of `sessions.db`. Their outputs hold no research data. The
-   scripts' headers document the production-host route. A question for [USER] asks whether that reading is right.
+   flag.** `SESSIONS_DB_PATH` (which every test sets) moves `research.db` with it (§5.1's single redirect), so the raw
+   research export can never pair one database's research file with another's served versions. It moves the output directories too, because they are PR4's `researchFilesFor(researchPath)`, beside the
+   research file (decision 13), so PR4's deletion always empties the directory these scripts wrote into.
+6. **Where the scripts run, and what "never the running server" means here. ✅ Settled by [USER] 2026-11-04.**
+   §5.19's "never the running server" is read as "never inside the server process and never through a route". Task 9
+   pins that no file outside `server/scripts/` and `server/__tests__/` (PR4's `nonScriptFilesNaming` walk:
+   `server/index.js`, `lib/`, `middleware/`, `routes/`, `services/` and the rest) requires any of the three scripts or
+   their helpers.
+   - **All three run on the production host, by hand, as admin scripts.** The end-of-editing export and the
+     eligibility file read the live `sessions.db` **read-only**: `new Database(resolveDbPath(), { readonly: true,
+     fileMustExist: true })`, every read inside one transaction (decision 5), so the running server's writes are
+     neither blocked nor seen half-done, and a missing file is an error, never a new empty database. They read the
+     books tree from git objects at the end-of-editing ref (`--ref`, decision 1), never from the working tree. Their
+     output stays in that host's gitignored `pipeline-output/` (decision 13; Task 5 pins the ignore).
+   - **The raw research export** runs there too, because `research.db` lives there: a copy of it anywhere else is
+     outside the deletion promise (§5.15, §5.19's last bullet), and so are files under a `research-exports/` that PR4's
+     deletion never empties.
+   - **Run as the service's own user, never under `sudo`:** `sessions.db` is a WAL database, and a root open can leave
+     root-owned `-wal`/`-shm` files the service cannot write (PR4 decision 35's reason). Each header's usage says so.
+   - *Not adopted ([USER] 2026-11-04):* running the export and the eligibility file in a development clone with a copy
+     of `sessions.db`.
 
 **What a line of the end-of-editing export says**
 
 7. **Every hash is over a served view. For an approved text the tag does not hold, the hash is over that text as the
-   loader would serve it once apply wrote it. Needs [USER]'s yes.** §5.19 says `final_sha256` is "`sha256Text` of the
-   final text: … the approved text for a `reviewed-but-unapplied` one". `edited_content` is stored as typed. The save
-   route trims nothing (`server/routes/segment-editor.js:345-361`). Apply writes it verbatim
-   (`segmentEditorService.js:1011`, then `segmentParser.saveModuleSegments` at `:1087`), and the loader trims and normalises what
-   it reads back. Hashing the raw text would give one approved text two hashes, one before apply and one after, wherever a
-   textarea left surrounding whitespace or a hard wrap. The view is computed by the loader's own pairing on a one-segment
-   file built with `assembleSegments`, the function apply writes with (`servedViewOfText`, Task 4). So "complete"
-   (decision 8) and `final_sha256` use one string. A later apply moves a line from `reviewed-but-unapplied` to
-   `complete` without changing its hash. *Fallback if [USER] says no:* `final_sha256` of a `reviewed-but-unapplied`
-   edit is `sha256Text(edited_content)` as stored. Decision 8 still compares views, since "is in the text at the tag"
-   cannot be a raw comparison. If the answer is yes, a dated `✏️ AMENDED` block in the spec records it before Task 4
-   (the procedure in PR3's "Questions for [USER]").
+   loader would serve it once apply wrote it. ✅ Approved by [USER] 2026-11-04 (spec AMENDED 2026-11-04).** §5.19 says
+   `final_sha256` is "`sha256Text` of the final text: … the approved text for a `reviewed-but-unapplied` one".
+   `edited_content` is stored as typed. The save route trims nothing (`server/routes/segment-editor.js:345-361`). Apply
+   writes it verbatim (`segmentEditorService.js:1011`, then `segmentParser.saveModuleSegments` at `:1087`), and the
+   loader trims and normalises what it reads back. Hashing the raw text would give one approved text two hashes, one
+   before apply and one after, wherever a textarea left surrounding whitespace or a hard wrap. The view is computed by
+   the loader's own pairing on a one-segment file built with `assembleSegments`, the function apply writes with
+   (`servedViewOfText`, Task 4). So "complete" (decision 8) and `final_sha256` use one string. A later apply moves a
+   line from `reviewed-but-unapplied` to `complete` without changing its hash. The fallback, for the record, was
+   `sha256Text(edited_content)` as stored for a `reviewed-but-unapplied` edit. Decision 8 compares views either way,
+   since "is in the text at the tag" cannot be a raw comparison.
 8. **`complete` is decided by value against the tag, never by `applied_at`.** A segment is `complete` when its decider's
    served view equals `seg.is` at the tag **and the module's layer at the tag is `faithful`**. With no faithful file at
    the tag, nothing in that module is complete: R1 reads the final text "from `03-faithful-translation`". Reasons:
@@ -242,7 +254,8 @@ questions that change nothing unless [USER] asks are under "Questions for [USER]
    - **Two active acceptances on one occurrence** cannot exist while `idx_segment_acceptances_one_active` stands
      (`server/migrations/043-segment-acceptances.js:36-37`; no PR changes it). If the export meets them anyway (a
      database without the index), it refuses (`DECIDER_CONFLICT`, exit 1) and names the segment: a corruption, not a
-     review state. A question for [USER] asks whether this reading is the one wanted.
+     review state.
+   - **✅ Approved as written by [USER] 2026-11-04**, "newest" read as the newest decision.
 10. **Occurrence matching:** an edit or acceptance row whose `occurrence` is an integer decides only that occurrence's
     line. A row with `NULL` (made before G1.1, §5.8) decides every occurrence of its id. Apply writes one winner into
     every copy (`:1006-1013` maps `data.segments`), and PR2's snapshot reads `-1` the same way.
@@ -281,8 +294,8 @@ questions that change nothing unless [USER] asks are under "Questions for [USER]
       `SESSIONS_DB_PATH` moves it with the database (decision 5). PR4's handoff binds this ("both from this function,
       never a second derivation"). No flag moves it, and a directory under `<repo>/books/` is refused
       (`OUT_UNDER_BOOKS`): the cron pushes `books/` to the public repository (`scripts/git-backup.sh:162-178`).
-    - `pipeline-output/` is gitignored (`.gitignore:59`), and Task 5 pins it with `git check-ignore`. A run against a
-      copy writes beside the copy, outside this repository ("Where … disagree", item 7).
+    - `pipeline-output/` is gitignored (`.gitignore:59`), and Task 5 pins it with `git check-ignore`. A run with
+      `SESSIONS_DB_PATH` set (every test) writes beside that file, outside this repository ("Where … disagree", item 7).
 14. **The versions file lists only the versions some line's `version_key` names, keyed by `version_key`, with
     `book`, `chapter`, `module_id`, `segment_id`, `occurrence`, `layer`, `en_sha256`, `is_sha256`, `en_text`,
     `is_text`, and no `id`.** §5.19 names "texts, hashes and layer". The locator is added so G3.2 can recompute every
@@ -309,7 +322,7 @@ questions that change nothing unless [USER] asks are under "Questions for [USER]
     was never served to an assigned editor, so nobody worked on it under either condition, and no figure may put it in
     the suggestion arm. §5.22 fixes the output as a yes/no, so no third value is added. The cost: research cannot tell
     "opened before the switch-on" from "never opened", which G1.5 must know (Handoff). A module that opens after a run is
-    reported by the next run.
+    reported by the next run. ✅ Approved as written by [USER] 2026-11-04.
 18. **One flat file, `opening-eligibility.<book>.jsonl`, in PR4's `exportsDir` (`pipeline-output/research-exports/`
     on production).**
     - It is written where §5.22 says, in the directory PR4's deletion empties: `researchFilesFor(resolveResearchDbPath()
@@ -333,7 +346,7 @@ questions that change nothing unless [USER] asks are under "Questions for [USER]
 20. **It exports the events and their items, plus the served versions they reference. It never reads `editor_keys`.**
     - No interval id: the key map is never joined by an export (§5.16).
     - No stratum: G1.5 defines the strata, SD6 decides participation, and the column is `NULL` until then. When G1.5
-      defines them, adding a stratum to this export is G1.5's decision.
+      defines them, adding a stratum to this export is G1.5's decision (✅ approved as written by [USER] 2026-11-04).
     - Each event keeps its own `editor_key`, the pseudonym the analysis groups by. `editing_id` stays as stored: R1's
       reference to the edit, §6 item 13. G1.5 must not order or compare it, for §5.22's reason (Handoff).
 21. **Every served-version id is replaced by its content key.** Most are in the column; the rest are nested.
@@ -402,7 +415,8 @@ Each was checked at `b6212d99`. None changes what the frozen spec says. Each nam
    PR1's keys, not of this path, which no PR here touches. Under the hold it cannot fire for chemistry (`applyHold.assertFaithfulWritable`, `:841`). Once the hold
    lifts it can. **This plan:** edits are decided by value (decision 8), so the export is immune for edits. A wrongly
    lapsed acceptance is gone from the record, and no export can recover it. **The fix and its status belong in the
-   register** (CLAUDE.md § One source of truth: open work has one owner), not in this PR.
+   register, as §C209** (CLAUDE.md § One source of truth: open work has one owner), **and in its own small PR**, which
+   [USER] chose on 2026-11-04 to make now; not in this PR.
 2. **The index's T17 row lists only "the eligibility output" for PR5.** Task 9 adds two pins in the same file: no file
    outside `server/scripts/` and `server/__tests__/` requires PR5's scripts (§5.19's "never the running server",
    decision 6), and the end-of-editing export names no research table or reader. It also widens PR4's version of PR3's
@@ -422,8 +436,8 @@ Each was checked at `b6212d99`. None changes what the frozen spec says. Each nam
    (Handoff).
 7. **§5.19 names `pipeline-output/served-version-exports/` and `pipeline-output/research-exports/`.** PR4 derives both
    from the research file's directory, so they are those paths on production (where `research.db` is beside
-   `pipeline-output/sessions.db`) and beside the copy when `SESSIONS_DB_PATH` names one. The plan follows PR4 (decision
-   13), so PR4's deletion always empties the directory the scripts wrote into (§5.15 step 4).
+   `pipeline-output/sessions.db`) and beside whatever file `SESSIONS_DB_PATH` names (every test sets it). The plan
+   follows PR4 (decision 13), so PR4's deletion always empties the directory the scripts wrote into (§5.15 step 4).
 
 ## Global Constraints (PR5)
 
@@ -503,13 +517,14 @@ Input cases the spec implies but its tests do not name, each ending with the tas
 21. The loader's response is unchanged by Task 1, keys and order included: PR1's T17 pins its key sets, and the
     client reads it. The corpus check compares against an oracle built from the unchanged primitives, never against
     `pairForEditing` itself. → Task 1
-22. `SESSIONS_DB_PATH` names a copy: every default output directory is beside the copy (PR4's `researchFilesFor`),
-    so PR4's deletion empties the same directory; unset, they are `<repo>/pipeline-output/…`. → Task 5, Task 6, Task 7,
-    Task 8
+22. `SESSIONS_DB_PATH` names another file (every test does): every default output directory is beside that file
+    (PR4's `researchFilesFor`), so PR4's deletion empties the same directory; unset, they are `<repo>/pipeline-output/…`.
+    → Task 5, Task 6, Task 7, Task 8
 23. A mistyped `--book` (a slug with no module at the ref) → `BAD_BOOK`, exit 1, nothing written, never an empty
     export with exit 0. → Task 6, Task 7
-24. The clone's checkout differs from the tag in the book's faithful layer (a later commit, a dirty file, an untracked
-    file) → the report says `faithfulMatchesCheckout: false`; the files are unchanged. → Task 3, Task 6
+24. The checkout the script runs in (production's, decision 6) differs from the tag in the book's faithful layer (a
+    later commit, a dirty file, an untracked file) → the report says `faithfulMatchesCheckout: false`; the files are
+    unchanged. → Task 3, Task 6
 25. A comment in `server/lib/` that names `opening-eligibility.js` is not a require, and does not trip Task 9's pin. →
     Task 9
 
@@ -1019,7 +1034,8 @@ function bookTreeAt({ repoRoot = REPO_ROOT, commit, book }) {
 }
 
 /**
- * Decision 1: does this clone's checkout hold the commit's faithful layer? Compared, never read into the export.
+ * Decision 1: does this checkout (production's, decision 6) hold the commit's faithful layer? Compared, never read
+ * into the export.
  * Blob ids, not `git diff`: porcelain diff refreshes and rewrites the index even under --no-optional-locks (git 2.43,
  * measured), and plumbing diff-index without a refresh reports a touched, unchanged file as changed. ls-tree,
  * ls-files and hash-object (without -w) write nothing. Ignored files (*.tmp) are skipped, as the backup cron's
@@ -1130,8 +1146,8 @@ R1's note; decisions 7–12; Review Focus 1–5, 7.
     `reviewed-but-unapplied` (decision 8: no faithful text at the tag).
   - `pre-G1.1 edit` (`served_version_id: null`) → `version_key: null`, `version: null`.
   - `unapplied whitespace text` (`edited_content ' ED-H line1\nline2 '`) → `final_sha256 ===
-    sha256Text('ED-H line1 line2')` and `!== sha256Text(' ED-H line1\nline2 ')`. This case carries decision 7 and
-    changes with its fallback.
+    sha256Text('ED-H line1 line2')` and `!== sha256Text(' ED-H line1\nline2 ')`. This case carries decision 7
+    (approved; its fallback is not built).
   - `a version on another segment` → throws `VERSION_MISMATCH`. Control: the same row with this segment → no throw.
   - `a version on another chapter or occurrence` → no throw; `version_key` is that row's key.
   - `a set served_version_id with no row` (`versionRow: undefined`) → throws `VERSION_MISSING`.
@@ -1646,14 +1662,15 @@ Expected: FAIL — `TypeError: main is not a function`; the spawn case gets stat
   the usage in the header too, with the production-host route (decision 6):
 
 ```text
-On the production host, after editing has ended and the end-of-editing tag exists:
+On the production host only, by hand, as the service's own user (never sudo: a root open of the WAL database can
+leave root-owned -wal/-shm files the server cannot write), after editing has ended and the end-of-editing tag exists:
   cd <repo> && git fetch origin tag <tag>          # objects only; the working tree is untouched
   node server/scripts/export-served-versions.js --ref <tag>            # dry run: the summary
   node server/scripts/export-served-versions.js --ref <tag> --write    # pipeline-output/served-version-exports/
+It opens the live sessions.db read-only ({ readonly: true, fileMustExist: true }, one transaction) and reads the
+books tree from git objects at <tag>. Its files stay in this host's gitignored pipeline-output/ (decision 6).
 Cut the tag on production's HEAD after a healthy content-backup tick (checks.content_backup ok, nothing unpushed),
 and write only when the dry run's faithfulMatchesCheckout is true (decision 1).
-From a development clone with a copy of sessions.db: SESSIONS_DB_PATH=<copy> node … (decision 5); the files land in
-<copy's directory>/served-version-exports/, and faithfulMatchesCheckout describes the clone, not production.
 ```
 
 ```js
@@ -1860,7 +1877,7 @@ module.exports = { openedAfterFirstSwitchOn };
   - §5.22: the one admin script that may read `module_openings` and `book_switch_events`;
   - it writes a yes/no and never a time;
   - why it is not `research-` named (decision 18);
-  - usage, with the production-host route, as Task 6.
+  - usage: the production host only, by hand, as the service's own user, read-only, as Task 6 (decision 6).
 
   The core:
 
@@ -1900,8 +1917,9 @@ function deriveOpeningEligibility({ db, tree, book }) {
   `writeOpeningEligibility`: `refuseUnderBooks`, `ensureDir(outDir, 0o700)`,
   `atomicWrite(path.join(outDir, `opening-eligibility.${book}.jsonl`), jsonl(lines), 0o600)`. `main` mirrors Task 6
   (the same parser; organic refused first; `const dir = outDir ?? exportDirs().exportsDir` inside `main`; every
-  book's tree refused as `BAD_BOOK` when it has no module, before the database opens; the dry-run report `{ mode,
-  book, commit, modules: n, yes: n, no: n }`).
+  book's tree refused as `BAD_BOOK` when it has no module, before the database opens; the database opened as Task 6
+  opens it, `new Database(resolveDbPath(), { readonly: true, fileMustExist: true })`, decision 6; the dry-run report
+  `{ mode, book, commit, modules: n, yes: n, no: n }`).
   In this task, move `cmpStr`, `cmpLine`, `jsonl` and `parseArgs` from `export-served-versions.js` into
   `server/scripts/lib/exportFiles.js`, and make the export import them: one sort, one line format and one parser, so
   both scripts refuse the same unknown flags.
@@ -2034,7 +2052,7 @@ Expected: FAIL — `Cannot find module '../scripts/research-export'`.
 
 - [ ] **Step 3: Implement** `server/scripts/research-export.js`. Header:
   - spec §5.19's last bullet, §5.22 and §5.16;
-  - the production host only (decision 6);
+  - the production host only, by hand, as the service's own user (decision 6);
   - the files PR4's deletion empties;
   - why no key map (decision 20);
   - why every nested id is replaced (decision 21);
@@ -2339,9 +2357,9 @@ constant), `refuseUnderBooks(dir, repoRoot)`, `jsonl(rows)`, `parseArgs(argv)`, 
 
 `exportsDir` and `servedVersionExportsDir` are PR4's `researchFilesFor(resolveResearchDbPath().researchPath)`, beside
 the research file: `pipeline-output/research-exports/` and `pipeline-output/served-version-exports/` on production.
-All three: a dry run by default; exit `0` / `1` / `2`; organic refused first (the first two); a slug with no module at
-the ref refused as `BAD_BOOK` (the first two); never required by a file outside `server/scripts/` and
-`server/__tests__/` (Task 9).
+All three: run on the production host only, by hand, as the service's own user (decision 6); a dry run by default;
+exit `0` / `1` / `2`; organic refused first (the first two); a slug with no module at the ref refused as `BAD_BOOK`
+(the first two); never required by a file outside `server/scripts/` and `server/__tests__/` (Task 9).
 
 ## Before the PR
 
@@ -2364,43 +2382,39 @@ the ref refused as `BAD_BOOK` (the first two); never required by a file outside 
      books/efnafraedi-2e/03-faithful-translation` printed nothing before the run (decision 1);
    - `--book efnafraedi` exits 1 with `BAD_BOOK`;
    - a mismatch is a finding: stop and re-derive.
-3. **A whole-branch adversarial review.** The newest practice is a blind pair, Opus and Fable on the same brief,
-   neither seeing the other's findings; **ask [USER] before commissioning the Fable half.** The alternative is a review
-   workflow with several lenses and a skeptic per finding. A mutation pass restores from a golden `cp`, never
+3. **A whole-branch adversarial review: a blind pair,** Opus and Fable on the same brief, neither seeing the other's
+   findings (**[USER] commissioned the Fable half on 2026-11-04**). A mutation pass restores from a golden `cp`, never
    `git checkout`, and `git status --porcelain` runs the moment any reviewing agent goes quiet. Fold confirmed findings
-   in as their own commits. The Review Focus above is the brief's input-case list.
+   in as their own commits. The Review Focus above is the brief's input-case list. PR5 adds no Icelandic string, so no
+   wording check is owed before the PR opens.
 4. **Push, open the PR (draft), and deploy only on [USER]'s go.** Merge as a **merge commit**, never squash or rebase,
    and only after PR4 (index decision 17). A push to `main` from dev puts prod's content backup behind until the next
    deploy (CLAUDE.md § Content delivery).
-5. A new top entry in the register: what merged, what was measured, what is next. Also the apply path's
-   `chapter-metadata` defect ("Where … disagree", item 1) as its own entry, since the register owns open work.
+5. A new top entry in the register: what merged, what was measured, what is next. The apply path's `chapter-metadata`
+   defect ("Where … disagree", item 1) already has its own entry, §C209, which owns its fix (a separate small PR,
+   [USER] 2026-11-04) and its status.
 
-### Questions for [USER] before or during review
+### Answers ([USER], 2026-11-04)
 
-- **Decision 7, needs your yes:** the hash of an approved text that the tag does not hold is over that text as the
-  loader would serve it once applied (surrounding whitespace trimmed, a single newline joined, MT escapes removed, term
-  markers repaired), so one approved text keeps one hash before and after apply. If no, it is the stored text's hash,
-  and a later apply can change a segment's hash without changing its text. A yes is written into the spec as a dated
-  `✏️ AMENDED` block before Task 4.
-- **Decision 6:** is "never the running server" (§5.19) read right, as "never inside the server process"? The raw
-  research export can only run on the production host, where `research.db` lives. A copy of it elsewhere would break the
-  7-day deletion promise. Should the end-of-editing export and the eligibility file also run there (the plan's documented
-  route), or in a development clone with a copy of `sessions.db`?
-- **Decision 17:** a module never opened is "no". Research then cannot tell "opened before the switch-on" from "never
-  opened". Is that acceptable, or does G1.5 need the distinction (which §5.22's yes/no would have to grow)?
-- **Decision 9:** an active acceptance alongside an approved, unapplied edit on one segment **is reachable**: reject
-  an edit, accept the MT, return the edit to pending, approve it (none of those steps checks the other table), or a
-  failed recursive apply after the self-heal resets a restore-edge segment. Apply resolves the pair for the edit (it
-  writes the edit's text and lapses the acceptance), so the export does the same: the line is `reviewed-but-unapplied`
-  with the edit's key and hash, unless the tag already holds the edit's text. This reads §5.19's "the newest approved
-  edit or active acceptance decides" as the newest *decision* (the approval came after the accept), not the newest
-  `created_at`. Is that the reading you want? The alternative, refusing the book, would block the export on an
-  ordinary review path. Only two active acceptances on one segment still refuse, which migration 043's index forbids.
-- **Decision 20:** the raw export carries no stratum, because the key map is never read. Leave the stratum to G1.5's
-  own export decision?
-- **"Where … disagree", item 1:** applying one chapter's `chapter-metadata` stamps the other chapters' approved
-  winners applied without writing them, and lapses their active acceptances. It cannot fire while the hold is on. Should
-  it be fixed before the hold lifts (a register entry), and by whom?
+[USER] answered "Yes for all" to the index's questions, with four clarifications the same day (index § Answers). For
+this plan:
+
+- **Decision 7** (the hash of an approved text the tag does not hold is over that text as the loader would serve it once
+  applied, so one approved text keeps one hash before and after apply): approved; recorded in the spec's
+  `✏️ AMENDED 2026-11-04` block.
+- **Decision 6:** settled. "Never the running server" is read as "never inside the server process". The end-of-editing
+  export and the eligibility file run on the production host, by hand, as admin scripts reading the live `sessions.db`
+  read-only (`{ readonly: true, fileMustExist: true }`) and the books tree at the end-of-editing ref; their output stays
+  in that host's gitignored `pipeline-output/`. The raw research export runs there too. The development-clone route is
+  not adopted.
+- **Decision 9** (an active acceptance beside an approved, unapplied edit is decided for the edit, "newest" read as the
+  newest decision): as written.
+- **Decision 17** (a module never opened is "no", so research cannot tell it from "opened before the switch-on"): as
+  written.
+- **Decision 20** (the raw research export carries no stratum; G1.5's own export decision): as written.
+- **"Where … disagree", item 1** (applying one chapter's `chapter-metadata` stamps the other chapters' winners applied
+  and lapses their acceptances): [USER] chose a separate small PR, made now; the register's §C209 owns it and its
+  status. Not in this PR.
 
 ## Handoff to G3.2 and G1.5
 
@@ -2426,13 +2440,15 @@ What later work may rely on once PR5 is on `main`. The shapes are binding. A cha
   on. It is `null` for an MT acceptance, for no decider and for an edit made before G1.1, whose base is unknown, as
   G2.1 treats it. To compute `postEdited` against the served version, join `version_key` to the versions file's
   `is_text`. Where it is `null`, the base is pure MT (read `02-mt-output` at the tag) or unknown (pre-G1.1).
-- **`final_sha256` = `sha256Text` of the served view**, the loader's normalisation (decision 7, as [USER] rules). For a
-  `complete` line it equals `sha256Text` of what the loader serves from `03-faithful-translation` at the tag. That is
-  the string G1.7's manifest hashes, so the two compare by value.
+- **`final_sha256` = `sha256Text` of the served view**, the loader's normalisation (decision 7, approved by [USER]
+  2026-11-04). For a `complete` line it equals `sha256Text` of what the loader serves from `03-faithful-translation` at
+  the tag. That is the string G1.7's manifest hashes, so the two compare by value.
 - **No editor key, username, edit id, served-version id, attempt or time** appears anywhere in these files. Decliners'
   segments are included (R1, A2).
 - **The contract figure** filters the population itself: the 134 units outside ch01–ch02, with or without
   `chapter-metadata`, as G1.5 decides. The export does not filter.
+- **Where the files are:** the export is made on the production host, by hand (decision 6), and its files stay in that
+  host's gitignored `pipeline-output/served-version-exports/`; nothing commits or pushes them.
 - **The tag:** the end-of-editing tag is made by whoever closes editing. PR5 makes none. The export reads any ref.
   **Cut it on production's HEAD after a healthy content-backup tick** (`checks.content_backup` ok, nothing unpushed):
   faithful files reach git only through the two-hourly cron (`scripts/git-backup.sh:162-163`), and a dev push strands

@@ -45,7 +45,9 @@ fake stand-in in tests), Vitest from the repository root, Playwright E2E (`cd se
 5. [The spec](../specs/2026-11-03-served-version-and-event-log-design.md), whole; for this PR §5.1 (Missing file),
    §5.14 (routes, paper decisions, declining while consented), §5.15, §5.16, §5.17, §5.20, §5.22, §6 items 6 and 19,
    §9 (G-1a, G-1b, G-1h, G-2), §10 (T9, T17, T19), §11, §12 item 10, §13 and §13a. Frozen and approved as written,
-   with one dated `✏️ AMENDED` block (`researchScope.js` in PR1); this plan does not reopen §14.
+   with two dated `✏️ AMENDED` blocks: `researchScope.js` in PR1 (2026-11-03), and the twenty departures [USER]
+   approved with the plans (2026-11-04), seven of them this plan's (decisions 9, 10, 11, 12, 18, 19 and 20). This plan
+   does not reopen §14.
 6. [The decision record](../../decisions/2026-11-03-research-capture-consent-and-retention-rulings.md): R2 (the 7-day
    rotation and its precondition) and A3 (loss notes outlive it).
 7. [The handoff](../../plans/2026-11-03-g11-g12-implementation-plan-handoff.md) §2, §4 PR4, §5, §6 (frozen; pinned to
@@ -53,8 +55,11 @@ fake stand-in in tests), Vitest from the repository root, Playwright E2E (`cd se
 
 ## State of this plan (read first)
 
-- **Written 2026-11-03 for [USER]'s approval, as one of the five PR plans the index lists. No code before [USER]
-  approves it.** Status lives in the register, never here.
+- **Written 2026-11-03 as one of the five PR plans the index lists; ✅ approved by [USER] on 2026-11-04** ("Yes for
+  all", with the clarifications the index's "Answers" records). The spec's `✏️ AMENDED 2026-11-04` block records every
+  departure this plan takes (decisions 9, 10, 11, 12, 18, 19, 20), so **no spec commit is owed before any task**. One
+  clarification changed the plan: the research backup job's log carries a verdict only per run (decision 27, Task 11).
+  Every other behaviour choice is built as written. Status lives in the register, never here.
 - **Pinned to `main` = `ed10180c`, with PR1, PR2 and PR3 assumed merged.** Every `path:line` below was opened at that
   tree (its `server/`, `tools/`, `scripts/`, `.github/` and `LICENSE` are byte-identical to `d24681b8` and
   `3a1db909`). Where an earlier PR creates or changes a file, the cite says "as PRn Task N leaves it", and each edit is
@@ -84,9 +89,11 @@ fake stand-in in tests), Vitest from the repository root, Playwright E2E (`cd se
     rclone call), 5 (malformed: likewise), 3 (no rclone on `PATH`: likewise), 4 (upload failed, both tiers already
     pruned), 6 (the withdrawal or the retention step failed, no copy), 7 (a remote deletion, a listing or the local prune
     failed; a name the job did not make left in place) as decision 27 predicts (re-run 2026-11-04 with the local prune
-    moved first); `scripts/verify-research-backup.sh` likewise printed PASS for the newest copy by name (its `.verify`
-    download removed afterwards), FAIL for a corrupt or an absent one, and exited 2 on the editorial remote; both pass
-    `bash -n`;
+    moved first, and again the same day with the verdict-only log: every exit path, node missing and rclone missing
+    included, wrote exactly one verdict line and kept its exit code, and with `date` left off a restricted `PATH` the
+    line's time was lost, which is why Task 11's restricted `PATH` holds `date`); `scripts/verify-research-backup.sh`
+    likewise printed PASS for the newest copy by name (its `.verify` download removed afterwards), FAIL for a corrupt or
+    an absent one, and exited 2 on the editorial remote; both pass `bash -n`;
   - the name arithmetic (decision 23) and the crontab classifier (decision 34, with its 2026-11-04 changes: a copying
     tool named by an absolute path, a redaction that leaves an `--exclude` value readable, the excluded-copy test)
     behaved on sample inputs as their tests predict;
@@ -105,14 +112,14 @@ fake stand-in in tests), Vitest from the repository root, Playwright E2E (`cd se
 ## Decisions taken in this plan
 
 Each is a §13 item, a seam PR3's handoff or the index leaves to PR4, a reading of the tree, or a mechanism the spec's
-stated invariant needs. **Seven change what the frozen spec says and each needs [USER]'s yes** before it is built as
-written: decision 9 (only a withdrawal sets `deletion_done_at_ms`), decision 10 (an export that cannot be deleted keeps
-the interval due), decision 11 (retention stays due until its deletion is recorded), decision 12 (the retention script
-refuses `--write` for want of a derived dataset only when something is due), decision 18 (the paper-consent script is
-research-named but not an exception), decision 19 (a paper decision names the current approved version) and decision
-20 (a paper decision's time is the time it is recorded). Three of them (9, 12 and 19) resolve a conflict inside the
-spec, which PR3's decision 9 treats as an amendment too. Each names its fallback, and a yes is recorded as a dated
-`✏️ AMENDED` block in the spec before the task that builds it. All are listed under "Questions for [USER]".
+stated invariant needs. **Seven change what the frozen spec says, and [USER] approved all seven on 2026-11-04**
+(spec `✏️ AMENDED 2026-11-04`): decision 9 (only a withdrawal sets `deletion_done_at_ms`), decision 10 (an export that
+cannot be deleted keeps the interval due), decision 11 (retention stays due until its deletion is recorded), decision
+12 (the retention script refuses `--write` for want of a derived dataset only when something is due), decision 18 (the
+paper-consent script is research-named but not an exception), decision 19 (a paper decision names the current approved
+version) and decision 20 (a paper decision's time is the time it is recorded). Three of them (9, 12 and 19) resolve a
+conflict inside the spec, which PR3's decision 9 treats as an amendment too. Decision 27's log rule was rewritten by
+[USER]'s answer (a verdict only per run). "Answers ([USER], 2026-11-04)" lists each answer.
 
 **Files, seams and order**
 
@@ -184,38 +191,36 @@ spec, which PR3's decision 9 treats as an amendment too. Each names its fallback
    10), so `verified` records whether the scan had something to look for. Reason: §5.15 lists the column without
    values, and its own parenthesis ("a later run repeats step 2") is the case where the scan cannot run.
 
-9. **Only withdrawals set `deletion_done_at_ms`. Needs [USER]'s yes: it resolves a conflict inside the frozen spec**
-   (PR3 decision 9's precedent). §5.15 step 5 says both scripts set it "the first time", but §5.22's test forbids every
-   `research-*` script except `research-withdrawal.js` (and the paper script) from naming `research_consent`, and the
-   column is defined per interval (§5.14). So a retention run writes its `research_deletions` row (`kind 'retention'`,
-   interval NULL) and touches no consent row; a test pins that `research_consent` is unchanged by value. Fallback:
-   `research-retention.js` becomes a third §5.22 exception, allowed to name `research_consent` only to set
-   `deletion_done_at_ms` on every interval's starting row where it is still empty, listed in
-   `RESEARCH_SCRIPT_EXCEPTIONS` with that reason. Recorded under the disagreements.
+9. **Only withdrawals set `deletion_done_at_ms`. ✅ Approved by [USER] 2026-11-04 (spec AMENDED 2026-11-04).** It
+   resolves a conflict inside the frozen spec (PR3 decision 9's precedent). §5.15 step 5 says both scripts set it "the
+   first time", but §5.22's test forbids every `research-*` script except `research-withdrawal.js` (and the paper
+   script) from naming `research_consent`, and the column is defined per interval (§5.14). So a retention run writes its
+   `research_deletions` row (`kind 'retention'`, interval NULL) and touches no consent row; a test pins that
+   `research_consent` is unchanged by value. The fallback, for the record, was a third §5.22 exception for
+   `research-retention.js`, allowed to set that column only. Recorded under the disagreements.
 
-10. **An export directory that cannot be emptied keeps the interval due. Needs [USER]'s yes: it adds a condition to
-    §5.15 step 5,** which names only steps 2 and 3. Reason: step 4 exists "so no copy made from the file survives a
-    deletion"; recording the deletion as done while a copy survives would make the record false. Fallback: write the
-    row when steps 2 and 3 pass, report `exports: 'failed'`, and exit non-zero anyway.
+10. **An export directory that cannot be emptied keeps the interval due. ✅ Approved by [USER] 2026-11-04 (spec
+    AMENDED 2026-11-04):** it adds a condition to §5.15 step 5, which names only steps 2 and 3. Reason: step 4 exists
+    "so no copy made from the file survives a deletion"; recording the deletion as done while a copy survives would make
+    the record false. The fallback, for the record, was to write the row when steps 2 and 3 pass and exit non-zero.
 
-11. **Retention stays due until its deletion is recorded. Needs [USER]'s yes: it widens §5.15's "Due when"** ("the
-    retention date has passed and any research row exists"). A run that deleted every row and then met a busy
-    checkpoint leaves the deleted bytes in the file and the WAL, and with no row left the literal rule never selects
-    the file again, so the compaction and the record never happen. The rule built: due when the date has passed and either a
-    research row exists or no `research_deletions` row of kind `retention` has `done_at_ms` at or after the date.
-    Fallback: the literal rule. The copies stay clean under it, because the copy step compacts the live file before
-    every copy (decision 25), and that compaction also clears the live file's free pages and WAL within a cycle; only
-    the `research_deletions` record is never written.
+11. **Retention stays due until its deletion is recorded. ✅ Approved by [USER] 2026-11-04 (spec AMENDED
+    2026-11-04):** it widens §5.15's "Due when" ("the retention date has passed and any research row exists"). A run
+    that deleted every row and then met a busy checkpoint leaves the deleted bytes in the file and the WAL, and with no
+    row left the literal rule never selects the file again, so the compaction and the record never happen. The rule
+    built: due when the date has passed and either a research row exists or no `research_deletions` row of kind
+    `retention` has `done_at_ms` at or after the date. The fallback, for the record, was the literal rule (the copies
+    stay clean under it, decision 25; only the `research_deletions` record would never be written).
 
 12. **The retention date is a parameter of the pure functions; only `main` reads the constant.** `isDue` and
     `runRetention` take `retentionDate`, tests pass one, and no seam or flag can set it (there is no `--retention-date`;
     an unknown flag is refused). Reason: a writable switch on an enforceable value that deletes everything is the
     danger PR3 decision 2 names for its approved-texts seam. **`--write` is refused for want of a derived dataset only
-    when something is due. Needs [USER]'s yes: §5.15 says the script "refuses `--write` while no such row exists",**
-    and §5.17 runs it with `--write` every cycle and takes no copy when it exits non-zero, so the literal rule would
-    fail every cycle from the first, long before SD6 sets a date. Fallback: the literal refusal, with the backup job
-    passing `--write` to the retention script only when a read-only `research-backup.js retention-due` subcommand
-    (the same `isDue`) prints `due`. **A dataset row counts only when its `path` is absolute and lies outside
+    when something is due. ✅ Approved by [USER] 2026-11-04 (spec AMENDED 2026-11-04):** §5.15 says the script
+    "refuses `--write` while no such row exists", and §5.17 runs it with `--write` every cycle and takes no copy when it
+    exits non-zero, so the literal rule would fail every cycle from the first, long before SD6 sets a date. The
+    fallback, for the record, was the literal refusal, with the job passing `--write` only when a read-only
+    `retention-due` subcommand said so. **A dataset row counts only when its `path` is absolute and lies outside
     `research-exports/`, the copies directory and the research file** (`--no-derived-dataset` overrides): §5.15 says the
     dataset "never lives in `research.db` or `research-exports/`", and a row naming a file the same run deletes would
     let the date destroy the only copy, which is what the guard exists to stop. An absolute path, because resolving a
@@ -227,7 +232,9 @@ spec, which PR3's decision 9 treats as an amendment too. Each names its fallback
     (§5.15 Concurrency). Each script **refuses an unknown argument with exit 2** (CLAUDE.md § Commands: a misremembered
     flag must not be a silent no-op), sets `process.exitCode = 1` on entry, and prints one JSON report that carries
     interval ids and step outcomes, **never a key and never a row count** (§5.15: "how many rows an editor had is a
-    measure of their volume"; the checkpoint pragma's frame counts are not printed either).
+    measure of their volume"; the checkpoint pragma's frame counts are not printed either). That report is for a hand
+    run: when the backup job runs the scripts it discards their output, and its log holds only its verdict (decision
+    27).
 
 14. **The immediate deletion is its own write-only service, `researchDeletion.deleteIntervalRowsNow(intervalId)`,**
     called after `researchConsent.withdraw` returns `withdrawn: true` (the withdraw route), after
@@ -263,29 +270,29 @@ spec, which PR3's decision 9 treats as an amendment too. Each names its fallback
 
 18. **The paper-consent script is named `server/scripts/research-paper-consent.js` and is not a §5.22 exception: it
     names no forbidden table, because it records through `researchConsent.recordDecision` / `withdraw`, which own the
-    interval rule. Needs [USER]'s yes: §5.22 and T17 describe two exceptions,** the second being the paper script "if it
-    is given a research- name". The rule built is stricter (one exception, and a test that the paper script names
-    nothing forbidden). Fallback: list it in `RESEARCH_SCRIPT_EXCEPTIONS` with the same single allowance and its reason.
+    interval rule. ✅ Approved by [USER] 2026-11-04 (spec AMENDED 2026-11-04):** §5.22 and T17 describe two
+    exceptions, the second being the paper script "if it is given a research- name". The rule built is stricter (one
+    exception, and a test that the paper script names nothing forbidden). The fallback, for the record, was to list it
+    in `RESEARCH_SCRIPT_EXCEPTIONS` with the same single allowance.
 
 **The paper-consent script (spec §5.14; index decision 6)**
 
 19. **`research-paper-consent.js --user <users.id> (--decision consented|declined --text-version <v> | --withdraw)
     [--write]`,** dry-run unless `--write`. **`--text-version` must be the current approved version
-    (`currentConsentText()`). Needs [USER]'s yes: §5.14 says only that "a paper decision must name an approved version
-    too",** and this narrows it to the current one. Reason: one rule with the route, which records only against the
-    current text (PR3 decision 26), so a paper consent cannot start an interval on a text the tool no longer serves.
-    Fallback: any listed approved version, looked up by `--text-version` among the approved texts and passed to
-    `recordDecision`, which already accepts any approved text (PR3 Task 5). A `started` outcome mints the key
-    (`researchLog.ensureKey`); a `withdrew` outcome and `--withdraw` call the immediate deletion (decision 14). No
-    `activity_log` row and no log line carries the decision (PR3 decision 30). It prints the user's id and display
-    name so the database administrator can confirm whom the paper names.
+    (`currentConsentText()`). ✅ Approved by [USER] 2026-11-04 (spec AMENDED 2026-11-04):** §5.14 says only that "a
+    paper decision must name an approved version too", and this narrows it to the current one. Reason: one rule with the
+    route, which records only against the current text (PR3 decision 26), so a paper consent cannot start an interval
+    on a text the tool no longer serves. The fallback, for the record, was any listed approved version. A `started`
+    outcome mints the key (`researchLog.ensureKey`); a `withdrew` outcome and `--withdraw` call the immediate deletion
+    (decision 14). No `activity_log` row and no log line carries the decision (PR3 decision 30). It prints the user's id
+    and display name so the database administrator can confirm whom the paper names.
 
-20. **A paper decision's `given_at_ms` (and a paper withdrawal's `withdrawn_at_ms`) is the time it is recorded. Needs
-    [USER]'s yes: §5.14 defines `given_at_ms` as "when the decision was made",** which for paper is earlier. Reason:
-    §6 item 18 says capture stops when a withdrawal is recorded, and the capture gate measures an interval from its
-    start (PR3 decision 16); a back-dated start would admit replayed acts from before the recording. The paper itself
-    is the record of when it was signed. Fallback: a `--decided-at <YYYY-MM-DD>` option stored as `given_at_ms` (UTC
-    midnight).
+20. **A paper decision's `given_at_ms` (and a paper withdrawal's `withdrawn_at_ms`) is the time it is recorded. ✅
+    Approved by [USER] 2026-11-04 (spec AMENDED 2026-11-04):** §5.14 defines `given_at_ms` as "when the decision was
+    made", which for paper is earlier. Reason: §6 item 18 says capture stops when a withdrawal is recorded, and the
+    capture gate measures an interval from its start (PR3 decision 16); a back-dated start would admit replayed acts
+    from before the recording. The paper itself is the record of when it was signed. The fallback, for the record, was
+    a `--decided-at <YYYY-MM-DD>` option.
 
 21. **While the research file is absent, the paper script refuses a consent and still records a withdrawal or a
     decline, then exits 1.** A consent is refused before any write (`RESEARCH_FILE_MISSING`, nothing written): its row
@@ -296,9 +303,10 @@ spec, which PR3's decision 9 treats as an amendment too. Each names its fallback
     admin script that job; the withdrawal lives in `sessions.db`, so it can be recorded whatever state the research file
     is in, and refusing it would keep capturing a person who has withdrawn exactly while the file is down. The
     interval stays due (`deletion_done_at_ms` empty), and `research-withdrawal.js` deletes its rows, loss rows included,
-    once a file is back. §5.1's "exits non-zero when it is absent" still holds. (PR3's `getHandle()` could not have
-    created the file here anyway: its create path runs only while no *consented* row exists, and every call the paper
-    script makes through it follows one. The skip keeps that argument out of the script's correctness.)
+    once a file is back. ✅ Approved as written by [USER] 2026-11-04. §5.1's "exits non-zero when it is absent" still
+    holds. (PR3's `getHandle()` could not have created the file here anyway: its create path runs only while no
+    *consented* row exists, and every call the paper script makes through it follows one. The skip keeps that argument
+    out of the script's correctness.)
 
 **Backups (spec §5.17; §13's two choices)**
 
@@ -353,15 +361,30 @@ spec, which PR3's decision 9 treats as an amendment too. Each names its fallback
     `/BACKUP_REMOTE=(\S+)/g` from every printed cron line, which would also match a variable ending in `BACKUP_REMOTE`
     and feed the research remote to the editorial script.
 
-27. **Exit codes; the local prune runs first; a prune failure does not stop the cycle.** 0 done; 1 the copy or the
-    heartbeat failed; 2 `RESEARCH_REMOTE` unset or not a research remote; 3 `rclone` or `node` missing; 4 the upload
-    failed; 5 `RESEARCH_REMOTE` malformed; 6 a deletion step failed (no copy taken); 7 a prune failed (the copy was still
-    taken and uploaded; no heartbeat). **The local prune runs before the remote is checked:** it needs only Node, and
-    §5.17's step 1 "does not depend on a copy succeeding", so a mis-set remote or an rclone missing from cron's `PATH`
-    (a real, repeating failure, `scripts/install-cron.sh:13-19`) exits 2, 3 or 5 only after the local copies have aged
-    out; with Node missing nothing can run (exit 3). Both deletion scripts run every cycle even if the first fails.
-    Reason: a fresh copy holds no deleted rows and is worth having; the exit code and the missing heartbeat still raise
-    the alarm (§5.17: "If step 1 or 4 fails, the job exits non-zero").
+27. **Exit codes; the local prune runs first; a prune failure does not stop the cycle; the log holds a verdict only.** 0
+    done; 1 the copy or the heartbeat failed; 2 `RESEARCH_REMOTE` unset or not a research remote; 3 `rclone` or `node`
+    missing; 4 the upload failed; 5 `RESEARCH_REMOTE` malformed; 6 a deletion step failed (no copy taken); 7 a prune
+    failed (the copy was still taken and uploaded; no heartbeat). **The local prune runs before the remote is checked:**
+    it needs only Node, and §5.17's step 1 "does not depend on a copy succeeding", so a mis-set remote or an rclone
+    missing from cron's `PATH` (a real, repeating failure, `scripts/install-cron.sh:13-19`) exits 2, 3 or 5 only after
+    the local copies have aged out; with Node missing nothing can run (exit 3). Both deletion scripts run every cycle
+    even if the first fails. Reason: a fresh copy holds no deleted rows and is worth having; the exit code and the
+    missing heartbeat still raise the alarm (§5.17: "If step 1 or 4 fails, the job exits non-zero").
+    - **The log (`pipeline-output/research-backup.log`, where the cron line sends the job's stdout and stderr) holds one
+      verdict line per run, and nothing else** ([USER] 2026-11-04): the UTC time, then `research-backup: ok`, or
+      `research-backup: failed: <step>[,<step>…]` naming the steps that failed in the order they ran, from a closed
+      list: `node`, `prune-local`, `remote`, `rclone`, `prune-remote`, `withdrawal`, `retention`, `copy`, `upload`,
+      `heartbeat`. **Never an interval id, a count, a copy's name or a step's own output:** every child's stdout is
+      captured into a variable (the copy's path, the expired names) or discarded, and every child's stderr is
+      discarded; an `EXIT` trap writes the line, so every exit path writes exactly one. Reason: the deletion scripts'
+      reports name the interval ids they deleted (decision 13), and a log that kept them would be a second record of
+      who withdrew and when, beside `research_deletions`, outside every deletion rule. The exit code still says which
+      branch ended the run (it is not logged; cron discards it). **Diagnosis is by hand:** an operator re-runs the step
+      the verdict names (the deletion scripts are dry-run without `--write`; `research-backup.js expired-names` names
+      an unknown remote object on stderr), and reads that output in a terminal, never in the log. A bash abort the
+      script did not plan (an unset variable) writes bash's own one-line diagnostic on stderr, which names the variable
+      and its line, then the verdict line (`failed: unknown` when no step had failed yet; otherwise the steps that had,
+      for example `failed: prune-local`).
 
 28. **The Node binary is `/usr/bin`-first, as `scripts/git-backup.sh:128-141` does**, because better-sqlite3's binary
     is built for the service's `/usr/bin/node` (`scripts/deploy.sh`'s Node pin). `RESEARCH_NODE` is a test seam the
@@ -372,7 +395,11 @@ spec, which PR3's decision 9 treats as an amendment too. Each names its fallback
     source), runs `research-backup.js verify` on it (read-only; `integrity_check`, schema version, tables), prints
     `RESEARCH RESTORE VERIFY: PASS` or `FAIL (…)`, and deletes it. Reasons: the research copies have their own crypt
     passphrase and bucket, so their round trip is at risk independently of the editorial one; "a backup that uploads
-    but cannot be restored is worth nothing" (`scripts/install-cron.sh:40-42`); the cost is one small script.
+    but cannot be restored is worth nothing" (`scripts/install-cron.sh:40-42`); the cost is one small script. ✅
+    Approved as written by [USER] 2026-11-04, including the decrypted copy it holds in `research-backups/` for the
+    minutes it runs. Its own log (`verify-research-backup.log`) is not the job's log decision 27 rules on: it holds its
+    `PASS` or `FAIL (<reason>)` line and, after a failed rclone call, rclone's error text; neither names an interval id
+    or a count, because the restore test runs no deletion script.
 
 30. **The heartbeat is written by the Node part, and `backup-stale` is not gated on consent.** Missing heartbeat →
     stale, the house rule (`server/lib/backupHeartbeatHealth.js:15-19`). So `checks.research_db` reads `backup-stale`
@@ -409,11 +436,11 @@ spec, which PR3's decision 9 treats as an amendment too. Each names its fallback
     deletion run would reach it (`dueIntervals` reads the live path only). The copy restored from stays in the copies
     directory, so the restore can be repeated; a corrupt file worth inspecting is inspected before the restore. The
     delete comes before the rename: a run killed between them leaves no live file (`missing`, §5.1), and the next
-    restore starts again from the staged copy's source.
+    restore starts again from the staged copy's source. ✅ Approved as written by [USER] 2026-11-04.
 
 33. **No path creates a fresh research file while a consent exists.** If the file is lost and no copy exists, the
-    server stays `missing` (§5.1) and nothing in PR4 re-creates it (a fresh file re-keys every editor, §5.16). Put to
-    [USER] as a question.
+    server stays `missing` (§5.1) and nothing in PR4 re-creates it (a fresh file re-keys every editor, §5.16). [USER]
+    asked on 2026-11-04 for a deliberate admin path **later**: it is recorded in the register, not built in PR4.
 
 **The probe (spec §9; index decision 14)**
 
@@ -491,16 +518,17 @@ spec, which PR3's decision 9 treats as an amendment too. Each names its fallback
 
 ### Where the tree, the spec, the index and the earlier plans disagree (recorded; the tree wins)
 
-None of these changes what the frozen spec says beyond the seven decisions above that need [USER]'s yes.
+None of these changes what the frozen spec says beyond the seven decisions above, which [USER] approved on 2026-11-04
+(spec `✏️ AMENDED 2026-11-04`).
 
 - **Spec §5.15 step 5 says both scripts set `deletion_done_at_ms` "the first time"; §5.22's test forbids
-  `research-retention.js` from naming `research_consent`** → decision 9 (only withdrawals set it; needs [USER]'s yes).
+  `research-retention.js` from naming `research_consent`** → decision 9 (only withdrawals set it; approved).
 - **Spec §5.15: the retention script "refuses `--write` while no such row exists"; §5.17 runs it with `--write` every
-  cycle and takes no copy when it exits non-zero** → decision 12 (refused only when something is due; needs [USER]'s
-  yes). §5.15 also says the dataset never lives in `research-exports/`, which the same run empties → decision 12 counts
-  only a row whose path lies outside it.
+  cycle and takes no copy when it exits non-zero** → decision 12 (refused only when something is due;
+  approved). §5.15 also says the dataset never lives in `research-exports/`, which the same run empties → decision 12
+  counts only a row whose path lies outside it.
 - **Spec §5.14: "a paper decision must name an approved version too"; the route records only against the current
-  one (PR3 decision 26)** → decision 19 (the current one; needs [USER]'s yes).
+  one (PR3 decision 26)** → decision 19 (the current one; approved).
 - **Spec §5.15's retention "Due when" cannot select a file whose rows were deleted but not compacted** → decision 11.
 - **Spec §5.15 step 5 conditions only on steps 2 and 3** → decision 10.
 - **Spec §5.17's order does not cover a withdrawal recorded between the deletion step and the copy, and the online
@@ -628,8 +656,9 @@ Input cases the spec implies but its tests do not exercise directly. Each names 
     purge leaves a staging file the prune refuses to ignore. → Task 10, Task 14
 22. **`research-exports/` is emptied by every deletion run, `served-version-exports/` never;** a symlink inside the
     exports directory is removed, its target kept. → Task 5, Task 6
-23. **The deletion reports and the job's log** carry interval ids and step outcomes, never a key, a row count or a
-    checkpoint frame count. → Task 6, Task 7
+23. **The deletion reports** carry interval ids and step outcomes, never a key, a row count or a checkpoint frame
+    count; **the job's log** carries one verdict line per run (the time, `ok` or `failed` and the failing steps' names)
+    and never an interval id, a count or a child's output, on every exit path (decision 27). → Task 6, Task 7, Task 11
 24. **A copy opened read-only** (the monthly test, a restore's check) must create no side file beside it: copies are
     rollback-journal files. → Task 10
 25. **The copies directory's mode** is re-asserted on every run, and every copy is `0600` from its first byte (a fresh
@@ -1394,7 +1423,7 @@ Cases:
   'checkpoint-1' }) } })` has `ok: false`, `compact: 'checkpoint-1'`, `scan: 'not-run'`; the key row is gone (deleted);
   `deletion_done_at_ms` `null`; no `research_deletions` row. `run(true)` then has `scan: 'no-key'` and `ok: true`, and
   the `research_deletions` row for it has `verified: 0`.
-- `it('an export that cannot be removed keeps the interval due (decision 10, needs [USER]\'s yes)')` — `run(true, {
+- `it('an export that cannot be removed keeps the interval due (decision 10)')` — `run(true, {
   steps: { ...researchPurge, emptyExports: () => { throw new Error('EACCES'); } } })` → `ok: false`, `exports:
   'failed'`, no `research_deletions` row, `deletion_done_at_ms` `null`; `run(true)` then `ok`.
 - `it('the report carries no key and no count (spec §5.15; decision 13)')` — for the T9 report: `/[0-9a-f]{32}/.test(
@@ -1622,8 +1651,7 @@ the retention date); T9's shape for retention; decisions 9, 11, 12, 13, 15; Revi
   true }`; every research row unchanged by value; the CLI (`['--write']`, env as Task 6) exits 0 with
   `JSON.parse(stdout).due === false`. Control: `isDue({ …, retentionDate: PAST, nowMs: NOW })` is `true`.
 - `it('a date that has not passed is not due')` — `retentionDate: '2099-01-01'` → `due: false`.
-- `it('--write refuses while no derived dataset is recorded, and only when something is due (decision 12, needs
-  [USER]\'s yes)')` — date
+- `it('--write refuses while no derived dataset is recorded, and only when something is due (decision 12)')` — date
   passed, no `research_derived_datasets` row: `run({ write: true, retentionDate: PAST, nowMs: NOW })` equals `{ script:
   'research-retention', write: true, due: true, ok: false, refused: 'no-derived-dataset' }` and every research row is
   unchanged; a dry run equals `{ …, write: false, due: true, ok: true, derivedDataset: false }`; with `noDerivedDataset:
@@ -1641,7 +1669,7 @@ the retention date); T9's shape for retention; decisions 9, 11, 12, 13, 15; Revi
   true, ok: true`; `anyResearchRow` is `false`; `bytes()` holds no event sentinel and no key; `research_deletions` equals
   `[{ kind: 'retention', interval_id: null, done_at_ms: NOW, verified: 1 }]`; `SELECT * FROM research_consent ORDER BY
   id` and `losses()` are equal by value before and after (decision 9; A3); `served-version-exports/` unchanged.
-- `it('a run that deleted but could not compact stays due by its missing record (decision 11, needs [USER]\'s yes)')` —
+- `it('a run that deleted but could not compact stays due by its missing record (decision 11)')` —
   `run({ write: true, retentionDate: PAST, noDerivedDataset: true, nowMs: NOW, steps: { ...researchPurge, compact: () =>
   ({ ok: false, step: 'vacuum' }) } })` → `ok: false`, no row left, no `research_deletions` row; `isDue(…)` is still
   `true`; the next real run is `ok` with `verified: false` and writes one `retention` row; then `isDue(…)` is `false`
@@ -1659,9 +1687,9 @@ Expected: FAIL — `Cannot find module '../scripts/research-retention'`.
 
 - [ ] **Step 3: Implement** `server/scripts/research-retention.js` (header: spec §5.15; the date is SD6's, held in
   `server/lib/researchRetention.js`, and while empty nothing is ever due; decision 11's rule and decision 12's refusal
-  (why it waits for something to be due, and which dataset rows count), each with "needs [USER]'s yes" until the spec
-  carries it; that loss rows and consent rows are not research rows here (A3; §5.14: kept a stated period longer);
-  **that it names no consent table** (§5.22; decision 9, also "needs [USER]'s yes"); no key and no count printed). The
+  (why it waits for something to be due, and which dataset rows count), each citing the spec's `✏️ AMENDED 2026-11-04`
+  block; that loss rows and consent rows are not research rows here (A3; §5.14: kept a stated period longer);
+  **that it names no consent table** (§5.22; decision 9, also in that block); no key and no count printed). The
   shape of Task 6's, with:
 
 ```js
@@ -1962,7 +1990,7 @@ must name an approved version too"; declining while consented is a withdrawal), 
   row's `withdrawn_at_ms` is set.
 
 `server/__tests__/researchBoundary.test.js`: `it('T17 (PR4): the paper-consent script names no forbidden table, and is
-not an exception (decision 18, needs [USER]\'s yes)')` — the scanned list contains `'scripts/research-paper-consent.js'`,
+not an exception (decision 18)')` — the scanned list contains `'scripts/research-paper-consent.js'`,
 `forbiddenTableUses(SERVER_ROOT)` is `[]`, and `Object.keys(RESEARCH_SCRIPT_EXCEPTIONS)` equals
 `['research-withdrawal.js']`; PR3's comment in `RESEARCH_SCRIPT_EXCEPTIONS` about the paper script is replaced by one
 line: "The paper-consent script records through researchConsent's functions and names no forbidden table (PR4
@@ -1974,8 +2002,8 @@ Run: `npx vitest run server/__tests__/researchPaperConsent.test.js server/__test
 Expected: FAIL — `Cannot find module '../scripts/research-paper-consent'`; the boundary scan list lacks the file.
 
 - [ ] **Step 3: Implement** `server/scripts/research-paper-consent.js` (header: spec §5.14; dry run unless `--write`;
-  the current approved text only (decision 19); the recording time (decision 20, "needs [USER]'s yes" until the spec
-  carries it); while the file is absent a consent is refused and a withdrawal or a decline is recorded with its
+  the current approved text only (decision 19); the recording time (decision 20, citing the spec's `✏️ AMENDED
+  2026-11-04` block); while the file is absent a consent is refused and a withdrawal or a decline is recorded with its
   deletion left due, exit 1 (decision 21); a withdrawal or a decline during a live interval deletes at once
   (decision 14); no activity row and no log line carries the decision; it prints the user's id and display name for the
   administrator's confirmation; **it names no forbidden table — it records through the consent service** (decision 18);
@@ -2240,7 +2268,8 @@ Spec §5.17 (its own job on its own cron line beside the editorial one; the cade
 fail-closed rules; the remote prune not best-effort; its own crypt remote; `install-cron.sh` only prints, so G-1h
 confirms the line); T19 (its own remote, never the editorial one; a failing upload still prunes; a failing deletion step
 takes no copy; a failing remote prune exits non-zero with no heartbeat; the cut-off derived from `install-cron.sh`), T9
-(a held reader: no copy is taken); decisions 22, 24, 26–28, 31, 37; Review Focus 7, 8, 10, 11.
+(a held reader: no copy is taken); decisions 13, 22, 24, 26–28, 31, 37; Review Focus 7, 8, 10, 11, 23; [USER]'s
+answer of 2026-11-04 on the job's log (decision 27).
 
 **Files:**
 - Create: `scripts/research-backup.sh` (executable, mode `100755` in the index)
@@ -2257,10 +2286,12 @@ takes no copy; a failing remote prune exits non-zero with no heartbeat; the cut-
 **Interfaces:**
 - Consumes: the Node part (Task 10), `research-withdrawal.js` (Task 6), `research-retention.js` (Task 7).
 - Produces: `scripts/research-backup.sh` (environment `RESEARCH_REMOTE`; test seam `RESEARCH_NODE`; exit codes of
-  decision 27); `makeFakeBins({ sqlite3 = false }) → { binDir, remoteDir, env(over?), calls(): string[] }` — a fake
-  `rclone` (`lsf` lists `remoteDir`; `copyto` uploads a local `/…` source into `remoteDir` or downloads a remote one;
-  `deletefile` removes; `FAKE_FAIL_LSF`, `FAKE_FAIL_COPYTO`, `FAKE_FAIL_DELETE` make one fail) and optionally a fake
-  `sqlite3` (prints `ok` for `integrity_check`, `0` for a count); every call is logged.
+  decision 27; one verdict line per run on stdout, nothing else on stdout or stderr except bash's own one-line
+  diagnostic on an unplanned abort, decision 27);
+  `makeFakeBins({ sqlite3 = false }) → { binDir, remoteDir, env(over?), calls(): string[] }` — a fake `rclone` (`lsf`
+  lists `remoteDir`; `copyto` uploads a local `/…` source into `remoteDir` or downloads a remote one; `deletefile`
+  removes; `FAKE_FAIL_LSF`, `FAKE_FAIL_COPYTO`, `FAKE_FAIL_DELETE` make one fail) and optionally a fake `sqlite3`
+  (prints `ok` for `integrity_check`, `0` for a count); every call is logged.
 
 - [ ] **Step 1: Write the failing tests**
 
@@ -2334,7 +2365,9 @@ H)`; remote `copyName(now - 170 * H)` and `copyName(now - 10 * H)` (files in `fa
 - `it('T19: a failing upload still prunes')` — `FAKE_FAIL_COPYTO: '1'` → `status 4`; the expired local and remote
   copies are gone (the prune ran first); a new local copy exists; no heartbeat.
 - `it('T19: a failing deletion step takes no copy')` — the research file removed → `status 6`; no `copyto` call; no new
-  local copy; no heartbeat; the expired copies are still pruned (step 1 does not depend on a copy).
+  local copy; no heartbeat; the expired copies are still pruned (step 1 does not depend on a copy); `stdout + stderr` is
+  one line matching `/ research-backup: failed: [a-z-]+(,[a-z-]+)*\n$/` whose list contains `withdrawal` (the research
+  file's absence is a stderr error in each deletion script, which the job discards).
 - `it('T19: a failing remote prune exits non-zero with no heartbeat')` — `FAKE_FAIL_DELETE: '1'` → `status 7`; the
   `copyto` call happened (the copy was still uploaded); no heartbeat. `FAKE_FAIL_LSF: '1'` → `status 7`, no heartbeat.
 - `it('a name in the remote the job did not make is left in place and fails the prune')` — `notes.txt` in
@@ -2345,9 +2378,24 @@ H)`; remote `copyName(now - 170 * H)` and `copyName(now - 10 * H)` (files in `fa
   `copyto`; no new copy; `K` still present (decision 5). The reader commits; `run()` → `status 0`, and the new copy's
   bytes hold neither `K` nor `'SENTINEL-JOB'`.
 - `it('rclone missing is exit 3, after the local prune (decision 27)')` — `PATH` set to a directory of symlinks to
-  `bash`, `dirname` and `basename` only (the restricted-PATH idiom of `backup-db.test.mjs:129-145`), `RESEARCH_NODE`
-  set → `status 3`; the expired local copy is gone and the young one kept; both remote plants are untouched; no copy
-  and no heartbeat exist.
+  `bash`, `dirname`, `basename` and `date` only (the restricted-PATH idiom of `backup-db.test.mjs:129-145`, whose list
+  holds `date` too; the verdict line's time needs it), `RESEARCH_NODE` set → `status 3`; the expired local copy is gone
+  and the young one kept; both remote plants are untouched; no copy and no heartbeat exist; `stdout + stderr` is one
+  line ending `research-backup: failed: rclone\n`.
+- `it('the log is one verdict line per run: never an interval id or a count, and a failing step is named (decision 27)')`
+  — `SENTINEL_INTERVAL = 7340021` (an id no other row of the fixture can take). Seed a withdrawn interval due for
+  deletion as the T9 case does, with its `research_consent` starting row's `id` and `interval_id` both
+  `SENTINEL_INTERVAL` and its `editor_keys` row for that interval. **The premise first, so the absence below is not
+  manufactured:** a dry run of the withdrawal script, `spawnSync(process.execPath, [<repo>/server/scripts/
+  research-withdrawal.js], { env, encoding: 'utf8' })`, prints a report whose `due` contains `SENTINEL_INTERVAL`: the
+  report the job ran with its output flowing into the log before [USER]'s answer. Then `r = run()` → `status 0`, and
+  `out = r.stdout + r.stderr` (the cron line sends both to the log): `out` does not contain `'7340021'` (asserted
+  first, so a leak fails on the id); `out` matches `/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z research-backup: ok\n$/`
+  (exactly one line); and with its leading time removed (`out.replace(/^\S+ /, '')`) it holds no digit at all (no id,
+  no count, no copy's stamp). Positive control that the interval was in this run: `research_deletions` now holds a
+  `withdrawal` row whose `interval_id` is `SENTINEL_INTERVAL`. The failing-step control, on a fresh `setup()` (a second
+  run in the same second would collide on the copy's name, decision 23): `run({ FAKE_FAIL_COPYTO: '1' })` → `status 4`,
+  and its `stdout + stderr` is exactly one line matching `/^\S+Z research-backup: failed: upload\n$/`.
 - `it('the template prints the research job as its own line, with its own remote (decision 26)')` — `printed =
   execFileSync('bash', [<install-cron.sh>], { env: { ...process.env, DEPLOY_PATH: '/srv/x' }, encoding: 'utf8' })`; the
   one uncommented line matching `/\/scripts\/research-backup\.sh(\s|$)/` carries `RESEARCH_REMOTE=research-secret:`; no
@@ -2386,7 +2434,8 @@ H)`; remote `copyName(now - 170 * H)` and `copyName(now - 10 * H)` (files in `fa
 - [ ] **Step 2: Run them**
 
 Run: `npx vitest run scripts/__tests__/research-backup.test.mjs scripts/__tests__/shell-syntax.test.mjs server/__tests__/researchBackupPolicy.test.js`
-Expected: FAIL — the script does not exist (`bash` exits 127 for every spawn, so each `status` assertion fails);
+Expected: FAIL — the script does not exist (`bash` exits 127 for every spawn, so each `status` assertion fails; the
+log case passes its premise, since Task 6's report names the sentinel interval, and fails on `status`);
 `shell-syntax`'s new entry, its mode pin (`ENOENT`) and its text pin fail on the missing file, while its mode control
 passes; the policy pin finds no research line.
 
@@ -2416,6 +2465,13 @@ passes; the policy pin finds no research line.
 # Exit codes: 0 done; 1 the copy or the heartbeat failed; 2 RESEARCH_REMOTE unset or not a research remote;
 # 3 rclone or node missing; 4 the upload failed; 5 RESEARCH_REMOTE malformed; 6 a deletion step failed (no copy taken);
 # 7 a prune failed (the copy was taken and uploaded; no heartbeat). Exits 2, 3 and 5 come after the local prune.
+#
+# THE LOG HOLDS ONE VERDICT LINE PER RUN, AND NOTHING ELSE ([USER] 2026-11-04). The cron line appends this script's
+# stdout and stderr to pipeline-output/research-backup.log: the UTC time, then "research-backup: ok" or
+# "research-backup: failed: <step>[,<step>...]". Never an interval id, a count, a copy's name or a step's own output:
+# the withdrawal and retention reports name the interval ids they deleted, so every child's stdout is captured or
+# discarded and every child's stderr discarded. To see what a failing step found, re-run it by hand (the deletion
+# scripts are dry-run without --write) and read it in a terminal.
 set -uo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -2426,82 +2482,77 @@ S="${PROJECT_ROOT}/server/scripts"
 NODE="${RESEARCH_NODE:-$(PATH="/usr/bin:$PATH" command -v node || true)}"
 REMOTE="${RESEARCH_REMOTE:-}"
 
-if [ -z "$NODE" ]; then echo "ERROR: node not found: nothing was pruned" >&2; exit 3; fi
+# The steps that failed, in the order they ran (a closed list: node, prune-local, remote, rclone, prune-remote,
+# withdrawal, retention, copy, upload, heartbeat).
+FAILED=""
+fail() { FAILED="${FAILED:+${FAILED},}$1"; }
+# The run's one log line, written on every exit path. $? is the status the script is exiting with.
+verdict() {
+  local rc=$?
+  if [ "$rc" -eq 0 ]; then
+    printf '%s research-backup: ok\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+  else
+    printf '%s research-backup: failed: %s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "${FAILED:-unknown}"
+  fi
+}
+trap verdict EXIT
+
+if [ -z "$NODE" ]; then fail node; exit 3; fi
 
 # (1a) The local prune, before anything that can stop the job.
 prune_failed=0
-if ! "$NODE" "$S/research-backup.js" prune-local; then
-  echo "ERROR: local prune failed" >&2
+if ! "$NODE" "$S/research-backup.js" prune-local >/dev/null 2>&1; then
+  fail prune-local
   prune_failed=1
 fi
 
-if [ -z "$REMOTE" ]; then
-  echo "ERROR: RESEARCH_REMOTE is not set: the research file is copied off-box by this job or not at all" >&2
-  exit 2
-fi
+# RESEARCH_REMOTE unset, malformed, or not the research file's own (never the editorial secret:).
+if [ -z "$REMOTE" ]; then fail remote; exit 2; fi
 case "$REMOTE" in
   *: | */) ;;
-  *) echo "ERROR: RESEARCH_REMOTE must end in ':' or '/' (got '$REMOTE')" >&2; exit 5 ;;
+  *) fail remote; exit 5 ;;
 esac
 case "$REMOTE" in
   research*) ;;
-  *) echo "ERROR: RESEARCH_REMOTE must name the research file's own remote (research...:), never the editorial one (got '$REMOTE')" >&2; exit 2 ;;
+  *) fail remote; exit 2 ;;
 esac
-if ! command -v rclone >/dev/null 2>&1; then
-  echo "ERROR: rclone not installed: only the local copies were pruned" >&2
-  exit 3
-fi
+if ! command -v rclone >/dev/null 2>&1; then fail rclone; exit 3; fi
 
-# (1b) The remote prune.
-if listing="$(rclone lsf "$REMOTE" --files-only)"; then
-  expired="$(printf '%s\n' "$listing" | "$NODE" "$S/research-backup.js" expired-names)"
+# (1b) The remote prune: a listing that fails, a deletion that fails, or a name the job did not make (never deleted).
+remote_prune_failed=0
+if listing="$(rclone lsf "$REMOTE" --files-only 2>/dev/null)"; then
+  expired="$(printf '%s\n' "$listing" | "$NODE" "$S/research-backup.js" expired-names 2>/dev/null)"
   names_rc=$?
   while IFS= read -r name; do
     [ -n "$name" ] || continue
-    if ! rclone deletefile "${REMOTE}${name}"; then
-      echo "ERROR: could not delete the expired remote copy $name" >&2
-      prune_failed=1
-    fi
+    rclone deletefile "${REMOTE}${name}" >/dev/null 2>&1 || remote_prune_failed=1
   done <<< "$expired"
-  if [ "$names_rc" -ne 0 ]; then
-    echo "ERROR: $REMOTE holds a name this job did not make; it was not deleted" >&2
-    prune_failed=1
-  fi
+  [ "$names_rc" -eq 0 ] || remote_prune_failed=1
 else
-  echo "ERROR: could not list $REMOTE" >&2
+  remote_prune_failed=1
+fi
+if [ "$remote_prune_failed" -ne 0 ]; then
+  fail prune-remote
   prune_failed=1
 fi
 
-# (2) Deletion before every copy (spec §5.15): both scripts, every cycle.
+# (2) Deletion before every copy (spec §5.15): both scripts, every cycle. Their reports name interval ids: discarded.
 withdrawal_rc=0
-"$NODE" "$S/research-withdrawal.js" --write || withdrawal_rc=$?
+"$NODE" "$S/research-withdrawal.js" --write >/dev/null 2>&1 || withdrawal_rc=$?
 retention_rc=0
-"$NODE" "$S/research-retention.js" --write || retention_rc=$?
-if [ "$withdrawal_rc" -ne 0 ] || [ "$retention_rc" -ne 0 ]; then
-  echo "ERROR: a deletion step failed (withdrawal $withdrawal_rc, retention $retention_rc): no copy this cycle" >&2
-  exit 6
-fi
+"$NODE" "$S/research-retention.js" --write >/dev/null 2>&1 || retention_rc=$?
+[ "$withdrawal_rc" -eq 0 ] || fail withdrawal
+[ "$retention_rc" -eq 0 ] || fail retention
+if [ "$withdrawal_rc" -ne 0 ] || [ "$retention_rc" -ne 0 ]; then exit 6; fi
 
-# (3) The copy, and (4) the upload.
-if ! copy="$("$NODE" "$S/research-backup.js" copy)"; then
-  echo "ERROR: the copy failed" >&2
-  exit 1
-fi
-if ! rclone copyto "$copy" "${REMOTE}$(basename "$copy")"; then
-  echo "ERROR: the off-box upload failed" >&2
-  exit 4
-fi
+# (3) The copy, and (4) the upload. The copy's path is captured, never printed.
+if ! copy="$("$NODE" "$S/research-backup.js" copy 2>/dev/null)"; then fail copy; exit 1; fi
+if ! rclone copyto "$copy" "${REMOTE}$(basename "$copy")" >/dev/null 2>&1; then fail upload; exit 4; fi
 
-# (5) The heartbeat, only if every step succeeded.
-if [ "$prune_failed" -ne 0 ]; then
-  echo "ERROR: a prune failed: the copy was taken and uploaded, the heartbeat is not written" >&2
-  exit 7
-fi
-if ! "$NODE" "$S/research-backup.js" heartbeat; then
-  echo "ERROR: the heartbeat was not written" >&2
-  exit 1
-fi
-echo "Research backup OK: $(basename "$copy")"
+# (5) The heartbeat, only if every step succeeded. A prune failure was named when it happened.
+if [ "$prune_failed" -ne 0 ]; then exit 7; fi
+if ! "$NODE" "$S/research-backup.js" heartbeat >/dev/null 2>&1; then fail heartbeat; exit 1; fi
+exit 0
 ```
 
 `scripts/install-cron.sh`, after the monthly editorial verify line (`:43`) and before `# To install` (`:45`):
@@ -2512,11 +2563,13 @@ echo "Research backup OK: $(basename "$copy")"
 # (a failure takes no copy), copy, upload, heartbeat (/api/health: checks.research_db reason backup-stale).
 # Its period is pinned: the prune cut-off and the health threshold are derived from it in
 # server/lib/researchBackupPolicy.js. RESEARCH_REMOTE must begin "research" (the job refuses any other: exit 2).
-# See docs/technical/backup-and-restore.md.
+# Its log holds one verdict line per run (the time, ok or failed, and the failing steps' names), never an interval
+# id or a count. See docs/technical/backup-and-restore.md.
 45 */6 * * * RESEARCH_REMOTE=${RESEARCH_REMOTE:-research-secret:} ${DEPLOY_PATH}/scripts/research-backup.sh >> ${DEPLOY_PATH}/pipeline-output/research-backup.log 2>&1
 ```
 
-and the LOGGING note gains `research-backup.sh  does NOT log` (its cron line redirects).
+and the LOGGING note gains `research-backup.sh  does NOT log` (its cron line redirects; what reaches the log is one
+verdict line per run, decision 27).
 
 `LICENSE`, class 5 (`:194-204`), after the existing entries:
 
@@ -2552,6 +2605,15 @@ fourth:
 Run: `npx vitest run scripts/__tests__/research-backup.test.mjs scripts/__tests__/shell-syntax.test.mjs scripts/__tests__/backup-db.test.mjs server/__tests__/researchBackupPolicy.test.js server/__tests__/healthOffboxBackup.test.js`
 Expected: PASS (`backup-db.test.mjs`'s template cases still see only the editorial remotes; `healthOffboxBackup.test.js`
 still finds the `backup-db.sh` line first). `git status --porcelain`: only this task's files.
+
+Then the log rule's red arm, by mutation (CLAUDE.md § Commands: restore from a golden `cp`, never `git checkout`):
+`cp scripts/research-backup.sh <scratch>/research-backup.sh.golden`; in `scripts/research-backup.sh` delete
+` >/dev/null 2>&1` from the `research-withdrawal.js --write` line, which is how the job ran it before [USER]'s answer;
+`npx vitest run scripts/__tests__/research-backup.test.mjs -t "verdict line"`.
+Expected: FAIL on `not.toContain('7340021')`: the output holds the withdrawal report, `due` naming the sentinel
+interval, above the `ok` line (measured on the draft with stub Node parts, 2026-11-04). Then `cp
+<scratch>/research-backup.sh.golden scripts/research-backup.sh`; `cmp <scratch>/research-backup.sh.golden
+scripts/research-backup.sh` prints nothing; the same command → PASS.
 
 - [ ] **Step 5: Commit**
 
@@ -3269,7 +3331,8 @@ index PR4 row; decision 41; Review Focus 27.
   command the new text keeps). Before the change `commands` is the fenced `tar -czf …` line at `:243`, which has no
   exclude.
 - `it('backup-and-restore.md describes the research remote and restates no editorial default')` — the file names
-  `research-secret:`, `linode-research`, `scripts/research-backup.sh`, `server/scripts/research-restore.js` and `G-1b`;
+  `research-secret:`, `linode-research`, `scripts/research-backup.sh`, `server/scripts/research-restore.js`, `G-1b` and
+  `pipeline-output/research-backup.log`, and matches `/one verdict line per run/`;
   it has no line matching `/OFFBOX_BACKUP_STALE_HOURS.*\|\s*`?\d+`?\s*\|/` (a default digit in the table) and no line
   matching `/\d+\s*h cycles?/` (a derivation restated in a Meaning cell); and it does not match ``/s3 remote `research/``
   (an s3 remote carrying the guard's prefix, decision 26). Control: the file names
@@ -3279,8 +3342,8 @@ index PR4 row; decision 41; Review Focus 27.
 
 Run: `npx vitest run scripts/__tests__/research-backup-isolation.test.mjs -t "deployment docs"`
 Expected: FAIL — §9 matches `Enable automatic Linode backups` and its fenced `tar` line has no exclude; the backup
-document names no research remote, its table carries `` `26` ``, and its Meaning cells say "6 h cycle" and "2 h
-cycles".
+document names no research remote and no research log, its table carries `` `26` ``, and its Meaning cells say "6 h
+cycle" and "2 h cycles".
 
 - [ ] **Step 3: Implement**
 
@@ -3340,7 +3403,11 @@ So:
   4. **Cron:** the two research lines `scripts/install-cron.sh` prints (the research job and its restore test; their
      schedules are on those lines, and nowhere else), with `RESEARCH_REMOTE=research-secret:`; prime by hand with
      `RESEARCH_REMOTE=research-secret: scripts/research-backup.sh`, then `RESEARCH_REMOTE=research-secret: scripts/verify-research-backup.sh` (expect
-     `RESEARCH RESTORE VERIFY: PASS`). The exit codes are in each script's header.
+     `RESEARCH RESTORE VERIFY: PASS`). The exit codes are in each script's header. **The job's log**
+     (`pipeline-output/research-backup.log`) holds one verdict line per run (the time, `ok` or `failed`, and the
+     failing steps' names) and nothing else (an unplanned bash abort adds bash's own one-line diagnostic before it):
+     never an interval id or a count, so it cannot say who withdrew ([USER] 2026-11-04). To see what a failing step
+     found, re-run that step by hand (the deletion scripts without `--write` are dry runs) and read it in the terminal.
   5. **What the job does, in order:** prune both tiers by age; run `research-withdrawal.js` and `research-retention.js`
      with `--write` (a failure takes no copy); copy; upload; heartbeat. The cut-off and the health threshold are derived
      values in `server/lib/researchBackupPolicy.js`.
@@ -3428,7 +3495,9 @@ dry-run unless `--write` and prints one JSON report with no key and no row count
 ### `scripts/research-backup.sh`, `scripts/verify-research-backup.sh` (Tasks 11, 12)
 
 Environment `RESEARCH_REMOTE` (must begin `research`, end in `:` or `/`); test seam `RESEARCH_NODE`. Exit codes in
-decision 27 and Task 12. Their cron lines are in `scripts/install-cron.sh`.
+decision 27 and Task 12. Their cron lines are in `scripts/install-cron.sh`. `research-backup.sh` writes one verdict
+line per run and nothing else, except bash's own one-line diagnostic on an unplanned abort (decision 27; pinned by Task
+11's log case): a later change to the job keeps every child's output out of it.
 
 ### `scripts/__tests__/helpers/fakeBins.mjs` (Task 11)
 
@@ -3463,13 +3532,11 @@ separately; only `copies: []` with every other list judged clears it.
    npm run test:e2e` (a route changes; the E2E database lists no approved text, so no consent exists there and nothing
    is deleted). No dependency is added. `git status --porcelain` empty.
 2. **Re-check the migration number** (`ls server/migrations`) against `main` just before merging (index decision 9).
-3. **A whole-branch adversarial review.** The newest practice is a blind pair, Opus and Fable on the same brief, neither
-   seeing the other's findings; **ask [USER] before commissioning the Fable half.** The alternative is a review workflow
-   with several lenses and a skeptic per finding; a mutation pass restores from a golden `cp`, never `git checkout`, and
-   `git status --porcelain` runs the moment any reviewing agent goes quiet. Fold confirmed findings in as their own
-   commits. The Review Focus above is the brief's input-case list.
-4. **[USER] answers the questions below**, in particular the seven "needs your yes" decisions, before the tasks that
-   build them.
+3. **A whole-branch adversarial review: a blind pair,** Opus and Fable on the same brief, neither seeing the other's
+   findings (**[USER] commissioned the Fable half on 2026-11-04**). A mutation pass restores from a golden `cp`, never
+   `git checkout`, and `git status --porcelain` runs the moment any reviewing agent goes quiet. Fold confirmed findings
+   in as their own commits. The Review Focus above is the brief's input-case list.
+4. **PR4 adds no Icelandic string** (index, "Wording to check"), so no wording check is owed before the PR opens.
 5. **Push, open the PR (draft), and deploy only on [USER]'s go.** Merge as a **merge commit**, never squash or rebase. A
    push to `main` from dev puts prod's content backup behind until the next deploy (CLAUDE.md § Content delivery). After
    the deploy, `/api/health` reads `degraded` with `research_db` not ok (`backup-stale`) until the research job's first
@@ -3477,56 +3544,30 @@ separately; only `copies: []` with every other list judged clears it.
 6. A new top entry in the register: what merged, what was measured, what is next. **Consent collection still waits for
    the section below; G1.23 does not.**
 
-### Questions for [USER] before or during review
+### Answers ([USER], 2026-11-04)
 
-**How a yes is recorded.** Each "needs your yes" below changes what the frozen spec says. A yes is written into the spec
-as a dated `✏️ AMENDED` block (the shape of the one index decision 1 added), naming the cell or sentence it overrides,
-**before** the task that builds it; that commit carries the spec edit only. A no means the decision's named fallback is
-built instead, and the spec stays as it is.
+[USER] answered "Yes for all" to the index's questions, with four clarifications the same day (index § Answers). For
+this plan:
 
-- **Decision 9, needs your yes:** only a withdrawal sets `deletion_done_at_ms`; a retention run records its own
-  `research_deletions` row and touches no consent row, because §5.22 forbids `research-retention.js` from naming the
-  consent table, though §5.15 step 5 says both scripts set it. If no, `research-retention.js` becomes a third §5.22
-  exception, allowed only to set that column on every interval's starting row where it is empty.
-- **Decision 10, needs your yes:** an export directory that cannot be emptied keeps the withdrawn interval due (no
-  deletion record), though §5.15 step 5 names only the compaction and the byte scan. If no, the record is written and the
-  run still exits non-zero.
-- **Decision 11, needs your yes:** retention stays due until its deletion is recorded, though §5.15 says "the date has
-  passed and any research row exists". Without it, a run that deleted every row and then met a busy checkpoint is never
-  completed or recorded (the copies stay clean either way, because the copy step compacts before every copy, decision
-  25). If no, the literal rule.
-- **Decision 12, needs your yes:** the retention script refuses `--write` for want of a derived dataset only when
-  something is due, though §5.15 says it refuses while no such row exists; the backup job runs it with `--write` every
-  cycle and takes no copy when it fails, so the literal rule would stop every copy from the first cycle. A dataset row
-  counts only when its path lies outside what the run deletes. If no, the literal refusal, and the job passes
-  `--write` only when a read-only check says retention is due.
-- **Decision 18, needs your yes:** the paper-consent script is named `research-paper-consent.js` and is not a §5.22
-  exception, because it names no forbidden table; §5.22 and T17 describe it as the second exception. If no, it is listed
-  with the single `research_consent` allowance.
-- **Decision 19, needs your yes:** a paper decision must name the current approved version, as the route does, though
-  §5.14 says only "an approved version". If no, any listed approved version is accepted.
-- **Decision 20, needs your yes:** a paper decision's time is the time it is recorded, not the day it was signed. If no,
-  a `--decided-at <YYYY-MM-DD>` option sets it.
-- **Decision 21:** while the research file is absent, the paper script still records a withdrawal or a decline (§6
-  item 18: recorded the same day, and capture stops), leaves its deletion due and exits 1, and refuses a consent. Say so
-  if you want a withdrawal refused in that state instead.
-- **Decision 32:** a restore deletes the live file it replaces rather than keeping it aside, because that file may hold
-  a withdrawn interval's rows the restore has just recorded as deleted. Inspect a damaged file before restoring if it
-  matters.
-- **G-1a needs a root run** of the probe (`--sections G-1a`, decision 35) for every user's crontab. Will you run it, or
-  authorise this session to run it read-only?
-- **Linode Backups must stay off** for this Linode while the research file lives on its disk (decision 41). If you want
-  whole-disk backups for the box, the research file needs another home first; that is not in this plan.
-- **A lost research file with no copy** (decision 33): nothing in PR4 creates a fresh file while a consent exists (it
-  would re-key every editor and detach earlier data). Should a deliberate admin path be built later, or does the runbook's
-  "stays missing until [USER] decides" suffice?
-- **The job's log**, `pipeline-output/research-backup.log`, carries each run's report: the withdrawn interval ids it
-  deleted and the step outcomes (no key, no count, no text), the same facts `research_deletions` keeps. Acceptable, or
-  should the scripts print only a verdict when run from cron?
-- **The monthly restore test** holds a decrypted research copy in `research-backups/` for the minutes it runs (aged out
-  with its source if a run dies). Acceptable?
-- **The research bucket:** another region than the server, and an access key limited to that bucket where the provider
-  offers one (Task 19). Confirm, and confirm where the research passphrase is escrowed (never in the repository).
+- **Decisions 9, 10, 11, 12, 18, 19 and 20** (each a departure from the spec's wording): approved; recorded in the
+  spec's `✏️ AMENDED 2026-11-04` block. Their fallbacks are not built.
+- **Decision 21** (with the research file absent, the paper script refuses a consent but records a withdrawal or a
+  decline, leaves its deletion due and exits 1): as written.
+- **Decision 29** (the monthly restore test holds a decrypted research copy in `research-backups/` for the minutes it
+  runs, aged out with its source if a run dies): as written.
+- **Decision 32** (a restore deletes the live file it replaces rather than keeping it aside): as written.
+- **Decision 33** (a lost research file with no copy stays `missing`): a deliberate admin path is wanted **later**,
+  recorded in the register, not built in PR4.
+- **The job's log** (`pipeline-output/research-backup.log`): **a verdict only per run** (the time, `ok` or `failed`,
+  and the failing step's name), never interval ids, counts or step outcomes beyond that. Built as decision 27's last
+  bullet and Task 11; the earlier draft, which passed each deletion report into the log, is Task 11's mutation red arm.
+- **Linode Backups stay off** while the research file lives on this Linode's disk (decision 41), as written; a
+  whole-disk backup would need the research file housed elsewhere first, which is not in this plan.
+- **The research bucket** (another region than the server, an access key limited to it where the provider offers one;
+  Task 19), as written. Where the research passphrase is escrowed is [USER]'s, and it is never written in the
+  repository; escrowing it is item 1 below.
+- **G-1a's root run** (`--sections G-1a`, decision 35) is a production step, item 2 below: [USER] runs it, or
+  authorises a read-only run, when that step comes.
 
 ## Before the first consented row (not code)
 
@@ -3536,8 +3577,9 @@ administrator's setup, and each result is recorded in the register by its output
 
 1. **PR4 is deployed, and the research job is running.** The research passphrase is escrowed; the research bucket
    exists with versioning off; the `research-secret` crypt remote is configured; every line `scripts/install-cron.sh`
-   prints is installed; one hand run of `scripts/research-backup.sh` exited 0 and `scripts/verify-research-backup.sh`
-   printed `RESEARCH RESTORE VERIFY: PASS`; `/api/health`'s `checks.research_db` reads `{ ok: true, reason: null }`.
+   prints is installed; one hand run of `scripts/research-backup.sh` exited 0 with its one `research-backup: ok` line,
+   and `scripts/verify-research-backup.sh` printed `RESEARCH RESTORE VERIFY: PASS`; `/api/health`'s `checks.research_db`
+   reads `{ ok: true, reason: null }`.
 2. **G-1a.** [USER] in Linode's web console: the Linode's Backups are not enabled. The probe's crontab half, run as root
    (`--sections G-1a`): `complete: true`, `copies: []`, every `excludedCopies` line judged (its exclude leaves out
    `research.db`, its `-wal` and `-shm`, `research-backups/` and `research-exports/`), and every `unclassified` line

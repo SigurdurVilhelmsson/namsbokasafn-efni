@@ -34,7 +34,8 @@ JS with no build step (`server/public/js/`, `sourceType: 'script'`), Vitest from
    "Handoff to PR2" (binding), and Tasks 2–6, 9, 18 and 19, whose code this PR builds on.
 3. [The spec](../specs/2026-11-03-served-version-and-event-log-design.md), whole; for this PR §5.4 (step 4 and the 503),
    §5.5, §5.6 (its last bullet: `close-pending-edits.js`), §5.20 (`checks.schema`), §9 (G-1c…G-1g), §10 (T6, T7, T17), §11, §13 and §13a. Frozen and approved as
-   written, with one dated `✏️ AMENDED` block (`researchScope.js` in PR1); this plan does not reopen §14.
+   written, with two dated `✏️ AMENDED` blocks: `researchScope.js` in PR1 (2026-11-03), and the twenty departures
+   [USER] approved with the plans (2026-11-04), one of them this plan's (decision 4). This plan does not reopen §14.
 4. [The decision record](../../decisions/2026-11-03-research-capture-consent-and-retention-rulings.md): R3 (no user
    column) and R6 (switch on, then assign) for this PR.
 5. [G1.23's spec](../specs/2026-11-02-suggestion-view-design.md) §6.2, §6.3a and §8 items 2 and 4: the contract this
@@ -44,8 +45,11 @@ JS with no build step (`server/public/js/`, `sourceType: 'script'`), Vitest from
 
 ## State of this plan (read first)
 
-- **Written 2026-11-03 for [USER]'s approval, as one of the five PR plans the index lists. No code before [USER]
-  approves it.** Status lives in the register, never here.
+- **Written 2026-11-03 as one of the five PR plans the index lists; ✅ approved by [USER] on 2026-11-04** ("Yes for
+  all", with the clarifications the index's "Answers" records). The spec's `✏️ AMENDED 2026-11-04` block records every
+  departure, this plan's decision 4 among them, so **no spec commit is owed before any task**. Every other behaviour
+  choice is built as written. Two questions stay open until Task 8: who runs the production probe, and the §9 choice
+  if chemistry holds assignment rows. Status lives in the register, never here.
 - **Pinned to `main` = `ed10180c`, plus PR1 as its plan leaves it.** Every `path:line` below was opened at
   `ed10180c`; where PR1 changes a construct, the text says "as PR1 Task N leaves it". Once PR1 has merged, match each
   edit on the quoted construct, never on the number.
@@ -74,10 +78,9 @@ JS with no build step (`server/public/js/`, `sourceType: 'script'`), Vitest from
 ## Decisions taken in this plan
 
 Each is a §13 item, a seam the spec, the index or PR1's handoff leaves open, or a reading of the tree. **Decision
-4's second half needs [USER]'s yes** before it is built as written. Its fallback is stated. **A yes is recorded as a
-dated `✏️ AMENDED` block in the spec, in a commit carrying only that edit, before Task 2 builds it; a no builds the
-fallback** (the rule PR3's and PR4's plans state, § Questions for [USER]). Questions that change nothing unless
-[USER] asks are listed under "Questions for [USER]".
+4's second half goes beyond the frozen spec's wording, and [USER] approved it on 2026-11-04** (spec `✏️ AMENDED
+2026-11-04`). Every other decision was approved as written the same day. "Answers ([USER], 2026-11-04)" lists each
+question and its answer.
 
 **Server and schema**
 
@@ -102,7 +105,8 @@ fallback** (the rule PR3's and PR4's plans state, § Questions for [USER]). Ques
      CASCADE`. Nothing else: no origin, no editor, no time (R3).
    - **Why the foreign key, with a cascade:** a snapshot row means nothing without its opening, and foreign keys are
      ON in this build (CLAUDE.md § Tech Stack), so the reference refuses an orphan; the cascade lets a later retention
-     rule (G1.15) delete an opening and its snapshot in one statement. PR2 itself deletes nothing.
+     rule (G1.15) delete an opening and its snapshot in one statement. PR2 itself deletes nothing. **✅ [USER]
+     approved the foreign key with its cascade on 2026-11-04:** deleting an opening deletes its snapshot.
    - No index beyond the two primary keys' automatic ones (`sqlite_autoindex_module_openings_1`,
      `sqlite_autoindex_module_opening_inflight_1`, measured): every read is by the full key.
    - **One transaction inside one never-throw boundary** (`048`'s and PR1 Task 3's shape). A failure leaves neither
@@ -118,20 +122,20 @@ fallback** (the rule PR3's and PR4's plans state, § Questions for [USER]). Ques
    lookup. Not `hasChapterAccess` (`userService.js:629-679`, fail-open at `:632-635`, `:641-647`, `:664-666`, `:678`)
    and not `requireBookAccess` (`requireRole.js:257-259` admins, `:263-265` head editors); not migration 012's
    `chapter_assignments`, which nothing reads (`viewRouteContracts.test.js:185-187` pins its last reader's removal);
-   not `enforce_assignments`, not the role, and not `users.is_active` (a question for [USER], below). A falsy
-   `findByProviderId` result is "no user": it returns `undefined` for no row and `null` when the `users` table is not
-   ready (`:58`), and the predicate never creates a row (CLAUDE.md § Auth). The book check comes first, so a serve of
-   any other book touches no table: Task 2 proves it on a closed handle (the route's connection) and with a spy on
-   `findByProviderId` (`userService`'s, decision 1), which is not called. The opening-row lookup comes last, so a
+   not `enforce_assignments`, not the role, and not `users.is_active` (✅ approved as written by [USER] 2026-11-04: a
+   deactivated account whose token is still valid opens a unit it holds an assignment row for, as the spec's predicate
+   says). A falsy `findByProviderId` result is "no user": it returns `undefined` for no row and `null` when the `users`
+   table is not ready (`:58`), and the predicate never creates a row (CLAUDE.md § Auth). The book check comes first, so
+   a serve of any other book touches no table: Task 2 proves it on a closed handle (the route's connection) and with a
+   spy on `findByProviderId` (`userService`'s, decision 1), which is not called. The opening-row lookup comes last, so a
    missing `module_openings` affects only a serve by a user who holds an assignment row.
 4. **A predicate that throws, on a study-book serve, answers 503 (cause `predicate`).** For a throw in the opening-row
    lookup (reached only by a user with a users row and an assignment row) this is spec §5.4's "the opening step cannot
-   run". **For a throw in the `users` or assignment lookup it is a reading of §5.4, and needs [USER]'s yes:** the route
-   cannot tell whether this serve is the one the record depends on, and §3's anti-goal ("the opened time is set by a
-   serve that is not an assigned editor's"; "no editor works on a unit whose opening … was not recorded", §5.4) favours
-   refusing. *Fallback if [USER] says no:* treat such a throw as "does not meet the predicate" (200, logged at error),
-   which is PR1's fail-soft. A yes is recorded as a dated `✏️ AMENDED` block in the spec, in a commit carrying only that
-   edit, before Task 2 builds it; a no builds this fallback in Task 2 instead. In practice both lookups throw only on a
+   run". **For a throw in the `users` or assignment lookup it is a reading of §5.4. ✅ Approved by [USER] 2026-11-04
+   (spec AMENDED 2026-11-04).** The route cannot tell whether this serve is the one the record depends on, and §3's
+   anti-goal ("the opened time is set by a serve that is not an assigned editor's"; "no editor works on a unit whose
+   opening … was not recorded", §5.4) favours refusing. The fallback, for the record, was to treat such a throw as
+   "does not meet the predicate" (200, logged at error), PR1's fail-soft. In practice both lookups throw only on a
    damaged database, which already fails every write route (`requireRole.js:276-288` maps the assignment failure to 503
    or rethrows).
 5. **The snapshot** (spec §5.5 step 2; T7) is a pure function, `snapshotRows(segments, edits)`, over the route's
@@ -223,8 +227,8 @@ fallback** (the rule PR3's and PR4's plans state, § Questions for [USER]). Ques
       `clearDraft` → `writeDraft(kept)`).
     - **Any other load error keeps today's behaviour,** a reload's 500 included, which still leaves the pane on screen
       beside the module list. That is a pre-existing defect outside PR2; Task 4's E2E control asserts it, so the new
-      branch is shown to be keyed on the code. Whether to take the pane away on every load error is a question for
-      [USER], below.
+      branch is shown to be keyed on the code. **✅ Approved as written by [USER] 2026-11-04:** only
+      `OPENING_UNRECORDED` takes the pane away in this PR.
 14. **E2E gains one spec whose 503s are stubbed; the seed and the logins are unchanged.** No `users` row exists in E2E:
     `server/e2e/seed-fixture.js` inserts none and no spec creates one (`grep -rnaE "INSERT (OR IGNORE )?INTO
     (users|user_chapter_assignments)" server/e2e` prints nothing; the only `users` write, `rbac.spec.js:70`'s `PUT
@@ -237,7 +241,8 @@ fallback** (the rule PR3's and PR4's plans state, § Questions for [USER]). Ques
     the real server never answers `OPENING_UNRECORDED` there, so the client's handling is proved against a
     `route.fulfill` stub (PR1 decision 37's precedent). **E2E does not prove** that an opening is recorded through the
     HTTP and cookie layer; Task 3's route tests drive the real handler, and its full middleware chain with real JWTs
-    through `requireAuth`, without HTTP.
+    through `requireAuth`, without HTTP. **Seeding a `users` row and an assignment row into E2E, to prove an opening
+    end to end, is a later change** ([USER] 2026-11-04), recorded in the register, not built in PR2.
 
 **The probe (spec §9; index decision 14)**
 
@@ -303,9 +308,10 @@ fallback** (the rule PR3's and PR4's plans state, § Questions for [USER]). Ques
     path filter, `.github/workflows/docs-check.yml:6-8`) but adds no `router.<verb>(` line. **Root `LICENSE` is
     unchanged:** the probe's `require('../../tools/lib/mt-lock.cjs')` is AGPL code using MIT code, not the MIT→AGPL
     edge (E-2) that file enumerates.
-28. **Icelandic strings, both proposals for [USER]'s check** (index decision 13):
+28. **Icelandic strings, both ✅ approved by [USER] 2026-11-04 as proposed** (index decision 13). A change to either
+    after that date goes back to [USER] before the PR is opened.
 
-    | Where | Key | Proposed text |
+    | Where | Key | Approved text |
     |---|---|---|
     | server, `moduleOpenings.OPENING_UNRECORDED.message` | `OPENING_UNRECORDED` (503) | *Ekki tókst að skrá opnun einingarinnar og því var hún ekki opnuð. Opnið eininguna aftur.* |
     | client, `server/public/js/ui-strings.js` | `UI.segmentEditor.openingUnrecorded` | *Ekki tókst að skrá opnun einingarinnar og því var hún ekki opnuð. Veljið hana aftur úr listanum.* |
@@ -316,7 +322,8 @@ fallback** (the rule PR3's and PR4's plans state, § Questions for [USER]). Ques
     script "writes raw SQL (`:176-200`). It is meant to run before the study, under the hold. This design does not log
     its writes, so it must not run once any unit has opened." **Placed in PR2 by the index (its PR2 row)**, because PR2
     is where the record that makes it checkable first exists. The script already ran its one production write
-    (register, 2026-10-25), so this is a guard on a re-run, not a change to anything done.
+    (register, 2026-10-25), so this is a guard on a re-run, not a change to anything done. **✅ [USER] confirmed on
+    2026-11-04 that it is a code guard in the script,** not only an operational rule.
     - **The plan's reading of "any unit": a unit of the book the script is run for.** The script writes only that
       book's rows (it refuses a row of another book, `close-pending-edits.js:129`), and only a study book can hold an
       opening.
@@ -858,8 +865,8 @@ const userService = require('./userService');
 const { isEditInFlight } = require('../public/js/accept-eligibility');
 const log = require('../lib/logger');
 
-// The serve that meets the predicate but cannot record its opening (spec §5.4). Icelandic: a proposal for
-// [USER]'s check (index decision 13). Not in servedEdit.js's refusal tables, which PR2 does not change.
+// The serve that meets the predicate but cannot record its opening (spec §5.4). Icelandic: approved by [USER]
+// 2026-11-04 (index decision 13). Not in servedEdit.js's refusal tables, which PR2 does not change.
 const OPENING_UNRECORDED = Object.freeze({
   status: 503,
   code: 'OPENING_UNRECORDED',
@@ -1375,9 +1382,9 @@ client half); index decision 13; decisions 13, 14, 28; disagreement 1.
   `draftTimer` (set by `startDraftTimer`, `:106-109`), `dirtyEdits`, `tabGuard.release()` (`tabGuard.js:181-187`: releases the claim, touches no
   draft), `#editor-container` and `#save-status-bar` (`server/views/segment-editor.html:1741`, `:1907`, both start
   `display: none`) and `window.loadModule` (`:3546`).
-- Produces: `UI.segmentEditor.openingUnrecorded` (a proposal); on the `OPENING_UNRECORDED` path with a pane on screen,
-  the pane's texts in this tab's draft, the draft timer stopped, `dirtyEdits` empty, the tab claim released, and
-  `#editor-container` and `#save-status-bar` hidden.
+- Produces: `UI.segmentEditor.openingUnrecorded` (approved wording, decision 28); on the `OPENING_UNRECORDED` path
+  with a pane on screen, the pane's texts in this tab's draft, the draft timer stopped, `dirtyEdits` empty, the tab
+  claim released, and `#editor-container` and `#save-status-bar` hidden.
 
 - [ ] **Step 1: Write the failing tests**
 
@@ -1591,7 +1598,7 @@ controls pass. (Were the text alone fixed, the third test would still fail at `#
 ```
 
 In `ui-strings.js`'s `segmentEditor` group: `openingUnrecorded: 'Ekki tókst að skrá opnun einingarinnar og því var
-hún ekki opnuð. Veljið hana aftur úr listanum.'`, with a comment that it is a proposal for [USER]'s check (index
+hún ekki opnuð. Veljið hana aftur úr listanum.'`, with a comment that [USER] approved the wording on 2026-11-04 (index
 decision 13).
 
 - [ ] **Step 4: Run them**
@@ -2336,7 +2343,7 @@ module_opening_inflight (book, chapter, module_id, segment_id TEXT NOT NULL,
 ### `server/services/moduleOpenings.js` (Task 2)
 
 ```ts
-OPENING_UNRECORDED: Readonly<{ status: 503, code: 'OPENING_UNRECORDED', message: string }>   // Icelandic, a proposal
+OPENING_UNRECORDED: Readonly<{ status: 503, code: 'OPENING_UNRECORDED', message: string }>   // Icelandic, approved
 openingPredicate(conn, { book, chapter, moduleId, providerId }):
   { holds: boolean, reason: 'not-study-book' | 'no-user' | 'no-assignment' | 'already-opened' | 'holds' }
 snapshotRows(segments: { segmentId }[], edits: SegmentEditRow[]):
@@ -2396,8 +2403,8 @@ readResearchPreconditions({ book, openDb, serverDir, booksDir, etcRoot?, varRoot
 
 ### Client (Task 4)
 
-`UI.segmentEditor.openingUnrecorded` (a proposal); `loadModule`'s catch keys on `err.status === 503 &&
-err.data.error === 'OPENING_UNRECORDED'`, and on that path, when `#editor-container` is on screen, writes the panes'
+`UI.segmentEditor.openingUnrecorded` (approved wording, decision 28); `loadModule`'s catch keys on `err.status === 503
+&& err.data.error === 'OPENING_UNRECORDED'`, and on that path, when `#editor-container` is on screen, writes the panes'
 texts with `saveDraft()`, stops the draft timer, empties `dirtyEdits`, releases the tab claim and hides
 `#editor-container` and `#save-status-bar`, discarding no draft. A later PR that adds a load-error code with the same
 "no save in between" need reuses that branch.
@@ -2416,12 +2423,12 @@ counts as none opened. Later PRs keep the refusal.
    before, decision 14). No dependency is added, so `npm audit` is not part of this gate. `git status --porcelain`
    empty.
 2. **Re-check the migration number** (`ls server/migrations`) against `main` just before merging (index decision 9).
-3. **A whole-branch adversarial review.** The newest practice is a blind pair, Opus and Fable on the same brief,
-   neither seeing the other's findings; **ask [USER] before commissioning the Fable half.** The alternative is a review
-   workflow with several lenses and a skeptic per finding; a mutation pass restores from a golden `cp`, never
+3. **A whole-branch adversarial review: a blind pair,** Opus and Fable on the same brief, neither seeing the other's
+   findings (**[USER] commissioned the Fable half on 2026-11-04**). A mutation pass restores from a golden `cp`, never
    `git checkout`, and `git status --porcelain` runs the moment any reviewing agent goes quiet. Fold confirmed
    findings in as their own commits. The Review Focus above is the brief's input-case list.
-4. **[USER] checks both Icelandic strings before the PR is opened** (decision 28; index decision 13).
+4. **Both Icelandic strings are approved as proposed** (decision 28; index decision 13). If either changed after
+   2026-11-04, [USER] checks the new text before the PR is opened.
 5. **Task 8 is complete:** the production run is in the register and, if chemistry held assignment rows, [USER]'s §9
    choice is recorded (spec §13a).
 6. **Push, open the PR (draft), and deploy only on [USER]'s go.** Merge as a **merge commit**, never squash or rebase.
@@ -2431,31 +2438,24 @@ counts as none opened. Later PRs keep the refusal.
    loaded before the deploy that meets a 503 shows the bare code (Review Focus 12).
 7. A new top entry in the register: what merged, what was measured, what is next.
 
-### Questions for [USER] before or during review
+### Answers ([USER], 2026-11-04)
 
-- Is the proposed Icelandic wording right (decision 28)?
-- **Decision 4, needs your yes:** a throw in the `users` or assignment lookup, on a chemistry serve, answers 503 rather
-  than serving the unit unrecorded. If no, such a throw serves the unit as today and logs an error. **How a yes is
-  recorded:** it changes what the frozen spec says, so it is built only after your yes, written into the spec as a
-  dated `✏️ AMENDED` block (the shape of the one index decision 1 added for `researchScope.js`) naming the sentence it
-  overrides, in a commit carrying only that edit, before Task 2. A no builds the fallback, and the spec stays as it
-  is.
-- Should a deactivated account (`users.is_active = 0`) whose sign-in token is still valid open a unit it holds an
-  assignment row for? The plan follows the spec's predicate, which names only the `users` row and the assignment row,
-  so it does. Changing it changes spec §5.5 and needs a dated `✏️ AMENDED` block.
-- Is the foreign key from the snapshot to its opening, with `ON DELETE CASCADE`, acceptable (decision 2)? It means
-  deleting an opening deletes its snapshot.
-- Task 4 takes the pane away only for `OPENING_UNRECORDED`. Today **any** failed reload (a 500, a dropped connection)
-  leaves the old, saveable rows on screen beside the module list (decision 13; disagreement 1). Should a later change
-  take the pane away on every load error? The plan does not, and its E2E control pins today's behaviour for a 500.
-- Task 7 (decision 29; placed in PR2 by the index's PR2 row): spec §5.6 forbids running `close-pending-edits` once a
-  unit has opened. Confirm it is a code guard in the script, not only an operational rule. If you would rather keep it
-  an operational rule, drop Task 7 and the register holds the rule instead.
-- Task 8: will you run the probe on production, or authorise this session to run it? And, if chemistry holds assignment
-  rows, which of the §9 choices?
-- E2E proves only the client's handling of a stubbed 503 and that unassigned serves are unchanged (decision 14).
-  Should a later change seed a `users` row and an assignment row into the E2E database and read the opening row from a
-  spec? The plan does not build it.
+[USER] answered "Yes for all" to the index's questions, with four clarifications the same day (index § Answers). For
+this plan:
+
+- **The Icelandic wording (decision 28):** approved as proposed.
+- **Decision 4** (a throw in the `users` or assignment lookup, on a chemistry serve, answers 503 rather than serving
+  the unit unrecorded): approved; recorded in the spec's `✏️ AMENDED 2026-11-04` block.
+- **Decision 3** (a deactivated account whose sign-in token is still valid opens a unit it holds an assignment row
+  for, as the spec's predicate says): as written.
+- **Decision 2** (the snapshot's foreign key to its opening, with `ON DELETE CASCADE`): yes.
+- **Decision 13** (Task 4 takes the pane away only for `OPENING_UNRECORDED`; other failed reloads keep today's
+  behaviour, which its E2E control pins for a 500): as written.
+- **Decision 29** (Task 7): the code guard in `close-pending-edits.js` is confirmed.
+- **Decision 14** (seed a `users` row and an assignment row into E2E, to prove an opening end to end): a later change,
+  recorded in the register, not in PR2.
+- **Still open, for Task 8 at PR2's time:** whether [USER] runs the probe on production or authorises the executing
+  session to run it; and, if chemistry holds assignment rows, which of the §9 choices.
 
 ## Handoff to PR3
 
