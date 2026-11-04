@@ -91,10 +91,13 @@ const rowOf = (page, segmentId) =>
 
 /**
  * Reload the module with a dirty pane open, and decline the re-render. loadModule returns before its two
- * background loads (/terms, /repetitions; segment-editor.js:296-297) re-render the table, and each re-render asks
+ * background loads (/terms, /repetitions; loadTermData, loadRepetitions) re-render the table, and each re-render asks
  * closePanels again, so wait for both responses before removing the handler. Any confirm still to come then meets
  * NO listener, and Playwright auto-dismisses a dialog nobody listens for: declined too. So no test in this file
- * installs an ACCEPTING dialog handler while a dirty pane must survive.
+ * installs an ACCEPTING dialog handler while a dirty pane must survive a declined re-render. A pane holding a KEPT
+ * text (index decision 12) is another matter: the client carries it across every re-render without asking
+ * closePanels, so the refusal tests below accept every dialog on purpose, since the kept text must survive even an
+ * editor who answers OK.
  */
 async function declineReRender(page) {
   const dismiss = (d) => d.dismiss();
@@ -279,5 +282,242 @@ test.describe('G1.1 client: the row is what the save and the accept echo', () =>
     expect(body.assists[2].detail).toEqual({ marker: '*' });
     expect(body.assists[3].detail).toEqual({ term: 'hugtak' });
     for (const a of body.assists) expect(typeof a.clientTimeMs).toBe('number');
+  });
+
+  test('a stale-base refusal keeps the text, its base, its insert and its wrap; the next save lists them and draft-restore (T23)', async ({
+    page,
+  }) => {
+    const [target] = middleVirginRows(await loadModuleJson(page), { plain: true });
+    // T23 "the next save lists both the earlier insert and draft-restore": a repetition insert, stubbed as Task 10's
+    // test does (the fixture holds no applied twin). It is a WHOLE-TEXT item, so its detail.text is what a refusal,
+    // the draft and the restore could lose (§5.10, §14 call 18).
+    const suggestion = {
+      is_text: `${target.is} g11-rep`,
+      book: 'efnafraedi-2e',
+      chapter: 3,
+      module_id: 'm68000',
+    };
+    await page.route(`**${MODULE_URL}/repetitions`, (route) =>
+      route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({ repetitions: [{ segmentId: target.segmentId, suggestion }] }),
+      })
+    );
+    await rewriteFirstServe(page, target.segmentId, (s) => {
+      s.baseSha256 = FAKE_SHA; // the page holds a base the server no longer serves
+    });
+    await openModule(page);
+    const row = rowOf(page, target.segmentId);
+    await row.getByRole('button', { name: 'Nota þessa þýðingu' }).click(); // repetition-insert, tm; opens the pane
+    const ta = row.locator('textarea');
+    await expect(ta).toHaveValue(suggestion.is_text);
+    await ta.evaluate((el) => el.setSelectionRange(0, 3));
+    await row.locator('.format-toolbar .tb-bold').click();
+    await ta.press('End');
+    await ta.pressSequentially(SUFFIX);
+    const typed = await ta.inputValue();
+    const alerts = [];
+    page.on('dialog', async (d) => {
+      alerts.push(d.message());
+      await d.accept().catch(() => {}); // a dialog still open as the page closes (see the T4 test)
+    });
+    const refused = page.waitForResponse((r) => r.url().endsWith(`${MODULE_URL}/edit`));
+    await row.getByRole('button', { name: 'Vista', exact: true }).click();
+    const res = await refused;
+    expect(res.status()).toBe(409);
+    expect((await res.json()).error).toBe('STALE_BASE'); // the real server (§5.6 step 4)
+
+    // After the reload: the pane is back with the text and the notice, on the newly served base.
+    await expect(row.locator('.draft-notice[data-notice="STALE_BASE"]')).toBeVisible();
+    await expect(row.locator('textarea')).toHaveValue(typed);
+    await expect(row).toHaveAttribute('data-base-sha256', target.baseSha256);
+    expect(alerts.some((m) => m.includes('geymdur'))).toBe(true);
+    const stored = await page.evaluate((id) => {
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith('seg-draft:')) {
+          const v = JSON.parse(localStorage.getItem(key));
+          if (v.segments && v.segments[id]) return v.segments[id];
+        }
+      }
+      return null;
+    }, target.segmentId);
+    expect(stored.baseSha256).toBe(FAKE_SHA); // the base it was typed on
+    expect(stored.refused).toBe('STALE_BASE');
+    expect(stored.assists.map((a) => a.itemType)).toEqual([
+      'repetition-insert',
+      'markup-wrap',
+      'draft-restore',
+    ]);
+    expect(stored.assists[0].detail.text).toBe(suggestion.is_text); // the whole text survives the draft
+    expect((await loadModuleJson(page)).edits[target.segmentId]).toBeUndefined(); // refused: nothing written
+
+    // Positive control, REAL: the next save goes out on the new base, listing the wrap and the restore, and lands.
+    const posted = page.waitForRequest(
+      (r) => r.url().endsWith(`${MODULE_URL}/edit`) && r.method() === 'POST'
+    );
+    const saved = page.waitForResponse((r) => r.url().endsWith(`${MODULE_URL}/edit`));
+    await row.getByRole('button', { name: 'Vista', exact: true }).click();
+    const body = (await posted).postDataJSON();
+    expect(body.baseSha256).toBe(target.baseSha256);
+    expect(body.assists.map((a) => [a.itemType, a.source])).toEqual([
+      ['repetition-insert', 'tm'],
+      ['markup-wrap', 'toolbar'],
+      ['draft-restore', null],
+    ]);
+    // The insert's whole text came through the refusal, the draft and the restore unchanged.
+    expect(body.assists[0].detail).toEqual({
+      text: suggestion.is_text,
+      book: 'efnafraedi-2e',
+      chapter: 3,
+      moduleId: 'm68000',
+    });
+    expect(body.assists[2].detail).toEqual({ text: typed });
+    const ok = await saved;
+    expect(ok.status()).toBe(200);
+    const edit = (await loadModuleJson(page)).edits[target.segmentId].find(
+      (e) => e.edited_content === typed
+    );
+    expect(edit.original_content).toBe(target.is); // the server's base (§5.6 step 6)
+    await page.request.delete(`/api/segment-editor/edit/${edit.id}`); // best effort, as editor-lifecycle Test 9
+  });
+
+  test('a DUPLICATE_ID refusal keeps the text with its notice, and the pane never sends it (R4, §5.7)', async ({
+    page,
+  }) => {
+    const [target] = middleVirginRows(await loadModuleJson(page));
+    await openModule(page);
+    const row = rowOf(page, target.segmentId);
+    await row.locator('.btn-edit').click();
+    const text = `${target.is}${SUFFIX}`;
+    await row.locator('textarea').fill(text);
+    const posts = [];
+    await page.route(`**${MODULE_URL}/edit`, async (route) => {
+      posts.push(route.request().postDataJSON());
+      await route.fulfill({
+        status: 409,
+        contentType: 'application/json',
+        body: JSON.stringify({ error: 'DUPLICATE_ID', message: 'stub' }),
+      });
+    });
+    const acceptAll = (d) => d.accept().catch(() => {});
+    page.on('dialog', acceptAll);
+    await row.getByRole('button', { name: 'Vista', exact: true }).click();
+    await expect(row.locator('.draft-notice[data-notice="DUPLICATE_ID"]')).toBeVisible();
+    expect(posts).toHaveLength(1); // positive control: the first save was sent
+    await expect(row.locator('textarea')).toHaveValue(text);
+    await expect(row.getByRole('button', { name: 'Vista', exact: true })).toBeDisabled();
+    await row.locator('textarea').press('Control+Enter');
+    await row.locator('textarea').press('Control+s');
+    await page.waitForTimeout(500);
+    expect(posts).toHaveLength(1); // never sent again
+    // Discarding asks first; declining keeps the text.
+    page.off('dialog', acceptAll);
+    page.once('dialog', (d) => d.dismiss());
+    await row.getByRole('button', { name: 'Hætta við' }).click();
+    await expect(row.locator('textarea')).toHaveValue(text);
+    // Back keeps it for the next visit. Reopened through the selector, as editor-lifecycle
+    // Test 7 does: a page.goto would meet the dirty page's beforeunload handler.
+    await page.locator('#btn-back').click();
+    await expect(page.locator('#module-selector')).toBeVisible({ timeout: 5000 });
+    await page.locator('#book-select').selectOption(BOOK);
+    await expect(page.locator('#chapter-select')).toBeEnabled({ timeout: 5000 });
+    await page.locator('#chapter-select').selectOption(CHAPTER);
+    await page.locator(`.module-card[title^="${MODULE}"]`).first().click();
+    await expect(
+      rowOf(page, target.segmentId).locator('.draft-notice[data-notice="DUPLICATE_ID"]')
+    ).toBeVisible({
+      timeout: 10000,
+    });
+    await expect(rowOf(page, target.segmentId).locator('textarea')).toHaveValue(text);
+  });
+
+  test('a refusal reached through Beita víðar propagates nothing (R4, decision 32)', async ({
+    page,
+  }) => {
+    const [target, other] = middleVirginRows(await loadModuleJson(page));
+    await openModule(page);
+    const saves = [];
+    const previews = [];
+    const propagated = [];
+    // Stubs only: a 409 DUPLICATE_ID for the target's save, a success for the control's, and a preview that always
+    // offers a target, so a propagation that is NOT stopped reaches POST /propagate.
+    await page.route(`**${MODULE_URL}/edit`, async (route) => {
+      const body = route.request().postDataJSON();
+      saves.push(body.segmentId);
+      if (body.segmentId === target.segmentId) {
+        return route.fulfill({
+          status: 409,
+          contentType: 'application/json',
+          body: JSON.stringify({ error: 'DUPLICATE_ID', message: 'stub' }),
+        });
+      }
+      return route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify(STUB_SAVED),
+      });
+    });
+    await page.route(
+      (url) => url.pathname === `${MODULE_URL}/propagation-preview`,
+      (route) => {
+        previews.push(new URL(route.request().url()).searchParams.get('segmentId'));
+        return route.fulfill({
+          status: 200,
+          contentType: 'application/json',
+          body: JSON.stringify({ eligible: [{ segmentId: 'stub' }] }),
+        });
+      }
+    );
+    await page.route(`**${MODULE_URL}/propagate`, async (route) => {
+      propagated.push(route.request().postDataJSON().segmentId);
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({ created: [], skipped: [] }),
+      });
+    });
+    page.on('dialog', (d) => d.accept().catch(() => {})); // the refusal alert and the propagate confirm; no other pane is dirty
+    // Positive control: a save that lands goes on to propagate, so the stubs can see a propagation.
+    await rowOf(page, other.segmentId).locator('.btn-edit').click();
+    await rowOf(page, other.segmentId).locator('textarea').fill(`${other.is}${SUFFIX}`);
+    await rowOf(page, other.segmentId).locator('.btn-propagate').click();
+    await expect.poll(() => propagated).toEqual([other.segmentId]);
+    // The refused one: its save is sent once, then nothing.
+    const row = rowOf(page, target.segmentId);
+    await row.locator('.btn-edit').click();
+    await row.locator('textarea').fill(`${target.is}${SUFFIX}`);
+    await row.locator('.btn-propagate').click();
+    await expect(row.locator('.draft-notice[data-notice="DUPLICATE_ID"]')).toBeVisible();
+    await page.waitForTimeout(500);
+    expect(saves).toEqual([other.segmentId, target.segmentId]);
+    expect(previews).toEqual([other.segmentId]);
+    expect(propagated).toEqual([other.segmentId]);
+  });
+
+  test('BASE_MISSING asks for F5 and keeps the text', async ({ page }) => {
+    const [target] = middleVirginRows(await loadModuleJson(page));
+    await openModule(page);
+    const row = rowOf(page, target.segmentId);
+    await row.locator('.btn-edit').click();
+    await row.locator('textarea').fill(`${target.is}${SUFFIX}`);
+    await page.route(`**${MODULE_URL}/edit`, (route) =>
+      route.fulfill({
+        status: 409,
+        contentType: 'application/json',
+        body: JSON.stringify({ error: 'BASE_MISSING', message: 'stub' }),
+      })
+    );
+    const alert = new Promise((resolve) =>
+      page.once('dialog', async (d) => {
+        resolve(d.message());
+        await d.accept();
+      })
+    );
+    await row.getByRole('button', { name: 'Vista', exact: true }).click();
+    expect(await alert).toContain('F5');
+    await expect(row.locator('.draft-notice[data-notice="BASE_MISSING"]')).toBeVisible();
+    await expect(row.locator('textarea')).toHaveValue(`${target.is}${SUFFIX}`);
   });
 });

@@ -30,6 +30,10 @@
   // §5.10 / §5.18: per open pane, the assists since it opened, the base its text
   // was started from, and (Task 19) why a refused save kept it.
   const paneState = new Map();
+  // Index decision 12: texts kept by a refused save, waiting for their pane.
+  // addRestoreItem: true when the text left the screen (a refusal), false when
+  // it is only being carried across a re-render.
+  const heldDrafts = new Map();
 
   // Track textarea focus so term lookup can insert at the right place
   document.addEventListener('focusin', (e) => {
@@ -112,6 +116,7 @@
         refused: st.refused,
       });
     }
+    for (const [segId, held] of heldDrafts) if (!entries[segId]) entries[segId] = held.entry;
     if (Object.keys(entries).length === 0) {
       localStorage.removeItem(draftKey());
       return;
@@ -120,7 +125,12 @@
   }
 
   function clearDraft() {
-    if (currentModuleId) tabGuard.clearDraftsByPrefix(draftPrefix());
+    if (!currentModuleId) return;
+    const kept = keptEntries(); // a refused save's text outlives leaving the module
+    tabGuard.clearDraftsByPrefix(draftPrefix());
+    if (Object.keys(kept).length > 0) writeDraft(kept);
+    heldDrafts.clear();
+    paneState.clear();
   }
 
   function startDraftTimer() {
@@ -158,8 +168,16 @@
     const ids = Object.keys(entries).filter((id) => !paneState.has(id));
     if (!found) return;
     tabGuard.clearDraftsByPrefix(prefix);
-    if (ids.length > 0 && confirm(UI.confirm.draftRecovery(ids.length))) {
-      for (const segId of ids) installDraft(segId, entries[segId], { addRestoreItem: true });
+    // A kept text (a refused save) comes back unasked; only the others ask (index decision 12).
+    const kept = ids.filter((id) => entries[id].refused);
+    const others = ids.filter((id) => !entries[id].refused);
+    for (const segId of kept) {
+      if (!installDraft(segId, entries[segId], { addRestoreItem: true })) {
+        heldDrafts.set(segId, { entry: entries[segId], addRestoreItem: true });
+      }
+    }
+    if (others.length > 0 && confirm(UI.confirm.draftRecovery(others.length))) {
+      for (const segId of others) installDraft(segId, entries[segId], { addRestoreItem: true });
     }
     updateSaveStatusBar();
     saveDraft(); // the restored panes are dirty: persist them under this tab's key now
@@ -175,6 +193,7 @@
     openEditPanel(segId);
     const ta = document.getElementById('textarea-' + cssId(segId));
     if (!ta) return false;
+    heldDrafts.delete(segId);
     ta.value = entry.text;
     const row = rowValues(segId);
     paneState.set(segId, {
@@ -189,6 +208,8 @@
     const previewEl = document.getElementById('preview-' + cssId(segId));
     if (previewEl) previewEl.innerHTML = renderMarkdownPreview(ta.value);
     refreshBackdrop(segId);
+    showDraftNotice(segId, segmentSaveState.noticeFor(entry, row ? row.baseSha256 : null));
+    setSaveBlocked(segId, entry.refused === 'DUPLICATE_ID');
     return true;
   }
 
@@ -253,6 +274,91 @@
   }
   function clearPaneState(segmentId) {
     paneState.delete(segmentId);
+    heldDrafts.delete(segmentId);
+    showDraftNotice(segmentId, null);
+    setSaveBlocked(segmentId, false);
+  }
+
+  const DRAFT_NOTICE_TEXT = {
+    STALE_BASE: UI.draftNotice.staleBase,
+    STALE_DISPLAYED: UI.draftNotice.staleDisplayed,
+    BASE_MISSING: UI.draftNotice.baseMissing,
+    DUPLICATE_ID: UI.draftNotice.duplicateId,
+    BOOK_NOT_MINTED: UI.draftNotice.bookNotMinted,
+    NO_LAYER: UI.draftNotice.noLayer,
+    REFUSED: UI.draftNotice.refused,
+  };
+
+  function showDraftNotice(segmentId, code) {
+    const panel = document.getElementById('edit-' + cssId(segmentId));
+    if (!panel) return;
+    const old = panel.querySelector('.draft-notice');
+    if (old) old.remove();
+    if (!code) return;
+    const div = document.createElement('div');
+    div.className = 'draft-notice';
+    div.setAttribute('data-notice', code);
+    div.setAttribute('role', 'status');
+    div.textContent = DRAFT_NOTICE_TEXT[code] || UI.draftNotice.refused;
+    panel.insertBefore(div, panel.firstChild);
+  }
+
+  /** R4: a DUPLICATE_ID text is never sent (Vista, Ctrl+Enter, propagate). */
+  function setSaveBlocked(segmentId, blocked) {
+    const panel = document.getElementById('edit-' + cssId(segmentId));
+    if (!panel) return;
+    for (const sel of ['.edit-controls .btn-primary', '.edit-controls .btn-propagate']) {
+      const btn = panel.querySelector(sel);
+      if (btn) btn.disabled = blocked;
+    }
+  }
+
+  /** A kept text is never dropped silently. */
+  function confirmDiscardKept(segmentId) {
+    const st = paneState.get(segmentId);
+    return !(st && st.refused) || confirm(UI.draftNotice.discardKept);
+  }
+
+  function keptPaneEntries() {
+    const out = {};
+    for (const [segId, st] of paneState) {
+      if (!st.refused) continue;
+      const ta = document.getElementById('textarea-' + cssId(segId));
+      if (!ta) continue;
+      out[segId] = segmentSaveState.draftEntry({
+        text: ta.value,
+        baseSha256: st.baseSha256,
+        occurrence: st.occurrence,
+        assists: st.assists,
+        refused: st.refused,
+      });
+    }
+    return out;
+  }
+  function keptEntries() {
+    const out = keptPaneEntries();
+    for (const [segId, held] of heldDrafts) if (!out[segId]) out[segId] = held.entry;
+    return out;
+  }
+
+  /** Move a refused text into the hold and the draft, so the reload restores it. */
+  function keepText(segmentId, entry) {
+    heldDrafts.set(segmentId, { entry, addRestoreItem: true });
+    dirtyEdits.delete(segmentId);
+    paneState.delete(segmentId);
+    saveDraft(); // every dirty pane's text, plus the held one, before the reload
+  }
+
+  function reinstallHeldDrafts() {
+    for (const [segId, held] of [...heldDrafts]) {
+      installDraft(segId, held.entry, { addRestoreItem: held.addRestoreItem }); // filtered out: stays held
+    }
+    updateSaveStatusBar();
+  }
+
+  function refusalAlertText(err) {
+    if (err.code === 'BASE_MISSING') return UI.refusal.baseMissing;
+    return (err.message || UI.refusal.generic) + '\n\n' + UI.refusal.textKept;
   }
 
   // ================================================================
@@ -1312,11 +1418,19 @@
   function renderSegments() {
     // O1: Close open edit panels before re-rendering to prevent losing typed text
     const openPanels = document.querySelectorAll('.edit-panel.active');
-    if (openPanels.length > 0 && dirtyEdits.size > 0) {
+    // A pane holding a kept text is carried across (index decision 12); only
+    // the other dirty panes can lose text.
+    const losable = [...dirtyEdits].filter(
+      (id) => !(paneState.get(id) && paneState.get(id).refused)
+    );
+    if (openPanels.length > 0 && losable.length > 0) {
       // Returns false so callers that MUTATED state to make this render happen
       // (jumpToSegment widens the filters) can roll back instead of leaving the
       // filter bar describing a table that was never rebuilt.
       if (!confirm(UI.confirm.closePanels)) return false;
+    }
+    for (const [segId, entry] of Object.entries(keptPaneEntries())) {
+      if (!heldDrafts.has(segId)) heldDrafts.set(segId, { entry, addRestoreItem: false });
     }
     openPanels.forEach((panel) => {
       panel.classList.remove('active');
@@ -1382,6 +1496,7 @@
     }
 
     tbody.innerHTML = segments.map((seg) => renderSegmentRow(seg)).join('');
+    reinstallHeldDrafts();
     return true;
   }
 
@@ -1981,6 +2096,7 @@
   }
 
   function closeEditPanel(segmentId) {
+    if (!confirmDiscardKept(segmentId)) return;
     const panel = document.getElementById('edit-' + cssId(segmentId));
     if (panel) {
       panel.classList.remove('active');
@@ -2010,10 +2126,14 @@
     if (!textarea || !moduleData) return;
     const seg = moduleData.segments.find((s) => s.segmentId === segmentId);
     if (!seg) return;
+    if (!confirmDiscardKept(segmentId)) return;
     const latestEdit = moduleData.edits[segmentId]?.[0];
     textarea.value = baselineTextFor(seg, latestEdit);
     dirtyEdits.delete(segmentId);
     paneState.set(segmentId, freshPaneState(segmentId)); // the pane stays open; its list starts again
+    heldDrafts.delete(segmentId); // and it no longer holds a kept text
+    showDraftNotice(segmentId, null);
+    setSaveBlocked(segmentId, false);
     const ind = document.getElementById('seg-ind-' + cssId(segmentId));
     if (ind) {
       ind.textContent = UI.segmentEditor.reverted;
@@ -2070,6 +2190,11 @@
     if (!moduleData?.segments) return;
     const seg = moduleData.segments.find((s) => s.segmentId === segmentId);
     if (!seg) return;
+    const kept = paneState.get(segmentId);
+    if (kept && kept.refused === 'DUPLICATE_ID') {
+      alert(UI.draftNotice.duplicateId); // R4: never sent
+      return;
+    }
     // §5.18: the base, the displayed pair and the text compared against all
     // come from the ROW, not from moduleData.
     const row = rowValues(segmentId);
@@ -2206,7 +2331,21 @@
         savingInd.textContent = UI.save.changed;
         savingInd.className = 'seg-save-ind dirty';
       }
-      if (err.status === 409) {
+      if (err.status === 409 && segmentSaveState.keepsText(err.code)) {
+        // Index decision 12: the typed text, its assists and the base it was
+        // sent with go into the draft, then the module reloads and restores it.
+        keepText(
+          segmentId,
+          segmentSaveState.refusedEntry({
+            text: editedContent,
+            row,
+            assists: paneAssists(segmentId),
+            code: err.code,
+          })
+        );
+        alert(refusalAlertText(err));
+        await loadModule(currentModuleId, { force: true });
+      } else if (err.status === 409) {
         // Another editor changed this segment — surface the conflict and reload
         // so the editor sees the latest state (parity with the localization editor).
         alert(err.message || 'Einingin hefur verið breytt af öðrum notanda. Endurhleð...');
@@ -2238,10 +2377,17 @@
    */
   async function propagateSegment(segmentId) {
     if (!moduleData?.segments) return;
+    const st = paneState.get(segmentId);
+    if (st && st.refused === 'DUPLICATE_ID') return; // R4: never sent
     // Ensure the current edit is persisted first so the propagated text is the
     // saved text. saveEdit reloads the module on success.
     if (dirtyEdits.has(segmentId)) {
       await saveEdit(segmentId);
+      // Decision 32: a refused save is never propagated. Its refusal path has just put the kept text back in this
+      // textarea (keepText → loadModule → reinstallHeldDrafts → installDraft), so reading it below would send it:
+      // a DUPLICATE_ID text to POST /propagate (R4), or a STALE_BASE text to every other occurrence.
+      const after = paneState.get(segmentId);
+      if (heldDrafts.has(segmentId) || (after && after.refused)) return;
     }
     const editedContent = document.getElementById('textarea-' + cssId(segmentId))?.value;
     const category = document.getElementById('cat-' + cssId(segmentId))?.value;
@@ -2375,6 +2521,9 @@
   // ================================================================
   document.getElementById('btn-back').addEventListener('click', () => {
     clearDraft();
+    // clearDraft has just written the kept texts and discarded the rest; the hidden panes must not stay dirty, or
+    // the next module load asks closePanels and, declined, installs a kept text on the stale rows.
+    dirtyEdits.clear();
     if (draftTimer) clearInterval(draftTimer);
     tabGuard.release();
     document.getElementById('editor-container').style.display = 'none';
@@ -3623,7 +3772,7 @@
   // WARN BEFORE LEAVING WITH UNSAVED EDITS
   // ================================================================
   window.addEventListener('beforeunload', function (e) {
-    if (dirtyEdits.size > 0) {
+    if (dirtyEdits.size > 0 || heldDrafts.size > 0) {
       saveDraft(); // last-chance save to localStorage
       e.preventDefault();
       e.returnValue = '';
@@ -3632,7 +3781,7 @@
 
   // Save drafts on auth expiry (before 401 redirect)
   window.addEventListener('auth-expired', function () {
-    if (dirtyEdits.size > 0) saveDraft();
+    if (dirtyEdits.size > 0 || heldDrafts.size > 0) saveDraft();
   });
 
   // ================================================================

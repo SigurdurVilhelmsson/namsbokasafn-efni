@@ -7,6 +7,7 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { createRequire } from 'module';
 
 const serverDir = join(dirname(fileURLToPath(import.meta.url)), '..');
 const src = readFileSync(join(serverDir, 'public', 'js', 'segment-editor.js'), 'utf-8');
@@ -84,5 +85,32 @@ describe('drafts are version 2 and a restore re-installs assists (§5.18)', () =
     expect(restore).toContain('segmentSaveState.mergeDraftValues(');
     expect(restore).toMatch(/installDraft\([^)]*addRestoreItem: true/);
     expect(src).toContain('segmentSaveState.restoredAssists(');
+  });
+});
+
+describe('a refused save keeps the text (index decision 12)', () => {
+  it('saveEdit keeps the text on a kept code and never sends a DUPLICATE_ID pane', () => {
+    const save = fnBody('saveEdit', 'latestEditIdForSegment');
+    expect(save).toMatch(/segmentSaveState\.keepsText\(err\.code\)/);
+    expect(save).toMatch(/keepText\(\s*segmentId,\s*segmentSaveState\.refusedEntry\(/);
+    expect(save).toMatch(/refused === 'DUPLICATE_ID'[\s\S]*return;/);
+  });
+
+  it('every notice a restored pane can show has its own wording key', () => {
+    const require = createRequire(import.meta.url);
+    const { NOTICE_CODES } = require('../public/js/segment-save-state');
+    for (const code of NOTICE_CODES)
+      expect(src).toMatch(new RegExp(`${code}: UI\\.draftNotice\\.\\w+`));
+  });
+
+  it('the Back button keeps kept texts, and a re-render carries them', () => {
+    expect(fnBody('clearDraft', 'startDraftTimer')).toContain('keptEntries()');
+    expect(fnBody('renderSegments', 'baselineTextFor')).toContain('reinstallHeldDrafts()');
+  });
+
+  it('a refused save is never propagated: the guard sits between the save and the preview (decision 32)', () => {
+    expect(fnBody('propagateSegment', 'reviewEdit')).toMatch(
+      /await saveEdit\(segmentId\)[\s\S]*heldDrafts\.has\(segmentId\)[\s\S]*return;[\s\S]*propagation-preview/
+    );
   });
 });
