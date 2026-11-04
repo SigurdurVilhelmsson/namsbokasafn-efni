@@ -105,7 +105,8 @@ Each is a §13 item, a seam the spec leaves open (handoff §3), or a placement �
     PR that adds a column and forgets the copy turns `test` red instead of passing suites against a stale table.
 12. **The refused-save experience (§13):** on a refusal (`STALE_BASE`, `STALE_DISPLAYED`, `BASE_MISSING`,
     `DUPLICATE_ID`, `BOOK_NOT_MINTED`, `NO_LAYER`, or any non-5xx answer to a replay: §5.6's wording, a superset of
-    §5.18's "any 409"; PR1's decisions 5, 28 and 30), the client moves the typed text and its assist list
+    §5.18's "any 409"; and, since [USER]'s answer of 2026-11-04, a 5xx that exhausts a replay's retries; PR1's
+    decisions 5, 28 and 30), the client moves the typed text and its assist list
     into the module's draft, keyed by segment, with the `baseSha256` it was typed on, then reloads. On restore, a draft
     whose `baseSha256` differs from the row's newly served one opens in that segment's edit pane with a notice above
     it: the text it was typed on has changed, the row shows the new text, redo the change and save. A `DUPLICATE_ID`
@@ -279,8 +280,11 @@ Every production run is read-only and is recorded in the register by its output.
    - PR1 d39: a replayed save passes the displayed check when the displayed row already holds exactly the text being
      saved;
    - PR1 d28: a 5xx that exhausts the retries is parked too, never dropped with a toast;
-   - PR1 Review Focus 1: the server's `BASE_MISSING` message also tells an old page's editor to copy the text, or
-     answer Cancel to the browser's leave-page prompt, before F5;
+   - PR1 Review Focus 1: the server's `BASE_MISSING` message also tells an old page's editor how to keep the text
+     before F5: copy it, or answer Cancel to the page's own "close open panes" confirm, which is the prompt that
+     actually appears. *(✏️ The controller's brief first said "the browser's leave-page prompt"; PR1's editor found
+     in the code that the page's confirm comes first, and that Cancel at the browser's prompt only keeps the old page.
+     See PR1 decision 20.)*
    - PR3 d49: `SEGMENT_CONFLICT` and the accept's eligibility refusals are also logged as `write-refused`;
    - PR3 d65: a saved or propagated text identical to another editor's live edit is stored as its hash only.
 2. **PR4:** the research backup's log carries a verdict only per run (ok, or failed and which step), never interval ids
