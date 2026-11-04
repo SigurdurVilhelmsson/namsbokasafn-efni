@@ -7,9 +7,9 @@ import { describe, it, expect } from 'vitest';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
-const { createSaveRetry } = require('../public/js/saveRetry');
+const { createSaveRetry, DEFAULT_KEY_POLICIES } = require('../public/js/saveRetry');
 
-function makeHarness() {
+function makeHarness({ clock, keyPolicies } = {}) {
   const store = new Map();
   const storage = {
     getItem: (k) => (store.has(k) ? store.get(k) : null),
@@ -55,8 +55,9 @@ function makeHarness() {
     storage,
     setTimeout: setTimeoutFn,
     clearTimeout: clearTimeoutFn,
-    now: () => 1_000_000,
+    now: () => (clock ? clock.t : 1_000_000),
     toast: (message, type) => toasts.push({ message, type }),
+    keyPolicies,
   });
   const queue = () => JSON.parse(store.get('saveRetryQueue') || '[]');
   return {
@@ -246,5 +247,350 @@ describe('saveRetry stale in-flight completion (final-review finding B)', () => 
     expect(h.queue()).toHaveLength(1);
     expect(h.queue()[0].qid).toBe(qid2);
     expect(h.toasts.filter((t) => t.type === 'success').length).toBe(successBefore);
+  });
+});
+
+const res = (status, body) => () =>
+  Promise.resolve({ ok: status < 400, status, json: () => Promise.resolve(body) });
+const notJson = (status) => () =>
+  Promise.resolve({ ok: false, status, json: () => Promise.reject(new SyntaxError('html')) });
+const settle = async () => {
+  for (let i = 0; i < 3; i++) await new Promise((r) => setImmediate(r));
+};
+const DAY = 24 * 60 * 60 * 1000;
+
+describe('saveRetry refusal codes (G1.1, spec §5.18, T23)', () => {
+  it('a non-retryable answer carries err.code and err.data, and is not queued', async () => {
+    const h = makeHarness();
+    const body = { error: 'STALE_BASE', message: 'Textinn hefur breyst.' };
+    h.setFetchScript([res(409, body)]);
+    const err = await h.sr.attempt('seg:b/1/m:s1', '/api/x', { method: 'POST' }).catch((e) => e);
+    expect(err.status).toBe(409);
+    expect(err.code).toBe('STALE_BASE');
+    expect(err.data).toEqual(body);
+    expect(err.message).toBe('Textinn hefur breyst.');
+    expect(h.queue()).toEqual([]);
+  });
+
+  it('control: a 5xx carries no code and is queued', async () => {
+    const h = makeHarness();
+    h.setFetchScript([res(500, { error: 'boom' })]);
+    const err = await h.sr.attempt('seg:b/1/m:s1', '/api/x', { method: 'POST' }).catch((e) => e);
+    expect(err.code).toBeUndefined();
+    expect(h.queue()).toHaveLength(1);
+  });
+
+  it("a refusal whose body is not JSON keeps today's message and has no code", async () => {
+    const h = makeHarness();
+    h.setFetchScript([notJson(409)]);
+    const err = await h.sr.attempt('seg:b/1/m:s1', '/api/x', { method: 'POST' }).catch((e) => e);
+    expect(err.message).toBe('Villa 409');
+    expect(err.code).toBeUndefined();
+    expect(err.data).toBeUndefined();
+  });
+});
+
+describe('saveRetry key policies: replays marked, refused or exhausted replays parked (§5.9, §5.6, decision 28)', () => {
+  const BODY = JSON.stringify({ segmentId: 's1', editedContent: 'typed', clientActionId: 'a1' });
+
+  it('marks a replay replayed: true and leaves the stored entry as sent', async () => {
+    const h = makeHarness();
+    h.sr.setKeyPolicy('seg:', { markReplayed: true });
+    h.setFetchScript([h.fail500(), h.ok()]);
+    await h.sr.attempt('seg:b/1/m:s1', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    expect(h.queue()[0].options.body).toBe(BODY);
+    await h.fireAllTimers();
+    expect(h.fetchCalls[0].options.body).toBe(BODY); // the live attempt carries no flag
+    expect(JSON.parse(h.fetchCalls[1].options.body)).toEqual({
+      ...JSON.parse(BODY),
+      replayed: true,
+    });
+  });
+
+  it("control: a key with no policy replays byte-identical (the Pass 2 editor's keys)", async () => {
+    const h = makeHarness();
+    h.sr.setKeyPolicy('seg:', { markReplayed: true });
+    h.setFetchScript([h.fail500(), h.ok()]);
+    await h.sr.attempt('loc:b/1/m:s1', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await h.fireAllTimers();
+    expect(h.fetchCalls[1].options.body).toBe(BODY);
+  });
+
+  it('DEFAULT_KEY_POLICIES mark a seg: and an acc: replay with no page policy; loc: is untouched (decision 27)', async () => {
+    const h = makeHarness({ keyPolicies: DEFAULT_KEY_POLICIES }); // what the browser wiring passes, on every page
+    h.setFetchScript([h.fail500(), h.fail500(), h.fail500(), h.ok(), h.ok(), h.ok()]);
+    for (const key of ['seg:b/1/m:s1', 'acc:b/1/m:s1', 'loc:b/1/m:s1']) {
+      await h.sr
+        .attempt(key, `/api/${key.slice(0, 3)}`, { method: 'POST', body: BODY })
+        .catch(() => {});
+    }
+    await h.fireAllTimers();
+    const replays = Object.fromEntries(h.fetchCalls.slice(3).map((c) => [c.url, c.options.body]));
+    expect(JSON.parse(replays['/api/seg'])).toEqual({ ...JSON.parse(BODY), replayed: true });
+    expect(JSON.parse(replays['/api/acc'])).toEqual({ ...JSON.parse(BODY), replayed: true });
+    expect(replays['/api/loc']).toBe(BODY); // control: the Pass 2 editor's key replays byte-identical
+  });
+
+  it('the browser wiring registers DEFAULT_KEY_POLICIES before it schedules processQueue', () => {
+    const src = require('fs').readFileSync(require.resolve('../public/js/saveRetry'), 'utf-8');
+    const wiring = src.slice(src.indexOf('root.saveRetry = createSaveRetry('));
+    expect(wiring).toMatch(/keyPolicies:\s*DEFAULT_KEY_POLICIES/);
+    expect(wiring.indexOf('keyPolicies')).toBeLessThan(wiring.indexOf('processQueue'));
+  });
+
+  it('parks a 409 answered to a replay, hands it to the owner once, and empties the queue', async () => {
+    const h = makeHarness();
+    const seen = [];
+    h.sr.setKeyPolicy('seg:', { parkRefused: true, onParked: (item) => seen.push(item) });
+    h.setFetchScript([h.fail500(), res(409, { error: 'STALE_BASE', message: 'm' })]);
+    await h.sr.attempt('seg:b/1/m:s1', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await h.fireAllTimers();
+    await settle();
+    const parked = {
+      key: 'seg:b/1/m:s1',
+      url: '/api/x',
+      body: BODY,
+      status: 409,
+      code: 'STALE_BASE',
+      message: 'm',
+      parkedAt: 1_000_000,
+    };
+    expect(seen).toEqual([parked]);
+    expect(h.queue()).toEqual([]);
+    expect(h.toasts.at(-1).message).toMatch(/geymdur/);
+    expect(h.sr.takeParked('seg:b/1/m:')).toEqual([parked]);
+    expect(h.sr.takeParked('seg:b/1/m:')).toEqual([]); // taken once
+  });
+
+  it("control: the same refusal on a key with no policy is dropped with today's toast", async () => {
+    const h = makeHarness();
+    h.sr.setKeyPolicy('seg:', { parkRefused: true });
+    h.setFetchScript([h.fail500(), res(409, { error: 'conflict', message: 'm' })]);
+    await h.sr.attempt('loc:b/1/m:s1', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await h.fireAllTimers();
+    await settle();
+    expect(h.sr.takeParked('loc:')).toEqual([]);
+    expect(h.toasts.at(-1).message).toMatch(/Vista mistókst eftir/);
+  });
+
+  it('parks any non-5xx answer to a replay, a 404 too (spec §5.6, decision 28); a 5xx is retried instead', async () => {
+    const h = makeHarness();
+    h.sr.setKeyPolicy('seg:', { parkRefused: true });
+    h.setFetchScript([h.fail500(), res(404, { error: 'segment not found' })]);
+    await h.sr.attempt('seg:b/1/m:s1', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await h.fireAllTimers();
+    await settle();
+    expect(
+      h.sr.takeParked('seg:b/1/m:s1', { exact: true }).map((p) => [p.key, p.status, p.code])
+    ).toEqual([['seg:b/1/m:s1', 404, 'segment not found']]);
+    // Control, same harness: a 5xx answered to a replay is queued again, never parked.
+    h.setFetchScript([h.fail500(), h.fail500()]);
+    await h.sr.attempt('seg:b/1/m:s2', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await h.fireAllTimers();
+    await settle();
+    expect(h.sr.takeParked('seg:b/1/m:s2', { exact: true })).toEqual([]);
+    expect(h.queue().map((q) => q.key)).toEqual(['seg:b/1/m:s2']);
+  });
+
+  // [USER] 2026-11-04 (decision 28): a 5xx that exhausts MAX_ATTEMPTS (3) is parked too. The policy goes in through
+  // deps, as the browser wiring passes DEFAULT_KEY_POLICIES, so the red run reaches today's terminal branch instead of
+  // stopping at a missing setKeyPolicy. Three rounds: the live 5xx queues attempt 1, replays 1 and 2 re-queue, and
+  // replay 3 has no attempt left.
+  const exhaust = async (h) => {
+    for (let round = 0; round < 3; round++) {
+      await h.fireAllTimers();
+      await settle();
+    }
+  };
+
+  it('parks a 5xx that exhausts the retries, with its status and code, and hands it to the owner', async () => {
+    const seen = [];
+    const h = makeHarness({
+      keyPolicies: [{ prefix: 'seg:', parkRefused: true, onParked: (item) => seen.push(item) }],
+    });
+    h.setFetchScript([
+      h.fail500(),
+      h.fail500(),
+      h.fail500(),
+      res(503, { error: 'unavailable', message: 'm' }),
+    ]);
+    await h.sr.attempt('seg:b/1/m:s1', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await exhaust(h);
+    expect(h.fetchCalls).toHaveLength(4); // the live attempt and three replays: nothing was cut short
+    expect(h.toasts.at(-1).message).toBe(
+      'Vista mistókst eftir 3 tilraunir — textinn var geymdur og birtist aftur í bútnum.'
+    );
+    const parked = {
+      key: 'seg:b/1/m:s1',
+      url: '/api/x',
+      body: BODY,
+      status: 503,
+      code: 'unavailable',
+      message: 'm',
+      parkedAt: 1_000_000,
+    };
+    expect(seen).toEqual([parked]);
+    expect(h.queue()).toEqual([]);
+    expect(h.sr.takeParked('seg:b/1/m:s1', { exact: true })).toEqual([parked]);
+  });
+
+  it('an exhausted 5xx whose body is not JSON parks with no code', async () => {
+    const h = makeHarness({ keyPolicies: [{ prefix: 'seg:', parkRefused: true }] });
+    h.setFetchScript([h.fail500(), h.fail500(), h.fail500(), notJson(502)]);
+    await h.sr.attempt('seg:b/1/m:s1', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await exhaust(h);
+    expect(h.sr.takeParked('seg:').map((p) => [p.status, p.code, p.message])).toEqual([
+      [502, null, null],
+    ]);
+  });
+
+  it("control: a key with no policy still drops an exhausted 5xx with today's toast", async () => {
+    const h = makeHarness({ keyPolicies: [{ prefix: 'seg:', parkRefused: true }] });
+    h.setFetchScript([h.fail500(), h.fail500(), h.fail500(), h.fail500()]);
+    await h.sr.attempt('loc:b/1/m:s1', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await exhaust(h);
+    expect(h.toasts.at(-1).message).toBe(
+      'Vista mistókst eftir 3 tilraunir. Vinsamlegast reyndu aftur.'
+    );
+    expect(h.queue()).toEqual([]);
+    expect(h.sr.takeParked('loc:')).toEqual([]);
+  });
+
+  // [USER] 2026-11-04, a later answer (decision 28): a replay whose NETWORK failures exhaust MAX_ATTEMPTS is kept too.
+  // A fetch that reaches no server rejects with a TypeError, which isRetryableError counts as a network failure, so
+  // the replay's .catch handles it, not the .then above. The same three rounds as `exhaust`.
+  const netFail = () => () => Promise.reject(new TypeError('Failed to fetch'));
+
+  it('parks a replay whose network failures exhaust the retries, with no status or code, and hands it to the owner', async () => {
+    const seen = [];
+    const h = makeHarness({
+      keyPolicies: [{ prefix: 'seg:', parkRefused: true, onParked: (item) => seen.push(item) }],
+    });
+    h.setFetchScript([netFail(), netFail(), netFail(), netFail()]);
+    await h.sr.attempt('seg:b/1/m:s1', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await exhaust(h);
+    expect(h.fetchCalls).toHaveLength(4); // the live attempt and three replays: nothing was cut short
+    expect(h.toasts.at(-1).message).toBe(
+      'Vista mistókst eftir 3 tilraunir — textinn var geymdur og birtist aftur í bútnum.'
+    );
+    const parked = {
+      key: 'seg:b/1/m:s1',
+      url: '/api/x',
+      body: BODY,
+      status: null, // no answer reached the page: how a parked item says "network"
+      code: null,
+      message: null,
+      parkedAt: 1_000_000,
+    };
+    expect(seen).toEqual([parked]);
+    expect(h.queue()).toEqual([]);
+    expect(h.sr.takeParked('seg:b/1/m:s1', { exact: true })).toEqual([parked]);
+  });
+
+  it('control: a network failure with an attempt left is retried, not parked, and a later 200 succeeds', async () => {
+    const seen = [];
+    const h = makeHarness({
+      keyPolicies: [{ prefix: 'seg:', parkRefused: true, onParked: (item) => seen.push(item) }],
+    });
+    h.setFetchScript([netFail(), netFail(), netFail(), h.ok()]);
+    await h.sr.attempt('seg:b/1/m:s1', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    for (let round = 0; round < 2; round++) {
+      await h.fireAllTimers();
+      await settle();
+    }
+    // Two replays failed on the network: the item waits for its last attempt, and nothing is parked.
+    expect(h.queue().map((q) => [q.key, q.attempts])).toEqual([['seg:b/1/m:s1', 3]]);
+    expect(seen).toEqual([]);
+    await h.fireAllTimers();
+    await settle();
+    expect(h.fetchCalls).toHaveLength(4);
+    expect(h.toasts.at(-1)).toEqual({ message: 'Vista tókst eftir endurtilraun', type: 'success' });
+    expect(h.queue()).toEqual([]);
+    expect(seen).toEqual([]);
+    expect(h.sr.takeParked('seg:')).toEqual([]);
+  });
+
+  it('control: a key with no policy still drops a replay whose network failures exhaust the retries', async () => {
+    const h = makeHarness({ keyPolicies: [{ prefix: 'seg:', parkRefused: true }] });
+    h.setFetchScript([netFail(), netFail(), netFail(), netFail()]);
+    await h.sr.attempt('loc:b/1/m:s1', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await exhaust(h);
+    expect(h.fetchCalls).toHaveLength(4);
+    expect(h.toasts.at(-1).message).toBe(
+      'Vista mistókst eftir 3 tilraunir. Vinsamlegast reyndu aftur.'
+    );
+    expect(h.queue()).toEqual([]);
+    expect(h.sr.takeParked('loc:')).toEqual([]);
+  });
+
+  // The .catch parking branch's other half: only a failure isRetryableError counts as a network failure parks. Any
+  // other rejection (here a plain Error: not a TypeError, no status) keeps today's drop on a parkRefused key too.
+  // Its positive control is the network-exhausted test above: the same key, policy and position, with a TypeError.
+  it('control: a last replay that fails with an error other than a network failure is dropped, not parked', async () => {
+    const seen = [];
+    const h = makeHarness({
+      keyPolicies: [{ prefix: 'seg:', parkRefused: true, onParked: (item) => seen.push(item) }],
+    });
+    h.setFetchScript([netFail(), netFail(), netFail(), () => Promise.reject(new Error('x'))]);
+    await h.sr.attempt('seg:b/1/m:s1', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await exhaust(h);
+    expect(h.fetchCalls).toHaveLength(4);
+    expect(h.toasts.at(-1).message).toBe(
+      'Vista mistókst eftir 3 tilraunir. Vinsamlegast reyndu aftur.'
+    );
+    expect(h.queue()).toEqual([]);
+    expect(seen).toEqual([]);
+    expect(h.sr.takeParked('seg:')).toEqual([]);
+  });
+
+  it('a 409 to the LIVE attempt is never parked: the caller keeps that text', async () => {
+    const h = makeHarness();
+    const seen = [];
+    h.sr.setKeyPolicy('seg:', { parkRefused: true, onParked: (item) => seen.push(item) });
+    h.setFetchScript([res(409, { error: 'STALE_BASE', message: 'm' })]);
+    const err = await h.sr
+      .attempt('seg:b/1/m:s1', '/api/x', { method: 'POST', body: BODY })
+      .catch((e) => e);
+    expect(err.code).toBe('STALE_BASE');
+    expect(seen).toEqual([]);
+    expect(h.sr.takeParked('seg:')).toEqual([]);
+  });
+
+  it('takeParked with exact: true takes one key, not every key it prefixes', async () => {
+    const h = makeHarness();
+    h.sr.setKeyPolicy('seg:', { parkRefused: true });
+    h.setFetchScript([
+      h.fail500(),
+      h.fail500(),
+      res(409, { error: 'conflict' }),
+      res(409, { error: 'conflict' }),
+    ]);
+    await h.sr.attempt('seg:b/1/m:s1', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await h.sr.attempt('seg:b/1/m:s10', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await h.fireAllTimers();
+    await settle();
+    expect(h.sr.takeParked('seg:b/1/m:s1', { exact: true }).map((p) => p.key)).toEqual([
+      'seg:b/1/m:s1',
+    ]);
+    // Control: a prefix take would have taken both; the other is still there.
+    expect(h.sr.takeParked('seg:b/1/m:s1').map((p) => p.key)).toEqual(['seg:b/1/m:s10']);
+  });
+
+  it('processQueue drops a parked item older than 7 days and keeps a younger one', async () => {
+    const clock = { t: 1_000_000 };
+    const h = makeHarness({ clock });
+    h.sr.setKeyPolicy('seg:', { parkRefused: true });
+    h.setFetchScript([h.fail500(), res(409, { error: 'conflict' })]);
+    await h.sr.attempt('seg:b/1/m:old', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await h.fireAllTimers();
+    await settle();
+    clock.t += 6 * DAY;
+    h.setFetchScript([h.fail500(), res(409, { error: 'conflict' })]);
+    await h.sr.attempt('seg:b/1/m:new', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await h.fireAllTimers();
+    await settle();
+    clock.t += 2 * DAY; // old is 8 days, new is 2
+    h.sr.processQueue();
+    expect(h.sr.takeParked('seg:').map((p) => p.key)).toEqual(['seg:b/1/m:new']);
   });
 });

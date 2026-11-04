@@ -12,6 +12,13 @@
 (function (root) {
   'use strict';
 
+  // G1.1 (spec §5.18 row 5; plan decision 27): the queue is shared, so a segment save or an MT accept is marked
+  // replayed on WHICHEVER page replays it, the Pass 2 editor's included. Pass 2's own keys get no policy.
+  const DEFAULT_KEY_POLICIES = Object.freeze([
+    Object.freeze({ prefix: 'seg:', markReplayed: true }),
+    Object.freeze({ prefix: 'acc:', markReplayed: true }),
+  ]);
+
   function createSaveRetry(deps) {
     const fetchFn = deps.fetch;
     const storage = deps.storage;
@@ -26,6 +33,147 @@
     const EXPIRY_MS = 60 * 60 * 1000; // 1 hour
 
     const activeTimers = {};
+
+    const PARKED_KEY = 'saveRetryParked';
+    const PARKED_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000; // the drafts' window (tabGuard.js)
+    const keyPolicies = [];
+
+    // ----------------------------------------------------------------
+    // KEY POLICIES (G1.1, spec §5.18). Opt-in per key prefix, so a page
+    // that registers none (the Pass 2 editor) behaves exactly as before.
+    // ----------------------------------------------------------------
+
+    function setKeyPolicy(prefix, policy) {
+      for (let i = keyPolicies.length - 1; i >= 0; i--) {
+        if (keyPolicies[i].prefix === prefix) keyPolicies.splice(i, 1);
+      }
+      keyPolicies.push({
+        prefix: prefix,
+        markReplayed: !!(policy && policy.markReplayed),
+        parkRefused: !!(policy && policy.parkRefused),
+        onParked: policy && typeof policy.onParked === 'function' ? policy.onParked : null,
+      });
+    }
+
+    function policyFor(key) {
+      let best = null;
+      for (let i = 0; i < keyPolicies.length; i++) {
+        const p = keyPolicies[i];
+        if (key.indexOf(p.prefix) === 0 && (!best || p.prefix.length > best.prefix.length))
+          best = p;
+      }
+      return best || { markReplayed: false, parkRefused: false, onParked: null };
+    }
+
+    /** What a replay sends: the stored options, with replayed: true when the key's owner asked. */
+    function replayOptions(stored) {
+      const opts = stored.options;
+      if (!policyFor(stored.key).markReplayed || typeof opts.body !== 'string') return opts;
+      let parsed;
+      try {
+        parsed = JSON.parse(opts.body);
+      } catch {
+        return opts; // not JSON: replay it as stored
+      }
+      if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return opts;
+      parsed.replayed = true;
+      return {
+        method: opts.method,
+        headers: opts.headers,
+        body: JSON.stringify(parsed),
+        credentials: opts.credentials,
+      };
+    }
+
+    // ----------------------------------------------------------------
+    // PARKED REPLAYS (index decision 12). A replay runs outside the caller's
+    // promise and can outlive the page, so a refusal answered to one, or a 5xx
+    // or a network failure that leaves it no attempt, is kept here for its
+    // owner instead of being dropped with a toast.
+    // ----------------------------------------------------------------
+
+    function loadParked() {
+      try {
+        const raw = storage.getItem(PARKED_KEY);
+        const list = raw ? JSON.parse(raw) : [];
+        return Array.isArray(list) ? list : [];
+      } catch {
+        // parse error: nothing usable is parked
+        return [];
+      }
+    }
+
+    function saveParked(list) {
+      try {
+        if (list.length === 0) storage.removeItem(PARKED_KEY);
+        else storage.setItem(PARKED_KEY, JSON.stringify(list));
+      } catch {
+        toast('Geymsla í vafra er full — endurtilraunir gætu glatast.', 'error');
+      }
+    }
+
+    // exhaustedAttempts: the attempt count when a 5xx or a network failure left no attempt (decision 28), else null.
+    // status: the HTTP status answered, or null when no answer reached the page (network failures).
+    function park(stored, status, data, exhaustedAttempts) {
+      const item = {
+        key: stored.key,
+        url: stored.url,
+        body: stored.options.body,
+        status: status,
+        code: data && typeof data.error === 'string' ? data.error : null,
+        message: data && typeof data.message === 'string' ? data.message : null,
+        parkedAt: now(),
+      };
+      const list = loadParked().filter(function (p) {
+        return p.key !== item.key;
+      });
+      list.push(item);
+      saveParked(list);
+      toast(
+        exhaustedAttempts
+          ? // Wording added 2026-11-04 and approved as written by [USER] the same day (index § Answers, "Later
+            // answers"). It shows for a replay that 5xx answers exhausted and one that network failures exhausted.
+            'Vista mistókst eftir ' +
+              exhaustedAttempts +
+              ' tilraunir — textinn var geymdur og birtist aftur í bútnum.'
+          : // Wording approved by [USER] 2026-11-04 (index decision 13).
+            'Vistun var hafnað — textinn var geymdur og birtist aftur í bútnum.',
+        'error',
+        true
+      );
+      const policy = policyFor(stored.key);
+      if (policy.onParked) {
+        try {
+          policy.onParked(item);
+        } catch {
+          // the owner's hook failing must not lose the text: it stays parked
+        }
+      }
+    }
+
+    function takeParked(prefix, options) {
+      const exact = !!(options && options.exact);
+      const matches = function (p) {
+        return (
+          typeof p.key === 'string' && (exact ? p.key === prefix : p.key.indexOf(prefix) === 0)
+        );
+      };
+      const list = loadParked();
+      const taken = list.filter(matches);
+      if (taken.length > 0) {
+        saveParked(
+          list.filter(function (p) {
+            return !matches(p);
+          })
+        );
+      }
+      return taken;
+    }
+
+    // After keyPolicies exists: the policies the caller passes (the browser wiring passes DEFAULT_KEY_POLICIES).
+    (deps.keyPolicies || []).forEach(function (p) {
+      setKeyPolicy(p.prefix, p);
+    });
 
     // ----------------------------------------------------------------
     // QUEUE MANAGEMENT (localStorage)
@@ -133,7 +281,7 @@
         const stored = currentEntry(queueItem.key, queueItem.qid);
         if (!stored) return;
 
-        fetchFn(stored.url, stored.options)
+        fetchFn(stored.url, replayOptions(stored))
           .then(function (response) {
             // Re-check: a newer save may have replaced (or a cross-tab success
             // purged) this key's entry while the fetch was in flight. If so,
@@ -146,6 +294,20 @@
               stored.attempts++;
               stored.nextRetry = now() + BACKOFF_BASE * Math.pow(2, stored.attempts - 1);
               queueForRetry(stored);
+            } else if (policyFor(stored.key).parkRefused) {
+              // Spec §5.6: ANY non-5xx answer to a replay keeps the text (decision 28), not only a 409; and so
+              // does a 5xx that exhausts MAX_ATTEMPTS ([USER] 2026-11-04). A key with no policy falls through to
+              // today's toast-and-drop below.
+              const exhaustedAttempts = isRetryableResponse(response) ? stored.attempts : null;
+              removeFromQueue(stored.key);
+              return response.json().then(
+                function (data) {
+                  park(stored, response.status, data, exhaustedAttempts);
+                },
+                function () {
+                  park(stored, response.status, null, exhaustedAttempts);
+                }
+              );
             } else {
               removeFromQueue(stored.key);
               toast(
@@ -164,6 +326,12 @@
               stored.attempts++;
               stored.nextRetry = now() + BACKOFF_BASE * Math.pow(2, stored.attempts - 1);
               queueForRetry(stored);
+            } else if (isRetryableError(err) && policyFor(stored.key).parkRefused) {
+              // [USER] 2026-11-04 (decision 28): network failures that exhaust MAX_ATTEMPTS keep the text too,
+              // as an exhausted 5xx does. No answer reached the page, so the parked item has status null: that is
+              // how it says "network". A key with no policy falls through to today's toast-and-drop below.
+              removeFromQueue(stored.key);
+              park(stored, null, null, stored.attempts);
             } else {
               removeFromQueue(stored.key);
               toast(
@@ -234,6 +402,8 @@
             function (data) {
               const err = new Error(data.message || data.error || 'Villa ' + response.status);
               err.status = response.status;
+              err.code = data.error; // the server's refusal code (G1.1, §5.18); undefined when absent
+              err.data = data;
               return Promise.reject(err);
             },
             function () {
@@ -287,6 +457,12 @@
       // Update queue to only active items
       saveQueue(active);
 
+      const parked = loadParked();
+      const fresh = parked.filter(function (p) {
+        return typeof p.parkedAt === 'number' && nowMs - p.parkedAt <= PARKED_MAX_AGE_MS;
+      });
+      if (fresh.length !== parked.length) saveParked(fresh);
+
       if (active.length > 0) {
         toast(
           'Reyni a\u00F0 vista ' + active.length + ' \u00F3vista\u00F0ar breytingar...',
@@ -319,6 +495,8 @@
       pending: pending,
       isRetryable: isRetryable,
       showToast: toast,
+      setKeyPolicy: setKeyPolicy,
+      takeParked: takeParked,
     };
   }
 
@@ -368,6 +546,7 @@
         return Date.now();
       },
       toast: domToast,
+      keyPolicies: DEFAULT_KEY_POLICIES,
     });
 
     // Auto-process queue on load (moved verbatim).
@@ -379,6 +558,9 @@
   }
 
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { createSaveRetry: createSaveRetry };
+    module.exports = {
+      createSaveRetry: createSaveRetry,
+      DEFAULT_KEY_POLICIES: DEFAULT_KEY_POLICIES,
+    };
   }
 })(typeof window !== 'undefined' ? window : globalThis);
