@@ -24,8 +24,8 @@ beforeEach(() => {
 });
 afterEach(() => fs.rmSync(tmp, { recursive: true, force: true }));
 
-function writeMt(text) {
-  const dir = path.join(booksDir, 'testbook', '02-mt-output', 'ch01');
+function writeMt(text, book = 'testbook') {
+  const dir = path.join(booksDir, book, '02-mt-output', 'ch01');
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, 'm001-segments.is.md'), text);
 }
@@ -50,12 +50,9 @@ function edit(over = {}) {
   };
 }
 
-function runDryRun(edits) {
+function runDryRun(edits, { book = 'testbook' } = {}) {
   const snap = path.join(tmp, 'snap.json');
-  fs.writeFileSync(
-    snap,
-    JSON.stringify({ schema: 1, book: 'testbook', modules: ['m001'], edits })
-  );
+  fs.writeFileSync(snap, JSON.stringify({ schema: 1, book, modules: ['m001'], edits }));
   return spawnSync('node', [SCRIPT, '--snapshot', snap], {
     encoding: 'utf8',
     env: {
@@ -176,5 +173,46 @@ describe('reattach CLI — the exit codes the runbook gates on', () => {
       },
     });
     expect(res.status).toBe(5);
+  });
+
+  // G1.1 (index decision 7, plan decision 16): the study book is refused before
+  // planning, in a dry run too, and the runbook's table names exit 6. The study
+  // book's own module is written into the temp tree, so without the refusal this
+  // run would plan cleanly and exit 0: only the refusal can produce 6 here.
+  it('exits 6 on the study book, in a dry run, before planning and before any database', () => {
+    writeMt('<!-- SEG:m001:para:fs-id1 -->\nný vélþýðing\n', 'efnafraedi-2e');
+    const res = runDryRun([edit({ book: 'efnafraedi-2e' })], { book: 'efnafraedi-2e' });
+    expect(res.status).toBe(6);
+    expect(res.stdout).not.toContain('=== C16 segment-edit re-attach ===');
+    expect(res.stdout).not.toContain('DRY RUN');
+    expect(res.stderr).toContain('STUDY_BOOK');
+    expect(res.stderr).toContain('researchScope.js');
+    expect(fs.existsSync(path.join(tmp, 'nope'))).toBe(false);
+  });
+
+  it('exits 6 under --db too, before the write path and without opening a database', () => {
+    writeMt('<!-- SEG:m001:para:fs-id1 -->\nný vélþýðing\n', 'efnafraedi-2e');
+    const snap = path.join(tmp, 'snap.json');
+    fs.writeFileSync(
+      snap,
+      JSON.stringify({
+        schema: 1,
+        book: 'efnafraedi-2e',
+        modules: ['m001'],
+        edits: [edit({ book: 'efnafraedi-2e' })],
+      })
+    );
+    const res = spawnSync('node', [SCRIPT, '--snapshot', snap, '--db'], {
+      encoding: 'utf8',
+      env: {
+        ...process.env,
+        BOOKS_ROOT_OVERRIDE: booksDir,
+        // Unopenable on purpose: reaching the DB at all would exit 5, not 6.
+        SESSIONS_DB_PATH: path.join(tmp, 'no-such-dir', 'sessions.db'),
+      },
+    });
+    expect(res.status).toBe(6);
+    expect(res.stdout).not.toContain('=== C16 segment-edit re-attach ===');
+    expect(fs.existsSync(path.join(tmp, 'no-such-dir'))).toBe(false);
   });
 });

@@ -110,6 +110,63 @@ describe('planReattach', () => {
   });
 });
 
+// G1.1 (index decision 7, plan decision 16): the study book's edits are written only
+// through servedEdit.saveOnServedBase, which records the served base. This script
+// matches by id and calls saveSegmentEdit directly, so it refuses that book before
+// planning. The book list is read from server/lib/researchScope.js, never restated.
+describe('planReattach refuses the study book (index decision 7)', () => {
+  it('throws STUDY_BOOK when the snapshot names the study book, naming researchScope.js', async () => {
+    const { planReattach } = await import('../reattach-segment-edits.js');
+    writeMt('m001', 'ch01', '<!-- SEG:m001:para:fs-id1 -->\nný vélþýðing\n');
+    let caught;
+    try {
+      planReattach({ snapshot: { ...snapshotWith([edit()]), book: 'efnafraedi-2e' }, booksDir });
+    } catch (err) {
+      caught = err;
+    }
+    expect(caught).toBeInstanceOf(Error);
+    expect(caught.code).toBe('STUDY_BOOK');
+    expect(caught.message).toContain('researchScope.js');
+  });
+
+  it('throws STUDY_BOOK when one row names the study book in a testbook snapshot', async () => {
+    const { planReattach } = await import('../reattach-segment-edits.js');
+    writeMt('m001', 'ch01', '<!-- SEG:m001:para:fs-id1 -->\nný vélþýðing\n');
+    let caught;
+    try {
+      planReattach({ snapshot: snapshotWith([edit({ book: 'efnafraedi-2e' })]), booksDir });
+    } catch (err) {
+      caught = err;
+    }
+    expect(caught?.code).toBe('STUDY_BOOK');
+    expect(caught.message).toContain('researchScope.js');
+  });
+
+  // "First", not merely "somewhere": with no booksDir at all, planning would die on
+  // path.join(undefined, …) with a TypeError. A refusal placed after any planning
+  // step would surface that TypeError instead of STUDY_BOOK.
+  it('refuses before planning: no books directory is read', async () => {
+    const { planReattach } = await import('../reattach-segment-edits.js');
+    let caught;
+    try {
+      planReattach({
+        snapshot: { ...snapshotWith([edit({ book: 'efnafraedi-2e' })]), book: 'efnafraedi-2e' },
+        booksDir: undefined,
+      });
+    } catch (err) {
+      caught = err;
+    }
+    expect(caught?.code).toBe('STUDY_BOOK');
+  });
+
+  it('control, same fixture: the testbook snapshot plans with one restore', async () => {
+    const { planReattach } = await import('../reattach-segment-edits.js');
+    writeMt('m001', 'ch01', '<!-- SEG:m001:para:fs-id1 -->\nný vélþýðing\n');
+    const plan = planReattach({ snapshot: snapshotWith([edit()]), booksDir });
+    expect(plan.restore).toHaveLength(1);
+  });
+});
+
 describe('planReattach — colliding keys must be visible in the DRY RUN', () => {
   // The runbook runs the dry run first and the apply second. A dry run that
   // reports success while the apply refuses is a rehearsal that lies, so the

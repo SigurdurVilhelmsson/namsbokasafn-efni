@@ -154,6 +154,59 @@ describe('applyReattach — duplicate-key refusal', () => {
   });
 });
 
+// G1.1 (index decision 7, plan decision 16): applyReattach is exported and must not
+// depend on its caller having run planReattach, so it refuses a study-book row
+// itself, before any write. The comparison is of the rows' values, not a count.
+describe('applyReattach — the study book is refused', () => {
+  it('applyReattach refuses a plan holding a study-book row and writes nothing', async () => {
+    const { applyReattach } = await import('../reattach-segment-edits.js');
+    // A save, were one to happen, must not reach the real books/ tree's MT lock path.
+    const segmentParser = require(path.join(REPO_ROOT, 'server', 'services', 'segmentParser.js'));
+    segmentParser._setTestBooksDir(booksDir);
+    try {
+      const studyItem = {
+        row: { ...snapshot.edits[0], book: 'efnafraedi-2e' },
+        newMt: 'x',
+        editorNote: null,
+        flags: [],
+      };
+      const query = () => db.prepare('SELECT * FROM segment_edits ORDER BY id').all();
+      const before = query();
+      expect(before).toEqual([]);
+      let caught;
+      try {
+        applyReattach({ plan: { restore: [studyItem] }, saveSegmentEdit: service.saveSegmentEdit });
+      } catch (err) {
+        caught = err;
+      }
+      expect(caught?.code).toBe('STUDY_BOOK');
+      expect(query()).toEqual(before);
+
+      // Pre-flight, not mid-loop: with a clean testbook row AHEAD of the study row,
+      // a per-item check would write the clean row and only then throw.
+      const cleanItem = {
+        row: { ...snapshot.edits[0], segment_id: 'm001:para:fs-id0' },
+        newMt: 'önnur vélþýðing',
+        editorNote: null,
+        flags: [],
+      };
+      caught = undefined;
+      try {
+        applyReattach({
+          plan: { restore: [cleanItem, studyItem] },
+          saveSegmentEdit: service.saveSegmentEdit,
+        });
+      } catch (err) {
+        caught = err;
+      }
+      expect(caught?.code).toBe('STUDY_BOOK');
+      expect(query()).toEqual(before);
+    } finally {
+      segmentParser._setTestBooksDir(path.join(REPO_ROOT, 'books'));
+    }
+  });
+});
+
 describe('applyReattach — honest counts', () => {
   it('counts a first run as inserted, not merely written', async () => {
     const { planReattach, applyReattach } = await import('../reattach-segment-edits.js');
