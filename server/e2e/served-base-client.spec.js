@@ -562,6 +562,168 @@ test.describe('G1.1 client: the row is what the save and the accept echo', () =>
     expect(await page.evaluate(() => localStorage.getItem('saveRetryParked'))).toBeNull(); // taken
   });
 
+  // PR1 review C5: the live save gets a 5xx, so saveEdit writes no echo and leaves the pane open and dirty; its replay
+  // then succeeds. Unless the replay's answer reaches the row, the pane's next save sends the displayed pair the row
+  // had before, and over the editor's own edit that is a false STALE_DISPLAYED. Stubs only: nothing is written.
+  const replayEcho = (target) => ({
+    ...STUB_SAVED,
+    editId: 990001,
+    baseSha256: target.baseSha256,
+    displayedEditId: 990001,
+    displayedEditSha256: 'e'.repeat(64),
+  });
+  const stub502 = (route) =>
+    route.fulfill({ status: 502, contentType: 'application/json', body: '{"error":"stub"}' });
+  const stubJson = (route, json) =>
+    route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(json) });
+  const replaySucceeded = (page) =>
+    expect(page.locator('.toast-success', { hasText: 'endurtilraun' })).toBeVisible({
+      timeout: 10000,
+    });
+
+  test("a replay that succeeds after a 5xx writes its answer on the row, and the pane's next save sends it (PR1 review C5)", async ({
+    page,
+  }) => {
+    const [target] = middleVirginRows(await loadModuleJson(page));
+    // The row shows the editor's own pending edit D, as after a first save and a reload. D is put into the first
+    // module GET, so nothing is written. The replay re-saves D in place (same id) and answers D's new hash; a row
+    // left on D's old hash makes the next save send the very pair the server refuses STALE_DISPLAYED once D holds
+    // the replayed text (servedEdit.test.js pins that half).
+    const echo = replayEcho(target);
+    const shown = `${target.is}${SUFFIX}`;
+    const D = {
+      id: echo.displayedEditId,
+      status: 'pending',
+      edited_content: shown,
+      contentSha256: 'd'.repeat(64),
+      editor_username: 'test-admin',
+      category: null,
+      editor_note: null,
+    };
+    let moduleGets = 0;
+    await page.route(`**${MODULE_URL}`, async (route) => {
+      if (route.request().method() !== 'GET') return route.continue();
+      moduleGets++;
+      if (moduleGets > 1) return route.continue();
+      const response = await route.fetch();
+      const json = await response.json();
+      json.edits[target.segmentId] = [D];
+      await route.fulfill({ response, json });
+    });
+    await openModule(page);
+    const getsAtOpen = moduleGets;
+    const row = rowOf(page, target.segmentId);
+    // Control: the row shows D with D's old hash.
+    await expect(row).toHaveAttribute('data-displayed-edit-id', String(D.id));
+    await expect(row).toHaveAttribute('data-displayed-edit-sha256', D.contentSha256);
+    const bodies = [];
+    await page.route(`**${MODULE_URL}/edit`, (route) => {
+      bodies.push(route.request().postDataJSON());
+      if (bodies.length === 1) return stub502(route);
+      return stubJson(route, bodies.length === 2 ? echo : STUB_SAVED);
+    });
+    await row.locator('.btn-edit').click();
+    await expect(row.locator('textarea')).toHaveValue(shown);
+    const typed = `${shown}${SUFFIX}`;
+    await row.locator('textarea').fill(typed);
+    await row.getByRole('button', { name: 'Vista', exact: true }).click();
+    await expect(page.locator('.toast-error').first()).toBeVisible(); // the 5xx: queued for a replay
+    await replaySucceeded(page);
+    expect(bodies).toHaveLength(2);
+    expect(bodies[1].replayed).toBe(true); // control: the answer the row now carries is the replay's
+    expect([bodies[0].displayedEditId, bodies[0].displayedEditSha256]).toEqual([
+      D.id,
+      D.contentSha256,
+    ]);
+    // Soft, so a red run goes on to the next save's body: the stale pair it sends is the defect itself.
+    await expect.soft(row).toHaveAttribute('data-displayed-edit-sha256', echo.displayedEditSha256);
+    await expect(row).toHaveAttribute('data-displayed-edit-id', String(D.id)); // re-saved in place
+    // The pane stays open with the typed text, and the module was not reloaded: the echo is the hook's.
+    await expect(row.locator('.edit-panel')).toHaveClass(/\bactive\b/);
+    await expect(row.locator('textarea')).toHaveValue(typed);
+    expect(moduleGets).toBe(getsAtOpen);
+    const more = `${typed}${SUFFIX}`;
+    await row.locator('textarea').fill(more);
+    await row.getByRole('button', { name: 'Vista', exact: true }).click();
+    await expect.poll(() => bodies.length).toBe(3);
+    expect(bodies[2].editedContent).toBe(more);
+    expect('replayed' in bodies[2]).toBe(false); // a live save
+    expect([
+      bodies[2].displayedEditId,
+      bodies[2].displayedEditSha256,
+      bodies[2].baseEditId,
+    ]).toEqual([D.id, echo.displayedEditSha256, D.id]);
+    expect(bodies[2].baseSha256).toBe(target.baseSha256);
+  });
+
+  test('control: a replay that succeeds after its pane was closed leaves the row as it was (PR1 review C5)', async ({
+    page,
+  }) => {
+    const [target] = middleVirginRows(await loadModuleJson(page));
+    await openModule(page);
+    const row = rowOf(page, target.segmentId);
+    // Closing the pane resets it to the text the row shows; the replay has since replaced that edit, so a save from
+    // the reopened pane must meet the displayed check, not an echo it never saw. The replay is answered only after
+    // the pane is closed.
+    let closed;
+    const paneClosed = new Promise((resolve) => (closed = resolve));
+    const bodies = [];
+    await page.route(`**${MODULE_URL}/edit`, async (route) => {
+      bodies.push(route.request().postDataJSON());
+      if (bodies.length === 1) return stub502(route);
+      await paneClosed;
+      return stubJson(route, replayEcho(target));
+    });
+    await row.locator('.btn-edit').click();
+    await row.locator('textarea').fill(`${target.is}${SUFFIX}`);
+    await row.getByRole('button', { name: 'Vista', exact: true }).click();
+    await expect(page.locator('.toast-error').first()).toBeVisible();
+    await row.getByRole('button', { name: 'Hætta við', exact: true }).click();
+    await expect(row.locator('.edit-panel')).not.toHaveClass(/\bactive\b/);
+    closed();
+    await replaySucceeded(page);
+    expect(bodies.map((b) => b.replayed === true)).toEqual([false, true]);
+    expect(await row.getAttribute('data-displayed-edit-id')).toBeNull();
+    expect(await row.getAttribute('data-displayed-edit-sha256')).toBeNull();
+    await expect(row).toHaveAttribute('data-base-edit-id', '0');
+  });
+
+  test("control: another module's replay that succeeds leaves this module's row as it was, though its pane is dirty (PR1 review C5)", async ({
+    page,
+  }) => {
+    const [target] = middleVirginRows(await loadModuleJson(page));
+    await openModule(page);
+    const row = rowOf(page, target.segmentId);
+    await row.locator('.btn-edit').click();
+    const typed = `${target.is}${SUFFIX}`;
+    await row.locator('textarea').fill(typed); // dirty: only the module in the key keeps the echo off this row
+    const OTHER = 'm99999'; // as long as MODULE, so a missing module check would still find this segment's row
+    expect(OTHER).toHaveLength(MODULE.length);
+    const otherUrl = MODULE_URL.replace(MODULE, OTHER) + '/edit';
+    const bodies = [];
+    await page.route(`**${otherUrl}`, (route) => {
+      bodies.push(route.request().postDataJSON());
+      return bodies.length === 1 ? stub502(route) : stubJson(route, replayEcho(target));
+    });
+    await page.evaluate(
+      ([key, url, segmentId]) =>
+        window.saveRetry
+          .attempt(key, url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({ segmentId, editedContent: 'stub' }),
+          })
+          .catch(() => {}),
+      [`seg:${BOOK}/${CHAPTER}/${OTHER}:${target.segmentId}`, otherUrl, target.segmentId]
+    );
+    await replaySucceeded(page);
+    expect(bodies.map((b) => b.replayed === true)).toEqual([false, true]);
+    expect(await row.getAttribute('data-displayed-edit-id')).toBeNull();
+    expect(await row.getAttribute('data-displayed-edit-sha256')).toBeNull();
+    await expect(row.locator('textarea')).toHaveValue(typed);
+  });
+
   test('a refused replay of an OLDER save never replaces the newer text a live refusal kept (PR1 review C1)', async ({
     page,
   }) => {

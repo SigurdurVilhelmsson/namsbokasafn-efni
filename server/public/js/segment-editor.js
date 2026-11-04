@@ -231,12 +231,14 @@
 
   // Index decision 12, decision 28: a refused replay of a segment save comes back to its pane. markReplayed is
   // repeated because a second setKeyPolicy for a prefix replaces the first (Task 7's DEFAULT_KEY_POLICIES).
+  // A replay that succeeds writes its echo on the row (PR1 review C5).
   // Guarded: a cached saveRetry.js older than this file has no setKeyPolicy.
   if (typeof saveRetry !== 'undefined' && typeof saveRetry.setKeyPolicy === 'function') {
     saveRetry.setKeyPolicy('seg:', {
       markReplayed: true,
       parkRefused: true,
       onParked: onSaveParked,
+      onReplayed: onSaveReplayed,
     });
   }
 
@@ -406,6 +408,24 @@
         : heldEntry || parked.entry;
     keepText(segId, entry);
     loadModule(currentModuleId, { force: true });
+  }
+
+  /**
+   * A replay of a save in THIS module succeeded (PR1 review C5). Its live
+   * attempt failed, so saveEdit wrote no echo and left the pane open and
+   * dirty: write the replay's echo on the row now, so the pane's next save
+   * sends the edit the segment displays since the replay. The pane stays open
+   * and the module is not reloaded: the editor may still be typing. Only while
+   * that pane is still dirty: a pane closed since was reset to the text the
+   * row shows, which the replay has replaced, so a save from it should meet
+   * the displayed check. A replay for another module waits for that module's
+   * next load, which renders its rows from the server.
+   */
+  function onSaveReplayed(item, data) {
+    if (!moduleData || item.key.indexOf(parkedPrefix()) !== 0) return;
+    const segId = item.key.slice(parkedPrefix().length);
+    if (!dirtyEdits.has(segId)) return;
+    applySaveEcho(segId, data);
   }
 
   function reinstallHeldDrafts() {

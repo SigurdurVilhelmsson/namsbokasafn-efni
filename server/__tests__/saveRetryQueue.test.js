@@ -638,3 +638,179 @@ describe('saveRetry setKeyPolicy: a second call for a prefix replaces the first 
     expect(h.sr.takeParked('seg:').map((p) => p.key)).toEqual(['seg:b/1/m:s1']);
   });
 });
+
+// PR1 review C5: a live save that got a 5xx and whose replay then succeeded never reached its caller's success path,
+// so the page wrote no echo on the row and its next save sent the stale displayed pair (a false STALE_DISPLAYED).
+// onReplayed hands the key's owner the replay's answer. A key with no hook behaves exactly as before: its success
+// never reads the body, and only the success branch calls the hook.
+describe('saveRetry onReplayed: a successful replay hands its answer to the key owner (PR1 review C5)', () => {
+  const BODY = JSON.stringify({ segmentId: 's1', editedContent: 'typed', clientActionId: 'a1' });
+  const ECHO = {
+    success: true,
+    editId: 7,
+    baseSha256: 'a'.repeat(64),
+    displayedEditId: 7,
+    displayedEditSha256: 'b'.repeat(64),
+  };
+  const ITEM = { key: 'seg:b/1/m:s1', url: '/api/x', body: BODY };
+  const SUCCESS = { message: 'Vista tókst eftir endurtilraun', type: 'success' };
+  const segPolicy = (extra) => ({ markReplayed: true, parkRefused: true, ...extra });
+
+  it('calls the hook once with the queued item and the parsed answer; the toast and the emptied queue are as before', async () => {
+    const seen = [];
+    const h = makeHarness({ keyPolicies: DEFAULT_KEY_POLICIES });
+    h.sr.setKeyPolicy('seg:', segPolicy({ onReplayed: (item, data) => seen.push([item, data]) }));
+    h.setFetchScript([h.fail500(), res(200, ECHO)]);
+    await h.sr.attempt(ITEM.key, ITEM.url, { method: 'POST', body: BODY }).catch(() => {});
+    expect(seen).toEqual([]); // the live failure is the caller's to answer, never the hook's
+    await h.fireAllTimers();
+    await settle();
+    expect(JSON.parse(h.fetchCalls[1].options.body).replayed).toBe(true); // control: it was a replay
+    expect(seen).toEqual([[ITEM, ECHO]]); // the item carries the body as queued, not the replay's marked copy
+    expect(h.queue()).toEqual([]);
+    expect(h.toasts.at(-1)).toEqual(SUCCESS);
+  });
+
+  it('is not called when a replay is refused and parked, nor when a refused replay is dropped', async () => {
+    const seen = [];
+    const parked = [];
+    const h = makeHarness();
+    h.sr.setKeyPolicy(
+      'seg:',
+      segPolicy({ onReplayed: () => seen.push('seg'), onParked: (p) => parked.push(p.key) })
+    );
+    h.sr.setKeyPolicy('drop:', { onReplayed: () => seen.push('drop') }); // no parkRefused: today's toast-and-drop
+    h.setFetchScript([
+      h.fail500(),
+      h.fail500(),
+      res(409, { error: 'STALE_DISPLAYED', message: 'm' }),
+      res(409, { error: 'conflict', message: 'm' }),
+    ]);
+    await h.sr.attempt('seg:b/1/m:s1', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await h.sr.attempt('drop:b/1/m:s1', '/api/y', { method: 'POST', body: BODY }).catch(() => {});
+    await h.fireAllTimers();
+    await settle();
+    expect(h.fetchCalls).toHaveLength(4); // control: both replays were answered
+    expect(parked).toEqual(['seg:b/1/m:s1']);
+    expect(h.toasts.at(-1).message).toMatch(/Vista mistókst eftir/); // the dropped one
+    expect(seen).toEqual([]);
+  });
+
+  it('is not called for a 5xx or a network failure answered to a replay, and is called once when the next replay succeeds', async () => {
+    const seen = [];
+    const h = makeHarness();
+    h.sr.setKeyPolicy('seg:', segPolicy({ onReplayed: (item, data) => seen.push(data) }));
+    h.setFetchScript([
+      h.fail500(),
+      h.fail500(),
+      () => Promise.reject(new TypeError('Failed to fetch')),
+      res(200, ECHO),
+    ]);
+    await h.sr.attempt(ITEM.key, ITEM.url, { method: 'POST', body: BODY }).catch(() => {});
+    await h.fireAllTimers(); // replay 1: 5xx, queued again
+    await settle();
+    expect(seen).toEqual([]);
+    await h.fireAllTimers(); // replay 2: network failure, queued again
+    await settle();
+    expect(seen).toEqual([]);
+    await h.fireAllTimers(); // replay 3: 200
+    await settle();
+    expect(h.fetchCalls).toHaveLength(4);
+    expect(seen).toEqual([ECHO]);
+  });
+
+  it('is not called for a stale success: a newer save replaced the entry while the replay was in flight', async () => {
+    const seen = [];
+    const h = makeHarness();
+    h.sr.setKeyPolicy('seg:', segPolicy({ onReplayed: (item, data) => seen.push(data) }));
+    let resolveStale;
+    const stale = new Promise((r) => (resolveStale = r));
+    h.setFetchScript([h.fail500(), () => stale, h.fail500()]);
+    await h.sr.attempt(ITEM.key, ITEM.url, { method: 'POST', body: 'V1' }).catch(() => {});
+    await h.fireNext(); // the replay of V1 is in flight
+    await h.sr.attempt(ITEM.key, ITEM.url, { method: 'POST', body: 'V2' }).catch(() => {});
+    resolveStale({ ok: true, status: 200, json: () => Promise.resolve(ECHO) });
+    await settle();
+    expect(h.queue().map((q) => q.options.body)).toEqual(['V2']); // control: the newer entry stands
+    expect(seen).toEqual([]);
+  });
+
+  it('a body that is not JSON reaches the hook as null; a hook that throws changes nothing', async () => {
+    const seen = [];
+    const h = makeHarness();
+    h.sr.setKeyPolicy(
+      'seg:',
+      segPolicy({
+        onReplayed: (item, data) => {
+          seen.push([item.key, data]);
+          throw new Error('owner failed');
+        },
+      })
+    );
+    h.setFetchScript([
+      h.fail500(),
+      h.fail500(),
+      () =>
+        Promise.resolve({
+          ok: true,
+          status: 200,
+          json: () => Promise.reject(new SyntaxError('html')),
+        }),
+      res(200, ECHO),
+    ]);
+    await h.sr.attempt('seg:b/1/m:s1', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await h.sr.attempt('seg:b/1/m:s2', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await h.fireAllTimers();
+    await settle();
+    expect(seen).toEqual([
+      ['seg:b/1/m:s1', null],
+      ['seg:b/1/m:s2', ECHO],
+    ]);
+    expect(h.queue()).toEqual([]);
+    expect(h.toasts.filter((t) => t.type === 'success')).toEqual([SUCCESS, SUCCESS]);
+    expect(h.toasts.filter((t) => t.type === 'error').map((t) => t.message)).toEqual([
+      'Vista mistókst — reyni aftur...',
+      'Vista mistókst — reyni aftur...',
+    ]); // the two live failures, and nothing after them
+  });
+
+  it("control: a key with no hook succeeds as before and never reads the replay's body (DEFAULT_KEY_POLICIES, Pass 2 keys)", async () => {
+    const seen = [];
+    let reads = 0;
+    const counted = () => () =>
+      Promise.resolve({
+        ok: true,
+        status: 200,
+        json: () => {
+          reads++;
+          return Promise.resolve(ECHO);
+        },
+      });
+    const h = makeHarness({ keyPolicies: DEFAULT_KEY_POLICIES });
+    h.sr.setKeyPolicy('seg:', segPolicy({ onReplayed: (item) => seen.push(item.key) }));
+    h.setFetchScript([h.fail500(), h.fail500(), counted(), counted()]);
+    for (const key of ['acc:b/1/m:s1', 'loc:b/1/m:s1']) {
+      await h.sr.attempt(key, '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    }
+    await h.fireAllTimers();
+    await settle();
+    expect(h.fetchCalls).toHaveLength(4); // control: both replays were answered 200
+    expect(reads).toBe(0);
+    expect(seen).toEqual([]);
+    expect(h.queue()).toEqual([]);
+    expect(h.toasts.filter((t) => t.type === 'success')).toEqual([SUCCESS, SUCCESS]);
+  });
+
+  it('setKeyPolicy replaces the hook with the rest of the policy: a second call without onReplayed drops it', async () => {
+    const seen = [];
+    const h = makeHarness();
+    h.sr.setKeyPolicy('seg:', segPolicy({ onReplayed: () => seen.push('first') }));
+    h.sr.setKeyPolicy('seg:', segPolicy());
+    h.setFetchScript([h.fail500(), res(200, ECHO)]);
+    await h.sr.attempt(ITEM.key, ITEM.url, { method: 'POST', body: BODY }).catch(() => {});
+    await h.fireAllTimers();
+    await settle();
+    expect(h.toasts.at(-1)).toEqual(SUCCESS); // control: the replay succeeded
+    expect(seen).toEqual([]);
+  });
+});

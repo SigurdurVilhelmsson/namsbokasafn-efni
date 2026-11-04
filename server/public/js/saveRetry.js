@@ -41,6 +41,10 @@
     // ----------------------------------------------------------------
     // KEY POLICIES (G1.1, spec §5.18). Opt-in per key prefix, so a page
     // that registers none (the Pass 2 editor) behaves exactly as before.
+    // onReplayed (PR1 review C5): a replay that succeeds runs outside the
+    // caller's promise, so the caller's success path never sees its answer;
+    // the hook hands it to the key's owner. A key with no hook never reads
+    // the body of a successful replay, as before.
     // ----------------------------------------------------------------
 
     function setKeyPolicy(prefix, policy) {
@@ -52,6 +56,7 @@
         markReplayed: !!(policy && policy.markReplayed),
         parkRefused: !!(policy && policy.parkRefused),
         onParked: policy && typeof policy.onParked === 'function' ? policy.onParked : null,
+        onReplayed: policy && typeof policy.onReplayed === 'function' ? policy.onReplayed : null,
       });
     }
 
@@ -62,7 +67,7 @@
         if (key.indexOf(p.prefix) === 0 && (!best || p.prefix.length > best.prefix.length))
           best = p;
       }
-      return best || { markReplayed: false, parkRefused: false, onParked: null };
+      return best || { markReplayed: false, parkRefused: false, onParked: null, onReplayed: null };
     }
 
     /** What a replay sends: the stored options, with replayed: true when the key's owner asked. */
@@ -290,6 +295,22 @@
             if (response.ok) {
               removeFromQueue(stored.key);
               toast('Vista t\u00F3kst eftir endurtilraun', 'success');
+              const onReplayed = policyFor(stored.key).onReplayed;
+              if (onReplayed) {
+                // The item as queued (the body without the replay's mark), and the parsed answer, or null when the
+                // answer is not JSON. The save succeeded: the owner's hook failing changes nothing here.
+                const item = { key: stored.key, url: stored.url, body: stored.options.body };
+                const hand = function (data) {
+                  try {
+                    onReplayed(item, data);
+                  } catch {
+                    // the replay landed and its toast showed; nothing to undo
+                  }
+                };
+                return response.json().then(hand, function () {
+                  hand(null);
+                });
+              }
             } else if (isRetryableResponse(response) && stored.attempts < MAX_ATTEMPTS) {
               stored.attempts++;
               stored.nextRetry = now() + BACKOFF_BASE * Math.pow(2, stored.attempts - 1);
