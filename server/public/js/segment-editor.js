@@ -204,6 +204,7 @@
     const row = rowValues(segId);
     paneState.set(segId, {
       baseSha256: entry.baseSha256, // the base it was typed on; null when unknown (legacy)
+      // A parked save names none (entryFromParked; PR1 review C17): the row's.
       occurrence: entry.occurrence !== null ? entry.occurrence : row ? row.occurrence : null,
       assists: addRestoreItem
         ? segmentSaveState.restoredAssists(entry, Date.now())
@@ -1624,8 +1625,9 @@
     // MTA-R12: only an edit still IN FLIGHT gets to override the file. This
     // used to count applied edits too, so after a "Útgáfusaga" restore past an
     // applied edit the row displayed the edit's stale text while "Staðfesta MT"
-    // attested the on-disk bytes (the accept posts seg.is — anything else 409s
-    // STALE_CONTENT). The editor read one string and attested another.
+    // attested the on-disk bytes (the accept posts the row's data-is, which
+    // rowDataAttributes renders from seg.is — anything else 409s STALE_CONTENT).
+    // The editor read one string and attested another.
     //
     // For an applied edit the faithful file IS the truth: loadModuleForEditing
     // rebuilds seg.is from it. Showing seg.is is also the more correct pre-fill

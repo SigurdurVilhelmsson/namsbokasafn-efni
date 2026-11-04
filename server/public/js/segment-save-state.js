@@ -317,6 +317,10 @@
     });
   }
 
+  /**
+   * A save body carries no occurrence until G1.12 (b) (plan § What the client sends; buildSaveBody), so the entry
+   * has none (null) and installDraft takes the row's (PR1 review C17). Read it here once the body sends it.
+   */
   function entryFromParked(item) {
     if (!item || typeof item.body !== 'string') return null;
     let body;
@@ -332,7 +336,6 @@
       entry: draftEntry({
         text: body.editedContent,
         baseSha256: body.baseSha256,
-        occurrence: body.occurrence,
         assists: body.assists,
         refused: typeof item.code === 'string' && item.code ? item.code : 'REFUSED',
       }),

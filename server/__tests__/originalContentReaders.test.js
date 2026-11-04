@@ -120,6 +120,15 @@ describe('the readers of segment_edits.original_content', () => {
     expect(scanReaders(REPO, SELECT_STAR).filter(notIn(AUDITED_SELECT_STAR))).toEqual([]);
   });
 
+  // Stale entries: a listed file that no longer matches its pattern (moved, renamed, or its reader removed) is an
+  // audit verdict about nothing, and the next file to take that name would pass unaudited.
+  it('every audited entry still matches its pattern', () => {
+    const readers = scanReaders(REPO, READS_ORIGINAL);
+    const selectStar = scanReaders(REPO, SELECT_STAR);
+    expect(AUDITED_READERS.filter((p) => !readers.includes(p))).toEqual([]);
+    expect(AUDITED_SELECT_STAR.filter((p) => !selectStar.includes(p))).toEqual([]);
+  });
+
   it('control: a planted reader in a temp root is named', () => {
     const root = fs.mkdtempSync(path.join(os.tmpdir(), 'original-content-readers-'));
     try {

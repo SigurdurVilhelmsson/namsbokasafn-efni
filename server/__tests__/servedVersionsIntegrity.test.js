@@ -106,6 +106,8 @@ describe('T1: the committed layer-2 chains against the served versions (spec §1
       const allKeys = [...chains.keys()];
       const mismatched = new Set();
       const matched = new Set();
+      const matchedByRow = new Set(); // through the row the route minted
+      const matchedByBuilder = new Set(); // through the row builder on the loader's output
       const bodyDisagrees = [];
       const rowFor = reader.prepare(
         `SELECT is_sha256 FROM served_text_versions
@@ -149,6 +151,7 @@ describe('T1: the committed layer-2 chains against the served versions (spec §1
         }
         for (const c of list) {
           let isSha256;
+          let byBuilder = false;
           const entry = served?.find(
             (e) => e.seg.segmentId === c.segmentId && e.occurrence === c.occurrence
           );
@@ -156,13 +159,16 @@ describe('T1: the committed layer-2 chains against the served versions (spec §1
           if (chDir === 'ch00' || duplicated) {
             built ??= builder();
             isSha256 = built(c);
+            byBuilder = true;
           } else {
             const row = rowFor.get(BOOK, chapter, module, c.segmentId, c.occurrence);
             isSha256 = row ? row.is_sha256 : null; // a missing row is a mismatch, never a fallback
             if (!entry || entry.seg.baseSha256 !== isSha256) bodyDisagrees.push(keyOf(c));
           }
-          if (isSha256 !== null && isSha256 === c.beforeSha256) matched.add(keyOf(c));
-          else mismatched.add(keyOf(c));
+          if (isSha256 !== null && isSha256 === c.beforeSha256) {
+            matched.add(keyOf(c));
+            (byBuilder ? matchedByBuilder : matchedByRow).add(keyOf(c));
+          } else mismatched.add(keyOf(c));
         }
       }
 
@@ -170,9 +176,19 @@ describe('T1: the committed layer-2 chains against the served versions (spec §1
         'ch05/m68726/m68726:para:fs-idm94618544#0',
         'ch08/m68747/m68747:para:fs-idm99049568#0',
       ]);
-      // positive control: every other chain matches, as a set; and the matched set includes chapter metadata,
-      // an appendix and ch00
-      expect([...matched].sort()).toEqual(allKeys.filter((k) => !mismatched.has(k)).sort());
+      // Value controls (PR1 review C22; every key is in exactly one of the two sets, so comparing matched with the
+      // complement of mismatched could not fail). The rows the route minted decide nearly every chain: a route
+      // whose response showed every id duplicated would send them all through the builder, which reads no row,
+      // and pass the exact set above. And the builder matches chains of its own: the LAST copy of each known
+      // mismatch, whose Icelandic the loader serves for every copy (R4).
+      expect(matchedByRow.size).toBeGreaterThan(allKeys.length * 0.9);
+      expect([...matchedByBuilder]).toEqual(
+        expect.arrayContaining([
+          'ch05/m68726/m68726:para:fs-idm94618544#1',
+          'ch08/m68747/m68747:para:fs-idm99049568#1',
+        ])
+      );
+      // the matched set includes chapter metadata, an appendix and ch00
       expect([...matched]).toEqual(
         expect.arrayContaining([
           'ch02/chapter-metadata/chapter:title:ch02#0',

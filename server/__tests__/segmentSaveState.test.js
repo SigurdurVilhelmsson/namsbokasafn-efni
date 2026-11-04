@@ -467,6 +467,24 @@ describe('kept texts (index decision 12)', () => {
     expect(S.entryFromParked({ key: 'k', body: '{not json', code: 'conflict' })).toBeNull();
   });
 
+  // PR1 review C17: a save body carries no occurrence until G1.12 (b) (plan § What the client sends), so a parked
+  // entry has none, and the pane takes the row's (installDraft: entry.occurrence !== null ? … : row.occurrence).
+  it('a parked save names no occurrence: the save body sends none, so the row supplies it', () => {
+    const sent = S.buildSaveBody({
+      segmentId: 's1',
+      row: { is: 'grunnur', baseSha256: H1, occurrence: 2, baseEditId: 0 },
+      editedContent: 'typed',
+      assists: [],
+    });
+    expect('occurrence' in sent).toBe(false); // the contract: not sent
+    const parked = (b) => ({ key: 'seg:b/1/m:s1', body: JSON.stringify(b), code: 'STALE_BASE' });
+    expect(S.entryFromParked(parked(sent)).entry.occurrence).toBeNull();
+    // A body that names one anyway is not a save body: its occurrence is not read either. Control: its base is.
+    const odd = S.entryFromParked(parked({ ...sent, occurrence: 3 })).entry;
+    expect(odd.occurrence).toBeNull();
+    expect(odd.baseSha256).toBe(H1);
+  });
+
   it('a parked replay that exhausted its retries (5xx or network) is a kept text with the generic notice (decision 28)', () => {
     const typed = JSON.stringify({ segmentId: 's1', editedContent: 'typed', baseSha256: H1 });
     // No code (a body that was not JSON, or named none): kept, and the notice is the generic one.
@@ -552,6 +570,22 @@ describe("the save response's echo, kept on the row (G1.21, §5.18)", () => {
       ['data-displayed-edit-id', '12'],
       ['data-displayed-edit-sha256', H3],
       ['data-base-edit-id', '12'],
+    ]);
+  });
+
+  // PR1 review C21: the conflict token never moves backwards. A save answered with an editId below the row's
+  // keeps the row's, or the next save would send the lower one and meet a spurious conflict.
+  it('the conflict token keeps the higher of the row and the answer', () => {
+    expect(
+      S.echoAttributeUpdates(
+        { editId: 5, baseSha256: H1, displayedEditId: 5, displayedEditSha256: H3 },
+        9
+      )
+    ).toEqual([
+      ['data-base-sha256', H1],
+      ['data-displayed-edit-id', '5'],
+      ['data-displayed-edit-sha256', H3],
+      ['data-base-edit-id', '9'],
     ]);
   });
 

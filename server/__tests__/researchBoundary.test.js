@@ -145,16 +145,18 @@ const keysDeep = (v) =>
   v && typeof v === 'object'
     ? Object.entries(v).flatMap(([k, x]) => [...(Array.isArray(v) ? [] : [k]), ...keysDeep(x)])
     : [];
+// The keys of EVERY object in the list, not of one sample (PR1 review C23): a key on a second edit row is still sent.
+const keysOfAll = (objects) => [...new Set(objects.flatMap((o) => Object.keys(o)))];
 function jsonDrift(body) {
-  const seg = body.segments.find((s) => 'baseSha256' in s);
-  const firstEdit = Object.values(body.edits)[0][0];
-  const firstAcc = Object.values(body.acceptances)[0];
   const odd = (keys, allowed) => keys.filter((k) => !allowed.includes(k)).sort();
   return {
     top: odd(Object.keys(body), MODULE_JSON_ALLOWED.top),
-    segment: odd(Object.keys(seg), MODULE_JSON_ALLOWED.segment),
-    editRow: odd(Object.keys(firstEdit), MODULE_JSON_ALLOWED.editRow),
-    acceptanceRow: odd(Object.keys(firstAcc), MODULE_JSON_ALLOWED.acceptanceRow),
+    segment: odd(keysOfAll(body.segments), MODULE_JSON_ALLOWED.segment),
+    editRow: odd(keysOfAll(Object.values(body.edits).flat()), MODULE_JSON_ALLOWED.editRow),
+    acceptanceRow: odd(
+      keysOfAll(Object.values(body.acceptances)),
+      MODULE_JSON_ALLOWED.acceptanceRow
+    ),
     forbidden: [...new Set(keysDeep(body).filter((k) => FORBIDDEN_KEY.test(k)))].sort(),
   };
 }
@@ -254,6 +256,25 @@ describe('T17 (PR1): the module JSON carries no research field and no new time',
       segment: ['assists'],
       editRow: ['clientActionId'],
       forbidden: ['assists', 'clientActionId', 'opened_at_ms'],
+    });
+  });
+
+  // PR1 review C23: the exact sets are the union over EVERY segment, edit row and acceptance, not one sample of
+  // each. The planted keys sit on non-first objects and match no FORBIDDEN_KEY name, so only the exact sets see them.
+  it('control: a key planted on a non-first segment, edit row or acceptance is reported', async () => {
+    const { body } = await serve();
+    expect(body.segments.length).toBeGreaterThan(1); // there is a non-first segment to plant on
+    body.segments.at(-1).probe_segment = 1;
+    const rows = Object.values(body.edits)[0];
+    rows.push({ ...rows[0], probe_edit: 1 });
+    const firstAcc = Object.values(body.acceptances)[0];
+    body.acceptances['probe-segment'] = { ...firstAcc, probe_acceptance: 1 };
+    expect(jsonDrift(body)).toEqual({
+      top: [],
+      segment: ['probe_segment'],
+      editRow: ['probe_edit'],
+      acceptanceRow: ['probe_acceptance'],
+      forbidden: [],
     });
   });
 });

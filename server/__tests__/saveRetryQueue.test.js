@@ -639,6 +639,102 @@ describe('saveRetry setKeyPolicy: a second call for a prefix replaces the first 
   });
 });
 
+// PR1 review C20 (Review Focus 19): the Pass 2 editor's page registers only DEFAULT_KEY_POLICIES, and nothing on it
+// takes a parked seg: item. So DEFAULT_KEY_POLICIES' seg: marks a replay and parks nothing: a refused or exhausted
+// replay is dropped with today's toast, as at ed10180c. The parking cases above all register parkRefused themselves.
+describe('saveRetry DEFAULT_KEY_POLICIES alone (the Pass 2 page): a refused or exhausted seg: replay is dropped (PR1 review C20)', () => {
+  const BODY = JSON.stringify({ segmentId: 's1', editedContent: 'typed', clientActionId: 'a1' });
+  const KEY = 'seg:b/1/m:s1';
+  const netFail = () => () => Promise.reject(new TypeError('Failed to fetch'));
+  const rounds = async (h, n) => {
+    for (let round = 0; round < n; round++) {
+      await h.fireAllTimers();
+      await settle();
+    }
+  };
+  const expectDropped = (h, attempts) => {
+    expect(h.toasts.at(-1)).toEqual({
+      message: `Vista mistókst eftir ${attempts} tilraunir. Vinsamlegast reyndu aftur.`,
+      type: 'error',
+    });
+    expect(h.toasts.some((t) => /geymdur/.test(t.message))).toBe(false); // no park toast at any point
+    expect(h.queue()).toEqual([]);
+    expect(h.sr.takeParked('seg:')).toEqual([]);
+    expect(h.store.has('saveRetryParked')).toBe(false);
+  };
+  // Control: every replay was a replay, so the default policy is the one deciding.
+  const expectReplaysMarked = (h, n) => {
+    expect(h.fetchCalls).toHaveLength(n + 1);
+    expect(JSON.parse(h.fetchCalls[0].options.body).replayed).toBeUndefined(); // the live attempt
+    for (const c of h.fetchCalls.slice(1)) expect(JSON.parse(c.options.body).replayed).toBe(true);
+  };
+
+  it('a replay answered 409 is dropped, not parked', async () => {
+    const h = makeHarness({ keyPolicies: DEFAULT_KEY_POLICIES });
+    h.setFetchScript([h.fail500(), res(409, { error: 'STALE_BASE', message: 'm' })]);
+    await h.sr.attempt(KEY, '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await rounds(h, 1);
+    expectReplaysMarked(h, 1);
+    expectDropped(h, 1);
+  });
+
+  it('a replay that 5xx answers exhaust is dropped, not parked', async () => {
+    const h = makeHarness({ keyPolicies: DEFAULT_KEY_POLICIES });
+    h.setFetchScript([h.fail500(), h.fail500(), h.fail500(), res(503, { error: 'unavailable' })]);
+    await h.sr.attempt(KEY, '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await rounds(h, 3);
+    expectReplaysMarked(h, 3);
+    expectDropped(h, 3);
+  });
+
+  it('a replay that network failures exhaust is dropped, not parked', async () => {
+    const h = makeHarness({ keyPolicies: DEFAULT_KEY_POLICIES });
+    h.setFetchScript([netFail(), netFail(), netFail(), netFail()]);
+    await h.sr.attempt(KEY, '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await rounds(h, 3);
+    expectReplaysMarked(h, 3);
+    expectDropped(h, 3);
+  });
+});
+
+// The longest registered prefix decides a key's policy, whichever was registered first (plan Task 7: "longest prefix
+// wins"). Both orders, so that neither "first match wins" nor "last registered wins" can pass.
+describe('saveRetry setKeyPolicy: the longest matching prefix decides (plan Task 7)', () => {
+  const BODY = JSON.stringify({ segmentId: 's1', editedContent: 'typed', clientActionId: 'a1' });
+  const SHORT = ['seg:', { markReplayed: true }];
+  const LONG = ['seg:b/1/m:', { parkRefused: true }];
+
+  for (const [order, policies] of [
+    ['shorter first', [SHORT, LONG]],
+    ['longer first', [LONG, SHORT]],
+  ]) {
+    it(`a key under both prefixes takes the longer one's flags (${order})`, async () => {
+      const h = makeHarness();
+      for (const [prefix, policy] of policies) h.sr.setKeyPolicy(prefix, policy);
+      h.setFetchScript([
+        h.fail500(),
+        h.fail500(),
+        res(409, { error: 'conflict', message: 'm' }),
+        res(409, { error: 'conflict', message: 'm' }),
+      ]);
+      await h.sr.attempt('seg:b/1/m:s1', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+      await h.sr.attempt('seg:b/2/m:s1', '/api/y', { method: 'POST', body: BODY }).catch(() => {});
+      await h.fireAllTimers();
+      await settle();
+      const replay = Object.fromEntries(h.fetchCalls.slice(2).map((c) => [c.url, c.options.body]));
+      // Under the longer prefix: not marked (the longer has no markReplayed), and parked.
+      expect(replay['/api/x']).toBe(BODY);
+      expect(h.sr.takeParked('seg:b/1/m:').map((p) => [p.key, p.status])).toEqual([
+        ['seg:b/1/m:s1', 409],
+      ]);
+      // Control, under the shorter prefix only: marked, and dropped.
+      expect(JSON.parse(replay['/api/y']).replayed).toBe(true);
+      expect(h.sr.takeParked('seg:')).toEqual([]);
+      expect(h.queue()).toEqual([]);
+    });
+  }
+});
+
 // PR1 review C5: a live save that got a 5xx and whose replay then succeeded never reached its caller's success path,
 // so the page wrote no echo on the row and its next save sent the stale displayed pair (a false STALE_DISPLAYED).
 // onReplayed hands the key's owner the replay's answer. A key with no hook behaves exactly as before: its success

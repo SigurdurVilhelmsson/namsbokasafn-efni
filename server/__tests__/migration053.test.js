@@ -250,6 +250,32 @@ describe('migration 053 served_text_versions', () => {
     ).toEqual([Number(lastInsertRowid)]);
   });
 
+  // PR1 review C27 (Review Focus 12): 053 adds the same REFERENCES to segment_acceptances, so it is pinned there too.
+  it('the foreign key is live on segment_acceptances too', () => {
+    const db = migrated();
+    const insertAcceptance = (extra) =>
+      db
+        .prepare(
+          `INSERT INTO segment_acceptances
+             (book, chapter, module_id, segment_id, accepted_content, accepted_by,
+              accepted_by_username, served_version_id)
+           VALUES ('efnafraedi-2e', 1, 'm68664', @segment_id, 'Basi', 'u-ed1', 'editor1',
+                   @served_version_id)`
+        )
+        .run(extra);
+    expect(() =>
+      insertAcceptance({ segment_id: 'm68664:para:fs-b', served_version_id: 999999 })
+    ).toThrow(/FOREIGN KEY constraint failed/);
+    // The control: a real served version's id inserts.
+    const { lastInsertRowid } = insertVersion(db);
+    expect(() =>
+      insertAcceptance({ segment_id: 'm68664:para:fs-c', served_version_id: lastInsertRowid })
+    ).not.toThrow();
+    expect(
+      db.prepare('SELECT served_version_id FROM segment_acceptances').pluck().all().map(Number)
+    ).toEqual([Number(lastInsertRowid)]);
+  });
+
   it('is registered in migrationRunner after 052', () => {
     const src = readFileSync(join(__dirname, '..', 'services', 'migrationRunner.js'), 'utf-8');
     expect(src).toContain(`'../migrations/053-served-text-versions'`);
