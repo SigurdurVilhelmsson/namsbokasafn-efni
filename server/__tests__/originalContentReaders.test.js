@@ -50,6 +50,9 @@ const AUDITED_READERS = [
   'server/services/localizationReviewService.js',
   // A writer: propagation's INSERT and in-place UPDATE. Task 16.
   'server/services/propagationService.js',
+  // A writer: `saveOnServedBase` passes the server's base (`seg.is`) as `originalContent` to
+  // `saveSegmentEdit`, never a caller's value (spec §5.6 step 6; Task 13). Reads nothing back.
+  'server/services/servedEdit.js',
   // The writer (`saveSegmentEdit`, Task 12) and the rows sent to browsers through `SELECT *`
   // (the module route, segment history, reviews): the value sent changes, and no client reads
   // `original_content` from a `segment_edits` row. No change beyond Task 12.
