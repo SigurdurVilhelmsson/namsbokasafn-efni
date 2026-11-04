@@ -374,9 +374,13 @@
    * A replay of a save in THIS module was refused, or ran out of retries on
    * 5xx answers or network failures (saveRetry parked it; decision 28; a
    * network one has status null). Keep the newest text: the
-   * pane's, if the editor kept typing, else the replayed body's. A parked item
-   * with no refusal code restores with the generic notice (entryFromParked).
-   * A replay for another module waits for that module's next load.
+   * pane's, if the editor kept typing; else a text already held for the
+   * segment (a newer save's refusal kept it while its pane is not back yet,
+   * PR1 review C1), with its base and assists, by the rule a restore applies
+   * (mergeRestoreSources: it takes the parked code only if it has none); else
+   * the replayed body's. A parked item with no refusal code restores with the
+   * generic notice (entryFromParked). A replay for another module waits for
+   * that module's next load.
    */
   function onSaveParked(item) {
     if (!moduleData || item.key.indexOf(parkedPrefix()) !== 0) return;
@@ -386,6 +390,10 @@
     const segId = parked.segmentId;
     const st = paneState.get(segId);
     const ta = document.getElementById('textarea-' + cssId(segId));
+    const held = heldDrafts.get(segId);
+    const heldEntry = held
+      ? segmentSaveState.mergeRestoreSources({ entries: { [segId]: held.entry } }, [item])[segId]
+      : null;
     const entry =
       st && ta && dirtyEdits.has(segId)
         ? segmentSaveState.draftEntry({
@@ -395,7 +403,7 @@
             assists: st.assists,
             refused: parked.entry.refused,
           })
-        : parked.entry;
+        : heldEntry || parked.entry;
     keepText(segId, entry);
     loadModule(currentModuleId, { force: true });
   }

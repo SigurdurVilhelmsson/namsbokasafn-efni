@@ -562,6 +562,102 @@ test.describe('G1.1 client: the row is what the save and the accept echo', () =>
     expect(await page.evaluate(() => localStorage.getItem('saveRetryParked'))).toBeNull(); // taken
   });
 
+  test('a refused replay of an OLDER save never replaces the newer text a live refusal kept (PR1 review C1)', async ({
+    page,
+  }) => {
+    const [target] = middleVirginRows(await loadModuleJson(page));
+    await openModule(page);
+    const row = rowOf(page, target.segmentId);
+    await row.locator('.btn-edit').click();
+    const older = `${target.is}${SUFFIX}`;
+    const newer = `${target.is}${SUFFIX} newer`;
+    // Save 1 (older) gets a 500, so saveRetry queues its replay. Save 2 (newer), sent live while that replay is
+    // still queued, is refused STALE_BASE: keepText holds it and the module reloads. Save 1's replay is then refused
+    // too, with a DIFFERENT code, so the notice also shows whose refusal the kept text carries. Stubs only.
+    // The replay's answer waits for the reload that save 2's refusal starts, and that reload waits for the one
+    // onSaveParked starts: so the replay is parked exactly while save 2's text is held and on no pane, the window
+    // where the editor's newer typing exists only in the hold.
+    let reloadStarted;
+    const refusalReload = new Promise((resolve) => (reloadStarted = resolve));
+    let parkedReloadStarted;
+    const parkedReload = new Promise((resolve) => (parkedReloadStarted = resolve));
+    const reloads = [];
+    await page.route(`**${MODULE_URL}`, async (route) => {
+      if (route.request().method() !== 'GET') return route.continue();
+      reloads.push(Date.now());
+      if (reloads.length === 1) {
+        reloadStarted();
+        await Promise.race([parkedReload, new Promise((resolve) => setTimeout(resolve, 15000))]);
+      } else if (reloads.length === 2) {
+        parkedReloadStarted();
+      }
+      return route.continue();
+    });
+    const bodies = [];
+    await page.route(`**${MODULE_URL}/edit`, async (route) => {
+      const body = route.request().postDataJSON();
+      bodies.push(body);
+      if (body.replayed) {
+        await refusalReload;
+        return route.fulfill({
+          status: 409,
+          contentType: 'application/json',
+          body: JSON.stringify({ error: 'STALE_DISPLAYED', message: 'stub' }),
+        });
+      }
+      if (body.editedContent === older) {
+        return route.fulfill({
+          status: 500,
+          contentType: 'application/json',
+          body: '{"error":"stub"}',
+        });
+      }
+      return route.fulfill({
+        status: 409,
+        contentType: 'application/json',
+        body: JSON.stringify({ error: 'STALE_BASE', message: 'stub' }),
+      });
+    });
+    page.on('dialog', (d) => d.accept().catch(() => {})); // a kept text survives an editor who answers OK
+    await row.locator('textarea').fill(older);
+    await row.getByRole('button', { name: 'Vista', exact: true }).click();
+    await expect(page.locator('.toast-error').first()).toBeVisible(); // the 5xx: queued for a replay
+    // An assist only save 2 carries, so the kept entry's assists also show whose they are.
+    const ta = row.locator('textarea');
+    await ta.evaluate((el) => el.setSelectionRange(0, 3));
+    await ta.press('Control+i');
+    await ta.fill(newer);
+    await row.getByRole('button', { name: 'Vista', exact: true }).click();
+    // Control: the replay really was parked (its toast) and its own reload really started, inside the window.
+    await expect(page.locator('.toast-error', { hasText: 'hafnað' })).toBeVisible({
+      timeout: 10000,
+    });
+    await expect.poll(() => reloads.length, { timeout: 10000 }).toBe(2);
+    await expect(row.locator('.draft-notice')).toBeVisible({ timeout: 10000 });
+    expect(bodies.map((b) => [b.editedContent, b.replayed === true])).toEqual([
+      [older, false],
+      [newer, false],
+      [older, true], // the replay carried the OLDER text
+    ]);
+    expect(bodies.map((b) => b.assists.map((a) => a.itemType))).toEqual([[], ['markup-wrap'], []]);
+    await expect(row.locator('textarea')).toHaveValue(newer);
+    await expect(row.locator('.draft-notice')).toHaveAttribute('data-notice', 'STALE_BASE');
+    const stored = await page.evaluate((id) => {
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith('seg-draft:')) {
+          const v = JSON.parse(localStorage.getItem(key));
+          if (v.segments && v.segments[id]) return v.segments[id];
+        }
+      }
+      return null;
+    }, target.segmentId);
+    expect([stored.text, stored.refused]).toEqual([newer, 'STALE_BASE']);
+    expect(stored.baseSha256).toBe(target.baseSha256);
+    expect(stored.assists.map((a) => a.itemType)).toEqual(['markup-wrap', 'draft-restore']);
+    expect(await page.evaluate(() => localStorage.getItem('saveRetryParked'))).toBeNull(); // taken
+  });
+
   test('a replay whose 5xx answers exhaust the retries keeps the typed text, with the generic notice (decision 28)', async ({
     page,
   }) => {
