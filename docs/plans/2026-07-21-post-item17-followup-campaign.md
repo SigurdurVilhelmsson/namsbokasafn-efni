@@ -4,6 +4,41 @@
 
 ## ⏩ RESUME — state as of **2026-10-09 — ✅ '6' PR-B IS MERGED ([#546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546)) AND DEPLOYED, with the 7 Dependabot PRs; R-22's condition is met and the LIVE-RUN HOLD's condition is met on `main`. ⏹ The whole-book re-render and the chemistry sync are HELD for [USER]. ▶ [CODE] in parallel: the ② code batch (end of this block)** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence) ✏️ *Heading re-dated 2026-10-09; it had said PR-B was BUILT and UNPUSHED, with step 2b and the LIVE-RUN HOLD outstanding, after all three had changed. The bullets directly under the SINGLE NEXT ACTION are PR-B's record.*
 
+### ⏭ 2026-11-04 (PR1 built) — ADDS TO THE ENTRY DIRECTLY BELOW AND SUPERSEDES ITS NEXT: **✅ G1.1 + G1.2 PR1 IS BUILT, REVIEWED AND GATED on branch `claude/cool-volta-8jm7hb`, [PR #625](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/625) (draft, not merged). ✅ [USER] RAN THE DEPLOY on 2026-11-04 (it carried layer 2, #621 and #623; PR1 is not in it). ▶ NEXT, [USER]: review #625, mark it ready and merge it as a merge commit. Re-check the migration number first (`ls server/migrations`: PR1 takes `053`). Then deploy, and give the editors the note below.**
+- **What was built.** Tasks 1–20 of PR1's plan (`docs/superpowers/plans/2026-11-03-g11-g12-pr1-served-versions-core.md`), one test-first commit each. Each task went through an implementer, a reviewer and, where needed, a fixer. Migration `053-served-text-versions.js`.
+- **The plan's premises that the tree contradicted** (the tree won, each recorded in its commit):
+  - Task 18: a draft written before Back does not survive Back (Back clears every draft under the module's prefix), so editor-lifecycle Test 7 writes its legacy draft after Back.
+  - Task 9: the T4 E2E needed an explicit dismissing dialog handler; Playwright's auto-dismiss raced the page closing.
+  - Task 11: `server/public/js/segment-editor.js` no longer holds `originalContent` (Task 9 moved it to `segment-save-state.js`), so it is not in the audited-reader list.
+- **The whole-branch review:** a blind pair, Opus and Fable on one brief, five lenses each, every critical or important finding checked by two skeptics. Folded in as their own commits:
+  - **C1, text loss:** a parked replay of an older save replaced the newer text a live refusal had kept (`onSaveParked`).
+  - **C2:** save and accept failed at once with `SQLITE_BUSY` (a 500) while another process held the write lock, because the new transactions read before they wrote. They are now immediate; the serve-time mint stays deferred (§5.4 step 3).
+  - **C3:** `/propagate` and its preview took a duplicated source id's first copy by `.find`, writing one copy's Icelandic onto the other copy's English matches. They now place the source as `/accept` does.
+  - **C5:** after a 5xx whose replay succeeded, the pane's next save was falsely refused `STALE_DISPLAYED`. A replay's echo now reaches the row.
+  - **C6:** the `BASE_MISSING` message; see [USER]'s answer below.
+  - Minor ones, among them: a kept text replaced by "Nota þessa þýðingu" without a confirm; a discarded kept text coming back after a quick reload; organic refused by the re-attach script and by `acceptSegment` itself; `deploy.sh` printing what `checks.schema` is missing; propagation's own transaction made immediate, and its refusals shown in Icelandic rather than as a code; and several tests that could not fail, tightened.
+  - Refused by the skeptics, because the approved plan decides them: C4 (Back drops a non-kept dirty text) and C7 (restore clears the drafts before its confirm).
+- **[USER]'s answer, 2026-11-04 (C6):** the old page asks its closing question up to three times, and OK at any of them loses the text. So `BASE_MISSING` now says to choose Hætta við (Cancel) every time the question appears, and that it can come up to three times. The rest of the approved wording is unchanged. The frozen plan still shows the earlier wording, and in three places still calls `BASE_MISSING` a proposal; both are superseded.
+- **Gate, run locally as CI runs it, at the branch tip:** lint, format check and docs check clean; the unit suite fails by name exactly what `main` fails in that sandbox (`booksDownloadStreamFailure`, `glossaryExportRun`, `figure-run-paid`, which fail there only because it runs as root); E2E passes; `git status` clean. The live verdict is CI on #625.
+- **The editor note for PR1's deploy** (an editor's page loaded before the deploy answers every save with `BASE_MISSING` until F5):
+  1. When asked *Opnum klippispjöldum verður lokað. Viltu halda áfram?*, answer *Hætta við* in that dialog, **every time it appears** (up to three times), never the pane's own *Hætta við* button.
+  2. Copy the text if wanted.
+  3. Press F5. The new page offers the draft.
+  4. Do not use *Beita víðar* on a page loaded before the deploy: its old code still sends the refused text on to the other occurrences (review C13).
+- **Open, not blocking the merge** (recorded, not fixed):
+  - the `processQueue` question (park an item a page load finds out of attempts or expired?), unchanged;
+  - C8: a replay of decision 39's case that arrives after the head editor approved the displayed row inserts a second pending row;
+  - C9: the displayed check does not look at the displayed row's status (a rejected edit still on screen passes);
+  - C11: a kept text whose segment id no longer exists (a re-extraction renamed it) is held forever and keeps the leave-page prompt up;
+  - a save refused while the editor kept typing keeps the text that was sent, not the newer textarea value (older than PR1's queue work);
+  - the assists a successful replay already sent are listed again on the pane's next save (research data, PR3);
+  - Review Focus 17 (the closing question counts only panes that could lose text) has no test;
+  - `scripts/reattach-segment-edits.js` still calls `process.exit()` after stdout writes on its 0–5 paths (older than PR1).
+- **For PR2 and PR3** (their plans should take these):
+  - PR2: a changed serve still fails soft at once under a held write lock (the mint stays deferred, §5.4), so the opening predicate's 503 needs a serve-time mint that survives a held lock (a retry, or an immediate insert);
+  - PR2: `deploy.sh`'s schema remedy names the `[053]` warning; a later migration in `checks.schema` must widen it;
+  - PR3: refused propagation previews (a GET) now carry `err.refusal` through `sendRefusal`; `write-refused` must not be emitted for them.
+
 ### ⏭ 2026-11-04 (handoff: build PR1) — ADDS TO THE ENTRY DIRECTLY BELOW AND SUPERSEDES ITS NEXT: **✅ #622 MERGED (`a2a1fdbd`). ✅ PR1's plan takes [USER]'s network answer (this entry's PR). ✅ §C209's two follow-ups are built and reviewed: [#623](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/623). Both merge when their checks are green, on [USER]'s instruction (2026-11-04). ▶ NEXT, IN A FRESH SESSION: BUILD G1.1 + G1.2 PR1 FROM ITS PLAN.**
 - **How to start.**
   - Read the plan index, `docs/superpowers/plans/2026-11-03-g11-g12-served-versions-and-event-log.md`, then PR1's plan, `docs/superpowers/plans/2026-11-03-g11-g12-pr1-served-versions-core.md`.
