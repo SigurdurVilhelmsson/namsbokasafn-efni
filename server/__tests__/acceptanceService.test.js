@@ -499,7 +499,7 @@ describe('lapseDrifted + stampApplied', () => {
   it('lapses when written bytes differ; keeps a matching acceptance active', () => {
     accept();
     accept('m00001:para:fs-id002', 'Önnur efnisgrein.');
-    const lapsed = acceptance.lapseDrifted(BOOK, MODULE, [
+    const lapsed = acceptance.lapseDrifted(BOOK, 1, MODULE, [
       { segmentId: 'm00001:para:fs-id001', content: 'Allt aðrir bætar.' },
       { segmentId: 'm00001:para:fs-id002', content: 'Önnur efnisgrein.' },
     ]);
@@ -513,15 +513,52 @@ describe('lapseDrifted + stampApplied', () => {
 
   it('a segment missing from the written set lapses too', () => {
     accept();
-    expect(acceptance.lapseDrifted(BOOK, MODULE, [])).toBe(1);
+    expect(acceptance.lapseDrifted(BOOK, 1, MODULE, [])).toBe(1);
+  });
+
+  it('§C209: a call in the old (book, moduleId, …) order throws instead of shifting arguments', () => {
+    accept();
+    // The guard's own message: an old-order call also crashes later in the body with some
+    // other TypeError, so a bare TypeError assertion survives the guard's removal.
+    expect(() => acceptance.lapseDrifted(BOOK, MODULE, [])).toThrow(
+      /lapseDrifted: chapter must be an integer/
+    );
+    expect(() => acceptance.stampApplied(BOOK, MODULE)).toThrow(
+      /stampApplied: chapter must be an integer/
+    );
+    // Control: the row is still there to act on, and the chapter-first call acts on it.
+    expect(acceptance.stampApplied(BOOK, 1, MODULE)).toBe(1);
+  });
+
+  it('§C209: a new-order call with an undefined chapter throws and touches nothing', () => {
+    // The hazard the guard exists for: better-sqlite3 binds undefined as NULL, `chapter = NULL`
+    // matches no row, and the call would silently lapse or stamp nothing.
+    const id = accept().acceptance.id;
+    const row = () =>
+      db
+        .prepare(
+          'SELECT status, superseded_reason, applied_at FROM segment_acceptances WHERE id = ?'
+        )
+        .get(id);
+    expect(() => acceptance.lapseDrifted(BOOK, undefined, MODULE, [])).toThrow(
+      /lapseDrifted: chapter must be an integer/
+    );
+    expect(() => acceptance.stampApplied(BOOK, undefined, MODULE)).toThrow(
+      /stampApplied: chapter must be an integer/
+    );
+    expect(row()).toEqual({ status: 'active', superseded_reason: null, applied_at: null });
+    // Controls: with the chapter given, each call acts on that same row.
+    expect(acceptance.stampApplied(BOOK, 1, MODULE)).toBe(1);
+    expect(acceptance.lapseDrifted(BOOK, 1, MODULE, [])).toBe(1);
+    expect(row()).toMatchObject({ status: 'superseded', superseded_reason: 'content-drift' });
   });
 
   it('stampApplied stamps active NULL rows only, returns the count', () => {
     accept();
     accept('m00001:para:fs-id002', 'Önnur efnisgrein.');
-    expect(acceptance.stampApplied(BOOK, MODULE)).toBe(2);
+    expect(acceptance.stampApplied(BOOK, 1, MODULE)).toBe(2);
     // Second stamp is a no-op (already applied)
-    expect(acceptance.stampApplied(BOOK, MODULE)).toBe(0);
+    expect(acceptance.stampApplied(BOOK, 1, MODULE)).toBe(0);
     const stamped = db
       .prepare(`SELECT COUNT(*) AS n FROM segment_acceptances WHERE applied_at IS NOT NULL`)
       .get().n;

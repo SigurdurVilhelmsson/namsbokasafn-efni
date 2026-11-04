@@ -317,9 +317,10 @@ function restoreVersion(book, chapter, moduleId, version, restoredBy = {}, track
     // item 20b: a restore rewrites faithful bytes without touching
     // segment_acceptances — lapse any attestation whose bytes just changed
     // (spec §7) and refresh the derived sidecar. Best-effort, same posture
-    // as the TM/concordance hooks above.
+    // as the TM/concordance hooks above. Scoped to this chapter: a restore of
+    // one chapter's `chapter-metadata` must not lapse another chapter's (§C209).
     try {
-      acceptanceService.lapseDrifted(book, moduleId, restoredSegments);
+      acceptanceService.lapseDrifted(book, chapter, moduleId, restoredSegments);
       acceptanceService.writeReviewStatusSidecar(book, chapter, moduleId);
     } catch (err) {
       log.error({ err, book, moduleId }, 'Acceptance drift-lapse/sidecar after restore failed');

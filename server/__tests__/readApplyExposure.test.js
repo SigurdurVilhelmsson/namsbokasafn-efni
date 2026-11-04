@@ -139,6 +139,70 @@ describe('read-apply-exposure (§C203)', () => {
   });
 });
 
+describe('read-apply-exposure: a module id shared by chapters (§C209)', () => {
+  // `chapter-metadata` is ONE module id with one file per chapter, and one click applies
+  // one chapter's file (§C209), so the mirror reports one entry per (module, chapter).
+  const META = 'chapter-metadata';
+  const title = (ch) => loadModuleForEditing(BOOK, ch, META).segments[0];
+  const metaEntries = (r) =>
+    r.modules
+      .filter((m) => m.module === META)
+      .map((m) => ({
+        chapter: m.chapter,
+        chaptersSeen: m.chaptersSeen,
+        path: m.path,
+        acc: m.activeUnappliedAcceptances,
+        winners: m.winners,
+      }));
+  const ZERO = {
+    'already-present': 0,
+    clean: 0,
+    'base-changed': 0,
+    'segment-gone': 0,
+    'not-written': 0,
+  };
+  const metaEdit = (ch, suffix, appliedAt) => {
+    const t = title(ch);
+    const args = { seg: t.segmentId, original: t.is, edited: `${t.is} ${suffix}` };
+    return edit({
+      ...args,
+      module: META,
+      chapter: ch,
+      ...(appliedAt === undefined ? {} : { appliedAt }),
+    });
+  };
+
+  it('has one title segment per chapter, read from mt-output (precondition, not a finding)', () => {
+    for (const ch of [2, 3, 5]) {
+      const m = loadModuleForEditing(BOOK, ch, META);
+      expect(m.isSource).toBe('mt-output');
+      expect(m.segments.map((s) => s.segmentId)).toEqual([`chapter:title:ch0${ch}`]);
+    }
+  });
+
+  it("each chapter's edit is classified against its own chapter's file, never as segment-gone", () => {
+    metaEdit(2, 'X', null);
+    metaEdit(5, 'Y', null);
+    accept(title(3).segmentId, META, 3);
+    const r = run();
+    expect(metaEntries(r)).toEqual([
+      { chapter: 2, chaptersSeen: 2, path: 'normal', acc: 0, winners: { ...ZERO, clean: 1 } },
+      { chapter: 5, chaptersSeen: 2, path: 'normal', acc: 0, winners: { ...ZERO, clean: 1 } },
+    ]);
+    expect(r.acceptanceOnly).toEqual([{ module: META, chapter: 3, activeUnappliedAcceptances: 1 }]);
+  });
+
+  it("another chapter's acceptance does not disarm this chapter's self-heal", () => {
+    metaEdit(2, 'X'); // applied
+    accept(title(5).segmentId, META, 5);
+    const r = run();
+    expect(metaEntries(r)).toEqual([
+      { chapter: 2, chaptersSeen: 1, path: 'self-heal', acc: 0, winners: { ...ZERO, clean: 1 } },
+    ]);
+    expect(r.acceptanceOnly).toEqual([{ module: META, chapter: 5, activeUnappliedAcceptances: 1 }]);
+  });
+});
+
 describe('read-apply-exposure CLI', () => {
   const env = () => ({ ...process.env, SESSIONS_DB_PATH: dbPath });
 

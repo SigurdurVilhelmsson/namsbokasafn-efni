@@ -6,8 +6,8 @@
  * The index is normally kept current by applyApprovedEdits → indexModule, but
  * faithful files written before Unit 2 (or imported out-of-band) have no index
  * rows. This rebuilds the index for every faithful module in a book (or all
- * books). indexModule replaces a module's rows each time, so re-running is
- * idempotent.
+ * books). indexModule replaces the rows of the chapter file it indexes each
+ * time (§C209), so re-running is idempotent.
  *
  * Usage:
  *   node server/scripts/backfill-concordance.js [--book <slug>]

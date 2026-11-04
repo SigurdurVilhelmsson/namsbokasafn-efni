@@ -287,22 +287,38 @@ function supersedeForEdit(book, moduleId, segmentId, dbConn = getDb()) {
 }
 
 /**
+ * §C209: the two apply-path writers below are scoped to ONE chapter's file.
+ * `chapter-metadata` is a single module id shared by every chapter, so a
+ * (book, module_id) scope reached every other chapter's rows from one
+ * chapter's apply or restore. An ordinary module's rows all carry its one
+ * chapter, so the scope changes nothing for it. Required and checked, so a
+ * call in the old (book, moduleId, …) order fails loud instead of shifting.
+ */
+function assertChapter(fn, chapter) {
+  if (!Number.isInteger(chapter)) {
+    throw new TypeError(`${fn}: chapter must be an integer (appendices = -1), got ${chapter}`);
+  }
+}
+
+/**
  * Lapse acceptances whose attested bytes no longer match the content just
  * written for their segment. writtenSegments is [{segmentId, content}] — the
  * exact bytes the caller (apply/restore) wrote, so no disk re-read and no
  * normalization ambiguity. A segment missing from the written set counts as
- * drifted (the extraction no longer carries it).
+ * drifted (the extraction no longer carries it). Only the written chapter's
+ * acceptances are considered (§C209).
  *
  * @returns {number} lapsed row count
  */
-function lapseDrifted(book, moduleId, writtenSegments, dbConn = getDb()) {
+function lapseDrifted(book, chapter, moduleId, writtenSegments, dbConn = getDb()) {
+  assertChapter('lapseDrifted', chapter);
   const byId = new Map(writtenSegments.map((s) => [s.segmentId, s.content]));
   const active = dbConn
     .prepare(
       `SELECT id, segment_id, accepted_content FROM segment_acceptances
-       WHERE book = ? AND module_id = ? AND status = 'active'`
+       WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'active'`
     )
-    .all(book, moduleId);
+    .all(book, chapter, moduleId);
   const lapse = dbConn.prepare(
     `UPDATE segment_acceptances
      SET status = 'superseded', superseded_at = CURRENT_TIMESTAMP,
@@ -321,17 +337,19 @@ function lapseDrifted(book, moduleId, writtenSegments, dbConn = getDb()) {
 
 /**
  * Stamp all still-active, not-yet-applied acceptances as published (spec §7:
- * "acceptances that are active at a successful apply get applied_at").
+ * "acceptances that are active at a successful apply get applied_at"), in the
+ * applied chapter only (§C209).
  *
  * @returns {number} stamped row count
  */
-function stampApplied(book, moduleId, dbConn = getDb()) {
+function stampApplied(book, chapter, moduleId, dbConn = getDb()) {
+  assertChapter('stampApplied', chapter);
   return dbConn
     .prepare(
       `UPDATE segment_acceptances SET applied_at = CURRENT_TIMESTAMP
-       WHERE book = ? AND module_id = ? AND status = 'active' AND applied_at IS NULL`
+       WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'active' AND applied_at IS NULL`
     )
-    .run(book, moduleId).changes;
+    .run(book, chapter, moduleId).changes;
 }
 
 /** Sidecar path: sibling of the faithful segments file. */
