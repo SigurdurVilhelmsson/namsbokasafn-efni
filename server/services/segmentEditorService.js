@@ -829,7 +829,7 @@ const MAX_APPLY_RETRIES = 1;
  * newest approved edit that has not yet been applied.
  *
  * Contract (final review, 2026-07-17): already-applied content is the file's
- * own; deliberate file-side changes (a "Saga útgáfa" restore, a manual
+ * own; deliberate file-side changes (a "Útgáfusaga" restore, a manual
  * faithful-file fix) must stick — apply only imposes newly-approved work.
  * Winner selection still spans ALL approved rows so a late older approval is
  * superseded rather than published (I12-R5), but the FILE overlay writes only
@@ -1023,7 +1023,7 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
 
     // 4. Build the full segment list. Overlay ONLY winners that are not yet
     // applied (the newly-approved work this apply publishes). Already-applied
-    // content is the file's own: deliberate file-side changes (a "Saga útgáfa"
+    // content is the file's own: deliberate file-side changes (a "Útgáfusaga"
     // restore via contentVersionService.restoreVersion, or a manual faithful-file
     // fix) rewrite the file WITHOUT touching segment_edits and have no
     // neutralization path (unapproveEdit refuses applied edits), so re-imposing
@@ -1072,7 +1072,7 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
     // is what keeps the file and the DB from diverging: in particular the
     // step-4b `content_versions` snapshot now commits or rolls back TOGETHER
     // with the file's advance, instead of the pre-apply content vanishing from
-    // "Saga útgáfa" while the file had already moved on.
+    // "Útgáfusaga" while the file had already moved on.
     //
     // Do NOT append DB work below the write (step 7) — that is exactly how the
     // window was widened before (item 20b appended the acceptance lifecycle
