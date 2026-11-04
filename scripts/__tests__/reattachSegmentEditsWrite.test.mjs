@@ -11,6 +11,7 @@ const {
   createSegmentEditsSchema,
 } = require(path.join(REPO_ROOT, 'server', '__tests__', 'helpers', 'segmentEditsSchema.cjs'));
 const migration043 = require(path.join(REPO_ROOT, 'server', 'migrations', '043-segment-acceptances'));
+const migration053 = require(path.join(REPO_ROOT, 'server', 'migrations', '053-served-text-versions'));
 
 let tmp, db, booksDir, service;
 
@@ -31,6 +32,7 @@ beforeEach(() => {
   // write throws "no such table". Same trap, same fix as
   // server/__tests__/mtLockOnFirstEdit.test.js.
   migration043.up(db);
+  migration053.up(db);
   service = require(path.join(REPO_ROOT, 'server', 'services', 'segmentEditorService.js'));
   service._setTestDb(db);
 });

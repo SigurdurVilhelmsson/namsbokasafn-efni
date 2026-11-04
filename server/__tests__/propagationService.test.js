@@ -9,6 +9,7 @@ const { createSegmentEditsSchema } = require('./helpers/segmentEditsSchema.cjs')
 // a createPropagatedEdits call needs the table (migration043 precedent from
 // Tasks 3/5).
 const migration043 = require('../migrations/043-segment-acceptances');
+const migration053 = require('../migrations/053-served-text-versions');
 
 describe('classifyOccurrence', () => {
   const P = 'Sýra og basi'; // propagated text
@@ -94,6 +95,7 @@ describe('createPropagatedEdits', () => {
     const d = new Database(':memory:');
     createSegmentEditsSchema(d);
     migration043.up(d);
+    migration053.up(d);
     return d;
   }
 
@@ -233,6 +235,7 @@ describe('superseded rows are not live content', () => {
     const d = new Database(':memory:');
     createSegmentEditsSchema(d);
     migration043.up(d);
+    migration053.up(d);
     return d;
   }
 
@@ -302,6 +305,7 @@ describe('createPropagatedEdits supersedes an active acceptance (final-review F4
     const d = new Database(':memory:');
     createSegmentEditsSchema(d);
     migration043.up(d);
+    migration053.up(d);
     return d;
   }
 
@@ -359,6 +363,7 @@ describe('structural-marker guard on propagation (SR-OOS-2 D8)', () => {
     const d = new Database(':memory:');
     createSegmentEditsSchema(d);
     migration043.up(d);
+    migration053.up(d);
     return d;
   }
 

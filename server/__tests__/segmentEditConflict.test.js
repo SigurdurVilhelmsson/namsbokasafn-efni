@@ -17,6 +17,7 @@ const Database = require('better-sqlite3');
 const service = require('../services/segmentEditorService');
 const { createSegmentEditsSchema } = require('./helpers/segmentEditsSchema.cjs');
 const migration043 = require('../migrations/043-segment-acceptances');
+const migration053 = require('../migrations/053-served-text-versions');
 
 const BOOK = 'testbook';
 const MODULE = 'm00001';
@@ -30,6 +31,7 @@ function createTestDb() {
   // its own connection inside both save transactions — the test DB needs the
   // segment_acceptances table or that call throws "no such table".
   migration043.up(db);
+  migration053.up(db);
   return db;
 }
 

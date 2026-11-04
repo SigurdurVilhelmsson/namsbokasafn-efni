@@ -28,6 +28,7 @@ const segmentParser = require('../services/segmentParser');
 const { mtLockPathFor } = require('../../tools/lib/mt-lock.cjs');
 const { createSegmentEditsSchema } = require('./helpers/segmentEditsSchema.cjs');
 const migration043 = require('../migrations/043-segment-acceptances');
+const migration053 = require('../migrations/053-served-text-versions');
 
 const BOOK = '__e2e-fixture__';
 const CHAPTER = 1;
@@ -44,6 +45,7 @@ function createTestDb() {
   // its own connection inside both save transactions — the test DB needs the
   // segment_acceptances table or that call throws "no such table".
   migration043.up(db);
+  migration053.up(db);
   return db;
 }
 

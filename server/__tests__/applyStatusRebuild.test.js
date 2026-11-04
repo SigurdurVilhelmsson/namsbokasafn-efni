@@ -18,6 +18,7 @@ const Database = require('better-sqlite3');
 const service = require('../services/segmentEditorService');
 const { createSegmentEditsSchema } = require('./helpers/segmentEditsSchema.cjs');
 const migration043 = require('../migrations/043-segment-acceptances');
+const migration053 = require('../migrations/053-served-text-versions');
 
 const BOOK = 'testbook';
 const CHAPTER = 1;
@@ -29,6 +30,7 @@ function createTestDb() {
   createSegmentEditsSchema(db);
   // item 20b: getApplyStatus now also queries segment_acceptances.
   migration043.up(db);
+  migration053.up(db);
   return db;
 }
 
