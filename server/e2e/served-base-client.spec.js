@@ -520,4 +520,152 @@ test.describe('G1.1 client: the row is what the save and the accept echo', () =>
     await expect(row.locator('.draft-notice[data-notice="BASE_MISSING"]')).toBeVisible();
     await expect(row.locator('textarea')).toHaveValue(`${target.is}${SUFFIX}`);
   });
+
+  test('a 409 answered to a replay keeps the typed text, marked replayed, with one action id (index decision 12)', async ({
+    page,
+  }) => {
+    const [target] = middleVirginRows(await loadModuleJson(page));
+    await openModule(page);
+    const row = rowOf(page, target.segmentId);
+    await row.locator('.btn-edit').click();
+    const typed = `${target.is}${SUFFIX}`;
+    await row.locator('textarea').fill(typed);
+    const bodies = [];
+    await page.route(`**${MODULE_URL}/edit`, async (route) => {
+      bodies.push(route.request().postDataJSON());
+      if (bodies.length === 1) {
+        return route.fulfill({
+          status: 500,
+          contentType: 'application/json',
+          body: '{"error":"stub"}',
+        });
+      }
+      return route.fulfill({
+        status: 409,
+        contentType: 'application/json',
+        body: JSON.stringify({ error: 'conflict', message: 'stub' }),
+      });
+    });
+    page.on('dialog', (d) => d.accept().catch(() => {})); // a dialog still open as the page closes (see the T4 test)
+    await row.getByRole('button', { name: 'Vista', exact: true }).click();
+    await expect(page.locator('.toast-error').first()).toBeVisible(); // the 5xx: queued for a replay
+    // The replay fires after about a second; its 409 parks the text and the module reloads.
+    await expect(row.locator('.draft-notice[data-notice="REFUSED"]')).toBeVisible({
+      timeout: 10000,
+    });
+    await expect(row.locator('textarea')).toHaveValue(typed);
+    expect(bodies).toHaveLength(2);
+    expect('replayed' in bodies[0]).toBe(false);
+    expect(bodies[1].replayed).toBe(true);
+    expect(bodies[1].clientActionId).toBe(bodies[0].clientActionId);
+    expect(bodies[1].baseSha256).toBe(bodies[0].baseSha256);
+    expect(await page.evaluate(() => localStorage.getItem('saveRetryParked'))).toBeNull(); // taken
+  });
+
+  test('a replay whose 5xx answers exhaust the retries keeps the typed text, with the generic notice (decision 28)', async ({
+    page,
+  }) => {
+    const [target] = middleVirginRows(await loadModuleJson(page));
+    await openModule(page);
+    const row = rowOf(page, target.segmentId);
+    await row.locator('.btn-edit').click();
+    const typed = `${target.is}${SUFFIX}`;
+    await row.locator('textarea').fill(typed);
+    const bodies = [];
+    await page.route(`**${MODULE_URL}/edit`, async (route) => {
+      bodies.push(route.request().postDataJSON());
+      // Not JSON, as a proxy's error page is: the parked item has no code, so no refusal notice applies.
+      return route.fulfill({
+        status: 502,
+        contentType: 'text/html',
+        body: '<html>Bad Gateway</html>',
+      });
+    });
+    page.on('dialog', (d) => d.accept().catch(() => {}));
+    await row.getByRole('button', { name: 'Vista', exact: true }).click();
+    // Three replays at about 1 s, 2 s and 4 s (saveRetry's backoff); the last leaves no attempt, so it parks.
+    await expect(row.locator('.draft-notice[data-notice="REFUSED"]')).toBeVisible({
+      timeout: 20000,
+    });
+    await expect(row.locator('textarea')).toHaveValue(typed);
+    expect(bodies).toHaveLength(4); // the live save and three replays, every one a 502
+    expect(bodies.slice(1).every((b) => b.replayed === true)).toBe(true);
+    expect(new Set(bodies.map((b) => b.clientActionId)).size).toBe(1);
+    await expect(page.locator('.toast-error', { hasText: 'geymdur' })).toBeVisible();
+    expect(await page.evaluate(() => localStorage.getItem('saveRetryParked'))).toBeNull(); // taken
+  });
+
+  test('a replay whose network failures exhaust the retries keeps the typed text, with the generic notice (decision 28)', async ({
+    page,
+  }) => {
+    const [target] = middleVirginRows(await loadModuleJson(page));
+    await openModule(page);
+    const row = rowOf(page, target.segmentId);
+    await row.locator('.btn-edit').click();
+    const typed = `${target.is}${SUFFIX}`;
+    await row.locator('textarea').fill(typed);
+    const bodies = [];
+    await page.route(`**${MODULE_URL}/edit`, async (route) => {
+      bodies.push(route.request().postDataJSON());
+      // No answer at all, as when the network drops ([USER]'s later answer), on EVERY attempt, so the retries run
+      // out. The control is editor-lifecycle Test 4, unchanged: it aborts only the first two, and a later replay
+      // still succeeds with nothing parked.
+      return route.abort('connectionfailed');
+    });
+    page.on('dialog', (d) => d.accept().catch(() => {}));
+    await row.getByRole('button', { name: 'Vista', exact: true }).click();
+    // Three replays at about 1 s, 2 s and 4 s; the last fails with no attempt left, so it parks with status null.
+    await expect(row.locator('.draft-notice[data-notice="REFUSED"]')).toBeVisible({
+      timeout: 20000,
+    });
+    await expect(row.locator('textarea')).toHaveValue(typed);
+    expect(bodies).toHaveLength(4); // the live save and three replays, every one aborted
+    expect(bodies.slice(1).every((b) => b.replayed === true)).toBe(true);
+    expect(new Set(bodies.map((b) => b.clientActionId)).size).toBe(1);
+    await expect(page.locator('.toast-error', { hasText: 'geymdur' })).toBeVisible();
+    expect(await page.evaluate(() => localStorage.getItem('saveRetryParked'))).toBeNull(); // taken
+  });
+
+  test('a replay parked before this page loaded comes back at the module load, with no draft stored (decision 28)', async ({
+    page,
+  }) => {
+    const [target] = middleVirginRows(await loadModuleJson(page));
+    const typed = `${target.is}${SUFFIX}`;
+    // What a body queued by a page loaded before the deploy leaves behind once this page's saveRetry has replayed
+    // it: no hash, so BASE_MISSING, parked, and no seg-draft key at all. Planted once, before the page's scripts run.
+    const other = `seg:${BOOK}/${CHAPTER}/m99999:x`;
+    const parked = [
+      {
+        key: `seg:${BOOK}/${CHAPTER}/${MODULE}:${target.segmentId}`,
+        url: `${MODULE_URL}/edit`,
+        body: JSON.stringify({ segmentId: target.segmentId, editedContent: typed }),
+        status: 409,
+        code: 'BASE_MISSING',
+        message: 'stub',
+        parkedAt: Date.now(),
+      },
+      {
+        key: other,
+        url: 'stub',
+        body: JSON.stringify({ segmentId: 'x', editedContent: 'y' }),
+        status: 409,
+        code: 'conflict',
+        message: 'stub',
+        parkedAt: Date.now(),
+      },
+    ];
+    await page.addInitScript((value) => {
+      if (sessionStorage.getItem('g11-planted')) return;
+      localStorage.setItem('saveRetryParked', value);
+      sessionStorage.setItem('g11-planted', '1');
+    }, JSON.stringify(parked));
+    page.on('dialog', (d) => d.accept().catch(() => {}));
+    await openModule(page);
+    const row = rowOf(page, target.segmentId);
+    await expect(row.locator('.draft-notice[data-notice="BASE_MISSING"]')).toBeVisible();
+    await expect(row.locator('textarea')).toHaveValue(typed);
+    // Control: only this module's prefix is taken; another module's parked replay waits for that module.
+    const left = JSON.parse(await page.evaluate(() => localStorage.getItem('saveRetryParked')));
+    expect(left.map((p) => p.key)).toEqual([other]);
+  });
 });

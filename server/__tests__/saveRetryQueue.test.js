@@ -594,3 +594,47 @@ describe('saveRetry key policies: replays marked, refused or exhausted replays p
     expect(h.sr.takeParked('seg:').map((p) => p.key)).toEqual(['seg:b/1/m:new']);
   });
 });
+
+// The segment editor registers its own seg: policy (parkRefused, onParked) on top of DEFAULT_KEY_POLICIES, which the
+// browser wiring has already registered for seg:. That works only because a second setKeyPolicy for a prefix REPLACES
+// the first: on a tie policyFor keeps the first policy it finds, so a kept duplicate would win and the refused replay
+// would be dropped with today's toast.
+describe('saveRetry setKeyPolicy: a second call for a prefix replaces the first (plan Task 20)', () => {
+  const BODY = JSON.stringify({ segmentId: 's1', editedContent: 'typed', clientActionId: 'a1' });
+
+  it('a page policy over DEFAULT_KEY_POLICIES parks a 409 answered to a seg: replay, still marked replayed', async () => {
+    const h = makeHarness({ keyPolicies: DEFAULT_KEY_POLICIES });
+    const seen = [];
+    h.sr.setKeyPolicy('seg:', {
+      markReplayed: true,
+      parkRefused: true,
+      onParked: (item) => seen.push(item.key),
+    });
+    h.setFetchScript([h.fail500(), res(409, { error: 'conflict', message: 'm' })]);
+    await h.sr.attempt('seg:b/1/m:s1', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await h.fireAllTimers();
+    await settle();
+    expect(h.fetchCalls).toHaveLength(2);
+    expect(JSON.parse(h.fetchCalls[1].options.body)).toEqual({
+      ...JSON.parse(BODY),
+      replayed: true,
+    });
+    expect(seen).toEqual(['seg:b/1/m:s1']);
+    expect(h.queue()).toEqual([]);
+    expect(h.toasts.at(-1).message).toMatch(/geymdur/);
+    expect(h.sr.takeParked('seg:').map((p) => [p.key, p.status, p.code])).toEqual([
+      ['seg:b/1/m:s1', 409, 'conflict'],
+    ]);
+  });
+
+  it('it replaces, it does not merge: a second policy without markReplayed leaves the replay unmarked', async () => {
+    const h = makeHarness({ keyPolicies: DEFAULT_KEY_POLICIES });
+    h.sr.setKeyPolicy('seg:', { parkRefused: true });
+    h.setFetchScript([h.fail500(), res(409, { error: 'conflict', message: 'm' })]);
+    await h.sr.attempt('seg:b/1/m:s1', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await h.fireAllTimers();
+    await settle();
+    expect(h.fetchCalls[1].options.body).toBe(BODY); // the default's markReplayed is gone with it
+    expect(h.sr.takeParked('seg:').map((p) => p.key)).toEqual(['seg:b/1/m:s1']);
+  });
+});

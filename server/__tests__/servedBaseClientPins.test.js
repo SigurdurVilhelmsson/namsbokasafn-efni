@@ -114,3 +114,15 @@ describe('a refused save keeps the text (index decision 12)', () => {
     );
   });
 });
+
+describe('a 409 to a replay comes back (index decision 12)', () => {
+  it('segment saves park a refused replay and the editor takes it', () => {
+    expect(src).toMatch(
+      /setKeyPolicy\('seg:', \{[^}]*parkRefused: true[^}]*onParked: onSaveParked/
+    );
+    expect(fnBody('restoreDraft', 'installDraft')).toMatch(/takeParked\(parkedPrefix\(\)\)/);
+    expect(fnBody('onSaveParked', 'reinstallHeldDrafts')).toMatch(
+      /takeParked\(item\.key, \{ exact: true \}\)/
+    );
+  });
+});

@@ -163,11 +163,17 @@
     const fromStorage = segmentSaveState.mergeDraftValues(
       values.filter((v) => v && typeof v.ts === 'number' && v.ts >= weekAgo)
     );
-    const entries = segmentSaveState.mergeRestoreSources(fromStorage, []);
+    const parked =
+      typeof saveRetry !== 'undefined' && typeof saveRetry.takeParked === 'function'
+        ? saveRetry.takeParked(parkedPrefix())
+        : [];
+    const entries = segmentSaveState.mergeRestoreSources(fromStorage, parked);
     // A pane already open holds its text on screen (a declined re-render): leave it.
     const ids = Object.keys(entries).filter((id) => !paneState.has(id));
-    if (!found) return;
-    tabGuard.clearDraftsByPrefix(prefix);
+    // A parked replay for this module comes back even with no draft stored: a body queued by a page loaded before
+    // the deploy, replayed by this page after F5 (decision 28).
+    if (!found && parked.length === 0) return;
+    if (found) tabGuard.clearDraftsByPrefix(prefix);
     // A kept text (a refused save) comes back unasked; only the others ask (index decision 12).
     const kept = ids.filter((id) => entries[id].refused);
     const others = ids.filter((id) => !entries[id].refused);
@@ -222,6 +228,17 @@
   }
 
   const API_BASE = '/api/segment-editor';
+
+  // Index decision 12, decision 28: a refused replay of a segment save comes back to its pane. markReplayed is
+  // repeated because a second setKeyPolicy for a prefix replaces the first (Task 7's DEFAULT_KEY_POLICIES).
+  // Guarded: a cached saveRetry.js older than this file has no setKeyPolicy.
+  if (typeof saveRetry !== 'undefined' && typeof saveRetry.setKeyPolicy === 'function') {
+    saveRetry.setKeyPolicy('seg:', {
+      markReplayed: true,
+      parkRefused: true,
+      onParked: onSaveParked,
+    });
+  }
 
   /**
    * The row's own values, read from its DOM. Never moduleData: a declined
@@ -347,6 +364,40 @@
     dirtyEdits.delete(segmentId);
     paneState.delete(segmentId);
     saveDraft(); // every dirty pane's text, plus the held one, before the reload
+  }
+
+  function parkedPrefix() {
+    return 'seg:' + currentBook + '/' + currentChapter + '/' + currentModuleId + ':';
+  }
+
+  /**
+   * A replay of a save in THIS module was refused, or ran out of retries on
+   * 5xx answers or network failures (saveRetry parked it; decision 28; a
+   * network one has status null). Keep the newest text: the
+   * pane's, if the editor kept typing, else the replayed body's. A parked item
+   * with no refusal code restores with the generic notice (entryFromParked).
+   * A replay for another module waits for that module's next load.
+   */
+  function onSaveParked(item) {
+    if (!moduleData || item.key.indexOf(parkedPrefix()) !== 0) return;
+    saveRetry.takeParked(item.key, { exact: true }); // handled here, not at the next load
+    const parked = segmentSaveState.entryFromParked(item);
+    if (!parked) return;
+    const segId = parked.segmentId;
+    const st = paneState.get(segId);
+    const ta = document.getElementById('textarea-' + cssId(segId));
+    const entry =
+      st && ta && dirtyEdits.has(segId)
+        ? segmentSaveState.draftEntry({
+            text: ta.value,
+            baseSha256: st.baseSha256,
+            occurrence: st.occurrence,
+            assists: st.assists,
+            refused: parked.entry.refused,
+          })
+        : parked.entry;
+    keepText(segId, entry);
+    loadModule(currentModuleId, { force: true });
   }
 
   function reinstallHeldDrafts() {
