@@ -189,7 +189,7 @@ function acceptSegment({
     // Spec §5.6 Accept (plan decision 12): the served version is minted from the segment compared
     // above, in one transaction with the INSERT, so the minted text is exactly the compared text,
     // and an alreadyAccepted result (returned above) or a lost race (below) writes nothing.
-    insertResult = conn.transaction(() => {
+    const mintAndInsert = conn.transaction(() => {
       const servedVersionId = mint
         ? servedVersions.mintVersions(conn, [
             servedVersions.buildVersionRow({
@@ -222,7 +222,11 @@ function acceptSegment({
           servedVersionId,
           mint ? occurrence : null
         );
-    })();
+    });
+    // IMMEDIATE, because with an occurrence its first statement is the mint's SELECT: a deferred
+    // transaction would hold a read when it asks for the write lock, which SQLite refuses at once
+    // with SQLITE_BUSY instead of waiting the busy timeout (PR1 review C2).
+    insertResult = mintAndInsert.immediate();
   } catch (err) {
     // Two concurrent accepts race past the SELECT: the partial unique index
     // decides, and the loser resolves to the winner's row (idempotent). The

@@ -192,7 +192,7 @@ function saveOnServedBase(input) {
   const conn = segmentEditor.getDb();
   // One transaction (spec §5.6 step 6): the mint and saveSegmentEdit's own transactions become
   // savepoints inside it, so a save that fails after its mint leaves no served-version row.
-  return conn.transaction(() => {
+  const mintAndSave = conn.transaction(() => {
     const [servedVersionId] = servedVersions.mintVersions(conn, [
       servedVersions.buildVersionRow({
         book,
@@ -236,7 +236,13 @@ function saveOnServedBase(input) {
       editedContentSha256: kept ? sha256Text(editedContent) : null,
       displayed,
     };
-  })();
+  });
+  // IMMEDIATE, because its first statement is the mint's SELECT: a deferred transaction would
+  // already hold a read when it asks for the write lock, and SQLite does not run the busy handler
+  // for that upgrade, so a lock another process holds (backup-db.sh's checkpoint) would fail the
+  // save at once with SQLITE_BUSY instead of waiting the busy timeout (PR1 review C2). Only the
+  // serve's own mint stays deferred (servedVersions.mintVersions, spec §5.4 step 3).
+  return mintAndSave.immediate();
 }
 
 module.exports = { REFUSAL_MESSAGES, REFUSAL_STATUS, placeOnServedBase, saveOnServedBase };
