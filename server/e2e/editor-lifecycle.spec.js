@@ -152,10 +152,33 @@ test.describe('Editor lifecycle', () => {
   test('network failure triggers retry with toast', async ({ page }) => {
     moduleId = await navigateToFirstModule(page);
 
+    const editRow = page
+      .locator('#segments-body tr')
+      .filter({ has: page.locator('button.btn-edit') })
+      .first();
+    const segId = await editRow.getAttribute('data-segment-id');
+    const mod = await (
+      await page.request.get(`/api/segment-editor/${BOOK}/${CHAPTER}/${moduleId}`)
+    ).json();
+    const latest = (mod.edits[segId] || [])[0];
+    const inFlight =
+      !!latest &&
+      (latest.status === 'pending' || (latest.status === 'approved' && !latest.applied_at));
+    // Control: Test 2 saved test-admin's pending SMOKE edit on this first editable row and Test 3 asserted it, so
+    // the row shows an in-flight edit. Without this, a row showing the base would let the T4 assertions below
+    // pass on null/null and never test the in-flight half.
+    expect(inFlight).toBe(true);
+    expect(latest.contentSha256).toMatch(/^[0-9a-f]{64}$/);
+    // T4 (client half): the row renders the pair the module response gave that edit.
+    await expect(editRow).toHaveAttribute('data-displayed-edit-id', String(latest.id));
+    await expect(editRow).toHaveAttribute('data-displayed-edit-sha256', latest.contentSha256);
+    const bodies = [];
+
     // Intercept POST to edit endpoint — abort first 2 attempts
     let interceptCount = 0;
     await page.route('**/edit', async (route) => {
       if (route.request().method() === 'POST') {
+        bodies.push(route.request().postDataJSON());
         interceptCount++;
         if (interceptCount <= 2) {
           await route.abort('connectionfailed');
@@ -193,6 +216,20 @@ test.describe('Editor lifecycle', () => {
 
     // We should have intercepted at least 2 failed + 1 success = 3 total
     expect(interceptCount).toBeGreaterThanOrEqual(3);
+    // §5.9: the replays carry the live attempt's base and action id, marked replayed.
+    expect(bodies[0].baseSha256).toMatch(/^[0-9a-f]{64}$/);
+    expect('replayed' in bodies[0]).toBe(false);
+    for (const b of bodies.slice(1)) {
+      expect(b.replayed).toBe(true);
+      expect(b.baseSha256).toBe(bodies[0].baseSha256);
+      expect(b.clientActionId).toBe(bodies[0].clientActionId);
+    }
+    // T4 (client half): the save echoes the in-flight edit the row rendered (the null/null arm is the base-displayed
+    // control in served-base-client.spec.js's first test).
+    expect([bodies[0].displayedEditId, bodies[0].displayedEditSha256]).toEqual([
+      latest.id,
+      latest.contentSha256,
+    ]);
   });
 
   // ------------------------------------------------------------------

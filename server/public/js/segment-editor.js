@@ -149,6 +149,37 @@
 
   const API_BASE = '/api/segment-editor';
 
+  /**
+   * The row's own values, read from its DOM. Never moduleData: a declined
+   * re-render (renderSegments returns false, renderModule ignores it) leaves
+   * moduleData newer than the screen (§5.18).
+   */
+  function rowElement(segmentId) {
+    return document.getElementById('row-' + cssId(segmentId));
+  }
+  function rowValues(segmentId) {
+    return segmentSaveState.readRowValues(rowElement(segmentId));
+  }
+
+  /** G1.21: what the next save from this row must echo, kept on the row itself. */
+  function applySaveEcho(segmentId, result) {
+    const tr = rowElement(segmentId);
+    if (!tr) return;
+    const current = segmentSaveState.readRowValues(tr);
+    for (const [name, value] of segmentSaveState.echoAttributeUpdates(result, current.baseEditId)) {
+      if (value === null) tr.removeAttribute(name);
+      else tr.setAttribute(name, value);
+    }
+  }
+
+  /** The hash of the edit the reviewer is looking at: the row that displays it. */
+  function reviewedEditSha256For(editId) {
+    const id = Number(editId);
+    const tr = document.querySelector('#segments-body tr[data-displayed-edit-id="' + id + '"]');
+    const row = segmentSaveState.readRowValues(tr);
+    return row && row.displayedEditId === id ? row.displayedEditSha256 : null;
+  }
+
   // ================================================================
   // AUTH
   // ================================================================
@@ -1319,6 +1350,16 @@
     const hasActiveEdit = acceptEligibility.isEditInFlight(latestEdit);
     const displayIs = baselineTextFor(seg, latestEdit);
     const editableText = displayIs;
+    // §5.18: what a save and an accept echo, rendered ON the row, so a declined
+    // re-render cannot make them disagree with what the editor is looking at.
+    const rowAttrs = segmentSaveState.rowDataAttributeHtml(
+      segmentSaveState.rowDataAttributes(
+        seg,
+        hasActiveEdit ? latestEdit : null,
+        latestEditIdForSegment(seg.segmentId)
+      ),
+      escapeHtml
+    );
 
     let enHtml = renderMarkdownPreview(seg.en);
     const isHtml = renderMarkdownPreview(displayIs);
@@ -1511,7 +1552,7 @@
             : '';
       actionsHtml += `
           ${contestedHint}
-          <button class="btn btn-sm btn-accept" onclick="acceptSegmentAndAdvance('${seg.segmentId}')"${stacked} title="${UI.acceptance.acceptTooltip}">&#10003; ${UI.acceptance.acceptButton}</button>
+          <button class="btn btn-sm btn-accept" onclick="acceptSegmentAndAdvance('${seg.segmentId}', 'single')"${stacked} title="${UI.acceptance.acceptTooltip}">&#10003; ${UI.acceptance.acceptButton}</button>
         `;
     } else if (blockReason === 'DISCUSS_OPEN') {
       actionsHtml += `<div class="accept-context-hint"${stacked}>${UI.acceptance.discussBlocked}</div>`;
@@ -1538,7 +1579,7 @@
       : '';
 
     return `
-        <tr class="${rowClass}" id="row-${cssId(seg.segmentId)}">
+        <tr class="${rowClass}" id="row-${cssId(seg.segmentId)}"${rowAttrs}>
           <td class="col-type">
             <span class="segment-type-badge ${seg.segmentType}">${seg.segmentType}</span>
             ${conflictHtml}
@@ -1695,10 +1736,12 @@
     paintCursor();
   }
 
-  async function acceptSegment(segmentId) {
+  async function acceptSegment(segmentId, acceptOrigin) {
     if (!moduleData?.segments) return;
     const seg = moduleData.segments.find((s) => s.segmentId === segmentId);
     if (!seg || !seg.hasTranslation) return;
+    const row = rowValues(segmentId);
+    if (!row || row.is === null) return; // nothing on screen to attest
 
     try {
       await saveRetry.attempt(
@@ -1708,7 +1751,15 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           credentials: 'include',
-          body: JSON.stringify({ segmentId, acceptedContent: seg.is }),
+          body: JSON.stringify(
+            segmentSaveState.buildAcceptBody({
+              segmentId,
+              row,
+              acceptOrigin,
+              clientActionId: segmentSaveState.newClientActionId(window.crypto),
+              clientActionTime: Date.now(),
+            })
+          ),
         }
       );
       lastServerSaveTime = Date.now();
@@ -1730,9 +1781,9 @@
   }
 
   /** Accept a segment and advance the cursor to the next unhandled row. */
-  async function acceptSegmentAndAdvance(segmentId) {
+  async function acceptSegmentAndAdvance(segmentId, acceptOrigin = 'single') {
     cursorSegmentId = nextUnhandledAfter(segmentId);
-    await acceptSegment(segmentId);
+    await acceptSegment(segmentId, acceptOrigin);
   }
 
   /**
@@ -1745,7 +1796,7 @@
     if (!moduleData?.segments) return;
     const cur = cursorSegmentId && moduleData.segments.find((s) => s.segmentId === cursorSegmentId);
     if (cur && isKeyboardAcceptTarget(cur)) {
-      acceptSegmentAndAdvance(cur.segmentId);
+      acceptSegmentAndAdvance(cur.segmentId, 'keyboard-stream');
       return;
     }
     const first = moduleData.segments.find(isKeyboardAcceptTarget);
@@ -1931,6 +1982,11 @@
     if (!moduleData?.segments) return;
     const seg = moduleData.segments.find((s) => s.segmentId === segmentId);
     if (!seg) return;
+    // §5.18: the base, the displayed pair and the text compared against all
+    // come from the ROW, not from moduleData.
+    const row = rowValues(segmentId);
+    if (!row || row.is === null) return; // the pane's row is gone (navigated away mid-save)
+    const shownIs = row.is;
 
     const editedContent = document.getElementById('textarea-' + cssId(segmentId)).value;
     const category = document.getElementById('cat-' + cssId(segmentId)).value;
@@ -1939,7 +1995,7 @@
     // If content matches original and no annotation, check if there's an existing edit to withdraw
     const existingEdits = moduleData.edits[segmentId] || [];
     const hasPendingEdit = existingEdits.some((e) => e.status === 'pending');
-    if (editedContent === seg.is && !category && !editorNote && !hasPendingEdit) {
+    if (editedContent === shownIs && !category && !editorNote && !hasPendingEdit) {
       closeEditPanel(segmentId);
       return; // No change from original, no annotation, no edit to withdraw
     }
@@ -1948,7 +2004,7 @@
     // carries a category/note is NOT an edit — the server's withdraw branch
     // would silently drop the annotation (and delete a pending edit).
     // Explain, and point at Staðfesta MT. Server behavior unchanged.
-    if (editedContent === seg.is && (category || editorNote)) {
+    if (editedContent === shownIs && (category || editorNote)) {
       if (!hasPendingEdit) {
         alert(UI.acceptance.unchangedNothingSaved);
         return;
@@ -1957,7 +2013,7 @@
     }
 
     // Validate before saving
-    const validation = validateSegmentEdit(seg.en, seg.is, editedContent);
+    const validation = validateSegmentEdit(seg.en, shownIs, editedContent);
     if (validation.blocked) {
       alert(
         UI.confirm.validationBlocked +
@@ -1983,16 +2039,18 @@
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
-      body: JSON.stringify({
-        segmentId,
-        originalContent: seg.is,
-        editedContent,
-        category: category || undefined,
-        editorNote: editorNote || undefined,
-        // Optimistic-concurrency token: highest edit id seen on this segment at
-        // load. The server 409s if another editor moved past it (F13 parity).
-        baseEditId: latestEditIdForSegment(segmentId),
-      }),
+      body: JSON.stringify(
+        segmentSaveState.buildSaveBody({
+          segmentId,
+          row,
+          editedContent,
+          category,
+          editorNote,
+          assists: [], // Task 10: the pane's assist list
+          clientActionId: segmentSaveState.newClientActionId(window.crypto),
+          clientActionTime: Date.now(),
+        })
+      ),
     };
 
     // Update per-segment indicator to "saving"
@@ -2042,6 +2100,7 @@
         }
       }
 
+      applySaveEcho(segmentId, saveResult);
       dirtyEdits.delete(segmentId);
       lastServerSaveTime = Date.now();
       recentlySaved.add(segmentId);
@@ -2145,7 +2204,7 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
-        body: JSON.stringify({ note }),
+        body: JSON.stringify({ note, reviewedEditSha256: reviewedEditSha256For(editId) }),
       });
 
       await loadModule(currentModuleId);

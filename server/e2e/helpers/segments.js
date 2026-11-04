@@ -30,6 +30,7 @@
  *      | editor-lifecycle.spec.js    | `button.btn-edit` `.first()` | first segment   |
  *      | acceptance.spec.js          | `.btn-accept` `.last()`      | last segment    |
  *      | segment-editor.spec.js      | literal id                   | `…:abstract:auto-2` |
+ *      | served-base-client.spec.js  | virgin rows nearest the middle | mid-module rows |
  *
  *    Hence: never the first segment, never the last, plus a caller-supplied
  *    `exclude` for id-pinned claims. Uniqueness across runs lives in the
