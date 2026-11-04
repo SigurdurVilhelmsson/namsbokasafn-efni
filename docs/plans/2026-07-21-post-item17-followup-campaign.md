@@ -4,6 +4,28 @@
 
 ## ⏩ RESUME — state as of **2026-10-09 — ✅ '6' PR-B IS MERGED ([#546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546)) AND DEPLOYED, with the 7 Dependabot PRs; R-22's condition is met and the LIVE-RUN HOLD's condition is met on `main`. ⏹ The whole-book re-render and the chemistry sync are HELD for [USER]. ▶ [CODE] in parallel: the ② code batch (end of this block)** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence) ✏️ *Heading re-dated 2026-10-09; it had said PR-B was BUILT and UNPUSHED, with step 2b and the LIVE-RUN HOLD outstanding, after all three had changed. The bullets directly under the SINGLE NEXT ACTION are PR-B's record.*
 
+### ⏭ 2026-11-04 (handoff: build PR1) — ADDS TO THE ENTRY DIRECTLY BELOW AND SUPERSEDES ITS NEXT: **✅ #622 MERGED (`a2a1fdbd`). ✅ PR1's plan takes [USER]'s network answer (this entry's PR). ✅ §C209's two follow-ups are built and reviewed: [#623](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/623). Both merge when their checks are green, on [USER]'s instruction (2026-11-04). ▶ NEXT, IN A FRESH SESSION: BUILD G1.1 + G1.2 PR1 FROM ITS PLAN.**
+- **How to start.**
+  - Read the plan index, `docs/superpowers/plans/2026-11-03-g11-g12-served-versions-and-event-log.md`, then PR1's plan, `docs/superpowers/plans/2026-11-03-g11-g12-pr1-served-versions-core.md`.
+  - Cut a branch from `main`, then run the plan's "Before Task 1": the tree check and the G-5 re-grep.
+  - Then Tasks 1–20 in order, test first, one commit each.
+- **Gates, from the index:**
+  - CI's checks, run locally;
+  - a whole-branch blind-pair review (Opus and Fable; [USER] commissioned the Fable half);
+  - a draft PR;
+  - no merge and no deploy without [USER].
+- **`main` has moved since the plan was pinned to `ed10180c`.** #621 and #623 scope the apply path, acceptances, the concordance index, module review and the version history to the chapter. PR1's Tasks 12, 15 and 16 touch those services. The plan's "State of this plan" carries a dated note: re-derive every cited line there. Neither PR added a migration, so `053` is still free.
+- **Nothing is owed from [USER] before PR1's PR opens:** every PR1 string is approved, with the dative correction applied.
+- **Open, not blocking PR1:** should `processQueue` park an item that the next page load finds out of attempts or expired? Today it drops it silently. PR1's decision 28 builds the decided cases and records this one as open.
+- **Still owed:**
+  - [USER]'s deploy, which carries layer 2, #621 and #623 once merged (check `main`'s CI first);
+  - the ch10 re-buy (about USD 4, paid, dry run first, in a session with the API key);
+  - the follow-ups the yes asked for later (two entries below).
+- **§C209 residue, recorded and not fixed:**
+  - `status.js` `GET /:book/editorial-progress` keys its lookups by module id (the same class, read-only);
+  - production's earlier chapter-metadata reviews may carry other chapters' edits in `review_id`, since #623 does not rewrite data;
+  - PR3's plan carries snippets older than this scoping; its "State of this plan" note says to re-derive them.
+
 ### ⏭ 2026-11-04 (both merged) — ADDS TO THE ENTRY DIRECTLY BELOW AND SUPERSEDES ITS NEXT: **✅ #620 MERGED (`59543653`) AND #621 MERGED (`c2c765e6`), both as merge commits, on [USER]'s instruction. The G1.1 + G1.2 plan, its spec amendments and §C209's fix are on `main`. ⚠️ #621 is server code, so §C209's fix reaches production only with the next deploy, and these merges put prod's content backup behind until that deploy (CLAUDE.md § Content delivery). ▶ NEXT: the deploy, on [USER]'s go. Then PR1 of G1.1 + G1.2, in a new session, from its plan (`docs/superpowers/plans/2026-11-03-g11-g12-pr1-served-versions-core.md`), on its own branch cut from `main`. [USER] answered the open questions the same day (below).**
 - **The merge.** GitHub's pull requests were in a partial outage at the time (githubstatus): the merge call answered 502 for #621 three times, and its merge commit appeared on `main` after the third.
   - Both merge commits' second parents are the reviewed heads (`ae8e6a47`, `57df6400`).
@@ -55,6 +77,7 @@
   - **The same class, not fixed there** (owed; owner and timing are [USER]'s):
     - module review submission and its edit list key on (book, module id), so a ch02 chapter-metadata review claims ch05's edits;
     - `content_versions` keys on (book, module id, track), so a chapter's version history lists other chapters' snapshots (no wrong write).
+  - ✏️ **2026-11-04: both are fixed in [#623](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/623)** ([USER]: fix both now), with no migration. The residue is listed in the 2026-11-04 handoff entry.
 - **Found by the PR5 plan's drafter; re-checked in code here** at `b6212d99` (its `server/` is identical to `ed10180c`).
 - **Mechanism.** `chapter-metadata` is one module id shared by all 21 chapters, so a key without the chapter covers all of them.
   - `applyApprovedEdits` selects every approved row by book and module id, with no chapter (`server/services/segmentEditorService.js:958-963`).

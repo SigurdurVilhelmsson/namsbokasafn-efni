@@ -18,9 +18,9 @@ module route mints the served versions and sends `occurrence` and `baseSha256` p
 edit row; the save route requires the echo; the accept route and propagation place, mint and record. On the client, a
 new DOM-free module (`server/public/js/segment-save-state.js`) holds the value rules, `segment-editor.js` renders them
 on each row and reads them back from the row's DOM, and `saveRetry.js` carries the refusal code, marks a replay and
-parks any non-5xx answer to one, and a 5xx that exhausts its retries. `checks.schema` and the research-boundary test
-start here and grow per PR. No research file and no event: PR3 adds the emission at the points this PR refuses (index
-decision 2).
+parks any non-5xx answer to one, and a replay whose 5xx answers or network failures exhaust its retries.
+`checks.schema` and the research-boundary test start here and grow per PR. No research file and no event: PR3 adds the
+emission at the points this PR refuses (index decision 2).
 
 **Tech Stack:** Node 22, Express (CommonJS under `server/`), better-sqlite3 13 (only in `server/node_modules`), browser
 JS with no build step (`server/public/js/`, `sourceType: 'script'`), Vitest from the repository root, Playwright E2E
@@ -40,14 +40,27 @@ JS with no build step (`server/public/js/`, `sourceType: 'script'`), Vitest from
 
 ## State of this plan (read first)
 
+- ✏️ **2026-11-04: `main` has moved since this plan was pinned to `ed10180c`.** Two merges changed services this plan
+  touches, both scoping `chapter-metadata` (one module id for all 21 chapters) to its chapter:
+  - [#621](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/621) (§C209): the apply path, `acceptanceService.lapseDrifted`
+    and `stampApplied` (which now take a required chapter), restore, `getApplyStatus` and `concordanceService.indexModule`;
+  - [#623](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/623) (§C209's follow-ups, if merged): module review
+    submission and `getModuleStats` (now chapter-aware), and `contentVersionService.getModuleVersions` / `getVersionContent`
+    (now taking a required chapter).
+
+  Neither added a migration, so the predicted numbers stand. **Re-derive every cited line in `segmentEditorService.js`,
+  `acceptanceService.js`, `contentVersionService.js` and `concordanceService.js` before editing it (the tree wins).**
+  A snippet below that keys those tables on (book, module id) alone predates this scoping: never copy it as written.
 - **Written 2026-11-03 as one of the five PR plans the index lists. ✅ [USER] approved it on 2026-11-04** ("Yes for
   all" to the index's questions, with four clarifications the same day; § Answers, at the end). **The spec's
   `✏️ AMENDED 2026-11-04` block (`4c35d71b`) records every departure this plan builds (decisions 3, 7, 36 and 39), so no
-  spec commit is owed before any task.** Three answers changed the plan and are folded in: decision 39 is adopted
-  (Task 13), a 5xx that exhausts the retries is parked (decision 28, Task 7), and the server's `BASE_MISSING` message
+  spec commit is owed before any task.** The answers that changed the plan are folded in: decision 39 is adopted
+  (Task 13), a replay that exhausts the retries is parked, whether 5xx answers or network failures exhausted them
+  (decision 28, Task 7; the network half is a later answer the same day), and the server's `BASE_MISSING` message
   carries more advice (decision 20; Tasks 13 and 14). That message's wording, **and which of the old page's prompts it
   names**, stay for [USER]'s check before the PR opens (Before the PR, item 4; § Answers). Task 17 also edits the C16
-  runbook's exit-code table (decision 16).
+  runbook's exit-code table (decision 16). **One question is open:** whether `processQueue` should park an item that
+  a page load finds out of attempts or expired (decision 28; § Answers, the open question).
   Status lives in the register, never here.
 - **Pinned to `main` = `ed10180c`.** Every `path:line` below was opened at that tree (its `server/`, `tools/`,
   `scripts/`, `.github/` and `LICENSE` are byte-identical to `d24681b8` and `3a1db909`). Once an earlier task has
@@ -56,7 +69,9 @@ JS with no build step (`server/public/js/`, `sourceType: 'script'`), Vitest from
   `node_modules` in the drafting sandbox. Two premises were checked by read-only probes through `segmentParser`: T1's
   two mismatching chains (`m68726:para:fs-idm94618544#0`, `m68747:para:fs-idm99049568#0`), and that both
   duplicated-id modules serve the last copy's Icelandic for both occurrences while their raw MT copies differ. Run each
-  red arm before implementing; where it fails for another reason, stop and re-derive.
+  red arm before implementing; where it fails for another reason, stop and re-derive. **One exception, added
+  2026-11-04:** Task 7's Step 2 red, its Step 4 suite and its mutation check were run on scratch copies of
+  `saveRetry.js` and its test file, both byte-identical to `ed10180c`'s (Task 7, the notes under Steps 2 and 4).
 
 ## Decisions taken in this plan
 
@@ -303,29 +318,55 @@ Task 13, decision 36 in Task 8), with no fallback and no spec commit before it.*
     2 editor's keys (`loc:`, `loc-auto:`, `loc-all:`, `localization-editor.js:183`, `:1030`, `:1148`) have no policy and
     behave byte-for-byte as today. This is how "every new field stays optional there" is met. `parkRefused` and
     `onParked` stay page-specific (decision 28).
-28. **Every non-5xx answer to a replay is parked, never dropped, and so is a 5xx that exhausts the retries** (index
-    decision 12; spec §5.6: "a queued replay that gets any non-5xx answer is dropped with a toast … Both paths must keep
-    the text first"). §5.18's row says "any 409 to a replay"; §5.6 names the whole path, and a 400, 403, 404 or 413
-    answered to a `seg:` replay drops the typed text just the same: wider than §5.18's row (409), and exactly what index
-    decision 12 already reads it as, any non-5xx answer to a replay. **✅ [USER] 2026-11-04: a 5xx that exhausts
-    `MAX_ATTEMPTS` on a key whose policy has `parkRefused` is parked too, with its status and code recorded, and the
-    owner's `onParked` runs** (§5.6 names only the non-5xx path; until that answer the plan kept today's toast-and-drop
-    there). So the parking branch sits after the retry branch and keys on the policy alone: it is reached exactly when
-    the answer is non-5xx, or a 5xx with no attempt left (Task 7). A parked 5xx keeps the item shape; its `code` is the
-    body's `error` when the body is JSON with one, else `null`, and the client restores it as a kept text with the
-    generic notice (`entryFromParked` reads a missing code as `'REFUSED'`, and `noticeFor` gives the generic notice to
-    any code outside `NOTICE_CODES`; Task 8). Its toast says the save failed after
-    its attempts rather than that it was refused (a string the 2026-11-04 pass added, Task 7). **A key with no policy
-    (the Pass 2 editor's) keeps today's toast-and-drop exactly, for a non-5xx answer and an exhausted 5xx alike. Not
-    changed, because the answer named only the 5xx: a replay whose network failures exhaust the retries** (the
-    `.catch` branch of `executeRetry`, `saveRetry.js:160-177`) **is still dropped with today's toast on every key.** The
-    replay runs outside the caller's promise chain (`executeRetry`'s own toast, `saveRetry.js:149-157`), the queue lives
-    in `localStorage` and is processed by whichever page loads `saveRetry.js` next (`saveRetry.js:373-378`; both editor
-    views load it). So a policy with `parkRefused: true` moves the refused item into `localStorage['saveRetryParked']`
-    (pruned after 7 days by `processQueue`, the drafts' own window, `tabGuard.js:126`) and calls the owner's `onParked`.
-    The segment editor handles one for the open module at once, and drains the rest into the module's draft when that
-    module loads. Because the policy is by key prefix, not stored on the queue item, **a body queued by a page loaded
-    before the deploy and replayed after F5 is parked too** (it has no hash, so it comes back `BASE_MISSING`).
+28. **Every non-5xx answer to a replay is parked, never dropped, and so is a replay that exhausts the retries while a
+    page is open, on 5xx answers or on network failures** (two cases still drop, unchanged, at the end of this decision;
+    index decision 12; spec §5.6: "a queued replay that gets any non-5xx answer is dropped with a toast … Both paths
+    must keep the text first"). §5.18's row says "any 409 to a replay"; §5.6 names the whole path, and a 400, 403, 404
+    or 413 answered to a `seg:` replay drops the typed text just the same: wider than §5.18's row (409), and exactly
+    what index decision 12 already reads it as, any non-5xx answer to a replay. **✅ [USER] 2026-11-04: a 5xx that
+    exhausts `MAX_ATTEMPTS` on a key whose policy has `parkRefused` is parked too, with its status and code recorded,
+    and the owner's `onParked` runs** (§5.6 names only the non-5xx path; until that answer the plan kept today's
+    toast-and-drop there). So the parking branch sits after the retry branch and keys on the policy alone: it is reached
+    exactly when the answer is non-5xx, or a 5xx with no attempt left (Task 7). A parked 5xx keeps the item shape; its
+    `code` is the body's `error` when the body is JSON with one, else `null`, and the client restores it as a kept text
+    with the generic notice (`entryFromParked` reads a missing code as `'REFUSED'`, and `noticeFor` gives the generic
+    notice to any code outside `NOTICE_CODES`; Task 8). Its toast says the save failed after its attempts rather than
+    that it was refused (a string the 2026-11-04 pass added, Task 7). **✅ [USER] 2026-11-04, a later answer (the index's
+    § Answers, "Later answers"): a replay whose network failures exhaust `MAX_ATTEMPTS` is kept too, as an exhausted 5xx
+    is.** Today the `.catch` branch of `executeRetry` (`saveRetry.js:160-177`) drops it with the toast on every key. It
+    gains the same kind of parking branch, between its retry branch and its terminal `else`, keyed on the policy's
+    `parkRefused` and on `isRetryableError(err)`, the predicate its retry branch already uses: so it is reached exactly
+    when a network failure leaves no attempt, and an earlier network failure is still retried (Task 7). No answer
+    reached the page, so the parked item has `status: null`, `code: null` and `message: null`. **`status: null` is how a
+    parked item says "network":** every answered park carries its HTTP status as a number, and `null` rather than `0`,
+    because `0` is what an opaque fetch response reports. It shows the same exhaustion toast, and it restores with the
+    generic notice by the same rule (no code, so `'REFUSED'`; Task 8). An error reaching that `.catch` that
+    `isRetryableError` does not count (not a `TypeError`, no 5xx `status`) keeps today's drop, outside the answer: a
+    replay's fetch carries no abort signal (the queued `options` are `method`, `headers`, `body` and `credentials`), so
+    its network failure is a `TypeError`. Task 7 tests that drop with a control. Without it, nothing tests the
+    `isRetryableError(err)` half of the new condition: deleting that half leaves the rest of Task 7's suite passing
+    (measured 2026-11-04), and such an error would then park on its first replay. **A key with no policy (the Pass 2
+    editor's) keeps today's toast-and-drop exactly, for a non-5xx answer, an exhausted 5xx and exhausted network
+    failures alike.** The replay runs outside the caller's promise chain (`executeRetry`'s own toast,
+    `saveRetry.js:149-157`), the queue lives in `localStorage` and is processed by whichever page loads `saveRetry.js`
+    next (`saveRetry.js:373-378`; both editor views load it). So a policy with `parkRefused: true` moves the refused
+    item into `localStorage['saveRetryParked']` (pruned after 7 days by `processQueue`, the drafts' own window,
+    `tabGuard.js:126`) and calls the owner's `onParked`. The segment editor handles one for the open module at once, and
+    drains the rest into the module's draft when that module loads. Because the policy is by key prefix, not stored on
+    the queue item, **a body queued by a page loaded before the deploy and replayed after F5 is parked too** (it has no
+    hash, so it comes back `BASE_MISSING`). **"Exhausts" means the last replay fails while a page that loads
+    `saveRetry.js` is open. Two cases are not parked, for 5xx answers and network failures alike; this PR does not
+    change them, and the question is [USER]'s (§ Answers, the open question).** First, a page closed or reloaded before
+    the last replay: the second failed replay stores the item at `attempts` 3 (`queueForRetry` → `addToQueue`;
+    `saveRetry.js:145-148` after a 5xx, `:163-166` after a network failure) and the last replay waits 4 s. If the page
+    closes or reloads in that wait, the next page's `processQueue` removes the item without replaying it, with no toast
+    and no park (`:283`, then `saveQueue(active)` at `:288`). Second, an item older than `EXPIRY_MS` (an hour), which it
+    removes the same way (`:281`). Task 7 changes `processQueue` only to prune parked items. So both cases stay as at
+    `ed10180c` on every key, and the text then survives only through the segment editor's own 5-second draft. Measured
+    2026-11-04 on a scratch copy of `saveRetry.js` with Task 7's Steps 1 and 3 applied, on a `seg:` key whose policy has
+    `parkRefused`: an item at `attempts` 3 when the page reloaded, and an item 61 minutes old, each ended with an empty
+    queue, `takeParked('seg:')` → `[]` and no toast, after 5xx answers and after network failures. Until [USER] answers,
+    the plan does not make `processQueue` park either case.
 29. **The draft value is `{v: 2, ts, segments: {segId: {text, baseSha256, occurrence, assists, refused}}, drafts:
     {segId: text}}`**, in the same key family (`seg-draft:<book>/<chapter>/<module>:<tabId>`, `segment-editor.js:67-82`).
     `v: 2` plus `segments` is what tells it from today's `{ts, drafts}`. `ts` stays because `tabGuard` keys both its
@@ -339,7 +380,7 @@ Task 13, decision 36 in Task 8), with no fallback and no spec commit before it.*
     adds `BOOK_NOT_MINTED` and `NO_LAYER`, the code decision 5 names). A live `conflict` 409 (today's
     `SEGMENT_CONFLICT`, whose wire code is the lowercase `'conflict'`, `routes/segment-editor.js:483`) keeps today's
     alert-and-reload; any non-5xx answer to a *replay*, `conflict` included, is kept, and so is a replay whose 5xx
-    answers exhaust the retries (decision 28). Nothing may key on the string `SEGMENT_CONFLICT`.
+    answers or network failures exhaust the retries (decision 28). Nothing may key on the string `SEGMENT_CONFLICT`.
 31. **How a kept text comes back** (§13's refused-save experience, index decision 12): the text, its assist list and
     the base it was sent with go into the draft and an in-memory hold; the module reloads; the held text is installed in
     its pane with a notice above it and a `draft-restore` item appended after its re-installed assists. **The next save
@@ -459,9 +500,11 @@ prose. Read them there. For this PR, in addition:
   prettier-checked. The code blocks below show content, not final layout.
 - **The research-only fields are accepted and ignored by the server** (index decision 4): no server code in PR1 reads
   `clientActionId`, `clientActionTime`, `assists`, `acceptOrigin`, `reviewedEditSha256` or `replayed`.
-- **Icelandic strings:** [USER] approved the proposed UI and server strings on 2026-11-04 (index decision 13), except
-  the ones the 2026-11-04 pass changed or added (Before the PR, item 4), which stay proposals, marked in the code, for
-  [USER]'s check before the PR opens. No book content is translated anywhere in this PR.
+- **Icelandic strings:** [USER] approved the proposed UI and server strings on 2026-11-04 (index decision 13). Of
+  the three the 2026-11-04 pass changed or added (Before the PR, item 4), a later answer the same day approved
+  `UI.draftNotice.refused` and `saveRetry`'s park toast for a replay out of retries as written (index § Answers,
+  "Later answers"). The server's `BASE_MISSING` message stays a proposal, marked in the code, for [USER]'s check before
+  the PR opens. No book content is translated anywhere in this PR.
 - **Run vitest from the repository root**, one file per command where a step says so.
 
 ## Review Focus
@@ -543,8 +586,8 @@ Input cases the spec implies but its tests do not exercise directly. Each names 
 19. **A replay refused on the Pass 2 editor's page** (the queue is shared and `localization-editor.html` loads
     `saveRetry.js`): it is still sent with `replayed: true` (`DEFAULT_KEY_POLICIES`, decision 27), but no page there
     registered `parkRefused` for `seg:`, so it is dropped with today's toast, and so is a `seg:` replay whose 5xx
-    answers exhaust the retries there. The segment editor's text then survives only through its own 5-second draft.
-    → Task 7
+    answers or network failures exhaust the retries there (decision 28). The segment editor's text then survives only
+    through its own 5-second draft. → Task 7
 20. **An old page (pre-deploy JS) reading a version-2 draft** must restore the text, not wipe the module's drafts
     (decision 29's `drafts` mirror). → Task 18
 21. **A body over `express.json`'s `1mb` limit** would refuse the save with 413; whole-text assists are what grow it.
@@ -558,12 +601,18 @@ Input cases the spec implies but its tests do not exercise directly. Each names 
     gives the page a new `tabId` while another tab writes a newer draft): `tabGuard.findNewestDraft` returns one draft
     (`tabGuard.js:88-103`) and `clearDraftsByPrefix` removes them all (`:109-118`), so the restore must read every
     draft and carry each refused entry over, or the kept text is deleted unseen. → Task 8, Task 18
-25. **A segment-save replay whose 5xx answers exhaust `MAX_ATTEMPTS`** (decision 28, [USER] 2026-11-04): parked with
-    its status and the body's `error` as its code, or `null` when the body is not JSON or names none; never dropped on
-    the segment editor's page. Its pane comes back with the generic notice (`REFUSED`), since no refusal code applies,
-    and its first 5xx is still retried, not parked. The Pass 2 editor's keys still drop it with today's toast, and a
-    replay whose *network failures* exhaust the retries is still dropped on every key (outside the answer). → Task 7,
-    Task 8, Task 20
+25. **A segment-save replay that exhausts `MAX_ATTEMPTS`, on 5xx answers or on network failures** (decision 28, [USER]
+    2026-11-04; the network half is a later answer the same day): parked, never dropped, when the last replay fails
+    while the segment editor's page is open. One that 5xx answers exhausted records its status and the body's `error` as
+    its code, or `null` when the body is not JSON or names none; one that network failures exhausted records `status:
+    null`, `code: null` and `message: null`, since no answer reached the page. Either pane comes back with the generic
+    notice (`REFUSED`), since no refusal code applies. A failure with an attempt left, 5xx or network, is still retried,
+    not parked, and a network failure that a later replay outlives still ends in today's success toast
+    (`editor-lifecycle` Test 4 stays as it is). A replay whose fetch rejects with anything other than a network failure
+    (not a `TypeError`, no 5xx `status`) is still dropped with today's toast (Task 7's control). The Pass 2 editor's
+    keys still drop all of them with today's toast. **Not covered, on either half, and unchanged:** a page closed or
+    reloaded before the last replay, and an item older than an hour. The next page's `processQueue` removes either one
+    with no toast and no park (decision 28; the question is [USER]'s). → Task 7, Task 8, Task 20
 
 ## The T-tests this PR carries (index § Test placement)
 
@@ -1592,15 +1641,18 @@ git commit -m "feat(server): the module route mints served versions and sends ba
 Spec: §5.18 (rows 5 and 6, "`saveRetry.js` is shared"), §5.6 ("a queued replay that gets any non-5xx answer is
 dropped with a toast … Both paths must keep the text first"), §5.9 (`replayed`, `client_action_id`), index decisions
 4 and 12, T23 (its "`saveRetry` errors carry `code`" half), T20's client precondition (a replay carries `replayed`);
-decisions 27 and 28 (with [USER]'s 2026-11-04 answer: a 5xx that exhausts the retries is parked too).
+decisions 27 and 28 (with [USER]'s 2026-11-04 answers: a replay that exhausts the retries is parked too, whether 5xx
+answers or, in a later answer, network failures exhausted it).
 
 **Files:**
 - Modify: `server/public/js/saveRetry.js` — new module-level `DEFAULT_KEY_POLICIES`; `createSaveRetry`: new
   `setKeyPolicy`, `policyFor`, `replayOptions`, `loadParked`, `saveParked`, `park`, `takeParked`, and the optional
-  `deps.keyPolicies`; `executeRetry` (the fetch options and a new parking branch between the retry branch and the
-  terminal `else`, reached by a non-5xx answer or an exhausted 5xx); `attempt`'s non-retryable block
-  (`err.code`, `err.data`); `processQueue` (prune parked items); the returned API; the browser wiring (`createSaveRetry({…})` at
-  `:362-371`, ed10180c: passes `keyPolicies: DEFAULT_KEY_POLICIES`); `module.exports` (`:381-383`).
+  `deps.keyPolicies`; `executeRetry` (the fetch options; in its `.then`, a new parking branch between the retry branch
+  and the terminal `else`, reached by a non-5xx answer or an exhausted 5xx; in its `.catch`, one between the
+  `.catch`'s own retry branch and terminal `else`, reached by a network failure with no attempt left); `attempt`'s
+  non-retryable block (`err.code`, `err.data`); `processQueue` (prune parked items); the returned API; the browser
+  wiring (`createSaveRetry({…})` at `:362-371`, ed10180c: passes `keyPolicies: DEFAULT_KEY_POLICIES`);
+  `module.exports` (`:381-383`).
 - Test: `server/__tests__/saveRetryQueue.test.js` — `makeHarness` gains an optional clock and optional key policies;
   two new `describe` blocks.
 
@@ -1615,8 +1667,12 @@ decisions 27 and 28 (with [USER]'s 2026-11-04 answer: a 5xx that exhausts the re
     — the longest matching prefix wins; a second call for the same prefix replaces the first.
   - `takeParked(prefix: string, options?: {exact?: boolean})` → `Array<{key, url, body, status, code, message,
     parkedAt}>`, removed from storage as they are returned; `exact: true` matches `key === prefix`.
-  - Under `parkRefused`, a replay is parked on any non-5xx answer and on a 5xx that leaves no attempt (`attempts ===
-    MAX_ATTEMPTS`); a parked 5xx has the same shape, `status` its 5xx and `code` the body's `error` or `null`.
+  - Under `parkRefused`, a replay is parked on any non-5xx answer, and on a 5xx or a network failure that leaves no
+    attempt (`attempts === MAX_ATTEMPTS`); a parked 5xx has the same shape, `status` its 5xx and `code` the body's
+    `error` or `null`; a replay parked on network failures has `status: null`, `code: null` and `message: null`
+    (`status: null` is how a parked item says no answer reached the page). Any other error that reaches the replay's
+    `.catch` is dropped with today's toast. `processQueue` still removes, unparked, an item it finds out of attempts or
+    expired (decision 28).
   - On a non-retryable live answer: `err.status`, `err.code = data.error`, `err.data = data` (additive).
   - On a replay under `markReplayed`: the fetched body (a JSON object) gains `replayed: true`; the stored entry is not
     changed.
@@ -1821,6 +1877,91 @@ describe('saveRetry key policies: replays marked, refused or exhausted replays p
     expect(h.sr.takeParked('loc:')).toEqual([]);
   });
 
+  // [USER] 2026-11-04, a later answer (decision 28): a replay whose NETWORK failures exhaust MAX_ATTEMPTS is kept too.
+  // A fetch that reaches no server rejects with a TypeError, which isRetryableError counts as a network failure, so
+  // the replay's .catch handles it, not the .then above. The same three rounds as `exhaust`.
+  const netFail = () => () => Promise.reject(new TypeError('Failed to fetch'));
+
+  it('parks a replay whose network failures exhaust the retries, with no status or code, and hands it to the owner', async () => {
+    const seen = [];
+    const h = makeHarness({
+      keyPolicies: [{ prefix: 'seg:', parkRefused: true, onParked: (item) => seen.push(item) }],
+    });
+    h.setFetchScript([netFail(), netFail(), netFail(), netFail()]);
+    await h.sr.attempt('seg:b/1/m:s1', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await exhaust(h);
+    expect(h.fetchCalls).toHaveLength(4); // the live attempt and three replays: nothing was cut short
+    expect(h.toasts.at(-1).message).toBe(
+      'Vista mistókst eftir 3 tilraunir — textinn var geymdur og birtist aftur í bútnum.'
+    );
+    const parked = {
+      key: 'seg:b/1/m:s1',
+      url: '/api/x',
+      body: BODY,
+      status: null, // no answer reached the page: how a parked item says "network"
+      code: null,
+      message: null,
+      parkedAt: 1_000_000,
+    };
+    expect(seen).toEqual([parked]);
+    expect(h.queue()).toEqual([]);
+    expect(h.sr.takeParked('seg:b/1/m:s1', { exact: true })).toEqual([parked]);
+  });
+
+  it('control: a network failure with an attempt left is retried, not parked, and a later 200 succeeds', async () => {
+    const seen = [];
+    const h = makeHarness({
+      keyPolicies: [{ prefix: 'seg:', parkRefused: true, onParked: (item) => seen.push(item) }],
+    });
+    h.setFetchScript([netFail(), netFail(), netFail(), h.ok()]);
+    await h.sr.attempt('seg:b/1/m:s1', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    for (let round = 0; round < 2; round++) {
+      await h.fireAllTimers();
+      await settle();
+    }
+    // Two replays failed on the network: the item waits for its last attempt, and nothing is parked.
+    expect(h.queue().map((q) => [q.key, q.attempts])).toEqual([['seg:b/1/m:s1', 3]]);
+    expect(seen).toEqual([]);
+    await h.fireAllTimers();
+    await settle();
+    expect(h.fetchCalls).toHaveLength(4);
+    expect(h.toasts.at(-1)).toEqual({ message: 'Vista tókst eftir endurtilraun', type: 'success' });
+    expect(h.queue()).toEqual([]);
+    expect(seen).toEqual([]);
+    expect(h.sr.takeParked('seg:')).toEqual([]);
+  });
+
+  it('control: a key with no policy still drops a replay whose network failures exhaust the retries', async () => {
+    const h = makeHarness({ keyPolicies: [{ prefix: 'seg:', parkRefused: true }] });
+    h.setFetchScript([netFail(), netFail(), netFail(), netFail()]);
+    await h.sr.attempt('loc:b/1/m:s1', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await exhaust(h);
+    expect(h.fetchCalls).toHaveLength(4);
+    expect(h.toasts.at(-1).message).toBe(
+      'Vista mistókst eftir 3 tilraunir. Vinsamlegast reyndu aftur.'
+    );
+    expect(h.queue()).toEqual([]);
+    expect(h.sr.takeParked('loc:')).toEqual([]);
+  });
+
+  // The .catch parking branch's other half: only a failure isRetryableError counts as a network failure parks. Any
+  // other rejection (here a plain Error: not a TypeError, no status) keeps today's drop on a parkRefused key too.
+  // Its positive control is the network-exhausted test above: the same key, policy and position, with a TypeError.
+  it('control: a last replay that fails with an error other than a network failure is dropped, not parked', async () => {
+    const seen = [];
+    const h = makeHarness({
+      keyPolicies: [{ prefix: 'seg:', parkRefused: true, onParked: (item) => seen.push(item) }],
+    });
+    h.setFetchScript([netFail(), netFail(), netFail(), () => Promise.reject(new Error('x'))]);
+    await h.sr.attempt('seg:b/1/m:s1', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await exhaust(h);
+    expect(h.fetchCalls).toHaveLength(4);
+    expect(h.toasts.at(-1).message).toBe('Vista mistókst eftir 3 tilraunir. Vinsamlegast reyndu aftur.');
+    expect(h.queue()).toEqual([]);
+    expect(seen).toEqual([]);
+    expect(h.sr.takeParked('seg:')).toEqual([]);
+  });
+
   it('a 409 to the LIVE attempt is never parked: the caller keeps that text', async () => {
     const h = makeHarness();
     const seen = [];
@@ -1882,9 +2023,20 @@ tilraunir. Vinsamlegast reyndu aftur.' to be 'Vista mistókst eftir 3 tilraunir 
 terminal `else`, `saveRetry.js:149-157`, drops the item with that toast; `deps.keyPolicies` is ignored, and its
 `fetchCalls` length of 4 already holds). Its not-JSON sibling fails with `TypeError: h.sr.takeParked is not a
 function`, and so does its no-policy control, after that control's toast and queue assertions pass (they are today's
-behaviour). Two new cases pin behaviour that already holds and pass today: `control: a 5xx carries no code`, and `a
-refusal whose body is not JSON keeps today's message and has no code` (the second callback at `saveRetry.js:239-243`
-builds `Error('Villa ' + status)` with only `.status`). Every pre-existing test in the file passes.
+behaviour). **The network-exhausted test fails the same way, on today's behaviour:** `expected 'Vista mistókst eftir 3
+tilraunir. Vin…' to be 'Vista mistókst eftir 3 tilraunir — te…'` (today's `.catch` terminal `else`,
+`saveRetry.js:167-176`, drops the item with that toast; its `fetchCalls` length of 4 already holds). Its controls
+fail with `TypeError: h.sr.takeParked is not a function` after every assertion before it passes, since those are
+today's behaviour: the attempt-left control's item waits at `attempts` 3 and ends in today's success toast, and the
+no-policy control is dropped with today's toast. **The control whose last replay fails with a plain `Error` fails the
+same way, at its last assertion** (`TypeError: h.sr.takeParked is not a function`): its toast, queue and `seen`
+assertions pass, since today's `.catch` terminal `else` drops it with `Vista mistókst eftir 3 tilraunir. Vinsamlegast
+reyndu aftur.`. Two new cases pin behaviour that already holds and pass today:
+`control: a 5xx carries no code`, and `a refusal whose body is not JSON keeps today's message and has no code` (the
+second callback at `saveRetry.js:239-243` builds `Error('Villa ' + status)` with only `.status`). Every pre-existing
+test in the file passes. *(This step's red was run on 2026-11-04 for the network arms and the plain-`Error` control,
+and the whole step printed the failures stated above: Step 1 applied to a scratch copy of this test file, against a
+scratch copy of `saveRetry.js` byte-identical to `ed10180c`'s. The messages quoted are what that run printed.)*
 
 - [ ] **Step 3: Implement**
 
@@ -1957,8 +2109,8 @@ occurrence of that comment.
     // ----------------------------------------------------------------
     // PARKED REPLAYS (index decision 12). A replay runs outside the caller's
     // promise and can outlive the page, so a refusal answered to one, or a 5xx
-    // that leaves it no attempt, is kept here for its owner instead of being
-    // dropped with a toast.
+    // or a network failure that leaves it no attempt, is kept here for its
+    // owner instead of being dropped with a toast.
     // ----------------------------------------------------------------
 
     function loadParked() {
@@ -1981,7 +2133,8 @@ occurrence of that comment.
       }
     }
 
-    // exhaustedAttempts: the attempt count when a 5xx left no attempt (decision 28), else null.
+    // exhaustedAttempts: the attempt count when a 5xx or a network failure left no attempt (decision 28), else null.
+    // status: the HTTP status answered, or null when no answer reached the page (network failures).
     function park(stored, status, data, exhaustedAttempts) {
       const item = {
         key: stored.key,
@@ -1999,7 +2152,8 @@ occurrence of that comment.
       saveParked(list);
       toast(
         exhaustedAttempts
-          ? // ⚠️ PROPOSED WORDING, added 2026-11-04, for [USER]'s check before the PR opens (index decision 13).
+          ? // Wording added 2026-11-04 and approved as written by [USER] the same day (index § Answers, "Later
+            // answers"). It shows for a replay that 5xx answers exhausted and one that network failures exhausted.
             'Vista mistókst eftir ' +
               exhaustedAttempts +
               ' tilraunir — textinn var geymdur og birtist aftur í bútnum.'
@@ -2044,7 +2198,7 @@ occurrence of that comment.
 In `executeRetry`, change `fetchFn(stored.url, stored.options)` to `fetchFn(stored.url, replayOptions(stored))`, and
 insert a branch between the retry branch and the terminal `else` of the `.then`. It keys on the policy alone: the
 retry branch above it has already taken every 5xx with an attempt left, so this branch is reached exactly by a non-5xx
-answer or a 5xx with none left. The `.catch` branch (a network failure) is not changed (decision 28).
+answer or a 5xx with none left. The `.catch` gets its own parking branch, below.
 
 ```js
             } else if (policyFor(stored.key).parkRefused) {
@@ -2061,6 +2215,24 @@ answer or a 5xx with none left. The `.catch` branch (a network failure) is not c
                   park(stored, response.status, null, exhaustedAttempts);
                 }
               );
+            } else {
+```
+
+In the same `executeRetry`, insert a branch between the `.catch`'s retry branch and its terminal `else`
+(`saveRetry.js:163-176`, ed10180c). It keys on the policy and on `isRetryableError(err)`, the predicate of the retry
+branch above it, so it is reached exactly by a network failure with no attempt left ([USER] 2026-11-04, a later
+answer; decision 28); an error that predicate does not count still falls through to today's drop (the control `a last
+replay that fails with an error other than a network failure is dropped, not parked` tests that half). No answer reached
+the page, so `park` gets `null` for the status and the body, and records `status`, `code` and `message` as `null`. It
+passes `stored.attempts`, so the toast is the same exhaustion toast an exhausted 5xx shows:
+
+```js
+            } else if (isRetryableError(err) && policyFor(stored.key).parkRefused) {
+              // [USER] 2026-11-04 (decision 28): network failures that exhaust MAX_ATTEMPTS keep the text too,
+              // as an exhausted 5xx does. No answer reached the page, so the parked item has status null: that is
+              // how it says "network". A key with no policy falls through to today's toast-and-drop below.
+              removeFromQueue(stored.key);
+              park(stored, null, null, stored.attempts);
             } else {
 ```
 
@@ -2093,7 +2265,13 @@ Run: `npx vitest run server/__tests__/saveRetryQueue.test.js`, then `npx vitest 
 server/__tests__/clientMessageContracts.test.js`, then `npx vitest run server/__tests__/clientJsSyntax.test.js`
 Expected: PASS, every test in each file. Then `npx eslint server/public/js/saveRetry.js
 server/__tests__/saveRetryQueue.test.js` and `npx prettier --check server/public/js/saveRetry.js
-server/__tests__/saveRetryQueue.test.js`: no problems.
+server/__tests__/saveRetryQueue.test.js`: no problems. Then a mutation check, restored from a golden `cp`, never
+`git checkout`: in the `.catch` parking branch, change `} else if (isRetryableError(err) &&
+policyFor(stored.key).parkRefused) {` to `} else if (policyFor(stored.key).parkRefused) {`. Expected: only the
+plain-`Error` control fails, with `expected 'Vista mistókst eftir 3 tilraunir — te…' to be 'Vista mistókst eftir 3
+tilraunir. Vin…'`. `cmp` against the golden copy afterwards. *(Run 2026-11-04 on the scratch copy that Step 2's note
+describes, with Step 3 applied: the suite passed, and the mutant failed exactly that test with exactly that
+message.)*
 
 - [ ] **Step 5: Commit**
 
@@ -2433,12 +2611,16 @@ describe('kept texts (index decision 12)', () => {
     expect(S.entryFromParked({ key: 'k', body: '{not json', code: 'conflict' })).toBeNull();
   });
 
-  it('a parked 5xx that exhausted its retries is a kept text with the generic notice (decision 28)', () => {
+  it('a parked replay that exhausted its retries (5xx or network) is a kept text with the generic notice (decision 28)', () => {
     const typed = JSON.stringify({ segmentId: 's1', editedContent: 'typed', baseSha256: H1 });
     // No code (a body that was not JSON, or named none): kept, and the notice is the generic one.
     const none = S.entryFromParked({ key: 'seg:b/1/m:s1', body: typed, status: 502, code: null });
     expect(none.entry).toEqual({ text: 'typed', baseSha256: H1, occurrence: null, assists: [], refused: 'REFUSED' });
     expect(S.noticeFor(none.entry, H1)).toBe('REFUSED');
+    // Network failures exhausted it (status null, no code, [USER]'s later answer): the same kept text and notice.
+    const net = S.entryFromParked({ key: 'seg:b/1/m:s1', body: typed, status: null, code: null });
+    expect(net.entry).toEqual(none.entry);
+    expect(S.noticeFor(net.entry, H1)).toBe('REFUSED');
     // A server error string as the code is not a refusal code either: the same generic notice.
     const named = S.entryFromParked({ key: 'seg:b/1/m:s1', body: typed, status: 503, code: 'unavailable' });
     expect(S.noticeFor(named.entry, H1)).toBe('REFUSED');
@@ -5326,7 +5508,8 @@ git commit -m "feat(segment-editor): version-2 drafts keep base, occurrence and 
 ### Task 19: a refused save keeps the typed text, its base and its assists, and the pane says why
 
 Spec: index decision 12 (all of it, but the replay half: Task 20), index decision 13 (the Icelandic, approved
-2026-11-04 except `draftNotice.refused`, which the 2026-11-04 pass changed and which stays a proposal), §5.18 rows 5
+2026-11-04; `draftNotice.refused`, which the 2026-11-04 pass changed, was approved as written in a later answer the
+same day, index § Answers, "Later answers"), §5.18 rows 5
 and 6 and "Old pages after a deploy", §5.6 (`STALE_BASE`, `STALE_DISPLAYED`, `BASE_MISSING`,
 `BOOK_NOT_MINTED`, the no-layer refusal), §5.7 and R4 (`DUPLICATE_ID`: never sent), §13 (the refused-save
 experience). **T23**, its "a draft keeps its base and its assists through a refused save and a restore, and the next
@@ -5654,8 +5837,8 @@ shows the server's message (the stub's `'stub'`); its `page.once` handler is use
 
 ```js
   // ── Refused saves (G1.1, spec §5.6, §5.7, §5.18; index decision 12) ──
-  // Wording approved by [USER] 2026-11-04 (index decision 13), except draftNotice.refused: changed 2026-11-04 and
-  // ⚠️ a PROPOSAL for [USER]'s check before the PR opens.
+  // Wording approved by [USER] 2026-11-04 (index decision 13); draftNotice.refused, changed 2026-11-04, was approved
+  // as written in a later answer the same day (index § Answers, "Later answers").
   refusal: {
     textKept: 'Textinn sem þú skrifaðir var geymdur og birtist aftur í bútnum.',
     generic: 'Vistun var hafnað.',
@@ -5681,8 +5864,9 @@ shows the server's message (the stub's `'stub'`); its `page.once` handler is use
     noLayer:
       'Engin íslensk útgáfa er til fyrir þessa einingu og því er ekki hægt að vista. Textinn ' +
       'þinn er geymdur hér.',
-    // The generic notice: any parked replay with no refusal code of its own, a refusal (a 404, a conflict) or a 5xx
-    // that exhausted its retries (decision 28), so it says the save did not go through, not that it was refused.
+    // The generic notice: any parked replay with no refusal code of its own, a refusal (a 404, a conflict) or a
+    // replay that 5xx answers or network failures left with no retry (decision 28), so it says the save did not go
+    // through, not that it was refused.
     refused:
       'Vistun sem beið í biðröð tókst ekki. Textinn þinn er hér; berðu hann saman við röðina og ' +
       'vistaðu aftur.',
@@ -5940,8 +6124,8 @@ git commit -m "feat(segment-editor): a refused save keeps the typed text, its ba
 
 Spec: index decision 12 ("or any non-5xx answer to a replay"), §5.18 row 6 ("on any 409 to a replay, keep the typed
 text … never drop it with a toast"; `saveRetry.js:149-157`), §5.6 ("a queued replay that gets any non-5xx answer";
-decision 28, with [USER]'s 2026-11-04 answer: a 5xx that exhausts the retries comes back too), §5.9 (`replayed`,
-`client_action_id`).
+decision 28, with [USER]'s 2026-11-04 answers: a replay that exhausts the retries comes back too, whether 5xx answers
+or, in a later answer, network failures exhausted it), §5.9 (`replayed`, `client_action_id`).
 
 **Files:**
 - Modify: `server/public/js/segment-editor.js` — new `parkedPrefix`, `onSaveParked`; a `seg:` key policy, registered
@@ -6035,6 +6219,35 @@ Append to `server/e2e/served-base-client.spec.js`'s `describe`:
     await expect(page.locator('.toast-error', { hasText: 'geymdur' })).toBeVisible();
     expect(await page.evaluate(() => localStorage.getItem('saveRetryParked'))).toBeNull(); // taken
   });
+
+  test('a replay whose network failures exhaust the retries keeps the typed text, with the generic notice (decision 28)', async ({
+    page,
+  }) => {
+    const [target] = middleVirginRows(await loadModuleJson(page));
+    await openModule(page);
+    const row = rowOf(page, target.segmentId);
+    await row.locator('.btn-edit').click();
+    const typed = `${target.is}${SUFFIX}`;
+    await row.locator('textarea').fill(typed);
+    const bodies = [];
+    await page.route(`**${MODULE_URL}/edit`, async (route) => {
+      bodies.push(route.request().postDataJSON());
+      // No answer at all, as when the network drops ([USER]'s later answer), on EVERY attempt, so the retries run
+      // out. The control is editor-lifecycle Test 4, unchanged: it aborts only the first two, and a later replay
+      // still succeeds with nothing parked.
+      return route.abort('connectionfailed');
+    });
+    page.on('dialog', (d) => d.accept());
+    await row.getByRole('button', { name: 'Vista', exact: true }).click();
+    // Three replays at about 1 s, 2 s and 4 s; the last fails with no attempt left, so it parks with status null.
+    await expect(row.locator('.draft-notice[data-notice="REFUSED"]')).toBeVisible({ timeout: 20000 });
+    await expect(row.locator('textarea')).toHaveValue(typed);
+    expect(bodies).toHaveLength(4); // the live save and three replays, every one aborted
+    expect(bodies.slice(1).every((b) => b.replayed === true)).toBe(true);
+    expect(new Set(bodies.map((b) => b.clientActionId)).size).toBe(1);
+    await expect(page.locator('.toast-error', { hasText: 'geymdur' })).toBeVisible();
+    expect(await page.evaluate(() => localStorage.getItem('saveRetryParked'))).toBeNull(); // taken
+  });
 ```
 
 - [ ] **Step 2: Run the tests and confirm they fail**
@@ -6048,7 +6261,9 @@ Expected: FAIL — the replay's 409 is dropped with the toast `Vista mistókst e
 `saveRetry.js:149-157`, unchanged for a key without `parkRefused`); no notice appears. The exhausted-5xx test fails the
 same way after its third replay: no page registers `parkRefused` for `seg:` yet, so Task 7's parking branch is not
 reached and the item is dropped with `Vista mistókst eftir 3 tilraunir. Vinsamlegast reyndu aftur.`; no notice
-appears. (`bodies[1].replayed` is already `true` in both, from Task 7's `DEFAULT_KEY_POLICIES`.)
+appears. The network-exhausted test fails the same way after its third aborted replay: Task 7's `.catch` parking
+branch is not reached either, the item is dropped with that same toast, and the `REFUSED` notice wait times out after
+20000 ms. (`bodies[1].replayed` is already `true` in all three, from Task 7's `DEFAULT_KEY_POLICIES`.)
 
 - [ ] **Step 3: Implement**
 
@@ -6074,7 +6289,8 @@ After `keepText` (Task 19):
 
   /**
    * A replay of a save in THIS module was refused, or ran out of retries on
-   * 5xx answers (saveRetry parked it; decision 28). Keep the newest text: the
+   * 5xx answers or network failures (saveRetry parked it; decision 28; a
+   * network one has status null). Keep the newest text: the
    * pane's, if the editor kept typing, else the replayed body's. A parked item
    * with no refusal code restores with the generic notice (entryFromParked).
    * A replay for another module waits for that module's next load.
@@ -6137,9 +6353,11 @@ Expected: PASS, every test in each file.
 
 Run: `( cd server && CI=1 npx playwright test --config=e2e/playwright.config.js served-base-client.spec.js
 editor-lifecycle.spec.js )`, then `( cd server && CI=1 npm run test:e2e )`
-Expected: PASS (`editor-lifecycle` Tests 4 and 5 still see the success toast: their stubs fail only the first two
-attempts, Test 4 by a network abort and Test 5 by a 500, so the second replay answers 200 before the retries run out
-and nothing parks). `npx eslint` and `npx prettier --check` on the touched files: no problems.
+Expected: PASS (`editor-lifecycle` Tests 4 and 5 still see the success toast, unchanged: their stubs fail only the
+first two attempts, Test 4 by a network abort and Test 5 by a 500, so the second replay answers 200 before the retries
+run out and nothing parks; only a replay with no attempt left parks, on 5xx answers or network failures alike, so
+Test 4 is the network arm's control as Test 5 is the 5xx arm's). `npx eslint` and `npx prettier --check` on the
+touched files: no problems.
 
 - [ ] **Step 5: Commit**
 
@@ -6391,8 +6609,10 @@ DEFAULT_KEY_POLICIES  // module export: seg: and acc: markReplayed; the browser 
 setKeyPolicy(prefix: string, { markReplayed?, parkRefused?, onParked?: (item) => void })  // longest prefix wins
 takeParked(prefix: string, { exact? }): Array<{ key, url, body, status, code, message, parkedAt }>
 // a non-retryable live answer: err.status, err.code = data.error, err.data = data (additive)
-// localStorage['saveRetryParked']: parked items (any non-5xx answer to a parkRefused replay, or a 5xx that left it no
-// attempt; decision 28), pruned after 7 days
+// localStorage['saveRetryParked']: parked items (any non-5xx answer to a parkRefused replay, or a 5xx or a network
+// failure that left it no attempt; decision 28), pruned after 7 days. status: null = no answer (network failures)
+// not parked, as at ed10180c: any other error a replay rejects with; an item processQueue finds out of attempts (its
+// page closed before the last replay) or older than an hour, which it removes with no toast (decision 28)
 ```
 
 A key with no policy (the Pass 2 editor's) behaves exactly as at `ed10180c`.
@@ -6427,8 +6647,16 @@ A key with no policy (the Pass 2 editor's) behaves exactly as at `ed10180c`.
    `REFUSAL_MESSAGES` other than `BASE_MISSING` (decision 20); `UI.refusal.textKept`, `.generic`, `.baseMissing` and
    `UI.draftNotice.staleBase`, `.staleDisplayed`, `.baseMissing`, `.duplicateId`, `.bookNotMinted`, `.noLayer`,
    `.discardKept` (Task 19); and `saveRetry`'s refusal park toast, *Vistun var hafnað — textinn var geymdur og birtist
-   aftur í bútnum.* (Task 7). **The strings the 2026-11-04 pass changed or added stay proposals, and [USER] checks them
-   before the PR is opened:**
+   aftur í bútnum.* (Task 7). The 2026-11-04 pass changed or added three strings. **In a later answer the same day
+   (index § Answers, "Later answers") [USER] approved two of them as written:**
+   - changed: `UI.draftNotice.refused` (Task 19), now generic so that it is true of a replay that 5xx answers or
+     network failures exhausted as well as of a refusal: *Vistun sem beið í biðröð tókst ekki. Textinn þinn er hér;
+     berðu hann saman við röðina og vistaðu aftur.* (it said *… var hafnað.*)
+   - added: `saveRetry`'s park toast for a replay out of retries (Task 7), *Vista mistókst eftir N tilraunir — textinn
+     var geymdur og birtist aftur í bútnum.* (its first half is today's exhaustion toast, word for word). It shows for
+     a replay that network failures exhausted as well as one that 5xx answers exhausted (decision 28).
+
+   **The third stays a proposal, and [USER] checks it before the PR is opened:**
    - changed: the server's `BASE_MISSING` message (decision 20, Task 13), *Síðunni var hlaðið fyrir uppfærslu ritilsins
      og vistun var hafnað. Svo að textinn glatist ekki: bíðið eftir spurningunni „Opnum klippispjöldum verður lokað.
      Viltu halda áfram?“ og veljið þar Hætta við (Cancel), ekki hnappinn Hætta við í bútnum, sem fleygir textanum.
@@ -6450,11 +6678,6 @@ A key with no policy (the Pass 2 editor's) behaves exactly as at `ed10180c`.
         decision 20 gives.
 
      If [USER] rewords the message, Task 14's case 7 tokens change with it.
-   - changed: `UI.draftNotice.refused` (Task 19), now generic so that it is true of an exhausted 5xx as well as a
-     refusal: *Vistun sem beið í biðröð tókst ekki. Textinn þinn er hér; berðu hann saman við röðina og vistaðu aftur.*
-     (it said *… var hafnað.*)
-   - added: `saveRetry`'s park toast for a replay out of retries (Task 7), *Vista mistókst eftir N tilraunir — textinn
-     var geymdur og birtist aftur í bútnum.* (its first half is today's exhaustion toast, word for word).
 5. **Push, open the PR (draft), and deploy only on [USER]'s go.** Merge as a **merge commit**, never squash or rebase.
    A push to `main` from dev puts prod's content backup behind until the next deploy (CLAUDE.md § Content delivery).
    After the deploy, an editor's page loaded before it answers `BASE_MISSING` until F5 (Review Focus 1). Say so to the
@@ -6475,7 +6698,9 @@ A key with no policy (the Pass 2 editor's) behaves exactly as at `ed10180c`.
 question this plan asked:
 
 - **The Icelandic wording (Before the PR, item 4):** approved as proposed, except the strings the 2026-11-04 pass changed
-  or added, which stay proposals for [USER]'s check before the PR opens.
+  or added. Of those, a later answer the same day (the index's "Later answers") approved `UI.draftNotice.refused` and
+  the park toast for a replay out of retries as written. The server's `BASE_MISSING` message stays a proposal for
+  [USER]'s check before the PR opens.
 - **The live foreign keys from both `served_version_id` columns (decision 2):** yes, as written (G1.15 must clear them
   before deleting a version).
 - **Exit code 6 in the C16 runbook (decision 16):** yes; Task 17's Step 4 adds its row to the runbook's exit-code table.
@@ -6488,6 +6713,22 @@ question this plan asked:
 - **Decision 28, a 5xx that exhausts the retries:** yes, it is parked too (status and code recorded, the owner's
   `onParked` runs); a key with no policy keeps today's toast-and-drop. Task 7 builds it; Tasks 8 and 20 restore it as
   a kept text with the generic notice.
+- **Decision 28, a replay whose network failures exhaust the retries** (a later answer the same day, recorded in the
+  index's "Later answers"): kept too, like one whose 5xx answers exhaust them; the plan had left it dropped. On a key
+  whose policy has `parkRefused` it is no longer dropped with a toast: it parks with `status: null` and no code, and
+  shows the same exhaustion toast. A key with no policy keeps today's toast-and-drop, and so does a replay that fails
+  with an error other than a network failure (Task 7's control). Task 7 builds it; Tasks 8 and 20 restore it as a kept
+  text with the generic notice; `editor-lifecycle` Test 4 (a network abort that a later replay outlives) stays as it
+  is. Like the 5xx half, it covers a last replay that fails while the page is open. A reload before that replay is the
+  open question below.
+- **⚠️ OPEN, not yet answered: should `processQueue` park an item that the next page load finds out of attempts or
+  expired?** Found 2026-11-04 by the plan's review, after the answers above, and it applies to the 5xx half as much as
+  the network half. Both cases: the item's page closes or reloads in the wait before its last replay, and the next
+  page's `processQueue` removes it unreplayed. Or the item is older than an hour, and is removed the same way. It is
+  removed with no toast and no park, on every key, as at `ed10180c`, and the segment editor's text then survives only
+  through its own 5-second draft (decision 28, which cites the lines and the measurement). Until [USER] answers, the
+  plan builds nothing for either case and Review Focus 25 says so. If the answer is yes, Task 7 gains a `processQueue`
+  branch, with a red and a control, that parks those items on a key whose policy has `parkRefused`.
 - **Review Focus 1, `BASE_MISSING`'s advice to an old page's editor:** yes. **⚠️ What this plan builds differs from
   the recorded clarification.** The clarification (index § Answers, item 1) reads: copy the text, or answer Cancel to
   the *browser's leave-page prompt*, before F5. **So the choice of prompt, not only the string, is for [USER]'s
