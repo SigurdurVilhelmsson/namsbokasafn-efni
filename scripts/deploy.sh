@@ -154,6 +154,18 @@ for i in $(seq 1 30); do
           const h=JSON.parse(d);
           const bad=Object.entries(h.checks||{}).filter(([,c])=>!c.ok).map(([n])=>n);
           console.log('Health: '+h.status+(bad.length?' — not ok: '+bad.join(', '):''));
+          // checks.schema (G1.1, spec §5.20; PR1 review C18). A never-throw
+          // migration that fails (053) warns once in the journal and the
+          // server boots anyway, so name what is absent here rather than send
+          // the operator to curl by hand. Schema names or the error code only:
+          // that is all checks.schema carries (server/lib/schemaHealth.js).
+          const sc=h.checks&&h.checks.schema;
+          if(sc&&typeof sc==='object'&&!sc.ok){
+            const names=Array.isArray(sc.missing)?sc.missing.filter(m=>typeof m==='string'):[];
+            if(names.length)console.log('  schema missing: '+names.join(', '));
+            else if(typeof sc.error==='string')console.log('  schema could not be read: '+sc.error);
+            console.log('  → read the [053] warning in the server journal (journalctl -u ritstjorn), then restart (sudo systemctl restart ritstjorn); the migration re-attempts on every start');
+          }
           // A glossary refusal keeps checks.glossary_export.ok TRUE (register
           // C14, decision D2) — the guard working as intended, not a fault —
           // so it would never appear in the 'not ok' line above. Nothing
