@@ -307,6 +307,14 @@ What follows from that:
 - **Still open, at PR2's time:** who runs the production probe, and the §9 choice if chemistry holds assignment rows.
 - **Reviews.** The Fable half of each whole-branch blind-pair review is commissioned.
 
+**Later answers ([USER], 2026-11-04, after the merge of #620):**
+- **Wording.** "Síðan var hlaðin" becomes "Síðunni var hlaðið" (hlaða takes the dative). It is corrected in every
+  proposed string that uses the construction: PR1's `BASE_MISSING`, `STALE_BASE` and `STALE_DISPLAYED`, and PR3's
+  `CONSENT_TEXT_CHANGED`. The other strings the approval pass changed (`UI.draftNotice.refused` and the park toast)
+  are approved as written.
+- **A replay that network errors exhaust is kept too,** like one that 5xx answers exhaust (PR1 decision 28, Task 7).
+  It is no longer dropped with a toast.
+
 ### The list as [USER] saw it
 
 Gathered from every plan's own Decisions and Questions by a cross-check of all five. Each plan's text, with its reason,
