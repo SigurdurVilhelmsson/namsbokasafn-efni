@@ -52,6 +52,19 @@ function trackConfig(track) {
   return cfg;
 }
 
+/**
+ * §C209: version history is per chapter. `chapter-metadata` is one module id
+ * with one file per chapter, so (book, module_id, track) mixed every chapter's
+ * snapshots into one numbering and one list. The readers take the chapter as a
+ * required argument, checked, so a call in the old (book, moduleId, …) order
+ * fails loud instead of reading every chapter.
+ */
+function assertChapter(fn, chapter) {
+  if (!Number.isInteger(chapter)) {
+    throw new TypeError(`${fn}: chapter must be an integer (appendices = -1), got ${chapter}`);
+  }
+}
+
 let _db;
 let _testDb;
 
@@ -83,6 +96,17 @@ function getDb() {
  * @param {'faithful'|'localized'} [track='faithful'] - Content track this
  *   snapshot belongs to. Each track keeps its own version counter.
  * @returns {{ version: number, segmentsSnapshotted: number }}
+ *
+ * Version numbers count within (book, chapter, module_id, track) (§C209), so
+ * each chapter of `chapter-metadata` numbers its own snapshots 1, 2, 3…. Rows
+ * written before that were numbered across the module id; they keep their
+ * stored numbers, and a chapter's next number is one past its own highest.
+ * A row of one of these segments under another chapter label counts too: no
+ * current writer produces one, but UNIQUE(book, track, module_id, segment_id,
+ * version) has no chapter in it, so a module whose chapter changed would
+ * otherwise collide. A chapter-metadata segment id names its chapter, so that
+ * clause adds nothing there; an ordinary module's rows carry its one chapter,
+ * so for it the number is the same as before.
  */
 function snapshotModule(
   book,
@@ -95,13 +119,14 @@ function snapshotModule(
 ) {
   trackConfig(track); // validate before touching the DB
 
-  // Determine next version number for this module, scoped to this track
+  // Next version number for this chapter's file on this track (see above).
   const latest = db
     .prepare(
       `SELECT MAX(version) as maxVer FROM content_versions
-       WHERE book = ? AND module_id = ? AND track = ?`
+       WHERE book = ? AND module_id = ? AND track = ?
+         AND (chapter = ? OR segment_id IN (SELECT value FROM json_each(?)))`
     )
-    .get(book, moduleId, track);
+    .get(book, moduleId, track, chapter, JSON.stringify(segments.map((s) => s.segmentId)));
 
   const nextVersion = (latest?.maxVer || 0) + 1;
 
@@ -143,51 +168,60 @@ function snapshotModule(
 }
 
 /**
- * Get all versions for a module (version numbers + metadata).
+ * Get all versions of one chapter's module file (version numbers + metadata).
+ * Only that chapter's snapshots, under the numbers they were stored with (§C209).
  *
  * @param {string} book
+ * @param {number} chapter - Chapter number (appendices = -1)
  * @param {string} moduleId
  * @param {'faithful'|'localized'} [track='faithful']
  * @returns {Array<{ version: number, applied_by: string, applied_at: string, segments: number }>}
  */
-function getModuleVersions(book, moduleId, track = 'faithful') {
+function getModuleVersions(book, chapter, moduleId, track = 'faithful') {
+  assertChapter('getModuleVersions', chapter);
   trackConfig(track);
   const db = getDb();
   return db
     .prepare(
       `SELECT version, applied_by, applied_at, COUNT(*) as segments
        FROM content_versions
-       WHERE book = ? AND module_id = ? AND track = ?
+       WHERE book = ? AND chapter = ? AND module_id = ? AND track = ?
        GROUP BY version
        ORDER BY version DESC`
     )
-    .all(book, moduleId, track);
+    .all(book, chapter, moduleId, track);
 }
 
 /**
- * Get a specific version's content for a module (all segments).
+ * Get a specific version's content for one chapter's module file (all
+ * segments). A number only another chapter holds reads as empty (§C209).
  *
  * @param {string} book
+ * @param {number} chapter - Chapter number (appendices = -1)
  * @param {string} moduleId
  * @param {number} version
  * @param {'faithful'|'localized'} [track='faithful']
  * @returns {Array<{ segment_id: string, content: string }>}
  */
-function getVersionContent(book, moduleId, version, track = 'faithful') {
+function getVersionContent(book, chapter, moduleId, version, track = 'faithful') {
+  assertChapter('getVersionContent', chapter);
   trackConfig(track);
   const db = getDb();
   return db
     .prepare(
       `SELECT segment_id, content
        FROM content_versions
-       WHERE book = ? AND module_id = ? AND version = ? AND track = ?
+       WHERE book = ? AND chapter = ? AND module_id = ? AND version = ? AND track = ?
        ORDER BY segment_id`
     )
-    .all(book, moduleId, version, track);
+    .all(book, chapter, moduleId, version, track);
 }
 
 /**
  * Get version history for a specific segment (all versions).
+ *
+ * Keyed by segment id, not chapter: a `chapter-metadata` segment id names its
+ * chapter (`chapter:title:chNN`), so this is already one chapter's history.
  *
  * @param {string} book
  * @param {string} moduleId
@@ -249,10 +283,12 @@ function restoreVersion(book, chapter, moduleId, version, restoredBy = {}, track
   const actorName =
     restoredBy.username || (restoredBy.userId != null ? String(restoredBy.userId) : 'system');
 
-  // 1. Load the requested snapshot
-  const snapshot = getVersionContent(book, moduleId, version, track);
+  // 1. Load the requested snapshot — this chapter's only (§C209), so another
+  // chapter's number is not found here instead of "restoring" nothing and
+  // recording a pointless snapshot.
+  const snapshot = getVersionContent(book, chapter, moduleId, version, track);
   if (snapshot.length === 0) {
-    throw new Error(`Version ${version} not found for ${moduleId}`);
+    throw new Error(`Version ${version} not found for ${moduleId} in chapter ${chapter}`);
   }
   const snapshotLookup = new Map(snapshot.map((s) => [s.segment_id, s.content]));
 

@@ -772,6 +772,7 @@ router.get(
     try {
       const versions = contentVersionService.getModuleVersions(
         req.params.book,
+        req.chapterNum,
         req.params.moduleId,
         'localized'
       );
@@ -796,6 +797,7 @@ router.get(
     try {
       const segments = contentVersionService.getVersionContent(
         req.params.book,
+        req.chapterNum,
         req.params.moduleId,
         parseInt(req.params.version, 10),
         'localized'

@@ -324,6 +324,13 @@ describe('§C209 (a) chapter-metadata: a module review covers one chapter', () =
   it("the editor's stats (the submit button's gate) count the loaded chapter only", async () => {
     saveEdit(2, META, TITLE(2), 'Atóm, sameindir og jónir'); // pending
     saveAndApprove(5, META, TITLE(5), 'Varmafræði (samþykkt)'); // approved
+    // An active MT acceptance in ch05 — the editor's "staðfest" chip. A direct
+    // insert: acceptSegment would refuse it beside an approved edit.
+    db.prepare(
+      `INSERT INTO segment_acceptances
+         (book, chapter, module_id, segment_id, accepted_content, accepted_by, accepted_by_username)
+       VALUES (?, 5, ?, ?, ?, 'u1', 'editor1')`
+    ).run(BOOK, META, TITLE(5), MT_TITLE[5]);
 
     // What the module load hands the client as moduleData.stats.
     const loaded = await invoke(routes.load, req(2, META));
@@ -334,13 +341,14 @@ describe('§C209 (a) chapter-metadata: a module review covers one chapter', () =
       pending: 1,
       approved: 0,
       segments_edited: 1,
+      accepted: 0,
     });
     const stats2 = await invoke(routes.stats, req(2, META));
-    expect(stats2.body).toMatchObject({ total_edits: 1, pending: 1, approved: 0 });
+    expect(stats2.body).toMatchObject({ total_edits: 1, pending: 1, approved: 0, accepted: 0 });
 
     // Positive control: ch05's work is reported where it lives.
     const stats5 = await invoke(routes.stats, req(5, META));
-    expect(stats5.body).toMatchObject({ total_edits: 1, pending: 0, approved: 1 });
+    expect(stats5.body).toMatchObject({ total_edits: 1, pending: 0, approved: 1, accepted: 1 });
 
     // No chapter given (no route does this): the module-wide count, as before.
     expect(service.getModuleStats(BOOK, META)).toMatchObject({
@@ -348,6 +356,7 @@ describe('§C209 (a) chapter-metadata: a module review covers one chapter', () =
       pending: 1,
       approved: 1,
       segments_edited: 2,
+      accepted: 1,
     });
   });
 });

@@ -90,7 +90,7 @@ function main() {
   for (const book of books) {
     for (const { chDir, chapter, moduleId } of findFaithfulModules(book)) {
       // Idempotent: never touch a module that already has snapshots.
-      if (contentVersionService.getModuleVersions(book, moduleId).length > 0) {
+      if (contentVersionService.getModuleVersions(book, chapter, moduleId).length > 0) {
         skippedExisting++;
         if (args.verbose) console.log(`  skip (has history): ${book}/${chDir}/${moduleId}`);
         continue;

@@ -147,6 +147,7 @@ describe('localized version routes', () => {
     // to the newest snapshot so this test is order-independent within the file).
     const versions = require('../services/contentVersionService').getModuleVersions(
       BOOK,
+      1,
       MODULE,
       'localized'
     );

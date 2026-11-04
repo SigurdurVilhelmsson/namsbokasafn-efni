@@ -450,12 +450,14 @@ describe('§C209 concordance: indexing one chapter keeps every other chapter’s
     saveAndApprove(5, META, TITLE(5), 'Varmafræði (birt)');
     service.applyApprovedEdits(BOOK, 5, META);
     saveAndApprove(2, META, TITLE(2), 'Útgáfa eitt');
-    service.applyApprovedEdits(BOOK, 2, META); // snapshots ch02's MT text as version 2
+    // Versions are numbered per chapter (§C209 (b)): ch05's snapshot above is ch05's
+    // version 1, and does not move ch02's numbering.
+    service.applyApprovedEdits(BOOK, 2, META); // snapshots ch02's MT text as ch02's version 1
     saveAndApprove(2, META, TITLE(2), 'Útgáfa tvö');
-    service.applyApprovedEdits(BOOK, 2, META); // snapshots 'Útgáfa eitt' as version 3
+    service.applyApprovedEdits(BOOK, 2, META); // snapshots 'Útgáfa eitt' as ch02's version 2
     expect(tmRows()).toEqual([metaRow(2, 'Útgáfa tvö'), metaRow(5, 'Varmafræði (birt)')]);
 
-    contentVersionService.restoreVersion(BOOK, 2, META, 3, { username: 'he1' });
+    contentVersionService.restoreVersion(BOOK, 2, META, 2, { username: 'he1' });
 
     // Positive control: the restore re-indexed ch02 with the restored text.
     expect(tmRows()).toEqual([metaRow(2, 'Útgáfa eitt'), metaRow(5, 'Varmafræði (birt)')]);

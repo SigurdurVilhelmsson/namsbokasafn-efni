@@ -585,19 +585,26 @@ function returnEditToPending(editId) {
 
 /**
  * Submit a module for review (after editor has made segment edits).
+ *
+ * A review covers one chapter's file: the pending-review check, the edit count
+ * and the review_id stamp are all scoped to (book, chapter, module_id) (§C209).
+ * `chapter-metadata` is one module id shared by every chapter, and a
+ * (book, module_id) scope let a ch02 submit claim ch05's edits and block a ch05
+ * submit. An ordinary module's rows all carry its one chapter, so the scope
+ * changes nothing for it.
  */
 function submitModuleForReview(params) {
   const { book, chapter, moduleId, submittedBy, submittedByUsername } = params;
 
   const conn = getDb();
 
-  // Check for existing pending review
+  // Check for an existing pending review of this chapter's file
   const existing = conn
     .prepare(
       `SELECT id FROM module_reviews
-     WHERE book = ? AND module_id = ? AND status IN ('pending', 'in_review')`
+     WHERE book = ? AND chapter = ? AND module_id = ? AND status IN ('pending', 'in_review')`
     )
-    .get(book, moduleId);
+    .get(book, chapter, moduleId);
 
   if (existing) {
     throw new Error('Module already has a pending review');
@@ -610,9 +617,9 @@ function submitModuleForReview(params) {
        COUNT(*) as total_edits,
        COUNT(CASE WHEN status = 'pending' THEN 1 END) as pending_edits
      FROM segment_edits
-     WHERE book = ? AND module_id = ?`
+     WHERE book = ? AND chapter = ? AND module_id = ?`
     )
-    .get(book, moduleId);
+    .get(book, chapter, moduleId);
 
   // Create the review and claim the module's edits for it, in one transaction.
   // The tally then keys off review_id, not the fragile created_at >= submitted_at
@@ -633,7 +640,7 @@ function submitModuleForReview(params) {
   );
   const stampEdits = conn.prepare(
     `UPDATE segment_edits SET review_id = ?
-     WHERE book = ? AND module_id = ?
+     WHERE book = ? AND chapter = ? AND module_id = ?
        AND status NOT IN ('rejected', 'superseded')
        AND (review_id IS NULL OR status IN ('pending', 'discuss'))`
   );
@@ -647,7 +654,7 @@ function submitModuleForReview(params) {
       submittedByUsername,
       editCounts.pending_edits
     );
-    stampEdits.run(result.lastInsertRowid, book, moduleId);
+    stampEdits.run(result.lastInsertRowid, book, chapter, moduleId);
     return result.lastInsertRowid;
   })();
 
@@ -677,7 +684,8 @@ function getPendingModuleReviews(book) {
 }
 
 /**
- * Get a module review with its segment edits.
+ * Get a module review with its segment edits — the edits of the review's own
+ * chapter's file (§C209: `chapter-metadata` is one module id across chapters).
  */
 function getModuleReviewWithEdits(reviewId) {
   const conn = getDb();
@@ -688,10 +696,10 @@ function getModuleReviewWithEdits(reviewId) {
   const edits = conn
     .prepare(
       `SELECT * FROM segment_edits
-     WHERE book = ? AND module_id = ?
+     WHERE book = ? AND chapter = ? AND module_id = ?
      ORDER BY created_at ASC`
     )
-    .all(review.book, review.module_id);
+    .all(review.book, review.chapter, review.module_id);
 
   return { review, edits };
 }
@@ -835,8 +843,9 @@ const MAX_APPLY_RETRIES = 1;
  * chapters' winners applied without writing their text, and lapsed their
  * acceptances. Every writer stores the chapter whose directory it loaded the
  * module from, so an ordinary module's rows all carry its one chapter and the
- * scope changes nothing for it. (The content_versions snapshot still takes its
- * version number across the module id; it records this chapter's segments.)
+ * scope changes nothing for it. The content_versions snapshot records this
+ * chapter's segments under this chapter's next version number
+ * (contentVersionService.snapshotModule).
  *
  * @param {string} book - Book slug
  * @param {number} chapter - Chapter number
@@ -1280,9 +1289,15 @@ function getApplyStatus(book, moduleId, chapter) {
 
 /**
  * Get editing statistics for a module.
+ *
+ * When the chapter is known, count that chapter's rows only — the rows its
+ * submit would claim (§C209: `chapter-metadata` is one module id across every
+ * chapter, and these stats gate the editor's submit button). Unknown chapter
+ * (null) keeps the module-wide count.
  */
-function getModuleStats(book, moduleId) {
+function getModuleStats(book, moduleId, chapter) {
   const conn = getDb();
+  const chapterOrNull = chapter !== undefined && chapter !== null ? chapter : null;
 
   const editStats = conn
     .prepare(
@@ -1300,18 +1315,18 @@ function getModuleStats(book, moduleId) {
        COUNT(CASE WHEN category = 'style' THEN 1 END) as cat_style,
        COUNT(CASE WHEN category = 'omission' THEN 1 END) as cat_omission
      FROM segment_edits
-     WHERE book = ? AND module_id = ?`
+     WHERE book = ? AND module_id = ? AND (? IS NULL OR chapter = ?)`
     )
-    .get(book, moduleId);
+    .get(book, moduleId, chapterOrNull, chapterOrNull);
 
   // item 20b: active MT acceptances are the second reviewed-tier signal
   // (spec §8 metrics redefinition — reviewed = approved edit ∪ active acceptance).
   const accepted = conn
     .prepare(
       `SELECT COUNT(*) as n FROM segment_acceptances
-       WHERE book = ? AND module_id = ? AND status = 'active'`
+       WHERE book = ? AND module_id = ? AND (? IS NULL OR chapter = ?) AND status = 'active'`
     )
-    .get(book, moduleId).n;
+    .get(book, moduleId, chapterOrNull, chapterOrNull).n;
 
   return { ...editStats, accepted };
 }

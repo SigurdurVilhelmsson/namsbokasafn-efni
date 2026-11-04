@@ -82,7 +82,7 @@ afterAll(() => {
 });
 
 const versionCount = () =>
-  contentVersionService.getModuleVersions(BOOK, MODULE, 'localized').length;
+  contentVersionService.getModuleVersions(BOOK, 1, MODULE, 'localized').length;
 
 const locFile = () =>
   readFileSync(

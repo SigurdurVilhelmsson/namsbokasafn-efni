@@ -91,9 +91,9 @@ describe('approveAndApply snapshots + write-then-mark (I12-M3)', () => {
     const { id } = submitPending('staðfært nýtt');
     review.approveAndApply(id, 'he1', 'headeditor', null);
     expect(locFile()).toContain('staðfært nýtt');
-    const versions = contentVersionService.getModuleVersions(BOOK, MODULE, 'localized');
+    const versions = contentVersionService.getModuleVersions(BOOK, 1, MODULE, 'localized');
     expect(versions.length).toBe(1);
-    const v1 = contentVersionService.getVersionContent(BOOK, MODULE, 1, 'localized');
+    const v1 = contentVersionService.getVersionContent(BOOK, 1, MODULE, 1, 'localized');
     expect(v1.find((s) => s.segment_id === SEG_A).content).toBe('staðfært gamalt');
   });
 
