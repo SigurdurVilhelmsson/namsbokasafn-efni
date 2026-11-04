@@ -14,6 +14,41 @@
 > no status. If it disagrees with the active register, the register wins. Do not sync it or edit it in place.
 > Supersede it with a new record instead.
 
+> **✏️ AMENDED 2026-11-04: twenty departures from this design's wording, approved with the implementation plan**
+> ([USER] 2026-11-04: "Yes for all" to the plan's questions, with four clarifications the same day). Each is stated,
+> with its reason and its fallback, in the named decision of the plan
+> (`docs/superpowers/plans/2026-11-03-g11-g12-pr<N>-*.md`, "PR<N> d<n>"). This block lists only what each one
+> overrides; it does not restate the reasons.
+>
+> - **§5.20:** `checks.schema` also reports the unique index `idx_served_text_versions_key` (PR1 d3).
+> - **§5.6 step 4:** `STALE_DISPLAYED` also fires when `displayedEditId` names a row of another book, module or segment
+>   (PR1 d7). It does not fire when the displayed row already holds exactly the text being saved, so a replay whose
+>   first attempt landed is not refused (PR1 d39).
+> - **§5.10 and §14 call 18:** past `express.json`'s 1 MiB, the sent body drops `detail.text` from the oldest whole-text
+>   assists, never the newest; the draft keeps every text (PR1 d36).
+> - **§5.4:** a throw in the users or assignment lookup on a study-book serve answers 503 `OPENING_UNRECORDED`, as a
+>   failed opening step does (PR2 d4).
+> - **§5.9's field table and §14 call 14:** a before-image never stores identity raw, the actor's own included; only the
+>   actor's own times are kept (PR3 d9).
+> - **§5.14:** the consent POST must echo the text version the page showed; a stale one answers 409
+>   `CONSENT_TEXT_CHANGED` (PR3 d26).
+> - **§5.9:**
+>   - apply's per-row outcomes go in the event's detail, not its content (PR3 d48);
+>   - propagation stores the client's text once, not again in every target event's detail (PR3 d54);
+>   - `write-refused` is also logged for `SEGMENT_CONFLICT` and the accept's eligibility refusals (PR3 d49);
+>   - a saved or propagated text identical to another editor's live edit is stored as its hash only (PR3 d65).
+> - **§10 T11:** the apply arm runs on chemistry in a temporary books root with the apply hold stubbed for that test,
+>   since a non-held book is never captured (PR3 d60).
+> - **§5.15:**
+>   - only withdrawals set `deletion_done_at_ms`, and retention writes its own `research_deletions` row (PR4 d9);
+>   - an export directory that cannot be emptied keeps the interval due (PR4 d10);
+>   - retention stays due until its deletion is recorded (PR4 d11);
+>   - `--write` is refused for want of a derived dataset only when something is due (PR4 d12).
+> - **§5.14 and §5.22:** the paper-consent script is not a §5.22 exception (PR4 d18). A paper decision names the
+>   current approved text version (PR4 d19) and takes its time from when it is recorded (PR4 d20).
+> - **§5.19:** a reviewed-but-unapplied text's `final_sha256` is taken over its served (loader-normalised) view
+>   (PR5 d7).
+
 > **✏️ AMENDED 2026-11-03: `server/lib/researchScope.js` ships in PR1, not PR3** ([USER] 2026-11-03, approving
 > decision 1 of the implementation plan's index, `docs/superpowers/plans/2026-11-03-g11-g12-served-versions-and-event-log.md`).
 > It overrides one cell of §13a's table: PR3's "Holds" listed `researchScope.js`.
