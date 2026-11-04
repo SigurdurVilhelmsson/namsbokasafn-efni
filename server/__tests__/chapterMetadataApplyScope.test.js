@@ -38,6 +38,7 @@ const tmService = require('../services/tmService');
 const concordanceService = require('../services/concordanceService');
 const pipelineStatusService = require('../services/pipelineStatusService');
 const { HELD_BOOKS } = require('../lib/applyHold');
+const { measureApplyExposure } = require('../scripts/read-apply-exposure');
 
 const BOOK = 'c209metabook';
 const META = 'chapter-metadata';
@@ -73,6 +74,7 @@ beforeAll(() => {
   service._setTestDb(db);
   acceptance._setTestDb(db);
   contentVersionService._setTestDb(db);
+  concordanceService._setTestDb(db);
 
   tmpDir = mkdtempSync(join(tmpdir(), 'c209-meta-'));
   booksDir = join(tmpDir, 'books');
@@ -95,6 +97,7 @@ afterAll(() => {
   service._setTestDb(null);
   acceptance._setTestDb(null);
   contentVersionService._setTestDb(null);
+  concordanceService._setTestDb(null);
   service._setTestBooksDir(originalBooksDir);
   segmentParser._setTestBooksDir(originalBooksDir);
   rmSync(tmpDir, { recursive: true, force: true });
@@ -364,5 +367,232 @@ describe('§C209 controls: ordinary modules apply exactly as before', () => {
     expect(editRow(e).applied_at).not.toBeNull();
     expect(accRow(a).applied_at).not.toBeNull();
     expect(faithfulSegment(-1, APX, `${APX}:para:fs-a01`)).toBe('Viðauki yfirfarinn.');
+  });
+});
+
+describe('§C209 concordance: indexing one chapter keeps every other chapter’s rows', () => {
+  // The real indexer here, not the outer beforeEach's mock: the apply path's
+  // post-commit hook (and restore's) rebuilds tm_segments for the module it wrote.
+  const tmRows = () =>
+    db
+      .prepare(
+        `SELECT chapter, module_id, segment_id, en_text, is_text FROM tm_segments
+         WHERE book = ? ORDER BY module_id, segment_id`
+      )
+      .all(BOOK);
+  const ftsHits = (q) =>
+    db
+      .prepare(
+        `SELECT t.segment_id FROM tm_segments_fts f JOIN tm_segments t ON t.id = f.rowid
+         WHERE f.tm_segments_fts MATCH ? ORDER BY t.segment_id`
+      )
+      .all(q)
+      .map((r) => r.segment_id);
+  // A planted row carries its FTS mirror row too, as indexModule writes them: deleting
+  // an external-content FTS row that was never indexed would corrupt the index.
+  function plantTmRow(chapterLabel, moduleId, segmentId, en, is) {
+    const id = db
+      .prepare(
+        `INSERT INTO tm_segments(book, chapter, module_id, segment_id, en_text, is_text, en_norm)
+         VALUES (?, ?, ?, ?, ?, ?, ?)`
+      )
+      .run(BOOK, chapterLabel, moduleId, segmentId, en, is, en.toLowerCase()).lastInsertRowid;
+    db.prepare(`INSERT INTO tm_segments_fts(rowid, en_text, is_text) VALUES (?, ?, ?)`).run(
+      id,
+      en,
+      is
+    );
+  }
+  const metaRow = (ch, is) => ({
+    chapter: String(ch),
+    module_id: META,
+    segment_id: TITLE(ch),
+    en_text: EN_TITLE[ch],
+    is_text: is,
+  });
+
+  beforeEach(() => {
+    concordanceService.indexModule.mockRestore();
+    db.exec(`INSERT INTO tm_segments_fts(tm_segments_fts) VALUES('delete-all')`);
+    db.exec('DELETE FROM tm_segments');
+  });
+
+  it("apply ch02 then ch05: both chapters' titles stay indexed, in the table and its FTS mirror", () => {
+    saveAndApprove(2, META, TITLE(2), 'Atóm, sameindir og jónir');
+    service.applyApprovedEdits(BOOK, 2, META);
+    // Positive control: the real indexer ran for ch02.
+    expect(tmRows()).toEqual([metaRow(2, 'Atóm, sameindir og jónir')]);
+
+    saveAndApprove(5, META, TITLE(5), 'Varmafræði (endurskoðuð)');
+    service.applyApprovedEdits(BOOK, 5, META);
+
+    // The defect: ch05's re-index deleted every (book, chapter-metadata) row, ch02's included.
+    expect(tmRows()).toEqual([
+      metaRow(2, 'Atóm, sameindir og jónir'),
+      metaRow(5, 'Varmafræði (endurskoðuð)'),
+    ]);
+    expect(ftsHits('Atoms')).toEqual([TITLE(2)]);
+    expect(ftsHits('Thermochemistry')).toEqual([TITLE(5)]);
+
+    // Re-applying ch02 still REPLACES ch02's row (no duplicate, old text gone from
+    // the FTS mirror) and leaves ch05's alone.
+    saveAndApprove(2, META, TITLE(2), 'Frumeindir (endurskoðað)');
+    service.applyApprovedEdits(BOOK, 2, META);
+    expect(tmRows()).toEqual([
+      metaRow(2, 'Frumeindir (endurskoðað)'),
+      metaRow(5, 'Varmafræði (endurskoðuð)'),
+    ]);
+    expect(ftsHits('sameindir')).toEqual([]);
+    expect(ftsHits('Frumeindir')).toEqual([TITLE(2)]);
+  });
+
+  it('a restore of ch02 re-indexes ch02 and keeps ch05’s row', () => {
+    saveAndApprove(5, META, TITLE(5), 'Varmafræði (birt)');
+    service.applyApprovedEdits(BOOK, 5, META);
+    saveAndApprove(2, META, TITLE(2), 'Útgáfa eitt');
+    service.applyApprovedEdits(BOOK, 2, META); // snapshots ch02's MT text as version 2
+    saveAndApprove(2, META, TITLE(2), 'Útgáfa tvö');
+    service.applyApprovedEdits(BOOK, 2, META); // snapshots 'Útgáfa eitt' as version 3
+    expect(tmRows()).toEqual([metaRow(2, 'Útgáfa tvö'), metaRow(5, 'Varmafræði (birt)')]);
+
+    contentVersionService.restoreVersion(BOOK, 2, META, 3, { username: 'he1' });
+
+    // Positive control: the restore re-indexed ch02 with the restored text.
+    expect(tmRows()).toEqual([metaRow(2, 'Útgáfa eitt'), metaRow(5, 'Varmafræði (birt)')]);
+  });
+
+  it('an ordinary module re-indexes exactly as before: every prior row of the module is replaced', () => {
+    // A row for a segment no longer in the file, under the module's own chapter label:
+    // the re-index removes it, as the module-wide delete always did.
+    plantTmRow('2', ORD, `${ORD}:para:fs-gone`, 'Gone paragraph.', 'Horfin efnisgrein.');
+    // A row for a segment still in the file under a label no current writer produces
+    // ('02'): scoping the delete by chapter alone would leave it, and the insert would
+    // then fail UNIQUE(book, module_id, segment_id) and throw.
+    plantTmRow('02', ORD, `${ORD}:para:fs-id001`, 'Paragraph one.', 'Gömul þýðing.');
+
+    expect(concordanceService.indexModule(BOOK, 2, ORD)).toEqual({ indexed: 2, skipped: 0 });
+
+    expect(tmRows()).toEqual([
+      {
+        chapter: '2',
+        module_id: ORD,
+        segment_id: `${ORD}:para:fs-id001`,
+        en_text: 'Paragraph one.',
+        is_text: 'Fyrsta efnisgrein.',
+      },
+      {
+        chapter: '2',
+        module_id: ORD,
+        segment_id: `${ORD}:para:fs-id002`,
+        en_text: 'Paragraph two.',
+        is_text: 'Önnur efnisgrein.',
+      },
+    ]);
+    expect(ftsHits('Gone')).toEqual([]);
+    expect(ftsHits('Gömul')).toEqual([]);
+    expect(ftsHits('Paragraph')).toEqual([`${ORD}:para:fs-id001`, `${ORD}:para:fs-id002`]);
+  });
+});
+
+describe('§C209 the read-only exposure mirror predicts what one chapter’s click does', () => {
+  const ZERO = {
+    'already-present': 0,
+    clean: 0,
+    'base-changed': 0,
+    'segment-gone': 0,
+    'not-written': 0,
+  };
+
+  it("one entry per (module, chapter), read from that chapter's file; ch02's entry names exactly the rows a ch02 apply stamps", () => {
+    const e2 = saveAndApprove(2, META, TITLE(2), 'Atóm, sameindir og jónir');
+    const e5 = saveAndApprove(5, META, TITLE(5), 'Varmafræði (endurskoðuð)');
+    accept(3, META, TITLE(3), MT_TITLE[3]);
+
+    const report = measureApplyExposure(db, BOOK, segmentParser.loadModuleForEditing);
+    const meta = report.modules.filter((m) => m.module === META);
+    // 'base-changed': the fixture's original_content is 'original', not today's text.
+    expect(
+      meta.map((m) => ({
+        chapter: m.chapter,
+        path: m.path,
+        winners: m.winners,
+        ids: m.baseChangedEditIds,
+      }))
+    ).toEqual([
+      { chapter: 2, path: 'normal', winners: { ...ZERO, 'base-changed': 1 }, ids: [e2] },
+      { chapter: 5, path: 'normal', winners: { ...ZERO, 'base-changed': 1 }, ids: [e5] },
+    ]);
+    // ch03 holds only an acceptance, and a ch03 click writes it.
+    expect(report.acceptanceOnly).toEqual([
+      { module: META, chapter: 3, activeUnappliedAcceptances: 1 },
+    ]);
+
+    const result = service.applyApprovedEdits(BOOK, 2, META);
+
+    const stamped = db
+      .prepare('SELECT id FROM segment_edits WHERE book = ? AND applied_at IS NOT NULL ORDER BY id')
+      .all(BOOK)
+      .map((r) => r.id);
+    expect(result.appliedCount).toBe(1);
+    expect(stamped).toEqual(meta[0].baseChangedEditIds);
+  });
+});
+
+describe('§C209 the in-transaction re-query is chapter-scoped too', () => {
+  // A concurrent publish lands between the pre-check and the IMMEDIATE transaction's
+  // re-query. The spy wraps the REAL transaction and, when the apply starts it, first
+  // stamps the given row the way the winning request would have.
+  function concurrentPublishOf(table, id) {
+    const realTransaction = db.transaction.bind(db);
+    vi.spyOn(db, 'transaction').mockImplementationOnce((fn) => {
+      const tx = realTransaction(fn);
+      return {
+        immediate: () => {
+          db.prepare(`UPDATE ${table} SET applied_at = ? WHERE id = ?`).run(SENTINEL, id);
+          return tx.immediate();
+        },
+      };
+    });
+  }
+  const versionRows = () => db.prepare('SELECT COUNT(*) AS n FROM content_versions').get().n;
+
+  it('edits: a ch02 apply that lost the race aborts although ch05 holds unapplied work', () => {
+    const e5 = saveAndApprove(5, META, TITLE(5), 'Varmafræði (endurskoðuð)');
+    const e2 = saveAndApprove(2, META, TITLE(2), 'Atóm, sameindir og jónir');
+    const e5Before = editRow(e5);
+    concurrentPublishOf('segment_edits', e2);
+
+    expect(() => service.applyApprovedEdits(BOOK, 2, META)).toThrow(
+      'Edits were applied by a concurrent request'
+    );
+    expect(existsSync(faithfulPath(2, META))).toBe(false);
+    expect(versionRows()).toBe(0);
+    expect(editRow(e5)).toEqual(e5Before);
+    expect(editRow(e2).applied_at).toBe(SENTINEL);
+
+    // Positive control: the same call with ch02's row unapplied goes ahead.
+    db.prepare('UPDATE segment_edits SET applied_at = NULL WHERE id = ?').run(e2);
+    expect(service.applyApprovedEdits(BOOK, 2, META).appliedCount).toBe(1);
+    expect(editRow(e5)).toEqual(e5Before);
+  });
+
+  it('acceptances: a ch02 apply that lost the race aborts although ch05 holds an unapplied acceptance', () => {
+    const a5 = accept(5, META, TITLE(5), MT_TITLE[5]);
+    const a2 = accept(2, META, TITLE(2), MT_TITLE[2]);
+    const a5Before = accRow(a5);
+    concurrentPublishOf('segment_acceptances', a2);
+
+    expect(() => service.applyApprovedEdits(BOOK, 2, META)).toThrow(
+      'Edits were applied by a concurrent request'
+    );
+    expect(existsSync(faithfulPath(2, META))).toBe(false);
+    expect(versionRows()).toBe(0);
+    expect(accRow(a5)).toEqual(a5Before);
+    expect(accRow(a2).applied_at).toBe(SENTINEL);
+
+    // Positive control: the same call with ch02's acceptance unapplied goes ahead.
+    db.prepare('UPDATE segment_acceptances SET applied_at = NULL WHERE id = ?').run(a2);
+    expect(service.applyApprovedEdits(BOOK, 2, META).acceptedCount).toBe(1);
+    expect(accRow(a5)).toEqual(a5Before);
   });
 });

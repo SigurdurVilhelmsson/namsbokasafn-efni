@@ -1,11 +1,15 @@
 #!/usr/bin/env node
 /**
- * READ-ONLY: what one click of 'Vista í skrár' / 'Vista + Birta' would write, per module, for
- * one book (register §C203, 2026-10-23).
+ * READ-ONLY: what one click of 'Vista í skrár' / 'Vista + Birta' would write, per module and
+ * chapter, for one book (register §C203, 2026-10-23).
  *
- * For every module with approved segment_edits it reports which path applyApprovedEdits would
- * take and classifies the edit each segment would receive against the text the editor sees
- * today. It mirrors server/services/segmentEditorService.js applyApprovedEdits:
+ * For every (module, chapter) with approved segment_edits it reports which path
+ * applyApprovedEdits would take and classifies the edit each segment would receive against the
+ * text the editor sees today. One click applies one chapter's file, and the apply path scopes
+ * every row it reads to (book, chapter, module_id) (§C209): `chapter-metadata` is one module id
+ * with a file in every chapter, so it gets one entry per chapter, each read from its own
+ * chapter's file. `chaptersSeen` is how many chapters the module id's approved rows span. It
+ * mirrors server/services/segmentEditorService.js applyApprovedEdits:
  *   - the winner per segment is pickLatest() over ALL the segment's approved rows (the same
  *     server/lib/editRecency.js rule the apply path uses);
  *   - the SELF-HEAL path runs when no approved row is unapplied, no active acceptance is
@@ -24,8 +28,8 @@
  *   segment-gone     the segment is no longer in the extraction (apply skips it but still stamps it).
  * A winner the click would not write is counted as not-written.
  *
- * Modules with an active unapplied acceptance but no approved row are listed too: the click
- * writes them (the whole module, §C202) although they hold no edit.
+ * A (module, chapter) with an active unapplied acceptance but no approved row is listed too:
+ * the click writes it (the whole module, §C202) although it holds no edit.
  *
  * The database is opened `readonly: true, fileMustExist: true`. The output carries ids and
  * counts only: no names and no segment text.
@@ -61,12 +65,19 @@ function measureApplyExposure(db, book, loadModule) {
         WHERE book = ? AND status = 'active' AND applied_at IS NULL GROUP BY module_id, chapter`
     )
     .all(book);
-  const unappliedAcc = new Map(acceptances.map((a) => [a.module_id, a.n]));
+  // One click acts on one (module, chapter): key every grouping on both (§C209).
+  const key = (moduleId, chapter) => JSON.stringify([moduleId, chapter]);
+  const unappliedAcc = new Map(acceptances.map((a) => [key(a.module_id, a.chapter), a.n]));
 
-  const byModule = new Map();
+  const byModuleChapter = new Map();
+  const chaptersOfModule = new Map();
   for (const r of approved) {
-    if (!byModule.has(r.module_id)) byModule.set(r.module_id, []);
-    byModule.get(r.module_id).push(r);
+    const k = key(r.module_id, r.chapter);
+    if (!byModuleChapter.has(k))
+      byModuleChapter.set(k, { moduleId: r.module_id, chapter: r.chapter, rows: [] });
+    byModuleChapter.get(k).rows.push(r);
+    if (!chaptersOfModule.has(r.module_id)) chaptersOfModule.set(r.module_id, new Set());
+    chaptersOfModule.get(r.module_id).add(r.chapter);
   }
 
   const totals = {
@@ -77,13 +88,14 @@ function measureApplyExposure(db, book, loadModule) {
     'not-written': 0,
   };
   const modules = [];
-  for (const [moduleId, rows] of [...byModule].sort(([a], [b]) => a.localeCompare(b))) {
-    const chapters = [...new Set(rows.map((r) => r.chapter))];
-    const chapter = chapters[0];
+  const groups = [...byModuleChapter.values()].sort(
+    (a, b) => a.moduleId.localeCompare(b.moduleId) || a.chapter - b.chapter
+  );
+  for (const { moduleId, chapter, rows } of groups) {
     const mod = loadModule(book, chapter, moduleId);
     const base = new Map(mod.segments.map((s) => [s.segmentId, s.is]));
     const unapplied = rows.filter((r) => r.applied_at === null).length;
-    const acc = unappliedAcc.get(moduleId) || 0;
+    const acc = unappliedAcc.get(key(moduleId, chapter)) || 0;
     const faithfulExists = mod.isSource === 'faithful';
     const selfHeal = unapplied === 0 && acc === 0 && !faithfulExists;
 
@@ -121,7 +133,7 @@ function measureApplyExposure(db, book, loadModule) {
     modules.push({
       module: moduleId,
       chapter,
-      chaptersSeen: chapters.length,
+      chaptersSeen: chaptersOfModule.get(moduleId).size,
       approved: rows.length,
       unapplied,
       activeUnappliedAcceptances: acc,
@@ -133,7 +145,7 @@ function measureApplyExposure(db, book, loadModule) {
     });
   }
   const acceptanceOnly = acceptances
-    .filter((a) => !byModule.has(a.module_id))
+    .filter((a) => !byModuleChapter.has(key(a.module_id, a.chapter)))
     .map((a) => ({ module: a.module_id, chapter: a.chapter, activeUnappliedAcceptances: a.n }));
   return { book, modules, acceptanceOnly, totals };
 }

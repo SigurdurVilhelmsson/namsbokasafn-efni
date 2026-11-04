@@ -827,13 +827,16 @@ const MAX_APPLY_RETRIES = 1;
  * superseded rather than published (I12-R5), but the FILE overlay writes only
  * the winners whose applied_at is still null.
  *
- * Every row this function reads or writes is scoped to (book, chapter,
- * module_id) — the one file it writes (§C209). `chapter-metadata` is a single
- * module id shared by every chapter, and a (book, module_id) scope stamped
- * other chapters' winners applied without writing their text, and lapsed
- * their acceptances. Every writer stores the chapter whose directory it loaded
- * the module from, so an ordinary module's rows all carry its one chapter and
- * the scope changes nothing for it.
+ * Every segment_edits and segment_acceptances row this function reads or
+ * writes is scoped to (book, chapter, module_id) — the one file it writes
+ * (§C209), and so are the concordance rows its post-commit hook replaces
+ * (concordanceService.indexModule). `chapter-metadata` is a single module id
+ * shared by every chapter, and a (book, module_id) scope stamped other
+ * chapters' winners applied without writing their text, and lapsed their
+ * acceptances. Every writer stores the chapter whose directory it loaded the
+ * module from, so an ordinary module's rows all carry its one chapter and the
+ * scope changes nothing for it. (The content_versions snapshot still takes its
+ * version number across the module id; it records this chapter's segments.)
  *
  * @param {string} book - Book slug
  * @param {number} chapter - Chapter number

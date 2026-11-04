@@ -85,8 +85,16 @@ function normalizeEn(text) {
 /**
  * Index (or re-index) a module's applied faithful segment pairs.
  * Reads the freshly-written faithful file via segmentParser; only segments
- * with both EN and IS content are stored. Replaces any prior rows for the
- * module so a re-apply keeps the index in sync.
+ * with both EN and IS content are stored. Replaces the prior rows of THIS
+ * chapter's file so a re-apply keeps the index in sync.
+ *
+ * §C209: `chapter-metadata` is one module id with one file per chapter, so the
+ * rows replaced are this chapter's, never the module id's across the book —
+ * that wiped every other chapter's title on each apply or restore. Rows under
+ * another chapter label that share one of this file's segment ids go too: they
+ * can only be an older copy of the same segment, and UNIQUE(book, module_id,
+ * segment_id) would otherwise refuse the insert. An ordinary module's rows all
+ * carry its one chapter label, so for it the set replaced is unchanged.
  *
  * @param {string} book
  * @param {number|string} chapter
@@ -121,21 +129,27 @@ function indexModule(book, chapter, moduleId) {
     rows.push({ segmentId: seg.segmentId, en, is, enNorm: normalizeEn(seg.en) });
   }
 
+  const fileSegmentIds = JSON.stringify(data.segments.map((s) => s.segmentId));
+
   const tx = conn.transaction(() => {
-    // Remove old FTS mirror rows for this module, then the canonical rows.
-    const oldIds = conn
-      .prepare(`SELECT id FROM tm_segments WHERE book = ? AND module_id = ?`)
-      .all(book, moduleId);
+    // Remove this chapter's old rows (see the docstring): the FTS mirror rows
+    // first, then the canonical rows, both from the one selected set.
+    const oldRows = conn
+      .prepare(
+        `SELECT id, en_text, is_text FROM tm_segments
+         WHERE book = ? AND module_id = ?
+           AND (chapter = ? OR segment_id IN (SELECT value FROM json_each(?)))`
+      )
+      .all(book, moduleId, chapterLabel, fileSegmentIds);
     const delFts = conn.prepare(
       `INSERT INTO tm_segments_fts(tm_segments_fts, rowid, en_text, is_text)
        VALUES('delete', ?, ?, ?)`
     );
-    const getRow = conn.prepare(`SELECT id, en_text, is_text FROM tm_segments WHERE id = ?`);
-    for (const { id } of oldIds) {
-      const r = getRow.get(id);
-      if (r) delFts.run(r.id, r.en_text, r.is_text);
+    const delRow = conn.prepare(`DELETE FROM tm_segments WHERE id = ?`);
+    for (const r of oldRows) {
+      delFts.run(r.id, r.en_text, r.is_text);
+      delRow.run(r.id);
     }
-    conn.prepare(`DELETE FROM tm_segments WHERE book = ? AND module_id = ?`).run(book, moduleId);
 
     const insert = conn.prepare(
       `INSERT INTO tm_segments(book, chapter, module_id, segment_id, en_text, is_text, en_norm)
