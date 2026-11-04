@@ -17,9 +17,10 @@ and one write service (`server/services/servedEdit.js`, `saveOnServedBase`), whi
 module route mints the served versions and sends `occurrence` and `baseSha256` per segment and `contentSha256` per
 edit row; the save route requires the echo; the accept route and propagation place, mint and record. On the client, a
 new DOM-free module (`server/public/js/segment-save-state.js`) holds the value rules, `segment-editor.js` renders them
-on each row and reads them back from the row's DOM, and `saveRetry.js` carries the refusal code, marks a
-replay and parks any non-5xx answer to one. `checks.schema` and the research-boundary test start here and grow per PR. No research file and
-no event: PR3 adds the emission at the points this PR refuses (index decision 2).
+on each row and reads them back from the row's DOM, and `saveRetry.js` carries the refusal code, marks a replay and
+parks any non-5xx answer to one, and a 5xx that exhausts its retries. `checks.schema` and the research-boundary test
+start here and grow per PR. No research file and no event: PR3 adds the emission at the points this PR refuses (index
+decision 2).
 
 **Tech Stack:** Node 22, Express (CommonJS under `server/`), better-sqlite3 13 (only in `server/node_modules`), browser
 JS with no build step (`server/public/js/`, `sourceType: 'script'`), Vitest from the repository root, Playwright E2E
@@ -39,8 +40,15 @@ JS with no build step (`server/public/js/`, `sourceType: 'script'`), Vitest from
 
 ## State of this plan (read first)
 
-- **Written 2026-11-03 for [USER]'s approval, as one of the five PR plans the index lists. No code before [USER]
-  approves it.** Status lives in the register, never here.
+- **Written 2026-11-03 as one of the five PR plans the index lists. ✅ [USER] approved it on 2026-11-04** ("Yes for
+  all" to the index's questions, with four clarifications the same day; § Answers, at the end). **The spec's
+  `✏️ AMENDED 2026-11-04` block (`4c35d71b`) records every departure this plan builds (decisions 3, 7, 36 and 39), so no
+  spec commit is owed before any task.** Three answers changed the plan and are folded in: decision 39 is adopted
+  (Task 13), a 5xx that exhausts the retries is parked (decision 28, Task 7), and the server's `BASE_MISSING` message
+  carries more advice (decision 20; Tasks 13 and 14). That message's wording, **and which of the old page's prompts it
+  names**, stay for [USER]'s check before the PR opens (Before the PR, item 4; § Answers). Task 17 also edits the C16
+  runbook's exit-code table (decision 16).
+  Status lives in the register, never here.
 - **Pinned to `main` = `ed10180c`.** Every `path:line` below was opened at that tree (its `server/`, `tools/`,
   `scripts/`, `.github/` and `LICENSE` are byte-identical to `d24681b8` and `3a1db909`). Once an earlier task has
   shifted a file, match each edit on the quoted construct, not the number.
@@ -53,13 +61,12 @@ JS with no build step (`server/public/js/`, `sourceType: 'script'`), Vitest from
 ## Decisions taken in this plan
 
 Each is a §13 item, a seam the spec or the index leaves open, a reading of the PR1 wire contract, or a choice between
-the two halves this plan was drafted in. **Three go beyond the frozen spec's wording and each needs [USER]'s yes**
-before it is built as written: decision 3 (an index in `checks.schema`, §5.20), decision 7 (a third `STALE_DISPLAYED`
-condition, §5.6 step 4) and decision 36 (the sent body may lose old whole texts, §5.10 and §14 call 18). Each keeps
-the spec's behaviour as its fallback. **A yes is recorded as a dated `✏️ AMENDED` block in the spec, in a commit
-carrying only that edit, before the task that builds the decision (Tasks 4, 13 and 8); a no builds the decision's
-named fallback** (the rule PR3's and PR4's plans state, § Questions for [USER]). A fourth candidate (decision 39) is
-not adopted. All four are listed under "Questions for [USER]".
+the two halves this plan was drafted in. **Four go beyond the frozen spec's wording:** decision 3 (an index in
+`checks.schema`, §5.20), decision 7 (a third `STALE_DISPLAYED` condition, §5.6 step 4), decision 36 (the sent body may
+lose old whole texts, §5.10 and §14 call 18) and decision 39 (a displayed row that already holds the saved text passes
+the displayed check, §5.6 step 4). **✅ All four are approved by [USER] 2026-11-04 and recorded in the spec's
+`✏️ AMENDED 2026-11-04` block, so each is built as written in its task (decision 3 in Task 4, decisions 7 and 39 in
+Task 13, decision 36 in Task 8), with no fallback and no spec commit before it.** § Answers lists them.
 
 **Server and schema**
 
@@ -94,11 +101,11 @@ not adopted. All four are listed under "Questions for [USER]".
      table rebuild; the vocabulary is a constant pinned by a test (decision 9).
    - **One never-throw boundary around the whole unit, and one transaction inside it** (`048`'s and `052`'s shape):
      a failure anywhere rolls back every step, warns once, and the next boot retries; no half-added column set.
-3. **`checks.schema` also checks the unique index. Needs [USER]'s yes: it departs from §5.20's wording**, which
-   defines the check as tables and columns (`PRAGMA table_info`). A missing `idx_served_text_versions_key` would let a
-   re-serve insert duplicate versions silently, and costs one more name in `EXPECTED_SCHEMA`. The output is
-   `{ ok, missing: [<table> | <table>.<column> | index <name>] }`: schema names only, no counts (§5.20 "nothing
-   sensitive"). If [USER] says no, drop `indexes` from `EXPECTED_SCHEMA` and the index half of Task 4's second test.
+3. **`checks.schema` also checks the unique index. ✅ Approved by [USER] 2026-11-04 (spec AMENDED 2026-11-04):** it
+   departs from §5.20's wording, which defines the check as tables and columns (`PRAGMA table_info`). A missing
+   `idx_served_text_versions_key` would let a re-serve insert duplicate versions silently, and costs one more name in
+   `EXPECTED_SCHEMA`. The output is `{ ok, missing: [<table> | <table>.<column> | index <name>] }`: schema names only,
+   no counts (§5.20 "nothing sensitive"). (The fallback, not built: no `indexes` in `EXPECTED_SCHEMA`.)
 4. **The wire contract's "the key is absent" means `baseSha256`; `occurrence` goes on every served segment**, organic
    and layerless modules included (spec §5.4 step 1 adds it to each served segment and step 2 withholds only the hash;
    it is computed from the served list and costs nothing). Each edit row gains `contentSha256`; nothing else is added to
@@ -113,13 +120,13 @@ not adopted. All four are listed under "Questions for [USER]".
    occurrence places at 0, and a caller-named occurrence other than 0 is `SEGMENT_NOT_FOUND`. The route sends none.
 7. **The displayed pair** (spec §5.6 step 4): `STALE_DISPLAYED` when `displayedEditId` is set and the row is gone, **or
    is not a row of this book, module and segment**, or `sha256Text` of its current `edited_content` differs from
-   `displayedEditSha256` (a null hash with a set id differs). **Needs [USER]'s yes: the middle clause departs from §5.6
-   step 4's wording**, which names only "gone" and "the hash differs". Under the spec's wording a row on another segment
-   whose text hashes the same would pass; the plan refuses it, because a row on another segment is not the edit this row
-   displayed. Safer, and it is what Task 13 builds once [USER]'s yes is recorded; if [USER] says no, the fallback is
-   built: Task 13 without the `here` test in `saveOnServedBase` and without the "row on segment `b`" case. The pair is
-   stored only when `displayedEditId` is set and `requireEcho` is true; otherwise both columns are NULL. A propagation's
-   in-place UPDATE clears the pair (its text was not typed over a displayed edit).
+   `displayedEditSha256` (a null hash with a set id differs). **✅ Approved by [USER] 2026-11-04 (spec AMENDED
+   2026-11-04):** the middle clause departs from §5.6 step 4's wording, which names only "gone" and "the hash differs".
+   Under the spec's wording a row on another segment whose text hashes the same would pass; the plan refuses it, because
+   a row on another segment is not the edit this row displayed. Safer, and Task 13 builds it (the fallback, not built,
+   was the spec's two conditions alone). **Decision 39 adds one exception, and only for a row that passes this clause.**
+   The pair is stored only when `displayedEditId` is set and `requireEcho` is true; otherwise both columns are NULL. A
+   propagation's in-place UPDATE clears the pair (its text was not typed over a displayed edit).
 8. **Step 6 mints even when the save writes nothing** (an identity save with no pending row): the version was
    presented as the base, minting is idempotent, and it keeps step 6 one shape. A mint failure in the save path fails
    the save (500): unlike the serve, a save must never write a row without its served version.
@@ -152,7 +159,7 @@ not adopted. All four are listed under "Questions for [USER]".
 14. **The save body's new fields are type-checked in the route.** `baseSha256` that is not a non-empty string counts as
     absent (`BASE_MISSING`); `displayedEditId` must be absent, null or an integer, `displayedEditSha256` absent, null or
     a string, else 400; `editedContent` must be a string (today a number slips past `segment-editor.js:351`'s falsy
-    check), else 400 (a behaviour change, listed as a question). The research-only fields (`clientActionId`,
+    check), else 400 (a behaviour change, approved by [USER] 2026-11-04). The research-only fields (`clientActionId`,
     `clientActionTime`, `assists`, `replayed`, `acceptOrigin`, `reviewedEditSha256`) are not read (index decision 4).
 15. **The save success response adds exactly three fields**, named as the request fields the next save sends:
     `baseSha256` (the server base the save was checked against), `displayedEditId` and `displayedEditSha256` (the saved
@@ -165,7 +172,9 @@ not adopted. All four are listed under "Questions for [USER]".
     to **exit 6**, a new code (0–5 are taken: `scripts/lib/segment-edit-reattach-rules.js:132-138` and the script's
     `process.exit(5)`), with `process.exitCode`, before any planning output and before any database is opened.
     `scripts/__tests__/segmentEditReattachRules.test.mjs` gets no case: it tests pure rules that never see a book, and
-    the refusal is in the script, which the other three files exercise.
+    the refusal is in the script, which the other three files exercise. **The C16 runbook names exit 6** ([USER]
+    2026-11-04): `docs/plans/2026-07-29-c16-clean-break-runbook.md`'s exit-code table (Appendix A, Step A-2) gains its
+    row in Task 17's commit, and the two sentences there that count the fatal codes lose their count.
 17. **T1 serves through the route, and falls back to the row builder only where the spec says.** Every chain outside
     ch00 is checked against the `is_sha256` the route minted; only ch00 (unservable, `validateParams.js:29`) and an id
     the response itself shows duplicated use `servedVersions.versionRowsFor` on the loader's output. A missing minted
@@ -178,12 +187,14 @@ not adopted. All four are listed under "Questions for [USER]".
     only `router.<verb>(` path literals; `generate-tool-inventory.js` reads `tools/`). The `check-docs` job still runs
     (Tasks 6, 14, 15, 16 touch `server/routes/**`; Tasks 12 and 17 touch `scripts/**`): run `npm run docs:check` at the
     tip; expected clean.
-20. **Icelandic server messages, all proposals for [USER]'s check** (index decision 13), beside each code in
+20. **Icelandic server messages, approved by [USER] 2026-11-04 as proposed, except `BASE_MISSING`'s. The 2026-11-04
+    pass changed that one, so its wording, and which of the old page's prompts it names, stay for [USER]'s check before
+    the PR opens** (index decision 13; Before the PR, item 4). Each sits beside its code in
     `server/services/servedEdit.js` (`REFUSAL_MESSAGES`, Task 13):
 
-    | Code | HTTP | Proposed message |
+    | Code | HTTP | Message |
     |---|---|---|
-    | `BASE_MISSING` | 409 | *Síðan var hlaðin fyrir uppfærslu ritilsins. Endurhlaðið síðuna (F5) og vistið aftur.* |
+    | `BASE_MISSING` | 409 | *Síðan var hlaðin fyrir uppfærslu ritilsins og vistun var hafnað. Svo að textinn glatist ekki: bíðið eftir spurningunni „Opnum klippispjöldum verður lokað. Viltu halda áfram?“ og veljið þar Hætta við (Cancel), ekki hnappinn Hætta við í bútnum, sem fleygir textanum. Textinn er þá enn á skjánum og má afrita hann úr textareitnum. Endurhlaðið svo síðuna (F5) og vistið aftur.* (⚠️ changed 2026-11-04: a proposal) |
     | `STALE_BASE` | 409 | *Grunntexti bútsins hefur breyst frá því að síðan var hlaðin. Vistun hafnað: endurhlaðið eininguna og gerið breytinguna aftur.* |
     | `STALE_DISPLAYED` | 409 | *Breytingin sem sýnd var í bútnum hefur breyst eða verið fjarlægð frá því að síðan var hlaðin. Vistun hafnað: endurhlaðið eininguna.* |
     | `DUPLICATE_ID` | 409 | *Auðkenni þessa bútar kemur oftar en einu sinni fyrir í einingunni og ekki er hægt að vista á hann fyrr en það hefur verið lagað.* |
@@ -194,7 +205,62 @@ not adopted. All four are listed under "Questions for [USER]".
 
     The server messages state facts only; what the client keeps and shows (the draft, the notice) is the client's
     `ui-strings.js` (index decision 12, Task 19). `BASE_MISSING`'s asks for F5 because a page loaded before the deploy
-    can show only the server's message (decision 33).
+    can show only the server's message (decision 33). **It also tells that editor how to keep the text before F5**
+    ([USER] 2026-11-04, Review Focus 1), **as a sequence of steps, not a choice between them:**
+    1. Wait for the old page's own closing prompt and answer its *Hætta við* (Cancel). The prompt is
+       *Opnum klippispjöldum verður lokað. Viltu halda áfram?* (`UI.confirm.closePanels`, `ui-strings.js:50`, which
+       PR1 does not change). The message quotes it so that it is recognised. The old page's reload asks it right after
+       the alert (`segment-editor.js:2061-2065`, `:1197-1204`). The old `saveEdit` clears `dirtyEdits` only on success,
+       so the prompt does appear. Cancel makes `renderSegments` return `false` before it closes anything, so the pane,
+       its text and `dirtyEdits` all stay.
+    2. The text is then still on screen and can be copied from the pane.
+    3. Then F5. The old page's `beforeunload` writes the text to its draft first (`:3457-3463`), and the new page
+       offers that draft as a legacy one (Task 18).
+
+    **Copying cannot come first.** The alert is modal, and only the module fetch separates its dismissal from the
+    prompt. OK at the prompt closes every pane and clears `dirtyEdits` (`:1206-1211`). So an editor who reads "copy,
+    or Cancel" as two options and presses OK has nothing left to copy. All that can come back is what the reload's
+    draft offer restores, and only if a 5-second tick caught the pane (Review Focus 1). The 2026-11-04 pass first wrote
+    the advice that way and was corrected the same day.
+
+    **One more question can follow the Cancel, and the message deliberately says nothing about it.** The same reload
+    goes on to `restoreDraft` (`:286`, `:111-140`). If a 5-second tick has caught the pane (`:84-108`), that asks
+    *Fundust N óvistuð drög frá síðustu lotu. Endurheimta?* (`UI.confirm.draftRecovery`).
+    - On the advised path, OK there puts that snapshot in the pane (`:126-131`), so up to 5 seconds of the newest
+      typing can be lost. Cancel there only clears the stored copy (`:122-124`); the pane and `dirtyEdits` keep the
+      text, and the next tick or F5 writes it again.
+    - After an OK at the closing prompt, OK at this question is the editor's only way back to the text, and Cancel
+      deletes its last copy.
+
+    Advice to cancel this question too would be right only on the advised path. On the other path it would delete the
+    text. Silence costs at most the newest seconds of typing, so the message stays silent, and this is for [USER]'s
+    check with the rest (Before the PR, item 4).
+
+    **The message also says which *Hætta við* to choose.** The pane carries its own *Hætta við* button (`:1582`).
+    `closeEditPanel` puts the baseline text back and drops the segment from `dirtyEdits` (`:1852-1862`), so that button
+    throws the typed text away. It stays on screen and clickable during the fetch between the alert and the prompt,
+    because `loadModule`'s spinner replaces only `#modules-container` (`:261-268`), not the segment table
+    (`views/segment-editor.html:1734`, `:1991-2000`). An editor who clicks it there loses the text, except what the
+    reload's draft offer may bring back. With no other dirty pane, the prompt is then not asked at all.
+
+    **The message says *textareitnum*, not *klippispjaldinu*, for where to copy from.** *Afrita úr klippispjaldinu*
+    reads as "copy from the clipboard". The app's only other use of the word is `closePanels` itself, and the message
+    quotes that verbatim.
+
+    **The advice names the closing prompt, not the browser's leave-page prompt that the recorded clarification named**
+    (index § Answers, item 1). That choice of prompt is for [USER]'s check too (Before the PR, item 4; § Answers), as
+    are both wording points above. The leave-page prompt cannot keep anything the closing prompt has not already
+    kept:
+    - `beforeunload` prompts only while `dirtyEdits.size > 0`, and it calls `saveDraft()` before it prompts
+      (`:3457-3463`). `tabGuard.js:77`'s handler posts a release message and never prompts.
+    - After an OK at the closing prompt, `dirtyEdits` is already empty (`:1211`). F5 then raises no leave-page prompt
+      at all, and the text is already gone.
+    - After a Cancel at the closing prompt, the draft is written before the leave-page prompt appears, so either
+      answer there is safe. *Reload* goes on to the new page, which offers the draft. *Cancel* stays on the old page
+      with the text still on screen.
+
+    Task 14's case 7 pins the quoted prompt, its *Hætta við (Cancel)*, the pane's button named as the wrong one, the
+    copy instruction and F5, in that order.
 
 **Client**
 
@@ -237,14 +303,24 @@ not adopted. All four are listed under "Questions for [USER]".
     2 editor's keys (`loc:`, `loc-auto:`, `loc-all:`, `localization-editor.js:183`, `:1030`, `:1148`) have no policy and
     behave byte-for-byte as today. This is how "every new field stays optional there" is met. `parkRefused` and
     `onParked` stay page-specific (decision 28).
-28. **Every non-5xx answer to a replay is parked, never dropped** (index decision 12; spec §5.6: "a queued replay that
-    gets any non-5xx answer is dropped with a toast … Both paths must keep the text first"). §5.18's row says "any 409
-    to a replay"; §5.6 names the whole path, and a 400, 403, 404 or 413 answered to a `seg:` replay drops the typed text
-    just the same, so the branch keys on `!isRetryableResponse(response)`: wider than §5.18's row (409), and exactly
-    what index decision 12 already reads it as, any non-5xx answer to a replay. A 5xx that exhausts `MAX_ATTEMPTS` still
-    drops with today's toast (§5.6 names only the non-5xx path; a note for [USER] in "Questions"). The replay runs
-    outside the caller's promise chain (`executeRetry`'s own toast, `saveRetry.js:149-157`), the queue lives in
-    `localStorage` and is processed by whichever page loads `saveRetry.js` next (`saveRetry.js:373-378`; both editor
+28. **Every non-5xx answer to a replay is parked, never dropped, and so is a 5xx that exhausts the retries** (index
+    decision 12; spec §5.6: "a queued replay that gets any non-5xx answer is dropped with a toast … Both paths must keep
+    the text first"). §5.18's row says "any 409 to a replay"; §5.6 names the whole path, and a 400, 403, 404 or 413
+    answered to a `seg:` replay drops the typed text just the same: wider than §5.18's row (409), and exactly what index
+    decision 12 already reads it as, any non-5xx answer to a replay. **✅ [USER] 2026-11-04: a 5xx that exhausts
+    `MAX_ATTEMPTS` on a key whose policy has `parkRefused` is parked too, with its status and code recorded, and the
+    owner's `onParked` runs** (§5.6 names only the non-5xx path; until that answer the plan kept today's toast-and-drop
+    there). So the parking branch sits after the retry branch and keys on the policy alone: it is reached exactly when
+    the answer is non-5xx, or a 5xx with no attempt left (Task 7). A parked 5xx keeps the item shape; its `code` is the
+    body's `error` when the body is JSON with one, else `null`, and the client restores it as a kept text with the
+    generic notice (`entryFromParked` reads a missing code as `'REFUSED'`, and `noticeFor` gives the generic notice to
+    any code outside `NOTICE_CODES`; Task 8). Its toast says the save failed after
+    its attempts rather than that it was refused (a string the 2026-11-04 pass added, Task 7). **A key with no policy
+    (the Pass 2 editor's) keeps today's toast-and-drop exactly, for a non-5xx answer and an exhausted 5xx alike. Not
+    changed, because the answer named only the 5xx: a replay whose network failures exhaust the retries** (the
+    `.catch` branch of `executeRetry`, `saveRetry.js:160-177`) **is still dropped with today's toast on every key.** The
+    replay runs outside the caller's promise chain (`executeRetry`'s own toast, `saveRetry.js:149-157`), the queue lives
+    in `localStorage` and is processed by whichever page loads `saveRetry.js` next (`saveRetry.js:373-378`; both editor
     views load it). So a policy with `parkRefused: true` moves the refused item into `localStorage['saveRetryParked']`
     (pruned after 7 days by `processQueue`, the drafts' own window, `tabGuard.js:126`) and calls the owner's `onParked`.
     The segment editor handles one for the open module at once, and drains the rest into the module's draft when that
@@ -262,8 +338,8 @@ not adopted. All four are listed under "Questions for [USER]".
     `BOOK_NOT_MINTED` and `NO_LAYER` (one constant, `KEEP_TEXT_CODES`; §5.18 lists the first four, index decision 12
     adds `BOOK_NOT_MINTED` and `NO_LAYER`, the code decision 5 names). A live `conflict` 409 (today's
     `SEGMENT_CONFLICT`, whose wire code is the lowercase `'conflict'`, `routes/segment-editor.js:483`) keeps today's
-    alert-and-reload; any non-5xx answer to a *replay*, `conflict` included, is kept (decision 28). Nothing may key on
-    the string `SEGMENT_CONFLICT`.
+    alert-and-reload; any non-5xx answer to a *replay*, `conflict` included, is kept, and so is a replay whose 5xx
+    answers exhaust the retries (decision 28). Nothing may key on the string `SEGMENT_CONFLICT`.
 31. **How a kept text comes back** (§13's refused-save experience, index decision 12): the text, its assist list and
     the base it was sent with go into the draft and an in-memory hold; the module reloads; the held text is installed in
     its pane with a notice above it and a `draft-restore` item appended after its re-installed assists. **The next save
@@ -287,7 +363,8 @@ not adopted. All four are listed under "Questions for [USER]".
 33. **`BASE_MISSING` gets a client alert that asks for F5**, not the server's message plus "kept". From a new page it
     can only come from a hashless replay or an id that became duplicated between serve and save, and a full reload is
     right in both. **An old page cannot read client strings**, so the server's own `BASE_MISSING` message also asks for
-    F5 (decision 20; Task 14's case 7 pins `/F5/`).
+    F5 and, before it, gives the steps that keep the typed text (decision 20; Task 14's case 7 pins `/F5/`, the steps
+    and their order).
 34. **The save response's echo fields are written onto the row before the reload** (G1.21, §7's last row, §5.18), by
     one function, `segmentSaveState.echoAttributeUpdates`, and its test. Today the client reloads after every save
     (`segment-editor.js:2054`), so the echo matters only when that re-render is declined, and after G1.21.
@@ -295,10 +372,10 @@ not adopted. All four are listed under "Questions for [USER]".
     approve, reject and discuss buttons render only for a pending latest edit (`segment-editor.js:1432`), which is in
     flight and therefore the displayed one; when no such row is on screen the field is `null`, and PR3 flags it.
 36. **The assist list in the SENT body is bounded, so a save can never exceed `express.json`'s `1mb` limit**
-    (`server/index.js:206`), which would answer 413 and refuse the editor's save over research data. **Needs [USER]'s
-    yes: it departs from §5.10** ("the item's detail stores the full text the textarea held right after the item") **and
-    from §14 call 18** (a repetition insert or a restored draft keeps the whole text it put in place), in the one case
-    where the alternative is a 413. `buildSaveBody` measures the body without its assists in UTF-8 bytes and gives the
+    (`server/index.js:206`), which would answer 413 and refuse the editor's save over research data. **✅ Approved by
+    [USER] 2026-11-04 (spec AMENDED 2026-11-04): it departs from §5.10** ("the item's detail stores the full text the
+    textarea held right after the item") **and from §14 call 18** (a repetition insert or a restored draft keeps the
+    whole text it put in place), in the one case where the alternative is a 413. `buildSaveBody` measures the body without its assists in UTF-8 bytes and gives the
     assist list the rest of a 1 MiB budget less 16 KiB of headroom (`BODY_LIMIT_BYTES`, `BODY_HEADROOM_BYTES`);
     `segmentSaveState.boundAssists(items, maxBytes)` keeps every item (the sequence stays countable) and, only past that
     budget, drops `detail.text` from the oldest whole-text items first (recording `textLength` and `textDropped:
@@ -306,13 +383,9 @@ not adopted. All four are listed under "Questions for [USER]".
     (`routes/segment-editor.js:354`), so the budget is in practice what is left after two texts of that size, and the
     bound fires only on a list that would otherwise answer 413. **The draft keeps every text:** `draftEntry` does not
     bound (`localStorage` has its own failure path, the `localStorageFull` toast, `segment-editor.js:94-99`), so a
-    refused save and a restore lose nothing. The one exception follows from the bound itself: a replay refused after
+    refused save and a restore lose nothing. The one exception follows from the bound itself: a replay parked after
     its page was reloaded is rebuilt from the body that was sent (`entryFromParked`), so in that over-1-MiB case the
-    kept entry carries the bounded list. If [USER] says no, the fallback is built instead: `buildSaveBody` sends the
-    list whole (no `boundAssists`, and Task 8's bound cases are dropped), so such a save answers 413; live, today's
-    non-retryable branch alerts and leaves the pane and its text on screen (`segment-editor.js:2066-2067`), and a 413
-    answered to a replay is parked like any non-5xx answer (decision 28). Keeping that text through the refusal path's
-    draft is not designed here.
+    kept entry carries the bounded list. (The fallback, not built: send the list whole, so such a save answers 413.)
 37. **E2E refusals the fixture cannot produce are stubbed with `route.fulfill`:** the E2E modules hold no duplicated id
     (handoff §4 PR1) and none is organic or layerless. `STALE_BASE` and `STALE_CONTENT` come from the real server, by
     rewriting the first module GET a page receives (`route.fetch` + `route.fulfill`), which simulates "the base changed
@@ -331,12 +404,26 @@ not adopted. All four are listed under "Questions for [USER]".
     `acceptance.spec.js:90`) answer `BASE_MISSING` in the commits between. Tasks 15–17 finish the server writers. Tasks
     18–20 (drafts, the refused-save experience, replays) come last because Task 19's E2E needs the real `STALE_BASE`
     from Task 14.
-39. **Not adopted: letting the displayed check pass when the displayed row already equals `editedContent`** (the
-    client draft's cross-half ask, for a replay whose first attempt landed but whose response was lost). Spec §5.6 step 4
-    is exact ("refuse if … `sha256Text` of its current `edited_content` differs from `displayedEditSha256`"), so this
-    would change what the frozen spec says and **needs [USER]'s yes**. Without it the replay is refused
-    `STALE_DISPLAYED` and parked (decision 28): nothing is lost, the editor sees a notice for text that in fact landed.
-    Review Focus 18 carries it.
+39. **A displayed row that already holds exactly the text being saved passes the displayed check. ✅ Adopted:
+    approved by [USER] 2026-11-04 (spec AMENDED 2026-11-04).** The case is a replay whose first attempt landed but whose
+    response was lost (the client draft's cross-half ask): that attempt re-saved the editor's own displayed edit in
+    place, which keeps its id (`segmentEditorService.js:146-151`), so the replay's `displayedEditSha256` names text the
+    row no longer holds. Spec §5.6 step 4 alone ("refuse if … `sha256Text` of its current `edited_content` differs from
+    `displayedEditSha256`") would refuse it `STALE_DISPLAYED` and park text that in fact landed. **The rule**
+    (`saveOnServedBase`, Task 13): `STALE_DISPLAYED` does not fire when the displayed row still exists, is a row of this
+    book, module and segment (decision 7's clause stays, and is checked first), and `sha256Text` of its current
+    `edited_content` equals `sha256Text(editedContent)`. Equality is tested on the two hashes, in the same currency as
+    the pair the check already compares; `sha256Text` hashes the raw UTF-8 bytes with no normalisation (Task 1), so
+    equal hashes mean byte-identical texts. **What such a replay then gets:** the route's `checkEditConflict`, the
+    backstop and the mint pass as on the first attempt (the re-save kept the row's id; same base, same text; the mint is
+    idempotent), and `saveSegmentEdit` takes its re-save branch for the
+    editor's pending row, so the outcome is `'updated'`, with the same row id, `edited_content`, served version and
+    displayed pair (the stored pair is the echoed one, what the page showed, as the first attempt stored it); its
+    `created_at` moves to the replay's time, as every re-save's does today, and PR3 sees `replayed: true`. **Not covered,
+    by the approved wording:** a replayed *withdraw* whose first attempt deleted the displayed row finds it gone and is
+    still refused `STALE_DISPLAYED` and parked (nothing is lost: the kept text is the base). Another editor's displayed
+    row re-saved since to exactly the text being saved also passes; the stored pair is still the echoed one, what the
+    page showed. Review Focus 18 carries it.
 
 ## Global Constraints (PR1)
 
@@ -372,8 +459,9 @@ prose. Read them there. For this PR, in addition:
   prettier-checked. The code blocks below show content, not final layout.
 - **The research-only fields are accepted and ignored by the server** (index decision 4): no server code in PR1 reads
   `clientActionId`, `clientActionTime`, `assists`, `acceptOrigin`, `reviewedEditSha256` or `replayed`.
-- **Icelandic strings:** every new UI or server string is a proposal, marked in the code for [USER]'s check before the
-  PR opens (index decision 13). No book content is translated anywhere in this PR.
+- **Icelandic strings:** [USER] approved the proposed UI and server strings on 2026-11-04 (index decision 13), except
+  the ones the 2026-11-04 pass changed or added (Before the PR, item 4), which stay proposals, marked in the code, for
+  [USER]'s check before the PR opens. No book content is translated anywhere in this PR.
 - **Run vitest from the repository root**, one file per command where a step says so.
 
 ## Review Focus
@@ -393,12 +481,20 @@ Input cases the spec implies but its tests do not exercise directly. Each names 
    answers Cancel to the closing prompt (the pane stays on screen). A text that did reach the draft is restored as
    legacy by the new page after F5. Its own queued replay is dropped with a toast by its old `saveRetry` (index Review
    Focus 1), unless F5 comes first, in which case the new `saveRetry` parks it. The only lever over an old page is the
-   server's `BASE_MISSING` message (decision 20); whether it should also tell the editor to answer Cancel to the
-   closing prompt, or to copy the text, before F5 is a question for [USER]. → Task 14, Task 19, Task 20
+   server's `BASE_MISSING` message (decision 20). **Done ([USER] 2026-11-04): before the F5 instruction, that message
+   now gives the steps that keep the text, as a sequence, not a choice.** Wait for the closing prompt, which the
+   message quotes. Answer its *Hætta við* (Cancel), not the pane's own *Hætta við* button. Only then copy the text
+   from the pane. Copying cannot come first: OK at that prompt closes the pane and clears `dirtyEdits`, and only a
+   module fetch separates the prompt from the alert. The pane's own button stays clickable during that fetch, and it
+   discards the text (`:1582`, `:1852-1862`). The prompt named is the old page's `closePanels` confirm, not the
+   browser's leave-page prompt that the recorded clarification named; decision 20 says why. That choice is for
+   [USER]'s check before the PR opens (Before the PR, item 4). → Task 14, Task 19, Task 20
 2. **A replay frozen for up to an hour** whose `baseEditId` still passes `checkEditConflict` (an edit keeps its id
-   through a re-save) is refused by `STALE_BASE` or `STALE_DISPLAYED`, in that order after `BASE_MISSING`. → Task 13
-3. **The displayed pair names a row on another segment** (or a deleted row): `STALE_DISPLAYED`, and nothing is stored.
-   → Task 13
+   through a re-save) is refused by `STALE_BASE` or `STALE_DISPLAYED`, in that order after `BASE_MISSING` (the second
+   not when the displayed row now holds exactly the replayed text: decision 39, Review Focus 18). → Task 13
+3. **The displayed pair names a row on another segment** (or a deleted row): `STALE_DISPLAYED`, and nothing is stored,
+   **even when that row holds exactly the text being saved** (decision 7's clause is checked before decision 39's
+   exception). → Task 13
 4. **Mint and save are one transaction**: a save that fails after its mint leaves no served-version row; and the MT
    lock file is the one side effect inside that transaction (a commit failing after `writeMtLock` leaves a marker
    naming an edit id that does not exist; `writeMtLock` is a no-op once a marker exists, so it cannot clobber one).
@@ -439,13 +535,16 @@ Input cases the spec implies but its tests do not exercise directly. Each names 
     and the `closePanels` confirm counts only panes that could lose text. Declining it keeps the old screen, and the kept
     text is installed on the old row with its code's notice. → Task 19
 18. **A replay whose first attempt reached the server but whose response was lost**, and which re-saved the editor's
-    own displayed edit: the replay's `displayedEditSha256` is now stale, so the server answers `STALE_DISPLAYED` and the
-    client parks text that in fact landed. Safe (nothing is lost), but noisy; the exception that would silence it is
-    decision 39, not adopted. → Task 20
+    own displayed edit: the replay's `displayedEditSha256` is now stale, but the displayed row holds exactly the
+    replayed text, so it passes (decision 39, adopted 2026-11-04) and answers 200 with `outcome 'updated'`, the same row
+    id and no second row; nothing is parked. **The control:** the same replay after the row was re-saved to a third text
+    is still refused `STALE_DISPLAYED`. **The boundary:** a replayed withdraw whose first attempt deleted the displayed
+    row is still refused and parked (safe: the kept text is the base). → Task 13, Task 14
 19. **A replay refused on the Pass 2 editor's page** (the queue is shared and `localization-editor.html` loads
     `saveRetry.js`): it is still sent with `replayed: true` (`DEFAULT_KEY_POLICIES`, decision 27), but no page there
-    registered `parkRefused` for `seg:`, so it is dropped with today's toast. The segment editor's text then survives
-    only through its own 5-second draft. → Task 7
+    registered `parkRefused` for `seg:`, so it is dropped with today's toast, and so is a `seg:` replay whose 5xx
+    answers exhaust the retries there. The segment editor's text then survives only through its own 5-second draft.
+    → Task 7
 20. **An old page (pre-deploy JS) reading a version-2 draft** must restore the text, not wipe the module's drafts
     (decision 29's `drafts` mirror). → Task 18
 21. **A body over `express.json`'s `1mb` limit** would refuse the save with 413; whole-text assists are what grow it.
@@ -459,6 +558,12 @@ Input cases the spec implies but its tests do not exercise directly. Each names 
     gives the page a new `tabId` while another tab writes a newer draft): `tabGuard.findNewestDraft` returns one draft
     (`tabGuard.js:88-103`) and `clearDraftsByPrefix` removes them all (`:109-118`), so the restore must read every
     draft and carry each refused entry over, or the kept text is deleted unseen. → Task 8, Task 18
+25. **A segment-save replay whose 5xx answers exhaust `MAX_ATTEMPTS`** (decision 28, [USER] 2026-11-04): parked with
+    its status and the body's `error` as its code, or `null` when the body is not JSON or names none; never dropped on
+    the segment editor's page. Its pane comes back with the generic notice (`REFUSED`), since no refusal code applies,
+    and its first 5xx is still retried, not parked. The Pass 2 editor's keys still drop it with today's toast, and a
+    replay whose *network failures* exhaust the retries is still dropped on every key (outside the answer). → Task 7,
+    Task 8, Task 20
 
 ## The T-tests this PR carries (index § Test placement)
 
@@ -1482,17 +1587,18 @@ git commit -m "feat(server): the module route mints served versions and sends ba
 
 ---
 
-### Task 7: `saveRetry` reports the refusal code, marks a replay, and parks a refusal answered to a replay
+### Task 7: `saveRetry` reports the refusal code, marks a replay, and parks a refusal answered to a replay or a replay out of retries
 
 Spec: §5.18 (rows 5 and 6, "`saveRetry.js` is shared"), §5.6 ("a queued replay that gets any non-5xx answer is
 dropped with a toast … Both paths must keep the text first"), §5.9 (`replayed`, `client_action_id`), index decisions
 4 and 12, T23 (its "`saveRetry` errors carry `code`" half), T20's client precondition (a replay carries `replayed`);
-decisions 27 and 28.
+decisions 27 and 28 (with [USER]'s 2026-11-04 answer: a 5xx that exhausts the retries is parked too).
 
 **Files:**
 - Modify: `server/public/js/saveRetry.js` — new module-level `DEFAULT_KEY_POLICIES`; `createSaveRetry`: new
   `setKeyPolicy`, `policyFor`, `replayOptions`, `loadParked`, `saveParked`, `park`, `takeParked`, and the optional
-  `deps.keyPolicies`; `executeRetry` (the fetch options and a new terminal branch); `attempt`'s non-retryable block
+  `deps.keyPolicies`; `executeRetry` (the fetch options and a new parking branch between the retry branch and the
+  terminal `else`, reached by a non-5xx answer or an exhausted 5xx); `attempt`'s non-retryable block
   (`err.code`, `err.data`); `processQueue` (prune parked items); the returned API; the browser wiring (`createSaveRetry({…})` at
   `:362-371`, ed10180c: passes `keyPolicies: DEFAULT_KEY_POLICIES`); `module.exports` (`:381-383`).
 - Test: `server/__tests__/saveRetryQueue.test.js` — `makeHarness` gains an optional clock and optional key policies;
@@ -1509,6 +1615,8 @@ decisions 27 and 28.
     — the longest matching prefix wins; a second call for the same prefix replaces the first.
   - `takeParked(prefix: string, options?: {exact?: boolean})` → `Array<{key, url, body, status, code, message,
     parkedAt}>`, removed from storage as they are returned; `exact: true` matches `key === prefix`.
+  - Under `parkRefused`, a replay is parked on any non-5xx answer and on a 5xx that leaves no attempt (`attempts ===
+    MAX_ATTEMPTS`); a parked 5xx has the same shape, `status` its 5xx and `code` the body's `error` or `null`.
   - On a non-retryable live answer: `err.status`, `err.code = data.error`, `err.data = data` (additive).
   - On a replay under `markReplayed`: the fetched body (a JSON object) gains `replayed: true`; the stored entry is not
     changed.
@@ -1561,7 +1669,7 @@ describe('saveRetry refusal codes (G1.1, spec §5.18, T23)', () => {
   });
 });
 
-describe('saveRetry key policies: replays marked, refusals to a replay parked (§5.9, §5.6, index decision 12)', () => {
+describe('saveRetry key policies: replays marked, refused or exhausted replays parked (§5.9, §5.6, decision 28)', () => {
   const BODY = JSON.stringify({ segmentId: 's1', editedContent: 'typed', clientActionId: 'a1' });
 
   it('marks a replay replayed: true and leaves the stored entry as sent', async () => {
@@ -1658,6 +1766,61 @@ describe('saveRetry key policies: replays marked, refusals to a replay parked (�
     expect(h.queue().map((q) => q.key)).toEqual(['seg:b/1/m:s2']);
   });
 
+  // [USER] 2026-11-04 (decision 28): a 5xx that exhausts MAX_ATTEMPTS (3) is parked too. The policy goes in through
+  // deps, as the browser wiring passes DEFAULT_KEY_POLICIES, so the red run reaches today's terminal branch instead of
+  // stopping at a missing setKeyPolicy. Three rounds: the live 5xx queues attempt 1, replays 1 and 2 re-queue, and
+  // replay 3 has no attempt left.
+  const exhaust = async (h) => {
+    for (let round = 0; round < 3; round++) {
+      await h.fireAllTimers();
+      await settle();
+    }
+  };
+
+  it('parks a 5xx that exhausts the retries, with its status and code, and hands it to the owner', async () => {
+    const seen = [];
+    const h = makeHarness({
+      keyPolicies: [{ prefix: 'seg:', parkRefused: true, onParked: (item) => seen.push(item) }],
+    });
+    h.setFetchScript([h.fail500(), h.fail500(), h.fail500(), res(503, { error: 'unavailable', message: 'm' })]);
+    await h.sr.attempt('seg:b/1/m:s1', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await exhaust(h);
+    expect(h.fetchCalls).toHaveLength(4); // the live attempt and three replays: nothing was cut short
+    expect(h.toasts.at(-1).message).toBe(
+      'Vista mistókst eftir 3 tilraunir — textinn var geymdur og birtist aftur í bútnum.'
+    );
+    const parked = {
+      key: 'seg:b/1/m:s1',
+      url: '/api/x',
+      body: BODY,
+      status: 503,
+      code: 'unavailable',
+      message: 'm',
+      parkedAt: 1_000_000,
+    };
+    expect(seen).toEqual([parked]);
+    expect(h.queue()).toEqual([]);
+    expect(h.sr.takeParked('seg:b/1/m:s1', { exact: true })).toEqual([parked]);
+  });
+
+  it('an exhausted 5xx whose body is not JSON parks with no code', async () => {
+    const h = makeHarness({ keyPolicies: [{ prefix: 'seg:', parkRefused: true }] });
+    h.setFetchScript([h.fail500(), h.fail500(), h.fail500(), notJson(502)]);
+    await h.sr.attempt('seg:b/1/m:s1', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await exhaust(h);
+    expect(h.sr.takeParked('seg:').map((p) => [p.status, p.code, p.message])).toEqual([[502, null, null]]);
+  });
+
+  it('control: a key with no policy still drops an exhausted 5xx with today\'s toast', async () => {
+    const h = makeHarness({ keyPolicies: [{ prefix: 'seg:', parkRefused: true }] });
+    h.setFetchScript([h.fail500(), h.fail500(), h.fail500(), h.fail500()]);
+    await h.sr.attempt('loc:b/1/m:s1', '/api/x', { method: 'POST', body: BODY }).catch(() => {});
+    await exhaust(h);
+    expect(h.toasts.at(-1).message).toBe('Vista mistókst eftir 3 tilraunir. Vinsamlegast reyndu aftur.');
+    expect(h.queue()).toEqual([]);
+    expect(h.sr.takeParked('loc:')).toEqual([]);
+  });
+
   it('a 409 to the LIVE attempt is never parked: the caller keeps that text', async () => {
     const h = makeHarness();
     const seen = [];
@@ -1713,10 +1876,15 @@ Run: `npx vitest run server/__tests__/saveRetryQueue.test.js`
 Expected: FAIL — the code tests with `expected undefined to be 'STALE_BASE'` (the non-retryable block,
 `saveRetry.js:234-238`, sets only `err.status`); the policy tests with `TypeError: h.sr.setKeyPolicy is not a
 function`; the `DEFAULT_KEY_POLICIES` test because the import is `undefined`, so no replay is marked
-(`expected '{"segmentId":…}' to deeply equal { …, replayed: true }`), and the wiring pin finds no `keyPolicies:`. Two
-new cases pin behaviour that already holds and pass today: `control: a 5xx carries no code`, and `a refusal whose
-body is not JSON keeps today's message and has no code` (the second callback at `saveRetry.js:239-243` builds
-`Error('Villa ' + status)` with only `.status`). Every pre-existing test in the file passes.
+(`expected '{"segmentId":…}' to deeply equal { …, replayed: true }`), and the wiring pin finds no `keyPolicies:`. **The
+exhausted-5xx test fails on today's behaviour, not on a missing function:** `expected 'Vista mistókst eftir 3
+tilraunir. Vinsamlegast reyndu aftur.' to be 'Vista mistókst eftir 3 tilraunir — textinn var geymdur …'` (today's
+terminal `else`, `saveRetry.js:149-157`, drops the item with that toast; `deps.keyPolicies` is ignored, and its
+`fetchCalls` length of 4 already holds). Its not-JSON sibling fails with `TypeError: h.sr.takeParked is not a
+function`, and so does its no-policy control, after that control's toast and queue assertions pass (they are today's
+behaviour). Two new cases pin behaviour that already holds and pass today: `control: a 5xx carries no code`, and `a
+refusal whose body is not JSON keeps today's message and has no code` (the second callback at `saveRetry.js:239-243`
+builds `Error('Villa ' + status)` with only `.status`). Every pre-existing test in the file passes.
 
 - [ ] **Step 3: Implement**
 
@@ -1788,8 +1956,9 @@ occurrence of that comment.
 
     // ----------------------------------------------------------------
     // PARKED REPLAYS (index decision 12). A replay runs outside the caller's
-    // promise and can outlive the page, so a 409 answered to one is kept here
-    // for its owner instead of being dropped with a toast.
+    // promise and can outlive the page, so a refusal answered to one, or a 5xx
+    // that leaves it no attempt, is kept here for its owner instead of being
+    // dropped with a toast.
     // ----------------------------------------------------------------
 
     function loadParked() {
@@ -1812,7 +1981,8 @@ occurrence of that comment.
       }
     }
 
-    function park(stored, status, data) {
+    // exhaustedAttempts: the attempt count when a 5xx left no attempt (decision 28), else null.
+    function park(stored, status, data, exhaustedAttempts) {
       const item = {
         key: stored.key,
         url: stored.url,
@@ -1827,8 +1997,17 @@ occurrence of that comment.
       });
       list.push(item);
       saveParked(list);
-      // ⚠️ PROPOSED WORDING, for [USER]'s check (index decision 13).
-      toast('Vistun var hafnað — textinn var geymdur og birtist aftur í bútnum.', 'error', true);
+      toast(
+        exhaustedAttempts
+          ? // ⚠️ PROPOSED WORDING, added 2026-11-04, for [USER]'s check before the PR opens (index decision 13).
+            'Vista mistókst eftir ' +
+              exhaustedAttempts +
+              ' tilraunir — textinn var geymdur og birtist aftur í bútnum.'
+          : // Wording approved by [USER] 2026-11-04 (index decision 13).
+            'Vistun var hafnað — textinn var geymdur og birtist aftur í bútnum.',
+        'error',
+        true
+      );
       const policy = policyFor(stored.key);
       if (policy.onParked) {
         try {
@@ -1863,18 +2042,23 @@ occurrence of that comment.
 ```
 
 In `executeRetry`, change `fetchFn(stored.url, stored.options)` to `fetchFn(stored.url, replayOptions(stored))`, and
-insert a branch between the retry branch and the terminal `else` of the `.then`:
+insert a branch between the retry branch and the terminal `else` of the `.then`. It keys on the policy alone: the
+retry branch above it has already taken every 5xx with an attempt left, so this branch is reached exactly by a non-5xx
+answer or a 5xx with none left. The `.catch` branch (a network failure) is not changed (decision 28).
 
 ```js
-            } else if (!isRetryableResponse(response) && policyFor(stored.key).parkRefused) {
-              // Spec §5.6: ANY non-5xx answer to a replay keeps the text (decision 28), not only a 409.
+            } else if (policyFor(stored.key).parkRefused) {
+              // Spec §5.6: ANY non-5xx answer to a replay keeps the text (decision 28), not only a 409; and so
+              // does a 5xx that exhausts MAX_ATTEMPTS ([USER] 2026-11-04). A key with no policy falls through to
+              // today's toast-and-drop below.
+              const exhaustedAttempts = isRetryableResponse(response) ? stored.attempts : null;
               removeFromQueue(stored.key);
               return response.json().then(
                 function (data) {
-                  park(stored, response.status, data);
+                  park(stored, response.status, data, exhaustedAttempts);
                 },
                 function () {
-                  park(stored, response.status, null);
+                  park(stored, response.status, null, exhaustedAttempts);
                 }
               );
             } else {
@@ -1915,7 +2099,7 @@ server/__tests__/saveRetryQueue.test.js`: no problems.
 
 ```bash
 git add server/public/js/saveRetry.js server/__tests__/saveRetryQueue.test.js
-git commit -m "feat(saveRetry): refusal code on errors; replays of seg:/acc: marked; refusals to a replay parked"
+git commit -m "feat(saveRetry): refusal code on errors; seg:/acc: replays marked; refused or exhausted replays parked"
 ```
 
 ---
@@ -2092,7 +2276,8 @@ describe('request bodies (§5.6, §5.18)', () => {
     expect(S.buildAcceptBody({ ...base, acceptOrigin: undefined }).acceptOrigin).toBe('single');
   });
 
-  // Decision 36 (needs [USER]'s yes): only the SENT body is bounded, and only where it would otherwise answer 413.
+  // Decision 36 (approved 2026-11-04, spec AMENDED 2026-11-04): only the SENT body is bounded, and only where it would
+  // otherwise answer 413.
   const longText = 'ð'.repeat(10_000); // 20,000 UTF-8 bytes: the edit route's per-text cap, in two-byte letters
   const manyInserts = Array.from({ length: 60 }, (_, i) =>
     S.assistItem('repetition-insert', 'tm', i, { text: longText, book: 'b', chapter: 1, moduleId: 'm' })
@@ -2246,6 +2431,20 @@ describe('kept texts (index decision 12)', () => {
     });
     expect(S.entryFromParked(body({ segmentId: 's1', acceptedContent: 'x' }))).toBeNull();
     expect(S.entryFromParked({ key: 'k', body: '{not json', code: 'conflict' })).toBeNull();
+  });
+
+  it('a parked 5xx that exhausted its retries is a kept text with the generic notice (decision 28)', () => {
+    const typed = JSON.stringify({ segmentId: 's1', editedContent: 'typed', baseSha256: H1 });
+    // No code (a body that was not JSON, or named none): kept, and the notice is the generic one.
+    const none = S.entryFromParked({ key: 'seg:b/1/m:s1', body: typed, status: 502, code: null });
+    expect(none.entry).toEqual({ text: 'typed', baseSha256: H1, occurrence: null, assists: [], refused: 'REFUSED' });
+    expect(S.noticeFor(none.entry, H1)).toBe('REFUSED');
+    // A server error string as the code is not a refusal code either: the same generic notice.
+    const named = S.entryFromParked({ key: 'seg:b/1/m:s1', body: typed, status: 503, code: 'unavailable' });
+    expect(S.noticeFor(named.entry, H1)).toBe('REFUSED');
+    // Control: a parked refusal code keeps its own notice.
+    const stale = S.entryFromParked({ key: 'seg:b/1/m:s1', body: typed, status: 409, code: 'STALE_BASE' });
+    expect(S.noticeFor(stale.entry, H1)).toBe('STALE_BASE');
   });
 
   it('a draft entry wins over a parked one for the same segment, and keeps the parked refusal', () => {
@@ -3738,7 +3937,7 @@ git commit -m "feat(server): saveSegmentEdit stores the served base; a re-save m
 
 Spec §5.6 (steps 1–6, writers with no client view), §5.7, §5.10 (origin), R4; T4 (PR1 half: service), T5 (PR1 half:
 save and re-attach, on the two known ids), T18 (PR1 half: organic save, service); index decision 16 (the backstop
-call and its string live here); decisions 5–9, decision 20.
+call and its string live here); decisions 5–9, 20 and 39.
 
 **Files:**
 - Create: `server/lib/editOrigins.js` — `EDIT_ORIGINS`, `RESERVED_EDIT_ORIGINS`
@@ -3806,9 +4005,10 @@ SELECT id FROM served_text_versions ORDER BY id }`; every refusal asserts `snap(
     base(a) }`.
   - base file changed between serve and save (annotate, rewrite `a`'s IS, save with the old hash) → `STALE_BASE`.
   - `displayedEditId` of a deleted row → `STALE_DISPLAYED` (`currentSha256: null`); of a row on segment `b` →
-    `STALE_DISPLAYED`; of editor 2's row on `a` whose text was re-saved after the echo (same id,
-    `segmentEditorService.js:146-151`) → `STALE_DISPLAYED`, refusal `{ echoedSha256: sha(old), currentSha256:
-    sha(new) }`.
+    `STALE_DISPLAYED`, **also when that row's `edited_content` is exactly the save's `editedContent`** (decision 7's
+    clause comes before decision 39's exception); of editor 2's row on `a` whose text was re-saved after the echo, to a
+    text other than the save's `editedContent` (same id, `segmentEditorService.js:146-151`) → `STALE_DISPLAYED`, refusal
+    `{ echoedSha256: sha(old), currentSha256: sha(new) }`.
 - `describe('a save that passes (T4 positive controls)')`:
   - base displayed: `outcome 'inserted'`; the row's `original_content === loaded.is` (the server's base; no caller value
     exists), `served_version_id === result.servedVersionId`, `occurrence 0`, `origin 'editor-save'`, displayed pair
@@ -3836,6 +4036,24 @@ SELECT id FROM served_text_versions ORDER BY id }`; every refusal asserts `snap(
     FROM segment_edits WHERE segment_id = 'm91001:para:e'` is `[{ id: result.editId }]` (so the mint would have
     inserted a row, and the null above is the rollback's).
   - `it('an unknown origin is a programming error')` — `origin: 'typo'` throws `TypeError`, nothing written.
+- `describe('decision 39: a replay whose first attempt landed (spec AMENDED 2026-11-04)')`, last in the file so it
+  disturbs no other describe's rows on `a` — a `beforeEach` rewrites `m91001` from its literal (an earlier test
+  rewrites `a`'s IS) and deletes `a`'s `segment_edits` rows; then editor `u1` saves `IS a v1` on `a` (`outcome
+  'inserted'`, row `D`), and the first attempt `first = save({ editedContent: 'IS a v2', displayedEditId: D,
+  displayedEditSha256: sha256Text('IS a v1') })` re-saves `D` in place (`outcome 'updated'`, same id). Every call takes
+  `baseSha256` from a fresh load and passes no `baseEditId`. Then:
+  - `it('the replay passes: the displayed row already holds the text being saved')` — `before = snap()`; the same input
+    again (the replay) returns `outcome 'updated'`, `editId === D`, `servedVersionId === first.servedVersionId`,
+    `displayed` equal to `{ editId: D, sha256: sha256Text('IS a v1') }` (the echoed pair, as the first attempt stored
+    it); `snap()` after equals `before` in every column but `D`'s `created_at` (a re-save moves it, as today), and the
+    version id list is unchanged, so no row and no version was added.
+  - `it('control: a displayed row holding a third text is still refused')` — `u1` re-saves `D` to `IS a v3` (with the
+    correct pair, `[D, sha256Text('IS a v2')]`); the replay of `first`'s input (`IS a v2`, pair `[D, sha256Text('IS a
+    v1')]`) throws `STALE_DISPLAYED`, refusal `{ code: 'STALE_DISPLAYED', echoedSha256: sha256Text('IS a v1'),
+    currentSha256: sha256Text('IS a v3') }`, and `snap()` before and after are equal.
+  - `it('the boundary: a replayed withdraw whose first attempt deleted the displayed row is still refused')` — `u1`
+    withdraws (`editedContent: loaded.is`, pair `[D, sha256Text('IS a v2')]`; `outcome 'withdrawn'`, `D` gone); the
+    same input again throws `STALE_DISPLAYED` with `currentSha256: null` (the exception needs the row to exist).
 
 - [ ] **Step 2: Run them**
 
@@ -3858,8 +4076,9 @@ const segmentValidation = require('../public/js/segment-validation');
 const { sha256Text, isNotMintedBook } = require('../lib/servedText');
 const { EDIT_ORIGINS } = require('../lib/editOrigins');
 
-// Icelandic: proposals for [USER]'s check (index decision 13), except STRUCTURE_BLOCKED (moved verbatim from the
-// route) and SEGMENT_NOT_FOUND (today's 404 body).
+// Icelandic: approved by [USER] 2026-11-04 (index decision 13), except BASE_MISSING, changed after that and a
+// proposal until [USER] checks it; STRUCTURE_BLOCKED is moved verbatim from the route, SEGMENT_NOT_FOUND is today's
+// 404 body.
 const REFUSAL_MESSAGES = Object.freeze({
   BOOK_NOT_MINTED: 'Þessi bók er ekki í þýðingu og ekki er tekið við breytingum á henni.',
   NO_LAYER: 'Engin íslensk útgáfa er til af þessari einingu, svo ekki er hægt að vista á hana.',
@@ -3867,7 +4086,20 @@ const REFUSAL_MESSAGES = Object.freeze({
   DUPLICATE_ID:
     'Auðkenni þessa bútar kemur oftar en einu sinni fyrir í einingunni og ekki er hægt að vista á hann ' +
     'fyrr en það hefur verið lagað.',
-  BASE_MISSING: 'Síðan var hlaðin fyrir uppfærslu ritilsins. Endurhlaðið síðuna (F5) og vistið aftur.',
+  // ⚠️ PROPOSED WORDING, changed 2026-11-04, for [USER]'s check before the PR opens, with the choice of prompt it
+  // names (decision 20). It is the only text an old page shows (decision 33), so it gives the steps that keep the
+  // typed text BEFORE it says F5, as a SEQUENCE, never as alternatives:
+  //   1. wait for that page's own closePanels confirm (quoted, so it is recognised) and answer its
+  //      Hætta við (Cancel), not the pane's own Hætta við button, which discards the text;
+  //   2. copy from the pane;
+  //   3. F5.
+  // OK at the confirm closes the pane, so copying cannot come first.
+  BASE_MISSING:
+    'Síðan var hlaðin fyrir uppfærslu ritilsins og vistun var hafnað. Svo að textinn glatist ' +
+    'ekki: bíðið eftir spurningunni „Opnum klippispjöldum verður lokað. Viltu halda áfram?“ ' +
+    'og veljið þar Hætta við (Cancel), ekki hnappinn Hætta við í bútnum, sem fleygir textanum. ' +
+    'Textinn er þá enn á skjánum og má afrita hann úr textareitnum. Endurhlaðið svo síðuna (F5) ' +
+    'og vistið aftur.',
   STALE_BASE:
     'Grunntexti bútsins hefur breyst frá því að síðan var hlaðin. Vistun hafnað: endurhlaðið eininguna og ' +
     'gerið breytinguna aftur.',
@@ -3928,9 +4160,14 @@ function saveOnServedBase(input) {
     }
     if (displayedEditId !== null) {
       const shown = segmentEditor.getEditById(displayedEditId);
+      // Decision 7: a row of another book, module or segment is not the edit this row displayed.
       const here = shown && shown.book === book && shown.module_id === moduleId && shown.segment_id === segmentId;
       const shownSha256 = here ? sha256Text(shown.edited_content) : null;
-      if (shownSha256 === null || shownSha256 !== displayedEditSha256) {
+      // Decision 39 ([USER] 2026-11-04, spec AMENDED 2026-11-04): a displayed row of THIS segment that already
+      // holds exactly the text being saved passes, so a replay whose first attempt landed is not refused. Compared
+      // as hashes, the currency of the pair; sha256Text does not normalise, so equal hashes are equal bytes.
+      const alreadyHolds = shownSha256 !== null && shownSha256 === sha256Text(editedContent);
+      if (!alreadyHolds && (shownSha256 === null || shownSha256 !== displayedEditSha256)) {
         throw refuse('STALE_DISPLAYED', { echoedSha256: displayedEditSha256, currentSha256: shownSha256 });
       }
     }
@@ -4073,9 +4310,29 @@ are refused before any body is read. If the grep finds another direct poster, it
 - New `it('case 7: a save with no baseSha256 is refused 409 BASE_MISSING, never let through (spec §5.6)')`, in the
   synthetic `describe`, on `SYN_SEGMENT_ID_3`: `rowsFor = () => SELECT * FROM segment_edits WHERE segment_id = ?
   ORDER BY id` (a second connection, as `countRows` does); without `baseSha256` → status 409, `body.error ===
-  'BASE_MISSING'`, `body.message` matches `/F5/`, and `rowsFor()` after equals `rowsFor()` before (values, not a
-  count, spec §10); then the same body with `baseSha256: await servedBase(SYN_BOOK, 1, SYN_MODULE,
-  SYN_SEGMENT_ID_3)` → 200, and `rowsFor()` is exactly one row whose `edited_content` is the body's (the control).
+  'BASE_MISSING'`, `body.message` matches `/F5/`, **and it gives the steps an old page's editor needs before F5, as a
+  sequence ([USER] 2026-11-04, decision 20).** Copying is possible only after the Cancel, so presence alone would not
+  catch a message that offers them as alternatives:
+
+  ```js
+      // decision 20: the steps come in this order, all before F5. The tokens are the proposed wording's; if [USER]
+      // rewords the message, they change with it here and in Task 13.
+      const m = body.message;
+      const steps = [
+        'Opnum klippispjöldum verður lokað. Viltu halda áfram?', // the old page's closePanels question, quoted
+        'Hætta við (Cancel)', // answered in that dialog
+        'ekki hnappinn Hætta við', // the pane's own button, named as the wrong one
+        'afrita', // copying comes only after the Cancel
+        'F5', // the reload comes last
+      ];
+      const at = steps.map((s) => m.indexOf(s));
+      expect(steps.filter((s, i) => at[i] < 0)).toEqual([]); // all present: no -1 reaches the order check
+      expect(at).toEqual([...at].sort((a, b) => a - b)); // and in that order
+  ```
+
+  Then `rowsFor()` after equals `rowsFor()` before (values, not a count, spec §10). Then the same body with
+  `baseSha256: await servedBase(SYN_BOOK, 1, SYN_MODULE, SYN_SEGMENT_ID_3)` → 200, and `rowsFor()` is exactly one row
+  whose `edited_content` is the body's (the control).
 - Header: the bodies now carry `baseSha256` from a module load (G1.1); `originalContent` is still posted by cases 1–3
   but ignored, so case 2 now proves the server never reads it.
 
@@ -4098,8 +4355,19 @@ id sets before and after rather than assuming an empty table.
 - `it('STALE_BASE: the base file changed after the page loaded')` — GET; rewrite `a`'s IS; POST with the GET's hash →
   409 `{ error: 'STALE_BASE', message: REFUSAL_MESSAGES.STALE_BASE }`; no row.
 - `it('STALE_DISPLAYED where checkEditConflict passes')` — editor 2 saves on `a` (route); editor 1 GETs (displayed
-  pair = `edits[a][0].id`, `.contentSha256`); editor 2 re-saves new text (same id); editor 1 posts with
-  `baseEditId` = that id, the displayed pair and the current hash → 409 `STALE_DISPLAYED`.
+  pair = `edits[a][0].id`, `.contentSha256`); editor 2 re-saves new text (same id); editor 1 posts a text other than
+  editor 2's new one (so decision 39's exception cannot apply), with `baseEditId` = that id, the displayed pair and the
+  current hash → 409 `STALE_DISPLAYED`.
+- `it('decision 39: a replay whose first attempt landed answers 200 and writes no second row')` — editor 1 GETs, saves
+  `IS a v1` on `a` with the GET's hash (`editId` `E`), and GETs again (displayed pair `[E,
+  edits[a][0].contentSha256]`); body `B` = `{ segmentId,
+  editedContent: 'IS a v2', baseEditId: E, baseSha256: <the GET's>, displayedEditId: E, displayedEditSha256: <that
+  contentSha256> }`; POST `B` → 200 (the first attempt, `updated: true`). `rows = () => SELECT id, edited_content,
+  original_content, served_version_id, displayed_edit_id, displayed_edit_sha256, status FROM segment_edits WHERE
+  segment_id = ? ORDER BY id` (`created_at` left out: a re-save moves it). POST `{ ...B, replayed: true }` (the replay)
+  → 200, `editId === E`, `updated: true`, and `rows()` equals what it was before the replay. Control, same test: POST
+  `{ ...B, editedContent: 'IS a v3' }` (the same stale pair, a third text) → 409 `STALE_DISPLAYED`, and `rows()` is
+  unchanged.
 - `it('the stored original_content is the server’s base, whatever the client posts')` — POST with `originalContent:
   'RANGT'` and the right hash → the row's `original_content === 'IS a'`.
 - `it('the success response carries what the next save echoes')` — an insert answers `baseSha256 ===` the GET's,
@@ -4177,7 +4445,9 @@ In the `pickEditableSegment …` describe, add:
 Run: `npx vitest run server/__tests__/segmentEditBackstop.test.js server/__tests__/structuralBackstopWiring.test.js server/__tests__/servedSaveRoute.test.js`
 Expected: FAIL — case 7 answers 200 (the route ignores the missing hash); the delegation pin finds no
 `servedEdit.saveOnServedBase(`; the route tests get 200 where 409 is expected, and the success response lacks
-`baseSha256`. Cases 1–6 pass (the extra body field is ignored today).
+`baseSha256`. The decision 39 test's replay already answers 200 today (the route checks no displayed pair), so it fails
+on its control: the third text answers 200 and writes, where 409 is expected. Cases 1–6 pass (the extra body field is
+ignored today).
 
 Run: `npx vitest run server/__tests__/e2eSegmentPicker.test.js`
 Expected: FAIL — `expected undefined to be '<hex>'` (`chooseSegment` returns no `baseSha256`, `segments.js:112-117`);
@@ -4623,7 +4893,7 @@ git commit -m "feat(server): propagation mints each target's base, stamps its or
 ### Task 17: the id-based re-attach script refuses the study book
 
 Spec §5.6 (writers with no client view: "it is retired, or refuses the study book"), §8 (10-10 4.2 row); index
-decision 7; decision 16.
+decision 7; decision 16 (with [USER]'s 2026-11-04 answer: the C16 runbook names exit 6).
 
 **Files:**
 - Modify: `scripts/reattach-segment-edits.js` — a top-level require of `server/lib/researchScope.js` (beside `:35`,
@@ -4631,6 +4901,9 @@ decision 7; decision 16.
   `applyReattach` (`:175`); the CLI block (`:263-323`) wraps `planReattach` and maps `STUDY_BOOK` to exit 6; the header
   (`:2-15`) names the refusal and exit 6
 - Modify: root `LICENSE` — the class 2(a) entry for `scripts/reattach-segment-edits.js` (`LICENSE:120-123`)
+- Modify: `docs/plans/2026-07-29-c16-clean-break-runbook.md` — Appendix A, Step A-2's exit-code table (`:424-431` at
+  ed10180c) gains a row for exit 6, and the two sentences that count the fatal codes (Step A-1's, `:342-343`; the
+  table's lead-in, `:422`) lose their count. That runbook has the script's only exit-code table.
 - Test: `scripts/__tests__/reattachSegmentEdits.test.mjs`, `scripts/__tests__/reattachSegmentEditsCli.test.mjs`,
   `scripts/__tests__/reattachSegmentEditsWrite.test.mjs` (one refusal case each, with its control)
 
@@ -4715,18 +4988,44 @@ Header: add exit 6 to the codes the runbook gates on.
 >      makes the file load-time)
 ```
 
-- [ ] **Step 4: Run them**
+- [ ] **Step 4: The C16 runbook names exit 6** ([USER] 2026-11-04; decision 16)
+
+First re-derive where the runbook speaks of the script's exit codes: `grep -an -i "exit"
+docs/plans/2026-07-29-c16-clean-break-runbook.md`. At ed10180c the hits that enumerate or count codes are Step A-1's
+`:342-343` ("Three of its exit codes are fatal", wrapped across the two lines), the table's lead-in `:422` and the
+table `:424-431`; any further line that counts or lists the codes gets the same treatment. Then, in
+`docs/plans/2026-07-29-c16-clean-break-runbook.md`:
+
+- In the table under Step A-2, after the row `| 4 | One editor+segment key carries more than one restorable row | …`,
+  add:
+
+  ```
+  | 6 | The snapshot holds a book on the research study's allowlist (`server/lib/researchScope.js`) | **STOP.** The script refuses that book before planning, in a dry run too, and opens no database; no flag overrides it, so Appendix A cannot run on that book. Re-apply its edits by hand (Step 4a), or by content once that tool exists (10-10 plan 4.2). |
+  ```
+
+  It names the allowlist's file, not its books: the list is an enforceable value, owned by that file and its test.
+- The lead-in `**Exit codes are a gate, not information. Three of them mean stop and one does not:**` becomes
+  `**Exit codes are a gate, not information. Only 0 and 1 let you proceed; every other code means stop:**` (it already
+  counted wrong: 2, 3, 4 and 5 all stop).
+- Step A-1's `Three of its exit codes are fatal` becomes `Every exit code but 0 and 1 is fatal` (the rest of that
+  sentence is unchanged; its checkbox, "it was 0 or 1", already reads right).
+
+Check: `grep -an "^| 6 |" docs/plans/2026-07-29-c16-clean-break-runbook.md` prints the new row, and `grep -anE
+"Three of (them|its exit codes)" docs/plans/2026-07-29-c16-clean-break-runbook.md` prints nothing.
+
+- [ ] **Step 5: Run them**
 
 Run: `npx vitest run scripts/__tests__/reattachSegmentEdits.test.mjs`, `…Cli.test.mjs`, `…Write.test.mjs`,
 `scripts/__tests__/segmentEditReattachRules.test.mjs`; then `npm run lint`, `npm run format:check`, `npm run docs:check`
 (expected clean, decision 19)
 Expected: PASS.
 
-- [ ] **Step 5: Commit**
+- [ ] **Step 6: Commit**
 
 ```bash
 git add scripts/reattach-segment-edits.js LICENSE scripts/__tests__/reattachSegmentEdits.test.mjs \
-  scripts/__tests__/reattachSegmentEditsCli.test.mjs scripts/__tests__/reattachSegmentEditsWrite.test.mjs
+  scripts/__tests__/reattachSegmentEditsCli.test.mjs scripts/__tests__/reattachSegmentEditsWrite.test.mjs \
+  docs/plans/2026-07-29-c16-clean-break-runbook.md
 git commit -m "feat(scripts): the id-based re-attach refuses the study book, in a dry run too (G1.1)"
 ```
 
@@ -5026,8 +5325,9 @@ git commit -m "feat(segment-editor): version-2 drafts keep base, occurrence and 
 
 ### Task 19: a refused save keeps the typed text, its base and its assists, and the pane says why
 
-Spec: index decision 12 (all of it, but the replay half: Task 20), index decision 13 (the Icelandic, as proposals),
-§5.18 rows 5 and 6 and "Old pages after a deploy", §5.6 (`STALE_BASE`, `STALE_DISPLAYED`, `BASE_MISSING`,
+Spec: index decision 12 (all of it, but the replay half: Task 20), index decision 13 (the Icelandic, approved
+2026-11-04 except `draftNotice.refused`, which the 2026-11-04 pass changed and which stays a proposal), §5.18 rows 5
+and 6 and "Old pages after a deploy", §5.6 (`STALE_BASE`, `STALE_DISPLAYED`, `BASE_MISSING`,
 `BOOK_NOT_MINTED`, the no-layer refusal), §5.7 and R4 (`DUPLICATE_ID`: never sent), §13 (the refused-save
 experience). **T23**, its "a draft keeps its base and its assists through a refused save and a restore, and the next
 save lists both the earlier insert and `draft-restore`" half, with a real (not stubbed) next save as the positive
@@ -5090,7 +5390,7 @@ describe('a refused save keeps the text (index decision 12)', () => {
 Append to `server/__tests__/ui-strings.test.js`:
 
 ```js
-describe('refused-save strings (G1.1 §5.18; index decisions 12–13; the wording is a proposal)', () => {
+describe('refused-save strings (G1.1 §5.18; index decisions 12–13)', () => {
   const source = readFileSync(join(publicJs, 'ui-strings.js'), 'utf-8');
   const UI = new Function(`${source}; return UI;`)();
 
@@ -5354,7 +5654,8 @@ shows the server's message (the stub's `'stub'`); its `page.once` handler is use
 
 ```js
   // ── Refused saves (G1.1, spec §5.6, §5.7, §5.18; index decision 12) ──
-  // ⚠️ PROPOSED WORDING, for [USER]'s check before the PR opens (index decision 13).
+  // Wording approved by [USER] 2026-11-04 (index decision 13), except draftNotice.refused: changed 2026-11-04 and
+  // ⚠️ a PROPOSAL for [USER]'s check before the PR opens.
   refusal: {
     textKept: 'Textinn sem þú skrifaðir var geymdur og birtist aftur í bútnum.',
     generic: 'Vistun var hafnað.',
@@ -5380,8 +5681,10 @@ shows the server's message (the stub's `'stub'`); its `page.once` handler is use
     noLayer:
       'Engin íslensk útgáfa er til fyrir þessa einingu og því er ekki hægt að vista. Textinn ' +
       'þinn er geymdur hér.',
+    // The generic notice: any parked replay with no refusal code of its own, a refusal (a 404, a conflict) or a 5xx
+    // that exhausted its retries (decision 28), so it says the save did not go through, not that it was refused.
     refused:
-      'Vistun sem beið í biðröð var hafnað. Textinn þinn er hér; berðu hann saman við röðina og ' +
+      'Vistun sem beið í biðröð tókst ekki. Textinn þinn er hér; berðu hann saman við röðina og ' +
       'vistaðu aftur.',
     discardKept: 'Henda geymda textanum? Hann glatast þá.',
   },
@@ -5633,11 +5936,12 @@ git commit -m "feat(segment-editor): a refused save keeps the typed text, its ba
 
 ---
 
-### Task 20: a refusal answered to a replay brings the typed text back to its pane
+### Task 20: a refusal answered to a replay, or a replay out of retries, brings the typed text back to its pane
 
 Spec: index decision 12 ("or any non-5xx answer to a replay"), §5.18 row 6 ("on any 409 to a replay, keep the typed
 text … never drop it with a toast"; `saveRetry.js:149-157`), §5.6 ("a queued replay that gets any non-5xx answer";
-decision 28), §5.9 (`replayed`, `client_action_id`).
+decision 28, with [USER]'s 2026-11-04 answer: a 5xx that exhausts the retries comes back too), §5.9 (`replayed`,
+`client_action_id`).
 
 **Files:**
 - Modify: `server/public/js/segment-editor.js` — new `parkedPrefix`, `onSaveParked`; a `seg:` key policy, registered
@@ -5704,6 +6008,33 @@ Append to `server/e2e/served-base-client.spec.js`'s `describe`:
     expect(bodies[1].baseSha256).toBe(bodies[0].baseSha256);
     expect(await page.evaluate(() => localStorage.getItem('saveRetryParked'))).toBeNull(); // taken
   });
+
+  test('a replay whose 5xx answers exhaust the retries keeps the typed text, with the generic notice (decision 28)', async ({
+    page,
+  }) => {
+    const [target] = middleVirginRows(await loadModuleJson(page));
+    await openModule(page);
+    const row = rowOf(page, target.segmentId);
+    await row.locator('.btn-edit').click();
+    const typed = `${target.is}${SUFFIX}`;
+    await row.locator('textarea').fill(typed);
+    const bodies = [];
+    await page.route(`**${MODULE_URL}/edit`, async (route) => {
+      bodies.push(route.request().postDataJSON());
+      // Not JSON, as a proxy's error page is: the parked item has no code, so no refusal notice applies.
+      return route.fulfill({ status: 502, contentType: 'text/html', body: '<html>Bad Gateway</html>' });
+    });
+    page.on('dialog', (d) => d.accept());
+    await row.getByRole('button', { name: 'Vista', exact: true }).click();
+    // Three replays at about 1 s, 2 s and 4 s (saveRetry's backoff); the last leaves no attempt, so it parks.
+    await expect(row.locator('.draft-notice[data-notice="REFUSED"]')).toBeVisible({ timeout: 20000 });
+    await expect(row.locator('textarea')).toHaveValue(typed);
+    expect(bodies).toHaveLength(4); // the live save and three replays, every one a 502
+    expect(bodies.slice(1).every((b) => b.replayed === true)).toBe(true);
+    expect(new Set(bodies.map((b) => b.clientActionId)).size).toBe(1);
+    await expect(page.locator('.toast-error', { hasText: 'geymdur' })).toBeVisible();
+    expect(await page.evaluate(() => localStorage.getItem('saveRetryParked'))).toBeNull(); // taken
+  });
 ```
 
 - [ ] **Step 2: Run the tests and confirm they fail**
@@ -5712,10 +6043,12 @@ Run: `npx vitest run server/__tests__/servedBaseClientPins.test.js`
 Expected: FAIL — the new pins: `segment-editor.js` registers no `seg:` policy (Task 7's default lives in
 `saveRetry.js`), and no `takeParked(` call exists.
 
-Run: `( cd server && CI=1 npx playwright test --config=e2e/playwright.config.js served-base-client.spec.js -g "answered to a replay" )`
+Run: `( cd server && CI=1 npx playwright test --config=e2e/playwright.config.js served-base-client.spec.js -g "answered to a replay|exhaust the retries" )`
 Expected: FAIL — the replay's 409 is dropped with the toast `Vista mistókst eftir 1 tilraunir…` (the `else` branch,
-`saveRetry.js:149-157`, unchanged for a key without `parkRefused`); no notice appears. (`bodies[1].replayed` is
-already `true` here, from Task 7's `DEFAULT_KEY_POLICIES`.)
+`saveRetry.js:149-157`, unchanged for a key without `parkRefused`); no notice appears. The exhausted-5xx test fails the
+same way after its third replay: no page registers `parkRefused` for `seg:` yet, so Task 7's parking branch is not
+reached and the item is dropped with `Vista mistókst eftir 3 tilraunir. Vinsamlegast reyndu aftur.`; no notice
+appears. (`bodies[1].replayed` is already `true` in both, from Task 7's `DEFAULT_KEY_POLICIES`.)
 
 - [ ] **Step 3: Implement**
 
@@ -5740,9 +6073,11 @@ After `keepText` (Task 19):
   }
 
   /**
-   * A replay of a save in THIS module was refused (saveRetry parked it). Keep
-   * the newest text: the pane's, if the editor kept typing, else the replayed
-   * body's. A replay for another module waits for that module's next load.
+   * A replay of a save in THIS module was refused, or ran out of retries on
+   * 5xx answers (saveRetry parked it; decision 28). Keep the newest text: the
+   * pane's, if the editor kept typing, else the replayed body's. A parked item
+   * with no refusal code restores with the generic notice (entryFromParked).
+   * A replay for another module waits for that module's next load.
    */
   function onSaveParked(item) {
     if (!moduleData || item.key.indexOf(parkedPrefix()) !== 0) return;
@@ -5802,8 +6137,9 @@ Expected: PASS, every test in each file.
 
 Run: `( cd server && CI=1 npx playwright test --config=e2e/playwright.config.js served-base-client.spec.js
 editor-lifecycle.spec.js )`, then `( cd server && CI=1 npm run test:e2e )`
-Expected: PASS (`editor-lifecycle` Tests 4 and 5 still see the success toast: their replays answer 200 or a 5xx, never
-a non-5xx refusal). `npx eslint` and `npx prettier --check` on the touched files: no problems.
+Expected: PASS (`editor-lifecycle` Tests 4 and 5 still see the success toast: their stubs fail only the first two
+attempts, Test 4 by a network abort and Test 5 by a 500, so the second replay answers 200 before the retries run out
+and nothing parks). `npx eslint` and `npx prettier --check` on the touched files: no problems.
 
 - [ ] **Step 5: Commit**
 
@@ -5879,7 +6215,7 @@ recordServe(conn, data, key): { scope, duplicatedIds, rows,
 ### `server/services/servedEdit.js` (Task 13)
 
 ```ts
-REFUSAL_MESSAGES: Readonly<Record<RefusalCode, string>>     // Icelandic, proposals (decision 20)
+REFUSAL_MESSAGES: Readonly<Record<RefusalCode, string>>     // Icelandic, approved 2026-11-04; BASE_MISSING a proposal (decision 20)
 REFUSAL_STATUS: Readonly<Record<RefusalCode, 409 | 404 | 400>>
 type RefusalCode = 'BOOK_NOT_MINTED' | 'NO_LAYER' | 'SEGMENT_NOT_FOUND' | 'DUPLICATE_ID'
                  | 'BASE_MISSING' | 'STALE_BASE' | 'STALE_DISPLAYED' | 'STRUCTURE_BLOCKED'
@@ -5909,7 +6245,10 @@ saveOnServedBase({ book, chapter, moduleId, segmentId, occurrence?, editedConten
   after the hash check and carries `violations` instead, so both are `null`; `BASE_MISSING` carries only
   `currentSha256`; `STALE_BASE` carries the echoed `baseSha256` and `sha256Text` of the server base; `STALE_DISPLAYED`
   carries the echoed `displayedEditSha256` and the displayed row's current hash, `null` when that row is gone or not
-  this segment's. **The `/propagate` organic 409 (Task 16) is answered inline in the route, with no `err.refusal`.**
+  this segment's. **`STALE_DISPLAYED` is not raised when the displayed row is this segment's and already holds exactly
+  `editedContent`** (`sha256Text` of both equal; decision 39): such a save, a replay whose first attempt landed, returns
+  `outcome 'updated'` on the same row. **The `/propagate` organic 409 (Task 16) is answered inline in the route, with
+  no `err.refusal`.**
 - **PR3**: emits `edit-save` / `edit-resave` / `edit-withdraw` from `outcome` after the route's commit, and
   `write-refused` for every code above from a caught refusal's `err.refusal` (reason and both hashes, no text; PR3's
   decision 49, which also fills a missing echoed hash from the request body and emits the inline `/propagate` 409 from
@@ -6023,7 +6362,7 @@ type AssistItem = { itemType, source, clientTimeMs: number, detail: object, clai
 assistItem(itemType, source, clientTimeMs, detail): AssistItem   // repetition-insert/tm, term-insert/termbase,
                                                                   // markup-wrap/toolbar|keyboard; else TypeError
 boundAssists(items, maxBytes = BODY_LIMIT_BYTES - BODY_HEADROOM_BYTES): AssistItem[]  // the sent body only
-                                                                  // (decision 36, needs [USER]'s yes)
+                                                                  // (decision 36, approved 2026-11-04)
 
 type DraftEntry = { text, baseSha256: string|null, occurrence: number|null, assists: AssistItem[],
                     refused: string|null, legacy?: true }
@@ -6052,7 +6391,8 @@ DEFAULT_KEY_POLICIES  // module export: seg: and acc: markReplayed; the browser 
 setKeyPolicy(prefix: string, { markReplayed?, parkRefused?, onParked?: (item) => void })  // longest prefix wins
 takeParked(prefix: string, { exact? }): Array<{ key, url, body, status, code, message, parkedAt }>
 // a non-retryable live answer: err.status, err.code = data.error, err.data = data (additive)
-// localStorage['saveRetryParked']: parked items (any non-5xx answer to a parkRefused replay), pruned after 7 days
+// localStorage['saveRetryParked']: parked items (any non-5xx answer to a parkRefused replay, or a 5xx that left it no
+// attempt; decision 28), pruned after 7 days
 ```
 
 A key with no policy (the Pass 2 editor's) behaves exactly as at `ed10180c`.
@@ -6079,56 +6419,90 @@ A key with no policy (the Pass 2 editor's) behaves exactly as at `ed10180c`.
    expected clean, decision 19); `cd server && CI=1 npm run test:e2e` (this PR touches routes and `server/public/js/`).
    No dependency is added, so `npm audit` is not part of this gate. `git status --porcelain` empty.
 2. **Re-check the migration number** (`ls server/migrations`) against `main` just before merging (index decision 9).
-3. **A whole-branch adversarial review.** The newest practice is a blind pair, Opus and Fable on the same brief,
-   neither seeing the other's findings; **ask [USER] before commissioning the Fable half.** The alternative is a review
-   workflow with several lenses and a skeptic per finding; a mutation pass restores from a golden `cp`, never
+3. **A whole-branch adversarial review: the blind pair**, Opus and Fable on the same brief, neither seeing the other's
+   findings. **The Fable half is commissioned ([USER] 2026-11-04).** A mutation pass restores from a golden `cp`, never
    `git checkout`, and `git status --porcelain` runs the moment any reviewing agent goes quiet. Fold confirmed findings
    in as their own commits. The Review Focus above is the brief's input-case list.
-4. **[USER] checks every proposed Icelandic string before the PR is opened** (index decision 13):
-   - the server's `REFUSAL_MESSAGES` (decision 20): `BASE_MISSING`, `STALE_BASE`, `STALE_DISPLAYED`, `DUPLICATE_ID`,
-     `BOOK_NOT_MINTED`, `NO_LAYER`;
-   - `UI.refusal.textKept`, `.generic`, `.baseMissing` and `UI.draftNotice.staleBase`, `.staleDisplayed`,
-     `.baseMissing`, `.duplicateId`, `.bookNotMinted`, `.noLayer`, `.refused`, `.discardKept` (Task 19);
-   - `saveRetry`'s park toast, *Vistun var hafnað — textinn var geymdur og birtist aftur í bútnum.* (Task 7).
+4. **The Icelandic strings** (index decision 13). [USER] approved the proposed wording on 2026-11-04: the server's
+   `REFUSAL_MESSAGES` other than `BASE_MISSING` (decision 20); `UI.refusal.textKept`, `.generic`, `.baseMissing` and
+   `UI.draftNotice.staleBase`, `.staleDisplayed`, `.baseMissing`, `.duplicateId`, `.bookNotMinted`, `.noLayer`,
+   `.discardKept` (Task 19); and `saveRetry`'s refusal park toast, *Vistun var hafnað — textinn var geymdur og birtist
+   aftur í bútnum.* (Task 7). **The strings the 2026-11-04 pass changed or added stay proposals, and [USER] checks them
+   before the PR is opened:**
+   - changed: the server's `BASE_MISSING` message (decision 20, Task 13), *Síðan var hlaðin fyrir uppfærslu ritilsins
+     og vistun var hafnað. Svo að textinn glatist ekki: bíðið eftir spurningunni „Opnum klippispjöldum verður lokað.
+     Viltu halda áfram?“ og veljið þar Hætta við (Cancel), ekki hnappinn Hætta við í bútnum, sem fleygir textanum.
+     Textinn er þá enn á skjánum og má afrita hann úr textareitnum. Endurhlaðið svo síðuna (F5) og vistið aftur.*
+     **[USER] checks more than its wording here; decision 20 gives the evidence for each point:**
+     1. **Which prompt it names.** It names the old page's own closing prompt, `UI.confirm.closePanels`. The recorded
+        clarification (index § Answers, item 1) named the browser's leave-page prompt. The plan names `closePanels`
+        because Cancel at that prompt is the only answer that keeps the text on screen
+        (`segment-editor.js:1204-1211`). The leave-page prompt appears only after that Cancel, and the draft is
+        already written by the time it does (`:3457-3463`).
+     2. **A sequence, not a choice.** The steps are Cancel at that prompt, then copy, then F5. The text it first
+        proposed offered "copy, or Cancel", but nothing can be copied before that prompt has been answered.
+     3. **Which *Hætta við*.** The pane has its own *Hætta við* button, and it discards the text (`:1582`,
+        `:1852-1862`). It stays clickable while the reload fetches. So the message quotes the prompt's question and
+        adds *ekki hnappinn Hætta við í bútnum*.
+     4. ***textareitnum*, not *klippispjaldinu*, as where to copy from.** *Afrita úr klippispjaldinu* reads as "copy
+        from the clipboard". The quoted question keeps the app's own *klippispjöldum*.
+     5. **The draft-recovery question that can follow the Cancel.** The message says nothing about it, for the reason
+        decision 20 gives.
+
+     If [USER] rewords the message, Task 14's case 7 tokens change with it.
+   - changed: `UI.draftNotice.refused` (Task 19), now generic so that it is true of an exhausted 5xx as well as a
+     refusal: *Vistun sem beið í biðröð tókst ekki. Textinn þinn er hér; berðu hann saman við röðina og vistaðu aftur.*
+     (it said *… var hafnað.*)
+   - added: `saveRetry`'s park toast for a replay out of retries (Task 7), *Vista mistókst eftir N tilraunir — textinn
+     var geymdur og birtist aftur í bútnum.* (its first half is today's exhaustion toast, word for word).
 5. **Push, open the PR (draft), and deploy only on [USER]'s go.** Merge as a **merge commit**, never squash or rebase.
    A push to `main` from dev puts prod's content backup behind until the next deploy (CLAUDE.md § Content delivery).
-   After the deploy, an editor's page loaded before it answers `BASE_MISSING` until F5 (Review Focus 1); say so to the
-   editors with the deploy.
+   After the deploy, an editor's page loaded before it answers `BASE_MISSING` until F5 (Review Focus 1). Say so to the
+   editors with the deploy, and give the same steps the message gives, in the same order (decision 20):
+   - when asked *Opnum klippispjöldum verður lokað. Viltu halda áfram?*, answer *Hætta við* in that dialog, not with
+     the pane's own *Hætta við* button;
+   - then copy the text if wanted;
+   - then press F5.
+
+   The browser then asks whether to reload or leave the page. The text is in the draft by then, and the new page
+   offers it.
 6. A new top entry in the register: what merged, what was measured, what is next.
 
-### Questions for [USER] before or during review
+### Answers ([USER], 2026-11-04)
 
-- Is the proposed Icelandic wording right (item 4 above)?
-- Is a live foreign key from `segment_edits.served_version_id` and `segment_acceptances.served_version_id` to
-  `served_text_versions(id)` acceptable (decision 2)? It means G1.15's eventual retention of served versions must delete
-  or NULL the referencing rows first.
-- The id-based re-attach script gets a new exit code, 6, for "refused: study book" (decision 16). Should the C16
-  runbook's exit-code table name it?
-- `POST /edit` would now answer 400 to a non-string `editedContent`; today a number is stored as text (decision 14).
-  Acceptable in PR1?
-- Today Hætta við and Endurstilla discard a pane without asking. Is it acceptable that they now ask before discarding a
-  text a refused save kept, while ordinary panes stay as they are (decision 31)?
-- Decision 39 (not adopted): should a replay whose displayed row already holds the replayed text pass the displayed
-  check? Adopting it changes spec §5.6 step 4 and needs a dated `✏️ AMENDED` block.
-- **Three departures from the spec's wording. Each is built only after [USER]'s yes.** The yes is recorded as a dated
-  `✏️ AMENDED` block in the spec (the shape of the one index decision 1 added for `researchScope.js`), naming the
-  sentence it overrides, in a commit carrying only that edit, before the task that builds it: Task 4 for decision 3,
-  Task 13 for decision 7, Task 8 for decision 36. A no builds the decision's named fallback, and the spec stays as it
-  is:
-  - Decision 3: `checks.schema` also reports a missing `idx_served_text_versions_key`, though §5.20 defines the check
-    as tables and columns (`PRAGMA table_info`).
-  - Decision 7: `STALE_DISPLAYED` also fires when `displayedEditId` names a row of another book, module or segment,
-    though §5.6 step 4 names only "gone" and "the hash differs".
-  - Decision 36: past what fits under `express.json`'s 1 MiB, the SENT body drops `detail.text` from the oldest
-    whole-text items (never the newest, never in the draft), though §5.10 and §14 call 18 say a repetition insert or
-    a restored draft keeps the whole text it put in place. The alternative is a 413 on that save.
-- Decision 28 parks every non-5xx answer to a segment-save replay (§5.6), wider than §5.18's row (409); index decision
-  12 already reads it as any non-5xx answer. A 5xx that exhausts the retries is still dropped with today's toast, as
-  §5.6 leaves it. Should that case be parked too?
-- Review Focus 1: a page loaded before the deploy keeps its typed text only if its own 5-second draft caught it and
-  the editor accepts the recovery offer, or answers Cancel to the closing prompt. Should the server's `BASE_MISSING`
-  message (decision 20, a proposal) also tell the editor to answer Cancel to that prompt, or to copy the text, before
-  pressing F5?
+[USER] answered "Yes for all" to the index's questions on 2026-11-04 and clarified four points the same day. The spec's
+`✏️ AMENDED 2026-11-04` block records every departure below, so no spec commit is owed before any task. One line per
+question this plan asked:
+
+- **The Icelandic wording (Before the PR, item 4):** approved as proposed, except the strings the 2026-11-04 pass changed
+  or added, which stay proposals for [USER]'s check before the PR opens.
+- **The live foreign keys from both `served_version_id` columns (decision 2):** yes, as written (G1.15 must clear them
+  before deleting a version).
+- **Exit code 6 in the C16 runbook (decision 16):** yes; Task 17's Step 4 adds its row to the runbook's exit-code table.
+- **`POST /edit` answering 400 to a non-string `editedContent` (decision 14):** yes, as written.
+- **Hætta við and Endurstilla asking before discarding a kept text (decision 31):** yes, as written.
+- **Decision 39, a displayed row that already holds the saved text:** yes, adopted (spec AMENDED 2026-11-04); Task 13
+  builds it and Task 14 checks it at the route.
+- **The three departures, decisions 3, 7 and 36:** yes, all three (spec AMENDED 2026-11-04); built as written in Tasks
+  4, 13 and 8, with no fallback.
+- **Decision 28, a 5xx that exhausts the retries:** yes, it is parked too (status and code recorded, the owner's
+  `onParked` runs); a key with no policy keeps today's toast-and-drop. Task 7 builds it; Tasks 8 and 20 restore it as
+  a kept text with the generic notice.
+- **Review Focus 1, `BASE_MISSING`'s advice to an old page's editor:** yes. **⚠️ What this plan builds differs from
+  the recorded clarification.** The clarification (index § Answers, item 1) reads: copy the text, or answer Cancel to
+  the *browser's leave-page prompt*, before F5. **So the choice of prompt, not only the string, is for [USER]'s
+  confirmation before the PR opens (Before the PR, item 4).** What the plan builds instead, and why (decision 20):
+  - **It names the old page's own closing prompt, `closePanels`, not the leave-page prompt.** That is the prompt this
+    plan's question and the index's list asked about ("Cancel to the closing prompt"). Cancel at the leave-page prompt
+    adds nothing: that prompt appears only while `dirtyEdits` is non-empty, and `beforeunload` has written the draft
+    before it shows (`segment-editor.js:3457-3463`). After an OK at the closing prompt, `dirtyEdits` is already empty
+    (`:1211`), so F5 asks nothing. The text is gone, except whatever the reload's draft offer may restore.
+  - **It gives steps in order, not "copy, or Cancel":** Cancel at the closing prompt, then copy, then F5. The pane
+    cannot be reached between the alert and that prompt. An editor who means to copy first meets the prompt before
+    they can, and OK there closes the pane.
+
+  Task 14's case 7 pins the steps and their order.
+- **The Fable half of the whole-branch blind-pair review:** commissioned (Before the PR, item 3).
 
 ## Handoff to PR2
 
