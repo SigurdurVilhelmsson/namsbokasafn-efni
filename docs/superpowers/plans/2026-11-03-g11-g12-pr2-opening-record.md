@@ -74,8 +74,10 @@ JS with no build step (`server/public/js/`, `sourceType: 'script'`), Vitest from
 ## Decisions taken in this plan
 
 Each is a §13 item, a seam the spec, the index or PR1's handoff leaves open, or a reading of the tree. **Decision
-4's second half needs [USER]'s yes** before it is built as written. Its fallback is stated. Questions that change
-nothing unless [USER] asks are listed under "Questions for [USER]".
+4's second half needs [USER]'s yes** before it is built as written. Its fallback is stated. **A yes is recorded as a
+dated `✏️ AMENDED` block in the spec, in a commit carrying only that edit, before Task 2 builds it; a no builds the
+fallback** (the rule PR3's and PR4's plans state, § Questions for [USER]). Questions that change nothing unless
+[USER] asks are listed under "Questions for [USER]".
 
 **Server and schema**
 
@@ -126,10 +128,12 @@ nothing unless [USER] asks are listed under "Questions for [USER]".
    lookup (reached only by a user with a users row and an assignment row) this is spec §5.4's "the opening step cannot
    run". **For a throw in the `users` or assignment lookup it is a reading of §5.4, and needs [USER]'s yes:** the route
    cannot tell whether this serve is the one the record depends on, and §3's anti-goal ("the opened time is set by a
-   serve that is not an assigned editor's"; "no editor works on a unit whose opening … was not recorded", §5.4)
-   favours refusing. *Fallback if [USER] says no:* treat such a throw as "does not meet the predicate" (200, logged at
-   error), which is PR1's fail-soft. In practice both lookups throw only on a damaged database, which already fails
-   every write route (`requireRole.js:276-288` maps the assignment failure to 503 or rethrows).
+   serve that is not an assigned editor's"; "no editor works on a unit whose opening … was not recorded", §5.4) favours
+   refusing. *Fallback if [USER] says no:* treat such a throw as "does not meet the predicate" (200, logged at error),
+   which is PR1's fail-soft. A yes is recorded as a dated `✏️ AMENDED` block in the spec, in a commit carrying only that
+   edit, before Task 2 builds it; a no builds this fallback in Task 2 instead. In practice both lookups throw only on a
+   damaged database, which already fails every write route (`requireRole.js:276-288` maps the assignment failure to 503
+   or rethrows).
 5. **The snapshot** (spec §5.5 step 2; T7) is a pure function, `snapshotRows(segments, edits)`, over the route's
    every-editor rows (`routes/segment-editor.js:279`, `segmentEditorService.js:239-253`, `SELECT *` by book and
    module only, so a chapter-metadata load holds every chapter's rows). It keeps an edit when its `segment_id` is one
@@ -310,9 +314,8 @@ nothing unless [USER] asks are listed under "Questions for [USER]".
 
 29. **`server/scripts/close-pending-edits.js` refuses once a unit of its book has opened** (Task 7). Spec §5.6: the
     script "writes raw SQL (`:176-200`). It is meant to run before the study, under the hold. This design does not log
-    its writes, so it must not run once any unit has opened." **A plan addition: the index places this rule in no PR**
-    (it cites the script only in its Global Constraints, as the dry-run precedent for new admin scripts), and PR2 is
-    where the record that makes it checkable first exists. The script already ran its one production write
+    its writes, so it must not run once any unit has opened." **Placed in PR2 by the index (its PR2 row)**, because PR2
+    is where the record that makes it checkable first exists. The script already ran its one production write
     (register, 2026-10-25), so this is a guard on a re-run, not a change to anything done.
     - **The plan's reading of "any unit": a unit of the book the script is run for.** The script writes only that
       book's rows (it refuses a row of another book, `close-pending-edits.js:129`), and only a study book can hold an
@@ -334,8 +337,6 @@ how this plan resolves it.
    module list and the old, saveable rows are on screen together, and T6's "the editor cannot save in between" does
    not hold on that path. Resolved by Task 4 (decision 13), which makes the spec's sentence true for
    `OPENING_UNRECORDED`; any other load error keeps today's behaviour.
-2. **The index places spec §5.6's rule on `close-pending-edits.js` ("must not run once any unit has opened") in no
-   PR.** Resolved by Task 7 (decision 29), a plan addition.
 
 ## Global Constraints (PR2)
 
@@ -2146,8 +2147,8 @@ git commit -m "feat(server): read-research-preconditions reads G-1c, G-1f and G-
 ### Task 7: `close-pending-edits` refuses once a unit of its book has opened
 
 Spec §5.6 (`server/scripts/close-pending-edits.js` "is meant to run before the study, under the hold. This design does
-not log its writes, so it must not run once any unit has opened"); decision 29; disagreement 2. A plan addition: the
-index places this rule in no PR.
+not log its writes, so it must not run once any unit has opened"); decision 29. Placed in PR2 by the index (its PR2
+row).
 
 **Files:**
 - Modify: `server/scripts/close-pending-edits.js` — `closePendingEdits(db, opts)`: one check after the hold check (the
@@ -2434,7 +2435,11 @@ counts as none opened. Later PRs keep the refusal.
 
 - Is the proposed Icelandic wording right (decision 28)?
 - **Decision 4, needs your yes:** a throw in the `users` or assignment lookup, on a chemistry serve, answers 503 rather
-  than serving the unit unrecorded. If no, such a throw serves the unit as today and logs an error.
+  than serving the unit unrecorded. If no, such a throw serves the unit as today and logs an error. **How a yes is
+  recorded:** it changes what the frozen spec says, so it is built only after your yes, written into the spec as a
+  dated `✏️ AMENDED` block (the shape of the one index decision 1 added for `researchScope.js`) naming the sentence it
+  overrides, in a commit carrying only that edit, before Task 2. A no builds the fallback, and the spec stays as it
+  is.
 - Should a deactivated account (`users.is_active = 0`) whose sign-in token is still valid open a unit it holds an
   assignment row for? The plan follows the spec's predicate, which names only the `users` row and the assignment row,
   so it does. Changing it changes spec §5.5 and needs a dated `✏️ AMENDED` block.
@@ -2443,9 +2448,9 @@ counts as none opened. Later PRs keep the refusal.
 - Task 4 takes the pane away only for `OPENING_UNRECORDED`. Today **any** failed reload (a 500, a dropped connection)
   leaves the old, saveable rows on screen beside the module list (decision 13; disagreement 1). Should a later change
   take the pane away on every load error? The plan does not, and its E2E control pins today's behaviour for a 500.
-- Task 7 is a plan addition (decision 29): spec §5.6 forbids running `close-pending-edits` once a unit has opened, and
-  the index places that rule in no PR. If you would rather keep it an operational rule, drop Task 7 and the register
-  holds the rule instead.
+- Task 7 (decision 29; placed in PR2 by the index's PR2 row): spec §5.6 forbids running `close-pending-edits` once a
+  unit has opened. Confirm it is a code guard in the script, not only an operational rule. If you would rather keep it
+  an operational rule, drop Task 7 and the register holds the rule instead.
 - Task 8: will you run the probe on production, or authorise this session to run it? And, if chemistry holds assignment
   rows, which of the §9 choices?
 - E2E proves only the client's handling of a stubbed 503 and that unassigned serves are unchanged (decision 14).

@@ -56,8 +56,10 @@ Each is a §13 item, a seam the spec or the index leaves open, a reading of the 
 the two halves this plan was drafted in. **Three go beyond the frozen spec's wording and each needs [USER]'s yes**
 before it is built as written: decision 3 (an index in `checks.schema`, §5.20), decision 7 (a third `STALE_DISPLAYED`
 condition, §5.6 step 4) and decision 36 (the sent body may lose old whole texts, §5.10 and §14 call 18). Each keeps
-the spec's behaviour as its fallback. A fourth candidate (decision 39) is not adopted. All four are listed under
-"Questions for [USER]".
+the spec's behaviour as its fallback. **A yes is recorded as a dated `✏️ AMENDED` block in the spec, in a commit
+carrying only that edit, before the task that builds the decision (Tasks 4, 13 and 8); a no builds the decision's
+named fallback** (the rule PR3's and PR4's plans state, § Questions for [USER]). A fourth candidate (decision 39) is
+not adopted. All four are listed under "Questions for [USER]".
 
 **Server and schema**
 
@@ -70,10 +72,15 @@ the spec's behaviour as its fallback. A fourth candidate (decision 39) is not ad
    (Task 5), so no caller can mint organic even if it skips the route check.
 2. **The migration (predicted `053-served-text-versions.js`; spec §13 names and types).**
    - `served_text_versions`: `id INTEGER PRIMARY KEY AUTOINCREMENT`; `book TEXT`, `chapter INTEGER`, `module_id TEXT`,
-     `segment_id TEXT`, `occurrence INTEGER CHECK (occurrence >= 0)`, `en_sha256 TEXT CHECK (length(en_sha256) = 64)`,
-     `is_sha256 TEXT CHECK (length(is_sha256) = 64)`, `layer TEXT CHECK (layer IN ('mt-output','faithful','selected'))`,
-     `en_text TEXT`, `is_text TEXT`, every column `NOT NULL` (spec §5.2). `selected` is in the CHECK because §5.2 names
-     it as the 10-10 plan's future layer and a CHECK cannot be widened without a table rebuild.
+     `segment_id TEXT`, `occurrence INTEGER CHECK (occurrence >= 0)`, `en_sha256 TEXT CHECK (length(en_sha256) = 64
+     AND en_sha256 NOT GLOB '*[^0-9a-f]*')`, `is_sha256 TEXT CHECK (length(is_sha256) = 64 AND is_sha256 NOT GLOB
+     '*[^0-9a-f]*')`, `layer TEXT CHECK (layer IN ('mt-output','faithful','selected'))`, `en_text TEXT`, `is_text TEXT`,
+     every column `NOT NULL` (spec §5.2). `selected` is in the CHECK because §5.2 names it as the 10-10 plan's future
+     layer and a CHECK cannot be widened without a table rebuild. **Both hash CHECKs demand 64 lowercase hex, not only
+     the length:** `sha256Text` writes nothing else, PR3's research schema refuses anything else (its `base_is_sha256`
+     CHECK), so a length-only CHECK would let a direct writer store a version every later research event on it loses as
+     a `constraint` failure. Measured on better-sqlite3 13 (scratch, 2026-11-04): the tightened CHECK admits
+     `'b'.repeat(64)` and refuses `'A'.repeat(64)` and `'g'.repeat(64)` with `SQLITE_CONSTRAINT_CHECK`.
    - Unique index `idx_served_text_versions_key` on `(book, chapter, module_id, segment_id, occurrence, en_sha256,
      is_sha256, layer)`, in that order.
    - `segment_edits`: `served_version_id INTEGER REFERENCES served_text_versions(id)`, `occurrence INTEGER`,
@@ -104,15 +111,15 @@ the spec's behaviour as its fallback. A fourth candidate (decision 39) is not ad
    `/accept`, whose `acceptanceService.js:84-86` answers the same body through the route's `:927-929`, and on
    `/propagate`); an id occurring more than once is `DUPLICATE_ID` whatever occurrence a caller names; a single
    occurrence places at 0, and a caller-named occurrence other than 0 is `SEGMENT_NOT_FOUND`. The route sends none.
-7. **The displayed pair** (spec §5.6 step 4): `STALE_DISPLAYED` when `displayedEditId` is set and the row is gone,
-   **or is not a row of this book, module and segment**, or `sha256Text` of its current `edited_content` differs from
-   `displayedEditSha256` (a null hash with a set id differs). **Needs [USER]'s yes: the middle clause departs from
-   §5.6 step 4's wording**, which names only "gone" and "the hash differs". Under the spec's wording a row on another
-   segment whose text hashes the same would pass; the plan refuses it, because a row on another segment is not the
-   edit this row displayed. Safer, and it is the behaviour built; if [USER] says no, drop the `here` test in
-   `saveOnServedBase` and the "row on segment `b`" case in Task 13. The pair is stored only when `displayedEditId` is
-   set and `requireEcho` is true; otherwise both columns are NULL. A propagation's in-place UPDATE clears the pair (its
-   text was not typed over a displayed edit).
+7. **The displayed pair** (spec §5.6 step 4): `STALE_DISPLAYED` when `displayedEditId` is set and the row is gone, **or
+   is not a row of this book, module and segment**, or `sha256Text` of its current `edited_content` differs from
+   `displayedEditSha256` (a null hash with a set id differs). **Needs [USER]'s yes: the middle clause departs from §5.6
+   step 4's wording**, which names only "gone" and "the hash differs". Under the spec's wording a row on another segment
+   whose text hashes the same would pass; the plan refuses it, because a row on another segment is not the edit this row
+   displayed. Safer, and it is what Task 13 builds once [USER]'s yes is recorded; if [USER] says no, the fallback is
+   built: Task 13 without the `here` test in `saveOnServedBase` and without the "row on segment `b`" case. The pair is
+   stored only when `displayedEditId` is set and `requireEcho` is true; otherwise both columns are NULL. A propagation's
+   in-place UPDATE clears the pair (its text was not typed over a displayed edit).
 8. **Step 6 mints even when the save writes nothing** (an identity save with no pending row): the version was
    presented as the base, minting is idempotent, and it keeps step 6 one shape. A mint failure in the save path fails
    the save (500): unlike the serve, a save must never write a row without its served version.
@@ -231,18 +238,18 @@ the spec's behaviour as its fallback. A fourth candidate (decision 39) is not ad
     behave byte-for-byte as today. This is how "every new field stays optional there" is met. `parkRefused` and
     `onParked` stay page-specific (decision 28).
 28. **Every non-5xx answer to a replay is parked, never dropped** (index decision 12; spec §5.6: "a queued replay that
-    gets any non-5xx answer is dropped with a toast … Both paths must keep the text first"). §5.18's row and index
-    decision 12 say "any 409 to a replay"; §5.6 names the whole path, and a 400, 403, 404 or 413 answered to a `seg:`
-    replay drops the typed text just the same, so the branch keys on `!isRetryableResponse(response)`, a superset of
-    the 409s and no contradiction of either. A 5xx that exhausts `MAX_ATTEMPTS` still drops with today's toast (§5.6
-    names only the non-5xx path; a note for [USER] in "Questions"). The replay runs outside the caller's promise chain
-    (`executeRetry`'s own toast, `saveRetry.js:149-157`), the queue lives in `localStorage` and is processed by
-    whichever page loads `saveRetry.js` next (`saveRetry.js:373-378`; both editor views load it). So a policy with
-    `parkRefused: true` moves the refused item into `localStorage['saveRetryParked']` (pruned after 7 days by
-    `processQueue`, the drafts' own window, `tabGuard.js:126`) and calls the owner's `onParked`. The segment editor
-    handles one for the open module at once, and drains the rest into the module's draft when that module loads.
-    Because the policy is by key prefix, not stored on the queue item, **a body queued by a page loaded before the
-    deploy and replayed after F5 is parked too** (it has no hash, so it comes back `BASE_MISSING`).
+    gets any non-5xx answer is dropped with a toast … Both paths must keep the text first"). §5.18's row says "any 409
+    to a replay"; §5.6 names the whole path, and a 400, 403, 404 or 413 answered to a `seg:` replay drops the typed text
+    just the same, so the branch keys on `!isRetryableResponse(response)`: wider than §5.18's row (409), and exactly
+    what index decision 12 already reads it as, any non-5xx answer to a replay. A 5xx that exhausts `MAX_ATTEMPTS` still
+    drops with today's toast (§5.6 names only the non-5xx path; a note for [USER] in "Questions"). The replay runs
+    outside the caller's promise chain (`executeRetry`'s own toast, `saveRetry.js:149-157`), the queue lives in
+    `localStorage` and is processed by whichever page loads `saveRetry.js` next (`saveRetry.js:373-378`; both editor
+    views load it). So a policy with `parkRefused: true` moves the refused item into `localStorage['saveRetryParked']`
+    (pruned after 7 days by `processQueue`, the drafts' own window, `tabGuard.js:126`) and calls the owner's `onParked`.
+    The segment editor handles one for the open module at once, and drains the rest into the module's draft when that
+    module loads. Because the policy is by key prefix, not stored on the queue item, **a body queued by a page loaded
+    before the deploy and replayed after F5 is parked too** (it has no hash, so it comes back `BASE_MISSING`).
 29. **The draft value is `{v: 2, ts, segments: {segId: {text, baseSha256, occurrence, assists, refused}}, drafts:
     {segId: text}}`**, in the same key family (`seg-draft:<book>/<chapter>/<module>:<tabId>`, `segment-editor.js:67-82`).
     `v: 2` plus `segments` is what tells it from today's `{ts, drafts}`. `ts` stays because `tabGuard` keys both its
@@ -253,9 +260,10 @@ the spec's behaviour as its fallback. A fourth candidate (decision 39) is not ad
     pane can say why it holds the text.
 30. **The codes that keep the typed text** are `STALE_BASE`, `STALE_DISPLAYED`, `BASE_MISSING`, `DUPLICATE_ID`,
     `BOOK_NOT_MINTED` and `NO_LAYER` (one constant, `KEEP_TEXT_CODES`; §5.18 lists the first four, index decision 12
-    adds `BOOK_NOT_MINTED`, decision 5 names `NO_LAYER`). A live `conflict` 409 (today's `SEGMENT_CONFLICT`, whose wire
-    code is the lowercase `'conflict'`, `routes/segment-editor.js:483`) keeps today's alert-and-reload; any non-5xx
-    answer to a *replay*, `conflict` included, is kept (decision 28). Nothing may key on the string `SEGMENT_CONFLICT`.
+    adds `BOOK_NOT_MINTED` and `NO_LAYER`, the code decision 5 names). A live `conflict` 409 (today's
+    `SEGMENT_CONFLICT`, whose wire code is the lowercase `'conflict'`, `routes/segment-editor.js:483`) keeps today's
+    alert-and-reload; any non-5xx answer to a *replay*, `conflict` included, is kept (decision 28). Nothing may key on
+    the string `SEGMENT_CONFLICT`.
 31. **How a kept text comes back** (§13's refused-save experience, index decision 12): the text, its assist list and
     the base it was sent with go into the draft and an in-memory hold; the module reloads; the held text is installed in
     its pane with a notice above it and a `draft-restore` item appended after its re-installed assists. **The next save
@@ -300,8 +308,11 @@ the spec's behaviour as its fallback. A fourth candidate (decision 39) is not ad
     bound (`localStorage` has its own failure path, the `localStorageFull` toast, `segment-editor.js:94-99`), so a
     refused save and a restore lose nothing. The one exception follows from the bound itself: a replay refused after
     its page was reloaded is rebuilt from the body that was sent (`entryFromParked`), so in that over-1-MiB case the
-    kept entry carries the bounded list. If [USER] says no, the alternative is to let such a save answer 413 and
-    keep its text through the refusal path; the plan does not build that.
+    kept entry carries the bounded list. If [USER] says no, the fallback is built instead: `buildSaveBody` sends the
+    list whole (no `boundAssists`, and Task 8's bound cases are dropped), so such a save answers 413; live, today's
+    non-retryable branch alerts and leaves the pane and its text on screen (`segment-editor.js:2066-2067`), and a 413
+    answered to a replay is parked like any non-5xx answer (decision 28). Keeping that text through the refusal path's
+    draft is not designed here.
 37. **E2E refusals the fixture cannot produce are stubbed with `route.fulfill`:** the E2E modules hold no duplicated id
     (handoff §4 PR1) and none is organic or layerless. `STALE_BASE` and `STALE_CONTENT` come from the real server, by
     rewriting the first module GET a page receives (`route.fetch` + `route.fulfill`), which simulates "the base changed
@@ -717,6 +728,10 @@ T17 (PR1 half: the column allowlist); decision 2.
 - `it('refuses a second identical version and admits a layer-only difference')` — insert one row (`'a'.repeat(64)`
   hashes, layer `mt-output`); the same values again throw `/UNIQUE/`; the same with layer `faithful` inserts (the
   control); layer `bogus` throws `/CHECK/`.
+- `it('both hashes are 64 lowercase hex (decision 2)')` — on `freshMigratedDb()`, every other value valid and a fresh
+  `segment_id` per insert: `en_sha256` `'A'.repeat(64)` throws `/CHECK/`, `'g'.repeat(64)` throws `/CHECK/`; `is_sha256`
+  `'A'.repeat(64)` throws `/CHECK/`, `'g'.repeat(64)` throws `/CHECK/`; control in the same fixture: `'b'.repeat(64)` in
+  both columns inserts, and the table's `segment_id` set afterwards equals `['ok']` (only the control's row).
 - `it('adds the new columns; rows made before G1.1 read NULL and keep their values')` — on `new
   Database(':memory:')`, run `up(db)` of `008`, `009`, `038`, `039`, `043` (they create both tables in their
   post-039 shape); insert one `segment_edits` row and one `segment_acceptances` row; snapshot each with
@@ -732,7 +747,7 @@ T17 (PR1 half: the column allowlist); decision 2.
 - `it('the foreign key is live')` — on `freshMigratedDb()`, inserting a `segment_edits` row with
   `served_version_id = 999999` throws `/FOREIGN KEY constraint failed/`; with the id of a real inserted
   `served_text_versions` row it inserts (control).
-- `it('is registered in migrationRunner after 052')` — as `migration043.test.js:71-77`.
+- `it('is registered in migrationRunner after 052')` — as `migration043.test.js:70-76`.
 
 `server/__tests__/segmentEditsSchemaDrift.test.js` (index decision 11):
 
@@ -835,8 +850,8 @@ function migrate(db) {
         module_id TEXT NOT NULL,
         segment_id TEXT NOT NULL,
         occurrence INTEGER NOT NULL CHECK (occurrence >= 0),
-        en_sha256 TEXT NOT NULL CHECK (length(en_sha256) = 64),
-        is_sha256 TEXT NOT NULL CHECK (length(is_sha256) = 64),
+        en_sha256 TEXT NOT NULL CHECK (length(en_sha256) = 64 AND en_sha256 NOT GLOB '*[^0-9a-f]*'),
+        is_sha256 TEXT NOT NULL CHECK (length(is_sha256) = 64 AND is_sha256 NOT GLOB '*[^0-9a-f]*'),
         layer TEXT NOT NULL CHECK (layer IN ('mt-output', 'faithful', 'selected')),
         en_text TEXT NOT NULL,
         is_text TEXT NOT NULL
@@ -935,8 +950,12 @@ Spec §5.20, §5.8 ("a swallowed ALTER leaves saves failing"), index decision 3;
   - `EXPECTED_SCHEMA = { tables: { served_text_versions: [11 column names] }, columns: { segment_edits: [5 names],
     segment_acceptances: [2 names] }, indexes: ['idx_served_text_versions_key'] }`, deeply frozen.
   - `checkSchema(db, expected = EXPECTED_SCHEMA)` → `{ ok: true, missing: [] }` | `{ ok: false, missing: string[] }`
-    (entries `served_text_versions`, `segment_edits.origin`, `index idx_served_text_versions_key`, in that order of
-    checking) | `{ ok: false, missing: null, error: <err.code || err.name> }`. Never throws.
+    (entries `served_text_versions`, `served_text_versions.en_text`, `segment_edits.origin`, `index
+    idx_served_text_versions_key`, in that order of checking) | `{ ok: false, missing: null, error: <err.code ||
+    err.name> }`. Never throws. **The rule for `missing`:** an absent `tables` table reports `<table>` alone, its
+    columns not listed; a present one reports each absent column as `<table>.<column>`; a `columns` entry reports each
+    absent column as `<table>.<column>`, its table absent or not; an absent index reports `index <name>`; order:
+    tables, columns, indexes, each in the constant's order.
 
 - [ ] **Step 1: Write the failing test**
 
@@ -946,11 +965,16 @@ Spec §5.20, §5.8 ("a swallowed ALTER leaves saves failing"), index decision 3;
   idx_served_text_versions_key'] }`.
 - `it('a missing column is named')` — fresh db, `ALTER TABLE segment_edits DROP COLUMN origin`; result equals
   `{ ok: false, missing: ['segment_edits.origin'] }`.
+- `it('a missing column of a present tables entry is named as <table>.<column>, and its table is not')` — fresh db,
+  `ALTER TABLE served_text_versions DROP COLUMN en_text` (measured on the decision-2 DDL, tightened CHECKs included:
+  it succeeds, since no index or CHECK names `en_text`); result equals `{ ok: false, missing:
+  ['served_text_versions.en_text'] }` (the table's other ten columns, present, are the control).
 - `it('never throws: a closed handle reports not ok')` — `db.close()` first; result has `ok: false`, `missing: null`
   and a string `error`.
 - `it('index.js wires it into /api/health')` — `fs.readFileSync(server/index.js)` contains
-  `require('./lib/schemaHealth')` and matches `/checks\.schema\s*=/` (the handler cannot be required in a test,
-  `startup.test.js:150`; the pin shape of `startup.test.js`'s request-timing block).
+  `require('./lib/schemaHealth')`, matches `/checks\.schema\s*=/`, and contains `checks.schema = { ok: false,
+  missing: null, error:` (the open-failure catch has `checkSchema`'s own error shape) (the handler cannot be required
+  in a test, `startup.test.js:150`; the pin shape of `startup.test.js`'s request-timing block).
 
 - [ ] **Step 2: Run it**
 
@@ -960,8 +984,9 @@ Expected: FAIL — `Cannot find module '../lib/schemaHealth'`.
 - [ ] **Step 3: Implement**
 
 `server/lib/schemaHealth.js`: the frozen constant and `checkSchema`, reading `db.pragma('table_info(<t>)')` per table
-(names come from the constant, never from input) and `SELECT name FROM sqlite_master WHERE type = 'index'`; one
-try/catch around the body returning the error shape. Header: grown per PR in the same commit as each PR's migration
+(names come from the constant, never from input; an absent table reads `[]`, which the `tables` rule reports as the
+table alone and the `columns` rule as each of its columns) and `SELECT name FROM sqlite_master WHERE type = 'index'`;
+one try/catch around the body returning the error shape. Header: grown per PR in the same commit as each PR's migration
 (index decision 3); it reports names, never counts (§5.20).
 
 `server/index.js`, after the migrations block:
@@ -980,7 +1005,7 @@ try/catch around the body returning the error shape. Header: grown per PR in the
       db.close();
     }
   } catch (err) {
-    checks.schema = { ok: false, error: err.message };
+    checks.schema = { ok: false, missing: null, error: err.code || err.name }; // checkSchema's own error shape
   }
 ```
 
@@ -1912,6 +1937,8 @@ assists; a restore re-installs the assists before `draft-restore`).
 - Produces (all on `segmentSaveState`):
   - `KEEP_TEXT_CODES: string[]`, `NOTICE_CODES: string[]` (`KEEP_TEXT_CODES` plus `'REFUSED'`), `DRAFT_VERSION = 2`,
     `BODY_LIMIT_BYTES = 1048576` (`express.json`'s `'1mb'`), `BODY_HEADROOM_BYTES = 16384`.
+  - `ITEM_SOURCES: Record<itemType, string[]>` — the client item types (§5.10) and the sources each may name; the table
+    `assistItem` checks, exported so G1.23 can extend it and PR3 can pin its server table against it from Node.
   - `rowDataAttributes(seg, displayedEdit, baseEditId)` → `{[attr]: string}` (unescaped values; keys
     `data-segment-id`, `data-is`, `data-base-edit-id`, and when valid `data-base-sha256`, `data-occurrence`,
     `data-displayed-edit-id`, `data-displayed-edit-sha256`).
@@ -2096,6 +2123,14 @@ describe('assist items (§5.10)', () => {
     expect(S.assistItem('term-insert', 'termbase', 3, { term: 'hugtak' })).toEqual({ itemType: 'term-insert', source: 'termbase', clientTimeMs: 3, detail: { term: 'hugtak' } });
     expect(() => S.assistItem('term-insert', 'toolbar', 3, {})).toThrow(TypeError);
     expect(() => S.assistItem('ai-suggestion', 'ai', 3, {})).toThrow(TypeError); // arrives with G1.23
+  });
+
+  it('exports the item-source table G1.23 extends and PR3 pins (index § Cross-PR interfaces)', () => {
+    expect(S.ITEM_SOURCES).toEqual({
+      'repetition-insert': ['tm'],
+      'term-insert': ['termbase'],
+      'markup-wrap': ['toolbar', 'keyboard'],
+    });
   });
 
   it('boundAssists keeps every item and drops the oldest whole texts first, never the newest', () => {
@@ -2740,6 +2775,7 @@ Create `server/public/js/segment-save-state.js`:
     BODY_HEADROOM_BYTES: BODY_HEADROOM_BYTES,
     KEEP_TEXT_CODES: KEEP_TEXT_CODES,
     NOTICE_CODES: NOTICE_CODES,
+    ITEM_SOURCES: ITEM_SOURCES, // G1.23 extends it; PR3 pins its server table against it (index § Cross-PR interfaces)
     rowDataAttributes: rowDataAttributes,
     rowDataAttributeHtml: rowDataAttributeHtml,
     readRowValues: readRowValues,
@@ -3848,7 +3884,9 @@ const REFUSAL_STATUS = Object.freeze({
 function refuse(code, { echoedSha256 = null, currentSha256 = null, violations } = {}) {
   const err = new Error(REFUSAL_MESSAGES[code]);
   err.code = code;
-  err.refusal = { code, echoedSha256, currentSha256 }; // PR3's write-refused event: reason and both hashes, no text
+  // Every code carries it (sendRefusal keys on it). A hash is null where the code is raised before the hash check
+  // (placement) or outside it (STRUCTURE_BLOCKED). PR3 logs every code as write-refused: reason and hashes, no text.
+  err.refusal = { code, echoedSha256, currentSha256 };
   if (violations) err.violations = violations;
   return err;
 }
@@ -5597,9 +5635,9 @@ git commit -m "feat(segment-editor): a refused save keeps the typed text, its ba
 
 ### Task 20: a refusal answered to a replay brings the typed text back to its pane
 
-Spec: index decision 12 ("or any 409 to a replay"), §5.18 row 6 ("on any 409 to a replay, keep the typed text … never
-drop it with a toast"; `saveRetry.js:149-157`), §5.6 ("a queued replay that gets any non-5xx answer"; decision 28),
-§5.9 (`replayed`, `client_action_id`).
+Spec: index decision 12 ("or any non-5xx answer to a replay"), §5.18 row 6 ("on any 409 to a replay, keep the typed
+text … never drop it with a toast"; `saveRetry.js:149-157`), §5.6 ("a queued replay that gets any non-5xx answer";
+decision 28), §5.9 (`replayed`, `client_action_id`).
 
 **Files:**
 - Modify: `server/public/js/segment-editor.js` — new `parkedPrefix`, `onSaveParked`; a `seg:` key policy, registered
@@ -5833,8 +5871,10 @@ recordServe(conn, data, key): { scope, duplicatedIds, rows,
   `servedVersionIds` and `duplicatedIds` for PR3's `module-opened` detail.
 - **PR3**: `mt-accept`, `edit-save`, `propagation` events take `served_version_id` from the rows these writes stored;
   `base_is_sha256` from `served_text_versions.is_sha256`.
-- **PR5**: reads `served_text_versions` by value (never orders ids, spec §5.19, §5.22); `versionRowsFor` is the row
-  builder for a module the route cannot serve.
+- **PR5**: reads `served_text_versions` by value only (never orders ids, spec §5.19, §5.22; PR5's decision 12: a
+  `version_key` comes from the decider's stored row, never from re-derived text), so `versionRowsFor` is not its row
+  builder. It uses `countOccurrences` to number every occurrence it enumerates, and its tests mint fixture versions with
+  `buildVersionRow` + `mintVersions`.
 
 ### `server/services/servedEdit.js` (Task 13)
 
@@ -5863,9 +5903,18 @@ saveOnServedBase({ book, chapter, moduleId, segmentId, occurrence?, editedConten
     displayed: { editId: number|null, sha256: string|null } }   // the pair stored on the row
 ```
 
+- **Every `RefusalCode` carries `err.refusal`** (`refuse()` sets it unconditionally, and the route's `sendRefusal`
+  keys on it), not only the stale family. Its hashes, by code: `BOOK_NOT_MINTED`, `NO_LAYER`, `SEGMENT_NOT_FOUND` and
+  `DUPLICATE_ID` are thrown by placement, before any hash is computed, so both are `null`; `STRUCTURE_BLOCKED` comes
+  after the hash check and carries `violations` instead, so both are `null`; `BASE_MISSING` carries only
+  `currentSha256`; `STALE_BASE` carries the echoed `baseSha256` and `sha256Text` of the server base; `STALE_DISPLAYED`
+  carries the echoed `displayedEditSha256` and the displayed row's current hash, `null` when that row is gone or not
+  this segment's. **The `/propagate` organic 409 (Task 16) is answered inline in the route, with no `err.refusal`.**
 - **PR3**: emits `edit-save` / `edit-resave` / `edit-withdraw` from `outcome` after the route's commit, and
-  `write-refused` from a caught refusal's `err.refusal` (reason and both hashes, no text), with the request's book,
-  chapter, module and segment. PR3 adds `before` to this return (below).
+  `write-refused` for every code above from a caught refusal's `err.refusal` (reason and both hashes, no text; PR3's
+  decision 49, which also fills a missing echoed hash from the request body and emits the inline `/propagate` 409 from
+  the route), with the request's book, chapter, module and segment. PR3 adds `before` to this return (PR3's plan,
+  § The before-images and write facts each service returns).
 - **Re-attach by content** (10-10 plan 4.2, not built here): `saveOnServedBase({ …, origin: 're-attach', requireEcho:
   false })`, skipping and listing a `DUPLICATE_ID`.
 
@@ -5891,6 +5940,13 @@ checkSchema(db, expected = EXPECTED_SCHEMA): { ok: true, missing: [] } | { ok: f
                                            | { ok: false, missing: null, error: string }   // never throws
 ```
 
+**How `missing` is built:** a `tables` entry whose table is absent reports `<table>` alone (its columns are not
+listed); a present one reports each absent column as `<table>.<column>`; a `columns` entry reports each absent column
+as `<table>.<column>`, its table absent or not; an absent index reports `index <name>`. Order: tables, then columns,
+then indexes, each in the constant's order. `server/index.js`'s catch (the database cannot be opened) sets the same
+error shape, `{ ok: false, missing: null, error }`. PR2–PR4 append `tables` entries only, so the first two rules cover
+every later table.
+
 Each later PR appends its own entries to `EXPECTED_SCHEMA` in its migration's commit (index decision 3): PR2
 `module_openings`, `module_opening_inflight`; PR3 `book_switch_events`, `research_consent`,
 `research_capture_losses`; PR4 `research_deletions`, `research_derived_datasets`. `server/index.js`'s
@@ -5905,7 +5961,27 @@ A later PR appends a `describe` (PR2: no opened time in the module JSON, `module
 `server/routes/` vs `researchDb` / `editor_keys`, the `research-*` forbidden tables, `record`'s failure log; PR4: the
 admin reader module; PR5: the eligibility output) and, for a new editing column, an `ALLOWED_COLUMNS` entry.
 
-### The before-state PR3 needs (proposed here; PR3's plan owns the final shape, index § Cross-PR interfaces)
+### `server/__tests__/helpers/servedFixture.js` (Task 6; CommonJS test helper)
+
+```ts
+segFile(pairs: [id, text][]): string                // SEG markers with no space after the colon
+writeModule(root, { book, chapterDir, moduleId, en, mt?, faithful? }): void   // each a pairs list or a raw string
+writeRaw(root, rel, text): void
+handlerFor(router, method, routePath): Handler      // the route's last handler, driven without HTTP
+invoke(handler, req): Promise<{ status, body }>
+EDITOR: Readonly<{ id: 'u-ed1', username: 'editor1', role: 'editor', books: [] }>
+```
+
+- **PR2** adds `invokeChain(router, method, routePath, req)` (the full middleware chain; PR2's decision 26, its Task 3).
+- **PR3** drives its route tests with `handlerFor`, `invoke` and `writeModule` (PR3's decision 59).
+
+### The before-state PR3 needs (SUPERSEDED by PR3's plan, § The before-images and write facts each service returns)
+
+**Kept only as the proposal of record; build from PR3's table, never from this one** (index § Cross-PR interfaces).
+Two rows below are wrong for the final shape: propagation's per-target facts travel in a separate `writes` key that
+the route strips, never on the `created` entries the route sends; and the withdraw DELETE already runs inside
+`saveOnServedBase`'s transaction (Task 13; `saveSegmentEdit`'s own transactions become savepoints, decision 11), so
+PR3 has nothing to wrap.
 
 PR1 returns no before-images. Where PR3 must read them, inside the same transaction as the write (spec §5.9):
 
@@ -5923,8 +5999,9 @@ insert); `before`, `supersededEditIds` and `supersededAcceptanceIds` are new key
 
 ### `server/public/js/segment-save-state.js` (Task 8; browser global `segmentSaveState`, CommonJS export for tests)
 
-Not in the index's cross-PR list, but G1.23 and PR3 build on it: G1.23 adds its item types to `ITEM_SOURCES`
-(`ai-suggestion`, `rule-suggestion`, §5.10), and PR3 reads the item shape it builds.
+In the index's cross-PR list (index § Cross-PR interfaces): G1.23 adds its item types to `ITEM_SOURCES`
+(`ai-suggestion`, `rule-suggestion`, §5.10), and PR3 reads the item shape it builds and pins its server table against
+`ITEM_SOURCES` from Node (the export Task 8 adds).
 
 ```ts
 DRAFT_VERSION = 2
@@ -5932,6 +6009,8 @@ BODY_LIMIT_BYTES = 1048576  // express.json's '1mb'
 BODY_HEADROOM_BYTES = 16384
 KEEP_TEXT_CODES: string[]   // STALE_BASE, STALE_DISPLAYED, BASE_MISSING, DUPLICATE_ID, BOOK_NOT_MINTED, NO_LAYER
 NOTICE_CODES: string[]      // KEEP_TEXT_CODES + 'REFUSED'
+ITEM_SOURCES: Record<itemType, string[]>   // repetition-insert: ['tm'], term-insert: ['termbase'],
+                                           // markup-wrap: ['toolbar', 'keyboard']; G1.23 extends it
 
 rowDataAttributes(seg, displayedEdit | null, baseEditId): Record<attr, string>
 rowDataAttributeHtml(attrs, escape): string
@@ -6031,8 +6110,11 @@ A key with no policy (the Pass 2 editor's) behaves exactly as at `ed10180c`.
   text a refused save kept, while ordinary panes stay as they are (decision 31)?
 - Decision 39 (not adopted): should a replay whose displayed row already holds the replayed text pass the displayed
   check? Adopting it changes spec §5.6 step 4 and needs a dated `✏️ AMENDED` block.
-- **Three departures from the spec's wording, each built as written unless [USER] says no** (each decision names its
-  fallback):
+- **Three departures from the spec's wording. Each is built only after [USER]'s yes.** The yes is recorded as a dated
+  `✏️ AMENDED` block in the spec (the shape of the one index decision 1 added for `researchScope.js`), naming the
+  sentence it overrides, in a commit carrying only that edit, before the task that builds it: Task 4 for decision 3,
+  Task 13 for decision 7, Task 8 for decision 36. A no builds the decision's named fallback, and the spec stays as it
+  is:
   - Decision 3: `checks.schema` also reports a missing `idx_served_text_versions_key`, though §5.20 defines the check
     as tables and columns (`PRAGMA table_info`).
   - Decision 7: `STALE_DISPLAYED` also fires when `displayedEditId` names a row of another book, module or segment,
@@ -6040,9 +6122,9 @@ A key with no policy (the Pass 2 editor's) behaves exactly as at `ed10180c`.
   - Decision 36: past what fits under `express.json`'s 1 MiB, the SENT body drops `detail.text` from the oldest
     whole-text items (never the newest, never in the draft), though §5.10 and §14 call 18 say a repetition insert or
     a restored draft keeps the whole text it put in place. The alternative is a 413 on that save.
-- Decision 28 parks every non-5xx answer to a segment-save replay (§5.6), wider than §5.18's row and index decision
-  12, which say "409". A 5xx that exhausts the retries is still dropped with today's toast, as §5.6 leaves it. Should
-  that case be parked too?
+- Decision 28 parks every non-5xx answer to a segment-save replay (§5.6), wider than §5.18's row (409); index decision
+  12 already reads it as any non-5xx answer. A 5xx that exhausts the retries is still dropped with today's toast, as
+  §5.6 leaves it. Should that case be parked too?
 - Review Focus 1: a page loaded before the deploy keeps its typed text only if its own 5-second draft caught it and
   the editor accepts the recovery offer, or answers Cancel to the closing prompt. Should the server's `BASE_MISSING`
   message (decision 20, a proposal) also tell the editor to answer Cancel to that prompt, or to copy the text, before
@@ -6065,8 +6147,10 @@ Binding on PR2's plan ([the opening record](2026-11-03-g11-g12-pr2-opening-recor
   `[]`, `mintOk` is `true` and `servedVersionIds` is `[]`; organic is never on the study allowlist, so PR2's predicate
   never holds there.
 - **`researchScope.isStudyBook(book)`** (Task 2) for the predicate's first clause (§5.5).
-- **`data.segments[i].occurrence`** (always present after `recordServe`) for `module_opening_inflight`'s key, and the
-  route's `edits` (every editor's rows, already read before the seam) for the snapshot.
+- **`data.segments[i].segmentId`** for the ids this load served (the snapshot keeps only edits on them). The
+  snapshot's `occurrence` is the edit row's `segment_edits.occurrence` (Task 3), NULL → `-1` (spec §5.5), never
+  `data.segments[i].occurrence`. The route's `edits` (every editor's rows, already read before the seam) are the
+  snapshot's input.
 - **`schemaHealth.EXPECTED_SCHEMA`** to append `module_openings` and `module_opening_inflight` in PR2's migration commit
   (index decision 3), and **`researchBoundary.test.js`** to append PR2's `describe` (no opened time in the module JSON;
   `module_openings` never in a response); `MODULE_JSON_ALLOWED` gains nothing.
