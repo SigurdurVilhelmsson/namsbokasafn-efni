@@ -194,9 +194,9 @@ Task 13, decision 36 in Task 8), with no fallback and no spec commit before it.*
 
     | Code | HTTP | Message |
     |---|---|---|
-    | `BASE_MISSING` | 409 | *Síðan var hlaðin fyrir uppfærslu ritilsins og vistun var hafnað. Svo að textinn glatist ekki: bíðið eftir spurningunni „Opnum klippispjöldum verður lokað. Viltu halda áfram?“ og veljið þar Hætta við (Cancel), ekki hnappinn Hætta við í bútnum, sem fleygir textanum. Textinn er þá enn á skjánum og má afrita hann úr textareitnum. Endurhlaðið svo síðuna (F5) og vistið aftur.* (⚠️ changed 2026-11-04: a proposal) |
-    | `STALE_BASE` | 409 | *Grunntexti bútsins hefur breyst frá því að síðan var hlaðin. Vistun hafnað: endurhlaðið eininguna og gerið breytinguna aftur.* |
-    | `STALE_DISPLAYED` | 409 | *Breytingin sem sýnd var í bútnum hefur breyst eða verið fjarlægð frá því að síðan var hlaðin. Vistun hafnað: endurhlaðið eininguna.* |
+    | `BASE_MISSING` | 409 | *Síðunni var hlaðið fyrir uppfærslu ritilsins og vistun var hafnað. Svo að textinn glatist ekki: bíðið eftir spurningunni „Opnum klippispjöldum verður lokað. Viltu halda áfram?“ og veljið þar Hætta við (Cancel), ekki hnappinn Hætta við í bútnum, sem fleygir textanum. Textinn er þá enn á skjánum og má afrita hann úr textareitnum. Endurhlaðið svo síðuna (F5) og vistið aftur.* (⚠️ changed 2026-11-04: a proposal) |
+    | `STALE_BASE` | 409 | *Grunntexti bútsins hefur breyst frá því að síðunni var hlaðið. Vistun hafnað: endurhlaðið eininguna og gerið breytinguna aftur.* |
+    | `STALE_DISPLAYED` | 409 | *Breytingin sem sýnd var í bútnum hefur breyst eða verið fjarlægð frá því að síðunni var hlaðið. Vistun hafnað: endurhlaðið eininguna.* |
     | `DUPLICATE_ID` | 409 | *Auðkenni þessa bútar kemur oftar en einu sinni fyrir í einingunni og ekki er hægt að vista á hann fyrr en það hefur verið lagað.* |
     | `BOOK_NOT_MINTED` | 409 | *Þessi bók er ekki í þýðingu og ekki er tekið við breytingum á henni.* |
     | `NO_LAYER` | 409 | *Engin íslensk útgáfa er til af þessari einingu, svo ekki er hægt að vista á hana.* |
@@ -4095,16 +4095,16 @@ const REFUSAL_MESSAGES = Object.freeze({
   //   3. F5.
   // OK at the confirm closes the pane, so copying cannot come first.
   BASE_MISSING:
-    'Síðan var hlaðin fyrir uppfærslu ritilsins og vistun var hafnað. Svo að textinn glatist ' +
+    'Síðunni var hlaðið fyrir uppfærslu ritilsins og vistun var hafnað. Svo að textinn glatist ' +
     'ekki: bíðið eftir spurningunni „Opnum klippispjöldum verður lokað. Viltu halda áfram?“ ' +
     'og veljið þar Hætta við (Cancel), ekki hnappinn Hætta við í bútnum, sem fleygir textanum. ' +
     'Textinn er þá enn á skjánum og má afrita hann úr textareitnum. Endurhlaðið svo síðuna (F5) ' +
     'og vistið aftur.',
   STALE_BASE:
-    'Grunntexti bútsins hefur breyst frá því að síðan var hlaðin. Vistun hafnað: endurhlaðið eininguna og ' +
+    'Grunntexti bútsins hefur breyst frá því að síðunni var hlaðið. Vistun hafnað: endurhlaðið eininguna og ' +
     'gerið breytinguna aftur.',
   STALE_DISPLAYED:
-    'Breytingin sem sýnd var í bútnum hefur breyst eða verið fjarlægð frá því að síðan var hlaðin. ' +
+    'Breytingin sem sýnd var í bútnum hefur breyst eða verið fjarlægð frá því að síðunni var hlaðið. ' +
     'Vistun hafnað: endurhlaðið eininguna.',
   STRUCTURE_BLOCKED: 'Vistun hafnað: byggingarmerki vantar eða hafa breyst.',
 });
@@ -6429,7 +6429,7 @@ A key with no policy (the Pass 2 editor's) behaves exactly as at `ed10180c`.
    `.discardKept` (Task 19); and `saveRetry`'s refusal park toast, *Vistun var hafnað — textinn var geymdur og birtist
    aftur í bútnum.* (Task 7). **The strings the 2026-11-04 pass changed or added stay proposals, and [USER] checks them
    before the PR is opened:**
-   - changed: the server's `BASE_MISSING` message (decision 20, Task 13), *Síðan var hlaðin fyrir uppfærslu ritilsins
+   - changed: the server's `BASE_MISSING` message (decision 20, Task 13), *Síðunni var hlaðið fyrir uppfærslu ritilsins
      og vistun var hafnað. Svo að textinn glatist ekki: bíðið eftir spurningunni „Opnum klippispjöldum verður lokað.
      Viltu halda áfram?“ og veljið þar Hætta við (Cancel), ekki hnappinn Hætta við í bútnum, sem fleygir textanum.
      Textinn er þá enn á skjánum og má afrita hann úr textareitnum. Endurhlaðið svo síðuna (F5) og vistið aftur.*

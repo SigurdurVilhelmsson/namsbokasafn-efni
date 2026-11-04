@@ -4,12 +4,34 @@
 
 ## ⏩ RESUME — state as of **2026-10-09 — ✅ '6' PR-B IS MERGED ([#546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546)) AND DEPLOYED, with the 7 Dependabot PRs; R-22's condition is met and the LIVE-RUN HOLD's condition is met on `main`. ⏹ The whole-book re-render and the chemistry sync are HELD for [USER]. ▶ [CODE] in parallel: the ② code batch (end of this block)** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence) ✏️ *Heading re-dated 2026-10-09; it had said PR-B was BUILT and UNPUSHED, with step 2b and the LIVE-RUN HOLD outstanding, after all three had changed. The bullets directly under the SINGLE NEXT ACTION are PR-B's record.*
 
-### ⏭ 2026-11-04 (the plan is approved) — ADDS TO THE ENTRY DIRECTLY BELOW AND SUPERSEDES ITS NEXT: **✅ [USER] APPROVED THE G1.1 + G1.2 IMPLEMENTATION PLAN ON 2026-11-04 ("Yes for all", with four clarifications; the index's "Answers" section holds them). The twenty departures are in the spec's `✏️ AMENDED 2026-11-04` block (`4c35d71b`). The plans carry the five adopted changes, the verdict-only backup log and the export on the production host. All of it is on [PR #620](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/620) (draft, docs only). ✅ §C209's fix is a separate draft PR, [#621](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/621). ▶ NEXT: [USER] checks the four Icelandic strings below, then merges #620 when ready. PR1 is then built from its plan, in a new session, on its own branch cut from `main`. #621 goes through its review and merges on [USER]'s go.**
-- **The four strings for [USER]'s check** (all others are approved as proposed):
+### ⏭ 2026-11-04 (both merged) — ADDS TO THE ENTRY DIRECTLY BELOW AND SUPERSEDES ITS NEXT: **✅ #620 MERGED (`59543653`) AND #621 MERGED (`c2c765e6`), both as merge commits, on [USER]'s instruction. The G1.1 + G1.2 plan, its spec amendments and §C209's fix are on `main`. ⚠️ #621 is server code, so §C209's fix reaches production only with the next deploy, and these merges put prod's content backup behind until that deploy (CLAUDE.md § Content delivery). ▶ NEXT: the deploy, on [USER]'s go. Then PR1 of G1.1 + G1.2, in a new session, from its plan (`docs/superpowers/plans/2026-11-03-g11-g12-pr1-served-versions-core.md`), on its own branch cut from `main`. [USER] answered the open questions the same day (below).**
+- **The merge.** GitHub's pull requests were in a partial outage at the time (githubstatus): the merge call answered 502 for #621 three times, and its merge commit appeared on `main` after the third.
+  - Both merge commits' second parents are the reviewed heads (`ae8e6a47`, `57df6400`).
+  - `server/` on `main` is byte-identical to #621's reviewed head.
+- **CI on `main`'s new head was not checked here** (Actions were degraded). Read it in the Actions tab.
+- **[USER]'s answers, the same day, to the questions still open:**
+  - **The Icelandic strings.** "Síðan var hlaðin" becomes "Síðunni var hlaðið" (hlaða takes the dative). It is corrected in every proposed string that uses the construction: PR1's `BASE_MISSING`, `STALE_BASE` and `STALE_DISPLAYED`, and PR3's `CONSENT_TEXT_CHANGED`. The other strings are approved as written.
+  - **A replay that network errors exhaust is kept too,** like one that 5xx answers exhaust. It is added to PR1's plan (decision 28, Task 7).
+  - **§C209's two same-class sites are fixed now, together, in one small PR:** module review submission, and the version history.
+    - The UI already calls the history *Útgáfusaga*. Four code comments that call it "Saga útgáfa" are corrected in the same PR.
+    - The PR is being built on branch `claude/c209-followup-review-versions`.
+  - **PR1 is built now,** in a new session, from its plan on `main`, once this entry's PR merges.
+  - **The deploy: soon.** [USER] runs `./scripts/deploy.sh` on the server, after checking `main`'s CI in the Actions tab. It activates §C209's fix and releases the content backup.
+  - **ch10: re-buy it.** ch10 gets suggestions from a new paid run under the full run's exact inputs (about USD 4), so all 23 chapters share one condition. It runs with the API key, dry run first, as `tools/ai-review/term-pass.js` requires. The re-buy does not undo ch10's earlier unblinded reading, which G1.5's protocol must record.
+  - **Billing:** the 1 November ch10 re-run falls in the November billing period.
+- **Still owed:**
+  - the deploy (above);
+  - the ch10 re-buy (above);
+  - the follow-ups the yes asked for later (the entry below);
+  - the deploy that brings layer 2 to production, which this deploy is.
+
+### ⏭ 2026-11-04 (the plan is approved) — ADDS TO THE ENTRY DIRECTLY BELOW AND SUPERSEDES ITS NEXT: **✅ [USER] APPROVED THE G1.1 + G1.2 IMPLEMENTATION PLAN ON 2026-11-04 ("Yes for all", with four clarifications; the index's "Answers" section holds them). The twenty departures are in the spec's `✏️ AMENDED 2026-11-04` block (`4c35d71b`). The plans carry the five adopted changes, the verdict-only backup log and the export on the production host. All of it is on [PR #620](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/620) (draft, docs only). ✅ §C209's fix is a separate draft PR, [#621](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/621). ▶ NEXT: [USER] checks the three Icelandic strings below, then merges #620 when ready. PR1 is then built from its plan, in a new session, on its own branch cut from `main`. #621 goes through its review and merges on [USER]'s go.**
+- **The three strings for [USER]'s check** (all others are approved as proposed; ✏️ this said "four" until 2026-11-04, though it listed three):
   - PR1's server `BASE_MISSING` message, which now says how an old page keeps its text before F5 (PR1 decision 20);
   - `UI.draftNotice.refused` (PR1 Task 19);
-  - the park toast for an exhausted 5xx (PR1 Task 7);
-  - nothing else in PR2–PR5 is new.
+  - the park toast for an exhausted 5xx (PR1 Task 7).
+
+  Nothing in PR2–PR5 is new.
 - **One correction to the controller's own brief:** the clarification was relayed to the editors as "Cancel at the browser's leave-page prompt". PR1's editor found in the code that the page's own "close open panes" confirm appears first (`segment-editor.js:2061-2065`, then `renderSegments`), and that Cancel at the browser's prompt only keeps the old page. So the message names the page's confirm. The index records this.
 - **One case the answer did not cover:** a replay whose network errors (not 5xx answers) exhaust the retries is still dropped with today's toast (`saveRetry.js:160-177`). PR1 decision 28 says so. Parking it as well is [USER]'s call.
 - **Owed later, not in the five PRs** (the yes asked for them):
