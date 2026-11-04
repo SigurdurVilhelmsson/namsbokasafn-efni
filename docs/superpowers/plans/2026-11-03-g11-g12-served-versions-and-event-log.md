@@ -34,8 +34,8 @@ JS with no build step (`server/public/js/`, `sourceType: 'script'`), Vitest from
 
 ## State of this plan (read first)
 
-- **Written 2026-11-03 for [USER]'s approval, with its five PR plans. No code before [USER] approves it.** Status
-  lives in the register, never here. Each PR plan was drafted, adversarially reviewed by two or three lenses and
+- **Written 2026-11-03 with its five PR plans; ✅ approved by [USER] on 2026-11-04** ("Yes for all" to the questions
+  below, with four clarifications the same day; see "Answers"). Status lives in the register, never here. Each PR plan was drafted, adversarially reviewed by two or three lenses and
   fixed, and the five were then cross-checked against each other and reconciled. No `Expected:` line was run: the
   plans' tests do not exist yet.
 - **Pinned to `main` = `ed10180c`.** Its `server/`, `tools/`, `scripts/` and `.github/` are byte-identical to
@@ -213,8 +213,9 @@ route sends. PR4 and PR5 consume them.
   subcommands only its own shell script runs (PR4's `research-backup.js`, PR4's decision 42).
 - **A decision that changes what the frozen spec says is built only after [USER]'s yes.** The yes is recorded as a
   dated `✏️ AMENDED` block on the spec, in a commit that carries only that edit, before the task that builds the
-  decision. A no builds the decision's named fallback. Every such decision is marked "needs [USER]'s yes" in its plan
-  and listed below, under "Questions for [USER]".
+  decision. A no builds the decision's named fallback. The twenty such decisions in these plans were approved on
+  2026-11-04 and are recorded in the spec's `✏️ AMENDED 2026-11-04` block, so no spec commit is owed before any task. A
+  departure found while building follows the same rule.
 - **Grep with `-a`.** `server/scripts/verify-b4b0-gates.js` and `server/services/termMiningService.js` hold NUL bytes.
 - **A mutation check restores from a golden `cp`, never `git checkout`; `git status --porcelain` after any agent that
   mutates files goes quiet** (CLAUDE.md § Commands).
@@ -268,14 +269,46 @@ Every production run is read-only and is recorded in the register by its output.
    delivery): deploy after merging, or expect the next content tick to fail.
 5. A new top entry in the register: what merged, what was measured, what is next.
 
-## Questions for [USER], across the five plans
+## Questions for [USER], across the five plans, and the answers
 
-Gathered from every plan's own Decisions and Questions by a cross-check of all five. Each plan's text, with its reason
-and fallback, is the full statement; this list points to it. Every item is built as written unless [USER] says no,
-except the departures, which wait for a yes (Global Constraints).
+### Answers ([USER], 2026-11-04)
 
-**1. Departures from the spec's wording: each needs a yes before it is built.** The fallback is the spec's literal
-reading, named in the decision.
+[USER] answered **"Yes for all"** to the list below, then clarified four points the same day:
+
+1. **Five questions phrased so that "yes" changes the plan are adopted:**
+   - PR1 d39: a replayed save passes the displayed check when the displayed row already holds exactly the text being
+     saved;
+   - PR1 d28: a 5xx that exhausts the retries is parked too, never dropped with a toast;
+   - PR1 Review Focus 1: the server's `BASE_MISSING` message also tells an old page's editor to copy the text, or
+     answer Cancel to the browser's leave-page prompt, before F5;
+   - PR3 d49: `SEGMENT_CONFLICT` and the accept's eligibility refusals are also logged as `write-refused`;
+   - PR3 d65: a saved or propagated text identical to another editor's live edit is stored as its hash only.
+2. **PR4:** the research backup's log carries a verdict only per run (ok, or failed and which step), never interval ids
+   or counts.
+3. **PR5:** the end-of-editing export and the eligibility file run on the production host, by hand, reading the live
+   `sessions.db` read-only; their output stays in that host's gitignored `pipeline-output/`.
+4. **§C209** is fixed in a separate small PR now, not in these plans.
+
+What follows from that:
+- **Departures.** All twenty (the eighteen in table 1 plus PR1 d39 and PR3 d65) are recorded in the spec's
+  `✏️ AMENDED 2026-11-04` block.
+- **Behaviour choices.** Every other one is approved as written. The Icelandic proposals are approved as proposed,
+  except a string the approval pass added or changed, which [USER] checks before its PR opens.
+- **Asked for later, not in these PRs** (the register owns them):
+  - E2E seeding to prove an opening end to end (PR2 d14);
+  - an admin path for a lost research file (PR4 d33);
+  - the consent text saying that the request log shows a withdrawal was posted (PR3 Review Focus 12; a dated note under
+    G1.4 in the Skerfur plan).
+- **Built after all:** the C16 runbook names exit code 6 (PR1 d16), in PR1 Task 17.
+- **Still open, at PR2's time:** who runs the production probe, and the §9 choice if chemistry holds assignment rows.
+- **Reviews.** The Fable half of each whole-branch blind-pair review is commissioned.
+
+### The list as [USER] saw it
+
+Gathered from every plan's own Decisions and Questions by a cross-check of all five. Each plan's text, with its reason,
+is the full statement; this list points to it.
+
+**1. Departures from the spec's wording,** each now approved and recorded in the spec's amendment block.
 
 | Plan, decision | What it does beyond the spec's wording |
 |---|---|

@@ -227,6 +227,11 @@ captured. What the consent text must name is listed in the design's §6 until G1
 research file's 7-day backup lifetime (R2), the editing records kept for everyone and never used as research data
 (R3), and the loss notes that outlive those 7 days (A3).*
 
+✏️ *2026-11-04, G1.4 ([USER], approving the G1.1 + G1.2 implementation plan): the consent text must also say that the
+server's request log records that a withdrawal was posted, and when, though not by whom. The withdraw route's path
+reaches the log like any other request (`docs/superpowers/plans/2026-11-03-g11-g12-pr3-event-log.md`, Review Focus
+12). This adds one item to the design's §6 list, which a dated note here may do until G1.4's text exists.*
+
 ✏️ *2026-11-03, G1.12 and G1.13 ([rulings](../decisions/2026-11-03-research-capture-consent-and-retention-rulings.md)): G1.12 lands before any of the 83 duplicate-id modules opens;
 until then a save or accept on a duplicated id that cannot be placed is refused (R4). G1.13 assigns chapters only
 after G1.23 is switched on in production (R6), and only to an editor whose consent decision and signed licence clause
