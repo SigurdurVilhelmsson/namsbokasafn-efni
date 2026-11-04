@@ -1247,7 +1247,7 @@ describe('applyApprovedEdits — integration', () => {
     service.applyApprovedEdits('testbook', 1, 'm00001');
     expect(readFaithful()['m00001:para:fs-id001']).toBe('Samþykkt S-efni.');
 
-    // Simulate a "Saga útgáfa" restore / manual faithful-file fix: rewrite S's
+    // Simulate a "Útgáfusaga" restore / manual faithful-file fix: rewrite S's
     // content directly in the file. contentVersionService.restoreVersion (and a
     // hand edit) rewrite the faithful file WITHOUT touching segment_edits, so
     // S's edit stays status='approved', applied_at set — there is no

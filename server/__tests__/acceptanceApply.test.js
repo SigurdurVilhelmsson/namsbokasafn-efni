@@ -397,7 +397,7 @@ describe('metrics redefinition: reviewed = approved ∪ accepted (spec §8)', ()
 // so a throw in that work rolls back with the file still untouched. The
 // sharpest form of the old divergence was the step-4b `content_versions`
 // snapshot rolling back AFTER the file advanced — the pre-apply content then
-// never entered version history and was invisible to "Saga útgáfa".
+// never entered version history and was invisible to "Útgáfusaga".
 //
 // `acceptanceService.stampApplied` is the last DB mutation in the transaction
 // and is called via property lookup, so spying on it gives a deterministic

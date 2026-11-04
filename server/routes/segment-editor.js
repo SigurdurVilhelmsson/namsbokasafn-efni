@@ -298,8 +298,12 @@ router.get(
         editsBySegment[segId].sort((a, b) => (isNewer(a, b) ? -1 : isNewer(b, a) ? 1 : 0));
       }
 
-      // Get stats
-      const stats = segmentEditor.getModuleStats(req.params.book, req.params.moduleId);
+      // Get stats — this chapter's rows (they gate the submit button, §C209)
+      const stats = segmentEditor.getModuleStats(
+        req.params.book,
+        req.params.moduleId,
+        req.chapterNum
+      );
 
       // Active MT acceptances keyed by segmentId (item 20b)
       const acceptances = {};
@@ -1591,7 +1595,11 @@ router.get(
   validateModule,
   (req, res) => {
     try {
-      const stats = segmentEditor.getModuleStats(req.params.book, req.params.moduleId);
+      const stats = segmentEditor.getModuleStats(
+        req.params.book,
+        req.params.moduleId,
+        req.chapterNum
+      );
       res.json(stats);
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -1775,6 +1783,7 @@ router.get(
     try {
       const versions = contentVersionService.getModuleVersions(
         req.params.book,
+        req.chapterNum,
         req.params.moduleId
       );
       res.json({ versions });
@@ -1798,6 +1807,7 @@ router.get(
     try {
       const segments = contentVersionService.getVersionContent(
         req.params.book,
+        req.chapterNum,
         req.params.moduleId,
         parseInt(req.params.version, 10)
       );

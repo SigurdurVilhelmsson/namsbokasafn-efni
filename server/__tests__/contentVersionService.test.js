@@ -168,9 +168,9 @@ describe('contentVersionService.restoreVersion', () => {
 
     // A fresh snapshot of the pre-restore (current) content was taken first
     expect(result.snapshotVersion).toBe(2);
-    const versions = contentVersionService.getModuleVersions(BOOK, MODULE);
+    const versions = contentVersionService.getModuleVersions(BOOK, CHAPTER, MODULE);
     expect(versions.map((v) => v.version)).toEqual([2, 1]);
-    const v2 = contentVersionService.getVersionContent(BOOK, MODULE, 2);
+    const v2 = contentVersionService.getVersionContent(BOOK, CHAPTER, MODULE, 2);
     const v2map = Object.fromEntries(v2.map((s) => [s.segment_id, s.content]));
     expect(v2map[SEG('fs-id001')]).toBe('Nýtt A');
   });
@@ -236,7 +236,7 @@ describe('contentVersionService.restoreVersion', () => {
     expect(onDisk[SEG('fs-id002')]).toBe('Snap B');
     expect(onDisk[SEG('fs-id003')]).toBe('Cur C');
     // The orphaned snapshot row is still in content_versions (recoverable)
-    const v1 = contentVersionService.getVersionContent(BOOK, MODULE, 1);
+    const v1 = contentVersionService.getVersionContent(BOOK, CHAPTER, MODULE, 1);
     expect(v1.some((s) => s.segment_id === SEG('fs-id999'))).toBe(true);
   });
 
@@ -278,7 +278,7 @@ describe('contentVersionService.restoreVersion', () => {
       db
     );
     expect(res.segmentsSnapshotted).toBe(EN_IDS.length);
-    const listed = contentVersionService.getModuleVersions(BOOK, MODULE);
+    const listed = contentVersionService.getModuleVersions(BOOK, CHAPTER, MODULE);
     expect(listed.some((v) => v.version === res.version)).toBe(true);
   });
 
@@ -434,11 +434,11 @@ describe('contentVersionService.snapshotModule connection threading', () => {
     // .immediate() takes the write lock up-front, mirroring the apply path.
     apply.immediate();
 
-    const versions = contentVersionService.getModuleVersions(BOOK, MODULE);
+    const versions = contentVersionService.getModuleVersions(BOOK, CHAPTER, MODULE);
     expect(versions).toHaveLength(1);
     expect(versions[0].segments).toBe(2);
 
-    const content = contentVersionService.getVersionContent(BOOK, MODULE, 1);
+    const content = contentVersionService.getVersionContent(BOOK, CHAPTER, MODULE, 1);
     expect(content.map((c) => c.content)).toEqual(['vélþýðing 1', 'vélþýðing 2']);
   });
 
@@ -446,7 +446,7 @@ describe('contentVersionService.snapshotModule connection threading', () => {
     contentVersionService.snapshotModule(BOOK, CHAPTER, MODULE, [
       { segmentId: SEG('1'), content: 'sjálfgefið' },
     ]);
-    expect(contentVersionService.getModuleVersions(BOOK, MODULE)).toHaveLength(1);
+    expect(contentVersionService.getModuleVersions(BOOK, CHAPTER, MODULE)).toHaveLength(1);
   });
 });
 
@@ -505,16 +505,16 @@ describe('track parameterization (item 15)', () => {
     contentVersionService.snapshotModule(BOOK, 3, 'mX', segs, 'ed1');
     contentVersionService.snapshotModule(BOOK, 3, 'mX', segs, 'ed1');
     contentVersionService.snapshotModule(BOOK, 3, 'mX', segs, 'ed1', undefined, 'localized');
-    expect(contentVersionService.getModuleVersions(BOOK, 'mX').map((v) => v.version)).toEqual([
+    expect(contentVersionService.getModuleVersions(BOOK, 3, 'mX').map((v) => v.version)).toEqual([
       2, 1,
     ]);
     expect(
-      contentVersionService.getModuleVersions(BOOK, 'mX', 'localized').map((v) => v.version)
+      contentVersionService.getModuleVersions(BOOK, 3, 'mX', 'localized').map((v) => v.version)
     ).toEqual([1]);
   });
 
   it('throws TypeError on unknown track', () => {
-    expect(() => contentVersionService.getModuleVersions(BOOK, 'mX', 'mt-preview')).toThrow(
+    expect(() => contentVersionService.getModuleVersions(BOOK, 3, 'mX', 'mt-preview')).toThrow(
       TypeError
     );
     expect(() => contentVersionService.restoreVersion(BOOK, 3, 'mX', 1, {}, 'mt-preview')).toThrow(
@@ -555,7 +555,7 @@ describe('track parameterization (item 15)', () => {
     expect(file).toContain('staðfært A v1');
     expect(file).not.toContain('staðfært A v2');
     // Faithful history untouched by localized activity
-    expect(contentVersionService.getModuleVersions(BOOK, 'm77001')).toEqual([]);
+    expect(contentVersionService.getModuleVersions(BOOK, 3, 'm77001')).toEqual([]);
 
     // Restore is itself reversible: roll forward to the pre-restore snapshot (v2)
     const forward = contentVersionService.restoreVersion(BOOK, 3, 'm77001', 2, {}, 'localized');
@@ -586,7 +586,7 @@ describe('track parameterization (item 15)', () => {
     const result = contentVersionService.restoreVersion(BOOK, 3, 'm77002', 1, {}, 'localized');
     expect(result.segmentsRestored).toBe(2);
     // The pre-restore snapshot (v2) captured the CURRENT localized content
-    const v2 = contentVersionService.getVersionContent(BOOK, 'm77002', 2, 'localized');
+    const v2 = contentVersionService.getVersionContent(BOOK, 3, 'm77002', 2, 'localized');
     expect(v2.find((s) => s.segment_id === 'm77002:para:a').content).toBe('önnur staðfærsla');
     // Empty string from v1 restored verbatim (F19: empties are recorded)
     const file = readFileSync(

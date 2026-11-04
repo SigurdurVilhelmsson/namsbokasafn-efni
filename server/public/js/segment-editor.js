@@ -1306,7 +1306,7 @@
     // Determine what IS text to display and what to pre-fill in the editor.
     //
     // MTA-R12: only an edit still IN FLIGHT gets to override the file. This
-    // used to count applied edits too, so after a "Saga útgáfa" restore past an
+    // used to count applied edits too, so after a "Útgáfusaga" restore past an
     // applied edit the row displayed the edit's stale text while "Staðfesta MT"
     // attested the on-disk bytes (the accept posts seg.is — anything else 409s
     // STALE_CONTENT). The editor read one string and attested another.
