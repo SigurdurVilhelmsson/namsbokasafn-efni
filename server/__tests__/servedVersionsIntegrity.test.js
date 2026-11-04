@@ -1,0 +1,187 @@
+/**
+ * T1, the integrity set (G1.1; spec §10 T1, §5.3; plan decision 17, Task 6).
+ *
+ * The committed layer 2 (books/efnafraedi-2e/02-mt-revised/<chDir>/<stem>-changes.jsonl) records,
+ * for every change the AI pass made, the hash of the text it read (`beforeSha256`). A chain is the
+ * change records of one (chDir, module, segmentId, occurrence); its FIRST record's beforeSha256 is
+ * what the AI read. This test serves every module that has a chain through the real module route
+ * and compares that hash with the `is_sha256` the route minted. Exactly two chains differ: both sit
+ * on a duplicated id, where the loader serves the last copy's Icelandic for every copy (R4).
+ *
+ * Read-only on books/: the books dir is NOT overridden, and nothing here writes a file. The
+ * database is a temp SESSIONS_DB_PATH.
+ *
+ * A missing minted row is a mismatch, never a fallback, so the test cannot pass on a route that
+ * mints nothing. Only ch00 (the route refuses chapter 0, validateParams.js) and an id the response
+ * itself shows duplicated (no row by design) use the row builder on the loader's output.
+ */
+import fs from 'fs';
+import { mkdtempSync, rmSync } from 'fs';
+import { tmpdir } from 'os';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+
+// Env BEFORE any server require: resolveDbPath()/JWT config load at import.
+const work = mkdtempSync(path.join(tmpdir(), 'served-integrity-'));
+const dbPath = path.join(work, 'sessions.db');
+process.env.SESSIONS_DB_PATH = dbPath;
+process.env.JWT_SECRET = process.env.JWT_SECRET || 'prufa-leyndarmal';
+
+const Database = require('better-sqlite3');
+const { handlerFor, invoke, EDITOR } = require('./helpers/servedFixture');
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const BOOK = 'efnafraedi-2e';
+const BOOKS = path.join(__dirname, '..', '..', 'books');
+const LAYER2 = path.join(BOOKS, BOOK, '02-mt-revised');
+
+// Chains: committed layer 2, books/efnafraedi-2e/02-mt-revised/<chDir>/<stem>-changes.jsonl. A chain is the
+// change records of one (chDir, module, segmentId, occurrence); its first record's beforeSha256 is what the AI read.
+const chapterOf = (chDir) => (chDir === 'appendices' ? -1 : parseInt(chDir.slice(2), 10)); // appendices load as -1
+const keyOf = (c) => `${c.chDir}/${c.module}/${c.segmentId}#${c.occurrence}`;
+
+/** key → the first record of its chain, in file order. */
+function firstRecords() {
+  const chains = new Map();
+  for (const chDir of fs.readdirSync(LAYER2).sort()) {
+    for (const f of fs.readdirSync(path.join(LAYER2, chDir)).sort()) {
+      if (!f.endsWith('-changes.jsonl')) continue;
+      for (const line of fs.readFileSync(path.join(LAYER2, chDir, f), 'utf8').split('\n')) {
+        if (!line) continue;
+        const c = { chDir, ...JSON.parse(line) };
+        if (!chains.has(keyOf(c))) chains.set(keyOf(c), c);
+      }
+    }
+  }
+  return chains;
+}
+
+/** The 0-based occurrence of each segment among those with its id, counted here, not by the code under test. */
+function withOccurrence(segments) {
+  const seen = new Map();
+  return segments.map((s) => {
+    const occurrence = seen.get(s.segmentId) || 0;
+    seen.set(s.segmentId, occurrence + 1);
+    return {
+      seg: s,
+      occurrence,
+      duplicated: segments.filter((t) => t.segmentId === s.segmentId).length > 1,
+    };
+  });
+}
+
+let realBooksDirAtStart;
+let segmentParser;
+let servedVersions;
+let get;
+let reader;
+
+beforeAll(() => {
+  const { runAllMigrations } = require('../services/migrationRunner');
+  runAllMigrations();
+  segmentParser = require('../services/segmentParser');
+  servedVersions = require('../services/servedVersions');
+  realBooksDirAtStart = segmentParser.BOOKS_DIR;
+  get = handlerFor(require('../routes/segment-editor'), 'get', '/:book/:chapter/:moduleId');
+  reader = new Database(dbPath, { readonly: true });
+});
+
+afterAll(() => {
+  reader.close();
+  rmSync(work, { recursive: true, force: true });
+});
+
+describe('T1: the committed layer-2 chains against the served versions (spec §10 T1)', () => {
+  it(
+    'T1: the chains whose first beforeSha256 differs from G1.1’s is_sha256 are exactly the two known ones',
+    { timeout: 120_000 },
+    async () => {
+      // the real tree, not a temp root
+      expect(path.resolve(realBooksDirAtStart)).toBe(path.resolve(BOOKS));
+      const chains = firstRecords();
+      const allKeys = [...chains.keys()];
+      const mismatched = new Set();
+      const matched = new Set();
+      const bodyDisagrees = [];
+      const rowFor = reader.prepare(
+        `SELECT is_sha256 FROM served_text_versions
+          WHERE book = ? AND chapter = ? AND module_id = ? AND segment_id = ? AND occurrence = ?`
+      );
+
+      const byModule = new Map();
+      for (const c of chains.values()) {
+        const m = `${c.chDir}/${c.module}`;
+        if (!byModule.has(m)) byModule.set(m, []);
+        byModule.get(m).push(c);
+      }
+
+      for (const list of byModule.values()) {
+        const { chDir, module } = list[0];
+        const chapter = chapterOf(chDir);
+        const key = { book: BOOK, chapter, moduleId: module };
+        const builder = () => {
+          const { rows } = servedVersions.versionRowsFor(
+            segmentParser.loadModuleForEditing(BOOK, chapter, module),
+            key
+          );
+          return (c) =>
+            rows.find((r) => r.segmentId === c.segmentId && r.occurrence === c.occurrence)
+              ?.isSha256 ?? null;
+        };
+        let served = null;
+        let built = null;
+        if (chDir !== 'ch00') {
+          const out = await invoke(get, {
+            params: {
+              book: BOOK,
+              chapter: chDir === 'appendices' ? 'appendices' : String(chapter),
+              moduleId: module,
+            },
+            chapterNum: chapter,
+            user: EDITOR,
+          });
+          expect(out.status, `${chDir}/${module}`).toBe(200);
+          served = withOccurrence(out.body.segments);
+        }
+        for (const c of list) {
+          let isSha256;
+          const entry = served?.find(
+            (e) => e.seg.segmentId === c.segmentId && e.occurrence === c.occurrence
+          );
+          const duplicated = served?.some((e) => e.seg.segmentId === c.segmentId && e.duplicated);
+          if (chDir === 'ch00' || duplicated) {
+            built ??= builder();
+            isSha256 = built(c);
+          } else {
+            const row = rowFor.get(BOOK, chapter, module, c.segmentId, c.occurrence);
+            isSha256 = row ? row.is_sha256 : null; // a missing row is a mismatch, never a fallback
+            if (!entry || entry.seg.baseSha256 !== isSha256) bodyDisagrees.push(keyOf(c));
+          }
+          if (isSha256 !== null && isSha256 === c.beforeSha256) matched.add(keyOf(c));
+          else mismatched.add(keyOf(c));
+        }
+      }
+
+      expect([...mismatched].sort()).toEqual([
+        'ch05/m68726/m68726:para:fs-idm94618544#0',
+        'ch08/m68747/m68747:para:fs-idm99049568#0',
+      ]);
+      // positive control: every other chain matches, as a set; and the matched set includes chapter metadata,
+      // an appendix and ch00
+      expect([...matched].sort()).toEqual(allKeys.filter((k) => !mismatched.has(k)).sort());
+      expect([...matched]).toEqual(
+        expect.arrayContaining([
+          'ch02/chapter-metadata/chapter:title:ch02#0',
+          'appendices/m68860/m68860:para:fs-idm37591248#0',
+          'ch00/m68662/m68662:para:pref-p-009#0',
+        ])
+      );
+      // the response's own baseSha256 is the minted hash for every served, non-duplicated chain
+      expect(bodyDisagrees).toEqual([]);
+    }
+  );
+});

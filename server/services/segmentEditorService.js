@@ -1599,6 +1599,9 @@ function _setTestBooksDir(dir) {
 }
 
 module.exports = {
+  // The connection: a served-version mint runs on it, so the mint and a save share one
+  // connection and one transaction (spec §5.6 step 6)
+  getDb,
   // Segment edits
   saveSegmentEdit,
   checkEditConflict,

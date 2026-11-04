@@ -5,11 +5,22 @@
  * ALLOWED_COLUMNS only in the commit of the migration that adds it. Every `describe` carries a
  * planted control, so a check that cannot see a violation cannot pass.
  */
-import { describe, it, expect } from 'vitest';
+import { mkdtempSync, rmSync, mkdirSync } from 'fs';
+import { tmpdir } from 'os';
+import path from 'path';
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
+
+// Env BEFORE any server require: resolveDbPath()/JWT config load at import (the module-JSON
+// describe below drives the real module route on this temp database).
+const work = mkdtempSync(path.join(tmpdir(), 'research-boundary-'));
+process.env.SESSIONS_DB_PATH = path.join(work, 'sessions.db');
+process.env.JWT_SECRET = process.env.JWT_SECRET || 'prufa-leyndarmal';
+
 const freshMigratedDb = require('./helpers/freshMigratedDb');
+const { writeModule, handlerFor, invoke, EDITOR } = require('./helpers/servedFixture');
 
 // Every column the module route sends to every editor's browser through SELECT *
 // (segmentEditorService.getModuleEdits, acceptanceService.getModuleAcceptances). A column joins
@@ -88,5 +99,161 @@ describe('T17 (PR1): the editing columns the module route sends are an allowlist
     expect(columnDrift(db, 'segment_edits', ALLOWED_COLUMNS.segment_edits).unexpected).toEqual([
       'research_probe',
     ]);
+  });
+});
+
+// What the module route may send (spec §5.4 step 6): today's keys plus PR1's three. Exact sets, so any new key fails.
+const MODULE_JSON_ALLOWED = Object.freeze({
+  top: [
+    'book',
+    'chapter',
+    'moduleId',
+    'isSource',
+    'title',
+    'titleIs',
+    'segments',
+    'equations',
+    'segmentCount',
+    'translatedCount',
+    'mtFindingsGeneratedAt',
+    'extractedAt',
+    'sourceHash',
+    'edits',
+    'stats',
+    'acceptances',
+    'otherPendingSegments',
+  ],
+  segment: [
+    'segmentId',
+    'moduleId',
+    'segmentType',
+    'elementId',
+    'en',
+    'is',
+    'hasTranslation',
+    'mtFinding',
+    'occurrence',
+    'baseSha256',
+  ],
+  editRow: [...ALLOWED_COLUMNS.segment_edits, 'contentSha256'],
+  acceptanceRow: [...ALLOWED_COLUMNS.segment_acceptances],
+});
+// Research and time-of-person names that must never reach a browser (spec §11), at any depth.
+const FORBIDDEN_KEY =
+  /(opened|switched|inflight|editor_?key|client_?action|assists?$|accept_?origin|reviewed_?edit|replayed|research|consent)/i;
+const keysDeep = (v) =>
+  v && typeof v === 'object'
+    ? Object.entries(v).flatMap(([k, x]) => [...(Array.isArray(v) ? [] : [k]), ...keysDeep(x)])
+    : [];
+function jsonDrift(body) {
+  const seg = body.segments.find((s) => 'baseSha256' in s);
+  const firstEdit = Object.values(body.edits)[0][0];
+  const firstAcc = Object.values(body.acceptances)[0];
+  const odd = (keys, allowed) => keys.filter((k) => !allowed.includes(k)).sort();
+  return {
+    top: odd(Object.keys(body), MODULE_JSON_ALLOWED.top),
+    segment: odd(Object.keys(seg), MODULE_JSON_ALLOWED.segment),
+    editRow: odd(Object.keys(firstEdit), MODULE_JSON_ALLOWED.editRow),
+    acceptanceRow: odd(Object.keys(firstAcc), MODULE_JSON_ALLOWED.acceptanceRow),
+    forbidden: [...new Set(keysDeep(body).filter((k) => FORBIDDEN_KEY.test(k)))].sort(),
+  };
+}
+
+describe('T17 (PR1): the module JSON carries no research field and no new time', () => {
+  const BOOK = 'efnafraedi-2e';
+  const MODULE = 'm90020';
+  let segmentParser;
+  let segmentEditor;
+  let realBooksDir;
+  let get;
+
+  beforeAll(() => {
+    const { runAllMigrations } = require('../services/migrationRunner');
+    runAllMigrations();
+    segmentParser = require('../services/segmentParser');
+    segmentEditor = require('../services/segmentEditorService');
+    realBooksDir = segmentParser.BOOKS_DIR;
+    // a temp books root: the seeding save and accept write their MT lock beside the fixture
+    const root = path.join(work, 'books');
+    mkdirSync(root, { recursive: true });
+    segmentParser._setTestBooksDir(root);
+    segmentEditor._setTestBooksDir(root);
+    get = handlerFor(require('../routes/segment-editor'), 'get', '/:book/:chapter/:moduleId');
+    writeModule(root, {
+      book: BOOK,
+      chapterDir: 'ch01',
+      moduleId: MODULE,
+      en: [
+        [`${MODULE}:para:a`, 'Alpha.'],
+        [`${MODULE}:para:b`, 'Beta.'],
+      ],
+      mt: [
+        [`${MODULE}:para:a`, 'Alfa.'],
+        [`${MODULE}:para:b`, 'Beta á íslensku.'],
+      ],
+    });
+    // seed: one edit (legacy call) and one acceptance (legacy call), on different segments
+    segmentEditor.saveSegmentEdit({
+      book: BOOK,
+      chapter: 1,
+      moduleId: MODULE,
+      segmentId: `${MODULE}:para:a`,
+      originalContent: 'Alfa.',
+      editedContent: 'Alfa, breytt.',
+      category: 'accuracy',
+      editorNote: null,
+      editorId: EDITOR.id,
+      editorUsername: EDITOR.username,
+    });
+    require('../services/acceptanceService').acceptSegment({
+      book: BOOK,
+      chapter: 1,
+      moduleId: MODULE,
+      segmentId: `${MODULE}:para:b`,
+      acceptedContent: 'Beta á íslensku.',
+      userId: EDITOR.id,
+      username: EDITOR.username,
+    });
+  });
+
+  afterAll(() => {
+    segmentParser._setTestBooksDir(realBooksDir);
+    segmentEditor._setTestBooksDir(realBooksDir);
+    rmSync(work, { recursive: true, force: true });
+  });
+
+  const serve = () =>
+    invoke(get, {
+      params: { book: BOOK, chapter: '1', moduleId: MODULE },
+      chapterNum: 1,
+      user: EDITOR,
+    });
+
+  it('every key is allowed, at every level', async () => {
+    const { status, body } = await serve();
+    expect(status).toBe(200);
+    // the seeded rows are what the drift check reads (so an empty edits or acceptances map cannot pass it)
+    expect(Object.keys(body.edits)).toEqual([`${MODULE}:para:a`]);
+    expect(Object.keys(body.acceptances)).toEqual([`${MODULE}:para:b`]);
+    expect(jsonDrift(body)).toEqual({
+      top: [],
+      segment: [],
+      editRow: [],
+      acceptanceRow: [],
+      forbidden: [],
+    });
+  });
+
+  it('control: a planted key is reported at each level', async () => {
+    const { body } = await serve();
+    body.opened_at_ms = 1;
+    body.segments.find((s) => 'baseSha256' in s).assists = [];
+    Object.values(body.edits)[0][0].clientActionId = 'x';
+    expect(jsonDrift(body)).toMatchObject({
+      top: ['opened_at_ms'],
+      segment: ['assists'],
+      editRow: ['clientActionId'],
+      forbidden: ['assists', 'clientActionId', 'opened_at_ms'],
+    });
   });
 });

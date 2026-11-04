@@ -46,6 +46,8 @@ const concordance = require('../services/concordanceService');
 const propagation = require('../services/propagationService');
 const activityLog = require('../services/activityLog');
 const notifications = require('../services/notifications');
+const servedVersions = require('../services/servedVersions');
+const { sha256Text } = require('../lib/servedText');
 const { isNewer } = require('../lib/editRecency');
 
 // Notify an edit's author of a head-editor decision (fire-and-forget — a
@@ -275,6 +277,17 @@ router.get(
         req.params.moduleId
       );
 
+      // G1.1 (spec §5.4 steps 1–3): occurrence and baseSha256 on the response's own segments,
+      // and the served versions minted in one sessions.db transaction. Fail-soft: a failed mint
+      // is logged and the module is still served with baseSha256; the save path mints the base
+      // it checks. Never in the loader (it has other callers).
+      // eslint-disable-next-line no-unused-vars -- PR2's opening step reads it (spec §5.4 step 4)
+      const served = servedVersions.recordServe(segmentEditor.getDb(), data, {
+        book: req.params.book,
+        chapter: req.chapterNum,
+        moduleId: req.params.moduleId,
+      });
+
       // Get existing edits for this module
       const edits = segmentEditor.getModuleEdits(req.params.book, req.params.moduleId);
 
@@ -292,7 +305,12 @@ router.get(
         if (!editsBySegment[edit.segment_id]) {
           editsBySegment[edit.segment_id] = [];
         }
-        editsBySegment[edit.segment_id].push(edit);
+        // contentSha256 (spec §5.4 step 6): the hash of the row's text, computed here and never
+        // stored. The client echoes it as displayedEditSha256 when it saves over this row.
+        editsBySegment[edit.segment_id].push({
+          ...edit,
+          contentSha256: sha256Text(edit.edited_content),
+        });
       }
       for (const segId of Object.keys(editsBySegment)) {
         editsBySegment[segId].sort((a, b) => (isNewer(a, b) ? -1 : isNewer(b, a) ? 1 : 0));
@@ -321,6 +339,12 @@ router.get(
         .filter((e) => String(e.editor_id) !== String(currentUserId));
       const otherPendingSegments = [...new Set(otherEdits.map((e) => e.segment_id))];
 
+      // ── spec §5.4 step 4, PR2's opening step, goes HERE: after every editor's edit rows are
+      //    read (above) and before res.json. It reads `served.mintOk` (false while its predicate
+      //    holds → 503 OPENING_UNRECORDED), `served.servedVersionIds` and `served.duplicatedIds`.
+      //    Step 5 (G1.23) reads seg.baseSha256 from data.segments after it. Nothing here may add a
+      //    field to the response but per-segment occurrence and baseSha256 and per-edit
+      //    contentSha256 (T17). ──
       res.json({
         ...data,
         edits: editsBySegment,
