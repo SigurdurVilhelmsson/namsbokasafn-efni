@@ -132,6 +132,7 @@ test.describe('M5 revert bug regression', () => {
         editedContent: picked.editedContent,
         originalContent: picked.originalContent,
         category: 'accuracy',
+        baseSha256: picked.baseSha256,
       },
     });
     const saveRaw = await saveRes.text();

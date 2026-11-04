@@ -65,21 +65,26 @@ function isAppendSafe(segment, suffix) {
  * @property {string} en              English source (for assertions/debugging).
  * @property {string} originalContent The live baseline — send this as `originalContent`.
  * @property {string} editedContent   Baseline + suffix — send this as `editedContent`.
+ * @property {string|undefined} baseSha256 The served hash — send it as `baseSha256`
+ *                                 (G1.1, spec §5.6).
  */
 
 /**
  * Choose an append-safe segment that no sibling spec claims.
  *
- * @param {Array<{segmentId: string, en?: string, is?: string}>} segments
- * @param {{suffix: string, exclude?: string[]}} options
+ * @param {Array<{segmentId: string, en?: string, is?: string, baseSha256?: string}>} segments
+ * @param {{suffix: string, exclude?: string[], requireBaseSha256?: boolean}} options
  *   `suffix` — run-unique text appended to the baseline; also the exact bytes
  *   screened for backstop safety. `exclude` — segment ids other specs pin.
+ *   `requireBaseSha256` — only a segment the module GET served with a hash: the
+ *   save route refuses a body without one (G1.1, spec §5.6), and the route
+ *   sends none for a duplicated id.
  * @returns {PickedSegment}
  * @throws  If no segment qualifies — never returns undefined, because a silent
  *          miss here reappears downstream as an inscrutable 404.
  */
 function chooseSegment(segments, options = {}) {
-  const { suffix, exclude = [] } = options;
+  const { suffix, exclude = [], requireBaseSha256 = false } = options;
 
   if (!Array.isArray(segments)) {
     throw new Error(
@@ -98,6 +103,7 @@ function chooseSegment(segments, options = {}) {
       typeof segment.is === 'string' &&
       segment.is.length > 0 &&
       !exclude.includes(segment.segmentId) &&
+      (!requireBaseSha256 || /^[0-9a-f]{64}$/.test(segment.baseSha256 || '')) &&
       isAppendSafe(segment, suffix)
   );
 
@@ -105,7 +111,8 @@ function chooseSegment(segments, options = {}) {
     throw new Error(
       `chooseSegment: no append-safe segment among ${segments.length} ` +
         `(first and last are reserved for sibling specs` +
-        `${exclude.length ? `; excluded: ${exclude.join(', ')}` : ''}). ` +
+        `${exclude.length ? `; excluded: ${exclude.join(', ')}` : ''}` +
+        `${requireBaseSha256 ? '; a served baseSha256 is required' : ''}). ` +
         `The fixture may have been regenerated — see server/e2e/helpers/segments.js.`
     );
   }
@@ -115,6 +122,7 @@ function chooseSegment(segments, options = {}) {
     en: candidate.en,
     originalContent: candidate.is,
     editedContent: `${candidate.is}${suffix}`,
+    baseSha256: candidate.baseSha256,
   };
 }
 
@@ -137,7 +145,8 @@ async function pickEditableSegment(request, options) {
   }
 
   const data = await res.json();
-  return chooseSegment(data.segments, { suffix, exclude });
+  // It reads the route, which sends the served hash, and every save it feeds must echo one.
+  return chooseSegment(data.segments, { suffix, exclude, requireBaseSha256: true });
 }
 
 // `isAppendSafe` is deliberately NOT exported. Exposed, it reads as a supported

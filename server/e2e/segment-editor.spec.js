@@ -349,6 +349,15 @@ test.describe('O segment propagation', () => {
 
     const uniqueText = `Markmiðstexti ${Date.now()}`;
 
+    // G1.1: the save echoes the served base hash (§5.6), so take it from a module GET, since
+    // this test posts with no prior load.
+    const modRes = await page.request.get('/api/segment-editor/efnafraedi-2e/1/m68664');
+    expect(modRes.ok()).toBe(true);
+    const source = (await modRes.json()).segments.find(
+      (s) => s.segmentId === 'm68664:abstract:auto-2'
+    );
+    expect(source?.baseSha256).toMatch(/^[0-9a-f]{64}$/);
+
     // Step 1: save a unique translation as a pending edit on the SOURCE segment.
     const editRes = await page.request.post('/api/segment-editor/efnafraedi-2e/1/m68664/edit', {
       data: {
@@ -357,9 +366,17 @@ test.describe('O segment propagation', () => {
         editedContent: uniqueText,
         category: 'readability',
         editorNote: 'e2e-critfix-O',
+        baseSha256: source.baseSha256,
       },
     });
     expect(editRes.ok(), `edit POST failed: ${editRes.status()}`).toBe(true);
+
+    // T4 end to end: the client's originalContent ('') is ignored; the server stores its own
+    // base (§5.6 step 6).
+    const saved = (
+      await (await page.request.get('/api/segment-editor/efnafraedi-2e/1/m68664')).json()
+    ).edits['m68664:abstract:auto-2'].find((e) => e.edited_content === uniqueText);
+    expect(saved.original_content).toBe(source.is);
 
     // Step 2: fetch propagation preview — must see eligible > 0.
     // Under the bug: propagatedText = seg.is (stale file text, e.g. "Í lok þessa

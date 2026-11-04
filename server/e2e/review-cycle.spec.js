@@ -56,6 +56,14 @@ test.describe.serial('§0.reg Pass 1 review cycle', () => {
     originalContent = seg.is;
     editedContent = `${originalContent} ${EDIT_MARKER}`;
 
+    // G-5: a body without the served hash (an old page's) is refused, and writes nothing.
+    const oldPage = await page.request.post(`${API}/${BOOK}/${CHAPTER}/${MODULE}/edit`, {
+      data: { segmentId, originalContent, editedContent, category: 'terminology' },
+    });
+    expect(oldPage.status()).toBe(409);
+    expect((await oldPage.json()).error).toBe('BASE_MISSING');
+    expect(seg.baseSha256).toMatch(/^[0-9a-f]{64}$/);
+
     // Save the edit
     const editRes = await page.request.post(`${API}/${BOOK}/${CHAPTER}/${MODULE}/edit`, {
       data: {
@@ -63,6 +71,7 @@ test.describe.serial('§0.reg Pass 1 review cycle', () => {
         originalContent,
         editedContent,
         category: 'terminology',
+        baseSha256: seg.baseSha256,
       },
     });
     expect(editRes.ok()).toBe(true);
@@ -70,6 +79,7 @@ test.describe.serial('§0.reg Pass 1 review cycle', () => {
     const editData = await editRes.json();
     expect(editData.success).toBe(true);
     expect(editData.editId).toBeTruthy();
+    expect(editData.updated).toBe(false); // an insert: the refused post above wrote no row to update
 
     editId = editData.editId;
   });

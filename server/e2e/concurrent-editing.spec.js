@@ -118,6 +118,7 @@ test.describe('Segment editor cross-editor awareness', () => {
     // Pick a segment with Icelandic content
     const seg = loadData.segments.find((s) => s.is && s.is.length > 0);
     expect(seg).toBeTruthy();
+    expect(seg.baseSha256).toMatch(/^[0-9a-f]{64}$/); // G1.1: the save echoes it (§5.6)
 
     const segmentId = seg.segmentId;
     const originalContent = seg.is;
@@ -130,6 +131,7 @@ test.describe('Segment editor cross-editor awareness', () => {
         originalContent,
         editedContent,
         category: 'terminology',
+        baseSha256: seg.baseSha256,
       },
     });
     expect(editRes.ok()).toBe(true);

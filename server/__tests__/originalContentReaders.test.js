@@ -38,7 +38,8 @@ const AUDITED_READERS = [
   'server/public/js/segment-save-state.js',
   // `localization_pending_edits`, another table. No change.
   'server/routes/localization-editor.js',
-  // The edit route stores the client's `originalContent` today; Task 14 stops reading it.
+  // The edit route no longer reads the client's `originalContent` (Task 14): saveOnServedBase
+  // stores the server's base. The token survives only in the comment saying so. No change.
   'server/routes/segment-editor.js',
   // `SELECT *`, then a frozen fingerprint compare: a moved base reads as "changed since it was
   // frozen" and the row is refused. Fail-closed, correct. No change.
