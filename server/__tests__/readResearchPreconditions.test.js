@@ -405,7 +405,7 @@ describe('G-1c (spec §9): journald retention and nginx’s request log', () => 
           },
         ],
       },
-      logrotate: { nginx: ['daily', 'rotate 14'], rsyslog: null },
+      logrotate: { defaults: null, nginx: ['daily', 'rotate 14'], rsyslog: null },
     });
     // The server name stays behind; control: the file the probe read holds it.
     expect(
@@ -544,14 +544,24 @@ describe('G-1c (spec §9): journald retention and nginx’s request log', () => 
     expect(settings()).toEqual([dropIn]);
   });
 
-  it('reports a rotation directive alone: the rest of its line stays behind, and a keyword run into other text is none', () => {
+  it('reports a rotation directive alone: the rest of its line stays behind, and what logrotate refuses is flagged', () => {
+    // logrotate 3.21.0 (Ubuntu 24.04's, run with -d): a valued directive's value is the rest of its line, so
+    // `rotate 14 TRAILING-TEXT` is a bad rotation count and its stanza is skipped; `monthly-RUN-ON` is a keyword
+    // "not properly separated", skipped likewise; `yearlyish` is an unknown word, its line ignored; `daily # …`
+    // applies daily and ignores the rest.
     plant(
       'etc/logrotate.d/nginx',
       '/var/log/nginx/*.log {\n  daily # KEPT-BY-COMMENT\n  rotate 14 TRAILING-TEXT\n  weekly 1\n' +
         '  monthly-RUN-ON\n  maxage 30\n  yearlyish\n}\n'
     );
     const g = readResearchPreconditions(ctx()).sections['G-1c'];
-    expect(g.logrotate.nginx).toEqual(['daily', 'rotate 14', 'weekly 1', 'maxage 30']);
+    expect(g.logrotate.nginx).toEqual([
+      'daily',
+      { directive: 'rotate', valueUnparsed: true },
+      'weekly 1',
+      { directive: 'monthly', valueUnparsed: true },
+      'maxage 30',
+    ]);
     for (const s of ['KEPT-BY-COMMENT', 'TRAILING-TEXT', 'RUN-ON', 'yearlyish']) {
       expect(JSON.stringify(g)).not.toContain(s);
     }
@@ -599,8 +609,111 @@ describe('G-1c (spec §9): journald retention and nginx’s request log', () => 
     );
     plant('etc/logrotate.d/rsyslog', '/var/log/syslog\n{\n\thourly\n\trotate 24\n\tmissingok\n}\n');
     expect(readResearchPreconditions(ctx()).sections['G-1c'].logrotate).toEqual({
+      defaults: null,
       nginx: ['hourly', 'rotate 48'],
       rsyslog: ['hourly', 'rotate 24'],
+    });
+  });
+
+  // PR2 review U18. Every form below measured with logrotate 3.21.0 -d (Ubuntu 24.04's package).
+  it('reports rotate -1, a count in any base logrotate reads (as the number it reads), and the size directives', () => {
+    plant(
+      'etc/logrotate.d/nginx',
+      '/var/log/nginx/*.log {\n  daily\n  rotate -1\n  maxage 0x1e\n  size 100M\n  maxsize=1G\n  minsize +10k\n}\n'
+    );
+    plant(
+      'etc/logrotate.d/rsyslog',
+      '/var/log/syslog\n{\n\tweekly 0\n\trotate 0x10\n\trotate 010\n\trotate = 4\n\trotate +5\n\tsize 0x10k\n}\n'
+    );
+    const { logrotate } = readResearchPreconditions(ctx()).sections['G-1c'];
+    // `rotate -1` keeps old logs for ever; strtol base 0 reads 0x10 as 16 and 010 as 8.
+    expect(logrotate.nginx).toEqual([
+      'daily',
+      'rotate -1',
+      'maxage 30',
+      'size 100M',
+      'maxsize 1G',
+      'minsize +10k',
+    ]);
+    expect(logrotate.rsyslog).toEqual([
+      'weekly 0',
+      'rotate 16',
+      'rotate 8',
+      'rotate 4',
+      'rotate 5',
+      'size 0x10k',
+    ]);
+  });
+
+  it('flags every directive logrotate refuses, with none of its text; an unknown word, a comment or a script is no directive', () => {
+    const REFUSED = [
+      [
+        'rotate',
+        ['rotate 4 # SENTINEL', 'rotate 09', 'rotate -2', 'rotate 2147483648', 'rotate', 'rotate4'],
+      ],
+      ['maxage', ['maxage -1', 'maxage 30 # SENTINEL', 'maxage 09']],
+      [
+        'size',
+        ['size 1g', 'size 100MB', 'size 1.5G', 'size -5', 'size100k', 'size 100M # SENTINEL'],
+      ],
+      ['weekly', ['weekly 8', 'weekly # SENTINEL', 'weekly=3', 'weekly SENTINEL']],
+      ['daily', ['daily-SENTINEL', 'daily1', 'daily;rotate 2']],
+    ];
+    const IGNORED = [
+      'dailyx',
+      'rotatepassword SENTINEL',
+      'Daily',
+      'ROTATE 3',
+      '# rotate 9',
+      'sizefoo 3',
+    ];
+    const SCRIPT = ['postrotate', '  rotate 7', '  daily', 'endscript'];
+    const ACCEPTED = [
+      ['daily # SENTINEL', 'daily'],
+      ['hourly SENTINEL', 'hourly'],
+      ['daily=SENTINEL', 'daily'],
+      ['weekly\t3', 'weekly 3'],
+    ];
+    const refused = REFUSED.flatMap(([, lines]) => lines);
+    plant(
+      'etc/logrotate.d/nginx',
+      `/var/log/nginx/*.log {\n${[...refused, ...IGNORED, ...SCRIPT, ...ACCEPTED.map(([l]) => l)].join('\n')}\n}\n`
+    );
+    const g = readResearchPreconditions(ctx()).sections['G-1c'];
+    expect(g.logrotate.nginx).toEqual([
+      ...REFUSED.flatMap(([directive, lines]) =>
+        lines.map(() => ({ directive, valueUnparsed: true }))
+      ),
+      ...ACCEPTED.map(([, reported]) => reported),
+    ]);
+    expect(JSON.stringify(g)).not.toContain('SENTINEL');
+  });
+
+  it('reports logrotate.conf’s defaults: its rotation directives outside every stanza, in file order', () => {
+    // Ubuntu 24.04's /etc/logrotate.conf (package logrotate 3.21.0-2build1), then a stanza of the kind older releases
+    // kept there: its directives are the stanza's, not defaults.
+    const UBUNTU =
+      '# see "man logrotate" for details\n\n# global options do not affect preceding include directives\n\n' +
+      '# rotate log files weekly\nweekly\n\n# use the adm group by default, since this is the owning group\n' +
+      '# of /var/log/.\nsu root adm\n\n# keep 4 weeks worth of backlogs\nrotate 4\n\n' +
+      '# create new (empty) log files after rotating old ones\ncreate\n\n# use date as a suffix of the rotated file\n' +
+      '#dateext\n\n# uncomment this if you want your log files compressed\n#compress\n\n' +
+      '# packages drop log rotation information into this directory\ninclude /etc/logrotate.d\n\n' +
+      '# system-specific logs may also be configured here.\n';
+    plant(
+      'etc/logrotate.conf',
+      `${UBUNTU}/var/log/wtmp {\n    missingok\n    monthly\n    rotate 1\n}\n/var/log/btmp { daily\n  rotate 2\n}\n`
+    );
+    expect(readResearchPreconditions(ctx()).sections['G-1c'].logrotate.defaults).toEqual([
+      'weekly',
+      'rotate 4',
+    ]);
+    // Absent, and unreadable (a directory stands in, as above), are told apart.
+    fs.rmSync(path.join(root, 'etc/logrotate.conf'));
+    expect(readResearchPreconditions(ctx()).sections['G-1c'].logrotate.defaults).toBe(null);
+    fs.mkdirSync(path.join(root, 'etc/logrotate.conf'));
+    expect(readResearchPreconditions(ctx()).sections['G-1c'].logrotate.defaults).toEqual({
+      readable: false,
     });
   });
 
@@ -854,7 +967,7 @@ describe('G-1c (spec §9): journald retention and nginx’s request log', () => 
       },
       rsyslog: { configPresent: false, active: { ran: false, output: null } },
       nginx: { accessLog: [] },
-      logrotate: { nginx: null, rsyslog: null },
+      logrotate: { defaults: null, nginx: null, rsyslog: null },
     });
   });
 });

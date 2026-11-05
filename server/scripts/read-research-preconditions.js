@@ -28,9 +28,17 @@
  *         sites-enabled/*), found as nginx's tokenizer finds a directive (at a line's start or after
  *         `;`, `{` or `}`), each its own tokens up to its own `;`, a comment inside it dropped, so
  *         nothing else on its line leaves the probe; one with no `;` (which nginx refuses) is
- *         `unterminated: true`, with none of its text. And the rotation directives of
- *         /etc/logrotate.d/nginx, each the directive alone, never the rest of its line. It decides what
- *         the consent text says about the request log (§6 item 14) and G1.15's rule.
+ *         `unterminated: true`, with none of its text. The rotation directives of
+ *         /etc/logrotate.d/nginx, and as `defaults` those of /etc/logrotate.conf outside every stanza.
+ *         A logrotate directive is reported alone, as logrotate 3.21.0 reads it (measured with
+ *         `logrotate -d`): hourly, daily, monthly, yearly; weekly with its weekday; rotate and maxage
+ *         with their count as the number logrotate reads (strtol's base 0: 0x10 is 16 and 010 is 8;
+ *         `rotate -1` keeps old logs for ever); size, maxsize and minsize with their size as written.
+ *         One logrotate refuses (a value it cannot read, as in `rotate 4 # …`, or a keyword run into
+ *         other text, as in `daily-x`) is `{ directive, valueUnparsed: true }`, with none of its text:
+ *         logrotate then does not apply that stanza. A script (postrotate … endscript) holds no
+ *         directive. It decides what the consent text says about the request log (§6 item 14) and
+ *         G1.15's rule.
  *   G-1d  `enforce_assignments` per book; the study book's `user_chapter_assignments` rows, as
  *         (user id, chapter); the `users` rows, as (id, role, active); and AUTO_CREATE_USERS as the
  *         server reads it (systemd's Environment= and EnvironmentFile=, then server/.env where
@@ -65,6 +73,11 @@
  *     modules-enabled/, a path of the site's own) is not read, and an access_log there is missing.
  *     A directive name written in quotes is not recognised.
  *   - journald: a value continued onto the next line by a trailing `\` reads as unparsed.
+ *   - logrotate: only logrotate.conf and the nginx and rsyslog files of logrotate.d. A default of
+ *     logrotate.conf applies only to stanzas read after it (an `include` above it does not get it);
+ *     the defaults are listed in file order, not placed against the include lines. Only a line's
+ *     first directive is read, where logrotate also reads one after a keyword without a value
+ *     (`daily rotate 2`). A count past logrotate's int is flagged, where logrotate wraps it.
  *
  * It runs where neither PR1 nor PR2 is deployed: it requires only modules present on production
  * before PR1 (its test pins the list; the study-book allowlist is not one of them, so the book is
@@ -279,12 +292,16 @@ const JOURNALD_GRAMMAR = new Map([
   ['MaxFileSec', TIMESPAN],
   ['ForwardToSyslog', /^(?:1|yes|y|true|t|on|0|no|n|false|f|off)$/i],
 ]);
-// A rotation keyword (weekly with its optional weekday, rotate and maxage with their count), then
-// whitespace or the line's end: logrotate (3.21.0's config.c) refuses a keyword run into other
-// text, as in `daily-x`. Only the group is reported, so the rest of a line (`daily # …`,
-// `monthly x`) never leaves the probe.
-const ROTATION =
-  /^(hourly|daily|weekly(?:[ \t]+\d+)?|monthly|yearly|rotate[ \t]+\d+|maxage[ \t]+\d+)(?=\s|$)/;
+// logrotate's rotation and retention directives, read as logrotate 3.21.0 (Ubuntu 24.04's package,
+// run with -d on each form) reads them. A keyword is the run of letters at a line's start: more
+// letters make another word (an unknown option, its line ignored), and a digit or a punctuation mark
+// right after it is "not properly separated" (logrotate refuses the stanza). A keyword without a value
+// applies whatever follows a space or `=`. A valued keyword's value is the whole rest of its line, so
+// `rotate 4 # …` is a bad count and the stanza is refused too.
+const NO_VALUE = new Set(['hourly', 'daily', 'monthly', 'yearly']);
+const VALUED = new Set(['weekly', 'rotate', 'maxage', 'size', 'maxsize', 'minsize']);
+const SCRIPT_START = /^(?:postrotate|prerotate|firstaction|lastaction|preremove)(?![A-Za-z])/;
+const INT_MAX = 2 ** 31 - 1;
 
 /** A file or directory that exists but that this user cannot read: never mistaken for an absent one. */
 const UNREADABLE = Symbol('unreadable');
@@ -382,16 +399,92 @@ function accessLogDirectives(text) {
   return out;
 }
 
-/** A logrotate file's rotation directives, each the directive alone; null when absent. */
-function rotationDirectives(file) {
+/** strtol's base 0 over the whole text (0x10 is 16, 010 is 8); NaN where its parse would stop early. */
+function baseZero(text) {
+  const m = /^([+-]?)(?:0[xX]([0-9a-fA-F]+)|(0[0-7]*)|([1-9]\d*))$/.exec(text);
+  if (!m) return NaN;
+  const [, sign, hex, octal, decimal] = m;
+  const v =
+    hex !== undefined
+      ? parseInt(hex, 16)
+      : octal !== undefined
+        ? parseInt(octal, 8)
+        : parseInt(decimal, 10);
+  return sign === '-' ? -v : v;
+}
+
+/**
+ * One trimmed logrotate line's directive: the directive alone (a count as the number logrotate reads,
+ * a size as written); `{ directive, valueUnparsed: true }`, with none of its text, where logrotate
+ * refuses it; null where the line is no rotation directive.
+ */
+function rotationDirective(line) {
+  const word = /^[A-Za-z]+/.exec(line)?.[0];
+  if (!word || !(NO_VALUE.has(word) || VALUED.has(word))) return null;
+  const rest = line.slice(word.length);
+  const refused = { directive: word, valueUnparsed: true };
+  if (NO_VALUE.has(word)) return rest === '' || /^[\s=]/.test(rest) ? word : refused;
+  if (word === 'weekly') {
+    // Its optional weekday, 0 to 7, alone; `weekly=3` and `weekly 8` are bad weekly directives.
+    if (rest === '') return 'weekly'; // the line is trimmed, so trailing blanks are gone
+    const day = /^[ \t]+([0-7])[ \t]*$/.exec(rest);
+    return day ? `weekly ${day[1]}` : refused;
+  }
+  const value = /^(?:[ \t]*=[ \t]*|[ \t]+)(.+)$/.exec(rest)?.[1].trim();
+  if (!value) return refused; // no argument, or a value run into the keyword (`rotate4`)
+  if (word === 'rotate') {
+    // -1 keeps old logs for ever; below it logrotate refuses. Past its int, logrotate wraps: flagged.
+    const n = baseZero(value);
+    return Number.isInteger(n) && n >= -1 && n <= INT_MAX ? `rotate ${n}` : refused;
+  }
+  if (word === 'maxage') {
+    const n = value.startsWith('-') ? NaN : baseZero(value);
+    return Number.isInteger(n) && n <= INT_MAX ? `maxage ${n}` : refused;
+  }
+  // size, maxsize, minsize: a count in base 0, then k, K, M or G (`1g`, `100MB`, `1.5G` are refused).
+  return /^\+?(?:0[xX][0-9a-fA-F]+|0[0-7]*|[1-9]\d*)[kKMG]?$/.test(value)
+    ? `${word} ${value}`
+    : refused;
+}
+
+/**
+ * A logrotate file's rotation directives in its order, outside every stanza only when `topLevel` (the
+ * defaults logrotate.conf sets); null when absent, `{ readable: false }` when unreadable. A script
+ * (postrotate … endscript) holds no directive, and a stanza's file names are never read.
+ */
+function rotationDirectives(file, { topLevel = false } = {}) {
   const text = readText(file);
   if (text === UNREADABLE) return { readable: false };
   if (text === null) return null;
-  return text
-    .split('\n')
-    .map((l) => ROTATION.exec(l.trim()))
-    .filter(Boolean)
-    .map((m) => m[1]);
+  const out = [];
+  let depth = 0;
+  let inScript = false;
+  for (const raw of text.split('\n')) {
+    let l = raw.trim();
+    if (inScript) {
+      if (/^endscript(?![A-Za-z])/.test(l)) inScript = false;
+      continue;
+    }
+    if (l.startsWith('#')) continue;
+    if (l.startsWith('}')) {
+      depth = Math.max(0, depth - 1);
+      l = l.slice(1).trim();
+    }
+    const open = l.indexOf('{');
+    if (open >= 0) {
+      depth += 1;
+      l = l.slice(open + 1).trim(); // logrotate reads a directive after the `{` on its line
+    }
+    if (!l || l.startsWith('#')) continue;
+    if (SCRIPT_START.test(l)) {
+      inScript = true;
+      continue;
+    }
+    if (topLevel && depth > 0) continue;
+    const d = rotationDirective(l);
+    if (d) out.push(d);
+  }
+  return out;
 }
 
 /**
@@ -496,6 +589,7 @@ function readG1c({ etcRoot, runRoot, usrRoot, varRoot, exec }) {
     // The access log's and the syslog's retention are set here (§6 item 14, G1.15), so only the
     // rotation directives.
     logrotate: {
+      defaults: rotationDirectives(path.join(etcRoot, 'logrotate.conf'), { topLevel: true }),
       nginx: rotationDirectives(path.join(etcRoot, 'logrotate.d', 'nginx')),
       rsyslog: rotationDirectives(path.join(etcRoot, 'logrotate.d', 'rsyslog')),
     },
