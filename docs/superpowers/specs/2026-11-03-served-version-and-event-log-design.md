@@ -14,9 +14,16 @@
 > no status. If it disagrees with the active register, the register wins. Do not sync it or edit it in place.
 > Supersede it with a new record instead.
 
-> **✏️ AMENDED 2026-11-05: §5.4 step 3's mint runs in two passes — a departure for [USER] to review with PR2,
-> not yet approved.** Made by the PR2 plan's `✏️ AMENDED 2026-11-05` block (its Task 3b), which takes a finding the
-> register's 2026-11-05 entry asked PR2's plan to take (PR1 review C2, commit `e8b9832f`).
+> **✏️ AMENDED 2026-11-05: departures from this design's wording found while building and reviewing PR2.** Each
+> names the PR2 plan's item that carries it (`docs/superpowers/plans/2026-11-03-g11-g12-pr2-opening-record.md`, its
+> "State of this plan" `✏️ AMENDED 2026-11-05` block, or its decisions), and says whether it is approved. Items 1 and
+> 3 are **for [USER] to review with PR2, not yet approved**. Item 2 was approved on 2026-11-04 with the plan and is
+> recorded here because the 2026-11-04 block below omits it.
+> *(✏️ This heading named only item 1 until the PR2 review added items 2 and 3, PR2 review U35 and U12.)*
+>
+> **1. §5.4 step 3's mint runs in two passes — not yet approved.** Made by the PR2 plan's amendment item 1 (its
+> Task 3b), which takes a finding the register's 2026-11-05 entry asked PR2's plan to take (PR1 review C2, commit
+> `e8b9832f`).
 >
 > - **The wording it departs from:** step 3, "In one `sessions.db` transaction, select the existing served-version
 >   ids by key and insert only the missing rows."
@@ -32,6 +39,39 @@
 >   fail-soft rule for every serve the opening predicate does not cover.
 > - **Fallback, if [USER] declines:** the single deferred transaction as written, under which a held lock fails a
 >   changed serve at once and, for an assigned editor's first serve, answers 503.
+>
+> **2. §5.5 step 1's insert is `ON CONFLICT (book, chapter, module_id) DO NOTHING`, not `INSERT OR IGNORE` —
+> approved 2026-11-04 with the plan (PR2 d6).** The 2026-11-04 block below lists the departures approved that day and
+> omits this one, so it is recorded here (PR2 review U35).
+>
+> - **The wording it departs from:** §5.5's step, item 1, "`INSERT OR IGNORE` the `module_openings` row."
+> - **What is built:** `INSERT INTO module_openings (…) VALUES (…) ON CONFLICT (book, chapter, module_id) DO
+>   NOTHING`, and the snapshot rows only when that statement inserted.
+> - **Why:** `OR IGNORE` also drops a `CHECK` or `NOT NULL` violation silently (no error, nothing inserted;
+>   measured). The step would read that as a racing serve having won, answer 200 and record nothing, failing open
+>   against §5.4. The `ON CONFLICT` target ignores only the key conflict, which is what "insert the opening row if
+>   none exists" means; a bad value throws, rolls back and answers 503.
+> - **For later builders:** a sibling step that inserts a row "if none exists" (PR3, PR5, G1.15) uses the same
+>   `ON CONFLICT` form, never `OR IGNORE`.
+>
+> **3. §10 T6's "the editor cannot save in between" holds for what the editor does after the 503, not for a write
+> sent before it — not yet approved.** Made by the PR2 plan's amendment item 4 (PR2 review U12, then R1 on its fix).
+>
+> - **The wording it departs from:** T6, "the editor cannot save in between, so a later successful opening's snapshot
+>   does not hold their segment".
+> - **What is built:** after a reload from an open pane answers 503 `OPENING_UNRECORDED`, the pane goes, and nothing
+>   the editor can do on the module list saves, accepts or discards for the unit; nothing re-serves it by itself.
+>   But a write sent **before** that reload can still land **after** it: a save PR1's retry queue holds (its replay
+>   is not blocked), or a save, accept or review action still awaiting its answer. Such a write's text was typed
+>   while the unit was open, so an edit it leaves is in flight at the later opening and in that opening's snapshot.
+>   The client then touches nothing of the left unit, and a save refused with a code that keeps its text adds that
+>   text to the unit's draft.
+> - **Why:** an edit made while the unit was open and in flight at the later opening is the honest record G1.23
+>   §6.3a wants, the same reading the plan's Review Focus 8 gives a save made from a page loaded before its editor
+>   was assigned. A write already sent cannot be recalled by the client in any case.
+> - **Fallback, if [USER] declines:** the client cancels a queued save's replay once the 503 arrives. A write already
+>   in flight could still land, so T6's sentence would still not hold literally. Not built; it would be a change of
+>   its own.
 
 > **✏️ AMENDED 2026-11-04: twenty departures from this design's wording, approved with the implementation plan**
 > ([USER] 2026-11-04: "Yes for all" to the plan's questions, with four clarifications the same day). Each is stated,
