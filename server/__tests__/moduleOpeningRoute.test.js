@@ -151,7 +151,6 @@ beforeAll(() => {
 
   for (const m of [
     'm94001',
-    'm94003',
     'm94004',
     'm94007',
     'm94008',
@@ -160,9 +159,13 @@ beforeAll(() => {
     'm94012',
     'm94013',
     'm94014',
+    'm94015',
+    'm94023',
+    'm94024',
   ]) {
     addModule(m);
   }
+  addModule('m94003', { ids: ['a', 'b', 'c'].map((s) => `m94003:para:${s}`) });
   addModule('m94005', { mt: false }); // layerless: EN only
   addModule('chapter-metadata', { chapterDir: 'ch02', ids: ['chapter:title:ch02'] });
   addModule('chapter-metadata', { chapterDir: 'ch05', ids: ['chapter:title:ch05'] });
@@ -336,6 +339,7 @@ describe('T6, opened time, through the route (spec §5.5, §10)', () => {
 
   it('a failure in the snapshot insert leaves no opening row and answers 503; the next serve records it afresh', async () => {
     addEdit({ moduleId: 'm94003', seg: 'm94003:para:a' });
+    const c = addEdit({ moduleId: 'm94003', seg: 'm94003:para:c' });
     db.exec(
       "CREATE TRIGGER planted_inflight BEFORE INSERT ON module_opening_inflight BEGIN SELECT RAISE(ABORT, 'planted fault'); END"
     );
@@ -345,14 +349,21 @@ describe('T6, opened time, through the route (spec §5.5, §10)', () => {
     });
     expect(opening('m94003')).toBeUndefined();
     expect(snapshot('m94003')).toEqual([]);
+    // Between the 503 and the retry, b's edit arrives and c's, in flight at the failed attempt, is
+    // withdrawn. Adding alone cannot tell a fresh snapshot from one that also carries the failed
+    // attempt's rows (both give a and b); the withdrawal can (PR2 review U9).
     addEdit({ moduleId: 'm94003', seg: 'm94003:para:b', editor: 'ed-b' });
+    db.prepare('DELETE FROM segment_edits WHERE id = ?').run(c);
     db.exec('DROP TRIGGER planted_inflight');
-    expect((await serve(asUser(ed1), 'm94003')).status).toBe(200);
+    const retry = await serve(asUser(ed1), 'm94003');
+    expect(retry.status).toBe(200);
     // taken at this serve, not carried from the failed one
     expect(snapshot('m94003')).toEqual([
       { segment_id: 'm94003:para:a', occurrence: -1 },
       { segment_id: 'm94003:para:b', occurrence: -1 },
     ]);
+    // control: c was served at the retry, so only its withdrawal keeps it out
+    expect(retry.body.segments.map((s) => s.segmentId)).toContain('m94003:para:c');
   });
 
   it('a failed mint on a serve that meets the predicate answers 503 with no opening row; on any other serve it stays fail-soft', async () => {
@@ -404,6 +415,20 @@ describe('T6, opened time, through the route (spec §5.5, §10)', () => {
     expect(
       db.prepare('SELECT COUNT(*) AS n FROM module_openings WHERE book = ?').get(BOOK).n
     ).toBeGreaterThan(0);
+  });
+
+  it("another book's row for the same chapter opens nothing: the lookup is for this book (decision 3)", async () => {
+    // ed1's own biology row sits beside chemistry rows, so it cannot show the book term; this member
+    // holds ONLY a biology chapter-1 row (PR2 review U10).
+    const bio = member('p-bio-only', 'editor', [1], 'liffraedi-2e');
+    const r = await serve(asUser(bio), 'm94015');
+    expect(r.status).toBe(200);
+    expect(everySegmentHasBase(r.body)).toBe(true);
+    expect(opening('m94015')).toBeUndefined();
+    // positive control: the same member, given the chemistry row, opens it
+    userService.assignChapter(bio.id, BOOK, 1);
+    expect((await serve(asUser(bio), 'm94015')).status).toBe(200);
+    expect(opening('m94015')).toBeDefined();
   });
 
   it('the row decides, not the role: an admin who holds a row opens the unit; a viewer who holds one is stopped by requireRole first', async () => {
@@ -544,6 +569,30 @@ describe('T7, the snapshot, through the route (spec §5.5, §10)', () => {
       moduleOpenings.snapshotRows(last.body.segments, segmentEditor.getModuleEdits(BOOK, 'm94020'))
         .rows
     ).toEqual([]);
+  });
+
+  it("the serving editor's own in-flight row is in the snapshot: an in-flight edit from any editor (spec §5.5 step 2)", async () => {
+    // The save route stores editor_id as String(req.user.id), the provider id, so 'p-ed1' is what
+    // ed1's own save writes. Every other row in this file is a colleague's (PR2 review U11).
+    addEdit({ moduleId: 'm94023', seg: 'm94023:para:a', editor: ed1.provider_id });
+    addEdit({ moduleId: 'm94023', seg: 'm94023:para:b', editor: 'ed-b' });
+    expect((await serve(asUser(ed1), 'm94023')).status).toBe(200);
+    expect(snapshot('m94023')).toEqual([
+      { segment_id: 'm94023:para:a', occurrence: -1 },
+      { segment_id: 'm94023:para:b', occurrence: -1 },
+    ]);
+    expect(opening('m94023').inflight_count).toBe(2);
+  });
+
+  it("it does not filter the edit rows on their chapter: a served segment's in-flight row stored under another chapter is displayed, and in it (decision 5)", async () => {
+    // Served as chapter 1; the row was stored under chapter 2 (the module's rows are read by book and
+    // module only, so the serve displays it).
+    addEdit({ moduleId: 'm94024', seg: 'm94024:para:a', chapter: 2 });
+    const r = await serve(asUser(ed1), 'm94024');
+    expect(r.status).toBe(200);
+    expect(r.body.edits['m94024:para:a'].map((e) => e.chapter)).toEqual([2]);
+    expect(snapshot('m94024')).toEqual([{ segment_id: 'm94024:para:a', occurrence: -1 }]);
+    expect(opening('m94024').inflight_count).toBe(1);
   });
 
   it('a module opened with only a re-attached in-flight row writes no warning', async () => {
