@@ -75,6 +75,46 @@ JS with no build step (`server/public/js/`, `sourceType: 'script'`), Vitest from
 - **The merge is gated** (index § The five PRs; spec §13a): PR2 merges only after Task 8 has run the probe on
   production and [USER] has made the §9 choice if chemistry holds assignment rows.
 
+### ✏️ AMENDED 2026-11-05 — two findings from PR1's review, taken in before Task 1
+
+The register's 2026-11-05 entry asks that PR2's plan take the "For PR2" bullets of its 2026-11-04 entry (PR1's
+whole-branch review). Both are added here; nothing above is reopened. Everything else in this plan is built as
+approved on 2026-11-04.
+
+1. **A new Task 3b, after Task 3: the serve's mint and the opening wait out another process's write lock.**
+   - **Premise** (PR1 review C2, commit `e8b9832f`, measured there by a scratch probe; Task 3b's red arm re-measures
+     it): `mintVersions` (`server/services/servedVersions.js`) runs one DEFERRED transaction that opens with a
+     `SELECT`. When a row is missing (a changed serve), its `INSERT` asks for the write lock while the transaction
+     already holds a read, and SQLite runs no busy handler for that upgrade. So while another process holds the
+     write lock (`backup-db.sh`'s `wal_checkpoint(TRUNCATE)`, an operator's CLI), the mint throws `SQLITE_BUSY` at
+     once and `recordServe` returns `mintOk: false`. Under PR1 that is fail-soft (200). Under PR2 it becomes a 503
+     `OPENING_UNRECORDED` (cause `mint`) for an assigned editor's first serve, where waiting out the busy timeout
+     would have recorded the opening.
+   - **The change, in `mintVersions`:** read every row first, taking no write lock; when every row is found, return
+     their ids (an unchanged re-serve stays lock-free: spec §5.4 step 3, PR1's `servedWriteLock` case (c)). When a
+     row is missing, run the insert pass as an **IMMEDIATE** transaction (`.immediate()`) that re-reads each row
+     before inserting it, because another serve may have inserted it between the two passes. Save, accept and
+     propagation call the mint inside their own IMMEDIATE transactions; there, better-sqlite3 runs both passes as
+     savepoints (measured 2026-11-05 in a scratch database: a nested `.immediate()` is a savepoint, and its rollback
+     undoes only its own writes), so their behaviour does not change, which their existing tests show.
+   - **`recordOpening` opens IMMEDIATE** (`conn.transaction(…).immediate()`), stated rather than left to its first
+     statement being a write.
+   - **Unchanged:** `recordServe`'s signature and its fail-soft rule (PR1's handoff). A mint that still fails (the
+     busy timeout runs out, a damaged database) returns `mintOk: false`, and the route answers 503 only when the
+     predicate holds. **The trade-off, stated:** a changed serve under a held lock now blocks the request (and, since
+     better-sqlite3 is synchronous, the process) for up to the busy timeout, as save and accept already do since C2.
+   - **Tests, in `server/__tests__/servedWriteLock.test.js`** (its child-process lock holder and on-disk ordering
+     witness): **(e)** a changed serve started while the lock is held waits for it and mints (`mintOk: true`, its new
+     rows present, `releasingWhenDone` true); red on the unchanged mint: `mintOk: false`, returned before the holder
+     released. **(f)** an assigned editor's first serve of a chemistry unit through the real module handler, started
+     while the lock is held, waits and records the opening (200, one `module_openings` row); red on the unchanged
+     mint: 503 `OPENING_UNRECORDED`. Case (c) still passes unchanged, and a mutant that makes the whole mint
+     `.immediate()` still fails (c).
+2. **Task 1 also widens `scripts/deploy.sh`'s schema remedy.** It tells the operator to read "the `[053]` warning";
+   once `checks.schema` can name `054`'s tables that is wrong. Task 1 rewrites it to name the migrations' warnings
+   from `[053]` onward, without listing numbers, so PR3's migration needs no further edit there. No test pins that
+   line (`grep -rlna '\[053\]' server/__tests__ tools/__tests__ scripts/__tests__` prints nothing at `5e650ffb`).
+
 ## Decisions taken in this plan
 
 Each is a §13 item, a seam the spec, the index or PR1's handoff leaves open, or a reading of the tree. **Decision
