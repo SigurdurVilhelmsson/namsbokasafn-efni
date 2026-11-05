@@ -545,6 +545,21 @@ describe('openOnServe (spec §5.4 step 4: when to answer 503)', () => {
   });
 });
 
+describe('OPENING_UNRECORDED (decision 8; text: decision 28)', () => {
+  it('carries the Icelandic text [USER] approved on 2026-11-04, byte for byte', () => {
+    // The route tests compare the body with this constant, i.e. the constant with itself; this is
+    // the one place the approved literal is pinned (PR2 review U38). A change to it goes back to
+    // [USER] first (decision 28).
+    expect(mo.OPENING_UNRECORDED).toEqual({
+      status: 503,
+      code: 'OPENING_UNRECORDED',
+      message:
+        'Ekki tókst að skrá opnun einingarinnar og því var hún ekki opnuð. Opnið eininguna aftur.',
+    });
+    expect(mo.OPENING_UNRECORDED.message.normalize('NFC')).toBe(mo.OPENING_UNRECORDED.message);
+  });
+});
+
 describe('moduleOpenedDetail (PR3’s seam; index decision 2)', () => {
   it('carries exactly what the module-opened event lists (spec §5.9)', () => {
     expect(mo.moduleOpenedDetail(MINTED, { inflightCount: 5 })).toEqual({

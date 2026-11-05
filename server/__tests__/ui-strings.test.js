@@ -128,3 +128,19 @@ describe('refused-save strings (G1.1 §5.18; index decisions 12–13)', () => {
     }
   });
 });
+
+describe('OPENING_UNRECORDED string (G1.1 + G1.2 PR2; PR2 plan decision 28)', () => {
+  const source = readFileSync(join(publicJs, 'ui-strings.js'), 'utf-8');
+  const UI = new Function(`${source}; return UI;`)();
+
+  it('carries the Icelandic text [USER] approved on 2026-11-04, byte for byte', () => {
+    // The E2E reads this key, so it compares the string with itself; this is the one place the
+    // approved literal is pinned (PR2 review U38). A change to it goes back to [USER] first.
+    expect(UI.segmentEditor.openingUnrecorded).toBe(
+      'Ekki tókst að skrá opnun einingarinnar og því var hún ekki opnuð. Veljið hana aftur úr listanum.'
+    );
+    expect(UI.segmentEditor.openingUnrecorded.normalize('NFC')).toBe(
+      UI.segmentEditor.openingUnrecorded
+    );
+  });
+});
