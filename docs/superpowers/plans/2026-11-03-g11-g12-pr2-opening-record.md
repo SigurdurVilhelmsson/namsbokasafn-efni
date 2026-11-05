@@ -159,6 +159,13 @@ approved on 2026-11-04.
      installs it unasked. A reopening of the same unit compares equal, and the action then finishes as in any open
      unit.
    - **Back also changes (PR1's handler):** it closes its panes, and an answer arriving after it is left alone.
+5. **Task 8 Step 2 runs while the `ritstjorn` service is running** (added 2026-11-05; PR2 review U20, then R6 on
+   that fix). A `readonly: true` open of a WAL database whose `-wal` and `-shm` files are absent creates both,
+   owned by the probe's user, and leaves them after close (measured). Since `0bab69d6` the probe reads the database's
+   header first and refuses that case: G-1d and G-1e then fail with `WAL_FILES_ABSENT`, and nothing is created.
+   Those files are absent only when no process holds the database, so Step 2's command must run while the service
+   runs: before it, `ssh <prod> systemctl is-active ritstjorn` prints `active`. Step 2's rule is unchanged and covers
+   a run made while the service was stopped: a section that is not ok means stop and report, and do not merge.
 
 ## Decisions taken in this plan
 
