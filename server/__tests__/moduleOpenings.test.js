@@ -158,11 +158,61 @@ describe('openingPredicate (spec §5.5; T6, service half)', () => {
     expect(pred('p-admin-row')).toEqual({ holds: true, reason: 'holds' });
   });
 
+  it('the row decides, not users.is_active: a deactivated account that holds a row meets it (decision 3)', () => {
+    const off = member('p-off', 'editor', [1]);
+    userService.deactivateUser(off.id);
+    // control: the deactivation took, and left the assignment row
+    expect(db.prepare('SELECT is_active FROM users WHERE id = ?').get(off.id)).toEqual({
+      is_active: 0,
+    });
+    expect(
+      db
+        .prepare('SELECT book_slug, chapter FROM user_chapter_assignments WHERE user_id = ?')
+        .all(off.id)
+    ).toEqual([{ book_slug: BOOK, chapter: 1 }]);
+    expect(pred('p-off')).toEqual({ holds: true, reason: 'holds' });
+  });
+
+  it("another book's row for the same chapter is no assignment here (decision 3)", () => {
+    const bio = member('p-bio-only', 'editor', [1], 'liffraedi-2e');
+    expect(pred('p-bio-only')).toEqual({ holds: false, reason: 'no-assignment' });
+    // positive control: the same member, given this book's row, meets it
+    userService.assignChapter(bio.id, BOOK, 1);
+    expect(pred('p-bio-only')).toEqual({ holds: true, reason: 'holds' });
+  });
+
   it('a token with no users row is no user, and no row is created for it', () => {
     expect(pred('p-ghost')).toEqual({ holds: false, reason: 'no-user' });
     expect(db.prepare("SELECT provider_id FROM users WHERE provider_id = 'p-ghost'").all()).toEqual(
       []
     );
+  });
+
+  it('a users table that is not ready (findByProviderId returns null) is no user, not a throw', () => {
+    member('p-ed1', 'editor', [1]);
+    // userService's own connection without a users table: its real null branch, not a mock. The
+    // assignment lookup runs on the handle passed in, which holds p-ed1's row.
+    const bare = new Database(':memory:');
+    try {
+      userService._setTestDb(bare);
+      expect(userService.findByProviderId('p-ed1')).toBeNull();
+      expect(pred('p-ed1')).toEqual({ holds: false, reason: 'no-user' });
+      expect(
+        mo.openOnServe(db, {
+          ...key(),
+          providerId: 'p-ed1',
+          served: MINTED,
+          segments: SEGMENTS,
+          edits: EDITS,
+        })
+      ).toEqual({ status: 'skipped', reason: 'no-user' });
+    } finally {
+      userService._setTestDb(db);
+      bare.close();
+    }
+    expect(openings()).toEqual([]);
+    // control: with the users table back, the same member meets it
+    expect(pred('p-ed1')).toEqual({ holds: true, reason: 'holds' });
   });
 
   it('the legacy chapter_assignments table (migration 012) does not count', () => {
@@ -269,6 +319,17 @@ describe('snapshotRows (spec §5.5 step 2; T7, service half)', () => {
       rows: [{ segmentId: 's4', occurrence: 0 }],
       warnSegments: ['s4'],
     });
+  });
+
+  it('an approved row not yet applied is in flight on its own, and an applied one is not', () => {
+    // In EDITS, s2's approved row sits beside a pending one, which a pending-only rule keeps too;
+    // here it is the segment's only row (PR2 review U40).
+    expect(
+      mo.snapshotRows(SEGMENTS, [
+        edit('s2', { status: 'approved', occurrence: 0, origin: 'editor-save' }),
+        edit('s5', { status: 'approved', applied_at: '2026-06-12 16:00:00' }), // the control
+      ])
+    ).toEqual({ rows: [{ segmentId: 's2', occurrence: 0 }], warnSegments: ['s2'] });
   });
 
   it('nothing in flight: an empty snapshot', () => {
