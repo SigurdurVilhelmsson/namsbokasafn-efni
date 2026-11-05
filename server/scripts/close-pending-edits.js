@@ -17,6 +17,8 @@
  *   - the apply hold must be in place for the book (PR #556). Without it an approved row is
  *     one click from an apply that writes the module's whole base text over the September
  *     MT (§C203);
+ *   - no unit of the book may have opened (G1.1 + G1.2 spec §5.6): this script logs no research
+ *     event, so it runs only before the study;
  *   - the input file must be the one the rulings name (sha256), and the rulings must cover it
  *     exactly: every frozen row once, in the set its frozen class belongs to;
  *   - every ruled row must still be pending and unchanged since it was frozen, and an
@@ -72,6 +74,22 @@ function closePendingEdits(db, { book, rulings, input, inputSha256, reviewer, wr
     refuse(
       `the apply hold is not in place for ${book}: deploy PR #556 first. Without it an ` +
         `approved row is one click from an apply over the September MT (§C203)`
+    );
+  }
+
+  // G1.1 + G1.2 spec §5.6: this script writes raw SQL and logs no research event, so it must not run once any unit of
+  // this book has opened. A database without module_openings (before migration 054) has none: while that table is
+  // missing, a serve that would open a unit answers 503 instead (server/services/moduleOpenings.js).
+  const hasOpenings = db
+    .prepare("SELECT 1 AS hit FROM sqlite_master WHERE type = 'table' AND name = 'module_openings'")
+    .get();
+  const opened = hasOpenings
+    ? db.prepare('SELECT COUNT(*) AS n FROM module_openings WHERE book = ?').get(book).n
+    : 0;
+  if (opened > 0) {
+    refuse(
+      `${book}: ${opened} unit(s) have opened (module_openings), and this script's writes are not logged as ` +
+        'research events; it must not run once any unit has opened (G1.1 + G1.2 spec §5.6)'
     );
   }
 

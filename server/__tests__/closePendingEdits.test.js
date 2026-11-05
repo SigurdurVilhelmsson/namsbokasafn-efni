@@ -271,4 +271,53 @@ describe('close-pending-edits: refusals', () => {
     rulings.notAsked['base-changed'].ids = ids.changed.slice(0, 1);
     expect(run().ok).toBe(false);
   });
+
+  // G1.1 + G1.2 spec §5.6: this script logs no research event, so it must not run once a unit has opened.
+  it('refuses once a unit of the book has opened, in a dry run as in a write, and writes nothing', () => {
+    const open = db.prepare(
+      `INSERT INTO module_openings (book, chapter, module_id, opened_at_ms, inflight_count)
+       VALUES (?, 3, 'm68700', 1700000000000, 0)`
+    );
+    open.run('liffraedi-2e');
+    // control: another book's opening does not count
+    expect(run({ write: false })).toMatchObject({ ok: true, refused: [] });
+    open.run(BOOK);
+    const opened = [expect.stringMatching(/^efnafraedi-2e: 1 unit\(s\) have opened/)];
+    expect(run({ write: false }).refused).toEqual(opened);
+    const r = run();
+    expect(r.ok).toBe(false);
+    expect(r.refused).toEqual(opened);
+    expect(db.prepare(`SELECT id FROM segment_edits WHERE status != 'pending'`).all()).toEqual([]);
+  });
+
+  it('a database without module_openings (before migration 054) counts as none opened', () => {
+    db.exec('DROP TABLE module_opening_inflight; DROP TABLE module_openings');
+    const r = run();
+    expect(r.refused).toEqual([]);
+    expect(ids.clean.map(statusOf)).toEqual(['approved', 'approved']); // the write went through
+  });
+
+  // Decision 29: the existence check is keyed on module_openings itself. With only the snapshot table gone, a
+  // chemistry opening still refuses (a check for the other table would read this as none opened).
+  it('looks for module_openings itself: with only module_opening_inflight gone, an opening still refuses', () => {
+    db.prepare(
+      `INSERT INTO module_openings (book, chapter, module_id, opened_at_ms, inflight_count)
+       VALUES (?, 3, 'm68700', 1700000000000, 0)`
+    ).run(BOOK);
+    db.exec('DROP TABLE module_opening_inflight');
+    const r = run();
+    expect(r.ok).toBe(false);
+    expect(r.refused).toEqual([expect.stringMatching(/^efnafraedi-2e: 1 unit\(s\) have opened/)]);
+    expect(ids.clean.map(statusOf)).toEqual(['pending', 'pending']);
+  });
+
+  // Decision 29: only a MISSING table counts as none opened. Any other error from the read throws, as the script's
+  // other reads do, so a module_openings it cannot read is never taken for an empty one.
+  it('fails closed: a module_openings it cannot read throws, and nothing is written', () => {
+    db.exec(
+      'DROP TABLE module_opening_inflight; DROP TABLE module_openings; CREATE TABLE module_openings (x INTEGER)'
+    );
+    expect(() => run()).toThrow(/no such column: book/);
+    expect(ids.clean.map(statusOf)).toEqual(['pending', 'pending']);
+  });
 });
