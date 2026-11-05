@@ -14,8 +14,9 @@
  *         a later one overriding. Of each file only the retention keys and ForwardToSyslog, read as
  *         systemd reads them (a key counts only under a `[Journal]` header, and a file starts outside
  *         every section), with the file's path under its own root (`etc/…`, `run/…`, `usr/…`): as
- *         `Key=value` when the value is in the grammar of that key's parser (sizes, time spans, counts,
- *         booleans, Storage's four modes; each measured against systemd 255), and otherwise as the key
+ *         `Key=value` when the value is in the grammar of that key's parser (sizes, time spans and
+ *         counts within their 64 bits, booleans, Storage's four modes; each measured against systemd
+ *         255's journald, and narrower than it where it is not equal), and otherwise as the key
  *         alone with `valueUnparsed: true` and no value (systemd keeps a `#` after a value as part of
  *         it, and then refuses the setting). `systemd-analyze cat-config systemd/journald.conf`
  *         differs from journald 255 on the main file: it shows the first of /etc, /run,
@@ -271,21 +272,120 @@ const UNIT_ID = /^(m\d{5}|chapter-metadata)$/; // what the module route serves (
 // The retention keys (the Runtime* limits bound the journal when it is volatile, under /run), and
 // ForwardToSyslog, which decides whether the request log also reaches rsyslog. Each with the grammar of
 // the parser systemd 255's journald gives it (journald-gperf: config_parse_storage, _iec_uint64,
-// _uint64, _sec, _bool), measured through systemd-analyze verify on unit settings that share the
-// parser: a value is printed only when it is in its key's grammar, so no free text leaves the probe
-// (systemd keeps a `#` after a value as part of the value, and then refuses the setting). Each grammar
-// is narrower than systemd's or equal to it: a value outside it is flagged, never guessed.
-const SIZE_PART = String.raw`\d+(?:\.\d*)?`; // parse_size: "5.G" is a size, ".5G" is not
-const SIZE = new RegExp(
-  String.raw`^(?:${SIZE_PART}\s*[KMGTPEB]\s*)*${SIZE_PART}(?:\s*[KMGTPEB])?$`
-);
-const TIME_UNIT =
-  'usec|us|μs|µs|msec|ms|seconds|second|sec|s|minutes|minute|min|m|hours|hour|hr|h|days|day|d|weeks|week|w|months|month|M|years|year|y';
-const TIMESPAN = new RegExp(
-  String.raw`^(?:infinity|(?:(?:\d+(?:\.\d+)?|\.\d+)\s*(?:${TIME_UNIT})?\s*)+)$`
-);
+// _uint64, _sec, _bool), measured with systemd-journald 255 itself on a journald.conf of each form (and
+// first through systemd-analyze verify on unit settings that share the parser): a value is printed only
+// when it is in its key's grammar, so no free text leaves the probe (systemd keeps a `#` after a value as
+// part of the value, and then refuses the setting). Each grammar is narrower than systemd's or equal to
+// it: a value outside it is flagged, never guessed.
+const UINT64_MAX = 2n ** 64n - 1n; // also USEC_INFINITY, parse_time's ceiling
+const LLONG_MAX = 2n ** 63n - 1n;
+const BLANKS = ' \t\n\r'; // systemd's WHITESPACE
+const skipBlanks = (text, i) => {
+  let j = i;
+  while (j < text.length && BLANKS.includes(text[j])) j += 1;
+  return j;
+};
+
+// parse_size's units for base 1024, in its order: a part's unit is the first from where the last
+// part's left off that starts the text, and '' (no unit) always does.
+const SIZE_UNITS = ['E', 'P', 'T', 'G', 'M', 'K', 'B', ''];
+/**
+ * parse_size(value, 1024), as config_parse_iec_uint64 calls it (systemd 255): parts of digits, an
+ * optional `.` and fraction, and a unit, the units strictly descending (`1G 512M`, never `512M 1G` or
+ * `1K 1K`) and a part without one last; no whole or fraction past 64 bits, and the sum within them. A
+ * fraction is counted as a whole unit (systemd adds less), and a leading `+` (which systemd takes) is
+ * refused: narrower, never wider.
+ */
+function isSize(value) {
+  const part = /[ \t\n\r]*(\d+)(?:\.(\d*))?[ \t\n\r]*/y;
+  let sum = 0n;
+  let first = 0; // the first unit this part may take
+  let i = 0;
+  do {
+    part.lastIndex = i;
+    const m = part.exec(value);
+    if (!m) return false;
+    i = part.lastIndex;
+    let u = first;
+    while (u < SIZE_UNITS.length && !value.startsWith(SIZE_UNITS[u], i)) u += 1;
+    if (u === SIZE_UNITS.length) return false;
+    const factor = 1n << BigInt(10 * Math.max(0, 6 - u)); // E is 2^60 … K 2^10, B and '' 1
+    const whole = BigInt(m[1]);
+    const fraction = m[2] || '';
+    if (whole > UINT64_MAX || (fraction && BigInt(fraction) > UINT64_MAX)) return false; // strtoull's ERANGE
+    const frac = /[1-9]/.test(fraction) ? 1n : 0n;
+    const add = (whole + frac) * factor; // at least what systemd adds, so its own per-part check is in this one
+    if (add > UINT64_MAX - sum) return false;
+    sum += add;
+    i += SIZE_UNITS[u].length;
+    first = u + 1;
+  } while (i < value.length);
+  return true;
+}
+
+// parse_time's units (systemd 255, extract_multiplier), in its order: the first that starts the text.
+const SEC = 1000000n;
+const TIME_UNITS = [
+  ...['seconds', 'second', 'sec', 's'].map((u) => [u, SEC]),
+  ...['minutes', 'minute', 'min'].map((u) => [u, 60n * SEC]),
+  ...['months', 'month', 'M'].map((u) => [u, 2629800n * SEC]),
+  ...['msec', 'ms'].map((u) => [u, 1000n]),
+  ['m', 60n * SEC],
+  ...['hours', 'hour', 'hr', 'h'].map((u) => [u, 3600n * SEC]),
+  ...['days', 'day', 'd'].map((u) => [u, 86400n * SEC]),
+  ...['weeks', 'week', 'w'].map((u) => [u, 604800n * SEC]),
+  ...['years', 'year', 'y'].map((u) => [u, 31557600n * SEC]),
+  ...['usec', 'us', 'μs', 'µs'].map((u) => [u, 1n]),
+];
+/**
+ * parse_time(value, USEC_PER_SEC), as config_parse_sec calls it (systemd 255): `infinity`, or parts of
+ * digits with an optional `.` and at least one fraction digit, each followed by a blank, a unit or the
+ * end (`1.5 .5` and `1.5s.5`, never `1.5.5`); the total in microseconds, and each whole times its unit,
+ * below 2^64 - 1, as parse_time checks them. A leading `+` (which systemd takes) is refused.
+ */
+function isTimespan(value) {
+  if (value === 'infinity') return true; // the value is trimmed
+  const number = /(\d*)(?:\.(\d+))?/y;
+  let usec = 0n;
+  let i = skipBlanks(value, 0);
+  if (i === value.length) return false;
+  while (i < value.length) {
+    number.lastIndex = i;
+    const [text, whole, fraction = ''] = number.exec(value);
+    if (whole === '' && fraction === '') return false; // neither digits nor `.` and digits
+    i += text.length;
+    const at = skipBlanks(value, i);
+    const unit = TIME_UNITS.find(([u]) => value.startsWith(u, at));
+    const next = unit ? at + unit[0].length : at;
+    if (next === i && i < value.length) return false; // `1.5.5`: neither a blank nor a unit after it
+    const multiplier = unit ? unit[1] : SEC;
+    const l = BigInt(whole || '0');
+    if (l > LLONG_MAX || l >= UINT64_MAX / multiplier) return false; // strtoll's ERANGE; parse_time's
+    if (l * multiplier >= UINT64_MAX - usec) return false;
+    usec += l * multiplier;
+    let m = multiplier / 10n;
+    for (const d of fraction) {
+      const k = BigInt(d) * m;
+      if (k >= UINT64_MAX - usec) return false;
+      usec += k;
+      m /= 10n;
+    }
+    i = skipBlanks(value, next);
+  }
+  return true;
+}
+
+/**
+ * safe_atou64, as config_parse_uint64 calls it (systemd 255: strtoull, base 0), narrowed to a decimal
+ * without a sign or a leading zero, within 64 bits. journald also takes `+5`, `0x10` and `010` (which it
+ * reads as 8): flagged here, since printed as written they would read as another number.
+ */
+function isCount(value) {
+  return /^(?:0|[1-9]\d*)$/.test(value) && BigInt(value) <= UINT64_MAX;
+}
+
 const JOURNALD_GRAMMAR = new Map([
-  ['Storage', /^(?:volatile|persistent|auto|none)$/],
+  ['Storage', (v) => /^(?:volatile|persistent|auto|none)$/.test(v)],
   ...[
     'SystemMaxUse',
     'SystemKeepFree',
@@ -293,12 +393,12 @@ const JOURNALD_GRAMMAR = new Map([
     'RuntimeMaxUse',
     'RuntimeKeepFree',
     'RuntimeMaxFileSize',
-  ].map((k) => [k, SIZE]),
-  ['SystemMaxFiles', /^\d+$/],
-  ['RuntimeMaxFiles', /^\d+$/],
-  ['MaxRetentionSec', TIMESPAN],
-  ['MaxFileSec', TIMESPAN],
-  ['ForwardToSyslog', /^(?:1|yes|y|true|t|on|0|no|n|false|f|off)$/i],
+  ].map((k) => [k, isSize]),
+  ['SystemMaxFiles', isCount],
+  ['RuntimeMaxFiles', isCount],
+  ['MaxRetentionSec', isTimespan],
+  ['MaxFileSec', isTimespan],
+  ['ForwardToSyslog', (v) => /^(?:1|yes|y|true|t|on|0|no|n|false|f|off)$/i.test(v)],
 ]);
 // logrotate's rotation and retention directives, read as logrotate 3.21.0 (Ubuntu 24.04's package,
 // run with -d on each form) reads them. Along a line it reads a run of directives (config.c's default
@@ -394,9 +494,7 @@ function journaldSettings(text, file) {
     const grammar = m && JOURNALD_GRAMMAR.get(m[1]);
     if (!grammar) continue;
     out.push(
-      grammar.test(m[2])
-        ? { file, line: `${m[1]}=${m[2]}` }
-        : { file, key: m[1], valueUnparsed: true }
+      grammar(m[2]) ? { file, line: `${m[1]}=${m[2]}` } : { file, key: m[1], valueUnparsed: true }
     );
   }
   return out;

@@ -891,6 +891,10 @@ describe('G-1c (spec §9): journald retention and nginx’s request log', () => 
     // Measured 2026-11-05 with systemd 255.4-1ubuntu8.18's own parsers, through `systemd-analyze verify` on a unit
     // whose setting shares journald's parser: MemoryMax= (parse_size, base 1024), RuntimeMaxSec= (parse_sec) and
     // RemainAfterExit= (parse_boolean). Refused means systemd logged "ignoring".
+    // PR2 review follow-up on U8 (R4): the size, time-span and count rows, the added ones included, were measured
+    // again with systemd-journald 255.4-1ubuntu8.18 itself, run in a private mount namespace on a journald.conf of
+    // these lines: refused means journald logged "Failed to parse … value, ignoring". `narrower` is what journald
+    // takes and the probe flags all the same, never guessing (`010` is 8 to journald, so printing it would mislead).
     const MEASURED = {
       SystemMaxUse: {
         accepted: [
@@ -907,6 +911,18 @@ describe('G-1c (spec §9): journald retention and nginx’s request log', () => 
           '1P',
         ],
         accepted2: ['500B', '5.G', '1B 2', '1K 2'],
+        // Units strictly descending, a part without one last; the sum within 64 bits (15E 1023P 1023T is the
+        // largest of these, 16E the smallest past it).
+        accepted3: [
+          '1G 512M 3K 2',
+          '1E 1P 1T 1G 1M 1K 1B 1',
+          '1G1',
+          '15E',
+          '15E 1023P',
+          '15E 1023P 1023T',
+          '14.99E',
+          '18446744073709551615',
+        ],
         refused: [
           '500m',
           '500MB',
@@ -920,6 +936,18 @@ describe('G-1c (spec §9): journald retention and nginx’s request log', () => 
           '1 2K',
           '500M # x',
         ],
+        refused2: ['1G 2G', '1M 1G', '512M 1G', '1K 1K', '1T 1E', '1KB', '1.5.5G', '5.5.G'],
+        refused3: [
+          '16E',
+          '15.99E',
+          '15E 1024P',
+          '15E 1023P 1024T',
+          '20000000E',
+          '99999999999999999999',
+          '1.99999999999999999999G',
+          '18446744073709551616',
+        ],
+        narrower: ['+5G'],
       },
       MaxRetentionSec: {
         accepted: [
@@ -947,8 +975,33 @@ describe('G-1c (spec §9): journald retention and nginx’s request log', () => 
           '1 hr',
           '1msec',
         ],
-        accepted3: ['1 2', '.5h'],
+        accepted3: ['1 2', '.5h', '1.5 .5', '1.5s.5', '5 5', '5s5'],
+        // Within 64 bits of microseconds: 584542y and 18446744073709 (seconds) are the first past it.
+        accepted4: [
+          '18446744073708',
+          '584541y',
+          '584541y 1y',
+          '9223372036854775807us',
+          '1.99999999999999999999999s',
+          '584541y 1.04y',
+        ],
         refused: ['1e3', 'month', '1 fortnight', '-1s', '1.s', 'Infinity', '1 month # x'],
+        refused2: ['1.5.5', '1.5.5s', '1.55.5', '1..5', '5.', '.'],
+        // The ceiling is 584542.046 years: past it by a whole, by a sum and by a fraction.
+        refused3: [
+          '18446744073709',
+          '584542y',
+          '9223372036854775808us',
+          '584541y 2y',
+          '584541y 1.5y',
+          '584541y 1.05y',
+        ],
+        narrower: ['+5s'],
+      },
+      SystemMaxFiles: {
+        accepted: ['0', '5', '100', '18446744073709551615'],
+        refused: ['09', '18446744073709551616', '-1', '1.5', '0x1g', 'five'],
+        narrower: ['010', '007', '0x10', '+5'],
       },
       ForwardToSyslog: {
         accepted: ['yes', 'YES', 'y', 'Y', 'true', 'True', 't', 'on', 'On', '1'],
@@ -956,15 +1009,20 @@ describe('G-1c (spec §9): journald retention and nginx’s request log', () => 
         refused: ['maybe', 'yes # x', 'enable'],
       },
     };
-    for (const [key, { refused, ...ok }] of Object.entries(MEASURED)) {
-      const accepted = Object.values(ok).flat();
+    for (const [key, lists] of Object.entries(MEASURED)) {
+      const of = (prefix) =>
+        Object.entries(lists)
+          .filter(([name]) => name.startsWith(prefix))
+          .flatMap(([, values]) => values);
+      const accepted = of('accepted');
+      const flagged = [...of('refused'), ...of('narrower')];
       plant(
         'etc/systemd/journald.conf',
-        `[Journal]\n${[...accepted, ...refused].map((v) => `${key}=${v}`).join('\n')}\n`
+        `[Journal]\n${[...accepted, ...flagged].map((v) => `${key}=${v}`).join('\n')}\n`
       );
-      expect(settings()).toEqual([
+      expect(settings(), key).toEqual([
         ...accepted.map((v) => ({ file: 'etc/systemd/journald.conf', line: `${key}=${v}` })),
-        ...refused.map(() => ({ file: 'etc/systemd/journald.conf', key, valueUnparsed: true })),
+        ...flagged.map(() => ({ file: 'etc/systemd/journald.conf', key, valueUnparsed: true })),
       ]);
     }
   });
