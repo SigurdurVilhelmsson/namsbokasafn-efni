@@ -1,6 +1,7 @@
 /**
  * Guard-the-guard (SR-OOS-2): the shared rules only protect what calls them.
- * Pins: all four server enforcement sites call validateStructure; both panes
+ * Pins: every server enforcement site calls validateStructure (the segment
+ * editor's save path through servedEdit.js since G1.1); both panes
  * delegate to the shared module (no resurrected inline rule bodies); both
  * views load the script; the UMD module keeps its CJS export.
  */
@@ -13,10 +14,16 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const read = (rel) => fs.readFileSync(path.join(__dirname, '..', rel), 'utf-8');
 
 describe('server enforcement sites', () => {
-  it('segment-editor route guards the save path', () => {
-    const src = read('routes/segment-editor.js');
+  // G1.1 moved the save path's guard from the route into servedEdit.js, where every edit writer
+  // on a served base goes through it (index decision 16). The two pins below follow it there.
+  it('the save path guards through servedEdit (index decision 16)', () => {
+    const src = read('services/servedEdit.js');
     expect(src).toMatch(/segmentValidation\.validateStructure\(/);
     expect(src).toMatch(/Vistun hafnað: byggingarmerki vantar eða hafa breyst\./);
+  });
+  it('the segment-editor save route delegates to saveOnServedBase', () => {
+    const src = read('routes/segment-editor.js');
+    expect(src).toMatch(/servedEdit\.saveOnServedBase\(/);
   });
   it('localization route guards save AND save-all (two call sites)', () => {
     const src = read('routes/localization-editor.js');

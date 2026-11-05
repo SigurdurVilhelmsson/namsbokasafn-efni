@@ -318,6 +318,24 @@ clean stays clean.
 
 # Appendix A — the automated re-attach (optional)
 
+✏️ **2026-11-04 — check this first: the script refuses a book in the research study.** Since G1.1,
+`scripts/reattach-segment-edits.js` exits **6** when the snapshot names a book on the study's
+allowlist (`server/lib/researchScope.js`): before planning, in a dry run too, without opening a
+database, and no flag overrides it (Step A-2's table). That book's edits are written only through
+the segment editor's own save, which records the text each edit was made on; this id-based script
+cannot. Check this runbook's book before reading on:
+
+```bash
+node -e "console.log(require('./server/lib/researchScope.js').isStudyBook('efnafraedi-2e'))"
+```
+
+- [ ] Printed: ______ — `true` (as it printed when this note was written) means **Appendix A
+      cannot run on this migration**: take Step 4a's hand path, in which the migration itself
+      writes nothing to prod's `segment_edits`.
+      *(✏️ 2026-11-04: this said the hand path "never writes to `segment_edits`". Re-applying an
+      edit by hand in Ritstjóri does write a row, through that same editor save; what writes
+      nothing there is the migration.)*
+
 **Do not start here.** Step 4's hand path is the default, and at this migration's measured size
 it is the right one. This appendix is for the case where Step 1's row count is large enough that
 hand re-application is impractical — a different book, or a scope that grew.
@@ -339,7 +357,7 @@ the volume is past what a person will reliably tick off by hand.
 
 ⚠️ **Run Step A-2's DRY RUN before this step.** The dry run opens no database — it reads only the
 snapshot and `books/efnafraedi-2e/02-mt-output/` — so it is safe to run first, and it is the only
-thing that can tell you whether the migration is going to abort. Three of its exit codes are
+thing that can tell you whether the migration is going to abort. Every exit code but 0 and 1 is
 fatal, and **Step A-1 is the one step in this document that is hard to undo** (see the warning at the end
 of this step). Clear the fatal codes first, then come back here.
 
@@ -350,14 +368,19 @@ of this step). Clear the fatal codes first, then come back here.
 
 Prod still holds the pre-break `segment_edits` rows for these 4 modules. For any snapshot row
 whose status is `pending`, that pending row is still there, so `saveSegmentEdit` takes its
-**UPDATE** branch — which sets `edited_content`, `category` and `editor_note` but **never
-`original_content`**. The restored row would keep a stale baseline, the editor's diff view would
-compare against a draft that no longer exists, and nothing would report it: UPDATE returns
-`{updated: true}` with no `reverted` flag, so the re-attach counts it as written and the
-reconciliation still balances.
+**UPDATE** branch: it overwrites that row's text in place, and the re-attach counts the row as
+`updated`, not `inserted`, and lists it under its ⚠️ block as a replaced pending text.
 
 Superseding first removes the pending row from the lookup, so `saveSegmentEdit` takes the
-**INSERT** branch and `original_content` becomes the new MT text, as spec §7 requires.
+**INSERT** branch: the restored row is a new row, counted as `inserted`, and `original_content`
+becomes the new MT text, as spec §7 requires. That is what lets Step A-2's `updated` gate
+("expect 0 on a first run") mean a key Step A-1 did not cover.
+
+*(✏️ 2026-11-04: this step used to be justified by the UPDATE branch **never** setting
+`original_content`, so that a restored row would keep a stale baseline. Since G1.1 that branch
+sets `original_content` too, so the baseline is the new MT on either branch, and for the baseline
+Step A-1 is now belt-and-braces. It is still ordered before the apply because it decides the
+branch, and the branch decides the counts, as above.)*
 
 This is semantically exact, not a workaround: spec §7 defines `superseded` as "history, already
 replaced by a later row", and the restored `pending` row **is** that later row.
@@ -419,7 +442,7 @@ from then on.
 - [ ] Read the report. Unmatched count: ______ (expect ≤ 6)
 - [ ] `exit=` value recorded: ______
 
-**Exit codes are a gate, not information. Three of them mean stop and one does not:**
+**Exit codes are a gate, not information. Only 0 and 1 let you proceed; every other code means stop:**
 
 | Exit | Meaning | Action |
 |---|---|---|
@@ -429,6 +452,7 @@ from then on.
 | 2 | A module is absent from the new extraction | **STOP.** Re-extraction failed. Do not continue. ⚠️ **Exit 2 can hide an exit 4** — a missing module's rows go to `unmatched`, never to the restore list where collisions are counted, so once you fix the extraction the next dry run may surface a *new* fatal code. Expect to run it twice. |
 | 3 | The buckets did not reconcile | **STOP.** Rows are unaccounted for. |
 | 4 | One editor+segment key carries more than one restorable row | **STOP.** See below. |
+| 6 | The snapshot holds a book this script must not write: the study book (on the research study's allowlist, `server/lib/researchScope.js`) or a not-minted book (`server/lib/servedText.js`) | **STOP.** The script refuses that book before planning, in a dry run too, and opens no database; no flag overrides it, so Appendix A cannot run on that book. The study book: re-apply its edits by hand (Step 4a), or by content once that tool exists ([10-10 plan](2026-10-10-chemistry-finish-preparation-plan.md) 4.2). A not-minted book: every write to it is refused, by hand too (CLAUDE.md § Organic), so there is nothing to re-apply. |
 
 ⚠️ **Exit 1 is NOT exclusively "unmatched rows".** It is also Node's code for any
 failure the table does not enumerate — a usage error, a missing or malformed snapshot file, an
@@ -479,12 +503,17 @@ state. Do not read the printed totals and move on; read `exit=`.
 
 - [ ] `Inserted` count from the report: ______ (this is the restored work)
 - [ ] `updated` count from the report: ______ — **expect 0 on a first run.** A non-zero
-      `updated` means a pending row for that key was already present, so Step A-1 did not cover it
-      and `original_content` kept its old baseline for those rows. Not silent loss. **The script
-      prints the affected keys under the ⚠️ block beneath the totals — you do not need to query
-      the DB.** Copy them here and tell the editor their diff view is against a stale draft:
+      `updated` means a pending row for that key was already present, so Step A-1 did not cover it:
+      the script replaced that row's pending text in place with the snapshot's, and set its
+      `original_content` to the new MT. Not silent loss. **The script prints the affected keys
+      under the ⚠️ block beneath the totals — you do not need to query the DB.** Copy them here
+      and tell the editor their pending text was replaced:
 
       ______________________________________________
+
+      *(✏️ 2026-11-04: this used to say `original_content` kept its old baseline, and to tell the
+      editor their diff view was against a stale draft. Since G1.1 the UPDATE branch sets
+      `original_content` too, so the baseline is the new MT, as on an inserted row.)*
 - [ ] Place any unmatched edits by hand, using the EN text in the report.
 
 *If the apply dies part-way it prints `ABORTED after inserted=… updated=… withdrawn=…` before the

@@ -24,8 +24,10 @@ const fs = require('fs');
 const log = require('../lib/logger');
 const mtLock = require('../../tools/lib/mt-lock.cjs');
 const segmentParser = require('./segmentParser');
+const servedVersions = require('./servedVersions');
 const resolveDbPath = require('../lib/dbPath');
 const { pickLatest } = require('../lib/editRecency');
+const { isNotMintedBook } = require('../lib/servedText');
 const {
   normalizeWraps,
   unescapeMtMarkers,
@@ -74,9 +76,28 @@ function editorViewOf(enContent, storedText) {
  * guard: a queued replay after content changed 409s instead of blessing
  * unseen bytes.
  *
+ * G1.1 (spec §5.6 Accept, §5.8): with `occurrence` an integer (the accept route passes the one
+ * `servedEdit.placeOnServedBase` placed, after refusing a duplicated id, organic and a module with
+ * no layer), the new row records the served version of the segment compared here, and that
+ * occurrence. Without it (direct callers) both columns stay NULL, "made before G1.1" (§5.8).
+ * A book that is never minted (organic) is refused here too, before anything is loaded, with the
+ * refusal placeOnServedBase throws, so a direct caller cannot write what the route refuses (§11).
+ *
  * @returns {{ alreadyAccepted: boolean, acceptance: object }}
  */
-function acceptSegment({ book, chapter, moduleId, segmentId, acceptedContent, userId, username }) {
+function acceptSegment({
+  book,
+  chapter,
+  moduleId,
+  segmentId,
+  acceptedContent,
+  userId,
+  username,
+  occurrence,
+}) {
+  // Required here, not at the top: servedEdit requires segmentEditorService, which requires this
+  // module, so a top-level require would hand one of them a half-loaded export object.
+  if (isNotMintedBook(book)) throw require('./servedEdit').refuse('BOOK_NOT_MINTED');
   const conn = getDb();
 
   const data = segmentParser.loadModuleForEditing(book, chapter, moduleId);
@@ -168,18 +189,54 @@ function acceptSegment({ book, chapter, moduleId, segmentId, acceptedContent, us
     return { alreadyAccepted: true, acceptance: existing };
   }
 
+  const mint = Number.isInteger(occurrence);
   let insertResult;
   try {
-    insertResult = conn
-      .prepare(
-        `INSERT INTO segment_acceptances
-           (book, chapter, module_id, segment_id, accepted_content, accepted_by, accepted_by_username)
-         VALUES (?, ?, ?, ?, ?, ?, ?)`
-      )
-      .run(book, chapter, moduleId, segmentId, acceptedContent, String(userId), username);
+    // Spec §5.6 Accept (plan decision 12): the served version is minted from the segment compared
+    // above, in one transaction with the INSERT, so the minted text is exactly the compared text,
+    // and an alreadyAccepted result (returned above) or a lost race (below) writes nothing.
+    const mintAndInsert = conn.transaction(() => {
+      const servedVersionId = mint
+        ? servedVersions.mintVersions(conn, [
+            servedVersions.buildVersionRow({
+              book,
+              chapter,
+              moduleId,
+              segmentId,
+              occurrence,
+              en: seg.en,
+              is: seg.is,
+              layer: data.isSource,
+            }),
+          ])[0]
+        : null;
+      return conn
+        .prepare(
+          `INSERT INTO segment_acceptances
+             (book, chapter, module_id, segment_id, accepted_content, accepted_by,
+              accepted_by_username, served_version_id, occurrence)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
+        )
+        .run(
+          book,
+          chapter,
+          moduleId,
+          segmentId,
+          acceptedContent,
+          String(userId),
+          username,
+          servedVersionId,
+          mint ? occurrence : null
+        );
+    });
+    // IMMEDIATE, because with an occurrence its first statement is the mint's SELECT: a deferred
+    // transaction would hold a read when it asks for the write lock, which SQLite refuses at once
+    // with SQLITE_BUSY instead of waiting the busy timeout (PR1 review C2).
+    insertResult = mintAndInsert.immediate();
   } catch (err) {
     // Two concurrent accepts race past the SELECT: the partial unique index
-    // decides, and the loser resolves to the winner's row (idempotent).
+    // decides, and the loser resolves to the winner's row (idempotent). The
+    // loser's mint rolled back with its INSERT, so it leaves no version.
     if (String(err.code || '').startsWith('SQLITE_CONSTRAINT')) {
       const winner = conn
         .prepare(

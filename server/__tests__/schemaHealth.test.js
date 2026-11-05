@@ -1,0 +1,139 @@
+/**
+ * checks.schema in /api/health (spec §5.20, §5.8; plan decision 3).
+ *
+ * checks.migrations only counts migration files, so a never-throw migration that failed would
+ * otherwise show only as save errors. checkSchema names every table, column and index the G1.1
+ * migrations add that the database lacks, and never throws. Each case below removes one thing from
+ * a database every real migration built and asserts that exactly that name, and nothing else, is
+ * reported; the fresh database is the control.
+ */
+import { describe, it, expect, afterEach } from 'vitest';
+import { readFileSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+const freshMigratedDb = require('./helpers/freshMigratedDb');
+const { EXPECTED_SCHEMA, checkSchema } = require('../lib/schemaHealth');
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+const open = [];
+function migrated() {
+  const { db } = freshMigratedDb();
+  open.push(db);
+  return db;
+}
+afterEach(() => {
+  while (open.length) {
+    const db = open.pop();
+    if (db.open) db.close();
+  }
+});
+
+describe('checkSchema', () => {
+  it('a fresh migrated database is ok', () => {
+    expect(checkSchema(migrated())).toEqual({ ok: true, missing: [] });
+  });
+
+  it('a missing table is named, with its index', () => {
+    const db = migrated();
+    // No row references it, so the live foreign key on served_version_id permits the drop.
+    db.exec('DROP TABLE served_text_versions');
+    expect(checkSchema(db)).toEqual({
+      ok: false,
+      missing: ['served_text_versions', 'index idx_served_text_versions_key'],
+    });
+  });
+
+  it('a missing column is named', () => {
+    const db = migrated();
+    db.exec('ALTER TABLE segment_edits DROP COLUMN origin');
+    expect(checkSchema(db)).toEqual({ ok: false, missing: ['segment_edits.origin'] });
+  });
+
+  it('a missing column of a present tables entry is named as <table>.<column>, and its table is not', () => {
+    const db = migrated();
+    // No index or CHECK names en_text, so SQLite permits the drop. The table's other ten columns,
+    // still present, are the control.
+    db.exec('ALTER TABLE served_text_versions DROP COLUMN en_text');
+    expect(checkSchema(db)).toEqual({ ok: false, missing: ['served_text_versions.en_text'] });
+  });
+
+  it('never throws: a closed handle reports not ok', () => {
+    const db = migrated();
+    db.close();
+    const result = checkSchema(db);
+    expect(result.ok).toBe(false);
+    expect(result.missing).toBeNull();
+    expect(typeof result.error).toBe('string');
+  });
+
+  it('a columns entry names each absent column, whether or not its table exists', () => {
+    // The rule PR2–PR4 rely on when they append entries. An absent table under `columns` is not
+    // collapsed to the table's name, unlike an absent `tables` entry.
+    const db = migrated();
+    const result = checkSchema(db, {
+      tables: { no_such_table: ['a'] },
+      columns: { no_such_table: ['a', 'b'], segment_edits: ['id', 'no_such_column'] },
+      indexes: ['no_such_index'],
+    });
+    expect(result).toEqual({
+      ok: false,
+      missing: [
+        'no_such_table',
+        'no_such_table.a',
+        'no_such_table.b',
+        'segment_edits.no_such_column',
+        'index no_such_index',
+      ],
+    });
+  });
+});
+
+describe('EXPECTED_SCHEMA', () => {
+  it('lists every served_text_versions column, the seven added columns and the index', () => {
+    // `tables` maps a table to EVERY column it has, so it is compared with the migrated table.
+    const db = migrated();
+    const columnsOf = (table) => db.pragma(`table_info(${table})`).map((c) => c.name);
+    expect(EXPECTED_SCHEMA.tables.served_text_versions).toEqual(columnsOf('served_text_versions'));
+    expect(EXPECTED_SCHEMA.tables.served_text_versions).toHaveLength(11);
+    expect(EXPECTED_SCHEMA.columns).toEqual({
+      segment_edits: [
+        'served_version_id',
+        'occurrence',
+        'origin',
+        'displayed_edit_id',
+        'displayed_edit_sha256',
+      ],
+      segment_acceptances: ['served_version_id', 'occurrence'],
+    });
+    expect(EXPECTED_SCHEMA.indexes).toEqual(['idx_served_text_versions_key']);
+  });
+
+  it('is deeply frozen', () => {
+    const levels = [
+      EXPECTED_SCHEMA,
+      EXPECTED_SCHEMA.tables,
+      EXPECTED_SCHEMA.columns,
+      EXPECTED_SCHEMA.indexes,
+      ...Object.values(EXPECTED_SCHEMA.tables),
+      ...Object.values(EXPECTED_SCHEMA.columns),
+    ];
+    expect(levels.every((o) => Object.isFrozen(o))).toBe(true);
+  });
+});
+
+describe('index.js wires it into /api/health', () => {
+  // The handler cannot be required in a unit test (startup.test.js says why), so the wiring is
+  // pinned against the source, as startup.test.js pins the request-timing mount.
+  const indexSource = readFileSync(join(__dirname, '..', 'index.js'), 'utf-8');
+
+  it('index.js wires it into /api/health', () => {
+    expect(indexSource).toContain("require('./lib/schemaHealth')");
+    expect(indexSource).toMatch(/checks\.schema\s*=/);
+    // The open-failure catch has checkSchema's own error shape.
+    expect(indexSource).toContain('checks.schema = { ok: false, missing: null, error:');
+  });
+});

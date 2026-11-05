@@ -30,6 +30,7 @@ const segmentParser = require('../services/segmentParser');
 const mtLock = require('../../tools/lib/mt-lock.cjs');
 const { createSegmentEditsSchema } = require('./helpers/segmentEditsSchema.cjs');
 const migration043 = require('../migrations/043-segment-acceptances');
+const migration053 = require('../migrations/053-served-text-versions');
 
 const BOOK = 'accbook';
 const MODULE = 'm00001';
@@ -44,6 +45,7 @@ beforeAll(() => {
   db.pragma('journal_mode = WAL');
   createSegmentEditsSchema(db);
   migration043.up(db);
+  migration053.up(db);
   acceptance._setTestDb(db);
   editorService._setTestDb(db);
 

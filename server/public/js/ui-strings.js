@@ -128,6 +128,43 @@ const UI = {
       'Ef vélþýðingin er rétt eins og hún er, notaðu „Staðfesta MT".\n\nHalda áfram?',
   },
 
+  // ── Refused saves (G1.1, spec §5.6, §5.7, §5.18; index decision 12) ──
+  // Wording approved by [USER] 2026-11-04 (index decision 13); draftNotice.refused, changed 2026-11-04, was approved
+  // as written in a later answer the same day (index § Answers, "Later answers").
+  refusal: {
+    textKept: 'Textinn sem þú skrifaðir var geymdur og birtist aftur í bútnum.',
+    generic: 'Vistun var hafnað.',
+    // An old page cannot show this: the server's own BASE_MISSING message must also ask for F5.
+    baseMissing:
+      'Vistun var hafnað því síðan er úr eldri útgáfu kerfisins. Textinn sem þú skrifaðir var ' +
+      'geymdur. Ýttu á F5 til að endurhlaða síðuna og vistaðu svo aftur.',
+  },
+  draftNotice: {
+    staleBase:
+      'Textinn sem þessi drög voru skrifuð við hefur breyst. Röðin sýnir nýja textann; gerðu ' +
+      'breytinguna aftur á honum og vistaðu.',
+    staleDisplayed:
+      'Breytingin sem birtist þegar þú skrifaðir hefur breyst síðan. Berðu textann þinn saman ' +
+      'við röðina og vistaðu aftur.',
+    baseMissing:
+      'Vistun var hafnað því hún kom frá eldri útgáfu síðunnar. Berðu textann saman við röðina ' +
+      'og vistaðu aftur.',
+    duplicateId:
+      'Ekki er hægt að vista þennan bút fyrr en lagfæring á tvíteknum auðkennum er komin (sama ' +
+      'auðkenni kemur tvisvar fyrir í einingunni). Textinn þinn er geymdur hér og verður ekki sendur.',
+    bookNotMinted: 'Ekki er hægt að vista breytingar í þessari bók. Textinn þinn er geymdur hér.',
+    noLayer:
+      'Engin íslensk útgáfa er til fyrir þessa einingu og því er ekki hægt að vista. Textinn ' +
+      'þinn er geymdur hér.',
+    // The generic notice: any parked replay with no refusal code of its own, a refusal (a 404, a conflict) or a
+    // replay that 5xx answers or network failures left with no retry (decision 28), so it says the save did not go
+    // through, not that it was refused.
+    refused:
+      'Vistun sem beið í biðröð tókst ekki. Textinn þinn er hér; berðu hann saman við röðina og ' +
+      'vistaðu aftur.',
+    discardKept: 'Henda geymda textanum? Hann glatast þá.',
+  },
+
   // ── Edit status labels ──────────────────────────────────────
   editStatus: {
     pending: 'Bíður',

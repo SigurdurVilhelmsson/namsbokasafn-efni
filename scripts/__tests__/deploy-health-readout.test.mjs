@@ -354,3 +354,126 @@ describe('scripts/deploy.sh health readout — glossary refusals (register C14, 
     expect(out.trim()).toMatch(/EXIT:0$/);
   });
 });
+
+/**
+ * checks.schema (G1.1, spec §5.20; PR1 review C18). A never-throw migration
+ * that fails (053 is the shape) warns once in the server journal and the
+ * server boots anyway, so the only routine surface that shows it is this
+ * readout. Naming `schema` as not ok without its `missing` list sent the
+ * operator to curl /api/health by hand to learn what was absent.
+ *
+ * ⚠️ The checks.schema values are produced by the REAL checkSchema, run on a
+ * real in-memory database, never typed here: a fixture that drifted from the
+ * producer's shape would pin a readout for a value the server never sends.
+ */
+describe('scripts/deploy.sh health readout — checks.schema (PR1 review C18)', () => {
+  const serverRequire = createRequire(path.join(REPO, 'server', 'index.js'));
+  const Database = serverRequire('better-sqlite3');
+  const { checkSchema } = serverRequire('./lib/schemaHealth');
+
+  /** checkSchema on a database the G1.1 migrations never touched. */
+  const missingSchema = () => {
+    const db = new Database(':memory:');
+    try {
+      return checkSchema(db);
+    } finally {
+      db.close();
+    }
+  };
+
+  /** checkSchema's own error shape: the read itself failed. */
+  const unreadableSchema = () => {
+    const db = new Database(':memory:');
+    db.close();
+    return checkSchema(db);
+  };
+
+  const REMEDY =
+    /^ {2}→ read the \[053\] warning in the server journal \(journalctl -u ritstjorn\), then restart \(sudo systemctl restart ritstjorn\); the migration re-attempts on every start$/m;
+
+  it('prints every missing schema name, in the producer’s order, and the remedy', () => {
+    const schema = missingSchema();
+    // The producer really reports names here; without this the assertions
+    // below could pass on an empty list.
+    expect(schema.ok).toBe(false);
+    expect(schema.missing.length).toBeGreaterThan(0);
+
+    const out = runReadout(JSON.stringify({ status: 'degraded', checks: { schema } }));
+    // The existing not-ok line is unchanged.
+    expect(out).toMatch(/^Health: degraded — not ok: schema$/m);
+    // The names, exactly as checks.schema carries them: nothing added, no count.
+    expect(out).toMatch(
+      new RegExp(
+        '^ {2}schema missing: ' +
+          schema.missing.join(', ').replace(/[.*+?^${}()|[\]\\]/g, '\\$&') +
+          '$',
+        'm'
+      )
+    );
+    expect(out).toMatch(REMEDY);
+    expect(out.trim().split('\n')).toHaveLength(3);
+  });
+
+  it('prints the error string when checkSchema could not read the database', () => {
+    const schema = unreadableSchema();
+    expect(schema).toMatchObject({ ok: false, missing: null });
+    expect(typeof schema.error).toBe('string');
+
+    const out = runReadout(JSON.stringify({ status: 'degraded', checks: { schema } }));
+    expect(out).toMatch(/^Health: degraded — not ok: schema$/m);
+    expect(out).toMatch(new RegExp('^ {2}schema could not be read: ' + schema.error + '$', 'm'));
+    expect(out).not.toMatch(/schema missing:/);
+    expect(out).toMatch(REMEDY);
+    expect(out.trim().split('\n')).toHaveLength(3);
+  });
+
+  it('prints the schema lines alongside the glossary readout, which stays unchanged', () => {
+    const out = runReadout(
+      JSON.stringify({
+        status: 'degraded',
+        checks: {
+          schema: missingSchema(),
+          glossary_export: {
+            ok: false,
+            ran: iso(1 * H),
+            stale_refusals: ['liffraedi-2e'],
+            books: { 'liffraedi-2e': { outcome: 'refused-shrink', since: iso(9 * D) } },
+          },
+        },
+      })
+    );
+    expect(out).toMatch(/^Health: degraded — not ok: schema, glossary_export$/m);
+    expect(out).toMatch(/^ {2}schema missing: /m);
+    expect(out).toMatch(REMEDY);
+    expect(out).toMatch(/^ {2}⚠ STALE liffraedi-2e: refused-shrink \(9\.0d\) — unattended/m);
+  });
+
+  // Controls: the readout for every other check, and for a healthy schema,
+  // is exactly what it was.
+  it('prints nothing more when checks.schema is ok', () => {
+    const out = runReadout(
+      JSON.stringify({ status: 'ok', checks: { schema: { ok: true, missing: [] } } })
+    );
+    expect(out.trim()).toBe('Health: ok');
+  });
+
+  it('prints only the not-ok line for another failing check, with no schema text', () => {
+    const out = runReadout(
+      JSON.stringify({
+        status: 'degraded',
+        checks: {
+          schema: { ok: true, missing: [] },
+          content_backup: { ok: false, last_status: 'error' },
+        },
+      })
+    );
+    expect(out.trim()).toBe('Health: degraded — not ok: content_backup');
+  });
+
+  it('prints nothing more for a response with no checks.schema at all', () => {
+    const out = runReadout(
+      JSON.stringify({ status: 'degraded', checks: { offbox_backup: { ok: false } } })
+    );
+    expect(out.trim()).toBe('Health: degraded — not ok: offbox_backup');
+  });
+});

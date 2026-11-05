@@ -31,6 +31,7 @@ const pipelineStatusService = require('../services/pipelineStatusService');
 const { createSegmentEditsSchema } = require('./helpers/segmentEditsSchema.cjs');
 const migration042 = require('../migrations/042-content-versions-track');
 const migration043 = require('../migrations/043-segment-acceptances');
+const migration053 = require('../migrations/053-served-text-versions');
 
 const BOOK = 'accapplybook';
 const MODULE = 'm00001';
@@ -63,6 +64,7 @@ beforeAll(() => {
   `);
   migration042.up(db);
   migration043.up(db);
+  migration053.up(db);
   service._setTestDb(db);
   acceptance._setTestDb(db);
 

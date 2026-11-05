@@ -32,7 +32,9 @@ test.describe('MT acceptance', () => {
     expect(before).toBeGreaterThan(0);
 
     // Accept the LAST unhandled row (other specs edit early rows of m68664)
+    const posted = page.waitForRequest((r) => r.url().endsWith('/accept') && r.method() === 'POST');
     await acceptButtons.last().click();
+    expect((await posted).postDataJSON().acceptOrigin).toBe('single');
 
     await expect(page.locator('#segments-body .edit-status.accepted').first()).toBeVisible({
       timeout: 10000,
@@ -55,7 +57,9 @@ test.describe('MT acceptance', () => {
     expect(await page.locator('#segments-body .btn-accept').count()).toBe(before);
 
     // Press 2: cursor row accepted, cursor advanced
+    const posted = page.waitForRequest((r) => r.url().endsWith('/accept') && r.method() === 'POST');
     await page.keyboard.press('Control+Shift+Enter');
+    expect((await posted).postDataJSON().acceptOrigin).toBe('keyboard-stream');
     await expect
       .poll(() => page.locator('#segments-body .btn-accept').count(), { timeout: 10000 })
       .toBe(before - 1);

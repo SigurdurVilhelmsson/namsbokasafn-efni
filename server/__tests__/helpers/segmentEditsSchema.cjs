@@ -1,8 +1,11 @@
 /**
- * Canonical segment_edits schema for test fixtures — POST-migration-039 shape.
+ * Canonical segment_edits schema for test fixtures — POST-migration-039 shape,
+ * plus the columns migration 053 (053-served-text-versions.js) adds.
  *
  * Keep in lockstep with server/migrations/039-segment-edit-exit-path.js
- * (same columns, same CHECK, same indexes). The pre-039 fixtures hand-rolled
+ * (same columns, same CHECK, same indexes) and every later migration that adds
+ * a column; segmentEditsSchemaDrift.test.js fails when a column, its type, its
+ * NOT NULL or its key drifts from the migrated table. The pre-039 fixtures hand-rolled
  * this DDL and silently omitted the table-level UNIQUE constraint — which is
  * exactly why the transition-collision bug class (stranded discuss/rejected
  * rows) never showed in the suite. Fixtures must enforce what production
@@ -33,10 +36,18 @@ function createSegmentEditsSchema(db) {
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       reviewed_at DATETIME,
       applied_at DATETIME,
-      -- No REFERENCES module_reviews(id): most fixtures don't create
-      -- module_reviews, and better-sqlite3 leaves foreign_keys off, so the
-      -- reference is inert in tests anyway — a simplification, not drift.
-      review_id INTEGER
+      -- No REFERENCES on review_id or served_version_id: most fixtures create
+      -- neither module_reviews nor served_text_versions, and with foreign keys
+      -- ON a reference to a missing table makes any non-NULL insert fail with
+      -- "no such table". The drift guard (segmentEditsSchemaDrift.test.js)
+      -- compares name, type, NOT NULL and key, which a REFERENCES clause does
+      -- not change.
+      review_id INTEGER,
+      served_version_id INTEGER,
+      occurrence INTEGER,
+      origin TEXT,
+      displayed_edit_id INTEGER,
+      displayed_edit_sha256 TEXT
     );
 
     CREATE UNIQUE INDEX idx_segment_edits_one_pending

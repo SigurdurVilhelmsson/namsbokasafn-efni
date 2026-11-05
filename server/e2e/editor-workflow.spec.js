@@ -72,6 +72,7 @@ test.describe.serial('Editor workflow', () => {
         originalContent: picked.originalContent,
         editedContent: uniqueText,
         category: 'accuracy',
+        baseSha256: picked.baseSha256,
       },
     });
 

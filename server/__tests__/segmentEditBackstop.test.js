@@ -36,6 +36,21 @@
  * Cases 4/5 (valid save, unknown-id 404) use the real committed
  * `__e2e-fixture__` / m68664, following mtLockOnFirstEdit's lock-cleanup
  * idiom.
+ *
+ * G1.1 (spec §5.6; plan Task 14): the guard named above moved out of the route
+ * into `servedEdit.saveOnServedBase` (index decision 16), where the identity
+ * condition reads `editedContent !== seg.is`; the route delegates to it, so
+ * these cases still drive it through the real route. The route also requires
+ * the served base hash.
+ * Every body that must get past the hash check (cases 1–4) carries the
+ * `baseSha256` a module load served for that segment, taken from the real GET
+ * handler as the page takes it. `originalContent` is still posted by cases
+ * 1–3 but the server no longer reads it (it stores its own base), so case 2
+ * now proves the server never reads it at all. Cases 5 and 6 send no hash:
+ * placement (404) and `checkEditConflict` (409) answer before the hash check.
+ * Case 7 pins the refusal of a body with no hash (an old page's) and its
+ * control, on a third synthetic segment, so its save writes no lock under
+ * books/.
  */
 import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'fs';
 import { tmpdir } from 'os';
@@ -57,11 +72,12 @@ const REAL_CHAPTER = 1;
 const REAL_MODULE = 'm68664';
 
 let handler;
+let getHandler;
 let db;
 let segmentParser;
 let segmentEditor;
 
-function invoke(req) {
+function invoke(req, h = handler) {
   return new Promise((resolve) => {
     const res = {
       statusCode: 200,
@@ -73,8 +89,29 @@ function invoke(req) {
         resolve({ status: this.statusCode, body });
       },
     };
-    handler(req, res);
+    h(req, res);
   });
+}
+
+/**
+ * The `baseSha256` the module GET serves for one segment: the echo comes from a
+ * module load, as the page's does (G1.1, spec §5.4 step 6, §5.6).
+ */
+async function servedBase(book, chapter, moduleId, segmentId) {
+  const { status, body } = await invoke(
+    {
+      params: { book, chapter: String(chapter), moduleId },
+      chapterNum: chapter,
+      user: { id: 'u-test', username: 'prufa', role: 'editor', books: [book] },
+    },
+    getHandler
+  );
+  if (status !== 200) throw new Error(`module GET ${book}/${chapter}/${moduleId} → ${status}`);
+  const seg = body.segments.find((s) => s.segmentId === segmentId);
+  if (!seg || !/^[0-9a-f]{64}$/.test(seg.baseSha256 || '')) {
+    throw new Error(`no served baseSha256 for ${segmentId}`);
+  }
+  return seg.baseSha256;
 }
 
 function countRows(book, moduleId, segmentId) {
@@ -106,6 +143,10 @@ beforeAll(() => {
     (l) => l.route && l.route.path === '/:book/:chapter/:moduleId/edit' && l.route.methods.post
   );
   handler = layer.route.stack[layer.route.stack.length - 1].handle;
+  const getLayer = router.stack.find(
+    (l) => l.route && l.route.path === '/:book/:chapter/:moduleId' && l.route.methods.get
+  );
+  getHandler = getLayer.route.stack[getLayer.route.stack.length - 1].handle;
 });
 
 // ─── Cases 1/2: marker-bearing SYNTHETIC module (real fixture has none) ──
@@ -132,6 +173,13 @@ describe('POST /edit — blocked structural violations (synthetic marker fixture
   const EN_2 = 'Formula [[MATH:2]] here.';
   const DEGRADED_IS = 'Formúla hér.';
 
+  // Third segment, case 7's (G1.1): no marker, so the backstop passes and the
+  // hash check alone decides. Under this describe's temp root, so its save
+  // writes no lock under books/.
+  const SYN_SEGMENT_ID_3 = `${SYN_MODULE}:para:fs-id3`;
+  const EN_3 = 'Plain text three.';
+  const IS_3 = 'Venjulegur texti þrjú.';
+
   let realBooksDir;
   let synRoot;
 
@@ -143,11 +191,13 @@ describe('POST /edit — blocked structural violations (synthetic marker fixture
     mkdirSync(path.join(bookDir, '02-mt-output', 'ch01'), { recursive: true });
     writeFileSync(
       path.join(bookDir, '02-for-mt', 'ch01', `${SYN_MODULE}-segments.en.md`),
-      `<!-- SEG:${SYN_SEGMENT_ID} -->\n${EN}\n\n<!-- SEG:${SYN_SEGMENT_ID_2} -->\n${EN_2}\n`
+      `<!-- SEG:${SYN_SEGMENT_ID} -->\n${EN}\n\n<!-- SEG:${SYN_SEGMENT_ID_2} -->\n${EN_2}\n` +
+        `\n<!-- SEG:${SYN_SEGMENT_ID_3} -->\n${EN_3}\n`
     );
     writeFileSync(
       path.join(bookDir, '02-mt-output', 'ch01', `${SYN_MODULE}-segments.is.md`),
-      `<!-- SEG:${SYN_SEGMENT_ID} -->\n${ORIG_IS}\n\n<!-- SEG:${SYN_SEGMENT_ID_2} -->\n${DEGRADED_IS}\n`
+      `<!-- SEG:${SYN_SEGMENT_ID} -->\n${ORIG_IS}\n\n<!-- SEG:${SYN_SEGMENT_ID_2} -->\n${DEGRADED_IS}\n` +
+        `\n<!-- SEG:${SYN_SEGMENT_ID_3} -->\n${IS_3}\n`
     );
     segmentParser._setTestBooksDir(synRoot);
 
@@ -157,6 +207,7 @@ describe('POST /edit — blocked structural violations (synthetic marker fixture
     const data = segmentParser.loadModuleForEditing(SYN_BOOK, 1, SYN_MODULE);
     const seg = data.segments.find((s) => s.segmentId === SYN_SEGMENT_ID);
     const seg2 = data.segments.find((s) => s.segmentId === SYN_SEGMENT_ID_2);
+    const seg3 = data.segments.find((s) => s.segmentId === SYN_SEGMENT_ID_3);
     if (!seg || !seg.en.includes('[[MATH:1]]') || !seg.is.includes('[[MATH:1]]')) {
       throw new Error(
         'Synthetic backstop fixture did not survive segmentParser.loadModuleForEditing — aborting test setup.'
@@ -167,6 +218,11 @@ describe('POST /edit — blocked structural violations (synthetic marker fixture
         'Synthetic degraded-baseline fixture did not survive segmentParser.loadModuleForEditing as expected — aborting test setup.'
       );
     }
+    if (!seg3 || seg3.en !== EN_3 || seg3.is !== IS_3) {
+      throw new Error(
+        'Synthetic third segment did not survive segmentParser.loadModuleForEditing — aborting test setup.'
+      );
+    }
   });
 
   afterAll(() => {
@@ -174,6 +230,7 @@ describe('POST /edit — blocked structural violations (synthetic marker fixture
     rmSync(synRoot, { recursive: true, force: true });
     deleteRows(SYN_BOOK, SYN_MODULE, SYN_SEGMENT_ID);
     deleteRows(SYN_BOOK, SYN_MODULE, SYN_SEGMENT_ID_2);
+    deleteRows(SYN_BOOK, SYN_MODULE, SYN_SEGMENT_ID_3);
   });
 
   it('case 1: a real structural violation is rejected with 400 + code, no row saved', async () => {
@@ -186,6 +243,7 @@ describe('POST /edit — blocked structural violations (synthetic marker fixture
         originalContent: ORIG_IS,
         editedContent: STRIPPED_IS,
         category: 'accuracy',
+        baseSha256: await servedBase(SYN_BOOK, 1, SYN_MODULE, SYN_SEGMENT_ID),
       },
     };
     const { status, body } = await invoke(req);
@@ -211,6 +269,7 @@ describe('POST /edit — blocked structural violations (synthetic marker fixture
         originalContent: STRIPPED_IS,
         editedContent: STRIPPED_IS,
         category: 'accuracy',
+        baseSha256: await servedBase(SYN_BOOK, 1, SYN_MODULE, SYN_SEGMENT_ID),
       },
     };
     const { status, body } = await invoke(req);
@@ -237,6 +296,7 @@ describe('POST /edit — blocked structural violations (synthetic marker fixture
         originalContent: DEGRADED_IS,
         editedContent: DEGRADED_IS,
         category: 'accuracy',
+        baseSha256: await servedBase(SYN_BOOK, 1, SYN_MODULE, SYN_SEGMENT_ID_2),
       },
     };
     const { status } = await invoke(req);
@@ -284,6 +344,59 @@ describe('POST /edit — blocked structural violations (synthetic marker fixture
     // Only the seeded row exists — the conflict was caught before any save attempt.
     expect(countRows(SYN_BOOK, SYN_MODULE, SYN_SEGMENT_ID)).toBe(1);
   });
+
+  it('case 7: a save with no baseSha256 is refused 409 BASE_MISSING, never let through (spec §5.6)', async () => {
+    // The rows, by value (spec §10), through the second connection, as countRows reads them.
+    const rowsFor = () =>
+      db
+        .prepare(`SELECT * FROM segment_edits WHERE segment_id = ? ORDER BY id`)
+        .all(SYN_SEGMENT_ID_3);
+    const reqWith = (extra) => ({
+      params: { book: SYN_BOOK, chapter: '1', moduleId: SYN_MODULE },
+      chapterNum: 1,
+      user: { id: 'u-test', username: 'prufa', role: 'editor', books: [SYN_BOOK] },
+      body: {
+        segmentId: SYN_SEGMENT_ID_3,
+        originalContent: IS_3,
+        editedContent: `${IS_3} breytt`,
+        category: 'accuracy',
+        ...extra,
+      },
+    });
+
+    const before = rowsFor();
+    const { status, body } = await invoke(reqWith({}));
+    expect(status).toBe(409);
+    expect(body.error).toBe('BASE_MISSING');
+    expect(body.message).toMatch(/F5/);
+    // decision 20: the steps come in this order, all before F5. The tokens are the approved
+    // wording's; if the message is ever reworded, they change with it here and in servedEdit.
+    const m = body.message;
+    const steps = [
+      'Opnum klippispjöldum verður lokað. Viltu halda áfram?', // the old page's closePanels question, quoted
+      'Hætta við (Cancel)', // answered in that dialog
+      // [USER] 2026-11-04, after the PR1 review (C6): the old page asks that question up to three
+      // times (its reload, then the terms and repetitions refreshes), and OK at any of them loses
+      // the text, so the message says to answer Hætta við every time it appears.
+      'í hvert sinn sem hún birtist',
+      'ekki hnappinn Hætta við', // the pane's own button, named as the wrong one
+      'afrita', // copying comes only after the Cancel
+      'F5', // the reload comes last
+    ];
+    const at = steps.map((s) => m.indexOf(s));
+    expect(steps.filter((s, i) => at[i] < 0)).toEqual([]); // all present: no -1 reaches the order check
+    expect(at).toEqual([...at].sort((a, b) => a - b)); // and in that order
+    expect(rowsFor()).toEqual(before);
+
+    // Control: the same body with the hash a module load served is saved.
+    const ok = await invoke(
+      reqWith({ baseSha256: await servedBase(SYN_BOOK, 1, SYN_MODULE, SYN_SEGMENT_ID_3) })
+    );
+    expect(ok.status).toBe(200);
+    const after = rowsFor();
+    expect(after).toHaveLength(1);
+    expect(after[0].edited_content).toBe(`${IS_3} breytt`);
+  });
 });
 
 // ─── Cases 4/5: real committed fixture (valid save / 404) ──
@@ -328,6 +441,7 @@ describe('POST /edit — non-blocked paths (real __e2e-fixture__)', () => {
         originalContent: baselineIs,
         editedContent: edited,
         category: 'accuracy',
+        baseSha256: await servedBase(REAL_BOOK, REAL_CHAPTER, REAL_MODULE, segmentId),
       },
     };
     const { status, body } = await invoke(req);

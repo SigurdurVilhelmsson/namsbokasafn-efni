@@ -152,10 +152,33 @@ test.describe('Editor lifecycle', () => {
   test('network failure triggers retry with toast', async ({ page }) => {
     moduleId = await navigateToFirstModule(page);
 
+    const editRow = page
+      .locator('#segments-body tr')
+      .filter({ has: page.locator('button.btn-edit') })
+      .first();
+    const segId = await editRow.getAttribute('data-segment-id');
+    const mod = await (
+      await page.request.get(`/api/segment-editor/${BOOK}/${CHAPTER}/${moduleId}`)
+    ).json();
+    const latest = (mod.edits[segId] || [])[0];
+    const inFlight =
+      !!latest &&
+      (latest.status === 'pending' || (latest.status === 'approved' && !latest.applied_at));
+    // Control: Test 2 saved test-admin's pending SMOKE edit on this first editable row and Test 3 asserted it, so
+    // the row shows an in-flight edit. Without this, a row showing the base would let the T4 assertions below
+    // pass on null/null and never test the in-flight half.
+    expect(inFlight).toBe(true);
+    expect(latest.contentSha256).toMatch(/^[0-9a-f]{64}$/);
+    // T4 (client half): the row renders the pair the module response gave that edit.
+    await expect(editRow).toHaveAttribute('data-displayed-edit-id', String(latest.id));
+    await expect(editRow).toHaveAttribute('data-displayed-edit-sha256', latest.contentSha256);
+    const bodies = [];
+
     // Intercept POST to edit endpoint — abort first 2 attempts
     let interceptCount = 0;
     await page.route('**/edit', async (route) => {
       if (route.request().method() === 'POST') {
+        bodies.push(route.request().postDataJSON());
         interceptCount++;
         if (interceptCount <= 2) {
           await route.abort('connectionfailed');
@@ -193,6 +216,20 @@ test.describe('Editor lifecycle', () => {
 
     // We should have intercepted at least 2 failed + 1 success = 3 total
     expect(interceptCount).toBeGreaterThanOrEqual(3);
+    // §5.9: the replays carry the live attempt's base and action id, marked replayed.
+    expect(bodies[0].baseSha256).toMatch(/^[0-9a-f]{64}$/);
+    expect('replayed' in bodies[0]).toBe(false);
+    for (const b of bodies.slice(1)) {
+      expect(b.replayed).toBe(true);
+      expect(b.baseSha256).toBe(bodies[0].baseSha256);
+      expect(b.clientActionId).toBe(bodies[0].clientActionId);
+    }
+    // T4 (client half): the save echoes the in-flight edit the row rendered (the null/null arm is the base-displayed
+    // control in served-base-client.spec.js's first test).
+    expect([bodies[0].displayedEditId, bodies[0].displayedEditSha256]).toEqual([
+      latest.id,
+      latest.contentSha256,
+    ]);
   });
 
   // ------------------------------------------------------------------
@@ -281,6 +318,27 @@ test.describe('Editor lifecycle', () => {
     }, draftMarker);
 
     expect(hasDraft).toBe(true);
+    // §5.18: version 2, keeping the base the text was typed on, plus the mirror a pre-deploy page reads.
+    const segId = await page
+      .locator('#segments-body tr')
+      .filter({ has: page.locator('.edit-panel.active') })
+      .first()
+      .getAttribute('data-segment-id');
+    const rowBase = await page
+      .locator(`#segments-body tr[data-segment-id="${segId}"]`)
+      .getAttribute('data-base-sha256');
+    const stored = await page.evaluate(() => {
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith('seg-draft:')) return JSON.parse(localStorage.getItem(key));
+      }
+      return null;
+    });
+    expect(rowBase).toMatch(/^[0-9a-f]{64}$/);
+    expect(stored.v).toBe(2);
+    expect(stored.segments[segId].text).toBe(draftMarker);
+    expect(stored.segments[segId].baseSha256).toBe(rowBase);
+    expect(stored.drafts[segId]).toBe(draftMarker);
   });
 
   // ------------------------------------------------------------------
@@ -289,64 +347,83 @@ test.describe('Editor lifecycle', () => {
   test('draft recovery on reload', async ({ page }) => {
     moduleId = await navigateToFirstModule(page);
 
-    // Inject a fake draft into localStorage directly
+    // Today's format, as a page loaded before the G1.1 deploy wrote it (§5.18), on the
+    // first row's REAL id (data-segment-id; no reversing of cssId).
     const draftMarker = `RECOVERY-TEST-${Date.now()}`;
-    await page.evaluate(
-      ({ book, chapter, mid, marker }) => {
-        // Get the first segment ID from the loaded data
-        const firstRow = document.querySelector('#segments-body tr');
-        const segId = firstRow?.id?.replace('row-', '') || 'unknown';
+    const segId = await page.locator('#segments-body tr').first().getAttribute('data-segment-id');
+    expect(segId).toBeTruthy();
+    // Accept the recovery confirm and any validation prompt; DECLINE closePanels. restoreDraft runs inside
+    // loadModule before its background loads (loadTermData, loadRepetitions), and each of those re-renders and
+    // asks closePanels while the restored pane is dirty: accepting it would close the pane before Vista is clicked.
+    page.on('dialog', (d) =>
+      d.message().startsWith('Opnum klippispjöldum') ? d.dismiss() : d.accept()
+    ); // UI.confirm.closePanels, ui-strings.js:50
 
-        // Build the draft key (must match the app's draftPrefix pattern)
-        // draftKey = 'seg-draft:' + book + '/' + chapter + '/' + moduleId + ':' + tabGuard.tabId
-        // We use a fake tabId since we'll use findNewestDraft which looks by prefix
-        const key = `seg-draft:${book}/${chapter}/${mid}:fake-e2e-tab`;
-        const draft = {
-          ts: Date.now(),
-          drafts: { [segId.replace(/_/g, ':')]: marker },
-        };
-        localStorage.setItem(key, JSON.stringify(draft));
-      },
-      { book: BOOK, chapter: CHAPTER, mid: moduleId, marker: draftMarker }
-    );
-
-    // Set up dialog handler to accept the recovery prompt
-    page.on('dialog', async (dialog) => {
-      if (dialog.type() === 'confirm') {
-        await dialog.accept();
-      }
-    });
-
-    // Go back to selector
+    // Back to the selector and into the module again (unchanged from today's Test 7).
     await page.locator('#btn-back').click();
     await expect(page.locator('#module-selector')).toBeVisible({ timeout: 5000 });
-
-    // Re-navigate to the same module (MODULE = m68664, matching navigateToFirstModule)
+    // The draft is written AFTER Back: the Back handler's clearDraft() removes every draft under the
+    // module's prefix, so one written before it never reaches restoreDraft (measured: no pane opened).
+    await page.evaluate(
+      ({ book, chapter, mid, sid, marker }) => {
+        localStorage.setItem(
+          `seg-draft:${book}/${chapter}/${mid}:fake-e2e-tab`,
+          JSON.stringify({ ts: Date.now(), drafts: { [sid]: marker } })
+        );
+      },
+      { book: BOOK, chapter: CHAPTER, mid: moduleId, sid: segId, marker: draftMarker }
+    );
     await page.locator('#book-select').selectOption(BOOK);
     const chapterSelect = page.locator('#chapter-select');
     await expect(chapterSelect).toBeEnabled({ timeout: 5000 });
     await chapterSelect.selectOption(CHAPTER);
+    // Wait for the chapter's cards before choosing one (as navigateToFirstModule does): counted at once,
+    // the pinned card is not there yet and the fallback opens another module (measured: m68663).
+    await expect(page.locator('.module-card').first()).toBeVisible({ timeout: 10000 });
     const targetCard = page.locator(`.module-card[title^="${MODULE}"]`).first();
-    const cardExists = await targetCard.count();
-    const moduleCard = cardExists > 0 ? targetCard : page.locator('.module-card').first();
+    const moduleCard =
+      (await targetCard.count()) > 0 ? targetCard : page.locator('.module-card').first();
     await expect(moduleCard).toBeVisible({ timeout: 10000 });
     await moduleCard.click();
     await expect(page.locator('#editor-container')).toBeVisible({ timeout: 10000 });
-    await expect(page.locator('#segments-body tr').first()).toBeVisible({ timeout: 10000 });
 
-    // After recovery, an edit panel should be open with our draft text
-    const activePanels = page.locator('.edit-panel.active');
-    const panelCount = await activePanels.count();
+    // The legacy draft is restored into that segment's pane, unconditionally.
+    const panel = page.locator(`#segments-body tr[data-segment-id="${segId}"] .edit-panel.active`);
+    await expect(panel).toHaveCount(1);
+    await expect(panel.locator('textarea')).toHaveValue(draftMarker);
 
-    // If recovery worked, at least one panel should be open
-    // (The confirm dialog acceptance triggers restoreDraft)
-    if (panelCount > 0) {
-      const textarea = activePanels.first().locator('textarea');
-      const value = await textarea.inputValue();
-      expect(value).toContain(draftMarker);
-    }
-    // If no panels opened, the draft may have been for a segment ID format
-    // that didn't match. That's OK — we still verified the dialog flow.
+    // The next save carries the restore as an unverified, legacy, whole-text item. Stubbed: nothing written. The
+    // route is AWAITED before the click, so the POST cannot reach the real server first.
+    let resolvePosted;
+    const posted = new Promise((r) => (resolvePosted = r));
+    await page.route(
+      '**/edit',
+      async (route) => {
+        resolvePosted(route.request().postDataJSON());
+        await route.fulfill({
+          status: 200,
+          contentType: 'application/json',
+          body: JSON.stringify({
+            success: true,
+            editId: 1,
+            updated: true,
+            termWarnings: [],
+            qaFindings: [],
+          }),
+        });
+      },
+      { times: 1 }
+    );
+    await panel.locator('button.btn-primary').click();
+    expect((await posted).assists).toEqual([
+      {
+        itemType: 'draft-restore',
+        source: null,
+        clientTimeMs: expect.any(Number),
+        claim: 'unverified',
+        detail: { legacy: true, text: draftMarker },
+      },
+    ]);
   });
 
   // ------------------------------------------------------------------

@@ -25,6 +25,7 @@ const segmentParser = require('../services/segmentParser');
 const { createSegmentEditsSchema } = require('./helpers/segmentEditsSchema.cjs');
 const migration042 = require('../migrations/042-content-versions-track');
 const migration043 = require('../migrations/043-segment-acceptances');
+const migration053 = require('../migrations/053-served-text-versions');
 
 // Store original BOOKS_DIR to restore after tests
 const originalBooksDir = segmentParser.BOOKS_DIR;
@@ -98,6 +99,7 @@ function createTestDb() {
   // its own connection inside both save transactions — the test DB needs the
   // segment_acceptances table or that call throws "no such table".
   migration043.up(db);
+  migration053.up(db);
 
   return db;
 }

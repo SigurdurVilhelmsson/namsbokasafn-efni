@@ -11,6 +11,18 @@
  * segment is far worse than one not attached, so a miss is reported and
  * skipped, never guessed.
  *
+ * It refuses a book in the research study (server/lib/researchScope.js), in a
+ * dry run too, before planning and before any database is opened: that book's
+ * edits are written only through servedEdit.saveOnServedBase, which records the
+ * served base each edit was made on, and this script cannot (G1.1, spec §5.6).
+ *
+ * It refuses a book that is never minted (server/lib/servedText.js) the same
+ * way, with its own code: that book is not translated, and every write to it
+ * is refused (CLAUDE.md § Organic; spec §5.4, §11).
+ *
+ * Both refusals exit 6. The C16 runbook's exit-code table (Appendix A,
+ * Step A-2) owns what every code means; this header does not restate it.
+ *
  *   node scripts/reattach-segment-edits.js --snapshot <path> [--db]
  */
 import fs from 'fs';
@@ -33,6 +45,17 @@ const REPO_ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 // import export-segment-edits.js uses, so the snapshot and the re-attach
 // agree on where to look.
 const { chapterDir } = require(path.join(REPO_ROOT, 'server', 'lib', 'chapterLabel.js'));
+// The study book's edits are written only through servedEdit.saveOnServedBase, which records the
+// served base each edit was made on (spec §5.6). This script matches by id and calls
+// saveSegmentEdit directly, so it refuses the study book, in a dry run too, before planning (index
+// decision 7). Re-attach by content (10-10 plan 4.2) is the route for that book. researchScope.js
+// requires nothing, so loading it here opens no database.
+const { isStudyBook } = require(path.join(REPO_ROOT, 'server', 'lib', 'researchScope.js'));
+// A book that is never minted (Organic Chemistry, not translated: CLAUDE.md § Organic) refuses
+// every write, in every other writer, so this script refuses it too, at the same points as the
+// study book (PR1 review C16). servedText.js requires only node's crypto, so loading it here opens
+// no database either.
+const { isNotMintedBook } = require(path.join(REPO_ROOT, 'server', 'lib', 'servedText.js'));
 
 function readNewMt(booksDir, book, chapter, moduleId) {
   const file = path.join(
@@ -55,7 +78,58 @@ function readNewMt(booksDir, book, chapter, moduleId) {
   return map;
 }
 
+/** Every book a snapshot (its top-level `book` or any row's) or a list of rows names. */
+function booksNamedBy(snapshotOrRows) {
+  const rows = Array.isArray(snapshotOrRows) ? snapshotOrRows : snapshotOrRows.edits || [];
+  return [...new Set([snapshotOrRows.book, ...rows.map((r) => r.book)].filter(Boolean))];
+}
+
+/**
+ * Throws `STUDY_BOOK` when a snapshot (its top-level `book` or any row's) or a
+ * list of rows names a book in the research study. The list is read from
+ * server/lib/researchScope.js and never restated here.
+ *
+ * @param {{book?: string, edits?: object[]} | object[]} snapshotOrRows
+ */
+export function refuseStudyBook(snapshotOrRows) {
+  const study = booksNamedBy(snapshotOrRows).filter((b) => isStudyBook(b));
+  if (study.length) {
+    throw Object.assign(
+      new Error(
+        `STUDY_BOOK: REFUSING — ${study.join(', ')} is in the research study (server/lib/researchScope.js). ` +
+          'Its segment edits are written only through servedEdit.saveOnServedBase, which records the served ' +
+          'base; this id-based script cannot. Use re-attach by content (10-10 plan 4.2).'
+      ),
+      { code: 'STUDY_BOOK' }
+    );
+  }
+}
+
+/**
+ * Throws `BOOK_NOT_MINTED` when a snapshot (its top-level `book` or any row's)
+ * or a list of rows names a book that is never minted. The list is read from
+ * server/lib/servedText.js and never restated here.
+ *
+ * @param {{book?: string, edits?: object[]} | object[]} snapshotOrRows
+ */
+export function refuseNotMintedBook(snapshotOrRows) {
+  const notMinted = booksNamedBy(snapshotOrRows).filter((b) => isNotMintedBook(b));
+  if (notMinted.length) {
+    throw Object.assign(
+      new Error(
+        `BOOK_NOT_MINTED: REFUSING — ${notMinted.join(', ')} is never minted (server/lib/servedText.js). ` +
+          'It is not translated and every write to it is refused (CLAUDE.md § Organic), so there is ' +
+          'nothing to re-attach.'
+      ),
+      { code: 'BOOK_NOT_MINTED' }
+    );
+  }
+}
+
 export function planReattach({ snapshot, booksDir }) {
+  // First, before any file is read (index decision 7; PR1 review C16).
+  refuseStudyBook(snapshot);
+  refuseNotMintedBook(snapshot);
   const plan = {
     restore: [],
     converged: [],
@@ -173,6 +247,10 @@ export function formatReport(plan) {
  * @returns {{inserted: number, updated: number, reverted: number}}
  */
 export function applyReattach({ plan, saveSegmentEdit }) {
+  // Pre-flight, first: applyReattach is exported and must not depend on a caller
+  // having run planReattach's refusal (index decision 7).
+  refuseStudyBook(plan.restore.map((item) => item.row));
+  refuseNotMintedBook(plan.restore.map((item) => item.row));
   // Pre-flight, before a single write: two restorable rows on one
   // saveSegmentEdit key would collapse into one row — the second call takes the
   // UPDATE branch and overwrites the first row's text. Refuse the whole run.
@@ -208,30 +286,29 @@ export function applyReattach({ plan, saveSegmentEdit }) {
   // saveSegmentEdit's own transaction (supersede sweep + INSERT commit
   // together), and run-level safety comes from repeatability: a re-run after a
   // partial failure finds the pending row it already wrote and updates it in
-  // place, so it converges instead of duplicating. Wrapping the loop would
-  // need a second connection — segmentEditorService exposes no accessor for
-  // the one it uses — which would not cover these writes and could lock
-  // against them.
+  // place, so it converges instead of duplicating. segmentEditorService now
+  // exports getDb (G1.1, for the served-version mint), so an outer transaction
+  // on the same connection is possible; a per-row transaction stays the design,
+  // because a re-run converges and a one-way migration is safer resumable.
   // Counted apart because they mean different things to an operator: `inserted`
   // is restored work, `updated` means the row was already there — the normal
   // shape of a re-run, and a surprise on a first run. A single "written" total
   // reported a repeat as fresh work.
-  // `updatedKeys` carries identity, not just a count: an UPDATE-branch write is
-  // exactly where spec §7's "originalContent = the new MT" silently fails, and
-  // the runbook has the operator warn those editors. A bare counter leaves them
-  // writing sqlite3 by hand, mid-migration, on the page that warns a mistyped
-  // sqlite3 path creates a database.
+  // `updatedKeys` carries identity, not just a count: an UPDATE-branch write
+  // replaced a pending text the editor already had, and the runbook has the
+  // operator tell those editors. A bare counter leaves them writing sqlite3 by
+  // hand, mid-migration, on the page that warns a mistyped sqlite3 path
+  // creates a database.
   const tally = { inserted: 0, updated: 0, reverted: 0, updatedKeys: [] };
   try {
     for (const item of plan.restore) {
       const { row, newMt, editorNote } = item;
-      // originalContent MUST be the new MT (spec §7). On the INSERT branch it
-      // is. It is NOT on saveSegmentEdit's UPDATE branch, which never writes
-      // original_content — so this depends on no pending row existing for the
-      // key when the run starts. Runbook Step 4a is what guarantees that (it
-      // supersedes the pre-break rows first); the dependency lives there, not
-      // here. Running this script outside the runbook, against a DB that still
-      // holds pending rows for these keys, silently keeps the OLD MT.
+      // originalContent MUST be the new MT (spec §7). Both of saveSegmentEdit's
+      // branches now write it as original_content (since G1.1, whose re-save
+      // UPDATE moves the base record), so runbook Step A-1's guarantee (no
+      // pending row for the key when the run starts) is no longer what keeps
+      // the base right. It still decides the branch, and so whether the row is
+      // counted as inserted or updated (the runbook's Step A-2 gate).
       const res = saveSegmentEdit({
         book: row.book,
         chapter: row.chapter,
@@ -273,52 +350,64 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   // migration script — so the CLI's exit codes can be driven from a temp tree
   // instead of the committed one. Production never sets it.
   const booksDir = process.env.BOOKS_ROOT_OVERRIDE || path.join(REPO_ROOT, 'books');
-  const plan = planReattach({ snapshot, booksDir });
-  console.log(formatReport(plan));
+  // The study-book and not-minted refusals come before any planning output and
+  // before the --db branch can open a database. Exit 6, not a bare re-throw: an
+  // uncaught throw exits 1, which the runbook's gate table reads as "proceed".
+  let plan = null;
+  try {
+    plan = planReattach({ snapshot, booksDir });
+  } catch (err) {
+    if (err.code !== 'STUDY_BOOK' && err.code !== 'BOOK_NOT_MINTED') throw err;
+    console.error(err.message);
+    process.exitCode = 6; // never process.exit() with output in flight (CLAUDE.md § Commands)
+  }
+  if (plan) {
+    console.log(formatReport(plan));
 
-  // A fatal code stops the run in BOTH modes: a dry run that reported success
-  // where the apply refuses would be a rehearsal that lies.
-  const code = decideExitCode(plan);
-  if (code === 2 || code === 3 || code === 4) process.exit(code);
-  if (!argv.includes('--db')) {
-    console.log('\nDRY RUN — nothing written. Re-run with --db to apply.');
+    // A fatal code stops the run in BOTH modes: a dry run that reported success
+    // where the apply refuses would be a rehearsal that lies.
+    const code = decideExitCode(plan);
+    if (code === 2 || code === 3 || code === 4) process.exit(code);
+    if (!argv.includes('--db')) {
+      console.log('\nDRY RUN — nothing written. Re-run with --db to apply.');
+      process.exit(code);
+    }
+    const { saveSegmentEdit } = require(
+      path.join(REPO_ROOT, 'server', 'services', 'segmentEditorService.js')
+    );
+    let res;
+    try {
+      res = applyReattach({ plan, saveSegmentEdit });
+    } catch (err) {
+      // Print the partial tally before dying: mid-migration, how far the run got
+      // is the first thing the operator needs.
+      if (err.tally) {
+        console.error(
+          `\nABORTED after inserted=${err.tally.inserted} updated=${err.tally.updated} ` +
+            `withdrawn=${err.tally.reverted}.`
+        );
+      }
+      console.error(err.stack || String(err));
+      // Exit 5, NOT a bare re-throw. An uncaught throw exits 1 — the same code
+      // decideExitCode gives the survivable "unmatched rows exist" outcome, which
+      // the runbook's gate table reads as "Expected. Proceed." A half-applied
+      // one-way migration must never wear the proceed code: the operator would
+      // restart the server and tell editors their work is back, with rows
+      // missing and the DB in a mixed state.
+      process.exit(5);
+    }
+    console.log(
+      `\nInserted ${res.inserted} pending edits · updated ${res.updated} already present · ` +
+        `${res.reverted} withdrew as identical.`
+    );
+    if (res.updatedKeys.length) {
+      console.log(
+        '\n⚠️  These keys already had a pending row: it was updated in place, its base now',
+        '\n    the new MT. Tell the editor their pending text was replaced.',
+        '\n    (Expected count on a first run: 0.)'
+      );
+      for (const k of res.updatedKeys) console.log(`      ${k}`);
+    }
     process.exit(code);
   }
-  const { saveSegmentEdit } = require(
-    path.join(REPO_ROOT, 'server', 'services', 'segmentEditorService.js')
-  );
-  let res;
-  try {
-    res = applyReattach({ plan, saveSegmentEdit });
-  } catch (err) {
-    // Print the partial tally before dying: mid-migration, how far the run got
-    // is the first thing the operator needs.
-    if (err.tally) {
-      console.error(
-        `\nABORTED after inserted=${err.tally.inserted} updated=${err.tally.updated} ` +
-          `withdrawn=${err.tally.reverted}.`
-      );
-    }
-    console.error(err.stack || String(err));
-    // Exit 5, NOT a bare re-throw. An uncaught throw exits 1 — the same code
-    // decideExitCode gives the survivable "unmatched rows exist" outcome, which
-    // the runbook's gate table reads as "Expected. Proceed." A half-applied
-    // one-way migration must never wear the proceed code: the operator would
-    // restart the server and tell editors their work is back, with rows
-    // missing and the DB in a mixed state.
-    process.exit(5);
-  }
-  console.log(
-    `\nInserted ${res.inserted} pending edits · updated ${res.updated} already present · ` +
-      `${res.reverted} withdrew as identical.`
-  );
-  if (res.updatedKeys.length) {
-    console.log(
-      '\n⚠️  These keys already had a pending row, so they took the UPDATE branch and',
-      '\n    KEPT their old original_content. Their diff view is against a stale draft —',
-      '\n    tell the editor. (Expected count on a first run: 0.)'
-    );
-    for (const k of res.updatedKeys) console.log(`      ${k}`);
-  }
-  process.exit(code);
 }

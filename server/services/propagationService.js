@@ -12,6 +12,7 @@ const segmentParser = require('./segmentParser');
 const concordance = require('./concordanceService');
 const segmentValidation = require('../public/js/segment-validation');
 const acceptanceService = require('./acceptanceService');
+const servedVersions = require('./servedVersions');
 const resolveDbPath = require('../lib/dbPath');
 
 const DB_PATH = resolveDbPath();
@@ -31,12 +32,20 @@ function _setTestDb(testDb) {
 /**
  * Decide what to do with one occurrence given the editor's propagated text.
  * Pure — no DB/file access.
+ *
+ * G1.1's two skips come first, before any existing-edit rule (plan decision 13): a duplicated id
+ * cannot be placed until G1.12 (R4, spec §5.7), and a module with no Icelandic layer has no base
+ * to mint (spec §5.2). Only a `layer` of exactly null means "no layer" (findOccurrences' value); an
+ * absent one is not checked here, because createPropagatedEdits refuses it before any write.
  * @param {string} propagatedText
- * @param {{ currentIs: string, editorId?: string|number,
+ * @param {{ currentIs: string, editorId?: string|number, duplicated?: boolean,
+ *           layer?: string|null,
  *           existingEdit: {edited_content: string, status: string, editor_id?: string}|null }} occ
- * @returns {'eligible'|'already-matches'|'conflict'}
+ * @returns {'eligible'|'already-matches'|'conflict'|'duplicate-id'|'no-layer'}
  */
 function classifyOccurrence(propagatedText, occ) {
+  if (occ.duplicated) return 'duplicate-id'; // R4: the target cannot be placed until G1.12
+  if (occ.layer === null) return 'no-layer'; // spec §5.2: no layer, no served version, no write
   const existing = occ.existingEdit;
   if (existing) {
     if (existing.edited_content === propagatedText) return 'already-matches';
@@ -60,6 +69,13 @@ function classifyOccurrence(propagatedText, occ) {
  * For each occurrence, re-check eligibility against the latest live edit
  * (rejected and superseded rows don't count) and (if eligible) insert a
  * pending segment_edit. Cross-module write.
+ *
+ * G1.1 (spec §5.6 Propagation targets): a target was never served to the
+ * propagating editor, so each written target's base is minted here, from the
+ * text the server loaded for it (findOccurrences' `en`, `currentIs`, `layer`
+ * and `occurrence`), in the same transaction as the write; both the INSERT and
+ * the in-place UPDATE store it with origin `propagation`. A duplicated id is
+ * skipped with its occurrence; a layerless module is skipped as `no-layer`.
  * @returns {{ created: Array, skipped: Array }}
  */
 function createPropagatedEdits(
@@ -77,6 +93,24 @@ function createPropagatedEdits(
       'createPropagatedEdits: sourceEn is required — omitting it would disarm the structural guard'
     );
   }
+  // G1.1: every written target's served version is minted from en, layer, occurrence and currentIs,
+  // and `duplicated` decides the duplicate-id skip, so a caller that omits one fails loud here,
+  // before any write, as an omitted sourceEn does. `layer` may be null (findOccurrences' "no
+  // layer", which the classifier skips) but not absent; an absent `duplicated` would read as "not
+  // duplicated" and write a target that cannot be placed (PR1 review C15).
+  for (const occ of occurrences) {
+    if (
+      typeof occ.en !== 'string' ||
+      occ.layer === undefined ||
+      !Number.isInteger(occ.occurrence) ||
+      typeof occ.duplicated !== 'boolean' ||
+      typeof occ.currentIs !== 'string'
+    ) {
+      throw new Error(
+        `createPropagatedEdits: occurrence ${occ.moduleId}/${occ.segmentId} lacks en, layer, occurrence, duplicated or currentIs — it cannot be placed and its served version cannot be minted`
+      );
+    }
+  }
 
   const findEdit = conn.prepare(
     `SELECT id, edited_content, status, editor_id FROM segment_edits
@@ -86,12 +120,18 @@ function createPropagatedEdits(
   const insert = conn.prepare(
     `INSERT INTO segment_edits
        (book, chapter, module_id, segment_id, original_content, edited_content,
-        category, editor_note, editor_id, editor_username)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+        category, editor_note, editor_id, editor_username,
+        served_version_id, occurrence, origin)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
   );
+  // The in-place update follows spec §5.8's re-save rule: the base moves to the target's current
+  // text and its version, and the displayed pair is cleared, since this text was not typed over a
+  // displayed edit (plan decision 7).
   const update = conn.prepare(
     `UPDATE segment_edits
-       SET edited_content = ?, category = ?, editor_note = ?, created_at = CURRENT_TIMESTAMP
+       SET edited_content = ?, category = ?, editor_note = ?, created_at = CURRENT_TIMESTAMP,
+           original_content = ?, served_version_id = ?, occurrence = ?, origin = 'propagation',
+           displayed_edit_id = NULL, displayed_edit_sha256 = NULL
      WHERE id = ?`
   );
 
@@ -100,13 +140,27 @@ function createPropagatedEdits(
   const tx = conn.transaction(() => {
     for (const occ of occurrences) {
       const existingEdit = findEdit.get(book, occ.moduleId, occ.segmentId) || null;
+      // A fresh object, unlike the preview's `...o` spread: `duplicated` and `layer` must be passed
+      // on, or the G1.1 skips never fire on the write path (plan decision 13).
       const verdict = classifyOccurrence(propagatedText, {
         currentIs: occ.currentIs,
         editorId,
         existingEdit,
+        duplicated: occ.duplicated,
+        layer: occ.layer,
       });
       if (verdict !== 'eligible') {
-        skipped.push({ moduleId: occ.moduleId, segmentId: occ.segmentId, reason: verdict });
+        // Both copies of a duplicated id can match, so its entry names which one.
+        skipped.push(
+          verdict === 'duplicate-id'
+            ? {
+                moduleId: occ.moduleId,
+                segmentId: occ.segmentId,
+                reason: verdict,
+                occurrence: occ.occurrence,
+              }
+            : { moduleId: occ.moduleId, segmentId: occ.segmentId, reason: verdict }
+        );
         continue;
       }
       // SR-OOS-2: propagated content is validated per-occurrence against the
@@ -133,6 +187,20 @@ function createPropagatedEdits(
       // Parity keeps the "edit supersedes acceptance" invariant on the
       // cross-module write path too (propagation bypasses saveSegmentEdit).
       acceptanceService.supersedeForEdit(book, occ.moduleId, occ.segmentId, conn);
+      // spec §5.6: a target was never served to the propagator, so its base is minted from the text
+      // the server loaded for it (findOccurrences), and both writes carry it.
+      const [servedVersionId] = servedVersions.mintVersions(conn, [
+        servedVersions.buildVersionRow({
+          book,
+          chapter: occ.chapter,
+          moduleId: occ.moduleId,
+          segmentId: occ.segmentId,
+          occurrence: occ.occurrence,
+          en: occ.en,
+          is: occ.currentIs,
+          layer: occ.layer,
+        }),
+      ]);
       // Eligible because of an own pending edit → supersede it in place rather
       // than inserting a duplicate pending row (keeps the one-row-per-(seg,editor)
       // invariant; classifyOccurrence already guaranteed it is ours + pending).
@@ -141,7 +209,15 @@ function createPropagatedEdits(
         existingEdit.status === 'pending' &&
         String(existingEdit.editor_id) === String(editorId)
       ) {
-        update.run(propagatedText, category || null, note || null, existingEdit.id);
+        update.run(
+          propagatedText,
+          category || null,
+          note || null,
+          occ.currentIs,
+          servedVersionId,
+          occ.occurrence,
+          existingEdit.id
+        );
         created.push({ moduleId: occ.moduleId, segmentId: occ.segmentId, superseded: true });
         continue;
       }
@@ -150,17 +226,26 @@ function createPropagatedEdits(
         occ.chapter,
         occ.moduleId,
         occ.segmentId,
-        occ.currentIs || '',
+        occ.currentIs,
         propagatedText,
         category || null,
         note || null,
         String(editorId),
-        editorUsername
+        editorUsername,
+        servedVersionId,
+        occ.occurrence,
+        'propagation'
       );
       created.push({ moduleId: occ.moduleId, segmentId: occ.segmentId });
     }
   });
-  tx();
+  // IMMEDIATE, because its first statement is findEdit's SELECT and it then supersedes, mints and
+  // inserts: a deferred transaction would already hold a read when it asks for the write lock, and
+  // SQLite does not run the busy handler for that upgrade, so a lock another process holds
+  // (backup-db.sh's checkpoint) would fail the propagation at once with SQLITE_BUSY instead of
+  // waiting the busy timeout, as saveOnServedBase and acceptSegment wait (PR1 review C2). Called
+  // inside another transaction, it is a savepoint.
+  tx.immediate();
   return { created, skipped };
 }
 
@@ -202,18 +287,24 @@ function findOccurrences(book, enNorm, { excludeModuleId, excludeSegmentId } = {
       } catch {
         continue;
       }
-      for (const seg of data.segments) {
-        if (concordance.normalizeEn(seg.en) !== enNorm) continue;
-        if (mod.moduleId === excludeModuleId && seg.segmentId === excludeSegmentId) continue;
+      // G1.1: each entry's occurrence among same-id segments, whether its id is duplicated, and the
+      // module's layer, so propagation can place, skip and mint each target (spec §5.6).
+      const { occurrences, duplicated } = servedVersions.countOccurrences(data.segments);
+      data.segments.forEach((seg, i) => {
+        if (concordance.normalizeEn(seg.en) !== enNorm) return;
+        if (mod.moduleId === excludeModuleId && seg.segmentId === excludeSegmentId) return;
         out.push({
           chapter,
           moduleId: mod.moduleId,
           segmentId: seg.segmentId,
+          occurrence: occurrences[i],
+          duplicated: duplicated.has(seg.segmentId),
+          layer: data.isSource,
           en: seg.en,
           currentIs: seg.is || '',
           existingEdit: findEdit.get(book, mod.moduleId, seg.segmentId) || null,
         });
-      }
+      });
     }
   }
   return out;

@@ -21,8 +21,10 @@ const segmentParser = require('../services/segmentParser');
 const segmentValidation = require('../public/js/segment-validation');
 const { chooseSegment, pickEditableSegment } = require('../e2e/helpers/segments');
 
-/** Minimal segment in the shape `loadModuleForEditing` (and the module GET) emits. */
-const seg = (id, en, is) => ({ segmentId: id, en, is });
+/** The module GET sends a served hash per non-duplicated segment (spec §5.4 step 6). */
+const sha = (id) => require('crypto').createHash('sha256').update(id).digest('hex');
+/** Minimal segment in the shape the module GET emits. */
+const seg = (id, en, is, baseSha256 = sha(id)) => ({ segmentId: id, en, is, baseSha256 });
 
 /** Plain prose, five segments — indices 0 and 4 are the sibling-spec claims. */
 const PLAIN = [
@@ -66,6 +68,32 @@ describe('chooseSegment — the returned edit must survive the real backstop', (
     const picked = chooseSegment(withDroppedMarker, { suffix: ' [e2e-1]' });
 
     expect(picked.segmentId).toBe('m:b:2');
+  });
+});
+
+describe('chooseSegment — the served hash a save must echo (G1.1, spec §5.6, G-5)', () => {
+  it("returns the picked segment's own baseSha256", () => {
+    const picked = chooseSegment(PLAIN, { suffix: ' [e2e-1]' });
+    const source = PLAIN.find((s) => s.segmentId === picked.segmentId);
+    expect(picked.baseSha256).toBe(source.baseSha256);
+    // Control: every other segment carries a different hash, so the line above can fail.
+    expect(
+      PLAIN.filter((s) => s.segmentId !== picked.segmentId).map((s) => s.baseSha256)
+    ).not.toContain(picked.baseSha256);
+  });
+
+  it('with requireBaseSha256, skips a segment the route served without one', () => {
+    const mixed = [
+      seg('m:a:0', 'first', 'fyrsti'),
+      { segmentId: 'm:dup:1', en: 'served twice', is: 'tvisvar' }, // no hash: a duplicated id
+      seg('m:b:2', 'safe', 'öruggt'),
+      seg('m:c:3', 'last', 'síðasti'),
+    ];
+    expect(chooseSegment(mixed, { suffix: ' [e2e-1]', requireBaseSha256: true }).segmentId).toBe(
+      'm:b:2'
+    );
+    // Control: without the option the hashless segment is the first candidate.
+    expect(chooseSegment(mixed, { suffix: ' [e2e-1]' }).segmentId).toBe('m:dup:1');
   });
 });
 
@@ -250,6 +278,19 @@ describe('pickEditableSegment — a failed load must be diagnosable from CI logs
         suffix: ' [e2e-1]',
       })
     ).rejects.toThrow(/404.*module not found/s);
+  });
+
+  it('requires a served hash: a module whose segments carry none yields no pick', async () => {
+    const hashless = PLAIN.map((s) => ({ segmentId: s.segmentId, en: s.en, is: s.is }));
+    await expect(
+      pickEditableSegment(fakeRequest(200, { segments: hashless }), {
+        book: '__e2e-fixture__',
+        chapter: 1,
+        moduleId: 'm68664',
+        suffix: ' [e2e-1]',
+      })
+    ).rejects.toThrow(/no append-safe segment/i);
+    // Control: the same module with hashes yields one (the existing test below).
   });
 
   it('returns a picked segment when the module loads', async () => {

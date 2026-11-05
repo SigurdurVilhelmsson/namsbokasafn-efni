@@ -39,13 +39,15 @@ const router = express.Router();
 
 const log = require('../lib/logger');
 const segmentParser = require('../services/segmentParser');
-const segmentValidation = require('../public/js/segment-validation');
 const segmentEditor = require('../services/segmentEditorService');
 const acceptanceService = require('../services/acceptanceService');
 const concordance = require('../services/concordanceService');
 const propagation = require('../services/propagationService');
 const activityLog = require('../services/activityLog');
 const notifications = require('../services/notifications');
+const servedVersions = require('../services/servedVersions');
+const servedEdit = require('../services/servedEdit');
+const { sha256Text, isNotMintedBook } = require('../lib/servedText');
 const { isNewer } = require('../lib/editRecency');
 
 // Notify an edit's author of a head-editor decision (fire-and-forget — a
@@ -62,6 +64,20 @@ function notifyDecision(edit, decision, req) {
       )
     )
     .catch((err) => log.error({ err }, 'Edit-decision notification failed'));
+}
+
+// G1.1 refusals (servedEdit.REFUSAL_STATUS), sent as `{ error: <code>, message }`. Keeps
+// today's shapes for the unknown segment's 404 and the structural 400.
+function sendRefusal(res, err) {
+  if (!err.refusal || !servedEdit.REFUSAL_STATUS[err.code]) return false;
+  if (err.code === 'SEGMENT_NOT_FOUND') {
+    res.status(404).json({ error: 'segment not found' });
+  } else if (err.code === 'STRUCTURE_BLOCKED') {
+    res.status(400).json({ error: err.message, violations: err.violations });
+  } else {
+    res.status(servedEdit.REFUSAL_STATUS[err.code]).json({ error: err.code, message: err.message });
+  }
+  return true;
 }
 
 // ─── Book data lookup (slug → chapter/module metadata) ───────────────
@@ -275,6 +291,17 @@ router.get(
         req.params.moduleId
       );
 
+      // G1.1 (spec §5.4 steps 1–3): occurrence and baseSha256 on the response's own segments,
+      // and the served versions minted in one sessions.db transaction. Fail-soft: a failed mint
+      // is logged and the module is still served with baseSha256; the save path mints the base
+      // it checks. Never in the loader (it has other callers).
+      // eslint-disable-next-line no-unused-vars -- PR2's opening step reads it (spec §5.4 step 4)
+      const served = servedVersions.recordServe(segmentEditor.getDb(), data, {
+        book: req.params.book,
+        chapter: req.chapterNum,
+        moduleId: req.params.moduleId,
+      });
+
       // Get existing edits for this module
       const edits = segmentEditor.getModuleEdits(req.params.book, req.params.moduleId);
 
@@ -292,7 +319,12 @@ router.get(
         if (!editsBySegment[edit.segment_id]) {
           editsBySegment[edit.segment_id] = [];
         }
-        editsBySegment[edit.segment_id].push(edit);
+        // contentSha256 (spec §5.4 step 6): the hash of the row's text, computed here and never
+        // stored. The client echoes it as displayedEditSha256 when it saves over this row.
+        editsBySegment[edit.segment_id].push({
+          ...edit,
+          contentSha256: sha256Text(edit.edited_content),
+        });
       }
       for (const segId of Object.keys(editsBySegment)) {
         editsBySegment[segId].sort((a, b) => (isNewer(a, b) ? -1 : isNewer(b, a) ? 1 : 0));
@@ -321,6 +353,12 @@ router.get(
         .filter((e) => String(e.editor_id) !== String(currentUserId));
       const otherPendingSegments = [...new Set(otherEdits.map((e) => e.segment_id))];
 
+      // ── spec §5.4 step 4, PR2's opening step, goes HERE: after every editor's edit rows are
+      //    read (above) and before res.json. It reads `served.mintOk` (false while its predicate
+      //    holds → 503 OPENING_UNRECORDED), `served.servedVersionIds` and `served.duplicatedIds`.
+      //    Step 5 (G1.23) reads seg.baseSha256 from data.segments after it. Nothing here may add a
+      //    field to the response but per-segment occurrence and baseSha256 and per-edit
+      //    contentSha256 (T17). ──
       res.json({
         ...data,
         edits: editsBySegment,
@@ -346,16 +384,27 @@ router.post(
   requireBookAccess(),
   validateModule,
   (req, res) => {
-    const { segmentId, originalContent, editedContent, category, editorNote, baseEditId } =
-      req.body;
+    // `originalContent` is no longer read: the server stores its own base (spec §5.6 step 6);
+    // pages loaded before G1.1 still send it. The research-only fields (clientActionId,
+    // clientActionTime, assists, replayed) are accepted and not read (index decision 4).
+    const {
+      segmentId,
+      editedContent,
+      category,
+      editorNote,
+      baseEditId,
+      baseSha256,
+      displayedEditId,
+      displayedEditSha256,
+    } = req.body;
 
     if (!segmentId) {
       return res.status(400).json({ error: 'segmentId is required' });
     }
-    if (!editedContent && editedContent !== '') {
+    if (typeof editedContent !== 'string') {
       return res.status(400).json({ error: 'editedContent is required' });
     }
-    if (typeof editedContent === 'string' && editedContent.length > 10000) {
+    if (editedContent.length > 10000) {
       return res.status(400).json({ error: 'Content too long (max 10,000 characters)' });
     }
     if (category && !VALID_CATEGORIES.includes(category)) {
@@ -363,14 +412,21 @@ router.post(
         error: `Invalid category. Must be one of: ${VALID_CATEGORIES.join(', ')}`,
       });
     }
+    // The displayed pair the row showed (plan decision 14): absent, null, or the right type.
+    if (displayedEditId != null && !Number.isInteger(displayedEditId)) {
+      return res.status(400).json({ error: 'displayedEditId must be an integer or null' });
+    }
+    if (displayedEditSha256 != null && typeof displayedEditSha256 !== 'string') {
+      return res.status(400).json({ error: 'displayedEditSha256 must be a string or null' });
+    }
 
     const resolvedBaseEditId = typeof baseEditId === 'number' ? baseEditId : undefined;
 
     try {
-      // SR-OOS-2 FIX3: the conflict check runs BEFORE the structural-marker
-      // backstop guard below, so a stale pane gets its familiar 409
-      // (alert+reload flow) instead of a 400 that masks the real reason the
-      // save failed — same args the saveSegmentEdit call below passes.
+      // SR-OOS-2 FIX3: the conflict check runs BEFORE saveOnServedBase's refusals and its
+      // structural-marker backstop, so a stale pane gets its familiar 409 (alert+reload flow)
+      // instead of a refusal that masks the real reason the save failed — same args
+      // saveSegmentEdit's own check receives.
       segmentEditor.checkEditConflict({
         book: req.params.book,
         moduleId: req.params.moduleId,
@@ -379,60 +435,27 @@ router.post(
         baseEditId: resolvedBaseEditId,
       });
 
-      // SR-OOS-2 backstop: the client's hard-block gate is bypassable, so the
-      // save route re-checks structural markers against SERVER-loaded
-      // baselines (never the client-supplied originalContent). Identity
-      // edits (editedContent === baseline.is) skip the check: content equal
-      // to the server's own baseline cannot introduce NEW corruption
-      // relative to what's already on disk, so the server deliberately
-      // stays permissive here even on a withdrawal whose baseline would
-      // itself fail an EN-derived rule in the UI (e.g. an MT baseline that
-      // already dropped a [[MATH:N]]). Warnings are advisory and
-      // deliberately NOT enforced here (design D3).
-      let baseline;
-      try {
-        const modData = segmentParser.loadModuleForEditing(
-          req.params.book,
-          req.chapterNum,
-          req.params.moduleId
-        );
-        baseline = modData.segments.find((s) => s.segmentId === segmentId);
-      } catch (loadErr) {
-        log.error({ err: loadErr }, 'Backstop baseline load failed');
-        return res.status(loadErr.message.includes('not found') ? 404 : 500).json({
-          error: loadErr.message,
-        });
-      }
-      if (!baseline) {
-        return res.status(404).json({ error: 'segment not found' });
-      }
-      if (editedContent !== baseline.is) {
-        const structure = segmentValidation.validateStructure(
-          baseline.en,
-          baseline.is,
-          editedContent
-        );
-        if (structure.blocked) {
-          return res.status(400).json({
-            error: 'Vistun hafnað: byggingarmerki vantar eða hafa breyst.',
-            violations: structure.blocked,
-          });
-        }
-      }
-
-      const result = segmentEditor.saveSegmentEdit({
+      // G1.1 (spec §5.6): placement, the echoed base hash and displayed pair, the marker
+      // backstop against the server-loaded base, then the mint and the row in one
+      // transaction. A missing hash is refused (BASE_MISSING), never skipped.
+      const saved = servedEdit.saveOnServedBase({
         book: req.params.book,
         chapter: req.chapterNum,
         moduleId: req.params.moduleId,
         segmentId,
-        originalContent: originalContent || '',
         editedContent,
         category,
         editorNote,
         editorId: String(req.user.id),
         editorUsername: req.user.username,
         baseEditId: resolvedBaseEditId,
+        origin: 'editor-save',
+        requireEcho: true,
+        baseSha256: typeof baseSha256 === 'string' ? baseSha256 : undefined,
+        displayedEditId: displayedEditId ?? null,
+        displayedEditSha256: displayedEditSha256 ?? null,
       });
+      const kept = saved.outcome === 'inserted' || saved.outcome === 'updated';
 
       activityLog.log({
         type: 'segment_edit_saved',
@@ -450,7 +473,7 @@ router.post(
       // suspected.)
       let termWarnings = [];
       let qaFindings = [];
-      if (!result.reverted && typeof editedContent === 'string' && editedContent) {
+      if (kept && editedContent) {
         try {
           termWarnings = segmentEditor.getSegmentTerminologyWarnings(
             req.params.book,
@@ -475,16 +498,27 @@ router.post(
         }
       }
 
+      // The three echo fields are named as the request fields the next save sends (plan
+      // decision 15; spec §5.18): the base this save was checked against, and the row the
+      // segment now displays (null/null when the save withdrew or wrote nothing).
       res.json({
         success: true,
-        editId: result.id,
-        updated: result.updated,
+        editId: saved.editId,
+        updated: saved.outcome === 'updated' || saved.outcome === 'withdrawn',
         termWarnings,
         qaFindings,
+        baseSha256: saved.baseSha256,
+        displayedEditId: kept ? saved.editId : null,
+        displayedEditSha256: kept ? saved.editedContentSha256 : null,
       });
     } catch (err) {
       if (err.code === 'SEGMENT_CONFLICT') {
         return res.status(409).json({ error: 'conflict', message: err.message });
+      }
+      if (sendRefusal(res, err)) return;
+      if (err.message?.includes('not found')) {
+        // A missing module (the loader's "not found"), answered as before G1.1.
+        return res.status(404).json({ error: err.message });
       }
       log.error({ err }, 'Error saving segment edit');
       res.status(500).json({ error: err.message });
@@ -871,6 +905,9 @@ router.post(
  * blocks (409 DISCUSS_OPEN) and so does published human text that is still the
  * live baseline (409 HUMAN_CONTENT). Eligibility is enforced HERE, not in the
  * client — this endpoint is directly reachable (MTA-R3).
+ * G1.1 (spec §5.6 Accept): placement runs first (409 BOOK_NOT_MINTED, NO_LAYER,
+ * DUPLICATE_ID; 404 for an id not served), and a new acceptance row records the
+ * served version it was made on and its occurrence.
  */
 router.post(
   '/:book/:chapter/:moduleId/accept',
@@ -891,6 +928,16 @@ router.post(
     }
 
     try {
+      // Spec §5.6 Accept: steps 1–3 first, so a duplicated id is refused before acceptSegment's
+      // existing lookup would return the first copy's row as alreadyAccepted, and organic and a
+      // module with no layer are refused before anything is written. acceptOrigin is the research
+      // event's (PR3); nothing here reads it.
+      const placed = servedEdit.placeOnServedBase({
+        book: req.params.book,
+        chapter: req.chapterNum,
+        moduleId: req.params.moduleId,
+        segmentId,
+      });
       const result = acceptanceService.acceptSegment({
         book: req.params.book,
         chapter: req.chapterNum,
@@ -899,6 +946,7 @@ router.post(
         acceptedContent,
         userId: String(req.user.id),
         username: req.user.username,
+        occurrence: placed.occurrence,
       });
 
       if (!result.alreadyAccepted) {
@@ -915,6 +963,7 @@ router.post(
 
       res.json({ success: true, ...result });
     } catch (err) {
+      if (sendRefusal(res, err)) return;
       // MTA-R3 adds DISCUSS_OPEN / HUMAN_CONTENT to the eligibility guard;
       // they are conflict states like the other two, not server errors.
       if (
@@ -1438,13 +1487,14 @@ router.get(
     try {
       const { segmentId } = req.query;
       if (!segmentId) return res.status(400).json({ error: 'segmentId is required' });
-      const data = segmentParser.loadModuleForEditing(
-        req.params.book,
-        req.chapterNum,
-        req.params.moduleId
-      );
-      const seg = data.segments.find((s) => s.segmentId === segmentId);
-      if (!seg) return res.status(404).json({ error: 'segment not found' });
+      // PR1 review C3: the source is placed as POST /propagate places it, so the preview refuses
+      // what the write refuses (organic, no layer, a duplicated id) instead of offering it.
+      const { seg } = servedEdit.placeOnServedBase({
+        book: req.params.book,
+        chapter: req.chapterNum,
+        moduleId: req.params.moduleId,
+        segmentId,
+      });
       const enNorm = concordance.normalizeEn(seg.en);
       const propagatedText =
         propagation.latestEditedText(req.params.book, req.params.moduleId, segmentId) ??
@@ -1471,6 +1521,7 @@ router.get(
       }
       res.json({ enNorm, eligible, skipped });
     } catch (err) {
+      if (sendRefusal(res, err)) return;
       log.error({ err }, 'propagation-preview failed');
       res.status(500).json({ error: err.message });
     }
@@ -1500,9 +1551,24 @@ router.post(
           error: `Invalid category. Must be one of: ${VALID_CATEGORIES.join(', ')}`,
         });
       }
-      const sourceSeg = segmentParser
-        .loadModuleForEditing(req.params.book, req.chapterNum, req.params.moduleId)
-        .segments.find((s) => s.segmentId === segmentId);
+      // G1.1 (spec §11, T18): a book that is never minted takes no write, before any target is
+      // loaded. createPropagatedEdits' mint refuses it too, as a second line.
+      if (isNotMintedBook(req.params.book)) {
+        return res.status(409).json({
+          error: 'BOOK_NOT_MINTED',
+          message: servedEdit.REFUSAL_MESSAGES.BOOK_NOT_MINTED,
+        });
+      }
+      // PR1 review C3 (spec §5.7): the source is placed, not found by .find, which takes a
+      // duplicated id's first copy's English while the client sends the served (last copy's)
+      // Icelandic. A duplicated id or a module with no layer is refused, an unknown id keeps
+      // today's 404.
+      const { seg: sourceSeg } = servedEdit.placeOnServedBase({
+        book: req.params.book,
+        chapter: req.chapterNum,
+        moduleId: req.params.moduleId,
+        segmentId,
+      });
       const enNorm = concordance.normalizeEn(sourceSeg?.en || '');
       if (!enNorm) return res.status(404).json({ error: 'segment not found' });
       const occurrences = propagation.findOccurrences(req.params.book, enNorm, {
@@ -1521,6 +1587,7 @@ router.post(
       });
       res.json(result);
     } catch (err) {
+      if (sendRefusal(res, err)) return;
       log.error({ err }, 'propagate failed');
       res.status(500).json({ error: err.message });
     }

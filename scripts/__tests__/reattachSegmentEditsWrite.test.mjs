@@ -11,6 +11,7 @@ const {
   createSegmentEditsSchema,
 } = require(path.join(REPO_ROOT, 'server', '__tests__', 'helpers', 'segmentEditsSchema.cjs'));
 const migration043 = require(path.join(REPO_ROOT, 'server', 'migrations', '043-segment-acceptances'));
+const migration053 = require(path.join(REPO_ROOT, 'server', 'migrations', '053-served-text-versions'));
 
 let tmp, db, booksDir, service;
 
@@ -31,6 +32,7 @@ beforeEach(() => {
   // write throws "no such table". Same trap, same fix as
   // server/__tests__/mtLockOnFirstEdit.test.js.
   migration043.up(db);
+  migration053.up(db);
   service = require(path.join(REPO_ROOT, 'server', 'services', 'segmentEditorService.js'));
   service._setTestDb(db);
 });
@@ -152,6 +154,112 @@ describe('applyReattach — duplicate-key refusal', () => {
   });
 });
 
+// G1.1 (index decision 7, plan decision 16): applyReattach is exported and must not
+// depend on its caller having run planReattach, so it refuses a study-book row
+// itself, before any write. The comparison is of the rows' values, not a count.
+describe('applyReattach — the study book is refused', () => {
+  it('applyReattach refuses a plan holding a study-book row and writes nothing', async () => {
+    const { applyReattach } = await import('../reattach-segment-edits.js');
+    // A save, were one to happen, must not reach the real books/ tree's MT lock path.
+    const segmentParser = require(path.join(REPO_ROOT, 'server', 'services', 'segmentParser.js'));
+    segmentParser._setTestBooksDir(booksDir);
+    try {
+      const studyItem = {
+        row: { ...snapshot.edits[0], book: 'efnafraedi-2e' },
+        newMt: 'x',
+        editorNote: null,
+        flags: [],
+      };
+      const query = () => db.prepare('SELECT * FROM segment_edits ORDER BY id').all();
+      const before = query();
+      expect(before).toEqual([]);
+      let caught;
+      try {
+        applyReattach({ plan: { restore: [studyItem] }, saveSegmentEdit: service.saveSegmentEdit });
+      } catch (err) {
+        caught = err;
+      }
+      expect(caught?.code).toBe('STUDY_BOOK');
+      expect(query()).toEqual(before);
+
+      // Pre-flight, not mid-loop: with a clean testbook row AHEAD of the study row,
+      // a per-item check would write the clean row and only then throw.
+      const cleanItem = {
+        row: { ...snapshot.edits[0], segment_id: 'm001:para:fs-id0' },
+        newMt: 'önnur vélþýðing',
+        editorNote: null,
+        flags: [],
+      };
+      caught = undefined;
+      try {
+        applyReattach({
+          plan: { restore: [cleanItem, studyItem] },
+          saveSegmentEdit: service.saveSegmentEdit,
+        });
+      } catch (err) {
+        caught = err;
+      }
+      expect(caught?.code).toBe('STUDY_BOOK');
+      expect(query()).toEqual(before);
+    } finally {
+      segmentParser._setTestBooksDir(path.join(REPO_ROOT, 'books'));
+    }
+  });
+});
+
+// PR1 review C16: saveSegmentEdit itself has no organic guard, so without this refusal a
+// not-minted book's row would be written with served_version_id NULL.
+describe('applyReattach — a not-minted book is refused (PR1 review C16)', () => {
+  it('applyReattach refuses a plan holding an organic row and writes nothing', async () => {
+    const { applyReattach } = await import('../reattach-segment-edits.js');
+    const segmentParser = require(path.join(REPO_ROOT, 'server', 'services', 'segmentParser.js'));
+    segmentParser._setTestBooksDir(booksDir);
+    try {
+      const organicItem = {
+        row: { ...snapshot.edits[0], book: 'lifraen-efnafraedi' },
+        newMt: 'x',
+        editorNote: null,
+        flags: [],
+      };
+      const query = () => db.prepare('SELECT * FROM segment_edits ORDER BY id').all();
+      const before = query();
+      expect(before).toEqual([]);
+      let caught;
+      try {
+        applyReattach({
+          plan: { restore: [organicItem] },
+          saveSegmentEdit: service.saveSegmentEdit,
+        });
+      } catch (err) {
+        caught = err;
+      }
+      expect(caught?.code).toBe('BOOK_NOT_MINTED');
+      expect(query()).toEqual(before);
+
+      // Pre-flight, not mid-loop: a clean testbook row ahead of the organic row is not written.
+      const cleanItem = {
+        row: { ...snapshot.edits[0], segment_id: 'm001:para:fs-id0' },
+        newMt: 'önnur vélþýðing',
+        editorNote: null,
+        flags: [],
+      };
+      caught = undefined;
+      try {
+        applyReattach({
+          plan: { restore: [cleanItem, organicItem] },
+          saveSegmentEdit: service.saveSegmentEdit,
+        });
+      } catch (err) {
+        caught = err;
+      }
+      expect(caught?.code).toBe('BOOK_NOT_MINTED');
+      expect(query()).toEqual(before);
+    } finally {
+      segmentParser._setTestBooksDir(path.join(REPO_ROOT, 'books'));
+    }
+  });
+});
+
 describe('applyReattach — honest counts', () => {
   it('counts a first run as inserted, not merely written', async () => {
     const { planReattach, applyReattach } = await import('../reattach-segment-edits.js');
@@ -163,10 +271,10 @@ describe('applyReattach — honest counts', () => {
   });
 
   // The runbook tells the operator, on a non-zero `updated`, to note WHICH
-  // segments took the UPDATE branch and warn the editor their diff view is
-  // against a stale draft — those are exactly the rows where spec §7's
-  // "originalContent = the new MT" silently failed. Three integers cannot
-  // answer that, so the keys travel with the tally.
+  // segments took the UPDATE branch and tell the editor: those rows already
+  // held a pending text, which the run replaced in place (since G1.1 the
+  // re-save also moves their base to the new MT; the case below). Three
+  // integers cannot answer that, so the keys travel with the tally.
   it('names the segments that took the UPDATE branch, not just how many', async () => {
     const { planReattach, applyReattach } = await import('../reattach-segment-edits.js');
     const plan = planReattach({ snapshot, booksDir });
@@ -181,6 +289,33 @@ describe('applyReattach — honest counts', () => {
     applyReattach({ plan, saveSegmentEdit: service.saveSegmentEdit });
     const second = applyReattach({ plan, saveSegmentEdit: service.saveSegmentEdit });
     expect(second).toMatchObject({ inserted: 0, updated: 1 });
+  });
+
+  // G1.1 (plan Task 12, decision 10): saveSegmentEdit's re-save UPDATE now writes
+  // original_content, so a re-run whose MT moved under it records the NEW MT as the
+  // base. Reporting is unchanged: the key still took the UPDATE branch.
+  it('a re-run’s UPDATE branch now writes the new MT as original_content', async () => {
+    const { planReattach, applyReattach } = await import('../reattach-segment-edits.js');
+    applyReattach({
+      plan: planReattach({ snapshot, booksDir }),
+      saveSegmentEdit: service.saveSegmentEdit,
+    });
+    // Control: the first run wrote the MT the file held then.
+    expect(db.prepare('SELECT original_content c FROM segment_edits').get().c).toBe('ný vélþýðing');
+    fs.writeFileSync(
+      path.join(booksDir, 'testbook', '02-mt-output', 'ch01', 'm001-segments.is.md'),
+      '<!-- SEG:m001:para:fs-id0 -->\nönnur vélþýðing\n\n' +
+        '<!-- SEG:m001:para:fs-id1 -->\nnýrri vélþýðing\n'
+    );
+    const second = applyReattach({
+      plan: planReattach({ snapshot, booksDir }),
+      saveSegmentEdit: service.saveSegmentEdit,
+    });
+    expect(second.updatedKeys).toEqual(['testbook/m001/m001:para:fs-id1/u1']);
+    expect(db.prepare('SELECT COUNT(*) n FROM segment_edits').get().n).toBe(1);
+    expect(db.prepare('SELECT original_content c FROM segment_edits').get().c).toBe(
+      'nýrri vélþýðing'
+    );
   });
 
   it('attaches the partial tally to a mid-loop failure, so an aborted run is still diagnosable', async () => {

@@ -267,6 +267,23 @@ app.get('/api/health', (req, res) => {
     checks.migrations = { ok: false, error: err.message };
   }
 
+  // Check the editing schema (G1.1, spec §5.20): every table, column and index the
+  // migrations since 053 add. checks.migrations only counts files, so a never-throw
+  // migration that failed would otherwise show only as save errors.
+  try {
+    const Database = require('better-sqlite3');
+    const { checkSchema } = require('./lib/schemaHealth');
+    const db = new Database(require('./lib/dbPath')(), { readonly: true, fileMustExist: true });
+    try {
+      checks.schema = checkSchema(db);
+    } finally {
+      db.close();
+    }
+  } catch (err) {
+    // The database could not be opened: checkSchema's own error shape.
+    checks.schema = { ok: false, missing: null, error: err.code || err.name };
+  }
+
   // Check books loaded
   checks.books = { ok: VALID_BOOKS.length > 0, count: VALID_BOOKS.length, list: VALID_BOOKS };
 

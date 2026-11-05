@@ -112,3 +112,19 @@ describe('propagateResult (SR-OOS-2 FIX6c)', () => {
     expect(msg).not.toContain('byggingarmerki hindra');
   });
 });
+
+describe('refused-save strings (G1.1 §5.18; index decisions 12–13)', () => {
+  const source = readFileSync(join(publicJs, 'ui-strings.js'), 'utf-8');
+  const UI = new Function(`${source}; return UI;`)();
+
+  it('BASE_MISSING tells the editor to reload the page with F5', () => {
+    expect(UI.refusal.baseMissing).toContain('F5');
+  });
+
+  it('every notice and the kept-text line are non-empty Icelandic strings', () => {
+    for (const v of [UI.refusal.textKept, UI.refusal.generic, ...Object.values(UI.draftNotice)]) {
+      expect(typeof v).toBe('string');
+      expect(v.length).toBeGreaterThan(10);
+    }
+  });
+});

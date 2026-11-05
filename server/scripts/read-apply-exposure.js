@@ -23,7 +23,8 @@
  *
  * Classes for a written winner, compared after trimming both sides:
  *   already-present  the base already equals the edit;
- *   clean            the base equals the text the editor started from (original_content);
+ *   clean            the base equals the base the edit's current text was made on
+ *                    (original_content; a re-save moves it since G1.1);
  *   base-changed     neither: the edit was made on an older text and would replace today's;
  *   segment-gone     the segment is no longer in the extraction (apply skips it but still stamps it).
  * A winner the click would not write is counted as not-written.
