@@ -1353,6 +1353,39 @@ Module._load = function (request, ...rest) {
     expect(JSON.parse(r.stdout).sections['G-1d'].users).toHaveLength(6002);
   });
 
+  // PR2 review U20: a read-only open of a WAL database whose -wal and -shm are absent creates both, owned by the
+  // probe's user, and leaves them (measured). Production's database is WAL (its services set journal_mode = WAL);
+  // the test's is not until it is set here.
+  const sideFiles = () => ['-wal', '-shm'].filter((x) => fs.existsSync(dbPath + x));
+  it('a WAL database no process holds is not opened: its sections fail with the reason, and no file is created', () => {
+    db.pragma('journal_mode = WAL');
+    db.close(); // the last connection: SQLite removes -wal and -shm
+    expect(fs.readFileSync(dbPath).subarray(18, 20)).toEqual(Buffer.from([2, 2])); // control: the file is WAL
+    expect(sideFiles()).toEqual([]);
+    const r = spawnSync(process.execPath, [SCRIPT, BOOK], { env: env(), encoding: 'utf8' });
+    const created = sideFiles();
+    db = new Database(dbPath);
+    expect(created).toEqual([]);
+    expect(r.status).toBe(1);
+    const out = JSON.parse(r.stdout);
+    for (const name of ['G-1d', 'G-1e']) {
+      expect(out.sections[name]).toMatchObject({ ok: false, error: 'WAL_FILES_ABSENT' });
+    }
+    for (const name of ['G-1c', 'G-1f', 'G-1g']) expect(out.sections[name].ok).toBe(true);
+  });
+
+  it('a WAL database a process holds (the server, running) is read as before', () => {
+    db.pragma('journal_mode = WAL');
+    db.prepare("UPDATE users SET role = 'admin' WHERE id = ?").run(userB); // a write the reader must see
+    expect(sideFiles()).toEqual(['-wal', '-shm']); // the held connection keeps them
+    const r = spawnSync(process.execPath, [SCRIPT, BOOK], { env: env(), encoding: 'utf8' });
+    expect(r.status, r.stderr).toBe(0);
+    expect(JSON.parse(r.stdout).sections['G-1d'].users).toEqual([
+      { id: userA, role: 'editor', active: true },
+      { id: userB, role: 'admin', active: false },
+    ]);
+  });
+
   it('a missing database fails its sections, not the run: exit 1, with the JSON still printed', () => {
     const missing = path.join(root, 'no-such.db');
     const r = spawn([SCRIPT, BOOK], { env: env({ SESSIONS_DB_PATH: missing }) });

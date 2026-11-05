@@ -83,12 +83,15 @@
  * before PR1 (its test pins the list; the study-book allowlist is not one of them, so the book is
  * an argument), and it reads PR1's `segment_edits.origin` only when the column exists.
  *
- * The database is opened `readonly: true, fileMustExist: true`.
+ * The database is opened `readonly: true, fileMustExist: true`, and only while a process holds it:
+ * a read-only open of a WAL database whose -wal and -shm are absent would create them, owned by the
+ * probe's user (see openReadOnly). Run it while the server runs; then those files exist, are the
+ * server's, and the probe creates nothing. Otherwise G-1d and G-1e fail with `WAL_FILES_ABSENT`.
  *
  * Usage (prints one JSON object on stdout; exit 0 every section read, 1 a section failed, 2 usage):
  *   node server/scripts/read-research-preconditions.js efnafraedi-2e
  * On production, where this file is not deployed, send it on stdin from server/scripts, so `../lib` and
- * better-sqlite3 resolve (the route read-pending-edits.js describes):
+ * better-sqlite3 resolve (the route read-pending-edits.js describes), while the server runs:
  *   ssh <prod> "cd <repo>/server/scripts && node - efnafraedi-2e" \
  *     < server/scripts/read-research-preconditions.js > preconditions.json
  */
@@ -685,6 +688,45 @@ function readResearchPreconditions({
   return { book, ok: Object.values(sections).every((s) => s.ok), sections };
 }
 
+/**
+ * The database, opened `readonly: true, fileMustExist: true`. A read-only open of a WAL database whose
+ * -wal and -shm files are absent creates both, owned by this user, and leaves them after close
+ * (measured); made by another user than the server's, they can keep the server from opening its
+ * database. They are absent only when no process holds the database, so that case is refused here,
+ * before any open, and the database sections fail with the reason. While the server runs, both files
+ * exist and this is the plain read-only open (measured against a process writing throughout: no
+ * refusal, no error, every read current).
+ */
+function openReadOnly(dbPath) {
+  let header = null;
+  try {
+    const fd = fs.openSync(dbPath, 'r');
+    try {
+      header = Buffer.alloc(20);
+      fs.readSync(fd, header, 0, 20, 0);
+    } finally {
+      fs.closeSync(fd);
+    }
+  } catch {
+    header = null; // absent or unreadable: the open below reports it as it always has
+  }
+  // SQLite's header: the magic string, then bytes 18 and 19 (write and read versions) are 2 in WAL mode.
+  const wal =
+    header !== null &&
+    header.subarray(0, 16).toString('latin1') === 'SQLite format 3\0' &&
+    header[18] === 2 &&
+    header[19] === 2;
+  if (wal && !(fs.existsSync(`${dbPath}-wal`) && fs.existsSync(`${dbPath}-shm`))) {
+    const err = new Error(
+      'the database is in WAL mode and its -wal and -shm files are absent, so no process holds it (is the ' +
+        'server stopped?); a read-only open would create them as this user. Run the probe while the server runs.'
+    );
+    err.code = 'WAL_FILES_ABSENT';
+    throw err;
+  }
+  return new (require('better-sqlite3'))(dbPath, { readonly: true, fileMustExist: true });
+}
+
 /** @returns {0|1|2} */
 function main(argv, env = process.env) {
   const args = argv.slice(2);
@@ -698,8 +740,7 @@ function main(argv, env = process.env) {
   const serverDir = path.resolve(path.dirname(require.resolve('../lib/dbPath')), '..');
   const report = readResearchPreconditions({
     book: args[0],
-    openDb: () =>
-      new (require('better-sqlite3'))(resolveDbPath(), { readonly: true, fileMustExist: true }),
+    openDb: () => openReadOnly(resolveDbPath()),
     serverDir,
     // Test seam, as scripts/backfill-mt-locks.js: never set in production.
     booksDir: env.BOOKS_ROOT_OVERRIDE || path.join(serverDir, '..', 'books'),
