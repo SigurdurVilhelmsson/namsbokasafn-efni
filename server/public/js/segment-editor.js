@@ -34,6 +34,11 @@
   // addRestoreItem: true when the text left the screen (a refusal), false when
   // it is only being carried across a re-render.
   const heldDrafts = new Map();
+  // PR2 review R2: per unit (its draft prefix), the draft value that leaving it could not store because the browser's
+  // storage was full (the OPENING_UNRECORDED branch, or a refusal answered after leaving: keepLeftText). Leaving
+  // empties heldDrafts and paneState, so without this a kept text would be lost; restoreDraft takes it on the unit's
+  // next opening, and storeUnwritten tries storage again when the page is left.
+  const unwrittenDrafts = new Map();
 
   // Track textarea focus so term lookup can insert at the right place
   document.addEventListener('focusin', (e) => {
@@ -103,9 +108,19 @@
     }
   }
 
-  /** §5.18: per segment the text, the base it was started from, its occurrence and its assists. */
+  /** Writes this tab's draft of the open unit; false when storage refused the write (R2). */
   function saveDraft() {
-    if (!currentModuleId) return;
+    if (!currentModuleId) return true;
+    const entries = draftEntries();
+    if (Object.keys(entries).length === 0) {
+      localStorage.removeItem(draftKey());
+      return true;
+    }
+    return writeDraft(entries);
+  }
+
+  /** §5.18: per segment the text, the base it was started from, its occurrence and its assists. */
+  function draftEntries() {
     const entries = {};
     for (const segId of dirtyEdits) {
       const ta = document.getElementById('textarea-' + cssId(segId));
@@ -120,11 +135,19 @@
       });
     }
     for (const [segId, held] of heldDrafts) if (!entries[segId]) entries[segId] = held.entry;
-    if (Object.keys(entries).length === 0) {
-      localStorage.removeItem(draftKey());
-      return;
+    return entries;
+  }
+
+  /** Try storage again with what leaving a unit could not store (R2); what it still refuses stays in memory. */
+  function storeUnwritten() {
+    for (const [prefix, value] of unwrittenDrafts) {
+      try {
+        localStorage.setItem(prefix + tabGuard.tabId, JSON.stringify(value));
+        unwrittenDrafts.delete(prefix);
+      } catch {
+        // still full: it stays here, and leaving the page asks first
+      }
     }
-    writeDraft(entries);
   }
 
   function clearDraft() {
@@ -161,6 +184,11 @@
     // EVERY tab's draft for this module, not only tabGuard.findNewestDraft's: a kept text can sit in an older
     // tab's key (an F5 gives the page a new tabId), and clearDraftsByPrefix below removes them all (plan decision 31).
     const values = draftValuesUnder(prefix);
+    // What leaving this unit could not store (R2): built when the unit was left, so newer than what storage holds.
+    if (unwrittenDrafts.has(prefix)) {
+      values.push(unwrittenDrafts.get(prefix));
+      unwrittenDrafts.delete(prefix);
+    }
     const found = values.length > 0;
     const weekAgo = Date.now() - 7 * 24 * 60 * 60 * 1000; // tabGuard's own window
     const fromStorage = segmentSaveState.mergeDraftValues(
@@ -612,14 +640,15 @@
         // A reload from an open pane (after a save, a review action, or a refused save's keepText). The editor leaves
         // the unit as Back leaves it, so nothing on the module list can save, accept or discard for a unit whose
         // opening was not recorded (spec §5.4; T6); but unlike Back nothing is discarded. saveDraft first writes
-        // every dirty pane's text and every held (kept) text to this tab's draft; leaveModule then empties the memory
-        // a later saveDraft would rebuild that draft from. Both kinds come back through restoreDraft when the unit
-        // is opened again. Writes sent before this reload can still land, their texts typed while the unit was open
+        // every dirty pane's text and every held (kept) text to this tab's draft; if storage refuses it (full), the
+        // same entries stay in memory for this unit (keepUnwritten, PR2 review R2). leaveModule then empties the
+        // memory a later saveDraft would rebuild that draft from. Both kinds come back through restoreDraft when the
+        // unit is opened again. Writes sent before this reload can still land, their texts typed while the unit was open
         // (Review Focus 8): a save saveRetry queued, and a save, accept or review action still awaiting its answer.
         // That answer touches nothing of the unit and re-serves nothing (openUnit, PR2 review R1); a kept code's
         // text is added to this draft (keepLeftText). On a first load nothing is on screen and this is skipped:
         // saveDraft there would remove this tab's draft, which can hold a text Back kept.
-        saveDraft();
+        if (!saveDraft()) keepUnwritten(draftPrefix(), draftEntries());
         leaveModule();
       }
       alert(unrecorded ? UI.segmentEditor.openingUnrecorded : UI.common.errorLoading + err.message);
@@ -2688,17 +2717,27 @@
     const key = unit + tabGuard.tabId;
     let stored = null;
     try {
-      stored = segmentSaveState.parseDraftValue(JSON.parse(localStorage.getItem(key)));
+      stored = JSON.parse(localStorage.getItem(key));
     } catch {
       // a corrupt value holds nothing usable: the refusal's own text is all there is
     }
-    writeDraft(segmentSaveState.mergeRestoreSources(stored, [item]), key);
+    // What leaving could not store is newer than what storage holds (R2); mergeDraftValues orders them by ts.
+    const draft = segmentSaveState.mergeDraftValues([stored, unwrittenDrafts.get(unit)]);
+    const entries = segmentSaveState.mergeRestoreSources(draft, [item]);
+    if (writeDraft(entries, key)) unwrittenDrafts.delete(unit);
+    else keepUnwritten(unit, entries);
+  }
+
+  /** A left unit's draft that storage refused (R2): it stays in memory for the unit's next opening. */
+  function keepUnwritten(unit, entries) {
+    unwrittenDrafts.set(unit, segmentSaveState.buildDraftValue(entries, Date.now()));
   }
 
   /**
    * Leave the open unit for the module list. It writes nothing to storage: the caller has already put in the draft
    * what should outlive the unit (Back: clearDraft, which keeps only a refused save's texts; the OPENING_UNRECORDED
-   * branch in loadModule: saveDraft, which keeps every text). Afterwards nothing in memory belongs to the unit, so
+   * branch in loadModule: saveDraft, which keeps every text, or keepUnwritten when storage refuses it, PR2 review R2).
+   * Afterwards nothing in memory belongs to the unit but that refused draft value, waiting for restoreDraft, so
    * nothing on the module list can act on it (spec §5.4, T6): no pane is open for Escape or Ctrl/Cmd+S to find;
    * moduleData is null for saveEdit, acceptAtCursor and a parked or replayed save (onSaveParked, onSaveReplayed);
    * and nothing is dirty or held that the draft timer, beforeunload, auth-expired or the next unit's draft could
@@ -3981,8 +4020,9 @@
   // WARN BEFORE LEAVING WITH UNSAVED EDITS
   // ================================================================
   window.addEventListener('beforeunload', function (e) {
-    if (dirtyEdits.size > 0 || heldDrafts.size > 0) {
-      saveDraft(); // last-chance save to localStorage
+    storeUnwritten(); // R2: a left unit's draft that storage refused, if it has room now
+    if (dirtyEdits.size > 0 || heldDrafts.size > 0 || unwrittenDrafts.size > 0) {
+      if (dirtyEdits.size > 0 || heldDrafts.size > 0) saveDraft(); // last-chance save to localStorage
       e.preventDefault();
       e.returnValue = '';
     }
@@ -3990,6 +4030,7 @@
 
   // Save drafts on auth expiry (before 401 redirect)
   window.addEventListener('auth-expired', function () {
+    storeUnwritten();
     if (dirtyEdits.size > 0 || heldDrafts.size > 0) saveDraft();
   });
 

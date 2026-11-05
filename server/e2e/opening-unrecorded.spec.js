@@ -886,4 +886,53 @@ test.describe('a serve whose opening was not recorded (spec §5.4)', () => {
     await rowOf(page, x.segmentId).locator('.btn-propagate').click();
     await expect.poll(() => previews.length).toBe(1);
   });
+
+  test("after the branch with the browser's storage full, the kept and typed texts stay in memory and come back on the next opening (R2)", async ({
+    page,
+  }) => {
+    await openForReal(page);
+    const [w, y] = await freeRows(page, ['W', 'Y']);
+    // Fill this origin's storage to its quota, so every draft write below fails.
+    const filled = await page.evaluate(() => {
+      let n = 0;
+      for (const size of [256 * 1024, 16 * 1024, 1024, 64]) {
+        try {
+          for (;;) localStorage.setItem(`e2e-filler-${n++}`, 'x'.repeat(size));
+        } catch {
+          // full at this size: try a smaller one
+        }
+      }
+      return n;
+    });
+    expect(filled).toBeGreaterThan(0);
+    await typeInto(page, w.segmentId, w.text);
+    await typeInto(page, y.segmentId, y.text);
+    await page.route(writeTo('edit'), stub(409, { error: 'STALE_BASE', message: 'stub' }));
+    await page.route(MODULE_GET, stub(503, OPENING));
+    const asked = [];
+    const acceptAll = (d) => {
+      asked.push(d.message());
+      d.accept().catch(() => {});
+    };
+    page.on('dialog', acceptAll);
+    await rowOf(page, y.segmentId).getByRole('button', { name: 'Vista', exact: true }).click();
+    await expect.poll(() => asked).toContain(UI.segmentEditor.openingUnrecorded);
+    page.off('dialog', acceptAll);
+    await page.unroute(writeTo('edit'));
+    await expect(page.locator('#editor-container')).toBeHidden();
+    // Positive control: storage took neither text (keepText's write and the branch's both failed).
+    expect(await draftsOf(page, 'm68664')).toBe('');
+
+    await page.evaluate(() => {
+      for (const k of Object.keys(localStorage))
+        if (k.startsWith('e2e-filler-')) localStorage.removeItem(k);
+    });
+    const reopened = await reopen(page);
+    await expect(rowOf(page, y.segmentId).locator('textarea')).toHaveValue(y.text);
+    await expect(
+      rowOf(page, y.segmentId).locator('.draft-notice[data-notice="STALE_BASE"]')
+    ).toBeVisible();
+    await expect(rowOf(page, w.segmentId).locator('textarea')).toHaveValue(w.text);
+    expect(recoveryOffers(reopened)).toEqual([UI.confirm.draftRecovery(1)]); // only the typed text asks
+  });
 });

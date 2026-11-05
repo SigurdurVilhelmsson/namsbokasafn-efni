@@ -152,10 +152,13 @@ describe('a serve whose opening was not recorded (spec §5.4; PR2)', () => {
     const start = c.indexOf("if (unrecorded && pane.style.display !== 'none') {");
     expect(start).toBeGreaterThan(-1);
     const branch = c.slice(start, c.indexOf('alert(', start));
-    // Exactly these two statements, in this order: leaveModule empties dirtyEdits and heldDrafts, which saveDraft
-    // reads. Nothing else, so nothing drops a text before saveDraft writes it (the behaviour is the E2E's).
+    // Exactly these statements, in this order: leaveModule empties dirtyEdits and heldDrafts, which saveDraft and
+    // draftEntries read. Nothing else, so nothing drops a text before saveDraft writes it or, when storage refuses
+    // it, keepUnwritten holds it (PR2 review R2; the behaviour is the E2E's).
     const body = branch.slice(branch.indexOf('{') + 1, branch.lastIndexOf('}'));
-    expect(body.replace(/\s+/g, ' ').trim()).toBe('saveDraft(); leaveModule();');
+    expect(body.replace(/\s+/g, ' ').trim()).toBe(
+      'if (!saveDraft()) keepUnwritten(draftPrefix(), draftEntries()); leaveModule();'
+    );
     // control: neither runs outside the branch, so a first load and every other error keep today's path
     expect(c.slice(0, start)).not.toMatch(/saveDraft|leaveModule|dirtyEdits\.clear|'none'/);
   });
@@ -234,8 +237,9 @@ describe('an action answered after its unit was left touches nothing of it (PR2 
     );
     // and without leaveModule's docblock, which the slice ends on
     const keep = code(fnBody('keepLeftText', 'leaveModule')).replace(/\/\*\*[\s\S]*?\*\//g, '');
-    expect(keep).toContain(
-      'writeDraft(segmentSaveState.mergeRestoreSources(stored, [item]), key);'
+    expect(keep).toContain('const entries = segmentSaveState.mergeRestoreSources(draft, [item]);');
+    expect(keep).toMatch(
+      /if \(writeDraft\(entries, key\)\) unwrittenDrafts\.delete\(unit\);\s*else keepUnwritten\(unit, entries\);/
     );
     expect(keep).not.toMatch(/saveDraft|heldDrafts|paneState|dirtyEdits|loadModule/);
   });
@@ -278,5 +282,28 @@ describe('an action answered after its unit was left touches nothing of it (PR2 
     // reloadIfOpen, onSaveParked (synchronous, behind its own moduleData check), saveEdit's two open-unit refusal
     // paths (behind the catch's openUnit check), acceptSegment's two and restoreToVersion's.
     expect(code(src).match(/loadModule\(currentModuleId/g)).toHaveLength(7);
+  });
+});
+
+describe("a left unit's draft that storage refused stays in memory for its next opening (PR2 review R2)", () => {
+  const code = (s) => s.replace(/\/\/[^\n]*/g, '');
+  it('saveDraft and writeDraft report whether storage took the write', () => {
+    const save = code(fnBody('saveDraft', 'draftEntries'));
+    expect(save).toContain('return writeDraft(entries);');
+    expect(code(fnBody('writeDraft', 'saveDraft'))).toMatch(/return true;[\s\S]*return false;/);
+  });
+  it("restoreDraft merges the unit's unwritten value with what storage holds, then forgets it", () => {
+    expect(code(fnBody('restoreDraft', 'installDraft'))).toMatch(
+      /const values = draftValuesUnder\(prefix\);\s*if \(unwrittenDrafts\.has\(prefix\)\) \{\s*values\.push\(unwrittenDrafts\.get\(prefix\)\);\s*unwrittenDrafts\.delete\(prefix\);\s*\}\s*const found = values\.length > 0;/
+    );
+  });
+  it('leaving the page tries storage again, and asks first while memory alone holds a text', () => {
+    const unload = code(
+      src.slice(
+        src.indexOf("window.addEventListener('beforeunload'"),
+        src.indexOf("window.addEventListener('auth-expired'")
+      )
+    );
+    expect(unload).toMatch(/storeUnwritten\(\);[\s\S]*unwrittenDrafts\.size > 0/);
   });
 });
