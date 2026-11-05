@@ -456,6 +456,20 @@ describe('openOnServe (spec §5.4 step 4: when to answer 503)', () => {
     expect(openings()[0].opened_at_ms).toBe(T0);
   });
 
+  it('a clock that is not an integer is a failed step: the checks require integers', () => {
+    member('p-ed1', 'editor', [1]);
+    // A bare `opened_at_ms > 0` admitted both: any TEXT sorts above every number (PR2 review U41).
+    for (const bad of ['now', 1.5]) {
+      mo._setTestClock(() => bad);
+      expect(run('p-ed1', MINTED)).toEqual({ status: 'unrecorded', cause: 'step' });
+    }
+    expect(openings()).toEqual([]);
+    expect(errorSpy.mock.calls.map(([o]) => o.err.code)).toEqual([
+      'SQLITE_CONSTRAINT_CHECK',
+      'SQLITE_CONSTRAINT_CHECK',
+    ]);
+  });
+
   it('a racing serve that inserted first wins: the loser is skipped, writes no snapshot and logs nothing', () => {
     member('p-ed1', 'editor', [1]);
     // The predicate saw no row, as a loser's does; the trigger's insert lands first, and the

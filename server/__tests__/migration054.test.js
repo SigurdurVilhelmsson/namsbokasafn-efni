@@ -135,6 +135,31 @@ describe('migration 054: the opening record', () => {
     expect(() => insertOpening(db, 4, 1700000000000, -1)).toThrow(/CHECK/);
   });
 
+  it('the checks require integers: a TEXT or REAL value in a checked column is refused', () => {
+    const db = migrated();
+    // In SQLite any TEXT sorts above every number, so a bare `> 0` admitted 'now' and 1.5 (PR2
+    // review U41). The INTEGER affinity runs before the check, so what it turns into an integer is one.
+    expect(() => insertOpening(db, 3, 'now')).toThrow(/CHECK/);
+    expect(() => insertOpening(db, 4, 1.5)).toThrow(/CHECK/);
+    expect(() => insertOpening(db, 5, 1700000000000, 'many')).toThrow(/CHECK/);
+    expect(() => insertOpening(db, 6, 1700000000000, 0.5)).toThrow(/CHECK/);
+    insertOpening(db, 2);
+    expect(() => insertInflight(db, 2, 'chapter:title:ch02', 'all')).toThrow(/CHECK/);
+    expect(() => insertInflight(db, 2, 'chapter:title:ch02', 0.5)).toThrow(/CHECK/);
+    // control: an integer in each column is admitted, and nothing refused was written
+    expect(() => insertInflight(db, 2, 'chapter:title:ch02', 0)).not.toThrow();
+    expect(
+      db
+        .prepare(
+          'SELECT chapter, typeof(opened_at_ms) AS t, typeof(inflight_count) AS c FROM module_openings'
+        )
+        .all()
+    ).toEqual([{ chapter: 2, t: 'integer', c: 'integer' }]);
+    expect(
+      db.prepare('SELECT occurrence, typeof(occurrence) AS t FROM module_opening_inflight').all()
+    ).toEqual([{ occurrence: 0, t: 'integer' }]);
+  });
+
   it('a snapshot row needs its opening, and goes with it', () => {
     const db = migrated();
     expect(() => insertInflight(db, 9, 'chapter:title:ch09')).toThrow(

@@ -13,6 +13,11 @@
  * are ON in this build (CLAUDE.md § Tech Stack), so ON DELETE CASCADE is live and a later retention rule (G1.15)
  * deletes an opening and its snapshot in one statement.
  *
+ * Every numeric CHECK also requires typeof() = 'integer': an INTEGER column stores TEXT or REAL it cannot convert,
+ * and any TEXT sorts above every number, so `opened_at_ms > 0` alone admitted 'now' and 1.5 (PR2 review U41). The
+ * column's INTEGER affinity runs before the check, so a value it converts (2.0, '17') is stored as an integer and
+ * admitted.
+ *
  * Never throws (CLAUDE.md § Tech Stack, migration 048): migrationRunner calls up() on every start, and a throw would
  * stop the server booting. Both tables are created in one transaction, so a failure leaves neither, and /api/health's
  * checks.schema names the missing table (server/lib/schemaHealth.js).
@@ -24,8 +29,9 @@ function migrate(db) {
         book TEXT NOT NULL,
         chapter INTEGER NOT NULL,
         module_id TEXT NOT NULL,
-        opened_at_ms INTEGER NOT NULL CHECK (opened_at_ms > 0),
-        inflight_count INTEGER NOT NULL CHECK (inflight_count >= 0),
+        opened_at_ms INTEGER NOT NULL CHECK (typeof(opened_at_ms) = 'integer' AND opened_at_ms > 0),
+        inflight_count INTEGER NOT NULL
+          CHECK (typeof(inflight_count) = 'integer' AND inflight_count >= 0),
         PRIMARY KEY (book, chapter, module_id)
       );
       CREATE TABLE IF NOT EXISTS module_opening_inflight (
@@ -33,7 +39,7 @@ function migrate(db) {
         chapter INTEGER NOT NULL,
         module_id TEXT NOT NULL,
         segment_id TEXT NOT NULL,
-        occurrence INTEGER NOT NULL CHECK (occurrence >= -1),
+        occurrence INTEGER NOT NULL CHECK (typeof(occurrence) = 'integer' AND occurrence >= -1),
         PRIMARY KEY (book, chapter, module_id, segment_id, occurrence),
         FOREIGN KEY (book, chapter, module_id)
           REFERENCES module_openings (book, chapter, module_id) ON DELETE CASCADE
