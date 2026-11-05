@@ -503,7 +503,8 @@ function journaldSettings(text, file) {
 /**
  * The access_log directives of an nginx file's text, by nginx's tokenizer (ngx_conf_read_token): a
  * directive starts at the file's start or after `;`, `{` or `}`; a `#` at a token's start comments out
- * the rest of the line; inside quotes `;` and `#` are text; a bare token ends at whitespace, `;` or `{`.
+ * the rest of the line; inside quotes `;` and `#` are text; a bare token ends at whitespace, `;` or `{`,
+ * except a `{` after an unescaped `$` (`${host}`), which nginx keeps in the token.
  * Each directive is its tokens joined by one space, up to its own `;`: a comment inside it, and whatever
  * follows the `;`, stay behind. One with no `;` before a `{`, `}` or the file's end (which nginx
  * refuses) is `{ unterminated: true }`, with none of its text: without a terminator it has no end.
@@ -531,7 +532,16 @@ function accessLogDirectives(text) {
         while (i < text.length && text[i] !== c) i += text[i] === '\\' ? 2 : 1;
         i += 1;
       } else {
-        while (i < text.length && !/[\s;{]/.test(text[i])) i += text[i] === '\\' ? 2 : 1;
+        while (i < text.length && !/[\s;{]/.test(text[i])) {
+          if (text[i] === '\\') {
+            i += 2;
+          } else if (text[i] === '$') {
+            i += 1;
+            while (text[i] === '{') i += 1; // a `{` after `$` is the token's (`${host}`), as its variable flag holds
+          } else {
+            i += 1;
+          }
+        }
       }
       const token = text.slice(start, i);
       if (atStart && token === 'access_log') tokens = [token];

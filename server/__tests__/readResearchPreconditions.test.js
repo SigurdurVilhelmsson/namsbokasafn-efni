@@ -846,6 +846,28 @@ describe('G-1c (spec §9): journald retention and nginx’s request log', () => 
     ]);
   });
 
+  // PR2 review follow-up on U8 (R5). Measured with nginx 1.24.0 (Ubuntu's package) -t: `${host}` in a path is
+  // "syntax is ok", since the tokenizer keeps a `{` that follows `$` in the token, and every `{` after it while its
+  // `variable` flag holds (`${{x}` passes the tokenizer and is refused later, by the variable compiler, as any bad
+  // argument is, which the probe does not judge); an escaped `\$` sets no flag, so its `{` ends the token and nginx
+  // refuses the directive as "not terminated by ;".
+  it('keeps a `{` after `$` inside an access_log token, as nginx’s tokenizer does; after an escaped `\\$` it ends the token', () => {
+    plant(
+      'etc/nginx/conf.d/vars.conf',
+      'server {\n  access_log /var/log/nginx/${host}.access.log combined;\n  access_log /var/log/nginx/b.log;\n' +
+        '  access_log /var/log/nginx/${{x}.log;\n  access_log /var/log/nginx/\\${SENTINEL}.log;\n}\n'
+    );
+    const g = readResearchPreconditions(ctx()).sections['G-1c'];
+    const file = 'nginx/conf.d/vars.conf';
+    expect(g.nginx.accessLog).toEqual([
+      { file, line: 'access_log /var/log/nginx/${host}.access.log combined;' },
+      { file, line: 'access_log /var/log/nginx/b.log;' },
+      { file, line: 'access_log /var/log/nginx/${{x}.log;' },
+      { file, unterminated: true },
+    ]);
+    expect(JSON.stringify(g)).not.toContain('SENTINEL');
+  });
+
   it('an access_log with no `;` before a block’s end or the file’s end is flagged, with none of its text', () => {
     // nginx refuses such a file; with no terminator there is no end to the directive, so nothing of it is printed.
     plant(
