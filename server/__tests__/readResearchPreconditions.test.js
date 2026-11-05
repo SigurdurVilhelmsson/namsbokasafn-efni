@@ -628,6 +628,220 @@ describe('G-1c (spec §9): journald retention and nginx’s request log', () => 
     ).toEqual({ ran: true, output: DISK_USAGE });
   });
 
+  // PR2 review U8: the output is pasted into the register, so a line's other directives and comments stay behind.
+  it('reports each access_log directive alone, to its own `;`: what else its line holds stays behind', () => {
+    const SITE =
+      'server {\n  access_log off; server_name SENTINEL-HOST.example;\n' +
+      '  access_log /var/log/nginx/r.log combined; # contact SENTINEL-NAME sentinel@skoli.example\n' +
+      // A directive over two lines with a comment between: the comment is not part of it.
+      '  access_log /var/log/nginx/two.log # SENTINEL-INSIDE\n      combined;\n' +
+      // Inside quotes a `;` ends nothing and a `#` starts nothing (nginx's tokenizer).
+      '  access_log "/var/log/nginx/a;b#c.log" combined; listen 80; # SENTINEL-AFTER\n}\n';
+    plant('etc/nginx/sites-enabled/ritstjorn', SITE);
+    const g = readResearchPreconditions(ctx()).sections['G-1c'];
+    const file = 'nginx/sites-enabled/ritstjorn';
+    expect(g.nginx.accessLog).toEqual([
+      { file, line: 'access_log off;' },
+      { file, line: 'access_log /var/log/nginx/r.log combined;' },
+      { file, line: 'access_log /var/log/nginx/two.log combined;' },
+      { file, line: 'access_log "/var/log/nginx/a;b#c.log" combined;' },
+    ]);
+    for (const s of [
+      'SENTINEL-HOST',
+      'SENTINEL-NAME',
+      '@skoli',
+      'SENTINEL-INSIDE',
+      'SENTINEL-AFTER',
+      'listen',
+    ]) {
+      expect(SITE, `control: ${s} is in the file`).toContain(s);
+      expect(JSON.stringify(g), s).not.toContain(s);
+    }
+  });
+
+  // PR2 review U19: a directive starts after `{`, `;` or `}` as well as at a line's start; elsewhere the word is an
+  // argument.
+  it('finds access_log after `{` or `;` on a line, and only where a directive starts', () => {
+    plant(
+      'etc/nginx/conf.d/inline.conf',
+      'server { listen 80; access_log /var/log/nginx/inline.log; }\n' +
+        'server { location / { access_log off; } }\n' +
+        "log_format main 'access_log NOT-A-DIRECTIVE';\n" +
+        'error_log /var/log/nginx/e.log access_log;\n'
+    );
+    expect(readResearchPreconditions(ctx()).sections['G-1c'].nginx.accessLog).toEqual([
+      { file: 'nginx/conf.d/inline.conf', line: 'access_log /var/log/nginx/inline.log;' },
+      { file: 'nginx/conf.d/inline.conf', line: 'access_log off;' },
+    ]);
+  });
+
+  it('an access_log with no `;` before a block’s end or the file’s end is flagged, with none of its text', () => {
+    // nginx refuses such a file; with no terminator there is no end to the directive, so nothing of it is printed.
+    plant(
+      'etc/nginx/sites-enabled/broken',
+      'server {\n  access_log /var/log/nginx/SENTINEL-UNTERMINATED.log\n}\naccess_log /var/log/SENTINEL-EOF.log'
+    );
+    const g = readResearchPreconditions(ctx()).sections['G-1c'];
+    expect(g.nginx.accessLog).toEqual([
+      { file: 'nginx/sites-enabled/broken', unterminated: true },
+      { file: 'nginx/sites-enabled/broken', unterminated: true },
+    ]);
+    expect(JSON.stringify(g)).not.toContain('SENTINEL');
+  });
+
+  // PR2 review U8: systemd keeps a `#` after a value as part of it (and then refuses the setting), so a value is
+  // printed only when it is in its key's grammar; otherwise the key alone, flagged.
+  it('reports a journald value only when it is in its key’s grammar; otherwise the key alone, flagged', () => {
+    const MAIN =
+      '[Journal]\nSystemMaxUse=500M # set by SENTINEL-NAME\nMaxRetentionSec=SENTINEL-SECRET\n' +
+      'Storage="persistent"\nForwardToSyslog=maybe\nSystemMaxFiles=SENTINEL-COUNT\nSystemMaxFileSize=\n' +
+      'SystemKeepFree = 1G 512M\nMaxFileSec=1 month\nForwardToSyslog=No\nStorage=volatile\nRuntimeMaxFiles=100\n';
+    plant('etc/systemd/journald.conf', MAIN);
+    const g = readResearchPreconditions(ctx()).sections['G-1c'];
+    const file = 'etc/systemd/journald.conf';
+    expect(g.journald.settings).toEqual([
+      { file, key: 'SystemMaxUse', valueUnparsed: true },
+      { file, key: 'MaxRetentionSec', valueUnparsed: true },
+      { file, key: 'Storage', valueUnparsed: true },
+      { file, key: 'ForwardToSyslog', valueUnparsed: true },
+      { file, key: 'SystemMaxFiles', valueUnparsed: true },
+      { file, key: 'SystemMaxFileSize', valueUnparsed: true }, // empty: not a size
+      { file, line: 'SystemKeepFree=1G 512M' },
+      { file, line: 'MaxFileSec=1 month' },
+      { file, line: 'ForwardToSyslog=No' },
+      { file, line: 'Storage=volatile' },
+      { file, line: 'RuntimeMaxFiles=100' },
+    ]);
+    expect(MAIN).toContain('SENTINEL'); // control
+    expect(JSON.stringify(g)).not.toContain('SENTINEL');
+  });
+
+  it('each journald grammar accepts what systemd 255 parses and refuses what it refuses', () => {
+    // Measured 2026-11-05 with systemd 255.4-1ubuntu8.18's own parsers, through `systemd-analyze verify` on a unit
+    // whose setting shares journald's parser: MemoryMax= (parse_size, base 1024), RuntimeMaxSec= (parse_sec) and
+    // RemainAfterExit= (parse_boolean). Refused means systemd logged "ignoring".
+    const MEASURED = {
+      SystemMaxUse: {
+        accepted: [
+          '500M',
+          '1.5G',
+          '1G 512M',
+          '1G512M',
+          '500 M',
+          '500',
+          '0',
+          '500K',
+          '1T',
+          '2E',
+          '1P',
+        ],
+        accepted2: ['500B', '5.G', '1B 2', '1K 2'],
+        refused: [
+          '500m',
+          '500MB',
+          '"500M"',
+          '-1M',
+          '1,5G',
+          '500Mi',
+          '500k',
+          '.5G',
+          '1 2',
+          '1 2K',
+          '500M # x',
+        ],
+      },
+      MaxRetentionSec: {
+        accepted: [
+          '1month',
+          '1 month',
+          '2week',
+          '5min 20s',
+          '5min20s',
+          '1.5h',
+          'infinity',
+          '0',
+          '1M',
+          '1m',
+        ],
+        accepted2: [
+          '3 days',
+          '1y',
+          '1 years',
+          '10',
+          '1d12h',
+          '1us',
+          '1μs',
+          '1µs',
+          '2 weeks',
+          '1 hr',
+          '1msec',
+        ],
+        accepted3: ['1 2', '.5h'],
+        refused: ['1e3', 'month', '1 fortnight', '-1s', '1.s', 'Infinity', '1 month # x'],
+      },
+      ForwardToSyslog: {
+        accepted: ['yes', 'YES', 'y', 'Y', 'true', 'True', 't', 'on', 'On', '1'],
+        accepted2: ['no', 'n', 'false', 'f', 'off', '0'],
+        refused: ['maybe', 'yes # x', 'enable'],
+      },
+    };
+    for (const [key, { refused, ...ok }] of Object.entries(MEASURED)) {
+      const accepted = Object.values(ok).flat();
+      plant(
+        'etc/systemd/journald.conf',
+        `[Journal]\n${[...accepted, ...refused].map((v) => `${key}=${v}`).join('\n')}\n`
+      );
+      expect(settings()).toEqual([
+        ...accepted.map((v) => ({ file: 'etc/systemd/journald.conf', line: `${key}=${v}` })),
+        ...refused.map(() => ({ file: 'etc/systemd/journald.conf', key, valueUnparsed: true })),
+      ]);
+    }
+  });
+
+  // PR2 review U19: systemd applies a key only under its section, matched exactly on the trimmed line (measured with
+  // systemd-analyze: `[ Service ]` and `[service]` are unknown sections), and a file starts outside every section.
+  it('counts a journald key only under [Journal], as systemd does', () => {
+    plant(
+      'etc/systemd/journald.conf',
+      'SystemMaxUse=1G\n[Other]\nMaxRetentionSec=1d\n[ Journal ]\nSystemMaxFiles=5\n[journal]\nStorage=none\n' +
+        '  [Journal]  \nStorage=auto\n[Other]\nSystemMaxUse=2G\n'
+    );
+    // The main file ends outside [Journal], and a drop-in starts outside every section whatever came before.
+    plant('etc/systemd/journald.conf.d/10-noheader.conf', 'SystemMaxUse=3G\n');
+    expect(settings()).toEqual([{ file: 'etc/systemd/journald.conf', line: 'Storage=auto' }]);
+  });
+
+  // PR2 review U17: as root a mode-000 file still reads, so a directory stands in for a file the probe's user cannot
+  // read (EISDIR), and a regular file for a directory it cannot list (ENOTDIR): any error but ENOENT is unreadable.
+  it('a file or directory it cannot read is listed `readable: false`, never read as absent', () => {
+    fs.mkdirSync(path.join(root, 'etc/systemd/journald.conf'), { recursive: true });
+    fs.mkdirSync(path.join(root, 'etc/systemd/journald.conf.d/50-retention.conf'), {
+      recursive: true,
+    });
+    plant('etc/systemd/journald.conf.d/60-size.conf', '[Journal]\nSystemMaxUse=1G\n');
+    plant('run/systemd/journald.conf.d', 'not a directory\n');
+    plant('etc/nginx/nginx.conf', 'http { access_log /var/log/nginx/access.log; }\n');
+    plant('etc/nginx/conf.d', 'not a directory\n');
+    fs.mkdirSync(path.join(root, 'etc/nginx/sites-enabled/ritstjorn'), { recursive: true });
+    fs.mkdirSync(path.join(root, 'etc/logrotate.d/nginx'), { recursive: true });
+    const g = readResearchPreconditions(ctx()).sections['G-1c'];
+    // In journald's order: the main file, a drop-in directory it could not list (its files would sort among the
+    // drop-ins), then the drop-ins.
+    expect(g.journald.settings).toEqual([
+      { file: 'etc/systemd/journald.conf', readable: false },
+      { file: 'run/systemd/journald.conf.d', readable: false },
+      { file: 'etc/systemd/journald.conf.d/50-retention.conf', readable: false },
+      { file: 'etc/systemd/journald.conf.d/60-size.conf', line: 'SystemMaxUse=1G' },
+    ]);
+    expect(g.nginx.accessLog).toEqual([
+      { file: 'nginx/nginx.conf', line: 'access_log /var/log/nginx/access.log;' },
+      { file: 'nginx/conf.d', readable: false },
+      { file: 'nginx/sites-enabled/ritstjorn', readable: false },
+    ]);
+    expect(g.logrotate.nginx).toEqual({ readable: false });
+    expect(g.logrotate.rsyslog).toBe(null); // control: absent is still null
+  });
+
   it('a box with none of these files reports empty findings, not a failure', () => {
     const noCommands = () => ({ ran: false, code: null, stdout: '', stderr: '' });
     expect(readResearchPreconditions(ctx({ exec: noCommands })).sections['G-1c']).toEqual({
@@ -828,6 +1042,17 @@ describe('it names no editor (spec §9, index decision 14)', () => {
       'etc/rsyslog.conf',
       '$DefaultNetstreamDriverKeyFile SENTINEL-SECRET-6\n'
     );
+    // Text after a reported directive on its own line (PR2 review U8): a journald value systemd would keep whole,
+    // another nginx directive, and an nginx comment naming a person.
+    const journald = plant(
+      'etc/systemd/journald.conf',
+      '[Journal]\nSystemMaxUse=500M # set by Jón Jónsson SENTINEL-SECRET-7\n'
+    );
+    const site = plant(
+      'etc/nginx/sites-enabled/ritstjorn',
+      'access_log off; server_name SENTINEL-SECRET-8.example;\n' +
+        'access_log /var/log/nginx/r.log combined; # Jón Jónsson jon@skoli.example\n'
+    );
     const text = JSON.stringify(readResearchPreconditions(ctx({ exec })));
 
     // Positive control: each sentinel really is in what the probe read.
@@ -853,6 +1078,10 @@ describe('it names no editor (spec §9, index decision 14)', () => {
       'SENTINEL-SECRET-4': fs.readFileSync(vendor, 'utf8'),
       'SENTINEL-SECRET-5': fs.readFileSync(rotation, 'utf8'),
       'SENTINEL-SECRET-6': fs.readFileSync(rsyslogConf, 'utf8'),
+      'SENTINEL-SECRET-7': fs.readFileSync(journald, 'utf8'),
+      'SENTINEL-SECRET-8': fs.readFileSync(site, 'utf8'),
+      'Jón Jónsson': fs.readFileSync(site, 'utf8'),
+      'jon@skoli.example': fs.readFileSync(site, 'utf8'),
     };
     for (const [s, source] of Object.entries(sources)) {
       expect(source.includes(s), `control: ${s} is in its source`).toBe(true);
@@ -862,6 +1091,14 @@ describe('it names no editor (spec §9, index decision 14)', () => {
     // Controls: the probe read the vendor drop-in and the rsyslog logrotate file the sentinels sit in.
     expect(text.includes('ForwardToSyslog=yes')).toBe(true);
     expect(text.includes('"rotate 4"')).toBe(true);
+    // Controls: the journald key and both access_log directives on those lines were read and reported.
+    expect(
+      text.includes(
+        '{"file":"etc/systemd/journald.conf","key":"SystemMaxUse","valueUnparsed":true}'
+      )
+    ).toBe(true);
+    expect(text.includes('"access_log off;"')).toBe(true);
+    expect(text.includes('"access_log /var/log/nginx/r.log combined;"')).toBe(true);
   });
 });
 

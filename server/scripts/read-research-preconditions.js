@@ -11,18 +11,26 @@
  *         systemd/journald.conf.d/ directories of /etc, /run, /usr/local/lib and /usr/lib, where a
  *         same-named file in an earlier directory masks a later one (a /dev/null link included), a
  *         hidden file is skipped, and the survivors run in filename order whatever their directory,
- *         a later one overriding. Of each file only the retention keys and ForwardToSyslog, with the
- *         file's path under its own root (`etc/…`, `run/…`, `usr/…`). `systemd-analyze cat-config
- *         systemd/journald.conf` differs from journald 255 on the main file: it shows the first of
+ *         a later one overriding. Of each file only the retention keys and ForwardToSyslog, read as
+ *         systemd reads them (a key counts only under a `[Journal]` header, and a file starts outside
+ *         every section), with the file's path under its own root (`etc/…`, `run/…`, `usr/…`): as
+ *         `Key=value` when the value is in the grammar of that key's parser (sizes, time spans, counts,
+ *         booleans, Storage's four modes; each measured against systemd 255), and otherwise as the key
+ *         alone with `valueUnparsed: true` and no value (systemd keeps a `#` after a value as part of
+ *         it, and then refuses the setting). `systemd-analyze cat-config systemd/journald.conf`
+ *         differs from journald 255 on the main file: it shows the first of
  *         /etc, /run, /usr/local/lib and /usr/lib's journald.conf that exists, and journald opens none
  *         of the last three, so those are listed by path only, as `notReadBySystemd255`. Whether
  *         /var/log/journal exists; `journalctl --disk-usage`'s line. Forwarding hands the request log
  *         (journald's) to the syslog socket, so: whether /etc/rsyslog.conf exists (never read),
  *         `systemctl is-active rsyslog`'s line, and the rotation directives of
- *         /etc/logrotate.d/rsyslog. nginx's `access_log` lines (nginx.conf, conf.d/*.conf,
- *         sites-enabled/*) and the rotation directives of /etc/logrotate.d/nginx: each directive
- *         alone, never the rest of its line. It decides what the consent text says about the request
- *         log (§6 item 14) and G1.15's rule.
+ *         /etc/logrotate.d/rsyslog. nginx's `access_log` directives (nginx.conf, conf.d/*.conf,
+ *         sites-enabled/*), found as nginx's tokenizer finds a directive (at a line's start or after
+ *         `;`, `{` or `}`), each its own tokens up to its own `;`, a comment inside it dropped, so
+ *         nothing else on its line leaves the probe; one with no `;` (which nginx refuses) is
+ *         `unterminated: true`, with none of its text. And the rotation directives of
+ *         /etc/logrotate.d/nginx, each the directive alone, never the rest of its line. It decides what
+ *         the consent text says about the request log (§6 item 14) and G1.15's rule.
  *   G-1d  `enforce_assignments` per book; the study book's `user_chapter_assignments` rows, as
  *         (user id, chapter); the `users` rows, as (id, role, active); and AUTO_CREATE_USERS as the
  *         server reads it (systemd's Environment= and EnvironmentFile=, then server/.env where
@@ -46,6 +54,17 @@
  * so it is unconfirmed when a `readable: false` file outranks its source (every file outranks
  * Environment= and server/.env, a later file an earlier one): that file may set the key, and only a
  * run that can read it settles the value.
+ *
+ * In G-1c a file this user cannot read, or a directory it cannot list, is listed `{ file, readable:
+ * false }` in its place (a journald drop-in directory before the drop-ins, among which its files
+ * would sort), and an unreadable logrotate file is `{ readable: false }`: never read as absent (null,
+ * or no entry), since journald, nginx and logrotate read their files as root.
+ *
+ * G-1c's known limits, so its lists are not taken for the whole picture:
+ *   - nginx: only the three places above. A file pulled in by any other `include` (snippets/,
+ *     modules-enabled/, a path of the site's own) is not read, and an access_log there is missing.
+ *     A directive name written in quotes is not recognised.
+ *   - journald: a value continued onto the next line by a trailing `\` reads as unparsed.
  *
  * It runs where neither PR1 nor PR2 is deployed: it requires only modules present on production
  * before PR1 (its test pins the list; the study-book allowlist is not one of them, so the book is
@@ -229,9 +248,37 @@ function readG1e({ db, book, booksDir }) {
 
 const UNIT_ID = /^(m\d{5}|chapter-metadata)$/; // what the module route serves (validateModule, validateParams.js)
 // The retention keys (the Runtime* limits bound the journal when it is volatile, under /run), and
-// ForwardToSyslog, which decides whether the request log also reaches rsyslog.
-const JOURNALD_KEY =
-  /^(Storage|SystemMaxUse|SystemKeepFree|SystemMaxFileSize|SystemMaxFiles|RuntimeMaxUse|RuntimeKeepFree|RuntimeMaxFileSize|RuntimeMaxFiles|MaxRetentionSec|MaxFileSec|ForwardToSyslog)\s*=/;
+// ForwardToSyslog, which decides whether the request log also reaches rsyslog. Each with the grammar of
+// the parser systemd 255's journald gives it (journald-gperf: config_parse_storage, _iec_uint64,
+// _uint64, _sec, _bool), measured through systemd-analyze verify on unit settings that share the
+// parser: a value is printed only when it is in its key's grammar, so no free text leaves the probe
+// (systemd keeps a `#` after a value as part of the value, and then refuses the setting). Each grammar
+// is narrower than systemd's or equal to it: a value outside it is flagged, never guessed.
+const SIZE_PART = String.raw`\d+(?:\.\d*)?`; // parse_size: "5.G" is a size, ".5G" is not
+const SIZE = new RegExp(
+  String.raw`^(?:${SIZE_PART}\s*[KMGTPEB]\s*)*${SIZE_PART}(?:\s*[KMGTPEB])?$`
+);
+const TIME_UNIT =
+  'usec|us|μs|µs|msec|ms|seconds|second|sec|s|minutes|minute|min|m|hours|hour|hr|h|days|day|d|weeks|week|w|months|month|M|years|year|y';
+const TIMESPAN = new RegExp(
+  String.raw`^(?:infinity|(?:(?:\d+(?:\.\d+)?|\.\d+)\s*(?:${TIME_UNIT})?\s*)+)$`
+);
+const JOURNALD_GRAMMAR = new Map([
+  ['Storage', /^(?:volatile|persistent|auto|none)$/],
+  ...[
+    'SystemMaxUse',
+    'SystemKeepFree',
+    'SystemMaxFileSize',
+    'RuntimeMaxUse',
+    'RuntimeKeepFree',
+    'RuntimeMaxFileSize',
+  ].map((k) => [k, SIZE]),
+  ['SystemMaxFiles', /^\d+$/],
+  ['RuntimeMaxFiles', /^\d+$/],
+  ['MaxRetentionSec', TIMESPAN],
+  ['MaxFileSec', TIMESPAN],
+  ['ForwardToSyslog', /^(?:1|yes|y|true|t|on|0|no|n|false|f|off)$/i],
+]);
 // A rotation keyword (weekly with its optional weekday, rotate and maxage with their count), then
 // whitespace or the line's end: logrotate (3.21.0's config.c) refuses a keyword run into other
 // text, as in `daily-x`. Only the group is reported, so the rest of a line (`daily # …`,
@@ -239,26 +286,19 @@ const JOURNALD_KEY =
 const ROTATION =
   /^(hourly|daily|weekly(?:[ \t]+\d+)?|monthly|yearly|rotate[ \t]+\d+|maxage[ \t]+\d+)(?=\s|$)/;
 
-/** The trimmed lines of a file that match re, or null when the file cannot be read. Never throws. */
-function directiveLines(file, re) {
+/** A file or directory that exists but that this user cannot read: never mistaken for an absent one. */
+const UNREADABLE = Symbol('unreadable');
+
+/** A file's text; null when it is absent (a dangling link included, as for journald); UNREADABLE otherwise. */
+function readText(file) {
   try {
-    return fs
-      .readFileSync(file, 'utf8')
-      .split('\n')
-      .map((l) => l.trim())
-      .filter((l) => re.test(l));
-  } catch {
-    return null; // absent or unreadable: reported as no lines, never guessed
+    return fs.readFileSync(file, 'utf8');
+  } catch (err) {
+    return err.code === 'ENOENT' ? null : UNREADABLE;
   }
 }
 
-/** A logrotate file's rotation directives, each the directive alone, or null when it cannot be read. */
-function rotationDirectives(file) {
-  const lines = directiveLines(file, ROTATION);
-  return lines && lines.map((l) => ROTATION.exec(l)[1]);
-}
-
-/** The sorted paths of a directory's entries that pass filter; [] when it cannot be read. */
+/** The sorted paths of a directory's entries that pass filter; [] when it is absent; UNREADABLE otherwise. */
 function listDir(dir, filter = () => true) {
   try {
     return fs
@@ -266,14 +306,98 @@ function listDir(dir, filter = () => true) {
       .filter(filter)
       .sort()
       .map((f) => path.join(dir, f));
-  } catch {
-    return [];
+  } catch (err) {
+    return err.code === 'ENOENT' ? [] : UNREADABLE;
   }
 }
 
 /**
- * The files journald applies, in its order, each as { abs, file } with `file` under its own root,
- * and the main-file candidates journald never opens: systemd 255's journald, measured by strace.
+ * The journald settings of one file's text, as systemd's parser reads them: each line trimmed, `#` and
+ * `;` lines comments, a key counted only under a `[Journal]` header matched exactly (a file starts
+ * outside every section), whitespace around `=` and the value stripped. Each as `Key=value`, or as the
+ * key alone with `valueUnparsed: true` when the value is not in its grammar.
+ */
+function journaldSettings(text, file) {
+  const out = [];
+  let inJournal = false;
+  for (const raw of text.split('\n')) {
+    const l = raw.trim();
+    if (!l || l.startsWith('#') || l.startsWith(';')) continue;
+    if (l.startsWith('[')) {
+      inJournal = l === '[Journal]';
+      continue;
+    }
+    const m = inJournal && /^([^=]+?)\s*=\s*(.*)$/.exec(l);
+    const grammar = m && JOURNALD_GRAMMAR.get(m[1]);
+    if (!grammar) continue;
+    out.push(
+      grammar.test(m[2])
+        ? { file, line: `${m[1]}=${m[2]}` }
+        : { file, key: m[1], valueUnparsed: true }
+    );
+  }
+  return out;
+}
+
+/**
+ * The access_log directives of an nginx file's text, by nginx's tokenizer (ngx_conf_read_token): a
+ * directive starts at the file's start or after `;`, `{` or `}`; a `#` at a token's start comments out
+ * the rest of the line; inside quotes `;` and `#` are text; a bare token ends at whitespace, `;` or `{`.
+ * Each directive is its tokens joined by one space, up to its own `;`: a comment inside it, and whatever
+ * follows the `;`, stay behind. One with no `;` before a `{`, `}` or the file's end (which nginx
+ * refuses) is `{ unterminated: true }`, with none of its text: without a terminator it has no end.
+ */
+function accessLogDirectives(text) {
+  const out = [];
+  let atStart = true;
+  let tokens = null; // the access_log being read
+  let i = 0;
+  while (i < text.length) {
+    const c = text[i];
+    if (/\s/.test(c)) {
+      i += 1;
+    } else if (c === '#') {
+      while (i < text.length && text[i] !== '\n') i += 1;
+    } else if (c === ';' || c === '{' || c === '}') {
+      if (tokens) out.push(c === ';' ? { line: `${tokens.join(' ')};` } : { unterminated: true });
+      tokens = null;
+      atStart = true;
+      i += 1;
+    } else {
+      const start = i;
+      if (c === '"' || c === "'") {
+        i += 1;
+        while (i < text.length && text[i] !== c) i += text[i] === '\\' ? 2 : 1;
+        i += 1;
+      } else {
+        while (i < text.length && !/[\s;{]/.test(text[i])) i += text[i] === '\\' ? 2 : 1;
+      }
+      const token = text.slice(start, i);
+      if (atStart && token === 'access_log') tokens = [token];
+      else if (tokens) tokens.push(token);
+      atStart = false;
+    }
+  }
+  if (tokens) out.push({ unterminated: true });
+  return out;
+}
+
+/** A logrotate file's rotation directives, each the directive alone; null when absent. */
+function rotationDirectives(file) {
+  const text = readText(file);
+  if (text === UNREADABLE) return { readable: false };
+  if (text === null) return null;
+  return text
+    .split('\n')
+    .map((l) => ROTATION.exec(l.trim()))
+    .filter(Boolean)
+    .map((m) => m[1]);
+}
+
+/**
+ * The files journald applies, in its order, each as { abs, file } with `file` under its own root; the
+ * drop-in directories it could not list; and the main-file candidates journald never opens: systemd
+ * 255's journald, measured by strace.
  */
 function journaldFiles({ etcRoot, runRoot, usrRoot }) {
   // Highest precedence first.
@@ -289,9 +413,15 @@ function journaldFiles({ etcRoot, runRoot, usrRoot }) {
   const [main, ...notRead] = dirs.map((d) => at(d, 'journald.conf'));
   // Drop-ins: a name taken by an earlier directory masks it in every later one.
   const byName = new Map();
+  const unlisted = [];
   for (const d of dirs) {
     const dropIns = at(d, 'journald.conf.d');
-    for (const f of listDir(dropIns.abs, (n) => n.endsWith('.conf') && !n.startsWith('.'))) {
+    const names = listDir(dropIns.abs, (n) => n.endsWith('.conf') && !n.startsWith('.'));
+    if (names === UNREADABLE) {
+      unlisted.push(dropIns.file);
+      continue;
+    }
+    for (const f of names) {
       const name = path.basename(f);
       if (!byName.has(name)) byName.set(name, at(dropIns, name));
     }
@@ -299,7 +429,9 @@ function journaldFiles({ etcRoot, runRoot, usrRoot }) {
   const dropIns = [...byName.keys()].sort().map((name) => byName.get(name));
   return {
     // An absent or dangling etc file reads as no lines, as journald's open gets ENOENT.
-    files: [main, ...dropIns],
+    main,
+    unlisted,
+    dropIns,
     // Presence only: never opened, by journald 255 or by the probe.
     notRead: notRead.filter((f) => fs.existsSync(f.abs)).map((f) => f.file),
   };
@@ -307,8 +439,6 @@ function journaldFiles({ etcRoot, runRoot, usrRoot }) {
 
 function readG1c({ etcRoot, runRoot, usrRoot, varRoot, exec }) {
   const rel = (f) => path.relative(etcRoot, f);
-  const tagged = (files, re) =>
-    files.flatMap((f) => (directiveLines(f, re) || []).map((line) => ({ file: rel(f), line })));
   const du = exec('journalctl', ['--disk-usage']);
   const rsyslogActive = exec('systemctl', ['is-active', 'rsyslog']);
   // A command's first non-blank line, at most 200 characters, or null when it printed none.
@@ -318,13 +448,30 @@ function readG1c({ etcRoot, runRoot, usrRoot, varRoot, exec }) {
       .find((l) => l.trim());
     return line ? line.trim().slice(0, 200) : null;
   };
-  const ng = path.join(etcRoot, 'nginx');
   const journal = journaldFiles({ etcRoot, runRoot, usrRoot });
+  const settingsOf = ({ abs, file }) => {
+    const text = readText(abs);
+    if (text === UNREADABLE) return [{ file, readable: false }];
+    return text === null ? [] : journaldSettings(text, file);
+  };
+  const ng = path.join(etcRoot, 'nginx');
+  const listed = (dir, filter) => {
+    const files = listDir(dir, filter);
+    return files === UNREADABLE ? [{ unlisted: dir }] : files;
+  };
+  const accessLogOf = (f) => {
+    if (typeof f === 'object') return [{ file: rel(f.unlisted), readable: false }];
+    const text = readText(f);
+    if (text === UNREADABLE) return [{ file: rel(f), readable: false }];
+    return text === null ? [] : accessLogDirectives(text).map((d) => ({ file: rel(f), ...d }));
+  };
   return {
     journald: {
-      settings: journal.files.flatMap(({ abs, file }) =>
-        (directiveLines(abs, JOURNALD_KEY) || []).map((line) => ({ file, line }))
-      ),
+      settings: [
+        ...settingsOf(journal.main),
+        ...journal.unlisted.map((file) => ({ file, readable: false })),
+        ...journal.dropIns.flatMap(settingsOf),
+      ],
       notReadBySystemd255: journal.notRead,
       persistentDir: fs.existsSync(path.join(varRoot, 'log', 'journal')),
       diskUsage: { ran: du.ran, output: du.ran ? firstLine(du.stdout || du.stderr) : null },
@@ -338,15 +485,13 @@ function readG1c({ etcRoot, runRoot, usrRoot, varRoot, exec }) {
       },
     },
     nginx: {
-      // Only the access_log lines: a server_name or any other directive stays behind.
-      accessLog: tagged(
-        [
-          path.join(ng, 'nginx.conf'),
-          ...listDir(path.join(ng, 'conf.d'), (f) => f.endsWith('.conf')),
-          ...listDir(path.join(ng, 'sites-enabled')),
-        ],
-        /^access_log\b/
-      ),
+      // Only the access_log directives, each cut at its own `;`: a server_name, a comment or any
+      // other directive stays behind, on its line or beside it.
+      accessLog: [
+        path.join(ng, 'nginx.conf'),
+        ...listed(path.join(ng, 'conf.d'), (f) => f.endsWith('.conf')),
+        ...listed(path.join(ng, 'sites-enabled')),
+      ].flatMap(accessLogOf),
     },
     // The access log's and the syslog's retention are set here (§6 item 14, G1.15), so only the
     // rotation directives.
