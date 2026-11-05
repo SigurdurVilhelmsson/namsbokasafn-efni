@@ -596,7 +596,28 @@
       // Restore module list on error so users can retry
       document.getElementById('module-selector').style.display = 'block';
       chapterSelect.dispatchEvent(new Event('change'));
-      alert(UI.common.errorLoading + err.message);
+      // spec §5.4: a serve whose opening could not be recorded answers 503 OPENING_UNRECORDED. fetchJson builds
+      // err.message from data.error first (htmlUtils.js), which is the bare code here, so the text comes from UI.
+      // No retry: the editor opens the unit again from the list.
+      const unrecorded = err.status === 503 && err.data && err.data.error === 'OPENING_UNRECORDED';
+      const pane = document.getElementById('editor-container');
+      if (unrecorded && pane.style.display !== 'none') {
+        // A reload from an open pane (after a save, a review action, or a refused save's keepText): the old rows
+        // must not stay on screen beside the module list, or the editor could save on a unit whose opening was not
+        // recorded (spec §5.4; T6). First their texts go into the draft, the write the draft timer makes every 5 s;
+        // then the timer stops and dirtyEdits empties, so no later tick removes that draft (saveDraft removes it
+        // when nothing is dirty or held) and the next load asks nothing about panes nobody can see. Unlike Back:
+        // no clearDraft, and heldDrafts and paneState stay, so a kept text comes back when the unit is opened again.
+        // On a first load nothing is on screen and this is skipped: saveDraft there would remove this tab's draft,
+        // which can hold a text Back kept.
+        saveDraft();
+        if (draftTimer) clearInterval(draftTimer);
+        dirtyEdits.clear();
+        tabGuard.release();
+        pane.style.display = 'none';
+        document.getElementById('save-status-bar').style.display = 'none';
+      }
+      alert(unrecorded ? UI.segmentEditor.openingUnrecorded : UI.common.errorLoading + err.message);
     } finally {
       _loadingModuleId = null;
     }

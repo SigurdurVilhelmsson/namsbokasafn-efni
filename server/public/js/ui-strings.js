@@ -311,6 +311,10 @@ const UI = {
       return msg;
     },
     propagateError: (msg) => 'Villa við fjölgun: ' + msg,
+    // spec §5.4 (G1.1 + G1.2 PR2): a serve whose opening could not be recorded answers 503 OPENING_UNRECORDED.
+    // Wording approved by [USER] 2026-11-04 (index decision 13).
+    openingUnrecorded:
+      'Ekki tókst að skrá opnun einingarinnar og því var hún ekki opnuð. Veljið hana aftur úr listanum.',
   },
 
   // ── Localization editor specific ────────────────────────────

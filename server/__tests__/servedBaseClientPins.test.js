@@ -126,3 +126,51 @@ describe('a 409 to a replay comes back (index decision 12)', () => {
     );
   });
 });
+
+describe('a serve whose opening was not recorded (spec §5.4; PR2)', () => {
+  // The catch's code without its comments: its comment names what it does NOT call (clearDraft), which must not
+  // satisfy or trip a pin (measured on the Step 3 text: unstripped, the no-discard pin fails on that comment).
+  const catchCode = () =>
+    fnBody('loadModule', 'loadTermData')
+      .split('} catch (err) {')[1]
+      .replace(/\/\/[^\n]*/g, '');
+  const DISCARD =
+    /loadModule\(|fetchJson\(|clearDraft|clearDraftsByPrefix|localStorage|heldDrafts\.(clear|delete)|paneState\.(clear|delete)/;
+  it("loadModule's error path names OPENING_UNRECORDED, shows its own text and returns to the module list", () => {
+    const load = fnBody('loadModule', 'loadTermData');
+    expect(load).toMatch(
+      /err\.status === 503 && err\.data && err\.data\.error === 'OPENING_UNRECORDED'/
+    );
+    expect(load).toContain('UI.segmentEditor.openingUnrecorded');
+    expect(load).toMatch(/getElementById\('module-selector'\)\.style\.display = 'block'/);
+    // control: the generic text is still there, so the slice is loadModule's catch
+    expect(load).toContain('UI.common.errorLoading + err.message');
+  });
+  it('a reload from an open pane: its texts go into the draft, then the pane and its save bar go away (T6)', () => {
+    const c = catchCode();
+    expect(c).toContain("const pane = document.getElementById('editor-container');");
+    const start = c.indexOf("if (unrecorded && pane.style.display !== 'none') {");
+    expect(start).toBeGreaterThan(-1);
+    const branch = c.slice(start, c.indexOf('alert(', start));
+    const at = (s) => branch.indexOf(s);
+    const steps = [
+      'saveDraft();',
+      'clearInterval(draftTimer)',
+      'dirtyEdits.clear();',
+      'tabGuard.release();',
+      "pane.style.display = 'none';",
+      "getElementById('save-status-bar').style.display = 'none';",
+    ];
+    expect(steps.filter((s) => at(s) === -1)).toEqual([]);
+    expect(at('saveDraft();')).toBeLessThan(at('dirtyEdits.clear();')); // saveDraft reads dirtyEdits
+    // control: none of it runs outside the branch, so a first load and every other error keep today's path
+    expect(c.slice(0, start)).not.toMatch(/saveDraft|dirtyEdits\.clear|tabGuard\.release|'none'/);
+  });
+  it('the error path retries nothing and discards no draft', () => {
+    const c = catchCode();
+    expect(c).toBeTruthy();
+    expect(c).not.toMatch(DISCARD);
+    // control: the pin fires on a planted discard (alert( is in the catch before Step 3 and after it)
+    expect(c.replace('alert(', 'clearDraft(); alert(')).toMatch(DISCARD);
+  });
+});
