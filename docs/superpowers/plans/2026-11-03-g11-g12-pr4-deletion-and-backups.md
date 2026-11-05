@@ -1106,13 +1106,13 @@ function nonScriptFilesNaming(root, pattern) {
   const found = [];
   const visited = [];
   const walk = (dir, top) => {
-    for (const e of nodeFs.readdirSync(dir, { withFileTypes: true })) {
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
       if (SKIP_DIRS.has(e.name) || (top && SCRIPT_SIDE.has(e.name))) continue;
-      const p = nodePath.join(dir, e.name);
+      const p = path.join(dir, e.name);
       if (e.isDirectory()) walk(p, false);
       else if (/\.(?:c|m)?js$/.test(e.name)) {
-        visited.push(nodePath.relative(root, p));
-        if (pattern.test(nodeFs.readFileSync(p, 'latin1'))) found.push(nodePath.relative(root, p));
+        visited.push(path.relative(root, p));
+        if (pattern.test(readFileSync(p, 'latin1'))) found.push(path.relative(root, p));
       }
     }
   };
@@ -1120,6 +1120,11 @@ function nonScriptFilesNaming(root, pattern) {
   return { found: found.sort(), visited };
 }
 ```
+
+The block uses the file's own bindings: `readdirSync` and `readFileSync` from its `fs` import, and `path` (PR2's
+handoff, "`server/__tests__/researchBoundary.test.js` (Task 3)"). ✏️ *Corrected 2026-11-05, PR2 docs review D2: it
+called `nodeFs.readdirSync`, `nodePath.join`, `nodePath.relative` and `nodeFs.readFileSync`, bindings the built file
+does not have; run as written, it throws `ReferenceError: nodeFs is not defined`, and lint does not catch it.*
 
 - `it('no file outside server/scripts/ and server/__tests__/ requires the admin reader (spec §5.16)')` —
   `nonScriptFilesNaming(SERVER_ROOT, ADMIN_READER).found` equals `[]`, and its `visited` contains
@@ -1469,7 +1474,7 @@ Cases (on the real list, `mutations(root)` with its default):
   found')` — a temp root holding a copy of the real `research-withdrawal.js` with `// segment_edits` appended, and a copy
   of `researchAdmin.js` under `scripts/lib/` with `// research_consent` appended → `[{ file: 'scripts/lib/researchAdmin.js',
   table: 'research_consent' }, { file: 'scripts/research-withdrawal.js', table: 'segment_edits' }]` (sorted by file).
-- `it('positive control: the deletion script requires the admin reader')` — `filesNaming(nodePath.join(SERVER_ROOT,
+- `it('positive control: the deletion script requires the admin reader')` — `filesNaming(path.join(SERVER_ROOT,
   'scripts'), ADMIN_READER)` contains `'research-withdrawal.js'`.
 
 - [ ] **Step 2: Run them**
