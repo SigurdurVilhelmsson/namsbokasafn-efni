@@ -133,6 +133,32 @@ approved on 2026-11-04.
      rotation lines of `/etc/logrotate.d/rsyslog`; and adds `hourly` to the rotation directives. Still read-only,
      still directives only, still no editor and no secret. The roots are parameters of the exported function, as
      `etcRoot` and `varRoot` are.
+4. **Decision 13's mechanism, as built after the whole-branch review** (added 2026-11-05; review findings U1–U6 and
+   U12–U15, then R1–R3 on that fix). Decision 13's promises stand: on a reload from an open pane answered
+   `OPENING_UNRECORDED` the pane goes, nothing on the module list can save, accept or discard for the unit, and no
+   text is discarded. Its mechanism changed, and so did Review Focus 13's account of it:
+   - **The branch is `saveDraft()`, then `leaveModule()`,** the function Back also calls (Back after `clearDraft`).
+     `leaveModule` closes every pane without reverting its text; empties `dirtyEdits`, `heldDrafts` and `paneState`;
+     stops the draft timer; releases the tab claim; hides the editor and the save bar; nulls `moduleData`; and resets
+     what Back reset. It writes nothing to storage. **Nothing stays held in memory,** so decision 13's "`heldDrafts`
+     and `paneState` stay", the return through `renderSegments`' carry-over and `reinstallHeldDrafts`, and the
+     parenthetical on opening a different unit no longer describe the code: with nothing held, nothing is written
+     under the other unit's key.
+   - **Every text comes back through `restoreDraft`, from the draft:** a kept text unasked, with its notice; a typed
+     one offered (index decision 12).
+   - **With the browser's storage full,** `saveDraft` reports the failed write, and the same entries stay in memory
+     for that unit only (`keepUnwritten`). `restoreDraft` merges them at that unit's next opening. Leaving the page
+     tries storage again, and asks first while memory alone holds a text.
+   - **What can still land after the branch, and what the client does with it.** "Retries nothing" still holds:
+     nothing re-serves the unit by itself. Writes sent before the reload may land later; their texts were typed while
+     the unit was open (Review Focus 8). One is a save `saveRetry` queued: a refused replay is parked for the unit's
+     next load, because `onSaveParked` and `onSaveReplayed` return while `moduleData` is null. The other is a save,
+     accept or review action still waiting for its answer. Such an action compares `openUnit()` after its await. If
+     the unit was left, it changes nothing in memory and reloads nothing; a save refused with a kept code adds its
+     text to the unit's draft in this tab (`keepLeftText`, by `mergeRestoreSources`' rule), so the next opening
+     installs it unasked. A reopening of the same unit compares equal, and the action then finishes as in any open
+     unit.
+   - **Back also changes (PR1's handler):** it closes its panes, and an answer arriving after it is left alone.
 
 ## Decisions taken in this plan
 
@@ -254,7 +280,9 @@ question and its answer.
 
 **Client**
 
-13. **`loadModule`'s error path picks a client string for the code** (spec §5.4, §13: `OPENING_UNRECORDED` "tells the
+13. ✏️ *Mechanism amended 2026-11-05, after the whole-branch review: "State of this plan", amendment item 4. The
+    sub-bullets below state the mechanism as first planned; where they differ, item 4 is the code.*
+    **`loadModule`'s error path picks a client string for the code** (spec §5.4, §13: `OPENING_UNRECORDED` "tells the
     editor to open the unit again"). `fetchJson` builds `err.message` from `data.error || data.message`
     (`htmlUtils.js:48`) and attaches `err.status` and `err.data` (`:53-54`), so with the server's body the generic
     alert would read *Villa við að hlaða einingu: OPENING_UNRECORDED*. The catch (`segment-editor.js:303-307`) shows
@@ -475,7 +503,9 @@ Input cases the spec implies but its tests do not exercise directly. Each names 
     (its old catch prints `err.message`, built from `data.error`) and, on a reload, keeps the old pane on screen.
     Unreachable while
     chemistry holds no assignment rows (R6), which Task 8 measures. → Task 4
-13. **A refused save whose reload answers 503:** PR1's `keepText` has already written the text to the draft and holds
+13. ✏️ *Amended 2026-11-05: the catch now empties `heldDrafts` and `paneState` after `saveDraft` (`leaveModule`), and
+    the kept text comes back unasked from the draft; "State of this plan", amendment item 4.*
+    **A refused save whose reload answers 503:** PR1's `keepText` has already written the text to the draft and holds
     it in `heldDrafts`. Task 4's catch discards no draft (it calls `saveDraft`, never `clearDraft`, and leaves
     `heldDrafts` and `paneState`), stops the draft timer before it empties `dirtyEdits` (so no later tick removes the
     draft), and takes the pane away. The text comes back when the editor opens the unit again. Task 4's pins cover the
