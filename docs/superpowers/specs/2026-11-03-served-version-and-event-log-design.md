@@ -17,11 +17,11 @@
 > **✏️ AMENDED 2026-11-05: departures from this design's wording found while building and reviewing PR2.** Each
 > names the PR2 plan's item that carries it (`docs/superpowers/plans/2026-11-03-g11-g12-pr2-opening-record.md`, its
 > "State of this plan" `✏️ AMENDED 2026-11-05` block, or its decisions), and says whether it is approved. Items 1 and
-> 3 are **for [USER] to review with PR2, not yet approved**. Item 2 was approved on 2026-11-04 with the plan and is
+> 3 were **approved by [USER] on 2026-11-05** ("I agree with your changes"), with PR2's review. Item 2 was approved on 2026-11-04 with the plan and is
 > recorded here because the 2026-11-04 block below omits it.
 > *(✏️ This heading named only item 1 until the PR2 review added items 2 and 3, PR2 review U35 and U12.)*
 >
-> **1. §5.4 step 3's mint runs in two passes — not yet approved.** Made by the PR2 plan's amendment item 1 (its
+> **1. §5.4 step 3's mint runs in two passes — approved by [USER] on 2026-11-05.** Made by the PR2 plan's amendment item 1 (its
 > Task 3b), which takes a finding the register's 2026-11-05 entry asked PR2's plan to take (PR1 review C2, commit
 > `e8b9832f`).
 >
@@ -55,7 +55,7 @@
 >   `ON CONFLICT` form, never `OR IGNORE`.
 >
 > **3. §10 T6's "the editor cannot save in between" holds for what the editor does after the 503, not for a write
-> sent before it — not yet approved.** Made by the PR2 plan's amendment item 4 (PR2 review U12, then R1 on its fix).
+> sent before it — approved by [USER] on 2026-11-05.** Made by the PR2 plan's amendment item 4 (PR2 review U12, then R1 on its fix).
 >
 > - **The wording it departs from:** T6, "the editor cannot save in between, so a later successful opening's snapshot
 >   does not hold their segment".

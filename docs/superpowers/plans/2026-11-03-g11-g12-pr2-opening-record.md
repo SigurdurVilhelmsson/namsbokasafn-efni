@@ -51,10 +51,10 @@ JS with no build step (`server/public/js/`, `sourceType: 'script'`), Vitest from
   all", with the clarifications the index's "Answers" records). The spec's `✏️ AMENDED 2026-11-04` block records the
   departures approved that day, this plan's decision 4 among them, but not decision 6's reading of §5.5 step 1,
   approved with it and now in the spec's `✏️ AMENDED 2026-11-05` block. **The `✏️ AMENDED 2026-11-05` block below
-  changes approved choices, and none of its items is approved yet:** each awaits [USER]'s review with PR2 and names
-  its fallback, and those that depart from the spec's wording are also in the spec's 2026-11-05 block. Every
-  behaviour choice that block does not name is built as approved. Two questions stay open until Task 8: who runs the
-  production probe, and the §9 choice if chemistry holds assignment rows. Status lives in the register, never here.
+  changes approved choices; [USER] approved every item on 2026-11-05 ("I agree with your changes"):** each names
+  the fallback it replaced, and those that depart from the spec's wording are also in the spec's 2026-11-05 block. Every
+  behaviour choice that block does not name is built as approved. [USER] authorised a read-only production run of the
+  probe on 2026-11-05; the §9 choice, if chemistry holds assignment rows, stays open until Task 8. Status lives in the register, never here.
   *(✏️ Corrected 2026-11-05, PR2 review U34 and U35: this said the 2026-11-04 block "records every departure", that
   "no spec commit is owed before any task", and that "every other behaviour choice is built as written".)*
 - **Pinned to `main` = `ed10180c`, plus PR1 as its plan leaves it.** Every `path:line` below was opened at
@@ -82,7 +82,7 @@ JS with no build step (`server/public/js/`, `sourceType: 'script'`), Vitest from
 - **The merge is gated** (index § The five PRs; spec §13a): PR2 merges only after Task 8 has run the probe on
   production and [USER] has made the §9 choice if chemistry holds assignment rows.
 
-### ✏️ AMENDED 2026-11-05 — changes made while building and reviewing PR2, none of them approved yet
+### ✏️ AMENDED 2026-11-05 — changes made while building and reviewing PR2, approved by [USER] on 2026-11-05
 
 The items came at three points, and each says what it changes, why, and its fallback:
 - **Items 1 and 2, before Task 1:** the "For PR2" bullets of the register's 2026-11-04 entry (PR1's whole-branch
@@ -96,7 +96,7 @@ The items came at three points, and each says what it changes, why, and its fall
   `checks.schema`. Item 9 states a limit of the snapshot and changes no behaviour. Item 10 changes the test
   harnesses of Tasks 3 and 3b.
 
-**No item is approved by [USER] yet.** Each awaits [USER]'s review with PR2. Item 1 and item 4's qualification of T6
+**✅ [USER] approved every item on 2026-11-05** ("I agree with your changes"). Each keeps its fallback as the record of what it replaced. Item 1 and item 4's qualification of T6
 depart from the spec's wording, so the spec's `✏️ AMENDED 2026-11-05` block lists them for that review too.
 Everything this block does not name is built as approved on 2026-11-04. A later change adds its own item here and
 its line to the list above.
@@ -147,7 +147,7 @@ before Task 1" and "nothing above is reopened", while the block already held ite
    `scripts/__tests__/deploy-health-readout.test.mjs` does pin it, with an anchored regex whose brackets are escaped
    (`\[053\]`), which that grep cannot match. Task 1 updated the regex, test first. Grep for what a test would
    write, not only for the text it checks.*
-   **Review:** awaits [USER]'s review with PR2. **Fallback:** the remedy names the `[053]` warning alone, which is
+   **Review:** approved by [USER] on 2026-11-05. **Fallback:** the remedy names the `[053]` warning alone, which is
    wrong for a missing `054` table.
 3. **G-1c reads what journald and rsyslog actually read** (added 2026-11-05, after Task 6's review, finding F3).
    - **Premise the tree contradicted:** decision 21 and Task 6 read journald's settings only from
@@ -174,7 +174,7 @@ before Task 1" and "nothing above is reopened", while the block already held ite
      said nothing of the main file's other candidates. The code also reads `/usr/local/lib`'s directory and lists
      those candidates as `notReadBySystemd255`; the probe's header states the measured rule.*
    - **Review:** it supersedes decision 21's reading of G-1c, adds `runRoot` and `usrRoot` to decision 19's
-     parameters, and reopens Task 6, and awaits [USER]'s review with PR2. **Fallback:** decision 21 and Task 6 as approved, which read `/etc` alone and so cannot see the
+     parameters, and reopens Task 6, and approved by [USER] on 2026-11-05. **Fallback:** decision 21 and Task 6 as approved, which read `/etc` alone and so cannot see the
      `ForwardToSyslog=yes` Ubuntu ships under `/usr/lib`.
 4. **Decision 13's mechanism, as built after the whole-branch review** (added 2026-11-05; review findings U1–U6 and
    U12–U15, then R1–R3 on that fix). Decision 13's promises stand: on a reload from an open pane answered
@@ -211,7 +211,7 @@ before Task 1" and "nothing above is reopened", while the block already held ite
      and a kept-code refusal that arrives after Back is added to the unit's draft.
    - **Review:** it changes decision 13's mechanism and PR1's Back, not decision 13's promises. The "What can still
      land" bullet qualifies T6's "the editor cannot save in between", which the spec's `✏️ AMENDED 2026-11-05` block
-     lists. Awaits [USER]'s review with PR2. **Fallback:** decision 13's mechanism as planned: `heldDrafts` and
+     lists. Approved by [USER] on 2026-11-05. **Fallback:** decision 13's mechanism as planned: `heldDrafts` and
      `paneState` stay, and the hidden panes stay open. The review measured what that loses or sends. On the module
      list, Escape, F5, Ctrl+S and Ctrl+Shift+Enter reached the hidden panes, deleting a text or posting one (U1–U5).
      Opening another unit wrote this unit's kept text under that unit's draft key (U13).
@@ -222,7 +222,7 @@ before Task 1" and "nothing above is reopened", while the block already held ite
    Those files are absent only when no process holds the database, so Step 2's command must run while the service
    runs: before it, `ssh <prod> systemctl is-active ritstjorn` prints `active`. Step 2's rule is unchanged and covers
    a run made while the service was stopped: a section that is not ok means stop and report, and do not merge.
-   **Review:** awaits [USER]'s review with PR2. **Fallback:** the plain read-only open, which on a stopped server
+   **Review:** approved by [USER] on 2026-11-05. **Fallback:** the plain read-only open, which on a stopped server
    creates `-wal` and `-shm` owned by the probe's user, files that can keep the server from opening its database.
 6. **G-1c's output, and the probe's usage check, after the whole-branch review** (added 2026-11-05; PR2 review U8,
    U17, U18, U19 and U23, then R1–R5 on those fixes). It changes decision 18 ("from nginx, only `access_log` lines;
@@ -251,7 +251,7 @@ before Task 1" and "nothing above is reopened", while the block already held ite
    - **Usage (U23):** a book must start with a letter or a digit, so a lone flag (`--help`, `--write`) exits 2 with
      nothing on stdout, not 1 with the host's readout.
    - Task 8 Step 4 reads these shapes.
-   - **Review:** awaits [USER]'s review with PR2. **Fallback:** Task 6's output as approved. It prints a matching line
+   - **Review:** approved by [USER] on 2026-11-05. **Fallback:** Task 6's output as approved. It prints a matching line
      whole (the leak measured above), reads an unreadable file as absent, and reports a key outside `[Journal]` or a
      value logrotate refuses as if applied.
 7. **`close-pending-edits` re-reads the openings inside an IMMEDIATE write** (added 2026-11-05; PR2 review U7). It
@@ -262,7 +262,7 @@ before Task 1" and "nothing above is reopened", while the block already held ite
    (item 9 says what that wait means for the snapshot). An opening found there throws "a unit opened during the write"
    and writes nothing. The run then exits 1 through the existing failure default with no JSON report, as the
    script's other "changed during the write" throws do, rather than as a refusal in the report. The check before
-   the write, with its refusal in the report, is unchanged. **Review:** awaits [USER]'s review with PR2.
+   the write, with its refusal in the report, is unchanged. **Review:** approved by [USER] on 2026-11-05.
    **Fallback:** the single read before a DEFERRED write, with that window open.
 8. **Migration `054`'s checks require integers, and `checks.schema` does not take a VIEW for a table** (added
    2026-11-05; PR2 review U41 and U42). It changes decision 2's column checks and Task 1's `checks.schema`.
@@ -287,7 +287,7 @@ before Task 1" and "nothing above is reopened", while the block already held ite
    `recordOpening` waits out that process's lock) is not in the snapshot: an in-flight row it inserts is missing, and
    a row it closes is still there. This is spec §5.5's own design ("the route already holds every editor's rows"),
    not a departure, so the spec carries no amendment for it, and this plan's Goal ("at that moment") means it.
-   **Review:** awaits [USER]'s review with PR2, as a stated limit. Closing it would mean reading the rows again inside
+   **Review:** approved by [USER] on 2026-11-05, as a stated limit. Closing it would mean reading the rows again inside
    the transaction, which is not built.
 10. **The test harnesses of Tasks 3 and 3b** (added 2026-11-05; PR2 review U39 and U27). Test code only.
     - **U39:** `servedFixture`'s `invoke` and `invokeChain` share one fake response. A second `res.json` throws
@@ -296,7 +296,7 @@ before Task 1" and "nothing above is reopened", while the block already held ite
       also rejects. Before, both resolved on the first `res.json`, so a missing `return` after an answer passed.
     - **U27:** `servedWriteLock.test.js`'s `whileLocked` returns `startedWhileHeld`, read just before the call runs,
       and every lock case asserts it, so a case whose call started after the lock was released cannot pass.
-    - **Review:** awaits [USER]'s review with PR2. **Fallback:** the harnesses as Task 3 and Task 3b built them,
+    - **Review:** approved by [USER] on 2026-11-05. **Fallback:** the harnesses as Task 3 and Task 3b built them,
       under which a missing `return` and a call that started after the release both pass unseen.
 
 ## Decisions taken in this plan
@@ -305,7 +305,7 @@ Each is a §13 item, a seam the spec, the index or PR1's handoff leaves open, or
 4's second half goes beyond the frozen spec's wording, and [USER] approved it on 2026-11-04** (spec `✏️ AMENDED
 2026-11-04`). Every other decision was approved as written the same day. "Answers ([USER], 2026-11-04)" lists each
 question and its answer. *(✏️ 2026-11-05: decisions 2, 13, 18, 19, 21 and 29 are changed by "State of this plan"'s
-`✏️ AMENDED 2026-11-05` block, whose items are not yet approved; each changed decision carries a pointer to its
+`✏️ AMENDED 2026-11-05` block, whose items [USER] approved on 2026-11-05; each changed decision carries a pointer to its
 item.)*
 
 **Server and schema**
@@ -2743,7 +2743,7 @@ IMMEDIATE; an opening found there throws and writes nothing (✏️ 2026-11-05, 
    2026-11-04, [USER] checks the new text before the PR is opened. ✏️ *2026-11-05 (PR2 review U34): so do the
    departures. Every item of "State of this plan"'s `✏️ AMENDED 2026-11-05` block, and every item the spec's
    `✏️ AMENDED 2026-11-05` block marks as not yet approved, awaits [USER]'s yes with PR2. A no takes that item's
-   fallback before the merge.*
+   fallback before the merge.* ✅ *[USER] said yes to all of them on 2026-11-05.*
 5. **Task 8 is complete:** the production run is in the register and, if chemistry held assignment rows, [USER]'s §9
    choice is recorded (spec §13a).
 6. **Push, open the PR (draft), and deploy only on [USER]'s go.** Merge as a **merge commit**, never squash or rebase.
