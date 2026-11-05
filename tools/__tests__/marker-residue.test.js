@@ -201,3 +201,52 @@ describe('§C145 ① — reporting stays bounded', () => {
     expect(describeMarkerResidue(findMarkerResidue(dup)).split('\n')).toHaveLength(1);
   });
 });
+
+/**
+ * §C205 — a multi-word type. The opener stopped at `\w*`, so a space or a hyphen
+ * in the type hid the marker from inject's gate and both render gates.
+ * `SPACED_REAL` is verbatim from committed chemistry ch18 m68832 (the figure
+ * alt that reached the prepared 18-4 page). `OLD_OPENER` is the superseded
+ * predicate, kept as the control that proves the fixture is the blind shape.
+ */
+const OLD_OPENER = /\[\[(?!MATH:|MEDIA:)[A-Za-z]\w*:/g;
+const oldOpenerFinds = (s) => (s.match(OLD_OPENER) || []).length;
+const SPACED_REAL = '„c“ og „d“. Ljósmynd a sýnir [[test tube:tilraunaglas]] sem inniheldur';
+
+describe('§C205 — multi-word marker types', () => {
+  it('control: the old opener cannot see the spaced or hyphenated shape', () => {
+    expect(oldOpenerFinds(SPACED_REAL)).toBe(0);
+    expect(oldOpenerFinds('[[test-tube:x]]')).toBe(0);
+  });
+
+  it('finds the committed spaced marker, whole', () => {
+    const hits = findMarkerResidue(SPACED_REAL);
+    expect(hits).toHaveLength(1);
+    expect(hits[0].token).toBe('[[test tube:tilraunaglas]]');
+  });
+
+  it('finds a hyphenated type and an Icelandic multi-word type', () => {
+    expect(findMarkerResidue('[[test-tube:x]]')).toHaveLength(1);
+    expect(findMarkerResidue('[[tala Avogadros:x]]')).toHaveLength(1);
+  });
+
+  it('finds a truncated spaced marker', () => {
+    const hits = findMarkerResidue('sýnir [[test tube:tilraunaglas sem');
+    expect(hits).toHaveLength(1);
+    expect(hits[0].token).toBeNull();
+  });
+
+  it('still finds one-letter and ASCII types', () => {
+    expect(findMarkerResidue('[[i:b]] [[term:a]]')).toHaveLength(2);
+  });
+
+  it('keeps the MATH and MEDIA placeholders exempt', () => {
+    expect(findMarkerResidue('[[MATH:12]] [[MEDIA:3]]')).toHaveLength(0);
+  });
+
+  it('leaves bracketed prose alone: digits, a space before the colon, parentheses', () => {
+    expect(findMarkerResidue('[[sjá mynd 3.2: gildi]]')).toHaveLength(0);
+    expect(findMarkerResidue('[[word :x]]')).toHaveLength(0);
+    expect(findMarkerResidue('[[hvarf A (aq): x]]')).toHaveLength(0);
+  });
+});
