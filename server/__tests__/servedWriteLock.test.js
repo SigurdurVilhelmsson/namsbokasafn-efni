@@ -223,8 +223,11 @@ const openerRequest = (moduleId) => ({
 let lockRun = 0;
 /**
  * Runs `fn` synchronously while the holder process has the write lock. Resolves with what fn
- * returned or threw, and `releasingWhenDone`: whether the holder had begun releasing by the time
- * fn returned. fn is passed `released()`, which reads the same witness at any point inside fn.
+ * returned or threw; `startedWhileHeld`: whether the holder had NOT yet begun releasing just before
+ * fn ran; and `releasingWhenDone`: whether it had by the time fn returned. A call that waited shows
+ * both true. `releasingWhenDone` alone cannot tell a wait from a late start: if this process ran fn
+ * only after the holder's timer had released, any call would return after the release (PR2 review
+ * U27). fn is passed `released()`, which reads the same witness at any point inside fn.
  * Rejects if the holder never locked or did not exit cleanly. `sqlInsideLock`, when given, runs in
  * the holder's transaction, committed only at its release.
  */
@@ -244,6 +247,9 @@ function whileLocked(holdMs, fn, sqlInsideLock = null) {
     holder.stdout.once('data', (chunk) => {
       if (String(chunk).trim() !== 'locked') return;
       result = { value: undefined, error: null };
+      // Read just before fn runs: no marker means the holder had not begun releasing, so fn
+      // started while the lock was held.
+      result.startedWhileHeld = !existsSync(releasing);
       try {
         result.value = fn(() => existsSync(releasing));
       } catch (err) {
@@ -284,7 +290,8 @@ describe('another process holds the write lock (PR1 review C2)', () => {
       })
     );
     expect(describeError(run.error)).toBeNull();
-    // The control: the lock was really held, and the save ran past its release.
+    // The control: the lock was really held when the save started, and it ran past its release.
+    expect(run.startedWhileHeld).toBe(true);
     expect(run.releasingWhenDone).toBe(true);
     expect(run.value.outcome).toBe('inserted');
     const row = db.prepare('SELECT * FROM segment_edits WHERE id = ?').get(run.value.editId);
@@ -319,6 +326,7 @@ describe('another process holds the write lock (PR1 review C2)', () => {
       })
     );
     expect(describeError(run.error)).toBeNull();
+    expect(run.startedWhileHeld).toBe(true);
     expect(run.releasingWhenDone).toBe(true);
     expect(run.value.alreadyAccepted).toBe(false);
     expect(run.value.acceptance).toMatchObject({
@@ -364,6 +372,7 @@ describe('another process holds the write lock (PR1 review C2)', () => {
 
     expect(describeError(run.error)).toBeNull();
     expect(run.value.probeCode).toBe('SQLITE_BUSY');
+    expect(run.startedWhileHeld).toBe(true);
     // Never waited on the holder: it had not begun releasing when the serve and the probe returned.
     expect(run.releasingWhenDone).toBe(false);
     expect(run.value.again.mintOk).toBe(true);
@@ -395,6 +404,7 @@ describe('another process holds the write lock (PR1 review C2)', () => {
       });
     });
     expect(describeError(run.error)).toBeNull();
+    expect(run.startedWhileHeld).toBe(true);
     expect(run.releasingWhenDone).toBe(true);
     expect(run.value).toEqual({
       created: [{ moduleId: PROP_TARGET.moduleId, segmentId: targetId }],
@@ -451,8 +461,13 @@ describe('another process holds the write lock (PR1 review C2)', () => {
     expect(describeError(run.error)).toBeNull();
     // Both together, so a failure shows whether the mint failed AND whether it returned before
     // the release (it did not wait) or after it.
-    expect({ mintOk: run.value.mintOk, releasingWhenDone: run.releasingWhenDone }).toEqual({
+    expect({
+      mintOk: run.value.mintOk,
+      startedWhileHeld: run.startedWhileHeld,
+      releasingWhenDone: run.releasingWhenDone,
+    }).toEqual({
       mintOk: true,
+      startedWhileHeld: true,
       releasingWhenDone: true,
     });
     const [a, b] = run.value.servedVersionIds;
@@ -481,8 +496,9 @@ describe('another process holds the write lock (PR1 review C2)', () => {
     expect({
       status: response.status,
       error: response.body.error,
+      startedWhileHeld: run.startedWhileHeld,
       releasingWhenDone: run.releasingWhenDone,
-    }).toEqual({ status: 200, error: undefined, releasingWhenDone: true });
+    }).toEqual({ status: 200, error: undefined, startedWhileHeld: true, releasingWhenDone: true });
     expect(openingsOf(moduleId)).toEqual([
       { book: CHEM, chapter: 1, module_id: moduleId, inflight_count: 0 },
     ]);
@@ -520,8 +536,13 @@ describe('another process holds the write lock (PR1 review C2)', () => {
       insertA
     );
     expect(describeError(run.error)).toBeNull();
-    expect({ mintOk: run.value.mintOk, releasingWhenDone: run.releasingWhenDone }).toEqual({
+    expect({
+      mintOk: run.value.mintOk,
+      startedWhileHeld: run.startedWhileHeld,
+      releasingWhenDone: run.releasingWhenDone,
+    }).toEqual({
       mintOk: true,
+      startedWhileHeld: true,
       releasingWhenDone: true,
     });
     const [a, b] = run.value.servedVersionIds;
@@ -565,8 +586,9 @@ describe('another process holds the write lock (PR1 review C2)', () => {
     expect({
       status: response.status,
       error: response.body.error,
+      startedWhileHeld: run.startedWhileHeld,
       releasingWhenDone: run.releasingWhenDone,
-    }).toEqual({ status: 200, error: undefined, releasingWhenDone: true });
+    }).toEqual({ status: 200, error: undefined, startedWhileHeld: true, releasingWhenDone: true });
     expect(openingsOf(moduleId)).toEqual([
       { book: CHEM, chapter: 1, module_id: moduleId, inflight_count: 0 },
     ]);
