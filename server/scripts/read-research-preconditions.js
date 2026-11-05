@@ -34,10 +34,14 @@
  *         `logrotate -d`): hourly, daily, monthly, yearly; weekly with its weekday; rotate and maxage
  *         with their count as the number logrotate reads (strtol's base 0: 0x10 is 16 and 010 is 8;
  *         `rotate -1` keeps old logs for ever); size, maxsize and minsize with their size as written.
+ *         Every directive on a line is read, as logrotate reads them: after a keyword without a value it
+ *         reads on (`daily rotate -1`), a `#` where a directive would start ends the line, and a
+ *         stanza's `{` and `}` count wherever they fall (`/var/log/wtmp { monthly }`).
  *         One logrotate refuses (a value it cannot read, as in `rotate 4 # …`, or a keyword run into
  *         other text, as in `daily-x`) is `{ directive, valueUnparsed: true }`, with none of its text:
- *         logrotate then does not apply that stanza. A script (postrotate … endscript) holds no
- *         directive. It decides what the consent text says about the request log (§6 item 14) and
+ *         logrotate then skips that stanza, and stops reading the file at that line when the
+ *         directive is a bad `weekly` or stands outside every stanza. A script (postrotate …
+ *         endscript) holds no directive. It decides what the consent text says about the request log (§6 item 14) and
  *         G1.15's rule.
  *   G-1d  `enforce_assignments` per book; the study book's `user_chapter_assignments` rows, as
  *         (user id, chapter); the `users` rows, as (id, role, active); and AUTO_CREATE_USERS as the
@@ -75,9 +79,10 @@
  *   - journald: a value continued onto the next line by a trailing `\` reads as unparsed.
  *   - logrotate: only logrotate.conf and the nginx and rsyslog files of logrotate.d. A default of
  *     logrotate.conf applies only to stanzas read after it (an `include` above it does not get it);
- *     the defaults are listed in file order, not placed against the include lines. Only a line's
- *     first directive is read, where logrotate also reads one after a keyword without a value
- *     (`daily rotate 2`). A count past logrotate's int is flagged, where logrotate wraps it.
+ *     the defaults are listed in file order, not placed against the include lines. A stanza
+ *     logrotate refuses for a reason outside these directives (a file name inside it, a `create`
+ *     naming an unknown user, another keyword run into other text) is not detected: its directives
+ *     are listed as if applied. A count past logrotate's int is flagged, where logrotate wraps it.
  *
  * It runs where neither PR1 nor PR2 is deployed: it requires only modules present on production
  * before PR1 (its test pins the list; the study-book allowlist is not one of them, so the book is
@@ -296,14 +301,52 @@ const JOURNALD_GRAMMAR = new Map([
   ['ForwardToSyslog', /^(?:1|yes|y|true|t|on|0|no|n|false|f|off)$/i],
 ]);
 // logrotate's rotation and retention directives, read as logrotate 3.21.0 (Ubuntu 24.04's package,
-// run with -d on each form) reads them. A keyword is the run of letters at a line's start: more
-// letters make another word (an unknown option, its line ignored), and a digit or a punctuation mark
-// right after it is "not properly separated" (logrotate refuses the stanza). A keyword without a value
-// applies whatever follows a space or `=`. A valued keyword's value is the whole rest of its line, so
-// `rotate 4 # …` is a bad count and the stanza is refused too.
+// run with -d on each form) reads them. Along a line it reads a run of directives (config.c's default
+// state): a keyword is a run of letters, and a digit or a punctuation mark right after it is "not
+// properly separated" (logrotate refuses it); an unknown keyword is ignored with the rest of its line;
+// a `#` where a keyword would start ends the line. After a keyword without a value logrotate steps
+// over the one character that follows it (a space or `=`) and reads on. A valued keyword's value is
+// the whole rest of its line, so `rotate 4 # …` is a bad count and is refused too.
 const NO_VALUE = new Set(['hourly', 'daily', 'monthly', 'yearly']);
 const VALUED = new Set(['weekly', 'rotate', 'maxage', 'size', 'maxsize', 'minsize']);
-const SCRIPT_START = /^(?:postrotate|prerotate|firstaction|lastaction|preremove)(?![A-Za-z])/;
+// logrotate 3.21.0's other keywords without a value (config.c): after one, too, it reads on.
+const OTHER_NO_VALUE = new Set([
+  'compress',
+  'nocompress',
+  'delaycompress',
+  'nodelaycompress',
+  'shred',
+  'noshred',
+  'allowhardlink',
+  'noallowhardlink',
+  'sharedscripts',
+  'nosharedscripts',
+  'copytruncate',
+  'nocopytruncate',
+  'renamecopy',
+  'norenamecopy',
+  'copy',
+  'nocopy',
+  'ifempty',
+  'notifempty',
+  'dateext',
+  'nodateext',
+  'dateyesterday',
+  'datehourago',
+  'noolddir',
+  'mailfirst',
+  'maillast',
+  'nocreateolddir',
+  'nocreate',
+  'errors',
+  'nomail',
+  'missingok',
+  'nomissingok',
+  'ignoreduplicates',
+]);
+const SCRIPT = new Set(['postrotate', 'prerotate', 'firstaction', 'lastaction', 'preremove']);
+const ENDSCRIPT = /^[ \t]*endscript(?![A-Za-z])/;
+const FILE_NAME_START = new Set(['/', '"', "'", '~']); // what opens a stanza (config.c, with GLOB_TILDE)
 const INT_MAX = 2 ** 31 - 1;
 
 /** A file or directory that exists but that this user cannot read: never mistaken for an absent one. */
@@ -417,16 +460,12 @@ function baseZero(text) {
 }
 
 /**
- * One trimmed logrotate line's directive: the directive alone (a count as the number logrotate reads,
- * a size as written); `{ directive, valueUnparsed: true }`, with none of its text, where logrotate
- * refuses it; null where the line is no rotation directive.
+ * A valued rotation directive, its value the rest of its trimmed line (`rest`, the text after the
+ * keyword), as logrotate reads it: the directive alone (a count as the number logrotate reads, a size
+ * as written), or `{ directive, valueUnparsed: true }`, with none of its text, where logrotate refuses it.
  */
-function rotationDirective(line) {
-  const word = /^[A-Za-z]+/.exec(line)?.[0];
-  if (!word || !(NO_VALUE.has(word) || VALUED.has(word))) return null;
-  const rest = line.slice(word.length);
+function valuedDirective(word, rest) {
   const refused = { directive: word, valueUnparsed: true };
-  if (NO_VALUE.has(word)) return rest === '' || /^[\s=]/.test(rest) ? word : refused;
   if (word === 'weekly') {
     // Its optional weekday, 0 to 7, alone; `weekly=3` and `weekly 8` are bad weekly directives.
     if (rest === '') return 'weekly'; // the line is trimmed, so trailing blanks are gone
@@ -452,40 +491,77 @@ function rotationDirective(line) {
 
 /**
  * A logrotate file's rotation directives in its order, outside every stanza only when `topLevel` (the
- * defaults logrotate.conf sets); null when absent, `{ readable: false }` when unreadable. A script
- * (postrotate … endscript) holds no directive, and a stanza's file names are never read.
+ * defaults logrotate.conf sets); null when absent, `{ readable: false }` when unreadable. Each line is
+ * read as logrotate reads it (above): every directive on it, a stanza's `{` and `}` wherever they fall
+ * (its file names, never read, run from a file name to the next `{`, over lines, a line starting with
+ * `#` among them a comment; nothing after a `}` is read), and a script (postrotate … endscript) holds
+ * no directive, logrotate reading on after its `endscript`.
  */
 function rotationDirectives(file, { topLevel = false } = {}) {
   const text = readText(file);
   if (text === UNREADABLE) return { readable: false };
   if (text === null) return null;
   const out = [];
-  let depth = 0;
+  let inStanza = false;
+  let inFileNames = false; // between a stanza's first file name and its `{`
   let inScript = false;
+  const push = (d) => {
+    if (!(topLevel && inStanza)) out.push(d);
+  };
   for (const raw of text.split('\n')) {
-    let l = raw.trim();
+    let rest = raw.trim();
     if (inScript) {
-      if (/^endscript(?![A-Za-z])/.test(l)) inScript = false;
-      continue;
+      const end = ENDSCRIPT.exec(rest);
+      if (!end) continue;
+      inScript = false;
+      rest = rest.slice(end[0].length + 1); // logrotate steps over the one character after it
+    } else if (inFileNames) {
+      const open = rest.startsWith('#') ? -1 : rest.indexOf('{');
+      if (open < 0) continue;
+      inFileNames = false;
+      inStanza = true;
+      rest = rest.slice(open + 1);
     }
-    if (l.startsWith('#')) continue;
-    if (l.startsWith('}')) {
-      depth = Math.max(0, depth - 1);
-      l = l.slice(1).trim();
+    for (;;) {
+      rest = rest.replace(/^[ \t]+/, '');
+      if (rest === '' || rest[0] === '#') break;
+      if (rest[0] === '}') {
+        inStanza = false;
+        break; // logrotate reads nothing after a stanza's `}`
+      }
+      if (FILE_NAME_START.has(rest[0])) {
+        if (inStanza) break; // logrotate refuses a file name inside a stanza
+        const open = rest.indexOf('{');
+        if (open < 0) {
+          inFileNames = true;
+          break;
+        }
+        inStanza = true;
+        rest = rest.slice(open + 1);
+        continue;
+      }
+      const word = /^[A-Za-z]+/.exec(rest)?.[0];
+      if (!word) break; // neither a keyword nor a file name: logrotate refuses the line
+      const after = rest.slice(word.length);
+      if (VALUED.has(word)) {
+        push(valuedDirective(word, after));
+        break; // its value is the rest of the line
+      }
+      if (after !== '' && !/^[\s=]/.test(after)) {
+        if (NO_VALUE.has(word)) push({ directive: word, valueUnparsed: true }); // `daily-x`
+        break;
+      }
+      rest = after.slice(1); // the one character that separates it
+      if (NO_VALUE.has(word)) push(word);
+      else if (SCRIPT.has(word)) {
+        const end = ENDSCRIPT.exec(rest); // a script that ends on the line that opens it
+        if (!end) {
+          inScript = true;
+          break;
+        }
+        rest = rest.slice(end[0].length + 1);
+      } else if (!OTHER_NO_VALUE.has(word)) break; // a valued keyword's line, or an unknown one's
     }
-    const open = l.indexOf('{');
-    if (open >= 0) {
-      depth += 1;
-      l = l.slice(open + 1).trim(); // logrotate reads a directive after the `{` on its line
-    }
-    if (!l || l.startsWith('#')) continue;
-    if (SCRIPT_START.test(l)) {
-      inScript = true;
-      continue;
-    }
-    if (topLevel && depth > 0) continue;
-    const d = rotationDirective(l);
-    if (d) out.push(d);
   }
   return out;
 }

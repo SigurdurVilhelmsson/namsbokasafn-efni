@@ -717,6 +717,64 @@ describe('G-1c (spec §9): journald retention and nginx’s request log', () => 
     });
   });
 
+  // PR2 review follow-up on U18 (R1–R3). logrotate reads a line as a run of directives: a `#` where a directive
+  // would start ends the line, a keyword without a value is followed by the next directive, and a stanza's `{` and
+  // `}` count wherever they fall. Both files measured whole with logrotate 3.21.0 -d (Ubuntu 24.04's package).
+  it('reads a logrotate line as logrotate does: a comment ends it, every directive on it counts, and so do its braces', () => {
+    // logrotate -d: the defaults are daily, rotate 4, maxage 30 and size 1M (a stanza after them rotates "1048576
+    // bytes (4 rotations)"); monthly, hourly and rotate 1 are their stanzas' own.
+    plant(
+      'etc/logrotate.conf',
+      'daily # rotate daily {see the SENTINEL-WIKI}\nrotate 4\n/var/log/wtmp { monthly }\nmaxage 30\n' +
+        '/var/log/btmp {\n    missingok\n    hourly rotate 1\n    postrotate\n      true\n    endscript }\n' +
+        'notifempty size 1M\n'
+    );
+    // logrotate -d: daily, then rotate -1 (its "(N rotations)" disappears), then size 100M ("104857600 bytes");
+    // `foo` is an unknown option, so its line is ignored, rotate 9 included; text after a `}` is ignored.
+    plant(
+      'etc/logrotate.d/nginx',
+      '/var/log/nginx/*.log {\n  daily # see {SENTINEL-WIKI}\n  missingok rotate -1\n  compress size 100M\n' +
+        '  foo rotate 9\n} rotate 3\n'
+    );
+    // logrotate -d: a line starting with `#` among a stanza's file names is a comment, its `{` included (both files
+    // rotate); `endscript` ends a script and logrotate reads on along its line, as it does after a script that
+    // ends on the line that opens it; after `missingok=` it steps over the `=` and reads rotate 2 ("after 1 days
+    // (2 rotations)", 3 without that line).
+    plant(
+      'etc/logrotate.d/rsyslog',
+      '/var/log/syslog\n# rotated {daily} by the SENTINEL rule\n/var/log/mail.log\n{\n\tpostrotate\n\t\ttrue\n' +
+        '\tendscript rotate 3\n\tprerotate endscript daily\n\tmissingok=rotate 2\n}\n'
+    );
+    const g = readResearchPreconditions(ctx()).sections['G-1c'];
+    expect(g.logrotate).toEqual({
+      defaults: ['daily', 'rotate 4', 'maxage 30', 'size 1M'],
+      nginx: ['daily', 'rotate -1', 'size 100M'],
+      rsyslog: ['rotate 3', 'daily', 'rotate 2'],
+    });
+    expect(JSON.stringify(g)).not.toContain('SENTINEL');
+
+    // Controls: without the brace in its comment, and without the stanzas, logrotate.conf has the same defaults;
+    // and a stanza whose braces are on their own lines keeps its directives out of them, as before.
+    plant('etc/logrotate.conf', 'daily # rotate daily\nrotate 4\nmaxage 30\nnotifempty size 1M\n');
+    expect(readResearchPreconditions(ctx()).sections['G-1c'].logrotate.defaults).toEqual([
+      'daily',
+      'rotate 4',
+      'maxage 30',
+      'size 1M',
+    ]);
+    plant('etc/logrotate.conf', 'daily\n/var/log/wtmp\n{\n  monthly\n}\nrotate 4\n');
+    expect(readResearchPreconditions(ctx()).sections['G-1c'].logrotate.defaults).toEqual([
+      'daily',
+      'rotate 4',
+    ]);
+    // logrotate -d: a file name inside a stanza is "unexpected" and the stanza is skipped to its `}`; rotate 4 after
+    // it is still a default (a later stanza rotates with "4 rotations").
+    plant('etc/logrotate.conf', '/var/log/wtmp {\n  /var/log/btmp\n  monthly\n}\nrotate 4\n');
+    expect(readResearchPreconditions(ctx()).sections['G-1c'].logrotate.defaults).toEqual([
+      'rotate 4',
+    ]);
+  });
+
   it('journalctl’s line comes from stderr when its stdout is empty', () => {
     const DENIED = 'No journal files were opened due to insufficient permissions.';
     const execDenied = (cmd, args) =>
