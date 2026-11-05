@@ -125,30 +125,51 @@ function mintVersions(conn, rows) {
       WHERE book = ? AND chapter = ? AND module_id = ? AND segment_id = ? AND occurrence = ?
         AND en_sha256 = ? AND is_sha256 = ? AND layer = ?`
   );
-  let insert = null; // prepared only when a row is missing, so an unchanged set never prepares a write
-  // A deferred transaction: it takes the write lock at its first INSERT, so re-serving unchanged text writes
-  // nothing and never waits on another writer (spec §5.4 step 3).
-  return conn.transaction(() =>
-    rows.map((r) => {
-      const k = [
-        r.book,
-        r.chapter,
-        r.moduleId,
-        r.segmentId,
-        r.occurrence,
-        r.enSha256,
-        r.isSha256,
-        r.layer,
-      ];
-      const hit = select.get(...k);
-      if (hit) return hit.id;
-      insert ??= conn.prepare(
-        `INSERT INTO served_text_versions (book, chapter, module_id, segment_id, occurrence,
-           en_sha256, is_sha256, layer, en_text, is_text) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
-      );
-      return Number(insert.run(...k, r.enText, r.isText).lastInsertRowid);
-    })
-  )();
+  const keyOf = (r) => [
+    r.book,
+    r.chapter,
+    r.moduleId,
+    r.segmentId,
+    r.occurrence,
+    r.enSha256,
+    r.isSha256,
+    r.layer,
+  ];
+  const find = (r) => {
+    const hit = select.get(...keyOf(r));
+    return hit ? hit.id : null;
+  };
+  // Two passes (PR2 plan amendment 2026-11-05, Task 3b; PR1 review C2).
+  //
+  // The read pass is a deferred transaction that only reads, so it takes no write lock: re-serving
+  // unchanged text finds every row, writes nothing and never waits on another writer (spec §5.4
+  // step 3; servedWriteLock case (c)).
+  const found = conn.transaction(() => rows.map(find))();
+  if (found.every((id) => id !== null)) return found;
+  // The insert pass runs only when a row is missing (a changed serve), and opens IMMEDIATE: a
+  // deferred transaction that read first would hold a read when its INSERT asks for the write lock,
+  // and SQLite runs no busy handler for that upgrade, so while another process holds the lock
+  // (backup-db.sh's checkpoint, an operator's CLI) the mint would fail at once with SQLITE_BUSY
+  // instead of waiting out the busy timeout, and an assigned editor's first serve would answer 503
+  // OPENING_UNRECORDED (case (e), case (f)). It re-reads each row the read pass did not find before
+  // inserting it, because another process may have minted it between the two passes (case (g)); the
+  // unique key would otherwise refuse the INSERT. A row the read pass found is not read again: no
+  // code deletes a served version, so its id stays valid, and the lock is held no longer than the
+  // missing rows need. Inside a caller's transaction (save, accept, propagation, each IMMEDIATE)
+  // better-sqlite3 runs both passes as savepoints, so their behaviour is unchanged.
+  const insert = conn.prepare(
+    `INSERT INTO served_text_versions (book, chapter, module_id, segment_id, occurrence,
+       en_sha256, is_sha256, layer, en_text, is_text) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+  );
+  return conn
+    .transaction(() =>
+      rows.map((r, i) => {
+        const id = found[i] ?? find(r);
+        if (id !== null) return id;
+        return Number(insert.run(...keyOf(r), r.enText, r.isText).lastInsertRowid);
+      })
+    )
+    .immediate();
 }
 
 /**

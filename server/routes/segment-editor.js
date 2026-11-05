@@ -293,7 +293,8 @@ router.get(
       );
 
       // G1.1 (spec §5.4 steps 1–3): occurrence and baseSha256 on the response's own segments,
-      // and the served versions minted in one sessions.db transaction. Fail-soft: a failed mint
+      // and the served versions minted by servedVersions.recordServe (a lock-free read pass, then
+      // an IMMEDIATE insert pass only when a row is missing). Fail-soft: a failed mint
       // is logged and the module is still served with baseSha256; the save path mints the base
       // it checks. Never in the loader (it has other callers).
       const conn = segmentEditor.getDb();

@@ -1,7 +1,8 @@
 /**
- * Another process's write lock: a save, an accept and a propagation wait it out, and an unchanged
- * re-serve never waits on it at all (G1.1; spec §5.4 step 3, §5.6 step 6, §5.6 Accept, §5.6
- * Propagation targets; PR1 review C2).
+ * Another process's write lock: a save, an accept, a propagation, a changed serve and the opening
+ * it records wait it out, and an unchanged re-serve never waits on it at all (G1.1 + G1.2; spec
+ * §5.4 steps 3–4, §5.5, §5.6 step 6, §5.6 Accept, §5.6 Propagation targets; PR1 review C2; PR2
+ * plan amendment 2026-11-05, Task 3b).
  *
  * Why the save and the accept must open IMMEDIATE: a DEFERRED transaction whose first statement is
  * a read already holds a read lock when its first write asks for the write lock, and SQLite does
@@ -12,8 +13,22 @@
  * needs the same (case (d)). One holder of that lock in production is backup-db.sh's
  * wal_checkpoint(TRUNCATE).
  *
- * Why the serve must stay DEFERRED: re-serving unchanged text writes nothing and never waits on
- * another writer (spec §5.4 step 3). Case (c) fails if mintVersions takes the write lock up front.
+ * Why the serve's mint has two passes: re-serving unchanged text writes nothing and never waits on
+ * another writer (spec §5.4 step 3), so mintVersions first reads every row with no write lock and
+ * returns when it finds them all. Case (c) fails if the mint takes the write lock up front. Only a
+ * changed serve, with a row missing, runs the insert pass, and that pass opens IMMEDIATE for the
+ * same reason the save does: a deferred insert would fail at once with SQLITE_BUSY, the mint would
+ * report mintOk false, and an assigned editor's first serve would answer 503 OPENING_UNRECORDED
+ * where waiting would have recorded the opening. Case (e) is the mint, case (f) is that serve
+ * through the real module handler, and case (g) is the insert pass's re-read: a row another
+ * process minted while the serve waited is returned, not inserted a second time.
+ *
+ * Why the opening opens IMMEDIATE too: on a unit whose served versions already exist (every
+ * chemistry unit PR1 has served), the mint reads and returns without the write lock, so
+ * recordOpening's transaction is the first write to meet a held lock. Case (h) is that serve; a
+ * deferred recordOpening that reads before its INSERT fails it at once with SQLITE_BUSY and the
+ * serve answers 503 OPENING_UNRECORDED (cause step). In case (f) the mint's insert pass has already
+ * waited, so the opening runs after the release and cannot show this.
  *
  * Why a child process: better-sqlite3 is synchronous, so a lock held by a second connection in this
  * process could never be released while the first one waits on it. helpers/writeLockHolder.cjs
@@ -37,14 +52,17 @@ const require = createRequire(import.meta.url);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const HOLDER = path.join(__dirname, 'helpers', 'writeLockHolder.cjs');
 
-// Env BEFORE any server require: resolveDbPath() is read at module load.
+// Env BEFORE any server require: resolveDbPath() is read at module load, and auth.js (required by
+// the route, case (f)) refuses to load without JWT_SECRET. userService.findByProviderId, which the
+// route reaches from PR2, opens resolveDbPath() too, so nothing here reaches pipeline-output/.
 const work = mkdtempSync(path.join(tmpdir(), 'served-write-lock-'));
 const dbPath = path.join(work, 'sessions.db');
 process.env.SESSIONS_DB_PATH = dbPath;
+process.env.JWT_SECRET = process.env.JWT_SECRET || 'prufa-leyndarmal';
 
 const Database = require('better-sqlite3');
 const { sha256Text } = require('../lib/servedText');
-const { writeModule } = require('./helpers/servedFixture');
+const { writeModule, handlerFor, invoke } = require('./helpers/servedFixture');
 
 const CHEM = 'efnafraedi-2e';
 const SAVE = Object.freeze({ book: CHEM, chapter: 1, moduleId: 'm95001' });
@@ -54,6 +72,18 @@ const SERVE = Object.freeze({ book: CHEM, chapter: 1, moduleId: 'm95003' });
 const PROP_SOURCE = Object.freeze({ book: CHEM, chapter: 2, moduleId: 'm95004' });
 const PROP_TARGET = Object.freeze({ book: CHEM, chapter: 2, moduleId: 'm95005' });
 const PROP_EN = 'A sentence that recurs in two modules.';
+// Case (e): served once, then its b changes, so the re-serve is a changed serve with one row missing.
+const CHANGED = Object.freeze({ book: CHEM, chapter: 1, moduleId: 'm95006' });
+// Case (f): never served, so the assigned editor's serve is its first, and a changed serve.
+const OPEN = Object.freeze({ book: CHEM, chapter: 1, moduleId: 'm95007' });
+// Case (g): never served; the holder mints a's row inside its lock.
+const RACE = Object.freeze({ book: CHEM, chapter: 1, moduleId: 'm95008' });
+// Case (h): served once before the lock and never opened, so the assigned editor's serve under the
+// lock is its first and an unchanged serve.
+const MINTED = Object.freeze({ book: CHEM, chapter: 1, moduleId: 'm95009' });
+// The holder's row carries this as its en_text: the key is the hashes, not the text, so the serve
+// matches it, and the mark shows whose row the serve returned.
+const HOLDER_MARK = 'minted by the lock holder';
 
 // A lock a save or an accept must wait out: released by the holder's own timer, since the waiting
 // call blocks this process and cannot signal.
@@ -71,6 +101,9 @@ let servedEdit;
 let acceptance;
 let propagation;
 let concordance;
+let userService;
+let getModule;
+let opener;
 let db;
 
 beforeAll(() => {
@@ -83,6 +116,8 @@ beforeAll(() => {
   acceptance = require('../services/acceptanceService');
   propagation = require('../services/propagationService');
   concordance = require('../services/concordanceService');
+  userService = require('../services/userService');
+  getModule = handlerFor(require('../routes/segment-editor'), 'get', '/:book/:chapter/:moduleId');
   realBooksDir = segmentParser.BOOKS_DIR;
   root = path.join(work, 'books');
   mkdirSync(root, { recursive: true });
@@ -112,6 +147,30 @@ beforeAll(() => {
       [`${SERVE.moduleId}:para:b`, 'IS b'],
     ],
   });
+  for (const { moduleId } of [CHANGED, OPEN, RACE, MINTED]) {
+    writeModule(root, {
+      book: CHEM,
+      chapterDir: 'ch01',
+      moduleId,
+      en: [
+        [`${moduleId}:para:a`, 'EN a'],
+        [`${moduleId}:para:b`, 'EN b'],
+      ],
+      mt: [
+        [`${moduleId}:para:a`, 'IS a'],
+        [`${moduleId}:para:b`, 'IS b'],
+      ],
+    });
+  }
+  // Cases (f) and (h): a users row holding a user_chapter_assignments row for chapter 1, written by
+  // userService's own writers on its own connection, as the admin page writes them.
+  opener = userService.createUser({
+    providerId: 'p-lock-opener',
+    providerUsername: 'p-lock-opener@skoli.example',
+    email: 'p-lock-opener@skoli.example',
+    role: 'editor',
+  });
+  userService.assignChapter(opener.id, CHEM, 1);
   for (const [{ moduleId }, is] of [
     [PROP_SOURCE, 'IS uppruni'],
     [PROP_TARGET, 'IS mark'],
@@ -140,17 +199,41 @@ const load = (key) => segmentParser.loadModuleForEditing(key.book, key.chapter, 
 const versionRow = (id) => db.prepare('SELECT * FROM served_text_versions WHERE id = ?').get(id);
 const allVersions = () => db.prepare('SELECT * FROM served_text_versions ORDER BY id').all();
 const describeError = (err) => (err ? `${err.code}: ${err.message}` : null);
+const versionsOf = (moduleId) =>
+  db.prepare('SELECT * FROM served_text_versions WHERE module_id = ? ORDER BY id').all(moduleId);
+const sqlText = (v) => `'${String(v).replace(/'/g, "''")}'`;
+const openingsOf = (moduleId) =>
+  db
+    .prepare(
+      'SELECT book, chapter, module_id, inflight_count FROM module_openings WHERE module_id = ?'
+    )
+    .all(moduleId);
+// The module GET as the assigned editor (cases (f) and (h)), past the middleware.
+const openerRequest = (moduleId) => ({
+  params: { book: CHEM, chapter: '1', moduleId },
+  chapterNum: 1,
+  user: {
+    id: opener.provider_id,
+    username: opener.provider_username,
+    role: 'editor',
+    books: [],
+  },
+});
 
 let lockRun = 0;
 /**
  * Runs `fn` synchronously while the holder process has the write lock. Resolves with what fn
  * returned or threw, and `releasingWhenDone`: whether the holder had begun releasing by the time
- * fn returned. Rejects if the holder never locked or did not exit cleanly.
+ * fn returned. fn is passed `released()`, which reads the same witness at any point inside fn.
+ * Rejects if the holder never locked or did not exit cleanly. `sqlInsideLock`, when given, runs in
+ * the holder's transaction, committed only at its release.
  */
-function whileLocked(holdMs, fn) {
+function whileLocked(holdMs, fn, sqlInsideLock = null) {
   const releasing = path.join(work, `releasing-${++lockRun}`);
+  const args = [HOLDER, dbPath, String(holdMs), releasing];
+  if (sqlInsideLock) args.push(sqlInsideLock);
   return new Promise((resolve, reject) => {
-    const holder = spawn(process.execPath, [HOLDER, dbPath, String(holdMs), releasing], {
+    const holder = spawn(process.execPath, args, {
       stdio: ['pipe', 'pipe', 'pipe'],
     });
     let stderr = '';
@@ -162,7 +245,7 @@ function whileLocked(holdMs, fn) {
       if (String(chunk).trim() !== 'locked') return;
       result = { value: undefined, error: null };
       try {
-        result.value = fn();
+        result.value = fn(() => existsSync(releasing));
       } catch (err) {
         result.error = err;
       }
@@ -339,5 +422,156 @@ describe('another process holds the write lock (PR1 review C2)', () => {
       en_text: PROP_EN,
       is_text: 'IS mark',
     });
+  });
+
+  it('(e) a changed serve started while the lock is held waits for it, then mints its new row', async () => {
+    const { moduleId } = CHANGED;
+    const first = servedVersions.recordServe(db, load(CHANGED), { ...CHANGED });
+    expect(first.mintOk).toBe(true);
+    expect(first.servedVersionIds).toHaveLength(2);
+    const before = allVersions();
+    // b's Icelandic changes, so its row is missing; a's is unchanged and already minted.
+    writeModule(root, {
+      book: CHEM,
+      chapterDir: 'ch01',
+      moduleId,
+      en: [
+        [`${moduleId}:para:a`, 'EN a'],
+        [`${moduleId}:para:b`, 'EN b'],
+      ],
+      mt: [
+        [`${moduleId}:para:a`, 'IS a'],
+        [`${moduleId}:para:b`, 'IS b breytt'],
+      ],
+    });
+
+    const run = await whileLocked(WAIT_HOLD_MS, () =>
+      servedVersions.recordServe(db, load(CHANGED), { ...CHANGED })
+    );
+    expect(describeError(run.error)).toBeNull();
+    // Both together, so a failure shows whether the mint failed AND whether it returned before
+    // the release (it did not wait) or after it.
+    expect({ mintOk: run.value.mintOk, releasingWhenDone: run.releasingWhenDone }).toEqual({
+      mintOk: true,
+      releasingWhenDone: true,
+    });
+    const [a, b] = run.value.servedVersionIds;
+    expect(a).toEqual(first.servedVersionIds[0]);
+    expect(before.map((r) => r.id)).not.toContain(b.servedVersionId);
+    expect(versionRow(b.servedVersionId)).toMatchObject({
+      module_id: moduleId,
+      segment_id: `${moduleId}:para:b`,
+      occurrence: 0,
+      is_text: 'IS b breytt',
+    });
+    expect(allVersions()).toEqual([...before, versionRow(b.servedVersionId)]);
+  });
+
+  it("(f) an assigned editor's first serve of a chemistry unit, started while the lock is held, waits for it and records the opening", async () => {
+    const { moduleId } = OPEN;
+    const req = openerRequest(moduleId);
+    expect(openingsOf(moduleId)).toEqual([]);
+    // The handler is synchronous, so it has answered by the time fn returns. OPEN has no rows yet,
+    // so the serve's mint runs its insert pass, which waits out the lock: this is the mint's wait
+    // through the route. The predicate and the opening run after that wait, so after the release,
+    // and never meet the lock here; case (h) is the opening's own wait.
+    const run = await whileLocked(WAIT_HOLD_MS, () => invoke(getModule, req));
+    expect(describeError(run.error)).toBeNull();
+    const response = await run.value;
+    expect({
+      status: response.status,
+      error: response.body.error,
+      releasingWhenDone: run.releasingWhenDone,
+    }).toEqual({ status: 200, error: undefined, releasingWhenDone: true });
+    expect(openingsOf(moduleId)).toEqual([
+      { book: CHEM, chapter: 1, module_id: moduleId, inflight_count: 0 },
+    ]);
+    expect(response.body.segments.map((s) => typeof s.baseSha256)).toEqual(['string', 'string']);
+    expect(versionsOf(moduleId).map((r) => [r.segment_id, r.is_text])).toEqual([
+      [`${moduleId}:para:a`, 'IS a'],
+      [`${moduleId}:para:b`, 'IS b'],
+    ]);
+  });
+
+  it('(g) a row another process minted while the serve waited is returned, not inserted a second time', async () => {
+    const { moduleId } = RACE;
+    const [rowA] = servedVersions.annotateServed(load(RACE), { ...RACE }).rows;
+    const columns = [
+      rowA.book,
+      rowA.chapter,
+      rowA.moduleId,
+      rowA.segmentId,
+      rowA.occurrence,
+      rowA.enSha256,
+      rowA.isSha256,
+      rowA.layer,
+      HOLDER_MARK,
+      rowA.isText,
+    ].map((v) => (typeof v === 'number' ? String(v) : sqlText(v)));
+    // Inside the holder's lock, so it commits only at the release: the serve's read pass cannot see
+    // it, and its insert pass, which waits for the lock, meets it on its re-read.
+    const insertA = `INSERT INTO served_text_versions (book, chapter, module_id, segment_id,
+      occurrence, en_sha256, is_sha256, layer, en_text, is_text) VALUES (${columns.join(', ')})`;
+    expect(versionsOf(moduleId)).toEqual([]);
+
+    const run = await whileLocked(
+      WAIT_HOLD_MS,
+      () => servedVersions.recordServe(db, load(RACE), { ...RACE }),
+      insertA
+    );
+    expect(describeError(run.error)).toBeNull();
+    expect({ mintOk: run.value.mintOk, releasingWhenDone: run.releasingWhenDone }).toEqual({
+      mintOk: true,
+      releasingWhenDone: true,
+    });
+    const [a, b] = run.value.servedVersionIds;
+    // The control: the holder's row exists, and it is the one the serve returned for a.
+    expect(versionRow(a.servedVersionId)).toMatchObject({
+      segment_id: `${moduleId}:para:a`,
+      en_text: HOLDER_MARK,
+    });
+    expect(versionsOf(moduleId).map((r) => [r.id, r.segment_id])).toEqual([
+      [a.servedVersionId, `${moduleId}:para:a`],
+      [b.servedVersionId, `${moduleId}:para:b`],
+    ]);
+  });
+
+  it("(h) an assigned editor's first serve of a unit whose versions already exist, started while the lock is held, waits for it and records the opening", async () => {
+    const { moduleId } = MINTED;
+    // Served before the lock, as every chemistry unit PR1 served already is, and not opened: that
+    // serve was not the assigned editor's.
+    const first = servedVersions.recordServe(db, load(MINTED), { ...MINTED });
+    expect(first.mintOk).toBe(true);
+    expect(first.servedVersionIds).toHaveLength(2);
+    const before = allVersions();
+    expect(openingsOf(moduleId)).toEqual([]);
+    const req = openerRequest(moduleId);
+
+    const run = await whileLocked(WAIT_HOLD_MS, (released) => {
+      // The control, inside the same window: the mint the handler is about to run returns while
+      // the holder still has the lock (case (c)), so a wait in the handler is not the mint's.
+      const mint = servedVersions.recordServe(db, load(MINTED), { ...MINTED });
+      const releasedAfterMint = released();
+      return { mint, releasedAfterMint, response: invoke(getModule, req) };
+    });
+    expect(describeError(run.error)).toBeNull();
+    expect({
+      mintOk: run.value.mint.mintOk,
+      releasedAfterMint: run.value.releasedAfterMint,
+    }).toEqual({ mintOk: true, releasedAfterMint: false });
+    const response = await run.value.response;
+    // All three together, so a red run shows a 503 (and its code) beside whether the handler
+    // returned before the release (the opening did not wait) or after it.
+    expect({
+      status: response.status,
+      error: response.body.error,
+      releasingWhenDone: run.releasingWhenDone,
+    }).toEqual({ status: 200, error: undefined, releasingWhenDone: true });
+    expect(openingsOf(moduleId)).toEqual([
+      { book: CHEM, chapter: 1, module_id: moduleId, inflight_count: 0 },
+    ]);
+    // Neither mint wrote a row, so the opening was the serve's only write.
+    expect(allVersions()).toEqual(before);
+    expect(response.body.segments.map((s) => typeof s.baseSha256)).toEqual(['string', 'string']);
   });
 });
