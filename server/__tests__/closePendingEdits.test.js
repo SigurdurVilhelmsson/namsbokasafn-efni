@@ -10,6 +10,7 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { createRequire } from 'module';
 import crypto from 'crypto';
 const require = createRequire(import.meta.url);
+const Database = require('better-sqlite3');
 const freshMigratedDb = require('./helpers/freshMigratedDb');
 const { closePendingEdits } = require('../scripts/close-pending-edits');
 
@@ -19,6 +20,7 @@ const LEAD_ID = '00000000-0000-4000-8000-000000000001';
 const held = () => ({ book: BOOK, reason: 'test hold' });
 
 let db;
+let dbPath;
 let ids;
 let input;
 let inputSha256;
@@ -73,7 +75,7 @@ function run(overrides = {}) {
 const statusOf = (id) => db.prepare('SELECT status FROM segment_edits WHERE id = ?').get(id).status;
 
 beforeEach(() => {
-  ({ db } = freshMigratedDb());
+  ({ db, path: dbPath } = freshMigratedDb());
   db.prepare(
     `INSERT INTO users (provider_id, provider_username, display_name, email, role, last_login_at)
      VALUES (?, ?, 'Lead', ?, 'admin', CURRENT_TIMESTAMP)`
@@ -321,3 +323,109 @@ describe('close-pending-edits: refusals', () => {
     expect(ids.clean.map(statusOf)).toEqual(['pending', 'pending']);
   });
 });
+
+// PR2 review U7: the opening guard is a read before the write, and the server is another process. A
+// second connection to the same file plays the server; it opens a chemistry unit at a chosen moment.
+describe('close-pending-edits: an opening recorded by another process while it runs', () => {
+  const OPEN_SQL = `INSERT INTO module_openings (book, chapter, module_id, opened_at_ms, inflight_count)
+                    VALUES (?, 3, 'm68700', 1700000000000, 0)`;
+  const openings = () =>
+    db.prepare('SELECT COUNT(*) AS n FROM module_openings WHERE book = ?').get(BOOK).n;
+  const activityRows = () =>
+    db.prepare(`SELECT COUNT(*) AS n FROM activity_log WHERE type = 'segment_edit_approved'`).get()
+      .n;
+  /** db, with `onGet(prop)` called before each property the script reads from it. */
+  const watched = (onGet) =>
+    new Proxy(db, {
+      get(target, prop) {
+        onGet(prop);
+        const v = Reflect.get(target, prop);
+        return typeof v === 'function' ? v.bind(target) : v;
+      },
+    });
+  let server;
+  beforeEach(() => {
+    server = new Database(dbPath, { timeout: 0 }); // never waits: a refused write throws at once
+  });
+  afterEach(() => {
+    server.close();
+  });
+
+  it('an opening that lands between the guard and the write refuses the write, and nothing is written', () => {
+    // The script reaches for db.transaction after every check, the opening guard among them, and
+    // before its first UPDATE: the server's opening commits there.
+    let raced = false;
+    const racing = watched((prop) => {
+      if (prop === 'transaction' && !raced) {
+        raced = true;
+        server.prepare(OPEN_SQL).run(BOOK);
+      }
+    });
+    expect(() => closePendingEdits(racing, { ...runArgs() })).toThrow(
+      /efnafraedi-2e: a unit opened during the write/
+    );
+    expect(raced).toBe(true); // control: the opening was planted after the guard read none
+    expect(openings()).toBe(1);
+    expect(
+      [...ids.clean, ...ids.present, ...ids.changed].map(statusOf).every((s) => s === 'pending')
+    ).toBe(true);
+    expect(activityRows()).toBe(0);
+  });
+
+  it('control: through the same watcher with no opening, the write goes through', () => {
+    const r = closePendingEdits(
+      watched(() => {}),
+      runArgs()
+    );
+    expect(r).toMatchObject({ ok: true, wrote: { approved: 2, superseded: 3, activity: 2 } });
+  });
+
+  it('holds the write lock from its first statement: the server cannot open a unit mid-write (WAL, as production)', () => {
+    db.pragma('journal_mode = WAL');
+    // At the first approval's UPDATE, the server tries to record an opening.
+    let attempt = null;
+    const midWrite = new Proxy(db, {
+      get(target, prop) {
+        const v = Reflect.get(target, prop);
+        if (prop !== 'prepare') return typeof v === 'function' ? v.bind(target) : v;
+        return (sql) => {
+          const stmt = target.prepare(sql);
+          if (!/SET status = 'approved'/.test(sql)) return stmt;
+          return {
+            run: (...args) => {
+              if (attempt === null) {
+                try {
+                  server.prepare(OPEN_SQL).run(BOOK);
+                  attempt = 'committed';
+                } catch (err) {
+                  attempt = err.code;
+                }
+              }
+              return stmt.run(...args);
+            },
+          };
+        };
+      },
+    });
+    const r = closePendingEdits(midWrite, runArgs());
+    expect(attempt).toBe('SQLITE_BUSY');
+    expect(r).toMatchObject({ ok: true, wrote: { approved: 2, superseded: 3, activity: 2 } });
+    expect(openings()).toBe(0);
+    // Control: once the write has committed, the same insert from the server goes through.
+    server.prepare(OPEN_SQL).run(BOOK);
+    expect(openings()).toBe(1);
+  });
+});
+
+/** run()'s arguments, for a call that passes its own connection. */
+function runArgs() {
+  return {
+    book: BOOK,
+    rulings,
+    input,
+    inputSha256,
+    reviewer: LEAD,
+    write: true,
+    holdFor: held,
+  };
+}
