@@ -383,7 +383,10 @@
    * (mergeRestoreSources: it takes the parked code only if it has none); else
    * the replayed body's. A parked item with no refusal code restores with the
    * generic notice (entryFromParked). A replay for another module waits for
-   * that module's next load.
+   * that module's next load, and so does one that parks while no unit is open
+   * (moduleData null: after Back, or after a reload answered
+   * OPENING_UNRECORDED; leaveModule): restoreDraft takes it then, and the
+   * drafted text, if newer, wins (mergeRestoreSources).
    */
   function onSaveParked(item) {
     if (!moduleData || item.key.indexOf(parkedPrefix()) !== 0) return;
@@ -419,8 +422,9 @@
    * and the module is not reloaded: the editor may still be typing. Only while
    * that pane is still dirty: a pane closed since was reset to the text the
    * row shows, which the replay has replaced, so a save from it should meet
-   * the displayed check. A replay for another module waits for that module's
-   * next load, which renders its rows from the server.
+   * the displayed check. A replay for another module, or one that lands while
+   * no unit is open (leaveModule), waits for that module's next load, which
+   * renders its rows from the server.
    */
   function onSaveReplayed(item, data) {
     if (!moduleData || item.key.indexOf(parkedPrefix()) !== 0) return;
@@ -602,20 +606,16 @@
       const unrecorded = err.status === 503 && err.data && err.data.error === 'OPENING_UNRECORDED';
       const pane = document.getElementById('editor-container');
       if (unrecorded && pane.style.display !== 'none') {
-        // A reload from an open pane (after a save, a review action, or a refused save's keepText): the old rows
-        // must not stay on screen beside the module list, or the editor could save on a unit whose opening was not
-        // recorded (spec §5.4; T6). First their texts go into the draft, the write the draft timer makes every 5 s;
-        // then the timer stops and dirtyEdits empties, so no later tick removes that draft (saveDraft removes it
-        // when nothing is dirty or held) and the next load asks nothing about panes nobody can see. Unlike Back:
-        // no clearDraft, and heldDrafts and paneState stay, so a kept text comes back when the unit is opened again.
-        // On a first load nothing is on screen and this is skipped: saveDraft there would remove this tab's draft,
-        // which can hold a text Back kept.
+        // A reload from an open pane (after a save, a review action, or a refused save's keepText). The editor leaves
+        // the unit as Back leaves it, so nothing on the module list can save, accept or discard for a unit whose
+        // opening was not recorded (spec §5.4; T6); but unlike Back nothing is discarded. saveDraft first writes
+        // every dirty pane's text and every held (kept) text to this tab's draft; leaveModule then empties what a
+        // later write could replace that draft with. Both kinds come back through restoreDraft when the unit is
+        // opened again. A save saveRetry queued before this reload may still replay and land: its text was typed
+        // while the unit was open (Review Focus 8). On a first load nothing is on screen and this is skipped:
+        // saveDraft there would remove this tab's draft, which can hold a text Back kept.
         saveDraft();
-        if (draftTimer) clearInterval(draftTimer);
-        dirtyEdits.clear();
-        tabGuard.release();
-        pane.style.display = 'none';
-        document.getElementById('save-status-bar').style.display = 'none';
+        leaveModule();
       }
       alert(unrecorded ? UI.segmentEditor.openingUnrecorded : UI.common.errorLoading + err.message);
     } finally {
@@ -2631,13 +2631,32 @@
   });
 
   // ================================================================
-  // BACK BUTTON
+  // LEAVING A UNIT (Back, and a reload answered OPENING_UNRECORDED)
   // ================================================================
-  document.getElementById('btn-back').addEventListener('click', () => {
-    clearDraft();
-    // clearDraft has just written the kept texts and discarded the rest; the hidden panes must not stay dirty, or
-    // the next module load asks closePanels and, declined, installs a kept text on the stale rows.
+  /**
+   * Leave the open unit for the module list. It writes nothing to storage: the caller has already put in the draft
+   * what should outlive the unit (Back: clearDraft, which keeps only a refused save's texts; the OPENING_UNRECORDED
+   * branch in loadModule: saveDraft, which keeps every text). Afterwards nothing in memory belongs to the unit, so
+   * nothing on the module list can act on it (spec §5.4, T6): no pane is open for Escape or Ctrl/Cmd+S to find;
+   * moduleData is null for saveEdit, acceptAtCursor and a parked or replayed save (onSaveParked, onSaveReplayed);
+   * and nothing is dirty or held that the draft timer, beforeunload, auth-expired or the next unit's draft could
+   * write over this unit's draft with. What the draft keeps comes back through restoreDraft when the unit is opened
+   * again (a kept text unasked, index decision 12).
+   */
+  function leaveModule() {
+    // Close every pane as renderSegments does, without its confirm and without reverting a text: hidden panes left
+    // open would be found by Escape, which would close one and save the draft without it.
+    document.querySelectorAll('.edit-panel.active').forEach((panel) => {
+      panel.classList.remove('active');
+      const row = panel.closest('tr');
+      if (row) row.classList.remove('editing');
+    });
+    // Nothing stays dirty (the next load would ask closePanels about panes nobody can see) and nothing stays held
+    // (a later saveDraft would rewrite the draft from it alone, or write it under another unit's key).
     dirtyEdits.clear();
+    heldDrafts.clear();
+    paneState.clear();
+    lastFocusedTextarea = null;
     if (draftTimer) clearInterval(draftTimer);
     tabGuard.release();
     document.getElementById('editor-container').style.display = 'none';
@@ -2666,6 +2685,14 @@
     if (topbarTitle) {
       topbarTitle.textContent = UI.segmentEditor.title;
     }
+  }
+
+  // ================================================================
+  // BACK BUTTON
+  // ================================================================
+  document.getElementById('btn-back').addEventListener('click', () => {
+    clearDraft(); // writes back only the texts refused saves kept, and discards the rest
+    leaveModule();
 
     // Reload module list (otherwise the spinner from loadModule persists)
     // Guard: if no chapter selected, show clean state instead of infinite spinner

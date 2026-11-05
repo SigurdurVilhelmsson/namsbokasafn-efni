@@ -146,25 +146,18 @@ describe('a serve whose opening was not recorded (spec §5.4; PR2)', () => {
     // control: the generic text is still there, so the slice is loadModule's catch
     expect(load).toContain('UI.common.errorLoading + err.message');
   });
-  it('a reload from an open pane: its texts go into the draft, then the pane and its save bar go away (T6)', () => {
+  it('a reload from an open pane: its texts go into the draft, then the editor leaves the unit (T6)', () => {
     const c = catchCode();
     expect(c).toContain("const pane = document.getElementById('editor-container');");
     const start = c.indexOf("if (unrecorded && pane.style.display !== 'none') {");
     expect(start).toBeGreaterThan(-1);
     const branch = c.slice(start, c.indexOf('alert(', start));
-    const at = (s) => branch.indexOf(s);
-    const steps = [
-      'saveDraft();',
-      'clearInterval(draftTimer)',
-      'dirtyEdits.clear();',
-      'tabGuard.release();',
-      "pane.style.display = 'none';",
-      "getElementById('save-status-bar').style.display = 'none';",
-    ];
-    expect(steps.filter((s) => at(s) === -1)).toEqual([]);
-    expect(at('saveDraft();')).toBeLessThan(at('dirtyEdits.clear();')); // saveDraft reads dirtyEdits
-    // control: none of it runs outside the branch, so a first load and every other error keep today's path
-    expect(c.slice(0, start)).not.toMatch(/saveDraft|dirtyEdits\.clear|tabGuard\.release|'none'/);
+    // Exactly these two statements, in this order: leaveModule empties dirtyEdits and heldDrafts, which saveDraft
+    // reads. Nothing else, so nothing drops a text before saveDraft writes it (the behaviour is the E2E's).
+    const body = branch.slice(branch.indexOf('{') + 1, branch.lastIndexOf('}'));
+    expect(body.replace(/\s+/g, ' ').trim()).toBe('saveDraft(); leaveModule();');
+    // control: neither runs outside the branch, so a first load and every other error keep today's path
+    expect(c.slice(0, start)).not.toMatch(/saveDraft|leaveModule|dirtyEdits\.clear|'none'/);
   });
   it('the error path retries nothing and discards no draft', () => {
     const c = catchCode();
@@ -172,5 +165,50 @@ describe('a serve whose opening was not recorded (spec §5.4; PR2)', () => {
     expect(c).not.toMatch(DISCARD);
     // control: the pin fires on a planted discard (alert( is in the catch before Step 3 and after it)
     expect(c.replace('alert(', 'clearDraft(); alert(')).toMatch(DISCARD);
+  });
+});
+
+describe('leaving a unit: Back and the OPENING_UNRECORDED branch share leaveModule (PR2 review U1-U5, U13-U15)', () => {
+  // The body without its comments, which name what it does not call (saveDraft, clearDraft).
+  const leaveCode = () => {
+    const start = src.indexOf('function leaveModule(');
+    const end = src.indexOf('// BACK BUTTON', start);
+    expect(start).toBeGreaterThan(-1);
+    expect(end).toBeGreaterThan(start);
+    return src.slice(start, end).replace(/\/\/[^\n]*/g, '');
+  };
+  const WRITES =
+    /saveDraft|writeDraft|clearDraft|clearDraftsByPrefix|localStorage|loadModule\(|fetchJson\(/;
+  it('it closes every pane and leaves nothing in memory that belongs to the unit', () => {
+    const body = leaveCode();
+    const steps = [
+      "querySelectorAll('.edit-panel.active')",
+      "classList.remove('active')",
+      "classList.remove('editing')",
+      'dirtyEdits.clear();',
+      'heldDrafts.clear();',
+      'paneState.clear();',
+      'clearInterval(draftTimer)',
+      'tabGuard.release();',
+      "getElementById('editor-container').style.display = 'none';",
+      "getElementById('save-status-bar').style.display = 'none';",
+      'moduleData = null;',
+      'cursorSegmentId = null;',
+    ];
+    expect(steps.filter((s) => !body.includes(s))).toEqual([]);
+  });
+  it('it writes nothing to storage: the caller decides what the draft keeps', () => {
+    const body = leaveCode();
+    expect(body).not.toMatch(WRITES);
+    // control: the pin fires on a planted write
+    expect(body.replace('dirtyEdits.clear();', 'saveDraft(); dirtyEdits.clear();')).toMatch(WRITES);
+  });
+  it('Back discards first (clearDraft keeps only refused texts), then leaves', () => {
+    const start = src.indexOf("getElementById('btn-back').addEventListener('click'");
+    const end = src.indexOf('// CONCORDANCE SEARCH WIRING', start);
+    expect(start).toBeGreaterThan(-1);
+    const back = src.slice(start, end).replace(/\/\/[^\n]*/g, '');
+    expect(back.indexOf('clearDraft();')).toBeGreaterThan(-1);
+    expect(back.indexOf('clearDraft();')).toBeLessThan(back.indexOf('leaveModule();'));
   });
 });
