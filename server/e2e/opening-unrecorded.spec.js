@@ -11,8 +11,10 @@ const { loginAs } = require('./helpers/auth');
  * that nothing is discarded: every pane's text, and every text a refused save kept, stays in this unit's draft and
  * comes back when the unit is opened again (decision 13). Nothing the editor can do on that screen saves, accepts or
  * discards for the unit (T6's client half): not Escape, Ctrl/Cmd+S, Ctrl/Cmd+Shift+Enter, F5, or a refused replay.
- * One write is NOT stopped, on purpose: a save saveRetry queued BEFORE the reload may still replay and land after it.
- * Its text was typed while the unit was open, which Review Focus 8 accepts as the honest record.
+ * Writes sent BEFORE the reload are NOT stopped, on purpose, and may land after it: a save saveRetry queued, and a
+ * save, accept or review action still awaiting its answer. Their texts were typed while the unit was open, which
+ * Review Focus 8 accepts as the honest record. Such an answer changes nothing the editor left and re-serves nothing;
+ * a save refused with a kept code adds its text to the unit's draft, which brings it back unasked (PR2 review R1).
  *
  * The 503 is STUBBED (route.fulfill): the E2E database holds no users row (seed-fixture.js) and logins are injected
  * JWTs (helpers/auth.js), so the opening predicate never holds here and the real server never answers it. The
@@ -103,13 +105,13 @@ const parkedKeys = (page) =>
   );
 
 /**
- * Two rows of a chapter-1 unit whose own text plus a suffix the client's validator passes with no warning, so a save
- * from them asks nothing before it posts. Returns the rows and those texts. Rows nearest the module's middle that
+ * One row per tag of a chapter-1 unit whose own text plus a suffix the client's validator passes with no warning, so a
+ * save from them asks nothing before it posts. Returns the rows and those texts. Rows nearest the module's middle that
  * hold no edit and no acceptance: sibling specs write to the first rows of efnafraedi-2e's m68664 in a parallel
  * worker (segment-editor.spec.js's `…:abstract:auto-2`, ux-phase2's first append-safe row; helpers/segments.js),
  * and a row holding another editor's pending edit shows no edit button (measured: the full suite timed out on it).
  */
-async function twoRows(page, tags, moduleId = 'm68664') {
+async function freeRows(page, tags, moduleId = 'm68664') {
   const res = await page.request.get(`/api/segment-editor/efnafraedi-2e/1/${moduleId}`);
   expect(res.ok()).toBe(true);
   const data = await res.json();
@@ -127,8 +129,10 @@ async function twoRows(page, tags, moduleId = 'm68664') {
       });
     })
     .sort((a, b) => Math.abs(a.i - mid) - Math.abs(b.i - mid));
-  expect(rows.length).toBeGreaterThanOrEqual(2);
-  return rows.slice(0, 2).map(({ s }, i) => ({ ...s, text: `${s.is} ${tags[i]}-${stamp}` }));
+  expect(rows.length).toBeGreaterThanOrEqual(tags.length);
+  return rows
+    .slice(0, tags.length)
+    .map(({ s }, i) => ({ ...s, text: `${s.is} ${tags[i]}-${stamp}` }));
 }
 async function typeInto(page, segmentId, text) {
   const row = rowOf(page, segmentId);
@@ -159,7 +163,7 @@ async function recordWrites(page) {
  */
 async function refuseThenUnrecorded(page) {
   await openForReal(page);
-  const [w, y] = await twoRows(page, ['W', 'Y']);
+  const [w, y] = await freeRows(page, ['W', 'Y']);
   await typeInto(page, w.segmentId, w.text);
   await typeInto(page, y.segmentId, y.text);
   await page.route(writeTo('edit'), stub(409, { error: 'STALE_BASE', message: 'stub' }));
@@ -216,6 +220,74 @@ const listenForReleases = (page) =>
         window.__releases.push(`${e.data.key} ${e.data.tabId}`);
     };
   });
+
+/** Whether a response is the answer to POST <module>/edit with this status. */
+const editAnswered = (status) => (r) =>
+  new URL(r.url()).pathname === `${MODULE_URL}/edit` && r.status() === status;
+/** Record every GET of m68664 itself (a serve: the module list and the background loads are other paths). */
+function recordModuleGets(page) {
+  const gets = [];
+  page.on('request', (r) => {
+    if (r.method() === 'GET' && new URL(r.url()).pathname === MODULE_URL) gets.push(r.url());
+  });
+  return gets;
+}
+/** A promise the test resolves by hand, with the value the route then answers. */
+function heldAnswer() {
+  let answer;
+  let arrived;
+  const value = new Promise((r) => (answer = (status, body) => r({ status, body })));
+  const sent = new Promise((r) => (arrived = r));
+  return { answer, value, sent, arrived: () => arrived() };
+}
+
+/**
+ * A save still in flight when the unit is left (PR2 review R1): panes X, V and Z hold typed text, X's save is held at
+ * the route, and V's save answers 200, so saveEdit's own reload meets a stubbed 503 OPENING_UNRECORDED and the branch
+ * runs while X's save has no answer yet. Leaves the 503 stub installed and every dialog accepted until
+ * stopAnswering(). Returns the rows, answerX(status, body), and the module GETs and dialogs recorded.
+ */
+async function saveInFlightThenUnrecorded(page) {
+  await openForReal(page);
+  const [x, v, z] = await freeRows(page, ['X', 'V', 'Z']);
+  const held = heldAnswer();
+  await page.route(writeTo('edit'), async (route) => {
+    if (route.request().postDataJSON().segmentId !== x.segmentId)
+      return stub(200, STUB_SAVED)(route);
+    held.arrived();
+    const { status, body } = await held.value;
+    return stub(status, body)(route);
+  });
+  const moduleGets = recordModuleGets(page);
+  const asked = [];
+  const acceptAll = (d) => {
+    asked.push(d.message());
+    d.accept().catch(() => {});
+  };
+  page.on('dialog', acceptAll);
+  for (const row of [x, v, z]) await typeInto(page, row.segmentId, row.text);
+  await rowOf(page, x.segmentId).getByRole('button', { name: 'Vista', exact: true }).click();
+  await held.sent;
+  await page.route(MODULE_GET, stub(503, OPENING));
+  await rowOf(page, v.segmentId).getByRole('button', { name: 'Vista', exact: true }).click();
+  await expect.poll(() => asked).toContain(UI.segmentEditor.openingUnrecorded);
+  await expect(page.locator('#editor-container')).toBeHidden();
+  // Positive control for every test built on this: right after the branch the draft holds the text in flight and
+  // the other pane's.
+  const stored = await draftsOf(page, 'm68664');
+  expect(stored).toContain(x.text);
+  expect(stored).toContain(z.text);
+  return {
+    x,
+    z,
+    answerX: held.answer,
+    moduleGets,
+    getsAtBranch: moduleGets.length,
+    asked,
+    stopAnswering: () => page.off('dialog', acceptAll),
+  };
+}
+const openingAlerts = (asked) => asked.filter((m) => m === UI.segmentEditor.openingUnrecorded);
 
 test.describe('a serve whose opening was not recorded (spec §5.4)', () => {
   test('a first load: shows the opening text and returns to the module list, with no pane to save from', async ({
@@ -425,7 +497,7 @@ test.describe('a serve whose opening was not recorded (spec §5.4)', () => {
 
   test('after the branch, Ctrl+S on the module list sends no save', async ({ page }) => {
     await openForReal(page);
-    const [x] = await twoRows(page, ['S', 'S2']);
+    const [x] = await freeRows(page, ['S', 'S2']);
     const posts = await recordWrites(page);
     await typeInto(page, x.segmentId, x.text);
     await reloadWithStub(page, 503, OPENING);
@@ -470,7 +542,7 @@ test.describe('a serve whose opening was not recorded (spec §5.4)', () => {
     page,
   }) => {
     await openForReal(page);
-    const [x, w] = await twoRows(page, ['T1', 'W']);
+    const [x, w] = await freeRows(page, ['T1', 'W']);
     const T2 = `${x.text} T2`;
     // The live save answers 500, so saveRetry queues it; its replay is held until the branch has run, then refused.
     let saves = 0;
@@ -558,7 +630,7 @@ test.describe('a serve whose opening was not recorded (spec §5.4)', () => {
     await background;
     // Control: a text typed in the other unit IS written under its key within one draft-timer period, so a text of
     // m68664's written there would be seen.
-    const [b] = await twoRows(page, ['B', 'B2'], 'm68663');
+    const [b] = await freeRows(page, ['B', 'B2'], 'm68663');
     await typeInto(page, b.segmentId, b.text);
     await page.waitForTimeout(6000);
     const other = await draftsOf(page, 'm68663');
@@ -574,7 +646,7 @@ test.describe('a serve whose opening was not recorded (spec §5.4)', () => {
     page,
   }) => {
     await openForReal(page);
-    const [, y] = await twoRows(page, ['K', 'Y']);
+    const [, y] = await freeRows(page, ['K', 'Y']);
     await typeInto(page, y.segmentId, y.text);
     await page.route(writeTo('edit'), stub(409, { error: 'STALE_BASE', message: 'stub' }));
     const background = backgroundLoads(page); // the refusal's reload is real: it puts the kept text back
@@ -591,5 +663,227 @@ test.describe('a serve whose opening was not recorded (spec §5.4)', () => {
     expect(await draftsOf(page, 'm68664')).toContain(y.text); // control: Back kept it
     await page.keyboard.press('Escape');
     expect(await draftsOf(page, 'm68664')).toContain(y.text);
+  });
+
+  test('a save in flight when the branch runs, refused after it: the other pane keeps its text, nothing reopens the unit, and F5 asks nothing and brings the text back kept (R1)', async ({
+    page,
+  }) => {
+    const { x, z, answerX, moduleGets, getsAtBranch, asked, stopAnswering } =
+      await saveInFlightThenUnrecorded(page);
+    const refused = page.waitForResponse(editAnswered(409));
+    answerX(409, { error: 'STALE_BASE', message: 'stub' });
+    await refused;
+    await expect.poll(() => asked.some((m) => m.includes(UI.refusal.textKept))).toBe(true); // reported
+    const stored = await draftsOf(page, 'm68664');
+    expect(stored).toContain(z.text);
+    expect(stored).toContain(x.text);
+    expect(moduleGets.length).toBe(getsAtBranch); // nothing re-served the unit on its own
+    expect(openingAlerts(asked)).toHaveLength(1);
+    stopAnswering();
+
+    // F5: nothing is on screen to lose, so leaving asks nothing; the page's own load brings X back unasked, marked
+    // kept with the refusal's code, and offers Z back.
+    await page.unroute(MODULE_GET);
+    const leaving = [];
+    page.on('dialog', (d) => {
+      leaving.push(`${d.type()}:${d.message()}`);
+      const take = d.type() === 'beforeunload' || d.message() === UI.confirm.draftRecovery(1);
+      (take ? d.accept() : d.dismiss()).catch(() => {});
+    });
+    const background = backgroundLoads(page);
+    await page.reload();
+    await background;
+    await expect(rowOf(page, x.segmentId).locator('textarea')).toHaveValue(x.text);
+    await expect(
+      rowOf(page, x.segmentId).locator('.draft-notice[data-notice="STALE_BASE"]')
+    ).toBeVisible();
+    await expect(rowOf(page, z.segmentId).locator('textarea')).toHaveValue(z.text);
+    expect(leaving).toContain(`confirm:${UI.confirm.draftRecovery(1)}`);
+    expect(leaving.filter((m) => m.startsWith('beforeunload:'))).toEqual([]);
+  });
+
+  test("a save refused after the branch writes its text under no other unit's draft key (R1)", async ({
+    page,
+  }) => {
+    const { x, z, answerX, asked, stopAnswering } = await saveInFlightThenUnrecorded(page);
+    const refused = page.waitForResponse(editAnswered(409));
+    answerX(409, { error: 'STALE_BASE', message: 'stub' });
+    await refused;
+    await expect.poll(() => asked.some((m) => m.includes(UI.refusal.textKept))).toBe(true);
+    stopAnswering();
+    await page.unroute(MODULE_GET);
+    const background = Promise.all([
+      page.waitForResponse((r) => r.url().endsWith('/efnafraedi-2e/1/m68663/terms')),
+      page.waitForResponse((r) => r.url().endsWith('/efnafraedi-2e/1/m68663/repetitions')),
+    ]);
+    await page.locator('.module-card[title^="m68663"]').click();
+    await expect(page.locator('#editor-container')).toBeVisible({ timeout: 10000 });
+    await background;
+    // Control: a text typed in the other unit IS written under its key within one draft-timer period.
+    const [b] = await freeRows(page, ['B'], 'm68663');
+    await typeInto(page, b.segmentId, b.text);
+    await page.waitForTimeout(6000);
+    const other = await draftsOf(page, 'm68663');
+    expect(other).toContain(b.text);
+    expect(other).not.toContain(x.text);
+    expect(other).not.toContain(z.text);
+    const own = await draftsOf(page, 'm68664');
+    expect(own).toContain(x.text);
+    expect(own).toContain(z.text);
+  });
+
+  test('a save in flight when the branch runs, saved after it: the other pane keeps its text and nothing reopens the unit (R1)', async ({
+    page,
+  }) => {
+    const { z, answerX, moduleGets, getsAtBranch, asked, stopAnswering } =
+      await saveInFlightThenUnrecorded(page);
+    const saved = page.waitForResponse(editAnswered(200));
+    answerX(200, STUB_SAVED);
+    await saved;
+    await page.waitForTimeout(1000); // what saveEdit runs after its await
+    expect(await draftsOf(page, 'm68664')).toContain(z.text);
+    expect(moduleGets.length).toBe(getsAtBranch);
+    expect(openingAlerts(asked)).toHaveLength(1);
+    await expect(page.locator('#editor-container')).toBeHidden();
+    stopAnswering();
+    const reopened = await reopen(page);
+    await expect(rowOf(page, z.segmentId).locator('textarea')).toHaveValue(z.text);
+    expect(recoveryOffers(reopened)).toHaveLength(1);
+  });
+
+  test('control: a save refused after its unit was opened again is kept in its pane, as in any open unit (R1)', async ({
+    page,
+  }) => {
+    const { x, z, answerX, stopAnswering } = await saveInFlightThenUnrecorded(page);
+    stopAnswering();
+    const reopened = await reopen(page); // answers every dialog from here: accepts a recovery, declines the rest
+    expect(recoveryOffers(reopened)).toEqual([UI.confirm.draftRecovery(2)]);
+    await expect(rowOf(page, x.segmentId).locator('textarea')).toHaveValue(x.text);
+    const background = backgroundLoads(page); // the refusal's reload of the open unit
+    answerX(409, { error: 'STALE_BASE', message: 'stub' });
+    await background;
+    await expect(
+      rowOf(page, x.segmentId).locator('.draft-notice[data-notice="STALE_BASE"]')
+    ).toBeVisible();
+    await expect(rowOf(page, x.segmentId).locator('textarea')).toHaveValue(x.text);
+    await expect(rowOf(page, z.segmentId).locator('textarea')).toHaveValue(z.text);
+  });
+
+  test("Back with a kept text while a save is in flight: the save's answer neither drops the kept text nor reopens the unit (R1; from PR1)", async ({
+    page,
+  }) => {
+    await openForReal(page);
+    const [x, y] = await freeRows(page, ['X', 'Y']);
+    const held = heldAnswer();
+    await page.route(writeTo('edit'), async (route) => {
+      if (route.request().postDataJSON().segmentId === y.segmentId)
+        return stub(409, { error: 'STALE_BASE', message: 'stub' })(route);
+      held.arrived();
+      const { status, body } = await held.value;
+      return stub(status, body)(route);
+    });
+    const acceptAll = (d) => d.accept().catch(() => {});
+    page.on('dialog', acceptAll);
+    await typeInto(page, y.segmentId, y.text);
+    const background = backgroundLoads(page); // the refusal's reload is real: it puts the kept text back
+    await rowOf(page, y.segmentId).getByRole('button', { name: 'Vista', exact: true }).click();
+    await background;
+    await expect(
+      rowOf(page, y.segmentId).locator('.draft-notice[data-notice="STALE_BASE"]')
+    ).toBeVisible();
+    await typeInto(page, x.segmentId, x.text);
+    await rowOf(page, x.segmentId).getByRole('button', { name: 'Vista', exact: true }).click();
+    await held.sent;
+    await page.locator('#btn-back').click();
+    await expect(page.locator('#module-selector')).toBeVisible();
+    expect(await draftsOf(page, 'm68664')).toContain(y.text); // control: Back kept it
+    const moduleGets = recordModuleGets(page);
+    const saved = page.waitForResponse(editAnswered(200));
+    held.answer(200, STUB_SAVED);
+    await saved;
+    await page.waitForTimeout(1000);
+    expect(await draftsOf(page, 'm68664')).toContain(y.text);
+    expect(moduleGets).toEqual([]);
+    await expect(page.locator('#editor-container')).toBeHidden();
+  });
+
+  test('an accept in flight when the branch runs does not reopen the unit when it answers (R1)', async ({
+    page,
+  }) => {
+    await openForReal(page);
+    const [a, v] = await freeRows(page, ['A', 'V']);
+    const held = heldAnswer();
+    await page.route(writeTo('accept'), async (route) => {
+      held.arrived();
+      const { status, body } = await held.value;
+      return stub(status, body)(route);
+    });
+    await page.route(writeTo('edit'), stub(200, STUB_SAVED));
+    const moduleGets = recordModuleGets(page);
+    const asked = [];
+    page.on('dialog', (d) => {
+      asked.push(d.message());
+      d.accept().catch(() => {});
+    });
+    await typeInto(page, v.segmentId, v.text);
+    await rowOf(page, a.segmentId).locator('.btn-accept').click();
+    await held.sent;
+    await page.route(MODULE_GET, stub(503, OPENING));
+    await rowOf(page, v.segmentId).getByRole('button', { name: 'Vista', exact: true }).click();
+    await expect.poll(() => asked).toContain(UI.segmentEditor.openingUnrecorded);
+    await expect(page.locator('#editor-container')).toBeHidden();
+    const getsAtBranch = moduleGets.length;
+    const accepted = page.waitForResponse(
+      (r) => new URL(r.url()).pathname === `${MODULE_URL}/accept` && r.status() === 200
+    );
+    held.answer(200, { success: true });
+    await accepted;
+    await page.waitForTimeout(1000);
+    expect(moduleGets.length).toBe(getsAtBranch);
+    expect(openingAlerts(asked)).toHaveLength(1);
+  });
+
+  test("propagating from a pane whose save's reload runs the branch sends nothing from the unit (R1)", async ({
+    page,
+  }) => {
+    await openForReal(page);
+    const [x] = await freeRows(page, ['P']);
+    const previews = [];
+    const propagated = [];
+    await page.route(writeTo('edit'), stub(200, STUB_SAVED));
+    await page.route(
+      (url) => url.pathname === `${MODULE_URL}/propagation-preview`,
+      (route) => {
+        previews.push(route.request().url());
+        return stub(200, { eligible: [{ moduleId: 'm68663', segmentId: 'e2e' }] })(route);
+      }
+    );
+    await page.route(writeTo('propagate'), (route) => {
+      propagated.push(route.request().postDataJSON());
+      return stub(200, { created: [], skipped: [] })(route);
+    });
+    const asked = [];
+    const acceptAll = (d) => {
+      asked.push(d.message());
+      d.accept().catch(() => {});
+    };
+    page.on('dialog', acceptAll);
+    await typeInto(page, x.segmentId, x.text);
+    await page.route(MODULE_GET, stub(503, OPENING));
+    await rowOf(page, x.segmentId).locator('.btn-propagate').click();
+    await expect.poll(() => asked).toContain(UI.segmentEditor.openingUnrecorded);
+    await expect(page.locator('#editor-container')).toBeHidden();
+    await page.waitForTimeout(1000);
+    expect(previews).toEqual([]);
+    expect(propagated).toEqual([]);
+    expect(asked).not.toContain(UI.segmentEditor.propagateConfirm(1));
+    page.off('dialog', acceptAll);
+
+    // Control: on the unit opened again, the same steps (a typed pane, its save answered 200, a real reload) do reach
+    // the preview, so the stubs are live. The save above landed, so nothing is restored to the pane.
+    await reopen(page);
+    await typeInto(page, x.segmentId, x.text);
+    await rowOf(page, x.segmentId).locator('.btn-propagate').click();
+    await expect.poll(() => previews.length).toBe(1);
   });
 });

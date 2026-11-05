@@ -212,3 +212,71 @@ describe('leaving a unit: Back and the OPENING_UNRECORDED branch share leaveModu
     expect(back.indexOf('clearDraft();')).toBeLessThan(back.indexOf('leaveModule();'));
   });
 });
+
+describe('an action answered after its unit was left touches nothing of it (PR2 review R1)', () => {
+  // Code without its line comments, which name what a body does not call.
+  const code = (s) => s.replace(/\/\/[^\n]*/g, '');
+  it('openUnit is the open unit or null, and reloadIfOpen reloads only the unit an action started on', () => {
+    expect(code(fnBody('openUnit', 'reloadIfOpen'))).toContain(
+      'return moduleData ? draftPrefix() : null;'
+    );
+    expect(code(fnBody('reloadIfOpen', 'keepLeftText'))).toContain(
+      'return openUnit() === unit ? loadModule(currentModuleId, options) : Promise.resolve();'
+    );
+  });
+  it("saveEdit compares the unit after its await; a left unit's kept-code refusal goes to that unit's draft only", () => {
+    const save = code(fnBody('saveEdit', 'latestEditIdForSegment'));
+    expect(save).toMatch(/const unit = openUnit\(\);[\s\S]*await saveRetry\.attempt\(retryKey/);
+    expect(save).toMatch(/if \(openUnit\(\) !== unit\) return;\s*applySaveEcho\(/);
+    expect(save).toContain('await reloadIfOpen(unit, { force: true });');
+    expect(save).toMatch(
+      /if \(openUnit\(\) !== unit\) \{[\s\S]*?keepLeftText\(unit, \{ key: retryKey, body: saveOptions\.body, code: err\.code \}\)[\s\S]*?return;\s*\}\s*if \(err\.status === 409 && segmentSaveState\.keepsText\(err\.code\)\)/
+    );
+    // and without leaveModule's docblock, which the slice ends on
+    const keep = code(fnBody('keepLeftText', 'leaveModule')).replace(/\/\*\*[\s\S]*?\*\//g, '');
+    expect(keep).toContain(
+      'writeDraft(segmentSaveState.mergeRestoreSources(stored, [item]), key);'
+    );
+    expect(keep).not.toMatch(/saveDraft|heldDrafts|paneState|dirtyEdits|loadModule/);
+  });
+  it('accept, propagate and restore compare the unit before each reload or send', () => {
+    const accept = code(fnBody('acceptSegment', 'acceptSegmentAndAdvance'));
+    expect(accept).toMatch(/const unit = openUnit\(\);[\s\S]*await saveRetry\.attempt\(/);
+    expect(accept.match(/if \(openUnit\(\) !== unit\) return;/g)).toHaveLength(2);
+    const prop = code(fnBody('propagateSegment', 'reviewEdit'));
+    expect(prop).toMatch(/await saveEdit\(segmentId\);\s*if \(openUnit\(\) !== unit\) return;/);
+    expect(prop).toMatch(
+      /await fetchJson\([\s\S]*propagation-preview[\s\S]*?\);\s*if \(openUnit\(\) !== unit\) return;/
+    );
+    expect(code(fnBody('restoreToVersion', 'showTermPopup'))).toMatch(
+      /if \(openUnit\(\) !== unit\) return;\s*await loadModule\(currentModuleId/
+    );
+  });
+  it('the review actions, revoke and submit reload through reloadIfOpen', () => {
+    const submit = code(
+      src.slice(
+        src.indexOf("getElementById('btn-submit').addEventListener"),
+        src.indexOf('function openUnit(')
+      )
+    );
+    const bodies = {
+      reviewEdit: code(fnBody('reviewEdit', 'unapproveEdit')),
+      unapproveEdit: code(fnBody('unapproveEdit', 'reopenEdit')),
+      reopenEdit: code(
+        src.slice(src.indexOf('function reopenEdit('), src.indexOf("getElementById('btn-submit')"))
+      ),
+      revokeAcceptance: code(fnBody('revokeAcceptance', 'openEditPanel')),
+      submit,
+    };
+    for (const [name, body] of Object.entries(bodies)) {
+      expect(body, name).toContain('const unit = openUnit();');
+      expect(body, name).toMatch(/await reloadIfOpen\(unit/);
+      expect(body, name).not.toMatch(/loadModule\(/);
+    }
+  });
+  it('every direct reload of the open unit is one of the sites above (a new one must be checked)', () => {
+    // reloadIfOpen, onSaveParked (synchronous, behind its own moduleData check), saveEdit's two open-unit refusal
+    // paths (behind the catch's openUnit check), acceptSegment's two and restoreToVersion's.
+    expect(code(src).match(/loadModule\(currentModuleId/g)).toHaveLength(7);
+  });
+});
