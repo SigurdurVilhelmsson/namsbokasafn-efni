@@ -7,7 +7,7 @@
  * a database every real migration built and asserts that exactly that name, and nothing else, is
  * reported; the fresh database is the control.
  */
-import { describe, it, expect, afterEach } from 'vitest';
+import { describe, it, expect, afterEach, vi } from 'vitest';
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -16,6 +16,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const freshMigratedDb = require('./helpers/freshMigratedDb');
 const { EXPECTED_SCHEMA, checkSchema } = require('../lib/schemaHealth');
+const m054 = require('../migrations/054-module-openings');
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -30,6 +31,7 @@ afterEach(() => {
     const db = open.pop();
     if (db.open) db.close();
   }
+  vi.restoreAllMocks();
 });
 
 describe('checkSchema', () => {
@@ -107,6 +109,45 @@ describe('checkSchema', () => {
       'segment_id',
       'occurrence',
     ]);
+  });
+
+  it('PR2: a VIEW under an opening table name is named as missing, though the migration reports success over it', () => {
+    // A VIEW satisfies 054's CREATE TABLE IF NOT EXISTS and answers table_info with its columns, so
+    // the name looked present while every assigned serve's INSERT would fail (PR2 review U42).
+    const db = migrated();
+    db.exec('DROP TABLE module_opening_inflight; DROP TABLE module_openings');
+    db.exec(
+      `CREATE TABLE decoy (book TEXT, chapter INTEGER, module_id TEXT, opened_at_ms INTEGER,
+         inflight_count INTEGER);
+       CREATE VIEW module_openings AS SELECT * FROM decoy`
+    );
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    m054.up(db);
+    expect(warn).not.toHaveBeenCalled();
+    expect(
+      db
+        .prepare(
+          "SELECT type, name FROM sqlite_master WHERE name LIKE 'module_opening%' ORDER BY name"
+        )
+        .all()
+    ).toEqual([
+      { type: 'table', name: 'module_opening_inflight' },
+      { type: 'view', name: 'module_openings' },
+    ]);
+    // the view carries every expected column, so only its type can make it missing
+    expect(db.pragma('table_info(module_openings)').map((c) => c.name)).toEqual(
+      EXPECTED_SCHEMA.tables.module_openings
+    );
+    expect(checkSchema(db)).toEqual({ ok: false, missing: ['module_openings'] });
+  });
+
+  it('a columns entry whose name a VIEW holds names each of its columns, as an absent table does', () => {
+    const db = migrated();
+    db.exec('CREATE VIEW not_a_table AS SELECT 1 AS a');
+    expect(checkSchema(db, { tables: {}, columns: { not_a_table: ['a'] }, indexes: [] })).toEqual({
+      ok: false,
+      missing: ['not_a_table.a'],
+    });
   });
 });
 

@@ -22,6 +22,10 @@
  *   - indexes: an absent index as `index <name>`;
  * each in the constant's order. Table names are interpolated into a PRAGMA, so they come from the
  * constant (or a test's own argument), never from a request.
+ *
+ * A name counts as a table only if sqlite_master holds a TABLE of that name. A VIEW of the name
+ * answers table_info with its columns and satisfies a migration's CREATE TABLE IF NOT EXISTS, with
+ * no table behind it, so it reads as absent here (PR2 review U42).
  */
 
 function deepFreeze(value) {
@@ -75,8 +79,19 @@ const EXPECTED_SCHEMA = deepFreeze({
  */
 function checkSchema(db, expected = EXPECTED_SCHEMA) {
   try {
-    // An absent table reads as no columns.
-    const columnsOf = (table) => new Set(db.pragma(`table_info(${table})`).map((c) => c.name));
+    // SQLite resolves names case-insensitively, so they are compared lowercased.
+    const tables = new Set(
+      db
+        .prepare("SELECT name FROM sqlite_master WHERE type = 'table'")
+        .pluck()
+        .all()
+        .map((name) => name.toLowerCase())
+    );
+    // An absent table, or a name that something other than a table holds, reads as no columns.
+    const columnsOf = (table) =>
+      tables.has(table.toLowerCase())
+        ? new Set(db.pragma(`table_info(${table})`).map((c) => c.name))
+        : new Set();
     const missing = [];
 
     for (const [table, columns] of Object.entries(expected.tables)) {

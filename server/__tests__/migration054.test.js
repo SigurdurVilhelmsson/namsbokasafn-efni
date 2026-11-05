@@ -194,7 +194,8 @@ describe('migration 054: the opening record', () => {
   it('never throws: a failing step rolls the unit back, warns once, and the next start completes it', () => {
     const db = track(new Database(':memory:'));
     // An INDEX of that name fails `CREATE TABLE IF NOT EXISTS`; a VIEW would not — it satisfies
-    // `IF NOT EXISTS` with no table behind the name, measured 2026-11-03.
+    // `IF NOT EXISTS` with no table behind the name, measured 2026-11-03. checks.schema names a
+    // table a VIEW stands in for (schemaHealth.test.js).
     db.exec('CREATE TABLE decoy (a INTEGER); CREATE INDEX module_opening_inflight ON decoy (a)');
     const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
