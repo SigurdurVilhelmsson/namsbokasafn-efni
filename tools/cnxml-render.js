@@ -84,6 +84,8 @@ import {
 import { loadEmbedMapping, renderEmbedHtml } from './lib/embed-mapping.js';
 import { snapshotModuleIds, reconcilePublishedRenames } from './lib/publication-reconcile.js';
 import { slugMapFilename } from './lib/slug-map.js';
+import { setImageMediaDirs, imageSizeAttrs } from './lib/image-dimensions.js';
+import { findMixedScriptWords } from './lib/mixed-script.js';
 
 // Matches editor/pipeline artifact files that must never live in or sync from
 // the publication dir: safeWrite backups, manual `.pre-fix-*`, `.bak`, and any
@@ -203,6 +205,22 @@ function _setBooksDirForTest(dir) {
   // read against a map built for the previous tree.
   IMAGE_REVERSE_MAP = null;
   IMAGE_REVERSE_MAP_DIR = null;
+  // H1: a fixture tree's media sizes its images; the default tree stays unsized
+  // in tests, so goldens rendered from the real book do not depend on media/.
+  if (dir) configureImageMediaDirs();
+  else setImageMediaDirs([]);
+}
+
+/**
+ * H1 (register §C201): the media dirs `<img width/height>` is read from, in
+ * copyChapterImages' precedence, so the size comes from the published file.
+ */
+function configureImageMediaDirs() {
+  setImageMediaDirs(
+    [path.join(BOOKS_DIR, '01-source', 'media'), path.join(BOOKS_DIR, 'media')].filter((d) =>
+      fs.existsSync(d)
+    )
+  );
 }
 function _getOsEmbedStatsForTest() {
   return { ...OS_EMBED_STATS };
@@ -686,6 +704,16 @@ function writeHtmlPage(outputPath, html, chapter) {
         `${placeholders.media} [[MEDIA:n]] placeholder(s) reached the page (not gated — see §C145)`
     );
   }
+  // H4 (register §C201): a word mixing Latin and Cyrillic letters reads right
+  // and is wrong (search misses it). Warn-only for now: the one known word sits
+  // in the MT layers, which only a ruled HAND REPAIR may change.
+  const mixed = findMixedScriptWords(html);
+  if (mixed.length) {
+    console.error(
+      `  ⚠️  ${path.basename(outputPath)}: ${mixed.length} word(s) mix Latin and Cyrillic ` +
+        `letters: ${[...new Set(mixed)].slice(0, 10).join(', ')} (not gated — see §C201 H4)`
+    );
+  }
   const backup = safeWrite(outputPath, html);
   if (backup) logBackup(BOOK_SLUG, chapter, 'render', outputPath, backup);
   return outputPath;
@@ -993,6 +1021,24 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     }
   }
 
+  // H2 (register §C201): an introduction's abstract is the chapter's outline,
+  // not learning objectives. Readers were offered section titles to tick off
+  // as objectives, and ch01's outline carried OpenStax's PDF test module. The
+  // outline is emitted from the real sections (the nav below, which holds no
+  // test module) under its own key, and the abstract is not rendered as
+  // "Námsmarkmið". A test pins that no introduction carries objectives.
+  // Gated on a real outline, not on isIntro alone: a module rendered without
+  // section info defaults to section '0', and its objectives must stay.
+  const outlineReplacesAbstract = Boolean(isIntro && chapterOutline && chapterOutline.length > 0);
+  if (outlineReplacesAbstract) {
+    pageData.objectives = [];
+    pageData.chapterOutline = chapterOutline.map(({ section, title: t, href }) => ({
+      section,
+      title: t,
+      href,
+    }));
+  }
+
   // Build HTML document
   const html = buildHtmlDocument({
     title,
@@ -1001,7 +1047,7 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     pageData,
     sectionNumber,
     isIntro,
-    abstract: doc.metadata.abstract,
+    abstract: outlineReplacesAbstract ? null : doc.metadata.abstract,
     context, // Pass context for footnotes rendering
     chapterOutline,
   });
@@ -1058,7 +1104,8 @@ function buildHtmlDocument(options) {
   lines.push('    <header>');
   lines.push(`      <h1 id="title">${escapeHtml(title)}</h1>`);
 
-  // Learning objectives (from abstract)
+  // Learning objectives (from abstract). An introduction with an outline passes
+  // no abstract: there it is the chapter outline, which the nav shows (H2).
   if (abstract && abstract.items && abstract.items.length > 0) {
     lines.push('      <div class="learning-objectives">');
     lines.push('        <h2>Námsmarkmið</h2>');
@@ -1381,7 +1428,7 @@ function renderFigure(figure, context) {
         // → `&amp;gt;` (double-encode). decodeEntities is idempotent on values
         // with no entities, so byte-identical for plain alt text. (P0-1 C1/C2)
         lines.push(
-          `  <img src="${escapeAttr(normalizedSrc)}" alt="${escapeAttr(decodeEntities(alt))}" loading="lazy">`
+          `  <img src="${escapeAttr(normalizedSrc)}" alt="${escapeAttr(decodeEntities(alt))}"${imageSizeAttrs(normalizedSrc)} loading="lazy">`
         );
       }
     }
@@ -1443,7 +1490,7 @@ function renderMedia(media, context) {
   }
 
   const classValue = className ? `media-inline ${className}` : 'media-inline';
-  return `<div${id ? ` id="${escapeAttr(id)}"` : ''} class="${escapeAttr(classValue)}">\n  <img src="${escapeAttr(normalizedSrc)}" alt="${escapeAttr(alt)}" loading="lazy">\n</div>`;
+  return `<div${id ? ` id="${escapeAttr(id)}"` : ''} class="${escapeAttr(classValue)}">\n  <img src="${escapeAttr(normalizedSrc)}" alt="${escapeAttr(alt)}"${imageSizeAttrs(normalizedSrc)} loading="lazy">\n</div>`;
 }
 
 /**
@@ -3879,6 +3926,7 @@ async function main() {
   BOOK_SLUG = args.book;
   BOOKS_DIR = `books/${args.book}`;
   RENDER_TRACK = args.track || 'mt-preview';
+  configureImageMediaDirs();
 
   // Load book-specific rendering config
   BOOK_CONFIG = getBookRenderConfig(BOOK_SLUG);

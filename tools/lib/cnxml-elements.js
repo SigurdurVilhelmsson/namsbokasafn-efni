@@ -14,6 +14,7 @@ import {
 import { resolveModuleHref } from './module-sections.js';
 import { renderEmbedHtml } from './embed-mapping.js';
 import { parseAttributes, TAG_ATTR_SPAN } from './cnxml-parser.js';
+import { imageSizeAttrs } from './image-dimensions.js';
 
 // =====================================================================
 // CROSS-MODULE LINK RESOLUTION
@@ -686,7 +687,7 @@ export function renderFootnotesSection(context) {
 
   for (const fn of context.footnotes) {
     html += `    <li id="${escapeAttr(fn.id)}" class="footnote-item">\n`;
-    html += `      <p>${fn.content} <a href="#fnref-${fn.num}" class="footnote-backref" aria-label="Back to content">↩</a></p>\n`;
+    html += `      <p>${fn.content} <a href="#fnref-${fn.num}" class="footnote-backref" aria-label="Aftur í meginmál">↩</a></p>\n`;
     html += `    </li>\n`;
   }
 
@@ -914,7 +915,7 @@ export function processInlineContent(content, context) {
         normalizedSrc = `/content/${context.bookSlug}/chapters/${chapterStr}/images/media/${basename}`;
       }
 
-      const imgTag = `<img src="${escapeAttr(normalizedSrc)}" alt="${escapeAttr(alt)}" loading="lazy"/>`;
+      const imgTag = `<img src="${escapeAttr(normalizedSrc)}" alt="${escapeAttr(alt)}"${imageSizeAttrs(normalizedSrc)} loading="lazy"/>`;
       if (mediaClass.includes('scaled-down')) {
         return `<span class="scaled-down">${imgTag}</span>`;
       }
