@@ -47,6 +47,7 @@ const activityLog = require('../services/activityLog');
 const notifications = require('../services/notifications');
 const servedVersions = require('../services/servedVersions');
 const servedEdit = require('../services/servedEdit');
+const moduleOpenings = require('../services/moduleOpenings');
 const { sha256Text, isNotMintedBook } = require('../lib/servedText');
 const { isNewer } = require('../lib/editRecency');
 
@@ -295,8 +296,8 @@ router.get(
       // and the served versions minted in one sessions.db transaction. Fail-soft: a failed mint
       // is logged and the module is still served with baseSha256; the save path mints the base
       // it checks. Never in the loader (it has other callers).
-      // eslint-disable-next-line no-unused-vars -- PR2's opening step reads it (spec §5.4 step 4)
-      const served = servedVersions.recordServe(segmentEditor.getDb(), data, {
+      const conn = segmentEditor.getDb();
+      const served = servedVersions.recordServe(conn, data, {
         book: req.params.book,
         chapter: req.chapterNum,
         moduleId: req.params.moduleId,
@@ -353,12 +354,30 @@ router.get(
         .filter((e) => String(e.editor_id) !== String(currentUserId));
       const otherPendingSegments = [...new Set(otherEdits.map((e) => e.segment_id))];
 
-      // ── spec §5.4 step 4, PR2's opening step, goes HERE: after every editor's edit rows are
-      //    read (above) and before res.json. It reads `served.mintOk` (false while its predicate
-      //    holds → 503 OPENING_UNRECORDED), `served.servedVersionIds` and `served.duplicatedIds`.
-      //    Step 5 (G1.23) reads seg.baseSha256 from data.segments after it. Nothing here may add a
-      //    field to the response but per-segment occurrence and baseSha256 and per-edit
-      //    contentSha256 (T17). ──
+      // ── spec §5.4 step 4 and §5.5: the opening record (PR2). Only a serve that meets the
+      //    predicate (a study book, no opening yet, and a users row holding a
+      //    user_chapter_assignments row for this book and chapter) is affected: it records the
+      //    opening and its in-flight snapshot in one transaction, or answers 503 and records
+      //    nothing, a failed mint above included. Every other serve is answered exactly as
+      //    before. ──
+      const step = moduleOpenings.openOnServe(conn, {
+        book: req.params.book,
+        chapter: req.chapterNum,
+        moduleId: req.params.moduleId,
+        providerId: req.user.id,
+        served,
+        segments: data.segments,
+        edits,
+      });
+      if (step.status === 'unrecorded') {
+        const { status, code, message } = moduleOpenings.OPENING_UNRECORDED;
+        return res.status(status).json({ error: code, message });
+      }
+      // ── PR3 (index decision 2) emits module-opened HERE, after the opening's commit and only
+      //    when step.status === 'opened', with moduleOpenings.moduleOpenedDetail(served,
+      //    step.opening) as its detail; nothing it does may change this response (spec §5.11).
+      //    Step 5 (G1.23) runs after it and reads seg.baseSha256 and the stored opening. No field
+      //    is added to the response (T17). ──
       res.json({
         ...data,
         edits: editsBySegment,

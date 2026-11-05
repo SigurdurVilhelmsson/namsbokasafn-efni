@@ -57,6 +57,42 @@ function invoke(handler, req) {
   });
 }
 
+/**
+ * Run a route's WHOLE middleware chain (requireAuth … handler) with a fake req/res; resolves on
+ * res.json. handlerFor skips the middleware, so an answer middleware gives (requireRole's 403,
+ * validateBookChapter's 400) needs this one (PR2 plan decision 26).
+ */
+function invokeChain(router, method, routePath, req) {
+  const layer = router.stack.find(
+    (l) => l.route && l.route.path === routePath && l.route.methods[method]
+  );
+  const handles = layer.route.stack.map((s) => s.handle);
+  return new Promise((resolve, reject) => {
+    const res = {
+      statusCode: 200,
+      status(c) {
+        this.statusCode = c;
+        return this;
+      },
+      json(body) {
+        resolve({ status: this.statusCode, body });
+      },
+    };
+    let i = 0;
+    const next = (err) => {
+      if (err) return reject(err);
+      const h = handles[i++];
+      if (!h) return reject(new Error('chain ended without a response'));
+      try {
+        h(req, res, next);
+      } catch (e) {
+        reject(e);
+      }
+    };
+    next();
+  });
+}
+
 const EDITOR = Object.freeze({ id: 'u-ed1', username: 'editor1', role: 'editor', books: [] });
 
-module.exports = { segFile, writeModule, writeRaw, handlerFor, invoke, EDITOR };
+module.exports = { segFile, writeModule, writeRaw, handlerFor, invoke, invokeChain, EDITOR };
