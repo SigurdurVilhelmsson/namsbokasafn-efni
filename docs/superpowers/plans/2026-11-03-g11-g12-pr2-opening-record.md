@@ -9,7 +9,9 @@
 
 **Goal:** a chemistry unit's first serve to a user who holds an assignment row for its chapter records, once and in
 one transaction, the time it opened and the set of its segments that held an in-flight edit at that moment; a serve
-that meets that predicate but cannot record it answers 503 and records nothing (spec §5.4, §5.5). A committed,
+that meets that predicate but cannot record it answers 503 and records nothing (spec §5.4, §5.5). *(✏️ 2026-11-05:
+"at that moment" means in the edit rows that serve read, which another process can change before the opening
+commits; amendment item 9.)* A committed,
 read-only probe answers checks G-1c to G-1g on production before PR2 merges (spec §9).
 
 **Architecture:** one never-throw migration (predicted `054`) adds `module_openings` and `module_opening_inflight` to
@@ -46,10 +48,15 @@ JS with no build step (`server/public/js/`, `sourceType: 'script'`), Vitest from
 ## State of this plan (read first)
 
 - **Written 2026-11-03 as one of the five PR plans the index lists; ✅ approved by [USER] on 2026-11-04** ("Yes for
-  all", with the clarifications the index's "Answers" records). The spec's `✏️ AMENDED 2026-11-04` block records every
-  departure, this plan's decision 4 among them, so **no spec commit is owed before any task**. Every other behaviour
-  choice is built as written. Two questions stay open until Task 8: who runs the production probe, and the §9 choice
-  if chemistry holds assignment rows. Status lives in the register, never here.
+  all", with the clarifications the index's "Answers" records). The spec's `✏️ AMENDED 2026-11-04` block records the
+  departures approved that day, this plan's decision 4 among them, but not decision 6's reading of §5.5 step 1,
+  approved with it and now in the spec's `✏️ AMENDED 2026-11-05` block. **The `✏️ AMENDED 2026-11-05` block below
+  changes approved choices, and none of its items is approved yet:** each awaits [USER]'s review with PR2 and names
+  its fallback, and those that depart from the spec's wording are also in the spec's 2026-11-05 block. Every
+  behaviour choice that block does not name is built as approved. Two questions stay open until Task 8: who runs the
+  production probe, and the §9 choice if chemistry holds assignment rows. Status lives in the register, never here.
+  *(✏️ Corrected 2026-11-05, PR2 review U34 and U35: this said the 2026-11-04 block "records every departure", that
+  "no spec commit is owed before any task", and that "every other behaviour choice is built as written".)*
 - **Pinned to `main` = `ed10180c`, plus PR1 as its plan leaves it.** Every `path:line` below was opened at
   `ed10180c`; where PR1 changes a construct, the text says "as PR1 Task N leaves it". Once PR1 has merged, match each
   edit on the quoted construct, never on the number.
@@ -75,11 +82,25 @@ JS with no build step (`server/public/js/`, `sourceType: 'script'`), Vitest from
 - **The merge is gated** (index § The five PRs; spec §13a): PR2 merges only after Task 8 has run the probe on
   production and [USER] has made the §9 choice if chemistry holds assignment rows.
 
-### ✏️ AMENDED 2026-11-05 — two findings from PR1's review, taken in before Task 1
+### ✏️ AMENDED 2026-11-05 — changes made while building and reviewing PR2, none of them approved yet
 
-The register's 2026-11-05 entry asks that PR2's plan take the "For PR2" bullets of its 2026-11-04 entry (PR1's
-whole-branch review). Both are added here; nothing above is reopened. Everything else in this plan is built as
-approved on 2026-11-04.
+The items came at three points, and each says what it changes, why, and its fallback:
+- **Items 1 and 2, before Task 1:** the "For PR2" bullets of the register's 2026-11-04 entry (PR1's whole-branch
+  review), which its 2026-11-05 entry asks this plan to take. Item 1 adds Task 3b; item 2 widens Task 1.
+- **Item 3, after Task 6:** Task 6's review, finding F3. It supersedes decision 21's reading of G-1c and reopens
+  Task 6.
+- **Items 4 to 10, after PR2's whole-branch review** (findings U1–U42, then R findings on some of those fixes).
+  Item 4 changes decision 13's mechanism. Item 5 adds a precondition to Task 8 Step 2. Item 6 changes decisions 18
+  and 21 and Task 6's output. Item 7 changes decision 29's mechanism. Item 8 changes decision 2's checks and Task 1's
+  `checks.schema`. Item 9 states a limit of the snapshot and changes no behaviour. Item 10 changes the test
+  harnesses of Tasks 3 and 3b.
+
+**No item is approved by [USER] yet.** Each awaits [USER]'s review with PR2. Item 1 and item 4's qualification of T6
+depart from the spec's wording, so the spec's `✏️ AMENDED 2026-11-05` block lists them for that review too.
+Everything this block does not name is built as approved on 2026-11-04. A later change adds its own item here and
+its line to the list above.
+*(✏️ Heading and intro rewritten 2026-11-05, PR2 review U33. They said "two findings from PR1's review, taken in
+before Task 1" and "nothing above is reopened", while the block already held item 3, which reopens decision 21.)*
 
 1. **A new Task 3b, after Task 3: the serve's mint and the opening wait out another process's write lock.**
    - **Premise** (PR1 review C2, commit `e8b9832f`, measured there by a scratch probe; Task 3b's red arm re-measures
@@ -99,6 +120,11 @@ approved on 2026-11-04.
      undoes only its own writes), so their behaviour does not change, which their existing tests show.
    - **`recordOpening` opens IMMEDIATE** (`conn.transaction(…).immediate()`), stated rather than left to its first
      statement being a write.
+     ✏️ *2026-11-05, PR2 review U28 (declined, with this measurement): no test can tell the two apart today. While
+     the `INSERT` is the transaction's first statement, a deferred transaction asks for the write lock holding no read
+     lock, so it waits out the busy timeout just as IMMEDIATE does; removing `.immediate()` fails no case. Case (h)
+     fails once a read is added before the `INSERT` without IMMEDIATE, which is the regression IMMEDIATE prevents.
+     `recordOpening`'s comment and `servedWriteLock.test.js`'s header say so.*
    - **Unchanged:** `recordServe`'s signature and its fail-soft rule (PR1's handoff). A mint that still fails (the
      busy timeout runs out, a damaged database) returns `mintOk: false`, and the route answers 503 only when the
      predicate holds. **The trade-off, stated:** a changed serve under a held lock now blocks the request (and, since
@@ -110,6 +136,9 @@ approved on 2026-11-04.
      while the lock is held, waits and records the opening (200, one `module_openings` row); red on the unchanged
      mint: 503 `OPENING_UNRECORDED`. Case (c) still passes unchanged, and a mutant that makes the whole mint
      `.immediate()` still fails (c).
+   - **Review:** a departure from spec §5.4 step 3, recorded in the spec's `✏️ AMENDED 2026-11-05` block. It awaits
+     [USER]'s yes with PR2. **Fallback:** the single deferred transaction as written, under which a held lock fails a
+     changed serve at once and, for an assigned editor's first serve, answers 503.
 2. **Task 1 also widens `scripts/deploy.sh`'s schema remedy.** It tells the operator to read "the `[053]` warning";
    once `checks.schema` can name `054`'s tables that is wrong. Task 1 rewrites it to name the migrations' warnings
    from `[053]` onward, without listing numbers, so PR3's migration needs no further edit there.
@@ -117,22 +146,35 @@ approved on 2026-11-04.
    `scripts/__tests__/deploy-health-readout.test.mjs` does pin it, with an anchored regex whose brackets are escaped
    (`\[053\]`), which that grep cannot match. Task 1 updated the regex, test first. Grep for what a test would
    write, not only for the text it checks.*
+   **Review:** awaits [USER]'s review with PR2. **Fallback:** the remedy names the `[053]` warning alone, which is
+   wrong for a missing `054` table.
 3. **G-1c reads what journald and rsyslog actually read** (added 2026-11-05, after Task 6's review, finding F3).
    - **Premise the tree contradicted:** decision 21 and Task 6 read journald's settings only from
-     `/etc/systemd/journald.conf` and `/etc/systemd/journald.conf.d/`. journald also reads drop-ins from
-     `/run/systemd/journald.conf.d/` and `/usr/lib/systemd/journald.conf.d/` (a same-named file in `/etc` masks one
-     in `/run`, which masks one in `/usr/lib`; the survivors apply in filename order, a later one overriding). On
-     Ubuntu 24.04, the production OS, the systemd package ships `/usr/lib/systemd/journald.conf.d/syslog.conf` with
-     `ForwardToSyslog=yes` (measured in this sandbox with `systemd-analyze cat-config systemd/journald.conf` and
-     `dpkg -S`). The request log is journald's (`requestTiming.js`), so with forwarding on and rsyslog running its
-     lines may also land in `/var/log/syslog`, whose retention `/etc/logrotate.d/rsyslog` sets. G-1c's question
-     ("journald retention", which decides what the consent text says about the request log, §6 item 14) is then not
-     answered by the `/etc` files alone.
+     `/etc/systemd/journald.conf` and `/etc/systemd/journald.conf.d/`. journald 255 also reads the `*.conf` drop-ins
+     of `systemd/journald.conf.d/` under `/run`, `/usr/local/lib` and `/usr/lib`. A same-named file in an earlier
+     directory of that order (`/etc`, `/run`, `/usr/local/lib`, `/usr/lib`) masks a later one, and the survivors
+     apply in filename order, a later one overriding. On Ubuntu 24.04, the production OS, the systemd package ships
+     `/usr/lib/systemd/journald.conf.d/syslog.conf` with `ForwardToSyslog=yes` (measured in this sandbox with
+     `systemd-analyze cat-config systemd/journald.conf` and `dpkg -S`). The request log is journald's
+     (`requestTiming.js`), so with forwarding on and rsyslog running its lines may also land in `/var/log/syslog`,
+     whose retention `/etc/logrotate.d/rsyslog` sets. G-1c's question ("journald retention", which decides what the
+     consent text says about the request log, §6 item 14) is then not answered by the `/etc` files alone.
    - **The change:** G-1c lists journald's settings from every file journald applies, in its order, with each file's
-     path; adds `ForwardToSyslog` to the keys it reports; reports whether rsyslog is configured and active, and the
-     rotation lines of `/etc/logrotate.d/rsyslog`; and adds `hourly` to the rotation directives. Still read-only,
-     still directives only, still no editor and no secret. The roots are parameters of the exported function, as
-     `etcRoot` and `varRoot` are.
+     path. The main file is `/etc/systemd/journald.conf` alone: `systemd-analyze cat-config` shows the first of the
+     four directories' `journald.conf` that exists, but an strace of journald 255 shows it opening none but `/etc`'s.
+     So the other three (`/run`, `/usr/local/lib` and `/usr/lib`'s `systemd/journald.conf`) are listed by path only,
+     when present, as `notReadBySystemd255`, and never read. G-1c also adds `ForwardToSyslog` to the keys it
+     reports; reports whether rsyslog is configured and active, and the rotation lines of
+     `/etc/logrotate.d/rsyslog`; and adds `hourly` to the rotation directives. Still read-only, still directives
+     only, still no editor and no secret. The roots are parameters of the exported function, as `etcRoot` and
+     `varRoot` are: `runRoot` and `usrRoot`, defaulting to `/run` and `/usr`. How each file's lines are read changed
+     again after the whole-branch review (item 6).
+   - ✏️ *Corrected 2026-11-05, PR2 review U32: this item named only the `/run` and `/usr/lib` drop-in directories and
+     said nothing of the main file's other candidates. The code also reads `/usr/local/lib`'s directory and lists
+     those candidates as `notReadBySystemd255`; the probe's header states the measured rule.*
+   - **Review:** it supersedes decision 21's reading of G-1c and reopens Task 6, and awaits [USER]'s review with
+     PR2. **Fallback:** decision 21 and Task 6 as approved, which read `/etc` alone and so cannot see the
+     `ForwardToSyslog=yes` Ubuntu ships under `/usr/lib`.
 4. **Decision 13's mechanism, as built after the whole-branch review** (added 2026-11-05; review findings U1–U6 and
    U12–U15, then R1–R3 on that fix). Decision 13's promises stand: on a reload from an open pane answered
    `OPENING_UNRECORDED` the pane goes, nothing on the module list can save, accept or discard for the unit, and no
@@ -145,7 +187,9 @@ approved on 2026-11-04.
      parenthetical on opening a different unit no longer describe the code: with nothing held, nothing is written
      under the other unit's key.
    - **Every text comes back through `restoreDraft`, from the draft:** a kept text unasked, with its notice; a typed
-     one offered (index decision 12).
+     one offered (index decision 12). One data difference: every kept text now gets a `draft-restore` assist item,
+     because it comes back from storage. Before, a held text got one only when it was held with `addRestoreItem`
+     true, and a kept pane carried across a re-render while filtered out was held without it.
    - **With the browser's storage full,** `saveDraft` reports the failed write, and the same entries stay in memory
      for that unit only (`keepUnwritten`). `restoreDraft` merges them at that unit's next opening. Leaving the page
      tries storage again, and asks first while memory alone holds a text.
@@ -157,8 +201,19 @@ approved on 2026-11-04.
      the unit was left, it changes nothing in memory and reloads nothing; a save refused with a kept code adds its
      text to the unit's draft in this tab (`keepLeftText`, by `mergeRestoreSources`' rule), so the next opening
      installs it unasked. A reopening of the same unit compares equal, and the action then finishes as in any open
-     unit.
-   - **Back also changes (PR1's handler):** it closes its panes, and an answer arriving after it is left alone.
+     unit. The actions that compare are `saveEdit`, `acceptSegment`, `propagateSegment`, `restoreToVersion`,
+     `revokeAcceptance`, `reviewEdit`, `unapproveEdit`, `reopenEdit` and the submit button. Propagation neither asks
+     nor posts once the unit is left, whether its own save's reload left it or the editor left while the preview was
+     in flight.
+   - **Back also changes (PR1's handler):** it closes its panes, and an answer arriving after it is left alone. So
+     Escape on the module list after Back no longer reaches a hidden pane, and a text Back kept survives it (U14),
+     and a kept-code refusal that arrives after Back is added to the unit's draft.
+   - **Review:** it changes decision 13's mechanism and PR1's Back, not decision 13's promises. The "What can still
+     land" bullet qualifies T6's "the editor cannot save in between", which the spec's `✏️ AMENDED 2026-11-05` block
+     lists. Awaits [USER]'s review with PR2. **Fallback:** decision 13's mechanism as planned: `heldDrafts` and
+     `paneState` stay, and the hidden panes stay open. The review measured what that loses or sends. On the module
+     list, Escape, F5, Ctrl+S and Ctrl+Shift+Enter reached the hidden panes, deleting a text or posting one (U1–U5).
+     Opening another unit wrote this unit's kept text under that unit's draft key (U13).
 5. **Task 8 Step 2 runs while the `ritstjorn` service is running** (added 2026-11-05; PR2 review U20, then R6 on
    that fix). A `readonly: true` open of a WAL database whose `-wal` and `-shm` files are absent creates both,
    owned by the probe's user, and leaves them after close (measured). Since `0bab69d6` the probe reads the database's
@@ -166,13 +221,91 @@ approved on 2026-11-04.
    Those files are absent only when no process holds the database, so Step 2's command must run while the service
    runs: before it, `ssh <prod> systemctl is-active ritstjorn` prints `active`. Step 2's rule is unchanged and covers
    a run made while the service was stopped: a section that is not ok means stop and report, and do not merge.
+   **Review:** awaits [USER]'s review with PR2. **Fallback:** the plain read-only open, which on a stopped server
+   creates `-wal` and `-shm` owned by the probe's user, files that can keep the server from opening its database.
+6. **G-1c's output, and the probe's usage check, after the whole-branch review** (added 2026-11-05; PR2 review U8,
+   U17, U18, U19 and U23, then R1–R5 on those fixes). It changes decision 18 ("from nginx, only `access_log` lines;
+   … from journald, only the retention keys"), decision 21's "rotation lines", and Task 6's test, which expected
+   whole lines. **The exact reading rules live in the probe's header and in `readResearchPreconditions.test.js`,
+   which pins them; they are not restated here.**
+   - **Each directive alone, never its line (U8).** Task 6 printed a matching line whole, so whatever shared the line
+     left the probe; measured: a `server_name`, a person's name and an email. An nginx `access_log` directive is now
+     found as nginx's tokenizer finds a directive, and printed as its own tokens up to its own `;`, with a comment
+     inside it dropped. One with no `;` is `{ file, unterminated: true }`, carrying none of its text. A journald key
+     is printed as `Key=value` only when its value is in the grammar of that key's parser, and otherwise as
+     `{ file, key, valueUnparsed: true }`. The grammars were measured against systemd 255's journald itself and are
+     narrower than it where they are not equal, so a few values journald accepts (a leading `+`, a count written in
+     hex or octal) are flagged, not printed (R4). A logrotate directive is reported as logrotate 3.21.0 reads it, and
+     one logrotate refuses is `{ directive, valueUnparsed: true }`, carrying none of its text.
+   - **Read as the daemons read them (U18, U19; R1–R3, R5).** A journald key counts only under an exact `[Journal]`
+     header. Every logrotate directive on a line is read, with its count as the number logrotate reads, and
+     `logrotate.conf`'s directives outside every stanza are reported under a new `defaults` key. The header's former
+     rule ("`rotate 14 TRAILING-TEXT` gives `rotate 14`") is gone, because logrotate refuses that line and its stanza.
+     A `{` after `$` inside an nginx token (`${host}`) stays in the token.
+   - **Unreadable is not absent (U17).** A file this user cannot read, or a directory it cannot list, is
+     `{ file, readable: false }` in its place, and an unreadable logrotate file is `{ readable: false }`, never `null`
+     or a missing entry.
+   - **Known limits, stated in the header:** an nginx file pulled in by any other `include` is not read, and a stanza
+     logrotate refuses for a reason outside the rotation directives is not detected.
+   - **Usage (U23):** a book must start with a letter or a digit, so a lone flag (`--help`, `--write`) exits 2 with
+     nothing on stdout, not 1 with the host's readout.
+   - Task 8 Step 4 reads these shapes.
+   - **Review:** awaits [USER]'s review with PR2. **Fallback:** Task 6's output as approved. It prints a matching line
+     whole (the leak measured above), reads an unreadable file as absent, and reports a key outside `[Journal]` or a
+     value logrotate refuses as if applied.
+7. **`close-pending-edits` re-reads the openings inside an IMMEDIATE write** (added 2026-11-05; PR2 review U7). It
+   changes decision 29's mechanism. The script read the opening count once, before a DEFERRED write transaction, and
+   the server is another process: an opening committed between that read and the transaction's first `UPDATE` let
+   the unlogged writes land after a unit had opened, which spec §5.6 forbids. Now the count is also read as the first
+   statement of the write, and the write is IMMEDIATE, so the server's `recordOpening`, itself IMMEDIATE, waits for it
+   (item 9 says what that wait means for the snapshot). An opening found there throws "a unit opened during the write"
+   and writes nothing. The run then exits 1 through the existing failure default with no JSON report, as the
+   script's other "changed during the write" throws do, rather than as a refusal in the report. The check before
+   the write, with its refusal in the report, is unchanged. **Review:** awaits [USER]'s review with PR2.
+   **Fallback:** the single read before a DEFERRED write, with that window open.
+8. **Migration `054`'s checks require integers, and `checks.schema` does not take a VIEW for a table** (added
+   2026-11-05; PR2 review U41 and U42). It changes decision 2's column checks and Task 1's `checks.schema`.
+   - **U41:** `opened_at_ms` is `CHECK (typeof(opened_at_ms) = 'integer' AND opened_at_ms > 0)`, `inflight_count` the
+     same with `>= 0`, and `occurrence` the same with `>= -1`. An INTEGER column stores TEXT or REAL it cannot
+     convert, and any TEXT sorts above every number, so the bare `> 0` admitted `'now'` and `1.5`. The column's
+     affinity runs before the check, so a value it converts (`2.0`, `'17'`) is stored as an integer and admitted.
+     The migration is still one transaction inside its never-throw boundary. A database that ran the earlier `054`,
+     which only this branch's test and local databases can be (a local `pipeline-output/e2e-sessions.db`, for one),
+     keeps the bare checks, since the migration uses `CREATE TABLE IF NOT EXISTS`. **Fallback:** the bare checks.
+   - **U42:** `checkSchema` counts a name as a table only when `sqlite_master` holds a TABLE of that name (compared
+     lowercased). Any other name reads as having no columns, so a `tables` entry is reported as `<table>` alone and a
+     `columns` entry as each `<table>.<column>`. A VIEW of the name satisfies `CREATE TABLE IF NOT EXISTS` (State of
+     this plan) and answers `table_info` with its columns, so the check read `ok` with no table behind the name.
+     **Fallback:** `table_info` alone.
+   - **Review:** both await [USER]'s review with PR2.
+9. **What the snapshot is taken from** (added 2026-11-05; PR2 review U16). No behaviour changed; `moduleOpenings.js`'s
+   header now says it. The snapshot comes from the edit rows the route read before `recordOpening`'s transaction,
+   while `opened_at_ms` is taken inside it. No request in the same process can write in between, because the
+   handler is synchronous from that read to the transaction. Another process can. A `segment_edits` change it
+   commits after the route's read and before the opening's transaction takes the write lock (including while
+   `recordOpening` waits out that process's lock) is not in the snapshot: an in-flight row it inserts is missing, and
+   a row it closes is still there. This is spec §5.5's own design ("the route already holds every editor's rows"),
+   not a departure, so the spec carries no amendment for it, and this plan's Goal ("at that moment") means it.
+   **Review:** awaits [USER]'s review with PR2, as a stated limit. Closing it would mean reading the rows again inside
+   the transaction, which is not built.
+10. **The test harnesses of Tasks 3 and 3b** (added 2026-11-05; PR2 review U39 and U27). Test code only.
+    - **U39:** `servedFixture`'s `invoke` and `invokeChain` share one fake response. A second `res.json` throws
+      `ERR_HTTP_HEADERS_SENT`, as Express does, and the answer settles one microtask after the first send, so a
+      second send rejects the call even when the handler swallows the throw. A synchronous throw from the handler
+      also rejects. Before, both resolved on the first `res.json`, so a missing `return` after an answer passed.
+    - **U27:** `servedWriteLock.test.js`'s `whileLocked` returns `startedWhileHeld`, read just before the call runs,
+      and every lock case asserts it, so a case whose call started after the lock was released cannot pass.
+    - **Review:** awaits [USER]'s review with PR2. **Fallback:** the harnesses as Task 3 and Task 3b built them,
+      under which a missing `return` and a call that started after the release both pass unseen.
 
 ## Decisions taken in this plan
 
 Each is a §13 item, a seam the spec, the index or PR1's handoff leaves open, or a reading of the tree. **Decision
 4's second half goes beyond the frozen spec's wording, and [USER] approved it on 2026-11-04** (spec `✏️ AMENDED
 2026-11-04`). Every other decision was approved as written the same day. "Answers ([USER], 2026-11-04)" lists each
-question and its answer.
+question and its answer. *(✏️ 2026-11-05: decisions 2, 13, 18, 19, 21 and 29 are changed by "State of this plan"'s
+`✏️ AMENDED 2026-11-05` block, whose items are not yet approved; each changed decision carries a pointer to its
+item.)*
 
 **Server and schema**
 
@@ -188,6 +321,8 @@ question and its answer.
    this module; `userService` is required by the service (the route never required it: `grep -an userService
    server/routes/segment-editor.js` prints nothing at `ed10180c`).
 2. **The migration (predicted `054-module-openings.js`; spec §13 leaves names and types to the plan).**
+   ✏️ *2026-11-05: each numeric check also requires `typeof(…) = 'integer'`, and `checks.schema` reads a VIEW of an
+   expected name as absent; amendment item 8.*
    - `module_openings`: `book TEXT`, `chapter INTEGER`, `module_id TEXT`, `opened_at_ms INTEGER CHECK (opened_at_ms >
      0)`, `inflight_count INTEGER CHECK (inflight_count >= 0)`, every column `NOT NULL`, `PRIMARY KEY (book, chapter,
      module_id)`. **No user column** (R3, spec §5.5).
@@ -356,7 +491,9 @@ question and its answer.
     present at `ed10180c` (`better-sqlite3`, `dotenv`, `fs`, `path`, `child_process`, `../lib/dbPath`,
     `../lib/chapterLabel`, `../../tools/lib/mt-lock.cjs`).
 17. **It reads PR1's `origin` column only when `PRAGMA table_info(segment_edits)` lists it,** for the same reason.
-18. **It names no editor.** `users` as `{ id, role, active }`; chemistry's assignment rows as `{ userId, chapter }` (not
+18. ✏️ *2026-11-05: each `access_log`, journald setting and rotation directive is now reported alone, never its line;
+    amendment item 6.*
+    **It names no editor.** `users` as `{ id, role, active }`; chemistry's assignment rows as `{ userId, chapter }` (not
     `assigned_by`, not `assigned_at`); segments by id with counts; from `server/.env`, a systemd `Environment=` line and
     any `EnvironmentFile=`, only `AUTO_CREATE_USERS`; from nginx, only `access_log` lines; from logrotate, only rotation
     directives; from journald, only the retention keys. A test plants sentinel names, an email, a username, an
@@ -367,7 +504,8 @@ question and its answer.
     disagree). The books root's test seam is `BOOKS_ROOT_OVERRIDE` (the precedent of `scripts/backfill-mt-locks.js:57`
     and `scripts/reattach-segment-edits.js:275`: test-only, never set in production). `etcRoot`, `varRoot`, `pathEnv`
     and `exec` are parameters of the exported function only; `main` passes `/etc`, `/var`, `process.env.PATH` and a
-    never-throw `execFileSync` wrapper (5 s timeout).
+    never-throw `execFileSync` wrapper (5 s timeout). ✏️ *2026-11-05: so are `runRoot` and `usrRoot`, defaulting to
+    `/run` and `/usr`; amendment item 3.*
 20. **`AUTO_CREATE_USERS` "as the server reads it"** (spec §9 G-1d): the server reads `process.env`, which systemd
     fills from `Environment=` and `EnvironmentFile=` (a file's assignment overrides `Environment=`, a later file a
     former), and which `dotenv` fills from `server/.env` only where unset (`server/index.js:24`, cwd `server/`, the
@@ -376,7 +514,8 @@ question and its answer.
     (`auth.js:28-30` throws without `JWT_SECRET`) and does not restate. The unit is `ritstjorn`
     (`scripts/deploy.sh:136`).
 21. **G-1c also reports nginx's logrotate rotation lines** beside its `access_log` lines (a plan addition): the access
-    log's retention is set there, and §6 item 14 and G1.15 need it.
+    log's retention is set there, and §6 item 14 and G1.15 need it. ✏️ *2026-11-05: G-1c's journald, rsyslog and
+    logrotate sources are amendment item 3's, and how each file is read is amendment item 6's.*
 22. **G-1g enumerates units from `02-for-mt`** (what the loader serves), every chapter directory including `ch00` and
     `appendices`, files ending `-segments.en.md` whose module id is one the route can serve (`/^(m\d{5}|chapter-metadata)$/`,
     `validateModule`, `validateParams.js:43`), and checks the sibling marker through `mtLockPathFor`
@@ -412,7 +551,9 @@ question and its answer.
 
 **`close-pending-edits` (spec §5.6)**
 
-29. **`server/scripts/close-pending-edits.js` refuses once a unit of its book has opened** (Task 7). Spec §5.6: the
+29. ✏️ *2026-11-05: the count is also read as the first statement of the write, which is now IMMEDIATE; amendment
+    item 7.*
+    **`server/scripts/close-pending-edits.js` refuses once a unit of its book has opened** (Task 7). Spec §5.6: the
     script "writes raw SQL (`:176-200`). It is meant to run before the study, under the hold. This design does not log
     its writes, so it must not run once any unit has opened." **Placed in PR2 by the index (its PR2 row)**, because PR2
     is where the record that makes it checkable first exists. The script already ran its one production write
@@ -437,7 +578,9 @@ how this plan resolves it.
    False for a reload from an open pane: the catch shows `#module-selector` and never hides `#editor-container`, so the
    module list and the old, saveable rows are on screen together, and T6's "the editor cannot save in between" does
    not hold on that path. Resolved by Task 4 (decision 13), which makes the spec's sentence true for
-   `OPENING_UNRECORDED`; any other load error keeps today's behaviour.
+   `OPENING_UNRECORDED`; any other load error keeps today's behaviour. ✏️ *2026-11-05: Task 4 makes T6's clause true
+   for what the editor can do on the module list. A write sent before the reload can still land after it (amendment
+   item 4), which the spec's `✏️ AMENDED 2026-11-05` block lists.*
 
 ## Global Constraints (PR2)
 
@@ -458,6 +601,15 @@ or CI verdict in prose. Read them there. For this PR, in addition:
   must set `SESSIONS_DB_PATH` before requiring the route:** from this PR the handler reaches
   `userService.findByProviderId`, whose connection opens `resolveDbPath()` (`userService.js:16`, `:29-37`), so a test
   without it would create `pipeline-output/sessions.db`. Run `git status --porcelain` after every test run.
+- **`git status --porcelain` cannot see what the bullet above protects** (✏️ added 2026-11-05, PR2 review U29).
+  `pipeline-output/` and `books/testbook/` are gitignored (`git check-ignore -v` names `.gitignore`'s rules), so a
+  test that creates `pipeline-output/sessions.db` leaves `git status --porcelain` empty. List the ignored files too,
+  before and after the run, and compare the two lists:
+  `git status --porcelain --ignored --untracked-files=all -- pipeline-output books`. Compare them with each other,
+  never the second with an empty list: earlier runs leave ignored files there (E2E's database, the E2E fixture's
+  backups), and a full `npx vitest run` creates `pipeline-output/sessions.db` and a `books/testbook/` file through
+  tests outside PR2 (measured by the review; that leak is not PR2's). Targeted runs of PR2's own test files leave
+  both trees as they found them.
 - **The probe never runs against production except in Task 8, on [USER]'s go.**
 - **No `segment_edits` column and no response key** (PR1's handoff). The drift guard and T17 prove both.
 - **No research event, no `record`** (index decision 2): T6 and T7 have no event half (handoff §3 item 2). Nothing in
@@ -498,7 +650,9 @@ Input cases the spec implies but its tests do not exercise directly. Each names 
    from: on a first load none was shown, and on a reload from an open pane Task 4 takes it away, which today's catch
    does not (disagreement 1). A save from a page loaded **before** they were assigned is still possible up to that
    reload (the save route does not consult openings), and an edit made then is in flight at the later opening and in
-   its snapshot, which is the honest record G1.23 §6.3a wants. → Task 3, Task 4
+   its snapshot, which is the honest record G1.23 §6.3a wants. ✏️ *2026-11-05: so is a write sent before that reload
+   that lands after it (a queued save's replay, or a save, accept or review action awaiting its answer; amendment
+   item 4): its text was typed while the unit was open.* → Task 3, Task 4
 9. **Two serves racing to open one unit:** the `ON CONFLICT … DO NOTHING` insert decides; the loser takes no snapshot,
    writes nothing, logs nothing and is `skipped`, which the route answers exactly as PR1 does (200). Task 2 plays the
    winner with a planted trigger, since the predicate's own lookup would otherwise end the loser first. → Task 2
@@ -531,7 +685,7 @@ Input cases the spec implies but its tests do not exercise directly. Each names 
 
 | Test | Where in this PR | The half here (when split) |
 |---|---|---|
-| T6 opened time | Task 2 (the predicate's truth table and the 503 decision, on the service), Task 3 (every case of T6 through the route, the two 503s, the visitor's 403 and chapter 0 through the full middleware chain), Task 4 (the client half of "the editor cannot save in between": a reload that answers 503 takes the pane away, and its text stays in the draft) | whole; T6 has no event half (handoff §3 item 2) |
+| T6 opened time | Task 2 (the predicate's truth table and the 503 decision, on the service), Task 3 (every case of T6 through the route, the two 503s, the visitor's 403 and chapter 0 through the full middleware chain), Task 4 (the client half of "the editor cannot save in between": a reload that answers 503 takes the pane away, and its text stays in the draft; ✏️ 2026-11-05: a write sent before that reload can still land after it, amendment item 4) | whole; T6 has no event half (handoff §3 item 2) |
 | T7 the snapshot | Task 2 (the computation and the warning list), Task 3 (the `m68664`-style fixture through the route: the set, its immutability after approve, reject and withdraw, the warning once, the re-attach-only control) | whole; T7 has no event half |
 | T17 nothing reaches a browser | Task 2 (the service's results carry no time), Task 3 (the opening serve's module JSON: PR1's exact key sets and no trace of the sentinel time; no file under `server/routes/` names the opening tables; the 503 body's keys) | PR2's half (index decision 15) |
 
@@ -1446,7 +1600,8 @@ Run, one at a time, every file the tree check listed for `'/:book/:chapter/:modu
 `acceptanceRoutes.test.js`, `servedServeHook.test.js`, `servedVersionsIntegrity.test.js`, `segmentEditBackstop.test.js`,
 `servedSaveRoute.test.js`), then `server/__tests__/structuralBackstopWiring.test.js`.
 Expected: PASS, unchanged: their users hold no `users` row, so the predicate never holds and every serve is answered as
-in PR1. `git status --porcelain` shows nothing under `books/` or `pipeline-output/`.
+in PR1. `git status --porcelain` shows nothing under `books/` or `pipeline-output/`. ✏️ *2026-11-05: it cannot show a
+gitignored file there; compare the ignored files before and after (Global Constraints, PR2 review U29).*
 
 - [ ] **Step 5: Commit**
 
@@ -2360,7 +2515,9 @@ Expected: no status lines; this PR's branch; Task 6's and Task 5's commits.
 
 - [ ] **Step 2: [USER]'s go, then the production run**
 
-Show [USER] the command and ask: [USER] runs it, or authorises it. The shape is `read-pending-edits.js:15-18`'s:
+Show [USER] the command and ask: [USER] runs it, or authorises it. ✏️ *2026-11-05: first, `ssh <prod> systemctl
+is-active ritstjorn` prints `active`; run the probe only while the service runs (amendment item 5).* The shape is
+`read-pending-edits.js:15-18`'s:
 
 ```bash
 ssh <prod> "cd <repo>/server/scripts && node - efnafraedi-2e" \
@@ -2383,7 +2540,11 @@ and one line per check:
 - **G-1d:** `enforcement`, `studyBookEnforced`, `assignedChapters` and `users` (ids and roles), and
   `autoCreateUsers.effective` with its meaning read from `signInPolicy` (`server/services/auth.js`).
 - **G-1c:** the journald retention settings and disk usage, the `access_log` lines and the rotation lines: what the
-  consent text says about the request log (§6 item 14) and what G1.15's rule must cover.
+  consent text says about the request log (§6 item 14) and what G1.15's rule must cover. ✏️ *2026-11-05: these are
+  directives, each alone (amendment items 3 and 6). `readable: false` means the probe could not read a file the
+  daemon reads, so that file's settings are unknown. `valueUnparsed` and `unterminated` mean the daemon refuses that
+  value or directive; the probe's header says what each daemon then does. logrotate also reports `defaults`, and
+  journald `notReadBySystemd255`, files journald never opens.*
 - **G-1e:** the in-flight segments per module (the snapshot each will hold at opening; spec §5.5 expects them in
   approved-but-unapplied rows, §12 correction 1) and the applied rows whose faithful file is gone; and, from
   `reattach`, which of them will write the opening warning.
@@ -2422,14 +2583,19 @@ The server modules are CommonJS under `server/`; tests reach them through `creat
 
 ```sql
 module_openings (book TEXT NOT NULL, chapter INTEGER NOT NULL, module_id TEXT NOT NULL,
-                 opened_at_ms INTEGER NOT NULL CHECK (opened_at_ms > 0),
-                 inflight_count INTEGER NOT NULL CHECK (inflight_count >= 0),
+                 opened_at_ms INTEGER NOT NULL
+                   CHECK (typeof(opened_at_ms) = 'integer' AND opened_at_ms > 0),
+                 inflight_count INTEGER NOT NULL
+                   CHECK (typeof(inflight_count) = 'integer' AND inflight_count >= 0),
                  PRIMARY KEY (book, chapter, module_id))                       -- no user column (R3)
 module_opening_inflight (book, chapter, module_id, segment_id TEXT NOT NULL,
-                         occurrence INTEGER NOT NULL CHECK (occurrence >= -1), -- -1: every occurrence
+                         occurrence INTEGER NOT NULL
+                           CHECK (typeof(occurrence) = 'integer' AND occurrence >= -1), -- -1: every occurrence
                          PRIMARY KEY (book, chapter, module_id, segment_id, occurrence),
                          FOREIGN KEY (book, chapter, module_id) REFERENCES module_openings ON DELETE CASCADE)
 ```
+
+✏️ *2026-11-05: the `typeof` terms are amendment item 8 (PR2 review U41).*
 
 - **PR5** (`opening-eligibility.js`) reads `module_openings.opened_at_ms` on the server only and writes a per-module
   yes/no, never the time (spec §5.22). **Research figures** may read `module_opening_inflight` (A1, spec §5.22), never
@@ -2468,31 +2634,52 @@ step needs the stored snapshot.
 
 `EXPECTED_SCHEMA.tables` gains `module_openings` and `module_opening_inflight` (every column). PR3 appends
 `book_switch_events`, `research_consent` and `research_capture_losses`; PR4 `research_deletions` and
-`research_derived_datasets`.
+`research_derived_datasets`. `checkSchema` counts a name as a table only when `sqlite_master` holds a TABLE of that
+name: a VIEW or any other non-table under an expected name reads as absent, so a `tables` entry is reported as
+`<table>` and a `columns` entry as each `<table>.<column>` (✏️ 2026-11-05, amendment item 8, PR2 review U42).
 
 ### `server/__tests__/researchBoundary.test.js` (Task 3)
 
-PR2 leaves one `describe`, `filesNaming(root, pattern)` (every `.js` file under a root whose bytes match; PR3 can reuse
-it for `server/routes/` against `researchDb` and `editor_keys`), `SENTINEL_MS`, and module-level bindings under
-`nodeFs`, `nodePath`, `nodeOs`, `OpeningDb`, `migrateAll` and `pr2*` names. Its `describe` sets and restores its own
-books root and closes its own handle, so a later `describe` inherits nothing from it. `ALLOWED_COLUMNS` and
-`MODULE_JSON_ALLOWED` are unchanged.
+PR2 leaves one `describe` and these module-level bindings: `filesNaming(root, pattern)` (every `.js` file under a root
+whose bytes match; PR3 can reuse it for `server/routes/` against `researchDb` and `editor_keys`), `SENTINEL_MS`,
+`OPENING_NAMES`, `OpeningDb` (better-sqlite3), `migrateAll`, `moduleOpenings` and `pr2Parser`. The file's
+node-builtin bindings are PR1's imports: `mkdtempSync`, `rmSync`, `mkdirSync`, `readdirSync`, `readFileSync` and
+`writeFileSync` from `fs`, `tmpdir` from `os`, `path`, and `fileURLToPath`. There are **no** `nodeFs`, `nodePath` or
+`nodeOs` bindings: a later `describe` uses the names above, and one that needs another `fs` function adds it to the
+existing `fs` import. PR2's `describe` sets and restores its own books root and closes its own handle, but it
+**leaves rows in the file's shared `sessions.db`**, which every `describe` shares and which the file removes once,
+after all of them: a `users` row (`p-t17`) with an assignment row for chemistry chapter 1, the opening of `m94030`
+with its snapshot, and the `segment_edits` and `segment_acceptances` rows it seeds for `m94030`. A later `describe`
+uses its own module ids and provider ids. `ALLOWED_COLUMNS` and `MODULE_JSON_ALLOWED` are unchanged.
+✏️ *Corrected 2026-11-05, PR2 review U30: this named `nodeFs`, `nodePath` and `nodeOs` bindings, which the built
+file never had, and said a later `describe` inherits nothing.*
 
 ### `server/__tests__/helpers/servedFixture.js` (Task 3)
 
 `invokeChain(router, method, routePath, req) → Promise<{ status, body }>`: the whole middleware chain, for cases
 middleware answers (a visitor's 403, a bad chapter's 400). `req` needs `params`, `headers.authorization` (`Bearer` +
-`auth.createToken(user)`) and `cookies`.
+`auth.createToken(user)`) and `cookies`. `invokeChain` and PR1's `invoke(handler, req)` share one fake response:
+each settles one microtask after the first `res.json`, and rejects when the handler sends a second response (which
+throws `ERR_HTTP_HEADERS_SENT`, as Express does) or throws synchronously (✏️ 2026-11-05, amendment item 10, PR2
+review U39).
 
 ### `server/scripts/read-research-preconditions.js` (Tasks 5, 6)
 
 ```ts
 SECTIONS: Record<'G-1c' | 'G-1d' | 'G-1e' | 'G-1f' | 'G-1g', (ctx) => object>   // PR4 adds 'G-1a' (crontab), 'G-1h'
-readResearchPreconditions({ book, openDb, serverDir, booksDir, etcRoot?, varRoot?, pathEnv?, exec? }):
+readResearchPreconditions({ book, openDb, serverDir, booksDir,
+                            etcRoot?, runRoot?, usrRoot?, varRoot?, pathEnv?, exec? }):
   { book, ok: boolean, sections: Record<name, { ok: true, ... } | { ok: false, error, message }> }
-// ctx: { book, db: () => Database (lazy, read-only, shared), serverDir, booksDir, etcRoot, varRoot, pathEnv, exec }
+// ctx: { book, db: () => Database (lazy, read-only, shared), serverDir, booksDir,
+//        etcRoot, runRoot, usrRoot, varRoot, pathEnv, exec }
+// runRoot and usrRoot default to '/run' and '/usr' (amendment item 3); a test passes a temp root for every root
 // exec(cmd, args) → { ran, code, stdout, stderr }; never throws
 ```
+
+✏️ *2026-11-05, PR2 review U31: `runRoot` and `usrRoot` were missing here. A test that leaves them unset reads the
+host's real `/run` and `/usr` journald drop-ins. G-1c's entry shapes are amendment item 6's, and the probe's header
+and test own their exact rules. `main`'s `openDb` refuses a WAL database whose `-wal` or `-shm` is absent
+(`WAL_FILES_ABSENT`, amendment item 5); a caller's own `openDb` is its own.*
 
 - **PR4** appends its sections to `SECTIONS` and widens the test's require set only with modules production has; its
   crontab reader returns lines that name `pipeline-output/` copies, never a whole crontab (a crontab can hold secrets).
@@ -2500,15 +2687,21 @@ readResearchPreconditions({ book, openDb, serverDir, booksDir, etcRoot?, varRoot
 ### Client (Task 4)
 
 `UI.segmentEditor.openingUnrecorded` (approved wording, decision 28); `loadModule`'s catch keys on `err.status === 503
-&& err.data.error === 'OPENING_UNRECORDED'`, and on that path, when `#editor-container` is on screen, writes the panes'
-texts with `saveDraft()`, stops the draft timer, empties `dirtyEdits`, releases the tab claim and hides
-`#editor-container` and `#save-status-bar`, discarding no draft. A later PR that adds a load-error code with the same
-"no save in between" need reuses that branch.
+&& err.data && err.data.error === 'OPENING_UNRECORDED'`. On that path, when `#editor-container` is on screen, it runs
+`if (!saveDraft()) keepUnwritten(draftPrefix(), draftEntries()); leaveModule();`. Every dirty and kept text goes to
+the tab's draft, or to memory for that unit alone when storage refuses the write. `leaveModule`, which Back also
+calls after `clearDraft`, then closes every pane and empties what a later `saveDraft` would rebuild that draft from,
+writing nothing to storage. Nothing is discarded: every text comes back through `restoreDraft` at the unit's next
+opening. A save, accept or review action captures `openUnit()` before its await and compares it after; for a unit
+left meanwhile it changes nothing in memory and reloads nothing (`reloadIfOpen`), and a kept-code refusal goes to
+that unit's draft (`keepLeftText`). A later PR that adds a load-error code with the same need reuses that branch,
+and a later action that awaits the server makes the same comparison (✏️ 2026-11-05, amendment item 4).
 
 ### `server/scripts/close-pending-edits.js` (Task 7)
 
 Refuses, in a dry run as in a write, once `module_openings` holds a row for its book; a database without the table
-counts as none opened. Later PRs keep the refusal.
+counts as none opened. It reads the count again as the first statement of its write transaction, which is
+IMMEDIATE; an opening found there throws and writes nothing (✏️ 2026-11-05, amendment item 7). Later PRs keep both.
 
 ## Before the PR
 
@@ -2517,14 +2710,18 @@ counts as none opened. Later PRs keep the refusal.
    `npm run docs:check` (Task 3 touches `server/routes/**`; expected clean, decision 27); `cd server && CI=1 npm run
    test:e2e` (Tasks 3 and 4 touch a route and `server/public/js/`; every existing chemistry serve still answers as
    before, decision 14). No dependency is added, so `npm audit` is not part of this gate. `git status --porcelain`
-   empty.
+   empty, and `git status --porcelain --ignored --untracked-files=all -- pipeline-output books` lists nothing the same
+   command did not list before the gate ran (Global Constraints).
 2. **Re-check the migration number** (`ls server/migrations`) against `main` just before merging (index decision 9).
 3. **A whole-branch adversarial review: a blind pair,** Opus and Fable on the same brief, neither seeing the other's
    findings (**[USER] commissioned the Fable half on 2026-11-04**). A mutation pass restores from a golden `cp`, never
    `git checkout`, and `git status --porcelain` runs the moment any reviewing agent goes quiet. Fold confirmed
    findings in as their own commits. The Review Focus above is the brief's input-case list.
 4. **Both Icelandic strings are approved as proposed** (decision 28; index decision 13). If either changed after
-   2026-11-04, [USER] checks the new text before the PR is opened.
+   2026-11-04, [USER] checks the new text before the PR is opened. ✏️ *2026-11-05 (PR2 review U34): so do the
+   departures. Every item of "State of this plan"'s `✏️ AMENDED 2026-11-05` block, and every item the spec's
+   `✏️ AMENDED 2026-11-05` block marks as not yet approved, awaits [USER]'s yes with PR2. A no takes that item's
+   fallback before the merge.*
 5. **Task 8 is complete:** the production run is in the register and, if chemistry held assignment rows, [USER]'s §9
    choice is recorded (spec §13a).
 6. **Push, open the PR (draft), and deploy only on [USER]'s go.** Merge as a **merge commit**, never squash or rebase.
