@@ -449,7 +449,8 @@ function readResearchPreconditions({
 /** @returns {0|1|2} */
 function main(argv, env = process.env) {
   const args = argv.slice(2);
-  if (args.length !== 1 || !/^[a-z0-9-]+$/.test(args[0])) {
+  // A book starts with a letter or a digit, so a lone flag (`--help`, `--write`) is a usage error, not a book.
+  if (args.length !== 1 || !/^[a-z0-9][a-z0-9-]*$/.test(args[0])) {
     console.error(USAGE);
     return 2;
   }

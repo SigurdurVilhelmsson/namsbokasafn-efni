@@ -940,8 +940,8 @@ Module._load = function (request, ...rest) {
 
   it('a stdin run that dies before its verdict exits non-zero and prints nothing', () => {
     // From a directory where ../lib/dbPath does not resolve, main() throws before any output.
-    // Node's own exit code for the uncaught throw is also 1, so this case cannot tell the
-    // script's failure default from its absence; it answers that such a run is never 0.
+    // Node's own exit code for the uncaught throw is also 1, so this case alone cannot tell the
+    // script's failure default from its absence; the case below, with the throw swallowed, can.
     const r = spawn(['-', BOOK], {
       cwd: path.join(root, 'var'),
       input: fs.readFileSync(SCRIPT, 'utf8'),
@@ -952,12 +952,55 @@ Module._load = function (request, ...rest) {
     expect(r.stderr).toMatch(/Cannot find module '\.\.\/lib\/dbPath'/);
   });
 
-  it('refuses a missing book, an extra argument and a malformed book with exit 2', () => {
-    for (const args of [[], [BOOK, '--write'], ['Efnafraedi 2e']]) {
+  it('refuses a missing book, an extra argument, a malformed book and a lone flag with exit 2', () => {
+    // A lone flag is not a book (PR2 review U23): it would otherwise run every section and print the host's readout.
+    for (const args of [
+      [],
+      [BOOK, '--write'],
+      ['Efnafraedi 2e'],
+      ['--help'],
+      ['--write'],
+      ['-x'],
+    ]) {
       const r = spawn([SCRIPT, ...args]);
       expect(r.status, JSON.stringify(args)).toBe(2);
       expect(r.stdout).toBe('');
     }
+  });
+
+  it('a run that dies before its verdict exits 1 by its own failure default, not by Node’s', () => {
+    // PR2 review U22: Node exits 1 on an uncaught throw whatever the script set, so the case above cannot see the
+    // default. A preload that swallows the throw (as a future path that catches and returns nothing would) takes
+    // Node's 1 away: what is left is the script's own process.exitCode.
+    const swallow = path.join(root, 'swallow.cjs');
+    fs.writeFileSync(
+      swallow,
+      "process.on('uncaughtException', (e) => process.stderr.write('SWALLOWED ' + e.message + '\\n'));\n"
+    );
+    const r = spawn(['--require', swallow, '-', BOOK], {
+      cwd: path.join(root, 'var'),
+      input: fs.readFileSync(SCRIPT, 'utf8'),
+    });
+    expect(r.stderr).toMatch(/SWALLOWED Cannot find module '\.\.\/lib\/dbPath'/); // control: the throw happened
+    expect(r.stdout).toBe('');
+    expect(r.status).toBe(1);
+  });
+
+  it('a report larger than a pipe’s buffer arrives whole through a pipe (process.exitCode, never process.exit)', () => {
+    // PR2 review U21: process.exit() drops whatever stdout still holds for a pipe (CLAUDE.md § Commands); a `>`
+    // redirect would hide it. Enough users to put the report well past the pipe's buffer.
+    const user = db.prepare(
+      `INSERT INTO users (provider_id, provider_username, display_name, email, role, is_active)
+       VALUES (?, ?, 'x', ?, 'editor', 1)`
+    );
+    db.transaction(() => {
+      for (let i = 0; i < 6000; i++)
+        user.run(`bulk-${i}`, `bulk-${i}@x.example`, `bulk-${i}@x.example`);
+    })();
+    const r = spawn([SCRIPT, BOOK], { maxBuffer: 16 * 1024 * 1024 });
+    expect(r.status, r.stderr).toBe(0);
+    expect(r.stdout.length).toBeGreaterThan(256 * 1024); // control: the report outgrew the buffer
+    expect(JSON.parse(r.stdout).sections['G-1d'].users).toHaveLength(6002);
   });
 
   it('a missing database fails its sections, not the run: exit 1, with the JSON still printed', () => {
