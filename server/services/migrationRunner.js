@@ -83,6 +83,7 @@ function runAllMigrations() {
     require('../migrations/051-house-style-terms'),
     require('../migrations/052-retire-chapter-generated-files'),
     require('../migrations/053-served-text-versions'),
+    require('../migrations/054-module-openings'),
   ];
 
   let applied = 0;

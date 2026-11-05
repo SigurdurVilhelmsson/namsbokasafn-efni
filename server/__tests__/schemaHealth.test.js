@@ -90,6 +90,24 @@ describe('checkSchema', () => {
       ],
     });
   });
+
+  it('PR2: a missing opening table is named', () => {
+    // `a fresh migrated database is ok` above is this case's positive control: migration 054
+    // builds both tables, so only the drop below can make one missing.
+    const db = migrated();
+    db.exec('DROP TABLE module_opening_inflight');
+    expect(checkSchema(db)).toEqual({ ok: false, missing: ['module_opening_inflight'] });
+    // `tables` maps a table to EVERY column it has, so each PR2 entry equals the migrated table.
+    const columnsOf = (table) => db.pragma(`table_info(${table})`).map((c) => c.name);
+    expect(EXPECTED_SCHEMA.tables.module_openings).toEqual(columnsOf('module_openings'));
+    expect(EXPECTED_SCHEMA.tables.module_opening_inflight).toEqual([
+      'book',
+      'chapter',
+      'module_id',
+      'segment_id',
+      'occurrence',
+    ]);
+  });
 });
 
 describe('EXPECTED_SCHEMA', () => {

@@ -49,6 +49,10 @@ const EXPECTED_SCHEMA = deepFreeze({
       'en_text',
       'is_text',
     ],
+    // PR2 (spec §5.5)
+    module_openings: ['book', 'chapter', 'module_id', 'opened_at_ms', 'inflight_count'],
+    // PR2 (spec §5.5)
+    module_opening_inflight: ['book', 'chapter', 'module_id', 'segment_id', 'occurrence'],
   },
   // An existing table → the columns the migrations add to it.
   columns: {
