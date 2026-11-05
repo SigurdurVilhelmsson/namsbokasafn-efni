@@ -41,19 +41,53 @@ function handlerFor(router, method, routePath) {
   return layer.route.stack.at(-1).handle;
 }
 
+/**
+ * A fake Express response. The first res.json is the answer; a second one throws
+ * ERR_HTTP_HEADERS_SENT, as Express does once headers are sent, and turns the whole call into a
+ * rejection. The answer is settled one microtask after the first send, so a synchronous handler
+ * that answers and then falls through to another res.json (a missing `return`) rejects instead of
+ * passing on its first answer, whether it swallows the throw or not (PR2 review U39).
+ */
+function fakeResponse(resolve, reject) {
+  let first = null;
+  let second = null;
+  const res = {
+    statusCode: 200,
+    headersSent: false,
+    status(c) {
+      this.statusCode = c;
+      return this;
+    },
+    json(body) {
+      if (this.headersSent) {
+        second = second || { status: this.statusCode };
+        const err = new Error(
+          `a second response (${this.statusCode}) after the first (${first.status}): ` +
+            'Cannot set headers after they are sent to the client'
+        );
+        err.code = 'ERR_HTTP_HEADERS_SENT';
+        throw err;
+      }
+      this.headersSent = true;
+      first = { status: this.statusCode, body };
+      queueMicrotask(() => {
+        if (second) {
+          reject(new Error(`the handler sent ${second.status} after it had sent ${first.status}`));
+        } else resolve(first);
+      });
+    },
+  };
+  return res;
+}
+
 function invoke(handler, req) {
-  return new Promise((resolve) => {
-    const res = {
-      statusCode: 200,
-      status(c) {
-        this.statusCode = c;
-        return this;
-      },
-      json(body) {
-        resolve({ status: this.statusCode, body });
-      },
-    };
-    handler(req, res);
+  return new Promise((resolve, reject) => {
+    const res = fakeResponse(resolve, reject);
+    try {
+      handler(req, res);
+    } catch (err) {
+      reject(err);
+    }
   });
 }
 
@@ -68,16 +102,7 @@ function invokeChain(router, method, routePath, req) {
   );
   const handles = layer.route.stack.map((s) => s.handle);
   return new Promise((resolve, reject) => {
-    const res = {
-      statusCode: 200,
-      status(c) {
-        this.statusCode = c;
-        return this;
-      },
-      json(body) {
-        resolve({ status: this.statusCode, body });
-      },
-    };
+    const res = fakeResponse(resolve, reject);
     let i = 0;
     const next = (err) => {
       if (err) return reject(err);
