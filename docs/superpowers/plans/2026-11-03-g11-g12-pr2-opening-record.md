@@ -112,8 +112,11 @@ approved on 2026-11-04.
      `.immediate()` still fails (c).
 2. **Task 1 also widens `scripts/deploy.sh`'s schema remedy.** It tells the operator to read "the `[053]` warning";
    once `checks.schema` can name `054`'s tables that is wrong. Task 1 rewrites it to name the migrations' warnings
-   from `[053]` onward, without listing numbers, so PR3's migration needs no further edit there. No test pins that
-   line (`grep -rlna '\[053\]' server/__tests__ tools/__tests__ scripts/__tests__` prints nothing at `5e650ffb`).
+   from `[053]` onward, without listing numbers, so PR3's migration needs no further edit there.
+   ✏️ *Corrected 2026-11-05, after Task 1: this said no test pins that line, from a grep for the literal `[053]`.
+   `scripts/__tests__/deploy-health-readout.test.mjs` does pin it, with an anchored regex whose brackets are escaped
+   (`\[053\]`), which that grep cannot match. Task 1 updated the regex, test first. Grep for what a test would
+   write, not only for the text it checks.*
 
 ## Decisions taken in this plan
 

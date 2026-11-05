@@ -14,6 +14,25 @@
 > no status. If it disagrees with the active register, the register wins. Do not sync it or edit it in place.
 > Supersede it with a new record instead.
 
+> **✏️ AMENDED 2026-11-05: §5.4 step 3's mint runs in two passes — a departure for [USER] to review with PR2,
+> not yet approved.** Made by the PR2 plan's `✏️ AMENDED 2026-11-05` block (its Task 3b), which takes a finding the
+> register's 2026-11-05 entry asked PR2's plan to take (PR1 review C2, commit `e8b9832f`).
+>
+> - **The wording it departs from:** step 3, "In one `sessions.db` transaction, select the existing served-version
+>   ids by key and insert only the missing rows."
+> - **What is built:** a read pass that takes no write lock and, only when a row is missing, an insert pass in an
+>   IMMEDIATE transaction that reads each missing row again before inserting it (another serve may have inserted it
+>   in between). Inside a save's, an accept's or a propagation's own IMMEDIATE transaction both passes run as
+>   savepoints.
+> - **Why:** a deferred transaction that has read asks for the write lock with no busy handler, so while another
+>   process held that lock (`backup-db.sh`'s checkpoint, an operator's CLI) a changed serve failed at once. That was
+>   fail-soft under PR1; under PR2 it would answer 503 `OPENING_UNRECORDED` to an assigned editor's first serve.
+>   Now the serve waits out the busy timeout, as save and accept do.
+> - **Unchanged:** an unchanged module takes no write lock (step 3's second sentence); the ids returned; and the
+>   fail-soft rule for every serve the opening predicate does not cover.
+> - **Fallback, if [USER] declines:** the single deferred transaction as written, under which a held lock fails a
+>   changed serve at once and, for an assigned editor's first serve, answers 503.
+
 > **✏️ AMENDED 2026-11-04: twenty departures from this design's wording, approved with the implementation plan**
 > ([USER] 2026-11-04: "Yes for all" to the plan's questions, with four clarifications the same day). Each is stated,
 > with its reason and its fallback, in the named decision of the plan
