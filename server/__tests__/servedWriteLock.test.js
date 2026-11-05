@@ -27,8 +27,12 @@
  * chemistry unit PR1 has served), the mint reads and returns without the write lock, so
  * recordOpening's transaction is the first write to meet a held lock. Case (h) is that serve; a
  * deferred recordOpening that reads before its INSERT fails it at once with SQLITE_BUSY and the
- * serve answers 503 OPENING_UNRECORDED (cause step). In case (f) the mint's insert pass has already
- * waited, so the opening runs after the release and cannot show this.
+ * serve answers 503 OPENING_UNRECORDED (cause step). A deferred recordOpening whose first statement
+ * is the INSERT asks for the write lock holding no read lock, so it waits like an IMMEDIATE one,
+ * and (h) cannot tell the two apart (removing .immediate() alone fails nothing, measured; PR2
+ * review U28): (h) guards the read-first regression, which is what IMMEDIATE prevents. In case (f)
+ * the mint's insert pass has already waited, so the opening runs after the release and cannot show
+ * this.
  *
  * Why a child process: better-sqlite3 is synchronous, so a lock held by a second connection in this
  * process could never be released while the first one waits on it. helpers/writeLockHolder.cjs

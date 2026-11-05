@@ -294,9 +294,10 @@ router.get(
 
       // G1.1 (spec §5.4 steps 1–3): occurrence and baseSha256 on the response's own segments,
       // and the served versions minted by servedVersions.recordServe (a lock-free read pass, then
-      // an IMMEDIATE insert pass only when a row is missing). Fail-soft: a failed mint
-      // is logged and the module is still served with baseSha256; the save path mints the base
-      // it checks. Never in the loader (it has other callers).
+      // an IMMEDIATE insert pass only when a row is missing). Fail-soft, except on a serve that
+      // meets the opening predicate below: a failed mint is logged and the module is still served
+      // with baseSha256; the save path mints the base it checks. Never in the loader (it has
+      // other callers).
       const conn = segmentEditor.getDb();
       const served = servedVersions.recordServe(conn, data, {
         book: req.params.book,
@@ -355,12 +356,14 @@ router.get(
         .filter((e) => String(e.editor_id) !== String(currentUserId));
       const otherPendingSegments = [...new Set(otherEdits.map((e) => e.segment_id))];
 
-      // ── spec §5.4 step 4 and §5.5: the opening record (PR2). Only a serve that meets the
-      //    predicate (a study book, no opening yet, and a users row holding a
-      //    user_chapter_assignments row for this book and chapter) is affected: it records the
-      //    opening and its in-flight snapshot in one transaction, or answers 503 and records
-      //    nothing, a failed mint above included. Every other serve is answered exactly as
-      //    before. ──
+      // ── spec §5.4 step 4 and §5.5: the opening record (PR2). A serve that meets the predicate
+      //    (a study book, no opening yet, and a users row holding a user_chapter_assignments row
+      //    for this book and chapter) records the opening and its in-flight snapshot in one
+      //    transaction, or answers 503 and records nothing, a failed mint above included. A
+      //    study-book serve whose predicate cannot be evaluated (its users, assignment or
+      //    opening lookup throws) also answers 503, whoever made it: the route cannot tell
+      //    whether it is the serve the record depends on (decision 4). Every other serve is
+      //    answered exactly as before. ──
       const step = moduleOpenings.openOnServe(conn, {
         book: req.params.book,
         chapter: req.chapterNum,

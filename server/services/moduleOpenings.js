@@ -4,11 +4,22 @@
  * WHAT AN OPENING IS. A study-book unit (book, chapter, module) opens at its first serve to a user
  * who holds a user_chapter_assignments row for that chapter. At that serve, in one sessions.db
  * transaction, this module writes the time it opened (module_openings.opened_at_ms) and the set of
- * served segments that held an in-flight edit at that moment (module_opening_inflight; G1.23
- * §6.3a's snapshot). It is set ONCE (G1.23 §6.2): a later serve, by anyone, changes neither, so the
- * snapshot is the honest record of what was already in flight when the assigned editor first saw
- * the unit. A serve that meets the predicate but cannot record the opening is answered 503
- * OPENING_UNRECORDED by the route and records nothing (spec §5.4): no unit opens unrecorded.
+ * served segments that held an in-flight edit in the edit rows that serve read
+ * (module_opening_inflight; G1.23 §6.3a's snapshot). It is set ONCE (G1.23 §6.2): a later serve,
+ * by anyone, changes neither, so the snapshot is the honest record of what was already in flight
+ * when the assigned editor first saw the unit. A serve that meets the predicate but cannot record
+ * the opening is answered 503 OPENING_UNRECORDED by the route and records nothing (spec §5.4): no
+ * unit opens unrecorded.
+ *
+ * WHICH ROWS THE SNAPSHOT IS TAKEN FROM. The rows the route already holds (spec §5.5): it read them
+ * before calling openOnServe, so before recordOpening's transaction, while opened_at_ms is taken
+ * inside that transaction. The handler is synchronous from that read to the transaction, so no
+ * other request in this process can write in between. Another process can: a segment_edits change
+ * it commits after the route's read and before the opening's transaction takes the write lock
+ * (recordOpening may be waiting out that process's lock, up to the busy timeout) is not in the
+ * snapshot. An in-flight row it inserts is then missing from it, and a row it closes (rejects,
+ * applies or deletes) is still in it, although opened_at_ms is later than that commit. This is
+ * the design, not a race this module closes (PR2 review U16).
  *
  * WHY THE ASSIGNMENT LOOKUP IS DIRECT. The predicate reads user_chapter_assignments itself, for
  * this user, book and chapter. It does not use userService.hasChapterAccess, which is fail-open by
@@ -122,9 +133,12 @@ function snapshotRows(segments, edits) {
 
 /**
  * spec §5.5 steps 1–3, in one IMMEDIATE transaction (stated, not left to the first statement being
- * a write: plan amendment 2026-11-05). inflight_count is the number of snapshot rows, known before
- * the insert, so step 3 is folded into step 1's statement. Returns no time (spec §11). Throws on
- * failure, rolled back.
+ * a write: plan amendment 2026-11-05). While the INSERT is the first statement, a deferred
+ * transaction waits out another process's write lock just as this one does: removing .immediate()
+ * fails no test (measured, PR2 review U28). IMMEDIATE keeps that wait if a read is ever added before
+ * the INSERT, which servedWriteLock case (h) does catch. inflight_count is the number of snapshot
+ * rows, known before the insert, so step 3 is folded into step 1's statement. Returns no time
+ * (spec §11). Throws on failure, rolled back.
  */
 function recordOpening(conn, { book, chapter, moduleId }, { rows, warnSegments }) {
   return conn
