@@ -87,8 +87,9 @@ JS with no build step (`server/public/js/`, `sourceType: 'script'`), Vitest from
 The items came at three points, and each says what it changes, why, and its fallback:
 - **Items 1 and 2, before Task 1:** the "For PR2" bullets of the register's 2026-11-04 entry (PR1's whole-branch
   review), which its 2026-11-05 entry asks this plan to take. Item 1 adds Task 3b; item 2 widens Task 1.
-- **Item 3, after Task 6:** Task 6's review, finding F3. It supersedes decision 21's reading of G-1c and reopens
-  Task 6.
+- **Item 3, after Task 6:** Task 6's review, finding F3. It supersedes decision 21's reading of G-1c, adds
+  `runRoot` and `usrRoot` to decision 19's parameters, and reopens Task 6. *(✏️ Decision 19 added 2026-11-05, PR2
+  docs review D5.)*
 - **Items 4 to 10, after PR2's whole-branch review** (findings U1–U42, then R findings on some of those fixes).
   Item 4 changes decision 13's mechanism. Item 5 adds a precondition to Task 8 Step 2. Item 6 changes decisions 18
   and 21 and Task 6's output. Item 7 changes decision 29's mechanism. Item 8 changes decision 2's checks and Task 1's
@@ -172,8 +173,8 @@ before Task 1" and "nothing above is reopened", while the block already held ite
    - ✏️ *Corrected 2026-11-05, PR2 review U32: this item named only the `/run` and `/usr/lib` drop-in directories and
      said nothing of the main file's other candidates. The code also reads `/usr/local/lib`'s directory and lists
      those candidates as `notReadBySystemd255`; the probe's header states the measured rule.*
-   - **Review:** it supersedes decision 21's reading of G-1c and reopens Task 6, and awaits [USER]'s review with
-     PR2. **Fallback:** decision 21 and Task 6 as approved, which read `/etc` alone and so cannot see the
+   - **Review:** it supersedes decision 21's reading of G-1c, adds `runRoot` and `usrRoot` to decision 19's
+     parameters, and reopens Task 6, and awaits [USER]'s review with PR2. **Fallback:** decision 21 and Task 6 as approved, which read `/etc` alone and so cannot see the
      `ForwardToSyslog=yes` Ubuntu ships under `/usr/lib`.
 4. **Decision 13's mechanism, as built after the whole-branch review** (added 2026-11-05; review findings U1–U6 and
    U12–U15, then R1–R3 on that fix). Decision 13's promises stand: on a reload from an open pane answered
@@ -2661,16 +2662,19 @@ name: a VIEW or any other non-table under an expected name reads as absent, so a
 PR2 leaves one `describe` and these module-level bindings: `filesNaming(root, pattern)` (every `.js` file under a root
 whose bytes match; PR3 can reuse it for `server/routes/` against `researchDb` and `editor_keys`), `SENTINEL_MS`,
 `OPENING_NAMES`, `OpeningDb` (better-sqlite3), `migrateAll`, `moduleOpenings` and `pr2Parser`. The file's
-node-builtin bindings are PR1's imports: `mkdtempSync`, `rmSync`, `mkdirSync`, `readdirSync`, `readFileSync` and
-`writeFileSync` from `fs`, `tmpdir` from `os`, `path`, and `fileURLToPath`. There are **no** `nodeFs`, `nodePath` or
+node-builtin bindings are its imports: PR1's `mkdtempSync`, `rmSync` and `mkdirSync` from `fs`, `tmpdir` from `os`
+and `path`, and PR2's `readdirSync`, `readFileSync` and `writeFileSync` from `fs` and `fileURLToPath` from `url`.
+There are **no** `nodeFs`, `nodePath` or
 `nodeOs` bindings: a later `describe` uses the names above, and one that needs another `fs` function adds it to the
 existing `fs` import. PR2's `describe` sets and restores its own books root and closes its own handle, but it
 **leaves rows in the file's shared `sessions.db`**, which every `describe` shares and which the file removes once,
 after all of them: a `users` row (`p-t17`) with an assignment row for chemistry chapter 1, the opening of `m94030`
-with its snapshot, and the `segment_edits` and `segment_acceptances` rows it seeds for `m94030`. A later `describe`
-uses its own module ids and provider ids. `ALLOWED_COLUMNS` and `MODULE_JSON_ALLOWED` are unchanged.
+with its snapshot, the `segment_edits` and `segment_acceptances` rows it seeds for `m94030`, and the
+`served_text_versions` rows its serves mint for `m94030`. A later `describe` uses its own module ids and provider
+ids. `ALLOWED_COLUMNS` and `MODULE_JSON_ALLOWED` are unchanged.
 ✏️ *Corrected 2026-11-05, PR2 review U30: this named `nodeFs`, `nodePath` and `nodeOs` bindings, which the built
-file never had, and said a later `describe` inherits nothing.*
+file never had, and said a later `describe` inherits nothing. Corrected again the same day, PR2 docs review D3 and
+D4: it called every node-builtin binding PR1's, and its list of the rows left behind lacked the served versions.*
 
 ### `server/__tests__/helpers/servedFixture.js` (Task 3)
 
