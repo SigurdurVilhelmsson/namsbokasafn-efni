@@ -2808,7 +2808,8 @@
   - the one known instance (an alt in ch18 `m68832`) is removed at inject by #547's widened `stripAltMarkers`, but it still sits in `main`'s published 18-4 page, because that tree predates #547 (§C204);
   - the prose census was 0 on 2026-10-09;
   - `api-translate`'s `unwrapInventedMarkers` also stops at whitespace, so a future buy is where a new instance would appear, and these gates would not stop it.
-- **Fix (not built):**
+- **✅ BUILT 2026-11-05 on `claude/project-thread-75boh7` (PR pending merge), as specified below.** Base rate over every tracked 02-for-mt, 02-mt-output, 02-mt-revised, 03-translated, 03-faithful-translation and 05-publication file in all books (1,595 files): old 86,246 openers, new 86,250; the 4 extra are all m68832's alt, in four trees; no false positive. In a throwaway whole-book render, ch18 now refuses on `main`'s stale `03-translated` m68832 and renders clean once ch18 is re-injected, as the 4.5 rebuild does.
+- **Fix (as specified):**
   - widen the opener to also accept the type #547's `stripAltMarkers` accepts (`SPACED_TYPE` in `tools/lib/alt-segments.js`) before `:`, keeping `[A-Za-z]\w*` for one-letter and ASCII types (`SPACED_TYPE` alone needs two characters, so replacing the opener with it would lose `[[i:`);
   - add a test that finds the spaced shape and keeps the `[[MATH:`/`[[MEDIA:` exemptions;
   - measure a base rate over `02-for-mt` and `02-mt-output` before the widened gate blocks anything.
@@ -3240,6 +3241,7 @@
 - **H5** the module body in a non-landmark wrapper instead of a second `<main>`. 🔴 **Design only. DO NOT MERGE until vefur confirms its H7** (vefur's pager reads the module's `<main>` and must learn the new form first).
 - **H6** answered by pointer: §1.5's *accuracy*/*precision* pair is in the terminology review ([USER] ruled *accuracy → hittni*; see the 2026-10-11 entries above and the stage 1 ruling set). **Not built:** the regression gate it asks for (each term's rendering compared with the last published one, across chapter text, summaries and `glossary.json`).
 - **Timing (vefur's):** H1–H4 ride the ② re-render; H5 waits for H7; nothing here asks for a re-render on its own or changes the chemistry sync hold.
+- **✅ 2026-11-05: H1, H2 and H4 BUILT on `claude/project-thread-75boh7` (PR pending merge); H3 waits on [USER]'s four rulings.** H1 sizes 1,145 of 1,148 images in a throwaway whole-book render (the other 3 name retired figures the rebuild's re-inject drops); sizes match Chromium exactly for 1,137 of 1,141 files and within 0.5 px for the rest. H2 emits page-data `chapterOutline` with `objectives: []` on the 21 introductions. H4's label is *Aftur í meginmál* (wording for [USER]); its Cyrillic check warns only, on `bóрата` in m68831, which sits in the MT layers and needs a ruled hand repair. The same render, main's tools against these, gave 251 of 251 pages identical once the three intended changes are removed.
 - **Status:** ~~not scoped~~ **SCOPED 2026-10-17 by [USER]: all four of H1–H4 join the ② code batch**, built before the whole-book re-render so it runs once. H3's four "which form wins" choices go to [USER] as rulings; [CODE] builds only the mechanism. No branch cut yet. H5 stays design-only until vefur's H7.
 
 #### 1.6 (plan 2026-10-10) — the 38 pending pre-clean-break edit rows: MEASURED and FRAMED, 2026-10-17
