@@ -117,6 +117,22 @@ approved on 2026-11-04.
    `scripts/__tests__/deploy-health-readout.test.mjs` does pin it, with an anchored regex whose brackets are escaped
    (`\[053\]`), which that grep cannot match. Task 1 updated the regex, test first. Grep for what a test would
    write, not only for the text it checks.*
+3. **G-1c reads what journald and rsyslog actually read** (added 2026-11-05, after Task 6's review, finding F3).
+   - **Premise the tree contradicted:** decision 21 and Task 6 read journald's settings only from
+     `/etc/systemd/journald.conf` and `/etc/systemd/journald.conf.d/`. journald also reads drop-ins from
+     `/run/systemd/journald.conf.d/` and `/usr/lib/systemd/journald.conf.d/` (a same-named file in `/etc` masks one
+     in `/run`, which masks one in `/usr/lib`; the survivors apply in filename order, a later one overriding). On
+     Ubuntu 24.04, the production OS, the systemd package ships `/usr/lib/systemd/journald.conf.d/syslog.conf` with
+     `ForwardToSyslog=yes` (measured in this sandbox with `systemd-analyze cat-config systemd/journald.conf` and
+     `dpkg -S`). The request log is journald's (`requestTiming.js`), so with forwarding on and rsyslog running its
+     lines may also land in `/var/log/syslog`, whose retention `/etc/logrotate.d/rsyslog` sets. G-1c's question
+     ("journald retention", which decides what the consent text says about the request log, §6 item 14) is then not
+     answered by the `/etc` files alone.
+   - **The change:** G-1c lists journald's settings from every file journald applies, in its order, with each file's
+     path; adds `ForwardToSyslog` to the keys it reports; reports whether rsyslog is configured and active, and the
+     rotation lines of `/etc/logrotate.d/rsyslog`; and adds `hourly` to the rotation directives. Still read-only,
+     still directives only, still no editor and no secret. The roots are parameters of the exported function, as
+     `etcRoot` and `varRoot` are.
 
 ## Decisions taken in this plan
 
