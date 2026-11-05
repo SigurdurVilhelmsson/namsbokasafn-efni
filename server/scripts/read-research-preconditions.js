@@ -18,9 +18,9 @@
  *         booleans, Storage's four modes; each measured against systemd 255), and otherwise as the key
  *         alone with `valueUnparsed: true` and no value (systemd keeps a `#` after a value as part of
  *         it, and then refuses the setting). `systemd-analyze cat-config systemd/journald.conf`
- *         differs from journald 255 on the main file: it shows the first of
- *         /etc, /run, /usr/local/lib and /usr/lib's journald.conf that exists, and journald opens none
- *         of the last three, so those are listed by path only, as `notReadBySystemd255`. Whether
+ *         differs from journald 255 on the main file: it shows the first of /etc, /run,
+ *         /usr/local/lib and /usr/lib's journald.conf that exists, and journald opens none of the
+ *         last three, so those are listed by path only, as `notReadBySystemd255`. Whether
  *         /var/log/journal exists; `journalctl --disk-usage`'s line. Forwarding hands the request log
  *         (journald's) to the syslog socket, so: whether /etc/rsyslog.conf exists (never read),
  *         `systemctl is-active rsyslog`'s line, and the rotation directives of
