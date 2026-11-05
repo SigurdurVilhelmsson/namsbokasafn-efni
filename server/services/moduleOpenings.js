@@ -134,9 +134,9 @@ function snapshotRows(segments, edits) {
 /**
  * spec §5.5 steps 1–3, in one IMMEDIATE transaction (stated, not left to the first statement being
  * a write: plan amendment 2026-11-05). While the INSERT is the first statement, a deferred
- * transaction waits out another process's write lock just as this one does: removing .immediate()
- * fails no test (measured, PR2 review U28). IMMEDIATE keeps that wait if a read is ever added before
- * the INSERT, which servedWriteLock case (h) does catch. inflight_count is the number of snapshot
+ * transaction waits out another process's write lock just as this one does, so no test can tell
+ * the two apart (PR2 review U28). IMMEDIATE keeps that wait if a read is ever added before the
+ * INSERT, which servedWriteLock case (h) catches. inflight_count is the number of snapshot
  * rows, known before the insert, so step 3 is folded into step 1's statement. Returns no time
  * (spec §11). Throws on failure, rolled back.
  */

@@ -149,6 +149,17 @@ describe('checkSchema', () => {
       missing: ['not_a_table.a'],
     });
   });
+
+  it('a table whose stored name differs only in case is present, as SQLite resolves it', () => {
+    // The table check compares names lowercased (PR2 review U42); a case-sensitive compare would
+    // name a real table as missing (PR2 review SB2).
+    const db = migrated();
+    db.exec('CREATE TABLE Mixed_Case (a INTEGER)');
+    expect(checkSchema(db, { tables: { mixed_case: ['a'] }, columns: {}, indexes: [] })).toEqual({
+      ok: true,
+      missing: [],
+    });
+  });
 });
 
 describe('EXPECTED_SCHEMA', () => {

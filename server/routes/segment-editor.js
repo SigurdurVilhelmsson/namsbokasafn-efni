@@ -360,10 +360,11 @@ router.get(
       //    (a study book, no opening yet, and a users row holding a user_chapter_assignments row
       //    for this book and chapter) records the opening and its in-flight snapshot in one
       //    transaction, or answers 503 and records nothing, a failed mint above included. A
-      //    study-book serve whose predicate cannot be evaluated (its users, assignment or
-      //    opening lookup throws) also answers 503, whoever made it: the route cannot tell
-      //    whether it is the serve the record depends on (decision 4). Every other serve is
-      //    answered exactly as before. ──
+      //    study-book serve whose users or assignment lookup throws also answers 503, whoever
+      //    made it: the route cannot tell whether it is the serve the record depends on
+      //    (decision 4). Only an assigned editor's serve reaches the opening lookup, so a throw
+      //    there answers 503 to that serve alone. Every other serve is answered exactly as
+      //    before. ──
       const step = moduleOpenings.openOnServe(conn, {
         book: req.params.book,
         chapter: req.chapterNum,
