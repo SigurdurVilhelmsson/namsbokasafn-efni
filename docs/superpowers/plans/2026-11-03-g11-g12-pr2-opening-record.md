@@ -600,16 +600,33 @@ or CI verdict in prose. Read them there. For this PR, in addition:
   spawned runs set `SESSIONS_DB_PATH` and `BOOKS_ROOT_OVERRIDE`. **Every test file that drives the module GET handler
   must set `SESSIONS_DB_PATH` before requiring the route:** from this PR the handler reaches
   `userService.findByProviderId`, whose connection opens `resolveDbPath()` (`userService.js:16`, `:29-37`), so a test
-  without it would create `pipeline-output/sessions.db`. Run `git status --porcelain` after every test run.
-- **`git status --porcelain` cannot see what the bullet above protects** (✏️ added 2026-11-05, PR2 review U29).
-  `pipeline-output/` and `books/testbook/` are gitignored (`git check-ignore -v` names `.gitignore`'s rules), so a
-  test that creates `pipeline-output/sessions.db` leaves `git status --porcelain` empty. List the ignored files too,
-  before and after the run, and compare the two lists:
-  `git status --porcelain --ignored --untracked-files=all -- pipeline-output books`. Compare them with each other,
-  never the second with an empty list: earlier runs leave ignored files there (E2E's database, the E2E fixture's
-  backups), and a full `npx vitest run` creates `pipeline-output/sessions.db` and a `books/testbook/` file through
-  tests outside PR2 (measured by the review; that leak is not PR2's). Targeted runs of PR2's own test files leave
-  both trees as they found them.
+  without it would create `pipeline-output/sessions.db`, or write into it where an earlier run left one. Run
+  `git status --porcelain` after every test run.
+- **`git status --porcelain` cannot see what the bullet above protects, and neither can a list of file names**
+  (✏️ added 2026-11-05, PR2 review U29; rewritten the same day, PR2 docs review D1). `pipeline-output/` and
+  `books/testbook/` are gitignored (`git check-ignore -v` names `.gitignore`'s rules), so a test that creates
+  `pipeline-output/sessions.db` leaves `git status --porcelain` empty. Listing the ignored files by name
+  (`git status --porcelain --ignored`, which this bullet first prescribed) does not help either. A test that writes
+  into an ignored file that already exists adds no name, and this tree already holds `pipeline-output/sessions.db`
+  from an earlier full run. Measured in a scratch repository: a better-sqlite3 write into an existing ignored
+  `sessions.db` left the name list unchanged while the file's size and mtime changed. The name list also changes on
+  every E2E run, because each faithful write adds a timestamp-named `.bak` beside the E2E fixture's file
+  (`segmentParser.saveModuleSegments`), so it cannot pass the gate either. Compare each file's size and modification
+  time, before and after the run:
+
+  ```bash
+  L() { find pipeline-output books -type f ! -name 'e2e-sessions.db*' ! -path 'books/__e2e-fixture__/*' \
+          -printf '%p %s %T@\n' | LC_ALL=C sort; }
+  L > <scratch>/before   # then the run, then:
+  L > <scratch>/after; diff <scratch>/before <scratch>/after
+  ```
+
+  It leaves out E2E's own outputs: its database, and the E2E fixture book's written trees with their `.bak` files. A
+  targeted run of PR2's own test files must print nothing (measured 2026-11-05 on its vitest files, with a planted
+  file as the control that the same listing sees a change). A full `npx vitest run` changes `pipeline-output/sessions.db*`
+  and creates a `books/testbook/` file through tests outside PR2 (measured by the review; that leak is not PR2's).
+  So at the gate, compare the changed paths (`diff <scratch>/before <scratch>/after | awk '/^[<>]/ {print $2}' |
+  sort -u`) by name with the same gate's on `main`, as for the failing set.
 - **The probe never runs against production except in Task 8, on [USER]'s go.**
 - **No `segment_edits` column and no response key** (PR1's handoff). The drift guard and T17 prove both.
 - **No research event, no `record`** (index decision 2): T6 and T7 have no event half (handoff §3 item 2). Nothing in
@@ -1601,7 +1618,8 @@ Run, one at a time, every file the tree check listed for `'/:book/:chapter/:modu
 `servedSaveRoute.test.js`), then `server/__tests__/structuralBackstopWiring.test.js`.
 Expected: PASS, unchanged: their users hold no `users` row, so the predicate never holds and every serve is answered as
 in PR1. `git status --porcelain` shows nothing under `books/` or `pipeline-output/`. ✏️ *2026-11-05: it cannot show a
-gitignored file there; compare the ignored files before and after (Global Constraints, PR2 review U29).*
+gitignored file there; compare each file's size and mtime before and after (Global Constraints, PR2 review U29 and
+docs review D1).*
 
 - [ ] **Step 5: Commit**
 
@@ -2710,8 +2728,8 @@ IMMEDIATE; an opening found there throws and writes nothing (✏️ 2026-11-05, 
    `npm run docs:check` (Task 3 touches `server/routes/**`; expected clean, decision 27); `cd server && CI=1 npm run
    test:e2e` (Tasks 3 and 4 touch a route and `server/public/js/`; every existing chemistry serve still answers as
    before, decision 14). No dependency is added, so `npm audit` is not part of this gate. `git status --porcelain`
-   empty, and `git status --porcelain --ignored --untracked-files=all -- pipeline-output books` lists nothing the same
-   command did not list before the gate ran (Global Constraints).
+   empty, and the size-and-mtime listing of `pipeline-output/` and `books/`, taken before and after the gate, changes
+   the same paths by name as the same gate on `main` (Global Constraints, PR2 review U29 and docs review D1).
 2. **Re-check the migration number** (`ls server/migrations`) against `main` just before merging (index decision 9).
 3. **A whole-branch adversarial review: a blind pair,** Opus and Fable on the same brief, neither seeing the other's
    findings (**[USER] commissioned the Fable half on 2026-11-04**). A mutation pass restores from a golden `cp`, never
