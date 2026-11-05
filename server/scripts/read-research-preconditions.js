@@ -5,6 +5,11 @@
  *
  * Each section answers one §9 check and runs on its own: a section that fails reports
  * `{ ok: false, error, message }` and the others still run.
+ *   G-1c  journald's retention keys (/etc/systemd/journald.conf and its .conf.d drop-ins), whether
+ *         /var/log/journal exists, `journalctl --disk-usage`'s line; nginx's `access_log` lines
+ *         (nginx.conf, conf.d/*.conf, sites-enabled/*); and the rotation lines of
+ *         /etc/logrotate.d/nginx. It decides what the consent text says about the request log
+ *         (§6 item 14) and G1.15's rule.
  *   G-1d  `enforce_assignments` per book; the study book's `user_chapter_assignments` rows, as
  *         (user id, chapter); the `users` rows, as (id, role, active); and AUTO_CREATE_USERS as the
  *         server reads it (systemd's Environment= and EnvironmentFile=, then server/.env where
@@ -12,11 +17,16 @@
  *   G-1e  the study book's segments holding an in-flight edit (pending, or approved and not yet
  *         applied), with counts by state, and its applied rows whose faithful file is gone. It
  *         gives the size of the opening snapshots (§5.5).
- * The system half (G-1c, G-1f, G-1g) is added beside these.
+ *   G-1f  whether an executable `sqlite3` is on PATH (only backup-db.sh and verify-db-backup.sh
+ *         depend on it; §5.17).
+ *   G-1g  the study book's units (02-for-mt, every chapter directory, the ids the module route
+ *         serves) that lack an MT lock marker, and of those the ones without an MT file. Presence
+ *         only: a marker's body holds the time of a person's first act (§5.19) and is never read.
  *
- * The output names no editor: users and assignment rows by id, segments by id with counts, and
- * from the service configuration and server/.env only the value of AUTO_CREATE_USERS. It may be
- * pasted into the register.
+ * The output names no editor: users and assignment rows by id, segments and units by id with
+ * counts, from the service configuration and server/.env only the value of AUTO_CREATE_USERS, and
+ * from nginx, logrotate and journald only the directives named above. It may be pasted into the
+ * register.
  *
  * An EnvironmentFile= this user cannot read is listed `readable: false`; a readable one without the
  * key has `value: null` and no `readable`. `autoCreateUsers.effective` counts only the files read,
@@ -204,7 +214,128 @@ function readG1e({ db, book, booksDir }) {
   return { originColumn, inflight, appliedWithoutFaithful };
 }
 
-const SECTIONS = { 'G-1d': readG1d, 'G-1e': readG1e }; // the system half adds G-1c, G-1f, G-1g; PR4 adds G-1a and G-1h
+const UNIT_ID = /^(m\d{5}|chapter-metadata)$/; // what the module route serves (validateModule, validateParams.js)
+const JOURNALD_KEY =
+  /^(Storage|SystemMaxUse|SystemKeepFree|SystemMaxFileSize|SystemMaxFiles|MaxRetentionSec|MaxFileSec|RuntimeMaxUse)\s*=/;
+const ROTATION = /^(daily|weekly|monthly|yearly|rotate\s+\d+|maxage\s+\d+)\b/;
+
+/** The trimmed lines of a file that match re, or null when the file cannot be read. Never throws. */
+function directiveLines(file, re) {
+  try {
+    return fs
+      .readFileSync(file, 'utf8')
+      .split('\n')
+      .map((l) => l.trim())
+      .filter((l) => re.test(l));
+  } catch {
+    return null; // absent or unreadable: reported as no lines, never guessed
+  }
+}
+
+/** The sorted paths of a directory's entries that pass filter; [] when it cannot be read. */
+function listDir(dir, filter = () => true) {
+  try {
+    return fs
+      .readdirSync(dir)
+      .filter(filter)
+      .sort()
+      .map((f) => path.join(dir, f));
+  } catch {
+    return [];
+  }
+}
+
+function readG1c({ etcRoot, varRoot, exec }) {
+  const rel = (f) => path.relative(etcRoot, f);
+  const tagged = (files, re) =>
+    files.flatMap((f) => (directiveLines(f, re) || []).map((line) => ({ file: rel(f), line })));
+  const sd = path.join(etcRoot, 'systemd');
+  const du = exec('journalctl', ['--disk-usage']);
+  // journalctl's first non-blank line, at most 200 characters, or null when it printed none.
+  const firstLine = (s) => {
+    const line = String(s || '')
+      .split('\n')
+      .find((l) => l.trim());
+    return line ? line.trim().slice(0, 200) : null;
+  };
+  const ng = path.join(etcRoot, 'nginx');
+  return {
+    journald: {
+      settings: tagged(
+        [
+          path.join(sd, 'journald.conf'),
+          ...listDir(path.join(sd, 'journald.conf.d'), (f) => f.endsWith('.conf')),
+        ],
+        JOURNALD_KEY
+      ),
+      persistentDir: fs.existsSync(path.join(varRoot, 'log', 'journal')),
+      diskUsage: { ran: du.ran, output: du.ran ? firstLine(du.stdout || du.stderr) : null },
+    },
+    nginx: {
+      // Only the access_log lines: a server_name or any other directive stays behind.
+      accessLog: tagged(
+        [
+          path.join(ng, 'nginx.conf'),
+          ...listDir(path.join(ng, 'conf.d'), (f) => f.endsWith('.conf')),
+          ...listDir(path.join(ng, 'sites-enabled')),
+        ],
+        /^access_log\b/
+      ),
+    },
+    // The access log's retention is set here (§6 item 14, G1.15), so only the rotation lines.
+    logrotate: { nginx: directiveLines(path.join(etcRoot, 'logrotate.d', 'nginx'), ROTATION) },
+  };
+}
+
+function readG1f({ pathEnv }) {
+  for (const dir of String(pathEnv || '')
+    .split(path.delimiter)
+    .filter(Boolean)) {
+    const p = path.join(dir, 'sqlite3');
+    try {
+      fs.accessSync(p, fs.constants.X_OK);
+      if (fs.statSync(p).isFile()) return { sqlite3: { onPath: true, path: p } };
+    } catch {
+      // not here, or not executable: keep looking
+    }
+  }
+  return { sqlite3: { onPath: false, path: null } };
+}
+
+function readG1g({ book, booksDir }) {
+  const { mtLockPathFor } = require('../../tools/lib/mt-lock.cjs');
+  const { chapterFromDir } = require('../lib/chapterLabel');
+  const forMt = path.join(booksDir, book, '02-for-mt');
+  const units = [];
+  for (const dir of fs.readdirSync(forMt).filter((d) => chapterFromDir(d) !== null)) {
+    for (const f of fs.readdirSync(path.join(forMt, dir))) {
+      if (!f.endsWith('-segments.en.md')) continue; // skips the legacy -segments(b).en.md files
+      const moduleId = f.slice(0, -'-segments.en.md'.length);
+      if (!UNIT_ID.test(moduleId)) continue; // skips exercises-segments.en.md, as listChapterModules does
+      const mtOutput = path.join(booksDir, book, '02-mt-output', dir, `${moduleId}-segments.is.md`);
+      units.push({
+        unit: `${dir}/${moduleId}`,
+        mt: fs.existsSync(mtOutput),
+        locked: fs.existsSync(mtLockPathFor(mtOutput)), // presence only: never the body (spec §5.19)
+      });
+    }
+  }
+  const sorted = (xs) => xs.map((u) => u.unit).sort();
+  return {
+    unitCount: units.length,
+    lacking: sorted(units.filter((u) => !u.locked)),
+    lackingMtFile: sorted(units.filter((u) => !u.locked && !u.mt)),
+  };
+}
+
+// PR4 adds G-1a (the crontab) and G-1h.
+const SECTIONS = {
+  'G-1c': readG1c,
+  'G-1d': readG1d,
+  'G-1e': readG1e,
+  'G-1f': readG1f,
+  'G-1g': readG1g,
+};
 
 function readResearchPreconditions({
   book,
@@ -281,8 +412,11 @@ if (runDirectly) {
 module.exports = {
   readResearchPreconditions,
   readAutoCreateUsers,
+  readG1c,
   readG1d,
   readG1e,
+  readG1f,
+  readG1g,
   execNeverThrow,
   SECTIONS,
 };

@@ -1,12 +1,13 @@
 // server/__tests__/readResearchPreconditions.test.js
 //
-// G1.1 + G1.2, PR2 Task 5 (spec §9 G-1d and G-1e; index decision 14): the read-only production
-// probe's database half. Every case seeds a fresh migrated database by SQL and a temp root
+// G1.1 + G1.2, PR2 Tasks 5 and 6 (spec §9 G-1c to G-1g; index decision 14): the read-only
+// production probe, its database half (G-1d, G-1e) and its system half (G-1c, G-1f, G-1g; the
+// last over a books tree of its own). Every case seeds a fresh migrated database by SQL and a temp root
 // holding `books/`, `server/`, `etc/` and `var/`, so no in-process run reads the host's files
 // and no run writes under the repository's books/ or pipeline-output/. The probe opens its own
 // read-only handle, as on production; the test's writable `db` stays open for seeding and
 // controls, and a spawned run closes it first and reopens it after.
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { createRequire } from 'module';
 import { spawnSync } from 'child_process';
 import crypto from 'crypto';
@@ -158,6 +159,10 @@ beforeEach(() => {
   const faithful = path.join(root, 'books', BOOK, '03-faithful-translation', 'ch04');
   fs.mkdirSync(faithful, { recursive: true });
   fs.writeFileSync(path.join(faithful, 'm94104-segments.is.md'), 'x\n'); // m94105's is absent
+  // One unit for G-1g, so the spawned runs have a 02-for-mt tree to read and still exit 0.
+  const forMt = path.join(root, 'books', BOOK, '02-for-mt', 'ch03');
+  fs.mkdirSync(forMt, { recursive: true });
+  fs.writeFileSync(path.join(forMt, 'm94103-segments.en.md'), '<!-- SEG:m94103:para:a -->\nA.\n');
   fs.writeFileSync(path.join(root, 'server', '.env'), DOT_ENV);
 });
 
@@ -327,6 +332,233 @@ describe('G-1e (spec §9): the size of the opening snapshots', () => {
   });
 });
 
+describe('G-1c (spec §9): journald retention and nginx’s request log', () => {
+  const DISK_USAGE = 'Archived and active journals take up 1.2G in the file system.';
+  /** systemctl as stubExec answers it, and journalctl's one line. */
+  const execWithJournal = (cmd, args) =>
+    cmd === 'journalctl' && args.includes('--disk-usage')
+      ? { ran: true, code: 0, stdout: `${DISK_USAGE}\n`, stderr: '' }
+      : stubExec()(cmd, args);
+  function plant(rel, text) {
+    const p = path.join(root, 'etc', rel);
+    fs.mkdirSync(path.dirname(p), { recursive: true });
+    fs.writeFileSync(p, text);
+  }
+
+  it('reports the retention keys, the access_log lines and the rotation, and nothing else', () => {
+    plant(
+      'systemd/journald.conf',
+      '[Journal]\n#SystemMaxUse=\nSystemMaxUse=500M\nStorage=persistent\n'
+    );
+    plant('systemd/journald.conf.d/10-local.conf', '[Journal]\nMaxRetentionSec=1month\n');
+    // Not .conf, so neither journald nor nginx reads them, and neither may the probe: each holds a
+    // line its directive pattern matches, absent from the expected output below.
+    plant('systemd/journald.conf.d/10-local.conf.bak', '[Journal]\nSystemMaxUse=9G\n');
+    plant('nginx/conf.d/default.conf.dpkg-old', 'access_log /var/log/nginx/OLD-BACKUP.log;\n');
+    plant(
+      'nginx/nginx.conf',
+      'http {\n  access_log /var/log/nginx/access.log;\n  # access_log off;\n}\n'
+    );
+    plant(
+      'nginx/sites-enabled/ritstjorn',
+      'server {\n  server_name SENTINEL-HOST.example;\n  access_log /var/log/nginx/ritstjorn.access.log combined;\n}\n'
+    );
+    plant('logrotate.d/nginx', '/var/log/nginx/*.log {\n  daily\n  rotate 14\n  compress\n}\n');
+    fs.mkdirSync(path.join(root, 'var', 'log', 'journal'), { recursive: true });
+
+    const g = readResearchPreconditions(ctx({ exec: execWithJournal })).sections['G-1c'];
+    expect(g).toEqual({
+      ok: true,
+      journald: {
+        settings: [
+          { file: 'systemd/journald.conf', line: 'SystemMaxUse=500M' },
+          { file: 'systemd/journald.conf', line: 'Storage=persistent' },
+          { file: 'systemd/journald.conf.d/10-local.conf', line: 'MaxRetentionSec=1month' },
+        ],
+        persistentDir: true,
+        diskUsage: { ran: true, output: DISK_USAGE },
+      },
+      nginx: {
+        accessLog: [
+          { file: 'nginx/nginx.conf', line: 'access_log /var/log/nginx/access.log;' },
+          {
+            file: 'nginx/sites-enabled/ritstjorn',
+            line: 'access_log /var/log/nginx/ritstjorn.access.log combined;',
+          },
+        ],
+      },
+      logrotate: { nginx: ['daily', 'rotate 14'] },
+    });
+    // The server name stays behind; control: the file the probe read holds it.
+    expect(
+      fs.readFileSync(path.join(root, 'etc', 'nginx', 'sites-enabled', 'ritstjorn'), 'utf8')
+    ).toContain('SENTINEL-HOST');
+    expect(JSON.stringify(g)).not.toContain('SENTINEL-HOST');
+  });
+
+  it('journalctl’s line comes from stderr when its stdout is empty', () => {
+    const DENIED = 'No journal files were opened due to insufficient permissions.';
+    const execDenied = (cmd, args) =>
+      cmd === 'journalctl'
+        ? { ran: true, code: 1, stdout: '', stderr: `${DENIED}\n` }
+        : stubExec()(cmd, args);
+    expect(
+      readResearchPreconditions(ctx({ exec: execDenied })).sections['G-1c'].journald.diskUsage
+    ).toEqual({ ran: true, output: DENIED });
+    // Control: with both streams written, stdout's line is the one reported.
+    const execBoth = (cmd, args) =>
+      cmd === 'journalctl'
+        ? {
+            ran: true,
+            code: 0,
+            stdout: `${DISK_USAGE}\n`,
+            stderr: 'No journal files were found.\n',
+          }
+        : stubExec()(cmd, args);
+    expect(
+      readResearchPreconditions(ctx({ exec: execBoth })).sections['G-1c'].journald.diskUsage
+    ).toEqual({ ran: true, output: DISK_USAGE });
+  });
+
+  it('a box with none of these files reports empty findings, not a failure', () => {
+    const noCommands = () => ({ ran: false, code: null, stdout: '', stderr: '' });
+    expect(readResearchPreconditions(ctx({ exec: noCommands })).sections['G-1c']).toEqual({
+      ok: true,
+      journald: { settings: [], persistentDir: false, diskUsage: { ran: false, output: null } },
+      nginx: { accessLog: [] },
+      logrotate: { nginx: null },
+    });
+  });
+});
+
+describe('G-1f (spec §9): is the sqlite3 command on PATH', () => {
+  it('finds an executable sqlite3 and skips a non-executable one', () => {
+    const [first, second] = ['bin-first', 'bin-second'].map((d) => path.join(root, d));
+    for (const [dir, mode] of [
+      [first, 0o644],
+      [second, 0o755],
+    ]) {
+      fs.mkdirSync(dir);
+      fs.writeFileSync(path.join(dir, 'sqlite3'), '#!/bin/sh\n');
+      fs.chmodSync(path.join(dir, 'sqlite3'), mode);
+    }
+    const g1f = (pathEnv) => readResearchPreconditions(ctx({ pathEnv })).sections['G-1f'];
+    expect(g1f([first, second].join(path.delimiter))).toEqual({
+      ok: true,
+      sqlite3: { onPath: true, path: path.join(second, 'sqlite3') },
+    });
+    // Controls: the non-executable copy alone, and an empty PATH, find nothing.
+    expect(g1f(first)).toEqual({ ok: true, sqlite3: { onPath: false, path: null } });
+    expect(g1f('')).toEqual({ ok: true, sqlite3: { onPath: false, path: null } });
+  });
+
+  it('a directory named sqlite3 is not the command', () => {
+    const shadow = path.join(root, 'bin-shadow');
+    const real = path.join(root, 'bin-real');
+    fs.mkdirSync(path.join(shadow, 'sqlite3'), { recursive: true, mode: 0o755 });
+    fs.mkdirSync(real);
+    fs.writeFileSync(path.join(real, 'sqlite3'), '#!/bin/sh\n', { mode: 0o755 });
+    // Control: the directory passes the executable check, so only the file check can skip it.
+    expect(() => fs.accessSync(path.join(shadow, 'sqlite3'), fs.constants.X_OK)).not.toThrow();
+    const g1f = (pathEnv) => readResearchPreconditions(ctx({ pathEnv })).sections['G-1f'];
+    expect(g1f([shadow, real].join(path.delimiter))).toEqual({
+      ok: true,
+      sqlite3: { onPath: true, path: path.join(real, 'sqlite3') },
+    });
+    expect(g1f(shadow)).toEqual({ ok: true, sqlite3: { onPath: false, path: null } });
+  });
+});
+
+describe('G-1g (spec §9, §5.19): which study units lack an MT lock marker', () => {
+  // A books tree of its own: the shared root holds a ch03/m94103 unit, which would add to the counts.
+  let unitsRoot;
+  let booksDir;
+  let marker;
+  const put = (layer, rel) => {
+    const p = path.join(booksDir, BOOK, layer, rel);
+    fs.mkdirSync(path.dirname(p), { recursive: true });
+    fs.writeFileSync(p, '<!-- SEG:x:para:a -->\nx\n');
+    return p;
+  };
+  beforeEach(() => {
+    unitsRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'research-preconditions-units-'));
+    booksDir = path.join(unitsRoot, 'books');
+    put('02-for-mt', 'ch01/m94201-segments.en.md');
+    put('02-mt-output', 'ch01/m94201-segments.is.md');
+    marker = put('02-mt-output', 'ch01/m94201-segments.locked');
+    put('02-for-mt', 'ch01/m94202-segments.en.md');
+    put('02-mt-output', 'ch01/m94202-segments.is.md');
+    put('02-for-mt', 'ch02/chapter-metadata-segments.en.md');
+    put('02-mt-output', 'ch02/chapter-metadata-segments.is.md');
+    put('02-for-mt', 'appendices/m94203-segments.en.md');
+    put('02-for-mt', 'ch01/m94204-segments(b).en.md'); // legacy
+    put('02-for-mt', 'ch01/exercises-segments.en.md'); // not an editable module (decision 22)
+    put('02-for-mt', 'tmp/m94205-segments.en.md'); // not a chapter directory
+  });
+  afterEach(() => {
+    fs.rmSync(unitsRoot, { recursive: true, force: true });
+  });
+
+  const EXPECTED = {
+    ok: true,
+    unitCount: 4,
+    lacking: ['appendices/m94203', 'ch01/m94202', 'ch02/chapter-metadata'],
+    lackingMtFile: ['appendices/m94203'],
+  };
+
+  it('lists every unit without a marker, and those without an MT file', () => {
+    // ch01/m94201 (locked), the legacy file, exercises and the tmp directory are the controls.
+    expect(readResearchPreconditions(ctx({ booksDir })).sections['G-1g']).toEqual(EXPECTED);
+  });
+
+  it('a locked unit without an MT file is not among those lacking one', () => {
+    put('02-for-mt', 'ch02/m94206-segments.en.md');
+    put('02-mt-output', 'ch02/m94206-segments.locked'); // a marker, and no MT file beside it
+    // Counted (control: the unit was read), and in neither list: lackingMtFile is a subset of lacking.
+    expect(readResearchPreconditions(ctx({ booksDir })).sections['G-1g']).toEqual({
+      ...EXPECTED,
+      unitCount: EXPECTED.unitCount + 1,
+    });
+  });
+
+  it('a book without a 02-for-mt tree fails the section, never reads as no unit lacking a marker', () => {
+    expect(readResearchPreconditions(ctx({ booksDir })).sections['G-1g']).toEqual(EXPECTED); // control
+    // A mistyped book passes the command line's check and reaches this branch, as does a wrong books root.
+    const mistyped = readResearchPreconditions(ctx({ booksDir, book: 'efnafraedi-2' }));
+    expect(mistyped.sections['G-1g']).toMatchObject({ ok: false, error: 'ENOENT' });
+    expect(mistyped.ok).toBe(false); // so a run exits 1
+    fs.rmSync(path.join(booksDir, BOOK, '02-for-mt'), { recursive: true });
+    expect(readResearchPreconditions(ctx({ booksDir })).sections['G-1g']).toMatchObject({
+      ok: false,
+      error: 'ENOENT',
+    });
+  });
+
+  it('never reads a marker’s body', () => {
+    // The spies sit on the fs object the probe requires, so they see every read it makes.
+    const read = vi.spyOn(fs, 'readFileSync');
+    const open = vi.spyOn(fs, 'openSync');
+    let g;
+    let named;
+    try {
+      g = readResearchPreconditions(ctx({ booksDir })).sections['G-1g'];
+    } finally {
+      named = [...read.mock.calls, ...open.mock.calls].map((c) => String(c[0]));
+      read.mockRestore();
+      open.mockRestore();
+    }
+    expect(g).toEqual(EXPECTED);
+    // Control: the spies saw the probe's own read of server/.env (G-1d).
+    expect(named).toContain(path.join(root, 'server', '.env'));
+    expect(named.filter((p) => p.endsWith('.locked'))).toEqual([]);
+    // An unreadable marker changes nothing (as root it still reads, so this half needs a user).
+    if (process.getuid?.() !== 0) {
+      fs.chmodSync(marker, 0o000);
+      expect(readResearchPreconditions(ctx({ booksDir })).sections['G-1g']).toEqual(EXPECTED);
+    }
+  });
+});
+
 describe('the database (decision 15)', () => {
   it('is opened once, lazily, for every section that reads it, and closed after', () => {
     const handles = [];
@@ -447,6 +679,8 @@ Module._load = function (request, ...rest) {
     const out = JSON.parse(r.stdout);
     expect(out).toMatchObject({ probe: 'read-research-preconditions', book: BOOK, ok: true });
     expect(out.sections['G-1d'].users).toHaveLength(2); // the run read the database
+    // The printed sections, in the order the plan gives them (what is pasted into the register).
+    expect(Object.keys(out.sections)).toEqual(['G-1c', 'G-1d', 'G-1e', 'G-1f', 'G-1g']);
     // The temp books root, not the repository's: m94104's faithful file exists only there.
     expect(out.sections['G-1e'].appliedWithoutFaithful).toEqual([
       { chapter: 4, moduleId: 'm94105', segmentId: 'm94105:para:d' },
@@ -499,6 +733,10 @@ Module._load = function (request, ...rest) {
     expect(out.ok).toBe(false);
     expect(out.sections['G-1d']).toMatchObject({ ok: false, error: 'SQLITE_CANTOPEN' });
     expect(out.sections['G-1e']).toMatchObject({ ok: false, error: 'SQLITE_CANTOPEN' });
+    // Positive control: only the database sections failed; the system half still read.
+    expect(out.sections['G-1c'].ok).toBe(true);
+    expect(out.sections['G-1f'].ok).toBe(true);
+    expect(out.sections['G-1g'].ok).toBe(true);
     expect(fs.existsSync(missing)).toBe(false); // fileMustExist: the probe created nothing
     // Control: the same run with the database present exits 0.
     expect(spawn([SCRIPT, BOOK]).status).toBe(0);
@@ -513,6 +751,7 @@ describe('it can run where PR1 and PR2 are not deployed', () => {
       ...new Set([...source().matchAll(/require\('([^']+)'\)/g)].map((m) => m[1])),
     ];
     expect(specifiers.sort()).toEqual([
+      '../../tools/lib/mt-lock.cjs',
       '../lib/chapterLabel',
       '../lib/dbPath',
       'better-sqlite3',
