@@ -3,7 +3,7 @@
 // G1.1 + G1.2, PR2 Tasks 5 and 6 (spec §9 G-1c to G-1g; index decision 14): the read-only
 // production probe, its database half (G-1d, G-1e) and its system half (G-1c, G-1f, G-1g; the
 // last over a books tree of its own). Every case seeds a fresh migrated database by SQL and a temp root
-// holding `books/`, `server/`, `etc/` and `var/`, so no in-process run reads the host's files
+// holding `books/`, `server/`, `etc/`, `run/`, `usr/` and `var/`, so no in-process run reads the host's files
 // and no run writes under the repository's books/ or pipeline-output/. The probe opens its own
 // read-only handle, as on production; the test's writable `db` stays open for seeding and
 // controls, and a spawned run closes it first and reopens it after.
@@ -65,6 +65,13 @@ function stubWithEnvironmentFiles(files) {
   });
   return stubExec({ environmentFiles: lines.join('') });
 }
+/** Writes text at <root>/<rel>, making its directories; returns the path. */
+function plant(rel, text) {
+  const p = path.join(root, rel);
+  fs.mkdirSync(path.dirname(p), { recursive: true });
+  fs.writeFileSync(p, text);
+  return p;
+}
 
 function ctx(over = {}) {
   return {
@@ -73,6 +80,8 @@ function ctx(over = {}) {
     serverDir: path.join(root, 'server'),
     booksDir: path.join(root, 'books'),
     etcRoot: path.join(root, 'etc'),
+    runRoot: path.join(root, 'run'),
+    usrRoot: path.join(root, 'usr'),
     varRoot: path.join(root, 'var'),
     pathEnv: '',
     exec: stubExec(),
@@ -91,7 +100,7 @@ function edit({ chapter, moduleId, seg, status, appliedAt = null, origin = null 
 beforeEach(() => {
   ({ db, path: dbPath } = freshMigratedDb());
   root = fs.mkdtempSync(path.join(os.tmpdir(), 'research-preconditions-'));
-  for (const d of ['books', 'server', 'etc', 'var']) fs.mkdirSync(path.join(root, d));
+  for (const d of ['books', 'server', 'etc', 'run', 'usr', 'var']) fs.mkdirSync(path.join(root, d));
 
   db.exec('DELETE FROM book_settings');
   db.prepare('INSERT INTO book_settings (book, enforce_assignments) VALUES (?, ?)').run(BOOK, 1);
@@ -339,31 +348,38 @@ describe('G-1c (spec §9): journald retention and nginx’s request log', () => 
     cmd === 'journalctl' && args.includes('--disk-usage')
       ? { ran: true, code: 0, stdout: `${DISK_USAGE}\n`, stderr: '' }
       : stubExec()(cmd, args);
-  function plant(rel, text) {
-    const p = path.join(root, 'etc', rel);
-    fs.mkdirSync(path.dirname(p), { recursive: true });
-    fs.writeFileSync(p, text);
-  }
+  /** stubExec, and the given answer to exactly `systemctl is-active rsyslog`. */
+  const execWithRsyslog = (answer) => (cmd, args) =>
+    cmd === 'systemctl' && args.length === 2 && args[0] === 'is-active' && args[1] === 'rsyslog'
+      ? { ran: true, ...answer }
+      : stubExec()(cmd, args);
+  const settings = (over) =>
+    readResearchPreconditions(ctx(over)).sections['G-1c'].journald.settings;
+  // The shape of /etc/logrotate.d/rsyslog in Ubuntu 24.04's rsyslog package.
+  const LOGROTATE_RSYSLOG =
+    '/var/log/syslog\n/var/log/mail.log\n/var/log/kern.log\n/var/log/auth.log\n/var/log/user.log\n' +
+    '/var/log/cron.log\n{\n\trotate 4\n\tweekly\n\tmissingok\n\tnotifempty\n\tcompress\n' +
+    '\tdelaycompress\n\tsharedscripts\n\tpostrotate\n\t\t/usr/lib/rsyslog/rsyslog-rotate\n\tendscript\n}\n';
 
   it('reports the retention keys, the access_log lines and the rotation, and nothing else', () => {
     plant(
-      'systemd/journald.conf',
+      'etc/systemd/journald.conf',
       '[Journal]\n#SystemMaxUse=\nSystemMaxUse=500M\nStorage=persistent\n'
     );
-    plant('systemd/journald.conf.d/10-local.conf', '[Journal]\nMaxRetentionSec=1month\n');
+    plant('etc/systemd/journald.conf.d/10-local.conf', '[Journal]\nMaxRetentionSec=1month\n');
     // Not .conf, so neither journald nor nginx reads them, and neither may the probe: each holds a
     // line its directive pattern matches, absent from the expected output below.
-    plant('systemd/journald.conf.d/10-local.conf.bak', '[Journal]\nSystemMaxUse=9G\n');
-    plant('nginx/conf.d/default.conf.dpkg-old', 'access_log /var/log/nginx/OLD-BACKUP.log;\n');
+    plant('etc/systemd/journald.conf.d/10-local.conf.bak', '[Journal]\nSystemMaxUse=9G\n');
+    plant('etc/nginx/conf.d/default.conf.dpkg-old', 'access_log /var/log/nginx/OLD-BACKUP.log;\n');
     plant(
-      'nginx/nginx.conf',
+      'etc/nginx/nginx.conf',
       'http {\n  access_log /var/log/nginx/access.log;\n  # access_log off;\n}\n'
     );
     plant(
-      'nginx/sites-enabled/ritstjorn',
+      'etc/nginx/sites-enabled/ritstjorn',
       'server {\n  server_name SENTINEL-HOST.example;\n  access_log /var/log/nginx/ritstjorn.access.log combined;\n}\n'
     );
-    plant('logrotate.d/nginx', '/var/log/nginx/*.log {\n  daily\n  rotate 14\n  compress\n}\n');
+    plant('etc/logrotate.d/nginx', '/var/log/nginx/*.log {\n  daily\n  rotate 14\n  compress\n}\n');
     fs.mkdirSync(path.join(root, 'var', 'log', 'journal'), { recursive: true });
 
     const g = readResearchPreconditions(ctx({ exec: execWithJournal })).sections['G-1c'];
@@ -371,13 +387,15 @@ describe('G-1c (spec §9): journald retention and nginx’s request log', () => 
       ok: true,
       journald: {
         settings: [
-          { file: 'systemd/journald.conf', line: 'SystemMaxUse=500M' },
-          { file: 'systemd/journald.conf', line: 'Storage=persistent' },
-          { file: 'systemd/journald.conf.d/10-local.conf', line: 'MaxRetentionSec=1month' },
+          { file: 'etc/systemd/journald.conf', line: 'SystemMaxUse=500M' },
+          { file: 'etc/systemd/journald.conf', line: 'Storage=persistent' },
+          { file: 'etc/systemd/journald.conf.d/10-local.conf', line: 'MaxRetentionSec=1month' },
         ],
+        notReadBySystemd255: [],
         persistentDir: true,
         diskUsage: { ran: true, output: DISK_USAGE },
       },
+      rsyslog: { configPresent: false, active: { ran: false, output: null } },
       nginx: {
         accessLog: [
           { file: 'nginx/nginx.conf', line: 'access_log /var/log/nginx/access.log;' },
@@ -387,13 +405,203 @@ describe('G-1c (spec §9): journald retention and nginx’s request log', () => 
           },
         ],
       },
-      logrotate: { nginx: ['daily', 'rotate 14'] },
+      logrotate: { nginx: ['daily', 'rotate 14'], rsyslog: null },
     });
     // The server name stays behind; control: the file the probe read holds it.
     expect(
       fs.readFileSync(path.join(root, 'etc', 'nginx', 'sites-enabled', 'ritstjorn'), 'utf8')
     ).toContain('SENTINEL-HOST');
     expect(JSON.stringify(g)).not.toContain('SENTINEL-HOST');
+  });
+
+  it('reports ForwardToSyslog and the Runtime* limits beside the System* ones; a longer key is not one of them', () => {
+    plant(
+      'etc/systemd/journald.conf',
+      '[Journal]\nForwardToSyslog=yes\nRuntimeKeepFree=1G\nRuntimeMaxFileSize=8M\nRuntimeMaxFiles=10\n' +
+        'ForwardToSyslogExtra=NOT-A-KEY\nForwardToConsole=yes\n'
+    );
+    expect(settings()).toEqual([
+      { file: 'etc/systemd/journald.conf', line: 'ForwardToSyslog=yes' },
+      { file: 'etc/systemd/journald.conf', line: 'RuntimeKeepFree=1G' },
+      { file: 'etc/systemd/journald.conf', line: 'RuntimeMaxFileSize=8M' },
+      { file: 'etc/systemd/journald.conf', line: 'RuntimeMaxFiles=10' },
+    ]);
+  });
+
+  it('reads the vendor drop-in Ubuntu’s systemd ships under usr/lib, ForwardToSyslog included, by its own path', () => {
+    // Ubuntu 24.04's /usr/lib/systemd/journald.conf.d/syslog.conf (package systemd), plus a retention key.
+    plant(
+      'usr/lib/systemd/journald.conf.d/syslog.conf',
+      '# Undo upstream commit 46b131574fdd7d77 for now.\n\n[Journal]\nForwardToSyslog=yes\nSystemMaxUse=300M\n'
+    );
+    plant('etc/systemd/journald.conf', '[Journal]\n#ForwardToSyslog=yes\n#SystemMaxUse=\n'); // Ubuntu's: all commented
+    expect(settings()).toEqual([
+      { file: 'usr/lib/systemd/journald.conf.d/syslog.conf', line: 'ForwardToSyslog=yes' },
+      { file: 'usr/lib/systemd/journald.conf.d/syslog.conf', line: 'SystemMaxUse=300M' },
+    ]);
+  });
+
+  it('reads a runtime drop-in under run', () => {
+    plant('run/systemd/journald.conf.d/50-runtime.conf', '[Journal]\nRuntimeMaxUse=64M\n');
+    expect(settings()).toEqual([
+      { file: 'run/systemd/journald.conf.d/50-runtime.conf', line: 'RuntimeMaxUse=64M' },
+    ]);
+  });
+
+  it('a same-named drop-in in a higher directory masks the lower one, a /dev/null link included', () => {
+    // Precedence, highest first: etc, run, usr/local/lib, usr/lib (journald 255 under strace; cat-config agrees).
+    plant('etc/systemd/journald.conf.d/20-retention.conf', '[Journal]\nMaxRetentionSec=2week\n');
+    plant(
+      'usr/lib/systemd/journald.conf.d/20-retention.conf',
+      '[Journal]\nMaxRetentionSec=MASKED-BY-ETC\n'
+    );
+    plant('run/systemd/journald.conf.d/30-size.conf', '[Journal]\nSystemMaxUse=1G\n');
+    plant(
+      'usr/lib/systemd/journald.conf.d/30-size.conf',
+      '[Journal]\nSystemMaxUse=MASKED-BY-RUN\n'
+    );
+    plant('usr/local/lib/systemd/journald.conf.d/40-files.conf', '[Journal]\nSystemMaxFiles=50\n');
+    plant(
+      'usr/lib/systemd/journald.conf.d/40-files.conf',
+      '[Journal]\nSystemMaxFiles=MASKED-BY-LOCAL\n'
+    );
+    // How an administrator turns a vendor file off: a link to /dev/null of the same name, read as empty.
+    plant(
+      'usr/lib/systemd/journald.conf.d/syslog.conf',
+      '[Journal]\nForwardToSyslog=MASKED-BY-NULL\n'
+    );
+    fs.symlinkSync('/dev/null', path.join(root, 'etc/systemd/journald.conf.d/syslog.conf'));
+    const s = settings();
+    expect(s).toEqual([
+      { file: 'etc/systemd/journald.conf.d/20-retention.conf', line: 'MaxRetentionSec=2week' },
+      { file: 'run/systemd/journald.conf.d/30-size.conf', line: 'SystemMaxUse=1G' },
+      { file: 'usr/local/lib/systemd/journald.conf.d/40-files.conf', line: 'SystemMaxFiles=50' },
+    ]);
+    expect(JSON.stringify(s)).not.toContain('MASKED');
+  });
+
+  it('lists the main file first, then the surviving drop-ins in filename order whatever their directory; a hidden file is skipped', () => {
+    plant('etc/systemd/journald.conf', '[Journal]\nStorage=persistent\n');
+    plant('usr/lib/systemd/journald.conf.d/10-vendor.conf', '[Journal]\nSystemMaxUse=4G\n');
+    plant('etc/systemd/journald.conf.d/20-local.conf', '[Journal]\nSystemMaxUse=500M\n');
+    plant('run/systemd/journald.conf.d/30-runtime.conf', '[Journal]\nMaxRetentionSec=1month\n');
+    plant('usr/lib/systemd/journald.conf.d/syslog.conf', '[Journal]\nForwardToSyslog=yes\n');
+    plant('etc/systemd/journald.conf.d/.hidden.conf', '[Journal]\nMaxRetentionSec=HIDDEN\n');
+    // A later entry overrides an earlier one of the same key: 20-local's 500M wins over 10-vendor's 4G.
+    expect(settings()).toEqual([
+      { file: 'etc/systemd/journald.conf', line: 'Storage=persistent' },
+      { file: 'usr/lib/systemd/journald.conf.d/10-vendor.conf', line: 'SystemMaxUse=4G' },
+      { file: 'etc/systemd/journald.conf.d/20-local.conf', line: 'SystemMaxUse=500M' },
+      { file: 'run/systemd/journald.conf.d/30-runtime.conf', line: 'MaxRetentionSec=1month' },
+      { file: 'usr/lib/systemd/journald.conf.d/syslog.conf', line: 'ForwardToSyslog=yes' },
+    ]);
+  });
+
+  it('reads the main file from etc only, as journald 255 does; the other three are listed by path, never opened', () => {
+    // Measured: with run's, usr/local/lib's and usr/lib's planted and no etc file, strace of
+    // systemd-journald 255 in a private mount namespace opened only /etc/systemd/journald.conf
+    // (ENOENT) as its main file, while `systemd-analyze cat-config` showed run's. The probe follows
+    // journald.
+    plant('etc/systemd/journald.conf.d/00-first.conf', '[Journal]\nMaxFileSec=1day\n');
+    const dropIn = { file: 'etc/systemd/journald.conf.d/00-first.conf', line: 'MaxFileSec=1day' };
+    const others = [
+      ['run/systemd/journald.conf', 'RUN-MAIN'],
+      ['usr/local/lib/systemd/journald.conf', 'LOCAL-MAIN'],
+      ['usr/lib/systemd/journald.conf', 'USR-MAIN'],
+    ];
+    for (const [rel, value] of others) plant(rel, `[Journal]\nForwardToSyslog=${value}\n`);
+    const read = vi.spyOn(fs, 'readFileSync');
+    const open = vi.spyOn(fs, 'openSync');
+    let journald;
+    let named;
+    try {
+      journald = readResearchPreconditions(ctx()).sections['G-1c'].journald;
+    } finally {
+      named = [...read.mock.calls, ...open.mock.calls].map((c) => String(c[0]));
+      read.mockRestore();
+      open.mockRestore();
+    }
+    expect(journald.settings).toEqual([dropIn]);
+    expect(journald.notReadBySystemd255).toEqual(others.map(([rel]) => rel));
+    for (const [rel, value] of others) {
+      expect(named).not.toContain(path.join(root, rel));
+      expect(JSON.stringify(journald)).not.toContain(value);
+    }
+    // Control: the drop-in beside them was opened.
+    expect(named).toContain(path.join(root, 'etc/systemd/journald.conf.d/00-first.conf'));
+
+    // A dangling etc link is no main file: journald's open gets ENOENT.
+    fs.symlinkSync(path.join(root, 'nowhere.conf'), path.join(root, 'etc/systemd/journald.conf'));
+    expect(settings()).toEqual([dropIn]);
+    fs.unlinkSync(path.join(root, 'etc/systemd/journald.conf'));
+    plant('etc/systemd/journald.conf', '[Journal]\nSystemMaxUse=500M\n');
+    expect(settings()).toEqual([
+      { file: 'etc/systemd/journald.conf', line: 'SystemMaxUse=500M' },
+      dropIn,
+    ]);
+    // An all-commented etc file (Ubuntu's) sets nothing; the other three still are not read.
+    plant('etc/systemd/journald.conf', '[Journal]\n#SystemMaxUse=\n');
+    expect(settings()).toEqual([dropIn]);
+  });
+
+  it('reports a rotation directive alone: the rest of its line stays behind, and a keyword run into other text is none', () => {
+    plant(
+      'etc/logrotate.d/nginx',
+      '/var/log/nginx/*.log {\n  daily # KEPT-BY-COMMENT\n  rotate 14 TRAILING-TEXT\n  weekly 1\n' +
+        '  monthly-RUN-ON\n  maxage 30\n  yearlyish\n}\n'
+    );
+    const g = readResearchPreconditions(ctx()).sections['G-1c'];
+    expect(g.logrotate.nginx).toEqual(['daily', 'rotate 14', 'weekly 1', 'maxage 30']);
+    for (const s of ['KEPT-BY-COMMENT', 'TRAILING-TEXT', 'RUN-ON', 'yearlyish']) {
+      expect(JSON.stringify(g)).not.toContain(s);
+    }
+  });
+
+  it('reports whether rsyslog is configured and running, and only the rotation lines of its logrotate file', () => {
+    plant('etc/rsyslog.conf', 'module(load="imuxsock")\n$FileOwner RSYSLOG-CONF-SENTINEL\n');
+    plant('etc/logrotate.d/rsyslog', LOGROTATE_RSYSLOG);
+    const read = vi.spyOn(fs, 'readFileSync');
+    const open = vi.spyOn(fs, 'openSync');
+    let g;
+    let named;
+    try {
+      g = readResearchPreconditions(
+        ctx({ exec: execWithRsyslog({ code: 0, stdout: 'active\n', stderr: '' }) })
+      ).sections['G-1c'];
+    } finally {
+      named = [...read.mock.calls, ...open.mock.calls].map((c) => String(c[0]));
+      read.mockRestore();
+      open.mockRestore();
+    }
+    expect(g.rsyslog).toEqual({ configPresent: true, active: { ran: true, output: 'active' } });
+    expect(g.logrotate.rsyslog).toEqual(['rotate 4', 'weekly']);
+    // The log list and the other directives stay behind; control: the file holds them.
+    for (const s of ['/var/log/syslog', 'missingok', 'rsyslog-rotate']) {
+      expect(LOGROTATE_RSYSLOG).toContain(s);
+      expect(JSON.stringify(g)).not.toContain(s);
+    }
+    // Presence only: rsyslog.conf is never opened (control: the logrotate file beside it was).
+    expect(named).toContain(path.join(root, 'etc', 'logrotate.d', 'rsyslog'));
+    expect(named).not.toContain(path.join(root, 'etc', 'rsyslog.conf'));
+
+    // Stopped: systemctl prints the state and exits 3.
+    expect(
+      readResearchPreconditions(
+        ctx({ exec: execWithRsyslog({ code: 3, stdout: 'inactive\n', stderr: '' }) })
+      ).sections['G-1c'].rsyslog
+    ).toEqual({ configPresent: true, active: { ran: true, output: 'inactive' } });
+  });
+
+  it('hourly is a rotation directive, for nginx and rsyslog alike', () => {
+    plant(
+      'etc/logrotate.d/nginx',
+      '/var/log/nginx/*.log {\n  hourly\n  rotate 48\n  compress\n}\n'
+    );
+    plant('etc/logrotate.d/rsyslog', '/var/log/syslog\n{\n\thourly\n\trotate 24\n\tmissingok\n}\n');
+    expect(readResearchPreconditions(ctx()).sections['G-1c'].logrotate).toEqual({
+      nginx: ['hourly', 'rotate 48'],
+      rsyslog: ['hourly', 'rotate 24'],
+    });
   });
 
   it('journalctl’s line comes from stderr when its stdout is empty', () => {
@@ -424,9 +632,15 @@ describe('G-1c (spec §9): journald retention and nginx’s request log', () => 
     const noCommands = () => ({ ran: false, code: null, stdout: '', stderr: '' });
     expect(readResearchPreconditions(ctx({ exec: noCommands })).sections['G-1c']).toEqual({
       ok: true,
-      journald: { settings: [], persistentDir: false, diskUsage: { ran: false, output: null } },
+      journald: {
+        settings: [],
+        notReadBySystemd255: [],
+        persistentDir: false,
+        diskUsage: { ran: false, output: null },
+      },
+      rsyslog: { configPresent: false, active: { ran: false, output: null } },
       nginx: { accessLog: [] },
-      logrotate: { nginx: null },
+      logrotate: { nginx: null, rsyslog: null },
     });
   });
 });
@@ -599,6 +813,21 @@ describe('execNeverThrow (decision 19): a command’s answer, never a throw', ()
 describe('it names no editor (spec §9, index decision 14)', () => {
   it('no name, email, username, assigned_by or secret reaches the output', () => {
     const exec = stubWithEnvironmentFile();
+    // G-1c's newer sources: each holds a reported line beside one that only starts like one.
+    const vendor = plant(
+      'usr/lib/systemd/journald.conf.d/syslog.conf',
+      '[Journal]\nForwardToSyslog=yes\nForwardToSyslogToken=SENTINEL-SECRET-4\n'
+    );
+    const rotation = plant(
+      'etc/logrotate.d/rsyslog',
+      '/var/log/syslog\n{\n\trotate 4\n\trotatepassword SENTINEL-SECRET-5\n\thourlyToken SENTINEL-SECRET-5\n' +
+        '\tdaily-SENTINEL-SECRET-5\n\tmonthly SENTINEL-SECRET-5\n\tweekly # SENTINEL-SECRET-5\n' +
+        '\trotate 4 SENTINEL-SECRET-5\n}\n'
+    );
+    const rsyslogConf = plant(
+      'etc/rsyslog.conf',
+      '$DefaultNetstreamDriverKeyFile SENTINEL-SECRET-6\n'
+    );
     const text = JSON.stringify(readResearchPreconditions(ctx({ exec })));
 
     // Positive control: each sentinel really is in what the probe read.
@@ -621,12 +850,18 @@ describe('it names no editor (spec §9, index decision 14)', () => {
       'SENTINEL-SECRET-1': dotEnv,
       'SENTINEL-SECRET-2': environment,
       'SENTINEL-SECRET-3': envFile,
+      'SENTINEL-SECRET-4': fs.readFileSync(vendor, 'utf8'),
+      'SENTINEL-SECRET-5': fs.readFileSync(rotation, 'utf8'),
+      'SENTINEL-SECRET-6': fs.readFileSync(rsyslogConf, 'utf8'),
     };
     for (const [s, source] of Object.entries(sources)) {
       expect(source.includes(s), `control: ${s} is in its source`).toBe(true);
       expect(text.includes(s), `${s} must not reach the output`).toBe(false);
     }
     expect(text.includes('m94103:para:a')).toBe(true); // the output is not empty
+    // Controls: the probe read the vendor drop-in and the rsyslog logrotate file the sentinels sit in.
+    expect(text.includes('ForwardToSyslog=yes')).toBe(true);
+    expect(text.includes('"rotate 4"')).toBe(true);
   });
 });
 

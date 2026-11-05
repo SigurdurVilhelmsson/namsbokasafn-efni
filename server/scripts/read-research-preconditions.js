@@ -5,11 +5,24 @@
  *
  * Each section answers one §9 check and runs on its own: a section that fails reports
  * `{ ok: false, error, message }` and the others still run.
- *   G-1c  journald's retention keys (/etc/systemd/journald.conf and its .conf.d drop-ins), whether
- *         /var/log/journal exists, `journalctl --disk-usage`'s line; nginx's `access_log` lines
- *         (nginx.conf, conf.d/*.conf, sites-enabled/*); and the rotation lines of
- *         /etc/logrotate.d/nginx. It decides what the consent text says about the request log
- *         (§6 item 14) and G1.15's rule.
+ *   G-1c  journald's settings from every file systemd 255's journald opens, in its order (strace of
+ *         systemd-journald 255.4-1ubuntu8.18 in a private mount namespace): the main file
+ *         /etc/systemd/journald.conf and no other; then the *.conf drop-ins of the
+ *         systemd/journald.conf.d/ directories of /etc, /run, /usr/local/lib and /usr/lib, where a
+ *         same-named file in an earlier directory masks a later one (a /dev/null link included), a
+ *         hidden file is skipped, and the survivors run in filename order whatever their directory,
+ *         a later one overriding. Of each file only the retention keys and ForwardToSyslog, with the
+ *         file's path under its own root (`etc/…`, `run/…`, `usr/…`). `systemd-analyze cat-config
+ *         systemd/journald.conf` differs from journald 255 on the main file: it shows the first of
+ *         /etc, /run, /usr/local/lib and /usr/lib's journald.conf that exists, and journald opens none
+ *         of the last three, so those are listed by path only, as `notReadBySystemd255`. Whether
+ *         /var/log/journal exists; `journalctl --disk-usage`'s line. Forwarding hands the request log
+ *         (journald's) to the syslog socket, so: whether /etc/rsyslog.conf exists (never read),
+ *         `systemctl is-active rsyslog`'s line, and the rotation directives of
+ *         /etc/logrotate.d/rsyslog. nginx's `access_log` lines (nginx.conf, conf.d/*.conf,
+ *         sites-enabled/*) and the rotation directives of /etc/logrotate.d/nginx: each directive
+ *         alone, never the rest of its line. It decides what the consent text says about the request
+ *         log (§6 item 14) and G1.15's rule.
  *   G-1d  `enforce_assignments` per book; the study book's `user_chapter_assignments` rows, as
  *         (user id, chapter); the `users` rows, as (id, role, active); and AUTO_CREATE_USERS as the
  *         server reads it (systemd's Environment= and EnvironmentFile=, then server/.env where
@@ -24,9 +37,9 @@
  *         only: a marker's body holds the time of a person's first act (§5.19) and is never read.
  *
  * The output names no editor: users and assignment rows by id, segments and units by id with
- * counts, from the service configuration and server/.env only the value of AUTO_CREATE_USERS, and
- * from nginx, logrotate and journald only the directives named above. It may be pasted into the
- * register.
+ * counts, from the service configuration and server/.env only the value of AUTO_CREATE_USERS,
+ * from nginx, logrotate and journald only the directives named above, and of rsyslog only whether
+ * its configuration exists and its unit is active. It may be pasted into the register.
  *
  * An EnvironmentFile= this user cannot read is listed `readable: false`; a readable one without the
  * key has `value: null` and no `readable`. `autoCreateUsers.effective` counts only the files read,
@@ -215,9 +228,16 @@ function readG1e({ db, book, booksDir }) {
 }
 
 const UNIT_ID = /^(m\d{5}|chapter-metadata)$/; // what the module route serves (validateModule, validateParams.js)
+// The retention keys (the Runtime* limits bound the journal when it is volatile, under /run), and
+// ForwardToSyslog, which decides whether the request log also reaches rsyslog.
 const JOURNALD_KEY =
-  /^(Storage|SystemMaxUse|SystemKeepFree|SystemMaxFileSize|SystemMaxFiles|MaxRetentionSec|MaxFileSec|RuntimeMaxUse)\s*=/;
-const ROTATION = /^(daily|weekly|monthly|yearly|rotate\s+\d+|maxage\s+\d+)\b/;
+  /^(Storage|SystemMaxUse|SystemKeepFree|SystemMaxFileSize|SystemMaxFiles|RuntimeMaxUse|RuntimeKeepFree|RuntimeMaxFileSize|RuntimeMaxFiles|MaxRetentionSec|MaxFileSec|ForwardToSyslog)\s*=/;
+// A rotation keyword (weekly with its optional weekday, rotate and maxage with their count), then
+// whitespace or the line's end: logrotate (3.21.0's config.c) refuses a keyword run into other
+// text, as in `daily-x`. Only the group is reported, so the rest of a line (`daily # …`,
+// `monthly x`) never leaves the probe.
+const ROTATION =
+  /^(hourly|daily|weekly(?:[ \t]+\d+)?|monthly|yearly|rotate[ \t]+\d+|maxage[ \t]+\d+)(?=\s|$)/;
 
 /** The trimmed lines of a file that match re, or null when the file cannot be read. Never throws. */
 function directiveLines(file, re) {
@@ -230,6 +250,12 @@ function directiveLines(file, re) {
   } catch {
     return null; // absent or unreadable: reported as no lines, never guessed
   }
+}
+
+/** A logrotate file's rotation directives, each the directive alone, or null when it cannot be read. */
+function rotationDirectives(file) {
+  const lines = directiveLines(file, ROTATION);
+  return lines && lines.map((l) => ROTATION.exec(l)[1]);
 }
 
 /** The sorted paths of a directory's entries that pass filter; [] when it cannot be read. */
@@ -245,13 +271,47 @@ function listDir(dir, filter = () => true) {
   }
 }
 
-function readG1c({ etcRoot, varRoot, exec }) {
+/**
+ * The files journald applies, in its order, each as { abs, file } with `file` under its own root,
+ * and the main-file candidates journald never opens: systemd 255's journald, measured by strace.
+ */
+function journaldFiles({ etcRoot, runRoot, usrRoot }) {
+  // Highest precedence first.
+  const dirs = [
+    ['etc', etcRoot, 'systemd'],
+    ['run', runRoot, 'systemd'],
+    ['usr', usrRoot, path.join('local', 'lib', 'systemd')],
+    ['usr', usrRoot, path.join('lib', 'systemd')],
+  ].map(([label, root, sub]) => ({ abs: path.join(root, sub), file: path.join(label, sub) }));
+  const at = (d, name) => ({ abs: path.join(d.abs, name), file: path.join(d.file, name) });
+  // One main file, etc's, whatever it holds: journald 255 opens no other (cat-config shows the first
+  // of the four that exists, and the strace shows journald opening none of the other three).
+  const [main, ...notRead] = dirs.map((d) => at(d, 'journald.conf'));
+  // Drop-ins: a name taken by an earlier directory masks it in every later one.
+  const byName = new Map();
+  for (const d of dirs) {
+    const dropIns = at(d, 'journald.conf.d');
+    for (const f of listDir(dropIns.abs, (n) => n.endsWith('.conf') && !n.startsWith('.'))) {
+      const name = path.basename(f);
+      if (!byName.has(name)) byName.set(name, at(dropIns, name));
+    }
+  }
+  const dropIns = [...byName.keys()].sort().map((name) => byName.get(name));
+  return {
+    // An absent or dangling etc file reads as no lines, as journald's open gets ENOENT.
+    files: [main, ...dropIns],
+    // Presence only: never opened, by journald 255 or by the probe.
+    notRead: notRead.filter((f) => fs.existsSync(f.abs)).map((f) => f.file),
+  };
+}
+
+function readG1c({ etcRoot, runRoot, usrRoot, varRoot, exec }) {
   const rel = (f) => path.relative(etcRoot, f);
   const tagged = (files, re) =>
     files.flatMap((f) => (directiveLines(f, re) || []).map((line) => ({ file: rel(f), line })));
-  const sd = path.join(etcRoot, 'systemd');
   const du = exec('journalctl', ['--disk-usage']);
-  // journalctl's first non-blank line, at most 200 characters, or null when it printed none.
+  const rsyslogActive = exec('systemctl', ['is-active', 'rsyslog']);
+  // A command's first non-blank line, at most 200 characters, or null when it printed none.
   const firstLine = (s) => {
     const line = String(s || '')
       .split('\n')
@@ -259,17 +319,23 @@ function readG1c({ etcRoot, varRoot, exec }) {
     return line ? line.trim().slice(0, 200) : null;
   };
   const ng = path.join(etcRoot, 'nginx');
+  const journal = journaldFiles({ etcRoot, runRoot, usrRoot });
   return {
     journald: {
-      settings: tagged(
-        [
-          path.join(sd, 'journald.conf'),
-          ...listDir(path.join(sd, 'journald.conf.d'), (f) => f.endsWith('.conf')),
-        ],
-        JOURNALD_KEY
+      settings: journal.files.flatMap(({ abs, file }) =>
+        (directiveLines(abs, JOURNALD_KEY) || []).map((line) => ({ file, line }))
       ),
+      notReadBySystemd255: journal.notRead,
       persistentDir: fs.existsSync(path.join(varRoot, 'log', 'journal')),
       diskUsage: { ran: du.ran, output: du.ran ? firstLine(du.stdout || du.stderr) : null },
+    },
+    // Where a forwarded line may go. Presence only: rsyslog.conf is never read.
+    rsyslog: {
+      configPresent: fs.existsSync(path.join(etcRoot, 'rsyslog.conf')),
+      active: {
+        ran: rsyslogActive.ran,
+        output: rsyslogActive.ran ? firstLine(rsyslogActive.stdout || rsyslogActive.stderr) : null,
+      },
     },
     nginx: {
       // Only the access_log lines: a server_name or any other directive stays behind.
@@ -282,8 +348,12 @@ function readG1c({ etcRoot, varRoot, exec }) {
         /^access_log\b/
       ),
     },
-    // The access log's retention is set here (§6 item 14, G1.15), so only the rotation lines.
-    logrotate: { nginx: directiveLines(path.join(etcRoot, 'logrotate.d', 'nginx'), ROTATION) },
+    // The access log's and the syslog's retention are set here (§6 item 14, G1.15), so only the
+    // rotation directives.
+    logrotate: {
+      nginx: rotationDirectives(path.join(etcRoot, 'logrotate.d', 'nginx')),
+      rsyslog: rotationDirectives(path.join(etcRoot, 'logrotate.d', 'rsyslog')),
+    },
   };
 }
 
@@ -343,6 +413,8 @@ function readResearchPreconditions({
   serverDir,
   booksDir,
   etcRoot = '/etc',
+  runRoot = '/run',
+  usrRoot = '/usr',
   varRoot = '/var',
   pathEnv = process.env.PATH,
   exec = execNeverThrow,
@@ -362,7 +434,7 @@ function readResearchPreconditions({
     if (openError) throw openError;
     return handle;
   };
-  const ctx = { book, db, serverDir, booksDir, etcRoot, varRoot, pathEnv, exec };
+  const ctx = { book, db, serverDir, booksDir, etcRoot, runRoot, usrRoot, varRoot, pathEnv, exec };
   const sections = {};
   try {
     for (const [name, read] of Object.entries(SECTIONS)) {
