@@ -132,13 +132,20 @@ describe('saveSegmentEdit — the served fields (G1.1)', () => {
   it('a legacy re-save writes the base it was given and NULLs what it does not know', () => {
     const first = save({ ...SERVED_INSERT, servedVersionId: v1 });
     const second = save({ originalContent: 'B3', editedContent: 'E3' });
-    expect(second).toEqual({ id: first.id, updated: true });
+    // PR3 adds before and the two lists on purpose (spec §5.9); the id and flag are today's.
+    expect(second).toMatchObject({ id: first.id, updated: true });
     expect(tuple(first.id)).toEqual(['B3', null, null, null, null, null]);
   });
 
   it('a legacy INSERT writes NULLs and returns today’s shape', () => {
     const result = save({ originalContent: 'B1', editedContent: 'E1' });
-    expect(Object.keys(result).sort()).toEqual(['id', 'updated']);
+    // PR3 adds the two lists on purpose (spec §5.9); `reverted` stays absent (errorHandling.test.js).
+    expect(Object.keys(result).sort()).toEqual([
+      'id',
+      'supersededAcceptanceIds',
+      'supersededEditIds',
+      'updated',
+    ]);
     expect(result.updated).toBe(false);
     expect(tuple(result.id)).toEqual(['B1', null, null, null, null, null]);
   });

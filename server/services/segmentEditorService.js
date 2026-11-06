@@ -116,12 +116,34 @@ function saveSegmentEdit(params) {
   // If edited content matches the original, treat as "withdraw edit"
   if (editedContent === originalContent) {
     if (existing) {
-      conn.prepare(`DELETE FROM segment_edits WHERE id = ?`).run(existing.id);
-      return { id: existing.id, updated: true, reverted: true };
+      // G1.2 (spec §5.9): read inside the write's transaction; the research event filters it
+      // (`record`), so this returns the raw row.
+      const before = conn.transaction(() => {
+        const row = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(existing.id);
+        conn.prepare(`DELETE FROM segment_edits WHERE id = ?`).run(existing.id);
+        return row;
+      })();
+      return { id: existing.id, updated: true, reverted: true, before };
     }
     // No edit to withdraw — nothing to do
     return { id: null, updated: false, reverted: true };
   }
+
+  // The caller's own discuss/rejected rows on this segment: read, then superseded, in the
+  // caller's transaction (G1.2, spec §5.9: the research event filters the raw ids, `record`).
+  // A static string joined to the statements below, never interpolated (securityPayloads.test.js).
+  const STALE_OWN =
+    "book = ? AND module_id = ? AND segment_id = ? AND editor_id = ? AND status IN ('discuss', 'rejected')";
+  const supersedeOwnStale = () => {
+    const ids = conn
+      .prepare('SELECT id FROM segment_edits WHERE ' + STALE_OWN + ' ORDER BY id')
+      .all(book, moduleId, segmentId, editorId)
+      .map((r) => r.id);
+    conn
+      .prepare("UPDATE segment_edits SET status = 'superseded' WHERE " + STALE_OWN)
+      .run(book, moduleId, segmentId, editorId);
+    return ids;
+  };
 
   if (existing) {
     // Update existing edit. Same idempotent supersede sweep as the INSERT
@@ -137,17 +159,18 @@ function saveSegmentEdit(params) {
     // so this costs nothing on the common post-039 case where it never
     // matches anything.
     const updateWithSupersede = conn.transaction(() => {
+      // G1.2 (spec §5.9): read inside the write's transaction; the research event filters it
+      // (`record`), so this returns the raw row.
+      const before = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(existing.id);
       // item 20b: a saved revision supersedes the segment's active acceptance
       // (spec §7) — same transaction, same connection.
-      acceptanceService.supersedeForEdit(book, moduleId, segmentId, conn);
-
-      conn
-        .prepare(
-          `UPDATE segment_edits SET status = 'superseded'
-           WHERE book = ? AND module_id = ? AND segment_id = ? AND editor_id = ?
-             AND status IN ('discuss', 'rejected')`
-        )
-        .run(book, moduleId, segmentId, editorId);
+      const supersededAcceptanceIds = acceptanceService.supersedeForEdit(
+        book,
+        moduleId,
+        segmentId,
+        conn
+      );
+      const supersededEditIds = supersedeOwnStale();
 
       // A re-save moves the base record (spec §5.8): the row's text is now made on this
       // save's base; a caller that names no served version leaves it NULL (unknown), never a
@@ -172,9 +195,9 @@ function saveSegmentEdit(params) {
           displayedEditSha256,
           existing.id
         );
+      return { before, supersededAcceptanceIds, supersededEditIds };
     });
-    updateWithSupersede();
-    return { id: existing.id, updated: true };
+    return { id: existing.id, updated: true, ...updateWithSupersede() };
   }
 
   // Create new edit. A fresh revision is also the exit path for the editor's
@@ -190,19 +213,19 @@ function saveSegmentEdit(params) {
   // time it runs on the update path; it stays load-bearing for legacy
   // pre-039 data where that invariant doesn't hold.
   const insertWithSupersede = conn.transaction(() => {
+    // G1.2 (spec §5.9): read inside the write's transaction; the research event filters it
+    // (`record`), so this returns the raw ids.
     // item 20b: a saved revision supersedes the segment's active acceptance
     // (spec §7) — same transaction, same connection.
-    acceptanceService.supersedeForEdit(book, moduleId, segmentId, conn);
+    const supersededAcceptanceIds = acceptanceService.supersedeForEdit(
+      book,
+      moduleId,
+      segmentId,
+      conn
+    );
+    const supersededEditIds = supersedeOwnStale();
 
-    conn
-      .prepare(
-        `UPDATE segment_edits SET status = 'superseded'
-         WHERE book = ? AND module_id = ? AND segment_id = ? AND editor_id = ?
-           AND status IN ('discuss', 'rejected')`
-      )
-      .run(book, moduleId, segmentId, editorId);
-
-    return conn
+    const result = conn
       .prepare(
         `INSERT INTO segment_edits
        (book, chapter, module_id, segment_id, original_content, edited_content,
@@ -227,8 +250,9 @@ function saveSegmentEdit(params) {
         displayedEditId,
         displayedEditSha256
       );
+    return { result, supersededAcceptanceIds, supersededEditIds };
   });
-  const result = insertWithSupersede();
+  const { result, supersededAcceptanceIds, supersededEditIds } = insertWithSupersede();
 
   // MT edit-lock (Track C2): once a module has been opened for editing, its MT
   // output must never be silently re-run and overwritten (see tools/lib/mt-lock.cjs).
@@ -259,7 +283,7 @@ function saveSegmentEdit(params) {
     log.error({ err, book, chapter, moduleId }, 'MT lock write failed on first edit');
   }
 
-  return { id: result.lastInsertRowid, updated: false };
+  return { id: result.lastInsertRowid, updated: false, supersededEditIds, supersededAcceptanceIds };
 }
 
 /**

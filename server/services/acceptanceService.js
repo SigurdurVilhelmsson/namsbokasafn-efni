@@ -333,14 +333,26 @@ function revokeAcceptance(acceptanceId, { actorId, actorRole, actorBooks }) {
  * (spec §7). Called from inside saveSegmentEdit's transactions — pass conn.
  */
 function supersedeForEdit(book, moduleId, segmentId, dbConn = getDb()) {
-  dbConn
-    .prepare(
-      `UPDATE segment_acceptances
-       SET status = 'superseded', superseded_at = CURRENT_TIMESTAMP,
-           superseded_reason = 'superseded-by-edit'
-       WHERE book = ? AND module_id = ? AND segment_id = ? AND status = 'active'`
-    )
-    .run(book, moduleId, segmentId);
+  // G1.2 (spec §5.9): the ids are read in the caller's transaction, before the UPDATE, for the
+  // save's event.
+  return dbConn.transaction(() => {
+    const ids = dbConn
+      .prepare(
+        `SELECT id FROM segment_acceptances
+         WHERE book = ? AND module_id = ? AND segment_id = ? AND status = 'active' ORDER BY id`
+      )
+      .all(book, moduleId, segmentId)
+      .map((r) => r.id);
+    dbConn
+      .prepare(
+        `UPDATE segment_acceptances
+         SET status = 'superseded', superseded_at = CURRENT_TIMESTAMP,
+             superseded_reason = 'superseded-by-edit'
+         WHERE book = ? AND module_id = ? AND segment_id = ? AND status = 'active'`
+      )
+      .run(book, moduleId, segmentId);
+    return ids;
+  })();
 }
 
 /**
