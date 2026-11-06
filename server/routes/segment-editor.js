@@ -1080,6 +1080,7 @@ router.post('/acceptance/:id/revoke', requireAuth, requireRole(ROLES.EDITOR), (r
       actorBooks: req.user.books || [],
     });
     const row = withoutResearchKeys(revoked);
+    researchEmission.emitRevoke(req, { row, before: revoked.before });
     res.json({ success: true, acceptance: row });
     activityLog.log({
       type: 'acceptance_revoked',
@@ -1112,7 +1113,8 @@ router.delete('/edit/:editId', requireAuth, requireRole(ROLES.EDITOR), (req, res
     const editId = parseInt(req.params.editId, 10);
     // Read edit before deletion for logging
     const edit = segmentEditor.getEditById(editId);
-    segmentEditor.deleteSegmentEdit(editId, req.user.id);
+    const { before } = segmentEditor.deleteSegmentEdit(editId, req.user.id);
+    researchEmission.emitDelete(req, { before });
     res.json({ success: true });
     activityLog.log({
       type: 'segment_edit_deleted',
@@ -1148,6 +1150,10 @@ router.post(
         submittedByUsername: req.user.username,
       });
 
+      researchEmission.emitSubmit(req, {
+        reviewId: result.id,
+        stampedEditIds: result.stampedEditIds,
+      });
       res.json({
         success: true,
         reviewId: result.id,
@@ -1245,6 +1251,9 @@ router.post(
         description: `${req.user.username} samþykkti breytingu á ${edit.module_id}:${edit.segment_id}`,
       });
       notifyDecision(edit, 'approved', req);
+      // G1.2: emitted after the act committed and before the response (spec §5.11); `before` is the
+      // research event's and never reaches the response (decision 44).
+      researchEmission.emitReview(req, 'edit-approve', { edit: result, before: result.before });
       res.json({ success: true, edit });
     } catch (err) {
       const status = err.code === 'SUPERSEDED_BY_NEWER' ? 409 : 400;
@@ -1280,6 +1289,7 @@ router.post(
         description: `${req.user.username} hafnaði breytingu á ${edit.module_id}:${edit.segment_id}`,
       });
       notifyDecision(edit, 'rejected', req);
+      researchEmission.emitReview(req, 'edit-reject', { edit: result, before: result.before });
       res.json({ success: true, edit });
     } catch (err) {
       res.status(400).json({ error: err.message });
@@ -1314,6 +1324,7 @@ router.post(
         description: `${req.user.username} merkti ${edit.module_id}:${edit.segment_id} til umræðu`,
       });
       notifyDecision(edit, 'discuss', req);
+      researchEmission.emitReview(req, 'edit-discuss', { edit: result, before: result.before });
       res.json({ success: true, edit });
     } catch (err) {
       res.status(400).json({ error: err.message });
@@ -1333,6 +1344,7 @@ router.post(
     try {
       const result = segmentEditor.unapproveEdit(parseInt(req.params.editId, 10));
       const edit = withoutResearchKeys(result);
+      researchEmission.emitReview(req, 'edit-unapprove', { edit: result, before: result.before });
       res.json({ success: true, edit });
       activityLog.log({
         type: 'segment_edit_unapproved',
@@ -1369,6 +1381,10 @@ router.post(
         chapter: edit.chapter,
         section: edit.module_id,
         description: `${req.user.username} opnaði aftur breytingu á ${edit.module_id}:${edit.segment_id}`,
+      });
+      researchEmission.emitReview(req, 'edit-return-to-pending', {
+        edit: result,
+        before: result.before,
       });
       res.json({ success: true, edit });
     } catch (err) {
@@ -1461,6 +1477,7 @@ router.post('/edit/:editId/comment', requireAuth, requireRole(ROLES.EDITOR), (re
     // nested-site defect class this batch fixes). Only the lookup is
     // guarded, with a log; the audit write goes bare with degraded context
     // on lookup failure (edit stays null → the || '' fallbacks apply).
+    researchEmission.emitComment(req, { edit: result.edit, comment });
     res.json({ success: true, commentId: result.id });
     let edit = null;
     try {

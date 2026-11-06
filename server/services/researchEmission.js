@@ -465,6 +465,117 @@ function emitAccept(req, { result }) {
   );
 }
 
+const REVIEW_DECISIONS = Object.freeze(['edit-approve', 'edit-reject', 'edit-discuss']);
+const rowPlace = (row) => ({ book: row.book, chapter: row.chapter, moduleId: row.module_id });
+/** A segment_edits row as the event's editing reference (the row's own fields; the hash is the server's). */
+const editRef = (edit) => ({
+  segmentId: edit.segment_id,
+  occurrence: edit.occurrence ?? null,
+  servedVersionId: edit.served_version_id ?? null,
+  editingKind: 'segment_edit',
+  editingId: edit.id,
+  editingContentSha256: sha256Text(edit.edited_content),
+  origin: edit.origin ?? null,
+  items: null,
+  sessionId: null,
+});
+
+/**
+ * A review act's research event (spec §5.9; decisions 52, 53, 57): approve, reject, discuss, unapprove or
+ * return-to-pending, after the write committed and before the response. A decision carries the reviewer's note
+ * and the hash they echoed; an echo that is missing or differs from the text now held is flagged `mismatch`,
+ * never refused (§5.18; Review Focus 25). A reviewer's act reads no client field (decision 53). Never throws:
+ * the route's values are read only inside emit's guarded callbacks.
+ *
+ * @param {object} req The review request (user, params, body).
+ * @param {string} eventType One of the five review event types.
+ * @param {{edit: object, before: object}} act The row after the write and the row before it.
+ * @returns {void}
+ */
+function emitReview(req, eventType, { edit, before }) {
+  emit(
+    () => headFor(req, eventType, rowPlace(edit)),
+    () => {
+      const ref = editRef(edit);
+      const row = { table: 'segment_edits', row: before };
+      if (!REVIEW_DECISIONS.includes(eventType)) {
+        return { ...ref, content: null, before: row, detail: null, ...NO_CLIENT };
+      }
+      const echoed = readReviewedEditSha256(req.body);
+      return {
+        ...ref,
+        content: { note: req.body && typeof req.body.note === 'string' ? req.body.note : null },
+        before: row,
+        detail: { reviewedEditSha256: echoed, mismatch: echoed !== ref.editingContentSha256 },
+        ...NO_CLIENT,
+      };
+    }
+  );
+}
+
+/** `edit-delete`: the deleted row is the source (spec §5.9's table). Never throws. */
+function emitDelete(req, { before }) {
+  emit(
+    () => headFor(req, 'edit-delete', rowPlace(before)),
+    () => ({
+      ...editRef(before),
+      content: null,
+      before: { table: 'segment_edits', row: before },
+      detail: null,
+      ...NO_CLIENT,
+    })
+  );
+}
+
+/** `mt-accept-revoke`: the acceptance row after the write, its previous state as the before-image. Never throws. */
+function emitRevoke(req, { row, before }) {
+  emit(
+    () => headFor(req, 'mt-accept-revoke', rowPlace(row)),
+    () => ({
+      segmentId: row.segment_id,
+      occurrence: row.occurrence ?? null,
+      servedVersionId: row.served_version_id ?? null,
+      editingKind: 'segment_acceptance',
+      editingId: row.id,
+      editingContentSha256: sha256Text(row.accepted_content),
+      origin: null,
+      content: null,
+      before: { table: 'segment_acceptances', row: before },
+      items: null,
+      sessionId: null,
+      detail: null,
+      ...NO_CLIENT,
+    })
+  );
+}
+
+/** `edit-comment`: the comment as length and hash (record's filter); the edit is the row commented on. Never throws. */
+function emitComment(req, { edit, comment }) {
+  emit(
+    () => headFor(req, 'edit-comment', rowPlace(edit)),
+    () => ({
+      ...editRef(edit),
+      content: { comment: typeof comment === 'string' ? comment : String(comment) },
+      before: null,
+      detail: null,
+      ...NO_CLIENT,
+    })
+  );
+}
+
+/** `module-submit`: no segment; the ids the submit stamped are the detail. Never throws. */
+function emitSubmit(req, { reviewId, stampedEditIds }) {
+  emit(
+    () => headFor(req, 'module-submit', placeOf(req)),
+    () => ({
+      ...NONE,
+      content: null,
+      before: null,
+      detail: { reviewId, stampedEditIds },
+    })
+  );
+}
+
 module.exports = {
   NO_CLIENT,
   NONE,
@@ -480,5 +591,10 @@ module.exports = {
   emitSave,
   emitRefused,
   emitAccept,
+  emitReview,
+  emitDelete,
+  emitRevoke,
+  emitComment,
+  emitSubmit,
   ACCEPT_ELIGIBILITY_REFUSALS,
 };
