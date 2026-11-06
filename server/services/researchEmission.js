@@ -228,12 +228,20 @@ function headFor(req, eventType, { book, chapter, moduleId }) {
  * @returns {void}
  */
 function emit(headFn, build) {
-  let head = null;
+  let head = null; // a plain snapshot of primitives; the caller's object is never read again after the copy
   let event = null;
   try {
-    head = headFn();
+    const raw = headFn();
+    head = {
+      actorProviderId: raw.actorProviderId,
+      eventType: raw.eventType,
+      book: raw.book,
+      chapter: raw.chapter,
+      moduleId: raw.moduleId,
+    };
     const fields = build();
     if (fields === null) return;
+    if (fields === undefined) throw new TypeError('build returned undefined'); // a builder bug, not "nothing to record"
     event = { ...fields, ...head };
   } catch (err) {
     log.error(

@@ -83,6 +83,47 @@ describe('emit', () => {
     ).not.toThrow();
     expect(recordSpy).not.toHaveBeenCalled();
   });
+  it('a head whose getter throws records nothing and does not throw', () => {
+    const hostile = {
+      get actorProviderId() {
+        throw new Error('boom');
+      },
+      eventType: 'edit-save',
+      book: 'b',
+      chapter: 1,
+      moduleId: 'm',
+    };
+    expect(() =>
+      E.emit(
+        () => hostile,
+        () => ({})
+      )
+    ).not.toThrow();
+    expect(recordSpy).not.toHaveBeenCalled();
+  });
+  it.each([null, 'x'])(
+    'a builder that throws a non-Error (%j) is recorded as buildFailed',
+    (thrown) => {
+      expect(() =>
+        E.emit(
+          () => head,
+          () => {
+            throw thrown;
+          }
+        )
+      ).not.toThrow();
+      expect(recordSpy.mock.calls).toEqual([[{ ...head, buildFailed: true }]]);
+    }
+  );
+  it('a builder returning undefined is a builder failure, not a hollow head-only event', () => {
+    expect(() =>
+      E.emit(
+        () => head,
+        () => undefined
+      )
+    ).not.toThrow();
+    expect(recordSpy.mock.calls).toEqual([[{ ...head, buildFailed: true }]]);
+  });
   it('control: a record that returns written is not looked at (routes ignore its result)', () => {
     recordSpy.mockImplementation(() => ({ status: 'written', eventId: 1n }));
     expect(
