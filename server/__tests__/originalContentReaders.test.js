@@ -76,6 +76,9 @@ const AUDITED_SELECT_STAR = [
   'server/scripts/close-pending-edits.js',
   // Pending rows, a read-only probe: shows the latest base. No change.
   'server/scripts/read-pending-edits.js',
+  // The in-place propagation target's before-image, read for research (G1.2); the propagate route
+  // strips `writes`, so no browser sees it. No change.
+  'server/services/propagationService.js',
   // The module route, segment history, reviews and the review functions. As above.
   'server/services/segmentEditorService.js',
 ];
