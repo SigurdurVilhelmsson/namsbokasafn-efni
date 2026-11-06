@@ -126,6 +126,30 @@ describe('opening (spec §5.1)', () => {
     expect(fs.existsSync(researchPath)).toBe(false);
   });
 
+  it('an existing file with no schema is not initialised while a consented row exists', () => {
+    plantConsent();
+    fs.writeFileSync(researchPath, '');
+    expect(researchDb.openAtBoot()).toEqual({ ok: false, reason: 'missing' });
+    expect(fs.statSync(researchPath).size).toBe(0);
+    const c = new Database(researchPath, { readonly: true });
+    try {
+      expect(
+        c.prepare("SELECT count(*) AS n FROM sqlite_master WHERE type = 'table'").get().n
+      ).toBe(0);
+    } finally {
+      c.close();
+    }
+  });
+
+  it('control: the same empty file, with no consented row, is initialised', () => {
+    fs.writeFileSync(researchPath, '');
+    expect(researchDb.openAtBoot()).toEqual({ ok: true });
+    const h = researchDb.getHandle();
+    expect(
+      h.prepare("SELECT name FROM sqlite_master WHERE name = 'research_events'").all()
+    ).toHaveLength(1);
+  });
+
   it('an unreadable consent table leaves the file uncreated', () => {
     editorial.exec('ALTER TABLE research_consent RENAME TO rc_hidden');
     try {
@@ -203,15 +227,18 @@ describe('noteFailure and the seams', () => {
     vi.setSystemTime(T);
     researchDb.openAtBoot();
     const h = researchDb.getHandle();
+    vi.setSystemTime(T + 45_000); // the minute runs from the FAILURE, not from the open
     researchDb.noteFailure({ code: 'SQLITE_IOERR_WRITE' });
     expect(h.open).toBe(false);
     expect(researchDb.status()).toMatchObject({
       state: 'unavailable',
       sticky: false,
-      lastAttemptAtMs: T,
+      lastAttemptAtMs: T + 45_000,
     });
     expect(catchErr(() => researchDb.getHandle()).reason).toBe('unavailable');
-    vi.setSystemTime(T + 60_000);
+    vi.setSystemTime(T + 90_000);
+    expect(catchErr(() => researchDb.getHandle()).reason).toBe('unavailable');
+    vi.setSystemTime(T + 105_000);
     expect(researchDb.getHandle().open).toBe(true);
   });
 
@@ -254,9 +281,37 @@ describe('the boot step in index.js (spec §5.1)', () => {
     const l = src.indexOf('app.listen(');
     expect([f > -1 && f < b, b < l]).toEqual([true, true]);
   });
-  it('cannot be stopped by it: no return and no process.exit between its try and the call', () => {
+  // The shape the boot step must keep: a try wrapping the call, and nothing after the call that can stop the boot.
+  const bootShapeOk = (text) => {
+    const b = text.indexOf('openAtBoot(');
+    const f = text.indexOf('failLoudOnMigrationErrors(');
+    const e = text.indexOf("const express = require('express')", b);
+    if (b < 0 || f < 0 || e < 0 || f > b) return false;
+    const tryAt = text.lastIndexOf('try {', b);
+    if (tryAt < f) return false; // a try after the migrations call and before openAtBoot(
+    const before = text.slice(tryAt, b);
+    const after = text.slice(b, e);
+    return !/\breturn\b|process\.exit|\bthrow\b/.test(before + after);
+  };
+  it('cannot be stopped by it: a try wraps the call, and no return, exit or throw follows it', () => {
+    expect(bootShapeOk(src)).toBe(true);
+  });
+  it('the shape check rejects a process.exit after the call', () => {
+    expect(bootShapeOk(src.replace('openAtBoot();', 'openAtBoot(); process.exit(1);'))).toBe(false);
+  });
+  it('the shape check rejects a top-level return after the call', () => {
+    expect(
+      bootShapeOk(
+        src.replace(
+          "const express = require('express');",
+          "return;\nconst express = require('express');"
+        )
+      )
+    ).toBe(false);
+  });
+  it('the shape check rejects a removed try', () => {
     const b = src.indexOf('openAtBoot(');
-    const slice = src.slice(src.lastIndexOf('try {', b), b);
-    expect(slice).not.toMatch(/\breturn\b|process\.exit/);
+    const t = src.lastIndexOf('try {', b);
+    expect(bootShapeOk(src.slice(0, t) + '{' + src.slice(t + 5))).toBe(false);
   });
 });

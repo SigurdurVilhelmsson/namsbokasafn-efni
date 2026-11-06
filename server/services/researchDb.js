@@ -6,8 +6,8 @@
  *   counted loss instead of a stalled server.
  * - The file is created only by `openSync(…, 0o600)`, and only while no
  *   `consented` row exists: a fresh file would re-key every editor and detach the
- *   data already captured, so once anyone has consented a missing file is an
- *   outage, never a reason to start over.
+ *   data already captured, so once anyone has consented a missing file (or an
+ *   existing one with no schema) is an outage, never a reason to start over.
  * - Safe integers are on (decision 4): ids above 2^53 survive the round trip, and
  *   so a pragma on this handle reads as a BigInt.
  * - Routes never require this module (T17); they go through researchEmission.
@@ -49,14 +49,17 @@ function attemptOpen() {
   try {
     const { researchPath, editorialPath } = testPaths || resolveResearchDbPath();
     if (researchPath === editorialPath) return fail('same-path');
-    if (!fs.existsSync(researchPath)) {
-      let consented;
+    // Would starting this file's schema re-key editors? Only if somebody has consented.
+    const consentedOrReason = () => {
       try {
-        consented = researchConsent.anyConsentedRow();
+        return researchConsent.anyConsentedRow() ? 'missing' : null;
       } catch {
-        return fail('consent-unavailable'); // cannot tell whether creating would re-key editors: do not create
+        return 'consent-unavailable'; // cannot tell: do not create or initialise
       }
-      if (consented) return fail('missing');
+    };
+    if (!fs.existsSync(researchPath)) {
+      const reason = consentedOrReason();
+      if (reason) return fail(reason);
       fs.closeSync(fs.openSync(researchPath, 'a', 0o600));
     }
     for (const p of [researchPath, `${researchPath}-wal`, `${researchPath}-shm`]) {
@@ -64,6 +67,18 @@ function attemptOpen() {
     }
     db = new Database(researchPath, { timeout: BUSY_TIMEOUT_MS, fileMustExist: true });
     db.defaultSafeIntegers(true);
+    // An existing file with no schema (zero bytes, or user_version 0 and no tables) is as good as missing: the
+    // schema would mint a fresh set of keys. Look BEFORE the WAL pragma, which writes to an empty file.
+    const hasSchema =
+      db.pragma('user_version', { simple: true }) !== 0n ||
+      db.prepare("SELECT 1 FROM sqlite_master WHERE type = 'table' LIMIT 1").get() !== undefined;
+    if (!hasSchema) {
+      const reason = consentedOrReason();
+      if (reason) {
+        db.close();
+        return fail(reason);
+      }
+    }
     db.pragma('journal_mode = WAL');
     const schema = ensureResearchSchema(db);
     if (!schema.ok) {
