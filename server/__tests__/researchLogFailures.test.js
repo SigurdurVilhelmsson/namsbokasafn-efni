@@ -141,11 +141,17 @@ describe('T10, record level: the research file down (spec §5.11 step 6)', () =>
 
   it('exactly one loss per lost event, and one per act', () => {
     down();
+    let replay;
     const rows = added(() => {
       record(saveEvent({ clientActionId: 'act-10' }));
       record(saveEvent({ clientActionId: 'act-11' }));
-      record(saveEvent({ clientActionId: 'act-10', replayed: true }));
+      // A far-future client time clears the decision-16 gate (the consent was given at real
+      // Date.now(), later than the fixture's 2023 default), so the replay reaches the ledger.
+      replay = record(
+        saveEvent({ clientActionId: 'act-10', replayed: true, clientActionTime: 8_000_000_000_000 })
+      );
     });
+    expect(replay).toEqual({ status: 'lost', reason: 'unavailable', ledgered: true });
     expect(rows).toEqual([
       [INT1, 'edit-save', 'unavailable', 'act-10'],
       [INT1, 'edit-save', 'unavailable', 'act-11'],
@@ -231,6 +237,7 @@ describe('T10, record level: a held lock is a busy loss within the short wait (s
     vi.useRealTimers();
     researchDb.getHandle(); // open first: the open itself must not wait on the lock
     const other = new Database(researchPath);
+    other.defaultSafeIntegers(true);
     other.exec('BEGIN EXCLUSIVE');
     let res;
     let rows;
@@ -301,6 +308,7 @@ describe('consent unknown (spec §5.11; T8)', () => {
     }
     expect(res).toEqual({ status: 'lost', reason: 'consent-unknown', ledgered: true });
     expect(rows).toEqual([[null, 'edit-save', 'consent-unknown', 'act-id']]);
+    expect(researchLog.consentLookupFailing()).toBe(true);
     expect(record(saveEvent({ clientActionId: act('id') })).status).toBe('written');
   });
 
