@@ -14,6 +14,7 @@
  * check").
  */
 const log = require('../lib/logger');
+const researchLog = require('./researchLog');
 const concordance = require('./concordanceService');
 const { sha256Text } = require('../lib/servedText');
 const { ITEM_TYPES } = require('../lib/researchVocabulary');
@@ -193,7 +194,67 @@ function claimAssistItems(raw, place) {
   return { items, droppedCount };
 }
 
+const NO_CLIENT = Object.freeze({ clientActionId: null, clientActionTime: null, replayed: false });
+const NONE = Object.freeze({
+  segmentId: null,
+  occurrence: null,
+  servedVersionId: null,
+  editingKind: null,
+  editingId: null,
+  editingContentSha256: null,
+  origin: null,
+  items: null,
+  sessionId: null,
+  ...NO_CLIENT,
+});
+
+/**
+ * @param {{user: {id: string}}} req
+ * @param {string} eventType
+ * @param {{book: string, chapter: number, moduleId: string}} place
+ * @returns {{actorProviderId: string, eventType: string, book: string, chapter: number, moduleId: string}}
+ */
+function headFor(req, eventType, { book, chapter, moduleId }) {
+  return { actorProviderId: req.user.id, eventType, book, chapter, moduleId };
+}
+
+/**
+ * The one place a route hands an event to the log (spec §5.11). Called after the editing write committed and before
+ * the route answers. Never throws: a builder bug is recorded as a loss through the log itself (decision 14), and the
+ * log is called after the try/catch, never inside it (it cannot throw; activityLogCallsiteGuard bans a try-wrapped call).
+ *
+ * @param {() => object} headFn
+ * @param {() => (object|null)} build Null means the act wrote nothing and nothing is recorded.
+ * @returns {void}
+ */
+function emit(headFn, build) {
+  let head = null;
+  let event = null;
+  try {
+    head = headFn();
+    const fields = build();
+    if (fields === null) return;
+    event = { ...fields, ...head };
+  } catch (err) {
+    log.error(
+      {
+        errorCode: (err && (err.code || err.name)) || 'unknown',
+        eventType: head ? head.eventType : null,
+        book: head ? head.book : null,
+      },
+      'Research event could not be built; recorded as a loss for a consenting actor (spec §5.11)'
+    );
+    if (!head) return; // with no actor and no place there is nothing to count
+    event = { ...head, buildFailed: true };
+  }
+  researchLog.record(event);
+}
+
 module.exports = {
+  NO_CLIENT,
+  NONE,
+  headFor,
+  emit,
   ITEM_SOURCES,
   CLAIM_VALIDATORS,
   readClientFields,
