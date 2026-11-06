@@ -31,6 +31,10 @@ const AUDITED_READERS = [
   'scripts/render-segment-edits-md.js',
   // A comment: applyApprovedEdits never compares `original_content`. No change.
   'server/lib/applyHold.js',
+  // The research filter (G1.2) classifies `original_content` for research before-images and reads no
+  // database; a before-image deliberately records the row's prior base, a moved one included (spec §5.8:
+  // the event keeps the old). No change.
+  'server/lib/researchFilter.js',
   // `localization_pending_edits`, another table. No change.
   'server/public/js/localization-editor.js',
   // `buildSaveBody` sends the row's `data-is` as `originalContent`: a request field, which the
