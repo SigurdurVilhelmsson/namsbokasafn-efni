@@ -388,11 +388,14 @@ router.get(
         const { status, code, message } = moduleOpenings.OPENING_UNRECORDED;
         return res.status(status).json({ error: code, message });
       }
-      // ── PR3 (index decision 2) emits module-opened HERE, after the opening's commit and only
-      //    when step.status === 'opened', with moduleOpenings.moduleOpenedDetail(served,
-      //    step.opening) as its detail; nothing it does may change this response (spec §5.11).
-      //    Step 5 (G1.23) runs after it and reads seg.baseSha256 and the stored opening. No field
-      //    is added to the response (T17). ──
+      // G1.2 (spec §5.5): after the opening's commit; it never turns a serve into a 503 or a 503 into a 200
+      // (PR2's handoff). Step 5 (G1.23) runs after it and reads seg.baseSha256 and the stored opening. No field
+      // is added to the response (T17).
+      if (step.status === 'opened') {
+        researchEmission.emitModuleOpened(req, {
+          detail: moduleOpenings.moduleOpenedDetail(served, step.opening),
+        });
+      }
       res.json({
         ...data,
         edits: editsBySegment,

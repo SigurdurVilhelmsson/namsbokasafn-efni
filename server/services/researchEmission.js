@@ -733,6 +733,22 @@ function emitPropagation(
   });
 }
 
+/**
+ * `module-opened`: the opening's served versions, duplicated ids and in-flight count (spec §5.5, §5.9). No segment,
+ * no served version (spec §5.9: NULL) and no client fields (decision 53). Never throws.
+ *
+ * @param {object} req The module GET request (params, chapterNum).
+ * @param {{detail: {servedVersionIds: object[], duplicatedIds: string[], inflightCount: number}}} act
+ *   `detail` is moduleOpenings.moduleOpenedDetail's answer.
+ * @returns {void}
+ */
+function emitModuleOpened(req, { detail }) {
+  emit(
+    () => headFor(req, 'module-opened', placeOf(req)),
+    () => ({ ...NONE, content: null, before: null, detail })
+  );
+}
+
 module.exports = {
   NO_CLIENT,
   NONE,
@@ -757,5 +773,6 @@ module.exports = {
   emitApply,
   emitReviewComplete,
   emitRestore,
+  emitModuleOpened,
   ACCEPT_ELIGIBILITY_REFUSALS,
 };
