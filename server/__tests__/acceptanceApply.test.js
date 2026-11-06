@@ -401,8 +401,9 @@ describe('metrics redefinition: reviewed = approved ∪ accepted (spec §8)', ()
 // snapshot rolling back AFTER the file advanced — the pre-apply content then
 // never entered version history and was invisible to "Útgáfusaga".
 //
-// `acceptanceService.stampApplied` is the last DB mutation in the transaction
-// and is called via property lookup, so spying on it gives a deterministic
+// `acceptanceService.stampAppliedIds` (G1.2: the ids form of `stampApplied`,
+// which apply now calls) is the last DB mutation in the transaction and is
+// called via property lookup, so spying on it gives a deterministic
 // post-DB-work / pre-commit failure without touching production code.
 describe('apply transaction: DB work precedes the file write (C10-R1)', () => {
   it('a throw in the post-DB work leaves the faithful file unwritten and version history clean', () => {
@@ -410,7 +411,7 @@ describe('apply transaction: DB work precedes the file write (C10-R1)', () => {
     const faithfulPath = segmentParser.getModulePaths(BOOK, 1, MODULE).faithful;
     expect(existsSync(faithfulPath)).toBe(false);
 
-    vi.spyOn(acceptance, 'stampApplied').mockImplementation(() => {
+    vi.spyOn(acceptance, 'stampAppliedIds').mockImplementation(() => {
       throw new Error('boom: post-write DB failure');
     });
 
@@ -434,7 +435,7 @@ describe('apply transaction: DB work precedes the file write (C10-R1)', () => {
 
     // A second round of review, then a failure in the post-DB work.
     saveAndApprove('m00001:para:fs-id002', 'Önnur yfirferð.');
-    vi.spyOn(acceptance, 'stampApplied').mockImplementation(() => {
+    vi.spyOn(acceptance, 'stampAppliedIds').mockImplementation(() => {
       throw new Error('boom: post-write DB failure');
     });
 
@@ -492,7 +493,7 @@ describe('apply transaction: DB work precedes the file write (C10-R1)', () => {
     vi.spyOn(pipelineStatusService, 'transitionStage').mockImplementation(() => {});
     saveAndApprove('m00001:para:fs-id001', 'Yfirfarin efnisgrein.');
 
-    const stampSpy = vi.spyOn(acceptance, 'stampApplied').mockImplementation(() => {
+    const stampSpy = vi.spyOn(acceptance, 'stampAppliedIds').mockImplementation(() => {
       throw new Error('boom: post-write DB failure');
     });
     expect(() => service.applyApprovedEdits(BOOK, 1, MODULE)).toThrow(/boom/);

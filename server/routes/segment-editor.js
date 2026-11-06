@@ -1353,12 +1353,13 @@ router.post(
       if (result.status === 'approved') {
         try {
           const review = segmentEditor.getModuleReviewWithEdits(parseInt(req.params.reviewId, 10));
-          applied = segmentEditor.applyApprovedEdits(
+          const appliedRaw = segmentEditor.applyApprovedEdits(
             review.review.book,
             review.review.chapter,
             review.review.module_id,
             { appliedBy: req.user.username || (req.user.id != null ? String(req.user.id) : null) }
           );
+          applied = withoutResearchKeys(appliedRaw);
         } catch (applyErr) {
           // Auto-apply is best-effort; don't fail the review completion.
           // Head-editor can retry via POST /:book/:chapter/:moduleId/apply
@@ -1755,12 +1756,13 @@ router.post(
   validateModule,
   (req, res) => {
     try {
-      const result = segmentEditor.applyApprovedEdits(
+      const applied = segmentEditor.applyApprovedEdits(
         req.params.book,
         req.chapterNum,
         req.params.moduleId,
         { appliedBy: req.user.username || (req.user.id != null ? String(req.user.id) : null) }
       );
+      const result = withoutResearchKeys(applied);
 
       activityLog.log({
         type: 'segment_edits_applied',
@@ -1824,12 +1826,13 @@ router.post(
       }
 
       // Apply edits to files
-      const applyResult = segmentEditor.applyApprovedEdits(
+      const applyRaw = segmentEditor.applyApprovedEdits(
         req.params.book,
         req.chapterNum,
         req.params.moduleId,
         { appliedBy: req.user.username || (req.user.id != null ? String(req.user.id) : null) }
       );
+      const applyResult = withoutResearchKeys(applyRaw);
 
       // Run inject+render pipeline (async — returns job ID for polling)
       const { jobId } = pipelineService.runPipeline({
@@ -1950,13 +1953,14 @@ router.post(
     }
 
     try {
-      const result = contentVersionService.restoreVersion(
+      const restored = contentVersionService.restoreVersion(
         req.params.book,
         req.chapterNum,
         req.params.moduleId,
         version,
         { userId: req.user.id, username: req.user.username }
       );
+      const result = withoutResearchKeys(restored);
       res.json({ success: true, ...result });
     } catch (err) {
       if (err.code === 'APPLY_HELD') {

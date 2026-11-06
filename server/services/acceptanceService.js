@@ -388,31 +388,45 @@ function assertChapter(fn, chapter) {
  * drifted (the extraction no longer carries it). Only the written chapter's
  * acceptances are considered (§C209).
  *
- * @returns {number} lapsed row count
+ * G1.2 (spec §5.9; decision 46): the read and the lapse are one transaction on the connection
+ * given (a savepoint inside apply's), IMMEDIATE because its first statement is the read
+ * (decision 45).
+ *
+ * @returns {number[]} the lapsed rows' ids, ascending
  */
+function lapseDriftedIds(book, chapter, moduleId, writtenSegments, dbConn = getDb()) {
+  assertChapter('lapseDriftedIds', chapter);
+  const byId = new Map(writtenSegments.map((s) => [s.segmentId, s.content]));
+  return dbConn
+    .transaction(() => {
+      const active = dbConn
+        .prepare(
+          `SELECT id, segment_id, accepted_content FROM segment_acceptances
+           WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'active' ORDER BY id`
+        )
+        .all(book, chapter, moduleId);
+      const lapse = dbConn.prepare(
+        `UPDATE segment_acceptances
+         SET status = 'superseded', superseded_at = CURRENT_TIMESTAMP,
+             superseded_reason = 'content-drift'
+         WHERE id = ?`
+      );
+      const lapsed = [];
+      for (const a of active) {
+        if (byId.get(a.segment_id) !== a.accepted_content) {
+          lapse.run(a.id);
+          lapsed.push(a.id);
+        }
+      }
+      return lapsed;
+    })
+    .immediate();
+}
+
+/** @returns {number} lapsed row count (the count contract `lapseDriftedIds` keeps) */
 function lapseDrifted(book, chapter, moduleId, writtenSegments, dbConn = getDb()) {
   assertChapter('lapseDrifted', chapter);
-  const byId = new Map(writtenSegments.map((s) => [s.segmentId, s.content]));
-  const active = dbConn
-    .prepare(
-      `SELECT id, segment_id, accepted_content FROM segment_acceptances
-       WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'active'`
-    )
-    .all(book, chapter, moduleId);
-  const lapse = dbConn.prepare(
-    `UPDATE segment_acceptances
-     SET status = 'superseded', superseded_at = CURRENT_TIMESTAMP,
-         superseded_reason = 'content-drift'
-     WHERE id = ?`
-  );
-  let lapsed = 0;
-  for (const a of active) {
-    if (byId.get(a.segment_id) !== a.accepted_content) {
-      lapse.run(a.id);
-      lapsed++;
-    }
-  }
-  return lapsed;
+  return lapseDriftedIds(book, chapter, moduleId, writtenSegments, dbConn).length;
 }
 
 /**
@@ -420,16 +434,28 @@ function lapseDrifted(book, chapter, moduleId, writtenSegments, dbConn = getDb()
  * "acceptances that are active at a successful apply get applied_at"), in the
  * applied chapter only (§C209).
  *
- * @returns {number} stamped row count
+ * G1.2 (spec §5.9; decision 48): one statement, so the ids it returns are exactly the rows the
+ * UPDATE stamped.
+ *
+ * @returns {number[]} the stamped rows' ids, ascending
  */
-function stampApplied(book, chapter, moduleId, dbConn = getDb()) {
-  assertChapter('stampApplied', chapter);
+function stampAppliedIds(book, chapter, moduleId, dbConn = getDb()) {
+  assertChapter('stampAppliedIds', chapter);
   return dbConn
     .prepare(
       `UPDATE segment_acceptances SET applied_at = CURRENT_TIMESTAMP
-       WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'active' AND applied_at IS NULL`
+       WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'active' AND applied_at IS NULL
+       RETURNING id`
     )
-    .run(book, chapter, moduleId).changes;
+    .all(book, chapter, moduleId)
+    .map((r) => r.id)
+    .sort((x, y) => x - y);
+}
+
+/** @returns {number} stamped row count (the count contract `stampAppliedIds` keeps) */
+function stampApplied(book, chapter, moduleId, dbConn = getDb()) {
+  assertChapter('stampApplied', chapter);
+  return stampAppliedIds(book, chapter, moduleId, dbConn).length;
 }
 
 /** Sidecar path: sibling of the faithful segments file. */
@@ -545,7 +571,9 @@ module.exports = {
   revokeAcceptance,
   supersedeForEdit,
   lapseDrifted,
+  lapseDriftedIds,
   stampApplied,
+  stampAppliedIds,
   sidecarPathFor,
   writeReviewStatusSidecar,
   regenSidecarSafe,

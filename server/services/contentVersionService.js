@@ -339,6 +339,7 @@ function restoreVersion(book, chapter, moduleId, version, restoredBy = {}, track
   // :995-1009). Never fail the restore over a cache refresh. TM regen and
   // concordance both index FAITHFUL content only, so a localized restore
   // must not trigger either (cfg.runPostWriteHooks is false for 'localized').
+  let lapsedAcceptanceIds = [];
   if (cfg.runPostWriteHooks) {
     try {
       tmService.scheduleTmRegen(book);
@@ -356,7 +357,13 @@ function restoreVersion(book, chapter, moduleId, version, restoredBy = {}, track
     // as the TM/concordance hooks above. Scoped to this chapter: a restore of
     // one chapter's `chapter-metadata` must not lapse another chapter's (§C209).
     try {
-      acceptanceService.lapseDrifted(book, chapter, moduleId, restoredSegments);
+      // G1.2 (spec §5.9): the lapsed ids ride on the result for the restore event.
+      lapsedAcceptanceIds = acceptanceService.lapseDriftedIds(
+        book,
+        chapter,
+        moduleId,
+        restoredSegments
+      );
       acceptanceService.writeReviewStatusSidecar(book, chapter, moduleId);
     } catch (err) {
       log.error({ err, book, moduleId }, 'Acceptance drift-lapse/sidecar after restore failed');
@@ -392,7 +399,9 @@ function restoreVersion(book, chapter, moduleId, version, restoredBy = {}, track
   });
 
   log.info({ book, moduleId, track, ...result }, 'Module restored to previous version');
-  return result;
+  // G1.2 (spec §5.9): the faithful track's result also carries the acceptances the restore lapsed,
+  // for the research event; the route strips it (decision 44). A localized result is unchanged.
+  return cfg.runPostWriteHooks ? { ...result, before: { lapsedAcceptanceIds } } : result;
 }
 
 /**

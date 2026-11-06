@@ -935,6 +935,12 @@ const segmentParser = require('./segmentParser');
 const _applyRetryState = new Map();
 const MAX_APPLY_RETRIES = 1;
 
+// The reviewer_note an apply writes over each loser it supersedes. Exported so the research
+// event hashes the code's own string (plan decision 48), never a copy.
+const SUPERSEDED_BY_NEWER_NOTE = 'Leyst úr gildi af nýrri samþykktri breytingu';
+
+const byIdAscending = (rows) => [...rows].sort((x, y) => x.id - y.id);
+
 /**
  * Apply all approved (and not yet applied) edits for a module to the
  * 03-faithful-translation/ segment file. Starts from the current baseline
@@ -966,11 +972,15 @@ const MAX_APPLY_RETRIES = 1;
  * @param {{ appliedBy?: string|null }} [options] - `appliedBy`: username string
  *   recorded on the content_versions snapshot (parity with restore's
  *   attribution). Absent/null keeps the legacy unattributed snapshot.
- * @returns {object} { appliedCount, savedPath, segments }
+ * @returns {object} { appliedCount, supersededCount, totalEditsMarked, acceptedCount,
+ *   lapsedAcceptances, savedPath, before: { applied, superseded, selfHealReset: { edits,
+ *   acceptances }, lapsedAcceptanceIds, stampedAcceptanceIds } } — `before` is for the research
+ *   event only (G1.2, spec §5.9); every route strips it.
  */
 function applyApprovedEdits(book, chapter, moduleId, options = {}) {
-  // §C203: FIRST, before any read or write. The self-heal below resets applied_at OUTSIDE a
-  // transaction, so a hold checked any later would still leave every edit marked unapplied.
+  // §C203: FIRST, before any read or write. The self-heal below resets applied_at OUTSIDE the
+  // apply's transaction (in its own, committed first), so a hold checked any later would still
+  // leave every edit marked unapplied.
   applyHold.assertFaithfulWritable(book);
   const appliedBy =
     typeof options.appliedBy === 'string' && options.appliedBy ? options.appliedBy : null;
@@ -1038,25 +1048,49 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
       // File was deleted — reset applied_at so edits can be re-applied. Only
       // this chapter's rows: another chapter's file may still hold its applied
       // text, and its rows must stay applied (§C209).
-      conn
-        .prepare(
-          `UPDATE segment_edits SET applied_at = NULL
-           WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'approved'
-             AND applied_at IS NOT NULL`
-        )
-        .run(book, chapter, moduleId);
-      // item 20b: the acceptance mirror of the reset — an acceptance-only
-      // module whose faithful file vanished must also be rebuildable.
-      conn
-        .prepare(
-          `UPDATE segment_acceptances SET applied_at = NULL
-           WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'active'
-             AND applied_at IS NOT NULL`
-        )
-        .run(book, chapter, moduleId);
+      // G1.2 (spec §5.9; decision 47): the rows the reset clears are read in the reset's own
+      // IMMEDIATE transaction, by each UPDATE's own predicate, and the two UPDATEs now commit
+      // together. The rows ride on the re-run's result for the apply event. If the re-run throws,
+      // the reset stays committed, as before (Review Focus 28).
+      const selfHealReset = conn
+        .transaction(() => {
+          const edits = conn
+            .prepare(
+              `SELECT * FROM segment_edits
+               WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'approved'
+                 AND applied_at IS NOT NULL ORDER BY id`
+            )
+            .all(book, chapter, moduleId);
+          const acceptances = conn
+            .prepare(
+              `SELECT * FROM segment_acceptances
+               WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'active'
+                 AND applied_at IS NOT NULL ORDER BY id`
+            )
+            .all(book, chapter, moduleId);
+          conn
+            .prepare(
+              `UPDATE segment_edits SET applied_at = NULL
+               WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'approved'
+                 AND applied_at IS NOT NULL`
+            )
+            .run(book, chapter, moduleId);
+          // item 20b: the acceptance mirror of the reset — an acceptance-only
+          // module whose faithful file vanished must also be rebuildable.
+          conn
+            .prepare(
+              `UPDATE segment_acceptances SET applied_at = NULL
+               WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'active'
+                 AND applied_at IS NOT NULL`
+            )
+            .run(book, chapter, moduleId);
+          return { edits, acceptances };
+        })
+        .immediate();
       try {
         const result = applyApprovedEdits(book, chapter, moduleId, options);
         _applyRetryState.delete(retryKey);
+        result.before.selfHealReset = selfHealReset;
         return result;
       } catch (err) {
         _applyRetryState.delete(retryKey);
@@ -1096,10 +1130,11 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
     // 1. Load module data
     const data = segmentParser.loadModuleForEditing(book, chapter, moduleId);
 
+    // Whole rows: they are also the before-images of the rows this apply applies and supersedes
+    // (G1.2, spec §5.9), read here, before any write.
     const allApproved = conn
       .prepare(
-        `SELECT id, segment_id, edited_content, created_at, applied_at
-         FROM segment_edits
+        `SELECT * FROM segment_edits
          WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'approved'`
       )
       .all(book, chapter, moduleId);
@@ -1204,31 +1239,35 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
       `UPDATE segment_edits SET applied_at = CURRENT_TIMESTAMP WHERE id = ?`
     );
     const markSuperseded = conn.prepare(
-      `UPDATE segment_edits SET status = 'superseded', reviewer_note = 'Leyst úr gildi af nýrri samþykktri breytingu', applied_at = CURRENT_TIMESTAMP WHERE id = ?`
+      `UPDATE segment_edits SET status = 'superseded', reviewer_note = ?, applied_at = CURRENT_TIMESTAMP WHERE id = ?`
     );
+    const byId = new Map(allApproved.map((e) => [e.id, e]));
 
     for (const id of winnerIds) {
       markApplied.run(id);
     }
     for (const id of supersededIds) {
-      markSuperseded.run(id);
+      markSuperseded.run(SUPERSEDED_BY_NEWER_NOTE, id);
     }
 
     // 6. Acceptance lifecycle (item 20b, spec §7): lapse attestations whose
     // bytes this apply is about to change, then stamp the surviving active ones
     // as published. Same connection, same transaction — atomic with the file
-    // bookkeeping. Both are DB-only (`lapseDrifted` compares against the
+    // bookkeeping. Both are DB-only (`lapseDriftedIds` compares against the
     // in-memory `segments` array, never re-reading disk), which is what makes
     // running them before the write behaviour-preserving. `segments` is the
-    // exact array written to disk in step 7.
-    const lapsedAcceptances = acceptanceService.lapseDrifted(
+    // exact array written to disk in step 7. G1.2 (spec §5.9; decisions 46, 48): each returns the
+    // ids it changed, so the counts below are the lengths of the lists the apply event carries.
+    const lapsedAcceptanceIds = acceptanceService.lapseDriftedIds(
       book,
       chapter,
       moduleId,
       segments,
       conn
     );
-    const acceptedCount = acceptanceService.stampApplied(book, chapter, moduleId, conn);
+    const lapsedAcceptances = lapsedAcceptanceIds.length;
+    const stampedAcceptanceIds = acceptanceService.stampAppliedIds(book, chapter, moduleId, conn);
+    const acceptedCount = stampedAcceptanceIds.length;
 
     // 7. Write to 03-faithful-translation/ — the LAST mutation before COMMIT.
     const savedPath = segmentParser.saveModuleSegments(book, chapter, moduleId, segments);
@@ -1267,6 +1306,15 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
       acceptedCount,
       lapsedAcceptances,
       savedPath,
+      // G1.2 (spec §5.9): rows as read above, before step 5's writes; ids ascending. The routes
+      // strip this key (decision 44).
+      before: {
+        applied: byIdAscending(newlyApplied),
+        superseded: byIdAscending(supersededIds.map((id) => byId.get(id))),
+        selfHealReset: { edits: [], acceptances: [] }, // set by the self-heal's own frame
+        lapsedAcceptanceIds,
+        stampedAcceptanceIds,
+      },
     };
   });
 
@@ -1737,6 +1785,7 @@ module.exports = {
   // Apply to files
   applyApprovedEdits,
   getApplyStatus,
+  SUPERSEDED_BY_NEWER_NOTE,
   // Discussions
   addDiscussionComment,
   getDiscussion,
