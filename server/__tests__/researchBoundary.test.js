@@ -8,7 +8,7 @@
 import { mkdtempSync, rmSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'fs';
 import { tmpdir } from 'os';
 import path from 'path';
-import { describe, it, expect, beforeAll, afterAll, afterEach } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, afterEach, vi } from 'vitest';
 import { createRequire } from 'module';
 import { fileURLToPath } from 'url';
 
@@ -432,5 +432,200 @@ describe('T17 (PR2): no opened time, no switch time and no snapshot in any respo
     writeFileSync(path.join(tmp, 'clean.js'), 'module.exports = {};');
     expect(filesNaming(tmp, OPENING_NAMES)).toEqual(['leak.js']);
     rmSync(tmp, { recursive: true, force: true });
+  });
+});
+
+// ── PR3 (Task 31): no route reaches research data, research scripts read no editing record, the loss log is clean.
+const SERVER_ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
+const ROUTE_FORBIDDEN = /\bresearchDb\b|\beditor_keys\b/;
+// §5.22: research figures never read an editing record. G1.23 adds its rejection and left-open tables here.
+const FORBIDDEN_TABLES = [
+  'segment_edits',
+  'segment_acceptances',
+  'module_openings',
+  'book_switch_events',
+  'research_consent',
+  'activity_log',
+  'analytics_events',
+];
+// The ONLY exceptions §5.22 allows, each naming research_consent and nothing else:
+const RESEARCH_SCRIPT_EXCEPTIONS = Object.freeze({
+  'research-withdrawal.js': {
+    allowed: ['research_consent'],
+    reason:
+      'finds withdrawn intervals and sets deletion_done_at_ms (spec §5.15); computes no figure',
+  },
+  // PR4: the paper-consent admin script, if it is given a research- name (spec §5.14), records a decision or a
+  // withdrawal; add it here with the same single allowance.
+});
+const tableRe = (t) => new RegExp(`\\b${t}\\b`); // \b: module_openings never matches module_opening_inflight
+
+/** Every research-* script under root/scripts, relative to root, sorted. */
+function researchScripts(root) {
+  const dir = path.join(root, 'scripts');
+  return readdirSync(dir)
+    .filter((n) => /^research-.*\.js$/.test(n))
+    .sort()
+    .map((n) => `scripts/${n}`);
+}
+/** { file, table }[]: each forbidden table a research-* script names, beyond its listed exception. */
+function forbiddenTableUses(root) {
+  const out = [];
+  for (const file of researchScripts(root)) {
+    const text = readFileSync(path.join(root, file), 'latin1');
+    const allowed = RESEARCH_SCRIPT_EXCEPTIONS[path.basename(file)]?.allowed ?? [];
+    for (const table of FORBIDDEN_TABLES) {
+      if (!allowed.includes(table) && tableRe(table).test(text)) out.push({ file, table });
+    }
+  }
+  return out;
+}
+
+describe('T17 (PR3): no route reaches research data (spec §5.16)', () => {
+  it('no file under server/routes/ references researchDb or editor_keys', () => {
+    expect(filesNaming(path.join(SERVER_ROOT, 'routes'), ROUTE_FORBIDDEN)).toEqual([]);
+  });
+
+  it('control: a planted reference is named', () => {
+    const tmp = mkdtempSync(path.join(tmpdir(), 't17-pr3-routes-'));
+    try {
+      writeFileSync(path.join(tmp, 'x.js'), "const r = require('../services/researchDb');");
+      writeFileSync(path.join(tmp, 'clean.js'), 'module.exports = {};');
+      expect(filesNaming(tmp, ROUTE_FORBIDDEN)).toEqual(['x.js']);
+    } finally {
+      rmSync(tmp, { recursive: true, force: true });
+    }
+  });
+
+  it('positive control: researchLog.js does reference researchDb', () => {
+    expect(filesNaming(path.join(SERVER_ROOT, 'services'), /\bresearchDb\b/)).toContain(
+      'researchLog.js'
+    );
+  });
+});
+
+describe('T17 (PR3): research-* scripts read no editing record (spec §5.22)', () => {
+  it('no server/scripts/research-* file names a forbidden table, beyond its listed exception', () => {
+    expect(researchScripts(SERVER_ROOT)).toContain('scripts/research-status.js');
+    expect(forbiddenTableUses(SERVER_ROOT)).toEqual([]);
+  });
+
+  it('controls: the exception covers research_consent only, and only for its own file', () => {
+    const tmp = mkdtempSync(path.join(tmpdir(), 't17-pr3-scripts-'));
+    const put = (name, text) => {
+      mkdirSync(path.join(tmp, 'scripts'), { recursive: true });
+      writeFileSync(path.join(tmp, 'scripts', name), text);
+    };
+    try {
+      put('research-withdrawal.js', 'SELECT * FROM research_consent');
+      expect(forbiddenTableUses(tmp)).toEqual([]);
+      put('research-withdrawal.js', 'SELECT * FROM research_consent; SELECT * FROM segment_edits');
+      expect(forbiddenTableUses(tmp)).toEqual([
+        { file: 'scripts/research-withdrawal.js', table: 'segment_edits' },
+      ]);
+      rmSync(path.join(tmp, 'scripts', 'research-withdrawal.js'));
+      put('research-other.js', 'SELECT * FROM research_consent');
+      expect(forbiddenTableUses(tmp)).toEqual([
+        { file: 'scripts/research-other.js', table: 'research_consent' },
+      ]);
+      rmSync(path.join(tmp, 'scripts', 'research-other.js'));
+      put('research-x.js', 'SELECT * FROM module_opening_inflight');
+      expect(forbiddenTableUses(tmp)).toEqual([]); // §5.22 allows the snapshot
+      put('research-x.js', 'SELECT * FROM module_openings');
+      expect(forbiddenTableUses(tmp)).toEqual([
+        { file: 'scripts/research-x.js', table: 'module_openings' },
+      ]);
+    } finally {
+      rmSync(tmp, { recursive: true, force: true });
+    }
+  });
+});
+
+describe("T17 (PR3): record's failure log holds no content and no key (spec §5.11 step 2)", () => {
+  it('a forced failure logs four fields and nothing else', () => {
+    const researchDbT17 = require('../services/researchDb');
+    const researchLogT17 = require('../services/researchLog');
+    const researchConsentTextT17 = require('../lib/researchConsentText');
+    const serverCommitT17 = require('../lib/serverCommit');
+    const logger = require('../lib/logger');
+    const {
+      APPROVED,
+      makeUser,
+      consent,
+      saveEvent,
+      readResearch,
+    } = require('./helpers/researchFixture.cjs');
+    const { resolveResearchDbPath } = require('../lib/researchDbPath');
+    const USER_ROW = require('../services/userService');
+
+    migrateAll();
+    researchConsentTextT17._setTestApprovedTexts(APPROVED);
+    serverCommitT17._setTestServerCommit({
+      serverCommit: 'c'.repeat(40),
+      commitSource: 'deploy-file',
+      codeDirty: 0,
+    });
+    const spy = vi.spyOn(logger, 'error').mockImplementation(() => {});
+    let holder;
+    try {
+      // Boot first: once a consented row exists the research file is never created, so without the boot there
+      // would be no file, no key and nothing to lock.
+      researchDbT17.openAtBoot();
+      const userId = makeUser('p-log');
+      const interval = consent(userId);
+      const first = researchLogT17.record(
+        saveEvent({ actorProviderId: 'p-log', clientActionId: 'f-0' })
+      );
+      expect(first.status).toBe('written'); // the key now exists
+      const r = readResearch();
+      let key;
+      try {
+        key = r
+          .prepare('SELECT editor_key FROM editor_keys WHERE interval_id = ?')
+          .get(interval).editor_key;
+      } finally {
+        r.close();
+      }
+      expect(typeof key).toBe('string');
+      expect(USER_ROW.findByProviderId('p-log').id).toBe(userId);
+
+      holder = new OpeningDb(resolveResearchDbPath().researchPath);
+      holder.exec('BEGIN EXCLUSIVE');
+      const result = researchLogT17.record(
+        saveEvent({
+          actorProviderId: 'p-log',
+          content: { text: 'SENTINEL-TEXT-77', note: 'SENTINEL-NOTE-77' },
+          clientActionId: 'f-1',
+        })
+      );
+      expect(result).toMatchObject({ status: 'lost', reason: 'busy' });
+
+      expect(spy.mock.calls.length).toBeGreaterThan(0);
+      for (const [arg] of spy.mock.calls) {
+        expect(Object.keys(arg).sort()).toEqual(['book', 'errorClass', 'errorCode', 'eventType']);
+      }
+      const logged = JSON.stringify(spy.mock.calls);
+      for (const leak of ['SENTINEL-TEXT-77', 'SENTINEL-NOTE-77', key, 'p-log']) {
+        expect(logged.includes(leak)).toBe(false);
+      }
+      const values = spy.mock.calls.flatMap(([arg]) => Object.values(arg));
+      expect(values.map(String)).not.toContain(String(userId));
+      // Positive control: the spy is aimed at the log that fired.
+      expect(spy.mock.calls.map(([arg]) => arg)).toContainEqual({
+        errorCode: 'SQLITE_BUSY',
+        errorClass: 'busy',
+        eventType: 'edit-save',
+        book: 'efnafraedi-2e',
+      });
+    } finally {
+      if (holder) {
+        holder.exec('ROLLBACK');
+        holder.close();
+      }
+      spy.mockRestore();
+      researchDbT17._reset();
+      researchConsentTextT17._setTestApprovedTexts(null);
+      serverCommitT17._setTestServerCommit(null);
+    }
   });
 });
