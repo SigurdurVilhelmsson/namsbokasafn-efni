@@ -81,6 +81,15 @@ function sendRefusal(res, err) {
   return true;
 }
 
+// G1.2 (spec §5.9, §11): services hand the research event its before-images under these keys; no
+// response carries them. A copy, so the caller's object (the research event's input) keeps them.
+function withoutResearchKeys(result) {
+  const rest = { ...result };
+  delete rest.before;
+  delete rest.writes;
+  return rest;
+}
+
 // ─── Book data lookup (slug → chapter/module metadata) ───────────────
 const { enrichChapters, enrichModules } = require('../services/bookDataLoader');
 const { requireAuth } = require('../middleware/requireAuth');
@@ -1018,11 +1027,12 @@ router.post(
  */
 router.post('/acceptance/:id/revoke', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   try {
-    const row = acceptanceService.revokeAcceptance(parseInt(req.params.id, 10), {
+    const revoked = acceptanceService.revokeAcceptance(parseInt(req.params.id, 10), {
       actorId: String(req.user.id),
       actorRole: req.user.role,
       actorBooks: req.user.books || [],
     });
+    const row = withoutResearchKeys(revoked);
     res.json({ success: true, acceptance: row });
     activityLog.log({
       type: 'acceptance_revoked',
@@ -1171,12 +1181,13 @@ router.post(
   requireHeadEditorFor(bookFromEditId),
   (req, res) => {
     try {
-      const edit = segmentEditor.approveEdit(
+      const result = segmentEditor.approveEdit(
         parseInt(req.params.editId, 10),
         req.user.id,
         req.user.username,
         req.body?.note
       );
+      const edit = withoutResearchKeys(result);
       activityLog.log({
         type: 'segment_edit_approved',
         userId: String(req.user.id),
@@ -1205,12 +1216,13 @@ router.post(
   requireHeadEditorFor(bookFromEditId),
   (req, res) => {
     try {
-      const edit = segmentEditor.rejectEdit(
+      const result = segmentEditor.rejectEdit(
         parseInt(req.params.editId, 10),
         req.user.id,
         req.user.username,
         req.body?.note
       );
+      const edit = withoutResearchKeys(result);
       activityLog.log({
         type: 'segment_edit_rejected',
         userId: String(req.user.id),
@@ -1238,12 +1250,13 @@ router.post(
   requireHeadEditorFor(bookFromEditId),
   (req, res) => {
     try {
-      const edit = segmentEditor.markForDiscussion(
+      const result = segmentEditor.markForDiscussion(
         parseInt(req.params.editId, 10),
         req.user.id,
         req.user.username,
         req.body?.note
       );
+      const edit = withoutResearchKeys(result);
       activityLog.log({
         type: 'segment_edit_discuss',
         userId: String(req.user.id),
@@ -1271,7 +1284,8 @@ router.post(
   requireHeadEditorFor(bookFromEditId),
   (req, res) => {
     try {
-      const edit = segmentEditor.unapproveEdit(parseInt(req.params.editId, 10));
+      const result = segmentEditor.unapproveEdit(parseInt(req.params.editId, 10));
+      const edit = withoutResearchKeys(result);
       res.json({ success: true, edit });
       activityLog.log({
         type: 'segment_edit_unapproved',
@@ -1298,7 +1312,8 @@ router.post(
   requireHeadEditorFor(bookFromEditId),
   (req, res) => {
     try {
-      const edit = segmentEditor.returnEditToPending(parseInt(req.params.editId, 10));
+      const result = segmentEditor.returnEditToPending(parseInt(req.params.editId, 10));
+      const edit = withoutResearchKeys(result);
       activityLog.log({
         type: activityLog.ACTIVITY_TYPES.SEGMENT_EDIT_REOPENED,
         userId: String(req.user.id),

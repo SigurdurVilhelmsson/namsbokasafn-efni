@@ -434,16 +434,22 @@ function getEditById(editId) {
  */
 function deleteSegmentEdit(editId, editorId) {
   const conn = getDb();
-  const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
-  if (!edit) throw new Error('Edit not found');
-  // Use == for type-coercing comparison: SQLite TEXT column may store "99999.0"
-  // while JS provides 99999 (number) — strict === would reject the owner's own edit
-  // eslint-disable-next-line eqeqeq
-  if (edit.editor_id != editorId) throw new Error('Not your edit');
-  if (edit.status !== 'pending') throw new Error('Can only delete pending edits');
+  // G1.2 (spec §5.9): the before-image is read in the write's own transaction; IMMEDIATE takes the
+  // write lock before the read, so the read is never followed by a failed upgrade (decision 45).
+  return conn
+    .transaction(() => {
+      const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+      if (!edit) throw new Error('Edit not found');
+      // Use == for type-coercing comparison: SQLite TEXT column may store "99999.0"
+      // while JS provides 99999 (number) — strict === would reject the owner's own edit
+      // eslint-disable-next-line eqeqeq
+      if (edit.editor_id != editorId) throw new Error('Not your edit');
+      if (edit.status !== 'pending') throw new Error('Can only delete pending edits');
 
-  conn.prepare(`DELETE FROM segment_edits WHERE id = ?`).run(editId);
-  return true;
+      conn.prepare(`DELETE FROM segment_edits WHERE id = ?`).run(editId);
+      return { deleted: true, before: edit };
+    })
+    .immediate();
 }
 
 // =====================================================================
@@ -455,44 +461,53 @@ function deleteSegmentEdit(editId, editorId) {
  */
 function approveEdit(editId, reviewerId, reviewerUsername, reviewerNote) {
   const conn = getDb();
-  const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
-  if (!edit) throw new Error('Edit not found');
-  // Self-approval is permitted for head-editors and admins (the only roles the
-  // approve route allows): on a small team the same person often both revises a
-  // published segment (edit-again) and approves it. The editor→head-editor
-  // separation still holds for the normal flow, where editors can't approve at all.
-  if (edit.status !== 'pending') throw new Error('Edit is not pending');
+  // G1.2 (spec §5.9): the before-image is read in the write's own transaction; IMMEDIATE takes the
+  // write lock before the read, so the read is never followed by a failed upgrade (decision 45).
+  return conn
+    .transaction(() => {
+      const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+      if (!edit) throw new Error('Edit not found');
+      // Self-approval is permitted for head-editors and admins (the only roles the
+      // approve route allows): on a small team the same person often both revises a
+      // published segment (edit-again) and approves it. The editor→head-editor
+      // separation still holds for the normal flow, where editors can't approve at all.
+      if (edit.status !== 'pending') throw new Error('Edit is not pending');
 
-  // Item 13 guard: approving an edit a newer APPROVED edit already outranks
-  // is a meaningless act — convergent apply would supersede it immediately.
-  // Tell the head-editor now instead of silently flipping it later. A newer
-  // PENDING/discuss edit does NOT block (normal review freedom).
-  const newerApproved = conn
-    .prepare(
-      `SELECT id, created_at FROM segment_edits
-       WHERE book = ? AND module_id = ? AND segment_id = ? AND status = 'approved'`
-    )
-    .all(edit.book, edit.module_id, edit.segment_id)
-    .some((e) => isNewer(e, edit));
-  if (newerApproved) {
-    const err = new Error('Nýrri samþykkt breyting er þegar til á þessum bút.');
-    err.code = 'SUPERSEDED_BY_NEWER';
-    throw err;
-  }
+      // Item 13 guard: approving an edit a newer APPROVED edit already outranks
+      // is a meaningless act — convergent apply would supersede it immediately.
+      // Tell the head-editor now instead of silently flipping it later. A newer
+      // PENDING/discuss edit does NOT block (normal review freedom).
+      const newerApproved = conn
+        .prepare(
+          `SELECT id, created_at FROM segment_edits
+         WHERE book = ? AND module_id = ? AND segment_id = ? AND status = 'approved'`
+        )
+        .all(edit.book, edit.module_id, edit.segment_id)
+        .some((e) => isNewer(e, edit));
+      if (newerApproved) {
+        const err = new Error('Nýrri samþykkt breyting er þegar til á þessum bút.');
+        err.code = 'SUPERSEDED_BY_NEWER';
+        throw err;
+      }
 
-  conn
-    .prepare(
-      `UPDATE segment_edits
-     SET status = 'approved',
-         reviewer_id = ?,
-         reviewer_username = ?,
-         reviewer_note = ?,
-         reviewed_at = CURRENT_TIMESTAMP
-     WHERE id = ?`
-    )
-    .run(reviewerId, reviewerUsername, reviewerNote || null, editId);
+      conn
+        .prepare(
+          `UPDATE segment_edits
+       SET status = 'approved',
+           reviewer_id = ?,
+           reviewer_username = ?,
+           reviewer_note = ?,
+           reviewed_at = CURRENT_TIMESTAMP
+       WHERE id = ?`
+        )
+        .run(reviewerId, reviewerUsername, reviewerNote || null, editId);
 
-  return conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+      return {
+        ...conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId),
+        before: edit,
+      };
+    })
+    .immediate();
 }
 
 /**
@@ -500,23 +515,32 @@ function approveEdit(editId, reviewerId, reviewerUsername, reviewerNote) {
  */
 function rejectEdit(editId, reviewerId, reviewerUsername, reviewerNote) {
   const conn = getDb();
-  const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
-  if (!edit) throw new Error('Edit not found');
-  if (edit.status !== 'pending') throw new Error('Edit is not pending');
+  // G1.2 (spec §5.9): the before-image is read in the write's own transaction; IMMEDIATE takes the
+  // write lock before the read, so the read is never followed by a failed upgrade (decision 45).
+  return conn
+    .transaction(() => {
+      const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+      if (!edit) throw new Error('Edit not found');
+      if (edit.status !== 'pending') throw new Error('Edit is not pending');
 
-  conn
-    .prepare(
-      `UPDATE segment_edits
-     SET status = 'rejected',
-         reviewer_id = ?,
-         reviewer_username = ?,
-         reviewer_note = ?,
-         reviewed_at = CURRENT_TIMESTAMP
-     WHERE id = ?`
-    )
-    .run(reviewerId, reviewerUsername, reviewerNote || null, editId);
+      conn
+        .prepare(
+          `UPDATE segment_edits
+       SET status = 'rejected',
+           reviewer_id = ?,
+           reviewer_username = ?,
+           reviewer_note = ?,
+           reviewed_at = CURRENT_TIMESTAMP
+       WHERE id = ?`
+        )
+        .run(reviewerId, reviewerUsername, reviewerNote || null, editId);
 
-  return conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+      return {
+        ...conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId),
+        before: edit,
+      };
+    })
+    .immediate();
 }
 
 /**
@@ -524,23 +548,32 @@ function rejectEdit(editId, reviewerId, reviewerUsername, reviewerNote) {
  */
 function markForDiscussion(editId, reviewerId, reviewerUsername, reviewerNote) {
   const conn = getDb();
-  const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
-  if (!edit) throw new Error('Edit not found');
-  if (edit.status !== 'pending') throw new Error('Edit is not pending');
+  // G1.2 (spec §5.9): the before-image is read in the write's own transaction; IMMEDIATE takes the
+  // write lock before the read, so the read is never followed by a failed upgrade (decision 45).
+  return conn
+    .transaction(() => {
+      const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+      if (!edit) throw new Error('Edit not found');
+      if (edit.status !== 'pending') throw new Error('Edit is not pending');
 
-  conn
-    .prepare(
-      `UPDATE segment_edits
-     SET status = 'discuss',
-         reviewer_id = ?,
-         reviewer_username = ?,
-         reviewer_note = ?,
-         reviewed_at = CURRENT_TIMESTAMP
-     WHERE id = ?`
-    )
-    .run(reviewerId, reviewerUsername, reviewerNote || null, editId);
+      conn
+        .prepare(
+          `UPDATE segment_edits
+       SET status = 'discuss',
+           reviewer_id = ?,
+           reviewer_username = ?,
+           reviewer_note = ?,
+           reviewed_at = CURRENT_TIMESTAMP
+       WHERE id = ?`
+        )
+        .run(reviewerId, reviewerUsername, reviewerNote || null, editId);
 
-  return conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+      return {
+        ...conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId),
+        before: edit,
+      };
+    })
+    .immediate();
 }
 
 /**
@@ -553,39 +586,48 @@ function markForDiscussion(editId, reviewerId, reviewerUsername, reviewerNote) {
  */
 function unapproveEdit(editId) {
   const conn = getDb();
-  const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
-  if (!edit) throw new Error('Edit not found');
-  if (edit.status !== 'approved') throw new Error('Edit is not approved');
-  if (edit.applied_at) throw new Error('Edit has already been applied to files');
+  // G1.2 (spec §5.9): the before-image is read in the write's own transaction; IMMEDIATE takes the
+  // write lock before the read, so the read is never followed by a failed upgrade (decision 45).
+  return conn
+    .transaction(() => {
+      const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+      if (!edit) throw new Error('Edit not found');
+      if (edit.status !== 'approved') throw new Error('Edit is not approved');
+      if (edit.applied_at) throw new Error('Edit has already been applied to files');
 
-  const pending = conn
-    .prepare(
-      `SELECT id FROM segment_edits
-     WHERE book = ? AND module_id = ? AND segment_id = ? AND editor_id = ?
-       AND status = 'pending'`
-    )
-    .get(edit.book, edit.module_id, edit.segment_id, edit.editor_id);
-  if (pending) {
-    const err = new Error(
-      'Yfirlesarinn á nýrri breytingu í bið á þessum bút — farið yfir þá breytingu í staðinn.'
-    );
-    err.code = 'PENDING_EXISTS';
-    throw err;
-  }
+      const pending = conn
+        .prepare(
+          `SELECT id FROM segment_edits
+       WHERE book = ? AND module_id = ? AND segment_id = ? AND editor_id = ?
+         AND status = 'pending'`
+        )
+        .get(edit.book, edit.module_id, edit.segment_id, edit.editor_id);
+      if (pending) {
+        const err = new Error(
+          'Yfirlesarinn á nýrri breytingu í bið á þessum bút — farið yfir þá breytingu í staðinn.'
+        );
+        err.code = 'PENDING_EXISTS';
+        throw err;
+      }
 
-  conn
-    .prepare(
-      `UPDATE segment_edits
-     SET status = 'pending',
-         reviewer_id = NULL,
-         reviewer_username = NULL,
-         reviewer_note = NULL,
-         reviewed_at = NULL
-     WHERE id = ?`
-    )
-    .run(editId);
+      conn
+        .prepare(
+          `UPDATE segment_edits
+       SET status = 'pending',
+           reviewer_id = NULL,
+           reviewer_username = NULL,
+           reviewer_note = NULL,
+           reviewed_at = NULL
+       WHERE id = ?`
+        )
+        .run(editId);
 
-  return conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+      return {
+        ...conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId),
+        before: edit,
+      };
+    })
+    .immediate();
 }
 
 /**
@@ -597,41 +639,50 @@ function unapproveEdit(editId) {
  */
 function returnEditToPending(editId) {
   const conn = getDb();
-  const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
-  if (!edit) throw new Error('Edit not found');
-  if (edit.status !== 'discuss' && edit.status !== 'rejected') {
-    throw new Error('Edit is not in discuss/rejected status');
-  }
-  if (edit.applied_at) throw new Error('Edit has already been applied to files');
+  // G1.2 (spec §5.9): the before-image is read in the write's own transaction; IMMEDIATE takes the
+  // write lock before the read, so the read is never followed by a failed upgrade (decision 45).
+  return conn
+    .transaction(() => {
+      const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+      if (!edit) throw new Error('Edit not found');
+      if (edit.status !== 'discuss' && edit.status !== 'rejected') {
+        throw new Error('Edit is not in discuss/rejected status');
+      }
+      if (edit.applied_at) throw new Error('Edit has already been applied to files');
 
-  const pending = conn
-    .prepare(
-      `SELECT id FROM segment_edits
-     WHERE book = ? AND module_id = ? AND segment_id = ? AND editor_id = ?
-       AND status = 'pending'`
-    )
-    .get(edit.book, edit.module_id, edit.segment_id, edit.editor_id);
-  if (pending) {
-    const err = new Error(
-      'Yfirlesarinn á nýrri breytingu í bið á þessum bút — farið yfir þá breytingu í staðinn.'
-    );
-    err.code = 'PENDING_EXISTS';
-    throw err;
-  }
+      const pending = conn
+        .prepare(
+          `SELECT id FROM segment_edits
+       WHERE book = ? AND module_id = ? AND segment_id = ? AND editor_id = ?
+         AND status = 'pending'`
+        )
+        .get(edit.book, edit.module_id, edit.segment_id, edit.editor_id);
+      if (pending) {
+        const err = new Error(
+          'Yfirlesarinn á nýrri breytingu í bið á þessum bút — farið yfir þá breytingu í staðinn.'
+        );
+        err.code = 'PENDING_EXISTS';
+        throw err;
+      }
 
-  conn
-    .prepare(
-      `UPDATE segment_edits
-     SET status = 'pending',
-         reviewer_id = NULL,
-         reviewer_username = NULL,
-         reviewer_note = NULL,
-         reviewed_at = NULL
-     WHERE id = ?`
-    )
-    .run(editId);
+      conn
+        .prepare(
+          `UPDATE segment_edits
+       SET status = 'pending',
+           reviewer_id = NULL,
+           reviewer_username = NULL,
+           reviewer_note = NULL,
+           reviewed_at = NULL
+       WHERE id = ?`
+        )
+        .run(editId);
 
-  return conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+      return {
+        ...conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId),
+        before: edit,
+      };
+    })
+    .immediate();
 }
 
 // =====================================================================
@@ -693,14 +744,17 @@ function submitModuleForReview(params) {
        (book, chapter, module_id, submitted_by, submitted_by_username, edited_segments)
      VALUES (?, ?, ?, ?, ?, ?)`
   );
-  const stampEdits = conn.prepare(
-    `UPDATE segment_edits SET review_id = ?
-     WHERE book = ? AND chapter = ? AND module_id = ?
+  // One predicate for both statements, joined by concatenation: securityPayloads.test.js bans ${}
+  // interpolation in this file's SQL.
+  const STAMP_WHERE = `book = ? AND chapter = ? AND module_id = ?
        AND status NOT IN ('rejected', 'superseded')
-       AND (review_id IS NULL OR status IN ('pending', 'discuss'))`
+       AND (review_id IS NULL OR status IN ('pending', 'discuss'))`;
+  const stampEdits = conn.prepare('UPDATE segment_edits SET review_id = ? WHERE ' + STAMP_WHERE);
+  const toStamp = conn.prepare(
+    'SELECT id FROM segment_edits WHERE ' + STAMP_WHERE + ' ORDER BY id'
   );
 
-  const reviewId = conn.transaction(() => {
+  const { reviewId, stampedEditIds } = conn.transaction(() => {
     const result = insertReview.run(
       book,
       chapter,
@@ -709,13 +763,17 @@ function submitModuleForReview(params) {
       submittedByUsername,
       editCounts.pending_edits
     );
+    // G1.2 (spec §5.9): the ids it is about to stamp, read in the same transaction, are the
+    // module-submit event's detail.
+    const ids = toStamp.all(book, chapter, moduleId).map((r) => r.id);
     stampEdits.run(result.lastInsertRowid, book, chapter, moduleId);
-    return result.lastInsertRowid;
+    return { reviewId: result.lastInsertRowid, stampedEditIds: ids };
   })();
 
   return {
     id: reviewId,
     editedSegments: editCounts.pending_edits,
+    stampedEditIds,
   };
 }
 
@@ -850,7 +908,7 @@ function addDiscussionComment(segmentEditId, userId, username, comment) {
     )
     .run(segmentEditId, userId, username, comment);
 
-  return { id: result.lastInsertRowid };
+  return { id: result.lastInsertRowid, edit };
 }
 
 /**

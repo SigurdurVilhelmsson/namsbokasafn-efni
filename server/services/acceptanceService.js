@@ -303,29 +303,38 @@ function getAcceptanceById(id) {
  */
 function revokeAcceptance(acceptanceId, { actorId, actorRole, actorBooks }) {
   const conn = getDb();
-  const row = conn.prepare(`SELECT * FROM segment_acceptances WHERE id = ?`).get(acceptanceId);
-  if (!row) throw new Error('Acceptance not found');
-  if (row.status !== 'active') throw new Error('Acceptance is not active');
+  // G1.2 (spec §5.9): the before-image is read in the write's own transaction; IMMEDIATE takes the
+  // write lock before the read (decision 45).
+  return conn
+    .transaction(() => {
+      const row = conn.prepare(`SELECT * FROM segment_acceptances WHERE id = ?`).get(acceptanceId);
+      if (!row) throw new Error('Acceptance not found');
+      if (row.status !== 'active') throw new Error('Acceptance is not active');
 
-  const isOwner = String(row.accepted_by) === String(actorId);
-  const isHead =
-    actorRole === 'admin' ||
-    (actorRole === 'head-editor' && Array.isArray(actorBooks) && actorBooks.includes(row.book));
-  if (!isOwner && !isHead) {
-    throw codedError(
-      'FORBIDDEN',
-      'Aðeins eigandi staðfestingar eða ritstjóri bókarinnar getur afturkallað hana.'
-    );
-  }
+      const isOwner = String(row.accepted_by) === String(actorId);
+      const isHead =
+        actorRole === 'admin' ||
+        (actorRole === 'head-editor' && Array.isArray(actorBooks) && actorBooks.includes(row.book));
+      if (!isOwner && !isHead) {
+        throw codedError(
+          'FORBIDDEN',
+          'Aðeins eigandi staðfestingar eða ritstjóri bókarinnar getur afturkallað hana.'
+        );
+      }
 
-  conn
-    .prepare(
-      `UPDATE segment_acceptances
-       SET status = 'superseded', superseded_at = CURRENT_TIMESTAMP, superseded_reason = 'revoked'
-       WHERE id = ?`
-    )
-    .run(acceptanceId);
-  return conn.prepare(`SELECT * FROM segment_acceptances WHERE id = ?`).get(acceptanceId);
+      conn
+        .prepare(
+          `UPDATE segment_acceptances
+         SET status = 'superseded', superseded_at = CURRENT_TIMESTAMP, superseded_reason = 'revoked'
+         WHERE id = ?`
+        )
+        .run(acceptanceId);
+      return {
+        ...conn.prepare(`SELECT * FROM segment_acceptances WHERE id = ?`).get(acceptanceId),
+        before: row,
+      };
+    })
+    .immediate();
 }
 
 /**
