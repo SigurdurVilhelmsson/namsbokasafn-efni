@@ -267,6 +267,158 @@ function emit(headFn, build) {
   researchLog.record(event);
 }
 
+/** saveOnServedBase's outcome → the event it records (decision 51); 'unchanged' wrote nothing, so it has none. */
+const SAVE_EVENT_TYPE = Object.freeze({
+  inserted: 'edit-save',
+  updated: 'edit-resave',
+  withdrawn: 'edit-withdraw',
+});
+const clientOf = (req) => readClientFields(req.body);
+const placeOf = (req) => ({
+  book: req.params.book,
+  chapter: req.chapterNum,
+  moduleId: req.params.moduleId,
+});
+
+/**
+ * The save route's research event (spec §5.9, §5.10; decision 51), after the commit and before the response.
+ * Never throws. `saved` is read only inside emit's callbacks, never here, so an odd result can never throw into
+ * the route: the outcome in the head (the event type is the head's), every other field in the build.
+ *
+ * @param {object} req The save request (user, params, chapterNum, body).
+ * @param {{segmentId: string, editedContent: string, category?: string, editorNote?: string, saved: object}} act
+ *   The route's own fields and saveOnServedBase's return.
+ * @returns {void}
+ */
+function emitSave(req, { segmentId, editedContent, category, editorNote, saved }) {
+  let eventType = null; // set by the head, read by the build; both run inside emit's try
+  emit(
+    () => {
+      const outcome = saved.outcome;
+      eventType = Object.hasOwn(SAVE_EVENT_TYPE, outcome) ? SAVE_EVENT_TYPE[outcome] : null;
+      return headFor(req, eventType, placeOf(req));
+    },
+    () => {
+      if (eventType === null) return null; // 'unchanged': nothing was written (decision 51)
+      const base = {
+        segmentId,
+        occurrence: saved.occurrence,
+        editingKind: 'segment_edit',
+        editingId: saved.editId,
+        origin: 'editor-save',
+        sessionId: null,
+        ...clientOf(req),
+      };
+      if (eventType === 'edit-withdraw') {
+        // The deleted row is the event's source (spec §5.9's source table). A withdraw's assists are never sent:
+        // record throws on items outside the save events (Review Focus 33).
+        const row = saved.before;
+        return {
+          ...base,
+          servedVersionId: row.served_version_id ?? null,
+          editingContentSha256: sha256Text(row.edited_content),
+          content: null,
+          before: { table: 'segment_edits', row },
+          detail: null,
+          items: null,
+        };
+      }
+      const { items, droppedCount } = claimAssistItems(req.body && req.body.assists, {
+        ...placeOf(req),
+        segmentId,
+      });
+      const displayed = saved.displayed;
+      return {
+        ...base,
+        servedVersionId: saved.servedVersionId,
+        editingContentSha256: saved.editedContentSha256,
+        // As saveSegmentEdit stores them, so a rebuild hashes the note the row holds. record keeps only the
+        // text's hash when another editor holds the same bytes as a live edit (decision 65).
+        content: { text: editedContent, note: editorNote || null, category: category || null },
+        before: eventType === 'edit-resave' ? { table: 'segment_edits', row: saved.before } : null,
+        detail: {
+          displayed: { editId: displayed.editId, sha256: displayed.sha256 },
+          supersededEditIds: saved.supersededEditIds,
+          supersededAcceptanceIds: saved.supersededAcceptanceIds,
+          ...(droppedCount ? { droppedAssistCount: droppedCount } : {}),
+        },
+        items,
+      };
+    }
+  );
+}
+
+const MAX_SEGMENT_ID = 200;
+// The save refusals PR1's refuse() raises with no echo (placement, before the hash check, and STRUCTURE_BLOCKED
+// after it): the client's baseSha256 is the echo (decision 49). Never STALE_DISPLAYED: its echo is the displayed
+// hash, not the base. Nor SEGMENT_CONFLICT: the conflict check compared edit ids, never this hash.
+const ECHO_FROM_BODY = new Set([
+  'BOOK_NOT_MINTED',
+  'NO_LAYER',
+  'SEGMENT_NOT_FOUND',
+  'DUPLICATE_ID',
+  'STRUCTURE_BLOCKED',
+]);
+
+/**
+ * A refused write's research event, `write-refused` (spec §5.6, §5.9; decision 49): its reason and both hashes,
+ * never a text, a note or an item. Never throws.
+ *
+ * @param {object} req The refused request (user, params, chapterNum, body).
+ * @param {{action: 'save'|'accept'|'propagate', segmentId: unknown, origin?: string|null,
+ *   refusal: ({code: string, echoedSha256: unknown, currentSha256: unknown}
+ *     | {code: string, echoedText: unknown, currentText: unknown})}} refused
+ *   A hash form is checked as a hash; a text form (the accept's value check) is hashed here.
+ * @returns {void}
+ */
+function emitRefused(req, { action, segmentId, refusal, origin = null }) {
+  emit(
+    () => headFor(req, 'write-refused', placeOf(req)),
+    () => {
+      const hash = (t) => (typeof t === 'string' ? sha256Text(t) : null);
+      // detail is stored unfiltered (decision 49), and PR1 type-checks these strings but never their format, so a
+      // value is kept only when it IS a hash; anything else is null and flagged, never stored (spec §5.6: no text).
+      let malformed = false;
+      const asHash = (v) => {
+        if (v === null || v === undefined || v === '') return null; // absent ('' is absent to PR1 too)
+        if (typeof v === 'string' && SHA256_HEX.test(v)) return v;
+        malformed = true;
+        return null;
+      };
+      let echoed = 'echoedText' in refusal ? hash(refusal.echoedText) : refusal.echoedSha256;
+      if (action === 'save' && ECHO_FROM_BODY.has(refusal.code) && req.body) {
+        echoed = req.body.baseSha256;
+      }
+      const echoedSha256 = asHash(echoed);
+      const currentSha256 = asHash(
+        'currentText' in refusal ? hash(refusal.currentText) : refusal.currentSha256
+      );
+      return {
+        segmentId:
+          typeof segmentId === 'string' && segmentId.length <= MAX_SEGMENT_ID ? segmentId : null,
+        occurrence: null,
+        servedVersionId: null, // spec §5.9's source table: a refused write has no base
+        editingKind: null,
+        editingId: null,
+        editingContentSha256: null,
+        origin,
+        content: null,
+        before: null,
+        items: null,
+        sessionId: null,
+        detail: {
+          reason: refusal.code,
+          echoedSha256,
+          currentSha256,
+          action,
+          ...(malformed ? { echoMalformed: true } : {}),
+        },
+        ...clientOf(req),
+      };
+    }
+  );
+}
+
 module.exports = {
   NO_CLIENT,
   NONE,
@@ -274,8 +426,11 @@ module.exports = {
   emit,
   ITEM_SOURCES,
   CLAIM_VALIDATORS,
+  SAVE_EVENT_TYPE,
   readClientFields,
   readAcceptOrigin,
   readReviewedEditSha256,
   claimAssistItems,
+  emitSave,
+  emitRefused,
 };

@@ -48,6 +48,7 @@ const notifications = require('../services/notifications');
 const servedVersions = require('../services/servedVersions');
 const servedEdit = require('../services/servedEdit');
 const moduleOpenings = require('../services/moduleOpenings');
+const researchEmission = require('../services/researchEmission');
 const { sha256Text, isNotMintedBook } = require('../lib/servedText');
 const { isNewer } = require('../lib/editRecency');
 
@@ -419,7 +420,8 @@ router.post(
   (req, res) => {
     // `originalContent` is no longer read: the server stores its own base (spec §5.6 step 6);
     // pages loaded before G1.1 still send it. The research-only fields (clientActionId,
-    // clientActionTime, assists, replayed) are accepted and not read (index decision 4).
+    // clientActionTime, assists, replayed) are read only by the research event, after the act
+    // (researchEmission); they never change this response (spec §5.11).
     const {
       segmentId,
       editedContent,
@@ -531,6 +533,10 @@ router.post(
         }
       }
 
+      // G1.2 (spec §5.9, §5.11): the research event, after the commit and before the response. It
+      // never throws and never changes this response.
+      researchEmission.emitSave(req, { segmentId, editedContent, category, editorNote, saved });
+
       // The three echo fields are named as the request fields the next save sends (plan
       // decision 15; spec §5.18): the base this save was checked against, and the row the
       // segment now displays (null/null when the save withdrew or wrote nothing).
@@ -546,7 +552,25 @@ router.post(
       });
     } catch (err) {
       if (err.code === 'SEGMENT_CONFLICT') {
+        // Decision 49 ([USER] 2026-11-04, spec AMENDED 2026-11-04): the pre-G1.1 concurrency
+        // refusal is logged too. It compares edit ids, not texts, so both hashes are null; the
+        // reason is the server's code, not the wire's.
+        researchEmission.emitRefused(req, {
+          action: 'save',
+          segmentId,
+          origin: 'editor-save',
+          refusal: { code: 'SEGMENT_CONFLICT', echoedSha256: null, currentSha256: null },
+        });
         return res.status(409).json({ error: 'conflict', message: err.message });
+      }
+      if (err.refusal) {
+        // spec §5.6: a refusal is logged with its reason and both hashes, never the text.
+        researchEmission.emitRefused(req, {
+          action: 'save',
+          segmentId,
+          refusal: err.refusal,
+          origin: 'editor-save',
+        });
       }
       if (sendRefusal(res, err)) return;
       if (err.message?.includes('not found')) {
