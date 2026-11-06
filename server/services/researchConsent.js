@@ -88,6 +88,15 @@ function recordDecision({ userId, decision, text, nowMs }) {
   return conn.transaction(() => {
     const { latest, live } = latestAndLive(conn, userId);
     if (decision === 'declined') {
+      if (
+        !live &&
+        latest &&
+        latest.decision === 'declined' &&
+        latest.consent_text_version === text.version &&
+        latest.consent_text_sha256 === text.sha256
+      ) {
+        return { outcome: 'unchanged', intervalId: null };
+      }
       if (live) {
         conn
           .prepare('UPDATE research_consent SET withdrawn_at_ms = ? WHERE id = ?')

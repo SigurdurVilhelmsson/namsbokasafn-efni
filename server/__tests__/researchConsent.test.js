@@ -175,6 +175,17 @@ describe('decisions (spec §5.14)', () => {
     });
   });
 
+  it('a repeated identical decline is unchanged and writes nothing; a decline on a new text inserts', () => {
+    const decline = (text, nowMs) =>
+      researchConsent.recordDecision({ userId: 14, decision: 'declined', text, nowMs });
+    expect(decline(V1, 1000).outcome).toBe('declined');
+    expect(decline(V1, 2000)).toEqual({ outcome: 'unchanged', intervalId: null });
+    expect(rows(14)).toHaveLength(1);
+    // Control: a decline on a different text is a new decision.
+    expect(decline(V2, 3000)).toEqual({ outcome: 'declined', intervalId: null });
+    expect(rows(14)).toHaveLength(2);
+  });
+
   it('an undecided user reads undecided', () => {
     expect(researchConsent.decisionStateFor(99)).toEqual({
       state: 'undecided',
