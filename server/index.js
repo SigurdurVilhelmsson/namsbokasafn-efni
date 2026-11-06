@@ -387,6 +387,20 @@ app.get('/api/health', (req, res) => {
     checks.glossary_export = { ok: false, error: err.message };
   }
 
+  // The research file (G1.2, spec §5.20): { ok, reason } and nothing else — this endpoint is public, and a count of
+  // anything research-related would tell the world that someone consented or withdrew.
+  try {
+    const { readResearchDbHealth } = require('./lib/researchDbHealth');
+    const { resolveResearchDbPath } = require('./lib/researchDbPath');
+    const { consentLookupFailing } = require('./services/researchLog');
+    checks.research_db = readResearchDbHealth({
+      ...resolveResearchDbPath(),
+      consentLookupFailing: consentLookupFailing(),
+    });
+  } catch {
+    checks.research_db = { ok: false, reason: 'unavailable' }; // never an error message: the endpoint is public
+  }
+
   const allOk = Object.values(checks).every((c) => c.ok);
 
   res.json({
