@@ -27,14 +27,14 @@ const researchConsentText = require('../lib/researchConsentText');
 const serverCommit = require('../lib/serverCommit');
 const applyHold = require('../lib/applyHold');
 const { sha256Text } = require('../lib/servedText');
-const userService = require('../services/userService');
 const { writeModule, handlerFor, invoke } = require('./helpers/servedFixture');
-const { APPROVED, makeUser, consent, readResearch } = require('./helpers/researchFixture.cjs');
+const { APPROVED, makeUser, consent } = require('./helpers/researchFixture.cjs');
 const { allEvents, itemsOf } = require('./helpers/researchEventsFixture.cjs');
 const {
   rebuildSegmentEdits,
   actualSegmentEdits,
   diffRebuild,
+  keyOfProvider,
 } = require('./helpers/researchRebuild.cjs');
 
 const CHEM = 'efnafraedi-2e';
@@ -115,28 +115,6 @@ async function review(handler, editId, body) {
 }
 
 const rowOf = (editId) => db.prepare('SELECT * FROM segment_edits WHERE id = ?').get(editId);
-
-/** providerId -> the editor key of the user's interval; null for a user with no interval or no key. */
-function keyOfProvider(providerId) {
-  const user = userService.findByProviderId(providerId);
-  const start = user
-    ? db
-        .prepare(
-          "SELECT interval_id FROM research_consent WHERE user_id = ? AND decision = 'consented' ORDER BY id DESC LIMIT 1"
-        )
-        .get(user.id)
-    : null;
-  if (!start) return null;
-  const rdb = readResearch();
-  try {
-    const k = rdb
-      .prepare('SELECT editor_key FROM editor_keys WHERE interval_id = ?')
-      .get(start.interval_id);
-    return k ? k.editor_key : null;
-  } finally {
-    rdb.close();
-  }
-}
 
 beforeAll(async () => {
   vi.useFakeTimers({ toFake: ['Date'] });
@@ -230,6 +208,7 @@ beforeAll(async () => {
   });
   ids.a1 = await save(M1, PA, 'a', 'A1', {
     editorNote: 'na',
+    category: 'terminology',
     assists: [
       repItem(s.is_text),
       repItem('Fölsuð.'),
@@ -262,7 +241,7 @@ beforeAll(async () => {
   // The fifth assist's text is not in the body (textDropped): its claim is unverified, see the claims case.
 
   // Act 2: a re-save with a new note.
-  await save(M1, PA, 'a', 'A1b', { editorNote: 'nb' });
+  await save(M1, PA, 'a', 'A1b', { editorNote: 'nb', category: 'style' });
   // Act 3: save b, then withdraw it by saving b's base.
   await save(M1, PA, 'b', 'B?');
   await save(M1, PA, 'b', 'IS b');
@@ -325,13 +304,13 @@ afterAll(() => {
 
 describe('T11: the editing record rebuilt from the events', () => {
   it("T11: the rebuild from the events equals segment_edits on the spec's fields", () => {
-    const actual = actualSegmentEdits(db, keyOfProvider);
+    const actual = actualSegmentEdits(db);
     expect(actual.size).toBeGreaterThan(5);
     expect(diffRebuild(rebuildSegmentEdits(allEvents()), actual)).toEqual([]);
   });
 
   it('T11: positive controls — the note fields are compared on real values', () => {
-    const actual = actualSegmentEdits(db, keyOfProvider);
+    const actual = actualSegmentEdits(db);
     expect(actual.get(ids.a1).editor_note_sha256).toBe(sha256Text('nb'));
     expect(actual.get(ids.c).reviewer_note_sha256).toBe(sha256Text('samþ.'));
     expect(notes.cReviewer).toBe('samþ.');
@@ -382,15 +361,26 @@ describe('T11: the editing record rebuilt from the events', () => {
     ]);
   });
 
+  it('control: a category the emitter dropped shows up as exactly that field', () => {
+    const actual = actualSegmentEdits(db);
+    expect(actual.get(ids.a1).category).toBe('style'); // a real, non-null value on the actual side
+    const rebuilt = rebuildSegmentEdits(allEvents());
+    expect(rebuilt.get(ids.a1).category).toBe('style');
+    rebuilt.get(ids.a1).category = null;
+    expect(diffRebuild(rebuilt, actual)).toEqual([
+      { id: ids.a1, field: 'category', rebuilt: null, actual: 'style' },
+    ]);
+  });
+
   it('control: dropping one event makes the rebuild differ, at exactly the row and field it changed', () => {
-    const actual = actualSegmentEdits(db, keyOfProvider);
+    const actual = actualSegmentEdits(db);
     const events = allEvents();
     const rejectOfE1 = events.find(
       (e) => e.event_type === 'edit-reject' && e.editing_id === BigInt(ids.e1)
     );
     const without = (victim) => events.filter((e) => e !== victim);
     expect(diffRebuild(rebuildSegmentEdits(without(rejectOfE1)), actual)).toEqual([
-      { id: ids.e1, field: 'reviewer_key', rebuilt: null, actual: keyOfProvider('p-h') },
+      { id: ids.e1, field: 'reviewer_key', rebuilt: null, actual: keyOfProvider(db, 'p-h') },
     ]);
     const saveOfC = events.find(
       (e) => e.event_type === 'edit-save' && e.editing_id === BigInt(ids.c)

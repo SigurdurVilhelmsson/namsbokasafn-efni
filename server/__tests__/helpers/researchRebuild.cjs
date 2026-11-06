@@ -7,6 +7,8 @@
  * (provider id -> editor key), so the rebuild needs no inverse map.
  */
 const { sha256Text } = require('../../lib/servedText');
+const userService = require('../../services/userService');
+const { readResearch } = require('./researchFixture.cjs');
 
 const FIELDS = [
   'book',
@@ -128,8 +130,8 @@ function rebuildSegmentEdits(events) {
   return rows;
 }
 
-/** The real table projected onto FIELDS. keyOfProvider(providerId) -> editor key or null. */
-function actualSegmentEdits(db, keyOfProvider) {
+/** The real table projected onto FIELDS. keyOf(providerId) -> editor key or null (default: keyOfProvider over this db). */
+function actualSegmentEdits(db, keyOf = (providerId) => keyOfProvider(db, providerId)) {
   const out = new Map();
   for (const r of db.prepare('SELECT * FROM segment_edits ORDER BY id').all()) {
     out.set(Number(r.id), {
@@ -146,8 +148,8 @@ function actualSegmentEdits(db, keyOfProvider) {
       applied: r.applied_at !== null,
       served_version_id: n(r.served_version_id),
       origin: r.origin,
-      editor_key: keyOfProvider(r.editor_id),
-      reviewer_key: r.reviewer_id === null ? null : keyOfProvider(r.reviewer_id),
+      editor_key: keyOf(r.editor_id),
+      reviewer_key: r.reviewer_id === null ? null : keyOf(r.reviewer_id),
     });
   }
   return out;
@@ -178,4 +180,32 @@ function diffRebuild(rebuilt, actual) {
   return diffs;
 }
 
-module.exports = { FIELDS, rebuildSegmentEdits, actualSegmentEdits, diffRebuild };
+/** providerId -> the editor key of the user's interval; null for a user with no interval or no key. */
+function keyOfProvider(db, providerId) {
+  const user = userService.findByProviderId(providerId);
+  const start = user
+    ? db
+        .prepare(
+          "SELECT interval_id FROM research_consent WHERE user_id = ? AND decision = 'consented' ORDER BY id DESC LIMIT 1"
+        )
+        .get(user.id)
+    : null;
+  if (!start) return null;
+  const rdb = readResearch();
+  try {
+    const k = rdb
+      .prepare('SELECT editor_key FROM editor_keys WHERE interval_id = ?')
+      .get(start.interval_id);
+    return k ? k.editor_key : null;
+  } finally {
+    rdb.close();
+  }
+}
+
+module.exports = {
+  FIELDS,
+  keyOfProvider,
+  rebuildSegmentEdits,
+  actualSegmentEdits,
+  diffRebuild,
+};
