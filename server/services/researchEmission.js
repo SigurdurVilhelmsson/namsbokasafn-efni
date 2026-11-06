@@ -16,6 +16,7 @@
 const log = require('../lib/logger');
 const researchLog = require('./researchLog');
 const concordance = require('./concordanceService');
+const segmentEditor = require('./segmentEditorService'); // the apply's fixed superseded note, and the review row
 const { sha256Text } = require('../lib/servedText');
 const { ITEM_TYPES } = require('../lib/researchVocabulary');
 
@@ -576,6 +577,95 @@ function emitSubmit(req, { reviewId, stampedEditIds }) {
   );
 }
 
+const ids = (rows) => rows.map((r) => r.id);
+
+/**
+ * `apply`: no segment, no served version; the per-row outcomes are the detail, not the content (decision 48).
+ * Winners, losers, the rows a self-heal reset and the acceptances the apply stamped are all ids; the before-image
+ * holds the rows the apply (or its reset) changed. Several events per request carry no client fields (decision 53).
+ * A self-heal whose recursive apply threw never reaches here: the act failed, so nothing is recorded (Review Focus
+ * 28). Never throws: `before` is read only inside emit's callbacks.
+ *
+ * @param {object} req
+ * @param {{book: string, chapter: number, moduleId: string, before: object, trigger: string, reviewId?: (number|null)}} act
+ *   `before` is the unstripped result's `before` (Task 17); `trigger` is `apply`, `apply-and-render` or `review-complete`.
+ * @returns {void}
+ */
+function emitApply(req, { book, chapter, moduleId, before, trigger, reviewId = null }) {
+  emit(
+    () => headFor(req, 'apply', { book, chapter, moduleId }),
+    () => ({
+      ...NONE,
+      content: null,
+      before: [
+        ...before.superseded.map((row) => ({ table: 'segment_edits', row })),
+        ...before.selfHealReset.edits.map((row) => ({ table: 'segment_edits', row })),
+        ...before.selfHealReset.acceptances.map((row) => ({ table: 'segment_acceptances', row })),
+      ],
+      detail: {
+        trigger,
+        ...(reviewId !== null ? { reviewId } : {}),
+        applied: ids(before.applied),
+        superseded: ids(before.superseded),
+        supersededReviewerNote: {
+          length: [...segmentEditor.SUPERSEDED_BY_NEWER_NOTE].length,
+          sha256: sha256Text(segmentEditor.SUPERSEDED_BY_NEWER_NOTE),
+        },
+        selfHealReset: {
+          editIds: ids(before.selfHealReset.edits),
+          acceptanceIds: ids(before.selfHealReset.acceptances),
+        },
+        lapsedAcceptanceIds: before.lapsedAcceptanceIds,
+        stampedAcceptanceIds: before.stampedAcceptanceIds,
+      },
+    })
+  );
+}
+
+/**
+ * `review-complete`: the head editor's note and what became of the apply it causes (decision 56). The location is
+ * the review row's (`completeModuleReview` returns none; Review Focus 34), read once in the head (Review Focus 39).
+ * No client fields (decision 53). Never throws.
+ *
+ * @param {object} req
+ * @param {{reviewId: number, result: object, notes: *, apply: ('applied'|'held'|'failed'|'not-attempted')}} act
+ * @returns {void}
+ */
+function emitReviewComplete(req, { reviewId, result, notes, apply }) {
+  emit(
+    () => {
+      const { review } = segmentEditor.getModuleReviewWithEdits(reviewId);
+      return headFor(req, 'review-complete', rowPlace(review));
+    },
+    () => ({
+      ...NONE,
+      content: { note: typeof notes === 'string' ? notes : null },
+      before: null,
+      detail: { reviewId, status: result.status, apply },
+    })
+  );
+}
+
+/**
+ * `restore`: the version restored is the content; the acceptances the restore lapsed are the detail. No client
+ * fields (decision 53). Never throws.
+ *
+ * @param {object} req The restore request (user, params, chapterNum).
+ * @param {{version: number, before: ({lapsedAcceptanceIds: number[]}|undefined)}} act
+ * @returns {void}
+ */
+function emitRestore(req, { version, before }) {
+  emit(
+    () => headFor(req, 'restore', placeOf(req)),
+    () => ({
+      ...NONE,
+      content: { version },
+      before: null,
+      detail: { lapsedAcceptanceIds: before ? before.lapsedAcceptanceIds : [] },
+    })
+  );
+}
+
 module.exports = {
   NO_CLIENT,
   NONE,
@@ -596,5 +686,8 @@ module.exports = {
   emitRevoke,
   emitComment,
   emitSubmit,
+  emitApply,
+  emitReviewComplete,
+  emitRestore,
   ACCEPT_ELIGIBILITY_REFUSALS,
 };

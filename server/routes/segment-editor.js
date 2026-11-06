@@ -1413,6 +1413,9 @@ router.post(
 
       // Auto-apply when review is fully approved
       let applied = null;
+      let applyOutcome = 'not-attempted';
+      let applyBefore = null;
+      let place = null;
       if (result.status === 'approved') {
         try {
           const review = segmentEditor.getModuleReviewWithEdits(parseInt(req.params.reviewId, 10));
@@ -1423,16 +1426,38 @@ router.post(
             { appliedBy: req.user.username || (req.user.id != null ? String(req.user.id) : null) }
           );
           applied = withoutResearchKeys(appliedRaw);
+          applyBefore = appliedRaw.before;
+          applyOutcome = 'applied';
+          place = review.review;
         } catch (applyErr) {
           // Auto-apply is best-effort; don't fail the review completion.
           // Head-editor can retry via POST /:book/:chapter/:moduleId/apply
           // — except under a §C203 hold, where a retry is refused the same way.
           log.error({ err: applyErr }, 'Auto-apply after review failed');
+          applyOutcome = applyErr.code === 'APPLY_HELD' ? 'held' : 'failed';
           applied =
             applyErr.code === 'APPLY_HELD'
               ? { error: applyErr.message, held: true, retryable: false }
               : { error: applyErr.message, retryable: true };
         }
+      }
+
+      const reviewId = parseInt(req.params.reviewId, 10);
+      researchEmission.emitReviewComplete(req, {
+        reviewId,
+        result,
+        notes: req.body?.notes,
+        apply: applyOutcome,
+      });
+      if (applyBefore) {
+        researchEmission.emitApply(req, {
+          book: place.book,
+          chapter: place.chapter,
+          moduleId: place.module_id,
+          before: applyBefore,
+          trigger: 'review-complete',
+          reviewId,
+        });
       }
 
       res.json({ success: true, ...result, applied });
@@ -1829,6 +1854,13 @@ router.post(
         { appliedBy: req.user.username || (req.user.id != null ? String(req.user.id) : null) }
       );
       const result = withoutResearchKeys(applied);
+      researchEmission.emitApply(req, {
+        book: req.params.book,
+        chapter: req.chapterNum,
+        moduleId: req.params.moduleId,
+        before: applied.before,
+        trigger: 'apply',
+      });
 
       activityLog.log({
         type: 'segment_edits_applied',
@@ -1899,6 +1931,13 @@ router.post(
         { appliedBy: req.user.username || (req.user.id != null ? String(req.user.id) : null) }
       );
       const applyResult = withoutResearchKeys(applyRaw);
+      researchEmission.emitApply(req, {
+        book: req.params.book,
+        chapter: req.chapterNum,
+        moduleId: req.params.moduleId,
+        before: applyRaw.before,
+        trigger: 'apply-and-render',
+      });
 
       // Run inject+render pipeline (async — returns job ID for polling)
       const { jobId } = pipelineService.runPipeline({
@@ -2027,6 +2066,7 @@ router.post(
         { userId: req.user.id, username: req.user.username }
       );
       const result = withoutResearchKeys(restored);
+      researchEmission.emitRestore(req, { version, before: restored.before });
       res.json({ success: true, ...result });
     } catch (err) {
       if (err.code === 'APPLY_HELD') {
