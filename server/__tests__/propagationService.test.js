@@ -565,13 +565,25 @@ describe('createPropagatedEdits: each target gets its own served base (G1.1, T16
         },
       ],
     });
-    expect({ created: res.created, skipped: res.skipped }).toEqual({
-      created: [{ moduleId: 'm030', segmentId: 'm030:para:a' }],
-      skipped: [],
-    });
-
     const rows = rowsOf(d, 'm030');
     expect(rows).toHaveLength(1);
+    expect(res).toEqual({
+      created: [{ moduleId: 'm030', segmentId: 'm030:para:a' }],
+      skipped: [],
+      writes: [
+        {
+          moduleId: 'm030',
+          segmentId: 'm030:para:a',
+          chapter: 1,
+          occurrence: 0,
+          editId: rows[0].id,
+          servedVersionId: rows[0].served_version_id,
+          inPlace: false,
+          before: null,
+          supersededAcceptanceIds: [],
+        },
+      ],
+    });
     expect(rows[0]).toMatchObject({
       original_content: 'Sýra.',
       edited_content: 'Sýra og basi',
@@ -928,7 +940,26 @@ describe('createPropagatedEdits returns what each target write changed (G1.2)', 
     expect(res.writes[0].supersededAcceptanceIds).toEqual([Number(info.lastInsertRowid)]);
   });
 
-  it('a skipped target has no writes entry', () => {
+  it('a duplicated-id target is skipped and has no writes entry', () => {
+    const d = freshDb();
+    const occurrences = [
+      occ({
+        chapter: 1,
+        moduleId: 'm032',
+        segmentId: 'm032:para:d',
+        currentIs: '',
+        duplicated: true,
+      }),
+      occ({ chapter: 1, moduleId: 'm033', segmentId: 'm033:para:e', currentIs: '' }),
+    ];
+    const res = svc.createPropagatedEdits(d, { ...base, occurrences });
+    expect(res.skipped).toEqual([
+      { moduleId: 'm032', segmentId: 'm032:para:d', reason: 'duplicate-id', occurrence: 0 },
+    ]);
+    expect(res.writes.map((w) => w.moduleId)).toEqual(['m033']);
+  });
+
+  it('an already-matching target is skipped and has no writes entry', () => {
     const d = freshDb();
     const occurrences = [
       occ({ chapter: 1, moduleId: 'm032', segmentId: 'm032:para:d', currentIs: 'Sýra og basi' }),
