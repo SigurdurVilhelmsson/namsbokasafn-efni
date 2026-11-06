@@ -62,7 +62,7 @@ function ensureKey(intervalId) {
   }
 }
 
-// /api/health reports it (spec §5.20); Task 12 sets it on a failed consent lookup.
+// /api/health reports it (spec §5.20); set on a failed consent lookup.
 let consentFlag = false;
 
 /** @returns {boolean} whether the last consent lookup failed */
@@ -119,13 +119,65 @@ function record(event) {
   }
 }
 
+function classifyError(err) {
+  const code = (err && err.code) || '';
+  if (code === 'RESEARCH_UNAVAILABLE') return 'unavailable';
+  if (/^SQLITE_(BUSY|LOCKED)/.test(code)) return 'busy';
+  if (/^SQLITE_CONSTRAINT/.test(code)) return 'constraint';
+  return 'other';
+}
+
+const actionIdOf = (ev) => (typeof ev.clientActionId === 'string' ? ev.clientActionId : null);
+
+/**
+ * Steps 4-5 failed for a consenting actor: one content-free ledger row (spec §5.11 step 6). Reads
+ * only the plain copy `record` took, so a throwing getter cannot make this throw.
+ */
+function lose(err, ev, intervalId) {
+  const errorClass = classifyError(err);
+  researchDb.noteFailure(err);
+  logLoss(err, ev, errorClass);
+  const ledgered = researchConsent.recordLoss({
+    intervalId,
+    book: ev.book,
+    chapter: ev.chapter,
+    moduleId: ev.moduleId,
+    eventType: ev.eventType,
+    errorClass,
+    clientActionId: actionIdOf(ev),
+    nowMs: Date.now(),
+  });
+  return { status: 'lost', reason: errorClass, ledgered };
+}
+
+/** Steps 2-3 failed: consent could not be read, so the act cannot be told from a decliner's (decision 17). */
+function consentUnknown(err, ev) {
+  consentFlag = true; // /api/health reports it (spec §5.20) until a lookup succeeds again
+  logLoss(err, ev, 'consent-unknown');
+  const ledgered = researchConsent.recordLoss({
+    intervalId: null,
+    book: ev.book,
+    chapter: ev.chapter,
+    moduleId: ev.moduleId,
+    eventType: ev.eventType,
+    errorClass: 'consent-unknown',
+    clientActionId: actionIdOf(ev),
+    nowMs: Date.now(),
+  });
+  return { status: 'lost', reason: 'consent-unknown', ledgered };
+}
+
 function recordInner(ev) {
   if (!isStudyBook(ev.book)) return { status: 'skipped', reason: 'not-study' }; // step 1
-  // Task 12 wraps steps 2–3 (consent-unknown) and steps 4–5 (a counted loss); until then a throw
-  // reaches record()'s catch. No catch-and-rethrow here: eslint's no-useless-catch refuses it.
-  const user = userService.findByProviderId(ev.actorProviderId); // step 2
-  if (!user) return { status: 'skipped', reason: 'no-user' };
-  const capture = researchConsent.captureStateFor(user.id); // step 3
+  let user;
+  let capture;
+  try {
+    user = userService.findByProviderId(ev.actorProviderId); // step 2
+    if (!user) return { status: 'skipped', reason: 'no-user' };
+    capture = researchConsent.captureStateFor(user.id); // step 3
+  } catch (err) {
+    return consentUnknown(err, ev);
+  }
   consentFlag = false;
   if (!capture.capturing) return { status: 'skipped', reason: 'not-consenting' };
   // Decision 16: a replay is captured only if its client time proves it came after consent.
@@ -135,9 +187,22 @@ function recordInner(ev) {
   ) {
     return { status: 'skipped', reason: 'before-consent' };
   }
-  const row = buildEvent(ev); // step 4
-  const items = buildItemRows(ev.eventType, ev.items);
-  return writeEvent(capture.intervalId, row, items); // step 5
+  if (ev.buildFailed === true) {
+    // The route's builder threw before record could build anything (decision 14). After the gate,
+    // so only a consenting actor's failure is counted.
+    return lose(
+      Object.assign(new Error('research event build failed'), { code: 'BUILD_FAILED' }),
+      ev,
+      capture.intervalId
+    );
+  }
+  try {
+    const row = buildEvent(ev); // step 4
+    const items = buildItemRows(ev.eventType, ev.items);
+    return writeEvent(capture.intervalId, row, items); // step 5
+  } catch (err) {
+    return lose(err, ev, capture.intervalId);
+  }
 }
 
 const ORIGINS = new Set([...EDIT_ORIGINS, ...RESERVED_EDIT_ORIGINS]);

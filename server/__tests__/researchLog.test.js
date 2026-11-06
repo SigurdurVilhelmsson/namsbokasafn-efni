@@ -658,11 +658,11 @@ describe('controller rulings R1 and R2: a null served version, and undefined opt
       ['lost', 'other'],
     ]);
     expect(eventIds()).toEqual(ids0);
-    expect(spy.mock.calls.map((c) => c[0].errorCode)).toEqual([
-      'TypeError',
-      'TypeError',
-      'TypeError',
-    ]);
+    // Only the loss log: a missing chapter or module also fails the ledger's own NOT NULL columns,
+    // which logs once more (Task 12) and leaves `ledgered` false.
+    expect(
+      spy.mock.calls.filter((c) => /capture lost/.test(c[1])).map((c) => c[0].errorCode)
+    ).toEqual(['TypeError', 'TypeError', 'TypeError']);
   });
 });
 
