@@ -1683,6 +1683,12 @@ router.post(
       // G1.1 (spec §11, T18): a book that is never minted takes no write, before any target is
       // loaded. createPropagatedEdits' mint refuses it too, as a second line.
       if (isNotMintedBook(req.params.book)) {
+        researchEmission.emitRefused(req, {
+          action: 'propagate',
+          segmentId,
+          refusal: { code: 'BOOK_NOT_MINTED', echoedSha256: null, currentSha256: null },
+          origin: 'propagation',
+        });
         return res.status(409).json({
           error: 'BOOK_NOT_MINTED',
           message: servedEdit.REFUSAL_MESSAGES.BOOK_NOT_MINTED,
@@ -1704,6 +1710,8 @@ router.post(
         excludeModuleId: req.params.moduleId,
         excludeSegmentId: segmentId,
       });
+      // G1.2 (spec §5.9): what the preview would classify now, read just before the write, for the event only.
+      const latest = propagation.latestLiveEdit(req.params.book, req.params.moduleId, segmentId);
       const created = propagation.createPropagatedEdits(propagation.getDb(), {
         book: req.params.book,
         editorId: req.user.id,
@@ -1716,8 +1724,27 @@ router.post(
       });
       // G1.2: `created.writes` is the research event's; the response stays PR1's.
       const result = withoutResearchKeys(created);
+      researchEmission.emitPropagation(req, {
+        sourceSegmentId: segmentId,
+        sourceIs: sourceSeg?.is ?? '',
+        latest,
+        editedContent,
+        category,
+        note: note || 'Sjálfvirk fjölgun',
+        writes: created.writes,
+        skipped: created.skipped,
+      });
       res.json(result);
     } catch (err) {
+      if (err.refusal) {
+        // spec §5.6, decision 49: every refusal PR1 raises (the source's placement, the mint) is logged.
+        researchEmission.emitRefused(req, {
+          action: 'propagate',
+          segmentId: req.body && req.body.segmentId,
+          refusal: err.refusal,
+          origin: 'propagation',
+        });
+      }
       if (sendRefusal(res, err)) return;
       log.error({ err }, 'propagate failed');
       res.status(500).json({ error: err.message });

@@ -414,7 +414,8 @@ function emitRefused(req, { action, segmentId, refusal, origin = null }) {
           action,
           ...(malformed ? { echoMalformed: true } : {}),
         },
-        ...clientOf(req),
+        // Decision 53: a propagation carries no client action id, so its refusal carries none either.
+        ...(action === 'propagate' ? NO_CLIENT : clientOf(req)),
       };
     }
   );
@@ -666,6 +667,72 @@ function emitRestore(req, { version, before }) {
   );
 }
 
+/**
+ * `propagation`: one event per WRITTEN target, none when nothing was written (spec §5.6, §5.9; decisions 44, 53, 54,
+ * 65). The client's text is stored once (`content.text`; `record` swaps it for its hash when another editor holds
+ * the same bytes live); the preview is what the source's latest live edit (or the base) was just before the write,
+ * kept as text only when it is the actor's own or the base (another editor's text only as a hash). The skipped
+ * targets ride on index 0 only, so a sum over events counts each skip once. No client fields: one request, several
+ * events. Never throws: the route's values are read only inside emit's guarded callbacks.
+ *
+ * @param {object} req The propagate request (user, params, chapterNum).
+ * @param {{sourceSegmentId: string, sourceIs: string, latest: ({editor_id: *, edited_content: string}|null),
+ *   editedContent: string, category?: string, note: string, writes: object[], skipped: object[]}} act
+ *   `writes` and `skipped` are createPropagatedEdits' lists; `latest` is propagationService.latestLiveEdit's
+ *   answer, read just before the write.
+ * @returns {void}
+ */
+function emitPropagation(
+  req,
+  { sourceSegmentId, sourceIs, latest, editedContent, category, note, writes, skipped }
+) {
+  const list = Array.isArray(writes) ? writes : [];
+  list.forEach((w, index) => {
+    emit(
+      () =>
+        headFor(req, 'propagation', {
+          book: req.params.book,
+          chapter: w.chapter,
+          moduleId: w.moduleId,
+        }),
+      () => {
+        const clientTextSha256 = sha256Text(editedContent);
+        let previewSource = 'base';
+        let previewText = sourceIs;
+        if (latest) {
+          previewSource =
+            String(latest.editor_id) === String(req.user.id) ? 'own-edit' : 'other-edit';
+          previewText = latest.edited_content;
+        }
+        const previewSha256 = sha256Text(previewText);
+        return {
+          ...NONE,
+          segmentId: w.segmentId,
+          occurrence: w.occurrence,
+          servedVersionId: w.servedVersionId,
+          editingKind: 'segment_edit',
+          editingId: w.editId,
+          editingContentSha256: clientTextSha256,
+          origin: 'propagation',
+          content: { text: editedContent, note: note || null, category: category || null },
+          before: w.inPlace ? { table: 'segment_edits', row: w.before } : null,
+          detail: {
+            source: { moduleId: req.params.moduleId, segmentId: sourceSegmentId },
+            clientTextSha256,
+            previewSha256,
+            previewSource,
+            ...(previewSource === 'other-edit' ? {} : { previewText }),
+            previewMismatch: clientTextSha256 !== previewSha256,
+            supersededAcceptanceIds: w.supersededAcceptanceIds,
+            batch: { index, size: list.length },
+            ...(index === 0 ? { skipped } : {}),
+          },
+        };
+      }
+    );
+  });
+}
+
 module.exports = {
   NO_CLIENT,
   NONE,
@@ -680,6 +747,7 @@ module.exports = {
   claimAssistItems,
   emitSave,
   emitRefused,
+  emitPropagation,
   emitAccept,
   emitReview,
   emitDelete,
