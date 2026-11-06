@@ -419,6 +419,52 @@ function emitRefused(req, { action, segmentId, refusal, origin = null }) {
   );
 }
 
+/** The accept's eligibility refusals (acceptanceService.acceptSegment, after PR1's placement). Decision 49: logged as
+ * write-refused with no hash, since each compares row states, never a text. Pinned against the codes the service
+ * throws (Task 22's test). */
+const ACCEPT_ELIGIBILITY_REFUSALS = Object.freeze([
+  'NO_TRANSLATION',
+  'EDIT_EXISTS',
+  'DISCUSS_OPEN',
+  'HUMAN_CONTENT',
+]);
+
+/**
+ * The accept route's research event, `mt-accept` (spec §5.9): the acceptance row the write made, its served version
+ * and the accepted text's hash. An `alreadyAccepted` result logs nothing (spec §5.6). Never throws.
+ *
+ * @param {object} req The accept request (user, params, chapterNum, body).
+ * @param {{result: {alreadyAccepted?: boolean, acceptance?: object}}} act acceptSegment's return.
+ * @returns {void}
+ */
+function emitAccept(req, { result }) {
+  if (!result || result.alreadyAccepted) return; // spec §5.6: an alreadyAccepted result logs no event
+  emit(
+    () => {
+      const a = result.acceptance;
+      return headFor(req, 'mt-accept', { book: a.book, chapter: a.chapter, moduleId: a.module_id });
+    },
+    () => {
+      const a = result.acceptance;
+      return {
+        segmentId: a.segment_id,
+        occurrence: a.occurrence ?? null,
+        servedVersionId: a.served_version_id ?? null,
+        editingKind: 'segment_acceptance',
+        editingId: a.id,
+        editingContentSha256: sha256Text(a.accepted_content),
+        origin: null,
+        content: null,
+        before: null,
+        items: null,
+        sessionId: null,
+        detail: { acceptOrigin: readAcceptOrigin(req.body) },
+        ...clientOf(req),
+      };
+    }
+  );
+}
+
 module.exports = {
   NO_CLIENT,
   NONE,
@@ -433,4 +479,6 @@ module.exports = {
   claimAssistItems,
   emitSave,
   emitRefused,
+  emitAccept,
+  ACCEPT_ELIGIBILITY_REFUSALS,
 };

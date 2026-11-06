@@ -984,12 +984,13 @@ router.post(
       return res.status(400).json({ error: 'Content too long (max 10,000 characters)' });
     }
 
+    let placed = null;
     try {
       // Spec §5.6 Accept: steps 1–3 first, so a duplicated id is refused before acceptSegment's
       // existing lookup would return the first copy's row as alreadyAccepted, and organic and a
       // module with no layer are refused before anything is written. acceptOrigin is the research
       // event's (PR3); nothing here reads it.
-      const placed = servedEdit.placeOnServedBase({
+      placed = servedEdit.placeOnServedBase({
         book: req.params.book,
         chapter: req.chapterNum,
         moduleId: req.params.moduleId,
@@ -1018,8 +1019,30 @@ router.post(
         });
       }
 
+      researchEmission.emitAccept(req, { result });
       res.json({ success: true, ...result });
     } catch (err) {
+      if (err.refusal) {
+        researchEmission.emitRefused(req, { action: 'accept', segmentId, refusal: err.refusal });
+      } else if (err.code === 'STALE_CONTENT' && placed) {
+        // spec §5.6: the accept's base check is the value check; its refusal is logged as one (decision 49).
+        researchEmission.emitRefused(req, {
+          action: 'accept',
+          segmentId,
+          refusal: {
+            code: 'STALE_CONTENT',
+            echoedText: acceptedContent,
+            currentText: placed.seg.is,
+          },
+        });
+      } else if (researchEmission.ACCEPT_ELIGIBILITY_REFUSALS.includes(err.code)) {
+        // Decision 49 ([USER] 2026-11-04, spec AMENDED 2026-11-04): an eligibility refusal is logged too, with no hash.
+        researchEmission.emitRefused(req, {
+          action: 'accept',
+          segmentId,
+          refusal: { code: err.code, echoedSha256: null, currentSha256: null },
+        });
+      }
       if (sendRefusal(res, err)) return;
       // MTA-R3 adds DISCUSS_OPEN / HUMAN_CONTENT to the eligibility guard;
       // they are conflict states like the other two, not server errors.
