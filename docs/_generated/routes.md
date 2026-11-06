@@ -176,6 +176,14 @@
 | POST | `/:bookSlug/:chapterNum/localized` |
 | GET | `/:bookSlug/overview` |
 
+## /research
+
+| Method | Path |
+|--------|------|
+| GET | `/consent` |
+| POST | `/consent` |
+| POST | `/consent/withdraw` |
+
 ## /sections
 
 | Method | Path |

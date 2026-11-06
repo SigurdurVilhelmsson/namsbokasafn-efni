@@ -98,6 +98,7 @@ const notificationsRoutes = require('./routes/notifications');
 const activityRoutes = require('./routes/activity');
 const feedbackRoutes = require('./routes/feedback');
 const analyticsRoutes = require('./routes/analytics');
+const researchRoutes = require('./routes/research');
 
 // HTML views
 const viewRoutes = require('./routes/views');
@@ -248,6 +249,7 @@ app.use('/api/publication', publicationRoutes);
 
 // Support
 app.use('/api/notifications', notificationsRoutes);
+app.use('/api/research', researchRoutes);
 app.use('/api/activity', activityRoutes);
 app.post('/api/feedback', publicSubmitLimiter);
 app.post('/api/analytics/event', publicSubmitLimiter);
