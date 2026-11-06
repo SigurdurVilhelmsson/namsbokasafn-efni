@@ -391,6 +391,35 @@ describe('claimAssistItems (spec §5.10; decision 50)', () => {
     }
   });
 
+  it('a check that throws an object with a throwing code getter still gives unverified and never throws', () => {
+    const hostile = new Proxy(
+      {},
+      {
+        get() {
+          throw new Error('hostile getter');
+        },
+      }
+    );
+    const spy = vi.spyOn(concordance, 'suggestionFor').mockImplementation(() => {
+      throw hostile;
+    });
+    const warn = vi.spyOn(logger, 'warn').mockImplementation(() => {});
+    try {
+      let result;
+      expect(() => {
+        result = E.claimAssistItems([rep('Samþykkt þýðing.')], AT);
+      }).not.toThrow();
+      expect(result.items[0].claim).toBe('unverified');
+      expect(warn.mock.calls[0][0]).toEqual({
+        errorCode: 'unknown',
+        itemType: 'repetition-insert',
+      });
+    } finally {
+      spy.mockRestore();
+      warn.mockRestore();
+    }
+  });
+
   it("every item is one record accepts (Task 10's buildItemRows does not throw on any of them)", () => {
     const { items } = E.claimAssistItems(
       [

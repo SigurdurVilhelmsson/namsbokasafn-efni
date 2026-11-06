@@ -115,6 +115,25 @@ describe('emit', () => {
       expect(recordSpy.mock.calls).toEqual([[{ ...head, buildFailed: true }]]);
     }
   );
+  it('a builder that throws an object whose code and name getters throw still never throws out of emit', () => {
+    const hostile = new Proxy(
+      {},
+      {
+        get() {
+          throw new Error('hostile getter');
+        },
+      }
+    );
+    expect(() =>
+      E.emit(
+        () => head,
+        () => {
+          throw hostile;
+        }
+      )
+    ).not.toThrow();
+    expect(recordSpy.mock.calls).toEqual([[{ ...head, buildFailed: true }]]);
+  });
   it('a builder returning undefined is a builder failure, not a hollow head-only event', () => {
     expect(() =>
       E.emit(

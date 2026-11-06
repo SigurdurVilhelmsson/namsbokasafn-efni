@@ -185,13 +185,22 @@ function claimAssistItems(raw, place) {
       // The check could not run (a database error): an unverifiable claim is never called false.
       claim = 'unverified';
       log.warn(
-        { errorCode: (err && (err.code || err.name)) || 'unknown', itemType: r.itemType },
+        { errorCode: errorCodeOf(err), itemType: r.itemType },
         'Assist claim check failed; marked unverified'
       );
     }
     items.push({ ...item, claim });
   }
   return { items, droppedCount };
+}
+
+/** A thrown value's code or name for a log line; never throws (a Proxy or hostile getter reads as 'unknown'). */
+function errorCodeOf(err) {
+  try {
+    return (err && (err.code || err.name)) || 'unknown';
+  } catch {
+    return 'unknown';
+  }
 }
 
 const NO_CLIENT = Object.freeze({ clientActionId: null, clientActionTime: null, replayed: false });
@@ -246,7 +255,7 @@ function emit(headFn, build) {
   } catch (err) {
     log.error(
       {
-        errorCode: (err && (err.code || err.name)) || 'unknown',
+        errorCode: errorCodeOf(err),
         eventType: head ? head.eventType : null,
         book: head ? head.book : null,
       },
