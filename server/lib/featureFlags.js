@@ -116,6 +116,7 @@ const ENV_SCAN_FILES = Object.freeze([
   'lib/researchDbPath.js',
   'services/researchDb.js',
   'services/researchConsent.js',
+  'lib/serverCommit.js',
 ]);
 
 /**

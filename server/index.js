@@ -57,6 +57,14 @@ try {
   );
 }
 
+// The running code's commit, read once (spec §5.12); research events stamp it.
+try {
+  const { serverCommit, commitSource, codeDirty } = require('./lib/serverCommit').getServerCommit();
+  log.info({ serverCommit, commitSource, codeDirty }, 'Server commit (spec §5.12)');
+} catch (err) {
+  log.error({ errorCode: err.code || err.name }, 'Server commit could not be read (spec §5.12)');
+}
+
 const express = require('express');
 const cors = require('cors');
 const { corsOptions } = require('./lib/corsOptions');

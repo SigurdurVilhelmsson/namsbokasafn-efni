@@ -17,7 +17,7 @@ import path from 'node:path';
 
 const REPO = path.resolve(import.meta.dirname, '..', '..');
 
-const SCRIPTS = ['scripts/git-backup.sh', 'scripts/deploy.sh'];
+const SCRIPTS = ['scripts/git-backup.sh', 'scripts/deploy.sh', 'scripts/record-deployed-commit.sh'];
 
 describe('production shell scripts parse', () => {
   it.each(SCRIPTS)('%s has no syntax errors', (rel) => {
@@ -33,5 +33,17 @@ describe('production shell scripts parse', () => {
     const src = readFileSync(path.join(REPO, 'scripts', 'deploy.sh'), 'utf8');
     expect(src).toMatch(/api\/health/);
     expect(src).not.toMatch(/curl -sf http:\/\/localhost:3000\/api\/health > \/dev\/null/);
+  });
+
+  it('deploy.sh records the deployed commit after its pull and before the stash pop (G1.2, spec §5.12)', () => {
+    const src = readFileSync(path.join(REPO, 'scripts', 'deploy.sh'), 'utf8');
+    const pull = src.indexOf('git pull --rebase origin main');
+    const record = src.indexOf(
+      'record-deployed-commit.sh FETCH_HEAD pipeline-output/.deployed-commit'
+    );
+    const pop = src.indexOf('git stash pop');
+    expect([pull > -1, record > pull, pop > record]).toEqual([true, true, true]);
+    // never fails the deploy: the call carries its own fallback
+    expect(src.slice(record, src.indexOf('\n', record))).toMatch(/\|\|/);
   });
 });
