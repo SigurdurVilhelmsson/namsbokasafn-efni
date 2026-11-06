@@ -17,6 +17,9 @@
  *   - the apply hold must be in place for the book (PR #556). Without it an approved row is
  *     one click from an apply that writes the module's whole base text over the September
  *     MT (§C203);
+ *   - no unit of the book may have opened (G1.1 + G1.2 spec §5.6): this script logs no research
+ *     event, so it runs only before the study. The count is read again as the first statement of
+ *     the write's IMMEDIATE transaction, and an opening found there throws, writing nothing;
  *   - the input file must be the one the rulings name (sha256), and the rulings must cover it
  *     exactly: every frozen row once, in the set its frozen class belongs to;
  *   - every ruled row must still be pending and unchanged since it was frozen, and an
@@ -72,6 +75,16 @@ function closePendingEdits(db, { book, rulings, input, inputSha256, reviewer, wr
     refuse(
       `the apply hold is not in place for ${book}: deploy PR #556 first. Without it an ` +
         `approved row is one click from an apply over the September MT (§C203)`
+    );
+  }
+
+  // G1.1 + G1.2 spec §5.6: this script writes raw SQL and logs no research event, so it must not run once any unit of
+  // this book has opened. Read here for the report, and again as the write's first statement (below).
+  const opened = openingsOf(db, book);
+  if (opened > 0) {
+    refuse(
+      `${book}: ${opened} unit(s) have opened (module_openings), and this script's writes are not logged as ` +
+        'research events; it must not run once any unit has opened (G1.1 + G1.2 spec §5.6)'
     );
   }
 
@@ -193,7 +206,17 @@ function closePendingEdits(db, { book, rulings, input, inputSha256, reviewer, wr
   const answerOf = new Map(answers.map((a) => [a.id, a]));
   const wrote = { approved: 0, superseded: 0, activity: 0 };
 
+  // IMMEDIATE: the write lock is taken at BEGIN, so the count read first holds until the commit. The server records
+  // an opening in an IMMEDIATE transaction of its own (moduleOpenings.recordOpening), which waits for this one. A
+  // DEFERRED transaction would take the lock only at its first UPDATE, and an opening could commit between the two.
   db.transaction(() => {
+    // The guard above was a read before this transaction; the server is another process (PR2 review U7).
+    if (openingsOf(db, book) > 0) {
+      throw new Error(
+        `${book}: a unit opened during the write (module_openings), after the check read none; nothing was ` +
+          'written (G1.1 + G1.2 spec §5.6)'
+      );
+    }
     for (const id of sets.apply) {
       const a = answerOf.get(id);
       const note = (a.note || '').trim() || NOTES.apply(String(a.savedAt || '').slice(0, 10));
@@ -221,7 +244,7 @@ function closePendingEdits(db, { book, rulings, input, inputSha256, reviewer, wr
         wrote.superseded += 1;
       }
     }
-  })();
+  }).immediate();
 
   report.wrote = wrote;
   report.after = db
@@ -230,6 +253,20 @@ function closePendingEdits(db, { book, rulings, input, inputSha256, reviewer, wr
     )
     .all(book);
   return report;
+}
+
+/**
+ * The book's rows in module_openings. A database without the table (before migration 054) has none: while it is
+ * missing, a serve that would open a unit answers 503 instead (server/services/moduleOpenings.js). Any other error
+ * from the read throws (decision 29), so a table it cannot read is never taken for an empty one.
+ */
+function openingsOf(db, book) {
+  const hasOpenings = db
+    .prepare("SELECT 1 AS hit FROM sqlite_master WHERE type = 'table' AND name = 'module_openings'")
+    .get();
+  return hasOpenings
+    ? db.prepare('SELECT COUNT(*) AS n FROM module_openings WHERE book = ?').get(book).n
+    : 0;
 }
 
 /** Unknown arguments are refused, not dropped (CLAUDE.md: parseArgs silently drops them). */

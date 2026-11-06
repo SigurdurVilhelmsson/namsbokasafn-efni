@@ -10,6 +10,7 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { createRequire } from 'module';
 import crypto from 'crypto';
 const require = createRequire(import.meta.url);
+const Database = require('better-sqlite3');
 const freshMigratedDb = require('./helpers/freshMigratedDb');
 const { closePendingEdits } = require('../scripts/close-pending-edits');
 
@@ -19,6 +20,7 @@ const LEAD_ID = '00000000-0000-4000-8000-000000000001';
 const held = () => ({ book: BOOK, reason: 'test hold' });
 
 let db;
+let dbPath;
 let ids;
 let input;
 let inputSha256;
@@ -73,7 +75,7 @@ function run(overrides = {}) {
 const statusOf = (id) => db.prepare('SELECT status FROM segment_edits WHERE id = ?').get(id).status;
 
 beforeEach(() => {
-  ({ db } = freshMigratedDb());
+  ({ db, path: dbPath } = freshMigratedDb());
   db.prepare(
     `INSERT INTO users (provider_id, provider_username, display_name, email, role, last_login_at)
      VALUES (?, ?, 'Lead', ?, 'admin', CURRENT_TIMESTAMP)`
@@ -271,4 +273,159 @@ describe('close-pending-edits: refusals', () => {
     rulings.notAsked['base-changed'].ids = ids.changed.slice(0, 1);
     expect(run().ok).toBe(false);
   });
+
+  // G1.1 + G1.2 spec §5.6: this script logs no research event, so it must not run once a unit has opened.
+  it('refuses once a unit of the book has opened, in a dry run as in a write, and writes nothing', () => {
+    const open = db.prepare(
+      `INSERT INTO module_openings (book, chapter, module_id, opened_at_ms, inflight_count)
+       VALUES (?, 3, 'm68700', 1700000000000, 0)`
+    );
+    open.run('liffraedi-2e');
+    // control: another book's opening does not count
+    expect(run({ write: false })).toMatchObject({ ok: true, refused: [] });
+    open.run(BOOK);
+    const opened = [expect.stringMatching(/^efnafraedi-2e: 1 unit\(s\) have opened/)];
+    expect(run({ write: false }).refused).toEqual(opened);
+    const r = run();
+    expect(r.ok).toBe(false);
+    expect(r.refused).toEqual(opened);
+    expect(db.prepare(`SELECT id FROM segment_edits WHERE status != 'pending'`).all()).toEqual([]);
+  });
+
+  it('a database without module_openings (before migration 054) counts as none opened', () => {
+    db.exec('DROP TABLE module_opening_inflight; DROP TABLE module_openings');
+    const r = run();
+    expect(r.refused).toEqual([]);
+    expect(ids.clean.map(statusOf)).toEqual(['approved', 'approved']); // the write went through
+  });
+
+  // Decision 29: the existence check is keyed on module_openings itself. With only the snapshot table gone, a
+  // chemistry opening still refuses (a check for the other table would read this as none opened).
+  it('looks for module_openings itself: with only module_opening_inflight gone, an opening still refuses', () => {
+    db.prepare(
+      `INSERT INTO module_openings (book, chapter, module_id, opened_at_ms, inflight_count)
+       VALUES (?, 3, 'm68700', 1700000000000, 0)`
+    ).run(BOOK);
+    db.exec('DROP TABLE module_opening_inflight');
+    const r = run();
+    expect(r.ok).toBe(false);
+    expect(r.refused).toEqual([expect.stringMatching(/^efnafraedi-2e: 1 unit\(s\) have opened/)]);
+    expect(ids.clean.map(statusOf)).toEqual(['pending', 'pending']);
+  });
+
+  // Decision 29: only a MISSING table counts as none opened. Any other error from the read throws, as the script's
+  // other reads do, so a module_openings it cannot read is never taken for an empty one.
+  it('fails closed: a module_openings it cannot read throws, and nothing is written', () => {
+    db.exec(
+      'DROP TABLE module_opening_inflight; DROP TABLE module_openings; CREATE TABLE module_openings (x INTEGER)'
+    );
+    expect(() => run()).toThrow(/no such column: book/);
+    expect(ids.clean.map(statusOf)).toEqual(['pending', 'pending']);
+  });
 });
+
+// PR2 review U7: the opening guard is a read before the write, and the server is another process. A
+// second connection to the same file plays the server; it opens a chemistry unit at a chosen moment.
+describe('close-pending-edits: an opening recorded by another process while it runs', () => {
+  const OPEN_SQL = `INSERT INTO module_openings (book, chapter, module_id, opened_at_ms, inflight_count)
+                    VALUES (?, 3, 'm68700', 1700000000000, 0)`;
+  const openings = () =>
+    db.prepare('SELECT COUNT(*) AS n FROM module_openings WHERE book = ?').get(BOOK).n;
+  const activityRows = () =>
+    db.prepare(`SELECT COUNT(*) AS n FROM activity_log WHERE type = 'segment_edit_approved'`).get()
+      .n;
+  /** db, with `onGet(prop)` called before each property the script reads from it. */
+  const watched = (onGet) =>
+    new Proxy(db, {
+      get(target, prop) {
+        onGet(prop);
+        const v = Reflect.get(target, prop);
+        return typeof v === 'function' ? v.bind(target) : v;
+      },
+    });
+  let server;
+  beforeEach(() => {
+    server = new Database(dbPath, { timeout: 0 }); // never waits: a refused write throws at once
+  });
+  afterEach(() => {
+    server.close();
+  });
+
+  it('an opening that lands between the guard and the write refuses the write, and nothing is written', () => {
+    // The script reaches for db.transaction after every check, the opening guard among them, and
+    // before its first UPDATE: the server's opening commits there.
+    let raced = false;
+    const racing = watched((prop) => {
+      if (prop === 'transaction' && !raced) {
+        raced = true;
+        server.prepare(OPEN_SQL).run(BOOK);
+      }
+    });
+    expect(() => closePendingEdits(racing, { ...runArgs() })).toThrow(
+      /efnafraedi-2e: a unit opened during the write/
+    );
+    expect(raced).toBe(true); // control: the opening was planted after the guard read none
+    expect(openings()).toBe(1);
+    expect(
+      [...ids.clean, ...ids.present, ...ids.changed].map(statusOf).every((s) => s === 'pending')
+    ).toBe(true);
+    expect(activityRows()).toBe(0);
+  });
+
+  it('control: through the same watcher with no opening, the write goes through', () => {
+    const r = closePendingEdits(
+      watched(() => {}),
+      runArgs()
+    );
+    expect(r).toMatchObject({ ok: true, wrote: { approved: 2, superseded: 3, activity: 2 } });
+  });
+
+  it('holds the write lock from its first statement: the server cannot open a unit mid-write (WAL, as production)', () => {
+    db.pragma('journal_mode = WAL');
+    // At the first approval's UPDATE, the server tries to record an opening.
+    let attempt = null;
+    const midWrite = new Proxy(db, {
+      get(target, prop) {
+        const v = Reflect.get(target, prop);
+        if (prop !== 'prepare') return typeof v === 'function' ? v.bind(target) : v;
+        return (sql) => {
+          const stmt = target.prepare(sql);
+          if (!/SET status = 'approved'/.test(sql)) return stmt;
+          return {
+            run: (...args) => {
+              if (attempt === null) {
+                try {
+                  server.prepare(OPEN_SQL).run(BOOK);
+                  attempt = 'committed';
+                } catch (err) {
+                  attempt = err.code;
+                }
+              }
+              return stmt.run(...args);
+            },
+          };
+        };
+      },
+    });
+    const r = closePendingEdits(midWrite, runArgs());
+    expect(attempt).toBe('SQLITE_BUSY');
+    expect(r).toMatchObject({ ok: true, wrote: { approved: 2, superseded: 3, activity: 2 } });
+    expect(openings()).toBe(0);
+    // Control: once the write has committed, the same insert from the server goes through.
+    server.prepare(OPEN_SQL).run(BOOK);
+    expect(openings()).toBe(1);
+  });
+});
+
+/** run()'s arguments, for a call that passes its own connection. */
+function runArgs() {
+  return {
+    book: BOOK,
+    rulings,
+    input,
+    inputSha256,
+    reviewer: LEAD,
+    write: true,
+    holdFor: held,
+  };
+}

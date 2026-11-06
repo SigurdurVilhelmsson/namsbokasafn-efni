@@ -4,6 +4,1889 @@
 
 ## ⏩ RESUME — state as of **2026-10-09 — ✅ '6' PR-B IS MERGED ([#546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546)) AND DEPLOYED, with the 7 Dependabot PRs; R-22's condition is met and the LIVE-RUN HOLD's condition is met on `main`. ⏹ The whole-book re-render and the chemistry sync are HELD for [USER]. ▶ [CODE] in parallel: the ② code batch (end of this block)** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence) ✏️ *Heading re-dated 2026-10-09; it had said PR-B was BUILT and UNPUSHED, with step 2b and the LIVE-RUN HOLD outstanding, after all three had changed. The bullets directly under the SINGLE NEXT ACTION are PR-B's record.*
 
+### ⏭ 2026-11-06 (Task 8 run) — ADDS TO THE ENTRY DIRECTLY BELOW AND SUPERSEDES ITS NEXT: **✅ PR2's READ-ONLY PROBE RAN ON PRODUCTION (Task 8 Steps 1–5), under [USER]'s authorisation of 2026-11-05 and [USER]'s go on 2026-11-06. Every section is `ok: true`, and the output names no editor. ⚠️ CHEMISTRY HOLDS ONE ASSIGNMENT ROW (user 4, chapter 3), so Step 5's §9 choice was [USER]'s: ✅ [USER] CHOSE (a), REMOVE IT, on 2026-11-06, removed the row on the admin page the same morning, and the control run read `G-1d.assignments: []` (below). Task 8 is complete. ▶ NEXT, [USER]: merge #626 as a merge commit, after `ls server/migrations` shows `054` still free.**
+- **The run.** `readAt` 2026-11-06T07:54:08Z, from the main checkout on this branch at `016af393`. The probe was last changed in `d8d0bee3`, and `git diff --exit-code HEAD -- server/scripts/read-research-preconditions.js` was clean. ⚠️ Step 1's `git status --porcelain` was not empty: `logs/dev-journal.md` carried an uncommitted edit from an earlier session. It is not the probe, and it is not in this commit.
+- **Before it** (amendment item 5): `systemctl is-active ritstjorn` printed `active`, and prod's `sessions.db-wal` and `-shm` were present and the server's. Prod was at `e6ee0bc9` (PR1), clean, with its migrations ending at `053`. A non-interactive `node` there is `/usr/bin/node`, the service's binary (`process.versions.modules` 127 for both), so the plan's command ran unchanged: `ssh <prod> "cd <repo>/server/scripts && node - efnafraedi-2e" < server/scripts/read-research-preconditions.js > <scratch>/preconditions.json` gave `exit 0`, 19,365 bytes and an empty stderr, and the file parses whole. (The probe sets `process.exitCode` and never calls `process.exit`, so the ssh pipe cannot cut its output short.)
+- **Controls.** Prod's `sessions.db*` files had the same names, sizes and mtimes before and after the run. Step 3: `grep -ac '@'` gave `0`, and the file was read whole. It holds user ids, roles, chapter numbers, segment ids, counts and directives; the only names in it are the public host names inside nginx's log paths.
+- **G-1d.** `efnafraedi-2e`: `enforceAssignments: false` (`studyBookEnforced: false`). `assignments`: `{userId: 4, chapter: 3}` and nothing else. `users`: 1 and 2 admin; 3, 4 and 5 editor; 6 viewer; all active. `autoCreateUsers.effective`: `null`, source `unset` (no value in `server/.env`, no `Environment=`, no `EnvironmentFile=`). `signInPolicy` (`server/services/auth.js`) reads unset as `visitor`: a sign-in that matches no account gets a viewer session and no row.
+- **G-1c.** journald: no applied file sets a retention key. The only setting is `ForwardToSyslog=yes`, in Ubuntu's own `usr/lib/systemd/journald.conf.d/syslog.conf`, so journald's defaults govern retention. Per `journald.conf(5)`, `MaxRetentionSec=` defaults to 0, "which turns off" time-based deletion, and `SystemMaxUse=` to 10% of the file system. (Read from the man page on the dev box, systemd 259; prod runs 255, and the probe reads settings, not defaults.) `/var/log/journal` exists (persistent), with 259.5M on disk. rsyslog is configured and `active`, so the request log is also handed to syslog; `/etc/logrotate.d/rsyslog` has `rotate 4` and `weekly`. nginx's `access_log`: `/var/log/nginx/access.log` (nginx.conf); `/var/log/nginx/namsbokasafn.is.access.log` and four `access_log off;` (the reader site); `/var/log/nginx/ritstjorn.namsbokasafn.is.access.log` (the editor server). `/etc/logrotate.d/nginx`: `daily`, `rotate 90`. `logrotate.conf`'s defaults: `weekly`, `rotate 4`. ▶ **For the consent text (§6 item 14) and G1.15's rule:** an editor's requests are logged in journald (no age limit set), in nginx's editor-server access log (90 daily rotations), and in `/var/log/syslog` (four weekly rotations) if rsyslog's rules send them there; the probe does not read those rules.
+- **G-1e.** 15 in-flight segments, every one approved and not applied (0 pending), as spec §5.5 and §12 correction 1 expect: `m68667` (ch1) 4, `m68700` (ch3) 10, `chapter-metadata` (ch5) 1. `reattach` is 0 on all 15, so each writes the opening warning when its unit opens (`snapshotRows` in `moduleOpenings.js` warns on an in-flight edit whose origin is not `re-attach`). 93 applied rows have no faithful file: `m68663` 2 and `m68664` 44 (ch1); `m68699` 2 and `m68700` 45 (ch3). `originColumn: true`, as PR1's deploy left it.
+- **G-1f.** `sqlite3` is on PATH, at `/usr/bin/sqlite3`.
+- **G-1g.** On production: 170 units, all 170 without an MT lock marker, `lackingMtFile: []`. At HEAD `016af393` (the probe run locally the same morning, in place of Task 6's scratch list, which stayed with the cloud session): 170, 170 and `[]`, the same set, with no unit in one list and not the other. So G1.7's freeze markers are absent everywhere, and spec §13a's "before any unit opens" list is not met on that count. That is G1.7's to fix, not this PR's.
+- **Step 5, the §9 choice: ✅ [USER] chose (a) on 2026-11-06**, from the two options below, asked with the access consequence of each. `G-1d.assignments` was not `[]`. ✅ [USER] removed the row on the admin page; the control run is recorded after the first run's output.
+  - **(a) Remove the row** (the admin page's chapter assignments), then re-run Step 2 and record that `assignments` reads `[]`. No unit can then open until G1.13 assigns, after G1.23's switch-on (R6). With enforcement off, `hasChapterAccess` (`server/services/userService.js`) counts **the caller's own rows** for the book (`WHERE user_id = ? AND book_slug = ?`). So today editors 3 and 5, who hold none, can already save in every chemistry chapter, and only editor 4 is limited, to chapter 3. Removing the row gives editor 4 every chemistry chapter and changes no one else's access; viewing is unaffected. (The plan's "every editor can save in every chemistry chapter" is right; it was already true of editors 3 and 5.)
+  - **(b) Keep it.** Chapter 3's six units (G-1g lists them) open at editor 4's first serve after PR2's deploy, before the switch-on, so they never get suggestions (G1.23 §6.2); `m68700` opens with its 10 in-flight segments, each writing the warning. They would open before G1.7's markers exist and with an assignment made before switch-on, two of the three items on spec §13a's "before any unit opens" list.
+- **The output, verbatim** (a fence with no language, so no formatter re-indents it):
+
+```
+{
+ "probe": "read-research-preconditions",
+ "readAt": "2026-11-06T07:54:08.079Z",
+ "book": "efnafraedi-2e",
+ "ok": true,
+ "sections": {
+  "G-1c": {
+   "ok": true,
+   "journald": {
+    "settings": [
+     {
+      "file": "usr/lib/systemd/journald.conf.d/syslog.conf",
+      "line": "ForwardToSyslog=yes"
+     }
+    ],
+    "notReadBySystemd255": [],
+    "persistentDir": true,
+    "diskUsage": {
+     "ran": true,
+     "output": "Archived and active journals take up 259.5M in the file system."
+    }
+   },
+   "rsyslog": {
+    "configPresent": true,
+    "active": {
+     "ran": true,
+     "output": "active"
+    }
+   },
+   "nginx": {
+    "accessLog": [
+     {
+      "file": "nginx/nginx.conf",
+      "line": "access_log /var/log/nginx/access.log;"
+     },
+     {
+      "file": "nginx/sites-enabled/namsbokasafn.is",
+      "line": "access_log /var/log/nginx/namsbokasafn.is.access.log;"
+     },
+     {
+      "file": "nginx/sites-enabled/namsbokasafn.is",
+      "line": "access_log off;"
+     },
+     {
+      "file": "nginx/sites-enabled/namsbokasafn.is",
+      "line": "access_log off;"
+     },
+     {
+      "file": "nginx/sites-enabled/namsbokasafn.is",
+      "line": "access_log off;"
+     },
+     {
+      "file": "nginx/sites-enabled/namsbokasafn.is",
+      "line": "access_log off;"
+     },
+     {
+      "file": "nginx/sites-enabled/ritstjorn.namsbokasafn.is",
+      "line": "access_log /var/log/nginx/ritstjorn.namsbokasafn.is.access.log;"
+     }
+    ]
+   },
+   "logrotate": {
+    "defaults": [
+     "weekly",
+     "rotate 4"
+    ],
+    "nginx": [
+     "daily",
+     "rotate 90"
+    ],
+    "rsyslog": [
+     "rotate 4",
+     "weekly"
+    ]
+   }
+  },
+  "G-1d": {
+   "ok": true,
+   "enforcement": [
+    {
+     "book": "efnafraedi-2e",
+     "enforceAssignments": false
+    }
+   ],
+   "studyBookEnforced": false,
+   "assignments": [
+    {
+     "userId": 4,
+     "chapter": 3
+    }
+   ],
+   "assignedChapters": [
+    3
+   ],
+   "users": [
+    {
+     "id": 1,
+     "role": "admin",
+     "active": true
+    },
+    {
+     "id": 2,
+     "role": "admin",
+     "active": true
+    },
+    {
+     "id": 3,
+     "role": "editor",
+     "active": true
+    },
+    {
+     "id": 4,
+     "role": "editor",
+     "active": true
+    },
+    {
+     "id": 5,
+     "role": "editor",
+     "active": true
+    },
+    {
+     "id": 6,
+     "role": "viewer",
+     "active": true
+    }
+   ],
+   "autoCreateUsers": {
+    "dotEnv": {
+     "present": true,
+     "value": null
+    },
+    "service": {
+     "ran": true,
+     "value": null
+    },
+    "environmentFiles": [],
+    "effective": {
+     "value": null,
+     "source": "unset"
+    }
+   }
+  },
+  "G-1e": {
+   "ok": true,
+   "originColumn": true,
+   "inflight": [
+    {
+     "chapter": 1,
+     "moduleId": "m68667",
+     "segmentId": "m68667:abstract:auto-2",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68667",
+     "segmentId": "m68667:caption:CNX_Chem_01_02_Mixtures-caption",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68667",
+     "segmentId": "m68667:entry:auto-98",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68667",
+     "segmentId": "m68667:title:auto-1",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:problem:fs-idm147492048",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:problem:fs-idp12657920",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:problem:fs-idp17618896",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:problem:fs-idp41417120",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:problem:fs-idp51969104",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:problem:fs-idp52331520",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:problem:fs-idp66967088",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:problem:fs-idp75868160",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:solution:fs-idp55880896",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:solution:fs-idp71749776",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 5,
+     "moduleId": "chapter-metadata",
+     "segmentId": "chapter:title:ch05",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    }
+   ],
+   "appliedWithoutFaithful": [
+    {
+     "chapter": 1,
+     "moduleId": "m68663",
+     "segmentId": "m68663:para:fs-idp22452080"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68663",
+     "segmentId": "m68663:para:fs-idp32962032"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:abstract-item:abstract-item-1"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:abstract-item:abstract-item-3"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:abstract-item:abstract-item-4"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:abstract:auto-2"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:caption:CNX_Chem_01_01_Alchemist-caption"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:caption:CNX_Chem_01_01_ChemWeb-caption"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:caption:CNX_Chem_01_01_SciMethod-caption"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:caption:CNX_Chem_01_01_WaterDom-caption"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:glossary-def:fs-idm105060976-def"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:glossary-def:fs-idm121167952-def"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:glossary-def:fs-idm41373200-def"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:glossary-def:fs-idp132867984-def"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:glossary-def:fs-idp16592704-def"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:glossary-term:fs-idp132867984-term"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idm14698032"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idm148595088"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idm166065136"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idm166568720"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idm183676832"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idm19494768"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idm64529776"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idp128238864"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idp130311264"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idp139124096"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idp28442320"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idp4269776"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idp55245024"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idp77567568"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:problem:fs-idm59206592"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:problem:fs-idp109280880"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:problem:fs-idp109329824"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:problem:fs-idp19466944"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:problem:fs-idp23452688"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:problem:fs-idp42446672"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:problem:fs-idp4603232"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:problem:fs-idp55370768"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:problem:fs-idp71047280"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:problem:fs-idp71050048"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:problem:fs-idp71129152"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:problem:fs-idp72952208"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:problem:fs-idp77253536"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:solution:fs-idm53320912"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:solution:fs-idm78140032"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:title:fs-idp132288224-title"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68699",
+     "segmentId": "m68699:caption:CNX_Chem_03_00_Pool-caption"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68699",
+     "segmentId": "m68699:para:fs-idp44036064"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:abstract-item:abstract-item-1"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:abstract-item:abstract-item-2"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:abstract-item:abstract-item-3"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:caption:CNX_Chem_03_01_chloroform-caption"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:caption:CNX_Chem_03_01_saltMass-caption"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:caption:CNX_Chem_03_02_copper-caption"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:caption:CNX_Chem_03_02_moles-caption"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:example-title:fs-idm8741648-title"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:example-title:fs-idp13749376-title"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:example-title:fs-idp17719968-title"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm15991984"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm16014480"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm1867456"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm19496816"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm1982944"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm24646960"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm26436032"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm28512"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm29254000"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm3056704"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm31455504"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm38739232"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm40043360"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm4217280"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm42768912"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm4828384"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm58442752"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp1127280"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp11370272"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp1202080"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp128238864"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp13429376"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp13712512"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp139124096"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp14642528"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp14697696"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp15725488"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp17223008"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp18156240"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp18362672"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp27818080"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp33552"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp4269776"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp76705136"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:title:fs-idp16940464-title"
+    }
+   ]
+  },
+  "G-1f": {
+   "ok": true,
+   "sqlite3": {
+    "onPath": true,
+    "path": "/usr/bin/sqlite3"
+   }
+  },
+  "G-1g": {
+   "ok": true,
+   "unitCount": 170,
+   "lacking": [
+    "appendices/m68859",
+    "appendices/m68860",
+    "appendices/m68861",
+    "appendices/m68862",
+    "appendices/m68863",
+    "appendices/m68864",
+    "appendices/m68865",
+    "appendices/m68866",
+    "appendices/m68867",
+    "appendices/m68868",
+    "appendices/m68869",
+    "appendices/m68870",
+    "appendices/m68871",
+    "ch00/m68662",
+    "ch01/chapter-metadata",
+    "ch01/m68663",
+    "ch01/m68664",
+    "ch01/m68667",
+    "ch01/m68670",
+    "ch01/m68674",
+    "ch01/m68683",
+    "ch01/m68690",
+    "ch02/chapter-metadata",
+    "ch02/m68684",
+    "ch02/m68685",
+    "ch02/m68687",
+    "ch02/m68692",
+    "ch02/m68693",
+    "ch02/m68695",
+    "ch02/m68696",
+    "ch02/m68698",
+    "ch03/chapter-metadata",
+    "ch03/m68699",
+    "ch03/m68700",
+    "ch03/m68702",
+    "ch03/m68703",
+    "ch03/m68704",
+    "ch04/chapter-metadata",
+    "ch04/m68709",
+    "ch04/m68710",
+    "ch04/m68713",
+    "ch04/m68714",
+    "ch04/m68716",
+    "ch04/m68730",
+    "ch05/chapter-metadata",
+    "ch05/m68723",
+    "ch05/m68724",
+    "ch05/m68726",
+    "ch05/m68727",
+    "ch06/chapter-metadata",
+    "ch06/m68728",
+    "ch06/m68729",
+    "ch06/m68732",
+    "ch06/m68733",
+    "ch06/m68734",
+    "ch06/m68735",
+    "ch07/chapter-metadata",
+    "ch07/m68736",
+    "ch07/m68737",
+    "ch07/m68738",
+    "ch07/m68739",
+    "ch07/m68740",
+    "ch07/m68741",
+    "ch07/m68742",
+    "ch08/chapter-metadata",
+    "ch08/m68743",
+    "ch08/m68744",
+    "ch08/m68745",
+    "ch08/m68746",
+    "ch08/m68747",
+    "ch09/chapter-metadata",
+    "ch09/m68748",
+    "ch09/m68750",
+    "ch09/m68751",
+    "ch09/m68752",
+    "ch09/m68754",
+    "ch09/m68758",
+    "ch09/m68759",
+    "ch10/chapter-metadata",
+    "ch10/m68760",
+    "ch10/m68761",
+    "ch10/m68764",
+    "ch10/m68768",
+    "ch10/m68769",
+    "ch10/m68770",
+    "ch10/m68773",
+    "ch11/chapter-metadata",
+    "ch11/m68776",
+    "ch11/m68778",
+    "ch11/m68781",
+    "ch11/m68782",
+    "ch11/m68783",
+    "ch11/m68784",
+    "ch12/chapter-metadata",
+    "ch12/m68785",
+    "ch12/m68786",
+    "ch12/m68787",
+    "ch12/m68789",
+    "ch12/m68791",
+    "ch12/m68793",
+    "ch12/m68794",
+    "ch12/m68795",
+    "ch13/chapter-metadata",
+    "ch13/m68796",
+    "ch13/m68797",
+    "ch13/m68798",
+    "ch13/m68799",
+    "ch13/m68801",
+    "ch14/chapter-metadata",
+    "ch14/m68802",
+    "ch14/m68803",
+    "ch14/m68804",
+    "ch14/m68805",
+    "ch14/m68806",
+    "ch14/m68807",
+    "ch14/m68808",
+    "ch14/m68809",
+    "ch15/chapter-metadata",
+    "ch15/m68810",
+    "ch15/m68811",
+    "ch15/m68813",
+    "ch15/m68814",
+    "ch16/chapter-metadata",
+    "ch16/m68815",
+    "ch16/m68816",
+    "ch16/m68817",
+    "ch16/m68818",
+    "ch16/m68819",
+    "ch17/chapter-metadata",
+    "ch17/m68820",
+    "ch17/m68821",
+    "ch17/m68822",
+    "ch17/m68823",
+    "ch17/m68824",
+    "ch17/m68825",
+    "ch17/m68826",
+    "ch17/m68827",
+    "ch18/chapter-metadata",
+    "ch18/m68828",
+    "ch18/m68829",
+    "ch18/m68830",
+    "ch18/m68831",
+    "ch18/m68832",
+    "ch18/m68833",
+    "ch18/m68834",
+    "ch18/m68835",
+    "ch18/m68836",
+    "ch18/m68837",
+    "ch18/m68838",
+    "ch18/m68839",
+    "ch18/m68840",
+    "ch19/chapter-metadata",
+    "ch19/m68841",
+    "ch19/m68842",
+    "ch19/m68843",
+    "ch19/m68844",
+    "ch20/chapter-metadata",
+    "ch20/m68845",
+    "ch20/m68846",
+    "ch20/m68847",
+    "ch20/m68848",
+    "ch20/m68849",
+    "ch21/chapter-metadata",
+    "ch21/m68850",
+    "ch21/m68851",
+    "ch21/m68852",
+    "ch21/m68854",
+    "ch21/m68856",
+    "ch21/m68857",
+    "ch21/m68858"
+   ],
+   "lackingMtFile": []
+  }
+ }
+}
+```
+
+- **The control run (Step 5 (a)).** `readAt` 2026-11-06T08:03:04Z, after [USER] removed the row on the admin page. Same precondition (`ritstjorn` `active`; prod still at `e6ee0bc9`, clean, its migrations ending at `053`), same command, and the probe still identical to HEAD (`6f18009c`; unchanged since `d8d0bee3`): `exit 0`, 19,303 bytes, an empty stderr, and `grep -ac '@'` gave `0`. Prod's `sessions.db-wal` had grown to 24,752 bytes at 08:02, before the run (the removal's write); the `sessions.db*` files had the same names, sizes and mtimes before and after the run. **A structural diff against the first run's output finds exactly three fields changed:** `readAt`; `G-1d.assignments`, `[{"userId":4,"chapter":3}]` → `[]`; and `G-1d.assignedChapters`, `[3]` → `[]`. Every other field is identical to the first run's, which was read whole, so the empty list is the removal and not a probe that read nothing. Every section is `ok: true`. Chemistry now holds no assignment rows: no unit can open until G1.13 assigns, after G1.23's switch-on (R6). Its output, verbatim:
+
+```
+{
+ "probe": "read-research-preconditions",
+ "readAt": "2026-11-06T08:03:04.016Z",
+ "book": "efnafraedi-2e",
+ "ok": true,
+ "sections": {
+  "G-1c": {
+   "ok": true,
+   "journald": {
+    "settings": [
+     {
+      "file": "usr/lib/systemd/journald.conf.d/syslog.conf",
+      "line": "ForwardToSyslog=yes"
+     }
+    ],
+    "notReadBySystemd255": [],
+    "persistentDir": true,
+    "diskUsage": {
+     "ran": true,
+     "output": "Archived and active journals take up 259.5M in the file system."
+    }
+   },
+   "rsyslog": {
+    "configPresent": true,
+    "active": {
+     "ran": true,
+     "output": "active"
+    }
+   },
+   "nginx": {
+    "accessLog": [
+     {
+      "file": "nginx/nginx.conf",
+      "line": "access_log /var/log/nginx/access.log;"
+     },
+     {
+      "file": "nginx/sites-enabled/namsbokasafn.is",
+      "line": "access_log /var/log/nginx/namsbokasafn.is.access.log;"
+     },
+     {
+      "file": "nginx/sites-enabled/namsbokasafn.is",
+      "line": "access_log off;"
+     },
+     {
+      "file": "nginx/sites-enabled/namsbokasafn.is",
+      "line": "access_log off;"
+     },
+     {
+      "file": "nginx/sites-enabled/namsbokasafn.is",
+      "line": "access_log off;"
+     },
+     {
+      "file": "nginx/sites-enabled/namsbokasafn.is",
+      "line": "access_log off;"
+     },
+     {
+      "file": "nginx/sites-enabled/ritstjorn.namsbokasafn.is",
+      "line": "access_log /var/log/nginx/ritstjorn.namsbokasafn.is.access.log;"
+     }
+    ]
+   },
+   "logrotate": {
+    "defaults": [
+     "weekly",
+     "rotate 4"
+    ],
+    "nginx": [
+     "daily",
+     "rotate 90"
+    ],
+    "rsyslog": [
+     "rotate 4",
+     "weekly"
+    ]
+   }
+  },
+  "G-1d": {
+   "ok": true,
+   "enforcement": [
+    {
+     "book": "efnafraedi-2e",
+     "enforceAssignments": false
+    }
+   ],
+   "studyBookEnforced": false,
+   "assignments": [],
+   "assignedChapters": [],
+   "users": [
+    {
+     "id": 1,
+     "role": "admin",
+     "active": true
+    },
+    {
+     "id": 2,
+     "role": "admin",
+     "active": true
+    },
+    {
+     "id": 3,
+     "role": "editor",
+     "active": true
+    },
+    {
+     "id": 4,
+     "role": "editor",
+     "active": true
+    },
+    {
+     "id": 5,
+     "role": "editor",
+     "active": true
+    },
+    {
+     "id": 6,
+     "role": "viewer",
+     "active": true
+    }
+   ],
+   "autoCreateUsers": {
+    "dotEnv": {
+     "present": true,
+     "value": null
+    },
+    "service": {
+     "ran": true,
+     "value": null
+    },
+    "environmentFiles": [],
+    "effective": {
+     "value": null,
+     "source": "unset"
+    }
+   }
+  },
+  "G-1e": {
+   "ok": true,
+   "originColumn": true,
+   "inflight": [
+    {
+     "chapter": 1,
+     "moduleId": "m68667",
+     "segmentId": "m68667:abstract:auto-2",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68667",
+     "segmentId": "m68667:caption:CNX_Chem_01_02_Mixtures-caption",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68667",
+     "segmentId": "m68667:entry:auto-98",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68667",
+     "segmentId": "m68667:title:auto-1",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:problem:fs-idm147492048",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:problem:fs-idp12657920",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:problem:fs-idp17618896",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:problem:fs-idp41417120",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:problem:fs-idp51969104",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:problem:fs-idp52331520",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:problem:fs-idp66967088",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:problem:fs-idp75868160",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:solution:fs-idp55880896",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:solution:fs-idp71749776",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    },
+    {
+     "chapter": 5,
+     "moduleId": "chapter-metadata",
+     "segmentId": "chapter:title:ch05",
+     "pending": 0,
+     "approvedUnapplied": 1,
+     "reattach": 0
+    }
+   ],
+   "appliedWithoutFaithful": [
+    {
+     "chapter": 1,
+     "moduleId": "m68663",
+     "segmentId": "m68663:para:fs-idp22452080"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68663",
+     "segmentId": "m68663:para:fs-idp32962032"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:abstract-item:abstract-item-1"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:abstract-item:abstract-item-3"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:abstract-item:abstract-item-4"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:abstract:auto-2"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:caption:CNX_Chem_01_01_Alchemist-caption"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:caption:CNX_Chem_01_01_ChemWeb-caption"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:caption:CNX_Chem_01_01_SciMethod-caption"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:caption:CNX_Chem_01_01_WaterDom-caption"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:glossary-def:fs-idm105060976-def"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:glossary-def:fs-idm121167952-def"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:glossary-def:fs-idm41373200-def"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:glossary-def:fs-idp132867984-def"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:glossary-def:fs-idp16592704-def"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:glossary-term:fs-idp132867984-term"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idm14698032"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idm148595088"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idm166065136"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idm166568720"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idm183676832"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idm19494768"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idm64529776"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idp128238864"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idp130311264"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idp139124096"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idp28442320"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idp4269776"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idp55245024"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:para:fs-idp77567568"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:problem:fs-idm59206592"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:problem:fs-idp109280880"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:problem:fs-idp109329824"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:problem:fs-idp19466944"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:problem:fs-idp23452688"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:problem:fs-idp42446672"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:problem:fs-idp4603232"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:problem:fs-idp55370768"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:problem:fs-idp71047280"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:problem:fs-idp71050048"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:problem:fs-idp71129152"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:problem:fs-idp72952208"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:problem:fs-idp77253536"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:solution:fs-idm53320912"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:solution:fs-idm78140032"
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68664",
+     "segmentId": "m68664:title:fs-idp132288224-title"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68699",
+     "segmentId": "m68699:caption:CNX_Chem_03_00_Pool-caption"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68699",
+     "segmentId": "m68699:para:fs-idp44036064"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:abstract-item:abstract-item-1"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:abstract-item:abstract-item-2"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:abstract-item:abstract-item-3"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:caption:CNX_Chem_03_01_chloroform-caption"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:caption:CNX_Chem_03_01_saltMass-caption"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:caption:CNX_Chem_03_02_copper-caption"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:caption:CNX_Chem_03_02_moles-caption"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:example-title:fs-idm8741648-title"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:example-title:fs-idp13749376-title"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:example-title:fs-idp17719968-title"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm15991984"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm16014480"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm1867456"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm19496816"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm1982944"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm24646960"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm26436032"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm28512"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm29254000"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm3056704"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm31455504"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm38739232"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm40043360"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm4217280"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm42768912"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm4828384"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idm58442752"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp1127280"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp11370272"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp1202080"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp128238864"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp13429376"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp13712512"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp139124096"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp14642528"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp14697696"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp15725488"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp17223008"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp18156240"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp18362672"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp27818080"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp33552"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp4269776"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:para:fs-idp76705136"
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:title:fs-idp16940464-title"
+    }
+   ]
+  },
+  "G-1f": {
+   "ok": true,
+   "sqlite3": {
+    "onPath": true,
+    "path": "/usr/bin/sqlite3"
+   }
+  },
+  "G-1g": {
+   "ok": true,
+   "unitCount": 170,
+   "lacking": [
+    "appendices/m68859",
+    "appendices/m68860",
+    "appendices/m68861",
+    "appendices/m68862",
+    "appendices/m68863",
+    "appendices/m68864",
+    "appendices/m68865",
+    "appendices/m68866",
+    "appendices/m68867",
+    "appendices/m68868",
+    "appendices/m68869",
+    "appendices/m68870",
+    "appendices/m68871",
+    "ch00/m68662",
+    "ch01/chapter-metadata",
+    "ch01/m68663",
+    "ch01/m68664",
+    "ch01/m68667",
+    "ch01/m68670",
+    "ch01/m68674",
+    "ch01/m68683",
+    "ch01/m68690",
+    "ch02/chapter-metadata",
+    "ch02/m68684",
+    "ch02/m68685",
+    "ch02/m68687",
+    "ch02/m68692",
+    "ch02/m68693",
+    "ch02/m68695",
+    "ch02/m68696",
+    "ch02/m68698",
+    "ch03/chapter-metadata",
+    "ch03/m68699",
+    "ch03/m68700",
+    "ch03/m68702",
+    "ch03/m68703",
+    "ch03/m68704",
+    "ch04/chapter-metadata",
+    "ch04/m68709",
+    "ch04/m68710",
+    "ch04/m68713",
+    "ch04/m68714",
+    "ch04/m68716",
+    "ch04/m68730",
+    "ch05/chapter-metadata",
+    "ch05/m68723",
+    "ch05/m68724",
+    "ch05/m68726",
+    "ch05/m68727",
+    "ch06/chapter-metadata",
+    "ch06/m68728",
+    "ch06/m68729",
+    "ch06/m68732",
+    "ch06/m68733",
+    "ch06/m68734",
+    "ch06/m68735",
+    "ch07/chapter-metadata",
+    "ch07/m68736",
+    "ch07/m68737",
+    "ch07/m68738",
+    "ch07/m68739",
+    "ch07/m68740",
+    "ch07/m68741",
+    "ch07/m68742",
+    "ch08/chapter-metadata",
+    "ch08/m68743",
+    "ch08/m68744",
+    "ch08/m68745",
+    "ch08/m68746",
+    "ch08/m68747",
+    "ch09/chapter-metadata",
+    "ch09/m68748",
+    "ch09/m68750",
+    "ch09/m68751",
+    "ch09/m68752",
+    "ch09/m68754",
+    "ch09/m68758",
+    "ch09/m68759",
+    "ch10/chapter-metadata",
+    "ch10/m68760",
+    "ch10/m68761",
+    "ch10/m68764",
+    "ch10/m68768",
+    "ch10/m68769",
+    "ch10/m68770",
+    "ch10/m68773",
+    "ch11/chapter-metadata",
+    "ch11/m68776",
+    "ch11/m68778",
+    "ch11/m68781",
+    "ch11/m68782",
+    "ch11/m68783",
+    "ch11/m68784",
+    "ch12/chapter-metadata",
+    "ch12/m68785",
+    "ch12/m68786",
+    "ch12/m68787",
+    "ch12/m68789",
+    "ch12/m68791",
+    "ch12/m68793",
+    "ch12/m68794",
+    "ch12/m68795",
+    "ch13/chapter-metadata",
+    "ch13/m68796",
+    "ch13/m68797",
+    "ch13/m68798",
+    "ch13/m68799",
+    "ch13/m68801",
+    "ch14/chapter-metadata",
+    "ch14/m68802",
+    "ch14/m68803",
+    "ch14/m68804",
+    "ch14/m68805",
+    "ch14/m68806",
+    "ch14/m68807",
+    "ch14/m68808",
+    "ch14/m68809",
+    "ch15/chapter-metadata",
+    "ch15/m68810",
+    "ch15/m68811",
+    "ch15/m68813",
+    "ch15/m68814",
+    "ch16/chapter-metadata",
+    "ch16/m68815",
+    "ch16/m68816",
+    "ch16/m68817",
+    "ch16/m68818",
+    "ch16/m68819",
+    "ch17/chapter-metadata",
+    "ch17/m68820",
+    "ch17/m68821",
+    "ch17/m68822",
+    "ch17/m68823",
+    "ch17/m68824",
+    "ch17/m68825",
+    "ch17/m68826",
+    "ch17/m68827",
+    "ch18/chapter-metadata",
+    "ch18/m68828",
+    "ch18/m68829",
+    "ch18/m68830",
+    "ch18/m68831",
+    "ch18/m68832",
+    "ch18/m68833",
+    "ch18/m68834",
+    "ch18/m68835",
+    "ch18/m68836",
+    "ch18/m68837",
+    "ch18/m68838",
+    "ch18/m68839",
+    "ch18/m68840",
+    "ch19/chapter-metadata",
+    "ch19/m68841",
+    "ch19/m68842",
+    "ch19/m68843",
+    "ch19/m68844",
+    "ch20/chapter-metadata",
+    "ch20/m68845",
+    "ch20/m68846",
+    "ch20/m68847",
+    "ch20/m68848",
+    "ch20/m68849",
+    "ch21/chapter-metadata",
+    "ch21/m68850",
+    "ch21/m68851",
+    "ch21/m68852",
+    "ch21/m68854",
+    "ch21/m68856",
+    "ch21/m68857",
+    "ch21/m68858"
+   ],
+   "lackingMtFile": []
+  }
+ }
+}
+```
+
+### ⏭ 2026-11-05 (PR2 built) — ADDS TO THE ENTRY DIRECTLY BELOW AND SUPERSEDES ITS NEXT: **✅ G1.1 + G1.2 PR2 (the opening record) IS BUILT, REVIEWED AND GATED on branch `claude/cool-volta-8jm7hb`, [PR #626](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/626) (draft, not merged, not deployed). ✅ [USER] DEPLOYED PR1 on 2026-11-05, after this entry was first written (the editors' F5 note two entries below applies). ▶ NEXT, [USER]: (1) ~~PR1's deploy~~ done; (2) ~~review the ten `✏️ AMENDED 2026-11-05` items~~ ✅ [USER] approved all of them, and the spec's 2026-11-05 items, on 2026-11-05 ("I agree with your changes"); (3) ✅ [USER] authorised a read-only production run of Task 8's probe on 2026-11-05. The cloud session that built PR2 cannot reach production (no ssh, and no folder shared from [USER]'s computer), so it runs from [USER]'s machine or a session running there, as the plan's Task 8 says: from this branch, on stdin, while `ritstjorn` is running (amendment item 5); (4) the §9 choice if chemistry holds assignment rows. Then merge #626 as a merge commit, after `ls server/migrations` shows `054` still free.**
+- **What was built.** Tasks 1–7 of PR2's plan (`docs/superpowers/plans/2026-11-03-g11-g12-pr2-opening-record.md`) and the amendment's Task 3b, each test first, through an implementer, a blind reviewer with mutation checks and, where needed, a fixer. Migration `054-module-openings.js`; `server/services/moduleOpenings.js`; the module route's 503 `OPENING_UNRECORDED`; the client's handling of it; `server/scripts/read-research-preconditions.js` (G-1c to G-1g); the guard in `close-pending-edits.js`.
+- **The plan's premises the tree contradicted** (each recorded in its commit and in the plan's amendment block):
+  - a test does pin `deploy.sh`'s `[053]` remedy line, with escaped brackets that a grep for the literal cannot match;
+  - Ubuntu 24.04's systemd ships `/usr/lib/systemd/journald.conf.d/syslog.conf` with `ForwardToSyslog=yes`, so G-1c's `/etc`-only read could not say how long the request log is kept (item 3); journald 255 reads its main file from `/etc` only;
+  - Task 4's branch hid the pane without leaving the unit, which the review measured as six defects (item 4: Back and the branch now share `leaveModule()`, and decision 13's mechanism changed, not its promise);
+  - a read-only open of a WAL database whose side files are absent creates them, so the probe refuses to open a database no process holds (item 5).
+- **The whole-branch review:** a blind pair, five lenses on the default model and five on Fable, with two skeptics on every critical or important finding. Both skeptics confirmed U1–U6: after the 503 branch, Escape, a tab close or a late parked replay could lose a draft, Ctrl+S and Ctrl+Shift+Enter could still save or accept on the unrecorded unit, and the E2E exercised nothing after the branch. They also confirmed two test gaps (U10, U11). Every finding is folded in as its own commits, or declined with a measurement (amendment items 4–10). The stage reviews found and fixed more: a save in flight when a unit is left, a kept text when storage is full, and gaps in the probe's parsing of logrotate, journald and nginx files.
+  - ⚠️ A full worktree of this repo carries `books/`. Six of them used up the session's disk allowance (17 GB), and 16 of 26 review agents never started. A sparse worktree without `books/` (`git worktree add --no-checkout`, `git sparse-checkout set --no-cone '/*' '!/books/'`, `node_modules` linked) was about 83 MB and ran every PR2 test but Playwright, which needs `books/` and port 3456.
+- **Gate, run locally as CI runs it, at the tip `10b07f15`:** lint, format check and docs check clean; the unit suite fails by name exactly what `main` fails in this sandbox (the three files that fail only because it runs as root); E2E passes; `git status` clean. The live verdict is in the Actions tab.
+- **Open, not blocking the merge** (recorded, not fixed):
+  - older than PR2 (decision 13 kept it out): a reload answered 500 leaves the pane beside the module list, and opening another unit from there whose load answers 503 writes the old pane's texts under the new unit's draft key (PR2 review T4-R2);
+  - the snapshot is taken from rows read before the opening's transaction waits out another process's lock (amendment item 9, a stated limit);
+  - the probe's failure default cannot be told from Node's own exit 1 (review U22), and `recordOpening`'s `.immediate()` cannot be told from a deferred transaction while the INSERT comes first (review U28);
+  - older than PR2: something in the unit or E2E run opens `pipeline-output/sessions.db` (its `-shm` changed during this gate; the files date from 2026-11-04) and has left `books/testbook/`. Both are gitignored, so `git status` cannot see them; which test does it is not identified;
+  - unchanged from the entries below: the `processQueue` question, C8, C9, C11, and `reattach-segment-edits.js`'s `process.exit()`.
+- **For PR3** (its plan should take these): the seam and `moduleOpenings.moduleOpenedDetail` are as PR2's handoff says, and that handoff was corrected for what changed (the research-boundary test's bindings, the probe's `runRoot` and `usrRoot`). PR4's plan's research-boundary block now uses the file's real bindings (`032eb400`). Back and the 503 branch both call `leaveModule()` in `segment-editor.js`. The next migration is `055`.
+
+### ⏭ 2026-11-05 (PR1 merged) — ADDS TO THE ENTRY DIRECTLY BELOW AND SUPERSEDES ITS NEXT: **✅ [#625](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/625) MERGED (`e6ee0bc9`, a merge commit, on [USER]'s instruction). Its second parent is the reviewed head `7f84a608`, and its tree is identical to it. Before the merge, `main` had not moved and `053` was still free; the checks run on the head `7f84a608` are in the Actions tab. ⚠️ NOT DEPLOYED: PR1 reaches production only with the next deploy, and until then the merge puts prod's content backup behind (CLAUDE.md § Content delivery). ▶ NEXT, [USER]: the deploy, with the editor note in the entry below. Then PR2 (the opening record), from its plan, in a new session, on a branch cut from `main`.**
+- **After the deploy:** `checks.schema` should read ok; `deploy.sh` prints any missing name. Editors with a page loaded before the deploy cannot save until F5. Give them the steps in the entry below.
+- **Before PR2:** take the "For PR2 and PR3" bullets of the entry below into PR2's plan. Its gate is G-1d on production before its merge, plus [USER]'s §9 choice if chemistry holds assignment rows. Who runs the read-only probe is still open.
+- **Still owed:**
+  - the ch10 re-buy (about USD 4, paid, dry run first, in a session with the API key);
+  - the later follow-ups the 2026-11-04 approval asked for (E2E seeding to prove an opening, PR2 d14; an admin path for a lost research file, PR4 d33; the consent-text note);
+  - the open items listed in the entry below, the `processQueue` question among them.
+
 ### ⏭ 2026-11-04 (PR1 built) — ADDS TO THE ENTRY DIRECTLY BELOW AND SUPERSEDES ITS NEXT: **✅ G1.1 + G1.2 PR1 IS BUILT, REVIEWED AND GATED on branch `claude/cool-volta-8jm7hb`, [PR #625](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/625) (draft, not merged). ✅ [USER] RAN THE DEPLOY on 2026-11-04 (it carried layer 2, #621 and #623; PR1 is not in it). ▶ NEXT, [USER]: review #625, mark it ready and merge it as a merge commit. Re-check the migration number first (`ls server/migrations`: PR1 takes `053`). Then deploy, and give the editors the note below.**
 - **What was built.** Tasks 1–20 of PR1's plan (`docs/superpowers/plans/2026-11-03-g11-g12-pr1-served-versions-core.md`), one test-first commit each. Each task went through an implementer, a reviewer and, where needed, a fixer. Migration `053-served-text-versions.js`.
 - **The plan's premises that the tree contradicted** (the tree won, each recorded in its commit):

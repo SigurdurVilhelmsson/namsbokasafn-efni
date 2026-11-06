@@ -249,8 +249,9 @@ function saveOnServedBase(input) {
   // IMMEDIATE, because its first statement is the mint's SELECT: a deferred transaction would
   // already hold a read when it asks for the write lock, and SQLite does not run the busy handler
   // for that upgrade, so a lock another process holds (backup-db.sh's checkpoint) would fail the
-  // save at once with SQLITE_BUSY instead of waiting the busy timeout (PR1 review C2). Only the
-  // serve's own mint stays deferred (servedVersions.mintVersions, spec §5.4 step 3).
+  // save at once with SQLITE_BUSY instead of waiting the busy timeout (PR1 review C2). The mint's
+  // own two passes (a lock-free read, then an IMMEDIATE insert only when a row is missing) run as
+  // savepoints inside this transaction (servedVersions.mintVersions, spec §5.4 step 3).
   return mintAndSave.immediate();
 }
 

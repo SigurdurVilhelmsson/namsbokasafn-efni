@@ -34,6 +34,11 @@
   // addRestoreItem: true when the text left the screen (a refusal), false when
   // it is only being carried across a re-render.
   const heldDrafts = new Map();
+  // PR2 review R2: per unit (its draft prefix), the draft value that leaving it could not store because the browser's
+  // storage was full (the OPENING_UNRECORDED branch, or a refusal answered after leaving: keepLeftText). Leaving
+  // empties heldDrafts and paneState, so without this a kept text would be lost; restoreDraft takes it on the unit's
+  // next opening, and storeUnwritten tries storage again when the page is left.
+  const unwrittenDrafts = new Map();
 
   // Track textarea focus so term lookup can insert at the right place
   document.addEventListener('focusin', (e) => {
@@ -88,21 +93,34 @@
     return 'seg-draft:' + currentBook + '/' + currentChapter + '/' + currentModuleId + ':';
   }
 
-  function writeDraft(entries) {
+  /** Writes a draft value (this tab's, of the open unit, unless `key` names another); false when storage refused it. */
+  function writeDraft(entries, key = draftKey()) {
     try {
       localStorage.setItem(
-        draftKey(),
+        key,
         JSON.stringify(segmentSaveState.buildDraftValue(entries, Date.now()))
       );
+      return true;
     } catch {
       if (typeof saveRetry !== 'undefined')
         saveRetry.showToast(UI.common.localStorageFull, 'error');
+      return false;
     }
   }
 
-  /** §5.18: per segment the text, the base it was started from, its occurrence and its assists. */
+  /** Writes this tab's draft of the open unit; false when storage refused the write (R2). */
   function saveDraft() {
-    if (!currentModuleId) return;
+    if (!currentModuleId) return true;
+    const entries = draftEntries();
+    if (Object.keys(entries).length === 0) {
+      localStorage.removeItem(draftKey());
+      return true;
+    }
+    return writeDraft(entries);
+  }
+
+  /** §5.18: per segment the text, the base it was started from, its occurrence and its assists. */
+  function draftEntries() {
     const entries = {};
     for (const segId of dirtyEdits) {
       const ta = document.getElementById('textarea-' + cssId(segId));
@@ -117,11 +135,19 @@
       });
     }
     for (const [segId, held] of heldDrafts) if (!entries[segId]) entries[segId] = held.entry;
-    if (Object.keys(entries).length === 0) {
-      localStorage.removeItem(draftKey());
-      return;
+    return entries;
+  }
+
+  /** Try storage again with what leaving a unit could not store (R2); what it still refuses stays in memory. */
+  function storeUnwritten() {
+    for (const [prefix, value] of unwrittenDrafts) {
+      try {
+        localStorage.setItem(prefix + tabGuard.tabId, JSON.stringify(value));
+        unwrittenDrafts.delete(prefix);
+      } catch {
+        // still full: it stays here, and leaving the page asks first
+      }
     }
-    writeDraft(entries);
   }
 
   function clearDraft() {
@@ -158,6 +184,11 @@
     // EVERY tab's draft for this module, not only tabGuard.findNewestDraft's: a kept text can sit in an older
     // tab's key (an F5 gives the page a new tabId), and clearDraftsByPrefix below removes them all (plan decision 31).
     const values = draftValuesUnder(prefix);
+    // What leaving this unit could not store (R2): built when the unit was left, so newer than what storage holds.
+    if (unwrittenDrafts.has(prefix)) {
+      values.push(unwrittenDrafts.get(prefix));
+      unwrittenDrafts.delete(prefix);
+    }
     const found = values.length > 0;
     const weekAgo = Date.now() - 7 * 24 * 60 * 60 * 1000; // tabGuard's own window
     const fromStorage = segmentSaveState.mergeDraftValues(
@@ -383,7 +414,10 @@
    * (mergeRestoreSources: it takes the parked code only if it has none); else
    * the replayed body's. A parked item with no refusal code restores with the
    * generic notice (entryFromParked). A replay for another module waits for
-   * that module's next load.
+   * that module's next load, and so does one that parks while no unit is open
+   * (moduleData null: after Back, or after a reload answered
+   * OPENING_UNRECORDED; leaveModule): restoreDraft takes it then, and the
+   * drafted text, if newer, wins (mergeRestoreSources).
    */
   function onSaveParked(item) {
     if (!moduleData || item.key.indexOf(parkedPrefix()) !== 0) return;
@@ -419,8 +453,9 @@
    * and the module is not reloaded: the editor may still be typing. Only while
    * that pane is still dirty: a pane closed since was reset to the text the
    * row shows, which the replay has replaced, so a save from it should meet
-   * the displayed check. A replay for another module waits for that module's
-   * next load, which renders its rows from the server.
+   * the displayed check. A replay for another module, or one that lands while
+   * no unit is open (leaveModule), waits for that module's next load, which
+   * renders its rows from the server.
    */
   function onSaveReplayed(item, data) {
     if (!moduleData || item.key.indexOf(parkedPrefix()) !== 0) return;
@@ -596,7 +631,27 @@
       // Restore module list on error so users can retry
       document.getElementById('module-selector').style.display = 'block';
       chapterSelect.dispatchEvent(new Event('change'));
-      alert(UI.common.errorLoading + err.message);
+      // spec §5.4: a serve whose opening could not be recorded answers 503 OPENING_UNRECORDED. fetchJson builds
+      // err.message from data.error first (htmlUtils.js), which is the bare code here, so the text comes from UI.
+      // No retry: the editor opens the unit again from the list.
+      const unrecorded = err.status === 503 && err.data && err.data.error === 'OPENING_UNRECORDED';
+      const pane = document.getElementById('editor-container');
+      if (unrecorded && pane.style.display !== 'none') {
+        // A reload from an open pane (after a save, a review action, or a refused save's keepText). The editor leaves
+        // the unit as Back leaves it, so nothing on the module list can save, accept or discard for a unit whose
+        // opening was not recorded (spec §5.4; T6); but unlike Back nothing is discarded. saveDraft first writes
+        // every dirty pane's text and every held (kept) text to this tab's draft; if storage refuses it (full), the
+        // same entries stay in memory for this unit (keepUnwritten, PR2 review R2). leaveModule then empties the
+        // memory a later saveDraft would rebuild that draft from. Both kinds come back through restoreDraft when the
+        // unit is opened again. Writes sent before this reload can still land, their texts typed while the unit was open
+        // (Review Focus 8): a save saveRetry queued, and a save, accept or review action still awaiting its answer.
+        // That answer touches nothing of the unit and re-serves nothing (openUnit, PR2 review R1); a kept code's
+        // text is added to this draft (keepLeftText). On a first load nothing is on screen and this is skipped:
+        // saveDraft there would remove this tab's draft, which can hold a text Back kept.
+        if (!saveDraft()) keepUnwritten(draftPrefix(), draftEntries());
+        leaveModule();
+      }
+      alert(unrecorded ? UI.segmentEditor.openingUnrecorded : UI.common.errorLoading + err.message);
     } finally {
       _loadingModuleId = null;
     }
@@ -2029,6 +2084,7 @@
     if (!seg || !seg.hasTranslation) return;
     const row = rowValues(segmentId);
     if (!row || row.is === null) return; // nothing on screen to attest
+    const unit = openUnit(); // R1: an answer after the unit was left reloads nothing
 
     try {
       await saveRetry.attempt(
@@ -2049,6 +2105,7 @@
           ),
         }
       );
+      if (openUnit() !== unit) return;
       lastServerSaveTime = Date.now();
       await loadModule(currentModuleId, { force: true });
       paintCursor();
@@ -2057,6 +2114,7 @@
         // Content changed or an edit is in flight — reload to the fresh state
         // (parity with the edit-save conflict flow).
         alert(err.message || UI.acceptance.conflict);
+        if (openUnit() !== unit) return;
         await loadModule(currentModuleId, { force: true });
         paintCursor();
       } else if (!saveRetry.isRetryable(err)) {
@@ -2103,13 +2161,14 @@
 
   async function revokeAcceptance(acceptanceId) {
     if (!confirm(UI.acceptance.revokeConfirm)) return;
+    const unit = openUnit();
     try {
       await fetchJson(`${API_BASE}/acceptance/${acceptanceId}/revoke`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
       });
-      await loadModule(currentModuleId, { force: true });
+      await reloadIfOpen(unit, { force: true });
     } catch (err) {
       alert(UI.common.errorPrefix + err.message);
     }
@@ -2337,6 +2396,8 @@
     }
 
     const saveUrl = `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/edit`;
+    const retryKey = `seg:${currentBook}/${currentChapter}/${currentModuleId}:${segmentId}`;
+    const unit = openUnit(); // R1: the unit this save is sent from, which it may have left when the answer comes
     const saveOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -2363,11 +2424,7 @@
     }
 
     try {
-      const saveResult = await saveRetry.attempt(
-        `seg:${currentBook}/${currentChapter}/${currentModuleId}:${segmentId}`,
-        saveUrl,
-        saveOptions
-      );
+      const saveResult = await saveRetry.attempt(retryKey, saveUrl, saveOptions);
 
       // Live terminology QA (non-blocking): warn if the edit contradicts an
       // approved term. Advisory only — the save already succeeded.
@@ -2402,6 +2459,10 @@
         }
       }
 
+      // The unit was left while the save was in flight (Back, or a reload answered OPENING_UNRECORDED): its panes,
+      // dirty set and hold are gone, and its draft holds what leaving kept. The save landed; nothing here may touch
+      // that draft (saveDraft would rebuild it from an empty memory) or re-serve the unit (PR2 review R1).
+      if (openUnit() !== unit) return;
       applySaveEcho(segmentId, saveResult);
       dirtyEdits.delete(segmentId);
       clearPaneState(segmentId);
@@ -2413,12 +2474,23 @@
       saveDraft(); // update draft (or clear if empty)
       updateSaveStatusBar();
       // Reload module to refresh edits (O2: force bypass re-entrancy guard)
-      await loadModule(currentModuleId, { force: true });
+      await reloadIfOpen(unit, { force: true });
     } catch (err) {
       // Revert per-segment indicator on error
       if (savingInd) {
         savingInd.textContent = UI.save.changed;
         savingInd.className = 'seg-save-ind dirty';
+      }
+      if (openUnit() !== unit) {
+        // Left while in flight (R1): no pane, hold or reload. A kept code's text goes to the unit's draft for its
+        // next opening (keepLeftText); any other answer is only reported. A retryable one is queued as before.
+        if (err.status === 409 && segmentSaveState.keepsText(err.code)) {
+          keepLeftText(unit, { key: retryKey, body: saveOptions.body, code: err.code });
+          alert(refusalAlertText(err));
+        } else if (!saveRetry.isRetryable(err)) {
+          alert(UI.common.errorSaving + err.message);
+        }
+        return;
       }
       if (err.status === 409 && segmentSaveState.keepsText(err.code)) {
         // Index decision 12: the typed text, its assists and the base it was
@@ -2468,10 +2540,12 @@
     if (!moduleData?.segments) return;
     const st = paneState.get(segmentId);
     if (st && st.refused === 'DUPLICATE_ID') return; // R4: never sent
+    const unit = openUnit(); // R1: nothing is sent from a unit left on the way (the save's reload, the preview)
     // Ensure the current edit is persisted first so the propagated text is the
     // saved text. saveEdit reloads the module on success.
     if (dirtyEdits.has(segmentId)) {
       await saveEdit(segmentId);
+      if (openUnit() !== unit) return;
       // Decision 32: a refused save is never propagated. Its refusal path has just put the kept text back in this
       // textarea (keepText → loadModule → reinstallHeldDrafts → installDraft), so reading it below would send it:
       // a DUPLICATE_ID text to POST /propagate (R4), or a STALE_BASE text to every other occurrence.
@@ -2485,6 +2559,7 @@
       const pv = await fetchJson(
         `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/propagation-preview?segmentId=${encodeURIComponent(segmentId)}`
       );
+      if (openUnit() !== unit) return;
       if (!pv || !pv.eligible || pv.eligible.length === 0) {
         saveRetry.showToast(UI.segmentEditor.propagateNone, 'info');
         return;
@@ -2526,6 +2601,7 @@
         : null;
 
     if ((action === 'reject' || action === 'discuss') && note === null) return; // Cancelled
+    const unit = openUnit();
 
     try {
       await fetchJson(`${API_BASE}/edit/${editId}/${action}`, {
@@ -2535,7 +2611,7 @@
         body: JSON.stringify({ note, reviewedEditSha256: reviewedEditSha256For(editId) }),
       });
 
-      await loadModule(currentModuleId);
+      await reloadIfOpen(unit);
     } catch (err) {
       alert(UI.common.errorPrefix + err.message);
     }
@@ -2543,6 +2619,7 @@
 
   async function unapproveEdit(editId) {
     if (!confirm(UI.confirm.unapprove)) return;
+    const unit = openUnit();
 
     try {
       await fetchJson(`${API_BASE}/edit/${editId}/unapprove`, {
@@ -2551,13 +2628,14 @@
         credentials: 'include',
       });
 
-      await loadModule(currentModuleId);
+      await reloadIfOpen(unit);
     } catch (err) {
       alert(UI.common.errorPrefix + err.message);
     }
   }
 
   async function reopenEdit(editId) {
+    const unit = openUnit();
     try {
       await fetchJson(`${API_BASE}/edit/${editId}/return-to-pending`, {
         method: 'POST',
@@ -2565,7 +2643,7 @@
         credentials: 'include',
       });
 
-      await loadModule(currentModuleId);
+      await reloadIfOpen(unit);
     } catch (err) {
       alert(UI.common.errorPrefix + err.message);
     }
@@ -2582,6 +2660,7 @@
     }
 
     if (!confirm(UI.confirm.submitForReview(stats.pending))) return;
+    const unit = openUnit();
 
     try {
       await fetchJson(`${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/submit`, {
@@ -2603,20 +2682,85 @@
         toast.classList.remove('show');
         setTimeout(() => toast.remove(), 300);
       }, 6000);
-      await loadModule(currentModuleId);
+      await reloadIfOpen(unit);
     } catch (err) {
       alert(UI.common.errorPrefix + err.message);
     }
   });
 
   // ================================================================
-  // BACK BUTTON
+  // LEAVING A UNIT (Back, and a reload answered OPENING_UNRECORDED)
   // ================================================================
-  document.getElementById('btn-back').addEventListener('click', () => {
-    clearDraft();
-    // clearDraft has just written the kept texts and discarded the rest; the hidden panes must not stay dirty, or
-    // the next module load asks closePanels and, declined, installs a kept text on the stale rows.
+  /**
+   * The open unit, by its draft prefix; null while none is open (leaveModule nulls moduleData). An action that awaits
+   * the server captures it first and compares after the await: a different answer means the unit it acted on was left
+   * meanwhile, and perhaps it or another unit opened since (PR2 review R1). A reopening of the same unit compares
+   * equal, and the action then finishes as in any open unit; that opening rendered its own panes from the draft.
+   */
+  function openUnit() {
+    return moduleData ? draftPrefix() : null;
+  }
+
+  /** Reload the unit an action started on, only while it is still the open one: never re-serve a unit left (R1). */
+  function reloadIfOpen(unit, options) {
+    return openUnit() === unit ? loadModule(currentModuleId, options) : Promise.resolve();
+  }
+
+  /**
+   * A save refused with a kept code after its unit was left (R1). Its pane and the hold are gone, so the text goes to
+   * that unit's draft in this tab, where restoreDraft installs it unasked at the next opening (index decision 12). It
+   * merges by the rule a restore applies to a parked refusal (mergeRestoreSources): a drafted text of the segment is
+   * newer typing, so it stays and takes the code. It writes that one key only, never through saveDraft, which would
+   * rebuild the draft from a memory that leaving emptied.
+   */
+  function keepLeftText(unit, item) {
+    const key = unit + tabGuard.tabId;
+    let stored = null;
+    try {
+      stored = JSON.parse(localStorage.getItem(key));
+    } catch {
+      // a corrupt value holds nothing usable: the refusal's own text is all there is
+    }
+    // What leaving could not store is newer than what storage holds (R2); mergeDraftValues orders them by ts.
+    const draft = segmentSaveState.mergeDraftValues([stored, unwrittenDrafts.get(unit)]);
+    const entries = segmentSaveState.mergeRestoreSources(draft, [item]);
+    if (writeDraft(entries, key)) unwrittenDrafts.delete(unit);
+    else keepUnwritten(unit, entries);
+  }
+
+  /** A left unit's draft that storage refused (R2): it stays in memory for the unit's next opening. */
+  function keepUnwritten(unit, entries) {
+    unwrittenDrafts.set(unit, segmentSaveState.buildDraftValue(entries, Date.now()));
+  }
+
+  /**
+   * Leave the open unit for the module list. It writes nothing to storage: the caller has already put in the draft
+   * what should outlive the unit (Back: clearDraft, which keeps only a refused save's texts; the OPENING_UNRECORDED
+   * branch in loadModule: saveDraft, which keeps every text, or keepUnwritten when storage refuses it, PR2 review R2).
+   * Afterwards nothing in memory belongs to the unit but that refused draft value, waiting for restoreDraft, so
+   * nothing on the module list can act on it (spec §5.4, T6): no pane is open for Escape or Ctrl/Cmd+S to find;
+   * moduleData is null for saveEdit, acceptAtCursor and a parked or replayed save (onSaveParked, onSaveReplayed);
+   * and nothing is dirty or held that the draft timer, beforeunload, auth-expired or the next unit's draft could
+   * write over this unit's draft with. An action still awaiting the server when the unit is left (a save, an accept,
+   * a review action) compares openUnit() after its await, so its answer leaves all of this alone and re-serves
+   * nothing; a save refused with a kept code adds its text to this unit's draft (keepLeftText; PR2 review R1). What
+   * the draft keeps comes back through restoreDraft when the unit is opened again (a kept text unasked, index
+   * decision 12).
+   */
+  function leaveModule() {
+    // Close every pane as renderSegments does, without its confirm and without reverting a text: hidden panes left
+    // open would be found by Escape, which would close one and save the draft without it.
+    document.querySelectorAll('.edit-panel.active').forEach((panel) => {
+      panel.classList.remove('active');
+      const row = panel.closest('tr');
+      if (row) row.classList.remove('editing');
+    });
+    // Nothing stays dirty (the next load would ask closePanels about panes nobody can see) and nothing stays held
+    // (a later saveDraft would rewrite the draft from it alone, or write it under another unit's key).
     dirtyEdits.clear();
+    heldDrafts.clear();
+    paneState.clear();
+    lastFocusedTextarea = null;
     if (draftTimer) clearInterval(draftTimer);
     tabGuard.release();
     document.getElementById('editor-container').style.display = 'none';
@@ -2645,6 +2789,14 @@
     if (topbarTitle) {
       topbarTitle.textContent = UI.segmentEditor.title;
     }
+  }
+
+  // ================================================================
+  // BACK BUTTON
+  // ================================================================
+  document.getElementById('btn-back').addEventListener('click', () => {
+    clearDraft(); // writes back only the texts refused saves kept, and discards the rest
+    leaveModule();
 
     // Reload module list (otherwise the spinner from loadModule persists)
     // Guard: if no chapter selected, show clean state instead of infinite spinner
@@ -3424,6 +3576,7 @@
         '?\n\nNúverandi efni er fyrst vistað sem ný útgáfa, svo þetta er afturkræft.'
     );
     if (!ok) return;
+    const unit = openUnit();
 
     try {
       const result = await fetchJson(
@@ -3446,6 +3599,7 @@
           'success'
         );
       }
+      if (openUnit() !== unit) return;
       await loadModule(currentModuleId, { force: true });
       loadApplyStatus();
     } catch (err) {
@@ -3866,8 +4020,9 @@
   // WARN BEFORE LEAVING WITH UNSAVED EDITS
   // ================================================================
   window.addEventListener('beforeunload', function (e) {
-    if (dirtyEdits.size > 0 || heldDrafts.size > 0) {
-      saveDraft(); // last-chance save to localStorage
+    storeUnwritten(); // R2: a left unit's draft that storage refused, if it has room now
+    if (dirtyEdits.size > 0 || heldDrafts.size > 0 || unwrittenDrafts.size > 0) {
+      if (dirtyEdits.size > 0 || heldDrafts.size > 0) saveDraft(); // last-chance save to localStorage
       e.preventDefault();
       e.returnValue = '';
     }
@@ -3875,6 +4030,7 @@
 
   // Save drafts on auth expiry (before 401 redirect)
   window.addEventListener('auth-expired', function () {
+    storeUnwritten();
     if (dirtyEdits.size > 0 || heldDrafts.size > 0) saveDraft();
   });
 

@@ -388,8 +388,11 @@ describe('scripts/deploy.sh health readout — checks.schema (PR1 review C18)', 
     return checkSchema(db);
   };
 
+  // PR2 (plan amendment 2026-11-05, item 2): checks.schema names 054's tables too, so the remedy
+  // sends the operator to every G1.1 migration's warning from [053] onward. It lists no later
+  // number, so a later PR's migration needs no edit here or in deploy.sh.
   const REMEDY =
-    /^ {2}→ read the \[053\] warning in the server journal \(journalctl -u ritstjorn\), then restart \(sudo systemctl restart ritstjorn\); the migration re-attempts on every start$/m;
+    /^ {2}→ read the migration warnings from \[053\] onward in the server journal \(journalctl -u ritstjorn\), then restart \(sudo systemctl restart ritstjorn\); a failed migration re-attempts on every start$/m;
 
   it('prints every missing schema name, in the producer’s order, and the remedy', () => {
     const schema = missingSchema();

@@ -5,8 +5,10 @@
  * never be released while the first connection waits on it, because the wait blocks the event loop
  * that would release it. So the lock is held here, in a child process.
  *
- * argv: <dbPath> <holdMs> <releasingMarkerPath>
- *   1. BEGIN IMMEDIATE on dbPath (the write lock, as backup-db.sh's wal_checkpoint takes it);
+ * argv: <dbPath> <holdMs> <releasingMarkerPath> [sqlInsideLock]
+ *   1. BEGIN IMMEDIATE on dbPath (the write lock, as backup-db.sh's wal_checkpoint takes it), then,
+ *      when given, run sqlInsideLock in that transaction: its writes are committed only at step 4,
+ *      so a reader in the parent cannot see them while the lock is held (servedWriteLock case (g));
  *   2. print exactly "locked\n";
  *   3. hold until holdMs has passed OR the parent closes this process's stdin, whichever is first;
  *   4. write the marker file, THEN commit.
@@ -19,11 +21,12 @@
 const fs = require('fs');
 const Database = require('better-sqlite3');
 
-const [, , dbPath, holdMs, releasingMarker] = process.argv;
+const [, , dbPath, holdMs, releasingMarker, sqlInsideLock] = process.argv;
 process.exitCode = 1; // overwritten only once the lock was taken and released
 
 const db = new Database(dbPath);
 db.exec('BEGIN IMMEDIATE');
+if (sqlInsideLock) db.exec(sqlInsideLock);
 process.stdout.write('locked\n');
 
 let released = false;

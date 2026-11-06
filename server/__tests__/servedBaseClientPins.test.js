@@ -126,3 +126,184 @@ describe('a 409 to a replay comes back (index decision 12)', () => {
     );
   });
 });
+
+describe('a serve whose opening was not recorded (spec §5.4; PR2)', () => {
+  // The catch's code without its comments: its comment names what it does NOT call (clearDraft), which must not
+  // satisfy or trip a pin (measured on the Step 3 text: unstripped, the no-discard pin fails on that comment).
+  const catchCode = () =>
+    fnBody('loadModule', 'loadTermData')
+      .split('} catch (err) {')[1]
+      .replace(/\/\/[^\n]*/g, '');
+  const DISCARD =
+    /loadModule\(|fetchJson\(|clearDraft|clearDraftsByPrefix|localStorage|heldDrafts\.(clear|delete)|paneState\.(clear|delete)/;
+  it("loadModule's error path names OPENING_UNRECORDED, shows its own text and returns to the module list", () => {
+    const load = fnBody('loadModule', 'loadTermData');
+    expect(load).toMatch(
+      /err\.status === 503 && err\.data && err\.data\.error === 'OPENING_UNRECORDED'/
+    );
+    expect(load).toContain('UI.segmentEditor.openingUnrecorded');
+    expect(load).toMatch(/getElementById\('module-selector'\)\.style\.display = 'block'/);
+    // control: the generic text is still there, so the slice is loadModule's catch
+    expect(load).toContain('UI.common.errorLoading + err.message');
+  });
+  it('a reload from an open pane: its texts go into the draft, then the editor leaves the unit (T6)', () => {
+    const c = catchCode();
+    expect(c).toContain("const pane = document.getElementById('editor-container');");
+    const start = c.indexOf("if (unrecorded && pane.style.display !== 'none') {");
+    expect(start).toBeGreaterThan(-1);
+    const branch = c.slice(start, c.indexOf('alert(', start));
+    // Exactly these statements, in this order: leaveModule empties dirtyEdits and heldDrafts, which saveDraft and
+    // draftEntries read. Nothing else, so nothing drops a text before saveDraft writes it or, when storage refuses
+    // it, keepUnwritten holds it (PR2 review R2; the behaviour is the E2E's).
+    const body = branch.slice(branch.indexOf('{') + 1, branch.lastIndexOf('}'));
+    expect(body.replace(/\s+/g, ' ').trim()).toBe(
+      'if (!saveDraft()) keepUnwritten(draftPrefix(), draftEntries()); leaveModule();'
+    );
+    // control: neither runs outside the branch, so a first load and every other error keep today's path
+    expect(c.slice(0, start)).not.toMatch(/saveDraft|leaveModule|dirtyEdits\.clear|'none'/);
+  });
+  it('the error path retries nothing and discards no draft', () => {
+    const c = catchCode();
+    expect(c).toBeTruthy();
+    expect(c).not.toMatch(DISCARD);
+    // control: the pin fires on a planted discard (alert( is in the catch before Step 3 and after it)
+    expect(c.replace('alert(', 'clearDraft(); alert(')).toMatch(DISCARD);
+  });
+});
+
+describe('leaving a unit: Back and the OPENING_UNRECORDED branch share leaveModule (PR2 review U1-U5, U13-U15)', () => {
+  // The body without its comments, which name what it does not call (saveDraft, clearDraft).
+  const leaveCode = () => {
+    const start = src.indexOf('function leaveModule(');
+    const end = src.indexOf('// BACK BUTTON', start);
+    expect(start).toBeGreaterThan(-1);
+    expect(end).toBeGreaterThan(start);
+    return src.slice(start, end).replace(/\/\/[^\n]*/g, '');
+  };
+  const WRITES =
+    /saveDraft|writeDraft|clearDraft|clearDraftsByPrefix|localStorage|loadModule\(|fetchJson\(/;
+  it('it closes every pane and leaves nothing in memory that belongs to the unit', () => {
+    const body = leaveCode();
+    const steps = [
+      "querySelectorAll('.edit-panel.active')",
+      "classList.remove('active')",
+      "classList.remove('editing')",
+      'dirtyEdits.clear();',
+      'heldDrafts.clear();',
+      'paneState.clear();',
+      'clearInterval(draftTimer)',
+      'tabGuard.release();',
+      "getElementById('editor-container').style.display = 'none';",
+      "getElementById('save-status-bar').style.display = 'none';",
+      'moduleData = null;',
+      'cursorSegmentId = null;',
+    ];
+    expect(steps.filter((s) => !body.includes(s))).toEqual([]);
+  });
+  it('it writes nothing to storage: the caller decides what the draft keeps', () => {
+    const body = leaveCode();
+    expect(body).not.toMatch(WRITES);
+    // control: the pin fires on a planted write
+    expect(body.replace('dirtyEdits.clear();', 'saveDraft(); dirtyEdits.clear();')).toMatch(WRITES);
+  });
+  it('Back discards first (clearDraft keeps only refused texts), then leaves', () => {
+    const start = src.indexOf("getElementById('btn-back').addEventListener('click'");
+    const end = src.indexOf('// CONCORDANCE SEARCH WIRING', start);
+    expect(start).toBeGreaterThan(-1);
+    const back = src.slice(start, end).replace(/\/\/[^\n]*/g, '');
+    expect(back.indexOf('clearDraft();')).toBeGreaterThan(-1);
+    expect(back.indexOf('clearDraft();')).toBeLessThan(back.indexOf('leaveModule();'));
+  });
+});
+
+describe('an action answered after its unit was left touches nothing of it (PR2 review R1)', () => {
+  // Code without its line comments, which name what a body does not call.
+  const code = (s) => s.replace(/\/\/[^\n]*/g, '');
+  it('openUnit is the open unit or null, and reloadIfOpen reloads only the unit an action started on', () => {
+    expect(code(fnBody('openUnit', 'reloadIfOpen'))).toContain(
+      'return moduleData ? draftPrefix() : null;'
+    );
+    expect(code(fnBody('reloadIfOpen', 'keepLeftText'))).toContain(
+      'return openUnit() === unit ? loadModule(currentModuleId, options) : Promise.resolve();'
+    );
+  });
+  it("saveEdit compares the unit after its await; a left unit's kept-code refusal goes to that unit's draft only", () => {
+    const save = code(fnBody('saveEdit', 'latestEditIdForSegment'));
+    expect(save).toMatch(/const unit = openUnit\(\);[\s\S]*await saveRetry\.attempt\(retryKey/);
+    expect(save).toMatch(/if \(openUnit\(\) !== unit\) return;\s*applySaveEcho\(/);
+    expect(save).toContain('await reloadIfOpen(unit, { force: true });');
+    expect(save).toMatch(
+      /if \(openUnit\(\) !== unit\) \{[\s\S]*?keepLeftText\(unit, \{ key: retryKey, body: saveOptions\.body, code: err\.code \}\)[\s\S]*?return;\s*\}\s*if \(err\.status === 409 && segmentSaveState\.keepsText\(err\.code\)\)/
+    );
+    // and without leaveModule's docblock, which the slice ends on
+    const keep = code(fnBody('keepLeftText', 'leaveModule')).replace(/\/\*\*[\s\S]*?\*\//g, '');
+    expect(keep).toContain('const entries = segmentSaveState.mergeRestoreSources(draft, [item]);');
+    expect(keep).toMatch(
+      /if \(writeDraft\(entries, key\)\) unwrittenDrafts\.delete\(unit\);\s*else keepUnwritten\(unit, entries\);/
+    );
+    expect(keep).not.toMatch(/saveDraft|heldDrafts|paneState|dirtyEdits|loadModule/);
+  });
+  it('accept, propagate and restore compare the unit before each reload or send', () => {
+    const accept = code(fnBody('acceptSegment', 'acceptSegmentAndAdvance'));
+    expect(accept).toMatch(/const unit = openUnit\(\);[\s\S]*await saveRetry\.attempt\(/);
+    expect(accept.match(/if \(openUnit\(\) !== unit\) return;/g)).toHaveLength(2);
+    const prop = code(fnBody('propagateSegment', 'reviewEdit'));
+    expect(prop).toMatch(/await saveEdit\(segmentId\);\s*if \(openUnit\(\) !== unit\) return;/);
+    expect(prop).toMatch(
+      /await fetchJson\([\s\S]*propagation-preview[\s\S]*?\);\s*if \(openUnit\(\) !== unit\) return;/
+    );
+    expect(code(fnBody('restoreToVersion', 'showTermPopup'))).toMatch(
+      /if \(openUnit\(\) !== unit\) return;\s*await loadModule\(currentModuleId/
+    );
+  });
+  it('the review actions, revoke and submit reload through reloadIfOpen', () => {
+    const submit = code(
+      src.slice(
+        src.indexOf("getElementById('btn-submit').addEventListener"),
+        src.indexOf('function openUnit(')
+      )
+    );
+    const bodies = {
+      reviewEdit: code(fnBody('reviewEdit', 'unapproveEdit')),
+      unapproveEdit: code(fnBody('unapproveEdit', 'reopenEdit')),
+      reopenEdit: code(
+        src.slice(src.indexOf('function reopenEdit('), src.indexOf("getElementById('btn-submit')"))
+      ),
+      revokeAcceptance: code(fnBody('revokeAcceptance', 'openEditPanel')),
+      submit,
+    };
+    for (const [name, body] of Object.entries(bodies)) {
+      expect(body, name).toContain('const unit = openUnit();');
+      expect(body, name).toMatch(/await reloadIfOpen\(unit/);
+      expect(body, name).not.toMatch(/loadModule\(/);
+    }
+  });
+  it('every direct reload of the open unit is one of the sites above (a new one must be checked)', () => {
+    // reloadIfOpen, onSaveParked (synchronous, behind its own moduleData check), saveEdit's two open-unit refusal
+    // paths (behind the catch's openUnit check), acceptSegment's two and restoreToVersion's.
+    expect(code(src).match(/loadModule\(currentModuleId/g)).toHaveLength(7);
+  });
+});
+
+describe("a left unit's draft that storage refused stays in memory for its next opening (PR2 review R2)", () => {
+  const code = (s) => s.replace(/\/\/[^\n]*/g, '');
+  it('saveDraft and writeDraft report whether storage took the write', () => {
+    const save = code(fnBody('saveDraft', 'draftEntries'));
+    expect(save).toContain('return writeDraft(entries);');
+    expect(code(fnBody('writeDraft', 'saveDraft'))).toMatch(/return true;[\s\S]*return false;/);
+  });
+  it("restoreDraft merges the unit's unwritten value with what storage holds, then forgets it", () => {
+    expect(code(fnBody('restoreDraft', 'installDraft'))).toMatch(
+      /const values = draftValuesUnder\(prefix\);\s*if \(unwrittenDrafts\.has\(prefix\)\) \{\s*values\.push\(unwrittenDrafts\.get\(prefix\)\);\s*unwrittenDrafts\.delete\(prefix\);\s*\}\s*const found = values\.length > 0;/
+    );
+  });
+  it('leaving the page tries storage again, and asks first while memory alone holds a text', () => {
+    const unload = code(
+      src.slice(
+        src.indexOf("window.addEventListener('beforeunload'"),
+        src.indexOf("window.addEventListener('auth-expired'")
+      )
+    );
+    expect(unload).toMatch(/storeUnwritten\(\);[\s\S]*unwrittenDrafts\.size > 0/);
+  });
+});
