@@ -118,11 +118,13 @@ function saveSegmentEdit(params) {
     if (existing) {
       // G1.2 (spec §5.9): read inside the write's transaction; the research event filters it
       // (`record`), so this returns the raw row.
-      const before = conn.transaction(() => {
-        const row = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(existing.id);
-        conn.prepare(`DELETE FROM segment_edits WHERE id = ?`).run(existing.id);
-        return row;
-      })();
+      const before = conn
+        .transaction(() => {
+          const row = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(existing.id);
+          conn.prepare(`DELETE FROM segment_edits WHERE id = ?`).run(existing.id);
+          return row;
+        })
+        .immediate(); // write lock first (decision 45): a deferred read-first tx fails BUSY at once under WAL
       return { id: existing.id, updated: true, reverted: true, before };
     }
     // No edit to withdraw — nothing to do
@@ -197,7 +199,7 @@ function saveSegmentEdit(params) {
         );
       return { before, supersededAcceptanceIds, supersededEditIds };
     });
-    return { id: existing.id, updated: true, ...updateWithSupersede() };
+    return { id: existing.id, updated: true, ...updateWithSupersede.immediate() };
   }
 
   // Create new edit. A fresh revision is also the exit path for the editor's
@@ -252,7 +254,7 @@ function saveSegmentEdit(params) {
       );
     return { result, supersededAcceptanceIds, supersededEditIds };
   });
-  const { result, supersededAcceptanceIds, supersededEditIds } = insertWithSupersede();
+  const { result, supersededAcceptanceIds, supersededEditIds } = insertWithSupersede.immediate();
 
   // MT edit-lock (Track C2): once a module has been opened for editing, its MT
   // output must never be silently re-run and overwritten (see tools/lib/mt-lock.cjs).

@@ -9,6 +9,7 @@
 import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest';
 import { createRequire } from 'module';
 import { mkdtempSync, rmSync } from 'fs';
+import { spawn } from 'child_process';
 import { tmpdir } from 'os';
 import path from 'path';
 
@@ -201,4 +202,77 @@ describe('saveOnServedBase passes them through', () => {
     expect(third.supersededEditIds).toEqual([]);
     expect(third.supersededAcceptanceIds).toEqual([]);
   });
+});
+
+/**
+ * Decision 45 / PR1 review C2: the before-image SELECT must not turn a write-first transaction
+ * into a read-first DEFERRED one. Under WAL a deferred transaction that has read and then meets a
+ * lock held by another connection fails SQLITE_BUSY at once; BEGIN IMMEDIATE waits the busy
+ * timeout instead. A second PROCESS holds the write lock (a handle in this process would be
+ * blocked by the event loop it shares) and releases it after HOLD_MS, well inside the timeout.
+ */
+describe('the before-image transactions take the write lock first', () => {
+  const HOLD_MS = 400;
+  const HOLDER = `
+    const Database = require(${JSON.stringify(require.resolve('better-sqlite3'))});
+    const h = new Database(process.argv[1]);
+    h.pragma('busy_timeout = 5000');
+    h.exec('BEGIN IMMEDIATE');
+    process.stdout.write('held\\n');
+    setTimeout(() => { h.exec('COMMIT'); h.close(); }, ${HOLD_MS});
+  `;
+
+  async function whileForeignWriterHolds(fn) {
+    const child = spawn(process.execPath, ['-e', HOLDER, built.path], {
+      stdio: ['ignore', 'pipe', 'inherit'],
+    });
+    await new Promise((resolve, reject) => {
+      child.on('error', reject);
+      child.stdout.once('data', resolve);
+    });
+    const t0 = Date.now();
+    let outcome;
+    try {
+      outcome = { value: fn() };
+    } catch (error) {
+      outcome = { error };
+    }
+    const waited = Date.now() - t0;
+    await new Promise((resolve) => child.on('exit', resolve));
+    return { ...outcome, waited };
+  }
+
+  beforeAll(() => {
+    db.pragma('journal_mode = WAL');
+    db.pragma('busy_timeout = 5000');
+  });
+
+  const cases = {
+    'a re-save': {
+      arrange: () => save(),
+      act: () => save({ editedContent: 'E2' }),
+    },
+    'a withdraw': {
+      arrange: () => save(),
+      act: () => save({ editedContent: 'BASE' }),
+    },
+    'an insert': {
+      arrange: () => {},
+      act: () => save(),
+    },
+    'supersedeForEdit called directly': {
+      arrange: () => rawAcceptance('m1:para:a', 'active'),
+      act: () => acceptanceService.supersedeForEdit('tb', 'm1', 'm1:para:a', db),
+    },
+  };
+
+  for (const [name, { arrange, act }] of Object.entries(cases)) {
+    it(`${name} waits for a foreign writer instead of failing BUSY`, async () => {
+      arrange();
+      const r = await whileForeignWriterHolds(act);
+      expect(r.error).toBeUndefined();
+      // Control: it really waited for the holder rather than racing ahead of it.
+      expect(r.waited).toBeGreaterThan(HOLD_MS / 4);
+    });
+  }
 });
