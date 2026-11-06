@@ -163,6 +163,33 @@ describe('concordanceService', () => {
     });
   });
 
+  describe('suggestionFor (the claim check reads what the panel reads, spec §5.10)', () => {
+    // the same writeModule/indexModule fixture as findRepetitions above
+    beforeEach(() => {
+      writeModule('tb', 'ch03', 'm001', [
+        ['title', 't', 'Check Your Learning', 'Kannaðu skilning þinn'],
+      ]);
+      writeModule('tb', 'ch04', 'm002', [
+        ['title', 't', 'check your learning', ''], // same EN (normalized), not yet translated
+        ['para', 'p2', 'Unique sentence here.', ''],
+      ]);
+      concordance.indexModule('tb', 3, 'm001');
+    });
+
+    it('returns, for one segment, exactly the suggestion findRepetitions lists for it', () => {
+      const listed = concordance
+        .findRepetitions('tb', 4, 'm002')
+        .find((r) => r.segmentId === 'm002:title:t');
+      expect(concordance.suggestionFor('tb', 4, 'm002', 'm002:title:t')).toEqual(listed.suggestion);
+    });
+
+    it('null for a segment with no match, an unknown segment and a missing module', () => {
+      expect(concordance.suggestionFor('tb', 4, 'm002', 'm002:para:p2')).toBeNull();
+      expect(concordance.suggestionFor('tb', 4, 'm002', 'm002:para:none')).toBeNull();
+      expect(concordance.suggestionFor('tb', 9, 'm404', 'm404:para:x')).toBeNull();
+    });
+  });
+
   describe('repetitionReport', () => {
     it('flags recurring EN and whether translations agree', () => {
       writeModule('tb', 'ch03', 'm001', [['title', 't', 'Check Your Learning', 'Kannaðu A']]);
