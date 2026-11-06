@@ -29,6 +29,8 @@ const SCAN_DIRS = [path.join(__dirname, '..', 'routes'), path.join(__dirname, '.
 
 const SILENT_CATCH = /catch\s*(?:\([^)]*\)\s*)?\{\s*\/\*\s*fire-and-forget\s*\*\/\s*\}/;
 const TRY_WRAPPED_AUDIT = /try\s*\{\s*activityLog\.log\(/;
+// G1.2 PR3 (decision 41): researchLog.record is never-throw too, so it is called bare.
+const TRY_WRAPPED_RECORD = /try\s*\{\s*researchLog\.record\(/;
 const EMPTY_CATCH_NO_COMMENT = /catch\s*(?:\([^)]*\)\s*)?\{\s*\}/;
 
 function jsFiles(dir) {
@@ -52,9 +54,20 @@ describe('activityLog call-site guard', () => {
         expect(src).not.toMatch(TRY_WRAPPED_AUDIT);
       });
 
+      it(`${rel}: no try-wrapped researchLog.record (it is never-throw)`, () => {
+        expect(src).not.toMatch(TRY_WRAPPED_RECORD);
+      });
+
       it(`${rel}: no comment-less empty catch`, () => {
         expect(src).not.toMatch(EMPTY_CATCH_NO_COMMENT);
       });
     }
   }
+
+  it('control: TRY_WRAPPED_RECORD matches a try-wrapped call and not a bare one', () => {
+    expect('try {\n  researchLog.record(ev);\n} finally {\n  done();\n}').toMatch(
+      TRY_WRAPPED_RECORD
+    );
+    expect('researchLog.record(ev);').not.toMatch(TRY_WRAPPED_RECORD);
+  });
 });
