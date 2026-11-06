@@ -1615,7 +1615,7 @@ router.post(
         excludeModuleId: req.params.moduleId,
         excludeSegmentId: segmentId,
       });
-      const result = propagation.createPropagatedEdits(propagation.getDb(), {
+      const created = propagation.createPropagatedEdits(propagation.getDb(), {
         book: req.params.book,
         editorId: req.user.id,
         editorUsername: req.user.username,
@@ -1625,6 +1625,8 @@ router.post(
         occurrences,
         sourceEn: sourceSeg?.en,
       });
+      // G1.2: `created.writes` is the research event's; the response stays PR1's.
+      const result = withoutResearchKeys(created);
       res.json(result);
     } catch (err) {
       if (sendRefusal(res, err)) return;

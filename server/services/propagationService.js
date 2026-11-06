@@ -76,7 +76,7 @@ function classifyOccurrence(propagatedText, occ) {
  * and `occurrence`), in the same transaction as the write; both the INSERT and
  * the in-place UPDATE store it with origin `propagation`. A duplicated id is
  * skipped with its occurrence; a layerless module is skipped as `no-layer`.
- * @returns {{ created: Array, skipped: Array }}
+ * @returns {{ created: Array, skipped: Array, writes: Array }}
  */
 function createPropagatedEdits(
   conn,
@@ -135,6 +135,10 @@ function createPropagatedEdits(
      WHERE id = ?`
   );
 
+  // G1.2 (spec §5.9): what each created target's write changed, same order as `created`. The route
+  // strips it (the response is PR1's); the research event reads it.
+  const readRow = conn.prepare('SELECT * FROM segment_edits WHERE id = ?');
+  const writes = [];
   const created = [];
   const skipped = [];
   const tx = conn.transaction(() => {
@@ -186,7 +190,12 @@ function createPropagatedEdits(
       // like saveSegmentEdit does, inside this same transaction/connection.
       // Parity keeps the "edit supersedes acceptance" invariant on the
       // cross-module write path too (propagation bypasses saveSegmentEdit).
-      acceptanceService.supersedeForEdit(book, occ.moduleId, occ.segmentId, conn);
+      const supersededAcceptanceIds = acceptanceService.supersedeForEdit(
+        book,
+        occ.moduleId,
+        occ.segmentId,
+        conn
+      );
       // spec §5.6: a target was never served to the propagator, so its base is minted from the text
       // the server loaded for it (findOccurrences), and both writes carry it.
       const [servedVersionId] = servedVersions.mintVersions(conn, [
@@ -209,6 +218,7 @@ function createPropagatedEdits(
         existingEdit.status === 'pending' &&
         String(existingEdit.editor_id) === String(editorId)
       ) {
+        const before = readRow.get(existingEdit.id);
         update.run(
           propagatedText,
           category || null,
@@ -219,9 +229,20 @@ function createPropagatedEdits(
           existingEdit.id
         );
         created.push({ moduleId: occ.moduleId, segmentId: occ.segmentId, superseded: true });
+        writes.push({
+          moduleId: occ.moduleId,
+          segmentId: occ.segmentId,
+          chapter: occ.chapter,
+          occurrence: occ.occurrence,
+          editId: existingEdit.id,
+          servedVersionId,
+          inPlace: true,
+          before,
+          supersededAcceptanceIds,
+        });
         continue;
       }
-      insert.run(
+      const info = insert.run(
         book,
         occ.chapter,
         occ.moduleId,
@@ -237,6 +258,17 @@ function createPropagatedEdits(
         'propagation'
       );
       created.push({ moduleId: occ.moduleId, segmentId: occ.segmentId });
+      writes.push({
+        moduleId: occ.moduleId,
+        segmentId: occ.segmentId,
+        chapter: occ.chapter,
+        occurrence: occ.occurrence,
+        editId: Number(info.lastInsertRowid),
+        servedVersionId,
+        inPlace: false,
+        before: null,
+        supersededAcceptanceIds,
+      });
     }
   });
   // IMMEDIATE, because its first statement is findEdit's SELECT and it then supersedes, mints and
@@ -246,7 +278,24 @@ function createPropagatedEdits(
   // waiting the busy timeout, as saveOnServedBase and acceptSegment wait (PR1 review C2). Called
   // inside another transaction, it is a savepoint.
   tx.immediate();
-  return { created, skipped };
+  return { created, skipped, writes };
+}
+
+/**
+ * The newest live edit of a segment (rejected and superseded rows don't count), with its editor,
+ * or null. The preview's source for the research event (spec §5.9).
+ * @returns {{ id: number, edited_content: string, editor_id: string } | null}
+ */
+function latestLiveEdit(book, moduleId, segmentId) {
+  return (
+    getDb()
+      .prepare(
+        `SELECT id, edited_content, editor_id FROM segment_edits
+       WHERE book = ? AND module_id = ? AND segment_id = ? AND status NOT IN ('rejected', 'superseded')
+       ORDER BY id DESC LIMIT 1`
+      )
+      .get(book, moduleId, segmentId) || null
+  );
 }
 
 /**
@@ -256,13 +305,7 @@ function createPropagatedEdits(
  * classification consistent with what propagate actually writes.
  */
 function latestEditedText(book, moduleId, segmentId) {
-  const row = getDb()
-    .prepare(
-      `SELECT edited_content FROM segment_edits
-       WHERE book = ? AND module_id = ? AND segment_id = ? AND status NOT IN ('rejected', 'superseded')
-       ORDER BY id DESC LIMIT 1`
-    )
-    .get(book, moduleId, segmentId);
+  const row = latestLiveEdit(book, moduleId, segmentId);
   return row ? row.edited_content : null;
 }
 
@@ -317,4 +360,5 @@ module.exports = {
   createPropagatedEdits,
   findOccurrences,
   latestEditedText,
+  latestLiveEdit,
 };

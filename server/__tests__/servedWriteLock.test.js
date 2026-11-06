@@ -410,7 +410,7 @@ describe('another process holds the write lock (PR1 review C2)', () => {
     expect(describeError(run.error)).toBeNull();
     expect(run.startedWhileHeld).toBe(true);
     expect(run.releasingWhenDone).toBe(true);
-    expect(run.value).toEqual({
+    expect({ created: run.value.created, skipped: run.value.skipped }).toEqual({
       created: [{ moduleId: PROP_TARGET.moduleId, segmentId: targetId }],
       skipped: [],
     });
