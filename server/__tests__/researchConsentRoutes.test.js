@@ -1,5 +1,5 @@
 // server/__tests__/researchConsentRoutes.test.js — spec §5.14 (G1.2 PR3, Task 7)
-import { describe, it, expect, beforeAll, afterAll, afterEach } from 'vitest';
+import { describe, it, expect, vi, beforeAll, afterAll, afterEach } from 'vitest';
 import { createRequire } from 'module';
 import fs from 'fs';
 import os from 'os';
@@ -220,5 +220,51 @@ describe('consent routes (spec §5.14)', () => {
     const mount = src.indexOf("app.use('/api/research'");
     expect(mount).toBeGreaterThan(-1);
     expect(mount).toBeLessThan(src.indexOf("app.use('/api/*path'"));
+  });
+});
+
+describe('approved Icelandic strings (plan decision 64)', () => {
+  const APPROVED = {
+    visitor:
+      'Gestir eru ekki skráðir notendur og geta ekki tekið afstöðu til rannsóknarinnar; ekkert er geymt fyrir gest.',
+    noText:
+      'Samþykkistexti rannsóknarinnar hefur ekki verið birtur enn, svo ekki er hægt að skrá ákvörðun.',
+    changed:
+      'Samþykkistextinn hefur breyst frá því að síðunni var hlaðið. Lesið nýja textann og takið afstöðu aftur.',
+    invalid: 'Ákvörðun verður að vera „consented“ eða „declined“.',
+    failed: 'Ekki tókst að skrá ákvörðunina.',
+  };
+
+  it('visitor 403 carries the approved message', async () => {
+    const r = await invoke(get, as('p-vis'));
+    expect(r.body).toEqual({ error: 'Visitor', message: APPROVED.visitor, visitor: true });
+  });
+
+  it('NO_APPROVED_TEXT 409 carries the approved message', async () => {
+    expect((await consent('p-m1')).body.message).toBe(APPROVED.noText);
+  });
+
+  it('CONSENT_TEXT_CHANGED 409 carries the approved message', async () => {
+    researchConsentText._setTestApprovedTexts([V1]);
+    expect((await consent('p-m1', 'prufa-0')).body.message).toBe(APPROVED.changed);
+  });
+
+  it('INVALID_DECISION 400 carries the approved message', async () => {
+    researchConsentText._setTestApprovedTexts([V1]);
+    const r = await invoke(post, as('p-m1', { decision: 'maybe', textVersion: 'prufa-1' }));
+    expect(r.body.message).toBe(APPROVED.invalid);
+  });
+
+  it('the 500 carries the approved message', async () => {
+    const spy = vi.spyOn(researchConsent, 'decisionStateFor').mockImplementation(() => {
+      throw new Error('boom');
+    });
+    try {
+      const r = await invoke(get, as('p-m1'));
+      expect(r.status).toBe(500);
+      expect(r.body.error).toBe(APPROVED.failed);
+    } finally {
+      spy.mockRestore();
+    }
   });
 });

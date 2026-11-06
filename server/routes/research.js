@@ -23,10 +23,13 @@ const researchLog = require('../services/researchLog');
 const { currentConsentText } = require('../lib/researchConsentText');
 
 const CONSENT_MESSAGES = Object.freeze({
-  visitor: 'Gestir eru ekki með aðgang, svo engin ákvörðun er skráð.',
-  noText: 'Enginn samþykktur texti er í gildi, svo ekki er hægt að skrá ákvörðun.',
+  visitor:
+    'Gestir eru ekki skráðir notendur og geta ekki tekið afstöðu til rannsóknarinnar; ekkert er geymt fyrir gest.',
+  noText:
+    'Samþykkistexti rannsóknarinnar hefur ekki verið birtur enn, svo ekki er hægt að skrá ákvörðun.',
   badDecision: 'Ákvörðun verður að vera „consented“ eða „declined“.',
-  textChanged: 'Texti samþykkisins hefur breyst. Lestu nýja textann og reyndu aftur.',
+  textChanged:
+    'Samþykkistextinn hefur breyst frá því að síðunni var hlaðið. Lesið nýja textann og takið afstöðu aftur.',
   failed: 'Ekki tókst að skrá ákvörðunina.',
 });
 
