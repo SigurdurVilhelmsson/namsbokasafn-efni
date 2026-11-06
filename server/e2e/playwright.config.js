@@ -3,6 +3,7 @@ const path = require('path');
 const { defineConfig } = require('@playwright/test');
 
 const E2E_DB = path.join(__dirname, '..', '..', 'pipeline-output', 'e2e-sessions.db');
+const E2E_RESEARCH_DB = require('../lib/researchDbPath').deriveResearchPath(E2E_DB); // spec §5.1: the research file follows sessions.db
 
 module.exports = defineConfig({
   testDir: '.',
@@ -32,7 +33,7 @@ module.exports = defineConfig({
     // real limits; this only affects the test server. See RATE_LIMIT_* in
     // server/config.js.
     command:
-      `rm -f "${E2E_DB}" "${E2E_DB}-wal" "${E2E_DB}-shm"; ` +
+      `rm -f "${E2E_DB}" "${E2E_DB}-wal" "${E2E_DB}-shm" "${E2E_RESEARCH_DB}" "${E2E_RESEARCH_DB}-wal" "${E2E_RESEARCH_DB}-shm"; ` +
       `SESSIONS_DB_PATH="${E2E_DB}" node seed-fixture.js; ` +
       `SESSIONS_DB_PATH="${E2E_DB}" JWT_SECRET=test-secret-for-e2e-not-production ` +
       `RATE_LIMIT_MAX=10000000 ` +

@@ -44,6 +44,19 @@ failLoudOnMigrationErrors(migrationResult, {
   onError: (errors) => log.error({ errors }, 'Migration errors — refusing to start'),
 });
 
+// The research file (G1.2, spec §5.1): its schema runs after the editorial migrations. A failure marks research
+// unavailable (record() then counts losses) and is logged; it NEVER stops this server starting.
+try {
+  const research = require('./services/researchDb').openAtBoot();
+  if (!research.ok)
+    log.warn({ reason: research.reason }, 'Research file unavailable at boot (spec §5.1)');
+} catch (err) {
+  log.error(
+    { errorCode: err.code || err.name },
+    'Research boot step failed; the server starts anyway (spec §5.1)'
+  );
+}
+
 const express = require('express');
 const cors = require('cors');
 const { corsOptions } = require('./lib/corsOptions');

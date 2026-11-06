@@ -58,3 +58,17 @@ describe('resolveResearchDbPath', () => {
     expect(path.isAbsolute(researchPath)).toBe(true); // __dirname-based, never process.cwd()
   });
 });
+
+describe('E2E clears the research file it creates (spec §5.1, Tests and E2E)', () => {
+  it('the webServer rm line names the derived file and its -wal and -shm', () => {
+    const { deriveResearchPath } = require('../lib/researchDbPath');
+    const cfg = require('../e2e/playwright.config.js');
+    const e2eDb = path.join(SERVER, '..', 'pipeline-output', 'e2e-sessions.db');
+    const r = deriveResearchPath(e2eDb);
+    const rm = cfg.webServer.command.split(';')[0];
+    const named = [e2eDb, `${e2eDb}-wal`, `${e2eDb}-shm`, r, `${r}-wal`, `${r}-shm`];
+    expect(named.filter((p) => !rm.includes(`"${p}"`))).toEqual([]);
+    // control: the research file is not the editorial one, so the check can fail
+    expect(r).not.toBe(e2eDb);
+  });
+});
