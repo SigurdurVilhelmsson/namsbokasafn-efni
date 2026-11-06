@@ -10,7 +10,7 @@
 import { mkdtempSync, mkdirSync, rmSync, readFileSync } from 'fs';
 import { tmpdir } from 'os';
 import path from 'path';
-import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, vi } from 'vitest';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
@@ -24,6 +24,7 @@ process.env.JWT_SECRET = process.env.JWT_SECRET || 'prufa-leyndarmal';
 const Database = require('better-sqlite3');
 const { runAllMigrations } = require('../services/migrationRunner');
 const researchDb = require('../services/researchDb');
+const researchLog = require('../services/researchLog');
 const researchConsentText = require('../lib/researchConsentText');
 const serverCommit = require('../lib/serverCommit');
 const { sha256Text } = require('../lib/servedText');
@@ -293,7 +294,15 @@ describe('gates and pins', () => {
     seedEdit('k');
     const before = losses();
     const mark = eventMark();
-    const r = await accept({ segmentId: id('k'), acceptedContent: 'IS k' }, { user: DACC });
+    const spy = vi.spyOn(researchLog, 'record');
+    let r;
+    try {
+      r = await accept({ segmentId: id('k'), acceptedContent: 'IS k' }, { user: DACC });
+      expect(spy).toHaveBeenCalledTimes(1);
+      expect(spy.mock.results[0].value).toEqual({ status: 'skipped', reason: 'not-consenting' });
+    } finally {
+      spy.mockRestore();
+    }
     expect(r.status).toBe(409);
     expect(r.body.error).toBe('EDIT_EXISTS');
     expect(eventsSince(mark)).toEqual([]);
@@ -315,12 +324,21 @@ describe('gates and pins', () => {
   it('T18, route level: an organic accept records and counts nothing', async () => {
     const before = losses();
     const mark = eventMark();
-    const r = await accept(
-      { segmentId: 'm97204:para:x', acceptedContent: 'IS x' },
-      { book: ORGANIC, moduleId: 'm97204' }
-    );
-    expect(r.status).toBe(409);
-    expect(r.body.error).toBe('BOOK_NOT_MINTED');
+    const spy = vi.spyOn(researchLog, 'record');
+    try {
+      const r = await accept(
+        { segmentId: 'm97204:para:x', acceptedContent: 'IS x' },
+        { book: ORGANIC, moduleId: 'm97204' }
+      );
+      expect(r.status).toBe(409);
+      expect(r.body.error).toBe('BOOK_NOT_MINTED');
+      // The refusal REACHES record and is dropped at its scope step (not merely never called).
+      expect(spy).toHaveBeenCalledTimes(1);
+      expect(spy.mock.calls[0][0]).toMatchObject({ eventType: 'write-refused', book: ORGANIC });
+      expect(spy.mock.results[0].value).toEqual({ status: 'skipped', reason: 'not-study' });
+    } finally {
+      spy.mockRestore();
+    }
     expect(eventsSince(mark)).toEqual([]);
     expect(losses()).toEqual(before);
   });
