@@ -673,18 +673,30 @@ function emitRestore(req, { version, before }) {
  * the same bytes live); the preview is what the source's latest live edit (or the base) was just before the write,
  * kept as text only when it is the actor's own or the base (another editor's text only as a hash). The skipped
  * targets ride on index 0 only, so a sum over events counts each skip once. No client fields: one request, several
- * events. Never throws: the route's values are read only inside emit's guarded callbacks.
+ * events. Never throws: the route's values are read only inside emit's guarded callbacks. When the preview read
+ * failed (`previewUnknown`), the preview's hash, source and mismatch flag are null and no preview text is stored.
  *
  * @param {object} req The propagate request (user, params, chapterNum).
  * @param {{sourceSegmentId: string, sourceIs: string, latest: ({editor_id: *, edited_content: string}|null),
- *   editedContent: string, category?: string, note: string, writes: object[], skipped: object[]}} act
+ *   previewUnknown?: boolean, editedContent: string, category?: string, note: string, writes: object[],
+ *   skipped: object[]}} act
  *   `writes` and `skipped` are createPropagatedEdits' lists; `latest` is propagationService.latestLiveEdit's
- *   answer, read just before the write.
+ *   answer, read just before the write; `previewUnknown` is true when that read threw.
  * @returns {void}
  */
 function emitPropagation(
   req,
-  { sourceSegmentId, sourceIs, latest, editedContent, category, note, writes, skipped }
+  {
+    sourceSegmentId,
+    sourceIs,
+    latest,
+    previewUnknown = false,
+    editedContent,
+    category,
+    note,
+    writes,
+    skipped,
+  }
 ) {
   const list = Array.isArray(writes) ? writes : [];
   list.forEach((w, index) => {
@@ -697,14 +709,15 @@ function emitPropagation(
         }),
       () => {
         const clientTextSha256 = sha256Text(editedContent);
-        let previewSource = 'base';
+        const known = previewUnknown !== true; // false when the preview read failed: neither base nor edit is known
+        let previewSource = known ? 'base' : null;
         let previewText = sourceIs;
-        if (latest) {
+        if (known && latest) {
           previewSource =
             String(latest.editor_id) === String(req.user.id) ? 'own-edit' : 'other-edit';
           previewText = latest.edited_content;
         }
-        const previewSha256 = sha256Text(previewText);
+        const previewSha256 = known ? sha256Text(previewText) : null;
         return {
           ...NONE,
           segmentId: w.segmentId,
@@ -721,8 +734,8 @@ function emitPropagation(
             clientTextSha256,
             previewSha256,
             previewSource,
-            ...(previewSource === 'other-edit' ? {} : { previewText }),
-            previewMismatch: clientTextSha256 !== previewSha256,
+            ...(previewSource === 'other-edit' || !known ? {} : { previewText }),
+            previewMismatch: known ? clientTextSha256 !== previewSha256 : null,
             supersededAcceptanceIds: w.supersededAcceptanceIds,
             batch: { index, size: list.length },
             ...(index === 0 ? { skipped } : {}),

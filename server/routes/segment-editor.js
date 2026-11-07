@@ -1500,11 +1500,11 @@ router.post('/edit/:editId/comment', requireAuth, requireRole(ROLES.EDITOR), (re
       req.user.username,
       comment
     );
-    // Response stays first (the comment IS saved; a context-lookup failure
-    // must not flip a committed mutation into a 400 — that is the
-    // nested-site defect class this batch fixes). Only the lookup is
-    // guarded, with a log; the audit write goes bare with degraded context
-    // on lookup failure (edit stays null → the || '' fallbacks apply).
+    // The comment IS saved: the research event, then the response (spec §5.11; emit cannot
+    // throw), then the audit write. A context-lookup failure after the response must not flip a
+    // committed mutation into a 400 — that is the nested-site defect class this batch fixes. Only
+    // the lookup is guarded, with a log; the audit write goes bare with degraded context on lookup
+    // failure (edit stays null → the || '' fallbacks apply).
     researchEmission.emitComment(req, { edit: result.edit, comment });
     res.json({ success: true, commentId: result.id });
     let edit = null;
@@ -1714,7 +1714,19 @@ router.post(
         excludeSegmentId: segmentId,
       });
       // G1.2 (spec §5.9): what the preview would classify now, read just before the write, for the event only.
-      const latest = propagation.latestLiveEdit(req.params.book, req.params.moduleId, segmentId);
+      // Research must never fail the act (spec §5.11): if the read throws, the propagation proceeds exactly as
+      // before and its events carry no preview.
+      let latest = null;
+      let previewUnknown = false;
+      try {
+        latest = propagation.latestLiveEdit(req.params.book, req.params.moduleId, segmentId);
+      } catch (readErr) {
+        previewUnknown = true;
+        log.warn(
+          { errorCode: (readErr && (readErr.code || readErr.name)) || null },
+          'Propagation preview read failed; its research events carry no preview (spec §5.11)'
+        );
+      }
       const created = propagation.createPropagatedEdits(propagation.getDb(), {
         book: req.params.book,
         editorId: req.user.id,
@@ -1731,6 +1743,7 @@ router.post(
         sourceSegmentId: segmentId,
         sourceIs: sourceSeg?.is ?? '',
         latest,
+        previewUnknown,
         editedContent,
         category,
         note: note || 'Sjálfvirk fjölgun',

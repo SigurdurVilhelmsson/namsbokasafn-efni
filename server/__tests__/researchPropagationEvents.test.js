@@ -363,3 +363,49 @@ describe('refusals', () => {
     expect(losses()).toEqual(lossesBefore);
   });
 });
+
+describe("the preview read is the research event's alone: it never fails the propagation (spec §5.11)", () => {
+  it('a throwing latestLiveEdit: the propagation answers 200, writes its targets, and its events carry no preview', async () => {
+    const propagationService = require('../services/propagationService');
+    const logger = require('../lib/logger');
+    const mark = eventMark();
+    const read = vi.spyOn(propagationService, 'latestLiveEdit').mockImplementation(() => {
+      throw Object.assign(new Error('disk I/O error'), { code: 'SQLITE_IOERR_READ' });
+    });
+    const warn = vi.spyOn(logger, 'warn');
+    let r;
+    let reads;
+    try {
+      r = await propagate(PP, { segmentId: sid(SRC, 's'), editedContent: 'Án forsýnar' });
+    } finally {
+      reads = read.mock.calls.length; // before mockRestore, which clears the call log
+      read.mockRestore();
+    }
+    try {
+      expect(reads).toBe(1);
+      expect(r.status).toBe(200);
+      expect(Object.keys(r.body).sort()).toEqual(['created', 'skipped']);
+      const written = db
+        .prepare('SELECT module_id FROM segment_edits WHERE edited_content = ? ORDER BY module_id')
+        .all('Án forsýnar')
+        .map((x) => x.module_id);
+      expect(written).toEqual(['m97502', 'm97503']);
+      const ev = propagations(mark);
+      expect(ev.map((e) => e.module_id).sort()).toEqual(['m97502', 'm97503']);
+      for (const e of ev) {
+        expect(e.content.text).toBe('Án forsýnar');
+        expect(e.detail.clientTextSha256).toBe(sha256Text('Án forsýnar'));
+        expect(e.detail.previewSha256).toBeNull();
+        expect(e.detail.previewSource).toBeNull();
+        expect(e.detail.previewMismatch).toBeNull();
+        expect('previewText' in e.detail).toBe(false);
+      }
+      // The warning carries the error's code and no content.
+      const line = warn.mock.calls.find((c) => /preview/i.test(String(c[1])));
+      expect(line[0]).toEqual({ errorCode: 'SQLITE_IOERR_READ' });
+      expect(JSON.stringify(warn.mock.calls)).not.toContain('Án forsýnar');
+    } finally {
+      warn.mockRestore();
+    }
+  });
+});
