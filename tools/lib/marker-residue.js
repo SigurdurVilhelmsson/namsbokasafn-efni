@@ -35,8 +35,23 @@
 
 /** Source of the opener-only predicate. Kept as a string so every consumer
  * mints its own `RegExp` — a shared `/g` regex carries `lastIndex` state and
- * two consumers would silently interleave. */
-export const MARKER_RESIDUE_OPENER_SOURCE = '\\[\\[(?!MATH:|MEDIA:)[A-Za-z]\\w*:';
+ * two consumers would silently interleave.
+ *
+ * §C205: the type is EITHER an ASCII word (`[A-Za-z]\w*`, which keeps the
+ * one-letter types such as `[[i:`) OR a multi-word type such as
+ * `[[test tube:`. The second branch is `SPACED_TYPE` from
+ * `tools/lib/alt-segments.js`, the shape #547's `stripAltMarkers` unwraps:
+ * letters, spaces, hyphens or apostrophes, starting and ending on a letter.
+ * `\w*` alone stopped at the space, so `[[test tube:tilraunaglas]]` passed
+ * both gates and reached a prepared page. Prose such as
+ * `[[sjá mynd 3.2: gildi]]` or `[[word :x]]` still does not match.
+ * ⚠️ The second branch uses `\p{L}`, so the source needs the `u` flag;
+ * mint it through `markerResidueRegex()`. */
+export const MARKER_RESIDUE_OPENER_SOURCE =
+  "\\[\\[(?!MATH:|MEDIA:)(?:[A-Za-z]\\w*|\\p{L}[\\p{L}'’\\- ]*\\p{L}):";
+
+/** Flags every consumer must use with `MARKER_RESIDUE_OPENER_SOURCE`. */
+export const MARKER_RESIDUE_OPENER_FLAGS = 'gu';
 
 /**
  * How far the end-scan will look for a marker's close before calling it
@@ -81,7 +96,7 @@ const PLACEHOLDER_RE = /\[\[(MATH|MEDIA):\d+\]\]/g;
 
 /** @returns {RegExp} a fresh global opener matcher (no shared `lastIndex`). */
 export function markerResidueRegex() {
-  return new RegExp(MARKER_RESIDUE_OPENER_SOURCE, 'g');
+  return new RegExp(MARKER_RESIDUE_OPENER_SOURCE, MARKER_RESIDUE_OPENER_FLAGS);
 }
 
 /**
