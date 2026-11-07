@@ -18,7 +18,7 @@
     "body-parser": "^2.4.0"
   },
   "dependencies": {
-    "@monyone/aho-corasick": "1.5.10",
+    "@monyone/aho-corasick": "1.5.11",
     "archiver": "^8.0.0",
     "better-sqlite3": "^13.0.3",
     "cookie-parser": "^1.4.6",
