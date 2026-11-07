@@ -72,6 +72,7 @@ const FAMILIES = Object.freeze({
   lateOwn: { en: 'Family five sentence.', src: 'm97831', targets: ['m97832'] },
   rejected: { en: 'Family six sentence.', src: 'm97841', targets: ['m97842'] },
   apply: { en: 'Family seven sentence.', src: 'm97851', targets: ['m97852'] },
+  applySame: { en: 'Family eighteen sentence.', src: 'm97971', targets: ['m97972'] },
   // m97862 is a second source (B holds a live text on it), m97863 the target both propagations reach.
   inPlace: { en: 'Family eight sentence.', src: 'm97861', targets: ['m97862', 'm97863'] },
   elsewhere: { en: 'Family nine sentence.', src: 'm97871', targets: ['m97872'] },
@@ -455,6 +456,50 @@ describe('an event that names no segment follows the row too', () => {
       expectHashed(beforeRow(e, copy.id), X7);
       expectHashed(beforeRow(approval, copy.id), X7);
       expect(bytesHold(X7)).toBe(false);
+    } finally {
+      vi.restoreAllMocks();
+    }
+  });
+
+  it("an apply carries the applier's copy after an unchanged re-save reset its origin: only the row's own segment finds the propagation", async () => {
+    // The apply names no segment, and the copy's origin is 'editor-save', so neither the event's segment nor the
+    // book-wide check can find X here: only the before-row keyed on its OWN segment (spec AMENDED 2026-11-07, "this
+    // follows the row, not the event") reaches the propagation onto T and its source.
+    const X = 'SENTINEL-APPLY-SAME-DECLINER-TEXT';
+    const { src, targets } = FAMILIES.applySame;
+    const [T] = targets;
+    vi.spyOn(tmService, 'scheduleTmRegen').mockImplementation(() => {});
+    vi.spyOn(concordance, 'indexModule').mockImplementation(() => {});
+    vi.spyOn(pipelineStatusService, 'transitionStage').mockImplementation(() => {});
+    vi.spyOn(applyHold, 'assertFaithfulWritable').mockImplementation(() => {});
+    try {
+      await save(src, 's', B, X); // B declines: nothing recorded
+      await propagate('applySame', ADM, X);
+      const copy = copyOf(T, ADM);
+      const same = await save(T, 't', ADM, X); // the same text: it rewrites the row's origin
+      expect(same.editId).toBe(copy.id);
+      expect(copyOf(T, ADM)).toMatchObject({
+        id: copy.id,
+        edited_content: X,
+        origin: 'editor-save',
+      });
+      let r = await invoke(h.approve, { params: { editId: String(copy.id) }, user: ADM, body: {} });
+      expect(r.status).toBe(200);
+      const newer = await save(T, 't', ADM, 'Y-APPLY-SAME nýrri');
+      r = await invoke(h.approve, {
+        params: { editId: String(newer.editId) },
+        user: ADM,
+        body: {},
+      });
+      expect(r.status).toBe(200);
+      const mark = eventMark();
+      r = await invoke(h.apply, onModule(T, ADM));
+      expect(r.status).toBe(200);
+      const e = onlyEvent(mark, 'apply');
+      expect(e.segment_id).toBeNull();
+      expect(e.detail.superseded).toEqual([copy.id]);
+      expectHashed(beforeRow(e, copy.id), X, 'editor-save');
+      expect(bytesHold(X)).toBe(false);
     } finally {
       vi.restoreAllMocks();
     }
