@@ -95,6 +95,11 @@ const NEVER = 'm97902'; // A's own row, which no propagation ever wrote
 const LEGACY = 'm97903'; // A's row from before migration 053: origin NULL
 const LEGACY_HOLDER = 'm97904'; // B holds the legacy row's text live here
 const TYPED_ONTO = 'm97905'; // A types a text propagated elsewhere onto it
+const BATCH = 'm97906'; // the applier's pre-053 rows: several texts in one apply's before-image
+const BATCH_HOLDER_X = 'm97907'; // B holds one of them live here
+const BATCH_HOLDER_Z = 'm97908'; // B holds another of them live here
+const BATCH_REJECTED = 'm97909'; // B held another here, since rejected
+const BATCH_OWN = 'm97910'; // the applier holds another live here; no other editor does
 const STANDALONE = Object.freeze({
   [UNRELATED]: 'An unrelated sentence.',
   [HOLDER]: 'A holder sentence.',
@@ -102,6 +107,11 @@ const STANDALONE = Object.freeze({
   [LEGACY]: 'A legacy sentence.',
   [LEGACY_HOLDER]: 'A legacy holder sentence.',
   [TYPED_ONTO]: 'A typed-onto sentence.',
+  [BATCH]: 'A batched sentence.',
+  [BATCH_HOLDER_X]: 'A batched holder sentence.',
+  [BATCH_HOLDER_Z]: 'A second batched holder sentence.',
+  [BATCH_REJECTED]: 'A batched rejected sentence.',
+  [BATCH_OWN]: 'A batched own sentence.',
 });
 
 let root;
@@ -600,7 +610,7 @@ describe('I1: the copy is found by its segment and its text, not by its origin (
     expect('edited_content_sha256' in row).toBe(false);
     mark = eventMark();
     await save(NEVER, 's', A, 'Y-I1-NEVER eigið');
-    // The book-wide check is only for a row whose origin is still propagation: this one's is not, so B's live W
+    // The book-wide check is only for a row whose origin is propagation or NULL: this one's is neither, so B's live W
     // elsewhere does not withhold A's own W.
     row = beforeRow(onlyEvent(mark, 'edit-resave'), own.id);
     expect(row).toMatchObject({ origin: 'editor-save', edited_content: W });
@@ -716,6 +726,81 @@ describe('I-R1: a row whose origin is NULL (from before migration 053) and that 
     await save(LEGACY, 's', A, 'Y-IR1-LEGACY endurbætt af A');
     expectHashed(beforeRow(onlyEvent(mark, 'edit-resave'), seeded.editId), X, null);
     expect(bytesHold(X)).toBe(false);
+  });
+});
+
+describe('the book-wide check is one query per event over its distinct texts: it withholds what one query per text did', () => {
+  it('an apply carrying several pre-053 rows hashes exactly the texts another editor holds live elsewhere in the book', async () => {
+    const X = 'SENTINEL-BATCH-HELD-LIVE-BY-B';
+    const Z = 'SENTINEL-BATCH-ALSO-HELD-LIVE-BY-B';
+    const N = 'CONTROL-BATCH-HELD-LIVE-ONLY-BY-THE-APPLIER';
+    const R = 'CONTROL-BATCH-HELD-BY-B-SINCE-REJECTED';
+    // In before-image order (the losers by id). X twice: one text, two rows. Z: a second withheld text, so a check
+    // that read only one text could not pass. N: the applier's own live text (the other-editor test). R: another
+    // editor's, but no longer live (the "live" predicate).
+    const texts = [X, X, Z, N, R];
+    const withheld = new Set([X, Z]);
+    vi.spyOn(tmService, 'scheduleTmRegen').mockImplementation(() => {});
+    vi.spyOn(concordance, 'indexModule').mockImplementation(() => {});
+    vi.spyOn(pipelineStatusService, 'transitionStage').mockImplementation(() => {});
+    vi.spyOn(applyHold, 'assertFaithfulWritable').mockImplementation(() => {});
+    try {
+      await save(BATCH_HOLDER_X, 's', B, X); // B declines: nothing recorded
+      await save(BATCH_HOLDER_Z, 's', B, Z);
+      await save(BATCH_REJECTED, 's', B, R);
+      const rejected = db
+        .prepare(
+          `UPDATE segment_edits SET status = 'rejected' WHERE module_id = ? AND editor_id = ?`
+        )
+        .run(BATCH_REJECTED, B.id).changes;
+      expect(rejected).toBe(1);
+      await save(BATCH_OWN, 's', ADM, N);
+      // Approved rows of ADM's on one segment, then a newer approved one: the earlier rows are the apply's losers.
+      const losers = [];
+      for (const [i] of texts.entries()) {
+        const seeded = await save(BATCH, 's', ADM, `BATCH-SEED-${i} frá ADM`);
+        losers.push(seeded.editId);
+        const r = await invoke(h.approve, {
+          params: { editId: String(seeded.editId) },
+          user: ADM,
+          body: {},
+        });
+        expect(r.status).toBe(200);
+      }
+      expect(new Set(losers).size).toBe(texts.length);
+      const newest = await save(BATCH, 's', ADM, 'Y-BATCH nýjust');
+      let r = await invoke(h.approve, {
+        params: { editId: String(newest.editId) },
+        user: ADM,
+        body: {},
+      });
+      expect(r.status).toBe(200);
+      // Pre-053 rows (as in I-R1): rewritten directly, so each text reaches research.db only through the apply.
+      const rewrite = db.prepare(
+        `UPDATE segment_edits SET edited_content = ?, origin = NULL, served_version_id = NULL
+         WHERE id = ?`
+      );
+      for (const [i, id] of losers.entries()) expect(rewrite.run(texts[i], id).changes).toBe(1);
+      const mark = eventMark();
+      r = await invoke(h.apply, onModule(BATCH, ADM));
+      expect(r.status).toBe(200);
+      const e = onlyEvent(mark, 'apply');
+      expect(e.detail.superseded).toEqual(losers);
+      for (const [i, id] of losers.entries()) {
+        const row = beforeRow(e, id);
+        if (withheld.has(texts[i])) {
+          expectHashed(row, texts[i], null);
+        } else {
+          expect(row).toMatchObject({ origin: null, edited_content: texts[i] });
+          expect('edited_content_sha256' in row).toBe(false);
+        }
+      }
+      expect(bytesHold(X)).toBe(false);
+      expect(bytesHold(Z)).toBe(false);
+      expect(bytesHold(R)).toBe(true); // positive control: R reaches research.db only through this apply, kept
+    } finally {
+      vi.restoreAllMocks();
+    }
   });
 });
 

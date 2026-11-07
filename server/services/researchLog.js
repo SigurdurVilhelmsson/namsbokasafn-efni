@@ -323,9 +323,14 @@ function buildEvent(ev) {
 // throw here is a build failure (a counted loss, Task 12).
 const LIVE_EDITS_SQL = `SELECT editor_id, edited_content FROM segment_edits
    WHERE book = ? AND module_id = ? AND segment_id = ? AND status NOT IN ('rejected', 'superseded')`;
-// The same "live" predicate, book-wide, for one exact text: a propagated copy whose source is unknown.
-const LIVE_TEXT_IN_BOOK_SQL = `SELECT editor_id FROM segment_edits
-   WHERE book = ? AND edited_content = ? AND status NOT IN ('rejected', 'superseded')`;
+// The same "live" predicate, book-wide, for a set of exact texts (the propagated copies whose source is
+// unknown), in ONE query per event: an apply's before-image can carry many such rows, and one query per
+// text scans the book's rows once per text. The texts are bound as one JSON array of strings, which
+// json_each decodes; edited_content is declared with no collation (BINARY), so a row is returned exactly
+// when `edited_content = ?` would have matched one of the texts.
+const LIVE_TEXTS_IN_BOOK_SQL = `SELECT editor_id, edited_content FROM segment_edits
+   WHERE book = ? AND edited_content IN (SELECT value FROM json_each(?))
+     AND status NOT IN ('rejected', 'superseded')`;
 // The propagation events onto one segment with one text (research.db, read only): a propagation
 // event's segment is its target. Each call is one probe of the partial index
 // idx_research_events_propagation_target on all five columns (research schema version 2); the
@@ -361,10 +366,21 @@ function othersLiveTexts(ev) {
     }
   }
   if (copies.unknownTexts.length > 0) {
-    const inBook = conn.prepare(LIVE_TEXT_IN_BOOK_SQL);
+    // Each distinct text once, keyed as better-sqlite3 binds a string: well-formed, a lone surrogate
+    // becoming U+FFFD (a JSON escape of one would decode to other bytes and match nothing). A returned row
+    // withholds every text that binds to its content, which is what one query per text withheld.
+    const byBound = new Map();
     for (const text of copies.unknownTexts) {
-      if (inBook.all(ev.book, text).some((r) => isOthers(r.editor_id, ev.actorProviderId))) {
-        withheld.add(text);
+      const bound = text.toWellFormed();
+      if (!byBound.has(bound)) byBound.set(bound, new Set());
+      byBound.get(bound).add(text);
+    }
+    const rows = conn
+      .prepare(LIVE_TEXTS_IN_BOOK_SQL)
+      .all(ev.book, JSON.stringify([...byBound.keys()]));
+    for (const r of rows) {
+      if (isOthers(r.editor_id, ev.actorProviderId) && byBound.has(r.edited_content)) {
+        for (const text of byBound.get(r.edited_content)) withheld.add(text);
       }
     }
   }

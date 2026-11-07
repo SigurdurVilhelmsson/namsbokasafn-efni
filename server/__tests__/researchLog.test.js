@@ -533,6 +533,46 @@ describe('decision 65: a text another editor holds as a live edit is stored only
     expect('edited_content_sha256' in b2).toBe(false);
   });
 
+  it('the book-wide check binds a text as one query per text did: a lone surrogate finds the row it was stored as', () => {
+    // better-sqlite3 binds a lone surrogate as U+FFFD, so one `edited_content = ?` per text matched the stored row; a
+    // JSON escape of it decodes to other bytes. The batched check must bind it the same way and withhold the text as
+    // the before-row carries it. Every emitter today passes rows read back from sessions.db, which are well-formed:
+    // this row is built in memory, as a future emitter's could be.
+    const LONE = 'D65-LONE-\ud800-SURROGATE';
+    seedEdit({ editorId: 'p-other', moduleId: 'm98003', segmentId: 'm98003:para:z', text: LONE });
+    const stored = researchConsent
+      .getSessionsDb()
+      .prepare('SELECT edited_content FROM segment_edits WHERE segment_id = ?')
+      .get('m98003:para:z').edited_content;
+    expect(stored).toBe(LONE.toWellFormed()); // the fixture's control: stored as U+FFFD, not as written
+    expect(stored).not.toBe(LONE);
+    const r = record(
+      ev('D65-LONE-NEW', {
+        eventType: 'edit-resave',
+        before: {
+          table: 'segment_edits',
+          row: {
+            id: 78,
+            book: 'efnafraedi-2e',
+            chapter: 1,
+            module_id: 'm98001',
+            segment_id: 'm98001:para:a',
+            status: 'pending',
+            origin: null, // no propagation event matches, so the book-wide check runs
+            edited_content: LONE,
+            editor_id: 'p-ed1',
+            created_at: '2026-11-04 10:00:00',
+            applied_at: null,
+          },
+        },
+      })
+    );
+    expect(r.status).toBe('written');
+    const b = JSON.parse(eventRow(r.eventId).before_json)[0].row;
+    expect(b.edited_content_sha256).toBe(sha256Text(LONE));
+    expect('edited_content' in b).toBe(false);
+  });
+
   it('propagation: the source segment counts too, and previewText is dropped', () => {
     seedEdit({
       editorId: 'p-other',
