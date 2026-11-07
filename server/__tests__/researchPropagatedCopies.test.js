@@ -5,6 +5,9 @@
  * `edited_content` is X. The check covers the source segment the copy's `propagation` event recorded; when no such
  * event exists, it checks the copy's text against other editors' live edits anywhere in the book. The controls show
  * it does not over-withhold: A's own text, a book where nobody else holds the text, and a source edit since rejected.
+ * Since the refinement of the same day (finding I1), the copy is found by its row id and the sha256 of its current
+ * text, not by its `origin`: an unchanged re-save and a copy edited away and back both carry X under another origin.
+ * The book-wide check stays only for a row whose origin is still `propagation`.
  *
  * Drives the real handlers on a real migrated database (SESSIONS_DB_PATH in a temp dir, so the research file
  * derives into it too) over synthetic modules under a temp books root: nothing under books/ or pipeline-output/ is
@@ -65,9 +68,18 @@ const FAMILIES = Object.freeze({
   // m97862 is a second source (B holds a live text on it), m97863 the target both propagations reach.
   inPlace: { en: 'Family eight sentence.', src: 'm97861', targets: ['m97862', 'm97863'] },
   elsewhere: { en: 'Family nine sentence.', src: 'm97871', targets: ['m97872'] },
+  same: { en: 'Family ten sentence.', src: 'm97881', targets: ['m97882'] },
+  awayBack: { en: 'Family eleven sentence.', src: 'm97891', targets: ['m97892'] },
 });
-// A module of its own (no family shares its English), where B holds a live text elsewhere in the book.
-const UNRELATED = 'm97879';
+// Modules of their own (no other module shares their English), so nothing propagates onto them.
+const UNRELATED = 'm97879'; // B holds a live text here, elsewhere in the book
+const HOLDER = 'm97901'; // B holds a live text here, elsewhere in the book
+const NEVER = 'm97902'; // A's own row, which no propagation ever wrote
+const STANDALONE = Object.freeze({
+  [UNRELATED]: 'An unrelated sentence.',
+  [HOLDER]: 'A holder sentence.',
+  [NEVER]: 'A never-propagated sentence.',
+});
 
 let root;
 let realBooksDir;
@@ -119,13 +131,15 @@ beforeAll(() => {
       });
     }
   }
-  writeModule(root, {
-    book: CHEM,
-    chapterDir: 'ch01',
-    moduleId: UNRELATED,
-    en: [[sid(UNRELATED, 's'), 'An unrelated sentence.']],
-    mt: [[sid(UNRELATED, 's'), `IS ${UNRELATED}`]],
-  });
+  for (const [moduleId, en] of Object.entries(STANDALONE)) {
+    writeModule(root, {
+      book: CHEM,
+      chapterDir: 'ch01',
+      moduleId,
+      en: [[sid(moduleId, 's'), en]],
+      mt: [[sid(moduleId, 's'), `IS ${moduleId}`]],
+    });
+  }
   consent(makeUser('p-a'));
   decline(makeUser('p-b'));
   late1Id = makeUser('p-late1'); // no decision yet: not capturing
@@ -226,8 +240,8 @@ function onlyEvent(mark, type) {
 const beforeRow = (e, editId) => e.before.find((b) => b.row.id === editId).row;
 
 /** The row holds the text only as its hash: no raw edited_content. */
-function expectHashed(row, text) {
-  expect(row.origin).toBe('propagation');
+function expectHashed(row, text, origin = 'propagation') {
+  expect(row.origin).toBe(origin);
   expect(row.edited_content_sha256).toBe(sha256Text(text));
   expect('edited_content' in row).toBe(false);
 }
@@ -442,5 +456,68 @@ describe("the event is the one that wrote the copy's current text, not merely on
     await save(T, 't', IP, 'Y8 eftir endursamþykki');
     expectHashed(beforeRow(onlyEvent(mark, 'edit-resave'), copy.id), X8);
     expect(bytesHold(X8)).toBe(false);
+  });
+});
+
+describe('I1: the copy is found by its row and its text, not by its origin (spec AMENDED 2026-11-07, refined)', () => {
+  it("PROBE-SAME: an unchanged re-save resets the copy's origin; the next act's before-image still holds X only as its hash", async () => {
+    const X = 'SENTINEL-I1-SAME-DECLINER-TEXT';
+    const { src, targets } = FAMILIES.same;
+    const [T] = targets;
+    await save(src, 's', B, X);
+    await propagate('same', A, X);
+    const copy = copyOf(T, A);
+    expect(copy).toMatchObject({ edited_content: X, origin: 'propagation' });
+    expect(propagationEventsFor(copy.id)).toHaveLength(1);
+    let mark = eventMark();
+    const same = await save(T, 't', A, X); // the same text: accepted, and it rewrites the row's origin
+    expect(same.editId).toBe(copy.id);
+    expect(copyOf(T, A)).toMatchObject({ id: copy.id, edited_content: X, origin: 'editor-save' });
+    expectHashed(beforeRow(onlyEvent(mark, 'edit-resave'), copy.id), X);
+    expect(bytesHold(X)).toBe(false);
+    mark = eventMark();
+    await save(T, 't', A, 'Y-I1-SAME endurbætt af A');
+    expectHashed(beforeRow(onlyEvent(mark, 'edit-resave'), copy.id), X, 'editor-save');
+    expect(bytesHold(X)).toBe(false);
+  });
+
+  it("a copy edited away and back to X: the next act's before-image holds X only as its hash", async () => {
+    const X = 'SENTINEL-I1-BACK-DECLINER-TEXT';
+    const { src, targets } = FAMILIES.awayBack;
+    const [T] = targets;
+    await save(src, 's', B, X);
+    await propagate('awayBack', A, X);
+    const copy = copyOf(T, A);
+    expect(copy).toMatchObject({ edited_content: X, origin: 'propagation' });
+    await save(T, 't', A, 'X-prime-I1 frá A');
+    // A types X back. That save's own content is not this case's subject: decision 65 checks its own segment, and
+    // its before-row (X') came from no propagation. So the byte scan is not the detector here; the before-row is.
+    await save(T, 't', A, X);
+    expect(copyOf(T, A)).toMatchObject({ id: copy.id, edited_content: X, origin: 'editor-save' });
+    const mark = eventMark();
+    await save(T, 't', A, 'Y-I1-BACK endurbætt af A');
+    expectHashed(beforeRow(onlyEvent(mark, 'edit-resave'), copy.id), X, 'editor-save');
+  });
+
+  it('control: an own row no propagation wrote keeps its text, even one another editor holds live elsewhere in the book', async () => {
+    const NOBODY = 'CONTROL-I1-HELD-BY-NOBODY-ELSE';
+    const W = 'CONTROL-I1-HELD-ELSEWHERE-BY-B';
+    await save(HOLDER, 's', B, W); // live, another editor's, on another segment of the book
+    await save(NEVER, 's', A, NOBODY);
+    const own = copyOf(NEVER, A);
+    expect(own).toMatchObject({ edited_content: NOBODY, origin: 'editor-save' });
+    expect(propagationEventsFor(own.id)).toEqual([]); // no propagation event matches the row
+    let mark = eventMark();
+    await save(NEVER, 's', A, W);
+    let row = beforeRow(onlyEvent(mark, 'edit-resave'), own.id);
+    expect(row.edited_content).toBe(NOBODY);
+    expect('edited_content_sha256' in row).toBe(false);
+    mark = eventMark();
+    await save(NEVER, 's', A, 'Y-I1-NEVER eigið');
+    // The book-wide check is only for a row whose origin is still propagation: this one's is not, so B's live W
+    // elsewhere does not withhold A's own W.
+    row = beforeRow(onlyEvent(mark, 'edit-resave'), own.id);
+    expect(row).toMatchObject({ origin: 'editor-save', edited_content: W });
+    expect('edited_content_sha256' in row).toBe(false);
   });
 });
