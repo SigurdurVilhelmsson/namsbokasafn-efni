@@ -10,7 +10,11 @@
  * The book-wide check stays only for a row whose origin is still `propagation`. The event's own content is looked up the
  * same way (the residual, approved the same day): a save that types X back into the copy names the copy as its own row,
  * so the propagation that wrote X there is found by the row and sha256(X), and the save's content holds X only as its
- * hash. No book-wide check runs for content.
+ * hash. No book-wide check runs for content. Since the third refinement (findings I-R1 and I-R2), the lookup is keyed
+ * on the propagation's TARGET segment (book, chapter, module, segment) and the text's sha256, not on the row id: a copy
+ * deleted or withdrawn and typed again lives in a new row, which no propagation event names. The book-wide check also
+ * covers a row whose origin is NULL (written before migration 053, which added `origin` with no backfill). The
+ * chapter is part of the key because `chapter-metadata` is one module id shared by every chapter.
  *
  * Drives the real handlers on a real migrated database (SESSIONS_DB_PATH in a temp dir, so the research file
  * derives into it too) over synthetic modules under a temp books root: nothing under books/ or pipeline-output/ is
@@ -75,15 +79,28 @@ const FAMILIES = Object.freeze({
   awayBack: { en: 'Family eleven sentence.', src: 'm97891', targets: ['m97892'] },
   typedBack: { en: 'Family twelve sentence.', src: 'm97911', targets: ['m97912'] },
   ownBack: { en: 'Family thirteen sentence.', src: 'm97921', targets: ['m97922'] },
+  deleteRetype: { en: 'Family fourteen sentence.', src: 'm97931', targets: ['m97932'] },
+  withdrawRetype: { en: 'Family fifteen sentence.', src: 'm97941', targets: ['m97942'] },
+  typedElsewhere: { en: 'Family sixteen sentence.', src: 'm97951', targets: ['m97952'] },
+  // Chapter 1's `chapter-metadata`; chapter 2's (META_CH2_EN, below) has the same segment id and other English.
+  chapterMeta: { en: 'Family seventeen sentence.', src: 'm97961', targets: ['chapter-metadata'] },
 });
+const META = 'chapter-metadata';
+const META_CH2_EN = 'A chapter two metadata sentence.';
 // Modules of their own (no other module shares their English), so nothing propagates onto them.
 const UNRELATED = 'm97879'; // B holds a live text here, elsewhere in the book
 const HOLDER = 'm97901'; // B holds a live text here, elsewhere in the book
 const NEVER = 'm97902'; // A's own row, which no propagation ever wrote
+const LEGACY = 'm97903'; // A's row from before migration 053: origin NULL
+const LEGACY_HOLDER = 'm97904'; // B holds the legacy row's text live here
+const TYPED_ONTO = 'm97905'; // A types a text propagated elsewhere onto it
 const STANDALONE = Object.freeze({
   [UNRELATED]: 'An unrelated sentence.',
   [HOLDER]: 'A holder sentence.',
   [NEVER]: 'A never-propagated sentence.',
+  [LEGACY]: 'A legacy sentence.',
+  [LEGACY_HOLDER]: 'A legacy holder sentence.',
+  [TYPED_ONTO]: 'A typed-onto sentence.',
 });
 
 let root;
@@ -145,6 +162,13 @@ beforeAll(() => {
       mt: [[sid(moduleId, 's'), `IS ${moduleId}`]],
     });
   }
+  writeModule(root, {
+    book: CHEM,
+    chapterDir: 'ch02',
+    moduleId: META,
+    en: [[sid(META, 't'), META_CH2_EN]],
+    mt: [[sid(META, 't'), `IS ${META} ch02`]],
+  });
   consent(makeUser('p-a'));
   decline(makeUser('p-b'));
   late1Id = makeUser('p-late1'); // no decision yet: not capturing
@@ -174,9 +198,9 @@ afterAll(() => {
   rmSync(work, { recursive: true, force: true });
 });
 
-const onModule = (moduleId, user, body = {}) => ({
-  params: { book: CHEM, chapter: '1', moduleId },
-  chapterNum: 1,
+const onModule = (moduleId, user, body = {}, chapter = 1) => ({
+  params: { book: CHEM, chapter: String(chapter), moduleId },
+  chapterNum: chapter,
   user,
   body,
 });
@@ -187,25 +211,30 @@ let actSeq = 0;
  * A save as the page sends it: the served hash, and the row it displays. The client action id is a counter, never
  * the text, so a sentinel never reaches research.db through it.
  */
-async function save(moduleId, x, user, text) {
-  const page = (await invoke(h.get, onModule(moduleId, user))).body;
+async function save(moduleId, x, user, text, chapter = 1) {
+  const page = (await invoke(h.get, onModule(moduleId, user, {}, chapter))).body;
   const rows = page.edits[sid(moduleId, x)];
   const shown = rows && rows.length ? rows[0] : null;
   const r = await invoke(
     h.save,
-    onModule(moduleId, user, {
-      segmentId: sid(moduleId, x),
-      editedContent: text,
-      baseSha256: page.segments.find((s) => s.segmentId === sid(moduleId, x)).baseSha256,
-      ...(shown
-        ? {
-            baseEditId: shown.id,
-            displayedEditId: shown.id,
-            displayedEditSha256: shown.contentSha256,
-          }
-        : {}),
-      clientActionId: `pc-${++actSeq}`,
-    })
+    onModule(
+      moduleId,
+      user,
+      {
+        segmentId: sid(moduleId, x),
+        editedContent: text,
+        baseSha256: page.segments.find((s) => s.segmentId === sid(moduleId, x)).baseSha256,
+        ...(shown
+          ? {
+              baseEditId: shown.id,
+              displayedEditId: shown.id,
+              displayedEditSha256: shown.contentSha256,
+            }
+          : {}),
+        clientActionId: `pc-${++actSeq}`,
+      },
+      chapter
+    )
   );
   expect(r.status).toBe(200);
   return r.body;
@@ -464,7 +493,7 @@ describe("the event is the one that wrote the copy's current text, not merely on
   });
 });
 
-describe('I1: the copy is found by its row and its text, not by its origin (spec AMENDED 2026-11-07, refined)', () => {
+describe('I1: the copy is found by its segment and its text, not by its origin (spec AMENDED 2026-11-07, refined)', () => {
   it("PROBE-SAME: an unchanged re-save resets the copy's origin; the next act's before-image still holds X only as its hash", async () => {
     const X = 'SENTINEL-I1-SAME-DECLINER-TEXT';
     const { src, targets } = FAMILIES.same;
@@ -495,8 +524,9 @@ describe('I1: the copy is found by its row and its text, not by its origin (spec
     const copy = copyOf(T, A);
     expect(copy).toMatchObject({ edited_content: X, origin: 'propagation' });
     await save(T, 't', A, 'X-prime-I1 frá A');
-    // A types X back. Its before-row (X') came from no propagation; its own content is found by the row and sha256(X)
-    // (the residual, below), so that save holds X only as its hash too and the byte scan can see the whole case.
+    // A types X back. Its before-row (X') came from no propagation; its own content is found by the segment and
+    // sha256(X) (the residual, below), so that save holds X only as its hash too and the byte scan can see the whole
+    // case.
     await save(T, 't', A, X);
     expect(copyOf(T, A)).toMatchObject({ id: copy.id, edited_content: X, origin: 'editor-save' });
     const mark = eventMark();
@@ -516,8 +546,8 @@ describe('I1: the copy is found by its row and its text, not by its origin (spec
     let mark = eventMark();
     await save(NEVER, 's', A, W);
     const resave = onlyEvent(mark, 'edit-resave');
-    // The residual's control: the content's lookup finds no propagation for this row, and content has no book-wide
-    // check, so B's live W on another segment does not withhold the W A saved.
+    // The residual's control: the content's lookup finds no propagation onto this segment, and content has no
+    // book-wide check, so B's live W on another segment does not withhold the W A saved.
     expect(resave.content.text).toBe(W);
     expect('textSha256' in resave.content).toBe(false);
     let row = beforeRow(resave, own.id);
@@ -533,7 +563,7 @@ describe('I1: the copy is found by its row and its text, not by its origin (spec
   });
 });
 
-describe("the residual: the event's own content is looked up by its row and its text too (spec AMENDED 2026-11-07)", () => {
+describe("the residual: the event's own content is looked up by its segment and its text too (spec AMENDED 2026-11-07)", () => {
   it("A types B's propagated text X back into the copy: that save's content holds X only as its hash", async () => {
     const X = 'SENTINEL-RESIDUAL-TYPED-BACK-DECLINER-TEXT';
     const { src, targets } = FAMILIES.typedBack;
@@ -570,5 +600,139 @@ describe("the residual: the event's own content is looked up by its row and its 
     const e = onlyEvent(mark, 'edit-resave');
     expect(e.content.text).toBe(OWN);
     expect('textSha256' in e.content).toBe(false);
+  });
+});
+
+describe('I-R2: a copy deleted or withdrawn and typed again is a new row, found by its segment and text (spec AMENDED 2026-11-07)', () => {
+  it("A deletes the propagated copy of B's live text X and types X onto the target again: that save's content holds X only as its hash", async () => {
+    const X = 'SENTINEL-IR2-DELETE-RETYPE-DECLINER-TEXT';
+    const { src, targets } = FAMILIES.deleteRetype;
+    const [T] = targets;
+    await save(src, 's', B, X); // B declines: nothing recorded
+    await propagate('deleteRetype', A, X);
+    const copy = copyOf(T, A);
+    expect(copy).toMatchObject({ edited_content: X, origin: 'propagation' });
+    let mark = eventMark();
+    const r = await invoke(h.del, { params: { editId: String(copy.id) }, user: A });
+    expect(r.status).toBe(200);
+    expectHashed(beforeRow(onlyEvent(mark, 'edit-delete'), copy.id), X);
+    expect(copyOf(T, A)).toBeUndefined();
+    mark = eventMark();
+    const typed = await save(T, 't', A, X);
+    expect(typed.editId).not.toBe(copy.id); // a new row: segment_edits.id is AUTOINCREMENT
+    expect(propagationEventsFor(typed.editId)).toEqual([]); // so no propagation event names its id
+    const e = onlyEvent(mark, 'edit-save');
+    expect(e.content.textSha256).toBe(sha256Text(X));
+    expect('text' in e.content).toBe(false);
+    expect(bytesHold(X)).toBe(false);
+  });
+
+  it("A withdraws the propagated copy (a save of the base) and types X onto the target again: that save's content holds X only as its hash", async () => {
+    const X = 'SENTINEL-IR2-WITHDRAW-RETYPE-DECLINER-TEXT';
+    const { src, targets } = FAMILIES.withdrawRetype;
+    const [T] = targets;
+    await save(src, 's', B, X);
+    await propagate('withdrawRetype', A, X);
+    const copy = copyOf(T, A);
+    expect(copy).toMatchObject({ edited_content: X, origin: 'propagation' });
+    let mark = eventMark();
+    await save(T, 't', A, `IS ${T}`); // the base text: a withdraw, which deletes the pending row
+    expectHashed(beforeRow(onlyEvent(mark, 'edit-withdraw'), copy.id), X);
+    expect(copyOf(T, A)).toBeUndefined();
+    mark = eventMark();
+    const typed = await save(T, 't', A, X);
+    expect(typed.editId).not.toBe(copy.id);
+    expect(propagationEventsFor(typed.editId)).toEqual([]);
+    const e = onlyEvent(mark, 'edit-save');
+    expect(e.content.textSha256).toBe(sha256Text(X));
+    expect('text' in e.content).toBe(false);
+    expect(bytesHold(X)).toBe(false);
+  });
+});
+
+describe('I-R1: a row whose origin is NULL (from before migration 053) and that no event matches is checked book-wide (spec AMENDED 2026-11-07)', () => {
+  it('A re-saves a pre-053 row holding X, which B holds live on another segment of the book: the before-image holds X only as its hash', async () => {
+    const X = 'SENTINEL-IR1-LEGACY-DECLINER-TEXT';
+    await save(LEGACY_HOLDER, 's', B, X); // live, another editor's, on another segment of the book
+    // A pre-053 copy: migration 053 added `origin` (and served_version_id) with no backfill, so the row holds NULL, and
+    // no propagation event was captured for it. Seeded through a save of A's own text, then rewritten directly, so X
+    // reaches research.db only through the act under test.
+    const seeded = await save(LEGACY, 's', A, 'IR1-LEGACY-SEED frá A');
+    const changed = db
+      .prepare(
+        `UPDATE segment_edits SET edited_content = ?, origin = NULL, served_version_id = NULL
+         WHERE id = ?`
+      )
+      .run(X, seeded.editId).changes;
+    expect(changed).toBe(1);
+    expect(copyOf(LEGACY, A)).toMatchObject({ id: seeded.editId, edited_content: X, origin: null });
+    expect(propagationEventsFor(seeded.editId)).toEqual([]);
+    const mark = eventMark();
+    await save(LEGACY, 's', A, 'Y-IR1-LEGACY endurbætt af A');
+    expectHashed(beforeRow(onlyEvent(mark, 'edit-resave'), seeded.editId), X, null);
+    expect(bytesHold(X)).toBe(false);
+  });
+});
+
+// The control for I-R1's other side, a row with origin 'editor-save' that no event matches and whose text another editor
+// holds live elsewhere in the book (kept raw: no fallback for that origin), is the I1 control above ("an own row no
+// propagation wrote keeps its text").
+describe('controls for the segment key: its chapter and its segment are part of it (spec AMENDED 2026-11-07)', () => {
+  it("chapter isolation: a propagation onto chapter 1's chapter-metadata is not found for the same segment id in chapter 2", async () => {
+    const X = 'CONTROL-IR-CHAPTER-METADATA-TEXT';
+    const { src } = FAMILIES.chapterMeta;
+    const SEG = sid(META, 't');
+    const metaRow = (chapter) =>
+      db
+        .prepare(
+          `SELECT * FROM segment_edits WHERE module_id = ? AND chapter = ? AND editor_id = ?
+           AND status NOT IN ('rejected', 'superseded') ORDER BY id DESC LIMIT 1`
+        )
+        .get(META, chapter, A.id);
+    await save(src, 's', B, X); // B declines: nothing recorded
+    await propagate('chapterMeta', A, X); // chapter 1's chapter-metadata only: chapter 2's English differs
+    const copy = metaRow(1);
+    expect(copy).toMatchObject({ segment_id: SEG, edited_content: X, origin: 'propagation' });
+    expect(
+      propagationEventsFor(copy.id).map((e) => [e.chapter, e.module_id, e.segment_id])
+    ).toEqual([[1n, META, SEG]]);
+    // The positive control: in chapter 1 the key finds that propagation, so the copy's delete holds X only as its hash.
+    let mark = eventMark();
+    const r = await invoke(h.del, { params: { editId: String(copy.id) }, user: A });
+    expect(r.status).toBe(200);
+    expectHashed(beforeRow(onlyEvent(mark, 'edit-delete'), copy.id), X);
+    expect(bytesHold(X)).toBe(false);
+    // Chapter 2: the same module id and segment id and the same text, typed by A. No propagation reached it.
+    mark = eventMark();
+    const typed = await save(META, 't', A, X, 2);
+    expect(metaRow(2)).toMatchObject({ id: typed.editId, segment_id: SEG, edited_content: X });
+    const e = onlyEvent(mark, 'edit-save');
+    expect([e.chapter, e.module_id, e.segment_id]).toEqual([2n, META, SEG]);
+    expect(e.content.text).toBe(X);
+    expect('textSha256' in e.content).toBe(false);
+    mark = eventMark();
+    await save(META, 't', A, 'Y-IR-META eigið', 2);
+    const row = beforeRow(onlyEvent(mark, 'edit-resave'), typed.editId);
+    expect(row).toMatchObject({ origin: 'editor-save', edited_content: X });
+    expect('edited_content_sha256' in row).toBe(false);
+  });
+
+  it('content: X typed onto a segment no propagation reached keeps its text, though B holds X live and A propagated it elsewhere', async () => {
+    const X = 'CONTROL-IR-TYPED-ELSEWHERE-TEXT';
+    const { src, targets } = FAMILIES.typedElsewhere;
+    await save(src, 's', B, X);
+    await propagate('typedElsewhere', A, X); // a propagation event for X on its own target, not on TYPED_ONTO
+    expect(propagationEventsFor(copyOf(targets[0], A).id)).toHaveLength(1);
+    expect(bytesHold(X)).toBe(false);
+    let mark = eventMark();
+    const typed = await save(TYPED_ONTO, 's', A, X);
+    const e = onlyEvent(mark, 'edit-save');
+    expect(e.content.text).toBe(X);
+    expect('textSha256' in e.content).toBe(false);
+    mark = eventMark();
+    await save(TYPED_ONTO, 's', A, 'Y-IR-TYPED eigið');
+    const row = beforeRow(onlyEvent(mark, 'edit-resave'), typed.editId);
+    expect(row).toMatchObject({ origin: 'editor-save', edited_content: X });
+    expect(bytesHold(X)).toBe(true); // positive control: the scan finds the kept text
   });
 });

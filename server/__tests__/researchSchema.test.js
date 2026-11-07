@@ -33,11 +33,19 @@ const masterSql = () =>
       .all()
       .map((r) => [r.name, r.sql])
   );
-const PROPAGATION_INDEX = 'idx_research_events_propagation_editing';
+const PROPAGATION_INDEX = 'idx_research_events_propagation_target';
+/** The propagation index's columns: a propagation event's segment (its target) and its text's hash, in key order. */
+const PROPAGATION_INDEX_COLUMNS = [
+  'book',
+  'chapter',
+  'module_id',
+  'segment_id',
+  'editing_content_sha256',
+];
 /** A version-1 file: the version-2 schema less its one addition, the propagation index. */
 const toVersion1 = () => {
   ensureResearchSchema(db);
-  db.exec('DROP INDEX idx_research_events_propagation_editing');
+  db.exec('DROP INDEX idx_research_events_propagation_target');
   db.pragma('user_version = 1');
 };
 const addKey = (k = KEY, interval = 1n) =>
@@ -121,7 +129,7 @@ describe('ensureResearchSchema', () => {
     expect(names('idx_research_events_key_seq')).toEqual(['editor_key', 'key_seq']);
   });
 
-  it('version 2: a partial index on editing_id over propagation events only (spec AMENDED 2026-11-07)', () => {
+  it("version 2: a partial index on a propagation's target segment and text hash, over propagation events only (spec AMENDED 2026-11-07)", () => {
     ensureResearchSchema(db);
     const idx = Object.fromEntries(
       db.pragma('index_list(research_events)').map((i) => [i.name, i])
@@ -130,10 +138,12 @@ describe('ensureResearchSchema', () => {
     expect(own).toBeDefined();
     expect(Number(own.unique)).toBe(0);
     expect(Number(own.partial)).toBe(1);
-    expect(db.pragma(`index_info(${PROPAGATION_INDEX})`).map((c) => c.name)).toEqual([
-      'editing_id',
-    ]);
+    expect(db.pragma(`index_info(${PROPAGATION_INDEX})`).map((c) => c.name)).toEqual(
+      PROPAGATION_INDEX_COLUMNS
+    );
     expect(masterSql()[PROPAGATION_INDEX]).toContain("WHERE event_type = 'propagation'");
+    // The earlier build's index on editing_id is gone: version 2 was redefined in place, never deployed.
+    expect(masterSql().idx_research_events_propagation_editing).toBeUndefined();
   });
 
   it('a version-1 file is upgraded to version 2: the index is added and its rows are kept', () => {
@@ -157,7 +167,7 @@ describe('ensureResearchSchema', () => {
 
   it('never throws: a version-2 step that fails rolls back whole and leaves the file at version 1', () => {
     toVersion1();
-    db.exec('CREATE TABLE idx_research_events_propagation_editing (x TEXT)'); // the index's name is taken
+    db.exec('CREATE TABLE idx_research_events_propagation_target (x TEXT)'); // the index's name is taken
     const r = ensureResearchSchema(db);
     expect(r.ok).toBe(false);
     expect(typeof r.error).toBe('string');
@@ -167,9 +177,9 @@ describe('ensureResearchSchema', () => {
     ).toEqual([{ type: 'table' }]);
   });
 
-  it("researchLog's propagated-copy lookup names the event type as a literal and probes the index", () => {
+  it("researchLog's propagated-copy lookup names the event type as a literal and probes the index on all five columns", () => {
     const src = fs.readFileSync(path.join(__dirname, '..', 'services', 'researchLog.js'), 'utf8');
-    const m = /const PROPAGATIONS_OF_ROWS_SQL = `([^`]+)`;/.exec(src);
+    const m = /const PROPAGATIONS_ONTO_SQL = `([^`]+)`;/.exec(src);
     expect(m).not.toBeNull();
     const sql = m[1];
     // A partial index serves a query only when the query's WHERE implies the index's: a literal does.
@@ -177,15 +187,14 @@ describe('ensureResearchSchema', () => {
     const plan = () =>
       db
         .prepare('EXPLAIN QUERY PLAN ' + sql)
-        .all('[1, 2]')
+        .all('efnafraedi-2e', 1, 'm1', 'm1:para:1', 'a'.repeat(64))
         .map((r) => r.detail);
     ensureResearchSchema(db);
-    expect(plan()).toContain(
-      `SEARCH research_events USING INDEX ${PROPAGATION_INDEX} (editing_id=?)`
-    );
-    expect(plan()).not.toContain('SCAN research_events');
+    expect(plan()).toEqual([
+      `SEARCH research_events USING INDEX ${PROPAGATION_INDEX} (${PROPAGATION_INDEX_COLUMNS.map((c) => `${c}=?`).join(' AND ')})`,
+    ]);
     // The control: without the index the same query scans the event log, so the check above can tell.
-    db.exec('DROP INDEX idx_research_events_propagation_editing');
+    db.exec('DROP INDEX idx_research_events_propagation_target');
     expect(plan()).toContain('SCAN research_events');
   });
 

@@ -204,8 +204,8 @@ function recordInner(ev) {
   let row;
   let items;
   try {
-    // step 4: validation and sessions.db reads, plus one indexed research.db read when the
-    // content carries a text on the event's own row or the before-image holds a row the actor owns
+    // step 4: validation and sessions.db reads, plus research.db index probes when the content
+    // carries a text on the event's own segment or the before-image holds a row the actor owns
     // (decision 65, AMENDED 2026-11-07); never a research lock
     row = buildEvent(ev);
     items = buildItemRows(ev.eventType, ev.items);
@@ -313,9 +313,9 @@ function buildEvent(ev) {
 
 // Decision 65 (spec AMENDED 2026-11-04): the texts OTHER editors hold as live edits on the segments
 // this event names: its own segment, and a propagation's source (detail.source, decision 54); since
-// the AMENDED 2026-11-07 block, also the source of each propagation that wrote the current text of
-// a row the actor's before-image carries, or wrote the content's text on the event's own row
-// (propagatedCopySources, below). "Live" is
+// the AMENDED 2026-11-07 block, also the source of each propagation onto the segment of a row the
+// actor's before-image carries with that row's current text, or onto the event's own segment with
+// the content's text (propagatedCopySources, below). "Live" is
 // propagationService.latestEditedText's predicate, verbatim (the test pins the string). Read on the
 // sessions.db connection after the act committed: the route is synchronous from its write to emit,
 // and no save or propagation changes another editor's row, so these are the rows the act met. Runs
@@ -326,15 +326,15 @@ const LIVE_EDITS_SQL = `SELECT editor_id, edited_content FROM segment_edits
 // The same "live" predicate, book-wide, for one exact text: a propagated copy whose source is unknown.
 const LIVE_TEXT_IN_BOOK_SQL = `SELECT editor_id FROM segment_edits
    WHERE book = ? AND edited_content = ? AND status NOT IN ('rejected', 'superseded')`;
-// The propagation events that wrote these rows (research.db, read only): one statement however many
-// ids (the IN list comes from one JSON array), each id a probe of the partial index
-// idx_research_events_propagation_editing (research schema version 2). `event_type = 'propagation'`
-// stays a LITERAL: SQLite uses a partial index only for a query whose WHERE implies the index's
-// (researchSchema.test.js reads this SQL from this file and checks its query plan).
-const PROPAGATIONS_OF_ROWS_SQL = `SELECT editing_id, editing_content_sha256, detail_json
-   FROM research_events
-   WHERE event_type = 'propagation' AND editing_kind = 'segment_edit'
-     AND editing_id IN (SELECT value FROM json_each(?))`;
+// The propagation events onto one segment with one text (research.db, read only): a propagation
+// event's segment is its target. Each call is one probe of the partial index
+// idx_research_events_propagation_target on all five columns (research schema version 2); the
+// chapter is bound as stored, an integer. `event_type = 'propagation'` stays a LITERAL: SQLite uses a
+// partial index only for a query whose WHERE implies the index's (researchSchema.test.js reads this
+// SQL from this file and checks its query plan).
+const PROPAGATIONS_ONTO_SQL = `SELECT detail_json FROM research_events
+   WHERE event_type = 'propagation' AND book = ? AND chapter = ? AND module_id = ?
+     AND segment_id = ? AND editing_content_sha256 = ?`;
 
 // decision 8's comparison; a row with no editor_id is another person's (String(null) is never an actor)
 const isOthers = (editorId, actor) => String(editorId) !== String(actor);
@@ -372,51 +372,51 @@ function othersLiveTexts(ev) {
 }
 
 /**
- * Decision 65 as AMENDED 2026-11-07 (finding C1, refined the same day on finding I1). A before-image row
- * the actor owns may hold a text a propagation wrote, and that text came from the propagation's source
- * segment, which this event need not name: a re-save, withdraw or delete of the copy names the target,
- * an apply names no segment. So each such row's later events also check that source, as the
- * `propagation` event that wrote the row's CURRENT text recorded it (detail.source): the event whose
- * editing_id is the row AND whose editing_content_sha256 is the sha256 of the row's text. The id alone
- * is not enough: an in-place propagation rewrites an existing row, so it can name an earlier write
- * whose source is not where this text came from.
+ * Decision 65 as AMENDED 2026-11-07 (finding C1, refined the same day on findings I1, the residual, I-R1 and
+ * I-R2). Editor A propagates editor B's live text X, so A holds a copy of X on each target. X came from the
+ * propagation's source segment, which a later event on the copy need not name: a re-save, withdraw or delete
+ * names the target, an apply names no segment. So a text this event is about to store is looked up among the
+ * `propagation` events onto ITS segment (book, chapter, module, segment: a propagation event's segment is its
+ * target) whose editing_content_sha256 is the sha256 of that text, and each match's detail.source joins the
+ * segments othersLiveTexts checks.
  *
- * Keyed on the row and its text, NEVER on `origin`, for every row the actor owns: an unchanged re-save
- * rewrites origin to 'editor-save', and a copy edited away and back carries the propagated text under
- * another origin, so an origin test let both through (finding I1). When no event matches and the row's
- * origin is still `propagation` (the propagation was not captured, or its write was lost), the source
- * is unknown and the row's text is checked against other editors' live edits anywhere in the event's
- * book. A row with another origin and no matching event gets nothing extra: a book-wide check of every
- * own row is the wide check the lead declined.
+ * Keyed on the segment and the text, never on the row id or on `origin`: an unchanged re-save rewrites origin
+ * to 'editor-save' and a copy edited away and back carries X under another origin (finding I1), and a copy
+ * deleted or withdrawn and typed again lives in a new row with a new id (finding I-R2). The chapter is part of
+ * the key because `chapter-metadata` is one module id shared by every chapter.
  *
- * The event's own content is looked up the same way (the residual, approved the same day): when the
- * content carries a text and the event names its own `segment_edit` row, a propagation whose editing_id
- * is that row and whose editing_content_sha256 is the sha256 of the content's text adds its source. So a
- * save that types a propagated text back into the copy (its before-row holds the intermediate text, which
- * no propagation wrote) still has that text's source checked. A miss here never falls back to the book.
+ * What is looked up: (1) every segment_edits row in the before-image that the actor owns, whatever its origin,
+ * by the row's own segment and current text. This follows the row, not the event, so it applies to every event
+ * type, including those that name no segment. (2) When the content carries a text and the event names its own
+ * segment, that text, by the event's segment (the residual: a save that types X onto the copy's segment again).
  *
- * Follows the row, not the event, so it applies to every event type. The before-image is read as
- * filterBefore reads it: one { table, row } or an array of them (emitApply has already flattened apply's
- * losers and self-heal rows into that array). research.db is read only when the content carries a text on
- * the event's own row or the before-image holds a row the actor owns, once per event, as index probes
- * (research schema version 2); an act with neither pays nothing here.
+ * The fallback: a before-row from (1) that matches no event and whose origin is `propagation` or NULL has an
+ * unknown source (the propagation was not captured, or its write was lost; or the row predates migration 053,
+ * which added `origin` with no backfill: finding I-R1), so its text is checked against other editors' live edits
+ * anywhere in the event's book. An absent origin reads as NULL, as every absent field does here (`opt`). No
+ * fallback for any other origin (a book-wide check of every own row is the wide check the lead declined), and
+ * none for content.
+ *
+ * The before-image is read as filterBefore reads it: one { table, row } or an array of them (emitApply has
+ * already flattened apply's losers and self-heal rows into that array). research.db is read only when there is
+ * something to look up, one index probe per distinct (segment, text) (research schema version 2); an act with
+ * nothing to look up pays nothing here.
  * @returns {{sources: Array<[string, string]>, unknownTexts: string[]}}
  */
 function propagatedCopySources(ev) {
   const sources = [];
   const unknownTexts = [];
-  // { id, text, propagated: whether a miss is checked book-wide (the row's origin still says a propagation wrote it) }
-  const own = [];
+  const lookups = [];
   const content = ev.content;
   if (
-    ev.editingKind === 'segment_edit' &&
-    Number.isSafeInteger(ev.editingId) &&
+    typeof ev.segmentId === 'string' &&
     content !== null &&
     content !== undefined &&
     typeof content.text === 'string'
   ) {
-    // The event's own row with the text its content carries (the residual): never the book-wide check.
-    own.push({ id: ev.editingId, text: content.text, propagated: false });
+    // The event's own segment with the text its content carries (the residual): never the book-wide check.
+    const key = segmentKey(ev.book, ev.chapter, ev.moduleId, ev.segmentId);
+    if (key) lookups.push(lookupOf(key, content.text, false));
   }
   const actor = ev.actorProviderId;
   const before = ev.before;
@@ -438,40 +438,77 @@ function propagatedCopySources(ev) {
     ) {
       continue;
     }
-    const propagated = row.origin === 'propagation';
-    if (Number.isSafeInteger(row.id)) {
-      own.push({ id: row.id, text: row.edited_content, propagated });
-    } else if (propagated) {
-      // A row with no usable id cannot be matched to its event: a propagated copy's source is unknown.
+    const unknownIfMissed =
+      row.origin === 'propagation' || row.origin === null || row.origin === undefined;
+    const key = segmentKey(row.book, row.chapter, row.module_id, row.segment_id);
+    if (key) {
+      lookups.push(lookupOf(key, row.edited_content, unknownIfMissed));
+    } else if (unknownIfMissed) {
+      // A row whose segment cannot be read cannot be matched to an event: a copy's source is unknown.
       unknownTexts.push(row.edited_content);
     }
   }
-  if (own.length === 0) return { sources, unknownTexts };
+  if (lookups.length === 0) return { sources, unknownTexts };
 
-  let events;
+  // probe -> the readable sources of the events it matched
+  const matched = new Map();
   try {
-    const db = researchDb.getHandle();
-    events = statementsFor(db).propagationsOfRows.all(JSON.stringify(own.map((r) => r.id)));
+    const stmt = statementsFor(researchDb.getHandle()).propagationsOnto;
+    for (const { probe, params } of lookups) {
+      if (matched.has(probe)) continue; // an unchanged re-save's content and its before-row share one
+      matched.set(
+        probe,
+        stmt
+          .all(...params)
+          .map((e) => sourceOf(e.detail_json))
+          .filter((source) => source !== null)
+      );
+    }
   } catch (err) {
     // A research-handle error is noted against the handle (lose() notes only the write's errors);
     // rethrown, it is a build failure and a counted loss.
     researchDb.noteFailure(err);
     throw err;
   }
-  for (const { id, text, propagated } of own) {
-    const textSha256 = sha256Text(text);
-    let found = false;
-    for (const e of events) {
-      if (e.editing_id !== BigInt(id) || e.editing_content_sha256 !== textSha256) continue;
-      const source = sourceOf(e.detail_json);
-      if (source) {
-        sources.push(source);
-        found = true;
-      }
-    }
-    if (!found && propagated) unknownTexts.push(text);
+  for (const { probe, text, unknownIfMissed } of lookups) {
+    const found = matched.get(probe);
+    sources.push(...found);
+    // An event whose detail names no readable source does not count as found: the book is checked instead.
+    if (found.length === 0 && unknownIfMissed) unknownTexts.push(text);
   }
   return { sources, unknownTexts };
+}
+
+/**
+ * A segment as the lookup's key, or null when a part of it cannot be read. The chapter is an integer as
+ * segment_edits and research_events store it (a sessions.db handle reads it as a Number; a BigInt binds the same).
+ * @returns {[string, number|bigint, string, string] | null}
+ */
+function segmentKey(book, chapter, moduleId, segmentId) {
+  return typeof book === 'string' &&
+    (Number.isSafeInteger(chapter) || typeof chapter === 'bigint') &&
+    typeof moduleId === 'string' &&
+    typeof segmentId === 'string'
+    ? [book, chapter, moduleId, segmentId]
+    : null;
+}
+
+/**
+ * One text to look up on one segment: PROPAGATIONS_ONTO_SQL's parameters, and `probe`, which is equal for two
+ * lookups exactly when their parameters are (String(chapter): 1 and 1n are one chapter).
+ * @param {[string, number|bigint, string, string]} key segmentKey's answer
+ * @param {string} text
+ * @param {boolean} unknownIfMissed whether a miss is checked book-wide (the fallback)
+ */
+function lookupOf(key, text, unknownIfMissed) {
+  const [book, chapter, moduleId, segmentId] = key;
+  const textSha256 = sha256Text(text);
+  return {
+    params: [book, chapter, moduleId, segmentId, textSha256],
+    probe: JSON.stringify([book, String(chapter), moduleId, segmentId, textSha256]),
+    text,
+    unknownIfMissed,
+  };
 }
 
 /** A propagation event's detail.source as [moduleId, segmentId], or null when it cannot be read. */
@@ -522,7 +559,7 @@ function statementsFor(db) {
       ),
       insertEvent: db.prepare(INSERT_EVENT_SQL),
       insertItem: db.prepare(INSERT_ITEM_SQL),
-      propagationsOfRows: db.prepare(PROPAGATIONS_OF_ROWS_SQL),
+      propagationsOnto: db.prepare(PROPAGATIONS_ONTO_SQL),
     };
     statements.set(db, s);
   }

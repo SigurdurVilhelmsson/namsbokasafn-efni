@@ -83,16 +83,20 @@ const STEPS = Object.freeze([
     },
   },
   {
-    // Spec ✏️ AMENDED 2026-11-07: researchLog looks up the `propagation` events that wrote the rows of
-    // a before-image by editing_id (decision 65), inside a synchronous request, so the lookup must be
-    // an index probe, not a scan of the event log. Partial: only propagation events are ever looked up
-    // by editing_id, and SQLite uses the index only for a query whose WHERE implies
-    // `event_type = 'propagation'` (researchLog writes it as a literal).
+    // Spec ✏️ AMENDED 2026-11-07: researchLog looks up the `propagation` events whose segment (a
+    // propagation event's segment is its target) and text hash match a text it is about to store
+    // (decision 65), inside a synchronous request, so the lookup must be an index probe, not a scan of
+    // the event log. The chapter is in the key because `chapter-metadata` is one module id shared by
+    // every chapter. Partial: only propagation events are ever looked up this way, and SQLite uses the
+    // index only for a query whose WHERE implies `event_type = 'propagation'` (researchLog writes it as a
+    // literal). Redefined in place before PR3 merged (an earlier build indexed editing_id); no file with
+    // that index was ever deployed.
     version: 2,
     apply(db) {
       db.exec(`
-        CREATE INDEX IF NOT EXISTS idx_research_events_propagation_editing
-          ON research_events (editing_id) WHERE event_type = 'propagation';
+        CREATE INDEX IF NOT EXISTS idx_research_events_propagation_target
+          ON research_events (book, chapter, module_id, segment_id, editing_content_sha256)
+          WHERE event_type = 'propagation';
       `);
     },
   },
