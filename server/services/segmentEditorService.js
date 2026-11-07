@@ -116,12 +116,36 @@ function saveSegmentEdit(params) {
   // If edited content matches the original, treat as "withdraw edit"
   if (editedContent === originalContent) {
     if (existing) {
-      conn.prepare(`DELETE FROM segment_edits WHERE id = ?`).run(existing.id);
-      return { id: existing.id, updated: true, reverted: true };
+      // G1.2 (spec §5.9): read inside the write's transaction; the research event filters it
+      // (`record`), so this returns the raw row.
+      const before = conn
+        .transaction(() => {
+          const row = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(existing.id);
+          conn.prepare(`DELETE FROM segment_edits WHERE id = ?`).run(existing.id);
+          return row;
+        })
+        .immediate(); // write lock first (decision 45): a deferred read-first tx fails BUSY at once under WAL
+      return { id: existing.id, updated: true, reverted: true, before };
     }
     // No edit to withdraw — nothing to do
     return { id: null, updated: false, reverted: true };
   }
+
+  // The caller's own discuss/rejected rows on this segment: read, then superseded, in the
+  // caller's transaction (G1.2, spec §5.9: the research event filters the raw ids, `record`).
+  // A static string joined to the statements below, never interpolated (securityPayloads.test.js).
+  const STALE_OWN =
+    "book = ? AND module_id = ? AND segment_id = ? AND editor_id = ? AND status IN ('discuss', 'rejected')";
+  const supersedeOwnStale = () => {
+    const ids = conn
+      .prepare('SELECT id FROM segment_edits WHERE ' + STALE_OWN + ' ORDER BY id')
+      .all(book, moduleId, segmentId, editorId)
+      .map((r) => r.id);
+    conn
+      .prepare("UPDATE segment_edits SET status = 'superseded' WHERE " + STALE_OWN)
+      .run(book, moduleId, segmentId, editorId);
+    return ids;
+  };
 
   if (existing) {
     // Update existing edit. Same idempotent supersede sweep as the INSERT
@@ -137,17 +161,18 @@ function saveSegmentEdit(params) {
     // so this costs nothing on the common post-039 case where it never
     // matches anything.
     const updateWithSupersede = conn.transaction(() => {
+      // G1.2 (spec §5.9): read inside the write's transaction; the research event filters it
+      // (`record`), so this returns the raw row.
+      const before = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(existing.id);
       // item 20b: a saved revision supersedes the segment's active acceptance
       // (spec §7) — same transaction, same connection.
-      acceptanceService.supersedeForEdit(book, moduleId, segmentId, conn);
-
-      conn
-        .prepare(
-          `UPDATE segment_edits SET status = 'superseded'
-           WHERE book = ? AND module_id = ? AND segment_id = ? AND editor_id = ?
-             AND status IN ('discuss', 'rejected')`
-        )
-        .run(book, moduleId, segmentId, editorId);
+      const supersededAcceptanceIds = acceptanceService.supersedeForEdit(
+        book,
+        moduleId,
+        segmentId,
+        conn
+      );
+      const supersededEditIds = supersedeOwnStale();
 
       // A re-save moves the base record (spec §5.8): the row's text is now made on this
       // save's base; a caller that names no served version leaves it NULL (unknown), never a
@@ -172,9 +197,9 @@ function saveSegmentEdit(params) {
           displayedEditSha256,
           existing.id
         );
+      return { before, supersededAcceptanceIds, supersededEditIds };
     });
-    updateWithSupersede();
-    return { id: existing.id, updated: true };
+    return { id: existing.id, updated: true, ...updateWithSupersede.immediate() };
   }
 
   // Create new edit. A fresh revision is also the exit path for the editor's
@@ -190,19 +215,19 @@ function saveSegmentEdit(params) {
   // time it runs on the update path; it stays load-bearing for legacy
   // pre-039 data where that invariant doesn't hold.
   const insertWithSupersede = conn.transaction(() => {
+    // G1.2 (spec §5.9): read inside the write's transaction; the research event filters it
+    // (`record`), so this returns the raw ids.
     // item 20b: a saved revision supersedes the segment's active acceptance
     // (spec §7) — same transaction, same connection.
-    acceptanceService.supersedeForEdit(book, moduleId, segmentId, conn);
+    const supersededAcceptanceIds = acceptanceService.supersedeForEdit(
+      book,
+      moduleId,
+      segmentId,
+      conn
+    );
+    const supersededEditIds = supersedeOwnStale();
 
-    conn
-      .prepare(
-        `UPDATE segment_edits SET status = 'superseded'
-         WHERE book = ? AND module_id = ? AND segment_id = ? AND editor_id = ?
-           AND status IN ('discuss', 'rejected')`
-      )
-      .run(book, moduleId, segmentId, editorId);
-
-    return conn
+    const result = conn
       .prepare(
         `INSERT INTO segment_edits
        (book, chapter, module_id, segment_id, original_content, edited_content,
@@ -227,8 +252,9 @@ function saveSegmentEdit(params) {
         displayedEditId,
         displayedEditSha256
       );
+    return { result, supersededAcceptanceIds, supersededEditIds };
   });
-  const result = insertWithSupersede();
+  const { result, supersededAcceptanceIds, supersededEditIds } = insertWithSupersede.immediate();
 
   // MT edit-lock (Track C2): once a module has been opened for editing, its MT
   // output must never be silently re-run and overwritten (see tools/lib/mt-lock.cjs).
@@ -259,7 +285,7 @@ function saveSegmentEdit(params) {
     log.error({ err, book, chapter, moduleId }, 'MT lock write failed on first edit');
   }
 
-  return { id: result.lastInsertRowid, updated: false };
+  return { id: result.lastInsertRowid, updated: false, supersededEditIds, supersededAcceptanceIds };
 }
 
 /**
@@ -408,16 +434,22 @@ function getEditById(editId) {
  */
 function deleteSegmentEdit(editId, editorId) {
   const conn = getDb();
-  const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
-  if (!edit) throw new Error('Edit not found');
-  // Use == for type-coercing comparison: SQLite TEXT column may store "99999.0"
-  // while JS provides 99999 (number) — strict === would reject the owner's own edit
-  // eslint-disable-next-line eqeqeq
-  if (edit.editor_id != editorId) throw new Error('Not your edit');
-  if (edit.status !== 'pending') throw new Error('Can only delete pending edits');
+  // G1.2 (spec §5.9): the before-image is read in the write's own transaction; IMMEDIATE takes the
+  // write lock before the read, so the read is never followed by a failed upgrade (decision 45).
+  return conn
+    .transaction(() => {
+      const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+      if (!edit) throw new Error('Edit not found');
+      // Use == for type-coercing comparison: SQLite TEXT column may store "99999.0"
+      // while JS provides 99999 (number) — strict === would reject the owner's own edit
+      // eslint-disable-next-line eqeqeq
+      if (edit.editor_id != editorId) throw new Error('Not your edit');
+      if (edit.status !== 'pending') throw new Error('Can only delete pending edits');
 
-  conn.prepare(`DELETE FROM segment_edits WHERE id = ?`).run(editId);
-  return true;
+      conn.prepare(`DELETE FROM segment_edits WHERE id = ?`).run(editId);
+      return { deleted: true, before: edit };
+    })
+    .immediate();
 }
 
 // =====================================================================
@@ -429,44 +461,53 @@ function deleteSegmentEdit(editId, editorId) {
  */
 function approveEdit(editId, reviewerId, reviewerUsername, reviewerNote) {
   const conn = getDb();
-  const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
-  if (!edit) throw new Error('Edit not found');
-  // Self-approval is permitted for head-editors and admins (the only roles the
-  // approve route allows): on a small team the same person often both revises a
-  // published segment (edit-again) and approves it. The editor→head-editor
-  // separation still holds for the normal flow, where editors can't approve at all.
-  if (edit.status !== 'pending') throw new Error('Edit is not pending');
+  // G1.2 (spec §5.9): the before-image is read in the write's own transaction; IMMEDIATE takes the
+  // write lock before the read, so the read is never followed by a failed upgrade (decision 45).
+  return conn
+    .transaction(() => {
+      const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+      if (!edit) throw new Error('Edit not found');
+      // Self-approval is permitted for head-editors and admins (the only roles the
+      // approve route allows): on a small team the same person often both revises a
+      // published segment (edit-again) and approves it. The editor→head-editor
+      // separation still holds for the normal flow, where editors can't approve at all.
+      if (edit.status !== 'pending') throw new Error('Edit is not pending');
 
-  // Item 13 guard: approving an edit a newer APPROVED edit already outranks
-  // is a meaningless act — convergent apply would supersede it immediately.
-  // Tell the head-editor now instead of silently flipping it later. A newer
-  // PENDING/discuss edit does NOT block (normal review freedom).
-  const newerApproved = conn
-    .prepare(
-      `SELECT id, created_at FROM segment_edits
-       WHERE book = ? AND module_id = ? AND segment_id = ? AND status = 'approved'`
-    )
-    .all(edit.book, edit.module_id, edit.segment_id)
-    .some((e) => isNewer(e, edit));
-  if (newerApproved) {
-    const err = new Error('Nýrri samþykkt breyting er þegar til á þessum bút.');
-    err.code = 'SUPERSEDED_BY_NEWER';
-    throw err;
-  }
+      // Item 13 guard: approving an edit a newer APPROVED edit already outranks
+      // is a meaningless act — convergent apply would supersede it immediately.
+      // Tell the head-editor now instead of silently flipping it later. A newer
+      // PENDING/discuss edit does NOT block (normal review freedom).
+      const newerApproved = conn
+        .prepare(
+          `SELECT id, created_at FROM segment_edits
+         WHERE book = ? AND module_id = ? AND segment_id = ? AND status = 'approved'`
+        )
+        .all(edit.book, edit.module_id, edit.segment_id)
+        .some((e) => isNewer(e, edit));
+      if (newerApproved) {
+        const err = new Error('Nýrri samþykkt breyting er þegar til á þessum bút.');
+        err.code = 'SUPERSEDED_BY_NEWER';
+        throw err;
+      }
 
-  conn
-    .prepare(
-      `UPDATE segment_edits
-     SET status = 'approved',
-         reviewer_id = ?,
-         reviewer_username = ?,
-         reviewer_note = ?,
-         reviewed_at = CURRENT_TIMESTAMP
-     WHERE id = ?`
-    )
-    .run(reviewerId, reviewerUsername, reviewerNote || null, editId);
+      conn
+        .prepare(
+          `UPDATE segment_edits
+       SET status = 'approved',
+           reviewer_id = ?,
+           reviewer_username = ?,
+           reviewer_note = ?,
+           reviewed_at = CURRENT_TIMESTAMP
+       WHERE id = ?`
+        )
+        .run(reviewerId, reviewerUsername, reviewerNote || null, editId);
 
-  return conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+      return {
+        ...conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId),
+        before: edit,
+      };
+    })
+    .immediate();
 }
 
 /**
@@ -474,23 +515,32 @@ function approveEdit(editId, reviewerId, reviewerUsername, reviewerNote) {
  */
 function rejectEdit(editId, reviewerId, reviewerUsername, reviewerNote) {
   const conn = getDb();
-  const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
-  if (!edit) throw new Error('Edit not found');
-  if (edit.status !== 'pending') throw new Error('Edit is not pending');
+  // G1.2 (spec §5.9): the before-image is read in the write's own transaction; IMMEDIATE takes the
+  // write lock before the read, so the read is never followed by a failed upgrade (decision 45).
+  return conn
+    .transaction(() => {
+      const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+      if (!edit) throw new Error('Edit not found');
+      if (edit.status !== 'pending') throw new Error('Edit is not pending');
 
-  conn
-    .prepare(
-      `UPDATE segment_edits
-     SET status = 'rejected',
-         reviewer_id = ?,
-         reviewer_username = ?,
-         reviewer_note = ?,
-         reviewed_at = CURRENT_TIMESTAMP
-     WHERE id = ?`
-    )
-    .run(reviewerId, reviewerUsername, reviewerNote || null, editId);
+      conn
+        .prepare(
+          `UPDATE segment_edits
+       SET status = 'rejected',
+           reviewer_id = ?,
+           reviewer_username = ?,
+           reviewer_note = ?,
+           reviewed_at = CURRENT_TIMESTAMP
+       WHERE id = ?`
+        )
+        .run(reviewerId, reviewerUsername, reviewerNote || null, editId);
 
-  return conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+      return {
+        ...conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId),
+        before: edit,
+      };
+    })
+    .immediate();
 }
 
 /**
@@ -498,23 +548,32 @@ function rejectEdit(editId, reviewerId, reviewerUsername, reviewerNote) {
  */
 function markForDiscussion(editId, reviewerId, reviewerUsername, reviewerNote) {
   const conn = getDb();
-  const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
-  if (!edit) throw new Error('Edit not found');
-  if (edit.status !== 'pending') throw new Error('Edit is not pending');
+  // G1.2 (spec §5.9): the before-image is read in the write's own transaction; IMMEDIATE takes the
+  // write lock before the read, so the read is never followed by a failed upgrade (decision 45).
+  return conn
+    .transaction(() => {
+      const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+      if (!edit) throw new Error('Edit not found');
+      if (edit.status !== 'pending') throw new Error('Edit is not pending');
 
-  conn
-    .prepare(
-      `UPDATE segment_edits
-     SET status = 'discuss',
-         reviewer_id = ?,
-         reviewer_username = ?,
-         reviewer_note = ?,
-         reviewed_at = CURRENT_TIMESTAMP
-     WHERE id = ?`
-    )
-    .run(reviewerId, reviewerUsername, reviewerNote || null, editId);
+      conn
+        .prepare(
+          `UPDATE segment_edits
+       SET status = 'discuss',
+           reviewer_id = ?,
+           reviewer_username = ?,
+           reviewer_note = ?,
+           reviewed_at = CURRENT_TIMESTAMP
+       WHERE id = ?`
+        )
+        .run(reviewerId, reviewerUsername, reviewerNote || null, editId);
 
-  return conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+      return {
+        ...conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId),
+        before: edit,
+      };
+    })
+    .immediate();
 }
 
 /**
@@ -527,39 +586,48 @@ function markForDiscussion(editId, reviewerId, reviewerUsername, reviewerNote) {
  */
 function unapproveEdit(editId) {
   const conn = getDb();
-  const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
-  if (!edit) throw new Error('Edit not found');
-  if (edit.status !== 'approved') throw new Error('Edit is not approved');
-  if (edit.applied_at) throw new Error('Edit has already been applied to files');
+  // G1.2 (spec §5.9): the before-image is read in the write's own transaction; IMMEDIATE takes the
+  // write lock before the read, so the read is never followed by a failed upgrade (decision 45).
+  return conn
+    .transaction(() => {
+      const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+      if (!edit) throw new Error('Edit not found');
+      if (edit.status !== 'approved') throw new Error('Edit is not approved');
+      if (edit.applied_at) throw new Error('Edit has already been applied to files');
 
-  const pending = conn
-    .prepare(
-      `SELECT id FROM segment_edits
-     WHERE book = ? AND module_id = ? AND segment_id = ? AND editor_id = ?
-       AND status = 'pending'`
-    )
-    .get(edit.book, edit.module_id, edit.segment_id, edit.editor_id);
-  if (pending) {
-    const err = new Error(
-      'Yfirlesarinn á nýrri breytingu í bið á þessum bút — farið yfir þá breytingu í staðinn.'
-    );
-    err.code = 'PENDING_EXISTS';
-    throw err;
-  }
+      const pending = conn
+        .prepare(
+          `SELECT id FROM segment_edits
+       WHERE book = ? AND module_id = ? AND segment_id = ? AND editor_id = ?
+         AND status = 'pending'`
+        )
+        .get(edit.book, edit.module_id, edit.segment_id, edit.editor_id);
+      if (pending) {
+        const err = new Error(
+          'Yfirlesarinn á nýrri breytingu í bið á þessum bút — farið yfir þá breytingu í staðinn.'
+        );
+        err.code = 'PENDING_EXISTS';
+        throw err;
+      }
 
-  conn
-    .prepare(
-      `UPDATE segment_edits
-     SET status = 'pending',
-         reviewer_id = NULL,
-         reviewer_username = NULL,
-         reviewer_note = NULL,
-         reviewed_at = NULL
-     WHERE id = ?`
-    )
-    .run(editId);
+      conn
+        .prepare(
+          `UPDATE segment_edits
+       SET status = 'pending',
+           reviewer_id = NULL,
+           reviewer_username = NULL,
+           reviewer_note = NULL,
+           reviewed_at = NULL
+       WHERE id = ?`
+        )
+        .run(editId);
 
-  return conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+      return {
+        ...conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId),
+        before: edit,
+      };
+    })
+    .immediate();
 }
 
 /**
@@ -571,41 +639,50 @@ function unapproveEdit(editId) {
  */
 function returnEditToPending(editId) {
   const conn = getDb();
-  const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
-  if (!edit) throw new Error('Edit not found');
-  if (edit.status !== 'discuss' && edit.status !== 'rejected') {
-    throw new Error('Edit is not in discuss/rejected status');
-  }
-  if (edit.applied_at) throw new Error('Edit has already been applied to files');
+  // G1.2 (spec §5.9): the before-image is read in the write's own transaction; IMMEDIATE takes the
+  // write lock before the read, so the read is never followed by a failed upgrade (decision 45).
+  return conn
+    .transaction(() => {
+      const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+      if (!edit) throw new Error('Edit not found');
+      if (edit.status !== 'discuss' && edit.status !== 'rejected') {
+        throw new Error('Edit is not in discuss/rejected status');
+      }
+      if (edit.applied_at) throw new Error('Edit has already been applied to files');
 
-  const pending = conn
-    .prepare(
-      `SELECT id FROM segment_edits
-     WHERE book = ? AND module_id = ? AND segment_id = ? AND editor_id = ?
-       AND status = 'pending'`
-    )
-    .get(edit.book, edit.module_id, edit.segment_id, edit.editor_id);
-  if (pending) {
-    const err = new Error(
-      'Yfirlesarinn á nýrri breytingu í bið á þessum bút — farið yfir þá breytingu í staðinn.'
-    );
-    err.code = 'PENDING_EXISTS';
-    throw err;
-  }
+      const pending = conn
+        .prepare(
+          `SELECT id FROM segment_edits
+       WHERE book = ? AND module_id = ? AND segment_id = ? AND editor_id = ?
+         AND status = 'pending'`
+        )
+        .get(edit.book, edit.module_id, edit.segment_id, edit.editor_id);
+      if (pending) {
+        const err = new Error(
+          'Yfirlesarinn á nýrri breytingu í bið á þessum bút — farið yfir þá breytingu í staðinn.'
+        );
+        err.code = 'PENDING_EXISTS';
+        throw err;
+      }
 
-  conn
-    .prepare(
-      `UPDATE segment_edits
-     SET status = 'pending',
-         reviewer_id = NULL,
-         reviewer_username = NULL,
-         reviewer_note = NULL,
-         reviewed_at = NULL
-     WHERE id = ?`
-    )
-    .run(editId);
+      conn
+        .prepare(
+          `UPDATE segment_edits
+       SET status = 'pending',
+           reviewer_id = NULL,
+           reviewer_username = NULL,
+           reviewer_note = NULL,
+           reviewed_at = NULL
+       WHERE id = ?`
+        )
+        .run(editId);
 
-  return conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+      return {
+        ...conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId),
+        before: edit,
+      };
+    })
+    .immediate();
 }
 
 // =====================================================================
@@ -667,14 +744,17 @@ function submitModuleForReview(params) {
        (book, chapter, module_id, submitted_by, submitted_by_username, edited_segments)
      VALUES (?, ?, ?, ?, ?, ?)`
   );
-  const stampEdits = conn.prepare(
-    `UPDATE segment_edits SET review_id = ?
-     WHERE book = ? AND chapter = ? AND module_id = ?
+  // One predicate for both statements, joined by concatenation: securityPayloads.test.js bans ${}
+  // interpolation in this file's SQL.
+  const STAMP_WHERE = `book = ? AND chapter = ? AND module_id = ?
        AND status NOT IN ('rejected', 'superseded')
-       AND (review_id IS NULL OR status IN ('pending', 'discuss'))`
+       AND (review_id IS NULL OR status IN ('pending', 'discuss'))`;
+  const stampEdits = conn.prepare('UPDATE segment_edits SET review_id = ? WHERE ' + STAMP_WHERE);
+  const toStamp = conn.prepare(
+    'SELECT id FROM segment_edits WHERE ' + STAMP_WHERE + ' ORDER BY id'
   );
 
-  const reviewId = conn.transaction(() => {
+  const { reviewId, stampedEditIds } = conn.transaction(() => {
     const result = insertReview.run(
       book,
       chapter,
@@ -683,13 +763,17 @@ function submitModuleForReview(params) {
       submittedByUsername,
       editCounts.pending_edits
     );
+    // G1.2 (spec §5.9): the ids it is about to stamp, read in the same transaction, are the
+    // module-submit event's detail.
+    const ids = toStamp.all(book, chapter, moduleId).map((r) => r.id);
     stampEdits.run(result.lastInsertRowid, book, chapter, moduleId);
-    return result.lastInsertRowid;
+    return { reviewId: result.lastInsertRowid, stampedEditIds: ids };
   })();
 
   return {
     id: reviewId,
     editedSegments: editCounts.pending_edits,
+    stampedEditIds,
   };
 }
 
@@ -824,7 +908,7 @@ function addDiscussionComment(segmentEditId, userId, username, comment) {
     )
     .run(segmentEditId, userId, username, comment);
 
-  return { id: result.lastInsertRowid };
+  return { id: result.lastInsertRowid, edit };
 }
 
 /**
@@ -850,6 +934,12 @@ const segmentParser = require('./segmentParser');
 // Guard against infinite recursion in applyApprovedEdits
 const _applyRetryState = new Map();
 const MAX_APPLY_RETRIES = 1;
+
+// The reviewer_note an apply writes over each loser it supersedes. Exported so the research
+// event hashes the code's own string (plan decision 48), never a copy.
+const SUPERSEDED_BY_NEWER_NOTE = 'Leyst úr gildi af nýrri samþykktri breytingu';
+
+const byIdAscending = (rows) => [...rows].sort((x, y) => x.id - y.id);
 
 /**
  * Apply all approved (and not yet applied) edits for a module to the
@@ -882,11 +972,15 @@ const MAX_APPLY_RETRIES = 1;
  * @param {{ appliedBy?: string|null }} [options] - `appliedBy`: username string
  *   recorded on the content_versions snapshot (parity with restore's
  *   attribution). Absent/null keeps the legacy unattributed snapshot.
- * @returns {object} { appliedCount, savedPath, segments }
+ * @returns {object} { appliedCount, supersededCount, totalEditsMarked, acceptedCount,
+ *   lapsedAcceptances, savedPath, before: { applied, superseded, selfHealReset: { edits,
+ *   acceptances }, lapsedAcceptanceIds, stampedAcceptanceIds } } — `before` is for the research
+ *   event only (G1.2, spec §5.9); every route strips it.
  */
 function applyApprovedEdits(book, chapter, moduleId, options = {}) {
-  // §C203: FIRST, before any read or write. The self-heal below resets applied_at OUTSIDE a
-  // transaction, so a hold checked any later would still leave every edit marked unapplied.
+  // §C203: FIRST, before any read or write. The self-heal below resets applied_at OUTSIDE the
+  // apply's transaction (in its own, committed first), so a hold checked any later would still
+  // leave every edit marked unapplied.
   applyHold.assertFaithfulWritable(book);
   const appliedBy =
     typeof options.appliedBy === 'string' && options.appliedBy ? options.appliedBy : null;
@@ -954,25 +1048,49 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
       // File was deleted — reset applied_at so edits can be re-applied. Only
       // this chapter's rows: another chapter's file may still hold its applied
       // text, and its rows must stay applied (§C209).
-      conn
-        .prepare(
-          `UPDATE segment_edits SET applied_at = NULL
-           WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'approved'
-             AND applied_at IS NOT NULL`
-        )
-        .run(book, chapter, moduleId);
-      // item 20b: the acceptance mirror of the reset — an acceptance-only
-      // module whose faithful file vanished must also be rebuildable.
-      conn
-        .prepare(
-          `UPDATE segment_acceptances SET applied_at = NULL
-           WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'active'
-             AND applied_at IS NOT NULL`
-        )
-        .run(book, chapter, moduleId);
+      // G1.2 (spec §5.9; decision 47): the rows the reset clears are read in the reset's own
+      // IMMEDIATE transaction, by each UPDATE's own predicate, and the two UPDATEs now commit
+      // together. The rows ride on the re-run's result for the apply event. If the re-run throws,
+      // the reset stays committed, as before (Review Focus 28).
+      const selfHealReset = conn
+        .transaction(() => {
+          const edits = conn
+            .prepare(
+              `SELECT * FROM segment_edits
+               WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'approved'
+                 AND applied_at IS NOT NULL ORDER BY id`
+            )
+            .all(book, chapter, moduleId);
+          const acceptances = conn
+            .prepare(
+              `SELECT * FROM segment_acceptances
+               WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'active'
+                 AND applied_at IS NOT NULL ORDER BY id`
+            )
+            .all(book, chapter, moduleId);
+          conn
+            .prepare(
+              `UPDATE segment_edits SET applied_at = NULL
+               WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'approved'
+                 AND applied_at IS NOT NULL`
+            )
+            .run(book, chapter, moduleId);
+          // item 20b: the acceptance mirror of the reset — an acceptance-only
+          // module whose faithful file vanished must also be rebuildable.
+          conn
+            .prepare(
+              `UPDATE segment_acceptances SET applied_at = NULL
+               WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'active'
+                 AND applied_at IS NOT NULL`
+            )
+            .run(book, chapter, moduleId);
+          return { edits, acceptances };
+        })
+        .immediate();
       try {
         const result = applyApprovedEdits(book, chapter, moduleId, options);
         _applyRetryState.delete(retryKey);
+        result.before.selfHealReset = selfHealReset;
         return result;
       } catch (err) {
         _applyRetryState.delete(retryKey);
@@ -1012,10 +1130,11 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
     // 1. Load module data
     const data = segmentParser.loadModuleForEditing(book, chapter, moduleId);
 
+    // Whole rows: they are also the before-images of the rows this apply applies and supersedes
+    // (G1.2, spec §5.9), read here, before any write.
     const allApproved = conn
       .prepare(
-        `SELECT id, segment_id, edited_content, created_at, applied_at
-         FROM segment_edits
+        `SELECT * FROM segment_edits
          WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'approved'`
       )
       .all(book, chapter, moduleId);
@@ -1120,31 +1239,35 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
       `UPDATE segment_edits SET applied_at = CURRENT_TIMESTAMP WHERE id = ?`
     );
     const markSuperseded = conn.prepare(
-      `UPDATE segment_edits SET status = 'superseded', reviewer_note = 'Leyst úr gildi af nýrri samþykktri breytingu', applied_at = CURRENT_TIMESTAMP WHERE id = ?`
+      `UPDATE segment_edits SET status = 'superseded', reviewer_note = ?, applied_at = CURRENT_TIMESTAMP WHERE id = ?`
     );
+    const byId = new Map(allApproved.map((e) => [e.id, e]));
 
     for (const id of winnerIds) {
       markApplied.run(id);
     }
     for (const id of supersededIds) {
-      markSuperseded.run(id);
+      markSuperseded.run(SUPERSEDED_BY_NEWER_NOTE, id);
     }
 
     // 6. Acceptance lifecycle (item 20b, spec §7): lapse attestations whose
     // bytes this apply is about to change, then stamp the surviving active ones
     // as published. Same connection, same transaction — atomic with the file
-    // bookkeeping. Both are DB-only (`lapseDrifted` compares against the
+    // bookkeeping. Both are DB-only (`lapseDriftedIds` compares against the
     // in-memory `segments` array, never re-reading disk), which is what makes
     // running them before the write behaviour-preserving. `segments` is the
-    // exact array written to disk in step 7.
-    const lapsedAcceptances = acceptanceService.lapseDrifted(
+    // exact array written to disk in step 7. G1.2 (spec §5.9; decisions 46, 48): each returns the
+    // ids it changed, so the counts below are the lengths of the lists the apply event carries.
+    const lapsedAcceptanceIds = acceptanceService.lapseDriftedIds(
       book,
       chapter,
       moduleId,
       segments,
       conn
     );
-    const acceptedCount = acceptanceService.stampApplied(book, chapter, moduleId, conn);
+    const lapsedAcceptances = lapsedAcceptanceIds.length;
+    const stampedAcceptanceIds = acceptanceService.stampAppliedIds(book, chapter, moduleId, conn);
+    const acceptedCount = stampedAcceptanceIds.length;
 
     // 7. Write to 03-faithful-translation/ — the LAST mutation before COMMIT.
     const savedPath = segmentParser.saveModuleSegments(book, chapter, moduleId, segments);
@@ -1183,6 +1306,15 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
       acceptedCount,
       lapsedAcceptances,
       savedPath,
+      // G1.2 (spec §5.9): rows as read above, before step 5's writes; ids ascending. The routes
+      // strip this key (decision 44).
+      before: {
+        applied: byIdAscending(newlyApplied),
+        superseded: byIdAscending(supersededIds.map((id) => byId.get(id))),
+        selfHealReset: { edits: [], acceptances: [] }, // set by the self-heal's own frame
+        lapsedAcceptanceIds,
+        stampedAcceptanceIds,
+      },
     };
   });
 
@@ -1653,6 +1785,7 @@ module.exports = {
   // Apply to files
   applyApprovedEdits,
   getApplyStatus,
+  SUPERSEDED_BY_NEWER_NOTE,
   // Discussions
   addDiscussionComment,
   getDiscussion,

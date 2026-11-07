@@ -234,6 +234,12 @@ describe('POST /propagate (spec §5.6 Propagation targets, §5.7, §11)', () => 
       { moduleId: 'm96003', segmentId: U, reason: 'duplicate-id', occurrence: 1 },
     ]);
     expect(r.body.created).toEqual([{ moduleId: 'm96002', segmentId: T }]);
+    // G1.2: the service's research keys never reach the response.
+    expect(Object.keys(r.body).sort()).toEqual(['created', 'skipped']);
+    for (const c of r.body.created) {
+      expect(c).not.toHaveProperty('before');
+      expect(c).not.toHaveProperty('editId');
+    }
 
     const rows = editRows();
     expect(rows.filter((row) => row.module_id === 'm96003')).toEqual([]);

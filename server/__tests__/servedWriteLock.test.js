@@ -410,14 +410,27 @@ describe('another process holds the write lock (PR1 review C2)', () => {
     expect(describeError(run.error)).toBeNull();
     expect(run.startedWhileHeld).toBe(true);
     expect(run.releasingWhenDone).toBe(true);
-    expect(run.value).toEqual({
-      created: [{ moduleId: PROP_TARGET.moduleId, segmentId: targetId }],
-      skipped: [],
-    });
     const rows = db
       .prepare('SELECT * FROM segment_edits WHERE book = ? AND module_id IN (?, ?)')
       .all(CHEM, PROP_SOURCE.moduleId, PROP_TARGET.moduleId);
     expect(rows).toHaveLength(1);
+    expect(run.value).toEqual({
+      created: [{ moduleId: PROP_TARGET.moduleId, segmentId: targetId }],
+      skipped: [],
+      writes: [
+        {
+          moduleId: PROP_TARGET.moduleId,
+          segmentId: targetId,
+          chapter: PROP_TARGET.chapter,
+          occurrence: 0,
+          editId: rows[0].id,
+          servedVersionId: rows[0].served_version_id,
+          inPlace: false,
+          before: null,
+          supersededAcceptanceIds: [],
+        },
+      ],
+    });
     expect(rows[0]).toMatchObject({
       chapter: PROP_TARGET.chapter,
       module_id: PROP_TARGET.moduleId,

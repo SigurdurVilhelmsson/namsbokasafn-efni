@@ -84,6 +84,7 @@ function runAllMigrations() {
     require('../migrations/052-retire-chapter-generated-files'),
     require('../migrations/053-served-text-versions'),
     require('../migrations/054-module-openings'),
+    require('../migrations/055-research-consent-and-switches'),
   ];
 
   let applied = 0;

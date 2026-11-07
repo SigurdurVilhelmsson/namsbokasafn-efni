@@ -303,29 +303,38 @@ function getAcceptanceById(id) {
  */
 function revokeAcceptance(acceptanceId, { actorId, actorRole, actorBooks }) {
   const conn = getDb();
-  const row = conn.prepare(`SELECT * FROM segment_acceptances WHERE id = ?`).get(acceptanceId);
-  if (!row) throw new Error('Acceptance not found');
-  if (row.status !== 'active') throw new Error('Acceptance is not active');
+  // G1.2 (spec §5.9): the before-image is read in the write's own transaction; IMMEDIATE takes the
+  // write lock before the read (decision 45).
+  return conn
+    .transaction(() => {
+      const row = conn.prepare(`SELECT * FROM segment_acceptances WHERE id = ?`).get(acceptanceId);
+      if (!row) throw new Error('Acceptance not found');
+      if (row.status !== 'active') throw new Error('Acceptance is not active');
 
-  const isOwner = String(row.accepted_by) === String(actorId);
-  const isHead =
-    actorRole === 'admin' ||
-    (actorRole === 'head-editor' && Array.isArray(actorBooks) && actorBooks.includes(row.book));
-  if (!isOwner && !isHead) {
-    throw codedError(
-      'FORBIDDEN',
-      'Aðeins eigandi staðfestingar eða ritstjóri bókarinnar getur afturkallað hana.'
-    );
-  }
+      const isOwner = String(row.accepted_by) === String(actorId);
+      const isHead =
+        actorRole === 'admin' ||
+        (actorRole === 'head-editor' && Array.isArray(actorBooks) && actorBooks.includes(row.book));
+      if (!isOwner && !isHead) {
+        throw codedError(
+          'FORBIDDEN',
+          'Aðeins eigandi staðfestingar eða ritstjóri bókarinnar getur afturkallað hana.'
+        );
+      }
 
-  conn
-    .prepare(
-      `UPDATE segment_acceptances
-       SET status = 'superseded', superseded_at = CURRENT_TIMESTAMP, superseded_reason = 'revoked'
-       WHERE id = ?`
-    )
-    .run(acceptanceId);
-  return conn.prepare(`SELECT * FROM segment_acceptances WHERE id = ?`).get(acceptanceId);
+      conn
+        .prepare(
+          `UPDATE segment_acceptances
+         SET status = 'superseded', superseded_at = CURRENT_TIMESTAMP, superseded_reason = 'revoked'
+         WHERE id = ?`
+        )
+        .run(acceptanceId);
+      return {
+        ...conn.prepare(`SELECT * FROM segment_acceptances WHERE id = ?`).get(acceptanceId),
+        before: row,
+      };
+    })
+    .immediate();
 }
 
 /**
@@ -333,14 +342,28 @@ function revokeAcceptance(acceptanceId, { actorId, actorRole, actorBooks }) {
  * (spec §7). Called from inside saveSegmentEdit's transactions — pass conn.
  */
 function supersedeForEdit(book, moduleId, segmentId, dbConn = getDb()) {
-  dbConn
-    .prepare(
-      `UPDATE segment_acceptances
-       SET status = 'superseded', superseded_at = CURRENT_TIMESTAMP,
-           superseded_reason = 'superseded-by-edit'
-       WHERE book = ? AND module_id = ? AND segment_id = ? AND status = 'active'`
-    )
-    .run(book, moduleId, segmentId);
+  // G1.2 (spec §5.9): the ids are read in the caller's transaction, before the UPDATE, for the
+  // save's event.
+  return dbConn
+    .transaction(() => {
+      const ids = dbConn
+        .prepare(
+          `SELECT id FROM segment_acceptances
+         WHERE book = ? AND module_id = ? AND segment_id = ? AND status = 'active' ORDER BY id`
+        )
+        .all(book, moduleId, segmentId)
+        .map((r) => r.id);
+      dbConn
+        .prepare(
+          `UPDATE segment_acceptances
+         SET status = 'superseded', superseded_at = CURRENT_TIMESTAMP,
+             superseded_reason = 'superseded-by-edit'
+         WHERE book = ? AND module_id = ? AND segment_id = ? AND status = 'active'`
+        )
+        .run(book, moduleId, segmentId);
+      return ids;
+    })
+    .immediate(); // write lock first (decision 45); nests as a savepoint in an outer tx
 }
 
 /**
@@ -365,31 +388,45 @@ function assertChapter(fn, chapter) {
  * drifted (the extraction no longer carries it). Only the written chapter's
  * acceptances are considered (§C209).
  *
- * @returns {number} lapsed row count
+ * G1.2 (spec §5.9; decision 46): the read and the lapse are one transaction on the connection
+ * given (a savepoint inside apply's), IMMEDIATE because its first statement is the read
+ * (decision 45).
+ *
+ * @returns {number[]} the lapsed rows' ids, ascending
  */
+function lapseDriftedIds(book, chapter, moduleId, writtenSegments, dbConn = getDb()) {
+  assertChapter('lapseDriftedIds', chapter);
+  const byId = new Map(writtenSegments.map((s) => [s.segmentId, s.content]));
+  return dbConn
+    .transaction(() => {
+      const active = dbConn
+        .prepare(
+          `SELECT id, segment_id, accepted_content FROM segment_acceptances
+           WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'active' ORDER BY id`
+        )
+        .all(book, chapter, moduleId);
+      const lapse = dbConn.prepare(
+        `UPDATE segment_acceptances
+         SET status = 'superseded', superseded_at = CURRENT_TIMESTAMP,
+             superseded_reason = 'content-drift'
+         WHERE id = ?`
+      );
+      const lapsed = [];
+      for (const a of active) {
+        if (byId.get(a.segment_id) !== a.accepted_content) {
+          lapse.run(a.id);
+          lapsed.push(a.id);
+        }
+      }
+      return lapsed;
+    })
+    .immediate();
+}
+
+/** @returns {number} lapsed row count (the count contract `lapseDriftedIds` keeps) */
 function lapseDrifted(book, chapter, moduleId, writtenSegments, dbConn = getDb()) {
   assertChapter('lapseDrifted', chapter);
-  const byId = new Map(writtenSegments.map((s) => [s.segmentId, s.content]));
-  const active = dbConn
-    .prepare(
-      `SELECT id, segment_id, accepted_content FROM segment_acceptances
-       WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'active'`
-    )
-    .all(book, chapter, moduleId);
-  const lapse = dbConn.prepare(
-    `UPDATE segment_acceptances
-     SET status = 'superseded', superseded_at = CURRENT_TIMESTAMP,
-         superseded_reason = 'content-drift'
-     WHERE id = ?`
-  );
-  let lapsed = 0;
-  for (const a of active) {
-    if (byId.get(a.segment_id) !== a.accepted_content) {
-      lapse.run(a.id);
-      lapsed++;
-    }
-  }
-  return lapsed;
+  return lapseDriftedIds(book, chapter, moduleId, writtenSegments, dbConn).length;
 }
 
 /**
@@ -397,16 +434,28 @@ function lapseDrifted(book, chapter, moduleId, writtenSegments, dbConn = getDb()
  * "acceptances that are active at a successful apply get applied_at"), in the
  * applied chapter only (§C209).
  *
- * @returns {number} stamped row count
+ * G1.2 (spec §5.9; decision 48): one statement, so the ids it returns are exactly the rows the
+ * UPDATE stamped.
+ *
+ * @returns {number[]} the stamped rows' ids, ascending
  */
-function stampApplied(book, chapter, moduleId, dbConn = getDb()) {
-  assertChapter('stampApplied', chapter);
+function stampAppliedIds(book, chapter, moduleId, dbConn = getDb()) {
+  assertChapter('stampAppliedIds', chapter);
   return dbConn
     .prepare(
       `UPDATE segment_acceptances SET applied_at = CURRENT_TIMESTAMP
-       WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'active' AND applied_at IS NULL`
+       WHERE book = ? AND chapter = ? AND module_id = ? AND status = 'active' AND applied_at IS NULL
+       RETURNING id`
     )
-    .run(book, chapter, moduleId).changes;
+    .all(book, chapter, moduleId)
+    .map((r) => r.id)
+    .sort((x, y) => x - y);
+}
+
+/** @returns {number} stamped row count (the count contract `stampAppliedIds` keeps) */
+function stampApplied(book, chapter, moduleId, dbConn = getDb()) {
+  assertChapter('stampApplied', chapter);
+  return stampAppliedIds(book, chapter, moduleId, dbConn).length;
 }
 
 /** Sidecar path: sibling of the faithful segments file. */
@@ -522,7 +571,9 @@ module.exports = {
   revokeAcceptance,
   supersedeForEdit,
   lapseDrifted,
+  lapseDriftedIds,
   stampApplied,
+  stampAppliedIds,
   sidecarPathFor,
   writeReviewStatusSidecar,
   regenSidecarSafe,

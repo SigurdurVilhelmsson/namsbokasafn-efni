@@ -141,6 +141,22 @@ describe('checkSchema', () => {
     expect(checkSchema(db)).toEqual({ ok: false, missing: ['module_openings'] });
   });
 
+  it('PR3: a fresh database is still ok', () => {
+    expect(checkSchema(migrated())).toEqual({ ok: true, missing: [] });
+  });
+
+  it('PR3: a missing consent or switch table is named', () => {
+    const db = migrated();
+    db.exec('DROP TABLE IF EXISTS research_consent; DROP TABLE IF EXISTS book_switch_events;');
+    const { missing } = checkSchema(db);
+    // research_capture_losses is untouched: the control.
+    expect(
+      missing.filter((m) =>
+        ['research_consent', 'research_capture_losses', 'book_switch_events'].includes(m)
+      )
+    ).toEqual(['research_consent', 'book_switch_events']);
+  });
+
   it('a columns entry whose name a VIEW holds names each of its columns, as an absent table does', () => {
     const db = migrated();
     db.exec('CREATE VIEW not_a_table AS SELECT 1 AS a');

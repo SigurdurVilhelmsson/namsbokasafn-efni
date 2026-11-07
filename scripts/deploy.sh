@@ -72,6 +72,10 @@ git config merge.ours.driver true
 echo "Pulling from origin..."
 git pull --rebase origin main
 
+# 3a. Record which code this deploy pulled (G1.2, spec §5.12). Research events stamp it; without it the server
+# falls back to HEAD, which also carries content commits. Never fails the deploy.
+bash scripts/record-deployed-commit.sh FETCH_HEAD pipeline-output/.deployed-commit || echo "WARNING: could not record the deployed commit; research events will say git-head until the next deploy."
+
 # 4. Re-apply local changes (if any)
 if [ "$STASHED" -eq 1 ]; then
   echo "Re-applying local changes..."

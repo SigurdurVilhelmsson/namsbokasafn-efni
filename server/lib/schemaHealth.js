@@ -57,6 +57,29 @@ const EXPECTED_SCHEMA = deepFreeze({
     module_openings: ['book', 'chapter', 'module_id', 'opened_at_ms', 'inflight_count'],
     // PR2 (spec §5.5)
     module_opening_inflight: ['book', 'chapter', 'module_id', 'segment_id', 'occurrence'],
+    // PR3 (spec §5.20): tables only, no index (decision 38)
+    research_consent: [
+      'id',
+      'user_id',
+      'decision',
+      'interval_id',
+      'consent_text_version',
+      'consent_text_sha256',
+      'given_at_ms',
+      'withdrawn_at_ms',
+      'deletion_done_at_ms',
+    ],
+    research_capture_losses: [
+      'interval_id',
+      'book',
+      'chapter',
+      'module_id',
+      'event_type',
+      'loss_day',
+      'error_class',
+      'client_action_id',
+    ],
+    book_switch_events: ['id', 'book', 'switch_name', 'value', 'switched_at_ms'],
   },
   // An existing table → the columns the migrations add to it.
   columns: {

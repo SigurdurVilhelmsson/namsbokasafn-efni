@@ -240,6 +240,34 @@ function search(query, { book, limit = 25 } = {}) {
 }
 
 /**
+ * One lookup, shared by the repetition panel (findRepetitions) and the claim
+ * check (suggestionFor), so the two are one mechanism (G1.2 spec §5.10): the
+ * human-approved translation of the same normalized EN in another module,
+ * same-book matches first, the newest apply first.
+ *
+ * @param {import('better-sqlite3').Database} conn
+ * @returns {(book: string, moduleId: string, en: string) =>
+ *   ({is_text, book, chapter, module_id}|null)}
+ */
+function repetitionLookup(conn) {
+  const stmt = conn.prepare(
+    `SELECT book, chapter, module_id, is_text
+     FROM tm_segments
+     WHERE en_norm = ? AND NOT (book = ? AND module_id = ?)
+     ORDER BY (book = ?) DESC, applied_at DESC
+     LIMIT 1`
+  );
+  return (book, moduleId, en) => {
+    const enNorm = normalizeEn(en);
+    if (!enNorm) return null;
+    const m = stmt.get(enNorm, book, moduleId, book);
+    return m
+      ? { is_text: m.is_text, book: m.book, chapter: m.chapter, module_id: m.module_id }
+      : null;
+  };
+}
+
+/**
  * Exact-match review-deduplication suggestions for a module: for each EN
  * segment that has a human-approved translation of the same normalized EN in
  * another module, return that translation. Same-book matches rank first.
@@ -258,35 +286,49 @@ function findRepetitions(book, chapter, moduleId) {
     return [];
   }
 
-  const stmt = conn.prepare(
-    `SELECT book, chapter, module_id, is_text
-     FROM tm_segments
-     WHERE en_norm = ? AND NOT (book = ? AND module_id = ?)
-     ORDER BY (book = ?) DESC, applied_at DESC
-     LIMIT 1`
-  );
+  const lookup = repetitionLookup(conn);
 
   const out = [];
   const seen = new Set();
   for (const seg of data.segments) {
-    const enNorm = normalizeEn(seg.en);
-    if (!enNorm || seen.has(seg.segmentId)) continue;
-    const match = stmt.get(enNorm, book, moduleId, book);
-    if (match) {
-      out.push({
-        segmentId: seg.segmentId,
-        en: cleanText(seg.en),
-        suggestion: {
-          is_text: match.is_text,
-          book: match.book,
-          chapter: match.chapter,
-          module_id: match.module_id,
-        },
-      });
+    if (seen.has(seg.segmentId)) continue;
+    const suggestion = lookup(book, moduleId, seg.en);
+    if (suggestion) {
+      out.push({ segmentId: seg.segmentId, en: cleanText(seg.en), suggestion });
       seen.add(seg.segmentId);
     }
   }
   return out;
+}
+
+/**
+ * The suggestion findRepetitions lists for one segment, or null (G1.2 spec
+ * §5.10: the claim check reads what the panel reads). For an id served twice
+ * it is the first copy whose lookup matches, the copy findRepetitions lists.
+ * A module that cannot be loaded gives null, as findRepetitions gives [].
+ *
+ * @param {string} book
+ * @param {number|string} chapter
+ * @param {string} moduleId
+ * @param {string} segmentId
+ * @returns {{is_text, book, chapter, module_id}|null}
+ */
+function suggestionFor(book, chapter, moduleId, segmentId) {
+  const conn = getDb();
+  let data;
+  try {
+    data = segmentParser.loadModuleForEditing(book, chapter, moduleId);
+  } catch {
+    return null;
+  }
+
+  const lookup = repetitionLookup(conn);
+  for (const seg of data.segments) {
+    if (seg.segmentId !== segmentId) continue;
+    const suggestion = lookup(book, moduleId, seg.en);
+    if (suggestion) return suggestion;
+  }
+  return null;
 }
 
 /**
@@ -344,6 +386,7 @@ module.exports = {
   backfill,
   search,
   findRepetitions,
+  suggestionFor,
   repetitionReport,
   _setTestDb,
 };

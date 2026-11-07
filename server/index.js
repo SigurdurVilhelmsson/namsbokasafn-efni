@@ -44,6 +44,27 @@ failLoudOnMigrationErrors(migrationResult, {
   onError: (errors) => log.error({ errors }, 'Migration errors — refusing to start'),
 });
 
+// The research file (G1.2, spec §5.1): its schema runs after the editorial migrations. A failure marks research
+// unavailable (record() then counts losses) and is logged; it NEVER stops this server starting.
+try {
+  const research = require('./services/researchDb').openAtBoot();
+  if (!research.ok)
+    log.warn({ reason: research.reason }, 'Research file unavailable at boot (spec §5.1)');
+} catch (err) {
+  log.error(
+    { errorCode: err.code || err.name },
+    'Research boot step failed; the server starts anyway (spec §5.1)'
+  );
+}
+
+// The running code's commit, read once (spec §5.12); research events stamp it.
+try {
+  const { serverCommit, commitSource, codeDirty } = require('./lib/serverCommit').getServerCommit();
+  log.info({ serverCommit, commitSource, codeDirty }, 'Server commit (spec §5.12)');
+} catch (err) {
+  log.error({ errorCode: err.code || err.name }, 'Server commit could not be read (spec §5.12)');
+}
+
 const express = require('express');
 const cors = require('cors');
 const { corsOptions } = require('./lib/corsOptions');
@@ -85,6 +106,7 @@ const notificationsRoutes = require('./routes/notifications');
 const activityRoutes = require('./routes/activity');
 const feedbackRoutes = require('./routes/feedback');
 const analyticsRoutes = require('./routes/analytics');
+const researchRoutes = require('./routes/research');
 
 // HTML views
 const viewRoutes = require('./routes/views');
@@ -235,6 +257,7 @@ app.use('/api/publication', publicationRoutes);
 
 // Support
 app.use('/api/notifications', notificationsRoutes);
+app.use('/api/research', researchRoutes);
 app.use('/api/activity', activityRoutes);
 app.post('/api/feedback', publicSubmitLimiter);
 app.post('/api/analytics/event', publicSubmitLimiter);
@@ -362,6 +385,20 @@ app.get('/api/health', (req, res) => {
     });
   } catch (err) {
     checks.glossary_export = { ok: false, error: err.message };
+  }
+
+  // The research file (G1.2, spec §5.20): { ok, reason } and nothing else — this endpoint is public, and a count of
+  // anything research-related would tell the world that someone consented or withdrew.
+  try {
+    const { readResearchDbHealth } = require('./lib/researchDbHealth');
+    const { resolveResearchDbPath } = require('./lib/researchDbPath');
+    const { consentLookupFailing } = require('./services/researchLog');
+    checks.research_db = readResearchDbHealth({
+      ...resolveResearchDbPath(),
+      consentLookupFailing: consentLookupFailing(),
+    });
+  } catch {
+    checks.research_db = { ok: false, reason: 'unavailable' }; // never an error message: the endpoint is public
   }
 
   const allOk = Object.values(checks).every((c) => c.ok);

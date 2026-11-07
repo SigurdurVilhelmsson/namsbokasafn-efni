@@ -244,6 +244,10 @@ function saveOnServedBase(input) {
       layer: data.isSource,
       editedContentSha256: kept ? sha256Text(editedContent) : null,
       displayed,
+      // G1.2 (spec §5.9): the research event's inputs, never a response field.
+      before: r.before ?? null,
+      supersededEditIds: r.supersededEditIds ?? [],
+      supersededAcceptanceIds: r.supersededAcceptanceIds ?? [],
     };
   });
   // IMMEDIATE, because its first statement is the mint's SELECT: a deferred transaction would

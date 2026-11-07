@@ -543,6 +543,10 @@ describe('a save that passes (T4 positive controls)', () => {
       layer: 'mt-output',
       editedContentSha256: sha256Text('IS a breytt'),
       displayed: { editId: null, sha256: null },
+      // PR3 adds these three on purpose (spec §5.9).
+      before: null,
+      supersededEditIds: [],
+      supersededAcceptanceIds: [],
     });
     const row = editRow(result.editId);
     expect(row.original_content).toBe(segA.is); // the server's base; no caller value exists
