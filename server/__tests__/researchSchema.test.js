@@ -177,25 +177,28 @@ describe('ensureResearchSchema', () => {
     ).toEqual([{ type: 'table' }]);
   });
 
-  it("researchLog's propagated-copy lookup names the event type as a literal and probes the index on all five columns", () => {
+  it("researchLog's propagated-copy lookup names the event type as a literal, constrains all five columns and uses the index", () => {
     const src = fs.readFileSync(path.join(__dirname, '..', 'services', 'researchLog.js'), 'utf8');
     const m = /const PROPAGATIONS_ONTO_SQL = `([^`]+)`;/.exec(src);
     expect(m).not.toBeNull();
     const sql = m[1];
     // A partial index serves a query only when the query's WHERE implies the index's: a literal does.
     expect(sql).toContain("event_type = 'propagation'");
+    // Each of the index's columns is bound by equality: checked on our SQL, not on SQLite's plan text.
+    for (const c of PROPAGATION_INDEX_COLUMNS) expect(sql).toMatch(new RegExp(`\\b${c} = \\?`));
     const plan = () =>
       db
         .prepare('EXPLAIN QUERY PLAN ' + sql)
         .all('efnafraedi-2e', 1, 'm1', 'm1:para:1', 'a'.repeat(64))
         .map((r) => r.detail);
     ensureResearchSchema(db);
-    expect(plan()).toEqual([
-      `SEARCH research_events USING INDEX ${PROPAGATION_INDEX} (${PROPAGATION_INDEX_COLUMNS.map((c) => `${c}=?`).join(' AND ')})`,
-    ]);
+    // The plan uses the index by name and never scans the event log. Its other rows and their wording are
+    // SQLite's to change between versions, so they are not pinned.
+    expect(plan().some((d) => d.includes(`USING INDEX ${PROPAGATION_INDEX}`))).toBe(true);
+    expect(plan().join('\n')).not.toContain('SCAN research_events');
     // The control: without the index the same query scans the event log, so the check above can tell.
     db.exec('DROP INDEX idx_research_events_propagation_target');
-    expect(plan()).toContain('SCAN research_events');
+    expect(plan().join('\n')).toContain('SCAN research_events');
   });
 
   it('rejects a repeated client_action_id for one key', () => {
