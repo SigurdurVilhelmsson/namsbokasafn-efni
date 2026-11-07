@@ -14,6 +14,30 @@
 > no status. If it disagrees with the active register, the register wins. Do not sync it or edit it in place.
 > Supersede it with a new record instead.
 
+> **✏️ AMENDED 2026-11-07, later: three of PR3's open items, ruled by [USER] on 2026-11-07** ("① stays a named
+> boundary noted in the spec, ② approve previewSource: null with a dated ✏ AMENDED note on spec §5.9, ③ leave the
+> health check's missing as specified"). The fourth item, a string, lives in the code and the register, not here.
+>
+> - **§5.9, the `propagation` row: `preview_source` has a fourth value, `null`.** When the propagate route's read of
+>   the preview fails, the event records `preview_source: null` with `previewUnknown: true`; the preview's sha256 is
+>   then null and no preview text is stored. The row lists three values (`own-edit`, `other-edit`, `base`). The two
+>   alternatives were worse: guessing `base` would put an invented value into the research data, and letting the
+>   failed read fail the propagation breaks the rule that the logging call "never fails the editor's act" (§3, §5.11).
+>   An unknown preview is recorded as unknown.
+> - **§5.11, the dedupe rule: a named boundary, not built.** Acts are idempotent on (`editor_key`,
+>   `client_action_id`), whatever their event type. A save refused with a 409 whose response never reaches the browser
+>   looks to `saveRetry` like a network failure, so it is replayed with the same `client_action_id`; if the replay
+>   succeeds, its event is dropped as a duplicate of the refusal. The editorial write is made; only its research
+>   event is missing, and no loss row records it. It takes a refusal, a lost response, and the refusal's cause clearing
+>   within the replay's back-off (a stale-version refusal is refused again, since the replay carries the same base).
+>   Closing it would add the event type to the dedupe key, a research-schema step, and would then also record a
+>   refused replay after a lost success as a second event under the same id. **A write-up that uses the event log
+>   should state this limit.**
+> - **§5.20, `missing`: kept as specified.** The unauthenticated health check reports `missing` only while a consented
+>   row exists, so in that one fault state it tells anyone that at least one editor has consented (no count and no
+>   identity). It is kept because `missing` is what tells the operator that the research file is owed and must not be
+>   recreated (§5.1).
+
 > **✏️ AMENDED 2026-11-07: decision 65's check also covers a propagated copy's later events — approved by [USER] on
 > 2026-11-07** ("take the narrow fix — apply decision 65's source-segment check to later events on any row a
 > propagation wrote"), on finding C1 of PR3's whole-branch review, **and refined three times the same day, each on a
