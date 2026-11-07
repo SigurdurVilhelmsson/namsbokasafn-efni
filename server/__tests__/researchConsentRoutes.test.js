@@ -233,6 +233,8 @@ describe('approved Icelandic strings (plan decision 64)', () => {
       'Samþykkistextinn hefur breyst frá því að síðunni var hlaðið. Lesið nýja textann og takið afstöðu aftur.',
     invalid: 'Ákvörðun verður að vera „consented“ eða „declined“.',
     failed: 'Ekki tókst að skrá ákvörðunina.',
+    // The GET's read failure: approved by [USER] 2026-11-07 (register, ③ of the (C1 built) entry).
+    readFailed: 'Ekki tókst að sækja ákvörðunina.',
   };
 
   it('visitor 403 carries the approved message', async () => {
@@ -255,12 +257,26 @@ describe('approved Icelandic strings (plan decision 64)', () => {
     expect(r.body.message).toBe(APPROVED.invalid);
   });
 
-  it('the 500 carries the approved message', async () => {
+  it("the GET's 500 is a read failure and carries the read message, not the recording one", async () => {
     const spy = vi.spyOn(researchConsent, 'decisionStateFor').mockImplementation(() => {
       throw new Error('boom');
     });
     try {
       const r = await invoke(get, as('p-m1'));
+      expect(r.status).toBe(500);
+      expect(r.body.error).toBe(APPROVED.readFailed);
+    } finally {
+      spy.mockRestore();
+    }
+  });
+
+  it("the POST's 500 still carries decision 64's recording message (control)", async () => {
+    researchConsentText._setTestApprovedTexts([V1]);
+    const spy = vi.spyOn(researchConsent, 'recordDecision').mockImplementation(() => {
+      throw new Error('boom');
+    });
+    try {
+      const r = await consent('p-m1');
       expect(r.status).toBe(500);
       expect(r.body.error).toBe(APPROVED.failed);
     } finally {

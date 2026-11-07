@@ -31,6 +31,9 @@ const CONSENT_MESSAGES = Object.freeze({
   textChanged:
     'Samþykkistextinn hefur breyst frá því að síðunni var hlaðið. Lesið nýja textann og takið afstöðu aftur.',
   failed: 'Ekki tókst að skrá ákvörðunina.',
+  // The GET's read failure, where nothing was being recorded. Approved by [USER] 2026-11-07
+  // (register, ③ of the (C1 built) entry).
+  readFailed: 'Ekki tókst að sækja ákvörðunina.',
 });
 
 function memberOr403(req, res) {
@@ -50,9 +53,9 @@ const view = (userId) => {
   };
 };
 
-const fail = (res, err, what) => {
+const fail = (res, err, what, message = CONSENT_MESSAGES.failed) => {
   log.error({ errorCode: err.code || err.name }, what);
-  return res.status(500).json({ error: CONSENT_MESSAGES.failed });
+  return res.status(500).json({ error: message });
 };
 
 router.get('/consent', requireAuth, (req, res) => {
@@ -61,7 +64,7 @@ router.get('/consent', requireAuth, (req, res) => {
   try {
     return res.json(view(user.id));
   } catch (err) {
-    return fail(res, err, 'Consent state not read (spec §5.14)');
+    return fail(res, err, 'Consent state not read (spec §5.14)', CONSENT_MESSAGES.readFailed);
   }
 });
 
