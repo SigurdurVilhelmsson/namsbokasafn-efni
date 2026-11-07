@@ -16,7 +16,9 @@
 
 > **✏️ AMENDED 2026-11-07: decision 65's check also covers a propagated copy's later before-images — approved by
 > [USER] on 2026-11-07** ("take the narrow fix — apply decision 65's source-segment check to later events on any row a
-> propagation wrote"), on finding C1 of PR3's whole-branch review.
+> propagation wrote"), on finding C1 of PR3's whole-branch review, **and refined the same day** ([USER] on the
+> review's finding I1: "drop the origin test, key the check on (editing_id, text sha256) for every own before-row, and
+> add the partial index on research_events(editing_id) as a research-schema step").
 >
 > - **The wording it departs from:** PR3 d65, recorded in the 2026-11-04 block below as "a saved or propagated text
 >   identical to another editor's live edit is stored as its hash only", whose scope is "the event's own segment, and
@@ -26,13 +28,19 @@
 >   on that copy (a re-save, a withdraw, a delete, a later in-place propagation, or an apply or restore that carries
 >   the row) writes a before-image whose own `edited_content` is X. The scope above looks at the event's segment, and
 >   X lives on the propagation's source, so X reached `research.db` raw. Both halves of the review reproduced it.
-> - **What is built:** for every `segment_edits` row in an event's before-image that the actor owns and whose `origin`
->   is `propagation`, the check also covers the source segment of the propagation that wrote that row, as that
->   propagation's research event recorded it (`detail.source` on the `propagation` event whose `editing_id` is the
->   row). This applies to every event, including those that name no segment, because it follows the row, not the
->   event. When no such event exists (the propagation was not captured, for example because the actor consented
->   afterwards, or its write was lost), the source is unknown, and that row's text is checked instead against other
->   editors' live edits anywhere in the event's book.
+> - **What is built:** for every `segment_edits` row in an event's before-image that the actor owns, whatever its
+>   `origin`, the check also covers the source segment of any propagation that wrote that row's current text: the
+>   `detail.source` of each `propagation` research event whose `editing_id` is the row and whose
+>   `editing_content_sha256` is the sha256 of the row's current text. Keying on the row and the text, not on `origin`,
+>   is deliberate: an unchanged re-save rewrites `origin` to `'editor-save'`, and a copy edited away and back carries
+>   the propagated text under another origin, so an `origin` test let both through (the review of this block's first
+>   build measured the first). This applies to every event, including those that name no segment, because it follows
+>   the row, not the event. When no such event exists and the row's `origin` is still `propagation` (the propagation
+>   was not captured, for example because the actor consented afterwards, or its write was lost), the source is
+>   unknown, and that row's text is checked instead against other editors' live edits anywhere in the event's book.
+> - **The research schema gains a step** (version 2): a partial index on `research_events(editing_id)` where
+>   `event_type = 'propagation'`, so the lookup above, which every own before-row now pays, is an index probe rather
+>   than a scan of the event log.
 > - **Unchanged:** "live" and "another editor's" keep decision 65's meaning; an assist item's whole text is still not
 >   checked; an identical edit someone saves later still does not reach back into an event already written.
 > - **The fallback it replaced:** none; before this, the copy's later before-images kept X raw.
