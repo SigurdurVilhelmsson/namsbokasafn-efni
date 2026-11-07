@@ -33,6 +33,13 @@ const masterSql = () =>
       .all()
       .map((r) => [r.name, r.sql])
   );
+const PROPAGATION_INDEX = 'idx_research_events_propagation_editing';
+/** A version-1 file: the version-2 schema less its one addition, the propagation index. */
+const toVersion1 = () => {
+  ensureResearchSchema(db);
+  db.exec('DROP INDEX idx_research_events_propagation_editing');
+  db.pragma('user_version = 1');
+};
 const addKey = (k = KEY, interval = 1n) =>
   db
     .prepare('INSERT INTO editor_keys (interval_id, editor_key, stratum) VALUES (?, ?, NULL)')
@@ -49,9 +56,9 @@ const addEvent = (key, seq, actionId = null) =>
 
 describe('ensureResearchSchema', () => {
   it('builds the three tables on a fresh file, column by column (spec §5.9, §5.10, §5.16)', () => {
-    expect(ensureResearchSchema(db)).toEqual({ ok: true, version: 1 });
-    expect(RESEARCH_SCHEMA_VERSION).toBe(1);
-    expect(version()).toBe(1);
+    expect(ensureResearchSchema(db)).toEqual({ ok: true, version: 2 });
+    expect(RESEARCH_SCHEMA_VERSION).toBe(2);
+    expect(version()).toBe(2);
     expect(cols('research_events')).toEqual([
       'id',
       'key_seq',
@@ -114,6 +121,74 @@ describe('ensureResearchSchema', () => {
     expect(names('idx_research_events_key_seq')).toEqual(['editor_key', 'key_seq']);
   });
 
+  it('version 2: a partial index on editing_id over propagation events only (spec AMENDED 2026-11-07)', () => {
+    ensureResearchSchema(db);
+    const idx = Object.fromEntries(
+      db.pragma('index_list(research_events)').map((i) => [i.name, i])
+    );
+    const own = idx[PROPAGATION_INDEX];
+    expect(own).toBeDefined();
+    expect(Number(own.unique)).toBe(0);
+    expect(Number(own.partial)).toBe(1);
+    expect(db.pragma(`index_info(${PROPAGATION_INDEX})`).map((c) => c.name)).toEqual([
+      'editing_id',
+    ]);
+    expect(masterSql()[PROPAGATION_INDEX]).toContain("WHERE event_type = 'propagation'");
+  });
+
+  it('a version-1 file is upgraded to version 2: the index is added and its rows are kept', () => {
+    toVersion1();
+    addKey();
+    addEvent(KEY, 1n, 'kept');
+    expect(version()).toBe(1);
+    expect(masterSql()[PROPAGATION_INDEX]).toBeUndefined(); // the control: a real version-1 file
+    expect(ensureResearchSchema(db)).toEqual({ ok: true, version: 2 });
+    expect(masterSql()[PROPAGATION_INDEX]).toContain("WHERE event_type = 'propagation'");
+    expect(
+      db
+        .prepare('SELECT client_action_id FROM research_events')
+        .all()
+        .map((r) => r.client_action_id)
+    ).toEqual(['kept']);
+    const upgraded = masterSql();
+    expect(ensureResearchSchema(db)).toEqual({ ok: true, version: 2 }); // opened again: a no-op
+    expect(masterSql()).toEqual(upgraded);
+  });
+
+  it('never throws: a version-2 step that fails rolls back whole and leaves the file at version 1', () => {
+    toVersion1();
+    db.exec('CREATE TABLE idx_research_events_propagation_editing (x TEXT)'); // the index's name is taken
+    const r = ensureResearchSchema(db);
+    expect(r.ok).toBe(false);
+    expect(typeof r.error).toBe('string');
+    expect(version()).toBe(1);
+    expect(
+      db.prepare('SELECT type FROM sqlite_master WHERE name = ?').all(PROPAGATION_INDEX)
+    ).toEqual([{ type: 'table' }]);
+  });
+
+  it("researchLog's propagated-copy lookup names the event type as a literal and probes the index", () => {
+    const src = fs.readFileSync(path.join(__dirname, '..', 'services', 'researchLog.js'), 'utf8');
+    const m = /const PROPAGATIONS_OF_ROWS_SQL = `([^`]+)`;/.exec(src);
+    expect(m).not.toBeNull();
+    const sql = m[1];
+    // A partial index serves a query only when the query's WHERE implies the index's: a literal does.
+    expect(sql).toContain("event_type = 'propagation'");
+    const plan = () =>
+      db
+        .prepare('EXPLAIN QUERY PLAN ' + sql)
+        .all('[1, 2]')
+        .map((r) => r.detail);
+    ensureResearchSchema(db);
+    expect(plan()).toContain(
+      `SEARCH research_events USING INDEX ${PROPAGATION_INDEX} (editing_id=?)`
+    );
+    expect(plan()).not.toContain('SCAN research_events');
+    // The control: without the index the same query scans the event log, so the check above can tell.
+    db.exec('DROP INDEX idx_research_events_propagation_editing');
+    expect(plan()).toContain('SCAN research_events');
+  });
+
   it('rejects a repeated client_action_id for one key', () => {
     ensureResearchSchema(db);
     addKey();
@@ -168,7 +243,7 @@ describe('ensureResearchSchema', () => {
   it('re-running on the result changes nothing', () => {
     ensureResearchSchema(db);
     const before = masterSql();
-    expect(ensureResearchSchema(db)).toEqual({ ok: true, version: 1 });
+    expect(ensureResearchSchema(db)).toEqual({ ok: true, version: 2 });
     expect(masterSql()).toEqual(before);
   });
 
@@ -188,7 +263,7 @@ describe('ensureResearchSchema', () => {
   });
 
   it('a file newer than this code is not ok, and nothing is created', () => {
-    db.pragma('user_version = 2');
+    db.pragma('user_version = ' + (RESEARCH_SCHEMA_VERSION + 1));
     const r = ensureResearchSchema(db);
     expect(r.ok).toBe(false);
     expect(r.error).toMatch(/newer/);

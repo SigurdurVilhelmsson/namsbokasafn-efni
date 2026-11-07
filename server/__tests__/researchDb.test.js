@@ -14,7 +14,7 @@ process.env.SESSIONS_DB_PATH = path.join(tmpRoot, 'sessions.db');
 const Database = require('better-sqlite3');
 const { runAllMigrations } = require('../services/migrationRunner');
 const { resolveResearchDbPath } = require('../lib/researchDbPath');
-const { ensureResearchSchema } = require('../lib/researchSchema');
+const { ensureResearchSchema, RESEARCH_SCHEMA_VERSION } = require('../lib/researchSchema');
 const researchDb = require('../services/researchDb');
 
 const { researchPath, editorialPath } = resolveResearchDbPath();
@@ -94,7 +94,7 @@ describe('opening (spec §5.1)', () => {
     expect(h.pragma('journal_mode', { simple: true })).toBe('wal');
     expect(researchDb.BUSY_TIMEOUT_MS).toBe(100);
     expect(h.pragma('busy_timeout', { simple: true })).toBe(BigInt(researchDb.BUSY_TIMEOUT_MS));
-    expect(h.pragma('user_version', { simple: true })).toBe(1n);
+    expect(h.pragma('user_version', { simple: true })).toBe(2n);
   });
 
   it('ids above 2^53 survive the round trip; a plain read would not (decision 4)', () => {
@@ -192,7 +192,7 @@ describe('opening (spec §5.1)', () => {
 
   it('a newer schema is unavailable', () => {
     const g = new Database(researchPath);
-    g.pragma('user_version = 2');
+    g.pragma('user_version = ' + (RESEARCH_SCHEMA_VERSION + 1));
     g.close();
     expect(researchDb.openAtBoot()).toEqual({ ok: false, reason: 'unavailable' });
   });

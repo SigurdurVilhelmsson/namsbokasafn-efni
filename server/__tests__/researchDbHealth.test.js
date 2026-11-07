@@ -78,7 +78,7 @@ describe('readResearchDbHealth', () => {
 
   it('a stale schema version is unavailable', () => {
     const g = new Database(researchPath);
-    g.pragma('user_version = 0');
+    g.pragma('user_version = 1'); // the previous version: a file the server has not yet upgraded
     g.close();
     expect(health()).toEqual({ ok: false, reason: 'unavailable' });
   });

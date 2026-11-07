@@ -94,7 +94,7 @@ beforeAll(() => {
   fs.copyFileSync(researchPath, goldenPath);
   const g = new Database(goldenPath, { readonly: true });
   g.defaultSafeIntegers(true);
-  expect(g.pragma('user_version', { simple: true })).toBe(1n);
+  expect(g.pragma('user_version', { simple: true })).toBe(2n);
   g.close();
 });
 
