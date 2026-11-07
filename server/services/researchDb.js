@@ -3,7 +3,9 @@
  *
  * - better-sqlite3's default busy wait is 5000 ms and synchronous: it blocks the
  *   event loop. A short wait (BUSY_TIMEOUT_MS) turns a blocked write into a
- *   counted loss instead of a stalled server.
+ *   counted loss instead of a stalled server. After a write fails busy, getHandle
+ *   fails fast as `busy` for one more BUSY_TIMEOUT_MS (the cool-off), so a request
+ *   that records many events (a propagation) pays one wait, not one per event.
  * - The file is created only by `openSync(…, 0o600)`, and only while no
  *   `consented` row exists: a fresh file would re-key every editor and detach the
  *   data already captured, so once anyone has consented a missing file (or an
@@ -33,8 +35,17 @@ const unavailable = (reason) =>
   });
 const isCorrupt = (code) => code === 'SQLITE_NOTADB' || /^SQLITE_CORRUPT/.test(code || '');
 
-// `file` is the path the handle was opened on and that file's identity then (device and inode).
-let state = { handle: null, file: null, reason: null, lastAttemptAtMs: null, sticky: false };
+// `file` is the path the handle was opened on and that file's identity then (device and inode);
+// `busyUntilMs` ends the cool-off a busy write starts.
+const INITIAL = Object.freeze({
+  handle: null,
+  file: null,
+  reason: null,
+  lastAttemptAtMs: null,
+  sticky: false,
+  busyUntilMs: null,
+});
+let state = { ...INITIAL };
 let testDb = null;
 let testPaths = null;
 
@@ -96,11 +107,10 @@ function attemptOpen() {
     }
     const { dev, ino } = fs.statSync(researchPath);
     state = {
+      ...INITIAL,
       handle: db,
       file: { path: researchPath, dev, ino },
-      reason: null,
       lastAttemptAtMs: state.lastAttemptAtMs,
-      sticky: false,
     };
     return { ok: true };
   } catch (err) {
@@ -125,6 +135,9 @@ function stillAtPath() {
  */
 function getHandle() {
   if (testDb) return testDb;
+  // The cool-off: a write failed busy less than BUSY_TIMEOUT_MS ago, so this one would most likely wait the
+  // whole timeout and fail too. Fail now instead; record counts it as a busy loss.
+  if (state.busyUntilMs !== null && Date.now() < state.busyUntilMs) throw unavailable('busy');
   if (state.handle) {
     if (stillAtPath()) return state.handle;
     // Deleted, moved or replaced under the handle: close it and decide the path as at open, not after the
@@ -171,7 +184,9 @@ function status() {
  */
 function noteFailure(err) {
   const code = (err && err.code) || '';
-  if (isCorrupt(code)) {
+  if (/^SQLITE_BUSY/.test(code)) {
+    state.busyUntilMs = Date.now() + BUSY_TIMEOUT_MS; // the handle is kept; only the cool-off starts
+  } else if (isCorrupt(code)) {
     closeHandle();
     state.reason = 'corrupt';
     state.sticky = true;
@@ -203,7 +218,7 @@ function closeHandle() {
 /** Test-only; also "a restart". Leaves testPaths and testDb as they are. */
 function _reset() {
   closeHandle();
-  state = { handle: null, file: null, reason: null, lastAttemptAtMs: null, sticky: false };
+  state = { ...INITIAL };
 }
 
 /** Test-only. @param {{researchPath: string, editorialPath: string}|null} p */

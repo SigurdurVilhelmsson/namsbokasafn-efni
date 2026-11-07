@@ -221,6 +221,21 @@ describe('noteFailure and the seams', () => {
     });
   });
 
+  it('noteFailure: a busy write starts a cool-off of BUSY_TIMEOUT_MS that fails fast as busy (final review I2)', () => {
+    const T = 1_800_000_000_000;
+    vi.useFakeTimers({ toFake: ['Date'] });
+    vi.setSystemTime(T);
+    researchDb.openAtBoot();
+    const h = researchDb.getHandle();
+    researchDb.noteFailure({ code: 'SQLITE_BUSY' });
+    expect(h.open).toBe(true); // the handle is kept
+    vi.setSystemTime(T + researchDb.BUSY_TIMEOUT_MS - 1);
+    const err = catchErr(() => researchDb.getHandle());
+    expect([err.code, err.reason]).toEqual(['RESEARCH_UNAVAILABLE', 'busy']);
+    vi.setSystemTime(T + researchDb.BUSY_TIMEOUT_MS);
+    expect(researchDb.getHandle()).toBe(h);
+  });
+
   it('noteFailure: an I/O error closes the handle and waits its minute', () => {
     const T = 1_800_000_000_000;
     vi.useFakeTimers({ toFake: ['Date'] });

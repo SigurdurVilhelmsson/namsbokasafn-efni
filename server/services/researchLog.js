@@ -121,7 +121,8 @@ function record(event) {
 
 function classifyError(err) {
   const code = (err && err.code) || '';
-  if (code === 'RESEARCH_UNAVAILABLE') return 'unavailable';
+  // researchDb's busy cool-off fails fast with reason 'busy': the same loss as the busy write that started it.
+  if (code === 'RESEARCH_UNAVAILABLE') return err.reason === 'busy' ? 'busy' : 'unavailable';
   if (/^SQLITE_(BUSY|LOCKED)/.test(code)) return 'busy';
   if (/^SQLITE_CONSTRAINT/.test(code)) return 'constraint';
   return 'other';

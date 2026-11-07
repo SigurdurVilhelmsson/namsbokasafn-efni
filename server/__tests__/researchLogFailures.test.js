@@ -258,7 +258,7 @@ describe('a research file deleted or replaced under the open handle (spec §5.1;
 });
 
 describe('T10, record level: a held lock is a busy loss within the short wait (spec §5.1, §5.11)', () => {
-  it('returns busy well inside the default 5000 ms, then writes once released', () => {
+  it('returns busy well inside the default 5000 ms, then writes once released and the cool-off has passed', () => {
     vi.useRealTimers();
     researchDb.getHandle(); // open first: the open itself must not wait on the lock
     const other = new Database(researchPath);
@@ -280,6 +280,17 @@ describe('T10, record level: a held lock is a busy loss within the short wait (s
     expect(res).toEqual({ status: 'lost', reason: 'busy', ledgered: true });
     expect(ms).toBeLessThan(2500);
     expect(rows).toEqual([[INT1, 'edit-save', 'busy', 'act-busy']]);
+    // The lock is released, but the busy write started a cool-off (final review I2): an act inside it is a busy
+    // loss without trying, so a many-event request pays one wait. With the lock free, only the cool-off can
+    // make this act a loss.
+    expect(record(saveEvent({ clientActionId: 'act-cool' }))).toEqual({
+      status: 'lost',
+      reason: 'busy',
+      ledgered: true,
+    });
+    expect(lossTuples().at(-1)).toEqual([INT1, 'edit-save', 'busy', 'act-cool']);
+    vi.useFakeTimers({ toFake: ['Date'] });
+    vi.setSystemTime(Date.now() + researchDb.BUSY_TIMEOUT_MS + 1); // past the cool-off
     expect(record(saveEvent({ clientActionId: act('bz') })).status).toBe('written');
   });
 });

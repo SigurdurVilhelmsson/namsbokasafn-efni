@@ -409,3 +409,53 @@ describe("the preview read is the research event's alone: it never fails the pro
     }
   });
 });
+
+describe('a propagation under a held research lock pays one busy wait, not one per target (final review I2)', () => {
+  const N = 40;
+  const BUSY_SRC = 'm97590';
+  const targetOf = (i) => `m976${String(i).padStart(2, '0')}`;
+
+  it('N targets: about one BUSY_TIMEOUT_MS, every target a busy loss, the response unchanged', async () => {
+    const mod = (moduleId, x) =>
+      writeModule(root, {
+        book: CHEM,
+        chapterDir: 'ch01',
+        moduleId,
+        en: [[sid(moduleId, x), 'Locked recurring sentence.']],
+        mt: [[sid(moduleId, x), `IS ${moduleId}`]],
+      });
+    mod(BUSY_SRC, 'z');
+    for (let i = 0; i < N; i++) mod(targetOf(i), 'y');
+    const { resolveResearchDbPath } = require('../lib/researchDbPath');
+    researchDb.getHandle(); // open first: the open itself must not wait on the lock
+    const lossesBefore = losses().length;
+    const mark = eventMark();
+    const holder = new Database(resolveResearchDbPath().researchPath);
+    holder.exec('BEGIN EXCLUSIVE'); // held from here, so the act starts only once the lock is confirmed
+    let r;
+    let elapsed;
+    try {
+      const t0 = performance.now();
+      r = await propagate(
+        PP,
+        { segmentId: sid(BUSY_SRC, 'z'), editedContent: 'Læst fjölgun' },
+        BUSY_SRC
+      );
+      elapsed = performance.now() - t0;
+    } finally {
+      holder.exec('ROLLBACK');
+      holder.close();
+    }
+    expect(r.status).toBe(200);
+    expect(Object.keys(r.body).sort()).toEqual(['created', 'skipped']);
+    expect(r.body.created).toHaveLength(N);
+    expect(r.body.skipped).toEqual([]);
+    const gained = losses().slice(lossesBefore);
+    expect(gained).toHaveLength(N);
+    expect(new Set(gained.map((l) => `${l.event_type}|${l.error_class}`))).toEqual(
+      new Set(['propagation|busy'])
+    );
+    expect(eventsSince(mark)).toEqual([]);
+    expect(elapsed).toBeLessThan(researchDb.BUSY_TIMEOUT_MS * 2 + 1500);
+  }, 60_000);
+});
