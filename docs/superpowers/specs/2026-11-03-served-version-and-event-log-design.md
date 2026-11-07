@@ -14,6 +14,29 @@
 > no status. If it disagrees with the active register, the register wins. Do not sync it or edit it in place.
 > Supersede it with a new record instead.
 
+> **✏️ AMENDED 2026-11-07: decision 65's check also covers a propagated copy's later before-images — approved by
+> [USER] on 2026-11-07** ("take the narrow fix — apply decision 65's source-segment check to later events on any row a
+> propagation wrote"), on finding C1 of PR3's whole-branch review.
+>
+> - **The wording it departs from:** PR3 d65, recorded in the 2026-11-04 block below as "a saved or propagated text
+>   identical to another editor's live edit is stored as its hash only", whose scope is "the event's own segment, and
+>   for `propagation` also the source segment its `detail.source` names", and which checks nothing for an event that
+>   names no segment.
+> - **The gap:** editor A propagates editor B's live text X, so A owns a copy of X on each target. A later act of A's
+>   on that copy (a re-save, a withdraw, a delete, a later in-place propagation, or an apply or restore that carries
+>   the row) writes a before-image whose own `edited_content` is X. The scope above looks at the event's segment, and
+>   X lives on the propagation's source, so X reached `research.db` raw. Both halves of the review reproduced it.
+> - **What is built:** for every `segment_edits` row in an event's before-image that the actor owns and whose `origin`
+>   is `propagation`, the check also covers the source segment of the propagation that wrote that row, as that
+>   propagation's research event recorded it (`detail.source` on the `propagation` event whose `editing_id` is the
+>   row). This applies to every event, including those that name no segment, because it follows the row, not the
+>   event. When no such event exists (the propagation was not captured, for example because the actor consented
+>   afterwards, or its write was lost), the source is unknown, and that row's text is checked instead against other
+>   editors' live edits anywhere in the event's book.
+> - **Unchanged:** "live" and "another editor's" keep decision 65's meaning; an assist item's whole text is still not
+>   checked; an identical edit someone saves later still does not reach back into an event already written.
+> - **The fallback it replaced:** none; before this, the copy's later before-images kept X raw.
+
 > **✏️ AMENDED 2026-11-05: departures from this design's wording found while building and reviewing PR2.** Each
 > names the PR2 plan's item that carries it (`docs/superpowers/plans/2026-11-03-g11-g12-pr2-opening-record.md`, its
 > "State of this plan" `✏️ AMENDED 2026-11-05` block, or its decisions), and says whether it is approved. Items 1 and
