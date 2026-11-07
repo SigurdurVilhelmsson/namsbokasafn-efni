@@ -133,10 +133,13 @@ const actionIdOf = (ev) => (typeof ev.clientActionId === 'string' ? ev.clientAct
 /**
  * Steps 4-5 failed for a consenting actor: one content-free ledger row (spec §5.11 step 6). Reads
  * only the plain copy `record` took, so a throwing getter cannot make this throw.
+ * @param {boolean} [fromResearchWrite] whether the research handle or its write raised `err`. Only then
+ *   is it noted against the handle: a sessions.db error in the build must never close, cool off or
+ *   stick the research handle (final review M5).
  */
-function lose(err, ev, intervalId) {
+function lose(err, ev, intervalId, fromResearchWrite = false) {
   const errorClass = classifyError(err);
-  researchDb.noteFailure(err);
+  if (fromResearchWrite) researchDb.noteFailure(err);
   logLoss(err, ev, errorClass);
   const ledgered = researchConsent.recordLoss({
     intervalId,
@@ -197,12 +200,18 @@ function recordInner(ev) {
       capture.intervalId
     );
   }
+  let row;
+  let items;
   try {
-    const row = buildEvent(ev); // step 4
-    const items = buildItemRows(ev.eventType, ev.items);
-    return writeEvent(capture.intervalId, row, items); // step 5
+    row = buildEvent(ev); // step 4: validation and sessions.db reads, no research handle
+    items = buildItemRows(ev.eventType, ev.items);
   } catch (err) {
     return lose(err, ev, capture.intervalId);
+  }
+  try {
+    return writeEvent(capture.intervalId, row, items); // step 5
+  } catch (err) {
+    return lose(err, ev, capture.intervalId, true);
   }
 }
 

@@ -295,6 +295,45 @@ describe('T10, record level: a held lock is a busy loss within the short wait (s
   });
 });
 
+describe('a sessions.db error inside the build is never noted against the research handle (final review M5)', () => {
+  // buildEvent reads sessions.db through researchConsent.getSessionsDb() (served version, live edits, flags). This
+  // wrapper fails only the served-version read, after the consent gate, so the throw lands inside the build.
+  const failServedVersionRead = (code) => {
+    const real = researchConsent.getSessionsDb();
+    return vi.spyOn(researchConsent, 'getSessionsDb').mockImplementation(() => ({
+      prepare(sql) {
+        if (/served_text_versions/.test(sql)) {
+          throw Object.assign(new Error('sessions.db read failed'), { code });
+        }
+        return real.prepare(sql);
+      },
+    }));
+  };
+
+  for (const [code, errorClass] of [
+    ['SQLITE_CORRUPT', 'other'],
+    ['SQLITE_BUSY', 'busy'],
+  ]) {
+    it(`${code}: a counted ${errorClass} loss, and the research handle stays usable for the next act`, () => {
+      expect(record(saveEvent({ clientActionId: act('sx') })).status).toBe('written'); // the handle is open
+      const spy = failServedVersionRead(code);
+      let res;
+      let rows;
+      try {
+        rows = added(() => {
+          res = record(saveEvent({ clientActionId: `act-sessions-${code}` }));
+        });
+      } finally {
+        spy.mockRestore();
+      }
+      expect(res).toEqual({ status: 'lost', reason: errorClass, ledgered: true });
+      expect(rows).toEqual([[INT1, 'edit-save', errorClass, `act-sessions-${code}`]]);
+      expect(researchDb.status()).toMatchObject({ state: 'open', reason: null, sticky: false });
+      expect(record(saveEvent({ clientActionId: act('sx') })).status).toBe('written');
+    });
+  }
+});
+
 describe('consent unknown (spec §5.11; T8)', () => {
   it('an unreadable consent table: one consent-unknown row and the health flag', () => {
     rename('research_consent', 'rc_hidden');
