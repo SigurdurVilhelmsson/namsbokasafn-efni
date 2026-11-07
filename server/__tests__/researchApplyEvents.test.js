@@ -31,7 +31,7 @@ const applyHold = require('../lib/applyHold');
 const { sha256Text } = require('../lib/servedText');
 const { writeModule, handlerFor, invoke } = require('./helpers/servedFixture');
 const { APPROVED, makeUser, consent } = require('./helpers/researchFixture.cjs');
-const { eventMark, eventsSince } = require('./helpers/researchEventsFixture.cjs');
+const { eventMark, eventsSince, researchBytes } = require('./helpers/researchEventsFixture.cjs');
 
 const CHEM = 'efnafraedi-2e';
 const M = 'm97401'; // apply, apply-and-render, restore
@@ -170,11 +170,11 @@ async function save(mod, user, x, text) {
   expect(r.status).toBe(200);
   return r.body.editId;
 }
-const approve = async (editId) => {
+const approve = async (editId, body = {}) => {
   const r = await invoke(h.approve, {
     params: { editId: String(editId) },
     user: PH,
-    body: {},
+    body,
   });
   expect(r.status).toBe(200);
 };
@@ -193,6 +193,7 @@ async function approvedReview(mod) {
   return s.body.reviewId;
 }
 
+const LOSER_NOTE = 'LOSER-REVIEWER-NOTE yfirlesara';
 let A1;
 let B1;
 let B2;
@@ -203,7 +204,7 @@ describe('the apply routes record their research events (spec §5.9; decisions 4
     A1 = await save(M, PA, 'a', 'A1-TEXT');
     B1 = await save(M, PB, 'a', 'B1-TEXT');
     B2 = await save(M, PB, 'b', 'B2-TEXT');
-    await approve(A1);
+    await approve(A1, { note: LOSER_NOTE }); // the reviewer's note the apply overwrites on the loser
     await approve(B1);
     await approve(B2);
     const acc = await invoke(
@@ -248,6 +249,21 @@ describe('the apply routes record their research events (spec §5.9; decisions 4
     expect(ev[0].before[0].row.status).toBe('approved');
     expect(ev[0].before[0].row.edited_content_sha256).toBe(sha256Text('A1-TEXT'));
     expect('edited_content' in ev[0].before[0].row).toBe(false); // H is not the author
+    // The before-image's purpose (spec §5.9): each loser's reviewer note as it was before the apply overwrote it,
+    // as length and hash, never raw, and never the fixed note the apply wrote over it.
+    const losers = ev[0].before.filter((b) => ev[0].detail.superseded.includes(b.row.id));
+    expect(losers.map((b) => b.row.id)).toEqual([A1]);
+    expect(db.prepare('SELECT reviewer_note FROM segment_edits WHERE id = ?').get(A1)).toEqual({
+      reviewer_note: note,
+    }); // the apply did overwrite it
+    for (const b of losers) {
+      expect(b.row.reviewer_note).toEqual({
+        length: [...LOSER_NOTE].length,
+        sha256: sha256Text(LOSER_NOTE),
+      });
+      expect(b.row.reviewer_note.sha256).not.toBe(sha256Text(note));
+    }
+    expect(researchBytes().includes('LOSER-REVIEWER-NOTE')).toBe(false);
   });
 
   it('apply with the self-heal names the rows it reset, and the acceptance it stamps again', async () => {
