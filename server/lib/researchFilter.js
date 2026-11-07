@@ -116,8 +116,13 @@ function filterContent(content, { withheld = NONE_WITHHELD } = {}) {
 function filterRow(table, row, actor, withheld) {
   const classes = BEFORE_FIELD_CLASSES[table];
   if (!classes) throw new TypeError(`filterBefore: unknown table ${table}`);
+  // Fails closed: with no actor nothing is anyone's own (String(undefined) would match a row holding 'undefined').
   const own = (col) =>
-    row[col] !== null && row[col] !== undefined && String(row[col]) === String(actor);
+    actor !== null &&
+    actor !== undefined &&
+    row[col] !== null &&
+    row[col] !== undefined &&
+    String(row[col]) === String(actor);
   const out = {};
   for (const [col, cls] of Object.entries(classes)) {
     if (!(col in row)) continue;

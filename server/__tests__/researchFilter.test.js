@@ -294,6 +294,24 @@ describe('filterBefore: the field table (spec §5.9) and decisions 9–10', () =
     expect(row.edited_content).toBe('Texti höfundar');
   });
 
+  it("a missing actor owns nothing, even a row whose editor_id is the string 'undefined' or 'null' (final review M-2)", () => {
+    for (const actor of [undefined, null]) {
+      const row = parse(
+        filterBefore(
+          {
+            table: 'segment_edits',
+            row: { ...R, editor_id: String(actor), reviewer_id: String(actor) },
+          },
+          actor
+        )
+      )[0].row;
+      expect('edited_content' in row).toBe(false);
+      expect(row.edited_content_sha256).toBe(sha256Text('Texti höfundar'));
+      expect('created_at' in row).toBe(false);
+      expect('reviewed_at' in row).toBe(false);
+    }
+  });
+
   it('displayed_edit_sha256 is kept only as 64 lowercase hex, else null (final review I1)', () => {
     const shown = (v) =>
       parse(
