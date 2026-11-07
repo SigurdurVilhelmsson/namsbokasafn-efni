@@ -72,7 +72,7 @@
     "mj-context-menu": {
       "rimraf": {
         "glob": {
-          "minimatch": "^10.2.3"
+          "minimatch": "^11.0.5"
         }
       }
     },
