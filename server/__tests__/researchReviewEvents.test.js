@@ -34,7 +34,7 @@ const { eventMark, eventsSince, researchBytes } = require('./helpers/researchEve
 const CHEM = 'efnafraedi-2e';
 const M = 'm97301';
 const id = (x) => `${M}:para:${x}`;
-const LETTERS = ['a', 'b', 'c', 'e', 'f', 'g', 'h', 'i', 'j', 'k'];
+const LETTERS = ['a', 'b', 'c', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l'];
 const EN = LETTERS.map((x) => [id(x), `EN ${x}`]);
 const MT = LETTERS.map((x) => [id(x), `IS ${x}`]);
 
@@ -389,5 +389,19 @@ describe("a client's displayedEditSha256 reaches research only if it is a hash (
     expect(bytes.includes('RAW-SENTINEL')).toBe(false);
     // Control: the scan sees text — the author's own save stored it.
     expect(bytes.includes('AUTHOR-TEXT-K')).toBe(true);
+  });
+});
+
+describe("a non-string reviewer's note is recorded as the service stores it (final review M7)", () => {
+  it('a numeric note on an approve: the event carries it as length and hash', async () => {
+    const { editId, contentSha256 } = await authorSaves('l', 'AUTHOR-TEXT-L');
+    const mark = eventMark();
+    const r = await onEdit(h.approve, H, editId, { note: 5, reviewedEditSha256: contentSha256 });
+    expect(r.status).toBe(200);
+    // As for the save's note: the row renders the REAL-bound number '5.0', the event hashes String(5).
+    expect(rowOf(editId).reviewer_note).toBe('5.0');
+    const ev = eventsSince(mark);
+    expect(ev.map((e) => e.event_type)).toEqual(['edit-approve']);
+    expect(ev[0].content).toEqual({ note: { length: 1, sha256: sha256Text('5') } });
   });
 });

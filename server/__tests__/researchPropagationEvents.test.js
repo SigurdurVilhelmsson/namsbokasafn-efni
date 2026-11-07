@@ -459,3 +459,34 @@ describe('a propagation under a held research lock pays one busy wait, not one p
     expect(elapsed).toBeLessThan(researchDb.BUSY_TIMEOUT_MS * 2 + 1500);
   }, 60_000);
 });
+
+describe('a non-string note never loses the propagation events (final review M7)', () => {
+  it('a numeric note: one event per target with the note as length and hash, no loss', async () => {
+    const NOTE_SRC = 'm97591';
+    const mod = (moduleId, x) =>
+      writeModule(root, {
+        book: CHEM,
+        chapterDir: 'ch01',
+        moduleId,
+        en: [[sid(moduleId, x), 'Numeric note sentence.']],
+        mt: [[sid(moduleId, x), `IS ${moduleId}`]],
+      });
+    mod(NOTE_SRC, 'q');
+    mod('m97592', 'q');
+    mod('m97593', 'q');
+    const lossesBefore = losses().length;
+    const mark = eventMark();
+    const r = await propagate(
+      PP,
+      { segmentId: sid(NOTE_SRC, 'q'), editedContent: 'Tölusett athugasemd', note: 5 },
+      NOTE_SRC
+    );
+    expect(r.status).toBe(200);
+    const ev = propagations(mark);
+    expect(ev.map((e) => e.module_id).sort()).toEqual(['m97592', 'm97593']);
+    for (const e of ev) {
+      expect(e.content.note).toEqual({ length: 1, sha256: sha256Text('5') });
+    }
+    expect(losses().slice(lossesBefore)).toEqual([]);
+  });
+});

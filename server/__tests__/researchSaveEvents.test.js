@@ -44,7 +44,7 @@ const {
 const CHEM = 'efnafraedi-2e';
 const M = 'm97101';
 const id = (x) => `${M}:para:${x}`;
-const LATER = ['f', 'g', 'h', 'i', 'j', 'k', 'l', 'm']; // one segment per later case
+const LATER = ['f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n']; // one segment per later case
 const EN = [
   [id('a'), 'Recurring sentence.'],
   [id('b'), 'EN b'],
@@ -787,5 +787,28 @@ describe('the save event, the refusals and the dedupe, through the route', () =>
       saveSpy.mockRestore();
       errorSpy.mockRestore();
     }
+  });
+});
+
+describe('a non-string note never loses the act (final review M7)', () => {
+  it('a numeric editorNote: one edit-save with the note as length and hash, no loss', async () => {
+    const lossCount = losses().length;
+    const mark = eventMark();
+    const r = await post(ED1, {
+      segmentId: id('n'),
+      editedContent: 'IS n ný',
+      baseSha256: await served(ED1, 'n'),
+      editorNote: 5, // no route check refuses it, and the service stores it (as TEXT)
+      clientActionId: act(),
+    });
+    expect(r.status).toBe(200);
+    // The row and the event differ, and this pins both: better-sqlite3 binds the number as REAL, which the TEXT
+    // column renders '5.0', while the emitter stringifies the JSON value. A rebuild comparing note hashes
+    // (researchRebuild.cjs) would not reconcile such a row; reported to the controller, not resolved here.
+    expect(pendingRowOf('p-ed1', 'n').editor_note).toBe('5.0');
+    const ev = eventsSince(mark);
+    expect(ev.map((e) => e.event_type)).toEqual(['edit-save']);
+    expect(ev[0].content.note).toEqual({ length: 1, sha256: sha256Text('5') });
+    expect(losses().slice(lossCount)).toEqual([]);
   });
 });

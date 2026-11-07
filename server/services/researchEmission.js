@@ -39,6 +39,12 @@ const ITEM_SOURCES = Object.freeze({
 const str = (v, max) => (typeof v === 'string' && v.length > 0 && v.length <= max ? v : null);
 /** A safe integer of at least `min`, else null. */
 const int = (v, min = 0) => (Number.isSafeInteger(v) && v >= min ? v : null);
+/**
+ * A note as text: nullish or '' → null, anything else String(v). No route type-checks a note and the services
+ * store a number, so a non-string note must not reach record's filter raw, which throws on it and loses the act's
+ * event (final review M7). The filter then stores it as { length, sha256 }.
+ */
+const noteOf = (v) => (v === undefined || v === null || v === '' ? null : String(v));
 
 /**
  * @param {object} body A request body.
@@ -348,9 +354,10 @@ function emitSave(req, { segmentId, editedContent, category, editorNote, saved }
         ...base,
         servedVersionId: saved.servedVersionId,
         editingContentSha256: saved.editedContentSha256,
-        // As saveSegmentEdit stores them, so a rebuild hashes the note the row holds. record keeps only the
+        // As saveSegmentEdit stores them, so a rebuild hashes the note the row holds; the exception is a numeric
+        // note, which the row renders as REAL text ('5.0') and noteOf as String(v) ('5'). record keeps only the
         // text's hash when another editor holds the same bytes as a live edit (decision 65).
-        content: { text: editedContent, note: editorNote || null, category: category || null },
+        content: { text: editedContent, note: noteOf(editorNote), category: category || null },
         before: eventType === 'edit-resave' ? { table: 'segment_edits', row: saved.before } : null,
         detail: {
           displayed: { editId: displayed.editId, sha256: displayedSha256.value },
@@ -520,7 +527,7 @@ function emitReview(req, eventType, { edit, before }) {
       const echoed = readReviewedEditSha256(req.body);
       return {
         ...ref,
-        content: { note: req.body && typeof req.body.note === 'string' ? req.body.note : null },
+        content: { note: noteOf(req.body && req.body.note) },
         before: row,
         detail: { reviewedEditSha256: echoed, mismatch: echoed !== ref.editingContentSha256 },
         ...NO_CLIENT,
@@ -741,7 +748,7 @@ function emitPropagation(
           editingId: w.editId,
           editingContentSha256: clientTextSha256,
           origin: 'propagation',
-          content: { text: editedContent, note: note || null, category: category || null },
+          content: { text: editedContent, note: noteOf(note), category: category || null },
           before: w.inPlace ? { table: 'segment_edits', row: w.before } : null,
           detail: {
             source: { moduleId: req.params.moduleId, segmentId: sourceSegmentId },
