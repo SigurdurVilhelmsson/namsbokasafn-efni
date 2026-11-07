@@ -38,7 +38,7 @@ Claude's tasks (each waits for [USER]'s approval):
 3. An audit log of sign-ins and administrative changes, kept in the database.
 4. Session freshness: changes to a user take effect at once, and sessions can be ended.
 5. Request and redirect validation on the sign-in and write routes.
-6. Object-level permission checks on some section, terminology, feedback and activity routes.
+6. Object-level permission checks on more routes.
 7. A batch of smaller hardening fixes.
 8. A read-only check of the reader site (namsbokasafn-vefur), which bears on item 5.
 9. Once all of this is deployed: the full write-up into the repo, with a decision record.
