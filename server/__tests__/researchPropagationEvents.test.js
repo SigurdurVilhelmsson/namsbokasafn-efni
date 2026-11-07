@@ -10,7 +10,7 @@
 import { mkdtempSync, mkdirSync, rmSync } from 'fs';
 import { tmpdir } from 'os';
 import path from 'path';
-import { describe, it, expect, beforeAll, afterAll, vi } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, afterEach, vi } from 'vitest';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
@@ -414,6 +414,12 @@ describe('a propagation under a held research lock pays one busy wait, not one p
   const N = 40;
   const BUSY_SRC = 'm97590';
   const targetOf = (i) => `m976${String(i).padStart(2, '0')}`;
+
+  // The case ends on a busy research write, which starts researchDb's busy cool-off. A restart clears it, so
+  // the next case never inherits it (else its writes are lost as busy whenever it starts inside the window).
+  afterEach(() => {
+    researchDb._reset();
+  });
 
   it('N targets: about one BUSY_TIMEOUT_MS, every target a busy loss, the response unchanged', async () => {
     const mod = (moduleId, x) =>
