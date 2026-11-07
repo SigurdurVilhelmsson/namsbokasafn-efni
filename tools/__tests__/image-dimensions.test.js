@@ -29,9 +29,21 @@ function png(w, h) {
   return b;
 }
 
-/** A minimal JPEG: SOI, an optional EXIF APP1 carrying `orientation`, SOF0. */
-function jpeg(w, h, orientation) {
+/** A non-EXIF APP1 segment: XMP, which Photoshop writes after the EXIF one. */
+function xmpApp1() {
+  const body = Buffer.from('http://ns.adobe.com/xap/1.0/\0<x:xmpmeta/>', 'latin1');
+  const head = Buffer.from([0xff, 0xe1, 0, 0]);
+  head.writeUInt16BE(body.length + 2, 2);
+  return Buffer.concat([head, body]);
+}
+
+/**
+ * A minimal JPEG: SOI, an optional EXIF APP1 carrying `orientation`, SOF0.
+ * `xmp: 'before' | 'after'` adds an XMP APP1 before or after the EXIF one.
+ */
+function jpeg(w, h, orientation, { xmp } = {}) {
   const parts = [Buffer.from([0xff, 0xd8])];
+  if (xmp === 'before') parts.push(xmpApp1());
   if (orientation) {
     const tiff = Buffer.alloc(8 + 2 + 12 + 4);
     tiff.write('II', 0, 'latin1');
@@ -47,6 +59,7 @@ function jpeg(w, h, orientation) {
     head.writeUInt16BE(body.length + 2, 2);
     parts.push(head, body);
   }
+  if (xmp === 'after') parts.push(xmpApp1());
   const sof = Buffer.from([
     0xff, 0xc0, 0x00, 0x11, 0x08, 0, 0, 0, 0, 3, 1, 0x22, 0, 2, 0x11, 1, 3, 0x11, 1,
   ]);
@@ -101,6 +114,18 @@ describe('H1 — raster sizes and the missing file', () => {
     expect(imageDimensions(join(dir, 'c.jpg'))).toEqual({ width: 200, height: 100 });
   });
 
+  it('keeps the EXIF orientation when a non-EXIF APP1 (XMP) follows it', () => {
+    // The usual export layout: 2,807 of chemistry's 2,836 EXIF-bearing JPEGs
+    // put XMP after EXIF (measured 2026-11-07; none is rotated today).
+    writeFileSync(join(dir, 'd.jpg'), jpeg(200, 100, 6, { xmp: 'after' }));
+    writeFileSync(join(dir, 'e.jpg'), jpeg(200, 100, 6, { xmp: 'before' }));
+    writeFileSync(join(dir, 'f.jpg'), jpeg(200, 100, 0, { xmp: 'after' }));
+    expect(imageDimensions(join(dir, 'd.jpg'))).toEqual({ width: 100, height: 200 });
+    // Controls: XMP first, and XMP with no EXIF at all.
+    expect(imageDimensions(join(dir, 'e.jpg'))).toEqual({ width: 100, height: 200 });
+    expect(imageDimensions(join(dir, 'f.jpg'))).toEqual({ width: 200, height: 100 });
+  });
+
   it('gives nothing for a missing or unreadable file', () => {
     expect(imageDimensions(join(dir, 'none.png'))).toBeNull();
     writeFileSync(join(dir, 'junk.jpg'), Buffer.from('not an image'));
@@ -142,5 +167,21 @@ describe('H1 — imageSizeAttrs looks the file up the way the render copies it',
   it('is empty for an image the dirs do not hold', () => {
     setImageMediaDirs([join(dir, 'src')]);
     expect(imageSizeAttrs('/content/x/chapters/01/images/media/gone.svg')).toBe('');
+  });
+
+  it('never reads outside the media dirs, even through an encoded slash', () => {
+    mkdirSync(join(dir, 'secret'));
+    writeFileSync(join(dir, 'secret', 'outside.png'), png(7, 9));
+    writeFileSync(join(dir, 'src', 'inside.png'), png(10, 20));
+    setImageMediaDirs([join(dir, 'src')]);
+    // `%2F` survives the split on '/' and decodes to a real '/'.
+    expect(imageSizeAttrs('/content/x/chapters/01/images/media/..%2Fsecret%2Foutside.png')).toBe(
+      ''
+    );
+    // Controls: a raw ../ keeps only the basename, and an encoded name inside the dir resolves.
+    expect(imageSizeAttrs('/content/x/chapters/01/images/media/../secret/outside.png')).toBe('');
+    expect(imageSizeAttrs('/content/x/chapters/01/images/media/inside%2Epng')).toBe(
+      ' width="10" height="20"'
+    );
   });
 });

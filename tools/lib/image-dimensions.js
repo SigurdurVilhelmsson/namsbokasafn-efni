@@ -20,7 +20,7 @@
  */
 
 import fs from 'node:fs';
-import path from 'node:path';
+import { safeJoin } from './safe-join.js';
 
 /** CSS px per unit, as CSS Values 4 defines them. */
 const PX_PER_UNIT = {
@@ -93,9 +93,13 @@ function gifDimensions(buf) {
   return { width: buf.readUInt16LE(6), height: buf.readUInt16LE(8) };
 }
 
-/** EXIF orientation (1–8) from a JPEG APP1 segment, or 1. */
+/**
+ * EXIF orientation (1–8) from a JPEG APP1 segment: 1 for an EXIF segment with
+ * no usable tag, and null for an APP1 that is not EXIF (XMP, for one), so the
+ * caller can ignore it.
+ */
 function exifOrientation(seg) {
-  if (seg.length < 14 || seg.toString('latin1', 0, 6) !== 'Exif\0\0') return 1;
+  if (seg.length < 14 || seg.toString('latin1', 0, 6) !== 'Exif\0\0') return null;
   const t = seg.subarray(6);
   const le = t.toString('latin1', 0, 2) === 'II';
   const u16 = (o) => (le ? t.readUInt16LE(o) : t.readUInt16BE(o));
@@ -125,7 +129,12 @@ function jpegDimensions(buf) {
       continue;
     }
     const len = buf.readUInt16BE(i + 2);
-    if (marker === 0xe1) orientation = exifOrientation(buf.subarray(i + 4, i + 2 + len));
+    // Only an EXIF APP1 sets the orientation: an XMP APP1 usually follows the
+    // EXIF one, and must not reset it.
+    if (marker === 0xe1) {
+      const o = exifOrientation(buf.subarray(i + 4, i + 2 + len));
+      if (o !== null) orientation = o;
+    }
     // SOF0–SOF15, except DHT (C4), JPG (C8) and DAC (CC).
     if (marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker)) {
       const height = buf.readUInt16BE(i + 5);
@@ -188,8 +197,10 @@ export function imageSizeAttrs(src) {
   if (CACHE.has(base)) return CACHE.get(base);
   let attrs = '';
   for (const dir of MEDIA_DIRS) {
-    const file = path.join(dir, base);
-    if (!fs.existsSync(file)) continue;
+    // The name is decoded after the split on '/', so an encoded slash (%2F)
+    // can carry a path: keep the lookup inside the dir, as copyChapterImages does.
+    const file = safeJoin(dir, base);
+    if (!file || !fs.existsSync(file)) continue;
     const d = imageDimensions(file);
     if (d) attrs = ` width="${d.width}" height="${d.height}"`;
     break;

@@ -85,6 +85,7 @@ import { loadEmbedMapping, renderEmbedHtml } from './lib/embed-mapping.js';
 import { snapshotModuleIds, reconcilePublishedRenames } from './lib/publication-reconcile.js';
 import { slugMapFilename } from './lib/slug-map.js';
 import { setImageMediaDirs, imageSizeAttrs } from './lib/image-dimensions.js';
+import { safeJoin } from './lib/safe-join.js';
 import { findMixedScriptWords } from './lib/mixed-script.js';
 
 // Matches editor/pipeline artifact files that must never live in or sync from
@@ -229,22 +230,6 @@ function _resetOsEmbedStatsForTest() {
   OS_EMBED_STATS.translated = 0;
   OS_EMBED_STATS.fallback = 0;
   OS_EMBED_STATS.staleSidecar = 0;
-}
-
-/**
- * Join a content-derived name onto a base directory, returning null if the
- * result would escape the base (e.g. a `..`-bearing exercise nickname or a
- * URL-decoded image filename). Defense-in-depth for F17 — these names come
- * from CNXML/rendered HTML, not a fully trusted source.
- */
-function safeJoin(baseDir, name) {
-  if (typeof name !== 'string' || name.length === 0) return null;
-  const resolvedBase = path.resolve(baseDir);
-  const candidate = path.resolve(resolvedBase, name);
-  if (candidate !== resolvedBase && !candidate.startsWith(resolvedBase + path.sep)) {
-    return null;
-  }
-  return candidate;
 }
 
 // =====================================================================
