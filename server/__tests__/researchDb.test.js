@@ -242,6 +242,22 @@ describe('noteFailure and the seams', () => {
     expect(researchDb.getHandle().open).toBe(true);
   });
 
+  it('noteFailure: a database moved under the handle closes it and reads as missing (final review M8)', () => {
+    const T = 1_800_000_000_000;
+    vi.useFakeTimers({ toFake: ['Date'] });
+    vi.setSystemTime(T);
+    researchDb.openAtBoot();
+    const h = researchDb.getHandle();
+    researchDb.noteFailure({ code: 'SQLITE_READONLY_DBMOVED' });
+    expect(h.open).toBe(false);
+    expect(researchDb.status()).toMatchObject({
+      state: 'unavailable',
+      reason: 'missing',
+      sticky: false,
+      lastAttemptAtMs: T,
+    });
+  });
+
   it('refuses a research path equal to the editorial one (spec §5.1; T10)', () => {
     const names = () => {
       const c = new Database(editorialPath, { readonly: true });

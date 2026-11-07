@@ -232,6 +232,31 @@ describe('retry once a minute, and the corrupt file (spec §5.1)', () => {
   });
 });
 
+describe('a research file deleted or replaced under the open handle (spec §5.1; final review I-3)', () => {
+  it('deleted: the next act is an unavailable loss, counted once, and the file is not recreated', () => {
+    expect(record(saveEvent({ clientActionId: act('gh') })).status).toBe('written'); // the handle is open
+    removeFiles(); // no _reset(): the server keeps running with its handle
+    let res;
+    const rows = added(() => {
+      res = record(saveEvent({ clientActionId: 'act-ghost' }));
+    });
+    expect(res).toEqual({ status: 'lost', reason: 'unavailable', ledgered: true });
+    expect(rows).toEqual([[INT1, 'edit-save', 'unavailable', 'act-ghost']]);
+    expect(fs.existsSync(researchPath)).toBe(false);
+    expect(researchDb.status()).toMatchObject({ state: 'unavailable', reason: 'missing' });
+  });
+
+  it('replaced (a new inode at the path): the next act is written into the file at the path', () => {
+    expect(record(saveEvent({ clientActionId: act('rp') })).status).toBe('written');
+    removeFiles();
+    fs.copyFileSync(goldenPath, researchPath); // the golden file holds a key and no event
+    expect(eventIds()).toEqual([]);
+    const res = record(saveEvent({ clientActionId: act('rp') }));
+    expect(res.status).toBe('written');
+    expect(eventIds()).toEqual([res.eventId]);
+  });
+});
+
 describe('T10, record level: a held lock is a busy loss within the short wait (spec §5.1, §5.11)', () => {
   it('returns busy well inside the default 5000 ms, then writes once released', () => {
     vi.useRealTimers();

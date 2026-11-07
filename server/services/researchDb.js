@@ -10,6 +10,10 @@
  *   existing one with no schema) is an outage, never a reason to start over.
  * - Safe integers are on (decision 4): ids above 2^53 survive the round trip, and
  *   so a pragma on this handle reads as a BigInt.
+ * - An open handle is re-checked against its path on every getHandle (one stat): a
+ *   file deleted, moved or replaced under it would otherwise keep taking writes into
+ *   an inode nobody can read again. Such a handle is closed and the path decided as
+ *   at open, so a deleted file is the missing-file case above.
  * - Routes never require this module (T17); they go through researchEmission.
  */
 const Database = require('better-sqlite3');
@@ -29,7 +33,8 @@ const unavailable = (reason) =>
   });
 const isCorrupt = (code) => code === 'SQLITE_NOTADB' || /^SQLITE_CORRUPT/.test(code || '');
 
-let state = { handle: null, reason: null, lastAttemptAtMs: null, sticky: false };
+// `file` is the path the handle was opened on and that file's identity then (device and inode).
+let state = { handle: null, file: null, reason: null, lastAttemptAtMs: null, sticky: false };
 let testDb = null;
 let testPaths = null;
 
@@ -89,11 +94,28 @@ function attemptOpen() {
     for (const p of [`${researchPath}-wal`, `${researchPath}-shm`]) {
       if (fs.existsSync(p)) fs.chmodSync(p, 0o600);
     }
-    state = { handle: db, reason: null, lastAttemptAtMs: state.lastAttemptAtMs, sticky: false };
+    const { dev, ino } = fs.statSync(researchPath);
+    state = {
+      handle: db,
+      file: { path: researchPath, dev, ino },
+      reason: null,
+      lastAttemptAtMs: state.lastAttemptAtMs,
+      sticky: false,
+    };
     return { ok: true };
   } catch (err) {
     if (db && db.open) db.close();
     return fail(isCorrupt(err.code) ? 'corrupt' : 'unavailable', err.code || err.name);
+  }
+}
+
+/** Whether the open handle's path still names the file it was opened on. One stat; never throws. */
+function stillAtPath() {
+  try {
+    const st = fs.statSync(state.file.path, { throwIfNoEntry: false });
+    return st !== undefined && st.ino === state.file.ino && st.dev === state.file.dev;
+  } catch {
+    return false;
   }
 }
 
@@ -103,7 +125,16 @@ function attemptOpen() {
  */
 function getHandle() {
   if (testDb) return testDb;
-  if (state.handle) return state.handle;
+  if (state.handle) {
+    if (stillAtPath()) return state.handle;
+    // Deleted, moved or replaced under the handle: close it and decide the path as at open, not after the
+    // retry minute. A missing file is never recreated while a consented row exists (spec §5.1); a replaced
+    // one is opened.
+    closeHandle();
+    const r = attemptOpen();
+    if (!r.ok) throw unavailable(r.reason);
+    return state.handle;
+  }
   if (state.sticky) throw unavailable(state.reason);
   if (state.lastAttemptAtMs !== null && Date.now() - state.lastAttemptAtMs < RETRY_INTERVAL_MS) {
     throw unavailable(state.reason || 'unavailable');
@@ -149,18 +180,30 @@ function noteFailure(err) {
     state.reason = 'unavailable';
     state.sticky = false;
     state.lastAttemptAtMs = Date.now(); // the reopen waits its minute (§5.1)
+  } else if (code === 'SQLITE_READONLY_DBMOVED') {
+    // The file was moved or deleted under the handle: the missing-file case. The reopen waits its minute
+    // and, while a consented row exists, never recreates the file (§5.1).
+    closeHandle();
+    state.reason = 'missing';
+    state.sticky = false;
+    state.lastAttemptAtMs = Date.now();
   }
 }
 
 function closeHandle() {
-  if (state.handle && state.handle.open) state.handle.close();
+  try {
+    if (state.handle && state.handle.open) state.handle.close();
+  } catch {
+    // A handle whose file is gone must still be dropped: the next getHandle decides from the path.
+  }
   state.handle = null;
+  state.file = null;
 }
 
 /** Test-only; also "a restart". Leaves testPaths and testDb as they are. */
 function _reset() {
   closeHandle();
-  state = { handle: null, reason: null, lastAttemptAtMs: null, sticky: false };
+  state = { handle: null, file: null, reason: null, lastAttemptAtMs: null, sticky: false };
 }
 
 /** Test-only. @param {{researchPath: string, editorialPath: string}|null} p */
