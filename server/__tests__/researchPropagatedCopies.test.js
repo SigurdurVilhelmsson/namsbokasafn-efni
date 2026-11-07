@@ -7,7 +7,10 @@
  * it does not over-withhold: A's own text, a book where nobody else holds the text, and a source edit since rejected.
  * Since the refinement of the same day (finding I1), the copy is found by its row id and the sha256 of its current
  * text, not by its `origin`: an unchanged re-save and a copy edited away and back both carry X under another origin.
- * The book-wide check stays only for a row whose origin is still `propagation`.
+ * The book-wide check stays only for a row whose origin is still `propagation`. The event's own content is looked up the
+ * same way (the residual, approved the same day): a save that types X back into the copy names the copy as its own row,
+ * so the propagation that wrote X there is found by the row and sha256(X), and the save's content holds X only as its
+ * hash. No book-wide check runs for content.
  *
  * Drives the real handlers on a real migrated database (SESSIONS_DB_PATH in a temp dir, so the research file
  * derives into it too) over synthetic modules under a temp books root: nothing under books/ or pipeline-output/ is
@@ -70,6 +73,8 @@ const FAMILIES = Object.freeze({
   elsewhere: { en: 'Family nine sentence.', src: 'm97871', targets: ['m97872'] },
   same: { en: 'Family ten sentence.', src: 'm97881', targets: ['m97882'] },
   awayBack: { en: 'Family eleven sentence.', src: 'm97891', targets: ['m97892'] },
+  typedBack: { en: 'Family twelve sentence.', src: 'm97911', targets: ['m97912'] },
+  ownBack: { en: 'Family thirteen sentence.', src: 'm97921', targets: ['m97922'] },
 });
 // Modules of their own (no other module shares their English), so nothing propagates onto them.
 const UNRELATED = 'm97879'; // B holds a live text here, elsewhere in the book
@@ -490,13 +495,14 @@ describe('I1: the copy is found by its row and its text, not by its origin (spec
     const copy = copyOf(T, A);
     expect(copy).toMatchObject({ edited_content: X, origin: 'propagation' });
     await save(T, 't', A, 'X-prime-I1 frá A');
-    // A types X back. That save's own content is not this case's subject: decision 65 checks its own segment, and
-    // its before-row (X') came from no propagation. So the byte scan is not the detector here; the before-row is.
+    // A types X back. Its before-row (X') came from no propagation; its own content is found by the row and sha256(X)
+    // (the residual, below), so that save holds X only as its hash too and the byte scan can see the whole case.
     await save(T, 't', A, X);
     expect(copyOf(T, A)).toMatchObject({ id: copy.id, edited_content: X, origin: 'editor-save' });
     const mark = eventMark();
     await save(T, 't', A, 'Y-I1-BACK endurbætt af A');
     expectHashed(beforeRow(onlyEvent(mark, 'edit-resave'), copy.id), X, 'editor-save');
+    expect(bytesHold(X)).toBe(false);
   });
 
   it('control: an own row no propagation wrote keeps its text, even one another editor holds live elsewhere in the book', async () => {
@@ -509,7 +515,12 @@ describe('I1: the copy is found by its row and its text, not by its origin (spec
     expect(propagationEventsFor(own.id)).toEqual([]); // no propagation event matches the row
     let mark = eventMark();
     await save(NEVER, 's', A, W);
-    let row = beforeRow(onlyEvent(mark, 'edit-resave'), own.id);
+    const resave = onlyEvent(mark, 'edit-resave');
+    // The residual's control: the content's lookup finds no propagation for this row, and content has no book-wide
+    // check, so B's live W on another segment does not withhold the W A saved.
+    expect(resave.content.text).toBe(W);
+    expect('textSha256' in resave.content).toBe(false);
+    let row = beforeRow(resave, own.id);
     expect(row.edited_content).toBe(NOBODY);
     expect('edited_content_sha256' in row).toBe(false);
     mark = eventMark();
@@ -519,5 +530,45 @@ describe('I1: the copy is found by its row and its text, not by its origin (spec
     row = beforeRow(onlyEvent(mark, 'edit-resave'), own.id);
     expect(row).toMatchObject({ origin: 'editor-save', edited_content: W });
     expect('edited_content_sha256' in row).toBe(false);
+  });
+});
+
+describe("the residual: the event's own content is looked up by its row and its text too (spec AMENDED 2026-11-07)", () => {
+  it("A types B's propagated text X back into the copy: that save's content holds X only as its hash", async () => {
+    const X = 'SENTINEL-RESIDUAL-TYPED-BACK-DECLINER-TEXT';
+    const { src, targets } = FAMILIES.typedBack;
+    const [T] = targets;
+    await save(src, 's', B, X); // B declines: nothing recorded
+    await propagate('typedBack', A, X);
+    const copy = copyOf(T, A);
+    expect(copy).toMatchObject({ edited_content: X, origin: 'propagation' });
+    expect(propagationEventsFor(copy.id)).toHaveLength(1);
+    await save(T, 't', A, 'X-prime-RESIDUAL frá A');
+    expect(bytesHold(X)).toBe(false); // the earlier events (the propagation, the re-save away) hold X only as its hash
+    const mark = eventMark();
+    const back = await save(T, 't', A, X); // its before-row holds X', which no propagation wrote
+    expect(back.editId).toBe(copy.id);
+    const e = onlyEvent(mark, 'edit-resave');
+    expect(e.content.textSha256).toBe(sha256Text(X));
+    expect('text' in e.content).toBe(false);
+    expect(bytesHold(X)).toBe(false);
+  });
+
+  it("control: A types A's own propagated text back into the copy: that save's content keeps it", async () => {
+    const OWN = 'CONTROL-RESIDUAL-OWN-TYPED-BACK frá A';
+    const { src, targets } = FAMILIES.ownBack;
+    const [T] = targets;
+    // B holds a different live text on the source, so the source's check runs and has a text to find.
+    await save(src, 's', B, 'CONTROL-RESIDUAL-OTHER-LIVE-TEXT');
+    await save(src, 's', A, OWN);
+    await propagate('ownBack', A, OWN);
+    const copy = copyOf(T, A);
+    expect(propagationEventsFor(copy.id)).toHaveLength(1); // the content's lookup finds this event
+    await save(T, 't', A, 'OWN-prime-RESIDUAL frá A');
+    const mark = eventMark();
+    await save(T, 't', A, OWN);
+    const e = onlyEvent(mark, 'edit-resave');
+    expect(e.content.text).toBe(OWN);
+    expect('textSha256' in e.content).toBe(false);
   });
 });

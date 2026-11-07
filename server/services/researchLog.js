@@ -205,7 +205,8 @@ function recordInner(ev) {
   let items;
   try {
     // step 4: validation and sessions.db reads, plus one indexed research.db read when the
-    // before-image holds a row the actor owns (decision 65, AMENDED 2026-11-07); never a research lock
+    // content carries a text on the event's own row or the before-image holds a row the actor owns
+    // (decision 65, AMENDED 2026-11-07); never a research lock
     row = buildEvent(ev);
     items = buildItemRows(ev.eventType, ev.items);
   } catch (err) {
@@ -313,7 +314,8 @@ function buildEvent(ev) {
 // Decision 65 (spec AMENDED 2026-11-04): the texts OTHER editors hold as live edits on the segments
 // this event names: its own segment, and a propagation's source (detail.source, decision 54); since
 // the AMENDED 2026-11-07 block, also the source of each propagation that wrote the current text of
-// a row the actor's before-image carries (propagatedCopySources, below). "Live" is
+// a row the actor's before-image carries, or wrote the content's text on the event's own row
+// (propagatedCopySources, below). "Live" is
 // propagationService.latestEditedText's predicate, verbatim (the test pins the string). Read on the
 // sessions.db connection after the act committed: the route is synchronous from its write to emit,
 // and no save or propagation changes another editor's row, so these are the rows the act met. Runs
@@ -387,24 +389,45 @@ function othersLiveTexts(ev) {
  * book. A row with another origin and no matching event gets nothing extra: a book-wide check of every
  * own row is the wide check the lead declined.
  *
+ * The event's own content is looked up the same way (the residual, approved the same day): when the
+ * content carries a text and the event names its own `segment_edit` row, a propagation whose editing_id
+ * is that row and whose editing_content_sha256 is the sha256 of the content's text adds its source. So a
+ * save that types a propagated text back into the copy (its before-row holds the intermediate text, which
+ * no propagation wrote) still has that text's source checked. A miss here never falls back to the book.
+ *
  * Follows the row, not the event, so it applies to every event type. The before-image is read as
  * filterBefore reads it: one { table, row } or an array of them (emitApply has already flattened apply's
- * losers and self-heal rows into that array). research.db is read only when the before-image holds a
- * row the actor owns, once per event, as index probes (research schema version 2); an act with no
- * before-image, or only other editors' rows, pays nothing here.
+ * losers and self-heal rows into that array). research.db is read only when the content carries a text on
+ * the event's own row or the before-image holds a row the actor owns, once per event, as index probes
+ * (research schema version 2); an act with neither pays nothing here.
  * @returns {{sources: Array<[string, string]>, unknownTexts: string[]}}
  */
 function propagatedCopySources(ev) {
   const sources = [];
   const unknownTexts = [];
+  // { id, text, propagated: whether a miss is checked book-wide (the row's origin still says a propagation wrote it) }
+  const own = [];
+  const content = ev.content;
+  if (
+    ev.editingKind === 'segment_edit' &&
+    Number.isSafeInteger(ev.editingId) &&
+    content !== null &&
+    content !== undefined &&
+    typeof content.text === 'string'
+  ) {
+    // The event's own row with the text its content carries (the residual): never the book-wide check.
+    own.push({ id: ev.editingId, text: content.text, propagated: false });
+  }
   const actor = ev.actorProviderId;
   const before = ev.before;
   // Fails closed as filterRow's own() does: with no actor, no row is anyone's own.
-  if (actor === null || actor === undefined || before === null || before === undefined) {
-    return { sources, unknownTexts };
-  }
-  const own = []; // { id, text, propagated: whether the row's origin still says a propagation wrote it }
-  for (const entry of Array.isArray(before) ? before : [before]) {
+  const beforeRows =
+    actor === null || actor === undefined || before === null || before === undefined
+      ? []
+      : Array.isArray(before)
+        ? before
+        : [before];
+  for (const entry of beforeRows) {
     const row = entry && entry.table === 'segment_edits' ? entry.row : null;
     if (
       !row ||
