@@ -782,14 +782,23 @@ test.describe('Terminology import page: a refused upload says why', () => {
     cleanupIds.length = 0;
   });
 
-  /** Choose `file`, press upload, and return the text of the alert the refusal raises. */
+  /**
+   * Choose `file`, press upload, and return the text of the alert the refusal raises.
+   *
+   * The click is started but not awaited before the dialog. Waiting for a dialog
+   * stops Playwright dismissing it, and the alert can open while click() is still
+   * waiting for scheduled navigations; click() then never returns, and awaiting it
+   * first hangs to the test timeout (measured on the 413 test). Same shape as
+   * openWithStub in opening-unrecorded.spec.js.
+   */
   async function refusalAlert(page, file) {
     await page.setInputFiles('#import-file', file);
     const dialog = page.waitForEvent('dialog');
-    await page.locator('#upload-btn').click();
+    const click = page.locator('#upload-btn').click();
     const d = await dialog;
     const text = d.message();
     await d.dismiss();
+    await click;
     return text;
   }
 

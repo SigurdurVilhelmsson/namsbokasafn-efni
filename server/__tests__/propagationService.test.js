@@ -565,10 +565,25 @@ describe('createPropagatedEdits: each target gets its own served base (G1.1, T16
         },
       ],
     });
-    expect(res).toEqual({ created: [{ moduleId: 'm030', segmentId: 'm030:para:a' }], skipped: [] });
-
     const rows = rowsOf(d, 'm030');
     expect(rows).toHaveLength(1);
+    expect(res).toEqual({
+      created: [{ moduleId: 'm030', segmentId: 'm030:para:a' }],
+      skipped: [],
+      writes: [
+        {
+          moduleId: 'm030',
+          segmentId: 'm030:para:a',
+          chapter: 1,
+          occurrence: 0,
+          editId: rows[0].id,
+          servedVersionId: rows[0].served_version_id,
+          inPlace: false,
+          before: null,
+          supersededAcceptanceIds: [],
+        },
+      ],
+    });
     expect(rows[0]).toMatchObject({
       original_content: 'Sýra.',
       edited_content: 'Sýra og basi',
@@ -840,5 +855,143 @@ describe('findOccurrences reports occurrence, duplicated and layer (G1.1)', () =
       segmentParser._setTestBooksDir(realBooksDir);
       rmSync(root, { recursive: true, force: true });
     }
+  });
+});
+
+describe('createPropagatedEdits returns what each target write changed (G1.2)', () => {
+  const Database = require('better-sqlite3');
+
+  function freshDb() {
+    const d = new Database(':memory:');
+    createSegmentEditsSchema(d);
+    migration043.up(d);
+    migration053.up(d);
+    return d;
+  }
+
+  const base = {
+    book: 'efnafraedi-2e',
+    editorId: '42',
+    editorUsername: 'tester',
+    propagatedText: 'Sýra og basi',
+    category: 'terminology',
+    note: 'Sjálfvirk fjölgun',
+    sourceEn: '',
+  };
+
+  it('writes: an insert reports its new row and minted version; an in-place update reports the row as it was', () => {
+    const d = freshDb();
+    d.prepare(
+      `INSERT INTO segment_edits (book, chapter, module_id, segment_id, original_content, edited_content, status, editor_id, editor_username)
+       VALUES (?, 1, 'm031', 'm031:para:b', 'gamalt', 'eldra', 'pending', '42', 'tester')`
+    ).run(base.book);
+    const existing = d.prepare(`SELECT * FROM segment_edits WHERE module_id = 'm031'`).get();
+    const occurrences = [
+      occ({ chapter: 1, moduleId: 'm030', segmentId: 'm030:para:a', currentIs: '' }),
+      occ({ chapter: 1, moduleId: 'm031', segmentId: 'm031:para:b', currentIs: 'gamalt' }),
+    ];
+    const res = svc.createPropagatedEdits(d, { ...base, occurrences });
+    const inserted = d.prepare(`SELECT * FROM segment_edits WHERE module_id = 'm030'`).get();
+    const updated = d.prepare(`SELECT * FROM segment_edits WHERE module_id = 'm031'`).get();
+    expect(res.created).toEqual([
+      { moduleId: 'm030', segmentId: 'm030:para:a' },
+      { moduleId: 'm031', segmentId: 'm031:para:b', superseded: true },
+    ]);
+    expect(res.writes).toEqual([
+      {
+        moduleId: 'm030',
+        segmentId: 'm030:para:a',
+        chapter: 1,
+        occurrence: 0,
+        editId: inserted.id,
+        servedVersionId: inserted.served_version_id,
+        inPlace: false,
+        before: null,
+        supersededAcceptanceIds: [],
+      },
+      {
+        moduleId: 'm031',
+        segmentId: 'm031:para:b',
+        chapter: 1,
+        occurrence: 0,
+        editId: existing.id,
+        servedVersionId: updated.served_version_id,
+        inPlace: true,
+        before: existing,
+        supersededAcceptanceIds: [],
+      },
+    ]);
+    expect(res.writes[0].editId).toBeTruthy();
+  });
+
+  it("writes lists the acceptance a target's write superseded", () => {
+    const d = freshDb();
+    const info = d
+      .prepare(
+        `INSERT INTO segment_acceptances
+         (book, chapter, module_id, segment_id, accepted_content, accepted_by, accepted_by_username)
+       VALUES (?, 1, 'm030', 'm030:para:a', 'gömul', 'u1', 'editor1')`
+      )
+      .run(base.book);
+    const occurrences = [
+      occ({ chapter: 1, moduleId: 'm030', segmentId: 'm030:para:a', currentIs: 'gömul' }),
+    ];
+    const res = svc.createPropagatedEdits(d, { ...base, occurrences });
+    expect(res.writes[0].supersededAcceptanceIds).toEqual([Number(info.lastInsertRowid)]);
+  });
+
+  it('a duplicated-id target is skipped and has no writes entry', () => {
+    const d = freshDb();
+    const occurrences = [
+      occ({
+        chapter: 1,
+        moduleId: 'm032',
+        segmentId: 'm032:para:d',
+        currentIs: '',
+        duplicated: true,
+      }),
+      occ({ chapter: 1, moduleId: 'm033', segmentId: 'm033:para:e', currentIs: '' }),
+    ];
+    const res = svc.createPropagatedEdits(d, { ...base, occurrences });
+    expect(res.skipped).toEqual([
+      { moduleId: 'm032', segmentId: 'm032:para:d', reason: 'duplicate-id', occurrence: 0 },
+    ]);
+    expect(res.writes.map((w) => w.moduleId)).toEqual(['m033']);
+  });
+
+  it('an already-matching target is skipped and has no writes entry', () => {
+    const d = freshDb();
+    const occurrences = [
+      occ({ chapter: 1, moduleId: 'm032', segmentId: 'm032:para:d', currentIs: 'Sýra og basi' }),
+      occ({ chapter: 1, moduleId: 'm033', segmentId: 'm033:para:e', currentIs: '' }),
+    ];
+    const res = svc.createPropagatedEdits(d, { ...base, occurrences });
+    expect(res.skipped).toHaveLength(1);
+    expect(res.writes.map((w) => w.moduleId)).toEqual(['m033']);
+  });
+});
+
+describe('latestLiveEdit', () => {
+  const Database = require('better-sqlite3');
+  const BOOK = 'efnafraedi-2e';
+
+  it('returns the newest live row with its editor; latestEditedText keeps its contract', () => {
+    const d = new Database(':memory:');
+    createSegmentEditsSchema(d);
+    svc._setTestDb(d);
+    const ins = d.prepare(
+      `INSERT INTO segment_edits (book, chapter, module_id, segment_id, original_content, edited_content, status, editor_id, editor_username)
+       VALUES (?, 1, 'm040', 'm040:para:a', 'orig', ?, ?, ?, 'u')`
+    );
+    const first = ins.run(BOOK, 'fyrsta', 'pending', 'p-1');
+    ins.run(BOOK, 'hafnað', 'rejected', 'p-2');
+    expect(svc.latestLiveEdit(BOOK, 'm040', 'm040:para:a')).toEqual({
+      id: Number(first.lastInsertRowid),
+      edited_content: 'fyrsta',
+      editor_id: 'p-1',
+    });
+    expect(svc.latestEditedText(BOOK, 'm040', 'm040:para:a')).toBe('fyrsta');
+    expect(svc.latestLiveEdit(BOOK, 'm040', 'm040:para:none')).toBeNull();
+    expect(svc.latestEditedText(BOOK, 'm040', 'm040:para:none')).toBeNull();
   });
 });

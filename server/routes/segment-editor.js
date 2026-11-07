@@ -48,6 +48,7 @@ const notifications = require('../services/notifications');
 const servedVersions = require('../services/servedVersions');
 const servedEdit = require('../services/servedEdit');
 const moduleOpenings = require('../services/moduleOpenings');
+const researchEmission = require('../services/researchEmission');
 const { sha256Text, isNotMintedBook } = require('../lib/servedText');
 const { isNewer } = require('../lib/editRecency');
 
@@ -79,6 +80,15 @@ function sendRefusal(res, err) {
     res.status(servedEdit.REFUSAL_STATUS[err.code]).json({ error: err.code, message: err.message });
   }
   return true;
+}
+
+// G1.2 (spec §5.9, §11): services hand the research event its before-images under these keys; no
+// response carries them. A copy, so the caller's object (the research event's input) keeps them.
+function withoutResearchKeys(result) {
+  const rest = { ...result };
+  delete rest.before;
+  delete rest.writes;
+  return rest;
 }
 
 // ─── Book data lookup (slug → chapter/module metadata) ───────────────
@@ -378,11 +388,14 @@ router.get(
         const { status, code, message } = moduleOpenings.OPENING_UNRECORDED;
         return res.status(status).json({ error: code, message });
       }
-      // ── PR3 (index decision 2) emits module-opened HERE, after the opening's commit and only
-      //    when step.status === 'opened', with moduleOpenings.moduleOpenedDetail(served,
-      //    step.opening) as its detail; nothing it does may change this response (spec §5.11).
-      //    Step 5 (G1.23) runs after it and reads seg.baseSha256 and the stored opening. No field
-      //    is added to the response (T17). ──
+      // G1.2 (spec §5.5): after the opening's commit; it never turns a serve into a 503 or a 503 into a 200
+      // (PR2's handoff). Step 5 (G1.23) runs after it and reads seg.baseSha256 and the stored opening. No field
+      // is added to the response (T17).
+      if (step.status === 'opened') {
+        researchEmission.emitModuleOpened(req, {
+          detail: moduleOpenings.moduleOpenedDetail(served, step.opening),
+        });
+      }
       res.json({
         ...data,
         edits: editsBySegment,
@@ -410,7 +423,8 @@ router.post(
   (req, res) => {
     // `originalContent` is no longer read: the server stores its own base (spec §5.6 step 6);
     // pages loaded before G1.1 still send it. The research-only fields (clientActionId,
-    // clientActionTime, assists, replayed) are accepted and not read (index decision 4).
+    // clientActionTime, assists, replayed) are read only by the research event, after the act
+    // (researchEmission); they never change this response (spec §5.11).
     const {
       segmentId,
       editedContent,
@@ -522,6 +536,10 @@ router.post(
         }
       }
 
+      // G1.2 (spec §5.9, §5.11): the research event, after the commit and before the response. It
+      // never throws and never changes this response.
+      researchEmission.emitSave(req, { segmentId, editedContent, category, editorNote, saved });
+
       // The three echo fields are named as the request fields the next save sends (plan
       // decision 15; spec §5.18): the base this save was checked against, and the row the
       // segment now displays (null/null when the save withdrew or wrote nothing).
@@ -537,7 +555,25 @@ router.post(
       });
     } catch (err) {
       if (err.code === 'SEGMENT_CONFLICT') {
+        // Decision 49 ([USER] 2026-11-04, spec AMENDED 2026-11-04): the pre-G1.1 concurrency
+        // refusal is logged too. It compares edit ids, not texts, so both hashes are null; the
+        // reason is the server's code, not the wire's.
+        researchEmission.emitRefused(req, {
+          action: 'save',
+          segmentId,
+          origin: 'editor-save',
+          refusal: { code: 'SEGMENT_CONFLICT', echoedSha256: null, currentSha256: null },
+        });
         return res.status(409).json({ error: 'conflict', message: err.message });
+      }
+      if (err.refusal) {
+        // spec §5.6: a refusal is logged with its reason and both hashes, never the text.
+        researchEmission.emitRefused(req, {
+          action: 'save',
+          segmentId,
+          refusal: err.refusal,
+          origin: 'editor-save',
+        });
       }
       if (sendRefusal(res, err)) return;
       if (err.message?.includes('not found')) {
@@ -951,12 +987,13 @@ router.post(
       return res.status(400).json({ error: 'Content too long (max 10,000 characters)' });
     }
 
+    let placed = null;
     try {
       // Spec §5.6 Accept: steps 1–3 first, so a duplicated id is refused before acceptSegment's
       // existing lookup would return the first copy's row as alreadyAccepted, and organic and a
       // module with no layer are refused before anything is written. acceptOrigin is the research
       // event's (PR3); nothing here reads it.
-      const placed = servedEdit.placeOnServedBase({
+      placed = servedEdit.placeOnServedBase({
         book: req.params.book,
         chapter: req.chapterNum,
         moduleId: req.params.moduleId,
@@ -985,8 +1022,30 @@ router.post(
         });
       }
 
+      researchEmission.emitAccept(req, { result });
       res.json({ success: true, ...result });
     } catch (err) {
+      if (err.refusal) {
+        researchEmission.emitRefused(req, { action: 'accept', segmentId, refusal: err.refusal });
+      } else if (err.code === 'STALE_CONTENT' && placed) {
+        // spec §5.6: the accept's base check is the value check; its refusal is logged as one (decision 49).
+        researchEmission.emitRefused(req, {
+          action: 'accept',
+          segmentId,
+          refusal: {
+            code: 'STALE_CONTENT',
+            echoedText: acceptedContent,
+            currentText: placed.seg.is,
+          },
+        });
+      } else if (researchEmission.ACCEPT_ELIGIBILITY_REFUSALS.includes(err.code)) {
+        // Decision 49 ([USER] 2026-11-04, spec AMENDED 2026-11-04): an eligibility refusal is logged too, with no hash.
+        researchEmission.emitRefused(req, {
+          action: 'accept',
+          segmentId,
+          refusal: { code: err.code, echoedSha256: null, currentSha256: null },
+        });
+      }
       if (sendRefusal(res, err)) return;
       // MTA-R3 adds DISCUSS_OPEN / HUMAN_CONTENT to the eligibility guard;
       // they are conflict states like the other two, not server errors.
@@ -1018,11 +1077,13 @@ router.post(
  */
 router.post('/acceptance/:id/revoke', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   try {
-    const row = acceptanceService.revokeAcceptance(parseInt(req.params.id, 10), {
+    const revoked = acceptanceService.revokeAcceptance(parseInt(req.params.id, 10), {
       actorId: String(req.user.id),
       actorRole: req.user.role,
       actorBooks: req.user.books || [],
     });
+    const row = withoutResearchKeys(revoked);
+    researchEmission.emitRevoke(req, { row, before: revoked.before });
     res.json({ success: true, acceptance: row });
     activityLog.log({
       type: 'acceptance_revoked',
@@ -1055,7 +1116,8 @@ router.delete('/edit/:editId', requireAuth, requireRole(ROLES.EDITOR), (req, res
     const editId = parseInt(req.params.editId, 10);
     // Read edit before deletion for logging
     const edit = segmentEditor.getEditById(editId);
-    segmentEditor.deleteSegmentEdit(editId, req.user.id);
+    const { before } = segmentEditor.deleteSegmentEdit(editId, req.user.id);
+    researchEmission.emitDelete(req, { before });
     res.json({ success: true });
     activityLog.log({
       type: 'segment_edit_deleted',
@@ -1091,6 +1153,10 @@ router.post(
         submittedByUsername: req.user.username,
       });
 
+      researchEmission.emitSubmit(req, {
+        reviewId: result.id,
+        stampedEditIds: result.stampedEditIds,
+      });
       res.json({
         success: true,
         reviewId: result.id,
@@ -1171,12 +1237,13 @@ router.post(
   requireHeadEditorFor(bookFromEditId),
   (req, res) => {
     try {
-      const edit = segmentEditor.approveEdit(
+      const result = segmentEditor.approveEdit(
         parseInt(req.params.editId, 10),
         req.user.id,
         req.user.username,
         req.body?.note
       );
+      const edit = withoutResearchKeys(result);
       activityLog.log({
         type: 'segment_edit_approved',
         userId: String(req.user.id),
@@ -1187,6 +1254,9 @@ router.post(
         description: `${req.user.username} samþykkti breytingu á ${edit.module_id}:${edit.segment_id}`,
       });
       notifyDecision(edit, 'approved', req);
+      // G1.2: emitted after the act committed and before the response (spec §5.11); `before` is the
+      // research event's and never reaches the response (decision 44).
+      researchEmission.emitReview(req, 'edit-approve', { edit: result, before: result.before });
       res.json({ success: true, edit });
     } catch (err) {
       const status = err.code === 'SUPERSEDED_BY_NEWER' ? 409 : 400;
@@ -1205,12 +1275,13 @@ router.post(
   requireHeadEditorFor(bookFromEditId),
   (req, res) => {
     try {
-      const edit = segmentEditor.rejectEdit(
+      const result = segmentEditor.rejectEdit(
         parseInt(req.params.editId, 10),
         req.user.id,
         req.user.username,
         req.body?.note
       );
+      const edit = withoutResearchKeys(result);
       activityLog.log({
         type: 'segment_edit_rejected',
         userId: String(req.user.id),
@@ -1221,6 +1292,7 @@ router.post(
         description: `${req.user.username} hafnaði breytingu á ${edit.module_id}:${edit.segment_id}`,
       });
       notifyDecision(edit, 'rejected', req);
+      researchEmission.emitReview(req, 'edit-reject', { edit: result, before: result.before });
       res.json({ success: true, edit });
     } catch (err) {
       res.status(400).json({ error: err.message });
@@ -1238,12 +1310,13 @@ router.post(
   requireHeadEditorFor(bookFromEditId),
   (req, res) => {
     try {
-      const edit = segmentEditor.markForDiscussion(
+      const result = segmentEditor.markForDiscussion(
         parseInt(req.params.editId, 10),
         req.user.id,
         req.user.username,
         req.body?.note
       );
+      const edit = withoutResearchKeys(result);
       activityLog.log({
         type: 'segment_edit_discuss',
         userId: String(req.user.id),
@@ -1254,6 +1327,7 @@ router.post(
         description: `${req.user.username} merkti ${edit.module_id}:${edit.segment_id} til umræðu`,
       });
       notifyDecision(edit, 'discuss', req);
+      researchEmission.emitReview(req, 'edit-discuss', { edit: result, before: result.before });
       res.json({ success: true, edit });
     } catch (err) {
       res.status(400).json({ error: err.message });
@@ -1271,7 +1345,9 @@ router.post(
   requireHeadEditorFor(bookFromEditId),
   (req, res) => {
     try {
-      const edit = segmentEditor.unapproveEdit(parseInt(req.params.editId, 10));
+      const result = segmentEditor.unapproveEdit(parseInt(req.params.editId, 10));
+      const edit = withoutResearchKeys(result);
+      researchEmission.emitReview(req, 'edit-unapprove', { edit: result, before: result.before });
       res.json({ success: true, edit });
       activityLog.log({
         type: 'segment_edit_unapproved',
@@ -1298,7 +1374,8 @@ router.post(
   requireHeadEditorFor(bookFromEditId),
   (req, res) => {
     try {
-      const edit = segmentEditor.returnEditToPending(parseInt(req.params.editId, 10));
+      const result = segmentEditor.returnEditToPending(parseInt(req.params.editId, 10));
+      const edit = withoutResearchKeys(result);
       activityLog.log({
         type: activityLog.ACTIVITY_TYPES.SEGMENT_EDIT_REOPENED,
         userId: String(req.user.id),
@@ -1307,6 +1384,10 @@ router.post(
         chapter: edit.chapter,
         section: edit.module_id,
         description: `${req.user.username} opnaði aftur breytingu á ${edit.module_id}:${edit.segment_id}`,
+      });
+      researchEmission.emitReview(req, 'edit-return-to-pending', {
+        edit: result,
+        before: result.before,
       });
       res.json({ success: true, edit });
     } catch (err) {
@@ -1335,25 +1416,51 @@ router.post(
 
       // Auto-apply when review is fully approved
       let applied = null;
+      let applyOutcome = 'not-attempted';
+      let applyBefore = null;
+      let place = null;
       if (result.status === 'approved') {
         try {
           const review = segmentEditor.getModuleReviewWithEdits(parseInt(req.params.reviewId, 10));
-          applied = segmentEditor.applyApprovedEdits(
+          const appliedRaw = segmentEditor.applyApprovedEdits(
             review.review.book,
             review.review.chapter,
             review.review.module_id,
             { appliedBy: req.user.username || (req.user.id != null ? String(req.user.id) : null) }
           );
+          applied = withoutResearchKeys(appliedRaw);
+          applyBefore = appliedRaw.before;
+          applyOutcome = 'applied';
+          place = review.review;
         } catch (applyErr) {
           // Auto-apply is best-effort; don't fail the review completion.
           // Head-editor can retry via POST /:book/:chapter/:moduleId/apply
           // — except under a §C203 hold, where a retry is refused the same way.
           log.error({ err: applyErr }, 'Auto-apply after review failed');
+          applyOutcome = applyErr.code === 'APPLY_HELD' ? 'held' : 'failed';
           applied =
             applyErr.code === 'APPLY_HELD'
               ? { error: applyErr.message, held: true, retryable: false }
               : { error: applyErr.message, retryable: true };
         }
+      }
+
+      const reviewId = parseInt(req.params.reviewId, 10);
+      researchEmission.emitReviewComplete(req, {
+        reviewId,
+        result,
+        notes: req.body?.notes,
+        apply: applyOutcome,
+      });
+      if (applyBefore) {
+        researchEmission.emitApply(req, {
+          book: place.book,
+          chapter: place.chapter,
+          moduleId: place.module_id,
+          before: applyBefore,
+          trigger: 'review-complete',
+          reviewId,
+        });
       }
 
       res.json({ success: true, ...result, applied });
@@ -1393,11 +1500,12 @@ router.post('/edit/:editId/comment', requireAuth, requireRole(ROLES.EDITOR), (re
       req.user.username,
       comment
     );
-    // Response stays first (the comment IS saved; a context-lookup failure
-    // must not flip a committed mutation into a 400 — that is the
-    // nested-site defect class this batch fixes). Only the lookup is
-    // guarded, with a log; the audit write goes bare with degraded context
-    // on lookup failure (edit stays null → the || '' fallbacks apply).
+    // The comment IS saved: the research event, then the response (spec §5.11; emit cannot
+    // throw), then the audit write. A context-lookup failure after the response must not flip a
+    // committed mutation into a 400 — that is the nested-site defect class this batch fixes. Only
+    // the lookup is guarded, with a log; the audit write goes bare with degraded context on lookup
+    // failure (edit stays null → the || '' fallbacks apply).
+    researchEmission.emitComment(req, { edit: result.edit, comment });
     res.json({ success: true, commentId: result.id });
     let edit = null;
     try {
@@ -1578,6 +1686,12 @@ router.post(
       // G1.1 (spec §11, T18): a book that is never minted takes no write, before any target is
       // loaded. createPropagatedEdits' mint refuses it too, as a second line.
       if (isNotMintedBook(req.params.book)) {
+        researchEmission.emitRefused(req, {
+          action: 'propagate',
+          segmentId,
+          refusal: { code: 'BOOK_NOT_MINTED', echoedSha256: null, currentSha256: null },
+          origin: 'propagation',
+        });
         return res.status(409).json({
           error: 'BOOK_NOT_MINTED',
           message: servedEdit.REFUSAL_MESSAGES.BOOK_NOT_MINTED,
@@ -1599,7 +1713,21 @@ router.post(
         excludeModuleId: req.params.moduleId,
         excludeSegmentId: segmentId,
       });
-      const result = propagation.createPropagatedEdits(propagation.getDb(), {
+      // G1.2 (spec §5.9): what the preview would classify now, read just before the write, for the event only.
+      // Research must never fail the act (spec §5.11): if the read throws, the propagation proceeds exactly as
+      // before and its events carry no preview.
+      let latest = null;
+      let previewUnknown = false;
+      try {
+        latest = propagation.latestLiveEdit(req.params.book, req.params.moduleId, segmentId);
+      } catch (readErr) {
+        previewUnknown = true;
+        log.warn(
+          { errorCode: (readErr && (readErr.code || readErr.name)) || null },
+          'Propagation preview read failed; its research events carry no preview (spec §5.11)'
+        );
+      }
+      const created = propagation.createPropagatedEdits(propagation.getDb(), {
         book: req.params.book,
         editorId: req.user.id,
         editorUsername: req.user.username,
@@ -1609,8 +1737,30 @@ router.post(
         occurrences,
         sourceEn: sourceSeg?.en,
       });
+      // G1.2: `created.writes` is the research event's; the response stays PR1's.
+      const result = withoutResearchKeys(created);
+      researchEmission.emitPropagation(req, {
+        sourceSegmentId: segmentId,
+        sourceIs: sourceSeg?.is ?? '',
+        latest,
+        previewUnknown,
+        editedContent,
+        category,
+        note: note || 'Sjálfvirk fjölgun',
+        writes: created.writes,
+        skipped: created.skipped,
+      });
       res.json(result);
     } catch (err) {
+      if (err.refusal) {
+        // spec §5.6, decision 49: every refusal PR1 raises (the source's placement, the mint) is logged.
+        researchEmission.emitRefused(req, {
+          action: 'propagate',
+          segmentId: req.body && req.body.segmentId,
+          refusal: err.refusal,
+          origin: 'propagation',
+        });
+      }
       if (sendRefusal(res, err)) return;
       log.error({ err }, 'propagate failed');
       res.status(500).json({ error: err.message });
@@ -1740,12 +1890,20 @@ router.post(
   validateModule,
   (req, res) => {
     try {
-      const result = segmentEditor.applyApprovedEdits(
+      const applied = segmentEditor.applyApprovedEdits(
         req.params.book,
         req.chapterNum,
         req.params.moduleId,
         { appliedBy: req.user.username || (req.user.id != null ? String(req.user.id) : null) }
       );
+      const result = withoutResearchKeys(applied);
+      researchEmission.emitApply(req, {
+        book: req.params.book,
+        chapter: req.chapterNum,
+        moduleId: req.params.moduleId,
+        before: applied.before,
+        trigger: 'apply',
+      });
 
       activityLog.log({
         type: 'segment_edits_applied',
@@ -1809,12 +1967,20 @@ router.post(
       }
 
       // Apply edits to files
-      const applyResult = segmentEditor.applyApprovedEdits(
+      const applyRaw = segmentEditor.applyApprovedEdits(
         req.params.book,
         req.chapterNum,
         req.params.moduleId,
         { appliedBy: req.user.username || (req.user.id != null ? String(req.user.id) : null) }
       );
+      const applyResult = withoutResearchKeys(applyRaw);
+      researchEmission.emitApply(req, {
+        book: req.params.book,
+        chapter: req.chapterNum,
+        moduleId: req.params.moduleId,
+        before: applyRaw.before,
+        trigger: 'apply-and-render',
+      });
 
       // Run inject+render pipeline (async — returns job ID for polling)
       const { jobId } = pipelineService.runPipeline({
@@ -1935,13 +2101,15 @@ router.post(
     }
 
     try {
-      const result = contentVersionService.restoreVersion(
+      const restored = contentVersionService.restoreVersion(
         req.params.book,
         req.chapterNum,
         req.params.moduleId,
         version,
         { userId: req.user.id, username: req.user.username }
       );
+      const result = withoutResearchKeys(restored);
+      researchEmission.emitRestore(req, { version, before: restored.before });
       res.json({ success: true, ...result });
     } catch (err) {
       if (err.code === 'APPLY_HELD') {

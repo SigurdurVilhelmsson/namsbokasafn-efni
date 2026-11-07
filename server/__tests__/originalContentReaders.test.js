@@ -31,6 +31,10 @@ const AUDITED_READERS = [
   'scripts/render-segment-edits-md.js',
   // A comment: applyApprovedEdits never compares `original_content`. No change.
   'server/lib/applyHold.js',
+  // The research filter (G1.2) classifies `original_content` for research before-images and reads no
+  // database; a before-image deliberately records the row's prior base, a moved one included (spec §5.8:
+  // the event keeps the old). No change.
+  'server/lib/researchFilter.js',
   // `localization_pending_edits`, another table. No change.
   'server/public/js/localization-editor.js',
   // `buildSaveBody` sends the row's `data-is` as `originalContent`: a request field, which the
@@ -72,6 +76,9 @@ const AUDITED_SELECT_STAR = [
   'server/scripts/close-pending-edits.js',
   // Pending rows, a read-only probe: shows the latest base. No change.
   'server/scripts/read-pending-edits.js',
+  // The in-place propagation target's before-image, read for research (G1.2); the propagate route
+  // strips `writes`, so no browser sees it. No change.
+  'server/services/propagationService.js',
   // The module route, segment history, reviews and the review functions. As above.
   'server/services/segmentEditorService.js',
 ];
