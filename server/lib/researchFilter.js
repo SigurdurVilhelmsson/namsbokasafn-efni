@@ -5,7 +5,10 @@
 //
 // Before-image field table (spec §5.9 plus plan decisions 9 and 10). A class names what happens:
 //   locator        kept            names no person and no time
-//   state          kept            ids, enums, hashes; never text
+//   state          kept            ids, enums, hashes the server computed; never text
+//   hash           kept or null    a hash a client supplied (displayed_edit_sha256: PR1 stores the echo
+//                                  unchecked when decision 39 lets a save through); kept only as 64
+//                                  lowercase hex, else null, so a client string never reaches research
 //   text           kept or hashed  kept only when the actor wrote it AND no other editor holds the
 //                                  same bytes as a live edit (decision 65); else edited_content_sha256
 //   free-text      reduced         { length, sha256 } or null
@@ -49,7 +52,7 @@ const BEFORE_FIELD_CLASSES = Object.freeze({
     occurrence: 'state',
     origin: 'state',
     displayed_edit_id: 'state',
-    displayed_edit_sha256: 'state',
+    displayed_edit_sha256: 'hash',
   }),
   segment_acceptances: Object.freeze({
     id: 'locator',
@@ -74,6 +77,7 @@ const BEFORE_FIELD_CLASSES = Object.freeze({
 const DETAIL_TEXT_KEYS = Object.freeze({ propagation: Object.freeze(['previewText']) });
 
 const NONE_WITHHELD = Object.freeze(new Set());
+const SHA256_HEX = /^[0-9a-f]{64}$/;
 
 /**
  * @param {string|null|undefined} s A free text.
@@ -118,7 +122,9 @@ function filterRow(table, row, actor, withheld) {
   for (const [col, cls] of Object.entries(classes)) {
     if (!(col in row)) continue;
     if (cls === 'locator' || cls === 'state') out[col] = row[col];
-    else if (cls === 'free-text') out[col] = freeText(row[col]);
+    else if (cls === 'hash') {
+      out[col] = typeof row[col] === 'string' && SHA256_HEX.test(row[col]) ? row[col] : null;
+    } else if (cls === 'free-text') out[col] = freeText(row[col]);
     else if (cls === 'applied') out.applied = row[col] !== null;
     else if (cls === 'text') {
       if (own('editor_id') && !withheld.has(row[col])) out.edited_content = row[col];

@@ -57,6 +57,18 @@ function readClientFields(body) {
 const readAcceptOrigin = (body) =>
   body && ACCEPT_ORIGINS.includes(body.acceptOrigin) ? body.acceptOrigin : null;
 
+/**
+ * A client-sent value in a hash slot, kept only when it IS a hash (Review Focus 41): PR1 type-checks these strings
+ * but never their format, so anything else is null and flagged, never stored (spec §5.6: no text).
+ * @param {unknown} v
+ * @returns {{value: string|null, malformed: boolean}} absent ('' is absent to PR1 too) → null, not malformed
+ */
+function hashOrNull(v) {
+  if (v === null || v === undefined || v === '') return { value: null, malformed: false };
+  if (typeof v === 'string' && SHA256_HEX.test(v)) return { value: v, malformed: false };
+  return { value: null, malformed: true };
+}
+
 /** @returns {string|null} 64 lowercase hex, else null. */
 const readReviewedEditSha256 = (body) =>
   body && typeof body.reviewedEditSha256 === 'string' && SHA256_HEX.test(body.reviewedEditSha256)
@@ -329,6 +341,9 @@ function emitSave(req, { segmentId, editedContent, category, editorNote, saved }
         segmentId,
       });
       const displayed = saved.displayed;
+      // The displayed hash is the client's echo, and PR1 stores it unchecked where decision 39 lets a save through
+      // without comparing it: kept only when it is a hash (Review Focus 41's rule, as for a refusal's echo).
+      const displayedSha256 = hashOrNull(displayed.sha256);
       return {
         ...base,
         servedVersionId: saved.servedVersionId,
@@ -338,10 +353,11 @@ function emitSave(req, { segmentId, editedContent, category, editorNote, saved }
         content: { text: editedContent, note: editorNote || null, category: category || null },
         before: eventType === 'edit-resave' ? { table: 'segment_edits', row: saved.before } : null,
         detail: {
-          displayed: { editId: displayed.editId, sha256: displayed.sha256 },
+          displayed: { editId: displayed.editId, sha256: displayedSha256.value },
           supersededEditIds: saved.supersededEditIds,
           supersededAcceptanceIds: saved.supersededAcceptanceIds,
           ...(droppedCount ? { droppedAssistCount: droppedCount } : {}),
+          ...(displayedSha256.malformed ? { echoMalformed: true } : {}),
         },
         items,
       };
@@ -377,14 +393,12 @@ function emitRefused(req, { action, segmentId, refusal, origin = null }) {
     () => headFor(req, 'write-refused', placeOf(req)),
     () => {
       const hash = (t) => (typeof t === 'string' ? sha256Text(t) : null);
-      // detail is stored unfiltered (decision 49), and PR1 type-checks these strings but never their format, so a
-      // value is kept only when it IS a hash; anything else is null and flagged, never stored (spec §5.6: no text).
+      // detail is stored unfiltered (decision 49), so a value is kept only when it IS a hash (hashOrNull).
       let malformed = false;
       const asHash = (v) => {
-        if (v === null || v === undefined || v === '') return null; // absent ('' is absent to PR1 too)
-        if (typeof v === 'string' && SHA256_HEX.test(v)) return v;
-        malformed = true;
-        return null;
+        const h = hashOrNull(v);
+        if (h.malformed) malformed = true;
+        return h.value;
       };
       let echoed = 'echoedText' in refusal ? hash(refusal.echoedText) : refusal.echoedSha256;
       if (action === 'save' && ECHO_FROM_BODY.has(refusal.code) && req.body) {

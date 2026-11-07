@@ -34,7 +34,7 @@ const { eventMark, eventsSince, researchBytes } = require('./helpers/researchEve
 const CHEM = 'efnafraedi-2e';
 const M = 'm97301';
 const id = (x) => `${M}:para:${x}`;
-const LETTERS = ['a', 'b', 'c', 'e', 'f', 'g', 'h', 'i', 'j'];
+const LETTERS = ['a', 'b', 'c', 'e', 'f', 'g', 'h', 'i', 'j', 'k'];
 const EN = LETTERS.map((x) => [id(x), `EN ${x}`]);
 const MT = LETTERS.map((x) => [id(x), `IS ${x}`]);
 
@@ -347,5 +347,47 @@ describe('the review routes record their research events (spec §5.9, §5.18)', 
     expect(keys).not.toContain('before');
     expect(keys).not.toContain('writes');
     expect(keysDeep({ x: { before: 1 } })).toContain('before'); // control
+  });
+});
+
+describe("a client's displayedEditSha256 reaches research only if it is a hash (final review I1; Review Focus 41)", () => {
+  it('a re-save echoing a non-hash: null and flagged in the save event, null in the reviewer’s before-image', async () => {
+    const SENTINEL = 'RAW-SENTINEL-ekki-tætigildi Jón Jónsson';
+    await authorSaves('k', 'AUTHOR-TEXT-K');
+    const v = await view(A, 'k');
+    const mark = eventMark();
+    // PR1 accepts it: the displayed row already holds the text being saved (decision 39), so the echo is never compared.
+    const r = await call(h.save, {
+      params: PARAMS,
+      chapterNum: 1,
+      user: A,
+      body: {
+        segmentId: id('k'),
+        editedContent: 'AUTHOR-TEXT-K',
+        baseSha256: v.baseSha256,
+        baseEditId: v.row.id,
+        displayedEditId: v.row.id,
+        displayedEditSha256: SENTINEL,
+        clientActionId: 'rv-save-k-sentinel',
+      },
+    });
+    expect(r.status).toBe(200);
+    expect(rowOf(v.row.id).displayed_edit_sha256).toBe(SENTINEL); // PR1's write is unchanged
+    const ev = eventsSince(mark);
+    expect(ev.map((e) => e.event_type)).toEqual(['edit-resave']);
+    expect(ev[0].detail.displayed).toEqual({ editId: v.row.id, sha256: null });
+    expect(ev[0].detail.echoMalformed).toBe(true);
+
+    const markApprove = eventMark();
+    const ap = await onEdit(h.approve, H, v.row.id, {});
+    expect(ap.status).toBe(200);
+    const evApprove = eventsSince(markApprove);
+    expect(evApprove).toHaveLength(1);
+    expect(evApprove[0].before[0].row.displayed_edit_id).toBe(v.row.id);
+    expect(evApprove[0].before[0].row.displayed_edit_sha256).toBeNull();
+    const bytes = researchBytes();
+    expect(bytes.includes('RAW-SENTINEL')).toBe(false);
+    // Control: the scan sees text — the author's own save stored it.
+    expect(bytes.includes('AUTHOR-TEXT-K')).toBe(true);
   });
 });

@@ -294,6 +294,19 @@ describe('filterBefore: the field table (spec §5.9) and decisions 9–10', () =
     expect(row.edited_content).toBe('Texti höfundar');
   });
 
+  it('displayed_edit_sha256 is kept only as 64 lowercase hex, else null (final review I1)', () => {
+    const shown = (v) =>
+      parse(
+        filterBefore({ table: 'segment_edits', row: { ...R, displayed_edit_sha256: v } }, 'p-rev')
+      )[0].row.displayed_edit_sha256;
+    expect(shown('d'.repeat(64))).toBe('d'.repeat(64));
+    expect(shown(null)).toBeNull();
+    expect(shown('RAW-SENTINEL texti')).toBeNull();
+    expect(shown('D'.repeat(64))).toBeNull();
+    expect(shown('d'.repeat(63))).toBeNull();
+    expect(shown(42)).toBeNull();
+  });
+
   it("decision 65: the author's own text that another editor holds live is stored as its hash", () => {
     const row = parse(
       filterBefore({ table: 'segment_edits', row: R }, 'p-author', {
