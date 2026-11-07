@@ -21,6 +21,7 @@ const researchDb = require('./researchDb');
 const researchConsent = require('./researchConsent');
 const userService = require('./userService');
 const { isStudyBook } = require('../lib/researchScope');
+const { sha256Text } = require('../lib/servedText');
 const { getServerCommit } = require('../lib/serverCommit');
 const { flagSnapshotJson } = require('../lib/featureFlags');
 const { EVENT_TYPES, EDITING_KINDS } = require('../lib/researchVocabulary');
@@ -203,7 +204,9 @@ function recordInner(ev) {
   let row;
   let items;
   try {
-    row = buildEvent(ev); // step 4: validation and sessions.db reads, no research handle
+    // step 4: validation and sessions.db reads; a research.db read only for a propagated copy (C1),
+    // never a research lock
+    row = buildEvent(ev);
     items = buildItemRows(ev.eventType, ev.items);
   } catch (err) {
     return lose(err, ev, capture.intervalId);
@@ -308,35 +311,142 @@ function buildEvent(ev) {
 }
 
 // Decision 65 (spec AMENDED 2026-11-04): the texts OTHER editors hold as live edits on the segments
-// this event names: its own segment, and a propagation's source (detail.source, decision 54).
-// "Live" is propagationService.latestEditedText's predicate, verbatim (the test pins the string).
-// Read on the sessions.db connection after the act committed: the route is synchronous from its
-// write to emit, and no save or propagation changes another editor's row, so these are the rows the
-// act met. Runs after the gate (step 4), so a decliner's, a visitor's or a non-study request never
-// pays for it; a throw here is a build failure (a counted loss, Task 12).
+// this event names: its own segment, and a propagation's source (detail.source, decision 54); since
+// the AMENDED 2026-11-07 block, also the source of each propagated copy the actor's before-image
+// carries (propagatedCopySources, below). "Live" is propagationService.latestEditedText's
+// predicate, verbatim (the test pins the string). Read on the sessions.db connection after the act
+// committed: the route is synchronous from its write to emit, and no save or propagation changes
+// another editor's row, so these are the rows the act met. Runs after the gate (step 4), so a
+// decliner's, a visitor's or a non-study request never pays for it; a throw here is a build failure
+// (a counted loss, Task 12).
 const LIVE_EDITS_SQL = `SELECT editor_id, edited_content FROM segment_edits
    WHERE book = ? AND module_id = ? AND segment_id = ? AND status NOT IN ('rejected', 'superseded')`;
+// The same "live" predicate, book-wide, for one exact text: a propagated copy whose source is unknown.
+const LIVE_TEXT_IN_BOOK_SQL = `SELECT editor_id FROM segment_edits
+   WHERE book = ? AND edited_content = ? AND status NOT IN ('rejected', 'superseded')`;
+// The propagation events that wrote these rows (research.db, read only). One scan of research_events
+// whatever the number of ids: the IN list is built once from the JSON array.
+const PROPAGATIONS_OF_ROWS_SQL = `SELECT editing_id, editing_content_sha256, detail_json
+   FROM research_events
+   WHERE event_type = 'propagation' AND editing_kind = 'segment_edit'
+     AND editing_id IN (SELECT value FROM json_each(?))`;
+
+// decision 8's comparison; a row with no editor_id is another person's (String(null) is never an actor)
+const isOthers = (editorId, actor) => String(editorId) !== String(actor);
 
 function othersLiveTexts(ev) {
   const named = [[ev.moduleId, ev.segmentId]];
   const src = ev.eventType === 'propagation' && ev.detail ? ev.detail.source : null;
   if (src) named.push([src.moduleId, src.segmentId]);
+  const copies = propagatedCopySources(ev);
+  named.push(...copies.sources);
   const withheld = new Set();
-  const stmt = researchConsent.getSessionsDb().prepare(LIVE_EDITS_SQL);
+  const conn = researchConsent.getSessionsDb();
+  const stmt = conn.prepare(LIVE_EDITS_SQL);
+  const seen = new Set();
   for (const [moduleId, segmentId] of named) {
     if (typeof moduleId !== 'string' || typeof segmentId !== 'string') continue; // names no segment
+    const key = JSON.stringify([moduleId, segmentId]);
+    if (seen.has(key)) continue;
+    seen.add(key);
     for (const r of stmt.all(ev.book, moduleId, segmentId)) {
-      // decision 8's comparison; a row with no editor_id is another person's (String(null) is never
-      // an actor)
-      if (
-        String(r.editor_id) !== String(ev.actorProviderId) &&
-        typeof r.edited_content === 'string'
-      ) {
+      if (isOthers(r.editor_id, ev.actorProviderId) && typeof r.edited_content === 'string') {
         withheld.add(r.edited_content);
       }
     }
   }
+  if (copies.unknownTexts.length > 0) {
+    const inBook = conn.prepare(LIVE_TEXT_IN_BOOK_SQL);
+    for (const text of copies.unknownTexts) {
+      if (inBook.all(ev.book, text).some((r) => isOthers(r.editor_id, ev.actorProviderId))) {
+        withheld.add(text);
+      }
+    }
+  }
   return withheld;
+}
+
+/**
+ * Decision 65 as AMENDED 2026-11-07 (finding C1). A before-image row the actor owns whose origin is
+ * `propagation` holds the text a propagation wrote, and that text came from the propagation's source
+ * segment, which this event need not name: a re-save, withdraw or delete of the copy names the target,
+ * an apply names no segment. So the copy's later events also check that source, as the `propagation`
+ * event that wrote the row recorded it (detail.source). That event is the one whose editing_id is the
+ * row AND whose editing_content_sha256 is the row's text: an in-place propagation rewrites an existing
+ * row, so the id alone can name an earlier write whose source is not where this text came from. When no
+ * such event exists (the propagation was not captured, or its write was lost), the source is unknown and
+ * the row's text is checked against other editors' live edits anywhere in the event's book.
+ *
+ * Follows the row, not the event, so it applies to every event type. The before-image is read as
+ * filterBefore reads it: one { table, row } or an array of them (emitApply has already flattened apply's
+ * losers and self-heal rows into that array). research.db is touched only when such a row exists, so an
+ * ordinary act pays nothing here.
+ * @returns {{sources: Array<[string, string]>, unknownTexts: string[]}}
+ */
+function propagatedCopySources(ev) {
+  const sources = [];
+  const unknownTexts = [];
+  const actor = ev.actorProviderId;
+  const before = ev.before;
+  // Fails closed as filterRow's own() does: with no actor, no row is anyone's own.
+  if (actor === null || actor === undefined || before === null || before === undefined) {
+    return { sources, unknownTexts };
+  }
+  const copies = new Map(); // row id -> its text
+  for (const entry of Array.isArray(before) ? before : [before]) {
+    const row = entry && entry.table === 'segment_edits' ? entry.row : null;
+    if (
+      !row ||
+      row.origin !== 'propagation' ||
+      typeof row.edited_content !== 'string' ||
+      row.editor_id === null ||
+      row.editor_id === undefined ||
+      String(row.editor_id) !== String(actor)
+    ) {
+      continue;
+    }
+    // A copy with no usable id cannot be matched to its event: its source is unknown.
+    if (Number.isSafeInteger(row.id)) copies.set(row.id, row.edited_content);
+    else unknownTexts.push(row.edited_content);
+  }
+  if (copies.size === 0) return { sources, unknownTexts };
+
+  let events;
+  try {
+    const db = researchDb.getHandle();
+    events = statementsFor(db).propagationsOfRows.all(JSON.stringify([...copies.keys()]));
+  } catch (err) {
+    // A research-handle error is noted against the handle (lose() notes only the write's errors);
+    // rethrown, it is a build failure and a counted loss.
+    researchDb.noteFailure(err);
+    throw err;
+  }
+  for (const [id, text] of copies) {
+    const textSha256 = sha256Text(text);
+    let found = false;
+    for (const e of events) {
+      if (e.editing_id !== BigInt(id) || e.editing_content_sha256 !== textSha256) continue;
+      const source = sourceOf(e.detail_json);
+      if (source) {
+        sources.push(source);
+        found = true;
+      }
+    }
+    if (!found) unknownTexts.push(text);
+  }
+  return { sources, unknownTexts };
+}
+
+/** A propagation event's detail.source as [moduleId, segmentId], or null when it cannot be read. */
+function sourceOf(detailJson) {
+  try {
+    const source = JSON.parse(detailJson).source;
+    return typeof source.moduleId === 'string' && typeof source.segmentId === 'string'
+      ? [source.moduleId, source.segmentId]
+      : null;
+  } catch {
+    return null; // an unreadable detail names no source: the caller checks the book instead
+  }
 }
 
 // Written out, not generated, so a grep for the writer finds it (researchAppendOnly.test.js aims at
@@ -375,6 +485,7 @@ function statementsFor(db) {
       ),
       insertEvent: db.prepare(INSERT_EVENT_SQL),
       insertItem: db.prepare(INSERT_ITEM_SQL),
+      propagationsOfRows: db.prepare(PROPAGATIONS_OF_ROWS_SQL),
     };
     statements.set(db, s);
   }
