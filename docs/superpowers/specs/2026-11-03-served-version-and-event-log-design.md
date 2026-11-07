@@ -38,6 +38,13 @@
 >   the row, not the event. When no such event exists and the row's `origin` is still `propagation` (the propagation
 >   was not captured, for example because the actor consented afterwards, or its write was lost), the source is
 >   unknown, and that row's text is checked instead against other editors' live edits anywhere in the event's book.
+> - **The event's own content is looked up the same way** ([USER] on 2026-11-07, on the residual the I1 build measured:
+>   "also look up (editing_id, sha256 of the content's text) for the event's own row so the typed-back save's content
+>   is hashed too"). For an event whose content carries a text and which names its own editing row, each `propagation`
+>   research event whose `editing_id` is that row and whose `editing_content_sha256` is the sha256 of the content's
+>   text adds its `detail.source` segment to the check. So when A edits a propagated copy of B's text X away and then
+>   types X back, the save that types it back stores X only as its hash (its before-row holds the intermediate text,
+>   so the before-row rule alone missed it). No book-wide fallback runs for content.
 > - **The research schema gains a step** (version 2): a partial index on `research_events(editing_id)` where
 >   `event_type = 'propagation'`, so the lookup above, which every own before-row now pays, is an index probe rather
 >   than a scan of the event log.
