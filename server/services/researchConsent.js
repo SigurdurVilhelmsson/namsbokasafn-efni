@@ -85,7 +85,7 @@ function recordDecision({ userId, decision, text, nowMs }) {
        (user_id, decision, interval_id, consent_text_version, consent_text_sha256, given_at_ms)
      VALUES (?, ?, ?, ?, ?, ?)`
   );
-  return conn.transaction(() => {
+  const decide = () => {
     const { latest, live } = latestAndLive(conn, userId);
     if (decision === 'declined') {
       if (
@@ -123,7 +123,10 @@ function recordDecision({ userId, decision, text, nowMs }) {
     );
     conn.prepare('UPDATE research_consent SET interval_id = id WHERE id = ?').run(id);
     return { outcome: 'started', intervalId: id };
-  })();
+  };
+  // IMMEDIATE (decision 45): the body reads the latest row before it writes, and a DEFERRED transaction that has
+  // read fails SQLITE_BUSY at once when another process holds the write lock; IMMEDIATE waits the busy timeout.
+  return conn.transaction(decide).immediate();
 }
 
 /**
@@ -133,7 +136,7 @@ function recordDecision({ userId, decision, text, nowMs }) {
  */
 function withdraw({ userId, nowMs }) {
   const conn = getSessionsDb();
-  return conn.transaction(() => {
+  const withdrawLive = () => {
     const { live } = latestAndLive(conn, userId);
     if (!live) return { withdrawn: false, intervalId: null };
     const res = conn
@@ -144,7 +147,8 @@ function withdraw({ userId, nowMs }) {
     return res.changes > 0
       ? { withdrawn: true, intervalId: live.id }
       : { withdrawn: false, intervalId: null };
-  })();
+  };
+  return conn.transaction(withdrawLive).immediate(); // IMMEDIATE, as recordDecision's (decision 45)
 }
 
 /**

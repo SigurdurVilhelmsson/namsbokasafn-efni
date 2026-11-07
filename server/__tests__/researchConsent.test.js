@@ -4,6 +4,7 @@ import { createRequire } from 'module';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
+import { spawn } from 'child_process';
 const require = createRequire(import.meta.url);
 
 // Never let anything here open the real handle under pipeline-output/.
@@ -19,11 +20,12 @@ const V1 = { version: 'prufa-1', sha256: sha256Text('t1') };
 const V2 = { version: 'prufa-2', sha256: sha256Text('t2') };
 
 let db;
+let dbFile;
 const rows = (u) =>
   db.prepare('SELECT * FROM research_consent WHERE user_id = ? ORDER BY id').all(u);
 
 beforeEach(() => {
-  ({ db } = freshMigratedDb());
+  ({ db, path: dbFile } = freshMigratedDb());
   researchConsent._setTestDb(db);
   researchConsentText._setTestApprovedTexts([V1, V2]);
 });
@@ -331,4 +333,82 @@ describe('the handle', () => {
   it('getSessionsDb returns the injected handle', () => {
     expect(researchConsent.getSessionsDb()).toBe(db);
   });
+});
+
+/**
+ * Decision 45 (final review I-1 / M1): a decision and a withdrawal read the latest row and then write, so a
+ * DEFERRED transaction that has read and then meets a write lock held by another process fails SQLITE_BUSY at
+ * once (SQLite skips the busy handler on that upgrade); BEGIN IMMEDIATE waits the busy timeout instead. A second
+ * PROCESS holds the lock (a handle in this process would be blocked by the event loop it shares) and releases it
+ * after HOLD_MS, well inside the timeout. The pattern is saveBeforeImages.test.js's.
+ */
+describe('the consent transactions take the write lock first (decision 45)', () => {
+  const HOLD_MS = 400;
+  const HOLDER = `
+    const Database = require(${JSON.stringify(require.resolve('better-sqlite3'))});
+    const h = new Database(process.argv[1]);
+    h.pragma('busy_timeout = 5000');
+    h.exec('BEGIN IMMEDIATE');
+    process.stdout.write('held\\n');
+    setTimeout(() => { h.exec('COMMIT'); h.close(); }, ${HOLD_MS});
+  `;
+
+  async function whileForeignWriterHolds(fn) {
+    const child = spawn(process.execPath, ['-e', HOLDER, dbFile], {
+      stdio: ['ignore', 'pipe', 'inherit'],
+    });
+    await new Promise((resolve, reject) => {
+      child.on('error', reject);
+      child.stdout.once('data', resolve);
+    });
+    const t0 = Date.now();
+    let outcome;
+    try {
+      outcome = { value: fn() };
+    } catch (error) {
+      outcome = { error };
+    }
+    const waited = Date.now() - t0;
+    await new Promise((resolve) => child.on('exit', resolve));
+    return { ...outcome, waited };
+  }
+
+  beforeEach(() => {
+    db.pragma('journal_mode = WAL');
+    db.pragma('busy_timeout = 5000');
+  });
+
+  const cases = {
+    'a first consent': {
+      arrange: () => {},
+      act: () =>
+        researchConsent.recordDecision({ userId: 7, decision: 'consented', text: V1, nowMs: 1000 }),
+      outcome: 'started',
+    },
+    'a decline that withdraws a live interval': {
+      arrange: () =>
+        researchConsent.recordDecision({ userId: 7, decision: 'consented', text: V1, nowMs: 1000 }),
+      act: () =>
+        researchConsent.recordDecision({ userId: 7, decision: 'declined', text: V1, nowMs: 2000 }),
+      outcome: 'withdrew',
+    },
+    'a withdrawal': {
+      arrange: () =>
+        researchConsent.recordDecision({ userId: 7, decision: 'consented', text: V1, nowMs: 1000 }),
+      act: () => researchConsent.withdraw({ userId: 7, nowMs: 2000 }),
+      withdrawn: true,
+    },
+  };
+
+  for (const [name, { arrange, act, outcome, withdrawn }] of Object.entries(cases)) {
+    it(`${name} waits for a foreign writer instead of failing BUSY`, async () => {
+      arrange();
+      const r = await whileForeignWriterHolds(act);
+      expect(r.error).toBeUndefined();
+      if (outcome) expect(r.value.outcome).toBe(outcome);
+      if (withdrawn) expect(r.value.withdrawn).toBe(true);
+      // Control: it really waited for the holder rather than racing ahead of it.
+      expect(r.waited).toBeGreaterThan(HOLD_MS / 4);
+    });
+  }
 });
