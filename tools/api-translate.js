@@ -37,6 +37,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 import {
   parseArgs,
@@ -55,6 +56,21 @@ import {
   truncationSuspectsBySegment,
 } from './lib/mt-output-guards.js';
 import { planTopUp, spliceTopUp } from './lib/mt-top-up.js';
+import {
+  MAX_ATTEMPTS,
+  REREQUEST_RULE,
+  planRerequest,
+  classifyAttempt,
+} from './lib/mt-rerequest.js';
+import {
+  LAYER_DIRS,
+  REREQUEST_SCHEMA,
+  readBase,
+  readSelectedKeys,
+  readRerequestOutcomes,
+  writeSelectedOverlay,
+  appendRerequestLog,
+} from './lib/mt-layers.js';
 import { isMtLocked } from './lib/mt-lock.cjs';
 import segMarkers from './lib/seg-markers.cjs';
 const { parseSegmentRecords } = segMarkers;
@@ -2307,6 +2323,170 @@ export async function topUpModule(
     greekLost: r.greekLost,
     greekAdded: r.greekAdded,
   };
+}
+
+/**
+ * Why the guarded core's results make each segment unfit to select, by id: a bracket-marker
+ * delta, a lost Greek letter, or an id-reattach mismatch (where `reattachIds` has already put
+ * the English back). Such a segment is `held`: a transport defect, never an untranslated answer.
+ * @returns {Map<string, string>}
+ */
+function heldReasons(wireText, r) {
+  const held = new Map();
+  const add = (id, why) => held.set(id, held.has(id) ? `${held.get(id)}; ${why}` : why);
+  const { bySegment } = bracketMarkerDeltaBySegment(wireText, r.output);
+  for (const [id, delta] of Object.entries(bySegment)) {
+    add(id, `bracket-marker delta ${formatDeltaParts(delta)}`);
+  }
+  for (const g of r.greekLost) {
+    add(g.segId, `Greek letter(s) lost ${g.lost.join('')}→${g.added.join('') || '∅'}`);
+  }
+  for (const mm of r.mismatches) {
+    add(mm.segId, `id-reattach mismatch (${mm.type}: expected ${mm.expected}, got ${mm.got})`);
+  }
+  return held;
+}
+
+/**
+ * §2.3 (plan 2026-10-10) — RE-REQUEST chosen segments that came back untranslated, and write
+ * each accepted answer to layer 1s (`02-mt-selected/`). Layer 1 (`02-mt-output/`) is only read:
+ * this is the route for segments `--top-up` cannot reach (they are present, in English) and
+ * that `--force` would reach only by reverting a module's hand repairs.
+ *
+ * Up to `MAX_ATTEMPTS` sends, each through `translateSegmentText`, so every paid-run guard
+ * covers it. Per attempt: plan the pending ids (a refusal on attempt 1 throws before any send),
+ * send, classify each answer — `translated`, `untranslated`, `held` (marker/Greek/reattach
+ * defect, or a body the writer would refuse) or `refused` (the whole response refused) — LOG
+ * the attempt (before any overlay write, so a paid attempt is recorded even if the write
+ * refuses), then write the translated ids. "Untranslated twice" counts ANSWERS across runs
+ * (`readRerequestOutcomes`): a flagged id is never sent again; a refused one may be.
+ *
+ * @param {object} client the Málstaður client (`translateAuto`)
+ * @param {{bookDir: string, chapterDir: string, stem: string, ids: string[]}} unit `bookDir`
+ *   is an absolute `…/books/<slug>`
+ * @param {object|null} glossary
+ * @param {boolean} verbose
+ * @param {number} [maxChunk]
+ * @param {{glossaryArm: string, commit: string, runId: string, now?: () => Date}} ctx
+ * @returns {Promise<{accepted: string[], flagged: string[], failed: string[], attempts: number,
+ *   chars: number}>} `flagged`: two untranslated answers; `failed`: pending for another reason
+ */
+export async function rerequestModule(
+  client,
+  unit,
+  glossary,
+  verbose,
+  maxChunk = DEFAULT_MAX_CHUNK_CHARS,
+  ctx
+) {
+  const { bookDir, chapterDir, stem, ids } = unit;
+  const { glossaryArm, commit, runId, now = () => new Date() } = ctx;
+  const where = { bookDir, chapterDir, stem };
+  const enText = fs.readFileSync(
+    path.join(bookDir, '02-for-mt', chapterDir, `${stem}-segments.en.md`),
+    'utf8'
+  );
+  const overlayPath = path.join(bookDir, LAYER_DIRS.selected, chapterDir, `${stem}-selected.json`);
+  const accepted = [];
+  const flagged = [];
+  let pending = [...ids];
+  let attempts = 0;
+  let chars = 0;
+
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS && pending.length > 0; attempt++) {
+    const base = readBase(where);
+    const plan = planRerequest({
+      enText,
+      baseText: base.parsed.text,
+      ids: pending,
+      selectedKeys: readSelectedKeys(where),
+      untranslatedCounts: readRerequestOutcomes(where),
+    });
+    const describe = (list) => list.map((x) => `${x.id}: ${x.why}`).join('; ');
+    if (attempt === 1 && plan.refused.length > 0) {
+      throw new Error(
+        `${stem}: refusing to re-request — ${describe(plan.refused)}. Nothing was sent.`
+      );
+    }
+    const unexpected = plan.refused.filter((x) => x.why !== 'already-flagged');
+    if (unexpected.length > 0) {
+      throw new Error(`${stem}: attempt ${attempt} refused ${describe(unexpected)} (a bug)`);
+    }
+    flagged.push(...plan.refused.map((x) => x.id));
+    pending = plan.requested;
+    if (pending.length === 0) break;
+
+    attempts = attempt;
+    chars += plan.wireText.length;
+    let results;
+    let error = null;
+    let run = null;
+    try {
+      const r = await translateSegmentText(client, plan.wireText, glossary, verbose, maxChunk, {
+        moduleId: stem,
+        where: overlayPath,
+      });
+      run = runRecordFor(plan.wireText, r, glossary, glossaryArm);
+      const held = heldReasons(plan.wireText, r);
+      results = classifyAttempt({ enText, responseText: r.output, ids: pending }).map((x) =>
+        held.has(x.segmentId) ? { ...x, outcome: 'held', reason: held.get(x.segmentId) } : x
+      );
+    } catch (err) {
+      error = err.message;
+      results = pending.map((segmentId) => ({
+        segmentId,
+        outcome: 'refused',
+        body: null,
+        reason: null,
+      }));
+    }
+    appendRerequestLog({
+      ...where,
+      record: {
+        schema: REREQUEST_SCHEMA,
+        module: stem,
+        runId,
+        at: now().toISOString(),
+        attempt,
+        commit,
+        glossaryArm,
+        ids: pending,
+        chars: plan.wireText.length,
+        estimatedIsk: estimateIsk(plan.wireText.length),
+        error,
+        run,
+        results,
+      },
+    });
+
+    const ok = results.filter((x) => x.outcome === 'translated');
+    if (ok.length > 0) {
+      // A requested id is never in the overlay (`already-selected`), so its base body IS its
+      // layer-1 body — the one the entry's `beforeSha256` pins.
+      const bodies = new Map(base.parsed.records.map((rec) => [rec.key, rec.body]));
+      writeSelectedOverlay({
+        ...where,
+        entries: ok.map((x) => ({
+          segmentId: x.segmentId,
+          occurrence: 0,
+          text: x.body,
+          beforeSha256: crypto.createHash('sha256').update(bodies.get(x.segmentId)).digest('hex'),
+          run: runId,
+          commit,
+          rule: REREQUEST_RULE,
+          gate: { check: 'detectResidue', untranslated: false, attempt },
+        })),
+      });
+      accepted.push(...ok.map((x) => x.segmentId));
+      const done = new Set(ok.map((x) => x.segmentId));
+      pending = pending.filter((id) => !done.has(id));
+    }
+  }
+
+  const counts = readRerequestOutcomes(where);
+  const failed = [];
+  for (const id of pending) ((counts.get(id) ?? 0) >= 2 ? flagged : failed).push(id);
+  return { accepted, flagged, failed, attempts, chars };
 }
 
 // ─── Pipeline Status ────────────────────────────────────────────────
