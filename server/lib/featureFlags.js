@@ -118,6 +118,9 @@ const ENV_SCAN_FILES = Object.freeze([
   'services/researchConsent.js',
   'lib/serverCommit.js',
   'services/researchEmission.js',
+  // PR4 (decision 40): no second environment variable on a research path
+  'lib/researchFiles.js',
+  'lib/researchBackupPolicy.js',
 ]);
 
 /**
