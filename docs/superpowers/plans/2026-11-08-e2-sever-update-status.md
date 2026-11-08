@@ -333,9 +333,14 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 
 ---
 
-## Noticed while planning — not in this plan
+## Scope added by [USER] at approval (2026-11-08) — landed in Task 1's commit
 
-Each needs [USER]'s word on whether to fold it in or log it. None is fixed silently:
+These were listed here as "noticed, not in this plan". [USER] approved the plan with them folded into Task 1's commit, executed natively:
 
-- **CLAUDE.md § Status Updates documents `npm run update-status <book> <chapter> <stage> <status>`, but neither `package.json` defines that script.** The script lives at `scripts/archived/update-status.js`.
-- **Root LICENSE's other classes look drifted (measured at `78341f6db`, re-derive before acting):** `tools/figure-run.js:72` (the `chapterLabel` import is now at `:78`); `experiments/figure-text-translation/render-check.mjs:11` now builds its path from `REPO_ROOT` at `:39`, so class 4's "absolute path" warning no longer describes it; `experiments/figure-text-translation/browser-sweep.mjs:344` reaches `server/node_modules/playwright` and is not listed.
+- **CLAUDE.md § Status Updates** showed `npm run update-status <book> <chapter> <stage> <status>`, which neither `package.json` defines. The script was archived to `scripts/archived/update-status.js` on 2026-03-13 (`c9145f2fb`). The line is gone, `npm run validate` stays, and a dated note records the removal. The note does not claim where stage status is written today: there are two read models, and that was not measured here.
+- **Root LICENSE drift:**
+  - `tools/figure-run.js:72` → `:78`.
+  - Class 4's `render-check.mjs:11` "absolute import" entry is rewritten. Since 2026-09-15 (`4b25b8d95`) `render-check.mjs:37-40` looks `playwright` up under the root's `node_modules/` and then `server/node_modules/`, and it falls back to the bare specifier. `tools/figure-run.js:1040` spawns it, so "no tool spawns either" was false too.
+  - `browser-sweep.mjs:342-345`, which uses the same lookup, is listed for the first time.
+  - `probe-img.mjs:3` stays as the one absolute import, and shape 4's sentence now names only it.
+  - The same mechanical check of every `file:line` in the E-2 note found class 5 shifted as well: `remt-ctx.js:366` → `:368`, and `remt-checks-glossary.js:468` → `:482` and `:358` → `:372`. Those were fixed too (ledger ruling). Every other flagged reference deliberately points at a non-`server` line, such as an `if (USE_DB)` guard or a `main()`.
