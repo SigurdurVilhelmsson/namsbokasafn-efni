@@ -487,6 +487,16 @@ router.post(
         error: `Content too long for segment ${oversized.segmentId} (max 10,000 characters)`,
       });
     }
+    // §C210: validate each category like the single-save route does, BEFORE any write.
+    // localization_edits.category has a CHECK constraint and the audit insert runs after
+    // the file write in a try/catch, so an invalid value used to save the text and lose
+    // its history row; on the review path it would reach localization_pending_edits.
+    const badCategory = segments.find((s) => s.category && !VALID_CATEGORIES.includes(s.category));
+    if (badCategory) {
+      return res.status(400).json({
+        error: `Invalid category for segment ${badCategory.segmentId}. Must be one of: ${VALID_CATEGORIES.join(', ')}`,
+      });
+    }
 
     const lockKey = `${req.params.book}/${req.chapterNum}/${req.params.moduleId}`;
     const release = await acquireModuleLock(lockKey);

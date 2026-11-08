@@ -326,6 +326,19 @@ const UI = {
       return count + ' bútar vistaðar';
     },
     scanning: 'Skannar...',
+    categoryPlaceholder: 'Flokkur…',
+    categoryTitle: 'Flokkur staðfærslu — vistast með breytingunni',
+    allCategories: 'Allir flokkar',
+  },
+
+  // ── Localization categories (§C210): the ONE label set for the picker, the
+  // badges and the filter. Keys are PASS2_CATEGORIES (server/constants.js), minus
+  // 'unchanged': an unchanged segment has no pending change and no history row.
+  localizationCategory: {
+    'unit-conversion': 'Einingabreyting',
+    'cultural-adaptation': 'Menningarleg aðlögun',
+    'example-replacement': 'Dæmaskipti',
+    formatting: 'Snið',
   },
 
   // ── Localization review status labels ───────────────────────

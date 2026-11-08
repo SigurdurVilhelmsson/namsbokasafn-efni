@@ -47,6 +47,8 @@
 
   // Track unsaved changes: { segmentId: { content, category } }
   let edPendingChanges = {};
+  // §C210: an explicit category choice per segment (even "none"), set by the row picker.
+  let edSelectedCategories = {};
   let edDraftTimer = null;
   var edLastServerSaveTime = null;
   var edAutoSaveTimer = null;
@@ -151,12 +153,7 @@
       document.getElementById('save-status-text').textContent = UI.save.autoSaving;
     }
 
-    var segments = saveableKeys.map(function (segmentId) {
-      return {
-        segmentId: segmentId,
-        content: edPendingChanges[segmentId].content,
-      };
-    });
+    var segments = edSegmentsPayload(saveableKeys);
 
     var saveUrl =
       ED_API_BASE +
@@ -207,6 +204,7 @@
         if (ta) ta.classList.remove('modified');
         var row = document.getElementById('row-' + edCssId(segmentId));
         if (row) row.className = 'segment-row saved';
+        edRecordSavedCategory(segmentId, result.pending ? '' : edShownCategory(segmentId));
       }
       // Only drop the entries that actually saved — blocked ones (excluded
       // from the batch above) stay pending so they keep counting as unsaved
@@ -469,6 +467,7 @@
   async function edLoadModule(moduleId) {
     edCurrentModuleId = moduleId;
     edPendingChanges = {};
+    edSelectedCategories = {};
 
     // Show loading spinner while fetching module data
     var container = document.getElementById('modules-container');
@@ -731,9 +730,9 @@
     }
 
     if (filterCat !== 'all') {
+      // §C210: match the category the row shows — a saved segment keeps matching.
       segments = segments.filter(function (s) {
-        var change = edPendingChanges[s.segmentId];
-        return change && change.category === filterCat;
+        return edShownCategory(s.segmentId) === filterCat;
       });
     }
 
@@ -831,6 +830,7 @@
       (seg.hasLocalized && !pending ? 'Vista\u00F0' : '') +
       '</span>' +
       edRenderCategoryBadge(seg.segmentId) +
+      edRenderCategoryPicker(seg.segmentId) +
       '</td>' +
       '<td class="col-actions" style="position:relative">' +
       '<button class="btn-save-seg" onclick="edSaveSingleSegment(\'' +
@@ -870,7 +870,7 @@
     if (newContent !== currentSaved) {
       edPendingChanges[segmentId] = {
         content: newContent,
-        category: edPendingChanges[segmentId]?.category || '',
+        category: edShownCategory(segmentId),
       };
       ta.classList.add('modified');
       var row = document.getElementById('row-' + edCssId(segmentId));
@@ -1016,7 +1016,9 @@
       '/' +
       edCurrentModuleId +
       '/save';
+    var category = edShownCategory(segmentId);
     var saveBody = { segmentId: segmentId, content: content };
+    if (category) saveBody.category = category;
     if (edLastModified != null) saveBody.lastModified = edLastModified;
     var saveOptions = {
       method: 'POST',
@@ -1047,6 +1049,8 @@
       delete edPendingChanges[segmentId];
       edSaveDraft(); // update draft (or clear if empty)
       ta.classList.remove('modified');
+      // A held edit (review enforced) is not saved yet: its category shows on approval.
+      edRecordSavedCategory(segmentId, result.pending ? '' : category);
 
       var row = document.getElementById('row-' + edCssId(segmentId));
       if (row) row.className = 'segment-row saved';
@@ -1118,12 +1122,7 @@
     globalInd.textContent = UI.localization.savingBulk(keys.length);
     globalInd.className = 'save-indicator saving';
 
-    var segments = keys.map(function (segmentId) {
-      return {
-        segmentId: segmentId,
-        content: edPendingChanges[segmentId].content,
-      };
-    });
+    var segments = edSegmentsPayload(keys);
 
     var saveUrl =
       ED_API_BASE +
@@ -1162,6 +1161,11 @@
         if (seg) {
           seg.localized = edPendingChanges[segmentId].content;
           seg.hasLocalized = true;
+        }
+        if (!result.pending) {
+          var savedCat = edShownCategory(segmentId);
+          delete edSelectedCategories[segmentId];
+          if (savedCat) edSegmentCategories[segmentId] = savedCat;
         }
       }
       edPendingChanges = {};
@@ -1251,6 +1255,7 @@
     document.getElementById('save-status-bar').style.display = 'none';
     edModuleData = null;
     edPendingChanges = {};
+    edSelectedCategories = {};
     edLastServerSaveTime = null;
   });
 
@@ -1383,6 +1388,15 @@
   // ----------------------------------------------------------------
 
   document.getElementById('filter-type').addEventListener('change', edRenderSegments);
+  (function edBuildCategoryFilter() {
+    var sel = document.getElementById('filter-category');
+    var html = '<option value="all">' + escapeHtml(UI.localization.allCategories) + '</option>';
+    Object.keys(UI.localizationCategory).forEach(function (key) {
+      html +=
+        '<option value="' + key + '">' + escapeHtml(UI.localizationCategory[key]) + '</option>';
+    });
+    sel.innerHTML = html;
+  })();
   document.getElementById('filter-category').addEventListener('change', edRenderSegments);
 
   // ----------------------------------------------------------------
@@ -1498,12 +1512,79 @@
   }
 
   // 5B: Category badge labels (Icelandic)
-  var edCategoryLabels = {
-    'unit-conversion': 'Einingabreyting',
-    'cultural-adaptation': 'Menningarlegt',
-    'example-replacement': 'D\u00E6maskipti',
-    formatting: 'Sni\u00F0',
-  };
+  var edCategoryLabels = UI.localizationCategory;
+
+  /**
+   * §C210: the category a segment's picker shows — and so the one a save sends.
+   * An explicit choice wins (even "none"), then the pending change's, then the
+   * segment's latest saved category.
+   */
+  function edShownCategory(segmentId) {
+    if (Object.prototype.hasOwnProperty.call(edSelectedCategories, segmentId)) {
+      return edSelectedCategories[segmentId];
+    }
+    var pending = edPendingChanges[segmentId];
+    if (pending && pending.category) return pending.category;
+    return edSegmentCategories[segmentId] || '';
+  }
+
+  /** §C210: one category picker per row; options from UI.localizationCategory. */
+  function edRenderCategoryPicker(segmentId) {
+    var shown = edShownCategory(segmentId);
+    var opts = '<option value="">' + escapeHtml(UI.localization.categoryPlaceholder) + '</option>';
+    Object.keys(UI.localizationCategory).forEach(function (key) {
+      opts +=
+        '<option value="' +
+        key +
+        '"' +
+        (key === shown ? ' selected' : '') +
+        '>' +
+        escapeHtml(UI.localizationCategory[key]) +
+        '</option>';
+    });
+    return (
+      '<select class="loc-category-select" id="cat-' +
+      edCssId(segmentId) +
+      '" title="' +
+      escapeHtml(UI.localization.categoryTitle) +
+      '" onchange="edOnCategoryChange(\'' +
+      segmentId +
+      '\', this.value)">' +
+      opts +
+      '</select>'
+    );
+  }
+
+  function edOnCategoryChange(segmentId, value) {
+    edSelectedCategories[segmentId] = value;
+    if (edPendingChanges[segmentId]) {
+      edPendingChanges[segmentId].category = value;
+      edSaveDraft();
+    }
+  }
+
+  /** §C210: after a save, record the category as saved and redraw the row's badge. */
+  function edRecordSavedCategory(segmentId, category) {
+    delete edSelectedCategories[segmentId];
+    if (!category) return;
+    edSegmentCategories[segmentId] = category;
+    var row = document.getElementById('row-' + edCssId(segmentId));
+    var ind = document.getElementById('ind-' + edCssId(segmentId));
+    if (!row || !ind) return;
+    var old = row.querySelector('.seg-category-badge');
+    if (old) old.remove();
+    ind.insertAdjacentHTML('afterend', edRenderCategoryBadge(segmentId));
+  }
+
+  /** §C210: the segments payload "Vista allt" and the autosave both send. */
+  function edSegmentsPayload(keys) {
+    return keys.map(function (segmentId) {
+      var item = { segmentId: segmentId, content: edPendingChanges[segmentId].content };
+      var category = edShownCategory(segmentId);
+      if (category) item.category = category;
+      return item;
+    });
+  }
 
   /**
    * Render a small category badge for a segment if it has been localized with a category.
@@ -1609,9 +1690,9 @@
         var newTrunc = (entry.new_content || '').substring(0, 60);
         var catBadge = entry.category
           ? '<span class="category-badge ' +
-            entry.category +
-            '">' +
             escapeHtml(entry.category) +
+            '">' +
+            escapeHtml(UI.localizationCategory[entry.category] || entry.category) +
             '</span>'
           : '';
 
@@ -2422,6 +2503,7 @@
   window.rvSaveModifiedSuggestion = rvSaveModifiedSuggestion;
   window.rvSaveLogEntry = rvSaveLogEntry;
   window.edSaveSingleSegment = edSaveSingleSegment;
+  window.edOnCategoryChange = edOnCategoryChange;
   window.edCopyFaithful = edCopyFaithful;
   window.edShowHistory = edShowHistory;
   window.rvAcceptSuggestion = rvAcceptSuggestion;

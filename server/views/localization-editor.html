@@ -543,6 +543,14 @@
       }
 
       /* --- Segment category badge (5B) --- */
+      /* §C210: the per-row category picker */
+      .loc-category-select {
+        display: block;
+        margin-top: 0.25rem;
+        max-width: 100%;
+        font-size: var(--text-xs);
+      }
+
       .seg-category-badge {
         display: inline-block;
         padding: 0.1rem 0.4rem;
@@ -1589,12 +1597,9 @@
                 <option value="para">M&#225;lsgreinar</option>
               </select>
               <label>Flokkur:</label>
+              <!-- options are built from UI.localizationCategory (§C210) -->
               <select id="filter-category">
                 <option value="all">Allir flokkar</option>
-                <option value="unit-conversion">Einingabreytingar</option>
-                <option value="cultural-adaptation">Menningarleg a&#240;l&#246;gun</option>
-                <option value="example-replacement">D&#230;maskipti</option>
-                <option value="formatting">Sni&#240;</option>
               </select>
             </div>
 
