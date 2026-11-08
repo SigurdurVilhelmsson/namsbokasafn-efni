@@ -74,7 +74,8 @@ if ! command -v rclone >/dev/null 2>&1; then fail rclone; exit 3; fi
 
 # (1b) The remote prune: a listing that fails, a deletion that fails, or a name the job did not make (never deleted).
 remote_prune_failed=0
-if listing="$(rclone lsf "$REMOTE" --files-only 2>/dev/null)"; then
+# No --files-only: a folder comes back as "name/", a name the job did not make, so it fails the prune (decision 23).
+if listing="$(rclone lsf "$REMOTE" 2>/dev/null)"; then
   expired="$(printf '%s\n' "$listing" | "$NODE" "$S/research-backup.js" expired-names 2>/dev/null)"
   names_rc=$?
   while IFS= read -r name; do

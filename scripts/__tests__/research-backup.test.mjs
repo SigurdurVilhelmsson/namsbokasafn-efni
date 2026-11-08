@@ -176,7 +176,7 @@ describe('research-backup.sh', () => {
     expect(c.remote()).toContain(fresh[0]);
     expect(existsSync(c.files.heartbeatPath)).toBe(true);
     expect(c.fake.calls()).toEqual([
-      'lsf research-secret: --files-only',
+      'lsf research-secret:',
       `deletefile research-secret:${c.oldName}`,
       `copyto ${copyPath} research-secret:${fresh[0]}`,
     ]);
@@ -253,6 +253,22 @@ describe('research-backup.sh', () => {
     expect(
       c.fake.calls().filter((l) => l.startsWith('deletefile') && l.includes('notes.txt'))
     ).toEqual([]);
+    c.checkReal();
+  });
+
+  // Review finding (2026-11-08): `rclone lsf --files-only` hides an object under a prefix, so the job never deleted it
+  // and never reported it, while decision 23 says a name it did not make is never ignored.
+  it('a folder in the remote is a name the job did not make: left in place, and it fails the prune', () => {
+    const c = setup();
+    mkdirSync(path.join(c.fake.remoteDir, 'old'));
+    writeFileSync(path.join(c.fake.remoteDir, 'old', c.oldName), 'remote');
+    const r = c.run();
+    expect(r.status, r.stdout + r.stderr).toBe(7);
+    expect(existsSync(path.join(c.fake.remoteDir, 'old', c.oldName))).toBe(true);
+    expect(c.fake.calls().filter((l) => l.startsWith('deletefile') && l.includes('old'))).toEqual(
+      []
+    );
+    expect(existsSync(c.files.heartbeatPath)).toBe(false);
     c.checkReal();
   });
 

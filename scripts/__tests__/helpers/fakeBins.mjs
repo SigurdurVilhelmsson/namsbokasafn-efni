@@ -13,7 +13,12 @@ const RCLONE = `#!/usr/bin/env bash
 # A stand-in for rclone in tests: logs each call; the "remote" is the directory $FAKE_REMOTE.
 echo "$*" >> "$FAKE_LOG"
 case "$1" in
-  lsf) [ -n "\${FAKE_FAIL_LSF:-}" ] && exit 1; ls -1 "$FAKE_REMOTE" ;;
+  # As the real rclone: a directory is listed with a trailing "/", and --files-only leaves it out.
+  lsf) [ -n "\${FAKE_FAIL_LSF:-}" ] && exit 1
+    case " $* " in
+      *" --files-only "*) ls -1p "$FAKE_REMOTE" | grep -v '/$' || true ;;
+      *) ls -1p "$FAKE_REMOTE" ;;
+    esac ;;
   copyto) [ -n "\${FAKE_FAIL_COPYTO:-}" ] && exit 1
     case "$2" in /*) cp -- "$2" "$FAKE_REMOTE/\${3#*:}" ;; *) cp -- "$FAKE_REMOTE/\${2#*:}" "$3" ;; esac ;;
   deletefile) [ -n "\${FAKE_FAIL_DELETE:-}" ] && exit 1; rm -f -- "$FAKE_REMOTE/\${2#*:}" ;;
