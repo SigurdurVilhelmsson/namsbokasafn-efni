@@ -455,8 +455,7 @@ const RESEARCH_SCRIPT_EXCEPTIONS = Object.freeze({
     reason:
       'finds withdrawn intervals and sets deletion_done_at_ms (spec §5.15); computes no figure',
   },
-  // PR4: the paper-consent admin script, if it is given a research- name (spec §5.14), records a decision or a
-  // withdrawal; add it here with the same single allowance.
+  // The paper-consent script records through researchConsent's functions and names no forbidden table (PR4 decision 18).
 });
 const tableRe = (t) => new RegExp(`\\b${t}\\b`); // \b: module_openings never matches module_opening_inflight
 
@@ -571,6 +570,12 @@ describe('T17 (PR3): research-* scripts read no editing record (spec §5.22)', (
     const routeSrc = readFileSync(path.join(SERVER_ROOT, 'routes', 'research.js'), 'latin1');
     expect(routeSrc).toMatch(/require\('\.\.\/services\/researchDeletion'\)/);
     expect(filesNaming(path.join(SERVER_ROOT, 'routes'), ROUTE_FORBIDDEN)).toEqual([]);
+  });
+
+  it('T17 (PR4): the paper-consent script names no forbidden table, and is not an exception (decision 18)', () => {
+    expect(researchScripts(SERVER_ROOT)).toContain('scripts/research-paper-consent.js');
+    expect(forbiddenTableUses(SERVER_ROOT)).toEqual([]);
+    expect(Object.keys(RESEARCH_SCRIPT_EXCEPTIONS)).toEqual(['research-withdrawal.js']);
   });
 
   it('controls: the exception covers research_consent only, and only for its own file', () => {
