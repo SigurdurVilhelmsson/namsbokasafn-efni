@@ -81,7 +81,7 @@ Stikan vinstra megin er aðalleiðsögnin þín. Hlutar sem sjást fara eftir hl
 - **Aðlögun** — Staðfærsluritillinn fyrir Pass 2 (aðeins yfirritstjórar og kerfisstjórar)
 
 **Yfirritstjórar og kerfisstjórar sjá einnig hlutann Stjórnun:**
-- **Stjórnandi** (opnast aðeins kerfisstjórum), **Bókasafn** og **Úthlutanir**
+- **Bókasafn** og **Úthlutanir**; kerfisstjórar sjá einnig **Stjórnandi**
 
 **Neðst:**
 - **Um mig** — Prófíllinn þinn

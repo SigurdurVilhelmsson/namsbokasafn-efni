@@ -2404,6 +2404,7 @@ a:focus-visible,
    ========================================================================== */
 
 .admin-only:not(.visible),
+.admin-role-only:not(.visible),
 .reviewer-only:not(.visible) {
   display: none;
 }
