@@ -15,6 +15,13 @@
        WELCOME SECTION
        ======================================== */
 
+    /* §C210: "Stillingar" sits beside "Nákvæmt yfirlit" */
+    .view-toggle {
+      display: flex;
+      gap: var(--spacing-sm);
+      flex-wrap: wrap;
+    }
+
     .welcome-section {
       display: flex;
       justify-content: space-between;
@@ -840,6 +847,10 @@
           <p class="greeting-subtitle" id="greeting-subtitle"></p>
         </div>
         <div class="view-toggle">
+          <!-- §C210: the only opener of the notification settings, lost in the 2026-02-20 Home redesign -->
+          <button class="btn btn-secondary btn-sm" id="settings-btn" onclick="openSettingsModal()" title="Tilkynningastillingar">
+            Stillingar
+          </button>
           <button class="btn btn-secondary btn-sm" onclick="toggleView('detailed')">
             N&aacute;kv&aelig;mt yfirlit
           </button>

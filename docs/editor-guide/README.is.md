@@ -65,6 +65,7 @@ Mælaborðið sýnir:
 - **Núverandi verkefni**, með hnappi til að hefja vinnu, og **Næst á dagskrá**
 - **Tölfræði**: ritstjórar sjá hvað þeir kláruðu í vikunni (*Kláruð í vikunni*), hvað bíður yfirlestrar (*Bíður yfirlestrar*) og orðatillögur sínar (*Orðatillögur*); yfirritstjórar og kerfisstjórar sjá hvað bíður úrskurðar þeirra og hvað er samþykkt en óbirt
 - **Nákvæmt yfirlit**: innsendingar þínar sem bíða yfirlestrar, breytingar sem voru sendar aftur til þín með athugasemd yfirlesara (*Breytingar óskast*), orðatillögur þínar og nýleg virkni þín
+- **Stillingar**: veldu hvers konar tilkynningar þú færð, í kerfinu og í tölvupósti (tölvupóstur er aðeins sendur þegar þjónninn er settur upp til þess)
 
 ### Leiðsagnarstika
 
