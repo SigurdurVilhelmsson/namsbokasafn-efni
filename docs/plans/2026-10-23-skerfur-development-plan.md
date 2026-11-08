@@ -556,9 +556,13 @@ and credited (both grants, the voice, and the lexicons).
 - **A chapter hold-back at sync time (§C142), if [USER] chooses the staged release.** The reader's record offers it:
   release all chapters except those in classroom use, which follow in mid-December. Record the choice before S. If it
   is staged, build the hold-back in month 1, with the reader's capacity booked; reviewed-chapter releases then reuse it.
+  ✏️ *2026-11-08: [USER] chose the whole-book release, so no hold-back is built for that sync
+  ([record](../decisions/2026-11-08-chemistry-sync-path-answers.md)).*
 - **The front-page claim, fixed before the next chemistry sync.** *"Vélþýtt og yfirlesið af starfandi
   raungreinakennurum."* (`../namsbokasafn-vefur/src/routes/+page.svelte:181`) breaks the reader's own rule
   (`src/lib/data/bookCredits.ts:19`). That sync takes readers from four "reviewed" June pages, ruled retired, to none.
+  ✏️ *2026-11-08: [USER]'s wording is "Íslensk vélþýðing (Erlendur, Miðeind)", the reader's
+  `MACHINE_TRANSLATION_CREDIT`; vefur makes the edit ([record](../decisions/2026-11-08-chemistry-sync-path-answers.md)).*
 - **Figure approvals.** A reviewed page also carries them (`data-figure-review`). Figure review stays closed until
   [USER] reopens it, and G1.14 makes that closure code.
 
