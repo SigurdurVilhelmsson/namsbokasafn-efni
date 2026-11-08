@@ -1685,6 +1685,32 @@ describe('G-1a, crontab half (spec §9): every cron source, for a copy of pipeli
     });
   });
 
+  // Review finding (2026-11-08): a script run through a wrapper or by a relative path, and a quoted `-c` command,
+  // were dropped silently, so G-1a read clean over a copy. They are followed, or listed as not followed: never dropped.
+  it('follows a script run through a wrapper, sees a quoted command, and lists what it cannot follow', () => {
+    plantCron({ spool: false });
+    const r = R();
+    const lines = {
+      u1: `0 1 * * * bash ${r}/bin/nightly.sh`,
+      u2: `0 2 * * * flock -n ${r}/run/absent.lock ${r}/bin/nightly.sh`,
+      u3: `0 3 * * * nice -n 10 ${r}/bin/nightly.sh`,
+      u4: `0 4 * * * cd ${r} && ./bin/nightly.sh`,
+      u5: '0 5 * * * bash ~/x.sh',
+      u6: `0 6 * * * bash -c 'tar czf /b/h.tgz ${r}'`,
+    };
+    for (const [u, line] of Object.entries(lines))
+      plant(`var/spool/cron/crontabs/${u}`, `${line}\n`);
+    const g = readResearchPreconditions(g1aCtx()).sections['G-1a'];
+    const copySources = g.copies.map((c) => c.source);
+    for (const u of ['u1', 'u2', 'u3'])
+      expect(copySources).toContain(`spool:${u} → ${r}/bin/nightly.sh`);
+    expect(copySources).toContain('spool:u6');
+    const unclassifiedSources = g.unclassified.map((c) => c.source);
+    expect(unclassifiedSources).toContain('spool:u4 → ./bin/nightly.sh (command not followed)');
+    expect(unclassifiedSources).toContain('spool:u5 → ~/x.sh (command not followed)');
+    expect(g.complete).toBe(true);
+  });
+
   it('returns no whole crontab and no secret', () => {
     plantCron();
     const text = JSON.stringify(readResearchPreconditions(g1aCtx()).sections['G-1a']);

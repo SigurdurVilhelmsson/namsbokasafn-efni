@@ -855,8 +855,9 @@ const KNOWN_JOBS = Object.freeze([
   'verify-research-backup.sh',
 ]);
 // The tool bare or by an absolute path: /usr/bin/rsync is a copy too (a bare-name test misses it, measured).
+// A quote counts as a word start too, so `bash -c 'tar …'` is seen (review finding 2026-11-08).
 const COPY_TOOL =
-  /(?:^|[\s;|&(`])(?:\/[^\s;|&()`]*\/)?(?:tar|rsync|cp|scp|rclone|restic|borg|duplicity|zip|cpio|dd)(?=\s)/;
+  /(?:^|[\s;|&(`'"])(?:\/[^\s;|&()`'"]*\/)?(?:tar|rsync|cp|scp|rclone|restic|borg|duplicity|zip|cpio|dd)(?=\s)/;
 const ASSIGNMENT_ONLY = /^[A-Za-z_][A-Za-z0-9_]*=\S*$/;
 const ASSIGNMENT_WORD = /^[A-Za-z_][A-Za-z0-9_]*=/;
 // A copy that leaves the research file out: returned apart, for [USER]'s judgment (spec §9: "excluded the file").
@@ -901,16 +902,89 @@ function classifyCronLine(line, dir) {
   return null;
 }
 
+const unquote = (w) => w.replace(/^["'(]+|["');]+$/g, '');
+const OPERATOR = /^(?:&&|\|\||;|\|)$/;
+// Programs that run the script named among their arguments: the script is what is read.
+const WRAPPERS = new Set([
+  'sh',
+  'bash',
+  'dash',
+  'zsh',
+  'ksh',
+  'python',
+  'python3',
+  'perl',
+  'node',
+  'env',
+  'nice',
+  'ionice',
+  'nohup',
+  'flock',
+  'timeout',
+  'sudo',
+  'setsid',
+  'chronic',
+  'xargs',
+]);
+const UNRESOLVABLE = /^(?:~|\$HOME\b|\$\{HOME\})/;
+
 /**
- * The command a crontab line runs: the first word after its schedule (five fields, or an @ keyword; an
- * anacrontab line's period, delay and job id), its user field where the file has one, and any NAME=value words.
+ * Every command a crontab line runs, with its arguments: the first word after its schedule (five fields, or an @
+ * keyword; an anacrontab line's period, delay and job id), its user field where the file has one, and any NAME=value
+ * words; then the first word after each &&, ||, ; or |.
  */
-function commandWord(line, { skip, hasUser }) {
+function commandsOf(line, { skip, hasUser }) {
   const words = line.trim().split(/\s+/);
   let i = skip === 'anacron' ? 3 : words[0].startsWith('@') ? 1 : 5;
   if (hasUser) i += 1;
-  while (i < words.length && ASSIGNMENT_WORD.test(words[i])) i += 1;
-  return i < words.length ? words[i].replace(/^["']+|["']+$/g, '') : null;
+  const out = [];
+  let current = null;
+  let expectCommand = true;
+  for (; i < words.length; i++) {
+    let w = words[i];
+    const ends = w.length > 1 && w.endsWith(';'); // `a; b`
+    if (ends) w = w.slice(0, -1);
+    if (OPERATOR.test(w)) {
+      expectCommand = true;
+      continue;
+    }
+    if (expectCommand) {
+      if (!ASSIGNMENT_WORD.test(w)) {
+        current = { word: unquote(w), args: [] };
+        out.push(current);
+        expectCommand = false;
+      }
+    } else current.args.push(unquote(w));
+    if (ends) expectCommand = true;
+  }
+  return out;
+}
+
+/**
+ * What one command position runs, for the probe to read: { path } for a script to follow, { path, refused } for one
+ * it cannot, or null when the command reads no script (a bare program such as cp, cd or run-parts). A wrapper is
+ * followed into the first regular file among its absolute-path arguments (an absent one, a lock file say, or a
+ * directory is passed over); a relative or ~-rooted path cannot be resolved here, so it is listed, never dropped.
+ */
+function followTarget({ word, args }) {
+  const name = path.basename(word);
+  if (WRAPPERS.has(name)) {
+    for (const a of args) {
+      if (a.startsWith('-') || !/[/~$]/.test(a)) continue; // an option, or a word that is not a path
+      if (UNRESOLVABLE.test(a) || !path.isAbsolute(a))
+        return { path: a, refused: 'command not followed' };
+      try {
+        if (fs.statSync(a).isFile()) return { path: a };
+      } catch {
+        // absent: not the script this wrapper runs
+      }
+    }
+    return null;
+  }
+  if (path.isAbsolute(word)) return { path: word };
+  if (word.includes('/') || UNRESOLVABLE.test(word))
+    return { path: word, refused: 'command not followed' };
+  return null;
 }
 
 const SCRIPT_TEXT_MAX = 1024 * 1024;
@@ -999,17 +1073,20 @@ function readG1a({ etcRoot, varRoot, exec, researchDir }) {
       if (take(s.source, line) || !s.kind) continue;
       const t = line.trim();
       if (!t || t.startsWith('#') || ASSIGNMENT_ONLY.test(t)) continue;
-      // One level into the command a crontab line runs: a program the probe cannot read may copy anything.
-      const cmd = commandWord(t, s.kind);
-      if (!cmd || !path.isAbsolute(cmd)) continue;
-      const file = readCommandFile(cmd);
-      if (file.refused) {
-        unclassified.push({
-          source: `${s.source} → ${cmd} (${file.refused})`,
-          line: redactAssignments(t),
-        });
-      } else {
-        for (const inner of file.text.split('\n')) take(`${s.source} → ${cmd}`, inner);
+      // One level into each command a crontab line runs: a program the probe cannot read may copy anything, so what
+      // it cannot follow is listed, never dropped.
+      for (const command of commandsOf(t, s.kind)) {
+        const target = followTarget(command);
+        if (!target) continue;
+        const file = target.refused ? target : readCommandFile(target.path);
+        if (file.refused) {
+          unclassified.push({
+            source: `${s.source} → ${target.path} (${file.refused})`,
+            line: redactAssignments(t),
+          });
+        } else {
+          for (const inner of file.text.split('\n')) take(`${s.source} → ${target.path}`, inner);
+        }
       }
     }
   }
