@@ -57,6 +57,22 @@ Current stage: Source (Step 1)
 
 ## Next Steps
 
-1. Upload to malstadur.is for machine translation
-2. Then proceed to Matecat alignment
+The pipeline works from the chapter's CNXML in `01-source/ch{NN}/`, not from this file.
+Full instructions: `docs/workflow/simplified-workflow.md`.
+
+1. Extract the English segments:
+   `node tools/cnxml-extract.js --book {book} --chapter {N}`
+2. Preview the machine translation and its cost (free):
+   `node tools/api-translate.js --book {book} --chapter {N} --dry-run`
+3. Translate. This is a paid run, and it refuses without exactly one glossary arm:
+   `node tools/api-translate.js --book {book} --chapter {N} --no-glossary`
+4. Inject the translation into CNXML:
+   `node tools/cnxml-inject.js --book {book} --chapter {N}`
+   (this builds the mt-preview track; after linguistic review in the segment editor,
+   add `--source-dir 03-faithful-translation` for the faithful track)
+5. Render to HTML:
+   `node tools/cnxml-render.js --book {book} --chapter {N}`
+   (mt-preview by default; add `--track faithful` for reviewed text)
+
+Never run these on `lifraen-efnafraedi`: OpenStax has not authorised its translation.
 ```
