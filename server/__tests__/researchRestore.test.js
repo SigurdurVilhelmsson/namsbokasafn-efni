@@ -2,7 +2,7 @@
 // T9's restore part; PR4 Task 14, decisions 32 and 33)
 import { describe, it, expect, beforeAll, beforeEach, afterAll } from 'vitest';
 import { createRequire } from 'module';
-import { spawnSync } from 'child_process';
+import { execFileSync, spawnSync } from 'child_process';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
@@ -283,8 +283,18 @@ describe('research-restore.js', () => {
       });
     expect(cli([]).status).toBe(2);
     expect(cli(['--from', C, '--force']).status).toBe(2);
+    // The real systemctl answers here: the restore proceeds only on a positive "stopped" (fail closed), so the
+    // expected exit follows this host's own answer (a runner whose systemd is not PID 1 answers nothing).
+    let answer = '';
+    try {
+      answer = execFileSync('systemctl', ['is-active', 'ritstjorn'], { encoding: 'utf8' });
+    } catch (err) {
+      answer = String(err.stdout || '');
+    }
+    const stopped = ['inactive', 'failed', 'unknown'].includes(answer.trim());
     const dry = cli(['--from', C]);
-    expect(dry.status, dry.stdout + dry.stderr).toBe(0);
-    expect(JSON.parse(dry.stdout).write).toBe(false);
+    expect(dry.status, dry.stdout + dry.stderr).toBe(stopped ? 0 : 1);
+    if (stopped) expect(JSON.parse(dry.stdout).write).toBe(false);
+    else expect(JSON.parse(dry.stdout).refused).toMatch(/^SERVICE_/);
   });
 });
