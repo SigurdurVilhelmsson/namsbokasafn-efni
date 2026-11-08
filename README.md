@@ -285,7 +285,6 @@ npm run docs:check        # Verify generated docs are up-to-date
 ### Pipeline status
 
 ```bash
-npm run update-status efnafraedi-2e 01 linguisticReview complete
 npm run validate          # Validate all status files
 ```
 

@@ -55,8 +55,11 @@ Based on current status:
 
 ## Commands
 
-To update status:
+To validate the status files:
 ```bash
-npm run update-status {book} {chapter} {stage} {status}
+npm run validate
 ```
+
+No command-line tool writes a stage's status: `npm run update-status` was archived on
+2026-03-13, and `api-translate --update-status` refuses since 2026-11-08.
 ```

@@ -30,9 +30,16 @@ const cli = (...args) =>
 
 // A static `from '…'`, a `require('…')` or an `import('…')`: the specifier is the capture.
 const LOAD = /\bfrom\s+(['"])([^'"]+)\1|\b(?:require|import)\s*\(\s*(['"`])([^'"`]+)\3\s*\)/g;
-// A path built toward server/: a separate 'server' argument (LICENSE search shape 2) or a
-// literal beginning 'server' handed to join/resolve/createRequire (shape 3's anchor form).
-const BUILT_TOWARD_SERVER = /\b(?:join|resolve|createRequire)\([^)]*['"`]server\b/;
+// A string literal reaching ../server/ (LICENSE search shape 1), wherever it sits — which also
+// catches a load through an aliased require: `const req = createRequire(…); req('../server/…')`.
+const PARENT_SERVER = /['"`](?:\.\.\/)+server\//;
+// A path built toward server/: a separate 'server' argument (shape 2) or a literal beginning
+// 'server' (shape 3's anchor form), handed to join/resolve/createRequire. The argument list may
+// hold calls nested two deep, as in path.dirname(fileURLToPath(import.meta.url)).
+const BUILT_TOWARD_SERVER =
+  /\b(?:join|resolve|createRequire)\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*['"`]server\b/;
+const E2_EDGE =
+  'a tools/ → server/ load is an E-2 edge; if it is deliberate, list it in root LICENSE and CLAUDE.md § E-2';
 
 describe('--update-status refuses — api-translate no longer writes the status database', () => {
   it('1 · a dry run with --update-status is refused before any plan is printed', () => {
@@ -75,16 +82,34 @@ describe('api-translate.js loads no server/ code — root LICENSE class 1 is emp
   it('6 · no load names server/', () => {
     expect(
       specifiers.filter((s) => s.includes('server')),
-      'a tools/ → server/ load is an E-2 edge; if it is deliberate, list it in root LICENSE and CLAUDE.md § E-2'
+      E2_EDGE
     ).toEqual([]);
   });
 
+  it('6b · no string literal reaches ../server/', () => {
+    expect(src, E2_EDGE).not.toMatch(PARENT_SERVER);
+  });
+
+  it('6c · control: that pattern catches a load through an aliased require', () => {
+    expect(
+      PARENT_SERVER.test("const req = createRequire(import.meta.url); req('../server/x.js');")
+    ).toBe(true);
+  });
+
   it('7 · no path is built toward server/', () => {
-    expect(src).not.toMatch(BUILT_TOWARD_SERVER);
+    expect(src, E2_EDGE).not.toMatch(BUILT_TOWARD_SERVER);
   });
 
   it('7c · control: the path pattern does match a server/ path', () => {
     expect(BUILT_TOWARD_SERVER.test("path.join(REPO_ROOT, 'server', 'lib', 'x.js')")).toBe(true);
+  });
+
+  it('7n · control: the path pattern crosses nested calls (this file builds its root that way)', () => {
+    expect(
+      BUILT_TOWARD_SERVER.test(
+        "path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'server', 'lib')"
+      )
+    ).toBe(true);
   });
 
   it('8 · updatePipelineStatus is gone', () => {

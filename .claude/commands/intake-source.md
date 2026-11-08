@@ -58,6 +58,5 @@ Current stage: Source (Step 1)
 ## Next Steps
 
 1. Upload to malstadur.is for machine translation
-2. After MT: Update with `npm run update-status {book} {chapter} mtOutput complete`
-3. Then proceed to Matecat alignment
+2. Then proceed to Matecat alignment
 ```
