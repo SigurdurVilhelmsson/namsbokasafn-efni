@@ -27,6 +27,12 @@ import {
   buildChangeRecord,
   writeRevisedChapter,
   verifyRevision,
+  SAFE_FILENAME_RE,
+  REREQUEST_SCHEMA,
+  writeSelectedOverlay,
+  readSelectedKeys,
+  appendRerequestLog,
+  readRerequestOutcomes,
 } from '../lib/mt-layers.js';
 
 const { parseSegmentRecords } = segMarkers;
@@ -1263,6 +1269,257 @@ describe('fixture tree', () => {
     it('refuses a `current` that omits a field', () => {
       write();
       expect(codeOf(() => verify(without(current, 'model')))).toBe('bad-current');
+    });
+  });
+});
+
+// ───────────────────────────────────────────────────────────────────────────────────────────
+// Layer 1s writer and the re-request attempt log (plan 2026-11-08-rerequest-mode, Task 2)
+// ───────────────────────────────────────────────────────────────────────────────────────────
+
+describe('layer 1s writer and the re-request log', () => {
+  let root;
+  let book;
+  const ch = 'ch01';
+  const layer1 = () => path.join(book, LAYER_DIRS.pure, ch, 'm100-segments.is.md');
+  const overlayFile = () => path.join(book, LAYER_DIRS.selected, ch, 'm100-selected.json');
+  const logFile = () => path.join(book, LAYER_DIRS.selected, ch, 'm100-rerequest.jsonl');
+  /** The layer-1 body of both `m100:para:p1` occurrences in M100. */
+  const P1_BODY = 'Frumeind er lítil.';
+  const entry = (o = {}) => ({
+    segmentId: 'm100:para:p1',
+    occurrence: 0,
+    text: 'Frumeindin er smá.',
+    beforeSha256: sha256(P1_BODY),
+    run: '20261108T090000Z-1a2b3c4d',
+    commit: SHA_A,
+    rule: 'rerequest',
+    gate: { check: 'detectResidue', untranslated: false, attempt: 1 },
+    ...o,
+  });
+  const writeEntries = (entries) =>
+    writeSelectedOverlay({ bookDir: book, chapterDir: ch, stem: 'm100', entries });
+  const bodies = () =>
+    readBase({ bookDir: book, chapterDir: ch, stem: 'm100' }).parsed.records.map((r) => r.body);
+
+  beforeEach(() => {
+    root = fs.mkdtempSync(path.join(os.tmpdir(), 'mt-layers-1s-'));
+    book = path.join(root, 'books', 'test-book');
+    put(layer1(), M100);
+  });
+  afterEach(() => {
+    fs.rmSync(root, { recursive: true, force: true });
+  });
+
+  describe('writeSelectedOverlay', () => {
+    it('writes an overlay readBase applies: the body at the key is the entry text', () => {
+      writeEntries([entry()]);
+      expect(bodies()).toEqual(['Titill', 'Frumeindin er smá.', P1_BODY]);
+    });
+    it('returns the overlay path and the sha256 readBase reports', () => {
+      const { file, overlaySha256 } = writeEntries([entry()]);
+      const base = readBase({ bookDir: book, chapterDir: ch, stem: 'm100' });
+      expect([file, overlaySha256]).toEqual([overlayFile(), base.overlaySha256]);
+    });
+    it('leaves the layer-1 file byte-identical', () => {
+      const before = fs.readFileSync(layer1());
+      writeEntries([entry()]);
+      expect(fs.readFileSync(layer1()).equals(before)).toBe(true);
+    });
+    it('appends to an existing overlay and keeps the old entries in order', () => {
+      const second = entry({ occurrence: 1, text: 'Frumeind er agnarsmá.' });
+      writeEntries([entry()]);
+      writeEntries([second]);
+      const written = JSON.parse(fs.readFileSync(overlayFile(), 'utf8'));
+      expect(written).toEqual({
+        schema: 'mt-selected/1',
+        module: 'm100',
+        entries: [entry(), second],
+      });
+    });
+    it('refuses a second entry for a key the overlay already has (duplicate-entry) and leaves the file unchanged', () => {
+      writeEntries([entry()]);
+      const before = fs.readFileSync(overlayFile());
+      const code = codeOf(() => writeEntries([entry({ text: 'Frumeindin er örsmá.' })]));
+      expect([code, fs.readFileSync(overlayFile()).equals(before)]).toEqual([
+        'duplicate-entry',
+        true,
+      ]);
+    });
+    it('refuses two entries for one key in the same batch (duplicate-entry)', () => {
+      expect(codeOf(() => writeEntries([entry(), entry({ text: 'Önnur.' })]))).toBe(
+        'duplicate-entry'
+      );
+    });
+    it('refuses an entry whose text equals the layer-1 body (no-op-entry)', () => {
+      const code = codeOf(() => writeEntries([entry({ text: P1_BODY })]));
+      expect([code, fs.existsSync(overlayFile())]).toEqual(['no-op-entry', false]);
+    });
+    it('refuses an entry whose beforeSha256 is not the current body (bad-overlay)', () => {
+      expect(codeOf(() => writeEntries([entry({ beforeSha256: HEX64('0') })]))).toBe('bad-overlay');
+    });
+    it('an entry it wrote refuses once layer 1 changes', () => {
+      writeEntries([entry()]);
+      put(layer1(), M100.replace('Frumeind er lítil.\n\n\n', 'Frumeind er pínulítil.\n\n\n'));
+      expect(codeOf(() => readBase({ bookDir: book, chapterDir: ch, stem: 'm100' }))).toBe(
+        'bad-overlay'
+      );
+    });
+    it('refuses a 02-mt-selected that is a symlink (unsafe-destination)', () => {
+      const elsewhere = path.join(root, 'elsewhere');
+      fs.mkdirSync(elsewhere);
+      fs.symlinkSync(elsewhere, path.join(book, LAYER_DIRS.selected));
+      const code = codeOf(() => writeEntries([entry()]));
+      expect([code, fs.readdirSync(elsewhere)]).toEqual(['unsafe-destination', []]);
+    });
+    it('writes nothing when any entry in the batch is refused', () => {
+      const code = codeOf(() => writeEntries([entry(), entry({ occurrence: 1, text: P1_BODY })]));
+      expect([code, fs.existsSync(overlayFile())]).toEqual(['no-op-entry', false]);
+    });
+  });
+
+  describe('readSelectedKeys', () => {
+    it('returns an empty set when there is no overlay', () => {
+      expect(readSelectedKeys({ bookDir: book, chapterDir: ch, stem: 'm100' })).toEqual(new Set());
+    });
+    it('returns the keys of the entries the overlay holds', () => {
+      writeEntries([entry(), entry({ occurrence: 1, text: 'Frumeind er agnarsmá.' })]);
+      expect(readSelectedKeys({ bookDir: book, chapterDir: ch, stem: 'm100' })).toEqual(
+        new Set(['m100:para:p1', 'm100:para:p1#1'])
+      );
+    });
+    it('refuses a malformed overlay (bad-overlay)', () => {
+      put(overlayFile(), '{"schema":"mt-selected/1"}');
+      expect(codeOf(() => readSelectedKeys({ bookDir: book, chapterDir: ch, stem: 'm100' }))).toBe(
+        'bad-overlay'
+      );
+    });
+  });
+
+  describe('applyOverlay gate', () => {
+    const overlayWithGate = (gate) =>
+      put(
+        overlayFile(),
+        JSON.stringify({ schema: 'mt-selected/1', module: 'm100', entries: [entry({ gate })] })
+      );
+    it('refuses an entry whose gate is not a plain object', () => {
+      const codes = ['ok', null, ['x']].map((gate) => {
+        overlayWithGate(gate);
+        return codeOf(() => readBase({ bookDir: book, chapterDir: ch, stem: 'm100' }));
+      });
+      expect(codes).toEqual(['bad-overlay', 'bad-overlay', 'bad-overlay']);
+    });
+    it('control: a plain-object gate is accepted', () => {
+      overlayWithGate({ check: 'detectResidue', untranslated: false, attempt: 2 });
+      expect(bodies()[1]).toBe('Frumeindin er smá.');
+    });
+  });
+
+  describe('appendRerequestLog', () => {
+    const record = (o = {}) => ({
+      schema: REREQUEST_SCHEMA,
+      module: 'm100',
+      runId: '20261108T090000Z-1a2b3c4d',
+      at: '2026-11-08T09:00:00.000Z',
+      attempt: 1,
+      commit: SHA_A,
+      glossaryArm: 'no-glossary',
+      ids: ['m100:para:p1'],
+      chars: 40,
+      estimatedIsk: 0.4,
+      error: null,
+      run: { chars: 40 },
+      results: [
+        {
+          segmentId: 'm100:para:p1',
+          outcome: 'translated',
+          body: 'Frumeindin er smá.',
+          reason: null,
+        },
+      ],
+      ...o,
+    });
+    const append = (r) =>
+      appendRerequestLog({ bookDir: book, chapterDir: ch, stem: 'm100', record: r });
+
+    it('appends one JSON line and keeps the earlier lines byte-identical', () => {
+      append(record());
+      const first = fs.readFileSync(logFile());
+      const second = record({ attempt: 2 });
+      const result = append(second);
+      const now = fs.readFileSync(logFile());
+      const lines = now
+        .toString('utf8')
+        .trimEnd()
+        .split('\n')
+        .map((l) => JSON.parse(l));
+      expect([now.subarray(0, first.length).equals(first), result.lines, lines]).toEqual([
+        true,
+        2,
+        [record(), second],
+      ]);
+    });
+    it('refuses a record with a missing or extra key', () => {
+      expect([
+        codeOf(() => append(without(record(), 'error'))),
+        codeOf(() => append({ ...record(), extra: 1 })),
+      ]).toEqual(['bad-log', 'bad-log']);
+    });
+    it('refuses a record for another module', () => {
+      expect(codeOf(() => append(record({ module: 'm200' })))).toBe('bad-log');
+    });
+    it('refuses a result outcome outside translated, untranslated, held, refused', () => {
+      const results = [{ segmentId: 'm100:para:p1', outcome: 'maybe', body: null, reason: null }];
+      expect(codeOf(() => append(record({ results })))).toBe('bad-log');
+    });
+    it('SAFE_FILENAME_RE accepts <stem>-rerequest.jsonl, and the log lands in 02-mt-selected/<ch>/', () => {
+      const { file } = append(record());
+      expect([SAFE_FILENAME_RE.test('m100-rerequest.jsonl'), file, fs.existsSync(file)]).toEqual([
+        true,
+        logFile(),
+        true,
+      ]);
+    });
+  });
+
+  describe('readRerequestOutcomes', () => {
+    const line = (results) =>
+      JSON.stringify({
+        schema: REREQUEST_SCHEMA,
+        module: 'm100',
+        runId: 'r',
+        at: '2026-11-08T09:00:00.000Z',
+        attempt: 1,
+        commit: SHA_A,
+        glossaryArm: 'no-glossary',
+        ids: results.map((r) => r.segmentId),
+        chars: 1,
+        estimatedIsk: 0,
+        error: null,
+        run: null,
+        results,
+      }) + '\n';
+    const res = (segmentId, outcome) => ({ segmentId, outcome, body: null, reason: null });
+
+    it('counts untranslated results per id across lines; refused and held do not count', () => {
+      put(
+        logFile(),
+        line([res('m100:para:p1', 'untranslated'), res('m100:title:auto-1', 'refused')]) +
+          line([res('m100:para:p1', 'untranslated'), res('m100:title:auto-1', 'held')])
+      );
+      const counts = readRerequestOutcomes({ bookDir: book, chapterDir: ch, stem: 'm100' });
+      expect(Object.fromEntries(counts)).toEqual({ 'm100:para:p1': 2 });
+    });
+    it('returns an empty map when there is no log', () => {
+      expect(readRerequestOutcomes({ bookDir: book, chapterDir: ch, stem: 'm100' })).toEqual(
+        new Map()
+      );
+    });
+    it('refuses a malformed line (bad-log)', () => {
+      put(logFile(), 'not json\n');
+      expect(
+        codeOf(() => readRerequestOutcomes({ bookDir: book, chapterDir: ch, stem: 'm100' }))
+      ).toBe('bad-log');
     });
   });
 });
