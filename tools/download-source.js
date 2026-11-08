@@ -392,7 +392,7 @@ function getCommitSha(repo, branch) {
         throw new Error(
           `GitHub API request failed for ${repo}. ` +
             'Without GITHUB_BOT_TOKEN, the rate limit is 60 requests/hour. ' +
-            'Set GITHUB_BOT_TOKEN in server/.env for 5000 requests/hour.'
+            'Set GITHUB_BOT_TOKEN in the environment for 5000 requests/hour (this tool loads no .env file).'
         );
       }
       throw new Error(`GitHub API request failed: repository ${repo} not found or access denied`);
