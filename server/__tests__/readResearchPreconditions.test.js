@@ -1692,7 +1692,9 @@ describe('G-1a, crontab half (spec §9): every cron source, for a copy of pipeli
     const r = R();
     const lines = {
       u1: `0 1 * * * bash ${r}/bin/nightly.sh`,
-      u2: `0 2 * * * flock -n ${r}/run/absent.lock ${r}/bin/nightly.sh`,
+      // flock creates its lock file on the first run, so the lock is an existing (empty) regular file
+      u2: `0 2 * * * flock -n ${r}/run/present.lock ${r}/bin/nightly.sh`,
+      u7: `0 7 * * * env FOO=/x ${r}/bin/nightly.sh`,
       u3: `0 3 * * * nice -n 10 ${r}/bin/nightly.sh`,
       u4: `0 4 * * * cd ${r} && ./bin/nightly.sh`,
       u5: '0 5 * * * bash ~/x.sh',
@@ -1700,10 +1702,14 @@ describe('G-1a, crontab half (spec §9): every cron source, for a copy of pipeli
     };
     for (const [u, line] of Object.entries(lines))
       plant(`var/spool/cron/crontabs/${u}`, `${line}\n`);
+    plant('run/present.lock', '');
     const g = readResearchPreconditions(g1aCtx()).sections['G-1a'];
     const copySources = g.copies.map((c) => c.source);
-    for (const u of ['u1', 'u2', 'u3'])
+    for (const u of ['u1', 'u2', 'u3', 'u7']) {
       expect(copySources).toContain(`spool:${u} → ${r}/bin/nightly.sh`);
+    }
+    // A NAME=value word given to a wrapper is not a command it cannot follow.
+    expect(g.unclassified.filter((c) => c.source.startsWith('spool:u7'))).toEqual([]);
     expect(copySources).toContain('spool:u6');
     const unclassifiedSources = g.unclassified.map((c) => c.source);
     expect(unclassifiedSources).toContain('spool:u4 → ./bin/nightly.sh (command not followed)');

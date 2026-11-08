@@ -1018,30 +1018,36 @@ function commandsOf(line, { skip, hasUser }) {
 }
 
 /**
- * What one command position runs, for the probe to read: { path } for a script to follow, { path, refused } for one
- * it cannot, or null when the command reads no script (a bare program such as cp, cd or run-parts). A wrapper is
- * followed into the first regular file among its absolute-path arguments (an absent one, a lock file say, or a
- * directory is passed over); a relative or ~-rooted path cannot be resolved here, so it is listed, never dropped.
+ * What one command position runs, for the probe to read: a list of { path } (a script to follow) and { path, refused }
+ * (one it cannot follow); empty when the command reads no script (a bare program such as cp, cd or run-parts). A
+ * wrapper yields EVERY regular file among its absolute-path arguments, because the first may not be the script: flock
+ * creates its lock file on the first run, and a lock file has no lines (review, 2026-11-08). An absent path or a
+ * directory is passed over, a NAME=value word is not a path, and a relative or ~-rooted path cannot be resolved here,
+ * so it is listed, never dropped.
  */
-function followTarget({ word, args }) {
+function followTargets({ word, args }) {
   const name = path.basename(word);
   if (WRAPPERS.has(name)) {
+    const out = [];
     for (const a of args) {
-      if (a.startsWith('-') || !/[/~$]/.test(a)) continue; // an option, or a word that is not a path
-      if (UNRESOLVABLE.test(a) || !path.isAbsolute(a))
-        return { path: a, refused: 'command not followed' };
+      if (a.startsWith('-') || ASSIGNMENT_WORD.test(a) || !/[/~$]/.test(a)) continue; // not a path
+      if (UNRESOLVABLE.test(a) || !path.isAbsolute(a)) {
+        out.push({ path: a, refused: 'command not followed' });
+        continue;
+      }
       try {
-        if (fs.statSync(a).isFile()) return { path: a };
+        if (fs.statSync(a).isFile()) out.push({ path: a });
       } catch {
-        // absent: not the script this wrapper runs
+        // absent: not a script this wrapper runs
       }
     }
-    return null;
+    return out;
   }
-  if (path.isAbsolute(word)) return { path: word };
-  if (word.includes('/') || UNRESOLVABLE.test(word))
-    return { path: word, refused: 'command not followed' };
-  return null;
+  if (path.isAbsolute(word)) return [{ path: word }];
+  if (word.includes('/') || UNRESOLVABLE.test(word)) {
+    return [{ path: word, refused: 'command not followed' }];
+  }
+  return [];
 }
 
 const SCRIPT_TEXT_MAX = 1024 * 1024;
@@ -1133,16 +1139,16 @@ function readG1a({ etcRoot, varRoot, exec, researchDir }) {
       // One level into each command a crontab line runs: a program the probe cannot read may copy anything, so what
       // it cannot follow is listed, never dropped.
       for (const command of commandsOf(t, s.kind)) {
-        const target = followTarget(command);
-        if (!target) continue;
-        const file = target.refused ? target : readCommandFile(target.path);
-        if (file.refused) {
-          unclassified.push({
-            source: `${s.source} → ${target.path} (${file.refused})`,
-            line: redactLine(t, s.kind),
-          });
-        } else {
-          for (const inner of file.text.split('\n')) take(`${s.source} → ${target.path}`, inner);
+        for (const target of followTargets(command)) {
+          const file = target.refused ? target : readCommandFile(target.path);
+          if (file.refused) {
+            unclassified.push({
+              source: `${s.source} → ${target.path} (${file.refused})`,
+              line: redactLine(t, s.kind),
+            });
+          } else {
+            for (const inner of file.text.split('\n')) take(`${s.source} → ${target.path}`, inner);
+          }
         }
       }
     }
