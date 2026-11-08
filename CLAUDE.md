@@ -692,7 +692,8 @@ read them there. Listed below are only the tool invocations whose **flags are no
 positionals.** This table documented `<book> <chapter>` positionally for all three and
 **every one of those forms fails**: `cnxml-extract` and `cnxml-inject` exit 1 with
 `Error: --book is required`, and `cnxml-render` dies with an unhandled `path` TypeError
-(a raw stack trace, not a usage message). Verified by running all three. `cnxml-extract`
+(a raw stack trace, not a usage message) — *until 2026-11-08 (§C210), when render too began
+exiting 1 with `--book is required`, and `--help` began printing usage*. Verified by running all three. `cnxml-extract`
 does declare one positional, but it is `input` — a file path — not the book slug.
 Ironic given this section's own promise to list "only the tool invocations whose flags
 are not guessable".
