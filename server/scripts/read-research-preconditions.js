@@ -5,6 +5,17 @@
  *
  * Each section answers one §9 check and runs on its own: a section that fails reports
  * `{ ok: false, error, message }` and the others still run.
+ *   G-1a  the crontab half (PR4): every cron source the box holds — each user's crontab in the spool
+ *         (root only), `crontab -l`, /etc/crontab, /etc/anacrontab, /etc/cron.d/* and the scripts in
+ *         /etc/cron.{hourly,daily,weekly,monthly}/ — one level into the scripts a crontab line runs.
+ *         A line holding a copying tool (bare, or named by an absolute path) that names pipeline-output
+ *         or a directory above the research file is a COPY; one that also excludes `research` is an
+ *         EXCLUDED COPY, returned apart for a person to judge; a line running one of the repository's
+ *         backup jobs is KNOWN (by job name, never the line); another line naming pipeline-output, or a
+ *         command this probe cannot read as text, is UNCLASSIFIED. Only those lines leave the probe,
+ *         each with its NAME=value words and option values redacted, except an --exclude/--include
+ *         value. No whole crontab is ever returned. `complete` is false when the spool or any source
+ *         could not be read.
  *   G-1c  journald's settings from every file systemd 255's journald opens, in its order (strace of
  *         systemd-journald 255.4-1ubuntu8.18 in a private mount namespace): the main file
  *         /etc/systemd/journald.conf and no other; then the *.conf drop-ins of the
@@ -100,12 +111,17 @@
  * better-sqlite3 resolve (the route read-pending-edits.js describes), while the server runs:
  *   ssh <prod> "cd <repo>/server/scripts && node - efnafraedi-2e" \
  *     < server/scripts/read-research-preconditions.js > preconditions.json
+ * G-1a's spool (every user's crontab) is readable only by root. Run that half as root, opening no database (a root
+ * process can leave root-owned -wal/-shm files the service cannot write):
+ *   ssh <prod> "cd <repo>/server/scripts && sudo \"\$(command -v node)\" - efnafraedi-2e --sections G-1a,G-1h" \
+ *     < server/scripts/read-research-preconditions.js > g1a-g1h.json
+ * `--sections <name,...>` reads only the sections named and, when none of them reads the database, never opens it.
  */
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
 
-const USAGE = 'usage: read-research-preconditions.js <book>';
+const USAGE = 'usage: read-research-preconditions.js <book> [--sections <name,...>]';
 const SERVICE_UNIT = 'ritstjorn'; // the unit scripts/deploy.sh restarts
 const KEY = 'AUTO_CREATE_USERS'; // its meaning: signInPolicy in server/services/auth.js, never restated here
 
@@ -824,8 +840,198 @@ function readG1g({ book, booksDir }) {
   };
 }
 
-// PR4 adds G-1a (the crontab) and G-1h.
+// G-1a, crontab half (spec §9; PR4 decision 34). A line is a COPY when it holds a copying tool and names pipeline-output
+// or anything above the research directory. Lines are returned redacted; a whole crontab never leaves this function.
+const KNOWN_JOBS = Object.freeze([
+  'git-backup.sh',
+  'backup-db.sh',
+  'verify-db-backup.sh',
+  'research-backup.sh',
+  'verify-research-backup.sh',
+]);
+// The tool bare or by an absolute path: /usr/bin/rsync is a copy too (a bare-name test misses it, measured).
+const COPY_TOOL =
+  /(?:^|[\s;|&(`])(?:\/[^\s;|&()`]*\/)?(?:tar|rsync|cp|scp|rclone|restic|borg|duplicity|zip|cpio|dd)(?=\s)/;
+const ASSIGNMENT_ONLY = /^[A-Za-z_][A-Za-z0-9_]*=\S*$/;
+const ASSIGNMENT_WORD = /^[A-Za-z_][A-Za-z0-9_]*=/;
+// A copy that leaves the research file out: returned apart, for [USER]'s judgment (spec §9: "excluded the file").
+const EXCLUDES_RESEARCH = /--exclude(?:-from)?[= ]['"]?[^\s'"]*research/;
+// Redact a NAME=value or --opt=value word at a token start; keep an --exclude/--include value, which a reader needs
+// in order to judge the exclusion. (A \b anchor here redacted `--exclude='*research*'` too, measured.)
+const KEEP_VALUE = /^--(?:exclude|include)(?:-from)?$/;
+const redactAssignments = (line) =>
+  line.replace(/(^|\s)(--?[A-Za-z][\w-]*|[A-Za-z_]\w*)=("[^"]*"|'[^']*'|\S+)/g, (m, pre, name) =>
+    KEEP_VALUE.test(name) ? m : `${pre}${name}=<redacted>`
+  );
+
+/** Whether a word of the line is ~, $HOME, / or an absolute path at or above dir. */
+function namesAncestor(line, dir) {
+  for (const raw of line.split(/\s+/)) {
+    const p = raw.replace(/^["'(]+|["');]+$/g, '');
+    if (/^(?:~|\$HOME|\$\{HOME\})(?:\/|$)/.test(p)) return true;
+    if (p.startsWith('/')) {
+      const q = p.replace(/\/+$/, '') || '/';
+      if (q === '/' || dir === q || dir.startsWith(`${q}/`)) return true;
+    }
+  }
+  return false;
+}
+
+/** @returns {null | { kind: 'copy' | 'excluded-copy' | 'unclassified', line } | { kind: 'known', job }} */
+function classifyCronLine(line, dir) {
+  const t = line.trim();
+  if (!t || t.startsWith('#') || ASSIGNMENT_ONLY.test(t)) return null;
+  const mentions = t.includes('pipeline-output');
+  if (COPY_TOOL.test(t) && (mentions || namesAncestor(t, dir))) {
+    return {
+      kind: EXCLUDES_RESEARCH.test(t) ? 'excluded-copy' : 'copy',
+      line: redactAssignments(t),
+    };
+  }
+  const job = KNOWN_JOBS.find((j) =>
+    new RegExp(`/scripts/${j.replace(/\./g, '\\.')}(?:\\s|$)`).test(t)
+  );
+  if (job) return { kind: 'known', job };
+  if (mentions) return { kind: 'unclassified', line: redactAssignments(t) };
+  return null;
+}
+
+/**
+ * The command a crontab line runs: the first word after its schedule (five fields, or an @ keyword; an
+ * anacrontab line's period, delay and job id), its user field where the file has one, and any NAME=value words.
+ */
+function commandWord(line, { skip, hasUser }) {
+  const words = line.trim().split(/\s+/);
+  let i = skip === 'anacron' ? 3 : words[0].startsWith('@') ? 1 : 5;
+  if (hasUser) i += 1;
+  while (i < words.length && ASSIGNMENT_WORD.test(words[i])) i += 1;
+  return i < words.length ? words[i].replace(/^["']+|["']+$/g, '') : null;
+}
+
+const SCRIPT_TEXT_MAX = 1024 * 1024;
+/** A command file's text, or why it cannot be read as text: 'unreadable', or 'not a text file' (binary or large). */
+function readCommandFile(file) {
+  try {
+    const st = fs.statSync(file);
+    if (!st.isFile() || st.size > SCRIPT_TEXT_MAX) return { refused: 'not a text file' };
+    const bytes = fs.readFileSync(file);
+    if (bytes.subarray(0, 4096).includes(0)) return { refused: 'not a text file' };
+    return { text: bytes.toString('utf8') };
+  } catch {
+    return { refused: 'unreadable' };
+  }
+}
+
+/** Every cron source, in order, with its text; the spool's own state apart. */
+function cronSources({ etcRoot, varRoot, exec }) {
+  const sources = [];
+  const label = (abs) => `/etc/${path.relative(etcRoot, abs)}`;
+  const addFile = (abs, source, kind) => {
+    const text = readText(abs);
+    const state = text === null ? 'absent' : text === UNREADABLE ? 'unreadable' : 'read';
+    sources.push({ source, state, text: state === 'read' ? text : null, kind });
+  };
+  const spoolDir = path.join(varRoot, 'spool', 'cron', 'crontabs');
+  let spool = 'absent';
+  if (fs.existsSync(spoolDir)) {
+    const users = listDir(spoolDir);
+    if (users === UNREADABLE) spool = 'unreadable';
+    else {
+      spool = 'read';
+      for (const f of users) addFile(f, `spool:${path.basename(f)}`, { hasUser: false });
+    }
+  }
+  const mine = exec('crontab', ['-l']);
+  if (mine.ran && mine.code === 0) {
+    sources.push({
+      source: 'crontab -l',
+      state: 'read',
+      text: mine.stdout,
+      kind: { hasUser: false },
+    });
+  } else if (mine.ran && mine.code === 1 && /no crontab/i.test(mine.stderr)) {
+    sources.push({ source: 'crontab -l', state: 'none', text: null, kind: null });
+  } else {
+    sources.push({ source: 'crontab -l', state: 'unreadable', text: null, kind: null });
+  }
+  addFile(path.join(etcRoot, 'crontab'), '/etc/crontab', { hasUser: true });
+  addFile(path.join(etcRoot, 'anacrontab'), '/etc/anacrontab', { skip: 'anacron', hasUser: false });
+  const visible = (f) => !f.startsWith('.');
+  const cronD = path.join(etcRoot, 'cron.d');
+  const dropIns = listDir(cronD, visible);
+  if (dropIns === UNREADABLE)
+    sources.push({ source: label(cronD), state: 'unreadable', text: null, kind: null });
+  else for (const f of dropIns) addFile(f, label(f), { hasUser: true });
+  for (const period of ['hourly', 'daily', 'weekly', 'monthly']) {
+    const dir = path.join(etcRoot, `cron.${period}`);
+    const scripts = listDir(dir, visible);
+    if (scripts === UNREADABLE)
+      sources.push({ source: label(dir), state: 'unreadable', text: null, kind: null });
+    else for (const f of scripts) addFile(f, label(f), null); // scripts: classified, never followed
+  }
+  return { spool, sources };
+}
+
+function readG1a({ etcRoot, varRoot, exec, researchDir }) {
+  const dir = researchDir();
+  const { spool, sources } = cronSources({ etcRoot, varRoot, exec });
+  const copies = [];
+  const excludedCopies = [];
+  const unclassified = [];
+  const known = new Set();
+  const take = (source, line) => {
+    const c = classifyCronLine(line, dir);
+    if (!c) return false;
+    if (c.kind === 'copy') copies.push({ source, line: c.line });
+    else if (c.kind === 'excluded-copy') excludedCopies.push({ source, line: c.line });
+    else if (c.kind === 'unclassified') unclassified.push({ source, line: c.line });
+    else known.add(c.job);
+    return true;
+  };
+  for (const s of sources) {
+    if (s.text === null) continue;
+    for (const line of s.text.split('\n')) {
+      if (take(s.source, line) || !s.kind) continue;
+      const t = line.trim();
+      if (!t || t.startsWith('#') || ASSIGNMENT_ONLY.test(t)) continue;
+      // One level into the command a crontab line runs: a program the probe cannot read may copy anything.
+      const cmd = commandWord(t, s.kind);
+      if (!cmd || !path.isAbsolute(cmd)) continue;
+      const file = readCommandFile(cmd);
+      if (file.refused) {
+        unclassified.push({
+          source: `${s.source} → ${cmd} (${file.refused})`,
+          line: redactAssignments(t),
+        });
+      } else {
+        for (const inner of file.text.split('\n')) take(`${s.source} → ${cmd}`, inner);
+      }
+    }
+  }
+  const bySourceThenLine = (a, b) =>
+    a.source < b.source
+      ? -1
+      : a.source > b.source
+        ? 1
+        : a.line < b.line
+          ? -1
+          : a.line > b.line
+            ? 1
+            : 0;
+  return {
+    spool,
+    sources: sources.map(({ source, state }) => ({ source, state })),
+    complete: spool !== 'unreadable' && sources.every((s) => s.state !== 'unreadable'),
+    copies: copies.sort(bySourceThenLine),
+    excludedCopies: excludedCopies.sort(bySourceThenLine),
+    unclassified: unclassified.sort(bySourceThenLine),
+    known: [...known].sort(),
+  };
+}
+
+// PR4 adds G-1h (Task 18).
 const SECTIONS = {
+  'G-1a': readG1a,
   'G-1c': readG1c,
   'G-1d': readG1d,
   'G-1e': readG1e,
@@ -844,6 +1050,14 @@ function readResearchPreconditions({
   varRoot = '/var',
   pathEnv = process.env.PATH,
   exec = execNeverThrow,
+  only = null,
+  // Required lazily: G-1a and G-1h are read after PR4's deploy, and a run on an older tree reports those sections as
+  // failed while the others read.
+  researchDir = () => {
+    const { researchFilesFor } = require('../lib/researchFiles');
+    const { resolveResearchDbPath } = require('../lib/researchDbPath');
+    return researchFilesFor(resolveResearchDbPath().researchPath).dir;
+  },
 }) {
   let handle = null;
   let openError = null;
@@ -860,10 +1074,23 @@ function readResearchPreconditions({
     if (openError) throw openError;
     return handle;
   };
-  const ctx = { book, db, serverDir, booksDir, etcRoot, runRoot, usrRoot, varRoot, pathEnv, exec };
+  const ctx = {
+    book,
+    db,
+    serverDir,
+    booksDir,
+    etcRoot,
+    runRoot,
+    usrRoot,
+    varRoot,
+    pathEnv,
+    exec,
+    researchDir,
+  };
   const sections = {};
   try {
     for (const [name, read] of Object.entries(SECTIONS)) {
+      if (only && !only.includes(name)) continue; // --sections: a section not named never runs, nor opens the db
       sections[name] = runSection(() => read(ctx));
     }
   } finally {
@@ -914,8 +1141,14 @@ function openReadOnly(dbPath) {
 /** @returns {0|1|2} */
 function main(argv, env = process.env) {
   const args = argv.slice(2);
+  // `<book>` or `<book> --sections <name,...>`; anything else (an unknown or empty name, any other flag) is usage.
+  const only =
+    args.length === 3 && args[1] === '--sections' ? args[2].split(',').filter(Boolean) : null;
+  const sectionsOk =
+    args.length === 1 ||
+    (only !== null && only.length > 0 && only.every((n) => Object.hasOwn(SECTIONS, n)));
   // A book starts with a letter or a digit, so a lone flag (`--help`, `--write`) is a usage error, not a book.
-  if (args.length !== 1 || !/^[a-z0-9][a-z0-9-]*$/.test(args[0])) {
+  if (!sectionsOk || !/^[a-z0-9][a-z0-9-]*$/.test(args[0])) {
     console.error(USAGE);
     return 2;
   }
@@ -928,6 +1161,7 @@ function main(argv, env = process.env) {
     serverDir,
     // Test seam, as scripts/backfill-mt-locks.js: never set in production.
     booksDir: env.BOOKS_ROOT_OVERRIDE || path.join(serverDir, '..', 'books'),
+    only,
   });
   process.stdout.write(
     JSON.stringify(
@@ -954,6 +1188,9 @@ module.exports = {
   readG1e,
   readG1f,
   readG1g,
+  readG1a,
+  classifyCronLine,
+  redactAssignments,
   execNeverThrow,
   SECTIONS,
 };
