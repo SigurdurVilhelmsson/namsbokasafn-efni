@@ -13,6 +13,14 @@
  * - RESEARCH_BACKUP_STALE_HOURS is two missed cycles plus margin, the formula of the editorial
  *   checks (offboxBackupHealth.js, contentBackupHealth.js).
  *
+ * A copy is pruned at the first run at which its age is within half a cron period of the cut-off
+ * (PRUNE_TOLERANCE_HOURS). Each run prunes first and stamps its own copy seconds later, and cron
+ * starts each run a little early or late, so measured from its stamp a copy is a few seconds short
+ * of the cut-off at the very run meant to remove it; without the tolerance it survived a whole
+ * period more, and one late or missed run then broke "no copy older than 7 days at any moment"
+ * (spec §5.17; review finding 2026-11-08). The tolerance is derived, not chosen, and prunes early,
+ * never late.
+ *
  * Neither the cut-off nor the threshold has an environment override, unlike the editorial checks:
  * widening either one silently would hide a dead job behind a deletion promise.
  *
@@ -27,6 +35,7 @@ const RESEARCH_BACKUP_CRON_HOURS = 6;
 const MAX_COPY_AGE_HOURS = 7 * 24;
 const PRUNE_CUTOFF_HOURS = MAX_COPY_AGE_HOURS - RESEARCH_BACKUP_CRON_HOURS;
 const RESEARCH_BACKUP_STALE_HOURS = 2 * RESEARCH_BACKUP_CRON_HOURS + 2;
+const PRUNE_TOLERANCE_HOURS = RESEARCH_BACKUP_CRON_HOURS / 2;
 const COPY_NAME = /^research\.\d{4}-\d{2}-\d{2}T\d{6}Z\.db$/;
 const OWNED_NAME =
   /^research\.(\d{4})-(\d{2})-(\d{2})T(\d{2})(\d{2})(\d{2})Z\.db(?:\.partial|\.verify)?(?:-wal|-shm|-journal)?$/;
@@ -60,7 +69,7 @@ function expiredNames(names, nowMs) {
     if (!name) continue;
     const t = stampMs(name);
     if (t === null || t - nowMs > RESEARCH_BACKUP_CRON_HOURS * H) unknown.push(name);
-    else if (nowMs - t >= PRUNE_CUTOFF_HOURS * H) expired.push(name);
+    else if (nowMs - t >= (PRUNE_CUTOFF_HOURS - PRUNE_TOLERANCE_HOURS) * H) expired.push(name);
   }
   return { expired: expired.sort(), unknown: unknown.sort() };
 }
@@ -70,6 +79,7 @@ module.exports = {
   MAX_COPY_AGE_HOURS,
   PRUNE_CUTOFF_HOURS,
   RESEARCH_BACKUP_STALE_HOURS,
+  PRUNE_TOLERANCE_HOURS,
   COPY_NAME,
   stamp,
   copyName,

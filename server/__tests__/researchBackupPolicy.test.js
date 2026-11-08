@@ -69,12 +69,14 @@ describe('researchBackupPolicy', () => {
 
   it('expires what has reached the cut-off, keeps what has not, and reports what it did not make', () => {
     const C = PRUNE_CUTOFF_HOURS * H;
+    const HALF = (RESEARCH_BACKUP_CRON_HOURS / 2) * H;
     expect(
       expiredNames(
         [
           copyName(T - C), // exactly at the cut-off: goes
-          copyName(T - C + 60_000), // a minute younger: stays
-          `${copyName(T - C + 60_000)}-wal`, // and its side file stays
+          copyName(T - C + 60_000), // a minute younger: goes too (within half a period of the cut-off)
+          copyName(T - C + HALF + 60_000), // more than half a period younger: stays
+          `${copyName(T - C + HALF + 60_000)}-wal`, // and its side file stays
           `${copyName(T - 170 * H)}.partial`,
           `${copyName(T - 200 * H)}-shm`,
           'notes.txt',
@@ -89,9 +91,29 @@ describe('researchBackupPolicy', () => {
         `${copyName(T - 200 * H)}-shm`,
         `${copyName(T - 170 * H)}.partial`,
         copyName(T - C),
+        copyName(T - C + 60_000),
       ].sort(),
       unknown: ['notes.txt', copyName(T + 7 * H)].sort(),
     });
+  });
+
+  // Review finding (2026-11-08): each run prunes first and stamps its copy seconds later, so measured from the copy's
+  // own stamp it is a few seconds short of the cut-off at the run that should remove it. Without a tolerance it then
+  // survives one more period, to 7 days minus those seconds, and one late or missed run breaks spec §5.17's "no copy
+  // older than 7 days at any moment". Walk the real ticks: the copy must go at the run where it reaches the cut-off.
+  it('a copy is pruned at the run where it reaches the cut-off, though the prune runs seconds before that run copies', () => {
+    const period = RESEARCH_BACKUP_CRON_HOURS * H;
+    const copiedAt = T + 4_000; // run 0's copy, stamped 4 s after run 0 began
+    const name = copyName(copiedAt);
+    const pruneAt = (k) => T + k * period + 300; // run k's prune, 0.3 s in
+    const firstRun = [...Array(40).keys()].find(
+      (k) => expiredNames([name], pruneAt(k)).expired.length
+    );
+    expect(firstRun).toBe(PRUNE_CUTOFF_HOURS / RESEARCH_BACKUP_CRON_HOURS);
+    // The promise: at no run is a copy kept past 7 days, even if the run that should have pruned it is missed.
+    expect((pruneAt(firstRun + 1) - copiedAt) / H).toBeLessThanOrEqual(MAX_COPY_AGE_HOURS);
+    // Control: half a period earlier it is still kept, so the tolerance does not prune young copies.
+    expect(expiredNames([name], pruneAt(firstRun) - period / 2 - 60_000).expired).toEqual([]);
   });
 
   it('T19: the research cron line is every RESEARCH_BACKUP_CRON_HOURS hours, so the cut-off and the threshold are still right', () => {
