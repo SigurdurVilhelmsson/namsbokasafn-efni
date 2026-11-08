@@ -112,7 +112,7 @@ node tools/cnxml-inject.js --chapter <num> [--module <id>] [options]
 | `--module <id>` | Specific module ID (default: all in chapter) |
 | `--lang <code>` | Language code (default: `is`) |
 | `--source-dir <dir>` | Segments directory relative to `books/efnafraedi-2e/` (default: `02-mt-output`) |
-| `--track <name>` | Publication track: mt-preview, faithful, localized (auto-detected from `--source-dir` if not specified; faithful is refused unless `--source-dir` is the faithful one) |
+| `--track <name>` | Publication track: mt-preview, faithful, localized (auto-detected from `--source-dir` if not specified; if given, it must match the track `--source-dir` maps to, and an unknown track is refused) |
 | `--verbose` | Show detailed progress |
 
 **Input Files:**

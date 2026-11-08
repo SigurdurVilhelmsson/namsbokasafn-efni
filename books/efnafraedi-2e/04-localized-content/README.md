@@ -19,8 +19,8 @@ from its faithful file in `03-faithful-translation/`. To render a chapter's loca
 
 ```bash
 # --source-dir picks the segments; the localized track is detected from it.
-# Do NOT run inject with `--track localized` alone: without --source-dir it reads
-# 02-mt-output and writes machine translation into the localized track.
+# An explicit --track must match the track --source-dir maps to, so
+# `--track localized` alone (which would read 02-mt-output) is refused.
 node tools/cnxml-inject.js --book efnafraedi-2e --chapter NN --source-dir 04-localized-content
 node tools/cnxml-render.js --book efnafraedi-2e --chapter NN --track localized
 ```
