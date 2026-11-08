@@ -207,11 +207,11 @@ When a module is loaded, the editor shows three columns:
 
 ### Types of Localization
 
-Localized changes are grouped into these types, which the editor's filter and badges use:
+Each segment row has a category picker (**Flokkur…**). Choose the type that fits your change; it is saved together with the change, then shown as a badge on the row and used by the category filter:
 
 | Type | Example |
 |------|---------|
-| **Einingabreytingar** (unit conversion) | Fahrenheit → Celsius, miles → km |
+| **Einingabreyting** (unit conversion) | Fahrenheit → Celsius, miles → km |
 | **Menningarleg aðlögun** (cultural adaptation) | American holidays → Icelandic equivalents |
 | **Dæmaskipti** (example replacement) | US-specific examples → local context |
 | **Snið** (formatting) | Style adjustments for Icelandic conventions |

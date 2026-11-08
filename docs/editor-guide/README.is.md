@@ -207,11 +207,11 @@ Staðfærsluritillinn hefur tvo flipa efst:
 
 ### Tegundir staðfæringar
 
-Staðfærslubreytingar flokkast í þessar tegundir, sem sía og merki ritilsins nota:
+Hver lína hefur flokkaval (**Flokkur…**). Veldu þá tegund sem á við breytinguna; hún vistast með breytingunni og birtist síðan sem merki á línunni og í flokkasíunni:
 
 | Tegund | Dæmi |
 |---|---|
-| **Einingabreytingar** | Fahrenheit → Selsíus, mílur → km |
+| **Einingabreyting** | Fahrenheit → Selsíus, mílur → km |
 | **Menningarleg aðlögun** | Bandarískir frídagar → íslensk samsvörun |
 | **Dæmaskipti** | Dæmi sem eiga sérstaklega við í Bandaríkjunum → staðbundið samhengi |
 | **Snið** | Stílbreytingar fyrir íslenskar venjur |
