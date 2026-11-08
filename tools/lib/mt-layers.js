@@ -54,12 +54,14 @@ const WRITABLE_LAYERS = new Set([LAYER_DIRS.revised, LAYER_DIRS.selected]);
 export const CHAPTER_DIR_RE = /^(ch\d\d|appendices)$/;
 export const STEM_RE = /^(m\d+|chapter-metadata)$/;
 export const SAFE_FILENAME_RE =
-  /^(m\d+|chapter-metadata)-(segments\.is\.md|revision\.json|changes\.jsonl|segments-links\.json|selected\.json)$/;
+  /^(m\d+|chapter-metadata)-(segments\.is\.md|revision\.json|changes\.jsonl|segments-links\.json|selected\.json|rerequest\.jsonl)$/;
 /** A segment id: exactly three `[\w-]` parts (the id-charset rule, CLAUDE.md § SEG marker). */
 export const SEGMENT_ID_RE = /^[\w-]+:[\w-]+:[\w-]+$/;
 
 export const SELECTED_SCHEMA = 'mt-selected/1';
 export const REVISED_SCHEMA = 'mt-revised/1';
+/** One line of a module's re-request attempt log (`02-mt-selected/<ch>/<stem>-rerequest.jsonl`). */
+export const REREQUEST_SCHEMA = 'mt-rerequest/1';
 
 const BOOK_SLUG_RE = /^[a-z][a-z0-9-]*$/;
 const COMMIT_RE = /^[0-9a-f]{40}$/;
@@ -490,8 +492,10 @@ function applyOverlay(parsed, overlay, stem, file) {
     ) {
       throw bad(`malformed entry target ${e.segmentId} / ${e.occurrence}`);
     }
-    // Provenance of the choice: the run it came from, the commit, the selection rule. `gate` is
-    // left to the re-request mode that writes it (not designed yet).
+    // Provenance of the choice: the run it came from, the commit, the selection rule, and the
+    // check that admitted it. The re-request mode writes `gate: { check: 'detectResidue',
+    // untranslated: false, attempt: n }`; a later writer may record another check, so only the
+    // shape (a plain object) is required here.
     if (
       !isNonEmptyString(e.run) ||
       !COMMIT_RE.test(String(e.commit)) ||
@@ -500,6 +504,9 @@ function applyOverlay(parsed, overlay, stem, file) {
       throw bad(
         `entry ${e.segmentId} / ${e.occurrence}: run and rule must be non-empty strings and commit a full sha`
       );
+    }
+    if (!isPlainObject(e.gate)) {
+      throw bad(`entry ${e.segmentId} / ${e.occurrence}: gate must be a plain object`);
     }
     // A typeof check, not String(): String([hash]) would pass the pattern.
     if (typeof e.beforeSha256 !== 'string' || !SHA256_RE.test(e.beforeSha256)) {
@@ -534,6 +541,29 @@ function applyOverlay(parsed, overlay, stem, file) {
 }
 
 /**
+ * One unit's layer-1 file, read and parsed, with no overlay. Refuses a missing file, a file
+ * with no segments, and a file whose markers name another module (`chapter` for
+ * `chapter-metadata`). `book`, `chapterDir` and `stem` are already checked by the caller.
+ * @returns {{file: string, buf: Buffer, parsed: ParsedLayer}}
+ */
+function readLayer1(book, chapterDir, stem) {
+  const file = path.join(book, LAYER_DIRS.pure, chapterDir, `${stem}-segments.is.md`);
+  if (!lstatOrNull(file)?.isFile()) throw refusal('missing-layer1', `${file} does not exist`);
+  const buf = fs.readFileSync(file);
+  const parsed = parseLayerFile(decodeUtf8Exact(buf, file));
+  if (parsed.records.length === 0) throw refusal('empty-unit', `${file} has no segments`);
+  const moduleId = stem === 'chapter-metadata' ? 'chapter' : stem;
+  const foreign = parsed.records.find((r) => r.moduleId !== moduleId);
+  if (foreign) {
+    throw refusal(
+      'module-mismatch',
+      `${file} holds ${foreign.segmentId}, not a ${moduleId} segment`
+    );
+  }
+  return { file, buf, parsed };
+}
+
+/**
  * One unit's base text: layer 1 (`02-mt-output/<chapterDir>/<stem>-segments.is.md`) parsed,
  * with the layer-1s overlay (`02-mt-selected/<chapterDir>/<stem>-selected.json`) applied when it
  * exists. `parsed.text` is the post-overlay serialisation; `layer1Sha256` is always the raw
@@ -550,19 +580,9 @@ export function readBase({ bookDir, chapterDir, stem }) {
   const book = assertBookDir(bookDir);
   assertChapterDir(chapterDir);
   assertStem(stem);
-  const file = path.join(book, LAYER_DIRS.pure, chapterDir, `${stem}-segments.is.md`);
-  if (!lstatOrNull(file)?.isFile()) throw refusal('missing-layer1', `${file} does not exist`);
-  const buf = fs.readFileSync(file);
-  let parsed = parseLayerFile(decodeUtf8Exact(buf, file));
-  if (parsed.records.length === 0) throw refusal('empty-unit', `${file} has no segments`);
-  const moduleId = stem === 'chapter-metadata' ? 'chapter' : stem;
-  const foreign = parsed.records.find((r) => r.moduleId !== moduleId);
-  if (foreign) {
-    throw refusal(
-      'module-mismatch',
-      `${file} holds ${foreign.segmentId}, not a ${moduleId} segment`
-    );
-  }
+  const layer1 = readLayer1(book, chapterDir, stem);
+  const { buf } = layer1;
+  let { parsed } = layer1;
 
   const overlayFile = path.join(book, LAYER_DIRS.selected, chapterDir, `${stem}-selected.json`);
   if (lstatOrNull(overlayFile) === null) {
@@ -577,6 +597,236 @@ export function readBase({ bookDir, chapterDir, stem }) {
   }
   parsed = applyOverlay(parsed, overlay, stem, overlayFile);
   return { parsed, layer1Sha256: sha256(buf), overlaySha256: sha256(overlayBuf) };
+}
+
+// ───────────────────────────────────────────────────────────────────────────────────────────
+// Writing layer 1s: the overlay and the re-request attempt log
+// ───────────────────────────────────────────────────────────────────────────────────────────
+
+const selectedPath = (book, chapterDir, stem, kind) =>
+  path.join(book, LAYER_DIRS.selected, chapterDir, `${stem}-${kind}`);
+
+/** The overlay file parsed as JSON, or null when there is none. Refuses unparseable bytes. */
+function loadOverlayJson(file) {
+  const buf = readOrNull(file);
+  if (buf === null) return null;
+  try {
+    return JSON.parse(decodeUtf8Exact(buf, file));
+  } catch (err) {
+    throw refusal('bad-overlay', `${file}: ${err.message}`);
+  }
+}
+
+/** The occurrence key of a would-be entry, or null when its target is malformed. */
+function entryKeyOrNull(e) {
+  if (!isPlainObject(e) || !SEGMENT_ID_RE.test(String(e.segmentId))) return null;
+  if (!Number.isInteger(e.occurrence) || e.occurrence < 0) return null;
+  return occurrenceKey(e.segmentId, e.occurrence);
+}
+
+/**
+ * The occurrence keys the unit's layer-1s overlay holds (empty when there is none). The overlay
+ * is validated first, exactly as `readBase` validates it, so a malformed one refuses
+ * (`bad-overlay`).
+ *
+ * @param {{bookDir: string, chapterDir: string, stem: string}} args
+ * @returns {Set<string>}
+ */
+export function readSelectedKeys({ bookDir, chapterDir, stem }) {
+  const book = assertBookDir(bookDir);
+  if (readBase({ bookDir: book, chapterDir, stem }).overlaySha256 === null) return new Set();
+  const overlay = loadOverlayJson(selectedPath(book, chapterDir, stem, 'selected.json'));
+  return new Set(overlay.entries.map((e) => occurrenceKey(e.segmentId, e.occurrence)));
+}
+
+/**
+ * Add entries to a unit's layer-1s overlay (`02-mt-selected/<chapterDir>/<stem>-selected.json`).
+ *
+ * APPEND-ONLY: layer 1s is tool-written data, never regenerated (CLAUDE.md § File
+ * Permissions), so an entry for a key the overlay already holds refuses (`duplicate-entry`),
+ * as do two entries for one key in the batch. An entry whose text equals the layer-1 body
+ * refuses (`no-op-entry`): `applyOverlay` alone would drop it silently, and an untranslated
+ * answer must never become an entry. Then the merged overlay is validated by `applyOverlay`
+ * against layer 1 (shape, `beforeSha256`, body), written atomically, and PROVED: `readBase`
+ * must return each new entry's text at its key (`write-proof`). Nothing is written when any
+ * check refuses. Layer 1 is only read.
+ *
+ * @param {{bookDir: string, chapterDir: string, stem: string, entries: object[]}} args
+ *   entries have exactly the `mt-selected/1` entry keys
+ * @returns {{file: string, overlaySha256: string}}
+ */
+export function writeSelectedOverlay({ bookDir, chapterDir, stem, entries }) {
+  const book = assertBookDir(bookDir);
+  assertChapterDir(chapterDir);
+  assertStem(stem);
+  if (!Array.isArray(entries) || entries.length === 0) {
+    throw refusal('bad-entry', 'entries must be a non-empty array');
+  }
+  const file = resolveSafeDestination({
+    bookDir: book,
+    chapterDir,
+    filePath: selectedPath(book, chapterDir, stem, 'selected.json'),
+  });
+  assertNoRedirect(book, LAYER_DIRS.selected, chapterDir);
+
+  const { parsed } = readLayer1(book, chapterDir, stem);
+  const old = loadOverlayJson(file);
+  if (old !== null) applyOverlay(parsed, old, stem, file); // validates what is there now
+  const taken = new Set(old === null ? [] : old.entries.map(entryKeyOrNull));
+  const bodies = new Map(parsed.records.map((r) => [r.key, r.body]));
+  for (const e of entries) {
+    const key = entryKeyOrNull(e);
+    if (key === null) continue; // malformed: applyOverlay below refuses it (bad-overlay)
+    if (taken.has(key)) throw refusal('duplicate-entry', `${file}: ${key} already has an entry`);
+    taken.add(key);
+    if (bodies.has(key) && e.text === bodies.get(key)) {
+      throw refusal('no-op-entry', `${file}: ${key}: the text is the layer-1 body already`);
+    }
+  }
+  const merged = {
+    schema: SELECTED_SCHEMA,
+    module: stem,
+    entries: [...(old === null ? [] : old.entries), ...entries],
+  };
+  applyOverlay(parsed, merged, stem, file);
+
+  const data = JSON.stringify(merged, null, 2) + '\n';
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  assertNoRedirect(book, LAYER_DIRS.selected, chapterDir);
+  writeAtomic(file, data);
+
+  const after = new Map(
+    readBase({ bookDir: book, chapterDir, stem }).parsed.records.map((r) => [r.key, r.body])
+  );
+  for (const e of entries) {
+    const key = occurrenceKey(e.segmentId, e.occurrence);
+    if (after.get(key) !== e.text) {
+      throw refusal('write-proof', `${file}: readBase does not return the new text at ${key}`);
+    }
+  }
+  return { file, overlaySha256: sha256(data) };
+}
+
+const LOG_KEYS = [
+  'schema',
+  'module',
+  'runId',
+  'at',
+  'attempt',
+  'commit',
+  'glossaryArm',
+  'ids',
+  'chars',
+  'estimatedIsk',
+  'error',
+  'run',
+  'results',
+];
+const LOG_RESULT_KEYS = ['segmentId', 'outcome', 'body', 'reason'];
+const LOG_OUTCOMES = new Set(['translated', 'untranslated', 'held', 'refused']);
+
+/** The problems with one re-request log record (empty array = valid). */
+function logRecordProblems(r, stem) {
+  if (!isPlainObject(r) || !hasExactKeys(r, LOG_KEYS)) {
+    return [`a record must have exactly ${LOG_KEYS.join(', ')}`];
+  }
+  const problems = [];
+  const check = (ok, why) => ok || problems.push(why);
+  check(r.schema === REREQUEST_SCHEMA, `schema is not ${REREQUEST_SCHEMA}`);
+  check(r.module === stem, `module is ${r.module}, not ${stem}`);
+  check(isNonEmptyString(r.runId) && isNonEmptyString(r.at), 'runId and at must be non-empty');
+  check(Number.isInteger(r.attempt) && r.attempt >= 1, 'attempt must be a positive integer');
+  check(COMMIT_RE.test(String(r.commit)), 'commit must be a full sha');
+  check(isNonEmptyString(r.glossaryArm), 'glossaryArm must be a non-empty string');
+  check(
+    isDistinctStrings(r.ids) && r.ids.length > 0 && r.ids.every((id) => SEGMENT_ID_RE.test(id)),
+    'ids must be distinct segment ids'
+  );
+  check(Number.isInteger(r.chars) && r.chars >= 0, 'chars must be a non-negative integer');
+  check(Number.isFinite(r.estimatedIsk) && r.estimatedIsk >= 0, 'estimatedIsk must be ≥ 0');
+  check(isNullOrNonEmptyString(r.error), 'error must be null or a non-empty string');
+  check(r.run === null || isPlainObject(r.run), 'run must be null or an object');
+  const ids = new Set(Array.isArray(r.ids) ? r.ids : []);
+  const resultOk = (x) =>
+    isPlainObject(x) &&
+    hasExactKeys(x, LOG_RESULT_KEYS) &&
+    ids.has(x.segmentId) &&
+    LOG_OUTCOMES.has(x.outcome) &&
+    (x.body === null || typeof x.body === 'string') &&
+    (x.reason === null || typeof x.reason === 'string');
+  check(
+    Array.isArray(r.results) && r.results.every(resultOk),
+    `results must be {${LOG_RESULT_KEYS.join(', ')}} for named ids, outcome one of ` +
+      [...LOG_OUTCOMES].join(', ')
+  );
+  return problems;
+}
+
+/**
+ * Append one attempt to a unit's re-request log (`02-mt-selected/<chapterDir>/<stem>-
+ * rerequest.jsonl`): every paid attempt, its answers as received and its outcome, including
+ * the ones that wrote no overlay entry (CLAUDE.md § Purpose: every post-processing step and
+ * its cost). Append-only: the earlier bytes are kept exactly; a log whose last byte is not a
+ * newline refuses (`bad-log`) rather than being glued onto.
+ *
+ * @param {{bookDir: string, chapterDir: string, stem: string, record: object}} args
+ * @returns {{file: string, lines: number}}
+ */
+export function appendRerequestLog({ bookDir, chapterDir, stem, record }) {
+  const book = assertBookDir(bookDir);
+  assertChapterDir(chapterDir);
+  assertStem(stem);
+  const problems = logRecordProblems(record, stem);
+  if (problems.length > 0) throw refusal('bad-log', problems.join('; '));
+  const file = resolveSafeDestination({
+    bookDir: book,
+    chapterDir,
+    filePath: selectedPath(book, chapterDir, stem, 'rerequest.jsonl'),
+  });
+  assertNoRedirect(book, LAYER_DIRS.selected, chapterDir);
+  const old = readOrNull(file) ?? Buffer.alloc(0);
+  if (old.length > 0 && old[old.length - 1] !== 0x0a) {
+    throw refusal('bad-log', `${file} does not end with a newline; refusing to append`);
+  }
+  const data = Buffer.concat([old, Buffer.from(JSON.stringify(record) + '\n', 'utf8')]);
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  assertNoRedirect(book, LAYER_DIRS.selected, chapterDir);
+  writeAtomic(file, data);
+  return { file, lines: data.toString('utf8').split('\n').length - 1 };
+}
+
+/**
+ * How many `untranslated` answers the unit's re-request log holds, per id (an empty map when
+ * there is no log). `refused` and `held` do not count: a refused response is a transport
+ * failure, not an answer. Refuses a line that is not a valid record (`bad-log`).
+ *
+ * @param {{bookDir: string, chapterDir: string, stem: string}} args
+ * @returns {Map<string, number>}
+ */
+export function readRerequestOutcomes({ bookDir, chapterDir, stem }) {
+  const book = assertBookDir(bookDir);
+  assertChapterDir(chapterDir);
+  assertStem(stem);
+  const file = selectedPath(book, chapterDir, stem, 'rerequest.jsonl');
+  const buf = readOrNull(file);
+  const counts = new Map();
+  if (buf === null) return counts;
+  const lines = decodeUtf8Exact(buf, file).split('\n');
+  if (lines.at(-1) === '') lines.pop();
+  lines.forEach((line, i) => {
+    let record;
+    try {
+      record = JSON.parse(line);
+    } catch (err) {
+      throw refusal('bad-log', `${file}:${i + 1}: ${err.message}`);
+    }
+    const problems = logRecordProblems(record, stem);
+    if (problems.length > 0) throw refusal('bad-log', `${file}:${i + 1}: ${problems.join('; ')}`);
+    for (const r of record.results) {
+      if (r.outcome === 'untranslated') counts.set(r.segmentId, (counts.get(r.segmentId) ?? 0) + 1);
+    }
+  });
+  return counts;
 }
 
 // ───────────────────────────────────────────────────────────────────────────────────────────

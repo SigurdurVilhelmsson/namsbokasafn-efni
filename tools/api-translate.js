@@ -18,6 +18,9 @@
  *   --module <id>       Single module ID (requires --chapter)
  *   --force             Overwrite existing output files
  *   --top-up            Buy only the segments an existing IS lacks; splice them in (§C183)
+ *   --rerequest <ids>   Re-request named segments that came back untranslated; write the
+ *                       accepted answers to layer 1s (02-mt-selected/) only (plan 10-10 §2.3).
+ *                       Not with --force, --top-up, --june-wire or --update-status.
  *   --dry-run, -n       Show what would be translated + cost estimate
  *   --no-glossary       Don't send glossary terms with requests
  *   --glossary-only <a,b>  Send ONLY these approved headwords; refuses if any is
@@ -37,6 +40,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 import {
   parseArgs,
@@ -55,6 +59,23 @@ import {
   truncationSuspectsBySegment,
 } from './lib/mt-output-guards.js';
 import { planTopUp, spliceTopUp } from './lib/mt-top-up.js';
+import {
+  MAX_ATTEMPTS,
+  REREQUEST_RULE,
+  parseRerequestIds,
+  planRerequest,
+  classifyAttempt,
+} from './lib/mt-rerequest.js';
+import { makeGit, resolveCommit, filesAtCommitProblems } from './ai-review/provenance.js';
+import {
+  LAYER_DIRS,
+  REREQUEST_SCHEMA,
+  readBase,
+  readSelectedKeys,
+  readRerequestOutcomes,
+  writeSelectedOverlay,
+  appendRerequestLog,
+} from './lib/mt-layers.js';
 import { isMtLocked } from './lib/mt-lock.cjs';
 import segMarkers from './lib/seg-markers.cjs';
 const { parseSegmentRecords } = segMarkers;
@@ -1471,6 +1492,9 @@ function parseCliArgs(argv) {
     MODULE_OPTION,
     { name: 'force', flags: ['--force'], type: 'boolean', default: false },
     { name: 'topUp', flags: ['--top-up'], type: 'boolean', default: false },
+    // Plan 10-10 §2.3. ⚠️ parseArgs drops an UNDECLARED flag silently, so this line is what
+    // makes `--rerequest` a mode rather than a no-op (api-translate-rerequest.test.js).
+    { name: 'rerequest', flags: ['--rerequest'], type: 'string', default: null },
     { name: 'dryRun', flags: ['--dry-run', '-n'], type: 'boolean', default: false },
     { name: 'noGlossary', flags: ['--no-glossary'], type: 'boolean', default: false },
     { name: 'glossaryOnly', flags: ['--glossary-only'], type: 'string', default: null },
@@ -1539,6 +1563,12 @@ Options:
   --top-up            Buy ONLY the segments an existing IS lacks and splice them in;
                       every existing segment stays byte-identical (§C183). Refuses a
                       module whose IS carries ids the EN no longer has. Not with --force.
+  --rerequest <ids>   Re-request named segments (comma-separated module:type:element ids)
+                      that came back untranslated, at most twice each per run, and write
+                      the accepted answers to layer 1s (02-mt-selected/) only; 02-mt-output/
+                      is never written. Refuses an id that is translated, already selected
+                      or already flagged (two untranslated answers). Not with --force,
+                      --top-up, --june-wire or --update-status.
   --dry-run, -n       Show what would be translated + cost estimate
   Glossary arm — a live run REFUSES unless exactly one is given:
   --no-glossary       Don't send glossary terms with requests
@@ -2309,6 +2339,408 @@ export async function topUpModule(
   };
 }
 
+/**
+ * Why the guarded core's results make each segment unfit to select, by id: a bracket-marker
+ * delta, a lost Greek letter, or an id-reattach mismatch (where `reattachIds` has already put
+ * the English back). Such a segment is `held`: a transport defect, never an untranslated answer.
+ * @returns {Map<string, string>}
+ */
+function heldReasons(wireText, r) {
+  const held = new Map();
+  const add = (id, why) => held.set(id, held.has(id) ? `${held.get(id)}; ${why}` : why);
+  const { bySegment } = bracketMarkerDeltaBySegment(wireText, r.output);
+  for (const [id, delta] of Object.entries(bySegment)) {
+    add(id, `bracket-marker delta ${formatDeltaParts(delta)}`);
+  }
+  for (const g of r.greekLost) {
+    add(g.segId, `Greek letter(s) lost ${g.lost.join('')}→${g.added.join('') || '∅'}`);
+  }
+  for (const mm of r.mismatches) {
+    add(mm.segId, `id-reattach mismatch (${mm.type}: expected ${mm.expected}, got ${mm.got})`);
+  }
+  return held;
+}
+
+/**
+ * §2.3 (plan 2026-10-10) — RE-REQUEST chosen segments that came back untranslated, and write
+ * each accepted answer to layer 1s (`02-mt-selected/`). Layer 1 (`02-mt-output/`) is only read:
+ * this is the route for segments `--top-up` cannot reach (they are present, in English) and
+ * that `--force` would reach only by reverting a module's hand repairs.
+ *
+ * Up to `MAX_ATTEMPTS` sends, each through `translateSegmentText`, so every paid-run guard
+ * covers it. Per attempt: plan the pending ids (a refusal on attempt 1 throws before any send),
+ * send, classify each answer — `translated`, `untranslated`, `held` (marker/Greek/reattach
+ * defect, or a body the writer would refuse) or `refused` (the whole response refused) — LOG
+ * the attempt (before any overlay write, so a paid attempt is recorded even if the write
+ * refuses), then write the translated ids. "Untranslated twice" counts ANSWERS across runs
+ * (`readRerequestOutcomes`): a flagged id is never sent again; a refused one may be.
+ *
+ * @param {object} client the Málstaður client (`translateAuto`)
+ * @param {{bookDir: string, chapterDir: string, stem: string, ids: string[]}} unit `bookDir`
+ *   is an absolute `…/books/<slug>`
+ * @param {object|null} glossary
+ * @param {boolean} verbose
+ * @param {number} [maxChunk]
+ * @param {{glossaryArm: string, commit: string, runId: string, now?: () => Date}} ctx
+ * @returns {Promise<{accepted: string[], flagged: string[], failed: string[], attempts: number,
+ *   chars: number}>} `flagged`: two untranslated answers; `failed`: pending for another reason
+ */
+export async function rerequestModule(
+  client,
+  unit,
+  glossary,
+  verbose,
+  maxChunk = DEFAULT_MAX_CHUNK_CHARS,
+  ctx
+) {
+  const { bookDir, chapterDir, stem, ids } = unit;
+  const { glossaryArm, commit, runId, now = () => new Date() } = ctx;
+  const where = { bookDir, chapterDir, stem };
+  const enText = fs.readFileSync(
+    path.join(bookDir, '02-for-mt', chapterDir, `${stem}-segments.en.md`),
+    'utf8'
+  );
+  const overlayPath = path.join(bookDir, LAYER_DIRS.selected, chapterDir, `${stem}-selected.json`);
+  const accepted = [];
+  const flagged = [];
+  let pending = [...ids];
+  let attempts = 0;
+  let chars = 0;
+
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS && pending.length > 0; attempt++) {
+    const base = readBase(where);
+    const plan = planRerequest({
+      enText,
+      baseText: base.parsed.text,
+      ids: pending,
+      selectedKeys: readSelectedKeys(where),
+      untranslatedCounts: readRerequestOutcomes(where),
+    });
+    const describe = (list) => list.map((x) => `${x.id}: ${x.why}`).join('; ');
+    if (attempt === 1 && plan.refused.length > 0) {
+      throw new Error(
+        `${stem}: refusing to re-request — ${describe(plan.refused)}. Nothing was sent.`
+      );
+    }
+    const unexpected = plan.refused.filter((x) => x.why !== 'already-flagged');
+    if (unexpected.length > 0) {
+      throw new Error(`${stem}: attempt ${attempt} refused ${describe(unexpected)} (a bug)`);
+    }
+    flagged.push(...plan.refused.map((x) => x.id));
+    pending = plan.requested;
+    if (pending.length === 0) break;
+
+    attempts = attempt;
+    chars += plan.wireText.length;
+    let results;
+    let error = null;
+    let run = null;
+    try {
+      const r = await translateSegmentText(client, plan.wireText, glossary, verbose, maxChunk, {
+        moduleId: stem,
+        where: overlayPath,
+      });
+      run = runRecordFor(plan.wireText, r, glossary, glossaryArm);
+      const held = heldReasons(plan.wireText, r);
+      results = classifyAttempt({ enText, responseText: r.output, ids: pending }).map((x) =>
+        held.has(x.segmentId) ? { ...x, outcome: 'held', reason: held.get(x.segmentId) } : x
+      );
+    } catch (err) {
+      error = err.message;
+      results = pending.map((segmentId) => ({
+        segmentId,
+        outcome: 'refused',
+        body: null,
+        reason: null,
+      }));
+    }
+    appendRerequestLog({
+      ...where,
+      record: {
+        schema: REREQUEST_SCHEMA,
+        module: stem,
+        runId,
+        at: now().toISOString(),
+        attempt,
+        commit,
+        glossaryArm,
+        ids: pending,
+        chars: plan.wireText.length,
+        estimatedIsk: estimateIsk(plan.wireText.length),
+        error,
+        run,
+        results,
+      },
+    });
+
+    const ok = results.filter((x) => x.outcome === 'translated');
+    if (ok.length > 0) {
+      // A requested id is never in the overlay (`already-selected`), so its base body IS its
+      // layer-1 body — the one the entry's `beforeSha256` pins.
+      const bodies = new Map(base.parsed.records.map((rec) => [rec.key, rec.body]));
+      writeSelectedOverlay({
+        ...where,
+        entries: ok.map((x) => ({
+          segmentId: x.segmentId,
+          occurrence: 0,
+          text: x.body,
+          beforeSha256: crypto.createHash('sha256').update(bodies.get(x.segmentId)).digest('hex'),
+          run: runId,
+          commit,
+          rule: REREQUEST_RULE,
+          gate: { check: 'detectResidue', untranslated: false, attempt },
+        })),
+      });
+      accepted.push(...ok.map((x) => x.segmentId));
+      const done = new Set(ok.map((x) => x.segmentId));
+      pending = pending.filter((id) => !done.has(id));
+    }
+  }
+
+  const counts = readRerequestOutcomes(where);
+  const failed = [];
+  for (const id of pending) ((counts.get(id) ?? 0) >= 2 ? flagged : failed).push(id);
+  return { accepted, flagged, failed, attempts, chars };
+}
+
+/**
+ * The re-request dry run, as printed. Pure, so its content is pinned by tests that do not
+ * depend on the real tree's vintage (the real 8 ids stop planning once they are bought).
+ *
+ * @param {{modules: Array<{chapterDir: string, stem: string, ids: Array<{id: string,
+ *   chars: number}>, wireChars: number, recordedArm: string|null,
+ *   recordedTermCount: number|null}>, statedArm: string|null, commit: string|null,
+ *   commitProblems: string[]}} args
+ * @returns {string}
+ */
+export function formatRerequestDryRun({ modules, statedArm, commit, commitProblems }) {
+  const segments = modules.reduce((n, m) => n + m.ids.length, 0);
+  const wire = modules.reduce((n, m) => n + m.wireChars, 0);
+  const isk = estimateIsk(wire);
+  const lines = [
+    '',
+    'Re-request dry run — nothing is sent.',
+    `Re-request: ${modules.length} module(s), ${segments} segment(s)`,
+  ];
+  for (const m of modules) {
+    const arm =
+      m.recordedArm === null
+        ? 'no recorded arm'
+        : `${m.recordedArm}${m.recordedTermCount === null ? '' : `, ${m.recordedTermCount} term(s)`}`;
+    lines.push(`  ${m.chapterDir}/${m.stem} (bought with: ${arm})`);
+    for (const { id, chars } of m.ids) lines.push(`    ${id}  ${chars.toLocaleString()} chars`);
+    lines.push(`    wire: ${m.wireChars.toLocaleString()} chars`);
+  }
+  lines.push(`  Wire characters: ${wire.toLocaleString()}`);
+  lines.push(
+    `  Estimated cost: ~${isk.toFixed(0)} ISK per attempt ` +
+      `(at most ${MAX_ATTEMPTS} per run: ~${(isk * MAX_ATTEMPTS).toFixed(0)} ISK)`
+  );
+  lines.push(
+    statedArm
+      ? `  Glossary arm: ${statedArm}`
+      : `  ⚠️  No glossary arm given — the live run with these flags would be REFUSED. ${NO_ARM_HELP}`
+  );
+  lines.push(
+    commitProblems.length === 0
+      ? `  Commit: ${commit}`
+      : `  ⚠️  the live run would refuse: ${commitProblems.join('; ')}`
+  );
+  lines.push('  Writes: 02-mt-selected/ only (layer 1s); 02-mt-output/ is not written.');
+  return lines.join('\n');
+}
+
+/**
+ * The commit a re-request's entries record: HEAD, provided every input file (each module's
+ * layer-1 IS and its EN) is byte-identical to its blob there. The overlay and the log are the
+ * run's OUTPUTS and are deliberately not checked, so an uncommitted earlier attempt does not
+ * block a re-run.
+ *
+ * @param {{git: (args: string[]) => string, repoRoot: string, files: string[]}} args `files`
+ *   repo-relative
+ * @returns {string} the full sha
+ * @throws listing every input that differs from HEAD
+ */
+export function resolveRerequestCommit({ git, repoRoot, files }) {
+  const commit = resolveCommit(git, 'HEAD');
+  const problems = filesAtCommitProblems({ git, repoRoot, commit, files });
+  if (problems.length > 0) {
+    throw new Error(`the re-request's inputs are not as committed: ${problems.join('; ')}`);
+  }
+  return commit;
+}
+
+/**
+ * A sortable run id: UTC time to the second plus 8 random hex digits — the format
+ * `tools/ai-review/records.js` `mintRunId` uses. Not imported from there: that module's
+ * `config.js` imports this file, which would put it in an import cycle.
+ */
+function mintRerequestRunId(now = new Date()) {
+  const stamp = now
+    .toISOString()
+    .replace(/\.\d{3}Z$/, 'Z')
+    .replace(/[-:]/g, '');
+  return `${stamp}-${crypto.randomBytes(4).toString('hex')}`;
+}
+
+/**
+ * `main()`'s `--rerequest` branch. Resolves the book from this file's own location (never from
+ * cwd), plans every module, and refuses before a client exists on any planner refusal, a
+ * locked module or (live only) an input that differs from HEAD. Sets `process.exitCode`
+ * rather than exiting, so nothing printed is cut off.
+ */
+async function runRerequestMode(args, { glossary, statedArm }) {
+  const fail = (message) => {
+    console.error(`Error: ${message}`);
+    process.exitCode = 1;
+  };
+  const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+  const bookDir = path.join(repoRoot, 'books', args.book);
+  const rel = (abs) => path.relative(repoRoot, abs).split(path.sep).join('/');
+
+  let ids;
+  try {
+    ids = parseRerequestIds(args.rerequest);
+  } catch (err) {
+    return fail(`${err.message}. Nothing was sent.`);
+  }
+  const byModule = new Map();
+  for (const id of ids) {
+    const stem = id.split(':')[0];
+    if (!byModule.has(stem)) byModule.set(stem, []);
+    byModule.get(stem).push(id);
+  }
+
+  const forMt = path.join(bookDir, '02-for-mt');
+  const chapterDirs = fs.existsSync(forMt)
+    ? fs.readdirSync(forMt).filter((d) => /^(ch\d\d|appendices)$/.test(d))
+    : [];
+  const scope = args.chapter != null ? [formatChapter(args.chapter)] : chapterDirs;
+  const units = [];
+  const refusals = [];
+  for (const [stem, stemIds] of byModule) {
+    if (args.module && args.module !== stem) {
+      return fail(`${stem} is outside --module ${args.module}. Nothing was sent.`);
+    }
+    const found = scope.filter((d) => fs.existsSync(path.join(forMt, d, `${stem}-segments.en.md`)));
+    if (found.length !== 1) {
+      return fail(
+        `${stem}: ${found.length === 0 ? 'no' : 'more than one'} 02-for-mt file in scope. ` +
+          'Nothing was sent.'
+      );
+    }
+    const chapterDir = found[0];
+    const enPath = path.join(forMt, chapterDir, `${stem}-segments.en.md`);
+    const isPath = path.join(bookDir, '02-mt-output', chapterDir, `${stem}-segments.is.md`);
+    if (isMtLocked(isPath)) {
+      return fail(`${chapterDir}/${stem} is LOCKED (editing started). Nothing was sent.`);
+    }
+    const where = { bookDir, chapterDir, stem };
+    let plan;
+    try {
+      const enText = fs.readFileSync(enPath, 'utf8');
+      plan = planRerequest({
+        enText,
+        baseText: readBase(where).parsed.text,
+        ids: stemIds,
+        selectedKeys: readSelectedKeys(where),
+        untranslatedCounts: readRerequestOutcomes(where),
+      });
+      const enBodies = new Map(parseSegmentRecords(enText).map((r) => [r.segmentId, r.content]));
+      refusals.push(...plan.refused.map((x) => `${x.id}: ${x.why}`));
+      let recorded = null;
+      try {
+        recorded = JSON.parse(
+          fs.readFileSync(
+            path.join(bookDir, '02-mt-output', chapterDir, `${stem}-provenance.json`),
+            'utf8'
+          )
+        ).run?.glossary;
+      } catch {
+        recorded = null;
+      }
+      units.push({
+        chapterDir,
+        stem,
+        ids: plan.requested,
+        files: [rel(isPath), rel(enPath)],
+        dry: {
+          chapterDir,
+          stem,
+          ids: plan.requested.map((id) => ({ id, chars: enBodies.get(id).length })),
+          wireChars: plan.wireText.length,
+          recordedArm: recorded?.arm ?? null,
+          recordedTermCount: recorded?.termCount ?? null,
+        },
+      });
+    } catch (err) {
+      return fail(`${chapterDir}/${stem}: ${err.message}. Nothing was sent.`);
+    }
+  }
+  if (refusals.length > 0) {
+    for (const r of refusals) console.error(`  ⛔ ${r}`);
+    return fail(`--rerequest refused ${refusals.length} id(s). Nothing was sent.`);
+  }
+
+  const git = makeGit({ cwd: repoRoot });
+  const files = units.flatMap((u) => u.files);
+  let commit = null;
+  let commitProblems = [];
+  try {
+    commit = resolveRerequestCommit({ git, repoRoot, files });
+  } catch (err) {
+    commitProblems = [err.message];
+  }
+
+  if (args.dryRun) {
+    console.log(
+      formatRerequestDryRun({ modules: units.map((u) => u.dry), statedArm, commit, commitProblems })
+    );
+    return;
+  }
+  if (commitProblems.length > 0) return fail(`${commitProblems[0]}. Nothing was sent.`);
+
+  let client;
+  try {
+    client = createClient({ rateDelayMs: args.rateDelay });
+  } catch (err) {
+    return fail(err.message);
+  }
+  const runId = mintRerequestRunId();
+  console.log(`\nRe-request run ${runId} — glossary arm: ${statedArm}; commit ${commit}`);
+  let bad = 0;
+  for (const u of units) {
+    try {
+      const r = await rerequestModule(
+        client,
+        { bookDir, chapterDir: u.chapterDir, stem: u.stem, ids: u.ids },
+        glossary,
+        args.verbose,
+        args.maxChunk,
+        { glossaryArm: statedArm, commit, runId }
+      );
+      console.log(
+        `  ${u.chapterDir}/${u.stem}: ${r.attempts} attempt(s), ${r.chars.toLocaleString()} chars — ` +
+          `accepted ${r.accepted.length}, flagged ${r.flagged.length}, failed ${r.failed.length}`
+      );
+      for (const id of r.accepted) console.log(`    ✅ ${id}`);
+      for (const id of r.flagged)
+        console.log(`    🚩 ${id} (two untranslated answers: for editors)`);
+      for (const id of r.failed) console.log(`    ❌ ${id} (see the log; may be re-sent)`);
+      bad += r.flagged.length + r.failed.length;
+    } catch (err) {
+      console.log(`  ❌ ${u.chapterDir}/${u.stem}: ${err.message}`);
+      bad += u.ids.length;
+    }
+  }
+  const usage = client.getUsage();
+  console.log(
+    `\n  API usage: ${usage.totalChars.toLocaleString()} chars, ~${usage.estimatedISK.toFixed(0)} ISK`
+  );
+  console.log('  Written: 02-mt-selected/ only (overlay + attempt log).');
+  if (bad > 0) process.exitCode = 1;
+}
+
 // ─── Pipeline Status ────────────────────────────────────────────────
 
 /**
@@ -2386,6 +2818,24 @@ async function main() {
         'segment byte-identical, --force re-buys them all. Pick one.'
     );
     process.exit(1);
+  }
+
+  // Plan 10-10 §2.3: the re-request writes layer 1s only, so every flag that rewrites layer 1
+  // or the status DB contradicts it.
+  if (args.rerequest != null) {
+    const clash = [
+      ['--force', args.force],
+      ['--top-up', args.topUp],
+      ['--june-wire', args.juneWire],
+      ['--update-status', args.updateStatus],
+    ].filter(([, on]) => on);
+    if (clash.length > 0) {
+      console.error(
+        `Error: --rerequest cannot be used with ${clash.map(([f]) => f).join(', ')}: it writes ` +
+          'layer 1s (02-mt-selected/) only. Nothing was sent.'
+      );
+      process.exit(1);
+    }
   }
 
   // Glossary arm — stated, never defaulted, on a live run (resolveGlossaryArm).
@@ -2468,6 +2918,11 @@ async function main() {
           glossary.terms.map((t) => `${t.sourceWord} → ${t.targetWord}`).join(', ')
       );
     }
+  }
+
+  if (args.rerequest != null) {
+    await runRerequestMode(args, { glossary, statedArm });
+    return;
   }
 
   // Discover modules to translate

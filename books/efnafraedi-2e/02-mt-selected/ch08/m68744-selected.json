@@ -1,0 +1,20 @@
+{
+  "schema": "mt-selected/1",
+  "module": "m68744",
+  "entries": [
+    {
+      "segmentId": "m68744:para:fs-idp92007424",
+      "occurrence": 0,
+      "text": "[[term:Pí-tengi (π-tengi)|term-00004]] er tegund samgilds tengis sem myndast við hliðlæga skörun tveggja [[i:p]]-svigrúma, eins og sýnt er á [[xref:CNX_Chem_08_01_pi]]. Í π-tengi liggja svæði svigrúmaskörunarinnar hvort sínum megin við kjarnaásinn. Á ásnum sjálfum er [[term:hnútur|term-00005]], það er að segja plan þar sem engar líkur eru á að finna rafeind.",
+      "beforeSha256": "b046702efd113626659d3cdc6ddc0660a3abc4721ffe308bafc41ea5e246f18f",
+      "run": "20261108T093313Z-1ae55e6e",
+      "commit": "a521bed192dd58c8064abbd8de66fe2c7e95b5a0",
+      "rule": "rerequest",
+      "gate": {
+        "check": "detectResidue",
+        "untranslated": false,
+        "attempt": 1
+      }
+    }
+  ]
+}
