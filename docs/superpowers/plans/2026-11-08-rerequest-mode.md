@@ -364,6 +364,7 @@ git diff --stat -- books/efnafraedi-2e/02-for-mt/ch08/m68744-segments.en.md \
 Expected: no diff in the three `.en.md` files. A timestamp-only change elsewhere in `02-structure/` is expected. Then restore every file the extract touched with `git restore` (they were clean at HEAD by Step 1), so the buy reads the committed English that layer 1 was bought from.
 - **If any of the 8 English bodies changed, STOP and report.**
 - If an `.en.md` differs but the 8 bodies do not, restore, note which segments differ for the register entry, and go on: the 8 bodies the buy sends are what a fresh extract gives.
+- ✏️ *2026-11-08, found when the full suite went red afterwards: the extract also writes a gitignored `<file>.backup.<timestamp>` beside every file it replaces (15 for these three modules), and `git restore` cannot see them. Check each against `git show HEAD:<file>` and remove them. Left in place, they turned `remt-checks-extract-legacy.test.js`'s E6 real-tree case red (it reads "any backup present" as "a dev box's full backup population").*
 
 - [ ] **Step 3: The dry run**
 
