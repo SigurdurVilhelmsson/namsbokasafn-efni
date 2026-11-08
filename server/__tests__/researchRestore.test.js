@@ -200,6 +200,32 @@ describe('research-restore.js', () => {
     expect(stagingLeft()).toEqual([]);
   });
 
+  // Review finding (2026-11-08): the one guard against swapping the file under a live server refused only when
+  // systemctl positively printed an active state, so a timeout, a permission error or a missing systemctl proceeded.
+  it('refuses unless systemctl positively reports the service stopped (fail closed)', async () => {
+    const C = await freshCopy();
+    const live = fs.readFileSync(researchPath);
+    const answers = [
+      { ran: true, code: null, stdout: '', stderr: '' }, // timed out
+      { ran: true, code: 1, stdout: '', stderr: 'Access denied' },
+      { ran: true, code: 0, stdout: 'maintenance\n', stderr: '' },
+      { ran: false, code: null, stdout: '', stderr: '' }, // no systemctl here
+    ];
+    for (const answer of answers) {
+      expect(restore({ from: C, exec: () => answer }), JSON.stringify(answer)).toMatchObject({
+        ok: false,
+        refused: 'SERVICE_STATE_UNKNOWN',
+      });
+    }
+    expect(fs.readFileSync(researchPath)).toEqual(live);
+    expect(stagingLeft()).toEqual([]);
+    // Control: each stopped state proceeds (a dry run, so nothing is written).
+    for (const word of ['inactive', 'failed', 'unknown']) {
+      const stopped = () => ({ ran: true, code: 3, stdout: `${word}\n`, stderr: '' });
+      expect(restore({ from: C, exec: stopped, write: false }).ok, word).toBe(true);
+    }
+  });
+
   it('restores only from one of its copies', async () => {
     const C = await freshCopy();
     const outside = path.join(tmpRoot, path.basename(C));

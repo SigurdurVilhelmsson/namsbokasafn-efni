@@ -8,7 +8,8 @@
  *   Dry run unless --write.
  *
  * STOP THE SERVICE FIRST: it refuses while `ritstjorn` (the unit scripts/deploy.sh restarts) is
- * active, because a restore would swap the file under the server's open handle.
+ * active, because a restore would swap the file under the server's open handle, and it refuses too
+ * unless `systemctl is-active` positively answers that the unit is stopped (fail closed).
  *
  * FROM A LOCAL COPY ONLY: --from must name a research.<stamp>.db inside the copies directory. Fetch
  * an off-box copy into that directory under its own name first. The copy restored from stays
@@ -50,6 +51,9 @@ const { runRetention } = require('./research-retention');
 const SERVICE_UNIT = 'ritstjorn';
 const USAGE = 'usage: research-restore.js --from <copy> [--write]';
 const ACTIVE = new Set(['active', 'activating', 'reloading', 'deactivating']);
+// The answers that mean stopped. Anything else (no answer, a timeout, an error, no systemctl) is refused: this is the
+// one guard against swapping the file under a live server, so it fails closed (review finding 2026-11-08).
+const STOPPED = new Set(['inactive', 'failed', 'unknown']);
 
 function execNeverThrow(cmd, args) {
   try {
@@ -86,9 +90,10 @@ function restoreResearch({
   busyTimeoutMs,
   deps = { runWithdrawal, runRetention },
 }) {
-  if (ACTIVE.has(String(exec('systemctl', ['is-active', SERVICE_UNIT]).stdout).trim())) {
-    return { ok: false, refused: 'SERVICE_ACTIVE' };
-  }
+  const service = exec('systemctl', ['is-active', SERVICE_UNIT]);
+  const answer = String(service.stdout).trim();
+  if (ACTIVE.has(answer)) return { ok: false, refused: 'SERVICE_ACTIVE' };
+  if (!service.ran || !STOPPED.has(answer)) return { ok: false, refused: 'SERVICE_STATE_UNKNOWN' };
   const abs = path.resolve(from);
   if (
     path.dirname(abs) !== files.backupsDir ||
