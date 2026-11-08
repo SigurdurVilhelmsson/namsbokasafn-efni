@@ -112,8 +112,8 @@ This builds on the three-text-layer rule in CLAUDE.md § Purpose.
 
 **Open.** These still need [USER]:
 - the unruled headwords with enough text, ruled as cards on the stage 1 page (1.4; method decided, D3; measured 2026-10-11: 100 cards); ✏️ *2026-10-25: answered on 2026-10-11. [USER] answered all 100 cards and confirmed both default lists on the stage 1 page (the 81 defaults and the 66 gained rows, changing 39 and 11), leaving nothing unreviewed, then answered the page's seven follow-up questions in chat the same day. Frozen in `experiments/terminology-consistency/results/2026-10-11/stage1-answers-2026-10-11.json` and `stage1-chat-answers-2026-10-11.json`, and compiled into `ruling-set-after-stage1.json` (248 rulings, 0 conflicts). Writing them into code is a separate step, and the register owns its status;*
-- reading quality (the masked test, 1.7; threshold decided, D1); ✏️ *2026-10-25: 1.7 ran, all 150 pairs answered. June 66, September 66 of 132 decisive pairs (the override needed 80, and 56 of 93 without the 48 flagged pairs), so it did not fire: the September MT stays the base. The masking held. Result: `experiments/terminology-consistency/results/2026-10-25/masked-test-result.json`. No document records whether this tie meets 1.8's "no reading-quality regression" leg;*
-- the publication criterion (D9); ✏️ *2026-10-25: adopted on 2026-10-11, when [USER] ticked all four of 1.8's conditions on the stage 1 page (register, 2026-10-11 night entry). Not met when last measured, on 2026-10-25: no rebuilt tree has been measured against it, and the free-check leg is red (register §C206). The register owns its status;*
+- reading quality (the masked test, 1.7; threshold decided, D1); ✏️ *2026-10-25: 1.7 ran, all 150 pairs answered. June 66, September 66 of 132 decisive pairs (the override needed 80, and 56 of 93 without the 48 flagged pairs), so it did not fire: the September MT stays the base. The masking held. Result: `experiments/terminology-consistency/results/2026-10-25/masked-test-result.json`. No document records whether this tie meets 1.8's "no reading-quality regression" leg;* ✏️ *2026-11-08: [USER] ruled that it does ([record](../decisions/2026-11-08-chemistry-sync-path-answers.md)).*
+- the publication criterion (D9); ✏️ *2026-10-25: adopted on 2026-10-11, when [USER] ticked all four of 1.8's conditions on the stage 1 page (register, 2026-10-11 night entry). Not met when last measured, on 2026-10-25: no rebuilt tree has been measured against it, and the free-check leg is red (register §C206). The register owns its status;* ✏️ *2026-11-08: the reading leg is met, and the QC leg's checks and "pass" are defined ([record](../decisions/2026-11-08-chemistry-sync-path-answers.md)).*
 - the research design (§7, D7).
 
 The calendar (D0) and the scope of the verdicts (D2) were answered on 2026-10-11 (§8).
@@ -258,6 +258,7 @@ category of AI suggestions that fails the short look is not shown
   - June's API text is the fallback for the 7 that June translated.
   - **If the 8th (an alt that only September has) comes back untranslated twice, it goes to editors as a flagged untranslated segment.** It never goes through the AI.
   - `--force --module` is not used: it would rewrite the module and revert a `HAND REPAIR`.
+  - ✏️ *2026-11-08: [USER] confirmed this route and **authorized the buy**, which runs once the re-request mode is built and tested, dry run first ([record](../decisions/2026-11-08-editing-gates-and-housekeeping-answers.md)).*
 - **2.4 September markup defects:** 42 MT-invented `<lágvísir>`-style tags, and legacy `~x~`/`^x^` in alts and table summaries. Render-check first; if they reach readers, normalise them in the rule layer.
   ✏️ *2026-10-28: the rule layer's normalisations reach editors as suggestions. Whether the MT preview takes these
   normalisations stays with the next chemistry sync decision (register, 2026-10-28)
@@ -307,6 +308,7 @@ category of AI suggestions that fails the short look is not shown
   - the register's ③ gate list;
   - MT locks re-applied;
   - an efni deploy.
+  - ✏️ *2026-11-08: [USER] adopted the Skerfur plan's SD1 (three gates), which amends this step, D8, 4.0's order and 4.2 as that plan's SD1 row states ([record](../decisions/2026-11-08-editing-gates-and-housekeeping-answers.md)).*
 - **4.5 Re-inject and re-render the preview from the new layers.**
   - The local `content/c2-whole-book-reinject` branch was built from pure September MT. Its content is superseded; its machinery is reused.
   - QC: the free checks, a marker census and a sentinel. Then [USER]'s preview.
@@ -409,8 +411,8 @@ more work on some editors.
 | # | Decision | Recommendation |
 |---|---|---|
 | D7 | Control arm (§7) | lean (b) |
-| D8 | The only gate on editing is timing and baseline capture | yes |
-| D9 | Publication criterion | as in 1.8. ✏️ *2026-10-25: adopted on 2026-10-11 ([USER] ticked all four conditions on the stage 1 page; register, 2026-10-11 night entry). Not met when last measured, on 2026-10-25 (register §C206 and that day's night entries, which own its status).* |
+| D8 | The only gate on editing is timing and baseline capture | yes. ✏️ *2026-11-08: amended by SD1's three gates ([record](../decisions/2026-11-08-editing-gates-and-housekeeping-answers.md))* |
+| D9 | Publication criterion | as in 1.8. ✏️ *2026-10-25: adopted on 2026-10-11 ([USER] ticked all four conditions on the stage 1 page; register, 2026-10-11 night entry). Not met when last measured, on 2026-10-25 (register §C206 and that day's night entries, which own its status).* ✏️ *2026-11-08: reading leg met; QC leg's checks and "pass" defined ([record](../decisions/2026-11-08-chemistry-sync-path-answers.md)).* |
 | D12 | Review depth for alts and table summaries (+38.6% English) | **urgent**: decide before editing starts. The contract requires every chapter reviewed and published within the 12 months. |
 | D13 | ch01–ch02's review remainder: the 106 new alt and table-summary segments, every other ch01–ch02 segment that 0.2 does not establish as human, the 8 Word files with no review activity, and applying the comments. Who reviews it, when, under which grant | **0.2 has counted it: under the D10 follow-up's recommendation, that is all of ch01–ch02**, with the comments as notes. The contract requires every chapter reviewed. The 134 units exclude ch01–ch02 as already reviewed, so this has no editing hours yet. Funding options are in the private companion; [USER] decides. |
 | D15 | §C50: the terminology panel's issue volume (2.81 per segment), which blocks U4 | re-measure on layer 2 first; the pass should remove much of it |
