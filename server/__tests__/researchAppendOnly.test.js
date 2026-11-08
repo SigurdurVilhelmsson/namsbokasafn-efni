@@ -33,7 +33,12 @@ const DELETE_ALLOWED = Object.freeze({
     tables: ['research_event_items', 'research_events', 'editor_keys'],
     reason: "a withdrawn interval's rows, its key last (spec §5.15, §5.16)",
   },
-  // Task 7: scripts/research-retention.js. Task 8: services/researchDeletion.js.
+  'scripts/research-retention.js': {
+    tables: ['research_event_items', 'research_events', 'editor_keys'],
+    reason:
+      'every research row, the key map included, once the retention date has passed (spec §5.15)',
+  },
+  // Task 8: services/researchDeletion.js.
 });
 const isAllowed = (f, allowed) =>
   Boolean(allowed[f.file]) &&
