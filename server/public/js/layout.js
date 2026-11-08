@@ -71,10 +71,10 @@
       </a>
     </div>
 
-    <!-- Admin section — admin/head-editor only -->
+    <!-- Admin section — admin/head-editor only; its /admin link is admin-only (§C210) -->
     <div class="sidebar-section" id="sidebar-section-admin" style="display:none">
       <div class="sidebar-section-label">Stjórnun</div>
-      <a href="/admin" class="nav-link" data-paths="/admin,/admin/users,/admin/books,/admin/feedback,/analytics">
+      <a href="/admin" class="nav-link" id="nav-admin" data-paths="/admin,/admin/users,/admin/books,/admin/feedback,/analytics">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
         <span>Stjórnandi</span>
       </a>
@@ -408,6 +408,15 @@
       navProfile.style.display = effectiveRole ? '' : 'none';
     }
 
+    // The admin panel link — the admin role only. /admin is
+    // requirePageAuth(ROLES.ADMIN) (routes/views.js), so showing the link to head
+    // editors, as the rest of the Stjórnun section is, sent them to a bounce (§C210).
+    const showAdminPanel = effectiveRole === 'admin';
+    const navAdmin = document.getElementById('nav-admin');
+    if (navAdmin) {
+      navAdmin.style.display = showAdminPanel ? '' : 'none';
+    }
+
     // Localization editor — admin-only until Pass 2 workflow is verified
     const navLocalization = document.getElementById('nav-localization');
     if (navLocalization) {
@@ -419,6 +428,13 @@
     // element keep its natural display type (block for div, inline-block for button, etc.)
     document.querySelectorAll('.admin-only').forEach(function (el) {
       el.classList.toggle('visible', showAdmin);
+    });
+
+    // .admin-only shows to admins AND head editors, despite its name.
+    // .admin-role-only shows to the admin role alone: use it for anything that
+    // leads to /admin, which admits only admins (§C210).
+    document.querySelectorAll('.admin-role-only').forEach(function (el) {
+      el.classList.toggle('visible', showAdminPanel);
     });
 
     document.querySelectorAll('.reviewer-only').forEach(function (el) {

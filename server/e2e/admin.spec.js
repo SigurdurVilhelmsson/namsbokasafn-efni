@@ -131,3 +131,66 @@ test.describe('Role-based visibility', () => {
     }
   });
 });
+
+/**
+ * §C210: a link that leads to /admin is shown only to admins.
+ *
+ * `/admin` is `requirePageAuth(ROLES.ADMIN)` (server/routes/views.js), so a head
+ * editor who followed the sidebar's "Stjórnandi" link, or the feedback page's
+ * "Stjórnborð endurgjafar" button (/admin/feedback → /admin?tab=feedback), was
+ * bounced to `/`. Both links were shown to head editors.
+ *
+ * ⚠️ Every hidden-link check first WAITS FOR A POSITIVE SIGNAL that layout.js has
+ * applied the role (the Stjórnun section becoming visible). The section starts
+ * hidden for everyone, so a bare `not.toBeVisible()` would pass before any role
+ * logic ran, and prove nothing.
+ */
+test.describe('§C210: links to /admin are for admins only', () => {
+  const ADMIN_SECTION = '#sidebar-section-admin';
+  const ADMIN_LINK = `${ADMIN_SECTION} a[href="/admin"]`;
+  const LIBRARY_LINK = `${ADMIN_SECTION} a[href="/library"]`;
+
+  test('premise: /admin bounces a head editor to /', async ({ page }) => {
+    await loginAs(page, 'head-editor');
+    await page.goto('/admin');
+    await expect(page).toHaveURL(/\/$/);
+  });
+
+  test('a head editor sees the Stjórnun section but not the Stjórnandi link', async ({ page }) => {
+    await loginAs(page, 'head-editor');
+    await page.goto('/');
+    await expect(page.locator(ADMIN_SECTION)).toBeVisible({ timeout: 10000 }); // roles applied
+    await expect(page.locator(LIBRARY_LINK)).toBeVisible(); // its siblings still show
+    await expect(page.locator(ADMIN_LINK)).toBeHidden();
+  });
+
+  test('an admin sees the Stjórnandi link', async ({ page }) => {
+    await loginAs(page, 'admin');
+    await page.goto('/');
+    await expect(page.locator(ADMIN_SECTION)).toBeVisible({ timeout: 10000 });
+    await expect(page.locator(ADMIN_LINK)).toBeVisible();
+  });
+
+  test('an admin previewing as head editor does not see the Stjórnandi link', async ({ page }) => {
+    await page.addInitScript(() => sessionStorage.setItem('rolePreviewOverride', 'head-editor'));
+    await loginAs(page, 'admin');
+    await page.goto('/');
+    await expect(page.locator(ADMIN_SECTION)).toBeVisible({ timeout: 10000 });
+    await expect(page.locator(LIBRARY_LINK)).toBeVisible();
+    await expect(page.locator(ADMIN_LINK)).toBeHidden();
+  });
+
+  test('the feedback page hides its admin button from a head editor', async ({ page }) => {
+    await loginAs(page, 'head-editor');
+    await page.goto('/feedback');
+    await expect(page.locator(ADMIN_SECTION)).toBeVisible({ timeout: 10000 }); // roles applied
+    await expect(page.locator('#admin-link')).toBeHidden();
+  });
+
+  test('the feedback page shows its admin button to an admin', async ({ page }) => {
+    await loginAs(page, 'admin');
+    await page.goto('/feedback');
+    await expect(page.locator(ADMIN_SECTION)).toBeVisible({ timeout: 10000 });
+    await expect(page.locator('#admin-link')).toBeVisible();
+  });
+});
