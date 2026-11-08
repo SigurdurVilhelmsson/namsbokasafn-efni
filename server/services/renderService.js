@@ -96,6 +96,14 @@ async function renderModule(book, chapter, moduleId, track = 'faithful') {
   );
   const termEnglishByModule = loadChapterTermEnglish(book, chapterStr).byModule;
 
+  // The module's English source, so ruled para-titles render from the house value
+  // (H3 item 1, docs/decisions/2026-11-08-h3-four-form-rulings-chemistry.md), as on
+  // the CLI. Loaded here for the same cwd reason as the term maps above.
+  const { loadSourceCnxml } = await import(
+    path.join(PROJECT_ROOT, 'tools', 'lib', 'source-cnxml.js')
+  );
+  const sourceCnxml = loadSourceCnxml(book, chapterStr, moduleId);
+
   // Load book config for note labels, section types, etc.
   // getBookRenderConfig throws if the book has no book-config.json — surface it
   // as a clean, book-scoped error rather than an unhandled throw.
@@ -117,6 +125,7 @@ async function renderModule(book, chapter, moduleId, track = 'faithful') {
     // THIS module's map only — never the chapter-wide union: `term-0000N` is
     // OpenStax's own id and restarts in every module.
     termEnglish: termEnglishByModule.get(moduleId) || null,
+    sourceCnxml,
     // Chapter-wide numbering maps — empty for preview (shows "?" for cross-refs)
     chapterFigureNumbers: new Map(),
     chapterTableNumbers: new Map(),

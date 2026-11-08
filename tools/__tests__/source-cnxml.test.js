@@ -8,9 +8,11 @@
  */
 
 import { describe, it, expect } from 'vitest';
+import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { loadSourceCnxml } from '../lib/source-cnxml.js';
+import { loadSourceCnxml, readSourceCnxml } from '../lib/source-cnxml.js';
 
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 
@@ -25,6 +27,17 @@ describe('loadSourceCnxml', () => {
 
   it('returns null for a module id that tries to leave the source tree', () => {
     expect(loadSourceCnxml('efnafraedi-2e', 'ch09', '../ch10/m68761')).toBeNull();
+  });
+
+  it('readSourceCnxml reads from the book directory it is given', () => {
+    const bookDir = fs.mkdtempSync(path.join(os.tmpdir(), 'source-cnxml-'));
+    try {
+      fs.mkdirSync(path.join(bookDir, '01-source', 'ch02'), { recursive: true });
+      fs.writeFileSync(path.join(bookDir, '01-source', 'ch02', 'm1.cnxml'), '<document/>');
+      expect(readSourceCnxml(bookDir, 'ch02', 'm1')).toBe('<document/>');
+    } finally {
+      fs.rmSync(bookDir, { recursive: true, force: true });
+    }
   });
 
   it('resolves against the repo, not the working directory', () => {

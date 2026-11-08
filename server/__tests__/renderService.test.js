@@ -190,3 +190,63 @@ describe('renderModule track forwarding (D3 task-review finding 1b)', () => {
     expect(probedPaths.some((p) => p.endsWith(staleDefaultSuffix))).toBe(false);
   });
 });
+
+/**
+ * H3 item 1 (docs/decisions/2026-11-08-h3-four-form-rulings-chemistry.md):
+ * "Vista + Birta" renders through renderModule(), so it must pass the module's
+ * 01-source to the renderer as the CLI does, or a server-side publish would put
+ * the MT's varied "Check Your Learning" headings back. Fakes the translated and
+ * source files of a probe module; everything else hits the real repo.
+ */
+describe('renderModule source-keyed heading (H3 item 1)', () => {
+  it('renders the worked-example "Check Your Learning" heading as the house value', async () => {
+    const PROJECT_ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
+    const book = 'efnafraedi-2e';
+    const moduleId = '__h3-cyl-probe__';
+    const bookDir = path.join(PROJECT_ROOT, 'books', book);
+    const translatedPath = path.join(
+      bookDir,
+      '03-translated',
+      'mt-preview',
+      'ch01',
+      `${moduleId}.cnxml`
+    );
+    const sourcePath = path.join(bookDir, '01-source', 'ch01', `${moduleId}.cnxml`);
+    const doc = (inner) =>
+      `<document xmlns="http://cnx.rice.edu/cnxml"><title>T</title><content>${inner}</content></document>`;
+    const files = {
+      [translatedPath]: doc(
+        '<example id="E"><para id="p1"><title>Dæmatitill</title>Texti.</para>' +
+          '<para id="fs-cyl"><title>Kannaðu þekkingu þína</title>Spurning?</para></example>'
+      ),
+      [sourcePath]: doc(
+        '<example id="E"><para id="p1"><title>An Example</title>Text.</para>' +
+          '<para id="fs-cyl"><title>Check Your Learning</title>Question?</para></example>'
+      ),
+    };
+
+    const realExistsSync = fs.existsSync.bind(fs);
+    const realReadFileSync = fs.readFileSync.bind(fs);
+    const existsSpy = vi
+      .spyOn(fs, 'existsSync')
+      .mockImplementation((p) => String(p) in files || realExistsSync(p));
+    const readSpy = vi
+      .spyOn(fs, 'readFileSync')
+      .mockImplementation((p, ...rest) =>
+        String(p) in files ? files[String(p)] : realReadFileSync(p, ...rest)
+      );
+
+    let html;
+    try {
+      const renderService = require('../services/renderService.js');
+      ({ html } = await renderService.renderModule(book, 1, moduleId, 'mt-preview'));
+    } finally {
+      existsSpy.mockRestore();
+      readSpy.mockRestore();
+    }
+
+    expect(html).toMatch(
+      /<p class="para-title"><strong>Prófaðu þekkingu þína<\/strong><\/p>\s*<p id="fs-cyl"/
+    );
+  });
+});

@@ -69,6 +69,7 @@ import {
 import { decodeEntities } from './lib/math-label-inventory.js';
 import { buildModuleSections } from './lib/module-sections.js';
 import { loadChapterTermEnglish } from './lib/term-english-map.js';
+import { readSourceCnxml } from './lib/source-cnxml.js';
 import { safeWrite, logBackup } from './lib/safeWrite.js';
 // §C145 ② — shared with cnxml-inject.js's gate, so the two cannot drift.
 import {
@@ -4328,6 +4329,14 @@ async function main() {
 
           const cnxmlPath = translatedCnxmlPath(args.track, chapterDir, moduleId);
           const cnxml = fs.readFileSync(cnxmlPath, 'utf-8');
+          // H3 item 1: the module's English source keys its ruled para-titles.
+          // A missing source is printed, never silent (it only means MT headings).
+          const sourceCnxml = readSourceCnxml(BOOKS_DIR, chapterDir, moduleId);
+          if (!sourceCnxml) {
+            console.log(
+              `  source: no 01-source/${chapterDir}/${moduleId}.cnxml — para-titles render as translated`
+            );
+          }
 
           const renderResult = renderCnxmlToHtml(cnxml, {
             verbose: args.verbose,
@@ -4336,6 +4345,7 @@ async function main() {
             moduleId,
             // THIS module's map only — never the chapter-wide union.
             termEnglish: termEnglish.byModule.get(moduleId) || null,
+            sourceCnxml,
             moduleSections,
             chapterFigureNumbers,
             chapterTableNumbers,

@@ -202,6 +202,35 @@ describe('cnxml-render', () => {
     expect(html).toContain('</html>');
   });
 
+  // H3 item 1 (docs/decisions/2026-11-08-h3-four-form-rulings-chemistry.md): the
+  // CLI passes each module's 01-source to the renderer, so every worked-example
+  // "Check Your Learning" heading renders as the house value. Reads the chapter 1
+  // render from the first test above; keyed on para id, from a census of the source.
+  it('renders every worked-example Check Your Learning heading in chapter 1 as the house value', () => {
+    const srcDir = join(BOOKS, '01-source', 'ch01');
+    const ids = readdirSync(srcDir)
+      .filter((f) => f.endsWith('.cnxml'))
+      .flatMap((f) =>
+        [
+          ...readFileSync(join(srcDir, f), 'utf8').matchAll(
+            /<para\b((?:"[^"]*"|'[^']*'|[^>'"])*)>\s*<title>\s*check your learning\.?\s*<\/title>/gi
+          ),
+        ].map((m) => m[1].match(/\bid="([^"]+)"/)[1])
+      );
+    const outDir = join(BOOKS, '05-publication', 'mt-preview', 'chapters', '01');
+    const html = readdirSync(outDir)
+      .filter((f) => f.endsWith('.html'))
+      .map((f) => readFileSync(join(outDir, f), 'utf8'))
+      .join('\n');
+    const headingFor = (id) =>
+      (html.match(
+        new RegExp(`<p class="para-title"><strong>([^<]*)</strong></p>\\s*<p id="${id}"`)
+      ) || [])[1];
+
+    expect(ids.length).toBeGreaterThan(0);
+    expect(ids.filter((id) => headingFor(id) !== 'Prófaðu þekkingu þína')).toEqual([]);
+  });
+
   it('should include translated content', () => {
     const html = readFileSync(
       join(
