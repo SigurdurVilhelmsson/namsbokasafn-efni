@@ -3998,6 +3998,16 @@ ${anchors}
 
 async function main() {
   const args = parseCliArgs(process.argv.slice(2));
+
+  // §C210: help and --book come BEFORE anything that reads the book. The config
+  // load used to run first, so with no --book it reached path.join(null) and
+  // crashed with a raw TypeError instead of printing usage or naming --book.
+  if (args.help) {
+    printHelp();
+    process.exit(0);
+  }
+  requireBook(args);
+
   BOOK_SLUG = args.book;
   BOOKS_DIR = `books/${args.book}`;
   RENDER_TRACK = args.track || 'mt-preview';
@@ -4008,12 +4018,6 @@ async function main() {
   NOTE_TYPE_LABELS = BOOK_CONFIG.noteTypeLabels;
   TITLE_TRANSLATIONS = BOOK_CONFIG.titleTranslations;
   EMBED_MAP = loadEmbedMapping(BOOK_SLUG);
-
-  if (args.help) {
-    printHelp();
-    process.exit(0);
-  }
-  requireBook(args);
 
   if (args.chapter == null) {
     // NB: `== null` (not `!args.chapter`) so chapter 0 (the preface / ch00) is valid.
