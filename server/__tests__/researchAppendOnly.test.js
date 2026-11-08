@@ -38,7 +38,11 @@ const DELETE_ALLOWED = Object.freeze({
     reason:
       'every research row, the key map included, once the retention date has passed (spec §5.15)',
   },
-  // Task 8: services/researchDeletion.js.
+  'services/researchDeletion.js': {
+    tables: ['research_event_items', 'research_events'],
+    reason:
+      "the withdraw route's immediate deletion; the key row stays for research-withdrawal.js (spec §5.15)",
+  },
 });
 const isAllowed = (f, allowed) =>
   Boolean(allowed[f.file]) &&
@@ -121,6 +125,8 @@ describe('append-only research rows (spec §5.9; decision 41)', () => {
         '  ON CONFLICT (interval_id) DO UPDATE SET editor_key = excluded.editor_key`);',
       ].join('\n'),
       'scripts/research-backup.js': '"DELETE FROM research_events";',
+      // The deletion service may never delete the key row: research-withdrawal.js does, last.
+      'services/researchDeletion.js': '"DELETE FROM editor_keys";',
     });
     expect(
       mutations(root)
@@ -130,6 +136,7 @@ describe('append-only research rows (spec §5.9; decision 41)', () => {
       'scripts/research-backup.js DELETE FROM research_events',
       'scripts/research-withdrawal.js UPDATE research_events',
       'scripts/research-withdrawal.js UPSERT editor_keys',
+      'services/researchDeletion.js DELETE FROM editor_keys',
     ]);
   });
 

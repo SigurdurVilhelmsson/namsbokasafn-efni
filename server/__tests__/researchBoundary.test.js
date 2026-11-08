@@ -566,6 +566,13 @@ describe('T17 (PR3): research-* scripts read no editing record (spec §5.22)', (
     );
   });
 
+  it('T17 (PR4): the deletion service is write-only, and no route names the research handle', () => {
+    expect(Object.keys(require('../services/researchDeletion'))).toEqual(['deleteIntervalRowsNow']);
+    const routeSrc = readFileSync(path.join(SERVER_ROOT, 'routes', 'research.js'), 'latin1');
+    expect(routeSrc).toMatch(/require\('\.\.\/services\/researchDeletion'\)/);
+    expect(filesNaming(path.join(SERVER_ROOT, 'routes'), ROUTE_FORBIDDEN)).toEqual([]);
+  });
+
   it('controls: the exception covers research_consent only, and only for its own file', () => {
     const tmp = mkdtempSync(path.join(tmpdir(), 't17-pr3-scripts-'));
     const put = (name, text) => {

@@ -122,6 +122,7 @@ const ENV_SCAN_FILES = Object.freeze([
   'lib/researchFiles.js',
   'lib/researchBackupPolicy.js',
   'lib/researchRetention.js',
+  'services/researchDeletion.js',
 ]);
 
 /**
