@@ -168,6 +168,11 @@ const DEFAULT_BOOKS_DIR = 'books/efnafraedi-2e';
 let BOOKS_DIR = DEFAULT_BOOKS_DIR;
 let BOOK_SLUG = 'efnafraedi-2e';
 
+// The reader site's host, for text a reader must be able to type (a printed
+// PDF shows a link's text, not its href). Links themselves stay root-relative.
+// The site has moved host before (efnafraedi.app → namsbokasafn.is).
+const READER_SITE_HOST = 'namsbokasafn.is';
+
 // Item 9/D3: active publication track for os-embed sidecar preference and
 // the run's translated/fallback tally. Sticky module global, defaulting to
 // 'mt-preview': renderCnxmlToHtml() only reassigns it when options.track is
@@ -3906,6 +3911,41 @@ function buildKeyTermsItems(sectionInner, opts) {
   return termLines;
 }
 
+/**
+ * The `<main>` block that replaces the static table on a book's periodic-table
+ * appendix page (`book-config.json` `specialModules` → 'periodic-table'): a
+ * button to the interactive table plus a plain-text fallback link.
+ *
+ * The fallback is the only line the PDFs show (vefur's print.css hides the
+ * button), so its text is the full site address; vefur's print renderer turns
+ * the root-relative href into an absolute one.
+ *
+ * @param {string} bookSlug - The book's slug; the interactive table lives at `/<bookSlug>/lotukerfi`.
+ * @param {string[]} preservedIds - Element ids from the replaced content, kept as empty
+ *   anchors so cross-references into the page (e.g. "viðauka A") still resolve.
+ * @returns {string} The `<main>…</main>` HTML.
+ */
+function buildPeriodicTableMain(bookSlug, preservedIds) {
+  const anchors = preservedIds
+    .map((id) => `<span id="${id}" class="preserved-anchor"></span>`)
+    .join('');
+  return `<main>
+${anchors}
+<div style="text-align: center; padding: 2rem;">
+  <h2>Gagnavirkt lotukerfi frumefna</h2>
+  <p style="font-size: 1.1rem; margin: 1.5rem 0;">
+    Skoðaðu gagnavirkt lotukerfi okkar þar sem þú getur séð nákvæmar upplýsingar um öll frumefni.
+  </p>
+  <a href="/${bookSlug}/lotukerfi" class="periodic-table-link" style="display: inline-block; padding: 1rem 2rem; background-color: #0066cc; color: white; text-decoration: none; border-radius: 4px; font-size: 1.1rem; margin-top: 1rem;">
+    Opna gagnavirka lotukerfið
+  </a>
+  <p style="margin-top: 2rem; color: #666;">
+    <em>Einnig er hægt að nálgast lotukerfið beint á: <a href="/${bookSlug}/lotukerfi">${READER_SITE_HOST}/${bookSlug}/lotukerfi</a></em>
+  </p>
+</div>
+</main>`;
+}
+
 async function main() {
   const args = parseCliArgs(process.argv.slice(2));
   BOOK_SLUG = args.book;
@@ -4296,24 +4336,7 @@ async function main() {
                   Array.from(mainContentMatch[2].matchAll(/\sid="([^"]+)"/g)).map((m) => m[1])
                 )
               ).filter((id) => id !== 'title' && id !== 'page-data');
-              const anchors = preservedIds
-                .map((id) => `<span id="${id}" class="preserved-anchor"></span>`)
-                .join('');
-              const newMainContent = `<main>
-${anchors}
-<div style="text-align: center; padding: 2rem;">
-  <h2>Gagnavirkt lotukerfi frumefna</h2>
-  <p style="font-size: 1.1rem; margin: 1.5rem 0;">
-    Skoðaðu gagnavirkt lotukerfi okkar þar sem þú getur séð nákvæmar upplýsingar um öll frumefni.
-  </p>
-  <a href="/${BOOK_SLUG}/lotukerfi" class="periodic-table-link" style="display: inline-block; padding: 1rem 2rem; background-color: #0066cc; color: white; text-decoration: none; border-radius: 4px; font-size: 1.1rem; margin-top: 1rem;">
-    Opna gagnavirka lotukerfið
-  </a>
-  <p style="margin-top: 2rem; color: #666;">
-    <em>Einnig er hægt að nálgast lotukerfið beint á: <a href="/${BOOK_SLUG}/lotukerfi">/${BOOK_SLUG}/lotukerfi</a></em>
-  </p>
-</div>
-</main>`;
+              const newMainContent = buildPeriodicTableMain(BOOK_SLUG, preservedIds);
               html = html.replace(/(<main>)[\s\S]*?(<\/main>)/, newMainContent);
             }
           }
@@ -4913,6 +4936,7 @@ export {
   renderKeyEquations,
   buildAppendixIdMap,
   buildKeyTermsItems,
+  buildPeriodicTableMain,
   rollbackWrittenFiles,
   assertNoMarkerResidueHtml, // §C145 ②
   assertNoMarkerResidueInInputs, // §C145 ② pre-flight
