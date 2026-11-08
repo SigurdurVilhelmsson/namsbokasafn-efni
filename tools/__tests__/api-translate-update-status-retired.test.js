@@ -2,9 +2,9 @@
  * `--update-status` is RETIRED, and `api-translate.js` loads no `server/` code.
  *
  * The flag used to require AGPL `server/services/pipelineStatusService.js` from this MIT
- * tool to mark a chapter's `mtOutput` stage complete — the one optional, try/catch-guarded
- * edge CLAUDE.md § E-2 said to sever. Root `LICENSE` class 1 is empty now, and these tests
- * are what keep it empty.
+ * tool to mark a chapter's `mtOutput` stage complete — the optional, try/catch-guarded edge
+ * CLAUDE.md § E-2 said to sever. Its entry in root `LICENSE` class 1 is gone, and these tests
+ * keep this file from bringing it, or any other `server/` load, back.
  *
  * ⚠️ The flag stays DECLARED in `parseCliArgs`: `parseArgs` drops an undeclared flag
  * silently, so an old command line would run at full strength with the flag ignored. The
@@ -69,7 +69,7 @@ describe('--update-status refuses — api-translate no longer writes the status 
   });
 });
 
-describe('api-translate.js loads no server/ code — root LICENSE class 1 is empty', () => {
+describe('api-translate.js loads no server/ code — its LICENSE class-1 edge stays severed', () => {
   const src = fs.readFileSync(API_TRANSLATE, 'utf8');
   const specifiers = [...src.matchAll(LOAD)].map((m) => m[2] ?? m[4]);
 

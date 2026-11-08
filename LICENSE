@@ -96,18 +96,27 @@ published.)*
 > parts of that tooling reach into `server/`, which is AGPL-3.0. This changes
 > nobody's rights either way; it is a combination caveat, recorded so that
 > anyone taking the MIT tooling on its own knows what it expects to find beside
-> it. The edges fall into five classes; the first is empty at present:
+> it. The edges fall into five classes:
 >
-> 1. **Optional, guarded** — loads AGPL code inside a try/catch; the tool works
->    without `server/`.
->    - *None at present.*
+> 1. **Optional, guarded** — loads AGPL code inside a try/catch or behind an
+>    equivalent fallback; the tool works without `server/`.
+>    - `experiments/terminology-consistency/measure.py:199`,
+>      `experiments/mt-vintage-comparison/scripts/tooling/tcmeasure.py:199` and
+>      `experiments/mt-vintage-comparison/scripts/critic/measure_copy.py:199` read
+>      `server/lib/houseStyleTerms.js` from git history at a chosen ref
+>      (`git show <ref>:<path>`) and run it under `node`, in a child process, to get
+>      the house-style rulings. If the file is absent at that ref, or `node` fails,
+>      they return no rulings and run on with those fields empty. They need the
+>      file in the repository's history, not in the working tree.
+>      `experiments/d11-glossary-test/analyse.py:95` reaches the same file through
+>      `measure.py`, which it imports unchanged and feeds the source text.
 >
 >    *(`tools/api-translate.js` → `server/services/pipelineStatusService.js` sat
 >    here until 2026-11-08, cited at `:1768` though the require had drifted to
 >    `:2758`. Its `--update-status` flag loaded the service to mark a chapter's
 >    `mtOutput` stage complete. The require was removed that day, and the flag now
->    refuses rather than being dropped silently. The class is kept, empty, so the
->    class numbers cited below and elsewhere keep their meaning.)*
+>    refuses rather than being dropped silently. The Python entries were added
+>    the same day: no census before then had scanned Python.)*
 > 2. **Required, unguarded** — loads AGPL code, with no try/catch to fall back
 >    on. Split by *when* it loads, because that is what decides whether the tool
 >    runs at all without `server/`.
@@ -127,6 +136,10 @@ published.)*
 >      `server/services/segmentParser.js` and `:376` →
 >      `server/services/segmentEditorService.js`, both lazy — but `:47` already
 >      makes the file load-time)
+>    - `experiments/mt-vintage-comparison/scripts/tooling/binreach.py:6` reads
+>      `server/lib/houseStyleTerms.js` and runs it under `node`, in a child process,
+>      at module level, so importing the script runs it, and there is no fallback.
+>      It also hardcodes one machine's checkout path.
 >
 >    **(b) At run time, not import time — the module imports fine without
 >    `server/`. Whether it also RUNS without it differs per entry, so each one
@@ -146,6 +159,10 @@ published.)*
 >      point, `main()` (`:285`) calls it unconditionally, and the requires sit
 >      above every `--db`/dry-run branch. Only importing and never calling
 >      avoids `server/`.
+>    - `experiments/terminology-consistency/compile_ruling_set.py:34` →
+>      `server/lib/houseStyleTerms.js`, which `house_terms()` (`:76`) `require`s
+>      in a `node` child process with `check=True`. `main()` calls it on every run
+>      (`:84`), so the script does not run without the file.
 >
 >    The `chapterLabel` imports are deliberate: it is the project's canonical
 >    converter between the two on-disk spellings of the appendices chapter, and
@@ -211,7 +228,10 @@ published.)*
 >      (`dfde5156c`).)*
 > 5. **Separate process, not a load** — spawns a `server/` script as its own
 >    Node process and reads its stdout. No AGPL code enters the MIT process, but
->    the tool cannot produce a verdict without `server/` present.
+>    the tool cannot produce a verdict without `server/` present. (The Python
+>    `houseStyleTerms.js` readers in classes 1 and 2 also use a `node` child, but
+>    they are not here: the program that loads the AGPL module there is the MIT
+>    script's own `require` or wrapper, not a `server/` script.)
 >    - `tools/remt-ctx.js:368` and `tools/lib/remt-checks-glossary.js:482` both
 >      run `server/scripts/check-glossary-payload.js --file … --json`. They are
 >      the sync and async halves of the same loader for the re-MT battery's G5
@@ -220,16 +240,24 @@ published.)*
 >      *(Added 2026-09-07. Both were already matched by the second search shape
 >      below and had simply never been written down — the class is new here, the
 >      edges are not, and no fifth search shape is needed to find them.)*
+>    - `scripts/git-backup.sh:141` runs `server/scripts/export-terminology.js`,
+>      the content-backup cron's glossary export. Unlike the entries above, the
+>      backup itself runs without `server/`: a failed export is logged as a
+>      warning and the content backup continues. *(Added 2026-11-08. No census
+>      before then had scanned shell scripts, and its path is interpolated, which
+>      only the fifth search shape below can see.)*
 >
 > This list is the authoritative enumeration — update it here when an edge is
-> added or removed, and re-derive rather than trusting it. **Four** search shapes
+> added or removed, and re-derive rather than trusting it. **Five** search shapes
 > are needed, because none of them sees the others' matches. *(This said three
 > until 2026-09-07, when adding `experiments/` found two edges that all three
 > missed — the note's own instruction to re-derive rather than trust it is what
-> caught them.)*
+> caught them. It said four until 2026-11-08, when the fifth, an interpolated
+> path, turned up in a Python script and a shell script.)*
 >
 > - a literal `'../server/…'`;
-> - a computed `path.join`/`path.resolve` over a separate `'server'` argument;
+> - a computed `path.join`/`path.resolve` (or Python's `os.path.join`) over a
+>   separate `'server'` argument;
 > - any string literal *beginning* `'server/'` — a whole path
 >   (`'server/node_modules/…'`, `'server/data'`, `'server/routes'`) or the bare
 >   prefix `'server/'` used to anchor a `createRequire`. The first two shapes
@@ -241,6 +269,15 @@ published.)*
 >   three shapes are all blind to it. `probe-img.mjs` above is reachable only
 >   this way. *(This said "the two `experiments/` entries" until 2026-11-08;
 >   `render-check.mjs` is now matched by the second shape.)*
+> - an **interpolated** path — a Python f-string `f'{REPO}/server/…'`, or a shell
+>   or JavaScript `${ROOT}/server/…` — whose string begins with the interpolation,
+>   so none of the four shapes above can match it. Search for `}/server/`.
+>   `binreach.py` and `scripts/git-backup.sh:141` are reachable only this way.
+>
+> Run every shape over all the code in these trees — `.js`, `.mjs`, `.cjs`, `.py`
+> and `.sh` — not over JavaScript alone. Until 2026-11-08 the census had only
+> ever been run over JavaScript, which is how the Python and shell entries above
+> went unlisted.
 >
 > And do not filter `node_modules` out of the results. An exclusion meant to
 > skip files *inside* `node_modules` also hides every edge that merely mentions
@@ -254,6 +291,19 @@ published.)*
 > `scripts/` to operate the pipeline does not run them. Listing only the thinnest
 > of them would be worse than listing none, because some are heavier than
 > anything above: a test may execute AGPL services directly.
+>
+> The same holds for the instruments kept under `experiments/**/evidence/`. Each
+> dated folder there holds the scripts that reproduced one past measurement, kept
+> unchanged beside the record they support, and they are deliberately outside this
+> list too: they replay that measurement and are not part of what the tooling needs
+> in order to run. Some reach into `server/`. Most of those load `playwright` through
+> `server/node_modules`, often by an absolute path into one machine's checkout, so
+> they do not run elsewhere at all. At least one loads AGPL code directly:
+> `experiments/figure-text-translation/evidence/2026-09-13-compose-fidelity/instruments/verify/harness.mjs`
+> requires `server/services/figureReviewService.js` and a server migration to replay
+> a figure-review measurement. A new evidence folder therefore needs no entry here.
+> *(Added 2026-11-08, after a whole-branch review found that harness listed
+> nowhere and not excluded either.)*
 
 ```
 MIT License
