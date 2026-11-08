@@ -113,7 +113,8 @@ There are two `.env` files, read by different programs:
 - **The pipeline tools read a `.env` at the repo root**, and only when the variable is not
   already in the environment: `MALSTADUR_API_KEY` for the Málstaður API
   (`tools/api-translate.js`, `tools/translate-chapter-titles.js`) and `ANTHROPIC_API_KEY`
-  for the AI-review harness (`tools/ai-review/`). Both files are git-ignored.
+  (plus an optional `ANTHROPIC_WORKSPACE_ID`) for the AI-review harness (`tools/ai-review/`).
+  Its template is the root `.env.example`. Both files are git-ignored.
 
 ### 4. Run the workflow server
 

@@ -100,15 +100,16 @@ variable is read.
 | `ADMIN_EMAIL` | Recipient of feedback notifications | `services/notifications.js` |
 | `SMTP_HOST` · `SMTP_PORT` · `SMTP_SECURE` · `SMTP_USER` · `SMTP_PASS` · `SMTP_FROM` | Outgoing mail. Mail is off unless host, user and password are all set (`isEmailConfigured`) | `services/notifications.js` |
 | `GREYNIR_URL` | Optional Icelandic grammar sidecar ([greynir-sidecar/](greynir-sidecar/README.md)); unset means no grammar findings | `services/greynirEngine.js` |
-| `SESSIONS_DB_PATH` | Overrides the database location | `lib/dbPath.js` |
+| `SESSIONS_DB_PATH` | Overrides the database location. Do not set it in `.env` on a real install: the cron jobs do not load `.env`, so they would keep using the default database | `lib/dbPath.js` |
 | `LOG_LEVEL` | Log level (`debug`, `info`, `warn`, `error`) | `lib/logger.js` |
 | `RATE_LIMIT_WINDOW_MS` · `RATE_LIMIT_MAX` · `RATE_LIMIT_AUTH_MAX` | Request rate limits | `config.js` |
 | `SLOW_REQUEST_MS` | Threshold for logging a slow request | `index.js` |
 | `OFFBOX_BACKUP_STALE_HOURS` · `CONTENT_BACKUP_STALE_HOURS` · `GLOSSARY_EXPORT_STALE_HOURS` · `GLOSSARY_REFUSAL_STALE_DAYS` | When `GET /api/health` calls a heartbeat stale; the defaults are in the health modules under `lib/` | `index.js` |
 
-`.env.example` also lists `GITHUB_*` and `MATECAT_*` variables. The server reads none of
-them. `MALSTADUR_API_KEY` belongs to the pipeline tools, which read the repo-root `.env`
-— see the root [README](../README.md#3-environment-variables).
+`.env.example` lists exactly these variables, and `__tests__/envExampleCensus.test.js` fails if
+the code and the template drift apart. `MALSTADUR_API_KEY` and the Anthropic keys belong to the
+pipeline tools, which read the repo-root `.env` — see the root
+[README](../README.md#3-environment-variables).
 
 ## Architecture
 
