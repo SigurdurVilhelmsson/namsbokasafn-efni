@@ -12,22 +12,35 @@ The pipeline produces three distinct assets, each valuable on its own:
 2. **Translation memory** — Segment-aligned EN-IS parallel corpus in TMX format. Useful for training MT systems, fine-tuning Icelandic language models, and other translation projects.
 3. **Localized content** — Versions adapted specifically for Icelandic secondary school students, with SI units, local context, and extended exercises where beneficial.
 
+The project is also a **research evaluation of AI-assisted machine translation**, its cost and its quality. The machine translation is kept exactly as the Málstaður API returned it; an AI review pass and the editors' work are each kept as separate layers, so the three can be compared; and every post-processing step is documented. The rules are in [CLAUDE.md § Purpose](CLAUDE.md#purpose).
+
 Content licensing is **per book, not uniform** — see [Licensing](#licensing). The tooling is MIT-licensed, except the editorial server (`server/`), which is AGPL-3.0. If you're working on textbook translation for another language, the pipeline and tools are designed to be reusable.
 
 ### Books
 
-| Book | Slug | Source | Licence |
-|------|------|--------|---------|
-| **Efnafræði** (Chemistry 2e) | `efnafraedi-2e` | [OpenStax](https://openstax.org/details/books/chemistry-2e) | CC BY 4.0 |
-| **Líffræði** (Biology 2e) | `liffraedi-2e` | [OpenStax](https://openstax.org/details/books/biology-2e) | CC BY 4.0 |
-| **Örverufræði** (Microbiology) | `orverufraedi` | [OpenStax](https://openstax.org/details/books/microbiology) | CC BY 4.0 |
-| **Lífræn efnafræði** (Organic Chemistry) | `lifraen-efnafraedi` | [OpenStax](https://openstax.org/details/books/organic-chemistry) | **CC BY-NC-SA 4.0** |
-| **Eðlisfræði** (College Physics 2e) | `edlisfraedi-2e` | [OpenStax](https://openstax.org/details/books/college-physics-2e) | **CC BY-NC-SA 4.0** |
+| Book | Slug | Source |
+|------|------|--------|
+| **Efnafræði** (Chemistry 2e) | `efnafraedi-2e` | [OpenStax](https://openstax.org/details/books/chemistry-2e) |
+| **Líffræði** (Biology 2e) | `liffraedi-2e` | [OpenStax](https://openstax.org/details/books/biology-2e) |
+| **Örverufræði** (Microbiology) | `orverufraedi` | [OpenStax](https://openstax.org/details/books/microbiology) |
+| **Lífræn efnafræði** (Organic Chemistry) | `lifraen-efnafraedi` | [OpenStax](https://openstax.org/details/books/organic-chemistry) — **not translated**, see below |
+| **Eðlisfræði** (College Physics 2e) | `edlisfraedi-2e` | [OpenStax](https://openstax.org/details/books/college-physics-2e) |
 
-Which of these actually reach [namsbokasafn.is](https://namsbokasafn.is) is decided by the
-publication allowlist in the reader repo (`scripts/lib/published-books.js` in
+**Organic Chemistry is not translated.** OpenStax told the project that it cannot
+authorise a translation of this book: it was donated by its author and its translation
+rights are limited. Its CNXML source and glossary stay in the repository. Record:
+[docs/decisions/2026-09-23-organic-translation-stopped-openstax-notice.md](docs/decisions/2026-09-23-organic-translation-stopped-openstax-notice.md).
+
+Each book's licence is in its `books/<slug>/book-config.json` — see [Licensing](#licensing).
+Which books reach [namsbokasafn.is](https://namsbokasafn.is) is decided by the publication
+allowlist in the reader repo (`scripts/lib/published-books.js` in
 [namsbokasafn-vefur](https://github.com/SigurdurVilhelmsson/namsbokasafn-vefur)); how far each
-book has been carried through the pipeline is tracked in `docs/plans/`, not here.
+book has been carried through the pipeline is tracked in the active plan in `docs/plans/`, not
+here.
+
+`books/` holds a few other directories as well: `stjornufraedi` (Astronomy 2e) was
+registered through the server's book intake, `testbook` and `__e2e-fixture__` are test
+fixtures, and `_slug-maps/` holds a dated page-rename record.
 
 ## Demo / Live Version
 
@@ -42,14 +55,16 @@ book has been carried through the pipeline is tracked in `docs/plans/`, not here
 - **Server:** Express (CommonJS), better-sqlite3, Helmet, express-rate-limit — versions in `server/package.json`
 - **Auth:** Microsoft Entra ID (Azure AD), JWT sessions
 - **Content format:** CNXML (OpenStax source) → extracted segments → translated → injected → rendered to HTML
+- **Machine translation:** Miðeind's Málstaður API (`tools/api-translate.js`)
 - **Math:** MathJax (@mathjax/src) with New Computer Modern font
 - **Testing:** Vitest (unit) + Playwright (E2E), ESLint, Prettier, Husky — run `npm test`
-- **CI:** GitHub Actions (lint, test, validate, security, docs-check)
+- **CI:** GitHub Actions — the workflows are in `.github/workflows/` (lint, tests, validate, security audit, docs check)
 
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) — the major version is in `.nvmrc`, the minimum minor in `package.json`'s `engines`. Install at least that minor: `engines` is advisory (Node never reads it), so an older minor of the same major installs cleanly and then throws the first time you run a tool that needs a newer one.
 - npm
+- For the server: `python3`, `make` and a C++ compiler — npm runs node-gyp when it installs `better-sqlite3`
 
 For the workflow server in production:
 - Microsoft Entra ID app registration ([Azure Portal](https://portal.azure.com/))
@@ -80,42 +95,25 @@ npm run server:install
 > production host) must be able to reach `cdn.sheetjs.com`. Dependabot does
 > not auto-update URL dependencies; xlsx version bumps are manual.
 
-### 3. Environment variables (server)
+### 3. Environment variables
 
-```bash
-cp .env.example .env
-```
+There are two `.env` files, read by different programs:
 
-Edit `.env`. With `NODE_ENV=production` the server refuses to start unless
-`JWT_SECRET`, `MS_CLIENT_ID`, `MS_CLIENT_SECRET` and `MS_TENANT_ID` are all set
-(`server/config.js`, `REQUIRED_PRODUCTION_SECRETS`):
+- **The server reads `server/.env` only.** It runs from `server/` and loads `.env` from
+  there. Start from the template:
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `PORT` | No | Server port (default: `3000`) |
-| `HOST` | No | Bind address (default: `localhost`) |
-| `BASE_URL` | No | Public URL for email links (default: `http://localhost:3000`) |
-| `MS_CLIENT_ID` | **Production** | Microsoft Entra ID app client ID |
-| `MS_CLIENT_SECRET` | **Production** | Microsoft Entra ID app client secret |
-| `MS_TENANT_ID` | **Production** | Azure AD tenant ID (defaults to `common` when unset) |
-| `MS_CALLBACK_URL` | No | OAuth redirect URI (e.g. `https://ritstjorn.namsbokasafn.is/api/auth/callback`). Falls back to `CALLBACK_URL`, then to `http://localhost:3000/api/auth/callback` |
-| `JWT_SECRET` | **Production** | Session token secret (>= 32 chars) |
-| `JWT_EXPIRY` | No | Session token lifetime (default: `24h`) |
-| `ADMIN_USERS` | No | Comma-separated Microsoft emails granted admin access |
-| `ADMIN_EMAIL` | No | Email address for feedback notifications |
-| `SMTP_HOST` | No | SMTP server for email notifications |
-| `SMTP_PORT` | No | SMTP port (default: `587`) |
-| `SMTP_USER` / `SMTP_PASS` | No | SMTP credentials |
-| `OPENSTAX_ARCHIVE_URL` | No | OpenStax archive URL (has default) |
-| `MALSTADUR_API_KEY` | Pipeline | Miðeind Málstaður MT key — required by `tools/api-translate.js`, not by the server |
-| `LOG_LEVEL` | No | Server log level (`debug`, `info`, `warn`, `error`) |
+  ```bash
+  cp server/.env.example server/.env
+  ```
 
-<!-- MATECAT_API_KEY was removed from the table above on 2026-08-07 (C16 audit): Matecat Align
-     was retired, TMX is generated in-house by tools/generate-tm.js, and nothing reads that
-     variable. NOTE: this comment sits BELOW the table on purpose — placed between rows, an
-     HTML comment plus a blank line terminates a GFM table, and the row after it rendered as
-     literal pipe text on the public README. Caught by the C16 adversarial review. -->
+  With `NODE_ENV=production` the server refuses to start unless every secret in
+  `REQUIRED_PRODUCTION_SECRETS` (`server/config.js`) is set. Every variable the server
+  reads is described in [server/README.md § Configuration](server/README.md#configuration).
 
+- **The pipeline tools read a `.env` at the repo root**, and only when the variable is not
+  already in the environment: `MALSTADUR_API_KEY` for the Málstaður API
+  (`tools/api-translate.js`, `tools/translate-chapter-titles.js`) and `ANTHROPIC_API_KEY`
+  for the AI-review harness (`tools/ai-review/`). Both files are git-ignored.
 
 ### 4. Run the workflow server
 
@@ -125,45 +123,42 @@ npm run server:dev    # Development with watch mode
 npm run server        # Production mode
 ```
 
-Open [http://localhost:3000](http://localhost:3000)
+Open [http://localhost:3000](http://localhost:3000) (or the `PORT` you set).
 
 ### 5. Run CLI tools
 
-The pipeline tools are run directly:
+The pipeline tools are run directly. The CNXML tools take `--book` and `--chapter` as flags,
+not positional arguments:
 
 ```bash
-node tools/cnxml-extract.js --book efnafraedi-2e --chapter 01
+# 1. Extract English segments from the CNXML source
+node tools/cnxml-extract.js --book efnafraedi-2e --chapter 1
+# 2. Plan the machine translation and estimate its cost (a live run is paid, and refuses
+#    without exactly one glossary choice: --no-glossary, --glossary-only <list> or --full-glossary)
+node tools/api-translate.js --book efnafraedi-2e --chapter 1 --dry-run
+# 3. Inject the machine translation into CNXML and render the mt-preview track
+node tools/cnxml-inject.js --book efnafraedi-2e --chapter 1
+node tools/cnxml-render.js --book efnafraedi-2e --chapter 1 --track mt-preview
 # Faithful: one reviewed module, as the server runs it (a full-chapter faithful inject fails each unreviewed module by design; never --allow-en-fallback)
-node tools/cnxml-inject.js --book efnafraedi-2e --chapter 01 --module <moduleId> --source-dir 03-faithful-translation
-node tools/cnxml-render.js --book efnafraedi-2e --chapter 01 --module <moduleId> --track faithful
+node tools/cnxml-inject.js --book efnafraedi-2e --chapter 1 --module <moduleId> --source-dir 03-faithful-translation
+node tools/cnxml-render.js --book efnafraedi-2e --chapter 1 --module <moduleId> --track faithful
 ```
 
-See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for full usage.
+`api-translate.js` reads the generated `02-for-mt/`, so after any change to extraction,
+re-extract before you translate. See [docs/technical/cli-reference.md](docs/technical/cli-reference.md)
+for full usage and [docs/workflow/config-and-rerun-guide.md](docs/workflow/config-and-rerun-guide.md)
+for what to re-run after a change.
 
 ## The Pipeline
-
-The translation pipeline follows an Extract-Inject-Render sequence:
 
 ```
 CNXML (OpenStax) → Extract segments → Machine translate → Human review → Inject → Render to HTML
 ```
 
-| Step | Tool | Input | Output |
-|------|------|-------|--------|
-| 1 | `cnxml-extract` | CNXML source | EN segments + document structure |
-| 2 | `api-translate` (Málstaður API) | EN segments | Raw IS translation |
-| 3 | Web segment editor / manual | MT output | Reviewed faithful translation |
-| 4 | `generate-tm` | EN + reviewed IS segments | Translation memory (TMX), in-house |
-| 5a | `cnxml-inject` | Reviewed segments + structure | Translated CNXML |
-| 5b | `cnxml-render` | Translated CNXML | Publication-ready HTML |
-
-<!-- Corrected 2026-08-07 by the C16 audit (docs/audit/2026-08-07-c16-partially-live-legacy-audit.md).
-     Three rows described a retired pipeline: `protect-segments-for-mt` is ARCHIVED (bracket
-     markers made it unnecessary); machine translation goes through tools/api-translate.js, NOT a
-     manual upload to malstadur.is; and TMX is generated in-house by tools/generate-tm.js — the
-     `prepare-for-align` + Matecat Align step was retired. CLAUDE.md § Extract-Inject-Render is
-     the canonical table; keep this one in step with it. -->
-
+The tools are `cnxml-extract` → `api-translate` → (editor review in the web server) →
+`cnxml-inject` → `cnxml-render`, with `generate-tm` building the translation memory from
+reviewed segments. The step-by-step guide is
+[docs/workflow/simplified-workflow.md](docs/workflow/simplified-workflow.md).
 
 ### Two-pass editorial process
 
@@ -173,20 +168,17 @@ CNXML (OpenStax) → Extract segments → Machine translate → Human review →
 
 The two-pass approach preserves the faithful translation as a standalone asset while allowing the localized version to diverge for educational purposes.
 
-See [docs/workflow/simplified-workflow.md](docs/workflow/simplified-workflow.md) for the complete workflow guide.
-
 ## Server Deployment
 
 The workflow server runs on a Linode Ubuntu instance.
 
 - **Deploy:** `./scripts/deploy.sh` (the single deploy path — see below)
 - **Service:** `ritstjorn.service` (systemd)
-- **Port:** 3000
 - **Domain:** `ritstjorn.namsbokasafn.is`
-- **Nginx:** Reverse proxy to port 3000
+- **Nginx:** Reverse proxy to the server's port
 - **SSL:** Let's Encrypt via certbot
 - **Database:** SQLite (`pipeline-output/sessions.db`, auto-migrated on startup)
-- **Auth:** Microsoft Entra ID with role-based access (admin, head editor, editor, contributor, viewer)
+- **Auth:** Microsoft Entra ID with role-based access — the roles are `ROLES` in `server/constants.js`
 
 ### Deploy / update
 
@@ -203,64 +195,42 @@ made on disk. A manual `git pull` skips all four.
 
 See [docs/deployment/linode-deployment-checklist.md](docs/deployment/linode-deployment-checklist.md) for the full deployment guide.
 
-### Web interface routes
-
-| URL | Description |
-|-----|-------------|
-| `/` | My Work (translator dashboard) |
-| `/editor` | Segment editor (Pass 1: linguistic review) |
-| `/localization` | Localization editor (Pass 2) |
-| `/progress` | Pipeline status overview |
-| `/terminology` | Terminology database |
-| `/library` | Book catalog |
-| `/admin` | Admin panel (users, books, feedback, analytics) |
-| `/assignments` | Chapter assignments (head editor) |
-| `/feedback` | Public feedback form |
-| `/profile` | User profile |
-| `/login` | Microsoft login |
-
-Older paths (`/segment-editor`, `/workflow`, `/dashboard`, `/status`, `/review-queue`,
-`/pipeline`, `/pipeline/:book/:chapter`, `/books`, …) are kept as 301 redirects onto the
-routes above — see `server/routes/views.js`. They are not separate pages.
+The server's pages and API are described in [server/README.md](server/README.md).
 
 ## Project Structure
 
 ```
 namsbokasafn-efni/
-├── books/efnafraedi-2e/          # Chemistry 2e content
-│   ├── 01-source/                # OpenStax CNXML (READ ONLY)
-│   ├── 02-for-mt/                # EN segments for machine translation
-│   ├── 02-structure/             # Document structure (JSON)
-│   ├── 02-mt-output/             # Raw MT output (READ ONLY)
-│   ├── 03-faithful-translation/  # Human-reviewed IS segments
+├── books/<slug>/                 # One directory per book (chemistry's layout shown)
+│   ├── 01-source/                # OpenStax CNXML (READ ONLY; licence-bearing)
+│   ├── 02-for-mt/                # EN segments for machine translation (generated)
+│   ├── 02-structure/             # Document structure JSON (generated)
+│   ├── 02-mt-output/             # Machine translation as received (READ ONLY)
+│   ├── 02-mt-selected/           # Research layers, written only by their tools
+│   ├── 02-mt-revised/            #   (tools/lib/mt-layers.js)
+│   ├── ai-review/                #   and the AI-review harness
+│   ├── 03-faithful-translation/  # Editor-approved IS segments
 │   ├── 03-translated/            # Translated CNXML (from inject)
-│   ├── 04-localized-content/     # Localized version (pass 2)
-│   ├── 05-publication/           # Final HTML output
-│   │   ├── mt-preview/           #   MT versions (immediate use)
-│   │   ├── faithful/             #   Human-reviewed versions
-│   │   └── localized/            #   Localized versions
+│   ├── 04-localized-content/     # Localized IS segments (Pass 2)
+│   ├── 05-publication/           # Rendered HTML, one directory per track
+│   │                             #   (mt-preview/, faithful/, localized/ — each
+│   │                             #   exists once something is rendered to it)
+│   ├── media/                    # Images, incl. translated figures (image-mapping.json)
 │   ├── tm/                       # Translation memory (TMX)
-│   └── glossary/                 # Terminology files
-├── books/liffraedi-2e/           # Biology 2e (proof-of-concept)
+│   ├── glossary/                 # Terminology files
+│   └── book-config.json          # Per-book configuration, incl. the licence
 ├── tools/                        # CLI pipeline tools -> docs/_generated/tools.md
-├── server/                       # Express workflow server
-│   ├── routes/                   #   API routes -> docs/_generated/routes.md
-│   ├── services/                 #   Business logic
-│   ├── middleware/               #   Auth, roles, validation
-│   ├── views/                    #   HTML pages
-│   └── migrations/               #   SQLite migrations
-├── scripts/                      # Status updates, validation, doc generation
+├── server/                       # Ritstjóri, the editorial server -> server/README.md
+├── scripts/                      # Deploy, backups, validation, doc generation
 ├── schemas/                      # JSON Schema definitions
-└── docs/                         # Comprehensive documentation
+├── experiments/                  # Research experiments and their evidence
+├── test-results/                 # Dated measurement artefacts
+└── docs/                         # Documentation -> docs/README.md
 ```
 
-### File permissions
-
-| Permission | Directories | Rule |
-|------------|-------------|------|
-| READ ONLY | `01-source/`, `02-mt-output/` | Never modify — original source and raw MT |
-| WRITABLE | `03-faithful-translation/`, `04-localized-content/`, `05-publication/` | Editorial output |
-| GENERATED | `02-for-mt/`, `02-structure/`, `03-translated/`, `tm/` | Regenerated by tools (`tm/` by `generate-tm.js`) |
+Which directories may be edited, which are generated and which are written only by tools is
+a project rule: see [CLAUDE.md § File Permissions](CLAUDE.md#file-permissions). In short,
+`01-source/` and `02-mt-output/` are never edited by hand.
 
 ## Common Tasks
 
@@ -277,7 +247,7 @@ cd server && npm run test:e2e   # Playwright E2E tests (a separate CI job; `npm 
 
 ```bash
 npm run lint              # ESLint — scope is package.json's `lint` script
-npm run format            # Prettier
+npm run format            # Prettier (CI runs `npm run format:check`)
 npm run docs:generate     # Regenerate tool/route inventories
 npm run docs:check        # Verify generated docs are up-to-date
 ```
@@ -290,13 +260,16 @@ npm run validate          # Validate all status files
 
 ### Content sync to reader
 
-After producing new HTML in `05-publication/`, sync to the reader repo:
+Delivery to readers is manual and runs from the reader repo:
 
 ```bash
 # In the namsbokasafn-vefur repo:
 node scripts/sync-content.js --source ../namsbokasafn-efni
-node scripts/generate-toc.js
 ```
+
+The sync regenerates `toc.json` itself and copies only the books on its allowlist. Building
+and deploying the reader are vefur's steps — see that repo's documentation. Why this leg is
+manual: [CLAUDE.md](CLAUDE.md), section *Content delivery to readers is MANUAL*.
 
 ### Check server logs (production)
 
@@ -308,7 +281,10 @@ sudo journalctl -u ritstjorn -f
 
 | Document | Description |
 |----------|-------------|
+| [Documentation index](docs/README.md) | Everything under `docs/`, by audience |
 | [Simplified Workflow](docs/workflow/simplified-workflow.md) | 5-step Extract-Inject-Render pipeline |
+| [Config and re-run guide](docs/workflow/config-and-rerun-guide.md) | What to edit by hand and what to re-run |
+| [Editor Guide](docs/editor-guide/README.md) | Walkthrough of the editorial server for editors |
 | [Pass 1: Linguistic Review](docs/editorial/pass1-linguistic.md) | First editorial pass instructions |
 | [Pass 2: Localization](docs/editorial/pass2-localization.md) | Second editorial pass instructions |
 | [Terminology](docs/editorial/terminology.md) | Terminology standards and glossary |
@@ -316,6 +292,7 @@ sudo journalctl -u ritstjorn -f
 | [Schemas](docs/technical/schemas.md) | JSON Schema field definitions |
 | [Publication Format](docs/technical/publication-format.md) | 3-track publication structure |
 | [Deployment](docs/deployment/linode-deployment-checklist.md) | Production server setup |
+| [Licence provenance](docs/provenance/openstax-cnxml-licence-provenance.md) | Why each book carries the licence it does |
 | [Contributing](docs/contributing/getting-started.md) | How to get involved |
 
 ## Contributing
@@ -333,7 +310,7 @@ Three licences apply, depending on where a file lives:
 |------|---------|---|
 | `tools/`, `scripts/`, `experiments/` — the CNXML extract → MT → inject → render pipeline, plus root config | **MIT** | [LICENSE](LICENSE) |
 | `server/` — Ritstjóri, the editorial workflow server (incl. `greynir-sidecar/`) | **AGPL-3.0** | [server/LICENSE](server/LICENSE) |
-| `books/` — translated content | **per-book Creative Commons** | [table below](#content-licensing-is-per-book) |
+| `books/` — translated content | **per-book Creative Commons** | [below](#content-licensing-is-per-book) |
 
 Ritstjóri is AGPL-3.0 because it is normally operated as a network service: if
 you run a modified version and let users interact with it over a network, AGPL
@@ -356,21 +333,18 @@ what goes stale.
 Each book's Icelandic derivative carries the licence in force on its OpenStax
 source **when that source was obtained**. OpenStax relicensed several titles
 CC BY 4.0 → CC BY-NC-SA 4.0 during 2026, and a CC licence is irrevocable for the
-copy obtained under it — so these differ, and no blanket claim is accurate.
+copy obtained under it — so the books differ, and no blanket claim is accurate.
+**Some books are CC BY-NC-SA 4.0: they may not be used commercially, and any
+adaptation you distribute must itself be CC BY-NC-SA 4.0.** Check a book's licence
+before you reuse it.
 
-| Book | Licence |
-|------|---------|
-| Efnafræði (Chemistry 2e) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
-| Líffræði (Biology 2e) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
-| Örverufræði (Microbiology) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
-| Lífræn efnafræði (Organic Chemistry) | [**CC BY-NC-SA 4.0**](https://creativecommons.org/licenses/by-nc-sa/4.0/) |
-| Eðlisfræði (College Physics 2e) | [**CC BY-NC-SA 4.0**](https://creativecommons.org/licenses/by-nc-sa/4.0/) |
+The authoritative source is the `licence` block in each `books/<slug>/book-config.json`.
+To list them all:
 
-**Lífræn efnafræði and Eðlisfræði carry no commercial rights and no
-non-ShareAlike rights.** You may not use them commercially, and any adaptation
-you distribute must itself be CC BY-NC-SA 4.0.
+```bash
+node -e 'const fs=require("fs");for(const b of fs.readdirSync("books")){const f=`books/${b}/book-config.json`;if(!fs.existsSync(f))continue;const l=JSON.parse(fs.readFileSync(f,"utf8")).licence;if(l)console.log(b.padEnd(22),l.code)}'
+```
 
-Authoritative source: the `licence` block in `books/<slug>/book-config.json`.
 Evidence and reasoning: [docs/provenance/openstax-cnxml-licence-provenance.md](docs/provenance/openstax-cnxml-licence-provenance.md).
 See [LICENSE](LICENSE) for the full terms.
 
@@ -397,38 +371,3 @@ reviewed; chapters marked *forskoðun* (preview) are raw machine translation.
 and the human version is preserved verbatim as an editing reference
 (`books/liffraedi-2e/reference-translations/ch03-human-docx/`). The credit above
 reflects the method now in use.*
-
-**Chemistry 2e** — Paul Flowers, Klaus Theopold, Richard Langley, William R. Robinson.
-Icelandic edition: machine translation with human editorial review. CC BY 4.0.
-
-When reusing this content, attribute it like this — and use **the licence of the
-specific book** (see the table above; two books are CC BY-NC-SA 4.0):
-
-```
-Íslensk vélþýðing (Erlendur, Miðeind), ritstjórn og yfirlestur: Námsbókasafn.
-Original: Chemistry 2e, OpenStax, Rice University
-License: CC BY 4.0
-```
-
-*This project is not affiliated with OpenStax or Rice University. OpenStax is not responsible for the content of these translations.*
-
-## Status
-
-Actively maintained. The Extract-Inject-Render pipeline, the multi-book rendering configuration
-and the Microsoft Entra ID authentication migration are all in production use.
-
-**What is being worked on right now, and how far each book has got, lives in one place:** the
-active register under [`docs/plans/`](docs/plans/) — currently
-[2026-07-21-post-item17-followup-campaign.md](docs/plans/2026-07-21-post-item17-followup-campaign.md),
-whose ⏩ RESUME block is the entry point. (The figure-text translation track keeps its own
-register at `experiments/figure-text-translation/REGISTER.md`.) No other file duplicates either
-one, deliberately: a second copy of a status is the copy that goes stale.
-
-Live CI status is the
-[Actions tab](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/actions) — no document in
-this repository asserts a green or red verdict, this one included.
-
-## Related Projects
-
-- [namsbokasafn-vefur](https://github.com/SigurdurVilhelmsson/namsbokasafn-vefur) — Web reader for the published translations
-- [kvenno-app](https://github.com/SigurdurVilhelmsson/kvenno-app) — Chemistry games and lab report grading platform

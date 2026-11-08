@@ -11,6 +11,13 @@ client (`server/services/greynirEngine.js`) calls it. It is **optional** — wit
 `GREYNIR_URL` unset the QA layer simply omits grammar findings (the engine-free
 number/EN-residue checks still run).
 
+A decision of 2026-08-06 ruled that this sidecar be deleted in favour of Málstaður's hosted
+`/v1/grammar` endpoint, recording that it had never run:
+[docs/decisions/2026-08-06-mideind-toolchain-evaluation.md](../../docs/decisions/2026-08-06-mideind-toolchain-evaluation.md).
+That record is dated evidence; whether the deletion has been carried out is tracked in the
+active plan in `docs/plans/`. ⚠️ The same record found that the grammar endpoint corrupts
+inline `[[…]]` markers, so marker-bearing text needs masking before it is sent there.
+
 ## Run
 ```bash
 cd server/greynir-sidecar
@@ -31,5 +38,5 @@ Verify: `curl -s localhost:5119/health` → `{"ok": true, ...}`.
 ## Operational notes
 - Bind to **localhost** and keep it behind the firewall — editorial text is internal.
 - First model load is slow; keep the process warm (gunicorn, 1–2 workers is plenty for ~5 editors).
-- The Node client times out after 4s and degrades to no grammar findings, so a
-  slow/restarting sidecar never blocks the editor.
+- The Node client times out after `DEFAULT_TIMEOUT_MS` (`server/services/greynirEngine.js`)
+  and degrades to no grammar findings, so a slow/restarting sidecar never blocks the editor.

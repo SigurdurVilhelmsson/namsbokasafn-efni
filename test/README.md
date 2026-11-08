@@ -3,9 +3,15 @@
 **Note:** These are legacy test files from the markdown-era pipeline (pre-February 2026). The pipeline has since switched to CNXML-based processing, and the tools referenced below (`post-mt-pipeline.js`, `restore-links.js`, `repair-directives.js`) no longer exist. This directory is kept as historical documentation of the original MT testing approach.
 
 **Current test infrastructure:**
-- **Vitest** (424 unit tests) in `tools/__tests__/` and `server/__tests__/`
-- **Playwright** (96 E2E tests) in `server/e2e/`
-- Run with: `npm test` (unit) or `cd server && npm run test:e2e` (E2E)
+- **Vitest** unit tests in `tools/__tests__/` and `server/__tests__/` — `npm test` from the repo root
+- **Playwright** E2E tests in `server/e2e/` — `cd server && npm run test:e2e` (a separate CI job; `npm test` does not run them)
+- No count is kept here: the number is whatever the run prints.
+
+**Marker survival through MT today** is tested on the `[[type:content]]` bracket markers the
+CNXML pipeline sends to the Málstaður API — see
+[test-results/api-marker-survival.md](../test-results/api-marker-survival.md) and the
+`inline-markers` skill (`.claude/skills/inline-markers/SKILL.md`). Survival is per endpoint:
+a result for `/v1/translate` says nothing about another endpoint.
 
 ---
 

@@ -4,6 +4,10 @@ Welcome to the Námsbókasafn translation team! This visual guide walks you thro
 
 > **Also see:** [Pass 1: Linguistic Review](../editorial/pass1-linguistic.md) and [Pass 2: Localization](../editorial/pass2-localization.md) for detailed editorial guidelines.
 
+> **About the screenshots:** they were taken in March 2026, and several labels have changed
+> since (for example, the editor is now **Ritill**). Where a screenshot and the text disagree,
+> the text describes the current server.
+
 ---
 
 ## 1. Getting Started
@@ -27,9 +31,10 @@ Machine Translation → Pass 1 (Faithful Translation) → Pass 2 (Localized Vers
 
 As an editor, you can:
 - Review and edit translated text segments (Pass 1)
-- Localize content for Icelandic students (Pass 2)
 - Look up and propose terminology
 - Track your progress across chapters
+
+Localization (Pass 2) is opened from the sidebar by head editors and admins.
 
 ### Logging In
 
@@ -40,9 +45,11 @@ As an editor, you can:
 
 3. Click **"Skrá inn með Microsoft"** (Sign in with Microsoft)
 4. Sign in with your school Microsoft account
-5. After successful login, you will be redirected to the dashboard
+5. After successful login, you land on the home page (**Heim**) — or, if you were sent to the login page from another page, back on that page
 
-> **Note:** Your role is assigned by an administrator. If you cannot access certain features after logging in, contact your admin.
+> **Note:** Your role is assigned by an administrator. If your profile page (**Um mig**) says
+> **Þú ert gestur** (you are a guest), the system has no account for you yet: you can look
+> around but not change anything. Contact your admin.
 
 ---
 
@@ -50,78 +57,96 @@ As an editor, you can:
 
 ### Dashboard
 
-After logging in, you land on the home page ("Heim"). It shows a personalized greeting and a summary of your pending work.
+After logging in, you land on the home page (**Heim**). It greets you by name and tells you how many tasks you have.
 
 ![Home dashboard](screenshots/02-home.png)
 
 The dashboard displays:
-- **Pending tasks** assigned to you
-- **Statistics** showing your editing activity (edits, reviews, submissions)
-- Quick links to jump into your next task
+- **Núverandi verkefni** (current task), with a button to start working, and **Næst á dagskrá** (what's next)
+- **Statistics**: editors see work finished this week (*Kláruð í vikunni*), work awaiting review (*Bíður yfirlestrar*) and their term proposals (*Orðatillögur*); head editors and admins see what awaits their decision and what is approved but not yet published
+- **Nákvæmt yfirlit** (detailed view): your submissions awaiting review, edits sent back to you with the reviewer's note (*Breytingar óskast*), your term proposals, and your recent activity
 
 ### Navigation Sidebar
 
 The sidebar on the left is your main navigation. The sections visible depend on your role:
 
-**All editors see:**
+**Everyone who is signed in sees:**
 - **Heim** (Home) — Your dashboard
-- **Ritstjóri** (Editor) — The segment editor for Pass 1
+- **Ritill** (Editor) — The segment editor for Pass 1
 - **Framvinda** (Progress) — Translation progress overview
 - **Orðasafn** (Terminology) — The term database
 
-**Editors with review access also see:**
-- **Yfirferðir** (Reviews) — Pending review queue
-- **Staðfærsla** (Localization) — The localization editor for Pass 2
+**Editors, head editors and admins also see a Yfirlestur (Review) section:**
+- **Yfirlestrar** (Reviews) — The segment editor, filtered to edits awaiting review
+- **Aðlögun** (Localization) — The localization editor for Pass 2 (head editors and admins only)
+
+**Head editors and admins also see a Stjórnun (Administration) section:**
+- **Stjórnandi** (Admin panel), **Bókasafn** (Library) and **Úthlutanir** (Assignments)
 
 **At the bottom:**
-- **Prófíll** (Profile) — Your profile
-- **Álit** (Feedback) — Submit feedback about translations
+- **Um mig** (About me) — Your profile
+- **Ábendingar** (Feedback) — Submit feedback about translations
 - **Theme toggle** — Switch between light and dark mode
 
 ---
 
 ## 3. Pass 1: Segment Editor (Linguistic Review)
 
-The segment editor is where you will spend most of your time. It displays individual text segments (paragraphs, headings, list items) so you can review the machine translation and correct errors.
+The segment editor (**Ritill**) is where you will spend most of your time. It displays individual text segments (paragraphs, headings, list items) so you can review the machine translation and correct errors.
 
 > **Goal:** Create a *faithful translation* — natural, accurate Icelandic that closely represents the source text. Do NOT localize (that happens in Pass 2).
 
 ### Selecting a Module
 
-1. Navigate to **Ritstjóri** (Editor) in the sidebar
-2. Select a **book** from the dropdown (e.g., "Efnafræði 2e" for Chemistry)
-3. Select a **chapter**
-4. You will see a list of modules in the chapter — click one to start editing
+1. Navigate to **Ritill** in the sidebar
+2. Select a **book** (*Bók*, e.g. "Efnafræði 2e" for Chemistry)
+3. Select a **chapter** (*Kafli*)
+4. You will see the modules in the chapter (*Einingar í kafla*) — click one to start editing
 
 ![Segment editor — selecting a module](screenshots/03-editor-select.png)
 
-Each module card shows status badges:
+Each module card shows status badges, such as:
 - **EN** — English source segments exist
 - **MT** — Machine translation is available
+- **Ritstýrt** / **Staðfært** — The module has been edited / localized
+- **⚠ N** — The automatic machine-translation check flagged N segments
 
 ### Editing Segments
 
-After clicking a module, the editor loads all segments in a two-column layout:
+After clicking a module, the editor loads all segments in a table:
 
 ![Segment editor — editing segments](screenshots/04-editor-segments.png)
 
-- **Left column:** English source text (read-only)
-- **Right column:** Icelandic translation (editable)
+- **Enska (frumtexti):** English source text (read-only)
+- **Íslenska (þýðing):** Icelandic translation
+- **Aðgerðir:** Actions for the segment
 
-The toolbar at the top lets you filter segments by status (all, edited, unedited, etc.).
+Above the table, filters narrow the list by what to show (*Sýna*), by status (*Staða*: unchanged, unreviewed, edited, approved, confirmed, rejected, in discussion) and by category (*Flokkur*).
 
 **To edit a segment:**
 
-1. Click on the Icelandic text to make it editable
+1. Click **Breyta** (Edit) in the segment's row
 2. Make your correction
-3. Select a **category** for your edit:
-   - **terminology** — Term replacement or standardization
-   - **accuracy** — Factual correction or mistranslation fix
-   - **readability** — Grammar, spelling, or clarity improvement
-   - **style** — Tone or style adjustment
-   - **omission** — Missing content added back
-4. Optionally add an **editor note** explaining your change
-5. Your edit is saved automatically
+3. Select a **category** for your edit (*Flokkur*):
+   - **Hugtök** (terminology) — Term replacement or standardization
+   - **Nákvæmni** (accuracy) — Factual correction or mistranslation fix
+   - **Læsileiki** (readability) — Grammar, spelling, or clarity improvement
+   - **Stíll** (style) — Tone or style adjustment
+   - **Úrfelling** (omission) — Missing content added back
+4. Optionally add an **editor note** (*Athugasemd (valkvætt)*) explaining your change
+5. Click **Vista** (Save), or press Ctrl+S
+
+> **Saving:** your edit reaches the server only when you save it. Until then the browser keeps a
+> local draft every few seconds, so a closed tab can be recovered, but nobody else sees it.
+
+**If the machine translation is already right**, click **✓ Staðfesta MT** (Confirm MT) instead of editing. It marks the segment as checked; you can undo it.
+
+**Other help in the editor:**
+- **Term lookup** (*Fletta upp hugtaki…*) — look up a term without leaving the page; terms in the text are highlighted and open a popup with their translations
+- **Samhengisleit** (context search) — search earlier approved translations
+- **Þegar samþykkt í …** — the same text was already approved elsewhere; **Nota þessa þýðingu** reuses it
+- **Beita víðar** — apply your translation to identical segments in the book
+- **Forskoðun** (Preview) — see how the module will look to readers
 
 ### What to Fix (and What to Leave)
 
@@ -137,58 +162,63 @@ The toolbar at the top lets you filter segments by status (all, edited, unedited
 
 When you have reviewed all segments in a module:
 
-1. Click **"Senda til yfirferðar"** (Submit for Review)
+1. Click **"Senda til yfirlestrar"** (Submit for Review)
 2. Your edits go to the Head Editor for approval
-3. You can track submissions via **Yfirferðir** (Reviews) in the sidebar
+3. You can follow your submissions on the home page: **Nákvæmt yfirlit → Bíður yfirlestrar**
 
-The Head Editor will then:
-- **Approve** your edit
-- **Reject** it (with feedback explaining why)
-- **Mark for discussion** — opens a comment thread where you can respond
+The Head Editor then marks each edit:
+- **Samþykkja** (Approve)
+- **Hafna** (Reject), with a reason
+- **Ræða** (Discuss), with a topic for discussion
+
+A note from the Head Editor reaches you on the home page under **Breytingar óskast**, with a
+**Laga** (Fix) button. There is no reply thread in the editor, so answer in person or at the
+team meeting.
 
 ---
 
 ## 4. Pass 2: Localization Editor
 
-After Pass 1 produces a faithful translation, Pass 2 adapts it for Icelandic students. This is a separate editor designed for cultural adaptation.
+After Pass 1 produces a faithful translation, Pass 2 adapts it for Icelandic students. This is a separate editor designed for cultural adaptation, opened from **Aðlögun** in the sidebar (head editors and admins). A module can be localized only once it has an approved faithful translation.
 
 ### Opening the Localization Editor
 
-1. Navigate to **Staðfærsla** (Localization) in the sidebar
+1. Navigate to **Aðlögun** in the sidebar
 2. Select a book and chapter
 3. Click a module to start
 
 ![Localization editor — module selection](screenshots/05-localization.png)
 
 The localization editor has two tabs at the top:
-- **Staðfærsluritstjóri** — The editor view
-- **Yfirferð á staðfæringu** — Review queue for localization edits
+- **Staðfærsluritill** — The editor view, with a collapsible **Leiðbeiningar** (Guidelines) panel
+- **Yfirlestur á staðfæringu** — Pattern-based localization suggestions for a section (*Skanna*), which can be accepted or rejected, and the localization log
 
-There is also a **Leiðbeiningar** (Guidelines) button that expands a reference panel.
+When a book requires localization review, head editors also see a panel of pending localization edits (*Staðfærsla í bið*) to approve or reject.
 
 ### Three-Column Layout
 
 When a module is loaded, the editor shows three columns:
-- **Left:** English source (reference)
-- **Middle:** Faithful Icelandic translation from Pass 1 (read-only)
-- **Right:** Localized version (editable)
+- **Enska (viðmið):** English source (reference)
+- **Trú þýðing (Pass 1):** Faithful Icelandic translation (read-only, with an **Afrita** (Copy) button)
+- **Staðfært (Pass 2):** Localized version (editable)
 
 ### Types of Localization
 
-Each edit is categorized:
+Localized changes are grouped into these types, which the editor's filter and badges use:
 
-| Category | Example |
-|----------|---------|
-| **unit-conversion** | Fahrenheit → Celsius, miles → km |
-| **cultural-adaptation** | American holidays → Icelandic equivalents |
-| **example-replacement** | US-specific examples → local context |
-| **formatting** | Style adjustments for Icelandic conventions |
-| **unchanged** | Segment needs no localization |
+| Type | Example |
+|------|---------|
+| **Einingabreytingar** (unit conversion) | Fahrenheit → Celsius, miles → km |
+| **Menningarleg aðlögun** (cultural adaptation) | American holidays → Icelandic equivalents |
+| **Dæmaskipti** (example replacement) | US-specific examples → local context |
+| **Snið** (formatting) | Style adjustments for Icelandic conventions |
 
 ### Saving Work
 
-- Save individual segments as you go
+- Save a segment with its **✓** button (tooltip *Vista bút*)
 - Use **"Vista allt"** (Save All) to save all changes at once
+- The editor also saves your work automatically every minute
+- **Breytingasaga** (change history) shows a segment's earlier versions and can restore one
 
 ---
 
@@ -202,14 +232,15 @@ Visit **Orðasafn** (Terminology) in the sidebar to browse, search, and manage t
 
 The terminology page provides:
 - **Search bar** — Search by English or Icelandic term
-- **Filters** — Filter by subject (Chemistry, Biology, etc.), book, or status
-- **Statistics** — Total terms, approved, disputed, and needs-review counts
-- **Term table** — Shows English term, Icelandic translation, subject, and status
+- **Filters** — Filter by book, subject (*Fag*), status (*Staða*) and origin (*Uppruni*)
+- **Statistics** — Headwords and translations, approved, pending, under discussion, and needs-review counts
+- **Term table** — English term, Icelandic translation, subject, status and origin
+- **Yfirferðarröð** (review queue) — Terms waiting for review
 
 ### Searching for Terms
 
 1. Type the English or Icelandic term in the search bar
-2. Optionally filter by subject or status
+2. Optionally filter by book, subject, status or origin
 3. Click **"Leita"** (Search)
 
 ### Proposing New Terms
@@ -219,11 +250,13 @@ If you encounter a term not in the glossary:
 1. Click **"Bæta við"** (Add)
 2. Enter the English term and your proposed Icelandic translation
 3. Add notes explaining your choice
-4. Submit for approval by the Head Editor
+4. Save — the term is stored as a proposal until a Head Editor or admin approves it
+
+You can also comment on an existing term, and suggest an alternative translation, from the term's detail view.
 
 ### Terminology in the Segment Editor
 
-When editing segments in Pass 1, the editor provides a terminology lookup feature. You can search for terms directly from the editing view without leaving the page.
+When editing segments in Pass 1, use the term lookup box (*Fletta upp hugtaki…*) to search the term database without leaving the page. Clicking a highlighted term in the text opens a popup listing its translations, their status and subjects, with a link to open the term in **Orðasafn**.
 
 ---
 
@@ -234,11 +267,11 @@ The **Framvinda** (Progress) page gives you an overview of translation progress 
 ![Progress dashboard](screenshots/07-progress.png)
 
 The page shows:
-- **Summary statistics** — Total modules, edited, approved, and completion percentage
-- **Attention panel** — Chapters needing attention or blocked by issues
+- **Summary statistics** — Modules finished, segments approved, segments in progress, and overall progress
+- **Þarfnast skoðunar** (Needs attention) — Modules awaiting review, edits in discussion, and chapters with rejected or pending edits
 - **Chapter list** — Each chapter with a progress bar showing how far along the editing is
 
-Click on a chapter to expand its details and see the status of individual modules.
+Click a chapter to open its overview (*Kaflayfirlit*), with the status of each module. A third tab, **Tímalína**, shows a timeline.
 
 ---
 
@@ -246,20 +279,21 @@ Click on a chapter to expand its details and see the status of individual module
 
 ### Profile
 
-Visit **Prófíll** (Profile) to see your account information: name, email, role, and activity history.
+Visit **Um mig** to see and update your account information: name, email (read-only), school, subject, a short description, your role, and when you last signed in.
 
 ![Profile page](screenshots/08-profile.png)
 
 ### Feedback
 
-The **Álit** (Feedback) page is a public form for reporting translation errors or suggesting improvements to published content.
+The **Ábendingar** (Feedback) page is a public form — no login needed — for reporting problems with or suggesting improvements to published content.
 
 ![Feedback form](screenshots/09-feedback.png)
 
 You can submit feedback about:
-- Translation errors in published content
-- Terminology suggestions
-- General comments
+- An error in a translation or its meaning
+- A technical or display problem
+- An improvement to the content
+- Anything else
 
 ---
 
@@ -273,23 +307,27 @@ You can submit feedback about:
 
 ### "The machine translation is very wrong"
 
-That is expected! Your job is to fix it. Do not hesitate to rewrite entire sentences if needed. Categorize the edit as **accuracy** or **readability**.
+That is expected! Your job is to fix it. Do not hesitate to rewrite entire sentences if needed. Categorize the edit as **Nákvæmni** (accuracy) or **Læsileiki** (readability).
+
+### "The machine translation is already right"
+
+Click **✓ Staðfesta MT** so the segment counts as checked.
 
 ### "I found a structural or formatting error"
 
-- If it is in the translation text, fix it and categorize as **readability**
+- If it is in the translation text, fix it and categorize as **Læsileiki** (readability)
 - If it is a rendering problem (broken layout, missing images), report it to the admin
 
 ### "I disagree with a previous terminology decision"
 
 - Follow the existing decision for consistency
-- Raise the issue with the Head Editor for discussion
+- Raise the issue with the Head Editor, or comment on the term in **Orðasafn**
 - Do not change established terminology without approval
 
 ### Getting Help
 
 1. **Translation questions** — Add an editor note on the segment
-2. **Terminology questions** — Propose a term at **Orðasafn**
+2. **Terminology questions** — Propose or comment on a term at **Orðasafn**
 3. **Technical problems** — Contact the admin
 4. **General questions** — Ask at the team meeting
 
@@ -299,12 +337,13 @@ That is expected! Your job is to fix it. Do not hesitate to rewrite entire sente
 
 | Task | Where to Go |
 |------|-------------|
-| Edit translations (Pass 1) | **Ritstjóri** (Editor) |
-| Localize content (Pass 2) | **Staðfærsla** (Localization) |
+| Edit translations (Pass 1) | **Ritill** (Editor) |
+| See edits awaiting review | **Yfirlestrar** (Reviews) |
+| Localize content (Pass 2) | **Aðlögun** (Localization) — head editors and admins |
 | Look up / propose terms | **Orðasafn** (Terminology) |
 | Check progress | **Framvinda** (Progress) |
-| Submit feedback | **Álit** (Feedback) |
-| View your profile | **Prófíll** (Profile) |
+| Submit feedback | **Ábendingar** (Feedback) |
+| View your profile | **Um mig** (About me) |
 
 ---
 

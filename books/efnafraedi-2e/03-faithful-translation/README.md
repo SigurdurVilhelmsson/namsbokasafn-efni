@@ -1,13 +1,12 @@
 # 03-faithful-translation
 
-**Status:** Completed editorial review - faithful translation
 **Format:** Per-module segment files (`.is.md`)
 **Source:** Written by `applyApprovedEdits()` via the segment editor service
 **Editable:** Written by pipeline tools (not manually edited)
 
 ## Purpose
 
-Final location for human-reviewed, faithful translations. Content here has passed linguistic review and is ready for publication to the faithful track.
+The faithful track's input: Icelandic segments from Pass 1 linguistic review that a head editor has approved. Inject + render turn a module's file here into faithful HTML.
 
 ## Contents
 
@@ -18,9 +17,14 @@ Final location for human-reviewed, faithful translations. Content here has passe
 Content arrives here through the segment editor web UI:
 
 1. Editors review segments in the segment editor at `/editor`
-2. Head editor approves a module's review
-3. `applyApprovedEdits()` writes the reviewed segments to this directory
+2. A head editor approves the edits
+3. `applyApprovedEdits()` writes the module's segment file to this directory
 4. Inject + render produces faithful HTML for that module
+
+⚠️ **A file here is not proof that every segment in it was reviewed.** `applyApprovedEdits()`
+writes the module's whole text, so segments nobody edited are written too, as machine
+translation (register §C202). The translation memory inherits this — see
+[`../tm/README.md`](../tm/README.md).
 
 ```bash
 # Render one reviewed module to the faithful track, as the server runs it (a full-chapter faithful inject fails each unreviewed module by design; never --allow-en-fallback)
@@ -30,9 +34,20 @@ node tools/cnxml-render.js --book efnafraedi-2e --chapter NN --module <moduleId>
 
 **Output:** `05-publication/faithful/chapters/NN/`
 
+## History
+
+Dated facts, not status:
+
+- **2026-08-23** (`c5f4880e`): the June 2026 faithful files were removed from this directory when
+  the September machine translation became the base. They are preserved as an editing reference
+  in [`../reference-translations/pre-remt-editorial-2026-08-23/`](../reference-translations/pre-remt-editorial-2026-08-23/).
+- **2026-10-04** ([#535](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/535)): chemistry's
+  faithful track was retired — its rendered faithful output in `03-translated/faithful/` and
+  `05-publication/faithful/` was removed.
+
 ## Quality Standard
 
-Content in this directory represents:
+Content in this directory is meant to be:
 - Linguistically accurate translation
 - Proper terminology usage
 - Academic quality suitable for citation
@@ -40,8 +55,9 @@ Content in this directory represents:
 
 ## Next Steps
 
-When ready for localization:
+Localization (Pass 2) starts from these files — the localization editor refuses to open a
+module that has no file here (`segmentParser.loadModuleForLocalization`):
 1. Open the localization editor at `/localization`
-2. The editor provides a 3-column view (EN | faithful IS | localized IS)
+2. The editor shows English, the faithful Icelandic from this directory (read-only) and the localized version (editable)
 3. Adapt for Icelandic context (units, examples, cultural references)
-4. Completed content is written to `04-localized-content/`
+4. Saved localized segments are written to `04-localized-content/`
