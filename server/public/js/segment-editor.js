@@ -1809,6 +1809,17 @@
             ${latestEdit.category ? `<span class="category-badge ${latestEdit.category}">${categoryLabel(latestEdit.category)}</span>` : ''}
           </div>
           ${
+            // §C210: an edit in discussion carries a thread — the head editor's
+            // topic, then the replies — which anyone on the page can read and answer.
+            latestEdit.status === 'discuss'
+              ? `
+            <button class="btn btn-sm btn-secondary btn-thread" data-edit-id="${latestEdit.id}" onclick="openDiscussion(${latestEdit.id})" style="margin-top: 0.25rem;" title="${UI.discussion.openTitle}">
+              &#128172; ${UI.discussion.open}
+            </button>
+          `
+              : ''
+          }
+          ${
             // Head-editors/admins may review any pending edit, including their
             // own (e.g. after "Breyta aftur") — self-approval is permitted for
             // this tier; editors can't reach these actions at all.
@@ -2614,6 +2625,121 @@
       await reloadIfOpen(unit);
     } catch (err) {
       alert(UI.common.errorPrefix + err.message);
+    }
+  }
+
+  // ── §C210: discussion thread on an edit marked "Ræða" ───────────────
+  // The topic is the edit's reviewer_note (from the module payload); the
+  // replies come from GET /edit/:id/comments. A reply posts to
+  // POST /edit/:id/comment and never changes the edit's status: the head
+  // editor still decides, with "Opna aftur" or a review action.
+
+  function findEditById(editId) {
+    if (!moduleData || !moduleData.edits) return null;
+    for (const list of Object.values(moduleData.edits)) {
+      const hit = (list || []).find((e) => e.id === editId);
+      if (hit) return hit;
+    }
+    return null;
+  }
+
+  function discussionDialog() {
+    let dlg = document.getElementById('discussion-dialog');
+    if (dlg) return dlg;
+    dlg = document.createElement('dialog');
+    dlg.id = 'discussion-dialog';
+    dlg.className = 'discussion-dialog';
+    dlg.innerHTML = `
+      <h3>${escapeHtml(UI.discussion.heading)}</h3>
+      <div class="discussion-topic"></div>
+      <ol class="discussion-thread"></ol>
+      <textarea id="discussion-reply" rows="3" placeholder="${escapeHtml(UI.discussion.replyPlaceholder)}"></textarea>
+      <div class="discussion-actions">
+        <button type="button" class="btn btn-sm btn-primary" id="discussion-send">${escapeHtml(UI.discussion.send)}</button>
+        <button type="button" class="btn btn-sm btn-secondary" id="discussion-close">${escapeHtml(UI.discussion.close)}</button>
+      </div>`;
+    document.body.appendChild(dlg);
+    dlg.querySelector('#discussion-close').addEventListener('click', () => dlg.close());
+    dlg.querySelector('#discussion-send').addEventListener('click', () => sendDiscussionReply(dlg));
+    return dlg;
+  }
+
+  // Comment text is user input: every value goes in through textContent, never innerHTML.
+  function renderDiscussion(dlg, edit, comments) {
+    const topic = dlg.querySelector('.discussion-topic');
+    topic.textContent = '';
+    const who = document.createElement('strong');
+    who.textContent = (edit && edit.reviewer_username) || UI.discussion.reviewerFallback;
+    topic.append(
+      who,
+      document.createTextNode(': ' + ((edit && edit.reviewer_note) || UI.discussion.noTopic))
+    );
+
+    const list = dlg.querySelector('.discussion-thread');
+    list.textContent = '';
+    if (comments === null || comments.length === 0) {
+      const li = document.createElement('li');
+      li.className = 'discussion-empty';
+      li.textContent = comments === null ? UI.discussion.loading : UI.discussion.noReplies;
+      list.appendChild(li);
+      return;
+    }
+    for (const c of comments) {
+      const li = document.createElement('li');
+      li.className = 'discussion-comment';
+      const name = document.createElement('strong');
+      name.textContent = c.username || '';
+      const when = document.createElement('span');
+      when.className = 'discussion-when';
+      when.textContent = c.created_at ? ` ${String(c.created_at).slice(0, 16)}` : '';
+      const body = document.createElement('div');
+      body.textContent = c.comment;
+      li.append(name, when, body);
+      list.appendChild(li);
+    }
+  }
+
+  async function loadDiscussion(dlg, editId) {
+    const data = await fetchJson(`${API_BASE}/edit/${editId}/comments`, { credentials: 'include' });
+    renderDiscussion(dlg, findEditById(editId), data.comments || []);
+  }
+
+  async function openDiscussion(editId) {
+    const dlg = discussionDialog();
+    dlg.dataset.editId = String(editId);
+    dlg.querySelector('#discussion-reply').value = '';
+    renderDiscussion(dlg, findEditById(editId), null);
+    if (!dlg.open) dlg.showModal();
+    try {
+      await loadDiscussion(dlg, editId);
+    } catch (err) {
+      alert(UI.common.errorPrefix + err.message);
+    }
+  }
+
+  async function sendDiscussionReply(dlg) {
+    const editId = parseInt(dlg.dataset.editId, 10);
+    const box = dlg.querySelector('#discussion-reply');
+    const comment = box.value.trim();
+    if (!comment) {
+      box.focus();
+      return;
+    }
+    const send = dlg.querySelector('#discussion-send');
+    send.disabled = true;
+    try {
+      await fetchJson(`${API_BASE}/edit/${editId}/comment`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ comment }),
+      });
+      box.value = '';
+      await loadDiscussion(dlg, editId);
+    } catch (err) {
+      alert(UI.common.errorPrefix + err.message);
+    } finally {
+      send.disabled = false;
     }
   }
 
@@ -4120,6 +4246,7 @@
   window.reviewEdit = reviewEdit;
   window.unapproveEdit = unapproveEdit;
   window.reopenEdit = reopenEdit;
+  window.openDiscussion = openDiscussion;
   window.showTermPopup = showTermPopup;
   window.insertTermFromLookup = insertTermFromLookup;
   window.insertRepetition = insertRepetition;

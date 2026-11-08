@@ -173,7 +173,10 @@ Yfirritstjórinn merkir síðan hverja breytingu:
 - **Ræða**, með umræðuefni
 
 Athugasemd yfirritstjóra berst þér á heimasíðunni undir **Breytingar óskast**, með hnappinum
-**Laga**. Í ritlinum er enginn svarþráður, svo svaraðu í eigin persónu eða á teymisfundi.
+**Laga**. Þegar breyting er merkt **Ræða** sýnir lína hennar í ritlinum hnappinn
+**💬 Umræða**: hann opnar umræðuefni yfirritstjórans og svörin hingað til, og þar getur þú svarað
+með **Senda svar**. Svar breytir ekki stöðu breytingarinnar; yfirritstjórinn ákveður áfram.
+Breytingu sem á umræðu er ekki hægt að eyða; breyttu henni frekar.
 
 ---
 

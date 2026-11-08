@@ -28,7 +28,10 @@ const acceptance = require('../services/acceptanceService');
 const editorService = require('../services/segmentEditorService');
 const segmentParser = require('../services/segmentParser');
 const mtLock = require('../../tools/lib/mt-lock.cjs');
-const { createSegmentEditsSchema } = require('./helpers/segmentEditsSchema.cjs');
+const {
+  createSegmentEditsSchema,
+  createSegmentDiscussionsSchema,
+} = require('./helpers/segmentEditsSchema.cjs');
 const migration043 = require('../migrations/043-segment-acceptances');
 const migration053 = require('../migrations/053-served-text-versions');
 
@@ -44,6 +47,7 @@ beforeAll(() => {
   db = new Database(':memory:');
   db.pragma('journal_mode = WAL');
   createSegmentEditsSchema(db);
+  createSegmentDiscussionsSchema(db); // §C210: withdraw/delete read it
   migration043.up(db);
   migration053.up(db);
   acceptance._setTestDb(db);

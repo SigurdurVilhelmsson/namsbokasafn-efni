@@ -62,4 +62,23 @@ function createSegmentEditsSchema(db) {
   `);
 }
 
-module.exports = { createSegmentEditsSchema };
+/**
+ * segment_discussions, as migration 008 creates it (008-segment-editing.js). A fixture
+ * whose code path deletes or withdraws an edit needs it: since §C210 those paths read it
+ * to refuse deleting an edit that carries a discussion thread.
+ */
+function createSegmentDiscussionsSchema(db) {
+  db.exec(`
+    CREATE TABLE segment_discussions (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      segment_edit_id INTEGER NOT NULL,
+      user_id TEXT NOT NULL,
+      username TEXT NOT NULL,
+      comment TEXT NOT NULL,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (segment_edit_id) REFERENCES segment_edits(id)
+    );
+  `);
+}
+
+module.exports = { createSegmentEditsSchema, createSegmentDiscussionsSchema };

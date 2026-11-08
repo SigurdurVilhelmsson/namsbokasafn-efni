@@ -566,6 +566,10 @@ router.post(
         });
         return res.status(409).json({ error: 'conflict', message: err.message });
       }
+      if (err.code === 'HAS_DISCUSSION') {
+        // §C210: withdrawing an edit that carries a discussion thread is refused.
+        return res.status(409).json({ error: 'HAS_DISCUSSION', message: err.message });
+      }
       if (err.refusal) {
         // spec §5.6: a refusal is logged with its reason and both hashes, never the text.
         researchEmission.emitRefused(req, {
@@ -1129,6 +1133,9 @@ router.delete('/edit/:editId', requireAuth, requireRole(ROLES.EDITOR), (req, res
       description: `${req.user.username} eyddi breytingu á ${edit?.segment_id || editId}`,
     });
   } catch (err) {
+    if (err.code === 'HAS_DISCUSSION') {
+      return res.status(409).json({ error: 'HAS_DISCUSSION', message: err.message });
+    }
     res.status(err.message === 'Not your edit' ? 403 : 400).json({ error: err.message });
   }
 });

@@ -121,6 +121,7 @@ function saveSegmentEdit(params) {
       const before = conn
         .transaction(() => {
           const row = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(existing.id);
+          refuseIfDiscussed(conn, existing.id);
           conn.prepare(`DELETE FROM segment_edits WHERE id = ?`).run(existing.id);
           return row;
         })
@@ -430,6 +431,26 @@ function getEditById(editId) {
 }
 
 /**
+ * §C210 ([USER] 2026-11-08): an edit that carries a discussion thread is never
+ * deleted — the editor revises it instead, or a head editor rejects it, so no
+ * discussion text is lost. segment_discussions references segment_edits with no
+ * cascade, so without this check the delete failed with a raw FOREIGN KEY error.
+ */
+const HAS_DISCUSSION_MESSAGE =
+  'Þessi breyting á umræðuþráð og verður ekki eytt. Breyttu henni frekar, eða biddu aðalritstjóra að hafna henni.';
+
+function refuseIfDiscussed(conn, editId) {
+  const { n } = conn
+    .prepare(`SELECT COUNT(*) AS n FROM segment_discussions WHERE segment_edit_id = ?`)
+    .get(editId);
+  if (n > 0) {
+    const err = new Error(HAS_DISCUSSION_MESSAGE);
+    err.code = 'HAS_DISCUSSION';
+    throw err;
+  }
+}
+
+/**
  * Delete a pending segment edit (editor can withdraw before review).
  */
 function deleteSegmentEdit(editId, editorId) {
@@ -445,6 +466,7 @@ function deleteSegmentEdit(editId, editorId) {
       // eslint-disable-next-line eqeqeq
       if (edit.editor_id != editorId) throw new Error('Not your edit');
       if (edit.status !== 'pending') throw new Error('Can only delete pending edits');
+      refuseIfDiscussed(conn, editId);
 
       conn.prepare(`DELETE FROM segment_edits WHERE id = ?`).run(editId);
       return { deleted: true, before: edit };
