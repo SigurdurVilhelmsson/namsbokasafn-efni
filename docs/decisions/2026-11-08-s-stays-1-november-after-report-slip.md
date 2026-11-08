@@ -36,10 +36,13 @@ What was at stake:
 
 **S stays 1 November 2026, as tagged** ([USER], 2026-11-08). The final report follows in November.
 
-From 1 November until the report, the plan's rule for a report and S that do not coincide governs:
+From 1 November until the report, the plan's rule for a report and S that do not coincide governs
+the money:
 - no hour and no bill is charged to both grants;
-- nothing the current grant pays counts as follow-on in-kind;
-- lemmatization work and the proofreading begin only after the report, as well as after the freeze.
+- nothing the current grant pays counts as follow-on in-kind.
+
+**The report gates no follow-on work** ([USER], 2026-11-08: the final report "is a separate issue").
+Lemmatization and the proofreading keep the start the plan gives them (§5: after S, at the freeze).
 
 ## Reasoning
 
@@ -71,26 +74,35 @@ grants, and nothing the current grant pays may count as follow-on in-kind."* Wit
 force, the two grants' accounts stay apart without moving S. Checked: that sentence is in the plan
 as quoted.
 
-### What the old reasoning took for granted
+### The report is a separate issue, so it gates no follow-on work
 
-Under the 2026-10-11 reasoning, "after S" meant "after the current grant's project", because S was
-the day after the report. The plan's §5 relies on that: *"Lemmatization work and the proofreading
-itself start after S, at the freeze, as the follow-on application promises."* With S before the
-report, "after S" no longer implies "after the current project". So the application's promise is
-kept only if that work also waits for the report. The report is aimed at November and the freeze
-lands around 29 November to 6 December (plan §5), so the two may fall close together. Which comes
-first is not known on this date.
+[USER] was asked whether any follow-on task should wait for the report, and answered that the report
+"is a separate issue" (2026-11-08). This record's first draft, in the same pull request, said
+lemmatization and the proofreading must also wait for the report. That was wrong, and was corrected
+before merge.
+
+The follow-on's work plan starts its 12 months when the current grant's project ends (plan §1
+point 0). The application's promise, that lemmatization and the proofreading begin only after that
+project, uses the same trigger. The 2026-10-10 plan equated that end with the report (*"So S is the
+day after that report"*), because the current grant's remainder stays in use until the report.
+Keeping S at 1 November drops that equation. The project's end is what starts S, so the same end
+meets the promise from S. The report is the current grant's reporting obligation, not its project's
+end: the plan's §1 point 0 shows the grant's terms setting that end at 30 June 2026.
+
+Checked: the plan's wording quoted above. Not checked here: the contract and the application
+themselves, which are private.
 
 ## Consequences
 
 - **S = 2026-11-01 is fixed, and the report no longer moves it.** The plan's calendar keeps counting
   from 1 November.
-- **There are two edges instead of one:** S on 1 November, and the final report later in November.
-  Between them:
+- **Two dates now matter for the money, one for the work.** S (1 November) starts the follow-on
+  work. The final report, later in November, closes the current grant's spending. Between them:
   - each hour and each bill goes to one grant only;
   - what remains of the current grant may still pay, since the plan records it as in use until the
-    report, but nothing it pays counts as follow-on in-kind;
-  - lemmatization work and the proofreading wait for both the freeze and the report.
+    report, but nothing it pays counts as follow-on in-kind.
+- **No follow-on task waits for the report.** Lemmatization and the proofreading start as the plan's
+  §5 sets them: after S, at the freeze.
 - **No new message to the follow-on grant's administrator.** They were told 1 November in writing.
 - **Forecloses:** moving S to the report. Reversing that needs a new record, and it would re-date the
   work done since 1 November.
@@ -103,3 +115,6 @@ first is not known on this date.
 1. **S moves to the day after the report**, as the 2026-10-11 slip rule says. Rejected. It would
    re-date work done since the tag, and with no official report deadline it leaves the follow-on's
    start open-ended. Its one benefit, a single funding edge, is already secured by the gap rule.
+2. **S stays 1 November, but lemmatization and the proofreading wait for the report** (this record's
+   first draft). Rejected. It treated the report as the current project's end for the application's
+   promise but not for S, although both clauses use the same trigger (see Reasoning).
