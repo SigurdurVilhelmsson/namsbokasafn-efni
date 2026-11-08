@@ -1,0 +1,37 @@
+{
+  "schema": "mt-revised/1",
+  "module": "m68769",
+  "chapterDir": "ch10",
+  "layer1": {
+    "dir": "02-mt-output",
+    "commit": "0093d8da4620a2041e583d3f84d39e9b49f055a2",
+    "sha256": "334bfe19bfb53d36f7c88ad12dc1c00d5568d79c3a6012cee3fa91e0a9257857"
+  },
+  "overlay": null,
+  "rulingSet": {
+    "path": "experiments/terminology-consistency/results/2026-11-02/ruling-set-2026-11-02.json",
+    "sha256": "0aa33690ca829be4baa4da2b34fbea1455517d426e939c3544b3a86b3049c3bd"
+  },
+  "prompt": {
+    "path": "tools/ai-review/prompts/term-pass-v2.md",
+    "sha256": "7f9b1b3518bb6454d799a03d3a53b490376f37d2e25a6c4a89e42f6c299e559b"
+  },
+  "model": "claude-opus-5-5",
+  "sdk": {
+    "name": "@anthropic-ai/sdk",
+    "version": "1.3.0"
+  },
+  "anthropicVersion": "2026-10-21",
+  "harnessCommit": "2ead88ed89722e786537270625c66ecae3a185fe",
+  "runIds": [
+    "20261108T193214Z-76357476"
+  ],
+  "counts": {
+    "accepted": 38,
+    "rejected": 9,
+    "byCategory": {
+      "agreement": 2,
+      "term": 36
+    }
+  }
+}

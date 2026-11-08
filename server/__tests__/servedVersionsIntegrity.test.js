@@ -5,8 +5,10 @@
  * for every change the AI pass made, the hash of the text it read (`beforeSha256`). A chain is the
  * change records of one (chDir, module, segmentId, occurrence); its FIRST record's beforeSha256 is
  * what the AI read. This test serves every module that has a chain through the real module route
- * and compares that hash with the `is_sha256` the route minted. Exactly two chains differ: both sit
- * on a duplicated id, where the loader serves the last copy's Icelandic for every copy (R4).
+ * and compares that hash with the `is_sha256` the route minted. The chains that differ all sit on a
+ * duplicated id, where the loader serves the last copy's Icelandic for every copy (R4): ch05 and ch08
+ * from the full run, and ch10 from its re-buy (2026-11-08). A new member must be classified before
+ * it is added here.
  *
  * Read-only on books/: the books dir is NOT overridden, and nothing here writes a file. The
  * database is a temp SESSIONS_DB_PATH.
@@ -97,7 +99,7 @@ afterAll(() => {
 
 describe('T1: the committed layer-2 chains against the served versions (spec §10 T1)', () => {
   it(
-    'T1: the chains whose first beforeSha256 differs from G1.1’s is_sha256 are exactly the two known ones',
+    'T1: the chains whose first beforeSha256 differs from G1.1’s is_sha256 are exactly the known R4 ones',
     { timeout: 120_000 },
     async () => {
       // the real tree, not a temp root
@@ -175,6 +177,7 @@ describe('T1: the committed layer-2 chains against the served versions (spec §1
       expect([...mismatched].sort()).toEqual([
         'ch05/m68726/m68726:para:fs-idm94618544#0',
         'ch08/m68747/m68747:para:fs-idm99049568#0',
+        'ch10/m68773/m68773:para:fs-idp76470512#0',
       ]);
       // Value controls (PR1 review C22; every key is in exactly one of the two sets, so comparing matched with the
       // complement of mismatched could not fail). The rows the route minted decide nearly every chain: a route
@@ -186,6 +189,7 @@ describe('T1: the committed layer-2 chains against the served versions (spec §1
         expect.arrayContaining([
           'ch05/m68726/m68726:para:fs-idm94618544#1',
           'ch08/m68747/m68747:para:fs-idm99049568#1',
+          'ch10/m68773/m68773:para:fs-idp76470512#1',
         ])
       );
       // the matched set includes chapter metadata, an appendix and ch00
