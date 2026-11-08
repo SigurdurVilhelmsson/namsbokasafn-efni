@@ -1,46 +1,21 @@
 # 04-localization
 
-**Status:** Work in progress - localization
-**Format:** Segment files (`.is.md`)
-**Source:** Initialized from `03-faithful-translation/` by the localization editor
-**Editable:** Yes (working directory)
+**Used by:** nothing. No code in `server/`, `tools/` or `scripts/` reads or writes this directory.
 
-## Purpose
+## What happened to it
 
-Working directory for adapting faithful translations to Icelandic context. This is "Pass 2" of the editorial workflow, focusing on cultural adaptation and local relevance.
+This directory was meant as a working area for Pass 2 (localization), with finished work
+promoted to `04-localized-content/`. The localization editor was built without it:
 
-## Localization Tasks
+- The editor at `/localization` loads a module's faithful segments from
+  `03-faithful-translation/` and its localized segments, if any, from `04-localized-content/`.
+- When a book enforces localization review, each edit is held in the database
+  (`localization_pending_edits`) and is written to `04-localized-content/` only after a head
+  editor approves it (`server/services/localizationReviewService.js`). Otherwise the editor
+  saves straight to `04-localized-content/`.
+- Every change is logged in the database for the audit trail (`localization_edits`).
 
-- Convert units (Fahrenheit -> Celsius, miles -> km, etc.)
-- Adapt examples to Icelandic context
-- Replace cultural references
-- Update geographic references
-- Adapt measurement conventions
-
-## Workflow
-
-### Initialize and edit via the localization editor:
-
-The localization editor at `/localization` handles initialization automatically:
-- Loads faithful segments from `03-faithful-translation/`
-- Provides a 3-column editing interface (EN | faithful IS | localized IS)
-- Saves working edits to this directory
-- All edits are logged to the `localization_edits` DB table for audit trail
-
-### Complete localization:
-
-When all segments in a chapter are reviewed, the finalized content is promoted to `04-localized-content/`.
-
-```bash
-# Render to localized publication track
-node tools/cnxml-inject.js --book efnafraedi-2e --chapter NN --track localized
-node tools/cnxml-render.js --book efnafraedi-2e --chapter NN --track localized
-```
-
-## Contents
-
-- `chNN/` - Chapter being localized (empty until localization starts)
-
-## Status Tracking
-
-Pipeline progress is tracked in the `chapter_pipeline_status` DB table (migration 017). View status at `/progress` or `/pipeline/efnafraedi-2e/NN`.
+So localized text never passes through here. See
+[`../04-localized-content/README.md`](../04-localized-content/README.md) for the directory that
+holds it, and [docs/editorial/pass2-localization.md](../../../docs/editorial/pass2-localization.md)
+for what localization changes.
