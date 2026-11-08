@@ -91,7 +91,7 @@ node tools/cnxml-render.js --book efnafraedi-2e --chapter 1 --track mt-preview
 node tools/cnxml-inject.js --book efnafraedi-2e --chapter 1 --module m68663 --source-dir 03-faithful-translation
 node tools/cnxml-render.js --book efnafraedi-2e --chapter 1 --module m68663 --track faithful
 
-# Localized for a chapter (always pass --source-dir; `--track localized` alone injects MT)
+# Localized for a chapter (pass --source-dir; inject refuses a --track that disagrees with it)
 node tools/cnxml-inject.js --book efnafraedi-2e --chapter 1 --source-dir 04-localized-content
 node tools/cnxml-render.js --book efnafraedi-2e --chapter 1 --track localized
 

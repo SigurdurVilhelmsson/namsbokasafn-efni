@@ -31,7 +31,7 @@
  *                      04-localized-content for localized
  *   --track <name>     Publication track: mt-preview, faithful, localized
  *                      (auto-detected from --source-dir if not specified;
- *                      faithful is refused unless --source-dir is the faithful one)
+ *                      if given, it must match the track --source-dir maps to)
  *   --verbose          Show detailed progress
  *   -h, --help         Show this help
  */
@@ -125,6 +125,17 @@ function trackFromSourceDir(sourceDir) {
   return 'mt-preview';
 }
 
+/**
+ * The source directory each track's text lives in — what the refusal below
+ * suggests. It matches the server's TRACK_SOURCE_DIR (server/services/
+ * pipelineService.js), restated here because tools/ must not import server/.
+ */
+const SOURCE_DIR_FOR_TRACK = Object.freeze({
+  'mt-preview': '02-mt-output',
+  faithful: '03-faithful-translation',
+  localized: '04-localized-content',
+});
+
 function parseCliArgs(args) {
   const result = parseArgs(args, [
     BOOK_OPTION,
@@ -195,7 +206,7 @@ Options:
                        (default: 02-mt-output)
   --track <name>       Publication track: mt-preview, faithful, localized
                        (auto-detected from --source-dir if not specified;
-                       faithful is refused unless --source-dir is the faithful one)
+                       if given, it must match the track --source-dir maps to)
   --verbose            Show detailed progress
   --allow-incomplete   Write output even if segments are missing (for diagnostics)
   --allow-en-fallback <ids>  Comma-separated module id(s) permitted to fall back to
@@ -5531,18 +5542,29 @@ async function main() {
   const sourceDir = args.sourceDir || '02-mt-output';
   const track = args.track || trackFromSourceDir(sourceDir);
 
-  // Decision 4 (faithful retirement): --source-dir chooses the segments and
-  // --track chooses where they are written, so `--track faithful` alone read
-  // MACHINE text from 02-mt-output into 03-translated/faithful/, which a faithful
-  // render then publishes as reviewed. Refuse before any write. Checked on the
-  // effective track: without --track it IS trackFromSourceDir(sourceDir), so this
-  // can only fire on an explicit --track faithful. The server always passes
-  // --source-dir and never --track, so it is unaffected.
-  if (track === 'faithful' && trackFromSourceDir(sourceDir) !== 'faithful') {
+  // Decision 4 (faithful retirement), widened by §C210: --source-dir chooses the
+  // segments and --track chooses where they are written, so an explicit --track
+  // that disagrees with its source dir writes one track's text into another.
+  // `--track faithful` alone read MACHINE text from 02-mt-output into
+  // 03-translated/faithful/, which a faithful render publishes as reviewed; and
+  // `--track localized` alone did the same to the localized track. Refuse every
+  // disagreement, and any unknown track, before any write. Without --track the
+  // effective track IS trackFromSourceDir(sourceDir), so only an explicit --track
+  // can fire this. The server always passes --source-dir and never --track, so it
+  // is unaffected.
+  const derivedTrack = trackFromSourceDir(sourceDir);
+  if (!Object.hasOwn(SOURCE_DIR_FOR_TRACK, track)) {
     console.error(
-      `Error: --track faithful but --source-dir '${sourceDir}' maps to ` +
-        `'${trackFromSourceDir(sourceDir)}'. Refusing to write machine text into the ` +
-        `faithful track. Use --source-dir 03-faithful-translation.`
+      `Error: --track ${track} is not a track. Use one of: ` +
+        `${Object.keys(SOURCE_DIR_FOR_TRACK).join(', ')}.`
+    );
+    process.exit(1);
+  }
+  if (track !== derivedTrack) {
+    console.error(
+      `Error: --track ${track} but --source-dir '${sourceDir}' maps to ` +
+        `'${derivedTrack}'. Refusing to write ${derivedTrack} text into the ` +
+        `${track} track. Use --source-dir ${SOURCE_DIR_FOR_TRACK[track]}.`
     );
     process.exit(1);
   }

@@ -9,6 +9,11 @@
  * render publishes it as reviewed text with no MT banner. The server is not
  * affected: `runInject` always passes `--source-dir` and never `--track`.
  *
+ * §C210 (2026-11-08) widens the rule to every track: an explicit `--track` must
+ * equal the track its `--source-dir` maps to. Before it, `--track localized` with
+ * no `--source-dir` wrote machine text into `03-translated/localized/`, and two
+ * stage READMEs prescribed exactly that command.
+ *
  * Every run here is a spawned CLI against a throwaway copy of chemistry ch01.
  * Never point it at the real tree: before the guard, the refused shape WRITES.
  * The title segment of m68663 carries a different token in each source dir, so
@@ -35,6 +40,7 @@ const INJECT = join(REAL_ROOT, 'tools', 'cnxml-inject.js');
 const MOD = 'm68663';
 const MT_TOKEN = 'MTSENTINELq7x';
 const FAITHFUL_TOKEN = 'FAITHFULSENTINELk3z';
+const LOCALIZED_TOKEN = 'LOCALIZEDSENTINELw8v';
 const TITLE_SEG = `<!-- SEG:${MOD}:title:auto-1 -->`;
 
 /** Replace the text of m68663's title segment with `token`. */
@@ -70,6 +76,11 @@ beforeAll(() => {
   writeFileSync(
     join(book, '03-faithful-translation', 'ch01', `${MOD}-segments.is.md`),
     withTitle(mt, FAITHFUL_TOKEN)
+  );
+  mkdirSync(join(book, '04-localized-content', 'ch01'), { recursive: true });
+  writeFileSync(
+    join(book, '04-localized-content', 'ch01', `${MOD}-segments.is.md`),
+    withTitle(mt, LOCALIZED_TOKEN)
   );
 }, 60_000);
 afterAll(() => {
@@ -146,5 +157,92 @@ describe('Decision 4 controls: the shapes that must keep working', () => {
     expect(r.status).toBe(0);
     expect(readFileSync(OUT('mt-preview'), 'utf8')).toContain(MT_TOKEN);
     expect(existsSync(OUT('faithful'))).toBe(false);
+  });
+});
+
+describe('§C210: an explicit --track must match the track its --source-dir maps to', () => {
+  // [label, args, the track the run asked for, the source dir it read, the suggested dir]
+  for (const [label, args, track, sourceDir, suggestion] of [
+    [
+      '--track localized with no --source-dir',
+      ['--track', 'localized'],
+      'localized',
+      '02-mt-output',
+      '04-localized-content',
+    ],
+    [
+      '--track localized --source-dir 03-faithful-translation',
+      ['--track', 'localized', '--source-dir', '03-faithful-translation'],
+      'localized',
+      '03-faithful-translation',
+      '04-localized-content',
+    ],
+    [
+      '--track mt-preview --source-dir 03-faithful-translation',
+      ['--track', 'mt-preview', '--source-dir', '03-faithful-translation'],
+      'mt-preview',
+      '03-faithful-translation',
+      '02-mt-output',
+    ],
+    [
+      '--track mt-preview --source-dir 04-localized-content',
+      ['--track', 'mt-preview', '--source-dir', '04-localized-content'],
+      'mt-preview',
+      '04-localized-content',
+      '02-mt-output',
+    ],
+  ]) {
+    it(`refuses ${label}, before any write`, () => {
+      const errorsBefore = readFileSync(ERRORS(), 'utf8');
+      const r = runInject(args);
+      expect(r.status).toBe(1);
+      for (const t of ['mt-preview', 'faithful', 'localized']) {
+        expect(existsSync(OUT(t))).toBe(false); // refused, not written and not rerouted
+        expect(existsSync(MANIFEST(t))).toBe(false);
+      }
+      expect(readFileSync(ERRORS(), 'utf8')).toBe(errorsBefore);
+      expect(r.stderr).toContain(`--track ${track} but --source-dir '${sourceDir}'`);
+      expect(r.stderr).toContain(`--source-dir ${suggestion}`);
+      expect(r.stderr).not.toContain('FAILED');
+    });
+  }
+
+  it('refuses an unknown --track, before any write', () => {
+    const errorsBefore = readFileSync(ERRORS(), 'utf8');
+    const r = runInject(['--track', 'bogus']);
+    expect(r.status).toBe(1);
+    expect(existsSync(OUT('bogus'))).toBe(false);
+    expect(existsSync(MANIFEST('bogus'))).toBe(false);
+    expect(readFileSync(ERRORS(), 'utf8')).toBe(errorsBefore);
+    expect(r.stderr).toContain('--track bogus');
+    expect(r.stderr).toContain('mt-preview, faithful, localized');
+  });
+});
+
+// Controls for §C210: the localized shapes that must keep working write the
+// LOCALIZED text, so the refusals above are the guard's doing.
+describe('§C210 controls: agreeing localized and mt-preview shapes still write', () => {
+  it('--source-dir 04-localized-content (no --track) writes localized text', () => {
+    const r = runInject(['--source-dir', '04-localized-content']);
+    expect(r.status).toBe(0);
+    const out = readFileSync(OUT('localized'), 'utf8');
+    expect(out).toContain(LOCALIZED_TOKEN);
+    expect(out).not.toContain(MT_TOKEN);
+    expect(existsSync(MANIFEST('localized'))).toBe(true);
+  });
+
+  it('the agreeing pair (--source-dir 04-localized-content --track localized) writes localized text', () => {
+    const r = runInject(['--source-dir', '04-localized-content', '--track', 'localized']);
+    expect(r.status).toBe(0);
+    const out = readFileSync(OUT('localized'), 'utf8');
+    expect(out).toContain(LOCALIZED_TOKEN);
+    expect(out).not.toContain(MT_TOKEN);
+  });
+
+  it('--track mt-preview with the default source dir writes MT text to mt-preview', () => {
+    const r = runInject(['--track', 'mt-preview']);
+    expect(r.status).toBe(0);
+    expect(readFileSync(OUT('mt-preview'), 'utf8')).toContain(MT_TOKEN);
+    expect(existsSync(OUT('localized'))).toBe(false);
   });
 });
