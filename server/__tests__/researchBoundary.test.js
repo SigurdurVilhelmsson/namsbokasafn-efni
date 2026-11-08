@@ -541,6 +541,71 @@ describe('T17 (PR3): research-* scripts read no editing record (spec §5.22)', (
   });
 });
 
+// ── PR4 (Task 4): the admin reader is required by nothing outside server/scripts/ and server/__tests__/.
+const ADMIN_READER = /\bresearchAdmin\b/;
+// Every top-level entry of server/ except these. filesNaming (PR2) walks everything under its root,
+// node_modules and .venv included, so this walker skips them by name at any depth.
+const SKIP_DIRS = new Set(['node_modules', '.venv']);
+const SCRIPT_SIDE = new Set(['scripts', '__tests__']);
+function nonScriptFilesNaming(root, pattern) {
+  const found = [];
+  const visited = [];
+  const walk = (dir, top) => {
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+      if (SKIP_DIRS.has(e.name) || (top && SCRIPT_SIDE.has(e.name))) continue;
+      const p = path.join(dir, e.name);
+      if (e.isDirectory()) walk(p, false);
+      else if (/\.(?:c|m)?js$/.test(e.name)) {
+        visited.push(path.relative(root, p));
+        if (pattern.test(readFileSync(p, 'latin1'))) found.push(path.relative(root, p));
+      }
+    }
+  };
+  walk(root, true);
+  return { found: found.sort(), visited };
+}
+
+describe('T17 (PR4): the admin reader stays on the script side (spec §5.16)', () => {
+  it('no file outside server/scripts/ and server/__tests__/ requires the admin reader (spec §5.16)', () => {
+    const { found, visited } = nonScriptFilesNaming(SERVER_ROOT, ADMIN_READER);
+    expect(found).toEqual([]);
+    // An empty result is not an empty read.
+    expect(visited).toEqual(
+      expect.arrayContaining([
+        'routes/research.js',
+        'services/researchLog.js',
+        'lib/researchFiles.js',
+      ])
+    );
+  });
+
+  it('control: a planted require is named wherever it is not allowed', () => {
+    const tmp = mkdtempSync(path.join(tmpdir(), 't17-pr4-admin-'));
+    const put = (rel) => {
+      mkdirSync(path.dirname(path.join(tmp, rel)), { recursive: true });
+      writeFileSync(path.join(tmp, rel), "const a = require('../scripts/lib/researchAdmin');");
+    };
+    try {
+      for (const rel of [
+        'routes/x.js',
+        'services/y.js',
+        'lib/z.js',
+        'scripts/research-a.js',
+        '__tests__/b.test.js',
+      ]) {
+        put(rel);
+      }
+      expect(nonScriptFilesNaming(tmp, ADMIN_READER).found).toEqual([
+        'lib/z.js',
+        'routes/x.js',
+        'services/y.js',
+      ]);
+    } finally {
+      rmSync(tmp, { recursive: true, force: true });
+    }
+  });
+});
+
 describe("T17 (PR3): record's failure log holds no content and no key (spec §5.11 step 2)", () => {
   it('a forced failure logs four fields and nothing else', () => {
     const researchDbT17 = require('../services/researchDb');
