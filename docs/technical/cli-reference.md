@@ -222,9 +222,6 @@ node tools/validate-chapter.js --chapter <num> [options]
 ## Status Updates
 
 ```bash
-# Update workflow status
-npm run update-status <book> <chapter> <stage> <status>
-
 # Validate all status files
 npm run validate
 ```

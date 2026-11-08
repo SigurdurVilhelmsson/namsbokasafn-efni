@@ -69,11 +69,13 @@ Maps chapters to their modules and provides English chapter titles. Auto-generat
 
 Tracks pipeline progress per chapter (which stages are complete).
 
-**Edit via CLI:**
+**Validate after editing:**
 ```bash
-npm run update-status <book> <chapter> <stage> <status>
 npm run validate
 ```
+
+*(This showed `npm run update-status <book> <chapter> <stage> <status>` until 2026-11-08; that
+script was archived on 2026-03-13 and is not in `package.json`.)*
 
 **After editing:** No pipeline re-run needed — status files are metadata only.
 

@@ -96,21 +96,25 @@ published.)*
 > parts of that tooling reach into `server/`, which is AGPL-3.0. This changes
 > nobody's rights either way; it is a combination caveat, recorded so that
 > anyone taking the MIT tooling on its own knows what it expects to find beside
-> it. The edges fall into five classes:
+> it. The edges fall into five classes; the first is empty at present:
 >
 > 1. **Optional, guarded** — loads AGPL code inside a try/catch; the tool works
 >    without `server/`.
->    - `tools/api-translate.js:1768` → `server/services/pipelineStatusService.js`
+>    - *None at present.*
 >
->    It warns and continues if the module is absent: translation runs correctly
->    without `server/`, and only a convenience status update is skipped.
+>    *(`tools/api-translate.js` → `server/services/pipelineStatusService.js` sat
+>    here until 2026-11-08, cited at `:1768` though the require had drifted to
+>    `:2758`. Its `--update-status` flag loaded the service to mark a chapter's
+>    `mtOutput` stage complete. The require was removed that day, and the flag now
+>    refuses rather than being dropped silently. The class is kept, empty, so the
+>    class numbers cited below and elsewhere keep their meaning.)*
 > 2. **Required, unguarded** — loads AGPL code, with no try/catch to fall back
 >    on. Split by *when* it loads, because that is what decides whether the tool
 >    runs at all without `server/`.
 >
 >    **(a) At load time — the module cannot even be imported without `server/`:**
 >    - `tools/validate-chapter.js:33` → `server/lib/chapterLabel`
->    - `tools/figure-run.js:72` → `server/lib/chapterLabel.js`
+>    - `tools/figure-run.js:78` → `server/lib/chapterLabel.js`
 >    - `scripts/validate-status.js:14` → `server/lib/chapterLabel.js`
 >    - `tools/generate-book-data.cjs:20` → `server/services/bookDataGenerator`
 >    - `scripts/export-segment-edits.js:23` → `server/lib/chapterLabel.js`
@@ -185,21 +189,33 @@ published.)*
 >      `server/node_modules/better-sqlite3` path directly.
 >    - `tools/merge-glossary.js:495` tries that path and falls back to the bare
 >      specifier.
->    - `experiments/figure-text-translation/render-check.mjs:11` and
->      `experiments/figure-text-translation/probe-img.mjs:3` import `playwright`
->      through an **absolute** path into `server/node_modules`. Neither is on the
->      pipeline: they are hand-run rendering probes, and no tool spawns either.
->      ⚠️ Their absolute path is a
->      separate defect — it hardcodes one machine's checkout — recorded here
->      because it is what makes them invisible to the first three search shapes
->      below.
+>    - `experiments/figure-text-translation/render-check.mjs:37-40` and
+>      `experiments/figure-text-translation/browser-sweep.mjs:342-345` look for
+>      `playwright` under the repository root's `node_modules/` and then under
+>      `server/node_modules/`, building both paths with `path.join` over the
+>      repository root; `render-check.mjs` then falls back to the bare specifier.
+>      `render-check.mjs` is on the figure driver's path (`tools/figure-run.js`
+>      spawns it); `browser-sweep.mjs` is a hand-run cross-engine instrument.
+>    - `experiments/figure-text-translation/probe-img.mjs:3` imports `playwright`
+>      through an **absolute** path into `server/node_modules`. It is not on the
+>      pipeline: it is a hand-run rendering probe, and no tool spawns it.
+>      ⚠️ The absolute path is a separate defect — it hardcodes one machine's
+>      checkout — recorded here because it is what makes the edge invisible to
+>      the first three search shapes below.
+>
+>      *(Until 2026-11-08 this entry cited `render-check.mjs:11` as a second
+>      absolute import, said no tool spawned it, and did not list
+>      `browser-sweep.mjs`. `render-check.mjs` moved to the lookup above on
+>      2026-09-15 (`4b25b8d95`), when the driver began running it;
+>      `browser-sweep.mjs` has used it since it was added on 2026-09-29
+>      (`dfde5156c`).)*
 > 5. **Separate process, not a load** — spawns a `server/` script as its own
 >    Node process and reads its stdout. No AGPL code enters the MIT process, but
 >    the tool cannot produce a verdict without `server/` present.
->    - `tools/remt-ctx.js:366` and `tools/lib/remt-checks-glossary.js:468` both
+>    - `tools/remt-ctx.js:368` and `tools/lib/remt-checks-glossary.js:482` both
 >      run `server/scripts/check-glossary-payload.js --file … --json`. They are
 >      the sync and async halves of the same loader for the re-MT battery's G5
->      check; `remt-checks-glossary.js:358` records why it is a spawn rather than
+>      check; `remt-checks-glossary.js:372` records why it is a spawn rather than
 >      a require — G5 must not import `server/`, so it takes VALUES.
 >      *(Added 2026-09-07. Both were already matched by the second search shape
 >      below and had simply never been written down — the class is new here, the
@@ -222,8 +238,9 @@ published.)*
 >   `scripts/backfill-mt-locks.js:98` are reachable only this way.
 > - an **absolute** path containing `…/server/` — no `../`, no separate
 >   `'server'` argument, and the string does not *begin* `server/`, so the first
->   three shapes are all blind to it. The two `experiments/` entries above are
->   reachable only this way.
+>   three shapes are all blind to it. `probe-img.mjs` above is reachable only
+>   this way. *(This said "the two `experiments/` entries" until 2026-11-08;
+>   `render-check.mjs` is now matched by the second shape.)*
 >
 > And do not filter `node_modules` out of the results. An exclusion meant to
 > skip files *inside* `node_modules` also hides every edge that merely mentions
