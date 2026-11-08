@@ -157,6 +157,20 @@ describe('checkSchema', () => {
     ).toEqual(['research_consent', 'book_switch_events']);
   });
 
+  it('PR4: a missing deletion or dataset table is named', () => {
+    const db = migrated();
+    db.exec(
+      'DROP TABLE IF EXISTS research_deletions; DROP TABLE IF EXISTS research_derived_datasets;'
+    );
+    const { missing } = checkSchema(db);
+    // research_consent is untouched: the control.
+    expect(
+      missing.filter((m) =>
+        ['research_deletions', 'research_derived_datasets', 'research_consent'].includes(m)
+      )
+    ).toEqual(['research_deletions', 'research_derived_datasets']);
+  });
+
   it('a columns entry whose name a VIEW holds names each of its columns, as an absent table does', () => {
     const db = migrated();
     db.exec('CREATE VIEW not_a_table AS SELECT 1 AS a');
