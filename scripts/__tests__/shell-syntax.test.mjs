@@ -22,6 +22,7 @@ const SCRIPTS = [
   'scripts/deploy.sh',
   'scripts/record-deployed-commit.sh',
   'scripts/research-backup.sh',
+  'scripts/verify-research-backup.sh',
 ];
 
 describe('production shell scripts parse', () => {
@@ -53,7 +54,7 @@ describe('production shell scripts parse', () => {
   });
 
   // Cron runs these by path; every other test runs them through `bash <script>`, so only this sees a lost bit.
-  const CRON_RUN = ['scripts/research-backup.sh'];
+  const CRON_RUN = ['scripts/research-backup.sh', 'scripts/verify-research-backup.sh'];
   it.each(CRON_RUN)('%s is executable', (rel) => {
     expect(statSync(path.join(REPO, rel)).mode & 0o111).not.toBe(0);
   });

@@ -28,6 +28,7 @@ const require = createRequire(import.meta.url);
 const REPO = path.resolve(import.meta.dirname, '..', '..');
 const SCRIPT = path.join(REPO, 'scripts', 'research-backup.sh');
 const INSTALL_CRON = path.join(REPO, 'scripts', 'install-cron.sh');
+const VERIFY_SCRIPT = path.join(REPO, 'scripts', 'verify-research-backup.sh');
 const WITHDRAWAL_SCRIPT = path.join(REPO, 'server', 'scripts', 'research-withdrawal.js');
 const Database = require(path.join(REPO, 'server', 'node_modules', 'better-sqlite3'));
 const freshMigratedDb = require(
@@ -362,5 +363,85 @@ describe('research-backup.sh', () => {
     const editorialRemote = editorial[0].match(/BACKUP_REMOTE=(\S+)/)[1];
     expect(editorialRemote).toBe('secret:');
     expect(editorialRemote).not.toBe('research-secret:');
+  });
+});
+
+describe('verify-research-backup.sh', () => {
+  /** setup() plus one full job run, so the remote holds a real copy N, and an older valid copy beside it. */
+  function withCopy() {
+    const c = setup();
+    const r = c.run();
+    expect(r.status, r.stdout + r.stderr).toBe(0);
+    const [N] = c.newCopies();
+    writeFileSync(
+      path.join(c.fake.remoteDir, 'research.2026-01-01T000000Z.db'),
+      readFileSync(path.join(c.fake.remoteDir, N))
+    );
+    const verify = (over = {}) =>
+      spawnSync('bash', [VERIFY_SCRIPT], { env: { ...c.env, ...over }, encoding: 'utf8' });
+    const lastLine = (r2) => r2.stdout.trimEnd().split('\n').pop();
+    const leftovers = () => c.local().filter((n) => n.endsWith('.verify'));
+    return { ...c, N, verify, lastLine, leftovers };
+  }
+
+  it('downloads the newest copy into the copies directory under its own stamp, verifies it, and removes it', () => {
+    const c = withCopy();
+    const r = c.verify();
+    expect(r.status, r.stdout + r.stderr).toBe(0);
+    expect(c.lastLine(r)).toBe('RESEARCH RESTORE VERIFY: PASS');
+    expect(c.fake.calls()).toContain(
+      `copyto research-secret:${c.N} ${c.files.backupsDir}/${c.N}.verify`
+    );
+    expect(c.leftovers()).toEqual([]);
+    c.checkReal();
+  });
+
+  it('fails loudly when the remote holds no copy', () => {
+    const c = withCopy();
+    for (const n of readdirSync(c.fake.remoteDir)) rmSync(path.join(c.fake.remoteDir, n));
+    const r = c.verify();
+    expect(r.status).toBe(1);
+    expect(c.lastLine(r)).toBe('RESEARCH RESTORE VERIFY: FAIL (no off-box copy found)');
+  });
+
+  it('fails loudly on a corrupt newest copy, and removes the download', () => {
+    const c = withCopy();
+    const target = path.join(c.fake.remoteDir, c.N);
+    const buf = readFileSync(target);
+    const raw = (buf[16] << 8) | buf[17];
+    const pageSize = raw === 1 ? 65536 : raw;
+    const offset = buf.length >= pageSize * 2 ? pageSize : 100; // start of page 2
+    buf[offset] ^= 0xff;
+    writeFileSync(target, buf);
+    const r = c.verify();
+    expect(r.status).toBe(1);
+    expect(c.lastLine(r)).toMatch(/^RESEARCH RESTORE VERIFY: FAIL \(/);
+    expect(c.leftovers()).toEqual([]);
+  });
+
+  it("refuses a remote that is not the research file's own", () => {
+    const c = setup();
+    const r = spawnSync('bash', [VERIFY_SCRIPT], {
+      env: { ...c.env, RESEARCH_REMOTE: 'secret:' },
+      encoding: 'utf8',
+    });
+    expect(r.status).toBe(2);
+    expect(c.fake.calls()).toEqual([]);
+  });
+
+  it('the template prints it monthly, with the research remote', () => {
+    const printed = execFileSync('bash', [INSTALL_CRON], {
+      env: { ...process.env, DEPLOY_PATH: '/srv/x' },
+      encoding: 'utf8',
+    });
+    const line = printed
+      .split('\n')
+      .find(
+        (l) =>
+          !l.trimStart().startsWith('#') && /\/scripts\/verify-research-backup\.sh(\s|$)/.test(l)
+      );
+    expect(line).toBeTruthy();
+    expect(line.trim().split(/\s+/).slice(2, 5)).toEqual(['1', '*', '*']);
+    expect(line).toMatch(/(^|\s)RESEARCH_REMOTE=research-secret:(\s|$)/);
   });
 });

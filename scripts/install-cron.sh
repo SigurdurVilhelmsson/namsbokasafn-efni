@@ -51,6 +51,9 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 # id or a count. See docs/technical/backup-and-restore.md.
 45 */6 * * * RESEARCH_REMOTE=${RESEARCH_REMOTE:-research-secret:} ${DEPLOY_PATH}/scripts/research-backup.sh >> ${DEPLOY_PATH}/pipeline-output/research-backup.log 2>&1
 
+# Monthly restore-test of the newest research copy (RESEARCH RESTORE VERIFY: PASS).
+30 4 1 * * RESEARCH_REMOTE=${RESEARCH_REMOTE:-research-secret:} ${DEPLOY_PATH}/scripts/verify-research-backup.sh >> ${DEPLOY_PATH}/pipeline-output/verify-research-backup.log 2>&1
+
 # To install, run:  crontab -e  and paste the lines above.
 #
 # LOGGING — and this line used to say "All scripts log to pipeline-output/",
@@ -60,7 +63,8 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 #   verify-db-backup.sh  does NOT log
 #   research-backup.sh   does NOT log (its cron line redirects; what reaches the
 #                        log is one verdict line per run, never an interval id)
-# So the two DB jobs and the research job carry an explicit redirect on their cron lines above.
+#   verify-research-backup.sh  does NOT log
+# So the two DB jobs and the two research jobs carry an explicit redirect on their cron lines above.
 # Without it their output goes to cron's local mail, which nobody reads, and a
 # failing off-box upload is visible only as heartbeat staleness in /api/health
 # -- a slow, indirect signal for a job that can fail loudly and cheaply.
