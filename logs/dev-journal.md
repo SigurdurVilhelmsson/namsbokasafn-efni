@@ -645,3 +645,87 @@ d8976825e docs(register): the full AI term-pass run is ready; ch10 left out; one
 **Why:** Production verified read-only at 0093d8da4 (pulled 18:31:52Z, restarted 18:32:06Z, level with main, health ok). The procedure is in the register's newest entry (2026-11-01, ready to run) and the work-state list full-run-2026-11; the run needs [USER]'s go before the first chapter and must finish by 27 November.
 
 ---
+
+## 2026-11-03 07:06 - G1.23 spec approved and merged (#617, 3a1db9091), prod deployed and in sync; next is the G1.1 + G1.2 brainstorm
+
+**Branch:** main
+**Modified:**
+(clean)
+
+**Recent commits:**
+3a1db9091 Merge pull request #617 from SigurdurVilhelmsson/docs/suggestion-view-spec-2026-11-03
+edaee1eab auto-backup: 2026-11-02 08:00
+1d9e65b61 docs(plans): register — G1.23 designed; G1.1 + G1.2 next
+
+**Why:** [USER] ruled G1.2 is built before G1.23 so research capture starts from the first unit, with G1.1 in the same project. The spec's §8 (`docs/superpowers/specs/2026-11-02-suggestion-view-design.md`) is the contract that design must meet. Prod verified read-only: pulled 3a1db9091 at 07:04:40Z, restarted 07:04:53Z, level with main; the stranded 2 Nov content backup was pushed by hand (edaee1eab). Health is degraded on content_backup only, until the 08:00Z cron run.
+
+---
+
+## 2026-11-06 08:27 - PR2 merged as 39080405 and deployed 08:22Z, verified; register entries d3ae06037 and 9d6cf5ce7 pushed to claude/cool-volta-8jm7hb; next is PR3, the event log, from 2026-11-03-g11-g12-pr3-event-log.md
+
+**Branch:** claude/cool-volta-8jm7hb
+**Modified:**
+ M logs/dev-journal.md
+
+**Recent commits:**
+9d6cf5ce7 docs(register): PR2 is deployed — verified read-only on prod
+d3ae06037 docs(register): #626 merged; PR2 awaits its deploy
+390804052 Merge pull request #626 from SigurdurVilhelmsson/claude/cool-volta-8jm7hb
+
+**Why:** —
+
+---
+
+## 2026-11-07 15:40 - Saving state and writing a clean handoff for G1.1+G1.2 PR3 (#628) after the I-R1/I-R2 build; no new work
+
+**Branch:** claude/g12-pr3-event-log
+**Modified:**
+ M docs/plans/2026-07-21-post-item17-followup-campaign.md
+ M logs/dev-journal.md
+
+**Recent commits:**
+02a67c86f test(server): the propagated-copy lookup's plan check asserts the index by name and no scan, not SQLite's whole plan (I-R review, Minor 2)
+b3e40dec3 perf(server): decision 65's book-wide check is one query per event over its distinct texts, not one per before-row (I-R review, Minor 1)
+1f135d94f test(server): an apply carrying a copy whose origin an unchanged re-save reset finds its propagation only by the row's own segment (I-R review, Important 1)
+
+**Why:** Context nearly full ([USER]). Handoff in untracked HANDOFF.md at the repo root; status in the register's RESUME.
+
+---
+
+## 2026-11-07 23:53 - Wrap-up before I clear and start PR4: PR3 merged and deployed twice, post-deploy PRs merged, register current
+
+**Branch:** main
+**Modified:**
+```
+ M logs/dev-journal.md
+```
+
+**Recent commits:**
+```
+108506535 docs(register): second deploy 2026-11-07 23:49Z (498eb7067), verified read-only; .deployed-commit written; #631's glob 14 chain on prod
+498eb7067 docs(register): after the deploy, #627, #614, #630 and #631 merged and #629 closed; PR4's tree check holds on main
+d9940ee15 Merge pull request #631 from SigurdurVilhelmsson/deps/minimatch-11-override
+```
+
+**Why:** —
+
+---
+
+## 2026-11-08 07:24 - H3 item 1 merged (#635), eleven scan answers recorded (#636); next is the re-request mode for the authorized 8-segment buy
+
+**Branch:** main (local is 12 commits behind origin/main; commits below are origin/main's)
+**Modified:**
+```
+ M logs/dev-journal.md
+```
+
+**Recent commits:**
+```
+58f71a32a Merge pull request #636 from SigurdurVilhelmsson/docs/sync-path-answers
+5dea9b2d8 docs(decisions): seven more answers — the 8-segment re-request route and buy, SD1, SD7, G1.16, G2.3, §C190 ②, §C11 ①, processQueue, read-only editor
+befff82bd docs(decisions): four chemistry sync-path answers — 1.7 tie meets 1.8's reading leg, §C206's checks and "pass", whole-book release, machine-only front-page credit
+```
+
+**Why:** —
+
+---
