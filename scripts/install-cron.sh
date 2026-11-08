@@ -42,6 +42,15 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 # that distinguishes the two.
 0 4 1 * * BACKUP_REMOTE=${BACKUP_REMOTE:-secret:} ${DEPLOY_PATH}/scripts/verify-db-backup.sh >> ${DEPLOY_PATH}/pipeline-output/verify-db-backup.log 2>&1
 
+# Research file backup (spec §5.17): its OWN job, with its own rclone crypt remote over its own bucket
+# (versioning off). Order: prune both tiers by age, run the withdrawal and retention deletions with --write
+# (a failure takes no copy), copy, upload, heartbeat (/api/health: checks.research_db reason backup-stale).
+# Its period is pinned: the prune cut-off and the health threshold are derived from it in
+# server/lib/researchBackupPolicy.js. RESEARCH_REMOTE must begin "research" (the job refuses any other: exit 2).
+# Its log holds one verdict line per run (the time, ok or failed, and the failing steps' names), never an interval
+# id or a count. See docs/technical/backup-and-restore.md.
+45 */6 * * * RESEARCH_REMOTE=${RESEARCH_REMOTE:-research-secret:} ${DEPLOY_PATH}/scripts/research-backup.sh >> ${DEPLOY_PATH}/pipeline-output/research-backup.log 2>&1
+
 # To install, run:  crontab -e  and paste the lines above.
 #
 # LOGGING — and this line used to say "All scripts log to pipeline-output/",
@@ -49,7 +58,9 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 #   git-backup.sh        LOGS  -> pipeline-output/backup.log (its own LOG_FILE)
 #   backup-db.sh         does NOT log
 #   verify-db-backup.sh  does NOT log
-# So the two DB jobs carry an explicit redirect on their cron lines above.
+#   research-backup.sh   does NOT log (its cron line redirects; what reaches the
+#                        log is one verdict line per run, never an interval id)
+# So the two DB jobs and the research job carry an explicit redirect on their cron lines above.
 # Without it their output goes to cron's local mail, which nobody reads, and a
 # failing off-box upload is visible only as heartbeat staleness in /api/health
 # -- a slow, indirect signal for a job that can fail loudly and cheaply.

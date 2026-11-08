@@ -2,10 +2,10 @@
  * The research backup's values and its copy-name arithmetic (G1.1 + G1.2 spec §5.17, §5.20; T19's
  * arithmetic half; PR4 Task 2, decisions 23 and 24).
  *
- * The cron period itself is pinned against scripts/install-cron.sh in PR4 Task 11, beside the
- * cron line it pins.
+ * The cron period itself is pinned against scripts/install-cron.sh, below (PR4 Task 11).
  */
 import { describe, it, expect } from 'vitest';
+import { readFileSync } from 'fs';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
@@ -92,5 +92,23 @@ describe('researchBackupPolicy', () => {
       ].sort(),
       unknown: ['notes.txt', copyName(T + 7 * H)].sort(),
     });
+  });
+
+  it('T19: the research cron line is every RESEARCH_BACKUP_CRON_HOURS hours, so the cut-off and the threshold are still right', () => {
+    const cron = readFileSync(new URL('../../scripts/install-cron.sh', import.meta.url), 'utf8');
+    const lineFor = (re) =>
+      cron.split('\n').find((l) => !l.trimStart().startsWith('#') && re.test(l));
+    const line = lineFor(/\/scripts\/research-backup\.sh(\s|$)/);
+    expect(line, 'no uncommented research-backup.sh cron line found').toBeTruthy();
+    expect(line.trim().split(/\s+/).slice(1, 5)).toEqual([
+      `*/${RESEARCH_BACKUP_CRON_HOURS}`,
+      '*',
+      '*',
+      '*',
+    ]);
+    // Control: the editorial line, read the same way, is the 6-hourly period offboxBackupHealth derives from.
+    const editorial = lineFor(/\/scripts\/backup-db\.sh(\s|$)/);
+    expect(editorial.trim().split(/\s+/)[1]).toBe('*/6');
+    expect(offboxBackupHealth.DEFAULT_STALE_HOURS).toBe(2 * 6 + 2);
   });
 });
