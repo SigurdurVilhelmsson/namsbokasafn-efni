@@ -1,0 +1,90 @@
+{
+  "schema": "mt-selected/1",
+  "module": "m68852",
+  "entries": [
+    {
+      "segmentId": "m68852:para:fs-idp10810528",
+      "occurrence": 0,
+      "text": "Breytingar á kjörnum sem leiða til breytinga á sætistölu þeirra, massatölu eða orkuástandi kallast [[term:kjarnahvörf|term-00001]]. Til að lýsa kjarnahvarfi notum við jöfnu sem tilgreinir kjarnategundirnar sem taka þátt í hvarfinu, massatölur þeirra og sætistölur og aðrar agnir sem taka þátt í hvarfinu.",
+      "beforeSha256": "f3e959052e76b529c5b68b86249fe8f5db3387aa4cc791e2bea48a041264a335",
+      "run": "20261108T093313Z-1ae55e6e",
+      "commit": "a521bed192dd58c8064abbd8de66fe2c7e95b5a0",
+      "rule": "rerequest",
+      "gate": {
+        "check": "detectResidue",
+        "untranslated": false,
+        "attempt": 1
+      }
+    },
+    {
+      "segmentId": "m68852:para:fs-idm5999248",
+      "occurrence": 0,
+      "text": "Margar einingar geta tekið þátt í kjarnahvörfum. Algengastar eru róteindir, nifteindir, alfaagnir, betaagnir, jáeindir og gammageislar, eins og sýnt er í [[xref:CNX_Chem_21_02_Nuclearrxs]]. Róteindir [[MATH:1]] sem einnig eru táknaðar með tákninu [[MATH:2]] og nifteindir [[MATH:3]] eru byggingareiningar atómkjarna og hefur þeim verið lýst áður. [[term:Alfaagnir|term-00002]] [[MATH:4]] sem einnig eru táknaðar með tákninu [[MATH:5]] eru orkumiklir helínkjarnar. [[term:Betaagnir|term-00003]] [[MATH:6]] sem einnig eru táknaðar með tákninu [[MATH:7]] eru orkumiklar rafeindir og gammageislar eru ljóseindir mjög orkumikillar rafsegulgeislunar. [[term:Jáeindir|term-00004]] [[MATH:8]] sem einnig eru táknaðar með tákninu [[MATH:9]] eru jákvætt hlaðnar rafeindir („andrafeindir“). Lágvísar og hávísar eru nauðsynlegir til að stilla kjarnajöfnur en eru yfirleitt valfrjálsir við aðrar aðstæður. Til dæmis er alfaögn helínkjarni (He) með hleðsluna +2 og massatöluna 4, svo hún er táknuð [[MATH:10]] Þetta gengur upp vegna þess að almennt skiptir hleðsla jónarinnar ekki máli þegar kjarnajöfnur eru stilltar.",
+      "beforeSha256": "e7c84f6eb31cbab65851bad2bb34550c1cab770ef7c83809516f2849004a979e",
+      "run": "20261108T093313Z-1ae55e6e",
+      "commit": "a521bed192dd58c8064abbd8de66fe2c7e95b5a0",
+      "rule": "rerequest",
+      "gate": {
+        "check": "detectResidue",
+        "untranslated": false,
+        "attempt": 1
+      }
+    },
+    {
+      "segmentId": "m68852:alt:fs-idp74884384-alt",
+      "occurrence": 0,
+      "text": "Þessi tafla hefur fjóra dálka og sjö raðir. Fyrsta röðin er fyrirsagnarröð og merkir hvern dálk: „Heiti“, „Tákn“, „Framsetning“ og „Lýsing“. Undir dálkinum „Heiti“ er eftirfarandi: „Alfaögn“, „Betaögn“, „Jáeind“, „Róteind“, „Nifteind“ og „Gammageisli“. Undir dálkinum „Tákn“ er eftirfarandi: „hávísir 4 ofan á lágvísi 2 H e eða lítið alfa“, „hávísir 0 ofan á lágvísi 1 e eða lítið beta“, „hávísir 0 ofan á jákvæðum lágvísi 1 e eða lítið beta með plúsmerki sem hávísi“, „hávísir 1 ofan á lágvísi 1 H eða lítið ró með hávísi 1 ofan á lágvísi 1 H“, „hávísir 1 ofan á lágvísi 0 n eða lítið eta með hávísi 1 ofan á lágvísi 0 n“ og lítið gamma. Undir dálkinum „Framsetning“ er eftirfarandi: tvær hvítar kúlur tengdar tveimur bláum kúlum af svipaðri stærð með plúsmerki í; lítil rauð kúla með mínusmerki í; lítil rauð kúla með plúsmerki í; blá kúla með plúsmerki í; hvít kúla; og fjólublá bylgjulína með ör sem bendir til hægri á lítið gamma. Undir dálkinum „Lýsing“ er eftirfarandi: „(Orkumiklir) helínkjarnar sem samanstanda af tveimur róteindum og tveimur nifteindum“, „(Orkumiklar) rafeindir“, „Agnir með sama massa og rafeind en með 1 einingu af jákvæðri hleðslu“, „Kjarnar vetnisatóma“, „Agnir með massa sem er um það bil jafn massa róteindar en án hleðslu“ og „Mjög orkumikil rafsegulgeislun“.",
+      "beforeSha256": "ba6f066ee0bfaf8d97f44ab07ef25bb11598c9bcbce72d2477d0f636057bc54b",
+      "run": "20261108T093313Z-1ae55e6e",
+      "commit": "a521bed192dd58c8064abbd8de66fe2c7e95b5a0",
+      "rule": "rerequest",
+      "gate": {
+        "check": "detectResidue",
+        "untranslated": false,
+        "attempt": 1
+      }
+    },
+    {
+      "segmentId": "m68852:para:fs-idp183438528",
+      "occurrence": 0,
+      "text": "Athugið að jáeindir eru nákvæmlega eins og rafeindir nema hvað þær hafa gagnstæða hleðslu. Þær eru algengasta dæmið um [[term:andefni|term-00005]], agnir með sama massa en gagnstætt ástand annars eiginleika (til dæmis hleðslu) og venjulegt efni. Þegar andefni rekst á venjulegt efni eyðast hvort tveggja og massa þeirra er umbreytt í orku í formi [[term:gammageisla (γ)|term-00006]] – og annarra mun minni undirkjarnaagna, sem eru utan viðfangsefnis þessa kafla – samkvæmt jöfnunni um jafngildi massa og orku [[i:E]] = [[i:mc]][[sup:2]], sem fjallað var um í kaflanum á undan. Til dæmis, þegar jáeind og rafeind rekast saman eyðast báðar og tvær gammaljóseindir myndast:",
+      "beforeSha256": "cde6d16f172139482a296199c53db5cfd8db830ace227092abecc47dd720e72c",
+      "run": "20261108T093313Z-1ae55e6e",
+      "commit": "a521bed192dd58c8064abbd8de66fe2c7e95b5a0",
+      "rule": "rerequest",
+      "gate": {
+        "check": "detectResidue",
+        "untranslated": false,
+        "attempt": 1
+      }
+    },
+    {
+      "segmentId": "m68852:para:fs-idp1433408",
+      "occurrence": 0,
+      "text": "Stillt efnahvarfsjafna endurspeglar þá staðreynd að í efnahvarfi rofna tengi og myndast og atóm endurraðast, en heildarfjöldi atóma hvers frumefnis varðveitist og breytist ekki. Stillt kjarnahvarfsjafna gefur til kynna að endurröðun á sér stað í kjarnahvarfi, en á kjarneindum (öreindum innan kjarna atómanna) frekar en atómum. Kjarnahvörf fylgja einnig varðveislulögmálum og þau eru stillt á tvo vegu:",
+      "beforeSha256": "7751cacb9dbe067f54c249ae78679507abd86f7d7fe44f72654ee1cc4deb3689",
+      "run": "20261108T093313Z-1ae55e6e",
+      "commit": "a521bed192dd58c8064abbd8de66fe2c7e95b5a0",
+      "rule": "rerequest",
+      "gate": {
+        "check": "detectResidue",
+        "untranslated": false,
+        "attempt": 1
+      }
+    },
+    {
+      "segmentId": "m68852:item:fs-idp258853168-item-1",
+      "occurrence": 0,
+      "text": "Summa massatalna hvarfefnanna er jöfn summu massatalna myndefnanna.",
+      "beforeSha256": "d45c30534650e687984ad381bdc42f29364295be27296c15d28437afad6d9698",
+      "run": "20261108T093313Z-1ae55e6e",
+      "commit": "a521bed192dd58c8064abbd8de66fe2c7e95b5a0",
+      "rule": "rerequest",
+      "gate": {
+        "check": "detectResidue",
+        "untranslated": false,
+        "attempt": 1
+      }
+    }
+  ]
+}

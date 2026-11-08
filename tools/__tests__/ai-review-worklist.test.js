@@ -1289,7 +1289,7 @@ describe('determinism', () => {
 
 describe('whole chemistry (every 02-structure chapter directory)', () => {
   it(
-    'sees 22,876 IS occurrences (4,184 identical to EN) and, under the 2026-10-26 rulings, keeps 4,105 items',
+    'sees 22,876 IS occurrences (4,176 identical to EN) and, under the 2026-10-26 rulings, keeps 4,109 items',
     { timeout: 90_000 },
     () => {
       const chapters = fs
@@ -1352,14 +1352,19 @@ describe('whole chemistry (every 02-structure chapter directory)', () => {
       }).toEqual({
         chapters: 23,
         occurrences: 22876,
-        identical: 4184,
+        // 2026-11-08: the re-request put 8 September segments into layer 1s (02-mt-selected/),
+        // which readBase applies. So identical fell by exactly 8 (4,184 → 4,176, the predicted
+        // number), and those 8 entered the term scan: 4 hold a ruled term (candidateOccurrences
+        // 4,122 → 4,126, items 4,105 → 4,109, pairs 5,641 → 5,649) and 4 do not (noCandidate
+        // 14,351 → 14,355). 4 + 4 = 8 accounts for every one.
+        identical: 4176,
         empty: 0,
         noEn: 0,
         noIs: 0,
-        items: 4105,
-        candidateOccurrences: 4122,
-        pairs: 5641,
-        noCandidate: 14351,
+        items: 4109,
+        candidateOccurrences: 4126,
+        pairs: 5649,
+        noCandidate: 14355,
         contextOk: true,
       });
     }

@@ -108,17 +108,69 @@ describe('zero-change round trip on every committed chemistry layer-1 unit', () 
     expect(bad).toEqual([]);
   });
 
-  it('readBase returns the exact bytes, the raw sha256, and no overlay for every unit', () => {
+  // A unit's layer-1s overlay, when it has one (2026-11-08: the re-request of the 8 September
+  // segments wrote the first three). readBase applies it, so these real-tree checks compare
+  // against layer 1 WITH the overlay's entries at their keys, and against layer 1 alone otherwise.
+  const overlayOf = ({ chapterDir, stem }) => {
+    const f = path.join(CHEM, LAYER_DIRS.selected, chapterDir, `${stem}-selected.json`);
+    return fs.existsSync(f) ? { file: f, json: JSON.parse(fs.readFileSync(f, 'utf8')) } : null;
+  };
+  const expectedBodies = (u) => {
+    const ov = overlayOf(u);
+    const byKey = new Map(
+      (ov ? ov.json.entries : []).map((e) => [
+        e.occurrence === 0 ? e.segmentId : `${e.segmentId}#${e.occurrence}`,
+        e.text,
+      ])
+    );
+    return parseLayerFile(fs.readFileSync(fileOf(u), 'utf8')).records.map((r) =>
+      byKey.has(r.key) ? byKey.get(r.key) : r.body
+    );
+  };
+
+  it('readBase returns layer 1 (with its overlay, if any) and both raw sha256s for every unit', () => {
     const bad = units.filter((u) => {
       const buf = fs.readFileSync(fileOf(u));
+      const ov = overlayOf(u);
       const base = readBase({ bookDir: CHEM, ...u });
+      const bodies = base.parsed.records.map((r) => r.body);
       return (
-        !Buffer.from(base.parsed.text, 'utf8').equals(buf) ||
         base.layer1Sha256 !== sha256(buf) ||
-        base.overlaySha256 !== null
+        base.overlaySha256 !== (ov ? sha256(fs.readFileSync(ov.file)) : null) ||
+        (ov === null && !Buffer.from(base.parsed.text, 'utf8').equals(buf)) ||
+        JSON.stringify(bodies) !== JSON.stringify(expectedBodies(u))
       );
     });
     expect(bad).toEqual([]);
+  });
+
+  it('every committed layer-1s entry is the answer its re-request log recorded as translated', () => {
+    const withOverlay = units.filter((u) => overlayOf(u) !== null);
+    const bad = withOverlay.flatMap((u) => {
+      const log = fs
+        .readFileSync(
+          path.join(CHEM, LAYER_DIRS.selected, u.chapterDir, `${u.stem}-rerequest.jsonl`),
+          'utf8'
+        )
+        .trimEnd()
+        .split('\n')
+        .map((l) => JSON.parse(l));
+      return overlayOf(u)
+        .json.entries.filter(
+          (e) =>
+            !log.some(
+              (l) =>
+                l.runId === e.run &&
+                l.results.some(
+                  (r) =>
+                    r.segmentId === e.segmentId && r.outcome === 'translated' && r.body === e.text
+                )
+            )
+        )
+        .map((e) => `${u.chapterDir}/${u.stem} ${e.segmentId}`);
+    });
+    // Control: the overlays exist, so the check above is not vacuous.
+    expect([withOverlay.length > 0, bad]).toEqual([true, []]);
   });
 
   it('every body equals what parseSegmentRecords returns, record for record', () => {
@@ -134,7 +186,9 @@ describe('zero-change round trip on every committed chemistry layer-1 unit', () 
   it('an empty edit list through applyBodyEdits returns the same bytes for every unit', () => {
     const bad = units.filter((u) => {
       const parsed = readBase({ bookDir: CHEM, ...u }).parsed;
-      return applyBodyEdits(parsed, []).text !== fs.readFileSync(fileOf(u), 'utf8');
+      // With an overlay the base is layer 1 plus its entries, checked against the file above.
+      const expected = overlayOf(u) ? parsed.text : fs.readFileSync(fileOf(u), 'utf8');
+      return applyBodyEdits(parsed, []).text !== expected;
     });
     expect(bad).toEqual([]);
   });

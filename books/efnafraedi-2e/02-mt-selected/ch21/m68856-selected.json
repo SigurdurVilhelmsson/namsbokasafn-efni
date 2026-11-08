@@ -1,0 +1,20 @@
+{
+  "schema": "mt-selected/1",
+  "module": "m68856",
+  "entries": [
+    {
+      "segmentId": "m68856:para:fs-idm211204656",
+      "occurrence": 0,
+      "text": "Hægt er að stjórna keðjuverkunum kljúfanlegra efna og viðhalda þeim án sprengingar í [[term:kjarnaofni|term-00012]] ([[xref:CNX_Chem_21_04_NuclearPwr]]). Sérhver kjarnaofn sem framleiðir orku með klofnun úrans eða plútons með nifteindaárekstrum verður að hafa að minnsta kosti fimm hluta: kjarnaeldsneyti úr kljúfanlegu efni, hægi, kælivökva, stjórnstangir og hlífðar- og innilokunarkerfi. Við munum fjalla nánar um þessa hluta síðar í kaflanum. Kjarnaofninn virkar þannig að kljúfanlega kjarnaefnið er aðskilið svo að markmassi geti ekki myndast, og bæði flæði og gleypni nifteinda er stjórnað svo hægt sé að stöðva klofnunarhvörfin. Í kjarnaofni sem notaður er til raforkuframleiðslu er orkan sem losnar við klofnunarhvörf fönguð sem varmaorka og notuð til að sjóða vatn og mynda gufu. Gufan er notuð til að snúa hverfli sem knýr rafal til raforkuframleiðslu.",
+      "beforeSha256": "7d828d4f50d6e9fcdb2ae78dbf16d5ee4bcd338bd13ce956b63e85b78dd70ad8",
+      "run": "20261108T093313Z-1ae55e6e",
+      "commit": "a521bed192dd58c8064abbd8de66fe2c7e95b5a0",
+      "rule": "rerequest",
+      "gate": {
+        "check": "detectResidue",
+        "untranslated": false,
+        "attempt": 1
+      }
+    }
+  ]
+}
