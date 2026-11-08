@@ -69,6 +69,7 @@ import {
 import { decodeEntities } from './lib/math-label-inventory.js';
 import { buildModuleSections } from './lib/module-sections.js';
 import { loadChapterTermEnglish } from './lib/term-english-map.js';
+import { readSourceCnxml } from './lib/source-cnxml.js';
 import { safeWrite, logBackup } from './lib/safeWrite.js';
 // §C145 ② — shared with cnxml-inject.js's gate, so the two cannot drift.
 import {
@@ -145,6 +146,43 @@ function getNoteTypeLabel(noteClass) {
 function translateTitle(title) {
   const trimmed = title.trim();
   return TITLE_TRANSLATIONS[trimmed] || title;
+}
+
+// H3 item 1 (docs/decisions/2026-11-08-h3-four-form-rulings-chemistry.md): a
+// para-title whose SOURCE title is one of these renders as the house value in
+// TITLE_TRANSLATIONS, whatever the MT made of it. Keyed on the read-only source
+// by para id, never on the translated text, which varies with the MT run (16
+// forms of this heading in chemistry's September MT). Matched ignoring case and
+// a trailing full stop, because OpenStax's source also writes "Check your
+// Learning" and "Check Your Learning.". Only titles [USER] has ruled belong here.
+const SOURCE_KEYED_TITLES = new Map([['check your learning', 'Check Your Learning']]);
+
+/**
+ * The house value for a para-title, looked up by its source title.
+ * @param {string|undefined} sourceTitle - The para's title in the English source
+ * @returns {string|null} The house value, or null when the source title is not source-keyed
+ */
+function sourceKeyedTitle(sourceTitle) {
+  if (!sourceTitle) return null;
+  const key = SOURCE_KEYED_TITLES.get(sourceTitle.trim().replace(/\.$/, '').toLowerCase());
+  return (key && TITLE_TRANSLATIONS[key]) || null;
+}
+
+/**
+ * Map each para id in a source CNXML document to the title that leads that para.
+ * Reads only open tags and an immediately following `<title>`, so a para nested
+ * in another element is found too. The attribute span is quote-aware (§C115).
+ * @param {string} sourceCnxml - The module's English source CNXML
+ * @returns {Map<string, string>} para id → leading title text
+ */
+function sourceParaTitles(sourceCnxml) {
+  const titles = new Map();
+  const pattern = new RegExp(`<para\\b(${TAG_ATTR_SPAN})>\\s*<title>([\\s\\S]*?)<\\/title>`, 'g');
+  for (const m of sourceCnxml.matchAll(pattern)) {
+    const { id } = parseAttributes(m[1]);
+    if (id) titles.set(id, m[2]);
+  }
+  return titles;
 }
 
 // A CNXML <title> may contain inline markup (<emphasis>, <sub>, <sup>, <m:math>).
@@ -853,6 +891,9 @@ function renderCnxmlToHtml(cnxml, options = {}) {
   if (options.bookConfig) {
     BOOK_CONFIG = options.bookConfig;
     NOTE_TYPE_LABELS = options.bookConfig.noteTypeLabels || {};
+    // The server path never runs main()'s loadBookConfig, so without this its
+    // title map stayed empty and no house title could resolve there.
+    TITLE_TRANSLATIONS = options.bookConfig.titleTranslations || {};
   }
 
   // D4: accept a caller-supplied map (test path, server preview path, future callers).
@@ -924,6 +965,10 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     // cwd=server/, where 'books/…' resolves to server/books/… and misses for every
     // book. Same reason options.embedMap exists — see its comment above.
     termEnglish: options.termEnglish || null,
+    // THIS module's English source (01-source), for source-keyed para-titles (H3
+    // item 1). Supplied by the caller for the same reason as termEnglish; absent →
+    // every para-title renders as translated, as before.
+    sourceParaTitles: options.sourceCnxml ? sourceParaTitles(options.sourceCnxml) : null,
     equations: [],
     terms: {},
     figures: [],
@@ -1850,8 +1895,13 @@ function renderExample(example, context) {
     if (paraTitle) {
       // processInlineContent (not escapeHtml) so a para-title carrying inline
       // markup renders it; plain titles ("Lausn", "Svar") are unchanged.
+      // A source-keyed title (H3 item 1) wins over the translated one.
+      const houseTitle =
+        para.id && ctx.sourceParaTitles
+          ? sourceKeyedTitle(ctx.sourceParaTitles.get(para.id))
+          : null;
       parts.push(
-        `<p class="para-title"><strong>${processInlineContent(translateTitle(paraTitle), ctx)}</strong></p>`
+        `<p class="para-title"><strong>${processInlineContent(houseTitle || translateTitle(paraTitle), ctx)}</strong></p>`
       );
     }
     if (contentWithoutTitle.trim()) {
@@ -4279,6 +4329,14 @@ async function main() {
 
           const cnxmlPath = translatedCnxmlPath(args.track, chapterDir, moduleId);
           const cnxml = fs.readFileSync(cnxmlPath, 'utf-8');
+          // H3 item 1: the module's English source keys its ruled para-titles.
+          // A missing source is printed, never silent (it only means MT headings).
+          const sourceCnxml = readSourceCnxml(BOOKS_DIR, chapterDir, moduleId);
+          if (!sourceCnxml) {
+            console.log(
+              `  source: no 01-source/${chapterDir}/${moduleId}.cnxml — para-titles render as translated`
+            );
+          }
 
           const renderResult = renderCnxmlToHtml(cnxml, {
             verbose: args.verbose,
@@ -4287,6 +4345,7 @@ async function main() {
             moduleId,
             // THIS module's map only — never the chapter-wide union.
             termEnglish: termEnglish.byModule.get(moduleId) || null,
+            sourceCnxml,
             moduleSections,
             chapterFigureNumbers,
             chapterTableNumbers,
@@ -4937,6 +4996,7 @@ export {
   buildAppendixIdMap,
   buildKeyTermsItems,
   buildPeriodicTableMain,
+  sourceParaTitles, // H3 item 1
   rollbackWrittenFiles,
   assertNoMarkerResidueHtml, // §C145 ②
   assertNoMarkerResidueInInputs, // §C145 ② pre-flight
