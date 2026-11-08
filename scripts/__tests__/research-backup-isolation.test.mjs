@@ -177,3 +177,46 @@ describe('T19: the editorial tier never picks up a research copy', () => {
     }
   });
 });
+
+describe('the deployment docs no longer invite a copy of the research file', () => {
+  const CHECKLIST = path.join(REPO, 'docs', 'deployment', 'linode-deployment-checklist.md');
+  const BACKUP_DOC = path.join(REPO, 'docs', 'technical', 'backup-and-restore.md');
+
+  it("the checklist's §9 recommends no whole-disk backup and no unexcluded copy of pipeline-output (spec §12 item 10)", () => {
+    const doc = readFileSync(CHECKLIST, 'utf8');
+    const start = doc.indexOf('## 9.');
+    const s9 = doc.slice(start, doc.indexOf('## 10.', start));
+    expect(s9.length).toBeGreaterThan(0);
+    expect(s9.startsWith('## 9. Backup Strategy')).toBe(true);
+    // A command, not the bare word: the prose bullet naming `tar` and `rsync` is not one.
+    const fenced = [...s9.matchAll(/```[^\n]*\n([\s\S]*?)```/g)].flatMap((m) => m[1].split('\n'));
+    const inline = [...s9.replace(/```[\s\S]*?```/g, '').matchAll(/`([^`\n]+)`/g)].map((m) => m[1]);
+    const commands = [...fenced, ...inline].filter((c) => /(?:^|[\s;|&])(?:tar|rsync)\s/.test(c));
+    expect(commands.length).toBeGreaterThan(0); // control: the extraction sees the one command the text keeps
+    expect(s9).not.toMatch(/Enable automatic Linode backups/i);
+    expect(s9).not.toMatch(/Rsync to external/i);
+    expect(commands.filter((c) => !/--exclude='\*research\*'/.test(c))).toEqual([]);
+    expect(s9).toContain('research.db');
+    expect(s9).toContain('scripts/research-backup.sh');
+  });
+
+  it('backup-and-restore.md describes the research remote and restates no editorial default', () => {
+    const doc = readFileSync(BACKUP_DOC, 'utf8');
+    for (const s of [
+      'research-secret:',
+      'linode-research',
+      'scripts/research-backup.sh',
+      'server/scripts/research-restore.js',
+      'G-1b',
+      'pipeline-output/research-backup.log',
+    ]) {
+      expect(doc, s).toContain(s);
+    }
+    expect(doc).toMatch(/one verdict line per run/);
+    const lines = doc.split('\n');
+    expect(lines.filter((l) => /OFFBOX_BACKUP_STALE_HOURS.*\|\s*`?\d+`?\s*\|/.test(l))).toEqual([]);
+    expect(lines.filter((l) => /\d+\s*h cycles?/.test(l))).toEqual([]);
+    expect(doc).not.toMatch(/s3 remote `research/);
+    expect(doc).toContain('OFFBOX_BACKUP_STALE_HOURS'); // control: the row is still there
+  });
+});
