@@ -31,7 +31,7 @@ Per CLAUDE.md § One source of truth, "the plan says X is missing" was run, not 
 - Writes `books/<slug>/02-mt-selected/` only. Never writes `02-mt-output/` or `01-source/` (CLAUDE.md § File Permissions; §2.3: "never over `02-mt-output`").
 - No `--force`, and no `--force --module`: "it would rewrite the module and revert a `HAND REPAIR`" (§2.3).
 - New translations come only from the API, through `translateSegmentText`. Never from an AI, and no hand repairs to pure MT (CLAUDE.md § Purpose; [USER] 2026-11-05).
-- "June's API text is the fallback for the 7 that June translated." The table alt goes to editors as a flagged untranslated segment "if it comes back untranslated twice". So: **at most 2 attempts per segment.**
+- "June's API text is the fallback for the 7 that June translated." The table alt goes to editors as a flagged untranslated segment "if it comes back untranslated twice". So **two untranslated answers flag a segment**, counted across runs from the attempt log, and a flagged segment is never sent again. A *refused* response (no SEG marker, id-set defect, truncation) is a transport failure, not an answer: it does not count toward the two and the segment may be re-sent. Each run makes at most 2 sends per segment (`MAX_ATTEMPTS`).
 - 15-3's answer is **not** in this buy. It joins only once §C208's fix lands.
 - The paid run happens only after the mode is built and tested, a dry run's plan and cost have been shown to [USER], and [USER] says go. It is paid privately; record the cost in ISK.
 - Prove a translation reached layer 1s **by value** (the body `readBase` returns at that key). Compare id **sets**, never counts.
@@ -58,12 +58,12 @@ Per CLAUDE.md § One source of truth, "the plan says X is missing" was run, not 
 - Test: `tools/__tests__/mt-rerequest.test.js`
 
 **Interfaces:**
-- Consumes: `parseSegmentRecords` from `tools/lib/seg-markers.cjs`; `detectResidue` from `tools/lib/residue-check.js`; `SEGMENT_ID_RE` from `tools/lib/mt-layers.js`.
+- Consumes: `parseSegmentRecords` from `tools/lib/seg-markers.cjs`; `detectResidue` from `tools/lib/residue-check.js`; `SEGMENT_ID_RE` and `validateBody` from `tools/lib/mt-layers.js`.
 - Produces:
   - `MAX_ATTEMPTS = 2`, `REREQUEST_RULE = 'rerequest'`
   - `parseRerequestIds(value: string) → string[]`. Throws `Error` naming the bad item.
-  - `planRerequest({ enText: string, baseText: string, ids: string[], selectedKeys: Set<string> }) → { requested: string[], refused: Array<{ id: string, why: RefusalCode }>, wireText: string }`, where `RefusalCode` is `'not-in-en' | 'not-in-is' | 'duplicated-id' | 'already-selected' | 'not-untranslated'`. `baseText` is the layer-1 text with any overlay applied (`readBase(...).parsed.text`).
-  - `classifyAttempt({ enText: string, responseText: string, ids: string[] }) → Array<{ segmentId: string, outcome: 'translated' | 'untranslated', body: string }>`
+  - `planRerequest({ enText: string, baseText: string, ids: string[], selectedKeys: Set<string>, untranslatedCounts: Map<string, number> }) → { requested: string[], refused: Array<{ id: string, why: RefusalCode }>, wireText: string }`, where `RefusalCode` is `'not-in-en' | 'not-in-is' | 'duplicated-id' | 'already-selected' | 'already-flagged' | 'not-untranslated'`. `baseText` is the layer-1 text with any overlay applied (`readBase(...).parsed.text`). `untranslatedCounts` maps an id to its untranslated answers so far (Task 2's `readRerequestOutcomes`); 2 or more → `already-flagged`.
+  - `classifyAttempt({ enText: string, responseText: string, ids: string[] }) → Array<{ segmentId: string, outcome: 'translated' | 'untranslated' | 'held', body: string, reason: string | null }>`. A body that `validateBody` (`mt-layers.js`) refuses is `held`, with the problem codes joined as `reason`, because the overlay writer would refuse it.
 
 - [ ] **Step 1: Write the failing tests**
 
@@ -86,6 +86,8 @@ describe('planRerequest', () => {
   it('refuses an id the IS lacks: not-in-is', …)
   it('refuses an id that occurs twice in the EN or the IS: duplicated-id', …)
   it('refuses an id already in the overlay: already-selected', …)
+  it('refuses an id with two untranslated answers: already-flagged', …)
+  it('control: an id with one untranslated answer is still requested', …)
   it('refuses an id whose base body is translated: not-untranslated', …)
   it('a refusal leaves the id out of the wire text', …)
 });
@@ -93,6 +95,7 @@ describe('classifyAttempt', () => {
   it('an identity response is untranslated', …)            // response = wireText unchanged
   it('an Icelandic response is translated and carries the body as received', …)
   it('classifies each id on its own', …)                   // one of each in one response
+  it('a translated body with a line break is held, reason line-break', …)
 });
 ```
 
@@ -103,7 +106,7 @@ Expected: FAIL, `Cannot find module '../lib/mt-rerequest.js'`.
 
 - [ ] **Step 3: Implement the module**
 
-`planRerequest` checks in this order, one refusal per id: not-in-en, not-in-is, duplicated-id, already-selected, not-untranslated. Count occurrences over raw records, not a first-wins map, so a duplicated id is seen. `not-untranslated` is `!detectResidue(enBody, baseBody).exact`. Do not write a second untranslated test. `selectedKeys` holds occurrence keys (`segmentId` for occurrence 0), as `occurrenceKey` in `seg-markers.cjs` builds them. File header: pure, writes nothing, talks to no API.
+`planRerequest` checks in this order, one refusal per id: not-in-en, not-in-is, duplicated-id, already-selected, already-flagged, not-untranslated. Count occurrences over raw records, not a first-wins map, so a duplicated id is seen. `not-untranslated` is `!detectResidue(enBody, baseBody).exact`. Do not write a second untranslated test. `selectedKeys` holds occurrence keys (`segmentId` for occurrence 0), as `occurrenceKey` in `seg-markers.cjs` builds them. File header: pure, writes nothing, talks to no API.
 
 - [ ] **Step 4: Run them and see them pass**
 
@@ -129,6 +132,7 @@ git commit -m "feat(mt-rerequest): plan and classify a re-request of chosen untr
 - Produces:
   - `REREQUEST_SCHEMA = 'mt-rerequest/1'`
   - `readSelectedKeys({ bookDir, chapterDir, stem }) → Set<string>`: the occurrence keys the module's overlay already holds; an empty set when there is no overlay. Refuses a malformed overlay (`bad-overlay`), as `readBase` does.
+  - `readRerequestOutcomes({ bookDir, chapterDir, stem }) → Map<string, number>`: per id, how many `untranslated` results the module's log holds; an empty map when there is no log. Refuses a malformed line (`bad-log`).
   - `writeSelectedOverlay({ bookDir, chapterDir, stem, entries }) → { file: string, overlaySha256: string }`. `entries` items have exactly the `mt-selected/1` entry keys: `{ segmentId, occurrence, text, beforeSha256, run, commit, rule, gate }`.
   - `appendRerequestLog({ bookDir, chapterDir, stem, record }) → { file: string, lines: number }`. Writes `02-mt-selected/<ch>/<stem>-rerequest.jsonl`. `record` has exactly these keys: `{ schema, module, runId, at, attempt, commit, glossaryArm, ids, chars, estimatedIsk, error, run, results }`. `results` items are `{ segmentId, outcome, body, reason }`, with `outcome` one of `'translated' | 'untranslated' | 'held' | 'refused'`. `body` is the response text as received, or `null` when the response was refused. `error` and `run` are `null` when they do not apply.
 
@@ -160,6 +164,10 @@ describe('appendRerequestLog', () => {
   it('refuses a record with a missing or extra key', …)
   it('refuses a record for another module', …)
   it('SAFE_FILENAME_RE accepts <stem>-rerequest.jsonl, and the log lands in 02-mt-selected/<ch>/', …)
+});
+describe('readRerequestOutcomes', () => {
+  it('counts untranslated results per id across lines; refused and held do not count', …)
+  it('returns an empty map when there is no log', …)
 });
 ```
 
@@ -200,8 +208,8 @@ git commit -m "feat(mt-layers): a layer-1s writer and an append-only re-request 
 - Test: `tools/__tests__/api-translate-rerequest.test.js` (new)
 
 **Interfaces:**
-- Consumes: Task 1's `planRerequest`, `classifyAttempt`, `MAX_ATTEMPTS`, `REREQUEST_RULE`; Task 2's `readSelectedKeys`, `writeSelectedOverlay`, `appendRerequestLog`, `REREQUEST_SCHEMA`; `readBase` and `LAYER_DIRS` from `mt-layers.js`; the file's own `translateSegmentText`, `runRecordFor`, `bracketMarkerDeltaBySegment`; `estimateIsk`.
-- Produces: `rerequestModule(client, unit, glossary, verbose, maxChunk, ctx) → Promise<{ accepted: string[], flagged: string[], attempts: number, chars: number }>`
+- Consumes: Task 1's `planRerequest`, `classifyAttempt`, `MAX_ATTEMPTS`, `REREQUEST_RULE`; Task 2's `readSelectedKeys`, `readRerequestOutcomes`, `writeSelectedOverlay`, `appendRerequestLog`, `REREQUEST_SCHEMA`; `readBase` and `LAYER_DIRS` from `mt-layers.js`; the file's own `translateSegmentText`, `runRecordFor`, `bracketMarkerDeltaBySegment`; `estimateIsk`.
+- Produces: `rerequestModule(client, unit, glossary, verbose, maxChunk, ctx) → Promise<{ accepted: string[], flagged: string[], failed: string[], attempts: number, chars: number }>`. `flagged`: ids with two untranslated answers (never sent again). `failed`: ids still pending for any other reason (refused or held); they may be re-sent in a later run.
   - `unit = { bookDir: string /* absolute …/books/<slug> */, chapterDir: string, stem: string, ids: string[] }`
   - `ctx = { glossaryArm: string, commit: string /* 40-hex */, runId: string, now?: () => Date }`
 
@@ -225,7 +233,12 @@ it('retries a marker-less one-segment response once', …)
 it('a digit rewritten inside an element id is refused, logged, and not written', …)
 it('holds a segment whose markers changed and accepts its clean sibling', …)
   // p2 answered without its term marker → outcome 'held', reason names 'term'; p1 accepted
-it('stops after MAX_ATTEMPTS: an id refused twice is flagged and never written', …)
+it('an id refused twice is failed, not flagged, and never written', …)
+it('one untranslated answer then one refusal leaves the id failed with one untranslated answer logged', …)
+  // a second run's planner still requests it; a third untranslated-answer run would flag it
+it('an id with two untranslated answers from an earlier run is not sent (already-flagged)', …)
+  // seed the log with two untranslated lines → throws before any call; client.calls.length === 0
+it('a body with a line break is held, logged, and not written', …)
 it('records a refused attempt with chars and estimatedIsk but run null', …)
 ```
 
@@ -237,15 +250,15 @@ Expected: FAIL, `rerequestModule is not exported`.
 - [ ] **Step 3: Implement `rerequestModule`**
 
 Loop up to `MAX_ATTEMPTS`. For each attempt:
-1. Re-read the base with `readBase` and the keys with `readSelectedKeys`, then `planRerequest` the pending ids. On attempt 1 a planner refusal throws before any send; on attempt 2 the pending ids cannot be refused, because nothing accepted them.
+1. Re-read the base with `readBase`, the keys with `readSelectedKeys` and the counts with `readRerequestOutcomes`, then `planRerequest` the pending ids. On attempt 1 a planner refusal throws before any send. On attempt 2, an id the planner now refuses as `already-flagged` leaves the pending set as flagged; any other refusal is a bug and throws.
 2. Send the wire text through `translateSegmentText` (`ctx` `{ moduleId: stem, where: <the overlay path> }`).
 3. If it throws: every pending id is `refused` for this attempt, with `error` = the message.
-4. If it returns: classify with `classifyAttempt`. Mark as `held` any id with an entry in `bracketMarkerDeltaBySegment(wire, output).bySegment`, in `greekLost`, or in `mismatches`.
+4. If it returns: classify with `classifyAttempt` (which already holds an invalid body). Also mark as `held` any id with an entry in `bracketMarkerDeltaBySegment(wire, output).bySegment`, in `greekLost`, or in `mismatches`.
 5. Append the log line **before** any overlay write, so a paid attempt is recorded even if the write refuses.
 6. Write the `translated` ids with `writeSelectedOverlay`.
 7. Pending = everything not accepted.
 
-`flagged` is what is still pending at the end. The function never touches `02-mt-output/`.
+At the end, split what is still pending into `flagged` (two untranslated answers, counted from the log) and `failed` (the rest). The function never touches `02-mt-output/`.
 
 - [ ] **Step 4: Run them and see them pass**
 
@@ -270,19 +283,21 @@ git commit -m "feat(api-translate): rerequestModule — up to two guarded attemp
 - Consumes: Task 3's `rerequestModule`; Task 1's `parseRerequestIds`, `planRerequest`; Task 2's `readSelectedKeys`; `makeGit`, `resolveCommit`, `filesAtCommitProblems` from `tools/ai-review/provenance.js`; `mintRunId` from `tools/ai-review/records.js`; the existing `resolveGlossaryArm`, glossary loading and `createClient`.
 - Produces:
   - parse spec entry `{ name: 'rerequest', flags: ['--rerequest'], type: 'string', default: null }`
+  - `formatRerequestDryRun({ modules, statedArm, commit, commitProblems }) → string`, pure. `modules` items: `{ chapterDir, stem, ids: Array<{ id, chars }>, wireChars, recordedArm, recordedTermCount }`. Its first summary line is `Re-request: <M> module(s), <N> segment(s)`.
   - `resolveRerequestCommit({ git, repoRoot, files }) → string`. Returns HEAD's full sha. Throws listing every file whose working bytes are not its blob at HEAD. `files` are the run's **inputs** only: each module's layer-1 IS and its EN. The overlay and log are its outputs, so an uncommitted overlay from an earlier attempt does not block a re-run.
 
 - [ ] **Step 1: Write the failing tests**
 
-CLI cases use the real chemistry tree, as the top-up tests do, and are **all `--dry-run` or refused before a client exists**. Set `MALSTADUR_API_KEY=bogus` in the child env so an accidental live call fails loudly, never charges.
+CLI cases use the real chemistry tree, as the top-up tests do, and are **all `--dry-run` or refused before a client exists**. Set `MALSTADUR_API_KEY=bogus` in the child env so an accidental live call fails loudly, never charges. ⚠️ **Only cases whose result survives the buy go on the real tree.** "The 8 ids plan cleanly" does not: once Task 6 commits the overlay, the planner refuses them (`already-selected`) and the test would go red on this same branch. That positive case is Task 5 Step 3's manual measurement, and the output it prints is pinned through the pure formatter instead.
 
 ```js
 it('the flag is declared: --rerequest with an unknown id exits 1 and names it', …)
   // spawnSync node tools/api-translate.js --book efnafraedi-2e --rerequest m68852:para:nope --dry-run
   // status 1; stderr contains 'not-in-en'
 it('a translated id is refused: not-untranslated, exit 1, nothing sent', …)   // a real Icelandic id in m68852
-it('the 8 ids plan cleanly in a dry run: 3 modules, 8 segments, cost shown', …)
-  // status 0; stdout contains 'Re-request: 3 module(s), 8 segment(s)' and 'ISK'
+it('formatRerequestDryRun prints the summary line, per-id chars, ISK per attempt, both arms and the commit', …)
+  // fixture: 3 modules, 8 ids → contains 'Re-request: 3 module(s), 8 segment(s)' and 'ISK per attempt'
+it('formatRerequestDryRun prints the would-refuse line when there are commit problems', …)
 it('refuses --rerequest with --force, --top-up, --june-wire or --update-status', …)   // each: status 1, 'Nothing was sent'
 it('a live --rerequest with no glossary arm is refused (exit 2) before any client', …)
 it('resolveRerequestCommit returns HEAD for clean inputs and refuses a dirty one', …)
@@ -303,8 +318,8 @@ Expected: the CLI cases FAIL (the unknown-id case exits 0, because the flag is u
   2. Group ids by module. Find each module's chapter: exactly one `02-for-mt/*/<m>-segments.en.md`, honouring `--chapter`/`--module` if given.
   3. Refuse a locked module (`isMtLocked`).
   4. Plan every module. Any refusal prints `id: why` lines and exits 1 before a client exists, dry run included.
-  5. Dry run prints, per module, its ids with EN characters and its wire characters. Then: totals, `~N ISK per attempt (at most 2 attempts: ~2N)`, the stated arm, each module's recorded September arm and term count (read-only from `02-mt-output/<ch>/<m>-provenance.json` → `run.glossary`), and the commit — or `⚠️ the live run would refuse: …` with the commit problems. Exit 0.
-  6. Live: resolve the commit (refuse on problems), `mintRunId()` once, run `rerequestModule` per module, print accepted and flagged ids per module. Exit 1 if anything is flagged or failed.
+  5. Dry run prints `formatRerequestDryRun(...)`: per module, its ids with EN characters and its wire characters; then totals, `~N ISK per attempt (at most 2 per run: ~2N)`, the stated arm, each module's recorded September arm and term count (read-only from `02-mt-output/<ch>/<m>-provenance.json` → `run.glossary`), and the commit — or `⚠️ the live run would refuse: …` with the commit problems. Exit 0.
+  6. Live: resolve the commit (refuse on problems), `mintRunId()` once, run `rerequestModule` per module, print accepted, flagged and failed ids per module. Exit 1 if anything is flagged or failed.
 - Add `--rerequest <id,…>` to the header usage block and to `printHelp`: what it does, that it writes `02-mt-selected/` only, and what it cannot be combined with.
 
 - [ ] **Step 4: Run them and see them pass**
@@ -346,7 +361,9 @@ git diff --stat -- books/efnafraedi-2e/02-for-mt/ch08/m68744-segments.en.md \
   books/efnafraedi-2e/02-for-mt/ch21/m68852-segments.en.md books/efnafraedi-2e/02-for-mt/ch21/m68856-segments.en.md
 ```
 
-Expected: no diff in the three `.en.md` files. A timestamp-only change elsewhere in `02-structure/` is expected; restore every file the extract touched with `git restore` (they were clean at HEAD by Step 1). **If any of the 8 English bodies changed, STOP and report.**
+Expected: no diff in the three `.en.md` files. A timestamp-only change elsewhere in `02-structure/` is expected. Then restore every file the extract touched with `git restore` (they were clean at HEAD by Step 1), so the buy reads the committed English that layer 1 was bought from.
+- **If any of the 8 English bodies changed, STOP and report.**
+- If an `.en.md` differs but the 8 bodies do not, restore, note which segments differ for the register entry, and go on: the 8 bodies the buy sends are what a fresh extract gives.
 
 - [ ] **Step 3: The dry run**
 
@@ -361,7 +378,7 @@ Expected: exit 0; 3 modules, 8 segments; about 58 ISK per attempt; the commit, w
 
 The message carries:
 - the dry run's output;
-- the cost: about 58 ISK per attempt, at most about 120 ISK, paid privately;
+- the cost: about 58 ISK per attempt, at most about 120 ISK for the run, plus at most one re-run of `failed` ids (another ~58 ISK), paid privately;
 - the arm question. This plan proposes `--no-glossary` (the 2026-09-06 direction: glossary off the wire). September bought all three modules `glossary-only` (36 terms for ch21, 8 for ch08), so `--glossary-only` with those subsets is the comparable alternative;
 - that `m68744`'s paragraph returned English on two earlier paid attempts, so it may need June's fallback (Task 7);
 - what happens to layer 2 (Task 6, Step 4).
@@ -374,7 +391,7 @@ The message carries:
 
 - [ ] **Step 1: The paid run**
 
-Run the Task 5 Step 3 command without `--dry-run`, with the arm [USER] chose. The guard hook asks for confirmation; that prompt is expected. If a module's response is refused twice, re-run the command with only that module's flagged ids, once.
+Run the Task 5 Step 3 command without `--dry-run`, with the arm [USER] chose. The guard hook asks for confirmation; that prompt is expected. If ids come back `failed` (refused, or held), re-run once with only those ids; that is a further ~58 ISK at most, and it was named at the go. A `flagged` id is never re-sent: the planner refuses it.
 
 - [ ] **Step 2: Prove what reached layer 1s, by value**
 
@@ -382,7 +399,7 @@ A scratch script (scratchpad, not committed). For each of the three modules:
 1. Read `readBase` and the `-rerequest.jsonl` log.
 2. Assert each accepted id's body equals the logged response body.
 3. Assert `detectResidue(en, body).exact === false`.
-4. Assert the **set** accepted ∪ flagged equals the set of 8.
+4. Assert the **set** accepted ∪ flagged ∪ failed equals the set of 8.
 5. Assert the layer-1 sha256 equals `git show HEAD:<file>`'s.
 
 Then `git status --porcelain` must list only files under `books/efnafraedi-2e/02-mt-selected/`.
@@ -391,6 +408,7 @@ Then `git status --porcelain` must list only files under `books/efnafraedi-2e/02
 
 - The table alt flagged: it stays English in layer 1 and goes to editors as a flagged untranslated segment. Record that in the register entry (Step 6). Surfacing it in the editor is not built here.
 - Any of the 7 flagged: Task 7 (June fallback). Stop before it and tell [USER].
+- Anything still `failed` after the one re-run: stop and tell [USER] with the logged errors.
 
 - [ ] **Step 4: Record what the 1s write did to layer 2**
 
