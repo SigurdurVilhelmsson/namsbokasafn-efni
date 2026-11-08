@@ -729,3 +729,22 @@ befff82bd docs(decisions): four chemistry sync-path answers — 1.7 tie meets 1.
 **Why:** —
 
 ---
+
+## 2026-11-08 07:48 - handover done: docs branch 83ef711af pushed (no PR), feat/rerequest-mode worktree ready, dashboard rolled to 8 Nov; next is the re-request mode in a new session
+
+**Branch:** feat/rerequest-mode
+**Modified:**
+```
+(clean)
+```
+
+**Recent commits:**
+```
+83ef711af docs(register): the 2026-11-08 entry's heading supersedes the NEXT below it (re-request mode first, PR4 after)
+0c574e8c6 docs(register): NEXT is the re-request mode (plan 10-10 §2.3), then the authorized 8-segment buy; PR4 follows ([USER] 2026-11-08)
+60cf6b0d6 docs(journal): snapshots 2026-11-03 → 2026-11-08 (PR2/PR3 deploys, H3 item 1, the scan answers)
+```
+
+**Why:** —
+
+---
