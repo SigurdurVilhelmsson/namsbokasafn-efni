@@ -1662,7 +1662,7 @@ describe('G-1a, crontab half (spec §9): every cron source, for a copy of pipeli
         { source: '/etc/cron.daily/local-backup', line: `cp -a ${r}/repo/pipeline-output /mnt/po` },
         { source: 'spool:siggi', line: `0 2 * * * /usr/bin/rsync -a ${r}/ /mnt/backup/` },
         { source: 'spool:siggi', line: `0 3 * * * /bin/tar -czf /b/h.tgz ${r}` },
-        { source: `spool:siggi → ${r}/bin/nightly.sh`, line: 'tar czf /tmp/n.tgz ~/repos' },
+        { source: `spool:siggi → ${r}/bin/nightly.sh`, line: 'tar <redacted> /tmp/n.tgz ~/repos' },
       ],
       excludedCopies: [{ source: '/etc/cron.d/po-tar-excluded', line: lines.poTarExcluded }],
       unclassified: [
@@ -1728,6 +1728,30 @@ describe('G-1a, crontab half (spec §9): every cron source, for a copy of pipeli
       expect(text, s).not.toContain(s);
     }
     expect(text).toContain("--exclude='*research*'"); // the one value left readable
+  });
+
+  // Review finding (2026-11-08): redaction listed the shapes of a secret (NAME=value, --opt=value) and so missed
+  // others. It now keeps only the words it knows are safe, and the found lines still read as copies.
+  it('keeps only the words it knows to be safe, whatever shape a secret takes', () => {
+    plantCron({ spool: false });
+    const r = R();
+    const secretLines = [
+      `0 1 * * * rclone copy --password SENTINEL-A ${r} research-secret:x`,
+      `0 2 * * * sshpass -p SENTINEL-B scp -r ${r} host:/b`,
+      `0 3 * * * rsync -a ${r}/ rsync://user:SENTINEL-C@host/mod`,
+      `0 4 * * * duplicity ${r} s3://AKIA:SENTINEL-D@bucket/p`,
+      `0 5 * * * tar -czf /b/x.tgz ${r} -pSENTINEL9`,
+    ];
+    plant('var/spool/cron/crontabs/siggi', `${secretLines.join('\n')}\n`);
+    const g = readResearchPreconditions(g1aCtx()).sections['G-1a'];
+    // Positive control: every line was found as a copy.
+    expect(g.copies.filter((c) => c.source === 'spool:siggi')).toHaveLength(secretLines.length);
+    const text = JSON.stringify(g);
+    for (const s of ['SENTINEL-A', 'SENTINEL-B', 'SENTINEL-C', 'SENTINEL-D', 'SENTINEL9']) {
+      expect(text, s).not.toContain(s);
+    }
+    // What a reader needs is still there: the tool, its options and the paths.
+    expect(g.copies.map((c) => c.line)).toContain(`0 5 * * * tar -czf /b/x.tgz ${r} <redacted>`);
   });
 
   it('an unreadable spool is reported, not read as clean', () => {

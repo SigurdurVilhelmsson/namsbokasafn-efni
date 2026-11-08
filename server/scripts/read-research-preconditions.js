@@ -862,48 +862,7 @@ const ASSIGNMENT_ONLY = /^[A-Za-z_][A-Za-z0-9_]*=\S*$/;
 const ASSIGNMENT_WORD = /^[A-Za-z_][A-Za-z0-9_]*=/;
 // A copy that leaves the research file out: returned apart, for [USER]'s judgment (spec §9: "excluded the file").
 const EXCLUDES_RESEARCH = /--exclude(?:-from)?[= ]['"]?[^\s'"]*research/;
-// Redact a NAME=value or --opt=value word at a token start; keep an --exclude/--include value, which a reader needs
-// in order to judge the exclusion. (A \b anchor here redacted `--exclude='*research*'` too, measured.)
-const KEEP_VALUE = /^--(?:exclude|include)(?:-from)?$/;
-const redactAssignments = (line) =>
-  line.replace(/(^|\s)(--?[A-Za-z][\w-]*|[A-Za-z_]\w*)=("[^"]*"|'[^']*'|\S+)/g, (m, pre, name) =>
-    KEEP_VALUE.test(name) ? m : `${pre}${name}=<redacted>`
-  );
-
-/** Whether a word of the line is ~, $HOME, / or an absolute path at or above dir. */
-function namesAncestor(line, dir) {
-  for (const raw of line.split(/\s+/)) {
-    const p = raw.replace(/^["'(]+|["');]+$/g, '');
-    if (/^(?:~|\$HOME|\$\{HOME\})(?:\/|$)/.test(p)) return true;
-    if (p.startsWith('/')) {
-      const q = p.replace(/\/+$/, '') || '/';
-      if (q === '/' || dir === q || dir.startsWith(`${q}/`)) return true;
-    }
-  }
-  return false;
-}
-
-/** @returns {null | { kind: 'copy' | 'excluded-copy' | 'unclassified', line } | { kind: 'known', job }} */
-function classifyCronLine(line, dir) {
-  const t = line.trim();
-  if (!t || t.startsWith('#') || ASSIGNMENT_ONLY.test(t)) return null;
-  const mentions = t.includes('pipeline-output');
-  if (COPY_TOOL.test(t) && (mentions || namesAncestor(t, dir))) {
-    return {
-      kind: EXCLUDES_RESEARCH.test(t) ? 'excluded-copy' : 'copy',
-      line: redactAssignments(t),
-    };
-  }
-  const job = KNOWN_JOBS.find((j) =>
-    new RegExp(`/scripts/${j.replace(/\./g, '\\.')}(?:\\s|$)`).test(t)
-  );
-  if (job) return { kind: 'known', job };
-  if (mentions) return { kind: 'unclassified', line: redactAssignments(t) };
-  return null;
-}
-
 const unquote = (w) => w.replace(/^["'(]+|["');]+$/g, '');
-const OPERATOR = /^(?:&&|\|\||;|\|)$/;
 // Programs that run the script named among their arguments: the script is what is read.
 const WRAPPERS = new Set([
   'sh',
@@ -926,6 +885,104 @@ const WRAPPERS = new Set([
   'chronic',
   'xargs',
 ]);
+
+// Redaction keeps only the words it knows are safe and replaces every other word with <redacted> (review finding
+// 2026-11-08: a list of the shapes a secret takes — NAME=value, --opt=value — missed `--password X`, `-p X`, `-pX`
+// and a URL's user:password@). Kept: a crontab line's schedule fields and user field (by position), every command
+// word (the first, and the first after &&, ||, ; or |), a copying tool's or wrapper's name, an option made of
+// letters and dashes only, a shell operator or redirection, a path word (/, ~, $HOME, ./ or ../; never one holding
+// @ or ://), and an --exclude/--include value, which a reader needs in order to judge the exclusion. A NAME=value
+// or --opt=value word keeps its name. What no rule can tell from a flag: a letters-only secret glued to a short
+// option (`-pHunter`), so G-1a's output is still read before it is pasted.
+const KEEP_VALUE = /^--(?:exclude|include)(?:-from)?$/;
+const SAFE_NAMES = new Set([
+  'tar',
+  'rsync',
+  'cp',
+  'scp',
+  'rclone',
+  'restic',
+  'borg',
+  'duplicity',
+  'zip',
+  'cpio',
+  'dd',
+]);
+const SHELL_OPERATOR = /^[0-9]*[<>|&;]+[&0-9]*$/;
+const LETTERS_OPTION = /^--?[A-Za-z][A-Za-z-]*$/;
+const isPathWord = (w) =>
+  /^(?:\/|~|\$HOME\b|\$\{HOME\}|\.\.?\/)/.test(unquote(w)) && !/@|:\/\//.test(w);
+
+/** @param {string} line @param {{ skip?: string, hasUser?: boolean } | null} kind a crontab's, or null for a script */
+function redactLine(line, kind = null) {
+  const words = line.trim().split(/\s+/);
+  let fixed = 0;
+  if (kind) {
+    fixed = kind.skip === 'anacron' ? 3 : words[0].startsWith('@') ? 1 : 5;
+    if (kind.hasUser) fixed += 1;
+  }
+  let expectCommand = true;
+  let keepNext = false;
+  return words
+    .map((w, i) => {
+      if (i < fixed) return w;
+      const keep = keepNext;
+      keepNext = false;
+      const assign = /^(--?[A-Za-z][\w-]*|[A-Za-z_]\w*)=/.exec(w);
+      if (assign) return KEEP_VALUE.test(assign[1]) ? w : `${assign[1]}=<redacted>`;
+      if (SHELL_OPERATOR.test(w)) {
+        if (/^(?:&&|\|\||;|\|)$/.test(w)) expectCommand = true;
+        return w;
+      }
+      if (expectCommand) {
+        expectCommand = false;
+        return w;
+      }
+      if (keep || isPathWord(w) || w === '-') return w;
+      if (LETTERS_OPTION.test(w)) {
+        if (KEEP_VALUE.test(w)) keepNext = true; // --exclude PATTERN, space form
+        return w;
+      }
+      const bare = path.basename(unquote(w));
+      if (SAFE_NAMES.has(bare) || WRAPPERS.has(bare)) return w;
+      return '<redacted>';
+    })
+    .join(' ');
+}
+
+/** Whether a word of the line is ~, $HOME, / or an absolute path at or above dir. */
+function namesAncestor(line, dir) {
+  for (const raw of line.split(/\s+/)) {
+    const p = raw.replace(/^["'(]+|["');]+$/g, '');
+    if (/^(?:~|\$HOME|\$\{HOME\})(?:\/|$)/.test(p)) return true;
+    if (p.startsWith('/')) {
+      const q = p.replace(/\/+$/, '') || '/';
+      if (q === '/' || dir === q || dir.startsWith(`${q}/`)) return true;
+    }
+  }
+  return false;
+}
+
+/** @returns {null | { kind: 'copy' | 'excluded-copy' | 'unclassified', line } | { kind: 'known', job }} */
+function classifyCronLine(line, dir, kind = null) {
+  const t = line.trim();
+  if (!t || t.startsWith('#') || ASSIGNMENT_ONLY.test(t)) return null;
+  const mentions = t.includes('pipeline-output');
+  if (COPY_TOOL.test(t) && (mentions || namesAncestor(t, dir))) {
+    return {
+      kind: EXCLUDES_RESEARCH.test(t) ? 'excluded-copy' : 'copy',
+      line: redactLine(t, kind),
+    };
+  }
+  const job = KNOWN_JOBS.find((j) =>
+    new RegExp(`/scripts/${j.replace(/\./g, '\\.')}(?:\\s|$)`).test(t)
+  );
+  if (job) return { kind: 'known', job };
+  if (mentions) return { kind: 'unclassified', line: redactLine(t, kind) };
+  return null;
+}
+
+const OPERATOR = /^(?:&&|\|\||;|\|)$/;
 const UNRESOLVABLE = /^(?:~|\$HOME\b|\$\{HOME\})/;
 
 /**
@@ -1058,8 +1115,8 @@ function readG1a({ etcRoot, varRoot, exec, researchDir }) {
   const excludedCopies = [];
   const unclassified = [];
   const known = new Set();
-  const take = (source, line) => {
-    const c = classifyCronLine(line, dir);
+  const take = (source, line, kind) => {
+    const c = classifyCronLine(line, dir, kind);
     if (!c) return false;
     if (c.kind === 'copy') copies.push({ source, line: c.line });
     else if (c.kind === 'excluded-copy') excludedCopies.push({ source, line: c.line });
@@ -1070,7 +1127,7 @@ function readG1a({ etcRoot, varRoot, exec, researchDir }) {
   for (const s of sources) {
     if (s.text === null) continue;
     for (const line of s.text.split('\n')) {
-      if (take(s.source, line) || !s.kind) continue;
+      if (take(s.source, line, s.kind) || !s.kind) continue;
       const t = line.trim();
       if (!t || t.startsWith('#') || ASSIGNMENT_ONLY.test(t)) continue;
       // One level into each command a crontab line runs: a program the probe cannot read may copy anything, so what
@@ -1082,7 +1139,7 @@ function readG1a({ etcRoot, varRoot, exec, researchDir }) {
         if (file.refused) {
           unclassified.push({
             source: `${s.source} → ${target.path} (${file.refused})`,
-            line: redactAssignments(t),
+            line: redactLine(t, s.kind),
           });
         } else {
           for (const inner of file.text.split('\n')) take(`${s.source} → ${target.path}`, inner);
@@ -1330,7 +1387,7 @@ module.exports = {
   readG1a,
   readG1h,
   classifyCronLine,
-  redactAssignments,
+  redactLine,
   execNeverThrow,
   SECTIONS,
 };
