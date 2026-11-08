@@ -16,9 +16,18 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
-import { rerequestModule } from '../api-translate.js';
+import { spawnSync, execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+import {
+  rerequestModule,
+  formatRerequestDryRun,
+  resolveRerequestCommit,
+} from '../api-translate.js';
 import { readBase, LAYER_DIRS, readRerequestOutcomes } from '../lib/mt-layers.js';
 import { estimateIsk } from '../lib/malstadur-api.js';
+import { makeGit } from '../ai-review/provenance.js';
+
+const REPO = fileURLToPath(new URL('../..', import.meta.url));
 
 const sha256 = (s) => crypto.createHash('sha256').update(s).digest('hex');
 const SHA_A = 'a'.repeat(40);
@@ -289,5 +298,149 @@ describe('rerequestModule', () => {
     const c = client(icelandic);
     await expect(run(c, ['m100:para:p0'])).rejects.toThrow(/not-untranslated/);
     expect([c.calls.length, overlay(), logLines()]).toEqual([0, null, []]);
+  });
+});
+
+// ─── The CLI (Task 4) ────────────────────────────────────────────────────────────────────
+// ⚠️ These run the real tool on the real chemistry tree, so every case is a --dry-run or is
+// refused before a client exists, and the child gets a bogus API key: an accidental live call
+// fails loudly (401), never charges. ⚠️ ONLY CASES WHOSE RESULT SURVIVES THE BUY GO HERE: once
+// the 8 segments are committed to layer 1s the planner refuses them (`already-selected`), so
+// "the 8 ids plan cleanly" is a manual measurement, and its printout is pinned through the
+// pure formatter below instead.
+
+const cli = (...args) =>
+  spawnSync(process.execPath, ['tools/api-translate.js', '--book', 'efnafraedi-2e', ...args], {
+    cwd: REPO,
+    env: { ...process.env, MALSTADUR_API_KEY: 'bogus-key-for-tests' },
+    encoding: 'utf8',
+  });
+const TRANSLATED_ID = 'm68852:abstract-item:abstract-item-1';
+
+describe('api-translate --rerequest (CLI)', () => {
+  it('the flag is declared: --rerequest with an unknown id exits 1 and names it', () => {
+    const r = cli('--rerequest', 'm68852:para:nope', '--dry-run');
+    expect([
+      r.status,
+      r.stderr.includes('m68852:para:nope'),
+      r.stderr.includes('not-in-en'),
+    ]).toEqual([1, true, true]);
+  });
+
+  it('a translated id is refused: not-untranslated, exit 1, nothing sent', () => {
+    const r = cli('--rerequest', TRANSLATED_ID, '--dry-run');
+    expect([
+      r.status,
+      r.stderr.includes('not-untranslated'),
+      r.stdout.includes('Re-request:'),
+    ]).toEqual([1, true, false]);
+  });
+
+  it('refuses --rerequest with --force, --top-up, --june-wire or --update-status', () => {
+    const outcomes = ['--force', '--top-up', '--june-wire', '--update-status'].map((flag) => {
+      const r = cli('--rerequest', TRANSLATED_ID, flag, '--dry-run', '--no-glossary');
+      return [flag, r.status, r.stderr.includes('Nothing was sent')];
+    });
+    expect(outcomes).toEqual([
+      ['--force', 1, true],
+      ['--top-up', 1, true],
+      ['--june-wire', 1, true],
+      ['--update-status', 1, true],
+    ]);
+  });
+
+  it('a live --rerequest with no glossary arm is refused (exit 2) before any client', () => {
+    const r = cli('--rerequest', TRANSLATED_ID);
+    expect([r.status, r.stderr.includes('no glossary arm')]).toEqual([2, true]);
+  });
+});
+
+describe('formatRerequestDryRun', () => {
+  const modules = [
+    {
+      chapterDir: 'ch08',
+      stem: 'm68744',
+      ids: [{ id: 'm68744:para:fs-idp92007424', chars: 392 }],
+      wireChars: 433,
+      recordedArm: 'glossary-only',
+      recordedTermCount: 8,
+    },
+    {
+      chapterDir: 'ch21',
+      stem: 'm68852',
+      ids: Array.from({ length: 6 }, (_, i) => ({ id: `m68852:para:x${i}`, chars: 100 })),
+      wireChars: 900,
+      recordedArm: 'glossary-only',
+      recordedTermCount: 36,
+    },
+    {
+      chapterDir: 'ch21',
+      stem: 'm68856',
+      ids: [{ id: 'm68856:para:fs-idm211204656', chars: 1006 }],
+      wireChars: 1047,
+      recordedArm: null,
+      recordedTermCount: null,
+    },
+  ];
+  const text = (o = {}) =>
+    formatRerequestDryRun({
+      modules,
+      statedArm: 'no-glossary',
+      commit: 'c'.repeat(40),
+      commitProblems: [],
+      ...o,
+    });
+
+  it('prints the summary line, per-id chars, ISK per attempt, both arms and the commit', () => {
+    const t = text();
+    expect([
+      t.includes('Re-request: 3 module(s), 8 segment(s)'),
+      t.includes('m68744:para:fs-idp92007424') && t.includes('392'),
+      t.includes(`~${estimateIsk(433 + 900 + 1047).toFixed(0)} ISK per attempt`),
+      t.includes('Glossary arm: no-glossary'),
+      t.includes('glossary-only, 36 term(s)'),
+      t.includes(`Commit: ${'c'.repeat(40)}`),
+    ]).toEqual([true, true, true, true, true, true]);
+  });
+
+  it('prints the would-refuse line when there are commit problems', () => {
+    const t = text({ commitProblems: ['books/x differs from its blob'] });
+    expect([t.includes('the live run would refuse'), t.includes('books/x differs')]).toEqual([
+      true,
+      true,
+    ]);
+  });
+
+  it('warns when no glossary arm is given', () => {
+    expect(text({ statedArm: null }).includes('REFUSED')).toBe(true);
+  });
+});
+
+describe('resolveRerequestCommit', () => {
+  it('returns HEAD for clean inputs and refuses a dirty one', () => {
+    const repo = fs.mkdtempSync(path.join(os.tmpdir(), 'rerequest-git-'));
+    try {
+      const g = (...a) => execFileSync('git', a, { cwd: repo, encoding: 'utf8' });
+      g('init', '-q');
+      g('config', 'user.email', 't@example.invalid');
+      g('config', 'user.name', 'test');
+      fs.mkdirSync(path.join(repo, 'in'));
+      fs.writeFileSync(path.join(repo, 'in', 'a.txt'), 'one\n');
+      g('add', '.');
+      g('commit', '-q', '-m', 'one');
+      const head = g('rev-parse', 'HEAD').trim();
+      const git = makeGit({ cwd: repo });
+      const clean = resolveRerequestCommit({ git, repoRoot: repo, files: ['in/a.txt'] });
+      fs.writeFileSync(path.join(repo, 'in', 'a.txt'), 'two\n');
+      expect([
+        clean,
+        () => resolveRerequestCommit({ git, repoRoot: repo, files: ['in/a.txt'] }),
+      ]).toEqual([head, expect.any(Function)]);
+      expect(() => resolveRerequestCommit({ git, repoRoot: repo, files: ['in/a.txt'] })).toThrow(
+        /in\/a\.txt/
+      );
+    } finally {
+      fs.rmSync(repo, { recursive: true, force: true });
+    }
   });
 });
