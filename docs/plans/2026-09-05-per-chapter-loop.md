@@ -289,7 +289,7 @@ the OLD English, reproduces the defect exactly, and exits 0.
 ### Retrying a HELD-BACK module — the per-module path
 
 🔴 **EXIT 1 IS NOT A FAILED RUN.** A module with a bracket-marker delta or an id-reattach mismatch
-is **held back** from `--update-status` and forces `process.exit(1)` — but **its output IS written
+is **held back** (a per-module ⛔ line) and forces `process.exit(1)` — but **its output IS written
 and the API call IS paid for either way**. Read the summary, not the exit code. `Failed: 0` with
 exit 1 means every module was bought and at least one needs review.
 

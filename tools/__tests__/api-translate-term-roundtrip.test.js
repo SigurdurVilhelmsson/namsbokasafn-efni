@@ -287,22 +287,3 @@ describe('translateModule leak guard refuses to write a wire-only paired marker 
     expect(fs.existsSync(outPath)).toBe(false);
   });
 });
-
-// ─── T4: mismatch-bearing chapters must not be reported complete ──────────
-describe('computeCompleteChapters (T4 — mismatch chapters excluded from completion)', () => {
-  it('excludes a chapter that reported a mismatch even though its module "succeeded"', async () => {
-    const { computeCompleteChapters } = await import('../api-translate.js');
-    const succeeded = new Set(['ch01', 'ch02']);
-    const failed = new Set();
-    const mismatched = new Set(['ch02']);
-    expect(computeCompleteChapters(succeeded, failed, mismatched)).toEqual(['ch01']);
-  });
-
-  it('mirrors the existing failedChapters exclusion (both filters combine)', async () => {
-    const { computeCompleteChapters } = await import('../api-translate.js');
-    const succeeded = new Set(['ch01', 'ch02', 'ch03']);
-    const failed = new Set(['ch02']);
-    const mismatched = new Set(['ch03']);
-    expect(computeCompleteChapters(succeeded, failed, mismatched)).toEqual(['ch01']);
-  });
-});

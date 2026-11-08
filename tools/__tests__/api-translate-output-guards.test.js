@@ -240,15 +240,10 @@ describe('① Greek loss — the verdict is wired into main()', () => {
     expect(mainBody).toContain('classifyModuleOutcome({ mismatches, bracketDelta, greekLost })');
   });
 
-  it('counts a Greek-loss module and holds its chapter', () => {
+  it('counts a Greek-loss module', () => {
     expect(mainBody).toMatch(
-      /if \(greekLost && greekLost\.length > 0\) \{\s*results\.greekModules\+\+;\s*greekChapters\.add\(mod\.chapterDir\);/
+      /if \(greekLost && greekLost\.length > 0\) \{\s*results\.greekModules\+\+;/
     );
-  });
-
-  it('feeds a Greek held-back set into computeCompleteChapters', () => {
-    const i = mainBody.indexOf('computeCompleteChapters(');
-    expect(mainBody.slice(i, mainBody.indexOf(')', i))).toContain('greekChapters');
   });
 
   it('a Greek loss contributes to the non-zero exit', () => {

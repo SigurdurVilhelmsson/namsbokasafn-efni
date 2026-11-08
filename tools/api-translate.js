@@ -20,7 +20,7 @@
  *   --top-up            Buy only the segments an existing IS lacks; splice them in (§C183)
  *   --rerequest <ids>   Re-request named segments that came back untranslated; write the
  *                       accepted answers to layer 1s (02-mt-selected/) only (plan 10-10 §2.3).
- *                       Not with --force, --top-up, --june-wire or --update-status.
+ *                       Not with --force, --top-up or --june-wire.
  *   --dry-run, -n       Show what would be translated + cost estimate
  *   --no-glossary       Don't send glossary terms with requests
  *   --glossary-only <a,b>  Send ONLY these approved headwords; refuses if any is
@@ -1406,25 +1406,7 @@ export function topUpAction(plan) {
 }
 
 /**
- * Chapters eligible for --update-status completion (T4).
- *
- * A chapter is complete only if every translated module in it both (a)
- * succeeded outright, and (b) reported no id-reattach mismatches — a
- * mismatch means some segment silently degraded to its English source
- * (B4-D11 count-guard), which must hold the chapter back exactly like a
- * hard module failure does.
- *
- * @param {Set<string>} succeededChapters
- * @param {Set<string>} failedChapters
- * @param {Set<string>} mismatchChapters
- * @returns {string[]}
- */
-export function computeCompleteChapters(succeededChapters, ...heldBackSets) {
-  return [...succeededChapters].filter((ch) => !heldBackSets.some((set) => set && set.has(ch)));
-}
-
-/**
- * Decide whether one module's result must hold its chapter back, and say why.
+ * Decide whether one module's result must be held back, and say why.
  *
  * 🔴 §C118 ⑲ — A DETECTOR THAT FIRES INTO A LOG IS NOT A GATE. `bracketMarkerDelta`
  * has always computed the per-module delta and `formatBracketDelta` has always
@@ -1504,6 +1486,8 @@ function parseCliArgs(argv) {
     { name: 'juneWire', flags: ['--june-wire'], type: 'boolean', default: false },
     { name: 'rateDelay', flags: ['--rate-delay'], type: 'number', default: 500 },
     { name: 'maxChunk', flags: ['--max-chunk'], type: 'number', default: DEFAULT_MAX_CHUNK_CHARS },
+    // Retired (CLAUDE.md § E-2). ⚠️ parseArgs drops an UNDECLARED flag silently, so this line is
+    // what lets main() refuse it (api-translate-update-status-retired.test.js).
     { name: 'updateStatus', flags: ['--update-status'], type: 'boolean', default: false },
   ]);
 }
@@ -1539,6 +1523,13 @@ const NO_ARM_HELP =
   'tools/compute-glossary-subset.js, then audit it) · --full-glossary (the whole ' +
   'approved glossary, which a run with no flag used to send silently).';
 
+// CLAUDE.md § E-2: the flag loaded AGPL server/ code from this MIT tool. It stays declared in
+// parseCliArgs so it is refused here instead of being dropped silently by parseArgs.
+const UPDATE_STATUS_RETIRED =
+  'Error: --update-status is retired (2026-11-08): api-translate no longer writes the ' +
+  'pipeline status database, because doing so loaded AGPL server/ code from this MIT tool ' +
+  '(CLAUDE.md § E-2). Nothing was sent.';
+
 function formatChapter(chapter) {
   if (chapter === 'appendices') return 'appendices';
   return `ch${String(chapter).padStart(2, '0')}`;
@@ -1568,7 +1559,7 @@ Options:
                       the accepted answers to layer 1s (02-mt-selected/) only; 02-mt-output/
                       is never written. Refuses an id that is translated, already selected
                       or already flagged (two untranslated answers). Not with --force,
-                      --top-up, --june-wire or --update-status.
+                      --top-up or --june-wire.
   --dry-run, -n       Show what would be translated + cost estimate
   Glossary arm — a live run REFUSES unless exactly one is given:
   --no-glossary       Don't send glossary terms with requests
@@ -1582,7 +1573,7 @@ Options:
                       row, both values of a contested headword, short headwords as
                       substrings). Recorded as run.glossary.wire. Not with --top-up.
   --rate-delay <ms>   Delay between API calls (default: 500)
-  --update-status     Mark mtOutput stage as complete in pipeline DB
+  --update-status     Retired 2026-11-08: refuses (no longer writes the status database)
   -v, --verbose       Detailed progress output
   -h, --help          Show this help
 
@@ -2078,7 +2069,7 @@ export async function translateSegmentText(client, input, glossary, verbose, max
   if (moduleIdDefect) throw new Error(`${moduleId}: ${moduleIdDefect}`);
 
   // §C183 guard ①: Greek letters the MT substituted, per segment. A LOSS holds the
-  // chapter back (classifyModuleOutcome) but the text is still written — it was paid for,
+  // module back (classifyModuleOutcome) but the text is still written — it was paid for,
   // and one wrong symbol leaves the rest usable. An ADDITION alone is reported, not held:
   // the MT turns spelled-out names ("lambda") into symbols. See greekConservationBySegment.
   const greekFindings = greekConservationBySegment(input, output);
@@ -2741,46 +2732,6 @@ async function runRerequestMode(args, { glossary, statedArm }) {
   if (bad > 0) process.exitCode = 1;
 }
 
-// ─── Pipeline Status ────────────────────────────────────────────────
-
-/**
- * Update pipeline status for translated chapters.
- * Uses the server's pipelineStatusService directly (standalone, no server needed).
- * Fails silently — status updates should never block translation.
- */
-async function updatePipelineStatus(bookSlug, chapters) {
-  try {
-    const { createRequire } = await import('module');
-    const require = createRequire(import.meta.url);
-
-    let pipelineStatus;
-    try {
-      pipelineStatus = require('../server/services/pipelineStatusService.js');
-    } catch {
-      console.warn('  Warning: Could not load pipeline status service (server not set up?)');
-      return;
-    }
-
-    for (const chapterDir of chapters) {
-      const chapterNum = chapterDir === 'appendices' ? -1 : parseInt(chapterDir.slice(2), 10);
-      try {
-        pipelineStatus.transitionStage(
-          bookSlug,
-          chapterNum,
-          'mtOutput',
-          'complete',
-          'api-translate'
-        );
-        console.log(`  ${chapterDir}: mtOutput → complete`);
-      } catch (err) {
-        console.warn(`  ${chapterDir}: status update failed — ${err.message}`);
-      }
-    }
-  } catch (err) {
-    console.warn(`  Warning: Pipeline status update skipped — ${err.message}`);
-  }
-}
-
 // ─── Main ───────────────────────────────────────────────────────────
 
 async function main() {
@@ -2795,6 +2746,12 @@ async function main() {
   // Validate: --module requires --chapter (`== null` so chapter 0 / preface is valid)
   if (args.module && args.chapter == null) {
     console.error('Error: --module requires --chapter');
+    process.exit(1);
+  }
+
+  // Refused on a dry run too: a flag that cannot be honoured is a contradiction.
+  if (args.updateStatus) {
+    console.error(UPDATE_STATUS_RETIRED);
     process.exit(1);
   }
 
@@ -2821,13 +2778,12 @@ async function main() {
   }
 
   // Plan 10-10 §2.3: the re-request writes layer 1s only, so every flag that rewrites layer 1
-  // or the status DB contradicts it.
+  // contradicts it. (--update-status is refused above for every mode.)
   if (args.rerequest != null) {
     const clash = [
       ['--force', args.force],
       ['--top-up', args.topUp],
       ['--june-wire', args.juneWire],
-      ['--update-status', args.updateStatus],
     ].filter(([, on]) => on);
     if (clash.length > 0) {
       console.error(
@@ -3088,17 +3044,6 @@ async function main() {
     errors: [],
   };
 
-  // Track per-chapter outcome so --update-status only advances chapters whose
-  // modules all succeeded (a chapter with any failed module is NOT complete).
-  // T4: a chapter with any module whose id-reattach mismatched (a segment
-  // silently degraded to English) is likewise held back — mirrors
-  // failedChapters exactly, just for a softer failure mode.
-  const succeededChapters = new Set();
-  const failedChapters = new Set();
-  const mismatchChapters = new Set();
-  const deltaChapters = new Set();
-  const greekChapters = new Set();
-
   for (const mod of workList) {
     if (mod.action === 'locked-skip') {
       console.warn(
@@ -3117,7 +3062,6 @@ async function main() {
       console.log(`  ⛔ ${mod.chapterDir}/${mod.moduleId}: ${error}`);
       results.failed++;
       results.errors.push({ module: mod.moduleId, chapter: mod.chapterDir, error });
-      failedChapters.add(mod.chapterDir);
       continue;
     }
     if (mod.skip) {
@@ -3161,19 +3105,16 @@ async function main() {
             `  WARNING: id-reattach mismatch in ${mm.segId} (${mm.type}: expected ${mm.expected}, got ${mm.got}) — segment left untranslated (B4-D11 count-guard)`
           );
         }
-        mismatchChapters.add(mod.chapterDir);
       }
-      // §C118 ⑲: a per-module bracket-marker delta now HOLDS THE CHAPTER BACK
+      // §C118 ⑲: a per-module bracket-marker delta now COUNTS toward the non-zero exit
       // instead of only printing a note. Per-module, never off the accumulated
       // `bracketLoss` tally, which cancels an invention in one module against a
       // drop in another and reports both as clean.
       if (bracketDelta && Object.keys(bracketDelta).length > 0) {
         results.deltaModules++;
-        deltaChapters.add(mod.chapterDir);
       }
       if (greekLost && greekLost.length > 0) {
         results.greekModules++;
-        greekChapters.add(mod.chapterDir);
       }
       const outcome = classifyModuleOutcome({ mismatches, bracketDelta, greekLost });
       if (outcome.heldBack) {
@@ -3182,12 +3123,10 @@ async function main() {
             `Output IS written (the API call is paid for either way); review it before publishing.`
         );
       }
-      succeededChapters.add(mod.chapterDir);
     } catch (err) {
       console.log(`❌ ${err.message}`);
       results.failed++;
       results.errors.push({ module: mod.moduleId, chapter: mod.chapterDir, error: err.message });
-      failedChapters.add(mod.chapterDir);
     }
   }
 
@@ -3239,40 +3178,9 @@ async function main() {
     }
   }
 
-  // Update pipeline status if requested. Only mark a chapter's mtOutput
-  // complete when every translated module in it succeeded AND reported no
-  // id-reattach mismatches — a chapter with any failure OR any segment
-  // silently degraded to English stays incomplete instead of silently
-  // transitioning (F7 / T4).
-  if (args.updateStatus && results.translated > 0) {
-    const completeChapters = computeCompleteChapters(
-      succeededChapters,
-      failedChapters,
-      mismatchChapters,
-      deltaChapters,
-      greekChapters
-    );
-    if (completeChapters.length > 0) {
-      console.log('\nUpdating pipeline status...');
-      await updatePipelineStatus(args.book, completeChapters);
-    }
-    const heldBack = [...succeededChapters].filter(
-      (ch) =>
-        failedChapters.has(ch) ||
-        mismatchChapters.has(ch) ||
-        deltaChapters.has(ch) ||
-        greekChapters.has(ch)
-    );
-    if (heldBack.length > 0) {
-      console.log(
-        `  Held back (failures, id-reattach mismatches, bracket-marker deltas or Greek-letter losses): ${heldBack.join(', ')} — fix and re-run to mark complete`
-      );
-    }
-  }
-
   // §C118 ⑲: a bracket delta is a verdict, not a note — it must reach the exit
-  // code too, or the chapter is held back from --update-status while the run
-  // still reports success to whoever is watching. §C183 ①: so is a Greek-letter loss.
+  // code, or the run reports success to whoever is watching. §C183 ①: so is a
+  // Greek-letter loss.
   // prettier-ignore
   if (results.failed > 0 || results.mismatches > 0 || results.deltaModules > 0 || results.greekModules > 0) process.exit(1);
 }

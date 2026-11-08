@@ -153,14 +153,16 @@ remediation shipped first (efni `ba5e9a89`…`cb919966`); full record in memory
   `LICENSE` needed **four**, none of which sees the others' matches; a session obeying the
   short list would have reported `LICENSE`'s own entries as spurious. **→ read the shapes,
   and the exclusion trap that goes with them, in root `LICENSE`.**
-  **Two rules, applied to different edges** (`LICENSE` classifies them more finely —
-  do not read these as its class count):
-  - `api-translate.js`'s require of `pipelineStatusService` is **optional and
-    try/catch-guarded** — sever it if you touch that file.
+  **One rule, for one kind of edge** (`LICENSE` classifies the edges more finely — do not
+  read this as its class count):
   - the `server/lib/chapterLabel` imports in the appendix-aware tools/scripts are
     **deliberate and load-bearing** — the C1a two-conventions rule below *mandates* that
-    idiom, so **do not sever them**. They are unguarded static imports, so the try/catch
-    mitigation does not cover them: the importing tool cannot run without `server/`.
+    idiom, so **do not sever them**. They are unguarded static imports: the importing tool
+    cannot run without `server/`.
+  *(This said "Two rules" until 2026-11-08. The other — "`api-translate.js`'s optional,
+  try/catch-guarded require of `pipelineStatusService`: sever it if you touch that file" —
+  was carried out that day: the require is gone and `--update-status` now refuses rather
+  than being dropped silently.)*
   **The current enumeration lives in root `LICENSE`** — update it there when an edge is
   added or removed, not here.
 - **Credit follows the METHOD:** the machine is the translator; people get *ritstjórn*
@@ -893,9 +895,13 @@ remain all describe the current pipeline.
 ## Status Updates
 
 ```bash
-npm run update-status <book> <chapter> <stage> <status>
 npm run validate
 ```
+
+*(This block also showed `npm run update-status <book> <chapter> <stage> <status>` until
+2026-11-08. No such script is in `package.json`: it was archived to
+`scripts/archived/update-status.js` on 2026-03-13. `api-translate --update-status`
+refuses since 2026-11-08 (§ E-2 above).)*
 
 **Stages (Extract-Inject-Render pipeline):**
 - `extraction` - Step 1: Segments + structure extracted

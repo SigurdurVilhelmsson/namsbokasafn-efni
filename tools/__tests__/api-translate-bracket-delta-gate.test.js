@@ -11,9 +11,9 @@
  * run was bought to fix. The detector worked perfectly and nothing acted on it.
  *
  * ▶ A DETECTOR THAT FIRES INTO A LOG IS NOT A GATE. The proven mechanism was
- * already right there — an id-reattach mismatch adds its chapter to
- * `mismatchChapters`, which `computeCompleteChapters` excludes and which forces
- * a non-zero exit. This routes the delta through the same path.
+ * already right there — an id-reattach mismatch is counted in
+ * `results.mismatches`, which forces a non-zero exit. This routes the delta
+ * through the same exit.
  *
  * ✅ BASE RATE MEASURED BEFORE MAKING IT BLOCK, and the denominator is the whole
  * story. Over committed EN/IS pairs the raw rate is 49.4% — which is NOT the
@@ -36,11 +36,7 @@ import { describe, it, expect } from 'vitest';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import {
-  bracketMarkerDelta,
-  classifyModuleOutcome,
-  computeCompleteChapters,
-} from '../api-translate.js';
+import { bracketMarkerDelta, classifyModuleOutcome } from '../api-translate.js';
 
 const API_TRANSLATE = path.join(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -94,38 +90,6 @@ describe('classifyModuleOutcome — what holds a chapter back', () => {
     const a = classifyModuleOutcome({ bracketDelta: { i: 5 } });
     const b = classifyModuleOutcome({ bracketDelta: { i: -5 } });
     expect([a.heldBack, b.heldBack]).toEqual([true, true]);
-  });
-});
-
-describe('computeCompleteChapters accepts any number of held-back sets', () => {
-  it('excludes a chapter held back for a bracket delta', () => {
-    const succeeded = new Set(['ch01', 'ch02', 'ch03']);
-    expect(
-      computeCompleteChapters(succeeded, new Set(['ch01']), new Set(['ch02']), new Set(['ch03']))
-    ).toEqual([]);
-    expect(computeCompleteChapters(succeeded, new Set(), new Set(), new Set(['ch03']))).toEqual([
-      'ch01',
-      'ch02',
-    ]);
-  });
-
-  it('is backward compatible with the committed three-argument calls', () => {
-    // The two pre-existing cases, verbatim — the variadic change must be a
-    // pure widening, not a new contract.
-    expect(
-      computeCompleteChapters(new Set(['ch01', 'ch02']), new Set(), new Set(['ch02']))
-    ).toEqual(['ch01']);
-    expect(
-      computeCompleteChapters(
-        new Set(['ch01', 'ch02', 'ch03']),
-        new Set(['ch02']),
-        new Set(['ch03'])
-      )
-    ).toEqual(['ch01']);
-  });
-
-  it('tolerates a null/absent set rather than throwing mid-run', () => {
-    expect(computeCompleteChapters(new Set(['ch01']), null, undefined)).toEqual(['ch01']);
   });
 });
 
@@ -201,23 +165,18 @@ describe('the gate is actually CALLED — a gate never called is a gate that doe
     expect(mainBody).toContain('classifyModuleOutcome(');
   });
 
-  it('main() feeds a bracket-delta set into computeCompleteChapters', () => {
-    // ⚠️ BIND THE ARGUMENT LIST, NOT THE REST OF THE FILE. The first version of
-    // this test sliced from the call to EOF, which still contained
-    // `deltaChapters` in the held-back filter a few lines below — so removing
-    // the argument left the test GREEN. Mutation-testing caught it; the
-    // container is not the payload.
-    const i = mainBody.indexOf('computeCompleteChapters(');
-    const args = mainBody.slice(i, mainBody.indexOf(')', i));
-    expect(args).toContain('deltaChapters');
-    // The control that keeps the slice honest: it must NOT reach the later code.
-    expect(args).not.toContain('heldBack');
+  it('main() counts a delta-bearing module toward the exit', () => {
+    // The exit-line pin below only checks that the line MENTIONS deltaModules; it
+    // passes if the counter is never incremented. This pins the increment itself.
+    expect(mainBody).toMatch(
+      /if \(bracketDelta && Object\.keys\(bracketDelta\)\.length > 0\) \{\s*results\.deltaModules\+\+;/
+    );
   });
 
   it('a bracket delta contributes to the non-zero exit', () => {
     // The exit line must consider delta-bearing modules, not only failures and
-    // reattach mismatches — otherwise the chapter is held back from
-    // --update-status while the run still reports success to a human.
+    // reattach mismatches — otherwise the run reports success to a human while
+    // a module needs review.
     const exitLine = mainBody
       .split('\n')
       .find((l) => l.includes('process.exit(1)') && l.includes('results.'));
