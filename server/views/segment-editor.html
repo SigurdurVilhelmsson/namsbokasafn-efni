@@ -1278,6 +1278,53 @@
         display: block;
       }
 
+      /* §C210: discussion thread on an edit marked "Ræða" */
+      .discussion-dialog {
+        width: min(36rem, 90vw);
+        background: var(--bg-elevated);
+        color: inherit;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-modal);
+        padding: 1rem;
+        font-size: var(--text-sm);
+      }
+      .discussion-dialog::backdrop {
+        background: rgba(0, 0, 0, 0.35);
+      }
+      .discussion-topic {
+        padding: 0.5rem 0.75rem;
+        border-left: 3px solid var(--border);
+        margin-bottom: 0.75rem;
+        white-space: pre-wrap;
+      }
+      .discussion-thread {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 0.75rem;
+        max-height: 40vh;
+        overflow-y: auto;
+      }
+      .discussion-thread li {
+        padding: 0.4rem 0;
+        border-bottom: 1px solid var(--border);
+        white-space: pre-wrap;
+      }
+      .discussion-when {
+        opacity: 0.7;
+        font-size: 0.85em;
+      }
+      .discussion-dialog textarea {
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .discussion-actions {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: flex-end;
+        margin-top: 0.5rem;
+      }
+
       .term-popup-header {
         display: flex;
         justify-content: space-between;

@@ -465,4 +465,18 @@ const UI = {
   termPopup: {
     fallbackNote: 'Ekkert hugtak í fagi bókarinnar — sýnt úr öðru fagi',
   },
+
+  // ── Discussion thread on an edit marked "Ræða" (§C210) ──────
+  discussion: {
+    open: 'Umræða',
+    openTitle: 'Skoða umræðuefnið og svara',
+    heading: 'Umræða um breytingu',
+    reviewerFallback: 'Yfirlesari',
+    noTopic: '(ekkert umræðuefni skráð)',
+    loading: 'Hleð umræðu…',
+    noReplies: 'Engin svör enn.',
+    replyPlaceholder: 'Skrifaðu svar…',
+    send: 'Senda svar',
+    close: 'Loka',
+  },
 };

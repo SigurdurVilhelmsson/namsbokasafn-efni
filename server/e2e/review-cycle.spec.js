@@ -242,3 +242,177 @@ test.describe.serial('§0.reg Pass 1 review cycle', () => {
     ).toBe(true);
   });
 });
+
+/**
+ * §C210: an editor can read and answer a "Ræða" (discuss) note in the segment editor.
+ *
+ * A head editor's "Ræða" stored a topic on the edit (`reviewer_note`), and the
+ * thread endpoints (`GET /edit/:id/comments`, `POST /edit/:id/comment`) existed,
+ * but no page called them and no page showed the topic, so an editor could not
+ * reply. The editor now shows a thread control on an edit in discussion: the
+ * topic heads the thread, the replies follow, and a reply box posts to the API.
+ *
+ * ⚠️ WHY THIS LIVES IN review-cycle.spec.js, AFTER THE CYCLE ABOVE: a module
+ * submit stamps every open edit in the module (pending or discuss) into the new
+ * review. An edit in discussion on m68663, created by another spec FILE, would be
+ * claimed by this file's submit whenever the two overlapped (spec files run in
+ * parallel), turning the review above into 'changes_requested'. Measured: that is
+ * exactly what happened when this block was a separate file. Inside this file it
+ * runs after the cycle, and its last test withdraws the edit so none lingers.
+ *
+ * The LAST segment with Icelandic text is used (the cycle above edits the first).
+ * Persistence is checked twice: the API returns the reply, and a fresh page load
+ * renders it, so a reply kept only in browser state cannot pass.
+ */
+
+const TOPIC = `Umræðuefni e2e ${RUN_ID}`;
+const REPLY = `Svar ritstjóra e2e ${RUN_ID}`;
+
+/** Open a module of the e2e fixture book in the segment editor (as figure-review.spec.js does). */
+async function openFixtureModule(page, moduleId) {
+  await page.goto('/editor');
+  await page.waitForLoadState('networkidle');
+  await page.locator('#book-select').selectOption(BOOK);
+  const chapterSelect = page.locator('#chapter-select');
+  await expect(chapterSelect).toBeVisible({ timeout: 5000 });
+  await expect
+    .poll(() => chapterSelect.locator('option').count(), { timeout: 10000 })
+    .toBeGreaterThan(1);
+  await chapterSelect.selectOption(CHAPTER);
+  await page.locator(`.module-card[title^="${moduleId}"]`).click();
+  await expect(page.locator('.segment-row').first()).toBeVisible({ timeout: 10000 });
+}
+
+test.describe.serial('§C210 reply thread on a "Ræða" note', () => {
+  let segmentId;
+  let editId;
+
+  test('setup: an editor saves an edit and a head editor marks it for discussion', async ({
+    page,
+  }) => {
+    await loginAs(page, 'admin', EDITOR_ID);
+    const loadRes = await page.request.get(`${API}/${BOOK}/${CHAPTER}/${MODULE}`);
+    expect(loadRes.ok()).toBe(true);
+    const data = await loadRes.json();
+    const withIs = data.segments.filter((s) => s.is && s.is.length > 0);
+    expect(withIs.length).toBeGreaterThan(1);
+    const seg = withIs[withIs.length - 1];
+    segmentId = seg.segmentId;
+
+    const editRes = await page.request.post(`${API}/${BOOK}/${CHAPTER}/${MODULE}/edit`, {
+      data: {
+        segmentId,
+        originalContent: seg.is,
+        editedContent: `${seg.is} [e2e-thread-${RUN_ID}]`,
+        category: 'readability',
+        baseSha256: seg.baseSha256,
+      },
+    });
+    expect(editRes.ok()).toBe(true);
+    editId = (await editRes.json()).editId;
+    expect(editId).toBeTruthy();
+
+    await loginAs(page, 'admin', REVIEWER_ID);
+    const discussRes = await page.request.post(`${API}/edit/${editId}/discuss`, {
+      data: { note: TOPIC },
+    });
+    expect(discussRes.ok()).toBe(true);
+  });
+
+  test('the editor sees the topic and posts a reply from the page', async ({ page }) => {
+    await loginAs(page, 'admin', EDITOR_ID);
+    await openFixtureModule(page, MODULE);
+
+    const threadButton = page.locator(`.btn-thread[data-edit-id="${editId}"]`);
+    await expect(threadButton).toBeVisible({ timeout: 5000 });
+    await threadButton.click();
+
+    const dialog = page.locator('#discussion-dialog');
+    await expect(dialog).toBeVisible();
+    await expect(dialog.locator('.discussion-topic')).toContainText(TOPIC);
+
+    await dialog.locator('#discussion-reply').fill(REPLY);
+    await dialog.locator('#discussion-send').click();
+    await expect(dialog.locator('.discussion-comment')).toContainText(REPLY, { timeout: 5000 });
+  });
+
+  test('a reply containing markup is shown as text, never run as HTML', async ({ page }) => {
+    const MARKUP = `<img src="x" class="e2e-injected-${RUN_ID}"><b>feitt</b>`;
+    await loginAs(page, 'admin', EDITOR_ID);
+    await openFixtureModule(page, MODULE);
+    await page.locator(`.btn-thread[data-edit-id="${editId}"]`).click();
+    const dialog = page.locator('#discussion-dialog');
+    await dialog.locator('#discussion-reply').fill(MARKUP);
+    await dialog.locator('#discussion-send').click();
+    await expect(dialog.locator('.discussion-comment').last()).toHaveText(new RegExp(`feitt`), {
+      timeout: 5000,
+    });
+    await expect(dialog.locator('.discussion-comment').last()).toContainText(MARKUP);
+    await expect(dialog.locator(`.e2e-injected-${RUN_ID}`)).toHaveCount(0);
+    await expect(dialog.locator('.discussion-thread b')).toHaveCount(0);
+  });
+
+  test('the reply is stored: the API returns it', async ({ page }) => {
+    await loginAs(page, 'admin', REVIEWER_ID);
+    const res = await page.request.get(`${API}/edit/${editId}/comments`);
+    expect(res.ok()).toBe(true);
+    const { comments } = await res.json();
+    expect(comments.map((c) => c.comment)).toContain(REPLY);
+  });
+
+  test('a fresh page load renders the topic and the reply from the server', async ({ page }) => {
+    await loginAs(page, 'admin', REVIEWER_ID);
+    await openFixtureModule(page, MODULE);
+    await page.locator(`.btn-thread[data-edit-id="${editId}"]`).click();
+    const dialog = page.locator('#discussion-dialog');
+    await expect(dialog.locator('.discussion-topic')).toContainText(TOPIC);
+    // The markup test above added a second reply, so pick this one by its text.
+    await expect(dialog.locator('.discussion-comment').filter({ hasText: REPLY })).toHaveCount(1);
+  });
+
+  test('a reply does not change the edit status (it stays in discussion)', async ({ page }) => {
+    await loginAs(page, 'admin', REVIEWER_ID);
+    const res = await page.request.get(`${API}/${BOOK}/${CHAPTER}/${MODULE}`);
+    const data = await res.json();
+    const latest = data.edits[segmentId][0];
+    expect(latest.id).toBe(editId);
+    expect(latest.status).toBe('discuss');
+  });
+
+  test('an edit with a thread cannot be deleted; cleanup rejects it instead', async ({ page }) => {
+    // [USER] 2026-11-08: an edit that carries a discussion thread is never deleted, so
+    // no discussion text is lost. A module submit claims every open edit in the module,
+    // so the edit is rejected rather than left pending for the next review of m68663.
+    await loginAs(page, 'admin', REVIEWER_ID);
+    const back = await page.request.post(`${API}/edit/${editId}/return-to-pending`);
+    expect(back.ok(), await back.text()).toBe(true);
+
+    await loginAs(page, 'admin', EDITOR_ID);
+    const del = await page.request.delete(`${API}/edit/${editId}`);
+    expect(del.status()).toBe(409);
+    expect((await del.json()).error).toBe('HAS_DISCUSSION');
+
+    // Withdrawing by saving the original text back is refused the same way.
+    const load = await (await page.request.get(`${API}/${BOOK}/${CHAPTER}/${MODULE}`)).json();
+    const seg = load.segments.find((x) => x.segmentId === segmentId);
+    const withdraw = await page.request.post(`${API}/${BOOK}/${CHAPTER}/${MODULE}/edit`, {
+      data: {
+        segmentId,
+        originalContent: seg.is,
+        editedContent: seg.is,
+        category: 'readability',
+        baseSha256: seg.baseSha256,
+      },
+    });
+    expect(withdraw.status(), await withdraw.text()).toBe(409);
+    expect((await withdraw.json()).error).toBe('HAS_DISCUSSION');
+
+    await loginAs(page, 'admin', REVIEWER_ID);
+    const reject = await page.request.post(`${API}/edit/${editId}/reject`, {
+      data: { note: `e2e cleanup ${RUN_ID}` },
+    });
+    expect(reject.ok(), await reject.text()).toBe(true);
+    const comments = await (await page.request.get(`${API}/edit/${editId}/comments`)).json();
+    expect(comments.comments.map((c) => c.comment)).toContain(REPLY); // the thread survives
+  });
+});

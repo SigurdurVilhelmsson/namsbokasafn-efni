@@ -2089,3 +2089,104 @@ describe('Review queue and edge cases', () => {
     expect(() => service.unapproveEdit(editId)).toThrow('already been applied');
   });
 });
+
+// §C210: once the segment editor can post replies, an edit can carry a discussion
+// thread. segment_discussions references segment_edits with no cascade, and
+// foreign keys are on, so deleting such an edit used to fail with a raw
+// "FOREIGN KEY constraint failed". [USER] ruled 2026-11-08: refuse, keep the
+// thread — the editor revises the edit instead, or the head editor rejects it.
+describe('an edit with a discussion thread is never deleted (§C210)', () => {
+  let db;
+
+  beforeAll(() => {
+    db = createTestDb();
+    service._setTestDb(db);
+  });
+
+  afterAll(() => {
+    db.close();
+    service._setTestDb(null);
+  });
+
+  beforeEach(() => {
+    db.exec('DELETE FROM segment_discussions');
+    db.exec('DELETE FROM segment_edits');
+  });
+
+  const ORIGINAL = 'original text';
+  function savePending(segmentId) {
+    return service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId,
+      originalContent: ORIGINAL,
+      editedContent: 'edited text',
+      editorId: 'u1',
+      editorUsername: 'editor1',
+    });
+  }
+  const commentCount = (editId) =>
+    db
+      .prepare('SELECT COUNT(*) AS n FROM segment_discussions WHERE segment_edit_id = ?')
+      .get(editId).n;
+
+  it('the delete button refuses, with code HAS_DISCUSSION, and keeps the edit and its thread', () => {
+    const { id } = savePending('seg-thread-del');
+    service.addDiscussionComment(id, 'u2', 'reviewer', 'Hvers vegna þetta orð?');
+    let caught;
+    try {
+      service.deleteSegmentEdit(id, 'u1');
+    } catch (err) {
+      caught = err;
+    }
+    expect(caught && caught.code).toBe('HAS_DISCUSSION');
+    expect(service.getEditById(id)).toBeTruthy();
+    expect(commentCount(id)).toBe(1);
+  });
+
+  it('withdrawing by saving the original text refuses the same way, and keeps both', () => {
+    const { id } = savePending('seg-thread-withdraw');
+    service.addDiscussionComment(id, 'u2', 'reviewer', 'Athugasemd');
+    let caught;
+    try {
+      service.saveSegmentEdit({
+        book: 'testbook',
+        chapter: 1,
+        moduleId: 'm00001',
+        segmentId: 'seg-thread-withdraw',
+        originalContent: ORIGINAL,
+        editedContent: ORIGINAL, // same as the original → a withdraw
+        editorId: 'u1',
+        editorUsername: 'editor1',
+      });
+    } catch (err) {
+      caught = err;
+    }
+    expect(caught && caught.code).toBe('HAS_DISCUSSION');
+    expect(service.getEditById(id)).toBeTruthy();
+    expect(commentCount(id)).toBe(1);
+  });
+
+  it('control: an edit with no thread is still deleted', () => {
+    const { id } = savePending('seg-thread-none-del');
+    service.deleteSegmentEdit(id, 'u1');
+    expect(service.getEditById(id)).toBeUndefined();
+  });
+
+  it('control: an edit with no thread can still be withdrawn', () => {
+    const { id } = savePending('seg-thread-none-withdraw');
+    const r = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'seg-thread-none-withdraw',
+      originalContent: ORIGINAL,
+      editedContent: ORIGINAL,
+      editorId: 'u1',
+      editorUsername: 'editor1',
+    });
+    expect(r.reverted).toBe(true);
+    expect(service.getEditById(id)).toBeUndefined();
+  });
+});

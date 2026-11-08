@@ -172,8 +172,11 @@ The Head Editor then marks each edit:
 - **Ræða** (Discuss), with a topic for discussion
 
 A note from the Head Editor reaches you on the home page under **Breytingar óskast**, with a
-**Laga** (Fix) button. There is no reply thread in the editor, so answer in person or at the
-team meeting.
+**Laga** (Fix) button. When an edit is marked **Ræða**, its row in the editor shows a
+**💬 Umræða** (Discussion) button: it opens the Head Editor's topic and the replies so far, and
+you can answer there with **Senda svar** (Send reply). Replying does not change the edit's
+status — the Head Editor still decides. An edit that has a discussion cannot be deleted; revise
+it instead.
 
 ---
 
