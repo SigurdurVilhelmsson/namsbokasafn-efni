@@ -65,6 +65,7 @@ The dashboard displays:
 - **Núverandi verkefni** (current task), with a button to start working, and **Næst á dagskrá** (what's next)
 - **Statistics**: editors see work finished this week (*Kláruð í vikunni*), work awaiting review (*Bíður yfirlestrar*) and their term proposals (*Orðatillögur*); head editors and admins see what awaits their decision and what is approved but not yet published
 - **Nákvæmt yfirlit** (detailed view): your submissions awaiting review, edits sent back to you with the reviewer's note (*Breytingar óskast*), your term proposals, and your recent activity
+- **Stillingar** (Settings): choose which kinds of notification you get, in the app and by email (email is sent only when the server is set up for it)
 
 ### Navigation Sidebar
 
