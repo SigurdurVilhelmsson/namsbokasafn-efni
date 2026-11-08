@@ -165,6 +165,23 @@ describe('classifyAttempt', () => {
       reason: 'line-break',
     });
   });
+  // Review finding (2026-11-08): `.exact` alone admits an answer that is still mostly English.
+  // detectResidue's own `warn` (token overlap ≥ 0.7) holds it; measured on chemistry, warn
+  // fires on 0.42% of translated segments (formula answers and names), and on none of June's
+  // Icelandic for the 7 September segments (ratio ≤ 0.07).
+  it('an answer with only one word translated is held, reason mostly-english', () => {
+    const responseText = seg('m100:para:p1', P1_EN.replace('Water', 'Vatn'));
+    expect(classifyAttempt({ enText: EN, responseText, ids: ['m100:para:p1'] })[0]).toMatchObject({
+      outcome: 'held',
+      reason: expect.stringMatching(/^mostly-english ratio 0\.\d\d$/),
+    });
+  });
+  it('the English with one word dropped is held, not translated', () => {
+    const responseText = seg('m100:para:p1', P1_EN.replace(' normal', ''));
+    expect(classifyAttempt({ enText: EN, responseText, ids: ['m100:para:p1'] })[0].outcome).toBe(
+      'held'
+    );
+  });
   it('control: P2_IS keeps its term marker and is translated', () => {
     const responseText = seg('m100:para:p2', P2_IS);
     expect(classifyAttempt({ enText: EN, responseText, ids: ['m100:para:p2'] })[0].outcome).toBe(

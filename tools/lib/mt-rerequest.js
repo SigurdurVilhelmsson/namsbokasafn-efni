@@ -115,7 +115,8 @@ function refusalFor(id, { en, base, selectedKeys, untranslatedCounts }) {
  *
  * `untranslated` when the answer is still `detectResidue(...).exact` against the EN;
  * `held` when it is translated but its body is one the layer-1s writer would refuse
- * (`validateBody`), with the problem codes as `reason`; otherwise `translated`.
+ * (`validateBody`), with the problem codes as `reason`, or when it is still mostly English
+ * (`detectResidue(...).warn`, reason `mostly-english ratio <r>`); otherwise `translated`.
  * The marker, Greek and reattach checks are the caller's (`rerequestModule`): they need the
  * guarded core's results.
  *
@@ -133,8 +134,16 @@ export function classifyAttempt({ enText, responseText, ids }) {
       // The guarded core refuses a response whose id set differs, so this is a caller bug.
       throw new Error(`classifyAttempt: the answer carries no ${segmentId}`);
     }
-    if (detectResidue(en.get(segmentId)[0], body).exact) {
+    const residue = detectResidue(en.get(segmentId)[0], body);
+    if (residue.exact) {
       return { segmentId, outcome: 'untranslated', body, reason: null };
+    }
+    // Still mostly English (the same call's own `warn`: token overlap ≥ its threshold). Not an
+    // untranslated answer — it does not count toward the two that flag — but never accepted
+    // either: layer 1s is append-only, so a half answer written there could not be replaced.
+    if (residue.warn) {
+      const reason = `mostly-english ratio ${residue.ratio.toFixed(2)}`;
+      return { segmentId, outcome: 'held', body, reason };
     }
     const problems = validateBody(body);
     if (problems.length > 0) {

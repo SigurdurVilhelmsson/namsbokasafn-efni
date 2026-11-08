@@ -280,6 +280,18 @@ describe('rerequestModule', () => {
     ]);
   });
 
+  it('a mostly-English answer is held, logged as received, and not written', async () => {
+    const partial = (t) => t.replace(P1_EN, P1_EN.replace('Water', 'Vatn'));
+    const r = await run(client(partial), [P1]);
+    const first = logLines()[0].results[0];
+    expect([r.failed, overlay(), first.outcome, first.body]).toEqual([
+      [P1],
+      null,
+      'held',
+      P1_EN.replace('Water', 'Vatn'),
+    ]);
+  });
+
   it('records a refused attempt with chars and estimatedIsk but run null', async () => {
     await run(
       client((t) => dropMarker(icelandic(t))),
