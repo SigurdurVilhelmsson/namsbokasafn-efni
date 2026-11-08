@@ -1403,7 +1403,15 @@ Module._load = function (request, ...rest) {
     expect(out).toMatchObject({ probe: 'read-research-preconditions', book: BOOK, ok: true });
     expect(out.sections['G-1d'].users).toHaveLength(2); // the run read the database
     // The printed sections, in the order the plan gives them (what is pasted into the register).
-    expect(Object.keys(out.sections)).toEqual(['G-1a', 'G-1c', 'G-1d', 'G-1e', 'G-1f', 'G-1g']);
+    expect(Object.keys(out.sections)).toEqual([
+      'G-1a',
+      'G-1c',
+      'G-1d',
+      'G-1e',
+      'G-1f',
+      'G-1g',
+      'G-1h',
+    ]);
     // The temp books root, not the repository's: m94104's faithful file exists only there.
     expect(out.sections['G-1e'].appliedWithoutFaithful).toEqual([
       { chapter: 4, moduleId: 'm94105', segmentId: 'm94105:para:d' },
@@ -1556,6 +1564,7 @@ describe('it can run where PR1 and PR2 are not deployed', () => {
       '../../tools/lib/mt-lock.cjs',
       '../lib/chapterLabel',
       '../lib/dbPath',
+      '../lib/researchBackupPolicy',
       '../lib/researchDbPath',
       '../lib/researchFiles',
       'better-sqlite3',
@@ -1757,5 +1766,90 @@ describe('--sections: a run that opens no database (decision 35)', () => {
     } finally {
       db = new Database(dbPath);
     }
+  });
+});
+
+describe('G-1h (spec §9): the research backup job is installed and has run (decision 36)', () => {
+  const H = 3_600_000;
+  const INSTALL_CRON = path.join(__dirname, '..', '..', 'scripts', 'install-cron.sh');
+  const { RESEARCH_BACKUP_STALE_HOURS } = require('../lib/researchBackupPolicy');
+  const cronExec = (cmd, args) =>
+    cmd === 'crontab' && args[0] === '-l'
+      ? { ran: true, code: 1, stdout: '', stderr: 'no crontab for root' }
+      : { ran: false, code: null, stdout: '', stderr: '' };
+  const outDir = () => path.join(root, 'repo', 'pipeline-output');
+  const heartbeat = () => path.join(outDir(), '.last-research-backup');
+  const g1hCtx = (over = {}) =>
+    ctx({
+      serverDir: path.join(__dirname, '..'), // the template is the real scripts/install-cron.sh
+      researchDir: outDir,
+      exec: cronExec,
+      ...over,
+    });
+  /** The research line install-cron.sh prints for <R>/repo. */
+  const printedResearchLine = () =>
+    require('child_process')
+      .execFileSync('bash', [INSTALL_CRON], {
+        env: { ...process.env, DEPLOY_PATH: `${root}/repo` },
+        encoding: 'utf8',
+      })
+      .split('\n')
+      .find((l) => !l.startsWith('#') && /\/scripts\/research-backup\.sh(\s|$)/.test(l));
+  function setup({ line = printedResearchLine(), ageHours = 1 } = {}) {
+    fs.mkdirSync(outDir(), { recursive: true });
+    plant('var/spool/cron/crontabs/siggi', line === null ? '# nothing\n' : `${line}\n`);
+    if (ageHours !== null) {
+      fs.writeFileSync(heartbeat(), 'x');
+      const t = new Date(Date.now() - ageHours * H);
+      fs.utimesSync(heartbeat(), t, t);
+    }
+  }
+  const g1h = (over) => readResearchPreconditions(g1hCtx(over)).sections['G-1h'];
+
+  it('ready: the line is installed as printed, its remote is a research remote, and a run completed recently', () => {
+    setup();
+    expect(g1h()).toEqual({
+      ok: true,
+      cron: {
+        installed: true,
+        sources: ['spool:siggi'],
+        scheduleMatchesTemplate: true,
+        researchRemote: true,
+      },
+      heartbeat: { present: true, ageHours: 1, fresh: true },
+      ready: true,
+    });
+  });
+
+  it('each condition can fail on its own', () => {
+    const printed = printedResearchLine();
+    setup({ line: null });
+    expect(g1h()).toMatchObject({ cron: { installed: false }, ready: false });
+
+    setup({ line: printed.replace(/^\S+\s+\S+/, '0 */12') });
+    expect(g1h()).toMatchObject({ cron: { scheduleMatchesTemplate: false }, ready: false });
+
+    setup({ line: printed.replace(/RESEARCH_REMOTE=\S+/, 'RESEARCH_REMOTE=secret:') });
+    expect(g1h()).toMatchObject({ cron: { researchRemote: false }, ready: false });
+
+    setup();
+    fs.rmSync(heartbeat());
+    expect(g1h()).toMatchObject({ heartbeat: { present: false, ageHours: null }, ready: false });
+
+    setup({ ageHours: RESEARCH_BACKUP_STALE_HOURS + 1 });
+    expect(g1h()).toMatchObject({ heartbeat: { fresh: false }, ready: false });
+  });
+
+  it('prints no remote value and reads no database (decision 36)', () => {
+    setup();
+    const spool = fs.readFileSync(path.join(root, 'var/spool/cron/crontabs/siggi'), 'utf8');
+    expect(spool).toContain('research-secret:'); // control: the spool file does hold it
+    const text = JSON.stringify(g1h());
+    expect(text).not.toContain('research-secret:');
+    expect(text).not.toContain('secret:');
+    const openDb = vi.fn();
+    const result = readResearchPreconditions(g1hCtx({ openDb, only: ['G-1h'] }));
+    expect(Object.keys(result.sections)).toEqual(['G-1h']);
+    expect(openDb).not.toHaveBeenCalled();
   });
 });

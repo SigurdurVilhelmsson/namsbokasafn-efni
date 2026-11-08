@@ -16,6 +16,11 @@
  *         each with its NAME=value words and option values redacted, except an --exclude/--include
  *         value. No whole crontab is ever returned. `complete` is false when the spool or any source
  *         could not be read.
+ *   G-1h  (PR4) whether the research backup job runs: its cron line is in a crontab, its schedule is the
+ *         one scripts/install-cron.sh prints, its RESEARCH_REMOTE is a research remote (a boolean: the
+ *         value never leaves the probe), and its heartbeat is present and fresh. It reads the crontab
+ *         and the heartbeat only, never research_deletions: this output is pasted into the public
+ *         register, where a deletion record would announce a withdrawal.
  *   G-1c  journald's settings from every file systemd 255's journald opens, in its order (strace of
  *         systemd-journald 255.4-1ubuntu8.18 in a private mount namespace): the main file
  *         /etc/systemd/journald.conf and no other; then the *.conf drop-ins of the
@@ -1029,7 +1034,63 @@ function readG1a({ etcRoot, varRoot, exec, researchDir }) {
   };
 }
 
-// PR4 adds G-1h (Task 18).
+const RESEARCH_JOB_LINE = /\/scripts\/research-backup\.sh(\s|$)/;
+const cronLinesOf = (text) =>
+  text.split('\n').filter((l) => {
+    const s = l.trim();
+    return s && !s.startsWith('#') && RESEARCH_JOB_LINE.test(s);
+  });
+const scheduleOf = (line) => line.trim().split(/\s+/).slice(0, 5).join(' ');
+
+function readG1h({ serverDir, etcRoot, varRoot, exec, researchDir }) {
+  // Required lazily, as researchDir's default: they exist on production once PR4 is deployed.
+  const { researchFilesFor } = require('../lib/researchFiles');
+  const { RESEARCH_BACKUP_STALE_HOURS } = require('../lib/researchBackupPolicy');
+  const { sources } = cronSources({ etcRoot, varRoot, exec });
+  const found = [];
+  for (const s of sources) {
+    if (s.text === null || !s.kind) continue; // crontabs only: a cron script is not where the job is installed
+    for (const line of cronLinesOf(s.text)) found.push({ source: s.source, line });
+  }
+  const templateText = fs.readFileSync(
+    path.join(serverDir, '..', 'scripts', 'install-cron.sh'),
+    'utf8'
+  );
+  const [template] = cronLinesOf(templateText);
+  const installed = found.length > 0;
+  const scheduleMatchesTemplate =
+    installed &&
+    Boolean(template) &&
+    found.every((f) => scheduleOf(f.line) === scheduleOf(template));
+  // Computed here and never returned: only whether the value names a research remote leaves the probe.
+  const researchRemote =
+    installed &&
+    found.every((f) => {
+      const m = /(?:^|\s)RESEARCH_REMOTE=(\S+)/.exec(f.line);
+      return Boolean(m) && /^research/.test(m[1]) && /[:/]$/.test(m[1]);
+    });
+  // Every research-side path but the file's own derives from its directory (researchFiles.js).
+  const beat = researchFilesFor(path.join(researchDir(), 'research.db')).heartbeatPath;
+  let mtimeMs = null;
+  try {
+    mtimeMs = fs.statSync(beat).mtimeMs;
+  } catch {
+    // missing: not present
+  }
+  const ageHours = mtimeMs === null ? null : Math.round((Date.now() - mtimeMs) / 3_600_000);
+  const fresh = ageHours !== null && ageHours <= RESEARCH_BACKUP_STALE_HOURS;
+  return {
+    cron: {
+      installed,
+      sources: [...new Set(found.map((f) => f.source))].sort(),
+      scheduleMatchesTemplate,
+      researchRemote,
+    },
+    heartbeat: { present: mtimeMs !== null, ageHours, fresh },
+    ready: installed && scheduleMatchesTemplate && researchRemote && fresh,
+  };
+}
+
 const SECTIONS = {
   'G-1a': readG1a,
   'G-1c': readG1c,
@@ -1037,6 +1098,7 @@ const SECTIONS = {
   'G-1e': readG1e,
   'G-1f': readG1f,
   'G-1g': readG1g,
+  'G-1h': readG1h,
 };
 
 function readResearchPreconditions({
@@ -1189,6 +1251,7 @@ module.exports = {
   readG1f,
   readG1g,
   readG1a,
+  readG1h,
   classifyCronLine,
   redactAssignments,
   execNeverThrow,
