@@ -1,7 +1,7 @@
 # Decision: ch01–ch02 enter as machine text, with their Word review carried as editor notes; the glossary test runs before S; S moves with the final report
 
 - **Date:** 2026-10-11
-- **Status:** Accepted
+- **Status:** Partly superseded by `docs/decisions/2026-11-08-s-stays-1-november-after-report-slip.md` (the slip-case answer, and the consequence that it forecloses a fixed S: S stays 1 November 2026 although the final report comes later in November, and the plan's gap rule governs the time between them)
 - **Context owners:** [USER] (every answer), on the plan's recommendations.
 - **Supersedes:** none. It answers questions that `docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md` (D10) and the plan left open the same day.
 - **Related:** `docs/plans/2026-10-10-chemistry-finish-preparation-plan.md` (§1 point 0, 0.2, 2.2, §8 D0, the D10 follow-up, D11, D13) · the active register `docs/plans/2026-07-21-post-item17-followup-campaign.md` (its 2026-10-11 entry) · `experiments/mt-vintage-comparison/results/2026-10-11/README.md` (the Word-review measurement) · `docs/decisions/2026-10-11-chemistry-finish-preparation-answers.md`

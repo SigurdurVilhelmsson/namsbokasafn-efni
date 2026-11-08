@@ -48,6 +48,7 @@ This builds on the three-text-layer rule in CLAUDE.md § Purpose.
      - The follow-on's work plan, part of its contract, starts its 12 months when the current grant's project ends. Its application promises that lemmatization and the proofreading begin only after that. **So S is the day after that report** (D0).
      - [USER]'s dates (2026-10-11): the report on 31 October, S on 1 November.
      - **If the report slips, S moves with it, and so does §5** ([USER] 2026-10-11, follow-up record). What remains of the current grant stays in use until the report, and the follow-on's fund is told the new date.
+       - ✏️ **Superseded 2026-11-08** ([record](../decisions/2026-11-08-s-stays-1-november-after-report-slip.md)): the report slipped into November and **S stays 1 November**. §5's gap rule governs the time from S to the report.
      - **Before S, preparation can be paid from what remains of the current grant. From S, it is never follow-on paid hours:** it counts as follow-on in-kind where it fits one of the follow-on's in-kind lines, and is otherwise unfunded (private companion).
      - **Tag both repositories on S.** Both final reports cite that tag for what existed before the follow-on began.
    - **So the start date is no longer the freeze.** What matters is that the base is ready **before the first unit is opened**. On the project's own schedule (timing capture in months 1–3, editing from month 2), that is **about S+4–5 weeks: around 29 November to 6 December 2026**.
@@ -194,8 +195,8 @@ category of AI suggestions that fails the short look is not shown
 **The funding edge is S**, with S the day after the current grant's final report.
 - **Before S,** preparation can be paid from what remains of the current grant. So front-load the build work. Where the rulings allow, run the paid steps before S, such as D11's MT buy and the AI pilot's API calls: after S, no grant pays API or other non-labour costs. On the target calendar the stage 1 rulings close after S, so expect the AI layer's API cost to fall after S.
 - **From S,** preparation is follow-on in-kind where it fits a named in-kind line, and otherwise unfunded. It is never follow-on paid hours.
-- **Lemmatization work and the proofreading itself start after S,** at the freeze, as the follow-on application promises.
-- **If the report and S cannot coincide,** no hour may be charged to both grants, and nothing the current grant pays may count as follow-on in-kind (private companion).
+- **Lemmatization work and the proofreading itself start after S,** at the freeze, as the follow-on application promises. ✏️ *Since 2026-11-08 S comes before the report, so they also wait for the report ([record](../decisions/2026-11-08-s-stays-1-november-after-report-slip.md)).*
+- **If the report and S cannot coincide,** no hour may be charged to both grants, and nothing the current grant pays may count as follow-on in-kind (private companion). ✏️ *They do not coincide since 2026-11-08, so this applies from 1 November to the report ([record](../decisions/2026-11-08-s-stays-1-november-after-report-slip.md)).*
 
 ### Stage 0: before anything else ([USER]'s decisions; 0.2's measurement is build work)
 - **0.1 D0, answered 2026-10-11: S = 1 November 2026,** the day after the current grant's final report on 31 October (§1 point 0). The follow-on contract and the current grant's terms are both read.
