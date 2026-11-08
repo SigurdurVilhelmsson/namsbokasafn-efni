@@ -38,9 +38,11 @@ node tools/cnxml-render.js --book efnafraedi-2e --chapter NN --module <moduleId>
 
 Dated facts, not status:
 
-- **2026-08-23** (`c5f4880e`): the June 2026 faithful files were removed from this directory when
-  the September machine translation became the base. They are preserved as an editing reference
-  in [`../reference-translations/pre-remt-editorial-2026-08-23/`](../reference-translations/pre-remt-editorial-2026-08-23/).
+- **2026-08-23** (`c5f4880e`): the backup cron removed the June 2026 faithful files from this
+  directory, mirroring a deletion on the production server. They were recovered on 2026-08-30 and
+  are preserved verbatim as an editing reference in
+  [`../reference-translations/pre-remt-editorial-2026-08-23/`](../reference-translations/pre-remt-editorial-2026-08-23/).
+  The base text is now the September 2026 machine translation.
 - **2026-10-04** ([#535](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/535)): chemistry's
   faithful track was retired — its rendered faithful output in `03-translated/faithful/` and
   `05-publication/faithful/` was removed.

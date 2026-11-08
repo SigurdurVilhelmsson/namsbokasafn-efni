@@ -81,7 +81,7 @@ The sidebar on the left is your main navigation. The sections visible depend on 
 - **Aðlögun** (Localization) — The localization editor for Pass 2 (head editors and admins only)
 
 **Head editors and admins also see a Stjórnun (Administration) section:**
-- **Stjórnandi** (Admin panel), **Bókasafn** (Library) and **Úthlutanir** (Assignments)
+- **Stjórnandi** (Admin panel — it opens only for admins), **Bókasafn** (Library) and **Úthlutanir** (Assignments)
 
 **At the bottom:**
 - **Um mig** (About me) — Your profile

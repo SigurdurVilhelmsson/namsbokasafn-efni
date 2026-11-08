@@ -342,7 +342,7 @@ The authoritative source is the `licence` block in each `books/<slug>/book-confi
 To list them all:
 
 ```bash
-node -e 'const fs=require("fs");for(const b of fs.readdirSync("books")){const f=`books/${b}/book-config.json`;if(!fs.existsSync(f))continue;const l=JSON.parse(fs.readFileSync(f,"utf8")).licence;if(l)console.log(b.padEnd(22),l.code)}'
+node -e 'const fs=require("fs");for(const b of fs.readdirSync("books")){const f=`books/${b}/book-config.json`;if(b.startsWith("_")||!fs.existsSync(f))continue;const l=JSON.parse(fs.readFileSync(f,"utf8")).licence;if(l)console.log(b.padEnd(22),l.code)}'
 ```
 
 Evidence and reasoning: [docs/provenance/openstax-cnxml-licence-provenance.md](docs/provenance/openstax-cnxml-licence-provenance.md).
