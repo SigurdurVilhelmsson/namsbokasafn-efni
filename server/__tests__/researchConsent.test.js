@@ -123,6 +123,19 @@ describe('decisions (spec §5.14)', () => {
     });
   });
 
+  // PR4 Task 8: the immediate deletion reads this id.
+  it("declining during a live interval returns the withdrawn interval's id", () => {
+    const I = researchConsent.recordDecision({
+      userId: 21,
+      decision: 'consented',
+      text: V1,
+      nowMs: 1000,
+    }).intervalId;
+    expect(
+      researchConsent.recordDecision({ userId: 21, decision: 'declined', text: V1, nowMs: 2000 })
+    ).toEqual({ outcome: 'withdrew', intervalId: I });
+  });
+
   it('withdraw marks only the starting row, inserts nothing, and sets the time once', () => {
     const id = researchConsent.recordDecision({
       userId: 8,

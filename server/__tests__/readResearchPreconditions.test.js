@@ -1403,7 +1403,15 @@ Module._load = function (request, ...rest) {
     expect(out).toMatchObject({ probe: 'read-research-preconditions', book: BOOK, ok: true });
     expect(out.sections['G-1d'].users).toHaveLength(2); // the run read the database
     // The printed sections, in the order the plan gives them (what is pasted into the register).
-    expect(Object.keys(out.sections)).toEqual(['G-1c', 'G-1d', 'G-1e', 'G-1f', 'G-1g']);
+    expect(Object.keys(out.sections)).toEqual([
+      'G-1a',
+      'G-1c',
+      'G-1d',
+      'G-1e',
+      'G-1f',
+      'G-1g',
+      'G-1h',
+    ]);
     // The temp books root, not the repository's: m94104's faithful file exists only there.
     expect(out.sections['G-1e'].appliedWithoutFaithful).toEqual([
       { chapter: 4, moduleId: 'm94105', segmentId: 'm94105:para:d' },
@@ -1549,10 +1557,16 @@ describe('it can run where PR1 and PR2 are not deployed', () => {
     const specifiers = [
       ...new Set([...source().matchAll(/require\('([^']+)'\)/g)].map((m) => m[1])),
     ];
+    // PR4: '../lib/researchDbPath' and '../lib/researchFiles' are required lazily, inside G-1a's researchDir
+    // default. G-1a and G-1h are read after PR4's deploy; a run on an older tree reports those sections as failed
+    // while the others read.
     expect(specifiers.sort()).toEqual([
       '../../tools/lib/mt-lock.cjs',
       '../lib/chapterLabel',
       '../lib/dbPath',
+      '../lib/researchBackupPolicy',
+      '../lib/researchDbPath',
+      '../lib/researchFiles',
       'better-sqlite3',
       'child_process',
       'dotenv',
@@ -1565,5 +1579,333 @@ describe('it can run where PR1 and PR2 are not deployed', () => {
     const m = source().match(/node - ([a-z0-9-]+)/);
     expect(m).not.toBeNull();
     expect(require('../lib/researchScope').STUDY_BOOKS).toContain(m[1]);
+  });
+});
+
+describe('G-1a, crontab half (spec §9): every cron source, for a copy of pipeline-output/', () => {
+  const INSTALL_CRON = path.join(__dirname, '..', '..', 'scripts', 'install-cron.sh');
+  /** crontab -l says there is none; nothing else runs. */
+  const cronExec = (cmd, args) =>
+    cmd === 'crontab' && args[0] === '-l'
+      ? { ran: true, code: 1, stdout: '', stderr: 'no crontab for root' }
+      : { ran: false, code: null, stdout: '', stderr: '' };
+  const g1aCtx = (over = {}) =>
+    ctx({ researchDir: () => path.join(root, 'repo', 'pipeline-output'), exec: cronExec, ...over });
+  const R = () => root;
+  const lines = {};
+
+  function plantCron({ spool = true } = {}) {
+    const r = R();
+    fs.mkdirSync(path.join(r, 'repo', 'pipeline-output'), { recursive: true });
+    plant(
+      'etc/crontab',
+      'SHELL=/bin/sh\n17 * * * * root cd / && run-parts --report /etc/cron.hourly\n'
+    );
+    lines.poTar = `0 2 * * * siggi tar -czf /backups/po.tgz ${r}/repo/pipeline-output/`;
+    plant('etc/cron.d/po-tar', `${lines.poTar}\n`);
+    lines.poTarExcluded = `0 4 * * * siggi tar --exclude='*research*' -czf /backups/po-x.tgz ${r}/repo/pipeline-output/`;
+    plant('etc/cron.d/po-tar-excluded', `${lines.poTarExcluded}\n`);
+    plant(
+      'etc/cron.d/home-rsync',
+      `0 3 * * * root AWS_SECRET_ACCESS_KEY=SENTINEL-SECRET-4 rsync -a --password-file=SENTINEL-SECRET-5 ${r} /mnt/backup\n`
+    );
+    plant('etc/cron.daily/local-backup', `#!/bin/sh\ncp -a ${r}/repo/pipeline-output /mnt/po\n`);
+    const blob = path.join(r, 'bin', 'blob');
+    fs.mkdirSync(path.dirname(blob), { recursive: true });
+    fs.writeFileSync(blob, Buffer.from([0x7f, 0x45, 0x4c, 0x46, 0x00, 0x01, 0x02]));
+    plant('bin/nightly.sh', '#!/bin/sh\ntar czf /tmp/n.tgz ~/repos\n');
+    if (spool) {
+      const printed = require('child_process').execFileSync('bash', [INSTALL_CRON], {
+        env: { ...process.env, DEPLOY_PATH: `${r}/repo` },
+        encoding: 'utf8',
+      });
+      plant(
+        'var/spool/cron/crontabs/siggi',
+        [
+          printed,
+          `0 1 * * * ${r}/bin/nightly.sh`,
+          `0 2 * * * /usr/bin/rsync -a ${r}/ /mnt/backup/`,
+          `0 3 * * * /bin/tar -czf /b/h.tgz ${r}`,
+          `0 4 * * * ${r}/bin/blob --run`,
+          '5 5 * * * cp /etc/hosts /tmp/h',
+          `0 6 * * * /usr/local/bin/rotate ${r}/repo/pipeline-output/x.log`,
+          '',
+        ].join('\n')
+      );
+    }
+  }
+
+  it('finds every copy, names the known jobs, and lists what it cannot classify', () => {
+    plantCron();
+    const r = R();
+    const { sections } = readResearchPreconditions(g1aCtx());
+    expect(sections['G-1a']).toEqual({
+      ok: true,
+      spool: 'read',
+      sources: [
+        { source: 'spool:siggi', state: 'read' },
+        { source: 'crontab -l', state: 'none' },
+        { source: '/etc/crontab', state: 'read' },
+        { source: '/etc/anacrontab', state: 'absent' },
+        { source: '/etc/cron.d/home-rsync', state: 'read' },
+        { source: '/etc/cron.d/po-tar', state: 'read' },
+        { source: '/etc/cron.d/po-tar-excluded', state: 'read' },
+        { source: '/etc/cron.daily/local-backup', state: 'read' },
+      ],
+      complete: true,
+      copies: [
+        {
+          source: '/etc/cron.d/home-rsync',
+          line: `0 3 * * * root AWS_SECRET_ACCESS_KEY=<redacted> rsync -a --password-file=<redacted> ${r} /mnt/backup`,
+        },
+        { source: '/etc/cron.d/po-tar', line: lines.poTar },
+        { source: '/etc/cron.daily/local-backup', line: `cp -a ${r}/repo/pipeline-output /mnt/po` },
+        { source: 'spool:siggi', line: `0 2 * * * /usr/bin/rsync -a ${r}/ /mnt/backup/` },
+        { source: 'spool:siggi', line: `0 3 * * * /bin/tar -czf /b/h.tgz ${r}` },
+        { source: `spool:siggi → ${r}/bin/nightly.sh`, line: 'tar <redacted> /tmp/n.tgz ~/repos' },
+      ],
+      excludedCopies: [{ source: '/etc/cron.d/po-tar-excluded', line: lines.poTarExcluded }],
+      unclassified: [
+        {
+          source: 'spool:siggi',
+          line: `0 6 * * * /usr/local/bin/rotate ${r}/repo/pipeline-output/x.log`,
+        },
+        {
+          source: `spool:siggi → ${r}/bin/blob (not a text file)`,
+          line: `0 4 * * * ${r}/bin/blob --run`,
+        },
+      ],
+      known: [
+        'backup-db.sh',
+        'git-backup.sh',
+        'research-backup.sh',
+        'verify-db-backup.sh',
+        'verify-research-backup.sh',
+      ],
+    });
+  });
+
+  // Review finding (2026-11-08): a script run through a wrapper or by a relative path, and a quoted `-c` command,
+  // were dropped silently, so G-1a read clean over a copy. They are followed, or listed as not followed: never dropped.
+  it('follows a script run through a wrapper, sees a quoted command, and lists what it cannot follow', () => {
+    plantCron({ spool: false });
+    const r = R();
+    const lines = {
+      u1: `0 1 * * * bash ${r}/bin/nightly.sh`,
+      // flock creates its lock file on the first run, so the lock is an existing (empty) regular file
+      u2: `0 2 * * * flock -n ${r}/run/present.lock ${r}/bin/nightly.sh`,
+      u7: `0 7 * * * env FOO=/x ${r}/bin/nightly.sh`,
+      u3: `0 3 * * * nice -n 10 ${r}/bin/nightly.sh`,
+      u4: `0 4 * * * cd ${r} && ./bin/nightly.sh`,
+      u5: '0 5 * * * bash ~/x.sh',
+      u6: `0 6 * * * bash -c 'tar czf /b/h.tgz ${r}'`,
+    };
+    for (const [u, line] of Object.entries(lines))
+      plant(`var/spool/cron/crontabs/${u}`, `${line}\n`);
+    plant('run/present.lock', '');
+    const g = readResearchPreconditions(g1aCtx()).sections['G-1a'];
+    const copySources = g.copies.map((c) => c.source);
+    for (const u of ['u1', 'u2', 'u3', 'u7']) {
+      expect(copySources).toContain(`spool:${u} → ${r}/bin/nightly.sh`);
+    }
+    // A NAME=value word given to a wrapper is not a command it cannot follow.
+    expect(g.unclassified.filter((c) => c.source.startsWith('spool:u7'))).toEqual([]);
+    expect(copySources).toContain('spool:u6');
+    const unclassifiedSources = g.unclassified.map((c) => c.source);
+    expect(unclassifiedSources).toContain('spool:u4 → ./bin/nightly.sh (command not followed)');
+    expect(unclassifiedSources).toContain('spool:u5 → ~/x.sh (command not followed)');
+    expect(g.complete).toBe(true);
+  });
+
+  it('returns no whole crontab and no secret', () => {
+    plantCron();
+    const text = JSON.stringify(readResearchPreconditions(g1aCtx()).sections['G-1a']);
+    const planted = ['etc/cron.d/home-rsync', 'var/spool/cron/crontabs/siggi']
+      .map((f) => fs.readFileSync(path.join(root, f), 'utf8'))
+      .join('\n');
+    for (const s of [
+      'SENTINEL-SECRET-4',
+      'SENTINEL-SECRET-5',
+      'secret:',
+      'research-secret:',
+      'BACKUP_REMOTE',
+    ]) {
+      expect(planted, s).toContain(s); // positive control: the fixture holds it
+      expect(text, s).not.toContain(s);
+    }
+    expect(text).toContain("--exclude='*research*'"); // the one value left readable
+  });
+
+  // Review finding (2026-11-08): redaction listed the shapes of a secret (NAME=value, --opt=value) and so missed
+  // others. It now keeps only the words it knows are safe, and the found lines still read as copies.
+  it('keeps only the words it knows to be safe, whatever shape a secret takes', () => {
+    plantCron({ spool: false });
+    const r = R();
+    const secretLines = [
+      `0 1 * * * rclone copy --password SENTINEL-A ${r} research-secret:x`,
+      `0 2 * * * sshpass -p SENTINEL-B scp -r ${r} host:/b`,
+      `0 3 * * * rsync -a ${r}/ rsync://user:SENTINEL-C@host/mod`,
+      `0 4 * * * duplicity ${r} s3://AKIA:SENTINEL-D@bucket/p`,
+      `0 5 * * * tar -czf /b/x.tgz ${r} -pSENTINEL9`,
+    ];
+    plant('var/spool/cron/crontabs/siggi', `${secretLines.join('\n')}\n`);
+    const g = readResearchPreconditions(g1aCtx()).sections['G-1a'];
+    // Positive control: every line was found as a copy.
+    expect(g.copies.filter((c) => c.source === 'spool:siggi')).toHaveLength(secretLines.length);
+    const text = JSON.stringify(g);
+    for (const s of ['SENTINEL-A', 'SENTINEL-B', 'SENTINEL-C', 'SENTINEL-D', 'SENTINEL9']) {
+      expect(text, s).not.toContain(s);
+    }
+    // What a reader needs is still there: the tool, its options and the paths.
+    expect(g.copies.map((c) => c.line)).toContain(`0 5 * * * tar -czf /b/x.tgz ${r} <redacted>`);
+  });
+
+  it('an unreadable spool is reported, not read as clean', () => {
+    plantCron({ spool: false });
+    // A file, not a directory, so the case holds when the tests run as root.
+    plant('var/spool/cron/crontabs', 'not a directory');
+    const g = readResearchPreconditions(g1aCtx()).sections['G-1a'];
+    expect(g.spool).toBe('unreadable');
+    expect(g.complete).toBe(false);
+    expect(g.copies.map((c) => c.source)).toEqual(
+      expect.arrayContaining([
+        '/etc/cron.d/home-rsync',
+        '/etc/cron.d/po-tar',
+        '/etc/cron.daily/local-backup',
+      ])
+    );
+  });
+
+  it('a box with no user crontab at all is complete', () => {
+    plantCron({ spool: false });
+    const g = readResearchPreconditions(g1aCtx()).sections['G-1a'];
+    expect(g.spool).toBe('absent');
+    expect(g.complete).toBe(true);
+  });
+});
+
+describe('--sections: a run that opens no database (decision 35)', () => {
+  it('reads only the named sections, and never opens the database', () => {
+    const researchDir = () => path.join(root, 'repo', 'pipeline-output');
+    const openDb = vi.fn(() => new Database(dbPath, { readonly: true, fileMustExist: true }));
+    const result = readResearchPreconditions(ctx({ openDb, only: ['G-1a'], researchDir }));
+    expect(Object.keys(result.sections)).toEqual(['G-1a']);
+    expect(openDb).not.toHaveBeenCalled();
+    // Control: without `only`, the database sections run and open it once.
+    readResearchPreconditions(ctx({ openDb, researchDir }));
+    expect(openDb).toHaveBeenCalledTimes(1);
+  });
+
+  it('the command line accepts --sections and still refuses everything else', () => {
+    const env = {
+      ...process.env,
+      SESSIONS_DB_PATH: dbPath,
+      BOOKS_ROOT_OVERRIDE: path.join(root, 'books'),
+    };
+    db.close();
+    try {
+      const ok = spawnSync(process.execPath, [SCRIPT, BOOK, '--sections', 'G-1a'], {
+        env,
+        encoding: 'utf8',
+      });
+      expect([0, 1], ok.stderr).toContain(ok.status);
+      expect(Object.keys(JSON.parse(ok.stdout).sections)).toEqual(['G-1a']);
+      for (const args of [
+        [BOOK, '--sections', 'G-1z'],
+        [BOOK, '--sections', ''],
+        [BOOK, '--write'],
+      ]) {
+        const r = spawnSync(process.execPath, [SCRIPT, ...args], { env, encoding: 'utf8' });
+        expect(r.status, JSON.stringify(args)).toBe(2);
+        expect(r.stdout).toBe('');
+      }
+    } finally {
+      db = new Database(dbPath);
+    }
+  });
+});
+
+describe('G-1h (spec §9): the research backup job is installed and has run (decision 36)', () => {
+  const H = 3_600_000;
+  const INSTALL_CRON = path.join(__dirname, '..', '..', 'scripts', 'install-cron.sh');
+  const { RESEARCH_BACKUP_STALE_HOURS } = require('../lib/researchBackupPolicy');
+  const cronExec = (cmd, args) =>
+    cmd === 'crontab' && args[0] === '-l'
+      ? { ran: true, code: 1, stdout: '', stderr: 'no crontab for root' }
+      : { ran: false, code: null, stdout: '', stderr: '' };
+  const outDir = () => path.join(root, 'repo', 'pipeline-output');
+  const heartbeat = () => path.join(outDir(), '.last-research-backup');
+  const g1hCtx = (over = {}) =>
+    ctx({
+      serverDir: path.join(__dirname, '..'), // the template is the real scripts/install-cron.sh
+      researchDir: outDir,
+      exec: cronExec,
+      ...over,
+    });
+  /** The research line install-cron.sh prints for <R>/repo. */
+  const printedResearchLine = () =>
+    require('child_process')
+      .execFileSync('bash', [INSTALL_CRON], {
+        env: { ...process.env, DEPLOY_PATH: `${root}/repo` },
+        encoding: 'utf8',
+      })
+      .split('\n')
+      .find((l) => !l.startsWith('#') && /\/scripts\/research-backup\.sh(\s|$)/.test(l));
+  function setup({ line = printedResearchLine(), ageHours = 1 } = {}) {
+    fs.mkdirSync(outDir(), { recursive: true });
+    plant('var/spool/cron/crontabs/siggi', line === null ? '# nothing\n' : `${line}\n`);
+    if (ageHours !== null) {
+      fs.writeFileSync(heartbeat(), 'x');
+      const t = new Date(Date.now() - ageHours * H);
+      fs.utimesSync(heartbeat(), t, t);
+    }
+  }
+  const g1h = (over) => readResearchPreconditions(g1hCtx(over)).sections['G-1h'];
+
+  it('ready: the line is installed as printed, its remote is a research remote, and a run completed recently', () => {
+    setup();
+    expect(g1h()).toEqual({
+      ok: true,
+      cron: {
+        installed: true,
+        sources: ['spool:siggi'],
+        scheduleMatchesTemplate: true,
+        researchRemote: true,
+      },
+      heartbeat: { present: true, ageHours: 1, fresh: true },
+      ready: true,
+    });
+  });
+
+  it('each condition can fail on its own', () => {
+    const printed = printedResearchLine();
+    setup({ line: null });
+    expect(g1h()).toMatchObject({ cron: { installed: false }, ready: false });
+
+    setup({ line: printed.replace(/^\S+\s+\S+/, '0 */12') });
+    expect(g1h()).toMatchObject({ cron: { scheduleMatchesTemplate: false }, ready: false });
+
+    setup({ line: printed.replace(/RESEARCH_REMOTE=\S+/, 'RESEARCH_REMOTE=secret:') });
+    expect(g1h()).toMatchObject({ cron: { researchRemote: false }, ready: false });
+
+    setup();
+    fs.rmSync(heartbeat());
+    expect(g1h()).toMatchObject({ heartbeat: { present: false, ageHours: null }, ready: false });
+
+    setup({ ageHours: RESEARCH_BACKUP_STALE_HOURS + 1 });
+    expect(g1h()).toMatchObject({ heartbeat: { fresh: false }, ready: false });
+  });
+
+  it('prints no remote value and reads no database (decision 36)', () => {
+    setup();
+    const spool = fs.readFileSync(path.join(root, 'var/spool/cron/crontabs/siggi'), 'utf8');
+    expect(spool).toContain('research-secret:'); // control: the spool file does hold it
+    const text = JSON.stringify(g1h());
+    expect(text).not.toContain('research-secret:');
+    expect(text).not.toContain('secret:');
+    const openDb = vi.fn();
+    const result = readResearchPreconditions(g1hCtx({ openDb, only: ['G-1h'] }));
+    expect(Object.keys(result.sections)).toEqual(['G-1h']);
+    expect(openDb).not.toHaveBeenCalled();
   });
 });

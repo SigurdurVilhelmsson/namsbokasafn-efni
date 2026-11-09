@@ -11,18 +11,32 @@
  *   3. the research file absent: 'missing' only if a consented row exists (the file is then owed),
  *      otherwise 'unavailable'
  *   4. a user_version other than RESEARCH_SCHEMA_VERSION -> 'unavailable'
+ *   5. the research backup's heartbeat missing or older than its threshold -> 'backup-stale' (PR4,
+ *      spec §5.17, §5.20). The heartbeat is written only by a full, successful run of
+ *      scripts/research-backup.sh, so a missing one is stale: the alarm reads backup-stale from the
+ *      deploy until the job's first full run. The threshold is two missed research backup cycles
+ *      plus margin, derived in server/lib/researchBackupPolicy.js from the research cron line's
+ *      period, and has no environment override.
  * Both files are opened read-only and must exist; nothing here ever creates or writes either.
  */
 const fs = require('fs');
 const Database = require('better-sqlite3');
 const { RESEARCH_SCHEMA_VERSION } = require('./researchSchema');
 const { BUSY_TIMEOUT_MS } = require('../services/researchDb');
+const { researchFilesFor } = require('./researchFiles');
+const { RESEARCH_BACKUP_STALE_HOURS } = require('./researchBackupPolicy');
+const { computeBackupHeartbeatHealth } = require('./backupHeartbeatHealth');
 
 /**
- * @param {{ editorialPath: string, researchPath: string, consentLookupFailing: boolean }} args
- * @returns {{ ok: boolean, reason: null | 'consent-unavailable' | 'missing' | 'unavailable' }}
+ * @param {{ editorialPath: string, researchPath: string, consentLookupFailing: boolean, nowMs?: number }} args
+ * @returns {{ ok: boolean, reason: null | 'consent-unavailable' | 'missing' | 'unavailable' | 'backup-stale' }}
  */
-function readResearchDbHealth({ editorialPath, researchPath, consentLookupFailing } = {}) {
+function readResearchDbHealth({
+  editorialPath,
+  researchPath,
+  consentLookupFailing,
+  nowMs = Date.now(),
+} = {}) {
   const unavailable = { ok: false, reason: 'unavailable' };
   if (consentLookupFailing) return { ok: false, reason: 'consent-unavailable' };
   let editorial = null;
@@ -47,7 +61,24 @@ function readResearchDbHealth({ editorialPath, researchPath, consentLookupFailin
       timeout: BUSY_TIMEOUT_MS,
     });
     const version = Number(research.pragma('user_version', { simple: true }));
-    return version === RESEARCH_SCHEMA_VERSION ? { ok: true, reason: null } : unavailable;
+    if (version !== RESEARCH_SCHEMA_VERSION) return unavailable;
+    // The research backup's heartbeat (spec §5.17, §5.20): written only by a full, successful job run. Missing is stale.
+    let heartbeatMtimeMs = null;
+    try {
+      heartbeatMtimeMs = fs.statSync(researchFilesFor(researchPath).heartbeatPath).mtimeMs;
+    } catch {
+      /* missing heartbeat => stale, handled by the helper */
+    }
+    if (
+      computeBackupHeartbeatHealth({
+        heartbeatMtimeMs,
+        nowMs,
+        staleHours: RESEARCH_BACKUP_STALE_HOURS,
+      }).stale
+    ) {
+      return { ok: false, reason: 'backup-stale' };
+    }
+    return { ok: true, reason: null };
   } catch {
     return unavailable;
   } finally {

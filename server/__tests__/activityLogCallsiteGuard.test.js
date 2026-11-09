@@ -31,6 +31,8 @@ const SILENT_CATCH = /catch\s*(?:\([^)]*\)\s*)?\{\s*\/\*\s*fire-and-forget\s*\*\
 const TRY_WRAPPED_AUDIT = /try\s*\{\s*activityLog\.log\(/;
 // G1.2 PR3 (decision 41): researchLog.record is never-throw too, so it is called bare.
 const TRY_WRAPPED_RECORD = /try\s*\{\s*researchLog\.record\(/;
+// G1.2 PR4 (decision 14): researchDeletion.deleteIntervalRowsNow is never-throw too, so it is called bare.
+const TRY_WRAPPED_DELETION = /try\s*\{\s*researchDeletion\.deleteIntervalRowsNow\(/;
 const EMPTY_CATCH_NO_COMMENT = /catch\s*(?:\([^)]*\)\s*)?\{\s*\}/;
 
 function jsFiles(dir) {
@@ -58,6 +60,10 @@ describe('activityLog call-site guard', () => {
         expect(src).not.toMatch(TRY_WRAPPED_RECORD);
       });
 
+      it(`${rel}: no try-wrapped researchDeletion.deleteIntervalRowsNow (it is never-throw)`, () => {
+        expect(src).not.toMatch(TRY_WRAPPED_DELETION);
+      });
+
       it(`${rel}: no comment-less empty catch`, () => {
         expect(src).not.toMatch(EMPTY_CATCH_NO_COMMENT);
       });
@@ -69,5 +75,12 @@ describe('activityLog call-site guard', () => {
       TRY_WRAPPED_RECORD
     );
     expect('researchLog.record(ev);').not.toMatch(TRY_WRAPPED_RECORD);
+  });
+
+  it('control: TRY_WRAPPED_DELETION matches a try-wrapped call and not a bare one', () => {
+    expect('try {\n  researchDeletion.deleteIntervalRowsNow(7);\n} finally {\n  x();\n}').toMatch(
+      TRY_WRAPPED_DELETION
+    );
+    expect('researchDeletion.deleteIntervalRowsNow(7);').not.toMatch(TRY_WRAPPED_DELETION);
   });
 });

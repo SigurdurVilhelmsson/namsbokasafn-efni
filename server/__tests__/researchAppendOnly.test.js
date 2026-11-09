@@ -28,7 +28,22 @@ const UPSERT = new RegExp(
 // DELETE from an unlisted table in an allowed file is still a finding. Keys are paths relative to server/; each entry
 // is { tables: string[], reason: string }. Empty in PR3; PR4 adds research-withdrawal.js, research-retention.js and the
 // withdraw route's deletion service, each with its tables and its reason, and changes nothing else here.
-const DELETE_ALLOWED = Object.freeze({});
+const DELETE_ALLOWED = Object.freeze({
+  'scripts/research-withdrawal.js': {
+    tables: ['research_event_items', 'research_events', 'editor_keys'],
+    reason: "a withdrawn interval's rows, its key last (spec §5.15, §5.16)",
+  },
+  'scripts/research-retention.js': {
+    tables: ['research_event_items', 'research_events', 'editor_keys'],
+    reason:
+      'every research row, the key map included, once the retention date has passed (spec §5.15)',
+  },
+  'services/researchDeletion.js': {
+    tables: ['research_event_items', 'research_events'],
+    reason:
+      "the withdraw route's immediate deletion; the key row stays for research-withdrawal.js (spec §5.15)",
+  },
+});
 const isAllowed = (f, allowed) =>
   Boolean(allowed[f.file]) &&
   allowed[f.file].tables.some((t) => f.statement === `DELETE FROM ${t}`);
@@ -91,8 +106,38 @@ afterAll(() => {
 const statements = (found) => found.map((f) => f.statement).sort();
 
 describe('append-only research rows (spec §5.9; decision 41)', () => {
-  it('no code changes a research row, and nothing deletes one yet', () => {
+  it('no code changes a research row; only the listed files delete, from the listed tables', () => {
     expect(mutations(SERVER_ROOT)).toEqual([]);
+    // Aimed right: the allowed file really does delete.
+    const src = fs.readFileSync(
+      path.join(SERVER_ROOT, 'scripts', 'research-withdrawal.js'),
+      'utf8'
+    );
+    expect(src).toMatch(/DELETE FROM editor_keys/);
+  });
+
+  it('control: an allowed file may delete, and nothing else', () => {
+    const root = plant({
+      'scripts/research-withdrawal.js': [
+        '"DELETE FROM research_events";',
+        "db.prepare('UPDATE research_events SET event_type = ?');",
+        'db.prepare(`INSERT INTO editor_keys (interval_id, editor_key) VALUES (?, ?)',
+        '  ON CONFLICT (interval_id) DO UPDATE SET editor_key = excluded.editor_key`);',
+      ].join('\n'),
+      'scripts/research-backup.js': '"DELETE FROM research_events";',
+      // The deletion service may never delete the key row: research-withdrawal.js does, last.
+      'services/researchDeletion.js': '"DELETE FROM editor_keys";',
+    });
+    expect(
+      mutations(root)
+        .map((f) => `${f.file} ${f.statement}`)
+        .sort()
+    ).toEqual([
+      'scripts/research-backup.js DELETE FROM research_events',
+      'scripts/research-withdrawal.js UPDATE research_events',
+      'scripts/research-withdrawal.js UPSERT editor_keys',
+      'services/researchDeletion.js DELETE FROM editor_keys',
+    ]);
   });
 
   it('control: a planted UPDATE, DELETE and upsert are named; a DO NOTHING insert is not', () => {
@@ -127,7 +172,7 @@ describe('append-only research rows (spec §5.9; decision 41)', () => {
       'DELETE FROM editor_keys',
       'UPDATE research_events',
     ]);
-    // The positive control: with the real (empty) list the allowance is what removed it.
+    // The positive control: with the real list, which does not list this file, the allowance is what removed it.
     expect(statements(mutations(root))).toEqual([
       'DELETE FROM editor_keys',
       'DELETE FROM research_events',

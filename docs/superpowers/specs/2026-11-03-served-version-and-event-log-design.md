@@ -14,6 +14,26 @@
 > no status. If it disagrees with the active register, the register wins. Do not sync it or edit it in place.
 > Supersede it with a new record instead.
 
+> **✏️ AMENDED 2026-11-09: two of PR4's review fixes, confirmed by [USER] on 2026-11-09** ("I confirm both rulings
+> (prune tolerance and the allowlist redaction)"). Each was found by PR4's whole-branch review (2026-11-08) and
+> changes the letter of a rule in the direction of the promise behind it. The values live in the code and its tests;
+> this block states only what changed and why.
+>
+> - **§5.17, "Pruning is by age": a copy is pruned at the first run within half a cron period of the cut-off.** The
+>   cut-off itself is unchanged (7 days minus one cron period). Each run prunes before it stamps its own copy, and cron
+>   starts a run a little early or late, so measured from its stamp a copy is a few seconds short of the cut-off at the
+>   very run meant to remove it. Without a tolerance it survived one period more, to just under 7 days, and one late
+>   or missed run then broke "no copy may be older than 7 days at any moment", the reason this section gives for the
+>   cut-off. The tolerance is derived from the cadence (`PRUNE_TOLERANCE_HOURS`, `server/lib/researchBackupPolicy.js`)
+>   and errs early: at worst a copy goes half a period early, one fewer restore point.
+> - **§9, G-1a's crontab half (PR4 d34): returned lines are redacted by an allowlist, not by the shape of a secret.**
+>   d34 redacted assignment words (`NAME=value`) and option values (`--opt=value`). The review found `--password X`,
+>   `-p X` and a URL's `user:pass@` passing through, and G-1a's output is pasted into the public register. A returned
+>   line now keeps only the schedule fields, the command word, shell operators, paths (none holding `@` or `://`), bare
+>   flags, the names of the copying tools and of wrappers such as `bash` or `flock`, and an `--exclude`/`--include`
+>   value (d34's exception stands, since a reader needs it to judge an exclusion). Every other word reads
+>   `<redacted>`. The cost is a harmless word redacted, which an operator then reads on the server.
+
 > **✏️ AMENDED 2026-11-07, later: three of PR3's open items, ruled by [USER] on 2026-11-07** ("① stays a named
 > boundary noted in the spec, ② approve previewSource: null with a dated ✏ AMENDED note on spec §5.9, ③ leave the
 > health check's missing as specified"). The fourth item, a string, lives in the code and the register, not here.

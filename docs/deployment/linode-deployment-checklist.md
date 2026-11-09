@@ -227,24 +227,29 @@ journalctl -u ritstjorn -f
 
 ## 9. Backup Strategy
 
-The `pipeline-output/` directory contains:
-- Session uploads
-- SQLite database (sessions.db)
-- Processed images
+`pipeline-output/` holds two databases with different backup rules, and nothing else may copy either:
 
-Options:
-1. **Linode Backups** - Enable automatic Linode backups ($2/month)
-2. **Rsync to external** - Cron job to sync to another location
-3. **Git integration** - Move approved files to repo and commit
+- `sessions.db`, the editorial database: backed up by `scripts/backup-db.sh` (local and encrypted off-box).
+- `research.db`, the research file (with its `-wal` and `-shm`, `research-backups/` and `research-exports/`): backed up
+  only by its own job, `scripts/research-backup.sh`, whose copies never live longer than 7 days. The consent text promises
+  that (R2, `docs/decisions/2026-11-03-research-capture-consent-and-retention-rulings.md`); any other copy breaks it.
 
-Recommended minimum:
-```bash
-# Add to crontab (as namsbokasafn user)
-0 2 * * * tar -czf ~/backups/pipeline-output-$(date +\%Y\%m\%d).tar.gz ~/repos/namsbokasafn-efni/pipeline-output/
-```
+So:
 
-- [ ] Backup strategy chosen
-- [ ] Backup configured
+- **Do not enable Linode Backups for this Linode.** A whole-disk image cannot leave one file out, so it would copy
+  `research.db`. If they are on, no consent is collected until they are off (check G-1a).
+- **No `tar`, `rsync` or other copy of `pipeline-output/`, of the repository, or of a home directory that holds it.** The
+  jobs `scripts/install-cron.sh` prints are the backups. If some other runtime file needs a copy, leave the research file
+  out: `tar --exclude='*research*' -czf <target> <source>`. G-1a reports such a line apart, under `excludedCopies`, for
+  [USER] to judge that it really leaves out `research.db`, its `-wal` and `-shm`, `research-backups/` and
+  `research-exports/`.
+- Set both off-box remotes up as `docs/technical/backup-and-restore.md` says (the research one has its own bucket and its
+  own passphrase, escrowed first), then install every line `scripts/install-cron.sh` prints.
+
+- [ ] Linode Backups are off (Linode console, the Linode's Backups tab)
+- [ ] Every cron line from `scripts/install-cron.sh` is installed (`crontab -l`)
+- [ ] G-1a's crontab half reports no copy and every excluded copy is judged, run as root:
+  `server/scripts/read-research-preconditions.js … --sections G-1a`
 
 ---
 

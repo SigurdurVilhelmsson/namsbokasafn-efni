@@ -21,6 +21,10 @@ const userService = require('../services/userService');
 const { sha256Text } = require('../lib/servedText');
 const { handlerFor, invoke } = require('./helpers/servedFixture');
 const router = require('../routes/research');
+const researchLog = require('../services/researchLog');
+const researchDeletion = require('../services/researchDeletion');
+const serverCommit = require('../lib/serverCommit');
+const { saveEvent, losses } = require('./helpers/researchFixture.cjs');
 
 const { researchPath, editorialPath } = resolveResearchDbPath();
 const V1 = { version: 'prufa-1', sha256: sha256Text('t1') };
@@ -282,5 +286,171 @@ describe('approved Icelandic strings (plan decision 64)', () => {
     } finally {
       spy.mockRestore();
     }
+  });
+});
+
+describe('T9 (PR4): a withdrawal deletes its research rows at once (spec §5.15)', () => {
+  const ids = {};
+  let seq = 0;
+  beforeAll(() => {
+    serverCommit._setTestServerCommit({
+      serverCommit: 'c'.repeat(40),
+      commitSource: 'deploy-file',
+      codeDirty: 0,
+    });
+    for (const n of [1, 2, 3, 4, 5, 6]) {
+      const pid = `p-w${n}`;
+      ids[pid] = userService.createUser({
+        providerId: pid,
+        providerUsername: `w${n}`,
+        displayName: `w${n}`,
+        email: `w${n}@example.test`,
+        role: 'editor',
+      }).id;
+    }
+  });
+  afterAll(() => serverCommit._setTestServerCommit(null));
+
+  const recordAs = (pid) => {
+    const r = researchLog.record(
+      saveEvent({ actorProviderId: pid, clientActionId: `t9-${++seq}` })
+    );
+    expect(r.status).toBe('written');
+  };
+  const lossFor = (intervalId) =>
+    expect(
+      researchConsent.recordLoss({
+        intervalId,
+        book: 'efnafraedi-2e',
+        chapter: 1,
+        moduleId: 'm98001',
+        eventType: 'edit-save',
+        errorClass: 'busy',
+        clientActionId: `t9-loss-${++seq}`,
+        nowMs: Date.now(),
+      })
+    ).toBe(true);
+  const keyOf = (intervalId) =>
+    reader
+      .prepare('SELECT editor_key FROM editor_keys WHERE interval_id = ?')
+      .get(BigInt(intervalId))?.editor_key ?? null;
+  const eventIdsOf = (key) =>
+    reader
+      .prepare('SELECT id FROM research_events WHERE editor_key = ? ORDER BY id')
+      .pluck()
+      .all(key);
+  const itemsOf = (eventIds) =>
+    reader
+      .prepare('SELECT event_id FROM research_event_items')
+      .pluck()
+      .all()
+      .filter((id) => eventIds.includes(id));
+  const lossesOf = (intervalId) => losses().filter((l) => l.interval_id === intervalId);
+
+  it("T9: withdrawing deletes the interval's research rows at once; the response is PR3's", async () => {
+    researchConsentText._setTestApprovedTexts([V1]);
+    expect((await consent('p-w1')).status).toBe(200);
+    const [start] = rows(ids['p-w1']);
+    recordAs('p-w1');
+    recordAs('p-w1');
+    lossFor(start.id);
+    const key = keyOf(start.id);
+    const eventIds = eventIdsOf(key);
+    expect(eventIds).toHaveLength(2); // the control: present before
+    expect(itemsOf(eventIds)).toHaveLength(2);
+    expect(lossesOf(start.id)).toHaveLength(1);
+
+    const r = await invoke(withdrawH, as('p-w1'));
+    expect(r.status).toBe(200);
+    expect(Object.keys(r.body).sort()).toEqual([
+      'currentTextVersion',
+      'decidedTextVersion',
+      'state',
+    ]);
+    expect(r.body.state).toBe('withdrawn');
+    expect(eventIdsOf(key)).toEqual([]);
+    expect(itemsOf(eventIds)).toEqual([]);
+    expect(lossesOf(start.id)).toEqual([]);
+    expect(keyOf(start.id)).toBe(key); // the key row stays for research-withdrawal.js
+  });
+
+  it('T9: posting declined while consented withdraws, and deletes at once', async () => {
+    researchConsentText._setTestApprovedTexts([V1]);
+    const spy = vi.spyOn(researchDeletion, 'deleteIntervalRowsNow');
+    await consent('p-w2');
+    const [start] = rows(ids['p-w2']);
+    recordAs('p-w2');
+    const key = keyOf(start.id);
+    expect(eventIdsOf(key)).toHaveLength(1);
+
+    const r = await invoke(post, as('p-w2', { decision: 'declined', textVersion: 'prufa-1' }));
+    expect(r.status).toBe(200);
+    expect(r.body.state).toBe('declined');
+    expect(typeof rows(ids['p-w2'])[0].withdrawn_at_ms).toBe('number');
+    expect(eventIdsOf(key)).toEqual([]);
+    expect(keyOf(start.id)).toBe(key);
+    expect(spy.mock.calls).toEqual([[start.id]]);
+    spy.mockRestore();
+  });
+
+  it("T9: after a renewal, the withdrawal marks the starting row and deletes both texts' events by the one key", async () => {
+    researchConsentText._setTestApprovedTexts([V1]);
+    await consent('p-w3', 'prufa-1');
+    recordAs('p-w3');
+    researchConsentText._setTestApprovedTexts([V1, V2]);
+    expect((await consent('p-w3', 'prufa-2')).status).toBe(200);
+    recordAs('p-w3');
+    const [start] = rows(ids['p-w3']);
+    const key = keyOf(start.id);
+    expect(eventIdsOf(key)).toHaveLength(2); // one interval, one key
+
+    await invoke(withdrawH, as('p-w3'));
+    expect(rows(ids['p-w3']).map((x) => x.withdrawn_at_ms)).toEqual([expect.any(Number), null]);
+    expect(eventIdsOf(key)).toEqual([]);
+  });
+
+  it('the deletion never changes the response', async () => {
+    researchConsentText._setTestApprovedTexts([V1]);
+    await consent('p-w4');
+    await consent('p-w5');
+    const up = await invoke(withdrawH, as('p-w4'));
+    researchDb._setTestPaths({ researchPath: '/nonexistent/dir/r.db', editorialPath });
+    let down;
+    try {
+      down = await invoke(withdrawH, as('p-w5'));
+    } finally {
+      researchDb._setTestPaths(null);
+    }
+    expect(up.status).toBe(200);
+    expect(down.status).toBe(200);
+    expect(down.body).toEqual(up.body);
+  });
+
+  it('T9: a later act writes no research row and no loss row', async () => {
+    researchConsentText._setTestApprovedTexts([V1]);
+    await consent('p-w1');
+    recordAs('p-w1');
+    await invoke(withdrawH, as('p-w1'));
+    const eventIds = () =>
+      reader.prepare('SELECT id FROM research_events ORDER BY id').pluck().all();
+    const before = { events: eventIds(), losses: losses() };
+
+    expect(
+      researchLog.record(saveEvent({ actorProviderId: 'p-w1', clientActionId: 'after-1' }))
+    ).toEqual({ status: 'skipped', reason: 'not-consenting' });
+    expect({ events: eventIds(), losses: losses() }).toEqual(before);
+  });
+
+  it('a decline with nothing live, and a withdraw with nothing live, delete nothing', async () => {
+    researchConsentText._setTestApprovedTexts([V1]);
+    const spy = vi.spyOn(researchDeletion, 'deleteIntervalRowsNow');
+    const declined = await invoke(
+      post,
+      as('p-w6', { decision: 'declined', textVersion: 'prufa-1' })
+    );
+    expect(declined.body.state).toBe('declined');
+    expect((await invoke(withdrawH, as('p-w6'))).status).toBe(200);
+    expect(spy).not.toHaveBeenCalled();
+    spy.mockRestore();
   });
 });

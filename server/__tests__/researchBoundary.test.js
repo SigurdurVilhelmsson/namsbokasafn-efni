@@ -455,18 +455,28 @@ const RESEARCH_SCRIPT_EXCEPTIONS = Object.freeze({
     reason:
       'finds withdrawn intervals and sets deletion_done_at_ms (spec §5.15); computes no figure',
   },
-  // PR4: the paper-consent admin script, if it is given a research- name (spec §5.14), records a decision or a
-  // withdrawal; add it here with the same single allowance.
+  // The paper-consent script records through researchConsent's functions and names no forbidden table (PR4 decision 18).
 });
 const tableRe = (t) => new RegExp(`\\b${t}\\b`); // \b: module_openings never matches module_opening_inflight
 
-/** Every research-* script under root/scripts, relative to root, sorted. */
+/** Every research-* script under root/scripts and research* module under root/scripts/lib (PR4), relative to root, sorted. */
 function researchScripts(root) {
   const dir = path.join(root, 'scripts');
-  return readdirSync(dir)
-    .filter((n) => /^research-.*\.js$/.test(n))
-    .sort()
-    .map((n) => `scripts/${n}`);
+  const libDir = path.join(dir, 'lib');
+  const lib = (() => {
+    try {
+      return readdirSync(libDir);
+    } catch (err) {
+      if (err.code === 'ENOENT') return [];
+      throw err;
+    }
+  })();
+  return [
+    ...readdirSync(dir)
+      .filter((n) => /^research-.*\.js$/.test(n))
+      .map((n) => `scripts/${n}`),
+    ...lib.filter((n) => /^research.*\.js$/.test(n)).map((n) => `scripts/lib/${n}`),
+  ].sort();
 }
 /** { file, table }[]: each forbidden table a research-* script names, beyond its listed exception. */
 function forbiddenTableUses(root) {
@@ -506,8 +516,66 @@ describe('T17 (PR3): no route reaches research data (spec §5.16)', () => {
 
 describe('T17 (PR3): research-* scripts read no editing record (spec §5.22)', () => {
   it('no server/scripts/research-* file names a forbidden table, beyond its listed exception', () => {
-    expect(researchScripts(SERVER_ROOT)).toContain('scripts/research-status.js');
+    expect(researchScripts(SERVER_ROOT)).toEqual(
+      expect.arrayContaining([
+        'scripts/research-withdrawal.js',
+        'scripts/research-status.js',
+        'scripts/lib/researchAdmin.js',
+        'scripts/lib/researchPurge.js',
+      ])
+    );
     expect(forbiddenTableUses(SERVER_ROOT)).toEqual([]);
+  });
+
+  it('T17: research-withdrawal.js uses its exception, and only it (spec §5.22)', () => {
+    const text = readFileSync(
+      path.join(SERVER_ROOT, 'scripts', 'research-withdrawal.js'),
+      'latin1'
+    );
+    expect(tableRe('research_consent').test(text)).toBe(true);
+    expect(
+      forbiddenTableUses(SERVER_ROOT).filter((u) => u.file === 'scripts/research-withdrawal.js')
+    ).toEqual([]);
+    expect(Object.keys(RESEARCH_SCRIPT_EXCEPTIONS)).toEqual(['research-withdrawal.js']);
+  });
+
+  it('control (spec T17): research-withdrawal.js naming segment_edits, or a lib file naming research_consent, is found', () => {
+    const tmp = mkdtempSync(path.join(tmpdir(), 't17-pr4-scripts-'));
+    try {
+      mkdirSync(path.join(tmp, 'scripts', 'lib'), { recursive: true });
+      const copy = (from, to, extra) =>
+        writeFileSync(
+          path.join(tmp, to),
+          `${readFileSync(path.join(SERVER_ROOT, from), 'latin1')}\n${extra}\n`
+        );
+      copy('scripts/research-withdrawal.js', 'scripts/research-withdrawal.js', '// segment_edits');
+      copy('scripts/lib/researchAdmin.js', 'scripts/lib/researchAdmin.js', '// research_consent');
+      expect(forbiddenTableUses(tmp).sort((a, b) => a.file.localeCompare(b.file))).toEqual([
+        { file: 'scripts/lib/researchAdmin.js', table: 'research_consent' },
+        { file: 'scripts/research-withdrawal.js', table: 'segment_edits' },
+      ]);
+    } finally {
+      rmSync(tmp, { recursive: true, force: true });
+    }
+  });
+
+  it('positive control: the deletion script requires the admin reader', () => {
+    expect(filesNaming(path.join(SERVER_ROOT, 'scripts'), ADMIN_READER)).toContain(
+      'research-withdrawal.js'
+    );
+  });
+
+  it('T17 (PR4): the deletion service is write-only, and no route names the research handle', () => {
+    expect(Object.keys(require('../services/researchDeletion'))).toEqual(['deleteIntervalRowsNow']);
+    const routeSrc = readFileSync(path.join(SERVER_ROOT, 'routes', 'research.js'), 'latin1');
+    expect(routeSrc).toMatch(/require\('\.\.\/services\/researchDeletion'\)/);
+    expect(filesNaming(path.join(SERVER_ROOT, 'routes'), ROUTE_FORBIDDEN)).toEqual([]);
+  });
+
+  it('T17 (PR4): the paper-consent script names no forbidden table, and is not an exception (decision 18)', () => {
+    expect(researchScripts(SERVER_ROOT)).toContain('scripts/research-paper-consent.js');
+    expect(forbiddenTableUses(SERVER_ROOT)).toEqual([]);
+    expect(Object.keys(RESEARCH_SCRIPT_EXCEPTIONS)).toEqual(['research-withdrawal.js']);
   });
 
   it('controls: the exception covers research_consent only, and only for its own file', () => {
@@ -534,6 +602,71 @@ describe('T17 (PR3): research-* scripts read no editing record (spec §5.22)', (
       put('research-x.js', 'SELECT * FROM module_openings');
       expect(forbiddenTableUses(tmp)).toEqual([
         { file: 'scripts/research-x.js', table: 'module_openings' },
+      ]);
+    } finally {
+      rmSync(tmp, { recursive: true, force: true });
+    }
+  });
+});
+
+// ── PR4 (Task 4): the admin reader is required by nothing outside server/scripts/ and server/__tests__/.
+const ADMIN_READER = /\bresearchAdmin\b/;
+// Every top-level entry of server/ except these. filesNaming (PR2) walks everything under its root,
+// node_modules and .venv included, so this walker skips them by name at any depth.
+const SKIP_DIRS = new Set(['node_modules', '.venv']);
+const SCRIPT_SIDE = new Set(['scripts', '__tests__']);
+function nonScriptFilesNaming(root, pattern) {
+  const found = [];
+  const visited = [];
+  const walk = (dir, top) => {
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+      if (SKIP_DIRS.has(e.name) || (top && SCRIPT_SIDE.has(e.name))) continue;
+      const p = path.join(dir, e.name);
+      if (e.isDirectory()) walk(p, false);
+      else if (/\.(?:c|m)?js$/.test(e.name)) {
+        visited.push(path.relative(root, p));
+        if (pattern.test(readFileSync(p, 'latin1'))) found.push(path.relative(root, p));
+      }
+    }
+  };
+  walk(root, true);
+  return { found: found.sort(), visited };
+}
+
+describe('T17 (PR4): the admin reader stays on the script side (spec §5.16)', () => {
+  it('no file outside server/scripts/ and server/__tests__/ requires the admin reader (spec §5.16)', () => {
+    const { found, visited } = nonScriptFilesNaming(SERVER_ROOT, ADMIN_READER);
+    expect(found).toEqual([]);
+    // An empty result is not an empty read.
+    expect(visited).toEqual(
+      expect.arrayContaining([
+        'routes/research.js',
+        'services/researchLog.js',
+        'lib/researchFiles.js',
+      ])
+    );
+  });
+
+  it('control: a planted require is named wherever it is not allowed', () => {
+    const tmp = mkdtempSync(path.join(tmpdir(), 't17-pr4-admin-'));
+    const put = (rel) => {
+      mkdirSync(path.dirname(path.join(tmp, rel)), { recursive: true });
+      writeFileSync(path.join(tmp, rel), "const a = require('../scripts/lib/researchAdmin');");
+    };
+    try {
+      for (const rel of [
+        'routes/x.js',
+        'services/y.js',
+        'lib/z.js',
+        'scripts/research-a.js',
+        '__tests__/b.test.js',
+      ]) {
+        put(rel);
+      }
+      expect(nonScriptFilesNaming(tmp, ADMIN_READER).found).toEqual([
+        'lib/z.js',
+        'routes/x.js',
+        'services/y.js',
       ]);
     } finally {
       rmSync(tmp, { recursive: true, force: true });

@@ -4,8 +4,9 @@
  * A member records or withdraws their own decision. There is no page and no read route to
  * research data. A visitor has no account row and gets none (as notifications.js does). No
  * activity_log row and no log line carries a decision. This file reaches research data only
- * through researchLog's write functions; Task 31's route scan forbids naming the research
- * handle module or the key table in any file under server/routes/.
+ * through researchLog's write functions and researchDeletion's immediate deletion (PR4); Task 31's
+ * route scan forbids naming the research handle module or the key table in any file under
+ * server/routes/.
  *
  * Endpoints:
  *   GET  /api/research/consent            The caller's decision state
@@ -20,6 +21,7 @@ const { requireAuth } = require('../middleware/requireAuth');
 const userService = require('../services/userService');
 const researchConsent = require('../services/researchConsent');
 const researchLog = require('../services/researchLog');
+const researchDeletion = require('../services/researchDeletion');
 const { currentConsentText } = require('../lib/researchConsentText');
 
 const CONSENT_MESSAGES = Object.freeze({
@@ -97,6 +99,9 @@ router.post('/consent', requireAuth, (req, res) => {
     });
     // The response never depends on the key's minting (spec §5.16).
     if (result.outcome === 'started') researchLog.ensureKey(result.intervalId);
+    // Declining during a live interval is a withdrawal (spec §5.14), so it deletes at once, as the withdraw route does
+    // (spec §5.15). It never throws, and nothing it returns reaches the response.
+    if (result.outcome === 'withdrew') researchDeletion.deleteIntervalRowsNow(result.intervalId);
     return res.json(view(user.id));
   } catch (err) {
     return fail(res, err, 'Consent decision not recorded (spec §5.14)');
@@ -107,7 +112,8 @@ router.post('/consent/withdraw', requireAuth, (req, res) => {
   const user = memberOr403(req, res);
   if (!user) return undefined;
   try {
-    researchConsent.withdraw({ userId: user.id, nowMs: Date.now() });
+    const withdrawal = researchConsent.withdraw({ userId: user.id, nowMs: Date.now() });
+    if (withdrawal.withdrawn) researchDeletion.deleteIntervalRowsNow(withdrawal.intervalId); // after the commit (spec §5.15)
     return res.json(view(user.id));
   } catch (err) {
     return fail(res, err, 'Consent withdrawal not recorded (spec §5.14)');

@@ -80,6 +80,9 @@ const EXPECTED_SCHEMA = deepFreeze({
       'client_action_id',
     ],
     book_switch_events: ['id', 'book', 'switch_name', 'value', 'switched_at_ms'],
+    // PR4 (spec §5.20): tables only, no index
+    research_deletions: ['kind', 'interval_id', 'done_at_ms', 'verified'],
+    research_derived_datasets: ['path', 'sha256', 'created_day'],
   },
   // An existing table → the columns the migrations add to it.
   columns: {

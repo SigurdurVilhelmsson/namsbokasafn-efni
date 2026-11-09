@@ -1,9 +1,11 @@
-# Backup & Restore — `sessions.db`
+# Backup & Restore — `sessions.db` and the research file
+
+The research file (`research.db`) has its own job, its own remote and its own rules: see [The research file](#the-research-file-researchdb) below. Nothing described for `sessions.db` may copy it.
 
 **What this protects.** `pipeline-output/sessions.db` holds the editorial work that lives **only** in the database: segment edits, the per-segment version history (`content_versions`), review/approval state, and the **entire terminology glossary**. It is gitignored — the 2-hourly `git-backup.sh` cron backs up rendered *content* under `books/`, but **not** the DB. If `sessions.db` is lost and there is no off-box copy, that human-verified intellectual work is gone. `sessions.db` also contains **PII** (editor emails / display names in `users`), so off-box copies are **client-side encrypted**.
 
 There are two layers:
-1. **Local** (`scripts/backup-db.sh`, always on): WAL-checkpoint → timestamped copy under `pipeline-output/backups/` → keep the most recent 30. Protects against accidental corruption/deletion, but **not** disk/instance loss.
+1. **Local** (`scripts/backup-db.sh`, always on): WAL-checkpoint → timestamped copy under `pipeline-output/backups/` → keep the most recent `MAX_BACKUPS` (set in `scripts/backup-db.sh`). Protects against accidental corruption/deletion, but **not** disk/instance loss.
 2. **Off-box** (same script, when `BACKUP_REMOTE` is set): encrypt-and-upload each backup to Linode Object Storage via `rclone`. Protects against losing the box.
 
 ## Configuration (environment)
@@ -11,9 +13,9 @@ There are two layers:
 | Var | Read by | Default | Meaning |
 |---|---|---|---|
 | `BACKUP_REMOTE` | `backup-db.sh`, `verify-db-backup.sh` | *(unset → off-box skipped)* | An `rclone` **crypt** remote path, e.g. `secret:`. **Must end in `:` or `/`** — the script fails loud (`exit 5`) otherwise, because a missing separator munges the object name and silently breaks retention. Since the crypt remote already points at the bucket, `secret:` *is* the bucket root; a subpath form must still carry the trailing slash (`secret:sub/`). |
-| `BACKUP_REMOTE_KEEP` | `backup-db.sh` | `30` | How many most-recent objects to keep off-box (older ones pruned). |
-| `OFFBOX_BACKUP_STALE_HOURS` | the server (`/api/health`) | `26` | Age past which `/api/health` flags the off-box backup `stale` (one missed 6 h cycle + margin). |
-| `CONTENT_BACKUP_STALE_HOURS` | the server (`/api/health`) | `6` | Age past which `/api/health` flags the **content** backup `stale` (two missed 2 h cycles + margin). |
+| `BACKUP_REMOTE_KEEP` | `backup-db.sh` | `BACKUP_REMOTE_KEEP`'s fallback in `scripts/backup-db.sh` | How many most-recent objects to keep off-box (older ones pruned). |
+| `OFFBOX_BACKUP_STALE_HOURS` | the server (`/api/health`) | `DEFAULT_STALE_HOURS` in `server/lib/offboxBackupHealth.js` | Age past which `/api/health` flags the off-box backup `stale` (derived from the cron period: see the comment above `DEFAULT_STALE_HOURS`). |
+| `CONTENT_BACKUP_STALE_HOURS` | the server (`/api/health`) | `DEFAULT_STALE_HOURS` in `server/lib/contentBackupHealth.js` | Age past which `/api/health` flags the **content** backup `stale` (derived from the cron period: see the comment above `DEFAULT_STALE_HOURS`). |
 
 **The encryption passphrase is NOT an environment variable.** Encryption is the `rclone` crypt remote's job (client-side — plaintext never leaves the box). The passphrase lives in the rclone config (`rclone config`, or `RCLONE_CONFIG_<NAME>_PASSWORD`). There is deliberately no `BACKUP_ENCRYPTION_KEY` the scripts read.
 
@@ -55,7 +57,7 @@ The crypt passphrase is **not** on the cron line — it lives in the rclone conf
 
 ## The other cron: content backup (`git-backup.sh`)
 
-This document is about `sessions.db`. The 2-hourly `scripts/git-backup.sh` cron protects a different asset — the reviewed content under `books/` — by committing and pushing it to `main`. It is the **only** route by which reviewed translations leave the production box.
+The sections above are about `sessions.db`. The 2-hourly `scripts/git-backup.sh` cron protects a different asset — the reviewed content under `books/` — by committing and pushing it to `main`. It is the **only** route by which reviewed translations leave the production box.
 
 It uses the same heartbeat inversion as the DB backup: `pipeline-output/.last-content-backup` is written **only on a healthy run**. A run that found nothing to commit counts as healthy **only if nothing is unpushed** — a quiet weekend is a working cron, but a quiet run sitting on top of a rejected push is precisely the failure this detector exists to catch, and it must not clear the alarm. The backlog check is `git rev-list --count origin/main..HEAD`, which needs no network (a successful push updates the remote-tracking ref). `/api/health` reports:
 
@@ -68,6 +70,34 @@ It uses the same heartbeat inversion as the DB backup: `pipeline-output/.last-co
 **Nothing polls `/api/health`.** `./scripts/deploy.sh` prints the status and the names of any not-ok checks at the end of every deploy; that is the routine surface. To check on demand: `curl -s http://localhost:3000/api/health`.
 
 ⚠️ **The cron deliberately never fetches before pushing.** The `merge.ours.driver` for the perpetually-dirty `books/*/translation-errors.json` is registered by `deploy.sh`, not by cron, so an unattended `git pull --rebase` here would turn a visible push failure into a repository wedged mid-rebase on production. A rejected push instead fails loudly, logs `git push failed (local ahead N, behind M)`, and goes stale in `/api/health`; resolve it by hand on the box.
+
+## The research file (`research.db`)
+
+**What it is, and why it is separate.** `pipeline-output/research.db` holds research rows only (spec §5.1): the research events, their items and the editor key map. Its copies live at most 7 days (R2, `docs/decisions/2026-11-03-research-capture-consent-and-retention-rulings.md`), so a withdrawal or the retention date is complete everywhere within 7 days, as the consent text promises. So the editorial tiers above must never copy it: `scripts/backup-db.sh` and `scripts/verify-db-backup.sh` match only `sessions.` names, pinned by `scripts/__tests__/research-backup-isolation.test.mjs`. No Linode Backups, no `tar` or `rsync` of `pipeline-output/` (`docs/deployment/linode-deployment-checklist.md` §9).
+
+🔴 **Escrow first — a gate, as for the editorial passphrase above.** The research crypt passphrase is its own, never the editorial one, and it goes into the password manager **before the first upload**: `rclone.conf` stores it obscured, not encrypted, so a lost box takes it with it and every research copy becomes unrecoverable.
+
+**One-time setup.**
+
+1. In the Linode console, create a **separate bucket** (for example `namsbokasafn-research`), in another region than the server. **Turn versioning off, and add no lifecycle or retention rule that keeps deleted objects:** a deleted copy that the provider keeps is a copy older than 7 days (check G-1b in the provider's console; re-check it after G1.20 lands, since G1.20 turns versioning on for the editorial bucket). Use an access key limited to that bucket where the provider offers one.
+2. On the server, `rclone config`: a plain s3 remote **`linode-research`** pointing at the bucket's endpoint, and a crypt remote **`research-secret`** that wraps it, `remote = linode-research:namsbokasafn-research`, with the escrowed passphrase. The crypt remote's name must begin with `research`: the job refuses any other (exit 2), so the editorial `secret:` can never receive a research copy. **Only the crypt remote may begin with `research`:** that prefix is the whole guard, so a plain remote whose name began with it would let an unencrypted upload through.
+
+**Cron.** Install the two research lines `scripts/install-cron.sh` prints (the job, `scripts/research-backup.sh`, and its monthly restore test, `scripts/verify-research-backup.sh`; their schedules are on those lines and nowhere else), with `RESEARCH_REMOTE=research-secret:`. Prime by hand: `RESEARCH_REMOTE=research-secret: scripts/research-backup.sh`, then `RESEARCH_REMOTE=research-secret: scripts/verify-research-backup.sh` (expect `RESEARCH RESTORE VERIFY: PASS`). The exit codes are in each script's header.
+
+**The job's log** (`pipeline-output/research-backup.log`) holds one verdict line per run — the time, `ok` or `failed`, and the failing steps' names — and nothing else (an unplanned bash abort adds bash's own one-line diagnostic before it). It never holds an interval id or a count, so it cannot say who withdrew ([USER] 2026-11-04). To see what a failing step found, re-run that step by hand (the deletion scripts without `--write` are dry runs) and read it in the terminal, never in the log.
+
+**What the job does, in order:** prune both tiers by age (the local copies first, before anything that can stop the job); run `server/scripts/research-withdrawal.js` and `server/scripts/research-retention.js` with `--write` (a failure takes no copy); copy (better-sqlite3's online backup, compacted first); upload to `RESEARCH_REMOTE`; write the heartbeat. The prune cut-off and the health threshold are derived values in `server/lib/researchBackupPolicy.js`.
+
+**What makes "within 7 days" true:** the job runs (its heartbeat: `/api/health`'s `checks.research_db` reads `backup-stale` otherwise, and `./scripts/deploy.sh` names `research_db` among the not-ok checks without its reason — `curl -s http://localhost:3000/api/health` shows the reason); nothing else copies the file (G-1a); the bucket keeps no deleted versions (G-1b). Expect `backup-stale` from a deploy until the job's first full run.
+
+### Restore runbook (research file)
+
+1. Stop the service (`research-restore.js` refuses while it runs).
+2. To use an off-box copy, fetch it into `pipeline-output/research-backups/` under its own name: `rclone copyto research-secret:<name> pipeline-output/research-backups/<name>`.
+3. `node server/scripts/research-restore.js --from pipeline-output/research-backups/<name>` (a dry run), then the same with `--write`. It verifies the copy, purges every withdrawn interval and the retention date from a staged copy, deletes the current file and puts the purged copy in its place.
+4. Start the service.
+
+**Never copy a backup into place by hand:** a restored file must lose its withdrawn rows before the server opens it (spec §5.15). If the file is lost and no copy exists, do not create one: the server stays `missing` until [USER] decides (spec §5.1).
 
 ## Restore runbook
 

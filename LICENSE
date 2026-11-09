@@ -246,6 +246,17 @@ published.)*
 >      warning and the content backup continues. *(Added 2026-11-08. No census
 >      before then had scanned shell scripts, and its path is interpolated, which
 >      only the fifth search shape below can see.)*
+>    - `scripts/research-backup.sh` runs `server/scripts/research-backup.js`,
+>      `research-withdrawal.js` and `research-retention.js`, each as its own
+>      Node process (the research file's backup job, spec §5.17), and reads
+>      `research-backup.js`'s stdout (the copy's path, the expired names). It
+>      cannot back the research file up without `server/` present. Its paths
+>      are interpolated (`${PROJECT_ROOT}/server/scripts`), so the fifth search
+>      shape below is the one that finds it. *(Added 2026-11-08, with the job.)*
+>    - `scripts/verify-research-backup.sh` runs `server/scripts/research-backup.js`
+>      (`where`, `verify`) as its own Node process and reads its stdout (the
+>      research file's monthly restore test). Found the same way. *(Added
+>      2026-11-08.)*
 >
 > This list is the authoritative enumeration — update it here when an edge is
 > added or removed, and re-derive rather than trusting it. **Five** search shapes
