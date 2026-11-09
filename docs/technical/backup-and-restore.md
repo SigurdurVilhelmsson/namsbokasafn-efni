@@ -79,7 +79,7 @@ It uses the same heartbeat inversion as the DB backup: `pipeline-output/.last-co
 
 **One-time setup.**
 
-1. In the Linode console, create a **separate bucket** (for example `namsbokasafn-research`), in another region than the server. **Turn versioning off, and add no lifecycle or retention rule that keeps deleted objects:** a deleted copy that the provider keeps is a copy older than 7 days (check G-1b in the provider's console; re-check it after G1.20 lands, since G1.20 turns versioning on for the editorial bucket). Use an access key limited to that bucket where the provider offers one.
+1. In the Linode console, create a **separate bucket** (for example `namsbokasafn-research`), in another region than the server. **Leave versioning off, and add no Object Lock or lifecycle rule:** a deleted copy that the provider keeps is a copy older than 7 days. A new bucket starts unversioned. Linode's console can neither show nor change versioning or Object Lock, so only an S3 tool could turn them on: never do so for this bucket. Step 4 checks it (G-1b). Use an access key limited to that bucket where the provider offers one.
 2. On the server, `rclone config`: a plain s3 remote **`linode-research`** pointing at the bucket's endpoint, and a crypt remote **`research-secret`** that wraps it, `remote = linode-research:namsbokasafn-research`, with the escrowed passphrase and salt: answer "type my own" at both the `password` and the `password2` prompt. Use the interactive `rclone config`, not `rclone config create`, which would put the access key and both secrets in the shell's history. The crypt remote's name must begin with `research`: the job refuses any other (exit 2), so the editorial `secret:` can never receive a research copy. **Only the crypt remote may begin with `research`:** that prefix is the whole guard, so a plain remote whose name began with it would let an unencrypted upload through.
 3. **Prove the escrow before the first upload.** Compare what `rclone.conf` holds with the escrowed values, printing neither:
 
@@ -94,6 +94,13 @@ It uses the same heartbeat inversion as the DB backup: `pipeline-output/.last-co
    ```
 
    Both must print `MATCH`. ⚠️ **Read the values from `rclone.conf` itself, never from `rclone config show`:** on rclone 1.75 (prod, 2026-11-09) `config show` prints a placeholder in place of each password, so `rclone reveal` cannot decode its output and the comparison prints `DIFFERENT` whatever is typed. A check that cannot say `MATCH` proves nothing, and neither does one that cannot say `DIFFERENT`: type a wrong value once and expect `DIFFERENT`.
+4. **Check that the bucket is unversioned (G-1b).** Linode's console cannot show it ([Akamai's docs](https://techdocs.akamai.com/cloud-computing/docs/versioning-retain-object-version-history)), so read it through the s3 remote, putting **nothing after the bucket name**: a trailing `Enabled` or `Suspended` sets the status instead of reading it, and a bucket once versioned can never return to unversioned.
+
+   ```bash
+   rclone backend versioning linode-research:<bucket>
+   ```
+
+   It must print `"Unversioned"`. That one answer settles G-1b. A delete is final on an unversioned bucket. Object Lock can be enabled only when a bucket is created and turns versioning on, so an unversioned bucket has none. A lifecycle rule can only expire or move objects, so it cannot keep a deleted copy. `"Suspended"` or `"Enabled"` means no consent is collected: a versioned bucket cannot be returned to unversioned, so the fix is a new bucket. **Re-check after G1.20 lands**, since G1.20 turns versioning on for the editorial bucket.
 
 **Prime by hand, then install the cron lines, in that order.** From the repository root, as the service user: `RESEARCH_REMOTE=research-secret: scripts/research-backup.sh` (expect one `research-backup: ok` line and exit 0), then `RESEARCH_REMOTE=research-secret: scripts/verify-research-backup.sh` (expect `RESEARCH RESTORE VERIFY: PASS`). The exit codes are in each script's header. Only then install the two research lines `scripts/install-cron.sh` prints (the job, `scripts/research-backup.sh`, and its monthly restore test, `scripts/verify-research-backup.sh`; their schedules are on those lines and nowhere else), with `RESEARCH_REMOTE=research-secret:`, below the crontab's `PATH=` line.
 
