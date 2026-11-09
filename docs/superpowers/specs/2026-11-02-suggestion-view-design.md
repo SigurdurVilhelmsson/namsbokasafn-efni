@@ -11,6 +11,38 @@
 > of what was designed and why; it carries no status. If it disagrees with the active register, the register wins.
 > Do not sync it or edit it in place. Supersede it with a new record instead.
 
+> **✏️ AMENDED 2026-11-09: six departures from this design's wording and seven answers, approved with the
+> implementation plan** ([USER] 2026-11-09: "I approve all 8 points", to the plan's questions Q1–Q8). Each is stated,
+> with its reason and its measurement, in the plan's index (`docs/superpowers/plans/2026-11-09-g123-suggestion-view.md`:
+> "A<n>" for a departure, "decision <n>" for an answer). This block lists only what each one overrides or settles; it
+> does not restate the reasons.
+>
+> - **§3, the ch10 non-goal:** ch10 is in scope. Its layer 2 was written by the 2026-11-08 re-buy, which put all 23
+>   chapters under one condition (A1).
+> - **§9 check 1:** the reference set is regenerated over all 23 chapters, as a new dated artifact built by a script
+>   that does not load the view's code. The 2026-11-02 `drop-set.json` stays frozen as evidence (A2).
+> - **§9 check 2:** the integrity reference is three duplicate-id chains, not two. The third is ch10's
+>   `m68773:para:fs-idp76470512#0`, measured on the text the loader serves (A3).
+> - **§3, the chapter-title non-goal:** chapter metadata is shown, with no special case. Its stated reason (the loader
+>   does not serve chapter metadata) is false, and the change it names is in ch02, not ch05 (A4; decision 13; Q2).
+> - **§4's measured shape** predates ch10 and is informational only (A5).
+> - **§12, the switch's storage:** the per-book switch and its first switch-on time are G1.1 + G1.2's
+>   `book_switch_events`. G1.23 builds only the writer and its route (A6).
+> - **The B3 fence:** an accepted suggestion is an `ai-suggestion` item on the editor's own save, so it never carries
+>   B3's `ai-pass` origin, which stays reserved for B3's automatic writes (decision 20; Q3).
+> - **§7, reject:** a reject on a base that has changed since the screen loaded is flagged in its research event,
+>   never refused (decision 10; Q4).
+> - **§7, left open:** a group the editor typed over by the time its segment is finished is still written as left
+>   open, with `shown_at_finish = 0` (decision 11; Q5).
+> - **§6.2, the switch:** switching the view off hides every suggestion at once. The first switch-on time never moves,
+>   so switching on again restores the same eligibility (Q6).
+> - **§6.2, the switch:** only the admin role may flip it, and the first switch-on asks for the book's name, typed
+>   (Q7).
+> - **§4, the strings:** PR3 adds *Nota tillögu* / *Hafna tillögu* (button titles); *Ekki tókst að hafna tillögunni.
+>   Reyndu aftur.* (a failed reject); *Tillögur gervigreindar í ritli* (the admin control); *Sláðu inn heiti bókarinnar
+>   til að kveikja á tillögum gervigreindar. Fyrsti tíminn sem kveikt er á verður ekki færður.* (the first switch-on
+>   prompt); and *Kveikt* / *Slökkt* (its states) (Q8).
+
 ## 1. The four records this design implements
 
 Read with this file; this design does not restate their reasoning.
