@@ -141,6 +141,7 @@ const MODULE_JSON_ALLOWED = Object.freeze({
     'mtFinding',
     'occurrence',
     'baseSha256',
+    'suggestions',
   ],
   editRow: [...ALLOWED_COLUMNS.segment_edits, 'contentSha256'],
   acceptanceRow: [...ALLOWED_COLUMNS.segment_acceptances],

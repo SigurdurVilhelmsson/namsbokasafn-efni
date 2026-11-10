@@ -48,6 +48,7 @@ const notifications = require('../services/notifications');
 const servedVersions = require('../services/servedVersions');
 const servedEdit = require('../services/servedEdit');
 const moduleOpenings = require('../services/moduleOpenings');
+const suggestionView = require('../services/suggestionView');
 const researchEmission = require('../services/researchEmission');
 const { sha256Text, isNotMintedBook } = require('../lib/servedText');
 const { isNewer } = require('../lib/editRecency');
@@ -395,6 +396,20 @@ router.get(
         researchEmission.emitModuleOpened(req, {
           detail: moduleOpenings.moduleOpenedDetail(served, step.opening),
         });
+      }
+      // G1.23 (spec §5.4 step 5, index decision 7): the offered term-suggestion groups per segment,
+      // from the segments as served above and the edit rows as sent below. Only a segment with a
+      // group or a tag carries the key. offeredForModule never throws and returns no time.
+      const offered = suggestionView.offeredForModule(conn, {
+        book: req.params.book,
+        chapter: req.chapterNum,
+        moduleId: req.params.moduleId,
+        segments: data.segments,
+        editsBySegment,
+      });
+      for (const s of data.segments) {
+        const o = offered.get(s.segmentId);
+        if (o) s.suggestions = o;
       }
       res.json({
         ...data,
