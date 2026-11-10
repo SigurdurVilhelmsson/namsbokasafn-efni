@@ -11,6 +11,31 @@
 > of what was designed and why; it carries no status. If it disagrees with the active register, the register wins.
 > Do not sync it or edit it in place. Supersede it with a new record instead.
 
+> **✏️ AMENDED 2026-11-10: five rulings made while building PR1 (the read side), confirmed by [USER] on 2026-11-10**
+> ("Confirmed", to the five that PR #662's description lists as R3, R4, R5, R8 and R9). Each settles a point the
+> implementation plan left open or stated ambiguously; none changes which modules are eligible. The values live in the
+> code and its tests; this block states only what was ruled and why.
+>
+> - **§5, fail-soft: a change record whose `rulingId` has no entry in its revision's ruling set makes that module's log
+>   malformed** (no suggestions, one server-side warning). The log then no longer matches the ruling set it names, the
+>   same class as a ruling set whose sha256 differs. The committed layer 2 holds no such record (R3).
+> - **§6.2, eligibility: the reason a module is not eligible is reported in the order not a study book → never
+>   switched on → switched off → not opened → opened before the switch-on.** This follows the plan's test table, not the
+>   clause order of the plan's index decision 4, so a book with no switch row reads *never switched on*. Eligibility is
+>   a conjunction, so only the server-side label depends on the order (R4).
+> - **§7, GG tags: a tag is drawn only from a group that passes all of §6** (§6.1–6.4 and §6.6). A withheld segment, a
+>   group closed as rejected or left open, and the switch being off therefore hide its tags too, which reads Q6
+>   ("switching off hides every suggestion at once") as including tags. An unreadable accepted list counts as none and
+>   logs a server-side warning that names the segment, never its text. The cost is a tag not drawn where another
+>   editor rejected the group after the accept; the records still hold the accept (R5).
+> - **§8, the opened time stays in services** (the plan's index decision 3): the route scan in
+>   `server/__tests__/researchBoundary.test.js` forbids `readOpening` and `openedAtMs` as well as the opening tables'
+>   and column's names. PR1's `readOpening` is the first function that returns the opened time, so the scan's old
+>   premise, that no function returns it, stopped holding (R8).
+> - **§9 check 3: "the base text" is the full change chain's first `before`**, which the check asserts equals the `is`
+>   the loader serves (§6.3). Replaying from the first *kept* record's `before` would start, whenever a chain's first
+>   record is dropped, from text that already holds a dropped change (R9).
+
 > **✏️ AMENDED 2026-11-09: six departures from this design's wording and seven answers, approved with the
 > implementation plan** ([USER] 2026-11-09: "I approve all 8 points", to the plan's questions Q1–Q8). Each is stated,
 > with its reason and its measurement, in the plan's index (`docs/superpowers/plans/2026-11-09-g123-suggestion-view.md`:
