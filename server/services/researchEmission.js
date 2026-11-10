@@ -17,6 +17,7 @@ const log = require('../lib/logger');
 const researchLog = require('./researchLog');
 const concordance = require('./concordanceService');
 const segmentEditor = require('./segmentEditorService'); // the apply's fixed superseded note, and the review row
+const suggestionView = require('./suggestionView'); // the accepted-suggestion claim check
 const { sha256Text } = require('../lib/servedText');
 const { ITEM_TYPES } = require('../lib/researchVocabulary');
 
@@ -139,9 +140,8 @@ function validateRepetition(item, at) {
 }
 // The server cannot check these, whichever segment the client attributes them to (Review Focus 30).
 const unverified = () => 'unverified';
-// Before G1.23 no suggestion is ever offered, so a claim to have accepted one is false (spec §5.10: "a failed
-// check is mismatch"); the item is kept, never dropped or refused (Review Focus 31). G1.23 replaces these two
-// entries with its §6 check.
+// No rule suggestion is ever offered, so a claim to have accepted one is false (spec §5.10: "a failed check is
+// mismatch"); the item is kept, never dropped or refused (Review Focus 31).
 const noSuggestionOffered = () => 'mismatch';
 
 /** One claim rule per item type: (item, at) => 'validated' | 'unverified' | 'mismatch'. */
@@ -150,7 +150,7 @@ const CLAIM_VALIDATORS = Object.freeze({
   'term-insert': unverified,
   'markup-wrap': unverified,
   'draft-restore': unverified,
-  'ai-suggestion': noSuggestionOffered,
+  'ai-suggestion': (item, at) => at.suggestionCheck(item),
   'rule-suggestion': noSuggestionOffered,
 });
 
@@ -179,7 +179,37 @@ function claimAssistItems(raw, place) {
             place.moduleId,
             place.segmentId
           )),
+    suggestionCheck: (item) => checkSuggestionClaim(item),
   };
+  // The accepted-suggestion check (G1.23 PR2 task 2) runs once per save over every claimed op of this
+  // occurrence. A throw is not memoized and reaches the caller's catch (the item is unverified).
+  let validatedOps;
+  function checkSuggestionClaim(item) {
+    if (!place.saved) return 'mismatch'; // no save to check against
+    if (typeof item.opId !== 'string' || item.occurrence !== place.occurrence) return 'mismatch';
+    if (validatedOps === undefined) {
+      const opIds = raw
+        .filter((r) => r && typeof r === 'object' && r.itemType === 'ai-suggestion')
+        .filter((r) => int(r.occurrence) === place.occurrence)
+        .map((r) => str(r.opId, 128))
+        .filter((id) => id !== null);
+      const conn = segmentEditor.getDb();
+      const displayedText = suggestionView.displayedTextForSave(conn, place.saved);
+      if (displayedText === null) return 'unverified';
+      validatedOps = suggestionView.checkAcceptedGroups(conn, {
+        book: place.book,
+        chapter: place.chapter,
+        moduleId: place.moduleId,
+        segmentId: place.segmentId,
+        occurrence: place.occurrence,
+        baseSha256: place.saved.baseSha256,
+        displayedText,
+        savedText: place.editedContent,
+        opIds: opIds,
+      });
+    }
+    return validatedOps.has(item.opId) ? 'validated' : 'mismatch';
+  }
   const items = [];
   let droppedCount = 0;
   for (const r of raw) {
@@ -345,6 +375,9 @@ function emitSave(req, { segmentId, editedContent, category, editorNote, saved }
       const { items, droppedCount } = claimAssistItems(req.body && req.body.assists, {
         ...placeOf(req),
         segmentId,
+        occurrence: saved.occurrence,
+        saved,
+        editedContent,
       });
       const displayed = saved.displayed;
       // The displayed hash is the client's echo, and PR1 stores it unchecked where decision 39 lets a save through

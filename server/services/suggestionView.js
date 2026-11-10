@@ -36,6 +36,7 @@ const suggestionLogs = require('../lib/suggestionLogs');
 const bookSwitches = require('../lib/bookSwitches');
 const { isStudyBook } = require('../lib/researchScope');
 const { isEditInFlight } = require('../public/js/accept-eligibility');
+const { placeGroup } = require('../public/js/suggestion-placement');
 const moduleOpenings = require('./moduleOpenings');
 const log = require('../lib/logger');
 
@@ -315,6 +316,67 @@ function offeredForModule(conn, { book, chapter, moduleId, segments, editsBySegm
   }
 }
 
+/**
+ * The text that was on screen when a save was made (G1.23 PR2 task 2; the claim check replays on it,
+ * not on the text of any accepted list). `saved.displayed.editId` null: the served version's Icelandic;
+ * the caller's own row (a re-save): what that row held before this save; another editor's row: that
+ * row's edited text. Null when it cannot be found. Throws on a damaged database.
+ *
+ * @param {import('better-sqlite3').Database} conn sessions.db
+ * @param {{ servedVersionId: number, editId: number, displayed: { editId: number | null },
+ *   before: { edited_content: string } | null }} saved saveOnServedBase's result
+ * @returns {string | null}
+ */
+function displayedTextForSave(conn, saved) {
+  const shownId = saved.displayed.editId;
+  if (shownId === null || shownId === undefined) {
+    const row = conn
+      .prepare('SELECT is_text FROM served_text_versions WHERE id = ?')
+      .get(saved.servedVersionId);
+    return row ? row.is_text : null;
+  }
+  if (shownId === saved.editId) {
+    return saved.before && typeof saved.before.edited_content === 'string'
+      ? saved.before.edited_content
+      : null;
+  }
+  const row = conn.prepare('SELECT edited_content FROM segment_edits WHERE id = ?').get(shownId);
+  return row ? row.edited_content : null;
+}
+
+/**
+ * Which claimed ops of a save check out (G1.23 PR2 task 2; spec §6, index decision 12). Only the
+ * static groups whose ops are ALL claimed enter (a group is never taken in part); they are placed in
+ * order of first chainIndex, each on the text the validated ones before it produced; a group is
+ * validated when it places and every replace text occurs in the saved text. A group that fails is not
+ * applied, so a group depending on it fails too. Throws on a damaged database.
+ *
+ * @param {import('better-sqlite3').Database} conn sessions.db
+ * @param {{ book: string, chapter: number, moduleId: string, segmentId: string, occurrence: number,
+ *   baseSha256: string, displayedText: string, savedText: string, opIds: Iterable<string> }} input
+ * @returns {Set<string>} the validated op ids
+ */
+function checkAcceptedGroups(conn, input) {
+  const { book, chapter, moduleId, segmentId, occurrence, baseSha256, displayedText, savedText } =
+    input;
+  const validated = new Set();
+  const claimed = new Set(input.opIds);
+  if (claimed.size === 0) return validated;
+  const ctx = moduleContext(conn, { book, chapter, moduleId });
+  const groups = staticGroupsFor(ctx, { segmentId, occurrence, baseSha256 }).filter((g) =>
+    g.changes.every((c) => claimed.has(c.opId))
+  );
+  let cur = displayedText;
+  for (const group of groups) {
+    const placed = placeGroup(cur, group);
+    if (!placed.ok) continue;
+    if (!group.changes.every((c) => savedText.includes(c.replace))) continue;
+    cur = placed.result;
+    for (const c of group.changes) validated.add(c.opId);
+  }
+  return validated;
+}
+
 module.exports = {
   isEligible,
   closedOpKeys,
@@ -323,4 +385,6 @@ module.exports = {
   offeredForModule,
   parseAcceptedSuggestions,
   acceptedForSave,
+  displayedTextForSave,
+  checkAcceptedGroups,
 };
