@@ -427,6 +427,29 @@ router.get(
 );
 
 /**
+ * The body's acceptedSuggestions (G1.23, R16): the WHOLE value must be an array of at most 500
+ * entries, each { opId: a string of 1..128 characters, occurrence: a non-negative integer }; anything
+ * else (absent, another type, one bad entry) is []. Never a 400: the list is an assist, not input to
+ * refuse a save over. The server re-filters it against the module log and the saved text.
+ */
+function sanitizeAcceptedSuggestions(value) {
+  const ok =
+    Array.isArray(value) &&
+    value.length <= 500 &&
+    value.every(
+      (e) =>
+        e !== null &&
+        typeof e === 'object' &&
+        typeof e.opId === 'string' &&
+        e.opId.length >= 1 &&
+        e.opId.length <= 128 &&
+        Number.isInteger(e.occurrence) &&
+        e.occurrence >= 0
+    );
+  return ok ? value.map((e) => ({ opId: e.opId, occurrence: e.occurrence })) : [];
+}
+
+/**
  * POST /:book/:chapter/:moduleId/edit
  * Save a segment edit (create or update).
  */
@@ -475,6 +498,7 @@ router.post(
     }
 
     const resolvedBaseEditId = typeof baseEditId === 'number' ? baseEditId : undefined;
+    const acceptedSuggestions = sanitizeAcceptedSuggestions(req.body.acceptedSuggestions);
 
     try {
       // SR-OOS-2 FIX3: the conflict check runs BEFORE saveOnServedBase's refusals and its
@@ -508,6 +532,8 @@ router.post(
         baseSha256: typeof baseSha256 === 'string' ? baseSha256 : undefined,
         displayedEditId: displayedEditId ?? null,
         displayedEditSha256: displayedEditSha256 ?? null,
+        // G1.23 (spec §7): always a list, so an editor save always recomputes what the row took.
+        acceptedSuggestions,
       });
       const kept = saved.outcome === 'inserted' || saved.outcome === 'updated';
 

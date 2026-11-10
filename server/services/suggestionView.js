@@ -162,17 +162,21 @@ function staticGroupsFor(ctx, { segmentId, occurrence, baseSha256 }) {
 }
 
 /**
- * The op ids a displayed edit's accepted_suggestions lists for this occurrence. The column is JSON
- * text, NULL meaning none; anything that is not an array of { opId: string, occurrence: integer }
- * (NULL, unparseable text, another shape, one bad entry) counts as an empty list. NULL is silent; a
- * non-NULL value thrown away warns once with ctx ({ book, chapter, moduleId, segmentId }) and a reason
- * word, never the value. Never throws.
+ * The one parser of the accepted_suggestions column (the read side and the save share it). The column
+ * is JSON text, NULL meaning none; anything that is not an array of { opId: string, occurrence:
+ * integer } (unparseable text, another shape, one bad entry) counts as an empty list. NULL is
+ * silent; a non-NULL value thrown away warns once with ctx (the place: { book, chapter, moduleId,
+ * segmentId }) and a reason word, never the value. Never throws.
+ *
+ * @param {unknown} value the column's value
+ * @param {object} ctx the place, for the warning
+ * @returns {Array<{ opId: string, occurrence: number }>}
  */
-function acceptedOpIds(value, occurrence, ctx) {
-  if (value === null || value === undefined) return new Set();
+function parseAcceptedSuggestions(value, ctx) {
+  if (value === null || value === undefined) return [];
   const discard = (reason) => {
-    log.warn({ ...ctx, reason }, 'accepted_suggestions discarded; offering the groups as if none');
-    return new Set();
+    log.warn({ ...ctx, reason }, 'accepted_suggestions discarded; counted as none');
+    return [];
   };
   if (typeof value !== 'string') return discard('malformed');
   let parsed;
@@ -181,17 +185,65 @@ function acceptedOpIds(value, occurrence, ctx) {
   } catch {
     return discard('malformed');
   }
-  const wellFormed =
-    Array.isArray(parsed) &&
-    parsed.every(
+  if (!isEntryList(parsed)) return discard('malformed');
+  return parsed.map((e) => ({ opId: e.opId, occurrence: e.occurrence }));
+}
+
+function isEntryList(v) {
+  return (
+    Array.isArray(v) &&
+    v.every(
       (e) =>
         e !== null &&
         typeof e === 'object' &&
         typeof e.opId === 'string' &&
         Number.isInteger(e.occurrence)
-    );
-  if (!wellFormed) return discard('malformed');
-  return new Set(parsed.filter((e) => e.occurrence === occurrence).map((e) => e.opId));
+    )
+  );
+}
+
+/** The op ids a displayed edit's accepted_suggestions lists for this occurrence. Never throws. */
+function acceptedOpIds(value, occurrence, ctx) {
+  return new Set(
+    parseAcceptedSuggestions(value, ctx)
+      .filter((e) => e.occurrence === occurrence)
+      .map((e) => e.opId)
+  );
+}
+
+/**
+ * What a save stores in segment_edits.accepted_suggestions (spec §7): the distinct { opId,
+ * occurrence } of `previous` (the entries the editing row, and the row it displayed, already hold,
+ * parsed) and `claimed` (the body's list, untrusted) whose occurrence is this save's, whose op is in
+ * the module log's kept groups for that segment and occurrence, and whose `replace` text occurs in
+ * the text being saved. A log that is not ok keeps nothing. Pure; never throws.
+ *
+ * @param {object | null} moduleLog readModuleLog's result
+ * @param {{ segmentId: string, occurrence: number, editedContent: string, claimed: unknown,
+ *   previous: unknown }} input
+ * @returns {string | null} canonical JSON sorted by opId, or null when nothing is kept
+ */
+function acceptedForSave(moduleLog, { segmentId, occurrence, editedContent, claimed, previous }) {
+  if (!moduleLog || moduleLog.ok !== true || typeof editedContent !== 'string') return null;
+  const wanted = new Set();
+  for (const list of [previous, claimed]) {
+    if (!isEntryList(list)) continue;
+    for (const e of list) if (e.occurrence === occurrence) wanted.add(e.opId);
+  }
+  if (wanted.size === 0) return null;
+  const groups = keptGroupsOf(moduleLog).get(`${segmentId}#${occurrence}`) || [];
+  const kept = new Map();
+  for (const g of groups) {
+    for (const c of g.changes) {
+      if (wanted.has(c.opId) && c.occurrence === occurrence && editedContent.includes(c.replace)) {
+        kept.set(c.opId, { opId: c.opId, occurrence });
+      }
+    }
+  }
+  if (kept.size === 0) return null;
+  return JSON.stringify(
+    [...kept.values()].sort((a, b) => (a.opId < b.opId ? -1 : a.opId > b.opId ? 1 : 0))
+  );
 }
 
 /**
@@ -269,4 +321,6 @@ module.exports = {
   moduleContext,
   staticGroupsFor,
   offeredForModule,
+  parseAcceptedSuggestions,
+  acceptedForSave,
 };

@@ -99,6 +99,10 @@ function saveSegmentEdit(params) {
     origin = null,
     displayedEditId = null,
     displayedEditSha256 = null,
+    // G1.23 (spec §7): the JSON text of the row's accepted_suggestions, or null to clear it.
+    // `undefined` (propagation, re-attach) names no list: the UPDATE leaves the column as it was
+    // and the INSERT writes NULL.
+    acceptedSuggestionsJson = undefined,
   } = params;
 
   const conn = getDb();
@@ -178,26 +182,40 @@ function saveSegmentEdit(params) {
       // A re-save moves the base record (spec §5.8): the row's text is now made on this
       // save's base; a caller that names no served version leaves it NULL (unknown), never a
       // stale id. The before-image is the research event's (PR3).
-      conn
-        .prepare(
-          `UPDATE segment_edits
+      // Two static statements, never interpolated and never COALESCE: a null list must overwrite
+      // an old one, and an undefined one must leave it (G1.23).
+      const updateArgs = [
+        editedContent,
+        category || null,
+        editorNote || null,
+        originalContent,
+        servedVersionId,
+        occurrence,
+        origin,
+        displayedEditId,
+        displayedEditSha256,
+      ];
+      if (acceptedSuggestionsJson === undefined) {
+        conn
+          .prepare(
+            `UPDATE segment_edits
            SET edited_content = ?, category = ?, editor_note = ?, created_at = CURRENT_TIMESTAMP,
                original_content = ?, served_version_id = ?, occurrence = ?, origin = ?,
                displayed_edit_id = ?, displayed_edit_sha256 = ?
          WHERE id = ?`
-        )
-        .run(
-          editedContent,
-          category || null,
-          editorNote || null,
-          originalContent,
-          servedVersionId,
-          occurrence,
-          origin,
-          displayedEditId,
-          displayedEditSha256,
-          existing.id
-        );
+          )
+          .run(...updateArgs, existing.id);
+      } else {
+        conn
+          .prepare(
+            `UPDATE segment_edits
+           SET edited_content = ?, category = ?, editor_note = ?, created_at = CURRENT_TIMESTAMP,
+               original_content = ?, served_version_id = ?, occurrence = ?, origin = ?,
+               displayed_edit_id = ?, displayed_edit_sha256 = ?, accepted_suggestions = ?
+         WHERE id = ?`
+          )
+          .run(...updateArgs, acceptedSuggestionsJson, existing.id);
+      }
       return { before, supersededAcceptanceIds, supersededEditIds };
     });
     return { id: existing.id, updated: true, ...updateWithSupersede.immediate() };
@@ -233,8 +251,9 @@ function saveSegmentEdit(params) {
         `INSERT INTO segment_edits
        (book, chapter, module_id, segment_id, original_content, edited_content,
         category, editor_note, editor_id, editor_username,
-        served_version_id, occurrence, origin, displayed_edit_id, displayed_edit_sha256)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+        served_version_id, occurrence, origin, displayed_edit_id, displayed_edit_sha256,
+        accepted_suggestions)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
       )
       .run(
         book,
@@ -251,7 +270,8 @@ function saveSegmentEdit(params) {
         occurrence,
         origin,
         displayedEditId,
-        displayedEditSha256
+        displayedEditSha256,
+        acceptedSuggestionsJson === undefined ? null : acceptedSuggestionsJson
       );
     return { result, supersededAcceptanceIds, supersededEditIds };
   });

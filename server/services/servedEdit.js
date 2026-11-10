@@ -30,6 +30,10 @@ const segmentParser = require('./segmentParser');
 const segmentEditor = require('./segmentEditorService');
 const servedVersions = require('./servedVersions');
 const segmentValidation = require('../public/js/segment-validation');
+const { isEditInFlight } = require('../public/js/accept-eligibility');
+const suggestionLogs = require('../lib/suggestionLogs');
+const suggestionView = require('./suggestionView');
+const log = require('../lib/logger');
 const { sha256Text, isNotMintedBook } = require('../lib/servedText');
 const { EDIT_ORIGINS } = require('../lib/editOrigins');
 
@@ -133,6 +137,7 @@ function saveOnServedBase(input) {
     baseSha256,
     displayedEditId = null,
     displayedEditSha256 = null,
+    acceptedSuggestions,
   } = input;
   if (!EDIT_ORIGINS.includes(origin)) {
     throw new TypeError(`saveOnServedBase: origin must be one of ${EDIT_ORIGINS.join(', ')}`);
@@ -199,6 +204,22 @@ function saveOnServedBase(input) {
       ? { editId: displayedEditId, sha256: displayedEditSha256 }
       : { editId: null, sha256: null };
   const conn = segmentEditor.getDb();
+  // G1.23 (spec §7): the accepted list is recomputed only when the caller names one (an editor save
+  // always does; propagation and re-attach pass none and the column is left as it was). The log is
+  // read once, here, before the transaction. A log that cannot be read keeps nothing, and never
+  // fails the save (R5).
+  const recompute = acceptedSuggestions !== undefined;
+  let moduleLog = null;
+  if (recompute) {
+    try {
+      moduleLog = suggestionLogs.readModuleLog({ book, chapter, moduleId });
+    } catch (err) {
+      log.warn(
+        { book, chapter, moduleId, reason: (err && (err.code || err.name)) || 'error' },
+        'suggestion log read failed; the save keeps no accepted suggestions'
+      );
+    }
+  }
   // One transaction (spec §5.6 step 6): the mint and saveSegmentEdit's own transactions become
   // savepoints inside it, so a save that fails after its mint leaves no served-version row.
   const mintAndSave = conn.transaction(() => {
@@ -214,6 +235,46 @@ function saveOnServedBase(input) {
         layer: data.isSource,
       }),
     ]);
+    let acceptedSuggestionsJson; // undefined: leave the column as it was
+    if (recompute) {
+      const place = { book, chapter, moduleId, segmentId };
+      // Two rows, on purpose: what the caller's own editing row already took, and what the row
+      // displayed to them took when it is in flight, whoever wrote it. The claim check (task 2)
+      // replays on the screen text, which is a different question.
+      const own = conn
+        .prepare(
+          `SELECT accepted_suggestions FROM segment_edits
+           WHERE book = ? AND module_id = ? AND segment_id = ? AND editor_id = ? AND status = 'pending'`
+        )
+        .get(book, moduleId, segmentId, editorId);
+      const previous = suggestionView.parseAcceptedSuggestions(
+        own ? own.accepted_suggestions : null,
+        place
+      );
+      if (displayed.editId !== null) {
+        const shown = conn
+          .prepare('SELECT * FROM segment_edits WHERE id = ?')
+          .get(displayed.editId);
+        if (
+          shown &&
+          shown.book === book &&
+          shown.module_id === moduleId &&
+          shown.segment_id === segmentId &&
+          isEditInFlight(shown)
+        ) {
+          previous.push(
+            ...suggestionView.parseAcceptedSuggestions(shown.accepted_suggestions, place)
+          );
+        }
+      }
+      acceptedSuggestionsJson = suggestionView.acceptedForSave(moduleLog, {
+        segmentId,
+        occurrence: placed,
+        editedContent,
+        claimed: acceptedSuggestions,
+        previous,
+      });
+    }
     const r = segmentEditor.saveSegmentEdit({
       book,
       chapter,
@@ -231,6 +292,7 @@ function saveOnServedBase(input) {
       origin,
       displayedEditId: displayed.editId,
       displayedEditSha256: displayed.sha256,
+      acceptedSuggestionsJson,
     });
     let outcome = r.updated ? 'updated' : 'inserted';
     if (r.reverted) outcome = r.id === null ? 'unchanged' : 'withdrawn';
