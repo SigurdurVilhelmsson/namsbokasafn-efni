@@ -134,6 +134,7 @@ describe('request bodies (§5.6, §5.18)', () => {
       assists: [
         { itemType: 'markup-wrap', source: 'toolbar', clientTimeMs: 5, detail: { marker: '**' } },
       ],
+      acceptedSuggestions: [], // always sent (G1.23), empty when no suggestion was accepted
     });
     expect('occurrence' in body).toBe(false); // not sent until G1.12 (b)
     expect('replayed' in body).toBe(false); // saveRetry adds it to a replay only
@@ -230,14 +231,22 @@ describe('assist items (§5.10)', () => {
       detail: { term: 'hugtak' },
     });
     expect(() => S.assistItem('term-insert', 'toolbar', 3, {})).toThrow(TypeError);
-    expect(() => S.assistItem('ai-suggestion', 'ai', 3, {})).toThrow(TypeError); // arrives with G1.23
+    expect(S.assistItem('ai-suggestion', 'ai', 3, {})).toEqual({
+      itemType: 'ai-suggestion',
+      source: 'ai',
+      clientTimeMs: 3,
+      detail: {},
+    });
+    expect(() => S.assistItem('ai-suggestion', 'tm', 3, {})).toThrow(TypeError); // control: still source-checked
+    expect(() => S.assistItem('rule-suggestion', 'rule', 3, {})).toThrow(TypeError); // server-only type
   });
 
-  it('exports the item-source table G1.23 extends and PR3 pins (index § Cross-PR interfaces)', () => {
+  it('ITEM_SOURCES is exactly the four client types', () => {
     expect(S.ITEM_SOURCES).toEqual({
       'repetition-insert': ['tm'],
       'term-insert': ['termbase'],
       'markup-wrap': ['toolbar', 'keyboard'],
+      'ai-suggestion': ['ai'],
     });
   });
 
@@ -689,5 +698,156 @@ describe('tabGuard reads and sweeps a version-2 segment draft', () => {
     const found = globalThis.window.tabGuard.findNewestDraft(prefix);
     expect(found.key).toBe(prefix + 'new');
     expect(S.parseDraftValue(found.data).entries.s1.text).toBe('nýtt');
+  });
+});
+
+describe('AI suggestion items (G1.23)', () => {
+  const group = {
+    key: 'k1',
+    segmentId: 's1',
+    occurrence: 0,
+    rulingId: 'ruling-7',
+    source: 'x',
+    label: { en: 'a', is: 'b' },
+    changes: [
+      {
+        opId: 'op1',
+        occurrence: 0,
+        find: 'a',
+        replace: 'hugtak',
+        category: 'term',
+        runId: 'run1',
+        chainIndex: 0,
+      },
+      {
+        opId: 'op2',
+        occurrence: 0,
+        find: 'b',
+        replace: 'orð',
+        category: 'term',
+        runId: 'run1',
+        chainIndex: 1,
+      },
+    ],
+  };
+  const byOp = { op1: group.changes[0], op2: group.changes[1] };
+
+  it('suggestionItems gives one item per change, sharing the group action id', () => {
+    const items = S.suggestionItems(group, 'ga1', 55);
+    expect(items).toEqual([
+      {
+        itemType: 'ai-suggestion',
+        source: 'ai',
+        clientTimeMs: 55,
+        detail: {},
+        opId: 'op1',
+        occurrence: 0,
+        category: 'term',
+        runId: 'run1',
+        rulingId: 'ruling-7',
+        groupActionId: 'ga1',
+      },
+      expect.objectContaining({ opId: 'op2', groupActionId: 'ga1', rulingId: 'ruling-7' }),
+    ]);
+  });
+
+  it('suggestionItems of a group with no changes is empty', () => {
+    expect(S.suggestionItems({ rulingId: 'r', changes: [] }, 'g', 1)).toEqual([]);
+  });
+
+  it('acceptedFromAssists keeps an op whose replace is in the saved text and drops one typed away', () => {
+    const items = S.suggestionItems(group, 'ga1', 1);
+    expect(S.acceptedFromAssists(items, 'Þetta hugtak og orð.', byOp)).toEqual([
+      { opId: 'op1', occurrence: 0 },
+      { opId: 'op2', occurrence: 0 },
+    ]);
+    expect(S.acceptedFromAssists(items, 'Þetta hugtak.', byOp)).toEqual([
+      { opId: 'op1', occurrence: 0 },
+    ]);
+    expect(S.acceptedFromAssists(items, 'ekkert', byOp)).toEqual([]);
+  });
+
+  it('acceptedFromAssists reads a Map too, drops an op with no change, and ignores other item types', () => {
+    const items = S.suggestionItems(group, 'ga1', 1).concat([
+      S.assistItem('term-insert', 'termbase', 2, { term: 'hugtak' }),
+    ]);
+    const map = new Map([['op1', group.changes[0]]]);
+    expect(S.acceptedFromAssists(items, 'hugtak orð', map)).toEqual([
+      { opId: 'op1', occurrence: 0 },
+    ]);
+    expect(S.acceptedFromAssists(items, 'hugtak orð', {})).toEqual([]);
+    expect(S.acceptedFromAssists(null, 'hugtak', byOp)).toEqual([]);
+  });
+
+  it('acceptedFromAssists is distinct by opId (first wins), and drops entries the server would refuse', () => {
+    const one = S.suggestionItems(group, 'ga1', 1)[0];
+    const dup = Object.assign({}, one, { occurrence: 3 });
+    expect(S.acceptedFromAssists([one, dup], 'hugtak', byOp)).toEqual([
+      { opId: 'op1', occurrence: 0 },
+    ]);
+    const badOcc = Object.assign({}, one, { occurrence: -1 });
+    const badId = Object.assign({}, one, { opId: '' });
+    const longId = 'o'.repeat(129);
+    const longItem = Object.assign({}, one, { opId: longId });
+    const withLong = Object.assign({}, byOp, { [longId]: group.changes[0] });
+    expect(S.acceptedFromAssists([badOcc, badId, longItem], 'hugtak', withLong)).toEqual([]);
+    expect(S.acceptedFromAssists([one], 'hugtak', byOp)).toHaveLength(1); // control: a good item passes
+  });
+
+  it('acceptedFromAssists caps the list at 500', () => {
+    const items = [];
+    const changes = {};
+    for (let n = 0; n < 505; n++) {
+      items.push(Object.assign({}, S.suggestionItems(group, 'g', 1)[0], { opId: 'o' + n }));
+      changes['o' + n] = { replace: 'x' };
+    }
+    expect(S.acceptedFromAssists(items, 'x', changes)).toHaveLength(500);
+  });
+
+  it('a restored draft keeps its ai-suggestion items, so acceptedFromAssists still finds them', () => {
+    const items = S.suggestionItems(group, 'ga1', 1);
+    const value = JSON.parse(
+      JSON.stringify(
+        S.buildDraftValue(
+          { s1: { text: 'hugtak', baseSha256: H1, occurrence: 0, assists: items } },
+          5
+        )
+      )
+    );
+    const entry = S.parseDraftValue(value).entries.s1;
+    const restored = S.restoredAssists(entry, 9);
+    expect(restored.slice(0, 2)).toEqual(items);
+    expect(restored[0].opId).toBe('op1');
+    expect(restored[0].groupActionId).toBe('ga1');
+    expect(S.acceptedFromAssists(restored, 'hugtak', byOp)).toEqual([
+      { opId: 'op1', occurrence: 0 },
+    ]);
+  });
+
+  it('buildSaveBody sends acceptedSuggestions beside assists, never inside it', () => {
+    const items = S.suggestionItems(group, 'ga1', 1);
+    const accepted = [{ opId: 'op1', occurrence: 0 }];
+    const body = S.buildSaveBody({
+      segmentId: 's1',
+      row: { is: 'x', baseSha256: H1 },
+      editedContent: 'hugtak',
+      assists: items,
+      acceptedSuggestions: accepted,
+      clientActionId: 'c1',
+      clientActionTime: 2,
+    });
+    expect(body.acceptedSuggestions).toEqual(accepted);
+    expect(body.assists).toHaveLength(2);
+    expect(JSON.stringify(body.assists)).not.toContain('acceptedSuggestions');
+    const none = S.buildSaveBody({
+      segmentId: 's1',
+      row: {},
+      editedContent: 't',
+      acceptedSuggestions: 'junk',
+    });
+    expect(none.acceptedSuggestions).toEqual([]); // control: absent or malformed is []
+    expect(
+      S.buildSaveBody({ segmentId: 's1', row: {}, editedContent: 't' }).acceptedSuggestions
+    ).toEqual([]);
   });
 });
