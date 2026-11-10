@@ -58,6 +58,8 @@ const ALLOWED_COLUMNS = Object.freeze({
     'origin',
     'displayed_edit_id',
     'displayed_edit_sha256',
+    // G1.23
+    'accepted_suggestions',
   ],
   segment_acceptances: [
     'id',
@@ -447,6 +449,8 @@ const FORBIDDEN_TABLES = [
   'research_consent',
   'activity_log',
   'analytics_events',
+  'suggestion_rejections',
+  'suggestion_left_open',
 ];
 // The ONLY exceptions §5.22 allows, each naming research_consent and nothing else:
 const RESEARCH_SCRIPT_EXCEPTIONS = Object.freeze({

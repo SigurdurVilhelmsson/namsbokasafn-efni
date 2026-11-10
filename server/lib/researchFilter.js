@@ -53,6 +53,7 @@ const BEFORE_FIELD_CLASSES = Object.freeze({
     origin: 'state',
     displayed_edit_id: 'state',
     displayed_edit_sha256: 'hash',
+    accepted_suggestions: 'dropped',
   }),
   segment_acceptances: Object.freeze({
     id: 'locator',

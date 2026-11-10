@@ -50,6 +50,7 @@ const SEGMENT_EDITS_COLUMNS = [
   'origin',
   'displayed_edit_id',
   'displayed_edit_sha256',
+  'accepted_suggestions',
 ];
 const SEGMENT_ACCEPTANCES_COLUMNS = [
   'id',
