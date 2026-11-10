@@ -250,6 +250,21 @@ describe('a claimed group is checked against the log and the text on screen', ()
     });
   });
 
+  it('a placed group whose replace text was typed away is mismatch, yet the group depending on it is validated (R8)', () => {
+    // A, B (depends on A) and C all claimed; the editor then typed A's word back by hand.
+    const T = 'rúmísómerum og samsætum, sýru, efni og lausn';
+    const all = [item(OP.a), item(OP.b), item(OP.c)];
+    expect(run(T, all)).toEqual({ [OP.a]: 'mismatch', [OP.b]: 'validated', [OP.c]: 'validated' });
+  });
+
+  it('control: the full A+B+C text validates all three', () => {
+    expect(run(T_ABC, [item(OP.a), item(OP.b), item(OP.c)])).toEqual({
+      [OP.a]: 'validated',
+      [OP.b]: 'validated',
+      [OP.c]: 'validated',
+    });
+  });
+
   it('an op another editor rejected before this save is mismatch, and the save itself is untouched (Review Focus 1)', () => {
     // A rejected group A; B's save then claims A, the dependent B and the sibling C.
     db.prepare(
@@ -319,6 +334,17 @@ describe('a claimed group is checked against the log and the text on screen', ()
     ]);
   });
 
+  it('a part-claimed group is not taken whole by a claim under another occurrence (R8a)', () => {
+    const T = 'rúmsamsætum og ísómerum, sýra, EFNI og LAUSN';
+    const saved = save({ editedContent: T });
+    const event = emit(saved, T, [item(OP.d1), item(OP.d2, { occurrence: 1 }), item(OP.a)]);
+    expect(event.items.map((i) => [i.opId, i.occurrence, i.claim])).toEqual([
+      [OP.d1, 0, 'mismatch'],
+      [OP.d2, 1, 'mismatch'],
+      [OP.a, 0, 'validated'],
+    ]);
+  });
+
   it('rule-suggestion is still mismatch; an ai-suggestion sibling is validated', () => {
     const claims = run(T_AC, [item(OP.a), item(OP.c, { itemType: 'rule-suggestion' })]);
     expect(claims).toEqual({ [OP.a]: 'validated', [OP.c]: 'mismatch' });
@@ -375,6 +401,33 @@ describe('the text that was on screen', () => {
 });
 
 describe('a check that cannot run', () => {
+  it('a throw inside one call is not memoized: the first item is unverified, the next is checked again', () => {
+    const view = require('../services/suggestionView');
+    const real = view.checkAcceptedGroups;
+    const spy = vi.spyOn(view, 'checkAcceptedGroups').mockImplementationOnce(() => {
+      throw new Error('boom');
+    });
+    spy.mockImplementation(real);
+    const saved = save({ editedContent: T_AC });
+    const event = emit(saved, T_AC, [item(OP.a), item(OP.c)]);
+    expect(event.items.map((i) => [i.opId, i.claim])).toEqual([
+      [OP.a, 'unverified'],
+      [OP.c, 'validated'],
+    ]);
+    expect(spy).toHaveBeenCalledTimes(2);
+  });
+
+  it('the check runs once per save when it succeeds', () => {
+    const view = require('../services/suggestionView');
+    const spy = vi.spyOn(view, 'checkAcceptedGroups');
+    const saved = save({ editedContent: T_AC });
+    expect(claimsOf(emit(saved, T_AC, [item(OP.a), item(OP.c)]))).toEqual({
+      [OP.a]: 'validated',
+      [OP.c]: 'validated',
+    });
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
+
   it('a database error during the check marks the item unverified, and nothing else changes', () => {
     const saved = save({ editedContent: T_AC });
     const assists = [item(OP.a), item(OP.c)];
@@ -393,7 +446,7 @@ describe('a check that cannot run', () => {
     const strip = (e) => ({ ...e, items: e.items.map(({ claim: _claim, ...rest }) => rest) });
     expect(strip(broken)).toEqual(strip(good));
     expect(rowOf(A)).toEqual(rowBefore);
-    // The error was not memoized: a fresh check after the table is back validates again.
+    // A fresh check after the table is back validates again.
     expect(claimsOf(emit(saved, T_AC, assists))).toEqual({
       [OP.a]: 'validated',
       [OP.c]: 'validated',

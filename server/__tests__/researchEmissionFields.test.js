@@ -307,7 +307,7 @@ describe('claimAssistItems (spec §5.10; decision 50)', () => {
     });
   });
 
-  it('before G1.23 a suggestion item is kept, with its fields, and marked mismatch', () => {
+  it('without a save to check against, an ai-suggestion item is kept with its fields and marked mismatch', () => {
     const [item] = E.claimAssistItems(
       [
         {

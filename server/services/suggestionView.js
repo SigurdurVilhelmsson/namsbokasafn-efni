@@ -347,9 +347,10 @@ function displayedTextForSave(conn, saved) {
 /**
  * Which claimed ops of a save check out (G1.23 PR2 task 2; spec §6, index decision 12). Only the
  * static groups whose ops are ALL claimed enter (a group is never taken in part); they are placed in
- * order of first chainIndex, each on the text the validated ones before it produced; a group is
- * validated when it places and every replace text occurs in the saved text. A group that fails is not
- * applied, so a group depending on it fails too. Throws on a damaged database.
+ * order of first chainIndex, each on the text the groups before it produced. Every group that PLACES
+ * advances that text (placement models the editor's accept click); it is validated only when, in
+ * addition, every replace text occurs in the saved text. A group that fails to place is neither
+ * validated nor applied, so a group depending on it fails too. Throws on a damaged database.
  *
  * @param {import('better-sqlite3').Database} conn sessions.db
  * @param {{ book: string, chapter: number, moduleId: string, segmentId: string, occurrence: number,
@@ -370,8 +371,8 @@ function checkAcceptedGroups(conn, input) {
   for (const group of groups) {
     const placed = placeGroup(cur, group);
     if (!placed.ok) continue;
+    cur = placed.result; // every group that places is applied: it models the accept click, whatever the saved text kept
     if (!group.changes.every((c) => savedText.includes(c.replace))) continue;
-    cur = placed.result;
     for (const c of group.changes) validated.add(c.opId);
   }
   return validated;

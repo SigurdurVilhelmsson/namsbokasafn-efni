@@ -9,9 +9,9 @@
  *
  * Assist items (spec §5.10; decision 50): claimAssistItems rebuilds each item from known fields only,
  * computes the hashes itself (the client never hashes, §5.18) and sets its claim from one table,
- * CLAIM_VALIDATORS. It checks, marks and never refuses (§14 call 17). G1.23 replaces the table's two
- * suggestion entries (ai-suggestion, rule-suggestion) with its own check (§5.10, "G1.23 supplies that
- * check").
+ * CLAIM_VALIDATORS. It checks, marks and never refuses (§14 call 17). G1.23 replaces the table's
+ * ai-suggestion entry with its own check (§5.10, "G1.23 supplies that check"); rule-suggestion stays
+ * mismatch, since no rule suggestion is ever offered.
  */
 const log = require('../lib/logger');
 const researchLog = require('./researchLog');
@@ -158,7 +158,9 @@ const CLAIM_VALIDATORS = Object.freeze({
  * Rebuild a save's assist items from known fields and give each its claim. Never throws.
  *
  * @param {unknown} raw The body's assist list as the client sent it.
- * @param {{book: string, chapter: number|string, moduleId: string, segmentId: string}} place
+ * @param {{book: string, chapter: number|string, moduleId: string, segmentId: string, occurrence?: number,
+ *   saved?: object, editedContent?: string}} place occurrence, saved (the finished save) and editedContent
+ *   (its text) are what the ai-suggestion check needs; without `saved` such an item is mismatch.
  * @returns {{items: Array<object>, droppedCount: number}} Items are exactly the keys record accepts;
  *   droppedCount counts entries of an unknown type (and a list that is not an array, as one).
  */
@@ -185,29 +187,32 @@ function claimAssistItems(raw, place) {
   // occurrence. A throw is not memoized and reaches the caller's catch (the item is unverified).
   let validatedOps;
   function checkSuggestionClaim(item) {
-    if (!place.saved) return 'mismatch'; // no save to check against
+    if (!place.saved) return 'mismatch'; // a direct caller without a save: nothing to check against, and the read side offers nothing, so the claim is false
     if (typeof item.opId !== 'string' || item.occurrence !== place.occurrence) return 'mismatch';
     if (validatedOps === undefined) {
       const opIds = raw
         .filter((r) => r && typeof r === 'object' && r.itemType === 'ai-suggestion')
-        .filter((r) => int(r.occurrence) === place.occurrence)
-        .map((r) => str(r.opId, 128))
-        .filter((id) => id !== null);
+        .map(suggestionFields)
+        .filter((f) => f.occurrence === place.occurrence && f.opId !== null)
+        .map((f) => f.opId);
       const conn = segmentEditor.getDb();
       const displayedText = suggestionView.displayedTextForSave(conn, place.saved);
-      if (displayedText === null) return 'unverified';
-      validatedOps = suggestionView.checkAcceptedGroups(conn, {
-        book: place.book,
-        chapter: place.chapter,
-        moduleId: place.moduleId,
-        segmentId: place.segmentId,
-        occurrence: place.occurrence,
-        baseSha256: place.saved.baseSha256,
-        displayedText,
-        savedText: place.editedContent,
-        opIds: opIds,
-      });
+      if (displayedText === null) {
+        validatedOps = null; // a null text is a result too: the SELECT runs once per save
+      } else
+        validatedOps = suggestionView.checkAcceptedGroups(conn, {
+          book: place.book,
+          chapter: place.chapter,
+          moduleId: place.moduleId,
+          segmentId: place.segmentId,
+          occurrence: place.occurrence,
+          baseSha256: place.saved.baseSha256,
+          displayedText,
+          savedText: place.editedContent,
+          opIds: opIds,
+        });
     }
+    if (validatedOps === null) return 'unverified';
     return validatedOps.has(item.opId) ? 'validated' : 'mismatch';
   }
   const items = [];
