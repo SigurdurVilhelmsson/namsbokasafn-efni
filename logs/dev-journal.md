@@ -748,3 +748,109 @@ befff82bd docs(decisions): four chemistry sync-path answers — 1.7 tie meets 1.
 **Why:** —
 
 ---
+
+## 2026-11-08 13:00 - re-request mode merged as #637 (78341f6db), 8/8 segments in layer 1s for ~58 ISK; next is the E-2 sever PR, then PR4; prod needs a deploy
+
+**Branch:** main
+**Modified:**
+```
+(clean)
+```
+
+**Recent commits:**
+```
+78341f6db Merge pull request #637 from SigurdurVilhelmsson/feat/rerequest-mode
+01d546abc docs: the extract's gitignored backups after a single-module re-extract; E6's backup-presence premise logged
+d0124d118 docs(register): the re-request mode is built and the 8-segment buy is done (8/8 accepted, ~58 ISK); NEXT is the PR, then the E-2 sever, then PR4
+```
+
+**Why:** —
+
+---
+
+## 2026-11-08 15:17 - E-2 sever merged as #638 (42d1095c4) and deployed; next is PR4
+
+**Branch:** main
+**Modified:**
+```
+ M logs/dev-journal.md
+```
+
+**Recent commits:**
+```
+42d1095c4 Merge pull request #638 from SigurdurVilhelmsson/worktree-e2-sever
+f33daf97e fix(review): harden the E-2 regression pins; drop the archived `npm run update-status` from live docs
+2eea46c97 docs(register): the E-2 sever is built (--update-status refuses, LICENSE class 1 empty); NEXT is the PR, then PR4
+```
+
+**Why:** —
+
+---
+
+## 2026-11-08 15:58 - #639 and #640 merged and deployed (4ef1193e8); next is PR4
+
+**Branch:** main
+**Modified:**
+```
+ M logs/dev-journal.md
+```
+
+**Recent commits:**
+```
+4ef1193e8 Merge pull request #640 from SigurdurVilhelmsson/docs/intake-source-next-steps
+7452273c3 docs(commands): /intake-source Next Steps follow the current extract → api-translate → inject → render pipeline
+f9149985d Merge pull request #639 from SigurdurVilhelmsson/docs/license-python-shell-edges
+```
+
+**Why:** —
+
+---
+
+## 2026-11-08 21:21 - PR #650 merged, c54 done; PR4 branch feat/g11-g12-pr4-deletion-backups and ledger ready, resume at Task 1 in a fresh session
+
+**Branch:** feat/g11-g12-pr4-deletion-backups
+**Modified:**
+ M logs/dev-journal.md
+
+**Recent commits:**
+130e603fa Merge pull request #650 from SigurdurVilhelmsson/docs/decision-s-stays-1-november
+c196587aa docs(decisions): the final report gates no follow-on work; correct the record before merge
+91e728c94 docs(decisions): S stays 1 November although the final report comes in November
+
+**Why:** PR4 is 19 test-first tasks from a 256 KB plan that also needs the PR1–PR3 plans and the spec read first; this session was long and already compacted, so a fresh session gives it full context at lower cost. Branch has no commits yet (at 130e603fa, local only); ledger at .superpowers/sdd/2026-11-03-g11-g12-pr4-deletion-and-backups/progress.md holds the tree check (10 of 11 pass; the other is expected line-number drift, re-derive pins by construct).
+
+---
+
+## 2026-11-09 20:21 - G1.23 plan approved and opened as docs PR #657 (07625fd26 + 6fae8d870); next: merge #657, then build PR1 (read side) in a fresh session, subagent-driven
+
+**Branch:** docs/g123-implementation-plan
+**Modified:**
+ M logs/dev-journal.md
+
+**Recent commits:**
+6fae8d870 docs(register): the G1.23 plan entry names its docs PR, #657
+07625fd26 docs(g123): implementation plan (index + PR1–PR3), approved; spec ✏️ AMENDED 2026-11-09
+47fee618e Merge pull request #656 from SigurdurVilhelmsson/docs/g14-consent-draft-pointer
+
+**Why:** [USER] approved all eight of the index's questions; the departures and answers are the spec's ✏️ AMENDED 2026-11-09 block. PR1's plan is not on main until #657 merges, so the PR1 branch is cut only after that; a fresh session gives subagent-driven execution full context (migration 057 free at 47fee618e).
+
+---
+
+## 2026-11-10 10:24 - G1.23 PR1 deployed and verified (98fee00a9), #663 merged and deployed (9a948f0d4), §C214 logged; next is PR2 in a new session
+
+**Branch:** docs/deploy-98fee00a9-verified (worktree .claude/worktrees/g123-pr1-read-side)
+**Modified:**
+```
+(clean)
+```
+
+**Recent commits:**
+```
+e0d7a1d3b docs(register): §C214, the minimatch advisory (GHSA-g3hv-75wg-m249) is unreachable on prod; left open, waiting on archiver to adopt readdir-glob 4
+7bc7e732b docs(register): #662 (G1.23 PR1) merged and deployed, verified read-only; no module is eligible, so no segment carries suggestions
+98fee00a9 Merge pull request #662 from SigurdurVilhelmsson/feat/g123-pr1-read-side
+```
+
+**Why:** —
+
+---
