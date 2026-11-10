@@ -378,7 +378,67 @@ function checkAcceptedGroups(conn, input) {
   return validated;
 }
 
+/**
+ * Record one rejection of a suggestion group (G1.23 PR2 task 3; spec §7, ruling R10). One immediate
+ * transaction: each change whose op is closed in NEITHER table is inserted (ON CONFLICT DO NOTHING);
+ * an op already closed in either table counts in alreadyClosed. A double click therefore inserts
+ * each op once. A rejection hides the group for every editor, so the row is keyed on the place.
+ *
+ * @param {import('better-sqlite3').Database} conn sessions.db
+ * @param {{ book: string, chapter: number, moduleId: string, segmentId: string, occurrence: number,
+ *   group: { rulingId: string, changes: Array<{ opId: string, runId?: string|null, category?: string|null }> },
+ *   rejectedBy: string, nowMs: number }} input rejectedBy is the account GUID, stored as text
+ * @returns {{ rows: object[], alreadyClosed: number }} rows are the inserted table rows, each with
+ *   a `category` field from the change (no column holds it)
+ */
+function recordRejection(
+  conn,
+  { book, chapter, moduleId, segmentId, occurrence, group, rejectedBy, nowMs }
+) {
+  const place = [book, chapter, moduleId, segmentId, occurrence];
+  const isClosed = conn.prepare(
+    `SELECT 1 FROM suggestion_rejections
+       WHERE book = ? AND chapter = ? AND module_id = ? AND segment_id = ? AND occurrence = ? AND op_id = ?
+     UNION ALL
+     SELECT 1 FROM suggestion_left_open
+       WHERE book = ? AND chapter = ? AND module_id = ? AND segment_id = ? AND occurrence = ? AND op_id = ?`
+  );
+  const insert = conn.prepare(
+    `INSERT INTO suggestion_rejections
+       (book, chapter, module_id, segment_id, occurrence, op_id, ruling_id, run_id, rejected_by, rejected_at_ms)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+     ON CONFLICT DO NOTHING`
+  );
+  const byId = conn.prepare('SELECT * FROM suggestion_rejections WHERE id = ?');
+  const write = conn.transaction(() => {
+    const rows = [];
+    let alreadyClosed = 0;
+    for (const c of group.changes) {
+      if (isClosed.get(...place, c.opId, ...place, c.opId)) {
+        alreadyClosed += 1;
+        continue;
+      }
+      const r = insert.run(
+        ...place,
+        c.opId,
+        group.rulingId,
+        c.runId ?? null,
+        String(rejectedBy),
+        nowMs
+      );
+      if (r.changes === 0) {
+        alreadyClosed += 1;
+        continue;
+      }
+      rows.push({ ...byId.get(Number(r.lastInsertRowid)), category: c.category ?? null });
+    }
+    return { rows, alreadyClosed };
+  });
+  return write.immediate();
+}
+
 module.exports = {
+  recordRejection,
   isEligible,
   closedOpKeys,
   moduleContext,

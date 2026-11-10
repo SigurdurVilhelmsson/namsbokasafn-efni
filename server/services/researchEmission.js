@@ -526,6 +526,68 @@ function emitAccept(req, { result }) {
   );
 }
 
+/**
+ * `suggestion-reject` (G1.23 PR2 task 3; spec §5.9): one event per inserted rejection row, each with one
+ * ai-suggestion item. The item's claim is `validated` when the op was among the groups the server would
+ * offer on the current base, else `mismatch`; a stale echoed base is flagged in the detail and never refuses
+ * the act. Each event's client action id is "<id>:<opId>" when that fits the cap, else null (never cut).
+ * Never throws.
+ *
+ * @param {object} req The reject request (user, params, chapterNum, body).
+ * @param {{ rows: object[], servedVersionId: number, offeredOpIds: Iterable<string>,
+ *   groupActionId: unknown, echoedBaseSha256: string|null, baseMismatch: boolean }} act
+ * @returns {void}
+ */
+function emitSuggestionReject(
+  req,
+  { rows, servedVersionId, offeredOpIds, groupActionId, echoedBaseSha256, baseMismatch }
+) {
+  const offered = new Set(offeredOpIds);
+  for (const row of rows) {
+    emit(
+      () => headFor(req, 'suggestion-reject', placeOf(req)),
+      () => {
+        const client = clientOf(req);
+        const composed =
+          client.clientActionId === null ? null : `${client.clientActionId}:${row.op_id}`;
+        return {
+          segmentId: row.segment_id,
+          occurrence: row.occurrence,
+          servedVersionId,
+          editingKind: 'suggestion_rejection',
+          editingId: row.id,
+          editingContentSha256: null,
+          origin: null,
+          content: null,
+          before: null,
+          sessionId: null,
+          items: [
+            {
+              itemType: 'ai-suggestion',
+              source: 'ai',
+              clientTimeMs: null,
+              detail: {},
+              opId: row.op_id,
+              occurrence: row.occurrence,
+              category: str(row.category, 64),
+              runId: str(row.run_id, 128),
+              groupActionId: str(groupActionId, 128),
+              rulingId: str(row.ruling_id, 128),
+              ruleId: null,
+              claim: offered.has(row.op_id) ? 'validated' : 'mismatch',
+            },
+          ],
+          detail: { echoedBaseSha256, baseMismatch },
+          clientActionId:
+            composed !== null && composed.length <= MAX_CLIENT_ACTION_ID ? composed : null,
+          clientActionTime: client.clientActionTime,
+          replayed: client.replayed,
+        };
+      }
+    );
+  }
+}
+
 const REVIEW_DECISIONS = Object.freeze(['edit-approve', 'edit-reject', 'edit-discuss']);
 const rowPlace = (row) => ({ book: row.book, chapter: row.chapter, moduleId: row.module_id });
 /** A segment_edits row as the event's editing reference (the row's own fields; the hash is the server's). */
@@ -838,6 +900,7 @@ module.exports = {
   emitPropagation,
   emitAccept,
   emitReview,
+  emitSuggestionReject,
   emitDelete,
   emitRevoke,
   emitComment,

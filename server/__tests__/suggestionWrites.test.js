@@ -591,3 +591,277 @@ describe('the route sanitises the body list', () => {
     expect(rowOf().accepted_suggestions).toBeNull();
   });
 });
+
+describe('rejecting a suggestion group (the route)', () => {
+  const { handlerFor, invoke, writeModule: rewriteModule } = require('./helpers/servedFixture');
+  const researchLog = require('../services/researchLog');
+  const suggestionView = require('../services/suggestionView');
+  const KEY = { a: `${SEG}#0|r-a`, b: `${SEG}#0|r-b`, s2: `${SEG2}#0|r-a` };
+  const EDITOR_A = { id: A, username: 'A', role: 'editor', books: [] };
+  const EDITOR_B = { id: B, username: 'B', role: 'editor', books: [] };
+  let reject;
+  let recorded;
+  let record;
+
+  beforeAll(() => {
+    reject = handlerFor(
+      require('../routes/segment-editor'),
+      'post',
+      '/:book/:chapter/:moduleId/suggestions/reject'
+    );
+  });
+  beforeEach(() => {
+    db.exec(
+      `DELETE FROM suggestion_rejections; DELETE FROM suggestion_left_open;
+       DELETE FROM module_opening_inflight; DELETE FROM module_openings; DELETE FROM book_switch_events;`
+    );
+    // Eligible: switched on, then the module opened with nothing in flight.
+    db.prepare(
+      "INSERT INTO book_switch_events (book, switch_name, value, switched_at_ms) VALUES (?, 'suggestion-view', 1, 1000)"
+    ).run(BOOK);
+    db.prepare(
+      'INSERT INTO module_openings (book, chapter, module_id, opened_at_ms, inflight_count) VALUES (?, 1, ?, 2000, 0)'
+    ).run(BOOK, MODULE);
+    recorded = [];
+    record = vi.spyOn(researchLog, 'record').mockImplementation((event) => {
+      recorded.push(event);
+    });
+  });
+
+  const post = (body, { user = EDITOR_A, book = BOOK } = {}) =>
+    invoke(reject, {
+      params: { book, chapter: '1', moduleId: MODULE },
+      chapterNum: 1,
+      user,
+      body: {
+        segmentId: SEG,
+        occurrence: 0,
+        groupKey: KEY.a,
+        baseSha256: sha256Text(BASE),
+        ...body,
+      },
+    });
+  const rejections = () =>
+    db
+      .prepare('SELECT * FROM suggestion_rejections ORDER BY op_id')
+      .all()
+      .map((r) => ({ op: r.op_id, ruling: r.ruling_id, by: r.rejected_by }));
+  /** The group keys the module serve offers one editor on the base, given that editor's edit rows. */
+  const offeredKeys = (editsBySegment) =>
+    [
+      ...suggestionView
+        .offeredForModule(db, {
+          book: BOOK,
+          chapter: 1,
+          moduleId: MODULE,
+          segments: [{ segmentId: SEG, occurrence: 0, baseSha256: sha256Text(BASE) }],
+          editsBySegment,
+        })
+        .get(SEG).groups,
+    ].map((g) => g.key);
+
+  it('writes one row per change and hides the group on the next serve, for every editor', async () => {
+    const before = offeredKeys({});
+    expect(before).toEqual([KEY.a, KEY.b]); // control: both groups are offered first
+    const res = await post({});
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({ inserted: 2, alreadyClosed: 0 });
+    expect(rejections()).toEqual([
+      { op: OP.a1, ruling: 'r-a', by: A },
+      { op: OP.a2, ruling: 'r-a', by: A },
+    ]);
+    // Editor A (no rows) and editor B (a pending edit that took nothing) both lose group a only.
+    save({ editorId: B, editorUsername: 'B', editedContent: 'alpha beta gamma!' });
+    const bRows = db
+      .prepare("SELECT * FROM segment_edits WHERE editor_id = ? AND status = 'pending'")
+      .all(B);
+    expect(offeredKeys({})).toEqual([KEY.b]);
+    expect(offeredKeys({ [SEG]: bRows })).toEqual([KEY.b]);
+  });
+
+  it('a second reject of the same group inserts nothing and emits nothing', async () => {
+    await post({});
+    expect(recorded).toHaveLength(2);
+    const again = await post({}, { user: EDITOR_B });
+    expect(again.body).toEqual({ inserted: 0, alreadyClosed: 2 });
+    expect(recorded).toHaveLength(2); // none added
+    expect(rejections().map((r) => r.by)).toEqual([A, A]); // B's click changed nothing
+    // Control: another group still rejects and emits.
+    const other = await post({ groupKey: KEY.b }, { user: EDITOR_B });
+    expect(other.body).toEqual({ inserted: 1, alreadyClosed: 0 });
+    expect(recorded).toHaveLength(3);
+  });
+
+  it('an op already left open is counted as closed and not inserted; a sibling group still is', async () => {
+    db.prepare(
+      `INSERT INTO suggestion_left_open (book, chapter, module_id, segment_id, occurrence, op_id, ruling_id,
+         run_id, finishing_act, finishing_kind, finishing_id, closed_by, closed_at_ms, shown_at_finish)
+       VALUES (?, 1, ?, ?, 0, ?, 'r-a', 'run-1', 'approval', 'segment_edit', 1, ?, 3000, 1)`
+    ).run(BOOK, MODULE, SEG, OP.a1, B);
+    const res = await post({});
+    expect(res.body).toEqual({ inserted: 1, alreadyClosed: 1 });
+    expect(rejections()).toEqual([{ op: OP.a2, ruling: 'r-a', by: A }]);
+    expect(recorded.map((e) => e.items[0].opId)).toEqual([OP.a2]);
+    const sibling = await post({ groupKey: KEY.b });
+    expect(sibling.body).toEqual({ inserted: 1, alreadyClosed: 0 });
+    expect(rejections().map((r) => r.op)).toEqual([OP.b, OP.a2]); // by op id
+  });
+
+  it('a stale echoed base succeeds and its events carry baseMismatch true; the current base carries false', async () => {
+    const stale = await post({ groupKey: KEY.b, baseSha256: sha256Text('some older text') });
+    expect(stale.status).toBe(200);
+    expect(stale.body).toEqual({ inserted: 1, alreadyClosed: 0 });
+    expect(recorded[0].detail).toEqual({
+      echoedBaseSha256: sha256Text('some older text'),
+      baseMismatch: true,
+    });
+    // A missing and a non-hash base are the same, and never a 400.
+    for (const bad of [undefined, 7, 'not-a-hash']) {
+      db.exec('DELETE FROM suggestion_rejections');
+      recorded.length = 0;
+      const r = await post({ groupKey: KEY.b, baseSha256: bad });
+      expect(r.status).toBe(200);
+      expect(recorded[0].detail).toEqual({ echoedBaseSha256: null, baseMismatch: true });
+    }
+    // Control: the current base.
+    db.exec('DELETE FROM suggestion_rejections');
+    recorded.length = 0;
+    await post({ groupKey: KEY.b });
+    expect(recorded[0].detail).toEqual({
+      echoedBaseSha256: sha256Text(BASE),
+      baseMismatch: false,
+    });
+  });
+
+  it('events: one per inserted row, with the group rows, the served version and the claim against the offered set', async () => {
+    await post({ groupActionId: 'g-1' });
+    expect(
+      recorded.map((e) => [
+        e.eventType,
+        e.editingKind,
+        e.segmentId,
+        e.occurrence,
+        e.actorProviderId,
+      ])
+    ).toEqual([
+      ['suggestion-reject', 'suggestion_rejection', SEG, 0, A],
+      ['suggestion-reject', 'suggestion_rejection', SEG, 0, A],
+    ]);
+    const ids = db
+      .prepare('SELECT id FROM suggestion_rejections ORDER BY op_id')
+      .all()
+      .map((r) => r.id);
+    expect(recorded.map((e) => e.editingId)).toEqual(ids);
+    const minted = db
+      .prepare('SELECT id FROM served_text_versions WHERE segment_id = ?')
+      .all(SEG)
+      .map((r) => r.id);
+    expect(minted).toHaveLength(1);
+    expect(recorded.map((e) => e.servedVersionId)).toEqual([minted[0], minted[0]]);
+    expect(recorded.map((e) => e.items[0])).toEqual([
+      expect.objectContaining({
+        opId: OP.a1,
+        rulingId: 'r-a',
+        runId: 'run-1',
+        category: 'term',
+        groupActionId: 'g-1',
+        claim: 'validated',
+      }),
+      expect.objectContaining({ opId: OP.a2, claim: 'validated' }),
+    ]);
+  });
+
+  it('an unknown group key is 404 SUGGESTION_UNKNOWN and writes nothing; a known one beside it works', async () => {
+    const cases = [
+      { groupKey: `${SEG}#0|r-nope` },
+      { groupKey: KEY.s2 }, // another segment's group, asked for on this segment
+      { occurrence: 1 }, // the right key at an occurrence the log does not hold
+    ];
+    for (const c of cases) {
+      const res = await post(c);
+      expect(res.status).toBe(404);
+      expect(res.body).toEqual({ error: 'SUGGESTION_UNKNOWN' });
+    }
+    expect(rejections()).toEqual([]);
+    expect(recorded).toEqual([]);
+    expect((await post({ groupKey: KEY.b })).status).toBe(200); // control
+    expect(rejections()).toEqual([{ op: OP.b, ruling: 'r-b', by: A }]);
+  });
+
+  it('organic is 404 with nothing placed and nothing written', async () => {
+    const place = vi.spyOn(servedEdit, 'placeAndMintBase');
+    const minted = () => db.prepare('SELECT COUNT(*) AS n FROM served_text_versions').get().n;
+    const mintedBefore = minted();
+    const res = await post({}, { book: 'lifraen-efnafraedi' });
+    expect(res.status).toBe(404);
+    expect(res.body).toEqual({ error: 'SUGGESTION_UNKNOWN' });
+    expect(place).not.toHaveBeenCalled();
+    expect(rejections()).toEqual([]);
+    expect(minted()).toBe(mintedBefore);
+    // Control: the study book places and writes.
+    expect((await post({})).status).toBe(200);
+    expect(place).toHaveBeenCalledTimes(1);
+  });
+
+  it.each([
+    ['no segmentId', { segmentId: undefined }],
+    ['an empty segmentId', { segmentId: '' }],
+    ['an over-long segmentId', { segmentId: 'x'.repeat(201) }],
+    ['a negative occurrence', { occurrence: -1 }],
+    ['a fractional occurrence', { occurrence: 0.5 }],
+    ['a string occurrence', { occurrence: '0' }],
+    ['no groupKey', { groupKey: undefined }],
+    ['an over-long groupKey', { groupKey: 'k'.repeat(513) }],
+  ])('%s is a 400 and writes nothing', async (_n, bad) => {
+    const res = await post(bad);
+    expect(res.status).toBe(400);
+    expect(rejections()).toEqual([]);
+    expect((await post({})).status).toBe(200); // control: the same request without the defect
+  });
+
+  it('a placement refusal answers through the refusal sender and writes nothing', async () => {
+    // The log still holds SEG's groups, but the module no longer has the segment.
+    rewriteModule(root, {
+      book: BOOK,
+      chapterDir: 'ch01',
+      moduleId: MODULE,
+      en: [[SEG2, 'EN b']],
+      mt: [[SEG2, 'delta']],
+    });
+    try {
+      const res = await post({});
+      expect(res.status).toBe(404);
+      expect(res.body).toEqual({ error: 'segment not found' });
+      expect(rejections()).toEqual([]);
+      expect(recorded).toEqual([]);
+      // Control: the segment that is still there rejects.
+      const ok = await post({ segmentId: SEG2, groupKey: KEY.s2, baseSha256: sha256Text('delta') });
+      expect(ok.body).toEqual({ inserted: 1, alreadyClosed: 0 });
+    } finally {
+      rewriteModule(root, {
+        book: BOOK,
+        chapterDir: 'ch01',
+        moduleId: MODULE,
+        en: [
+          [SEG, 'EN a'],
+          [SEG2, 'EN b'],
+        ],
+        mt: [
+          [SEG, BASE],
+          [SEG2, 'delta'],
+        ],
+      });
+    }
+  });
+
+  it('the response is the same whatever record returned', async () => {
+    const answers = [];
+    for (const outcome of [{ status: 'recorded' }, { status: 'skipped' }, undefined, null]) {
+      db.exec('DELETE FROM suggestion_rejections');
+      record.mockImplementation(() => outcome);
+      answers.push(await post({ groupKey: KEY.b }));
+    }
+    expect(answers.map((a) => a.status)).toEqual([200, 200, 200, 200]);
+    expect(answers.map((a) => a.body)).toEqual(Array(4).fill({ inserted: 1, alreadyClosed: 0 }));
+  });
+});

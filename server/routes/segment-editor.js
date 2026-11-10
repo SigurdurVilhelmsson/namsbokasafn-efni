@@ -49,6 +49,7 @@ const servedVersions = require('../services/servedVersions');
 const servedEdit = require('../services/servedEdit');
 const moduleOpenings = require('../services/moduleOpenings');
 const suggestionView = require('../services/suggestionView');
+const suggestionLogs = require('../lib/suggestionLogs');
 const researchEmission = require('../services/researchEmission');
 const { sha256Text, isNotMintedBook } = require('../lib/servedText');
 const { isNewer } = require('../lib/editRecency');
@@ -627,6 +628,88 @@ router.post(
         return res.status(404).json({ error: err.message });
       }
       log.error({ err }, 'Error saving segment edit');
+      res.status(500).json({ error: err.message });
+    }
+  }
+);
+
+const SHA256_HEX = /^[0-9a-f]{64}$/;
+
+/**
+ * POST /:book/:chapter/:moduleId/suggestions/reject
+ * Reject one AI suggestion group (G1.23 PR2 task 3; spec §7). Writes one rejection row per change,
+ * which hides the group for every editor, then one research event per inserted row. The gate is the
+ * save route's. A stale echoed base is never a refusal: the group is looked up in the module's kept
+ * log, not in the offered set, so a stale screen can still reject.
+ */
+router.post(
+  '/:book/:chapter/:moduleId/suggestions/reject',
+  requireAuth,
+  validateBookChapter,
+  requireBookAccess(),
+  validateModule,
+  (req, res) => {
+    const body = req.body && typeof req.body === 'object' ? req.body : {};
+    const { segmentId, occurrence, groupKey, baseSha256, groupActionId } = body;
+    if (typeof segmentId !== 'string' || segmentId.length < 1 || segmentId.length > 200) {
+      return res.status(400).json({ error: 'segmentId is required' });
+    }
+    if (!Number.isInteger(occurrence) || occurrence < 0) {
+      return res.status(400).json({ error: 'occurrence must be a non-negative integer' });
+    }
+    if (typeof groupKey !== 'string' || groupKey.length < 1 || groupKey.length > 512) {
+      return res.status(400).json({ error: 'groupKey is required' });
+    }
+    const book = req.params.book;
+    const chapter = req.chapterNum;
+    const moduleId = req.params.moduleId;
+    try {
+      const moduleLog = suggestionLogs.readModuleLog({ book, chapter, moduleId });
+      const group = moduleLog.ok
+        ? (suggestionLogs.keptGroups(moduleLog).get(`${segmentId}#${occurrence}`) || []).find(
+            (g) => g.key === groupKey
+          )
+        : undefined;
+      if (!group) return res.status(404).json({ error: 'SUGGESTION_UNKNOWN' });
+
+      const base = servedEdit.placeAndMintBase({ book, chapter, moduleId, segmentId, occurrence });
+      const echoedBaseSha256 =
+        typeof baseSha256 === 'string' && SHA256_HEX.test(baseSha256) ? baseSha256 : null;
+      const baseMismatch = echoedBaseSha256 !== base.baseSha256;
+
+      const conn = segmentEditor.getDb();
+      // Before the write: afterwards the group is closed and would read as not offered.
+      const offeredOpIds = suggestionView
+        .staticGroupsFor(suggestionView.moduleContext(conn, { book, chapter, moduleId }), {
+          segmentId,
+          occurrence: base.occurrence,
+          baseSha256: base.baseSha256,
+        })
+        .flatMap((g) => g.changes.map((c) => c.opId));
+
+      const { rows, alreadyClosed } = suggestionView.recordRejection(conn, {
+        book,
+        chapter,
+        moduleId,
+        segmentId,
+        occurrence: base.occurrence,
+        group,
+        rejectedBy: String(req.user.id),
+        nowMs: Date.now(),
+      });
+
+      researchEmission.emitSuggestionReject(req, {
+        rows,
+        servedVersionId: base.servedVersionId,
+        offeredOpIds,
+        groupActionId,
+        echoedBaseSha256,
+        baseMismatch,
+      });
+      res.json({ inserted: rows.length, alreadyClosed });
+    } catch (err) {
+      if (sendRefusal(res, err)) return;
+      log.error({ err }, 'Error rejecting suggestion group');
       res.status(500).json({ error: err.message });
     }
   }

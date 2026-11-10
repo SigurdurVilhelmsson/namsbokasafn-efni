@@ -453,3 +453,127 @@ describe('a check that cannot run', () => {
     });
   });
 });
+
+describe('suggestion-reject events', () => {
+  const suggestionView = require('../services/suggestionView');
+  const groupD = () =>
+    L.keptGroups(L.readModuleLog({ book: BOOK, chapter: 1, moduleId: MODULE }))
+      .get(`${SEG}#0`)
+      .find((g) => g.rulingId === 'r-d');
+  /** recordRejection for group d (two changes), the way the route does. */
+  const rejectD = () =>
+    suggestionView.recordRejection(db, {
+      book: BOOK,
+      chapter: 1,
+      moduleId: MODULE,
+      segmentId: SEG,
+      occurrence: 0,
+      group: groupD(),
+      rejectedBy: A,
+      nowMs: 5000,
+    });
+  const reqWith = (body) => ({
+    user: { id: A },
+    params: { book: BOOK, moduleId: MODULE },
+    chapterNum: 1,
+    body,
+  });
+  const act = (rows, over = {}) => ({
+    rows,
+    servedVersionId: 11,
+    offeredOpIds: [OP.d1, OP.d2],
+    groupActionId: 'g-9',
+    echoedBaseSha256: sha256Text(BASE),
+    baseMismatch: false,
+    ...over,
+  });
+
+  it('each event has its own client action id and one item', () => {
+    const { rows } = rejectD();
+    expect(rows.map((r) => r.op_id)).toEqual([OP.d1, OP.d2]);
+    researchEmission.emitSuggestionReject(reqWith({ clientActionId: 'click-1' }), act(rows));
+    expect(recorded.map((e) => e.clientActionId)).toEqual([`click-1:${OP.d1}`, `click-1:${OP.d2}`]);
+    expect(recorded.map((e) => e.items.map((i) => i.opId))).toEqual([[OP.d1], [OP.d2]]);
+    expect(recorded.map((e) => e.editingId)).toEqual(rows.map((r) => r.id));
+    expect(recorded[0]).toMatchObject({
+      eventType: 'suggestion-reject',
+      editingKind: 'suggestion_rejection',
+      segmentId: SEG,
+      occurrence: 0,
+      servedVersionId: 11,
+      actorProviderId: A,
+    });
+    expect(recorded[0].items[0]).toEqual({
+      itemType: 'ai-suggestion',
+      source: 'ai',
+      clientTimeMs: null,
+      detail: {},
+      opId: OP.d1,
+      occurrence: 0,
+      category: 'term',
+      runId: 'run-1',
+      groupActionId: 'g-9',
+      rulingId: 'r-d',
+      ruleId: null,
+      claim: 'validated',
+    });
+  });
+
+  it('no client id, and an id too long to compose, give null (never a truncated id)', () => {
+    const { rows } = rejectD();
+    researchEmission.emitSuggestionReject(reqWith({}), act(rows));
+    expect(recorded.map((e) => e.clientActionId)).toEqual([null, null]);
+    recorded.length = 0;
+    // 127 characters fit alone but not with ":<opId>" appended.
+    researchEmission.emitSuggestionReject(reqWith({ clientActionId: 'x'.repeat(127) }), act(rows));
+    expect(recorded.map((e) => e.clientActionId)).toEqual([null, null]);
+    recorded.length = 0;
+    // Control: a short id composes.
+    researchEmission.emitSuggestionReject(reqWith({ clientActionId: 'ok' }), act(rows));
+    expect(recorded.map((e) => e.clientActionId)).toEqual([`ok:${OP.d1}`, `ok:${OP.d2}`]);
+  });
+
+  it('claims: an op in the offered set is validated, one not in it is mismatch', () => {
+    const { rows } = rejectD();
+    researchEmission.emitSuggestionReject(reqWith({}), act(rows, { offeredOpIds: [OP.d1] }));
+    expect(Object.fromEntries(recorded.map((e) => [e.items[0].opId, e.items[0].claim]))).toEqual({
+      [OP.d1]: 'validated',
+      [OP.d2]: 'mismatch',
+    });
+  });
+
+  it('a stale base is carried in the detail, not refused', () => {
+    const { rows } = rejectD();
+    researchEmission.emitSuggestionReject(
+      reqWith({}),
+      act(rows, { echoedBaseSha256: null, baseMismatch: true })
+    );
+    expect(recorded.map((e) => e.detail)).toEqual(
+      Array(2).fill({ echoedBaseSha256: null, baseMismatch: true })
+    );
+  });
+
+  it('a declining editor: the rows are written and record skips the events', () => {
+    researchLog.record.mockImplementation(() => ({ status: 'skipped' }));
+    const { rows } = rejectD();
+    expect(() => researchEmission.emitSuggestionReject(reqWith({}), act(rows))).not.toThrow();
+    expect(
+      db
+        .prepare('SELECT op_id FROM suggestion_rejections ORDER BY op_id')
+        .all()
+        .map((r) => r.op_id)
+    ).toEqual([OP.d1, OP.d2]);
+    expect(researchLog.record).toHaveBeenCalledTimes(2); // asked once per row; the log decided
+  });
+
+  it('a request that cannot be read fails inside emit, never into the route', () => {
+    // No place to count a loss against, so emit records nothing; the control is a good request.
+    expect(() =>
+      researchEmission.emitSuggestionReject({ user: { id: A }, params: null }, act([{ id: 1 }]))
+    ).not.toThrow();
+    expect(recorded).toEqual([]);
+    const { rows } = rejectD();
+    researchEmission.emitSuggestionReject(reqWith({}), act(rows));
+    expect(recorded).toHaveLength(2);
+  });
+});

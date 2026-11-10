@@ -119,6 +119,59 @@ function placeOnServedBase({ book, chapter, moduleId, segmentId, occurrence }) {
   };
 }
 
+/**
+ * The one mint of a segment's current base (spec §5.4 step 3): the served-version row for the text
+ * the server holds now. saveOnServedBase mints through it inside its own transaction; the reject
+ * route reaches it through placeAndMintBase. Must run inside a transaction the caller opened.
+ *
+ * @returns {number} the served version's id
+ */
+function mintBase(conn, { book, chapter, moduleId, segmentId, placed, seg, layer }) {
+  const [servedVersionId] = servedVersions.mintVersions(conn, [
+    servedVersions.buildVersionRow({
+      book,
+      chapter,
+      moduleId,
+      segmentId,
+      occurrence: placed,
+      en: seg.en,
+      is: seg.is,
+      layer,
+    }),
+  ]);
+  return servedVersionId;
+}
+
+/**
+ * G1.23's reject: place the segment (the same refusals as a save) and mint its current base in one
+ * immediate transaction, writing nothing else. Throws a refusal (`refuse`) when it cannot place.
+ *
+ * @param {{ book: string, chapter: number, moduleId: string, segmentId: string, occurrence: number }} input
+ * @returns {{ servedVersionId: number, baseSha256: string, occurrence: number }}
+ */
+function placeAndMintBase({ book, chapter, moduleId, segmentId, occurrence }) {
+  const {
+    data,
+    seg,
+    occurrence: placed,
+  } = placeOnServedBase({
+    book,
+    chapter,
+    moduleId,
+    segmentId,
+    occurrence,
+  });
+  const conn = segmentEditor.getDb();
+  const mint = conn.transaction(() =>
+    mintBase(conn, { book, chapter, moduleId, segmentId, placed, seg, layer: data.isSource })
+  );
+  return {
+    servedVersionId: mint.immediate(),
+    baseSha256: sha256Text(seg.is),
+    occurrence: placed,
+  };
+}
+
 function saveOnServedBase(input) {
   const {
     book,
@@ -225,18 +278,15 @@ function saveOnServedBase(input) {
   // One transaction (spec §5.6 step 6): the mint and saveSegmentEdit's own transactions become
   // savepoints inside it, so a save that fails after its mint leaves no served-version row.
   const mintAndSave = conn.transaction(() => {
-    const [servedVersionId] = servedVersions.mintVersions(conn, [
-      servedVersions.buildVersionRow({
-        book,
-        chapter,
-        moduleId,
-        segmentId,
-        occurrence: placed,
-        en: seg.en,
-        is: seg.is,
-        layer: data.isSource,
-      }),
-    ]);
+    const servedVersionId = mintBase(conn, {
+      book,
+      chapter,
+      moduleId,
+      segmentId,
+      placed,
+      seg,
+      layer: data.isSource,
+    });
     let acceptedSuggestionsJson; // undefined: leave the column as it was
     if (recompute) {
       const place = { book, chapter, moduleId, segmentId };
@@ -324,4 +374,11 @@ function saveOnServedBase(input) {
   return mintAndSave.immediate();
 }
 
-module.exports = { REFUSAL_MESSAGES, REFUSAL_STATUS, refuse, placeOnServedBase, saveOnServedBase };
+module.exports = {
+  REFUSAL_MESSAGES,
+  REFUSAL_STATUS,
+  refuse,
+  placeOnServedBase,
+  placeAndMintBase,
+  saveOnServedBase,
+};
