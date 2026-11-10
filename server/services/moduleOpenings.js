@@ -34,8 +34,10 @@
  * rows, from any editor, is in flight (accept-eligibility.js isEditInFlight), not only its newest
  * (spec §14 call 6): an older pending edit under a newer rejected one is still in flight.
  *
- * WHY THE TIME NEVER LEAVES THIS MODULE. opened_at_ms is read on the server only (spec §11). No
- * function here returns it, so nothing the route sends can carry it (T17).
+ * WHY THE TIME NEVER REACHES A RESPONSE. opened_at_ms is read on the server only (spec §11). Only
+ * readOpening returns it, and only services call readOpening (G1.23's suggestionView, to decide
+ * eligibility); no function the route calls returns it, so nothing the route sends can carry it
+ * (T17). researchBoundary.test.js forbids any routes/ file from naming the two tables or the column.
  *
  * WHY IT TAKES THE CALLER'S CONNECTION. The module route already mints served versions on
  * segmentEditor.getDb(); the predicate's assignment lookup and the opening run on that same handle,
@@ -208,6 +210,38 @@ function openOnServe(conn, { book, chapter, moduleId, providerId, served, segmen
   return { status: 'opened', opening };
 }
 
+/**
+ * The stored opening of one unit: its opened time and its in-flight snapshot (G1.23 index decision
+ * 3; spec §6.2, §6.3a), or null when the unit has not opened. Two SELECTs, on the caller's
+ * connection; throws on a damaged database (a missing table), and the caller decides what that means.
+ *
+ * ONLY SERVICES CALL THIS, AND NOTHING IT RETURNS MAY REACH A RESPONSE (spec §11): openedAtMs is a
+ * time, and the snapshot is the opening's record. G1.23's suggestionView reads it to decide which
+ * suggestions a serve offers, and sends neither.
+ *
+ * inflight keeps the -1 convention: occurrence -1 means every occurrence of that segment id.
+ *
+ * @param {import('better-sqlite3').Database} conn sessions.db
+ * @param {{ book: string, chapter: number, moduleId: string }} key
+ * @returns {{ openedAtMs: number, inflight: Array<{ segmentId: string, occurrence: number }> } | null}
+ */
+function readOpening(conn, { book, chapter, moduleId }) {
+  const row = conn
+    .prepare(
+      'SELECT opened_at_ms FROM module_openings WHERE book = ? AND chapter = ? AND module_id = ?'
+    )
+    .get(book, chapter, moduleId);
+  if (!row) return null;
+  const inflight = conn
+    .prepare(
+      `SELECT segment_id, occurrence FROM module_opening_inflight
+       WHERE book = ? AND chapter = ? AND module_id = ? ORDER BY segment_id, occurrence`
+    )
+    .all(book, chapter, moduleId)
+    .map((r) => ({ segmentId: r.segment_id, occurrence: r.occurrence }));
+  return { openedAtMs: row.opened_at_ms, inflight };
+}
+
 /** The detail of PR3's module-opened event (spec §5.9), from the serve's mint and its opening. Pure. */
 function moduleOpenedDetail(served, opening) {
   return {
@@ -223,6 +257,7 @@ module.exports = {
   snapshotRows,
   recordOpening,
   openOnServe,
+  readOpening,
   moduleOpenedDetail,
   _setTestClock,
 };

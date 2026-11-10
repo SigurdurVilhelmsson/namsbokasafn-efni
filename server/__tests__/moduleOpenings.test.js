@@ -2,7 +2,8 @@
 //
 // The opening service (G1.1 + G1.2 spec §5.4 step 4, §5.5; PR2 Task 2): the predicate's truth table,
 // the snapshot, the one-transaction step and the 503 decision, on the service. T6 and T7's service
-// halves, and T17's "no time leaves the service". The route half is Task 3's.
+// halves, and T17's "no time leaves recordOpening or openOnServe". readOpening (G1.23) is the one
+// reader that returns the time, for services only. The route half is Task 3's.
 //
 // Every database call goes through `userService._setTestDb` or the handle passed in. SESSIONS_DB_PATH
 // is set to a temp file BEFORE any server require anyway, as a safety net: a slip must reach a temp
@@ -395,6 +396,27 @@ describe('recordOpening (spec §5.5 steps 1–3)', () => {
     expect(
       mo.recordOpening(db, key({ moduleId: 'm95002' }), { rows: [], warnSegments: [] }).opened
     ).toBe(true);
+  });
+});
+
+describe('readOpening (G1.23 index decision 3: services only, never a response)', () => {
+  it('readOpening returns the opened time and the snapshot, and null for an unopened module', () => {
+    expect(mo.readOpening(db, key())).toBeNull();
+    mo.recordOpening(db, key(), snap);
+    expect(mo.readOpening(db, key())).toEqual({ openedAtMs: T0, inflight: snap.rows });
+    // The -1 convention survives the round trip ("every occurrence of the id").
+    expect(mo.readOpening(db, key()).inflight).toContainEqual({ segmentId: 's1', occurrence: -1 });
+    // Another chapter of the same module id, another module, another book: not this opening.
+    expect(mo.readOpening(db, key({ chapter: 2 }))).toBeNull();
+    expect(mo.readOpening(db, key({ moduleId: 'm95002' }))).toBeNull();
+    expect(mo.readOpening(db, key({ book: 'liffraedi-2e' }))).toBeNull();
+    // An opening with nothing in flight has an empty snapshot, not null.
+    mo._setTestClock(() => T0 + 5);
+    mo.recordOpening(db, key({ moduleId: 'm95002' }), { rows: [], warnSegments: [] });
+    expect(mo.readOpening(db, key({ moduleId: 'm95002' }))).toEqual({
+      openedAtMs: T0 + 5,
+      inflight: [],
+    });
   });
 });
 
