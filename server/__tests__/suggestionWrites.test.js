@@ -1023,3 +1023,321 @@ describe('a rejection through the real research log (spec §5.9)', () => {
     expect(items[0]).toMatchObject({ outcome: 'rejected', claim: 'validated', op_id: OP.b });
   });
 });
+
+describe('closing the open groups as left open at a finishing act (G1.23 PR2 task 4)', () => {
+  const { handlerFor, invoke } = require('./helpers/servedFixture');
+  const researchLog = require('../services/researchLog');
+  const suggestionView = require('../services/suggestionView');
+  const HEAD = { id: B, username: 'B', role: 'head-editor', books: [BOOK] };
+  const EDITOR_A = { id: A, username: 'A', role: 'editor', books: [] };
+  const OTHER = '9b2f6c1e-1c3d-4f55-8f0e-2d7a1b6c9e10';
+  let accept;
+  let approve;
+  let rejectEdit;
+  let unapprove;
+  let revoke;
+  let recorded;
+
+  beforeAll(() => {
+    const router = require('../routes/segment-editor');
+    accept = handlerFor(router, 'post', '/:book/:chapter/:moduleId/accept');
+    approve = handlerFor(router, 'post', '/edit/:editId/approve');
+    rejectEdit = handlerFor(router, 'post', '/edit/:editId/reject');
+    unapprove = handlerFor(router, 'post', '/edit/:editId/unapprove');
+    revoke = handlerFor(router, 'post', '/acceptance/:id/revoke');
+  });
+  beforeEach(() => {
+    db.exec(
+      `DELETE FROM suggestion_rejections; DELETE FROM suggestion_left_open;
+       DELETE FROM module_opening_inflight; DELETE FROM module_openings; DELETE FROM book_switch_events;`
+    );
+    db.prepare(
+      "INSERT INTO book_switch_events (book, switch_name, value, switched_at_ms) VALUES (?, 'suggestion-view', 1, 1000)"
+    ).run(BOOK);
+    db.prepare(
+      'INSERT INTO module_openings (book, chapter, module_id, opened_at_ms, inflight_count) VALUES (?, 1, ?, 2000, 0)'
+    ).run(BOOK, MODULE);
+    recorded = [];
+    vi.spyOn(researchLog, 'record').mockImplementation((event) => {
+      recorded.push(event);
+    });
+  });
+
+  const params = { book: BOOK, chapter: '1', moduleId: MODULE };
+  const postAccept = (over = {}, user = EDITOR_A) =>
+    invoke(accept, {
+      params,
+      chapterNum: 1,
+      user,
+      body: { segmentId: SEG, acceptedContent: BASE, ...over },
+    });
+  const postApprove = (id, user = HEAD) =>
+    invoke(approve, { params: { editId: String(id) }, user, body: {} });
+  const leftOpen = () => db.prepare('SELECT * FROM suggestion_left_open ORDER BY op_id').all();
+  /** [opId, shown_at_finish] pairs, compared as a set. */
+  const shownPairs = () =>
+    leftOpen()
+      .map((r) => [r.op_id, r.shown_at_finish])
+      .sort();
+  const leftOpenEvents = () => recorded.filter((e) => e.eventType === 'suggestion-left-open');
+  /** A pending edit of SEG by A, with the ops it took. */
+  const pendingEdit = (text, accepted) => {
+    save({ editedContent: text, accepted });
+    return rowOf(A);
+  };
+
+  it('Staðfesta MT closes every open group as left open, shown 1, and the acceptance still succeeds', async () => {
+    const res = await postAccept();
+    expect(res.status).toBe(200);
+    expect(res.body.success).toBe(true);
+    const acc = db.prepare('SELECT * FROM segment_acceptances WHERE segment_id = ?').get(SEG);
+    expect(shownPairs()).toEqual(
+      [
+        [OP.a1, 1],
+        [OP.a2, 1],
+        [OP.b, 1],
+      ].sort()
+    );
+    expect(
+      leftOpen().map((r) => [
+        r.finishing_act,
+        r.finishing_kind,
+        r.finishing_id,
+        r.closed_by,
+        r.occurrence,
+        r.segment_id,
+      ])
+    ).toEqual(Array(3).fill(['stadfesta-mt', 'segment_acceptance', acc.id, A, 0, SEG]));
+    // Events: one per row, the place from the acceptance row, the act in the detail.
+    expect(
+      leftOpenEvents()
+        .map((e) => [e.items[0].opId, e.detail.shownAtFinish])
+        .sort()
+    ).toEqual(
+      [
+        [OP.a1, true],
+        [OP.a2, true],
+        [OP.b, true],
+      ].sort()
+    );
+    expect(new Set(leftOpenEvents().map((e) => e.detail.act))).toEqual(new Set(['stadfesta-mt']));
+    expect(new Set(leftOpenEvents().map((e) => e.editingKind))).toEqual(
+      new Set(['suggestion_left_open'])
+    );
+    expect(new Set(leftOpenEvents().map((e) => e.moduleId))).toEqual(new Set([MODULE]));
+    expect(new Set(leftOpenEvents().map((e) => e.clientActionId))).toEqual(new Set([null]));
+    expect(new Set(leftOpenEvents().map((e) => e.items[0].claim))).toEqual(new Set(['validated']));
+    // Control: another segment's group is untouched by this acceptance.
+    expect(leftOpen().filter((r) => r.segment_id === SEG2)).toEqual([]);
+  });
+
+  it('a repeated Staðfesta MT (alreadyAccepted) closes nothing new and emits nothing new', async () => {
+    await postAccept();
+    const rows = leftOpen().length;
+    const events = leftOpenEvents().length;
+    expect(rows).toBe(3);
+    const again = await postAccept({}, { id: OTHER, username: 'O', role: 'editor', books: [] });
+    expect(again.body.alreadyAccepted).toBe(true);
+    expect(leftOpen()).toHaveLength(rows);
+    expect(leftOpenEvents()).toHaveLength(events);
+    // Control: a different segment's first acceptance closes its own group.
+    const other = await postAccept({ segmentId: SEG2, acceptedContent: 'delta' });
+    expect(other.body.alreadyAccepted).toBe(false);
+    expect(
+      leftOpen()
+        .filter((r) => r.segment_id === SEG2)
+        .map((r) => r.op_id)
+    ).toEqual([OP.s2]);
+  });
+
+  it('approval closes the groups the edit did not take, and leaves the accepted ones alone', async () => {
+    const edit = pendingEdit('ALFA beta GAMMA', [entry(OP.a1), entry(OP.a2)]);
+    expect(listOf(edit).map((e) => e.opId)).toEqual([OP.a1, OP.a2]);
+    const res = await postApprove(edit.id);
+    expect(res.status).toBe(200);
+    expect(shownPairs()).toEqual([[OP.b, 1]]); // group a was taken; group b was not, and still places
+    const row = leftOpen()[0];
+    expect([row.finishing_act, row.finishing_kind, row.finishing_id, row.closed_by]).toEqual([
+      'approval',
+      'segment_edit',
+      edit.id,
+      B,
+    ]);
+    expect(leftOpenEvents().map((e) => [e.items[0].opId, e.detail.act])).toEqual([
+      [OP.b, 'approval'],
+    ]);
+    expect(leftOpenEvents()[0].editingId).toBe(row.id);
+  });
+
+  it('a group typed over before approval is closed with shown_at_finish 0; the control is shown', async () => {
+    const edit = pendingEdit('ALFA zzz GAMMA', [entry(OP.a1), entry(OP.a2)]);
+    await postApprove(edit.id);
+    expect(shownPairs()).toEqual([[OP.b, 0]]);
+    // Control: the same group with its find still in the text is shown.
+    db.exec('DELETE FROM suggestion_left_open; DELETE FROM segment_edits');
+    const kept = pendingEdit('ALFA beta GAMMA', [entry(OP.a1), entry(OP.a2)]);
+    await postApprove(kept.id);
+    expect(shownPairs()).toEqual([[OP.b, 1]]);
+  });
+
+  it('a dependent group not yet placeable at the finish is closed with shown_at_finish 0', async () => {
+    // A second ruling's op on SEG2 whose find only exists once the first op has been applied.
+    CHAINS[1].ops.push(['ch01/m95010/002.op2', 'r-b', 'DELTA', 'DELTA2']);
+    try {
+      plantLog();
+      const res = await postAccept({ segmentId: SEG2, acceptedContent: 'delta' });
+      expect(res.status).toBe(200);
+      expect(shownPairs()).toEqual(
+        [
+          [OP.s2, 1],
+          ['ch01/m95010/002.op2', 0],
+        ].sort()
+      );
+    } finally {
+      CHAINS[1].ops.pop();
+      plantLog();
+    }
+  });
+
+  it('a head editor rejecting the edit writes nothing, and its groups are offered again on the next serve', async () => {
+    const edit = pendingEdit('ALFA beta GAMMA', [entry(OP.a1)]);
+    const res = await invoke(rejectEdit, {
+      params: { editId: String(edit.id) },
+      user: HEAD,
+      body: { note: 'nei' },
+    });
+    expect(res.status).toBe(200);
+    expect(leftOpen()).toEqual([]);
+    expect(leftOpenEvents()).toEqual([]);
+    const offered = suggestionView
+      .offeredForModule(db, {
+        book: BOOK,
+        chapter: 1,
+        moduleId: MODULE,
+        segments: [{ segmentId: SEG, occurrence: 0, baseSha256: sha256Text(BASE) }],
+        editsBySegment: {},
+      })
+      .get(SEG)
+      .groups.map((g) => g.key);
+    expect(offered).toEqual([`${SEG}#0|r-a`, `${SEG}#0|r-b`]);
+    // Control: approving a fresh edit does write.
+    const next = pendingEdit('ALFA beta GAMMA', [entry(OP.a1)]);
+    await postApprove(next.id);
+    expect(leftOpen().length).toBeGreaterThan(0);
+  });
+
+  it('revoking the acceptance or un-approving the edit does not reopen a left-open group', async () => {
+    await postAccept();
+    const acc = db.prepare('SELECT * FROM segment_acceptances WHERE segment_id = ?').get(SEG);
+    const before = leftOpen();
+    expect(before).toHaveLength(3);
+    const rv = await invoke(revoke, {
+      params: { id: String(acc.id) },
+      user: { id: A, username: 'A', role: 'admin', books: [] },
+      body: {},
+    });
+    expect(rv.status).toBe(200);
+    expect(leftOpen()).toEqual(before);
+    const edit = pendingEdit('ALFA beta GAMMA', [entry(OP.a1)]);
+    await postApprove(edit.id);
+    const afterApprove = leftOpen();
+    const un = await invoke(unapprove, {
+      params: { editId: String(edit.id) },
+      user: HEAD,
+      body: {},
+    });
+    expect(un.status).toBe(200);
+    expect(leftOpen()).toEqual(afterApprove);
+  });
+
+  it('a declining approver: rows written, no event', async () => {
+    researchLog.record.mockImplementation(() => ({ status: 'skipped' }));
+    const edit = pendingEdit('ALFA beta GAMMA', [entry(OP.a1), entry(OP.a2)]);
+    const res = await postApprove(edit.id);
+    expect(res.status).toBe(200);
+    expect(shownPairs()).toEqual([[OP.b, 1]]);
+    expect(leftOpenEvents()).toEqual([]); // record declined; nothing captured
+    expect(researchLog.record).toHaveBeenCalled();
+  });
+
+  it('a row with a NULL served_version_id closes nothing and the act succeeds; a sibling with one closes', async () => {
+    const edit = pendingEdit('ALFA beta GAMMA', [entry(OP.a1)]);
+    db.prepare('UPDATE segment_edits SET served_version_id = NULL WHERE id = ?').run(edit.id);
+    const res = await postApprove(edit.id);
+    expect(res.status).toBe(200);
+    expect(leftOpen()).toEqual([]);
+    expect(warn.mock.calls.filter((c) => /Left open/.test(c[1]))).toEqual([]);
+    // Control.
+    const ok = pendingEdit('ALFA beta GAMMA', [entry(OP.a1)]);
+    await postApprove(ok.id);
+    expect(leftOpen().length).toBeGreaterThan(0);
+  });
+
+  it('a failing closure write warns and the act still answers 200 with the same body shape', async () => {
+    const good = pendingEdit('ALFA beta GAMMA', [entry(OP.a1)]);
+    db.exec(
+      "CREATE TRIGGER lo_boom BEFORE INSERT ON suggestion_left_open BEGIN SELECT RAISE(ABORT, 'boom'); END"
+    );
+    let res;
+    try {
+      res = await postApprove(good.id);
+    } finally {
+      db.exec('DROP TRIGGER lo_boom');
+    }
+    expect(res.status).toBe(200);
+    expect(res.body.success).toBe(true);
+    expect(res.body.edit.status).toBe('approved');
+    expect(leftOpen()).toEqual([]);
+    const warned = warn.mock.calls.filter((c) => /Left open/.test(c[1]));
+    expect(warned).toHaveLength(1);
+    expect(warned[0][0]).toMatchObject({
+      book: BOOK,
+      moduleId: MODULE,
+      segmentId: SEG,
+      act: 'approval',
+    });
+    expect(JSON.stringify(warned[0][0])).not.toMatch(/alpha|ALFA/);
+    // Control: the same approval without the trigger writes.
+    const next = pendingEdit('ALFA beta GAMMA', [entry(OP.a1)]);
+    await postApprove(next.id);
+    expect(leftOpen().length).toBeGreaterThan(0);
+  });
+
+  it('an UNREADABLE accepted list counts as none: every open group closes (a, already in the text, shown 0) and one warning is logged', async () => {
+    const edit = pendingEdit('ALFA beta GAMMA', [entry(OP.a1)]);
+    db.prepare('UPDATE segment_edits SET accepted_suggestions = ? WHERE id = ?').run(
+      'not json',
+      edit.id
+    );
+    await postApprove(edit.id);
+    expect(shownPairs()).toEqual(
+      [
+        [OP.a1, 0],
+        [OP.a2, 0],
+        [OP.b, 1],
+      ].sort()
+    );
+    const warned = warn.mock.calls.filter((c) => /accepted_suggestions discarded/.test(c[1]));
+    expect(warned).toHaveLength(1);
+    expect(warned[0][0]).toMatchObject({ book: BOOK, moduleId: MODULE, segmentId: SEG });
+    expect(JSON.stringify(warned[0][0])).not.toMatch(/not json/);
+  });
+
+  it('a group with an op already rejected is not closed again; its sibling is', async () => {
+    db.prepare(
+      `INSERT INTO suggestion_rejections (book, chapter, module_id, segment_id, occurrence, op_id,
+         ruling_id, run_id, rejected_by, rejected_at_ms)
+       VALUES (?, 1, ?, ?, 0, ?, 'r-b', 'run-1', ?, 3000)`
+    ).run(BOOK, MODULE, SEG, OP.b, OTHER);
+    await postAccept();
+    expect(shownPairs()).toEqual(
+      [
+        [OP.a1, 1],
+        [OP.a2, 1],
+      ].sort()
+    );
+    expect(
+      db.prepare('SELECT COUNT(*) AS n FROM suggestion_rejections WHERE op_id = ?').get(OP.b).n
+    ).toBe(1);
+  });
+});

@@ -1169,7 +1169,33 @@ router.post(
         });
       }
 
+      // Finishing never waits on suggestions: closeLeftOpen never throws, and the response is unchanged.
+      let leftOpen = [];
+      if (!result.alreadyAccepted) {
+        const a = result.acceptance;
+        leftOpen = suggestionView.closeLeftOpen(segmentEditor.getDb(), {
+          book: a.book,
+          chapter: a.chapter,
+          moduleId: a.module_id,
+          segmentId: a.segment_id,
+          occurrence: a.occurrence ?? null,
+          servedVersionId: a.served_version_id ?? null,
+          act: 'stadfesta-mt',
+          finishingKind: 'segment_acceptance',
+          finishingId: a.id,
+          finishedText: a.accepted_content,
+          acceptedOps: [],
+          closedBy: String(req.user.id),
+          nowMs: Date.now(),
+        });
+      }
+
       researchEmission.emitAccept(req, { result });
+      researchEmission.emitSuggestionLeftOpen(req, {
+        rows: leftOpen,
+        act: 'stadfesta-mt',
+        servedVersionId: result.acceptance?.served_version_id ?? null,
+      });
       res.json({ success: true, ...result });
     } catch (err) {
       if (err.refusal) {
@@ -1394,6 +1420,27 @@ router.post(
         req.body?.note
       );
       const edit = withoutResearchKeys(result);
+      // Close the groups the approved edit did not take; never throws, never changes the response.
+      const leftOpen = suggestionView.closeLeftOpen(segmentEditor.getDb(), {
+        book: result.book,
+        chapter: result.chapter,
+        moduleId: result.module_id,
+        segmentId: result.segment_id,
+        occurrence: result.occurrence ?? null,
+        servedVersionId: result.served_version_id ?? null,
+        act: 'approval',
+        finishingKind: 'segment_edit',
+        finishingId: result.id,
+        finishedText: result.edited_content,
+        acceptedOps: suggestionView.acceptedOpsOf(result.accepted_suggestions, result.occurrence, {
+          book: result.book,
+          chapter: result.chapter,
+          moduleId: result.module_id,
+          segmentId: result.segment_id,
+        }),
+        closedBy: String(req.user.id),
+        nowMs: Date.now(),
+      });
       activityLog.log({
         type: 'segment_edit_approved',
         userId: String(req.user.id),
@@ -1407,6 +1454,11 @@ router.post(
       // G1.2: emitted after the act committed and before the response (spec §5.11); `before` is the
       // research event's and never reaches the response (decision 44).
       researchEmission.emitReview(req, 'edit-approve', { edit: result, before: result.before });
+      researchEmission.emitSuggestionLeftOpen(req, {
+        rows: leftOpen,
+        act: 'approval',
+        servedVersionId: result.served_version_id ?? null,
+      });
       res.json({ success: true, edit });
     } catch (err) {
       const status = err.code === 'SUPERSEDED_BY_NEWER' ? 409 : 400;

@@ -36,7 +36,7 @@ const suggestionLogs = require('../lib/suggestionLogs');
 const bookSwitches = require('../lib/bookSwitches');
 const { isStudyBook } = require('../lib/researchScope');
 const { isEditInFlight } = require('../public/js/accept-eligibility');
-const { placeGroup } = require('../public/js/suggestion-placement');
+const { placeGroup, visibleGroups } = require('../public/js/suggestion-placement');
 const moduleOpenings = require('./moduleOpenings');
 const log = require('../lib/logger');
 
@@ -431,7 +431,117 @@ function recordRejection(
   return write.immediate();
 }
 
+/**
+ * Closes every suggestion group still open on a segment as LEFT OPEN, when a finishing act (a
+ * Staðfesta MT acceptance, or a head editor's approval) has just committed (spec §7). The groups are
+ * the static groups on the served base the act was made on, minus any group with an op the finished
+ * edit took (`acceptedOps`); one row per change, `shown_at_finish` 1 when the group still places on
+ * the finished text. The base hash read, the context (which reads the closed tables), the open
+ * groups and the inserts are ONE immediate transaction, so a concurrent reject cannot interleave.
+ * Finishing never waits on suggestions: this never throws; a failure warns (the place, the act and
+ * a reason word, never any text) and returns []. A NULL servedVersionId or occurrence closes nothing.
+ *
+ * @param {import('better-sqlite3').Database} conn sessions.db
+ * @param {{ book: string, chapter: number, moduleId: string, segmentId: string,
+ *   occurrence: number|null, servedVersionId: number|null, act: 'stadfesta-mt'|'approval',
+ *   finishingKind: 'segment_acceptance'|'segment_edit', finishingId: number, finishedText: string,
+ *   acceptedOps: Iterable<string>, closedBy: string, nowMs: number }} input closedBy is the account
+ *   GUID, stored as text
+ * @returns {object[]} the inserted table rows, each with a `category` field from the change
+ */
+function closeLeftOpen(
+  conn,
+  {
+    book,
+    chapter,
+    moduleId,
+    segmentId,
+    occurrence,
+    servedVersionId,
+    act,
+    finishingKind,
+    finishingId,
+    finishedText,
+    acceptedOps,
+    closedBy,
+    nowMs,
+  }
+) {
+  if (servedVersionId === null || servedVersionId === undefined) return [];
+  if (occurrence === null || occurrence === undefined) return [];
+  try {
+    const key = { book, chapter, moduleId };
+    const taken = new Set(acceptedOps || []);
+    const insert = conn.prepare(
+      `INSERT INTO suggestion_left_open
+         (book, chapter, module_id, segment_id, occurrence, op_id, ruling_id, run_id,
+          finishing_act, finishing_kind, finishing_id, closed_by, closed_at_ms, shown_at_finish)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+       ON CONFLICT DO NOTHING`
+    );
+    const byId = conn.prepare('SELECT * FROM suggestion_left_open WHERE id = ?');
+    const write = conn.transaction(() => {
+      const version = conn
+        .prepare('SELECT is_sha256 FROM served_text_versions WHERE id = ?')
+        .get(servedVersionId);
+      if (!version) return null;
+      const ctx = moduleContext(conn, key);
+      const open = staticGroupsFor(ctx, {
+        segmentId,
+        occurrence,
+        baseSha256: version.is_sha256,
+      }).filter((g) => !g.changes.some((c) => taken.has(c.opId)));
+      const shown = new Set(visibleGroups(finishedText, open).map((v) => v.group.key));
+      const rows = [];
+      for (const g of open) {
+        for (const c of g.changes) {
+          const r = insert.run(
+            book,
+            chapter,
+            moduleId,
+            segmentId,
+            occurrence,
+            c.opId,
+            g.rulingId,
+            c.runId ?? null,
+            act,
+            finishingKind,
+            finishingId,
+            String(closedBy),
+            nowMs,
+            shown.has(g.key) ? 1 : 0
+          );
+          if (r.changes === 0) continue;
+          rows.push({ ...byId.get(Number(r.lastInsertRowid)), category: c.category ?? null });
+        }
+      }
+      return rows;
+    });
+    const rows = write.immediate();
+    if (rows === null) {
+      log.warn({ ...key, segmentId, act, reason: 'no-served-version' }, 'Left open: not closed');
+      return [];
+    }
+    return rows;
+  } catch (err) {
+    log.warn(
+      {
+        book,
+        chapter,
+        moduleId,
+        segmentId,
+        act,
+        reason: err && err.code ? err.code : 'close-failed',
+      },
+      'Left open: not closed'
+    );
+    return [];
+  }
+}
+
 module.exports = {
+  closeLeftOpen,
+  acceptedOpsOf: acceptedOpIds,
   recordRejection,
   isEligible,
   closedOpKeys,

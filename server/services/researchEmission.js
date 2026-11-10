@@ -591,6 +591,55 @@ function emitSuggestionReject(req, act) {
   }
 }
 
+/**
+ * `suggestion-left-open` (G1.23 PR2 task 4; spec §5.9): one event per left-open row a finishing act wrote, each
+ * with one ai-suggestion item (claim `validated`: the server itself computed the group as open on the base). The
+ * place is each row's own (it was written from the finishing row: the acceptance for Staðfesta MT, the edit for an
+ * approval). No client action id, time or replay (the acting click is not a suggestion click). Never throws.
+ *
+ * @param {object} req The finishing request (user).
+ * @param {{ rows: object[], act: 'stadfesta-mt'|'approval', servedVersionId: number|null }} input
+ * @returns {void}
+ */
+function emitSuggestionLeftOpen(req, input) {
+  const rows = input && Array.isArray(input.rows) ? input.rows : [];
+  for (const row of rows) {
+    emit(
+      () => headFor(req, 'suggestion-left-open', rowPlace(row)),
+      () => ({
+        segmentId: row.segment_id,
+        occurrence: row.occurrence,
+        servedVersionId: input.servedVersionId ?? null,
+        editingKind: 'suggestion_left_open',
+        editingId: row.id,
+        editingContentSha256: null,
+        origin: null,
+        content: null,
+        before: null,
+        sessionId: null,
+        items: [
+          {
+            itemType: 'ai-suggestion',
+            source: 'ai',
+            clientTimeMs: null,
+            detail: {},
+            opId: row.op_id,
+            occurrence: row.occurrence,
+            category: str(row.category, 64),
+            runId: str(row.run_id, 128),
+            groupActionId: null,
+            rulingId: str(row.ruling_id, 128),
+            ruleId: null,
+            claim: 'validated',
+          },
+        ],
+        detail: { act: input.act, shownAtFinish: row.shown_at_finish === 1 },
+        ...NO_CLIENT,
+      })
+    );
+  }
+}
+
 const REVIEW_DECISIONS = Object.freeze(['edit-approve', 'edit-reject', 'edit-discuss']);
 const rowPlace = (row) => ({ book: row.book, chapter: row.chapter, moduleId: row.module_id });
 /** A segment_edits row as the event's editing reference (the row's own fields; the hash is the server's). */
@@ -904,6 +953,7 @@ module.exports = {
   emitAccept,
   emitReview,
   emitSuggestionReject,
+  emitSuggestionLeftOpen,
   emitDelete,
   emitRevoke,
   emitComment,

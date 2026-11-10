@@ -577,3 +577,160 @@ describe('suggestion-reject events', () => {
     expect(recorded).toHaveLength(2);
   });
 });
+
+describe('suggestion-left-open events (G1.23 PR2 task 4)', () => {
+  const suggestionView = require('../services/suggestionView');
+  const reqWith = () => ({ user: { id: A }, params: { book: 'other-book', moduleId: 'zzz' } });
+  /** closeLeftOpen for SEG on a real minted version, nothing taken. */
+  const close = (over = {}) => {
+    save({ editedContent: T_ABC });
+    const edit = rowOf(A);
+    return {
+      edit,
+      rows: suggestionView.closeLeftOpen(db, {
+        book: BOOK,
+        chapter: 1,
+        moduleId: MODULE,
+        segmentId: SEG,
+        occurrence: edit.occurrence,
+        servedVersionId: edit.served_version_id,
+        act: 'approval',
+        finishingKind: 'segment_edit',
+        finishingId: edit.id,
+        finishedText: BASE,
+        acceptedOps: [],
+        closedBy: A,
+        nowMs: 5000,
+        ...over,
+      }),
+    };
+  };
+
+  it('one event per row: its own place, editing reference, one validated item, act and shown flag in the detail', () => {
+    const { edit, rows } = close({ acceptedOps: [OP.c] });
+    expect(rows.length).toBeGreaterThan(0);
+    expect(rows.map((r) => r.op_id)).not.toContain(OP.c); // the taken group is not closed
+    researchEmission.emitSuggestionLeftOpen(reqWith(), {
+      rows,
+      act: 'approval',
+      servedVersionId: edit.served_version_id,
+    });
+    expect(recorded.map((e) => e.items[0].opId)).toEqual(rows.map((r) => r.op_id));
+    expect(recorded.map((e) => e.editingId)).toEqual(rows.map((r) => r.id));
+    expect(recorded[0]).toMatchObject({
+      eventType: 'suggestion-left-open',
+      editingKind: 'suggestion_left_open',
+      segmentId: SEG,
+      occurrence: 0,
+      servedVersionId: edit.served_version_id,
+      actorProviderId: A,
+      // The place is the row's, never the request's.
+      book: BOOK,
+      chapter: 1,
+      moduleId: MODULE,
+      clientActionId: null,
+      clientActionTime: null,
+      replayed: false,
+      content: null,
+      before: null,
+    });
+    expect(recorded[0].items[0]).toEqual({
+      itemType: 'ai-suggestion',
+      source: 'ai',
+      clientTimeMs: null,
+      detail: {},
+      opId: rows[0].op_id,
+      occurrence: 0,
+      category: 'term',
+      runId: 'run-1',
+      groupActionId: null,
+      rulingId: rows[0].ruling_id,
+      ruleId: null,
+      claim: 'validated',
+    });
+    expect(
+      Object.fromEntries(recorded.map((e) => [e.items[0].opId, e.detail.shownAtFinish]))
+    ).toEqual(Object.fromEntries(rows.map((r) => [r.op_id, r.shown_at_finish === 1])));
+    expect(new Set(recorded.map((e) => e.detail.act))).toEqual(new Set(['approval']));
+  });
+
+  it('shownAtFinish is true for a group still on the text and false for one typed over', () => {
+    // Group d's finds (efni, lausn) are gone from this text; group c (sýra) still places.
+    const { rows } = close({ finishedText: 'rúmísómerum og ísómerum, sýra, X og Y' });
+    researchEmission.emitSuggestionLeftOpen(reqWith(), {
+      rows,
+      act: 'approval',
+      servedVersionId: 1,
+    });
+    const shown = Object.fromEntries(
+      recorded.map((e) => [e.items[0].opId, e.detail.shownAtFinish])
+    );
+    expect(shown[OP.c]).toBe(true);
+    expect(shown[OP.d1]).toBe(false);
+    expect(shown[OP.d2]).toBe(false);
+  });
+
+  it('a declining approver: the rows stay written and record skips the events', () => {
+    researchLog.record.mockImplementation(() => ({ status: 'skipped' }));
+    const { rows } = close();
+    expect(() =>
+      researchEmission.emitSuggestionLeftOpen(reqWith(), {
+        rows,
+        act: 'approval',
+        servedVersionId: 1,
+      })
+    ).not.toThrow();
+    expect(db.prepare('SELECT COUNT(*) AS n FROM suggestion_left_open').get().n).toBe(rows.length);
+    expect(researchLog.record).toHaveBeenCalledTimes(rows.length);
+  });
+
+  it('no rows, or an input that cannot be read, records nothing and never throws', () => {
+    expect(() => researchEmission.emitSuggestionLeftOpen(reqWith(), undefined)).not.toThrow();
+    expect(() =>
+      researchEmission.emitSuggestionLeftOpen(reqWith(), { rows: [], act: 'approval' })
+    ).not.toThrow();
+    expect(() =>
+      researchEmission.emitSuggestionLeftOpen(
+        { params: null },
+        { rows: [{ id: 1 }], act: 'approval' }
+      )
+    ).not.toThrow();
+    expect(recorded).toEqual([]);
+    // Control: a real row records.
+    const { rows } = close();
+    researchEmission.emitSuggestionLeftOpen(reqWith(), {
+      rows,
+      act: 'approval',
+      servedVersionId: 1,
+    });
+    expect(recorded).toHaveLength(rows.length);
+  });
+
+  it('closeLeftOpen: a second close on the same segment inserts nothing (ON CONFLICT), a NULL occurrence closes nothing', () => {
+    const first = close();
+    expect(first.rows.length).toBeGreaterThan(0);
+    const again = suggestionView.closeLeftOpen(db, {
+      book: BOOK,
+      chapter: 1,
+      moduleId: MODULE,
+      segmentId: SEG,
+      occurrence: 0,
+      servedVersionId: first.edit.served_version_id,
+      act: 'approval',
+      finishingKind: 'segment_edit',
+      finishingId: first.edit.id,
+      finishedText: BASE,
+      acceptedOps: [],
+      closedBy: B,
+      nowMs: 6000,
+    });
+    expect(again).toEqual([]);
+    expect(db.prepare('SELECT COUNT(*) AS n FROM suggestion_left_open').get().n).toBe(
+      first.rows.length
+    );
+    db.exec('DELETE FROM suggestion_left_open');
+    const nullOcc = close({ occurrence: null });
+    expect(nullOcc.rows).toEqual([]);
+    expect(db.prepare('SELECT COUNT(*) AS n FROM suggestion_left_open').get().n).toBe(0);
+  });
+});
