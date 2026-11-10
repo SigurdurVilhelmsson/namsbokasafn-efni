@@ -210,6 +210,12 @@ describe('what a save stores', () => {
     expect(rowOf().accepted_suggestions).toBe(JSON.stringify([entry(OP.a1), entry(OP.b)]));
   });
 
+  it('kept ops are sorted by opId even when claimed (and so inserted) out of order', () => {
+    // Claimed order a2, b -> unsorted would be [a2, b]; sorted by opId is [b, a2].
+    save({ editedContent: 'alpha BETA GAMMA', accepted: [entry(OP.a2), entry(OP.b)] });
+    expect(listOf(rowOf())).toEqual([entry(OP.b), entry(OP.a2)]);
+  });
+
   it('an op not in the module log for that segment is dropped, and the save still succeeds', () => {
     // OP.s2 is a real op of ANOTHER segment; the second is no op at all; the third is a control.
     const r = save({
@@ -220,8 +226,10 @@ describe('what a save stores', () => {
   });
 
   it("an entry for another occurrence is not this save's", () => {
-    save({ accepted: [entry(OP.a1, 1), entry(OP.a1, 0)] });
-    expect(listOf(rowOf())).toEqual([entry(OP.a1, 0)]);
+    // OP.a1 at occurrence 1 would otherwise qualify (real op, its text is in the saved text); the
+    // sibling at occurrence 0 is the positive control.
+    save({ editedContent: 'ALFA BETA gamma', accepted: [entry(OP.a1, 1), entry(OP.b, 0)] });
+    expect(listOf(rowOf())).toEqual([entry(OP.b, 0)]);
   });
 
   it('nothing kept stores NULL', () => {
@@ -229,7 +237,7 @@ describe('what a save stores', () => {
     expect(rowOf().accepted_suggestions).toBeNull();
   });
 
-  it('a save with no acceptedSuggestions on a module whose log is not ok succeeds and stores NULL', () => {
+  it('a claimed list on a module whose log is absent succeeds and stores NULL, and keeps once the log is back', () => {
     rmSync(path.join(root, BOOK, '02-mt-revised'), { recursive: true, force: true });
     const r = save({ accepted: [entry(OP.a1)] });
     expect(r.outcome).toBe('inserted');
@@ -238,6 +246,17 @@ describe('what a save stores', () => {
     plantLog();
     save({ editorId: B, editorUsername: 'B', accepted: [entry(OP.a1)] });
     expect(listOf(rowOf(B))).toEqual([entry(OP.a1)]);
+  });
+
+  it('a re-save over a list, with the log now unusable, writes NULL although its text still holds the words', () => {
+    save({ editedContent: 'ALFA beta gamma', accepted: [entry(OP.a1)] });
+    expect(listOf(rowOf())).toEqual([entry(OP.a1)]);
+    rmSync(path.join(root, BOOK, '02-mt-revised'), { recursive: true, force: true });
+    // ALFA is still in the text, so the NULL comes from the log rule (R5), not from the text.
+    const r = save({ editedContent: 'ALFA beta gamma!', accepted: [entry(OP.a1)] });
+    expect(r.outcome).toBe('updated');
+    expect(rowOf().edited_content).toBe('ALFA beta gamma!');
+    expect(rowOf().accepted_suggestions).toBeNull();
   });
 
   it('a log that is malformed keeps nothing and does not fail the save', () => {
@@ -295,6 +314,34 @@ describe('a re-save', () => {
     expect(listOf(rowOf())).toEqual([entry(OP.b)]);
     expect(warn).toHaveBeenCalledTimes(1);
     expect(JSON.stringify(warn.mock.calls[0])).not.toContain('not json');
+    // Names the place and a reason; never the value.
+    expect(warn.mock.calls[0][0]).toMatchObject({
+      book: BOOK,
+      chapter: 1,
+      moduleId: MODULE,
+      segmentId: SEG,
+      reason: 'malformed',
+    });
+  });
+
+  it('an unreadable own pending list that is also the displayed row warns exactly once', () => {
+    save({ editedContent: 'ALFA beta gamma', accepted: [entry(OP.a1)] });
+    db.prepare('UPDATE segment_edits SET accepted_suggestions = ? WHERE editor_id = ?').run(
+      'not json',
+      A
+    );
+    const shown = rowOf(A);
+    const r = save({
+      editedContent: 'ALFA BETA gamma',
+      accepted: [entry(OP.b)],
+      requireEcho: true,
+      baseSha256: sha256Text(BASE),
+      displayedEditId: shown.id,
+      displayedEditSha256: sha256Text(shown.edited_content),
+    });
+    expect(r.outcome).toBe('updated');
+    expect(listOf(rowOf())).toEqual([entry(OP.b)]);
+    expect(warn).toHaveBeenCalledTimes(1);
   });
 
   it('a withdraw (text back to base) deletes the row with its list', () => {
@@ -413,6 +460,60 @@ describe("another editor's pending edit under the saver", () => {
   });
 });
 
+describe('R4: a displayed row that is in flight, whoever wrote it', () => {
+  const echo = (shown) => ({
+    requireEcho: true,
+    baseSha256: sha256Text(BASE),
+    displayedEditId: shown.id,
+    displayedEditSha256: sha256Text(shown.edited_content),
+  });
+  const setRow = (id, status, appliedAt) =>
+    db
+      .prepare('UPDATE segment_edits SET status = ?, applied_at = ? WHERE id = ?')
+      .run(status, appliedAt, id);
+
+  it("another editor's approved, unapplied row is in flight: its op is kept; applied, it is not", () => {
+    save({ accepted: [entry(OP.a1)] });
+    const shown = rowOf(A);
+    setRow(shown.id, 'approved', null);
+    save({
+      editorId: B,
+      editorUsername: 'B',
+      editedContent: 'ALFA BETA gamma',
+      accepted: [entry(OP.b)],
+      ...echo(shown),
+    });
+    expect(listOf(rowOf(B))).toEqual([entry(OP.a1), entry(OP.b)]);
+    // Negative: the same row, applied, is not in flight.
+    db.exec("DELETE FROM segment_edits WHERE editor_id = '" + B + "'");
+    setRow(shown.id, 'approved', '2026-11-10 10:00:00');
+    save({
+      editorId: B,
+      editorUsername: 'B',
+      editedContent: 'ALFA BETA gamma',
+      accepted: [entry(OP.b)],
+      ...echo(shown),
+    });
+    expect(listOf(rowOf(B))).toEqual([entry(OP.b)]);
+  });
+
+  it("the saving editor's own approved, unapplied row is in flight: its op is kept; applied, it is not", () => {
+    save({ accepted: [entry(OP.a1)] });
+    const shown = rowOf(A);
+    setRow(shown.id, 'approved', null);
+    // No pending row of A's is left, so the list can only come from the displayed row.
+    save({ editedContent: 'ALFA BETA gamma', accepted: [entry(OP.b)], ...echo(shown) });
+    expect(listOf(rowOf(A))).toEqual([entry(OP.a1), entry(OP.b)]);
+    // Negative: applied, the row is history.
+    db.exec("DELETE FROM segment_edits WHERE editor_id = '" + A + "'");
+    save({ accepted: [entry(OP.a1)] });
+    const shown2 = rowOf(A);
+    setRow(shown2.id, 'approved', '2026-11-10 10:00:00');
+    save({ editedContent: 'ALFA BETA gamma', accepted: [entry(OP.b)], ...echo(shown2) });
+    expect(listOf(rowOf(A))).toEqual([entry(OP.b)]);
+  });
+});
+
 describe('the route sanitises the body list', () => {
   const { handlerFor, invoke } = require('./helpers/servedFixture');
   let edit;
@@ -447,10 +548,10 @@ describe('the route sanitises the body list', () => {
   it.each([
     ['a non-array', 'ALFA'],
     ['one bad entry among good ones', [entry(OP.a1), { opId: OP.b, occurrence: -1 }]],
-    ['a non-integer occurrence', [{ opId: OP.a1, occurrence: 0.5 }]],
-    ['an empty opId', [{ opId: '', occurrence: 0 }]],
-    ['an opId over 128 characters', [{ opId: 'x'.repeat(129), occurrence: 0 }]],
-    ['a non-string opId', [{ opId: 7, occurrence: 0 }]],
+    ['a non-integer occurrence', [entry(OP.a1), { opId: OP.b, occurrence: 0.5 }]],
+    ['an empty opId', [entry(OP.a1), { opId: '', occurrence: 0 }]],
+    ['an opId over 128 characters', [entry(OP.a1), { opId: 'x'.repeat(129), occurrence: 0 }]],
+    ['a non-string opId', [entry(OP.a1), { opId: 7, occurrence: 0 }]],
     ['more than 500 entries', Array.from({ length: 501 }, () => entry(OP.a1))],
   ])(
     '%s becomes [] (the save succeeds, nothing is claimed) and is never a 400',
@@ -468,9 +569,24 @@ describe('the route sanitises the body list', () => {
     }
   );
 
+  it('no acceptedSuggestions key on a module whose log is absent: 200 and NULL', async () => {
+    rmSync(path.join(root, BOOK, '02-mt-revised'), { recursive: true, force: true });
+    const res = await post({});
+    expect(res.status).toBe(200);
+    expect(rowOf().accepted_suggestions).toBeNull();
+    // Control: log back, a claimed list on the same shape of request is stored.
+    plantLog();
+    const ok = await post(
+      { acceptedSuggestions: [entry(OP.a1)] },
+      { id: B, username: 'B', role: 'editor', books: [] }
+    );
+    expect(ok.status).toBe(200);
+    expect(listOf(rowOf(B))).toEqual([entry(OP.a1)]);
+  });
+
   it('an absent list still recomputes: the route always passes an array', async () => {
     await post({ acceptedSuggestions: [entry(OP.a1)] });
-    expect(listOf(rowOf())).toEqual([entry(OP.a1)].slice(0, 1));
+    expect(listOf(rowOf())).toEqual([entry(OP.a1)]);
     await post({ editedContent: 'alpha beta GAMMA!' }); // no list at all
     expect(rowOf().accepted_suggestions).toBeNull();
   });

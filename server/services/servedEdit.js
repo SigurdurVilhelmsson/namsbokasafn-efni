@@ -205,7 +205,9 @@ function saveOnServedBase(input) {
       : { editId: null, sha256: null };
   const conn = segmentEditor.getDb();
   // G1.23 (spec §7): the accepted list is recomputed only when the caller names one (an editor save
-  // always does; propagation and re-attach pass none and the column is left as it was). The log is
+  // always does; propagation passes none, and scripts/reattach-segment-edits.js calls saveSegmentEdit
+  // directly, never this function (it refuses the study book and passes no list); undefined leaves
+  // the UPDATE's column as it was and the INSERT writes NULL). The log is
   // read once, here, before the transaction. A log that cannot be read keeps nothing, and never
   // fails the save (R5).
   const recompute = acceptedSuggestions !== undefined;
@@ -243,7 +245,7 @@ function saveOnServedBase(input) {
       // replays on the screen text, which is a different question.
       const own = conn
         .prepare(
-          `SELECT accepted_suggestions FROM segment_edits
+          `SELECT id, accepted_suggestions FROM segment_edits
            WHERE book = ? AND module_id = ? AND segment_id = ? AND editor_id = ? AND status = 'pending'`
         )
         .get(book, moduleId, segmentId, editorId);
@@ -251,7 +253,8 @@ function saveOnServedBase(input) {
         own ? own.accepted_suggestions : null,
         place
       );
-      if (displayed.editId !== null) {
+      if (displayed.editId !== null && !(own && own.id === displayed.editId)) {
+        // (the caller's own row, when displayed, was read above: parsed once, so it warns once)
         const shown = conn
           .prepare('SELECT * FROM segment_edits WHERE id = ?')
           .get(displayed.editId);
