@@ -30,6 +30,8 @@ const openstaxCatalogue = require('../services/openstaxCatalogue');
 const bookRegistration = require('../services/bookRegistration');
 const bookDataGenerator = require('../services/bookDataGenerator');
 const userService = require('../services/userService');
+const suggestionSwitch = require('../services/suggestionSwitch');
+const { isStudyBook } = require('../lib/researchScope');
 const pipeline = require('../services/pipelineService');
 const segmentEditorService = require('../services/segmentEditorService');
 // https import removed — no longer needed (GitHub user lookup removed)
@@ -1066,6 +1068,68 @@ router.post('/assignments/:book/enforcement', requireAuth, requireRole(ROLES.ADM
     res.json({ book, enforceAssignments });
   } catch (err) {
     log.error({ err }, 'Toggle assignment enforcement error');
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /api/admin/books/:book/suggestion-view
+ * The per-book switch for the editors' AI suggestion view (admin only). Answers { book, enabled },
+ * never a time. A book outside the study answers 400 NOT_A_STUDY_BOOK, so the control stays hidden.
+ */
+router.get('/books/:book/suggestion-view', requireAuth, requireRole(ROLES.ADMIN), (req, res) => {
+  const { book } = req.params;
+  if (!isStudyBook(book)) {
+    return res.status(400).json({ error: `Not a study book: ${book}`, code: 'NOT_A_STUDY_BOOK' });
+  }
+  try {
+    res.json(suggestionSwitch.getSuggestionView(segmentEditorService.getDb(), book));
+  } catch (err) {
+    log.error({ err }, 'Get suggestion view switch error');
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/admin/books/:book/suggestion-view
+ * Switch the editors' AI suggestion view on or off for a study book (admin only).
+ * Body: { enabled: boolean, confirmBook?: string } — confirmBook (the slug, typed) is needed only
+ * for the first switch-on. 409 CLOSED_BEFORE_SWITCH_ON when suggestions were closed before then.
+ */
+router.post('/books/:book/suggestion-view', requireAuth, requireRole(ROLES.ADMIN), (req, res) => {
+  const { book } = req.params;
+  const { enabled, confirmBook } = req.body || {};
+  if (typeof enabled !== 'boolean') {
+    return res.status(400).json({ error: 'enabled (boolean) required' });
+  }
+  if (confirmBook !== undefined && typeof confirmBook !== 'string') {
+    return res.status(400).json({ error: 'confirmBook must be a string' });
+  }
+  try {
+    const result = suggestionSwitch.setSuggestionView(segmentEditorService.getDb(), {
+      book,
+      enabled,
+      confirmBook,
+      nowMs: Date.now(),
+    });
+    if (result.changed) {
+      activityLog.log({
+        type: 'suggestion_view_toggled',
+        userId: req.user.id,
+        username: req.user.username,
+        book,
+        description: `${req.user.username} ${result.enabled ? 'kveikti á' : 'slökkti á'} tillögum gervigreindar í ritli fyrir ${book}`,
+      });
+    }
+    res.json({ book, enabled: result.enabled });
+  } catch (err) {
+    if (err.code === 'CLOSED_BEFORE_SWITCH_ON') {
+      return res.status(409).json({ error: err.message, code: err.code });
+    }
+    if (err.code === 'NOT_A_STUDY_BOOK' || err.code === 'CONFIRM_REQUIRED') {
+      return res.status(400).json({ error: err.message, code: err.code });
+    }
+    log.error({ err }, 'Toggle suggestion view switch error');
     res.status(500).json({ error: err.message });
   }
 });

@@ -492,4 +492,17 @@ const UI = {
     send: 'Senda svar',
     close: 'Loka',
   },
+
+  // ── The editors' AI suggestion view (G1.23) ─────────────────
+  suggestions: {
+    viewLabel: 'Tillögur gervigreindar í ritli',
+    on: 'Kveikt',
+    off: 'Slökkt',
+    confirmFirstOn:
+      'Sláðu inn heiti bókarinnar til að kveikja á tillögum gervigreindar. Fyrsti tíminn sem kveikt er á verður ekki færður.',
+    killSwitchNote:
+      'Ef slökkt er hverfa allar tillögur strax. Á meðan slökkt er lokar hvorki „Staðfesta MT“ né samþykkt neinum tillögum, svo þær birtast aftur þegar kveikt er á ný.',
+    closedBeforeSwitchOn:
+      'Ekki var kveikt á tillögum gervigreindar: í þessari bók hefur tillögum þegar verið hafnað eða þeim lokað áður en kveikt var í fyrsta sinn. Skoða þarf þær færslur fyrst.',
+  },
 };

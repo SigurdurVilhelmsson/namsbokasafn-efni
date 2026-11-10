@@ -207,6 +207,87 @@
   }
 
   // ================================================================
+  // SUGGESTION VIEW SWITCH (G1.23; admin only, study book only)
+  // ================================================================
+
+  function suggestionViewUrl(book) {
+    return '/api/admin/books/' + encodeURIComponent(book) + '/suggestion-view';
+  }
+
+  /** Show the state the server holds: label, checkbox and the kill-switch note as a hover title. */
+  function showSuggestionView(enabled) {
+    const wrap = document.getElementById('suggestion-view-wrap');
+    const toggle = document.getElementById('suggestion-view-toggle');
+    const label = document.getElementById('suggestion-view-label');
+    if (!wrap || !toggle || !label) return;
+    toggle.checked = !!enabled;
+    label.textContent =
+      UI.suggestions.viewLabel + ': ' + (enabled ? UI.suggestions.on : UI.suggestions.off);
+    wrap.title = UI.suggestions.killSwitchNote;
+    wrap.style.display = 'inline-flex';
+  }
+
+  /** Load the switch for a book; a non-study book (400) or a non-admin (403) leaves it hidden. */
+  function loadSuggestionView(book) {
+    const wrap = document.getElementById('suggestion-view-wrap');
+    if (wrap) wrap.style.display = 'none';
+    fetchJson(suggestionViewUrl(book), { credentials: 'same-origin' })
+      .then(function (data) {
+        if (book === currentBook) showSuggestionView(data.enabled);
+      })
+      .catch(function () {
+        /* hidden: not a study book, or not an admin */
+      });
+  }
+
+  /**
+   * Switch the view on or off. The browser cannot know whether a switch-on is the first, so it
+   * sends without confirmBook and, on CONFIRM_REQUIRED, asks for the book's slug and resends once.
+   */
+  function postSuggestionView(book, enabled, confirmBook) {
+    const body = { enabled: enabled };
+    if (confirmBook) body.confirmBook = confirmBook;
+    return fetchJson(suggestionViewUrl(book), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'same-origin',
+      body: JSON.stringify(body),
+    });
+  }
+
+  function onSuggestionViewToggle(toggle) {
+    const book = currentBook;
+    const enabled = toggle.checked;
+    // Whatever happens, end by showing what the server holds.
+    const settle = function () {
+      return fetchJson(suggestionViewUrl(book), { credentials: 'same-origin' })
+        .then(function (data) {
+          if (book === currentBook) showSuggestionView(data.enabled);
+        })
+        .catch(function () {
+          toggle.checked = !enabled;
+        });
+    };
+    postSuggestionView(book, enabled)
+      .catch(function (err) {
+        if (enabled && err.data && err.data.code === 'CONFIRM_REQUIRED') {
+          const typed = prompt(UI.suggestions.confirmFirstOn + '\n\n' + book);
+          if (!typed) return null;
+          return postSuggestionView(book, true, typed.trim());
+        }
+        throw err;
+      })
+      .catch(function (err) {
+        if (err.data && err.data.code === 'CLOSED_BEFORE_SWITCH_ON') {
+          alert(UI.suggestions.closedBeforeSwitchOn);
+        } else {
+          showToast(err.message || 'Villa', 'error');
+        }
+      })
+      .then(settle);
+  }
+
+  // ================================================================
   // DATA LOADING
   // ================================================================
 
@@ -246,6 +327,8 @@
           enforceToggle.checked = !!adminData.enforceAssignments;
           enforceWrap.style.display = 'inline-flex';
         }
+
+        loadSuggestionView(book);
 
         // Index assignments by chapter number for fast lookup
         const assignmentMap = {};
@@ -312,6 +395,14 @@
             showToast(err.message || 'Villa — aðeins stjórnandi getur breytt þessu', 'error');
             enforceToggle.checked = !enabled; // revert on failure
           });
+      });
+    }
+
+    // Per-book suggestion view switch (admin only; shown for the study book only)
+    const suggestionToggle = document.getElementById('suggestion-view-toggle');
+    if (suggestionToggle) {
+      suggestionToggle.addEventListener('change', function () {
+        onSuggestionViewToggle(suggestionToggle);
       });
     }
   });

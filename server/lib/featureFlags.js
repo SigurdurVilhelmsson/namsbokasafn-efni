@@ -105,6 +105,7 @@ const ENV_SCAN_FILES = Object.freeze([
   'services/researchLog.js',
   'lib/applyHold.js',
   'lib/heldBookWrites.js',
+  'services/suggestionSwitch.js',
   // where the registered flags' reads live
   'services/greynirEngine.js',
   'services/notifications.js',
