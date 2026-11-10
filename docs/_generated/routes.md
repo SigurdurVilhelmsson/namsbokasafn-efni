@@ -209,6 +209,7 @@
 | GET | `/:book/:chapter/repetition-report` |
 | GET | `/:book/:chapter/:moduleId` |
 | POST | `/:book/:chapter/:moduleId/edit` |
+| POST | `/:book/:chapter/:moduleId/suggestions/reject` |
 | GET | `/:book/:chapter/:moduleId/figures` |
 | GET | `/:book/:chapter/:moduleId/figures/:basename/image` |
 | POST | `/:book/:chapter/:moduleId/figures/:basename/block` |
