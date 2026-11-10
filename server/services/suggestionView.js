@@ -395,6 +395,8 @@ function recordRejection(
   conn,
   { book, chapter, moduleId, segmentId, occurrence, group, rejectedBy, nowMs }
 ) {
+  // A book outside the study does no suggestion work (R22).
+  if (!isStudyBook(book)) return { rows: [], alreadyClosed: 0 };
   const place = [book, chapter, moduleId, segmentId, occurrence];
   const insert = conn.prepare(
     `INSERT INTO suggestion_rejections
@@ -472,6 +474,9 @@ function closeLeftOpen(
   if (occurrence === null || occurrence === undefined) return [];
   try {
     const key = { book, chapter, moduleId };
+    // Plain reads before the write lock (M2): a module that is not eligible closes nothing and
+    // never opens the closure transaction (R19). moduleContext re-checks inside it.
+    if (!isEligible(conn, key).eligible) return [];
     const taken = new Set(acceptedOps || []);
     const insert = conn.prepare(
       `INSERT INTO suggestion_left_open
@@ -486,6 +491,27 @@ function closeLeftOpen(
         .prepare('SELECT is_sha256 FROM served_text_versions WHERE id = ?')
         .get(servedVersionId);
       if (!version) return null;
+      // R20: a group another editor's in-flight row (pending, or approved and not yet applied)
+      // holds accepted is theirs, not left open.
+      const inflightRows = conn
+        .prepare(
+          `SELECT accepted_suggestions FROM segment_edits
+           WHERE book = ? AND module_id = ? AND segment_id = ?
+             AND (status = 'pending' OR (status = 'approved' AND applied_at IS NULL))
+             AND id IS NOT ?`
+        )
+        // The finishing row's own list is `acceptedOps` already, parsed once by the caller.
+        .all(book, moduleId, segmentId, finishingKind === 'segment_edit' ? finishingId : null);
+      for (const r of inflightRows) {
+        for (const id of acceptedOpIds(r.accepted_suggestions, occurrence, {
+          book,
+          chapter,
+          moduleId,
+          segmentId,
+        })) {
+          taken.add(id);
+        }
+      }
       const ctx = moduleContext(conn, key);
       const open = staticGroupsFor(ctx, {
         segmentId,
@@ -540,7 +566,35 @@ function closeLeftOpen(
   }
 }
 
+/**
+ * The op ids the module's static rules offer on one served segment, for a research check made
+ * before a write. A Set, or null when the check cannot run (a warning with the place and a
+ * reason word, never any text). No route holds the module context: it stays in this file.
+ *
+ * @param {import('better-sqlite3').Database} conn sessions.db
+ * @param {{ book: string, chapter: number, moduleId: string, segmentId: string,
+ *   occurrence: number, baseSha256: string }} input
+ * @returns {Set<string> | null}
+ */
+function offeredOpIdsFor(conn, { book, chapter, moduleId, segmentId, occurrence, baseSha256 }) {
+  try {
+    const ctx = moduleContext(conn, { book, chapter, moduleId });
+    return new Set(
+      staticGroupsFor(ctx, { segmentId, occurrence, baseSha256 }).flatMap((g) =>
+        g.changes.map((c) => c.opId)
+      )
+    );
+  } catch (err) {
+    log.warn(
+      { book, chapter, moduleId, reason: err && err.code ? err.code : 'check-failed' },
+      'Suggestion reject: the offered-set check failed; claims are unverified'
+    );
+    return null;
+  }
+}
+
 module.exports = {
+  offeredOpIdsFor,
   closeLeftOpen,
   acceptedOpIds,
   recordRejection,

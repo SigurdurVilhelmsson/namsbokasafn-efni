@@ -25,6 +25,7 @@ const { sha256Text } = require('../lib/servedText');
 const { writeModule } = require('./helpers/servedFixture');
 const log = require('../lib/logger');
 const L = require('../lib/suggestionLogs');
+const moduleOpenings = require('../services/moduleOpenings');
 
 const BOOK = 'efnafraedi-2e';
 const MODULE = 'm95010';
@@ -274,6 +275,60 @@ describe('what a save stores', () => {
     spy.mockRestore();
     expect(r.outcome).toBe('inserted');
     expect(rowOf().accepted_suggestions).toBeNull();
+  });
+});
+
+describe('the list never fails the save (R5) and a non-study book does no suggestion work (R22)', () => {
+  it('a throw while computing the accepted list saves with NULL and logs one warning without text', () => {
+    const spy = vi.spyOn(require('../services/suggestionView'), 'acceptedForSave');
+    spy.mockImplementation(() => {
+      throw Object.assign(new Error('boom: secret text'), { code: 'SQLITE_BUSY' });
+    });
+    const r = save({ accepted: [entry(OP.a1)] });
+    expect(r.outcome).toBe('inserted');
+    expect(rowOf().accepted_suggestions).toBeNull();
+    const warned = warn.mock.calls.filter((c) => /not computed/.test(c[1]));
+    expect(warned).toHaveLength(1);
+    expect(warned[0][0]).toEqual({
+      book: BOOK,
+      chapter: 1,
+      moduleId: MODULE,
+      segmentId: SEG,
+      reason: 'SQLITE_BUSY',
+    });
+    expect(JSON.stringify(warned[0])).not.toContain('secret');
+    // Control: the same save once the computation is back keeps the op.
+    spy.mockRestore();
+    save({ editorId: B, editorUsername: 'B', accepted: [entry(OP.a1)] });
+    expect(listOf(rowOf(B))).toEqual([entry(OP.a1)]);
+  });
+
+  it('a save in a non-study book reads no log and stores NULL; the study book reads and keeps', () => {
+    const OTHER_BOOK = 'liffraedi-2e';
+    writeModule(root, {
+      book: OTHER_BOOK,
+      chapterDir: 'ch01',
+      moduleId: MODULE,
+      en: [[SEG, 'EN a']],
+      mt: [[SEG, BASE]],
+    });
+    plantLog(OTHER_BOOK);
+    const read = vi.spyOn(L, 'readModuleLog');
+    try {
+      const r = save({ book: OTHER_BOOK, accepted: [entry(OP.a1)] });
+      expect(r.outcome).toBe('inserted');
+      expect(read).not.toHaveBeenCalled();
+      const row = db.prepare('SELECT * FROM segment_edits WHERE book = ?').get(OTHER_BOOK);
+      expect(row.accepted_suggestions).toBeNull();
+      // Control: the study book does read the log and keeps the op.
+      save({ accepted: [entry(OP.a1)] });
+      expect(read).toHaveBeenCalled();
+      expect(listOf(rowOf())).toEqual([entry(OP.a1)]);
+    } finally {
+      db.prepare('DELETE FROM segment_edits WHERE book = ?').run(OTHER_BOOK);
+      db.prepare('DELETE FROM served_text_versions WHERE book = ?').run(OTHER_BOOK);
+      rmSync(path.join(root, OTHER_BOOK), { recursive: true, force: true });
+    }
   });
 });
 
@@ -895,7 +950,7 @@ describe('rejecting a suggestion group (the route)', () => {
   });
 
   it('a failing offered-set check never fails the reject: rows are written, claims are unverified, a warning names the place', async () => {
-    const ctx = vi.spyOn(suggestionView, 'moduleContext').mockImplementation(() => {
+    const ctx = vi.spyOn(moduleOpenings, 'readOpening').mockImplementation(() => {
       throw Object.assign(new Error('boom: secret text'), { code: 'SQLITE_BUSY' });
     });
     const res = await post({});
@@ -1021,6 +1076,44 @@ describe('a rejection through the real research log (spec §5.9)', () => {
     const items = itemsOf(events[0].id);
     expect(items).toHaveLength(1);
     expect(items[0]).toMatchObject({ outcome: 'rejected', claim: 'validated', op_id: OP.b });
+  });
+
+  it("a consenting editor's Staðfesta MT writes suggestion-left-open events through the real record: one item each, left-open, validated", async () => {
+    db.exec(
+      `DELETE FROM suggestion_rejections; DELETE FROM suggestion_left_open; DELETE FROM segment_acceptances;
+       DELETE FROM module_opening_inflight; DELETE FROM module_openings; DELETE FROM book_switch_events;`
+    );
+    db.prepare(
+      "INSERT INTO book_switch_events (book, switch_name, value, switched_at_ms) VALUES (?, 'suggestion-view', 1, 1000)"
+    ).run(BOOK);
+    db.prepare(
+      'INSERT INTO module_openings (book, chapter, module_id, opened_at_ms, inflight_count) VALUES (?, 1, ?, 2000, 0)'
+    ).run(BOOK, MODULE);
+    const acceptRoute = handlerFor(
+      require('../routes/segment-editor'),
+      'post',
+      '/:book/:chapter/:moduleId/accept'
+    );
+    const mark = eventMark();
+    const res = await invoke(acceptRoute, {
+      params: { book: BOOK, chapter: '1', moduleId: MODULE },
+      chapterNum: 1,
+      user: EDITOR,
+      body: { segmentId: SEG, acceptedContent: BASE },
+    });
+    expect(res.status).toBe(200);
+    const rows = db.prepare('SELECT id, op_id FROM suggestion_left_open ORDER BY op_id').all();
+    expect(rows.map((r) => r.op_id)).toEqual([OP.a1, OP.b, OP.a2].sort());
+    const events = eventsSince(mark).filter((e) => e.event_type === 'suggestion-left-open');
+    expect(events).toHaveLength(rows.length);
+    for (const e of events) expect(e.editing_kind).toBe('suggestion_left_open');
+    expect(new Set(events.map((e) => e.editing_id))).toEqual(
+      new Set(rows.map((r) => BigInt(r.id)))
+    );
+    const items = events.flatMap((e) => itemsOf(e.id));
+    expect(items).toHaveLength(rows.length);
+    expect(new Set(items.map((i) => i.op_id))).toEqual(new Set(rows.map((r) => r.op_id)));
+    for (const i of items) expect(i).toMatchObject({ outcome: 'left-open', claim: 'validated' });
   });
 });
 
@@ -1375,5 +1468,151 @@ describe('closing the open groups as left open at a finishing act (G1.23 PR2 tas
     expect(
       db.prepare('SELECT COUNT(*) AS n FROM suggestion_rejections WHERE op_id = ?').get(OP.a1).n
     ).toBe(1);
+  });
+  it('R20: approving A closes a group B has in flight, not; B rejected afterwards, it is offered again', async () => {
+    // A's row takes nothing (text differs from the base so it is a pending edit); B's row took r-b.
+    const aRow = pendingEdit('alpha beta gamma!', []);
+    save({
+      editorId: B,
+      editorUsername: 'B',
+      editedContent: 'alpha BETA gamma',
+      accepted: [entry(OP.b)],
+    });
+    const bRow = rowOf(B);
+    expect(listOf(bRow)).toEqual([entry(OP.b)]);
+    await postApprove(aRow.id);
+    // Group r-b is B's in flight, so it is NOT closed; group r-a, taken by nobody, IS.
+    expect(leftOpen().map((r) => [r.op_id, r.ruling_id])).toEqual(
+      [
+        [OP.a1, 'r-a'],
+        [OP.a2, 'r-a'],
+      ].sort()
+    );
+    // B's row is rejected: the group is offered again on the next serve.
+    const rj = await invoke(rejectEdit, {
+      params: { editId: String(bRow.id) },
+      user: HEAD,
+      body: { note: 'nei' },
+    });
+    expect(rj.status).toBe(200);
+    const offered = suggestionView
+      .offeredForModule(db, {
+        book: BOOK,
+        chapter: 1,
+        moduleId: MODULE,
+        segments: [{ segmentId: SEG, occurrence: 0, baseSha256: sha256Text(BASE) }],
+        editsBySegment: {},
+      })
+      .get(SEG)
+      .groups.map((g) => g.key);
+    expect(offered).toEqual([`${SEG}#0|r-b`]);
+  });
+
+  it('R20: with B approved afterwards, the group B took is still not closed', async () => {
+    const aRow = pendingEdit('alpha beta gamma!', []);
+    save({
+      editorId: B,
+      editorUsername: 'B',
+      editedContent: 'alpha BETA gamma',
+      accepted: [entry(OP.b)],
+    });
+    const bRow = rowOf(B);
+    await postApprove(aRow.id);
+    await postApprove(bRow.id);
+    expect(leftOpen().map((r) => r.ruling_id)).toEqual(['r-a', 'r-a']);
+    expect(leftOpen().map((r) => r.op_id)).not.toContain(OP.b);
+  });
+
+  it('M2: a module that is not eligible never opens the closure transaction; an eligible one does', () => {
+    const edit = pendingEdit('ALFA beta GAMMA', [entry(OP.a1)]);
+    const input = {
+      book: BOOK,
+      chapter: 1,
+      moduleId: MODULE,
+      segmentId: SEG,
+      occurrence: 0,
+      servedVersionId: edit.served_version_id,
+      act: 'approval',
+      finishingKind: 'segment_edit',
+      finishingId: edit.id,
+      finishedText: edit.edited_content,
+      acceptedOps: [OP.a1],
+      closedBy: B,
+      nowMs: 5000,
+    };
+    const spy = vi.spyOn(db, 'transaction');
+    db.prepare(
+      "INSERT INTO book_switch_events (book, switch_name, value, switched_at_ms) VALUES (?, 'suggestion-view', 0, 3000)"
+    ).run(BOOK);
+    expect(suggestionView.closeLeftOpen(db, input)).toEqual([]);
+    expect(spy).not.toHaveBeenCalled();
+    db.prepare(
+      "INSERT INTO book_switch_events (book, switch_name, value, switched_at_ms) VALUES (?, 'suggestion-view', 1, 4000)"
+    ).run(BOOK);
+    expect(suggestionView.closeLeftOpen(db, input).length).toBeGreaterThan(0);
+    expect(spy).toHaveBeenCalled();
+  });
+
+  /** Replaces what legitimately differs between two acts: ids, times, the segment. */
+  const normalise = (v) =>
+    JSON.parse(
+      JSON.stringify(v, (k, x) =>
+        /(^id$|_id$|_at$|Id$|At$|Ms$)/.test(k) ||
+        ['accepted_content', 'edited_content', 'original_content', 'segmentId'].includes(k)
+          ? '<x>'
+          : x
+      )
+    );
+
+  it('M6: the accept response is the same body whether or not groups were closed', async () => {
+    const closing = await postAccept();
+    expect(leftOpen().length).toBeGreaterThan(0);
+    db.exec('DELETE FROM suggestion_left_open');
+    db.prepare(
+      "INSERT INTO book_switch_events (book, switch_name, value, switched_at_ms) VALUES (?, 'suggestion-view', 0, 3000)"
+    ).run(BOOK);
+    const control = await postAccept({ segmentId: SEG2, acceptedContent: 'delta' });
+    expect(leftOpen()).toEqual([]);
+    expect(control.status).toBe(closing.status);
+    expect(normalise(control.body)).toEqual(normalise(closing.body));
+    expect(Object.keys(closing.body).sort()).toEqual(Object.keys(control.body).sort());
+  });
+
+  it('M6: the approve response is the same body whether or not groups were closed', async () => {
+    const e1 = pendingEdit('ALFA beta GAMMA', [entry(OP.a1)]);
+    const closing = await postApprove(e1.id);
+    expect(leftOpen().length).toBeGreaterThan(0);
+    db.exec('DELETE FROM suggestion_left_open');
+    db.prepare(
+      "INSERT INTO book_switch_events (book, switch_name, value, switched_at_ms) VALUES (?, 'suggestion-view', 0, 3000)"
+    ).run(BOOK);
+    const e2 = pendingEdit('ALFA beta GAMMA', [entry(OP.a1)]);
+    const control = await postApprove(e2.id);
+    expect(leftOpen()).toEqual([]);
+    expect(control.status).toBe(closing.status);
+    expect(normalise(control.body)).toEqual(normalise(closing.body));
+  });
+
+  it('R22: recordRejection for a non-study book writes nothing and answers empty; the study book writes', () => {
+    const group = {
+      rulingId: 'r-b',
+      changes: [{ opId: OP.b, runId: 'run-1', category: 'term' }],
+    };
+    const input = {
+      chapter: 1,
+      moduleId: MODULE,
+      segmentId: SEG,
+      occurrence: 0,
+      group,
+      rejectedBy: A,
+      nowMs: 5000,
+    };
+    expect(suggestionView.recordRejection(db, { ...input, book: 'liffraedi-2e' })).toEqual({
+      rows: [],
+      alreadyClosed: 0,
+    });
+    expect(db.prepare('SELECT COUNT(*) AS n FROM suggestion_rejections').get().n).toBe(0);
+    const control = suggestionView.recordRejection(db, { ...input, book: BOOK });
+    expect(control.rows.map((r) => r.op_id)).toEqual([OP.b]);
   });
 });

@@ -680,26 +680,14 @@ router.post(
       const conn = segmentEditor.getDb();
       // Before the write: afterwards the group is closed and would read as not offered. Research
       // only: a failed check never fails the reject; its claims are then unverified (null).
-      let offeredOpIds = null;
-      try {
-        offeredOpIds = suggestionView
-          .staticGroupsFor(suggestionView.moduleContext(conn, { book, chapter, moduleId }), {
-            segmentId,
-            occurrence: base.occurrence,
-            baseSha256: base.baseSha256,
-          })
-          .flatMap((g) => g.changes.map((c) => c.opId));
-      } catch (checkErr) {
-        log.warn(
-          {
-            book,
-            chapter,
-            moduleId,
-            reason: checkErr && checkErr.code ? checkErr.code : 'check-failed',
-          },
-          'Suggestion reject: the offered-set check failed; claims are unverified'
-        );
-      }
+      const offeredOpIds = suggestionView.offeredOpIdsFor(conn, {
+        book,
+        chapter,
+        moduleId,
+        segmentId,
+        occurrence: base.occurrence,
+        baseSha256: base.baseSha256,
+      });
 
       const { rows, alreadyClosed } = suggestionView.recordRejection(conn, {
         book,
