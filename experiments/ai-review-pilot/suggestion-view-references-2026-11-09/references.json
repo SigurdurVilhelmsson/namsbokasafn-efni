@@ -1,0 +1,2441 @@
+{
+  "date": "2026-11-09",
+  "layer2Commit": "52354ee037a8888ee696bb5e5caac3b2d9050213",
+  "rule": "drop every change in each (module, segmentId, rulingId) group, over all occurrences, that holds an agreement change",
+  "totals": {
+    "records": 3438,
+    "logs": 170,
+    "emptyLogs": 33,
+    "chains": 2328
+  },
+  "dropped": {
+    "groups": 100,
+    "changes": 265,
+    "byCategory": {
+      "term": 146,
+      "agreement": 111,
+      "term-sense": 8
+    }
+  },
+  "droppedChanges": [
+    {
+      "chapter": 1,
+      "module": "m68664",
+      "segmentId": "m68664:problem:fs-idm59206592",
+      "occurrence": 0,
+      "opId": "ch01/m68664/001.op4",
+      "category": "term",
+      "rulingId": "temperature"
+    },
+    {
+      "chapter": 1,
+      "module": "m68664",
+      "segmentId": "m68664:problem:fs-idm59206592",
+      "occurrence": 0,
+      "opId": "ch01/m68664/001.op5",
+      "category": "agreement",
+      "rulingId": "temperature"
+    },
+    {
+      "chapter": 1,
+      "module": "m68664",
+      "segmentId": "m68664:problem:fs-idm59206592",
+      "occurrence": 0,
+      "opId": "ch01/m68664/001.op6",
+      "category": "agreement",
+      "rulingId": "temperature"
+    },
+    {
+      "chapter": 1,
+      "module": "m68683",
+      "segmentId": "m68683:problem:fs-idm310365264",
+      "occurrence": 0,
+      "opId": "ch01/m68683/004.op4",
+      "category": "term",
+      "rulingId": "significant-figures"
+    },
+    {
+      "chapter": 1,
+      "module": "m68683",
+      "segmentId": "m68683:problem:fs-idm310365264",
+      "occurrence": 0,
+      "opId": "ch01/m68683/004.op5",
+      "category": "agreement",
+      "rulingId": "significant-figures"
+    },
+    {
+      "chapter": 1,
+      "module": "m68683",
+      "segmentId": "m68683:problem:fs-idm29733712",
+      "occurrence": 0,
+      "opId": "ch01/m68683/004.op6",
+      "category": "term",
+      "rulingId": "significant-figures"
+    },
+    {
+      "chapter": 1,
+      "module": "m68683",
+      "segmentId": "m68683:problem:fs-idm29733712",
+      "occurrence": 0,
+      "opId": "ch01/m68683/004.op7",
+      "category": "agreement",
+      "rulingId": "significant-figures"
+    },
+    {
+      "chapter": 2,
+      "module": "m68692",
+      "segmentId": "m68692:entry:auto-128",
+      "occurrence": 0,
+      "opId": "ch02/m68692/002.op1",
+      "category": "term",
+      "rulingId": "abundance"
+    },
+    {
+      "chapter": 2,
+      "module": "m68692",
+      "segmentId": "m68692:entry:auto-128",
+      "occurrence": 0,
+      "opId": "ch02/m68692/002.op2",
+      "category": "agreement",
+      "rulingId": "abundance"
+    },
+    {
+      "chapter": 2,
+      "module": "m68692",
+      "segmentId": "m68692:para:fs-idp249209552",
+      "occurrence": 0,
+      "opId": "ch02/m68692/002.op4",
+      "category": "term",
+      "rulingId": "abundance"
+    },
+    {
+      "chapter": 2,
+      "module": "m68692",
+      "segmentId": "m68692:para:fs-idp249209552",
+      "occurrence": 0,
+      "opId": "ch02/m68692/002.op5",
+      "category": "agreement",
+      "rulingId": "abundance"
+    },
+    {
+      "chapter": 2,
+      "module": "m68692",
+      "segmentId": "m68692:para:fs-idm3186256",
+      "occurrence": 0,
+      "opId": "ch02/m68692/002.op6",
+      "category": "term",
+      "rulingId": "abundance"
+    },
+    {
+      "chapter": 2,
+      "module": "m68692",
+      "segmentId": "m68692:para:fs-idm3186256",
+      "occurrence": 0,
+      "opId": "ch02/m68692/002.op7",
+      "category": "agreement",
+      "rulingId": "abundance"
+    },
+    {
+      "chapter": 2,
+      "module": "m68692",
+      "segmentId": "m68692:example-title:fs-idm233489360-title",
+      "occurrence": 0,
+      "opId": "ch02/m68692/002.op8",
+      "category": "term",
+      "rulingId": "abundance"
+    },
+    {
+      "chapter": 2,
+      "module": "m68692",
+      "segmentId": "m68692:example-title:fs-idm233489360-title",
+      "occurrence": 0,
+      "opId": "ch02/m68692/002.op9",
+      "category": "agreement",
+      "rulingId": "abundance"
+    },
+    {
+      "chapter": 2,
+      "module": "m68693",
+      "segmentId": "m68693:caption:CNX_Chem_02_04_TiO2-caption",
+      "occurrence": 0,
+      "opId": "ch02/m68693/001.op1",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 2,
+      "module": "m68693",
+      "segmentId": "m68693:alt:fs-idp59733696-alt",
+      "occurrence": 0,
+      "opId": "ch02/m68693/001.op10",
+      "category": "agreement",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 2,
+      "module": "m68693",
+      "segmentId": "m68693:alt:fs-idp59733696-alt",
+      "occurrence": 0,
+      "opId": "ch02/m68693/001.op11",
+      "category": "agreement",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 2,
+      "module": "m68693",
+      "segmentId": "m68693:caption:CNX_Chem_02_04_TiO2-caption",
+      "occurrence": 0,
+      "opId": "ch02/m68693/001.op2",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 2,
+      "module": "m68693",
+      "segmentId": "m68693:caption:CNX_Chem_02_04_TiO2-caption",
+      "occurrence": 0,
+      "opId": "ch02/m68693/001.op3",
+      "category": "agreement",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 2,
+      "module": "m68693",
+      "segmentId": "m68693:caption:CNX_Chem_02_04_TiO2-caption",
+      "occurrence": 0,
+      "opId": "ch02/m68693/001.op4",
+      "category": "agreement",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 2,
+      "module": "m68693",
+      "segmentId": "m68693:alt:fs-idp59733696-alt",
+      "occurrence": 0,
+      "opId": "ch02/m68693/001.op5",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 2,
+      "module": "m68693",
+      "segmentId": "m68693:alt:fs-idp59733696-alt",
+      "occurrence": 0,
+      "opId": "ch02/m68693/001.op6",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 2,
+      "module": "m68693",
+      "segmentId": "m68693:alt:fs-idp59733696-alt",
+      "occurrence": 0,
+      "opId": "ch02/m68693/001.op7",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 2,
+      "module": "m68693",
+      "segmentId": "m68693:alt:fs-idp59733696-alt",
+      "occurrence": 0,
+      "opId": "ch02/m68693/001.op8",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 2,
+      "module": "m68693",
+      "segmentId": "m68693:alt:fs-idp59733696-alt",
+      "occurrence": 0,
+      "opId": "ch02/m68693/001.op9",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 2,
+      "module": "m68696",
+      "segmentId": "m68696:para:fs-idp57422256",
+      "occurrence": 0,
+      "opId": "ch02/m68696/004.op5",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 2,
+      "module": "m68696",
+      "segmentId": "m68696:para:fs-idp57422256",
+      "occurrence": 0,
+      "opId": "ch02/m68696/004.op6",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 2,
+      "module": "m68696",
+      "segmentId": "m68696:para:fs-idp57422256",
+      "occurrence": 0,
+      "opId": "ch02/m68696/004.op7",
+      "category": "agreement",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 4,
+      "module": "m68714",
+      "segmentId": "m68714:para:fs-idm52282816",
+      "occurrence": 0,
+      "opId": "ch04/m68714/001.op10",
+      "category": "agreement",
+      "rulingId": "theoretical-yield"
+    },
+    {
+      "chapter": 4,
+      "module": "m68714",
+      "segmentId": "m68714:para:fs-idm52282816",
+      "occurrence": 0,
+      "opId": "ch04/m68714/001.op9",
+      "category": "term",
+      "rulingId": "theoretical-yield"
+    },
+    {
+      "chapter": 4,
+      "module": "m68714",
+      "segmentId": "m68714:para:fs-idp59920960",
+      "occurrence": 0,
+      "opId": "ch04/m68714/002.op13",
+      "category": "term",
+      "rulingId": "percent-yield"
+    },
+    {
+      "chapter": 4,
+      "module": "m68714",
+      "segmentId": "m68714:para:fs-idp59920960",
+      "occurrence": 0,
+      "opId": "ch04/m68714/002.op14",
+      "category": "term",
+      "rulingId": "percent-yield"
+    },
+    {
+      "chapter": 4,
+      "module": "m68714",
+      "segmentId": "m68714:para:fs-idp59920960",
+      "occurrence": 0,
+      "opId": "ch04/m68714/002.op16",
+      "category": "agreement",
+      "rulingId": "percent-yield"
+    },
+    {
+      "chapter": 4,
+      "module": "m68714",
+      "segmentId": "m68714:para:fs-idp47540336",
+      "occurrence": 0,
+      "opId": "ch04/m68714/002.op4",
+      "category": "term",
+      "rulingId": "theoretical-yield"
+    },
+    {
+      "chapter": 4,
+      "module": "m68714",
+      "segmentId": "m68714:para:fs-idp47540336",
+      "occurrence": 0,
+      "opId": "ch04/m68714/002.op7",
+      "category": "agreement",
+      "rulingId": "theoretical-yield"
+    },
+    {
+      "chapter": 4,
+      "module": "m68716",
+      "segmentId": "m68716:para:fs-idp61279744",
+      "occurrence": 0,
+      "opId": "ch04/m68716/003.op11",
+      "category": "term",
+      "rulingId": "product"
+    },
+    {
+      "chapter": 4,
+      "module": "m68716",
+      "segmentId": "m68716:para:fs-idp61279744",
+      "occurrence": 0,
+      "opId": "ch04/m68716/003.op12",
+      "category": "agreement",
+      "rulingId": "stoichiometry"
+    },
+    {
+      "chapter": 4,
+      "module": "m68716",
+      "segmentId": "m68716:para:fs-idp61279744",
+      "occurrence": 0,
+      "opId": "ch04/m68716/003.op13",
+      "category": "agreement",
+      "rulingId": "product"
+    },
+    {
+      "chapter": 4,
+      "module": "m68716",
+      "segmentId": "m68716:para:fs-idp61279744",
+      "occurrence": 0,
+      "opId": "ch04/m68716/003.op9",
+      "category": "term-sense",
+      "rulingId": "stoichiometry"
+    },
+    {
+      "chapter": 5,
+      "module": "m68726",
+      "segmentId": "m68726:para:fs-idm75111136",
+      "occurrence": 0,
+      "opId": "ch05/m68726/007.op6",
+      "category": "term",
+      "rulingId": "product"
+    },
+    {
+      "chapter": 5,
+      "module": "m68726",
+      "segmentId": "m68726:para:fs-idm75111136",
+      "occurrence": 0,
+      "opId": "ch05/m68726/007.op7",
+      "category": "agreement",
+      "rulingId": "product"
+    },
+    {
+      "chapter": 6,
+      "module": "m68729",
+      "segmentId": "m68729:alt:fs-idm45951264-alt",
+      "occurrence": 0,
+      "opId": "ch06/m68729/001.op10",
+      "category": "agreement",
+      "rulingId": "amplitude"
+    },
+    {
+      "chapter": 6,
+      "module": "m68729",
+      "segmentId": "m68729:alt:fs-idm45951264-alt",
+      "occurrence": 0,
+      "opId": "ch06/m68729/001.op11",
+      "category": "agreement",
+      "rulingId": "amplitude"
+    },
+    {
+      "chapter": 6,
+      "module": "m68729",
+      "segmentId": "m68729:alt:fs-idm45951264-alt",
+      "occurrence": 0,
+      "opId": "ch06/m68729/001.op8",
+      "category": "term",
+      "rulingId": "amplitude"
+    },
+    {
+      "chapter": 6,
+      "module": "m68729",
+      "segmentId": "m68729:alt:fs-idm45951264-alt",
+      "occurrence": 0,
+      "opId": "ch06/m68729/001.op9",
+      "category": "term",
+      "rulingId": "amplitude"
+    },
+    {
+      "chapter": 6,
+      "module": "m68729",
+      "segmentId": "m68729:para:fs-idm82699072",
+      "occurrence": 0,
+      "opId": "ch06/m68729/002.op1",
+      "category": "term",
+      "rulingId": "amplitude"
+    },
+    {
+      "chapter": 6,
+      "module": "m68729",
+      "segmentId": "m68729:para:fs-idm64346880",
+      "occurrence": 0,
+      "opId": "ch06/m68729/002.op12",
+      "category": "term",
+      "rulingId": "amplitude"
+    },
+    {
+      "chapter": 6,
+      "module": "m68729",
+      "segmentId": "m68729:para:fs-idm64346880",
+      "occurrence": 0,
+      "opId": "ch06/m68729/002.op13",
+      "category": "term",
+      "rulingId": "amplitude"
+    },
+    {
+      "chapter": 6,
+      "module": "m68729",
+      "segmentId": "m68729:para:fs-idm64346880",
+      "occurrence": 0,
+      "opId": "ch06/m68729/002.op14",
+      "category": "term",
+      "rulingId": "amplitude"
+    },
+    {
+      "chapter": 6,
+      "module": "m68729",
+      "segmentId": "m68729:para:fs-idm64346880",
+      "occurrence": 0,
+      "opId": "ch06/m68729/002.op19",
+      "category": "agreement",
+      "rulingId": "amplitude"
+    },
+    {
+      "chapter": 6,
+      "module": "m68729",
+      "segmentId": "m68729:para:fs-idm82699072",
+      "occurrence": 0,
+      "opId": "ch06/m68729/002.op2",
+      "category": "term",
+      "rulingId": "amplitude"
+    },
+    {
+      "chapter": 6,
+      "module": "m68729",
+      "segmentId": "m68729:para:fs-idm64346880",
+      "occurrence": 0,
+      "opId": "ch06/m68729/002.op20",
+      "category": "agreement",
+      "rulingId": "amplitude"
+    },
+    {
+      "chapter": 6,
+      "module": "m68729",
+      "segmentId": "m68729:para:fs-idm82699072",
+      "occurrence": 0,
+      "opId": "ch06/m68729/002.op3",
+      "category": "agreement",
+      "rulingId": "amplitude"
+    },
+    {
+      "chapter": 6,
+      "module": "m68729",
+      "segmentId": "m68729:para:fs-idm80507680",
+      "occurrence": 0,
+      "opId": "ch06/m68729/003.op2",
+      "category": "term",
+      "rulingId": "node"
+    },
+    {
+      "chapter": 6,
+      "module": "m68729",
+      "segmentId": "m68729:para:fs-idm80507680",
+      "occurrence": 0,
+      "opId": "ch06/m68729/003.op4",
+      "category": "term",
+      "rulingId": "node"
+    },
+    {
+      "chapter": 6,
+      "module": "m68729",
+      "segmentId": "m68729:para:fs-idm80507680",
+      "occurrence": 0,
+      "opId": "ch06/m68729/003.op6",
+      "category": "term",
+      "rulingId": "node"
+    },
+    {
+      "chapter": 6,
+      "module": "m68729",
+      "segmentId": "m68729:para:fs-idm80507680",
+      "occurrence": 0,
+      "opId": "ch06/m68729/003.op8",
+      "category": "term",
+      "rulingId": "node"
+    },
+    {
+      "chapter": 6,
+      "module": "m68729",
+      "segmentId": "m68729:para:fs-idm80507680",
+      "occurrence": 0,
+      "opId": "ch06/m68729/003.op9",
+      "category": "agreement",
+      "rulingId": "node"
+    },
+    {
+      "chapter": 6,
+      "module": "m68732",
+      "segmentId": "m68732:para:fs-idp4750336",
+      "occurrence": 0,
+      "opId": "ch06/m68732/001.op16",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 6,
+      "module": "m68732",
+      "segmentId": "m68732:para:fs-idp4750336",
+      "occurrence": 0,
+      "opId": "ch06/m68732/001.op17",
+      "category": "agreement",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 6,
+      "module": "m68732",
+      "segmentId": "m68732:para:fs-idp245260368",
+      "occurrence": 0,
+      "opId": "ch06/m68732/001.op3",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 6,
+      "module": "m68732",
+      "segmentId": "m68732:para:fs-idp245260368",
+      "occurrence": 0,
+      "opId": "ch06/m68732/001.op4",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 6,
+      "module": "m68732",
+      "segmentId": "m68732:para:fs-idp245260368",
+      "occurrence": 0,
+      "opId": "ch06/m68732/001.op5",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 6,
+      "module": "m68732",
+      "segmentId": "m68732:para:fs-idp245260368",
+      "occurrence": 0,
+      "opId": "ch06/m68732/001.op6",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 6,
+      "module": "m68732",
+      "segmentId": "m68732:para:fs-idp245260368",
+      "occurrence": 0,
+      "opId": "ch06/m68732/001.op7",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 6,
+      "module": "m68732",
+      "segmentId": "m68732:para:fs-idp245260368",
+      "occurrence": 0,
+      "opId": "ch06/m68732/001.op8",
+      "category": "agreement",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 6,
+      "module": "m68734",
+      "segmentId": "m68734:para:fs-idp66116416",
+      "occurrence": 0,
+      "opId": "ch06/m68734/003.op8",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 6,
+      "module": "m68734",
+      "segmentId": "m68734:para:fs-idp66116416",
+      "occurrence": 0,
+      "opId": "ch06/m68734/003.op9",
+      "category": "agreement",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 6,
+      "module": "m68735",
+      "segmentId": "m68735:para:fs-idm83408752",
+      "occurrence": 0,
+      "opId": "ch06/m68735/002.op2",
+      "category": "term",
+      "rulingId": "valence-shell"
+    },
+    {
+      "chapter": 6,
+      "module": "m68735",
+      "segmentId": "m68735:para:fs-idm83408752",
+      "occurrence": 0,
+      "opId": "ch06/m68735/002.op3",
+      "category": "agreement",
+      "rulingId": "valence-shell"
+    },
+    {
+      "chapter": 7,
+      "module": "m68737",
+      "segmentId": "m68737:problem:fs-idp57837184",
+      "occurrence": 0,
+      "opId": "ch07/m68737/003.op7",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68737",
+      "segmentId": "m68737:problem:fs-idp57837184",
+      "occurrence": 0,
+      "opId": "ch07/m68737/003.op9",
+      "category": "agreement",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68738",
+      "segmentId": "m68738:para:fs-idm49461456",
+      "occurrence": 0,
+      "opId": "ch07/m68738/002.op1",
+      "category": "term",
+      "rulingId": "valence-shell"
+    },
+    {
+      "chapter": 7,
+      "module": "m68738",
+      "segmentId": "m68738:para:fs-idm49461456",
+      "occurrence": 0,
+      "opId": "ch07/m68738/002.op2",
+      "category": "agreement",
+      "rulingId": "valence-shell"
+    },
+    {
+      "chapter": 7,
+      "module": "m68739",
+      "segmentId": "m68739:solution:fs-idm7862384",
+      "occurrence": 0,
+      "opId": "ch07/m68739/012.op6",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68739",
+      "segmentId": "m68739:solution:fs-idm7862384",
+      "occurrence": 0,
+      "opId": "ch07/m68739/012.op7",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68739",
+      "segmentId": "m68739:solution:fs-idm7862384",
+      "occurrence": 0,
+      "opId": "ch07/m68739/012.op8",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68739",
+      "segmentId": "m68739:solution:fs-idm7862384",
+      "occurrence": 0,
+      "opId": "ch07/m68739/012.op9",
+      "category": "agreement",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:para:fs-idp63607984",
+      "occurrence": 0,
+      "opId": "ch07/m68740/001.op13",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:para:fs-idp63607984",
+      "occurrence": 0,
+      "opId": "ch07/m68740/001.op14",
+      "category": "agreement",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:para:fs-idp65521520",
+      "occurrence": 0,
+      "opId": "ch07/m68740/001.op15",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:para:fs-idp65521520",
+      "occurrence": 0,
+      "opId": "ch07/m68740/001.op16",
+      "category": "agreement",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:para:fs-idm16217792",
+      "occurrence": 0,
+      "opId": "ch07/m68740/001.op3",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:para:fs-idm16217792",
+      "occurrence": 0,
+      "opId": "ch07/m68740/001.op4",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:para:fs-idm16217792",
+      "occurrence": 0,
+      "opId": "ch07/m68740/001.op5",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:para:fs-idm16217792",
+      "occurrence": 0,
+      "opId": "ch07/m68740/001.op6",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:para:fs-idm16217792",
+      "occurrence": 0,
+      "opId": "ch07/m68740/001.op7",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:para:fs-idm16217792",
+      "occurrence": 0,
+      "opId": "ch07/m68740/001.op8",
+      "category": "agreement",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:para:fs-idm16217792",
+      "occurrence": 0,
+      "opId": "ch07/m68740/001.op9",
+      "category": "agreement",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:item:fs-idm30182496-item-2",
+      "occurrence": 0,
+      "opId": "ch07/m68740/002.op1",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:para:fs-idp245106544",
+      "occurrence": 0,
+      "opId": "ch07/m68740/002.op10",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:para:fs-idp245106544",
+      "occurrence": 0,
+      "opId": "ch07/m68740/002.op11",
+      "category": "agreement",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:item:fs-idm30182496-item-2",
+      "occurrence": 0,
+      "opId": "ch07/m68740/002.op2",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:item:fs-idm30182496-item-2",
+      "occurrence": 0,
+      "opId": "ch07/m68740/002.op3",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:item:fs-idm30182496-item-2",
+      "occurrence": 0,
+      "opId": "ch07/m68740/002.op4",
+      "category": "agreement",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:item:fs-idm30182496-item-3",
+      "occurrence": 0,
+      "opId": "ch07/m68740/002.op5",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:item:fs-idm30182496-item-3",
+      "occurrence": 0,
+      "opId": "ch07/m68740/002.op6",
+      "category": "agreement",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:item:fs-idm30182496-item-3",
+      "occurrence": 0,
+      "opId": "ch07/m68740/002.op7",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:para:fs-idp26752688",
+      "occurrence": 0,
+      "opId": "ch07/m68740/002.op8",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:para:fs-idp26752688",
+      "occurrence": 0,
+      "opId": "ch07/m68740/002.op9",
+      "category": "agreement",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:item:fs-idp8784496-item-2",
+      "occurrence": 0,
+      "opId": "ch07/m68740/003.op1",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:item:fs-idp8784496-item-2",
+      "occurrence": 0,
+      "opId": "ch07/m68740/003.op2",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:item:fs-idp8784496-item-2",
+      "occurrence": 0,
+      "opId": "ch07/m68740/003.op3",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:item:fs-idp8784496-item-2",
+      "occurrence": 0,
+      "opId": "ch07/m68740/003.op4",
+      "category": "agreement",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:item:fs-idp8784496-item-3",
+      "occurrence": 0,
+      "opId": "ch07/m68740/003.op5",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:item:fs-idp8784496-item-3",
+      "occurrence": 0,
+      "opId": "ch07/m68740/003.op6",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:item:fs-idp8784496-item-3",
+      "occurrence": 0,
+      "opId": "ch07/m68740/003.op7",
+      "category": "agreement",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 7,
+      "module": "m68740",
+      "segmentId": "m68740:item:fs-idp8784496-item-3",
+      "occurrence": 0,
+      "opId": "ch07/m68740/003.op8",
+      "category": "agreement",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 8,
+      "module": "m68746",
+      "segmentId": "m68746:para:fs-idp103363168",
+      "occurrence": 0,
+      "opId": "ch08/m68746/002.op10",
+      "category": "agreement",
+      "rulingId": "resonance-structure"
+    },
+    {
+      "chapter": 8,
+      "module": "m68746",
+      "segmentId": "m68746:caption:CNX_Chem_08_03_C6H6-caption",
+      "occurrence": 0,
+      "opId": "ch08/m68746/002.op3",
+      "category": "term",
+      "rulingId": "resonance-form"
+    },
+    {
+      "chapter": 8,
+      "module": "m68746",
+      "segmentId": "m68746:caption:CNX_Chem_08_03_C6H6-caption",
+      "occurrence": 0,
+      "opId": "ch08/m68746/002.op4",
+      "category": "agreement",
+      "rulingId": "resonance-form"
+    },
+    {
+      "chapter": 8,
+      "module": "m68746",
+      "segmentId": "m68746:caption:CNX_Chem_08_03_C6H6-caption",
+      "occurrence": 0,
+      "opId": "ch08/m68746/002.op5",
+      "category": "agreement",
+      "rulingId": "resonance-form"
+    },
+    {
+      "chapter": 8,
+      "module": "m68746",
+      "segmentId": "m68746:para:fs-idp103363168",
+      "occurrence": 0,
+      "opId": "ch08/m68746/002.op8",
+      "category": "term",
+      "rulingId": "resonance-structure"
+    },
+    {
+      "chapter": 8,
+      "module": "m68747",
+      "segmentId": "m68747:para:fs-idm84042704",
+      "occurrence": 0,
+      "opId": "ch08/m68747/004.op10",
+      "category": "agreement",
+      "rulingId": "bond-order"
+    },
+    {
+      "chapter": 8,
+      "module": "m68747",
+      "segmentId": "m68747:para:fs-idm72448704",
+      "occurrence": 0,
+      "opId": "ch08/m68747/004.op13",
+      "category": "term",
+      "rulingId": "bond-order"
+    },
+    {
+      "chapter": 8,
+      "module": "m68747",
+      "segmentId": "m68747:para:fs-idm72448704",
+      "occurrence": 0,
+      "opId": "ch08/m68747/004.op14",
+      "category": "term",
+      "rulingId": "bond-order"
+    },
+    {
+      "chapter": 8,
+      "module": "m68747",
+      "segmentId": "m68747:para:fs-idm72448704",
+      "occurrence": 0,
+      "opId": "ch08/m68747/004.op15",
+      "category": "term",
+      "rulingId": "bond-order"
+    },
+    {
+      "chapter": 8,
+      "module": "m68747",
+      "segmentId": "m68747:para:fs-idm72448704",
+      "occurrence": 0,
+      "opId": "ch08/m68747/004.op16",
+      "category": "agreement",
+      "rulingId": "bond-order"
+    },
+    {
+      "chapter": 8,
+      "module": "m68747",
+      "segmentId": "m68747:para:fs-idm84042704",
+      "occurrence": 0,
+      "opId": "ch08/m68747/004.op4",
+      "category": "term",
+      "rulingId": "bond-order"
+    },
+    {
+      "chapter": 8,
+      "module": "m68747",
+      "segmentId": "m68747:para:fs-idm84042704",
+      "occurrence": 0,
+      "opId": "ch08/m68747/004.op5",
+      "category": "term",
+      "rulingId": "bond-order"
+    },
+    {
+      "chapter": 8,
+      "module": "m68747",
+      "segmentId": "m68747:para:fs-idm84042704",
+      "occurrence": 0,
+      "opId": "ch08/m68747/004.op6",
+      "category": "term",
+      "rulingId": "bond-order"
+    },
+    {
+      "chapter": 8,
+      "module": "m68747",
+      "segmentId": "m68747:para:fs-idm84042704",
+      "occurrence": 0,
+      "opId": "ch08/m68747/004.op7",
+      "category": "term",
+      "rulingId": "bond-order"
+    },
+    {
+      "chapter": 8,
+      "module": "m68747",
+      "segmentId": "m68747:para:fs-idm84042704",
+      "occurrence": 0,
+      "opId": "ch08/m68747/004.op8",
+      "category": "term",
+      "rulingId": "bond-order"
+    },
+    {
+      "chapter": 8,
+      "module": "m68747",
+      "segmentId": "m68747:para:fs-idm84042704",
+      "occurrence": 0,
+      "opId": "ch08/m68747/004.op9",
+      "category": "term",
+      "rulingId": "bond-order"
+    },
+    {
+      "chapter": 8,
+      "module": "m68747",
+      "segmentId": "m68747:para:fs-idm113916160",
+      "occurrence": 0,
+      "opId": "ch08/m68747/005.op10",
+      "category": "agreement",
+      "rulingId": "bond-order"
+    },
+    {
+      "chapter": 8,
+      "module": "m68747",
+      "segmentId": "m68747:para:fs-idm113916160",
+      "occurrence": 0,
+      "opId": "ch08/m68747/005.op9",
+      "category": "term",
+      "rulingId": "bond-order"
+    },
+    {
+      "chapter": 9,
+      "module": "m68751",
+      "segmentId": "m68751:para:fs-idp54320688",
+      "occurrence": 0,
+      "opId": "ch09/m68751/003.op1",
+      "category": "term",
+      "rulingId": "temperature"
+    },
+    {
+      "chapter": 9,
+      "module": "m68751",
+      "segmentId": "m68751:para:fs-idp54320688",
+      "occurrence": 0,
+      "opId": "ch09/m68751/003.op2",
+      "category": "agreement",
+      "rulingId": "temperature"
+    },
+    {
+      "chapter": 9,
+      "module": "m68758",
+      "segmentId": "m68758:alt:fs-idm82315616-alt",
+      "occurrence": 0,
+      "opId": "ch09/m68758/001.op7",
+      "category": "term",
+      "rulingId": "temperature"
+    },
+    {
+      "chapter": 9,
+      "module": "m68758",
+      "segmentId": "m68758:alt:fs-idm82315616-alt",
+      "occurrence": 0,
+      "opId": "ch09/m68758/001.op8",
+      "category": "agreement",
+      "rulingId": "temperature"
+    },
+    {
+      "chapter": 9,
+      "module": "m68759",
+      "segmentId": "m68759:para:fs-idm3555504",
+      "occurrence": 0,
+      "opId": "ch09/m68759/001.op2",
+      "category": "term",
+      "rulingId": "temperature"
+    },
+    {
+      "chapter": 9,
+      "module": "m68759",
+      "segmentId": "m68759:para:fs-idm3555504",
+      "occurrence": 0,
+      "opId": "ch09/m68759/001.op3",
+      "category": "agreement",
+      "rulingId": "temperature"
+    },
+    {
+      "chapter": 9,
+      "module": "m68759",
+      "segmentId": "m68759:problem:fs-idm50151104",
+      "occurrence": 0,
+      "opId": "ch09/m68759/001.op4",
+      "category": "term",
+      "rulingId": "temperature"
+    },
+    {
+      "chapter": 9,
+      "module": "m68759",
+      "segmentId": "m68759:problem:fs-idm50151104",
+      "occurrence": 0,
+      "opId": "ch09/m68759/001.op5",
+      "category": "agreement",
+      "rulingId": "temperature"
+    },
+    {
+      "chapter": 10,
+      "module": "m68761",
+      "segmentId": "m68761:para:fs-idm93742928",
+      "occurrence": 0,
+      "opId": "ch10/m68761/003.op3",
+      "category": "term",
+      "rulingId": "isomers"
+    },
+    {
+      "chapter": 10,
+      "module": "m68761",
+      "segmentId": "m68761:para:fs-idm93742928",
+      "occurrence": 0,
+      "opId": "ch10/m68761/003.op4",
+      "category": "agreement",
+      "rulingId": "isomers"
+    },
+    {
+      "chapter": 10,
+      "module": "m68769",
+      "segmentId": "m68769:abstract-item:abstract-item-1",
+      "occurrence": 0,
+      "opId": "ch10/m68769/001.op1",
+      "category": "term",
+      "rulingId": "phase-diagram"
+    },
+    {
+      "chapter": 10,
+      "module": "m68769",
+      "segmentId": "m68769:caption:CNX_Chem_10_04_H2OPhasDi2-caption",
+      "occurrence": 0,
+      "opId": "ch10/m68769/001.op17",
+      "category": "term",
+      "rulingId": "phase-diagram"
+    },
+    {
+      "chapter": 10,
+      "module": "m68769",
+      "segmentId": "m68769:caption:CNX_Chem_10_04_H2OPhasDi2-caption",
+      "occurrence": 0,
+      "opId": "ch10/m68769/001.op18",
+      "category": "agreement",
+      "rulingId": "phase-diagram"
+    },
+    {
+      "chapter": 10,
+      "module": "m68769",
+      "segmentId": "m68769:abstract-item:abstract-item-1",
+      "occurrence": 0,
+      "opId": "ch10/m68769/001.op2",
+      "category": "agreement",
+      "rulingId": "phase-diagram"
+    },
+    {
+      "chapter": 10,
+      "module": "m68773",
+      "segmentId": "m68773:para:fs-idp83773936",
+      "occurrence": 0,
+      "opId": "ch10/m68773/013.op2",
+      "category": "term",
+      "rulingId": "diffract"
+    },
+    {
+      "chapter": 10,
+      "module": "m68773",
+      "segmentId": "m68773:para:fs-idp83773936",
+      "occurrence": 0,
+      "opId": "ch10/m68773/013.op3",
+      "category": "agreement",
+      "rulingId": "diffract"
+    },
+    {
+      "chapter": 10,
+      "module": "m68773",
+      "segmentId": "m68773:problem:fs-idp173591264",
+      "occurrence": 0,
+      "opId": "ch10/m68773/017.op1",
+      "category": "term",
+      "rulingId": "diffract"
+    },
+    {
+      "chapter": 10,
+      "module": "m68773",
+      "segmentId": "m68773:problem:fs-idp173591264",
+      "occurrence": 0,
+      "opId": "ch10/m68773/017.op2",
+      "category": "agreement",
+      "rulingId": "diffract"
+    },
+    {
+      "chapter": 10,
+      "module": "m68773",
+      "segmentId": "m68773:problem:fs-idp80463840",
+      "occurrence": 0,
+      "opId": "ch10/m68773/017.op4",
+      "category": "term",
+      "rulingId": "diffract"
+    },
+    {
+      "chapter": 10,
+      "module": "m68773",
+      "segmentId": "m68773:problem:fs-idp80463840",
+      "occurrence": 0,
+      "opId": "ch10/m68773/017.op5",
+      "category": "agreement",
+      "rulingId": "diffract"
+    },
+    {
+      "chapter": 11,
+      "module": "m68783",
+      "segmentId": "m68783:para:fs-idm11969360",
+      "occurrence": 0,
+      "opId": "ch11/m68783/005.op14",
+      "category": "agreement",
+      "rulingId": "temperature"
+    },
+    {
+      "chapter": 11,
+      "module": "m68783",
+      "segmentId": "m68783:para:fs-idm11969360",
+      "occurrence": 0,
+      "opId": "ch11/m68783/005.op6",
+      "category": "term",
+      "rulingId": "temperature"
+    },
+    {
+      "chapter": 11,
+      "module": "m68783",
+      "segmentId": "m68783:caption:CNX_Chem_11_04_waterpur-caption",
+      "occurrence": 0,
+      "opId": "ch11/m68783/010.op19",
+      "category": "term",
+      "rulingId": "osmosis"
+    },
+    {
+      "chapter": 11,
+      "module": "m68783",
+      "segmentId": "m68783:caption:CNX_Chem_11_04_waterpur-caption",
+      "occurrence": 0,
+      "opId": "ch11/m68783/010.op20",
+      "category": "agreement",
+      "rulingId": "osmosis"
+    },
+    {
+      "chapter": 11,
+      "module": "m68783",
+      "segmentId": "m68783:alt:fs-idp117713424-alt",
+      "occurrence": 0,
+      "opId": "ch11/m68783/010.op21",
+      "category": "term",
+      "rulingId": "osmosis"
+    },
+    {
+      "chapter": 11,
+      "module": "m68783",
+      "segmentId": "m68783:alt:fs-idp117713424-alt",
+      "occurrence": 0,
+      "opId": "ch11/m68783/010.op22",
+      "category": "agreement",
+      "rulingId": "osmosis"
+    },
+    {
+      "chapter": 11,
+      "module": "m68783",
+      "segmentId": "m68783:para:fs-idp135138240",
+      "occurrence": 0,
+      "opId": "ch11/m68783/010.op3",
+      "category": "term",
+      "rulingId": "osmosis"
+    },
+    {
+      "chapter": 11,
+      "module": "m68783",
+      "segmentId": "m68783:para:fs-idp135138240",
+      "occurrence": 0,
+      "opId": "ch11/m68783/010.op4",
+      "category": "term",
+      "rulingId": "osmosis"
+    },
+    {
+      "chapter": 11,
+      "module": "m68783",
+      "segmentId": "m68783:para:fs-idp135138240",
+      "occurrence": 0,
+      "opId": "ch11/m68783/010.op5",
+      "category": "agreement",
+      "rulingId": "osmosis"
+    },
+    {
+      "chapter": 11,
+      "module": "m68783",
+      "segmentId": "m68783:note-title:fs-idm17300528-title",
+      "occurrence": 0,
+      "opId": "ch11/m68783/010.op8",
+      "category": "term",
+      "rulingId": "osmosis"
+    },
+    {
+      "chapter": 11,
+      "module": "m68783",
+      "segmentId": "m68783:note-title:fs-idm17300528-title",
+      "occurrence": 0,
+      "opId": "ch11/m68783/010.op9",
+      "category": "agreement",
+      "rulingId": "osmosis"
+    },
+    {
+      "chapter": 11,
+      "module": "m68783",
+      "segmentId": "m68783:problem:fs-idp58484432",
+      "occurrence": 0,
+      "opId": "ch11/m68783/018.op5",
+      "category": "term",
+      "rulingId": "electrolyte"
+    },
+    {
+      "chapter": 11,
+      "module": "m68783",
+      "segmentId": "m68783:problem:fs-idp58484432",
+      "occurrence": 0,
+      "opId": "ch11/m68783/018.op6",
+      "category": "agreement",
+      "rulingId": "electrolyte"
+    },
+    {
+      "chapter": 11,
+      "module": "m68784",
+      "segmentId": "m68784:table-summary:fs-idm28163488-summary",
+      "occurrence": 0,
+      "opId": "ch11/m68784/001.op22",
+      "category": "term",
+      "rulingId": "alloy"
+    },
+    {
+      "chapter": 11,
+      "module": "m68784",
+      "segmentId": "m68784:table-summary:fs-idm28163488-summary",
+      "occurrence": 0,
+      "opId": "ch11/m68784/001.op23",
+      "category": "agreement",
+      "rulingId": "alloy"
+    },
+    {
+      "chapter": 11,
+      "module": "m68784",
+      "segmentId": "m68784:entry:auto-28",
+      "occurrence": 0,
+      "opId": "ch11/m68784/001.op24",
+      "category": "term",
+      "rulingId": "alloy"
+    },
+    {
+      "chapter": 11,
+      "module": "m68784",
+      "segmentId": "m68784:entry:auto-28",
+      "occurrence": 0,
+      "opId": "ch11/m68784/001.op25",
+      "category": "agreement",
+      "rulingId": "alloy"
+    },
+    {
+      "chapter": 11,
+      "module": "m68784",
+      "segmentId": "m68784:para:fs-idm189696128",
+      "occurrence": 0,
+      "opId": "ch11/m68784/002.op4",
+      "category": "term",
+      "rulingId": "product"
+    },
+    {
+      "chapter": 11,
+      "module": "m68784",
+      "segmentId": "m68784:para:fs-idm189696128",
+      "occurrence": 0,
+      "opId": "ch11/m68784/002.op5",
+      "category": "agreement",
+      "rulingId": "product"
+    },
+    {
+      "chapter": 11,
+      "module": "m68784",
+      "segmentId": "m68784:para:fs-idm237216720",
+      "occurrence": 0,
+      "opId": "ch11/m68784/003.op2",
+      "category": "term",
+      "rulingId": "colloid"
+    },
+    {
+      "chapter": 11,
+      "module": "m68784",
+      "segmentId": "m68784:para:fs-idm237216720",
+      "occurrence": 0,
+      "opId": "ch11/m68784/003.op3",
+      "category": "agreement",
+      "rulingId": "colloid"
+    },
+    {
+      "chapter": 11,
+      "module": "m68784",
+      "segmentId": "m68784:problem:fs-idm23750416",
+      "occurrence": 0,
+      "opId": "ch11/m68784/004.op19",
+      "category": "term",
+      "rulingId": "colloid"
+    },
+    {
+      "chapter": 11,
+      "module": "m68784",
+      "segmentId": "m68784:para:fs-idm109704048",
+      "occurrence": 0,
+      "opId": "ch11/m68784/004.op2",
+      "category": "term",
+      "rulingId": "colloid"
+    },
+    {
+      "chapter": 11,
+      "module": "m68784",
+      "segmentId": "m68784:problem:fs-idm23750416",
+      "occurrence": 0,
+      "opId": "ch11/m68784/004.op20",
+      "category": "agreement",
+      "rulingId": "colloid"
+    },
+    {
+      "chapter": 11,
+      "module": "m68784",
+      "segmentId": "m68784:para:fs-idm109704048",
+      "occurrence": 0,
+      "opId": "ch11/m68784/004.op3",
+      "category": "term",
+      "rulingId": "colloid"
+    },
+    {
+      "chapter": 11,
+      "module": "m68784",
+      "segmentId": "m68784:para:fs-idm109704048",
+      "occurrence": 0,
+      "opId": "ch11/m68784/004.op4",
+      "category": "term",
+      "rulingId": "colloid"
+    },
+    {
+      "chapter": 11,
+      "module": "m68784",
+      "segmentId": "m68784:para:fs-idm109704048",
+      "occurrence": 0,
+      "opId": "ch11/m68784/004.op6",
+      "category": "agreement",
+      "rulingId": "colloid"
+    },
+    {
+      "chapter": 12,
+      "module": "m68785",
+      "segmentId": "m68785:para:fs-idp54243872",
+      "occurrence": 0,
+      "opId": "ch12/m68785/001.op2",
+      "category": "term",
+      "rulingId": "product"
+    },
+    {
+      "chapter": 12,
+      "module": "m68785",
+      "segmentId": "m68785:para:fs-idp54243872",
+      "occurrence": 0,
+      "opId": "ch12/m68785/001.op3",
+      "category": "agreement",
+      "rulingId": "product"
+    },
+    {
+      "chapter": 12,
+      "module": "m68791",
+      "segmentId": "m68791:para:fs-idp33836864",
+      "occurrence": 0,
+      "opId": "ch12/m68791/002.op4",
+      "category": "term",
+      "rulingId": "decay"
+    },
+    {
+      "chapter": 12,
+      "module": "m68791",
+      "segmentId": "m68791:para:fs-idp33836864",
+      "occurrence": 0,
+      "opId": "ch12/m68791/002.op5",
+      "category": "agreement",
+      "rulingId": "decay"
+    },
+    {
+      "chapter": 13,
+      "module": "m68801",
+      "segmentId": "m68801:para:fs-idm100326816",
+      "occurrence": 0,
+      "opId": "ch13/m68801/001.op4",
+      "category": "term",
+      "rulingId": "product"
+    },
+    {
+      "chapter": 13,
+      "module": "m68801",
+      "segmentId": "m68801:para:fs-idm100326816",
+      "occurrence": 0,
+      "opId": "ch13/m68801/001.op5",
+      "category": "agreement",
+      "rulingId": "product"
+    },
+    {
+      "chapter": 14,
+      "module": "m68803",
+      "segmentId": "m68803:glossary-def:fs-idp12573120-def",
+      "occurrence": 0,
+      "opId": "ch14/m68803/004.op4",
+      "category": "term",
+      "rulingId": "product"
+    },
+    {
+      "chapter": 14,
+      "module": "m68803",
+      "segmentId": "m68803:glossary-def:fs-idp12573120-def",
+      "occurrence": 0,
+      "opId": "ch14/m68803/004.op5",
+      "category": "agreement",
+      "rulingId": "product"
+    },
+    {
+      "chapter": 15,
+      "module": "m68811",
+      "segmentId": "m68811:problem:fs-idp2651648",
+      "occurrence": 0,
+      "opId": "ch15/m68811/013.op4",
+      "category": "term",
+      "rulingId": "alloy"
+    },
+    {
+      "chapter": 15,
+      "module": "m68811",
+      "segmentId": "m68811:problem:fs-idp2651648",
+      "occurrence": 0,
+      "opId": "ch15/m68811/013.op5",
+      "category": "agreement",
+      "rulingId": "alloy"
+    },
+    {
+      "chapter": 17,
+      "module": "m68822",
+      "segmentId": "m68822:para:fs-idm180176640",
+      "occurrence": 0,
+      "opId": "ch17/m68822/001.op1",
+      "category": "term",
+      "rulingId": "chemical-change"
+    },
+    {
+      "chapter": 17,
+      "module": "m68822",
+      "segmentId": "m68822:para:fs-idm180176640",
+      "occurrence": 0,
+      "opId": "ch17/m68822/001.op2",
+      "category": "agreement",
+      "rulingId": "chemical-change"
+    },
+    {
+      "chapter": 17,
+      "module": "m68823",
+      "segmentId": "m68823:alt:fs-idp160214096-alt",
+      "occurrence": 0,
+      "opId": "ch17/m68823/002.op1",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 17,
+      "module": "m68823",
+      "segmentId": "m68823:alt:fs-idp160214096-alt",
+      "occurrence": 0,
+      "opId": "ch17/m68823/002.op2",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 17,
+      "module": "m68823",
+      "segmentId": "m68823:alt:fs-idp160214096-alt",
+      "occurrence": 0,
+      "opId": "ch17/m68823/002.op3",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 17,
+      "module": "m68823",
+      "segmentId": "m68823:alt:fs-idp160214096-alt",
+      "occurrence": 0,
+      "opId": "ch17/m68823/002.op4",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 17,
+      "module": "m68823",
+      "segmentId": "m68823:alt:fs-idp160214096-alt",
+      "occurrence": 0,
+      "opId": "ch17/m68823/002.op5",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 17,
+      "module": "m68823",
+      "segmentId": "m68823:alt:fs-idp160214096-alt",
+      "occurrence": 0,
+      "opId": "ch17/m68823/002.op6",
+      "category": "agreement",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 17,
+      "module": "m68825",
+      "segmentId": "m68825:para:fs-idm118882144",
+      "occurrence": 0,
+      "opId": "ch17/m68825/002.op10",
+      "category": "term",
+      "rulingId": "anode"
+    },
+    {
+      "chapter": 17,
+      "module": "m68825",
+      "segmentId": "m68825:para:fs-idm118882144",
+      "occurrence": 0,
+      "opId": "ch17/m68825/002.op11",
+      "category": "agreement",
+      "rulingId": "cathode"
+    },
+    {
+      "chapter": 17,
+      "module": "m68825",
+      "segmentId": "m68825:para:fs-idm118882144",
+      "occurrence": 0,
+      "opId": "ch17/m68825/002.op12",
+      "category": "agreement",
+      "rulingId": "anode"
+    },
+    {
+      "chapter": 17,
+      "module": "m68825",
+      "segmentId": "m68825:para:fs-idm98547376",
+      "occurrence": 0,
+      "opId": "ch17/m68825/002.op2",
+      "category": "term",
+      "rulingId": "electrolyte"
+    },
+    {
+      "chapter": 17,
+      "module": "m68825",
+      "segmentId": "m68825:para:fs-idm98547376",
+      "occurrence": 0,
+      "opId": "ch17/m68825/002.op3",
+      "category": "agreement",
+      "rulingId": "electrolyte"
+    },
+    {
+      "chapter": 17,
+      "module": "m68825",
+      "segmentId": "m68825:para:fs-idm118882144",
+      "occurrence": 0,
+      "opId": "ch17/m68825/002.op9",
+      "category": "term",
+      "rulingId": "cathode"
+    },
+    {
+      "chapter": 17,
+      "module": "m68825",
+      "segmentId": "m68825:glossary-def:fs-idm210620784-def",
+      "occurrence": 0,
+      "opId": "ch17/m68825/004.op5",
+      "category": "term",
+      "rulingId": "dry-cell"
+    },
+    {
+      "chapter": 17,
+      "module": "m68825",
+      "segmentId": "m68825:glossary-def:fs-idm210620784-def",
+      "occurrence": 0,
+      "opId": "ch17/m68825/004.op6",
+      "category": "term",
+      "rulingId": "dry-cell"
+    },
+    {
+      "chapter": 17,
+      "module": "m68825",
+      "segmentId": "m68825:glossary-def:fs-idm210620784-def",
+      "occurrence": 0,
+      "opId": "ch17/m68825/004.op7",
+      "category": "term",
+      "rulingId": "dry-cell"
+    },
+    {
+      "chapter": 17,
+      "module": "m68825",
+      "segmentId": "m68825:glossary-def:fs-idm210620784-def",
+      "occurrence": 0,
+      "opId": "ch17/m68825/004.op9",
+      "category": "agreement",
+      "rulingId": "dry-cell"
+    },
+    {
+      "chapter": 17,
+      "module": "m68826",
+      "segmentId": "m68826:para:fs-idm71940736",
+      "occurrence": 0,
+      "opId": "ch17/m68826/001.op10",
+      "category": "term",
+      "rulingId": "anode"
+    },
+    {
+      "chapter": 17,
+      "module": "m68826",
+      "segmentId": "m68826:para:fs-idm71940736",
+      "occurrence": 0,
+      "opId": "ch17/m68826/001.op11",
+      "category": "agreement",
+      "rulingId": "anode"
+    },
+    {
+      "chapter": 17,
+      "module": "m68826",
+      "segmentId": "m68826:para:fs-idm71940736",
+      "occurrence": 0,
+      "opId": "ch17/m68826/001.op8",
+      "category": "term",
+      "rulingId": "anode"
+    },
+    {
+      "chapter": 17,
+      "module": "m68826",
+      "segmentId": "m68826:para:fs-idp43911248",
+      "occurrence": 0,
+      "opId": "ch17/m68826/002.op4",
+      "category": "term",
+      "rulingId": "sacrificial-anode"
+    },
+    {
+      "chapter": 17,
+      "module": "m68826",
+      "segmentId": "m68826:para:fs-idp43911248",
+      "occurrence": 0,
+      "opId": "ch17/m68826/002.op6",
+      "category": "agreement",
+      "rulingId": "sacrificial-anode"
+    },
+    {
+      "chapter": 17,
+      "module": "m68827",
+      "segmentId": "m68827:problem:fs-idp7133216",
+      "occurrence": 0,
+      "opId": "ch17/m68827/004.op1",
+      "category": "term",
+      "rulingId": "product"
+    },
+    {
+      "chapter": 17,
+      "module": "m68827",
+      "segmentId": "m68827:problem:fs-idp7133216",
+      "occurrence": 0,
+      "opId": "ch17/m68827/004.op3",
+      "category": "agreement",
+      "rulingId": "product"
+    },
+    {
+      "chapter": 17,
+      "module": "m68827",
+      "segmentId": "m68827:problem:fs-idm92543968",
+      "occurrence": 0,
+      "opId": "ch17/m68827/004.op4",
+      "category": "term",
+      "rulingId": "alloy"
+    },
+    {
+      "chapter": 17,
+      "module": "m68827",
+      "segmentId": "m68827:problem:fs-idm92543968",
+      "occurrence": 0,
+      "opId": "ch17/m68827/004.op5",
+      "category": "agreement",
+      "rulingId": "alloy"
+    },
+    {
+      "chapter": 18,
+      "module": "m68829",
+      "segmentId": "m68829:para:fs-idp261367120",
+      "occurrence": 0,
+      "opId": "ch18/m68829/004.op1",
+      "category": "term",
+      "rulingId": "alloy"
+    },
+    {
+      "chapter": 18,
+      "module": "m68829",
+      "segmentId": "m68829:para:fs-idp103146080",
+      "occurrence": 0,
+      "opId": "ch18/m68829/004.op10",
+      "category": "agreement",
+      "rulingId": "alloy"
+    },
+    {
+      "chapter": 18,
+      "module": "m68829",
+      "segmentId": "m68829:para:fs-idp103146080",
+      "occurrence": 0,
+      "opId": "ch18/m68829/004.op11",
+      "category": "agreement",
+      "rulingId": "anode"
+    },
+    {
+      "chapter": 18,
+      "module": "m68829",
+      "segmentId": "m68829:para:fs-idp261367120",
+      "occurrence": 0,
+      "opId": "ch18/m68829/004.op2",
+      "category": "agreement",
+      "rulingId": "alloy"
+    },
+    {
+      "chapter": 18,
+      "module": "m68829",
+      "segmentId": "m68829:para:fs-idp103146080",
+      "occurrence": 0,
+      "opId": "ch18/m68829/004.op6",
+      "category": "term",
+      "rulingId": "alloy"
+    },
+    {
+      "chapter": 18,
+      "module": "m68829",
+      "segmentId": "m68829:para:fs-idp103146080",
+      "occurrence": 0,
+      "opId": "ch18/m68829/004.op9",
+      "category": "term",
+      "rulingId": "anode"
+    },
+    {
+      "chapter": 18,
+      "module": "m68829",
+      "segmentId": "m68829:para:fs-idp35962512",
+      "occurrence": 0,
+      "opId": "ch18/m68829/005.op2",
+      "category": "term",
+      "rulingId": "anode"
+    },
+    {
+      "chapter": 18,
+      "module": "m68829",
+      "segmentId": "m68829:para:fs-idp35962512",
+      "occurrence": 0,
+      "opId": "ch18/m68829/005.op3",
+      "category": "agreement",
+      "rulingId": "anode"
+    },
+    {
+      "chapter": 18,
+      "module": "m68829",
+      "segmentId": "m68829:para:fs-idp40395408",
+      "occurrence": 0,
+      "opId": "ch18/m68829/007.op1",
+      "category": "term",
+      "rulingId": "alloy"
+    },
+    {
+      "chapter": 18,
+      "module": "m68829",
+      "segmentId": "m68829:para:fs-idp40395408",
+      "occurrence": 0,
+      "opId": "ch18/m68829/007.op2",
+      "category": "agreement",
+      "rulingId": "alloy"
+    },
+    {
+      "chapter": 18,
+      "module": "m68830",
+      "segmentId": "m68830:para:fs-idp122485616",
+      "occurrence": 0,
+      "opId": "ch18/m68830/001.op20",
+      "category": "term-sense",
+      "rulingId": "cell"
+    },
+    {
+      "chapter": 18,
+      "module": "m68830",
+      "segmentId": "m68830:para:fs-idp122485616",
+      "occurrence": 0,
+      "opId": "ch18/m68830/001.op21",
+      "category": "term-sense",
+      "rulingId": "cell"
+    },
+    {
+      "chapter": 18,
+      "module": "m68830",
+      "segmentId": "m68830:para:fs-idp122485616",
+      "occurrence": 0,
+      "opId": "ch18/m68830/001.op22",
+      "category": "term-sense",
+      "rulingId": "cell"
+    },
+    {
+      "chapter": 18,
+      "module": "m68830",
+      "segmentId": "m68830:para:fs-idp122485616",
+      "occurrence": 0,
+      "opId": "ch18/m68830/001.op23",
+      "category": "term-sense",
+      "rulingId": "cell"
+    },
+    {
+      "chapter": 18,
+      "module": "m68830",
+      "segmentId": "m68830:para:fs-idp122485616",
+      "occurrence": 0,
+      "opId": "ch18/m68830/001.op24",
+      "category": "term-sense",
+      "rulingId": "cell"
+    },
+    {
+      "chapter": 18,
+      "module": "m68830",
+      "segmentId": "m68830:para:fs-idp122485616",
+      "occurrence": 0,
+      "opId": "ch18/m68830/001.op25",
+      "category": "agreement",
+      "rulingId": "cell"
+    },
+    {
+      "chapter": 18,
+      "module": "m68830",
+      "segmentId": "m68830:para:fs-idp122485616",
+      "occurrence": 0,
+      "opId": "ch18/m68830/001.op26",
+      "category": "agreement",
+      "rulingId": "cell"
+    },
+    {
+      "chapter": 18,
+      "module": "m68830",
+      "segmentId": "m68830:caption:CNX_Chem_18_02_HallHerCell-caption",
+      "occurrence": 0,
+      "opId": "ch18/m68830/002.op11",
+      "category": "agreement",
+      "rulingId": "electrolytic-cell"
+    },
+    {
+      "chapter": 18,
+      "module": "m68830",
+      "segmentId": "m68830:alt:fs-idp293911136-alt",
+      "occurrence": 0,
+      "opId": "ch18/m68830/002.op12",
+      "category": "term",
+      "rulingId": "anode"
+    },
+    {
+      "chapter": 18,
+      "module": "m68830",
+      "segmentId": "m68830:alt:fs-idp293911136-alt",
+      "occurrence": 0,
+      "opId": "ch18/m68830/002.op13",
+      "category": "term",
+      "rulingId": "anode"
+    },
+    {
+      "chapter": 18,
+      "module": "m68830",
+      "segmentId": "m68830:alt:fs-idp293911136-alt",
+      "occurrence": 0,
+      "opId": "ch18/m68830/002.op14",
+      "category": "term",
+      "rulingId": "anode"
+    },
+    {
+      "chapter": 18,
+      "module": "m68830",
+      "segmentId": "m68830:alt:fs-idp293911136-alt",
+      "occurrence": 0,
+      "opId": "ch18/m68830/002.op16",
+      "category": "agreement",
+      "rulingId": "anode"
+    },
+    {
+      "chapter": 18,
+      "module": "m68830",
+      "segmentId": "m68830:caption:CNX_Chem_18_02_HallHerCell-caption",
+      "occurrence": 0,
+      "opId": "ch18/m68830/002.op8",
+      "category": "term",
+      "rulingId": "electrolytic-cell"
+    },
+    {
+      "chapter": 18,
+      "module": "m68830",
+      "segmentId": "m68830:glossary-def:fs-idp11434288-def",
+      "occurrence": 0,
+      "opId": "ch18/m68830/004.op2",
+      "category": "term-sense",
+      "rulingId": "cell"
+    },
+    {
+      "chapter": 18,
+      "module": "m68830",
+      "segmentId": "m68830:glossary-def:fs-idp11434288-def",
+      "occurrence": 0,
+      "opId": "ch18/m68830/004.op3",
+      "category": "agreement",
+      "rulingId": "cell"
+    },
+    {
+      "chapter": 18,
+      "module": "m68830",
+      "segmentId": "m68830:glossary-def:fs-idp11434288-def",
+      "occurrence": 0,
+      "opId": "ch18/m68830/004.op4",
+      "category": "agreement",
+      "rulingId": "cell"
+    },
+    {
+      "chapter": 18,
+      "module": "m68831",
+      "segmentId": "m68831:para:fs-idp13738608",
+      "occurrence": 0,
+      "opId": "ch18/m68831/004.op5",
+      "category": "term",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 18,
+      "module": "m68831",
+      "segmentId": "m68831:para:fs-idp13738608",
+      "occurrence": 0,
+      "opId": "ch18/m68831/004.op6",
+      "category": "agreement",
+      "rulingId": "atom"
+    },
+    {
+      "chapter": 19,
+      "module": "m68842",
+      "segmentId": "m68842:para:fs-idm265294720",
+      "occurrence": 0,
+      "opId": "ch19/m68842/004.op10",
+      "category": "term",
+      "rulingId": "alloy"
+    },
+    {
+      "chapter": 19,
+      "module": "m68842",
+      "segmentId": "m68842:para:fs-idm265294720",
+      "occurrence": 0,
+      "opId": "ch19/m68842/004.op11",
+      "category": "agreement",
+      "rulingId": "alloy"
+    },
+    {
+      "chapter": 19,
+      "module": "m68842",
+      "segmentId": "m68842:problem:fs-idm194248816",
+      "occurrence": 0,
+      "opId": "ch19/m68842/009.op2",
+      "category": "term-sense",
+      "rulingId": "cell"
+    },
+    {
+      "chapter": 19,
+      "module": "m68842",
+      "segmentId": "m68842:problem:fs-idm194248816",
+      "occurrence": 0,
+      "opId": "ch19/m68842/009.op3",
+      "category": "agreement",
+      "rulingId": "cell"
+    },
+    {
+      "chapter": 19,
+      "module": "m68843",
+      "segmentId": "m68843:para:fs-idp93768928",
+      "occurrence": 0,
+      "opId": "ch19/m68843/002.op6",
+      "category": "term",
+      "rulingId": "product"
+    },
+    {
+      "chapter": 19,
+      "module": "m68843",
+      "segmentId": "m68843:para:fs-idp93768928",
+      "occurrence": 0,
+      "opId": "ch19/m68843/002.op7",
+      "category": "agreement",
+      "rulingId": "product"
+    },
+    {
+      "chapter": 19,
+      "module": "m68843",
+      "segmentId": "m68843:caption:CNX_Chem_19_02_CatConvert-caption",
+      "occurrence": 0,
+      "opId": "ch19/m68843/003.op3",
+      "category": "term",
+      "rulingId": "product"
+    },
+    {
+      "chapter": 19,
+      "module": "m68843",
+      "segmentId": "m68843:caption:CNX_Chem_19_02_CatConvert-caption",
+      "occurrence": 0,
+      "opId": "ch19/m68843/003.op4",
+      "category": "agreement",
+      "rulingId": "product"
+    },
+    {
+      "chapter": 19,
+      "module": "m68843",
+      "segmentId": "m68843:para:fs-idp158915696",
+      "occurrence": 0,
+      "opId": "ch19/m68843/003.op5",
+      "category": "term",
+      "rulingId": "chelate"
+    },
+    {
+      "chapter": 19,
+      "module": "m68843",
+      "segmentId": "m68843:para:fs-idp158915696",
+      "occurrence": 0,
+      "opId": "ch19/m68843/003.op6",
+      "category": "term",
+      "rulingId": "chelate"
+    },
+    {
+      "chapter": 19,
+      "module": "m68843",
+      "segmentId": "m68843:para:fs-idp158915696",
+      "occurrence": 0,
+      "opId": "ch19/m68843/003.op7",
+      "category": "agreement",
+      "rulingId": "chelate"
+    },
+    {
+      "chapter": 19,
+      "module": "m68843",
+      "segmentId": "m68843:para:fs-idp158915696",
+      "occurrence": 0,
+      "opId": "ch19/m68843/003.op8",
+      "category": "agreement",
+      "rulingId": "chelate"
+    },
+    {
+      "chapter": 19,
+      "module": "m68843",
+      "segmentId": "m68843:item:fs-idp7606384-item-1",
+      "occurrence": 0,
+      "opId": "ch19/m68843/004.op5",
+      "category": "term",
+      "rulingId": "nomenclature"
+    },
+    {
+      "chapter": 19,
+      "module": "m68843",
+      "segmentId": "m68843:item:fs-idp7606384-item-1",
+      "occurrence": 0,
+      "opId": "ch19/m68843/004.op6",
+      "category": "agreement",
+      "rulingId": "nomenclature"
+    },
+    {
+      "chapter": 19,
+      "module": "m68843",
+      "segmentId": "m68843:para:fs-idp51192128",
+      "occurrence": 0,
+      "opId": "ch19/m68843/004.op7",
+      "category": "term",
+      "rulingId": "nomenclature"
+    },
+    {
+      "chapter": 19,
+      "module": "m68843",
+      "segmentId": "m68843:para:fs-idp51192128",
+      "occurrence": 0,
+      "opId": "ch19/m68843/004.op8",
+      "category": "agreement",
+      "rulingId": "nomenclature"
+    },
+    {
+      "chapter": 20,
+      "module": "m68846",
+      "segmentId": "m68846:title:fs-idp52681872-title",
+      "occurrence": 0,
+      "opId": "ch20/m68846/003.op2",
+      "category": "term",
+      "rulingId": "nomenclature"
+    },
+    {
+      "chapter": 20,
+      "module": "m68846",
+      "segmentId": "m68846:title:fs-idp52681872-title",
+      "occurrence": 0,
+      "opId": "ch20/m68846/003.op3",
+      "category": "agreement",
+      "rulingId": "nomenclature"
+    },
+    {
+      "chapter": 20,
+      "module": "m68846",
+      "segmentId": "m68846:alt:fs-idp53238032-alt",
+      "occurrence": 0,
+      "opId": "ch20/m68846/008.op1",
+      "category": "term",
+      "rulingId": "reaction-diagram"
+    },
+    {
+      "chapter": 20,
+      "module": "m68846",
+      "segmentId": "m68846:alt:fs-idp53238032-alt",
+      "occurrence": 0,
+      "opId": "ch20/m68846/008.op2",
+      "category": "agreement",
+      "rulingId": "reaction-diagram"
+    },
+    {
+      "chapter": 20,
+      "module": "m68848",
+      "segmentId": "m68848:para:fs-idp29962352",
+      "occurrence": 0,
+      "opId": "ch20/m68848/001.op7",
+      "category": "term",
+      "rulingId": "product"
+    },
+    {
+      "chapter": 20,
+      "module": "m68848",
+      "segmentId": "m68848:para:fs-idp29962352",
+      "occurrence": 0,
+      "opId": "ch20/m68848/001.op8",
+      "category": "agreement",
+      "rulingId": "product"
+    },
+    {
+      "chapter": 21,
+      "module": "m68856",
+      "segmentId": "m68856:para:fs-idm145034464",
+      "occurrence": 0,
+      "opId": "ch21/m68856/004.op2",
+      "category": "term",
+      "rulingId": "product"
+    },
+    {
+      "chapter": 21,
+      "module": "m68856",
+      "segmentId": "m68856:para:fs-idm145034464",
+      "occurrence": 0,
+      "opId": "ch21/m68856/004.op3",
+      "category": "agreement",
+      "rulingId": "product"
+    },
+    {
+      "chapter": 21,
+      "module": "m68856",
+      "segmentId": "m68856:glossary-def:fs-idm220735792-def",
+      "occurrence": 0,
+      "opId": "ch21/m68856/006.op4",
+      "category": "term",
+      "rulingId": "temperature"
+    },
+    {
+      "chapter": 21,
+      "module": "m68856",
+      "segmentId": "m68856:glossary-def:fs-idm220735792-def",
+      "occurrence": 0,
+      "opId": "ch21/m68856/006.op5",
+      "category": "agreement",
+      "rulingId": "temperature"
+    }
+  ],
+  "kept": {
+    "changes": 3173,
+    "changesWithoutChapterMetadata": 3172
+  },
+  "integrityFailures": [
+    {
+      "chapter": 5,
+      "module": "m68726",
+      "segmentId": "m68726:para:fs-idm94618544",
+      "occurrence": 0
+    },
+    {
+      "chapter": 8,
+      "module": "m68747",
+      "segmentId": "m68747:para:fs-idm99049568",
+      "occurrence": 0
+    },
+    {
+      "chapter": 10,
+      "module": "m68773",
+      "segmentId": "m68773:para:fs-idp76470512",
+      "occurrence": 0
+    }
+  ],
+  "crossGroupDependent": [
+    "ch02/m68693/003.op4",
+    "ch08/m68747/002.op9",
+    "ch08/m68747/008.op5",
+    "ch10/m68770/007.op10",
+    "ch10/m68770/007.op4",
+    "ch10/m68773/007.op9",
+    "ch14/m68805/004.op2",
+    "ch21/m68854/002.op6"
+  ]
+}
