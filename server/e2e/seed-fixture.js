@@ -111,6 +111,25 @@ try {
   const ancestorsConcept = Number(seedConcept.run('chemistry').lastInsertRowid);
   seedTerm.run(ancestorsConcept, 'en', 'ancestors');
   seedTerm.run(ancestorsConcept, 'is', 'forfeður-e2e-seed');
+
+  // ⚠️ The dedicated editor of server/e2e/suggestion-view.spec.js (G1.23, spec §9.4–9.6), and its
+  // assignment to efnafraedi-2e chapter 2, which that spec owns (helpers/segments.js). A module of a
+  // study book opens at its first serve to a user whose users row holds a user_chapter_assignments
+  // row for the chapter (services/moduleOpenings.js: the row is looked up by provider_id, which is
+  // the token's `sub`), and a module gets suggestions only if it opened strictly after the view's
+  // first switch-on. No other login has a users row, so only this editor's serves open a module.
+  // NO switch row is seeded: the spec switches the view on itself, between its two openings. The
+  // provider id must match SUGGESTION_EDITOR_ID in that spec, and no other spec may use it.
+  const suggestionEditor = db
+    .prepare(
+      `INSERT INTO users (provider_id, provider_username, display_name, role, created_by)
+       VALUES ('90123', 'e2e-suggestion-view-editor', 'E2E Suggestion Editor', 'editor', 'e2e')`
+    )
+    .run();
+  db.prepare(
+    `INSERT INTO user_chapter_assignments (user_id, book_slug, chapter, assigned_by)
+     VALUES (?, 'efnafraedi-2e', 2, 'e2e')`
+  ).run(Number(suggestionEditor.lastInsertRowid));
 } finally {
   db.close();
 }
