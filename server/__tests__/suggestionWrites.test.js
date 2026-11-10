@@ -7,7 +7,7 @@
  * revision sit under that root's 02-mt-revised). Saves go through saveOnServedBase, the one writer.
  * Every "dropped" case has a sibling that is kept, and lists are compared by value.
  */
-import { mkdtempSync, rmSync, mkdirSync, writeFileSync } from 'fs';
+import { mkdtempSync, rmSync, mkdirSync, writeFileSync, readFileSync } from 'fs';
 import { tmpdir } from 'os';
 import path from 'path';
 import crypto from 'crypto';
@@ -98,8 +98,8 @@ let propagationService;
 let db;
 let warn;
 
-function plantLog() {
-  const dir = path.join(root, BOOK, '02-mt-revised', 'ch01');
+function plantLog(book = BOOK) {
+  const dir = path.join(root, book, '02-mt-revised', 'ch01');
   mkdirSync(dir, { recursive: true });
   const rulingBytes = JSON.stringify(RULINGS);
   writeFileSync(path.join(work, 'rulings.json'), rulingBytes);
@@ -661,8 +661,13 @@ describe('rejecting a suggestion group (the route)', () => {
     ].map((g) => g.key);
 
   it('writes one row per change and hides the group on the next serve, for every editor', async () => {
+    save({ editorId: B, editorUsername: 'B', editedContent: 'alpha beta gamma!' });
+    const bRows = db
+      .prepare("SELECT * FROM segment_edits WHERE editor_id = ? AND status = 'pending'")
+      .all(B);
     const before = offeredKeys({});
     expect(before).toEqual([KEY.a, KEY.b]); // control: both groups are offered first
+    expect(offeredKeys({ [SEG]: bRows })).toEqual([KEY.a, KEY.b]); // ... to B with his pending edit too
     const res = await post({});
     expect(res.status).toBe(200);
     expect(res.body).toEqual({ inserted: 2, alreadyClosed: 0 });
@@ -671,10 +676,7 @@ describe('rejecting a suggestion group (the route)', () => {
       { op: OP.a2, ruling: 'r-a', by: A },
     ]);
     // Editor A (no rows) and editor B (a pending edit that took nothing) both lose group a only.
-    save({ editorId: B, editorUsername: 'B', editedContent: 'alpha beta gamma!' });
-    const bRows = db
-      .prepare("SELECT * FROM segment_edits WHERE editor_id = ? AND status = 'pending'")
-      .all(B);
+    expect(bRows).toHaveLength(1);
     expect(offeredKeys({})).toEqual([KEY.b]);
     expect(offeredKeys({ [SEG]: bRows })).toEqual([KEY.b]);
   });
@@ -702,8 +704,11 @@ describe('rejecting a suggestion group (the route)', () => {
     expect(res.body).toEqual({ inserted: 1, alreadyClosed: 1 });
     expect(rejections()).toEqual([{ op: OP.a2, ruling: 'r-a', by: A }]);
     expect(recorded.map((e) => e.items[0].opId)).toEqual([OP.a2]);
+    // a1 was closed, so group a was not on offer: a2's claim is mismatch (kills offeredOpIds = own ops).
+    expect(recorded.map((e) => e.items[0].claim)).toEqual(['mismatch']);
     const sibling = await post({ groupKey: KEY.b });
     expect(sibling.body).toEqual({ inserted: 1, alreadyClosed: 0 });
+    expect(recorded.map((e) => e.items[0].claim)).toEqual(['mismatch', 'validated']); // b was on offer
     expect(rejections().map((r) => r.op)).toEqual([OP.b, OP.a2]); // by op id
   });
 
@@ -715,6 +720,8 @@ describe('rejecting a suggestion group (the route)', () => {
       echoedBaseSha256: sha256Text('some older text'),
       baseMismatch: true,
     });
+    // Offered on the CURRENT base, whatever the screen echoed (kills a lookup on the echoed base).
+    expect(recorded[0].items[0].claim).toBe('validated');
     // A missing and a non-hash base are the same, and never a 400.
     for (const bad of [undefined, 7, 'not-a-hash']) {
       db.exec('DELETE FROM suggestion_rejections');
@@ -789,6 +796,8 @@ describe('rejecting a suggestion group (the route)', () => {
   });
 
   it('organic is 404 with nothing placed and nothing written', async () => {
+    // A real organic log, keyed exactly as the request names it: only the guard in readModuleLog refuses it.
+    plantLog('lifraen-efnafraedi');
     const place = vi.spyOn(servedEdit, 'placeAndMintBase');
     const minted = () => db.prepare('SELECT COUNT(*) AS n FROM served_text_versions').get().n;
     const mintedBefore = minted();
@@ -801,6 +810,7 @@ describe('rejecting a suggestion group (the route)', () => {
     // Control: the study book places and writes.
     expect((await post({})).status).toBe(200);
     expect(place).toHaveBeenCalledTimes(1);
+    rmSync(path.join(root, 'lifraen-efnafraedi'), { recursive: true, force: true });
   });
 
   it.each([
@@ -854,6 +864,85 @@ describe('rejecting a suggestion group (the route)', () => {
     }
   });
 
+  it('R17: a module whose switch is off can still be rejected; rows are written and every claim is mismatch', async () => {
+    // Positive control: the same reject while the module is on reads validated.
+    await post({});
+    expect(recorded.map((e) => e.items[0].claim)).toEqual(['validated', 'validated']);
+    db.exec('DELETE FROM suggestion_rejections');
+    recorded.length = 0;
+    db.prepare(
+      "INSERT INTO book_switch_events (book, switch_name, value, switched_at_ms) VALUES (?, 'suggestion-view', 0, 5000)"
+    ).run(BOOK);
+    const res = await post({});
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({ inserted: 2, alreadyClosed: 0 });
+    expect(rejections().map((r) => r.op)).toEqual([OP.a1, OP.a2]);
+    expect(recorded.map((e) => e.items[0].claim)).toEqual(['mismatch', 'mismatch']);
+  });
+
+  it('a module whose files are gone answers 404 like the save, and writes nothing; a present one rejects', async () => {
+    const enPath = path.join(root, BOOK, '02-for-mt', 'ch01', `${MODULE}-segments.en.md`);
+    const keep = readFileSync(enPath);
+    rmSync(enPath);
+    try {
+      const res = await post({});
+      expect(res.status).toBe(404);
+      expect(rejections()).toEqual([]);
+    } finally {
+      writeFileSync(enPath, keep);
+    }
+    expect((await post({})).status).toBe(200); // control
+  });
+
+  it('a failing offered-set check never fails the reject: rows are written, claims are unverified, a warning names the place', async () => {
+    const ctx = vi.spyOn(suggestionView, 'moduleContext').mockImplementation(() => {
+      throw Object.assign(new Error('boom: secret text'), { code: 'SQLITE_BUSY' });
+    });
+    const res = await post({});
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({ inserted: 2, alreadyClosed: 0 });
+    expect(rejections().map((r) => r.op)).toEqual([OP.a1, OP.a2]);
+    expect(recorded.map((e) => e.items[0].claim)).toEqual(['unverified', 'unverified']);
+    const calls = warn.mock.calls.filter((c) =>
+      JSON.stringify(c).includes('claims are unverified')
+    );
+    expect(calls).toHaveLength(1);
+    expect(calls[0][0]).toEqual({
+      book: BOOK,
+      chapter: 1,
+      moduleId: MODULE,
+      reason: 'SQLITE_BUSY',
+    });
+    expect(JSON.stringify(calls[0])).not.toContain('secret');
+    // Control: the check back, the next reject is validated.
+    ctx.mockRestore();
+    await post({ groupKey: KEY.b });
+    expect(recorded.at(-1).items[0].claim).toBe('validated');
+  });
+
+  it("has the save route's middleware stack, and the check can see a different one", () => {
+    const router = require('../routes/segment-editor');
+    const stackOf = (p) =>
+      router.stack
+        .find((l) => l.route && l.route.path === p && l.route.methods.post)
+        .route.stack.map((l) => l.handle)
+        .slice(0, -1);
+    const save = stackOf('/:book/:chapter/:moduleId/edit');
+    const rej = stackOf('/:book/:chapter/:moduleId/suggestions/reject');
+    expect(rej).toHaveLength(save.length);
+    expect(rej).toHaveLength(4);
+    // The shared middleware are the same functions; requireBookAccess() builds a closure per call, so
+    // that one is compared by source.
+    expect(rej.map((h) => h.name)).toEqual(save.map((h) => h.name));
+    expect(rej[0]).toBe(save[0]);
+    expect(rej[1]).toBe(save[1]);
+    expect(String(rej[2])).toBe(String(save[2]));
+    expect(rej[3]).toBe(save[3]);
+    // Control: another route's stack is seen as different.
+    const other = stackOf('/edit/:editId/approve');
+    expect(other.length === save.length && other.every((h, i) => h === save[i])).toBe(false);
+  });
+
   it('the response is the same whatever record returned', async () => {
     const answers = [];
     for (const outcome of [{ status: 'recorded' }, { status: 'skipped' }, undefined, null]) {
@@ -863,5 +952,74 @@ describe('rejecting a suggestion group (the route)', () => {
     }
     expect(answers.map((a) => a.status)).toEqual([200, 200, 200, 200]);
     expect(answers.map((a) => a.body)).toEqual(Array(4).fill({ inserted: 1, alreadyClosed: 0 }));
+  });
+});
+
+describe('a rejection through the real research log (spec §5.9)', () => {
+  const { handlerFor, invoke } = require('./helpers/servedFixture');
+  const researchDb = require('../services/researchDb');
+  const researchConsentText = require('../lib/researchConsentText');
+  const serverCommit = require('../lib/serverCommit');
+  const { APPROVED, makeUser, consent } = require('./helpers/researchFixture.cjs');
+  const { eventMark, eventsSince, itemsOf } = require('./helpers/researchEventsFixture.cjs');
+  const EDITOR = { id: A, username: 'A', role: 'editor', books: [] };
+
+  beforeAll(() => {
+    researchDb.openAtBoot();
+    researchConsentText._setTestApprovedTexts(APPROVED);
+    serverCommit._setTestServerCommit({
+      serverCommit: 'c'.repeat(40),
+      commitSource: 'deploy-file',
+      codeDirty: 0,
+    });
+    consent(makeUser(A));
+  });
+  afterAll(() => {
+    researchConsentText._setTestApprovedTexts(null);
+    serverCommit._setTestServerCommit(null);
+    researchDb._reset();
+  });
+
+  it("a consenting editor's reject is one suggestion-reject event with one rejected item per row", async () => {
+    db.exec(
+      `DELETE FROM suggestion_rejections; DELETE FROM suggestion_left_open;
+       DELETE FROM module_opening_inflight; DELETE FROM module_openings; DELETE FROM book_switch_events;`
+    );
+    db.prepare(
+      "INSERT INTO book_switch_events (book, switch_name, value, switched_at_ms) VALUES (?, 'suggestion-view', 1, 1000)"
+    ).run(BOOK);
+    db.prepare(
+      'INSERT INTO module_openings (book, chapter, module_id, opened_at_ms, inflight_count) VALUES (?, 1, ?, 2000, 0)'
+    ).run(BOOK, MODULE);
+    const rejectRoute = handlerFor(
+      require('../routes/segment-editor'),
+      'post',
+      '/:book/:chapter/:moduleId/suggestions/reject'
+    );
+    const mark = eventMark();
+    const res = await invoke(rejectRoute, {
+      params: { book: BOOK, chapter: '1', moduleId: MODULE },
+      chapterNum: 1,
+      user: EDITOR,
+      body: {
+        segmentId: SEG,
+        occurrence: 0,
+        groupKey: `${SEG}#0|r-b`,
+        baseSha256: sha256Text(BASE),
+      },
+    });
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({ inserted: 1, alreadyClosed: 0 });
+    const events = eventsSince(mark);
+    expect(events).toHaveLength(1);
+    expect(events[0]).toMatchObject({
+      event_type: 'suggestion-reject',
+      editing_kind: 'suggestion_rejection',
+    });
+    const rowId = db.prepare('SELECT id FROM suggestion_rejections').get().id;
+    expect(events[0].editing_id).toBe(BigInt(rowId));
+    const items = itemsOf(events[0].id);
+    expect(items).toHaveLength(1);
+    expect(items[0]).toMatchObject({ outcome: 'rejected', claim: 'validated', op_id: OP.b });
   });
 });

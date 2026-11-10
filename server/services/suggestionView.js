@@ -396,13 +396,6 @@ function recordRejection(
   { book, chapter, moduleId, segmentId, occurrence, group, rejectedBy, nowMs }
 ) {
   const place = [book, chapter, moduleId, segmentId, occurrence];
-  const isClosed = conn.prepare(
-    `SELECT 1 FROM suggestion_rejections
-       WHERE book = ? AND chapter = ? AND module_id = ? AND segment_id = ? AND occurrence = ? AND op_id = ?
-     UNION ALL
-     SELECT 1 FROM suggestion_left_open
-       WHERE book = ? AND chapter = ? AND module_id = ? AND segment_id = ? AND occurrence = ? AND op_id = ?`
-  );
   const insert = conn.prepare(
     `INSERT INTO suggestion_rejections
        (book, chapter, module_id, segment_id, occurrence, op_id, ruling_id, run_id, rejected_by, rejected_at_ms)
@@ -413,8 +406,9 @@ function recordRejection(
   const write = conn.transaction(() => {
     const rows = [];
     let alreadyClosed = 0;
+    const closed = closedOpKeys(conn, { book, chapter, moduleId });
     for (const c of group.changes) {
-      if (isClosed.get(...place, c.opId, ...place, c.opId)) {
+      if (closed.has(`${segmentId}#${occurrence}|${c.opId}`)) {
         alreadyClosed += 1;
         continue;
       }

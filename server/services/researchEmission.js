@@ -534,19 +534,21 @@ function emitAccept(req, { result }) {
  * Never throws.
  *
  * @param {object} req The reject request (user, params, chapterNum, body).
- * @param {{ rows: object[], servedVersionId: number, offeredOpIds: Iterable<string>,
+ * @param {{ rows: object[], servedVersionId: number, offeredOpIds: Iterable<string>|null,
  *   groupActionId: unknown, echoedBaseSha256: string|null, baseMismatch: boolean }} act
  * @returns {void}
  */
-function emitSuggestionReject(
-  req,
-  { rows, servedVersionId, offeredOpIds, groupActionId, echoedBaseSha256, baseMismatch }
-) {
-  const offered = new Set(offeredOpIds);
+function emitSuggestionReject(req, act) {
+  // Nothing here may throw outside `emit`'s guarded callbacks: only a plain array read happens out here.
+  const rows = act && Array.isArray(act.rows) ? act.rows : [];
   for (const row of rows) {
     emit(
       () => headFor(req, 'suggestion-reject', placeOf(req)),
       () => {
+        const { servedVersionId, offeredOpIds, groupActionId, echoedBaseSha256, baseMismatch } =
+          act;
+        // A null offered set means the check could not run: every claim is unverified.
+        const offered = offeredOpIds === null ? null : new Set(offeredOpIds);
         const client = clientOf(req);
         const composed =
           client.clientActionId === null ? null : `${client.clientActionId}:${row.op_id}`;
@@ -574,7 +576,8 @@ function emitSuggestionReject(
               groupActionId: str(groupActionId, 128),
               rulingId: str(row.ruling_id, 128),
               ruleId: null,
-              claim: offered.has(row.op_id) ? 'validated' : 'mismatch',
+              claim:
+                offered === null ? 'unverified' : offered.has(row.op_id) ? 'validated' : 'mismatch',
             },
           ],
           detail: { echoedBaseSha256, baseMismatch },
