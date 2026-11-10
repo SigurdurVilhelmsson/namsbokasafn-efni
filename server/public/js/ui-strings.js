@@ -504,5 +504,12 @@ const UI = {
       'Ef slökkt er hverfa allar tillögur strax. Á meðan slökkt er lokar hvorki „Staðfesta MT“ né samþykkt neinum tillögum, svo þær birtast aftur þegar kveikt er á ný.',
     closedBeforeSwitchOn:
       'Ekki var kveikt á tillögum gervigreindar: í þessari bók hefur tillögum þegar verið hafnað eða þeim lokað áður en kveikt var í fyrsta sinn. Skoða þarf þær færslur fyrst.',
+    // The editor's display (spec §4). Task 4 adds the Hafna strings.
+    nota: '✓ Nota',
+    notaBadar: '✓ Nota báðar',
+    notaAllar: (n) => `✓ Nota allar (${n})`,
+    notaTitle: 'Nota tillögu',
+    tag: 'GG',
+    tagTitle: 'Tillaga gervigreindar',
   },
 };

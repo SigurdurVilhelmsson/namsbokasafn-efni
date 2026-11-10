@@ -116,8 +116,9 @@ describe('acceptance UI pins', () => {
     // "Til baka", Escape-close — had drifted into three different answers.
     expect(clientJs).toContain('function baselineTextFor(');
     expect(clientJs).toContain('acceptEligibility.isEditInFlight');
-    // 5 = the definition plus its four call sites.
-    expect(clientJs.match(/baselineTextFor\(seg, latestEdit\)/g) || []).toHaveLength(5);
+    // 6 = the definition plus its five call sites (G1.23 added shownSuggestionText, the text a row
+    // with suggestions displays while its pane is closed).
+    expect(clientJs.match(/baselineTextFor\(seg, latestEdit\)/g) || []).toHaveLength(6);
     // No hand-rolled copies of the in-flight test.
     expect(clientJs).not.toMatch(/=== 'pending' \|\| latestEdit\.status === 'approved'/);
     expect(clientJs).not.toMatch(/latestEdit \? latestEdit\.edited_content : seg\.is/);
