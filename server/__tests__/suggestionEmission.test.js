@@ -706,7 +706,9 @@ describe('suggestion-left-open events (G1.23 PR2 task 4)', () => {
     expect(recorded).toHaveLength(rows.length);
   });
 
-  it('closeLeftOpen: a second close on the same segment inserts nothing (ON CONFLICT), a NULL occurrence closes nothing', () => {
+  it('closeLeftOpen: a second close on the same segment inserts nothing (the closed-set filter), a NULL occurrence closes nothing and logs nothing', () => {
+    const log = require('../lib/logger');
+    const warnSpy = vi.spyOn(log, 'warn').mockImplementation(() => {});
     const first = close();
     expect(first.rows.length).toBeGreaterThan(0);
     const again = suggestionView.closeLeftOpen(db, {
@@ -732,5 +734,59 @@ describe('suggestion-left-open events (G1.23 PR2 task 4)', () => {
     const nullOcc = close({ occurrence: null });
     expect(nullOcc.rows).toEqual([]);
     expect(db.prepare('SELECT COUNT(*) AS n FROM suggestion_left_open').get().n).toBe(0);
+    expect(warnSpy).not.toHaveBeenCalled();
+    warnSpy.mockRestore();
+  });
+
+  it('closeLeftOpen: a served-version id naming no row warns once without any text and closes nothing; the real id closes', () => {
+    const log = require('../lib/logger');
+    const warnSpy = vi.spyOn(log, 'warn').mockImplementation(() => {});
+    try {
+      const { rows } = close({ servedVersionId: 987654 });
+      expect(rows).toEqual([]);
+      expect(warnSpy).toHaveBeenCalledTimes(1);
+      expect(warnSpy.mock.calls[0][0]).toMatchObject({
+        book: BOOK,
+        moduleId: MODULE,
+        segmentId: SEG,
+        act: 'approval',
+        reason: 'no-served-version',
+      });
+      expect(JSON.stringify(warnSpy.mock.calls[0])).not.toMatch(/rúm|ísómer|sýra|BASE/);
+      expect(db.prepare('SELECT COUNT(*) AS n FROM suggestion_left_open').get().n).toBe(0);
+    } finally {
+      warnSpy.mockRestore();
+    }
+    // Control: the edit's own served version closes.
+    expect(close().rows.length).toBeGreaterThan(0);
+  });
+
+  it('closeLeftOpen: a non-study book takes no closure path at all (no transaction, no read); a study book does', () => {
+    const base = {
+      chapter: 1,
+      moduleId: MODULE,
+      segmentId: SEG,
+      occurrence: 0,
+      servedVersionId: 1,
+      act: 'approval',
+      finishingKind: 'segment_edit',
+      finishingId: 1,
+      finishedText: BASE,
+      acceptedOps: [],
+      closedBy: A,
+      nowMs: 5000,
+    };
+    const transaction = vi.fn(() => {
+      throw new Error('must not be reached');
+    });
+    const spyConn = { transaction, prepare: vi.fn() };
+    expect(suggestionView.closeLeftOpen(spyConn, { ...base, book: 'lifraen-efnafraedi' })).toEqual(
+      []
+    );
+    expect(transaction).not.toHaveBeenCalled();
+    expect(spyConn.prepare).not.toHaveBeenCalled();
+    // Control: a study book reaches the transaction.
+    suggestionView.closeLeftOpen(spyConn, { ...base, book: BOOK });
+    expect(spyConn.prepare).toHaveBeenCalled();
   });
 });

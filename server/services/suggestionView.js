@@ -467,6 +467,7 @@ function closeLeftOpen(
     nowMs,
   }
 ) {
+  if (!isStudyBook(book)) return [];
   if (servedVersionId === null || servedVersionId === undefined) return [];
   if (occurrence === null || occurrence === undefined) return [];
   try {
@@ -541,7 +542,7 @@ function closeLeftOpen(
 
 module.exports = {
   closeLeftOpen,
-  acceptedOpsOf: acceptedOpIds,
+  acceptedOpIds,
   recordRejection,
   isEligible,
   closedOpKeys,

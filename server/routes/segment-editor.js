@@ -1432,7 +1432,7 @@ router.post(
         finishingKind: 'segment_edit',
         finishingId: result.id,
         finishedText: result.edited_content,
-        acceptedOps: suggestionView.acceptedOpsOf(result.accepted_suggestions, result.occurrence, {
+        acceptedOps: suggestionView.acceptedOpIds(result.accepted_suggestions, result.occurrence, {
           book: result.book,
           chapter: result.chapter,
           moduleId: result.module_id,

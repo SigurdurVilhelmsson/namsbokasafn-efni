@@ -1150,6 +1150,29 @@ describe('closing the open groups as left open at a finishing act (G1.23 PR2 tas
     ).toEqual([OP.s2]);
   });
 
+  it('a repeat Staðfesta MT with groups still open writes no left-open row and no event (the alreadyAccepted guard)', async () => {
+    // The first accept closes nothing (switch off then), so the groups are still open on the
+    // already-accepted segment when the switch comes back on: only the guard stops the repeat.
+    db.prepare(
+      "INSERT INTO book_switch_events (book, switch_name, value, switched_at_ms) VALUES (?, 'suggestion-view', 0, 2500)"
+    ).run(BOOK);
+    const first = await postAccept();
+    expect(first.body.alreadyAccepted).toBe(false);
+    expect(leftOpen()).toEqual([]);
+    db.prepare(
+      "INSERT INTO book_switch_events (book, switch_name, value, switched_at_ms) VALUES (?, 'suggestion-view', 1, 3000)"
+    ).run(BOOK);
+    const again = await postAccept({}, { id: OTHER, username: 'O', role: 'editor', books: [] });
+    expect(again.body.alreadyAccepted).toBe(true);
+    expect(leftOpen()).toEqual([]);
+    expect(leftOpenEvents()).toEqual([]);
+    // Control: with the switch on, a first accept of another segment does close its group.
+    const other = await postAccept({ segmentId: SEG2, acceptedContent: 'delta' });
+    expect(other.body.alreadyAccepted).toBe(false);
+    expect(leftOpen().map((r) => r.op_id)).toEqual([OP.s2]);
+    expect(leftOpenEvents().map((e) => e.items[0].opId)).toEqual([OP.s2]);
+  });
+
   it('approval closes the groups the edit did not take, and leaves the accepted ones alone', async () => {
     const edit = pendingEdit('ALFA beta GAMMA', [entry(OP.a1), entry(OP.a2)]);
     expect(listOf(edit).map((e) => e.opId)).toEqual([OP.a1, OP.a2]);
@@ -1215,10 +1238,15 @@ describe('closing the open groups as left open at a finishing act (G1.23 PR2 tas
         chapter: 1,
         moduleId: MODULE,
         segments: [{ segmentId: SEG, occurrence: 0, baseSha256: sha256Text(BASE) }],
-        editsBySegment: {},
+        editsBySegment: {
+          [SEG]: [db.prepare('SELECT * FROM segment_edits WHERE id = ?').get(edit.id)],
+        },
       })
       .get(SEG)
       .groups.map((g) => g.key);
+    expect(db.prepare('SELECT status FROM segment_edits WHERE id = ?').get(edit.id).status).toBe(
+      'rejected'
+    );
     expect(offered).toEqual([`${SEG}#0|r-a`, `${SEG}#0|r-b`]);
     // Control: approving a fresh edit does write.
     const next = pendingEdit('ALFA beta GAMMA', [entry(OP.a1)]);
@@ -1238,15 +1266,22 @@ describe('closing the open groups as left open at a finishing act (G1.23 PR2 tas
     });
     expect(rv.status).toBe(200);
     expect(leftOpen()).toEqual(before);
-    const edit = pendingEdit('ALFA beta GAMMA', [entry(OP.a1)]);
+  });
+
+  it('un-approving an edit does not reopen the groups its approval closed', async () => {
+    const edit = pendingEdit('ALFA beta GAMMA', [entry(OP.a1), entry(OP.a2)]);
     await postApprove(edit.id);
     const afterApprove = leftOpen();
+    expect(afterApprove.map((r) => r.op_id)).toEqual([OP.b]); // the approval itself closed b
     const un = await invoke(unapprove, {
       params: { editId: String(edit.id) },
       user: HEAD,
       body: {},
     });
     expect(un.status).toBe(200);
+    expect(
+      db.prepare('SELECT status FROM segment_edits WHERE id = ?').get(edit.id).status
+    ).not.toBe('approved');
     expect(leftOpen()).toEqual(afterApprove);
   });
 
@@ -1257,7 +1292,11 @@ describe('closing the open groups as left open at a finishing act (G1.23 PR2 tas
     expect(res.status).toBe(200);
     expect(shownPairs()).toEqual([[OP.b, 1]]);
     expect(leftOpenEvents()).toEqual([]); // record declined; nothing captured
-    expect(researchLog.record).toHaveBeenCalled();
+    // record was asked once per written left-open row (and the approval's own call is not counted).
+    expect(
+      researchLog.record.mock.calls.filter((c) => c[0].eventType === 'suggestion-left-open')
+    ).toHaveLength(leftOpen().length);
+    expect(leftOpen()).toHaveLength(1);
   });
 
   it('a row with a NULL served_version_id closes nothing and the act succeeds; a sibling with one closes', async () => {
@@ -1327,17 +1366,14 @@ describe('closing the open groups as left open at a finishing act (G1.23 PR2 tas
     db.prepare(
       `INSERT INTO suggestion_rejections (book, chapter, module_id, segment_id, occurrence, op_id,
          ruling_id, run_id, rejected_by, rejected_at_ms)
-       VALUES (?, 1, ?, ?, 0, ?, 'r-b', 'run-1', ?, 3000)`
-    ).run(BOOK, MODULE, SEG, OP.b, OTHER);
+       VALUES (?, 1, ?, ?, 0, ?, 'r-a', 'run-1', ?, 3000)`
+    ).run(BOOK, MODULE, SEG, OP.a1, OTHER);
     await postAccept();
-    expect(shownPairs()).toEqual(
-      [
-        [OP.a1, 1],
-        [OP.a2, 1],
-      ].sort()
-    );
+    // Rejecting one op of the two-op group a closes the whole group: a2 is not closed again, b is.
+    expect(shownPairs()).toEqual([[OP.b, 1]]);
+    expect(leftOpen().map((r) => r.op_id)).not.toContain(OP.a2);
     expect(
-      db.prepare('SELECT COUNT(*) AS n FROM suggestion_rejections WHERE op_id = ?').get(OP.b).n
+      db.prepare('SELECT COUNT(*) AS n FROM suggestion_rejections WHERE op_id = ?').get(OP.a1).n
     ).toBe(1);
   });
 });
