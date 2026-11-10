@@ -165,6 +165,10 @@ describe('Hafna rejects a group in place (Task 4)', () => {
     }
   });
 
+  it('rejectSuggestionGroup returns early on the same segmentEditAllowed guard as accept', () => {
+    expect(reject()).toContain('segmentEditAllowed(');
+  });
+
   it('rejectSuggestionGroup never writes a textarea or closes a pane', () => {
     expect(reject()).toContain('fetchJson('); // control: the slice is the real body
     expect(reject()).not.toMatch(/\.value\s*=/);

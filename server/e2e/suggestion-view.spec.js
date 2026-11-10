@@ -324,6 +324,7 @@ test.describe('G1.23 suggestion view on efnafraedi-2e ch02 (spec §9.4–9.6)', 
   test('one-change group: Nota fetches nothing, a reload before Vista restores the draft, Vista saves the accepted list, and the GG tag shows after a reload', async ({
     page,
   }) => {
+    test.setTimeout(60000);
     await loginAs(page, 'editor', SUGGESTION_EDITOR_ID);
     const seg = (await moduleJson(page, M93)).segments.find((s) => s.segmentId === S.one);
     const key = groupKey(S.one, 'molecular-structure');

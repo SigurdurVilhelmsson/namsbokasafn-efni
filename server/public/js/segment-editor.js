@@ -1647,7 +1647,7 @@
    * The IS text an editor should SEE and EDIT for a segment: the faithful file,
    * unless an edit is still in flight (MTA-R12).
    *
-   * One rule, four call sites — the row renderer plus the three textarea
+   * One rule, shared by the row renderer and the three textarea
    * restore paths (cancel, "Til baka", Escape-close), which had drifted into
    * three different answers: two restored ANY latest edit's text (so cancelling
    * on a rejected row replaced the baseline with the rejected text the row had
@@ -1791,7 +1791,7 @@
   async function rejectSuggestionGroup(segmentId, groupKey) {
     const seg = suggestionSegment(segmentId);
     const group = seg ? (seg.suggestions.groups || []).find((g) => g.key === groupKey) : null;
-    if (!group) return;
+    if (!group || !segmentEditAllowed(moduleData.edits[segmentId]?.[0])) return;
     const inFlightKey = segmentId + '|' + groupKey;
     if (rejectsInFlight.has(inFlightKey)) return;
     rejectsInFlight.add(inFlightKey);

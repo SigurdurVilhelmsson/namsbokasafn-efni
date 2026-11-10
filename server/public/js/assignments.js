@@ -268,11 +268,17 @@
           toggle.checked = !enabled;
         });
     };
+    if (!enabled && !confirm(UI.suggestions.confirmOff)) {
+      toggle.checked = true;
+      return settle();
+    }
+    let resent = false;
     postSuggestionView(book, enabled)
       .catch(function (err) {
         if (enabled && err.data && err.data.code === 'CONFIRM_REQUIRED') {
           const typed = prompt(UI.suggestions.confirmFirstOn + '\n\n' + book);
           if (!typed) return null;
+          resent = true;
           return postSuggestionView(book, true, typed.trim());
         }
         throw err;
@@ -280,6 +286,8 @@
       .catch(function (err) {
         if (err.data && err.data.code === 'CLOSED_BEFORE_SWITCH_ON') {
           alert(UI.suggestions.closedBeforeSwitchOn);
+        } else if (resent && err.data && err.data.code === 'CONFIRM_REQUIRED') {
+          showToast(UI.suggestions.confirmMismatch, 'error');
         } else {
           showToast(err.message || 'Villa', 'error');
         }
