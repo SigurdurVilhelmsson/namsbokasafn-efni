@@ -807,6 +807,24 @@ test.describe('G1.23 suggestion view on efnafraedi-2e ch02 (spec §9.4–9.6)', 
       { op_id: 'ch02/m68693/003.op2', occurrence: 0 },
     ]);
 
+    // The IN-PAGE half of Review Focus 4: a wholesale renderSegments() (what loadTermData and
+    // loadRepetitions call) redraws from the mutated moduleData and must not bring the group back. The
+    // #filter-type select's change handler IS renderSegments (segment-editor.js: addEventListener('change',
+    // renderSegments)) and fetches nothing. 'title' drops this alt row (so the redraw demonstrably ran),
+    // 'all' redraws it from moduleData.
+    const filter = page.locator('#filter-type');
+    await filter.selectOption('title');
+    await expect(row).toHaveCount(0); // control: the table really was rebuilt
+    await filter.selectOption('all');
+    await expect(row).toHaveCount(1); // the row itself exists again, redrawn
+    await expect(isDisplay(row).locator('.sugg-swap')).toHaveCount(0);
+    await expect(isDisplay(row).locator('.sugg-tag')).toHaveCount(0);
+    await expect(row.locator('.sugg-btn')).toHaveCount(0);
+    await expect(rulings(row).locator('.sugg-ruling')).toHaveCount(0);
+    expect(await isDisplay(row).innerHTML()).toBe(plain);
+    await expectControlShown(page); // a sibling row still shows its swap after the same redraw
+    expect(counter.gets).toBe(gets); // the redraw was in-page: no module GET
+
     await page.reload();
     await expect(page.locator('#segments-body tr').first()).toBeVisible({ timeout: 10000 });
     expect(counter.gets).toBe(gets + 1); // control: the counter sees a reload's GET
