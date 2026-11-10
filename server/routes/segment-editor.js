@@ -49,6 +49,7 @@ const servedVersions = require('../services/servedVersions');
 const servedEdit = require('../services/servedEdit');
 const moduleOpenings = require('../services/moduleOpenings');
 const suggestionView = require('../services/suggestionView');
+const suggestionLogs = require('../lib/suggestionLogs');
 const researchEmission = require('../services/researchEmission');
 const { sha256Text, isNotMintedBook } = require('../lib/servedText');
 const { isNewer } = require('../lib/editRecency');
@@ -427,6 +428,29 @@ router.get(
 );
 
 /**
+ * The body's acceptedSuggestions (G1.23, R16): the WHOLE value must be an array of at most 500
+ * entries, each { opId: a string of 1..128 characters, occurrence: a non-negative integer }; anything
+ * else (absent, another type, one bad entry) is []. Never a 400: the list is an assist, not input to
+ * refuse a save over. The server re-filters it against the module log and the saved text.
+ */
+function sanitizeAcceptedSuggestions(value) {
+  const ok =
+    Array.isArray(value) &&
+    value.length <= 500 &&
+    value.every(
+      (e) =>
+        e !== null &&
+        typeof e === 'object' &&
+        typeof e.opId === 'string' &&
+        e.opId.length >= 1 &&
+        e.opId.length <= 128 &&
+        Number.isInteger(e.occurrence) &&
+        e.occurrence >= 0
+    );
+  return ok ? value.map((e) => ({ opId: e.opId, occurrence: e.occurrence })) : [];
+}
+
+/**
  * POST /:book/:chapter/:moduleId/edit
  * Save a segment edit (create or update).
  */
@@ -475,6 +499,7 @@ router.post(
     }
 
     const resolvedBaseEditId = typeof baseEditId === 'number' ? baseEditId : undefined;
+    const acceptedSuggestions = sanitizeAcceptedSuggestions(req.body.acceptedSuggestions);
 
     try {
       // SR-OOS-2 FIX3: the conflict check runs BEFORE saveOnServedBase's refusals and its
@@ -508,6 +533,8 @@ router.post(
         baseSha256: typeof baseSha256 === 'string' ? baseSha256 : undefined,
         displayedEditId: displayedEditId ?? null,
         displayedEditSha256: displayedEditSha256 ?? null,
+        // G1.23 (spec §7): always a list, so an editor save always recomputes what the row took.
+        acceptedSuggestions,
       });
       const kept = saved.outcome === 'inserted' || saved.outcome === 'updated';
 
@@ -601,6 +628,94 @@ router.post(
         return res.status(404).json({ error: err.message });
       }
       log.error({ err }, 'Error saving segment edit');
+      res.status(500).json({ error: err.message });
+    }
+  }
+);
+
+const SHA256_HEX = /^[0-9a-f]{64}$/;
+
+/**
+ * POST /:book/:chapter/:moduleId/suggestions/reject
+ * Reject one AI suggestion group (G1.23 PR2 task 3; spec §7). Writes one rejection row per change,
+ * which hides the group for every editor, then one research event per inserted row. The gate is the
+ * save route's. A stale echoed base is never a refusal: the group is looked up in the module's kept
+ * log, not in the offered set, so a stale screen can still reject.
+ */
+router.post(
+  '/:book/:chapter/:moduleId/suggestions/reject',
+  requireAuth,
+  validateBookChapter,
+  requireBookAccess(),
+  validateModule,
+  (req, res) => {
+    const body = req.body && typeof req.body === 'object' ? req.body : {};
+    const { segmentId, occurrence, groupKey, baseSha256, groupActionId } = body;
+    if (typeof segmentId !== 'string' || segmentId.length < 1 || segmentId.length > 200) {
+      return res.status(400).json({ error: 'segmentId is required' });
+    }
+    if (!Number.isInteger(occurrence) || occurrence < 0) {
+      return res.status(400).json({ error: 'occurrence must be a non-negative integer' });
+    }
+    if (typeof groupKey !== 'string' || groupKey.length < 1 || groupKey.length > 512) {
+      return res.status(400).json({ error: 'groupKey is required' });
+    }
+    const book = req.params.book;
+    const chapter = req.chapterNum;
+    const moduleId = req.params.moduleId;
+    try {
+      const moduleLog = suggestionLogs.readModuleLog({ book, chapter, moduleId });
+      const group = moduleLog.ok
+        ? (suggestionLogs.keptGroups(moduleLog).get(`${segmentId}#${occurrence}`) || []).find(
+            (g) => g.key === groupKey
+          )
+        : undefined;
+      if (!group) return res.status(404).json({ error: 'SUGGESTION_UNKNOWN' });
+
+      const base = servedEdit.placeAndMintBase({ book, chapter, moduleId, segmentId, occurrence });
+      const echoedBaseSha256 =
+        typeof baseSha256 === 'string' && SHA256_HEX.test(baseSha256) ? baseSha256 : null;
+      const baseMismatch = echoedBaseSha256 !== base.baseSha256;
+
+      const conn = segmentEditor.getDb();
+      // Before the write: afterwards the group is closed and would read as not offered. Research
+      // only: a failed check never fails the reject; its claims are then unverified (null).
+      const offeredOpIds = suggestionView.offeredOpIdsFor(conn, {
+        book,
+        chapter,
+        moduleId,
+        segmentId,
+        occurrence: base.occurrence,
+        baseSha256: base.baseSha256,
+      });
+
+      const { rows, alreadyClosed } = suggestionView.recordRejection(conn, {
+        book,
+        chapter,
+        moduleId,
+        segmentId,
+        occurrence: base.occurrence,
+        group,
+        rejectedBy: String(req.user.id),
+        nowMs: Date.now(),
+      });
+
+      researchEmission.emitSuggestionReject(req, {
+        rows,
+        servedVersionId: base.servedVersionId,
+        offeredOpIds,
+        groupActionId,
+        echoedBaseSha256,
+        baseMismatch,
+      });
+      res.json({ inserted: rows.length, alreadyClosed });
+    } catch (err) {
+      if (sendRefusal(res, err)) return;
+      if (err.message?.includes('not found')) {
+        // A missing module (the loader's "not found"), answered as the save answers it.
+        return res.status(404).json({ error: err.message });
+      }
+      log.error({ err }, 'Error rejecting suggestion group');
       res.status(500).json({ error: err.message });
     }
   }
@@ -1042,7 +1157,33 @@ router.post(
         });
       }
 
+      // Finishing never waits on suggestions: closeLeftOpen never throws, and the response is unchanged.
+      let leftOpen = [];
+      if (!result.alreadyAccepted) {
+        const a = result.acceptance;
+        leftOpen = suggestionView.closeLeftOpen(segmentEditor.getDb(), {
+          book: a.book,
+          chapter: a.chapter,
+          moduleId: a.module_id,
+          segmentId: a.segment_id,
+          occurrence: a.occurrence ?? null,
+          servedVersionId: a.served_version_id ?? null,
+          act: 'stadfesta-mt',
+          finishingKind: 'segment_acceptance',
+          finishingId: a.id,
+          finishedText: a.accepted_content,
+          acceptedOps: [],
+          closedBy: String(req.user.id),
+          nowMs: Date.now(),
+        });
+      }
+
       researchEmission.emitAccept(req, { result });
+      researchEmission.emitSuggestionLeftOpen(req, {
+        rows: leftOpen,
+        act: 'stadfesta-mt',
+        servedVersionId: result.acceptance?.served_version_id ?? null,
+      });
       res.json({ success: true, ...result });
     } catch (err) {
       if (err.refusal) {
@@ -1267,6 +1408,27 @@ router.post(
         req.body?.note
       );
       const edit = withoutResearchKeys(result);
+      // Close the groups the approved edit did not take; never throws, never changes the response.
+      const leftOpen = suggestionView.closeLeftOpen(segmentEditor.getDb(), {
+        book: result.book,
+        chapter: result.chapter,
+        moduleId: result.module_id,
+        segmentId: result.segment_id,
+        occurrence: result.occurrence ?? null,
+        servedVersionId: result.served_version_id ?? null,
+        act: 'approval',
+        finishingKind: 'segment_edit',
+        finishingId: result.id,
+        finishedText: result.edited_content,
+        acceptedOps: suggestionView.acceptedOpIds(result.accepted_suggestions, result.occurrence, {
+          book: result.book,
+          chapter: result.chapter,
+          moduleId: result.module_id,
+          segmentId: result.segment_id,
+        }),
+        closedBy: String(req.user.id),
+        nowMs: Date.now(),
+      });
       activityLog.log({
         type: 'segment_edit_approved',
         userId: String(req.user.id),
@@ -1280,6 +1442,11 @@ router.post(
       // G1.2: emitted after the act committed and before the response (spec §5.11); `before` is the
       // research event's and never reaches the response (decision 44).
       researchEmission.emitReview(req, 'edit-approve', { edit: result, before: result.before });
+      researchEmission.emitSuggestionLeftOpen(req, {
+        rows: leftOpen,
+        act: 'approval',
+        servedVersionId: result.served_version_id ?? null,
+      });
       res.json({ success: true, edit });
     } catch (err) {
       const status = err.code === 'SUPERSEDED_BY_NEWER' ? 409 : 400;

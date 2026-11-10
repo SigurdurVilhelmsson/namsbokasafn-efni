@@ -9,14 +9,15 @@
  *
  * Assist items (spec §5.10; decision 50): claimAssistItems rebuilds each item from known fields only,
  * computes the hashes itself (the client never hashes, §5.18) and sets its claim from one table,
- * CLAIM_VALIDATORS. It checks, marks and never refuses (§14 call 17). G1.23 replaces the table's two
- * suggestion entries (ai-suggestion, rule-suggestion) with its own check (§5.10, "G1.23 supplies that
- * check").
+ * CLAIM_VALIDATORS. It checks, marks and never refuses (§14 call 17). G1.23 replaces the table's
+ * ai-suggestion entry with its own check (§5.10, "G1.23 supplies that check"); rule-suggestion stays
+ * mismatch, since no rule suggestion is ever offered.
  */
 const log = require('../lib/logger');
 const researchLog = require('./researchLog');
 const concordance = require('./concordanceService');
 const segmentEditor = require('./segmentEditorService'); // the apply's fixed superseded note, and the review row
+const suggestionView = require('./suggestionView'); // the accepted-suggestion claim check
 const { sha256Text } = require('../lib/servedText');
 const { ITEM_TYPES } = require('../lib/researchVocabulary');
 
@@ -139,9 +140,8 @@ function validateRepetition(item, at) {
 }
 // The server cannot check these, whichever segment the client attributes them to (Review Focus 30).
 const unverified = () => 'unverified';
-// Before G1.23 no suggestion is ever offered, so a claim to have accepted one is false (spec §5.10: "a failed
-// check is mismatch"); the item is kept, never dropped or refused (Review Focus 31). G1.23 replaces these two
-// entries with its §6 check.
+// No rule suggestion is ever offered, so a claim to have accepted one is false (spec §5.10: "a failed check is
+// mismatch"); the item is kept, never dropped or refused (Review Focus 31).
 const noSuggestionOffered = () => 'mismatch';
 
 /** One claim rule per item type: (item, at) => 'validated' | 'unverified' | 'mismatch'. */
@@ -150,7 +150,7 @@ const CLAIM_VALIDATORS = Object.freeze({
   'term-insert': unverified,
   'markup-wrap': unverified,
   'draft-restore': unverified,
-  'ai-suggestion': noSuggestionOffered,
+  'ai-suggestion': (item, at) => at.suggestionCheck(item),
   'rule-suggestion': noSuggestionOffered,
 });
 
@@ -158,7 +158,9 @@ const CLAIM_VALIDATORS = Object.freeze({
  * Rebuild a save's assist items from known fields and give each its claim. Never throws.
  *
  * @param {unknown} raw The body's assist list as the client sent it.
- * @param {{book: string, chapter: number|string, moduleId: string, segmentId: string}} place
+ * @param {{book: string, chapter: number|string, moduleId: string, segmentId: string, occurrence?: number,
+ *   saved?: object, editedContent?: string}} place occurrence, saved (the finished save) and editedContent
+ *   (its text) are what the ai-suggestion check needs; without `saved` such an item is mismatch.
  * @returns {{items: Array<object>, droppedCount: number}} Items are exactly the keys record accepts;
  *   droppedCount counts entries of an unknown type (and a list that is not an array, as one).
  */
@@ -179,7 +181,40 @@ function claimAssistItems(raw, place) {
             place.moduleId,
             place.segmentId
           )),
+    suggestionCheck: (item) => checkSuggestionClaim(item),
   };
+  // The accepted-suggestion check (G1.23 PR2 task 2) runs once per save over every claimed op of this
+  // occurrence. A throw is not memoized and reaches the caller's catch (the item is unverified).
+  let validatedOps;
+  function checkSuggestionClaim(item) {
+    if (!place.saved) return 'mismatch'; // a direct caller without a save: nothing to check against, and the read side offers nothing, so the claim is false
+    if (typeof item.opId !== 'string' || item.occurrence !== place.occurrence) return 'mismatch';
+    if (validatedOps === undefined) {
+      const opIds = raw
+        .filter((r) => r && typeof r === 'object' && r.itemType === 'ai-suggestion')
+        .map(suggestionFields)
+        .filter((f) => f.occurrence === place.occurrence && f.opId !== null)
+        .map((f) => f.opId);
+      const conn = segmentEditor.getDb();
+      const displayedText = suggestionView.displayedTextForSave(conn, place.saved);
+      if (displayedText === null) {
+        validatedOps = null; // a null text is a result too: the SELECT runs once per save
+      } else
+        validatedOps = suggestionView.checkAcceptedGroups(conn, {
+          book: place.book,
+          chapter: place.chapter,
+          moduleId: place.moduleId,
+          segmentId: place.segmentId,
+          occurrence: place.occurrence,
+          baseSha256: place.saved.baseSha256,
+          displayedText,
+          savedText: place.editedContent,
+          opIds: opIds,
+        });
+    }
+    if (validatedOps === null) return 'unverified';
+    return validatedOps.has(item.opId) ? 'validated' : 'mismatch';
+  }
   const items = [];
   let droppedCount = 0;
   for (const r of raw) {
@@ -345,6 +380,9 @@ function emitSave(req, { segmentId, editedContent, category, editorNote, saved }
       const { items, droppedCount } = claimAssistItems(req.body && req.body.assists, {
         ...placeOf(req),
         segmentId,
+        occurrence: saved.occurrence,
+        saved,
+        editedContent,
       });
       const displayed = saved.displayed;
       // The displayed hash is the client's echo, and PR1 stores it unchecked where decision 39 lets a save through
@@ -486,6 +524,120 @@ function emitAccept(req, { result }) {
       };
     }
   );
+}
+
+/**
+ * `suggestion-reject` (G1.23 PR2 task 3; spec §5.9): one event per inserted rejection row, each with one
+ * ai-suggestion item. The item's claim is `validated` when the op was among the groups the server would
+ * offer on the current base, else `mismatch`; a stale echoed base is flagged in the detail and never refuses
+ * the act. Each event's client action id is "<id>:<opId>" when that fits the cap, else null (never cut).
+ * Never throws.
+ *
+ * @param {object} req The reject request (user, params, chapterNum, body).
+ * @param {{ rows: object[], servedVersionId: number, offeredOpIds: Iterable<string>|null,
+ *   groupActionId: unknown, echoedBaseSha256: string|null, baseMismatch: boolean }} act
+ * @returns {void}
+ */
+function emitSuggestionReject(req, act) {
+  // Nothing here may throw outside `emit`'s guarded callbacks: only a plain array read happens out here.
+  const rows = act && Array.isArray(act.rows) ? act.rows : [];
+  for (const row of rows) {
+    emit(
+      () => headFor(req, 'suggestion-reject', placeOf(req)),
+      () => {
+        const { servedVersionId, offeredOpIds, groupActionId, echoedBaseSha256, baseMismatch } =
+          act;
+        // A null offered set means the check could not run: every claim is unverified.
+        const offered = offeredOpIds === null ? null : new Set(offeredOpIds);
+        const client = clientOf(req);
+        const composed =
+          client.clientActionId === null ? null : `${client.clientActionId}:${row.op_id}`;
+        return {
+          segmentId: row.segment_id,
+          occurrence: row.occurrence,
+          servedVersionId,
+          editingKind: 'suggestion_rejection',
+          editingId: row.id,
+          editingContentSha256: null,
+          origin: null,
+          content: null,
+          before: null,
+          sessionId: null,
+          items: [
+            {
+              itemType: 'ai-suggestion',
+              source: 'ai',
+              clientTimeMs: null,
+              detail: {},
+              opId: row.op_id,
+              occurrence: row.occurrence,
+              category: str(row.category, 64),
+              runId: str(row.run_id, 128),
+              groupActionId: str(groupActionId, 128),
+              rulingId: str(row.ruling_id, 128),
+              ruleId: null,
+              claim:
+                offered === null ? 'unverified' : offered.has(row.op_id) ? 'validated' : 'mismatch',
+            },
+          ],
+          detail: { echoedBaseSha256, baseMismatch },
+          clientActionId:
+            composed !== null && composed.length <= MAX_CLIENT_ACTION_ID ? composed : null,
+          clientActionTime: client.clientActionTime,
+          replayed: client.replayed,
+        };
+      }
+    );
+  }
+}
+
+/**
+ * `suggestion-left-open` (G1.23 PR2 task 4; spec §5.9): one event per left-open row a finishing act wrote, each
+ * with one ai-suggestion item (claim `validated`: the server itself computed the group as open on the base). The
+ * place is each row's own (it was written from the finishing row: the acceptance for Staðfesta MT, the edit for an
+ * approval). No client action id, time or replay (the acting click is not a suggestion click). Never throws.
+ *
+ * @param {object} req The finishing request (user).
+ * @param {{ rows: object[], act: 'stadfesta-mt'|'approval', servedVersionId: number|null }} input
+ * @returns {void}
+ */
+function emitSuggestionLeftOpen(req, input) {
+  const rows = input && Array.isArray(input.rows) ? input.rows : [];
+  for (const row of rows) {
+    emit(
+      () => headFor(req, 'suggestion-left-open', rowPlace(row)),
+      () => ({
+        segmentId: row.segment_id,
+        occurrence: row.occurrence,
+        servedVersionId: input.servedVersionId ?? null,
+        editingKind: 'suggestion_left_open',
+        editingId: row.id,
+        editingContentSha256: null,
+        origin: null,
+        content: null,
+        before: null,
+        sessionId: null,
+        items: [
+          {
+            itemType: 'ai-suggestion',
+            source: 'ai',
+            clientTimeMs: null,
+            detail: {},
+            opId: row.op_id,
+            occurrence: row.occurrence,
+            category: str(row.category, 64),
+            runId: str(row.run_id, 128),
+            groupActionId: null,
+            rulingId: str(row.ruling_id, 128),
+            ruleId: null,
+            claim: 'validated',
+          },
+        ],
+        detail: { act: input.act, shownAtFinish: row.shown_at_finish === 1 },
+        ...NO_CLIENT,
+      })
+    );
+  }
 }
 
 const REVIEW_DECISIONS = Object.freeze(['edit-approve', 'edit-reject', 'edit-discuss']);
@@ -800,6 +952,8 @@ module.exports = {
   emitPropagation,
   emitAccept,
   emitReview,
+  emitSuggestionReject,
+  emitSuggestionLeftOpen,
   emitDelete,
   emitRevoke,
   emitComment,

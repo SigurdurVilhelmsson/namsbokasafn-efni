@@ -30,6 +30,11 @@ const segmentParser = require('./segmentParser');
 const segmentEditor = require('./segmentEditorService');
 const servedVersions = require('./servedVersions');
 const segmentValidation = require('../public/js/segment-validation');
+const { isEditInFlight } = require('../public/js/accept-eligibility');
+const suggestionLogs = require('../lib/suggestionLogs');
+const suggestionView = require('./suggestionView');
+const log = require('../lib/logger');
+const { isStudyBook } = require('../lib/researchScope');
 const { sha256Text, isNotMintedBook } = require('../lib/servedText');
 const { EDIT_ORIGINS } = require('../lib/editOrigins');
 
@@ -115,6 +120,59 @@ function placeOnServedBase({ book, chapter, moduleId, segmentId, occurrence }) {
   };
 }
 
+/**
+ * The one mint of a segment's current base (spec §5.4 step 3): the served-version row for the text
+ * the server holds now. saveOnServedBase mints through it inside its own transaction; the reject
+ * route reaches it through placeAndMintBase. Must run inside a transaction the caller opened.
+ *
+ * @returns {number} the served version's id
+ */
+function mintBase(conn, { book, chapter, moduleId, segmentId, placed, seg, layer }) {
+  const [servedVersionId] = servedVersions.mintVersions(conn, [
+    servedVersions.buildVersionRow({
+      book,
+      chapter,
+      moduleId,
+      segmentId,
+      occurrence: placed,
+      en: seg.en,
+      is: seg.is,
+      layer,
+    }),
+  ]);
+  return servedVersionId;
+}
+
+/**
+ * G1.23's reject: place the segment (the same refusals as a save) and mint its current base in one
+ * immediate transaction, writing nothing else. Throws a refusal (`refuse`) when it cannot place.
+ *
+ * @param {{ book: string, chapter: number, moduleId: string, segmentId: string, occurrence: number }} input
+ * @returns {{ servedVersionId: number, baseSha256: string, occurrence: number }}
+ */
+function placeAndMintBase({ book, chapter, moduleId, segmentId, occurrence }) {
+  const {
+    data,
+    seg,
+    occurrence: placed,
+  } = placeOnServedBase({
+    book,
+    chapter,
+    moduleId,
+    segmentId,
+    occurrence,
+  });
+  const conn = segmentEditor.getDb();
+  const mint = conn.transaction(() =>
+    mintBase(conn, { book, chapter, moduleId, segmentId, placed, seg, layer: data.isSource })
+  );
+  return {
+    servedVersionId: mint.immediate(),
+    baseSha256: sha256Text(seg.is),
+    occurrence: placed,
+  };
+}
+
 function saveOnServedBase(input) {
   const {
     book,
@@ -133,6 +191,7 @@ function saveOnServedBase(input) {
     baseSha256,
     displayedEditId = null,
     displayedEditSha256 = null,
+    acceptedSuggestions,
   } = input;
   if (!EDIT_ORIGINS.includes(origin)) {
     throw new TypeError(`saveOnServedBase: origin must be one of ${EDIT_ORIGINS.join(', ')}`);
@@ -199,21 +258,98 @@ function saveOnServedBase(input) {
       ? { editId: displayedEditId, sha256: displayedEditSha256 }
       : { editId: null, sha256: null };
   const conn = segmentEditor.getDb();
+  // G1.23 (spec §7): the accepted list is recomputed only when the caller names one (an editor save
+  // always does; propagation passes none, and scripts/reattach-segment-edits.js calls saveSegmentEdit
+  // directly, never this function (it refuses the study book and passes no list); undefined leaves
+  // the UPDATE's column as it was and the INSERT writes NULL). The log is
+  // read once, here, before the transaction. A log that cannot be read keeps nothing, and never
+  // fails the save (R5).
+  // A book outside the study does no suggestion work (R22): no log read, the list is NULL.
+  const recompute = acceptedSuggestions !== undefined;
+  const suggestionWork = recompute && isStudyBook(book);
+  let moduleLog = null;
+  if (suggestionWork) {
+    try {
+      moduleLog = suggestionLogs.readModuleLog({ book, chapter, moduleId });
+    } catch (err) {
+      log.warn(
+        { book, chapter, moduleId, reason: (err && (err.code || err.name)) || 'error' },
+        'suggestion log read failed; the save keeps no accepted suggestions'
+      );
+    }
+  }
   // One transaction (spec §5.6 step 6): the mint and saveSegmentEdit's own transactions become
   // savepoints inside it, so a save that fails after its mint leaves no served-version row.
   const mintAndSave = conn.transaction(() => {
-    const [servedVersionId] = servedVersions.mintVersions(conn, [
-      servedVersions.buildVersionRow({
-        book,
-        chapter,
-        moduleId,
-        segmentId,
-        occurrence: placed,
-        en: seg.en,
-        is: seg.is,
-        layer: data.isSource,
-      }),
-    ]);
+    const servedVersionId = mintBase(conn, {
+      book,
+      chapter,
+      moduleId,
+      segmentId,
+      placed,
+      seg,
+      layer: data.isSource,
+    });
+    let acceptedSuggestionsJson; // undefined: leave the column as it was
+    if (recompute && !suggestionWork) {
+      acceptedSuggestionsJson = null;
+    } else if (recompute) {
+      try {
+        const place = { book, chapter, moduleId, segmentId };
+        // Two rows, on purpose: what the caller's own editing row already took, and what the row
+        // displayed to them took when it is in flight, whoever wrote it. The claim check (task 2)
+        // replays on the screen text, which is a different question.
+        const own = conn
+          .prepare(
+            `SELECT id, accepted_suggestions FROM segment_edits
+           WHERE book = ? AND module_id = ? AND segment_id = ? AND editor_id = ? AND status = 'pending'`
+          )
+          .get(book, moduleId, segmentId, editorId);
+        const previous = suggestionView.parseAcceptedSuggestions(
+          own ? own.accepted_suggestions : null,
+          place
+        );
+        if (displayed.editId !== null && !(own && own.id === displayed.editId)) {
+          // (the caller's own row, when displayed, was read above: parsed once, so it warns once)
+          const shown = conn
+            .prepare(
+              'SELECT book, module_id, segment_id, status, applied_at, accepted_suggestions FROM segment_edits WHERE id = ?'
+            )
+            .get(displayed.editId);
+          if (
+            shown &&
+            shown.book === book &&
+            shown.module_id === moduleId &&
+            shown.segment_id === segmentId &&
+            isEditInFlight(shown)
+          ) {
+            previous.push(
+              ...suggestionView.parseAcceptedSuggestions(shown.accepted_suggestions, place)
+            );
+          }
+        }
+        acceptedSuggestionsJson = suggestionView.acceptedForSave(moduleLog, {
+          segmentId,
+          occurrence: placed,
+          editedContent,
+          claimed: acceptedSuggestions,
+          previous,
+        });
+      } catch (err) {
+        // The save never fails because of the list (spec R5): NULL, and a warning without text.
+        acceptedSuggestionsJson = null;
+        log.warn(
+          {
+            book,
+            chapter,
+            moduleId,
+            segmentId,
+            reason: (err && (err.code || err.name)) || 'error',
+          },
+          'accepted suggestions not computed; the save keeps none'
+        );
+      }
+    }
     const r = segmentEditor.saveSegmentEdit({
       book,
       chapter,
@@ -231,6 +367,7 @@ function saveOnServedBase(input) {
       origin,
       displayedEditId: displayed.editId,
       displayedEditSha256: displayed.sha256,
+      acceptedSuggestionsJson,
     });
     let outcome = r.updated ? 'updated' : 'inserted';
     if (r.reverted) outcome = r.id === null ? 'unchanged' : 'withdrawn';
@@ -259,4 +396,11 @@ function saveOnServedBase(input) {
   return mintAndSave.immediate();
 }
 
-module.exports = { REFUSAL_MESSAGES, REFUSAL_STATUS, refuse, placeOnServedBase, saveOnServedBase };
+module.exports = {
+  REFUSAL_MESSAGES,
+  REFUSAL_STATUS,
+  refuse,
+  placeOnServedBase,
+  placeAndMintBase,
+  saveOnServedBase,
+};

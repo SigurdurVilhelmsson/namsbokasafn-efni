@@ -36,6 +36,7 @@ const suggestionLogs = require('../lib/suggestionLogs');
 const bookSwitches = require('../lib/bookSwitches');
 const { isStudyBook } = require('../lib/researchScope');
 const { isEditInFlight } = require('../public/js/accept-eligibility');
+const { placeGroup, visibleGroups } = require('../public/js/suggestion-placement');
 const moduleOpenings = require('./moduleOpenings');
 const log = require('../lib/logger');
 
@@ -162,17 +163,21 @@ function staticGroupsFor(ctx, { segmentId, occurrence, baseSha256 }) {
 }
 
 /**
- * The op ids a displayed edit's accepted_suggestions lists for this occurrence. The column is JSON
- * text, NULL meaning none; anything that is not an array of { opId: string, occurrence: integer }
- * (NULL, unparseable text, another shape, one bad entry) counts as an empty list. NULL is silent; a
- * non-NULL value thrown away warns once with ctx ({ book, chapter, moduleId, segmentId }) and a reason
- * word, never the value. Never throws.
+ * The one parser of the accepted_suggestions column (the read side and the save share it). The column
+ * is JSON text, NULL meaning none; anything that is not an array of { opId: string, occurrence:
+ * integer } (unparseable text, another shape, one bad entry) counts as an empty list. NULL is
+ * silent; a non-NULL value thrown away warns once with ctx (the place: { book, chapter, moduleId,
+ * segmentId }) and a reason word, never the value. Never throws.
+ *
+ * @param {unknown} value the column's value
+ * @param {object} ctx the place, for the warning
+ * @returns {Array<{ opId: string, occurrence: number }>}
  */
-function acceptedOpIds(value, occurrence, ctx) {
-  if (value === null || value === undefined) return new Set();
+function parseAcceptedSuggestions(value, ctx) {
+  if (value === null || value === undefined) return [];
   const discard = (reason) => {
-    log.warn({ ...ctx, reason }, 'accepted_suggestions discarded; offering the groups as if none');
-    return new Set();
+    log.warn({ ...ctx, reason }, 'accepted_suggestions discarded; counted as none');
+    return [];
   };
   if (typeof value !== 'string') return discard('malformed');
   let parsed;
@@ -181,17 +186,65 @@ function acceptedOpIds(value, occurrence, ctx) {
   } catch {
     return discard('malformed');
   }
-  const wellFormed =
-    Array.isArray(parsed) &&
-    parsed.every(
+  if (!isEntryList(parsed)) return discard('malformed');
+  return parsed.map((e) => ({ opId: e.opId, occurrence: e.occurrence }));
+}
+
+function isEntryList(v) {
+  return (
+    Array.isArray(v) &&
+    v.every(
       (e) =>
         e !== null &&
         typeof e === 'object' &&
         typeof e.opId === 'string' &&
         Number.isInteger(e.occurrence)
-    );
-  if (!wellFormed) return discard('malformed');
-  return new Set(parsed.filter((e) => e.occurrence === occurrence).map((e) => e.opId));
+    )
+  );
+}
+
+/** The op ids a displayed edit's accepted_suggestions lists for this occurrence. Never throws. */
+function acceptedOpIds(value, occurrence, ctx) {
+  return new Set(
+    parseAcceptedSuggestions(value, ctx)
+      .filter((e) => e.occurrence === occurrence)
+      .map((e) => e.opId)
+  );
+}
+
+/**
+ * What a save stores in segment_edits.accepted_suggestions (spec §7): the distinct { opId,
+ * occurrence } of `previous` (the entries the editing row, and the row it displayed, already hold,
+ * parsed) and `claimed` (the body's list, untrusted) whose occurrence is this save's, whose op is in
+ * the module log's kept groups for that segment and occurrence, and whose `replace` text occurs in
+ * the text being saved. A log that is not ok keeps nothing. Pure; never throws.
+ *
+ * @param {object | null} moduleLog readModuleLog's result
+ * @param {{ segmentId: string, occurrence: number, editedContent: string, claimed: unknown,
+ *   previous: unknown }} input
+ * @returns {string | null} canonical JSON sorted by opId, or null when nothing is kept
+ */
+function acceptedForSave(moduleLog, { segmentId, occurrence, editedContent, claimed, previous }) {
+  if (!moduleLog || moduleLog.ok !== true || typeof editedContent !== 'string') return null;
+  const wanted = new Set();
+  for (const list of [previous, claimed]) {
+    if (!isEntryList(list)) continue;
+    for (const e of list) if (e.occurrence === occurrence) wanted.add(e.opId);
+  }
+  if (wanted.size === 0) return null;
+  const groups = keptGroupsOf(moduleLog).get(`${segmentId}#${occurrence}`) || [];
+  const kept = new Map();
+  for (const g of groups) {
+    for (const c of g.changes) {
+      if (wanted.has(c.opId) && c.occurrence === occurrence && editedContent.includes(c.replace)) {
+        kept.set(c.opId, { opId: c.opId, occurrence });
+      }
+    }
+  }
+  if (kept.size === 0) return null;
+  return JSON.stringify(
+    [...kept.values()].sort((a, b) => (a.opId < b.opId ? -1 : a.opId > b.opId ? 1 : 0))
+  );
 }
 
 /**
@@ -263,10 +316,295 @@ function offeredForModule(conn, { book, chapter, moduleId, segments, editsBySegm
   }
 }
 
+/**
+ * The text that was on screen when a save was made (G1.23 PR2 task 2; the claim check replays on it,
+ * not on the text of any accepted list). `saved.displayed.editId` null: the served version's Icelandic;
+ * the caller's own row (a re-save): what that row held before this save; another editor's row: that
+ * row's edited text. Null when it cannot be found. Throws on a damaged database.
+ *
+ * @param {import('better-sqlite3').Database} conn sessions.db
+ * @param {{ servedVersionId: number, editId: number, displayed: { editId: number | null },
+ *   before: { edited_content: string } | null }} saved saveOnServedBase's result
+ * @returns {string | null}
+ */
+function displayedTextForSave(conn, saved) {
+  const shownId = saved.displayed.editId;
+  if (shownId === null || shownId === undefined) {
+    const row = conn
+      .prepare('SELECT is_text FROM served_text_versions WHERE id = ?')
+      .get(saved.servedVersionId);
+    return row ? row.is_text : null;
+  }
+  if (shownId === saved.editId) {
+    return saved.before && typeof saved.before.edited_content === 'string'
+      ? saved.before.edited_content
+      : null;
+  }
+  const row = conn.prepare('SELECT edited_content FROM segment_edits WHERE id = ?').get(shownId);
+  return row ? row.edited_content : null;
+}
+
+/**
+ * Which claimed ops of a save check out (G1.23 PR2 task 2; spec §6, index decision 12). Only the
+ * static groups whose ops are ALL claimed enter (a group is never taken in part); they are placed in
+ * order of first chainIndex, each on the text the groups before it produced. Every group that PLACES
+ * advances that text (placement models the editor's accept click); it is validated only when, in
+ * addition, every replace text occurs in the saved text. A group that fails to place is neither
+ * validated nor applied, so a group depending on it fails too. Throws on a damaged database.
+ *
+ * @param {import('better-sqlite3').Database} conn sessions.db
+ * @param {{ book: string, chapter: number, moduleId: string, segmentId: string, occurrence: number,
+ *   baseSha256: string, displayedText: string, savedText: string, opIds: Iterable<string> }} input
+ * @returns {Set<string>} the validated op ids
+ */
+function checkAcceptedGroups(conn, input) {
+  const { book, chapter, moduleId, segmentId, occurrence, baseSha256, displayedText, savedText } =
+    input;
+  const validated = new Set();
+  const claimed = new Set(input.opIds);
+  if (claimed.size === 0) return validated;
+  const ctx = moduleContext(conn, { book, chapter, moduleId });
+  const groups = staticGroupsFor(ctx, { segmentId, occurrence, baseSha256 }).filter((g) =>
+    g.changes.every((c) => claimed.has(c.opId))
+  );
+  let cur = displayedText;
+  for (const group of groups) {
+    const placed = placeGroup(cur, group);
+    if (!placed.ok) continue;
+    cur = placed.result; // every group that places is applied: it models the accept click, whatever the saved text kept
+    if (!group.changes.every((c) => savedText.includes(c.replace))) continue;
+    for (const c of group.changes) validated.add(c.opId);
+  }
+  return validated;
+}
+
+/**
+ * Record one rejection of a suggestion group (G1.23 PR2 task 3; spec §7, ruling R10). One immediate
+ * transaction: each change whose op is closed in NEITHER table is inserted (ON CONFLICT DO NOTHING);
+ * an op already closed in either table counts in alreadyClosed. A double click therefore inserts
+ * each op once. A rejection hides the group for every editor, so the row is keyed on the place.
+ *
+ * @param {import('better-sqlite3').Database} conn sessions.db
+ * @param {{ book: string, chapter: number, moduleId: string, segmentId: string, occurrence: number,
+ *   group: { rulingId: string, changes: Array<{ opId: string, runId?: string|null, category?: string|null }> },
+ *   rejectedBy: string, nowMs: number }} input rejectedBy is the account GUID, stored as text
+ * @returns {{ rows: object[], alreadyClosed: number }} rows are the inserted table rows, each with
+ *   a `category` field from the change (no column holds it)
+ */
+function recordRejection(
+  conn,
+  { book, chapter, moduleId, segmentId, occurrence, group, rejectedBy, nowMs }
+) {
+  // A book outside the study does no suggestion work (R22).
+  if (!isStudyBook(book)) return { rows: [], alreadyClosed: 0 };
+  const place = [book, chapter, moduleId, segmentId, occurrence];
+  const insert = conn.prepare(
+    `INSERT INTO suggestion_rejections
+       (book, chapter, module_id, segment_id, occurrence, op_id, ruling_id, run_id, rejected_by, rejected_at_ms)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+     ON CONFLICT DO NOTHING`
+  );
+  const byId = conn.prepare('SELECT * FROM suggestion_rejections WHERE id = ?');
+  const write = conn.transaction(() => {
+    const rows = [];
+    let alreadyClosed = 0;
+    const closed = closedOpKeys(conn, { book, chapter, moduleId });
+    for (const c of group.changes) {
+      if (closed.has(`${segmentId}#${occurrence}|${c.opId}`)) {
+        alreadyClosed += 1;
+        continue;
+      }
+      const r = insert.run(
+        ...place,
+        c.opId,
+        group.rulingId,
+        c.runId ?? null,
+        String(rejectedBy),
+        nowMs
+      );
+      if (r.changes === 0) {
+        alreadyClosed += 1;
+        continue;
+      }
+      rows.push({ ...byId.get(Number(r.lastInsertRowid)), category: c.category ?? null });
+    }
+    return { rows, alreadyClosed };
+  });
+  return write.immediate();
+}
+
+/**
+ * Closes every suggestion group still open on a segment as LEFT OPEN, when a finishing act (a
+ * Staðfesta MT acceptance, or a head editor's approval) has just committed (spec §7). The groups are
+ * the static groups on the served base the act was made on, minus any group with an op the finished
+ * edit took (`acceptedOps`); one row per change, `shown_at_finish` 1 when the group still places on
+ * the finished text. The base hash read, the context (which reads the closed tables), the open
+ * groups and the inserts are ONE immediate transaction, so a concurrent reject cannot interleave.
+ * Finishing never waits on suggestions: this never throws; a failure warns (the place, the act and
+ * a reason word, never any text) and returns []. A NULL servedVersionId or occurrence closes nothing.
+ *
+ * @param {import('better-sqlite3').Database} conn sessions.db
+ * @param {{ book: string, chapter: number, moduleId: string, segmentId: string,
+ *   occurrence: number|null, servedVersionId: number|null, act: 'stadfesta-mt'|'approval',
+ *   finishingKind: 'segment_acceptance'|'segment_edit', finishingId: number, finishedText: string,
+ *   acceptedOps: Iterable<string>, closedBy: string, nowMs: number }} input closedBy is the account
+ *   GUID, stored as text
+ * @returns {object[]} the inserted table rows, each with a `category` field from the change
+ */
+function closeLeftOpen(
+  conn,
+  {
+    book,
+    chapter,
+    moduleId,
+    segmentId,
+    occurrence,
+    servedVersionId,
+    act,
+    finishingKind,
+    finishingId,
+    finishedText,
+    acceptedOps,
+    closedBy,
+    nowMs,
+  }
+) {
+  if (!isStudyBook(book)) return [];
+  if (servedVersionId === null || servedVersionId === undefined) return [];
+  if (occurrence === null || occurrence === undefined) return [];
+  try {
+    const key = { book, chapter, moduleId };
+    // Plain reads before the write lock (M2): a module that is not eligible closes nothing and
+    // never opens the closure transaction (R19). moduleContext re-checks inside it.
+    if (!isEligible(conn, key).eligible) return [];
+    const taken = new Set(acceptedOps || []);
+    const insert = conn.prepare(
+      `INSERT INTO suggestion_left_open
+         (book, chapter, module_id, segment_id, occurrence, op_id, ruling_id, run_id,
+          finishing_act, finishing_kind, finishing_id, closed_by, closed_at_ms, shown_at_finish)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+       ON CONFLICT DO NOTHING`
+    );
+    const byId = conn.prepare('SELECT * FROM suggestion_left_open WHERE id = ?');
+    const write = conn.transaction(() => {
+      const version = conn
+        .prepare('SELECT is_sha256 FROM served_text_versions WHERE id = ?')
+        .get(servedVersionId);
+      if (!version) return null;
+      // R20: a group another editor's in-flight row (pending, or approved and not yet applied)
+      // holds accepted is theirs, not left open.
+      const inflightRows = conn
+        .prepare(
+          `SELECT accepted_suggestions FROM segment_edits
+           WHERE book = ? AND module_id = ? AND segment_id = ?
+             AND (status = 'pending' OR (status = 'approved' AND applied_at IS NULL))
+             AND id IS NOT ?`
+        )
+        // The finishing row's own list is `acceptedOps` already, parsed once by the caller.
+        .all(book, moduleId, segmentId, finishingKind === 'segment_edit' ? finishingId : null);
+      for (const r of inflightRows) {
+        for (const id of acceptedOpIds(r.accepted_suggestions, occurrence, {
+          book,
+          chapter,
+          moduleId,
+          segmentId,
+        })) {
+          taken.add(id);
+        }
+      }
+      const ctx = moduleContext(conn, key);
+      const open = staticGroupsFor(ctx, {
+        segmentId,
+        occurrence,
+        baseSha256: version.is_sha256,
+      }).filter((g) => !g.changes.some((c) => taken.has(c.opId)));
+      const shown = new Set(visibleGroups(finishedText, open).map((v) => v.group.key));
+      const rows = [];
+      for (const g of open) {
+        for (const c of g.changes) {
+          const r = insert.run(
+            book,
+            chapter,
+            moduleId,
+            segmentId,
+            occurrence,
+            c.opId,
+            g.rulingId,
+            c.runId ?? null,
+            act,
+            finishingKind,
+            finishingId,
+            String(closedBy),
+            nowMs,
+            shown.has(g.key) ? 1 : 0
+          );
+          if (r.changes === 0) continue;
+          rows.push({ ...byId.get(Number(r.lastInsertRowid)), category: c.category ?? null });
+        }
+      }
+      return rows;
+    });
+    const rows = write.immediate();
+    if (rows === null) {
+      log.warn({ ...key, segmentId, act, reason: 'no-served-version' }, 'Left open: not closed');
+      return [];
+    }
+    return rows;
+  } catch (err) {
+    log.warn(
+      {
+        book,
+        chapter,
+        moduleId,
+        segmentId,
+        act,
+        reason: err && err.code ? err.code : 'close-failed',
+      },
+      'Left open: not closed'
+    );
+    return [];
+  }
+}
+
+/**
+ * The op ids the module's static rules offer on one served segment, for a research check made
+ * before a write. A Set, or null when the check cannot run (a warning with the place and a
+ * reason word, never any text). No route holds the module context: it stays in this file.
+ *
+ * @param {import('better-sqlite3').Database} conn sessions.db
+ * @param {{ book: string, chapter: number, moduleId: string, segmentId: string,
+ *   occurrence: number, baseSha256: string }} input
+ * @returns {Set<string> | null}
+ */
+function offeredOpIdsFor(conn, { book, chapter, moduleId, segmentId, occurrence, baseSha256 }) {
+  try {
+    const ctx = moduleContext(conn, { book, chapter, moduleId });
+    return new Set(
+      staticGroupsFor(ctx, { segmentId, occurrence, baseSha256 }).flatMap((g) =>
+        g.changes.map((c) => c.opId)
+      )
+    );
+  } catch (err) {
+    log.warn(
+      { book, chapter, moduleId, reason: err && err.code ? err.code : 'check-failed' },
+      'Suggestion reject: the offered-set check failed; claims are unverified'
+    );
+    return null;
+  }
+}
+
 module.exports = {
+  offeredOpIdsFor,
+  closeLeftOpen,
+  acceptedOpIds,
+  recordRejection,
   isEligible,
   closedOpKeys,
   moduleContext,
   staticGroupsFor,
   offeredForModule,
+  parseAcceptedSuggestions,
+  acceptedForSave,
+  displayedTextForSave,
+  checkAcceptedGroups,
 };
