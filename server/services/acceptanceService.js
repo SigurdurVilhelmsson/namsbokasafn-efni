@@ -175,7 +175,7 @@ function acceptSegment({
   if (publishedEdit) {
     throw codedError(
       'HUMAN_CONTENT',
-      'Núverandi texti er samþykkt breyting ritstjóra, ekki vélþýðing — ekki hægt að staðfesta hann sem vélþýðingu.'
+      'Núverandi texti er samþykkt breyting yfirlesara, ekki vélþýðing — ekki hægt að staðfesta hann sem vélþýðingu.'
     );
   }
 
@@ -318,7 +318,7 @@ function revokeAcceptance(acceptanceId, { actorId, actorRole, actorBooks }) {
       if (!isOwner && !isHead) {
         throw codedError(
           'FORBIDDEN',
-          'Aðeins eigandi staðfestingar eða ritstjóri bókarinnar getur afturkallað hana.'
+          'Aðeins eigandi staðfestingar eða aðalritstjóri bókarinnar getur afturkallað hana.'
         );
       }
 
