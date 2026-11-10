@@ -206,6 +206,7 @@ describe('EXPECTED_SCHEMA', () => {
         'origin',
         'displayed_edit_id',
         'displayed_edit_sha256',
+        'accepted_suggestions',
       ],
       segment_acceptances: ['served_version_id', 'occurrence'],
     });

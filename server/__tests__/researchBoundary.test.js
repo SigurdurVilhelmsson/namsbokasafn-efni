@@ -58,6 +58,8 @@ const ALLOWED_COLUMNS = Object.freeze({
     'origin',
     'displayed_edit_id',
     'displayed_edit_sha256',
+    // G1.23
+    'accepted_suggestions',
   ],
   segment_acceptances: [
     'id',
@@ -139,6 +141,7 @@ const MODULE_JSON_ALLOWED = Object.freeze({
     'mtFinding',
     'occurrence',
     'baseSha256',
+    'suggestions',
   ],
   editRow: [...ALLOWED_COLUMNS.segment_edits, 'contentSha256'],
   acceptanceRow: [...ALLOWED_COLUMNS.segment_acceptances],
@@ -305,7 +308,13 @@ function filesNaming(root, pattern) {
   walk(root);
   return out.sort();
 }
-const OPENING_NAMES = /module_openings|module_opening_inflight|opened_at_ms/;
+// The tables and their time column, plus the service reader and the time's camelCase name
+// (G1.23 PR1 Task 5 review): moduleOpenings.readOpening is the one export that returns the
+// opened time, and a route already holds the moduleOpenings object, so a call to it would
+// carry the time while naming no table. Only services call it (suggestionView). This
+// pattern scans routes/ alone; services and tests name readOpening legitimately.
+const OPENING_NAMES =
+  /module_openings|module_opening_inflight|opened_at_ms|\breadOpening\b|\bopenedAtMs\b/;
 
 describe('T17 (PR2): no opened time, no switch time and no snapshot in any response (spec §11)', () => {
   const PR2_BOOK = 'efnafraedi-2e';
@@ -418,7 +427,7 @@ describe('T17 (PR2): no opened time, no switch time and no snapshot in any respo
     expect((await serveAs(OPENER)).body).not.toEqual(a.body);
   });
 
-  it('no file under server/routes/ names the opening tables or their time column', () => {
+  it('no file under server/routes/ names the opening tables, their time column or their reader', () => {
     const routesDir = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'routes');
     expect(filesNaming(routesDir, OPENING_NAMES)).toEqual([]);
   });
@@ -432,6 +441,26 @@ describe('T17 (PR2): no opened time, no switch time and no snapshot in any respo
     writeFileSync(path.join(tmp, 'clean.js'), 'module.exports = {};');
     expect(filesNaming(tmp, OPENING_NAMES)).toEqual(['leak.js']);
     rmSync(tmp, { recursive: true, force: true });
+  });
+
+  it('control: the scan names a planted call to the reader, and the time by its camelCase name', () => {
+    const tmp = mkdtempSync(path.join(tmpdir(), 't17-pr2-reader-'));
+    try {
+      writeFileSync(
+        path.join(tmp, 'reader.js'),
+        'const o = moduleOpenings.readOpening(conn, { book, chapter, moduleId });'
+      );
+      writeFileSync(path.join(tmp, 'time.js'), 'res.json({ at: opening.openedAtMs });');
+      // Word-bounded: a longer name that only contains a token is not a match.
+      writeFileSync(
+        path.join(tmp, 'near.js'),
+        'const n = unreadOpenings + readOpeningHours + openedAtMsLabel;'
+      );
+      writeFileSync(path.join(tmp, 'clean.js'), 'module.exports = {};');
+      expect(filesNaming(tmp, OPENING_NAMES)).toEqual(['reader.js', 'time.js']);
+    } finally {
+      rmSync(tmp, { recursive: true, force: true });
+    }
   });
 });
 
@@ -447,6 +476,8 @@ const FORBIDDEN_TABLES = [
   'research_consent',
   'activity_log',
   'analytics_events',
+  'suggestion_rejections',
+  'suggestion_left_open',
 ];
 // The ONLY exceptions §5.22 allows, each naming research_consent and nothing else:
 const RESEARCH_SCRIPT_EXCEPTIONS = Object.freeze({

@@ -48,6 +48,7 @@ const notifications = require('../services/notifications');
 const servedVersions = require('../services/servedVersions');
 const servedEdit = require('../services/servedEdit');
 const moduleOpenings = require('../services/moduleOpenings');
+const suggestionView = require('../services/suggestionView');
 const researchEmission = require('../services/researchEmission');
 const { sha256Text, isNotMintedBook } = require('../lib/servedText');
 const { isNewer } = require('../lib/editRecency');
@@ -389,12 +390,27 @@ router.get(
         return res.status(status).json({ error: code, message });
       }
       // G1.2 (spec §5.5): after the opening's commit; it never turns a serve into a 503 or a 503 into a 200
-      // (PR2's handoff). Step 5 (G1.23) runs after it and reads seg.baseSha256 and the stored opening. No field
-      // is added to the response (T17).
+      // (PR2's handoff). Step 5 (G1.23) runs after it and reads seg.baseSha256 and the stored opening. The
+      // opening's research emission adds no field to the response (T17); step 5 adds only `suggestions`,
+      // which carries no time, opened state, switch state or research field.
       if (step.status === 'opened') {
         researchEmission.emitModuleOpened(req, {
           detail: moduleOpenings.moduleOpenedDetail(served, step.opening),
         });
+      }
+      // G1.23 (spec §5.4 step 5, index decision 7): the offered term-suggestion groups per segment,
+      // from the segments as served above and the edit rows as sent below. Only a segment with a
+      // group or a tag carries the key. offeredForModule never throws and returns no time.
+      const offered = suggestionView.offeredForModule(conn, {
+        book: req.params.book,
+        chapter: req.chapterNum,
+        moduleId: req.params.moduleId,
+        segments: data.segments,
+        editsBySegment,
+      });
+      for (const s of data.segments) {
+        const o = offered.get(s.segmentId);
+        if (o) s.suggestions = o;
       }
       res.json({
         ...data,

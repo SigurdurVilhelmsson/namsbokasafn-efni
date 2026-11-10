@@ -110,6 +110,9 @@ const ENV_SCAN_FILES = Object.freeze([
   'services/notifications.js',
   // PR2's handoff: reads nothing today; listing it guards a future read
   'services/moduleOpenings.js',
+  // G1.23's read side (PR1): read nothing today; listing them guards a future read
+  'lib/suggestionLogs.js',
+  'services/suggestionView.js',
   // the research layer's own files (decision 33)
   'lib/featureFlags.js',
   'lib/bookSwitches.js',

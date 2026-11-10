@@ -47,7 +47,8 @@ function createSegmentEditsSchema(db) {
       occurrence INTEGER,
       origin TEXT,
       displayed_edit_id INTEGER,
-      displayed_edit_sha256 TEXT
+      displayed_edit_sha256 TEXT,
+      accepted_suggestions TEXT
     );
 
     CREATE UNIQUE INDEX idx_segment_edits_one_pending

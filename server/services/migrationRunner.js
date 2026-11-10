@@ -86,6 +86,7 @@ function runAllMigrations() {
     require('../migrations/054-module-openings'),
     require('../migrations/055-research-consent-and-switches'),
     require('../migrations/056-research-deletions'),
+    require('../migrations/057-suggestion-view'),
   ];
 
   let applied = 0;
