@@ -154,3 +154,78 @@ describe('the page and its strings', () => {
     );
   });
 });
+
+describe('Hafna rejects a group in place (Task 4)', () => {
+  const reject = () => fnBody('rejectSuggestionGroup', 'suggestionDisplay');
+
+  it('rejectSuggestionGroup redraws in place and never reloads', () => {
+    expect(reject()).toContain('refreshSuggestionView(');
+    for (const call of ['loadModule(', 'reloadIfOpen(', 'renderSegments(']) {
+      expect(reject()).not.toContain(call);
+    }
+  });
+
+  it('rejectSuggestionGroup never writes a textarea or closes a pane', () => {
+    expect(reject()).toContain('fetchJson('); // control: the slice is the real body
+    expect(reject()).not.toMatch(/\.value\s*=/);
+    expect(reject()).not.toContain('closeEditPanel(');
+  });
+
+  it('refreshSuggestionView never assigns a textarea value', () => {
+    const body = fnBody('refreshSuggestionView', 'acceptSuggestionGroup');
+    expect(body).toContain('innerHTML'); // control
+    expect(body).not.toMatch(/\.value\s*=/);
+  });
+
+  it('treats only 404 SUGGESTION_UNKNOWN as done, and alerts on any other failure', () => {
+    expect(reject()).toContain(
+      "err.status === 404 && err.data && err.data.error === 'SUGGESTION_UNKNOWN'"
+    );
+    expect(reject()).toContain('alert(UI.suggestions.rejectFailed)');
+  });
+
+  it('removes the group from moduleData and never deletes seg.suggestions', () => {
+    expect(reject()).toContain('.suggestions.groups =');
+    expect(reject()).not.toMatch(/delete\s+\w+\.suggestions\b/);
+    expect(reject()).not.toMatch(/\.suggestions\s*=/);
+  });
+
+  it('refuses a second request for a group already in flight', () => {
+    expect(reject()).toContain('rejectsInFlight.has(');
+    expect(reject()).toContain('rejectsInFlight.delete(');
+  });
+
+  it('the reject button is named Hafna tillögu and uses the escaped key, in the swap and on the ruling line', () => {
+    const button = fnBody('suggestionRejectButton', 'suggestionSwapHtml');
+    expect(button).toContain('aria-label="${escapeHtml(UI.suggestions.hafnaTitle)}"');
+    expect(button).toContain('this.dataset.groupKey');
+    expect(button).not.toMatch(/rejectSuggestionGroup\([^)]*\$\{/);
+    expect(fnBody('suggestionSwapHtml', 'suggestionRulingHtml')).toContain(
+      'suggestionRejectButton(group, UI.suggestions.hafna, true)'
+    );
+    const ruling = fnBody('suggestionRulingHtml', 'suggestionDisplay');
+    expect(ruling).toContain('suggestionRejectButton(group, rejectText, false)');
+    expect(ruling).toContain('UI.suggestions.hafnaBadum');
+    expect(ruling).toContain('UI.suggestions.hafnaOllum(n)');
+  });
+
+  it('the preview draws no Hafna (controls false reaches no button)', () => {
+    expect(fnBody('panePreviewHtml', 'suggestionTagHtml')).toContain('controls: false');
+    expect(fnBody('suggestionSwapHtml', 'suggestionRulingHtml')).toContain('else if (controls)');
+  });
+
+  it('exports both on window', () => {
+    expect(src).toContain('window.rejectSuggestionGroup = rejectSuggestionGroup;');
+    expect(src).toContain('window.refreshSuggestionView = refreshSuggestionView;');
+    expect(src).toContain('window.acceptSuggestionGroup = acceptSuggestionGroup;'); // control
+  });
+
+  it('UI.suggestions carries the Hafna strings verbatim', () => {
+    const UI = new Function(`${strings}; return UI;`)();
+    expect(UI.suggestions.hafna).toBe('✗ Hafna');
+    expect(UI.suggestions.hafnaBadum).toBe('✗ Hafna báðum');
+    expect(UI.suggestions.hafnaOllum(3)).toBe('✗ Hafna öllum (3)');
+    expect(UI.suggestions.hafnaTitle).toBe('Hafna tillögu');
+    expect(UI.suggestions.rejectFailed).toBe('Ekki tókst að hafna tillögunni. Reyndu aftur.');
+  });
+});

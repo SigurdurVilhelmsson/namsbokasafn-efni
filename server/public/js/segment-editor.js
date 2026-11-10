@@ -1735,6 +1735,18 @@
   }
 
   /**
+   * A group's reject button (Hafna), drawn exactly where Nota is drawn and by the same mechanism: an escaped
+   * data-group-key, read as this.dataset.groupKey. The one-change button is named "Hafna tillögu" by aria-label and
+   * title (R20), distinct from the head editor's own Hafna.
+   */
+  function suggestionRejectButton(group, label, named) {
+    const name = named
+      ? ` title="${escapeHtml(UI.suggestions.hafnaTitle)}" aria-label="${escapeHtml(UI.suggestions.hafnaTitle)}"`
+      : '';
+    return `<button type="button" class="sugg-btn sugg-hafna" data-group-key="${escapeHtml(group.key)}"${name} onclick="rejectSuggestionGroup(this.closest('tr').dataset.segmentId, this.dataset.groupKey)">${escapeHtml(label)}</button>`;
+  }
+
+  /**
    * One change of an offered group, drawn on its word: the old word struck through, the new word, the GG tag; then
    * the group's number (two or more changes) or, with controls, its accept button (one change). No whitespace
    * between tags: the display is white-space: pre-wrap. `innerHtml` is the renderer's own escaped text.
@@ -1744,7 +1756,10 @@
     const change = group.changes[changeIndex];
     let after = suggestionTagHtml();
     if (group.changes.length > 1) after += `<sup class="sugg-num">${offer.number}</sup>`;
-    else if (controls) after += suggestionAcceptButton(group, UI.suggestions.nota, true); // Task 4: Hafna
+    else if (controls) {
+      after += suggestionAcceptButton(group, UI.suggestions.nota, true);
+      after += suggestionRejectButton(group, UI.suggestions.hafna, true);
+    }
     return `<span class="sugg-swap" data-group-key="${escapeHtml(group.key)}"><del class="sugg-old">${innerHtml}</del><ins class="sugg-new">${escapeHtml(change.replace)}</ins>${after}</span>`;
   }
 
@@ -1757,9 +1772,68 @@
     if (controls && n > 1) {
       const text = n === 2 ? UI.suggestions.notaBadar : UI.suggestions.notaAllar(n);
       buttons = suggestionAcceptButton(group, text, false);
-      // Task 4 adds the group's Hafna button to `buttons` here.
+      const rejectText = n === 2 ? UI.suggestions.hafnaBadum : UI.suggestions.hafnaOllum(n);
+      buttons += suggestionRejectButton(group, rejectText, false);
     }
     return `<div class="sugg-ruling" data-group-key="${escapeHtml(group.key)}"><span class="sugg-num">${offer.number}</span><span class="sugg-label">${escapeHtml(label.en || group.rulingId)} → ${escapeHtml(label.is || '')}</span><span class="sugg-count">(${n})</span>${buttons}</div>`;
+  }
+
+  /** Groups whose reject request is in flight ("segmentId|groupKey"), so a double click sends one request. */
+  const rejectsInFlight = new Set();
+
+  /**
+   * Hafna (spec §4): close one suggestion group for good. Posts to the reject route; on success, or when the server
+   * says the group is not in its kept log (404 SUGGESTION_UNKNOWN: it is already gone), the group leaves
+   * moduleData's suggestions.groups and the row is redrawn in place. Any other failure (a missing module is a 404
+   * too, with another error) alerts and changes nothing. It never reloads, re-renders the table, writes a textarea
+   * or closes a pane. seg.suggestions itself is never deleted: refreshSuggestionView must still draw the row plain.
+   */
+  async function rejectSuggestionGroup(segmentId, groupKey) {
+    const seg = suggestionSegment(segmentId);
+    const group = seg ? (seg.suggestions.groups || []).find((g) => g.key === groupKey) : null;
+    if (!group) return;
+    const inFlightKey = segmentId + '|' + groupKey;
+    if (rejectsInFlight.has(inFlightKey)) return;
+    rejectsInFlight.add(inFlightKey);
+    const row = rowValues(segmentId);
+    const body = {
+      segmentId,
+      occurrence: row ? row.occurrence : null,
+      groupKey,
+      groupActionId: segmentSaveState.newClientActionId(window.crypto),
+      clientActionId: segmentSaveState.newClientActionId(window.crypto),
+      clientActionTime: Date.now(),
+    };
+    if (row && row.baseSha256) body.baseSha256 = row.baseSha256;
+    try {
+      try {
+        await fetchJson(
+          `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/suggestions/reject`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify(body),
+          }
+        );
+      } catch (err) {
+        const unknownGroup =
+          err && err.status === 404 && err.data && err.data.error === 'SUGGESTION_UNKNOWN';
+        if (!unknownGroup) {
+          alert(UI.suggestions.rejectFailed);
+          return;
+        }
+      }
+      const current = suggestionSegment(segmentId);
+      if (current) {
+        current.suggestions.groups = (current.suggestions.groups || []).filter(
+          (g) => g.key !== groupKey
+        );
+      }
+      refreshSuggestionView(segmentId);
+    } finally {
+      rejectsInFlight.delete(inFlightKey);
+    }
   }
 
   /**
@@ -4445,6 +4519,8 @@
   window.insertTermFromLookup = insertTermFromLookup;
   window.insertRepetition = insertRepetition;
   window.acceptSuggestionGroup = acceptSuggestionGroup;
+  window.rejectSuggestionGroup = rejectSuggestionGroup;
+  window.refreshSuggestionView = refreshSuggestionView;
   window.propagateSegment = propagateSegment;
   window.acceptSegmentAndAdvance = acceptSegmentAndAdvance;
   window.revokeAcceptance = revokeAcceptance;
