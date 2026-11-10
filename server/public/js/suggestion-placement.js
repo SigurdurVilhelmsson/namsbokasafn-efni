@@ -213,10 +213,34 @@
   }
 
   /**
+   * True if some '<' in `html` is followed by another '<' before its own first '>': a tag opened inside a tag.
+   * The editor's renderer makes this when a rule copies a capture that already holds another rule's tag into an
+   * attribute (`title="… <em>b</em> …"`), or when a later rule rewrites inside an attribute. The swallowed tag's
+   * '>' then makes a position inside the attribute look outside every tag, and its own quotes make a quote scan
+   * unreliable, so a caller cannot tell where the tag ends and must draw nothing (ruling R27).
+   * Nested elements (`<b><i>x</i></b>`) and escaped text (`&lt;`) are not swallowed tags.
+   * @param {string} html @returns {boolean}
+   */
+  function swallowsTag(html) {
+    const s = String(html);
+    let at = s.indexOf('<');
+    while (at !== -1) {
+      const end = s.indexOf('>', at + 1);
+      const next = s.indexOf('<', at + 1);
+      if (next !== -1 && (end === -1 || next < end)) return true;
+      at = next;
+    }
+    return false;
+  }
+
+  /**
    * Replace each drawable mark in rendered HTML by `drawMark(id, innerHtml)` and strip every other sentinel.
    * A mark is drawable only if its open token and its close token each occur exactly once, the open before the
    * close, the open outside any tag, and nothing between them is a sentinel, '<' or '>' (the rendered find is plain
-   * text). Assumes the renderer's attribute values hold no raw '<' or '>' (true after escapeHtml).
+   * text). "Outside any tag" is decided by the last '<' and '>' before the open, which is exact only while every
+   * raw '<' and '>' belongs to the tag it opens or closes. That is CHECKED, not assumed: the renderer can copy a
+   * capture already holding another rule's tag into an attribute (see swallowsTag), and if `html` holds such a tag
+   * no mark is drawn at all (ruling R27).
    * Never throws for any `html`. The returned HTML holds no sentinel code point except any `drawMark` returns.
    * @param {string} html the renderer's output for a withSentinels(...) text
    * @param {function(string, string): string} drawMark (id, innerHtml) -> the mark's HTML; innerHtml is the
@@ -225,6 +249,7 @@
    */
   function fromSentinels(html, drawMark) {
     const s = String(html);
+    if (swallowsTag(s)) return { html: stripSentinels(s), drawn: [] };
     const token = /([\uE000\uE001])(\d+)\uE002/g;
     const opens = Object.create(null);
     const closes = Object.create(null);
@@ -268,13 +293,15 @@
    *
    * Offered groups: `suggestions.groups` minus any with an op in `paneAcceptedOpIds` (accepted in the open pane, so
    * not offered again) or with a sentinel in a find or replace, placed with visibleGroups. Tags: the pane-accepted
-   * ops' changes (looked up in the groups) and `suggestions.tagged`, distinct by opId, in chain order, placed with
-   * tagSpans; a swap overlapping a tag is dropped and the tag stays. Every swap and tag span is marked, the marked
-   * text rendered, and only drawable marks are drawn (fromSentinels): a group any of whose marks is not drawable is
-   * not offered at all, and an undrawable tag is not shown. That repeats until every remaining mark draws. Finally,
-   * if the rendered HTML with its sentinels stripped differs from the renderer's own output for `text`, the marks
-   * changed how the renderer parsed the text, so nothing is drawn (an addition to R14, measured by the R14 probe).
-   * A text that already holds a sentinel is rendered as it is, with nothing drawn and nothing stripped.
+   * ops' changes (looked up in the groups) and `suggestions.tagged`, distinct by opId, longest replace first (ties:
+   * chain order; ruling R22), placed with tagSpans; a swap overlapping a tag is dropped and the tag stays. Every swap
+   * and tag span is marked, the marked text rendered, and only drawable marks are drawn (fromSentinels): a group
+   * any of whose marks is not drawable is not offered at all, and an undrawable tag is not shown. That repeats until
+   * every remaining mark draws. Finally, if the rendered HTML with its sentinels stripped differs from the
+   * renderer's own output for `text`, the marks changed how the renderer parsed the text, so nothing is drawn (an
+   * addition to R14, measured by the R14 probe).
+   * A text that already holds a sentinel is rendered as it is, with nothing drawn and nothing stripped. So is a text
+   * whose render swallows a tag into an attribute (swallowsTag; ruling R27): no swap and no tag anywhere in it.
    *
    * @param {string} text the displayed text
    * @param {{groups?: object[], tagged?: object[]}|null|undefined} suggestions the segment's served suggestions
@@ -293,6 +320,9 @@
       return { html: draw.render(s), offered: [] };
     };
     if (!suggestions || hasSentinel(s)) return plain();
+    // R27: a render that swallows a tag into an attribute hides where its tags end, so nothing is drawn in it.
+    const base = draw.render(s);
+    if (swallowsTag(base)) return { html: base, offered: [] };
     const groups = Array.isArray(suggestions.groups) ? suggestions.groups : [];
     const tagged = Array.isArray(suggestions.tagged) ? suggestions.tagged : [];
     const accepted = new Set(Array.isArray(paneAcceptedOpIds) ? paneAcceptedOpIds : []);
@@ -328,8 +358,10 @@
       });
     });
     tagged.forEach(addTag);
+    // R22: longest replace first (ties: chain order), so a replace inside another accepted one is still unique
+    // once the longer one is tagged (atóm inside atómum).
     tagChanges.sort(function (a, b) {
-      return chainOrder(a) - chainOrder(b);
+      return b.replace.length - a.replace.length || chainOrder(a) - chainOrder(b);
     });
     let liveTags = tagSpans(s, tagChanges);
     let liveSwaps = visibleGroups(s, offerable).filter(function (v) {
@@ -376,7 +408,7 @@
       liveSwaps = keepSwaps;
       liveTags = keepTags;
     }
-    if (stripSentinels(rendered) !== draw.render(s)) return plain();
+    if (stripSentinels(rendered) !== base) return plain();
 
     const offered = liveSwaps.map(function (v, i) {
       return { group: v.group, number: i + 1 };
@@ -402,6 +434,7 @@
     withSentinels: withSentinels,
     fromSentinels: fromSentinels,
     stripSentinels: stripSentinels,
+    swallowsTag: swallowsTag,
     drawSuggestions: drawSuggestions,
   };
   if (typeof root !== 'undefined') root.suggestionPlacement = api;

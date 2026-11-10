@@ -295,6 +295,46 @@ describe('fromSentinels', () => {
     expect(r).toEqual({ html: '<i title="a">t</i>', drawn: [] });
   });
 
+  // R27: the real renderer can copy a capture that already holds another rule's tag into an attribute (rule 4
+  // copying [[i:…]], or rules 5–11 rewriting the whole string, attributes included). The swallowed tag's '>' then
+  // makes the attribute look closed, so a mark after it would pass the inside-a-tag test. Nothing is drawn at all.
+  const termTitle = (h) =>
+    h.replace(/\[\[term:([^|\]]+)\|([^\]]+)\]\]/g, '<span title="$2">$1</span>');
+  const swallowPlain = (t) => termTitle(escapeHtml(t).replace(/\*([^*]+)\*/g, '<em>$1</em>'));
+  const swallowQuoted = (t) =>
+    termTitle(escapeHtml(t).replace(/\{=([^=]+)=\}/g, '<span style="color:red">$1</span>'));
+  const marksFor = (text, ...words) =>
+    words.map((w, id) => ({ start: text.indexOf(w), end: text.indexOf(w) + w.length, id }));
+
+  it('draws nothing when a plain tag is swallowed into an attribute ahead of a mark (R27)', () => {
+    const text = '[[term:K|*b* kalín]] og natrín';
+    const r = P.fromSentinels(
+      swallowPlain(P.withSentinels(text, marksFor(text, 'kalín', 'natrín'))),
+      box
+    );
+    expect(r).toEqual({ html: swallowPlain(text), drawn: [] });
+  });
+
+  it('draws nothing when the swallowed tag carries its own quoted attribute (R27)', () => {
+    const text = '[[term:K|{=b=} kalín]] og natrín';
+    const r = P.fromSentinels(
+      swallowQuoted(P.withSentinels(text, marksFor(text, 'kalín', 'natrín'))),
+      box
+    );
+    expect(r).toEqual({ html: swallowQuoted(text), drawn: [] });
+  });
+
+  it('with no tag swallowed, the same renderers draw the plain-text mark (control for R27)', () => {
+    const text = '[[term:K|b kalín]] og natrín';
+    const marks = marksFor(text, 'kalín', 'natrín');
+    const want = {
+      html: '<span title="b kalín">K</span> og <b data-m="1">natrín</b>',
+      drawn: ['1'],
+    };
+    expect(P.fromSentinels(swallowPlain(P.withSentinels(text, marks)), box)).toEqual(want);
+    expect(P.fromSentinels(swallowQuoted(P.withSentinels(text, marks)), box)).toEqual(want);
+  });
+
   it('strips a lone sentinel character, and lists drawn ids in order of appearance', () => {
     const html = `${open(3)}a${close(3)} ${OPEN}x ${open(1)}b${close(1)}`;
     const r = P.fromSentinels(html, box);
@@ -306,6 +346,20 @@ describe('fromSentinels', () => {
 describe('stripSentinels', () => {
   it('removes whole tokens and lone sentinel characters, and nothing else', () => {
     expect(P.stripSentinels(`a${open(12)}b${close(12)}c${END}d 7`)).toBe('abcd 7');
+  });
+});
+
+describe('swallowsTag (R27)', () => {
+  it('is true when a tag opens inside another tag (a tag copied into an attribute)', () => {
+    expect(P.swallowsTag('x <span title="<em>b</em> kalín">K</span> y')).toBe(true);
+  });
+  it('is true when the swallowed tag carries its own quoted attribute', () => {
+    expect(P.swallowsTag('<span title="a <span class="m">b</span> kalín">K</span>')).toBe(true);
+  });
+  it('is false for nested elements, a plain attribute and escaped text (control)', () => {
+    expect(P.swallowsTag('<b><i>x</i></b> <span title="a &lt;b&gt;">K</span> a &lt; b')).toBe(
+      false
+    );
   });
 });
 
@@ -438,6 +492,36 @@ describe('drawSuggestions', () => {
     expect(r.offered.map((o) => o.group.key)).toEqual(['d']);
   });
 
+  // R22: tags go to tagSpans longest replace first (ties: chain order), so a replace contained in another
+  // accepted replace is still tagged. Here the shorter one comes first in the chain.
+  const atom = sg('a', 'atom', ['a1', 'frumeindir', 'atóm', 0], ['a2', 'frumeindum', 'atómum', 1]);
+
+  it('tags both words of a pane-accepted group when one replace holds the other (R22)', () => {
+    const accepted = P.placeGroup('Allar frumeindir eru úr frumeindum.', atom).result;
+    expect(
+      P.drawSuggestions(accepted, { groups: [atom], tagged: [] }, ['a1', 'a2'], draw())
+    ).toEqual({
+      html: 'Allar <t data-op="a1">atóm</t> eru úr <t data-op="a2">atómum</t>.',
+      offered: [],
+    });
+  });
+
+  it("tags both of the saved edit's accepted words when one replace holds the other (R22)", () => {
+    const r = P.drawSuggestions(
+      'Allar atóm eru úr atómum.',
+      { groups: [], tagged: atom.changes },
+      [],
+      draw()
+    );
+    expect(r.html).toBe('Allar <t data-op="a1">atóm</t> eru úr <t data-op="a2">atómum</t>.');
+  });
+
+  it('still does not tag a shorter replace that occurs twice outside the tagged longer one (control)', () => {
+    const text = 'Allar atóm eru úr atómum og atóm.';
+    const r = P.drawSuggestions(text, { groups: [atom], tagged: [] }, ['a1', 'a2'], draw());
+    expect(r.html).toBe('Allar atóm eru úr <t data-op="a2">atómum</t> og atóm.');
+  });
+
   it('drops a swap that overlaps a tag; the tag stays', () => {
     const over = sg('o', 'other', ['o1', 'jónir og', 'X', 3]);
     const r = P.drawSuggestions(
@@ -470,6 +554,48 @@ describe('drawSuggestions', () => {
     expect(
       P.drawSuggestions('sjá kafli hér', { groups: [id], tagged: [] }, [], draw(chips)).offered
     ).toHaveLength(1);
+  });
+
+  // R27: a text whose render swallows a tag into an attribute gets no swaps and no tags anywhere in it, not only
+  // at the swallowed spot: the group after the swallowed tag, a plain-text sibling and a saved tag all stay plain.
+  const swallowR27 = (inner) => (t) =>
+    escapeHtml(t)
+      .replace(inner.re, inner.to)
+      .replace(/\[\[term:([^|\]]+)\|([^\]]+)\]\]/g, '<span title="$2">$1</span>');
+  const emRule = { re: /\*([^*]+)\*/g, to: '<em>$1</em>' };
+  const styleRule = { re: /\{=([^=]+)=\}/g, to: '<span style="color:red">$1</span>' };
+  const kom = sg('m', 'complex-ion', ['m1', 'komplexjónir', 'flókajónir', 0]);
+  const atomTag = { opId: 't1', find: 'frumeind', replace: 'atóm', chainIndex: 2 };
+  const r27 = { groups: [kom, dissoc], tagged: [atomTag] };
+
+  it('draws nothing in a text whose render swallows a plain tag into an attribute (R27)', () => {
+    const text = '[[term:K|*b* komplexjónir]] og sundrunarföstum um atóm';
+    const render = swallowR27(emRule);
+    expect(P.drawSuggestions(text, r27, [], draw(render))).toEqual({
+      html: render(text),
+      offered: [],
+    });
+  });
+
+  it('draws nothing when the swallowed tag carries its own quoted attribute (R27)', () => {
+    const text = '[[term:K|{=b=} komplexjónir]] og sundrunarföstum um atóm';
+    const render = swallowR27(styleRule);
+    expect(P.drawSuggestions(text, r27, [], draw(render))).toEqual({
+      html: render(text),
+      offered: [],
+    });
+  });
+
+  it('with no tag swallowed, the same renderers offer the sibling and draw the tag (control for R27)', () => {
+    const text = '[[term:K|b komplexjónir]] og sundrunarföstum um atóm';
+    const want = {
+      html:
+        '<span title="b komplexjónir">K</span> og ' +
+        '<s data-g="1" data-c="0">sundrunarföstum→klofnunarföstum</s> um <t data-op="t1">atóm</t>',
+      offered: [{ group: dissoc, number: 1 }],
+    };
+    expect(P.drawSuggestions(text, r27, [], draw(swallowR27(emRule)))).toEqual(want);
+    expect(P.drawSuggestions(text, r27, [], draw(swallowR27(styleRule)))).toEqual(want);
   });
 
   it('never offers a group whose replace holds a sentinel', () => {
