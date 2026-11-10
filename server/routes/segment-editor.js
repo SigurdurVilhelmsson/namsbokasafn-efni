@@ -390,8 +390,9 @@ router.get(
         return res.status(status).json({ error: code, message });
       }
       // G1.2 (spec §5.5): after the opening's commit; it never turns a serve into a 503 or a 503 into a 200
-      // (PR2's handoff). Step 5 (G1.23) runs after it and reads seg.baseSha256 and the stored opening. No field
-      // is added to the response (T17).
+      // (PR2's handoff). Step 5 (G1.23) runs after it and reads seg.baseSha256 and the stored opening. The
+      // opening's research emission adds no field to the response (T17); step 5 adds only `suggestions`,
+      // which carries no time, opened state, switch state or research field.
       if (step.status === 'opened') {
         researchEmission.emitModuleOpened(req, {
           detail: moduleOpenings.moduleOpenedDetail(served, step.opening),

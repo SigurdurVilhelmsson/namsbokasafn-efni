@@ -104,14 +104,14 @@ const ENV_SCAN_FILES = Object.freeze([
   'services/servedEdit.js',
   'services/researchLog.js',
   'lib/applyHold.js',
-  'lib/suggestionLogs.js',
   'lib/heldBookWrites.js',
   // where the registered flags' reads live
   'services/greynirEngine.js',
   'services/notifications.js',
   // PR2's handoff: reads nothing today; listing it guards a future read
   'services/moduleOpenings.js',
-  // G1.23's read side (PR1): reads nothing today; listing it guards a future read
+  // G1.23's read side (PR1): read nothing today; listing them guards a future read
+  'lib/suggestionLogs.js',
   'services/suggestionView.js',
   // the research layer's own files (decision 33)
   'lib/featureFlags.js',

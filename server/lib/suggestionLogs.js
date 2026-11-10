@@ -5,6 +5,9 @@
  * term change; `<module>-revision.json` names the ruling set that gives each ruling its label.
  * Everything here is fail-soft: a bad log means no suggestions for that module and ONE warning
  * (`{ book, moduleId, reason }`, never text), and the reader never throws.
+ * The exact-15-keys rule means that if the layer-2 writer ever adds a field, every log reads as
+ * malformed and all suggestions disappear (fail-soft, by design; the warning is the signal).
+ * A malformed log warns on every serve of that module.
  */
 const crypto = require('crypto');
 const fs = require('fs');

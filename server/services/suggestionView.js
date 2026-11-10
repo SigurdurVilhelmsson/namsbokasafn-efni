@@ -23,9 +23,10 @@
  * client's baselineTextFor (segment-editor.js): an older pending row under a newer rejected one is
  * not displayed, and neither is its accepted list.
  *
- * NO TIME, OPENED STATE OR SWITCH STATE LEAVES THIS FILE (G1.1 + G1.2 spec §11). isEligible returns
- * only a boolean and a reason word, for the server; offeredForModule returns per-segment groups and
- * tags and nothing else. moduleOpenings.readOpening's time is compared here and dropped.
+ * NO TIME, OPENED STATE OR SWITCH STATE GOES INTO A RESPONSE (G1.1 + G1.2 spec §11). isEligible's
+ * `reason` and moduleContext's `eligible`/`reason`/`inflight` are exported for server-side use only
+ * and must never be put into a response; offeredForModule returns per-segment groups and tags and
+ * nothing else. moduleOpenings.readOpening's time is compared here and dropped.
  *
  * Every module object is reached through its export object, never destructured, so a test can spy
  * on suggestionLogs.readModuleLog and suggestionLogs.keptGroups.
@@ -163,15 +164,22 @@ function staticGroupsFor(ctx, { segmentId, occurrence, baseSha256 }) {
 /**
  * The op ids a displayed edit's accepted_suggestions lists for this occurrence. The column is JSON
  * text, NULL meaning none; anything that is not an array of { opId: string, occurrence: integer }
- * (NULL, unparseable text, another shape, one bad entry) counts as an empty list. Never throws.
+ * (NULL, unparseable text, another shape, one bad entry) counts as an empty list. NULL is silent; a
+ * non-NULL value thrown away warns once with ctx ({ book, chapter, moduleId, segmentId }) and a reason
+ * word, never the value. Never throws.
  */
-function acceptedOpIds(value, occurrence) {
-  if (typeof value !== 'string') return new Set();
+function acceptedOpIds(value, occurrence, ctx) {
+  if (value === null || value === undefined) return new Set();
+  const discard = (reason) => {
+    log.warn({ ...ctx, reason }, 'accepted_suggestions discarded; offering the groups as if none');
+    return new Set();
+  };
+  if (typeof value !== 'string') return discard('malformed');
   let parsed;
   try {
     parsed = JSON.parse(value);
   } catch {
-    return new Set();
+    return discard('malformed');
   }
   const wellFormed =
     Array.isArray(parsed) &&
@@ -182,7 +190,7 @@ function acceptedOpIds(value, occurrence) {
         typeof e.opId === 'string' &&
         Number.isInteger(e.occurrence)
     );
-  if (!wellFormed) return new Set();
+  if (!wellFormed) return discard('malformed');
   return new Set(parsed.filter((e) => e.occurrence === occurrence).map((e) => e.opId));
 }
 
@@ -216,7 +224,12 @@ function offeredForModule(conn, { book, chapter, moduleId, segments, editsBySegm
       const newest = ((editsBySegment && editsBySegment[seg.segmentId]) || [])[0];
       const displayed = isEditInFlight(newest) ? newest : null;
       const accepted = displayed
-        ? acceptedOpIds(displayed.accepted_suggestions, seg.occurrence)
+        ? acceptedOpIds(displayed.accepted_suggestions, seg.occurrence, {
+            book,
+            chapter,
+            moduleId,
+            segmentId: seg.segmentId,
+          })
         : new Set();
       const shown = groups.filter((g) => !g.changes.some((c) => accepted.has(c.opId)));
       const tagged =

@@ -641,6 +641,38 @@ describe('offeredForModule (spec §6.1–6.4, §6.6, §7)', () => {
     expect(view(good)).toEqual({ s1: { groups: [G.s1a], tagged: [OP.s1b] }, s5: S5_ONLY });
   });
 
+  it('a malformed non-NULL accepted list is thrown away with exactly one warning, no text', () => {
+    eligibleModule();
+    const m = SV.offeredForModule(
+      db,
+      input({ s1: [edit('pending', undefined, { accepted_suggestions: '[{"opId":' })] })
+    );
+    expect(view(m)).toEqual({ s1: { groups: [G.s1a, G.s1b], tagged: [] }, s5: S5_ONLY });
+    expect(warn).toHaveBeenCalledTimes(1);
+    expect(Object.keys(warn.mock.calls[0][0]).sort()).toEqual([
+      'book',
+      'chapter',
+      'moduleId',
+      'reason',
+      'segmentId',
+    ]);
+    expect(warn.mock.calls[0][0]).toMatchObject({
+      book: BOOK,
+      chapter: 1,
+      moduleId: MODULE,
+      segmentId: 's1',
+    });
+    expect(JSON.stringify(warn.mock.calls[0])).not.toContain('opId');
+  });
+
+  it('a NULL accepted list and a valid one warn about nothing', () => {
+    eligibleModule();
+    SV.offeredForModule(db, input({ s1: [edit('pending', undefined)] }));
+    expect(warn).not.toHaveBeenCalled();
+    SV.offeredForModule(db, input({ s1: [edit('pending', [{ opId: OP.s1b, occurrence: 0 }])] }));
+    expect(warn).not.toHaveBeenCalled();
+  });
+
   it('returns an empty map when the log is unusable: the reader warns once, the view adds nothing', () => {
     eligibleModule();
     expect([...SV.offeredForModule(db, input()).keys()]).toEqual(['s1', 's5']); // control
