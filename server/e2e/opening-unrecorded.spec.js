@@ -16,9 +16,10 @@ const { loginAs } = require('./helpers/auth');
  * Review Focus 8 accepts as the honest record. Such an answer changes nothing the editor left and re-serves nothing;
  * a save refused with a kept code adds its text to the unit's draft, which brings it back unasked (PR2 review R1).
  *
- * The 503 is STUBBED (route.fulfill): the E2E database holds no users row (seed-fixture.js) and logins are injected
- * JWTs (helpers/auth.js), so the opening predicate never holds here and the real server never answers it. The
- * real-server half is server/__tests__/moduleOpeningRoute.test.js. Writes no edit and no acceptance on the server:
+ * The 503 is STUBBED (route.fulfill): this spec's logins are injected JWTs (helpers/auth.js) for user ids with no
+ * users row (seed-fixture.js seeds none for them), so the opening predicate never holds here and the real server
+ * never answers it. The real-server half is server/__tests__/moduleOpeningRoute.test.js. Writes no edit and no
+ * acceptance on the server:
  * every save and accept a test sends is a route.fulfill stub, so no test claims a segment in helpers/segments.js's
  * table (its real module GETs still mint served versions, as every editor spec's do).
  */
