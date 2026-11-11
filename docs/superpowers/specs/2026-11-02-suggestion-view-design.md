@@ -24,7 +24,8 @@
 >   - any click on a button, link or control anywhere on the page; or
 >   - the page redrawing without a click: *Hafna*'s server answer, every full redraw of the segment table (opening a
 >     module, the reload after *Vista* or *Staðfesta MT*, a filter change, and the term and repetition reloads that
->     follow an opening), and Escape closing the pane.
+>     follow an opening), and a pane closing (by Escape, or by Ctrl+S on a pane with nothing to save; *Hætta við*
+>     and *Vista* are clicks already).
 >
 >   Typing does not start the pause, though the row redraws as the editor types. A click during the pause does
 >   nothing, sends nothing and records nothing, and it restarts the pause. Mouse and keyboard are treated alike.

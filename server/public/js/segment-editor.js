@@ -1783,7 +1783,8 @@
   // Nota and Hafna redraw the page, so a second click can land on whatever moved under the pointer, and a wrong
   // reject can be neither undone on screen nor told apart from a deliberate one in the records. Every suggestion
   // button therefore ignores a click within SUGGESTION_PAUSE_MS of a click on any control, or of a redraw the editor
-  // did not click for: Hafna's answer, renderSegments, and Escape closing a pane. Typing redraws do not pause.
+  // did not click for: Hafna's answer, renderSegments, and a pane closing (Escape, or closeEditPanel, which Ctrl+S
+  // reaches with no click). Typing redraws do not pause.
 
   /** Windows' default double-click time. Changing it changes the measured task: a register entry and a spec amendment. */
   const SUGGESTION_PAUSE_MS = 500;
@@ -2589,6 +2590,7 @@
     refreshSuggestionView(segmentId); // the pane's accepts are gone: their groups are offered again (G1.23)
     updateSaveStatusBar();
     saveDraft(); // a discarded text leaves the draft now, not at the next tick (PR1 review C12)
+    pauseSuggestionButtons(); // the rows below moved up; Ctrl+S on a pane with nothing to save comes with no click
   }
 
   /**

@@ -172,6 +172,8 @@ function recordSuggestionClicks() {
   });
 }
 const suggClicks = (page) => page.evaluate(() => JSON.parse(JSON.stringify(window.__suggClicks)));
+/** Short poll steps for a click's record: the default (100, 250, 500 ms) would spend much of the pause waiting. */
+const CLICK_POLL = [10, 20, 50, 100];
 
 /**
  * Click a suggestion button that the test means to act. It waits for the pause to end, and retries a click the pause
@@ -184,21 +186,34 @@ async function clickSuggestion(page, button) {
     const before = await suggClicks(page);
     await button.click();
     await expect
-      .poll(async () => (await suggClicks(page)).seen.length)
+      .poll(async () => (await suggClicks(page)).seen.length, { intervals: CLICK_POLL })
       .toBe(before.seen.length + 1);
-    if ((await suggClicks(page)).delivered === before.delivered + 1) return;
+    const after = await suggClicks(page);
+    if (after.delivered === before.delivered + 1) return after;
   }
   throw new Error('the double-click guard swallowed a suggestion click three times in a row');
 }
 
 /**
- * A raw click on a suggestion button, for a test that expects the guard to swallow it. Returns the page's record of
- * that click (`at`: its event time, `pausedAt`: whether the pause was showing) and whether it reached its button.
+ * A raw click on a suggestion button, for a test that expects the guard to swallow it. `before` is the page's click
+ * record read BEFORE the event that starts the pause, so no read sits between that event and this click. Returns the
+ * record of the click (`at`: its event time, `pausedAt`: whether the pause was showing) and whether it was delivered.
  */
-async function rawSuggestionClick(page, button) {
-  const before = await suggClicks(page);
-  await button.click();
-  await expect.poll(async () => (await suggClicks(page)).seen.length).toBe(before.seen.length + 1);
+async function rawSuggestionClick(page, button, before) {
+  // A real mouse click at the button's centre, without Playwright's actionability waits (scrolling, stability),
+  // which can cost a large part of the pause: one in-page step scrolls the button into view and measures it.
+  const at = await button.evaluate((el) => {
+    el.scrollIntoView({ block: 'center' });
+    const r = el.getBoundingClientRect();
+    return { x: r.x + r.width / 2, y: r.y + r.height / 2 };
+  });
+  await page.mouse.click(at.x, at.y);
+  await expect
+    .poll(async () => (await suggClicks(page)).seen.length, {
+      message: 'the click landed on the button',
+      intervals: CLICK_POLL,
+    })
+    .toBe(before.seen.length + 1);
   const after = await suggClicks(page);
   return {
     at: after.seen[after.seen.length - 1],
@@ -213,6 +228,7 @@ const pageNow = (page) => page.evaluate(() => performance.now());
 
 /** Fail as "too slow", not as "guard broken", when the harness's click came after the pause would have ended. */
 function expectWithinPause(gap, what) {
+  console.log(`[double-click guard] ${what}: ${Math.round(gap)} ms of the ${PAUSE_MS} ms pause`); // the headroom
   expect(
     gap,
     `${what} came ${Math.round(gap)} ms after the event that starts the pause, which is not within ${PAUSE_MS} ms: this runner is too slow for the test`
@@ -987,11 +1003,15 @@ test.describe('G1.23 suggestion view on efnafraedi-2e ch02 (spec §9.4–9.6)', 
     await expect(swapsOf(rowB, keyB)).toHaveCount(1);
 
     // The misclick a double click makes: a Nota, then at once a Hafna that the redraw brought near the pointer.
-    await clickSuggestion(page, notaOn(swapsOf(rowA, keyA)));
-    const second = await rawSuggestionClick(page, hafnaOn(swapsOf(rowB, keyB)));
+    await expect(paused(page)).toHaveCount(0);
+    await expect(hafnaOn(swapsOf(rowB, keyB))).toHaveCSS('opacity', '1'); // control for the dim below
+    const afterNota = await clickSuggestion(page, notaOn(swapsOf(rowA, keyA)));
+    const second = await rawSuggestionClick(page, hafnaOn(swapsOf(rowB, keyB)), afterNota);
     expectWithinPause(second.at - second.seen[second.seen.length - 2], 'the Hafna click');
     expect(second.delivered, 'the Hafna reached no handler').toBe(false);
-    expect(second.pausedAt, 'the buttons were dimmed when it was clicked').toBe(true);
+    expect(second.pausedAt, 'the pause was on when it was clicked').toBe(true);
+    // [USER]'s choice: the paused buttons are dimmed (the swallowed click restarted the pause, so it still runs).
+    await expect(hafnaOn(swapsOf(rowB, keyB))).toHaveCSS('opacity', '0.45');
     await expect(rowA.locator('textarea')).toHaveValue(
       replacedOnce(segA.is, 'formgerðarísómerur', 'byggingarhverfur')
     ); // control: the Nota itself acted
@@ -1027,6 +1047,7 @@ test.describe('G1.23 suggestion view on efnafraedi-2e ch02 (spec §9.4–9.6)', 
     // The click's own pause runs out while the answer is held, so only the answer can start it again.
     await expect(paused(page)).toHaveCount(0);
     await expect(swapsOf(rowC, keyC)).toHaveCount(1); // control: not redrawn yet
+    const before = await suggClicks(page);
     release();
     await page
       .waitForFunction(() => document.documentElement.hasAttribute('data-sugg-paused'), null, {
@@ -1036,7 +1057,7 @@ test.describe('G1.23 suggestion view on efnafraedi-2e ch02 (spec §9.4–9.6)', 
       .catch(() => {
         throw new Error("Hafna's answer did not start the pause");
       });
-    const click = await rawSuggestionClick(page, notaOn(swapsOf(rowD, keyD)));
+    const click = await rawSuggestionClick(page, notaOn(swapsOf(rowD, keyD)), before);
     expect(
       click.pausedAt,
       'the Nota click landed inside the pause: this runner is too slow if not'
@@ -1082,9 +1103,10 @@ test.describe('G1.23 suggestion view on efnafraedi-2e ch02 (spec §9.4–9.6)', 
     const filter = page.locator('#filter-type');
     await filter.selectOption('title');
     await expect(row).toHaveCount(0); // control: the table really was rebuilt
+    const before = await suggClicks(page);
     const redrawFrom = await pageNow(page);
     await filter.selectOption('all');
-    const click = await rawSuggestionClick(page, notaAllar);
+    const click = await rawSuggestionClick(page, notaAllar, before);
     expectWithinPause(click.at - redrawFrom, 'the Nota allar click');
     expect(click.delivered, 'Nota allar reached no handler').toBe(false);
     await expect(row.locator('.edit-panel')).not.toHaveClass(/\bactive\b/);
@@ -1107,13 +1129,49 @@ test.describe('G1.23 suggestion view on efnafraedi-2e ch02 (spec §9.4–9.6)', 
     await paneRow.locator('.btn-edit').click();
     await expect(paneRow.locator('.edit-panel')).toHaveClass(/\bactive\b/);
     await expect(paused(page)).toHaveCount(0); // the Edit click's own pause is over
+    const before = await suggClicks(page);
     const closedFrom = await pageNow(page);
     await page.keyboard.press('Escape'); // a clean pane: it closes, asking nothing
-    const click = await rawSuggestionClick(page, notaOn(swapsOf(row, key)));
+    const click = await rawSuggestionClick(page, notaOn(swapsOf(row, key)), before);
     expectWithinPause(click.at - closedFrom, 'the Nota click');
     await expect(paneRow.locator('.edit-panel')).not.toHaveClass(/\bactive\b/); // control: Escape closed it
     expect(click.delivered, 'the Nota reached no handler').toBe(false);
     await expect(row.locator('.edit-panel')).not.toHaveClass(/\bactive\b/);
+
+    // Control: after the pause, the same Nota acts.
+    await clickSuggestion(page, notaOn(swapsOf(row, key)));
+    await expect(row.locator('textarea')).toHaveValue(
+      replacedOnce(seg.is, 'byggingarisómera', 'byggingarhverfa')
+    );
+  });
+
+  test('double-click guard: Ctrl+S on a pane with nothing to save closes it and pauses the buttons', async ({
+    page,
+  }) => {
+    await loginAs(page, 'editor', SUGGESTION_EDITOR_ID);
+    const seg = await servedSegment(page, G.glossStructural);
+    await openModule(page, M93);
+    const paneRow = rowOf(page, G.solution);
+    const row = rowOf(page, G.glossStructural);
+    const key = groupKey(G.glossStructural, 'structural-isomer');
+    await expect(swapsOf(row, key)).toHaveCount(1);
+    const edits = [];
+    page.on('request', (r) => {
+      if (r.url().endsWith(`${moduleUrl(M93)}/edit`)) edits.push(r.method());
+    });
+
+    await paneRow.locator('.btn-edit').click();
+    await expect(paneRow.locator('.edit-panel')).toHaveClass(/\bactive\b/);
+    await expect(paused(page)).toHaveCount(0); // the Edit click's own pause is over
+    const before = await suggClicks(page);
+    const closedFrom = await pageNow(page);
+    await page.keyboard.press('Control+s'); // nothing to save: saveEdit closes the pane and sends nothing
+    const click = await rawSuggestionClick(page, notaOn(swapsOf(row, key)), before);
+    expectWithinPause(click.at - closedFrom, 'the Nota click');
+    await expect(paneRow.locator('.edit-panel')).not.toHaveClass(/\bactive\b/); // control: Ctrl+S closed it
+    expect(click.delivered, 'the Nota reached no handler').toBe(false);
+    await expect(row.locator('.edit-panel')).not.toHaveClass(/\bactive\b/);
+    expect(edits).toEqual([]);
 
     // Control: after the pause, the same Nota acts.
     await clickSuggestion(page, notaOn(swapsOf(row, key)));
