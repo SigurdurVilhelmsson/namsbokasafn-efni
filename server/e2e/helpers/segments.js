@@ -36,6 +36,19 @@
  *    `exclude` for id-pinned claims. Uniqueness across runs lives in the
  *    CONTENT (the caller's suffix), never in the id.
  *
+ *    A whole chapter of a real book can be reserved too:
+ *
+ *      | spec                        | reserved                     | why             |
+ *      |-----------------------------|------------------------------|-----------------|
+ *      | suggestion-view.spec.js     | `efnafraedi-2e` chapter 2, and user id 90123 | G1.23 |
+ *
+ *    That spec's rejections, left-open closures and approvals in chapter 2 are
+ *    permanent for the run's DB, and its eligibility checks need m68684 and
+ *    m68693 to open only when ITS dedicated editor serves them (the one users
+ *    row with a chapter assignment, seeded by seed-fixture.js under provider
+ *    id 90123). No other spec may edit, accept or approve in that chapter, or
+ *    log in with that id.
+ *
  * @see docs/plans/2026-07-25-c2-playwright-red-handoff.md
  */
 

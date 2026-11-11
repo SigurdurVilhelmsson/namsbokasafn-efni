@@ -1764,6 +1764,81 @@
         color: var(--text-muted, #666);
         border-bottom: 1px solid var(--border, #e2e2e2);
       }
+
+      /* --- AI term suggestions (G1.23): swaps, GG tags, ruling lines --- */
+      .sugg-old {
+        text-decoration: line-through;
+        color: var(--text-muted);
+        background: var(--error-subtle);
+      }
+      .sugg-new {
+        text-decoration: none;
+        background: var(--success-subtle);
+        color: var(--text-primary);
+      }
+      .sugg-accepted {
+        background: var(--accent-subtle);
+        border-bottom: 1px dotted var(--accent);
+      }
+      .sugg-tag {
+        display: inline-block;
+        margin-left: 2px;
+        padding: 0 4px;
+        border-radius: var(--radius-sm);
+        background: var(--accent-subtle);
+        color: var(--accent);
+        font-size: var(--text-xs);
+        font-weight: 600;
+        line-height: 1.4;
+        vertical-align: 0.1em;
+        cursor: help;
+      }
+      .sugg-num {
+        margin-left: 1px;
+        color: var(--accent);
+        font-size: var(--text-xs);
+        font-weight: 600;
+      }
+      .sugg-btn {
+        margin-left: 4px;
+        padding: 0 6px;
+        border: 1px solid var(--success);
+        border-radius: var(--radius-sm);
+        background: var(--success-subtle);
+        color: var(--success);
+        font-size: var(--text-xs);
+        line-height: 1.5;
+        cursor: pointer;
+      }
+      .sugg-btn:hover {
+        background: var(--bg-hover);
+      }
+      .sugg-btn.sugg-hafna {
+        border-color: var(--error);
+        background: var(--error-subtle);
+        color: var(--error);
+      }
+      .sugg-btn.sugg-hafna:hover {
+        background: var(--bg-hover);
+      }
+      .sugg-rulings:empty {
+        display: none;
+      }
+      .sugg-rulings {
+        margin-top: 0.35rem;
+        font-size: var(--text-xs);
+        color: var(--text-secondary);
+      }
+      .sugg-ruling {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        margin-top: 0.15rem;
+      }
+      .sugg-ruling .sugg-num {
+        margin-left: 0;
+      }
     </style>
   </head>
   <body>
@@ -2098,6 +2173,8 @@
     <script src="/js/figure-drafts.js"></script>
     <!-- Before segment-editor.js: rows, saves, accepts and drafts read it (G1.1). -->
     <script src="/js/segment-save-state.js"></script>
+    <!-- Before segment-editor.js: rows place and draw AI term suggestions with it (G1.23). -->
+    <script src="/js/suggestion-placement.js"></script>
     <script src="/js/marker-highlight.js"></script>
     <script src="/js/term-highlight.js"></script>
     <script src="/js/segment-editor.js"></script>

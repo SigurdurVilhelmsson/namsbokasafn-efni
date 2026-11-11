@@ -457,3 +457,36 @@ it('clientActionId: an empty string reads as null, so distinct acts never share 
   expect(E.readClientFields({ clientActionId: '' }).clientActionId).toBeNull();
   expect(E.readClientFields({ clientActionId: 'a' }).clientActionId).toBe('a');
 });
+
+it('suggestionItems output keeps its suggestion fields through claimAssistItems (claim is mismatch: no saved in place)', () => {
+  const client = require('../public/js/segment-save-state');
+  const group = {
+    rulingId: 'ruling-7',
+    changes: [
+      {
+        opId: 'op1',
+        occurrence: 0,
+        find: 'a',
+        replace: 'b',
+        category: 'term',
+        runId: 'run1',
+        chainIndex: 0,
+      },
+    ],
+  };
+  const sent = client.suggestionItems(group, 'ga1', 5);
+  const { items, droppedCount } = E.claimAssistItems(sent, AT);
+  expect(droppedCount).toBe(0);
+  expect(items).toHaveLength(1);
+  expect(items[0]).toMatchObject({
+    itemType: 'ai-suggestion',
+    source: 'ai',
+    opId: 'op1',
+    occurrence: 0,
+    category: 'term',
+    runId: 'run1',
+    rulingId: 'ruling-7',
+    groupActionId: 'ga1',
+    claim: 'mismatch', // without `saved` in place the check cannot validate; the fields are what this test is about
+  });
+});

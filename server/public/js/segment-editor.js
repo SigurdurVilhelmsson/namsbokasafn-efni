@@ -244,8 +244,10 @@
     });
     dirtyEdits.add(segId);
     const previewEl = document.getElementById('preview-' + cssId(segId));
-    if (previewEl) previewEl.innerHTML = renderMarkdownPreview(ta.value);
+    if (previewEl) previewEl.innerHTML = panePreviewHtml(segId, ta.value);
     refreshBackdrop(segId);
+    // The text was set without an input event: redraw, so the restored accepts come back tagged (G1.23).
+    refreshSuggestionView(segId);
     showDraftNotice(segId, segmentSaveState.noticeFor(entry, row ? row.baseSha256 : null));
     setSaveBlocked(segId, entry.refused === 'DUPLICATE_ID');
     return true;
@@ -1645,7 +1647,7 @@
    * The IS text an editor should SEE and EDIT for a segment: the faithful file,
    * unless an edit is still in flight (MTA-R12).
    *
-   * One rule, four call sites — the row renderer plus the three textarea
+   * One rule, shared by the row renderer and the three textarea
    * restore paths (cancel, "Til baka", Escape-close), which had drifted into
    * three different answers: two restored ANY latest edit's text (so cancelling
    * on a rejected row replaced the baseline with the rejected text the row had
@@ -1653,6 +1655,265 @@
    */
   function baselineTextFor(seg, latestEdit) {
     return acceptEligibility.isEditInFlight(latestEdit) ? latestEdit.edited_content : seg.is;
+  }
+
+  // ================================================================
+  // AI TERM SUGGESTIONS (G1.23, spec §4 and §7)
+  // ================================================================
+  // The server serves `seg.suggestions` = { groups, tagged } only on segments that have a group or a tag; every
+  // other row renders exactly as before. Placement and the fail-closed drawing are suggestion-placement.js
+  // (drawSuggestions); what follows builds the HTML and wires the row, the pane and the save.
+
+  /**
+   * Whether this editor may edit a segment whose newest edit is `latestEdit`: the row's Breyta rule (its cases are
+   * listed where renderSegmentRow calls it). One predicate, so the suggestion controls appear exactly where the row
+   * offers editing (spec §7: anyone who can edit the segment can accept or reject).
+   */
+  function segmentEditAllowed(latestEdit) {
+    const isPublished = !!(latestEdit && latestEdit.status === 'approved' && latestEdit.applied_at);
+    return (
+      !latestEdit ||
+      latestEdit.status === 'rejected' ||
+      latestEdit.status === 'discuss' ||
+      latestEdit.status === 'superseded' ||
+      (latestEdit.status === 'pending' && latestEdit.editor_username === userName) ||
+      (latestEdit.status === 'approved' &&
+        !latestEdit.applied_at &&
+        latestEdit.editor_username === userName) ||
+      isPublished
+    );
+  }
+
+  /** The served segment, only if it has suggestions; null otherwise. */
+  function suggestionSegment(segmentId) {
+    const seg = moduleData?.segments?.find((s) => s.segmentId === segmentId);
+    return seg && seg.suggestions ? seg : null;
+  }
+
+  /** Every change a segment's suggestions name, by opId (its groups' and its tagged), for acceptedFromAssists. */
+  function suggestionChangesByOpId(seg) {
+    const out = new Map();
+    const sugg = seg && seg.suggestions;
+    if (!sugg) return out;
+    for (const g of sugg.groups || []) for (const c of g.changes || []) out.set(c.opId, c);
+    for (const c of sugg.tagged || []) if (!out.has(c.opId)) out.set(c.opId, c);
+    return out;
+  }
+
+  /** What a row with suggestions displays (R13): the open pane's text, else the baseline. */
+  function shownSuggestionText(seg) {
+    const panel = document.getElementById('edit-' + cssId(seg.segmentId));
+    const ta = document.getElementById('textarea-' + cssId(seg.segmentId));
+    if (panel && ta && panel.classList.contains('active')) return { open: true, text: ta.value };
+    const latestEdit = moduleData.edits[seg.segmentId]?.[0];
+    return { open: false, text: baselineTextFor(seg, latestEdit) };
+  }
+
+  /** A pane's live preview: the suggestions drawn without controls on a row that has them (R13), else as before. */
+  function panePreviewHtml(segmentId, text) {
+    const seg = suggestionSegment(segmentId);
+    return seg
+      ? suggestionDisplay(seg, text, paneAssists(segmentId), { controls: false }).html
+      : renderMarkdownPreview(text);
+  }
+
+  function suggestionTagHtml() {
+    return `<span class="sugg-tag" title="${escapeHtml(UI.suggestions.tagTitle)}">${escapeHtml(UI.suggestions.tag)}</span>`;
+  }
+
+  /**
+   * A group's accept button. The key travels in an escaped data attribute and reaches the handler as
+   * this.dataset.groupKey: a key holds '#', '|' and ':', so it is never written into the onclick itself (R14). The
+   * segment id is read from the row the button sits in, so the row stays the one element carrying data-segment-id.
+   * `named`: the one-change button, named by aria-label (and title) rather than by its visible text (R20).
+   */
+  function suggestionAcceptButton(group, label, named) {
+    const name = named
+      ? ` title="${escapeHtml(UI.suggestions.notaTitle)}" aria-label="${escapeHtml(UI.suggestions.notaTitle)}"`
+      : '';
+    return `<button type="button" class="sugg-btn sugg-nota" data-group-key="${escapeHtml(group.key)}"${name} onclick="acceptSuggestionGroup(this.closest('tr').dataset.segmentId, this.dataset.groupKey)">${escapeHtml(label)}</button>`;
+  }
+
+  /**
+   * A group's reject button (Hafna), drawn exactly where Nota is drawn and by the same mechanism: an escaped
+   * data-group-key, read as this.dataset.groupKey. The one-change button is named "Hafna tillögu" by aria-label and
+   * title (R20), distinct from the head editor's own Hafna.
+   */
+  function suggestionRejectButton(group, label, named) {
+    const name = named
+      ? ` title="${escapeHtml(UI.suggestions.hafnaTitle)}" aria-label="${escapeHtml(UI.suggestions.hafnaTitle)}"`
+      : '';
+    return `<button type="button" class="sugg-btn sugg-hafna" data-group-key="${escapeHtml(group.key)}"${name} onclick="rejectSuggestionGroup(this.closest('tr').dataset.segmentId, this.dataset.groupKey)">${escapeHtml(label)}</button>`;
+  }
+
+  /**
+   * One change of an offered group, drawn on its word: the old word struck through, the new word, the GG tag; then
+   * the group's number (two or more changes) or, with controls, its accept button (one change). No whitespace
+   * between tags: the display is white-space: pre-wrap. `innerHtml` is the renderer's own escaped text.
+   */
+  function suggestionSwapHtml(offer, changeIndex, innerHtml, controls) {
+    const group = offer.group;
+    const change = group.changes[changeIndex];
+    let after = suggestionTagHtml();
+    if (group.changes.length > 1) after += `<sup class="sugg-num">${offer.number}</sup>`;
+    else if (controls) {
+      after += suggestionAcceptButton(group, UI.suggestions.nota, true);
+      after += suggestionRejectButton(group, UI.suggestions.hafna, true);
+    }
+    return `<span class="sugg-swap" data-group-key="${escapeHtml(group.key)}"><del class="sugg-old">${innerHtml}</del><ins class="sugg-new">${escapeHtml(change.replace)}</ins>${after}</span>`;
+  }
+
+  /** One ruling line below the text: number, `en → is`, the change count, and (controls) a multi-change button. */
+  function suggestionRulingHtml(offer, controls) {
+    const group = offer.group;
+    const n = group.changes.length;
+    const label = group.label || {};
+    let buttons = '';
+    if (controls && n > 1) {
+      const text = n === 2 ? UI.suggestions.notaBadar : UI.suggestions.notaAllar(n);
+      buttons = suggestionAcceptButton(group, text, false);
+      const rejectText = n === 2 ? UI.suggestions.hafnaBadum : UI.suggestions.hafnaOllum(n);
+      buttons += suggestionRejectButton(group, rejectText, false);
+    }
+    return `<div class="sugg-ruling" data-group-key="${escapeHtml(group.key)}"><span class="sugg-num">${offer.number}</span><span class="sugg-label">${escapeHtml(label.en || group.rulingId)} → ${escapeHtml(label.is || '')}</span><span class="sugg-count">(${n})</span>${buttons}</div>`;
+  }
+
+  /** Groups whose reject request is in flight ("segmentId|groupKey"), so a double click sends one request. */
+  const rejectsInFlight = new Set();
+
+  /**
+   * Hafna (spec §4): close one suggestion group for good. Posts to the reject route; on success, or when the server
+   * says the group is not in its kept log (404 SUGGESTION_UNKNOWN: it is already gone), the group leaves
+   * moduleData's suggestions.groups and the row is redrawn in place. Any other failure (a missing module is a 404
+   * too, with another error) alerts and changes nothing. It never reloads, re-renders the table, writes a textarea
+   * or closes a pane. seg.suggestions itself is never deleted: refreshSuggestionView must still draw the row plain.
+   */
+  async function rejectSuggestionGroup(segmentId, groupKey) {
+    const seg = suggestionSegment(segmentId);
+    const group = seg ? (seg.suggestions.groups || []).find((g) => g.key === groupKey) : null;
+    if (!group || !segmentEditAllowed(moduleData.edits[segmentId]?.[0])) return;
+    const inFlightKey = segmentId + '|' + groupKey;
+    if (rejectsInFlight.has(inFlightKey)) return;
+    rejectsInFlight.add(inFlightKey);
+    const row = rowValues(segmentId);
+    const body = {
+      segmentId,
+      occurrence: row ? row.occurrence : null,
+      groupKey,
+      groupActionId: segmentSaveState.newClientActionId(window.crypto),
+      clientActionId: segmentSaveState.newClientActionId(window.crypto),
+      clientActionTime: Date.now(),
+    };
+    if (row && row.baseSha256) body.baseSha256 = row.baseSha256;
+    try {
+      try {
+        await fetchJson(
+          `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/suggestions/reject`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify(body),
+          }
+        );
+      } catch (err) {
+        const unknownGroup =
+          err && err.status === 404 && err.data && err.data.error === 'SUGGESTION_UNKNOWN';
+        if (!unknownGroup) {
+          alert(UI.suggestions.rejectFailed);
+          return;
+        }
+      }
+      const current = suggestionSegment(segmentId);
+      if (current) {
+        current.suggestions.groups = (current.suggestions.groups || []).filter(
+          (g) => g.key !== groupKey
+        );
+      }
+      refreshSuggestionView(segmentId);
+    } finally {
+      rejectsInFlight.delete(inFlightKey);
+    }
+  }
+
+  /**
+   * A row's IS display with its suggestions drawn (spec §4, R13, R14), and its ruling lines.
+   * A segment without `suggestions` gets exactly today's output: renderMarkdownPreview(text) and no ruling lines.
+   * Groups accepted in the pane (its ai-suggestion items) are not offered again and their words carry the GG tag.
+   * @param {object} seg a served segment
+   * @param {string} text the displayed text
+   * @param {Array<object>} assists the open pane's assist items ([] when no pane is open)
+   * @param {{controls?: boolean}} [opts] controls false draws no buttons: the pane preview (R13), whose caller
+   *   ignores the ruling lines, and a row this editor may not edit (segmentEditAllowed)
+   * @returns {{html: string, rulingsHtml: string}}
+   */
+  function suggestionDisplay(seg, text, assists, { controls = true } = {}) {
+    if (!seg || !seg.suggestions) return { html: renderMarkdownPreview(text), rulingsHtml: '' };
+    const paneAccepted = (assists || [])
+      .filter((it) => it && it.itemType === 'ai-suggestion')
+      .map((it) => it.opId);
+    const drawn = suggestionPlacement.drawSuggestions(text, seg.suggestions, paneAccepted, {
+      render: renderMarkdownPreview,
+      swap: (offer, changeIndex, innerHtml) =>
+        suggestionSwapHtml(offer, changeIndex, innerHtml, controls),
+      tag: (change, innerHtml) =>
+        `<span class="sugg-accepted">${innerHtml}</span>${suggestionTagHtml()}`,
+    });
+    return {
+      html: drawn.html,
+      rulingsHtml: drawn.offered.map((offer) => suggestionRulingHtml(offer, controls)).join(''),
+    };
+  }
+
+  /**
+   * Redraw one row's suggestions in place (R11): its IS display, its ruling lines and, while its pane is open, the
+   * preview. It never writes the textarea and never closes the pane. A row without suggestions is left alone.
+   */
+  function refreshSuggestionView(segmentId) {
+    const seg = suggestionSegment(segmentId);
+    if (!seg) return;
+    const shown = shownSuggestionText(seg);
+    const controls = segmentEditAllowed(moduleData.edits[segmentId]?.[0]);
+    const view = suggestionDisplay(seg, shown.text, shown.open ? paneAssists(segmentId) : [], {
+      controls,
+    });
+    const isEl = document.getElementById('is-' + cssId(segmentId));
+    if (isEl) isEl.innerHTML = view.html || '<em class="text-muted">Engin þýðing</em>';
+    const rulingsEl = document.getElementById('sugg-' + cssId(segmentId));
+    if (rulingsEl) rulingsEl.innerHTML = view.rulingsHtml;
+    if (!shown.open) return;
+    const previewEl = document.getElementById('preview-' + cssId(segmentId));
+    if (previewEl) previewEl.innerHTML = panePreviewHtml(segmentId, shown.text);
+  }
+
+  /**
+   * Nota (spec §4, §7): write one group's changes into the pane's pending text, on the screen only. A closed pane
+   * opens first, as insertRepetition opens it. A group that no longer applies to the pane's text changes nothing.
+   * Each change becomes an ai-suggestion assist item; the server hears of the accept only at Vista, through
+   * acceptedFromAssists, so Hætta við forgets it like any unsaved change.
+   */
+  function acceptSuggestionGroup(segmentId, groupKey) {
+    const seg = suggestionSegment(segmentId);
+    const group = seg ? (seg.suggestions.groups || []).find((g) => g.key === groupKey) : null;
+    if (!group || !segmentEditAllowed(moduleData.edits[segmentId]?.[0])) return;
+    if (!shownSuggestionText(seg).open) {
+      if (!confirmDiscardKept(segmentId)) return;
+      openEditPanel(segmentId);
+    }
+    const ta = document.getElementById('textarea-' + cssId(segmentId));
+    if (!ta) return;
+    const placed = suggestionPlacement.placeGroup(ta.value, group);
+    if (!placed.ok) {
+      refreshSuggestionView(segmentId); // the text changed under the button
+      return;
+    }
+    ta.value = placed.result;
+    const groupActionId = segmentSaveState.newClientActionId(window.crypto);
+    for (const item of segmentSaveState.suggestionItems(group, groupActionId, Date.now())) {
+      addAssist(segmentId, item);
+    }
+    ta.dispatchEvent(new Event('input', { bubbles: true }));
+    refreshSuggestionView(segmentId);
   }
 
   function renderSegmentRow(seg) {
@@ -1704,7 +1965,6 @@
     );
 
     let enHtml = renderMarkdownPreview(seg.en);
-    const isHtml = renderMarkdownPreview(displayIs);
 
     // Show word-level inline diff when an active edit changes the text
     let originalHint = '';
@@ -1790,16 +2050,14 @@
     //   content is settled like baseline. loadModuleForEditing reads the
     //   faithful file as the baseline, so other segments' edits are preserved.
     const isPublished = !!(latestEdit && latestEdit.status === 'approved' && latestEdit.applied_at);
-    const canEdit =
-      !latestEdit ||
-      latestEdit.status === 'rejected' ||
-      latestEdit.status === 'discuss' ||
-      latestEdit.status === 'superseded' ||
-      (latestEdit.status === 'pending' && latestEdit.editor_username === userName) ||
-      (latestEdit.status === 'approved' &&
-        !latestEdit.applied_at &&
-        latestEdit.editor_username === userName) ||
-      isPublished;
+    const canEdit = segmentEditAllowed(latestEdit);
+
+    // G1.23: a row without suggestions gets renderMarkdownPreview(displayIs) and no ruling lines, as before.
+    // The suggestion buttons appear only where the row offers editing (spec §7).
+    const suggestionView = suggestionDisplay(seg, displayIs, paneAssists(seg.segmentId), {
+      controls: canEdit,
+    });
+    const isHtml = suggestionView.html;
 
     let actionsHtml = '';
     if (latestEdit) {
@@ -1941,7 +2199,7 @@
             <div class="segment-content">${enHtml || '<em class="text-muted">' + UI.segmentEditor.noEnglish + '</em>'}</div>
           </td>
           <td class="col-is">
-            <div class="segment-content" id="is-${cssId(seg.segmentId)}">${isHtml || '<em class="text-muted">Engin þýðing</em>'}</div>
+            <div class="segment-content" id="is-${cssId(seg.segmentId)}">${isHtml || '<em class="text-muted">Engin þýðing</em>'}</div>${seg.suggestions ? `<div class="sugg-rulings" id="sugg-${cssId(seg.segmentId)}">${suggestionView.rulingsHtml}</div>` : ''}
             ${originalHint}
             ${mtFindingHtml}
             ${termIssuesHtml}
@@ -2213,7 +2471,8 @@
             textarea.addEventListener('input', function onPreview() {
               clearTimeout(previewTimer);
               previewTimer = setTimeout(() => {
-                previewEl.innerHTML = renderMarkdownPreview(textarea.value);
+                previewEl.innerHTML = panePreviewHtml(segmentId, textarea.value);
+                refreshSuggestionView(segmentId); // a typed-over group leaves the row (G1.23)
               }, 150);
             });
           }
@@ -2245,7 +2504,7 @@
         // Always render initial preview + backdrop when opening
         const previewEl = document.getElementById('preview-' + cssId(segmentId));
         if (previewEl) {
-          previewEl.innerHTML = renderMarkdownPreview(textarea.value);
+          previewEl.innerHTML = panePreviewHtml(segmentId, textarea.value);
         }
         refreshBackdrop(segmentId);
       }
@@ -2271,6 +2530,7 @@
     }
     dirtyEdits.delete(segmentId);
     clearPaneState(segmentId);
+    refreshSuggestionView(segmentId); // the pane's accepts are gone: their groups are offered again (G1.23)
     updateSaveStatusBar();
     saveDraft(); // a discarded text leaves the draft now, not at the next tick (PR1 review C12)
   }
@@ -2302,8 +2562,9 @@
       }, 2000);
     }
     const previewEl = document.getElementById('preview-' + cssId(segmentId));
-    if (previewEl) previewEl.innerHTML = renderMarkdownPreview(textarea.value);
+    if (previewEl) previewEl.innerHTML = panePreviewHtml(segmentId, textarea.value);
     refreshBackdrop(segmentId);
+    refreshSuggestionView(segmentId); // the pane's list started again: its groups are offered again (G1.23)
     updateSaveStatusBar();
     saveDraft(); // a discarded text leaves the draft now, not at the next tick (PR1 review C12)
   }
@@ -2421,6 +2682,12 @@
           category,
           editorNote,
           assists: paneAssists(segmentId),
+          // G1.23 §7: the pane's accepted groups whose words are still in the saved text ([] without suggestions).
+          acceptedSuggestions: segmentSaveState.acceptedFromAssists(
+            paneAssists(segmentId),
+            editedContent,
+            suggestionChangesByOpId(seg)
+          ),
           clientActionId: segmentSaveState.newClientActionId(window.crypto),
           clientActionTime: Date.now(),
         })
@@ -4074,6 +4341,7 @@
           }
           dirtyEdits.delete(segId);
           clearPaneState(segId);
+          refreshSuggestionView(segId); // as closeEditPanel: the pane's accepts are offered again (G1.23)
           updateSaveStatusBar();
           saveDraft(); // a discarded text leaves the draft now, not at the next tick (PR1 review C12)
         }
@@ -4250,6 +4518,9 @@
   window.showTermPopup = showTermPopup;
   window.insertTermFromLookup = insertTermFromLookup;
   window.insertRepetition = insertRepetition;
+  window.acceptSuggestionGroup = acceptSuggestionGroup;
+  window.rejectSuggestionGroup = rejectSuggestionGroup;
+  window.refreshSuggestionView = refreshSuggestionView;
   window.propagateSegment = propagateSegment;
   window.acceptSegmentAndAdvance = acceptSegmentAndAdvance;
   window.revokeAcceptance = revokeAcceptance;

@@ -11,6 +11,41 @@
 > of what was designed and why; it carries no status. If it disagrees with the active register, the register wins.
 > Do not sync it or edit it in place. Supersede it with a new record instead.
 
+> **✏️ AMENDED 2026-11-10, later: rulings made while building PR3 (the screen and the switch), confirmed by [USER]
+> on 2026-11-10** ("I confirm the rulings and the strings", to the list in PR #669's description). Each settles what an
+> editor or the admin sees where this design was silent, left the call to the builder, or predates a later finding.
+> None changes which modules are eligible. The values live in the code and its tests; the build's other rulings are
+> in PR #669.
+>
+> - **§6.2, the first switch-on refuses over prior closures** (PR2's handoff R21). While any rejection or left-open
+>   row exists for the book, the first switch-on is refused, writes nothing, and offers no override. PR2's reject
+>   route is not gated on eligibility, so before the first switch-on an editor with chapter access could close groups
+>   that were never offered. The first switch-on time can never move, so a refusal is the only safe point. After the
+>   first switch-on the check never runs again: switching off and on stays a kill switch.
+> - **§6.2, the typed confirmation shows the slug.** The first switch-on prompt is Q8's approved sentence, then the
+>   book's slug on its own line. The typed value must equal the slug, and "heiti bókarinnar" reads as the title.
+> - **§4, four strings beyond Q8:**
+>   - the admin control's kill-switch note (PR2's R19, as hover text): *Ef slökkt er hverfa allar tillögur strax. Á
+>     meðan slökkt er lokar hvorki „Staðfesta MT“ né samþykkt neinum tillögum, svo þær birtast aftur þegar kveikt er
+>     á ný.*
+>   - the refused first switch-on: *Ekki var kveikt á tillögum gervigreindar: í þessari bók hefur tillögum þegar
+>     verið hafnað eða þeim lokað áður en kveikt var í fyrsta sinn. Skoða þarf þær færslur fyrst.*
+>   - a mistyped confirmation: *Heitið passaði ekki við bókina. Ekki var kveikt á tillögum gervigreindar.*
+>   - asked before switching off: *Slökkva á tillögum gervigreindar í þessari bók? Þær hverfa strax hjá öllum
+>     ritstjórum.*
+> - **§12, how swaps render: buttons only on the row.** The row's text display and its ruling lines carry the
+>   buttons. The live preview shows the same swaps and tags without buttons. On a row with suggestions, the row
+>   display follows the edit pane's text while the pane is open, so typing over a word removes its buttons there.
+> - **§7, "who can act": a row the user may not edit shows its swaps and ruling lines without buttons.**
+> - **§6.5's last paragraph, extended: a text whose rendered preview puts a tag inside another tag's attribute gets
+>   no swaps and no tags.** The editor's renderer can copy text that already holds a tag into a `title` attribute,
+>   which would let a swap be drawn inside the attribute. Measured on committed layer 2: 0 segments withheld (8 have
+>   that shape, none with a kept change), so the rule guards text an editor types.
+> - **§7, GG tags after save: an accepted word is left untagged where two accepted changes share the same
+>   replacement text.** This is §7's own rule ("if a tag cannot be placed exactly, it is not shown"); the records
+>   keep the accept. Measured: 18 changes in committed layer 2 if every group were accepted. Tags are located
+>   longest replacement first, so a shorter accepted word inside a longer one (*atóm* in *atómum*) keeps its tag.
+
 > **✏️ AMENDED 2026-11-10: five rulings made while building PR1 (the read side), confirmed by [USER] on 2026-11-10**
 > ("Confirmed", to the five that PR #662's description lists as R3, R4, R5, R8 and R9). Each settles a point the
 > implementation plan left open or stated ambiguously; none changes which modules are eligible. The values live in the

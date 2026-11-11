@@ -129,13 +129,313 @@
     return tagged;
   }
 
+  // ── Drawing through the renderer (G1.23 PR3; controller rulings R14 and R21) ──
+  //
+  // The editor's renderer (renderMarkdownPreview) escapes HTML and then rewrites markers, and some rules copy a
+  // capture into an attribute or drop it. So a suggestion is located in the TEXT, marked there with sentinels, the
+  // marked text is rendered, and only a mark whose sentinels come out as plain text, in order, is drawn.
+  // A sentinel token is SENTINEL.OPEN or SENTINEL.CLOSE, then the mark's id (decimal digits), then SENTINEL.END.
+  // Private-use code points: escapeHtml leaves them alone, no marker rule names them, and the committed chemistry
+  // text holds none (measured 2026-11-10 over books/efnafraedi-2e).
+  const SENTINEL = Object.freeze({ OPEN: '\uE000', CLOSE: '\uE001', END: '\uE002' });
+  const SENTINEL_CHAR = /[\uE000-\uE002]/;
+  const MARK_ID = /^\d+$/;
+
+  /** @param {string} s @returns {boolean} true if s holds any sentinel code point */
+  function hasSentinel(s) {
+    return SENTINEL_CHAR.test(String(s));
+  }
+
+  /**
+   * Every sentinel token, then every lone sentinel code point, removed; nothing else changes.
+   * @param {string} html @returns {string}
+   */
+  function stripSentinels(html) {
+    return String(html)
+      .replace(/[\uE000\uE001]\d*\uE002/g, '')
+      .replace(/[\uE000-\uE002]/g, '');
+  }
+
+  /**
+   * Wrap each mark's span of `text` in sentinel tokens carrying its id: OPEN id END … CLOSE id END.
+   * Marks are in `text`'s coordinates, half-open, in any order; the output never nests.
+   * A mark is DROPPED (not wrapped, so fromSentinels can never draw it) when its id is not a non-negative integer
+   * or repeats an earlier mark's id, when its span is empty, reversed, non-integer or outside the text, or when it
+   * overlaps an earlier-listed mark that was kept (so the earlier wins). Dropping fails closed: the caller sees the
+   * mark undrawn, never a nested or misplaced one.
+   * @param {string} text
+   * @param {Array<{start: number, end: number, id: number|string}>} marks
+   * @returns {string}
+   * @throws {TypeError} if `text` already holds a sentinel: its own would be indistinguishable from the marks
+   *   (check hasSentinel first)
+   */
+  function withSentinels(text, marks) {
+    const s = String(text);
+    if (hasSentinel(s)) throw new TypeError('withSentinels: the text already holds a sentinel');
+    const kept = [];
+    const ids = Object.create(null);
+    (Array.isArray(marks) ? marks : []).forEach(function (m) {
+      if (!m) return;
+      const id = String(m.id);
+      if (!MARK_ID.test(id) || ids[id]) return;
+      if (!Number.isInteger(m.start) || !Number.isInteger(m.end)) return;
+      if (m.start < 0 || m.end > s.length || m.start >= m.end) return;
+      const clash = kept.some(function (k) {
+        return overlaps(m.start, m.end, k.start, k.end);
+      });
+      if (clash) return;
+      ids[id] = true;
+      kept.push({ start: m.start, end: m.end, id: id });
+    });
+    kept.sort(function (a, b) {
+      return a.start - b.start;
+    });
+    let out = '';
+    let at = 0;
+    kept.forEach(function (k) {
+      out +=
+        s.slice(at, k.start) +
+        SENTINEL.OPEN +
+        k.id +
+        SENTINEL.END +
+        s.slice(k.start, k.end) +
+        SENTINEL.CLOSE +
+        k.id +
+        SENTINEL.END;
+      at = k.end;
+    });
+    return out + s.slice(at);
+  }
+
+  /** True if position `pos` of `html` lies inside a tag (after a '<' with no '>' since). */
+  function insideTag(html, pos) {
+    return html.lastIndexOf('<', pos) > html.lastIndexOf('>', pos);
+  }
+
+  /**
+   * True if some '<' in `html` is followed by another '<' before its own first '>': a tag opened inside a tag.
+   * The editor's renderer makes this when a rule copies a capture that already holds another rule's tag into an
+   * attribute (`title="… <em>b</em> …"`), or when a later rule rewrites inside an attribute. The swallowed tag's
+   * '>' then makes a position inside the attribute look outside every tag, and its own quotes make a quote scan
+   * unreliable, so a caller cannot tell where the tag ends and must draw nothing (ruling R27).
+   * Nested elements (`<b><i>x</i></b>`) and escaped text (`&lt;`) are not swallowed tags.
+   * @param {string} html @returns {boolean}
+   */
+  function swallowsTag(html) {
+    const s = String(html);
+    let at = s.indexOf('<');
+    while (at !== -1) {
+      const end = s.indexOf('>', at + 1);
+      const next = s.indexOf('<', at + 1);
+      if (next !== -1 && (end === -1 || next < end)) return true;
+      at = next;
+    }
+    return false;
+  }
+
+  /**
+   * Replace each drawable mark in rendered HTML by `drawMark(id, innerHtml)` and strip every other sentinel.
+   * A mark is drawable only if its open token and its close token each occur exactly once, the open before the
+   * close, the open outside any tag, and nothing between them is a sentinel, '<' or '>' (the rendered find is plain
+   * text). "Outside any tag" is decided by the last '<' and '>' before the open, which is exact only while every
+   * raw '<' and '>' belongs to the tag it opens or closes. That is CHECKED, not assumed: the renderer can copy a
+   * capture already holding another rule's tag into an attribute (see swallowsTag), and if `html` holds such a tag
+   * no mark is drawn at all (ruling R27).
+   * Never throws for any `html`. The returned HTML holds no sentinel code point except any `drawMark` returns.
+   * @param {string} html the renderer's output for a withSentinels(...) text
+   * @param {function(string, string): string} drawMark (id, innerHtml) -> the mark's HTML; innerHtml is the
+   *   renderer's (already escaped) text between the sentinels
+   * @returns {{html: string, drawn: string[]}} drawn ids, in order of appearance
+   */
+  function fromSentinels(html, drawMark) {
+    const s = String(html);
+    if (swallowsTag(s)) return { html: stripSentinels(s), drawn: [] };
+    const token = /([\uE000\uE001])(\d+)\uE002/g;
+    const opens = Object.create(null);
+    const closes = Object.create(null);
+    let m;
+    while ((m = token.exec(s)) !== null) {
+      const bucket = m[1] === SENTINEL.OPEN ? opens : closes;
+      (bucket[m[2]] = bucket[m[2]] || []).push({ start: m.index, end: m.index + m[0].length });
+    }
+    const draws = [];
+    Object.keys(opens).forEach(function (id) {
+      const o = opens[id];
+      const c = closes[id];
+      if (o.length !== 1 || !c || c.length !== 1 || o[0].end > c[0].start) return;
+      const inner = s.slice(o[0].end, c[0].start);
+      if (/[\uE000-\uE002<>]/.test(inner) || insideTag(s, o[0].start)) return;
+      draws.push({ id: id, start: o[0].start, end: c[0].end, inner: inner });
+    });
+    draws.sort(function (a, b) {
+      return a.start - b.start;
+    });
+    let out = '';
+    let at = 0;
+    draws.forEach(function (d) {
+      out += stripSentinels(s.slice(at, d.start)) + String(drawMark(d.id, d.inner));
+      at = d.end;
+    });
+    return {
+      html: out + stripSentinels(s.slice(at)),
+      drawn: draws.map(function (d) {
+        return d.id;
+      }),
+    };
+  }
+
+  function chainOrder(c) {
+    return c && Number.isFinite(c.chainIndex) ? c.chainIndex : 0;
+  }
+
+  /**
+   * A segment's suggestions drawn into the renderer's HTML, fail closed (spec §4, §6.5, §7; rulings R14, R21).
+   *
+   * Offered groups: `suggestions.groups` minus any with an op in `paneAcceptedOpIds` (accepted in the open pane, so
+   * not offered again) or with a sentinel in a find or replace, placed with visibleGroups. Tags: the pane-accepted
+   * ops' changes (looked up in the groups) and `suggestions.tagged`, distinct by opId, longest replace first (ties:
+   * chain order; ruling R22), placed with tagSpans; a swap overlapping a tag is dropped and the tag stays. Every swap
+   * and tag span is marked, the marked text rendered, and only drawable marks are drawn (fromSentinels): a group
+   * any of whose marks is not drawable is not offered at all, and an undrawable tag is not shown. That repeats until
+   * every remaining mark draws. Finally, if the rendered HTML with its sentinels stripped differs from the
+   * renderer's own output for `text`, the marks changed how the renderer parsed the text, so nothing is drawn (an
+   * addition to R14, measured by the R14 probe).
+   * A text that already holds a sentinel is rendered as it is, with nothing drawn and nothing stripped. So is a text
+   * whose render swallows a tag into an attribute (swallowsTag; ruling R27): no swap and no tag anywhere in it.
+   *
+   * @param {string} text the displayed text
+   * @param {{groups?: object[], tagged?: object[]}|null|undefined} suggestions the segment's served suggestions
+   * @param {string[]} paneAcceptedOpIds op ids of the open pane's ai-suggestion items
+   * @param {{render: function(string): string,
+   *   swap: function({group: object, number: number}, number, string): string,
+   *   tag: function(object, string): string}} draw
+   *   render: the renderer (text -> HTML); swap(offer, changeIndex, innerHtml): one change of an offered group;
+   *   tag(change, innerHtml): an accepted word
+   * @returns {{html: string, offered: Array<{group: object, number: number}>}} offered groups in display order,
+   *   numbered from 1
+   */
+  function drawSuggestions(text, suggestions, paneAcceptedOpIds, draw) {
+    const s = typeof text === 'string' ? text : '';
+    const plain = function () {
+      return { html: draw.render(s), offered: [] };
+    };
+    if (!suggestions || hasSentinel(s)) return plain();
+    // R27: a render that swallows a tag into an attribute hides where its tags end, so nothing is drawn in it.
+    const base = draw.render(s);
+    if (swallowsTag(base)) return { html: base, offered: [] };
+    const groups = Array.isArray(suggestions.groups) ? suggestions.groups : [];
+    const tagged = Array.isArray(suggestions.tagged) ? suggestions.tagged : [];
+    const accepted = new Set(Array.isArray(paneAcceptedOpIds) ? paneAcceptedOpIds : []);
+    const clean = function (c) {
+      return (
+        c &&
+        typeof c.replace === 'string' &&
+        !hasSentinel(c.replace) &&
+        !(typeof c.find === 'string' && hasSentinel(c.find))
+      );
+    };
+
+    const offerable = groups.filter(function (g) {
+      return (
+        g &&
+        Array.isArray(g.changes) &&
+        g.changes.length > 0 &&
+        !g.changes.some(function (c) {
+          return !c || accepted.has(c.opId) || !clean(c);
+        })
+      );
+    });
+    const tagChanges = [];
+    const tagByOp = Object.create(null);
+    const addTag = function (c) {
+      if (!clean(c) || typeof c.opId !== 'string' || tagByOp[c.opId]) return;
+      tagByOp[c.opId] = c;
+      tagChanges.push(c);
+    };
+    groups.forEach(function (g) {
+      ((g && g.changes) || []).forEach(function (c) {
+        if (c && accepted.has(c.opId)) addTag(c);
+      });
+    });
+    tagged.forEach(addTag);
+    // R22: longest replace first (ties: chain order), so a replace inside another accepted one is still unique
+    // once the longer one is tagged (atóm inside atómum).
+    tagChanges.sort(function (a, b) {
+      return b.replace.length - a.replace.length || chainOrder(a) - chainOrder(b);
+    });
+    let liveTags = tagSpans(s, tagChanges);
+    let liveSwaps = visibleGroups(s, offerable).filter(function (v) {
+      return !v.spans.some(function (a) {
+        return liveTags.some(function (t) {
+          return overlaps(a.start, a.end, t.start, t.end);
+        });
+      });
+    });
+
+    let meta;
+    let rendered;
+    for (;;) {
+      meta = [];
+      const marks = [];
+      liveSwaps.forEach(function (v, gi) {
+        v.spans.forEach(function (sp, ci) {
+          marks.push({ start: sp.start, end: sp.end, id: meta.length });
+          meta.push({ kind: 'swap', gi: gi, ci: ci });
+        });
+      });
+      liveTags.forEach(function (t, ti) {
+        marks.push({ start: t.start, end: t.end, id: meta.length });
+        meta.push({ kind: 'tag', ti: ti });
+      });
+      rendered = draw.render(withSentinels(s, marks));
+      const drawn = new Set(
+        fromSentinels(rendered, function () {
+          return '';
+        }).drawn
+      );
+      const allDrawn = function (kind, key, index) {
+        return meta.every(function (mk, id) {
+          return mk.kind !== kind || mk[key] !== index || drawn.has(String(id));
+        });
+      };
+      const keepSwaps = liveSwaps.filter(function (v, gi) {
+        return allDrawn('swap', 'gi', gi);
+      });
+      const keepTags = liveTags.filter(function (t, ti) {
+        return allDrawn('tag', 'ti', ti);
+      });
+      if (keepSwaps.length === liveSwaps.length && keepTags.length === liveTags.length) break;
+      liveSwaps = keepSwaps;
+      liveTags = keepTags;
+    }
+    if (stripSentinels(rendered) !== base) return plain();
+
+    const offered = liveSwaps.map(function (v, i) {
+      return { group: v.group, number: i + 1 };
+    });
+    const html = fromSentinels(rendered, function (id, inner) {
+      const mk = meta[Number(id)];
+      return mk.kind === 'swap'
+        ? draw.swap(offered[mk.gi], mk.ci, inner)
+        : draw.tag(tagByOp[liveTags[mk.ti].opId], inner);
+    }).html;
+    return { html: html, offered: offered };
+  }
+
   const api = {
     MARKER_TOKENS: MARKER_TOKENS,
+    SENTINEL: SENTINEL,
     hasMarker: hasMarker,
+    hasSentinel: hasSentinel,
     applyOnce: applyOnce,
     placeGroup: placeGroup,
     visibleGroups: visibleGroups,
     tagSpans: tagSpans,
+    withSentinels: withSentinels,
+    fromSentinels: fromSentinels,
+    stripSentinels: stripSentinels,
+    swallowsTag: swallowsTag,
+    drawSuggestions: drawSuggestions,
   };
   if (typeof root !== 'undefined') root.suggestionPlacement = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;

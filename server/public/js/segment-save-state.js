@@ -39,6 +39,7 @@
     'repetition-insert': ['tm'],
     'term-insert': ['termbase'],
     'markup-wrap': ['toolbar', 'keyboard'],
+    'ai-suggestion': ['ai'],
   };
 
   /** express.json({ limit: '1mb' }) (server/index.js:206) counts BYTES; '1mb' is 1,048,576. */
@@ -141,6 +142,8 @@
       clientActionId: i.clientActionId,
       clientActionTime: i.clientActionTime,
       assists: [],
+      // Beside the assists, never inside them (G1.23 §8); '[]' when none. Set before the measurement below.
+      acceptedSuggestions: Array.isArray(i.acceptedSuggestions) ? i.acceptedSuggestions : [],
     };
     // Absent, not null: the server's order (§5.6 steps 1-4) decides the code.
     if (isSha256(row.baseSha256)) body.baseSha256 = row.baseSha256;
@@ -171,6 +174,63 @@
       throw new TypeError('assistItem: no ' + itemType + ' from ' + source);
     }
     return { itemType: itemType, source: source, clientTimeMs: clientTimeMs, detail: detail || {} };
+  }
+
+  /**
+   * The assist items one accepted suggestion group produces: one per change, each sharing `groupActionId`.
+   * The suggestion fields sit at the item's TOP level (the server reads them there; its detail is `{}`).
+   * @param {{rulingId: string, changes: Array<{opId: string, occurrence: number, category: string, runId: string}>}} group
+   * @param {string} groupActionId One id for the whole group's accept.
+   * @param {number} clientTimeMs
+   * @returns {Array<object>}
+   */
+  function suggestionItems(group, groupActionId, clientTimeMs) {
+    const changes = group && Array.isArray(group.changes) ? group.changes : [];
+    return changes.map(function (c) {
+      return Object.assign(assistItem('ai-suggestion', 'ai', clientTimeMs, {}), {
+        opId: c.opId,
+        occurrence: c.occurrence,
+        category: c.category,
+        runId: c.runId,
+        rulingId: group.rulingId,
+        groupActionId: groupActionId,
+      });
+    });
+  }
+
+  /**
+   * The save body's `acceptedSuggestions`: the ai-suggestion items whose change's `replace` is still in `savedText`
+   * (spec §7). Returns only `{opId, occurrence}`, distinct by opId (first wins), in item order, at most 500, in the
+   * exact shape the server accepts: it empties the WHOLE list for one bad entry. An item whose change is missing
+   * from `changesByOpId` cannot be checked and is dropped. A deletion op (`replace: ''`) always counts, as on the
+   * server (none exist in committed layer 2).
+   * @param {Array<object>} assists The pane's assist items.
+   * @param {string} savedText The text being saved.
+   * @param {Object<string, {replace: string}>|Map<string, {replace: string}>} changesByOpId A plain object or a Map.
+   * @returns {Array<{opId: string, occurrence: number}>}
+   */
+  function acceptedFromAssists(assists, savedText, changesByOpId) {
+    const out = [];
+    if (!Array.isArray(assists) || typeof savedText !== 'string' || !changesByOpId) return out;
+    const isMap = typeof Map === 'function' && changesByOpId instanceof Map;
+    const seen = {};
+    for (let n = 0; n < assists.length && out.length < 500; n++) {
+      const it = assists[n];
+      if (!it || it.itemType !== 'ai-suggestion') continue;
+      if (typeof it.opId !== 'string' || it.opId.length < 1 || it.opId.length > 128) continue;
+      if (intOrNull(it.occurrence) === null) continue;
+      if (Object.prototype.hasOwnProperty.call(seen, it.opId)) continue;
+      const change = isMap
+        ? changesByOpId.get(it.opId)
+        : Object.prototype.hasOwnProperty.call(changesByOpId, it.opId)
+          ? changesByOpId[it.opId]
+          : undefined;
+      if (!change || typeof change.replace !== 'string') continue;
+      if (savedText.indexOf(change.replace) === -1) continue;
+      seen[it.opId] = true;
+      out.push({ opId: it.opId, occurrence: it.occurrence });
+    }
+    return out;
   }
 
   /**
@@ -422,6 +482,8 @@
     buildSaveBody: buildSaveBody,
     buildAcceptBody: buildAcceptBody,
     assistItem: assistItem,
+    suggestionItems: suggestionItems,
+    acceptedFromAssists: acceptedFromAssists,
     boundAssists: boundAssists,
     draftEntry: draftEntry,
     buildDraftValue: buildDraftValue,
