@@ -11,6 +11,44 @@
 > of what was designed and why; it carries no status. If it disagrees with the active register, the register wins.
 > Do not sync it or edit it in place. Supersede it with a new record instead.
 
+> **✏️ AMENDED 2026-11-11: the double-click guard on *Nota* and *Hafna*, approved by [USER] on 2026-11-11** ("Go ahead
+> according to your recommendations", to the design proposed that day, with the buttons dimmed during the pause).
+> [USER] ruled the guard "fix before step 5" (register §C216, its third item). It extends §4.
+>
+> - **The defect.** Every *Nota* and *Hafna* redraws part of the page, so the second click of a double click, or an
+>   impatient second click, can land on whatever moved under the pointer: a neighbouring group's *Hafna*, the next
+>   ruling line moving up, or the next row moving up when a pane closes. A wrong reject cannot be undone on screen,
+>   applies to the segment for every editor, and in the records looks exactly like a deliberate one.
+> - **The rule: a half-second pause on the suggestion buttons, page-wide.** Every *Nota* and *Hafna* button (the
+>   one-change pair on the word and the ruling-line pair) ignores a click that comes within 500 ms of:
+>   - any click on a button, link or control anywhere on the page; or
+>   - the page redrawing without a click: *Hafna*'s server answer, every full redraw of the segment table (opening a
+>     module, the reload after *Vista* or *Staðfesta MT*, a filter change, and the term and repetition reloads that
+>     follow an opening), and Escape closing the pane.
+>
+>   Typing does not start the pause, though the row redraws as the editor types. A click during the pause does
+>   nothing, sends nothing and records nothing, and it restarts the pause. Mouse and keyboard are treated alike.
+> - **The buttons are dimmed during the pause** ([USER]'s choice), so a click that does nothing has a visible reason.
+>   They are only dimmed, never made click-through: a click passing to whatever lies beneath would be the defect
+>   again.
+> - **Why a timer, not "ignore the second click of a double click".** It also covers the impatient click and the
+>   pane closing, which are not double clicks, and it does not depend on how a browser counts clicks once the element
+>   under the pointer has changed. A test can run it with real timing; a simulated double click only fakes the click
+>   count, so [USER] also tries a real double click in Edge.
+> - **Why the whole page, not one row:** closing a pane or removing a ruling line moves the rows below it.
+> - **Why 500 ms:** it is Windows' default double-click time. After a redraw the editor has to find where the next
+>   button moved, so a deliberate click on another suggestion within half a second is unlikely.
+> - **Ruled out:** a confirmation on *Hafna* (a step added to every one of up to 2,684 groups, which changes the task
+>   the research measures, and which people learn to click through) and an undo for *Hafna* (server and research-record
+>   changes, a project of its own).
+> - **The pause is part of the measured task from day one.** It ships before the first switch-on, so every recorded
+>   accept and reject is made with it. Changing its length later is a recorded change: a register entry and an
+>   amendment here. The value lives in the code (`SUGGESTION_PAUSE_MS`) and its tests, not here.
+> - **Claude's calls, for [USER] to check:** the trigger list is wider than the proposal's words ("a module load or
+>   reload"), because every full table redraw can move a button, and the filter change and the background term and
+>   repetition reloads are full redraws; and no keyboard exemption, because Enter on a focused button can be pressed
+>   twice as easily as a mouse button.
+
 > **✏️ AMENDED 2026-11-10, later: rulings made while building PR3 (the screen and the switch), confirmed by [USER]
 > on 2026-11-10** ("I confirm the rulings and the strings", to the list in PR #669's description). Each settles what an
 > editor or the admin sees where this design was silent, left the call to the builder, or predates a later finding.
