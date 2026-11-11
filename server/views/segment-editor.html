@@ -1821,6 +1821,11 @@
       .sugg-btn.sugg-hafna:hover {
         background: var(--bg-hover);
       }
+      /* The double-click guard's pause (G1.23 spec, AMENDED 2026-11-11): dimmed, never click-through. */
+      [data-sugg-paused] .sugg-btn {
+        opacity: 0.45;
+        cursor: default;
+      }
       .sugg-rulings:empty {
         display: none;
       }

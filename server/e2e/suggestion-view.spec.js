@@ -60,6 +60,18 @@ const S = {
 // Never touched by any test: its one group is offered through the whole run (spec §9.6).
 const CONTROL = 'm68693:glossary-term:fs-idp55104-term';
 const CONTROL_RULING = 'isomers';
+// The double-click guard's tests (spec ✏️ AMENDED 2026-11-11) use rows no earlier test touches, and none of them
+// writes to the DB: Nota stays on the screen until Vista, which they never press, and their rejects are stubbed. So
+// they may share these rows.
+const G = {
+  caption1: 'm68693:caption:CNX_Chem_02_04_Isomers-caption', // `structural-isomer` 1
+  caption2: 'm68693:caption:CNX_Chem_02_04_Isomers2-caption', // `spatial-isomers` 1
+  alt: 'm68693:alt:fs-idm155370112-alt', // `lewis-structure` 1
+  glossSpatial: 'm68693:glossary-term:fs-idm54570400-term', // `spatial-isomers` 1
+  glossStructural: 'm68693:glossary-term:fs-idp1084128-term', // `structural-isomer` 1
+  atom3: 'm68693:para:fs-idp51085424', // `atom` 3
+  solution: 'm68693:solution:fs-idm187478032', // `structural-isomer` 1
+};
 
 const moduleUrl = (m) => `/api/segment-editor/${BOOK}/${CHAPTER}/${m}`;
 const groupKey = (segmentId, rulingId) => `${segmentId}#0|${rulingId}`;
@@ -115,12 +127,133 @@ const closedOps = (table, segmentId) =>
     segmentId
   );
 
-/** Both background loads (/terms, /repetitions), each of which re-renders the table. */
+/**
+ * Both background loads (/terms, /repetitions), each of which re-renders the table. Each waits for its response's
+ * body, not its headers: the page re-renders only once it has read the body, and each re-render starts the
+ * double-click guard's pause (spec ✏️ AMENDED 2026-11-11).
+ */
 const backgroundLoads = (page, moduleId) =>
-  Promise.all([
-    page.waitForResponse((r) => r.url().endsWith(`${moduleUrl(moduleId)}/terms`)),
-    page.waitForResponse((r) => r.url().endsWith(`${moduleUrl(moduleId)}/repetitions`)),
-  ]);
+  Promise.all(
+    ['terms', 'repetitions'].map((load) =>
+      page
+        .waitForResponse((r) => r.url().endsWith(`${moduleUrl(moduleId)}/${load}`))
+        .then((r) => r.finished())
+    )
+  );
+
+/**
+ * The double-click guard's pause (spec ✏️ AMENDED 2026-11-11): while <html> carries data-sugg-paused, every Nota and
+ * Hafna ignores a click. The value of the pause is the client's SUGGESTION_PAUSE_MS.
+ */
+const PAUSE_MS = 500;
+const paused = (page) => page.locator('html[data-sugg-paused]');
+
+/**
+ * Installed in every page before its scripts (test.beforeEach): records each click on a suggestion button. A capture
+ * listener on window runs before any listener on document, so it sees every click, with its time and whether the
+ * pause was on; a bubble listener on window sees only the clicks that reached the button. A click the guard
+ * swallows is therefore seen and never delivered.
+ */
+function recordSuggestionClicks() {
+  const clicks = { seen: [], pausedAt: [], delivered: 0 };
+  window.__suggClicks = clicks;
+  const onButton = (e) => e.target instanceof Element && e.target.closest('.sugg-btn');
+  window.addEventListener(
+    'click',
+    (e) => {
+      if (!onButton(e)) return;
+      clicks.seen.push(e.timeStamp);
+      clicks.pausedAt.push(document.documentElement.hasAttribute('data-sugg-paused'));
+    },
+    true
+  );
+  window.addEventListener('click', (e) => {
+    if (onButton(e)) clicks.delivered++;
+  });
+}
+const suggClicks = (page) => page.evaluate(() => JSON.parse(JSON.stringify(window.__suggClicks)));
+/** Short poll steps for a click's record: the default (100, 250, 500 ms) would spend much of the pause waiting. */
+const CLICK_POLL = [10, 20, 50, 100];
+
+/**
+ * Click a suggestion button that the test means to act. It waits for the pause to end, and retries a click the pause
+ * swallowed: a background re-render can still land between the wait and the click, and a swallowed click ran no
+ * handler, so clicking again is safe. Three swallows in a row fail here, not lines later.
+ */
+async function clickSuggestion(page, button) {
+  for (let attempt = 0; attempt < 3; attempt++) {
+    await expect(paused(page)).toHaveCount(0);
+    const before = await suggClicks(page);
+    await button.click();
+    await expect
+      .poll(async () => (await suggClicks(page)).seen.length, { intervals: CLICK_POLL })
+      .toBe(before.seen.length + 1);
+    const after = await suggClicks(page);
+    if (after.delivered === before.delivered + 1) return after;
+  }
+  throw new Error('the double-click guard swallowed a suggestion click three times in a row');
+}
+
+/**
+ * A raw click on a suggestion button, for a test that expects the guard to swallow it. `before` is the page's click
+ * record read BEFORE the event that starts the pause, so no read sits between that event and this click. Returns the
+ * record of the click (`at`: its event time, `pausedAt`: whether the pause was showing) and whether it was delivered.
+ */
+async function rawSuggestionClick(page, button, before) {
+  // A real mouse click at the button's centre, without Playwright's actionability waits (scrolling, stability),
+  // which can cost a large part of the pause: one in-page step scrolls the button into view and measures it.
+  const at = await button.evaluate((el) => {
+    el.scrollIntoView({ block: 'center' });
+    const r = el.getBoundingClientRect();
+    return { x: r.x + r.width / 2, y: r.y + r.height / 2 };
+  });
+  await page.mouse.click(at.x, at.y);
+  await expect
+    .poll(async () => (await suggClicks(page)).seen.length, {
+      message: 'the click landed on the button',
+      intervals: CLICK_POLL,
+    })
+    .toBe(before.seen.length + 1);
+  const after = await suggClicks(page);
+  return {
+    at: after.seen[after.seen.length - 1],
+    pausedAt: after.pausedAt[after.pausedAt.length - 1],
+    delivered: after.delivered > before.delivered,
+    seen: after.seen,
+  };
+}
+
+/** The page's clock (performance.now, the clock of an event's timeStamp). */
+const pageNow = (page) => page.evaluate(() => performance.now());
+
+/** Fail as "too slow", not as "guard broken", when the harness's click came after the pause would have ended. */
+function expectWithinPause(gap, what) {
+  console.log(`[double-click guard] ${what}: ${Math.round(gap)} ms of the ${PAUSE_MS} ms pause`); // the headroom
+  expect(
+    gap,
+    `${what} came ${Math.round(gap)} ms after the event that starts the pause, which is not within ${PAUSE_MS} ms: this runner is too slow for the test`
+  ).toBeLessThan(PAUSE_MS);
+}
+
+/** A reject stub that writes nothing: it records each request and, once `gate` resolves, answers as a fresh reject. */
+async function stubReject(page, gate = Promise.resolve()) {
+  const sent = [];
+  await page.route(`**${moduleUrl(M93)}/suggestions/reject`, async (route) => {
+    sent.push(route.request().postDataJSON());
+    await gate;
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({ inserted: 1, alreadyClosed: 0 }),
+    });
+  });
+  return sent;
+}
+
+/** The served segment `segmentId` of m68693. */
+async function servedSegment(page, segmentId) {
+  return (await moduleJson(page, M93)).segments.find((s) => s.segmentId === segmentId);
+}
 
 /** Open a module from the URL; interact only after both background re-renders (served-base-client's openModule). */
 async function openModule(page, moduleId) {
@@ -224,6 +357,9 @@ async function expectTags(row, words) {
 
 test.describe('G1.23 suggestion view on efnafraedi-2e ch02 (spec §9.4–9.6)', () => {
   test.describe.configure({ mode: 'serial' });
+  test.beforeEach(async ({ page }) => {
+    await page.addInitScript(recordSuggestionClicks);
+  });
 
   test('(1) the dedicated editor opens m68684 while the view is still off', async ({
     page,
@@ -338,7 +474,7 @@ test.describe('G1.23 suggestion view on efnafraedi-2e ch02 (spec §9.4–9.6)', 
     const gets = counter.gets;
     expect(gets).toBeGreaterThanOrEqual(1); // control: the counter sees the open's GET
     const row = rowOf(page, S.one);
-    await notaOn(swapsOf(row, key)).click();
+    await clickSuggestion(page, notaOn(swapsOf(row, key)));
 
     const ta = row.locator('textarea');
     await expect(ta).toHaveValue(taken);
@@ -440,9 +576,10 @@ test.describe('G1.23 suggestion view on efnafraedi-2e ch02 (spec §9.4–9.6)', 
     const row = rowOf(page, S.two);
     await expect(swapsOf(row, key)).toHaveCount(2);
     await expect(swapsOf(row, key).locator('.sugg-num')).toHaveText(['1', '1']);
-    await rulingOf(row, key)
-      .getByRole('button', { name: UI.suggestions.notaBadar, exact: true })
-      .click();
+    await clickSuggestion(
+      page,
+      rulingOf(row, key).getByRole('button', { name: UI.suggestions.notaBadar, exact: true })
+    );
 
     await expect(row.locator('textarea')).toHaveValue(taken);
     // Longest replace first (R22): atóm also occurs inside atómum, and both are tagged.
@@ -471,7 +608,7 @@ test.describe('G1.23 suggestion view on efnafraedi-2e ch02 (spec §9.4–9.6)', 
     // Two one-change groups on one row: two buttons share the name, so each is scoped by its key (R26).
     await expect(swapsOf(row, iso)).toHaveCount(1);
     await expect(swapsOf(row, mol)).toHaveCount(1);
-    await notaOn(swapsOf(row, iso)).click();
+    await clickSuggestion(page, notaOn(swapsOf(row, iso)));
     await expect(row.locator('textarea')).toHaveValue(taken);
     await expectTags(row, ['hverfur']);
     await expect(swapsOf(row, iso)).toHaveCount(0);
@@ -520,13 +657,13 @@ test.describe('G1.23 suggestion view on efnafraedi-2e ch02 (spec §9.4–9.6)', 
     await expect(swapsOf(row, iso)).toHaveCount(0);
     await expect(rulingOf(row, iso)).toHaveCount(0);
 
-    await notaOn(swapsOf(row, spatial)).click();
+    await clickSuggestion(page, notaOn(swapsOf(row, spatial)));
     await expect(row.locator('textarea')).toHaveValue(step1);
     await expect(swapsOf(row, iso)).toHaveCount(1);
     await expect(swapsOf(row, iso).locator('.sugg-old')).toHaveText('ísómerum');
     await expect(rulingOf(row, iso)).toHaveCount(1);
 
-    await notaOn(swapsOf(row, iso)).click();
+    await clickSuggestion(page, notaOn(swapsOf(row, iso)));
     await expect(row.locator('textarea')).toHaveValue(step2);
     await expectTags(row, ['hverfum', 'rúmhverfum']);
     await expect(isDisplay(row).locator('.sugg-swap')).toHaveCount(0);
@@ -637,7 +774,7 @@ test.describe('G1.23 suggestion view on efnafraedi-2e ch02 (spec §9.4–9.6)', 
     const rejected = page.waitForResponse((r) =>
       r.url().endsWith(`${moduleUrl(M93)}/suggestions/reject`)
     );
-    await hafnaOn(swapsOf(row, key)).click();
+    await clickSuggestion(page, hafnaOn(swapsOf(row, key)));
     expect((await rejected).status()).toBe(200);
     await expect(swapsOf(row, key)).toHaveCount(0);
     await expect(rulingOf(row, key)).toHaveCount(0);
@@ -671,9 +808,10 @@ test.describe('G1.23 suggestion view on efnafraedi-2e ch02 (spec §9.4–9.6)', 
 
     await openModule(page, M93);
     const row = rowOf(page, S.refusedSave);
-    await rulingOf(row, key)
-      .getByRole('button', { name: UI.suggestions.notaAllar(3), exact: true })
-      .click();
+    await clickSuggestion(
+      page,
+      rulingOf(row, key).getByRole('button', { name: UI.suggestions.notaAllar(3), exact: true })
+    );
     const ta = row.locator('textarea');
     await expect(ta).toHaveValue(taken);
     await expectTags(row, words);
@@ -759,7 +897,7 @@ test.describe('G1.23 suggestion view on efnafraedi-2e ch02 (spec §9.4–9.6)', 
     );
     // opening-unrecorded.spec.js's openWithStub: start the click, answer the alert, then await the click.
     const dialog = page.waitForEvent('dialog');
-    const click = hafnaOn(swapsOf(row, key)).click();
+    const click = clickSuggestion(page, hafnaOn(swapsOf(row, key)));
     const d = await dialog;
     const message = d.message();
     await d.accept();
@@ -791,7 +929,7 @@ test.describe('G1.23 suggestion view on efnafraedi-2e ch02 (spec §9.4–9.6)', 
     const rejected = page.waitForResponse((r) =>
       r.url().endsWith(`${moduleUrl(M93)}/suggestions/reject`)
     );
-    await hafnaOn(swapsOf(row, key)).click();
+    await clickSuggestion(page, hafnaOn(swapsOf(row, key)));
     const res = await rejected;
     expect([res.status(), await res.json()]).toEqual([200, { inserted: 1, alreadyClosed: 0 }]);
 
@@ -847,5 +985,242 @@ test.describe('G1.23 suggestion view on efnafraedi-2e ch02 (spec §9.4–9.6)', 
     } finally {
       await other.close();
     }
+  });
+
+  // ── The double-click guard (spec ✏️ AMENDED 2026-11-11): one test per event that starts the pause. ──
+
+  test('double-click guard: Hafna clicked at once after a Nota is ignored, and the same Hafna after the pause acts', async ({
+    page,
+  }) => {
+    await loginAs(page, 'editor', SUGGESTION_EDITOR_ID);
+    const segA = await servedSegment(page, G.caption1);
+    const sent = await stubReject(page);
+    await openModule(page, M93);
+    const rowA = rowOf(page, G.caption1);
+    const rowB = rowOf(page, G.caption2);
+    const keyA = groupKey(G.caption1, 'structural-isomer');
+    const keyB = groupKey(G.caption2, 'spatial-isomers');
+    await expect(swapsOf(rowB, keyB)).toHaveCount(1);
+
+    // The misclick a double click makes: a Nota, then at once a Hafna that the redraw brought near the pointer.
+    await expect(paused(page)).toHaveCount(0);
+    await expect(hafnaOn(swapsOf(rowB, keyB))).toHaveCSS('opacity', '1'); // control for the dim below
+    const afterNota = await clickSuggestion(page, notaOn(swapsOf(rowA, keyA)));
+    const second = await rawSuggestionClick(page, hafnaOn(swapsOf(rowB, keyB)), afterNota);
+    expectWithinPause(second.at - second.seen[second.seen.length - 2], 'the Hafna click');
+    expect(second.delivered, 'the Hafna reached no handler').toBe(false);
+    expect(second.pausedAt, 'the pause was on when it was clicked').toBe(true);
+    // [USER]'s choice: the paused buttons are dimmed (the swallowed click restarted the pause, so it still runs).
+    await expect(hafnaOn(swapsOf(rowB, keyB))).toHaveCSS('opacity', '0.45');
+    await expect(rowA.locator('textarea')).toHaveValue(
+      replacedOnce(segA.is, 'formgerðarísómerur', 'byggingarhverfur')
+    ); // control: the Nota itself acted
+    await expect(swapsOf(rowB, keyB)).toHaveCount(1);
+
+    // Control: the same Hafna, after the pause, sends one request and the group leaves the row.
+    await clickSuggestion(page, hafnaOn(swapsOf(rowB, keyB)));
+    await expect(swapsOf(rowB, keyB)).toHaveCount(0);
+    expect(sent.map((b) => [b.segmentId, b.groupKey])).toEqual([[G.caption2, keyB]]);
+  });
+
+  test("double-click guard: Hafna's late answer pauses the buttons, so a click just after its redraw is ignored", async ({
+    page,
+  }) => {
+    await loginAs(page, 'editor', SUGGESTION_EDITOR_ID);
+    const segD = await servedSegment(page, G.glossSpatial);
+    let release;
+    const sent = await stubReject(
+      page,
+      new Promise((resolve) => {
+        release = resolve;
+      })
+    );
+    await openModule(page, M93);
+    const rowC = rowOf(page, G.alt);
+    const rowD = rowOf(page, G.glossSpatial);
+    const keyC = groupKey(G.alt, 'lewis-structure');
+    const keyD = groupKey(G.glossSpatial, 'spatial-isomers');
+    await expect(swapsOf(rowD, keyD)).toHaveCount(1);
+
+    await clickSuggestion(page, hafnaOn(swapsOf(rowC, keyC)));
+    await expect.poll(() => sent.length).toBe(1); // the answer is held
+    // The click's own pause runs out while the answer is held, so only the answer can start it again.
+    await expect(paused(page)).toHaveCount(0);
+    await expect(swapsOf(rowC, keyC)).toHaveCount(1); // control: not redrawn yet
+    const before = await suggClicks(page);
+    release();
+    await page
+      .waitForFunction(() => document.documentElement.hasAttribute('data-sugg-paused'), null, {
+        polling: 'raf',
+        timeout: 3000,
+      })
+      .catch(() => {
+        throw new Error("Hafna's answer did not start the pause");
+      });
+    const click = await rawSuggestionClick(page, notaOn(swapsOf(rowD, keyD)), before);
+    expect(
+      click.pausedAt,
+      'the Nota click landed inside the pause: this runner is too slow if not'
+    ).toBe(true);
+    expect(click.delivered, 'the Nota reached no handler').toBe(false);
+    await expect(swapsOf(rowC, keyC)).toHaveCount(0); // the answer redrew row C
+    await expect(rowD.locator('.edit-panel')).not.toHaveClass(/\bactive\b/);
+    await expect(swapsOf(rowD, keyD)).toHaveCount(1);
+
+    // Control: the same Nota, after the pause, acts.
+    await clickSuggestion(page, notaOn(swapsOf(rowD, keyD)));
+    await expect(rowD.locator('textarea')).toHaveValue(
+      replacedOnce(segD.is, 'rúmísómerur', 'rúmhverfur')
+    );
+    expect(sent).toHaveLength(1);
+  });
+
+  test('double-click guard: a full table redraw pauses the buttons, though nothing was clicked', async ({
+    page,
+  }) => {
+    await loginAs(page, 'editor', SUGGESTION_EDITOR_ID);
+    const seg = await servedSegment(page, G.atom3);
+    const taken = replacedOnce(
+      replacedOnce(
+        replacedOnce(seg.is, 'kolefnisfrumeindir', 'kolefnisatóm'),
+        'vetnisfrumeindir',
+        'vetnisatóm'
+      ),
+      'súrefnisfrumeindir',
+      'súrefnisatóm'
+    );
+    await openModule(page, M93);
+    const row = rowOf(page, G.atom3);
+    const key = groupKey(G.atom3, 'atom');
+    const notaAllar = rulingOf(row, key).getByRole('button', {
+      name: UI.suggestions.notaAllar(3),
+      exact: true,
+    });
+    await expect(notaAllar).toHaveCount(1);
+    await expect(paused(page)).toHaveCount(0);
+
+    // #filter-type's change handler is renderSegments, and selectOption fires change, never click.
+    const filter = page.locator('#filter-type');
+    await filter.selectOption('title');
+    await expect(row).toHaveCount(0); // control: the table really was rebuilt
+    const before = await suggClicks(page);
+    const redrawFrom = await pageNow(page);
+    await filter.selectOption('all');
+    const click = await rawSuggestionClick(page, notaAllar, before);
+    expectWithinPause(click.at - redrawFrom, 'the Nota allar click');
+    expect(click.delivered, 'Nota allar reached no handler').toBe(false);
+    await expect(row.locator('.edit-panel')).not.toHaveClass(/\bactive\b/);
+    await expect(rulingOf(row, key)).toHaveCount(1);
+
+    // Control: after the pause, the same button acts.
+    await clickSuggestion(page, notaAllar);
+    await expect(row.locator('textarea')).toHaveValue(taken);
+  });
+
+  test('double-click guard: Escape closing a pane pauses the buttons', async ({ page }) => {
+    await loginAs(page, 'editor', SUGGESTION_EDITOR_ID);
+    const seg = await servedSegment(page, G.glossStructural);
+    await openModule(page, M93);
+    const paneRow = rowOf(page, G.solution);
+    const row = rowOf(page, G.glossStructural);
+    const key = groupKey(G.glossStructural, 'structural-isomer');
+    await expect(swapsOf(row, key)).toHaveCount(1);
+
+    await paneRow.locator('.btn-edit').click();
+    await expect(paneRow.locator('.edit-panel')).toHaveClass(/\bactive\b/);
+    await expect(paused(page)).toHaveCount(0); // the Edit click's own pause is over
+    const before = await suggClicks(page);
+    const closedFrom = await pageNow(page);
+    await page.keyboard.press('Escape'); // a clean pane: it closes, asking nothing
+    const click = await rawSuggestionClick(page, notaOn(swapsOf(row, key)), before);
+    expectWithinPause(click.at - closedFrom, 'the Nota click');
+    await expect(paneRow.locator('.edit-panel')).not.toHaveClass(/\bactive\b/); // control: Escape closed it
+    expect(click.delivered, 'the Nota reached no handler').toBe(false);
+    await expect(row.locator('.edit-panel')).not.toHaveClass(/\bactive\b/);
+
+    // Control: after the pause, the same Nota acts.
+    await clickSuggestion(page, notaOn(swapsOf(row, key)));
+    await expect(row.locator('textarea')).toHaveValue(
+      replacedOnce(seg.is, 'byggingarisómera', 'byggingarhverfa')
+    );
+  });
+
+  test('double-click guard: Ctrl+S on a pane with nothing to save closes it and pauses the buttons', async ({
+    page,
+  }) => {
+    await loginAs(page, 'editor', SUGGESTION_EDITOR_ID);
+    const seg = await servedSegment(page, G.glossStructural);
+    await openModule(page, M93);
+    const paneRow = rowOf(page, G.solution);
+    const row = rowOf(page, G.glossStructural);
+    const key = groupKey(G.glossStructural, 'structural-isomer');
+    await expect(swapsOf(row, key)).toHaveCount(1);
+    const edits = [];
+    page.on('request', (r) => {
+      if (r.url().endsWith(`${moduleUrl(M93)}/edit`)) edits.push(r.method());
+    });
+
+    await paneRow.locator('.btn-edit').click();
+    await expect(paneRow.locator('.edit-panel')).toHaveClass(/\bactive\b/);
+    await expect(paused(page)).toHaveCount(0); // the Edit click's own pause is over
+    const before = await suggClicks(page);
+    const closedFrom = await pageNow(page);
+    await page.keyboard.press('Control+s'); // nothing to save: saveEdit closes the pane and sends nothing
+    const click = await rawSuggestionClick(page, notaOn(swapsOf(row, key)), before);
+    expectWithinPause(click.at - closedFrom, 'the Nota click');
+    await expect(paneRow.locator('.edit-panel')).not.toHaveClass(/\bactive\b/); // control: Ctrl+S closed it
+    expect(click.delivered, 'the Nota reached no handler').toBe(false);
+    await expect(row.locator('.edit-panel')).not.toHaveClass(/\bactive\b/);
+    expect(edits).toEqual([]);
+
+    // Control: after the pause, the same Nota acts.
+    await clickSuggestion(page, notaOn(swapsOf(row, key)));
+    await expect(row.locator('textarea')).toHaveValue(
+      replacedOnce(seg.is, 'byggingarisómera', 'byggingarhverfa')
+    );
+  });
+
+  test('Hætta við after Nota on a typed pane asks nothing, brings back the text and the group, and keeps nothing (§C216)', async ({
+    page,
+  }) => {
+    await loginAs(page, 'editor', SUGGESTION_EDITOR_ID);
+    const seg = await servedSegment(page, G.solution);
+    const key = groupKey(G.solution, 'structural-isomer');
+    const op = seg.suggestions.groups.find((g) => g.key === key).changes[0].opId;
+    await openModule(page, M93);
+    const row = rowOf(page, G.solution);
+
+    await row.locator('.btn-edit').click();
+    const ta = row.locator('textarea');
+    await expect(ta).toHaveValue(seg.is);
+    const typed = `${seg.is} rf2`; // leaves the group's word intact, so the group is still offered
+    await ta.fill(typed);
+    await expect(swapsOf(row, key)).toHaveCount(1);
+    await clickSuggestion(page, notaOn(swapsOf(row, key)));
+    const taken = replacedOnce(typed, 'byggingarfásætur', 'byggingarhverfur');
+    await expect(ta).toHaveValue(taken);
+    await expectTags(row, ['byggingarhverfur']);
+    await expect(swapsOf(row, key)).toHaveCount(0);
+    // Control for the draft's absence below: the draft held the typed text and the accept.
+    await expect
+      .poll(() => storedDraft(page, G.solution), { timeout: 15000 })
+      .toEqual({ text: taken, refused: null, ops: [op] });
+
+    const asked = [];
+    page.on('dialog', (d) => {
+      asked.push(d.message());
+      d.dismiss().catch(() => {});
+    });
+    await row.getByRole('button', { name: 'Hætta við', exact: true }).click();
+    await expect(row.locator('.edit-panel')).not.toHaveClass(/\bactive\b/);
+    expect(asked).toEqual([]);
+    await expect(ta).toHaveValue(seg.is);
+    await expect(swapsOf(row, key)).toHaveCount(1);
+    await expect(isDisplay(row).locator('.sugg-accepted')).toHaveCount(0);
+    await expect.poll(() => storedDraft(page, G.solution)).toBeNull();
+    expect(closedOps('suggestion_rejections', G.solution)).toEqual([]);
+    expect(closedOps('suggestion_left_open', G.solution)).toEqual([]);
+    expect((await moduleJson(page, M93)).edits[G.solution]).toBeUndefined();
+    await expectControlShown(page);
   });
 });

@@ -1640,6 +1640,7 @@
 
     tbody.innerHTML = segments.map((seg) => renderSegmentRow(seg)).join('');
     reinstallHeldDrafts();
+    pauseSuggestionButtons(); // every row may have moved, often with no click (an opening's term reload)
     return true;
   }
 
@@ -1778,6 +1779,61 @@
     return `<div class="sugg-ruling" data-group-key="${escapeHtml(group.key)}"><span class="sugg-num">${offer.number}</span><span class="sugg-label">${escapeHtml(label.en || group.rulingId)} → ${escapeHtml(label.is || '')}</span><span class="sugg-count">(${n})</span>${buttons}</div>`;
   }
 
+  // ---- The double-click guard (spec ✏️ AMENDED 2026-11-11; register §C216) ----
+  // Nota and Hafna redraw the page, so a second click can land on whatever moved under the pointer, and a wrong
+  // reject can be neither undone on screen nor told apart from a deliberate one in the records. Every suggestion
+  // button therefore ignores a click within SUGGESTION_PAUSE_MS of a click on any control, or of a redraw the editor
+  // did not click for: Hafna's answer, renderSegments, and a pane closing (Escape, or closeEditPanel, which Ctrl+S
+  // reaches with no click). Typing redraws do not pause.
+
+  /** Windows' default double-click time. Changing it changes the measured task: a register entry and a spec amendment. */
+  const SUGGESTION_PAUSE_MS = 500;
+  /** A click on one of these starts the pause; a click in the text (a textarea, plain words) does not. */
+  const PAUSING_CONTROLS = 'button, a[href], [onclick], [role="button"]';
+  let suggestionPauseUntil = 0;
+  let suggestionPauseTimer = null;
+
+  /**
+   * Start, or restart, the pause. <html> carries data-sugg-paused meanwhile, which dims the buttons (never
+   * click-through: a click passing to what lies beneath would be the defect again). The marker is cleared only once
+   * the time has passed, so a button that is not dimmed always takes its click.
+   */
+  function pauseSuggestionButtons() {
+    suggestionPauseUntil = performance.now() + SUGGESTION_PAUSE_MS;
+    document.documentElement.setAttribute('data-sugg-paused', '');
+    if (suggestionPauseTimer === null) {
+      suggestionPauseTimer = setTimeout(endSuggestionPause, SUGGESTION_PAUSE_MS);
+    }
+  }
+
+  /** The pause's timer: a restart moved the end, so it waits again until the end has passed. */
+  function endSuggestionPause() {
+    const left = suggestionPauseUntil - performance.now();
+    if (left > 0) {
+      suggestionPauseTimer = setTimeout(endSuggestionPause, left);
+      return;
+    }
+    suggestionPauseTimer = null;
+    document.documentElement.removeAttribute('data-sugg-paused');
+  }
+
+  // In the capture phase on document, so it runs before a button's own onclick: a swallowed click reaches no handler,
+  // sends nothing and records nothing. It restarts the pause, so a quick third click is swallowed too. Mouse and
+  // keyboard alike (Enter on a focused button is a click).
+  document.addEventListener(
+    'click',
+    (e) => {
+      const control = e.target instanceof Element ? e.target.closest(PAUSING_CONTROLS) : null;
+      if (!control) return;
+      if (control.classList.contains('sugg-btn') && performance.now() < suggestionPauseUntil) {
+        e.stopPropagation();
+        e.preventDefault();
+      }
+      pauseSuggestionButtons();
+    },
+    true
+  );
+
   /** Groups whose reject request is in flight ("segmentId|groupKey"), so a double click sends one request. */
   const rejectsInFlight = new Set();
 
@@ -1831,6 +1887,7 @@
         );
       }
       refreshSuggestionView(segmentId);
+      pauseSuggestionButtons(); // the row moved when the server answered, not when the editor clicked
     } finally {
       rejectsInFlight.delete(inFlightKey);
     }
@@ -2533,6 +2590,7 @@
     refreshSuggestionView(segmentId); // the pane's accepts are gone: their groups are offered again (G1.23)
     updateSaveStatusBar();
     saveDraft(); // a discarded text leaves the draft now, not at the next tick (PR1 review C12)
+    pauseSuggestionButtons(); // the rows below moved up; Ctrl+S on a pane with nothing to save comes with no click
   }
 
   /**
@@ -4345,6 +4403,7 @@
           updateSaveStatusBar();
           saveDraft(); // a discarded text leaves the draft now, not at the next tick (PR1 review C12)
         }
+        pauseSuggestionButtons(); // the rows below moved up, by a key rather than a click (G1.23 guard)
       }
     }
 
