@@ -291,11 +291,13 @@ describe('POST /propagate and its preview place the SOURCE (PR1 review C3; spec 
 
   it('a duplicated source id is refused 409 DUPLICATE_ID and writes nothing; a plain id in the same module propagates', async () => {
     // What the client posts when nothing was typed: the row's served Icelandic, which for both rows
-    // of a duplicated id is the LAST copy's, beside the first row's (the first copy's) English.
+    // of a duplicated id is the FIRST copy's (the loader pairs the first Icelandic copy, G1.12),
+    // beside the first row's (the first copy's) English. The refusal does not depend on which copy:
+    // the id is duplicated, so which one was edited is unknowable (R4).
     const page = await serve(CHEM, 1, 'm96101');
     expect(page.status).toBe(200);
     const servedIs = page.body.segments.find((s) => s.segmentId === DUP).is;
-    expect(servedIs).toBe('Önnur setning.');
+    expect(servedIs).toBe('Fyrsta setning.');
 
     const before = snapshot();
     const r = await post({ segmentId: DUP, editedContent: servedIs }, { moduleId: 'm96101' });

@@ -7,7 +7,11 @@
  * under server/ because the integrity half uses the editor's loader (segmentParser), and the
  * MIT -> AGPL edge rule keeps that out of experiments/.
  *
- * Usage: node server/scripts/suggestion-view-references.js [--out <dir>]
+ * Usage: node server/scripts/suggestion-view-references.js [--out <dir>] [--date <YYYY-MM-DD>]
+ *
+ * `--date` is the build date recorded in the output. It defaults to 2026-11-09, so the bare
+ * invocation still reproduces the frozen 2026-11-09 artifact; a re-run after a re-extraction passes
+ * its own date (G1.12's 2026-11-12 reference was built that way).
  */
 'use strict';
 
@@ -23,6 +27,7 @@ const DEFAULT_OUT = path.join(
   REPO_ROOT,
   'experiments/ai-review-pilot/suggestion-view-references-2026-11-09'
 );
+const DEFAULT_DATE = '2026-11-09';
 const DROPPED_CATEGORY = 'agreement';
 const RULE =
   'drop every change in each (module, segmentId, rulingId) group, over all occurrences, that holds an agreement change';
@@ -45,13 +50,39 @@ function cmp(a, b) {
 }
 
 /**
+ * The value of `--date`, or DEFAULT_DATE when the flag is absent. Refuses anything that is not a
+ * real calendar date written YYYY-MM-DD, and a flag with no value.
+ * @param {string[]} argv
+ * @returns {string}
+ */
+function parseDateArg(argv) {
+  const i = argv.indexOf('--date');
+  if (i < 0) return DEFAULT_DATE;
+  const value = argv[i + 1];
+  const ok =
+    typeof value === 'string' &&
+    /^\d{4}-\d{2}-\d{2}$/.test(value) &&
+    !Number.isNaN(Date.parse(`${value}T00:00:00Z`)) &&
+    new Date(`${value}T00:00:00Z`).toISOString().slice(0, 10) === value;
+  if (!ok) throw new Error(`--date must be a calendar date written YYYY-MM-DD, got ${value}`);
+  return value;
+}
+
+/**
  * @param {object} opts
  * @param {string} opts.booksRoot books directory; logs are read from <booksRoot>/<book>/02-mt-revised
  * @param {string} opts.book
  * @param {function(string, number, string): {segments: Array}} [opts.load] served-text loader
  * @param {string|null} [opts.layer2Commit]
+ * @param {string} [opts.date] the build date recorded in the output
  */
-function buildReferences({ booksRoot, book, load = loadModuleForEditing, layer2Commit = null }) {
+function buildReferences({
+  booksRoot,
+  book,
+  load = loadModuleForEditing,
+  layer2Commit = null,
+  date = DEFAULT_DATE,
+}) {
   const root = path.join(booksRoot, book, '02-mt-revised');
   const records = [];
   let logs = 0;
@@ -158,7 +189,7 @@ function buildReferences({ booksRoot, book, load = loadModuleForEditing, layer2C
   crossGroupDependent.sort();
 
   return {
-    date: '2026-11-09',
+    date,
     layer2Commit,
     rule: RULE,
     totals: { records: records.length, logs, emptyLogs, chains: chains.size },
@@ -177,6 +208,7 @@ function buildReferences({ booksRoot, book, load = loadModuleForEditing, layer2C
 function main(argv) {
   const i = argv.indexOf('--out');
   const outDir = i >= 0 ? path.resolve(argv[i + 1]) : DEFAULT_OUT;
+  const date = parseDateArg(argv);
   const layer2Commit = execFileSync(
     'git',
     ['log', '-1', '--format=%H', '--', `books/${BOOK}/02-mt-revised`],
@@ -186,6 +218,7 @@ function main(argv) {
     booksRoot: path.resolve(__dirname, '../../books'),
     book: BOOK,
     layer2Commit,
+    date,
   });
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(path.join(outDir, 'references.json'), JSON.stringify(out, null, 2) + '\n');
@@ -210,4 +243,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { buildReferences, applyOnce };
+module.exports = { buildReferences, applyOnce, parseDateArg, DEFAULT_DATE };

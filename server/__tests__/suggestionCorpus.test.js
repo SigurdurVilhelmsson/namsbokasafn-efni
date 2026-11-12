@@ -17,7 +17,7 @@ const REF = JSON.parse(
   fs.readFileSync(
     path.join(
       repoRoot,
-      'experiments/ai-review-pilot/suggestion-view-references-2026-11-09/references.json'
+      'experiments/ai-review-pilot/suggestion-view-references-2026-11-12/references.json'
     ),
     'utf8'
   )

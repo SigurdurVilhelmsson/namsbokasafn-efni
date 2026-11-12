@@ -5,9 +5,10 @@
  *
  * Drives the real GET and POST handlers on a real migrated database (SESSIONS_DB_PATH in a temp
  * dir, so the foreign key from segment_acceptances.served_version_id is live) over synthetic modules
- * under a temp books root. The two committed modules with a duplicated id (m68726, m68747) are
- * COPIED into that root, so nothing under books/ is read but the copy's source and nothing there is
- * written: the first-acceptance MT lock lands beside the temp copy.
+ * under a temp books root. The two committed modules whose ids G1.12's re-extract de-duplicated in
+ * the English (m68726, m68747; pure MT still holds both Icelandic copies) are COPIED into that root,
+ * so nothing under books/ is read but the copy's source and nothing there is written: the
+ * first-acceptance MT lock lands beside the temp copy.
  *
  * Every refusal compares the whole acceptance table and the served-version id list before and after,
  * by value, and carries a control that accepts, so a route refusing everything fails.
@@ -58,12 +59,14 @@ const KNOWN = [
     chapterDir: 'ch05',
     moduleId: 'm68726',
     segmentId: 'm68726:para:fs-idm94618544',
+    markers: ['[[MATH:2]]', '[[MATH:3]]'], // what tells the two raw copies apart, first then second
   },
   {
     chapter: 8,
     chapterDir: 'ch08',
     moduleId: 'm68747',
     segmentId: 'm68747:para:fs-idm99049568',
+    markers: ['hnútur sem', 'hnútyfirborð'],
   },
 ];
 
@@ -371,19 +374,20 @@ describe('POST /accept — placement and scope refusals (spec §5.6 steps 1–3,
     expect(acceptanceRows()).toHaveLength(2);
   });
 
-  it('T5 on the two known ids: the accept is refused, per occurrence, and writes nothing (spec T5)', async () => {
+  it('T5 on the two known ids: since G1.12 each is served once, with a base and the first copy, and accepts (spec T5)', async () => {
+    // Until G1.12's re-extract these two ids occurred twice and the accept was refused DUPLICATE_ID.
+    // The English now holds each once; pure MT keeps both Icelandic copies and the loader serves the
+    // FIRST. The synthetic test above stays the DUPLICATE_ID backstop.
     for (const k of KNOWN) {
       const page = (await serve(CHEM, k.chapter, k.moduleId)).body;
       const mine = page.segments
         .filter((s) => s.segmentId === k.segmentId)
         .map((s) => ({ occurrence: s.occurrence, hasBase: 'baseSha256' in s, is: s.is }));
+      expect(mine).toHaveLength(1);
       const X = mine[0].is;
       expect(typeof X).toBe('string');
-      expect(mine).toEqual([
-        { occurrence: 0, hasBase: false, is: X },
-        { occurrence: 1, hasBase: false, is: X },
-      ]);
-      // The raw copies differ, so the comparison above could fail.
+      expect(mine).toEqual([{ occurrence: 0, hasBase: true, is: X }]);
+      // The raw copies still differ, and the served text is the first one's.
       const raw = segmentParser
         .parseSegments(
           readFileSync(
@@ -395,21 +399,29 @@ describe('POST /accept — placement and scope refusals (spec §5.6 steps 1–3,
         .map((s) => s.content);
       expect(raw).toHaveLength(2);
       expect(raw[0]).not.toBe(raw[1]);
+      const [first, last] = k.markers;
+      expect(raw[0]).toContain(first);
+      expect(raw[1]).toContain(last);
+      expect(X).toContain(first);
+      expect(X).not.toContain(last);
 
-      const before = snapshot();
       const r = await post(
-        { segmentId: k.segmentId, acceptedContent: X }, // the value check would pass
+        { segmentId: k.segmentId, acceptedContent: X },
         { chapterNum: k.chapter, moduleId: k.moduleId }
       );
-      expect(r.status).toBe(409);
-      expect(r.body).toEqual({ error: 'DUPLICATE_ID', message: REFUSAL_MESSAGES.DUPLICATE_ID });
-      expect(snapshot()).toEqual(before);
-      expect(
-        db.prepare('SELECT * FROM segment_acceptances WHERE segment_id = ?').all(k.segmentId)
-      ).toEqual([]);
-      expect(
-        db.prepare('SELECT * FROM served_text_versions WHERE segment_id = ?').all(k.segmentId)
-      ).toEqual([]);
+      expect(r.status).toBe(200);
+      expect(r.body.alreadyAccepted).toBe(false);
+      const rows = db
+        .prepare('SELECT * FROM segment_acceptances WHERE segment_id = ?')
+        .all(k.segmentId);
+      expect(rows).toHaveLength(1);
+      expect(rows[0].occurrence).toBe(0);
+      expect(versionById(rows[0].served_version_id)).toMatchObject({
+        chapter: k.chapter,
+        segment_id: k.segmentId,
+        occurrence: 0,
+        is_text: X,
+      });
     }
 
     // Control, same modules: a non-duplicated sibling accepts with its served is.

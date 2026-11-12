@@ -16,7 +16,11 @@ process.env.SESSIONS_DB_PATH = path.join(
 );
 process.env.JWT_SECRET = process.env.JWT_SECRET || 'test-secret';
 
-const { buildReferences } = require('../scripts/suggestion-view-references');
+const {
+  buildReferences,
+  parseDateArg,
+  DEFAULT_DATE,
+} = require('../scripts/suggestion-view-references');
 const { sha256Text } = require('../lib/servedText');
 
 const SCRIPT = path.resolve(__dirname, '../scripts/suggestion-view-references.js');
@@ -123,5 +127,34 @@ describe('independence', () => {
       expect(keys.some((k) => k.includes(name))).toBe(false);
     }
     expect(keys.some((k) => k.endsWith('services/segmentParser.js'))).toBe(true); // control
+  });
+});
+
+describe('--date (G1.12: a re-run after a re-extraction records its own build date)', () => {
+  it('defaults to the frozen artifact’s date, so the bare invocation reproduces it', () => {
+    expect(DEFAULT_DATE).toBe('2026-11-09');
+    expect(parseDateArg(['--out', 'x'])).toBe('2026-11-09');
+    expect(buildReferences({ booksRoot: plant(), book: BOOK, load: plantedLoader }).date).toBe(
+      '2026-11-09'
+    );
+  });
+
+  it('records a valid date it is given', () => {
+    expect(parseDateArg(['--date', '2026-11-12'])).toBe('2026-11-12');
+    expect(
+      buildReferences({ booksRoot: plant(), book: BOOK, load: plantedLoader, date: '2026-11-12' })
+        .date
+    ).toBe('2026-11-12');
+  });
+
+  it.each([
+    ['a missing value', ['--date']],
+    ['another flag in its place', ['--date', '--out', 'x']],
+    ['a one-digit day', ['--date', '2026-11-1']],
+    ['day first', ['--date', '12-11-2026']],
+    ['a day the month does not have', ['--date', '2026-02-30']],
+    ['a month that does not exist', ['--date', '2026-13-01']],
+  ])('refuses %s', (_label, argv) => {
+    expect(() => parseDateArg(argv)).toThrow(/--date must be a calendar date written YYYY-MM-DD/);
   });
 });

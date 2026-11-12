@@ -206,13 +206,36 @@ describe('E4 — list coverage and REAL duplicate seg-ids', () => {
     expect(r.message).toMatch(/^4 list, 0 source-dup, 0 raw-dup/);
   });
 
-  it('🔴 MUST-NOT-TRIP on a module carrying BENIGN raw duplicates', async () => {
-    // m68733 has 5 rawDup entries, every one `kind: 'benign'`. Spreading `rawDup` whole
-    // — the obvious reading of the plan's `[...dupFindings]` — FAILs this module and
-    // m68710 (3 benign) on a paid run. This test is what separates the two.
+  it('🔴 MUST-NOT-TRIP on a PLANTED benign raw duplicate, and trip on a real one', async () => {
+    // Spreading `rawDup` whole — the obvious reading of the plan's `[...dupFindings]` — FAILs
+    // every module carrying a BENIGN duplicate on a paid run. This test is what separates the
+    // two. Until G1.12 the corpus carried such modules (m68733 had 5 benign rawDup entries,
+    // m68710 3); G1.12's re-extract removed every one, so both arms are planted into a fresh
+    // extract, where no re-extract can remove them.
+    const cnxml = src('orverufraedi', 'ch01', 'm58781');
+    const fresh = formatSegmentsMarkdown(extractSegments(cnxml).segments);
+    const first = fresh.match(/<!--\s*SEG:([^\s]+?)\s*-->\n([^\n]+)/);
+    expect(first).not.toBeNull(); // control: the fixture has a first segment with a body
+    // Benign: the same id again with the SAME visible text.
+    const benign = await runCheck(E4, {
+      cnxml,
+      segText: `${fresh}\n\n<!-- SEG:${first[1]} -->\n${first[2]}\n`,
+    });
+    expect(benign.verdict).toBe(VERDICT.PASS);
+    expect(benign.message).toMatch(/0 raw-dup findings \(1 benign raw dups not counted\)/);
+    // Real: the same id again with DIFFERENT visible text.
+    const real = await runCheck(E4, {
+      cnxml,
+      segText: `${fresh}\n\n<!-- SEG:${first[1]} -->\nZZQXDIFFERENTVISIBLETEXT\n`,
+    });
+    expect(real.verdict).toBe(VERDICT.FAIL);
+    expect(real.message).toMatch(/1 raw-dup findings \(0 benign raw dups not counted\)/);
+  });
+
+  it('m68733, which carried 5 benign raw duplicates until G1.12, now carries none', async () => {
     const r = await runCheck(E4, mod('efnafraedi-2e', 'ch06', 'm68733'));
     expect(r.verdict).toBe(VERDICT.PASS);
-    expect(r.message).toMatch(/\(5 benign raw dups not counted\)/);
+    expect(r.message).toMatch(/0 raw-dup findings \(0 benign raw dups not counted\)/);
   });
 
   it('🔴 L17 — examines a module with ZERO <list> elements rather than SKIPPING it', async () => {

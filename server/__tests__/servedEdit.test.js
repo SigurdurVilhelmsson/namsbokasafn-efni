@@ -4,8 +4,9 @@
  *
  * A real migrated database (SESSIONS_DB_PATH in a temp dir, runAllMigrations), so the foreign key
  * from segment_edits.served_version_id is live, and synthetic modules under a temp books root. The
- * two committed modules with a duplicated id (m68726, m68747) are COPIED into that root, so no
- * write can reach books/: the first-edit MT lock is written beside the temp copy.
+ * two committed modules whose ids G1.12's re-extract de-duplicated in the English (m68726, m68747;
+ * pure MT still holds both Icelandic copies) are COPIED into that root, so no write can reach
+ * books/: the first-edit MT lock is written beside the temp copy.
  *
  * Every refusal compares the whole edit table and the served-version id list before and after, by
  * value, so a refusal that wrote anything fails. Every negative case has a positive control that
@@ -311,49 +312,57 @@ describe('steps 1–3, in order (spec §5.6)', () => {
   });
 });
 
-describe('T5, PR1 half: the two known duplicated ids, on copies of the committed modules (R4, spec §5.7)', () => {
+describe('T5, PR1 half: the two known ids, served once since G1.12, on copies of the committed modules (spec §5.7)', () => {
+  // Until G1.12's re-extract these two ids occurred twice in the English and the Icelandic, and the
+  // save was refused DUPLICATE_ID. The English now holds each once; pure MT still holds both copies,
+  // and the loader serves the FIRST (G1.12 survivor rule). The synthetic DUPLICATE_ID test above
+  // stays the backstop pin for a duplicated id.
   for (const k of KNOWN) {
     describe(`${k.chapterDir}/${k.moduleId}`, () => {
       const at = { book: CHEM, chapter: k.chapter, moduleId: k.moduleId, segmentId: k.segmentId };
-      const noRows = () => {
-        expect(
-          db.prepare('SELECT * FROM segment_edits WHERE segment_id = ?').all(k.segmentId)
-        ).toEqual([]);
-        expect(
-          db.prepare('SELECT * FROM served_text_versions WHERE segment_id = ?').all(k.segmentId)
-        ).toEqual([]);
-      };
+      const servedIs = () => served(k.segmentId, CHEM, k.chapter, k.moduleId).is;
 
-      it('the save is refused DUPLICATE_ID', () => {
-        refusedWith(
-          () => save({ ...at, baseSha256: base(k.segmentId, CHEM, k.chapter, k.moduleId) }),
-          'DUPLICATE_ID'
-        );
-        noRows();
+      it('the save is not refused: the served base saves, and the row carries its served version', () => {
+        const is = servedIs();
+        const result = save({ ...at, editedContent: `${is} breytt` });
+        expect(result.outcome).toBe('inserted');
+        expect(result.occurrence).toBe(0);
+        const row = editRow(result.editId);
+        expect(row.segment_id).toBe(k.segmentId);
+        expect(row.edited_content).toBe(`${is} breytt`);
+        expect(row.served_version_id).toBe(result.servedVersionId);
+        expect(
+          db
+            .prepare('SELECT occurrence, is_text FROM served_text_versions WHERE id = ?')
+            .get(result.servedVersionId)
+        ).toEqual({ occurrence: 0, is_text: is });
       });
 
-      it('the re-attach is refused DUPLICATE_ID', () => {
-        refusedWith(() => reattach(at), 'DUPLICATE_ID');
-        noRows();
+      it('the re-attach is not refused either', () => {
+        const result = reattach({ ...at, editedContent: `${servedIs()} breytt` });
+        expect(result.outcome).toBe('inserted');
+        const row = editRow(result.editId);
+        expect(row.origin).toBe('re-attach');
+        expect(row.served_version_id).toBe(result.servedVersionId);
       });
 
-      it('both occurrences are served the last copy’s Icelandic, with no base, while the raw copies differ', () => {
+      it('one occurrence is served, with a base and the FIRST copy’s Icelandic, while pure MT keeps both copies', () => {
         const loaded = load(CHEM, k.chapter, k.moduleId);
         const annotation = servedVersions.annotateServed(loaded, {
           book: CHEM,
           chapter: k.chapter,
           moduleId: k.moduleId,
         });
-        expect(annotation.duplicatedIds).toContain(k.segmentId);
+        expect(annotation.duplicatedIds).not.toContain(k.segmentId);
         const mine = loaded.segments
           .filter((s) => s.segmentId === k.segmentId)
           .map((s) => ({ occurrence: s.occurrence, hasBase: 'baseSha256' in s, is: s.is }));
+        expect(mine).toHaveLength(1);
         const X = mine[0].is;
-        expect(mine).toEqual([
-          { occurrence: 0, hasBase: false, is: X },
-          { occurrence: 1, hasBase: false, is: X },
-        ]);
-        expect(annotation.rows.some((r) => r.segmentId === k.segmentId)).toBe(false);
+        expect(mine).toEqual([{ occurrence: 0, hasBase: true, is: X }]);
+        expect(
+          annotation.rows.filter((r) => r.segmentId === k.segmentId).map((r) => r.occurrence)
+        ).toEqual([0]);
 
         const raw = segmentParser
           .parseSegments(
@@ -369,10 +378,9 @@ describe('T5, PR1 half: the two known duplicated ids, on copies of the committed
         const [first, last] = k.markers;
         expect(raw[0]).toContain(first);
         expect(raw[1]).toContain(last);
-        // The served text is the LAST copy's, for both occurrences.
-        expect(X).toContain(last);
-        expect(X).not.toContain(first);
-        noRows();
+        // The served text is the FIRST copy's; the second stays in pure MT, unserved.
+        expect(X).toContain(first);
+        expect(X).not.toContain(last);
       });
     });
   }

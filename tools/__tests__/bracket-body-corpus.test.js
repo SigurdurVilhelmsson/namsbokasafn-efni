@@ -48,7 +48,9 @@ describe('E2 on live corpus fixtures', () => {
     // seg-id. The battery spec's own fixture note says `m68710:716,722`, naming
     // both. A `parseSegmentsMap`-based implementation reports only one of them.
     const r = checkBracketBodies(m.cnxml, m.seg);
-    expect(r.examined).toBe(292);
+    // 2026-11-12 (G1.12): 292 -> 289. The re-extract removed the module's repeated note paragraphs
+    // (the second copy of each duplicated seg-id), and the three markers they carried with them.
+    expect(r.examined).toBe(289);
     // 🔴 RE-BASELINED 2026-09-02 — REPAIRED IN THE DATA, NOT HIDDEN. The swallow
     // was real. 43bf77cd (§C58, 2026-08-12) fixed the extractor, but this module's
     // 02-for-mt had not been regenerated since 2026-03-22, so E2 went on firing on
@@ -56,19 +58,18 @@ describe('E2 on live corpus fixtures', () => {
     // Today the segment reads `Sn([[i:s]])is the reductant, HCl([[i:g]])` — correct.
     expect(r.findings).toEqual([]);
     // 🔴 THE MECHANISM'S POSITIVE CONTROL — DO NOT DELETE IT WITH THE `[]` ABOVE.
-    // Re-plant the exact swallow in today's bytes. The check must still report it,
-    // and report it TWICE: seg-id `fs-idm50940704` occurs twice in this file and
-    // this check iterates RAW occurrences rather than parseSegmentsMap's deduped
-    // first-wins. That doubling is the file's ONLY assertion of the raw-iteration
-    // property, so re-baselining alone would retire it. Measured 2026-09-02.
+    // Re-plant the exact swallow in today's bytes. The check must still report it.
+    // Until G1.12 seg-id `fs-idm50940704` occurred twice in this file, so the swallow was
+    // reported TWICE, and that doubling was the file's only assertion of the raw-iteration
+    // property. G1.12's re-extract left one occurrence, so the property now lives in the
+    // planted two-arm test below; here the swallow is reported once.
     const SWALLOW_ANCHOR = 'Sn([[i:s]])is the reductant, HCl([[i:g]]) is the oxidant.';
-    expect(m.seg.split(SWALLOW_ANCHOR).length - 1).toBe(2); // the mutation must actually apply
+    expect(m.seg.split(SWALLOW_ANCHOR).length - 1).toBe(1); // the mutation must actually apply
     const replanted = checkBracketBodies(
       m.cnxml,
       m.seg.split(SWALLOW_ANCHOR).join('Sn([[i:s]])[[i:is the reductant, HCl(g]]) is the oxidant.')
     );
     expect(replanted.findings).toEqual([
-      expect.objectContaining({ type: 'i', body: 'is the reductant, HCl(g' }),
       expect.objectContaining({ type: 'i', body: 'is the reductant, HCl(g' }),
     ]);
     // Review round 1, finding 1: m68710 has no nested-marker shapes, so its
@@ -77,12 +78,41 @@ describe('E2 on live corpus fixtures', () => {
     expect(r.skippedUnmatchable).toBe(0);
   });
 
+  // PLANTED, because the corpus no longer holds a duplicated seg-id (G1.12). This check iterates
+  // RAW occurrences, not parseSegmentsMap's first-wins: a marker in the SECOND occurrence of a
+  // repeated seg-id must be examined too. Both arms on the same source.
+  it('planted: every occurrence of a repeated seg-id is examined (raw iteration), both arms', () => {
+    const cnxml =
+      '<document xmlns="http://cnx.rice.edu/cnxml"><content>' +
+      '<para id="p1">Sn(<emphasis effect="italics">s</emphasis>)is the reductant, ' +
+      'HCl(<emphasis effect="italics">g</emphasis>) is the oxidant.</para>' +
+      '</content></document>';
+    const seg = (body) => `<!-- SEG:m1:para:p1 -->\n${body}\n\n<!-- SEG:m1:para:p1 -->\n${body}\n`;
+    // Benign: both occurrences carry the source's own bodies. Four markers examined, none fires.
+    const benign = checkBracketBodies(
+      cnxml,
+      seg('Sn([[i:s]])is the reductant, HCl([[i:g]]) is the oxidant.')
+    );
+    expect([benign.examined, benign.findings]).toEqual([4, []]);
+    // Real: the swallow in both occurrences. It is reported TWICE, once per occurrence.
+    const swallowed = checkBracketBodies(
+      cnxml,
+      seg('Sn([[i:s]])[[i:is the reductant, HCl(g]]) is the oxidant.')
+    );
+    expect(swallowed.findings).toEqual([
+      expect.objectContaining({ type: 'i', body: 'is the reductant, HCl(g' }),
+      expect.objectContaining({ type: 'i', body: 'is the reductant, HCl(g' }),
+    ]);
+  });
+
   it('m68733: catches the self-closing-emphasis swallow', () => {
     const m = module_('m68733');
     expect(m, 'm68733 must exist — it is the second SHOULD-TRIP fixture').not.toBeNull();
     // Measured 2026-08-16 (raw occurrence iteration): 350 markers examined, 1 finding.
     const r = checkBracketBodies(m.cnxml, m.seg);
-    expect(r.examined).toBe(366);
+    // 2026-11-12 (G1.12): 366 -> 361, the markers of the repeated note paragraphs the
+    // re-extract removed. skippedUnmatchable is unchanged (45).
+    expect(r.examined).toBe(361);
     // 🔴 RE-BASELINED 2026-09-02 — same root cause as m68710 and likewise REPAIRED
     // IN THE DATA. Today the segment reads `(a) 3[[i:d;]] (b) 1[[i:s;]] (c) 4[[i:f]]`.
     expect(r.findings).toEqual([]);
@@ -115,7 +145,9 @@ describe('E2 on live corpus fixtures', () => {
     // inside a <glossary><definition><meaning>, which lives OUTSIDE <content>.
     // Measured 2026-08-16 (raw occurrence iteration): 130 markers examined, 0 findings.
     const r = checkBracketBodies(m.cnxml, m.seg);
-    expect(r.examined).toBe(143);
+    // 2026-11-12 (G1.12): 143 -> 139, the markers of the repeated note paragraphs the
+    // re-extract removed.
+    expect(r.examined).toBe(139);
     expect(r.findings).toEqual([]);
     // Review round 1, finding 1: m68768 has no nested-marker shapes either —
     // zero gap, measured 2026-08-16, unaffected by round 2's payload fix.
@@ -152,7 +184,7 @@ describe('E2 on live corpus fixtures', () => {
     expect(firing.reduce((s, x) => s + x.r.findings.length, 0)).toBe(0);
   }, 120_000);
 
-  it('skippedUnmatchable totals 454 markers corpus-wide, up from 385 — the nesting blind spot widened with the term dialect migration', () => {
+  it('skippedUnmatchable totals 441 markers corpus-wide (454 before G1.12, up from 385 — the nesting blind spot widened with the term dialect migration)', () => {
     // Review round 1, finding 1 measured 319 (i-type nested markers only) then
     // 445 once term/em's payload-truncation cause was also measured (17,436 raw
     // opens - 16,991 examined), across ALL of BODY_SOURCE_ELEMENTS's types.
@@ -171,8 +203,11 @@ describe('E2 on live corpus fixtures', () => {
     const totalExamined = all.reduce((s, r) => s + r.examined, 0);
     const totalSkipped = all.reduce((s, r) => s + r.skippedUnmatchable, 0);
     const totalFindings = all.reduce((s, r) => s + r.findings.length, 0);
-    expect(totalExamined).toBe(17846);
-    expect(totalSkipped).toBe(454);
+    // 2026-11-12 (G1.12): 17,846 -> 17,475 examined and 454 -> 441 skipped. The re-extract
+    // removed the 285 repeated note paragraphs from 83 modules, and these are the 371 + 13 markers
+    // they carried. Findings are unchanged (0).
+    expect(totalExamined).toBe(17475);
+    expect(totalSkipped).toBe(441);
     // 🔴 RE-BASELINED 2026-09-02, AND THE WORD "INVARIANT" IS DELIBERATELY GONE.
     // This was 3 because two chemistry modules were being checked against a
     // pre-C58 stale 02-for-mt vintage; 34f870ac regenerated it and both defects

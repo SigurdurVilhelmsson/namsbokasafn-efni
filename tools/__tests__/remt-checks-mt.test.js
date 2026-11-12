@@ -976,7 +976,10 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
       // Keyed `{tableId}-summary`, all `[\w-]` — violations stay 0.
       // 63,865 -> 64,247 is +382 (§C183, 2026-09-28): chemistry's re-extract added 191
       // `:table-summary:` EN ids and the top-up bought all 191 into the IS. 191 + 191 = 382.
-      expect(ids).toBe(64247); // L37: the COUNT beside the predicate — an empty walk fails here
+      // 64,247 -> 63,962 is −285 (G1.12, 2026-11-12): chemistry's re-extract removed the second
+      // EN copy of each of 285 duplicated note-paragraph ids; the IS keeps both copies (pure MT
+      // is never rewritten), so only the EN side moves. verify-cut.mjs removed exactly 285 blocks.
+      expect(ids).toBe(63962); // L37: the COUNT beside the predicate — an empty walk fails here
       expect(violations).toBe(0);
     });
 

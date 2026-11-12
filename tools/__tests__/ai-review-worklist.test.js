@@ -288,6 +288,48 @@ describe('pairUnit', () => {
     expect(() => pairUnit({ en: 'text', is: layer([['m1:para:a', 'x']]) })).toThrow(/ParsedLayer/);
   });
 
+  // PLANTED, because the corpus no longer holds the shape (G1.12 de-duplicated every English id):
+  // occurrence-keyed pairing, both arms. A duplicated id pairs IS occurrence k with EN occurrence k;
+  // an IS copy with no English occurrence at its index is skipped no-en, never paired with another.
+  it('planted: IS occurrence k pairs with EN occurrence k, and an IS copy beyond the English is no-en', () => {
+    const is = layer([
+      ['m1:para:d', 'fyrst'],
+      ['m1:para:d', 'síðar'],
+    ]);
+    const both = pairUnit({
+      en: layer([
+        ['m1:para:d', 'first'],
+        ['m1:para:d', 'later'],
+      ]),
+      is,
+    });
+    expect([both.items, both.skipped['no-en']]).toEqual([
+      [
+        {
+          segmentId: 'm1:para:d',
+          occurrences: [
+            { occurrence: 0, key: 'm1:para:d', en: 'first', is: 'fyrst' },
+            { occurrence: 1, key: 'm1:para:d#1', en: 'later', is: 'síðar' },
+          ],
+        },
+      ],
+      0,
+    ]);
+    // The G1.12 shape: one English occurrence, two Icelandic copies. The first copy pairs; the
+    // second is not paired with the first English, it is skipped.
+    const one = pairUnit({ en: layer([['m1:para:d', 'first']]), is });
+    expect([one.items, one.skipped['no-en'], one.skipped.skippedKeys]).toEqual([
+      [
+        {
+          segmentId: 'm1:para:d',
+          occurrences: [{ occurrence: 0, key: 'm1:para:d', en: 'first', is: 'fyrst' }],
+        },
+      ],
+      1,
+      [{ key: 'm1:para:d#1', reason: 'no-en' }],
+    ]);
+  });
+
   describe('REAL: m68727 (ch05), whose IS file has 366 SEG markers and 358 distinct ids', () => {
     const unit = readUnit('ch05', 'm68727');
     const { items, skipped } = pairUnit({ en: unit.en, is: unit.is });
@@ -300,16 +342,22 @@ describe('pairUnit', () => {
       ]).toEqual([366, 358]);
     });
 
-    it('skips exactly 49 identical-to-en, no no-en, no no-is', () => {
-      expect([skipped['identical-to-en'], skipped['no-en'], skipped['no-is']]).toEqual([49, 0, 0]);
+    // 2026-11-12 (G1.12): the English holds each of the module's 8 duplicated ids once, so their 8
+    // second Icelandic copies are skipped no-en. Before, 4 of them were identical to their English
+    // (identical 49 → 45) and 4 were kept (kept occurrences 317 → 313); 4 + 4 = 8.
+    it('skips exactly 45 identical-to-en, 8 no-en (the second copies G1.12 left unserved), no no-is', () => {
+      expect([skipped['identical-to-en'], skipped['no-en'], skipped['no-is']]).toEqual([45, 8, 0]);
+      expect(
+        skipped.skippedKeys.filter((k) => k.reason === 'no-en').every((k) => k.key.endsWith('#1'))
+      ).toBe(true);
     });
 
-    it('keeps 317 occurrences in 313 items, 4 of them with two occurrences', () => {
+    it('keeps 313 occurrences in 313 items, none with two occurrences', () => {
       expect([
         items.reduce((n, i) => n + i.occurrences.length, 0),
         items.length,
         items.filter((i) => i.occurrences.length === 2).length,
-      ]).toEqual([317, 313, 4]);
+      ]).toEqual([313, 313, 0]);
     });
 
     it('every occurrence is accounted for: kept + skipped = 366, kept ids + wholly skipped = 358', () => {
@@ -323,13 +371,16 @@ describe('pairUnit', () => {
       ]).toEqual([366, 358]);
     });
 
-    it('a duplicated id pairs its second occurrence with the EN second occurrence', () => {
+    it('an id G1.12 de-duplicated pairs its first Icelandic copy; the second is skipped no-en', () => {
       const dup = items.find((i) => i.segmentId === dupId);
       expect(
-        dup.occurrences.map((o) => [o.occurrence, o.key, o.en.includes('[[MATH:21]]'), o.is])
-      ).toEqual([
-        [0, dupId, false, '6,25 [[MATH:20]] 10[[sup:3]] kJ'],
-        [1, `${dupId}#1`, true, '6,25 [[MATH:21]] 10[[sup:3]] kJ'],
+        dup.occurrences.map((o) => [o.occurrence, o.key, o.en.includes('[[MATH:20]]'), o.is])
+      ).toEqual([[0, dupId, true, '6,25 [[MATH:20]] 10[[sup:3]] kJ']]);
+      expect(skipped.skippedKeys).toContainEqual({ key: `${dupId}#1`, reason: 'no-en' });
+      // The second copy is still in the Icelandic file (pure MT keeps both).
+      expect(unit.is.records.filter((r) => r.segmentId === dupId).map((r) => r.body)).toEqual([
+        '6,25 [[MATH:20]] 10[[sup:3]] kJ',
+        '6,25 [[MATH:21]] 10[[sup:3]] kJ',
       ]);
     });
   });
@@ -1289,7 +1340,7 @@ describe('determinism', () => {
 
 describe('whole chemistry (every 02-structure chapter directory)', () => {
   it(
-    'sees 22,876 IS occurrences (4,176 identical to EN) and, under the 2026-10-26 rulings, keeps 4,109 items',
+    'sees 22,876 IS occurrences (4,127 identical to EN, 285 with no EN since G1.12) and, under the 2026-10-26 rulings, keeps 4,108 items',
     { timeout: 90_000 },
     () => {
       const chapters = fs
@@ -1357,14 +1408,22 @@ describe('whole chemistry (every 02-structure chapter directory)', () => {
         // number), and those 8 entered the term scan: 4 hold a ruled term (candidateOccurrences
         // 4,122 → 4,126, items 4,105 → 4,109, pairs 5,641 → 5,649) and 4 do not (noCandidate
         // 14,351 → 14,355). 4 + 4 = 8 accounts for every one.
-        identical: 4176,
+        // 2026-11-12 (G1.12): the English holds each of the 285 de-duplicated ids once, so the 285
+        // second Icelandic copies are skipped no-en (0 → 285). Measured by pairUnit over the
+        // pre-G1.12 English against the re-extracted English, same Icelandic: 49 of them were
+        // identical (4,176 → 4,127) and 236 were kept occurrences (18,700 → 18,464); 49 + 236 = 285.
+        // Every kept one was the second occurrence of an item that keeps its first, so 18 work-list
+        // items lost an occurrence (candidateOccurrences 4,126 → 4,108). 17 keep their candidates; one,
+        // ch20 m68846 fs-idp53499344, matched its ruling `product` only in its second copy and leaves
+        // the list (items 4,109 → 4,108, pairs 5,649 → 5,648, noCandidate 14,355 → 14,356).
+        identical: 4127,
         empty: 0,
-        noEn: 0,
+        noEn: 285,
         noIs: 0,
-        items: 4109,
-        candidateOccurrences: 4126,
-        pairs: 5649,
-        noCandidate: 14355,
+        items: 4108,
+        candidateOccurrences: 4108,
+        pairs: 5648,
+        noCandidate: 14356,
         contextOk: true,
       });
     }
