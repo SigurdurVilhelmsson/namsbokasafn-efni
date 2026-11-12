@@ -914,6 +914,26 @@ function extractSegments(cnxml, options = {}) {
   }
   addSegment.keyed = addKeyedSegment;
 
+  // G1.12 (spec §5.1) — A SEGMENT SLOT THAT EMITS NO TEXT. Does exactly what
+  // `addSegment` does except `segments.push`: the counter bump, the minted id and
+  // the `lastInlineAttrs` hand-off all happen, so every later positional `auto-N`
+  // id and the inline-attrs map stay byte-identical to a run that emitted the
+  // segment. Used for a paragraph the walk has already emitted under the same id.
+  function addSlotOnlySegment(type, text, elementId = null) {
+    if (!text || !text.trim()) return null;
+
+    counters.segment++;
+    const segmentId = generateSegmentId(moduleId, type, elementId, counters.segment);
+
+    if (lastInlineAttrs) {
+      inlineAttrsMap[segmentId] = lastInlineAttrs;
+      lastInlineAttrs = null;
+    }
+
+    return segmentId;
+  }
+  addSegment.slotOnly = addSlotOnlySegment;
+
   // Extract document title
   // 🔴 §C126 — RUN IT THROUGH `extractInlineText`, like every other piece of text.
   // 32 of 342 organic module titles carry `<emphasis>`/`<sub>`/`<sup>`; sending
@@ -2135,6 +2155,8 @@ function processExample(
 
   // Extract all paragraphs first to find the example title
   const paras = extractElements(example.content, 'para');
+  // Ids of the paras the walk below emitted as `para` segments (G1.12, see the notes loop).
+  const emittedParaIds = new Set();
 
   let exampleTitleFound = false;
   let donorPara = null;
@@ -2261,6 +2283,7 @@ function processExample(
     );
     if (text && text.trim()) {
       const paraSegmentId = addSegment('para', text, para.id);
+      if (paraSegmentId && para.id) emittedParaIds.add(para.id);
       drainInlineMediaAlts(inlineMediaMap, addSegment);
       const paraElement = {
         type: 'para',
@@ -2358,8 +2381,21 @@ function processExample(
 
   // Process notes within example (like Answer notes)
   const notes = extractNestedElements(example.content, 'note');
+  // G1.12 (spec §5.1) — `extractNestedElements` finds a note's paras again, so a para
+  // inside a nested note was already emitted by the paragraph walk above under the same
+  // id. THE OWNER IS THE WALK'S EMISSION: it is the one `buildExampleDom` injects. The
+  // note's repeat therefore takes its counter slot (so `auto-N`, `[[MATH:n]]` numbering
+  // and inline-attrs stay byte-identical) but emits no text. Keyed on the id SET, never
+  // on the type alone: a title-only para is emitted by the walk as `para-title`, not
+  // `para`, so the note's `para` for that id is the only copy and must stay.
+  const noteEmitter = (type, text, elementId, extra) =>
+    type === 'para' && elementId && emittedParaIds.has(elementId)
+      ? addSegment.slotOnly(type, text, elementId)
+      : addSegment(type, text, elementId, extra);
+  noteEmitter.keyed = addSegment.keyed;
+  noteEmitter.slotOnly = addSegment.slotOnly;
   for (const note of notes) {
-    const noteStructure = processNote(note, moduleId, addSegment, mathMap, counters);
+    const noteStructure = processNote(note, moduleId, noteEmitter, mathMap, counters);
     exampleStructure.content.push(noteStructure);
   }
 
