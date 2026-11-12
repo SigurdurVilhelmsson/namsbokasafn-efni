@@ -26,10 +26,9 @@
  *             pure. See the gating-half header for why ABSENT must be SKIPPED, not "no
  *             exclusions".
  * `unservedCopies` — the PARSED G1.12 list from `loadUnservedCopiesOrNull` (A2b, A3), or
- *             `null` when the book has none. Unlike the residue allowlist, ABSENT here is the
- *             fail-closed state: without a list both checks judge every pair strictly, as
- *             they did before G1.12, so `null`, `undefined` and `{entries: []}` all mean
- *             "expect no unserved copy". See A2b's docstring for the rule.
+ *             `null` when the book has none. `null`, `undefined` and `{entries: []}` all give
+ *             the pre-G1.12 judgement, which is NOT a safe fallback for a listed module (the
+ *             list tightens as well as relaxes): see A2b's G1.12 block.
  *
  * 🔴 THERE IS NO `cnxml` IN THE TIER-2 ctx, AND THAT CHANGES WHAT A6 IS ALLOWED TO CLAIM.
  * The CLI's ctx typedef lists `cnxml` for Tier 1 (E2/E4) and `isText` for Tier 2 (A2/A6);
@@ -638,12 +637,19 @@ export const A6 = defineCheck({
  * is fine" rule: an unlisted surplus fails exactly as before. And rule 1 is not redundant with
  * rule 2 — two listed ids, one bought three times and one once, balance the module count and
  * only rule 1 sees them. Without rule 1 the relaxed count would also pass a module whose
- * listed second copy lost its marker: measured, the strict v3 comparison PASSES that file
+ * listed second copy lost its marker: measured, v3's comparison PASSES that file
  * (3 EN = 3 IS) once English is de-duplicated, so the list is what makes the damage visible.
- * 🔴 WITH NO LIST (`null`/`undefined`), AN EMPTY LIST, OR AN UNLISTED MODULE, THE RESULT IS
- * BYTE-IDENTICAL TO v3 — same findings, same message. A list offered without a usable
- * `module` lists nothing for this module, so it too is judged strictly: the list can only
- * relax a comparison, never tighten one, so its absence is the fail-closed direction.
+ * 🔴 WITH NO LIST (`null`/`undefined`), AN EMPTY LIST, AN UNLISTED MODULE, OR A LIST OFFERED
+ * WITHOUT A USABLE `module`, THE RESULT IS BYTE-IDENTICAL TO v3 — same findings, same message.
+ * ⚠️ AND v3 IS NOT A SAFE FALLBACK FOR A LISTED MODULE. The list both RELAXES the comparison
+ * (it expects the listed second copies) and TIGHTENS it (each listed id must be exactly EN 1 /
+ * IS 2). So, per module, a missing list means v3, which PASSES a listed module whose second
+ * copies have ALL lost their markers (EN 3 = IS 3 above). Losing chemistry's list is loud
+ * only IN AGGREGATE: the both-ways corpus pins and the 285-entry pins
+ * (`tools/__tests__/g112-unserved-copies.test.js`, `remt-sweep.test.js`) go red in CI, and a
+ * sweep FAILs A2b on the other, intact listed modules. This is the one full statement; the
+ * loader, the file header, the gating header, the CheckContext typedef and `tier2Ctx` point
+ * here.
  * The other three legs (`raw-vs-parsed`, `inject-dialect`, `id-charset`) do not read the list.
  */
 export const A2b = defineCheck({
@@ -1149,7 +1155,8 @@ registerChecks(MT_RUNRECORD_CHECKS);
  *                       an ADVISORY check that reads as ignorable rather than as broken.
  *                       ⚠️ NOT A5-ONLY SINCE G1.12: A3 (here) and A2b (free half) key the
  *                       `unservedCopies` list on it too. Without it they list nothing for
- *                       the module and judge it strictly — fail-closed, never a SKIP.
+ *                       the module and give their pre-G1.12 judgement — never a SKIP, and
+ *                       not a safe fallback either: see A2b's G1.12 block.
  * `residueAllowlist`    A5 only, the PARSED allowlist object. 🔴 IT CANNOT BE READ HERE:
  *                       Global Constraints rule 5 makes gates pure, and
  *                       `loadResidueAllowlist` does file I/O. The loader supplies it.

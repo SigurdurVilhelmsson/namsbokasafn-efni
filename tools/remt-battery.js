@@ -49,7 +49,8 @@
  *                                     ⚠️ NO LONGER SCOPE-ONLY. A5 keys the residue
  *                                     allowlist on it and SKIPS without it; A2b and A3 key
  *                                     `unservedCopies` on it and, without it, list nothing
- *                                     for the module and judge it strictly. It is
+ *                                     for the module and give their pre-G1.12 judgement
+ *                                     (see `unservedCopies` below). It is
  *                                     deliberately the existing key rather than a new
  *                                     `moduleId`: two near-identical names is how a
  *                                     loader sets one and leaves a check permanently
@@ -88,13 +89,11 @@
  *                                     🔴 THE LOADER MUST BE `loadUnservedCopiesOrNull`
  *                                     (tools/lib/g112-unserved-copies.js): `null` for an
  *                                     absent file, and a THROW for a malformed one, never
- *                                     a coercion to "no list". ⚠️ Unlike `residueAllowlist`,
- *                                     ABSENT is the fail-closed state here: the list only
- *                                     RELAXES A2b's cross-side count and A3's unpaired
- *                                     list, so without it both judge strictly, as before
- *                                     G1.12, and `null`/`undefined`/`{entries: []}` give
- *                                     the same verdict. A loader that drops the key fails
- *                                     A2b on every listed module rather than passing one.
+ *                                     a coercion to "no list". ⚠️ `null`/`undefined`/
+ *                                     `{entries: []}` all give A2b and A3 their pre-G1.12
+ *                                     judgement, which is NOT a safe fallback for a listed
+ *                                     module — the list tightens as well as relaxes. See
+ *                                     A2b's G1.12 block in tools/lib/remt-checks-mt.js.
  *   @property {object} [provenance]   the parsed sidecar        (Task 9: A2a/A4/A8)
  *                                     ⚠️ ALL THREE, not the two this line named until
  *                                     2026-08-26 — A2a reads `run.markersNormalized` and

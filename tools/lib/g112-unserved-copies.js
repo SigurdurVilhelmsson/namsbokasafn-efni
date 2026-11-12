@@ -21,8 +21,9 @@
  * (`tools/lib/fidelity-allowlist.js`, whose docstring records why: a loader that returns the same
  * value for "no file" and for "a file that lists nothing" makes the two indistinguishable to a
  * pure gate). So `null` means the book has no list; `{entries: []}` means it has one that lists
- * nothing. Both leave A2b and A3 judging every pair strictly, which is the fail-closed direction:
- * the list can only RELAX a comparison, never tighten one.
+ * nothing. Both give A2b and A3 their pre-G1.12 judgement, which is NOT a safe fallback for a
+ * listed module: the list tightens as well as relaxes. See A2b's G1.12 block in
+ * `tools/lib/remt-checks-mt.js`.
  *
  * 🔴 A FILE THAT EXISTS BUT IS MALFORMED THROWS. It is never coerced to "no list" or "empty", and
  * a wrong shape is not filtered entry by entry: a list that is half-readable is not a list.

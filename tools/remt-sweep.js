@@ -503,7 +503,8 @@ function tier2Ctx(unit) {
   // OrNull loader, threaded like `residueAllowlist`: `null` for a book with no list (organic),
   // and NO `?? undefined`. A malformed file THROWS here, which `sweep()` records as a ctx
   // failure for the unit (every check SKIPPED, the unit named) instead of judging it without
-  // its list. Absent is the fail-closed state for this key: see the CheckContext typedef.
+  // its list. A missing list is not a safe fallback (the list tightens as well as relaxes):
+  // see A2b's G1.12 block in tools/lib/remt-checks-mt.js.
   const unservedCopies = loadUnservedCopiesOrNull(dir);
   const provenancePath = unit.isPath.replace(/-segments\.is\.md$/, '-provenance.json');
   return {
