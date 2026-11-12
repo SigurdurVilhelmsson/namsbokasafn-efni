@@ -2,9 +2,9 @@
 //
 // G1.23 PR1 Task 1: the independent reference script. Plants a two-module layer 2 and checks the
 // drop rule, the integrity half and the script's independence from the view's code.
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, afterAll } from 'vitest';
 import { createRequire } from 'module';
-import { execFileSync } from 'child_process';
+import { execFileSync, spawnSync } from 'child_process';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
@@ -19,7 +19,7 @@ process.env.JWT_SECRET = process.env.JWT_SECRET || 'test-secret';
 const {
   buildReferences,
   parseDateArg,
-  DEFAULT_DATE,
+  parseOutArg,
 } = require('../scripts/suggestion-view-references');
 const { sha256Text } = require('../lib/servedText');
 
@@ -130,13 +130,66 @@ describe('independence', () => {
   });
 });
 
-describe('--date (G1.12: a re-run after a re-extraction records its own build date)', () => {
-  it('defaults to the frozen artifact’s date, so the bare invocation reproduces it', () => {
-    expect(DEFAULT_DATE).toBe('2026-11-09');
-    expect(parseDateArg(['--out', 'x'])).toBe('2026-11-09');
-    expect(buildReferences({ booksRoot: plant(), book: BOOK, load: plantedLoader }).date).toBe(
-      '2026-11-09'
-    );
+describe('--out and --date are both required (G1.12; fix round 1, ruling 17)', () => {
+  // A bare run used to default to the FROZEN 2026-11-09 directory and date, so after G1.12's
+  // re-extract it would have overwritten that file with post-G1.12 data labelled 2026-11-09.
+  const REPO_ROOT = path.resolve(__dirname, '..', '..');
+  const FROZEN = path.join(
+    REPO_ROOT,
+    'experiments/ai-review-pilot/suggestion-view-references-2026-11-09/references.json'
+  );
+  /** Runs the real script; returns its status and stderr. */
+  const run = (args, cwd) =>
+    spawnSync(process.execPath, [SCRIPT, ...args], {
+      cwd,
+      encoding: 'utf8',
+      env: { ...process.env },
+    });
+  const frozenState = () => ({
+    bytes: fs.readFileSync(FROZEN),
+    mtimeMs: fs.statSync(FROZEN).mtimeMs,
+  });
+  const temps = [];
+  const tempDir = (prefix) => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), prefix));
+    temps.push(dir);
+    return dir;
+  };
+  afterAll(() => temps.forEach((dir) => fs.rmSync(dir, { recursive: true, force: true })));
+
+  it('a run missing --out refuses, names --out, and writes nothing anywhere', () => {
+    const cwd = tempDir('suggestion-refs-cwd-');
+    const before = frozenState();
+    const r = run(['--date', '2026-11-12'], cwd);
+    expect(r.status).not.toBe(0);
+    expect(r.stderr).toMatch(/missing --out <dir> \(required\)/);
+    const after = frozenState();
+    expect(after.bytes.equals(before.bytes)).toBe(true);
+    expect(after.mtimeMs).toBe(before.mtimeMs);
+    expect(fs.readdirSync(cwd)).toEqual([]); // nothing written relative to the cwd either
+  });
+
+  it('a run missing --date refuses, names --date, and writes nothing', () => {
+    const scratch = tempDir('suggestion-refs-out-');
+    const target = path.join(scratch, 'refs');
+    const before = frozenState();
+    const r = run(['--out', target], scratch);
+    expect(r.status).not.toBe(0);
+    expect(r.stderr).toMatch(/missing --date <YYYY-MM-DD> \(required\)/);
+    expect(fs.existsSync(target)).toBe(false);
+    const after = frozenState();
+    expect(after.bytes.equals(before.bytes)).toBe(true);
+    expect(after.mtimeMs).toBe(before.mtimeMs);
+  });
+
+  it('control: with both, it writes references.json to the given dir, with the given date', () => {
+    const scratch = tempDir('suggestion-refs-out-');
+    const target = path.join(scratch, 'refs');
+    const r = run(['--out', target, '--date', '2026-11-12'], scratch);
+    expect(r.status).toBe(0);
+    const written = JSON.parse(fs.readFileSync(path.join(target, 'references.json'), 'utf8'));
+    expect(written.date).toBe('2026-11-12');
+    expect(Object.keys(written)).toEqual(Object.keys(JSON.parse(fs.readFileSync(FROZEN, 'utf8'))));
   });
 
   it('records a valid date it is given', () => {
@@ -145,6 +198,12 @@ describe('--date (G1.12: a re-run after a re-extraction records its own build da
       buildReferences({ booksRoot: plant(), book: BOOK, load: plantedLoader, date: '2026-11-12' })
         .date
     ).toBe('2026-11-12');
+  });
+
+  it('buildReferences supplies no date of its own', () => {
+    expect(buildReferences({ booksRoot: plant(), book: BOOK, load: plantedLoader }).date).toBe(
+      null
+    );
   });
 
   it.each([
@@ -156,5 +215,13 @@ describe('--date (G1.12: a re-run after a re-extraction records its own build da
     ['a month that does not exist', ['--date', '2026-13-01']],
   ])('refuses %s', (_label, argv) => {
     expect(() => parseDateArg(argv)).toThrow(/--date must be a calendar date written YYYY-MM-DD/);
+  });
+
+  it.each([
+    ['a missing flag', [], /missing --out <dir> \(required\)/],
+    ['a missing value', ['--out'], /--out needs a directory/],
+    ['another flag in its place', ['--out', '--date', '2026-11-12'], /--out needs a directory/],
+  ])('--out refuses %s', (_label, argv, message) => {
+    expect(() => parseOutArg(argv)).toThrow(message);
   });
 });
