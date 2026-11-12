@@ -1888,9 +1888,9 @@ router.post(
         });
       }
       // PR1 review C3 (spec §5.7): the source is placed, not found by .find, which takes a
-      // duplicated id's first copy's English while the client sends the served (last copy's)
-      // Icelandic. A duplicated id or a module with no layer is refused, an unknown id keeps
-      // today's 404.
+      // duplicated id's first copy's English although the occurrence cannot be told apart.
+      // A duplicated id (a backstop since G1.12; the loader pairs the first Icelandic copy) or a
+      // module with no layer is refused, an unknown id keeps today's 404.
       const { seg: sourceSeg } = servedEdit.placeOnServedBase({
         book: req.params.book,
         chapter: req.chapterNum,

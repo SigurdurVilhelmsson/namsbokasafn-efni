@@ -12,8 +12,9 @@
  *   1. a book that is never minted (organic) is refused before anything is loaded (§5.4, §11);
  *   2. a module with no Icelandic layer has no base to save on (`NO_LAYER`, plan decision 5);
  *   3. placement: an id not served is `SEGMENT_NOT_FOUND`; an id served more than once is
- *      `DUPLICATE_ID` whatever occurrence a caller names, because until G1.12 (b) the loader
- *      serves every copy the last copy's Icelandic, so which copy was edited is unknowable (R4,
+ *      `DUPLICATE_ID` whatever occurrence a caller names, because the loader serves every copy
+ *      the first copy's Icelandic (G1.12), so which copy was edited is unknowable; option (b) of
+ *      G1.12 was not built, and no chemistry id is duplicated since G1.12 (a), so this is a backstop (R4,
  *      §5.7);
  *   4. a writer with a client view (`requireEcho`) must echo the base hash it was shown
  *      (`BASE_MISSING`, `STALE_BASE`) and the edit it displayed (`STALE_DISPLAYED`, plan
@@ -108,7 +109,7 @@ function placeOnServedBase({ book, chapter, moduleId, segmentId, occurrence }) {
   const { occurrences, duplicated } = servedVersions.countOccurrences(data.segments);
   const at = data.segments.findIndex((s) => s.segmentId === segmentId);
   if (at < 0) throw refuse('SEGMENT_NOT_FOUND');
-  if (duplicated.has(segmentId)) throw refuse('DUPLICATE_ID'); // until G1.12 (b), occurrence is unknowable
+  if (duplicated.has(segmentId)) throw refuse('DUPLICATE_ID'); // backstop (R4): occurrence is unknowable
   if (occurrence !== undefined && occurrence !== null && occurrence !== occurrences[at]) {
     throw refuse('SEGMENT_NOT_FOUND');
   }

@@ -244,7 +244,7 @@ test.describe('G1.1 client: the row is what the save and the accept echo', () =>
     expect(body.clientActionId).toMatch(/^\S{12,}$/);
     expect(typeof body.clientActionTime).toBe('number');
     expect(body.assists).toEqual([]);
-    expect('occurrence' in body).toBe(false); // §5.18: not until G1.12 (b)
+    expect('occurrence' in body).toBe(false); // §5.18: option (b) was not built, G1.12 chose (a)
     expect('replayed' in body).toBe(false);
   });
 

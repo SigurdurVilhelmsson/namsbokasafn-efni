@@ -378,7 +378,7 @@
   }
 
   /**
-   * A save body carries no occurrence until G1.12 (b) (plan § What the client sends; buildSaveBody), so the entry
+   * A save body carries no occurrence (option (b) of G1.12 was not built; plan § What the client sends; buildSaveBody), so the entry
    * has none (null) and installDraft takes the row's (PR1 review C17). Read it here once the body sends it.
    */
   function entryFromParked(item) {

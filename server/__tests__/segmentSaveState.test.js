@@ -136,7 +136,7 @@ describe('request bodies (§5.6, §5.18)', () => {
       ],
       acceptedSuggestions: [], // always sent (G1.23), empty when no suggestion was accepted
     });
-    expect('occurrence' in body).toBe(false); // not sent until G1.12 (b)
+    expect('occurrence' in body).toBe(false); // not sent: option (b) was not built, G1.12 chose (a)
     expect('replayed' in body).toBe(false); // saveRetry adds it to a replay only
   });
 
@@ -476,7 +476,7 @@ describe('kept texts (index decision 12)', () => {
     expect(S.entryFromParked({ key: 'k', body: '{not json', code: 'conflict' })).toBeNull();
   });
 
-  // PR1 review C17: a save body carries no occurrence until G1.12 (b) (plan § What the client sends), so a parked
+  // PR1 review C17: a save body carries no occurrence (option (b) was not built; G1.12 chose (a)) (plan § What the client sends), so a parked
   // entry has none, and the pane takes the row's (installDraft: entry.occurrence !== null ? … : row.occurrence).
   it('a parked save names no occurrence: the save body sends none, so the row supplies it', () => {
     const sent = S.buildSaveBody({
