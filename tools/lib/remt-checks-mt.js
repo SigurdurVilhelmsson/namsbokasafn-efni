@@ -20,10 +20,16 @@
  *             "A1 AND A2b" until Task 10 added three more — when a check starts
  *             consuming a ctx key, this list is part of the change.
  * `provenance` — the parsed sidecar (A2a, A4, A8); they reach through `.run`.
- * `module`  — the module id (A5 only), to key the residue allowlist.
+ * `module`  — the module id: A5 keys the residue allowlist on it, and A2b and A3 key G1.12's
+ *             unserved-copies list on it.
  * `residueAllowlist` — the PARSED allowlist (A5 only). It cannot be read here: gates are
  *             pure. See the gating-half header for why ABSENT must be SKIPPED, not "no
  *             exclusions".
+ * `unservedCopies` — the PARSED G1.12 list from `loadUnservedCopiesOrNull` (A2b, A3), or
+ *             `null` when the book has none. Unlike the residue allowlist, ABSENT here is the
+ *             fail-closed state: without a list both checks judge every pair strictly, as
+ *             they did before G1.12, so `null`, `undefined` and `{entries: []}` all mean
+ *             "expect no unserved copy". See A2b's docstring for the rule.
  *
  * 🔴 THERE IS NO `cnxml` IN THE TIER-2 ctx, AND THAT CHANGES WHAT A6 IS ALLOWED TO CLAIM.
  * The CLI's ctx typedef lists `cnxml` for Tier 1 (E2/E4) and `isText` for Tier 2 (A2/A6);
@@ -92,6 +98,9 @@ import { bracketMarkerDeltaBySegment } from '../api-translate.js';
 // "strip markers -> drop digits -> Unicode letters only -> lowercase".
 import { detectResidue, normalizeForComparison } from './residue-check.js';
 import { classifyResidue } from './residue-allowlist.js';
+// G1.12's frozen list of unserved Icelandic copies (A2b `cross-side`, A3). The gate only reads
+// the PARSED list the loader put in `ctx.unservedCopies`; it does no I/O.
+import { unservedIdsForModule } from './g112-unserved-copies.js';
 
 /**
  * A6 uses E1's instrument BY IDENTITY, not by resemblance.
@@ -352,6 +361,24 @@ function skipIfMissing(ctx, id, keys) {
 }
 
 /**
+ * id -> occurrence count over parsed segment records. Shared by A2b and A3 for G1.12's
+ * per-id shape rule (a listed id must have 1 EN and 2 IS records); each passes the records
+ * of the parser it already uses, so the shape is judged on the same view as its comparison.
+ *
+ * @param {Array<{segmentId: string}>} records
+ * @returns {Map<string, number>}
+ */
+function idCounts(records) {
+  const counts = new Map();
+  for (const r of records) counts.set(r.segmentId, (counts.get(r.segmentId) || 0) + 1);
+  return counts;
+}
+
+/** `1 listed unserved IS copy (G1.12)` / `N listed unserved IS copies<tail> (G1.12)`. */
+const unservedCopiesPhrase = (n, tail = '') =>
+  `${n} listed unserved IS ${n === 1 ? 'copy' : 'copies'}${tail} (G1.12)`;
+
+/**
  * A1 — the EN and IS seg-id SETS are equal. ADVISORY.
  *
  * 🔴 THE PLAN'S RATIONALE FOR "ADVISORY" IS FALSIFIED; THE CONCLUSION SURVIVES FOR A
@@ -551,7 +578,10 @@ export const A6 = defineCheck({
  *                        comment form, the spaced mustache form. Verified all three
  *                        still trip it.
  *   leg `cross-side`     parsed EN records vs parsed IS records. Catches damage that
- *                        DESTROYS the token, which leg 1 structurally cannot see.
+ *                        DESTROYS the token, which leg 1 structurally cannot see. With
+ *                        G1.12's list of unserved Icelandic copies the comparison is
+ *                        `isParsed === enParsed + listed`, and every listed id must have
+ *                        exactly 1 EN and 2 IS records — see "G1.12" below.
  *   leg `inject-dialect` `{{SEG:` present at all. Catches the file that parses CLEANLY on
  *                        both count legs and that `cnxml-inject.js` still cannot read,
  *                        because this port normalizes the mustache dialect and inject's
@@ -589,6 +619,32 @@ export const A6 = defineCheck({
  * ~5% bar, which is what licences leg 2 to BLOCK rather than warn.
  * ▶ IT IS A PREMISE PIN, NOT A REGRESSION PIN (§C82 L20/L27): the corpus this battery
  * gates is about to be replaced by the re-MT run, so it is re-measured when it moves.
+ *
+ * ── G1.12: THE CROSS-SIDE LEG EXPECTS A FROZEN LIST OF UNSERVED ICELANDIC COPIES ──────────
+ * Design docs/superpowers/specs/2026-11-12-g112-duplicate-segment-ids-design.md §3, §5.2-§5.3
+ * (ledger Ruling 10). The G1.12 re-extract emits each of chemistry's 285 nested-note
+ * paragraphs ONCE in English, while the bought MT (`02-mt-output`, never edited) keeps BOTH
+ * Icelandic copies; the editor serves the first and the second is unserved. Measured before
+ * this rule: the strict count failed exactly those 83 modules (chemistry A2b 83/149 = 0.557).
+ * ▶ THE RULE, with L = the module's ids in `ctx.unservedCopies` (`unservedIdsForModule`):
+ *   1. every id in L has exactly 1 EN and exactly 2 IS records, else a BLOCKING
+ *      `unserved-copy-shape-mismatch` finding naming the id and both counts;
+ *   2. the count comparison is `isParsed === enParsed + |L|`; a difference blocks as before,
+ *      and the finding also carries `listed: |L|`;
+ *   3. |L| is reported in `message` and never changes the verdict (`runCheck` keeps only
+ *      verdict, examined, findings and message, and a finding would be a trip).
+ * 🔴 THE KEY IS THE LIST, NEVER A SHAPE RULE. Nothing at run time can tell a paragraph bought
+ * twice from one the paid MT duplicated, so there is no "a surplus copy of an id English has
+ * is fine" rule: an unlisted surplus fails exactly as before. And rule 1 is not redundant with
+ * rule 2 — two listed ids, one bought three times and one once, balance the module count and
+ * only rule 1 sees them. Without rule 1 the relaxed count would also pass a module whose
+ * listed second copy lost its marker: measured, the strict v3 comparison PASSES that file
+ * (3 EN = 3 IS) once English is de-duplicated, so the list is what makes the damage visible.
+ * 🔴 WITH NO LIST (`null`/`undefined`), AN EMPTY LIST, OR AN UNLISTED MODULE, THE RESULT IS
+ * BYTE-IDENTICAL TO v3 — same findings, same message. A list offered without a usable
+ * `module` lists nothing for this module, so it too is judged strictly: the list can only
+ * relax a comparison, never tighten one, so its absence is the fail-closed direction.
+ * The other three legs (`raw-vs-parsed`, `inject-dialect`, `id-charset`) do not read the list.
  */
 export const A2b = defineCheck({
   id: 'A2b',
@@ -599,7 +655,10 @@ export const A2b = defineCheck({
   // decision ① scopes quarantine on this stamp, so a verdict recorded by v2 must not be
   // readable as one this version would have produced. Verified 2026-08-25 that the
   // registry test in this module's suite is the ONLY pin on the number.
-  version: 3,
+  // ⚠️ 3 → 4 (G1.12): with `unservedCopies` the cross-side leg PASSES modules v3 failed (a
+  // listed second Icelandic copy) and FAILS one v3 passed (a listed copy whose marker was
+  // destroyed). Without a list the judgement is v3's, byte for byte.
+  version: 4,
   run: (ctx) => {
     // 🔴 BOTH KEYS ARE REQUIRED, AND THAT IS THE WHOLE POINT OF §C82 L33/L41: A LEG THE
     // ctx DOES NOT CARRY IS ITSELF A FINDING, NEVER A SILENT PASS. Falling back to the
@@ -619,7 +678,11 @@ export const A2b = defineCheck({
     // the same bytes twice invites the two reads to drift apart under a later edit.
     const isRecords = parseSegmentsMit(ctx.isText);
     const parsed = isRecords.length;
-    const enParsed = parseSegmentsMit(ctx.segText).length;
+    const enRecords = parseSegmentsMit(ctx.segText);
+    const enParsed = enRecords.length;
+    // G1.12: the Icelandic copies this module is EXPECTED to carry unserved (see the docstring).
+    // Empty for no list, an empty list, an unlisted module, or a missing `module`.
+    const listed = unservedIdsForModule(ctx.unservedCopies, ctx.module);
 
     const findings = [];
     if (rawTokens !== parsed) {
@@ -676,7 +739,28 @@ export const A2b = defineCheck({
         ].slice(0, 10),
       });
     }
-    if (enParsed !== parsed) {
+    // G1.12 rule 1: each listed id has exactly the shape the list was frozen on, 1 EN and 2 IS.
+    // Checked per id, because the module count below can balance across two wrong ids.
+    if (listed.size > 0) {
+      const enCounts = idCounts(enRecords);
+      const isCounts = idCounts(isRecords);
+      for (const segmentId of listed) {
+        const enCount = enCounts.get(segmentId) || 0;
+        const isCount = isCounts.get(segmentId) || 0;
+        if (enCount !== 1 || isCount !== 2) {
+          findings.push({
+            kind: 'unserved-copy-shape-mismatch',
+            leg: 'cross-side',
+            segmentId,
+            enCount,
+            isCount,
+          });
+        }
+      }
+    }
+    // G1.12 rule 2: the listed copies are the only surplus the IS side may carry. With an empty
+    // `listed` this is v3's `enParsed !== parsed`, and the finding has v3's exact shape.
+    if (parsed !== enParsed + listed.size) {
       // ⚠️ BOTH COUNTS, NOT A MISMATCH FLAG. Without them the DIRECTION is unreadable and
       // a damaged EN side gets blamed on the paid MT.
       findings.push({
@@ -684,6 +768,7 @@ export const A2b = defineCheck({
         leg: 'cross-side',
         enParsed,
         isParsed: parsed,
+        ...(listed.size > 0 ? { listed: listed.size } : {}),
       });
     }
 
@@ -706,7 +791,12 @@ export const A2b = defineCheck({
       findings,
       message:
         `${rawTokens} raw SEG tokens, ${parsed} parsed, ${enParsed} EN parsed` +
-        (findings.length ? ` — legs fired: ${findings.map((f) => f.leg).join(', ')}` : ''),
+        // G1.12 rule 3: the listed count is reported, never scored. Absent when nothing is
+        // listed, so an unlisted module's message is v3's byte for byte.
+        (listed.size > 0 ? `, ${unservedCopiesPhrase(listed.size)}` : '') +
+        (findings.length
+          ? ` — legs fired: ${[...new Set(findings.map((f) => f.leg))].join(', ')}`
+          : ''),
     };
   },
 });
@@ -1057,6 +1147,9 @@ registerChecks(MT_RUNRECORD_CHECKS);
  *                       key named `moduleId` was written first and withdrawn: a loader
  *                       that set `module` would have left A5 permanently SKIPPED, and on
  *                       an ADVISORY check that reads as ignorable rather than as broken.
+ *                       ⚠️ NOT A5-ONLY SINCE G1.12: A3 (here) and A2b (free half) key the
+ *                       `unservedCopies` list on it too. Without it they list nothing for
+ *                       the module and judge it strictly — fail-closed, never a SKIP.
  * `residueAllowlist`    A5 only, the PARSED allowlist object. 🔴 IT CANNOT BE READ HERE:
  *                       Global Constraints rule 5 makes gates pure, and
  *                       `loadResidueAllowlist` does file I/O. The loader supplies it.
@@ -1223,12 +1316,28 @@ function pairByOccurrence(enText, isText) {
  * a module whose segments went missing entirely. Measured cost: 4 modules, 2.03% — it
  * does not move the blocking verdict either way, so this is a correctness choice rather
  * than a rate one.
+ *
+ * ── G1.12: A LISTED ID'S SECOND ICELANDIC COPY IS COUNTED, NOT REPORTED ───────────────────
+ * Design docs/superpowers/specs/2026-11-12-g112-duplicate-segment-ids-design.md §3, §5.2-§5.3
+ * (ledger Ruling 10); the population and the reason are in A2b's G1.12 block. After the
+ * re-extract, each of the 285 listed ids is ONE EN occurrence against TWO IS occurrences, so
+ * the instrument reports the second copy (`<id>#1`) as unpaired: measured, +285 findings on
+ * exactly the 83 modules. With L = the module's ids in `ctx.unservedCopies`, an unpaired key
+ * `<id>#1` is counted in `message` and not reported as `unpaired-segment` when `<id>` is in L
+ * AND the module's records show exactly 1 EN and 2 IS occurrences of it — the shape A2b's
+ * rule 1 enforces, which is also what proves `<id>#1` is the ICELANDIC side's copy
+ * (`unpairedSegIds` mixes both sides). Any other shape, and every unlisted unpaired key, is
+ * reported exactly as before. The counts come from `parseSegmentRecords`, the parser
+ * `bracketMarkerDeltaBySegment` itself uses, so the shape is judged on the instrument's view.
+ * With no list, an empty list or an unlisted module, findings and message are v1's.
  */
 export const A3 = defineCheck({
   id: 'A3',
   tier: 2,
   blocking: false,
-  version: 1,
+  // ⚠️ 1 → 2 (G1.12): with `unservedCopies` a listed second Icelandic copy is no longer an
+  // `unpaired-segment` finding. Without a list the judgement is v1's.
+  version: 2,
   run: (ctx) => {
     // Both keys, in this order, so the message names the side the loader dropped.
     const skip = skipIfMissing(ctx, 'A3', ['segText', 'isText']);
@@ -1241,8 +1350,24 @@ export const A3 = defineCheck({
       segmentId,
       delta,
     }));
-    for (const segmentId of d.unpairedSegIds)
+    const listed = unservedIdsForModule(ctx.unservedCopies, ctx.module);
+    let enCounts = new Map();
+    let isCounts = new Map();
+    if (listed.size > 0) {
+      enCounts = idCounts(parseSegmentRecords(ctx.segText));
+      isCounts = idCounts(parseSegmentRecords(ctx.isText));
+    }
+    let unservedNotReported = 0;
+    for (const segmentId of d.unpairedSegIds) {
+      const m = /^(.+)#1$/.exec(segmentId);
+      const id = m && m[1];
+      if (id && listed.has(id) && enCounts.get(id) === 1 && isCounts.get(id) === 2) {
+        unservedNotReported++;
+        continue;
+      }
       findings.push({ kind: 'unpaired-segment', segmentId });
+    }
+    const unpairedReported = d.unpairedSegIds.length - unservedNotReported;
 
     return {
       // WARN, not FAIL — advisory by measurement, and the WARN is what makes it visible
@@ -1255,7 +1380,9 @@ export const A3 = defineCheck({
       // `runCheck` converts to SKIPPED rather than a clean pass.
       examined: d.segmentsExamined,
       findings,
-      message: `${d.segmentsWithDelta}/${d.segmentsExamined} segments with a marker delta, ${d.unpairedSegIds.length} unpaired; total ${JSON.stringify(d.total)}`,
+      message:
+        `${d.segmentsWithDelta}/${d.segmentsExamined} segments with a marker delta, ${unpairedReported} unpaired; total ${JSON.stringify(d.total)}` +
+        (listed.size > 0 ? `; ${unservedCopiesPhrase(unservedNotReported, ' not reported')}` : ''),
     };
   },
 });

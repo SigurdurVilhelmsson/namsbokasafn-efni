@@ -1,0 +1,110 @@
+G1.12 Task 3b, Step 6: the §C82 battery over efnafraedi-2e, branch start vs this worktree AFTER the fix
+=======================================================================================================
+Measured 2026-11-12. Same commands as battery-before-fix.txt; the base side is the same base dump
+(verdicts-base.jsonl, sweep-base.txt from 69cc289c9), not re-run.
+
+Sides
+  base   /home/siggi/dev/repos/namsbokasafn-efni/.claude/worktrees/g112-baseline  detached at 69cc289c9
+  after  this worktree at 908ee0364 plus the Task 3b working tree (list, loader, A2b v4, A3 v2,
+         tier2Ctx threading) — the content of the Task 3b commit
+
+Commands
+  (cd <after> && node tools/remt-sweep.js --book efnafraedi-2e --json > sweep-head-after.json)   exit 0
+  (cd <after> && node tools/remt-sweep.js --book efnafraedi-2e        > sweep-head-after.txt)    exit 0
+  node test-results/g112-duplicate-ids-2026-11-12/battery-verdicts.mjs --root <after> --book efnafraedi-2e --out verdicts-head-after.jsonl  exit 0, 3066 verdicts
+  node test-results/g112-duplicate-ids-2026-11-12/battery-verdicts.mjs --compare verdicts-base.jsonl verdicts-head-after.jsonl            exit 0
+
+RESULT
+  (check, unit) verdicts that differ from the branch start: 0, over all 3066 (29 checks x their units,
+  all five tiers). The sweep table's PASS/FAIL/WARN/SKIP columns equal the branch start's for every
+  row; A2b is 149/0 again (rate 0.0%) and A3 139/10 again, and the "BLOCKING CHECKS OVER ... BAR"
+  block no longer prints.
+  A2b's message reports its listed count on exactly the 83 modules, summing to 285, e.g.
+    ch01/m68683  PASS  237 raw SEG tokens, 237 parsed, 232 EN parsed, 5 listed unserved IS copies (G1.12)
+  A3's message reports the copies it did not report on exactly the 83, summing to 285, e.g.
+    ch01/m68683  PASS  0/232 segments with a marker delta, 0 unpaired; total {}; 5 listed unserved IS copies not reported (G1.12)
+  A3's findings equal the branch start's on all 149 modules (kind set and count).
+  What still differs is the re-extract itself, all inside the 83 modules: `examined` falls by the
+  removed English occurrences (E1-E5, A3, A5, A7), E2/E4 messages follow, and A7 on ch20/m68848 no
+  longer pairs the second copy (number-mismatch x3 -> x2, WARN both sides; see battery-before-fix.txt).
+
+Sweep CLI table, base vs after (diff of the text reports)
+12,16c12,16
+< E1   1 * module pair            149   149     0     0     0   149   0.0%     22855
+< E2   1 * module pair            149   149     0     0     0   149   0.0%     22855
+< E3   1 * module pair            149   149     0     0     0   149   0.0%     22855
+< E4   1 * module pair            149   149     0     0     0   149   0.0%     22855
+< E5   1 * module pair            149   149     0     0     0   149   0.0%     22855
+---
+> E1   1 * module pair            149   149     0     0     0   149   0.0%     22570
+> E2   1 * module pair            149   149     0     0     0   149   0.0%     22570
+> E3   1 * module pair            149   149     0     0     0   149   0.0%     22570
+> E4   1 * module pair            149   149     0     0     0   149   0.0%     22570
+> E5   1 * module pair            149   149     0     0     0   149   0.0%     22570
+22c22
+< A3   2   IS segment file        149   139     0    10     0   149   6.7%     22855
+---
+> A3   2   IS segment file        149   139     0    10     0   149   6.7%     22570
+24c24
+< A5   2   IS segment file        149   140     0     9     0   149   6.0%     22855
+---
+> A5   2   IS segment file        149   140     0     9     0   149   6.0%     22570
+26c26
+< A7   2   IS segment file        149    93     0    56     0   149  37.6%     22855
+---
+> A7   2   IS segment file        149    93     0    56     0   149  37.6%     22570
+
+== per-check verdict tallies (before | after) ==
+  T0 G1   PASS 1 FAIL 0 WARN 0 SKIP 0          | PASS 1 FAIL 0 WARN 0 SKIP 0
+  T0 G2   PASS 1 FAIL 0 WARN 0 SKIP 0          | PASS 1 FAIL 0 WARN 0 SKIP 0
+  T0 G3   PASS 1 FAIL 0 WARN 0 SKIP 0          | PASS 1 FAIL 0 WARN 0 SKIP 0
+  T0 G4   PASS 0 FAIL 0 WARN 1 SKIP 0          | PASS 0 FAIL 0 WARN 1 SKIP 0
+  T0 G5   PASS 0 FAIL 1 WARN 0 SKIP 0          | PASS 0 FAIL 1 WARN 0 SKIP 0
+  T1 E1   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+  T1 E2   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+  T1 E3   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+  T1 E4   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+  T1 E5   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+  T2 A1   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+  T2 A2a  PASS 71 FAIL 0 WARN 78 SKIP 0        | PASS 71 FAIL 0 WARN 78 SKIP 0
+  T2 A2b  PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+  T2 A2c  PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+  T2 A3   PASS 139 FAIL 0 WARN 10 SKIP 0       | PASS 139 FAIL 0 WARN 10 SKIP 0
+  T2 A4   PASS 148 FAIL 0 WARN 1 SKIP 0        | PASS 148 FAIL 0 WARN 1 SKIP 0
+  T2 A5   PASS 140 FAIL 0 WARN 9 SKIP 0        | PASS 140 FAIL 0 WARN 9 SKIP 0
+  T2 A6   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+  T2 A7   PASS 93 FAIL 0 WARN 56 SKIP 0        | PASS 93 FAIL 0 WARN 56 SKIP 0
+  T2 A8   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+  T3 R1   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+  T3 R3   PASS 0 FAIL 0 WARN 0 SKIP 149        | PASS 0 FAIL 0 WARN 0 SKIP 149
+  T3 R4   PASS 0 FAIL 0 WARN 0 SKIP 149        | PASS 0 FAIL 0 WARN 0 SKIP 149
+  T3 R5   PASS 80 FAIL 0 WARN 58 SKIP 11       | PASS 80 FAIL 0 WARN 58 SKIP 11
+  T4 K1   PASS 4 FAIL 0 WARN 9 SKIP 33         | PASS 4 FAIL 0 WARN 9 SKIP 33
+  T4 K2   PASS 23 FAIL 0 WARN 0 SKIP 23        | PASS 23 FAIL 0 WARN 0 SKIP 23
+  T4 K3   PASS 0 FAIL 0 WARN 0 SKIP 46         | PASS 0 FAIL 0 WARN 0 SKIP 46
+  T4 K4   PASS 23 FAIL 0 WARN 0 SKIP 23        | PASS 23 FAIL 0 WARN 0 SKIP 23
+  T4 K5   PASS 23 FAIL 0 WARN 0 SKIP 23        | PASS 23 FAIL 0 WARN 0 SKIP 23
+
+== (check, unit) verdicts that differ: 0 ==
+  by check: (none)
+
+== findings (kinds / count) that differ, by check ==
+  A7: 1 unit(s)
+    ch20/m68848 [number-mismatch] x3 -> [number-mismatch] x2
+
+== examined counts that differ, by check ==
+  A3: 83 unit(s)
+  A5: 83 unit(s)
+  A7: 83 unit(s)
+  E1: 83 unit(s)
+  E2: 83 unit(s)
+  E3: 83 unit(s)
+  E4: 83 unit(s)
+  E5: 83 unit(s)
+== messages that differ, by check ==
+  A2b: 83 unit(s)
+  A3: 83 unit(s)
+  A5: 83 unit(s)
+  A7: 83 unit(s)
+  E2: 59 unit(s)
+  E4: 83 unit(s)

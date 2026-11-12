@@ -37,6 +37,7 @@ import {
   REPO_ROOT,
 } from './helpers/remt-corpus.js';
 import { loadResidueAllowlist, loadResidueAllowlistOrNull } from '../lib/residue-allowlist.js';
+import { loadUnservedCopiesOrNull } from '../lib/g112-unserved-copies.js';
 import { detectResidue, normalizeForComparison } from '../lib/residue-check.js';
 
 const read = (p) => fs.readFileSync(p, 'utf8');
@@ -241,17 +242,23 @@ describe('A3 — per-segment bracket-marker delta', () => {
     let rawAnyMods = 0;
     let pairs = 0;
     for (const b of BOOKS) {
+      // G1.12: the ctx the sweep builds carries the book's frozen list of unserved Icelandic
+      // copies (chemistry's 285; `null` for organic), keyed on `module`. Without it each listed
+      // second copy reads as an `unpaired-segment` finding on chemistry's 83 re-extracted
+      // modules, so this pin hands A3 the same two keys `tier2Ctx` does.
+      const unservedCopies = loadUnservedCopiesOrNull(path.join(REPO_ROOT, 'books', b));
       for (const isPath of mtOutputSegmentFiles(b)) {
         const enPath = enCounterpart(isPath);
         if (!enPath) continue;
         pairs++;
+        const module = path.basename(isPath).replace(/-segments\.is\.md$/, '');
         // §C126 #3: pre-alt-type exercise drift is subtracted (see the note by the pins).
         const isText = read(isPath);
-        const rawF = A3.run({ segText: read(enPath), isText }).findings;
+        const rawF = A3.run({ segText: read(enPath), isText, module, unservedCopies }).findings;
         if (rawF.some((x) => x.kind === 'unpaired-segment')) rawUnpairedMods++;
         if (rawF.length) rawAnyMods++;
         const { en } = withoutPreTypeDrift(isPath, read(enPath), isText);
-        const f = A3.run({ segText: en, isText }).findings;
+        const f = A3.run({ segText: en, isText, module, unservedCopies }).findings;
         if (f.some((x) => x.kind === 'marker-delta')) deltaMods++;
         if (f.some((x) => x.kind === 'unpaired-segment')) unpairedMods++;
         if (f.length) anyMods++;

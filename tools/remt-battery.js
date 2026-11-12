@@ -45,9 +45,11 @@
  *                                     convention; Tier 4 reads publication-track output,
  *                                     whose dirs are BARE. Two conventions, and this key
  *                                     takes the bare one.
- *   @property {string} [module]       'm68663'                    (scope · Task 10: A5)
+ *   @property {string} [module]       'm68663'          (scope · Task 10: A5 · G1.12: A2b/A3)
  *                                     ⚠️ NO LONGER SCOPE-ONLY. A5 keys the residue
- *                                     allowlist on it and SKIPS without it. It is
+ *                                     allowlist on it and SKIPS without it; A2b and A3 key
+ *                                     `unservedCopies` on it and, without it, list nothing
+ *                                     for the module and judge it strictly. It is
  *                                     deliberately the existing key rather than a new
  *                                     `moduleId`: two near-identical names is how a
  *                                     loader sets one and leaves a check permanently
@@ -77,6 +79,22 @@
  *                                     `OrNull` variant returns `null` when the file is
  *                                     absent, which the guard rejects. Gates are pure, so
  *                                     no check can tell the two apart on its own.
+ *   @property {object|null} [unservedCopies] the PARSED books/<slug>/g112-unserved-copies.json,
+ *                                     or `null` when the file is absent (G1.12: A2b/A3)
+ *                                     — the frozen list of Icelandic copies the bought MT
+ *                                     carries and the editor does not serve (design
+ *                                     docs/superpowers/specs/2026-11-12-g112-duplicate-
+ *                                     segment-ids-design.md §3). Keyed with `module`.
+ *                                     🔴 THE LOADER MUST BE `loadUnservedCopiesOrNull`
+ *                                     (tools/lib/g112-unserved-copies.js): `null` for an
+ *                                     absent file, and a THROW for a malformed one, never
+ *                                     a coercion to "no list". ⚠️ Unlike `residueAllowlist`,
+ *                                     ABSENT is the fail-closed state here: the list only
+ *                                     RELAXES A2b's cross-side count and A3's unpaired
+ *                                     list, so without it both judge strictly, as before
+ *                                     G1.12, and `null`/`undefined`/`{entries: []}` give
+ *                                     the same verdict. A loader that drops the key fails
+ *                                     A2b on every listed module rather than passing one.
  *   @property {object} [provenance]   the parsed sidecar        (Task 9: A2a/A4/A8)
  *                                     ⚠️ ALL THREE, not the two this line named until
  *                                     2026-08-26 — A2a reads `run.markersNormalized` and
