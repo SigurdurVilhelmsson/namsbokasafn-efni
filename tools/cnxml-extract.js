@@ -2283,6 +2283,8 @@ function processExample(
     );
     if (text && text.trim()) {
       const paraSegmentId = addSegment('para', text, para.id);
+      // Only paragraphs WITH an id are recorded. An id-less paragraph in a nested note would still be
+      // emitted twice, under two different auto-N ids (G1.12); measured 0 such paragraphs in any book, 2026-11-12.
       if (paraSegmentId && para.id) emittedParaIds.add(para.id);
       drainInlineMediaAlts(inlineMediaMap, addSegment);
       const paraElement = {

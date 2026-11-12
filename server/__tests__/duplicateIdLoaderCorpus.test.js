@@ -68,6 +68,26 @@ const parsedFirst = (mod, id) =>
   segmentParser.parseSegments(`<!-- SEG:${id} -->${firstCopy(mod, id)}`)[0].content;
 const mathTokens = (s) => new Set(s.match(/\[\[MATH:\d+\]\]/g) || []);
 
+/**
+ * Stage one module's English file, Icelandic file and structure sidecars under `bookTmp`, so a
+ * loader test never reads the live tree (the first apply on a live module writes a faithful file,
+ * which would turn a test that expects isSource 'mt-output' red for an unrelated reason).
+ */
+function stageModule(mod, bookTmp, isText) {
+  const enSrc = join(BOOK_DIR, '02-for-mt', mod.chDir, `${mod.moduleId}-segments.en.md`);
+  mkdirSync(join(bookTmp, '02-for-mt', mod.chDir), { recursive: true });
+  copyFileSync(enSrc, join(bookTmp, '02-for-mt', mod.chDir, `${mod.moduleId}-segments.en.md`));
+  mkdirSync(join(bookTmp, '02-mt-output', mod.chDir), { recursive: true });
+  writeFileSync(join(bookTmp, '02-mt-output', mod.chDir, `${mod.moduleId}-segments.is.md`), isText);
+  for (const f of ['structure', 'equations', 'manifest']) {
+    const p = join(BOOK_DIR, '02-structure', mod.chDir, `${mod.moduleId}-${f}.json`);
+    if (existsSync(p)) {
+      mkdirSync(join(bookTmp, '02-structure', mod.chDir), { recursive: true });
+      copyFileSync(p, join(bookTmp, '02-structure', mod.chDir, `${mod.moduleId}-${f}.json`));
+    }
+  }
+}
+
 describe('G1.12 loader on the real chemistry corpus', () => {
   it('the population is 285 ids in 83 modules', () => {
     expect({ modules: MODS.length, ids: MODS.reduce((a, m) => a + m.repeated.length, 0) }).toEqual({
@@ -93,6 +113,17 @@ describe('G1.12 loader on the real chemistry corpus', () => {
     'one served row per repeated id, from the first copy, with its math',
     { timeout: 120000 },
     () => {
+      const tmp = mkdtempSync(join(tmpdir(), 'g112-served-'));
+      tmpRoots.push(tmp);
+      const books = join(tmp, 'books');
+      for (const mod of MODS) {
+        stageModule(
+          mod,
+          join(books, BOOK),
+          readFileSync(join(mtRoot, mod.chDir, `${mod.moduleId}-segments.is.md`), 'utf8')
+        );
+      }
+      segmentParser._setTestBooksDir(books);
       const bad = [];
       let checked = 0;
       for (const mod of MODS) {
@@ -135,10 +166,6 @@ describe('G1.12 loader on the real chemistry corpus', () => {
     const first = {};
     let n = 0;
     for (const mod of MODS) {
-      const enSrc = join(BOOK_DIR, '02-for-mt', mod.chDir, `${mod.moduleId}-segments.en.md`);
-      mkdirSync(join(bookTmp, '02-for-mt', mod.chDir), { recursive: true });
-      copyFileSync(enSrc, join(bookTmp, '02-for-mt', mod.chDir, `${mod.moduleId}-segments.en.md`));
-      mkdirSync(join(bookTmp, '02-mt-output', mod.chDir), { recursive: true });
       const seen = new Map();
       const out = mod.recs.map((r) => {
         let body = r.body;
@@ -154,17 +181,7 @@ describe('G1.12 loader on the real chemistry corpus', () => {
         }
         return `<!-- SEG:${r.id} -->${body}`;
       });
-      writeFileSync(
-        join(bookTmp, '02-mt-output', mod.chDir, `${mod.moduleId}-segments.is.md`),
-        out.join('')
-      );
-      for (const f of ['structure', 'equations', 'manifest']) {
-        const p = join(BOOK_DIR, '02-structure', mod.chDir, `${mod.moduleId}-${f}.json`);
-        if (existsSync(p)) {
-          mkdirSync(join(bookTmp, '02-structure', mod.chDir), { recursive: true });
-          copyFileSync(p, join(bookTmp, '02-structure', mod.chDir, `${mod.moduleId}-${f}.json`));
-        }
-      }
+      stageModule(mod, bookTmp, out.join(''));
     }
     segmentParser._setTestBooksDir(books);
     const bad = [];

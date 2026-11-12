@@ -60,7 +60,11 @@ describe('segment ids are unique within each committed English segment file (G1.
   const files = segmentFiles();
 
   it('the walk finds the corpus (empty-walk control)', () => {
-    expect(files.length).toBeGreaterThan(500);
+    // The floor is chemistry's own file count (the walk, legacy artifacts skipped, found 170 under
+    // books/efnafraedi-2e/ on 2026-11-12), so it holds when another book (organic, §C190) is
+    // removed. The walk itself still covers every book.
+    const chemistryRoot = join(BOOKS, 'efnafraedi-2e') + '/';
+    expect(files.filter((f) => f.startsWith(chemistryRoot)).length).toBeGreaterThanOrEqual(170);
   });
 
   it('control: the helper reports a planted repeated id', () => {

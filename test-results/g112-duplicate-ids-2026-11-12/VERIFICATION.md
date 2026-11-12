@@ -87,14 +87,12 @@ re-extract; `RESULT: PASS`). The census half reads `git show <base>:` and parses
     Control: on each side inject overwrote 136 files and changed 112 tracked files against the committed tree, so
     the comparison is of real output for those files.
   - **⚠️ But inject wrote nothing for 8 of the 83 affected modules, identically on both sides,** so for them
-    "byte-identical" compares the committed file with itself, and the 136/136 control cannot see that. Four FAIL on
-    pre-existing marker residue (`m68700`, `m68733`, `m68747`, `m68844`: "Marker residue in injected output … a
-    [[TYPE:…]] placeholder was not converted"). Four are SKIPPED as incomplete injections, on pre-existing
-    untranslated-English residue (`m68744`, `m68798`, `m68852`, `m68858`). Two of the eight (`m68700`, `m68747`)
-    hold wording-different Icelandic pairs. Five unaffected modules are not written either (`m68662`, `m68856`,
-    `m68863`, `m68865`, `m68866`); 149 − 13 = 136. Measured from the saved outputs of the PASS run with
-    `grep -hoE '^m[0-9]+: (FAILED|SKIPPED)' out-<side>/cmd/inject-*.{out,err} | sort -u`: the same 13 lines on both
-    sides, 8 of them in the frozen list. **The compensating evidence for these eight:** their inject stdout and
+    "byte-identical" compares the committed file with itself, and the 136/136 control cannot see that. The eight are
+    `m68700`, `m68733`, `m68747`, `m68844`, `m68744`, `m68798`, `m68852` and `m68858`; two of them (`m68700`,
+    `m68747`) hold wording-different Icelandic pairs. The committed `before-after.txt` shows that inject writes
+    nothing for them on either side and that its stdout/stderr notes are identical on both sides. The split of
+    the eight into refusals on marker residue and skips on untranslated English was read from run outputs that
+    were never committed and no longer exist, so it is not asserted here. **The compensating evidence for these eight:** their inject stdout and
     stderr (the refusal itself and the base-only duplicate notes) are identical on both sides, and Task 4's
     in-memory sentinel (`tools/__tests__/duplicate-id-survivor-corpus.test.js`, §7 item 4 below) injects and
     renders all 285 ids without going through the CLI's refusal, so it covers these modules too.
