@@ -32,7 +32,8 @@ the two Icelandic copies then agrees on one copy.
   the AI harness and the research capture. The editing-burden measurement would count the same paragraph twice.
 - **(a) removes the cause, and the spike shows it is clean.** Today's extractor reproduces the committed chemistry
   `02-for-mt` and `02-structure` byte for byte; the only difference is the `extractedAt` timestamp in each manifest.
-  So the re-extract is a controlled change, and the before/after diff is exactly the 285 removed blocks (§3).
+  So the re-extract is a controlled change. In the 83 segment files the before/after diff is exactly the 285 removed
+  blocks, and the only other files to change are the same 83 modules' manifests (§3).
 - **(b)'s "save backstop" already exists.** R4's refusal (`DUPLICATE_ID` in `server/services/servedVersions.js` and
   the save/accept routes) has shipped. Under (a) it stays as a generic guard and never fires for chemistry.
 - **Size.** (a) is one extractor change, one line of loader logic and tests. (b) touches the editor's DOM ids, the
@@ -40,27 +41,30 @@ the two Icelandic copies then agrees on one copy.
 
 ## 3. What was measured (2026-11-12)
 
-| Measurement                                                    | Result                                                                                                                                                                                                                                                                                      |
-| -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Duplicated ids in chemistry `02-for-mt` and `02-mt-output`     | 285 ids in 83 of 149 modules; 570 occurrences in each layer                                                                                                                                                                                                                                 |
-| Element type of the duplicates                                 | `para`, all 285                                                                                                                                                                                                                                                                             |
-| Shape in `01-source`                                           | every one occurs once, as a `<para>` inside a `<note>` nested directly in an `<example>` (203 under a section, 61 directly, 21 under a subsection)                                                                                                                                          |
-| Other books                                                    | 0 duplicated ids in physics, biology, microbiology, organic and the e2e fixture                                                                                                                                                                                                             |
-| English copies that differ                                     | 71 of 285 raw; **0 after normalising `[[MATH\|MEDIA\|TABLE:n]]` numbers** (zero residual)                                                                                                                                                                                                   |
-| Icelandic copies that differ                                   | 75 of 285 raw; **6 after normalising the `MATH` numbers** (two independently paid MT strings; §6 item 3)                                                                                                                                                                                    |
-| Size of the duplicate text                                     | 17,366 characters, 0.38% of chemistry's English segment files                                                                                                                                                                                                                               |
-| Today's extractor vs committed tree                            | byte-identical except 148 manifest `extractedAt` lines                                                                                                                                                                                                                                      |
-| Spike, keep-first (§5.1)                                       | only the 83 `segments.en.md` files change; each equals HEAD's file with every later copy removed, byte for byte; 0 duplicated ids remain; structure, equations, inline-attrs and links files byte-identical                                                                                 |
-| `cnxml-inject`, HEAD vs spike, all chemistry, mt-preview track | all 149 injected CNXML files byte-identical; same per-chapter exit codes                                                                                                                                                                                                                    |
-| `source-roundtrip-check`, HEAD vs spike, all 23 chapter dirs   | identical output, apart from 83 _"duplicate segment(s) skipped"_ notes that disappear (one per affected module); identical exit codes (22 chapters exit 1 at HEAD already)                                                                                                                  |
-| `render-oracle-check`, HEAD vs spike                           | identical; `--control` passes on the spike. Its manifest covers only ch01 and ch03 (ch03 holds 25 of the duplicates)                                                                                                                                                                        |
-| Editor loader after the cut, current code                      | `duplicatedIds` becomes empty, but the loader serves the **last** Icelandic copy against the **first** English copy: `[[MATH:8–10]]` against `[[MATH:11–13]]` on `m68685`. Save validation hard-blocks that (`segment-validation.js`: a `[[MATH:N]]` in English missing from the Icelandic) |
-| Editor loader after the cut, first copy wins                   | English and Icelandic placeholders match on every probe                                                                                                                                                                                                                                     |
-| AI change chains on duplicated ids                             | 20 chains (occurrence 0 and 1) on 10 segments, 32 records. Each chain's first `before` equals its own copy. In 7 segments the Icelandic copies are identical; in 3 they differ                                                                                                              |
+| Measurement                                                    | Result                                                                                                                                                                                                                                                                                                                                                                                                        |
+| -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Duplicated ids in chemistry `02-for-mt` and `02-mt-output`     | 285 ids in 83 of 149 modules; 570 occurrences in each layer                                                                                                                                                                                                                                                                                                                                                   |
+| Element type of the duplicates                                 | `para`, all 285                                                                                                                                                                                                                                                                                                                                                                                               |
+| Shape in `01-source`                                           | every one occurs once, as a `<para>` inside a `<note>` nested directly in an `<example>` (203 under a section, 61 directly, 21 under a subsection)                                                                                                                                                                                                                                                            |
+| Other books                                                    | 0 duplicated ids in physics, biology, microbiology, organic and the e2e fixture                                                                                                                                                                                                                                                                                                                               |
+| English copies that differ                                     | 71 of 285 raw; **0 after normalising `[[MATH\|MEDIA\|TABLE:n]]` numbers** (zero residual)                                                                                                                                                                                                                                                                                                                     |
+| Icelandic copies that differ                                   | 75 of 285 raw; **6 after normalising the `MATH` numbers** (two independently paid MT strings; §6 item 3)                                                                                                                                                                                                                                                                                                      |
+| Size of the duplicate text                                     | 17,366 characters, 0.38% of chemistry's English segment files                                                                                                                                                                                                                                                                                                                                                 |
+| Today's extractor vs committed tree                            | byte-identical except 148 manifest `extractedAt` lines                                                                                                                                                                                                                                                                                                                                                        |
+| Spike, keep-first (§5.1; Appendix A)                           | each of the 83 changed `segments.en.md` files equals HEAD's file with every later copy removed, byte for byte; 0 duplicated ids remain; structure, equations, inline-attrs and links files byte-identical. **Manifests were filtered out of this check:** a manifest lists every occurrence (`m68685`: `segmentCount` 102, `segmentIds` holding 2 duplicates), so the 83 affected manifests change too (§5.5) |
+| `cnxml-inject`, HEAD vs spike, all chemistry, mt-preview track | all 149 injected CNXML files byte-identical; same per-chapter exit codes. **Run on the keep-last variant.** Under keep-first the English inject reads is the same copy for every id as at HEAD (inject is first-match-wins), so this holds by construction; §7 re-runs it on the branch                                                                                                                       |
+| `source-roundtrip-check`, HEAD vs spike, all 23 chapter dirs   | identical output, apart from 83 _"duplicate segment(s) skipped"_ notes that disappear (one per affected module); identical exit codes (22 chapters exit 1 at HEAD already)                                                                                                                                                                                                                                    |
+| `render-oracle-check`, HEAD vs spike                           | identical; `--control` passes on the spike. Its manifest covers only ch01 and ch03 (ch03 holds 25 of the duplicates)                                                                                                                                                                                                                                                                                          |
+| Editor loader after the cut, current code                      | `duplicatedIds` becomes empty, but the loader serves the **last** Icelandic copy against the **first** English copy: `[[MATH:8–10]]` against `[[MATH:11–13]]` on `m68685`. On 71 of the 285, save validation would hard-block (`segment-validation.js`: a `[[MATH:N]]` in English missing from the Icelandic)                                                                                                 |
+| Editor loader after the cut, first copy wins                   | every copy-0 English `MATH` set is contained in its copy-0 Icelandic: 0 failures of 285                                                                                                                                                                                                                                                                                                                       |
+| Reach of the loader change                                     | duplicated ids in any Icelandic file exist only in chemistry `02-mt-output` (and `02-mt-revised`, which the loader does not read); the set equals the English set exactly; `03-faithful-translation` holds none. All books checked, `chapter-metadata` files included                                                                                                                                         |
+| AI change chains on duplicated ids                             | 20 chains (occurrence 0 and 1) on 10 segments, 32 records. Each chain's first `before` equals its own copy. In 7 segments the Icelandic copies are identical; in 3 they differ                                                                                                                                                                                                                                |
+| Chain 0 against the served text after the cut                  | copy 0 passed through the loader's own transforms (`unescapeMtMarkers`, `normalizeTermMarkers`) and hashed with `servedText.sha256Text`: equals chain 0's first `beforeSha256` for **10 of 10** segments. Chain 1 would match for 7                                                                                                                                                                           |
+| AI layer state                                                 | layer 2 (`02-mt-revised/*-revision.json`) is written for every module of every chapter. `term-pass apply` refuses `stale-inputs` when the English differs from the hash a run recorded. `suggestionLogs.readModuleLog` does not check the English, so suggestions keep working (§5.4, §8)                                                                                                                     |
+| `…-segments(b).en.md` and similar files                        | 49 legacy web-UI artifacts, excluded by the tools (`api-translate.js` says so); none holds a duplicated id                                                                                                                                                                                                                                                                                                    |
 
-The spike patches are kept outside the repo (scratchpad `spike-v2-keep-first.diff`, and the rejected
-`spike-v1-keep-last.diff`). They are evidence for this choice only. The PR re-derives everything as committed tests
-and scripts (§7).
+The spike patch is in Appendix A. It is evidence for this choice only; the PR re-derives everything as committed
+tests and scripts (§7). A keep-last variant was also spiked and rejected (§10 call 2).
 
 ## 4. The defect
 
@@ -123,7 +127,8 @@ After the cut, English has one occurrence of each id and the Icelandic files kee
   once, this changes nothing. `applyApprovedEdits`, `servedVersions` and the suggestion view all read through this
   loader, so they follow.
 - **No change needed to:** `cnxml-inject` (already first-match-wins), the AI harness and the AI change chains
-  (already keyed by occurrence), or the suggestion view.
+  (already keyed by occurrence), or the suggestion view. One consequence for the harness is not a code change but
+  an ordering rule: its `apply` step refuses runs whose recorded English hash no longer matches (§8).
 - **The builder lists every other reader that maps an IS file by segment id** (start with `generate-tm.js`,
   `export-corpus.js`, `tools/lib/tm-export.cjs`, `server/lib/sourceEnglish.js` and the localization editor) and
   confirms each takes the first copy, or reads through the loader or faithful file. A reader that takes the last
@@ -148,8 +153,9 @@ After the cut, English has one occurrence of each id and the Icelandic files kee
 - `countOccurrences` finds no duplicated id, so every one of the 285 paragraphs gets a served-version row and a
   `baseSha256`. R4 and §6.4 lift with no further change. The suggestion view's offered map can stay keyed by id: the
   register's note that lifting §6.4 must re-key it by occurrence assumed (b).
-- The served Icelandic is copy 0, which is also what chain 0's first `before` describes. So all 10 segments' chain-0
-  groups pass the G1.23 spec's §6.3 integrity check, subject to the usual rules (drop filter, eligibility, not closed). Chain-1
+- The served Icelandic is copy 0, which is also what chain 0's first `before` describes. Measured: all 10 segments'
+  chain-0 hashes equal the served text's, so their groups pass the G1.23 spec's §6.3 integrity check, subject to the
+  usual rules (drop filter, eligibility, not closed). Chain-1
   records are never offered: their copy is no longer served. The G1.23 spec's sentence _"lifting the rule after
   G1.12 needs no data change"_ holds.
 - The 6 paragraphs whose two Icelandic copies differ in wording show copy 0. That is what mt-preview readers see
@@ -157,8 +163,11 @@ After the cut, English has one occurrence of each id and the Icelandic files kee
 
 ### 5.5 Scope of the re-extract
 
-- **Commit chemistry only:** the 83 regenerated `02-for-mt/*/<module>-segments.en.md` files. The manifests'
-  `extractedAt` lines will also move; leave them out unless a tool needs them (the builder decides, §10 call 9).
+- **Commit chemistry only, and only the 83 affected modules:** their regenerated
+  `02-for-mt/*/<module>-segments.en.md` files **and their `02-structure/*/<module>-manifest.json` files**. A
+  manifest records `segmentCount` and `segmentIds` with every occurrence, so both change, and
+  `tools/validate-chapter.js` reports _"Segment count mismatch"_ when the file and the manifest disagree. Leave out
+  the other 66 manifests, whose only change would be `extractedAt`.
 - **Other books.** Run the changed extractor over physics, biology and microbiology in a scratch tree and show no
   diff (they hold no duplicates). Organic may be extracted in scratch for that check; nothing for organic is ever
   committed (CLAUDE.md § Organic).
@@ -182,7 +191,11 @@ Record the following in the register, and cite it from the PR:
    from; copy 1 stays in `02-mt-output`, unserved.
 4. **The AI-layer consequence.** The number of chain-1 AI changes that become unservable, measured with
    `suggestionLogs.keptGroups` (not raw records), next to the G1.23 spec's 22 kept changes in 7 segments.
-5. **Before/after measurements** from §7, as committed artifacts rather than off-repo files.
+5. **Layer 2's reproducibility.** `term-pass apply` re-derives layer 2 from the committed run records, and it
+   refuses `stale-inputs` once the English no longer has the hash a run recorded. After G1.12, that is the case for
+   every chapter holding an affected module (all except the appendices, ch00 and ch18). Layer 2 stays reproducible
+   by checking out the last commit before G1.12, because the records pin their inputs by hash. Record that commit.
+6. **Before/after measurements** from §7, as committed artifacts rather than off-repo files.
 
 ## 7. What the PR must show
 
@@ -192,13 +205,16 @@ The G1.12 row's requirements, plus what the spike showed is needed:
    English pairs differing after placeholder normalisation, every duplicate a `note < example` paragraph occurring
    once in `01-source`.
 2. **Byte identity (row: "every other module", "no auto-N shift").** Over all 149 chemistry modules, every
-   `02-structure` file (structure, equations, inline-attrs, links) is byte-identical to HEAD. Each changed English
-   file equals HEAD's with every later copy removed. Byte identity of the rest is what proves no `auto-N` and no
-   `MATH` shift.
+   structure, equations, inline-attrs and links file is byte-identical to HEAD. Each changed English file equals
+   HEAD's with every later copy removed. Each of the 83 changed manifests differs from HEAD only in `extractedAt`,
+   `segmentCount` (down by that module's duplicate count) and `segmentIds` (each duplicate listed once, the order
+   otherwise unchanged). Byte identity of the rest is what proves no `auto-N` and no `MATH` shift.
 3. **Controlled render pair (row).** Render `01-source` directly against an extract → inject round trip for the
    83 modules, and compare **by value at the element keyed by each paragraph's id** in the rendered HTML (never by
-   prose search). Also run `source-roundtrip-check` and `render-oracle-check --control`, HEAD against the branch,
-   and diff the outputs; exit codes alone mean nothing here, since 22 chapters exit 1 at HEAD.
+   prose search). Also run `cnxml-inject` (all chemistry, mt-preview track, into a scratch tree),
+   `source-roundtrip-check` and `render-oracle-check --control`, HEAD against the branch, and diff the outputs.
+   Exit codes alone mean nothing here, since 22 chapters exit 1 at HEAD. `validate-chapter` must report no new
+   segment-count mismatch.
 4. **A sentinel through inject and the loader, on scratch copies only.** Copy the IS files of the affected modules
    to scratch; put a unique token in each **first** copy and a different token in each **second** copy; inject and
    load from the scratch copies. Pass means every first-copy token arrives as the whole value at its id-keyed element,
@@ -212,15 +228,16 @@ The G1.12 row's requirements, plus what the spike showed is needed:
      §5.1);
    - the loader, given one English occurrence and two Icelandic occurrences, serves the first;
    - `applyApprovedEdits` on such a module writes one entry per id;
-   - **a corpus-anchored property:** no committed `02-for-mt` file in any book holds a duplicated SEG id. It is red
-     at HEAD and green on the branch, and it protects any future extraction.
+   - **a corpus-anchored property:** no committed `02-for-mt/*/<module>-segments.en.md` file in any book holds a
+     duplicated SEG id (the legacy `…-segments(b).en.md` artifacts are out of scope, as they are for the tools). It is
+     red at HEAD and green on the branch, and it protects any future extraction.
 6. **Mutant hygiene.** Restore every mutated file from a golden copy, and `cmp` after each round and at the end
    (CLAUDE.md § mutation-test restore).
 
 ## 8. Order and landing
 
-- **One PR, deployed as one unit:** the extractor change, the loader change, the 83 regenerated files and the
-  tests. The two halves must not ship apart:
+- **One PR, deployed as one unit:** the extractor change, the loader change, the 83 regenerated segment files
+  and manifests, and the tests. The two halves must not ship apart:
   - **files without the loader:** the duplicates vanish, so R4 stops refusing, and saves on 71 of the 285
     paragraphs are hard-blocked by validation, because the editor shows copy 1's Icelandic against copy 0's English
     and their `[[MATH:n]]` numbers differ (measured);
@@ -231,9 +248,16 @@ The G1.12 row's requirements, plus what the spike showed is needed:
   **Expected: zero.** R4 says G1.12 lands before any of the 83 opens, and the suggestion view was switched on for
   chemistry at 12:01Z today. If any row exists, stop and bring it to [USER] before merging. The module list is the
   83 ids printed by the census script.
-- **Ordering against other items:** before any of the 83 modules opens (R4); before G1.7's freeze manifest is
-  generated, so the manifest records the post-cut segment list; before G1.13 assigns chapters. The plan's month-1
-  calendar puts G1.12 before the freeze around 29 Nov–6 Dec.
+- **Ordering against other items:**
+  - **after the last planned `term-pass apply --write` on chemistry.** Once G1.12 lands, apply refuses
+    `stale-inputs` on every chapter except the appendices, ch00 and ch18 (§6 item 5). Layer 2 is written for every
+    module today. If a re-send or re-apply is still planned, it goes first, or it is re-run against the new English;
+  - before any of the 83 modules opens (R4);
+  - before G1.7's freeze manifest is generated, so the manifest records the post-cut segment list;
+  - before G1.13 assigns chapters.
+
+  The plan's month-1 calendar puts G1.12 before the freeze around 29 Nov–6 Dec.
+
 - **This needs a deploy** (loader code). After the push to `main`, prod's content backup is stranded until the next
   deploy (CLAUDE.md § Content delivery), and the deploy itself needs [USER] for `sudo`.
 
@@ -259,9 +283,63 @@ The G1.12 row's requirements, plus what the spike showed is needed:
 7. **Commit only chemistry's regenerated files.** The extractor change reaches other books on their next extract,
    with no effect measured today.
 8. **The verification ships as committed tests and scripts**, not off-repo evidence (§6 item 5).
-9. **Manifests:** commit their `extractedAt` change only if a consumer needs it to reflect the re-extract; the
-   builder checks and says which.
-10. **Size: S–M**, against the plan row's M.
+9. **Manifests:** commit the 83 affected ones; leave the other 66 untouched (§5.5).
+10. **G1.12 lands after the AI layer is final for chemistry** (§8), rather than redoing any apply against the new
+    English.
+11. **Size: S–M**, against the plan row's M.
 
 On approval: banner-freeze this file, add a dated note under the plan's G1.12 row pointing here (and noting that
 the "editor fixes" batch no longer carries G1.12), and open the register entry that owns its status.
+
+## Appendix A. The keep-first spike (throwaway)
+
+Applied to `tools/cnxml-extract.js` at `5de321ca2` in a scratch worktree, then removed. The `globalThis.__g112`
+counter and the `exit` hook are instrumentation. The wrapper keys the skip on the segment type, which §5.1 rejects for
+the real change (key it on the id set). It is here so the §3 measurements can be reproduced, not as code to copy.
+
+```diff
+diff --git a/tools/cnxml-extract.js b/tools/cnxml-extract.js
+index 3ff0d6739..eaedcf40a 100644
+--- a/tools/cnxml-extract.js
++++ b/tools/cnxml-extract.js
+@@ -913,6 +913,18 @@ function extractSegments(cnxml, options = {}) {
+     return segmentId;
+   }
+   addSegment.keyed = addKeyedSegment;
++  // SPIKE G1.12 v2: take the counter slot and the inline-attrs capture, emit no text.
++  function addSlotOnly(type, text, elementId = null) {
++    if (!text || !text.trim()) return null;
++    counters.segment++;
++    const segmentId = generateSegmentId(moduleId, type, elementId, counters.segment);
++    if (lastInlineAttrs) {
++      inlineAttrsMap[segmentId] = lastInlineAttrs;
++      lastInlineAttrs = null;
++    }
++    return segmentId;
++  }
++  addSegment.slotOnly = addSlotOnly;
+
+   // Extract document title
+   // 🔴 §C126 — RUN IT THROUGH `extractInlineText`, like every other piece of text.
+@@ -2359,7 +2371,14 @@ function processExample(
+   // Process notes within example (like Answer notes)
+   const notes = extractNestedElements(example.content, 'note');
+   for (const note of notes) {
+-    const noteStructure = processNote(note, moduleId, addSegment, mathMap, counters);
++    // SPIKE G1.12 v2: the example's own para walk already emitted this note's paras.
++    globalThis.__g112 = globalThis.__g112 || { slotted: 0 };
++    const paraOnlySlot = (type, text, elementId, extra) => {
++      if (type === 'para') { if (text && text.trim()) globalThis.__g112.slotted++; return addSegment.slotOnly(type, text, elementId); }
++      return addSegment(type, text, elementId, extra);
++    };
++    paraOnlySlot.keyed = addSegment.keyed; paraOnlySlot.slotOnly = addSegment.slotOnly;
++    const noteStructure = processNote(note, moduleId, paraOnlySlot, mathMap, counters);
+     exampleStructure.content.push(noteStructure);
+   }
+
+@@ -3423,3 +3442,4 @@ export {
+   buildManifest as buildManifestForTest,
+   buildTermEnglish,
+ };
++process.on('exit', () => { if (globalThis.__g112) process.stderr.write('G112 ' + JSON.stringify(globalThis.__g112) + '\n'); });
+```
