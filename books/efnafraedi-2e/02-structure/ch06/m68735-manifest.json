@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68735",
-  "extractedAt": "2026-09-28T20:03:05.527Z",
+  "extractedAt": "2026-11-12T15:01:00.287Z",
   "sourceHash": "527f7d19e891350c",
-  "segmentCount": 181,
+  "segmentCount": 179,
   "segmentIds": [
     "m68735:title:auto-1",
     "m68735:abstract:auto-2",
@@ -48,7 +48,6 @@
     "m68735:para:fs-idm138739760",
     "m68735:para:fs-idm176919040",
     "m68735:note-title:fs-idm123362928-title",
-    "m68735:para:fs-idm176919040",
     "m68735:title:fs-idm56440528-title",
     "m68735:para:fs-idm83408752",
     "m68735:caption:CNX_Chem_06_05_Ionradii-caption",
@@ -134,7 +133,6 @@
     "m68735:para:fs-idm57911728",
     "m68735:para:fs-idm69877488",
     "m68735:note-title:fs-idm148104624-title",
-    "m68735:para:fs-idm69877488",
     "m68735:title:fs-idm632640-title",
     "m68735:para:fs-idm62970128",
     "m68735:para:fs-idm33809440",

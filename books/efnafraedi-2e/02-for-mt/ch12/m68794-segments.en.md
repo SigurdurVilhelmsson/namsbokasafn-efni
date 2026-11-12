@@ -178,9 +178,6 @@ Derive the equation relating atomic fluorine concentration to molecular fluorine
 <!-- SEG:m68794:note-title:fs-idm330964176-title -->
 Answer:
 
-<!-- SEG:m68794:para:fs-idm361032656 -->
-[[MATH:2]]
-
 <!-- SEG:m68794:title:fs-idp145811120-title -->
 Key Concepts and Summary
 

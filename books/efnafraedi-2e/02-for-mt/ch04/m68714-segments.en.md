@@ -100,9 +100,6 @@ O[[sub:2]]
 <!-- SEG:m68714:note-title:fs-idm19095728-title -->
 Answer:
 
-<!-- SEG:m68714:para:fs-idp69025056 -->
-O[[sub:2]]
-
 <!-- SEG:m68714:title:fs-idm20935792-title -->
 Percent Yield
 
@@ -141,9 +138,6 @@ What is the percent yield of a reaction that produces 12.5 g of the gas Freon CF
 
 <!-- SEG:m68714:note-title:fs-idp47749920-title -->
 Answer:
-
-<!-- SEG:m68714:para:fs-idp47655136 -->
-48.3%
 
 <!-- SEG:m68714:note-title:fs-idm21958480-title -->
 Green Chemistry and Atom Economy

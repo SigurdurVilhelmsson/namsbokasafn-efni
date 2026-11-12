@@ -73,9 +73,6 @@ Write the concentration-based reaction quotient expression for each of the follo
 <!-- SEG:m68798:note-title:fs-idp167282768-title -->
 Answer:
 
-<!-- SEG:m68798:para:fs-idp7633728 -->
-(a) [[MATH:13]] (b) [[MATH:14]] (c) [[MATH:15]]
-
 <!-- SEG:m68798:caption:CNX_Chem_13_02_quotient-caption -->
 Changes in concentrations and [[i:Q[[sub:c]]]] for a chemical equilibrium achieved beginning with (a) a mixture of reactants only and (b) products only.
 
@@ -141,9 +138,6 @@ For the reaction [[MATH:19]] the concentrations at equilibrium are [SO[[sub:2]]]
 
 <!-- SEG:m68798:note-title:fs-idp10573648-title -->
 Answer:
-
-<!-- SEG:m68798:para:fs-idp130245328 -->
-[[i:K[[sub:c]] =]] 4.3
 
 <!-- SEG:m68798:para:fs-idm80100288 -->
 By its definition, the magnitude of an equilibrium constant explicitly reflects the composition of a reaction mixture at equilibrium, and it may be interpreted with regard to the extent of the forward reaction. A reaction exhibiting a large [[i:K]] will reach equilibrium when most of the reactant has been converted to product, whereas a small [[i:K]] indicates the reaction achieves equilibrium after very little reactant has been converted. It’s important to keep in mind that the magnitude of [[i:K]] does [[i:not]] indicate how rapidly or slowly equilibrium will be reached. Some equilibria are established so quickly as to be nearly instantaneous, and others so slowly that no perceptible change is observed over the course of days, years, or longer.
@@ -222,9 +216,6 @@ Calculate the reaction quotient and determine the direction in which each of the
 
 <!-- SEG:m68798:note-title:fs-idp32992592-title -->
 Answer:
-
-<!-- SEG:m68798:para:fs-idp96400256 -->
-(a) [[i:Q[[sub:c]]]] = 6.45 [[MATH:22]] 10[[sup:3]], forward. (b) [[i:Q[[sub:c]]]] = 0.23, reverse. (c) [[i:Q[[sub:c]]]] = 0, forward.
 
 <!-- SEG:m68798:table-summary:fs-idp70024256-summary -->
 This table has four columns and five rows. The first row is a header row, and it labels each column, “Reactants / Products,” “Experiment 1,” “Experiment 2,” and “Experiment 3.” Under the “Reactants / Products” column are: [ C O ] subscript i; [ H subscript 2 O ] subscript i; [ C O subscript 2 ] subscript i; [ H subscript 2 ] subscript i. Under the “Experiment 1” column are the numbers: 0.0203 M; 0.0203 M; 0.0040 M; and 0.0040 M. Under the “Experiment 2” column are the numbers: 0.011 M; 0.0011 M; 0.037 M; and 0.046 M. Under the “Experiment 3” column are the numbers: 0.0094 M; 0.0025 M; 0.0015 M; 0.0076 M.
@@ -379,9 +370,6 @@ What would be the value of [[i:K[[sub:P]]]] at this temperature?
 <!-- SEG:m68798:note-title:fs-idp33474544-title -->
 Answer:
 
-<!-- SEG:m68798:para:fs-idp251899984 -->
-(a) [[i:K[[sub:P]]]] = [[i:K[[sub:c]]]] ([[i:RT]])[[sup:−1]]; (b) [[i:K[[sub:P]]]] = [[i:K[[sub:c]]]] ([[i:RT]]); (c) [[i:K[[sub:P]]]] = [[i:K[[sub:c]]]] ([[i:RT]]); (d) 160 or 1.6 [[MATH:33]] 10[[sup:2]]
-
 <!-- SEG:m68798:title:fs-idp112997072-title -->
 Heterogeneous Equilibria
 
@@ -453,9 +441,6 @@ K[[sub:c]] = 0.14
 
 <!-- SEG:m68798:note-title:fs-idm384024512-title -->
 Answer:
-
-<!-- SEG:m68798:para:fs-idm500608128 -->
-K[[sub:c]] = 0.14
 
 <!-- SEG:m68798:title:fs-idp284371824-title -->
 Key Concepts and Summary

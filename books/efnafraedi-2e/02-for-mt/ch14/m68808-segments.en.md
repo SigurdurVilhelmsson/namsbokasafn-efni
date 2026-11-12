@@ -121,9 +121,6 @@ This table has two main columns and four rows. The first row for the first colum
 <!-- SEG:m68808:note-title:fs-idm145837936-title -->
 Answer:
 
-<!-- SEG:m68808:para:fs-idm119337184 -->
-Initial pH of 1.8 [[MATH:12]] 10[[sup:−5]] [[i:M]] HCl; pH = −log[H[[sub:3]]O[[sup:+]]] = −log[1.8 [[MATH:13]] 10[[sup:−5]]] = 4.74[[BR]] Moles of H[[sub:3]]O[[sup:+]] in 100 mL 1.8 [[MATH:14]] 10[[sup:−5]] [[i:M]] HCl; 1.8 [[MATH:15]] 10[[sup:−5]] moles/L [[MATH:16]] 0.100 L = 1.8 [[MATH:17]] 10[[sup:−6]][[BR]] Moles of H[[sub:3]]O[[sup:+]] added by addition of 1.0 mL of 0.10 [[i:M]] HCl: 0.10 moles/L [[MATH:18]] 0.0010 L = 1.0 [[MATH:19]] 10[[sup:−4]] moles; final pH after addition of 1.0 mL of 0.10 [[i:M]] HCl:[[BR]] [[MATH:11]]
-
 <!-- SEG:m68808:title:fs-idp107911744-title -->
 Buffer Capacity
 

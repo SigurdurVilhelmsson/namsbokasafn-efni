@@ -85,9 +85,6 @@ A sample of nitrogen, N[[sub:2]], occupies 45.0 mL at 27 °C and 600 torr. What 
 <!-- SEG:m68751:note-title:fs-idp78288768-title -->
 Answer:
 
-<!-- SEG:m68751:para:fs-idm117579760 -->
-400 torr
-
 <!-- SEG:m68751:title:fs-idp20892224-title -->
 Volume and Temperature: Charles’s Law
 
@@ -148,9 +145,6 @@ A sample of oxygen, O[[sub:2]], occupies 32.2 mL at 30 °C and 452 torr. What vo
 <!-- SEG:m68751:note-title:fs-idm7218016-title -->
 Answer:
 
-<!-- SEG:m68751:para:fs-idp96328352 -->
-21.6 mL
-
 <!-- SEG:m68751:example-title:fs-idm51209248-title -->
 Measuring Temperature with a Volume Change
 
@@ -180,9 +174,6 @@ What is the volume of a sample of ethane at 467 K and 1.1 atm if it occupies 405
 
 <!-- SEG:m68751:note-title:fs-idm69251328-title -->
 Answer:
-
-<!-- SEG:m68751:para:fs-idp170212592 -->
-635 mL
 
 <!-- SEG:m68751:title:fs-idm198797136-title -->
 Volume and Pressure: Boyle’s Law
@@ -274,9 +265,6 @@ Comment on the likely accuracy of each method.
 <!-- SEG:m68751:note-title:fs-idp7933296-title -->
 Answer:
 
-<!-- SEG:m68751:para:fs-idm53855168 -->
-(a) about 17–18 mL; (b) ~18 mL; (c) 17.7 mL; it was more difficult to estimate well from the [[i:P]]-[[i:V]] graph, so (a) is likely more inaccurate than (b); the calculation will be as accurate as the equation and measurements allow
-
 <!-- SEG:m68751:note-title:fs-idm202428608-title -->
 Breathing and Boyle’s Law
 
@@ -367,9 +355,6 @@ Calculate the pressure in bar of 2520 moles of hydrogen gas stored at 27 °C in 
 <!-- SEG:m68751:note-title:fs-idp77431312-title -->
 Answer:
 
-<!-- SEG:m68751:para:fs-idp4504752 -->
-350 bar
-
 <!-- SEG:m68751:para:fs-idp141407616 -->
 If the number of moles of an ideal gas are kept constant under two different sets of conditions, a useful mathematical relationship called the combined gas law is obtained: [[MATH:22]] using units of atm, L, and K. Both sets of conditions are equal to the product of [[i:n]] [[MATH:23]] [[i:R]] (where [[i:n]] = the number of moles of the gas and [[i:R]] is the ideal gas law constant).
 
@@ -402,9 +387,6 @@ A sample of ammonia is found to occupy 0.250 L under laboratory conditions of 27
 
 <!-- SEG:m68751:note-title:fs-idp104450512-title -->
 Answer:
-
-<!-- SEG:m68751:para:fs-idm29667248 -->
-0.193 L
 
 <!-- SEG:m68751:caption:CNX_Chem_09_02_Scuba-caption -->
 Scuba divers use compressed air to breathe while underwater. (credit: modification of work by Mark Goodchild)

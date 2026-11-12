@@ -103,9 +103,6 @@ A diagram shows one rectangle with two sides that has four dots, red, green, yel
 <!-- SEG:m68817:note-title:fs-idp48055552-title -->
 Answer:
 
-<!-- SEG:m68817:para:fs-idm145487536 -->
-0 J/K
-
 <!-- SEG:m68817:title:fs-idp49499248-title -->
 Predicting the Sign of Δ[[i:S]]
 
@@ -198,9 +195,6 @@ Predict the sign of the entropy change for the following processes. Give a reaso
 
 <!-- SEG:m68817:note-title:fs-idm8656368-title -->
 Answer:
-
-<!-- SEG:m68817:para:fs-idm140480768 -->
-(a) Positive; The solid dissolves to give an increase of mobile ions in solution. (b) Negative; The liquid becomes a more ordered solid. (c) Positive; The relatively ordered solid becomes a gas. (d) Positive; There is a net increase in the amount of gaseous species.
 
 <!-- SEG:m68817:title:fs-idm166431584-title -->
 Key Concepts and Summary

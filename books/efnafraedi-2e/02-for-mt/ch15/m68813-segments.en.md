@@ -124,9 +124,6 @@ This table has two main columns and four rows. The first row for the first colum
 <!-- SEG:m68813:note-title:fs-idp119941104-title -->
 Answer:
 
-<!-- SEG:m68813:para:fs-idm70030480 -->
-2.9 [[MATH:8]] 10[[sup:–22]] [[i:M]]
-
 <!-- SEG:m68813:title:fs-idp45945376-title -->
 Key Concepts and Summary
 

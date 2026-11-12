@@ -55,9 +55,6 @@ The structure shown has a C H subscript 3 group bonded up and to the right to a 
 <!-- SEG:m68847:note-title:fs-idp7240688-title -->
 Answer:
 
-<!-- SEG:m68847:para:fs-idm57460576 -->
-2-methyl-2-pentanol
-
 <!-- SEG:m68847:para:fs-idm66465552 -->
 Incorporation of an oxygen atom into carbon- and hydrogen-containing molecules leads to new functional groups and new families of compounds. When the oxygen atom is attached by single bonds, the molecule is either an alcohol or ether.
 
@@ -123,9 +120,6 @@ A molecular structure shows a C H subscript 3 group bonded up and to the right t
 
 <!-- SEG:m68847:note-title:fs-idm80466656-title -->
 Answer:
-
-<!-- SEG:m68847:para:fs-idm60219664 -->
-IUPAC: 2-methoxypropane; common: isopropylmethyl ether
 
 <!-- SEG:m68847:para:fs-idp12818416 -->
 Ethers can be obtained from alcohols by the elimination of a molecule of water from two molecules of the alcohol. For example, when ethanol is treated with a limited amount of sulfuric acid and heated to 140 °C, diethyl ether and water are formed:

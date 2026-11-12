@@ -70,9 +70,6 @@ The concentration of H[[sub:2]]S in a saturated aqueous solution at room tempera
 <!-- SEG:m68807:note-title:fs-idm58434032-title -->
 Answer:
 
-<!-- SEG:m68807:para:fs-idm69876496 -->
-[H[[sub:2]]S] = 0.1 [[i:M]]; [[MATH:21]] = [HS[[sup:−]]] = 0.000094 [[i:M]]; [S[[sup:2−]]] = 1 [[MATH:22]] 10[[sup:−19]] [[i:M]]
-
 <!-- SEG:m68807:para:fs-idm49318672 -->
 A [[term:triprotic acid|term-00004]] is an acid that has three ionizable H atoms. Phosphoric acid is one example:
 

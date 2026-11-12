@@ -85,9 +85,6 @@ Three molecular structures are shown, each with a red central C atom. In a, a C 
 <!-- SEG:m68848:note-title:fs-idp31141792-title -->
 Answer:
 
-<!-- SEG:m68848:para:fs-idm3732048 -->
-(a) reduced (bond to oxygen atom replaced by bond to hydrogen atom); (b) oxidized (one bond to hydrogen atom replaced by one bond to oxygen atom); (c) oxidized (2 bonds to hydrogen atoms have been replaced by bonds to an oxygen atom)
-
 <!-- SEG:m68848:para:fs-idp30729120 -->
 Aldehydes are commonly prepared by the oxidation of alcohols whose –OH functional group is located on the carbon atom at the end of the chain of carbon atoms in the alcohol:
 

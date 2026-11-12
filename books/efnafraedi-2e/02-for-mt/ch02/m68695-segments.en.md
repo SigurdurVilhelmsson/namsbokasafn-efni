@@ -112,9 +112,6 @@ Give the group name for each of the following elements:
 <!-- SEG:m68695:note-title:fs-idm416378416-title -->
 Answer:
 
-<!-- SEG:m68695:para:fs-idm332587744 -->
-(a) noble gas; (b) chalcogen; (c) alkaline earth metal; (d) alkali metal
-
 <!-- SEG:m68695:para:eip-288 -->
 As you will learn in your further study of chemistry, elements in groups often behave in a somewhat similar manner. This is partly due to the number of electrons in their outer shell and their similar readiness to bond. These shared properties can have far-ranging implications in nature, science, and medicine. For example, when Gertrude Elion and George Hitchens were investigating ways to interrupt cell and virus replication to fight diseases, they utilized the similarity between sulfur and oxygen (both in Group 16) and their capacity to bond in similar ways. Elion focused on purines, which are key components of DNA and which contain oxygen. She found that by introducing sulfur-based compounds (called purine analogues) that mimic the structure of purines, molecules within DNA would bond to the analogues rather than the "regular" DNA purine. With the normal DNA bonding and structure altered, Elion successfully interrupted cell replication. At its core, the strategy worked because of the similarity between sulfur and oxygen. Her discovery led directly to important treatments for leukemia. Overall, Elion's work with George Hitchens not only led to more treatments, but also changed the entire methodology of drug development. By using specific elements and compounds to target specific aspects of tumor cells, viruses, and bacteria, they laid the groundwork for many of today's most common and important medicines, used to help millions of people each year. They were awarded the Nobel Prize in 1988.
 

@@ -124,9 +124,6 @@ Convert a volume of 9.345 qt to liters.
 <!-- SEG:m68683:note-title:fs-idm209829536-title -->
 Answer:
 
-<!-- SEG:m68683:para:fs-idm130267872 -->
-8.844 L
-
 <!-- SEG:m68683:para:fs-idm262838208 -->
 Beyond simple unit conversions, the factor-label method can be used to solve more complex problems involving computations. Regardless of the details, the basic approach is the same—all the [[i:factors]] involved in the calculation must be appropriately oriented to ensure that their [[i:labels]] (units) will appropriately cancel and/or combine to yield the desired unit in the result. As your study of chemistry continues, you will encounter many opportunities to apply this approach.
 
@@ -168,9 +165,6 @@ What is the volume in liters of 1.000 oz, given that 1 L = 1.0567 qt and 1 qt = 
 
 <!-- SEG:m68683:note-title:fs-idm207792224-title -->
 Answer:
-
-<!-- SEG:m68683:para:fs-idm292695264 -->
-2.957 × 10[[sup:−2]] L
 
 <!-- SEG:m68683:example-title:fs-idm306560960-title -->
 Computing Quantities from Measurement Results and Known Mathematical Relations
@@ -219,9 +213,6 @@ A Toyota Prius Hybrid uses 59.7 L gasoline to drive from San Francisco to Seattl
 
 <!-- SEG:m68683:note-title:fs-idp13830304-title -->
 Answer:
-
-<!-- SEG:m68683:para:fs-idm210440528 -->
-(a) 51 mpg; (b) $62
 
 <!-- SEG:m68683:title:fs-idm206910464-title -->
 Conversion of Temperature Units
@@ -292,9 +283,6 @@ Convert 80.92 °C to K and °F.
 <!-- SEG:m68683:note-title:fs-idp2744272-title -->
 Answer:
 
-<!-- SEG:m68683:para:fs-idm203762304 -->
-354.07 K, 177.7 °F
-
 <!-- SEG:m68683:example-title:fs-idm309453552-title -->
 Conversion from Fahrenheit
 
@@ -315,9 +303,6 @@ Convert 50 °F to °C and K.
 
 <!-- SEG:m68683:note-title:fs-idm271612080-title -->
 Answer:
-
-<!-- SEG:m68683:para:fs-idm296391568 -->
-10 °C, 280 K
 
 <!-- SEG:m68683:title:fs-idm292051392-title -->
 Key Concepts and Summary

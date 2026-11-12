@@ -91,9 +91,6 @@ Molecular formula, C[[sub:8]]H[[sub:16]]O[[sub:4]]; empirical formula, C[[sub:2]
 <!-- SEG:m68693:note-title:fs-idp84203280-title -->
 Answer:
 
-<!-- SEG:m68693:para:fs-idm167471456 -->
-Molecular formula, C[[sub:8]]H[[sub:16]]O[[sub:4]]; empirical formula, C[[sub:2]]H[[sub:4]]O
-
 <!-- SEG:m68693:para:fs-idp109543152 -->
 You can explore [[link:molecule building|http://openstax.org/l/16molbuilding]] using an online simulation.
 

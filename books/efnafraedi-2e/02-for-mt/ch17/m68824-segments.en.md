@@ -133,9 +133,6 @@ Spontaneous; [[i:n]] = 2; [[MATH:1]] [[MATH:2]] [[i:K]] = 6.8 [[MATH:3]] 10[[sup
 <!-- SEG:m68824:note-title:fs-idp195905712-title -->
 Answer:
 
-<!-- SEG:m68824:para:fs-idp101579952 -->
-Spontaneous; [[i:n]] = 2; [[MATH:4]] [[MATH:5]] [[i:K]] = 6.8 [[MATH:6]] 10[[sup:9]].
-
 <!-- SEG:m68824:title:fs-idm251393488-title -->
 Potentials at Nonstandard Conditions: The Nernst Equation
 
@@ -178,9 +175,6 @@ For the cell schematic below, identify values for [[i:n]] and [[i:Q]], and calcu
 <!-- SEG:m68824:note-title:fs-idp84594464-title -->
 Answer:
 
-<!-- SEG:m68824:para:fs-idp34686320 -->
-[[i:n]] = 6; [[i:Q]] = 1440; [[i:E]][[sub:cell]] = +1.97 V, spontaneous.
-
 <!-- SEG:m68824:para:fs-idp264674608 -->
 A [[term:concentration cell|term-00002]] is constructed by connecting two nearly identical half-cells, each based on the same half-reaction and using the same electrode, varying only in the concentration of one redox species. The potential of a concentration cell, therefore, is determined only by the difference in concentration of the chosen redox species. The example problem below illustrates the use of the Nernst equation in calculations involving concentration cells.
 
@@ -213,9 +207,6 @@ The concentration cell above was allowed to operate until the cell reaction reac
 
 <!-- SEG:m68824:note-title:fs-idm1444240-title -->
 Answer:
-
-<!-- SEG:m68824:para:fs-idp18466656 -->
-[[i:E]][[sub:cell]] = 0.000 V; [Zn[[sup:2+]]][[sub:cathode]] = [Zn[[sup:2+]]][[sub:anode]] = 0.30 [[i:M]]
 
 <!-- SEG:m68824:title:fs-idp160224496-title -->
 Key Concepts and Summary

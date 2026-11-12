@@ -316,9 +316,6 @@ What is the standard cell potential expected if the silver cathode half-cell in 
 <!-- SEG:m68823:note-title:fs-idp163400608-title -->
 Answer:
 
-<!-- SEG:m68823:para:fs-idp108971744 -->
-−0. 47 V
-
 <!-- SEG:m68823:title:fs-idm477342192-title -->
 Interpreting Electrode and Cell Potentials
 
@@ -369,9 +366,6 @@ Use the data in [[xref:fs-idm42585168]] to predict the spontaneity of the oxidat
 
 <!-- SEG:m68823:note-title:fs-idm217713968-title -->
 Answer:
-
-<!-- SEG:m68823:para:fs-idm483316928 -->
-[[MATH:41]]
 
 <!-- SEG:m68823:title:fs-idp47245120-title -->
 Key Concepts and Summary

@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68817",
-  "extractedAt": "2026-09-28T20:03:08.794Z",
+  "extractedAt": "2026-11-12T15:01:08.435Z",
   "sourceHash": "43ae001071c4abd5",
-  "segmentCount": 119,
+  "segmentCount": 117,
   "segmentIds": [
     "m68817:title:auto-1",
     "m68817:abstract:auto-2",
@@ -40,7 +40,6 @@
     "m68817:para:fs-idm145487536",
     "m68817:alt:CNX_Chem_16_03_Matter_img-alt",
     "m68817:note-title:fs-idp48055552-title",
-    "m68817:para:fs-idm145487536",
     "m68817:title:fs-idp49499248-title",
     "m68817:para:fs-idm169703584",
     "m68817:caption:CNX_Chem_16_03_Entropies-caption",
@@ -72,7 +71,6 @@
     "m68817:para:fs-idm47554640",
     "m68817:para:fs-idm140480768",
     "m68817:note-title:fs-idm8656368-title",
-    "m68817:para:fs-idm140480768",
     "m68817:title:fs-idm166431584-title",
     "m68817:para:fs-idm12417328",
     "m68817:para:fs-idm1916912",

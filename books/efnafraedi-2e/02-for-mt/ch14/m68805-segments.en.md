@@ -76,9 +76,6 @@ Calculate the percent ionization of a 0.10-[[i:M]] solution of acetic acid with 
 <!-- SEG:m68805:note-title:fs-idp9633456-title -->
 Answer:
 
-<!-- SEG:m68805:para:fs-idm119453808 -->
-1.3% ionized
-
 <!-- SEG:m68805:para:fs-idm98260672 -->
 View the [[link:simulation|http://openstax.org/l/16AcidBase]] of strong and weak acids and bases at the molecular level.
 
@@ -172,9 +169,6 @@ Determine the relative acid strengths of [[MATH:9]] and HCN by comparing their i
 <!-- SEG:m68805:note-title:fs-idp12994032-title -->
 Answer:
 
-<!-- SEG:m68805:para:fs-idm80300528 -->
-[[MATH:16]] is the slightly stronger acid ([[i:K]][[sub:a]] for [[MATH:17]] = 5.6 [[MATH:18]] 10[[sup:−10]]).
-
 <!-- SEG:m68805:title:fs-idm160956208-title -->
 Acid-Base Equilibrium Calculations
 
@@ -214,9 +208,6 @@ What is the acid ionization constant for this weak acid if an equilibrium mixtur
 <!-- SEG:m68805:note-title:fs-idp348400-title -->
 Answer:
 
-<!-- SEG:m68805:para:fs-idp1308432 -->
-[[i:K]][[sub:a]] for [[MATH:26]] = 1.2 [[MATH:27]] 10[[sup:−2]]
-
 <!-- SEG:m68805:caption:CNX_Chem_14_03_Vinegar-caption -->
 Vinegar contains acetic acid, a weak acid. (credit: modification of work by “HomeSpot HQ”/Flickr)
 
@@ -249,9 +240,6 @@ if the composition of an equilibrium mixture is as follows: [OH[[sup:−]]] = 1.
 
 <!-- SEG:m68805:note-title:fs-idm157882608-title -->
 Answer:
-
-<!-- SEG:m68805:para:fs-idp68248832 -->
-[[i:K]][[sub:b]] for [[MATH:36]]
 
 <!-- SEG:m68805:example-title:fs-idm1433984-title -->
 Determination of [[i:K]][[sub:a]] or [[i:K]][[sub:b]] from pH
@@ -288,9 +276,6 @@ This table has two main columns and four rows. The first row for the first colum
 
 <!-- SEG:m68805:note-title:fs-idm56490624-title -->
 Answer:
-
-<!-- SEG:m68805:para:fs-idm56489984 -->
-[[i:K]][[sub:b]] = 1.8 [[MATH:38]] 10[[sup:−5]]
 
 <!-- SEG:m68805:example-title:fs-idm159829376-title -->
 Calculating Equilibrium Concentrations in a Weak Acid Solution
@@ -337,9 +322,6 @@ This table has two main columns and four rows. The first row for the first colum
 <!-- SEG:m68805:note-title:fs-idp77192016-title -->
 Answer:
 
-<!-- SEG:m68805:para:fs-idp77192656 -->
-percent ionization = 1.3%
-
 <!-- SEG:m68805:caption:CNX_Chem_14_03_AntSting-caption -->
 The pain of some ant bites and stings is caused by formic acid. (credit: John Tann)
 
@@ -373,9 +355,6 @@ Calculate the hydroxide ion concentration and the percent ionization of a 0.0325
 <!-- SEG:m68805:note-title:fs-idp71571472-title -->
 Answer:
 
-<!-- SEG:m68805:para:fs-idp71572112 -->
-7.56 [[MATH:54]] 10[[sup:−4]] [[i:M]], 2.33%
-
 <!-- SEG:m68805:para:fs-idm114523920 -->
 In some cases, the strength of the weak acid or base and its formal (initial) concentration result in an appreciable ionization. Though the ICE strategy remains effective for these systems, the algebra is a bit more involved because the simplifying assumption that [[i:x]] is negligible cannot be made. Calculations of this sort are demonstrated in [[xref:fs-idm114522688]] below.
 
@@ -405,9 +384,6 @@ pH 11.16
 
 <!-- SEG:m68805:note-title:fs-idm75099248-title -->
 Answer:
-
-<!-- SEG:m68805:para:fs-idm30698512 -->
-pH 11.16
 
 <!-- SEG:m68805:title:fs-idm95688656-title -->
 Effect of Molecular Structure on Acid-Base Strength

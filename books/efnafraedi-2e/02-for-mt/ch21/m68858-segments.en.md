@@ -202,9 +202,6 @@ Tritium is a radioactive isotope of hydrogen ([[i:t]][[sub:1/2]] = 12.32 y) that
 <!-- SEG:m68858:note-title:fs-idp14889200-title -->
 Answer:
 
-<!-- SEG:m68858:para:fs-idm82342624 -->
-(a) 3.56 [[MATH:7]] 10[[sup:11]] Bq; (b) 0.962 Ci
-
 <!-- SEG:m68858:para:fs-idm3484976 -->
 Several different devices are used to detect and measure radiation, including Geiger counters, scintillation counters (scintillators), and radiation dosimeters ([[xref:CNX_Chem_21_06_Monitors]]). Probably the best-known radiation instrument, the [[term:Geiger counter|term-00003]] (also called the Geiger-Müller counter) detects and measures radiation. Radiation causes the ionization of the gas in a Geiger-Müller tube. The rate of ionization is proportional to the amount of radiation. A [[term:scintillation counter|term-00004]] contains a scintillator—a material that emits light (luminesces) when excited by ionizing radiation—and a sensor that converts the light into an electric signal. [[term:Radiation dosimeters|term-00005]] also measure ionizing radiation and are often used to determine personal radiation exposure. Commonly used types are electronic, film badge, thermoluminescent, and quartz fiber dosimeters.
 

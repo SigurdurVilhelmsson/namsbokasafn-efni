@@ -343,9 +343,6 @@ the magnitude of the temperature change (in this case, from 21 °C to 85 °C).
 <!-- SEG:m68724:note-title:fs-idm26494944-title -->
 Answer:
 
-<!-- SEG:m68724:para:fs-idm11745888 -->
-5.07 [[MATH:3]] 10[[sup:4]] J
-
 <!-- SEG:m68724:para:fs-idm2064512 -->
 Note that the relationship between heat, specific heat, mass, and temperature change can be used to determine any of these quantities (not just heat) if the other three are known or can be deduced.
 
@@ -381,9 +378,6 @@ A piece of unknown metal weighs 217 g. When the metal piece absorbs 1.43 kJ of h
 
 <!-- SEG:m68724:note-title:fs-idp282981088-title -->
 Answer:
-
-<!-- SEG:m68724:para:fs-idp81248192 -->
-[[i:c]] = 0.451 J/g °C; the metal is likely to be iron
 
 <!-- SEG:m68724:note-title:fs-idm28600720-title -->
 Solar Thermal Energy Power Plants

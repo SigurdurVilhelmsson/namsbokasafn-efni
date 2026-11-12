@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68843",
-  "extractedAt": "2026-09-28T20:03:09.865Z",
+  "extractedAt": "2026-11-12T15:01:10.234Z",
   "sourceHash": "970c001ffda03089",
-  "segmentCount": 294,
+  "segmentCount": 292,
   "segmentIds": [
     "m68843:title:auto-1",
     "m68843:abstract:auto-2",
@@ -62,7 +62,6 @@
     "m68843:para:fs-idp59621280",
     "m68843:para:fs-idp13836096",
     "m68843:note-title:fs-idp9554032-title",
-    "m68843:para:fs-idp13836096",
     "m68843:caption:CNX_Chem_19_02_DMSA-caption",
     "m68843:alt:fs-idp97148096-alt",
     "m68843:para:fs-idp58173136",
@@ -133,7 +132,6 @@
     "m68843:para:fs-idp19652080",
     "m68843:para:fs-idp49529584",
     "m68843:note-title:fs-idp64014688-title",
-    "m68843:para:fs-idp49529584",
     "m68843:title:fs-idp225700912-title",
     "m68843:para:fs-idp38320320",
     "m68843:caption:CNX_Chem_19_02_structures-caption",

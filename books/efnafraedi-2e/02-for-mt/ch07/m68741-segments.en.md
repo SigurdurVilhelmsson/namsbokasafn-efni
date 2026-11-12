@@ -634,9 +634,6 @@ A set of Lewis structures show a chemical reaction. The first structure shows tw
 <!-- SEG:m68741:note-title:fs-idp88406224-title -->
 Answer:
 
-<!-- SEG:m68741:para:fs-idp24314032 -->
-–35 kJ
-
 <!-- SEG:m68741:title:fs-idm34679504-title -->
 Ionic Bond Strength and Lattice Energy
 
@@ -678,9 +675,6 @@ ZnO would have the larger lattice energy because the Z values of both the cation
 
 <!-- SEG:m68741:note-title:fs-idp176836208-title -->
 Answer:
-
-<!-- SEG:m68741:para:fs-idp821600 -->
-ZnO would have the larger lattice energy because the Z values of both the cation and the anion in ZnO are greater, and the interionic distance of ZnO is smaller than that of NaCl.
 
 <!-- SEG:m68741:title:fs-idp112167568-title -->
 The Born-Haber Cycle

@@ -196,9 +196,6 @@ sodium sulfate, BaSO[[sub:4]]
 <!-- SEG:m68710:note-title:fs-idp24003520-title -->
 Answer:
 
-<!-- SEG:m68710:para:fs-idp153308448 -->
-sodium sulfate, BaSO[[sub:4]]
-
 <!-- SEG:m68710:title:fs-idp128853312-title -->
 Acid-Base Reactions
 
@@ -658,9 +655,6 @@ Assign oxidation states to the elements whose atoms are underlined in each of th
 <!-- SEG:m68710:note-title:fs-idm9084576-title -->
 Answer:
 
-<!-- SEG:m68710:para:fs-idm24741776 -->
-(a) N, +5; (b) Al, +3; (c) N, −3; (d) P, +5
-
 <!-- SEG:m68710:para:fs-idp45838960 -->
 Using the oxidation number concept, an all-inclusive definition of redox reaction has been established. [[term:Oxidation-reduction (redox) reactions|term-00022]] are those in which one or more elements involved undergo a change in oxidation number. (While the vast majority of redox reactions involve changes in oxidation number for two or more elements, a few interesting exceptions to this rule do exist [[xref:fs-idp180799104]].) Definitions for the complementary processes of this reaction class are correspondingly revised as shown here:
 
@@ -744,9 +738,6 @@ Yes, a single-replacement reaction. Sn([[i:s]])is the reductant, HCl([[i:g]]) is
 
 <!-- SEG:m68710:note-title:fs-idp105853680-title -->
 Answer:
-
-<!-- SEG:m68710:para:fs-idm50940704 -->
-Yes, a single-replacement reaction. Sn([[i:s]])is the reductant, HCl([[i:g]]) is the oxidant.
 
 <!-- SEG:m68710:title:fs-idm51820592-title -->
 Key Concepts and Summary

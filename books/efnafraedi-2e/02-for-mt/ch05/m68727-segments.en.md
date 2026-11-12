@@ -115,9 +115,6 @@ When 1.34 g Zn([[i:s]]) reacts with 60.0 mL of 0.750 M HCl([[i:aq]]), 3.14 kJ of
 <!-- SEG:m68727:note-title:fs-idp58943984-title -->
 Answer:
 
-<!-- SEG:m68727:para:fs-idp35719536 -->
-Δ[[i:H]] = −153 kJ
-
 <!-- SEG:m68727:para:fs-idm14305808 -->
 Be sure to take both stoichiometry and limiting reactants into account when determining the Δ[[i:H]] for a chemical reaction.
 
@@ -159,9 +156,6 @@ When 1.42 g of iron reacts with 1.80 g of chlorine, 3.22 g of FeCl[[sub:2]]([[i:
 
 <!-- SEG:m68727:note-title:fs-idp120447376-title -->
 Answer:
-
-<!-- SEG:m68727:para:fs-idm17649024 -->
-Δ[[i:H]] = −338 kJ
 
 <!-- SEG:m68727:para:fs-idm18196832 -->
 Enthalpy changes are typically tabulated for reactions in which both the reactants and products are at the same conditions. A [[term:standard state|term-00008]] is a commonly accepted set of conditions used as a reference point for the determination of properties under other different conditions. For chemists, the IUPAC standard state refers to materials under a pressure of 1 bar and solutions at 1 M, and does not specify a temperature. Many thermochemical tables list values with a standard state of 1 atm. Because the Δ[[i:H]] of a reaction changes very little with such small changes in pressure (1 bar = 0.987 atm), Δ[[i:H]] values (except for the most precisely measured values) are essentially the same under both sets of standard conditions. We will include a superscripted “o” in the enthalpy change symbol to designate standard state. Since the usual (but not technically standard) temperature is 298.15 K, this temperature will be assumed unless some other temperature is specified. Thus, the symbol [[MATH:6]] is used to indicate an enthalpy change for a process occurring under these conditions. (The symbol Δ[[i:H]] is used to indicate an enthalpy change for a reaction occurring under nonstandard conditions.)
@@ -316,9 +310,6 @@ How much heat is produced by the combustion of 125 g of acetylene?
 <!-- SEG:m68727:note-title:fs-idp49733872-title -->
 Answer:
 
-<!-- SEG:m68727:para:fs-idp49734384 -->
-6.25 [[MATH:21]] 10[[sup:3]] kJ
-
 <!-- SEG:m68727:caption:CNX_Chem_05_03_GasBurning-caption -->
 The combustion of gasoline is very exothermic. (credit: modification of work by “AlexEagle”/Flickr)
 
@@ -397,9 +388,6 @@ For the reaction [[MATH:32]]
 <!-- SEG:m68727:note-title:fs-idp167648992-title -->
 Answer:
 
-<!-- SEG:m68727:para:fs-idp167649504 -->
-For the reaction [[MATH:33]]
-
 <!-- SEG:m68727:example-title:fs-idp186597312-title -->
 Writing Reaction Equations for [[MATH:34]]
 
@@ -444,9 +432,6 @@ Write the heat of formation reaction equations for:
 
 <!-- SEG:m68727:note-title:fs-idp185934432-title -->
 Answer:
-
-<!-- SEG:m68727:para:fs-idp185934944 -->
-(a) [[MATH:40]] (b) [[MATH:41]]
 
 <!-- SEG:m68727:title:fs-idp218911984-title -->
 Hess’s Law
@@ -523,9 +508,6 @@ from the following information:
 <!-- SEG:m68727:note-title:fs-idp146898608-title -->
 Answer:
 
-<!-- SEG:m68727:para:fs-idp146899120 -->
-66.4 kJ
-
 <!-- SEG:m68727:para:fs-idp146899760 -->
 Here is a less straightforward example that illustrates the thought process involved in solving many Hess’s law problems. It shows how we can find many standard enthalpies of formation (and other values of Δ[[i:H]]) if they are difficult to determine experimentally.
 
@@ -598,9 +580,6 @@ Use the reactions here to determine the Δ[[i:H]]° for reaction [[i:(i)]]:
 <!-- SEG:m68727:note-title:fs-idp120712352-title -->
 Answer:
 
-<!-- SEG:m68727:para:fs-idp120712864 -->
-−1407 kJ
-
 <!-- SEG:m68727:para:fs-idp120713504 -->
 We also can use [[term:Hess’s law|term-00014]] to determine the enthalpy change of any reaction if the corresponding enthalpies of formation of the reactants and products are available. The stepwise reactions we consider are: (i) decompositions of the reactants into their component elements (for which the enthalpy changes are proportional to the negative of the enthalpies of formation of the reactants), followed by (ii) re-combinations of the elements to give the products (with the enthalpy changes proportional to the enthalpies of formation of the products). The standard enthalpy change of the overall reaction is therefore equal to: (ii) the sum of the standard enthalpies of formation of all the products plus (i) the sum of the negatives of the standard enthalpies of formation of the reactants. This is usually rearranged slightly to be written as follows, with ∑ representing “the sum of” and [[i:n]] standing for the stoichiometric coefficients:
 
@@ -648,9 +627,6 @@ Calculate the heat of combustion of 1 mole of ethanol, C[[sub:2]]H[[sub:5]]OH([[
 
 <!-- SEG:m68727:note-title:fs-idp165563824-title -->
 Answer:
-
-<!-- SEG:m68727:para:fs-idp165564336 -->
-−1368 kJ/mol
 
 <!-- SEG:m68727:title:fs-idp165565104-title -->
 Key Concepts and Summary

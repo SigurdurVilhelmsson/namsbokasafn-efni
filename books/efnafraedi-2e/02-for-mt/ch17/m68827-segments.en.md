@@ -130,9 +130,6 @@ Aluminum metal can be made from aluminum(III) ions by electrolysis. What is the 
 <!-- SEG:m68827:note-title:fs-idm28202384-title -->
 Answer:
 
-<!-- SEG:m68827:para:fs-idp74418928 -->
-[[MATH:2]] 0.0777 mol Al = 2.10 g Al.
-
 <!-- SEG:m68827:example-title:fs-idm33432704-title -->
 Time Required for Deposition
 
@@ -165,9 +162,6 @@ What mass of zinc is required to galvanize the top of a 3.00 m [[MATH:3]] 5.50 m
 
 <!-- SEG:m68827:note-title:fs-idm206575840-title -->
 Answer:
-
-<!-- SEG:m68827:para:fs-idm188224944 -->
-11.8 kg Zn requires 379 hours.
 
 <!-- SEG:m68827:title:fs-idp28955808-title -->
 Key Concepts and Summary

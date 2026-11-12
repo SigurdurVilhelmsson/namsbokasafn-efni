@@ -70,9 +70,6 @@ Calculate the pH for the strong acid/strong base titration between 50.0 mL of 0.
 <!-- SEG:m68809:note-title:fs-idm44981872-title -->
 Answer:
 
-<!-- SEG:m68809:para:fs-idm89702512 -->
-0.00: 1.000; 15.0: 1.5111; 25.0: 7; 40.0: 12.523
-
 <!-- SEG:m68809:example-title:fs-idm99459616-title -->
 Titration of a Weak Acid with a Strong Base
 
@@ -135,9 +132,6 @@ Calculate the pH for the weak acid/strong base titration between 50.0 mL of 0.10
 
 <!-- SEG:m68809:note-title:fs-idp68668928-title -->
 Answer:
-
-<!-- SEG:m68809:para:fs-idm37877472 -->
-0.00 mL: 2.37; 15.0 mL: 3.92; 25.00 mL: 8.29; 30.0 mL: 12.097
 
 <!-- SEG:m68809:para:fs-idm198420960 -->
 Performing additional calculations similar to those in the preceding example permits a more full assessment of titration curves. A summary of pH/volume data pairs for the strong and weak acid titrations is provided in [[xref:fs-idm87178400]] and plotted as titration curves in [[xref:CNX_Chem_14_07_titration]]. A comparison of these two curves illustrates several important concepts that are best addressed by identifying the four stages of a titration:

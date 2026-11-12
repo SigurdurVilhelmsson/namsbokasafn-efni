@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68852",
-  "extractedAt": "2026-09-28T20:03:10.354Z",
+  "extractedAt": "2026-11-12T15:01:11.221Z",
   "sourceHash": "2395506ee583bc89",
-  "segmentCount": 83,
+  "segmentCount": 82,
   "segmentIds": [
     "m68852:title:auto-1",
     "m68852:abstract:auto-2",
@@ -32,7 +32,6 @@
     "m68852:para:fs-idp228146336",
     "m68852:para:fs-idp147027376",
     "m68852:note-title:fs-idp155967328-title",
-    "m68852:para:fs-idp147027376",
     "m68852:para:fs-idm5877152",
     "m68852:item:fs-idp95347744-item-1",
     "m68852:item:fs-idp95347744-item-2",

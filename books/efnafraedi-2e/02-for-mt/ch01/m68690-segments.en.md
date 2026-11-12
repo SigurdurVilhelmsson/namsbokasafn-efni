@@ -157,9 +157,6 @@ Round the following to the indicated number of significant figures:
 <!-- SEG:m68690:note-title:fs-idm155369456-title -->
 Answer:
 
-<!-- SEG:m68690:para:fs-idm260724048 -->
-(a) 0.42; (b) 0.00387; (c) 421.2; (d) 28,684
-
 <!-- SEG:m68690:example-title:fs-idp61408240-title -->
 Addition and Subtraction with Significant Figures
 
@@ -205,9 +202,6 @@ Figure A shows 1.0023 being added to 4.383 to yield the answer 5.385. 1.0023 goe
 <!-- SEG:m68690:note-title:fs-idp26956096-title -->
 Answer:
 
-<!-- SEG:m68690:para:fs-idp40053216 -->
-(a) 2.64 mL; (b) 0.658 m
-
 <!-- SEG:m68690:example-title:fs-idp34148976-title -->
 Multiplication and Division with Significant Figures
 
@@ -244,9 +238,6 @@ Check Your Learning
 <!-- SEG:m68690:note-title:fs-idm282773952-title -->
 Answer:
 
-<!-- SEG:m68690:para:fs-idm154957312 -->
-(a) 0.747 cm[[sup:2]] (b) 0.9884 m/s
-
 <!-- SEG:m68690:para:fs-idp31178224 -->
 In the midst of all these technicalities, it is important to keep in mind the reason for these rules about significant figures and rounding—to correctly represent the certainty of the values reported and to ensure that a calculated result is not represented as being more certain than the least certain value used in the calculation.
 
@@ -270,9 +261,6 @@ What is the density of a liquid with a mass of 31.1415 g and a volume of 30.13 c
 
 <!-- SEG:m68690:note-title:fs-idm178680064-title -->
 Answer:
-
-<!-- SEG:m68690:para:fs-idm178106592 -->
-1.034 g/mL
 
 <!-- SEG:m68690:example-title:fs-idm148976192-title -->
 Experimental Determination of Density Using Water Displacement
@@ -327,9 +315,6 @@ This diagram shows the initial volume of water in a graduated cylinder as 17.1 m
 
 <!-- SEG:m68690:note-title:fs-idm113054800-title -->
 Answer:
-
-<!-- SEG:m68690:para:fs-idm287839728 -->
-(a) 19 g/cm[[sup:3]]; (b) It is likely gold; the right appearance for gold and very close to the density given for gold in [[docref:m68674#fs-idm45639696]].
 
 <!-- SEG:m68690:title:fs-idp33954960-title -->
 Accuracy and Precision

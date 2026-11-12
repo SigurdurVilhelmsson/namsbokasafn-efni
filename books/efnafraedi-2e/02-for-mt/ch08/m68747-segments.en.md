@@ -169,9 +169,6 @@ Two orbitals are shown lying end-to-end. Each has one enlarged and one small sid
 <!-- SEG:m68747:note-title:fs-idm210552112-title -->
 Answer:
 
-<!-- SEG:m68747:para:fs-idm99049568 -->
-The orbital is located along the internuclear axis, so it is a σ orbital. There is a node bisecting the internuclear axis, so it is an antibonding orbital.[[BR]]
-
 <!-- SEG:m68747:alt:fs-idm152931472-alt -->
 Two orbitals are shown lying end-to-end. Each has one enlarged and one small side. The small sides are facing one another and are separated by a vertical dotted line.
 
@@ -412,9 +409,6 @@ N[[sub:2]] has a bond order of 3 and is diamagnetic.
 <!-- SEG:m68747:note-title:fs-idm165020816-title -->
 Answer:
 
-<!-- SEG:m68747:para:fs-idm171143328 -->
-N[[sub:2]] has a bond order of 3 and is diamagnetic.
-
 <!-- SEG:m68747:caption:CNX_Chem_08_04_O2MO-caption -->
 The molecular orbital energy diagram for O[[sub:2]] predicts two unpaired electrons.
 
@@ -444,9 +438,6 @@ two, paramagnetic
 
 <!-- SEG:m68747:note-title:fs-idm41078336-title -->
 Answer:
-
-<!-- SEG:m68747:para:fs-idm171067584 -->
-two, paramagnetic
 
 <!-- SEG:m68747:para:fs-idm82029920 -->
 Creating molecular orbital diagrams for molecules with more than two atoms relies on the same basic ideas as the diatomic examples presented here. However, with more atoms, computers are required to calculate how the atomic orbitals combine. See [[link:three-dimensional drawings|http://openstax.org/l/16orbitaldiag]] of the molecular orbitals for C[[sub:6]]H[[sub:6]].

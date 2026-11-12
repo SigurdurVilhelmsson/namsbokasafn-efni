@@ -70,9 +70,6 @@ V[[sup:5+]] is one possibility. Other examples include Sc[[sup:3+]], Ti[[sup:4+]
 <!-- SEG:m68842:note-title:fs-idp75585328-title -->
 Answer:
 
-<!-- SEG:m68842:para:fs-idm273089696 -->
-V[[sup:5+]] is one possibility. Other examples include Sc[[sup:3+]], Ti[[sup:4+]], Cr[[sup:6+]], and Mn[[sup:7+]].
-
 <!-- SEG:m68842:note-title:fs-idm229057952-title -->
 Uses of Lanthanides in Devices
 
@@ -150,9 +147,6 @@ Predict what reaction (if any) will occur between HCl and Co([[i:s]]), and betwe
 
 <!-- SEG:m68842:note-title:fs-idm123798544-title -->
 Answer:
-
-<!-- SEG:m68842:para:fs-idm178358032 -->
-[[MATH:6]] no reaction because Pt([[i:s]]) will not be oxidized by H[[sup:+]]
 
 <!-- SEG:m68842:title:fs-idm197634688-title -->
 Preparation of the Transition Elements
@@ -285,9 +279,6 @@ The carbon is converted into CO, which is the reducing agent that accepts electr
 
 <!-- SEG:m68842:note-title:fs-idm225052960-title -->
 Answer:
-
-<!-- SEG:m68842:para:fs-idm192451744 -->
-The carbon is converted into CO, which is the reducing agent that accepts electrons so that iron(III) can be reduced to iron(0).
 
 <!-- SEG:m68842:title:fs-idp28687008-title -->
 Transition Metal Compounds

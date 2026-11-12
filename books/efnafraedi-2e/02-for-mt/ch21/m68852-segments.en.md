@@ -79,9 +79,6 @@ The nuclide [[MATH:17]] combines with an electron and produces a new nucleus and
 <!-- SEG:m68852:note-title:fs-idp155967328-title -->
 Answer:
 
-<!-- SEG:m68852:para:fs-idp147027376 -->
-[[MATH:19]]
-
 <!-- SEG:m68852:para:fs-idm5877152 -->
 Following are the equations of several nuclear reactions that have important roles in the history of nuclear chemistry:
 

@@ -91,9 +91,6 @@ Two Lewis structures connected by a double-ended arrow are shown. The left struc
 <!-- SEG:m68746:note-title:fs-idm1257648-title -->
 Answer:
 
-<!-- SEG:m68746:para:fs-idp224648848 -->
-[[i:sp]][[sup:2]]
-
 <!-- SEG:m68746:title:fs-idp38327968-title -->
 Key Concepts and Summary
 

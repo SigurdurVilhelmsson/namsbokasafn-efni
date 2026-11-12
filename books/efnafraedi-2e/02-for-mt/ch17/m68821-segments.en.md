@@ -121,9 +121,6 @@ The reaction above results when using relatively diluted nitric acid. If concent
 <!-- SEG:m68821:note-title:fs-idm642627152-title -->
 Answer:
 
-<!-- SEG:m68821:para:fs-idm250893824 -->
-[[MATH:17]]
-
 <!-- SEG:m68821:example-title:fs-idm246102992-title -->
 Balancing Equations for Redox Reactions in Basic Solutions
 
@@ -171,9 +168,6 @@ Aqueous permanganate ion may also be reduced using aqueous bromide ion, Br[[sup:
 
 <!-- SEG:m68821:note-title:fs-idm252213568-title -->
 Answer:
-
-<!-- SEG:m68821:para:fs-idm252040912 -->
-[[MATH:35]]
 
 <!-- SEG:m68821:title:fs-idp210820912-title -->
 Key Concepts and Summary

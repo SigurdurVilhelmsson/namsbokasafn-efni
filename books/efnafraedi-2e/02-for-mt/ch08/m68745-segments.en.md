@@ -253,9 +253,6 @@ A Lewis structure is shown in which four fluorine atoms are each attached to one
 <!-- SEG:m68745:note-title:fs-idm8762288-title -->
 Answer:
 
-<!-- SEG:m68745:para:fs-idm65914448 -->
-The selenium atom is [[i:sp]][[sup:3]][[i:d]] hybridized.
-
 <!-- SEG:m68745:example-title:fs-idm15564528-title -->
 Assigning Hybridization
 
@@ -288,9 +285,6 @@ A Lewis structure is shown in which a carbon atom is double bonded to an oxygen 
 
 <!-- SEG:m68745:note-title:fs-idp92570160-title -->
 Answer:
-
-<!-- SEG:m68745:para:fs-idp180575168 -->
-H[[sub:3]][[u:C]], [[i:sp]][[sup:3]]; [[u:C]](O)OH, [[i:sp]][[sup:2]]
 
 <!-- SEG:m68745:title:fs-idm69243360-title -->
 Key Concepts and Summary

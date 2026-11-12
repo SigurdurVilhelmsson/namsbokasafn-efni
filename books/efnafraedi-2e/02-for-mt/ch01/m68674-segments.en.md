@@ -448,9 +448,6 @@ Check Your Learning
 <!-- SEG:m68674:note-title:fs-idp2744272-title -->
 Answer:
 
-<!-- SEG:m68674:para:fs-idp2744784 -->
-(a) 0.599 cm[[sup:3]]; (b) 8.91 g/cm[[sup:3]]
-
 <!-- SEG:m68674:para:fs-idm108028240 -->
 To learn more about the relationship between mass, volume, and density, use this [[link:interactive simulator|http://openstax.org/l/16phetmasvolden]] to explore the density of different materials.
 
@@ -486,9 +483,6 @@ Following the water displacement approach, use the simulator to measure the dens
 
 <!-- SEG:m68674:note-title:fs-idp101664288-title -->
 Answer:
-
-<!-- SEG:m68674:para:fs-idm118978144 -->
-0.230 g/mL
 
 <!-- SEG:m68674:title:fs-idm333536464-title -->
 Key Concepts and Summary

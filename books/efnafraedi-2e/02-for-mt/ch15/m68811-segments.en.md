@@ -85,9 +85,6 @@ Write the dissolution equation and the solubility product for each of the follow
 <!-- SEG:m68811:note-title:fs-idp11829504-title -->
 Answer:
 
-<!-- SEG:m68811:para:fs-idp11829888 -->
-[[MATH:3]]
-
 <!-- SEG:m68811:title:fs-idp11911328-title -->
 [[i:K]][[sub:sp]] and Solubility
 
@@ -127,9 +124,6 @@ In a saturated solution of Mg(OH)[[sub:2]], the concentration of Mg[[sup:2+]] is
 <!-- SEG:m68811:note-title:fs-idp259840-title -->
 Answer:
 
-<!-- SEG:m68811:para:fs-idp260224 -->
-8.99 [[MATH:7]] 10[[sup:–12]]
-
 <!-- SEG:m68811:example-title:fs-idp261504-title -->
 Determination of Molar Solubility from [[i:K]][[sub:sp]]
 
@@ -165,9 +159,6 @@ This table has two main columns and four rows. The first row for the first colum
 
 <!-- SEG:m68811:note-title:fs-idp645648-title -->
 Answer:
-
-<!-- SEG:m68811:para:fs-idp646032 -->
-1.2 [[MATH:12]] 10[[sup:–8]] [[i:M]]
 
 <!-- SEG:m68811:example-title:fs-idp647936-title -->
 Determination of Molar Solubility from [[i:K]][[sub:sp]]
@@ -205,9 +196,6 @@ This table has two main columns and four rows. The first row for the first colum
 <!-- SEG:m68811:note-title:fs-idp833104-title -->
 Answer:
 
-<!-- SEG:m68811:para:fs-idp833488 -->
-1.5 [[MATH:17]] 10[[sup:–3]] [[i:M]]
-
 <!-- SEG:m68811:example-title:fs-idp836192-title -->
 Determination of [[i:K]][[sub:sp]] from Gram Solubility
 
@@ -240,9 +228,6 @@ The solubility of TlCl [thallium(I) chloride], an intermediate formed when thall
 
 <!-- SEG:m68811:note-title:fs-idp88320-title -->
 Answer:
-
-<!-- SEG:m68811:para:fs-idp88704 -->
-1.69 [[MATH:25]] 10[[sup:–4]]
 
 <!-- SEG:m68811:caption:CNX_Chem_15_01_OilPaints-caption -->
 Oil paints contain pigments that are very slightly soluble in water. In addition to chrome yellow (PbCrO[[sub:4]]), examples include Prussian blue (Fe[[sub:7]](CN)[[sub:18]]), the reddish-orange color vermilion (HgS), and green color veridian (Cr[[sub:2]]O[[sub:3]]). (credit: Sonny Abesamis)
@@ -288,9 +273,6 @@ This table has two main columns and four rows. The first row for the first colum
 
 <!-- SEG:m68811:note-title:fs-idp753920-title -->
 Answer:
-
-<!-- SEG:m68811:para:fs-idp754304 -->
-1.2 [[MATH:32]] 10[[sup:–3]] [[i:M]]
 
 <!-- SEG:m68811:note-title:fs-idp765232-title -->
 Using Barium Sulfate for Medical Imaging
@@ -358,9 +340,6 @@ No precipitation of CaHPO[[sub:4]]; [[i:Q]] = 1 [[MATH:37]] 10[[sup:–7]], whic
 <!-- SEG:m68811:note-title:fs-idp11869072-title -->
 Answer:
 
-<!-- SEG:m68811:para:fs-idp11869456 -->
-No precipitation of CaHPO[[sub:4]]; [[i:Q]] = 1 [[MATH:38]] 10[[sup:–7]], which is less than [[i:K]][[sub:sp]] (7 × 10[[sup:–7]])
-
 <!-- SEG:m68811:example-title:fs-idp11872704-title -->
 Precipitation of AgCl
 
@@ -397,9 +376,6 @@ No, [[i:Q]] = 4.0 [[MATH:43]] 10[[sup:–3]], which is less than [[i:K]][[sub:sp
 <!-- SEG:m68811:note-title:fs-idp477040-title -->
 Answer:
 
-<!-- SEG:m68811:para:fs-idp477424 -->
-No, [[i:Q]] = 4.0 [[MATH:45]] 10[[sup:–3]], which is less than [[i:K]][[sub:sp]] = 1.05 [[MATH:46]] 10[[sup:–2]]
-
 <!-- SEG:m68811:example-title:fs-idp488672-title -->
 Precipitation of Calcium Oxalate
 
@@ -435,9 +411,6 @@ If a solution contains 0.0020 mol of [[MATH:52]] per liter, what concentration o
 
 <!-- SEG:m68811:note-title:fs-idp387952-title -->
 Answer:
-
-<!-- SEG:m68811:para:fs-idp388336 -->
-6.7 [[MATH:54]] 10[[sup:–5]] [[i:M]]
 
 <!-- SEG:m68811:caption:CNX_Chem_15_01_Blood-caption -->
 Anticoagulants can be added to blood that will combine with the Ca[[sup:2+]] ions in blood serum and prevent the blood from clotting. (credit: modification of work by Neeta Lind)
@@ -483,9 +456,6 @@ The first step in the preparation of magnesium metal is the precipitation of Mg(
 
 <!-- SEG:m68811:note-title:fs-idp1200000-title -->
 Answer:
-
-<!-- SEG:m68811:para:fs-idp1200384 -->
-10.97
 
 <!-- SEG:m68811:para:fs-idp1200896 -->
 In solutions containing two or more ions that may form insoluble compounds with the same counter ion, an experimental strategy called [[term:selective precipitation|term-00001]] may be used to remove individual ions from solution. By increasing the counter ion concentration in a controlled manner, ions in solution may be precipitated individually, assuming their compound solubilities are adequately different. In solutions with equal concentrations of target ions, the ion forming the least soluble compound will precipitate first (at the lowest concentration of counter ion), with the other ions subsequently precipitating as their compound’s solubilities are reached. As an illustration of this technique, the next example exercise describes separation of a two halide ions via precipitation of one as a silver salt.
@@ -552,9 +522,6 @@ If silver nitrate solution is added to a solution which is 0.050 [[i:M]] in both
 
 <!-- SEG:m68811:note-title:fs-idp15290048-title -->
 Answer:
-
-<!-- SEG:m68811:para:fs-idp15290432 -->
-[Ag[[sup:+]]] = 1.0 [[MATH:64]] 10[[sup:–11]] [[i:M]]; AgBr precipitates first
 
 <!-- SEG:m68811:title:fs-idp15293024-title -->
 Common Ion Effect
@@ -637,9 +604,6 @@ What is the effect on the amount of solid NiCO[[sub:3]] and the concentrations o
 <!-- SEG:m68811:note-title:fs-idm690608-title -->
 Answer:
 
-<!-- SEG:m68811:para:fs-idm690096 -->
-(a) mass of NiCO[[sub:3]]([[i:s]]) increases, [Ni[[sup:2+]]] increases, [[MATH:68]] decreases; (b) no appreciable effect; (c) no effect except to increase the amount of solid NiCO[[sub:3]]; (d) mass of NiCO[[sub:3]]([[i:s]]) increases, [Ni[[sup:2+]]] decreases, [[MATH:69]] increases;
-
 <!-- SEG:m68811:example-title:fs-idp15318512-title -->
 Common Ion Effect
 
@@ -672,9 +636,6 @@ This table has two main columns and four rows. The first row for the first colum
 
 <!-- SEG:m68811:note-title:fs-idp13495104-title -->
 Answer:
-
-<!-- SEG:m68811:para:fs-idp13495488 -->
-4 [[MATH:74]] 10[[sup:–11]] [[i:M]]
 
 <!-- SEG:m68811:title:fs-idp13497520-title -->
 Key Concepts and Summary

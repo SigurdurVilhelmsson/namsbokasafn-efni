@@ -64,9 +64,6 @@ d = 0.0847 g/L
 <!-- SEG:m68752:note-title:fs-idp1319536-title -->
 Answer:
 
-<!-- SEG:m68752:para:fs-idp21300512 -->
-d = 0.0847 g/L
-
 <!-- SEG:m68752:para:fs-idp140587168 -->
 When the identity of a gas is unknown, measurements of the mass, pressure, volume, and temperature of a sample can be used to calculate the molar mass of the gas (a useful property for identification purposes). Combining the ideal gas equation
 
@@ -115,9 +112,6 @@ Empirical formula, CH; Molecular formula, C[[sub:2]]H[[sub:2]]
 <!-- SEG:m68752:note-title:fs-idp130463408-title -->
 Answer:
 
-<!-- SEG:m68752:para:fs-idm51491440 -->
-Empirical formula, CH; Molecular formula, C[[sub:2]]H[[sub:2]]
-
 <!-- SEG:m68752:example-title:fs-idp207136496-title -->
 Determining the Molar Mass of a Volatile Liquid
 
@@ -156,9 +150,6 @@ Sealing the flask and permitting the gaseous sample to condense to liquid, and t
 
 <!-- SEG:m68752:note-title:fs-idp108389616-title -->
 Answer:
-
-<!-- SEG:m68752:para:fs-idm20201792 -->
-124 g/mol P[[sub:4]]
 
 <!-- SEG:m68752:caption:CNX_Chem_09_03_liquidgas-caption -->
 When the volatile liquid in the flask is heated past its boiling point, it becomes gas and drives air out of the flask. At [[MATH:5]] the flask is filled with volatile liquid gas at the same pressure as the atmosphere. If the flask is then cooled to room temperature, the gas condenses and the mass of the gas that filled the flask, and is now liquid, can be measured. (credit: modification of work by Mark Ott)
@@ -220,9 +211,6 @@ A 5.73-L flask at 25 °C contains 0.0388 mol of N[[sub:2]], 0.147 mol of CO, and
 <!-- SEG:m68752:note-title:fs-idm10367824-title -->
 Answer:
 
-<!-- SEG:m68752:para:fs-idp101724928 -->
-1.137 atm
-
 <!-- SEG:m68752:para:fs-idp107652512 -->
 Here is another example of this concept, but dealing with mole fraction calculations.
 
@@ -270,9 +258,6 @@ What is the pressure of a mixture of 0.200 g of H[[sub:2]], 1.00 g of N[[sub:2]]
 
 <!-- SEG:m68752:note-title:fs-idp69846704-title -->
 Answer:
-
-<!-- SEG:m68752:para:fs-idp231949376 -->
-1.87 atm
 
 <!-- SEG:m68752:title:fs-idp221977104-title -->
 Collection of Gases over Water
@@ -565,9 +550,6 @@ A sample of oxygen collected over water at a temperature of 29.0 °C and a press
 <!-- SEG:m68752:note-title:fs-idp98213776-title -->
 Answer:
 
-<!-- SEG:m68752:para:fs-idm32818672 -->
-0.537 L
-
 <!-- SEG:m68752:title:fs-idp132626656-title -->
 Chemical Stoichiometry and Gases
 
@@ -625,9 +607,6 @@ An acetylene tank for an oxyacetylene welding torch provides 9340 L of acetylene
 <!-- SEG:m68752:note-title:fs-idm19557184-title -->
 Answer:
 
-<!-- SEG:m68752:para:fs-idm79476592 -->
-3.34 tanks (2.34 [[MATH:18]] 10[[sup:4]] L)
-
 <!-- SEG:m68752:example-title:fs-idp240638800-title -->
 Volumes of Reacting Gases
 
@@ -655,9 +634,6 @@ What volume of O[[sub:2]]([[i:g]]) measured at 25 °C and 760 torr is required t
 <!-- SEG:m68752:note-title:fs-idp105257584-title -->
 Answer:
 
-<!-- SEG:m68752:para:fs-idm7381904 -->
-51.0 L
-
 <!-- SEG:m68752:example-title:fs-idp13049024-title -->
 Volume of Gaseous Product
 
@@ -684,9 +660,6 @@ Sulfur dioxide is an intermediate in the preparation of sulfuric acid. What volu
 
 <!-- SEG:m68752:note-title:fs-idp30333040-title -->
 Answer:
-
-<!-- SEG:m68752:para:fs-idm23787120 -->
-1.30 [[MATH:20]] 10[[sup:3]] L
 
 <!-- SEG:m68752:note-title:fs-idm13395728-title -->
 Greenhouse Gases and Climate Change

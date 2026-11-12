@@ -70,9 +70,6 @@ The decay is first-order with a rate constant of 0.138 d[[sup:−1]]. How many d
 <!-- SEG:m68791:note-title:fs-idm89005952-title -->
 Answer:
 
-<!-- SEG:m68791:para:fs-idm22449888 -->
-16.7 days
-
 <!-- SEG:m68791:para:fs-idm132947408 -->
 In the next example exercise, a linear format for the integrated rate law will be convenient:
 
@@ -111,9 +108,6 @@ The plot of ln[[[i:A]]][[sub:[[i:t]]]] vs. [[i:t]] is not linear, indicating the
 
 <!-- SEG:m68791:note-title:fs-idm206842256-title -->
 Answer:
-
-<!-- SEG:m68791:para:fs-idp73329760 -->
-The plot of ln[[[i:A]]][[sub:[[i:t]]]] vs. [[i:t]] is not linear, indicating the reaction is not first order:[[BR]]
 
 <!-- SEG:m68791:alt:fs-idm135178736-alt -->
 A graph, labeled above as “l n [ A ] vs. Time” is shown. The x-axis is labeled, “Time ( s )” and the y-axis is labeled, “l n [ A ].” The x-axis shows markings at 5, 10, 15, 20, and 25 hours. The y-axis shows markings at negative 3, negative 2, negative 1, and 0. A slight curve is drawn connecting five points at coordinates of approximately (4, negative 1.5), (8, negative 2), (12, negative 2.2), (16, negative 2.4), and (20, negative 2.6).
@@ -265,9 +259,6 @@ If the initial concentration of butadiene is 0.0200 [[i:M]], what is the concent
 <!-- SEG:m68791:note-title:fs-idp27082688-title -->
 Answer:
 
-<!-- SEG:m68791:para:fs-idm23200256 -->
-0.0195 mol/L
-
 <!-- SEG:m68791:para:fs-idm88643152 -->
 The integrated rate law for second-order reactions has the form of the equation of a straight line:
 
@@ -306,9 +297,6 @@ Yes. The plot of [[MATH:15]] vs. [[i:t]] is linear:
 
 <!-- SEG:m68791:note-title:fs-idm72354384-title -->
 Answer:
-
-<!-- SEG:m68791:para:fs-idp122966448 -->
-Yes. The plot of [[MATH:16]] vs. [[i:t]] is linear:
 
 <!-- SEG:m68791:alt:fs-idm144508704-alt -->
 A graph, with the title “1 divided by [ A ] vs. Time” is shown, with the label, “Time ( s ),” on the x-axis. The label “1 divided by [ A ]” appears left of the y-axis. The x-axis shows markings beginning at zero and continuing at intervals of 10 up to and including 40. The y-axis on the left shows markings beginning at 0 and increasing by intervals of 1 up to and including 5. A line with an increasing trend is drawn through six points at approximately (4, 1), (10, 1.5), (15, 2.2), (20, 2.8), (26, 3.4), and (36, 4.4).
@@ -460,9 +448,6 @@ The zero-order plot in [[xref:CNX_Chem_12_04_AmDecomK]] shows an initial ammonia
 <!-- SEG:m68791:note-title:fs-idm379795136-title -->
 Answer:
 
-<!-- SEG:m68791:para:fs-idm508285088 -->
-35 min
-
 <!-- SEG:m68791:caption:CNX_Chem_12_04_AmDecomK-caption -->
 The decomposition of NH[[sub:3]] on a tungsten (W) surface is a zero-order reaction, whereas on a quartz (SiO[[sub:2]]) surface, the reaction is first order.
 
@@ -510,9 +495,6 @@ The first-order radioactive decay of iodine-131 exhibits a rate constant of 0.13
 
 <!-- SEG:m68791:note-title:fs-idp5361280-title -->
 Answer:
-
-<!-- SEG:m68791:para:fs-idm101854176 -->
-5.02 d.
 
 <!-- SEG:m68791:caption:CNX_Chem_12_04_HPerDcmp-caption -->
 The decomposition of H[[sub:2]]O[[sub:2]] [[MATH:22]] at 40 °C is illustrated. The intensity of the color symbolizes the concentration of H[[sub:2]]O[[sub:2]] at the indicated times; H[[sub:2]]O[[sub:2]] is actually colorless.
@@ -666,9 +648,6 @@ What is the half-life (min) for the thermal decomposition of ammonia on tungsten
 
 <!-- SEG:m68791:note-title:fs-idm366642224-title -->
 Answer:
-
-<!-- SEG:m68791:para:fs-idm339802240 -->
-18 min
 
 <!-- SEG:m68791:para:fs-idm99562880 -->
 The [[term:half-life of a reaction ([[i:t]][[sub:1/2]])|term-00002]] is the time required for one-half of a given amount of reactant to be consumed. In each succeeding half-life, half of the remaining concentration of the reactant is consumed. Using the decomposition of hydrogen peroxide ([[docref:m68786#CNX_Chem_12_01_KDataH2O2]]) as an example, we find that during the first half-life (from 0.00 hours to 6.00 hours), the concentration of H[[sub:2]]O[[sub:2]] decreases from 1.000 [[i:M]] to 0.500 [[i:M]]. During the second half-life (from 6.00 hours to 12.00 hours), it decreases from 0.500 [[i:M]] to 0.250 [[i:M]]; during the third half-life, it decreases from 0.250 [[i:M]] to 0.125 [[i:M]]. The concentration of H[[sub:2]]O[[sub:2]] decreases by half during each successive period of 6.00 hours. The decomposition of hydrogen peroxide is a first-order reaction, and, as can be shown, the half-life of a first-order reaction is independent of the concentration of the reactant. However, half-lives of reactions with other orders depend on the concentrations of the reactants.

@@ -58,9 +58,6 @@ The density of the neutron star is 3.4 [[MATH:12]] 10[[sup:18]] kg/m[[sup:3]]. T
 <!-- SEG:m68851:note-title:fs-idp24208128-title -->
 Answer:
 
-<!-- SEG:m68851:para:fs-idp177279920 -->
-The density of the neutron star is 3.4 [[MATH:14]] 10[[sup:18]] kg/m[[sup:3]]. The density of a hydrogen nucleus is 6.0 [[MATH:15]] 10[[sup:17]] kg/m[[sup:3]]. The neutron star is 5.7 times denser than the hydrogen nucleus.
-
 <!-- SEG:m68851:para:fs-idm88935120 -->
 To hold positively charged protons together in the very small volume of a nucleus requires very strong attractive forces because the positively charged protons repel one another strongly at such short distances. The force of attraction that holds the nucleus together is the [[term:strong nuclear force|term-00004]]. (The strong force is one of the four fundamental forces that are known to exist. The others are the electromagnetic force, the gravitational force, and the nuclear weak force.) This force acts between protons, between neutrons, and between protons and neutrons. It is very different from the electrostatic force that holds negatively charged electrons around a positively charged nucleus (the attraction between opposite charges). Over distances less than 10[[sup:−15]] meters and within the nucleus, the strong nuclear force is much stronger than electrostatic repulsions between protons; over larger distances and outside the nucleus, it is essentially nonexistent.
 
@@ -126,9 +123,6 @@ What is the binding energy for the nuclide [[MATH:22]] (atomic mass: 18.9984 amu
 
 <!-- SEG:m68851:note-title:fs-idm16440528-title -->
 Answer:
-
-<!-- SEG:m68851:para:fs-idp26065248 -->
-148.4 MeV
 
 <!-- SEG:m68851:para:fs-idp50673248 -->
 Because the energy changes for breaking and forming bonds are so small compared to the energy changes for breaking or forming nuclei, the changes in mass during all ordinary chemical reactions are virtually undetectable. As described in the chapter on thermochemistry, the most energetic chemical reactions exhibit enthalpies on the order of [[i:thousands]] of kJ/mol, which is equivalent to mass differences in the nanogram range (10[[sup:–9]] g). On the other hand, nuclear binding energies are typically on the order of [[i:billions]] of kJ/mol, corresponding to mass differences in the milligram range (10[[sup:–3]] g).
@@ -252,9 +246,6 @@ What is the binding energy per nucleon in [[MATH:33]] (atomic mass, 18.9984 amu)
 
 <!-- SEG:m68851:note-title:fs-idm62295296-title -->
 Answer:
-
-<!-- SEG:m68851:para:fs-idm46993968 -->
-7.810 MeV/nucleon
 
 <!-- SEG:m68851:title:fs-idm22567904-title -->
 Key Concepts and Summary

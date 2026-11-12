@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68758",
-  "extractedAt": "2026-09-28T20:03:06.458Z",
+  "extractedAt": "2026-11-12T15:01:02.630Z",
   "sourceHash": "0a813b5bf3e8ed4a",
-  "segmentCount": 92,
+  "segmentCount": 91,
   "segmentIds": [
     "m68758:title:auto-1",
     "m68758:abstract-item:abstract-item-1",
@@ -45,7 +45,6 @@
     "m68758:para:fs-idm87955168",
     "m68758:para:fs-idm126530816",
     "m68758:note-title:fs-idm134812432-title",
-    "m68758:para:fs-idm126530816",
     "m68758:para:fs-idm298779008",
     "m68758:caption:CNX_Chem_09_05_MolSpeed2-caption",
     "m68758:alt:fs-idm138828064-alt",

@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68764",
-  "extractedAt": "2026-09-28T20:03:06.688Z",
+  "extractedAt": "2026-11-12T15:01:03.178Z",
   "sourceHash": "f9d31768d53329a2",
-  "segmentCount": 142,
+  "segmentCount": 141,
   "segmentIds": [
     "m68764:title:auto-1",
     "m68764:abstract:auto-2",
@@ -89,7 +89,6 @@
     "m68764:para:fs-idp19907056",
     "m68764:para:fs-idm166392576",
     "m68764:note-title:fs-idm209726944-title",
-    "m68764:para:fs-idm166392576",
     "m68764:note-title:fs-idm192709088-title",
     "m68764:para:fs-idm184385920",
     "m68764:caption:CNX_Chem_10_02_BloodDraw-caption",

@@ -58,9 +58,6 @@ This figure shows two pink rectangles. The first is labeled, ‚ÄúMoles of A l.‚Äù
 <!-- SEG:m68713:note-title:fs-idp5038208-title -->
 Answer:
 
-<!-- SEG:m68713:para:fs-idp115249152 -->
-2.04 mol
-
 <!-- SEG:m68713:caption:CNX_Chem_04_03_iodine-caption -->
 Aluminum and iodine react to produce aluminum iodide. The heat of the reaction vaporizes some of the solid iodine as a purple vapor. (credit: modification of work by Mark Ott)
 
@@ -100,9 +97,6 @@ This figure shows two pink rectangles. The first is labeled, ‚ÄúMoles of C subsc
 <!-- SEG:m68713:note-title:fs-idp15879648-title -->
 Answer:
 
-<!-- SEG:m68713:para:fs-idp160971824 -->
-4.8 [[MATH:5]] 10[[sup:24]] NH[[sub:3]] molecules
-
 <!-- SEG:m68713:para:fs-idp222914448 -->
 These examples illustrate the ease with which the amounts of substances involved in a chemical reaction of known stoichiometry may be related. Directly measuring numbers of atoms and molecules is, however, not an easy task, and the practical application of stoichiometry requires that we use the more readily measured property of mass.
 
@@ -133,9 +127,6 @@ This figure shows four rectangles. The first is shaded yellow and is labeled, ‚Ä
 <!-- SEG:m68713:note-title:fs-idp214975456-title -->
 Answer:
 
-<!-- SEG:m68713:para:fs-idp3589264 -->
-39.0 g
-
 <!-- SEG:m68713:example-title:fs-idp274853984-title -->
 Relating Masses of Reactants
 
@@ -162,9 +153,6 @@ This figure shows four rectangles. The first is shaded yellow and is labeled, ‚Ä
 
 <!-- SEG:m68713:note-title:fs-idp58164000-title -->
 Answer:
-
-<!-- SEG:m68713:para:fs-idp38243856 -->
-13.22 g
 
 <!-- SEG:m68713:para:fs-idp90689472 -->
 These examples illustrate just a few instances of reaction stoichiometry calculations. Numerous variations on the beginning and ending computational steps are possible depending upon what particular quantities are provided and sought (volumes, solution concentrations, and so forth). Regardless of the details, all these calculations share a common essential component: the use of stoichiometric factors derived from balanced chemical equations. [[xref:CNX_Chem_04_03_flowchart]] provides a general outline of the various computational steps associated with many reaction stoichiometry calculations.

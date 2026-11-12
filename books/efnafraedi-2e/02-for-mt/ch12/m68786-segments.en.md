@@ -136,9 +136,6 @@ Write the equations that relate the rates of consumption of the reactants and th
 <!-- SEG:m68786:note-title:fs-idp88636608-title -->
 Answer:
 
-<!-- SEG:m68786:para:fs-idm25685056 -->
-[[MATH:6]]
-
 <!-- SEG:m68786:example-title:fs-idm24260800-title -->
 Reaction Rate Expressions for Decomposition of H[[sub:2]]O[[sub:2]]
 
@@ -177,9 +174,6 @@ If the rate of decomposition of ammonia, NH[[sub:3]], at 1150 K is 2.10 [[MATH:8
 
 <!-- SEG:m68786:note-title:fs-idp8646208-title -->
 Answer:
-
-<!-- SEG:m68786:para:fs-idm12525296 -->
-1.05 [[MATH:11]] 10[[sup:−6]] mol/L/s, N[[sub:2]] and 3.15 [[MATH:12]] 10[[sup:−6]] mol/L/s, H[[sub:2]].
 
 <!-- SEG:m68786:title:fs-idp13680896-title -->
 Key Concepts and Summary

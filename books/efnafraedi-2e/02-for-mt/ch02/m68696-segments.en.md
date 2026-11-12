@@ -61,9 +61,6 @@ Se[[sup:2−]], the selenide ion
 <!-- SEG:m68696:note-title:fs-idp105511808-title -->
 Answer:
 
-<!-- SEG:m68696:para:fs-idp2161376 -->
-Se[[sup:2−]], the selenide ion
-
 <!-- SEG:m68696:example-title:fs-idp51588352-title -->
 Formation of Ions
 
@@ -90,9 +87,6 @@ Al will form a cation with a charge of 3+: Al[[sup:3+]], an aluminum ion. Carbon
 
 <!-- SEG:m68696:note-title:fs-idp16846528-title -->
 Answer:
-
-<!-- SEG:m68696:para:fs-idp194881696 -->
-Al will form a cation with a charge of 3+: Al[[sup:3+]], an aluminum ion. Carbon will form an anion with a charge of 4−: C[[sup:4−]], a carbide ion.
 
 <!-- SEG:m68696:para:fs-idp9416320 -->
 The ions that we have discussed so far are called [[term:monatomic ions|term-00001]], that is, they are ions formed from only one atom. We also find many [[term:polyatomic ions|term-00002]]. These ions, which act as discrete units, are electrically charged molecules (a group of bonded atoms with an overall charge). Some of the more important polyatomic ions are listed in [[xref:fs-idp278664880]]. [[term:Oxyanions|term-00003]] are polyatomic ions that contain one or more oxygen atoms. At this point in your study of chemistry, you should memorize the names, formulas, and charges of the most common polyatomic ions. Because you will use them repeatedly, they will soon become familiar.
@@ -397,9 +391,6 @@ Na[[sub:2]]S
 <!-- SEG:m68696:note-title:fs-idp58394736-title -->
 Answer:
 
-<!-- SEG:m68696:para:fs-idp104312384 -->
-Na[[sub:2]]S
-
 <!-- SEG:m68696:caption:CNX_Chem_02_06_Sapphire-caption -->
 Although pure aluminum oxide is colorless, trace amounts of iron and titanium give blue sapphire its characteristic color. (credit: modification of work by Stanislav Doronenko)
 
@@ -432,9 +423,6 @@ Li[[sub:2]]O[[sub:2]]
 
 <!-- SEG:m68696:note-title:fs-idp186698128-title -->
 Answer:
-
-<!-- SEG:m68696:para:fs-idp19956160 -->
-Li[[sub:2]]O[[sub:2]]
 
 <!-- SEG:m68696:para:fs-idp288769312 -->
 Because an ionic compound is not made up of single, discrete molecules, it may not be properly symbolized using a [[i:molecular]] formula. Instead, ionic compounds must be symbolized by a formula indicating the [[i:relative numbers]] of its constituent ions. For compounds containing only monatomic ions (such as NaCl) and for many compounds containing polyatomic ions (such as CaSO[[sub:4]]), these formulas are just the empirical formulas introduced earlier in this chapter. However, the formulas for some ionic compounds containing polyatomic ions are not empirical formulas. For example, the ionic compound sodium oxalate is comprised of Na[[sup:+]] and [[MATH:34]] ions combined in a 2:1 ratio, and its formula is written as Na[[sub:2]]C[[sub:2]]O[[sub:4]]. The subscripts in this formula are not the smallest-possible whole numbers, as each can be divided by 2 to yield the empirical formula, NaCO[[sub:2]]. This is not the accepted formula for sodium oxalate, however, as it does not accurately represent the compound’s polyatomic anion, [[MATH:35]]
@@ -522,9 +510,6 @@ Using the periodic table, predict whether the following compounds are ionic or c
 
 <!-- SEG:m68696:note-title:fs-idp102788640-title -->
 Answer:
-
-<!-- SEG:m68696:para:fs-idm16446416 -->
-(a) molecular; (b) ionic; (c) molecular; (d) ionic
 
 <!-- SEG:m68696:title:fs-idp184156752-title -->
 Key Concepts and Summary

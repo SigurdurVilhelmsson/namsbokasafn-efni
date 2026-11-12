@@ -181,9 +181,6 @@ A 560-mL flask contains 21.3 g N[[sub:2]] at 145 °C. Calculate the pressure of 
 <!-- SEG:m68759:note-title:fs-idm71592544-title -->
 Answer:
 
-<!-- SEG:m68759:para:fs-idp6517264 -->
-(a) 46.562 atm; (b) 46.594 atm; (c) The van der Waals equation takes into account the volume of the gas molecules themselves as well as intermolecular attractions.
-
 <!-- SEG:m68759:title:fs-idp83168080-title -->
 Key Concepts and Summary
 

@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68732",
-  "extractedAt": "2026-09-28T20:03:05.459Z",
+  "extractedAt": "2026-11-12T15:00:59.766Z",
   "sourceHash": "4840cbc4649de2bb",
-  "segmentCount": 87,
+  "segmentCount": 85,
   "segmentIds": [
     "m68732:title:auto-1",
     "m68732:abstract:auto-2",
@@ -31,7 +31,6 @@
     "m68732:para:fs-idp16142080",
     "m68732:para:fs-idp107506336",
     "m68732:note-title:fs-idp230904800-title",
-    "m68732:para:fs-idp107506336",
     "m68732:caption:CNX_Chem_06_02_BohrArrows-caption",
     "m68732:alt:fs-idp153188464-alt",
     "m68732:example-title:fs-idp30549440-title",
@@ -44,7 +43,6 @@
     "m68732:para:fs-idp93343568",
     "m68732:para:fs-idp165556464",
     "m68732:note-title:fs-idp162376768-title",
-    "m68732:para:fs-idp165556464",
     "m68732:para:fs-idp45577312",
     "m68732:item:fs-idp161748720-item-1",
     "m68732:item:fs-idp161748720-item-2",
