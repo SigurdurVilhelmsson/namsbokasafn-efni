@@ -8,6 +8,9 @@ wins.
 - **Design:** [docs/superpowers/specs/2026-11-12-g112-duplicate-segment-ids-design.md](../../docs/superpowers/specs/2026-11-12-g112-duplicate-segment-ids-design.md)
   (frozen, approved 2026-11-12). Its §7 is what this file answers, and its §6 is the research record below.
 - **Branch:** `fix/g112-duplicate-ids`, cut from `69cc289c9`.
+- **Rulings:** every "build ledger Ruling N" or "ledger Ruling N" cited here, in `before-after.sh` and in the
+  branch's code comments is the numbered line in [build-rulings.md](build-rulings.md), copied verbatim from the
+  build's working ledger.
 - **What was compared:** `69cc289c9` (the branch start, the last commit before G1.12's changes) against `97ee194b9` (the branch after Task 4,
   which holds all of G1.12's code, data and tests). The Task 5 commit that adds this file touches only
   `test-results/g112-duplicate-ids-2026-11-12/` and the register.
