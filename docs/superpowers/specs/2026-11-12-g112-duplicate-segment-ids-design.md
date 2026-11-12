@@ -4,10 +4,14 @@
 - **Item:** Skerfur plan §3.1, gate row G1.12 (`docs/plans/2026-10-23-skerfur-development-plan.md`): _"Choose the
   mechanism in month 1, before the freeze."_
 - **Decided by:** [USER] asked Claude to skip the questions, recommend (a) or (b) and write the design up
-  (2026-11-12). **The recommendation and every choice below are Claude's calls for [USER] to check** (listed in §10).
-  Nothing here is approved until [USER] says so.
+  (2026-11-12). The recommendation and every choice below were Claude's calls (listed in §10); [USER] approved the
+  design as written on 2026-11-12 ("Approved as written").
 - **Status of the work:** the active register's newest ⏩ RESUME entry, never this file.
 - **Measured at:** `main` @ `5de321ca2`, in a throwaway scratch worktree. Nothing in the real tree was changed.
+
+> **FROZEN DESIGN RECORD — owned by G1.12, banner-dated 2026-11-12 ([USER] approved it as written).** It is evidence
+> of what was designed and why; it carries no status. If it disagrees with the active register, the register wins.
+> Do not sync it or edit it in place. Supersede it with a new record instead.
 
 ## 1. Recommendation
 
