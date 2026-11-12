@@ -17,6 +17,9 @@
  * (example, exercise, note, or none). For notes that carry an id, it then checks reach in the
  * COMMITTED `02-for-mt`: does `<module>:note-title:<note id>-title` exist there?
  *
+ * It also prints, per book, the notes whose parent is an `<example>` (the shape of Task 1's fixtures)
+ * and how many of them have a `<title>` element of their own as a direct child.
+ *
  * Read-only. The exit code is 1 until the census is printed.
  */
 import { readdirSync, readFileSync, existsSync, statSync } from 'node:fs';
@@ -78,6 +81,8 @@ for (const slug of readdirSync(BOOKS).sort()) {
     byContainer: {},
     byTitleParent: {},
     idless: 0,
+    inExample: 0,
+    inExampleTitled: 0,
   };
   const reach = { checked: 0, segFileMissing: 0, found: 0, notFound: 0, examples: [] };
   for (const f of files) {
@@ -88,6 +93,10 @@ for (const slug of readdirSync(BOOKS).sort()) {
     const chapterDir = relative(src, dirname(f)).split('/')[0];
     for (const note of notes) {
       t.notes += 1;
+      if (note.parentNode && note.parentNode.localName === 'example') {
+        t.inExample += 1;
+        if (elementChildren(note).some((c) => c.localName === 'title')) t.inExampleTitled += 1;
+      }
       const title = firstPlainTitle(note);
       if (!title || title.parentNode === note) continue;
       t.quirk += 1;
@@ -130,6 +139,9 @@ for (const slug of readdirSync(BOOKS).sort()) {
   grand.quirk += t.quirk;
   out.push(
     `${slug}: ${t.files} cnxml files, ${t.notes} notes, ${t.quirk} with a borrowed first <title>`
+  );
+  out.push(
+    `  notes whose parent is an <example>: ${t.inExample}, with a <title> of their own: ${t.inExampleTitled}`
   );
   if (t.quirk) {
     out.push(`  by nearest container: ${JSON.stringify(t.byContainer)}`);

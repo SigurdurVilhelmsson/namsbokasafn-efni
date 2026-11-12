@@ -1,19 +1,25 @@
 G1.12 Task 5: note-title census (processNote first-<title> regex)
 
 edlisfraedi-2e: 283 cnxml files, 428 notes, 0 with a borrowed first <title>
+  notes whose parent is an <example>: 1, with a <title> of their own: 1
 efnafraedi-2e: 149 cnxml files, 460 notes, 1 with a borrowed first <title>
+  notes whose parent is an <example>: 292, with a <title> of their own: 292
   by nearest container: {"none":1}
   the borrowed title belongs to: {"para":1}
   notes without an id (reach not checked): 0
   reach in committed 02-for-mt: 1 checked; segment file absent 0; note-title segment present 1; absent 0
     e.g. ch17 m68826 fs-idp45256160 (inside none; title of a <para>): segment "Statue of Liberty: Changing Colors" / source title "Statue of Liberty: Changing Colors"
 liffraedi-2e: 259 cnxml files, 461 notes, 12 with a borrowed first <title>
+  notes whose parent is an <example>: 0, with a <title> of their own: 0
   by nearest container: {"none":12}
   the borrowed title belongs to: {"para":12}
   notes without an id (reach not checked): 0
   reach in committed 02-for-mt: 12 checked; segment file absent 12; note-title segment present 0; absent 0
 lifraen-efnafraedi: 342 cnxml files, 4 notes, 0 with a borrowed first <title>
+  notes whose parent is an <example>: 0, with a <title> of their own: 0
 orverufraedi: 159 cnxml files, 711 notes, 0 with a borrowed first <title>
+  notes whose parent is an <example>: 0, with a <title> of their own: 0
 stjornufraedi: 0 cnxml files, 0 notes, 0 with a borrowed first <title>
+  notes whose parent is an <example>: 0, with a <title> of their own: 0
 
 TOTAL: 1192 files, 2064 notes, 13 with a borrowed first <title>

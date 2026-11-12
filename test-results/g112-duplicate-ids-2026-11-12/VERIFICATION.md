@@ -1,13 +1,16 @@
 # G1.12 duplicate segment ids: verification and research record
 
+**🧊 FROZEN 2026-11-12.** Evidence, never status. Status lives in the active register
+(`docs/plans/2026-07-21-post-item17-followup-campaign.md`). If this file and the register disagree, the register
+wins.
+
 - **Date:** 2026-11-12.
 - **Design:** [docs/superpowers/specs/2026-11-12-g112-duplicate-segment-ids-design.md](../../docs/superpowers/specs/2026-11-12-g112-duplicate-segment-ids-design.md)
   (frozen, approved 2026-11-12). Its §7 is what this file answers, and its §6 is the research record below.
-- **Branch:** `fix/g112-duplicate-ids`, cut from `69cc289c9`. **Not pushed, not merged, not deployed.**
-- **What was compared:** `69cc289c9` (the last commit before G1.12) against `97ee194b9` (the branch after Task 4,
+- **Branch:** `fix/g112-duplicate-ids`, cut from `69cc289c9`.
+- **What was compared:** `69cc289c9` (the branch start, the last commit before G1.12's changes) against `97ee194b9` (the branch after Task 4,
   which holds all of G1.12's code, data and tests). The Task 5 commit that adds this file touches only
   `test-results/g112-duplicate-ids-2026-11-12/` and the register.
-- **Status:** the active register's newest ⏭ entry for G1.12, never this file.
 
 All evidence named here is committed in this directory, apart from the tests, which are committed with the code.
 The build's task reports are not in the repository, so the numbers they hold are carried here.
@@ -82,7 +85,19 @@ re-extract; `RESULT: PASS`). The census half reads `git show <base>:` and parses
   - **Copied trees byte-identical:** chemistry's injected `03-translated/mt-preview` (297 files), and the fresh
     `02-for-mt` and `02-structure` of biology (306 + 746 files), microbiology (188 + 478) and organic (404 + 1,061).
     Control: on each side inject overwrote 136 files and changed 112 tracked files against the committed tree, so
-    the comparison is of real output.
+    the comparison is of real output for those files.
+  - **⚠️ But inject wrote nothing for 8 of the 83 affected modules, identically on both sides,** so for them
+    "byte-identical" compares the committed file with itself, and the 136/136 control cannot see that. Four FAIL on
+    pre-existing marker residue (`m68700`, `m68733`, `m68747`, `m68844`: "Marker residue in injected output … a
+    [[TYPE:…]] placeholder was not converted"). Four are SKIPPED as incomplete injections, on pre-existing
+    untranslated-English residue (`m68744`, `m68798`, `m68852`, `m68858`). Two of the eight (`m68700`, `m68747`)
+    hold wording-different Icelandic pairs. Five unaffected modules are not written either (`m68662`, `m68856`,
+    `m68863`, `m68865`, `m68866`); 149 − 13 = 136. Measured from the saved outputs of the PASS run with
+    `grep -hoE '^m[0-9]+: (FAILED|SKIPPED)' out-<side>/cmd/inject-*.{out,err} | sort -u`: the same 13 lines on both
+    sides, 8 of them in the frozen list. **The compensating evidence for these eight:** their inject stdout and
+    stderr (the refusal itself and the base-only duplicate notes) are identical on both sides, and Task 4's
+    in-memory sentinel (`tools/__tests__/duplicate-id-survivor-corpus.test.js`, §7 item 4 below) injects and
+    renders all 285 ids without going through the CLI's refusal, so it covers these modules too.
   - **Physics (317 + 1,044 files): byte-identical except ONE pre-registered difference** (build ledger Ruling 22).
     In ch03 `m42045`, `m42045:para:import-auto-id1839825` (a para in a note nested directly in an example) is
     extracted twice at base and once on the branch: the extract line goes from 155 to 154 segments, the segment
@@ -90,7 +105,22 @@ re-extract; `RESULT: PASS`). The census half reads `git show <base>:` and parses
     155 → 154 with exactly that id's later entry removed from `segmentIds`, every other key equal. The script
     checks it by these exact values, requires it to be observed, and fails on any other difference. The first full
     run, before the pre-registration, reported exactly this and nothing else as `RESULT: FAIL`. It is G1.12's fix
-    on a fresh extract of a physics chapter that is not committed and has no MT (correction 2 below).
+    on a fresh extract of a physics chapter: this change commits nothing for physics, and physics ch03 has no
+    committed `02-for-mt` or `02-mt-output`, so nothing ships (correction 2 below).
+  - **The pre-registration was tested before the re-run** with five planted negatives, each on a throw-away copy
+    of the first (FAIL) run's saved outputs, against the comparison half of the script; the unchanged copy passed.
+    Each produced these failure lines:
+
+    | Planted | Failure lines |
+    |---|---|
+    | the branch `m42045-segments.en.md` text changed (one word) | `tree edlisfraedi-2e-02-for-mt: ch03/m42045-segments.en.md differs, but not as pre-registered: base minus the second block is not byte-identical to the branch file`; `the pre-registered physics m42045 difference was not observed in full` |
+    | the branch manifest's `segmentCount` set to 153 | `tree edlisfraedi-2e-02-structure: ch03/m42045-manifest.json differs, but not as pre-registered: segmentCount 155 -> 153 (want 155 -> 154)`; the same "not observed in full" line |
+    | a second physics ch03 file differs (`chapter-metadata-segments.en.md`, one line appended) | `tree edlisfraedi-2e-02-for-mt: 2 difference(s)`; the same "not observed in full" line |
+    | the branch extract stdout line says 153 segments | `extract-edlisfraedi-2e-ch03: stdout differs`; the same "not observed in full" line |
+    | the expected difference absent (branch segment file replaced by the base one) | `the pre-registered physics m42045 difference was not observed in full` |
+
+    **A known limit:** all five target the m42045 key. None exercises the per-command notes-multiset check or the
+    battery's finding allowlist; those were exercised only by the real runs (the smoke runs and the two full runs).
   - **The battery:** 3,066 verdicts on each side, no key on one side only, no CTX-FAILED, 0 verdicts differ.
 - **`validate-chapter` reports no new segment-count mismatch:** its output is identical on both sides.
 
@@ -261,9 +291,11 @@ with its own Node (v22.22.2), over the 83 listed modules' layer-2 logs:
 
 - Raw: 20 chains, 32 records, on 10 segments (spec §3's figures, reproduced). No kept group was dropped on these
   segments, so kept changes equal raw records.
-- **Next to the G1.23 spec's "22 kept changes in 7 segments"** (§6.4, measured before 2026-11-03): the same
-  output without ch10's three segments sums to exactly 22 changes in 7 segments. ch10's layer 2 was written on 2026-11-08
-  (`52354ee03`), after that measurement, and it adds 3 segments (`m68761`, `m68768`, `m68773`) and 10 changes.
+- **Next to the G1.23 spec's "22 kept changes in 7 segments"** (§6.4, measured before 2026-11-03), which counts
+  **both occurrences, without ch10**. The same output, both occurrences, without ch10's three segments, sums to
+  exactly 22 changes in 7 segments. ch10's layer 2 was written on 2026-11-08 (`52354ee03`), after that measurement;
+  it adds 3 segments (`m68761`, `m68768`, `m68773`) with 10 changes counting both occurrences, 5 per occurrence.
+  On the occurrence-1 basis: 11 changes in 7 segments without ch10, plus ch10's 5, gives the 16 above.
 - Before G1.12, §6.4 withheld both occurrences of these 10 segments. After it, occurrence 0's 13 groups can be
   offered, and occurrence 1's 13 groups (16 changes) can never be: their copy is not served. Chain 0 covers all
   10 segments, so what is lost is suggestions for a copy nobody is served (spec §10 call 4).
@@ -338,10 +370,14 @@ implicit date; the frozen 2026-11-09 README's bare command therefore no longer r
 longer has the hash a run recorded. After G1.12 that is the case for every chapter holding an affected module: all
 except the appendices, ch00 and ch18.
 
-- **The last commit before G1.12 is `69cc289c9`** (`69cc289c9015bff82a9a7f05e03854e976bd4537`). Checking it out
-  reproduces layer 2, because the run records pin their inputs by hash.
-- It stays reachable from `main` only if the PR is merged with a merge commit (as this register's PRs are) or the
-  ref is otherwise kept. A squash merge would leave it on the branch alone.
+- **The layer-2 anchor today is `5de321ca2`**, on `main`. The branch start `69cc289c9` differs from it in four docs
+  files only (`git diff --stat 5de321ca2 69cc289c9`: the register, the Skerfur plan, the G1.12 plan and the G1.12
+  spec), so checking out `5de321ca2` reproduces the layer 2 the run records pin by hash. `69cc289c9` itself is not
+  on `main`; it would be reachable only through a merge commit.
+- **The definitive anchor is the G1.12 merge commit's first parent.** Landing condition 2 has the last planned
+  chemistry `term-pass apply --write` land on `main` before G1.12, and that would write a newer layer 2 than
+  `5de321ca2` holds. The commit just before G1.12 on `main` is then the one that reproduces the layer 2 G1.12
+  supersedes, so record that first parent when G1.12 merges.
 
 ### 6. Before/after measurements
 
@@ -374,28 +410,33 @@ Committed in this directory: `verify-cut.txt`, `battery-before-fix.txt`, `batter
 
 ## Corrections to the frozen spec, proposed for [USER]
 
-The spec is frozen and is not edited here. The register's G1.12 ⏭ entry carries these four as one proposed
+The spec is frozen and is not edited here. The register's G1.12 ⏭ entry carries these five as one proposed
 `✏️ AMENDED` block for [USER] to approve or reject:
 
 1. **§5.2's "No change needed to" list missed the §C82 re-MT battery** (build ledger Ruling 10). Closed by Task 3b,
    as the battery section above describes: 0 of 3,066 verdicts differ from the branch start.
-2. **§3's "0 duplicated ids in physics, biology, microbiology, organic" and §5.5's "show no diff" for the other books
-   counted only committed `02-for-mt`** (Ruling 22). `before-after.sh` is the fresh-extract census of every chapter
+2. **§3's "0 duplicated ids in physics, biology, microbiology, organic" counted only committed `02-for-mt`**, and
+   §5.5's instruction to "show no diff" for the other books followed from that premise (Ruling 22). `before-after.sh` is the fresh-extract census of every chapter
    of those four books. It finds exactly one other instance of the shape: physics ch03 `m42045`, whose
    `m42045:para:import-auto-id1839825` (a para in a note nested directly in an example, `01-source` path
    `para < note#fs-id1820082 < example#fs-id1890300 < section`) is emitted twice at base and once on the branch
-   (`segmentCount` 155 → 154). Physics commits only ch04 of `02-for-mt`, so the census never saw it. Physics ch03 has
-   no `02-mt-output` and nothing for physics is committed, so nothing ships. The first full run reported it as a
+   (`segmentCount` 155 → 154). Physics commits only ch04 of `02-for-mt`, so the census never saw it. This change commits
+   nothing for physics, and physics ch03 has no committed `02-for-mt` or `02-mt-output`, so nothing ships. The first full run reported it as a
    FAIL; the difference is now pre-registered in the script by exact value, and any other difference still fails.
 3. **§6 item 2's cost basis.** 17,366 characters is the text alone, not the `--dry-run` ceiling. The ceiling is
    29,385 characters (293.85 ISK); §C91's expectation is 17,651 characters (176.51 ISK).
-4. **§6 item 4's comparison figure.** The chain-1 changes that become unservable are 13 kept groups, 16 kept
-   changes, in 10 segments. The G1.23 spec's "22 kept changes in 7 segments" predates ch10's layer 2 (2026-11-08)
-   and excludes ch10's 3 segments and 10 changes.
+4. **§6 item 4's comparison figure.** The chain-1 changes that become unservable are, on the occurrence-1 basis
+   with ch10 included, 13 kept groups and 16 kept changes in 10 segments. The G1.23 spec's "22 kept changes in 7
+   segments" counts both occurrences without ch10, because it predates ch10's layer 2 (2026-11-08). On the
+   occurrence-1 basis without ch10 the figure is 11 changes in 7 segments; ch10 adds 3 segments and 5 changes per
+   occurrence (10 counting both).
+5. **§7 item 5's list-item fixture was replaced by fixture B** (the plan's Task 1, approved with it). `processList`
+   emits only `item` segments, so a list-item paragraph cannot tell an id-keyed skip from a type-keyed one; a
+   title-only paragraph can, and fixture B pins it.
 
 ## The local CI gate
 
-Run locally on 2026-11-12, as CI runs it, on the final tree: `97ee194b9` plus this commit's uncommitted
+Run locally on 2026-11-12, as CI runs it, on the final tree of the Task 5 commit (`22895efda`): `97ee194b9` plus that commit's then-uncommitted
 `test-results/` files and register edit. Each command ran alone, one after another, after `free -h` showed about
 6.3 GiB available. The Actions tab owns the CI verdict once a PR exists.
 
