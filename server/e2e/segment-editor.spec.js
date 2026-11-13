@@ -138,8 +138,15 @@ test.describe('B-4 Endurstilla revert button', () => {
     const original = await ta.inputValue();
     await ta.fill(original + ' BREYTING-XYZ');
     await ta.dispatchEvent('input');
+    // Endurstilla asks before it throws changed text away (unsaved-text.spec.js, ED-04); OK reverts.
+    const asked = [];
+    page.once('dialog', (d) => {
+      asked.push(d.message());
+      d.accept().catch(() => {});
+    });
     await panel.locator('.btn-revert').click();
     await expect(ta).toHaveValue(original);
+    expect(asked).toHaveLength(1);
     await expect(panel).toBeVisible(); // panel stays open
   });
 });

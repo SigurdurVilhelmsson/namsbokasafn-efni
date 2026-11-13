@@ -21,6 +21,7 @@
   let userName = null;
   let termLookupTimer = null;
   const dirtyEdits = new Set(); // Track segment IDs with unsaved textarea edits
+  const savesInFlight = new Set(); // segment ids whose save has been sent and not yet answered (saveEdit)
   let draftTimer = null;
   let figDraftTimer = null;
   let lastServerSaveTime = null;
@@ -54,14 +55,17 @@
   function updateSaveStatusBar() {
     const bar = document.getElementById('save-status-bar');
     if (!bar) return;
-    const count = dirtyEdits.size;
+    // A kept text whose row the filters hide is unsaved too (it waits in heldDrafts for its row).
+    const count =
+      dirtyEdits.size + [...heldDrafts.keys()].filter((id) => !dirtyEdits.has(id)).length;
     bar.classList.remove('has-unsaved', 'all-saved', 'saving');
     if (count > 0) {
       bar.classList.add('has-unsaved');
       document.getElementById('save-status-text').textContent = UI.save.unsaved(count);
     } else {
       bar.classList.add('all-saved');
-      document.getElementById('save-status-text').textContent = UI.save.allSaved;
+      // Interface audit ED-04: after a discard nothing was saved, so the line says only what it knows.
+      document.getElementById('save-status-text').textContent = UI.save.nothingUnsaved;
     }
     document.getElementById('save-status-time').textContent = lastServerSaveTime
       ? UI.save.lastSaved +
@@ -199,8 +203,8 @@
         ? saveRetry.takeParked(parkedPrefix())
         : [];
     const entries = segmentSaveState.mergeRestoreSources(fromStorage, parked);
-    // A pane already open holds its text on screen (a declined re-render): leave it.
-    const ids = Object.keys(entries).filter((id) => !paneState.has(id));
+    // A pane already holding text on screen is left alone: its row was not rebuilt by this load (renderSegments).
+    const ids = Object.keys(entries).filter((id) => !paneState.has(id) && !dirtyEdits.has(id));
     // A parked replay for this module comes back even with no draft stored: a body queued by a page loaded before
     // the deploy, replayed by this page after F5 (decision 28).
     if (!found && parked.length === 0) return;
@@ -214,8 +218,15 @@
       }
     }
     if (others.length > 0 && confirm(UI.confirm.draftRecovery(others.length))) {
-      for (const segId of others) installDraft(segId, entries[segId], { addRestoreItem: true });
+      for (const segId of others) {
+        // The editor asked for it back: a row the filters hide must not make that answer a deletion.
+        if (!installDraft(segId, entries[segId], { addRestoreItem: true })) {
+          heldDrafts.set(segId, { entry: entries[segId], addRestoreItem: true });
+        }
+      }
     }
+    // A held text's row is rendered whatever the filters say (renderSegments), which installs it.
+    if (heldDrafts.size > 0) renderSegments();
     updateSaveStatusBar();
     saveDraft(); // the restored panes are dirty: persist them under this tab's key now
   }
@@ -223,15 +234,23 @@
   /**
    * Put a draft entry into its pane. `addRestoreItem`: the text came back from
    * storage, so its assists are re-installed BEFORE a draft-restore item
-   * (§5.18). Returns false when the row is not on screen (filtered out).
+   * (§5.18). Returns false when the row is not on screen (its segment is gone).
+   * `fields`: the category and note the pane held when its text was taken out
+   * (paneFields), put back so the rebuilt row's own do not replace them.
    */
-  function installDraft(segId, entry, { addRestoreItem }) {
+  function installDraft(segId, entry, { addRestoreItem, fields = null }) {
     if (!rowElement(segId)) return false;
-    openEditPanel(segId);
+    openEditPanel(segId, { focus: false }); // whoever is typing keeps the focus (renderSegments restores it)
     const ta = document.getElementById('textarea-' + cssId(segId));
     if (!ta) return false;
     heldDrafts.delete(segId);
     ta.value = entry.text;
+    if (fields) {
+      const cat = document.getElementById('cat-' + cssId(segId));
+      const note = document.getElementById('note-' + cssId(segId));
+      if (cat) cat.value = fields.category;
+      if (note) note.value = fields.note;
+    }
     const row = rowValues(segId);
     paneState.set(segId, {
       baseSha256: entry.baseSha256, // the base it was typed on; null when unknown (legacy)
@@ -249,7 +268,10 @@
     // The text was set without an input event: redraw, so the restored accepts come back tagged (G1.23).
     refreshSuggestionView(segId);
     showDraftNotice(segId, segmentSaveState.noticeFor(entry, row ? row.baseSha256 : null));
-    setSaveBlocked(segId, entry.refused === 'DUPLICATE_ID');
+    setSaveBlocked(
+      segId,
+      entry.refused === 'DUPLICATE_ID' || conflictBlocked(segId, entry.refused)
+    );
     return true;
   }
 
@@ -339,6 +361,7 @@
     DUPLICATE_ID: UI.draftNotice.duplicateId,
     BOOK_NOT_MINTED: UI.draftNotice.bookNotMinted,
     NO_LAYER: UI.draftNotice.noLayer,
+    conflict: UI.draftNotice.conflict, // the save route's { error: 'conflict' } (segmentSaveState.CONFLICT_CODE)
     REFUSED: UI.draftNotice.refused,
   };
 
@@ -366,10 +389,62 @@
     }
   }
 
-  /** A kept text is never dropped silently. */
+  /**
+   * A kept text is never dropped silently. It is kept while its pane says so, and also while it waits in the hold
+   * for the reload that follows its refusal: the pane is still open on screen then, with no state of its own.
+   */
   function confirmDiscardKept(segmentId) {
     const st = paneState.get(segmentId);
-    return !(st && st.refused) || confirm(UI.draftNotice.discardKept);
+    return (
+      !((st && st.refused) || heldDrafts.has(segmentId)) || confirm(UI.draftNotice.discardKept)
+    );
+  }
+
+  /** Whether the pane holds text the editor changed: dirty, and not typed back to what the pane started with. */
+  function paneTextChanged(segmentId) {
+    const ta = document.getElementById('textarea-' + cssId(segmentId));
+    return !!ta && dirtyEdits.has(segmentId) && ta.value !== ta.defaultValue;
+  }
+
+  /**
+   * Interface audit ED-04: Hætta við, Endurstilla and Escape in the text box threw changed text away unasked.
+   * One question per gesture: a kept text asks its own (confirmDiscardKept), any other changed text asks
+   * discardChanges, and a pane with nothing changed asks nothing.
+   */
+  function confirmDiscard(segmentId) {
+    const st = paneState.get(segmentId);
+    if ((st && st.refused) || heldDrafts.has(segmentId)) return confirmDiscardKept(segmentId);
+    return !paneTextChanged(segmentId) || confirm(UI.confirm.discardChanges);
+  }
+
+  /** Back's question, also asked before another unit is opened over this one (loadModule). */
+  function confirmLeaveUnit() {
+    // It asks when leaving would discard a changed text, and says that it will; a text a refused save kept is not
+    // discarded (clearDraft writes it back), so it does not count that one.
+    const losing = [...dirtyEdits].filter(
+      (id) => !(paneState.get(id) && paneState.get(id).refused) && paneTextChanged(id)
+    ).length;
+    return losing === 0 || confirm(UI.confirm.leaveDiscards(losing));
+  }
+
+  /**
+   * A text kept by a conflict is not saved while the row is another editor's to finish: the row's own Breyta rule
+   * (segmentEditAllowed). Without this the re-installed pane would save a competing edit over the other editor's
+   * waiting one, which the row then no longer shows. It lifts when that edit has been decided.
+   */
+  function conflictBlocked(segmentId, refused) {
+    return (
+      refused === segmentSaveState.CONFLICT_CODE &&
+      !!moduleData &&
+      !segmentEditAllowed(moduleData.edits[segmentId]?.[0])
+    );
+  }
+
+  /** The category and note a pane holds now; they are not part of a draft entry, so a carried pane brings them. */
+  function paneFields(segmentId) {
+    const cat = document.getElementById('cat-' + cssId(segmentId));
+    const note = document.getElementById('note-' + cssId(segmentId));
+    return { category: cat ? cat.value : '', note: note ? note.value : '' };
   }
 
   function keptPaneEntries() {
@@ -396,7 +471,7 @@
 
   /** Move a refused text into the hold and the draft, so the reload restores it. */
   function keepText(segmentId, entry) {
-    heldDrafts.set(segmentId, { entry, addRestoreItem: true });
+    heldDrafts.set(segmentId, { entry, addRestoreItem: true, fields: paneFields(segmentId) });
     dirtyEdits.delete(segmentId);
     paneState.delete(segmentId);
     saveDraft(); // every dirty pane's text, plus the held one, before the reload
@@ -468,7 +543,11 @@
 
   function reinstallHeldDrafts() {
     for (const [segId, held] of [...heldDrafts]) {
-      installDraft(segId, held.entry, { addRestoreItem: held.addRestoreItem }); // filtered out: stays held
+      // No row (the segment is gone from the module): it stays held.
+      installDraft(segId, held.entry, {
+        addRestoreItem: held.addRestoreItem,
+        fields: held.fields || null,
+      });
     }
     updateSaveStatusBar();
   }
@@ -584,6 +663,15 @@
   // ================================================================
   async function loadModule(moduleId, { force = false } = {}) {
     if (!force && _loadingModuleId === moduleId) return; // already loading this module
+    // Another unit while one is open: after a failed reload the module list is on screen above the open unit.
+    // The open one is left first, as Back leaves it and with Back's question. Otherwise its rows with unsaved
+    // text would stay in the other unit's table (renderSegments leaves such rows alone), and the draft timer
+    // would write their text under the other unit's key.
+    if (moduleData && moduleId !== currentModuleId) {
+      if (!confirmLeaveUnit()) return;
+      clearDraft();
+      leaveModule();
+    }
     _loadingModuleId = moduleId;
     currentModuleId = moduleId;
 
@@ -1225,7 +1313,9 @@
   function insertRepetition(segmentId) {
     const rep = repetitionData?.[segmentId];
     if (!rep?.suggestion) return;
-    if (!confirmDiscardKept(segmentId)) return;
+    // It replaces the pane's whole text: a kept text asks its own question, any other changed text asks
+    // discardChanges (interface audit ED-18; it used to ask only about a kept text).
+    if (!confirmDiscard(segmentId)) return;
     const discardsKept = Boolean(paneState.get(segmentId)?.refused);
     openEditPanel(segmentId);
     const ta = document.getElementById('textarea-' + cssId(segmentId));
@@ -1558,35 +1648,27 @@
       `;
   }
 
-  function renderSegments() {
-    // O1: Close open edit panels before re-rendering to prevent losing typed text
-    const openPanels = document.querySelectorAll('.edit-panel.active');
-    // A pane holding a kept text is carried across (index decision 12); only
-    // the other dirty panes can lose text.
-    const losable = [...dirtyEdits].filter(
-      (id) => !(paneState.get(id) && paneState.get(id).refused)
-    );
-    if (openPanels.length > 0 && losable.length > 0) {
-      // Returns false so callers that MUTATED state to make this render happen
-      // (jumpToSegment widens the filters) can roll back instead of leaving the
-      // filter bar describing a table that was never rebuilt.
-      if (!confirm(UI.confirm.closePanels)) return false;
+  /**
+   * The rows whose pane holds unsaved text that is not a refused save's kept text, by segment id. A re-render
+   * never rebuilds them (interface audit 2026-11-13, ED-03): renderSegments used to ask closePanels, up to three
+   * times after one save, and OK closed every pane and lost its text. A kept text is not in this set: its pane is
+   * carried by re-install on the rebuilt row (index decision 12), because the row values its save was refused on
+   * are the stale ones.
+   */
+  function liveRows() {
+    const rows = new Map();
+    for (const segId of dirtyEdits) {
+      const st = paneState.get(segId);
+      if ((st && st.refused) || heldDrafts.has(segId)) continue;
+      const tr = rowElement(segId);
+      const panel = tr && tr.querySelector('.edit-panel.active');
+      if (panel) rows.set(segId, tr);
     }
-    for (const [segId, entry] of Object.entries(keptPaneEntries())) {
-      if (!heldDrafts.has(segId)) heldDrafts.set(segId, { entry, addRestoreItem: false });
-    }
-    openPanels.forEach((panel) => {
-      panel.classList.remove('active');
-      const row = panel.closest('tr');
-      if (row) row.classList.remove('editing');
-    });
-    dirtyEdits.clear();
-    paneState.clear(); // a re-render closes every pane
-    // O4: Clear stale DOM reference
-    lastFocusedTextarea = null;
-    updateSaveStatusBar();
+    return rows;
+  }
 
-    const tbody = document.getElementById('segments-body');
+  /** The module's segments the three filters let through, in module order. */
+  function filteredSegments() {
     const filterType = document.getElementById('filter-type').value;
     const filterCat = document.getElementById('filter-category').value;
     const filterStatus = document.getElementById('filter-status').value;
@@ -1637,10 +1719,112 @@
         return latestEdit && latestEdit.status === filterStatus;
       });
     }
+    return segments;
+  }
 
-    tbody.innerHTML = segments.map((seg) => renderSegmentRow(seg)).join('');
+  /**
+   * Rebuild the table from moduleData. It asks nothing and loses no text (ED-03): a row whose pane holds unsaved
+   * text stays in the page exactly as it is (liveRows), never detached, so its text, caret, category and note
+   * survive, and every other row is rebuilt around it. Such a row keeps the values it was rendered with (the base,
+   * the displayed pair), which are the ones its text was typed against and the ones its save echoes (§5.18): if
+   * they are no longer current the server refuses the save and the text is kept. It also stays on screen when the
+   * filters would hide it. A live row is marked, and rebuilt once its text is saved (the reload) or discarded
+   * (rebuildSkippedRow). Always returns true; the return value is kept for jumpToSegment, which used to roll back
+   * a declined render.
+   */
+  function renderSegments() {
+    // Whoever is typing keeps the focus and the caret: a kept pane re-installed below must not take them.
+    const focused = document.activeElement;
+    const caret =
+      focused && focused.tagName === 'TEXTAREA'
+        ? [focused.selectionStart, focused.selectionEnd, focused.scrollTop]
+        : null;
+    // A text waiting in the hold whose pane is still open (its refusal's reload is on its way): what the box
+    // holds now is the text, and its category and note come along.
+    for (const [segId, held] of heldDrafts) {
+      const tr = rowElement(segId);
+      const ta = tr && tr.querySelector('.edit-panel.active textarea');
+      if (!ta) continue;
+      held.entry = Object.assign({}, held.entry, { text: ta.value });
+      held.fields = paneFields(segId);
+    }
+    const live = liveRows();
+    for (const [segId, entry] of Object.entries(keptPaneEntries())) {
+      if (!heldDrafts.has(segId)) {
+        heldDrafts.set(segId, { entry, addRestoreItem: false, fields: paneFields(segId) });
+      }
+    }
+    // Every other pane closes with its row: it holds no unsaved text (a kept one is in the hold above).
+    for (const segId of [...dirtyEdits]) if (!live.has(segId)) dirtyEdits.delete(segId);
+    for (const segId of [...paneState.keys()]) if (!live.has(segId)) paneState.delete(segId);
+    // O4: Clear stale DOM reference
+    if (!(lastFocusedTextarea && live.has(lastFocusedTextarea._segmentId))) {
+      lastFocusedTextarea = null;
+    }
+    updateSaveStatusBar();
+
+    const tbody = document.getElementById('segments-body');
+    // A row with unsaved text, and the row of a text waiting in the hold, are on screen whatever the filters say:
+    // the first is not touched at all, the second is rebuilt so its text has a pane to come back to.
+    const passes = new Set(filteredSegments());
+    const segments = moduleData.segments.filter(
+      (seg) => passes.has(seg) || live.has(seg.segmentId) || heldDrafts.has(seg.segmentId)
+    );
+    if (live.size === 0) {
+      tbody.innerHTML = segments.map((seg) => renderSegmentRow(seg)).join('');
+    } else {
+      const kept = new Set(live.values());
+      for (const node of [...tbody.childNodes]) if (!kept.has(node)) node.remove();
+      let html = '';
+      const flushBefore = (node) => {
+        if (!html) return;
+        const tpl = document.createElement('template');
+        tpl.innerHTML = html;
+        tbody.insertBefore(tpl.content, node);
+        html = '';
+      };
+      const placed = new Set();
+      for (const seg of segments) {
+        const tr = live.get(seg.segmentId);
+        if (tr && !placed.has(tr)) {
+          placed.add(tr);
+          tr.setAttribute('data-render-skipped', '');
+          flushBefore(tr);
+        } else {
+          html += renderSegmentRow(seg);
+        }
+      }
+      flushBefore(null);
+    }
     reinstallHeldDrafts();
+    if (focused && focused.isConnected && document.activeElement !== focused) {
+      focused.focus({ preventScroll: true });
+      if (caret) {
+        focused.setSelectionRange(caret[0], caret[1]);
+        focused.scrollTop = caret[2];
+      }
+    }
     pauseSuggestionButtons(); // every row may have moved, often with no click (an opening's term reload)
+    return true;
+  }
+
+  /**
+   * A live row that a re-render skipped is older than moduleData. Once its text is discarded, rebuild it from
+   * moduleData (or drop it, if the filters hide it and its pane has closed). Returns whether it did; a row no
+   * re-render skipped is left alone.
+   */
+  function rebuildSkippedRow(segmentId, { keep = false } = {}) {
+    const tr = rowElement(segmentId);
+    if (!tr || !tr.hasAttribute('data-render-skipped') || !moduleData) return false;
+    const seg = moduleData.segments.find((s) => s.segmentId === segmentId);
+    // `keep`: the pane stays open (Endurstilla), so the row stays too, whatever the filters say.
+    if (!seg || (!keep && !filteredSegments().includes(seg))) {
+      tr.remove();
+      return true;
+    }
+    const tpl = document.createElement('template');
+    tpl.innerHTML = renderSegmentRow(seg);
+    tr.replaceWith(tpl.content);
     return true;
   }
 
@@ -2237,8 +2421,10 @@
         `;
     }
 
-    // Pre-select the category in the dropdown if re-editing
-    const selectedCat = latestEdit?.category || '';
+    // Pre-select the category, and pre-fill the note, when the editor is re-editing their OWN edit. Another
+    // editor's are theirs: pre-filled, a save from this pane would store them under this editor's name.
+    const ownLatest = latestEdit && latestEdit.editor_username === userName ? latestEdit : null;
+    const selectedCat = ownLatest?.category || '';
 
     // Cross-editor conflict indicator
     const hasOtherEdits = (moduleData.otherPendingSegments || []).includes(seg.segmentId);
@@ -2284,7 +2470,7 @@
                   <option value="style" title="Tónn, orðalag, stílbrigði" ${selectedCat === 'style' ? 'selected' : ''}>Stíll</option>
                   <option value="omission" title="Vantar efni eða hluta úr upprunalega textanum" ${selectedCat === 'omission' ? 'selected' : ''}>Úrfelling</option>
                 </select>
-                <input type="text" id="note-${cssId(seg.segmentId)}" placeholder="Athugasemd (valkvætt)" value="${escapeHtml(latestEdit?.editor_note || '')}">
+                <input type="text" id="note-${cssId(seg.segmentId)}" placeholder="Athugasemd (valkvætt)" value="${escapeHtml(ownLatest?.editor_note || '')}">
                 <button class="btn btn-sm btn-primary" onclick="saveEdit('${seg.segmentId}')">Vista</button>
                 <button class="btn btn-sm btn-secondary btn-propagate" onclick="propagateSegment('${seg.segmentId}')" title="${UI.segmentEditor.propagateTooltip}">${UI.segmentEditor.propagateButton}</button>
                 <button class="btn btn-sm btn-secondary btn-revert" onclick="revertEdit('${seg.segmentId}')" title="${UI.segmentEditor.revertTooltip}">&#8617; ${UI.segmentEditor.revertButton}</button>
@@ -2377,10 +2563,11 @@
     const rowFor = (id) => document.getElementById('row-' + cssId(id));
 
     if (!rowFor(segmentId)) {
-      // The row is filtered out. renderSegments() can DECLINE (its confirm()
-      // guard, on a dirty open panel), so snapshot the selects and roll them
-      // back if it does — otherwise the filter bar advertises "all" over a
-      // table that was never rebuilt.
+      // The row is filtered out. renderSegments() used to DECLINE (it asked
+      // before closing a dirty pane), so the selects are snapshotted and
+      // rolled back if it ever answers false. It no longer asks or declines
+      // (a row with unsaved text is left in place), so the rollback is a
+      // guard that does not fire today.
       const sels = ['filter-type', 'filter-category', 'filter-status']
         .map((id) => document.getElementById(id))
         .filter(Boolean);
@@ -2503,7 +2690,8 @@
   // ================================================================
   // EDIT ACTIONS
   // ================================================================
-  function openEditPanel(segmentId) {
+  /** `focus: false`: a text put back into its pane by the page (installDraft), which must not move the caret. */
+  function openEditPanel(segmentId, { focus = true } = {}) {
     const panel = document.getElementById('edit-' + cssId(segmentId));
     if (panel) {
       if (!paneState.has(segmentId)) paneState.set(segmentId, freshPaneState(segmentId));
@@ -2515,7 +2703,7 @@
       const textarea = document.getElementById('textarea-' + cssId(segmentId));
       if (textarea) {
         textarea._segmentId = segmentId;
-        textarea.focus();
+        if (focus) textarea.focus();
 
         // P1: Skip listener attachment if already bound (prevents accumulation on open/close/open)
         if (!textarea._listenersAttached) {
@@ -2535,6 +2723,8 @@
           }
 
           textarea.addEventListener('input', function onInput() {
+            // A pane with text in it always has a state (it has none while its kept text waits in the hold).
+            if (!paneState.has(segmentId)) paneState.set(segmentId, freshPaneState(segmentId));
             dirtyEdits.add(segmentId);
             // Update per-segment indicator
             const ind = document.getElementById('seg-ind-' + cssId(segmentId));
@@ -2568,8 +2758,18 @@
     }
   }
 
-  function closeEditPanel(segmentId) {
-    if (!confirmDiscardKept(segmentId)) return;
+  /** The row's "Breytt" mark goes when its text is discarded, so the row and the status line agree. */
+  function clearDirtyIndicator(segmentId) {
+    const ind = document.getElementById('seg-ind-' + cssId(segmentId));
+    if (ind && ind.classList.contains('dirty')) {
+      ind.textContent = '';
+      ind.className = 'seg-save-ind';
+    }
+  }
+
+  /** `unchanged`: saveEdit's call for a save that changes nothing, which has no text to ask about. */
+  function closeEditPanel(segmentId, { unchanged = false } = {}) {
+    if (!(unchanged ? confirmDiscardKept(segmentId) : confirmDiscard(segmentId))) return;
     const panel = document.getElementById('edit-' + cssId(segmentId));
     if (panel) {
       panel.classList.remove('active');
@@ -2586,6 +2786,8 @@
       }
     }
     dirtyEdits.delete(segmentId);
+    clearDirtyIndicator(segmentId);
+    rebuildSkippedRow(segmentId); // a row a re-render left alone while it held this text is rebuilt now (ED-03)
     clearPaneState(segmentId);
     refreshSuggestionView(segmentId); // the pane's accepts are gone: their groups are offered again (G1.23)
     updateSaveStatusBar();
@@ -2602,14 +2804,21 @@
     if (!textarea || !moduleData) return;
     const seg = moduleData.segments.find((s) => s.segmentId === segmentId);
     if (!seg) return;
-    if (!confirmDiscardKept(segmentId)) return;
-    const latestEdit = moduleData.edits[segmentId]?.[0];
-    textarea.value = baselineTextFor(seg, latestEdit);
+    if (!confirmDiscard(segmentId)) return;
     dirtyEdits.delete(segmentId);
-    paneState.set(segmentId, freshPaneState(segmentId)); // the pane stays open; its list starts again
-    heldDrafts.delete(segmentId); // and it no longer holds a kept text
-    showDraftNotice(segmentId, null);
-    setSaveBlocked(segmentId, false);
+    if (rebuildSkippedRow(segmentId, { keep: true })) {
+      // The row was older than moduleData (a re-render left it alone while it held this text, ED-03): it has been
+      // rebuilt, and the pane opens again on the new row with the text that row shows.
+      clearPaneState(segmentId);
+      if (rowElement(segmentId)) openEditPanel(segmentId);
+    } else {
+      const latestEdit = moduleData.edits[segmentId]?.[0];
+      textarea.value = baselineTextFor(seg, latestEdit);
+      paneState.set(segmentId, freshPaneState(segmentId)); // the pane stays open; its list starts again
+      heldDrafts.delete(segmentId); // and it no longer holds a kept text
+      showDraftNotice(segmentId, null);
+      setSaveBlocked(segmentId, false);
+    }
     const ind = document.getElementById('seg-ind-' + cssId(segmentId));
     if (ind) {
       ind.textContent = UI.segmentEditor.reverted;
@@ -2619,8 +2828,9 @@
         ind.className = 'seg-save-ind';
       }, 2000);
     }
+    const shownText = document.getElementById('textarea-' + cssId(segmentId));
     const previewEl = document.getElementById('preview-' + cssId(segmentId));
-    if (previewEl) previewEl.innerHTML = panePreviewHtml(segmentId, textarea.value);
+    if (previewEl && shownText) previewEl.innerHTML = panePreviewHtml(segmentId, shownText.value);
     refreshBackdrop(segmentId);
     refreshSuggestionView(segmentId); // the pane's list started again: its groups are offered again (G1.23)
     updateSaveStatusBar();
@@ -2666,11 +2876,18 @@
   async function saveEdit(segmentId) {
     // O3: Guard against null moduleData if user navigated away mid-save
     if (!moduleData?.segments) return;
+    // One save per segment at a time: a second one sent before the first's answer would name the displayed pair
+    // the first is about to replace, and be refused against the editor's own save.
+    if (savesInFlight.has(segmentId)) return;
     const seg = moduleData.segments.find((s) => s.segmentId === segmentId);
     if (!seg) return;
     const kept = paneState.get(segmentId);
     if (kept && kept.refused === 'DUPLICATE_ID') {
       alert(UI.draftNotice.duplicateId); // R4: never sent
+      return;
+    }
+    if (kept && conflictBlocked(segmentId, kept.refused)) {
+      alert(UI.draftNotice.conflict); // not sent while another editor's edit of the row is undecided
       return;
     }
     // §5.18: the base, the displayed pair and the text compared against all
@@ -2687,7 +2904,7 @@
     const existingEdits = moduleData.edits[segmentId] || [];
     const hasPendingEdit = existingEdits.some((e) => e.status === 'pending');
     if (editedContent === shownIs && !category && !editorNote && !hasPendingEdit) {
-      closeEditPanel(segmentId);
+      closeEditPanel(segmentId, { unchanged: true });
       return; // No change from original, no annotation, no edit to withdraw
     }
 
@@ -2759,6 +2976,7 @@
       savingInd.className = 'seg-save-ind saving';
     }
 
+    savesInFlight.add(segmentId);
     try {
       const saveResult = await saveRetry.attempt(retryKey, saveUrl, saveOptions);
 
@@ -2800,8 +3018,22 @@
       // that draft (saveDraft would rebuild it from an empty memory) or re-serve the unit (PR2 review R1).
       if (openUnit() !== unit) return;
       applySaveEcho(segmentId, saveResult);
-      dirtyEdits.delete(segmentId);
-      clearPaneState(segmentId);
+      // Interface audit ED-18: text typed after Vista was pressed was not in this save. The pane stays dirty, so
+      // the reload below leaves its row and that text alone (renderSegments); the row now carries this save's
+      // echo, so the next save is made over it. Its list of assists starts again, as after any save.
+      const typedSince = document.getElementById('textarea-' + cssId(segmentId));
+      if (typedSince && typedSince.value !== editedContent) {
+        paneState.set(segmentId, freshPaneState(segmentId));
+        showDraftNotice(segmentId, null);
+        dirtyEdits.add(segmentId);
+        if (savingInd) {
+          savingInd.textContent = UI.save.changed; // not "Vistar...": what is in the box now is unsaved
+          savingInd.className = 'seg-save-ind dirty';
+        }
+      } else {
+        dirtyEdits.delete(segmentId);
+        clearPaneState(segmentId);
+      }
       lastServerSaveTime = Date.now();
       recentlySaved.add(segmentId);
       setTimeout(() => {
@@ -2831,10 +3063,12 @@
       if (err.status === 409 && segmentSaveState.keepsText(err.code)) {
         // Index decision 12: the typed text, its assists and the base it was
         // sent with go into the draft, then the module reloads and restores it.
+        // The text kept is what the box holds NOW: the editor may have typed on while the save was on its way.
+        const box = document.getElementById('textarea-' + cssId(segmentId));
         keepText(
           segmentId,
           segmentSaveState.refusedEntry({
-            text: editedContent,
+            text: box ? box.value : editedContent,
             row,
             assists: paneAssists(segmentId),
             code: err.code,
@@ -2843,13 +3077,16 @@
         alert(refusalAlertText(err));
         await loadModule(currentModuleId, { force: true });
       } else if (err.status === 409) {
-        // Another editor changed this segment — surface the conflict and reload
-        // so the editor sees the latest state (parity with the localization editor).
+        // Any other 409 (a withdraw refused because the edit has a discussion): say why and reload. The pane is
+        // still dirty, so the reload leaves its row and its text alone (renderSegments, ED-03). A conflict with
+        // another editor's save is a kept code and took the branch above (ED-02).
         alert(err.message || 'Einingin hefur verið breytt af öðrum notanda. Endurhleð...');
         await loadModule(currentModuleId, { force: true });
       } else if (!saveRetry.isRetryable(err)) {
         alert(UI.common.errorSaving + err.message);
       }
+    } finally {
+      savesInFlight.delete(segmentId);
     }
   }
 
@@ -2876,6 +3113,7 @@
     if (!moduleData?.segments) return;
     const st = paneState.get(segmentId);
     if (st && st.refused === 'DUPLICATE_ID') return; // R4: never sent
+    if (st && conflictBlocked(segmentId, st.refused)) return; // nor a text a conflict keeps (its Vista is blocked)
     const unit = openUnit(); // R1: nothing is sent from a unit left on the way (the save's reload, the preview)
     // Ensure the current edit is persisted first so the propagated text is the
     // saved text. saveEdit reloads the module on success.
@@ -2887,6 +3125,9 @@
       // a DUPLICATE_ID text to POST /propagate (R4), or a STALE_BASE text to every other occurrence.
       const after = paneState.get(segmentId);
       if (heldDrafts.has(segmentId) || (after && after.refused)) return;
+      // Still dirty: the save did not land (a refusal that is not kept, a queued retry, a declined warning),
+      // or more was typed while it was on its way. Either way the box holds text the server does not.
+      if (dirtyEdits.has(segmentId)) return;
     }
     const editedContent = document.getElementById('textarea-' + cssId(segmentId))?.value;
     const category = document.getElementById('cat-' + cssId(segmentId))?.value;
@@ -3206,7 +3447,7 @@
       const row = panel.closest('tr');
       if (row) row.classList.remove('editing');
     });
-    // Nothing stays dirty (the next load would ask closePanels about panes nobody can see) and nothing stays held
+    // Nothing stays dirty (the next load would leave rows nobody can see in place, as rows with unsaved text) and nothing stays held
     // (a later saveDraft would rewrite the draft from it alone, or write it under another unit's key).
     dirtyEdits.clear();
     heldDrafts.clear();
@@ -3246,6 +3487,7 @@
   // BACK BUTTON
   // ================================================================
   document.getElementById('btn-back').addEventListener('click', () => {
+    if (!confirmLeaveUnit()) return; // interface audit ED-01: Back asked nothing
     clearDraft(); // writes back only the texts refused saves kept, and discards the rest
     leaveModule();
 
@@ -4350,6 +4592,15 @@
   // ================================================================
   // KEYBOARD SHORTCUTS
   // ================================================================
+  /** The open pane a key press is about: the one holding the focus, else the only open one, else none. */
+  function paneForKey() {
+    const el = document.activeElement;
+    const own = el && typeof el.closest === 'function' ? el.closest('.edit-panel.active') : null;
+    if (own) return own;
+    const open = document.querySelectorAll('.edit-panel.active');
+    return open.length === 1 ? open[0] : null;
+  }
+
   document.addEventListener('keydown', (e) => {
     // Escape: revert unsaved changes in focused textarea, or close panel
     if (e.key === 'Escape') {
@@ -4376,8 +4627,9 @@
         }
       }
 
-      // Otherwise close the active edit panel (existing behavior)
-      const activePanel = document.querySelector('.edit-panel.active');
+      // Otherwise close the pane the key was pressed in, or the only open one. Several panes can be open (a
+      // re-render leaves a row with unsaved text alone), and the first in the page is not the one meant.
+      const activePanel = paneForKey();
       if (activePanel) {
         const textarea = activePanel.querySelector('textarea');
         const segId = textarea?._segmentId;
@@ -4398,6 +4650,8 @@
             }
           }
           dirtyEdits.delete(segId);
+          clearDirtyIndicator(segId);
+          rebuildSkippedRow(segId); // as closeEditPanel (ED-03)
           clearPaneState(segId);
           refreshSuggestionView(segId); // as closeEditPanel: the pane's accepts are offered again (G1.23)
           updateSaveStatusBar();
@@ -4419,8 +4673,8 @@
       ) {
         saveEdit(focused._segmentId);
       } else {
-        // If not focused on a textarea, find the single active edit panel
-        const activePanel = document.querySelector('.edit-panel.active');
+        // If not focused on a textarea: the pane holding the focus, or the only open one
+        const activePanel = paneForKey();
         if (activePanel) {
           const textarea = activePanel.querySelector('textarea');
           if (textarea?._segmentId) {

@@ -45,7 +45,7 @@
 |---|------|----------|-------|
 | 11 | Click a segment row to open edit panel | Panel opens, textarea focused | ☐ |
 | 12 | Type some text in the textarea | "Breytt" indicator appears on the row | ☐ |
-| 13 | Click "Hætta við" to close the panel | Panel closes | ☐ |
+| 13 | Click "Hætta við" to close the panel | A question asks before the changed text is thrown away ("Þú átt óvistaðar breytingar. Viltu henda þeim?"); OK closes the panel | ☐ |
 | 14 | Click the SAME segment again to reopen | Panel opens cleanly | ☐ |
 | 15 | Type text again | Only ONE "Breytt" indicator (no doubled effects) | ☐ |
 | 16 | Check console for errors | No errors | ☐ |
@@ -57,11 +57,15 @@
 | # | Step | Expected | Pass? |
 |---|------|----------|-------|
 | 17 | Open an edit panel and type some text (don't save) | Panel open, text modified | ☐ |
-| 18 | Change the filter dropdown (e.g., "Allt" → "Klárað") | **Confirmation dialog** appears: "Opin klippispjöld verða lokuð..." | ☐ |
-| 19 | Click "Cancel" on the dialog | Filter does NOT change, edit panel stays open with text intact | ☐ |
-| 20 | Change filter again, click "OK" | Filter changes, edit panel closes, dirty state cleared | ☐ |
+| 18 | Change the filter dropdown to one the row does not match | **No dialog.** The other rows follow the filter; the row with unsaved text stays on screen, panel open, text and caret intact | ☐ |
+| 19 | Click "Hætta við" in that panel and answer OK | The panel closes and the row now follows the filter (it disappears) | ☐ |
+| 20 | Set the filter back to "Allt" | The row is back, with no unsaved text | ☐ |
 
 > **What this tests:** O1 — filter re-render protection.
+>
+> *Steps 13 and 18–20 changed 2026-11-13 (interface audit, ED-03 and ED-04): a re-render no longer asks before
+> closing panels. It leaves a row with unsaved text in place, and the discard buttons ask instead. Automated in
+> `server/e2e/unsaved-text.spec.js`.*
 
 ### A5. Save and Refresh
 

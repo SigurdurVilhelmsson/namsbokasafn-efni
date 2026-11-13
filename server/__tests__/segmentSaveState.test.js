@@ -431,7 +431,10 @@ describe('kept texts (index decision 12)', () => {
     undefined,
   ];
 
-  it('keeps the text for exactly the refusal codes, not for a live conflict', () => {
+  // Until the 2026-11-13 interface audit (ED-02) a live conflict kept "today's alert-and-reload" (PR1 plan decision
+  // 30), and that reload's question closed the pane and lost the text when answered OK. It is kept now, like any
+  // refused save. The accept route's two codes are not saves and keep nothing.
+  it('keeps the text for the refusal codes and for a conflict, and for nothing else', () => {
     expect(ALL.filter((c) => S.keepsText(c))).toEqual([
       'STALE_BASE',
       'STALE_DISPLAYED',
@@ -439,7 +442,11 @@ describe('kept texts (index decision 12)', () => {
       'DUPLICATE_ID',
       'BOOK_NOT_MINTED',
       'NO_LAYER',
+      'conflict',
     ]);
+    // The conflict is the route's wire code, not a servedEdit refusal: the list that mirrors servedEdit is unchanged.
+    expect(S.KEEP_TEXT_CODES).not.toContain(S.CONFLICT_CODE);
+    expect(S.CONFLICT_CODE).toBe('conflict');
   });
 
   it('a refused entry holds the base the save was sent with, its occurrence, its assists and the code', () => {
@@ -561,7 +568,8 @@ describe('kept texts (index decision 12)', () => {
     expect(S.noticeFor(e({}), H2)).toBe('STALE_BASE');
     expect(S.noticeFor(e({}), H1)).toBeNull(); // control: same base, no notice
     expect(S.noticeFor(e({ refused: 'DUPLICATE_ID' }), H1)).toBe('DUPLICATE_ID');
-    expect(S.noticeFor(e({ refused: 'conflict' }), H1)).toBe('REFUSED');
+    expect(S.noticeFor(e({ refused: 'conflict' }), H1)).toBe('conflict'); // its own notice (ED-02)
+    expect(S.noticeFor(e({ refused: 'HAS_DISCUSSION' }), H1)).toBe('REFUSED'); // any other code: the generic one
     expect(S.noticeFor(S.parseDraftValue({ ts: 1, drafts: { s: 't' } }).entries.s, H2)).toBeNull();
   });
 });

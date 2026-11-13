@@ -11,8 +11,10 @@ const { REFUSAL_MESSAGES } = require('../services/servedEdit');
  *
  * "The base changed after the page loaded" is simulated by rewriting the FIRST
  * module GET this page receives (route.fetch + route.fulfill), so no file under
- * books/ is touched. A declined re-render is a reload with a dirty pane open and
- * the closePanels confirm dismissed.
+ * books/ is touched. A row older than moduleData is a row whose pane held unsaved
+ * text during a reload: a re-render leaves such a row exactly as it is (interface
+ * audit 2026-11-13, ED-03; until then the reload asked closePanels, and the whole
+ * table stayed as it was when the editor declined).
  *
  * ⚠️ WRITES AT MOST ONE EDIT ROW: one positive control saves for real and then
  * deletes its row. Every other success is a route.fulfill stub; every other real request is one
@@ -91,14 +93,13 @@ const rowOf = (page, segmentId) =>
   page.locator(`#segments-body tr[data-segment-id="${segmentId}"]`);
 
 /**
- * Reload the module with a dirty pane open, and decline the re-render. loadModule returns before its two
- * background loads (/terms, /repetitions; loadTermData, loadRepetitions) re-render the table, and each re-render asks
- * closePanels again, so wait for both responses before removing the handler. Any confirm still to come then meets
- * NO listener, and Playwright auto-dismisses a dialog nobody listens for: declined too. So no test in this file
- * installs an ACCEPTING dialog handler while a dirty pane must survive a declined re-render. A pane holding a KEPT
- * text (index decision 12) is another matter: the client carries it across every re-render without asking
- * closePanels, so the refusal tests below accept every dialog on purpose, since the kept text must survive even an
- * editor who answers OK.
+ * Reload the module with a dirty pane open. The reload and its two background loads (/terms, /repetitions;
+ * loadTermData, loadRepetitions) each re-render the table, and each leaves the row of a dirty pane as it is (ED-03),
+ * so that row is afterwards older than moduleData. Wait for both responses before going on. No dialog is expected:
+ * the handler dismisses any that comes, as an editor who answered Cancel would, and a test that needs to know one
+ * came must listen itself. (Until ED-03 each re-render asked closePanels, and "declining" it was this helper's job;
+ * the name is kept so the tests below read as they did.) A pane holding a KEPT text (index decision 12) is another
+ * matter: the client carries it across every re-render by re-installing it on the rebuilt row.
  */
 async function declineReRender(page) {
   const dismiss = (d) => d.dismiss();
@@ -288,16 +289,18 @@ test.describe('G1.1 client: the row is what the save and the accept echo', () =>
       s.is = shownIs;
     });
     await openModule(page);
-    // A dirty pane elsewhere makes the reload ask before re-rendering.
-    await rowOf(page, other.segmentId).locator('.btn-edit').click();
-    await rowOf(page, other.segmentId).locator('textarea').fill(`${other.is}${SUFFIX}`);
+    // A dirty pane on the target keeps its row as it was served, across the reload. Another row, with no pane,
+    // is the control: the same reload rebuilds it.
+    await rowOf(page, target.segmentId).locator('.btn-edit').click();
+    await rowOf(page, target.segmentId).locator('textarea').fill(`${shownIs}${SUFFIX}`);
     await declineReRender(page);
-    // A DISMISSING handler declines the 409's alert and every closePanels confirm the client's reload raises (the
-    // reload itself and each background re-render), exactly as Playwright's auto-dismiss did. It is explicit because
-    // auto-dismiss raced the page closing when the test ended mid-dialog ("session closed"); `.catch` swallows that
-    // late failure. It is installed only AFTER declineReRender, which adds and removes its own listener: two
-    // listeners would dismiss one dialog twice. It must never ACCEPT: an accepting handler would let a late
-    // re-render through, rebuild the row from moduleData, and send the real `is`.
+    await expect(rowOf(page, target.segmentId)).toHaveAttribute('data-is', JSON.stringify(shownIs));
+    await expect(rowOf(page, other.segmentId)).toHaveAttribute('data-is', JSON.stringify(other.is));
+    // An explicit handler closes the 409's alert. It is explicit because Playwright's auto-dismiss raced the page
+    // closing when the test ended mid-dialog ("session closed"); `.catch` swallows that late failure. It is
+    // installed only AFTER declineReRender, which adds and removes its own listener: two listeners would answer one
+    // dialog twice. The reload after the 409 asks nothing, and leaves the target's row alone again (its pane is
+    // still dirty).
     page.on('dialog', (d) => d.dismiss().catch(() => {}));
     const posted = page.waitForRequest(
       (r) => r.url().endsWith(`${MODULE_URL}/accept`) && r.method() === 'POST'
@@ -786,8 +789,9 @@ test.describe('G1.1 client: the row is what the save and the accept echo', () =>
     page.on('dialog', (d) => d.accept().catch(() => {})); // a dialog still open as the page closes (see the T4 test)
     await row.getByRole('button', { name: 'Vista', exact: true }).click();
     await expect(page.locator('.toast-error').first()).toBeVisible(); // the 5xx: queued for a replay
-    // The replay fires after about a second; its 409 parks the text and the module reloads.
-    await expect(row.locator('.draft-notice[data-notice="REFUSED"]')).toBeVisible({
+    // The replay fires after about a second; its 409 parks the text and the module reloads. A conflict has its own
+    // notice since the interface audit (ED-02); any other parked code still reads as the generic one.
+    await expect(row.locator('.draft-notice[data-notice="conflict"]')).toBeVisible({
       timeout: 10000,
     });
     await expect(row.locator('textarea')).toHaveValue(typed);
@@ -915,6 +919,7 @@ test.describe('G1.1 client: the row is what the save and the accept echo', () =>
     await row.locator('textarea').fill(`${target.is}${SUFFIX}`);
     await row.getByRole('button', { name: 'Vista', exact: true }).click();
     await expect(page.locator('.toast-error').first()).toBeVisible();
+    page.once('dialog', (d) => d.accept().catch(() => {})); // Hætta við asks before discarding changed text (ED-04)
     await row.getByRole('button', { name: 'Hætta við', exact: true }).click();
     await expect(row.locator('.edit-panel')).not.toHaveClass(/\bactive\b/);
     closed();

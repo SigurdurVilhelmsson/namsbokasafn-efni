@@ -1180,7 +1180,7 @@ test.describe('G1.23 suggestion view on efnafraedi-2e ch02 (spec §9.4–9.6)', 
     );
   });
 
-  test('Hætta við after Nota on a typed pane asks nothing, brings back the text and the group, and keeps nothing (§C216)', async ({
+  test('Hætta við after Nota on a typed pane asks once, then brings back the text and the group, and keeps nothing (§C216)', async ({
     page,
   }) => {
     await loginAs(page, 'editor', SUGGESTION_EDITOR_ID);
@@ -1206,14 +1206,16 @@ test.describe('G1.23 suggestion view on efnafraedi-2e ch02 (spec §9.4–9.6)', 
       .poll(() => storedDraft(page, G.solution), { timeout: 15000 })
       .toEqual({ text: taken, refused: null, ops: [op] });
 
+    // Hætta við asks before it throws changed text away (unsaved-text.spec.js, ED-04). OK is the discard this test
+    // is about: the accept goes with the typed text, like any unsaved change.
     const asked = [];
     page.on('dialog', (d) => {
       asked.push(d.message());
-      d.dismiss().catch(() => {});
+      d.accept().catch(() => {});
     });
     await row.getByRole('button', { name: 'Hætta við', exact: true }).click();
     await expect(row.locator('.edit-panel')).not.toHaveClass(/\bactive\b/);
-    expect(asked).toEqual([]);
+    expect(asked).toEqual([UI.confirm.discardChanges]);
     await expect(ta).toHaveValue(seg.is);
     await expect(swapsOf(row, key)).toHaveCount(1);
     await expect(isDisplay(row).locator('.sugg-accepted')).toHaveCount(0);

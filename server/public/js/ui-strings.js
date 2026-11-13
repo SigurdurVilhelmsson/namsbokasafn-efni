@@ -5,7 +5,7 @@
  * Usage: UI.save.allSaved, UI.confirm.discardChanges(), etc.
  *
  * For parameterized messages, use functions:
- *   UI.confirm.draftRecovery(5) → 'Fundust 5 óvistuð drög frá síðustu lotu. Endurheimta?'
+ *   UI.confirm.draftRecovery(5) → 'Fundust 5 óvistuð drög frá síðustu lotu. Endurheimta? (…)'
  */
 
 // eslint-disable-next-line no-unused-vars
@@ -28,6 +28,9 @@ const UI = {
   // ── Save status ─────────────────────────────────────────────
   save: {
     allSaved: 'Allar breytingar vistaðar',
+    // The segment editor's status line when no row holds unsaved text. It does not claim a save: the same line
+    // shows after a text was discarded (interface audit 2026-11-13, ED-04).
+    nothingUnsaved: 'Engar óvistaðar breytingar',
     unsaved: function (count) {
       return count === 1 ? '1 óvistuð breyting' : count + ' óvistaðar breytingar';
     },
@@ -42,11 +45,30 @@ const UI = {
 
   // ── Confirm/alert dialogs ───────────────────────────────────
   confirm: {
+    // Both editors delete the drafts when this is answered Cancel, so it says so (interface audit 2026-11-13,
+    // ED-18). The last sentence is not yet read by a native speaker.
     draftRecovery: function (count) {
-      return 'Fundust ' + count + ' óvistuð drög frá síðustu lotu. Endurheimta?';
+      return (
+        'Fundust ' +
+        count +
+        ' óvistuð drög frá síðustu lotu. Endurheimta? (Ef hætt er við er drögunum eytt.)'
+      );
     },
     discardChanges: 'Þú átt óvistaðar breytingar. Viltu henda þeim?',
     leaveUnsaved: 'Þú átt óvistaðar breytingar. Viltu yfirgefa?',
+    // The segment editor's "← Til baka" with unsaved text in `count` rows (interface audit 2026-11-13, ED-01).
+    // It says what OK does: Back throws the text away, unlike closing the tab, which keeps a draft. Not yet read
+    // by a native speaker.
+    leaveDiscards: function (count) {
+      return (
+        'Þú átt óvistaðan texta í ' +
+        (count === 1 ? '1 línu' : count + ' línum') +
+        '. Honum verður hent ef þú ferð til baka. Fara til baka?'
+      );
+    },
+    // No longer asked by the segment editor (since the 2026-11-13 interface audit a re-render leaves a row with
+    // unsaved text in place). Kept: the server's BASE_MISSING message quotes it for a page loaded before G1.1, and
+    // specs name it when they check that it is not asked.
     closePanels: 'Opnum klippispjöldum verður lokað. Viltu halda áfram?',
     unapprove: 'Afturkalla samþykki? Breytingin fer til baka í stöðuna „bíður".',
     submitForReview: function (count) {
@@ -153,6 +175,10 @@ const UI = {
       'Ekki er hægt að vista þennan bút fyrr en lagfæring á tvíteknum auðkennum er komin (sama ' +
       'auðkenni kemur tvisvar fyrir í einingunni). Textinn þinn er geymdur hér og verður ekki sendur.',
     bookNotMinted: 'Ekki er hægt að vista breytingar í þessari bók. Textinn þinn er geymdur hér.',
+    // Another editor saved the row first (interface audit 2026-11-13, ED-02). Not yet read by a native speaker.
+    conflict:
+      'Annar yfirlesari vistaði breytingu á þessum bút á meðan þú skrifaðir. Textinn þinn er geymdur hér. ' +
+      'Hann verður ekki vistaður fyrr en hin breytingin hefur verið afgreidd; berðu hann þá saman við röðina.',
     noLayer:
       'Engin íslensk útgáfa er til fyrir þessa einingu og því er ekki hægt að vista. Textinn ' +
       'þinn er geymdur hér.',
