@@ -131,6 +131,7 @@ describe('request bodies (§5.6, §5.18)', () => {
       displayedEditSha256: H2,
       clientActionId: 'act-1',
       clientActionTime: 42,
+      handlesUnseenEdit: true, // this page keeps the text on that refusal, so the server may check (ED-05)
       assists: [
         { itemType: 'markup-wrap', source: 'toolbar', clientTimeMs: 5, detail: { marker: '**' } },
       ],

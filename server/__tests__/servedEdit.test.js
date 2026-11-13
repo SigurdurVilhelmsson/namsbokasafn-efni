@@ -406,16 +406,11 @@ describe('T5, PR1 half: the two known ids, served once since G1.12, on copies of
 });
 
 describe('step 4, requireEcho (spec §5.6; T4 service half)', () => {
-  /**
-   * u2's row on a, then re-saved, so a pair naming its first text is stale. The re-save names the
-   * row it is made over, as u2's page does: a save that names no edit while one is in flight is
-   * itself refused (UNSEEN_EDIT, the ED-05 describe below).
-   */
+  /** u2's row on a, then re-saved, so a pair naming its first text is stale. */
   function staleU2Pair() {
     const first = save({ editorId: 'u2', editorUsername: 'E2', editedContent: 'IS a frá u2' });
-    const pair = { displayedEditId: first.editId, displayedEditSha256: sha256Text('IS a frá u2') };
-    save({ editorId: 'u2', editorUsername: 'E2', editedContent: 'IS a frá u2, aftur', ...pair });
-    return pair;
+    save({ editorId: 'u2', editorUsername: 'E2', editedContent: 'IS a frá u2, aftur' });
+    return { displayedEditId: first.editId, displayedEditSha256: sha256Text('IS a frá u2') };
   }
 
   it('no baseSha256 and a stale displayed pair: BASE_MISSING, checked first', () => {
@@ -458,13 +453,7 @@ describe('step 4, requireEcho (spec §5.6; T4 service half)', () => {
 
   it('the displayed row was deleted (its author withdrew it): STALE_DISPLAYED', () => {
     const gone = save({ editorId: 'u2', editorUsername: 'E2', editedContent: 'IS a frá u2' });
-    const w = save({
-      editorId: 'u2',
-      editorUsername: 'E2',
-      editedContent: served(SEG('a')).is,
-      displayedEditId: gone.editId, // u2's page shows the row it withdraws
-      displayedEditSha256: sha256Text('IS a frá u2'),
-    });
+    const w = save({ editorId: 'u2', editorUsername: 'E2', editedContent: served(SEG('a')).is });
     expect(w.outcome).toBe('withdrawn');
     expect(editRow(gone.editId)).toBeUndefined();
     const err = refusedWith(
@@ -609,11 +598,7 @@ describe('a save that passes (T4 positive controls)', () => {
     const first = save();
     expect(first.outcome).toBe('inserted');
     const baseText = served(SEG('a')).is;
-    const w = save({
-      editedContent: baseText,
-      displayedEditId: first.editId, // the page shows the row it withdraws
-      displayedEditSha256: first.editedContentSha256,
-    });
+    const w = save({ editedContent: baseText });
     expect(w).toMatchObject({
       outcome: 'withdrawn',
       editId: first.editId,
@@ -718,15 +703,20 @@ describe('an in-flight edit the page never showed (interface audit 2026-11-13, E
   // The checks of step 4 compared only the row the page NAMED. A page that named none, because it
   // loaded before the edit existed, passed them, and the save then replaced the editor's own
   // pending text from another tab or device with no message.
+  //
+  // The check is made for a caller that says it handles the refusal (`refuseUnseenEdit`; the route
+  // passes the body's `handlesUnseenEdit`). Every save in this describe is such a page's, but the
+  // last test's.
+  const page = (over = {}) => save({ refuseUnseenEdit: true, ...over });
   const approve = (id) =>
     db.prepare("UPDATE segment_edits SET status = 'approved' WHERE id = ?").run(id);
   const reject = (id) =>
     db.prepare("UPDATE segment_edits SET status = 'rejected' WHERE id = ?").run(id);
 
   it('the editor’s own pending edit from another tab: a save that names no displayed edit is refused', () => {
-    const tab1 = save({ editedContent: 'IS a flipi 1' });
+    const tab1 = page({ editedContent: 'IS a flipi 1' });
     expect(tab1.outcome).toBe('inserted');
-    const err = refusedWith(() => save({ editedContent: 'IS a flipi 2' }), 'UNSEEN_EDIT');
+    const err = refusedWith(() => page({ editedContent: 'IS a flipi 2' }), 'UNSEEN_EDIT');
     expect(err.refusal).toEqual({
       code: 'UNSEEN_EDIT',
       echoedSha256: null,
@@ -736,22 +726,22 @@ describe('an in-flight edit the page never showed (interface audit 2026-11-13, E
   });
 
   it('a withdraw from the tab that never saw the edit is refused too', () => {
-    const tab1 = save({ editedContent: 'IS a flipi 1' });
-    refusedWith(() => save({ editedContent: served(SEG('a')).is }), 'UNSEEN_EDIT');
+    const tab1 = page({ editedContent: 'IS a flipi 1' });
+    refusedWith(() => page({ editedContent: served(SEG('a')).is }), 'UNSEEN_EDIT');
     expect(editRow(tab1.editId).edited_content).toBe('IS a flipi 1');
   });
 
   it('a page that named an older edit is refused once a newer in-flight one exists', () => {
-    const older = save({ editedContent: 'IS a samþykkt' });
+    const older = page({ editedContent: 'IS a samþykkt' });
     approve(older.editId); // approved, not applied: still in flight, still what a page shows
     const shownOlder = {
       displayedEditId: older.editId,
       displayedEditSha256: sha256Text('IS a samþykkt'),
     };
-    const newer = save({ editedContent: 'IS a nýtt', ...shownOlder });
+    const newer = page({ editedContent: 'IS a nýtt', ...shownOlder });
     expect(newer.outcome).toBe('inserted');
     const err = refusedWith(
-      () => save({ editedContent: 'IS a annað', ...shownOlder }),
+      () => page({ editedContent: 'IS a annað', ...shownOlder }),
       'UNSEEN_EDIT'
     );
     expect(err.refusal).toEqual({
@@ -765,16 +755,16 @@ describe('an in-flight edit the page never showed (interface audit 2026-11-13, E
   it('another editor’s in-flight edit the page never showed is refused here too', () => {
     // The route's conflict check answers this first when the page sends baseEditId; the service
     // holds on its own for a caller that sends none.
-    save({ editedContent: 'IS a ritstjóri 1' });
+    page({ editedContent: 'IS a ritstjóri 1' });
     refusedWith(
-      () => save({ editorId: 'u2', editorUsername: 'F', editedContent: 'IS a ritstjóri 2' }),
+      () => page({ editorId: 'u2', editorUsername: 'F', editedContent: 'IS a ritstjóri 2' }),
       'UNSEEN_EDIT'
     );
   });
 
   it('control: a page that shows the in-flight edit saves over it', () => {
-    const first = save({ editedContent: 'IS a v1' });
-    const second = save({
+    const first = page({ editedContent: 'IS a v1' });
+    const second = page({
       editedContent: 'IS a v2',
       displayedEditId: first.editId,
       displayedEditSha256: sha256Text('IS a v1'),
@@ -783,23 +773,23 @@ describe('an in-flight edit the page never showed (interface audit 2026-11-13, E
   });
 
   it('control: a replay from a page that showed no edit passes, because its first attempt already holds the text', () => {
-    const first = save({ editedContent: 'IS a einu sinni' });
-    const replay = save({ editedContent: 'IS a einu sinni' });
+    const first = page({ editedContent: 'IS a einu sinni' });
+    const replay = page({ editedContent: 'IS a einu sinni' });
     expect(replay).toMatchObject({ outcome: 'updated', editId: first.editId });
     expect(db.prepare('SELECT COUNT(*) AS n FROM segment_edits').get().n).toBe(1);
   });
 
   it('a replay that named an older edit passes when its first attempt inserted the row, and writes no second row', () => {
-    const older = save({ editedContent: 'IS a samþykkt' });
+    const older = page({ editedContent: 'IS a samþykkt' });
     approve(older.editId);
     const input = {
       editedContent: 'IS a ný útgáfa',
       displayedEditId: older.editId,
       displayedEditSha256: sha256Text('IS a samþykkt'),
     };
-    const first = save(input);
+    const first = page(input);
     expect(first.outcome).toBe('inserted');
-    const replay = save(input);
+    const replay = page(input);
     expect(replay).toMatchObject({ outcome: 'updated', editId: first.editId });
     expect(db.prepare('SELECT COUNT(*) AS n FROM segment_edits').get().n).toBe(2);
   });
@@ -807,18 +797,45 @@ describe('an in-flight edit the page never showed (interface audit 2026-11-13, E
   it('the boundary: once the landed row is approved, its replay is refused and writes no second row', () => {
     // The pass is for the caller's own PENDING row, the one a save updates. An approved row is not
     // updated by a save, so letting the replay through would insert a second row with the same text.
-    const first = save({ editedContent: 'IS a einu sinni' });
+    const first = page({ editedContent: 'IS a einu sinni' });
     approve(first.editId);
-    refusedWith(() => save({ editedContent: 'IS a einu sinni' }), 'UNSEEN_EDIT');
+    refusedWith(() => page({ editedContent: 'IS a einu sinni' }), 'UNSEEN_EDIT');
     expect(db.prepare('SELECT COUNT(*) AS n FROM segment_edits').get().n).toBe(1);
   });
 
   it('another editor’s in-flight edit holding the same text is still an edit the page never showed', () => {
-    save({ editedContent: 'IS a sami texti' });
+    page({ editedContent: 'IS a sami texti' });
     refusedWith(
-      () => save({ editorId: 'u2', editorUsername: 'F', editedContent: 'IS a sami texti' }),
+      () => page({ editorId: 'u2', editorUsername: 'F', editedContent: 'IS a sami texti' }),
       'UNSEEN_EDIT'
     );
+  });
+
+  it('the same text with another note is not a replay: it is refused, and the note stands', () => {
+    // A replay re-sends the identical body. Passing on the text alone let a page that never showed
+    // the row replace its category and note.
+    const first = page({
+      editedContent: 'IS a sami texti',
+      category: 'terminology',
+      editorNote: 'athugasemd úr flipa 2',
+    });
+    refusedWith(() => page({ editedContent: 'IS a sami texti' }), 'UNSEEN_EDIT');
+    refusedWith(
+      () =>
+        page({ editedContent: 'IS a sami texti', category: 'terminology', editorNote: 'önnur' }),
+      'UNSEEN_EDIT'
+    );
+    expect(editRow(first.editId)).toMatchObject({
+      category: 'terminology',
+      editor_note: 'athugasemd úr flipa 2',
+    });
+    // Control: the identical body is the replay, and passes.
+    const replay = page({
+      editedContent: 'IS a sami texti',
+      category: 'terminology',
+      editorNote: 'athugasemd úr flipa 2',
+    });
+    expect(replay).toMatchObject({ outcome: 'updated', editId: first.editId });
   });
 
   it('control, no trap: when the newest edit is not in flight a page shows none, and its save passes', () => {
@@ -826,8 +843,8 @@ describe('an in-flight edit the page never showed (interface audit 2026-11-13, E
     // GET orders by recency and displays the newest only if it is in flight, so a freshly loaded
     // page names no edit here. The check must make the same choice, or this save would be refused
     // again after every reload.
-    const mine = save({ editedContent: 'IS a mitt' });
-    const theirs = save({
+    const mine = page({ editedContent: 'IS a mitt' });
+    const theirs = page({
       editorId: 'u2',
       editorUsername: 'F',
       editedContent: 'IS a þeirra',
@@ -836,12 +853,20 @@ describe('an in-flight edit the page never showed (interface audit 2026-11-13, E
     });
     expect(theirs.outcome).toBe('inserted');
     reject(theirs.editId);
-    const again = save({ editedContent: 'IS a mitt, aftur' });
+    const again = page({ editedContent: 'IS a mitt, aftur' });
     expect(again).toMatchObject({ outcome: 'updated', editId: mine.editId });
   });
 
+  it('a page loaded before this check does not say it handles the refusal, and is answered as before', () => {
+    // Such a page does not keep the text on a code it does not know: its reload would ask
+    // closePanels, and OK there loses the text. So it is not refused; it reloads into the check.
+    const first = save({ editedContent: 'IS a flipi 1' });
+    const stale = save({ editedContent: 'IS a flipi 2' });
+    expect(stale).toMatchObject({ outcome: 'updated', editId: first.editId });
+  });
+
   it('control: a writer with no client view is not asked what it displayed', () => {
-    save({ editedContent: 'IS a í flugi' });
+    page({ editedContent: 'IS a í flugi' });
     const r = reattach({ editorId: 'u2', editorUsername: 'F', editedContent: 'IS a endurtengt' });
     expect(r.outcome).toBe('inserted');
   });

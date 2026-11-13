@@ -395,10 +395,6 @@ test.describe.serial('§C210 reply thread on a "Ræða" note', () => {
     // Withdrawing by saving the original text back is refused the same way.
     const load = await (await page.request.get(`${API}/${BOOK}/${CHAPTER}/${MODULE}`)).json();
     const seg = load.segments.find((x) => x.segmentId === segmentId);
-    // The save names the edit the row shows, as the page does: a save that names none while an
-    // edit is in flight is refused as stale before the withdraw is looked at (unsaved-text.spec.js, ED-05).
-    const shown = load.edits[segmentId][0];
-    expect(shown.id).toBe(editId);
     const withdraw = await page.request.post(`${API}/${BOOK}/${CHAPTER}/${MODULE}/edit`, {
       data: {
         segmentId,
@@ -406,8 +402,6 @@ test.describe.serial('§C210 reply thread on a "Ræða" note', () => {
         editedContent: seg.is,
         category: 'readability',
         baseSha256: seg.baseSha256,
-        displayedEditId: shown.id,
-        displayedEditSha256: shown.contentSha256,
       },
     });
     expect(withdraw.status(), await withdraw.text()).toBe(409);

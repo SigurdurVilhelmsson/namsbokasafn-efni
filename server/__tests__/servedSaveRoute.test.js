@@ -190,6 +190,7 @@ describe('POST /edit — the stale family (spec §5.6 step 4)', () => {
       baseSha256: segOf(second, A).baseSha256,
       displayedEditId: null,
       displayedEditSha256: null,
+      handlesUnseenEdit: true, // as the page sends it (segment-save-state.js buildSaveBody)
     });
     expect(stale.status).toBe(409);
     expect(stale.body).toEqual({ error: 'UNSEEN_EDIT', message: REFUSAL_MESSAGES.UNSEEN_EDIT });
@@ -207,6 +208,16 @@ describe('POST /edit — the stale family (spec §5.6 step 4)', () => {
       displayedEditSha256: shown.contentSha256,
     });
     expect(ok.status).toBe(200);
+    expect(editRows().map((r) => r.edited_content)).toEqual(['IS a flipi 2']);
+  });
+
+  it('a page loaded before UNSEEN_EDIT existed sends no handlesUnseenEdit, and is answered as before', async () => {
+    // It does not keep the text on a code it does not know, so the route does not refuse it.
+    const first = (await serve(CHEM, 1, M)).body;
+    const body = { segmentId: A, baseEditId: 0, baseSha256: segOf(first, A).baseSha256 };
+    expect((await save({ ...body, editedContent: 'IS a flipi 1' })).status).toBe(200);
+    const stale = await save({ ...body, editedContent: 'IS a flipi 2' });
+    expect(stale.status).toBe(200);
     expect(editRows().map((r) => r.edited_content)).toEqual(['IS a flipi 2']);
   });
 

@@ -538,6 +538,17 @@ test.describe('unsaved text in the segment editor is never lost unasked', () => 
         UI.draftNotice.unseenEdit
       );
       await expect(staleRow.locator('.col-is .segment-content')).toContainText('flipi 1');
+
+      // Having seen the first tab's text beside its own, the editor saves again: the row now names that edit.
+      const again = stale.waitForResponse(
+        (r) => r.url().endsWith(`${MODULE_URL}/edit`) && r.request().method() === 'POST'
+      );
+      const tab2b = answerDialogs(stale, true);
+      await staleRow.getByRole('button', { name: 'Vista', exact: true }).click();
+      expect((await again).status()).toBe(200);
+      tab2b.stop();
+      const final = await loadModuleJson(page);
+      expect((final.edits[target.segmentId] || []).map((e) => e.edited_content)).toEqual([second]);
     } finally {
       await stale.close();
     }
@@ -965,6 +976,7 @@ test.describe('unsaved text: what leaving rows in place must not break', () => {
     expect(posts[1].displayedEditId).toBe(answer.displayedEditId);
     expect(posts[1].assists.map((a) => a.itemType)).toEqual(['markup-wrap']);
     expect(posts[0].assists).toEqual([]);
+    expect(posts[0].handlesUnseenEdit).toBe(true); // the page says it keeps the text on that refusal
     const reloaded = backgroundLoads(page);
     gate.release();
     await reloaded;

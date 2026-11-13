@@ -824,6 +824,7 @@ describe('a save over an edit the page never showed (interface audit 2026-11-13,
       segmentId: id('o'),
       editedContent: 'SENTINEL-REFUSED-UNSEEN',
       baseSha256: stale.baseSha256,
+      handlesUnseenEdit: true,
       clientActionId: act(),
     });
     expect(r.status).toBe(409);

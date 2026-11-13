@@ -172,7 +172,7 @@ const UI = {
     // An edit of the row was saved after this page loaded and was never shown on it: from another tab or
     // device, or by another editor (interface audit 2026-11-13, ED-05). Not yet read by a native speaker.
     unseenEdit:
-      'Breyting var vistuð á þennan bút eftir að þú opnaðir síðuna, til dæmis í öðrum flipa. Berðu ' +
+      'Breyting á þessum bút var vistuð eftir að þú opnaðir síðuna, til dæmis í öðrum flipa. Berðu ' +
       'textann þinn saman við röðina og vistaðu aftur.',
     baseMissing:
       'Vistun var hafnað því hún kom frá eldri útgáfu síðunnar. Berðu textann saman við röðina ' +

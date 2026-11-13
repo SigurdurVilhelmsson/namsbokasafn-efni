@@ -80,7 +80,7 @@ const REFUSAL_MESSAGES = Object.freeze({
   // of this segment is in flight that the page never showed (it was saved from another tab or
   // device, or by another editor, after the page loaded).
   UNSEEN_EDIT:
-    'Breyting hefur verið vistuð á þennan bút frá því að síðunni var hlaðið og hún er ekki sýnd hér. ' +
+    'Breyting á þessum bút hefur verið vistuð frá því að síðunni var hlaðið og hún er ekki sýnd hér. ' +
     'Vistun hafnað: endurhlaðið eininguna.',
   STRUCTURE_BLOCKED: 'Vistun hafnað: byggingarmerki vantar eða hafa breyst.',
 });
@@ -193,7 +193,8 @@ function displayedEditNow({ book, moduleId, segmentId }) {
   const rows = segmentEditor
     .getDb()
     .prepare(
-      `SELECT id, status, applied_at, created_at, edited_content, editor_id FROM segment_edits
+      `SELECT id, status, applied_at, created_at, edited_content, editor_id, category, editor_note
+       FROM segment_edits
        WHERE book = ? AND module_id = ? AND segment_id = ?`
     )
     .all(book, moduleId, segmentId);
@@ -219,6 +220,7 @@ function saveOnServedBase(input) {
     baseSha256,
     displayedEditId = null,
     displayedEditSha256 = null,
+    refuseUnseenEdit = false,
     acceptedSuggestions,
   } = input;
   if (!EDIT_ORIGINS.includes(origin)) {
@@ -274,23 +276,31 @@ function saveOnServedBase(input) {
     // page loaded now would show must be the one this page showed. Its own code, not STALE_DISPLAYED: the row
     // the page named, if any, is unchanged, and STALE_DISPLAYED means that row changed or is gone.
     //
+    // Only for a caller that says it handles the refusal (`refuseUnseenEdit`; the route passes the body's
+    // `handlesUnseenEdit`). A page loaded before this check existed does not keep the text on a code it does not
+    // know: its reload would ask closePanels, and OK there loses the text. Such a page is answered as before.
+    //
     // One pass, for a replay whose first attempt landed: the edit a page would show now is the caller's own
-    // pending row (the row this save would UPDATE) and already holds exactly the text being saved. It is
-    // decision 39's reason applied to a page that named no edit, or an older one; decision 39 itself covers only
-    // the named row. The hashes a refusal records: what the page named (null when none), and the edit a page
-    // would show now.
-    const nowShown = displayedEditNow({ book, moduleId, segmentId });
-    if (nowShown && nowShown.id !== displayedEditId) {
-      const nowShownSha256 = sha256Text(nowShown.edited_content);
-      const ownReplay =
-        nowShown.status === 'pending' &&
-        String(nowShown.editor_id) === String(editorId) &&
-        nowShownSha256 === sha256Text(editedContent);
-      if (!ownReplay) {
-        throw refuse('UNSEEN_EDIT', {
-          echoedSha256: displayedEditSha256,
-          currentSha256: nowShownSha256,
-        });
+    // pending row (the row this save would UPDATE) and already holds exactly what is being saved, the text and
+    // the category and note with it, so the write changes nothing the page did not show. It is decision 39's
+    // reason applied to a page that named no edit, or an older one; decision 39 itself covers only the named
+    // row. The hashes a refusal records: what the page named (null when none), and the edit a page would show now.
+    if (refuseUnseenEdit) {
+      const nowShown = displayedEditNow({ book, moduleId, segmentId });
+      if (nowShown && nowShown.id !== displayedEditId) {
+        const nowShownSha256 = sha256Text(nowShown.edited_content);
+        const ownReplay =
+          nowShown.status === 'pending' &&
+          String(nowShown.editor_id) === String(editorId) &&
+          nowShownSha256 === sha256Text(editedContent) &&
+          (nowShown.category || null) === (category || null) &&
+          (nowShown.editor_note || null) === (editorNote || null);
+        if (!ownReplay) {
+          throw refuse('UNSEEN_EDIT', {
+            echoedSha256: displayedEditSha256,
+            currentSha256: nowShownSha256,
+          });
+        }
       }
     }
   }

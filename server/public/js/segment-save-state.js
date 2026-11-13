@@ -149,6 +149,10 @@
           : null,
       clientActionId: i.clientActionId,
       clientActionTime: i.clientActionTime,
+      // This page keeps the typed text on an UNSEEN_EDIT refusal, so the server may make that check for it. A
+      // page loaded before the check existed sends no such word and is not refused (its reload would ask
+      // closePanels and could lose the text): servedEdit.js, saveOnServedBase.
+      handlesUnseenEdit: true,
       assists: [],
       // Beside the assists, never inside them (G1.23 §8); '[]' when none. Set before the measurement below.
       acceptedSuggestions: Array.isArray(i.acceptedSuggestions) ? i.acceptedSuggestions : [],

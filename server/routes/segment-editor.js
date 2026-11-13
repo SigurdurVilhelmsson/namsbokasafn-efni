@@ -533,6 +533,8 @@ router.post(
         baseSha256: typeof baseSha256 === 'string' ? baseSha256 : undefined,
         displayedEditId: displayedEditId ?? null,
         displayedEditSha256: displayedEditSha256 ?? null,
+        // UNSEEN_EDIT is checked only for a page that says it keeps the text on that refusal (servedEdit.js).
+        refuseUnseenEdit: req.body.handlesUnseenEdit === true,
         // G1.23 (spec §7): always a list, so an editor save always recomputes what the row took.
         acceptedSuggestions,
       });
