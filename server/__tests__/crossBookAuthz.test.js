@@ -201,6 +201,12 @@ beforeAll(() => {
   db.prepare(
     `INSERT INTO users (id, display_name, role, provider_id) VALUES (3, 'Head B', 'head-editor', 'u-he-b')`
   ).run();
+  // HE_B's book, where an account holds it. A request is decided from the account row, not from
+  // the token's copy of it (services/auth.js currentAccess), so a persona WITH a users row needs
+  // its head-editor book here as well as in the token. HE_A has no row and keeps its claims.
+  db.prepare(
+    `INSERT INTO user_book_access (user_id, book_slug, role_for_book) VALUES (3, 'liffraedi-2e', 'head-editor')`
+  ).run();
   // Fresh sections (no interference with rows 42-51):
   ins.run(60, 1, 1, '1.20', 'not_started'); // liffraedi: fail-open matrix + bulk
   ins.run(61, 2, 2, '1.21', 'not_started'); // efnafraedi: enforcement-ON + resolver discrimination

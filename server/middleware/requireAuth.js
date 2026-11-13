@@ -10,7 +10,7 @@
  * 3. Mock the auth middleware in unit tests if needed
  */
 
-const { verifyToken } = require('../services/auth');
+const { verifyToken, currentAccess } = require('../services/auth');
 
 /**
  * Require authentication middleware
@@ -48,14 +48,25 @@ function requireAuth(req, res, next) {
     });
   }
 
+  // The role and books come from the account as it is now, not as it was when the token was
+  // minted: services/auth.js currentAccess says why, and what a missing row means.
+  const access = currentAccess(decoded);
+  if (!access) {
+    return res.status(401).json({
+      error: 'Account deactivated',
+      message: 'This account is no longer active',
+      loginUrl: '/api/auth/login',
+    });
+  }
+
   // Attach user to request
   req.user = {
     id: decoded.sub,
     username: decoded.username,
     name: decoded.name,
     avatar: decoded.avatar,
-    role: decoded.role,
-    books: decoded.books || [],
+    role: access.role,
+    books: access.books,
   };
 
   next();
@@ -79,14 +90,16 @@ function optionalAuth(req, res, next) {
 
   if (token) {
     const decoded = verifyToken(token);
-    if (decoded) {
+    // A deactivated account is treated as signed out, like an invalid token.
+    const access = decoded ? currentAccess(decoded) : null;
+    if (access) {
       req.user = {
         id: decoded.sub,
         username: decoded.username,
         name: decoded.name,
         avatar: decoded.avatar,
-        role: decoded.role,
-        books: decoded.books || [],
+        role: access.role,
+        books: access.books,
       };
     }
   }

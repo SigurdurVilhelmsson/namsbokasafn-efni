@@ -10,7 +10,7 @@ const router = express.Router();
 const path = require('path');
 const fs = require('fs');
 
-const { verifyToken, hasRole, ROLES } = require('../services/auth');
+const { verifyToken, currentAccess, hasRole, ROLES } = require('../services/auth');
 
 const viewsDir = path.join(__dirname, '..', 'views');
 
@@ -29,11 +29,14 @@ function requirePageAuth(minRole) {
   return (req, res, next) => {
     const token = req.cookies?.auth_token;
     const decoded = token ? verifyToken(token) : null;
-    if (!decoded) {
+    // The account as it is now (services/auth.js currentAccess): a deactivated account is sent to
+    // sign in like any other invalid session, and a lowered role is bounced like any other.
+    const access = decoded ? currentAccess(decoded) : null;
+    if (!access) {
       const dest = encodeURIComponent(req.originalUrl);
       return res.redirect(302, `/login?redirect=${dest}`);
     }
-    if (minRole && !hasRole(decoded.role, minRole)) {
+    if (minRole && !hasRole(access.role, minRole)) {
       // Authenticated but under-privileged — bounce to the landing page rather
       // than leak the existence/shape of the restricted view.
       return res.redirect(302, '/');

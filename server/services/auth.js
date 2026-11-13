@@ -278,6 +278,41 @@ function determineUserRole(msUser) {
 }
 
 /**
+ * What the account behind a verified token may do NOW.
+ *
+ * A token is minted at sign-in and stays valid for CONFIG.jwtExpiry. Its role and book list are a
+ * copy of the account row as it was then. An admin who deactivates an account, lowers a role or
+ * takes a book away expects that to hold from the next request, not from the next sign-in, so
+ * every request is decided from the row:
+ *
+ *   - the row is inactive               → null: the session is refused
+ *   - the row exists                    → the row's role and its head-editor books
+ *   - no row                            → the token's own claims. That is a visitor (CLAUDE.md
+ *                                         § Auth: a signed-in user may have no `users` row), and
+ *                                         it is also a token whose row was deleted outright,
+ *                                         which this does not catch: no screen deletes a row
+ *   - an address on ADMIN_USERS         → the token's claims, because determineUserRole puts the
+ *                                         list above the row at sign-in, and a request must not
+ *                                         be stricter than the sign-in that would follow it
+ *
+ * @param {{sub: string|number, username?: string, role: string, books?: string[]}} decoded
+ * @returns {{role: string, books: string[]}|null} null when the account has been deactivated
+ */
+function currentAccess(decoded) {
+  const claims = { role: decoded.role, books: decoded.books || [] };
+
+  const address = String(decoded.username || '').toLowerCase();
+  if (address && CONFIG.adminUsers.includes(address)) return claims;
+
+  const row = userService.findByProviderId(decoded.sub);
+  if (!row) return claims;
+  // Only an explicit 0/false is "inactive": a row without the column is not a deactivated one.
+  if (row.is_active === 0 || row.is_active === false) return null;
+
+  return { role: row.role || claims.role, books: userService.getHeadEditorBooks(row) };
+}
+
+/**
  * Create JWT token for authenticated user
  */
 function createToken(user) {
@@ -378,6 +413,7 @@ module.exports = {
   authenticate,
   verifyToken,
   createToken,
+  currentAccess,
 
   // Role helpers
   ROLES,
