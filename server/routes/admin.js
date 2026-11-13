@@ -755,6 +755,26 @@ router.post('/users', requireAuth, requireAdmin(), (req, res) => {
 });
 
 /**
+ * Whether a users row is the signed-in caller's own. Sign-in binds the row to the account id
+ * (provider_id), which is the token's `sub` and reaches here as req.user.id. The username is not
+ * a key: the row stores it lowercased and the token carries it as Microsoft sent it, so a plain
+ * comparison misses every address with a capital letter in it. It is compared, lowercased, only
+ * as a second way to recognise the caller.
+ *
+ * @param {{provider_id?: string|null, provider_username?: string|null}} row
+ * @param {{id?: string|number, username?: string}} user
+ * @returns {boolean}
+ */
+function isOwnRow(row, user) {
+  if (!row || !user) return false;
+  if (row.provider_id != null && user.id != null && String(row.provider_id) === String(user.id)) {
+    return true;
+  }
+  const rowName = String(row.provider_username || '').toLowerCase();
+  return rowName !== '' && rowName === String(user.username || '').toLowerCase();
+}
+
+/**
  * PUT /api/admin/users/:id
  * Update user role or status
  *
@@ -776,11 +796,24 @@ router.put('/users/:id', requireAuth, requireAdmin(), (req, res) => {
       });
     }
 
-    // Prevent demoting self
-    if (existing.provider_username === req.user.username && role && role !== ROLES.ADMIN) {
+    // A session follows the account row (services/auth.js currentAccess), so a change to the
+    // caller's own row holds from their next request and cannot be undone from this session.
+    if (isOwnRow(existing, req.user) && role && role !== ROLES.ADMIN) {
       return res.status(400).json({
         error: 'Invalid operation',
         message: 'You cannot demote yourself',
+      });
+    }
+    if (isActive !== undefined && typeof isActive !== 'boolean') {
+      return res.status(400).json({
+        error: 'Invalid operation',
+        message: 'isActive must be true or false',
+      });
+    }
+    if (isOwnRow(existing, req.user) && isActive === false) {
+      return res.status(400).json({
+        error: 'Invalid operation',
+        message: 'You cannot deactivate yourself',
       });
     }
 
@@ -837,7 +870,7 @@ router.delete('/users/:id', requireAuth, requireAdmin(), (req, res) => {
     }
 
     // Prevent deleting self
-    if (existing.provider_username === req.user.username) {
+    if (isOwnRow(existing, req.user)) {
       return res.status(400).json({
         error: 'Invalid operation',
         message: 'You cannot delete yourself',
