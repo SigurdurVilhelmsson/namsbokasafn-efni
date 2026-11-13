@@ -11,6 +11,15 @@
 > of what was designed and why; it carries no status. If it disagrees with the active register, the register wins.
 > Do not sync it or edit it in place. Supersede it with a new record instead.
 
+> **✏️ AMENDED 2026-11-12: three calls made while building the double-click guard (#672), confirmed by [USER] on
+> 2026-11-12** ("Confirm all three"). They refine the 2026-11-11 block below. The first two are already in its wording;
+> the third was only implied by "a pane closing", and is stated here.
+>
+> - Every full redraw of the segment table starts the pause, not only a module load, and so does Ctrl+S closing a pane
+>   with nothing to save.
+> - No keyboard exemption: Enter on a focused *Nota* or *Hafna* is a click.
+> - Escape that reverts typing and keeps the pane open does not start the pause; only a pane closing does.
+
 > **✏️ AMENDED 2026-11-11: the double-click guard on *Nota* and *Hafna*, approved by [USER] on 2026-11-11** ("Go ahead
 > according to your recommendations", to the design proposed that day, with the buttons dimmed during the pause).
 > [USER] ruled the guard "fix before step 5" (register §C216, its third item). It extends §4.
