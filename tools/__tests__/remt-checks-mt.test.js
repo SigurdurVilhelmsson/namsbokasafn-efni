@@ -72,7 +72,9 @@ import {
   withoutPreSummaryDrift,
   withoutPreTypeDrift,
   TABLE_SUMMARY_INTRODUCED,
+  REPO_ROOT,
 } from './helpers/remt-corpus.js';
+import { loadUnservedCopiesOrNull } from '../lib/g112-unserved-copies.js';
 // ⚠️ INJECT'S OWN PARSER, imported so the two-parser disagreement is asserted rather than
 // described. `.cjs` under a `"type": "module"` root loads as CommonJS default-only.
 import segMarkers from '../lib/seg-markers.cjs';
@@ -415,17 +417,23 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     let driftIds = 0;
     let summaryDriftIds = 0;
     for (const b of BOOKS) {
+      // G1.12: the ctx the sweep builds carries the book's frozen list of unserved Icelandic
+      // copies (chemistry's 285; `null` for a book with none), keyed on `module`. Without it
+      // chemistry's 83 re-extracted modules fail the cross-side leg on copies they are
+      // EXPECTED to carry, so this test hands A2b the same two keys `tier2Ctx` does.
+      const unservedCopies = loadUnservedCopiesOrNull(path.join(REPO_ROOT, 'books', b));
       for (const f of FILES[b]) {
         const en = enCounterpart(f);
         expect(en).not.toBeNull(); // 0 IS files lack an EN pair — asserted, not assumed
         const isText = read(f);
         const enText = read(en);
-        const raw = await runCheck(A2b, { isText, segText: enText });
+        const module = path.basename(f).replace(/-segments\.is\.md$/, '');
+        const raw = await runCheck(A2b, { isText, segText: enText, module, unservedCopies });
         if (raw.verdict !== VERDICT.PASS) rawNonPass.push({ f, r: raw });
         const drift = withoutPreTypeDrift(f, enText, isText);
         driftIds += drift.byType.alt.length;
         summaryDriftIds += drift.byType.summary.length;
-        const r = await runCheck(A2b, { isText, segText: drift.en });
+        const r = await runCheck(A2b, { isText, segText: drift.en, module, unservedCopies });
         if (r.verdict !== VERDICT.PASS) nonPass.push({ f, r });
         examined += r.examined;
         pairs++;
@@ -976,7 +984,10 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
       // Keyed `{tableId}-summary`, all `[\w-]` — violations stay 0.
       // 63,865 -> 64,247 is +382 (§C183, 2026-09-28): chemistry's re-extract added 191
       // `:table-summary:` EN ids and the top-up bought all 191 into the IS. 191 + 191 = 382.
-      expect(ids).toBe(64247); // L37: the COUNT beside the predicate — an empty walk fails here
+      // 64,247 -> 63,962 is −285 (G1.12, 2026-11-12): chemistry's re-extract removed the second
+      // EN copy of each of 285 duplicated note-paragraph ids; the IS keeps both copies (pure MT
+      // is never rewritten), so only the EN side moves. verify-cut.mjs removed exactly 285 blocks.
+      expect(ids).toBe(63962); // L37: the COUNT beside the predicate — an empty walk fails here
       expect(violations).toBe(0);
     });
 
@@ -1238,10 +1249,12 @@ describe('registry wiring — a check that is never selected does not exist', ()
     // the cross-side leg, v3 the `id-charset` leg. Decision ① scopes quarantine on this
     // stamp, so a verdict recorded by A2b v1 or v2 must not be readable as one this
     // version would have produced — v2 PASSED the invisible-character files v3 FAILS.
+    // v4 (G1.12): with `unservedCopies` the cross-side leg expects a listed second Icelandic
+    // copy, so v4 PASSES modules v3 failed and FAILS a listed copy whose marker v3 missed.
     expect(Object.fromEntries(MT_FREE_CHECKS.map((c) => [c.id, c.version]))).toEqual({
       A1: 1,
       A6: 1,
-      A2b: 3,
+      A2b: 4,
       A2c: 1,
     });
     // ⚠️ A MEMBERSHIP PIN, WIDENED BY TASK 9 FROM 4 TO 7 AND BY TASK 10 FROM 7 TO 10 —

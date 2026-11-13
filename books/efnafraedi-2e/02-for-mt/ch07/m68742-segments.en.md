@@ -151,9 +151,6 @@ A Lewis structure depicts a boron atom that is single bonded to three chlorine a
 <!-- SEG:m68742:note-title:fs-idp125452800-title -->
 Answer:
 
-<!-- SEG:m68742:para:fs-idp55819408 -->
-The electron-pair geometry is trigonal planar and the molecular structure is trigonal planar. Due to resonance, all three C–O bonds are identical. Whether they are single, double, or an average of the two, each bond counts as one region of electron density.
-
 <!-- SEG:m68742:alt:fs-idp108737552-alt -->
 A Lewis structure depicts a boron atom that is single bonded to three chlorine atoms, each of which is oriented in the same flat plane. This figure uses dashes and wedges to give it a three-dimensional appearance.
 
@@ -186,9 +183,6 @@ A Lewis structure depicts a nitrogen atom that is single bonded to four hydrogen
 
 <!-- SEG:m68742:note-title:fs-idp57227744-title -->
 Answer:
-
-<!-- SEG:m68742:para:fs-idp18533456 -->
-Any molecule with five electron pairs around the central atoms including no lone pairs will be trigonal bipyramidal. PF[[sub:5]] is a common example.
 
 <!-- SEG:m68742:caption:CNX_Chem_07_06_NH4mol-caption -->
 The ammonium ion displays a tetrahedral electron-pair geometry as well as a tetrahedral molecular structure.
@@ -229,9 +223,6 @@ A Lewis structure depicts an oxygen atom with two lone pairs of electrons single
 <!-- SEG:m68742:note-title:fs-idp47211728-title -->
 Answer:
 
-<!-- SEG:m68742:para:fs-idp103296688 -->
-electron pair geometry: tetrahedral; molecular structure: trigonal pyramidal
-
 <!-- SEG:m68742:caption:CNX_Chem_07_06_H2Omol-caption -->
 (a) H[[sub:2]]O has four regions of electron density around the central atom, so it has a tetrahedral electron-pair geometry. (b) Two of the electron regions are lone pairs, so the molecular structure is bent.
 
@@ -268,9 +259,6 @@ A Lewis diagram depicts a sulfur atom with one lone pair of electrons single bon
 <!-- SEG:m68742:note-title:fs-idp54082656-title -->
 Answer:
 
-<!-- SEG:m68742:para:fs-idp90752208 -->
-The electron-pair geometry is trigonal bipyramidal. The molecular structure is linear.
-
 <!-- SEG:m68742:caption:CNX_Chem_07_06_SF4mol-caption -->
 (a) SF4 has a trigonal bipyramidal arrangement of the five regions of electron density. (b) One of the regions is a lone pair, which results in a seesaw-shaped molecular structure.
 
@@ -306,9 +294,6 @@ A Lewis structure depicts a xenon atom with two lone pairs of electrons that is 
 
 <!-- SEG:m68742:note-title:fs-idm25808-title -->
 Answer:
-
-<!-- SEG:m68742:para:fs-idp81639856 -->
-electron pair geometry: trigonal bipyramidal; molecular structure: linear
 
 <!-- SEG:m68742:caption:CNX_Chem_07_06_XeF4mol-caption -->
 (a) XeF[[sub:4]] adopts an octahedral arrangement with two lone pairs (red lines) and four bonds in the electron-pair geometry. (b) The molecular structure is square planar with the lone pairs directly across from one another.
@@ -382,9 +367,6 @@ A Lewis structure depicts a nitrogen atom with two lone pairs of electrons that 
 <!-- SEG:m68742:note-title:fs-idm44767872-title -->
 Answer:
 
-<!-- SEG:m68742:para:fs-idp66198816 -->
-electron-pair geometries: nitrogen––tetrahedral; carbon ([[u:C]]H)—tetrahedral; carbon ([[u:C]]H[[sub:3]])—tetrahedral; carbon ([[u:C]]O[[sub:2]])—trigonal planar; oxygen ([[u:O]]H)—tetrahedral; local structures: nitrogen—trigonal pyramidal; carbon ([[u:C]]H)—tetrahedral; carbon ([[u:C]]H[[sub:3]])—tetrahedral; carbon ([[u:C]]O[[sub:2]])—trigonal planar; oxygen ([[u:O]]H)—bent (109°)
-
 <!-- SEG:m68742:para:fs-idp159959216 -->
 The [[link:molecular shape simulator|http://openstax.org/l/16MolecShape]] lets you build various molecules and practice naming their electron-pair geometries and molecular structures.
 
@@ -417,9 +399,6 @@ Answers will vary. For example, an atom with four single bonds, a double bond, a
 
 <!-- SEG:m68742:note-title:fs-idp52028320-title -->
 Answer:
-
-<!-- SEG:m68742:para:fs-idp73534304 -->
-Answers will vary. For example, an atom with four single bonds, a double bond, and a lone pair has an octahedral electron-group geometry and a square pyramidal molecular structure. XeOF[[sub:4]] is a molecule that adopts this structure.
 
 <!-- SEG:m68742:para:fs-idp36050992 -->
 [[term:Valence shell electron-pair repulsion theory (VSEPR theory)|term-00003]] enables us to predict the molecular structure, including approximate bond angles around a central atom, of a molecule from an examination of the number of bonds and lone electron pairs in its Lewis structure. The VSEPR model assumes that electron pairs in the valence shell of a central atom will adopt an arrangement that minimizes repulsions between these electron pairs by maximizing the distance between them. The electrons in the valence shell of a central atom form either bonding pairs of electrons, located primarily between bonded atoms, or lone pairs. The electrostatic repulsion of these electrons is reduced when the various regions of high electron density assume positions as far from each other as possible.
@@ -498,9 +477,6 @@ The largest bond moments will occur with the largest partial charges. The two so
 
 <!-- SEG:m68742:note-title:fs-idp670160-title -->
 Answer:
-
-<!-- SEG:m68742:para:fs-idp280660528 -->
-The largest bond moments will occur with the largest partial charges. The two solutions above represent how unevenly the electrons are shared in the bond. The bond moments will be maximized when the electronegativity difference is greatest. The controls for A and C should be set to one extreme, and B should be set to the opposite extreme. Although the magnitude of the bond moment will not change based on whether B is the most electronegative or the least, the direction of the bond moment will.
 
 <!-- SEG:m68742:para:fs-idp30351200 -->
 As discussed previously, polar covalent bonds connect two atoms with differing electronegativities, leaving one atom with a partial positive charge (δ+) and the other atom with a partial negative charge (δ–), as the electrons are pulled toward the more electronegative atom. This separation of charge gives rise to a [[term:bond dipole moment|term-00013]]. The magnitude of a bond dipole moment is represented by the Greek letter mu ([[i:µ]]) and is given by the formula shown here, where Q is the magnitude of the partial charges (determined by the electronegativity difference) and r is the distance between the charges:

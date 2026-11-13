@@ -55,9 +55,6 @@ In this figure, two graphs are shown. The x-axes are labeled, “Extent of react
 <!-- SEG:m68795:note-title:fs-idm215189760-title -->
 Answer:
 
-<!-- SEG:m68795:para:fs-idm239441760 -->
-For the first step, [[i:E]][[sub:a]] = 80 kJ for (a) and 70 kJ for (b), so diagram (b) depicts the catalyzed reaction. Activation energies for the second steps of both mechanisms are the same, 20 kJ.
-
 <!-- SEG:m68795:title:fs-idm65053840-title -->
 Homogeneous Catalysts
 

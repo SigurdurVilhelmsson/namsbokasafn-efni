@@ -82,9 +82,6 @@ One of the frequencies used to transmit and receive cellular telephone signals i
 <!-- SEG:m68729:note-title:fs-idp125103008-title -->
 Answer:
 
-<!-- SEG:m68729:para:fs-idm51679744 -->
-0.353 m = 35.3 cm
-
 <!-- SEG:m68729:note-title:fs-idm41062080-title -->
 Wireless Communication
 
@@ -214,9 +211,6 @@ The microwaves in an oven are of a specific frequency that will heat the water m
 <!-- SEG:m68729:note-title:fs-idp168331120-title -->
 Answer:
 
-<!-- SEG:m68729:para:fs-idm36874016 -->
-2 [[MATH:9]] 10[[sup:−24]] J
-
 <!-- SEG:m68729:para:fs-idm38264752 -->
 Use this [[link:simulation program|http://openstax.org/l/16photelec]] to experiment with the photoelectric effect and observe the influence of light intensity, light frequency, type of metal, and other experimental parameters on the ejected electrons.
 
@@ -264,9 +258,6 @@ Calculate the threshold energy in kJ/mol of electrons in aluminum, given that th
 
 <!-- SEG:m68729:note-title:fs-idp34104992-title -->
 Answer:
-
-<!-- SEG:m68729:para:fs-idp26057584 -->
-394 kJ/mol
 
 <!-- SEG:m68729:title:fs-idm65710736-title -->
 Line Spectra

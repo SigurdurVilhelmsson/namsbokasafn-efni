@@ -132,7 +132,8 @@ function loadModuleForEditing(book, chapter, moduleId) {
   const isLookup = {};
   for (const seg of isSegments) {
     seg.content = unescapeMtMarkers(seg.content);
-    isLookup[seg.segmentId] = seg;
+    // First copy wins: the survivor rule inject and the AI harness use (G1.12, spec §5.2).
+    if (!Object.hasOwn(isLookup, seg.segmentId)) isLookup[seg.segmentId] = seg;
   }
 
   // Load equations if available

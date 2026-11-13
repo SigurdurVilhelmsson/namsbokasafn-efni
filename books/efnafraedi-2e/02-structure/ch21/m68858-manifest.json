@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68858",
-  "extractedAt": "2026-09-28T20:03:10.454Z",
+  "extractedAt": "2026-11-12T15:01:11.615Z",
   "sourceHash": "e4c84e6195ef8ce1",
-  "segmentCount": 170,
+  "segmentCount": 169,
   "segmentIds": [
     "m68858:title:auto-1",
     "m68858:abstract:auto-2",
@@ -73,7 +73,6 @@
     "m68858:para:fs-idp15286032",
     "m68858:para:fs-idm82342624",
     "m68858:note-title:fs-idp14889200-title",
-    "m68858:para:fs-idm82342624",
     "m68858:para:fs-idm3484976",
     "m68858:caption:CNX_Chem_21_06_Monitors-caption",
     "m68858:alt:fs-idp202105696-alt",

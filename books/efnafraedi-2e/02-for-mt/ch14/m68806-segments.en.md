@@ -73,9 +73,6 @@ This table has two main columns and four rows. The first row for the first colum
 <!-- SEG:m68806:note-title:fs-idm54595904-title -->
 Answer:
 
-<!-- SEG:m68806:para:fs-idp43419152 -->
-[H[[sub:3]]O[[sup:+]]] = 7.5 [[MATH:9]] 10[[sup:−6]] [[i:M]]; [[MATH:10]] is the stronger acid.
-
 <!-- SEG:m68806:title:fs-idm135179984-title -->
 Salts with Basic Ions
 
@@ -123,9 +120,6 @@ What is the pH of a 0.083-[[i:M]] solution of NaCN?
 
 <!-- SEG:m68806:note-title:fs-idm95967568-title -->
 Answer:
-
-<!-- SEG:m68806:para:fs-idm7663712 -->
-11.11
 
 <!-- SEG:m68806:title:fs-idm81229520-title -->
 Salts with Acidic and Basic Ions
@@ -199,9 +193,6 @@ Determine whether aqueous solutions of the following salts are acidic, basic, or
 <!-- SEG:m68806:note-title:fs-idm42020240-title -->
 Answer:
 
-<!-- SEG:m68806:para:fs-idm5299888 -->
-(a) basic; (b) neutral; (c) acidic; (d) basic
-
 <!-- SEG:m68806:title:fs-idm108915120-title -->
 The Ionization of Hydrated Metal Ions
 
@@ -255,9 +246,6 @@ What is [[MATH:36]] in a 0.15-[[i:M]] solution of Al(NO[[sub:3]])[[sub:3]] that 
 
 <!-- SEG:m68806:note-title:fs-idm38454832-title -->
 Answer:
-
-<!-- SEG:m68806:para:fs-idp86512272 -->
-2.1 [[MATH:38]] 10[[sup:−5]] [[i:M]]
 
 <!-- SEG:m68806:title:fs-idm180137840-title -->
 Key Concepts and Summary

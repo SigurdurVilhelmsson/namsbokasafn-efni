@@ -55,9 +55,6 @@ To three significant digits, what is the mass percentage of iron in the compound
 <!-- SEG:m68702:note-title:fs-idm63137328-title -->
 Answer:
 
-<!-- SEG:m68702:para:fs-idm72116192 -->
-69.9% Fe
-
 <!-- SEG:m68702:para:fs-idm144417840 -->
 The elemental makeup of a compound defines its chemical identity, and chemical formulas are the most succinct way of representing this elemental makeup. When a compound’s formula is unknown, measuring the mass of each of its constituent elements is often the first step in the process of determining the formula experimentally. The results of these measurements permit the calculation of the compound’s [[term:percent composition|term-00001]], defined as the percentage by mass of each element in the compound. For example, consider a gaseous compound composed solely of carbon and hydrogen. The percent composition of this compound could be represented as follows:
 
@@ -90,9 +87,6 @@ A 24.81-g sample of a gaseous compound containing only carbon, oxygen, and chlor
 
 <!-- SEG:m68702:note-title:fs-idp63474576-title -->
 Answer:
-
-<!-- SEG:m68702:para:fs-idm146819008 -->
-12.1% C, 16.1% O, 71.79% Cl
 
 <!-- SEG:m68702:title:fs-idm186235344-title -->
 Determination of Empirical Formulas
@@ -135,9 +129,6 @@ CH[[sub:2]]O
 
 <!-- SEG:m68702:note-title:fs-idm61160608-title -->
 Answer:
-
-<!-- SEG:m68702:para:fs-idm49848016 -->
-CH[[sub:2]]O
 
 <!-- SEG:m68702:caption:CNX_Chem_03_03_BrewTank-caption -->
 An oxide of carbon is removed from these fermentation tanks through the large copper pipes at the top. (credit: “Dual Freq”/Wikimedia Commons)
@@ -217,9 +208,6 @@ N[[sub:2]]O[[sub:5]]
 <!-- SEG:m68702:note-title:fs-idp52798448-title -->
 Answer:
 
-<!-- SEG:m68702:para:fs-idm112291760 -->
-N[[sub:2]]O[[sub:5]]
-
 <!-- SEG:m68702:caption:CNX_Chem_03_03_hematite-caption -->
 Hematite is an iron oxide that is used in jewelry. (credit: Mauro Cateb)
 
@@ -288,9 +276,6 @@ C[[sub:8]]H[[sub:10]]N[[sub:4]]O[[sub:2]]
 
 <!-- SEG:m68702:note-title:fs-idm149132352-title -->
 Answer:
-
-<!-- SEG:m68702:para:fs-idm152847216 -->
-C[[sub:8]]H[[sub:10]]N[[sub:4]]O[[sub:2]]
 
 <!-- SEG:m68702:title:fs-idm130412048-title -->
 Key Concepts and Summary

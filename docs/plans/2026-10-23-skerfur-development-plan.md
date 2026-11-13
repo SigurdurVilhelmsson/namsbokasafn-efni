@@ -237,6 +237,14 @@ until then a save or accept on a duplicated id that cannot be placed is refused 
 after G1.23 is switched on in production (R6), and only to an editor whose consent decision and signed licence clause
 are recorded (design §8).*
 
+✏️ *2026-11-12, G1.12 ([design](../superpowers/specs/2026-11-12-g112-duplicate-segment-ids-design.md), approved by
+[USER] as written): the mechanism is (a), extraction-side. The note paragraph's second emission keeps its counter
+slot and emits no text (the first copy survives), and the editor loader pairs the first Icelandic copy, because
+`02-mt-output` keeps both. The re-extract commits the 83 modules' segment files and manifests, and lands with the
+loader change in one deploy. It lands after the last planned `term-pass apply --write` on chemistry, before any of
+the 83 modules opens, before G1.7's freeze manifest and before G1.13 assigns. The "editor fixes" batch below no
+longer carries G1.12; (b) is not built.*
+
 ✏️ *2026-11-03, G1.20 ([rulings](../decisions/2026-11-03-research-capture-consent-and-retention-rulings.md), R2): the research file has its own 7-day backup rotation, locally and in its
 own off-box bucket with versioning off, apart from the long-lived tier. The versioning planned here for the editorial
 database must never cover research copies. Before any consent is collected, a read-only check confirms that no

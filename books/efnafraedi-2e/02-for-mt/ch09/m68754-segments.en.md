@@ -76,9 +76,6 @@ At a particular pressure and temperature, nitrogen gas effuses at the rate of 79
 <!-- SEG:m68754:note-title:fs-idp100366752-title -->
 Answer:
 
-<!-- SEG:m68754:para:fs-idp41048160 -->
-52 mL/s
-
 <!-- SEG:m68754:example-title:fs-idm54710976-title -->
 Effusion Time Calculations
 
@@ -121,9 +118,6 @@ A party balloon filled with helium deflates to [[MATH:3]] of its original volume
 <!-- SEG:m68754:note-title:fs-idp35835728-title -->
 Answer:
 
-<!-- SEG:m68754:para:fs-idp53945792 -->
-32 h
-
 <!-- SEG:m68754:example-title:fs-idp23019808-title -->
 Determining Molar Mass Using Graham’s Law
 
@@ -156,9 +150,6 @@ Hydrogen gas effuses through a porous container 8.97-times faster than an unknow
 
 <!-- SEG:m68754:note-title:fs-idp120447376-title -->
 Answer:
-
-<!-- SEG:m68754:para:fs-idm51199280 -->
-162 g/mol
 
 <!-- SEG:m68754:note-title:fs-idp115856048-title -->
 Use of Diffusion for Nuclear Energy Applications: Uranium Enrichment

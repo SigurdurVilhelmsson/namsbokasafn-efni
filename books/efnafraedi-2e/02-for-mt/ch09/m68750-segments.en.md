@@ -169,9 +169,6 @@ A typical barometric pressure in Kansas City is 740 torr. What is this pressure 
 <!-- SEG:m68750:note-title:fs-idm54955856-title -->
 Answer:
 
-<!-- SEG:m68750:para:fs-idp131216672 -->
-0.974 atm; 740 mm Hg; 98.7 kPa; 0.987 bar
-
 <!-- SEG:m68750:para:fs-idm69336128 -->
 We can measure atmospheric pressure, the force exerted by the atmosphere on the earth’s surface, with a [[term:barometer|term-00006]] ([[xref:CNX_Chem_09_01_Barometer]]). A barometer is a glass tube that is closed at one end, filled with a nonvolatile liquid such as mercury, and then inverted and immersed in a container of that liquid. The atmosphere exerts pressure on the liquid outside the tube, the column of liquid exerts pressure inside the tube, and the pressure at the liquid surface is the same inside and outside the tube. The height of the liquid in the tube is therefore proportional to the pressure exerted by the atmosphere.
 
@@ -210,9 +207,6 @@ Calculate the height of a column of water at 25 °C that corresponds to normal a
 
 <!-- SEG:m68750:note-title:fs-idp73341600-title -->
 Answer:
-
-<!-- SEG:m68750:para:fs-idp2146864 -->
-10.3 m
 
 <!-- SEG:m68750:para:fs-idp189718992 -->
 A [[term:manometer|term-00009]] is a device similar to a barometer that can be used to measure the pressure of a gas trapped in a container. A closed-end manometer is a U-shaped tube with one closed arm, one arm that connects to the gas to be measured, and a nonvolatile liquid (usually mercury) in between. As with a barometer, the distance between the liquid levels in the two arms of the tube ([[i:h]] in the diagram) is proportional to the pressure of the gas in the container. An open-end manometer ([[xref:CNX_Chem_09_01_Manometer]]) is the same as a closed-end manometer, but one of its arms is open to the atmosphere. In this case, the distance between the liquid levels corresponds to the difference in pressure between the gas in the container and the atmosphere.
@@ -280,9 +274,6 @@ A diagram of a closed-end manometer is shown. To the upper left is a spherical c
 <!-- SEG:m68750:note-title:fs-idm70430576-title -->
 Answer:
 
-<!-- SEG:m68750:para:fs-idm8669760 -->
-(a) ~150 torr; (b) ~20,000 Pa; (c) ~0.20 bar
-
 <!-- SEG:m68750:example-title:fs-idm76587328-title -->
 Calculation of Pressure Using an Open-End Manometer
 
@@ -339,9 +330,6 @@ A diagram of an open-end manometer is shown. To the upper left is a spherical co
 
 <!-- SEG:m68750:note-title:fs-idp173017200-title -->
 Answer:
-
-<!-- SEG:m68750:para:fs-idp154771664 -->
-(a) 642 mm Hg; (b) 0.845 atm; (c) 85.6 kPa
 
 <!-- SEG:m68750:note-title:fs-idp183412160-title -->
 Measuring Blood Pressure

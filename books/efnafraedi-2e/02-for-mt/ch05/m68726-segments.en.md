@@ -103,14 +103,8 @@ The final temperature (reached by both copper and water) is 38.7 °C.
 <!-- SEG:m68726:note-title:fs-idm20275344-title -->
 Answer:
 
-<!-- SEG:m68726:para:fs-idm12419600 -->
-The initial temperature of the copper was 335.6 °C.
-
 <!-- SEG:m68726:note-title:fs-idm17192400-title -->
 Answer:
-
-<!-- SEG:m68726:para:fs-idm84058400 -->
-The final temperature (reached by both copper and water) is 38.7 °C.
 
 <!-- SEG:m68726:para:fs-idm1809184 -->
 This method can also be used to determine other quantities, such as the specific heat of an unknown metal.
@@ -153,12 +147,6 @@ This specific heat is close to that of either gold or lead. It would be difficul
 
 <!-- SEG:m68726:note-title:fs-idm64160064-title -->
 Answer:
-
-<!-- SEG:m68726:para:fs-idm19048032 -->
-[[i:c]][[sub:metal]]= 0.13 J/g °C
-
-<!-- SEG:m68726:para:fs-idm40554112 -->
-This specific heat is close to that of either gold or lead. It would be difficult to determine which metal this was based solely on the numerical values. However, the observation that the metal is silver/gray in addition to the value for the specific heat indicates that the metal is lead.
 
 <!-- SEG:m68726:para:fs-idp8565200 -->
 When we use calorimetry to determine the heat involved in a chemical reaction, the same principles we have been discussing apply. The amount of heat absorbed by the calorimeter is often small enough that we can neglect it (though not for highly accurate measurements, as discussed later), and the calorimeter minimizes energy exchange with the outside environment. Because energy is neither created nor destroyed during a chemical reaction, the heat produced or consumed in the reaction (the “system”), [[i:q]][[sub:reaction]], plus the heat absorbed or lost by the solution (the “surroundings”), [[i:q]][[sub:solution]], must add up to zero:
@@ -210,9 +198,6 @@ When 100 mL of 0.200 M NaCl([[i:aq]]) and 100 mL of 0.200 M AgNO[[sub:3]]([[i:aq
 
 <!-- SEG:m68726:note-title:fs-idm9227984-title -->
 Answer:
-
-<!-- SEG:m68726:para:fs-idm94618544 -->
-1.34 [[MATH:3]] 10 [[sup:3]] kJ, or 1.34 kJ; assume no heat is absorbed by the calorimeter, no heat is exchanged between the calorimeter and its surroundings, and that the specific heat and density of the solution are the same as those for water
 
 <!-- SEG:m68726:note-title:fs-idm9530672-title -->
 Thermochemistry of Hand Warmers
@@ -271,9 +256,6 @@ When a 3.00-g sample of KCl was added to 3.00 [[MATH:6]] 10[[sup:2]] g of water 
 <!-- SEG:m68726:note-title:fs-idm9544544-title -->
 Answer:
 
-<!-- SEG:m68726:para:fs-idm5945296 -->
-1.33 kJ; assume that the calorimeter prevents heat transfer between the solution and its external environment (including the calorimeter itself) and that the specific heat of the solution is the same as that for water
-
 <!-- SEG:m68726:caption:CNX_Chem_05_02_IcePack-caption -->
 An instant cold pack consists of a bag containing solid ammonium nitrate and a second bag of water. When the bag of water is broken, the pack becomes cold because the dissolution of ammonium nitrate is an endothermic process that removes thermal energy from the water. The cold pack then removes thermal energy from your body.
 
@@ -327,9 +309,6 @@ q[[sub:rx]] = –39.0 kJ (the reaction produced 39.0 kJ of heat)
 
 <!-- SEG:m68726:note-title:fs-idm11360480-title -->
 Answer:
-
-<!-- SEG:m68726:para:fs-idm88592432 -->
-q[[sub:rx]] = –39.0 kJ (the reaction produced 39.0 kJ of heat)
 
 <!-- SEG:m68726:para:fs-idm30236928 -->
 Since the first one was constructed in 1899, 35 calorimeters have been built to measure the heat produced by a living person. [[fn:Francis D. Reardon et al. “The Snellen human calorimeter revisited, re-engineered and upgraded: Design and performance characteristics.” [[i:Medical and Biological Engineering and Computing]] 8 (2006)721–28, http://link.springer.com/article/10.1007/s11517-006-0086-5.|fs-idm55601792]] These whole-body calorimeters of various designs are large enough to hold an individual human being. More recently, whole-room calorimeters allow for relatively normal activities to be performed, and these calorimeters generate data that more closely reflect the real world. These calorimeters are used to measure the metabolism of individuals under different environmental conditions, different dietary regimes, and with different health conditions, such as diabetes.

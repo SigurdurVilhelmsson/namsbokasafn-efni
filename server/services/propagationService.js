@@ -34,7 +34,7 @@ function _setTestDb(testDb) {
  * Pure — no DB/file access.
  *
  * G1.1's two skips come first, before any existing-edit rule (plan decision 13): a duplicated id
- * cannot be placed until G1.12 (R4, spec §5.7), and a module with no Icelandic layer has no base
+ * cannot be placed (R4, spec §5.7; a backstop, since no chemistry id is duplicated after G1.12), and a module with no Icelandic layer has no base
  * to mint (spec §5.2). Only a `layer` of exactly null means "no layer" (findOccurrences' value); an
  * absent one is not checked here, because createPropagatedEdits refuses it before any write.
  * @param {string} propagatedText
@@ -44,7 +44,7 @@ function _setTestDb(testDb) {
  * @returns {'eligible'|'already-matches'|'conflict'|'duplicate-id'|'no-layer'}
  */
 function classifyOccurrence(propagatedText, occ) {
-  if (occ.duplicated) return 'duplicate-id'; // R4: the target cannot be placed until G1.12
+  if (occ.duplicated) return 'duplicate-id'; // R4 backstop: the target cannot be placed
   if (occ.layer === null) return 'no-layer'; // spec §5.2: no layer, no served version, no write
   const existing = occ.existingEdit;
   if (existing) {

@@ -73,9 +73,6 @@ Complete the changes in concentrations for each of the following reactions:
 <!-- SEG:m68801:note-title:fs-idp220089472-title -->
 Answer:
 
-<!-- SEG:m68801:para:fs-idp181124784 -->
-(a) 2[[i:x]], [[i:x]], −2[[i:x;]] (b) [[i:x]], −2[[i:x;]] (c) 4[[i:x]], 7[[i:x]], −4[[i:x]], −6[[i:x]] or −4[[i:x]], −7[[i:x]], 4[[i:x]], 6[[i:x]]
-
 <!-- SEG:m68801:title:fs-idp197968752-title -->
 Calculation of an Equilibrium Constant
 
@@ -130,9 +127,6 @@ This table has two main columns and four rows. The first row for the first colum
 <!-- SEG:m68801:note-title:fs-idp119469616-title -->
 Answer:
 
-<!-- SEG:m68801:para:fs-idp65960208 -->
-[[i:K[[sub:c]]]] = 4
-
 <!-- SEG:m68801:title:fs-idp165591440-title -->
 Calculation of a Missing Equilibrium Concentration
 
@@ -171,9 +165,6 @@ The equilibrium constant [[i:K[[sub:c]]]] for the reaction of nitrogen and hydro
 
 <!-- SEG:m68801:note-title:fs-idp223852992-title -->
 Answer:
-
-<!-- SEG:m68801:para:fs-idp301980848 -->
-1.53 mol/L
 
 <!-- SEG:m68801:title:fs-idp135898480-title -->
 Calculation of Equilibrium Concentrations from Initial Concentrations
@@ -292,14 +283,8 @@ This table has two main columns and four rows. The first row for the first colum
 <!-- SEG:m68801:note-title:fs-idp128998512-title -->
 Answer:
 
-<!-- SEG:m68801:para:fs-idp349622384 -->
-[CH[[sub:3]]CO[[sub:2]]H] = 0.18 [[i:M]], [C[[sub:2]]H[[sub:5]]OH] = 0.18 [[i:M]], [CH[[sub:3]]CO[[sub:2]]C[[sub:2]]H[[sub:5]]] = 0.37 [[i:M]], [H[[sub:2]]O] = 0.37 [[i:M]]
-
 <!-- SEG:m68801:note-title:fs-idp148875216-title -->
 Answer:
-
-<!-- SEG:m68801:para:fs-idp222432912 -->
-[H[[sub:2]]] = 0.06 [[i:M]], [I[[sub:2]]] = 1.06 [[i:M]], [HI] = 1.88 [[i:M]]
 
 <!-- SEG:m68801:example-title:fs-idm94442464-title -->
 Calculation of Equilibrium Concentrations Using an Algebra-Simplifying Assumption
@@ -348,9 +333,6 @@ This table has two main columns and four rows. The first row for the first colum
 
 <!-- SEG:m68801:note-title:fs-idm106766656-title -->
 Answer:
-
-<!-- SEG:m68801:para:fs-idp139296 -->
-[[MATH:36]] [NH[[sub:3]]] = 0.25 [[i:M]]
 
 <!-- SEG:m68801:title:fs-idp274270144-title -->
 Key Concepts and Summary

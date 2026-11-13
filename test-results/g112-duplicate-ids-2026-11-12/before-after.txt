@@ -1,0 +1,282 @@
+G1.12 before/after run
+base   69cc289c9 = 69cc289c9015bff82a9a7f05e03854e976bd4537
+branch HEAD = 97ee194b9e0091d2f2b78cf3b1d458ef6f3816f2
+node v22.22.2; side worktree /home/siggi/dev/repos/namsbokasafn-efni/.claude/worktrees/g112-before-after-side; outputs /tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/64e92e84-1b9c-41e9-893c-5b318900a400/scratchpad/t5/full2
+
+side base: 217 commands, 103 s
+side branch: 217 commands, 100 s
+
+== per command: exit base/branch; stdout; stderr ==
+ok   battery                                      exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-appendices            exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch00                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch01                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch02                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch03                  exit 0/0; stdout pre-registered only (m42045: 155 segments, 126 equations extracted -> 154 segments, 126 equations extracted); stderr same
+ok   extract-edlisfraedi-2e-ch04                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch05                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch06                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch07                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch08                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch09                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch10                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch11                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch12                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch13                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch14                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch15                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch16                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch17                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch18                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch19                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch20                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch21                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch22                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch23                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch24                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch25                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch26                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch27                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch28                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch29                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch30                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch31                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch32                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch33                  exit 0/0; stdout same; stderr same
+ok   extract-edlisfraedi-2e-ch34                  exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-appendices              exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch00                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch01                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch02                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch03                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch04                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch05                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch06                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch07                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch08                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch09                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch10                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch11                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch12                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch13                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch14                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch15                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch16                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch17                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch18                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch19                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch20                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch21                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch22                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch23                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch24                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch25                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch26                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch27                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch28                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch29                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch30                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch31                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch32                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch33                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch34                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch35                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch36                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch37                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch38                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch39                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch40                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch41                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch42                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch43                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch44                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch45                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch46                    exit 0/0; stdout same; stderr same
+ok   extract-liffraedi-2e-ch47                    exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-appendices        exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch00              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch01              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch02              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch03              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch04              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch05              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch06              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch07              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch08              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch09              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch10              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch11              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch12              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch13              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch14              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch15              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch16              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch17              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch18              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch19              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch20              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch21              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch22              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch23              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch24              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch25              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch26              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch27              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch28              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch29              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch30              exit 0/0; stdout same; stderr same
+ok   extract-lifraen-efnafraedi-ch31              exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-appendices              exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch00                    exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch01                    exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch02                    exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch03                    exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch04                    exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch05                    exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch06                    exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch07                    exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch08                    exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch09                    exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch10                    exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch11                    exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch12                    exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch13                    exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch14                    exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch15                    exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch16                    exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch17                    exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch18                    exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch19                    exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch20                    exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch21                    exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch22                    exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch23                    exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch24                    exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch25                    exit 0/0; stdout same; stderr same
+ok   extract-orverufraedi-ch26                    exit 0/0; stdout same; stderr same
+ok   inject-appendices                            exit 1/1; stdout same; stderr same
+ok   inject-ch00                                  exit 1/1; stdout same; stderr same
+ok   inject-ch01                                  exit 0/0; stdout same; stderr same apart from 3 base-only note(s) [2,5,5]
+ok   inject-ch02                                  exit 0/0; stdout same; stderr same apart from 6 base-only note(s) [2,3,1,1,5,2]
+ok   inject-ch03                                  exit 1/1; stdout same; stderr same apart from 4 base-only note(s) [8,5,8,4]
+ok   inject-ch04                                  exit 0/0; stdout same; stderr same apart from 4 base-only note(s) [3,4,2,3]
+ok   inject-ch05                                  exit 0/0; stdout same; stderr same apart from 3 base-only note(s) [2,7,8]
+ok   inject-ch06                                  exit 1/1; stdout same; stderr same apart from 5 base-only note(s) [3,2,5,2,2]
+ok   inject-ch07                                  exit 0/0; stdout same; stderr same apart from 4 base-only note(s) [2,3,2,8]
+ok   inject-ch08                                  exit 1/1; stdout same; stderr same apart from 4 base-only note(s) [1,2,1,3]
+ok   inject-ch09                                  exit 0/0; stdout same; stderr same apart from 6 base-only note(s) [4,6,9,3,1,1]
+ok   inject-ch10                                  exit 0/0; stdout same; stderr same apart from 5 base-only note(s) [3,1,6,4,6]
+ok   inject-ch11                                  exit 0/0; stdout same; stderr same apart from 2 base-only note(s) [2,11]
+ok   inject-ch12                                  exit 0/0; stdout same; stderr same apart from 6 base-only note(s) [2,4,7,1,1,1]
+ok   inject-ch13                                  exit 1/1; stdout same; stderr same apart from 2 base-only note(s) [5,6]
+ok   inject-ch14                                  exit 0/0; stdout same; stderr same apart from 7 base-only note(s) [3,3,8,4,1,1,2]
+ok   inject-ch15                                  exit 0/0; stdout same; stderr same apart from 3 base-only note(s) [13,1,1]
+ok   inject-ch16                                  exit 0/0; stdout same; stderr same apart from 4 base-only note(s) [1,2,3,8]
+ok   inject-ch17                                  exit 0/0; stdout same; stderr same apart from 5 base-only note(s) [2,1,2,3,2]
+ok   inject-ch18                                  exit 0/0; stdout same; stderr same
+ok   inject-ch19                                  exit 1/1; stdout same; stderr same apart from 3 base-only note(s) [3,2,3]
+ok   inject-ch20                                  exit 0/0; stdout same; stderr same apart from 3 base-only note(s) [5,2,1]
+ok   inject-ch21                                  exit 1/1; stdout same; stderr same apart from 4 base-only note(s) [3,1,3,1]
+ok   oracle-ch01                                  exit 0/0; stdout same; stderr same apart from 3 base-only note(s) [2,5,5]
+ok   oracle-ch03                                  exit 0/0; stdout same; stderr same apart from 4 base-only note(s) [8,5,8,4]
+ok   oracle-ch03-control                          exit 0/0; stdout same; stderr same
+ok   roundtrip-appendices                         exit 1/1; stdout same; stderr same
+ok   roundtrip-ch00                               exit 0/0; stdout same; stderr same
+ok   roundtrip-ch01                               exit 1/1; stdout same; stderr same apart from 3 base-only note(s) [2,5,5]
+ok   roundtrip-ch02                               exit 1/1; stdout same; stderr same apart from 6 base-only note(s) [2,3,1,1,5,2]
+ok   roundtrip-ch03                               exit 1/1; stdout same; stderr same apart from 4 base-only note(s) [8,5,8,4]
+ok   roundtrip-ch04                               exit 1/1; stdout same; stderr same apart from 4 base-only note(s) [3,4,2,3]
+ok   roundtrip-ch05                               exit 1/1; stdout same; stderr same apart from 3 base-only note(s) [2,7,8]
+ok   roundtrip-ch06                               exit 1/1; stdout same; stderr same apart from 5 base-only note(s) [3,2,5,2,2]
+ok   roundtrip-ch07                               exit 1/1; stdout same; stderr same apart from 4 base-only note(s) [2,3,2,8]
+ok   roundtrip-ch08                               exit 1/1; stdout same; stderr same apart from 4 base-only note(s) [1,2,1,3]
+ok   roundtrip-ch09                               exit 1/1; stdout same; stderr same apart from 6 base-only note(s) [4,6,9,3,1,1]
+ok   roundtrip-ch10                               exit 1/1; stdout same; stderr same apart from 5 base-only note(s) [3,1,6,4,6]
+ok   roundtrip-ch11                               exit 1/1; stdout same; stderr same apart from 2 base-only note(s) [2,11]
+ok   roundtrip-ch12                               exit 1/1; stdout same; stderr same apart from 6 base-only note(s) [2,4,7,1,1,1]
+ok   roundtrip-ch13                               exit 1/1; stdout same; stderr same apart from 2 base-only note(s) [5,6]
+ok   roundtrip-ch14                               exit 1/1; stdout same; stderr same apart from 7 base-only note(s) [3,3,8,4,1,1,2]
+ok   roundtrip-ch15                               exit 1/1; stdout same; stderr same apart from 3 base-only note(s) [13,1,1]
+ok   roundtrip-ch16                               exit 1/1; stdout same; stderr same apart from 4 base-only note(s) [1,2,3,8]
+ok   roundtrip-ch17                               exit 1/1; stdout same; stderr same apart from 5 base-only note(s) [2,1,2,3,2]
+ok   roundtrip-ch18                               exit 1/1; stdout same; stderr same
+ok   roundtrip-ch19                               exit 1/1; stdout same; stderr same apart from 3 base-only note(s) [3,2,3]
+ok   roundtrip-ch20                               exit 1/1; stdout same; stderr same apart from 3 base-only note(s) [5,2,1]
+ok   roundtrip-ch21                               exit 1/1; stdout same; stderr same apart from 4 base-only note(s) [3,1,3,1]
+ok   validate-ch01                                exit 1/1; stdout same; stderr same
+ok   validate-ch02                                exit 1/1; stdout same; stderr same
+ok   validate-ch03                                exit 1/1; stdout same; stderr same
+ok   validate-ch04                                exit 1/1; stdout same; stderr same
+ok   validate-ch05                                exit 1/1; stdout same; stderr same
+ok   validate-ch06                                exit 1/1; stdout same; stderr same
+ok   validate-ch07                                exit 1/1; stdout same; stderr same
+ok   validate-ch08                                exit 1/1; stdout same; stderr same
+ok   validate-ch09                                exit 1/1; stdout same; stderr same
+ok   validate-ch10                                exit 1/1; stdout same; stderr same
+ok   validate-ch11                                exit 1/1; stdout same; stderr same
+ok   validate-ch12                                exit 1/1; stdout same; stderr same
+ok   validate-ch13                                exit 1/1; stdout same; stderr same
+ok   validate-ch14                                exit 1/1; stdout same; stderr same
+ok   validate-ch15                                exit 1/1; stdout same; stderr same
+ok   validate-ch16                                exit 1/1; stdout same; stderr same
+ok   validate-ch17                                exit 1/1; stdout same; stderr same
+ok   validate-ch18                                exit 1/1; stdout same; stderr same
+ok   validate-ch19                                exit 1/1; stdout same; stderr same
+ok   validate-ch20                                exit 1/1; stdout same; stderr same
+ok   validate-ch21                                exit 1/1; stdout same; stderr same
+
+== accepted differences: base-only duplicate notes, per tool ==
+  inject: 83 line(s), N summing to 285
+  oracle: 7 line(s), N summing to 37
+  roundtrip: 83 line(s), N summing to 285
+
+== copied trees ==
+ok   edlisfraedi-2e-02-for-mt: 317 files, byte-identical except the pre-registered ch03/m42045-segments.en.md (verified by value)
+ok   edlisfraedi-2e-02-structure: 1044 files, byte-identical except the pre-registered ch03/m42045-manifest.json (verified by value)
+ok   efnafraedi-2e-03-translated-mt-preview: 297 files, byte-identical
+ok   liffraedi-2e-02-for-mt: 306 files, byte-identical
+ok   liffraedi-2e-02-structure: 746 files, byte-identical
+ok   lifraen-efnafraedi-02-for-mt: 404 files, byte-identical
+ok   lifraen-efnafraedi-02-structure: 1061 files, byte-identical
+ok   orverufraedi-02-for-mt: 188 files, byte-identical
+ok   orverufraedi-02-structure: 478 files, byte-identical
+  pre-registered physics m42045 (Ruling 22) observed: stdout true, segment file true, manifest true
+  inject wrote over 136/136 files (base/branch) and changed 112/112 tracked files against the committed tree
+
+== §C82 battery (battery-verdicts.mjs --compare) ==
+  dump exit base/branch 0/0; compare exit 0
+  verdicts: 3066 base, 3066 branch; keys on one side only: 0/0; CTX-FAILED 0/0
+  (check, unit) verdicts that differ: 0
+  finding-level differences: only the recorded A7 ch20/m68848 x3 -> x2
+  per-check tallies (base | branch):
+    T0 G1   PASS 1 FAIL 0 WARN 0 SKIP 0          | PASS 1 FAIL 0 WARN 0 SKIP 0
+    T0 G2   PASS 1 FAIL 0 WARN 0 SKIP 0          | PASS 1 FAIL 0 WARN 0 SKIP 0
+    T0 G3   PASS 1 FAIL 0 WARN 0 SKIP 0          | PASS 1 FAIL 0 WARN 0 SKIP 0
+    T0 G4   PASS 0 FAIL 0 WARN 1 SKIP 0          | PASS 0 FAIL 0 WARN 1 SKIP 0
+    T0 G5   PASS 0 FAIL 1 WARN 0 SKIP 0          | PASS 0 FAIL 1 WARN 0 SKIP 0
+    T1 E1   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+    T1 E2   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+    T1 E3   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+    T1 E4   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+    T1 E5   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+    T2 A1   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+    T2 A2a  PASS 71 FAIL 0 WARN 78 SKIP 0        | PASS 71 FAIL 0 WARN 78 SKIP 0
+    T2 A2b  PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+    T2 A2c  PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+    T2 A3   PASS 139 FAIL 0 WARN 10 SKIP 0       | PASS 139 FAIL 0 WARN 10 SKIP 0
+    T2 A4   PASS 148 FAIL 0 WARN 1 SKIP 0        | PASS 148 FAIL 0 WARN 1 SKIP 0
+    T2 A5   PASS 140 FAIL 0 WARN 9 SKIP 0        | PASS 140 FAIL 0 WARN 9 SKIP 0
+    T2 A6   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+    T2 A7   PASS 93 FAIL 0 WARN 56 SKIP 0        | PASS 93 FAIL 0 WARN 56 SKIP 0
+    T2 A8   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+    T3 R1   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+    T3 R3   PASS 0 FAIL 0 WARN 0 SKIP 149        | PASS 0 FAIL 0 WARN 0 SKIP 149
+    T3 R4   PASS 0 FAIL 0 WARN 0 SKIP 149        | PASS 0 FAIL 0 WARN 0 SKIP 149
+    T3 R5   PASS 80 FAIL 0 WARN 58 SKIP 11       | PASS 80 FAIL 0 WARN 58 SKIP 11
+    T4 K1   PASS 4 FAIL 0 WARN 9 SKIP 33         | PASS 4 FAIL 0 WARN 9 SKIP 33
+    T4 K2   PASS 23 FAIL 0 WARN 0 SKIP 23        | PASS 23 FAIL 0 WARN 0 SKIP 23
+    T4 K3   PASS 0 FAIL 0 WARN 0 SKIP 46         | PASS 0 FAIL 0 WARN 0 SKIP 46
+    T4 K4   PASS 23 FAIL 0 WARN 0 SKIP 23        | PASS 23 FAIL 0 WARN 0 SKIP 23
+    T4 K5   PASS 23 FAIL 0 WARN 0 SKIP 23        | PASS 23 FAIL 0 WARN 0 SKIP 23
+
+RESULT: PASS

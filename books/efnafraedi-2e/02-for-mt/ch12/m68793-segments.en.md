@@ -142,9 +142,6 @@ Assuming the kinetics of this reaction are consistent with the Arrhenius equatio
 <!-- SEG:m68793:note-title:fs-idp70913968-title -->
 Answer:
 
-<!-- SEG:m68793:para:fs-idm147992368 -->
-1.1 [[MATH:10]] 10[[sup:5]] J mol[[sup:−1]] or 110 kJ mol[[sup:−1]]
-
 <!-- SEG:m68793:table-summary:fs-idm125968016-summary -->
 This table has two columns and six rows. The first column is labeled, “T ( K ),” and the second is labeled, “k ( L / mol / s ).” Under the first column are the numbers: 555, 575, 645, 700, and 781. Under the second column are the numbers: 3.52 times ten to the negative 7; 1.22 times ten to the negative 6; 8.59 times ten to the negative 5; 1.16 times ten to the negative 3; and 3.95 times ten to the negative 2.
 

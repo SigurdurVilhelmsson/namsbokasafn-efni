@@ -181,9 +181,6 @@ This figure provides the electron configuration 1 s superscript 2 2 s superscrip
 <!-- SEG:m68734:note-title:fs-idp131140752-title -->
 Answer:
 
-<!-- SEG:m68734:para:fs-idp62872432 -->
-(a) Mn (b) Xe
-
 <!-- SEG:m68734:para:fs-idp95342976 -->
 The periodic table can be a powerful tool in predicting the electron configuration of an element. However, we do find exceptions to the order of filling of orbitals that are shown in [[xref:CNX_Chem_06_04_Efillorder]] or [[xref:CNX_Chem_06_04_Econtable]]. For instance, the electron configurations (shown in [[xref:CNX_Chem_06_04_Ptableconf]]) of the transition metals chromium (Cr; atomic number 24) and copper (Cu; atomic number 29), among others, are not those we would expect. In general, such exceptions involve subshells with very similar energy, and small effects can lead to changes in the order of filling.
 
@@ -285,9 +282,6 @@ Tc[[sup:2+]], Ru[[sup:3+]]
 
 <!-- SEG:m68734:note-title:fs-idp215805632-title -->
 Answer:
-
-<!-- SEG:m68734:para:fs-idp24075168 -->
-Tc[[sup:2+]], Ru[[sup:3+]]
 
 <!-- SEG:m68734:title:fs-idp19121552-title -->
 Key Concepts and Summary

@@ -82,9 +82,6 @@ This equation shows that the starting materials of the reaction are two sets of 
 <!-- SEG:m68685:note-title:fs-idm55003792-title -->
 Answer:
 
-<!-- SEG:m68685:para:fs-idp136824288 -->
-The starting materials consist of four green spheres and two purple spheres. The products consist of four green spheres and two purple spheres. This does not violate any of Dalton’s postulates: Atoms are neither created nor destroyed, but are redistributed in small, whole-number ratios.
-
 <!-- SEG:m68685:para:fs-idp28034944 -->
 Dalton knew of the experiments of French chemist Joseph Proust, who demonstrated that [[i:all samples of a pure compound contain the same elements in the same proportion by mass]]. This statement is known as the [[term:law of definite proportions|term-00004]] or the [[term:law of constant composition|term-00005]]. The suggestion that the numbers of atoms of the elements in a given compound always exist in the same ratio is consistent with these observations. For example, when different samples of isooctane (a component of gasoline and one of the standards used in the octane rating system) are analyzed, they are found to have a carbon-to-hydrogen mass ratio of 5.33:1, as shown in [[xref:fs-idp114534448]].
 
@@ -192,9 +189,6 @@ In compound X, the mass ratio of carbon to hydrogen is [[MATH:8]] In compound Y,
 
 <!-- SEG:m68685:note-title:fs-idp90686448-title -->
 Answer:
-
-<!-- SEG:m68685:para:fs-idp130268400 -->
-In compound X, the mass ratio of carbon to hydrogen is [[MATH:11]] In compound Y, the mass ratio of carbon to hydrogen is [[MATH:12]] The ratio of these ratios is [[MATH:13]] This small, whole-number ratio supports the law of multiple proportions. This means that X and Y are different compounds.
 
 <!-- SEG:m68685:title:fs-idp7570768-title -->
 Key Concepts and Summary

@@ -100,9 +100,6 @@ K[[sup:+]]: [Ar], Mg[[sup:2+]]: [Ne]
 <!-- SEG:m68737:note-title:fs-idm94190752-title -->
 Answer:
 
-<!-- SEG:m68737:para:fs-idm62185056 -->
-K[[sup:+]]: [Ar], Mg[[sup:2+]]: [Ne]
-
 <!-- SEG:m68737:title:fs-idp123287888-title -->
 Electronic Structures of Anions
 
@@ -135,9 +132,6 @@ P: [Ne]3[[i:s]][[sup:2]]3[[i:p]][[sup:3]]; P[[sup:3–]]: [Ne]3[[i:s]][[sup:2]]3
 
 <!-- SEG:m68737:note-title:fs-idm157421568-title -->
 Answer:
-
-<!-- SEG:m68737:para:fs-idm78503856 -->
-P: [Ne]3[[i:s]][[sup:2]]3[[i:p]][[sup:3]]; P[[sup:3–]]: [Ne]3[[i:s]][[sup:2]]3[[i:p]][[sup:6]]
 
 <!-- SEG:m68737:title:fs-idm20865904-title -->
 Key Concepts and Summary

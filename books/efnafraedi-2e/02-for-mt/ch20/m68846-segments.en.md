@@ -115,9 +115,6 @@ A skeleton model is shown with a zig zag pattern that rises, falls, rises, and f
 <!-- SEG:m68846:note-title:fs-idp65065984-title -->
 Answer:
 
-<!-- SEG:m68846:para:fs-idp72233168 -->
-C[[sub:9]]H[[sub:20]]
-
 <!-- SEG:m68846:para:fs-idp72488416 -->
 All alkanes are composed of carbon and hydrogen atoms, and have similar bonds, structures, and formulas; noncyclic alkanes all have a formula of C[[sub:n]]H[[sub:2n+2]]. The number of carbon atoms present in an alkane has no limit. Greater numbers of atoms in the molecules will lead to stronger intermolecular attractions (dispersion forces) and correspondingly different physical properties of the molecules. Properties such as melting point and boiling point ([[xref:fs-idp53743808]]) usually change smoothly and predictably as the number of carbon and hydrogen atoms in the molecules change.
 
@@ -430,9 +427,6 @@ This figure shows a C atom bonded to three H atoms and another C atom. This seco
 <!-- SEG:m68846:note-title:fs-idp13281248-title -->
 Answer:
 
-<!-- SEG:m68846:para:fs-idp34528176 -->
-3,3-dibromo-2-iodopentane
-
 <!-- SEG:m68846:para:fs-idp43562000 -->
 We call a substituent that contains one less hydrogen than the corresponding alkane an alkyl group. The name of an [[term:alkyl group|term-00007]] is obtained by dropping the suffix [[i:-ane]] of the alkane name and adding [[i:-yl]]:
 
@@ -471,9 +465,6 @@ This figure shows a C atom bonded to three H atoms and another C atom. This C at
 
 <!-- SEG:m68846:note-title:fs-idp5918672-title -->
 Answer:
-
-<!-- SEG:m68846:para:fs-idp20723808 -->
-4-propyloctane
 
 <!-- SEG:m68846:para:fs-idp69454848 -->
 Some hydrocarbons can form more than one type of alkyl group when the hydrogen atoms that would be removed have different “environments” in the molecule. This diversity of possible alkyl groups can be identified in the following way: The four hydrogen atoms in a methane molecule are equivalent; they all have the same environment. They are equivalent because each is bonded to a carbon atom (the same carbon atom) that is bonded to three hydrogen atoms. (It may be easier to see the equivalency in the ball and stick models in [[xref:CNX_Chem_20_01_alkanes]]. Removal of any one of the four hydrogen atoms from methane forms a methyl group. Likewise, the six hydrogen atoms in ethane are equivalent ([[xref:CNX_Chem_20_01_alkanes]]) and removing any one of these hydrogen atoms produces an ethyl group. Each of the six hydrogen atoms is bonded to a carbon atom that is bonded to two other hydrogen atoms and a carbon atom. However, in both propane and 2–methylpropane, there are hydrogen atoms in two different environments, distinguished by the adjacent atoms or groups of atoms:
@@ -583,9 +574,6 @@ This shows a C atom bonded to three H atoms and another C atom. This second C at
 <!-- SEG:m68846:note-title:fs-idp64218000-title -->
 Answer:
 
-<!-- SEG:m68846:para:fs-idp53499344 -->
-reactant: cis-3-hexene product: 3,4-dichlorohexane
-
 <!-- SEG:m68846:para:fs-idp37633872 -->
 Organic compounds that contain one or more double or triple bonds between carbon atoms are described as unsaturated. You have likely heard of unsaturated fats. These are complex organic molecules with long chains of carbon atoms, which contain at least one double bond between carbon atoms. Unsaturated hydrocarbon molecules that contain one or more double bonds are called [[term:alkenes|term-00010]]. Carbon atoms linked by a double bond are bound together by two bonds, one σ bond and one π bond. Double and triple bonds give rise to a different geometry around the carbon atom that participates in them, leading to important differences in molecular shape and properties. The differing geometries are responsible for the different properties of unsaturated versus saturated fats.
 
@@ -678,9 +666,6 @@ A structural formula is shown with an H atom bonded to a C atom. The C atom has 
 
 <!-- SEG:m68846:note-title:fs-idp11395248-title -->
 Answer:
-
-<!-- SEG:m68846:para:fs-idp81641696 -->
-carbon 1: [[i:sp]], 180°; carbon 2: [[i:sp]], 180°; carbon 3: [[i:sp]][[sup:2]], 120°; carbon 4: [[i:sp]][[sup:2]], 120°; carbon 5: [[i:sp]][[sup:3]], 109.5°
 
 <!-- SEG:m68846:para:fs-idp33513136 -->
 Chemically, the alkynes are similar to the alkenes. Since the [[MATH:4]] functional group has two π bonds, alkynes typically react even more readily, and react with twice as much reagent in addition reactions. The reaction of acetylene with bromine is a typical example:

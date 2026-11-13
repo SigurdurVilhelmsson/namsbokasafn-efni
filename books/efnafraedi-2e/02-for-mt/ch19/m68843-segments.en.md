@@ -169,9 +169,6 @@ Ca, Fe, Zn, and Cu
 <!-- SEG:m68843:note-title:fs-idp9554032-title -->
 Answer:
 
-<!-- SEG:m68843:para:fs-idp13836096 -->
-Ca, Fe, Zn, and Cu
-
 <!-- SEG:m68843:caption:CNX_Chem_19_02_DMSA-caption -->
 Dimercaptosuccinic acid is used to treat heavy metal poisoning.
 
@@ -381,9 +378,6 @@ K[Ag(CN)[[sub:2]]]; coordination number two
 
 <!-- SEG:m68843:note-title:fs-idp64014688-title -->
 Answer:
-
-<!-- SEG:m68843:para:fs-idp49529584 -->
-K[Ag(CN)[[sub:2]]]; coordination number two
 
 <!-- SEG:m68843:title:fs-idp225700912-title -->
 The Structures of Complexes

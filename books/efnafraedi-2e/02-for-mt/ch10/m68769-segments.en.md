@@ -100,9 +100,6 @@ At 0.3 kPa: [[MATH:1]] at −58 °C. At 50 kPa: [[MATH:2]] at 0 °C, l ⟶ g at 
 <!-- SEG:m68769:note-title:fs-idm222446944-title -->
 Answer:
 
-<!-- SEG:m68769:para:fs-idm153965536 -->
-At 0.3 kPa: [[MATH:3]] at −58 °C. At 50 kPa: [[MATH:4]] at 0 °C, l ⟶ g at 78 °C
-
 <!-- SEG:m68769:para:fs-idm71881152 -->
 Consider the phase diagram for carbon dioxide shown in [[xref:CNX_Chem_10_04_CO2phasdi]] as another example. The solid-liquid curve exhibits a positive slope, indicating that the melting point for CO[[sub:2]] increases with pressure as it does for most substances (water being a notable exception as described previously). Notice that the triple point is well above 1 atm, indicating that carbon dioxide cannot exist as a liquid under ambient pressure conditions. Instead, cooling gaseous carbon dioxide at 1 atm results in its deposition into the solid state. Likewise, solid carbon dioxide does not melt at 1 atm pressure but instead sublimes to yield gaseous CO[[sub:2]]. Finally, notice that the critical point for carbon dioxide is observed at a relatively modest temperature and pressure in comparison to water.
 
@@ -156,12 +153,6 @@ at 50 kPa: [[MATH:7]] at −60 °C
 
 <!-- SEG:m68769:note-title:fs-idm25675280-title -->
 Answer:
-
-<!-- SEG:m68769:para:fs-idm56827360 -->
-at 1500 kPa: [[MATH:8]] at −55 °C, [[MATH:9]] at −10 °C;
-
-<!-- SEG:m68769:para:fs-idm110315760 -->
-at 50 kPa: [[MATH:10]] at −60 °C
 
 <!-- SEG:m68769:title:fs-idp26089360-title -->
 Supercritical Fluids
@@ -279,9 +270,6 @@ The critical temperature of ammonia is 405.5 K, which is higher than room temper
 
 <!-- SEG:m68769:note-title:fs-idm199828080-title -->
 Answer:
-
-<!-- SEG:m68769:para:fs-idm96591504 -->
-The critical temperature of ammonia is 405.5 K, which is higher than room temperature. The critical temperature of oxygen is below room temperature; thus oxygen cannot be liquefied at room temperature.
 
 <!-- SEG:m68769:note-title:fs-idp20092656-title -->
 Decaffeinating Coffee Using Supercritical CO[[sub:2]]

@@ -88,14 +88,8 @@ order in CH[[sub:3]]OH = 1; order in CH[[sub:3]]CH[[sub:2]]OCOCH[[sub:3]] = 0; o
 <!-- SEG:m68789:note-title:fs-idm168583904-title -->
 Answer:
 
-<!-- SEG:m68789:para:fs-idm141295376 -->
-order in NO = 2; order in H[[sub:2]] = 1; overall order = 3
-
 <!-- SEG:m68789:note-title:fs-idm253536096-title -->
 Answer:
-
-<!-- SEG:m68789:para:fs-idm215326320 -->
-order in CH[[sub:3]]OH = 1; order in CH[[sub:3]]CH[[sub:2]]OCOCH[[sub:3]] = 0; overall order = 1
 
 <!-- SEG:m68789:para:fs-idm147402384 -->
 A common experimental approach to the determination of rate laws is the [[term:method of initial rates|term-00006]]. This method involves measuring reaction rates for multiple experimental trials carried out using different initial reactant concentrations. Comparing the measured rates for these trials permits determination of the reaction orders and, subsequently, the rate constant, which together are used to formulate a rate law. This approach is illustrated in the next two example exercises.
@@ -153,9 +147,6 @@ Determine the rate law and the rate constant for the reaction from the following
 
 <!-- SEG:m68789:note-title:fs-idm217041008-title -->
 Answer:
-
-<!-- SEG:m68789:para:fs-idm234756944 -->
-[[MATH:7]] with [[i:k]] = 6.73 [[MATH:8]] 10[[sup:−6]] L/mol/s
 
 <!-- SEG:m68789:caption:CNX_Chem_12_03_OzoneHole-caption -->
 A contour map showing stratospheric ozone concentration and the “ozone hole” that occurs over Antarctica during its spring months. (credit: modification of work by NASA)
@@ -351,9 +342,6 @@ Determine the rate law expression and the value of the rate constant [[i:k]] wit
 
 <!-- SEG:m68789:note-title:fs-idm214856768-title -->
 Answer:
-
-<!-- SEG:m68789:para:fs-idm19062704 -->
-[[MATH:57]][[BR]] 2.00 = 2.00[[sup:[[i:y]]]][[BR]] [[i:y]] = 1[[BR]] [[MATH:58]][[BR]] [[MATH:59]][[BR]] Substituting the concentration data from trial 1 and solving for [[i:k]] yields:[[BR]] [[MATH:60]]
 
 <!-- SEG:m68789:table-summary:fs-idm285249664-summary -->
 This table has four columns and four rows. The first row is a header row, and it labels the columns, “Trial,” “[ N O ] ( mol / L),” “[ C l subscript 2 ] ( mol / L ),” and “negative capital delta [ N O] divided by capital delta t ( mol L superscript negative 1 s superscript negative 1 ).” Under the column “Trial” are the numbers: 1, 2, and 3. Under the column “[ N O ] ( mol / L)” are the numbers: 0.10, 0.10, and 0.15. Under the column “[ C l subscript 2 ] ( mol / L )” are the numbers: 0.10, 0.15, and 0.10. Under the column “negative delta [ N O] divided by delta t ( mol L superscript negative 1 s superscript negative 1” are the numbers: 0.00300, 0.00450, 0.00675.

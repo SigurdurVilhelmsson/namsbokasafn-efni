@@ -88,9 +88,6 @@ The ion product of water at 80 °C is 2.4 [[MATH:5]] 10[[sup:−13]]. What are t
 <!-- SEG:m68803:note-title:fs-idp5038208-title -->
 Answer:
 
-<!-- SEG:m68803:para:fs-idm88673520 -->
-[H[[sub:3]]O[[sup:+]]] = [OH[[sup:−]]] = 4.9 [[MATH:7]] 10[[sup:−7]] [[i:M]]
-
 <!-- SEG:m68803:example-title:fs-idm136168496-title -->
 The Inverse Relation between [H[[sub:3]]O[[sup:+]]] and [OH[[sup:−]]]
 
@@ -126,9 +123,6 @@ What is the hydronium ion concentration in an aqueous solution with a hydroxide 
 
 <!-- SEG:m68803:note-title:fs-idp123132928-title -->
 Answer:
-
-<!-- SEG:m68803:para:fs-idm107000608 -->
-[H[[sub:3]]O[[sup:+]]] = 1 [[MATH:10]] 10[[sup:−11]] [[i:M]]
 
 <!-- SEG:m68803:example-title:fs-idp171180224-title -->
 Representing the Acid-Base Behavior of an Amphoteric Substance
@@ -168,9 +162,6 @@ Write separate equations representing the reaction of [[MATH:14]]
 
 <!-- SEG:m68803:note-title:fs-idp54496480-title -->
 Answer:
-
-<!-- SEG:m68803:para:fs-idp8583968 -->
-(a) [[MATH:17]] (b) [[MATH:18]]
 
 <!-- SEG:m68803:title:fs-idp108739760-title -->
 Key Concepts and Summary

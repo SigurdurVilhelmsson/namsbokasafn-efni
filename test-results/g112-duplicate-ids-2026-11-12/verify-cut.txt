@@ -1,0 +1,35 @@
+G1.12 verify-cut
+base: 5985eaf2d = 5985eaf2da290d1932975159575e43634b4a23a0
+
+== Census on base (efnafraedi-2e 02-for-mt/*/m*-segments.en.md) ==
+ok    duplicated ids: 285 ids in 83 modules (expected 285 in 83)
+ok    occurrences: 570 (every duplicated id occurs exactly twice: true)
+ok    affected modules in appendices: 0
+ok    segment type: {"para":285}
+ok    01-source shape: 285 of 285 occur once, as a para whose parent is a note whose parent is an example
+      where the example sits: {"content":61,"section":203,"subsection":21} (spec §3: 203 section, 61 directly in content, 21 subsection)
+ok    English copies that differ: 71 raw, 0 after normalising [[MATH|MEDIA|TABLE:n]]
+ok    Icelandic copies in 02-mt-output: every duplicated id has as many IS copies as EN copies (0 not)
+ok    Icelandic copies that differ: 75 raw, 6 after normalising [[MATH:n]] (expected the spec §6 item 3 six)
+        ch03 m68700 fs-idp14642528
+        ch08 m68747 fs-idm99049568
+        ch12 m68795 fs-idm239441760
+        ch14 m68808 fs-idm119337184
+        ch16 m68817 fs-idm140480768
+        ch20 m68846 fs-idp53499344
+
+== Changed set (working tree against base, books/) ==
+ok    git diff --name-only: 166 files; expected 166 (83 segment files + 83 manifests); unexpected 0, missing 0
+ok    untracked files under books/: 0
+
+== Segment files (each = base with every later block of a repeated id removed) ==
+ok    83 of 83 segment files equal base minus the later blocks, byte for byte, with no repeated id (285 blocks removed)
+
+== Manifests (only extractedAt, segmentCount and segmentIds change) ==
+ok    83 of 83 manifests differ from base only in extractedAt, segmentCount (base minus removed blocks) and segmentIds (later repeats removed, order kept, = the segment file's ids)
+
+== Everything else in books/efnafraedi-2e/02-structure and 02-for-mt ==
+ok    02-structure: 452 of 452 other files byte-identical to base
+ok    02-for-mt: 220 of 220 other files byte-identical to base
+
+RESULT: PASS

@@ -7,7 +7,15 @@
  * under server/ because the integrity half uses the editor's loader (segmentParser), and the
  * MIT -> AGPL edge rule keeps that out of experiments/.
  *
- * Usage: node server/scripts/suggestion-view-references.js [--out <dir>]
+ * Usage: node server/scripts/suggestion-view-references.js --out <dir> --date <YYYY-MM-DD>
+ *
+ * BOTH FLAGS ARE REQUIRED. A run missing either refuses before it reads the logs or writes
+ * anything. A reference artifact is never written with an implicit date or into an implicit
+ * directory: the integrity half reads the editor loader's served text from the CURRENT tree, so on
+ * any tree after the one a reference was cut from, a run differs from that frozen reference. Until
+ * G1.12 (2026-11-12) the flags were optional and defaulted to the frozen 2026-11-09 directory and
+ * date, so a bare run after the re-extract would have overwritten that frozen file with post-G1.12
+ * data, labelled 2026-11-09.
  */
 'use strict';
 
@@ -19,10 +27,6 @@ const { loadModuleForEditing } = require('../services/segmentParser');
 
 const REPO_ROOT = path.resolve(__dirname, '../..');
 const BOOK = 'efnafraedi-2e';
-const DEFAULT_OUT = path.join(
-  REPO_ROOT,
-  'experiments/ai-review-pilot/suggestion-view-references-2026-11-09'
-);
 const DROPPED_CATEGORY = 'agreement';
 const RULE =
   'drop every change in each (module, segmentId, rulingId) group, over all occurrences, that holds an agreement change';
@@ -44,14 +48,65 @@ function cmp(a, b) {
   return a < b ? -1 : a > b ? 1 : 0;
 }
 
+const USAGE =
+  'usage: node server/scripts/suggestion-view-references.js --out <dir> --date <YYYY-MM-DD>';
+
+/** A usage error: the CLI prints its message (no stack) and exits non-zero. */
+function usageError(message) {
+  const err = new Error(`${message}\n${USAGE}`);
+  err.code = 'USAGE';
+  return err;
+}
+
+/**
+ * The value of `--date`. Refuses a missing flag, a flag with no value, and anything that is not a
+ * real calendar date written YYYY-MM-DD.
+ * @param {string[]} argv
+ * @returns {string}
+ */
+function parseDateArg(argv) {
+  const i = argv.indexOf('--date');
+  if (i < 0) throw usageError('missing --date <YYYY-MM-DD> (required)');
+  const value = argv[i + 1];
+  const ok =
+    typeof value === 'string' &&
+    /^\d{4}-\d{2}-\d{2}$/.test(value) &&
+    !Number.isNaN(Date.parse(`${value}T00:00:00Z`)) &&
+    new Date(`${value}T00:00:00Z`).toISOString().slice(0, 10) === value;
+  if (!ok) throw usageError(`--date must be a calendar date written YYYY-MM-DD, got ${value}`);
+  return value;
+}
+
+/**
+ * The value of `--out`, resolved. Refuses a missing flag and a flag with no value.
+ * @param {string[]} argv
+ * @returns {string}
+ */
+function parseOutArg(argv) {
+  const i = argv.indexOf('--out');
+  if (i < 0) throw usageError('missing --out <dir> (required)');
+  const value = argv[i + 1];
+  if (typeof value !== 'string' || value === '' || value.startsWith('--')) {
+    throw usageError(`--out needs a directory, got ${value}`);
+  }
+  return path.resolve(value);
+}
+
 /**
  * @param {object} opts
  * @param {string} opts.booksRoot books directory; logs are read from <booksRoot>/<book>/02-mt-revised
  * @param {string} opts.book
  * @param {function(string, number, string): {segments: Array}} [opts.load] served-text loader
  * @param {string|null} [opts.layer2Commit]
+ * @param {string|null} [opts.date] the build date recorded in the output (the CLI requires one)
  */
-function buildReferences({ booksRoot, book, load = loadModuleForEditing, layer2Commit = null }) {
+function buildReferences({
+  booksRoot,
+  book,
+  load = loadModuleForEditing,
+  layer2Commit = null,
+  date = null,
+}) {
   const root = path.join(booksRoot, book, '02-mt-revised');
   const records = [];
   let logs = 0;
@@ -158,7 +213,7 @@ function buildReferences({ booksRoot, book, load = loadModuleForEditing, layer2C
   crossGroupDependent.sort();
 
   return {
-    date: '2026-11-09',
+    date,
     layer2Commit,
     rule: RULE,
     totals: { records: records.length, logs, emptyLogs, chains: chains.size },
@@ -175,8 +230,9 @@ function buildReferences({ booksRoot, book, load = loadModuleForEditing, layer2C
 }
 
 function main(argv) {
-  const i = argv.indexOf('--out');
-  const outDir = i >= 0 ? path.resolve(argv[i + 1]) : DEFAULT_OUT;
+  // Both flags are checked before anything is read or written (see the header).
+  const outDir = parseOutArg(argv);
+  const date = parseDateArg(argv);
   const layer2Commit = execFileSync(
     'git',
     ['log', '-1', '--format=%H', '--', `books/${BOOK}/02-mt-revised`],
@@ -186,6 +242,7 @@ function main(argv) {
     booksRoot: path.resolve(__dirname, '../../books'),
     book: BOOK,
     layer2Commit,
+    date,
   });
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(path.join(outDir, 'references.json'), JSON.stringify(out, null, 2) + '\n');
@@ -206,8 +263,8 @@ if (require.main === module) {
     main(process.argv.slice(2));
     process.exitCode = 0;
   } catch (err) {
-    process.stderr.write(`${err.stack || err}\n`);
+    process.stderr.write(`${err.code === 'USAGE' ? err.message : err.stack || err}\n`);
   }
 }
 
-module.exports = { buildReferences, applyOnce };
+module.exports = { buildReferences, applyOnce, parseDateArg, parseOutArg };

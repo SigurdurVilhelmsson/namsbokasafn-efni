@@ -100,9 +100,6 @@ Omitting solute concentrations and spectator ion identities, write the schematic
 <!-- SEG:m68822:note-title:fs-idp13471872-title -->
 Answer:
 
-<!-- SEG:m68822:para:fs-idm479605136 -->
-[[MATH:2]]
-
 <!-- SEG:m68822:title:fs-idm89705136-title -->
 Key Concepts and Summary
 

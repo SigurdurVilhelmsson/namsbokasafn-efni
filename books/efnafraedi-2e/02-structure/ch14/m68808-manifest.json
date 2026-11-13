@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68808",
-  "extractedAt": "2026-09-28T20:03:08.258Z",
+  "extractedAt": "2026-11-12T15:01:07.224Z",
   "sourceHash": "506fc69d94ea1463",
-  "segmentCount": 123,
+  "segmentCount": 122,
   "segmentIds": [
     "m68808:title:auto-1",
     "m68808:abstract:auto-2",
@@ -46,7 +46,6 @@
     "m68808:para:fs-idm119337184",
     "m68808:alt:fs-idm123715040-alt",
     "m68808:note-title:fs-idm145837936-title",
-    "m68808:para:fs-idm119337184",
     "m68808:title:fs-idp107911744-title",
     "m68808:para:fs-idm68764768",
     "m68808:caption:CNX_Chem_14_06_exhaust-caption",

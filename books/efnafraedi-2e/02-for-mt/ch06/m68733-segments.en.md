@@ -91,12 +91,6 @@ We never think of a thrown softball having a wavelength, since this wavelength i
 <!-- SEG:m68733:note-title:fs-idp27867504-title -->
 Answer:
 
-<!-- SEG:m68733:para:fs-idp68691712 -->
-1.9 [[MATH:6]] 10[[sup:–34]] m.
-
-<!-- SEG:m68733:para:fs-idm108992816 -->
-We never think of a thrown softball having a wavelength, since this wavelength is so small it is impossible for our senses or any known instrument to detect.
-
 <!-- SEG:m68733:para:fs-idp75634352 -->
 Werner Heisenberg considered the limits of how accurately we can measure properties of an electron or other microscopic particles. He determined that there is a fundamental limit to how accurately one can measure both a particle’s position and its momentum simultaneously. The more accurately we measure the momentum of a particle, the less accurately we can determine its position at that time, and vice versa. This is summed up in what we now call the [[term:Heisenberg uncertainty principle|term-00004]]: [[i:It is fundamentally impossible to determine simultaneously and exactly both the momentum and the position of a particle]]. For a particle of mass [[i:m]] moving with velocity [[i:v[[sub:x]]]] in the [[i:x]] direction (or equivalently with momentum [[i:p]][[sub:x]]), the product of the uncertainty in the position, Δ[[i:x]], and the uncertainty in the momentum, Δ[[i:p[[sub:x]]]] , must be greater than or equal to [[MATH:7]] (where [[MATH:8]] the value of Planck’s constant divided by 2[[i:π]]).
 
@@ -313,9 +307,6 @@ Identify the subshell in which electrons with the following quantum numbers are 
 <!-- SEG:m68733:note-title:fs-idm161649072-title -->
 Answer:
 
-<!-- SEG:m68733:para:fs-idm161138128 -->
-(a) 3[[i:p]] (b) 5[[i:f]] (c) 2s
-
 <!-- SEG:m68733:example-title:fs-idm169030688-title -->
 Maximum Number of Electrons
 
@@ -349,9 +340,6 @@ If a shell contains a maximum of 32 electrons, what is the principal quantum num
 <!-- SEG:m68733:note-title:fs-idm166820736-title -->
 Answer:
 
-<!-- SEG:m68733:para:fs-idm135023952 -->
-[[i:n]] = 4
-
 <!-- SEG:m68733:example-title:fs-idm161581600-title -->
 Working with Quantum Numbers
 
@@ -384,9 +372,6 @@ The number of radial nodes is equal to [[i:n –]] [[i:l]] – 1.
 
 <!-- SEG:m68733:note-title:fs-idm55454448-title -->
 Answer:
-
-<!-- SEG:m68733:para:fs-idm129700624 -->
-The five degenerate 3[[i:d]] orbitals
 
 <!-- SEG:m68733:table-summary:fs-idm179835952-summary -->
 This table has five columns and five rows. The first row is a header row, and it labels each column: “orbital,” “n,” “l,” “m subscript l degeneracy,” and “number radial nodes.” Under the “orbital” column are: “4 f,” two blank cells, and “5 d.” Under the “n” column is a blank cell, 4, 7, and another blank cell. Under the “l” column is a blank cell, 1, and two more blank cells. Under the “m subscript l degeneracy” column are two blank cells, 7, and then one more blank cell. Under the “number radial nodes” column are two blank cells, 3, and then one more blank cell.

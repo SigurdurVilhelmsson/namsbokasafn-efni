@@ -1,0 +1,1432 @@
+{
+  "schema": 1,
+  "baseCommit": "69cc289c9",
+  "why": "G1.12 (docs/superpowers/specs/2026-11-12-g112-duplicate-segment-ids-design.md §3): after the re-extract each nested-note paragraph is emitted once in English while the bought MT keeps both Icelandic copies, so the second copy is unserved and the re-MT battery (A2b, A3) must expect exactly these.",
+  "entries": [
+    {
+      "chapterDir": "ch01",
+      "moduleId": "m68674",
+      "segmentId": "m68674:para:fs-idm118978144"
+    },
+    {
+      "chapterDir": "ch01",
+      "moduleId": "m68674",
+      "segmentId": "m68674:para:fs-idp2744784"
+    },
+    {
+      "chapterDir": "ch01",
+      "moduleId": "m68683",
+      "segmentId": "m68683:para:fs-idm130267872"
+    },
+    {
+      "chapterDir": "ch01",
+      "moduleId": "m68683",
+      "segmentId": "m68683:para:fs-idm203762304"
+    },
+    {
+      "chapterDir": "ch01",
+      "moduleId": "m68683",
+      "segmentId": "m68683:para:fs-idm210440528"
+    },
+    {
+      "chapterDir": "ch01",
+      "moduleId": "m68683",
+      "segmentId": "m68683:para:fs-idm292695264"
+    },
+    {
+      "chapterDir": "ch01",
+      "moduleId": "m68683",
+      "segmentId": "m68683:para:fs-idm296391568"
+    },
+    {
+      "chapterDir": "ch01",
+      "moduleId": "m68690",
+      "segmentId": "m68690:para:fs-idm154957312"
+    },
+    {
+      "chapterDir": "ch01",
+      "moduleId": "m68690",
+      "segmentId": "m68690:para:fs-idm178106592"
+    },
+    {
+      "chapterDir": "ch01",
+      "moduleId": "m68690",
+      "segmentId": "m68690:para:fs-idm260724048"
+    },
+    {
+      "chapterDir": "ch01",
+      "moduleId": "m68690",
+      "segmentId": "m68690:para:fs-idm287839728"
+    },
+    {
+      "chapterDir": "ch01",
+      "moduleId": "m68690",
+      "segmentId": "m68690:para:fs-idp40053216"
+    },
+    {
+      "chapterDir": "ch02",
+      "moduleId": "m68685",
+      "segmentId": "m68685:para:fs-idp130268400"
+    },
+    {
+      "chapterDir": "ch02",
+      "moduleId": "m68685",
+      "segmentId": "m68685:para:fs-idp136824288"
+    },
+    {
+      "chapterDir": "ch02",
+      "moduleId": "m68692",
+      "segmentId": "m68692:para:fs-idm169485088"
+    },
+    {
+      "chapterDir": "ch02",
+      "moduleId": "m68692",
+      "segmentId": "m68692:para:fs-idm194575792"
+    },
+    {
+      "chapterDir": "ch02",
+      "moduleId": "m68692",
+      "segmentId": "m68692:para:fs-idp59061008"
+    },
+    {
+      "chapterDir": "ch02",
+      "moduleId": "m68693",
+      "segmentId": "m68693:para:fs-idm167471456"
+    },
+    {
+      "chapterDir": "ch02",
+      "moduleId": "m68695",
+      "segmentId": "m68695:para:fs-idm332587744"
+    },
+    {
+      "chapterDir": "ch02",
+      "moduleId": "m68696",
+      "segmentId": "m68696:para:fs-idm16446416"
+    },
+    {
+      "chapterDir": "ch02",
+      "moduleId": "m68696",
+      "segmentId": "m68696:para:fs-idp104312384"
+    },
+    {
+      "chapterDir": "ch02",
+      "moduleId": "m68696",
+      "segmentId": "m68696:para:fs-idp194881696"
+    },
+    {
+      "chapterDir": "ch02",
+      "moduleId": "m68696",
+      "segmentId": "m68696:para:fs-idp19956160"
+    },
+    {
+      "chapterDir": "ch02",
+      "moduleId": "m68696",
+      "segmentId": "m68696:para:fs-idp2161376"
+    },
+    {
+      "chapterDir": "ch02",
+      "moduleId": "m68698",
+      "segmentId": "m68698:para:fs-idp268148560"
+    },
+    {
+      "chapterDir": "ch02",
+      "moduleId": "m68698",
+      "segmentId": "m68698:para:fs-idp283402032"
+    },
+    {
+      "chapterDir": "ch03",
+      "moduleId": "m68700",
+      "segmentId": "m68700:para:fs-idm15513488"
+    },
+    {
+      "chapterDir": "ch03",
+      "moduleId": "m68700",
+      "segmentId": "m68700:para:fs-idm3056704"
+    },
+    {
+      "chapterDir": "ch03",
+      "moduleId": "m68700",
+      "segmentId": "m68700:para:fs-idm33165520"
+    },
+    {
+      "chapterDir": "ch03",
+      "moduleId": "m68700",
+      "segmentId": "m68700:para:fs-idm70604176"
+    },
+    {
+      "chapterDir": "ch03",
+      "moduleId": "m68700",
+      "segmentId": "m68700:para:fs-idm8152064"
+    },
+    {
+      "chapterDir": "ch03",
+      "moduleId": "m68700",
+      "segmentId": "m68700:para:fs-idm9505408"
+    },
+    {
+      "chapterDir": "ch03",
+      "moduleId": "m68700",
+      "segmentId": "m68700:para:fs-idp11414864"
+    },
+    {
+      "chapterDir": "ch03",
+      "moduleId": "m68700",
+      "segmentId": "m68700:para:fs-idp14642528"
+    },
+    {
+      "chapterDir": "ch03",
+      "moduleId": "m68702",
+      "segmentId": "m68702:para:fs-idm112291760"
+    },
+    {
+      "chapterDir": "ch03",
+      "moduleId": "m68702",
+      "segmentId": "m68702:para:fs-idm146819008"
+    },
+    {
+      "chapterDir": "ch03",
+      "moduleId": "m68702",
+      "segmentId": "m68702:para:fs-idm152847216"
+    },
+    {
+      "chapterDir": "ch03",
+      "moduleId": "m68702",
+      "segmentId": "m68702:para:fs-idm49848016"
+    },
+    {
+      "chapterDir": "ch03",
+      "moduleId": "m68702",
+      "segmentId": "m68702:para:fs-idm72116192"
+    },
+    {
+      "chapterDir": "ch03",
+      "moduleId": "m68703",
+      "segmentId": "m68703:para:fs-idm103606496"
+    },
+    {
+      "chapterDir": "ch03",
+      "moduleId": "m68703",
+      "segmentId": "m68703:para:fs-idm1594608"
+    },
+    {
+      "chapterDir": "ch03",
+      "moduleId": "m68703",
+      "segmentId": "m68703:para:fs-idm590752"
+    },
+    {
+      "chapterDir": "ch03",
+      "moduleId": "m68703",
+      "segmentId": "m68703:para:fs-idm62230608"
+    },
+    {
+      "chapterDir": "ch03",
+      "moduleId": "m68703",
+      "segmentId": "m68703:para:fs-idm68276304"
+    },
+    {
+      "chapterDir": "ch03",
+      "moduleId": "m68703",
+      "segmentId": "m68703:para:fs-idm73628272"
+    },
+    {
+      "chapterDir": "ch03",
+      "moduleId": "m68703",
+      "segmentId": "m68703:para:fs-idm80069312"
+    },
+    {
+      "chapterDir": "ch03",
+      "moduleId": "m68703",
+      "segmentId": "m68703:para:fs-idm89023504"
+    },
+    {
+      "chapterDir": "ch03",
+      "moduleId": "m68704",
+      "segmentId": "m68704:para:fs-idm15159936"
+    },
+    {
+      "chapterDir": "ch03",
+      "moduleId": "m68704",
+      "segmentId": "m68704:para:fs-idm2529904"
+    },
+    {
+      "chapterDir": "ch03",
+      "moduleId": "m68704",
+      "segmentId": "m68704:para:fs-idm33390192"
+    },
+    {
+      "chapterDir": "ch03",
+      "moduleId": "m68704",
+      "segmentId": "m68704:para:fs-idm9307808"
+    },
+    {
+      "chapterDir": "ch04",
+      "moduleId": "m68710",
+      "segmentId": "m68710:para:fs-idm24741776"
+    },
+    {
+      "chapterDir": "ch04",
+      "moduleId": "m68710",
+      "segmentId": "m68710:para:fs-idm50940704"
+    },
+    {
+      "chapterDir": "ch04",
+      "moduleId": "m68710",
+      "segmentId": "m68710:para:fs-idp153308448"
+    },
+    {
+      "chapterDir": "ch04",
+      "moduleId": "m68713",
+      "segmentId": "m68713:para:fs-idp115249152"
+    },
+    {
+      "chapterDir": "ch04",
+      "moduleId": "m68713",
+      "segmentId": "m68713:para:fs-idp160971824"
+    },
+    {
+      "chapterDir": "ch04",
+      "moduleId": "m68713",
+      "segmentId": "m68713:para:fs-idp3589264"
+    },
+    {
+      "chapterDir": "ch04",
+      "moduleId": "m68713",
+      "segmentId": "m68713:para:fs-idp38243856"
+    },
+    {
+      "chapterDir": "ch04",
+      "moduleId": "m68714",
+      "segmentId": "m68714:para:fs-idp47655136"
+    },
+    {
+      "chapterDir": "ch04",
+      "moduleId": "m68714",
+      "segmentId": "m68714:para:fs-idp69025056"
+    },
+    {
+      "chapterDir": "ch04",
+      "moduleId": "m68716",
+      "segmentId": "m68716:para:fs-idm20241408"
+    },
+    {
+      "chapterDir": "ch04",
+      "moduleId": "m68716",
+      "segmentId": "m68716:para:fs-idm9637984"
+    },
+    {
+      "chapterDir": "ch04",
+      "moduleId": "m68716",
+      "segmentId": "m68716:para:fs-idp1032432"
+    },
+    {
+      "chapterDir": "ch05",
+      "moduleId": "m68724",
+      "segmentId": "m68724:para:fs-idm11745888"
+    },
+    {
+      "chapterDir": "ch05",
+      "moduleId": "m68724",
+      "segmentId": "m68724:para:fs-idp81248192"
+    },
+    {
+      "chapterDir": "ch05",
+      "moduleId": "m68726",
+      "segmentId": "m68726:para:fs-idm12419600"
+    },
+    {
+      "chapterDir": "ch05",
+      "moduleId": "m68726",
+      "segmentId": "m68726:para:fs-idm19048032"
+    },
+    {
+      "chapterDir": "ch05",
+      "moduleId": "m68726",
+      "segmentId": "m68726:para:fs-idm40554112"
+    },
+    {
+      "chapterDir": "ch05",
+      "moduleId": "m68726",
+      "segmentId": "m68726:para:fs-idm5945296"
+    },
+    {
+      "chapterDir": "ch05",
+      "moduleId": "m68726",
+      "segmentId": "m68726:para:fs-idm84058400"
+    },
+    {
+      "chapterDir": "ch05",
+      "moduleId": "m68726",
+      "segmentId": "m68726:para:fs-idm88592432"
+    },
+    {
+      "chapterDir": "ch05",
+      "moduleId": "m68726",
+      "segmentId": "m68726:para:fs-idm94618544"
+    },
+    {
+      "chapterDir": "ch05",
+      "moduleId": "m68727",
+      "segmentId": "m68727:para:fs-idm17649024"
+    },
+    {
+      "chapterDir": "ch05",
+      "moduleId": "m68727",
+      "segmentId": "m68727:para:fs-idp120712864"
+    },
+    {
+      "chapterDir": "ch05",
+      "moduleId": "m68727",
+      "segmentId": "m68727:para:fs-idp146899120"
+    },
+    {
+      "chapterDir": "ch05",
+      "moduleId": "m68727",
+      "segmentId": "m68727:para:fs-idp165564336"
+    },
+    {
+      "chapterDir": "ch05",
+      "moduleId": "m68727",
+      "segmentId": "m68727:para:fs-idp167649504"
+    },
+    {
+      "chapterDir": "ch05",
+      "moduleId": "m68727",
+      "segmentId": "m68727:para:fs-idp185934944"
+    },
+    {
+      "chapterDir": "ch05",
+      "moduleId": "m68727",
+      "segmentId": "m68727:para:fs-idp35719536"
+    },
+    {
+      "chapterDir": "ch05",
+      "moduleId": "m68727",
+      "segmentId": "m68727:para:fs-idp49734384"
+    },
+    {
+      "chapterDir": "ch06",
+      "moduleId": "m68729",
+      "segmentId": "m68729:para:fs-idm36874016"
+    },
+    {
+      "chapterDir": "ch06",
+      "moduleId": "m68729",
+      "segmentId": "m68729:para:fs-idm51679744"
+    },
+    {
+      "chapterDir": "ch06",
+      "moduleId": "m68729",
+      "segmentId": "m68729:para:fs-idp26057584"
+    },
+    {
+      "chapterDir": "ch06",
+      "moduleId": "m68732",
+      "segmentId": "m68732:para:fs-idp107506336"
+    },
+    {
+      "chapterDir": "ch06",
+      "moduleId": "m68732",
+      "segmentId": "m68732:para:fs-idp165556464"
+    },
+    {
+      "chapterDir": "ch06",
+      "moduleId": "m68733",
+      "segmentId": "m68733:para:fs-idm108992816"
+    },
+    {
+      "chapterDir": "ch06",
+      "moduleId": "m68733",
+      "segmentId": "m68733:para:fs-idm129700624"
+    },
+    {
+      "chapterDir": "ch06",
+      "moduleId": "m68733",
+      "segmentId": "m68733:para:fs-idm135023952"
+    },
+    {
+      "chapterDir": "ch06",
+      "moduleId": "m68733",
+      "segmentId": "m68733:para:fs-idm161138128"
+    },
+    {
+      "chapterDir": "ch06",
+      "moduleId": "m68733",
+      "segmentId": "m68733:para:fs-idp68691712"
+    },
+    {
+      "chapterDir": "ch06",
+      "moduleId": "m68734",
+      "segmentId": "m68734:para:fs-idp24075168"
+    },
+    {
+      "chapterDir": "ch06",
+      "moduleId": "m68734",
+      "segmentId": "m68734:para:fs-idp62872432"
+    },
+    {
+      "chapterDir": "ch06",
+      "moduleId": "m68735",
+      "segmentId": "m68735:para:fs-idm176919040"
+    },
+    {
+      "chapterDir": "ch06",
+      "moduleId": "m68735",
+      "segmentId": "m68735:para:fs-idm69877488"
+    },
+    {
+      "chapterDir": "ch07",
+      "moduleId": "m68737",
+      "segmentId": "m68737:para:fs-idm62185056"
+    },
+    {
+      "chapterDir": "ch07",
+      "moduleId": "m68737",
+      "segmentId": "m68737:para:fs-idm78503856"
+    },
+    {
+      "chapterDir": "ch07",
+      "moduleId": "m68740",
+      "segmentId": "m68740:para:fs-idm22650544"
+    },
+    {
+      "chapterDir": "ch07",
+      "moduleId": "m68740",
+      "segmentId": "m68740:para:fs-idm26159840"
+    },
+    {
+      "chapterDir": "ch07",
+      "moduleId": "m68740",
+      "segmentId": "m68740:para:fs-idm87344256"
+    },
+    {
+      "chapterDir": "ch07",
+      "moduleId": "m68741",
+      "segmentId": "m68741:para:fs-idp24314032"
+    },
+    {
+      "chapterDir": "ch07",
+      "moduleId": "m68741",
+      "segmentId": "m68741:para:fs-idp821600"
+    },
+    {
+      "chapterDir": "ch07",
+      "moduleId": "m68742",
+      "segmentId": "m68742:para:fs-idp103296688"
+    },
+    {
+      "chapterDir": "ch07",
+      "moduleId": "m68742",
+      "segmentId": "m68742:para:fs-idp18533456"
+    },
+    {
+      "chapterDir": "ch07",
+      "moduleId": "m68742",
+      "segmentId": "m68742:para:fs-idp280660528"
+    },
+    {
+      "chapterDir": "ch07",
+      "moduleId": "m68742",
+      "segmentId": "m68742:para:fs-idp55819408"
+    },
+    {
+      "chapterDir": "ch07",
+      "moduleId": "m68742",
+      "segmentId": "m68742:para:fs-idp66198816"
+    },
+    {
+      "chapterDir": "ch07",
+      "moduleId": "m68742",
+      "segmentId": "m68742:para:fs-idp73534304"
+    },
+    {
+      "chapterDir": "ch07",
+      "moduleId": "m68742",
+      "segmentId": "m68742:para:fs-idp81639856"
+    },
+    {
+      "chapterDir": "ch07",
+      "moduleId": "m68742",
+      "segmentId": "m68742:para:fs-idp90752208"
+    },
+    {
+      "chapterDir": "ch08",
+      "moduleId": "m68744",
+      "segmentId": "m68744:para:fs-idp204958944"
+    },
+    {
+      "chapterDir": "ch08",
+      "moduleId": "m68745",
+      "segmentId": "m68745:para:fs-idm65914448"
+    },
+    {
+      "chapterDir": "ch08",
+      "moduleId": "m68745",
+      "segmentId": "m68745:para:fs-idp180575168"
+    },
+    {
+      "chapterDir": "ch08",
+      "moduleId": "m68746",
+      "segmentId": "m68746:para:fs-idp224648848"
+    },
+    {
+      "chapterDir": "ch08",
+      "moduleId": "m68747",
+      "segmentId": "m68747:para:fs-idm171067584"
+    },
+    {
+      "chapterDir": "ch08",
+      "moduleId": "m68747",
+      "segmentId": "m68747:para:fs-idm171143328"
+    },
+    {
+      "chapterDir": "ch08",
+      "moduleId": "m68747",
+      "segmentId": "m68747:para:fs-idm99049568"
+    },
+    {
+      "chapterDir": "ch09",
+      "moduleId": "m68750",
+      "segmentId": "m68750:para:fs-idm8669760"
+    },
+    {
+      "chapterDir": "ch09",
+      "moduleId": "m68750",
+      "segmentId": "m68750:para:fs-idp131216672"
+    },
+    {
+      "chapterDir": "ch09",
+      "moduleId": "m68750",
+      "segmentId": "m68750:para:fs-idp154771664"
+    },
+    {
+      "chapterDir": "ch09",
+      "moduleId": "m68750",
+      "segmentId": "m68750:para:fs-idp2146864"
+    },
+    {
+      "chapterDir": "ch09",
+      "moduleId": "m68751",
+      "segmentId": "m68751:para:fs-idm117579760"
+    },
+    {
+      "chapterDir": "ch09",
+      "moduleId": "m68751",
+      "segmentId": "m68751:para:fs-idm29667248"
+    },
+    {
+      "chapterDir": "ch09",
+      "moduleId": "m68751",
+      "segmentId": "m68751:para:fs-idm53855168"
+    },
+    {
+      "chapterDir": "ch09",
+      "moduleId": "m68751",
+      "segmentId": "m68751:para:fs-idp170212592"
+    },
+    {
+      "chapterDir": "ch09",
+      "moduleId": "m68751",
+      "segmentId": "m68751:para:fs-idp4504752"
+    },
+    {
+      "chapterDir": "ch09",
+      "moduleId": "m68751",
+      "segmentId": "m68751:para:fs-idp96328352"
+    },
+    {
+      "chapterDir": "ch09",
+      "moduleId": "m68752",
+      "segmentId": "m68752:para:fs-idm20201792"
+    },
+    {
+      "chapterDir": "ch09",
+      "moduleId": "m68752",
+      "segmentId": "m68752:para:fs-idm23787120"
+    },
+    {
+      "chapterDir": "ch09",
+      "moduleId": "m68752",
+      "segmentId": "m68752:para:fs-idm32818672"
+    },
+    {
+      "chapterDir": "ch09",
+      "moduleId": "m68752",
+      "segmentId": "m68752:para:fs-idm51491440"
+    },
+    {
+      "chapterDir": "ch09",
+      "moduleId": "m68752",
+      "segmentId": "m68752:para:fs-idm7381904"
+    },
+    {
+      "chapterDir": "ch09",
+      "moduleId": "m68752",
+      "segmentId": "m68752:para:fs-idm79476592"
+    },
+    {
+      "chapterDir": "ch09",
+      "moduleId": "m68752",
+      "segmentId": "m68752:para:fs-idp101724928"
+    },
+    {
+      "chapterDir": "ch09",
+      "moduleId": "m68752",
+      "segmentId": "m68752:para:fs-idp21300512"
+    },
+    {
+      "chapterDir": "ch09",
+      "moduleId": "m68752",
+      "segmentId": "m68752:para:fs-idp231949376"
+    },
+    {
+      "chapterDir": "ch09",
+      "moduleId": "m68754",
+      "segmentId": "m68754:para:fs-idm51199280"
+    },
+    {
+      "chapterDir": "ch09",
+      "moduleId": "m68754",
+      "segmentId": "m68754:para:fs-idp41048160"
+    },
+    {
+      "chapterDir": "ch09",
+      "moduleId": "m68754",
+      "segmentId": "m68754:para:fs-idp53945792"
+    },
+    {
+      "chapterDir": "ch09",
+      "moduleId": "m68758",
+      "segmentId": "m68758:para:fs-idm126530816"
+    },
+    {
+      "chapterDir": "ch09",
+      "moduleId": "m68759",
+      "segmentId": "m68759:para:fs-idp6517264"
+    },
+    {
+      "chapterDir": "ch10",
+      "moduleId": "m68761",
+      "segmentId": "m68761:para:fs-idm91556848"
+    },
+    {
+      "chapterDir": "ch10",
+      "moduleId": "m68761",
+      "segmentId": "m68761:para:fs-idm93042944"
+    },
+    {
+      "chapterDir": "ch10",
+      "moduleId": "m68761",
+      "segmentId": "m68761:para:fs-idp57843568"
+    },
+    {
+      "chapterDir": "ch10",
+      "moduleId": "m68764",
+      "segmentId": "m68764:para:fs-idm166392576"
+    },
+    {
+      "chapterDir": "ch10",
+      "moduleId": "m68768",
+      "segmentId": "m68768:para:fs-idm101204704"
+    },
+    {
+      "chapterDir": "ch10",
+      "moduleId": "m68768",
+      "segmentId": "m68768:para:fs-idm13083920"
+    },
+    {
+      "chapterDir": "ch10",
+      "moduleId": "m68768",
+      "segmentId": "m68768:para:fs-idm146844672"
+    },
+    {
+      "chapterDir": "ch10",
+      "moduleId": "m68768",
+      "segmentId": "m68768:para:fs-idm215055184"
+    },
+    {
+      "chapterDir": "ch10",
+      "moduleId": "m68768",
+      "segmentId": "m68768:para:fs-idm44101792"
+    },
+    {
+      "chapterDir": "ch10",
+      "moduleId": "m68768",
+      "segmentId": "m68768:para:fs-idm95497088"
+    },
+    {
+      "chapterDir": "ch10",
+      "moduleId": "m68769",
+      "segmentId": "m68769:para:fs-idm110315760"
+    },
+    {
+      "chapterDir": "ch10",
+      "moduleId": "m68769",
+      "segmentId": "m68769:para:fs-idm153965536"
+    },
+    {
+      "chapterDir": "ch10",
+      "moduleId": "m68769",
+      "segmentId": "m68769:para:fs-idm56827360"
+    },
+    {
+      "chapterDir": "ch10",
+      "moduleId": "m68769",
+      "segmentId": "m68769:para:fs-idm96591504"
+    },
+    {
+      "chapterDir": "ch10",
+      "moduleId": "m68773",
+      "segmentId": "m68773:para:fs-idm22840560"
+    },
+    {
+      "chapterDir": "ch10",
+      "moduleId": "m68773",
+      "segmentId": "m68773:para:fs-idm27761408"
+    },
+    {
+      "chapterDir": "ch10",
+      "moduleId": "m68773",
+      "segmentId": "m68773:para:fs-idm6422368"
+    },
+    {
+      "chapterDir": "ch10",
+      "moduleId": "m68773",
+      "segmentId": "m68773:para:fs-idp30972928"
+    },
+    {
+      "chapterDir": "ch10",
+      "moduleId": "m68773",
+      "segmentId": "m68773:para:fs-idp69715072"
+    },
+    {
+      "chapterDir": "ch10",
+      "moduleId": "m68773",
+      "segmentId": "m68773:para:fs-idp76470512"
+    },
+    {
+      "chapterDir": "ch11",
+      "moduleId": "m68782",
+      "segmentId": "m68782:para:fs-idm245998528"
+    },
+    {
+      "chapterDir": "ch11",
+      "moduleId": "m68782",
+      "segmentId": "m68782:para:fs-idp7203840"
+    },
+    {
+      "chapterDir": "ch11",
+      "moduleId": "m68783",
+      "segmentId": "m68783:para:fs-idm356187520"
+    },
+    {
+      "chapterDir": "ch11",
+      "moduleId": "m68783",
+      "segmentId": "m68783:para:fs-idm38797232"
+    },
+    {
+      "chapterDir": "ch11",
+      "moduleId": "m68783",
+      "segmentId": "m68783:para:fs-idm59771536"
+    },
+    {
+      "chapterDir": "ch11",
+      "moduleId": "m68783",
+      "segmentId": "m68783:para:fs-idm60690288"
+    },
+    {
+      "chapterDir": "ch11",
+      "moduleId": "m68783",
+      "segmentId": "m68783:para:fs-idm9532784"
+    },
+    {
+      "chapterDir": "ch11",
+      "moduleId": "m68783",
+      "segmentId": "m68783:para:fs-idp128729120"
+    },
+    {
+      "chapterDir": "ch11",
+      "moduleId": "m68783",
+      "segmentId": "m68783:para:fs-idp129560688"
+    },
+    {
+      "chapterDir": "ch11",
+      "moduleId": "m68783",
+      "segmentId": "m68783:para:fs-idp139444784"
+    },
+    {
+      "chapterDir": "ch11",
+      "moduleId": "m68783",
+      "segmentId": "m68783:para:fs-idp190854592"
+    },
+    {
+      "chapterDir": "ch11",
+      "moduleId": "m68783",
+      "segmentId": "m68783:para:fs-idp96947872"
+    },
+    {
+      "chapterDir": "ch11",
+      "moduleId": "m68783",
+      "segmentId": "m68783:para:fs-idp96948896"
+    },
+    {
+      "chapterDir": "ch12",
+      "moduleId": "m68786",
+      "segmentId": "m68786:para:fs-idm12525296"
+    },
+    {
+      "chapterDir": "ch12",
+      "moduleId": "m68786",
+      "segmentId": "m68786:para:fs-idm25685056"
+    },
+    {
+      "chapterDir": "ch12",
+      "moduleId": "m68789",
+      "segmentId": "m68789:para:fs-idm141295376"
+    },
+    {
+      "chapterDir": "ch12",
+      "moduleId": "m68789",
+      "segmentId": "m68789:para:fs-idm19062704"
+    },
+    {
+      "chapterDir": "ch12",
+      "moduleId": "m68789",
+      "segmentId": "m68789:para:fs-idm215326320"
+    },
+    {
+      "chapterDir": "ch12",
+      "moduleId": "m68789",
+      "segmentId": "m68789:para:fs-idm234756944"
+    },
+    {
+      "chapterDir": "ch12",
+      "moduleId": "m68791",
+      "segmentId": "m68791:para:fs-idm101854176"
+    },
+    {
+      "chapterDir": "ch12",
+      "moduleId": "m68791",
+      "segmentId": "m68791:para:fs-idm22449888"
+    },
+    {
+      "chapterDir": "ch12",
+      "moduleId": "m68791",
+      "segmentId": "m68791:para:fs-idm23200256"
+    },
+    {
+      "chapterDir": "ch12",
+      "moduleId": "m68791",
+      "segmentId": "m68791:para:fs-idm339802240"
+    },
+    {
+      "chapterDir": "ch12",
+      "moduleId": "m68791",
+      "segmentId": "m68791:para:fs-idm508285088"
+    },
+    {
+      "chapterDir": "ch12",
+      "moduleId": "m68791",
+      "segmentId": "m68791:para:fs-idp122966448"
+    },
+    {
+      "chapterDir": "ch12",
+      "moduleId": "m68791",
+      "segmentId": "m68791:para:fs-idp73329760"
+    },
+    {
+      "chapterDir": "ch12",
+      "moduleId": "m68793",
+      "segmentId": "m68793:para:fs-idm147992368"
+    },
+    {
+      "chapterDir": "ch12",
+      "moduleId": "m68794",
+      "segmentId": "m68794:para:fs-idm361032656"
+    },
+    {
+      "chapterDir": "ch12",
+      "moduleId": "m68795",
+      "segmentId": "m68795:para:fs-idm239441760"
+    },
+    {
+      "chapterDir": "ch13",
+      "moduleId": "m68798",
+      "segmentId": "m68798:para:fs-idm500608128"
+    },
+    {
+      "chapterDir": "ch13",
+      "moduleId": "m68798",
+      "segmentId": "m68798:para:fs-idp130245328"
+    },
+    {
+      "chapterDir": "ch13",
+      "moduleId": "m68798",
+      "segmentId": "m68798:para:fs-idp251899984"
+    },
+    {
+      "chapterDir": "ch13",
+      "moduleId": "m68798",
+      "segmentId": "m68798:para:fs-idp7633728"
+    },
+    {
+      "chapterDir": "ch13",
+      "moduleId": "m68798",
+      "segmentId": "m68798:para:fs-idp96400256"
+    },
+    {
+      "chapterDir": "ch13",
+      "moduleId": "m68801",
+      "segmentId": "m68801:para:fs-idp139296"
+    },
+    {
+      "chapterDir": "ch13",
+      "moduleId": "m68801",
+      "segmentId": "m68801:para:fs-idp181124784"
+    },
+    {
+      "chapterDir": "ch13",
+      "moduleId": "m68801",
+      "segmentId": "m68801:para:fs-idp222432912"
+    },
+    {
+      "chapterDir": "ch13",
+      "moduleId": "m68801",
+      "segmentId": "m68801:para:fs-idp301980848"
+    },
+    {
+      "chapterDir": "ch13",
+      "moduleId": "m68801",
+      "segmentId": "m68801:para:fs-idp349622384"
+    },
+    {
+      "chapterDir": "ch13",
+      "moduleId": "m68801",
+      "segmentId": "m68801:para:fs-idp65960208"
+    },
+    {
+      "chapterDir": "ch14",
+      "moduleId": "m68803",
+      "segmentId": "m68803:para:fs-idm107000608"
+    },
+    {
+      "chapterDir": "ch14",
+      "moduleId": "m68803",
+      "segmentId": "m68803:para:fs-idm88673520"
+    },
+    {
+      "chapterDir": "ch14",
+      "moduleId": "m68803",
+      "segmentId": "m68803:para:fs-idp8583968"
+    },
+    {
+      "chapterDir": "ch14",
+      "moduleId": "m68804",
+      "segmentId": "m68804:para:fs-idm165995920"
+    },
+    {
+      "chapterDir": "ch14",
+      "moduleId": "m68804",
+      "segmentId": "m68804:para:fs-idm9452560"
+    },
+    {
+      "chapterDir": "ch14",
+      "moduleId": "m68804",
+      "segmentId": "m68804:para:fs-idm99369680"
+    },
+    {
+      "chapterDir": "ch14",
+      "moduleId": "m68805",
+      "segmentId": "m68805:para:fs-idm119453808"
+    },
+    {
+      "chapterDir": "ch14",
+      "moduleId": "m68805",
+      "segmentId": "m68805:para:fs-idm30698512"
+    },
+    {
+      "chapterDir": "ch14",
+      "moduleId": "m68805",
+      "segmentId": "m68805:para:fs-idm56489984"
+    },
+    {
+      "chapterDir": "ch14",
+      "moduleId": "m68805",
+      "segmentId": "m68805:para:fs-idm80300528"
+    },
+    {
+      "chapterDir": "ch14",
+      "moduleId": "m68805",
+      "segmentId": "m68805:para:fs-idp1308432"
+    },
+    {
+      "chapterDir": "ch14",
+      "moduleId": "m68805",
+      "segmentId": "m68805:para:fs-idp68248832"
+    },
+    {
+      "chapterDir": "ch14",
+      "moduleId": "m68805",
+      "segmentId": "m68805:para:fs-idp71572112"
+    },
+    {
+      "chapterDir": "ch14",
+      "moduleId": "m68805",
+      "segmentId": "m68805:para:fs-idp77192656"
+    },
+    {
+      "chapterDir": "ch14",
+      "moduleId": "m68806",
+      "segmentId": "m68806:para:fs-idm5299888"
+    },
+    {
+      "chapterDir": "ch14",
+      "moduleId": "m68806",
+      "segmentId": "m68806:para:fs-idm7663712"
+    },
+    {
+      "chapterDir": "ch14",
+      "moduleId": "m68806",
+      "segmentId": "m68806:para:fs-idp43419152"
+    },
+    {
+      "chapterDir": "ch14",
+      "moduleId": "m68806",
+      "segmentId": "m68806:para:fs-idp86512272"
+    },
+    {
+      "chapterDir": "ch14",
+      "moduleId": "m68807",
+      "segmentId": "m68807:para:fs-idm69876496"
+    },
+    {
+      "chapterDir": "ch14",
+      "moduleId": "m68808",
+      "segmentId": "m68808:para:fs-idm119337184"
+    },
+    {
+      "chapterDir": "ch14",
+      "moduleId": "m68809",
+      "segmentId": "m68809:para:fs-idm37877472"
+    },
+    {
+      "chapterDir": "ch14",
+      "moduleId": "m68809",
+      "segmentId": "m68809:para:fs-idm89702512"
+    },
+    {
+      "chapterDir": "ch15",
+      "moduleId": "m68811",
+      "segmentId": "m68811:para:fs-idm690096"
+    },
+    {
+      "chapterDir": "ch15",
+      "moduleId": "m68811",
+      "segmentId": "m68811:para:fs-idp11829888"
+    },
+    {
+      "chapterDir": "ch15",
+      "moduleId": "m68811",
+      "segmentId": "m68811:para:fs-idp11869456"
+    },
+    {
+      "chapterDir": "ch15",
+      "moduleId": "m68811",
+      "segmentId": "m68811:para:fs-idp1200384"
+    },
+    {
+      "chapterDir": "ch15",
+      "moduleId": "m68811",
+      "segmentId": "m68811:para:fs-idp13495488"
+    },
+    {
+      "chapterDir": "ch15",
+      "moduleId": "m68811",
+      "segmentId": "m68811:para:fs-idp15290432"
+    },
+    {
+      "chapterDir": "ch15",
+      "moduleId": "m68811",
+      "segmentId": "m68811:para:fs-idp260224"
+    },
+    {
+      "chapterDir": "ch15",
+      "moduleId": "m68811",
+      "segmentId": "m68811:para:fs-idp388336"
+    },
+    {
+      "chapterDir": "ch15",
+      "moduleId": "m68811",
+      "segmentId": "m68811:para:fs-idp477424"
+    },
+    {
+      "chapterDir": "ch15",
+      "moduleId": "m68811",
+      "segmentId": "m68811:para:fs-idp646032"
+    },
+    {
+      "chapterDir": "ch15",
+      "moduleId": "m68811",
+      "segmentId": "m68811:para:fs-idp754304"
+    },
+    {
+      "chapterDir": "ch15",
+      "moduleId": "m68811",
+      "segmentId": "m68811:para:fs-idp833488"
+    },
+    {
+      "chapterDir": "ch15",
+      "moduleId": "m68811",
+      "segmentId": "m68811:para:fs-idp88704"
+    },
+    {
+      "chapterDir": "ch15",
+      "moduleId": "m68813",
+      "segmentId": "m68813:para:fs-idm70030480"
+    },
+    {
+      "chapterDir": "ch15",
+      "moduleId": "m68814",
+      "segmentId": "m68814:para:fs-idp15140704"
+    },
+    {
+      "chapterDir": "ch16",
+      "moduleId": "m68816",
+      "segmentId": "m68816:para:fs-idm37784928"
+    },
+    {
+      "chapterDir": "ch16",
+      "moduleId": "m68817",
+      "segmentId": "m68817:para:fs-idm140480768"
+    },
+    {
+      "chapterDir": "ch16",
+      "moduleId": "m68817",
+      "segmentId": "m68817:para:fs-idm145487536"
+    },
+    {
+      "chapterDir": "ch16",
+      "moduleId": "m68818",
+      "segmentId": "m68818:para:fs-idm48282704"
+    },
+    {
+      "chapterDir": "ch16",
+      "moduleId": "m68818",
+      "segmentId": "m68818:para:fs-idp105321744"
+    },
+    {
+      "chapterDir": "ch16",
+      "moduleId": "m68818",
+      "segmentId": "m68818:para:fs-idp170733152"
+    },
+    {
+      "chapterDir": "ch16",
+      "moduleId": "m68819",
+      "segmentId": "m68819:para:eip-687"
+    },
+    {
+      "chapterDir": "ch16",
+      "moduleId": "m68819",
+      "segmentId": "m68819:para:fs-idm135514416"
+    },
+    {
+      "chapterDir": "ch16",
+      "moduleId": "m68819",
+      "segmentId": "m68819:para:fs-idm157144416"
+    },
+    {
+      "chapterDir": "ch16",
+      "moduleId": "m68819",
+      "segmentId": "m68819:para:fs-idm181951344"
+    },
+    {
+      "chapterDir": "ch16",
+      "moduleId": "m68819",
+      "segmentId": "m68819:para:fs-idm233909808"
+    },
+    {
+      "chapterDir": "ch16",
+      "moduleId": "m68819",
+      "segmentId": "m68819:para:fs-idm247369440"
+    },
+    {
+      "chapterDir": "ch16",
+      "moduleId": "m68819",
+      "segmentId": "m68819:para:fs-idm360208448"
+    },
+    {
+      "chapterDir": "ch16",
+      "moduleId": "m68819",
+      "segmentId": "m68819:para:fs-idp2244016"
+    },
+    {
+      "chapterDir": "ch17",
+      "moduleId": "m68821",
+      "segmentId": "m68821:para:fs-idm250893824"
+    },
+    {
+      "chapterDir": "ch17",
+      "moduleId": "m68821",
+      "segmentId": "m68821:para:fs-idm252040912"
+    },
+    {
+      "chapterDir": "ch17",
+      "moduleId": "m68822",
+      "segmentId": "m68822:para:fs-idm479605136"
+    },
+    {
+      "chapterDir": "ch17",
+      "moduleId": "m68823",
+      "segmentId": "m68823:para:fs-idm483316928"
+    },
+    {
+      "chapterDir": "ch17",
+      "moduleId": "m68823",
+      "segmentId": "m68823:para:fs-idp108971744"
+    },
+    {
+      "chapterDir": "ch17",
+      "moduleId": "m68824",
+      "segmentId": "m68824:para:fs-idp101579952"
+    },
+    {
+      "chapterDir": "ch17",
+      "moduleId": "m68824",
+      "segmentId": "m68824:para:fs-idp18466656"
+    },
+    {
+      "chapterDir": "ch17",
+      "moduleId": "m68824",
+      "segmentId": "m68824:para:fs-idp34686320"
+    },
+    {
+      "chapterDir": "ch17",
+      "moduleId": "m68827",
+      "segmentId": "m68827:para:fs-idm188224944"
+    },
+    {
+      "chapterDir": "ch17",
+      "moduleId": "m68827",
+      "segmentId": "m68827:para:fs-idp74418928"
+    },
+    {
+      "chapterDir": "ch19",
+      "moduleId": "m68842",
+      "segmentId": "m68842:para:fs-idm178358032"
+    },
+    {
+      "chapterDir": "ch19",
+      "moduleId": "m68842",
+      "segmentId": "m68842:para:fs-idm192451744"
+    },
+    {
+      "chapterDir": "ch19",
+      "moduleId": "m68842",
+      "segmentId": "m68842:para:fs-idm273089696"
+    },
+    {
+      "chapterDir": "ch19",
+      "moduleId": "m68843",
+      "segmentId": "m68843:para:fs-idp13836096"
+    },
+    {
+      "chapterDir": "ch19",
+      "moduleId": "m68843",
+      "segmentId": "m68843:para:fs-idp49529584"
+    },
+    {
+      "chapterDir": "ch19",
+      "moduleId": "m68844",
+      "segmentId": "m68844:para:fs-idm159281872"
+    },
+    {
+      "chapterDir": "ch19",
+      "moduleId": "m68844",
+      "segmentId": "m68844:para:fs-idm59643872"
+    },
+    {
+      "chapterDir": "ch19",
+      "moduleId": "m68844",
+      "segmentId": "m68844:para:fs-idp93610320"
+    },
+    {
+      "chapterDir": "ch20",
+      "moduleId": "m68846",
+      "segmentId": "m68846:para:fs-idp20723808"
+    },
+    {
+      "chapterDir": "ch20",
+      "moduleId": "m68846",
+      "segmentId": "m68846:para:fs-idp34528176"
+    },
+    {
+      "chapterDir": "ch20",
+      "moduleId": "m68846",
+      "segmentId": "m68846:para:fs-idp53499344"
+    },
+    {
+      "chapterDir": "ch20",
+      "moduleId": "m68846",
+      "segmentId": "m68846:para:fs-idp72233168"
+    },
+    {
+      "chapterDir": "ch20",
+      "moduleId": "m68846",
+      "segmentId": "m68846:para:fs-idp81641696"
+    },
+    {
+      "chapterDir": "ch20",
+      "moduleId": "m68847",
+      "segmentId": "m68847:para:fs-idm57460576"
+    },
+    {
+      "chapterDir": "ch20",
+      "moduleId": "m68847",
+      "segmentId": "m68847:para:fs-idm60219664"
+    },
+    {
+      "chapterDir": "ch20",
+      "moduleId": "m68848",
+      "segmentId": "m68848:para:fs-idm3732048"
+    },
+    {
+      "chapterDir": "ch21",
+      "moduleId": "m68851",
+      "segmentId": "m68851:para:fs-idm46993968"
+    },
+    {
+      "chapterDir": "ch21",
+      "moduleId": "m68851",
+      "segmentId": "m68851:para:fs-idp177279920"
+    },
+    {
+      "chapterDir": "ch21",
+      "moduleId": "m68851",
+      "segmentId": "m68851:para:fs-idp26065248"
+    },
+    {
+      "chapterDir": "ch21",
+      "moduleId": "m68852",
+      "segmentId": "m68852:para:fs-idp147027376"
+    },
+    {
+      "chapterDir": "ch21",
+      "moduleId": "m68854",
+      "segmentId": "m68854:para:fs-idm14245664"
+    },
+    {
+      "chapterDir": "ch21",
+      "moduleId": "m68854",
+      "segmentId": "m68854:para:fs-idp7472544"
+    },
+    {
+      "chapterDir": "ch21",
+      "moduleId": "m68854",
+      "segmentId": "m68854:para:fs-idp89371328"
+    },
+    {
+      "chapterDir": "ch21",
+      "moduleId": "m68858",
+      "segmentId": "m68858:para:fs-idm82342624"
+    }
+  ]
+}

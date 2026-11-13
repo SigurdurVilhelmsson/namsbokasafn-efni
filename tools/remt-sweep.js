@@ -106,6 +106,7 @@ import './lib/remt-checks-chapter.js';
 import { spawnGlossaryPayloadCheck } from './lib/remt-checks-glossary.js';
 import { spawnSchemaCheck } from './lib/remt-checks-output.js';
 import { readChapterFromDisk } from './cnxml-render-fidelity-check.js';
+import { loadUnservedCopiesOrNull } from './lib/g112-unserved-copies.js';
 
 export const REPO_ROOT = path.resolve(import.meta.dirname, '..');
 
@@ -498,6 +499,13 @@ function tier2Ctx(unit) {
   // today, so this line is latent rather than live — but it is the same class as
   // the `fidelityAllowlist` one below, which was NOT latent.
   const residueAllowlist = readJsonOrNull(path.join(dir, 'residue-allowlist.json'));
+  // G1.12 — the frozen list of unserved Icelandic copies A2b and A3 expect. Read through its
+  // OrNull loader, threaded like `residueAllowlist`: `null` for a book with no list (organic),
+  // and NO `?? undefined`. A malformed file THROWS here, which `sweep()` records as a ctx
+  // failure for the unit (every check SKIPPED, the unit named) instead of judging it without
+  // its list. A missing list is not a safe fallback (the list tightens as well as relaxes):
+  // see A2b's G1.12 block in tools/lib/remt-checks-mt.js.
+  const unservedCopies = loadUnservedCopiesOrNull(dir);
   const provenancePath = unit.isPath.replace(/-segments\.is\.md$/, '-provenance.json');
   return {
     book: unit.book,
@@ -510,6 +518,7 @@ function tier2Ctx(unit) {
       : undefined,
     provenance: readJsonOrNull(provenancePath) ?? undefined,
     residueAllowlist,
+    unservedCopies,
   };
 }
 

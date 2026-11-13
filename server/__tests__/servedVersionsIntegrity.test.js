@@ -5,17 +5,19 @@
  * for every change the AI pass made, the hash of the text it read (`beforeSha256`). A chain is the
  * change records of one (chDir, module, segmentId, occurrence); its FIRST record's beforeSha256 is
  * what the AI read. This test serves every module that has a chain through the real module route
- * and compares that hash with the `is_sha256` the route minted. The chains that differ all sit on a
- * duplicated id, where the loader serves the last copy's Icelandic for every copy (R4): ch05 and ch08
- * from the full run, and ch10 from its re-buy (2026-11-08). A new member must be classified before
- * it is added here.
+ * and compares that hash with the `is_sha256` the route minted. The chains that differ are exactly the
+ * ten second-occurrence (`#1`) chains of the ids G1.12 de-duplicated: the English now holds each of
+ * those ids once, so only occurrence 0 is served, with the FIRST Icelandic copy, and every `#0` chain
+ * matches. The AI pass read the second copy too (layer 2 keeps both chains), so each `#1` chain has
+ * no served occurrence left to match. A new member must be classified before it is added here.
  *
  * Read-only on books/: the books dir is NOT overridden, and nothing here writes a file. The
  * database is a temp SESSIONS_DB_PATH.
  *
  * A missing minted row is a mismatch, never a fallback, so the test cannot pass on a route that
  * mints nothing. Only ch00 (the route refuses chapter 0, validateParams.js) and an id the response
- * itself shows duplicated (no row by design) use the row builder on the loader's output.
+ * itself shows duplicated (no row by design; none in chemistry since G1.12) use the row builder on the
+ * loader's output.
  */
 import fs from 'fs';
 import { mkdtempSync, rmSync } from 'fs';
@@ -99,7 +101,7 @@ afterAll(() => {
 
 describe('T1: the committed layer-2 chains against the served versions (spec §10 T1)', () => {
   it(
-    'T1: the chains whose first beforeSha256 differs from G1.1’s is_sha256 are exactly the known R4 ones',
+    'T1: the chains whose first beforeSha256 differs from G1.1’s is_sha256 are exactly the ten unserved #1 chains (G1.12)',
     { timeout: 120_000 },
     async () => {
       // the real tree, not a temp root
@@ -174,23 +176,31 @@ describe('T1: the committed layer-2 chains against the served versions (spec §1
         }
       }
 
-      expect([...mismatched].sort()).toEqual([
-        'ch05/m68726/m68726:para:fs-idm94618544#0',
-        'ch08/m68747/m68747:para:fs-idm99049568#0',
-        'ch10/m68773/m68773:para:fs-idp76470512#0',
-      ]);
+      // The second-occurrence chains of the ten segments G1.12 de-duplicated: their occurrence is no
+      // longer served (the English holds the id once), so no minted row exists for them.
+      const UNSERVED = [
+        'ch05/m68726/m68726:para:fs-idm5945296#1',
+        'ch05/m68726/m68726:para:fs-idm94618544#1',
+        'ch07/m68742/m68742:para:fs-idp55819408#1',
+        'ch08/m68744/m68744:para:fs-idp204958944#1',
+        'ch08/m68747/m68747:para:fs-idm171143328#1',
+        'ch08/m68747/m68747:para:fs-idm99049568#1',
+        'ch10/m68761/m68761:para:fs-idm91556848#1',
+        'ch10/m68768/m68768:para:fs-idm44101792#1',
+        'ch10/m68773/m68773:para:fs-idp76470512#1',
+        'ch21/m68851/m68851:para:fs-idm46993968#1',
+      ];
+      expect([...mismatched].sort()).toEqual(UNSERVED);
       // Value controls (PR1 review C22; every key is in exactly one of the two sets, so comparing matched with the
       // complement of mismatched could not fail). The rows the route minted decide nearly every chain: a route
       // whose response showed every id duplicated would send them all through the builder, which reads no row,
-      // and pass the exact set above. And the builder matches chains of its own: the LAST copy of each known
-      // mismatch, whose Icelandic the loader serves for every copy (R4).
+      // and fail here. Since G1.12 no chemistry id is duplicated, so the builder decides only ch00.
       expect(matchedByRow.size).toBeGreaterThan(allKeys.length * 0.9);
-      expect([...matchedByBuilder]).toEqual(
-        expect.arrayContaining([
-          'ch05/m68726/m68726:para:fs-idm94618544#1',
-          'ch08/m68747/m68747:para:fs-idm99049568#1',
-          'ch10/m68773/m68773:para:fs-idp76470512#1',
-        ])
+      expect(matchedByBuilder.size).toBeGreaterThan(0);
+      expect([...matchedByBuilder].filter((k) => !k.startsWith('ch00/'))).toEqual([]);
+      // Each unserved chain's #0 sibling is served, minted and matched (the first copy, G1.12).
+      expect([...matchedByRow]).toEqual(
+        expect.arrayContaining(UNSERVED.map((k) => k.replace(/#1$/, '#0')))
       );
       // the matched set includes chapter metadata, an appendix and ch00
       expect([...matched]).toEqual(
@@ -200,8 +210,9 @@ describe('T1: the committed layer-2 chains against the served versions (spec §1
           'ch00/m68662/m68662:para:pref-p-009#0',
         ])
       );
-      // the response's own baseSha256 is the minted hash for every served, non-duplicated chain
-      expect(bodyDisagrees).toEqual([]);
+      // the response's own baseSha256 is the minted hash for every served chain; an unserved occurrence
+      // has no entry and no row, so it disagrees — exactly the ten above
+      expect(bodyDisagrees.sort()).toEqual(UNSERVED);
     }
   );
 });

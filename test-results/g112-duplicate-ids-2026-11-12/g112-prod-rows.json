@@ -1,0 +1,45 @@
+{
+ "readonly": true,
+ "idsSent": 285,
+ "count": 2,
+ "rows": [
+  {
+   "id": 58,
+   "book": "efnafraedi-2e",
+   "chapter": 3,
+   "module_id": "m68700",
+   "segment_id": "m68700:para:fs-idm3056704",
+   "occurrence": null,
+   "status": "approved",
+   "origin": null,
+   "category": null,
+   "created_at": "2026-04-24 15:18:52",
+   "reviewed_at": "2026-06-12 15:46:58",
+   "applied_at": "2026-06-12 15:49:39",
+   "review_id": 3,
+   "served_version_id": null,
+   "displayed_edit_id": null,
+   "original_content": "4,586 [[MATH:13]] 10[[sup:22]] Au-frumeindir",
+   "edited_content": "4,586 [[MATH:12]] 10[[sup:22]] Au-atóm"
+  },
+  {
+   "id": 66,
+   "book": "efnafraedi-2e",
+   "chapter": 3,
+   "module_id": "m68700",
+   "segment_id": "m68700:para:fs-idp14642528",
+   "occurrence": null,
+   "status": "approved",
+   "origin": null,
+   "category": null,
+   "created_at": "2026-04-05 09:00:51",
+   "reviewed_at": "2026-06-12 15:48:28",
+   "applied_at": "2026-06-12 15:49:39",
+   "review_id": 3,
+   "served_version_id": null,
+   "displayed_edit_id": null,
+   "original_content": "9,545 [[MATH:17]] 10[[sup:22]] sameindir C[[sub:4]] H[[sub:10]]; 9,545 [[MATH:18]] 10[[sup:23]] frumeindir H",
+   "edited_content": "9,545 [[MATH:15]] 10[[sup:22]] sameindir C[[sub:4]] H[[sub:10]]; 9,545 [[MATH:16]] 10[[sup:23]] H atóm"
+  }
+ ]
+}

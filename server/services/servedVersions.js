@@ -12,10 +12,12 @@
  * today, but a throw there would turn the module route into a 500. `countOccurrences` is a plain
  * per-id counter that cannot throw, and the serve adds only `occurrence` (spec §5.3).
  *
- * Why a duplicated id gets no row (R4; spec §5.2): until G1.12 the loader keys the Icelandic by id
- * alone, so every copy of a duplicated id is served the last copy's Icelandic. A row would record
- * the wrong copy, so a duplicated id gets neither a served-version row nor a `baseSha256`, and
- * every write to it is refused (spec §5.7).
+ * Why a duplicated id gets no row (R4; spec §5.2): the loader keys the Icelandic by id alone (it
+ * pairs the first Icelandic copy, G1.12), so every copy of a repeated id is served that one
+ * Icelandic. A row would record a copy the reader cannot tell apart, so a duplicated id gets
+ * neither a served-version row nor a `baseSha256`, and every write to it is refused (spec §5.7).
+ * No chemistry id is duplicated since G1.12 (a); this stays as a backstop for any future one, and
+ * option (b) of G1.12, which would place a write by occurrence, was not built.
  *
  * Why the caller passes the connection: a save mints the version it is checked against and writes
  * its edit row in one transaction (spec §5.6 step 6), so the mint must run on the caller's handle,

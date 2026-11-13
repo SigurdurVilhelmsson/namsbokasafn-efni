@@ -145,9 +145,6 @@ An ion of platinum has a mass number of 195 and contains 74 electrons. How many 
 <!-- SEG:m68692:note-title:fs-idm45247680-title -->
 Answer:
 
-<!-- SEG:m68692:para:fs-idp59061008 -->
-78 protons; 117 neutrons; charge is 4+
-
 <!-- SEG:m68692:caption:CNX_Chem_02_03_Iodine-caption -->
 (a) Insufficient iodine in the diet can cause an enlargement of the thyroid gland called a goiter. (b) The addition of small amounts of iodine to salt, which prevents the formation of goiters, has helped eliminate this concern in the US where salt consumption is high. (credit a: modification of work by “Almazi”/Wikimedia Commons; credit b: modification of work by Mike Mozart)
 
@@ -862,9 +859,6 @@ A sample of magnesium is found to contain 78.70% of [[sup:24]]Mg atoms (mass 23.
 <!-- SEG:m68692:note-title:fs-idm155890528-title -->
 Answer:
 
-<!-- SEG:m68692:para:fs-idm169485088 -->
-24.31 amu
-
 <!-- SEG:m68692:para:fs-idp15941280 -->
 We can also do variations of this type of calculation, as shown in the next example.
 
@@ -903,9 +897,6 @@ Naturally occurring copper consists of [[sup:63]]Cu (mass 62.9296 amu) and [[sup
 
 <!-- SEG:m68692:note-title:fs-idm192789184-title -->
 Answer:
-
-<!-- SEG:m68692:para:fs-idm194575792 -->
-69.15% Cu-63 and 30.85% Cu-65
 
 <!-- SEG:m68692:para:fs-idp99251296 -->
 Visit this [[link:site|http://openstax.org/l/16PhetAtomMass]] to make mixtures of the main isotopes of the first 18 elements, gain experience with average atomic mass, and check naturally occurring isotope ratios using the Isotopes and Atomic Mass simulation.

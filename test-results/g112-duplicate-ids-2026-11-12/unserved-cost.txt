@@ -1,0 +1,13 @@
+G1.12 unserved-copies cost (spec §6 item 2)
+base 69cc289c9 = 69cc289c9015bff82a9a7f05e03854e976bd4537; HEAD = 97ee194b9e0091d2f2b78cf3b1d458ef6f3816f2
+list: 285 entries in 83 files; rate ISK_PER_1000_CHARS = 10
+
+blocks cut (second English copy of each listed id at base): 285
+control: Σ(len at base − len at HEAD) over the 83 files = 29385; Σ raw block length = 29385; equal: true
+problems: 0
+
+CEILING (raw block, marker line included; --dry-run's unit, JS string length): 29385 chars = 293.85 ISK
+  the same blocks in UTF-8 bytes: 29630
+EXPECTATION (§C91 ①: raw − marker lines incl. their newline − 1 newline per segment): 17651 chars = 176.51 ISK
+  marker lines removed: 11449 chars over 285 blocks
+text only, trimmed (second copies): 17366 chars; first copies: 17348 chars

@@ -58,9 +58,6 @@ Four Lewis structures are shown. The first structure, labeled “ethanol,” sho
 <!-- SEG:m68768:note-title:fs-idm91362784-title -->
 Answer:
 
-<!-- SEG:m68768:para:fs-idm44101792 -->
-All these compounds exhibit hydrogen bonding; these strong IMFs are difficult for the molecules to overcome, so the vapor pressures are relatively low. As the size of molecule increases from methanol to butanol, dispersion forces increase, which means that the vapor pressures decrease as observed:[[BR]] P[[sub:methanol]] > P[[sub:ethanol]] > P[[sub:propanol]] > P[[sub:butanol]].
-
 <!-- SEG:m68768:table-summary:fs-idm60218336-summary -->
 This table has two rows and five columns. The first column is a header column, and it labels each row: “Compound,” and “Vapor Pressure at 25 degrees C.” To the right of the “Compound” column are the following: methanol, C H subscript 3 O H; ethanol, C subscript 2 H subscript 5 O H; propanol C subscript 3 H subscript 7 O H; and butanol C subscript 4 H subscript 9 O H. To the right of the “Vapor Pressure at 25 degrees C” column are the following: 11.9 k P a, 5.95 k P a, 2.67 k P a, and 0.56 k P a.
 
@@ -139,9 +136,6 @@ Approximately 40 kPa (0.4 atm)
 <!-- SEG:m68768:note-title:fs-idm212817424-title -->
 Answer:
 
-<!-- SEG:m68768:para:fs-idm95497088 -->
-Approximately 40 kPa (0.4 atm)
-
 <!-- SEG:m68768:para:fs-idm287754592 -->
 The quantitative relation between a substance’s vapor pressure and its temperature is described by the [[term:Clausius-Clapeyron equation|term-00007]]:
 
@@ -187,9 +181,6 @@ At 20.0 °C, the vapor pressure of ethanol is 5.95 kPa, and at 63.5 °C, its vap
 <!-- SEG:m68768:note-title:fs-idp12869536-title -->
 Answer:
 
-<!-- SEG:m68768:para:fs-idm146844672 -->
-41,360 J/mol or 41.4 kJ/mol
-
 <!-- SEG:m68768:example-title:fs-idm143693744-title -->
 Estimating Temperature (or Vapor Pressure)
 
@@ -216,9 +207,6 @@ For acetone (CH[[sub:3]])[[sub:2]]CO, the normal boiling point is 56.5 °C and t
 
 <!-- SEG:m68768:note-title:fs-idm209654080-title -->
 Answer:
-
-<!-- SEG:m68768:para:fs-idm215055184 -->
-30.1 kPa
 
 <!-- SEG:m68768:title:fs-idm196961088-title -->
 Enthalpy of Vaporization
@@ -255,9 +243,6 @@ How much heat is required to evaporate 100.0 g of liquid ammonia, NH[[sub:3]], a
 
 <!-- SEG:m68768:note-title:fs-idm64022976-title -->
 Answer:
-
-<!-- SEG:m68768:para:fs-idm13083920 -->
-28 kJ
 
 <!-- SEG:m68768:caption:CNX_Chem_10_03_Evap-caption -->
 Evaporation of sweat helps cool the body. (credit: “Kullez”/Flickr)
@@ -384,9 +369,6 @@ Heat steam from 100 °C to 120 °C
 
 <!-- SEG:m68768:note-title:fs-idm100519184-title -->
 Answer:
-
-<!-- SEG:m68768:para:fs-idm101204704 -->
-68.7 kJ
 
 <!-- SEG:m68768:title:fs-idm147145776-title -->
 Key Concepts and Summary

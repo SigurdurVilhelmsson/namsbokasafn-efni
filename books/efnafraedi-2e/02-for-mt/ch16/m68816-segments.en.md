@@ -106,9 +106,6 @@ Heat will spontaneously flow from the hotter object (coffee) to the colder objec
 <!-- SEG:m68816:note-title:fs-idp37406832-title -->
 Answer:
 
-<!-- SEG:m68816:para:fs-idm37784928 -->
-Heat will spontaneously flow from the hotter object (coffee) to the colder object (spoon), resulting in a more uniform distribution of thermal energy as the spoon warms and the coffee cools.
-
 <!-- SEG:m68816:caption:CNX_Chem_16_02_Process-caption -->
 (credit a: modification of work by Jenny Downing; credit b: modification of work by “Fuzzy Gerdes”/Flickr; credit c: modification of work by Paul A. Flowers)
 

@@ -118,9 +118,6 @@ Calculate the root-mean-square speed for a mole of oxygen molecules at –23 °C
 <!-- SEG:m68758:note-title:fs-idm134812432-title -->
 Answer:
 
-<!-- SEG:m68758:para:fs-idm126530816 -->
-441 m/s
-
 <!-- SEG:m68758:para:fs-idm298779008 -->
 If the temperature of a gas increases, its KE[[sub:avg]] increases, more molecules have higher speeds and fewer molecules have lower speeds, and the distribution shifts toward higher speeds overall, that is, to the right. If temperature decreases, KE[[sub:avg]] decreases, more molecules have lower speeds and fewer molecules have higher speeds, and the distribution shifts toward lower speeds overall, that is, to the left. This behavior is illustrated for nitrogen gas in [[xref:CNX_Chem_09_05_MolSpeed2]].
 

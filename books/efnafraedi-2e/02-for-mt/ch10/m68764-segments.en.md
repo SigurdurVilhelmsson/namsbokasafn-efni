@@ -250,9 +250,6 @@ diameter = 0.36 mm
 <!-- SEG:m68764:note-title:fs-idm209726944-title -->
 Answer:
 
-<!-- SEG:m68764:para:fs-idm166392576 -->
-diameter = 0.36 mm
-
 <!-- SEG:m68764:note-title:fs-idm192709088-title -->
 Biomedical Applications of Capillary Action
 

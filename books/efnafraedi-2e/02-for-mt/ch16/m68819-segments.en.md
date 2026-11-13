@@ -139,9 +139,6 @@ Use standard enthalpy and entropy data from [[docref:Appendix G|m68865]] to calc
 <!-- SEG:m68819:note-title:fs-idm97664544-title -->
 Answer:
 
-<!-- SEG:m68819:para:fs-idm157144416 -->
-[[MATH:4]] the reaction is nonspontaneous ([[i:not]] spontaneous) at 25 °C.
-
 <!-- SEG:m68819:table-summary:fs-idm230329280-summary -->
 This table has three columns and three rows. The first row is a header row and it labels each column: “Substance,” “capital delta H subscript f superscript degree symbol ( k J / mol),” and “S subscript 298 superscript degree symbol ( J / K dot mol ).” Under the “Substance” column are H subscript 2 O ( l ) and H subscript 2 O ( g ). Under the “capital delta H subscript f superscript degree symbol ( k J / mol)” column are the values negative 286.83 and negative 241.82. Under the “S subscript 298 superscript degree symbol ( J / K dot mol )” column are the values 70.0 and 188.8.
 
@@ -216,12 +213,6 @@ Calculate Δ[[i:G]]° using (a) free energies of formation and (b) enthalpies of
 
 <!-- SEG:m68819:note-title:fs-idm254989456a-title -->
 Answer:
-
-<!-- SEG:m68819:para:fs-idp2244016 -->
-(a) 140.8 kJ/mol, nonspontaneous
-
-<!-- SEG:m68819:para:eip-687 -->
-(b) 141.5 kJ/mol, nonspontaneous
 
 <!-- SEG:m68819:table-summary:fs-idm232730384-summary -->
 This table has four columns and four rows. The first row is a header row, and it labels each column: “Compound,” “capital delta G subscript f superscript degree symbol ( k J / mol ),” “capital delta H subscript f superscript degree symbol ( k J / mol ),” and “S subscript 298 superscript degree symbol ( J / K dot mol ).” Under the “Compound” column are the following: “H g O ( s, yellow ),” “H g ( l ),” and “O subscript 2 ( g ).” Under the “capital delta G subscript f superscript degree symbol ( k J / mol )” column are the following values: negative 58.43, 0, and 0. Under the “capital delta H subscript f superscript degree symbol ( k J / mol )” column are the values: negative 90.46, 0, and 0. Under the “S subscript 298 superscript degree symbol ( J / K dot mol )” column are the values: 71.13, 75.9, and 205.2.
@@ -322,9 +313,6 @@ What is the standard free energy change for the reaction below? Is the reaction 
 <!-- SEG:m68819:note-title:fs-idm254989456-title -->
 Answer:
 
-<!-- SEG:m68819:para:fs-idm360208448 -->
-−199.7 kJ; spontaneous
-
 <!-- SEG:m68819:title:fs-idm157251776-title -->
 Temperature Dependence of Spontaneity
 
@@ -385,9 +373,6 @@ How does the spontaneity of this process depend upon temperature?
 <!-- SEG:m68819:note-title:fs-idm137038288-title -->
 Answer:
 
-<!-- SEG:m68819:para:fs-idm233909808 -->
-Δ[[i:H]] and Δ[[i:S]] are negative; the reaction is spontaneous at low temperatures.
-
 <!-- SEG:m68819:para:fs-idp2328928 -->
 When considering the conclusions drawn regarding the temperature dependence of spontaneity, it is important to keep in mind what the terms “high” and “low” mean. Since these terms are adjectives, the temperatures in question are deemed high or low relative to some reference temperature. A process that is nonspontaneous at one temperature but spontaneous at another will necessarily undergo a change in “spontaneity” (as reflected by its Δ[[i:G]]) as temperature varies. This is clearly illustrated by a graphical presentation of the free energy change equation, in which Δ[[i:G]] is plotted on the [[i:y]] axis versus [[i:T]] on the [[i:x]] axis:
 
@@ -436,9 +421,6 @@ Use the information in [[docref:Appendix G|m68865]] to estimate the boiling poin
 <!-- SEG:m68819:note-title:fs-idm230494144-title -->
 Answer:
 
-<!-- SEG:m68819:para:fs-idm181951344 -->
-313 K (accepted value 319 K)
-
 <!-- SEG:m68819:title:fs-idm159117504-title -->
 Free Energy and Equilibrium
 
@@ -483,9 +465,6 @@ Calculate the free energy change for this same reaction at 875 °C for a mixture
 
 <!-- SEG:m68819:note-title:fs-idm329579920-title -->
 Answer:
-
-<!-- SEG:m68819:para:fs-idm247369440 -->
-Δ[[i:G]] = 45.1 kJ/mol; no
 
 <!-- SEG:m68819:para:fs-idm247911728 -->
 For a system at equilibrium, [[i:Q]] = [[i:K]] and Δ[[i:G]] = 0, and the previous equation may be written as
@@ -567,9 +546,6 @@ Use the thermodynamic data provided in [[docref:Appendix G|m68865]] to calculate
 
 <!-- SEG:m68819:note-title:fs-idm197604384-title -->
 Answer:
-
-<!-- SEG:m68819:para:fs-idm135514416 -->
-[[i:K]] = 0.32
 
 <!-- SEG:m68819:para:fs-idm66775936 -->
 To further illustrate the relation between these two essential thermodynamic concepts, consider the observation that reactions spontaneously proceed in a direction that ultimately establishes equilibrium. As may be shown by plotting the free energy versus the extent of the reaction (for example, as reflected in the value of [[i:Q]]), equilibrium is established when the system’s free energy is minimized ([[xref:CNX_Chem_16_04_Gibbs]]). If a system consists of reactants and products in nonequilibrium amounts ([[i:Q]] ≠ [[i:K]]), the reaction will proceed spontaneously in the direction necessary to establish equilibrium.

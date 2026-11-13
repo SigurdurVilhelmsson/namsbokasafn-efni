@@ -217,9 +217,6 @@ A line graph, titled “Carbon Family,” is shown where the y-axis is labeled �
 <!-- SEG:m68761:note-title:fs-idm119929280-title -->
 Answer:
 
-<!-- SEG:m68761:para:fs-idm93042944 -->
-C[[sub:2]]H[[sub:6]] &lt; C[[sub:3]]H[[sub:8]] &lt; C[[sub:4]]H[[sub:10]]. All of these compounds are nonpolar and only have London dispersion forces: the larger the molecule, the larger the dispersion forces and the higher the boiling point. The ordering from lowest to highest boiling point is therefore C[[sub:2]]H[[sub:6]] &lt; C[[sub:3]]H[[sub:8]] &lt; C[[sub:4]]H[[sub:10]].
-
 <!-- SEG:m68761:para:fs-idm93742928 -->
 The shapes of molecules also affect the magnitudes of the dispersion forces between them. For example, boiling points for the isomers [[i:n]]-pentane, isopentane, and neopentane (shown in [[xref:CNX_Chem_10_01_PentIso]]) are 36 °C, 27 °C, and 9.5 °C, respectively. Even though these compounds are composed of molecules with the same chemical formula, C[[sub:5]]H[[sub:12]], the difference in boiling points suggests that dispersion forces in the liquid phase are different, being greatest for [[i:n]]-pentane and least for neopentane. The elongated shape of [[i:n]]-pentane provides a greater surface area available for contact between molecules, resulting in correspondingly stronger dispersion forces. The more compact shape of isopentane offers a smaller surface area available for intermolecular contact and, therefore, weaker dispersion forces. Neopentane molecules are the most compact of the three, offering the least available surface area for intermolecular contact and, hence, the weakest dispersion forces. This behavior is analogous to the connections that may be formed between strips of VELCRO brand fasteners: the greater the area of the strip’s contact, the stronger the connection.
 
@@ -289,9 +286,6 @@ ICl. ICl and Br[[sub:2]] have similar masses (~160 amu) and therefore experience
 <!-- SEG:m68761:note-title:fs-idm21037552-title -->
 Answer:
 
-<!-- SEG:m68761:para:fs-idp57843568 -->
-ICl. ICl and Br[[sub:2]] have similar masses (~160 amu) and therefore experience similar London dispersion forces. ICl is polar and thus also exhibits dipole-dipole attractions; Br[[sub:2]] is nonpolar and does not. The relatively stronger dipole-dipole attractions require more energy to overcome, so ICl will have the higher boiling point.
-
 <!-- SEG:m68761:title:fs-idp42198272-title -->
 Hydrogen Bonding
 
@@ -348,9 +342,6 @@ The melting point and boiling point for methylamine are predicted to be signific
 
 <!-- SEG:m68761:note-title:fs-idm67186592-title -->
 Answer:
-
-<!-- SEG:m68761:para:fs-idm91556848 -->
-The melting point and boiling point for methylamine are predicted to be significantly greater than those of ethane. CH[[sub:3]]CH[[sub:3]] and CH[[sub:3]]NH[[sub:2]] are similar in size and mass, but methylamine possesses an −NH group and therefore may exhibit hydrogen bonding. This greatly increases its IMFs, and therefore its melting and boiling points. It is difficult to predict values, but the known values are a melting point of −93 °C and a boiling point of −6 °C.
 
 <!-- SEG:m68761:note-title:fs-idm44601856-title -->
 Hydrogen Bonding and DNA

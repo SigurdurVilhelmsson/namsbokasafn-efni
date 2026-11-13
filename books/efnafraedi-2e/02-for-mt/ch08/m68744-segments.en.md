@@ -313,9 +313,6 @@ Three diagrams are shown and labeled “a,” “b,” and “c.” Diagram a de
 <!-- SEG:m68744:note-title:fs-idp42592272-title -->
 Answer:
 
-<!-- SEG:m68744:para:fs-idp204958944 -->
-(a) is a π bond with a node along the axis connecting the nuclei while (b) and (c) are σ bonds that overlap along the axis.
-
 <!-- SEG:m68744:title:fs-idp111264480-title -->
 Key Concepts and Summary
 

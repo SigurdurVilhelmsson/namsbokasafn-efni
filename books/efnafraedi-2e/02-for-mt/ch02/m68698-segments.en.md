@@ -403,9 +403,6 @@ Write the formulas of the following ionic compounds:
 <!-- SEG:m68698:note-title:fs-idp268148048-title -->
 Answer:
 
-<!-- SEG:m68698:para:fs-idp268148560 -->
-(a) CrP; (b) HgS; (c) Mn[[sub:3]](PO[[sub:4]])[[sub:2]]; (d) Cu[[sub:2]]O; (e) FeCl[[sub:3]]·2H[[sub:2]]O
-
 <!-- SEG:m68698:note-title:fs-idm8768-title -->
 Erin Brockovich and Chromium Contamination
 
@@ -579,9 +576,6 @@ Write the formulas for the following compounds:
 
 <!-- SEG:m68698:note-title:fs-idp283401520-title -->
 Answer:
-
-<!-- SEG:m68698:para:fs-idp283402032 -->
-(a) PCl[[sub:5]]; (b) N[[sub:2]]O; (c) IF[[sub:7]]; (d) CCl[[sub:4]]
 
 <!-- SEG:m68698:para:fs-idp268192304 -->
 The following [[link:website|http://openstax.org/l/16chemcompname]] provides practice with naming chemical compounds and writing chemical formulas. You can choose binary, polyatomic, and variable charge ionic compounds, as well as molecular compounds.

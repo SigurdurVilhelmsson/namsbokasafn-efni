@@ -67,9 +67,6 @@ A Lewis structure is shown. A carbon atom with one lone pair of electrons is tri
 <!-- SEG:m68740:note-title:fs-idm19244912-title -->
 Answer:
 
-<!-- SEG:m68740:para:fs-idm87344256 -->
-C −1, O +1
-
 <!-- SEG:m68740:example-title:fs-idp59620704-title -->
 Calculating Formal Charge from Lewis Structures
 
@@ -102,9 +99,6 @@ A Lewis structure is shown. A bromine atom with two lone pairs of electrons is s
 
 <!-- SEG:m68740:note-title:fs-idp11154656-title -->
 Answer:
-
-<!-- SEG:m68740:para:fs-idm22650544 -->
-N: 0; all three Cl atoms: 0
 
 <!-- SEG:m68740:alt:fs-idm2350000-alt -->
 A Lewis structure is shown. A nitrogen atom with one lone pair of electrons is single bonded to three chlorine atoms, each of which has three lone pairs of electrons.
@@ -186,9 +180,6 @@ Two Lewis structures are shown with the word “or” written between them. The 
 
 <!-- SEG:m68740:note-title:fs-idp94183792-title -->
 Answer:
-
-<!-- SEG:m68740:para:fs-idm26159840 -->
-ONO[[sup:–]]
 
 <!-- SEG:m68740:title:fs-idp26392016-title -->
 Resonance

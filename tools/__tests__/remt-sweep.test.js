@@ -913,6 +913,20 @@ describe('the OrNull-family keys reach their gate as `null`, never `undefined`',
     expect(ctx.residueAllowlist).toBeTypeOf('object');
     expect(ctx.residueAllowlist).not.toBeNull();
   });
+
+  it('G1.12: chemistry gets its parsed unserved-copies list, organic an explicit null', () => {
+    // A2b and A3 read `unservedCopies` to expect chemistry's 285 listed second Icelandic copies.
+    // Dropping the key from `tier2Ctx` turns chemistry's A2b row red on 83 modules (the
+    // over-bar test above); this pins the key itself, both arms, so the null arm is not
+    // structural only.
+    const spec = TIER_SPECS.find((x) => x.tier === 2);
+    const chem = spec.ctx(isFileUnits(CHEM)[0], {});
+    expect(Object.prototype.hasOwnProperty.call(chem, 'unservedCopies')).toBe(true);
+    expect(chem.unservedCopies.entries).toHaveLength(285);
+    const org = spec.ctx(isFileUnits(ORG)[0], {});
+    expect(Object.prototype.hasOwnProperty.call(org, 'unservedCopies')).toBe(true);
+    expect(org.unservedCopies).toBe(null);
+  });
 });
 
 describe('seeding is load-bearing — a book that contributed nothing still appears', () => {

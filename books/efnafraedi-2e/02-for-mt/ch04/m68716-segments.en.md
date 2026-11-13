@@ -82,9 +82,6 @@ This figure shows four rectangles. The first is shaded lavender and is labeled, 
 <!-- SEG:m68716:note-title:fs-idp52546208-title -->
 Answer:
 
-<!-- SEG:m68716:para:fs-idm9637984 -->
-0.2648 [[i:M]]
-
 <!-- SEG:m68716:title:fs-idp68434144-title -->
 Gravimetric Analysis
 
@@ -136,9 +133,6 @@ This figure shows five rectangles. The first is shaded yellow and is labeled “
 <!-- SEG:m68716:note-title:fs-idp183806096-title -->
 Answer:
 
-<!-- SEG:m68716:para:fs-idm20241408 -->
-23.76%
-
 <!-- SEG:m68716:para:fs-idp91356704 -->
 The elemental composition of hydrocarbons and related compounds may be determined via a gravimetric method known as [[term:combustion analysis|term-00010]]. In a combustion analysis, a weighed sample of the compound is heated to a high temperature under a stream of oxygen gas, resulting in its complete combustion to yield gaseous products of known identities. The complete combustion of hydrocarbons, for example, will yield carbon dioxide and water as the only products. The gaseous combustion products are swept through separate, preweighed collection devices containing compounds that selectively absorb each product ([[xref:CNX_Chem_04_05_combustion]]). The mass increase of each device corresponds to the mass of the absorbed product and may be used in an appropriate stoichiometric calculation to derive the mass of the relevant element.
 
@@ -186,9 +180,6 @@ This figure shows two flowcharts. The first row is a single flow chart. In this 
 
 <!-- SEG:m68716:note-title:fs-idm15574688-title -->
 Answer:
-
-<!-- SEG:m68716:para:fs-idp1032432 -->
-CH
 
 <!-- SEG:m68716:title:fs-idp138667680-title -->
 Key Concepts and Summary

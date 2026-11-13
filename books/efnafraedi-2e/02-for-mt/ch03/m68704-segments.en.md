@@ -61,9 +61,6 @@ A bottle of a tile cleanser contains 135 g of HCl and 775 g of water. What is th
 <!-- SEG:m68704:note-title:fs-idp47230144-title -->
 Answer:
 
-<!-- SEG:m68704:para:fs-idm9307808 -->
-14.8%
-
 <!-- SEG:m68704:example-title:fs-idm27131760-title -->
 Calculations using Mass Percentage
 
@@ -97,9 +94,6 @@ A diagram of three boxes connected by a right-facing arrow in between each is sh
 <!-- SEG:m68704:note-title:fs-idm31069568-title -->
 Answer:
 
-<!-- SEG:m68704:para:fs-idm33390192 -->
-282 mL
-
 <!-- SEG:m68704:title:fs-idm25064544-title -->
 Volume Percentage
 
@@ -129,9 +123,6 @@ Wine is approximately 12% ethanol (CH[[sub:3]]CH[[sub:2]]OH) by volume. Ethanol 
 
 <!-- SEG:m68704:note-title:fs-idp41917088-title -->
 Answer:
-
-<!-- SEG:m68704:para:fs-idm15159936 -->
-1.5 mol ethanol
 
 <!-- SEG:m68704:title:fs-idm6093792-title -->
 Mass-Volume Percentage
@@ -192,9 +183,6 @@ A 50.0-g sample of industrial wastewater was determined to contain 0.48 mg of me
 
 <!-- SEG:m68704:note-title:fs-idm45688384-title -->
 Answer:
-
-<!-- SEG:m68704:para:fs-idm2529904 -->
-9.6 ppm, 9600 ppb
 
 <!-- SEG:m68704:title:fs-idm6539664-title -->
 Section Summary

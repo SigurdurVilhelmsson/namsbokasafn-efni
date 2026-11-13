@@ -1,0 +1,11 @@
+# G1.12 production check (read-only), run 2026-11-13T08:58:49Z from a dev box over ssh
+# command: ssh -o BatchMode=yes siggi@<prod> 'cd ~/repos/namsbokasafn-efni/server && /usr/bin/node -' < g112-prod-check.js
+# prod HEAD: 5de321ca2 2026-11-11 22:23:55 +0000
+readonly: true | control registered_books: 6
+module_openings  total=0 chemistry=0 in83modules=0  (no segment_id/occurrence columns)
+module_opening_inflight  total=0  chemistry=0  idFormatMatches=0/0  in83modules=0  LISTED_IDS=0  OCC>=1_in83=0  occ>=1_anywhere=0  occNULL_in83=0  matcherControl=0/0  sample=-
+served_text_versions  total=4  chemistry=4  idFormatMatches=4/4  in83modules=0  LISTED_IDS=0  OCC>=1_in83=0  occ>=1_anywhere=0  occNULL_in83=0  matcherControl=4/4  sample=m68699:alt:fs-idp99819248-alt
+segment_edits  total=163  chemistry=151  idFormatMatches=150/151  in83modules=97  LISTED_IDS=2  OCC>=1_in83=0  occ>=1_anywhere=0  occNULL_in83=97  matcherControl=5/5  sample=chapter:title:ch05
+segment_acceptances  total=1  chemistry=1  idFormatMatches=1/1  in83modules=0  LISTED_IDS=0  OCC>=1_in83=0  occ>=1_anywhere=0  occNULL_in83=0  matcherControl=1/1  sample=m68664:title:fs-idp71946416-title
+suggestion_rejections  total=0  chemistry=0  idFormatMatches=0/0  in83modules=0  LISTED_IDS=0  OCC>=1_in83=0  occ>=1_anywhere=0  occNULL_in83=0  matcherControl=0/0  sample=-
+suggestion_left_open  total=0  chemistry=0  idFormatMatches=0/0  in83modules=0  LISTED_IDS=0  OCC>=1_in83=0  occ>=1_anywhere=0  occNULL_in83=0  matcherControl=0/0  sample=-

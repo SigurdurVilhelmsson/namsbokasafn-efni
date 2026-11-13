@@ -112,9 +112,6 @@ A diagram shows a cube with a one eighth portion of eight spheres inside the cub
 <!-- SEG:m68773:note-title:fs-idp113302880-title -->
 Answer:
 
-<!-- SEG:m68773:para:fs-idp76470512 -->
-No. If Ni was simple cubic, its density would be given by:[[BR]] [[MATH:8]][[BR]] [[MATH:9]][[BR]] Then the density of Ni would be [[MATH:10]][[BR]] Since the actual density of Ni is not close to this, Ni does not form a simple cubic structure.
-
 <!-- SEG:m68773:para:fs-idp589840 -->
 Most metal crystals are one of the four major types of unit cells. For now, we will focus on the three cubic unit cells: simple cubic (which we have already seen), [[term:body-centered cubic unit cell|term-00005]], and [[term:face-centered cubic unit cell|term-00006]]—all of which are illustrated in [[xref:CNX_Chem_10_06_CubUntCll]]. (Note that there are actually seven different lattice systems, some of which have more than one type of lattice, for a total of 14 different types of unit cells. We leave the more complicated geometries for later in this module.)
 
@@ -223,9 +220,6 @@ Silver crystallizes in an FCC structure. The edge length of its unit cell is 409
 <!-- SEG:m68773:note-title:fs-idp137915824-title -->
 Answer:
 
-<!-- SEG:m68773:para:fs-idm27761408 -->
-(a) 144 pm; (b) 10.5 g/cm[[sup:3]]
-
 <!-- SEG:m68773:para:fs-idp26628704 -->
 In general, a unit cell is defined by the lengths of three axes ([[i:a]], [[i:b]], and [[i:c]]) and the angles ([[i:α]], [[i:β]], and [[i:γ]]) between them, as illustrated in [[xref:CNX_Chem_10_06_GenUnitCll]]. The axes are defined as being the lengths between points in the space lattice. Consequently, unit cell axes join points with identical environments.
 
@@ -298,9 +292,6 @@ Li[[sub:2]]Se
 <!-- SEG:m68773:note-title:fs-idm14652080-title -->
 Answer:
 
-<!-- SEG:m68773:para:fs-idm22840560 -->
-Li[[sub:2]]Se
-
 <!-- SEG:m68773:para:fs-idp29314000 -->
 The ratio of octahedral holes to anions in either an HCP or CCP structure is 1:1. Thus, compounds with cations in octahedral holes in a closest-packed array of anions can have a maximum cation:anion ratio of 1:1. In NiO, MnS, NaCl, and KH, for example, all of the octahedral holes are filled. Ratios of less than 1:1 are observed when some of the octahedral holes remain empty.
 
@@ -327,9 +318,6 @@ TiO[[sub:2]]
 
 <!-- SEG:m68773:note-title:fs-idp78151552-title -->
 Answer:
-
-<!-- SEG:m68773:para:fs-idp30972928 -->
-TiO[[sub:2]]
 
 <!-- SEG:m68773:para:fs-idm13402192 -->
 In a simple cubic array of anions, there is one cubic hole that can be occupied by a cation for each anion in the array. In CsCl, and in other compounds with the same structure, all of the cubic holes are occupied. Half of the cubic holes are occupied in SrH[[sub:2]], UO[[sub:2]], SrCl[[sub:2]], and CaF[[sub:2]].
@@ -427,9 +415,6 @@ Three images are shown. The first shows a cube of alternating green and purple s
 <!-- SEG:m68773:note-title:fs-idp173458848-title -->
 Answer:
 
-<!-- SEG:m68773:para:fs-idm6422368 -->
-The radius of the potassium ion is 1.33 Å.
-
 <!-- SEG:m68773:para:fs-idm38255968 -->
 It is important to realize that values for ionic radii calculated from the edge lengths of unit cells depend on numerous assumptions, such as a perfect spherical shape for ions, which are approximations at best. Hence, such calculated values are themselves approximate and comparisons cannot be pushed too far. Nevertheless, this method has proved useful for calculating ionic radii from experimental measurements such as X-ray crystallographic determinations.
 
@@ -498,9 +483,6 @@ A crystal with spacing between planes equal to 0.394 nm diffracts X-rays with a 
 
 <!-- SEG:m68773:note-title:fs-idp31154560-title -->
 Answer:
-
-<!-- SEG:m68773:para:fs-idp69715072 -->
-10.8°
 
 <!-- SEG:m68773:note-title:fs-idp2037904-title -->
 X-ray Crystallographer Rosalind Franklin

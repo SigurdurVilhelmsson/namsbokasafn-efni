@@ -100,9 +100,6 @@ Exposing a 100.0 mL sample of water at 0 °C to an atmosphere containing a gaseo
 <!-- SEG:m68782:note-title:fs-idm23741504-title -->
 Answer:
 
-<!-- SEG:m68782:para:fs-idp7203840 -->
-7.25 [[MATH:5]] 10[[sup:−3]] in 100.0 mL or 0.0725 g/L
-
 <!-- SEG:m68782:example-title:fs-idm260338832-title -->
 Thermal Pollution and Oxygen Solubility
 
@@ -135,9 +132,6 @@ What dissolved oxygen concentration is expected for the stream above when it ret
 
 <!-- SEG:m68782:note-title:fs-idm252531248-title -->
 Answer:
-
-<!-- SEG:m68782:para:fs-idm245998528 -->
-8.2 mg/L
 
 <!-- SEG:m68782:note-title:fs-idp99321632-title -->
 Decompression Sickness or “The Bends”

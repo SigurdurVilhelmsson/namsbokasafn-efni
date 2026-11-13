@@ -61,9 +61,6 @@ A teaspoon of table sugar contains about 0.01 mol sucrose. What is the molarity 
 <!-- SEG:m68703:note-title:fs-idm62768528-title -->
 Answer:
 
-<!-- SEG:m68703:para:fs-idm62230608 -->
-0.05 [[i:M]]
-
 <!-- SEG:m68703:example-title:fs-idm64107376-title -->
 Deriving Moles and Volumes from Molar Concentrations
 
@@ -88,9 +85,6 @@ What volume (mL) of the sweetened tea described in [[xref:fs-idm98982768]] conta
 <!-- SEG:m68703:note-title:fs-idm58199648-title -->
 Answer:
 
-<!-- SEG:m68703:para:fs-idm89023504 -->
-80 mL
-
 <!-- SEG:m68703:example-title:fs-idm81897840-title -->
 Calculating Molar Concentrations from the Mass of Solute
 
@@ -114,9 +108,6 @@ Calculate the molarity of 6.52 g of CoCl[[sub:2]] (128.9 g/mol) dissolved in an 
 
 <!-- SEG:m68703:note-title:fs-idm2856432-title -->
 Answer:
-
-<!-- SEG:m68703:para:fs-idm103606496 -->
-0.674 [[i:M]]
 
 <!-- SEG:m68703:caption:CNX_Chem_03_04_vinegar-caption -->
 Distilled white vinegar is a solution of acetic acid in water.
@@ -150,9 +141,6 @@ How many grams of CaCl[[sub:2]] (110.98 g/mol) are contained in 250.0 mL of a 0.
 
 <!-- SEG:m68703:note-title:fs-idm80099776-title -->
 Answer:
-
-<!-- SEG:m68703:para:fs-idm73628272 -->
-5.55 g CaCl[[sub:2]]
 
 <!-- SEG:m68703:para:fs-idm75726960 -->
 When performing calculations stepwise, as in [[xref:fs-idm104693104]], it is important to refrain from rounding any intermediate calculation results, which can lead to rounding errors in the final result. In [[xref:fs-idm104693104]], the molar amount of NaCl computed in the first step, 1.325 mol, would be properly rounded to 1.32 mol if it were to be reported; however, although the last digit (5) is not significant, it must be retained as a guard digit in the intermediate calculation. If the guard digit had not been retained, the final calculation for the mass of NaCl would have been 77.1 g, a difference of 0.3 g.
@@ -189,9 +177,6 @@ What volume of a 1.50-[[i:M]] KBr solution contains 66.0 g KBr?
 
 <!-- SEG:m68703:note-title:fs-idm87238064-title -->
 Answer:
-
-<!-- SEG:m68703:para:fs-idm80069312 -->
-0.370 L
 
 <!-- SEG:m68703:title:fs-idm97949648-title -->
 Dilution of Solutions
@@ -256,9 +241,6 @@ What is the concentration of the solution that results from diluting 25.0 mL of 
 <!-- SEG:m68703:note-title:fs-idm112503952-title -->
 Answer:
 
-<!-- SEG:m68703:para:fs-idm1594608 -->
-0.102 [[i:M]] CH[[sub:3]]OH
-
 <!-- SEG:m68703:example-title:fs-idm81033056-title -->
 Volume of a Diluted Solution
 
@@ -289,9 +271,6 @@ A laboratory experiment calls for 0.125 [[i:M]] HNO[[sub:3]]. What volume of 0.1
 <!-- SEG:m68703:note-title:fs-idm58675056-title -->
 Answer:
 
-<!-- SEG:m68703:para:fs-idm590752 -->
-3.76 L
-
 <!-- SEG:m68703:example-title:fs-idm60422464-title -->
 Volume of a Concentrated Solution Needed for Dilution
 
@@ -321,9 +300,6 @@ What volume of a 0.575-[[i:M]] solution of glucose, C[[sub:6]]H[[sub:12]]O[[sub:
 
 <!-- SEG:m68703:note-title:fs-idm150115024-title -->
 Answer:
-
-<!-- SEG:m68703:para:fs-idm68276304 -->
-0.261 L
 
 <!-- SEG:m68703:title:fs-idm102255792-title -->
 Key Concepts and Summary

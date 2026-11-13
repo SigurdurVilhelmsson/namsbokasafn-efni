@@ -82,9 +82,6 @@ What are the mole fraction and molality of a solution that contains 0.850 g of a
 <!-- SEG:m68783:note-title:fs-idp129433120-title -->
 Answer:
 
-<!-- SEG:m68783:para:fs-idm9532784 -->
-7.14 [[MATH:4]] 10[[sup:−3]]; 0.399 [[i:m]]
-
 <!-- SEG:m68783:example-title:fs-idp32863264-title -->
 Converting Mole Fraction and Molal Concentrations
 
@@ -114,9 +111,6 @@ The mole fraction of iodine, I[[sub:2]], dissolved in dichloromethane, CH[[sub:2
 
 <!-- SEG:m68783:note-title:fs-idp95928864-title -->
 Answer:
-
-<!-- SEG:m68783:para:fs-idp96947872 -->
-1.53 [[i:m]]
 
 <!-- SEG:m68783:example-title:fs-idm370293600-title -->
 Molality and Molarity Conversions
@@ -159,9 +153,6 @@ Nitric acid, HNO[[sub:3]][[i:(aq)]], is commercially available as a 33.7 m aqueo
 
 <!-- SEG:m68783:note-title:fs-idm379675456-title -->
 Answer:
-
-<!-- SEG:m68783:para:fs-idm356187520 -->
-14.6 M
 
 <!-- SEG:m68783:title:fs-idp105031888-title -->
 Vapor Pressure Lowering
@@ -219,9 +210,6 @@ A solution contains 5.00 g of urea, CO(NH[[sub:2]])[[sub:2]] (a nonvolatile solu
 
 <!-- SEG:m68783:note-title:fs-idm58368656-title -->
 Answer:
-
-<!-- SEG:m68783:para:fs-idp96948896 -->
-23.4 torr
 
 <!-- SEG:m68783:title:fs-idp189189824-title -->
 Distillation of Solutions
@@ -391,9 +379,6 @@ This is a diagram with three boxes connected with two arrows pointing to the rig
 <!-- SEG:m68783:note-title:fs-idm69400592-title -->
 Answer:
 
-<!-- SEG:m68783:para:fs-idm60690288 -->
-109.2 °C
-
 <!-- SEG:m68783:example-title:fs-idm46335744-title -->
 The Boiling Point of an Iodine Solution
 
@@ -432,9 +417,6 @@ This is a diagram with five boxes oriented horizontally and linked together with
 
 <!-- SEG:m68783:note-title:fs-idp191396352-title -->
 Answer:
-
-<!-- SEG:m68783:para:fs-idm59771536 -->
-100.12 °C
 
 <!-- SEG:m68783:title:fs-idm65221808-title -->
 Freezing Point Depression
@@ -486,9 +468,6 @@ This is a diagram with three boxes connected with two arrows pointing to the rig
 
 <!-- SEG:m68783:note-title:fs-idm48913776-title -->
 Answer:
-
-<!-- SEG:m68783:para:fs-idp190854592 -->
-−9.3 °C
 
 <!-- SEG:m68783:note-title:fs-idm63324816-title -->
 Colligative Properties and De-Icing
@@ -565,9 +544,6 @@ Assuming ideal solution behavior, what is the osmotic pressure (atm) a solution 
 <!-- SEG:m68783:note-title:fs-idp21860928-title -->
 Answer:
 
-<!-- SEG:m68783:para:fs-idm38797232 -->
-5.3 atm
-
 <!-- SEG:m68783:para:fs-idp135138240 -->
 If a solution is placed in an apparatus like the one shown in [[xref:CNX_Chem_11_04_rvosmosis]], applying pressure greater than the osmotic pressure of the solution reverses the osmosis and pushes solvent molecules from the solution into the pure solvent. This technique of reverse osmosis is used for large-scale desalination of seawater and on smaller scales to produce high-purity tap water for drinking.
 
@@ -643,9 +619,6 @@ This is diagram with five boxes oriented horizontally and linked together with a
 <!-- SEG:m68783:note-title:fs-idp188055808-title -->
 Answer:
 
-<!-- SEG:m68783:para:fs-idp129560688 -->
-1.8 [[MATH:15]] 10[[sup:2]] g/mol
-
 <!-- SEG:m68783:example-title:fs-idp132624672-title -->
 Determination of a Molar Mass from Osmotic Pressure
 
@@ -681,9 +654,6 @@ This is a diagram with four boxes oriented horizontally and linked together with
 
 <!-- SEG:m68783:note-title:fs-idp128728480-title -->
 Answer:
-
-<!-- SEG:m68783:para:fs-idp128729120 -->
-3 [[MATH:20]] 10[[sup:4]] g/mol
 
 <!-- SEG:m68783:title:fs-idp14420592-title -->
 Colligative Properties of Electrolytes
@@ -864,9 +834,6 @@ This is a diagram with six boxes oriented horizontally and linked together with 
 
 <!-- SEG:m68783:note-title:fs-idp139444144-title -->
 Answer:
-
-<!-- SEG:m68783:para:fs-idp139444784 -->
-−0.208 °C
 
 <!-- SEG:m68783:title:fs-idp136112224-title -->
 Key Concepts and Summary

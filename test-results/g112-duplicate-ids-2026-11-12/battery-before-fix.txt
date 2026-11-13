@@ -1,0 +1,461 @@
+G1.12 Task 3b, Step 1: the §C82 battery over efnafraedi-2e, branch start vs HEAD, BEFORE the fix
+====================================================================================================
+Measured 2026-11-12. Read-only on both trees: afterwards `git status --porcelain` was empty on the base
+tree, and on this tree showed only the untracked battery-verdicts.mjs written for the measurement.
+
+Sides
+  base  /home/siggi/dev/repos/namsbokasafn-efni/.claude/worktrees/g112-baseline  detached at 69cc289c9
+  head  this worktree, branch fix/g112-duplicate-ids at 908ee0364 (Task 3 committed, no 3b code)
+
+Commands
+  # the sweep CLI (flags confirmed in its parseArgs spec: --book --tier --json --quiet --with-spawns --limit;
+  # --help is NOT in the spec, so `remt-sweep.js --help` is silently a full two-book sweep)
+  (cd <base> && node tools/remt-sweep.js --book efnafraedi-2e --json > sweep-base.json)          exit 0
+  (cd <base> && node tools/remt-sweep.js --book efnafraedi-2e        > sweep-base.txt)           exit 0
+  (cd <head> && node tools/remt-sweep.js --book efnafraedi-2e --json > sweep-head-before.json)   exit 0
+  (cd <head> && node tools/remt-sweep.js --book efnafraedi-2e        > sweep-head-before.txt)    exit 0
+  # all five tiers, no spawns: no network, no paid call. The sweep's exit 0 means "it ran", not "clean".
+
+  # per-check x per-unit verdicts (the CLI prints only per-check aggregates)
+  node test-results/g112-duplicate-ids-2026-11-12/battery-verdicts.mjs --root <base> --book efnafraedi-2e --out verdicts-base.jsonl          exit 0, 3066 verdicts
+  node test-results/g112-duplicate-ids-2026-11-12/battery-verdicts.mjs --root <head> --book efnafraedi-2e --out verdicts-head-before.jsonl   exit 0, 3066 verdicts
+  node test-results/g112-duplicate-ids-2026-11-12/battery-verdicts.mjs --compare verdicts-base.jsonl verdicts-head-before.jsonl             exit 0
+
+  # the 83 modules
+  node test-results/g112-duplicate-ids-2026-11-12/verify-cut.mjs --base 69cc289c9 --list                                                    exit 0, 83 lines
+
+Control: battery-verdicts.mjs walks the sweep's own TIER_SPECS. Its per-check tallies below equal the
+sweep CLI's rows on each side, check for check (e.g. A2b 149/0 base and 66/83 head; A3 139/10 base and
+63/86 head).
+
+RESULT
+  Every (check, unit) verdict that differs is A2b or A3, and every unit involved is one of the 83:
+    A2b  PASS -> FAIL on 83 modules = exactly verify-cut's 83 (set equality, `diff` empty).
+         Finding: seg-count-cross-side-mismatch, leg cross-side, on all 83.
+    A3   PASS -> WARN on 76 of the 83. The other 7 (ch04/m68710 ch12/m68791 ch13/m68801 ch15/m68811
+         ch19/m68843 ch20/m68846 ch20/m68847) were already WARN at base for other findings; all 83 gain
+         `unpaired-segment` findings, 285 in total = the 285 second Icelandic copies.
+  Non-verdict differences, all inside the same 83 modules (0 records differ outside them):
+    examined drops by exactly the removed EN occurrences in E1-E5, A3, A5, A7 (E1: 285 in total);
+    A5/A7 judge PAIRED segments only, so the second copy is no longer paired:
+    A7 ch20/m68848 number-mismatch x3 -> x2, verdict WARN both sides. The lost finding is
+      `m68848:para:fs-idm3732048#1` value "2", the second-copy twin of the kept first-copy finding
+      `m68848:para:fs-idm3732048` value "2" (probe: A7.run on base EN vs head EN, same IS).
+    E4's message "N benign raw dups not counted" -> 0 on all 83; E2's compared-body count drops on 59.
+  No other check and no other module differs. Not a STOP.
+
+Sweep CLI table, base vs head (diff of the text reports)
+12,16c12,16
+< E1   1 * module pair            149   149     0     0     0   149   0.0%     22855
+< E2   1 * module pair            149   149     0     0     0   149   0.0%     22855
+< E3   1 * module pair            149   149     0     0     0   149   0.0%     22855
+< E4   1 * module pair            149   149     0     0     0   149   0.0%     22855
+< E5   1 * module pair            149   149     0     0     0   149   0.0%     22855
+---
+> E1   1 * module pair            149   149     0     0     0   149   0.0%     22570
+> E2   1 * module pair            149   149     0     0     0   149   0.0%     22570
+> E3   1 * module pair            149   149     0     0     0   149   0.0%     22570
+> E4   1 * module pair            149   149     0     0     0   149   0.0%     22570
+> E5   1 * module pair            149   149     0     0     0   149   0.0%     22570
+20c20
+< A2b  2 * IS segment file        149   149     0     0     0   149   0.0%     22855
+---
+> A2b  2 * IS segment file        149    66    83     0     0   149  55.7%     22855
+22c22
+< A3   2   IS segment file        149   139     0    10     0   149   6.7%     22855
+---
+> A3   2   IS segment file        149    63     0    86     0   149  57.7%     22570
+24c24
+< A5   2   IS segment file        149   140     0     9     0   149   6.0%     22855
+---
+> A5   2   IS segment file        149   140     0     9     0   149   6.0%     22570
+26c26
+< A7   2   IS segment file        149    93     0    56     0   149  37.6%     22855
+---
+> A7   2   IS segment file        149    93     0    56     0   149  37.6%     22570
+50a51,53
+> 
+> 🔴 BLOCKING CHECKS OVER GLOBAL CONSTRAINT 4's ~5% BAR (1) — and they are TWO different situations:
+>   A2b  tier 2  55.7% of 149  — tier input is REGENERATED by the loop: a statement about the committed VINTAGE, not about the code that will run. Re-measure after the re-MT (02-mt-output).
+
+== per-check verdict tallies (before | after) ==
+  T0 G1   PASS 1 FAIL 0 WARN 0 SKIP 0          | PASS 1 FAIL 0 WARN 0 SKIP 0
+  T0 G2   PASS 1 FAIL 0 WARN 0 SKIP 0          | PASS 1 FAIL 0 WARN 0 SKIP 0
+  T0 G3   PASS 1 FAIL 0 WARN 0 SKIP 0          | PASS 1 FAIL 0 WARN 0 SKIP 0
+  T0 G4   PASS 0 FAIL 0 WARN 1 SKIP 0          | PASS 0 FAIL 0 WARN 1 SKIP 0
+  T0 G5   PASS 0 FAIL 1 WARN 0 SKIP 0          | PASS 0 FAIL 1 WARN 0 SKIP 0
+  T1 E1   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+  T1 E2   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+  T1 E3   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+  T1 E4   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+  T1 E5   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+  T2 A1   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+  T2 A2a  PASS 71 FAIL 0 WARN 78 SKIP 0        | PASS 71 FAIL 0 WARN 78 SKIP 0
+  T2 A2b  PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 66 FAIL 83 WARN 0 SKIP 0
+  T2 A2c  PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+  T2 A3   PASS 139 FAIL 0 WARN 10 SKIP 0       | PASS 63 FAIL 0 WARN 86 SKIP 0
+  T2 A4   PASS 148 FAIL 0 WARN 1 SKIP 0        | PASS 148 FAIL 0 WARN 1 SKIP 0
+  T2 A5   PASS 140 FAIL 0 WARN 9 SKIP 0        | PASS 140 FAIL 0 WARN 9 SKIP 0
+  T2 A6   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+  T2 A7   PASS 93 FAIL 0 WARN 56 SKIP 0        | PASS 93 FAIL 0 WARN 56 SKIP 0
+  T2 A8   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+  T3 R1   PASS 149 FAIL 0 WARN 0 SKIP 0        | PASS 149 FAIL 0 WARN 0 SKIP 0
+  T3 R3   PASS 0 FAIL 0 WARN 0 SKIP 149        | PASS 0 FAIL 0 WARN 0 SKIP 149
+  T3 R4   PASS 0 FAIL 0 WARN 0 SKIP 149        | PASS 0 FAIL 0 WARN 0 SKIP 149
+  T3 R5   PASS 80 FAIL 0 WARN 58 SKIP 11       | PASS 80 FAIL 0 WARN 58 SKIP 11
+  T4 K1   PASS 4 FAIL 0 WARN 9 SKIP 33         | PASS 4 FAIL 0 WARN 9 SKIP 33
+  T4 K2   PASS 23 FAIL 0 WARN 0 SKIP 23        | PASS 23 FAIL 0 WARN 0 SKIP 23
+  T4 K3   PASS 0 FAIL 0 WARN 0 SKIP 46         | PASS 0 FAIL 0 WARN 0 SKIP 46
+  T4 K4   PASS 23 FAIL 0 WARN 0 SKIP 23        | PASS 23 FAIL 0 WARN 0 SKIP 23
+  T4 K5   PASS 23 FAIL 0 WARN 0 SKIP 23        | PASS 23 FAIL 0 WARN 0 SKIP 23
+
+== (check, unit) verdicts that differ: 159 ==
+  by check: A2b 83, A3 76
+  A2b	ch01/m68674	PASS -> FAIL
+  A3	ch01/m68674	PASS -> WARN
+  A2b	ch01/m68683	PASS -> FAIL
+  A3	ch01/m68683	PASS -> WARN
+  A2b	ch01/m68690	PASS -> FAIL
+  A3	ch01/m68690	PASS -> WARN
+  A2b	ch02/m68685	PASS -> FAIL
+  A3	ch02/m68685	PASS -> WARN
+  A2b	ch02/m68692	PASS -> FAIL
+  A3	ch02/m68692	PASS -> WARN
+  A2b	ch02/m68693	PASS -> FAIL
+  A3	ch02/m68693	PASS -> WARN
+  A2b	ch02/m68695	PASS -> FAIL
+  A3	ch02/m68695	PASS -> WARN
+  A2b	ch02/m68696	PASS -> FAIL
+  A3	ch02/m68696	PASS -> WARN
+  A2b	ch02/m68698	PASS -> FAIL
+  A3	ch02/m68698	PASS -> WARN
+  A2b	ch03/m68700	PASS -> FAIL
+  A3	ch03/m68700	PASS -> WARN
+  A2b	ch03/m68702	PASS -> FAIL
+  A3	ch03/m68702	PASS -> WARN
+  A2b	ch03/m68703	PASS -> FAIL
+  A3	ch03/m68703	PASS -> WARN
+  A2b	ch03/m68704	PASS -> FAIL
+  A3	ch03/m68704	PASS -> WARN
+  A2b	ch04/m68710	PASS -> FAIL
+  A2b	ch04/m68713	PASS -> FAIL
+  A3	ch04/m68713	PASS -> WARN
+  A2b	ch04/m68714	PASS -> FAIL
+  A3	ch04/m68714	PASS -> WARN
+  A2b	ch04/m68716	PASS -> FAIL
+  A3	ch04/m68716	PASS -> WARN
+  A2b	ch05/m68724	PASS -> FAIL
+  A3	ch05/m68724	PASS -> WARN
+  A2b	ch05/m68726	PASS -> FAIL
+  A3	ch05/m68726	PASS -> WARN
+  A2b	ch05/m68727	PASS -> FAIL
+  A3	ch05/m68727	PASS -> WARN
+  A2b	ch06/m68729	PASS -> FAIL
+  A3	ch06/m68729	PASS -> WARN
+  A2b	ch06/m68732	PASS -> FAIL
+  A3	ch06/m68732	PASS -> WARN
+  A2b	ch06/m68733	PASS -> FAIL
+  A3	ch06/m68733	PASS -> WARN
+  A2b	ch06/m68734	PASS -> FAIL
+  A3	ch06/m68734	PASS -> WARN
+  A2b	ch06/m68735	PASS -> FAIL
+  A3	ch06/m68735	PASS -> WARN
+  A2b	ch07/m68737	PASS -> FAIL
+  A3	ch07/m68737	PASS -> WARN
+  A2b	ch07/m68740	PASS -> FAIL
+  A3	ch07/m68740	PASS -> WARN
+  A2b	ch07/m68741	PASS -> FAIL
+  A3	ch07/m68741	PASS -> WARN
+  A2b	ch07/m68742	PASS -> FAIL
+  A3	ch07/m68742	PASS -> WARN
+  A2b	ch08/m68744	PASS -> FAIL
+  A3	ch08/m68744	PASS -> WARN
+  A2b	ch08/m68745	PASS -> FAIL
+  A3	ch08/m68745	PASS -> WARN
+  A2b	ch08/m68746	PASS -> FAIL
+  A3	ch08/m68746	PASS -> WARN
+  A2b	ch08/m68747	PASS -> FAIL
+  A3	ch08/m68747	PASS -> WARN
+  A2b	ch09/m68750	PASS -> FAIL
+  A3	ch09/m68750	PASS -> WARN
+  A2b	ch09/m68751	PASS -> FAIL
+  A3	ch09/m68751	PASS -> WARN
+  A2b	ch09/m68752	PASS -> FAIL
+  A3	ch09/m68752	PASS -> WARN
+  A2b	ch09/m68754	PASS -> FAIL
+  A3	ch09/m68754	PASS -> WARN
+  A2b	ch09/m68758	PASS -> FAIL
+  A3	ch09/m68758	PASS -> WARN
+  A2b	ch09/m68759	PASS -> FAIL
+  A3	ch09/m68759	PASS -> WARN
+  A2b	ch10/m68761	PASS -> FAIL
+  A3	ch10/m68761	PASS -> WARN
+  A2b	ch10/m68764	PASS -> FAIL
+  A3	ch10/m68764	PASS -> WARN
+  A2b	ch10/m68768	PASS -> FAIL
+  A3	ch10/m68768	PASS -> WARN
+  A2b	ch10/m68769	PASS -> FAIL
+  A3	ch10/m68769	PASS -> WARN
+  A2b	ch10/m68773	PASS -> FAIL
+  A3	ch10/m68773	PASS -> WARN
+  A2b	ch11/m68782	PASS -> FAIL
+  A3	ch11/m68782	PASS -> WARN
+  A2b	ch11/m68783	PASS -> FAIL
+  A3	ch11/m68783	PASS -> WARN
+  A2b	ch12/m68786	PASS -> FAIL
+  A3	ch12/m68786	PASS -> WARN
+  A2b	ch12/m68789	PASS -> FAIL
+  A3	ch12/m68789	PASS -> WARN
+  A2b	ch12/m68791	PASS -> FAIL
+  A2b	ch12/m68793	PASS -> FAIL
+  A3	ch12/m68793	PASS -> WARN
+  A2b	ch12/m68794	PASS -> FAIL
+  A3	ch12/m68794	PASS -> WARN
+  A2b	ch12/m68795	PASS -> FAIL
+  A3	ch12/m68795	PASS -> WARN
+  A2b	ch13/m68798	PASS -> FAIL
+  A3	ch13/m68798	PASS -> WARN
+  A2b	ch13/m68801	PASS -> FAIL
+  A2b	ch14/m68803	PASS -> FAIL
+  A3	ch14/m68803	PASS -> WARN
+  A2b	ch14/m68804	PASS -> FAIL
+  A3	ch14/m68804	PASS -> WARN
+  A2b	ch14/m68805	PASS -> FAIL
+  A3	ch14/m68805	PASS -> WARN
+  A2b	ch14/m68806	PASS -> FAIL
+  A3	ch14/m68806	PASS -> WARN
+  A2b	ch14/m68807	PASS -> FAIL
+  A3	ch14/m68807	PASS -> WARN
+  A2b	ch14/m68808	PASS -> FAIL
+  A3	ch14/m68808	PASS -> WARN
+  A2b	ch14/m68809	PASS -> FAIL
+  A3	ch14/m68809	PASS -> WARN
+  A2b	ch15/m68811	PASS -> FAIL
+  A2b	ch15/m68813	PASS -> FAIL
+  A3	ch15/m68813	PASS -> WARN
+  A2b	ch15/m68814	PASS -> FAIL
+  A3	ch15/m68814	PASS -> WARN
+  A2b	ch16/m68816	PASS -> FAIL
+  A3	ch16/m68816	PASS -> WARN
+  A2b	ch16/m68817	PASS -> FAIL
+  A3	ch16/m68817	PASS -> WARN
+  A2b	ch16/m68818	PASS -> FAIL
+  A3	ch16/m68818	PASS -> WARN
+  A2b	ch16/m68819	PASS -> FAIL
+  A3	ch16/m68819	PASS -> WARN
+  A2b	ch17/m68821	PASS -> FAIL
+  A3	ch17/m68821	PASS -> WARN
+  A2b	ch17/m68822	PASS -> FAIL
+  A3	ch17/m68822	PASS -> WARN
+  A2b	ch17/m68823	PASS -> FAIL
+  A3	ch17/m68823	PASS -> WARN
+  A2b	ch17/m68824	PASS -> FAIL
+  A3	ch17/m68824	PASS -> WARN
+  A2b	ch17/m68827	PASS -> FAIL
+  A3	ch17/m68827	PASS -> WARN
+  A2b	ch19/m68842	PASS -> FAIL
+  A3	ch19/m68842	PASS -> WARN
+  A2b	ch19/m68843	PASS -> FAIL
+  A2b	ch19/m68844	PASS -> FAIL
+  A3	ch19/m68844	PASS -> WARN
+  A2b	ch20/m68846	PASS -> FAIL
+  A2b	ch20/m68847	PASS -> FAIL
+  A2b	ch20/m68848	PASS -> FAIL
+  A3	ch20/m68848	PASS -> WARN
+  A2b	ch21/m68851	PASS -> FAIL
+  A3	ch21/m68851	PASS -> WARN
+  A2b	ch21/m68852	PASS -> FAIL
+  A3	ch21/m68852	PASS -> WARN
+  A2b	ch21/m68854	PASS -> FAIL
+  A3	ch21/m68854	PASS -> WARN
+  A2b	ch21/m68858	PASS -> FAIL
+  A3	ch21/m68858	PASS -> WARN
+
+== findings (kinds / count) that differ, by check ==
+  A2b: 83 unit(s)
+    ch01/m68674 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch01/m68683 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch01/m68690 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch02/m68685 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch02/m68692 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch02/m68693 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch02/m68695 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch02/m68696 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch02/m68698 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch03/m68700 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch03/m68702 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch03/m68703 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch03/m68704 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch04/m68710 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch04/m68713 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch04/m68714 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch04/m68716 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch05/m68724 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch05/m68726 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch05/m68727 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch06/m68729 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch06/m68732 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch06/m68733 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch06/m68734 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch06/m68735 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch07/m68737 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch07/m68740 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch07/m68741 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch07/m68742 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch08/m68744 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch08/m68745 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch08/m68746 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch08/m68747 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch09/m68750 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch09/m68751 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch09/m68752 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch09/m68754 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch09/m68758 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch09/m68759 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch10/m68761 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch10/m68764 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch10/m68768 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch10/m68769 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch10/m68773 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch11/m68782 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch11/m68783 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch12/m68786 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch12/m68789 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch12/m68791 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch12/m68793 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch12/m68794 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch12/m68795 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch13/m68798 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch13/m68801 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch14/m68803 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch14/m68804 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch14/m68805 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch14/m68806 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch14/m68807 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch14/m68808 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch14/m68809 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch15/m68811 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch15/m68813 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch15/m68814 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch16/m68816 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch16/m68817 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch16/m68818 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch16/m68819 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch17/m68821 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch17/m68822 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch17/m68823 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch17/m68824 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch17/m68827 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch19/m68842 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch19/m68843 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch19/m68844 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch20/m68846 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch20/m68847 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch20/m68848 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch21/m68851 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch21/m68852 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch21/m68854 [] x0 -> [seg-count-cross-side-mismatch] x1
+    ch21/m68858 [] x0 -> [seg-count-cross-side-mismatch] x1
+  A3: 83 unit(s)
+    ch01/m68674 [] x0 -> [unpaired-segment] x2
+    ch01/m68683 [] x0 -> [unpaired-segment] x5
+    ch01/m68690 [] x0 -> [unpaired-segment] x5
+    ch02/m68685 [] x0 -> [unpaired-segment] x2
+    ch02/m68692 [] x0 -> [unpaired-segment] x3
+    ch02/m68693 [] x0 -> [unpaired-segment] x1
+    ch02/m68695 [] x0 -> [unpaired-segment] x1
+    ch02/m68696 [] x0 -> [unpaired-segment] x5
+    ch02/m68698 [] x0 -> [unpaired-segment] x2
+    ch03/m68700 [] x0 -> [unpaired-segment] x8
+    ch03/m68702 [] x0 -> [unpaired-segment] x5
+    ch03/m68703 [] x0 -> [unpaired-segment] x8
+    ch03/m68704 [] x0 -> [unpaired-segment] x4
+    ch04/m68710 [marker-delta] x1 -> [marker-delta,unpaired-segment] x4
+    ch04/m68713 [] x0 -> [unpaired-segment] x4
+    ch04/m68714 [] x0 -> [unpaired-segment] x2
+    ch04/m68716 [] x0 -> [unpaired-segment] x3
+    ch05/m68724 [] x0 -> [unpaired-segment] x2
+    ch05/m68726 [] x0 -> [unpaired-segment] x7
+    ch05/m68727 [] x0 -> [unpaired-segment] x8
+    ch06/m68729 [] x0 -> [unpaired-segment] x3
+    ch06/m68732 [] x0 -> [unpaired-segment] x2
+    ch06/m68733 [] x0 -> [unpaired-segment] x5
+    ch06/m68734 [] x0 -> [unpaired-segment] x2
+    ch06/m68735 [] x0 -> [unpaired-segment] x2
+    ch07/m68737 [] x0 -> [unpaired-segment] x2
+    ch07/m68740 [] x0 -> [unpaired-segment] x3
+    ch07/m68741 [] x0 -> [unpaired-segment] x2
+    ch07/m68742 [] x0 -> [unpaired-segment] x8
+    ch08/m68744 [] x0 -> [unpaired-segment] x1
+    ch08/m68745 [] x0 -> [unpaired-segment] x2
+    ch08/m68746 [] x0 -> [unpaired-segment] x1
+    ch08/m68747 [] x0 -> [unpaired-segment] x3
+    ch09/m68750 [] x0 -> [unpaired-segment] x4
+    ch09/m68751 [] x0 -> [unpaired-segment] x6
+    ch09/m68752 [] x0 -> [unpaired-segment] x9
+    ch09/m68754 [] x0 -> [unpaired-segment] x3
+    ch09/m68758 [] x0 -> [unpaired-segment] x1
+    ch09/m68759 [] x0 -> [unpaired-segment] x1
+    ch10/m68761 [] x0 -> [unpaired-segment] x3
+    ch10/m68764 [] x0 -> [unpaired-segment] x1
+    ch10/m68768 [] x0 -> [unpaired-segment] x6
+    ch10/m68769 [] x0 -> [unpaired-segment] x4
+    ch10/m68773 [] x0 -> [unpaired-segment] x6
+    ch11/m68782 [] x0 -> [unpaired-segment] x2
+    ch11/m68783 [] x0 -> [unpaired-segment] x11
+    ch12/m68786 [] x0 -> [unpaired-segment] x2
+    ch12/m68789 [] x0 -> [unpaired-segment] x4
+    ch12/m68791 [marker-delta] x1 -> [marker-delta,unpaired-segment] x8
+    ch12/m68793 [] x0 -> [unpaired-segment] x1
+    ch12/m68794 [] x0 -> [unpaired-segment] x1
+    ch12/m68795 [] x0 -> [unpaired-segment] x1
+    ch13/m68798 [] x0 -> [unpaired-segment] x5
+    ch13/m68801 [marker-delta] x1 -> [marker-delta,unpaired-segment] x7
+    ch14/m68803 [] x0 -> [unpaired-segment] x3
+    ch14/m68804 [] x0 -> [unpaired-segment] x3
+    ch14/m68805 [] x0 -> [unpaired-segment] x8
+    ch14/m68806 [] x0 -> [unpaired-segment] x4
+    ch14/m68807 [] x0 -> [unpaired-segment] x1
+    ch14/m68808 [] x0 -> [unpaired-segment] x1
+    ch14/m68809 [] x0 -> [unpaired-segment] x2
+    ch15/m68811 [marker-delta] x1 -> [marker-delta,unpaired-segment] x14
+    ch15/m68813 [] x0 -> [unpaired-segment] x1
+    ch15/m68814 [] x0 -> [unpaired-segment] x1
+    ch16/m68816 [] x0 -> [unpaired-segment] x1
+    ch16/m68817 [] x0 -> [unpaired-segment] x2
+    ch16/m68818 [] x0 -> [unpaired-segment] x3
+    ch16/m68819 [] x0 -> [unpaired-segment] x8
+    ch17/m68821 [] x0 -> [unpaired-segment] x2
+    ch17/m68822 [] x0 -> [unpaired-segment] x1
+    ch17/m68823 [] x0 -> [unpaired-segment] x2
+    ch17/m68824 [] x0 -> [unpaired-segment] x3
+    ch17/m68827 [] x0 -> [unpaired-segment] x2
+    ch19/m68842 [] x0 -> [unpaired-segment] x3
+    ch19/m68843 [marker-delta] x6 -> [marker-delta,unpaired-segment] x8
+    ch19/m68844 [] x0 -> [unpaired-segment] x3
+    ch20/m68846 [marker-delta] x6 -> [marker-delta,unpaired-segment] x11
+    ch20/m68847 [marker-delta] x1 -> [marker-delta,unpaired-segment] x3
+    ch20/m68848 [] x0 -> [unpaired-segment] x1
+    ch21/m68851 [] x0 -> [unpaired-segment] x3
+    ch21/m68852 [] x0 -> [unpaired-segment] x1
+    ch21/m68854 [] x0 -> [unpaired-segment] x3
+    ch21/m68858 [] x0 -> [unpaired-segment] x1
+  A7: 1 unit(s)
+    ch20/m68848 [number-mismatch] x3 -> [number-mismatch] x2
+
+== examined counts that differ, by check ==
+  A3: 83 unit(s)
+  A5: 83 unit(s)
+  A7: 83 unit(s)
+  E1: 83 unit(s)
+  E2: 83 unit(s)
+  E3: 83 unit(s)
+  E4: 83 unit(s)
+  E5: 83 unit(s)
+== messages that differ, by check ==
+  A2b: 83 unit(s)
+  A3: 83 unit(s)
+  A5: 83 unit(s)
+  A7: 83 unit(s)
+  E2: 59 unit(s)
+  E4: 83 unit(s)

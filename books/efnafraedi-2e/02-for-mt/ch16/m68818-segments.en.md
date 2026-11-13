@@ -100,9 +100,6 @@ Entropy is a state function, so Δ[[i:S]][[sub:freezing]] = −Δ[[i:S]][[sub:me
 <!-- SEG:m68818:note-title:fs-idp106254880-title -->
 Answer:
 
-<!-- SEG:m68818:para:fs-idp105321744 -->
-Entropy is a state function, so Δ[[i:S]][[sub:freezing]] = −Δ[[i:S]][[sub:melting]] = −22.1 J/K and [[i:q]][[sub:surr]] = +6.00 kJ. At −10.00 °C spontaneous, +0.7 J/K; at +10.00 °C nonspontaneous, −0.9 J/K.
-
 <!-- SEG:m68818:title:fs-idp45100816-title -->
 The Third Law of Thermodynamics
 
@@ -265,9 +262,6 @@ Calculate the standard entropy change for the following process:
 <!-- SEG:m68818:note-title:fs-idp34672944-title -->
 Answer:
 
-<!-- SEG:m68818:para:fs-idm48282704 -->
-−120.6 J K[[sup:–1]] mol[[sup:–1]]
-
 <!-- SEG:m68818:example-title:fs-idp34274768-title -->
 Determination of Δ[[i:S]]°
 
@@ -291,9 +285,6 @@ Calculate the standard entropy change for the following reaction:
 
 <!-- SEG:m68818:note-title:fs-idp174350576-title -->
 Answer:
-
-<!-- SEG:m68818:para:fs-idp170733152 -->
-24.7 J/K
 
 <!-- SEG:m68818:title:fs-idp139289936-title -->
 Key Concepts and Summary

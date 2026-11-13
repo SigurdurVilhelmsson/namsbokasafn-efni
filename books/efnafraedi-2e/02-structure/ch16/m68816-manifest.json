@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68816",
-  "extractedAt": "2026-09-28T20:03:08.767Z",
+  "extractedAt": "2026-11-12T15:01:08.269Z",
   "sourceHash": "098684e9fae60894",
-  "segmentCount": 60,
+  "segmentCount": 59,
   "segmentIds": [
     "m68816:title:auto-1",
     "m68816:abstract:auto-2",
@@ -41,7 +41,6 @@
     "m68816:para:fs-idp118266672",
     "m68816:para:fs-idm37784928",
     "m68816:note-title:fs-idp37406832-title",
-    "m68816:para:fs-idm37784928",
     "m68816:caption:CNX_Chem_16_02_Process-caption",
     "m68816:alt:fs-idp205626528-alt",
     "m68816:title:fs-idp205751344-title",

@@ -127,9 +127,6 @@ Air-saturated water has a hydronium ion concentration caused by the dissolved CO
 <!-- SEG:m68804:note-title:fs-idm61631152-title -->
 Answer:
 
-<!-- SEG:m68804:para:fs-idm99369680 -->
-5.70
-
 <!-- SEG:m68804:example-title:fs-idp57695872-title -->
 Calculation of Hydronium Ion Concentration from pH
 
@@ -153,9 +150,6 @@ Calculate the hydronium ion concentration of a solution with a pH of −1.07.
 
 <!-- SEG:m68804:note-title:fs-idp89672320-title -->
 Answer:
-
-<!-- SEG:m68804:para:fs-idm9452560 -->
-12 [[i:M]]
 
 <!-- SEG:m68804:note-title:fs-idp48828576-title -->
 Environmental Science
@@ -207,9 +201,6 @@ pOH = 11.6, pH = 2.4
 
 <!-- SEG:m68804:note-title:fs-idm58824960-title -->
 Answer:
-
-<!-- SEG:m68804:para:fs-idm165995920 -->
-pOH = 11.6, pH = 2.4
 
 <!-- SEG:m68804:para:fs-idm165634608 -->
 The acidity of a solution is typically assessed experimentally by measurement of its pH. The pOH of a solution is not usually measured, as it is easily calculated from an experimentally determined pH value. The pH of a solution can be directly measured using a pH meter ([[xref:CNX_Chem_14_02_pHMeter]]).

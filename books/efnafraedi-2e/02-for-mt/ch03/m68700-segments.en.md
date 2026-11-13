@@ -67,9 +67,6 @@ A table is shown that is made up of six columns and five rows. The header row re
 <!-- SEG:m68700:note-title:fs-idp13703888-title -->
 Answer:
 
-<!-- SEG:m68700:para:fs-idm8152064 -->
-151.16 amu
-
 <!-- SEG:m68700:title:fs-idm60917056-title -->
 Formula Mass for Ionic Compounds
 
@@ -114,9 +111,6 @@ A table is shown that is made up of six columns and five rows. The header row re
 
 <!-- SEG:m68700:note-title:fs-idm5833232-title -->
 Answer:
-
-<!-- SEG:m68700:para:fs-idm33165520 -->
-310.18 amu
 
 <!-- SEG:m68700:para:fs-idp76705136 -->
 An earlier chapter of this text described the development of the atomic mass unit, the concept of average atomic masses, and the use of chemical formulas to represent the elemental makeup of substances. These ideas can be extended to calculate the [[term:formula mass|term-00001]] of a substance by summing the average atomic masses of all the atoms represented in the substance’s formula.
@@ -274,9 +268,6 @@ A diagram of two boxes connected by a right-facing arrow is shown. The box on th
 <!-- SEG:m68700:note-title:fs-idp73845104-title -->
 Answer:
 
-<!-- SEG:m68700:para:fs-idm9505408 -->
-0.360 mol
-
 <!-- SEG:m68700:example-title:fs-idp15853040-title -->
 Deriving Grams from Moles for an Element
 
@@ -310,9 +301,6 @@ A diagram of two boxes connected by a right-facing arrow is shown. The box on th
 <!-- SEG:m68700:note-title:fs-idm64655584-title -->
 Answer:
 
-<!-- SEG:m68700:para:fs-idp11414864 -->
-504.5 g
-
 <!-- SEG:m68700:example-title:fs-idm8741648-title -->
 Deriving Number of Atoms from Mass for an Element
 
@@ -345,9 +333,6 @@ A diagram of three boxes connected by a right-facing arrow in between each is sh
 
 <!-- SEG:m68700:note-title:fs-idm4952320-title -->
 Answer:
-
-<!-- SEG:m68700:para:fs-idm3056704 -->
-4.586 [[MATH:13]] 10[[sup:22]] Au atoms
 
 <!-- SEG:m68700:caption:CNX_Chem_03_02_copper-caption -->
 Copper wire is composed of many, many atoms of Cu. (credit: Emilian Robert Vicol)
@@ -394,9 +379,6 @@ A table is shown that is made up of six columns and six rows. The header row rea
 <!-- SEG:m68700:note-title:fs-idm27877216-title -->
 Answer:
 
-<!-- SEG:m68700:para:fs-idm70604176 -->
-0.073 mol
-
 <!-- SEG:m68700:example-title:fs-idp10913296-title -->
 Deriving Grams from Moles for a Compound
 
@@ -429,9 +411,6 @@ A diagram of two boxes connected by a right-facing arrow is shown. The box on th
 
 <!-- SEG:m68700:note-title:fs-idp75070976-title -->
 Answer:
-
-<!-- SEG:m68700:para:fs-idm15513488 -->
-14.2 g
 
 <!-- SEG:m68700:example-title:fs-idp13749376-title -->
 Deriving the Number of Atoms and Molecules from the Mass of a Compound
@@ -471,9 +450,6 @@ A diagram of three boxes connected by a right-facing arrow in between each is sh
 
 <!-- SEG:m68700:note-title:fs-idp51031648-title -->
 Answer:
-
-<!-- SEG:m68700:para:fs-idp14642528 -->
-9.545 [[MATH:17]] 10[[sup:22]] molecules C[[sub:4]] H[[sub:10]]; 9.545 [[MATH:18]] 10[[sup:23]] atoms H
 
 <!-- SEG:m68700:note-title:fs-idp25788096-title -->
 Counting Neurotransmitter Molecules in the Brain

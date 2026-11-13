@@ -76,9 +76,6 @@ The electron in [[xref:CNX_Chem_06_02_BohrArrows]] is promoted even further to a
 <!-- SEG:m68732:note-title:fs-idp230904800-title -->
 Answer:
 
-<!-- SEG:m68732:para:fs-idp107506336 -->
-−6.053 [[MATH:10]] 10[[sup:–20]] J
-
 <!-- SEG:m68732:caption:CNX_Chem_06_02_BohrArrows-caption -->
 The horizontal lines show the relative energy of orbits in the Bohr model of the hydrogen atom, and the vertical arrows depict the energy of photons absorbed (left) or emitted (right) as electrons move between these orbits.
 
@@ -114,9 +111,6 @@ What is the energy in joules and the wavelength in meters of the photon produced
 
 <!-- SEG:m68732:note-title:fs-idp162376768-title -->
 Answer:
-
-<!-- SEG:m68732:para:fs-idp165556464 -->
-6.198 [[MATH:14]] 10[[sup:–19]] J; 3.205 [[MATH:15]] 10[[sup:−7]] m
 
 <!-- SEG:m68732:para:fs-idp45577312 -->
 Bohr’s model of the hydrogen atom provides insight into the behavior of matter at the microscopic level, but it does not account for electron–electron interactions in atoms with more than one electron. It does introduce several important features of all models used to describe the distribution of electrons in an atom. These features include the following:

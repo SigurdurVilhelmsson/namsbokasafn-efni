@@ -118,9 +118,6 @@ What is the solubility of aluminum hydroxide in a buffer comprised of 0.100 [[i:
 <!-- SEG:m68814:note-title:fs-idp14780320-title -->
 Answer:
 
-<!-- SEG:m68814:para:fs-idp15140704 -->
-0.1 [[i:M]]
-
 <!-- SEG:m68814:example-title:fs-idp14732576-title -->
 Multiple Equilibria
 

@@ -118,9 +118,6 @@ The size of the crystal field splitting only influences the arrangement of elect
 <!-- SEG:m68844:note-title:fs-idp219929984-title -->
 Answer:
 
-<!-- SEG:m68844:para:fs-idm59643872 -->
-[[i:d]][[sup:4]], [[i:d]][[sup:5]], [[i:d]][[sup:6]], and [[i:d]][[sup:7]]
-
 <!-- SEG:m68844:example-title:fs-idm108712192-title -->
 CFT for Other Geometries
 
@@ -147,9 +144,6 @@ A diagram is shown with a vertical arrow pointing upward along the height of the
 
 <!-- SEG:m68844:note-title:fs-idm89771344-title -->
 Answer:
-
-<!-- SEG:m68844:para:fs-idp93610320 -->
-4; because Δ[[sub:tet]] is small, all tetrahedral complexes are high spin and the electrons go into the [[i:t]][[sub:2]] orbitals before pairing
 
 <!-- SEG:m68844:caption:CNX_Chem_19_03_TetCube-caption -->
 This diagram shows the orientation of the tetrahedral ligands with respect to the axis system for the orbitals.
@@ -213,9 +207,6 @@ red, 620–800 nm
 
 <!-- SEG:m68844:note-title:fs-idm66496464-title -->
 Answer:
-
-<!-- SEG:m68844:para:fs-idm159281872 -->
-red, 620–800 nm
 
 <!-- SEG:m68844:para:fs-idm164326160 -->
 Small changes in the relative energies of the orbitals that electrons are transitioning between can lead to drastic shifts in the color of light absorbed. Therefore, the colors of coordination compounds depend on many factors. As shown in [[xref:CNX_Chem_19_03_ColorAq]], different aqueous metal ions can have different colors. In addition, different oxidation states of one metal can produce different colors, as shown for the vanadium complexes in the link below.

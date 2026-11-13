@@ -127,9 +127,6 @@ Ne or He
 <!-- SEG:m68735:note-title:fs-idm123362928-title -->
 Answer:
 
-<!-- SEG:m68735:para:fs-idm176919040 -->
-Ne or He
-
 <!-- SEG:m68735:title:fs-idm56440528-title -->
 Variation in Ionic Radii
 
@@ -384,9 +381,6 @@ Ba
 
 <!-- SEG:m68735:note-title:fs-idm148104624-title -->
 Answer:
-
-<!-- SEG:m68735:para:fs-idm69877488 -->
-Ba
 
 <!-- SEG:m68735:title:fs-idm632640-title -->
 Variation in Electron Affinities

@@ -458,7 +458,9 @@ export const SELF_TEST_FIXTURES = Object.freeze({
     }),
   },
   /**
-   * TRIPS: `id-charset` ALONE — verified by printing findings.map(f => f.leg). BLOCKING, version 3.
+   * TRIPS: `id-charset` ALONE — verified by printing findings.map(f => f.leg). BLOCKING, version 4.
+   * Neither arm carries `unservedCopies`, so G1.12's listed-copy rule is not engaged here: its
+   * must-trip fixtures are in `tools/__tests__/g112-unserved-copies.test.js`.
    * UNCOVERED: raw-vs-parsed, inject-dialect, cross-side.
    * THE ISOLATION IS THE POINT: all three COUNT legs cancel on this damage (rawTokens 1 ===
    * parsed 1, enParsed 1 === parsed 1, no `{{SEG:`), so only the charset leg can see it. 🔴 KEEP

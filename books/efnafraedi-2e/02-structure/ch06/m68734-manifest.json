@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68734",
-  "extractedAt": "2026-09-28T20:03:05.511Z",
+  "extractedAt": "2026-11-12T15:01:00.130Z",
   "sourceHash": "7254f761bd4cd3ee",
-  "segmentCount": 187,
+  "segmentCount": 185,
   "segmentIds": [
     "m68734:title:auto-1",
     "m68734:abstract:auto-2",
@@ -66,7 +66,6 @@
     "m68734:para:fs-idp62872432",
     "m68734:alt:CNX_Chem_06_04_PhosphOrb_img-alt",
     "m68734:note-title:fs-idp131140752-title",
-    "m68734:para:fs-idp62872432",
     "m68734:para:fs-idp95342976",
     "m68734:para:fs-idp38113648",
     "m68734:title:fs-idp262041824-title",
@@ -101,7 +100,6 @@
     "m68734:para:fs-idp34533056",
     "m68734:para:fs-idp24075168",
     "m68734:note-title:fs-idp215805632-title",
-    "m68734:para:fs-idp24075168",
     "m68734:title:fs-idp19121552-title",
     "m68734:para:fs-idp164262336",
     "m68734:para:fs-idp170978096",

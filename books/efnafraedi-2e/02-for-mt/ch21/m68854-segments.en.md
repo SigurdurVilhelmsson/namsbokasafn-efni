@@ -184,9 +184,6 @@ Radon-222, [[MATH:13]] has a half-life of 3.823 days. How long will it take a sa
 <!-- SEG:m68854:note-title:fs-idp123030208-title -->
 Answer:
 
-<!-- SEG:m68854:para:fs-idp89371328 -->
-11.1 days
-
 <!-- SEG:m68854:para:fs-idp76857680 -->
 Because each nuclide has a specific number of nucleons, a particular balance of repulsion and attraction, and its own degree of stability, the half-lives of radioactive nuclides vary widely. For example: the half-life of [[MATH:14]] is 1.9 [[MATH:15]] 10[[sup:19]] years; [[MATH:16]] is 24,000 years; [[MATH:17]] is 3.82 days; and element-111 (Rg for roentgenium) is 1.5 [[MATH:18]] 10[[sup:–3]] seconds. The half-lives of a number of radioactive isotopes important to medicine are shown in [[xref:fs-idp14399952]], and others are listed in [[docref:Appendix M|m68871]].
 
@@ -334,9 +331,6 @@ about 3350 years ago, or approximately 1340 BC
 <!-- SEG:m68854:note-title:fs-idp861216-title -->
 Answer:
 
-<!-- SEG:m68854:para:fs-idp7472544 -->
-about 3350 years ago, or approximately 1340 BC
-
 <!-- SEG:m68854:caption:CNX_Chem_21_03_DSScrolls-caption -->
 Carbon-14 dating has shown that these pages from the Dead Sea Scrolls were written or copied on paper made from plants that died between 100 BC and AD 50.
 
@@ -399,9 +393,6 @@ A sample of rock contains 6.14 [[MATH:46]] 10[[sup:–4]] g of Rb-87 and 3.51 [[
 
 <!-- SEG:m68854:note-title:fs-idp66566112-title -->
 Answer:
-
-<!-- SEG:m68854:para:fs-idm14245664 -->
-3.7 [[MATH:50]] 10[[sup:9]] y
 
 <!-- SEG:m68854:para:fs-idm40273488 -->
 Several radioisotopes have half-lives and other properties that make them useful for purposes of “dating” the origin of objects such as archaeological artifacts, formerly living organisms, or geological formations. This process is [[term:radiometric dating|term-00011]] and has been responsible for many breakthrough scientific discoveries about the geological history of the earth, the evolution of life, and the history of human civilization. We will explore some of the most common types of radioactive dating and how the particular isotopes work for each type.
