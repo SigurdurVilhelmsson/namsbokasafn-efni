@@ -2105,6 +2105,12 @@
 
           panel.innerHTML = renderActivityRows(activities);
         } catch (err) {
+          // A refusal is not an empty log: the route keeps a book's activity for those who hold the book.
+          if (err.status === 403) {
+            panel.innerHTML =
+              '<p style="color:var(--text-muted)">\u00de\u00fa hefur ekki a\u00f0gang a\u00f0 virkni \u00feessarar b\u00f3kar.</p>';
+            return;
+          }
           console.error('Error loading activity:', err);
           panel.innerHTML = '<p style="color:var(--text-muted)">Engin virkni</p>';
         }
@@ -2531,6 +2537,12 @@
 
           panel.innerHTML = renderActivityRows(activities);
         } catch (err) {
+          // A refusal is not an empty log: the route keeps a book's activity for those who hold the book.
+          if (err.status === 403) {
+            panel.innerHTML =
+              '<p style="color:var(--text-muted)">\u00de\u00fa hefur ekki a\u00f0gang a\u00f0 virkni \u00feessarar b\u00f3kar.</p>';
+            return;
+          }
           console.error('Error loading activity:', err);
           panel.innerHTML = '<p style="color:var(--text-muted)">Engin virkni</p>';
         }

@@ -201,6 +201,12 @@ beforeAll(() => {
   db.prepare(
     `INSERT INTO users (id, display_name, role, provider_id) VALUES (3, 'Head B', 'head-editor', 'u-he-b')`
   ).run();
+  // HE_B's book, where an account holds it. A request is decided from the account row, not from
+  // the token's copy of it (services/auth.js currentAccess), so a persona WITH a users row needs
+  // its head-editor book here as well as in the token. HE_A has no row and keeps its claims.
+  db.prepare(
+    `INSERT INTO user_book_access (user_id, book_slug, role_for_book) VALUES (3, 'liffraedi-2e', 'head-editor')`
+  ).run();
   // Fresh sections (no interference with rows 42-51):
   ins.run(60, 1, 1, '1.20', 'not_started'); // liffraedi: fail-open matrix + bulk
   ins.run(61, 2, 2, '1.21', 'not_started'); // efnafraedi: enforcement-ON + resolver discrimination
@@ -633,6 +639,72 @@ describe('activity book-log read is book-scoped (B1-F5 sibling, whole-branch rev
   it('GET: plain editor → 403', async () => {
     const res = await get(READ, EDITOR);
     expect(res.status).toBe(403);
+  });
+});
+
+describe('activity search and the cross-book reads follow the same scope', () => {
+  // GET /api/activity?book=X returned the rows /book/:book refuses, and with no `book` it
+  // returned every book's. /recent and /user/:id span books by construction.
+  const SEARCH = '/api/activity';
+  it('search: head-editor naming another book → 403', async () => {
+    expect((await get(`${SEARCH}?book=liffraedi-2e&chapter=1`, HE_A)).status).toBe(403);
+  });
+  it('search: head-editor naming no book → 403', async () => {
+    expect((await get(SEARCH, HE_A)).status).toBe(403);
+  });
+  it('search: head-editor naming two books, one of them held → 403', async () => {
+    expect((await get(`${SEARCH}?book=efnafraedi-2e&book=liffraedi-2e`, HE_A)).status).toBe(403);
+  });
+  it('search: head-editor naming a book they hold → 200 (what the books page sends)', async () => {
+    const res = await get(`${SEARCH}?book=efnafraedi-2e&chapter=1&limit=10`, HE_A);
+    expect(res.status).toBe(200);
+    expect(Array.isArray((await res.json()).activities)).toBe(true);
+  });
+  it("search: a held book's rows come back, and no other book's (the status alone would not show a dropped filter)", async () => {
+    const activityLog = require('../services/activityLog');
+    for (const book of ['efnafraedi-2e', 'liffraedi-2e']) {
+      activityLog.log({
+        type: 'segment_edit_saved',
+        userId: 'u-prufa',
+        username: 'prufa',
+        book,
+        chapter: '1',
+        section: 'm00001',
+        description: `prufa ${book}`,
+      });
+    }
+    const booksIn = async (url, who) => {
+      const res = await get(url, who);
+      expect(res.status).toBe(200);
+      return [...new Set((await res.json()).activities.map((row) => row.book))].sort();
+    };
+    expect(await booksIn(`${SEARCH}?book=efnafraedi-2e&limit=50`, HE_A)).toEqual(['efnafraedi-2e']);
+    expect(await booksIn(`${SEARCH}?book=liffraedi-2e&limit=50`, HE_B)).toEqual(['liffraedi-2e']);
+    expect((await get(`${SEARCH}?book=efnafraedi-2e`, HE_B)).status).toBe(403);
+    // Control: both books' rows are there to be found, so the two reads above were narrowed.
+    expect(await booksIn(`${SEARCH}?limit=200`, ADMIN)).toEqual(
+      expect.arrayContaining(['efnafraedi-2e', 'liffraedi-2e'])
+    );
+  });
+  it('search: admin, with and without a book → 200', async () => {
+    expect((await get(`${SEARCH}?book=liffraedi-2e`, ADMIN)).status).toBe(200);
+    expect((await get(SEARCH, ADMIN)).status).toBe(200);
+  });
+  it('search: plain editor → 403', async () => {
+    expect((await get(`${SEARCH}?book=efnafraedi-2e`, EDITOR)).status).toBe(403);
+  });
+
+  it.each(['/api/activity/recent', '/api/activity/user/1'])(
+    '%s: head-editor → 403, admin → 200',
+    async (url) => {
+      expect((await get(url, HE_A)).status).toBe(403);
+      expect((await get(url, HE_B)).status).toBe(403);
+      expect((await get(url, ADMIN)).status).toBe(200);
+    }
+  );
+
+  it('control: a head editor still reads their own activity', async () => {
+    expect((await get('/api/activity/my', HE_A)).status).toBe(200);
   });
 });
 

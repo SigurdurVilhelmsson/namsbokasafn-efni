@@ -6,11 +6,20 @@
  * destination), and under-privileged-but-authenticated users are bounced to '/'.
  */
 
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, afterAll } from 'vitest';
 import { createRequire } from 'module';
+import { mkdtempSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
 
 // auth.js (pulled in transitively) requires JWT_SECRET at import time.
 process.env.JWT_SECRET = process.env.JWT_SECRET || 'test-secret';
+// The page gate now reads the account row (services/auth.js currentAccess), which opens the
+// sessions database. Give it a file of its own, before any server require: without this the test
+// created pipeline-output/sessions.db in the checkout, or read a developer's real one.
+const work = mkdtempSync(path.join(tmpdir(), 'views-page-auth-'));
+process.env.SESSIONS_DB_PATH = path.join(work, 'sessions.db');
+afterAll(() => rmSync(work, { recursive: true, force: true }));
 
 const require = createRequire(import.meta.url);
 const { requirePageAuth } = require('../routes/views');

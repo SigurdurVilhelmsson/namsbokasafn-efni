@@ -278,6 +278,45 @@ function determineUserRole(msUser) {
 }
 
 /**
+ * What the account behind a verified token may do NOW.
+ *
+ * A token is minted at sign-in and stays valid for CONFIG.jwtExpiry. Its role and book list are a
+ * copy of the account row as it was then. An admin who deactivates an account, lowers a role or
+ * takes a book away expects that to hold from the next request, not from the next sign-in, so
+ * every request is decided from the row:
+ *
+ *   - an address on ADMIN_USERS         → admin with no books, whatever its row or its token
+ *                                         says: determineUserRole puts the list above the row
+ *                                         and answers exactly that at sign-in
+ *   - the row is inactive               → null: the session is refused
+ *   - the row exists                    → the row's role and its head-editor books
+ *   - no row                            → the token's own claims. That is a visitor (CLAUDE.md
+ *                                         § Auth: a signed-in user may have no `users` row), and
+ *                                         it is also a token whose row was deleted outright,
+ *                                         which this does not catch: no screen deletes a row
+ *
+ * The row is read as sign-in reads it (determineUserRole): any falsy `is_active` is a
+ * deactivated account, and the row's role is used as it is.
+ *
+ * One case gives LESS than the sign-in that would follow it: a visitor whose address an admin
+ * adds afterwards. Sign-in claims that row by e-mail and binds it; a request looks a row up by
+ * the account id only and binds nothing, so the new role starts when the person signs in again.
+ *
+ * @param {{sub: string|number, username?: string, role: string, books?: string[]}} decoded
+ * @returns {{role: string, books: string[]}|null} null when the account has been deactivated
+ */
+function currentAccess(decoded) {
+  const address = String(decoded.username || '').toLowerCase();
+  if (address && CONFIG.adminUsers.includes(address)) return { role: ROLES.ADMIN, books: [] };
+
+  const row = userService.findByProviderId(decoded.sub);
+  if (!row) return { role: decoded.role, books: decoded.books || [] };
+  if (!row.is_active) return null;
+
+  return { role: row.role, books: userService.getHeadEditorBooks(row) };
+}
+
+/**
  * Create JWT token for authenticated user
  */
 function createToken(user) {
@@ -378,6 +417,7 @@ module.exports = {
   authenticate,
   verifyToken,
   createToken,
+  currentAccess,
 
   // Role helpers
   ROLES,

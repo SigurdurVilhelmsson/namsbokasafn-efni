@@ -4,9 +4,13 @@
  * API endpoints for viewing editorial activity history.
  *
  * Endpoints:
- *   GET /api/activity          Get recent activity
- *   GET /api/activity/user/:id Get activity for a user
- *   GET /api/activity/book/:id Get activity for a book
+ *   GET /api/activity          Search the log (a head editor: one book they hold; an admin: any)
+ *   GET /api/activity/recent   Recent activity across all books (admin)
+ *   GET /api/activity/user/:id Activity for a user across all books (admin)
+ *   GET /api/activity/book/:id Activity for a book (its head editor, or an admin)
+ *
+ * Every row names who did what, so a read is scoped to the books the reader runs. The log of
+ * one book is its head editor's; a read that spans books is an admin's.
  */
 
 const express = require('express');
@@ -18,11 +22,27 @@ const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, requireHeadEditor, ROLES } = require('../middleware/requireRole');
 
 /**
- * GET /api/activity
- * Get recent activity (admin/head-editor only)
+ * GET /api/activity?book=&chapter=&type=&user=
+ * Search the log. A head editor must name a book they hold: /book/:book asks the same, and
+ * without it here `?book=` read any book's log and no `book` at all read every book's.
  */
 router.get('/', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
   const { book, type, user, chapter, limit, offset } = req.query;
+
+  if (req.user.role !== ROLES.ADMIN) {
+    const held = typeof book === 'string' && (req.user.books || []).includes(book);
+    if (!held) {
+      return res.status(403).json({
+        error: 'Insufficient permissions',
+        message:
+          typeof book === 'string' && book
+            ? `Head editor access for ${book} is required`
+            : 'Name a book you are head editor of (?book=)',
+        yourRole: req.user.role,
+        yourBooks: req.user.books,
+      });
+    }
+  }
 
   try {
     const result = activityLog.search({
@@ -46,9 +66,9 @@ router.get('/', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
 
 /**
  * GET /api/activity/recent
- * Get recent activity (shortcut)
+ * Recent activity across all books (admin: it is not one book's log)
  */
-router.get('/recent', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
+router.get('/recent', requireAuth, requireRole(ROLES.ADMIN), (req, res) => {
   const { limit } = req.query;
 
   try {
@@ -65,9 +85,9 @@ router.get('/recent', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) =>
 
 /**
  * GET /api/activity/user/:userId
- * Get activity for a specific user
+ * One person's activity across all books (admin; a person's own is GET /my)
  */
-router.get('/user/:userId', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
+router.get('/user/:userId', requireAuth, requireRole(ROLES.ADMIN), (req, res) => {
   const { userId } = req.params;
   const { limit } = req.query;
 
@@ -107,26 +127,31 @@ router.get('/book/:book', requireAuth, requireHeadEditor('book'), (req, res) => 
  * GET /api/activity/section/:book/:chapter/:section
  * Get activity for a specific section
  */
-router.get('/section/:book/:chapter/:section', requireAuth, (req, res) => {
-  const { book, chapter, section } = req.params;
-  const { limit } = req.query;
+router.get(
+  '/section/:book/:chapter/:section',
+  requireAuth,
+  requireRole(ROLES.EDITOR), // each row names who did what
+  (req, res) => {
+    const { book, chapter, section } = req.params;
+    const { limit } = req.query;
 
-  try {
-    const activities = activityLog.getBySection(
-      book,
-      chapter,
-      section,
-      Math.min(parseInt(limit, 10) || 50, 200)
-    );
-    res.json({ book, chapter, section, activities });
-  } catch (err) {
-    log.error({ err }, 'Error getting section activity');
-    res.status(500).json({
-      error: 'Failed to get activity',
-      message: err.message,
-    });
+    try {
+      const activities = activityLog.getBySection(
+        book,
+        chapter,
+        section,
+        Math.min(parseInt(limit, 10) || 50, 200)
+      );
+      res.json({ book, chapter, section, activities });
+    } catch (err) {
+      log.error({ err }, 'Error getting section activity');
+      res.status(500).json({
+        error: 'Failed to get activity',
+        message: err.message,
+      });
+    }
   }
-});
+);
 
 /**
  * GET /api/activity/my

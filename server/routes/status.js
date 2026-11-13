@@ -119,7 +119,10 @@ const STATUS_SYMBOLS = {
  * Returns: needsAttention, teamActivity (24h), chapterMatrix, metrics,
  *          workload, readyForAssignment, globalPendingCount
  */
-router.get('/dashboard', requireAuth, async (req, res) => {
+// Head editors and admins only: the payload names each editor with their workload and notes, and
+// Heim shows it to those two roles alone. A sign-in with no account row is a viewer (CLAUDE.md § Auth),
+// so a route that asks only for a sign-in is open to everyone in the school tenant.
+router.get('/dashboard', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (req, res) => {
   try {
     const dashboard = {
       needsAttention: {
@@ -351,7 +354,8 @@ router.get('/dashboard', requireAuth, async (req, res) => {
  * GET /api/status/activity/timeline
  * Get activity timeline with optional filters
  */
-router.get('/activity/timeline', requireAuth, (req, res) => {
+// Editors and above: each row says who did what and when.
+router.get('/activity/timeline', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   const { book, type, user, limit = 50, offset = 0 } = req.query;
 
   try {
@@ -416,7 +420,8 @@ router.get('/activity/types', requireAuth, (req, res) => {
  *   - teamMetrics: Per-user productivity
  *   - stageMetrics: Completion rates per stage
  */
-router.get('/analytics', requireAuth, async (req, res) => {
+// Head editors and admins only: teamMetrics is per-person productivity.
+router.get('/analytics', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (req, res) => {
   try {
     const analytics = {
       generatedAt: new Date().toISOString(),
