@@ -17,6 +17,33 @@ const analyticsService = require('../services/analyticsService');
 const { requireAuth, optionalAuth } = require('../middleware/requireAuth');
 const { requireRole, ROLES } = require('../middleware/requireRole');
 
+const PLACE_FIELD_MAX_LENGTH = 200;
+
+/**
+ * A book, chapter or section named by an analytics event: absent, a number, or short plain text.
+ *
+ * No book slug, chapter number or section id contains a markup delimiter or a control character,
+ * so a value that does is refused, not repaired. Free text belongs in `metadata` (a search query,
+ * say), which is never trusted as markup either: see anUpdateActivity in views/admin.html.
+ *
+ * @param {unknown} value
+ * @returns {{ok: true, value: string|number|null}|{ok: false}}
+ */
+function placeField(value) {
+  if (value === undefined || value === null || value === '' || value === 0 || value === false) {
+    return { ok: true, value: null }; // what `value || null` stored before this check existed
+  }
+  if (typeof value === 'number') {
+    return Number.isFinite(value) ? { ok: true, value } : { ok: false };
+  }
+  if (typeof value !== 'string' || value.length > PLACE_FIELD_MAX_LENGTH) return { ok: false };
+  for (const ch of value) {
+    const code = ch.codePointAt(0);
+    if (ch === '<' || ch === '>' || code < 0x20 || code === 0x7f) return { ok: false };
+  }
+  return { ok: true, value };
+}
+
 /**
  * GET /api/analytics/stats
  * Get analytics statistics (admin only)
@@ -64,7 +91,7 @@ router.get('/recent', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) =>
  * Log a client-side event (public - for tracking frontend events)
  */
 router.post('/event', optionalAuth, (req, res) => {
-  const { eventType, book, chapter, section, metadata = {} } = req.body;
+  const { eventType, book, chapter, section, metadata = {} } = req.body || {};
 
   // Validate event type
   const allowedTypes = ['page_view', 'chapter_view', 'section_view', 'error', 'search', 'download'];
@@ -72,6 +99,27 @@ router.post('/event', optionalAuth, (req, res) => {
     return res.status(400).json({
       error: 'Invalid event type',
       message: `Event type must be one of: ${allowedTypes.join(', ')}`,
+    });
+  }
+
+  // This route needs no sign-in, and what it stores is shown to admins. The place fields are
+  // held to short plain text here, as well as being escaped where the admin page displays them.
+  const where = {
+    book: placeField(book),
+    chapter: placeField(chapter),
+    section: placeField(section),
+  };
+  if (!where.book.ok || !where.chapter.ok || !where.section.ok) {
+    return res.status(400).json({
+      error: 'Invalid event',
+      message: `book, chapter and section must be plain text of at most ${PLACE_FIELD_MAX_LENGTH} characters`,
+    });
+  }
+
+  if (metadata === null || typeof metadata !== 'object' || Array.isArray(metadata)) {
+    return res.status(400).json({
+      error: 'Invalid event',
+      message: 'metadata must be an object',
     });
   }
 
@@ -87,9 +135,9 @@ router.post('/event', optionalAuth, (req, res) => {
   try {
     const event = analyticsService.logEvent({
       eventType,
-      book: book || null,
-      chapter: chapter || null,
-      section: section || null,
+      book: where.book.value,
+      chapter: where.chapter.value,
+      section: where.section.value,
       userAgent: req.get('user-agent'),
       referrer: req.get('referer'),
       sessionId: req.cookies?.sessionId || null,
