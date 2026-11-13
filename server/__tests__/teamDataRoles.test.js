@@ -13,10 +13,10 @@
  * The first two are for head editors and admins (Heim shows the dashboard to no one else); the
  * other two are for editors and above.
  *
- * The requests go through the real routers with real tokens. A permitted role must get past
- * authorization (anything but 401/403: the handlers read book files this harness does not
- * supply); a refused role must get 403. The viewer rows are the point; the rest are the control
- * that the routes still open for the roles that use them.
+ * The requests go through the real routers with real tokens. A permitted role must get 200 (a
+ * handler that answered 500 to the roles that use it would otherwise read as open); a refused
+ * role must get 403. The viewer rows are the point; the rest are the control that the routes
+ * still open for the roles that use them.
  */
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { mkdtempSync, rmSync } from 'node:fs';
@@ -86,21 +86,21 @@ describe('routes that name team members are not open to a bare sign-in', () => {
     expect(await statusFor('editor', url)).toBe(403);
   });
 
-  it.each(EDITOR_AND_ABOVE)('an editor gets past authorization on %s', async (url) => {
-    expect([401, 403]).not.toContain(await statusFor('editor', url));
+  it.each(EDITOR_AND_ABOVE)('an editor is answered on %s', async (url) => {
+    expect(await statusFor('editor', url)).toBe(200);
   });
 
   it.each([...HEAD_EDITOR_AND_ABOVE, ...EDITOR_AND_ABOVE])(
-    'a head editor gets past authorization on %s',
+    'a head editor is answered on %s',
     async (url) => {
-      expect([401, 403]).not.toContain(await statusFor('head-editor', url));
+      expect(await statusFor('head-editor', url)).toBe(200);
     }
   );
 
   it.each([...HEAD_EDITOR_AND_ABOVE, ...EDITOR_AND_ABOVE])(
-    'an admin gets past authorization on %s',
+    'an admin is answered on %s',
     async (url) => {
-      expect([401, 403]).not.toContain(await statusFor('admin', url));
+      expect(await statusFor('admin', url)).toBe(200);
     }
   );
 

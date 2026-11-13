@@ -660,6 +660,32 @@ describe('activity search and the cross-book reads follow the same scope', () =>
     expect(res.status).toBe(200);
     expect(Array.isArray((await res.json()).activities)).toBe(true);
   });
+  it("search: a held book's rows come back, and no other book's (the status alone would not show a dropped filter)", async () => {
+    const activityLog = require('../services/activityLog');
+    for (const book of ['efnafraedi-2e', 'liffraedi-2e']) {
+      activityLog.log({
+        type: 'segment_edit_saved',
+        userId: 'u-prufa',
+        username: 'prufa',
+        book,
+        chapter: '1',
+        section: 'm00001',
+        description: `prufa ${book}`,
+      });
+    }
+    const booksIn = async (url, who) => {
+      const res = await get(url, who);
+      expect(res.status).toBe(200);
+      return [...new Set((await res.json()).activities.map((row) => row.book))].sort();
+    };
+    expect(await booksIn(`${SEARCH}?book=efnafraedi-2e&limit=50`, HE_A)).toEqual(['efnafraedi-2e']);
+    expect(await booksIn(`${SEARCH}?book=liffraedi-2e&limit=50`, HE_B)).toEqual(['liffraedi-2e']);
+    expect((await get(`${SEARCH}?book=efnafraedi-2e`, HE_B)).status).toBe(403);
+    // Control: both books' rows are there to be found, so the two reads above were narrowed.
+    expect(await booksIn(`${SEARCH}?limit=200`, ADMIN)).toEqual(
+      expect.arrayContaining(['efnafraedi-2e', 'liffraedi-2e'])
+    );
+  });
   it('search: admin, with and without a book → 200', async () => {
     expect((await get(`${SEARCH}?book=liffraedi-2e`, ADMIN)).status).toBe(200);
     expect((await get(SEARCH, ADMIN)).status).toBe(200);
