@@ -65,8 +65,21 @@ describe('POST /api/analytics/event: the place fields are short plain text', () 
     expect(stored()[0]).toMatchObject({
       eventType: 'section_view',
       book: 'efnafraedi-2e',
+      chapter: '3',
       section: '3-1-formula-mass',
     });
+  });
+
+  it('stores a chapter sent as a number as its digits, the appendices sentinel included', () => {
+    // The column is text. A number bound as it came was kept as "3.0", which the admin page
+    // showed as "K3.0" and which grouped apart from "3"; -1 came out as "K-1.0", not "Við.".
+    send({ eventType: 'chapter_view', book: 'efnafraedi-2e', chapter: 3 });
+    send({ eventType: 'chapter_view', book: 'efnafraedi-2e', chapter: -1 });
+    expect(
+      stored()
+        .map((e) => e.chapter)
+        .sort()
+    ).toEqual(['-1', '3']);
   });
 
   it('accepts a chapter given as text', () => {

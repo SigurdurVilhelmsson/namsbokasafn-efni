@@ -26,15 +26,18 @@ const PLACE_FIELD_MAX_LENGTH = 200;
  * so a value that does is refused, not repaired. Free text belongs in `metadata` (a search query,
  * say), which is never trusted as markup either: see anUpdateActivity in views/admin.html.
  *
+ * A number is stored as its digits: the columns are text, and a number bound as it came was
+ * kept as "3.0" (and the appendices sentinel -1 as "-1.0").
+ *
  * @param {unknown} value
- * @returns {{ok: true, value: string|number|null}|{ok: false}}
+ * @returns {{ok: true, value: string|null}|{ok: false}}
  */
 function placeField(value) {
   if (value === undefined || value === null || value === '' || value === 0 || value === false) {
     return { ok: true, value: null }; // what `value || null` stored before this check existed
   }
   if (typeof value === 'number') {
-    return Number.isFinite(value) ? { ok: true, value } : { ok: false };
+    return Number.isFinite(value) ? { ok: true, value: String(value) } : { ok: false };
   }
   if (typeof value !== 'string' || value.length > PLACE_FIELD_MAX_LENGTH) return { ok: false };
   for (const ch of value) {

@@ -1345,7 +1345,9 @@
         case 'chapter_view': return 'Kafli opna\u00f0ur: ' + loc;
         case 'section_view': return 'Hluti opna\u00f0ur: ' + loc;
         case 'download': return 'Hla\u00f0i\u00f0 ni\u00f0ur: ' + loc;
-        case 'search': return 'Leita\u00f0: ' + ((ev.metadata && ev.metadata.query) || '');
+        // Only a text query is shown: `metadata` is free-form, and a query that is an object with no
+        // usable toString made this concatenation throw, which blanked the whole tab.
+        case 'search': return 'Leita\u00f0: ' + (ev.metadata && typeof ev.metadata.query === 'string' ? ev.metadata.query : '');
         default: return ev.eventType;
       }
     }

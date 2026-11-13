@@ -69,6 +69,32 @@ const HOSTILE_EVENTS = [
   { eventType: '<script>F</script>' },
 ];
 
+describe('admin statistics tab: one malformed event cannot blank the list', () => {
+  // POST /api/analytics/event needs no sign-in and puts no type on what is inside `metadata`.
+  // A search event whose `query` is an object with no usable toString made the description's
+  // string concatenation throw, and the page then replaced every counter and both panels with
+  // an error for as long as that event was among the newest.
+  const UNPRINTABLE = { toString: 1, valueOf: 1 };
+  const EVENTS = [
+    { eventType: 'search', metadata: { query: UNPRINTABLE } },
+    { eventType: 'search', metadata: { query: ['a', 'b'] } },
+    { eventType: 'search', metadata: { query: 42 } },
+    { eventType: 'search', metadata: { query: 'sýra' } },
+    { eventType: 'page_view', book: 'efnafraedi-2e' },
+  ];
+
+  it('renders every event, showing a search query only when it is text', () => {
+    const html = render(PAGE_FUNCTIONS, `anUpdateActivity(${JSON.stringify(EVENTS)});`)[
+      'an-activity-list'
+    ].innerHTML;
+    expect(html.match(/class="activity-item"/g)).toHaveLength(EVENTS.length);
+    expect(html).toContain('Leitað: sýra');
+    expect(html).toContain('efnafraedi-2e');
+    expect(html).not.toContain('[object');
+    expect(html).not.toContain('a,b');
+  });
+});
+
 describe('admin statistics tab: analytics values are shown as text', () => {
   it('the activity list escapes book, chapter, section, search query, event type and time', () => {
     const html = render(PAGE_FUNCTIONS, `anUpdateActivity(${JSON.stringify(HOSTILE_EVENTS)});`)[
