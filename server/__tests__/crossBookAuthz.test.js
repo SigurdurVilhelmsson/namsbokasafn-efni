@@ -642,6 +642,46 @@ describe('activity book-log read is book-scoped (B1-F5 sibling, whole-branch rev
   });
 });
 
+describe('activity search and the cross-book reads follow the same scope', () => {
+  // GET /api/activity?book=X returned the rows /book/:book refuses, and with no `book` it
+  // returned every book's. /recent and /user/:id span books by construction.
+  const SEARCH = '/api/activity';
+  it('search: head-editor naming another book → 403', async () => {
+    expect((await get(`${SEARCH}?book=liffraedi-2e&chapter=1`, HE_A)).status).toBe(403);
+  });
+  it('search: head-editor naming no book → 403', async () => {
+    expect((await get(SEARCH, HE_A)).status).toBe(403);
+  });
+  it('search: head-editor naming two books, one of them held → 403', async () => {
+    expect((await get(`${SEARCH}?book=efnafraedi-2e&book=liffraedi-2e`, HE_A)).status).toBe(403);
+  });
+  it('search: head-editor naming a book they hold → 200 (what the books page sends)', async () => {
+    const res = await get(`${SEARCH}?book=efnafraedi-2e&chapter=1&limit=10`, HE_A);
+    expect(res.status).toBe(200);
+    expect(Array.isArray((await res.json()).activities)).toBe(true);
+  });
+  it('search: admin, with and without a book → 200', async () => {
+    expect((await get(`${SEARCH}?book=liffraedi-2e`, ADMIN)).status).toBe(200);
+    expect((await get(SEARCH, ADMIN)).status).toBe(200);
+  });
+  it('search: plain editor → 403', async () => {
+    expect((await get(`${SEARCH}?book=efnafraedi-2e`, EDITOR)).status).toBe(403);
+  });
+
+  it.each(['/api/activity/recent', '/api/activity/user/1'])(
+    '%s: head-editor → 403, admin → 200',
+    async (url) => {
+      expect((await get(url, HE_A)).status).toBe(403);
+      expect((await get(url, HE_B)).status).toBe(403);
+      expect((await get(url, ADMIN)).status).toBe(200);
+    }
+  );
+
+  it('control: a head editor still reads their own activity', async () => {
+    expect((await get('/api/activity/my', HE_A)).status).toBe(200);
+  });
+});
+
 // ============================================================================
 // Suggestions family (B1-F1 + folded B1-F2/F3 for this family)
 // ============================================================================
