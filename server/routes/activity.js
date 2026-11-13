@@ -107,26 +107,31 @@ router.get('/book/:book', requireAuth, requireHeadEditor('book'), (req, res) => 
  * GET /api/activity/section/:book/:chapter/:section
  * Get activity for a specific section
  */
-router.get('/section/:book/:chapter/:section', requireAuth, (req, res) => {
-  const { book, chapter, section } = req.params;
-  const { limit } = req.query;
+router.get(
+  '/section/:book/:chapter/:section',
+  requireAuth,
+  requireRole(ROLES.EDITOR), // each row names who did what
+  (req, res) => {
+    const { book, chapter, section } = req.params;
+    const { limit } = req.query;
 
-  try {
-    const activities = activityLog.getBySection(
-      book,
-      chapter,
-      section,
-      Math.min(parseInt(limit, 10) || 50, 200)
-    );
-    res.json({ book, chapter, section, activities });
-  } catch (err) {
-    log.error({ err }, 'Error getting section activity');
-    res.status(500).json({
-      error: 'Failed to get activity',
-      message: err.message,
-    });
+    try {
+      const activities = activityLog.getBySection(
+        book,
+        chapter,
+        section,
+        Math.min(parseInt(limit, 10) || 50, 200)
+      );
+      res.json({ book, chapter, section, activities });
+    } catch (err) {
+      log.error({ err }, 'Error getting section activity');
+      res.status(500).json({
+        error: 'Failed to get activity',
+        message: err.message,
+      });
+    }
   }
-});
+);
 
 /**
  * GET /api/activity/my

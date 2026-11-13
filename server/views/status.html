@@ -686,8 +686,13 @@
         document.getElementById('timeline-more').style.display =
           (data.activities || []).length >= 30 ? '' : 'none';
       } catch (e) {
+        // 403: the timeline names who did what, so the server keeps it for editors and above
+        // (routes/status.js). Say so, instead of the empty-log text.
         document.getElementById('timeline-list').innerHTML =
-          '<li class="empty-state">Engin virkni fundin</li>';
+          e && e.status === 403
+            ? '<li class="empty-state">Tímalínan er aðeins sýnileg yfirlesurum og ritstjórum.</li>'
+            : '<li class="empty-state">Engin virkni fundin</li>';
+        document.getElementById('timeline-more').style.display = 'none';
       }
       document.getElementById('timeline-loading').style.display = 'none';
     }
