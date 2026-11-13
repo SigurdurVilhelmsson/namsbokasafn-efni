@@ -357,6 +357,7 @@
   const DRAFT_NOTICE_TEXT = {
     STALE_BASE: UI.draftNotice.staleBase,
     STALE_DISPLAYED: UI.draftNotice.staleDisplayed,
+    UNSEEN_EDIT: UI.draftNotice.unseenEdit,
     BASE_MISSING: UI.draftNotice.baseMissing,
     DUPLICATE_ID: UI.draftNotice.duplicateId,
     BOOK_NOT_MINTED: UI.draftNotice.bookNotMinted,
@@ -3162,6 +3163,9 @@
         ),
         'success'
       );
+      // The rows it wrote to are in this module: show them, so the next save on one names the edit it now
+      // displays (a save that names none is refused, UNSEEN_EDIT). Rows with unsaved text are left alone.
+      if (pr.created.length > 0) await reloadIfOpen(unit, { force: true });
     } catch (err) {
       // A refusal answers { error: CODE, message } (sendRefusal; PR1 review C3), and fetchJson builds err.message
       // from the code: show the server's message when the body carries one, else what fetchJson read.

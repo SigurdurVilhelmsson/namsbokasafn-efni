@@ -168,6 +168,48 @@ describe('POST /edit — the stale family (spec §5.6 step 4)', () => {
     expect(rows[0].original_content).toBe('IS a breytt á diski');
   });
 
+  it('UNSEEN_EDIT: the same editor saved from another page, which this page never showed', async () => {
+    // Two pages of one editor, both loaded before any edit. checkEditConflict looks only at other
+    // editors' rows, and the page names no displayed edit, so before the 2026-11-13 interface audit
+    // (ED-05) the second page's save replaced the first's text with no message.
+    const first = (await serve(CHEM, 1, M)).body;
+    const second = (await serve(CHEM, 1, M)).body;
+    const saved = await save({
+      segmentId: A,
+      editedContent: 'IS a flipi 1',
+      baseEditId: 0,
+      baseSha256: segOf(first, A).baseSha256,
+    });
+    expect(saved.status).toBe(200);
+
+    const before = snapshot();
+    const stale = await save({
+      segmentId: A,
+      editedContent: 'IS a flipi 2',
+      baseEditId: 0,
+      baseSha256: segOf(second, A).baseSha256,
+      displayedEditId: null,
+      displayedEditSha256: null,
+    });
+    expect(stale.status).toBe(409);
+    expect(stale.body).toEqual({ error: 'UNSEEN_EDIT', message: REFUSAL_MESSAGES.UNSEEN_EDIT });
+    expect(snapshot()).toEqual(before);
+
+    // Control: after a reload the page shows the first save, names it, and saves over it.
+    const fresh = (await serve(CHEM, 1, M)).body;
+    const shown = fresh.edits[A][0];
+    const ok = await save({
+      segmentId: A,
+      editedContent: 'IS a flipi 2',
+      baseEditId: shown.id,
+      baseSha256: segOf(fresh, A).baseSha256,
+      displayedEditId: shown.id,
+      displayedEditSha256: shown.contentSha256,
+    });
+    expect(ok.status).toBe(200);
+    expect(editRows().map((r) => r.edited_content)).toEqual(['IS a flipi 2']);
+  });
+
   it('STALE_DISPLAYED where checkEditConflict passes', async () => {
     // Editor 2 saves on a, through the route.
     const page2 = (await serve(CHEM, 1, M, EDITOR2)).body;

@@ -26,6 +26,7 @@
   const KEEP_TEXT_CODES = [
     'STALE_BASE',
     'STALE_DISPLAYED',
+    'UNSEEN_EDIT',
     'BASE_MISSING',
     'DUPLICATE_ID',
     'BOOK_NOT_MINTED',

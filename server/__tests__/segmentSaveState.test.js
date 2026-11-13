@@ -421,6 +421,7 @@ describe('kept texts (index decision 12)', () => {
   const ALL = [
     'STALE_BASE',
     'STALE_DISPLAYED',
+    'UNSEEN_EDIT',
     'BASE_MISSING',
     'DUPLICATE_ID',
     'BOOK_NOT_MINTED',
@@ -438,6 +439,7 @@ describe('kept texts (index decision 12)', () => {
     expect(ALL.filter((c) => S.keepsText(c))).toEqual([
       'STALE_BASE',
       'STALE_DISPLAYED',
+      'UNSEEN_EDIT',
       'BASE_MISSING',
       'DUPLICATE_ID',
       'BOOK_NOT_MINTED',

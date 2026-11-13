@@ -579,6 +579,11 @@ describe('the route sanitises the body list', () => {
       '/:book/:chapter/:moduleId/edit'
     );
   });
+  /** The displayed pair a page names when it shows `shown` (the route requires the echo itself). */
+  const naming = (shown) => ({
+    displayedEditId: shown.id,
+    displayedEditSha256: sha256Text(shown.edited_content),
+  });
   /** The route's save, by the real handler; the user's id is a GUID, as in production. */
   const post = (body, user = { id: A, username: 'A', role: 'editor', books: [] }) =>
     invoke(edit, {
@@ -615,8 +620,9 @@ describe('the route sanitises the body list', () => {
       expect(res.status).toBe(200);
       expect(rowOf().accepted_suggestions).toBeNull();
       // Control: the whole good list in the same position IS kept (a different editor, so a new row).
+      // B's page shows A's row, and its save names it: one that names none is refused (UNSEEN_EDIT).
       const ok = await post(
-        { acceptedSuggestions: [entry(OP.a1)] },
+        { acceptedSuggestions: [entry(OP.a1)], ...naming(rowOf()) },
         { id: B, username: 'B', role: 'editor', books: [] }
       );
       expect(ok.status).toBe(200);
@@ -629,10 +635,10 @@ describe('the route sanitises the body list', () => {
     const res = await post({});
     expect(res.status).toBe(200);
     expect(rowOf().accepted_suggestions).toBeNull();
-    // Control: log back, a claimed list on the same shape of request is stored.
+    // Control: log back, a claimed list on the same shape of request is stored (B's page shows A's row).
     plantLog();
     const ok = await post(
-      { acceptedSuggestions: [entry(OP.a1)] },
+      { acceptedSuggestions: [entry(OP.a1)], ...naming(rowOf()) },
       { id: B, username: 'B', role: 'editor', books: [] }
     );
     expect(ok.status).toBe(200);
@@ -642,7 +648,7 @@ describe('the route sanitises the body list', () => {
   it('an absent list still recomputes: the route always passes an array', async () => {
     await post({ acceptedSuggestions: [entry(OP.a1)] });
     expect(listOf(rowOf())).toEqual([entry(OP.a1)]);
-    await post({ editedContent: 'alpha beta GAMMA!' }); // no list at all
+    await post({ editedContent: 'alpha beta GAMMA!', ...naming(rowOf()) }); // no list at all
     expect(rowOf().accepted_suggestions).toBeNull();
   });
 });

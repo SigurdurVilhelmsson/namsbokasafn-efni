@@ -44,7 +44,7 @@ const {
 const CHEM = 'efnafraedi-2e';
 const M = 'm97101';
 const id = (x) => `${M}:para:${x}`;
-const LATER = ['f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n']; // one segment per later case
+const LATER = ['f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o']; // one segment per later case
 const EN = [
   [id('a'), 'Recurring sentence.'],
   [id('b'), 'EN b'],
@@ -810,5 +810,33 @@ describe('a non-string note never loses the act (final review M7)', () => {
     expect(ev.map((e) => e.event_type)).toEqual(['edit-save']);
     expect(ev[0].content.note).toEqual({ length: 1, sha256: sha256Text('5') });
     expect(losses().slice(lossCount)).toEqual([]);
+  });
+});
+
+describe('a save over an edit the page never showed (interface audit 2026-11-13, ED-05)', () => {
+  it('UNSEEN_EDIT is logged with its reason and both hashes, never the text', async () => {
+    const stale = await view(ED1, 'o'); // a page that shows no edit on o
+    expect(stale.row).toBeNull();
+    const elsewhere = await saveShowing(ED1, 'o', 'o flipi 1'); // the same person, from another tab
+    expect(elsewhere.status).toBe(200);
+    const mark = eventMark();
+    const r = await post(ED1, {
+      segmentId: id('o'),
+      editedContent: 'SENTINEL-REFUSED-UNSEEN',
+      baseSha256: stale.baseSha256,
+      clientActionId: act(),
+    });
+    expect(r.status).toBe(409);
+    expect(r.body.error).toBe('UNSEEN_EDIT');
+    const ev = eventsSince(mark);
+    expect(ev.map((e) => [e.event_type, e.segment_id])).toEqual([['write-refused', id('o')]]);
+    expect(ev[0].detail).toEqual({
+      reason: 'UNSEEN_EDIT',
+      echoedSha256: null,
+      currentSha256: sha256Text('o flipi 1'),
+      action: 'save',
+    });
+    expect(researchBytes().includes('SENTINEL-REFUSED-UNSEEN')).toBe(false);
+    expect(pendingRowOf('p-ed1', 'o').edited_content).toBe('o flipi 1'); // the first tab's text stands
   });
 });
