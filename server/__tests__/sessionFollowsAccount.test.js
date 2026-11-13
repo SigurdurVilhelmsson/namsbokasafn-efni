@@ -194,7 +194,69 @@ describe('an address on ADMIN_USERS', () => {
   });
 });
 
+describe('an address on ADMIN_USERS, continued', () => {
+  it('is an admin from the next request, also with a token minted before the address was listed', () => {
+    // Sign-in puts the list above the row and answers admin with no books (determineUserRole),
+    // so that is what a request gets: never less than the sign-in that would follow it.
+    const token = tokenFor(15, 'viewer', ['efnafraedi-2e'], 'Stjori@Skoli.example');
+    expect(run(requireAuth, token).req.user).toMatchObject({ role: 'admin', books: [] });
+  });
+});
+
+describe('the row is read as sign-in reads it', () => {
+  it('any falsy is_active is a deactivated account, not only 0', () => {
+    // determineUserRole refuses `!is_active`. A stricter test here let a row whose flag had been
+    // stored as empty text keep its live session while a new sign-in was refused.
+    const row = account(16, 'editor');
+    db.prepare("UPDATE users SET is_active = '' WHERE id = ?").run(row.id);
+    const { res, nextCalled } = run(requireAuth, tokenFor(16, 'editor'));
+    expect(nextCalled).toBe(false);
+    expect(res.statusCode).toBe(401);
+  });
+
+  it("an empty role in the row is not replaced by the token's", () => {
+    const row = account(17, 'admin');
+    db.prepare("UPDATE users SET role = '' WHERE id = ?").run(row.id);
+    expect(run(requireAuth, tokenFor(17, 'admin')).req.user.role).not.toBe('admin');
+  });
+
+  it('recorded, not a goal: a visitor whose address is added later stays a visitor until they sign in again', () => {
+    // Sign-in also claims a row an admin added by e-mail (userService.isClaimableByEmail), and
+    // binds it. A request looks the row up by the account id only and binds nothing, so the new
+    // role starts at the next sign-in. Nothing is lost by it: the person signs out and in.
+    userService.createUser({
+      providerId: null,
+      providerUsername: 'kennari18@skoli.example',
+      email: 'kennari18@skoli.example',
+      role: 'editor',
+    });
+    expect(run(requireAuth, tokenFor(18, 'viewer')).req.user.role).toBe('viewer');
+  });
+});
+
 describe('the other two readers of a token', () => {
+  it('optionalAuth reports the books the row holds now', () => {
+    const row = account(19, 'head-editor');
+    userService.assignBookAccess(row.id, 'efnafraedi-2e', 'head-editor', 'prufa');
+    userService.assignBookAccess(row.id, 'liffraedi-2e', 'head-editor', 'prufa');
+    const token = tokenFor(19, 'head-editor', ['efnafraedi-2e', 'liffraedi-2e']);
+    userService.removeBookAccess(row.id, 'liffraedi-2e');
+    expect(run(optionalAuth, token).req.user.books).toEqual(['efnafraedi-2e']);
+  });
+
+  it('a visitor with no row passes optionalAuth and an ungated page as a viewer', () => {
+    const token = tokenFor(20, 'viewer');
+    expect(run(optionalAuth, token).req.user.role).toBe('viewer');
+    expect(run(requirePageAuth(), token).nextCalled).toBe(true);
+    expect(run(requirePageAuth('editor'), token).res.redirectedTo).toBe('/');
+  });
+
+  it('an address on ADMIN_USERS passes optionalAuth and the admin page gate', () => {
+    const token = tokenFor(21, 'admin', [], 'stjori@skoli.example');
+    expect(run(optionalAuth, token).req.user.role).toBe('admin');
+    expect(run(requirePageAuth('admin'), token).nextCalled).toBe(true);
+  });
+
   it('optionalAuth treats a deactivated account as signed out', () => {
     const row = account(11, 'editor');
     const token = tokenFor(11, 'editor');
