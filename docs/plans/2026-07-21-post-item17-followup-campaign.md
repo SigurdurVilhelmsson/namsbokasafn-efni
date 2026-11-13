@@ -235,7 +235,7 @@
   - after a new *Staðfesta MT* and after a head editor's approval, every group still open on the segment gets one `suggestion_left_open` row per change.
 
   Each write has its research event, emitted after the editing record commits; none changes a response. PR2 adds no migration. Its 10 commits were made with `git commit-tree` from named files, because an uncommitted journal snapshot sat in the build's worktree and lint-staged's stash is a hazard to unstaged tracked files. Every new test was mutation-tested against the defect it claims to catch.
-- **Rulings R1–R22 (with R2a), made during the build**, by the build process's rule that a running plan settles its own questions. #667's description states each one, with its reason and its cost if wrong; [USER] has not ruled on them one by one. The ones a later PR must know:
+- **Rulings R1–R22 (with R2a), made during the build**, by the build process's rule that a running plan settles its own questions. #667's description states each one, with its reason and its cost if wrong; [USER] has not ruled on them one by one. **R8a, which two tests in `server/__tests__/suggestionEmission.test.js` cite, is not stated under that name there: its substance is R8's first two bullets in #667's description** (an item must name the save's occurrence; only wholly claimed groups enter the chain-order replay). The build ledger that named it was deleted on 2026-11-10 (checked 2026-11-13). The ones a later PR must know:
   - R1: `rejected_by` and `closed_by` hold the Microsoft account GUID, stored as TEXT in `057`'s `INTEGER NOT NULL` columns (type affinity; the tables are not STRICT);
   - R17: the reject route is not gated on eligibility;
   - R19: a closure covers only what is offerable at the finish;
