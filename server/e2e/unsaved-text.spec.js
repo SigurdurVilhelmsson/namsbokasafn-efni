@@ -2,19 +2,20 @@
 const fs = require('fs');
 const path = require('path');
 const { test, expect } = require('@playwright/test');
-const { loginAs } = require('./helpers/auth');
+const { loginAs, getTestToken } = require('./helpers/auth');
 const segmentValidation = require('../public/js/segment-validation');
 
 /**
- * Unsaved text in the segment editor (interface audit 2026-11-13, ED-01 to ED-05).
+ * Unsaved text in the segment editor (interface audit 2026-11-13, ED-01 to ED-05 and parts of ED-18).
  *
- * One rule: text typed into a row is never lost without the editor being asked. Each test types into a row and
- * then does what lost the text on 2026-11-13: Back, a save conflict answered with OK, a save of another row,
- * Escape and the two discard buttons, and a save from a second tab that had not seen the first tab's save.
+ * One rule: text typed into a row is never lost without the editor being asked. The first describe types into a
+ * row and then does what lost the text on 2026-11-13: Back, a save conflict answered with OK, a save of another
+ * row, Escape and the two discard buttons, and a save from a second tab that had not seen the first tab's save.
+ * The second holds what leaving rows in place must not break, one test per case the reviews of the fix found.
  *
  * Rows: virgin rows nearest the three-quarter point of fixture m68664, away from the rows sibling specs claim
- * (helpers/segments.js: the ends, `…:abstract:auto-2`, and the rows nearest the middle). Two tests write real
- * edit rows (the conflict and the second tab) and delete them afterwards; every other save is a stub.
+ * (helpers/segments.js). Two tests write real edit rows (ED-02 and ED-05); the afterEach below deletes them, with
+ * a request context of its own, so it also runs when a test has timed out. Every other save is a stub.
  */
 const UI = new Function(
   `${fs.readFileSync(path.join(__dirname, '..', 'public', 'js', 'ui-strings.js'), 'utf8')}; return UI;`
@@ -94,12 +95,47 @@ function answerDialogs(page, accept) {
   return { asked, stop: () => page.off('dialog', handler) };
 }
 
-/** Delete every edit `page`'s user holds on the segment (the test's own rows). */
-async function deleteOwnEdits(page, segmentId) {
-  const data = await loadModuleJson(page);
-  for (const edit of data.edits[segmentId] || []) {
-    await page.request.delete(`/api/segment-editor/edit/${edit.id}`);
+/** The two people this spec saves real rows as (ED-02 and ED-05). The helper names a user after its role. */
+const WRITERS = [
+  ['admin', USER_A],
+  ['head-editor', USER_B],
+];
+
+// No real row outlives its test, also when the test timed out and its own page is gone.
+test.afterEach(async ({ playwright }) => {
+  for (const [role, id] of WRITERS) {
+    const api = await playwright.request.newContext({
+      baseURL: 'http://localhost:3456',
+      extraHTTPHeaders: { cookie: `auth_token=${getTestToken(role, id)}` },
+    });
+    try {
+      const res = await api.get(MODULE_URL);
+      expect(res.ok()).toBe(true);
+      const own = Object.values((await res.json()).edits)
+        .flat()
+        .filter((edit) => String(edit.editor_id) === String(id));
+      for (const edit of own) {
+        const del = await api.delete(`/api/segment-editor/edit/${edit.id}`);
+        expect(del.status(), await del.text()).toBe(200);
+      }
+    } finally {
+      await api.dispose();
+    }
   }
+});
+
+/** The draft entry stored for `segmentId` under any tab's key, or null. */
+async function storedDraftEntry(page, segmentId) {
+  return page.evaluate((id) => {
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key.startsWith('seg-draft:')) {
+        const v = JSON.parse(localStorage.getItem(key));
+        if (v.segments && v.segments[id]) return v.segments[id];
+      }
+    }
+    return null;
+  }, segmentId);
 }
 
 /**
@@ -123,6 +159,23 @@ async function refuseNextSave(page, row, code) {
   await reloaded;
   await page.waitForTimeout(300); // the two background re-renders have run
   stop();
+}
+
+/**
+ * Hold back every module GET from here on until `release()` is called: the reload that follows a save or a refusal
+ * does not come back, so the page stays in the state between the answer and its re-render. `held()` counts them.
+ */
+async function holdReload(page) {
+  let n = 0;
+  let release;
+  const gate = new Promise((resolve) => (release = resolve));
+  await page.route(`**${MODULE_URL}`, async (route) => {
+    if (route.request().method() !== 'GET') return route.continue();
+    n++;
+    await gate;
+    await route.continue();
+  });
+  return { held: () => n, release };
 }
 
 /** A save answer held back until `release()` is called; `posts` counts the saves sent. */
@@ -172,8 +225,10 @@ test.describe('unsaved text in the segment editor is never lost unasked', () => 
     const target = freeRow(await loadModuleJson(page), 0);
     await openModule(page);
     const row = rowOf(page, target.segmentId);
-    await row.locator('.btn-edit').click(); // an open pane with nothing typed
-    const { asked, stop } = answerDialogs(page, false);
+    await row.locator('.btn-edit').click();
+    await row.locator('textarea').fill(`${target.is}x`);
+    await row.locator('textarea').fill(target.is); // typed, then typed back: the pane is dirty, its text is not changed
+    const { asked, stop } = answerDialogs(page, false); // a question answered Cancel would keep the editor open
     await page.locator('#btn-back').click();
     await expect(page.locator('#module-selector')).toBeVisible();
     stop();
@@ -199,6 +254,7 @@ test.describe('unsaved text in the segment editor is never lost unasked', () => 
     await loginAs(otherPage, 'head-editor', USER_B);
     const theirs = `${target.is}${SUFFIX} B`;
     try {
+      // (a plain API save: it names no edit and does not say it handles UNSEEN_EDIT, like any script)
       const saved = await otherPage.request.post(`${MODULE_URL}/edit`, {
         data: {
           segmentId: target.segmentId,
@@ -227,8 +283,8 @@ test.describe('unsaved text in the segment editor is never lost unasked', () => 
       await expect(row.locator('.edit-panel')).toHaveClass(/active/);
       await expect(row.locator('textarea')).toHaveValue(mine);
       await expect(row.locator('.col-is .segment-content')).toContainText(`${SUFFIX} B`.trim());
-      await expect(row.locator('.draft-notice[data-notice="conflict"]')).toHaveText(
-        UI.draftNotice.conflict
+      await expect(row.locator('.draft-notice[data-notice="ROW_NOT_YOURS"]')).toHaveText(
+        UI.draftNotice.rowNotYours
       );
       // The row is the other editor's to finish (it shows no Breyta), so the kept text cannot be saved over
       // their waiting edit: Vista is off, and Ctrl+S sends nothing.
@@ -239,7 +295,7 @@ test.describe('unsaved text in the segment editor is never lost unasked', () => 
       });
       const blocked = answerDialogs(page, true);
       await row.locator('textarea').press('Control+s');
-      await expect.poll(() => blocked.asked).toEqual([UI.draftNotice.conflict]);
+      await expect.poll(() => blocked.asked).toEqual([UI.draftNotice.rowNotYours]);
       blocked.stop();
       expect(sent).toEqual([]);
       // The pane's own category and note came back with the text, not the other editor's.
@@ -249,11 +305,16 @@ test.describe('unsaved text in the segment editor is never lost unasked', () => 
       expect(asked).toHaveLength(1);
       expect(asked[0]).toContain(UI.refusal.textKept);
       await expect(page.locator('#save-status-text')).toHaveText(UI.save.unsaved(1));
-      // Nothing was saved from this page: the status line must not say that everything was.
-      await expect(page.locator('#save-status-text')).not.toHaveText(UI.save.allSaved);
+
+      // Endurstilla has nothing of this editor's to reset the pane to on such a row: after its question the
+      // pane closes, so no pane with a working Vista is left on a row that offers no Breyta.
+      const reset = answerDialogs(page, true);
+      await row.locator('.btn-revert').click();
+      await expect(row.locator('.edit-panel')).not.toHaveClass(/active/);
+      reset.stop();
+      expect(reset.asked).toEqual([UI.draftNotice.discardKept]);
+      await expect(page.locator('#save-status-text')).toHaveText(UI.save.nothingUnsaved);
     } finally {
-      await deleteOwnEdits(otherPage, target.segmentId);
-      await deleteOwnEdits(page, target.segmentId);
       await other.close();
     }
   });
@@ -478,7 +539,6 @@ test.describe('unsaved text in the segment editor is never lost unasked', () => 
       );
       await expect(staleRow.locator('.col-is .segment-content')).toContainText('flipi 1');
     } finally {
-      await deleteOwnEdits(page, target.segmentId);
       await stale.close();
     }
   });
@@ -507,10 +567,17 @@ test.describe('unsaved text: what leaving rows in place must not break', () => {
       el.focus();
       el.setSelectionRange(3, 5);
     });
+    // Marks on the two rows as they are now: a row rebuilt by the reload loses its mark, a row left in place keeps it.
+    for (const r of [row, keptRow]) await r.evaluate((tr) => (tr.dataset.before = '1'));
+    const { asked, stop } = answerDialogs(page, true); // nothing is asked; an OK would have closed the panes before
     const reloaded = backgroundLoads(page);
     await page.evaluate((m) => window.loadModule(m, { force: true }), MODULE);
     await reloaded;
     await page.waitForTimeout(300); // the two background re-renders have run
+    stop();
+    expect(asked).toEqual([]);
+    await expect(row).toHaveAttribute('data-before', '1'); // left in place
+    await expect(keptRow).not.toHaveAttribute('data-before', '1'); // rebuilt, its kept text put back
 
     const focus = await page.evaluate(() => {
       const el = document.activeElement;
@@ -538,11 +605,11 @@ test.describe('unsaved text: what leaving rows in place must not break', () => {
     const text = `${target.is}${SUFFIX} sía geymt`;
     const row = await typeInto(page, target.segmentId, text);
     await page.locator('#filter-type').selectOption('pending'); // the row has no pending edit
-    await refuseNextSave(page, row, 'conflict');
+    await refuseNextSave(page, row, 'STALE_BASE');
 
     await expect(row.locator('.edit-panel')).toHaveClass(/active/);
     await expect(row.locator('textarea')).toHaveValue(text);
-    await expect(row.locator('.draft-notice[data-notice="conflict"]')).toBeVisible();
+    await expect(row.locator('.draft-notice[data-notice="STALE_BASE"]')).toBeVisible();
     await expect(page.locator('#save-status-text')).toHaveText(UI.save.unsaved(1));
   });
 
@@ -559,13 +626,22 @@ test.describe('unsaved text: what leaving rows in place must not break', () => {
     await expect.poll(() => posts.length).toBe(1);
     const more = `${sent} og meira`;
     await row.locator('textarea').fill(more);
-    const reloaded = backgroundLoads(page);
+    // The reload after the refusal is held back, so what is checked first is what the refusal itself kept: the
+    // draft it wrote, which is all there is if that reload never comes back.
+    const gate = await holdReload(page);
     release();
+    await expect.poll(() => gate.held()).toBe(1);
+    expect(posts[0].editedContent).toBe(sent);
+    expect(await storedDraftEntry(page, target.segmentId)).toMatchObject({
+      text: more,
+      refused: 'conflict',
+    });
+    const reloaded = backgroundLoads(page);
+    gate.release();
     await reloaded;
     await page.waitForTimeout(300);
     stop();
 
-    expect(posts[0].editedContent).toBe(sent);
     await expect(row.locator('textarea')).toHaveValue(more);
     await expect(row.locator('.draft-notice[data-notice="conflict"]')).toBeVisible();
   });
@@ -740,5 +816,386 @@ test.describe('unsaved text: what leaving rows in place must not break', () => {
     const row = rowOf(page, target.segmentId);
     await expect(row.locator('.edit-panel')).toHaveClass(/active/);
     await expect(row.locator('textarea')).toHaveValue(text);
+    await expect(row.locator('textarea')).toBeFocused(); // nobody was typing, so it is brought into view
+  });
+
+  test('right after a refused save, Escape and „Beita víðar“ treat the kept text as unsaved text', async ({
+    page,
+  }) => {
+    const target = freeRow(await loadModuleJson(page), 4);
+    await openModule(page);
+    const text = `${target.is}${SUFFIX} bíður endurhleðslu`;
+    const row = await typeInto(page, target.segmentId, text);
+    await page.route(
+      `**${MODULE_URL}/edit`,
+      (route) =>
+        route.fulfill({
+          status: 409,
+          contentType: 'application/json',
+          body: JSON.stringify({ error: 'conflict', message: 'stub' }),
+        }),
+      { times: 1 }
+    );
+    // The reload that follows the refusal is held back: the pane is open, its text waits in the hold.
+    const gate = await holdReload(page);
+    const refusal = answerDialogs(page, true);
+    await row.getByRole('button', { name: 'Vista', exact: true }).click();
+    await expect.poll(() => refusal.asked.length).toBe(1);
+    refusal.stop();
+    await expect.poll(() => gate.held()).toBe(1);
+
+    const inBox = answerDialogs(page, false);
+    await row.locator('textarea').focus();
+    await page.keyboard.press('Escape');
+    await expect.poll(() => inBox.asked).toEqual([UI.draftNotice.discardKept]);
+    inBox.stop();
+    await expect(row.locator('textarea')).toHaveValue(text);
+
+    const outside = answerDialogs(page, false);
+    await row.locator('input[id^="note-"]').focus();
+    await page.keyboard.press('Escape');
+    await expect.poll(() => outside.asked).toEqual([UI.confirm.discardChanges]);
+    outside.stop();
+    await expect(row.locator('.edit-panel')).toHaveClass(/active/);
+    await expect(row.locator('textarea')).toHaveValue(text);
+
+    const previews = [];
+    page.on('request', (r) => {
+      if (r.url().includes('/propagation-preview')) previews.push(r.url());
+    });
+    await row.locator('.btn-propagate').click();
+    await page.waitForTimeout(300);
+    expect(previews).toEqual([]);
+
+    // More typed while the reload is out is part of the kept text when the row is redrawn.
+    const more = `${text} og áfram`;
+    await row.locator('textarea').fill(more);
+    const reloaded = backgroundLoads(page);
+    gate.release();
+    await reloaded;
+    await page.waitForTimeout(300);
+    await expect(row.locator('textarea')).toHaveValue(more);
+    await expect(row.locator('.draft-notice[data-notice="conflict"]')).toBeVisible();
+  });
+
+  test('typing in a kept pane keeps the focus and the caret through a re-render', async ({
+    page,
+  }) => {
+    const target = freeRow(await loadModuleJson(page), 5);
+    await openModule(page);
+    const text = `${target.is}${SUFFIX} geymt og skrifað`;
+    const row = await typeInto(page, target.segmentId, text);
+    await refuseNextSave(page, row, 'DUPLICATE_ID');
+    await expect(row.locator('.draft-notice[data-notice="DUPLICATE_ID"]')).toBeVisible();
+    await row.locator('textarea').evaluate((el) => {
+      el.focus();
+      el.setSelectionRange(2, 4);
+    });
+    await row.evaluate((tr) => (tr.dataset.before = '1'));
+    const reloaded = backgroundLoads(page);
+    await page.evaluate((m) => window.loadModule(m, { force: true }), MODULE);
+    await reloaded;
+    await page.waitForTimeout(300);
+
+    await expect(row).not.toHaveAttribute('data-before', '1'); // the row was rebuilt under the caret
+    const focus = await page.evaluate(() => {
+      const el = document.activeElement;
+      return { id: el && el.id, start: el && el.selectionStart, end: el && el.selectionEnd };
+    });
+    expect(focus).toEqual({
+      id: await row.locator('textarea').getAttribute('id'),
+      start: 2,
+      end: 4,
+    });
+    await expect(row.locator('textarea')).toHaveValue(text);
+  });
+
+  test('a pane closed while its save was on its way is not left as unsaved', async ({ page }) => {
+    const target = freeRow(await loadModuleJson(page), 6);
+    await openModule(page);
+    const row = await typeInto(page, target.segmentId, `${target.is}${SUFFIX}`);
+    const { posts, release } = await holdSaves(page, 200, STUB_SAVED);
+    const { asked, stop } = answerDialogs(page, true);
+    await row.getByRole('button', { name: 'Vista', exact: true }).click();
+    await expect.poll(() => posts.length).toBe(1);
+    await row.getByRole('button', { name: 'Hætta við', exact: true }).click(); // the save-then-close habit
+    await expect(row.locator('.edit-panel')).not.toHaveClass(/active/);
+    const reloaded = backgroundLoads(page);
+    release();
+    await reloaded;
+    await page.waitForTimeout(300);
+    stop();
+
+    expect(asked).toEqual([UI.confirm.discardChanges]); // the close asked; nothing offered a draft afterwards
+    await expect(row.locator('.edit-panel')).not.toHaveClass(/active/);
+    await expect(page.locator('#save-status-text')).toHaveText(UI.save.nothingUnsaved);
+  });
+
+  test('after the answer to a save, the next Vista is sent at once and reports what was done since', async ({
+    page,
+  }) => {
+    const target = freeRow(await loadModuleJson(page), 7);
+    await openModule(page);
+    const sent = `${target.is}${SUFFIX}`;
+    const row = await typeInto(page, target.segmentId, sent);
+    const answer = {
+      ...STUB_SAVED,
+      editId: 4343,
+      baseSha256: target.baseSha256,
+      displayedEditId: 4343,
+      displayedEditSha256: 'b'.repeat(64),
+    };
+    const { posts, release } = await holdSaves(page, 200, answer);
+    const { stop } = answerDialogs(page, true);
+    const vista = row.getByRole('button', { name: 'Vista', exact: true });
+    await vista.click();
+    await expect.poll(() => posts.length).toBe(1);
+    // While the save is on its way: the last three letters are made bold (an assist, and a change of text).
+    const box = row.locator('textarea');
+    await box.evaluate((el) => el.setSelectionRange(el.value.length - 3, el.value.length));
+    await box.press('Control+b');
+    const gate = await holdReload(page); // the reload after the answer does not come back yet
+    release();
+    await expect(row.locator('.seg-save-ind')).toHaveText(UI.save.changed);
+    await expect.poll(() => gate.held()).toBe(1);
+
+    await vista.click(); // not dropped while the reload is out
+    await expect.poll(() => posts.length).toBe(2);
+    expect(posts[1].editedContent).toBe(await box.inputValue());
+    expect(posts[1].displayedEditId).toBe(answer.displayedEditId);
+    expect(posts[1].assists.map((a) => a.itemType)).toEqual(['markup-wrap']);
+    expect(posts[0].assists).toEqual([]);
+    const reloaded = backgroundLoads(page);
+    gate.release();
+    await reloaded;
+    stop();
+  });
+
+  test('a row the filter hides goes when its pane closes, also after Endurstilla', async ({
+    page,
+  }) => {
+    const target = freeRow(await loadModuleJson(page), 8);
+    await openModule(page);
+    const row = await typeInto(page, target.segmentId, `${target.is}${SUFFIX}`);
+    await page.locator('#filter-type').selectOption('pending'); // the row has no pending edit; it stays
+    await expect(row.locator('textarea')).toBeVisible();
+
+    const { asked, stop } = answerDialogs(page, true);
+    await row.locator('.btn-revert').click(); // Endurstilla: the pane stays open, so the row stays
+    await expect(row.locator('textarea')).toHaveValue(target.is);
+    await expect(row.locator('.edit-panel')).toHaveClass(/active/);
+    await row.getByRole('button', { name: 'Hætta við', exact: true }).click(); // nothing changed: no question
+    stop();
+    expect(asked).toEqual([UI.confirm.discardChanges]);
+    await expect(row).toHaveCount(0);
+  });
+
+  for (const discard of [
+    {
+      how: 'Endurstilla',
+      run: (page, row) => row.locator('.btn-revert').click(),
+      paneOpenAfter: true,
+    },
+    {
+      how: 'Escape outside the text box',
+      run: async (page, row) => {
+        await row.locator('input[id^="note-"]').focus();
+        await page.keyboard.press('Escape');
+      },
+      paneOpenAfter: false,
+    },
+  ]) {
+    test(`a row left in place is rebuilt from the newer data when ${discard.how} discards its text`, async ({
+      page,
+    }) => {
+      const target = freeRow(await loadModuleJson(page), 9);
+      await openModule(page);
+      const row = await typeInto(page, target.segmentId, `${target.is}${SUFFIX}`);
+      // Every later serve names another base for the row, as if its file had changed. The row, left in place by
+      // the reload, keeps the base its text was typed on.
+      const NEWER = 'e'.repeat(64);
+      await page.route(`**${MODULE_URL}`, async (route) => {
+        if (route.request().method() !== 'GET') return route.continue();
+        const response = await route.fetch();
+        const json = await response.json();
+        json.segments.find((seg) => seg.segmentId === target.segmentId).baseSha256 = NEWER;
+        await route.fulfill({ response, json });
+      });
+      const reloaded = backgroundLoads(page);
+      await page.evaluate((m) => window.loadModule(m, { force: true }), MODULE);
+      await reloaded;
+      await page.waitForTimeout(300);
+      await expect(row).toHaveAttribute('data-base-sha256', target.baseSha256);
+
+      const { asked, stop } = answerDialogs(page, true);
+      await discard.run(page, row);
+      await expect(row).toHaveAttribute('data-base-sha256', NEWER); // rebuilt from what the reload brought
+      stop();
+      expect(asked).toEqual([UI.confirm.discardChanges]);
+      await expect(row).not.toHaveAttribute('data-render-skipped', '');
+      if (discard.paneOpenAfter) {
+        await expect(row.locator('.edit-panel')).toHaveClass(/active/);
+        await expect(row.locator('textarea')).toHaveValue(target.is);
+      } else {
+        await expect(row.locator('.edit-panel')).not.toHaveClass(/active/);
+      }
+    });
+  }
+
+  test('Ctrl+S outside a text box saves the pane holding the focus, not the first open one', async ({
+    page,
+  }) => {
+    const data = await loadModuleJson(page);
+    const order = (seg) => data.segments.findIndex((x) => x.segmentId === seg.segmentId);
+    const [upper, lower] = [freeRow(data, 10), freeRow(data, 11)].sort(
+      (a, b) => order(a) - order(b)
+    );
+    await openModule(page);
+    await typeInto(page, upper.segmentId, `${upper.is}${SUFFIX} efri`);
+    const lowerRow = await typeInto(page, lower.segmentId, `${lower.is}${SUFFIX} neðri`);
+    const { posts, release } = await holdSaves(page, 200, STUB_SAVED);
+    const { stop } = answerDialogs(page, true);
+    await lowerRow.locator('input[id^="note-"]').focus();
+    await page.keyboard.press('Control+s');
+    await expect.poll(() => posts.length).toBe(1);
+    expect(posts[0].segmentId).toBe(lower.segmentId);
+    const reloaded = backgroundLoads(page);
+    release();
+    await reloaded;
+    stop();
+  });
+
+  test('category and note are pre-filled from the editor’s own edit, never from another editor’s', async ({
+    page,
+  }) => {
+    const data = await loadModuleJson(page);
+    const theirs = freeRow(data, 12);
+    const mine = freeRow(data, 13);
+    // The first serve carries a rejected edit on each row: one by somebody else, one by this editor (the helper
+    // names a user after its role). A rejected edit leaves the row open for editing.
+    const rejected = (seg, id, username) => ({
+      id,
+      book: BOOK,
+      chapter: 1,
+      module_id: MODULE,
+      segment_id: seg.segmentId,
+      original_content: seg.is,
+      edited_content: `${seg.is} (hafnað)`,
+      category: 'accuracy',
+      editor_note: 'athugasemd með höfnuðu breytingunni',
+      editor_id: username,
+      editor_username: username,
+      status: 'rejected',
+      reviewer_note: 'nei',
+      created_at: '2026-11-13 10:00:00',
+      applied_at: null,
+      contentSha256: 'c'.repeat(64),
+    });
+    let served = 0;
+    await page.route(`**${MODULE_URL}`, async (route) => {
+      served++;
+      if (served > 1 || route.request().method() !== 'GET') return route.continue();
+      const response = await route.fetch();
+      const json = await response.json();
+      json.edits[theirs.segmentId] = [rejected(theirs, 990001, 'annar-yfirlesari')];
+      json.edits[mine.segmentId] = [rejected(mine, 990002, 'test-admin')];
+      await route.fulfill({ response, json });
+    });
+    await openModule(page);
+
+    const theirRow = rowOf(page, theirs.segmentId);
+    await theirRow.locator('.btn-edit').click();
+    await expect(theirRow.locator('select[id^="cat-"]')).toHaveValue('');
+    await expect(theirRow.locator('input[id^="note-"]')).toHaveValue('');
+    // Control: the editor's own rejected edit does pre-fill both.
+    const myRow = rowOf(page, mine.segmentId);
+    await myRow.locator('.btn-edit').click();
+    await expect(myRow.locator('select[id^="cat-"]')).toHaveValue('accuracy');
+    await expect(myRow.locator('input[id^="note-"]')).toHaveValue(
+      'athugasemd með höfnuðu breytingunni'
+    );
+  });
+
+  for (const wrote of [
+    { rows: 1, reloads: true },
+    { rows: 0, reloads: false },
+  ]) {
+    test(`„Beita víðar“ that wrote ${wrote.rows} row(s) ${wrote.reloads ? 'reloads the unit' : 'does not reload it'}`, async ({
+      page,
+    }) => {
+      const data = await loadModuleJson(page);
+      const target = freeRow(data, 0);
+      const other = freeRow(data, 1);
+      await openModule(page);
+      const row = await typeInto(page, target.segmentId, `${target.is}${SUFFIX}`);
+      // Stubs only: the save lands, the preview offers one place, and the propagation answers what it wrote.
+      await page.route(`**${MODULE_URL}/edit`, (route) =>
+        route.fulfill({
+          status: 200,
+          contentType: 'application/json',
+          body: JSON.stringify(STUB_SAVED),
+        })
+      );
+      await page.route(
+        (url) => url.pathname === `${MODULE_URL}/propagation-preview`,
+        (route) =>
+          route.fulfill({
+            status: 200,
+            contentType: 'application/json',
+            body: JSON.stringify({ eligible: [{ segmentId: other.segmentId }] }),
+          })
+      );
+      await page.route(`**${MODULE_URL}/propagate`, (route) =>
+        route.fulfill({
+          status: 200,
+          contentType: 'application/json',
+          body: JSON.stringify({
+            created: wrote.rows ? [{ segmentId: other.segmentId }] : [],
+            skipped: [],
+          }),
+        })
+      );
+      const { stop } = answerDialogs(page, true); // the propagate confirm
+      const propagated = page.waitForResponse((r) => r.url().endsWith(`${MODULE_URL}/propagate`));
+      await row.locator('.btn-propagate').click();
+      await propagated;
+      // The save's own reload has been and gone before the preview. Count the unit's serves from here.
+      let serves = 0;
+      page.on('request', (r) => {
+        if (r.method() === 'GET' && r.url().endsWith(MODULE_URL)) serves++;
+      });
+      await page.waitForTimeout(700);
+      stop();
+      expect(serves).toBe(wrote.reloads ? 1 : 0);
+    });
+  }
+
+  test('a replay refused with a code that is not a kept one comes back with the general notice', async ({
+    page,
+  }) => {
+    const target = freeRow(await loadModuleJson(page), 2);
+    await openModule(page);
+    const typed = `${target.is}${SUFFIX}`;
+    const row = await typeInto(page, target.segmentId, typed);
+    let sent = 0;
+    await page.route(`**${MODULE_URL}/edit`, (route) => {
+      sent++;
+      return sent === 1
+        ? route.fulfill({ status: 500, contentType: 'application/json', body: '{"error":"stub"}' })
+        : route.fulfill({
+            status: 409,
+            contentType: 'application/json',
+            body: JSON.stringify({ error: 'HAS_DISCUSSION', message: 'stub' }),
+          });
+    });
+    page.on('dialog', (d) => d.accept().catch(() => {}));
+    await row.getByRole('button', { name: 'Vista', exact: true }).click();
+    await expect(page.locator('.toast-error').first()).toBeVisible(); // the 5xx: queued for a replay
+    // The replay fires after about a second; its refusal parks the text, whatever the code, and the unit reloads.
+    await expect(row.locator('.draft-notice[data-notice="REFUSED"]')).toBeVisible({
+      timeout: 10000,
+    });
+    await expect(row.locator('textarea')).toHaveValue(typed);
+    expect(sent).toBe(2);
   });
 });

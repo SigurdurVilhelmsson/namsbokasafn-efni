@@ -63,7 +63,7 @@
 
 > **What this tests:** O1 — filter re-render protection.
 >
-> *Steps 13 and 18–20 changed 2026-11-13 (interface audit, ED-03 and ED-04): a re-render no longer asks before
+> *Steps 13, 18–20, 26 and 32 changed 2026-11-13 (interface audit, ED-03 and ED-04): a re-render no longer asks before
 > closing panels. It leaves a row with unsaved text in place, and the discard buttons ask instead. Automated in
 > `server/e2e/unsaved-text.spec.js`.*
 
@@ -83,7 +83,7 @@
 |---|------|----------|-------|
 | 24 | Type a term in the terminology lookup input (top right) | Results dropdown appears | ☐ |
 | 25 | Press Escape | **Terminology results close** (not the edit panel) | ☐ |
-| 26 | Open an edit panel, then press Escape | Edit panel closes (with confirmation if dirty) | ☐ |
+| 26 | Open an edit panel, then press Escape | Nothing changed: the panel closes. Text changed, focus in the text box: a question asks first; OK resets the text and leaves the panel open, and Escape again closes it | ☐ |
 
 > **What this tests:** O5 — Escape closes term lookup first.
 
@@ -103,7 +103,7 @@
 | # | Step | Expected | Pass? |
 |---|------|----------|-------|
 | 31 | Open an edit panel and click "Vista" | Save starts | ☐ |
-| 32 | Immediately click "Til baka" (back button) | No crash, no console error | ☐ |
+| 32 | Immediately click "Til baka" (back button) | No crash, no console error. The save is on its way and lands, so Back does not ask about that row | ☐ |
 | 33 | Re-navigate to the same module | Module loads normally | ☐ |
 
 > **What this tests:** O3 — null moduleData guard.

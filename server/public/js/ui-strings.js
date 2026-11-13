@@ -56,14 +56,15 @@ const UI = {
     },
     discardChanges: 'Þú átt óvistaðar breytingar. Viltu henda þeim?',
     leaveUnsaved: 'Þú átt óvistaðar breytingar. Viltu yfirgefa?',
-    // The segment editor's "← Til baka" with unsaved text in `count` rows (interface audit 2026-11-13, ED-01).
-    // It says what OK does: Back throws the text away, unlike closing the tab, which keeps a draft. Not yet read
-    // by a native speaker.
+    // The segment editor asks this before it leaves a unit with unsaved text in `count` segments: "← Til baka",
+    // and another unit opened over this one (interface audit 2026-11-13, ED-01). It says what OK does: the text is
+    // thrown away, unlike closing the tab, which keeps a draft. Not yet read by a native speaker.
     leaveDiscards: function (count) {
       return (
         'Þú átt óvistaðan texta í ' +
-        (count === 1 ? '1 línu' : count + ' línum') +
-        '. Honum verður hent ef þú ferð til baka. Fara til baka?'
+        count +
+        (count % 10 === 1 && count % 100 !== 11 ? ' bút' : ' bútum') +
+        '. Honum verður hent ef þú ferð úr einingunni. Halda áfram?'
       );
     },
     // No longer asked by the segment editor (since the 2026-11-13 interface audit a re-render leaves a row with
@@ -182,8 +183,13 @@ const UI = {
     bookNotMinted: 'Ekki er hægt að vista breytingar í þessari bók. Textinn þinn er geymdur hér.',
     // Another editor saved the row first (interface audit 2026-11-13, ED-02). Not yet read by a native speaker.
     conflict:
-      'Annar yfirlesari vistaði breytingu á þessum bút á meðan þú skrifaðir. Textinn þinn er geymdur hér. ' +
-      'Hann verður ekki vistaður fyrr en hin breytingin hefur verið afgreidd; berðu hann þá saman við röðina.',
+      'Annar yfirlesari vistaði breytingu á þessum bút á meðan þú skrifaðir. Berðu textann þinn saman ' +
+      'við röðina og vistaðu aftur.',
+    // A kept text whose row shows another editor's undecided edit: the row offers no Breyta, and the kept text is
+    // not saved over that edit (interface audit 2026-11-13). Not yet read by a native speaker.
+    rowNotYours:
+      'Annar yfirlesari á óafgreidda breytingu á þessum bút. Textinn þinn er geymdur hér, en hann verður ' +
+      'ekki vistaður fyrr en sú breyting hefur verið afgreidd.',
     noLayer:
       'Engin íslensk útgáfa er til fyrir þessa einingu og því er ekki hægt að vista. Textinn ' +
       'þinn er geymdur hér.',
