@@ -699,7 +699,9 @@ function hasChapterAccess(userId, bookSlug, chapter) {
 }
 
 /**
- * Assign a chapter to a user
+ * Add one assignment row. It replaces nobody, so on its own it does NOT keep the rule of one assignee per
+ * chapter: the routes that assign use setChapterAssignee. This stays for fixtures and for the rows written
+ * before the rule.
  */
 function assignChapter(userId, bookSlug, chapter, assignedBy = null) {
   if (!isUserTableReady()) {
@@ -733,6 +735,92 @@ function removeChapterAssignment(userId, bookSlug, chapter) {
     ).run(userId, bookSlug, parseInt(chapter, 10));
   } finally {
   }
+}
+
+/**
+ * Whether a chapter can be given to this user: an account that is active and holds the editor role or above.
+ * Both doors that assign ask this before they replace anybody, so a guest, a deactivated account or an id
+ * with no account cannot push a chapter's editor off it. (The assignments page lists fewer people than this
+ * allows once a book has book-access rows; that is the page's list, not the rule.)
+ */
+function isAssignableUser(userId) {
+  if (!isUserTableReady()) return false;
+  const row = getDb()
+    .prepare(
+      `SELECT 1 FROM users
+       WHERE id = ? AND is_active = 1 AND role IN ('editor', 'head-editor', 'admin')`
+    )
+    .get(userId);
+  return !!row;
+}
+
+/**
+ * The users who hold a chapter, with the name the screens show. LEFT JOIN: a row is reported (and removed) even
+ * if its user were gone.
+ */
+function chapterHolders(db, bookSlug, chapter) {
+  return db
+    .prepare(
+      `SELECT a.user_id AS id, u.display_name AS name
+       FROM user_chapter_assignments a
+       LEFT JOIN users u ON u.id = a.user_id
+       WHERE a.book_slug = ? AND a.chapter = ?
+       ORDER BY a.id`
+    )
+    .all(bookSlug, chapter);
+}
+
+/**
+ * Make `userId` the one assignee of a chapter ([USER] 2026-11-14: one assignee per chapter, and choosing a new
+ * person replaces the old one; docs/decisions/2026-11-14-interface-audit-answers.md, answer 9).
+ *
+ * Everyone else's row for that book and chapter goes in the same transaction as the new row arrives, so a row
+ * the foreign key refuses (no such user) leaves the chapter exactly as it was. A chapter that held several
+ * rows from before the rule is settled by this call. Returns the users it replaced.
+ *
+ * @returns {{ replaced: Array<{id: number, name: string|null}> }}
+ */
+function setChapterAssignee(userId, bookSlug, chapter, assignedBy = null) {
+  if (!isUserTableReady()) {
+    throw new Error('User management not available - run migrations first');
+  }
+
+  const db = getDb();
+  const ch = parseInt(chapter, 10);
+  return db.transaction(() => {
+    const replaced = chapterHolders(db, bookSlug, ch).filter((u) => u.id !== userId);
+    db.prepare(
+      'DELETE FROM user_chapter_assignments WHERE book_slug = ? AND chapter = ? AND user_id != ?'
+    ).run(bookSlug, ch, userId);
+    db.prepare(
+      `INSERT OR IGNORE INTO user_chapter_assignments (user_id, book_slug, chapter, assigned_by)
+       VALUES (?, ?, ?, ?)`
+    ).run(userId, bookSlug, ch, assignedBy);
+    return { replaced };
+  })();
+}
+
+/**
+ * Leave a chapter with no assignee: every row for that book and chapter goes, however many there were.
+ * Returns the users removed.
+ *
+ * @returns {Array<{id: number, name: string|null}>}
+ */
+function clearChapterAssignees(bookSlug, chapter) {
+  if (!isUserTableReady()) {
+    throw new Error('User management not available - run migrations first');
+  }
+
+  const db = getDb();
+  const ch = parseInt(chapter, 10);
+  return db.transaction(() => {
+    const removed = chapterHolders(db, bookSlug, ch);
+    db.prepare('DELETE FROM user_chapter_assignments WHERE book_slug = ? AND chapter = ?').run(
+      bookSlug,
+      ch
+    );
+    return removed;
+  })();
 }
 
 /**
@@ -776,9 +864,22 @@ function getBookAssignments(bookSlug) {
        FROM user_chapter_assignments a
        JOIN users u ON a.user_id = u.id
        WHERE a.book_slug = ?
-       ORDER BY a.chapter`
+       ORDER BY a.chapter, a.id`
     )
     .all(bookSlug);
+}
+
+/**
+ * Whether getEditorsForBook is held to the users with a book-access row for this book: true as soon as one
+ * such row exists. The assignments page says so, because an editor without a row is then missing from its
+ * list with no reason given (interface audit 2026-11-13, AS-02).
+ */
+function editorsLimitedToBookAccess(bookSlug) {
+  if (!isUserTableReady()) return false;
+  const row = getDb()
+    .prepare('SELECT COUNT(*) as cnt FROM user_book_access WHERE book_slug = ?')
+    .get(bookSlug);
+  return !!row && row.cnt > 0;
 }
 
 /**
@@ -790,11 +891,7 @@ function getEditorsForBook(bookSlug) {
   if (!isUserTableReady()) return [];
 
   const db = getDb();
-  const bookAccessCount = db
-    .prepare('SELECT COUNT(*) as cnt FROM user_book_access WHERE book_slug = ?')
-    .get(bookSlug);
-
-  if (bookAccessCount && bookAccessCount.cnt > 0) {
+  if (editorsLimitedToBookAccess(bookSlug)) {
     return db
       .prepare(
         `SELECT u.id, u.display_name as name, u.role
@@ -843,11 +940,15 @@ module.exports = {
   isAssignmentEnforced,
   setAssignmentEnforced,
   assignChapter,
+  isAssignableUser,
+  setChapterAssignee,
+  clearChapterAssignees,
   removeChapterAssignment,
   getChapterAssignments,
   getAllChapterAssignments,
   getBookAssignments,
   getEditorsForBook,
+  editorsLimitedToBookAccess,
 
   // Auth integration
   upsertFromProvider,

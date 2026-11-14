@@ -986,7 +986,8 @@ router.get('/users/:id/chapters', requireAuth, requireAdmin(), (req, res) => {
 
 /**
  * POST /api/admin/users/:id/chapters
- * Assign chapters to a user
+ * Assign chapters to a user. A chapter has one assignee, so each chapter is taken from whoever held it; the
+ * answer's `replaced` names them, per chapter, for the page to say so.
  * Body: { bookSlug, chapters: [1, 2, 3] }
  */
 router.post('/users/:id/chapters', requireAuth, requireAdmin(), (req, res) => {
@@ -998,8 +999,19 @@ router.post('/users/:id/chapters', requireAuth, requireAdmin(), (req, res) => {
   }
 
   try {
+    // The same rule as the assignments page's route: see isAssignableUser.
+    if (!userService.isAssignableUser(userId)) {
+      return res
+        .status(400)
+        .json({ error: 'This user cannot be assigned chapters', code: 'NOT_ASSIGNABLE' });
+    }
+
+    const replaced = [];
     for (const ch of chapters) {
-      userService.assignChapter(userId, bookSlug, ch, req.user.username);
+      const result = userService.setChapterAssignee(userId, bookSlug, ch, req.user.username);
+      if (result.replaced.length > 0) {
+        replaced.push({ chapter: parseInt(ch, 10), users: result.replaced });
+      }
     }
 
     const assignments = userService.getChapterAssignments(userId, bookSlug);
@@ -1007,6 +1019,7 @@ router.post('/users/:id/chapters', requireAuth, requireAdmin(), (req, res) => {
       success: true,
       message: `Assigned ${chapters.length} chapter(s) to user`,
       assignments,
+      replaced,
     });
   } catch (err) {
     log.error({ err }, 'Assign chapters error');
@@ -1066,6 +1079,9 @@ router.get('/assignments/:book', requireAuth, requireHeadEditor('book'), (req, r
       book,
       assignments,
       editors,
+      // true: `editors` is held to the users with a book-access row for this book, so the page explains why
+      // somebody may be missing from its list.
+      editorsLimited: userService.editorsLimitedToBookAccess(book),
       chapterProgress,
       enforceAssignments: userService.isAssignmentEnforced(book),
     });
@@ -1169,7 +1185,8 @@ router.post('/books/:book/suggestion-view', requireAuth, requireRole(ROLES.ADMIN
 
 /**
  * POST /api/admin/assignments/:book/:chapter
- * Assign a user to a chapter.
+ * Make a user the chapter's one assignee: whoever held the chapter is replaced, and `replaced` names them.
+ * Only an active account with the editor role or above can be assigned (400 NOT_ASSIGNABLE otherwise).
  */
 router.post('/assignments/:book/:chapter', requireAuth, requireHeadEditor('book'), (req, res) => {
   const { book, chapter } = req.params;
@@ -1189,16 +1206,31 @@ router.post('/assignments/:book/:chapter', requireAuth, requireHeadEditor('book'
   }
 
   try {
-    userService.assignChapter(userId, book, chapterNum, req.user.username);
+    // A guest, a deactivated account or an id with no account cannot take a chapter, and (replacing being
+    // what this route does) cannot push its editor off it either.
+    if (!userService.isAssignableUser(userId)) {
+      return res
+        .status(400)
+        .json({ error: 'This user cannot be assigned to this book', code: 'NOT_ASSIGNABLE' });
+    }
+
+    const { replaced } = userService.setChapterAssignee(
+      userId,
+      book,
+      chapterNum,
+      req.user.username
+    );
     activityLog.log({
       type: 'assign_chapter',
       userId: req.user.id,
       username: req.user.username,
       book,
       chapter: chapterNum,
-      description: `Assigned chapter ${chapterNum} to user ${userId}`,
+      description:
+        `Assigned chapter ${chapterNum} to user ${userId}` +
+        (replaced.length > 0 ? ` (replaced user ${replaced.map((u) => u.id).join(', ')})` : ''),
     });
-    res.json({ success: true });
+    res.json({ success: true, replaced });
   } catch (err) {
     log.error({ err }, 'Assign chapter error');
     res.status(500).json({ error: err.message });
@@ -1207,7 +1239,7 @@ router.post('/assignments/:book/:chapter', requireAuth, requireHeadEditor('book'
 
 /**
  * DELETE /api/admin/assignments/:book/:chapter
- * Remove assignment from a chapter.
+ * Leave a chapter with no assignee. Everyone on it is removed, however many rows it held.
  */
 router.delete('/assignments/:book/:chapter', requireAuth, requireHeadEditor('book'), (req, res) => {
   const { book, chapter } = req.params;
@@ -1223,21 +1255,18 @@ router.delete('/assignments/:book/:chapter', requireAuth, requireHeadEditor('boo
   }
 
   try {
-    // Find current assignment to remove
-    const assignments = userService.getBookAssignments(book);
-    const current = assignments.find((a) => a.chapter === chapterNum);
-    if (current) {
-      userService.removeChapterAssignment(current.user_id, book, chapterNum);
+    const removed = userService.clearChapterAssignees(book, chapterNum);
+    if (removed.length > 0) {
       activityLog.log({
         type: 'unassign_chapter',
         userId: req.user.id,
         username: req.user.username,
         book,
         chapter: chapterNum,
-        description: `Unassigned chapter ${chapterNum}`,
+        description: `Unassigned chapter ${chapterNum} (user ${removed.map((u) => u.id).join(', ')})`,
       });
     }
-    res.json({ success: true, removed: !!current });
+    res.json({ success: true, removed: removed.length > 0 });
   } catch (err) {
     log.error({ err }, 'Unassign chapter error');
     res.status(500).json({ error: err.message });
