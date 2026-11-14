@@ -76,7 +76,7 @@ const REFUSAL_MESSAGES = Object.freeze({
   STALE_DISPLAYED:
     'Breytingin sem sýnd var í bútnum hefur breyst eða verið fjarlægð frá því að síðunni var hlaðið. ' +
     'Vistun hafnað: endurhlaðið eininguna.',
-  // Interface audit 2026-11-13 (ED-05). NOT yet approved by [USER], unlike the texts above: an edit
+  // Interface audit 2026-11-13 (ED-05), approved by [USER] on 2026-11-14: an edit
   // of this segment is in flight that the page never showed (it was saved from another tab or
   // device, or by another editor, after the page loaded).
   UNSEEN_EDIT:

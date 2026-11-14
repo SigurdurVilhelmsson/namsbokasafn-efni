@@ -46,7 +46,7 @@ const UI = {
   // ── Confirm/alert dialogs ───────────────────────────────────
   confirm: {
     // Both editors delete the drafts when this is answered Cancel, so it says so (interface audit 2026-11-13,
-    // ED-18). The last sentence is not yet read by a native speaker.
+    // ED-18). The last sentence was read and approved by [USER] on 2026-11-14.
     draftRecovery: function (count) {
       return (
         'Fundust ' +
@@ -58,7 +58,7 @@ const UI = {
     leaveUnsaved: 'Þú átt óvistaðar breytingar. Viltu yfirgefa?',
     // The segment editor asks this before it leaves a unit with unsaved text in `count` segments: "← Til baka",
     // and another unit opened over this one (interface audit 2026-11-13, ED-01). It says what OK does: the text is
-    // thrown away, unlike closing the tab, which keeps a draft. Not yet read by a native speaker.
+    // thrown away, unlike closing the tab, which keeps a draft. Read and approved by [USER] on 2026-11-14.
     leaveDiscards: function (count) {
       return (
         'Þú átt óvistaðan texta í ' +
@@ -170,7 +170,7 @@ const UI = {
       'Breytingin sem birtist þegar þú skrifaðir hefur breyst síðan. Berðu textann þinn saman ' +
       'við röðina og vistaðu aftur.',
     // An edit of the row was saved after this page loaded and was never shown on it: from another tab or
-    // device, or by another editor (interface audit 2026-11-13, ED-05). Not yet read by a native speaker.
+    // device, or by another editor (interface audit 2026-11-13, ED-05). Read and approved by [USER] on 2026-11-14.
     unseenEdit:
       'Breyting á þessum bút var vistuð eftir að þú opnaðir síðuna, til dæmis í öðrum flipa. Berðu ' +
       'textann þinn saman við röðina og vistaðu aftur.',
@@ -181,12 +181,13 @@ const UI = {
       'Ekki er hægt að vista þennan bút fyrr en lagfæring á tvíteknum auðkennum er komin (sama ' +
       'auðkenni kemur tvisvar fyrir í einingunni). Textinn þinn er geymdur hér og verður ekki sendur.',
     bookNotMinted: 'Ekki er hægt að vista breytingar í þessari bók. Textinn þinn er geymdur hér.',
-    // Another editor saved the row first (interface audit 2026-11-13, ED-02). Not yet read by a native speaker.
+    // Another editor saved the row first (interface audit 2026-11-13, ED-02). Read and approved by [USER] on
+    // 2026-11-14.
     conflict:
       'Annar yfirlesari vistaði breytingu á þessum bút á meðan þú skrifaðir. Berðu textann þinn saman ' +
       'við röðina og vistaðu aftur.',
     // A kept text whose row shows another editor's undecided edit: the row offers no Breyta, and the kept text is
-    // not saved over that edit (interface audit 2026-11-13). Not yet read by a native speaker.
+    // not saved over that edit (interface audit 2026-11-13). Read and approved by [USER] on 2026-11-14.
     rowNotYours:
       'Annar yfirlesari á óafgreidda breytingu á þessum bút. Textinn þinn er geymdur hér, en hann verður ' +
       'ekki vistaður fyrr en sú breyting hefur verið afgreidd.',
