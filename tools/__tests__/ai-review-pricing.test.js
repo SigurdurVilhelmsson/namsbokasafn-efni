@@ -22,7 +22,7 @@ const M = 1_000_000;
 describe('PRICING table', () => {
   it('names its source and the date it was cached', () => {
     expect(PRICING.source).toMatch(/claude-api/);
-    expect(PRICING.cachedOn).toBe('2026-10-06');
+    expect(PRICING.cachedOn).toBe('2026-11-14');
   });
 
   it('pins claude-opus-5-5 at USD 4 / 20 per MTok, cache read USD 0.20', () => {
@@ -31,6 +31,17 @@ describe('PRICING table', () => {
       outputUsdPerMTok: 20,
       cacheReadUsdPerMTok: 0.2,
     });
+  });
+
+  it('pins claude-fable-5-2 at USD 8 / 40 per MTok, cache read USD 0.20', () => {
+    expect(PRICING.models['claude-fable-5-2']).toEqual({
+      inputUsdPerMTok: 8,
+      outputUsdPerMTok: 40,
+      cacheReadUsdPerMTok: 0.2,
+    });
+    expect(
+      costUsd({ model: 'claude-fable-5-2', usage: { input_tokens: M, output_tokens: M } })
+    ).toBe(48);
   });
 
   it('pins the cache-write multipliers and the batch discount', () => {

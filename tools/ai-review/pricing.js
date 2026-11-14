@@ -4,7 +4,8 @@
  * Design: docs/superpowers/specs/2026-10-26-ai-layer-scaffolding-design.md, Unit D.
  *
  * An ENFORCEABLE VALUE with its source and date: the rates below are the claude-api
- * reference model table as cached on 2026-10-06. Pinned by
+ * reference model table as cached on 2026-10-06 (Opus 5.5) and re-read on 2026-11-14,
+ * when the Fable 5.2 row was added (its rates unchanged for Opus 5.5). Pinned by
  * `tools/__tests__/ai-review-pricing.test.js`. **Invoices decide what is owed; this
  * table decides when a run stops.** An unknown model refuses rather than guessing.
  *
@@ -15,11 +16,17 @@
 
 export const PRICING = Object.freeze({
   source: 'claude-api skill reference, model table (USD per million tokens)',
-  cachedOn: '2026-10-06',
+  cachedOn: '2026-11-14',
   models: Object.freeze({
     'claude-opus-5-5': Object.freeze({
       inputUsdPerMTok: 4,
       outputUsdPerMTok: 20,
+      cacheReadUsdPerMTok: 0.2,
+    }),
+    // Added 2026-11-14 for the Fable editor trial (docs/plans/2026-11-14-fable-editor-trial-plan.md).
+    'claude-fable-5-2': Object.freeze({
+      inputUsdPerMTok: 8,
+      outputUsdPerMTok: 40,
       cacheReadUsdPerMTok: 0.2,
     }),
   }),
