@@ -145,7 +145,7 @@ test.describe('Authenticated pages (admin)', () => {
     await page.goto('/');
     await page.waitForLoadState('domcontentloaded');
 
-    const fn = (args) => window.buildEmptyTaskMessage(args.r, args.p, args.k);
+    const fn = (args) => window.buildEmptyTaskMessage(args.r, args.p, args.k, args.c);
 
     const reviewerPending = await page.evaluate(fn, { r: true, p: 14, k: 0 });
     expect(reviewerPending.heading).toBe('Engin ritstjórnarverkefni í dag');
@@ -161,8 +161,20 @@ test.describe('Authenticated pages (admin)', () => {
     expect(reviewerIdle.heading).toBe('Ekkert verkefni í dag!');
     expect(reviewerIdle.actionHref).toBeUndefined();
 
+    // An editor is not told they have finished everything (interface audit 2026-11-13, HM-01). With no
+    // chapter they are told so and offered the editor; with chapters, they are pointed to them.
     const editor = await page.evaluate(fn, { r: false, p: 0, k: 0 });
-    expect(editor.heading).toBe('Ekkert verkefni í dag!');
+    expect(editor.heading).toBe('Engum kafla úthlutað enn');
+    expect(editor.actionHref).toBe('/editor');
+    const editorWithChapters = await page.evaluate(fn, {
+      r: false,
+      p: 0,
+      k: 0,
+      c: { assignedCount: 2 },
+    });
+    expect(editorWithChapters.heading).toBe('Ekkert bíður svars frá þér');
+    const guest = await page.evaluate(fn, { r: false, p: 0, k: 0, c: { isGuest: true } });
+    expect(guest.heading).toBe('Þú ert gestur');
 
     const singular = await page.evaluate(fn, { r: true, p: 1, k: 0 });
     expect(singular.body).toContain('1 breyting bíður');

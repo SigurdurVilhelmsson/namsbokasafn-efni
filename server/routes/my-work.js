@@ -20,6 +20,7 @@ const { requireAuth } = require('../middleware/requireAuth');
 const { BOOK_LABELS } = require('../config');
 const activityLog = require('../services/activityLog');
 const dashboardReadModel = require('../services/dashboardReadModel');
+const userService = require('../services/userService');
 const resolveDbPath = require('../lib/dbPath');
 
 // Database path (same as other services)
@@ -46,9 +47,10 @@ const STAGE_TO_PASS = {
 };
 
 /**
- * Build editor URL with stage parameter
+ * Build editor URL with stage parameter. With `segmentId`, the editor opens that row once the module is loaded
+ * (interface audit 2026-11-13, HM-04: "Laga" opened the module and left the editor to find the row).
  */
-function buildEditorUrl(book, chapter, section, stage) {
+function buildEditorUrl(book, chapter, section, stage, segmentId = null) {
   let url = `/segment-editor?book=${book}&chapter=${chapter}`;
   if (section) {
     url += `&module=${section}`;
@@ -56,7 +58,54 @@ function buildEditorUrl(book, chapter, section, stage) {
   if (stage && STAGE_TO_PASS[stage]) {
     url += `&stage=${STAGE_TO_PASS[stage]}`;
   }
+  if (section && segmentId) {
+    url += `&segment=${encodeURIComponent(segmentId)}`;
+  }
   return url;
+}
+
+/**
+ * The first words of a segment's text for a reader (HM-03): bracket markers become their visible text, and a
+ * text longer than `max` is cut at a word and ends in "…".
+ */
+function excerptOf(text, max = 80) {
+  const plain = String(text || '')
+    .replace(/\[\[[a-z]+:([^\]|]*)(?:\|[^\]]*)?\]\]/gi, '$1')
+    .replace(/\[\[[^\]]*\]\]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (plain.length <= max) return plain;
+  const cut = plain.slice(0, max);
+  const lastSpace = cut.lastIndexOf(' ');
+  return (lastSpace > max / 2 ? cut.slice(0, lastSpace) : cut).trimEnd() + '…';
+}
+
+/**
+ * What a reviewer's answer asks of the editor (HM-03): `discuss` is a question to answer, `rejected` is a
+ * rejection to look at. Both used to read "Breytingar óskast".
+ */
+function reviewKind(status) {
+  return status === 'discuss' ? 'question' : 'rejected';
+}
+
+/**
+ * The chapters assigned to the reader, each with a link into the editor (HM-01). Looked up by the session's
+ * account row; a session with no row (a guest) has none.
+ */
+function getAssignedChapters(user) {
+  try {
+    const row = userService.findByProviderId(user.id);
+    if (!row) return [];
+    return userService.getAllChapterAssignments(row.id).map((a) => ({
+      book: a.book_slug,
+      bookLabel: BOOK_LABELS[a.book_slug] || a.book_slug,
+      chapter: a.chapter,
+      editorUrl: `/editor?book=${encodeURIComponent(a.book_slug)}&chapter=${a.chapter}`,
+    }));
+  } catch (err) {
+    log.error({ err }, 'Error getting assigned chapters');
+    return [];
+  }
 }
 
 /**
@@ -109,7 +158,7 @@ function getUserRecentReviews(username, limit = 10) {
     if (!tableExists) return [];
 
     const stmt = database.prepare(`
-      SELECT id, book, chapter, module_id as section, segment_id, status,
+      SELECT id, book, chapter, module_id as section, segment_id, status, edited_content,
              reviewer_username as reviewed_by_username, reviewer_note as review_notes,
              reviewed_at
       FROM segment_edits
@@ -160,7 +209,9 @@ router.get('/', requireAuth, async (req, res) => {
       reviewedAt: r.reviewed_at,
       notes: r.review_notes,
       hasNotes: !!r.review_notes,
-      editorUrl: buildEditorUrl(r.book, r.chapter, r.section, null),
+      kind: reviewKind(r.status),
+      excerpt: excerptOf(r.edited_content),
+      editorUrl: buildEditorUrl(r.book, r.chapter, r.section, null, r.segment_id),
     }));
 
     // Get proposed terminology
@@ -228,9 +279,12 @@ router.get('/today', requireAuth, (req, res) => {
         reviewedBy: r.reviewed_by_username,
         reviewedAt: r.reviewed_at,
         notes: r.review_notes,
-        editorUrl: buildEditorUrl(r.book, r.chapter, r.section, null),
+        kind: reviewKind(r.status),
+        excerpt: excerptOf(r.edited_content),
+        editorUrl: buildEditorUrl(r.book, r.chapter, r.section, null, r.segment_id),
         priority: 1,
-        priorityLabel: 'Breytingar óskast',
+        // (read and approved by [USER] on 2026-11-14)
+        priorityLabel: r.status === 'discuss' ? 'Spurning frá yfirlesara' : 'Breytingu hafnað',
       }));
 
     const allTasks = changesRequested;
@@ -289,6 +343,7 @@ router.get('/today', requireAuth, (req, res) => {
       },
       adminStats,
       allTasks,
+      assignedChapters: getAssignedChapters(req.user),
     });
   } catch (err) {
     log.error({ err }, 'My work today error');
