@@ -857,7 +857,7 @@
     <div class="stats-row" id="stats-row">
       <div class="stat-box">
         <div class="stat-number color-total" id="stat-total" style="font-size: 1rem;">-</div>
-        <div class="stat-label">Or&#240;hausar / &#254;&#253;&#240;ingar</div>
+        <div class="stat-label">Flettior&#240; / &#254;&#253;&#240;ingar</div>
       </div>
       <div class="stat-box">
         <div class="stat-number color-success" id="stat-approved">-</div>
@@ -968,48 +968,49 @@
         <button class="btn-close" onclick="closeModal('term-modal')">&times;</button>
       </div>
       <div class="modal-body">
-        <div class="form-group">
+        <!-- data-modes: the uses of this dialog that show the field (openTermModal). -->
+        <div class="form-group" data-modes="add edit-headword add-translation correct-translation">
           <label class="form-label">Enska *</label>
           <input type="text" id="term-english" class="form-input" placeholder="English term">
         </div>
-        <div class="form-group">
+        <div class="form-group" data-modes="add add-translation correct-translation">
           <label class="form-label">&#205;slenska *</label>
           <input type="text" id="term-icelandic" class="form-input" placeholder="&#205;slenskt or&#240;">
         </div>
-        <div class="form-group">
+        <div class="form-group" data-modes="add">
           <label class="form-label">A&#240;rar &#254;&#253;&#240;ingar</label>
           <input type="text" id="term-alternatives" class="form-input" placeholder="A&#240;skili&#240; me&#240; kommu">
         </div>
-        <div class="form-group">
+        <div class="form-group" data-modes="add add-translation correct-translation">
           <label class="form-label">Fag (veldu eitt e&#240;a fleiri)</label>
           <div id="term-subjects" class="subject-checkboxes"></div>
         </div>
         <div class="form-row">
-          <div class="form-group">
+          <div class="form-group" data-modes="add edit-headword">
             <label class="form-label">Or&#240;flokkur (POS)</label>
             <input type="text" id="term-pos" class="form-input" placeholder="t.d. n, adj, v">
           </div>
-          <div class="form-group">
+          <div class="form-group" data-modes="add add-translation correct-translation">
             <label class="form-label">Uppruni</label>
             <select id="term-source" class="form-select"></select>
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" data-modes="add edit-headword">
           <label class="form-label">Skilgreining (enska)</label>
           <textarea id="term-definition-en" class="form-textarea" rows="2" placeholder="English definition..."></textarea>
         </div>
-        <div class="form-group">
+        <div class="form-group" data-modes="add add-translation correct-translation">
           <label class="form-label">Skilgreining (&#237;slenska)</label>
           <textarea id="term-definition-is" class="form-textarea" rows="2" placeholder="&#205;slensk skilgreining..."></textarea>
         </div>
-        <div class="form-group">
+        <div class="form-group" data-modes="add add-translation correct-translation">
           <label class="form-label">Athugasemdir</label>
           <textarea id="term-notes" class="form-textarea" rows="3" placeholder="Vi&#240;b&#243;taruppl&#253;singar..."></textarea>
         </div>
       </div>
       <div class="modal-footer">
         <button class="btn btn-secondary" onclick="closeModal('term-modal')">H&#230;tta vi&#240;</button>
-        <button class="btn btn-primary" id="save-term-btn" onclick="saveTerm()">Vista</button>
+        <button class="btn btn-primary" id="save-term-btn" onclick="saveTermModal()">Vista</button>
       </div>
     </div>
   </div>
@@ -1065,7 +1066,7 @@
         </button>
         <button class="btn btn-primary" onclick="editTerm()">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-          Breyta or&#240;hausu
+          Breyta flettior&#240;i
         </button>
       </div>
     </div>
@@ -1675,7 +1676,7 @@
         }
 
         document.getElementById('results-title').textContent =
-          'Ni\u00F0urst\u00F6\u00F0ur (' + data.pagination.total + ' or\u00F0hausar)';
+          'Ni\u00F0urst\u00F6\u00F0ur (' + data.pagination.total + ' flettior\u00F0)';
 
         tbody.innerHTML = data.terms.map(term => {
           const hasDef = term.definitionEn;
@@ -1811,6 +1812,7 @@
           const subjectBadges = (tr.subjects || []).map(s => '<span class="subject-badge">' + formatSubject(s) + '</span>').join(' ');
           const canApprove = currentUser && ['admin', 'head-editor'].includes(currentUser.role) && tr.status !== 'approved';
           const canDispute = currentUser && tr.status !== 'disputed';
+          const canCorrect = canCorrectTranslation(tr); // its button: "Leiðrétta" (needs native reading)
 
           return `
           <div class="translation-row">
@@ -1819,6 +1821,7 @@
               <span class="subject-badges">${subjectBadges}</span>
               <span class="status-badge status-${tr.status}">${formatStatus(tr.status)}</span>
               <div class="translation-actions">
+                ${canCorrect ? '<button class="btn btn-sm btn-secondary" onclick="showCorrectTranslation(' + tr.id + ')" title="Lei\u00F0r\u00E9tta" aria-label="Lei\u00F0r\u00E9tta">&#9998;</button>' : ''}
                 ${canApprove ? '<button class="btn btn-sm btn-success" onclick="approveTranslation(' + tr.id + ')" title="Sam\u00FEykkja">&#10003;</button>' : ''}
                 ${canDispute ? '<button class="btn btn-sm btn-warning" onclick="disputeTranslation(' + tr.id + ')" title="Senda til umr\u00E6\u00F0u">&#9873;</button>' : ''}
               </div>
@@ -1860,88 +1863,205 @@
 
     // ─── Add / Edit ───────────────────────────────────────────────
 
+    // ─── The term dialog ──────────────────────────────────────────
+    // One dialog, four uses. Each use shows only the fields it saves, and the use is set every time the dialog
+    // opens, so "Vista" never keeps the previous use's action after a cancel (interface audit 2026-11-13:
+    // TE-01, a form that showed fields it never saved; TE-02, "Vista" left wired to add-translation; TE-04,
+    // "Aðrar þýðingar" dropped).
+    //   add                  a new headword and its first translation; "Aðrar þýðingar" become more translations
+    //   edit-headword        the headword's part of speech and English definition ("Breyta flettiorði":
+    //                        "flettiorð", not "orðhaus", [USER] 2026-11-14)
+    //   add-translation      a new translation of the open headword
+    //   correct-translation  a translation in place, by the rule the server enforces (canCorrectTranslation)
+    let termModalMode = 'add';
+    let correctingTranslationId = null;
+
+    function openTermModal(mode, title) {
+      termModalMode = mode;
+      document.getElementById('modal-title').textContent = title;
+      document.querySelectorAll('#term-modal [data-modes]').forEach(group => {
+        group.style.display = group.dataset.modes.split(' ').includes(mode) ? '' : 'none';
+      });
+      document.getElementById('term-english').disabled = mode !== 'add';
+      document.getElementById('term-modal').style.display = 'flex';
+    }
+
+    /** Fill the translation fields from `tr`, or empty them. */
+    function fillTranslationFields(tr) {
+      document.getElementById('term-icelandic').value = tr?.icelandic || '';
+      document.getElementById('term-alternatives').value = '';
+      document.getElementById('term-source').value = tr?.source || 'manual';
+      document.getElementById('term-definition-is').value = tr?.definitionIs || '';
+      document.getElementById('term-notes').value = tr?.notes || '';
+      const subjects = tr?.subjects || [];
+      document.querySelectorAll('#term-subjects input[type="checkbox"]').forEach(cb => {
+        cb.checked = subjects.includes(cb.value);
+      });
+    }
+
+    /** The translation fields as a request body. An emptied definition or note is sent as null, so it clears. */
+    function translationFieldsBody() {
+      return {
+        icelandic: document.getElementById('term-icelandic').value.trim(),
+        source: document.getElementById('term-source').value,
+        definitionIs: document.getElementById('term-definition-is').value.trim() || null,
+        notes: document.getElementById('term-notes').value.trim() || null,
+        subjects: [...document.querySelectorAll('#term-subjects input[type="checkbox"]:checked')].map(cb => cb.value),
+      };
+    }
+
+    function saveTermModal() {
+      if (termModalMode === 'edit-headword') return saveHeadword();
+      if (termModalMode === 'add-translation') return addTranslation();
+      if (termModalMode === 'correct-translation') return saveCorrection();
+      return saveTerm();
+    }
+
     function showAddModal() {
       currentTermId = null;
-      document.getElementById('modal-title').textContent = 'B\u00E6ta vi\u00F0 or\u00F0i';
       document.getElementById('term-english').value = '';
-      document.getElementById('term-icelandic').value = '';
-      document.getElementById('term-alternatives').value = '';
       document.getElementById('term-pos').value = '';
-      document.getElementById('term-source').value = 'manual';
       document.getElementById('term-definition-en').value = '';
-      document.getElementById('term-definition-is').value = '';
-      document.getElementById('term-notes').value = '';
-      document.getElementById('term-english').disabled = false;
-      // Reset subject checkboxes
-      document.querySelectorAll('#term-subjects input[type="checkbox"]').forEach(cb => cb.checked = false);
-      document.getElementById('term-modal').style.display = 'flex';
+      fillTranslationFields(null);
+      openTermModal('add', 'B\u00E6ta vi\u00F0 or\u00F0i');
     }
 
     function editTerm() {
       closeModal('detail-modal');
       const term = currentTermData;
       if (!term) return;
-
-      document.getElementById('modal-title').textContent = 'Breyta or\u00F0hausu';
+      currentTermId = term.id;
       document.getElementById('term-english').value = term.english;
-      document.getElementById('term-english').disabled = true; // Can't change English term
-      // Show primary translation info (first translation)
-      const primaryTr = term.translations && term.translations[0];
-      document.getElementById('term-icelandic').value = primaryTr?.icelandic || '';
-      document.getElementById('term-alternatives').value = '';
       document.getElementById('term-pos').value = term.pos || '';
-      document.getElementById('term-source').value = primaryTr?.source || 'manual';
       document.getElementById('term-definition-en').value = term.definitionEn || '';
-      document.getElementById('term-definition-is').value = primaryTr?.definitionIs || '';
-      document.getElementById('term-notes').value = primaryTr?.notes || '';
-      // Set subject checkboxes from primary translation
-      const trSubjects = primaryTr?.subjects || [];
-      document.querySelectorAll('#term-subjects input[type="checkbox"]').forEach(cb => {
-        cb.checked = trSubjects.includes(cb.value);
-      });
-      document.getElementById('term-modal').style.display = 'flex';
+      openTermModal('edit-headword', 'Breyta flettior\u00F0i');
+    }
+
+    /**
+     * Whether this reader may correct `tr` in place. The same rule the server enforces
+     * (terminologyService.correctTranslation; [USER] 2026-11-14): the proposer until it is approved, a head
+     * editor or admin while it is not approved. An approved translation is corrected by proposing a new one.
+     */
+    function canCorrectTranslation(tr) {
+      if (!currentUser || tr.status === 'approved') return false;
+      if (['admin', 'head-editor'].includes(currentUser.role)) return true;
+      return currentUser.role === 'editor' && tr.proposedBy != null && String(tr.proposedBy) === String(currentUser.id);
+    }
+
+    function showCorrectTranslation(translationId) {
+      const tr = (currentTermData?.translations || []).find(t => t.id === translationId);
+      if (!tr) return;
+      closeModal('detail-modal');
+      correctingTranslationId = tr.id;
+      document.getElementById('term-english').value = currentTermData.english;
+      fillTranslationFields(tr);
+      // (needs native reading)
+      openTermModal('correct-translation', 'Lei\u00F0r\u00E9tta \u00FE\u00FD\u00F0ingu \u00E1 \u201C' + currentTermData.english + '\u201D');
     }
 
     async function saveTerm() {
       const english = document.getElementById('term-english').value.trim();
-      const icelandic = document.getElementById('term-icelandic').value.trim();
       const pos = document.getElementById('term-pos').value.trim();
-      const source = document.getElementById('term-source').value;
       const definitionEn = document.getElementById('term-definition-en').value.trim();
-      const definitionIs = document.getElementById('term-definition-is').value.trim();
-      const notes = document.getElementById('term-notes').value.trim();
-      const selectedSubjects = [...document.querySelectorAll('#term-subjects input[type="checkbox"]:checked')].map(cb => cb.value);
+      const fields = translationFieldsBody();
 
       if (!english) {
         alert('Enska er nau\u00F0synleg');
         return;
       }
 
-      const body = { english, icelandic, source, notes, subjects: selectedSubjects };
+      const body = { english, icelandic: fields.icelandic, source: fields.source, notes: fields.notes || '', subjects: fields.subjects };
       if (pos) body.pos = pos;
       if (definitionEn) body.definitionEn = definitionEn;
-      if (definitionIs) body.definitionIs = definitionIs;
+      if (fields.definitionIs) body.definitionIs = fields.definitionIs;
+
+      // "Aðrar þýðingar": each becomes a translation of its own, proposed like the first (TE-04).
+      const alternatives = [...new Set(
+        document.getElementById('term-alternatives').value.split(',').map(a => a.trim()).filter(Boolean)
+      )].filter(a => a !== fields.icelandic);
 
       try {
-        const url = currentTermId ? '/api/terminology/' + currentTermId : '/api/terminology';
-        const method = currentTermId ? 'PUT' : 'POST';
-
-        const data = await fetchJson(url, {
-          method,
+        const data = await fetchJson('/api/terminology', {
+          method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(body)
         });
+        if (!(data.success || data.term)) {
+          alert('Villa: ' + (data.message || 'Gat ekki vista\u00F0'));
+          return;
+        }
 
+        const failed = [];
+        for (const icelandic of alternatives) {
+          try {
+            await fetchJson('/api/terminology/' + data.term.id + '/translations', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ icelandic, source: fields.source, subjects: fields.subjects })
+            });
+          } catch (e) {
+            failed.push(icelandic);
+          }
+        }
+
+        closeModal('term-modal');
+        searchTerms();
+        loadStats();
+        if (failed.length > 0) {
+          // (needs native reading)
+          alert('Or\u00F0i\u00F0 var vista\u00F0, en \u00FEessar \u00FE\u00FD\u00F0ingar ekki: ' + failed.join(', '));
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    async function saveHeadword() {
+      const pos = document.getElementById('term-pos').value.trim();
+      const definitionEn = document.getElementById('term-definition-en').value.trim();
+      try {
+        const data = await fetchJson('/api/terminology/' + currentTermId, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pos: pos || null, definitionEn: definitionEn || null })
+        });
         if (data.success || data.term) {
           closeModal('term-modal');
-          document.getElementById('term-english').disabled = false;
+          showTermDetail(currentTermId); // shows what was saved
           searchTerms();
-          loadStats();
         } else {
           alert('Villa: ' + (data.message || 'Gat ekki vista\u00F0'));
         }
       } catch (err) {
         alert('Villa: ' + err.message);
+      }
+    }
+
+    // A refusal the page could meet when its view is stale (the translation was approved meanwhile, say).
+    // (needs native reading)
+    const CORRECTION_REFUSALS = {
+      APPROVED_NOT_EDITABLE: 'Sam\u00FEykkt \u00FE\u00FD\u00F0ing er ekki lei\u00F0r\u00E9tt beint. Legg\u00F0u til n\u00FDja \u00FE\u00FD\u00F0ingu \u00ED sta\u00F0inn.',
+      NOT_YOUR_TRANSLATION: 'A\u00F0eins s\u00E1 sem lag\u00F0i \u00FE\u00FD\u00F0inguna til, e\u00F0a a\u00F0alritstj\u00F3ri, getur lei\u00F0r\u00E9tt hana.',
+    };
+
+    async function saveCorrection() {
+      const fields = translationFieldsBody();
+      if (!fields.icelandic) {
+        alert('\u00CDslenska er nau\u00F0synleg');
+        return;
+      }
+      try {
+        await fetchJson('/api/terminology/translations/' + correctingTranslationId, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(fields)
+        });
+        closeModal('term-modal');
+        showTermDetail(currentTermId); // shows the corrected translation
+        searchTerms();
+      } catch (err) {
+        const code = err && err.data && err.data.code;
+        alert(CORRECTION_REFUSALS[code] || 'Villa: ' + err.message);
       }
     }
 
@@ -1992,30 +2112,15 @@
     function showAddTranslationForm() {
       closeModal('detail-modal');
       currentTermId = currentTermData?.id || currentTermId;
-      document.getElementById('modal-title').textContent = 'B\u00E6ta vi\u00F0 \u00FE\u00FD\u00F0ingu \u00E1 \u201C' + (currentTermData?.english || '') + '\u201D';
       document.getElementById('term-english').value = currentTermData?.english || '';
-      document.getElementById('term-english').disabled = true;
-      document.getElementById('term-icelandic').value = '';
-      document.getElementById('term-alternatives').value = '';
-      document.getElementById('term-pos').value = currentTermData?.pos || '';
-      document.getElementById('term-source').value = 'manual';
-      document.getElementById('term-definition-en').value = currentTermData?.definitionEn || '';
-      document.getElementById('term-definition-is').value = '';
-      document.getElementById('term-notes').value = '';
-      document.querySelectorAll('#term-subjects input[type="checkbox"]').forEach(cb => cb.checked = false);
-      // Override save to add translation, not create headword
-      document.getElementById('save-term-btn').onclick = addTranslation;
-      document.getElementById('term-modal').style.display = 'flex';
+      fillTranslationFields(null);
+      openTermModal('add-translation', 'B\u00E6ta vi\u00F0 \u00FE\u00FD\u00F0ingu \u00E1 \u201C' + (currentTermData?.english || '') + '\u201D');
     }
 
     async function addTranslation() {
-      const icelandic = document.getElementById('term-icelandic').value.trim();
-      const source = document.getElementById('term-source').value;
-      const definitionIs = document.getElementById('term-definition-is').value.trim();
-      const notes = document.getElementById('term-notes').value.trim();
-      const selectedSubjects = [...document.querySelectorAll('#term-subjects input[type="checkbox"]:checked')].map(cb => cb.value);
+      const fields = translationFieldsBody();
 
-      if (!icelandic) {
+      if (!fields.icelandic) {
         alert('\u00CDslenska er nau\u00F0synleg');
         return;
       }
@@ -2024,14 +2129,11 @@
         const data = await fetchJson('/api/terminology/' + currentTermId + '/translations', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ icelandic, source, definitionIs, notes, subjects: selectedSubjects })
+          body: JSON.stringify(fields)
         });
 
         if (data.success || data.translation) {
           closeModal('term-modal');
-          document.getElementById('term-english').disabled = false;
-          // Restore normal save behavior
-          document.getElementById('save-term-btn').onclick = saveTerm;
           showTermDetail(currentTermId);
           searchTerms();
           loadStats();

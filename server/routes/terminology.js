@@ -608,13 +608,15 @@ router.post('/:headwordId/translations', requireAuth, requireRole(ROLES.EDITOR),
 
 /**
  * PUT /api/terminology/translations/:id
- * Update a translation
+ * Correct a translation in place: its proposer until it is approved, or a head editor or admin while it is
+ * not approved. An approved translation is never corrected in place (409 APPROVED_NOT_EDITABLE); someone
+ * else's is refused to an editor (403 NOT_YOUR_TRANSLATION). The rule is terminologyService.correctTranslation.
  */
 router.put('/translations/:id', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   const { id } = req.params;
 
   try {
-    const translation = terminology.updateTranslation(parseInt(id, 10), req.body);
+    const translation = terminology.correctTranslation(parseInt(id, 10), req.body, req.user);
 
     activityLog.log({
       type: 'update_translation',
@@ -626,6 +628,9 @@ router.put('/translations/:id', requireAuth, requireRole(ROLES.EDITOR), (req, re
 
     res.json({ success: true, translation });
   } catch (err) {
+    if (err.code === 'APPROVED_NOT_EDITABLE' || err.code === 'NOT_YOUR_TRANSLATION') {
+      return res.status(err.status).json({ error: err.message, code: err.code });
+    }
     log.error({ err }, 'Update translation error');
     res.status(err.message.includes('not found') ? 404 : 500).json({
       error: 'Failed to update translation',
