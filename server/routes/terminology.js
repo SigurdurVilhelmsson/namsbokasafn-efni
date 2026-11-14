@@ -20,6 +20,22 @@ const log = require('../lib/logger');
 const { requireAuth } = require('../middleware/requireAuth');
 const { createUpload } = require('../middleware/upload');
 const { requireRole, ROLES } = require('../middleware/requireRole');
+const { isBelowEditor, withoutKeys } = require('../lib/withoutPeople');
+
+// Who proposed and who approved a translation, and a headword's discussion with its authors: left out of what
+// a guest reads ([USER] 2026-11-14, answer 6). The glossary itself stays open to every sign-in.
+const TERM_PEOPLE_KEYS = [
+  'proposedBy',
+  'proposedByName',
+  'approvedBy',
+  'approvedByName',
+  'discussions',
+];
+
+/** A glossary answer as this reader gets it: whole for an editor and above, without the people for a guest. */
+function forReader(req, payload) {
+  return isBelowEditor(req.user) ? withoutKeys(payload, TERM_PEOPLE_KEYS) : payload;
+}
 const terminology = require('../services/terminologyService');
 const { VALID_BOOKS } = require('../config');
 const seed = require('../lib/arnastofnunSeed');
@@ -78,7 +94,7 @@ router.get('/', requireAuth, (req, res) => {
       offset: Math.max(parseInt(offset, 10) || 0, 0),
     });
 
-    res.json(result);
+    res.json(forReader(req, result));
   } catch (err) {
     log.error({ err }, 'Search terms error');
     res.status(500).json({ error: 'Failed to search terms', message: err.message });
@@ -102,7 +118,7 @@ router.get('/lookup', requireAuth, (req, res) => {
 
   try {
     const terms = terminology.lookupTerm(q, bookSlug || null);
-    res.json({ terms });
+    res.json(forReader(req, { terms }));
   } catch (err) {
     log.error({ err }, 'Terminology lookup error');
     res.status(500).json({ error: 'Lookup failed', message: err.message });
@@ -233,7 +249,7 @@ router.get('/export', requireAuth, (req, res) => {
       offset: 0,
     });
 
-    const terms = result.terms;
+    const terms = forReader(req, result.terms);
 
     if (format === 'csv') {
       const header =
@@ -420,6 +436,11 @@ router.get('/:id', requireAuth, (req, res) => {
 
     if (!term) {
       return res.status(404).json({ error: 'Headword not found' });
+    }
+
+    if (isBelowEditor(req.user)) {
+      // `discussionsWithheld` lets the page leave the discussion out instead of calling it empty.
+      return res.json({ term: { ...forReader(req, term), discussionsWithheld: true } });
     }
 
     res.json({ term });

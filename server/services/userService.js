@@ -556,6 +556,25 @@ function getHeadEditorBooks(user) {
   return user.bookAccess.filter((ba) => ba.role === ROLES.HEAD_EDITOR).map((ba) => ba.book);
 }
 
+/**
+ * The books a user works on: every book they hold a book-access row for (head editor or editor) and every
+ * book they are assigned a chapter of. Used to decide whose activity log they may read (lib/activityScope).
+ *
+ * @param {number} userId  the users row id
+ * @returns {string[]}
+ */
+function getBooksWorkedOn(userId) {
+  if (!isUserTableReady()) return [];
+  return getDb()
+    .prepare(
+      `SELECT book_slug FROM user_book_access WHERE user_id = ?
+       UNION
+       SELECT book_slug FROM user_chapter_assignments WHERE user_id = ?`
+    )
+    .all(userId, userId)
+    .map((r) => r.book_slug);
+}
+
 // ================================================================
 // CHAPTER ASSIGNMENTS
 // ================================================================
@@ -837,6 +856,7 @@ module.exports = {
   // Role helpers
   getEffectiveRole,
   getHeadEditorBooks,
+  getBooksWorkedOn,
   ROLES,
   ROLE_HIERARCHY,
 

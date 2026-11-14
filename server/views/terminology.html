@@ -1834,7 +1834,11 @@
         }).join('');
       }
 
-      // Render discussions
+      // Render discussions. A guest gets the headword without its discussion (the server says so with
+      // `discussionsWithheld`): the whole section is left out, so the page does not call it empty or offer a
+      // comment box the server would refuse.
+      const discussionSection = document.querySelector('#detail-modal .discussion-section');
+      if (discussionSection) discussionSection.style.display = term.discussionsWithheld ? 'none' : '';
       const discussionsList = document.getElementById('discussions-list');
       if (term.discussions && term.discussions.length > 0) {
         discussionsList.innerHTML = term.discussions.map(d => `

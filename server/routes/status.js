@@ -18,6 +18,7 @@ const fs = require('fs');
 const path = require('path');
 const log = require('../lib/logger');
 const activityLog = require('../services/activityLog');
+const { readableLogBooks, refuseOtherBook } = require('../lib/activityScope');
 const segmentEditorService = require('../services/segmentEditorService');
 const dashboardReadModel = require('../services/dashboardReadModel');
 const { requireAuth } = require('../middleware/requireAuth');
@@ -218,9 +219,11 @@ router.get('/dashboard', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (req
       }
     }
 
-    // Get recent team activity (last 24 hours)
+    // Get recent team activity (last 24 hours), held to the books this reader works on (lib/activityScope:
+    // an admin sees every book's).
     try {
       const result = activityLog.search({
+        books: readableLogBooks(req.user),
         limit: 20,
         offset: 0,
       });
@@ -244,7 +247,11 @@ router.get('/dashboard', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (req
       const velocityTypes = ['review_approved', 'segment_edit_approved', 'segment_edits_applied'];
       let completedThisWeek = 0;
       for (const vType of velocityTypes) {
-        const result = activityLog.search({ type: vType, limit: 200 });
+        const result = activityLog.search({
+          type: vType,
+          books: readableLogBooks(req.user),
+          limit: 200,
+        });
         completedThisWeek += result.activities.filter((a) => {
           const activityDate = new Date(a.createdAt);
           return activityDate >= weekAgo;
@@ -354,13 +361,21 @@ router.get('/dashboard', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (req
  * GET /api/status/activity/timeline
  * Get activity timeline with optional filters
  */
-// Editors and above: each row says who did what and when.
+// Editors and above: each row says who did what and when. And only for the books the reader works on
+// (lib/activityScope): a named book that is not theirs is refused, and with no book named the rows are held
+// to their books, `?user=` included.
 router.get('/activity/timeline', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   const { book, type, user, limit = 50, offset = 0 } = req.query;
+
+  const readable = readableLogBooks(req.user);
+  if (book && readable !== null && !readable.includes(book)) {
+    return refuseOtherBook(res, book);
+  }
 
   try {
     const result = activityLog.search({
       book: book || null,
+      books: book ? null : readable,
       type: type || null,
       userId: user || null,
       limit: Math.min(parseInt(limit, 10) || 50, 200),
@@ -452,7 +467,11 @@ router.get('/analytics', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (req
 
       let completedInPeriod = 0;
       for (const vType of analyticsVelocityTypes) {
-        const result = activityLog.search({ type: vType, limit: 500 });
+        const result = activityLog.search({
+          type: vType,
+          books: readableLogBooks(req.user),
+          limit: 500,
+        });
         completedInPeriod += result.activities.filter((a) => {
           const activityDate = new Date(a.createdAt);
           return activityDate >= startDate;
@@ -565,7 +584,9 @@ router.get('/analytics', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (req
       const last30Days = new Date();
       last30Days.setDate(last30Days.getDate() - 30);
 
+      // Per-person figures come from the rows of the books this reader works on (lib/activityScope).
       const result = activityLog.search({
+        books: readableLogBooks(req.user),
         limit: 1000,
       });
 
@@ -688,6 +709,7 @@ router.get('/analytics', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (req
 
       const result = activityLog.search({
         type: 'review_approved',
+        books: readableLogBooks(req.user),
         limit: 500,
       });
 
@@ -883,7 +905,7 @@ router.get('/meeting-agenda', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req,
       const weekAgo = new Date();
       weekAgo.setDate(weekAgo.getDate() - 7);
 
-      const recentActivity = activityLog.search({ limit: 10 });
+      const recentActivity = activityLog.search({ books: readableLogBooks(req.user), limit: 10 });
       const recentUsers = new Map();
 
       for (const activity of recentActivity.activities) {
