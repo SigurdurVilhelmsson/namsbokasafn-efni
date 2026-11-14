@@ -221,6 +221,7 @@
 | DELETE | `/edit/:editId` |
 | POST | `/:book/:chapter/:moduleId/submit` |
 | GET | `/reviews` |
+| GET | `/review-list` |
 | GET | `/review-queue` |
 | POST | `/edit/:editId/approve` |
 | POST | `/edit/:editId/reject` |

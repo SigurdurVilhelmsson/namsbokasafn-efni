@@ -232,6 +232,32 @@ function getReadyToApply() {
     .filter((r) => !faithfulWriteHold(r.book)); // §C203: a held book has nothing ready to apply
 }
 
+/**
+ * The units (book, chapter, module) that hold edits waiting for a decision, oldest first: what "Yfirlestrar"
+ * lists (interface audit 2026-11-13, ED-08; [USER] 2026-11-14: an edit is reviewable when it is saved, so the
+ * list is of pending edits, not of modules sent for review). A discussed or rejected edit waits on its editor,
+ * not on a decision, and is not counted.
+ *
+ * @param {{books?: (string[]|null)}} [opts] `books`: only these books; null = every book; [] = none.
+ * @returns {Array<{book: string, chapter: number, moduleId: string, pendingCount: number, oldestAt: string}>}
+ */
+function getModulesWithPendingEdits({ books = null } = {}) {
+  const conn = getDb();
+  if (!tableExists(conn, 'segment_edits')) return [];
+  if (Array.isArray(books) && books.length === 0) return [];
+  const bookList = books === null ? null : JSON.stringify(books);
+  return conn
+    .prepare(
+      `SELECT book, chapter, module_id AS moduleId, COUNT(*) AS pendingCount, MIN(created_at) AS oldestAt
+       FROM segment_edits
+       WHERE status = 'pending'
+         AND (? IS NULL OR book IN (SELECT value FROM json_each(?)))
+       GROUP BY book, chapter, module_id
+       ORDER BY oldestAt ASC, book, chapter, moduleId`
+    )
+    .all(bookList, bookList);
+}
+
 // =====================================================================
 // Test helper
 // =====================================================================
@@ -242,6 +268,7 @@ function _setTestDb(testDb) {
 
 module.exports = {
   getGlobalPendingEdits,
+  getModulesWithPendingEdits,
   getAdminHeadlineCount,
   getUserActionableEdits,
   getUserHeadlineCounts,

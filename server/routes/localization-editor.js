@@ -5,6 +5,10 @@
  * Three-column view: EN (reference) | Faithful IS (source) | Localized IS (editable).
  * Saves localized segments to 04-localized-content/.
  *
+ * Who: the writes (save, save-all, log, restore) are for the book's head editors and admins ([USER] 2026-11-14,
+ * answer 12: localization is head editors' and admins' work; interface audit 2026-11-13, LO-02). The menu showed
+ * Aðlögun to them only while the routes accepted the editor role.
+ *
  * Endpoints:
  *   GET  /api/localization-editor/:book/:chapter          List modules with localization status
  *   GET  /api/localization-editor/:book/:chapter/:moduleId Load module for localization
@@ -27,7 +31,6 @@ const activityLog = require('../services/activityLog');
 const { requireAuth } = require('../middleware/requireAuth');
 const {
   requireRole,
-  requireBookAccess,
   requireHeadEditor,
   requireHeadEditorFor,
   ROLES,
@@ -295,7 +298,7 @@ router.post(
   '/:book/:chapter/:moduleId/save',
   requireAuth,
   validateBookChapter,
-  requireBookAccess(),
+  requireHeadEditor('book'), // localization is for the book's head editors and admins (answer 12)
   validateModule,
   async (req, res) => {
     const { segmentId, content, category, lastModified } = req.body;
@@ -471,7 +474,7 @@ router.post(
   '/:book/:chapter/:moduleId/save-all',
   requireAuth,
   validateBookChapter,
-  requireBookAccess(),
+  requireHeadEditor('book'), // localization is for the book's head editors and admins (answer 12)
   validateModule,
   async (req, res) => {
     const { segments, lastModified } = req.body;
@@ -915,10 +918,9 @@ router.post(
 router.post(
   '/:book/:chapter/:moduleId/log',
   requireAuth,
-  requireRole(ROLES.EDITOR),
   validateBookChapter,
   validateModule,
-  requireBookAccess(),
+  requireHeadEditor('book'), // localization is for the book's head editors and admins (answer 12)
   (req, res) => {
     const { original, changedTo, reason, type } = req.body;
 
