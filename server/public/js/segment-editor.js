@@ -4889,10 +4889,13 @@
     chapterSelect.value = chapter;
     chapterSelect.dispatchEvent(new Event('change'));
 
-    // 4. If module specified, wait for module cards then load it
+    // 4. If module specified, wait for module cards then load it. With ?segment=, open that row once it is
+    // loaded: Heim's links name the row a reviewer answered (interface audit 2026-11-13, HM-04).
     if (module) {
       await waitFor(() => document.querySelector('.module-card'));
-      loadModule(module);
+      await loadModule(module);
+      const segment = params.get('segment');
+      if (segment) jumpToSegment(segment);
     }
   })();
 

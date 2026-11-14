@@ -151,6 +151,16 @@ try {
   );
   addLegacyRow.run(assignA);
   addLegacyRow.run(assignB);
+
+  // The editor of server/e2e/front-page.spec.js (Heim lists a member's chapters, interface audit 2026-11-13,
+  // HM-01): efnafraedi-2e chapter 5, which that spec owns. It only reads Heim, so it opens no module.
+  const heimEditor = Number(
+    addAssignEditor.run('90301', 'e2e-heim-editor', 'E2E Heim Editor').lastInsertRowid
+  );
+  db.prepare(
+    `INSERT INTO user_chapter_assignments (user_id, book_slug, chapter, assigned_by)
+     VALUES (?, 'efnafraedi-2e', 5, 'e2e')`
+  ).run(heimEditor);
 } finally {
   db.close();
 }

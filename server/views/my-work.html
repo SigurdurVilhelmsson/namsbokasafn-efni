@@ -154,6 +154,13 @@
 
     .meta-reviewer { font-style: italic; }
 
+    /* The first words of the text a reviewer's answer concerns (HM-03). */
+    .task-excerpt {
+      font-style: italic;
+      color: var(--text-primary);
+      margin: var(--spacing-sm) 0;
+    }
+
     .task-notes {
       background: var(--bg-elevated);
       padding: 0.75rem;
@@ -880,6 +887,13 @@
         <div class="up-next-list" id="up-next-list"></div>
       </div>
 
+      <!-- The reader's chapters (interface audit 2026-11-13, HM-01: no page listed an editor's chapters).
+           "Kaflarnir þínir" (read and approved by [USER] on 2026-11-14). -->
+      <div class="up-next-section" id="my-chapters-section" style="display: none;">
+        <div class="section-label">Kaflarnir &thorn;&iacute;nir <span class="count-badge" id="my-chapters-count">0</span></div>
+        <div class="up-next-list" id="my-chapters-list"></div>
+      </div>
+
       <!-- Quick Stats -->
       <div class="quick-stats" id="quick-stats">
         <div class="quick-stat-item">
@@ -1135,8 +1149,11 @@
         // Update subtitle based on task count
         var totalTasks = todayData.quickStats ? todayData.quickStats.totalTasks : 0;
         var subtitle;
+        var role = todayData.user && todayData.user.role;
         if (totalTasks === 0) {
-          subtitle = 'Engin verkefni í dag \u2013 vel gert!';
+          // Only a reviewer with nothing waiting is congratulated: a guest and an editor with nothing assigned
+          // used to read "vel gert!" on their first day (HM-01). The card below says what applies to them.
+          subtitle = role === 'admin' || role === 'head-editor' ? 'Engin verkefni í dag \u2013 vel gert!' : '';
         } else if (totalTasks === 1) {
           subtitle = 'Þú ert með 1 verkefni';
         } else {
@@ -1167,6 +1184,9 @@
 
         // Render up next
         renderUpNext(todayData.upNext);
+
+        // The reader's chapters (HM-01)
+        renderMyChapters(todayData.assignedChapters || []);
 
         // Update quick stats. Role-aware (audit F1): admins/head-editors see
         // global queue counts; editors see personal stats.
@@ -1202,7 +1222,17 @@
     // ========================================================================
 
     // B-2: decide the empty-"Today" message. Pure — unit-tested via page.evaluate.
-    function buildEmptyTaskMessage(isReviewer, pendingCount, readyCount) {
+    // `context`: { isGuest, assignedCount } (interface audit 2026-11-13, HM-01 and SH-12). A guest and an editor
+    // with nothing assigned used to read "Þú hefur lokið öllum verkefnum"; that message is now a reviewer's only.
+    // New texts (read and approved by [USER] on 2026-11-14), except the guest's, which is Um mig's.
+    function buildEmptyTaskMessage(isReviewer, pendingCount, readyCount, context) {
+      var ctx = context || {};
+      if (ctx.isGuest) {
+        return {
+          heading: 'Þú ert gestur',
+          body: 'Þú getur skoðað kerfið en ekki breytt neinu. Enginn notendaaðgangur er stofnaður fyrir gesti.',
+        };
+      }
       if (isReviewer && pendingCount > 0) {
         return {
           heading: 'Engin ritstjórnarverkefni í dag',
@@ -1219,9 +1249,24 @@
           actionHref: '/editor?view=reviews',
         };
       }
+      if (!isReviewer && !(ctx.assignedCount > 0)) {
+        return {
+          heading: 'Engum kafla úthlutað enn',
+          body: 'Þér hefur ekki enn verið úthlutað kafla. Hafðu samband við aðalritstjóra, eða opnaðu ritilinn til að skoða.',
+          actionLabel: 'Opna ritil',
+          actionHref: '/editor',
+        };
+      }
+      if (!isReviewer) {
+        return {
+          heading: 'Ekkert bíður svars frá þér',
+          body: 'Kaflarnir þínir eru hér fyrir neðan.',
+        };
+      }
       return {
         heading: 'Ekkert verkefni í dag!',
         body: 'Þú hefur lokið öllum verkefnum. Slakaðu á eða biddu eftir nýjum úthlutunum.',
+        celebrate: true,
       };
     }
     window.buildEmptyTaskMessage = buildEmptyTaskMessage;
@@ -1236,14 +1281,18 @@
         var msg = buildEmptyTaskMessage(
           isReviewer,
           stats ? (stats.globalPendingCount || 0) : 0,
-          stats ? (stats.readyToApplyCount || 0) : 0
+          stats ? (stats.readyToApplyCount || 0) : 0,
+          {
+            isGuest: role === 'viewer',
+            assignedCount: ((todayData && todayData.assignedChapters) || []).length,
+          }
         );
         var action = msg.actionHref
           ? '<a href="' + msg.actionHref + '" class="btn btn-primary btn-sm">' + escapeHtml(msg.actionLabel) + '</a>'
           : '';
         container.innerHTML =
           '<div class="empty-task">' +
-            (msg.actionHref ? '' : '<div class="empty-icon">🎉</div>') +
+            (msg.celebrate ? '<div class="empty-icon">🎉</div>' : '') +
             '<h3>' + escapeHtml(msg.heading) + '</h3>' +
             '<p>' + escapeHtml(msg.body) + '</p>' +
             action +
@@ -1254,26 +1303,53 @@
       var isChangesRequested = task.type === 'changes_requested';
       var priorityClass = task.priority === 1 ? 'priority-urgent' : task.priority === 2 ? 'priority-soon' : '';
 
-      var taskTitle = '';
-      var taskMeta = '';
-
-      taskTitle = task.bookLabel + ' - ' + chapterLabel.full(task.chapter) + ', ' + task.section;
-      taskMeta = '<span class="meta-reviewer">Athugasemdir frá ' + escapeHtml(task.reviewedBy) + '</span>';
+      // A reviewer's question and a rejection are told apart (HM-03), and the card names the text concerned.
+      // New texts (read and approved by [USER] on 2026-11-14).
+      var isQuestion = task.kind === 'question';
+      var taskTitle = task.bookLabel + ' - ' + chapterLabel.full(task.chapter) + ', ' + task.section;
+      var taskMeta =
+        '<span class="meta-reviewer">' +
+        (isQuestion ? 'Spurning frá ' : 'Hafnað af ') +
+        escapeHtml(task.reviewedBy || '') +
+        '</span>';
 
       container.innerHTML =
         '<div class="task-card-content ' + priorityClass + '">' +
           '<div class="task-priority-badge ' + (isChangesRequested ? 'badge-changes' : '') + '">' +
-            'Breytingar óskast' +
+            escapeHtml(isQuestion ? 'Spurning frá yfirlesara' : 'Breytingu hafnað') +
           '</div>' +
           '<h3 class="task-title">' + escapeHtml(taskTitle) + '</h3>' +
           '<div class="task-meta">' + taskMeta + '</div>' +
+          (task.excerpt ? '<div class="task-excerpt">\u201E' + escapeHtml(task.excerpt) + '\u201C</div>' : '') +
           (task.notes ? '<div class="task-notes">' + escapeHtml(task.notes) + '</div>' : '') +
           '<div class="task-actions">' +
-            '<a href="' + task.editorUrl + '" class="btn btn-primary btn-large">' +
-              (isChangesRequested ? 'Laga nú' : 'Byrja að vinna') +
+            '<a href="' + escapeHtml(task.editorUrl) + '" class="btn btn-primary btn-large">' +
+              (isQuestion ? 'Svara' : 'Skoða og laga') +
             '</a>' +
           '</div>' +
         '</div>';
+    }
+
+    // ========================================================================
+    // THE READER'S CHAPTERS (HM-01)
+    // ========================================================================
+
+    function renderMyChapters(chapters) {
+      var section = document.getElementById('my-chapters-section');
+      if (!chapters.length) {
+        section.style.display = 'none';
+        return;
+      }
+      document.getElementById('my-chapters-count').textContent = chapters.length;
+      document.getElementById('my-chapters-list').innerHTML = chapters.map(function(c) {
+        return '<a href="' + escapeHtml(c.editorUrl) + '" class="up-next-item">' +
+          '<div class="item-content">' +
+            '<span class="item-title">' + escapeHtml(c.bookLabel + ' \u00B7 ' + chapterLabel.full(c.chapter)) + '</span>' +
+          '</div>' +
+          '<span class="item-arrow">\u2192</span>' +
+        '</a>';
+      }).join('');
+      section.style.display = 'block';
     }
 
     // ========================================================================
@@ -1299,9 +1375,10 @@
 
         var title = task.bookLabel + ' ' + chapterLabel.compact(task.chapter) + '/' + task.section;
 
-        var badge = '<span class="item-badge badge-changes">Laga</span>';
+        // (read and approved by [USER] on 2026-11-14)
+        var badge = '<span class="item-badge badge-changes">' + (task.kind === 'question' ? 'Spurning' : 'Hafnað') + '</span>';
 
-        return '<a href="' + task.editorUrl + '" class="up-next-item ' + priorityClass + '">' +
+        return '<a href="' + escapeHtml(task.editorUrl) + '" class="up-next-item ' + priorityClass + '">' +
           '<div class="item-content">' +
             '<span class="item-title">' + escapeHtml(title) + '</span>' +
             badge +
@@ -1439,6 +1516,7 @@
               '<span class="book-label">' + escapeHtml(r.bookLabel) + '</span>' +
               '<span class="section-label-text">' + chapterLabel.full(r.chapter) + ', hluti ' + r.section + '</span>' +
             '</div>' +
+            (r.excerpt ? '<div class="task-excerpt">\u201E' + escapeHtml(r.excerpt) + '\u201C</div>' : '') +
             (r.notes ? '<div class="review-notes"><strong>Athugasemd:</strong> ' + escapeHtml(r.notes) + '</div>' : '') +
             '<div class="work-item-meta">' +
               '<span>Frá ' + escapeHtml(r.reviewedBy) + '</span>' +
@@ -1446,7 +1524,7 @@
             '</div>' +
           '</div>' +
           '<div class="work-item-action">' +
-            '<a href="' + r.editorUrl + '" class="btn btn-primary btn-sm">Laga</a>' +
+            '<a href="' + escapeHtml(r.editorUrl) + '" class="btn btn-primary btn-sm">' + (r.kind === 'question' ? 'Svara' : 'Laga') + '</a>' +
           '</div>' +
         '</div>';
       }).join('');
