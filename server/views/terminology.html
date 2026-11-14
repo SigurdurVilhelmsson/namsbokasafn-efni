@@ -1812,7 +1812,7 @@
           const subjectBadges = (tr.subjects || []).map(s => '<span class="subject-badge">' + formatSubject(s) + '</span>').join(' ');
           const canApprove = currentUser && ['admin', 'head-editor'].includes(currentUser.role) && tr.status !== 'approved';
           const canDispute = currentUser && tr.status !== 'disputed';
-          const canCorrect = canCorrectTranslation(tr); // its button: "Leiðrétta" (needs native reading)
+          const canCorrect = canCorrectTranslation(tr); // its button: "Leiðrétta" (read and approved by [USER] on 2026-11-14)
 
           return `
           <div class="translation-row">
@@ -1955,7 +1955,7 @@
       correctingTranslationId = tr.id;
       document.getElementById('term-english').value = currentTermData.english;
       fillTranslationFields(tr);
-      // (needs native reading)
+      // (read and approved by [USER] on 2026-11-14)
       openTermModal('correct-translation', 'Lei\u00F0r\u00E9tta \u00FE\u00FD\u00F0ingu \u00E1 \u201C' + currentTermData.english + '\u201D');
     }
 
@@ -2008,7 +2008,7 @@
         searchTerms();
         loadStats();
         if (failed.length > 0) {
-          // (needs native reading)
+          // (read and approved by [USER] on 2026-11-14)
           alert('Or\u00F0i\u00F0 var vista\u00F0, en \u00FEessar \u00FE\u00FD\u00F0ingar ekki: ' + failed.join(', '));
         }
       } catch (err) {
@@ -2038,7 +2038,7 @@
     }
 
     // A refusal the page could meet when its view is stale (the translation was approved meanwhile, say).
-    // (needs native reading)
+    // (read and approved by [USER] on 2026-11-14)
     const CORRECTION_REFUSALS = {
       APPROVED_NOT_EDITABLE: 'Sam\u00FEykkt \u00FE\u00FD\u00F0ing er ekki lei\u00F0r\u00E9tt beint. Legg\u00F0u til n\u00FDja \u00FE\u00FD\u00F0ingu \u00ED sta\u00F0inn.',
       NOT_YOUR_TRANSLATION: 'A\u00F0eins s\u00E1 sem lag\u00F0i \u00FE\u00FD\u00F0inguna til, e\u00F0a a\u00F0alritstj\u00F3ri, getur lei\u00F0r\u00E9tt hana.',
