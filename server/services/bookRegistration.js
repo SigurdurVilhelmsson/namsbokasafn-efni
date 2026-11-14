@@ -807,6 +807,42 @@ function getChapterSections(chapterId) {
 }
 
 /**
+ * The sections of one chapter of a registered book, in reading order, as a section picker needs them: each
+ * section's id, number and status, and nothing else. A section's row also holds its reviewer's and localizer's
+ * names and its file paths, and none of that belongs in a list of options.
+ *
+ * Reading order is getChapterSections' order: the introduction first, then by number.
+ *
+ * @param {string} bookSlug - A registered book's slug
+ * @param {number} chapterNum - Canonical chapter number (-1 for the appendices)
+ * @returns {Array<{id: number, sectionNum: string, status: string}>|null} null when no such book is
+ *   registered; an empty list when the book has no sections in that chapter
+ */
+function listChapterSections(bookSlug, chapterNum) {
+  const db = getDb();
+
+  try {
+    const book = db.prepare('SELECT id FROM registered_books WHERE slug = ?').get(bookSlug);
+    if (!book) return null;
+
+    return db
+      .prepare(
+        `
+      SELECT id, section_num AS sectionNum, status
+      FROM book_sections
+      WHERE book_id = ? AND chapter_num = ?
+      ORDER BY
+        CASE WHEN section_num = 'intro' THEN 0 ELSE 1 END,
+        CAST(REPLACE(section_num, '.', '') AS INTEGER)
+    `
+      )
+      .all(book.id, chapterNum);
+  } finally {
+    db.close();
+  }
+}
+
+/**
  * Get a single section by ID
  *
  * @param {number} sectionId - Section database ID
@@ -1375,6 +1411,7 @@ module.exports = {
   getRegisteredBook,
   listRegisteredBooks,
   getChapterSections,
+  listChapterSections,
   getSection,
   updateSectionStatus,
   assignLinguisticReviewer,

@@ -191,6 +191,7 @@
 | Method | Path |
 |--------|------|
 | GET | `/:sectionId` |
+| GET | `/:book/:chapter` |
 | POST | `/:sectionId/assign-reviewer` |
 | POST | `/:sectionId/assign-localizer` |
 | POST | `/:sectionId/status` |

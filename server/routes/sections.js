@@ -3,6 +3,7 @@
  *
  * Handles operations on individual translation sections:
  * - Get section details
+ * - List a chapter's sections
  * - Assign reviewers and localizers
  * - Update section status
  *
@@ -14,7 +15,13 @@ const router = express.Router();
 
 const log = require('../lib/logger');
 const { requireAuth } = require('../middleware/requireAuth');
-const { requireRole, requireHeadEditorFor, ROLES } = require('../middleware/requireRole');
+const {
+  requireRole,
+  requireHeadEditor,
+  requireHeadEditorFor,
+  ROLES,
+} = require('../middleware/requireRole');
+const { normalizeChapter } = require('../lib/chapterLabel');
 const bookRegistration = require('../services/bookRegistration');
 const notifications = require('../services/notifications');
 const activityLog = require('../services/activityLog');
@@ -68,6 +75,48 @@ router.get('/:sectionId', requireAuth, requireRole(ROLES.EDITOR), (req, res) => 
     log.error({ err }, 'Get section error');
     res.status(500).json({
       error: 'Failed to get section',
+      message: err.message,
+    });
+  }
+});
+
+/**
+ * GET /api/sections/:book/:chapter
+ * The sections of one chapter, for a section picker: each section's id, number and status.
+ *
+ * The review tab on the localization page fills its "Hluti" list from here (interface audit 2026-11-13, LO-01).
+ * For the book's head editor or an admin, as that page and its writes are ([USER] 2026-11-14, answer 12).
+ * :chapter is a chapter number, or "appendices".
+ *
+ * Two path segments, so it cannot be taken for /:sectionId above.
+ */
+router.get('/:book/:chapter', requireAuth, requireHeadEditor('book'), (req, res) => {
+  const { book, chapter } = req.params;
+
+  // Chapter 0 (front matter) and -1 (the appendices) are chapters: only "not a chapter at all" is refused.
+  const chapterNum = normalizeChapter(chapter);
+  if (chapterNum === null) {
+    return res.status(400).json({
+      error: 'Invalid chapter',
+      message: `'${chapter}' is not a chapter number`,
+    });
+  }
+
+  try {
+    const sections = bookRegistration.listChapterSections(book, chapterNum);
+
+    if (!sections) {
+      return res.status(404).json({
+        error: 'Book not found',
+        message: `No registered book '${book}'`,
+      });
+    }
+
+    res.json({ sections });
+  } catch (err) {
+    log.error({ err }, 'List chapter sections error');
+    res.status(500).json({
+      error: 'Failed to list sections',
       message: err.message,
     });
   }
