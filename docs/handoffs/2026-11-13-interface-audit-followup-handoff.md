@@ -3,7 +3,8 @@
 **Written:** 2026-11-13, at the close of the session that did the audit and the security fixes.
 **Status of this document:** a starting brief for the next session. **It owns no status.** Open
 work is owned by the active register in `docs/plans/`; if this file disagrees with the register,
-the register wins. Nothing from the audit is in the register yet: [USER] decides what goes in.
+the register wins. What [USER] chose to enter from the audit is in the register as §C218–§C223
+(2026-11-14, answer 10), with a pointer to the report for the rest.
 
 **Committed on 2026-11-14, after the deploy** that brought pull requests #678, #679 and #680 live
 (`main` at `c727b037`), together with the audit report. The repository is public, so four items the
@@ -181,7 +182,8 @@ not cheap: about two million tokens each. Decide with [USER] before running anot
 **The report's finding ids** are `SH` (whole application), `HM` (Heim), `ED` (Ritill), `LO`
 (Aðlögun), `TE` (Orðasafn), `PR` (Framvinda), `AS` (Úthlutanir), `AD` (Stjórnandi), `BK`
 (Bókasafn), `SP` (small pages), `DO` (documents). Its §8 holds fourteen draft register entries,
-`IA-1` to `IA-13` and `IA-SEC`. **They are drafts.** Do not write them into `docs/plans/`.
+`IA-1` to `IA-13` and `IA-SEC`. **They are drafts.** [USER] chose six of them and a pointer to the rest
+(answer 10, 2026-11-14); those are entered as §C218–§C223. Do not enter the others one by one.
 
 Seven cross-reference ids in the report's §1 and §2 were wrong and were corrected on disk after
 [USER] saved a local copy (lines 98, 102, 107, 110, 157, 218, 292: the `SH` and `ED` ids now
