@@ -26,13 +26,21 @@
   const KEEP_TEXT_CODES = [
     'STALE_BASE',
     'STALE_DISPLAYED',
+    'UNSEEN_EDIT',
     'BASE_MISSING',
     'DUPLICATE_ID',
     'BOOK_NOT_MINTED',
     'NO_LAYER',
   ];
+  /**
+   * The save route's answer when ANOTHER editor saved the segment first (checkEditConflict; the body is
+   * { error: 'conflict' }, the research log's name for it is SEGMENT_CONFLICT). Its typed text is kept exactly as a
+   * refused save's is (interface audit 2026-11-13, ED-02: it used to be closed by the reload and lost). It is not a
+   * servedEdit code, so it is not in KEEP_TEXT_CODES, which stays in step with that file.
+   */
+  const CONFLICT_CODE = 'conflict';
   /** What a restored pane can say; any other refusal reads as 'REFUSED'. */
-  const NOTICE_CODES = KEEP_TEXT_CODES.concat(['REFUSED']);
+  const NOTICE_CODES = KEEP_TEXT_CODES.concat([CONFLICT_CODE, 'REFUSED']);
 
   /** Item types the client claims (§5.10), and the sources each may name. */
   const ITEM_SOURCES = {
@@ -141,6 +149,10 @@
           : null,
       clientActionId: i.clientActionId,
       clientActionTime: i.clientActionTime,
+      // This page keeps the typed text on an UNSEEN_EDIT refusal, so the server may make that check for it. A
+      // page loaded before the check existed sends no such word and is not refused (its reload would ask
+      // closePanels and could lose the text): servedEdit.js, saveOnServedBase.
+      handlesUnseenEdit: true,
       assists: [],
       // Beside the assists, never inside them (G1.23 §8); '[]' when none. Set before the measurement below.
       acceptedSuggestions: Array.isArray(i.acceptedSuggestions) ? i.acceptedSuggestions : [],
@@ -362,7 +374,7 @@
   // ── Kept texts (index decision 12) ──────────────────────────────
 
   function keepsText(code) {
-    return KEEP_TEXT_CODES.indexOf(code) !== -1;
+    return KEEP_TEXT_CODES.indexOf(code) !== -1 || code === CONFLICT_CODE;
   }
 
   /** The base recorded is the one the refused save was SENT with: what the server compared. */
@@ -474,6 +486,7 @@
     BODY_LIMIT_BYTES: BODY_LIMIT_BYTES,
     BODY_HEADROOM_BYTES: BODY_HEADROOM_BYTES,
     KEEP_TEXT_CODES: KEEP_TEXT_CODES,
+    CONFLICT_CODE: CONFLICT_CODE,
     NOTICE_CODES: NOTICE_CODES,
     ITEM_SOURCES: ITEM_SOURCES, // G1.23 extends it; PR3 pins its server table against it (index § Cross-PR interfaces)
     rowDataAttributes: rowDataAttributes,

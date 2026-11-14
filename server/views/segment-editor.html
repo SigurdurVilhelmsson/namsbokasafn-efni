@@ -636,7 +636,9 @@
         position: relative;
         background: transparent;
         color: transparent;
-        caret-color: #1a1a1a;
+        /* The caret and the backdrop's text follow the theme: a fixed near-black
+           stood at 1.2:1 in the dark theme (interface audit 2026-11-13, ED-10). */
+        caret-color: var(--text-primary);
         -webkit-text-fill-color: transparent;
       }
       .editor-overlay-wrap textarea::selection {
@@ -653,7 +655,7 @@
         pointer-events: none;
         white-space: pre-wrap;
         word-wrap: break-word;
-        color: #1a1a1a;
+        color: var(--text-primary);
         z-index: 0;
       }
       /* backdrop + textarea MUST share box metrics so glyphs align exactly */
@@ -672,6 +674,8 @@
       }
       .marker-hl-atom {
         background: #fde2c8;
+        /* its own dark text: the chip is light in both themes */
+        color: #1a1a1a;
         box-shadow: 0 0 0 1px #e8a86a inset;
       }
       .marker-hl-delim {

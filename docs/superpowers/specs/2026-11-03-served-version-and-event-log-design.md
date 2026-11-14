@@ -14,6 +14,30 @@
 > no status. If it disagrees with the active register, the register wins. Do not sync it or edit it in place.
 > Supersede it with a new record instead.
 
+> **✏️ AMENDED 2026-11-14: three departures from the saving rules, found by the 2026-11-13 interface audit of
+> Ritstjóri and ruled by [USER] on 2026-11-14** ("All recommendations accepted", to questions that stated each
+> option). The answers are recorded in `docs/decisions/2026-11-14-interface-audit-answers.md` (answers 1 to 4). The
+> values live in the code and its tests; this block states only what changed and why.
+>
+> - **§5.18 and PR1 d30: a live `conflict` 409 keeps the typed text too.** d30 kept "today's alert-and-reload" for
+>   the live conflict, to hold that work to the served-version codes. The audit reproduced what that costs: the
+>   second of two editors to save a row loses the typed text by answering OK. The text now stays in its row beside
+>   the other editor's version, as it does for the codes d30 lists (`keepsText`,
+>   `server/public/js/segment-save-state.js`). What the server answers and records is unchanged.
+> - **§5.6 step 4: a new refusal, `UNSEEN_EDIT`.** The step compared only the edit the page NAMED. A page that named
+>   none, or an older one, passed, so a second tab or device replaced an edit in flight that it had never shown,
+>   the editor's own included, with no message. A save is now refused when the edit a page loaded now would show is
+>   not the one this page showed. It is its own code and not `STALE_DISPLAYED`, whose meaning (the row the page
+>   named has changed or is gone) stays as it was in the research records. It is checked only for a page that says
+>   it handles it (`handlesUnseenEdit` in the save body), so a tab left open across the deploy saves as before. A
+>   replay of the editor's own waiting row, with the same text, category and note, is not refused
+>   (`saveOnServedBase`, `server/services/servedEdit.js`).
+> - **§13, the refused-save experience: a kept text is not saved over another editor's undecided edit.** After a
+>   conflict the row shows the other editor's edit, and the row offers editing to nobody else until that edit is
+>   decided. The kept text follows the row's own rule and says so above the pane (`rowNotEditable`,
+>   `server/public/js/segment-editor.js`). Saving it as a second, competing edit would change the review model and
+>   was not chosen.
+
 > **✏️ AMENDED 2026-11-09: two of PR4's review fixes, confirmed by [USER] on 2026-11-09** ("I confirm both rulings
 > (prune tolerance and the allowlist redaction)"). Each was found by PR4's whole-branch review (2026-11-08) and
 > changes the letter of a rule in the direction of the promise behind it. The values live in the code and its tests;

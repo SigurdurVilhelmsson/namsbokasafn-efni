@@ -31,6 +31,10 @@
  *      | acceptance.spec.js          | `.btn-accept` `.last()`      | last segment    |
  *      | segment-editor.spec.js      | literal id                   | `…:abstract:auto-2` |
  *      | served-base-client.spec.js  | virgin rows nearest the middle | mid-module rows |
+ *      | unsaved-text.spec.js        | virgin rows nearest the three-quarter point (its freeRow 0..13) | third-quarter rows |
+ *
+ *    unsaved-text.spec.js also owns user ids 88710 and 88711. It writes real rows in two tests
+ *    only and deletes them in an afterEach; everything else it does is a stub.
  *
  *    Hence: never the first segment, never the last, plus a caller-supplied
  *    `exclude` for id-pinned claims. Uniqueness across runs lives in the

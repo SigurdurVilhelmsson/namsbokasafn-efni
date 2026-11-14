@@ -18,7 +18,8 @@
  *      §5.7);
  *   4. a writer with a client view (`requireEcho`) must echo the base hash it was shown
  *      (`BASE_MISSING`, `STALE_BASE`) and the edit it displayed (`STALE_DISPLAYED`, plan
- *      decisions 7 and 39);
+ *      decisions 7 and 39), and that edit must be the one a page loaded now would display
+ *      (`UNSEEN_EDIT`, added after the 2026-11-13 interface audit, ED-05);
  *   5. the marker backstop, against the server-loaded base, for every caller (index decision 16);
  *   6. mint the served version and write the row in ONE transaction, so no row is ever stored
  *      without its version and no version is left behind by a save that failed (§5.6 step 6).
@@ -38,6 +39,7 @@ const log = require('../lib/logger');
 const { isStudyBook } = require('../lib/researchScope');
 const { sha256Text, isNotMintedBook } = require('../lib/servedText');
 const { EDIT_ORIGINS } = require('../lib/editOrigins');
+const { pickLatest } = require('../lib/editRecency');
 
 // Icelandic: approved by [USER] 2026-11-04 (index decision 13; BASE_MISSING as worded in plan
 // decision 20, plus the "every time it appears" clause [USER] approved the same day after the
@@ -74,6 +76,12 @@ const REFUSAL_MESSAGES = Object.freeze({
   STALE_DISPLAYED:
     'Breytingin sem sýnd var í bútnum hefur breyst eða verið fjarlægð frá því að síðunni var hlaðið. ' +
     'Vistun hafnað: endurhlaðið eininguna.',
+  // Interface audit 2026-11-13 (ED-05), approved by [USER] on 2026-11-14: an edit
+  // of this segment is in flight that the page never showed (it was saved from another tab or
+  // device, or by another editor, after the page loaded).
+  UNSEEN_EDIT:
+    'Breyting á þessum bút hefur verið vistuð frá því að síðunni var hlaðið og hún er ekki sýnd hér. ' +
+    'Vistun hafnað: endurhlaðið eininguna.',
   STRUCTURE_BLOCKED: 'Vistun hafnað: byggingarmerki vantar eða hafa breyst.',
 });
 const REFUSAL_STATUS = Object.freeze({
@@ -83,6 +91,7 @@ const REFUSAL_STATUS = Object.freeze({
   BASE_MISSING: 409,
   STALE_BASE: 409,
   STALE_DISPLAYED: 409,
+  UNSEEN_EDIT: 409,
   SEGMENT_NOT_FOUND: 404,
   STRUCTURE_BLOCKED: 400,
 });
@@ -174,6 +183,25 @@ function placeAndMintBase({ book, chapter, moduleId, segmentId, occurrence }) {
   };
 }
 
+/**
+ * The edit a page loaded now would display for the segment, or null: the newest edit of the segment by the
+ * canonical recency rule, if it is in flight. This is the module GET's own choice (routes/segment-editor.js orders
+ * each segment's edits with isNewer, and the row displays edits[0] when acceptEligibility.isEditInFlight says so),
+ * made from the same rows, so a page that has seen every edit always echoes the id this returns.
+ */
+function displayedEditNow({ book, moduleId, segmentId }) {
+  const rows = segmentEditor
+    .getDb()
+    .prepare(
+      `SELECT id, status, applied_at, created_at, edited_content, editor_id, category, editor_note
+       FROM segment_edits
+       WHERE book = ? AND module_id = ? AND segment_id = ?`
+    )
+    .all(book, moduleId, segmentId);
+  const newest = pickLatest(rows);
+  return isEditInFlight(newest) ? newest : null;
+}
+
 function saveOnServedBase(input) {
   const {
     book,
@@ -192,6 +220,7 @@ function saveOnServedBase(input) {
     baseSha256,
     displayedEditId = null,
     displayedEditSha256 = null,
+    refuseUnseenEdit = false,
     acceptedSuggestions,
   } = input;
   if (!EDIT_ORIGINS.includes(origin)) {
@@ -238,6 +267,40 @@ function saveOnServedBase(input) {
           echoedSha256: displayedEditSha256,
           currentSha256: shownSha256,
         });
+      }
+    }
+    // Interface audit 2026-11-13, ED-05: an in-flight edit this page never showed (UNSEEN_EDIT). The checks above
+    // compare only the row the page NAMED, so a page that named none (it loaded before the edit existed), or
+    // named an older one, passed, and the save then replaced the editor's own pending text from another tab or
+    // device with no message (checkEditConflict looks only at other editors' rows, and only at ids). The edit a
+    // page loaded now would show must be the one this page showed. Its own code, not STALE_DISPLAYED: the row
+    // the page named, if any, is unchanged, and STALE_DISPLAYED means that row changed or is gone.
+    //
+    // Only for a caller that says it handles the refusal (`refuseUnseenEdit`; the route passes the body's
+    // `handlesUnseenEdit`). A page loaded before this check existed does not keep the text on a code it does not
+    // know: its reload would ask closePanels, and OK there loses the text. Such a page is answered as before.
+    //
+    // One pass, for a replay whose first attempt landed: the edit a page would show now is the caller's own
+    // pending row (the row this save would UPDATE) and already holds exactly what is being saved, the text and
+    // the category and note with it, so the write changes nothing the page did not show. It is decision 39's
+    // reason applied to a page that named no edit, or an older one; decision 39 itself covers only the named
+    // row. The hashes a refusal records: what the page named (null when none), and the edit a page would show now.
+    if (refuseUnseenEdit) {
+      const nowShown = displayedEditNow({ book, moduleId, segmentId });
+      if (nowShown && nowShown.id !== displayedEditId) {
+        const nowShownSha256 = sha256Text(nowShown.edited_content);
+        const ownReplay =
+          nowShown.status === 'pending' &&
+          String(nowShown.editor_id) === String(editorId) &&
+          nowShownSha256 === sha256Text(editedContent) &&
+          (nowShown.category || null) === (category || null) &&
+          (nowShown.editor_note || null) === (editorNote || null);
+        if (!ownReplay) {
+          throw refuse('UNSEEN_EDIT', {
+            echoedSha256: displayedEditSha256,
+            currentSha256: nowShownSha256,
+          });
+        }
       }
     }
   }

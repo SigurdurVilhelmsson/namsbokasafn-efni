@@ -5,7 +5,7 @@
  * Usage: UI.save.allSaved, UI.confirm.discardChanges(), etc.
  *
  * For parameterized messages, use functions:
- *   UI.confirm.draftRecovery(5) → 'Fundust 5 óvistuð drög frá síðustu lotu. Endurheimta?'
+ *   UI.confirm.draftRecovery(5) → 'Fundust 5 óvistuð drög frá síðustu lotu. Endurheimta? (…)'
  */
 
 // eslint-disable-next-line no-unused-vars
@@ -28,6 +28,9 @@ const UI = {
   // ── Save status ─────────────────────────────────────────────
   save: {
     allSaved: 'Allar breytingar vistaðar',
+    // The segment editor's status line when no row holds unsaved text. It does not claim a save: the same line
+    // shows after a text was discarded (interface audit 2026-11-13, ED-04).
+    nothingUnsaved: 'Engar óvistaðar breytingar',
     unsaved: function (count) {
       return count === 1 ? '1 óvistuð breyting' : count + ' óvistaðar breytingar';
     },
@@ -42,11 +45,31 @@ const UI = {
 
   // ── Confirm/alert dialogs ───────────────────────────────────
   confirm: {
+    // Both editors delete the drafts when this is answered Cancel, so it says so (interface audit 2026-11-13,
+    // ED-18). The last sentence was read and approved by [USER] on 2026-11-14.
     draftRecovery: function (count) {
-      return 'Fundust ' + count + ' óvistuð drög frá síðustu lotu. Endurheimta?';
+      return (
+        'Fundust ' +
+        count +
+        ' óvistuð drög frá síðustu lotu. Endurheimta? (Ef hætt er við er drögunum eytt.)'
+      );
     },
     discardChanges: 'Þú átt óvistaðar breytingar. Viltu henda þeim?',
     leaveUnsaved: 'Þú átt óvistaðar breytingar. Viltu yfirgefa?',
+    // The segment editor asks this before it leaves a unit with unsaved text in `count` segments: "← Til baka",
+    // and another unit opened over this one (interface audit 2026-11-13, ED-01). It says what OK does: the text is
+    // thrown away, unlike closing the tab, which keeps a draft. Read and approved by [USER] on 2026-11-14.
+    leaveDiscards: function (count) {
+      return (
+        'Þú átt óvistaðan texta í ' +
+        count +
+        (count % 10 === 1 && count % 100 !== 11 ? ' bút' : ' bútum') +
+        '. Honum verður hent ef þú ferð úr einingunni. Halda áfram?'
+      );
+    },
+    // No longer asked by the segment editor (since the 2026-11-13 interface audit a re-render leaves a row with
+    // unsaved text in place). Kept: the server's BASE_MISSING message quotes it for a page loaded before G1.1, and
+    // specs name it when they check that it is not asked.
     closePanels: 'Opnum klippispjöldum verður lokað. Viltu halda áfram?',
     unapprove: 'Afturkalla samþykki? Breytingin fer til baka í stöðuna „bíður".',
     submitForReview: function (count) {
@@ -146,6 +169,11 @@ const UI = {
     staleDisplayed:
       'Breytingin sem birtist þegar þú skrifaðir hefur breyst síðan. Berðu textann þinn saman ' +
       'við röðina og vistaðu aftur.',
+    // An edit of the row was saved after this page loaded and was never shown on it: from another tab or
+    // device, or by another editor (interface audit 2026-11-13, ED-05). Read and approved by [USER] on 2026-11-14.
+    unseenEdit:
+      'Breyting á þessum bút var vistuð eftir að þú opnaðir síðuna, til dæmis í öðrum flipa. Berðu ' +
+      'textann þinn saman við röðina og vistaðu aftur.',
     baseMissing:
       'Vistun var hafnað því hún kom frá eldri útgáfu síðunnar. Berðu textann saman við röðina ' +
       'og vistaðu aftur.',
@@ -153,6 +181,16 @@ const UI = {
       'Ekki er hægt að vista þennan bút fyrr en lagfæring á tvíteknum auðkennum er komin (sama ' +
       'auðkenni kemur tvisvar fyrir í einingunni). Textinn þinn er geymdur hér og verður ekki sendur.',
     bookNotMinted: 'Ekki er hægt að vista breytingar í þessari bók. Textinn þinn er geymdur hér.',
+    // Another editor saved the row first (interface audit 2026-11-13, ED-02). Read and approved by [USER] on
+    // 2026-11-14.
+    conflict:
+      'Annar yfirlesari vistaði breytingu á þessum bút á meðan þú skrifaðir. Berðu textann þinn saman ' +
+      'við röðina og vistaðu aftur.',
+    // A kept text whose row shows another editor's undecided edit: the row offers no Breyta, and the kept text is
+    // not saved over that edit (interface audit 2026-11-13). Read and approved by [USER] on 2026-11-14.
+    rowNotYours:
+      'Annar yfirlesari á óafgreidda breytingu á þessum bút. Textinn þinn er geymdur hér, en hann verður ' +
+      'ekki vistaður fyrr en sú breyting hefur verið afgreidd.',
     noLayer:
       'Engin íslensk útgáfa er til fyrir þessa einingu og því er ekki hægt að vista. Textinn ' +
       'þinn er geymdur hér.',
