@@ -309,6 +309,22 @@ const UI = {
   },
 
   // ── Segment editor specific ─────────────────────────────────
+  // "Yfirlestrar": the units with edits waiting for a decision (interface audit 2026-11-13, ED-08). New texts, not
+  // yet read by a native speaker.
+  reviewList: {
+    book: 'Bók',
+    chapter: 'Kafli',
+    section: 'Hluti',
+    waiting: 'Bíða',
+    oldest: 'Elsta breyting',
+    empty: 'Engar breytingar bíða yfirlestrar.',
+    today: 'í dag',
+    yesterday: 'í gær',
+    daysAgo: function (n) {
+      return 'fyrir ' + n + ' dögum';
+    },
+  },
+
   segmentEditor: {
     title: 'Ritill',
     noEnglish: 'Engin enska',

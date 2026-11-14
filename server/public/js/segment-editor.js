@@ -4828,6 +4828,60 @@
   // INIT
   // ================================================================
 
+  /**
+   * "Yfirlestrar": the units with edits waiting for a decision, oldest first, each a link that opens the unit
+   * filtered to pending edits (interface audit 2026-11-13, ED-08; [USER] 2026-11-14, answer 11). The server holds
+   * the list to the books the reader works on (GET review-list).
+   */
+  async function renderReviewList() {
+    const banner = document.getElementById('review-mode-banner');
+    if (!banner) return;
+    let box = document.getElementById('review-list');
+    if (!box) {
+      box = document.createElement('div');
+      box.id = 'review-list';
+      box.className = 'review-list';
+      banner.parentNode.insertBefore(box, banner.nextSibling);
+    }
+    box.textContent = UI.common.loading;
+    try {
+      const data = await fetchJson(`${API_BASE}/review-list`);
+      const rows = data.modules || [];
+      if (rows.length === 0) {
+        box.innerHTML = '<p class="review-list-empty">' + escapeHtml(UI.reviewList.empty) + '</p>';
+        return;
+      }
+      const L = UI.reviewList;
+      const age = (at) => {
+        const days = Math.floor(
+          (Date.now() - Date.parse(String(at).replace(' ', 'T') + 'Z')) / 86400000
+        );
+        if (!(days > 0)) return L.today;
+        return days === 1 ? L.yesterday : L.daysAgo(days);
+      };
+      box.innerHTML =
+        '<table class="review-list-table"><thead><tr>' +
+        `<th>${escapeHtml(L.book)}</th><th>${escapeHtml(L.chapter)}</th><th>${escapeHtml(L.section)}</th>` +
+        `<th class="num">${escapeHtml(L.waiting)}</th><th>${escapeHtml(L.oldest)}</th>` +
+        '</tr></thead><tbody>' +
+        rows
+          .map(
+            (r) =>
+              '<tr>' +
+              `<td>${escapeHtml(r.bookLabel)}</td>` +
+              `<td>${escapeHtml(Number(r.chapter) === -1 ? 'Viðaukar' : 'Kafli ' + r.chapter)}</td>` +
+              `<td><a href="${escapeHtml(r.url)}">${escapeHtml(r.title || r.moduleId)}</a></td>` +
+              `<td class="num">${escapeHtml(String(r.pendingCount))}</td>` +
+              `<td>${escapeHtml(age(r.oldestAt))}</td>` +
+              '</tr>'
+          )
+          .join('') +
+        '</tbody></table>';
+    } catch (err) {
+      box.textContent = UI.common.errorPrefix + err.message;
+    }
+  }
+
   // Auto-load from URL params: ?book=...&chapter=...&module=...
   // checkAuth() MUST resolve before any module loads, so role-gated
   // panels (pipeline, apply) see the real role, not the default 'viewer'.
@@ -4858,6 +4912,9 @@
         banner.textContent = 'Sýnir einingar sem bíða yfirlestrar';
         selectorCard.parentNode.insertBefore(banner, selectorCard.nextSibling);
       }
+      // With no unit named, list the units with edits waiting (ED-08); the banner used to stand over the ordinary
+      // pickers and filter nothing.
+      if (!book) renderReviewList();
     }
 
     if (!book || !chapter) return;

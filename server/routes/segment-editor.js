@@ -104,7 +104,9 @@ const {
   ROLES,
 } = require('../middleware/requireRole');
 const { validateBookChapter, validateModule } = require('../middleware/validateParams');
-const { VALID_BOOKS } = require('../config');
+const { VALID_BOOKS, BOOK_LABELS } = require('../config');
+const dashboardReadModel = require('../services/dashboardReadModel');
+const { readableLogBooks } = require('../lib/activityScope');
 const { PASS1_CATEGORIES: VALID_CATEGORIES, VALID_TRACKS } = require('../constants');
 const { figureReviewClosed, refuseHeldForNonAdmins } = require('../lib/heldBookWrites');
 
@@ -1357,6 +1359,51 @@ router.get('/reviews', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
     const reviews = segmentEditor.getPendingModuleReviews(req.query.book);
     res.json({ reviews });
   } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /review-list
+ * The units with edits waiting for a decision, oldest first, for "Yfirlestrar" (interface audit 2026-11-13,
+ * ED-08; register §C222). Held to the books the reader works on, by the activity log's rule
+ * (lib/activityScope: an admin sees every book). Each row carries its section title where the book's data has
+ * one, and the link that opens the unit filtered to pending edits.
+ */
+router.get('/review-list', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
+  try {
+    const modules = dashboardReadModel.getModulesWithPendingEdits({
+      books: readableLogBooks(req.user),
+    });
+    const byBook = new Map();
+    for (const m of modules) {
+      if (!byBook.has(m.book)) byBook.set(m.book, []);
+      byBook.get(m.book).push(m);
+    }
+    for (const [book, rows] of byBook) {
+      try {
+        enrichModules(book, rows);
+      } catch (err) {
+        log.warn({ err, book }, 'review-list: no section titles for this book');
+      }
+    }
+    res.json({
+      modules: modules.map((m) => ({
+        book: m.book,
+        bookLabel: BOOK_LABELS[m.book] || m.book,
+        chapter: m.chapter,
+        moduleId: m.moduleId,
+        title: m.titleIs || m.title || null,
+        section: m.section || null,
+        pendingCount: m.pendingCount,
+        oldestAt: m.oldestAt,
+        url:
+          `/editor?book=${encodeURIComponent(m.book)}&chapter=${m.chapter}` +
+          `&module=${encodeURIComponent(m.moduleId)}&view=reviews`,
+      })),
+    });
+  } catch (err) {
+    log.error({ err }, 'Error getting review list');
     res.status(500).json({ error: err.message });
   }
 });

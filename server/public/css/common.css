@@ -2456,6 +2456,34 @@ a:focus-visible,
   border-radius: 4px;
 }
 
+/* "Yfirlestrar": the units with edits waiting for a decision */
+.review-list {
+  margin: 0.5rem 0 1rem;
+}
+
+.review-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.review-list-table th,
+.review-list-table td {
+  text-align: left;
+  padding: 0.45rem 0.6rem;
+  border-bottom: 1px solid var(--border-light, #e8e2d8);
+  color: var(--text-primary);
+}
+
+.review-list-table td.num {
+  text-align: right;
+}
+
+.review-list-empty {
+  color: var(--text-primary);
+  margin: 0.5rem 0;
+}
+
 /* Assignments page */
 .assignments-table {
   width: 100%;
