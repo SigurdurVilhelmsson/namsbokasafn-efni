@@ -104,7 +104,8 @@ context a human editor has, which the term pass's segment batches did not need.
   (`tools/ai-review/compile-ruling-set.js`), pinned by its hash in the run record. Without it Fable would be
   marked down for terms the project has already ruled on, which says nothing about its Icelandic.
 - **The prompt** is short and states the task, not a list of rules: edit this machine translation into
-  correct, natural Icelandic for a secondary-school chemistry textbook; keep it faithful to the English; use
+  correct Icelandic for a secondary-school chemistry textbook, in a register that is
+  semi-academic but fluent for younger readers ([USER]'s wording, 2026-11-14), with grammar judged in context; keep it faithful to the English; use
   the house terms; keep every `[[…]]` marker exactly as it is; return every segment, unchanged where nothing
   needs changing. (The claude-api guidance for Fable 5.2 is that prompts written for older models are often
   too prescriptive.) The prompt file is committed and its sha256 recorded before the run.
@@ -117,11 +118,12 @@ context a human editor has, which the term pass's segment batches did not need.
 
 ### 5.3 Cost
 
-A rough estimate, to be replaced by the dry run's count: about 300,000 input tokens and 200,000–300,000
-output tokens including thinking, so **about $10–15 at standard rates, or half that through the Batch API**
-(roughly 700–2,100 ISK). The cap is set at **$40** so a wrong estimate stops the run instead of
-overspending. The actual cost in USD and ISK goes into the run's README, as § Purpose requires of every
-MT and AI step.
+The run is paid from [USER]'s own Anthropic account, so cost is not a budget concern for the project
+([USER], 2026-11-14). It is still recorded: the research report compares the cost of each MT and AI step
+(CLAUDE.md § Purpose), and a full-editor pass will cost several times the term pass. A rough estimate, to
+be replaced by the dry run's count: about 300,000 input tokens and 200,000–300,000 output tokens including
+thinking, so about $10–15 at standard rates or half that through the Batch API. A cap of **$40** stays,
+only as a guard against a runaway run. The actual cost goes into the run's README.
 
 ### 5.4 The commands [USER] runs locally
 
@@ -158,6 +160,9 @@ this itself and refuses to start on a dirty `books/` tree.
 - **Terminology:** does FE use the house terms where TP put them in? Measured with the term pass's own
   leftover-form check (`tools/ai-review/leftover-forms.js`) on the same ruling set, so TP and FE are judged
   by one instrument.
+- **How TP and FE differ by design:** TP is a narrow terminology pass. Its prompt says it does not
+  translate and does not improve style, and code checks each minimal operation. FE edits language,
+  grammar and register as well. Most of FE's extra changes are therefore expected, and 6.2 judges them.
 - **Overlap:** of the segments TP changed, how many FE also changed, and the other way round.
 - **Fable's own tags,** counted by type, so a reader sees what kind of editing it claims to do.
 
@@ -240,4 +245,3 @@ three-layer rule of CLAUDE.md § Purpose extended to a fourth, and pure MT is ne
 
 - **The chapter:** ch10, or the chapter the editors will finish first?
 - **The blind ranking:** which of the three options in §6.2?
-- **The cap:** $40 for the chapter, or another figure?
