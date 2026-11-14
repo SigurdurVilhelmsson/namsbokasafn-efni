@@ -2496,6 +2496,24 @@ a:focus-visible,
   color: var(--accent, #c87941);
 }
 
+/* A chapter that still holds more than one assignee: the row names them under its dropdown. */
+.assign-several {
+  margin-top: 0.3rem;
+  max-width: 22rem;
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  background: var(--warning-subtle);
+  border-left: 3px solid var(--warning);
+  padding: 0.25rem 0.5rem;
+}
+
+/* Under the table: why an editor may be missing from the dropdowns. */
+.assign-hint {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+}
+
 .stats-row {
   display: flex;
   gap: 1.5rem;

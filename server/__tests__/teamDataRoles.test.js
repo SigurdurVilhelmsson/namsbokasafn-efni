@@ -13,6 +13,9 @@
  * The first two are for head editors and admins (Heim shows the dashboard to no one else); the
  * other two are for editors and above.
  *
+ * Since 2026-11-14 the last two are also held to the books the reader works on (lib/activityScope.js;
+ * activityLogBookScope.test.js). This file is about the role.
+ *
  * The requests go through the real routers with real tokens. A permitted role must get 200 (a
  * handler that answered 500 to the roles that use it would otherwise read as open); a refused
  * role must get 403. The viewer rows are the point; the rest are the control that the routes
@@ -86,8 +89,26 @@ describe('routes that name team members are not open to a bare sign-in', () => {
     expect(await statusFor('editor', url)).toBe(403);
   });
 
-  it.each(EDITOR_AND_ABOVE)('an editor is answered on %s', async (url) => {
-    expect(await statusFor('editor', url)).toBe(200);
+  // The role opens the route; the book rule then decides which rows (activityLogBookScope.test.js). The
+  // editor here has no account row and so works on no book: the timeline answers with no rows, and a read
+  // that names a book is refused for that book, with its own code, not for the role.
+  it('an editor is answered on the timeline', async () => {
+    expect(await statusFor('editor', '/api/status/activity/timeline')).toBe(200);
+  });
+
+  it("an editor who does not work on the book is refused its section's log as NOT_YOUR_BOOK", async () => {
+    const token = createToken({
+      id: 'enginn-reikningur-editor',
+      username: 'editor@skoli.example',
+      name: 'editor',
+      role: 'editor',
+      books: [],
+    });
+    const res = await fetch(base + '/api/activity/section/efnafraedi-2e/1/m68663', {
+      headers: { cookie: `auth_token=${token}` },
+    });
+    expect(res.status).toBe(403);
+    expect((await res.json()).code).toBe('NOT_YOUR_BOOK');
   });
 
   it.each([...HEAD_EDITOR_AND_ABOVE, ...EDITOR_AND_ABOVE])(

@@ -16,6 +16,8 @@
 
   let currentBook = '';
   let currentEditors = [];
+  // The value of the dropdown's "choose one" line, shown (disabled) while a chapter holds several assignees.
+  const CHOOSE_ONE = '__choose';
 
   // ================================================================
   // TOAST
@@ -52,20 +54,20 @@
 
   /**
    * Render the three stat cards from the merged chapter list.
-   * @param {Array<{assignment: object|null}>} chapters
+   * @param {Array<{assignees: object[]}>} chapters
    */
   function renderStats(chapters) {
     const assigned = chapters.filter(function (ch) {
-      return ch.assignment && ch.assignment.user_id;
+      return ch.assignees.length > 0;
     }).length;
     const unassigned = chapters.length - assigned;
 
     // Count distinct editors assigned to at least one chapter
     const editorIds = {};
     chapters.forEach(function (ch) {
-      if (ch.assignment && ch.assignment.user_id) {
-        editorIds[ch.assignment.user_id] = true;
-      }
+      ch.assignees.forEach(function (a) {
+        editorIds[a.user_id] = true;
+      });
     });
     const editorCount = Object.keys(editorIds).length;
 
@@ -88,15 +90,26 @@
     const editors = currentEditors;
 
     const rows = chapters.map(function (ch) {
-      const isAssigned = ch.assignment && ch.assignment.user_id;
+      // A chapter has one assignee ([USER] 2026-11-14). `several` is a chapter that still holds more than one
+      // row from before that rule: the row names them all and shows no choice as made, and the next choice
+      // (an editor, or "— Óúthlutað —") settles it on the server.
+      const assignees = ch.assignees;
+      const isAssigned = assignees.length > 0;
+      const several = assignees.length > 1;
+      const only = assignees.length === 1 ? assignees[0] : null;
       const rowClass = isAssigned ? '' : ' class="row-unassigned"';
 
       const title = ch.titleIs || ch.title || chapterLabel.full(ch.chapter);
 
       // Build editor dropdown
-      let options = '<option value="">— Óúthlutað —</option>';
+      let options = several
+        ? '<option value="' + CHOOSE_ONE + '" disabled selected>— Veldu einn —</option>'
+        : '';
+      options += '<option value="">— Óúthlutað —</option>';
+      let onlyIsListed = false;
       editors.forEach(function (ed) {
-        const selected = isAssigned && ch.assignment.user_id === ed.id ? ' selected' : '';
+        const selected = only && only.user_id === ed.id ? ' selected' : '';
+        if (selected) onlyIsListed = true;
         options +=
           '<option value="' +
           escapeHtml(String(ed.id)) +
@@ -106,6 +119,31 @@
           escapeHtml(ed.name || 'Notandi ' + ed.id) +
           '</option>';
       });
+      // The assignee is no longer on the list (deactivated, or without book access): still shown, so the row
+      // goes on saying who holds the chapter instead of reading "— Óúthlutað —".
+      if (only && !onlyIsListed) {
+        options +=
+          '<option value="' +
+          escapeHtml(String(only.user_id)) +
+          '" selected>' +
+          escapeHtml(only.user_name || 'Notandi ' + only.user_id) +
+          '</option>';
+      }
+
+      const severalNote = several
+        ? '<div class="assign-several" role="note">' +
+          // Read and approved by [USER] on 2026-11-14, as is "— Veldu einn —" above.
+          'Fleiri en einn yfirlesari er skráður á kaflann: ' +
+          escapeHtml(
+            assignees
+              .map(function (a) {
+                return a.user_name || 'Notandi ' + a.user_id;
+              })
+              .join(', ')
+          ) +
+          '. Veldu einn; hinir falla út.' +
+          '</div>'
+        : '';
 
       const select =
         '<select class="assign-select"' +
@@ -138,6 +176,7 @@
         '</td>' +
         '<td>' +
         select +
+        severalNote +
         '</td>' +
         '<td class="col-progress">' +
         '<div class="progress-mini">' +
@@ -338,20 +377,26 @@
 
         loadSuggestionView(book);
 
-        // Index assignments by chapter number for fast lookup
-        const assignmentMap = {};
+        // Every assignment row of a chapter, in the server's order. One is the rule; a chapter with more keeps
+        // them all here so the row can name them (keeping only the last one is how a second assignee stayed
+        // hidden: interface audit 2026-11-13, AS-01).
+        const assigneesByChapter = {};
         assignments.forEach(function (a) {
-          assignmentMap[a.chapter] = a;
+          (assigneesByChapter[a.chapter] = assigneesByChapter[a.chapter] || []).push(a);
         });
 
-        // Merge: attach assignment (or null) and progress to each chapter
+        // Merge: attach the assignees and progress to each chapter
         const chapters = ((chapterList && chapterList.chapters) || []).map(function (ch) {
           const chProgress = chapterProgress[ch.chapter] || { percentComplete: 0 };
           return Object.assign({}, ch, {
-            assignment: assignmentMap[ch.chapter] || null,
+            assignees: assigneesByChapter[ch.chapter] || [],
             progress: chProgress,
           });
         });
+
+        // The list of editors is held to the users with a book-access row: say so, and where to add one.
+        const editorsHint = document.getElementById('assign-editors-hint');
+        if (editorsHint) editorsHint.hidden = !adminData.editorsLimited;
 
         renderStats(chapters);
         renderTable(chapters, book);

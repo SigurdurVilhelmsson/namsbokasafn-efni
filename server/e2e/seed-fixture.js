@@ -130,6 +130,27 @@ try {
     `INSERT INTO user_chapter_assignments (user_id, book_slug, chapter, assigned_by)
      VALUES (?, 'efnafraedi-2e', 2, 'e2e')`
   ).run(Number(suggestionEditor.lastInsertRowid));
+
+  // The two editors of server/e2e/assignments.spec.js (one assignee per chapter, [USER] 2026-11-14), and the
+  // state that spec settles: efnafraedi-2e chapter 9 held by BOTH, as rows written before the rule could be.
+  // Nobody signs in as either (no helper token uses these provider ids), so they open no module. That spec
+  // owns chapters 7, 8 and 9 of the book's assignments; no other spec may assign them.
+  const addAssignEditor = db.prepare(
+    `INSERT INTO users (provider_id, provider_username, display_name, role, created_by)
+     VALUES (?, ?, ?, 'editor', 'e2e')`
+  );
+  const assignA = Number(
+    addAssignEditor.run('90201', 'e2e-assign-a', 'E2E Úthlutun A').lastInsertRowid
+  );
+  const assignB = Number(
+    addAssignEditor.run('90202', 'e2e-assign-b', 'E2E Úthlutun B').lastInsertRowid
+  );
+  const addLegacyRow = db.prepare(
+    `INSERT INTO user_chapter_assignments (user_id, book_slug, chapter, assigned_by)
+     VALUES (?, 'efnafraedi-2e', 9, 'e2e')`
+  );
+  addLegacyRow.run(assignA);
+  addLegacyRow.run(assignB);
 } finally {
   db.close();
 }

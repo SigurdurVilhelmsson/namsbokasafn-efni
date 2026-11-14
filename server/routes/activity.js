@@ -9,8 +9,9 @@
  *   GET /api/activity/user/:id Activity for a user across all books (admin)
  *   GET /api/activity/book/:id Activity for a book (its head editor, or an admin)
  *
- * Every row names who did what, so a read is scoped to the books the reader runs. The log of
- * one book is its head editor's; a read that spans books is an admin's.
+ * Every row names who did what, so a read is held to the books the reader works on
+ * (lib/activityScope: a book-access row or a chapter assignment; an admin reads every book's). A read that
+ * spans books is an admin's.
  */
 
 const express = require('express');
@@ -20,6 +21,7 @@ const log = require('../lib/logger');
 const activityLog = require('../services/activityLog');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, requireHeadEditor, ROLES } = require('../middleware/requireRole');
+const { mayReadLogOf, refuseOtherBook } = require('../lib/activityScope');
 
 /**
  * GET /api/activity?book=&chapter=&type=&user=
@@ -30,7 +32,7 @@ router.get('/', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
   const { book, type, user, chapter, limit, offset } = req.query;
 
   if (req.user.role !== ROLES.ADMIN) {
-    const held = typeof book === 'string' && (req.user.books || []).includes(book);
+    const held = mayReadLogOf(req.user, book);
     if (!held) {
       return res.status(403).json({
         error: 'Insufficient permissions',
@@ -134,6 +136,10 @@ router.get(
   (req, res) => {
     const { book, chapter, section } = req.params;
     const { limit } = req.query;
+
+    if (!mayReadLogOf(req.user, book)) {
+      return refuseOtherBook(res, book);
+    }
 
     try {
       const activities = activityLog.getBySection(

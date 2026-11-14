@@ -127,6 +127,7 @@ function initStatements(db) {
     search: db.prepare(`
       SELECT * FROM activity_log
       WHERE (book = ? OR ? IS NULL)
+        AND (? IS NULL OR book IN (SELECT value FROM json_each(?)))
         AND (type = ? OR ? IS NULL)
         AND (user_id = ? OR ? IS NULL)
         AND (CAST(chapter AS INTEGER) = CAST(? AS INTEGER) AND (chapter GLOB '-[0-9]*' OR chapter GLOB '[0-9]*') OR ? IS NULL)
@@ -136,6 +137,7 @@ function initStatements(db) {
     count: db.prepare(`
       SELECT COUNT(*) as count FROM activity_log
       WHERE (book = ? OR ? IS NULL)
+        AND (? IS NULL OR book IN (SELECT value FROM json_each(?)))
         AND (type = ? OR ? IS NULL)
         AND (user_id = ? OR ? IS NULL)
         AND (CAST(chapter AS INTEGER) = CAST(? AS INTEGER) AND (chapter GLOB '-[0-9]*' OR chapter GLOB '[0-9]*') OR ? IS NULL)
@@ -243,12 +245,16 @@ function getBySection(book, chapter, section, limit = 50) {
 function search(options = {}) {
   const {
     book = null,
+    // `books`: hold the result to these books. null = no such limit; [] = no row (a reader with no book).
+    // A row that belongs to no book is never in a `books` result.
+    books = null,
     type = null,
     userId = null,
     chapter = null,
     limit = 50,
     offset = 0,
   } = options;
+  const bookList = books === null || books === undefined ? null : JSON.stringify(books);
   let chapterText = chapter == null ? null : String(chapter);
   if (chapterText !== null && !/^-?\d+$/.test(chapterText)) {
     // 'appendices' is the on-URL dialect for chapter -1 (item 14 convention);
@@ -263,6 +269,8 @@ function search(options = {}) {
   const rows = stmts().search.all(
     book,
     book,
+    bookList,
+    bookList,
     type,
     type,
     userId,
@@ -276,6 +284,8 @@ function search(options = {}) {
   const countResult = stmts().count.get(
     book,
     book,
+    bookList,
+    bookList,
     type,
     type,
     userId,

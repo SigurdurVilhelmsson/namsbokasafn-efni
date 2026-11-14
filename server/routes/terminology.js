@@ -20,6 +20,22 @@ const log = require('../lib/logger');
 const { requireAuth } = require('../middleware/requireAuth');
 const { createUpload } = require('../middleware/upload');
 const { requireRole, ROLES } = require('../middleware/requireRole');
+const { isBelowEditor, withoutKeys } = require('../lib/withoutPeople');
+
+// Who proposed and who approved a translation, and a headword's discussion with its authors: left out of what
+// a guest reads ([USER] 2026-11-14, answer 6). The glossary itself stays open to every sign-in.
+const TERM_PEOPLE_KEYS = [
+  'proposedBy',
+  'proposedByName',
+  'approvedBy',
+  'approvedByName',
+  'discussions',
+];
+
+/** A glossary answer as this reader gets it: whole for an editor and above, without the people for a guest. */
+function forReader(req, payload) {
+  return isBelowEditor(req.user) ? withoutKeys(payload, TERM_PEOPLE_KEYS) : payload;
+}
 const terminology = require('../services/terminologyService');
 const { VALID_BOOKS } = require('../config');
 const seed = require('../lib/arnastofnunSeed');
@@ -78,7 +94,7 @@ router.get('/', requireAuth, (req, res) => {
       offset: Math.max(parseInt(offset, 10) || 0, 0),
     });
 
-    res.json(result);
+    res.json(forReader(req, result));
   } catch (err) {
     log.error({ err }, 'Search terms error');
     res.status(500).json({ error: 'Failed to search terms', message: err.message });
@@ -102,7 +118,7 @@ router.get('/lookup', requireAuth, (req, res) => {
 
   try {
     const terms = terminology.lookupTerm(q, bookSlug || null);
-    res.json({ terms });
+    res.json(forReader(req, { terms }));
   } catch (err) {
     log.error({ err }, 'Terminology lookup error');
     res.status(500).json({ error: 'Lookup failed', message: err.message });
@@ -233,7 +249,7 @@ router.get('/export', requireAuth, (req, res) => {
       offset: 0,
     });
 
-    const terms = result.terms;
+    const terms = forReader(req, result.terms);
 
     if (format === 'csv') {
       const header =
@@ -422,6 +438,11 @@ router.get('/:id', requireAuth, (req, res) => {
       return res.status(404).json({ error: 'Headword not found' });
     }
 
+    if (isBelowEditor(req.user)) {
+      // `discussionsWithheld` lets the page leave the discussion out instead of calling it empty.
+      return res.json({ term: { ...forReader(req, term), discussionsWithheld: true } });
+    }
+
     res.json({ term });
   } catch (err) {
     log.error({ err }, 'Get headword error');
@@ -587,13 +608,15 @@ router.post('/:headwordId/translations', requireAuth, requireRole(ROLES.EDITOR),
 
 /**
  * PUT /api/terminology/translations/:id
- * Update a translation
+ * Correct a translation in place: its proposer until it is approved, or a head editor or admin while it is
+ * not approved. An approved translation is never corrected in place (409 APPROVED_NOT_EDITABLE); someone
+ * else's is refused to an editor (403 NOT_YOUR_TRANSLATION). The rule is terminologyService.correctTranslation.
  */
 router.put('/translations/:id', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   const { id } = req.params;
 
   try {
-    const translation = terminology.updateTranslation(parseInt(id, 10), req.body);
+    const translation = terminology.correctTranslation(parseInt(id, 10), req.body, req.user);
 
     activityLog.log({
       type: 'update_translation',
@@ -605,6 +628,9 @@ router.put('/translations/:id', requireAuth, requireRole(ROLES.EDITOR), (req, re
 
     res.json({ success: true, translation });
   } catch (err) {
+    if (err.code === 'APPROVED_NOT_EDITABLE' || err.code === 'NOT_YOUR_TRANSLATION') {
+      return res.status(err.status).json({ error: err.message, code: err.code });
+    }
     log.error({ err }, 'Update translation error');
     res.status(err.message.includes('not found') ? 404 : 500).json({
       error: 'Failed to update translation',

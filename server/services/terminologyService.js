@@ -15,6 +15,7 @@ const log = require('../lib/logger');
 const { PRODUCER_EXPORT } = require('../lib/glossaryProducer');
 const { buildTermAutomaton, findFirstOccurrences } = require('../lib/termAutomaton');
 const { buildScope, resolve } = require('../lib/conceptResolver');
+const { ROLES, ROLE_HIERARCHY } = require('../constants');
 const {
   loadEnglishEntries,
   prepareParadigmStatement,
@@ -360,7 +361,9 @@ function addTranslation(headwordId, data, userId, username) {
       notes || null,
       source || 'manual',
       idordabankiId || null,
-      userId,
+      // As text: a number is bound as a float and would be stored as "4242.0", which then no longer matches
+      // the session id it came from (correctTranslation compares the two).
+      userId == null ? null : String(userId),
       username
     );
 
@@ -461,6 +464,51 @@ function updateTranslation(id, updates) {
   }
 
   return getTranslation(db, id);
+}
+
+/**
+ * Correct a translation in place, for `user` (req.user). The rule is [USER]'s of 2026-11-14
+ * (docs/decisions/2026-11-14-glossary-translation-corrections.md):
+ *
+ *   the person who proposed it may correct it until it is approved;
+ *   a head editor or an admin may correct any translation that is not approved;
+ *   an approved translation is not corrected in place by anyone: a correction is a new proposal.
+ *
+ * A refusal throws with `code` and `status` (409 APPROVED_NOT_EDITABLE, 403 NOT_YOUR_TRANSLATION) and writes
+ * nothing. The check and the write run with no await between them, so no approval can land in between.
+ */
+function correctTranslation(id, updates, user) {
+  const tr = getDb()
+    .prepare('SELECT id, status, proposed_by FROM terminology_translations WHERE id = ?')
+    .get(id);
+  if (!tr) {
+    throw new Error('Translation not found');
+  }
+
+  const refuse = (code, status, message) => {
+    const err = new Error(message);
+    err.code = code;
+    err.status = status;
+    return err;
+  };
+  if (tr.status === 'approved') {
+    throw refuse(
+      'APPROVED_NOT_EDITABLE',
+      409,
+      'An approved translation is not corrected in place; propose a new translation instead'
+    );
+  }
+  const level = ROLE_HIERARCHY[user && user.role] || 0;
+  const isProposer = !!user && tr.proposed_by != null && String(tr.proposed_by) === String(user.id);
+  if (level < ROLE_HIERARCHY[ROLES.HEAD_EDITOR] && !isProposer) {
+    throw refuse(
+      'NOT_YOUR_TRANSLATION',
+      403,
+      'Only the person who proposed this translation, or a head editor, may correct it'
+    );
+  }
+
+  return updateTranslation(id, updates);
 }
 
 // ─────────────────────────────────────────
@@ -2347,6 +2395,7 @@ module.exports = {
   updateTerm,
   addTranslation,
   updateTranslation,
+  correctTranslation,
 
   // Approval workflow
   approveTranslation,

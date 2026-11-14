@@ -417,6 +417,9 @@
             <option value="admin">Kerfistj&#243;ri</option>
           </select>
         </div>
+        <!-- A person who signed in before being added is a guest until they sign in again ([USER] 2026-11-14,
+             answer 8). Read and approved by [USER] on 2026-11-14. -->
+        <p id="add-user-signin-note" style="font-size:0.85rem;margin:0">Ef notandinn er þegar skráður inn sem gestur þarf hann að skrá sig út og aftur inn til að fá hlutverkið.</p>
       </div>
       <div class="modal-footer">
         <button class="btn btn-secondary" onclick="usersHideAddModal()">H&#230;tta vi&#240;</button>
@@ -802,8 +805,11 @@
       if (!bookSlug) { showToast('Veldu b\u00f3k','error'); return; }
       if (!chapter || chapter < 1) { showToast('Sl\u00e1\u00f0u inn kaflan\u00famer','error'); return; }
       try {
-        await fetchJson('/api/admin/users/' + currentEditUser.id + '/chapters', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({bookSlug:bookSlug,chapters:[chapter]}) });
-        document.getElementById('assign-chapter').value = ''; usersLoadChapterAssignments(); showToast('\u00dathluta\u00f0: ' + chapterLabel.full(chapter),'success');
+        var assigned = await fetchJson('/api/admin/users/' + currentEditUser.id + '/chapters', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({bookSlug:bookSlug,chapters:[chapter]}) });
+        // A chapter has one assignee, so this took the chapter from whoever held it: say whom (read and approved by [USER] 2026-11-14).
+        var previous = ((assigned.replaced || [])[0] || {}).users || [];
+        var previousNote = previous.length === 0 ? '' : '. ' + (previous.length === 1 ? 'Fyrri yfirlesari: ' : 'Fyrri yfirlesarar: ') + previous.map(function(u) { return u.name || 'Notandi ' + u.id; }).join(', ');
+        document.getElementById('assign-chapter').value = ''; usersLoadChapterAssignments(); showToast('\u00dathluta\u00f0: ' + chapterLabel.full(chapter) + previousNote,'success');
       } catch(e) { showToast(e.message || 'Villa vi\u00f0 \u00fathlutun','error'); }
     };
 
