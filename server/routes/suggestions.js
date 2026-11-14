@@ -5,6 +5,8 @@
  * - Scan sections/books for localization opportunities
  * - Accept/reject/modify suggestions
  * - Sync to localization log
+ *
+ * The writes are for the book's head editor and admins. The reads ask for book access.
  */
 
 const express = require('express');
@@ -13,21 +15,48 @@ const router = express.Router();
 const log = require('../lib/logger');
 const { requireAuth } = require('../middleware/requireAuth');
 const {
+  requireRole,
   requireHeadEditor,
+  requireHeadEditorFor,
   requireBookAccessForSection,
   ROLES,
 } = require('../middleware/requireRole');
+const bookRegistration = require('../services/bookRegistration');
 const suggestions = require('../services/localizationSuggestions');
 const activityLog = require('../services/activityLog');
 
-// ── requireBookAccessForSection resolvers ──
+// ── Section resolvers ──
 // Resolve the gated section straight from the :sectionId route param.
 const bySectionParam = (req) => req.params.sectionId;
-// Resolve a suggestion :id to its owning section (null → middleware 404s).
+// Resolve a suggestion :id to its owning section (null → 404).
 const bySuggestionParam = (req) => {
   const s = suggestions.getSuggestion(parseInt(req.params.id, 10));
   return s ? s.sectionId : null;
 };
+
+// ── The writes: the book's head editor, or an admin ──
+// Localization is head editors' and admins' work ([USER] 2026-11-14, answer 12), on these routes as on the
+// localization page whose review tab calls them. The reads keep the book-access guard.
+//
+// Three steps, in this order. Anyone below head editor is refused before a section is looked up. The section is
+// then loaded and kept on req.section for the handler: a step of its own, because the head-editor guard lets an
+// admin through before it resolves a book. Last, a head editor must hold the section's book.
+function loadSectionBy(resolveSectionId) {
+  return (req, res, next) => {
+    const sectionId = resolveSectionId(req);
+    const section = sectionId ? bookRegistration.getSection(parseInt(sectionId, 10)) : null;
+    if (!section) {
+      return res.status(404).json({ error: 'Section not found' });
+    }
+    req.section = section;
+    next();
+  };
+}
+const requireHeadEditorOfSection = (resolveSectionId) => [
+  requireRole(ROLES.HEAD_EDITOR),
+  loadSectionBy(resolveSectionId),
+  requireHeadEditorFor((req) => req.section.bookSlug),
+];
 
 // ============================================================================
 // SCANNING
@@ -40,7 +69,7 @@ const bySuggestionParam = (req) => {
 router.post(
   '/scan/:sectionId',
   requireAuth,
-  requireBookAccessForSection(bySectionParam),
+  requireHeadEditorOfSection(bySectionParam),
   (req, res) => {
     const { sectionId } = req.params;
 
@@ -189,7 +218,7 @@ router.get(
 router.post(
   '/:id/accept',
   requireAuth,
-  requireBookAccessForSection(bySuggestionParam),
+  requireHeadEditorOfSection(bySuggestionParam),
   (req, res) => {
     const { id } = req.params;
 
@@ -233,7 +262,7 @@ router.post(
 router.post(
   '/:id/reject',
   requireAuth,
-  requireBookAccessForSection(bySuggestionParam),
+  requireHeadEditorOfSection(bySuggestionParam),
   (req, res) => {
     const { id } = req.params;
 
@@ -280,7 +309,7 @@ router.post(
 router.post(
   '/:id/modify',
   requireAuth,
-  requireBookAccessForSection(bySuggestionParam),
+  requireHeadEditorOfSection(bySuggestionParam),
   (req, res) => {
     const { id } = req.params;
     const { modifiedText } = req.body;
@@ -342,7 +371,7 @@ router.post(
 router.post(
   '/:sectionId/bulk',
   requireAuth,
-  requireBookAccessForSection(bySectionParam),
+  requireHeadEditorOfSection(bySectionParam),
   (req, res) => {
     const { sectionId } = req.params;
     const { ids, action } = req.body;
@@ -421,30 +450,14 @@ router.post(
 router.post(
   '/:sectionId/sync-log',
   requireAuth,
-  requireBookAccessForSection(bySectionParam),
+  requireHeadEditorOfSection(bySectionParam),
   (req, res) => {
     const { sectionId } = req.params;
 
     try {
-      // Middleware already resolved (and 404-guarded) the section.
+      // The guard already resolved (and 404-guarded) the section, and let through only the book's head editor
+      // or an admin. Being the section's assigned localizer no longer opens this route.
       const section = req.section;
-
-      // Sync is restricted to the assigned localizer or elevated roles —
-      // elevated meaning admin, or a head-editor OF THIS BOOK (a global
-      // head-editor check here was the B1-F1 class: any HE of any book passed).
-      const canSync =
-        section.localizer === req.user.id ||
-        req.user.role === ROLES.ADMIN ||
-        (req.user.role === ROLES.HEAD_EDITOR &&
-          Array.isArray(req.user.books) &&
-          req.user.books.includes(section.bookSlug));
-
-      if (!canSync) {
-        return res.status(403).json({
-          error: 'Not authorized',
-          message: 'Only the assigned localizer can sync suggestions',
-        });
-      }
 
       const result = suggestions.syncToLocalizationLog(parseInt(sectionId, 10), req.user.id);
 

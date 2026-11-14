@@ -77,7 +77,8 @@ beforeAll(() => {
       linguistic_reviewer TEXT, linguistic_reviewer_name TEXT,
       linguistic_assigned_at DATETIME, linguistic_submitted_at DATETIME,
       linguistic_approved_at DATETIME, linguistic_approved_by TEXT, linguistic_approved_by_name TEXT,
-      localizer TEXT, localizer_name TEXT, localization_assigned_at DATETIME
+      localizer TEXT, localizer_name TEXT, localization_assigned_at DATETIME,
+      localized_published_at DATETIME
     );
     CREATE TABLE IF NOT EXISTS users (
       id INTEGER PRIMARY KEY AUTOINCREMENT, display_name TEXT,
@@ -224,6 +225,31 @@ beforeAll(() => {
   insSug.run(73, 60); // bulk-accept target
   insSug.run(74, 60); // bulk-accept target
   insSug.run(75, 61); // efnafraedi: discrimination + enforcement-ON target
+
+  // ── The suggestion writes and the section status route, by role ──
+  // All liffraedi-2e (enforcement OFF). A refused session and each allowed session get rows of their own: where a
+  // refusal is missing, the refused request writes, and a shared row would then fail a control as a knock-on.
+  ins.run(64, 1, 1, '1.24', 'not_started'); // suggestion writes that must be refused
+  ins.run(65, 1, 1, '1.25', 'not_started'); // the head editor's suggestion writes
+  ins.run(66, 1, 1, '1.26', 'not_started'); // the admin's suggestion writes
+  ins.run(67, 1, 1, '1.27', 'not_started'); // the admin's sync-log (kept suggestion-free, as 62 is)
+  ins.run(68, 1, 1, '1.28', 'localization_assigned'); // status moves that must be refused
+  ins.run(69, 1, 1, '1.29', 'localization_approved');
+  ins.run(70, 1, 1, '1.30', 'review_assigned');
+  ins.run(71, 1, 1, '1.31', 'localization_assigned'); // the head editor's status moves
+  ins.run(72, 1, 1, '1.32', 'localization_approved');
+  ins.run(73, 1, 1, '1.33', 'review_assigned');
+  ins.run(74, 1, 1, '1.34', 'localization_assigned'); // the admin's status moves
+  ins.run(75, 1, 1, '1.35', 'localization_approved');
+  ins.run(76, 1, 1, '1.36', 'review_assigned');
+  // Four suggestions per section, in the order: accept, reject, modify, bulk.
+  for (const [first, section] of [
+    [80, 64],
+    [84, 65],
+    [88, 66],
+  ]) {
+    for (let id = first; id < first + 4; id++) insSug.run(id, section);
+  }
 
   db.close();
 
@@ -401,14 +427,11 @@ describe('section head-editor actions are book-scoped', () => {
     // through the loose non-401/403 check above.
     expect(res.status).toBeLessThan(500);
   });
-  // G4 (whole-branch review, design §6): the hand-rolled elevated-permission branch in
-  // the /status handler (`req.user.role !== ROLES.ADMIN && !isOwningHeadEditor`) is
-  // gated BEHIND the transition-validity check — reusing section 46 here (already
-  // 'review_approved' from the test above) would 400 at the transition-validity gate
-  // before ever reaching the admin-bypass branch, so a regression dropping that branch
-  // would stay green. Section 48 is untouched by any other test, so the transition is
-  // still valid and this genuinely exercises the branch.
-  it('status elevated transition: admin bypasses book scope (fresh row, exercises the hand-rolled elevated-permission branch)', async () => {
+  // The status route's guard is route-level: the book's head editor or an admin, for every move (the by-role
+  // describe further down), so it runs before the transition check. Section 48 is still a fresh row, untouched
+  // by any other test, so that the admin's move is valid and the answer is a genuine 200. Section 46 is already
+  // 'review_approved' from the test above and would answer 400.
+  it('status elevated transition: admin bypasses book scope (fresh row, a genuine 200)', async () => {
     const res = await post('/api/sections/48/status', ADMIN, { status: 'review_approved' });
     expect(res.status).toBe(200);
   });
@@ -735,14 +758,15 @@ describe('suggestions scan-book is head-editor-of-book scoped (B1-F1)', () => {
 
 describe('suggestions section-keyed routes are book/section-scoped (B1-F2/F3 fold-in)', () => {
   // ── Fail-open block (liffraedi-2e, enforcement OFF — the project's default
-  // model, enforce_assignments not set). requireBookAccessForSection delegates
-  // to requireBookAccess, so a caller with no assignments for the book passes:
-  // that includes plain editors AND head-editors of OTHER books (they take the
-  // same editor path — see the middleware JSDoc). The cross-book denials live
-  // in the enforcement-ON block below.
-  it('scan: plain editor clears authz fail-open and reaches a genuine 200 (scan activityLog site executes)', async () => {
+  // model, enforce_assignments not set). For the READS, requireBookAccessForSection
+  // delegates to requireBookAccess, so a caller with no assignments for the book
+  // passes: that includes plain editors AND head-editors of OTHER books (they take
+  // the same editor path — see the middleware JSDoc). The cross-book denials live
+  // in the enforcement-ON block below. The WRITES do not fail open: they are for
+  // the book's head editor and admins (the by-role describe further down).
+  it('scan: plain editor → 403 where enforcement is off too (a write; was a fail-open 200)', async () => {
     const res = await post('/api/suggestions/scan/60', EDITOR);
-    expect(res.status).toBe(200);
+    expect(res.status).toBe(403);
   });
   it('read: head-editor of another book ALSO clears fail-open (no-row caller, legacy fail-open, same as any editor)', async () => {
     const res = await get('/api/suggestions/60', HE_A);
@@ -756,7 +780,7 @@ describe('suggestions section-keyed routes are book/section-scoped (B1-F2/F3 fol
   // ── Enforcement-ON block (efnafraedi-2e, enforce_assignments=1 in the
   // harness): the chapter-assignment path turns default-deny, which is where
   // the middleware's cross-book protection actually bites.
-  it('scan: unassigned editor → 403 under enforcement (default-deny)', async () => {
+  it('scan: plain editor → 403 on the enforced book as well (a write is refused by role, whatever the enforcement)', async () => {
     const res = await post('/api/suggestions/scan/61', EDITOR);
     expect(res.status).toBe(403);
   });
@@ -818,14 +842,14 @@ describe('suggestions bulk route contains ids to the gated section (id-smuggling
   });
 });
 
-describe('suggestions sync-log: middleware + book-scoped canSync (rider)', () => {
+describe("suggestions sync-log is for the book's head editor and admins", () => {
   // Section 62 is liffraedi-owned and suggestion-free (entriesCreated: 0), so a
   // genuine 200 needs no localization_log table and no cross-test ordering.
-  it('head-editor of another book → 403 from canSync (clears fail-open middleware, then the book-scoped elevated check denies)', async () => {
+  it('head-editor of another book → 403', async () => {
     const res = await post('/api/suggestions/62/sync-log', HE_A);
     expect(res.status).toBe(403);
   });
-  it('plain editor (not the assigned localizer) → 403 from canSync (localizer gate preserved beneath the middleware)', async () => {
+  it('plain editor (not the assigned localizer) → 403', async () => {
     const res = await post('/api/suggestions/62/sync-log', EDITOR);
     expect(res.status).toBe(403);
   });
@@ -833,15 +857,18 @@ describe('suggestions sync-log: middleware + book-scoped canSync (rider)', () =>
     const res = await post('/api/suggestions/62/sync-log', HE_B);
     expect(res.status).toBe(200);
   });
-  it('assigned localizer (plain editor) reaches a genuine 200 on their own section (pins the localizer disjunct of canSync)', async () => {
+  // Section 63's localizer is the EDITOR persona. Being the assigned localizer used to be enough to sync.
+  // Localization is the head editor's work ([USER] 2026-11-14, answer 12), so the assignment no longer opens
+  // the route.
+  it('assigned localizer (plain editor) → 403 on their own section (was a genuine 200)', async () => {
     const res = await post('/api/suggestions/63/sync-log', EDITOR);
-    expect(res.status).toBe(200);
+    expect(res.status).toBe(403);
   });
 });
 
 describe('suggestion-id routes resolve to their owning section and book-scope on it', () => {
   // Suggestion 75 → section 61 → efnafraedi-2e (enforcement ON, HE_A's book).
-  it('accept: head-editor of another book → 403 under enforcement (suggestion 75 is efnafraedi)', async () => {
+  it('accept: head-editor of another book → 403 (suggestion 75 is efnafraedi)', async () => {
     const res = await post('/api/suggestions/75/accept', HE_B);
     expect(res.status).toBe(403);
   });
@@ -849,10 +876,10 @@ describe('suggestion-id routes resolve to their owning section and book-scope on
     const res = await post('/api/suggestions/75/accept', HE_A);
     expect(res.status).toBe(200);
   });
-  // Suggestions 70-72 → section 60 → liffraedi-2e (fail-open).
-  it('accept: plain editor clears fail-open on liffraedi and reaches a genuine 200', async () => {
+  // Suggestions 70-72 → section 60 → liffraedi-2e (enforcement off).
+  it('accept: plain editor → 403 on liffraedi, where enforcement is off (a write; was a fail-open 200)', async () => {
     const res = await post('/api/suggestions/70/accept', EDITOR);
-    expect(res.status).toBe(200);
+    expect(res.status).toBe(403);
   });
   it('reject: owning head-editor → genuine 200 (reject activityLog site executes)', async () => {
     const res = await post('/api/suggestions/71/reject', HE_B);
@@ -866,6 +893,102 @@ describe('suggestion-id routes resolve to their owning section and book-scope on
     const res = await post('/api/suggestions/99999/accept', HE_B);
     expect(res.status).toBe(404);
   });
+});
+
+// ============================================================================
+// The suggestion writes and the section status route, by role
+// ============================================================================
+
+describe("the suggestion writes and the section status route are for the book's head editor and admins", () => {
+  // Localization is head editors' and admins' work ([USER] 2026-11-14, answer 12). The localization page and its
+  // save routes follow that (localizationHeadEditorsOnly.test.js). These are the routes beside them: the writes
+  // behind the page's review tab, and the route that moves a section's status.
+  //
+  // Every row here is liffraedi-2e's, where assignment enforcement is OFF, because that is where the rule shows.
+  // The book-access guard lets through any editor with no assignments in such a book, a head editor of another
+  // book included; and the status route asked for the editor role and nothing else.
+
+  /** The writes, on one session's own rows (see the fixture). */
+  const writesOn = ({ section, firstSuggestion, syncSection, firstStatusSection }) => [
+    ['scan', `/api/suggestions/scan/${section}`],
+    ['accept', `/api/suggestions/${firstSuggestion}/accept`],
+    ['reject', `/api/suggestions/${firstSuggestion + 1}/reject`],
+    ['modify', `/api/suggestions/${firstSuggestion + 2}/modify`, { modifiedText: '8,0 km' }],
+    ['bulk', `/api/suggestions/${section}/bulk`, { ids: [firstSuggestion + 3], action: 'accept' }],
+    ['sync-log', `/api/suggestions/${syncSection}/sync-log`],
+    [
+      'status: start localizing',
+      `/api/sections/${firstStatusSection}/status`,
+      { status: 'localization_in_progress' },
+    ],
+    [
+      'status: publish the localized text',
+      `/api/sections/${firstStatusSection + 1}/status`,
+      { status: 'localized_published' },
+    ],
+    // Not a localization move: the whole route is the head editor's, not only its localization half.
+    [
+      'status: start a review',
+      `/api/sections/${firstStatusSection + 2}/status`,
+      { status: 'review_in_progress' },
+    ],
+  ];
+
+  const refusedRows = { section: 64, firstSuggestion: 80, syncSection: 64, firstStatusSection: 68 };
+  for (const [who, user] of [
+    ['a plain editor', EDITOR],
+    ['a head editor of another book', HE_A],
+  ]) {
+    it.each(writesOn(refusedRows))(`${who} is refused %s`, async (_name, pathname, body) => {
+      const res = await post(pathname, user, body);
+      expect(res.status).toBe(403);
+    });
+  }
+
+  // By value: a status code alone would not show a write that happened before the refusal.
+  it('a refusal writes nothing: the suggestions are still pending', () => {
+    const db = new Database(process.env.SESSIONS_DB_PATH, { readonly: true });
+    const rows = db
+      .prepare(
+        'SELECT id, status FROM localization_suggestions WHERE id BETWEEN 80 AND 83 ORDER BY id'
+      )
+      .all();
+    db.close();
+    expect(rows).toEqual([80, 81, 82, 83].map((id) => ({ id, status: 'pending' })));
+  });
+
+  it('a refusal writes nothing: the sections have not moved', () => {
+    const db = new Database(process.env.SESSIONS_DB_PATH, { readonly: true });
+    const rows = db
+      .prepare('SELECT id, status FROM book_sections WHERE id BETWEEN 68 AND 70 ORDER BY id')
+      .all();
+    db.close();
+    expect(rows).toEqual([
+      { id: 68, status: 'localization_assigned' },
+      { id: 69, status: 'localization_approved' },
+      { id: 70, status: 'review_assigned' },
+    ]);
+  });
+
+  // The controls ask for a genuine 200, not only "not 401/403": a handler that crashed past the guard (for
+  // example on a section the guard did not hand it) would pass the looser check.
+  for (const [who, user, rows] of [
+    [
+      'the head editor of the book',
+      HE_B,
+      { section: 65, firstSuggestion: 84, syncSection: 62, firstStatusSection: 71 },
+    ],
+    [
+      'an admin',
+      ADMIN,
+      { section: 66, firstSuggestion: 88, syncSection: 67, firstStatusSection: 74 },
+    ],
+  ]) {
+    it.each(writesOn(rows))(`control: ${who} does %s`, async (_name, pathname, body) => {
+      const res = await post(pathname, user, body);
+      expect(res.status).toBe(200);
+    });
+  }
 });
 
 describe('suggestions.js activityLog call shape (static guard, mirrors the sections.js guard)', () => {

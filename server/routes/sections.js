@@ -251,6 +251,10 @@ router.post(
  * POST /api/sections/:sectionId/status
  * Update section status (with validation)
  *
+ * For the book's head editor or an admin, whatever the move. This route takes a section through the
+ * localization states as well as the review ones, and localization is head editors' and admins' work
+ * ([USER] 2026-11-14, answer 12). The assigned reviewer's own step is POST /:sectionId/submit-review.
+ *
  * Body:
  *   - status: New status
  *   - notes: Optional notes
@@ -258,8 +262,9 @@ router.post(
 router.post(
   '/:sectionId/status',
   requireAuth,
-  requireRole(ROLES.EDITOR),
+  requireRole(ROLES.HEAD_EDITOR), // anyone below is refused before the section is looked up
   loadSection,
+  requireHeadEditorFor((req) => req.sectionData?.bookSlug),
   async (req, res) => {
     const section = req.sectionData;
     const { status, notes } = req.body;
@@ -297,19 +302,6 @@ router.post(
         currentStatus: section.status,
         allowedTransitions: allowedNext,
       });
-    }
-
-    // Some transitions require higher permissions
-    const headEditorRequired = ['review_approved', 'localization_approved'];
-    if (headEditorRequired.includes(status)) {
-      const isOwningHeadEditor =
-        req.user.role === ROLES.HEAD_EDITOR && req.user.books?.includes(section.bookSlug);
-      if (req.user.role !== ROLES.ADMIN && !isOwningHeadEditor) {
-        return res.status(403).json({
-          error: 'Insufficient permissions',
-          message: `Status '${status}' requires a head editor assigned to ${section.bookSlug} (or admin)`,
-        });
-      }
     }
 
     try {
