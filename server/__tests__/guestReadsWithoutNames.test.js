@@ -7,7 +7,8 @@
  *   the glossary (GET /api/terminology, /lookup, /export, /:id): who proposed and who approved each
  *   translation, by name and account id, and every discussion comment with its author;
  *   the pipeline status (GET /api/pipeline-status/:book/:chapter): who completed a stage and who holds the
- *   chapter's lock, which are e-mail addresses.
+ *   chapter's lock, which are e-mail addresses, and a stage's note, where a revert writes who reverted the
+ *   stage and why.
  *
  * A guest still reads the glossary and the stages. The people and the discussions are left out for anyone
  * below the editor role.
@@ -52,6 +53,9 @@ const PIPELINE_PEOPLE = [
   'id-ferill-7786',
   'ferill.sentinel@skoli.example',
   'smaatridi-sentinel-7787',
+  // A reverted stage's note: who reverted it, and their reason, in one free-text field.
+  'afturkallari.sentinel@skoli.example',
+  'astaeda-sentinel-7788',
 ];
 
 let server;
@@ -94,6 +98,12 @@ beforeAll(async () => {
     `INSERT INTO chapter_pipeline_status (book_slug, chapter_num, stage, status, completed_at, completed_by)
      VALUES (?, 1, 'extraction', 'complete', datetime('now'), ?)`
   ).run(BOOK, 'lauk.stigi.sentinel@skoli.example');
+  // A stage as a revert leaves it (pipelineStatusService.revertStage): not started, nobody in `completed_by`,
+  // and the person and their reason in `notes`.
+  db.prepare(
+    `INSERT INTO chapter_pipeline_status (book_slug, chapter_num, stage, status, notes)
+     VALUES (?, 1, 'mtReady', 'not_started', ?)`
+  ).run(BOOK, 'Reverted by afturkallari.sentinel@skoli.example: astaeda-sentinel-7788');
   db.prepare(
     `INSERT INTO chapter_locks (chapter_id, locked_by, expires_at)
      VALUES (?, ?, datetime('now', '+1 hour'))`
@@ -203,6 +213,13 @@ describe('the pipeline status, for a guest', () => {
     );
     expect(body.lock && typeof body.lock.expiresAt).toBe('string');
     expect(found(r.text, PIPELINE_PEOPLE)).toEqual([]);
+  });
+
+  it('still lists a reverted stage, without the note that says who reverted it and why', async () => {
+    const r = await read('viewer', `/api/pipeline-status/${BOOK}/1`);
+    const reverted = JSON.parse(r.text).history.find((h) => h.stage === 'mtReady');
+    expect(reverted).toMatchObject({ stage: 'mtReady', status: 'not_started' });
+    expect(reverted.notes).toBeUndefined();
   });
 
   it('control: an editor reads who completed the stage, who holds the lock and the log', async () => {

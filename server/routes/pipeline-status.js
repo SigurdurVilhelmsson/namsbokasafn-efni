@@ -20,8 +20,9 @@ const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, ROLES } = require('../middleware/requireRole');
 const { isBelowEditor, withoutKeys } = require('../lib/withoutPeople');
 
-// What names a person in the status read: who completed a stage, who holds the lock, and a log row's author.
-const PIPELINE_PEOPLE_KEYS = ['completedBy', 'lockedBy', 'userId', 'username', 'details'];
+// What names a person in the status read: who completed a stage, who holds the lock, a log row's author, and a
+// stage's note (free-form; a revert writes "Reverted by <e-mail address>: <reason>" there).
+const PIPELINE_PEOPLE_KEYS = ['completedBy', 'lockedBy', 'userId', 'username', 'details', 'notes'];
 const { VALID_BOOKS } = require('../config');
 const { MAX_CHAPTERS } = require('../constants');
 
@@ -80,7 +81,8 @@ router.get('/:bookSlug/:chapterNum', (req, res) => {
 
     const answer = { ...status, history: history.slice(0, 20), lock };
     // A guest reads the stages and whether the chapter is locked, not who did it ([USER] 2026-11-14,
-    // answer 7): the names here are e-mail addresses. A log row's `details` is free-form and goes with them.
+    // answer 7): the names here are e-mail addresses. A log row's `details` and a stage's `notes` are free-form
+    // and go with them.
     res.json(isBelowEditor(req.user) ? withoutKeys(answer, PIPELINE_PEOPLE_KEYS) : answer);
   } catch (err) {
     res.status(500).json({ error: err.message });
