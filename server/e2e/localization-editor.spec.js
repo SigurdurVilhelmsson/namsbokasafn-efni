@@ -175,3 +175,42 @@ test.describe('Localization editor — API', () => {
     }
   });
 });
+
+test.describe('Localization editor — review tab', () => {
+  // Interface audit 2026-11-13, LO-01: the "Hluti" list asked for an address no router had, so it read "Villa"
+  // and stayed disabled, and "Hlaða" could never be pressed.
+  //
+  // The book and chapter lists come from the catalogue and from server/data. Neither holds the fixture book, so
+  // those two answers are stubbed here. The section list's own request is the one under test and is NOT stubbed:
+  // it reads the two sections that seed-fixture.js plants under the fixture book.
+  test('the section list loads for the chosen chapter, and "Hlaða" can then be pressed', async ({
+    page,
+  }) => {
+    await loginAs(page, 'head-editor');
+    await page.route('**/api/admin/books', (route) =>
+      route.fulfill({ json: { books: [{ slug: '__e2e-fixture__', titleIs: 'E2E Fixture' }] } })
+    );
+    await page.route('**/api/books/__e2e-fixture__', (route) =>
+      route.fulfill({ json: { chapters: [{ chapter: 1, titleIs: 'E2E kafli' }] } })
+    );
+
+    await page.goto('/localization');
+    await page.locator('.view-tab[data-view="review"]').click();
+    await page.selectOption('#rv-book-select', '__e2e-fixture__');
+    await page.selectOption('#rv-chapter-select', '1');
+
+    const sections = page.locator('#rv-section-select');
+    await expect(sections).toBeEnabled();
+    // In reading order (the seed inserts 1.2 first), with the note the list puts beside a section in progress.
+    await expect(sections.locator('option')).toHaveText([
+      /^Veldu/,
+      /^1\.1$/,
+      /^1\.2 \(í vinnslu\)$/,
+    ]);
+
+    const load = page.locator('#rv-load-btn');
+    await expect(load).toBeDisabled();
+    await sections.selectOption({ label: '1.1' });
+    await expect(load).toBeEnabled();
+  });
+});

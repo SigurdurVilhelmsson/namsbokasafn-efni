@@ -24,6 +24,30 @@ try {
     `INSERT OR IGNORE INTO book_subject_mapping (book_id, primary_subject) VALUES (?, 'chemistry')`
   ).run(row.id);
 
+  // One chapter with two sections under the fixture book, for the review tab's section list on the localization
+  // page (localization-editor.spec.js; interface audit 2026-11-13, LO-01). They are inserted out of reading order,
+  // and one is in progress, which the list shows beside its number. The fixture book is in no catalogue and has
+  // no data file, so no book or chapter list shows it; that spec owns these rows.
+  const fixtureChapter = Number(
+    db
+      .prepare(
+        `INSERT INTO book_chapters (book_id, chapter_num, title_en) VALUES (?, 1, 'E2E chapter')`
+      )
+      .run(row.id).lastInsertRowid
+  );
+  const addFixtureSection = db.prepare(
+    `INSERT INTO book_sections (book_id, chapter_id, chapter_num, section_num, title_en, status)
+     VALUES (?, ?, 1, ?, ?, ?)`
+  );
+  addFixtureSection.run(
+    row.id,
+    fixtureChapter,
+    '1.2',
+    'E2E section two',
+    'localization_in_progress'
+  );
+  addFixtureSection.run(row.id, fixtureChapter, '1.1', 'E2E section one', 'not_started');
+
   // ⚠️ Register the real books too, and seed their book_domain_priority rows.
   //
   // §C51/§C35: a database built from every migration, from empty, ends with
