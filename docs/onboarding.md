@@ -27,7 +27,7 @@ The translation pipeline has two review passes:
 | Pass | Name | Purpose | Editor URL |
 |------|------|---------|------------|
 | Pass 1 | Linguistic Review | Fix grammar, accuracy, terminology | `/editor` |
-| Pass 2 | Localization | Adapt for Icelandic context (units, examples) | `/localization` |
+| Pass 2 | Localization | Adapt for Icelandic context (units, examples); head editors and admins only | `/localization` |
 
 Content flows through this pipeline:
 ```
@@ -82,6 +82,9 @@ You can participate in discussions by adding comments on individual edits.
 
 After Pass 1 produces a faithful translation, Pass 2 adapts it for Icelandic students.
 
+**Localization is done by head editors and admins.** As an editor you will not see Aðlögun in the menu, and
+`/localization` sends you to the front page. The rest of this section is for head editors.
+
 ### Opening the Localization Editor
 1. Navigate to `/localization`
 2. Select book and chapter
@@ -135,7 +138,7 @@ If you encounter a term not in the glossary:
 | Page | URL | Purpose |
 |------|-----|---------|
 | Segment Editor | `/editor` | Pass 1 linguistic review |
-| Localization Editor | `/localization` | Pass 2 cultural adaptation |
+| Localization Editor | `/localization` | Pass 2 cultural adaptation (head editors and admins) |
 | Terminology | `/terminology` | Term database and lookup |
 | Progress | `/progress` | Overall translation progress |
 | Reviews | `/editor?view=reviews` | Pending review queue |

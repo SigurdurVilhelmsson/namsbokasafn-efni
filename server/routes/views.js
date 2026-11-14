@@ -53,7 +53,8 @@ router.get('/editor', requirePageAuth(), (req, res) => sendView(res, 'segment-ed
 router.get('/progress', requirePageAuth(), (req, res) => sendView(res, 'status.html'));
 router.get('/terminology', requirePageAuth(), (req, res) => sendView(res, 'terminology.html'));
 router.get('/reviews', (req, res) => res.redirect(301, '/editor'));
-router.get('/localization', requirePageAuth(), (req, res) =>
+// Head editors and admins, as the menu shows it ([USER] 2026-11-14, answer 12; LO-02). An editor is sent to Heim.
+router.get('/localization', requirePageAuth(ROLES.HEAD_EDITOR), (req, res) =>
   sendView(res, 'localization-editor.html')
 );
 router.get('/library', requirePageAuth(), (req, res) => sendView(res, 'books.html'));
