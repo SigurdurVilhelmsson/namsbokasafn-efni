@@ -309,8 +309,8 @@ const UI = {
   },
 
   // ── Segment editor specific ─────────────────────────────────
-  // "Yfirlestrar": the units with edits waiting for a decision (interface audit 2026-11-13, ED-08). New texts, not
-  // yet read by a native speaker.
+  // "Yfirlestrar": the units with edits waiting for a decision (interface audit 2026-11-13, ED-08). Read and
+  // approved by [USER] on 2026-11-14.
   reviewList: {
     book: 'Bók',
     chapter: 'Kafli',
