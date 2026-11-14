@@ -83,9 +83,13 @@ A small runner in `experiments/fable-editor-trial/`, reusing the tested pieces i
 - **`tools/ai-review/pricing.js`** gains a `claude-fable-5-2` row ($8 in, $40 out, $0.20 cache read per
   million tokens, from the claude-api reference model table, dated) with its test. This is the only change
   outside the experiment folder, and it is an enforceable value, so it lives there and not here.
-- **The marker checks already in the repo** (`bracketMarkerDeltaBySegment` from `tools/api-translate.js`,
-  as `tools/lib/remt-checks-mt.js` uses it, and that file's segment-id checks) run over every FE segment. A segment that loses or gains a marker is
-  refused into the analysis, counted, and kept in the records.
+- **A marker check over every FE segment** (`markerSignature` in `experiments/fable-editor-trial/lib.mjs`).
+  It compares the fixed part of each marker before and after: the type, the whole body of
+  `MATH`/`MEDIA`/`TABLE`/`xref`/`docref`/`sub`/`sup`, and the part after `|` of `term`/`link`/`fn`. The
+  words inside a `term` or `i` may change, which the API-side count could not tell from a loss. A segment
+  that fails is refused into the analysis (FE keeps the MT text there), counted, and kept in the records.
+  *(Amended 2026-11-14 with the runner: the plan named `bracketMarkerDeltaBySegment`, which counts marker
+  types only and would accept a changed term id or formula.)*
 
 **Where the records go.** The harness accepts a records directory outside the repository, or
 `books/<slug>/ai-review` inside it. The trial writes outside (for example `~/namsbokasafn-fable-trial/`),
@@ -97,7 +101,9 @@ with its own ledger there, and a `promote` step then copies a finished run into
 ### 5.2 One request per module
 
 Fable has a 1M-token context, so each request carries a whole module (or one chapter-metadata file): the
-English segments, the MT segments, and the chapter's house terminology. Whole-module requests give Fable the
+English segments, the MT segments, and the chapter's house terminology. A module above 30,000 Icelandic
+characters is split into two requests so the answer cannot run into `max_tokens` (64,000); each half still
+carries the whole module's English as context. ch10 makes 11 requests over 1,054 segments. Whole-module requests give Fable the
 context a human editor has, which the term pass's segment batches did not need.
 
 - **House terminology:** the same compiled ruling set the term pass used for that chapter
@@ -106,8 +112,7 @@ context a human editor has, which the term pass's segment batches did not need.
 - **The prompt** is short and states the task, not a list of rules: edit this machine translation into
   correct Icelandic for a secondary-school chemistry textbook, in a register that is
   semi-academic but fluent for younger readers ([USER]'s wording, 2026-11-14), with grammar judged in context; keep it faithful to the English; use
-  the house terms; keep every `[[…]]` marker exactly as it is; return every segment, unchanged where nothing
-  needs changing. (The claude-api guidance for Fable 5.2 is that prompts written for older models are often
+  the house terms; keep every `[[…]]` marker; return only the segments it changes. (The claude-api guidance for Fable 5.2 is that prompts written for older models are often
   too prescriptive.) The prompt file is committed and its sha256 recorded before the run.
 - **The answer** is structured output (`output_config.format`, a JSON schema): per segment, its id, the
   edited text, and zero or more change tags from a closed list (terminology, grammar and agreement, word
@@ -128,24 +133,34 @@ only as a guard against a runaway run. The actual cost goes into the run's READM
 ### 5.4 The commands [USER] runs locally
 
 Cloud sessions have no API key, so the run happens on [USER]'s machine, before the key expires on
-2026-11-27. These are the commands the runner will offer once it is built (the interface below is the
-plan, not yet code):
+2026-11-27. `--records` must be an absolute path outside the repository. The runner's `--help` and
+`experiments/fable-editor-trial/README.md` are the reference; this is the order:
 
 ```bash
 nvm use && git switch main && git pull
-# 1. Free: plan, token count and worst-case cost; sends nothing billable
-node experiments/fable-editor-trial/run-trial.mjs --chapter ch10 --records ~/namsbokasafn-fable-trial --dry-run
-# 2. One small module, interactively, to read the output before buying the chapter
-node experiments/fable-editor-trial/run-trial.mjs --chapter ch10 --module <smallest module> --records ~/namsbokasafn-fable-trial --cap-usd 5 --yes
-# 3. The rest of the chapter through the Batch API (resumable if the machine sleeps)
-node experiments/fable-editor-trial/run-trial.mjs --chapter ch10 --mode batch --records ~/namsbokasafn-fable-trial --cap-usd 40 --yes
+# 1. Free: the plan and a worst-case cost; sends nothing, needs no key
+node experiments/fable-editor-trial/run-trial.mjs --chapter ch10
+# 2. The smallest module, interactively, to read the output before buying the chapter
+node experiments/fable-editor-trial/run-trial.mjs --chapter ch10 --module m68760 --records "$HOME/namsbokasafn-fable-trial" --cap-usd 5 --yes
+# 3. The whole chapter through the Batch API (if polling stops, rerun with --resume <runId>)
+node experiments/fable-editor-trial/run-trial.mjs --chapter ch10 --mode batch --records "$HOME/namsbokasafn-fable-trial" --yes
 # 4. Copy the finished run into the repository, then build the comparison (free, offline)
-node experiments/fable-editor-trial/promote.mjs --run <runId> --records ~/namsbokasafn-fable-trial
-node experiments/fable-editor-trial/compare.mjs --chapter ch10 --run <runId>
+node experiments/fable-editor-trial/promote.mjs --run <runId> --records "$HOME/namsbokasafn-fable-trial"
+node experiments/fable-editor-trial/compare.mjs report --run <runId>
+# 5. After ranking blind-sheet.md into blind-answers.csv (without opening blind-key.b64)
+node experiments/fable-editor-trial/compare.mjs score --run <runId> --answers experiments/fable-editor-trial/results/<runId>/blind-answers.csv
 ```
 
-`git status --porcelain` before and after steps 2–4 must show nothing under `books/`. The runner checks
-this itself and refuses to start on a dirty `books/` tree.
+Step 3 sends m68760 again; the step-2 run stays as its own record, and the comparison uses the step-3
+run. The runner refuses to start on a dirty `books/` tree or with the prompt, ruling set or its own code
+uncommitted, and checks `books/` again after the run.
+
+**Pinned inputs.** The runner refuses unless ch10's MT and overlay are byte-identical to what the term
+pass read (run `20261108T193214Z-76357476`). The English may differ in one way only: G1.12 (2026-11-12)
+removed later repeats of duplicated segment ids from five ch10 modules after the term pass. The runner
+checks that removal against the English at the term pass's commit and records it in the run as
+`enDrift`. The removed repeats have no English now, so they are sent to nobody and left out of every
+comparison.
 
 ## 6. How the three are compared
 
@@ -181,7 +196,8 @@ preference:
 1. A yfirlesari ranks the sample **after** they have finished editing that chapter. Safest, but later.
 2. The yfirlesari who will **not** edit that chapter ranks it now. Fast, but they still see Fable's style
    before their own work, a small contamination that must be reported.
-3. [USER] ranks it now, as a preliminary read, and then does not edit that chapter.
+3. [USER] ranks it now, as a preliminary read, and then does not edit that chapter. **Chosen by [USER]
+   on 2026-11-14** (§9).
 
 ### 6.3 Against the human text, once it exists
 
@@ -241,7 +257,10 @@ three-layer rule of CLAUDE.md § Purpose extended to a fourth, and pure MT is ne
 6. The comparison with HU (§6.3) when the chapter has been applied.
 7. If promising (§6.4), a decision record on integration (§7).
 
-## 9. Questions for [USER]
+## 9. Questions for [USER] — answered 2026-11-14
 
-- **The chapter:** ch10, or the chapter the editors will finish first?
-- **The blind ranking:** which of the three options in §6.2?
+- **The chapter:** ch10.
+- **The blind ranking:** option 3 of §6.2. [USER] ranks the sample as soon as the report exists, and
+  does not edit ch10.
+- **Cost:** paid from [USER]'s monthly Anthropic API credits (USD 200 a month), so not a project cost;
+  it is still recorded (§5.3).
