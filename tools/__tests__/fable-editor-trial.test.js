@@ -234,10 +234,41 @@ const booksStatus = () =>
     encoding: 'utf8',
   });
 
+/**
+ * CI checks out at depth 1, so the term pass's layer-1 commit is not there to `git show`
+ * (measured on PR #686's first push). The tests below that are not about the English drift read
+ * the "then" English as the English now: with no repeats left in it, the G1.12 check passes
+ * trivially, which is all those tests need. The drift check itself is unit-tested above on
+ * fixtures, and against the real history in the next block wherever the commit is present.
+ */
+const NO_HISTORY = {
+  gitShow: (_commit, repoRel) => fs.readFileSync(path.join(REPO_ROOT, repoRel), 'utf8'),
+};
+const LAYER1_COMMIT = '0093d8da4620a2041e583d3f84d39e9b49f055a2';
+const hasCommit = (() => {
+  try {
+    execFileSync('git', ['cat-file', '-e', `${LAYER1_COMMIT}^{commit}`], {
+      cwd: REPO_ROOT,
+      stdio: 'ignore',
+    });
+    return true;
+  } catch {
+    return false;
+  }
+})();
+
+describe('ch10 English drift against the real history', () => {
+  // Skipped in a shallow clone (CI), where the commit cannot be read; it runs in any full clone,
+  // which is where the paid run happens, and the runner refuses there if this would fail.
+  it.skipIf(!hasCommit)('is only the G1.12 removal of later repeats, in five modules', () => {
+    const { enDrift } = readPinnedInputs('ch10');
+    expect(enDrift.map((d) => d.stem)).toEqual(['m68761', 'm68764', 'm68768', 'm68769', 'm68773']);
+  });
+});
+
 describe('ch10 requests', () => {
   it('match the term-pass inputs and pass the harness body check', () => {
-    const { inputs, enDrift } = readPinnedInputs('ch10');
-    for (const d of enDrift) expect(d.rule).toMatch(/G1\.12/);
+    const { inputs } = readPinnedInputs('ch10', NO_HISTORY);
     const prompt = fs.readFileSync(path.join(REPO_ROOT, PROMPT_PATH), 'utf8');
     const reqs = buildRequests({
       chapterDir: 'ch10',
@@ -315,6 +346,7 @@ describe('run → promote → report → score on a mock transport', () => {
     const code = await main(['--module', 'm68760', '--records', records, '--yes'], {
       stdout: { write: (s) => out.push(s) },
       git,
+      inputOptions: NO_HISTORY,
       transport: mockTransport(),
       harness: {
         harnessCommit: () => 'c'.repeat(40),
@@ -340,7 +372,7 @@ describe('run → promote → report → score on a mock transport', () => {
       promote({ runId, recordsDir: records, destRoot: path.join(trialRoot, 'runs'), env: {} })
     ).not.toThrow();
 
-    const r = report({ trialRoot, runId, sampleSize: 4 });
+    const r = report({ trialRoot, runId, sampleSize: 4, inputOptions: NO_HISTORY });
     const resDir = path.join(trialRoot, 'results', runId);
     for (const f of [
       'report.md',

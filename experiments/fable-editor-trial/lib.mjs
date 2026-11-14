@@ -105,13 +105,25 @@ export function isLaterRepeatsRemoved(thenText, nowText) {
   );
 }
 
-const defaultGitShow = (commit, repoRel) =>
-  execFileSync('git', ['show', `${commit}:${repoRel}`], {
+const defaultGitShow = (commit, repoRel) => {
+  try {
+    execFileSync('git', ['cat-file', '-e', `${commit}^{commit}`], {
+      cwd: REPO_ROOT,
+      stdio: 'ignore',
+    });
+  } catch {
+    throw new Error(
+      `fable-trial: commit ${commit} is not in this clone (a shallow clone?); ` +
+        `run \`git fetch origin ${commit}\` and try again`
+    );
+  }
+  return execFileSync('git', ['show', `${commit}:${repoRel}`], {
     cwd: REPO_ROOT,
     encoding: 'utf8',
     maxBuffer: 64 * 1024 * 1024,
     stdio: ['ignore', 'pipe', 'pipe'],
   });
+};
 
 /**
  * Read a chapter's inputs and refuse any drift from the pinned term-pass run. Layer 1 and the
