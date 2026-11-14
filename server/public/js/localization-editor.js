@@ -1758,8 +1758,7 @@
   //
   // ================================================================
 
-  // eslint-disable-next-line no-unused-vars -- set by onUserReady(), reserved for future user context
-  let _rvCurrentUser = null;
+  let _rvCurrentUser = null; // set by onUserReady(); rvBooksHeld() reads its role and books
   let rvCurrentSectionId = null;
   let rvCurrentSuggestions = [];
   let rvCurrentFilter = 'all';
@@ -1799,12 +1798,26 @@
   // REVIEW: Load books / chapters / sections
   // ----------------------------------------------------------------
 
+  /**
+   * The books this user localizes: every book for an admin, the books they hold for anyone else. The list comes
+   * from an address that answers with every registered book, and the section list's route refuses a book the
+   * user does not hold, so offering one led only to "Villa". The server decides; this keeps the list honest.
+   */
+  function rvBooksHeld(books) {
+    var user = _rvCurrentUser;
+    if (user && user.role === 'admin') return books;
+    var held = (user && user.books) || [];
+    return books.filter(function (book) {
+      return held.indexOf(book.slug) !== -1;
+    });
+  }
+
   async function rvLoadBooks() {
     try {
       var data = await fetchJson('/api/admin/books');
       var select = document.getElementById('rv-book-select');
 
-      data.books.forEach(function (book) {
+      rvBooksHeld(data.books).forEach(function (book) {
         select.innerHTML +=
           '<option value="' + escapeHtml(book.slug) + '">' + escapeHtml(book.titleIs) + '</option>';
       });

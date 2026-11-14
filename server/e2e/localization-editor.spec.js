@@ -213,4 +213,35 @@ test.describe('Localization editor — review tab', () => {
     await sections.selectOption({ label: '1.1' });
     await expect(load).toBeEnabled();
   });
+
+  // The book list comes from an address that answers with every registered book. A head editor localizes the
+  // books they hold, and the section list's route refuses the rest, so a book they do not hold led only to
+  // "Villa". The answer is stubbed with three books; the head editor of these specs holds the first two
+  // (helpers/auth.js).
+  const THREE_BOOKS = {
+    books: [
+      { slug: '__e2e-fixture__', titleIs: 'E2E Fixture' },
+      { slug: 'efnafraedi-2e', titleIs: 'Efnafræði 2e' },
+      { slug: 'liffraedi-2e', titleIs: 'Líffræði 2e' },
+    ],
+  };
+
+  /** The review tab's book list, as this role sees it. */
+  async function reviewTabBooks(page, role) {
+    await loginAs(page, role);
+    await page.route('**/api/admin/books', (route) => route.fulfill({ json: THREE_BOOKS }));
+    await page.goto('/localization');
+    await page.locator('.view-tab[data-view="review"]').click();
+    return page.locator('#rv-book-select option');
+  }
+
+  test('a head editor is offered the books they hold, and no other', async ({ page }) => {
+    const books = await reviewTabBooks(page, 'head-editor');
+    await expect(books).toHaveText([/^Veldu/, 'E2E Fixture', 'Efnafræði 2e']);
+  });
+
+  test('control: an admin is offered every book', async ({ page }) => {
+    const books = await reviewTabBooks(page, 'admin');
+    await expect(books).toHaveText([/^Veldu/, 'E2E Fixture', 'Efnafræði 2e', 'Líffræði 2e']);
+  });
 });
