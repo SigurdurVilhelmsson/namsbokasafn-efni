@@ -88,11 +88,30 @@ test.describe('Segment editor', () => {
     await expect(firstChapter).toBeAttached({ timeout: 10000 });
     const firstValue = await firstChapter.getAttribute('value');
     expect(firstValue).toBeTruthy();
+
+    // What the list should come to hold: the chapter's modules, asked for here and not through the page.
+    const answer = await page.request.get(`/api/segment-editor/efnafraedi-2e/${firstValue}`);
+    const moduleIds = (await answer.json()).modules.map((module) => module.moduleId);
+    // The chapter has modules, so an empty list below is the page's doing, not the chapter's.
+    expect(moduleIds.length).toBeGreaterThan(0);
+
+    // No card is shown before a chapter is selected, so the cards read below were put there by the selection.
+    const cards = page.locator('.module-card');
+    await expect(cards).toHaveCount(0);
+
     await chapterSelect.selectOption(firstValue);
 
-    // Module list should appear
-    const moduleContainer = page.locator('#module-list, .module-list, .module-card').first();
-    await expect(moduleContainer).toBeVisible({ timeout: 10000 });
+    // One card per module of the chapter, in the server's order. Each card names its module at the start of its
+    // title ("m68663 — Smelltu til að opna"). The check used to be that some card, or a list element this page
+    // does not have, was visible: it passed on a page that showed one module, another chapter's, or the right
+    // ones in the wrong order.
+    const idsShown = () =>
+      cards.evaluateAll((shown) =>
+        shown.map((card) => (card.getAttribute('title') || '').split(' — ')[0])
+      );
+    await expect.poll(idsShown, { timeout: 10000 }).toEqual(moduleIds);
+    // A comparison of attributes also holds for cards in a hidden list, so a card must be seen too.
+    await expect(cards.first()).toBeVisible();
   });
 
   test('no console errors during editor interaction', async ({ page }) => {
