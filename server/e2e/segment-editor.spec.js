@@ -61,26 +61,38 @@ test.describe('Segment editor', () => {
 
   test('loading a chapter shows module list', async ({ page }) => {
     await page.goto('/editor');
+    // The page opens on a book by itself and loads that book's chapters. That request has to land before the list
+    // is emptied below, or its answer would refill it.
     await page.waitForLoadState('networkidle');
 
-    // This used to sit in an `if (visible)`: a page without the book list skipped the body and still passed.
+    // The book list. This used to sit in an `if (visible)`: a page without it skipped the body and still passed.
     const bookSelect = page.locator('#book-select');
-    await expect(bookSelect).toBeVisible();
-    await bookSelect.selectOption('efnafraedi-2e');
-
     const chapterSelect = page.locator('#chapter-select');
-    await expect(chapterSelect).toBeVisible({ timeout: 5000 });
+    await expect(bookSelect).toBeVisible();
+    const chapterValues = () =>
+      chapterSelect.locator('option').evaluateAll((options) => options.map((o) => o.value));
 
-    // Select first chapter (usually "1")
-    const options = chapterSelect.locator('option:not([value=""])');
-    const firstValue = await options.first().getAttribute('value');
-    if (firstValue) {
-      await chapterSelect.selectOption(firstValue);
+    // Start from no book, as the chapter-list case does. For an admin the page opens on the fixture book with its
+    // chapter listed, so a page that ignored the selection below would still offer a chapter, and its modules.
+    await bookSelect.selectOption({ index: 0 });
+    await expect(chapterSelect).toBeDisabled();
+    await expect.poll(chapterValues).toEqual(['']);
 
-      // Module list should appear
-      const moduleContainer = page.locator('#module-list, .module-list, .module-card').first();
-      await expect(moduleContainer).toBeVisible({ timeout: 10000 });
-    }
+    await bookSelect.selectOption('efnafraedi-2e');
+    await expect(chapterSelect).toBeEnabled();
+
+    // The first chapter listed (usually "1"). Its value used to be read inside `if (firstValue)`, so a list whose
+    // options carried no value skipped the rest and the case passed; and a list that never loaded was only caught
+    // by the whole test running out of time.
+    const firstChapter = chapterSelect.locator('option:not([value=""])').first();
+    await expect(firstChapter).toBeAttached({ timeout: 10000 });
+    const firstValue = await firstChapter.getAttribute('value');
+    expect(firstValue).toBeTruthy();
+    await chapterSelect.selectOption(firstValue);
+
+    // Module list should appear
+    const moduleContainer = page.locator('#module-list, .module-list, .module-card').first();
+    await expect(moduleContainer).toBeVisible({ timeout: 10000 });
   });
 
   test('no console errors during editor interaction', async ({ page }) => {
