@@ -101,14 +101,21 @@ test.describe('Inline handlers execute', () => {
     // Wait for page to fully load
     await page.waitForLoadState('networkidle');
 
-    // The admin page has tab buttons with onclick handlers.
-    // Click the first tab button to verify inline handlers work.
-    const tabButton = page.locator('[onclick*="showTab"], [onclick*="switchTab"]').first();
-    if (await tabButton.isVisible()) {
-      await tabButton.click();
-      // If CSP blocked the inline handler, we'd get a pageerror
-      expect(errors).toEqual([]);
-    }
+    // "Bæta við" on the users tab opens the add-user dialog through an inline onclick. It is found by that
+    // attribute, so a page that stops using an inline handler there fails this case instead of skipping it.
+    //
+    // This case used to look for an onclick naming showTab or switchTab inside an `if (visible)`. No element on
+    // the page has one, so its body never ran. Its check was also the wrong kind: a policy that blocks an inline
+    // handler raises no page error, the click just does nothing. So the check is the handler's effect.
+    const dialog = page.locator('#add-user-modal');
+    const addUser = page.locator('button[onclick="usersShowAddModal()"]');
+    await expect(addUser).toBeVisible();
+    await expect(dialog).toBeHidden();
+
+    await addUser.click();
+
+    await expect(dialog).toBeVisible();
+    expect(errors).toEqual([]);
   });
 
   test('theme toggle button works (uses addEventListener, not inline)', async ({ page }) => {
