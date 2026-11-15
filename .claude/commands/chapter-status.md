@@ -54,6 +54,6 @@ To validate the status files:
 npm run validate
 ```
 
-No command-line tool writes a stage's status: `npm run update-status` was archived on
+No command-line tool sets or advances a stage's status: `npm run update-status` was archived on
 2026-03-13, and `api-translate --update-status` refuses since 2026-11-08.
 ```
