@@ -11,22 +11,20 @@ Identify localization opportunities in chapter $ARGUMENTS.
 
 1. Parse argument (e.g., "efnafraedi-2e 3")
 2. Format as ch{NN}
-3. Verify faithful translation exists: `books/{book}/03-faithful-translation/docx/ch{NN}/`
+3. Verify faithful translation exists: `books/{book}/03-faithful-translation/ch{NN}/`
 4. If not found, STOP: "Pass 1 must be completed first"
 
 ## Process
 
 1. Load localization skill: read `.claude/skills/localization/SKILL.md`
-2. Read all supporting files in that skill folder
-3. Invoke the localization-reviewer subagent
-4. Generate draft localization log
+2. Invoke the localization-reviewer subagent
+3. Generate draft localization log
 
 ## Output Locations
 
 - Report: Display to user
-- Draft log: `books/{book}/04-localized-content/localization-logs/ch{NN}-log.md`
-  - Only create draft if user confirms
-  - Mark as DRAFT - requires human completion
+- Draft log: display to user, marked DRAFT. Do not write it to disk — the rationale is
+  recorded in the localization editor (see the localization skill, "Output Locations")
 
 ## Important
 

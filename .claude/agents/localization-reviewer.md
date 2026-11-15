@@ -63,7 +63,7 @@ Produce a localization opportunities report:
 
 ## Draft Localization Log
 
-[Include a draft following the template in localization-log-format.md]
+[Include a draft following the "Localization Log Format" section of the localization skill]
 ```
 
 ## Important

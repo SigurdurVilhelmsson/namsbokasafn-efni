@@ -11,19 +11,18 @@ Review chapter $ARGUMENTS for Pass 1 linguistic quality.
 
 1. Parse the argument (e.g., "efnafraedi-2e 3" or "3" defaults to efnafraedi-2e)
 2. Format chapter as ch{NN}: chapter 3 -> ch03
-3. Verify files exist in `books/{book}/03-faithful-translation/docx/ch{NN}/` or `02-mt-output/`
+3. Verify files exist in `books/{book}/03-faithful-translation/ch{NN}/` or `books/{book}/02-mt-output/ch{NN}/`
 4. If no files found, inform user and stop
 
 ## Process
 
-1. Load the editorial-pass1 skill: read `.claude/skills/editorial-pass1/SKILL.md`
-2. Load terminology reference: read `.claude/skills/editorial-pass1/terminology-reference.md`
-3. For each file in the chapter:
+1. Load the editorial-pass1 skill: read `.claude/skills/editorial-pass1/SKILL.md` (it contains the terminology reference)
+2. For each file in the chapter:
    - Read content
    - Check grammar, spelling, phrasing
    - Verify terminology against glossary
    - Note any issues
-4. Generate review report
+3. Generate review report
 
 ## Output
 
@@ -59,7 +58,7 @@ Produce a structured markdown report:
 
 ## Next Steps
 1. Human editor reviews suggestions
-2. Accept/reject changes in Word
+2. Editor applies accepted changes in the segment editor (`/segment-editor`)
 3. Update files.json when approved
 ```
 
