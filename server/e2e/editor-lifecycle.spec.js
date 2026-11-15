@@ -20,7 +20,7 @@ const SMOKE_PREFIX = 'SMOKE-TEST-';
 /**
  * Navigate to the pinned module (MODULE) in the segment editor.
  * Selects book, chapter, waits for module list, clicks the card matching MODULE.
- * Returns the moduleId string.
+ * Returns the moduleId string, once the module's two background loads have answered.
  */
 async function navigateToFirstModule(page) {
   await page.goto('/editor');
@@ -46,12 +46,23 @@ async function navigateToFirstModule(page) {
   const cardTitle = await cardToClick.getAttribute('title');
   const moduleId = cardTitle.split(' ')[0]; // e.g. "m68664"
 
+  // Once the module is drawn the page finishes two background loads (/terms and /repetitions; loadTermData,
+  // loadRepetitions), and each redraws the rows. A redraw closes an edit panel that holds no typed text, so a
+  // case that clicks "Breyta" before both have answered can have its panel closed under it. Interact only after
+  // both have answered, as served-base-client.spec.js and edit-box-contrast.spec.js do.
+  const moduleUrl = `/api/segment-editor/${BOOK}/${CHAPTER}/${moduleId.trim()}`;
+  const background = Promise.all([
+    page.waitForResponse((r) => r.url().endsWith(`${moduleUrl}/terms`)),
+    page.waitForResponse((r) => r.url().endsWith(`${moduleUrl}/repetitions`)),
+  ]);
+
   // Click to load the module
   await cardToClick.click();
 
   // Wait for the editor container to become visible and segments to load
   await expect(page.locator('#editor-container')).toBeVisible({ timeout: 10000 });
   await expect(page.locator('#segments-body tr').first()).toBeVisible({ timeout: 10000 });
+  await background;
 
   return moduleId.trim();
 }
@@ -292,12 +303,13 @@ test.describe('Editor lifecycle', () => {
 
     // Open the first row's edit panel and type into it, as one step that is retried.
     //
-    // navigateToFirstModule returns when the first row is drawn. The page then finishes two background loads
-    // (loadTermData, loadRepetitions), and each redraws the rows. A redraw closes a panel that holds no typed
-    // text, and leaves a row with typed text alone (liveRows in segment-editor.js). So a panel opened here can
-    // close again until something is typed. In CI this case once clicked "Breyta" just before a redraw: the
-    // panel was closed again before the next line looked, and "expect the panel to be visible" timed out.
-    // Clicking again and typing settles it, because once the text is in, no redraw touches the row.
+    // After a module is drawn the page finishes two background loads (loadTermData, loadRepetitions), and each
+    // redraws the rows. A redraw closes a panel that holds no typed text, and leaves a row with typed text alone
+    // (liveRows in segment-editor.js). So a panel opened here can close again until something is typed. In CI
+    // this case once clicked "Breyta" just before a redraw: the panel was closed again before the next line
+    // looked, and "expect the panel to be visible" timed out. navigateToFirstModule now waits for both loads to
+    // answer; this step stays because the page redraws a moment after an answer arrives, and because clicking
+    // again and typing settles it whatever the timing: once the text is in, no redraw touches the row.
     const editBtn = page.locator('button.btn-edit').first();
     const editPanel = page.locator('.edit-panel.active').first();
     const textarea = editPanel.locator('textarea');
