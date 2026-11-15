@@ -1804,20 +1804,35 @@
    * user does not hold, so offering one led only to "Villa". The server decides; this keeps the list honest.
    */
   function rvBooksHeld(books) {
-    var user = _rvCurrentUser;
-    if (user && user.role === 'admin') return books;
-    var held = (user && user.books) || [];
+    if (rvIsAdmin()) return books;
+    var held = (_rvCurrentUser && _rvCurrentUser.books) || [];
     return books.filter(function (book) {
       return held.indexOf(book.slug) !== -1;
     });
+  }
+
+  function rvIsAdmin() {
+    return !!_rvCurrentUser && _rvCurrentUser.role === 'admin';
   }
 
   async function rvLoadBooks() {
     try {
       var data = await fetchJson('/api/admin/books');
       var select = document.getElementById('rv-book-select');
+      var books = rvBooksHeld(data.books);
 
-      rvBooksHeld(data.books).forEach(function (book) {
+      // Someone who holds none of the listed books has nothing to choose. The list says so itself, where
+      // "Veldu bók..." would stand. An admin is offered every book, so an empty list is not about what they
+      // hold, and it keeps its prompt.
+      if (books.length === 0 && !rvIsAdmin()) {
+        var line = document.createElement('option');
+        line.value = '';
+        line.textContent = UI.localization.noBooksHeld;
+        select.replaceChildren(line);
+        return;
+      }
+
+      books.forEach(function (book) {
         select.innerHTML +=
           '<option value="' + escapeHtml(book.slug) + '">' + escapeHtml(book.titleIs) + '</option>';
       });

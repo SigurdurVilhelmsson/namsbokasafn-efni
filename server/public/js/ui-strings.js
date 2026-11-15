@@ -380,6 +380,9 @@ const UI = {
       return count + ' bútar vistaðar';
     },
     scanning: 'Skannar...',
+    // The review tab's book list, for someone who holds none of the listed books: it stands where "Veldu bók..."
+    // would, so the empty list says why it is empty.
+    noBooksHeld: 'Þú ert ekki aðalritstjóri neinnar bókar á listanum',
     categoryPlaceholder: 'Flokkur…',
     categoryTitle: 'Flokkur staðfærslu — vistast með breytingunni',
     allCategories: 'Allir flokkar',

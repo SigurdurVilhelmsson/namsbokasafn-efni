@@ -226,11 +226,15 @@ test.describe('Localization editor — review tab', () => {
     ],
   };
 
-  /** The review tab's book list, as this role sees it. */
-  async function reviewTabBooks(page, role) {
+  /**
+   * The review tab's book list, as this role sees it when the address answers with these books. It waits for the
+   * page to go quiet first, so a list that the page leaves as it was is read after the answer, not before it.
+   */
+  async function reviewTabBooks(page, role, answer = THREE_BOOKS) {
     await loginAs(page, role);
-    await page.route('**/api/admin/books', (route) => route.fulfill({ json: THREE_BOOKS }));
+    await page.route('**/api/admin/books', (route) => route.fulfill({ json: answer }));
     await page.goto('/localization');
+    await page.waitForLoadState('networkidle');
     await page.locator('.view-tab[data-view="review"]').click();
     return page.locator('#rv-book-select option');
   }
@@ -243,5 +247,27 @@ test.describe('Localization editor — review tab', () => {
   test('control: an admin is offered every book', async ({ page }) => {
     const books = await reviewTabBooks(page, 'admin');
     await expect(books).toHaveText([/^Veldu/, 'E2E Fixture', 'Efnafræði 2e', 'Líffræði 2e']);
+  });
+
+  // A head editor who holds none of the listed books had a list with nothing in it but "Veldu bók...", and
+  // nothing that said why. The list now says so itself, in place of the prompt.
+  const NONE_HELD = {
+    books: [
+      { slug: 'liffraedi-2e', titleIs: 'Líffræði 2e' },
+      { slug: 'orverufraedi', titleIs: 'Örverufræði' },
+    ],
+  };
+
+  test('a head editor who holds none of the listed books is told so, in the list itself', async ({
+    page,
+  }) => {
+    const books = await reviewTabBooks(page, 'head-editor', NONE_HELD);
+    await expect(books).toHaveText(['Þú ert ekki aðalritstjóri neinnar bókar á listanum']);
+  });
+
+  // An admin is offered every book, so an empty list is not about what they hold: the line would be untrue.
+  test('control: an admin with no book listed keeps the plain prompt', async ({ page }) => {
+    const books = await reviewTabBooks(page, 'admin', { books: [] });
+    await expect(books).toHaveText([/^Veldu/]);
   });
 });
