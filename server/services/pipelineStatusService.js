@@ -11,8 +11,9 @@ const fs = require('fs');
 const log = require('../lib/logger');
 const resolveDbPath = require('../lib/dbPath');
 
+const segmentParser = require('./segmentParser');
+
 const DB_PATH = resolveDbPath();
-const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 
 // --- Constants ---
 
@@ -280,6 +281,14 @@ function revertStage(bookSlug, chapterNum, user, note) {
         }
       }
 
+      // Only non-sequential stages are complete (e.g. a chapter holding just the
+      // CLI-side `extraction` and `mtReady` rows, §C224): there is nothing this
+      // can revert. Without this the UPDATE below matched no row and the call
+      // answered success with a null stage.
+      if (!latestStage) {
+        throw new Error('No completed stage to revert');
+      }
+
       db.prepare(
         `UPDATE chapter_pipeline_status
          SET status = 'not_started',
@@ -388,7 +397,17 @@ function syncStatusJsonCache(bookSlug, chapterNum) {
 
   try {
     const chDir = chapterDir(chapterNum);
-    const statusPath = path.join(BOOKS_DIR, bookSlug, 'chapters', chDir, 'status.json');
+    // Read the books directory through segmentParser at call time, so a test's
+    // `_setTestBooksDir()` redirects this write too. A private copy fixed at the
+    // repository's `books/` let tests that run on a real temporary database write
+    // status.json into the working tree.
+    const statusPath = path.join(
+      segmentParser.BOOKS_DIR,
+      bookSlug,
+      'chapters',
+      chDir,
+      'status.json'
+    );
 
     // Read existing status.json
     let existing = {};

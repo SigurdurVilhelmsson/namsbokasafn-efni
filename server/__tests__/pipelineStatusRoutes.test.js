@@ -63,8 +63,8 @@ describe('pipeline status + locking integration', () => {
 
   it('advance requires prior stage complete', () => {
     expect(() => {
-      pipelineStatus.transitionStage('efnafraedi-2e', 1, 'mtReady', 'complete', 'anna');
-    }).toThrow('extraction must be complete first');
+      pipelineStatus.transitionStage('efnafraedi-2e', 1, 'injection', 'complete', 'anna');
+    }).toThrow('linguisticReview must be complete first');
   });
 
   it('advance works when prerequisites met', () => {
@@ -93,7 +93,8 @@ describe('pipeline status + locking integration', () => {
     pipelineStatus.transitionStage('efnafraedi-2e', 1, 'mtReady', 'complete', 'anna');
 
     const result = pipelineStatus.getChapterStage('efnafraedi-2e', 1);
-    expect(result.currentStage).toBe('mtOutput');
+    // CLI-side stages are reported, never named as currentStage (§C224 ③).
+    expect(result.currentStage).toBe('linguisticReview');
     expect(result.stages.extraction).toBe('complete');
     expect(result.stages.mtReady).toBe('complete');
     expect(result.stages.mtOutput).toBe('not_started');
