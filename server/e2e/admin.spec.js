@@ -35,11 +35,11 @@ test.describe('Admin panel', () => {
     await page.goto('/admin');
     await page.waitForLoadState('networkidle');
 
-    // Click users tab if not already active
+    // The users tab's button. The click used to sit in an `if (visible)`, so a page without the button skipped it
+    // and the case still passed.
     const usersTab = page.locator('button.tab[data-tab="users"]').first();
-    if (await usersTab.isVisible()) {
-      await usersTab.click();
-    }
+    await expect(usersTab).toBeVisible();
+    await usersTab.click();
 
     // Wait for user data to load
     await page.waitForTimeout(2000);
@@ -62,11 +62,11 @@ test.describe('Admin panel', () => {
         '#users-search, input[placeholder*="Leita"], input[oninput*="filter"], input[oninput*="Filter"]'
       )
       .first();
-    if (await searchInput.isVisible()) {
-      await searchInput.fill('test');
-      // Should not throw
-      expect(errors).toEqual([]);
-    }
+    // This used to sit in an `if (visible)`: a page without the input skipped the body and still passed.
+    await expect(searchInput).toBeVisible();
+    await searchInput.fill('test');
+    // Should not throw
+    expect(errors).toEqual([]);
   });
 
   test('catalogue API returns 200 (verifies migration 014)', async ({ page }) => {
