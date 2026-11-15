@@ -56,7 +56,7 @@
         },
         "mtReady": {
           "$ref": "#/$defs/stageStatus",
-          "description": "Step 1b: Segments protected and ready for machine translation"
+          "description": "Legacy stage from the archived protect step (formerly Step 1b); not a step of the current pipeline"
         },
         "mtOutput": {
           "$ref": "#/$defs/stageStatus",

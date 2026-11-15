@@ -231,7 +231,7 @@ npm run validate
 | Stage | Description | Step |
 |-------|-------------|------|
 | `extraction` | Segments + structure extracted from CNXML | 1a |
-| `mtReady` | Segments protected and split for MT | 1b |
+| `mtReady` | Legacy stage from the archived protect step; not a step of the current pipeline | formerly 1b |
 | `mtOutput` | MT output received | 2 |
 | `linguisticReview` | Faithful translation reviewed | 3 |
 | `tmCreated` | TM created via Matecat Align | 4 |

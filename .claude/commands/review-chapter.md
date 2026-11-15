@@ -59,7 +59,6 @@ Produce a structured markdown report:
 ## Next Steps
 1. Human editor reviews suggestions
 2. Editor applies accepted changes in the segment editor (`/segment-editor`)
-3. Update files.json when approved
 ```
 
 ## Important
