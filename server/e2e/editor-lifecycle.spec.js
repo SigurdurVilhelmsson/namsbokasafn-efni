@@ -290,16 +290,24 @@ test.describe('Editor lifecycle', () => {
   test('draft auto-saves to localStorage', async ({ page }) => {
     moduleId = await navigateToFirstModule(page);
 
-    // Open edit panel
+    // Open the first row's edit panel and type into it, as one step that is retried.
+    //
+    // navigateToFirstModule returns when the first row is drawn. The page then finishes two background loads
+    // (loadTermData, loadRepetitions), and each redraws the rows. A redraw closes a panel that holds no typed
+    // text, and leaves a row with typed text alone (liveRows in segment-editor.js). So a panel opened here can
+    // close again until something is typed. In CI this case once clicked "Breyta" just before a redraw: the
+    // panel was closed again before the next line looked, and "expect the panel to be visible" timed out.
+    // Clicking again and typing settles it, because once the text is in, no redraw touches the row.
     const editBtn = page.locator('button.btn-edit').first();
-    await editBtn.click();
     const editPanel = page.locator('.edit-panel.active').first();
-    await expect(editPanel).toBeVisible({ timeout: 5000 });
-
-    // Type unique text and dispatch input event to mark dirty
     const textarea = editPanel.locator('textarea');
     const draftMarker = `DRAFT-TEST-${Date.now()}`;
-    await textarea.fill(draftMarker);
+    await expect(async () => {
+      await editBtn.click({ timeout: 1000 });
+      await textarea.fill(draftMarker, { timeout: 1000 });
+    }).toPass({ timeout: 10000 });
+    await expect(editPanel).toBeVisible();
+    // Dispatch an input event as well, to mark the text as changed
     await textarea.dispatchEvent('input');
 
     // Wait for draft timer to fire (5s interval + buffer)
