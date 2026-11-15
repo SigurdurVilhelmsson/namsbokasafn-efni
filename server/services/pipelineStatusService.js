@@ -28,7 +28,11 @@ const STAGE_ORDER = [
   'publication',
 ];
 
-const { PUBLICATION_TRACKS, NON_SEQUENTIAL_STAGES } = require('../constants');
+const {
+  PUBLICATION_TRACKS,
+  NON_SEQUENTIAL_STAGES,
+  STAGES_NOT_PERFORMED_BY_SERVER,
+} = require('../constants');
 
 const VALID_STATUSES = ['not_started', 'in_progress', 'complete'];
 
@@ -51,6 +55,12 @@ const NON_SEQUENTIAL = new Set(NON_SEQUENTIAL_STAGES);
 
 // Stages that DO form the sequential chain, in order.
 const SEQUENTIAL_STAGES = BASE_STAGES.filter((s) => !NON_SEQUENTIAL.has(s));
+
+// Base stages `revertStage` can land on, in order: every stage the server itself
+// performs and records. That is the sequential chain plus `linguisticReview`,
+// which gates nothing but is real recorded work. The stages nothing on the
+// server performs (the CLI-side ones and `tmCreated`) stay out of revert's reach.
+const REVERTABLE_STAGES = BASE_STAGES.filter((s) => !STAGES_NOT_PERFORMED_BY_SERVER.includes(s));
 
 // --- DB connection ---
 
@@ -265,25 +275,28 @@ function revertStage(bookSlug, chapterNum, user, note) {
         }
       }
 
-      // If no publication sub-track found, check SEQUENTIAL stages in reverse.
-      // Non-sequential stages are skipped so revert stays the inverse of
-      // advance: `/advance` transitions whatever `currentStage` reports, which
-      // never names a non-sequential stage, so a revert landing on one would
-      // both waste the revert and be unrestorable through the API. Reachable
-      // with legacy data — efnafraedi-2e ch03/ch04 carry a Matecat-era
+      // If no publication sub-track found, check the REVERTABLE stages in
+      // reverse: the stages the server performs and records. The stages nothing
+      // on the server performs are skipped, because a revert landing on one
+      // would waste the revert and nothing would set it again. Reachable with
+      // legacy data — efnafraedi-2e ch03/ch04 carry a Matecat-era
       // `tmCreated: complete`.
+      //
+      // `linguisticReview` is revertable although it is non-sequential and
+      // `/advance` (which follows `currentStage`) never names it: the segment
+      // editor completes it again when every module is reviewed.
       if (!latestStage) {
-        for (let i = SEQUENTIAL_STAGES.length - 1; i >= 0; i--) {
-          if (completedStages.includes(SEQUENTIAL_STAGES[i])) {
-            latestStage = SEQUENTIAL_STAGES[i];
+        for (let i = REVERTABLE_STAGES.length - 1; i >= 0; i--) {
+          if (completedStages.includes(REVERTABLE_STAGES[i])) {
+            latestStage = REVERTABLE_STAGES[i];
             break;
           }
         }
       }
 
-      // Only non-sequential stages are complete (e.g. a chapter holding just the
-      // CLI-side `extraction` and `mtReady` rows, §C224): there is nothing this
-      // can revert. Without this the UPDATE below matched no row and the call
+      // Only stages outside revert's reach are complete (e.g. a chapter holding
+      // just the CLI-side `extraction` and `mtReady` rows, §C224): there is
+      // nothing this can revert. Without this the UPDATE below matched no row and the call
       // answered success with a null stage.
       if (!latestStage) {
         throw new Error('No completed stage to revert');

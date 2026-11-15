@@ -33,7 +33,7 @@ const userService = require('../services/userService');
 const {
   PIPELINE_STAGE_NAMES: PIPELINE_STAGES,
   PUBLICATION_TRACKS,
-  NON_SEQUENTIAL_STAGES,
+  STAGES_NOT_PERFORMED_BY_SERVER,
 } = require('../constants');
 const pipelineStatusService = require('../services/pipelineStatusService');
 const segmentParser = require('../services/segmentParser');
@@ -1563,27 +1563,28 @@ function formatChapterStatus(statusData) {
     return entry;
   });
 
-  // Calculate next stage. Non-sequential stages are skipped: nothing advances
-  // them, so including one would pin nextStage there forever — and nextStage
-  // feeds the dashboard's assignment proposals (:196-203) and the meeting
-  // agenda's "Næsta skref" line (:851). Same list the DB read model uses
-  // (constants.NON_SEQUENTIAL_STAGES), so the two cannot disagree.
+  // Calculate next stage. The stages nothing on the server performs or advances
+  // are skipped (constants.STAGES_NOT_PERFORMED_BY_SERVER): including one would pin
+  // nextStage there forever — and nextStage feeds the dashboard's assignment
+  // proposals and the meeting agenda's "Næsta skref" line.
+  //
+  // Linguistic review is NOT skipped, although it is non-sequential and the DB
+  // read model's currentStage steps over it. It gates nothing, but it is real
+  // work, so a chapter under review names the review here, not injection.
   let nextStage = null;
 
   for (let i = 0; i < stages.length; i++) {
-    if (NON_SEQUENTIAL_STAGES.includes(stages[i].stage)) continue;
+    if (STAGES_NOT_PERFORMED_BY_SERVER.includes(stages[i].stage)) continue;
     if (stages[i].status !== 'complete') {
       nextStage = stages[i].stage;
       break;
     }
   }
 
-  // Calculate progress percentage. Exclude extraction — it's a setup step, not
-  // translation work — and non-sequential stages, which would otherwise cap a
-  // fully published chapter below 100% forever.
-  const PROGRESS_STAGES = stages.filter(
-    (s) => s.stage !== 'extraction' && !NON_SEQUENTIAL_STAGES.includes(s.stage)
-  );
+  // Calculate progress percentage over the same stages: the skipped ones would
+  // otherwise cap a fully published chapter below 100% forever. Linguistic
+  // review counts.
+  const PROGRESS_STAGES = stages.filter((s) => !STAGES_NOT_PERFORMED_BY_SERVER.includes(s.stage));
   const completedStages = PROGRESS_STAGES.filter((s) => s.complete).length;
   const progress = Math.round((completedStages / PROGRESS_STAGES.length) * 100);
 

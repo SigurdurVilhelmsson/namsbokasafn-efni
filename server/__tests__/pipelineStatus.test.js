@@ -73,11 +73,11 @@ beforeEach(async () => {
 });
 
 describe('getChapterStage', () => {
-  // §C224 ③: extraction, mtReady and mtOutput are CLI-side and non-sequential, so the
-  // first stage the server waits on is linguisticReview.
-  it('returns not_started for all stages when no rows exist; currentStage should be linguisticReview', () => {
+  // The CLI-side stages (§C224 ③) and linguistic review ([USER] 2026-11-15, option A) are
+  // non-sequential, so the first stage the server waits on is injection.
+  it('returns not_started for all stages when no rows exist; currentStage should be injection', () => {
     const result = service.getChapterStage('efnafraedi-2e', 1);
-    expect(result.currentStage).toBe('linguisticReview');
+    expect(result.currentStage).toBe('injection');
     expect(result.stages.extraction).toBe('not_started');
     expect(result.stages.mtReady).toBe('not_started');
     expect(result.stages.mtOutput).toBe('not_started');
@@ -97,7 +97,7 @@ describe('getChapterStage', () => {
 
     const result = service.getChapterStage('efnafraedi-2e', 1);
     // The CLI-side stages are reported below but never named as currentStage (§C224 ③).
-    expect(result.currentStage).toBe('linguisticReview');
+    expect(result.currentStage).toBe('injection');
     expect(result.stages.extraction).toBe('complete');
     expect(result.stages.mtReady).toBe('complete');
     expect(result.stages.mtOutput).toBe('in_progress');
@@ -135,7 +135,7 @@ describe('getChapterStage', () => {
 
   it('handles appendices (chapter_num = -1)', () => {
     const result = service.getChapterStage('efnafraedi-2e', -1);
-    expect(result.currentStage).toBe('linguisticReview');
+    expect(result.currentStage).toBe('injection');
     expect(result.stages.extraction).toBe('not_started');
   });
 });
@@ -169,8 +169,8 @@ describe('transitionStage', () => {
 
   it('rejects completing a stage when prior stage is not complete', () => {
     expect(() => {
-      service.transitionStage('efnafraedi-2e', 1, 'injection', 'complete', 'user1', 'done');
-    }).toThrow(/linguisticReview/);
+      service.transitionStage('efnafraedi-2e', 1, 'rendering', 'complete', 'user1', 'done');
+    }).toThrow(/injection/);
   });
 
   it('allows setting a stage to in_progress even if prior stage is not complete', () => {
@@ -399,14 +399,12 @@ describe('non-sequential stages (tmCreated)', () => {
     expect(service.getChapterStage('efnafraedi-2e', 1).stages.tmCreated).toBe('complete');
   });
 
-  it('tmCreated still requires its own real prerequisite (linguisticReview)', () => {
-    service.transitionStage('efnafraedi-2e', 1, 'extraction', 'complete', 'user1', 'done');
-    service.transitionStage('efnafraedi-2e', 1, 'mtReady', 'complete', 'user1', 'done');
-    service.transitionStage('efnafraedi-2e', 1, 'mtOutput', 'complete', 'user1', 'done');
+  // Review is reported, not required ([USER] 2026-11-15, option A), so every stage before
+  // tmCreated is non-sequential and nothing gates it any more.
+  it('tmCreated completes without linguisticReview', () => {
+    service.transitionStage('efnafraedi-2e', 1, 'tmCreated', 'complete', 'user1', 'x');
 
-    expect(() =>
-      service.transitionStage('efnafraedi-2e', 1, 'tmCreated', 'complete', 'user1', 'x')
-    ).toThrow(/linguisticReview must be complete first/);
+    expect(service.getChapterStage('efnafraedi-2e', 1).stages.tmCreated).toBe('complete');
   });
 
   it('revert skips the non-sequential stage and undoes the real last step', () => {
@@ -424,13 +422,39 @@ describe('non-sequential stages (tmCreated)', () => {
     expect(service.getChapterStage('efnafraedi-2e', 1).stages.tmCreated).toBe('complete');
   });
 
-  it('the real chain still gates: injection names linguisticReview, not tmCreated', () => {
-    service.transitionStage('efnafraedi-2e', 1, 'extraction', 'complete', 'user1', 'done');
-    service.transitionStage('efnafraedi-2e', 1, 'mtReady', 'complete', 'user1', 'done');
-    service.transitionStage('efnafraedi-2e', 1, 'mtOutput', 'complete', 'user1', 'done');
+  // Review is non-sequential ([USER] 2026-11-15, option A) but it is work the server
+  // records, so revert must still reach it. Only the stages nothing on the server
+  // performs are out of revert's reach.
+  it('revert undoes a completed review that is the latest completed step', () => {
+    service.transitionStage('efnafraedi-2e', 1, 'linguisticReview', 'complete', 'user1', 'done');
 
+    const result = service.revertStage('efnafraedi-2e', 1, 'admin', 'undo the review');
+
+    expect(result.revertedStage).toBe('linguisticReview');
+  });
+
+  it('revert leaves the review alone when a later step is complete', () => {
+    service.transitionStage('efnafraedi-2e', 1, 'linguisticReview', 'complete', 'user1', 'done');
+    service.transitionStage('efnafraedi-2e', 1, 'injection', 'complete', 'user1', 'done');
+
+    service.revertStage('efnafraedi-2e', 1, 'admin', 'undo the last step');
+
+    expect(service.getChapterStage('efnafraedi-2e', 1).stages.linguisticReview).toBe('complete');
+  });
+
+  it('revert still refuses when only CLI-side stages and tmCreated are complete', () => {
+    for (const s of ['extraction', 'mtReady', 'mtOutput', 'tmCreated']) {
+      service.transitionStage('efnafraedi-2e', 1, s, 'complete', 'user1', 'done');
+    }
+
+    expect(() => service.revertStage('efnafraedi-2e', 1, 'admin', 'nothing to undo')).toThrow(
+      'No completed stage to revert'
+    );
+  });
+
+  it('the real chain still gates: rendering names injection, not tmCreated', () => {
     expect(() =>
-      service.transitionStage('efnafraedi-2e', 1, 'injection', 'complete', 'user1', 'x')
-    ).toThrow(/linguisticReview must be complete first/);
+      service.transitionStage('efnafraedi-2e', 1, 'rendering', 'complete', 'user1', 'x')
+    ).toThrow(/injection must be complete first/);
   });
 });

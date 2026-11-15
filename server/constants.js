@@ -72,10 +72,42 @@ const SIMPLE_STAGES = PIPELINE_STAGES.filter((s) => s.syncType === 'simple').map
  * (linguistic review, injection, rendering, publication) for a chapter that was
  * extracted and translated from the command line.
  *
+ * `linguisticReview` is here by a separate ruling ([USER] 2026-11-15, option A):
+ * review is reported, not required. As a gate it refused `injection` for an
+ * mt-preview publish of an unreviewed chapter, and with it `rendering` and
+ * `publication.mtPreview`, although that track is unreviewed machine translation
+ * by definition. Faithful publishing is guarded elsewhere: its readiness check
+ * needs reviewed segment files, and inject fails each unreviewed module.
+ *
  * These stages stay in PIPELINE_STAGES / STAGE_ORDER / the schema / status.json
  * and remain explicitly settable. Only sequencing skips them.
  */
-const NON_SEQUENTIAL_STAGES = ['extraction', 'mtReady', 'mtOutput', 'tmCreated'];
+const NON_SEQUENTIAL_STAGES = [
+  'extraction',
+  'mtReady',
+  'mtOutput',
+  'linguisticReview',
+  'tmCreated',
+];
+
+/**
+ * Non-sequential stages that nothing on the server performs or advances: the
+ * CLI-side stages and `tmCreated`. Two consumers:
+ *
+ *  - the status view (`routes/status.js`) leaves them out of its progress figure
+ *    and its next stage;
+ *  - `revertStage` (`services/pipelineStatusService.js`) never lands on one,
+ *    because nothing on the server would set it again.
+ *
+ * `linguisticReview` is non-sequential but is NOT in this list. It gates nothing
+ * ([USER] 2026-11-15, option A), yet it is real work the server records. So
+ * `GET /api/status` still counts it and names it as the next stage until it is
+ * done (otherwise a chapter under review reports 0% and proposes injection), and
+ * a completed review can still be reverted.
+ */
+const STAGES_NOT_PERFORMED_BY_SERVER = NON_SEQUENTIAL_STAGES.filter(
+  (s) => s !== 'linguisticReview'
+);
 
 /** Stage names that DO form the sequential chain, in pipeline order. */
 const SEQUENTIAL_STAGE_NAMES = PIPELINE_STAGE_NAMES.filter(
@@ -137,6 +169,7 @@ module.exports = {
   PIPELINE_STAGE_NAMES,
   SIMPLE_STAGES,
   NON_SEQUENTIAL_STAGES,
+  STAGES_NOT_PERFORMED_BY_SERVER,
   SEQUENTIAL_STAGE_NAMES,
 
   // Tracks
