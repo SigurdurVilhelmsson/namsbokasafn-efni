@@ -79,7 +79,7 @@ Contains one entry per workflow stage. The pipeline uses an 8-stage Extract-Inje
 | `mtReady` | StageStatus | Legacy stage from the archived protect step (formerly Step 1b); not a step of the current pipeline |
 | `mtOutput` | StageStatus | Machine translation output received (Step 2) |
 | `linguisticReview` | EditorialStageStatus | Faithful translation reviewed (Step 3) |
-| `tmCreated` | StageStatus | TM created via Matecat Align (Step 4) |
+| `tmCreated` | StageStatus | TM (TMX) generated in-house by `generate-tm.js`; reported, not sequenced (Step 4) |
 | `injection` | StageStatus | Translated CNXML produced (Step 5a) |
 | `rendering` | StageStatus | HTML produced (Step 5b) |
 | `publication` | PublicationStatus | Published to web (Step 5c) |

@@ -416,7 +416,7 @@ const STAGES = [
   'mtReady',          // Legacy: from the archived protect step (formerly Step 1b)
   'mtOutput',         // Step 2: MT output received
   'linguisticReview', // Step 3: Faithful translation reviewed
-  'tmCreated',        // Step 4: TM created via Matecat Align
+  'tmCreated',        // Step 4: TM (TMX) generated in-house by generate-tm.js
   'injection',        // Step 5a: Translated CNXML produced
   'rendering',        // Step 5b: HTML produced
   'publication',      // Step 5c: Published to web

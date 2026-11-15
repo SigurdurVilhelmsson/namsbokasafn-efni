@@ -12,11 +12,8 @@ Command-line tools for the Extract-Inject-Render translation pipeline.
 | Tool | Purpose | Pipeline Step |
 |------|---------|---------------|
 | `cnxml-extract.js` | Extract segments from CNXML | Step 1a |
-| `protect-segments-for-mt.js` | Protect markers, split for MT | Step 1b |
-| `unprotect-segments.js` | Restore markers + merge MT output | Post-MT |
 | `cnxml-inject.js` | Inject translations into CNXML | Step 5a |
 | `cnxml-render.js` | Render CNXML to semantic HTML | Step 5b |
-| `prepare-for-align.js` | Prepare files for Matecat Align | Step 4 |
 | `validate-chapter.js` | Validate chapter content | Validation |
 
 ---
@@ -53,48 +50,6 @@ node tools/cnxml-extract.js --chapter 5
 # Extract specific module
 node tools/cnxml-extract.js --chapter 5 --module m68724 --verbose
 ```
-
----
-
-## protect-segments-for-mt.js
-
-Protects segment markers and links for safe passage through machine translation. Splits files exceeding 14K visible characters (Erlendur 20KB file limit).
-
-```bash
-node tools/protect-segments-for-mt.js --chapter <num> [options]
-```
-
-| Option | Description |
-|--------|-------------|
-| `--chapter <num>` | Chapter number |
-| `--verbose` | Show detailed progress |
-
-**What it does:**
-- Converts `<!-- SEG:xxx -->` markers to `{{SEG:xxx}}`
-- Protects markdown links from MT corruption
-- Splits large files into parts (a, b, c...) at paragraph boundaries
-- Stores link mapping in sidecar JSON
-
----
-
-## unprotect-segments.js
-
-Restores protected markers and links in MT output. Merges split files and produces ready-to-use segment files. Supersedes the archived `restore-segments-from-mt.js`.
-
-```bash
-node tools/unprotect-segments.js --chapter <num> [options]
-```
-
-| Option | Description |
-|--------|-------------|
-| `--chapter <num>` | Chapter number |
-| `--verbose` | Show detailed progress |
-
-**What it does:**
-- Restores `{{SEG:xxx}}` back to `<!-- SEG:xxx -->`
-- Restores links from sidecar JSON
-- Joins split files (a, b, c) into single segment file
-- Merges output into `02-mt-output/`
 
 ---
 
@@ -183,32 +138,6 @@ node tools/cnxml-render.js --chapter 5 --track mt-preview --verbose
 
 ---
 
-## prepare-for-align.js
-
-Prepares markdown files for Matecat Align by cleaning and normalizing content for TM creation.
-
-```bash
-node tools/prepare-for-align.js --en <file> --is <file> --output-dir <dir>
-node tools/prepare-for-align.js --en-dir <dir> --is-dir <dir> --section <num> --output-dir <dir>
-```
-
-| Option | Description |
-|--------|-------------|
-| `--en <file>` | English markdown file |
-| `--is <file>` | Icelandic markdown file |
-| `--en-dir <dir>` | Directory with English files (for split files) |
-| `--is-dir <dir>` | Directory with Icelandic files (for split files) |
-| `--section <num>` | Section number (e.g., "5-1") |
-| `--output-dir <dir>` | Output directory for cleaned files |
-
-**Output:**
-```
-for-align/ch05/5-1.en.clean.md
-for-align/ch05/5-1.is.clean.md
-```
-
----
-
 ## validate-chapter.js
 
 Validates chapter content and structure before publication.
@@ -234,7 +163,7 @@ npm run validate
 | `mtReady` | Legacy stage from the archived protect step; not a step of the current pipeline | formerly 1b |
 | `mtOutput` | MT output received | 2 |
 | `linguisticReview` | Faithful translation reviewed | 3 |
-| `tmCreated` | TM created via Matecat Align | 4 |
+| `tmCreated` | TM (TMX) generated in-house by `generate-tm.js`; reported, not sequenced | 4 |
 | `injection` | Translated CNXML produced | 5a |
 | `rendering` | HTML produced | 5b |
 | `publication` | Published to web | 5c |
@@ -269,6 +198,9 @@ npm run validate
 
 | Tool | Reason Archived |
 |------|----------------|
+| `protect-segments-for-mt.js` | Legacy step 1b: wrapped inline formatting in protective markers before MT. Superseded by the `[[type:content]]` bracket markers |
+| `unprotect-segments.js` | Legacy step 2b: unwrapped those markers after MT. Superseded with it |
+| `prepare-for-align.js` | Prepared files for Matecat Align, which is retired. The TM is generated in-house by `generate-tm.js` |
 | `restore-segments-from-mt.js` | Superseded by `unprotect-segments.js` |
 | `join-mt-output.js` | Joined `02-mt-output/` → `02-machine-translated/`; pipeline uses `02-mt-output` directly now |
 | `init-faithful-review.js` | Bootstrapped `03-faithful-translation/`; modern workflow uses `applyApprovedEdits()` |
