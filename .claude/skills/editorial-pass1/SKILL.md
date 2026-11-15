@@ -38,7 +38,7 @@ When flagging issues, use these tags:
 - `[DISCUSS]` - Needs team discussion
 - `[TERM]` - Terminology question
 
-## Current Workflow (Phase 8+)
+## Workflow
 
 Pass 1 review is done via the **segment editor** at `/segment-editor`:
 - Review segment-by-segment with EN source and IS MT side-by-side
@@ -50,7 +50,7 @@ Pass 1 review is done via the **segment editor** at `/segment-editor`:
 **Filename format:** `{moduleId}-segments.is.md`
 **Example:** `m68781-segments.is.md`
 
-**Note:** After segments are approved, they must be applied to the 03-faithful-translation/ files using the "Apply Edits" workflow (Phase 9) before injection/rendering can proceed.
+**Note:** After segments are approved, they must be applied to the 03-faithful-translation/ files using the "Apply Edits" workflow before injection/rendering can proceed.
 
 ---
 
