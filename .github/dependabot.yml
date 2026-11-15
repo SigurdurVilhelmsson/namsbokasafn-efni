@@ -20,6 +20,10 @@ updates:
         update-types:
           - "minor"
           - "patch"
+    ignore:
+      # Pinned exactly on purpose: each AI-review run records the SDK version as one of its
+      # conditions, so it is changed by a recorded decision before a run, not on a schedule.
+      - dependency-name: "@anthropic-ai/sdk"
 
   # Server package.json
   - package-ecosystem: "npm"
