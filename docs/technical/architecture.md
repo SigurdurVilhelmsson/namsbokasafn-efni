@@ -32,15 +32,15 @@ The repository implements a 5-step translation workflow for producing Icelandic 
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                           External Services                                  │
 ├─────────────────────────────────────────────────────────────────────────────┤
-│  OpenStax GitHub    │    malstadur.is (MT)    │    Matecat Align (TM)       │
+│  OpenStax GitHub    │    Málstaður API (MT)                                 │
 └─────────────────────────────────────────────────────────────────────────────┘
-                │                    │                       │
-                ▼                    ▼                       ▼
+                │                    │
+                ▼                    ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                   Extract-Inject-Render Pipeline (Node.js)                   │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │  cnxml-extract.js    │  cnxml-inject.js       │  cnxml-render.js            │
-│  api-translate.js    │  repair-emphasis.js    │  prepare-for-align.js       │
+│  api-translate.js    │  repair-emphasis.js    │  generate-tm.js             │
 └─────────────────────────────────────────────────────────────────────────────┘
                 │                    │                       │
                 ▼                    ▼                       ▼
@@ -96,7 +96,7 @@ The pipeline uses an Extract-Inject-Render architecture:
 #### TM Creation
 | Tool | Purpose | Input | Output |
 |------|---------|-------|--------|
-| `prepare-for-align.js` | Clean markdown for Matecat Align | EN + IS markdown | Clean file pairs |
+| `generate-tm.js` | Generate the TM (TMX) in-house | Paired EN + faithful IS segments | TMX in `tm/` |
 
 #### Injection & Rendering (Segments → CNXML → HTML)
 | Tool | Purpose | Input | Output |
@@ -172,10 +172,7 @@ books/{book}/
 │   └── localized/                   # Adapted content
 │       └── chapters/{NN}/
 │           └── m{NNNNN}.html        # Semantic HTML per module
-├── for-align/              # Staging for Matecat Align
-│   └── ch{NN}/
-│       ├── {N}-{N}.en.clean.md
-│       └── {N}-{N}.is.clean.md
+├── for-align/              # ⚠️ DEAD — retired Matecat staging, safe to ignore
 ├── tm/                     # Translation memory (TMX) (READ ONLY)
 │   └── ch{NN}/
 │       └── {N}-{N}.tmx
@@ -203,10 +200,7 @@ IS Segments (MT output)
         ▼ Human review
 IS Segments (faithful)
         │
-        ├── prepare-for-align.js → Cleaned file pairs
-        │
-        ▼ Matecat Align (external)
-TMX (Translation Memory)
+        ├── generate-tm.js → TMX (Translation Memory), generated in-house
         │
         ▼ cnxml-inject.js
 Translated CNXML
@@ -333,8 +327,7 @@ other's record. The filename is unchanged on purpose — it must stay inside the
 | Service | Purpose | Integration |
 |---------|---------|-------------|
 | OpenStax GitHub | Source content | CNXML fetch via API |
-| malstadur.is | Machine translation | Manual upload/download |
-| Matecat Align | TM creation | Manual upload/download |
+| Málstaður API (malstadur.is) | Machine translation | API calls from `api-translate.js` |
 | Microsoft Entra ID | Authentication | Server OAuth flow |
 
 ### Repositories
