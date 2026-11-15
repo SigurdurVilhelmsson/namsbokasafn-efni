@@ -841,7 +841,7 @@ remain describe the current pipeline.
 npm run validate
 ```
 
-No command-line tool writes a stage's status: there is no `update-status` npm script
+No command-line tool sets or advances a stage's status: there is no `update-status` npm script
 (the old one is archived at `scripts/archived/update-status.js`), and
 `api-translate --update-status` refuses.
 

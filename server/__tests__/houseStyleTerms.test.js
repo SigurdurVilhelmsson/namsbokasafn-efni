@@ -1,12 +1,11 @@
 /**
  * House-style terminology rulings, and the migration that ENFORCES them.
  *
- * 🔴 The enforcement is the point. CLAUDE.md records, from a day this project
- * lost to it, that a hand SQL edit to a glossary or domain value is silently
- * reverted on the next boot — no error, no log line, and the shrink guard
- * cannot see the regrowth because it measures size. So the ruling lives in a
- * file the code reads, and a migration re-asserts it on every start, exactly as
- * 047 does for BOOK_DOMAIN_PRIORITY.
+ * 🔴 The enforcement is the point. CLAUDE.md records that a hand SQL edit to a
+ * glossary or domain value is silently reverted on the next boot — no error,
+ * no log line, and the shrink guard cannot see the regrowth because it
+ * measures size. So the ruling lives in a file the code reads, and a migration
+ * re-asserts it on every start, exactly as 047 does for BOOK_DOMAIN_PRIORITY.
  *
  * ⚠️ 047's shape — DELETE then re-INSERT — is deliberately NOT copied. It is
  * safe there because book_domain_priority has no dependents. `concept_term` is
