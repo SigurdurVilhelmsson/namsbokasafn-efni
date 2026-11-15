@@ -17,10 +17,13 @@
  * `injection` checks only its nearest earlier sequential stage, so it is
  * blocked through `linguisticReview`, not directly.
  *
- * The last three cases are the control: the gating BETWEEN the server-side
- * stages must survive the change. Only the first of them passes before it; the
- * other two reach their own refusal through `linguisticReview`, so before the
- * change they stop at the same "mtOutput" error as the cases above.
+ * The last two cases are the control: the gating BETWEEN the server-side
+ * stages must survive the change. Before it they stop at the same "mtOutput"
+ * error as the cases above, because they reach their own refusal through
+ * `linguisticReview`.
+ *
+ * A third control, "refuses injection before linguisticReview", was removed when
+ * a later ruling made review non-sequential; see reviewDoesNotGateInjection.test.js.
  */
 import { describe, it, expect, beforeEach, afterAll } from 'vitest';
 import { mkdtempSync, rmSync } from 'fs';
@@ -118,10 +121,6 @@ describe('the CLI-side stages do not gate the server-side stages (§C224 ③)', 
 });
 
 describe('control: the server-side stages still gate each other', () => {
-  it('refuses injection before linguisticReview', () => {
-    expect(() => complete('injection')).toThrow(/linguisticReview must be complete first/);
-  });
-
   it('refuses rendering before injection', () => {
     expect(() => complete('linguisticReview', 'rendering')).toThrow(
       /injection must be complete first/
