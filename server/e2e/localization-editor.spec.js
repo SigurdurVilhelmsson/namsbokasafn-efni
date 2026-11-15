@@ -25,9 +25,10 @@ test.describe('Localization editor — page', () => {
 
     await expect(page.locator('.app-layout')).toBeVisible();
 
-    // Book selector should be present
-    const bookSelect = page.locator('#book-select, select').first();
-    await expect(bookSelect).toBeVisible();
+    // The editor tab's book list. The locator used to be '#book-select, select' with .first(). This page has no
+    // #book-select, so it fell through to the first <select> on the page, the role preview in the top bar, and
+    // the case passed on a page whose book list was hidden.
+    await expect(page.locator('#ed-book-select')).toBeVisible();
 
     expect(errors).toEqual([]);
   });
