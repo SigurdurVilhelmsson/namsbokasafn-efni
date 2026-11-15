@@ -6,9 +6,9 @@ import { defineConfig } from 'vitest/config';
  * ⚠️ `vitest.workspace.js` CANNOT LOAD under the installed vitest (it throws
  * `SyntaxError: … does not provide an export named 'defineWorkspace'`), so
  * discovery falls through to this file and `fileParallelism: false` below
- * applies globally — nothing runs in parallel. This docstring used to claim
- * workspace.js split server tests from tools tests; CLAUDE.md records that as
- * false, and it is corrected here rather than left for the next reader.
+ * applies globally — nothing runs in parallel, and the workspace file's split
+ * of server tests from tools tests never takes effect. CLAUDE.md § Notes for
+ * Code Reviewers describes the resulting behaviour.
  */
 export default defineConfig({
   test: {

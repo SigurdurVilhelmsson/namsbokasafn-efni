@@ -14,8 +14,7 @@ Format: "efnafraedi-2e 3" or just "3" (defaults to efnafraedi-2e)
 ## Process
 
 1. Read `books/{book}/chapters/ch{NN}/status.json`
-2. Read `books/{book}/chapters/ch{NN}/files.json` if exists
-3. Check `logs/activity-log.md` for recent activity
+2. Check `logs/activity-log.md` for recent activity
 
 ## Display
 
@@ -37,12 +36,6 @@ Format: "efnafraedi-2e 3" or just "3" (defaults to efnafraedi-2e)
 | injection | complete/not-started | {date} | |
 | rendering | complete/not-started | {date} | |
 | publication | complete/not-started | {date} | Per track: mtPreview / faithful / localized |
-
-## File Status (if files.json exists)
-
-| File | Current Stage | Pending Review | Approved |
-|------|---------------|----------------|----------|
-| {file} | {stage} | {yes/no} | {yes/no} |
 
 ## Recent Activity
 

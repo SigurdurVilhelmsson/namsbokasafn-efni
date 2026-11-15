@@ -76,7 +76,7 @@ Contains one entry per workflow stage. The pipeline uses an 8-stage Extract-Inje
 | Stage | Type | Description |
 |-------|------|-------------|
 | `extraction` | StageStatus | Segments + structure extracted from CNXML (Step 1a) |
-| `mtReady` | StageStatus | Segments protected and split for MT (Step 1b) |
+| `mtReady` | StageStatus | Legacy stage from the archived protect step (formerly Step 1b); not a step of the current pipeline |
 | `mtOutput` | StageStatus | Machine translation output received (Step 2) |
 | `linguisticReview` | EditorialStageStatus | Faithful translation reviewed (Step 3) |
 | `tmCreated` | StageStatus | TM created via Matecat Align (Step 4) |

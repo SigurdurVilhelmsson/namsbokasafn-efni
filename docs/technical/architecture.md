@@ -224,7 +224,7 @@ Web Publication
 status.json (per chapter)
         │
         ├── extraction: complete        (Step 1)
-        ├── mtReady: complete           (Step 1b)
+        ├── mtReady: complete           (legacy, formerly Step 1b)
         ├── mtOutput: complete          (Step 2)
         ├── linguisticReview: in-progress (Step 3)
         ├── tmCreated: not-started      (Step 4)
@@ -413,7 +413,7 @@ NODE_ENV=development
 // Pipeline stages (Extract-Inject-Render workflow)
 const STAGES = [
   'extraction',       // Step 1: Segments + structure extracted from CNXML
-  'mtReady',          // Step 1b: Segments protected and split for MT
+  'mtReady',          // Legacy: from the archived protect step (formerly Step 1b)
   'mtOutput',         // Step 2: MT output received
   'linguisticReview', // Step 3: Faithful translation reviewed
   'tmCreated',        // Step 4: TM created via Matecat Align
