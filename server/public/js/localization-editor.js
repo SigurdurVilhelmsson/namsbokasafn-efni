@@ -342,6 +342,26 @@
   const edBookSelect = document.getElementById('ed-book-select');
   const edChapterSelect = document.getElementById('ed-chapter-select');
 
+  /**
+   * Fill the editor tab's book list with the books the user localizes (booksHeld).
+   *
+   * bookSelector.js fills every `.book-select` with all registered books as the page loads, picks one (the stored
+   * choice, else the first) and fires `change`, which loads that book's chapters: all before the page knows who is
+   * signed in. So this list does not carry that class. It is filled here, once the user is known, through the same
+   * populate step, so the stored choice and the first-book rule work as on the other pages, among the books held.
+   */
+  async function edLoadBooks() {
+    var listed = await window.bookSelector.fetchBooks();
+    var held = booksHeld(listed);
+    // Someone who holds none of the listed books has nothing to choose: the list says so where "Veldu bók..."
+    // would stand, as the review tab's does. For an admin `held` is everything listed, so this is never about
+    // them; and an empty `listed` (which is also what a failed request looks like) is not about what anyone holds.
+    if (listed.length > 0 && held.length === 0) {
+      edBookSelect.dataset.placeholder = UI.localization.noBooksHeld;
+    }
+    window.bookSelector.populate(edBookSelect, held);
+  }
+
   edBookSelect.addEventListener('change', async function () {
     edCurrentBook = edBookSelect.value;
     edChapterSelect.disabled = !edCurrentBook;
@@ -1758,7 +1778,7 @@
   //
   // ================================================================
 
-  let _rvCurrentUser = null; // set by onUserReady(); rvBooksHeld() reads its role and books
+  let _currentUser = null; // set by onUserReady(); booksHeld() reads its role and books
   let rvCurrentSectionId = null;
   let rvCurrentSuggestions = [];
   let rvCurrentFilter = 'all';
@@ -1799,32 +1819,34 @@
   // ----------------------------------------------------------------
 
   /**
-   * The books this user localizes: every book for an admin, the books they hold for anyone else. The list comes
-   * from an address that answers with every registered book, and the section list's route refuses a book the
-   * user does not hold, so offering one led only to "Villa". The server decides; this keeps the list honest.
+   * The books this user localizes: every book for an admin, the books they hold for anyone else. Both tabs' book
+   * lists (rvLoadBooks, edLoadBooks) come from addresses that answer with every registered book. In the review
+   * tab the section list's route refuses a book the user does not hold, so offering one led only to "Villa". In
+   * the editor tab such a book can be read, and every save in it is refused. The server decides; this keeps the
+   * lists honest.
    */
-  function rvBooksHeld(books) {
-    if (rvIsAdmin()) return books;
-    var held = (_rvCurrentUser && _rvCurrentUser.books) || [];
+  function booksHeld(books) {
+    if (isAdmin()) return books;
+    var held = (_currentUser && _currentUser.books) || [];
     return books.filter(function (book) {
       return held.indexOf(book.slug) !== -1;
     });
   }
 
-  function rvIsAdmin() {
-    return !!_rvCurrentUser && _rvCurrentUser.role === 'admin';
+  function isAdmin() {
+    return !!_currentUser && _currentUser.role === 'admin';
   }
 
   async function rvLoadBooks() {
     try {
       var data = await fetchJson('/api/admin/books');
       var select = document.getElementById('rv-book-select');
-      var books = rvBooksHeld(data.books);
+      var books = booksHeld(data.books);
 
       // Someone who holds none of the listed books has nothing to choose. The list says so itself, where
       // "Veldu bók..." would stand. An admin is offered every book, so an empty list is not about what they
       // hold, and it keeps its prompt.
-      if (books.length === 0 && !rvIsAdmin()) {
+      if (books.length === 0 && !isAdmin()) {
         var line = document.createElement('option');
         line.value = '';
         line.textContent = UI.localization.noBooksHeld;
@@ -2492,8 +2514,10 @@
       }
     });
 
-    // Initialize review view selectors and event listeners
-    await rvLoadBooks();
+    // Both tabs' book lists hold the books the user localizes, so they are filled now that the user is known
+    await Promise.all([edLoadBooks(), rvLoadBooks()]);
+
+    // Initialize review view event listeners
     rvSetupEventListeners();
 
     // Check URL params for review deep-link
@@ -2507,7 +2531,7 @@
 
   function onUserReady(user) {
     _edUserRole = user?.role || 'viewer';
-    _rvCurrentUser = user;
+    _currentUser = user;
   }
 
   initPage();

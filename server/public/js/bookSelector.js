@@ -13,6 +13,12 @@
  *
  * The selected book is persisted in localStorage('selectedBook') so the
  * user's choice is remembered across page loads.
+ *
+ * A page that decides for itself which books a list holds leaves the class off
+ * that <select> and fills it with window.bookSelector.populate(select, books).
+ * That applies the same placeholder, stored-choice and first-book rules to the
+ * list it is given. The localization page does this: its list holds the books
+ * the user holds, which is only known once the user is.
  */
 (function () {
   'use strict';
@@ -148,5 +154,6 @@
   window.bookSelector = {
     init: initBookSelectors,
     fetchBooks: fetchBooks,
+    populate: populateSelect,
   };
 })();

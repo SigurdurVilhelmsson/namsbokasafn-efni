@@ -271,3 +271,145 @@ test.describe('Localization editor — review tab', () => {
     await expect(books).toHaveText([/^Veldu/]);
   });
 });
+
+test.describe('Localization editor — editor tab', () => {
+  // The editor tab's book list comes from an address that answers with every registered book. Localization is for
+  // the book's head editors and admins: the server lets a head editor read any book here, and refuses to save in
+  // one they do not hold. So the list holds the books the user localizes, as the review tab's does.
+  //
+  // The list does more than offer: when it is filled it picks a book (the stored choice, else the first) and the
+  // page then asks for that book's chapters. So these cases read three things: what is offered, which book the tab
+  // opens on, and which chapter lists were asked for. The book list's answer is stubbed; the head editor of these
+  // specs holds the fixture book and efnafraedi-2e (helpers/auth.js), and not liffraedi-2e.
+  const NOT_HELD_FIRST = {
+    books: [
+      { slug: 'liffraedi-2e', label: 'Líffræði 2e' },
+      { slug: '__e2e-fixture__', label: 'E2E Fixture' },
+      { slug: 'efnafraedi-2e', label: 'Efnafræði 2e' },
+    ],
+  };
+  const NOT_HELD_LAST = {
+    books: [
+      { slug: '__e2e-fixture__', label: 'E2E Fixture' },
+      { slug: 'efnafraedi-2e', label: 'Efnafræði 2e' },
+      { slug: 'liffraedi-2e', label: 'Líffræði 2e' },
+    ],
+  };
+
+  /**
+   * Open the page as this role with the book list answering with these books, and wait for it to go quiet.
+   *
+   * @param {import('@playwright/test').Page} page
+   * @param {'admin'|'head-editor'} role
+   * @param {{books: Array<{slug: string, label: string}>}} answer
+   * @returns {Promise<{select: import('@playwright/test').Locator, chaptersAskedFor: string[]}>} the editor tab's
+   *   book list, and the books whose chapter list the page asked for, in order
+   */
+  async function openEditorTab(page, role, answer) {
+    await loginAs(page, role);
+    await page.route('**/api/books/list', (route) => route.fulfill({ json: answer }));
+    const chaptersAskedFor = [];
+    page.on('request', (request) => {
+      const asked = request.url().match(/\/api\/localization-editor\/([^/]+)\/chapters$/);
+      if (asked) chaptersAskedFor.push(decodeURIComponent(asked[1]));
+    });
+    await page.goto('/localization');
+    await page.waitForLoadState('networkidle');
+    return { select: page.locator('#ed-book-select'), chaptersAskedFor };
+  }
+
+  test('a head editor is offered the books they hold, and no other', async ({ page }) => {
+    const { select } = await openEditorTab(page, 'head-editor', NOT_HELD_FIRST);
+    await expect(select.locator('option')).toHaveText([/^Veldu/, 'E2E Fixture', 'Efnafræði 2e']);
+  });
+
+  test('the tab opens on a book the head editor holds, not on the first book listed', async ({
+    page,
+  }) => {
+    const { select } = await openEditorTab(page, 'head-editor', NOT_HELD_FIRST);
+    await expect(select).toHaveValue('__e2e-fixture__');
+  });
+
+  // One list, in order: the held book's chapters were asked for (so the page did pick a book), and no other's.
+  test('the page asks for the chapters of a book the head editor holds, and of no other', async ({
+    page,
+  }) => {
+    const { chaptersAskedFor } = await openEditorTab(page, 'head-editor', NOT_HELD_FIRST);
+    expect(chaptersAskedFor).toEqual(['__e2e-fixture__']);
+  });
+
+  // The stored choice is shared with the other pages' book lists, where a head editor may well have picked a book
+  // they do not hold. Here it is not listed, so it is not restored.
+  test('a stored choice of a book the head editor does not hold is not restored', async ({
+    page,
+  }) => {
+    await page.addInitScript(() => localStorage.setItem('selectedBook', 'liffraedi-2e'));
+    const { select } = await openEditorTab(page, 'head-editor', NOT_HELD_LAST);
+    await expect(select).toHaveValue('__e2e-fixture__');
+  });
+
+  test('control: an admin is offered every book', async ({ page }) => {
+    const { select } = await openEditorTab(page, 'admin', NOT_HELD_FIRST);
+    await expect(select.locator('option')).toHaveText([
+      /^Veldu/,
+      'Líffræði 2e',
+      'E2E Fixture',
+      'Efnafræði 2e',
+    ]);
+  });
+
+  test('control: for an admin the tab opens on the first book listed', async ({ page }) => {
+    const { select } = await openEditorTab(page, 'admin', NOT_HELD_FIRST);
+    await expect(select).toHaveValue('liffraedi-2e');
+  });
+
+  test('control: an admin has their stored choice restored', async ({ page }) => {
+    await page.addInitScript(() => localStorage.setItem('selectedBook', 'liffraedi-2e'));
+    const { select } = await openEditorTab(page, 'admin', NOT_HELD_LAST);
+    await expect(select).toHaveValue('liffraedi-2e');
+  });
+
+  // A head editor who holds none of the listed books: the list says so itself, as the review tab's does.
+  const NONE_HELD = {
+    books: [
+      { slug: 'liffraedi-2e', label: 'Líffræði 2e' },
+      { slug: 'orverufraedi', label: 'Örverufræði' },
+    ],
+  };
+
+  test('a head editor who holds none of the listed books is told so, in the list itself', async ({
+    page,
+  }) => {
+    const { select } = await openEditorTab(page, 'head-editor', NONE_HELD);
+    await expect(select.locator('option')).toHaveText([
+      'Þú ert ekki aðalritstjóri neinnar bókar á listanum',
+    ]);
+  });
+
+  test('a head editor who holds none of the listed books has no chapters asked for', async ({
+    page,
+  }) => {
+    const { select, chaptersAskedFor } = await openEditorTab(page, 'head-editor', NONE_HELD);
+    // The list has been filled (it shows its line, which only filling it puts there) before the absence is read.
+    await expect(select.locator('option')).toHaveText([/^Þú ert ekki aðalritstjóri/]);
+    expect(chaptersAskedFor).toEqual([]);
+  });
+
+  // The shared list code answers a failed request with an empty list. That is not about what anyone holds, so
+  // the line would be untrue there too.
+  test('control: a head editor whose book list could not be loaded keeps the plain prompt', async ({
+    page,
+  }) => {
+    await loginAs(page, 'head-editor');
+    await page.route('**/api/books/list', (route) => route.abort());
+    await page.goto('/localization');
+    await page.waitForLoadState('networkidle');
+    await expect(page.locator('#ed-book-select option')).toHaveText([/^Veldu/]);
+  });
+
+  // An admin is offered every book, so an empty list is not about what they hold: the line would be untrue.
+  test('control: an admin with no book listed keeps the plain prompt', async ({ page }) => {
+    const { select } = await openEditorTab(page, 'admin', { books: [] });
+    await expect(select.locator('option')).toHaveText([/^Veldu/]);
+  });
+});
