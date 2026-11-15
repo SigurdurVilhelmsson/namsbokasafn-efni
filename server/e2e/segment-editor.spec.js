@@ -27,25 +27,36 @@ test.describe('Segment editor', () => {
 
   test('selecting a book populates chapter dropdown', async ({ page }) => {
     await page.goto('/editor');
+    // The page opens on a book by itself and loads that book's chapters. That request has to land before the list
+    // is emptied below, or its answer would refill it.
     await page.waitForLoadState('networkidle');
 
-    // Select "efnafraedi-2e" book. This used to sit in an `if (visible)`: a page without the book list skipped
-    // the body and still passed.
+    // The book list. This used to sit in an `if (visible)`: a page without it skipped the body and still passed.
     const bookSelect = page.locator('#book-select');
+    const chapterSelect = page.locator('#chapter-select');
     await expect(bookSelect).toBeVisible();
+    const chapterValues = () =>
+      chapterSelect.locator('option').evaluateAll((options) => options.map((o) => o.value));
+
+    // What the list should come to hold: the book's chapters, asked for here and not through the page.
+    const answer = await page.request.get('/api/segment-editor/efnafraedi-2e/chapters');
+    const chapters = (await answer.json()).chapters.map((ch) => String(ch.chapter));
+    // The book has chapters, so an empty list below is the page's doing, not the book's.
+    expect(chapters.length).toBeGreaterThan(0);
+
+    // For an admin the page opens on the fixture book with its chapter already listed, so the old check, "more
+    // than one option", held before any book was selected, and on a page that listed another book's chapters or
+    // only the first one. Start from no book, so that what is read at the end was put there by the selection.
+    await bookSelect.selectOption({ index: 0 });
+    await expect(chapterSelect).toBeDisabled();
+    await expect.poll(chapterValues).toEqual(['']);
+
     await bookSelect.selectOption('efnafraedi-2e');
 
-    // Wait for chapter dropdown to populate
-    const chapterSelect = page.locator('#chapter-select');
-    await expect(chapterSelect).toBeVisible({ timeout: 5000 });
-
-    // Chapters load via an async fetch after the book is selected, so poll
-    // until options appear instead of counting once — a one-shot count
-    // raced the fetch and flaked on slow CI runners (> 1 because the first
-    // option is the placeholder).
-    await expect
-      .poll(() => chapterSelect.locator('option').count(), { timeout: 10000 })
-      .toBeGreaterThan(1);
+    // Chapters load via an async fetch after the book is selected, so this polls until the list matches; a
+    // one-shot read raced the fetch and flaked on slow CI runners.
+    await expect(chapterSelect).toBeEnabled();
+    await expect.poll(chapterValues, { timeout: 10000 }).toEqual(['', ...chapters]);
   });
 
   test('loading a chapter shows module list', async ({ page }) => {
