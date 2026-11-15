@@ -32,6 +32,13 @@ test.describe('Admin panel', () => {
   });
 
   test('users tab loads user list', async ({ page }) => {
+    // What the list should hold: the users the server lists, asked for here and not through the page. The seed
+    // plants them (seed-fixture.js) and no spec adds or removes one, so the set is the same for the whole run.
+    const answer = await page.request.get('/api/admin/users');
+    const names = (await answer.json()).users.map((user) => user.displayName).sort();
+    // There are users, so an empty list below is the page's doing, not the database's.
+    expect(names.length).toBeGreaterThan(0);
+
     await page.goto('/admin');
     await page.waitForLoadState('networkidle');
 
@@ -41,12 +48,13 @@ test.describe('Admin panel', () => {
     await expect(usersTab).toBeVisible();
     await usersTab.click();
 
-    // Wait for user data to load
-    await page.waitForTimeout(2000);
-
-    // Should have a users table or empty state
-    const usersContent = page.locator('#tab-users, .users-table, .empty-state').first();
-    await expect(usersContent).toBeVisible({ timeout: 5000 });
+    // One row per user, showing that user's name: the set, in any order. The last check used to be a locator that
+    // the users panel itself satisfied, so the case passed on a page whose list never loaded.
+    const rows = page.locator('#users-tbody tr');
+    const namesShown = async () => (await rows.locator('.user-name').allTextContents()).sort();
+    await expect.poll(namesShown).toEqual(names);
+    // A text comparison also holds for rows in a hidden panel, so the rows must be seen too.
+    await expect(rows.first()).toBeVisible();
   });
 
   test('search/filter input works without errors', async ({ page }) => {
