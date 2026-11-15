@@ -24,15 +24,16 @@ Show pipeline status for $ARGUMENTS (book name, or "all").
 
 ## Overview
 
-| Stage | Complete | In Progress | Not Started |
-|-------|----------|-------------|-------------|
-| Source | {N} | {N} | {N} |
-| MT Output | {N} | {N} | {N} |
-| Matecat | {N} | {N} | {N} |
-| Pass 1 | {N} | {N} | {N} |
-| TM Update | {N} | {N} | {N} |
-| Pass 2 | {N} | {N} | {N} |
-| Publication | {N} | {N} | {N} |
+| Stage | Complete | Not Started |
+|-------|----------|-------------|
+| extraction | {N} | {N} |
+| mtReady | {N} | {N} |
+| mtOutput | {N} | {N} |
+| linguisticReview | {N} | {N} |
+| tmCreated | {N} | {N} |
+| injection | {N} | {N} |
+| rendering | {N} | {N} |
+| publication | {N} | {N} |
 
 ## Chapters Pending Human Review
 

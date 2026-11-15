@@ -13,7 +13,7 @@ Verify that all technical terms in the provided content match the approved proje
 
 ## Process
 
-1. Load the glossary from `glossary/terminology-en-is.csv`
+1. Load the book's glossary from `books/{book}/glossary/glossary-unified.json` (glossaries are per book; there is no project-wide file)
 2. Identify all technical/scientific terms in the content
 3. Cross-reference each term against the glossary
 4. Check for consistency within the document
@@ -50,6 +50,6 @@ Produce a structured report:
 
 ## Resources
 
-- Primary glossary: `glossary/terminology-en-is.csv`
-- Terminology guide: `docs/terminology.md`
+- Primary glossary: `books/{book}/glossary/glossary-unified.json`
+- Terminology guide: `docs/editorial/terminology.md`
 - External: [Idorðabankinn](https://idord.arnastofnun.is/)

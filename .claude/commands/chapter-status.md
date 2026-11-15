@@ -29,13 +29,14 @@ Format: "efnafraedi-2e 3" or just "3" (defaults to efnafraedi-2e)
 
 | Stage | Status | Date | Notes |
 |-------|--------|------|-------|
-| 1. Source | complete/in-progress/pending | {date} | |
-| 2. MT Output | complete/in-progress/pending | {date} | |
-| 3-4. Matecat | complete/in-progress/pending | {date} | |
-| 5. Pass 1 | complete/in-progress/pending | {date} | Editor: {name} |
-| 6. TM Update | complete/in-progress/pending | {date} | |
-| 7. Pass 2 | complete/in-progress/pending | {date} | |
-| 8. Publication | complete/in-progress/pending | {date} | Version: {ver} |
+| extraction | complete/not-started | {date} | |
+| mtReady | complete/not-started | {date} | |
+| mtOutput | complete/not-started | {date} | |
+| linguisticReview | complete/not-started | {date} | Editor: {name} |
+| tmCreated | complete/not-started | {date} | Reported, not sequenced |
+| injection | complete/not-started | {date} | |
+| rendering | complete/not-started | {date} | |
+| publication | complete/not-started | {date} | Per track: mtPreview / faithful / localized |
 
 ## File Status (if files.json exists)
 
