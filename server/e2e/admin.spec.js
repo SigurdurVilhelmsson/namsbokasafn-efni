@@ -61,6 +61,23 @@ test.describe('Admin panel', () => {
     const errors = [];
     page.on('pageerror', (err) => errors.push(err.message));
 
+    // The users the server lists, asked for here and not through the page (the seed plants them, and no spec
+    // adds or removes one). The search is for one user's name; it finds a user whose name, email or username
+    // holds the text, whatever the case.
+    const users = (await (await page.request.get('/api/admin/users')).json()).users;
+    const text = users[0].displayName;
+    const holdsText = (user) =>
+      [user.displayName, user.email, user.providerUsername].some((field) =>
+        (field || '').toLowerCase().includes(text.toLowerCase())
+      );
+    const everyName = users.map((user) => user.displayName).sort();
+    const namesFound = users
+      .filter(holdsText)
+      .map((user) => user.displayName)
+      .sort();
+    // The search must leave someone out, or "the rows are the users found" would hold without it doing anything.
+    expect(namesFound.length).toBeLessThan(everyName.length);
+
     await page.goto('/admin');
     await page.waitForLoadState('networkidle');
 
@@ -72,8 +89,17 @@ test.describe('Admin panel', () => {
       .first();
     // This used to sit in an `if (visible)`: a page without the input skipped the body and still passed.
     await expect(searchInput).toBeVisible();
-    await searchInput.fill('test');
-    // Should not throw
+
+    // Before anything is typed the list holds everyone, so what it holds afterwards is the search's doing.
+    const rows = page.locator('#users-tbody tr');
+    const namesShown = async () => (await rows.locator('.user-name').allTextContents()).sort();
+    await expect.poll(namesShown).toEqual(everyName);
+
+    await searchInput.fill(text);
+
+    // The search's effect: the rows are the users found, and no other. "No page errors" alone was read straight
+    // after typing and did not notice a page whose filter function was missing.
+    await expect.poll(namesShown).toEqual(namesFound);
     expect(errors).toEqual([]);
   });
 
