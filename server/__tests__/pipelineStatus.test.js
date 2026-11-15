@@ -73,9 +73,11 @@ beforeEach(async () => {
 });
 
 describe('getChapterStage', () => {
-  it('returns not_started for all stages when no rows exist; currentStage should be extraction', () => {
+  // §C224 ③: extraction, mtReady and mtOutput are CLI-side and non-sequential, so the
+  // first stage the server waits on is linguisticReview.
+  it('returns not_started for all stages when no rows exist; currentStage should be linguisticReview', () => {
     const result = service.getChapterStage('efnafraedi-2e', 1);
-    expect(result.currentStage).toBe('extraction');
+    expect(result.currentStage).toBe('linguisticReview');
     expect(result.stages.extraction).toBe('not_started');
     expect(result.stages.mtReady).toBe('not_started');
     expect(result.stages.mtOutput).toBe('not_started');
@@ -94,7 +96,8 @@ describe('getChapterStage', () => {
     service.transitionStage('efnafraedi-2e', 1, 'mtOutput', 'in_progress', 'user1', 'started');
 
     const result = service.getChapterStage('efnafraedi-2e', 1);
-    expect(result.currentStage).toBe('mtOutput');
+    // The CLI-side stages are reported below but never named as currentStage (§C224 ③).
+    expect(result.currentStage).toBe('linguisticReview');
     expect(result.stages.extraction).toBe('complete');
     expect(result.stages.mtReady).toBe('complete');
     expect(result.stages.mtOutput).toBe('in_progress');
@@ -132,7 +135,7 @@ describe('getChapterStage', () => {
 
   it('handles appendices (chapter_num = -1)', () => {
     const result = service.getChapterStage('efnafraedi-2e', -1);
-    expect(result.currentStage).toBe('extraction');
+    expect(result.currentStage).toBe('linguisticReview');
     expect(result.stages.extraction).toBe('not_started');
   });
 });
@@ -166,8 +169,8 @@ describe('transitionStage', () => {
 
   it('rejects completing a stage when prior stage is not complete', () => {
     expect(() => {
-      service.transitionStage('efnafraedi-2e', 1, 'mtReady', 'complete', 'user1', 'done');
-    }).toThrow(/extraction/);
+      service.transitionStage('efnafraedi-2e', 1, 'injection', 'complete', 'user1', 'done');
+    }).toThrow(/linguisticReview/);
   });
 
   it('allows setting a stage to in_progress even if prior stage is not complete', () => {
@@ -245,16 +248,27 @@ describe('transitionStage', () => {
 
 describe('revertStage', () => {
   it('reverts the latest complete stage to not_started', () => {
-    service.transitionStage('efnafraedi-2e', 1, 'extraction', 'complete', 'user1', 'done');
-    service.transitionStage('efnafraedi-2e', 1, 'mtReady', 'complete', 'user1', 'done');
+    service.transitionStage('efnafraedi-2e', 1, 'linguisticReview', 'complete', 'user1', 'done');
+    service.transitionStage('efnafraedi-2e', 1, 'injection', 'complete', 'user1', 'done');
 
     const result = service.revertStage('efnafraedi-2e', 1, 'user2', 'Found issues');
-    expect(result.revertedStage).toBe('mtReady');
+    expect(result.revertedStage).toBe('injection');
     expect(result.newStatus).toBe('not_started');
 
     const state = service.getChapterStage('efnafraedi-2e', 1);
-    expect(state.stages.mtReady).toBe('not_started');
-    expect(state.stages.extraction).toBe('complete');
+    expect(state.stages.injection).toBe('not_started');
+    expect(state.stages.linguisticReview).toBe('complete');
+  });
+
+  // §C224 ③ widened an old hole: production's chapters hold only extraction and mtReady
+  // rows, both non-sequential now. Revert used to answer success with a null stage there.
+  it('refuses when only non-sequential stages are complete', () => {
+    service.transitionStage('efnafraedi-2e', 1, 'extraction', 'complete', 'user1', 'done');
+    service.transitionStage('efnafraedi-2e', 1, 'mtReady', 'complete', 'user1', 'done');
+
+    expect(() => service.revertStage('efnafraedi-2e', 1, 'user2', 'Found issues')).toThrow(
+      'No completed stage to revert'
+    );
   });
 
   it('requires a non-empty note', () => {

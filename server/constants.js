@@ -65,10 +65,17 @@ const SIMPLE_STAGES = PIPELINE_STAGES.filter((s) => s.syncType === 'simple').map
  * fully published while the other still proposed "create the TM" as its next
  * step, with progress permanently capped below 100%.
  *
+ * `extraction`, `mtReady` and `mtOutput` are here for a different reason
+ * (register §C224, option ③): only the CLI performs them, and the CLI reports
+ * nothing to the server. The server jobs that used to complete them are started
+ * by no route, so as gates they refused every stage the server does record
+ * (linguistic review, injection, rendering, publication) for a chapter that was
+ * extracted and translated from the command line.
+ *
  * These stages stay in PIPELINE_STAGES / STAGE_ORDER / the schema / status.json
  * and remain explicitly settable. Only sequencing skips them.
  */
-const NON_SEQUENTIAL_STAGES = ['tmCreated'];
+const NON_SEQUENTIAL_STAGES = ['extraction', 'mtReady', 'mtOutput', 'tmCreated'];
 
 /** Stage names that DO form the sequential chain, in pipeline order. */
 const SEQUENTIAL_STAGE_NAMES = PIPELINE_STAGE_NAMES.filter(
