@@ -32,22 +32,35 @@ test.describe('Localization editor — page', () => {
     expect(errors).toEqual([]);
   });
 
+  // This case used to look for #book-select and #chapter-select, which this page does not have, inside an
+  // `if (visible)`: its body never ran, and it passed on a page whose chapter list could not load.
   test('selecting a book populates chapter dropdown', async ({ page }) => {
     await page.goto('/localization');
+    // The page opens on a book by itself and loads that book's chapters. That request has to land before the list
+    // is emptied below, or its answer would refill it.
     await page.waitForLoadState('networkidle');
 
-    const bookSelect = page.locator('#book-select');
-    if (await bookSelect.isVisible()) {
-      await bookSelect.selectOption('__e2e-fixture__');
+    const bookSelect = page.locator('#ed-book-select');
+    const chapterSelect = page.locator('#ed-chapter-select');
+    const chapterValues = () =>
+      chapterSelect.locator('option').evaluateAll((options) => options.map((o) => o.value));
 
-      const chapterSelect = page.locator('#chapter-select');
-      await expect(chapterSelect).toBeVisible({ timeout: 5000 });
+    // What the list should come to hold: the fixture book's chapters, asked for here and not through the page.
+    const answer = await page.request.get('/api/localization-editor/__e2e-fixture__/chapters');
+    const chapters = (await answer.json()).chapters.map((ch) => String(ch.chapter));
+    // The fixture has chapters, so an empty list below is the page's doing, not the fixture's.
+    expect(chapters.length).toBeGreaterThan(0);
 
-      // Should have at least one chapter option beyond the placeholder
-      const options = chapterSelect.locator('option');
-      const count = await options.count();
-      expect(count).toBeGreaterThan(1);
-    }
+    // For an admin the page opens on the fixture book with its chapters already listed. Start from no book, so
+    // that what is read at the end was put there by the selection.
+    await bookSelect.selectOption({ index: 0 });
+    await expect(chapterSelect).toBeDisabled();
+    await expect.poll(chapterValues).toEqual(['']);
+
+    await bookSelect.selectOption('__e2e-fixture__');
+
+    await expect(chapterSelect).toBeEnabled();
+    await expect.poll(chapterValues).toEqual(['', ...chapters]);
   });
 });
 
