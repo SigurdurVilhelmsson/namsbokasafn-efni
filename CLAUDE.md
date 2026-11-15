@@ -5,7 +5,6 @@
 Adopted 2026-07-26, after a closure audit found the work register had been built from *summaries of itself* and eight findings had silently evaporated. The first attempted fix declared a **second** source of truth and said "consult both" — that is the same failure one level up, and it produced a live disagreement **within one day**.
 
 **Every kind of fact has exactly ONE owner. Every other file points; it never restates.**
-*(This line used to say "Six kinds" while the table listed seven — a count in prose drifts even here.)*
 
 | Kind of fact | The ONE owner | Everyone else says |
 |---|---|---|
@@ -146,37 +145,25 @@ remediation shipped first (efni `ba5e9a89`…`cb919966`); full record in memory
   AGPL-3.0, build tooling MIT).
 - **Known gap E-2 — MIT tooling (`tools/`, `scripts/`, `experiments/`) reaching AGPL
   `server/` code.**
-  **Do not trust any enumeration here; re-derive before asserting the boundary** — this
-  bullet said "one optional `require()`" until 2026-07-28, by which point there were three.
-  ⚠️ **The SEARCH SHAPES are not enumerated here either, and that is the same rule applied
-  to the instrument** — this bullet named two until 2026-09-08, by which point root
-  `LICENSE` needed **four**, none of which sees the others' matches; a session obeying the
-  short list would have reported `LICENSE`'s own entries as spurious. **→ read the shapes,
-  and the exclusion trap that goes with them, in root `LICENSE`.**
+  **Do not trust any enumeration here; re-derive before asserting the boundary.**
+  ⚠️ **The search shapes are not enumerated here either: no one shape sees the
+  others' matches, so a short list reports real entries as spurious. → Read the
+  shapes, and the exclusion trap that goes with them, in root `LICENSE`.**
   **One rule, for one kind of edge** (`LICENSE` classifies the edges more finely — do not
   read this as its class count):
   - the `server/lib/chapterLabel` imports in the appendix-aware tools/scripts are
     **deliberate and load-bearing** — the C1a two-conventions rule below *mandates* that
     idiom, so **do not sever them**. They are unguarded static imports: the importing tool
     cannot run without `server/`.
-  *(This said "Two rules" until 2026-11-08. The other — "`api-translate.js`'s optional,
-  try/catch-guarded require of `pipelineStatusService`: sever it if you touch that file" —
-  was carried out that day: the require is gone and `--update-status` now refuses rather
-  than being dropped silently.)*
   **The current enumeration lives in root `LICENSE`** — update it there when an edge is
   added or removed, not here.
 - **Credit follows the METHOD:** the machine is the translator; people get *ritstjórn*
   / *yfirlestur*. Never write "Translated by \<person\>" for MT content —
   `books/*/metadata.json`, `templates/frontmatter.yaml` and both READMEs follow this.
-  - **⚠️ CHANGED 2026-07-26 — no book is human-translated any more.** This line used to
-    read "Only biology is human-translated (Þýðing)". Biology ch03 *was* a human docx
-    translation (`docx-import`), but it covered only **205 of 429 segments**, which is why
-    the published chapter shipped with an empty summary page and no key-terms page. Per a
-    lead decision the whole book is now machine-translated and the editor edits the MT
-    instead; ch03 was re-translated 2026-07-25. The human translation is preserved verbatim
+  - **No book is human-translated: every book, biology included, is MT + *ritstjórn*.**
+    A partial human docx translation of biology ch03 (`docx-import`) is preserved verbatim
     at `books/liffraedi-2e/reference-translations/ch03-human-docx/` (+ README) as an
-    editing reference — it is **not** in the pipeline. **Biology is now MT +
-    *ritstjórn*, like every other book.** Check `02-mt-output/*-provenance.json`
+    editing reference — it is **not** in the pipeline. Check `02-mt-output/*-provenance.json`
     (`"tool": "api-translate"` vs `"docx-import"`) before asserting how anything was
     translated — segment counts tell you how much, only provenance tells you by whom.
 - **🔴 DURABLE — NOTHING COMMITTED NAMES A GRANT OR FUND.** Plans, decision records, the
@@ -188,11 +175,7 @@ remediation shipped first (efni `ba5e9a89`…`cb919966`); full record in memory
   metadata once follow-on-funded material ships there. **The sentence lives in the
   private funding companion; public plans point to it and never quote it** ([USER]
   2026-10-28). ⚠️ The follow-on plan's filename carries the programme's name and existing
-  citations use it; that is not a licence to name the funding bodies in prose. *(First
-  stated 2026-10-11, in one parenthetical of that day's chemistry-finish answers record,
-  and not written here until 2026-10-28, after a session told [USER] that quoting the
-  credit in a plan "doesn't conflict" without finding the rule. Frozen records that
-  predate it keep their wording; fix live documents instead.)*
+  citations use it; that is not a licence to name the funding bodies in prose. Frozen records that predate this rule keep their wording; fix live documents instead.
 - **`.claude/*.local.json` is gitignored at repo level** (`.gitignore`). Claude
   Code writes credentials into permission-allowlist strings where they don't look
   like secrets — this is exactly how the sister repo published two live Cloudflare
@@ -201,7 +184,7 @@ remediation shipped first (efni `ba5e9a89`…`cb919966`); full record in memory
 
 ## ⚠️ Content delivery to readers is MANUAL, and its automatic leg has never worked
 
-**`Sync Content to Vefur` (`.github/workflows/sync-content.yml`) has NEVER succeeded — every run since 2026-06-16 has failed.** *(This said "34 of 34" until 2026-08-08, when it was 37 of 37. A running total in prose goes stale on every scheduled tick, and this file's own § One source of truth forbids it — count them from the Actions tab.)* `gh secret list` returns **no repository secrets at all**: `VEFUR_DEPLOY_TOKEN` was never created, so `actions/checkout` gets an empty string and dies at `Checkout vefur`. **This is first-time setup, not a rotation** — do not go looking for an expired credential.
+**`Sync Content to Vefur` (`.github/workflows/sync-content.yml`) has NEVER succeeded — every run since 2026-06-16 has failed.** Count the runs from the Actions tab. `gh secret list` returns **no repository secrets at all**: `VEFUR_DEPLOY_TOKEN` was never created, so `actions/checkout` gets an empty string and dies at `Checkout vefur`. **This is first-time setup, not a rotation** — do not go looking for an expired credential.
 
 - **The working route is manual**, run from `../namsbokasafn-vefur`: `node scripts/sync-content.js --source ../namsbokasafn-efni` → build → deploy (`workflow_dispatch` on `deploy.yml`, or a `v*.*.*` tag — *CI does not deploy*).
 - **✅ A failed content push is now VISIBLE (register C11(b), 2026-07-27).** `scripts/git-backup.sh` writes `pipeline-output/.last-content-backup` **only on healthy runs** — a successful push, or nothing-to-commit **with nothing unpushed** (a quiet run on top of a rejected push fails loudly instead of clearing the alarm) — so **staleness is the alarm**; `GET /api/health` reports `checks.content_backup` (default stale after 6h, `CONTENT_BACKUP_STALE_HOURS`) and flips to `degraded`, and `./scripts/deploy.sh` **prints** the verdict plus the names of any not-ok checks. **Nothing else polls `/api/health`** — no monitor, no UI — so the deploy readout is where you see it. Push failures log ahead/behind counts. **⚠️ DURABLE — YOUR OWN PUSH TO `main` CAN STRAND PROD'S CONTENT BACKUP, AND A DOCS COMMIT IS ENOUGH.** Prod's content and your dev work share **one branch**; the cron commits and pushes but **never fetches first** (see the rebase prohibition below), so any dev push puts prod behind and the next tick that actually has content is **rejected**. Observed 2026-08-06: three `docs(…)` commits pushed after a deploy stranded a real content commit on the very run meant to demonstrate a fix. **After pushing to `main` from dev, either deploy or expect the next content tick to fail.** ✅ **The stranding is BOUNDED — confirmed 2026-08-07: `deploy.sh`'s `git pull --rebase` re-bases the stranded content commit cleanly back onto `main`, restoring the fast-forward.** So a dev push strands the backup **until the next deploy**, not indefinitely — but **the deploy does not push**, so releasing the commit is a separate second step a human runs. ⚠️ **And do not expect the health check to track any of this promptly — `checks.content_backup` is `ok: !stale` and NOTHING ELSE, which makes it lag reality in BOTH directions.** `last_status`/`message` ride along in the payload but are deliberately excluded from the verdict (there is a comment in `contentBackupHealth.js` saying so). So it reported `ok: true` in the same payload that carried `last_status: "error"` and the push-failure message — **and, symmetrically, it kept reporting `degraded` with a two-hour-old `"unpushed backlog: 1 commit(s)"` after an operator's manual push had already fixed it completely** (observed 2026-08-07: box clean at 0/0, files confirmed on GitHub). **Only the cron writes the heartbeat, so fixing the condition by hand never clears the alarm** — it clears on the next healthy tick. Neither lag is a defect: the check answers *"is the backup cron alive and healthy?"*, never *"is anything unpushed right now?"* **Read what the check carries, not just what it concludes — and know which of those two questions you are actually asking.** ⚠️ **Do not add a rebase to the cron:** `merge.ours.driver` is registered by `deploy.sh`, not by cron, so an unattended rebase over `translation-errors.json` wedges prod mid-rebase — the cron still never fetches before pushing, by design.
@@ -210,43 +193,24 @@ remediation shipped first (efni `ba5e9a89`…`cb919966`); full record in memory
 
 ## CI — what actually gates, and how to read a red check
 
-CI was billing-blocked 2026-07-17 → 2026-07-25. It works again.
-
 - **⚠️ `npm run lint` ≠ the Lint job** — CI also runs `npm run format:check`
   (prettier). **`npm test` ≠ the Tests job** — CI also runs Playwright E2E. Verify
   against the workflow files before claiming a branch is green; asserting from a
   subset is how a red `main` goes unnoticed.
-- **✅ CORRECTED 2026-09-03 — `server/` IS LINTED AND FORMAT-CHECKED BY CI NOW.
-  THIS BULLET ASSERTED THE OPPOSITE AS 🔴 DURABLE, IN AN ALWAYS-LOADED FILE, AND
-  IT INVERTED THE DAY `dfb962ba` (#433) MERGED.** 🔴 **The scope is an ENFORCEABLE
-  VALUE and is deliberately NOT restated here — its owner is `package.json`'s
-  `lint` / `format:check` scripts, and `.github/workflows/lint.yml`, which runs
-  exactly those two.** Read it there. **This bullet used to carry the globs
-  inline, and that is precisely how it went stale**, so re-deriving is the
-  practice, not a courtesy. ▶ **THE PROHIBITION IT CARRIED WAS FALSIFIED BY
-  MEASUREMENT, BY THREE ORDERS OF MAGNITUDE.** It said *"do not widen `lint`
-  without measuring first — the first run may surface a large backlog, and that is
-  its own item."* The backlog was **1 error** — an unused `down(db)` parameter in
-  `server/migrations/013-catalogue-subject.js`. The frightening **8,263** a naive
-  `eslint server/` prints is **8,262 phantom errors from `server/.venv/`, the
-  greynir-sidecar PYTHON VIRTUALENV** — 151 MB of vendored JS inside pip packages,
-  gitignored and not in the repo at all. ⚠️ **`node_modules/` and
-  `server/node_modules/` were ALREADY ignored; a Python venv under `server/` is the
-  one nobody thought of, and it is the whole of the wall.** The tell was the rule
-  mix — 5,230 `no-var`, the fingerprint of old third-party code, not of a tree
-  prettier formats on every commit. ▶ **Ordering was load-bearing: widening `lint`
-  BEFORE ignoring `.venv` turns the Lint job red on a directory that is not even in
-  git, and "8,263 problems" would have been true, useless, and fatal to a change
-  that cost one underscore.** **A prohibition justified by an unmeasured cost is an
-  invitation to measure it — and to ask what the scary number is COUNTING before
-  believing it.** ⚠️ **THE ORIGINAL LESSON SURVIVES AND IS WHY THE GAP LASTED
-  FOUR WEEKS: `lint-staged`'s pre-commit hook covers `server/**/*.js`, so a
-  server-only lint break is caught on your machine and CI never sees it.** A
-  failure caught locally is exactly the class CI is blind to — **that shape
-  outlives this particular fix, so look for it wherever a local hook and a CI job
-  have different scopes.** Found 2026-08-10 (§C36 B4b-0a moved a script from
-  `tools/` to `server/` and silently left the Lint job's scope); closed
-  2026-09-03.
+- **`server/` is linted and format-checked by CI.** The scope is an enforceable
+  value and is not restated here — its owner is `package.json`'s `lint` /
+  `format:check` scripts, and `.github/workflows/lint.yml`, which runs exactly those
+  two. Read it there.
+  - ⚠️ **`server/.venv/` must stay in the ESLint ignores (`eslint.config.js`).** It is
+    the greynir-sidecar Python virtualenv — vendored JS inside pip packages,
+    gitignored and not in the repo — and without that entry a lint over `server/`
+    reports thousands of phantom errors. The tell is the rule mix: thousands of
+    `no-var`, the fingerprint of old third-party code, not of a tree prettier formats
+    on every commit. **Before believing a scary lint count, ask what it is counting.**
+  - ⚠️ **`lint-staged`'s pre-commit hook covers `server/**/*.js`, and a failure caught
+    locally is exactly the class CI is blind to.** Look for that shape wherever a
+    local hook and a CI job have different scopes — for example when a script moves
+    between `tools/` and `server/`.
 - **Duration is the diagnostic**: an infra/billing failure dies in ~3s *before*
   `Current runner version:` appears. Minutes elapsed = a real result.
   **⚠️ That rule assumes a run OBJECT EXISTS — check that first, because a
@@ -264,9 +228,8 @@ CI was billing-blocked 2026-07-17 → 2026-07-25. It works again.
 - All five gating workflows (`lint`, `test`, `validate`, `security`, `docs-check`)
   now have **`workflow_dispatch`** — re-verify from the Actions tab, never by
   inventing a commit.
-- **⚠️ `validate` is NOT push-to-main-only** (an earlier version of this file said so).
-  `validate.yml:13` has a **path-filtered `pull_request` trigger**, which is *worse* than
-  push-only: it appears in the required-status-checks picker looking safe, then never
+- **⚠️ `validate` is path-filtered on `pull_request` too.**
+  `validate.yml:13` has a **path-filtered `pull_request` trigger**: it appears in the required-status-checks picker looking safe, then never
   reports on most PRs.
 - **Branch protection — decided 2026-07-26 (register C12): force-push + deletion blocking
   ONLY.** **Required status checks are mechanically impossible here, not merely unwise**:
@@ -276,7 +239,7 @@ CI was billing-blocked 2026-07-17 → 2026-07-25. It works again.
   outage. ⚠️ If ever revisited: check-run names are the **lowercase job ids** (`Tests` is
   **two** checks, `test` + `e2e`), and requiring the path-filtered `Validate Status Files`
   or `check-docs` blocks PRs **forever** on the PRs where they don't report.
-- **Live gate status: the Actions tab. No document asserts green/red** — including this one. *(A `Current state: … e2e ❌` line lived here and was false for a day after C2 merged as #329.)*
+- **Live gate status: the Actions tab. No document asserts green/red** — including this one.
 
 ---
 
@@ -312,33 +275,26 @@ This project was built iteratively with AI assistance. Known areas of concern:
 - Pipeline tools evolved organically — may have inconsistent patterns
 - Error handling may be incomplete in some tools
 - Documentation may be ahead of or behind actual implementation in places
-- Test suite: Vitest (unit) + Playwright (E2E). **⚠️ CORRECTED 2026-08-06 — this line
-  used to say "vitest workspace runs tools in parallel, server sequentially". That is
-  false in both halves.** `vitest.workspace.js` **cannot load** under the installed
-  vitest (`SyntaxError: … does not provide an export named 'defineWorkspace'`), so
-  discovery falls to `vitest.config.js`, which sets **`fileParallelism: false`
-  globally** — *nothing* runs in parallel.
-  🔴 **CORRECTED AGAIN 2026-08-26 — THIS BULLET'S OWN "consequence" WAS FALSE, AND
-  IT IS THE SECOND TIME THIS LINE HAS BEEN WRONG.** It said *"a test that mutates
-  shared module state poisons every **later** file in the run"*. **Measured: it does
-  not.** `fileParallelism: false` makes files run **sequentially**; it does not make
-  them share a process. `pool` and `isolate` are unset, so vitest's defaults apply —
-  a **forked, isolated child process per test file** — and neither module state nor
-  `globalThis` crosses the boundary. ⚠️ **AND THE WORD "later" IS WRONG TWICE OVER:
-  file order is NOT the order you pass on the command line.** Measured on a
-  two-file probe: `zz-probe-b` ran **before** `zz-probe-a` despite the reverse
-  argument order. ▶ **That reordering is exactly what made the first attempt at this
-  measurement worthless** — the second file's "no leak" assertion passed because it
-  had run FIRST, an absence manufactured by the harness. It took a **cross-process
-  ordering witness on disk** plus *symmetric* probes (each file checks for a leak only
-  if it finds itself second) to settle it. **Pair every null with a control that
-  proves the thing you are testing for actually happened.** ✅ What survives: **`vitest.workspace.js`
-  still cannot load**. ⚠️ This does NOT retire the battery CLI's preload +
-  `REGISTRY.clear()` machinery — that addresses a different mechanism (a **spawned**
-  CLI has its own module instance, which the parent cannot reach into).
-  **⚠️ And `npm test` is `vitest run` — it does NOT run Playwright.** E2E is
-  `server/`'s `test:e2e`, a **separate CI job**; a green `npm test` is never evidence
-  for an E2E change. **No count is recorded here — run `npm test`.** Remediation Units 0–5 added focused suites: `requireRole`, `contentVersionService`, `localizationReviewService`, `assignmentEnforcement`, `applyStatusRebuild`, `segmentEditConflict`, `viewsPageAuth`.
+- Test suite: Vitest (unit) + Playwright (E2E).
+  - **Test files run sequentially, each in its own process.** `vitest.workspace.js`
+    cannot load under the installed vitest (`SyntaxError: … does not provide an export
+    named 'defineWorkspace'`), so discovery falls to `vitest.config.js`, which sets
+    `fileParallelism: false` globally. `pool` and `isolate` are unset, so vitest's
+    defaults apply — a forked, isolated child process per test file — and neither
+    module state nor `globalThis` crosses from one file to another.
+  - ⚠️ **File order is not the order you pass on the command line.** A probe for
+    cross-file leakage needs a cross-process ordering witness on disk plus symmetric
+    checks (each file checks for a leak only if it finds itself second); otherwise a
+    "no leak" assertion passes because that file ran first. **Pair every null with a
+    control that proves the thing you are testing for actually happened.**
+  - ⚠️ Per-file isolation does not retire the battery CLI's preload +
+    `REGISTRY.clear()` machinery — a **spawned** CLI has its own module instance,
+    which the parent cannot reach into.
+  - **⚠️ `npm test` is `vitest run` — it does not run Playwright.** E2E is `server/`'s
+    `test:e2e`, a **separate CI job**; a green `npm test` is never evidence for an E2E
+    change. No count is recorded here — run `npm test`.
+  - Focused suites: `requireRole`, `contentVersionService`, `localizationReviewService`,
+    `assignmentEnforcement`, `applyStatusRebuild`, `segmentEditConflict`, `viewsPageAuth`.
 
 ## Purpose
 
@@ -371,7 +327,7 @@ Translation workflow for Icelandic OpenStax textbooks. Produces three assets:
 ## Tech Stack
 
 - **Runtime:** Node.js **22.x** — `.nvmrc` is the single source of truth, and `tools/__tests__/ci-node-version.test.js` fails if any workflow pin or either `engines` floor drifts from it. Production runs Node 22.x / npm 10.x; dev, prod and every CI workflow that pins Node agree. `deploy.yml` deliberately has no pin: its steps run over SSH **on the production server**, so they use the server's own Node.
-  - **⚠️ Node 22 is in MAINTENANCE, not Active LTS.** Per the official `nodejs/Release` schedule: v22 Active LTS 2024-10-29 → **maintenance 2025-10-21**, **EOL 2027-04-30**. v20 died **2026-04-30**. v24: Active LTS 2025-10-28 → **maintenance 2026-10-20**. **v26: Active LTS from 2026-10-28** (EOL 2029-04-30). (An earlier version of this file claimed "Active LTS until Oct 2027" — wrong on both the status and the date.)
+  - **⚠️ Node 22 is in MAINTENANCE, not Active LTS.** Per the official `nodejs/Release` schedule: v22 Active LTS 2024-10-29 → **maintenance 2025-10-21**, **EOL 2027-04-30**. v20 died **2026-04-30**. v24: Active LTS 2025-10-28 → **maintenance 2026-10-20**. **v26: Active LTS from 2026-10-28** (EOL 2029-04-30).
   - **Do not "upgrade to Node 24" as a runtime bump.** It is really an **npm 10 → npm 11 lockfile migration**: npm 11 drops optional `@emnapi/*` peer-dep entries, and the resulting `package-lock.json` breaks prod's `npm ci`. It also means a prod-runtime change plus a native ABI rebuild (cf. the 2026-05-10 ABI incident). Node 22 is supported through the 2026–27 school year. When a quiet window opens, **go 22 → 26 and skip 24** — the npm-11 work is identical either way, but 24 left Active LTS on 2026-10-20. `better-sqlite3@13` declares `>=22`, so the DB driver is not the constraint; the lockfile format is.
     - **⚠️ better-sqlite3 12 → 13 changed how the native binary arrives (PR #341, 2026-07-28).** v12 used `prebuild-install` to **download** a `.node` from GitHub releases at install time — a network dependency, and the path by which a wrong-ABI binary arrives (the 2026-05-10 incident). v13 **bundles** the prebuilds in its tarball (`prebuilds/linux-x64.node`), so nothing is fetched. npm still auto-runs node-gyp because the package ships a `binding.gyp`, so **prod needs python3 + make + g++** (present: Ubuntu 24.04, build-essential). Install is ~2 s; SQLite is *not* compiled from source. **⚠️ `npm view <pkg> scripts` reports the SOURCE REPO's manifest, not the shipped artifact — it shows an `install` script this package does not publish. `npm pack` and read the tarball before reasoning about install-time behaviour.**
     - **⚠️ DURABLE — `PRAGMA foreign_keys` is ON here, and the `sqlite3` CLI will tell you it is OFF.** better-sqlite3 is compiled with **`SQLITE_DEFAULT_FOREIGN_KEYS=1`** (`server/node_modules/better-sqlite3/deps/defines.gypi`), so every bare `new Database(path)` in this project — **including production's** — reports `1`, and **every `ON DELETE CASCADE` across all migrations is live**. That is *not* SQLite's stock default: the pragma is per-connection, is not stored in the file, defaults **off** in stock builds, and the system `sqlite3` CLI is a stock build that returns `0`. **Never measure this pragma with the CLI** — measure it with better-sqlite3, on a bare connection. Reaching the wrong conclusion here inverts your reading of every cascade in the schema; it happened on 2026-08-08 and produced a banner-dated "correction" of a register entry that was right all along. Pinned by a test in `server/__tests__/importConcepts.test.js`, so a future build dropping the flag goes red.
@@ -402,9 +358,7 @@ Translation workflow for Icelandic OpenStax textbooks. Produces three assets:
 - **Content format:** CNXML → Markdown (intermediate) → HTML. Everything else — tools, server framework, test runners, dependency list — is in `package.json`; don't restate it here.
 - **Dependencies:** the server's `xlsx` installs from the official SheetJS CDN tarball (`cdn.sheetjs.com`), not npm — npm's last SheetJS release (0.18.5) has unfixed advisories. `npm ci` therefore needs cdn.sheetjs.com reachable, and xlsx version bumps are manual (Dependabot can't follow URL dependencies).
 - **⚠️ DURABLE — npm advisories: TWO trees, and NEVER `npm audit fix`.** `server/` is the prod,
-  internet-facing tree and is audited separately; keep its `cdn.sheetjs.com` xlsx entries. *(This
-  rule lived only in project memory until 2026-08-08 — the wrong owner for a durable rule, and its
-  prescription had gone stale unnoticed there.)*
+  internet-facing tree and is audited separately; keep its `cdn.sheetjs.com` xlsx entries.
   - **⚠️ `npm ls` reads `node_modules`; `npm audit` and `npm ci` read `package-lock.json`. When
     they disagree, THE LOCKFILE IS WHAT GATES.** Measured 2026-08-08: `npm ls nanoid` reported a
     version *newer* than the advisory — i.e. safe — while `npm audit` reported the vulnerability,
@@ -569,7 +523,7 @@ Legacy protect/unprotect steps (1b, 2b) are archived in `tools/archived/` — no
 
 
 **🔴 DURABLE — "CLEAN CNXML" MEANS *CNXML AS OPENSTAX PUBLISHES IT*. IF IT IS IN THE SOURCE FOR A BOOK, IT STAYS IN OURS.** [LEAD] ruling 2026-08-30, full record → [docs/decisions/2026-08-30-c82-clean-break-refocus.md](docs/decisions/2026-08-30-c82-clean-break-refocus.md). The reasoning is theirs and it is durable: **if OpenStax changes their format they will build the tools to migrate it, and most of those tools are open source** — so tracking their published shape is cheaper than curating our own. Two consequences, and both are prohibitions:
-- **Never "tidy up" a construct because it looks redundant.** Organic's 1,071 `<span>` elements across **184** of 342 modules (red/cyan/magenta reaction colouring) stay, because OpenStax ships them. *(This said 185 until 2026-09-01; re-measured by two independent methods, with 0 self-closing spans. The 1,071 is correct.)* ⚠️ **They were in fact being DROPPED WHOLESALE by extract until §C118** — the marker layer had no case for `<span>` at all — so this prohibition was true as a rule and false as a description of what the pipeline did. **A stated rule is not a guarantee the code honours it; §C118 T2 is what measured it.**
+- **Never "tidy up" a construct because it looks redundant.** Organic's 1,071 `<span>` elements across **184** of 342 modules (red/cyan/magenta reaction colouring) stay, because OpenStax ships them. ⚠️ **They were in fact being DROPPED WHOLESALE by extract until §C118** — the marker layer had no case for `<span>` at all — so this prohibition was true as a rule and false as a description of what the pipeline did. **A stated rule is not a guarantee the code honours it; §C118 T2 is what measured it.**
 - **Never resolve a pipeline gap with a construct CNXML does not have** — a sentinel marker inside segment text, a synthetic element id the injector special-cases, a `<!-- TODO -->` in content. If a fix needs hours of coding, testing and black magic but an editor could do it in the UX, **tag it and move on**. ▶ Corollary, measured 2026-08-30: *"insert a missing segment in the editor"* is blocked by the **GENERATED** `02-structure/`+`02-for-mt/` pair, not by licensed `01-source/` — so **re-extraction supplies it for free** and no insertion path should be built.
 ⚠️ **This does NOT license editing `01-source/`** — that stays READ-ONLY under the licence-provenance rules above. It licenses *accepting* what is there.
 
@@ -631,17 +585,17 @@ The measured instances, their counts and the affected books live in the active r
 
 **⚠️ DURABLE — `book-config.json` is MULTI-CONSUMER; a new non-render key must be excluded via `NON_RENDER_KEYS`.** The item-17 licence key leaked through `book-rendering-config.js` `mergeWithShared()`'s lossless passthrough into `getBookRenderConfig()`'s object and broke a golden `toEqual` migration oracle. Verifying "inert on the render path" must check the config-**object** shape and its tests, not just the rendered HTML — a `toEqual`-vs-golden is a shape pin, not only a `toMatchSnapshot`.
 
-**⚠️ DURABLE — `glossary-unified.json` has THREE producers** *(said TWO until 2026-08-09; §C36 B3 added `export-terminology-resolved`, a resolved view of the concept model, and it is now what `export-terminology.js` builds by default — the old `export-terminology` payload is dead code awaiting Part C)*, **the export WRITES UNATTENDED, and its shrink guard does not stop a replacement.** ⚠️ **The three fingerprints are DISJOINT and must stay so** — `category`+`chapter` = merge-glossary · `subjects` = the old export · `domain` = resolved — because `detectProducer` falls back to shape inference when a payload carries no stamp, and an overlap would make a swap undetectable. `tools/merge-glossary.js` wrote every committed copy; `server/scripts/export-terminology.js` is the second, and **`scripts/git-backup.sh` invokes it on the 2-hourly cron — unforced.** The two producers are not interchangeable: **`merge-glossary.js` still has 3 sources and Íðorðabankinn is not one of them**, and its own `--db` upsert targets the `terminology_terms` table that migration 032 dropped. The file also feeds the **render** path (approved terms are substituted into published CNXML/HTML via `substituteMathLabels`), so a bad write is **reader-visible**, not merely an MT-quality regression.
+**⚠️ DURABLE — `glossary-unified.json` has THREE producers** *(`export-terminology-resolved`, a resolved view of the concept model, is what `export-terminology.js` builds by default — the old `export-terminology` payload is dead code awaiting Part C)*, **the export WRITES UNATTENDED, and its shrink guard does not stop a replacement.** ⚠️ **The three fingerprints are DISJOINT and must stay so** — `category`+`chapter` = merge-glossary · `subjects` = the old export · `domain` = resolved — because `detectProducer` falls back to shape inference when a payload carries no stamp, and an overlap would make a swap undetectable. `tools/merge-glossary.js` wrote every committed copy; `server/scripts/export-terminology.js` is the second, and **`scripts/git-backup.sh` invokes it on the 2-hourly cron — unforced.** The two producers are not interchangeable: **`merge-glossary.js` still has 3 sources and Íðorðabankinn is not one of them**, and its own `--db` upsert targets the `terminology_terms` table that migration 032 dropped. The file also feeds the **render** path (approved terms are substituted into published CNXML/HTML via `substituteMathLabels`), so a bad write is **reader-visible**, not merely an MT-quality regression.
 - **🔴 DURABLE — THE MT-SIDE AND RENDER-SIDE PROTECTIONS ARE INDEPENDENT. NEITHER IS EVIDENCE FOR THE OTHER.** `formatGlossary` (MT) **omits** contested headwords and drops comma values outright; `buildGlossaryMap` (render) applies **no omission at all** — it keys a Map on lowercased English with **last-write-wins**, so a contested headword silently resolves to whichever row came last. **Checking that the MT is safe tells you nothing about what readers see, and vice versa.** Measured 2026-08-12 (§C71/§C72): `at → astat | marsnákaætt` was correctly withheld from the MT while reaching **21 leaf math labels** in chemistry; the same day, the biology comma-list `missing → "skemmdar, horfnar og viðgerðar tennur"` was withheld from the MT and was in the render map, harmless only because the word never appears in `<m:mtext>`. **The render-side mask is `books/<slug>/math-label-map.json`'s self-map idiom (`"at": "at"`), pinned by `tools/__tests__/math-label-collisions-masked.test.js`.**
-  - 🔴 **AMENDED 2026-09-01 (§C82 ③) — THAT MASK IS ONE OF **TWO** RENDER-SIDE PROTECTIONS, AND IT STRUCTURALLY CANNOT REACH A SYMBOL. DO NOT REACH FOR A SELF-MAP TO STOP `ln`, `kg` OR `log`.** A self-map only exists for a token a human was offered, and `bucketToken` admits to Bucket 1 only all-lowercase ASCII tokens of **≥3 chars not on `DEFAULT_STOPLIST`** — and only Bucket 1 reaches `mergeSkeleton`, which is what fills `math-label-map.json`. So a 2-char unit/element symbol (`ln kg nm lb ft oz ne`) and a stoplisted function/unit (`log sin cos atm torr ppb exp tan`) can **never acquire a mask** the way `at`/`si`/`ppm` did. ⚠️ **`DEFAULT_STOPLIST`'s docstring calls exactly these "Units and math functions confirmed to STAY unchanged in Icelandic" — and until 2026-09-01 nothing consulted that declaration at resolution time.** ▶ **The second protection is a guard inside `resolveLabel`: the glossary is a map of WORDS, so it may not translate a SYMBOL (≤2 chars, or on `DEFAULT_STOPLIST`).** The curated overlay is checked FIRST ~~and still outranks it, so a book may localise a symbol deliberately and `mol → mól` (3 chars, deliberately off the stoplist) is untouched~~. **← Partly false since 2026-09-04: the overlay is still checked first, but a book's map can no longer localise a short label on its own, and this guard is now subsumed by the short-label default — see the correction below.** Pinned by `tools/__tests__/math-label-symbols-not-glossary-translated.test.js`, which carries both controls — the guarded population must be non-empty, and a word must still translate. **Measured: it stops 503 symbol occurrences across all books and leaves all 347 word occurrences.** ⚠️ **This is a THIRD defect class: not contested (§C71) and not wrong-sense (§C117) but wrong-REGISTER — a single approved row whose Icelandic is correct for the WORD and wrong for the SYMBOL (`ln → náttúrlegur logri` is good Icelandic and ruined `S = k ln W`). Expect none of the three guards to see the others.** Instances and counts live in the active register, never here.
-    - 🔴 **CORRECTED 2026-09-17 — A [USER] RULING OF 2026-09-04 PUT A SHORT-LABEL DEFAULT *ABOVE* THE OVERLAY, SO NO BOOK CAN LOCALISE A SHORT LABEL THROUGH ITS MAP ALONE ANY MORE — AND THE STRUCK CLAUSE ABOVE KEPT SAYING THE OPPOSITE FOR THIRTEEN DAYS.** `resolveLabel` (`tools/lib/math-label-substitute.js`) now renders a short math label in English by default. The check sits **after** the overlay's self-map test and **before** its translated return, and it bars the glossary too — so a translating entry in a book's `math-label-map.json` is silently ignored for such a label. **A short label is localised only if it is on `LOCALIZABLE_SHORT_LABELS`; adding it to a book's map alone does nothing, by design** (the allowlist's own docstring). Longer labels are unaffected and still localise through the overlay or the glossary. ▶ **`mol → mól` — an overlay entry in chemistry's map — works because `mol` is on that allowlist; the stoplist plays no part on that route.** On the glossary route `mol` must also stay off the stoplist, and that route is what the symbols test's `mol` case exercises. ▶ **The length threshold and the allowlist are ENFORCEABLE VALUES — read `SHORT_LABEL_MAX` and `LOCALIZABLE_SHORT_LABELS` in `tools/lib/math-label-inventory.js`, exercised by `tools/__tests__/math-label-short-labels-keep-english.test.js`; never copy them here.** ⚠️ **The trigger came through the route the struck clause offered as the deliberate way to localise:** a *curated overlay* entry, `cell → ker`, rendered `E°cell` as `Eker°` in published chemistry (`17-key-terms.html`; ruled and fixed in `94ad869e`) — correct for the WORD, wrong in a formula subscript. That is the wrong-REGISTER class above, reached through the overlay instead of the glossary — and `cell` is a *word* by the guard's own test, so the guard could never have caught it. ⚠️ **The symbol guard is SUBSUMED, not removed.** Measured 2026-09-17: every `DEFAULT_STOPLIST` entry is within `SHORT_LABEL_MAX`, and no allowlist entry is a symbol by the guard's test, so every token the guard would stop is already stopped by the short-label default and removing the guard changes no result. The *"ONE OF TWO"* framing and the 503/347 counts above predate the ruling. ⚠️ **`resolveLabel`'s own comment above the guard still says a book can localise a symbol through the overlay, and credits `mol → mól` to the stoplist** — the same stale premise, in code → register §C144.
+  - 🔴 **AMENDED 2026-09-01 (§C82 ③) — THAT MASK IS ONE OF **TWO** RENDER-SIDE PROTECTIONS, AND IT STRUCTURALLY CANNOT REACH A SYMBOL. DO NOT REACH FOR A SELF-MAP TO STOP `ln`, `kg` OR `log`.** A self-map only exists for a token a human was offered, and `bucketToken` admits to Bucket 1 only all-lowercase ASCII tokens of **≥3 chars not on `DEFAULT_STOPLIST`** — and only Bucket 1 reaches `mergeSkeleton`, which is what fills `math-label-map.json`. So a 2-char unit/element symbol (`ln kg nm lb ft oz ne`) and a stoplisted function/unit (`log sin cos atm torr ppb exp tan`) can **never acquire a mask** the way `at`/`si`/`ppm` did. ⚠️ **`DEFAULT_STOPLIST`'s docstring calls exactly these "Units and math functions confirmed to STAY unchanged in Icelandic" — and until 2026-09-01 nothing consulted that declaration at resolution time.** ▶ **The second protection is a guard inside `resolveLabel`: the glossary is a map of WORDS, so it may not translate a SYMBOL (≤2 chars, or on `DEFAULT_STOPLIST`).** The curated overlay is checked first, **but a book's map cannot localise a short label on its own, and this guard is subsumed by the short-label default — see the next bullet.** Pinned by `tools/__tests__/math-label-symbols-not-glossary-translated.test.js`, which carries both controls — the guarded population must be non-empty, and a word must still translate. **Measured: it stops 503 symbol occurrences across all books and leaves all 347 word occurrences.** ⚠️ **This is a THIRD defect class: not contested (§C71) and not wrong-sense (§C117) but wrong-REGISTER — a single approved row whose Icelandic is correct for the WORD and wrong for the SYMBOL (`ln → náttúrlegur logri` is good Icelandic and ruined `S = k ln W`). Expect none of the three guards to see the others.** Instances and counts live in the active register, never here.
+    - 🔴 **A SHORT MATH LABEL RENDERS IN ENGLISH BY DEFAULT, AND THAT DEFAULT SITS *ABOVE* THE OVERLAY ([USER] ruling 2026-09-04), SO NO BOOK CAN LOCALISE A SHORT LABEL THROUGH ITS MAP ALONE.** `resolveLabel` (`tools/lib/math-label-substitute.js`) renders a short math label in English by default. The check sits **after** the overlay's self-map test and **before** its translated return, and it bars the glossary too — so a translating entry in a book's `math-label-map.json` is silently ignored for such a label. **A short label is localised only if it is on `LOCALIZABLE_SHORT_LABELS`; adding it to a book's map alone does nothing, by design** (the allowlist's own docstring). Longer labels are unaffected and still localise through the overlay or the glossary. ▶ **`mol → mól` — an overlay entry in chemistry's map — works because `mol` is on that allowlist; the stoplist plays no part on that route.** On the glossary route `mol` must also stay off the stoplist, and that route is what the symbols test's `mol` case exercises. ▶ **The length threshold and the allowlist are ENFORCEABLE VALUES — read `SHORT_LABEL_MAX` and `LOCALIZABLE_SHORT_LABELS` in `tools/lib/math-label-inventory.js`, exercised by `tools/__tests__/math-label-short-labels-keep-english.test.js`; never copy them here.** ⚠️ **The trigger came through the overlay route:** a *curated overlay* entry, `cell → ker`, rendered `E°cell` as `Eker°` in published chemistry (`17-key-terms.html`; ruled and fixed in `94ad869e`) — correct for the WORD, wrong in a formula subscript. That is the wrong-REGISTER class above, reached through the overlay instead of the glossary — and `cell` is a *word* by the guard's own test, so the guard could never have caught it. ⚠️ **The symbol guard is SUBSUMED, not removed.** Measured 2026-09-17: every `DEFAULT_STOPLIST` entry is within `SHORT_LABEL_MAX`, and no allowlist entry is a symbol by the guard's test, so every token the guard would stop is already stopped by the short-label default and removing the guard changes no result. The *"ONE OF TWO"* framing and the 503/347 counts above predate the ruling. ⚠️ **`resolveLabel`'s own comment above the guard still says a book can localise a symbol through the overlay, and credits `mol → mól` to the stoplist** — the same stale premise, in code → register §C144.
 - **🔴 DURABLE — A WRONG GLOSSARY ENTRY IS WORSE THAN NO ENTRY, and compliance is PARTIAL, so you cannot predict which bad entries bite.** Measured 2026-08-12 (§C73) on real corpus text: Málstaður renders `sodium → natríum` and `magnesium → magnesíum` **correctly with no glossary at all**; supplied with our own entries it **obeyed** `magnesium→magnesín` — and the wrong stem then propagated into every compound (`magnesíumklóríð` → `magnesínklóríð`). ▶ **Before adding or defending a term, ask what the model does unprompted.**
-  - 🔴 **CORRECTED 2026-08-13 — THIS RULE SAID `sodium→natrín` WAS "IGNORED". IT WAS NOT, AND THE CORRECTION MAKES THE RULE STRONGER, NOT WEAKER.** Re-measured from the committed artifact (`test-results/c73-sodium-probe-2026-08-12.json`): **bare arm `natrín` ×0 / `natríum` ×5; with-glossary arm `natrín` ×2 / `natríum` ×3.** So the bad entry was **obeyed on 2 of 5 tokens** — compliance is partial **within a single segment set**, not merely partial across terms. ▶ **"Partial" does not mean "some entries take and others don't"; the SAME entry can take on one occurrence and not the next**, so no amount of spot-checking output establishes that a bad entry is inert. **The only safe move remains removing it.** ⚠️ **This class is invisible to every gate** — such entries are well-formed, `approved` and **uncontested**, so the collision sweep, producer gate and shrink guard all correctly see nothing. **Only domain knowledge finds it.**
-- **⚠️ A claim that used to live here — "the first prod run is *expected* to refuse" — was FALSIFIED in production on 2026-08-03.** The first prod run **wrote and pushed**: the guard (`server/lib/glossaryExportDecision.js`, `SHRINK_RATIO = 0.5`) measures **size**, so a −36.5% wholesale producer swap passed and pure growth was structurally invisible. **Never reason about that guard as if it gated correctness; it gates only halving.** Full account → active register §C14 ②.
-- **⚠️ AMENDED 2026-08-05 — a SECOND, categorical gate now exists. The line above stays true about the SHRINK guard, and *only* about it.** `SHRINK_RATIO` still measures size and still gates **only halving**; nothing about that changed, and the falsification stands. What was added alongside it is a **producer gate** (`server/lib/glossaryProducer.js`): the two producers emit disjoint per-term shapes (`merge-glossary` writes `category`/`chapter`, the exporter writes `subjects`), new exports carry a self-identifying top-level `producer` stamp, and a payload whose producer differs from the committed file's is refused **categorically** — overridden only by **`--adopt`**, which is **separate from `--force`** (two risks, two acknowledgements) and which the cron, invoking the script bare, **cannot reach**. A refusal also ages now: `/api/health` goes not-ok once a book has been refusing past `GLOSSARY_REFUSAL_STALE_DAYS` (decision D6), and `./scripts/deploy.sh` prints each one with its outcome-specific remedy.
-  - **⚠️ AMENDED 2026-08-05 (§C21) — there is now a THIRD gate, and the sentence this replaces is no longer true.** It read: *a book with a `glossary/` directory and no committed file has an `absent` baseline, which makes both gates structurally inert … so that write is still ungated, pushed, and green.* The **premise still holds** — an absent baseline leaves nothing to fingerprint and nothing to compare, which is exactly why it needed its own gate — but the exporter now **refuses** that state (`refused-absent-baseline`) unless **`--adopt`**, which the cron cannot reach, and `--force` does **not** substitute. **There is no longer any state in which an unattended glossary write is ungated.** ⚠️ **THAT SENTENCE WAS FALSIFIED ON 2026-08-09 AND IS NOW TRUE AGAIN — the counter-example is worth carrying, because it was a TYPE COLLISION, not a missing gate.** A committed `glossary-unified.json` holding the four bytes `null` **parsed**, so `readExisting` returned `{kind:'ok', payload:null}` — `kind` was not `'absent'`, so §C21's gate never fired, while `null` is the exact sentinel `producerVerdict` uses for *"no previous producer"*. Measured: all three gates stood down and the cron **wrote**. Only `null` slipped; `[]`, numbers and strings parse non-null and refuse. Closed by classifying a non-object payload as `corrupt`. **The lesson generalises past this bug: a gate keyed on one representation of "nothing" can be walked past by another representation of "nothing".** Found by a blind-pair adversarial review, not by any test. ⚠️ It is not a legacy state to tidy away: `createBookDirectories()` scaffolds an empty `glossary/` for **every** book registered through the admin route, so ordinary onboarding keeps producing it — and that is now fine, because it produces a *visible, D6-clocked refusal* instead of a silent write. Which books sit in which state → register **§C14 ③** and **§C21**.
+  - 🔴 **AND `sodium→natrín` WAS NOT IGNORED EITHER.** Measured from the committed artifact (`test-results/c73-sodium-probe-2026-08-12.json`): **bare arm `natrín` ×0 / `natríum` ×5; with-glossary arm `natrín` ×2 / `natríum` ×3.** So the bad entry was **obeyed on 2 of 5 tokens** — compliance is partial **within a single segment set**, not merely partial across terms. ▶ **"Partial" does not mean "some entries take and others don't"; the SAME entry can take on one occurrence and not the next**, so no amount of spot-checking output establishes that a bad entry is inert. **The only safe move remains removing it.** ⚠️ **This class is invisible to every gate** — such entries are well-formed, `approved` and **uncontested**, so the collision sweep, producer gate and shrink guard all correctly see nothing. **Only domain knowledge finds it.**
+- **⚠️ The shrink guard does not gate a producer swap.** The first prod run **wrote and pushed**: the guard (`server/lib/glossaryExportDecision.js`, `SHRINK_RATIO = 0.5`) measures **size**, so a −36.5% wholesale producer swap passed and pure growth was structurally invisible. **Never reason about that guard as if it gated correctness; it gates only halving.** Full account → active register §C14 ②.
+- **⚠️ A second, categorical gate sits beside the shrink guard — a producer gate** (`server/lib/glossaryProducer.js`): the two producers emit disjoint per-term shapes (`merge-glossary` writes `category`/`chapter`, the exporter writes `subjects`), new exports carry a self-identifying top-level `producer` stamp, and a payload whose producer differs from the committed file's is refused **categorically** — overridden only by **`--adopt`**, which is **separate from `--force`** (two risks, two acknowledgements) and which the cron, invoking the script bare, **cannot reach**. A refusal also ages now: `/api/health` goes not-ok once a book has been refusing past `GLOSSARY_REFUSAL_STALE_DAYS` (decision D6), and `./scripts/deploy.sh` prints each one with its outcome-specific remedy.
+  - **⚠️ A third gate covers the absent baseline (§C21).** A book with a `glossary/` directory and no committed file leaves the other two gates nothing to fingerprint and nothing to compare, so the exporter **refuses** that state (`refused-absent-baseline`) unless **`--adopt`**, which the cron cannot reach; `--force` does **not** substitute. ⚠️ **One state did walk past all three gates, and it was a TYPE COLLISION, not a missing gate.** A committed `glossary-unified.json` holding the four bytes `null` **parsed**, so `readExisting` returned `{kind:'ok', payload:null}` — `kind` was not `'absent'`, so §C21's gate never fired, while `null` is the exact sentinel `producerVerdict` uses for *"no previous producer"*. Measured: all three gates stood down and the cron **wrote**. Only `null` slipped; `[]`, numbers and strings parse non-null and refuse. Closed by classifying a non-object payload as `corrupt`. **The lesson generalises past this bug: a gate keyed on one representation of "nothing" can be walked past by another representation of "nothing".** Found by a blind-pair adversarial review, not by any test. ⚠️ It is not a legacy state to tidy away: `createBookDirectories()` scaffolds an empty `glossary/` for **every** book registered through the admin route, so ordinary onboarding keeps producing it — and that is now fine, because it produces a *visible, D6-clocked refusal* instead of a silent write. Which books sit in which state → register **§C14 ③** and **§C21**.
 - **⚠️ `status` on `terminology_translations` is a SELECTOR, not a provenance stamp.** Provenance is `source` + `idordabanki_id`. `status` chooses between **competing translations of one headword** (7,601 of 20,272 headwords have more than one — `atom` is both *frumeind* and *atóm*). **`buildGlossaryMap` keys a `Map` on English and last-write-wins**, so multiple `approved` siblings mean row order silently decides what readers see. → register §C18. **Before judging a value in a status column, read its consumers.**
-- **🔴 DURABLE — TO CHANGE WHAT `glossary-unified.json` CONTAINS, EDIT THE **CONCEPT MODEL**. `terminology_translations` IS THE WRONG TABLE AND ITS `status` IS INERT.** Measured 2026-08-30 by probe on a `db.backup()` copy: setting `status = 'rejected'` there **applies cleanly and changes the exported payload not at all**. It looks right from every angle — `formatGlossary` (MT wire) *and* `buildGlossaryMap` (render) both filter `status === 'approved'` — but the file is written by `export-terminology-resolved` from the **concept model**, and `server/lib/resolvedGlossary.js` **re-stamps `status: 'approved'` on every term it emits**. ▶ **The edit reports success, does nothing, and the 2-hourly cron republishes the term.** ✅ **What works:** `UPDATE concept_term.text` (change a value) · `DELETE` the `concept_term` row (remove one) · ~~`DELETE` a row from **`book_domain_priority`**~~ 🔴 **FALSIFIED 2026-08-31 — THAT DELETE IS SILENTLY REVERTED ON THE NEXT SERVER START, AND IT COST A DAY.** `server/migrations/047-reconcile-domain-priority.js` **DELETEs and re-INSERTs each named book's rows from `server/lib/domains.js`'s `BOOK_DOMAIN_PRIORITY` on EVERY BOOT** — its own docstring opens *"THIS IS ENFORCEMENT, NOT A ONE-TIME SEED — and that is deliberate"* — and it predicted this incident in writing on 2026-08-08 (*"if the table is ever made user-writable, this must be revisited"*). A hand-run `DELETE` is that write. **The change reports success, survives until the next restart, then vanishes with no error, no log line and no gate** — the shrink guard measures size and gates only *halving*, so the regrowth is invisible to it, and the producer stamp never moves. ▶ **THE FIX FOR AN ENFORCED VALUE IS THE FILE THE CODE READS (`server/lib/domains.js`), NEVER SQL.** ⚠️ **Diagnostic fingerprint, worth carrying: the DELETEs reverted while the INSERTs SURVIVED.** Asymmetric survival of one hand-edit means *a migration re-asserts this*, not *a restore happened* — a restore would have taken the inserts too. ⚠️ And **domain scoping is the wrong tool for a bad headword anyway**: measured, chemistry-only drops **1,632 of 2,021 terms** (114 of them multi-word chemistry, `acetic acid`, `amino acid`, `aqueous solution`) to fix **67** — and it changes the editor's terminology QA too, because `findTermsInSegments` reads the same scope. Full account → active register **§C116**) · `INSERT` a concept in a higher-priority domain, which **outranks** a lower one non-destructively. ⚠️ **`concept_term.lifecycle` is dead schema** — present, `null` on every row, read by nothing. ⚠️ **And a large shrink needs a one-time `--force` export**: the cron passes no override, so a big DB change otherwise writes nothing and opens a D6-clocked refusal alarm instead. **Instances and counts live in the active register (§C82 L150/L151), never here.**
+- **🔴 DURABLE — TO CHANGE WHAT `glossary-unified.json` CONTAINS, EDIT THE **CONCEPT MODEL**. `terminology_translations` IS THE WRONG TABLE AND ITS `status` IS INERT.** Measured 2026-08-30 by probe on a `db.backup()` copy: setting `status = 'rejected'` there **applies cleanly and changes the exported payload not at all**. It looks right from every angle — `formatGlossary` (MT wire) *and* `buildGlossaryMap` (render) both filter `status === 'approved'` — but the file is written by `export-terminology-resolved` from the **concept model**, and `server/lib/resolvedGlossary.js` **re-stamps `status: 'approved'` on every term it emits**. ▶ **The edit reports success, does nothing, and the 2-hourly cron republishes the term.** ✅ **What works:** `UPDATE concept_term.text` (change a value) · `DELETE` the `concept_term` row (remove one) · `INSERT` a concept in a higher-priority domain, which **outranks** a lower one non-destructively. 🔴 **A HAND `DELETE` FROM `book_domain_priority` IS NOT ON THAT LIST: IT IS SILENTLY REVERTED ON THE NEXT SERVER START.** `server/migrations/047-reconcile-domain-priority.js` **DELETEs and re-INSERTs each named book's rows from `server/lib/domains.js`'s `BOOK_DOMAIN_PRIORITY` on EVERY BOOT** — its own docstring opens *"THIS IS ENFORCEMENT, NOT A ONE-TIME SEED — and that is deliberate"* — and it predicted this incident in writing on 2026-08-08 (*"if the table is ever made user-writable, this must be revisited"*). A hand-run `DELETE` is that write. **The change reports success, survives until the next restart, then vanishes with no error, no log line and no gate** — the shrink guard measures size and gates only *halving*, so the regrowth is invisible to it, and the producer stamp never moves. ▶ **THE FIX FOR AN ENFORCED VALUE IS THE FILE THE CODE READS (`server/lib/domains.js`), NEVER SQL.** ⚠️ **Diagnostic fingerprint, worth carrying: the DELETEs reverted while the INSERTs SURVIVED.** Asymmetric survival of one hand-edit means *a migration re-asserts this*, not *a restore happened* — a restore would have taken the inserts too. ⚠️ And **domain scoping is the wrong tool for a bad headword anyway**: measured, chemistry-only drops **1,632 of 2,021 terms** (114 of them multi-word chemistry, `acetic acid`, `amino acid`, `aqueous solution`) to fix **67** — and it changes the editor's terminology QA too, because `findTermsInSegments` reads the same scope. Full account → active register **§C116**. ⚠️ **`concept_term.lifecycle` is dead schema** — present, `null` on every row, read by nothing. ⚠️ **And a large shrink needs a one-time `--force` export**: the cron passes no override, so a big DB change otherwise writes nothing and opens a D6-clocked refusal alarm instead. **Instances and counts live in the active register (§C82 L150/L151), never here.**
 - **🔴 DURABLE — ADD A GLOSSARY TERM ONLY WHEN IT RESOLVES AN AMBIGUITY THE MODEL CANNOT SEE; DELETE IT WHEN IT OVERRIDES A CHOICE THE MODEL MAKES BETTER THAN A FLAT MAP CAN.** The glossary is a flat English→Icelandic map and **Icelandic compounding is not flat**: `molar` is *mólar* standalone but *mól-* bound, `test tube` is *tilraunaglas* rather than anything containing *pípa*. Measured 2026-08-30 against the committed MT output, which was produced under an older glossary and is therefore §C73's unprompted control: the model already compounds **and inflects** correctly (`mólmassa`, `eðlisvarmi/-varma`, `jafngildispunktur`, `rannsóknarstofubúnaði`), while several proposed bound stems appear **0 times** in 3.4M characters of its own output. ▶ **Two tests before you touch a term: (1) does the model already produce the wanted value unprompted, and (2) does the form you want to force appear in its output at all?** A form it never produces is not a better choice — it is an untested one. **The mirror case is real and rarer:** two English terms collapsing onto one Icelandic word (*hydrocarbon* and *carbohydrate* both → `kolvetni`) is exactly when the glossary earns its place, because the sentence does not carry the distinction.
 
 🔴 **DURABLE — NEVER HAND-CURATE A `--glossary-only` SUBSET. COMPUTE IT, THEN HAVE IT AUDITED.** A
@@ -669,7 +623,7 @@ register and the audit handoff, never here.**
 **⚠️ DURABLE — onboard a new book LICENCE-FIRST: TM auto-regen needs a per-book licence row.** A missing row is a loud 500 on `GET /api/tm/export` but a **SILENT, warn-only stale TM** on the fire-and-forget regen cron — the failure you won't notice.
 
 **⚠️ DURABLE — the `<!-- SEG:… -->` marker takes NO SPACE after the colon.** `segmentParser.parseSegments` matches `<!-- SEG:m001:para:fs-id1 -->`; the spaced form `<!-- SEG: m001:… -->` parses to **`[]`** — an empty segment list, not an error. Prose across this repo (including specs and register entries) writes it spaced for readability, so it is easy to copy the readable form into a test fixture or a tool and get a silent empty parse that looks like a matching bug. **Verify a fixture against the real parser before building on it.** Found 2026-07-29 while writing the C16 re-attach plan, where 10 fixtures had it wrong.
-- 🔴 **SAME RULE, SECOND EDGE (2026-08-24) — A SEGMENT ID'S `elementId` MAY CONTAIN ONLY `[\w-]`.** ⚠️ **CORRECTED 2026-08-25 — THE PRESCRIPTION BELOW IS RIGHT AND WAS KEPT; THE DIAGNOSIS WAS WRONG IN EVERY PART: it named the wrong function, the wrong mechanism, and a symptom that CANNOT OCCUR.** It used to read: *"`server/services/segmentParser.js` matches `SEG:([\w]+):([\w-]+):([\w-]+)`, so an elementId carrying a dot or a slash **does not parse** — the failure is an **empty segment list, silently**; `tools/lib/extraction-coverage.js` uses a looser `[^\s]+?`, so a bad id looks FINE to the coverage check while being invisible to the editor."* **Measured on a 3-marker document whose 2nd and 3rd ids carry a dot and a slash: `parseSegments` returns ALL THREE RECORDS, IDS INTACT (`good`, `fs.id`, `a/b`).** It never uses that file's strict regex — it delegates to the **permissive** MIT recognizer `/<!--\s*SEG:([^\s]+?)\s*-->/g` in `tools/lib/seg-markers.cjs`, i.e. the *same* pattern this bullet attributed to `extraction-coverage.js` as the looser of the pair. The strict `SEG_MARKER_REGEX` is real but its **only** consumer is `countModuleSegments()`, which returns a **count** and never a segment list — it matched **1 of 3**. ▶ **So the disagreement is not BETWEEN the two files; it is INSIDE `segmentParser.js`, between `parseSegments` (permissive) and `countModuleSegments` (strict) — and the symptom is an UNDER-COUNT, not an empty parse.** Anyone debugging a dot-bearing id by searching for a silent empty list will rule out the real cause. ▶ **THE PRESCRIPTION IS UNCHANGED AND MUST NOT BE RELAXED: minting a new segment id from content? Slug it to `[\w-]` and test it against BOTH regexes** — `countModuleSegments` really does drop such ids. Found while keying §C88 Unit A's 244 alts on the image `src`: the raw `src` fails, and so does a bare basename — on the extension's dot — 245 of 245. `altElementIdFromSrc` (`tools/lib/alt-segments.js`) is the worked example. ✅ **A BLOCKING gate now ENFORCES the charset** — A2b's `id-charset` leg in `tools/lib/remt-checks-mt.js`, adopted at a measured **0.000%** base rate; full account → active register **§C82 L46/L47**.
+- 🔴 **SAME RULE, SECOND EDGE (2026-08-24) — A SEGMENT ID'S `elementId` MAY CONTAIN ONLY `[\w-]`.** `server/services/segmentParser.js` holds two recognizers that disagree: `parseSegments` delegates to the **permissive** MIT recognizer `/<!--\s*SEG:([^\s]+?)\s*-->/g` in `tools/lib/seg-markers.cjs`, while the strict `SEG_MARKER_REGEX` has one consumer, `countModuleSegments()`, which returns a **count** and never a segment list. Measured on a 3-marker document whose 2nd and 3rd ids carry a dot and a slash: `parseSegments` returned all three records, ids intact (`good`, `fs.id`, `a/b`); `countModuleSegments` matched **1 of 3**. ▶ **So the symptom of a dot- or slash-bearing id is an UNDER-COUNT, not an empty parse.** ▶ **Minting a new segment id from content? Slug it to `[\w-]` and test it against BOTH regexes** — `countModuleSegments` really does drop such ids. Found while keying §C88 Unit A's 244 alts on the image `src`: the raw `src` fails, and so does a bare basename — on the extension's dot — 245 of 245. `altElementIdFromSrc` (`tools/lib/alt-segments.js`) is the worked example. ✅ **A BLOCKING gate now ENFORCES the charset** — A2b's `id-charset` leg in `tools/lib/remt-checks-mt.js`, adopted at a measured **0.000%** base rate; full account → active register **§C82 L46/L47**.
 
 **🔴 DURABLE — `02-mt-output/`, `03-translated/` AND `05-publication/` ARE NOT CORRECTNESS REFERENCES. THE GOLD IS `01-source` AND OPENSTAX'S PUBLISHED HTML.** Measured 2026-09-01 (§C118): **94 of 149 chemistry modules cannot be re-injected at all** — their committed MT predates the re-extraction — while `translation-errors.json` reports `totalChecked: 149 … green: true` over their stale output, because it measures the committed tree rather than what the run wrote. ▶ **A diff against previous output answers "did anything change", NEVER "is this right".** The generated `02-for-mt/` + `02-structure/` are exempt: they cost nothing to regenerate, so their mixed vintage is a non-problem.
 - ✅ **THE FREE, SOURCE-ANCHORED CHECKS EXIST — USE THEM BEFORE SPENDING ANYTHING.** `tools/source-roundtrip-check.js <book> <chapter>` injects a module's OWN ENGLISH back and diffs it against `01-source` **by value**, element by element, keyed on id with a per-tag census as the control for id-less elements. `tools/render-oracle-check.js <book> <chapter> [--control]` matches our rendered HTML against OpenStax's published HTML **1:1 by CNXML element id** — the ids survive into their pages — completing `emitted → injected → RENDERED`. Both are read-only, need no network at run time, and cost 0 ISK. **Together they found five defects on their first two runs**, three of which every count-based gate in the repo reported as clean.
@@ -686,15 +640,9 @@ See [docs/workflow/simplified-workflow.md](docs/workflow/simplified-workflow.md)
 `npm` scripts (`test`, `validate`, `server:dev`, …) are in `package.json` —
 read them there. Listed below are only the tool invocations whose **flags are not guessable**.
 
-**⚠️ CORRECTED 2026-08-04 — the three CNXML tools take `--book`/`--chapter` FLAGS, not
-positionals.** This table documented `<book> <chapter>` positionally for all three and
-**every one of those forms fails**: `cnxml-extract` and `cnxml-inject` exit 1 with
-`Error: --book is required`, and `cnxml-render` dies with an unhandled `path` TypeError
-(a raw stack trace, not a usage message) — *until 2026-11-08 (§C210), when render too began
-exiting 1 with `--book is required`, and `--help` began printing usage*. Verified by running all three. `cnxml-extract`
-does declare one positional, but it is `input` — a file path — not the book slug.
-Ironic given this section's own promise to list "only the tool invocations whose flags
-are not guessable".
+**⚠️ The three CNXML tools take `--book`/`--chapter` FLAGS, not positionals.** A positional
+`<book> <chapter>` fails on all three: each exits 1 with `Error: --book is required`.
+`cnxml-extract` does declare one positional, but it is `input` — a file path — not the book slug.
 
 | Command | Purpose |
 |---------|---------|
@@ -714,13 +662,12 @@ does not declare it returns cleanly, with the flag absent from the result and **
 stderr**. The tool then runs at full strength with its defaults. This is how a "safe rehearsal into
 a scratch directory" becomes a **full-strength run over the real, READ-ONLY `02-mt-output` tree** —
 `api-translate.js` has no `--output-dir` option at all, and never had one, though a register entry
-described it as "parsed but never read". **Before relying on any flag, confirm it is in that
-tool's `parseArgs` spec** (or its `--help`, which is generated from the same place) — do not infer
+described it as "parsed but never read". **Before relying on any flag, read its consumer in the tool's source** — being declared in the
+`parseArgs` spec, or printed by `--help`, is necessary but not sufficient (next paragraph). Do not infer
 it from prose, from another tool, or from what the flag would sensibly be called. `--dry-run` is
 real on the CNXML/MT tools; most other "safety" flags you might reach for are not.
 
-🔴 **AMENDED 2026-08-15 — THE `--help` HALF OF THAT DEFENCE RETURNS A FALSE NEGATIVE, MEASURED
-(§C83). `cnxml-extract.js --output-dir` IS IN `--help`, IS ACCEPTED SILENTLY, AND IS IGNORED:
+🔴 **A FLAG THAT `--help` LISTS CAN STILL BE UNIMPLEMENTED — MEASURED (§C83). `cnxml-extract.js --output-dir` IS IN `--help`, IS ACCEPTED SILENTLY, AND IS IGNORED:
 the run writes into the real `books/` tree and exits 0.** Verified by running
 `node tools/cnxml-extract.js --book orverufraedi --chapter 1 --module m58781 --output-dir <scratch>`
 — exit **0**, scratch directory **empty**, stdout printing `→ books/orverufraedi/02-for-mt/…`,
@@ -827,7 +774,7 @@ prints no lines and **exits 1** — indistinguishable from "not present". Measur
 old failure class and it evades the usual heuristic: no filter was chosen — the file itself
 causes the blindness**, so "an absence you manufactured with a filter" does not catch it, and
 neither does re-running the same grep. It bites **docs too**, not just code: MULTIPLE plan
-files under `docs/` hold NULs, so a `grep` over `docs/` skips them entirely. *(This said "two campaign plan files under `docs/superpowers/plans/`" until 2026-09-02; a byte-scan then found **5** NUL-bearing `.md` files under `docs/`. The count is deliberately not restated — re-derive it with the command below.)*
+files under `docs/` hold NULs, so a `grep` over `docs/` skips them entirely. The count is deliberately not stated — re-derive it with the command below.
 **Do not trust any enumeration here — re-derive it**, as with the MIT→AGPL edges above:
 ```bash
 grep -rlaUP '\x00' --include='*.js' --include='*.md' --include='*.json' \
@@ -853,9 +800,6 @@ the six that matter.
 Sources are legitimate (a NUL separator in a hash input is deliberate and load-bearing at
 `server/lib/conceptMatcher.js`'s `fingerprintEntries`, whose comment warns that a *raw* NUL
 byte there would be a regression) — so the fix is `-a` at the search, not stripping the bytes.
-*(This cited `terminologyService.js`'s `fingerprintHeadwords` until 2026-08-11 — the same
-branch that added this rule **deleted** that function, moving it here. A durable rule whose
-own citation had already rotted, in the always-loaded file that forbids exactly that.)*
 
 **⚠️ AND THE RULE ABOVE DOES NOT COVER THE OTHER CONTROL BYTES — `U+0001` FAILS THE OPPOSITE
 WAY, AND `grep -a` IS NO DEFENCE (§C49, amendment measured 2026-08-11).** A NUL makes grep
@@ -897,10 +841,9 @@ remain describe the current pipeline.
 npm run validate
 ```
 
-*(This block also showed `npm run update-status <book> <chapter> <stage> <status>` until
-2026-11-08. No such script is in `package.json`: it was archived to
-`scripts/archived/update-status.js` on 2026-03-13. `api-translate --update-status`
-refuses since 2026-11-08 (§ E-2 above).)*
+No command-line tool writes a stage's status: there is no `update-status` npm script
+(the old one is archived at `scripts/archived/update-status.js`), and
+`api-translate --update-status` refuses.
 
 **Stages (Extract-Inject-Render pipeline):**
 - `extraction` - Step 1: Segments + structure extracted
@@ -947,7 +890,6 @@ node scripts/sync-content.js --source ../namsbokasafn-efni
 
 - **⚠️ WHICH BOOKS MAY REACH THE WEBSITE IS AN ENFORCEABLE VALUE, AND ITS OWNER IS IN THE SISTER REPO: `../namsbokasafn-vefur/scripts/lib/published-books.js` (`PUBLISHED_BOOKS`) plus `published-books.test.js`. Read the list there; never restate it.** It is an **allowlist, default-deny** — a book present in efni and absent from it is withheld — so **a bare `node scripts/sync-content.js` run is safe**: it publishes the permitted books and names the ones it skipped, and **naming a withheld book is an error, not a silent skip** (overridable only with `--allow-withheld`). The [LEAD] ruling behind it is 2026-08-22 — indefinite, reversible, **nothing deleted in either repo** — recorded at [docs/decisions/2026-08-22-two-book-focus-and-publication-withdrawal.md](docs/decisions/2026-08-22-two-book-focus-and-publication-withdrawal.md).
   ⚠️ **THE ALLOWLIST GOVERNS WHAT IS *SYNCED*, NOT WHAT IS ALREADY *DEPLOYED*** — its own header says so, and the sync's stale-directory sweep is keyed on the SOURCE tree. Retiring pages that are already live is a separate decision with its own consequences → **active register §C109**, which owns it and its status.
-  🔴 **CORRECTED 2026-09-08 — THIS BULLET USED TO CARRY THE TWO SLUGS AND THE 🔴 DURABLE RULE "Never run it bare. Never name a third book.", AND BOTH DESCRIBED A MECHANISM THAT NO LONGER EXISTS.** It also carried its own expiry — *"THIS LIST LIVES HERE ONLY UNTIL VEFUR'S SYNC READS A PUBLISHED-BOOKS ALLOWLIST"* — and that condition was met on vefur's `main` without anything on this side noticing. ▶ **A prohibition is not self-retiring: the guard moved into code-plus-test in another repo and the always-loaded prose kept claiming the guard was itself.** A session trusting it would have believed a safe, gated operation was destructive, and would have gone looking on the wrong side of the boundary for the thing protecting it. ⚠️ **And an expiry written into a rule only fires if somebody re-reads the rule** — this one was found by an audit, not by the condition.
 - **⚠️ A vefur sync/deploy proves nothing until you fetch the CONTENT FILE.** Verify at `/content/<book>/chapters/<NN>/<file>.html`, never a page URL — the SPA fallback returns 200 with an identical shell for every path. **And pair it with a control you expect to still be broken**: a set of clean results is indistinguishable from fetching something empty. Measured 2026-08-07: a live page is ~30 KB against ~160 bytes for a nonsense URL, and a page knowingly left unfixed still returned its defect — which is what made the clean ones mean anything. → [[engineering-lessons]]
 - **⚠️ `deleting toc.json` in the sync output is EXPECTED — and its regeneration is warn-only.** efni ships no `toc.json`; vefur deletes and regenerates it. But that regen cannot fail the sync, while vefur skips any book lacking one — so a failed regen silently drops a whole book with every exit code green. **The rule is vefur's and lives in vefur's CLAUDE.md**; noted here only so nobody aborts an efni delivery over the line.
 - **✅ Prune-on-rename SHIPPED (§C9).** A render that supersedes a page deletes it and records
@@ -957,7 +899,7 @@ node scripts/sync-content.js --source ../namsbokasafn-efni
   currently exists and a consumer does ONE lookup — no transitive walk, no cycles, no redirect
   onto a deleted page. ⚠️ **`books/_slug-maps/` is NOT that map** — `sync-content.js` copies only
   `05-publication/{mt-preview,faithful}/`, so nothing there ever reaches vefur.
-  🔴 **CORRECTED 2026-09-02 — THIS SAID "the vefur consumer is not built yet, so a superseded URL 404s until it is", AND ACTING ON IT COSTS READER URLs UNNECESSARILY.** Two different things were conflated. **The GENERIC consumer — one that READS this map — is indeed not built.** But vefur ships a **hardcoded redirect table** (`src/lib/data/sectionRedirects.ts`), consumed by its section route, prerendering a ~200-byte meta-refresh stub per retired slug; it **shipped and was DEPLOYED 2026-08-19**. ▶ **So a superseded URL 404s only if nobody adds the entry.** ⚠️ **AND THE ORDERING MATTERS MORE THAN THE MECHANISM: vefur's `load` gates each entry on `exactSectionExists`, so an entry is INERT until its target is actually published — which means the redirect can land BEFORE the sync that retires the old page, and that is THE ONLY ORDERING WITH NO 404 WINDOW.** ▶ **When a render prunes a page, hand vefur the `from`/`to`/`moduleId` rows immediately; do not wait for the sync, and do not accept a 404 as inevitable.** *(Deliberately NOT a reader of this map, and that is vefur's decision, not an oversight: the synced tree is gitignored there, so anything derived from it is absent in CI and in a clean checkout. This map remains the durable RECORD that lets those hardcoded entries be written and later retired — vefur's own detector `scripts/lib/rename-detector.js` reads it, warn-only.)*
+  🔴 **A SUPERSEDED URL 404s ONLY IF NOBODY ADDS A REDIRECT ENTRY IN VEFUR.** The generic consumer — one that READS this map — is not built, but vefur ships a **hardcoded redirect table** (`src/lib/data/sectionRedirects.ts`), consumed by its section route, prerendering a ~200-byte meta-refresh stub per retired slug; it **shipped and was DEPLOYED 2026-08-19**. ▶ **So a superseded URL 404s only if nobody adds the entry.** ⚠️ **AND THE ORDERING MATTERS MORE THAN THE MECHANISM: vefur's `load` gates each entry on `exactSectionExists`, so an entry is INERT until its target is actually published — which means the redirect can land BEFORE the sync that retires the old page, and that is THE ONLY ORDERING WITH NO 404 WINDOW.** ▶ **When a render prunes a page, hand vefur the `from`/`to`/`moduleId` rows immediately; do not wait for the sync, and do not accept a 404 as inevitable.** *(Deliberately NOT a reader of this map, and that is vefur's decision, not an oversight: the synced tree is gitignored there, so anything derived from it is absent in CI and in a clean checkout. This map remains the durable RECORD that lets those hardcoded entries be written and later retired — vefur's own detector `scripts/lib/rename-detector.js` reads it, warn-only.)*
   - 🔴 **THE FILENAME IS TRACK-QUALIFIED, AND THAT IS LOAD-BEARING — do not "tidy" it back to
     `slug-map.json`.** Vefur **flattens both tracks** into one `static/content/<book>/`, and its
     overlay filter has no branch for a track-root file, so a single shared name means a
@@ -1117,8 +1059,7 @@ and counts live in the active register, never here.
   triggers, live in the active register, never here.
 
 **⚠️ DURABLE — MARKER-SURVIVAL EVIDENCE IS PER-ENDPOINT. Never generalise it to "the API".**
-This line claimed "100% Málstaður API survival" until 2026-08-06. Every check behind that
-result exercises **`/v1/translate`**. Measured on **`/v1/grammar`**, the same markers are
+Every survival check exercises **`/v1/translate`**. Measured on **`/v1/grammar`**, the same markers are
 **corrupted**: `[[i:vatns]]` → `[[i: vatns]]` — the spaced form that parses to an **empty
 list, silently** (see the SEG-marker rule above; the bracket markers share the hazard) — and,
 in a *different* call, `[[xref:kafli|1]]` → `[[xref:kafli>1]]` while `[[i:]]` was untouched.
@@ -1138,24 +1079,15 @@ derivable from `server/routes/` — read it there rather than trusting a copy he
 
 Production health check: `GET /api/health` — DB, migrations, books, auth, and **three** staleness
 heartbeats: **off-box DB backup** (`OFFBOX_BACKUP_STALE_HOURS`), content backup
-(`CONTENT_BACKUP_STALE_HOURS`), glossary export. 🔴 **THE DEFAULTS ARE DELIBERATELY NOT WRITTEN HERE ANY MORE,
-AND THE REASON IS THAT ONE OF THEM WAS WRONG IN THIS FILE WITHIN HOURS OF CHANGING.** This line said
-*"default 26"* for the off-box check; it became **14** on 2026-09-03 and the prose did not move.
-**Each default is an ENFORCEABLE VALUE and lives in the file the code reads plus its test** —
+(`CONTENT_BACKUP_STALE_HOURS`), glossary export. 🔴 **THE DEFAULTS ARE DELIBERATELY NOT WRITTEN HERE. Each default is an ENFORCEABLE VALUE and lives in the file the code reads plus its test** —
 `server/lib/offboxBackupHealth.js` and `server/lib/contentBackupHealth.js`, both exporting
 `DEFAULT_STALE_HOURS`. ▶ **AND NEITHER IS A CHOSEN NUMBER: both are DERIVED as "two missed cycles of
 their cron, plus margin"** — the 2-hourly content cron gives 2x2+2, the 6-hourly backup-db cron gives
 2x6+2. `server/__tests__/healthOffboxBackup.test.js` pins that arithmetic AND parses `install-cron.sh`
 to assert the cron period it is derived from, because **a threshold and a schedule that drift apart is
-how a silent backup failure hides.** Re-derive if either schedule changes; do not copy a digit here. *(This line omitted the off-box one until
-2026-08-04 — re-derive the list from the handler rather than trusting any prose copy, this one
-included.)* **Nothing polls it** — the routine surface is what `./scripts/deploy.sh` prints;
+how a silent backup failure hides.** Re-derive if either schedule changes; do not copy a digit here. Re-derive the list from the handler rather than trusting any prose copy, this one included. **Nothing polls it** — the routine surface is what `./scripts/deploy.sh` prints;
 otherwise `curl` it by hand. ⚠️ **A `degraded` verdict names which check failed — read it before
-concluding anything.** *(A clause here used to add "`degraded` has meant `glossary_export` alone
-since 2026-08-04" — that went stale on 2026-08-05 14:00Z, when the exporter's first cron tick
-under the C14 guard flipped `glossary_export` to `ok` and the whole payload to `status: ok`.
-**Do not carry a remembered verdict; read the live one** — which is exactly what the durable half
-of this bullet already told you to do.)*
+concluding anything.** **Do not carry a remembered verdict; read the live one.**
 
 ### Change history
 
@@ -1178,8 +1110,4 @@ next, in flight, blocked, or shipped; not module/test/term totals. Every such nu
 on 2026-07-26 was stale, one by 3×. Long-lived context lives in
 [ROADMAP.md](ROADMAP.md) and [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md).
 
-**⚠️ Do not restate pipeline-coverage claims here — cite the register.** A line in this section
-once claimed the 2026-03-30 duplicate-figure fix "follows the same pattern as `buildNoteDom`"
-and covered "liffraedi-2e notes (70)". **Both halves were false**, and together they are a large
-part of why the `<note>` gap went unnoticed for four months (it was register C13, fixed
-2026-07-27 in PR #337). A reader who trusted that line would have concluded notes were handled.
+**⚠️ Do not restate pipeline-coverage claims here — cite the register.**
