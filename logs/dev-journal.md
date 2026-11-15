@@ -854,3 +854,97 @@ e0d7a1d3b docs(register): §C214, the minimatch advisory (GHSA-g3hv-75wg-m249) i
 **Why:** —
 
 ---
+
+## 2026-11-10 10:53 - dashboard rolled to 10 Nov (fortnight v33), #664 merged, feat/g123-pr2-write-side cut; next is G1.23 PR2 in a new session
+
+**Branch:** feat/g123-pr2-write-side (worktree .claude/worktrees/g123-pr1-read-side; cut from origin/main at 31c9a18b7, no commits yet)
+**Modified:**
+```
+(clean before this entry)
+```
+
+**Recent commits:**
+```
+31c9a18b7 Merge pull request #664 from SigurdurVilhelmsson/docs/journal-2026-11-10
+e073ff16e docs(journal): snapshots 2026-11-08 → 2026-11-10 (re-request mode, E-2 sever, PR4 ready, G1.23 plan, PR1 deployed, #663)
+9a948f0d4 Merge pull request #663 from SigurdurVilhelmsson/docs/deploy-98fee00a9-verified
+```
+
+**Why:** — (dashboard: window v23, closing v15, next-up row c56 = PR2; this entry is uncommitted on the PR2 branch, so keep it out of PR2's commits; the shared checkout's journal edit equals main and can be discarded before its next pull)
+
+---
+
+## 2026-11-10 12:15 - before G1.23 PR2: #666 merged, c19 pre-screen ruled, docs are merged.
+
+**Branch:** main
+**Modified:**
+(none)
+
+**Recent commits:**
+f99e669a3 Merge pull request #666 from SigurdurVilhelmsson/docs/c19-prescreen-rulings
+8de5ae1b0 docs(register): [USER] rules c19, the glossary pre-screen: wanted, and a run in November or the next period is private; u08 no longer gates it
+31c9a18b7 Merge pull request #664 from SigurdurVilhelmsson/docs/journal-2026-11-10
+
+**Why:** —
+
+---
+
+## 2026-11-12 12:09 - G1.23 done end to end: guard live since 10:05:35Z, view switched on for efnafraedi-2e at 12:01:27Z, #673 held open to ride with the next code deploy; next is step 6 (G1.7, G1.12, G1.13)
+
+**Branch:** docs/g123-guard-edge-trial (worktree g123-pr3-screen-and-switch; PR #673)
+**Modified:**
+(clean)
+
+**Recent commits:**
+feb0a5adf docs(register): G1.23 step 5 done; the view switched on for efnafraedi-2e at 12:01:27Z
+294dff60d docs(register): #670-#672 deployed (10:05:35Z) and verified read-only; switch-on baseline still empty
+969378255 docs(register): #672 (the double-click guard) merged; [USER]'s Edge trial passed; §C216's third item fixed
+
+**Why:** —
+
+---
+
+## 2026-11-13 09:23 - G1.12: PR #674 draft at 76986d7c0, production check done (rows 58/66 accepted), spec amended 2026-11-13; next is the last chemistry term-pass apply, then merge with a merge commit and deploy
+
+**Branch:** fix/g112-duplicate-ids
+**Modified:**
+(clean)
+
+**Recent commits:**
+76986d7c0 docs(g112): spec amendment approved, with a sixth item
+873273c63 docs(g112): production check evidence; two legacy rows accepted as harmless
+84b90cbb9 docs(g112): register — pushed as draft PR #674; whole-branch review done
+
+**Why:** —
+
+---
+
+## 2026-11-13 10:43 - G1.12 landed: #674 merged as f5b78ce3b and #675 as 0eaf7f0dc, prod deployed and verified, worktree and branches cleaned up
+
+**Branch:** main
+**Modified:**
+ M logs/dev-journal.md
+
+**Recent commits:**
+0eaf7f0dc Merge pull request #675 from SigurdurVilhelmsson/docs/g112-merged-deployed
+417684ee8 docs(g112): register — #674 merged and deployed; post-restart check clean
+f5b78ce3b Merge pull request #674 from SigurdurVilhelmsson/fix/g112-duplicate-ids
+
+**Why:** —
+
+---
+
+## 2026-11-13 12:01 - #673, #676 and #677 merged and deployed (#677 as e387f3081, deployed 12:35Z, after this snapshot); PR3 rulings frozen; all g123 worktrees and branches cleaned up
+
+**Branch:** main
+**Modified:**
+ M logs/dev-journal.md
+
+**Recent commits:**
+ec5cd8a55 Merge pull request #676 from SigurdurVilhelmsson/docs/g123-pr3-build-rulings
+44451544e docs(g123): freeze PR3's build rulings before deleting its ledger
+6adbf851f Merge pull request #673 from SigurdurVilhelmsson/docs/g123-guard-edge-trial
+
+**Why:** —
+
+---
