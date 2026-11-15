@@ -12,6 +12,8 @@ Command-line tools for the Extract-Inject-Render translation pipeline.
 | Tool | Purpose | Pipeline Step |
 |------|---------|---------------|
 | `cnxml-extract.js` | Extract segments from CNXML | Step 1a |
+| `api-translate.js` | Translate segments via the Málstaður API | Step 2 |
+| `generate-tm.js` | Generate the TM (TMX) from paired EN and faithful segments | Step 4 |
 | `cnxml-inject.js` | Inject translations into CNXML | Step 5a |
 | `cnxml-render.js` | Render CNXML to semantic HTML | Step 5b |
 | `validate-chapter.js` | Validate chapter content | Validation |
@@ -23,16 +25,16 @@ Command-line tools for the Extract-Inject-Render translation pipeline.
 Extracts translatable segments from CNXML while preserving document structure. Produces three outputs: segments markdown, structure JSON, and equations JSON.
 
 ```bash
-node tools/cnxml-extract.js --chapter <num> [--module <id>] [options]
-node tools/cnxml-extract.js --input <cnxml-file> [options]
+node tools/cnxml-extract.js --book <book> --chapter <num> [--module <id>] [options]
+node tools/cnxml-extract.js --book <book> --input <cnxml-file> [options]
 ```
 
 | Option | Description |
 |--------|-------------|
+| `--book <slug>` | Book slug, required (e.g., `efnafraedi-2e`) |
 | `--chapter <num>` | Process all modules in a chapter |
 | `--module <id>` | Specific module ID (e.g., m68724) |
 | `--input <file>` | Input CNXML file path |
-| `--output-dir <dir>` | Output directory (default: auto-determined) |
 | `--verbose` | Show detailed progress |
 
 **Output:**
@@ -45,10 +47,10 @@ node tools/cnxml-extract.js --input <cnxml-file> [options]
 **Examples:**
 ```bash
 # Extract all modules in chapter 5
-node tools/cnxml-extract.js --chapter 5
+node tools/cnxml-extract.js --book efnafraedi-2e --chapter 5
 
 # Extract specific module
-node tools/cnxml-extract.js --chapter 5 --module m68724 --verbose
+node tools/cnxml-extract.js --book efnafraedi-2e --chapter 5 --module m68724 --verbose
 ```
 
 ---
@@ -58,11 +60,12 @@ node tools/cnxml-extract.js --chapter 5 --module m68724 --verbose
 Injects translated segments back into the CNXML document structure, producing complete translated CNXML files.
 
 ```bash
-node tools/cnxml-inject.js --chapter <num> [--module <id>] [options]
+node tools/cnxml-inject.js --book <book> --chapter <num> [--module <id>] [options]
 ```
 
 | Option | Description |
 |--------|-------------|
+| `--book <slug>` | Book slug, required (e.g., `efnafraedi-2e`) |
 | `--chapter <num>` | Chapter number |
 | `--module <id>` | Specific module ID (default: all in chapter) |
 | `--lang <code>` | Language code (default: `is`) |
@@ -86,17 +89,17 @@ node tools/cnxml-inject.js --chapter <num> [--module <id>] [options]
 **Examples:**
 ```bash
 # Inject from MT output (default)
-node tools/cnxml-inject.js --chapter 5
+node tools/cnxml-inject.js --book efnafraedi-2e --chapter 5
 
 # Inject one reviewed module into the faithful track (the form the server runs;
 # a full-chapter faithful inject fails each unreviewed module by design)
-node tools/cnxml-inject.js --chapter 5 --module m68724 --source-dir 03-faithful-translation
+node tools/cnxml-inject.js --book efnafraedi-2e --chapter 5 --module m68724 --source-dir 03-faithful-translation
 
 # Inject from localized translations
-node tools/cnxml-inject.js --chapter 5 --source-dir 04-localized-content
+node tools/cnxml-inject.js --book efnafraedi-2e --chapter 5 --source-dir 04-localized-content
 
 # Specific module with verbose output
-node tools/cnxml-inject.js --chapter 5 --module m68724 --verbose
+node tools/cnxml-inject.js --book efnafraedi-2e --chapter 5 --module m68724 --verbose
 ```
 
 ---
@@ -106,11 +109,12 @@ node tools/cnxml-inject.js --chapter 5 --module m68724 --verbose
 Renders translated CNXML to semantic HTML with pre-rendered KaTeX equations and absolute image paths.
 
 ```bash
-node tools/cnxml-render.js --chapter <num> [--module <id>] [options]
+node tools/cnxml-render.js --book <book> --chapter <num> [--module <id>] [options]
 ```
 
 | Option | Description |
 |--------|-------------|
+| `--book <slug>` | Book slug, required (e.g., `efnafraedi-2e`) |
 | `--chapter <num>` | Chapter number |
 | `--module <id>` | Specific module ID (default: all in chapter) |
 | `--track <track>` | Publication track: `mt-preview`, `faithful` |
@@ -130,10 +134,10 @@ node tools/cnxml-render.js --chapter <num> [--module <id>] [options]
 **Examples:**
 ```bash
 # Render chapter 5 as faithful publication
-node tools/cnxml-render.js --chapter 5 --track faithful
+node tools/cnxml-render.js --book efnafraedi-2e --chapter 5 --track faithful
 
 # Render MT preview
-node tools/cnxml-render.js --chapter 5 --track mt-preview --verbose
+node tools/cnxml-render.js --book efnafraedi-2e --chapter 5 --track mt-preview --verbose
 ```
 
 ---
@@ -206,8 +210,6 @@ npm run validate
 | `init-faithful-review.js` | Bootstrapped `03-faithful-translation/`; modern workflow uses `applyApprovedEdits()` |
 | `compare-markers.js` | Debugging utility for `02-machine-translated/` (unused directory) |
 | `migrate-status-schema.js` | One-time migration; already run, no longer needed |
-
-**`tools/_archived/`** — 42 deprecated tools from the old markdown pipeline (`pipeline-runner.js`, `cnxml-to-md.js`, `chapter-assembler.js`, XLIFF tools, DOCX conversion tools).
 
 ---
 
