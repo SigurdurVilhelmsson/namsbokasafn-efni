@@ -23,32 +23,6 @@ const { VALID_BOOKS, BOOK_LABELS } = require('../config');
 const { MAX_CHAPTERS } = require('../constants');
 const { normalizeChapter } = require('../lib/chapterLabel');
 
-/**
- * Find the first .md file in a directory (or its first subdirectory).
- * Used for spot-checking file content before download.
- */
-function findFirstMdFile(dirPath, ext) {
-  if (!fs.existsSync(dirPath)) return null;
-  const entries = fs.readdirSync(dirPath);
-  // Check files in this directory first
-  for (const entry of entries) {
-    const fullPath = path.join(dirPath, entry);
-    if (fs.statSync(fullPath).isFile() && entry.endsWith(ext)) return fullPath;
-  }
-  // Check first subdirectory
-  for (const entry of entries) {
-    const fullPath = path.join(dirPath, entry);
-    if (fs.statSync(fullPath).isDirectory()) {
-      const sub = fs.readdirSync(fullPath);
-      for (const f of sub) {
-        const fPath = path.join(fullPath, f);
-        if (fs.statSync(fPath).isFile() && f.endsWith(ext)) return fPath;
-      }
-    }
-  }
-  return null;
-}
-
 // Validate :bookId param on all routes that use it
 router.param('bookId', (req, res, next, bookId) => {
   if (!VALID_BOOKS.includes(bookId)) {
@@ -280,23 +254,10 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
       zipName = `${bookId}-${type}.zip`;
     }
 
-    // For EN markdown downloads, verify files are protected for MT
-    if (type === 'en-md') {
-      const checkDir = chapterNum !== null ? path.join(sourceDir, chapterDirName) : sourceDir;
-      const sampleFile = findFirstMdFile(checkDir, config.ext);
-      if (sampleFile) {
-        const sample = fs.readFileSync(sampleFile, 'utf-8').slice(0, 2000);
-        const hasUnprotected = /<!--\s*SEG:/.test(sample);
-        const hasProtected = /\{\{SEG:/.test(sample);
-        if (hasUnprotected && !hasProtected) {
-          return res.status(409).json({
-            error: 'Skrár eru ekki verndaðar',
-            message:
-              'EN-skrár eru ekki verndaðar fyrir vélþýðingu. Verndarskref verður keyrt sjálfkrafa.',
-          });
-        }
-      }
-    }
+    // No content check on en-md. The route used to sample one `.md` file and
+    // refuse with 409 unless it carried the `{{SEG:` marker of the protect step.
+    // That step is archived and the segment files carry `<!-- SEG:`, so the
+    // download could only fail (register §C141 ①).
 
     res.setHeader('Content-Type', 'application/zip');
     res.setHeader('Content-Disposition', `attachment; filename="${zipName}"`);
