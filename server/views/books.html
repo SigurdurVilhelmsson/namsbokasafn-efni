@@ -2781,13 +2781,7 @@
       // ========================================================================
 
       function downloadBookMarkdown(slug) {
-        if (
-          !confirm(
-            'Þetta sækir EN markdown án þess að keyra verndarskref.\n\n' +
-              'Notaðu "↓ Sækja EN" hnappinn í kaflayfirlit til að tryggja rétta verndun.\n\n' +
-              'Halda áfram?'
-          )
-        ) {
+        if (!confirm('Þetta sækir allt EN markdown bókarinnar í einni ZIP-skrá.\n\nHalda áfram?')) {
           return;
         }
         window.location.href = '/api/books/' + slug + '/download?type=en-md';
