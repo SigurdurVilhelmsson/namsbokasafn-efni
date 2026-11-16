@@ -22,6 +22,7 @@ const { requireBookAccess } = require('../middleware/requireRole');
 const { VALID_BOOKS, BOOK_LABELS } = require('../config');
 const { MAX_CHAPTERS } = require('../constants');
 const { normalizeChapter } = require('../lib/chapterLabel');
+const { isSplitPart } = require('../services/splitFileUtils');
 
 // Validate :bookId param on all routes that use it
 router.param('bookId', (req, res, next, bookId) => {
@@ -256,8 +257,8 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
 
     // No content check on en-md. The route used to sample one `.md` file and
     // refuse with 409 unless it carried the `{{SEG:` marker of the protect step.
-    // That step is archived and the segment files carry `<!-- SEG:`, so the
-    // download could only fail (register §C141 ①).
+    // That step is archived and the current segment files carry `<!-- SEG:`, so
+    // the download could only fail (register §C141 ①).
 
     res.setHeader('Content-Type', 'application/zip');
     res.setHeader('Content-Disposition', `attachment; filename="${zipName}"`);
@@ -301,6 +302,13 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
 
     archive.pipe(res);
 
+    // The en-md download leaves out the legacy split parts (`…-segments(b).en.md`).
+    // They are leftovers of the archived protect step, still tracked beside the
+    // current segment files, and no live reader uses them (register §C225). Only
+    // en-md is filtered: what to do with the split files in `02-mt-output/` is
+    // undecided, so the is-md download still carries them.
+    const skipFile = (file) => type === 'en-md' && isSplitPart(file);
+
     // Helper function to add files matching the expected extension from a directory
     const addFilesFromDir = (dirPath, archivePath) => {
       if (!fs.existsSync(dirPath)) return;
@@ -308,7 +316,7 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
       for (const file of files) {
         const filePath = path.join(dirPath, file);
         const stat = fs.statSync(filePath);
-        if (stat.isFile() && file.endsWith(config.ext)) {
+        if (stat.isFile() && file.endsWith(config.ext) && !skipFile(file)) {
           archive.file(filePath, { name: path.join(archivePath, file) });
         }
       }
