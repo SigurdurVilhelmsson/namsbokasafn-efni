@@ -991,9 +991,11 @@ router.get('/:book/editorial-progress', requireAuth, (req, res) => {
       reviewLookup[r.module_id] = r;
     }
 
-    // 4. Get discuss edits for attention items
-    const discussEdits = segmentEditorService.getDiscussEdits(50);
-    const bookDiscussEdits = discussEdits.filter((e) => e.book === book);
+    // 4. Get this book's discuss edits for attention items: a book-scoped count
+    // and a book-scoped page. A page across every book, filtered here, dropped a
+    // book's edits once 50 newer ones existed elsewhere (register C15 b).
+    const discussEditCount = segmentEditorService.countBookDiscussEdits(book);
+    const bookDiscussEdits = segmentEditorService.getBookDiscussEdits(book, 10);
 
     // 5. Build per-chapter attention items and module status (separate from progress numbers)
     const chapterNums = segmentParser.listChapters(book);
@@ -1097,9 +1099,9 @@ router.get('/:book/editorial-progress', requireAuth, (req, res) => {
       },
       chapters: chapterProgress,
       attention: {
-        discussEdits: bookDiscussEdits.length,
+        discussEdits: discussEditCount,
         pendingReviews: pendingReviews.length,
-        items: bookDiscussEdits.slice(0, 10).map((e) => ({
+        items: bookDiscussEdits.map((e) => ({
           type: 'discuss',
           moduleId: e.module_id,
           chapter: e.chapter,
