@@ -970,12 +970,20 @@ router.get('/:book/editorial-progress', requireAuth, (req, res) => {
     // 1. Get centralized progress (distinct segment counts, not edit records)
     const progress = segmentEditorService.getEditorialProgress(book);
 
-    // 2. Get per-module edit stats for attention items and module status
-    const editsByModule = segmentEditorService.getBookEditsByModule(book);
-    const editLookup = {};
-    for (const row of editsByModule) {
-      editLookup[row.module_id] = row;
-    }
+    // 2. Get per-module edit stats for attention items and module status.
+    // Keyed by chapter, then module id: `chapter-metadata` is one module id in
+    // every chapter, and keyed by module id alone one chapter's row stood in
+    // for all of them (register §C209 residue). The same holds for the pending
+    // reviews below.
+    const byChapterAndModule = (rows) => {
+      const lookup = {};
+      for (const row of rows) {
+        if (!lookup[row.chapter]) lookup[row.chapter] = {};
+        lookup[row.chapter][row.module_id] = row;
+      }
+      return lookup;
+    };
+    const editLookup = byChapterAndModule(segmentEditorService.getBookEditsByModule(book));
 
     // item 20b final-review F3: per-module completion must use the same
     // reviewed = approved-edit ∪ active-acceptance UNION as the book-wide
@@ -986,10 +994,7 @@ router.get('/:book/editorial-progress', requireAuth, (req, res) => {
 
     // 3. Get pending reviews
     const pendingReviews = segmentEditorService.getPendingModuleReviews(book);
-    const reviewLookup = {};
-    for (const r of pendingReviews) {
-      reviewLookup[r.module_id] = r;
-    }
+    const reviewLookup = byChapterAndModule(pendingReviews);
 
     // 4. Get this book's discuss edits for attention items: a book-scoped count
     // and a book-scoped page. A page across every book, filtered here, dropped a
@@ -1018,8 +1023,8 @@ router.get('/:book/editorial-progress', requireAuth, (req, res) => {
 
       const moduleDetails = modules.map((mod) => {
         const segCount = segmentParser.countModuleSegments(book, chapterNum, mod.moduleId);
-        const edits = editLookup[mod.moduleId];
-        const review = reviewLookup[mod.moduleId];
+        const edits = editLookup[chapterNum]?.[mod.moduleId];
+        const review = reviewLookup[chapterNum]?.[mod.moduleId];
 
         const edited = edits ? edits.segments_edited : 0;
         const approved = edits ? edits.approved : 0;
@@ -1030,7 +1035,7 @@ router.get('/:book/editorial-progress', requireAuth, (req, res) => {
         // item 20b final-review F3: "reviewed" = approved-edit ∪ active-acceptance
         // (same UNION as getEditorialProgress), so per-module/per-chapter status
         // agrees with the book-wide summary. Was edits-only (approved >= segCount).
-        const reviewed = reviewedByModule[mod.moduleId] || 0;
+        const reviewed = reviewedByModule[chapterNum]?.[mod.moduleId] || 0;
         let status = 'not-started';
         if (reviewed >= segCount && segCount > 0) {
           status = 'complete';

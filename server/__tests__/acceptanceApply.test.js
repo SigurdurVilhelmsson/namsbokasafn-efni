@@ -337,7 +337,7 @@ describe('getReviewedSegmentsByModule (final-review F3 extraction)', () => {
     saveAndApprove('m00001:para:fs-id001', 'Yfirfarin efnisgrein.');
     accept('m00001:para:fs-id002', 'Önnur efnisgrein.');
     const byModule = service.getReviewedSegmentsByModule(BOOK);
-    expect(byModule[MODULE]).toBe(2);
+    expect(byModule[1][MODULE]).toBe(2);
   });
 
   it('dedupes an edit and an acceptance on the SAME segment to 1', () => {
@@ -348,14 +348,14 @@ describe('getReviewedSegmentsByModule (final-review F3 extraction)', () => {
        VALUES (?, 1, ?, 'm00001:para:fs-id001', 'Yfirfarin efnisgrein.', 'u1', 'editor1')`
     ).run(BOOK, MODULE);
     const byModule = service.getReviewedSegmentsByModule(BOOK);
-    expect(byModule[MODULE]).toBe(1);
+    expect(byModule[1][MODULE]).toBe(1);
   });
 
   it('an acceptance-only module counts via the UNION path (not edits-only)', () => {
     accept('m00001:para:fs-id001', 'Fyrsta efnisgrein.');
     accept('m00001:para:fs-id002', 'Önnur efnisgrein.');
     const byModule = service.getReviewedSegmentsByModule(BOOK);
-    expect(byModule[MODULE]).toBe(2);
+    expect(byModule[1][MODULE]).toBe(2);
   });
 });
 
