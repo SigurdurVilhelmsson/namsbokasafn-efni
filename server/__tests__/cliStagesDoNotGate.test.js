@@ -3,9 +3,11 @@
  * performs do not gate the stages the server records.
  *
  * `extraction`, `mtReady` and `mtOutput` are done by the CLI tools, and the CLI
- * reports nothing to the server. The server jobs that used to complete them
- * (`runExtract`, `runProtect`, `runUnprotect`) are started by no route. With
- * those three in the sequential chain, a chapter that was extracted and
+ * reports nothing to the server. The server job that can complete `extraction`
+ * (`runExtract`) is started by no route. The two that completed `mtReady` and
+ * `mtOutput` (`runProtect`, `runUnprotect`) were started by no route either,
+ * and have since been removed (register §C141 ②). With
+ * those three stages in the sequential chain, a chapter that was extracted and
  * translated from the command line has no `mtOutput` row, so `transitionStage`
  * refuses `linguisticReview`, and with it everything after.
  *
