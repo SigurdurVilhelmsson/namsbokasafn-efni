@@ -11,10 +11,10 @@ import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
 
-// REQUIRED, not insurance: pipelineStatusService resolves SESSIONS_DB_PATH at
-// require time, and runExtract's completion continuation (advanceChapterStatus
-// + resetChapterStage) WRITES chapter status when the fake spawn exits 0. Point
-// all of it at a throwaway migrated DB before the first require.
+// pipelineStatusService resolves SESSIONS_DB_PATH at require time. Point it at
+// a throwaway migrated DB before the first require, so nothing in this file can
+// reach the real one. The case that WROTE chapter status when the fake spawn
+// exited 0 was the extract job's; it was removed with the job (register §C226).
 const work = mkdtempSync(path.join(tmpdir(), 'pipe-spawn-'));
 process.env.SESSIONS_DB_PATH = path.join(work, 'sessions.db');
 
@@ -71,12 +71,6 @@ describe('spawn argv chapter dialect', () => {
 
   it('runRender emits --chapter appendices for -1', async () => {
     const { promise } = pipeline.runRender({ book: 'testbook', chapter: -1 });
-    await promise;
-    expect(chapterArgOf(spawnedCalls[0])).toBe('appendices');
-  });
-
-  it('runExtract emits --chapter appendices for -1', async () => {
-    const { promise } = pipeline.runExtract({ book: 'testbook', chapter: -1 });
     await promise;
     expect(chapterArgOf(spawnedCalls[0])).toBe('appendices');
   });

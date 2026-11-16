@@ -48,58 +48,6 @@ const TRACK_SOURCE_DIR = {
 };
 
 /**
- * Run cnxml-extract for a chapter/module.
- * Extracts EN segments + structure from CNXML source files.
- *
- * @param {Object} params
- * @param {string} params.book - Book slug
- * @param {number} params.chapter - Chapter number
- * @param {string} [params.moduleId] - Specific module (or all in chapter)
- * @param {string} [params.userId] - User who triggered the run
- * @returns {Object} { jobId, promise }
- */
-function runExtract({ book, chapter, moduleId, userId }) {
-  const args = [
-    path.join(TOOLS_DIR, 'cnxml-extract.js'),
-    '--book',
-    book,
-    '--chapter',
-    cliChapterArg(chapter),
-    '--verbose',
-  ];
-
-  if (moduleId) {
-    args.push('--module', moduleId);
-  }
-
-  const result = spawnJob({
-    type: 'extract',
-    book,
-    chapter,
-    moduleId,
-    track: null,
-    userId,
-    command: 'node',
-    args,
-  });
-
-  // Auto-advance status when extraction completes
-  result.promise.then(() => {
-    const job = jobs.get(result.jobId);
-    if (job && job.status === 'completed') {
-      const sourceHash = computeSourceHash(book, chapter);
-      advanceChapterStatus(book, chapter, 'extraction', sourceHash ? { sourceHash } : {});
-      // Reset mtReady: extraction rewrites 02-for-mt/, so a chapter prepared by
-      // the archived protect step is no longer prepared. No server job sets
-      // mtReady now; the protect job was removed (register §C141 ②).
-      resetChapterStage(book, chapter, 'mtReady');
-    }
-  });
-
-  return result;
-}
-
-/**
  * Run cnxml-inject for a chapter/module.
  *
  * @param {Object} params
@@ -509,42 +457,6 @@ function countApprovedEdits(book, moduleIds) {
 }
 
 /**
- * Compute a composite source hash for a chapter from its module manifests.
- * Used to record which source version was active when extraction ran.
- *
- * @param {string} book - Book slug
- * @param {number} chapter - Chapter number
- * @returns {string|null} 16-character hex hash, or null if no manifests found
- */
-function computeSourceHash(book, chapter) {
-  try {
-    const chapterStr = String(chapter).padStart(2, '0');
-    const structDir = path.join(BOOKS_DIR, book, '02-structure', `ch${chapterStr}`);
-    if (!fs.existsSync(structDir)) return null;
-
-    const manifestFiles = fs.readdirSync(structDir).filter((f) => f.endsWith('-manifest.json'));
-    const hashes = [];
-
-    for (const f of manifestFiles) {
-      const data = JSON.parse(fs.readFileSync(path.join(structDir, f), 'utf8'));
-      if (data.sourceHash) hashes.push(data.sourceHash);
-    }
-
-    if (hashes.length === 0) return null;
-
-    // Sort for deterministic output regardless of filesystem order
-    return crypto
-      .createHash('sha256')
-      .update(hashes.sort().join(','))
-      .digest('hex')
-      .substring(0, 16);
-  } catch (err) {
-    log.error({ err }, 'computeSourceHash failed');
-    return null;
-  }
-}
-
-/**
  * F2 provenance guard: does this book already have CNXML under 01-source/?
  * Used to refuse a server-triggered re-fetch over the irrevocable CC BY copies.
  *
@@ -653,31 +565,11 @@ function getStageStatus(book, chapter) {
 function advanceChapterStatus(book, chapter, stage, extra = {}) {
   try {
     const chapterNum = chapter === 'appendices' ? -1 : Number(chapter);
-    const notes =
-      extra.notes ||
-      (extra.track ? `track: ${extra.track}` : null) ||
-      (extra.sourceHash ? `sourceHash: ${extra.sourceHash}` : null);
+    const notes = extra.notes || (extra.track ? `track: ${extra.track}` : null);
 
     pipelineStatus.transitionStage(book, chapterNum, stage, 'complete', null, notes);
   } catch (err) {
     log.error({ err, chapter, stage }, 'Auto-advance status failed');
-  }
-}
-
-/**
- * Reset a chapter stage in status.json (delete the stage entry).
- * Used when an upstream stage re-runs and invalidates downstream state.
- *
- * @param {string} book - Book slug
- * @param {number|string} chapter - Chapter number or 'appendices'
- * @param {string} stage - Stage name to reset (e.g., 'mtReady')
- */
-function resetChapterStage(book, chapter, stage) {
-  try {
-    const chapterNum = chapter === 'appendices' ? -1 : Number(chapter);
-    pipelineStatus.transitionStage(book, chapterNum, stage, 'not_started');
-  } catch (err) {
-    log.error({ err, chapter, stage }, 'Reset stage failed');
   }
 }
 
@@ -860,7 +752,6 @@ function _jobsMap() {
 }
 
 module.exports = {
-  runExtract,
   runInject,
   runRender,
   runPipeline,
@@ -877,7 +768,6 @@ module.exports = {
   checkBookDownstreamWork,
   isSourcePopulated,
   countApprovedEdits,
-  computeSourceHash,
   TRACK_SOURCE_DIR,
   _jobsMap,
   _setTestSpawn,
