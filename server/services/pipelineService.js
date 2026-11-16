@@ -427,36 +427,6 @@ function checkExtractionImpact(book, chapter) {
 }
 
 /**
- * Count approved edits in the database for the given book and module IDs.
- * Best-effort — returns 0 if the DB or table doesn't exist.
- *
- * @param {string} book - Book slug
- * @param {string[]} moduleIds - Module IDs to check
- * @returns {number} Count of approved edits
- */
-function countApprovedEdits(book, moduleIds) {
-  if (!moduleIds || moduleIds.length === 0) return 0;
-
-  try {
-    const Database = require('better-sqlite3');
-    const dbPath = require('../lib/dbPath')();
-    const db = new Database(dbPath, { readonly: true });
-    const placeholders = moduleIds.map(() => '?').join(',');
-    const row = db
-      .prepare(
-        `SELECT COUNT(*) as count FROM segment_edits
-         WHERE book = ? AND module_id IN (${placeholders}) AND status = 'approved'`
-      )
-      .get(book, ...moduleIds);
-    db.close();
-    return row ? row.count : 0;
-  } catch {
-    // segment_edits table may not exist yet, or DB not available
-    return 0;
-  }
-}
-
-/**
  * F2 provenance guard: does this book already have CNXML under 01-source/?
  * Used to refuse a server-triggered re-fetch over the irrevocable CC BY copies.
  *
@@ -767,7 +737,6 @@ module.exports = {
   checkExtractionImpact,
   checkBookDownstreamWork,
   isSourcePopulated,
-  countApprovedEdits,
   TRACK_SOURCE_DIR,
   _jobsMap,
   _setTestSpawn,
