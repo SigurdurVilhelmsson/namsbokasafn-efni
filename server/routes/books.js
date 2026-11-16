@@ -332,8 +332,12 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
       for (const entry of entries) {
         const entryPath = path.join(sourceDir, entry);
         const stat = fs.statSync(entryPath);
-        // Match both ch-prefixed dirs (ch01) and bare number dirs (01)
-        if (stat.isDirectory() && (entry.startsWith('ch') || /^\d{2}$/.test(entry))) {
+        // Match ch-prefixed dirs (ch01), bare number dirs (01) and the appendices
+        // dir, which has the same name in both conventions. It was left out, so
+        // a whole-book download had every chapter and no appendices.
+        const isChapterDir =
+          entry.startsWith('ch') || /^\d{2}$/.test(entry) || entry === 'appendices';
+        if (stat.isDirectory() && isChapterDir) {
           addFilesFromDir(entryPath, entry);
         }
       }
