@@ -15,6 +15,12 @@
  * after it: outside the service and that one test file, no code line names any
  * of the three. Its control shows the scan can see a caller, by finding the
  * callers of `runInject`, a job that is in use.
+ *
+ * The last block is a second removal under the same register entry:
+ * `countApprovedEdits`. It had no caller at all, in code or in tests; its
+ * definition and its export line were its only mentions. Two cases are red
+ * before the removal. The third holds before and after it, and the scan's
+ * control above applies to it too.
  */
 import { readFileSync, readdirSync } from 'fs';
 import path from 'path';
@@ -158,5 +164,19 @@ describe('nothing else calls them', () => {
 
   it('control: the service still exports the jobs that are in use', () => {
     expect(typeof pipelineService.runInject).toBe('function');
+  });
+});
+
+describe('pipelineService carries no countApprovedEdits (§C226)', () => {
+  it('does not export countApprovedEdits', () => {
+    expect(pipelineService).not.toHaveProperty('countApprovedEdits');
+  });
+
+  it('does not define countApprovedEdits', () => {
+    expect(serviceSource).not.toContain('countApprovedEdits');
+  });
+
+  it('nothing calls it: no code line outside the service names it', () => {
+    expect(filesNaming(/\bcountApprovedEdits\b/)).toEqual([]);
   });
 });
