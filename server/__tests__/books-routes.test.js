@@ -191,8 +191,8 @@ describe('GET /:bookId/chapters/:chapter — appendices (disk-sourced)', () => {
  * mocks res as a real Writable (PassThrough) so `archive.pipe(res)` works,
  * and settles the test as soon as the load-bearing `Content-Disposition`
  * header is set — that header is only reached once every early-return guard
- * (invalid type/book/chapter, missing source dir, missing chapter dir, the
- * en-md unprotected-segment check) has been passed, so observing it proves
+ * (invalid type/book/chapter, missing source dir, missing chapter dir) has
+ * been passed, so observing it proves
  * the chapter resolved to a real on-disk directory. We don't wait for the
  * archive to finish zipping; a `data` listener drains bytes so archiver
  * never backpressure-hangs on a large real file.
@@ -201,9 +201,9 @@ describe('GET /:bookId/chapters/:chapter — appendices (disk-sourced)', () => {
  * which already has content under both `02-for-mt/appendices/` and
  * `05-publication/mt-preview/chapters/{appendices,01}` — no fixture
  * directories needed. `pub-mt-preview` is used for the success-path
- * assertions specifically to sidestep the (unrelated) en-md
- * unprotected-segment 409 gate that appendices' real en-md content would
- * otherwise trip.
+ * assertions. It was chosen when an en-md request was always refused with
+ * 409 by a content check; #707 removed that check (register §C141 ①), and
+ * the en-md download has its own tests in booksDownloadEnMd.test.js.
  */
 describe('GET /:bookId/download — appendices (C1c task 1)', () => {
   const router = require('../routes/books');

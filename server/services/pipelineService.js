@@ -89,92 +89,10 @@ function runExtract({ book, chapter, moduleId, userId }) {
     if (job && job.status === 'completed') {
       const sourceHash = computeSourceHash(book, chapter);
       advanceChapterStatus(book, chapter, 'extraction', sourceHash ? { sourceHash } : {});
-      // Reset mtReady — extraction overwrites protected files in 02-for-mt/
+      // Reset mtReady: extraction rewrites 02-for-mt/, so a chapter prepared by
+      // the archived protect step is no longer prepared. No server job sets
+      // mtReady now; the protect job was removed (register §C141 ②).
       resetChapterStage(book, chapter, 'mtReady');
-    }
-  });
-
-  return result;
-}
-
-/**
- * Run protect-segments-for-mt for a chapter.
- * Protects EN segments for machine translation (handles placeholders, splits large files).
- *
- * @param {Object} params
- * @param {string} params.book - Book slug
- * @param {number} params.chapter - Chapter number
- * @param {string} [params.userId] - User who triggered the run
- * @returns {Object} { jobId, promise }
- */
-function runProtect({ book, chapter, userId }) {
-  const chapterStr = String(chapter).padStart(2, '0');
-  const batchDir = path.join(BOOKS_DIR, book, '02-for-mt', `ch${chapterStr}`);
-
-  if (!fs.existsSync(batchDir)) {
-    throw new Error(`EN segments directory not found: 02-for-mt/ch${chapterStr}`);
-  }
-
-  const args = [path.join(TOOLS_DIR, 'protect-segments-for-mt.js'), '--batch', batchDir];
-
-  const result = spawnJob({
-    type: 'protect',
-    book,
-    chapter,
-    moduleId: undefined,
-    track: null,
-    userId,
-    command: 'node',
-    args,
-  });
-
-  // Auto-advance status when protection completes
-  result.promise.then(() => {
-    const job = jobs.get(result.jobId);
-    if (job && job.status === 'completed') {
-      advanceChapterStatus(book, chapter, 'mtReady');
-    }
-  });
-
-  return result;
-}
-
-/**
- * Run unprotect-segments for a chapter.
- * Removes MT protection markers from translated segments in 02-mt-output.
- *
- * @param {Object} params
- * @param {string} params.book - Book slug
- * @param {number} params.chapter - Chapter number
- * @param {string} [params.userId] - User who triggered the run
- * @returns {Object} { jobId, promise }
- */
-function runUnprotect({ book, chapter, userId }) {
-  const chapterStr = String(chapter).padStart(2, '0');
-  const batchDir = path.join(BOOKS_DIR, book, '02-mt-output', `ch${chapterStr}`);
-
-  if (!fs.existsSync(batchDir)) {
-    throw new Error(`MT output directory not found: 02-mt-output/ch${chapterStr}`);
-  }
-
-  const args = [path.join(TOOLS_DIR, 'unprotect-segments.js'), '--batch', batchDir, '--verbose'];
-
-  const result = spawnJob({
-    type: 'unprotect',
-    book,
-    chapter,
-    moduleId: undefined,
-    track: null,
-    userId,
-    command: 'node',
-    args,
-  });
-
-  // Auto-advance status when unprotect completes
-  result.promise.then(() => {
-    const job = jobs.get(result.jobId);
-    if (job && job.status === 'completed') {
-      advanceChapterStatus(book, chapter, 'mtOutput');
     }
   });
 
@@ -943,8 +861,6 @@ function _jobsMap() {
 
 module.exports = {
   runExtract,
-  runProtect,
-  runUnprotect,
   runInject,
   runRender,
   runPipeline,
