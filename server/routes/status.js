@@ -45,7 +45,7 @@ const PROJECT_ROOT = path.join(__dirname, '..', '..');
 /**
  * Read chapter status from the authoritative DB source via pipelineStatusService.
  * Returns data in the same shape as status.json: { status: { stage: { complete: bool } } }
- * so that formatChapterStatus() and suggestNextActions() work unchanged.
+ * so that formatChapterStatus() works unchanged.
  *
  * Falls back to status.json on DB error (e.g. table not yet created).
  */
@@ -1298,13 +1298,15 @@ router.get('/:book/:chapter', requireAuth, (req, res) => {
       }
     }
 
+    const formatted = formatChapterStatus(statusData);
+
     res.json({
       book,
       chapter: chapterNum,
       chapterDir,
-      ...formatChapterStatus(statusData),
+      ...formatted,
       files: filesData,
-      actions: suggestNextActions(statusData, book),
+      actions: suggestNextActions(formatted.nextStage, book, chapterNum),
     });
   } catch (err) {
     res.status(500).json({
@@ -1630,66 +1632,57 @@ function calculateSummary(chapters) {
 }
 
 /**
- * Suggest next actions based on current status.
- * Uses canonical stage names from the 8-step pipeline.
+ * The action for each stage `formatChapterStatus` can name as `nextStage`, as a
+ * function of the book and the canonical chapter number.
+ *
+ * There is no entry for the stages nothing on the server performs
+ * (constants.STAGES_NOT_PERFORMED_BY_SERVER): `nextStage` never names one. The
+ * old entries for them named a CLI call that exits 1, the archived protect tool
+ * and a manual upload (register §C224, §C141 ③).
+ *
+ * Every command names something that exists: the segment editor page
+ * (`routes/views.js`) and the three publication routes (`routes/publication.js`).
+ * actionsFollowNextStage.test.js checks them against those routers.
  */
-function suggestNextActions(statusData, book) {
-  const rawStatus = statusData.status || {};
-  const actions = [];
+const NEXT_STAGE_ACTIONS = {
+  linguisticReview: (book, chapter) => ({
+    action: 'Linguistic review (Pass 1) in segment editor',
+    command: `/editor?book=${book}&chapter=${chapter}`,
+  }),
+  injection: () => ({
+    action: 'Inject translations into CNXML',
+    command: 'Pipeline API: POST /api/pipeline/inject',
+  }),
+  rendering: () => ({
+    action: 'Render CNXML to HTML',
+    command: 'Pipeline API: POST /api/pipeline/render',
+  }),
+  publication: (book, chapter) => ({
+    action: 'Publish to web',
+    commands: ['mt-preview', 'faithful', 'localized'].map(
+      (track) => `Publication API: POST /api/publication/${book}/${chapter}/${track}`
+    ),
+  }),
+};
 
-  // Helper: is a stage complete?
-  const isComplete = (stage) => rawStatus[stage]?.complete === true;
-
-  if (!isComplete('extraction')) {
-    actions.push({
-      stage: 'extraction',
-      action: 'Extract EN segments from CNXML',
-      command: 'node tools/cnxml-extract.js --chapter N',
-    });
-  } else if (!isComplete('mtReady')) {
-    actions.push({
-      stage: 'mtReady',
-      action: 'Protect segments for MT',
-      command: `node tools/protect-segments-for-mt.js --batch books/${book}/02-for-mt/chNN/`,
-    });
-  } else if (!isComplete('mtOutput')) {
-    actions.push({
-      stage: 'mtOutput',
-      action: 'Run through malstadur.is MT',
-      manual: true,
-      instructions: 'Upload segments to malstadur.is and download IS output',
-    });
-  } else if (!isComplete('linguisticReview')) {
-    actions.push({
-      stage: 'linguisticReview',
-      action: 'Linguistic review (Pass 1) in segment editor',
-      command: '/review-chapter',
-    });
-    // No `tmCreated` branch: the stage is non-sequential (see
-    // constants.NON_SEQUENTIAL_STAGES) and nothing advances it, so this chain
-    // would have parked here forever telling editors to run Matecat Align — a
-    // tool this pipeline retired. TM regeneration is automatic (`tmService`).
-  } else if (!isComplete('injection')) {
-    actions.push({
-      stage: 'injection',
-      action: 'Inject translations into CNXML',
-      command: 'Pipeline API: POST /api/pipeline/inject',
-    });
-  } else if (!isComplete('rendering')) {
-    actions.push({
-      stage: 'rendering',
-      action: 'Render CNXML to HTML',
-      command: 'Pipeline API: POST /api/pipeline/render',
-    });
-  } else if (!isComplete('publication')) {
-    actions.push({
-      stage: 'publication',
-      action: 'Publish to web',
-      command: 'Publication API: POST /api/publication/:book/:chapter/:track',
-    });
-  }
-
-  return actions;
+/**
+ * Suggest the action for the next stage.
+ *
+ * Takes the `nextStage` that `formatChapterStatus` computed, so the two answers
+ * in one response cannot disagree. It used to re-derive the stage with its own
+ * chain over every stage, which named CLI-side steps while `nextStage` named the
+ * review, and kept saying "Publish to web" after every track was published.
+ *
+ * @param {string|null} nextStage
+ * @param {string} book - validated book slug
+ * @param {number} chapter - canonical chapter number (-1 for the appendices)
+ * @returns {Array<{stage: string, action: string, command?: string, commands?: string[]}>}
+ *   one action, or none when nothing is next. The publication action carries
+ *   `commands` (one route per track); the others carry `command`.
+ */
+function suggestNextActions(nextStage, book, chapter) {
+  const build = NEXT_STAGE_ACTIONS[nextStage];
+  return build ? [{ stage: nextStage, ...build(book, chapter) }] : [];
 }
 
 // ============================================================================
