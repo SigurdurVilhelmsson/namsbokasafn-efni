@@ -1627,6 +1627,43 @@ function countDiscussEdits() {
 }
 
 /**
+ * Get one book's edits marked for discussion, newest first.
+ *
+ * A separate function on purpose (register C15 b): the editorial-progress route
+ * used to take `getDiscussEdits(50)`, a page across every book, and filter it to
+ * one book, so a book's edits vanished from its own view once 50 newer ones
+ * existed elsewhere. A page of all books is not one book's set.
+ *
+ * @param {string} book - Book slug
+ * @param {number} [limit=10]
+ * @returns {Array<{book: string, chapter: number, module_id: string, segment_id: string, editor_username: string, editor_note: string|null}>}
+ */
+function getBookDiscussEdits(book, limit = 10) {
+  const conn = getDb();
+  return conn
+    .prepare(
+      `SELECT book, chapter, module_id, segment_id, editor_username, editor_note
+      FROM segment_edits WHERE status = 'discuss' AND book = ?
+      ORDER BY created_at DESC LIMIT ?`
+    )
+    .all(book, Math.min(limit, 200));
+}
+
+/**
+ * Count one book's edits marked for discussion. A count, not the length of a
+ * page (cf. `countDiscussEdits`).
+ *
+ * @param {string} book - Book slug
+ * @returns {number}
+ */
+function countBookDiscussEdits(book) {
+  const conn = getDb();
+  return conn
+    .prepare(`SELECT COUNT(*) AS n FROM segment_edits WHERE status = 'discuss' AND book = ?`)
+    .get(book).n;
+}
+
+/**
  * Get per-module edit aggregation for a specific book, grouped by chapter.
  * Single DB query returns edit counts for every module that has any edits.
  *
@@ -1841,6 +1878,8 @@ module.exports = {
   getModuleStats,
   getGlobalEditStats,
   getDiscussEdits,
+  getBookDiscussEdits,
+  countBookDiscussEdits,
   countDiscussEdits,
   // Review queue
   getReviewQueue,
