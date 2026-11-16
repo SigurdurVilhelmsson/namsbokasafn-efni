@@ -128,13 +128,10 @@ describe('the two status read models agree on non-sequential stages (C10-R2)', (
     expect(body.progress).toBe(100);
     expect(body.nextStage).toBeNull();
     expect(body.actions.map((a) => a.stage)).not.toContain('tmCreated');
-    // NB: `actions` still carries a 'publication' entry here. That is a
-    // SEPARATE pre-existing defect, not this change: `suggestNextActions` tests
-    // `rawStatus.publication?.complete`, but `getStatusDataFromDb` only ever
-    // builds `publication.{mtPreview,faithful,localized}.complete` — there is no
-    // top-level flag, so that branch can never be satisfied. `formatChapterStatus`
-    // gets it right (it ANDs the three sub-tracks), which is why `progress` and
-    // `nextStage` above are correct. Logged in the campaign register.
+    // `actions` follows `nextStage`, so nothing is suggested here. It used to
+    // carry a 'publication' entry: `suggestNextActions` tested a top-level
+    // `publication.complete` flag that `getStatusDataFromDb` never builds.
+    expect(body.actions).toEqual([]);
   });
 
   it('still REPORTS the non-sequential stage in the stages list', async () => {
