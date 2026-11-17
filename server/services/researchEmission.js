@@ -738,15 +738,23 @@ function emitComment(req, { edit, comment }) {
   );
 }
 
-/** `module-submit`: no segment; the ids the submit stamped are the detail. Never throws. */
-function emitSubmit(req, { reviewId, stampedEditIds }) {
+/**
+ * `module-submit`: an editor marked the unit finished ("Merkja sem lokið", register §C222). No segment; the unit's
+ * open edit ids at that moment (segmentEditorService.openEditIds) are the detail. Written at every press. Never
+ * throws.
+ *
+ * @param {object} req
+ * @param {{openEditIds: number[]}} act
+ * @returns {void}
+ */
+function emitSubmit(req, { openEditIds }) {
   emit(
     () => headFor(req, 'module-submit', placeOf(req)),
     () => ({
       ...NONE,
       content: null,
       before: null,
-      detail: { reviewId, stampedEditIds },
+      detail: { openEditIds },
     })
   );
 }

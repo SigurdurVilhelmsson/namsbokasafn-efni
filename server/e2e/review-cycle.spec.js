@@ -6,9 +6,11 @@ const { loginAs } = require('./helpers/auth');
  * Full Pass 1 review cycle E2E test.
  *
  * Exercises the complete workflow:
- *   editor saves edit → submits for review →
- *   head-editor sees it in queue → approves → completes review →
- *   edits are auto-applied → content is updated
+ *   editor saves edit → marks the unit done →
+ *   head-editor approves → applies →
+ *   content is updated
+ * (Until 2026-11-17 the second step was "submits for review" and the head editor completed a review that
+ * auto-applied; register §C222 replaced both. See the note above the "marks the unit done" test.)
  *
  * Uses admin role for both actors (with different user IDs) to bypass
  * book-access checks and model an editor vs a reviewer. (Self-approval is now
@@ -34,7 +36,6 @@ test.describe.serial('§0.reg Pass 1 review cycle', () => {
   let originalContent;
   let editedContent;
   let editId;
-  let reviewId;
   let restoredVersion;
   let snapshotVersion;
 
@@ -84,38 +85,17 @@ test.describe.serial('§0.reg Pass 1 review cycle', () => {
     editId = editData.editId;
   });
 
-  test('editor submits module for review', async ({ page }) => {
+  // 2026-11-17 (register §C222): "Senda til yfirlestrar" became "Merkja sem lokið". It opens no review, and an edit
+  // is reviewable once saved (interface audit answer 11), so the cycle no longer goes through the review queue or
+  // POST /reviews/:id/complete, which no screen calls. The head editor's apply is the step that writes the file.
+  test('editor marks the unit done', async ({ page }) => {
     await loginAs(page, 'admin', EDITOR_ID);
 
-    const res = await page.request.post(`${API}/${BOOK}/${CHAPTER}/${MODULE}/submit`);
+    const res = await page.request.post(`${API}/${BOOK}/${CHAPTER}/${MODULE}/done`);
     const data = await res.json();
-
-    if (res.status() === 409) {
-      // Stale review from a prior run — find it in the queue
-      const queueRes = await page.request.get(`${API}/review-queue?book=${BOOK}`);
-      const queueData = await queueRes.json();
-      const existing = queueData.reviews.find((r) => r.module_id === MODULE);
-      expect(existing, 'Expected existing review in queue after 409').toBeTruthy();
-      reviewId = existing.id;
-    } else {
-      expect(res.ok(), `Submit failed (${res.status()}): ${JSON.stringify(data)}`).toBe(true);
-      expect(data.success).toBe(true);
-      expect(data.reviewId).toBeTruthy();
-      reviewId = data.reviewId;
-    }
-  });
-
-  test('reviewer sees module in review queue', async ({ page }) => {
-    await loginAs(page, 'admin', REVIEWER_ID);
-
-    const res = await page.request.get(`${API}/review-queue?book=${BOOK}`);
-    expect(res.ok()).toBe(true);
-
-    const data = await res.json();
-    expect(data.reviews.length).toBeGreaterThan(0);
-
-    const match = data.reviews.find((r) => r.module_id === MODULE);
-    expect(match).toBeTruthy();
+    expect(res.ok(), `Done failed (${res.status()}): ${JSON.stringify(data)}`).toBe(true);
+    expect(data.success).toBe(true);
+    expect(typeof data.doneAt).toBe('string');
   });
 
   test('reviewer approves the edit', async ({ page }) => {
@@ -129,16 +109,14 @@ test.describe.serial('§0.reg Pass 1 review cycle', () => {
     expect(data.success).toBe(true);
   });
 
-  test('reviewer completes the review — edits are auto-applied', async ({ page }) => {
+  test('reviewer applies the approved edits', async ({ page }) => {
     await loginAs(page, 'admin', REVIEWER_ID);
 
-    const res = await page.request.post(`${API}/reviews/${reviewId}/complete`);
+    const res = await page.request.post(`${API}/${BOOK}/${CHAPTER}/${MODULE}/apply`);
     const data = await res.json();
-    expect(res.ok(), `Complete failed (${res.status()}): ${JSON.stringify(data)}`).toBe(true);
+    expect(res.ok(), `Apply failed (${res.status()}): ${JSON.stringify(data)}`).toBe(true);
     expect(data.success).toBe(true);
-    expect(data.status).toBe('approved');
-    expect(data.applied).toBeTruthy();
-    expect(data.applied.appliedCount).toBeGreaterThan(0);
+    expect(data.appliedCount).toBeGreaterThan(0);
   });
 
   test('edited content appears in reloaded module', async ({ page }) => {
@@ -259,6 +237,9 @@ test.describe.serial('§0.reg Pass 1 review cycle', () => {
  * parallel), turning the review above into 'changes_requested'. Measured: that is
  * exactly what happened when this block was a separate file. Inside this file it
  * runs after the cycle, and its last test withdraws the edit so none lingers.
+ * ✏️ 2026-11-17 (register §C222): the cycle above no longer submits, and "Merkja sem lokið" stamps nothing, so
+ * that collision cannot happen any more. The block stays here; keeping one module's edits in one file is still
+ * the simpler arrangement.
  *
  * The LAST segment with Icelandic text is used (the cycle above edits the first).
  * Persistence is checked twice: the API returns the reply, and a fresh page load
@@ -381,8 +362,8 @@ test.describe.serial('§C210 reply thread on a "Ræða" note', () => {
 
   test('an edit with a thread cannot be deleted; cleanup rejects it instead', async ({ page }) => {
     // [USER] 2026-11-08: an edit that carries a discussion thread is never deleted, so
-    // no discussion text is lost. A module submit claims every open edit in the module,
-    // so the edit is rejected rather than left pending for the next review of m68663.
+    // no discussion text is lost. The edit is rejected rather than left pending in m68663.
+    // (Until 2026-11-17 a module submit claimed every open edit, which was the reason given here; §C222.)
     await loginAs(page, 'admin', REVIEWER_ID);
     const back = await page.request.post(`${API}/edit/${editId}/return-to-pending`);
     expect(back.ok(), await back.text()).toBe(true);

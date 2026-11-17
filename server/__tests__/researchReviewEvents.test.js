@@ -1,6 +1,7 @@
 /**
- * The review routes, delete, revoke, comment and submit record their research events (G1.2 PR3 Task 23; spec
- * §5.9, §5.18; plan decisions 44, 52, 53, 57, 58; Review Focus 24, 25, 35).
+ * The review routes, delete, revoke, comment and "Merkja sem lokið" record their research events (G1.2 PR3 Task 23;
+ * spec §5.9, §5.18; plan decisions 44, 52, 53, 57, 58; Review Focus 24, 25, 35). The submit route was replaced by
+ * …/done on 2026-11-17 (register §C222); its event is still `module-submit`.
  *
  * Drives the real handlers on a real migrated database (SESSIONS_DB_PATH in a temp dir, so the research file
  * derives into it too) over a synthetic module under a temp books root: nothing under books/ or pipeline-output/
@@ -80,7 +81,7 @@ beforeAll(() => {
     get: handlerFor(router, 'get', '/:book/:chapter/:moduleId'),
     save: handlerFor(router, 'post', '/:book/:chapter/:moduleId/edit'),
     accept: handlerFor(router, 'post', '/:book/:chapter/:moduleId/accept'),
-    submit: handlerFor(router, 'post', '/:book/:chapter/:moduleId/submit'),
+    done: handlerFor(router, 'post', '/:book/:chapter/:moduleId/done'),
     approve: handlerFor(router, 'post', '/edit/:editId/approve'),
     reject: handlerFor(router, 'post', '/edit/:editId/reject'),
     discuss: handlerFor(router, 'post', '/edit/:editId/discuss'),
@@ -320,11 +321,11 @@ describe('the review routes record their research events (spec §5.9, §5.18)', 
     expect(ev[0].replayed).toBe(0n);
   });
 
-  it('submit: the edit ids it stamped', async () => {
+  it('done: the open edit ids', async () => {
     const mark = eventMark();
-    const r = await call(h.submit, { params: PARAMS, chapterNum: 1, user: A, body: {} });
+    const r = await call(h.done, { params: PARAMS, chapterNum: 1, user: A, body: {} });
     expect(r.status).toBe(200);
-    expect(Object.keys(r.body).sort()).toEqual(['editedSegments', 'reviewId', 'success']);
+    expect(Object.keys(r.body).sort()).toEqual(['doneAt', 'success']);
     const ev = eventsSince(mark);
     expect(ev).toHaveLength(1);
     expect(ev[0]).toMatchObject({
@@ -333,12 +334,16 @@ describe('the review routes record their research events (spec §5.9, §5.18)', 
       served_version_id: null,
       editing_kind: null,
     });
-    const stamped = db
-      .prepare('SELECT id FROM segment_edits WHERE review_id = ? ORDER BY id')
-      .all(r.body.reviewId)
+    const open = db
+      .prepare(
+        `SELECT id FROM segment_edits WHERE book = ? AND chapter = 1 AND module_id = ?
+           AND (status IN ('pending', 'discuss') OR (status = 'approved' AND applied_at IS NULL))
+         ORDER BY id`
+      )
+      .all(CHEM, M)
       .map((x) => x.id);
-    expect(stamped.length).toBeGreaterThan(0);
-    expect(ev[0].detail).toEqual({ reviewId: r.body.reviewId, stampedEditIds: stamped });
+    expect(open.length).toBeGreaterThan(0);
+    expect(ev[0].detail).toEqual({ openEditIds: open });
   });
 
   it('the responses never carry before (decision 44)', () => {
