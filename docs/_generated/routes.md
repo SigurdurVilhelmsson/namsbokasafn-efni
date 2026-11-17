@@ -220,7 +220,7 @@
 | POST | `/:book/:chapter/:moduleId/accept` |
 | POST | `/acceptance/:id/revoke` |
 | DELETE | `/edit/:editId` |
-| POST | `/:book/:chapter/:moduleId/submit` |
+| POST | `/:book/:chapter/:moduleId/done` |
 | GET | `/reviews` |
 | GET | `/review-list` |
 | GET | `/review-queue` |
