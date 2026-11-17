@@ -395,7 +395,12 @@ function tally({ prescreen, verdicts }, kind) {
   const ids = prescreen.items.filter((i) => i.kind === kind).map((i) => i.id);
   const judged = ids.filter((id) => verdicts.has(id));
   const flagged = judged.filter((id) => verdicts.get(id).verdict === 'flag').length;
-  return { total: ids.length, flagged, unjudged: ids.length - judged.length };
+  return {
+    total: ids.length,
+    judged: judged.length,
+    flagged,
+    unjudged: ids.length - judged.length,
+  };
 }
 
 function printLedger(ctx) {
@@ -581,17 +586,20 @@ function judgePilot(ctx, read) {
   ctx.out(
     `gate: ${gate.pass ? 'PASS' : 'FAIL'} (${passed} of ${gate.results.length} controls as expected)\n`
   );
+  // A rate is over the rows that have a verdict: an unjudged row is neither fine nor flagged.
   const rate = (t) =>
-    t.total ? `flagged ${t.flagged} of ${t.total} (${pct(t.flagged, t.total)})` : 'none';
+    t.judged
+      ? `flagged ${t.flagged} of ${t.judged} (${pct(t.flagged, t.judged)}) judged rows`
+      : 'no judged rows';
   const chem = tally(read, 'population');
   const pb = tally(read, 'physicsBiology');
   ctx.out(
-    `chemistry rows: ${rate(chem)}, ${chem.unjudged} unjudged; stop line ` +
+    `chemistry rows: ${rate(chem)}, ${chem.unjudged} of ${chem.total} unjudged; stop line ` +
       `${PILOT_FLAG_STOP * 100}%\n`
   );
   ctx.out(
-    `physics and biology rows: ${rate(pb)}, ${pb.unjudged} unjudged; for the scope decision ` +
-      '(spec §2), not gated\n'
+    `physics and biology rows: ${rate(pb)}, ${pb.unjudged} of ${pb.total} unjudged; for the ` +
+      'scope decision (spec §2), not gated\n'
   );
   if (read.dropped.length || Object.keys(read.problems).length) {
     ctx.out(
@@ -614,9 +622,9 @@ function judgePilot(ctx, read) {
   if (!gate.pass) stops.push('the control gate failed (FAIL rows above, with the model’s reasons)');
   if (chem.unjudged > 0) stops.push(`${chem.unjudged} chemistry rows have no verdict`);
   if (chem.total === 0) stops.push('the pilot holds no chemistry rows');
-  else if (chem.flagged / chem.total > PILOT_FLAG_STOP)
+  else if (chem.judged > 0 && chem.flagged / chem.judged > PILOT_FLAG_STOP)
     stops.push(
-      `the chemistry flag rate ${pct(chem.flagged, chem.total)} is over ${PILOT_FLAG_STOP * 100}%`
+      `the chemistry flag rate ${pct(chem.flagged, chem.judged)} is over ${PILOT_FLAG_STOP * 100}%`
     );
   return stops;
 }

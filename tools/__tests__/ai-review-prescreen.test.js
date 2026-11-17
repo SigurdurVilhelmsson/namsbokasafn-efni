@@ -8,6 +8,7 @@
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import fs from 'node:fs';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import {
   main,
@@ -577,6 +578,45 @@ describe('pilot', () => {
 
   it('an unjudged chemistry row exits 2 and is counted', async () => {
     const { r, text } = await pilot(answerer({ omit: new Set([picked[0]]) }));
-    expect([r.exitCode, /^chemistry rows: .*1 unjudged/m.test(text())]).toEqual([2, true]);
+    expect([
+      r.exitCode,
+      /^chemistry rows: flagged 0 of 23 \(0\.0%\) judged rows, 1 of 24 unjudged/m.test(text()),
+    ]).toEqual([2, true]);
+  });
+
+  it('the physics and biology rate is over judged rows, and an unjudged one does not stop', async () => {
+    const answer = answerer({ flag: new Set(pbPicked.slice(1, 7)), omit: new Set([pbPicked[0]]) });
+    const { r, text } = await pilot(answer);
+    expect([
+      r.exitCode,
+      /^physics and biology rows: flagged 6 of 14 \(42\.9%\) judged rows, 1 of 15 unjudged/m.test(
+        text()
+      ),
+    ]).toEqual([0, true]);
+  });
+
+  it('seeds by the census: both models get the same items and requests (spec §6)', async () => {
+    const record = async (model) => {
+      const h = harnessDeps(fx, { transport: mockTransport({ answer: passing() }) });
+      const r = await main(['pilot', '--census', CENSUS_REL, '--model', model, '--yes'], h.deps);
+      const file = path.join(h.deps.recordsDir, 'runs', r.runId, PRESCREEN_RECORD);
+      return JSON.parse(fs.readFileSync(file, 'utf8'));
+    };
+    const [fable, opus] = [await record('claude-fable-5-2'), await record('claude-opus-5-5')];
+    const committed = crypto
+      .createHash('sha256')
+      .update(fs.readFileSync(path.join(fx.root, CENSUS_REL)))
+      .digest('hex');
+    expect({
+      models: [fable.model, opus.model],
+      sameItems: JSON.stringify(fable.items) === JSON.stringify(opus.items),
+      sameRequests: JSON.stringify(fable.requests) === JSON.stringify(opus.requests),
+      census: [fable.census.sha256, opus.census.sha256],
+    }).toEqual({
+      models: ['claude-fable-5-2', 'claude-opus-5-5'],
+      sameItems: true,
+      sameRequests: true,
+      census: [committed, committed],
+    });
   });
 });
