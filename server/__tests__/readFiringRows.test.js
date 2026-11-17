@@ -68,6 +68,17 @@ function runCli(dbPath, booksDir) {
   });
 }
 
+/** The production way: `node - <book>` from server/scripts, the source on stdin. */
+function runCliStdin(dbPath, booksDir) {
+  return spawnSync('node', ['-', BOOK, '--books-dir', booksDir], {
+    cwd: path.dirname(SCRIPT),
+    input: readFileSync(SCRIPT),
+    env: { ...process.env, SESSIONS_DB_PATH: dbPath },
+    encoding: 'utf8',
+    maxBuffer: 64 * 1024 * 1024,
+  });
+}
+
 let fresh;
 let db;
 let result;
@@ -190,6 +201,25 @@ describe('read-firing-rows CLI', () => {
     bare.db.close();
     const booksDir = makeBooksDir(1);
     const r = runCli(bare.path, booksDir);
+    expect(r.status).toBe(0);
+    expect(JSON.parse(r.stdout).rows).toEqual([]);
+  });
+
+  it('runs exactly the production way: node - <book> with the source on stdin', () => {
+    const booksDir = makeBooksDir(1);
+    fresh.db.pragma('wal_checkpoint(TRUNCATE)');
+    const r = runCliStdin(fresh.path, booksDir);
+    expect(r.status).toBe(0);
+    const doc = JSON.parse(r.stdout);
+    expect(doc.schema).toBe('c19-census/1');
+    expect(doc.rows.length).toBeGreaterThan(0);
+  });
+
+  it('keeps log lines out of stdout under node - too', () => {
+    const bare = freshMigratedDb();
+    bare.db.prepare('DELETE FROM book_domain_priority').run();
+    bare.db.close();
+    const r = runCliStdin(bare.path, makeBooksDir(1));
     expect(r.status).toBe(0);
     expect(JSON.parse(r.stdout).rows).toEqual([]);
   });

@@ -22,7 +22,10 @@
  * the logger is first required, so they are set before any server `require`. They are set
  * only when this file is the entry point; a test that requires it keeps its own settings.
  */
-if (require.main === module) {
+// Under `node -` (script on stdin) require.main is undefined, but module.id is '[stdin]'.
+const IS_ENTRY = require.main === module || module.id === '[stdin]';
+if (IS_ENTRY) {
+  process.exitCode = 1; // failure default: only a fully written document sets 0
   process.env.LOG_LEVEL = 'silent';
   process.env.NODE_ENV = 'production';
 }
@@ -178,6 +181,6 @@ function main() {
   process.exitCode = 0;
 }
 
-if (require.main === module) main();
+if (IS_ENTRY) main();
 
 module.exports = { collectFiringRows };
