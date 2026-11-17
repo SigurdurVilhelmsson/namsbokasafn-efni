@@ -90,6 +90,25 @@ describe('parsePrescreenResponse', () => {
   it('reports a presented id with no entry as missing', () => {
     expect(parse([row('a')], ['a', 'b']).missing).toEqual(['b']);
   });
+  it('a duplicate whose first entry was dropped is dropped too, leaving the id missing', () => {
+    const r = parse([row('a', { verdict: 'flag' }), row('a')], ['a']);
+    expect([r.dropped, r.missing]).toEqual([
+      [
+        { id: 'a', reason: 'flag-without-kind' },
+        { id: 'a', reason: 'duplicate-id' },
+      ],
+      ['a'],
+    ]);
+  });
+  it('text that is not JSON is response-unparseable with no verdicts', () => {
+    const msg = { stop_reason: 'end_turn', content: [{ type: 'text', text: 'not json' }] };
+    const r = parsePrescreenResponse({ message: msg, presentedIds: ['a'], schema });
+    expect([r.problem, r.verdicts.size, r.missing]).toEqual(['response-unparseable', 0, ['a']]);
+  });
+  it('JSON that breaks the schema is response-invalid with no verdicts', () => {
+    const r = parse([row('a', { verdict: 'maybe' })], ['a']);
+    expect([r.problem, r.verdicts.size, r.missing]).toEqual(['response-invalid', 0, ['a']]);
+  });
 });
 
 describe('judgeControls', () => {
@@ -152,5 +171,35 @@ describe('judgeControls', () => {
     v.delete('n');
     const r = judgeControls({ verdicts: v, key }).results.find((x) => x.id === 'n');
     expect([r.got, r.ok]).toEqual(['unjudged', false]);
+  });
+  it('a key with no controls does not pass', () => {
+    const r = judgeControls({ verdicts: new Map(), key: { pop: { kind: 'population' } } });
+    expect(r.pass).toBe(false);
+  });
+  it('an expected value that is neither flag nor fine is bad-expected, never judged fine', () => {
+    const k = { x: { kind: 'control', name: 'typo', expected: 'fien' } };
+    const r = judgeControls({ verdicts: new Map([['x', fineV]]), key: k });
+    expect([r.results[0].got, r.results[0].ok]).toEqual(['bad-expected', false]);
+  });
+  it('a bad-expected control fails the pass', () => {
+    const k = { x: { kind: 'control', name: 'typo', expected: 'fien' } };
+    expect(judgeControls({ verdicts: new Map([['x', fineV]]), key: k }).pass).toBe(false);
+  });
+  it('a fine verdict on a flag control with flagKinds fails', () => {
+    const k = {
+      ad: {
+        kind: 'control',
+        name: 'addition-adding',
+        expected: 'flag',
+        flagKinds: ['wrong-sense', 'some-senses-only'],
+      },
+    };
+    const r = judgeControls({ verdicts: new Map([['ad', fineV]]), key: k });
+    expect(r.results[0].ok).toBe(false);
+  });
+  it('an addition-reaction control (expected fine) answered flag fails', () => {
+    const k = { ar: { kind: 'control', name: 'addition-reaction', expected: 'fine' } };
+    const r = judgeControls({ verdicts: new Map([['ar', flagV('other-error')]]), key: k });
+    expect(r.results[0].ok).toBe(false);
   });
 });

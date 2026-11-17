@@ -53,7 +53,9 @@ export function parsePrescreenResponse({ message, presentedIds, schema }) {
 /**
  * Judge the control rows. Never matches on a control's name (ruling P8): a `flag` control passes
  * on a flag whose kind is in `flagKinds` when the key gives one, else on any flag; a `fine`
- * control passes on `fine`; a control with no verdict is unjudged and fails.
+ * control passes on `fine`; a control with no verdict is unjudged and fails; an `expected` that is
+ * neither `flag` nor `fine` is `bad-expected` and fails. Fails closed: `pass` needs at least one
+ * control, so a key with none does not pass vacuously.
  * @param {{ verdicts: Map<string, Verdict>, key: Record<string, object> }} args
  * @returns {{ pass: boolean, results: Array<{id: string, name: string|undefined,
  *   expected: string, got: string, ok: boolean}> }}
@@ -62,13 +64,16 @@ export function judgeControls({ verdicts, key }) {
   const results = Object.entries(key)
     .filter(([, e]) => e.kind === 'control')
     .map(([id, e]) => {
+      const base = { id, name: e.name, expected: e.expected };
+      if (e.expected !== 'flag' && e.expected !== 'fine')
+        return { ...base, got: 'bad-expected', ok: false };
       const v = verdicts.get(id);
-      if (!v) return { id, name: e.name, expected: e.expected, got: 'unjudged', ok: false };
+      if (!v) return { ...base, got: 'unjudged', ok: false };
       const ok =
         e.expected === 'flag'
           ? v.verdict === 'flag' && (!e.flagKinds || e.flagKinds.includes(v.kind))
           : v.verdict === 'fine';
-      return { id, name: e.name, expected: e.expected, got: v.verdict, ok };
+      return { ...base, got: v.verdict, ok };
     });
-  return { pass: results.every((r) => r.ok), results };
+  return { pass: results.length > 0 && results.every((r) => r.ok), results };
 }
