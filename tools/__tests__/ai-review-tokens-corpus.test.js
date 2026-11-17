@@ -7,8 +7,9 @@
  * `[[[i:`, markers inside a footnote payload), a per-type count disagrees.
  *
  * Unit files are named, never globbed loosely: only `<stem>-segments.<lang>.md` with
- * stem m\d+ or chapter-metadata. The split `-segments(b|c|d)` files are a dead mustache
- * vintage and are never read.
+ * stem m\d+ or chapter-metadata. A split `-segments(b|c|d)` file is never read: chemistry's
+ * ch05 held 7 of them, a dead mustache vintage, until they were removed on 2026-11-17
+ * (register §C225).
  */
 import { describe, it, expect } from 'vitest';
 import fs from 'node:fs';

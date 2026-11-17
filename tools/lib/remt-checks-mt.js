@@ -157,6 +157,10 @@ export { LEGACY_MUSTACHE_RE as A6_MUSTACHE_RE, LEGACY_PLUSPLUS_RE as A6_PLUSPLUS
  * may well be right, since inject cannot read them either, but it is a consequence to choose
  * deliberately rather than discover. Widening the test walker instead moves every corpus count
  * in the Task 8 suite. Recorded in the active register (§C82), not decided here.
+ * ✏️ 2026-11-17: those 7 files were removed from the tree (register §C225). Re-measured: no
+ * tracked file under any book's `02-mt-output` carries `{{SEG:` (it was those 7). The paragraph
+ * above is as measured on 2026-08-25. The leg still matters for a file that arrives in the
+ * dialect; a loader that walks the directory plainly no longer meets one in the committed tree.
  *
  * @param {string} content raw segment-file text
  * @returns {Array<{segmentId:string,moduleId:string,segmentType:string,elementId:string,content:string}>}
@@ -302,6 +306,8 @@ export function countRawSegTokens(text) {
  * parenthesized `ch05/m6872{4,6,7}-segments(b|c|d)` variants carry 563 ids, 0 violations.
  * So unlike the mustache leg beside it, this one has no known hard-halt waiting for a
  * loader that walks the directory plainly.
+ * ✏️ 2026-11-17: the 7 parenthesized variants were removed from the tree (register §C225);
+ * the 563 ids above are as measured while they were in it.
  * 🔴 EVERY ONE OF THOSE IS A PREMISE PIN, NOT A REGRESSION PIN (§C82 L20/L27): the corpus
  * this battery gates is about to be REPLACED by the re-MT run, so these are re-measured
  * when they move, never assumed to have held.

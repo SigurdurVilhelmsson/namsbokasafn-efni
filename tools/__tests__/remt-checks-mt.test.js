@@ -823,6 +823,9 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     // suffix filter excludes the parenthesized variants. They are unexamined by this
     // battery, deliberately: widening the filter to reach them moves every corpus count in
     // this file. Logged to the active register rather than fixed here.
+    // ✏️ 2026-11-17: those 7 files were removed from the tree (register §C225). The zero is
+    // now true of the tree as well as of the population: no tracked file under any book's
+    // `02-mt-output` carries `{{SEG:`. The lines above describe the tree until that date.
     let mustacheFiles = 0;
     let files = 0;
     for (const b of BOOKS) {

@@ -224,10 +224,11 @@ describe('zero-change round trip on every committed chemistry layer-1 unit', () 
     );
   });
 
-  it('legacy split files exist on disk (control) and are never listed', () => {
-    expect(
-      fs.existsSync(path.join(CHEM, LAYER_DIRS.pure, 'ch05', 'm68727-segments(b).is.md'))
-    ).toBe(true);
+  // Until 2026-11-17 this case also checked that a real legacy split file was on disk
+  // (`ch05/m68727-segments(b).is.md`), as its control. The 7 such files were removed from
+  // the tree (register §C225), so that control now lives in the fixture tree below: "never
+  // lists a legacy split file that is on disk".
+  it('every listed unit is a module or chapter-metadata', () => {
     expect(units.filter((u) => !/^(m\d+|chapter-metadata)$/.test(u.stem))).toEqual([]);
   });
 });
@@ -571,6 +572,22 @@ describe('fixture tree', () => {
         'm200',
         'chapter-metadata',
       ]);
+    });
+    it('never lists a legacy split file that is on disk', () => {
+      // Control: the split file, and the junk beside it, are in the segment directory.
+      const present = fs.readdirSync(out());
+      expect(present).toEqual(
+        expect.arrayContaining([
+          'm100-segments(b).is.md',
+          'm100-segments.is.md:Zone.Identifier',
+          'm100-segments.is.md.backup.2026',
+        ])
+      );
+      // A second split part, of a module the structure directory does not name at all.
+      put(out('m300-segments(b).is.md'), '{{SEG:m300:para:p1}}\nlegacy');
+      const listed = listChapterUnits({ bookDir: book, chapterDir: ch });
+      expect(listed).toEqual(['m100', 'm200', 'chapter-metadata']);
+      expect(listed.filter((stem) => !/^(m\d+|chapter-metadata)$/.test(stem))).toEqual([]);
     });
     it('omits chapter-metadata when layer 1 has none', () => {
       fs.rmSync(out('chapter-metadata-segments.is.md'));
