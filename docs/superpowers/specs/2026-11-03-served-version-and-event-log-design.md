@@ -14,6 +14,30 @@
 > no status. If it disagrees with the active register, the register wins. Do not sync it or edit it in place.
 > Supersede it with a new record instead.
 
+> **✏️ AMENDED 2026-11-17: `module-submit` gets a new trigger and detail, `review-complete` has no screen, and §11's
+> "no time of a person" is scoped. All three were ruled by [USER] on 2026-11-17**, in the register's §C222 work. The
+> design is `docs/superpowers/specs/2026-11-17-c222-unit-done-signal-design.md`. The values live in the code and its
+> tests; this block states only what changed and why.
+>
+> - **§5.9's event table: `module-submit` is written by `POST /:book/:chapter/:moduleId/done` ("Merkja sem lokið"),
+>   at every press.** The row's "Written when" (`:1001`, the submit route) and its detail ("the edit ids it stamped")
+>   no longer hold. The submit route is deleted: it opened a `module_reviews` row that no screen ever closed, so it
+>   worked once per unit (interface audit ED-07). A press opens nothing. The detail is now `{ openEditIds }`: the
+>   ids of the unit's edits, by any editor, that are pending, in discussion, or approved and not yet applied
+>   (`segmentEditorService.openEditIds`). There is no `reviewId`. Production's `research.db` held 0 events of any
+>   type on 2026-11-17, so no event of the old shape exists. The event's name is kept, so the study's vocabulary does
+>   not change.
+> - **`review-complete` has no screen, by ruling.** [USER]: the editor's "done" is enough for the study. The route
+>   (`:1246`) and its event stay, and are reached by tests only; removing the old review loop is open work in the
+>   register.
+> - **§11 and §5.4 step 6: "No time of a person in a response" is scoped to research-capture times** (the opening,
+>   switch and in-flight times this design keeps on the server). [USER] ruled this with §11 in view. The module GET
+>   now sends `myLastDoneAt`, and `…/done` answers `doneAt`. Both are the reader's own latest press, read from the
+>   activity log, not from research data. The activity timeline already sends the same row's time and name to the
+>   book's editors, as edit rows already send `created_at` and `reviewed_at`. T17's module-JSON allowlist
+>   (`server/__tests__/researchBoundary.test.js`) lists the key with that reason, and pins it to null on an opening
+>   serve.
+
 > **✏️ AMENDED 2026-11-14: three departures from the saving rules, found by the 2026-11-13 interface audit of
 > Ritstjóri and ruled by [USER] on 2026-11-14** ("All recommendations accepted", to questions that stated each
 > option). The answers are recorded in `docs/decisions/2026-11-14-interface-audit-answers.md` (answers 1 to 4). The
