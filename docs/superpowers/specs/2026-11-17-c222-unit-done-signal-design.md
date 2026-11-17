@@ -47,14 +47,14 @@ it needs a closing rule and a status editors have to learn. This design keeps th
   button's type. No code deletes activity rows. No query filters by type, user and unit together.
 - The client refuses a press when the unit has no pending edits (`UI.alert.noChanges`). It does not check for
   unsaved text.
-- ✏️ *Found 2026-11-17 while building (Claude's call, pending [USER]):* the 2026-11-03 design's §11 says **"No time
-  of a person in a response"**, and `researchBoundary.test.js` (T17) enforces the module JSON's keys as an exact
-  allowlist. The trace's date (§4, string 4) is such a time. Claude read §11 as scoped to research-capture times:
-  its examples are all of that kind (`opened_at_ms`, `module_opening_inflight`, `switched_at_ms`); edit rows already
-  send `created_at` and `reviewed_at`; and the activity timeline already sends this same row's time and name to the
-  book's editors. So `myLastDoneAt` joins T17's allowlist with that reason in a comment, and the 2026-11-03 design's
-  amendment records the scoping. [USER] approved string 4 without being shown §11; the alternative, if [USER] reads
-  §11 strictly, is a trace with no date ("Merkt sem lokið") and a boolean instead of a time.
+- ✏️ *Found 2026-11-17 while building:* the 2026-11-03 design's §11 says **"No time of a person in a response"**, and
+  `researchBoundary.test.js` (T17) enforces the module JSON's keys as an exact allowlist. The trace's date (§4,
+  string 4) is such a time. Claude read §11 as scoped to research-capture times: its examples are all of that kind
+  (`opened_at_ms`, `module_opening_inflight`, `switched_at_ms`); edit rows already send `created_at` and
+  `reviewed_at`; and the activity timeline already sends this same row's time and name to the book's editors.
+  ✅ **[USER] ruled on 2026-11-17, with §11 in view: that reading stands, and `myLastDoneAt` carries the date.** So
+  `myLastDoneAt` is on T17's allowlist with that reason in a comment, and the 2026-11-03 design's amendment records
+  the scoping as [USER]'s ruling.
 - Heim's "Bíður yfirlestrar" rows say "Sent `<date>`" for edits that were only saved (HM-02,
   `server/views/my-work.html`).
 - **Production, read-only, 2026-11-17:**

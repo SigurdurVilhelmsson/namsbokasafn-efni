@@ -19,6 +19,7 @@ const path = require('path');
 const log = require('../lib/logger');
 const activityLog = require('../services/activityLog');
 const { readableLogBooks, refuseOtherBook } = require('../lib/activityScope');
+const { teamMetricsFrom } = require('../lib/teamMetrics');
 const segmentEditorService = require('../services/segmentEditorService');
 const dashboardReadModel = require('../services/dashboardReadModel');
 const { requireAuth } = require('../middleware/requireAuth');
@@ -581,65 +582,14 @@ router.get('/analytics', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (req
 
     // Per-user team metrics
     try {
-      const last30Days = new Date();
-      last30Days.setDate(last30Days.getDate() - 30);
-
       // Per-person figures come from the rows of the books this reader works on (lib/activityScope).
+      // lib/teamMetrics counts them; it skips "Merkja sem lokið" presses (register §C222).
       const result = activityLog.search({
         books: readableLogBooks(req.user),
         limit: 1000,
       });
 
-      const userStats = {};
-
-      for (const activity of result.activities) {
-        const activityDate = new Date(activity.createdAt);
-        if (activityDate < last30Days) continue;
-
-        const user = activity.username || 'unknown';
-        if (!userStats[user]) {
-          userStats[user] = {
-            username: user,
-            totalActions: 0,
-            reviews: 0,
-            approvals: 0,
-            drafts: 0,
-            submissions: 0,
-            lastActive: null,
-          };
-        }
-
-        userStats[user].totalActions++;
-
-        if (
-          activity.type === 'review_approved' ||
-          activity.type === 'approve_review' ||
-          activity.type === 'segment_edit_approved'
-        ) {
-          userStats[user].approvals++;
-        } else if (
-          activity.type === 'review_submitted' ||
-          activity.type === 'submit_review' ||
-          activity.type === 'segment_edit_saved'
-        ) {
-          userStats[user].submissions++;
-        } else if (activity.type === 'draft_saved') {
-          userStats[user].drafts++;
-        } else if (activity.type === 'segment_edits_applied') {
-          userStats[user].approvals++;
-        }
-
-        if (
-          !userStats[user].lastActive ||
-          new Date(activity.createdAt) > new Date(userStats[user].lastActive)
-        ) {
-          userStats[user].lastActive = activity.createdAt;
-        }
-      }
-
-      analytics.teamMetrics = Object.values(userStats).sort(
-        (a, b) => b.totalActions - a.totalActions
-      );
+      analytics.teamMetrics = teamMetricsFrom(result.activities, new Date());
     } catch (e) {
       log.error({ err: e }, 'Could not calculate team metrics');
     }
