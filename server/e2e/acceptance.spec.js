@@ -1,6 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 const { loginAs } = require('./helpers/auth');
+const { MTA_R3_ROWS } = require('./helpers/segments');
 
 /**
  * MT acceptance (item 20b): accept → chip + stats change; keyboard cursor +
@@ -78,14 +79,20 @@ test.describe('MT acceptance', () => {
     await openModule(page);
     page.on('dialog', (d) => d.accept('MTA-R3 próf'));
 
-    // Take a virgin row and give it a REJECTED edit.
-    const rowId = await page
-      .locator('#segments-body tr')
-      .filter({ has: page.locator('.btn-accept') })
-      .first()
-      .getAttribute('id');
-    const row = page.locator(`tr[id="${rowId}"]`);
+    // Three rows of its own (helpers/segments.js MTA_R3_ROWS; register §C230). It used to take the first row
+    // offering "Staðfesta MT", which is also the row editor-workflow edits, and the two collided under parallel
+    // workers. A row someone else has touched fails here, by name, instead of somewhere downstream.
+    const state = await (
+      await page.request.get(`/api/segment-editor/${BOOK}/${CHAPTER}/${MODULE}`)
+    ).json();
+    for (const id of Object.values(MTA_R3_ROWS)) {
+      expect(state.edits[id] || [], `${id} must be MTA-R3's alone (§C230)`).toEqual([]);
+      expect((state.acceptances || {})[id], `${id} must be MTA-R3's alone (§C230)`).toBeFalsy();
+    }
+    const rowOf = (id) => page.locator(`tr[id="row-${id.replace(/[^a-zA-Z0-9-]/g, '_')}"]`);
+    const row = rowOf(MTA_R3_ROWS.target);
 
+    // Give the target row a REJECTED edit.
     await row.locator('.btn-edit').click();
     const textarea = row.locator('textarea');
     // Append rather than replace: keeps any structural markers intact so the
@@ -111,8 +118,18 @@ test.describe('MT acceptance', () => {
     // deliberately narrower than the accept gate, so rapid-fire attestation can
     // never sweep a head editor's rejection. The cursor must skip this row even
     // though it now carries an accept button.
-    await page.keyboard.press('Control+Shift+Enter');
+    //
+    // Accepting the row just before it moves the stream's cursor to the next row the stream may accept
+    // (acceptSegmentAndAdvance → nextUnhandledAfter, the same rule Ctrl+Shift+Enter advances by). It must jump over
+    // the rejected row to the one after it. Asserting the exact landing row keeps the check strong wherever the
+    // three rows sit: the old form pressed Ctrl+Shift+Enter on a fresh page, which only meant something while the
+    // contested row happened to be the first one the stream would reach.
+    await rowOf(MTA_R3_ROWS.before).locator('.btn-accept').click();
+    await expect(rowOf(MTA_R3_ROWS.before).locator('.edit-status.accepted')).toBeVisible({
+      timeout: 10000,
+    });
     await expect(page.locator('#segments-body tr.kbd-cursor')).toHaveCount(1);
+    await expect(rowOf(MTA_R3_ROWS.after)).toHaveClass(/kbd-cursor/);
     await expect(row).not.toHaveClass(/kbd-cursor/);
 
     await row.locator('.btn-accept').click();
