@@ -153,15 +153,25 @@ describe('the worked example', () => {
   });
 
   // classifyRow drops a ruled English form first and a pair the export lacks before the
-  // physics and biology rows, so such a row can never be sent in the run.
-  it('uses only rows the run cannot send: ruled, or absent from the export', () => {
+  // physics and biology rows. The check is on the HEADWORD, not the pair: an export row
+  // `stress → álag` would be sendable, and an example judging `stress` would hand over its answer.
+  it('uses only headwords the run cannot send: ruled, or absent from the export', () => {
     const ruled = new Set(
       readJson(RULING_SET).rulings.flatMap((r) => r.en.map((e) => e.toLowerCase()))
     );
-    const pairs = new Set(readJson(EXPORT).terms.map((t) => `${t.english}\0${t.icelandic}`));
+    const exported = new Set(readJson(EXPORT).terms.map((t) => t.english.toLowerCase()));
     for (const r of example().request.rows) {
-      const sendable = !ruled.has(r.en.toLowerCase()) && pairs.has(`${r.en}\0${r.is}`);
-      expect(sendable).toBe(false);
+      const en = r.en.toLowerCase();
+      expect(ruled.has(en) || !exported.has(en)).toBe(true);
+    }
+  });
+
+  it('shows no control headword in its sentences', () => {
+    const heads = [...CONTROLS.positives, ...CONTROLS.negatives, { english: 'addition' }].map(
+      (c) => new RegExp(`(?<![\\p{L}\\p{N}_])${c.english}(?![\\p{L}\\p{N}_])`, 'iu')
+    );
+    for (const s of example().request.rows.flatMap((r) => r.sentences)) {
+      expect(heads.filter((re) => re.test(s))).toEqual([]);
     }
   });
 });
