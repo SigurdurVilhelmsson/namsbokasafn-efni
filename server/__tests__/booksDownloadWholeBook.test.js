@@ -8,11 +8,11 @@
  * and no appendices, for every download type. Asking for the appendices alone
  * always worked.
  *
- * The en-md case expects exactly the CURRENT appendix segment files. The
- * appendices directory also holds a legacy split part (`…-segments(b).en.md`,
- * register §C225), and the en-md download leaves those out by name since #709.
- * So the case is red on two causes: the appendices missing, or the split part
- * delivered. A control shows the directory does hold a split part.
+ * The en-md case expects exactly the appendix segment files. The appendices
+ * directory used to hold a legacy split part (`…-segments(b).en.md`, register
+ * §C225), which the route left out by name for a while (#709). That file was
+ * removed from the tree on 2026-11-17 with the other 48, and the filter went
+ * with them, so the case now has one cause for red: the appendices missing.
  *
  * Reads the real `efnafraedi-2e` tree, read-only, as booksDownloadEnMd.test.js
  * does: the route's books directory is a module constant with no test redirect.
@@ -36,7 +36,6 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const BOOK = 'efnafraedi-2e';
 const booksRoot = path.join(__dirname, '..', '..', 'books', BOOK);
 
-const { isSplitPart } = require('../services/splitFileUtils');
 const router = require('../routes/books');
 const downloadHandler = router.stack
   .find((l) => l.route && l.route.path === '/:bookId/download' && l.route.methods.get)
@@ -109,10 +108,10 @@ const appendixFiles = (dir, ext) =>
 const inAppendices = (entries) => entries.filter((e) => e.startsWith('appendices/')).sort();
 
 describe('the whole-book download includes the appendices', () => {
-  it('delivers exactly the current appendix segment files for en-md', async () => {
+  it('delivers exactly the appendix segment files for en-md', async () => {
     const entries = zipEntryNames(await downloadZip({ type: 'en-md' }));
-    const current = appendixFiles('02-for-mt', '.md').filter((f) => !isSplitPart(f));
-    expect(inAppendices(entries)).toEqual(current.map((f) => `appendices/${f}`).sort());
+    const expected = appendixFiles('02-for-mt', '.md');
+    expect(inAppendices(entries)).toEqual(expected.map((f) => `appendices/${f}`).sort());
   }, 120000);
 
   it('delivers exactly the appendix pages for a publication type', async () => {
@@ -128,13 +127,8 @@ describe('the whole-book download includes the appendices', () => {
 });
 
 describe('control', () => {
-  it('the book has current appendix segment files to deliver', () => {
-    const current = appendixFiles('02-for-mt', '.md').filter((f) => !isSplitPart(f));
-    expect(current.length).toBeGreaterThan(0);
-  });
-
-  it('the appendices directory holds a split part for en-md to leave out', () => {
-    expect(appendixFiles('02-for-mt', '.md').filter(isSplitPart).length).toBeGreaterThan(0);
+  it('the book has appendix segment files to deliver', () => {
+    expect(appendixFiles('02-for-mt', '.md').length).toBeGreaterThan(0);
   });
 
   it('the book has appendix pages to deliver', () => {

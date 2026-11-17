@@ -262,18 +262,22 @@ describe('unitsFor — I3, the corpus enumerated honestly', () => {
   });
 
   it('excludes the parenthesised re-extract duplicates — they are not units', () => {
-    // `m68865-segments(b).en.md`-shaped files are COMMITTED in chemistry's 02-for-mt —
-    // measured 2026-08-27: 49 of them, spread over 9 chapter dirs.
-    // POSITIVE CONTROL: they exist, so this exclusion is not vacuous. Scanned across the
-    // whole book rather than one named chapter, because a hardcoded dir manufactures the
-    // absence it is meant to rule out — this control failed exactly that way when first
-    // written against ch20, which holds none.
+    // `m68865-segments(b).en.md`-shaped files WERE committed in chemistry's 02-for-mt —
+    // measured 2026-08-27: 49 of them, spread over 9 chapter dirs. They were removed from the
+    // tree on 2026-11-17 (register §C225), and `no-split-parts-in-for-mt.test.js` pins that
+    // none is there.
+    // ⚠️ SO THE OLD POSITIVE CONTROL IS GONE, AND THIS CASE IS WEAKER FOR IT. It used to scan
+    // the book and require that duplicates exist, so the exclusion below was shown on real
+    // files. `unitsFor` reads the real tree only, so no fixture can stand in. What is left:
+    // the tree holds none (asserted here, so a reappearance turns this red beside the claim),
+    // and the name shape does not end in the live suffix, which is how `unitsFor` skips it.
     const forMt = path.join(REPO_ROOT, 'books', 'efnafraedi-2e', '02-for-mt');
     const dupes = readdirSync(forMt, { withFileTypes: true })
       .filter((e) => e.isDirectory())
       .flatMap((e) => readdirSync(path.join(forMt, e.name)))
       .filter((f) => /\(\w+\)\.en\.md$/.test(f));
-    expect(dupes.length).toBeGreaterThan(0);
+    expect(dupes).toEqual([]);
+    expect('m68865-segments(b).en.md'.endsWith('-segments.en.md')).toBe(false);
     const modules = unitsFor('efnafraedi-2e').map((u) => u.module);
     expect(modules.every((m) => !m.includes('('))).toBe(true);
   });

@@ -846,9 +846,11 @@ function kindOfBasename(base) {
  * spender's list is what I3 must equal.
  *
  * ⚠️ `endsWith('-segments.en.md')` IS LOAD-BEARING TWICE OVER. It excludes dated backups
- * (`…-segments.en.md.backup.<ISO>`) and, less obviously, the **49 committed parenthesised
- * re-extract duplicates** (`m68865-segments(b).en.md`) — which are tracked, so no
- * untracked-file or gitignore-based filter can see them.
+ * (`…-segments.en.md.backup.<ISO>`) and, less obviously, parenthesised duplicates
+ * (`m68865-segments(b).en.md`). **49 of those were committed in chemistry's tree** until
+ * 2026-11-17 (removed; register §C225), and being tracked, no untracked-file or
+ * gitignore-based filter could see them. None is there now; the suffix test is what keeps
+ * one out if the shape comes back.
  *
  * ⚠️ `chapter` IS THE DIRECTORY'S BARE FORM, PADDING KEPT: `ch00` -> `'00'`, `appendices` ->
  * `'appendices'`. Keeping the padding is what makes a unit round-trip through `chapterDirOf`

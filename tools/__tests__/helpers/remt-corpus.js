@@ -12,11 +12,14 @@
  * **0 of them end in `.md`** — the shape is `<name>-segments.en.md.backup.<ISO>`,
  * so an `endsWith('.md')` filter excludes every one. (`m68663` has ELEVEN of them,
  * not three, which is a second wrong number in the same sentence.)
- * ✅ THE REAL OVER-COUNT IS **70**, and a naive `.md` walk gives **219** against
+ * ✅ THE REAL OVER-COUNT WAS **70**, and a naive `.md` walk gave **219** against
  * 149 module pairs: **49** `(b)`/`(c)`/`(d)` re-extract variants
  * (`m68865-segments(b).en.md`) plus **21** `chapter-metadata` files. A
  * `.cnxml`-driven walk sees neither — the variants because nothing tests for them,
  * the metadata because it has no source module.
+ * ✏️ 2026-11-17: the 49 variants were removed from the tree (register §C225).
+ * Re-measured: the over-count is now the **21** `chapter-metadata` files alone, a
+ * naive walk giving **170** against 149.
  * ▶ SO THE CONSTRUCTION IS RIGHT AND ITS STATED CAUSE WAS WRONG, which is the
  * more dangerous shape: anyone verifying the rationale finds no backups ending in
  * `.md`, concludes the hazard is imaginary, and "simplifies" the walker.

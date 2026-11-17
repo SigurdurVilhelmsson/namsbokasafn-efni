@@ -22,7 +22,6 @@ const { requireBookAccess } = require('../middleware/requireRole');
 const { VALID_BOOKS, BOOK_LABELS } = require('../config');
 const { MAX_CHAPTERS } = require('../constants');
 const { normalizeChapter } = require('../lib/chapterLabel');
-const { isSplitPart } = require('../services/splitFileUtils');
 
 // Validate :bookId param on all routes that use it
 router.param('bookId', (req, res, next, bookId) => {
@@ -302,13 +301,6 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
 
     archive.pipe(res);
 
-    // The en-md download leaves out the legacy split parts (`…-segments(b).en.md`).
-    // They are leftovers of the archived protect step, still tracked beside the
-    // current segment files, and no live reader uses them (register §C225). Only
-    // en-md is filtered: what to do with the split files in `02-mt-output/` is
-    // undecided, so the is-md download still carries them.
-    const skipFile = (file) => type === 'en-md' && isSplitPart(file);
-
     // Helper function to add files matching the expected extension from a directory
     const addFilesFromDir = (dirPath, archivePath) => {
       if (!fs.existsSync(dirPath)) return;
@@ -316,7 +308,7 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
       for (const file of files) {
         const filePath = path.join(dirPath, file);
         const stat = fs.statSync(filePath);
-        if (stat.isFile() && file.endsWith(config.ext) && !skipFile(file)) {
+        if (stat.isFile() && file.endsWith(config.ext)) {
           archive.file(filePath, { name: path.join(archivePath, file) });
         }
       }

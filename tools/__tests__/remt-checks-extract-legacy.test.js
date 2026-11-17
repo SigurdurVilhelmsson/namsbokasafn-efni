@@ -413,12 +413,23 @@ describe('E6 — unexpected files emitted by the extract', () => {
       }
     }
 
-    // Chemistry's 02-for-mt is the one FAIL, and ONLY on the 49 duplicates — 0 orphan backups.
-    const forMt = await runCheck(E6, { emittedFiles: listing('efnafraedi-2e', '02-for-mt') });
-    expect(forMt.verdict).toBe(VERDICT.FAIL);
+    // Chemistry's 02-for-mt PASSES too, since the 49 tracked duplicates
+    // (`m68709-segments(b).en.md` and the like) were removed from the tree (register §C225).
+    // Until then it was the one FAIL here, and only on those 49: 0 orphan backups.
+    const chemListing = listing('efnafraedi-2e', '02-for-mt');
+    const forMt = await runCheck(E6, { emittedFiles: chemListing });
+    expect(forMt.verdict).toBe(VERDICT.PASS);
+
+    // POSITIVE CONTROL, now synthetic: the same real listing plus ONE duplicate-shaped name
+    // fails, on exactly that file. Without it this block could no longer show that E6 sees a
+    // duplicate in a real tree at all.
+    const withOne = await runCheck(E6, {
+      emittedFiles: [...chemListing, 'm68709-segments(b).en.md'],
+    });
+    expect(withOne.verdict).toBe(VERDICT.FAIL);
     const kinds = {};
-    for (const f of forMt.findings) kinds[f.kind] = (kinds[f.kind] || 0) + 1;
-    expect(kinds).toEqual({ 'unexpected-file:duplicate': 49 });
+    for (const f of withOne.findings) kinds[f.kind] = (kinds[f.kind] || 0) + 1;
+    expect(kinds).toEqual({ 'unexpected-file:duplicate': 1 });
   });
 
   it('backupSourceOf recognises every backup spelling, and nothing else', () => {

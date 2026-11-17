@@ -331,10 +331,13 @@ function readJsonOrNull(p) {
  * walk over `02-for-mt` counts dated backups as modules. **Measured 2026-08-27:
  * it cannot.** Chemistry's `02-for-mt` holds 3,102 backups and **0 of them end in
  * `.md`** — the shape is `<name>-segments.en.md.backup.<ISO>`. The real
- * over-count is 70: **49 `(b)`/`(c)`/`(d)` re-extract variants** (`m68865-segments(b).en.md`)
+ * over-count was 70: **49 `(b)`/`(c)`/`(d)` re-extract variants** (`m68865-segments(b).en.md`)
  * **plus 21 `chapter-metadata`**, taking a naive walk from 149 to 219. A
  * `.cnxml`-driven walk sees neither, so the CONSTRUCTION is right and only its
  * stated cause was wrong.
+ * ✏️ 2026-11-17: the 49 variants were removed from the tree (register §C225). Re-measured:
+ * the over-count is now the 21 `chapter-metadata` files alone, a naive walk giving 170
+ * against 149.
  * (Same construction as `tools/__tests__/helpers/remt-corpus.js`'s
  * `modulesWithSegments`; `tools/__tests__/remt-sweep.test.js`'s "the sweep's
  * walkers agree UNIT-FOR-UNIT with the test helper's" asserts the two against each

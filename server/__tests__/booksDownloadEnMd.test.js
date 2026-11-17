@@ -14,13 +14,11 @@
  * (so the red cases were red for that cause), and that a download type the guard
  * never covered behaves the same before and after.
  *
- * The fixture chapter also holds legacy split parts, named `…-segments(b).en.md`,
- * left by the archived protect step and still in the `{{SEG:` form (register
- * §C225). No live reader uses them, so the en-md download leaves them out by
- * name. The "split parts" block pins that: it was red while the route zipped
- * every `.md` file. Its controls show the fixture does hold split parts, and
- * that only en-md is filtered: the is-md download still carries the seven split
- * files of `02-mt-output/ch05/`, which are a separate, undecided question.
+ * The fixture chapter used to hold legacy split parts, named
+ * `…-segments(b).en.md`, left by the archived protect step (register §C225).
+ * For a while the route left them out of the en-md download by name (#709).
+ * The 49 files were removed from the tree on 2026-11-17 and the filter went
+ * with them; one block below pins that the route no longer carries it.
  *
  * The last block runs the books page's own `downloadBookMarkdown`, taken from
  * `views/books.html` as text (cf. booksActivityRefusal.test.js). Its confirm
@@ -37,7 +35,7 @@ import { readFileSync, readdirSync } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { PassThrough } from 'stream';
-import { describe, it, expect, beforeAll } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { createRequire } from 'module';
 
 // auth.js throws at load time if JWT_SECRET is unset.
@@ -136,11 +134,7 @@ function zipEntryNames(buf) {
   return names;
 }
 
-const { isSplitPart } = require('../services/splitFileUtils');
-
 const mdFiles = readdirSync(chapterPath).filter((f) => f.endsWith('.md'));
-const splitParts = mdFiles.filter(isSplitPart);
-const currentFiles = mdFiles.filter((f) => !isSplitPart(f));
 
 describe('the en-md download delivers the segment files (§C141 ①)', () => {
   it('answers 200 for a chapter', async () => {
@@ -156,13 +150,6 @@ describe('the en-md download delivers the segment files (§C141 ①)', () => {
     expect(r.headers['Content-Disposition']).toContain(`${BOOK}-K1-en-md.zip`);
   });
 
-  it('writes one archive entry per current segment file in the chapter directory', async () => {
-    const r = await download({ chapter: '1', type: 'en-md' });
-    expect(zipEntryNames(r.zip).sort()).toEqual(
-      currentFiles.map((f) => `${CHAPTER_DIR}/${f}`).sort()
-    );
-  });
-
   it('answers 200 for the appendices', async () => {
     expect((await download({ chapter: 'appendices', type: 'en-md' })).status).toBe(200);
   });
@@ -172,63 +159,21 @@ describe('the en-md download delivers the segment files (§C141 ①)', () => {
   });
 });
 
-describe('the en-md download leaves the legacy split parts out (§C225)', () => {
-  const baseName = (entry) => entry.split('/').pop();
+// The route used to skip legacy split parts (`…-segments(b).en.md`) by name for
+// en-md (#709, register §C225). Those 49 files were removed from the tree on
+// 2026-11-17, which left the filter with nothing to act on, so it was removed
+// too. `tools/__tests__/no-split-parts-in-for-mt.test.js` pins that none is in
+// the tree. The first case was red while the filter was in the route.
+describe('the route carries no split-part filter (§C225)', () => {
+  const routeSource = readFileSync(path.join(__dirname, '..', 'routes', 'books.js'), 'utf-8');
 
-  it('holds no split part for a chapter', async () => {
+  it('does not use isSplitPart', () => {
+    expect(routeSource).not.toContain('isSplitPart');
+  });
+
+  it('writes one archive entry per .md file in the chapter directory', async () => {
     const r = await download({ chapter: '1', type: 'en-md' });
-    expect(zipEntryNames(r.zip).map(baseName).filter(isSplitPart)).toEqual([]);
-  });
-
-  it('holds no split part for the appendices', async () => {
-    const r = await download({ chapter: 'appendices', type: 'en-md' });
-    expect(zipEntryNames(r.zip).map(baseName).filter(isSplitPart)).toEqual([]);
-  });
-
-  it('control: the fixture chapter does hold split parts to leave out', () => {
-    expect(splitParts.length).toBeGreaterThan(0);
-  });
-
-  it('delivers as many entries as the chapter has current files', async () => {
-    const r = await download({ chapter: '1', type: 'en-md' });
-    expect(zipEntryNames(r.zip).length).toBe(currentFiles.length);
-  });
-
-  it('control: only en-md is filtered; the is-md download keeps its split files', async () => {
-    const r = await download({ chapter: '5', type: 'is-md' });
-    expect(zipEntryNames(r.zip).map(baseName).filter(isSplitPart).length).toBeGreaterThan(0);
-  });
-
-  // The whole-book download (no `chapter`) walks every chapter directory through
-  // the same helper. One download serves the cases below: it zips the whole book.
-  describe('for the whole book', () => {
-    const forMt = path.join(__dirname, '..', '..', 'books', BOOK, '02-for-mt');
-    let entries;
-
-    beforeAll(async () => {
-      entries = zipEntryNames((await download({ type: 'en-md' })).zip);
-    }, 120000);
-
-    it('holds no split part', () => {
-      expect(entries.map(baseName).filter(isSplitPart)).toEqual([]);
-    });
-
-    it('control: the book does hold split parts in more than one chapter directory', () => {
-      const dirsWithSplitParts = readdirSync(forMt).filter((d) =>
-        readdirSync(path.join(forMt, d)).some(isSplitPart)
-      );
-      expect(dirsWithSplitParts.length).toBeGreaterThan(1);
-    });
-
-    it('control: it covers more than one chapter', () => {
-      expect(new Set(entries.map((e) => e.split('/')[0])).size).toBeGreaterThan(1);
-    });
-
-    it("delivers exactly the fixture chapter's current files for that chapter", () => {
-      expect(entries.filter((e) => e.startsWith(`${CHAPTER_DIR}/`)).sort()).toEqual(
-        currentFiles.map((f) => `${CHAPTER_DIR}/${f}`).sort()
-      );
-    });
+    expect(zipEntryNames(r.zip).sort()).toEqual(mdFiles.map((f) => `${CHAPTER_DIR}/${f}`).sort());
   });
 });
 
