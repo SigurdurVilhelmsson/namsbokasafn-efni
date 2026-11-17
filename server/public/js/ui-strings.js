@@ -72,9 +72,8 @@ const UI = {
     // specs name it when they check that it is not asked.
     closePanels: 'Opnum klippispjöldum verður lokað. Viltu halda áfram?',
     unapprove: 'Afturkalla samþykki? Breytingin fer til baka í stöðuna „bíður".',
-    submitForReview: function (count) {
-      return 'Senda ' + count + ' breytingar til yfirlestrar?';
-    },
+    // "Merkja sem lokið" (register §C222; [USER]-approved 2026-11-17)
+    markDone: 'Merkja þennan hluta sem lokið? Þú getur haldið áfram að breyta honum á eftir.',
     acceptSuggestions: function (count) {
       return 'Samþykkja ' + count + ' tillögur?';
     },
@@ -93,7 +92,10 @@ const UI = {
   },
 
   alert: {
-    noChanges: 'Engar breytingar til að senda.',
+    // "Merkja sem lokið" refusals (register §C222; [USER]-approved 2026-11-17)
+    doneUnsaved:
+      'Óvistaður texti er í hlutanum. Vistaðu hann eða hentu honum áður en þú merkir hlutann sem lokið.',
+    doneNotRecorded: 'Ekki tókst að skrá að hlutanum sé lokið. Reyndu aftur.',
     noUnsavedChanges: 'Engar óvistaðar breytingar.',
     noPendingSuggestions: 'Engar tillögur í bið',
     noAcceptedSuggestions: 'Engar samþykktar tillögur til að samstilla',
@@ -328,8 +330,10 @@ const UI = {
   segmentEditor: {
     title: 'Ritill',
     noEnglish: 'Engin enska',
-    sentForReview: 'Sent til yfirlestrar!',
-    viewReview: 'Skoða yfirlestur →',
+    // The reader's own last "Merkja sem lokið" (register §C222; [USER]-approved 2026-11-17)
+    doneTrace: function (when) {
+      return 'Merkt sem lokið ' + when;
+    },
     progress: function (edited, total) {
       return edited + '/' + total + ' bútar breytt';
     },

@@ -820,6 +820,28 @@ function submitModuleForReview(params) {
 }
 
 /**
+ * The unit's open edits at this moment, by any editor: waiting for a decision (`pending`, `discuss`), or approved
+ * and not yet written into the file. "Merkja sem lokið" records these ids (register §C222). Scoped to
+ * (book, chapter, module_id), since `chapter-metadata` is one module id across chapters (§C209).
+ *
+ * @param {string} book
+ * @param {number} chapter
+ * @param {string} moduleId
+ * @returns {number[]} edit ids, ascending
+ */
+function openEditIds(book, chapter, moduleId) {
+  return getDb()
+    .prepare(
+      `SELECT id FROM segment_edits
+       WHERE book = ? AND chapter = ? AND module_id = ?
+         AND (status IN ('pending', 'discuss') OR (status = 'approved' AND applied_at IS NULL))
+       ORDER BY id`
+    )
+    .all(book, chapter, moduleId)
+    .map((r) => r.id);
+}
+
+/**
  * Get pending module reviews.
  */
 function getPendingModuleReviews(book) {
@@ -1864,6 +1886,7 @@ module.exports = {
   returnEditToPending,
   // Module reviews
   submitModuleForReview,
+  openEditIds,
   getPendingModuleReviews,
   getModuleReviewWithEdits,
   completeModuleReview,

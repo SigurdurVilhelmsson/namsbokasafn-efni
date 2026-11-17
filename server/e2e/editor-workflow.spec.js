@@ -7,7 +7,7 @@ const { pickEditableSegment } = require('./helpers/segments');
  * Editor workflow E2E tests.
  *
  * Tests the full lifecycle of a segment edit:
- *   editor saves edit → submits for review → head-editor approves → editor sees approval
+ *   editor saves edit → marks the unit done → head-editor approves → editor sees approval
  *
  * Uses unique user IDs (88001, 88002) to avoid conflicts with other test suites.
  *
@@ -86,18 +86,18 @@ test.describe.serial('Editor workflow', () => {
     editId = body.editId;
   });
 
-  test('editor submits module for review', async ({ page }) => {
+  // "Merkja sem lokið" (register §C222): a recorded moment, so a second press succeeds as the first did. It
+  // replaced "Senda til yfirlestrar", which answered 409 after the first press (ED-07).
+  test('editor marks the unit done, twice', async ({ page }) => {
     await loginAs(page, 'editor', EDITOR_ID);
     await page.goto('/editor');
 
-    const res = await page.request.post(`${API}/submit`);
-    const body = await res.json();
-
-    // Accept 200 (new review created) or 409 (review already exists from prior run)
-    expect([200, 409]).toContain(res.status());
-    if (res.status() === 200) {
+    for (let i = 0; i < 2; i++) {
+      const res = await page.request.post(`${API}/done`);
+      const body = await res.json();
+      expect(res.status(), JSON.stringify(body)).toBe(200);
       expect(body.success).toBe(true);
-      expect(body.reviewId).toBeTruthy();
+      expect(typeof body.doneAt).toBe('string');
     }
   });
 

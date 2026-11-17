@@ -106,7 +106,6 @@ beforeAll(() => {
     get: handlerFor(router, 'get', '/:book/:chapter/:moduleId'),
     save: handlerFor(router, 'post', '/:book/:chapter/:moduleId/edit'),
     accept: handlerFor(router, 'post', '/:book/:chapter/:moduleId/accept'),
-    submit: handlerFor(router, 'post', '/:book/:chapter/:moduleId/submit'),
     approve: handlerFor(router, 'post', '/edit/:editId/approve'),
     apply: handlerFor(router, 'post', '/:book/:chapter/:moduleId/apply'),
     render: handlerFor(router, 'post', '/:book/:chapter/:moduleId/apply-and-render'),
@@ -179,18 +178,27 @@ const approve = async (editId, body = {}) => {
   expect(r.status).toBe(200);
 };
 
-/** A submitted review of two edits by p-a, every stamped edit approved; returns its id. */
+/**
+ * A submitted review of two edits by p-a, every stamped edit approved; returns its id. No route opens a review
+ * since the submit route was replaced by …/done (2026-11-17, register §C222), so the review is opened by the
+ * service the complete route still serves.
+ */
 async function approvedReview(mod) {
   await save(mod, PA, 'a', `${mod} edit a`);
   await save(mod, PA, 'b', `${mod} edit b`);
-  const s = await invoke(h.submit, onModule(mod, PA));
-  expect(s.status).toBe(200);
+  const s = segmentEditor.submitModuleForReview({
+    book: CHEM,
+    chapter: 1,
+    moduleId: mod,
+    submittedBy: PA.id,
+    submittedByUsername: PA.username,
+  });
   const stamped = db
     .prepare('SELECT id FROM segment_edits WHERE review_id = ? ORDER BY id')
-    .all(s.body.reviewId);
+    .all(s.id);
   expect(stamped).toHaveLength(2);
   for (const { id: editId } of stamped) await approve(editId);
-  return s.body.reviewId;
+  return s.id;
 }
 
 const LOSER_NOTE = 'LOSER-REVIEWER-NOTE yfirlesara';

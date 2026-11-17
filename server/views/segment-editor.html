@@ -1888,13 +1888,20 @@
             <button class="btn btn-secondary btn-sm" id="btn-back" title="Til baka">
               &#8592; Til baka
             </button>
+            <!-- "Merkja sem lokið" (register §C222): a recorded moment, not a status; the trace shows the
+                 reader's own last press. Replaced "Senda til yfirlestrar" on 2026-11-17. -->
             <button
               class="btn btn-primary btn-sm"
-              id="btn-submit"
-              title="Sendir allar breytingar til yfirlestrar hjá aðalritstjóra"
+              id="btn-done"
+              title="Skráir að þú hafir lokið við þennan hluta. Breytingar fara til yfirlestrar um leið og þær eru vistaðar."
             >
-              Senda til yfirlestrar
+              Merkja sem lokið
             </button>
+            <span
+              id="done-trace"
+              hidden
+              style="font-size: var(--text-xs); color: var(--text-muted); align-self: center"
+            ></span>
           </div>
         </div>
 

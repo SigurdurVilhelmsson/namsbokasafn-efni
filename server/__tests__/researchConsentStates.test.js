@@ -102,7 +102,7 @@ beforeAll(async () => {
   h = {
     save: handlerFor(router, 'post', '/:book/:chapter/:moduleId/edit'),
     accept: handlerFor(router, 'post', '/:book/:chapter/:moduleId/accept'),
-    submit: handlerFor(router, 'post', '/:book/:chapter/:moduleId/submit'),
+    done: handlerFor(router, 'post', '/:book/:chapter/:moduleId/done'),
     approve: handlerFor(router, 'post', '/edit/:editId/approve'),
     comment: handlerFor(router, 'post', '/edit/:editId/comment'),
     revoke: handlerFor(router, 'post', '/acceptance/:id/revoke'),
@@ -191,7 +191,7 @@ async function script(user, m) {
     params: { editId: String(editId) },
     body: { comment: 'athugasemd um breytinguna', clientActionId: act() },
   });
-  await call(h.submit, { params, body: { clientActionId: act() } });
+  await call(h.done, { params, body: { clientActionId: act() } });
   return out;
 }
 
@@ -203,14 +203,13 @@ const SPACE = Object.freeze({
   displayed_edit_id: 'segment_edits',
   editId: 'segment_edits',
   displayedEditId: 'segment_edits',
-  stampedEditIds: 'segment_edits',
   served_version_id: 'served_text_versions',
   review_id: 'module_reviews',
-  reviewId: 'module_reviews',
   commentId: 'segment_discussions',
 });
 const isIdKey = (k) => k === 'id' || (k.endsWith('_id') && !STRING_IDS.has(k)) || k in SPACE;
-const isTimeKey = (k) => k.endsWith('_at');
+// `doneAt` is the …/done response's time (register §C222): a set time like the `_at` columns.
+const isTimeKey = (k) => k.endsWith('_at') || k === 'doneAt';
 
 /**
  * Rewrites a value so two scenarios that differ only in who and where compare equal: every id by its ordinal of

@@ -52,6 +52,13 @@ const ACTIVITY_TYPES = {
   SUGGESTIONS_SYNCED: 'suggestions_synced',
 };
 
+/**
+ * "Merkja sem lokið" (register §C222): an editor's recorded moment of finishing a unit. Deliberately NOT in
+ * ACTIVITY_TYPES, which feeds the activity filter's labelled list: a label would be a new user-facing string, and
+ * the old "Senda til yfirlestrar" type was not listed either. The status page's per-person figures skip it.
+ */
+const MODULE_MARKED_DONE = 'module_marked_done';
+
 let _testDb = null;
 function _setTestDb(db) {
   _testDb = db;
@@ -106,6 +113,13 @@ function initStatements(db) {
       WHERE type = ?
       ORDER BY created_at DESC
       LIMIT ?
+    `),
+    // The newest row by insertion order (id), not by created_at: created_at has one-second resolution.
+    latestOfTypeByUser: db.prepare(`
+      SELECT created_at FROM activity_log
+      WHERE type = ? AND user_id = ? AND book = ? AND chapter = ? AND section = ?
+      ORDER BY id DESC
+      LIMIT 1
     `),
     // Chapter compare uses CAST(... AS INTEGER), not TEXT: better-sqlite3 binds
     // plain JS numbers as REAL, so a raw-number chapter (e.g. admin.js
@@ -240,6 +254,22 @@ function getBySection(book, chapter, section, limit = 50) {
 }
 
 /**
+ * When `userId` last wrote a row of `type` for one unit. Every argument is bound as given, so callers pass the
+ * same strings the row was written with (`String(req.user.id)`, `String(req.chapterNum)`).
+ *
+ * @param {string} type
+ * @param {string} userId
+ * @param {string} book
+ * @param {string} chapter
+ * @param {string} section
+ * @returns {string|null} the row's `created_at` (SQLite UTC, "YYYY-MM-DD HH:MM:SS"), or null when there is none
+ */
+function latestOfTypeByUser(type, userId, book, chapter, section) {
+  const row = stmts().latestOfTypeByUser.get(type, userId, book, chapter, section);
+  return row ? row.created_at : null;
+}
+
+/**
  * Search activity with filters
  */
 function search(options = {}) {
@@ -322,7 +352,9 @@ function parseRow(row) {
 
 module.exports = {
   ACTIVITY_TYPES,
+  MODULE_MARKED_DONE,
   log,
+  latestOfTypeByUser,
   getRecent,
   getByUser,
   getByBook,

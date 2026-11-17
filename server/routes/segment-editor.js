@@ -421,6 +421,8 @@ router.get(
         stats,
         acceptances,
         otherPendingSegments,
+        // The reader's own latest "Merkja sem lokið" in this unit (register §C222); never anyone else's.
+        myLastDoneAt: lastDoneAt(req.user, req.params.book, req.chapterNum, req.params.moduleId),
       });
     } catch (err) {
       log.error({ err }, 'Error loading module');
@@ -1302,49 +1304,78 @@ router.delete('/edit/:editId', requireAuth, requireRole(ROLES.EDITOR), (req, res
 });
 
 /**
- * POST /:book/:chapter/:moduleId/submit
- * Submit a module for head editor review.
+ * POST /:book/:chapter/:moduleId/done
+ * "Merkja sem lokið": the editor marks the unit finished (register §C222; design
+ * docs/superpowers/specs/2026-11-17-c222-unit-done-signal-design.md). A recorded moment, never a status: every
+ * press succeeds, and nothing is opened that would need closing. It replaced POST …/submit, whose review row was
+ * never closed by any screen, so it worked once per unit (ED-07).
+ *
+ * The activity row is written BEFORE the response, because the editor's trace reads it; activityLog.log never
+ * throws and answers null on failure, so a null is a press that did not record, and nothing else is written.
+ * Once the row is written the press has happened: the read-back of its time is never-throw (lastDoneAt), so its
+ * failure answers success with `doneAt: null` rather than "not recorded", which the editor would retry.
  */
 router.post(
-  '/:book/:chapter/:moduleId/submit',
+  '/:book/:chapter/:moduleId/done',
   requireAuth,
   validateBookChapter,
   requireBookAccess(),
   validateModule,
   (req, res) => {
     try {
-      const result = segmentEditor.submitModuleForReview({
-        book: req.params.book,
-        chapter: req.chapterNum,
-        moduleId: req.params.moduleId,
-        submittedBy: req.user.id,
-        submittedByUsername: req.user.username,
-      });
-
-      researchEmission.emitSubmit(req, {
-        reviewId: result.id,
-        stampedEditIds: result.stampedEditIds,
-      });
-      res.json({
-        success: true,
-        reviewId: result.id,
-        editedSegments: result.editedSegments,
-      });
-      activityLog.log({
-        type: 'module_submitted_for_review',
-        userId: String(req.user.id),
+      const { book, moduleId } = req.params;
+      const userId = String(req.user.id);
+      const chapter = String(req.chapterNum);
+      const openEditIds = segmentEditor.openEditIds(book, req.chapterNum, moduleId);
+      const row = activityLog.log({
+        type: activityLog.MODULE_MARKED_DONE,
+        userId,
         username: req.user.username,
-        book: req.params.book,
-        chapter: String(req.chapterNum),
-        section: req.params.moduleId,
-        description: `${req.user.username} sendi ${req.params.moduleId} til yfirlestrar`,
+        book,
+        chapter,
+        section: moduleId,
+        description: `${req.user.username} merkti ${moduleId} sem lokið`,
       });
+      if (row === null) {
+        return res.status(500).json({ error: 'Not recorded', code: 'DONE_NOT_RECORDED' });
+      }
+      researchEmission.emitSubmit(req, { openEditIds });
+      res.json({ success: true, doneAt: lastDoneAt(req.user, book, req.chapterNum, moduleId) });
     } catch (err) {
-      const status = err.message.includes('already has') ? 409 : 500;
-      res.status(status).json({ error: err.message });
+      log.error({ err }, 'Error marking a unit done');
+      res.status(500).json({ error: err.message });
     }
   }
 );
+
+/**
+ * When `user` last pressed "Merkja sem lokið" in this unit, or null (register §C222). Never throws: the module GET
+ * did not depend on the activity log before §C222 and must still open a unit if it cannot be read, and /done reads
+ * it only after the press is recorded. A failure is logged and answers null.
+ *
+ * @param {{id: (string|number)}} user `req.user`; its id is bound as a string, as the activity row stores it
+ * @param {string} book
+ * @param {number} chapterNum `req.chapterNum` (-1 for appendices); bound as a string, as the row stores it
+ * @param {string} moduleId
+ * @returns {string|null} SQLite UTC "YYYY-MM-DD HH:MM:SS", or null
+ */
+function lastDoneAt(user, book, chapterNum, moduleId) {
+  try {
+    return activityLog.latestOfTypeByUser(
+      activityLog.MODULE_MARKED_DONE,
+      String(user.id),
+      book,
+      String(chapterNum),
+      moduleId
+    );
+  } catch (err) {
+    log.error(
+      { err, book, moduleId },
+      'Could not read the last "Merkja sem lokið" (register §C222)'
+    );
+    return null;
+  }
+}
 
 // =====================================================================
 // REVIEW ENDPOINTS (Head Editor)

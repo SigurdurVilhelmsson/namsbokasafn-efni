@@ -70,7 +70,7 @@ beforeAll(() => {
     revoke: H('post', '/acceptance/:id/revoke'),
     del: H('delete', '/edit/:editId'),
     comment: H('post', '/edit/:editId/comment'),
-    submit: H('post', '/:book/:chapter/:moduleId/submit'),
+    done: H('post', '/:book/:chapter/:moduleId/done'),
   };
   db = new Database(dbPath);
 });
@@ -185,14 +185,14 @@ describe('review routes send the row and nothing else', () => {
     expect(Object.keys(r.body).sort()).toEqual(['commentId', 'success']);
   });
 
-  it('submit', async () => {
-    const r = await call(h.submit, {
+  it('done', async () => {
+    const r = await call(h.done, {
       params: { book: BOOK, chapter: '1', moduleId: M },
       chapterNum: 1,
       user: OWNER,
     });
     expect(r.status).toBe(200);
-    expect(Object.keys(r.body).sort()).toEqual(['editedSegments', 'reviewId', 'success']);
+    expect(Object.keys(r.body).sort()).toEqual(['doneAt', 'success']);
   });
 
   it('no response carries a research key, at any depth', () => {
@@ -202,5 +202,6 @@ describe('review routes send the row and nothing else', () => {
     expect(keys.has('before')).toBe(false);
     expect(keys.has('writes')).toBe(false);
     expect(keys.has('stampedEditIds')).toBe(false);
+    expect(keys.has('openEditIds')).toBe(false);
   });
 });

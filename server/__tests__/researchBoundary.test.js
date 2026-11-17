@@ -109,7 +109,13 @@ describe('T17 (PR1): the editing columns the module route sends are an allowlist
   });
 });
 
-// What the module route may send (spec §5.4 step 6): today's keys plus PR1's three. Exact sets, so any new key fails.
+// What the module route may send (spec §5.4 step 6): today's keys plus PR1's three, G1.23's `suggestions`, and
+// §C222's `myLastDoneAt`. Exact sets, so any new key fails.
+//
+// `myLastDoneAt` (2026-11-17, register §C222) is a time, and the one exception to "no new time" here. It is the
+// reader's OWN latest "Merkja sem lokið", read from the activity log: not research data, not the opening or switch
+// times §11 keeps on the server, and the same row's time the activity timeline already sends to the book's editors
+// (as edit rows already send `created_at` and `reviewed_at`). The PR2 case below pins it to null on an opening serve.
 const MODULE_JSON_ALLOWED = Object.freeze({
   top: [
     'book',
@@ -129,6 +135,7 @@ const MODULE_JSON_ALLOWED = Object.freeze({
     'stats',
     'acceptances',
     'otherPendingSegments',
+    'myLastDoneAt',
   ],
   segment: [
     'segmentId',
@@ -169,7 +176,7 @@ function jsonDrift(body) {
   };
 }
 
-describe('T17 (PR1): the module JSON carries no research field and no new time', () => {
+describe('T17 (PR1): the module JSON carries no research field and no research time', () => {
   const BOOK = 'efnafraedi-2e';
   const MODULE = 'm90020';
   let segmentParser;
@@ -413,6 +420,8 @@ describe('T17 (PR2): no opened time, no switch time and no snapshot in any respo
       acceptanceRow: [],
       forbidden: [],
     });
+    // The one allowed time (§C222) is the reader's own last "Merkja sem lokið"; the opener never pressed.
+    expect(first.body.myLastDoneAt).toBeNull();
     const text = JSON.stringify(first.body);
     expect(
       [String(SENTINEL_MS), new Date(SENTINEL_MS).toISOString()].filter((s) => text.includes(s))
