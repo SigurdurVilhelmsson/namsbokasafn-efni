@@ -132,3 +132,37 @@ test.describe("a reviewer's answer (HM-03) and its link (HM-04)", () => {
     await expect(cursor).toHaveAttribute('data-segment-id', target);
   });
 });
+
+// HM-02's label (register §C221, §C222): an edit is reviewable once saved, and nothing is "sent" any more, so the
+// detailed view's waiting edits say "Vistað <date>", not "Sent <date>". The row's grouping is HM-02's other half.
+test.describe('Heim: a saved edit reads Vistað (HM-02)', () => {
+  test('the detailed view says Vistað, not Sent', async ({ page }) => {
+    await loginAs(page, 'editor');
+    await page.route('**/api/my-work', async (route) => {
+      const response = await route.fetch();
+      const body = await response.json();
+      const row = {
+        bookLabel: 'E2E Fixture',
+        book: '__e2e-fixture__',
+        chapter: 1,
+        section: 'm68664',
+        submittedAt: '2026-11-17 10:00:00',
+        daysPending: 0,
+      };
+      await route.fulfill({
+        response,
+        json: {
+          ...body,
+          pendingSubmissions: [row],
+          summary: { ...body.summary, pendingSubmissionsCount: 1 },
+        },
+      });
+    });
+    await page.goto('/');
+    await page.getByRole('button', { name: 'Nákvæmt yfirlit' }).click();
+    const list = page.locator('#submissions-list');
+    await expect(list).toContainText('m68664');
+    await expect(list).toContainText('Vistað ');
+    await expect(list).not.toContainText('Sent ');
+  });
+});
