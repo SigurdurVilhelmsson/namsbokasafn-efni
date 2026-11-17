@@ -237,6 +237,46 @@ test.describe('Merkja sem lokið (§C222)', () => {
     reload.release();
   });
 
+  // After the refusal's reload re-renders, the kept text is back in its pane (installDraft takes it out of the hold)
+  // and the pane's state still says it was refused. Typing the original back leaves no changed text, so only the
+  // refused-pane arm can refuse: typing does not clear `refused`.
+  test("a refused save's kept text, typed back after the re-render, still refuses the press", async ({
+    page,
+  }) => {
+    await loginAs(page, 'admin', 89800 + RUN);
+    const target = plainRow(await loadModuleJson(page), 2);
+    await openModule(page);
+    const row = rowOf(page, target.segmentId);
+    await row.locator('.btn-edit').click();
+    const kept = `${target.is}${SUFFIX}`;
+    await row.locator('textarea').fill(kept);
+    await page.route(
+      `**${MODULE_URL}/edit`,
+      (route) =>
+        route.fulfill({
+          status: 409,
+          contentType: 'application/json',
+          body: JSON.stringify({ error: 'STALE_BASE', message: 'stub' }),
+        }),
+      { times: 1 }
+    );
+    const asked = answerDialogs(page, true);
+    const reloaded = backgroundLoads(page);
+    await row.getByRole('button', { name: 'Vista', exact: true }).click();
+    await reloaded;
+    await page.waitForTimeout(300); // the two background re-renders have run
+    // Control: the refusal took effect, and the re-rendered pane holds the kept text with its notice.
+    await expect(row.locator('textarea')).toHaveValue(kept);
+    await expect(row.locator('.draft-notice[data-notice="STALE_BASE"]')).toBeVisible();
+    await row.locator('textarea').fill(target.is);
+    const before = asked.length;
+    const dones = donePosts(page);
+    await page.locator('#btn-done').click();
+    await expect.poll(() => asked.slice(before)).toEqual([UI.alert.doneUnsaved]);
+    await page.waitForTimeout(500);
+    expect(dones).toEqual([]);
+  });
+
   test('a refused press says it was not recorded', async ({ page }) => {
     await loginAs(page, 'admin', 89500 + RUN);
     await openModule(page);
