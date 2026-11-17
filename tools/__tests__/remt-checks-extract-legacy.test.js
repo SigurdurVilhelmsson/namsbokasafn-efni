@@ -389,22 +389,25 @@ describe('E6 — unexpected files emitted by the extract', () => {
     // 🔴 THE BACKUP FILES ARE GITIGNORED, SO CI AND A DEV BOX ARE DIFFERENT POPULATIONS —
     // MEASURED, and it turned this test red on PR #416 while `npm test` was green locally.
     // `.gitignore:18-20` hides all three backup shapes, so a fresh checkout holds 535 tracked
-    // files under chemistry's `02-structure` where this machine has 12,035. ▶ The INVARIANT is
-    // asserted unconditionally; the MAGNITUDE only where backups actually exist — and the branch
-    // keys on the gate's own reported count, so it cannot silently degrade into asserting nothing.
-    const structure = await runCheck(E6, {
-      emittedFiles: listing('efnafraedi-2e', '02-structure'),
-    });
+    // files under chemistry's `02-structure` where a long-used dev box had 12,035. ▶ So no
+    // MAGNITUDE is asserted. Until 2026-11-17 a checkout with any backup had to hold more than
+    // 10,000 entries, which assumed years of them: a fresh checkout that had re-extracted some
+    // modules held a few hundred and went red (register §C217 ②). What is asserted holds at any
+    // size: every backup the tree holds, counted here independently of the gate, is one the gate
+    // accounted for, and none is a finding.
+    const structureListing = listing('efnafraedi-2e', '02-structure');
+    const structure = await runCheck(E6, { emittedFiles: structureListing });
     expect(structure.examined).toBeGreaterThan(500); // control: an empty walk must not pass
+    expect(structure.examined).toBe(structureListing.length);
     expect(structure.verdict).toBe(VERDICT.PASS);
+    expect(structure.findings).toHaveLength(0);
 
+    // Counted with the test's own pattern, not with the gate's classifier. A checkout with no
+    // backup (CI) compares 0 with 0; the synthetic cases above are the control that the gate
+    // does see and account for a backup.
+    const backupsOnDisk = structureListing.filter((f) => /\.backup\.|\.bak$/.test(f)).length;
     const accounted = Number(structure.message.match(/(\d+) backups accounted for/)?.[1] ?? 0);
-    if (accounted > 0) {
-      // A tree that has actually run the extractor: every backup is accounted for by a file the
-      // same listing contains, which is precisely the §C82 L32 repair.
-      expect(structure.examined).toBeGreaterThan(10000);
-      expect(structure.findings).toHaveLength(0);
-    }
+    expect(accounted).toBe(backupsOnDisk);
 
     for (const b of ['lifraen-efnafraedi']) {
       for (const tree of ['02-for-mt', '02-structure']) {
