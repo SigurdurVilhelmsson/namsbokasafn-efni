@@ -21,6 +21,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 
+const refusal = (code, message) => Object.assign(new Error(`[${code}] ${message}`), { code });
+
 const SHA1_RE = /^[0-9a-f]{40}$/;
 
 /**
@@ -202,4 +204,31 @@ export function cleanTrackedProblems(git, paths) {
     }
   }
   return problems;
+}
+
+/**
+ * Refuse a paid run from a LINKED git worktree. The ledger the cap is enforced against lives
+ * in the checkout (`<repoRoot>/books/<slug>/ai-review/ledger.jsonl`), so a linked worktree
+ * holds a ledger of its own and with it a USD 100 of its own (the runner review, 2026-10-27).
+ * The cap is therefore enforced per MAIN checkout: a repository whose git dir differs from
+ * its common git dir is a linked worktree, and `run` refuses there. `plan` and `apply` spend
+ * nothing and are not checked.
+ */
+export function assertMainCheckout(git) {
+  const [common, own] = git([
+    'rev-parse',
+    '--path-format=absolute',
+    '--git-common-dir',
+    '--absolute-git-dir',
+  ])
+    .split('\n')
+    .map((s) => s.trim());
+  if (!common || !own || fs.realpathSync(common) !== fs.realpathSync(own)) {
+    throw refusal(
+      'linked-worktree',
+      `this checkout is a linked git worktree (git dir ${own}, common git dir ${common}); ` +
+        'it keeps a ledger of its own, so the spending cap would not hold. Run paid passes ' +
+        'from the main checkout.'
+    );
+  }
 }
