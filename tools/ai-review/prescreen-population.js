@@ -21,6 +21,7 @@ const MAX_SENTENCE = 400;
 
 const sha = (...parts) => crypto.createHash('sha256').update(parts.join('\0')).digest('hex');
 const pairKey = (english, icelandic) => `${english}\0${icelandic ?? ''}`;
+const nonEmpty = (v) => typeof v === 'string' && v !== '';
 const emptyCounts = () => ({
   ruled: 0,
   fallback: 0,
@@ -32,18 +33,17 @@ const emptyCounts = () => ({
 
 /** Set of (english, icelandic) pair keys of an export's `terms`. */
 const exportPairSet = (exportTerms) =>
-  new Set(exportTerms.map((t) => pairKey(t.english, t.icelandic)));
+  new Set(
+    exportTerms
+      .filter((t) => nonEmpty(t.english) && nonEmpty(t.icelandic))
+      .map((t) => pairKey(t.english, t.icelandic))
+  );
 
-const rulingEnglish = new WeakMap();
 const ruledForms = (rulingSet) => {
-  let set = rulingEnglish.get(rulingSet);
-  if (!set) {
-    set = new Set(
-      (rulingSet.rulings ?? []).flatMap((r) => (r.en ?? []).map((e) => String(e).toLowerCase()))
-    );
-    rulingEnglish.set(rulingSet, set);
-  }
-  return set;
+  if (!Array.isArray(rulingSet?.rulings)) throw new Error('the ruling set has no rulings array');
+  return new Set(
+    rulingSet.rulings.flatMap((r) => (r.en ?? []).map((e) => String(e).toLowerCase()))
+  );
 };
 
 /**
@@ -58,8 +58,8 @@ export function classifyRow(row, { rulingSet, exportPairs }) {
   if (row.isFallback) return 'fallback';
   if (row.isTied || row.icelandic == null || row.icelandic === '') return 'tie';
   if (DECIDED_REASONS.has(row.reason)) return 'decided';
-  if (row.domain === 'physics' || row.domain === 'biology') return 'physicsBiology';
   if (!exportPairs.has(pairKey(row.english, row.icelandic))) return 'notInExport';
+  if (row.domain === 'physics' || row.domain === 'biology') return 'physicsBiology';
   return 'keep';
 }
 
@@ -73,11 +73,13 @@ export function classifyRow(row, { rulingSet, exportPairs }) {
  * @returns {object}
  */
 export function reduceCensus(full, exportTerms, rulingSet) {
+  if (full?.schema !== CENSUS_SCHEMA) throw new Error(`census schema is not ${CENSUS_SCHEMA}`);
+  if (full.reduced === true) throw new Error('the census is already reduced');
   const exportPairs = exportPairSet(exportTerms);
   const withheld = emptyCounts();
   const rows = [];
   for (const row of full.rows) {
-    if (exportPairs.has(pairKey(row.english, row.icelandic))) {
+    if (nonEmpty(row.icelandic) && exportPairs.has(pairKey(row.english, row.icelandic))) {
       const rest = { ...row };
       delete rest.alternatives;
       delete rest.ifRemoved;
@@ -86,7 +88,9 @@ export function reduceCensus(full, exportTerms, rulingSet) {
       withheld[classifyRow(row, { rulingSet, exportPairs })] += 1;
     }
   }
-  return { ...full, rows, withheld, reduced: true };
+  const out = { ...full, rows, withheld, reduced: true };
+  delete out.dbPath;
+  return out;
 }
 
 /**
@@ -129,10 +133,13 @@ const wholeWord = (english) =>
 /** Segment text as a reader sees it: markers replaced by their content, whitespace collapsed. */
 function plainText(text) {
   let out = text.replace(/\[\[(?:MATH|MEDIA|TABLE):[^\]]*\]\]/g, '…');
-  const marker = /\[\[[A-Za-z]+:((?:(?!\[\[|\]\]).)*?)(?:\|[^\]]*)?\]\]/g;
+  const marker = /\[\[([A-Za-z]+):((?:(?!\[\[|\]\]).)*?)(\|[^\]]*)?\]\]/g;
+  // A marker with no visible text (`xref` without a pipe, any `docref`) is an ellipsis.
+  const visible = (_m, type, body, pipe) =>
+    type === 'docref' || (type === 'xref' && pipe === undefined) ? '…' : body;
   for (let prev = null; prev !== out;) {
     prev = out;
-    out = out.replace(marker, '$1');
+    out = out.replace(marker, visible);
   }
   return out.replace(/\s+/g, ' ').trim();
 }
@@ -244,8 +251,9 @@ export function pickEvenly(rows, n) {
  * The census as items to judge. `rows` is the chemistry population; `physicsBiology` is kept
  * aside for the pilot and a possible full run. Each `excluded` count adds the census's
  * `withheld` count of the same class, so a reduced census gives the counts of the full one.
- * `noSentence` counts rows (chemistry or physics and biology) with no match that yields a
- * sentence locally; such a row is left out.
+ * `noSentence` counts kept chemistry rows with no match that yields a
+ * sentence locally, `physicsBiologyNoSentence` the same for physics and biology rows; such a
+ * row is left out, so the counts partition the rows.
  *
  * @param {{census: object, rulingSet: object, exportTerms: object[], units: object[], seed: string}} args
  */
@@ -253,7 +261,7 @@ export function buildPopulation({ census, rulingSet, exportTerms, units, seed })
   const exportPairs = exportPairSet(exportTerms);
   const bySegment = new Map();
   for (const u of units) for (const s of u.segments) bySegment.set(s.segmentId, { u, s });
-  const excluded = { ...emptyCounts(), noSentence: 0 };
+  const excluded = { ...emptyCounts(), noSentence: 0, physicsBiologyNoSentence: 0 };
   for (const c of WITHHOLD_CLASSES) excluded[c] += census.withheld?.[c] ?? 0;
   const rows = [];
   const physicsBiology = [];
@@ -263,7 +271,6 @@ export function buildPopulation({ census, rulingSet, exportTerms, units, seed })
       excluded[cls] += 1;
       continue;
     }
-    if (cls === 'physicsBiology') excluded.physicsBiology += 1;
     const occurrences = [];
     for (const m of row.matches) {
       const hit = bySegment.get(m.segmentId);
@@ -277,9 +284,10 @@ export function buildPopulation({ census, rulingSet, exportTerms, units, seed })
     }
     const sentences = sampleSentences(occurrences, { n: 5, seed });
     if (sentences.length === 0) {
-      excluded.noSentence += 1;
+      excluded[cls === 'keep' ? 'noSentence' : 'physicsBiologyNoSentence'] += 1;
       continue;
     }
+    if (cls === 'physicsBiology') excluded.physicsBiology += 1;
     (cls === 'keep' ? rows : physicsBiology).push({
       english: row.english,
       icelandic: row.icelandic,
@@ -311,6 +319,7 @@ export const CONTROLS = deepFreeze({
     {
       name: 'addition-adding',
       expected: 'flag',
+      flagKinds: ['wrong-sense', 'some-senses-only'],
       segmentIds: [
         'm68667:para:fs-idm107801696',
         'm68703:para:fs-idm134700400',
@@ -363,6 +372,7 @@ export function buildControls({ units, seed }) {
       sentences,
       name: c.name,
       expected: c.expected,
+      ...(c.flagKinds ? { flagKinds: [...c.flagKinds] } : {}),
     };
   };
   const sampled = [...CONTROLS.positives, ...CONTROLS.negatives].map((c) =>
@@ -370,7 +380,7 @@ export function buildControls({ units, seed }) {
   );
   const halves = CONTROLS.homograph.map((h) =>
     withSentences(
-      { ...HOMOGRAPH_ROW, name: h.name, expected: h.expected },
+      { ...HOMOGRAPH_ROW, name: h.name, expected: h.expected, flagKinds: h.flagKinds },
       h.segmentIds.map((id) => {
         const seg = bySegment.get(id);
         if (!seg) throw new Error(`control ${h.name}: segment ${id} is missing from the units`);
@@ -396,7 +406,15 @@ export function assembleItems({ population, controls, seed, minGap = 8 }) {
   const all = [
     ...population.rows.map((r) => ({ r, meta: { kind: 'population' } })),
     ...(population.physicsBiology ?? []).map((r) => ({ r, meta: { kind: 'physicsBiology' } })),
-    ...controls.map((r) => ({ r, meta: { kind: 'control', name: r.name, expected: r.expected } })),
+    ...controls.map((r) => ({
+      r,
+      meta: {
+        kind: 'control',
+        name: r.name,
+        expected: r.expected,
+        ...(r.flagKinds ? { flagKinds: r.flagKinds } : {}),
+      },
+    })),
   ].map((e) => ({ ...e, sort: sha(seed, e.r.english, e.r.icelandic, e.r.name ?? '') }));
   const list = all.sort((a, b) => (a.sort < b.sort ? -1 : a.sort > b.sort ? 1 : 0));
   const pk = (e) => pairKey(e.r.english, e.r.icelandic);

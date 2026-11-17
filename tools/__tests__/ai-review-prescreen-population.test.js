@@ -1,4 +1,7 @@
 import { describe, it, expect } from 'vitest';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 import {
   CONTROLS,
   classifyRow,
@@ -10,6 +13,7 @@ import {
   assembleItems,
   findOccurrences,
   pickEvenly,
+  loadUnits,
 } from '../ai-review/prescreen-population.js';
 
 const rulingSet = { rulings: [{ en: ['Ruled Word', 'ruled'] }] };
@@ -71,6 +75,17 @@ describe('classifyRow', () => {
   it('lowercases against the ruling set', () => {
     expect(classifyRow(row('RULED'), ctx)).toBe('ruled');
   });
+  it('counts a physics row whose pair is not exported as notInExport', () => {
+    expect(classifyRow(row('physout', { domain: 'physics' }), ctx)).toBe('notInExport');
+  });
+  it('classifies an exported physics row as physicsBiology', () => {
+    expect(classifyRow(row('phys', { domain: 'physics' }), ctx)).toBe('physicsBiology');
+  });
+  it('throws when the ruling set has no rulings array', () => {
+    expect(() => classifyRow(row('a'), { rulingSet: {}, exportPairs: new Set() })).toThrow(
+      /rulings/
+    );
+  });
 });
 
 describe('buildPopulation', () => {
@@ -85,6 +100,7 @@ describe('buildPopulation', () => {
       physicsBiology: 1,
       notInExport: 1,
       noSentence: 0,
+      physicsBiologyNoSentence: 0,
     });
     expect(p.rows.map((r) => r.english).sort()).toEqual(['keepa', 'keepb']);
     expect(p.physicsBiology.map((r) => r.english)).toEqual(['phys']);
@@ -107,15 +123,45 @@ describe('buildPopulation', () => {
     };
     expect(buildPopulation({ census: c, ...args }).excluded.noSentence).toBe(1);
   });
-  it('gives the same counts over the reduced census', () => {
-    const reduced = reduceCensus(
-      census,
-      exportTerms.filter((t) => t.english !== 'outside'),
-      rulingSet
-    );
-    expect(buildPopulation({ census: reduced, ...args }).excluded).toEqual(
-      buildPopulation({ census, ...args }).excluded
-    );
+  it('gives the same counts and lists over the reduced census, withholding ruled, fallback and tie', () => {
+    const partial = exportTerms.filter((t) => !['fb', 'tie', 'ruled'].includes(t.english));
+    const reduced = reduceCensus(census, partial, rulingSet);
+    expect(reduced.withheld.ruled + reduced.withheld.fallback + reduced.withheld.tie).toBe(3);
+    const a = buildPopulation({ census: reduced, ...args, exportTerms: partial });
+    const b = buildPopulation({ census, ...args, exportTerms: partial });
+    expect(a).toEqual(b);
+  });
+  it('keeps a non-exported physics row out of physicsBiology, from a full census', () => {
+    const c = { ...census, rows: [...census.rows, row('physout', { domain: 'physics' })] };
+    const u = [
+      unit(1, 'm1', {
+        ...Object.fromEntries(units[0].segments.map((s) => [s.segmentId, s.en])),
+        'm1:para:physout': 'A physout here.',
+      }),
+    ];
+    const full = buildPopulation({ census: c, ...args, units: u });
+    expect(full.physicsBiology.map((r) => r.english)).toEqual(['phys']);
+    expect(full.excluded.notInExport).toBe(2);
+    const reduced = reduceCensus(c, exportTerms, rulingSet);
+    expect(buildPopulation({ census: reduced, ...args, units: u })).toEqual(full);
+  });
+  it('counts a keep row with no sentence in noSentence and a physics one apart', () => {
+    const c = {
+      ...census,
+      rows: [
+        row('keepa', { matches: [{ chapter: 1, moduleId: 'm1', segmentId: 'm1:para:gone' }] }),
+        row('phys', {
+          domain: 'physics',
+          matches: [{ chapter: 1, moduleId: 'm1', segmentId: 'm1:para:gone' }],
+        }),
+      ],
+    };
+    const { excluded } = buildPopulation({ census: c, ...args });
+    expect([
+      excluded.noSentence,
+      excluded.physicsBiologyNoSentence,
+      excluded.physicsBiology,
+    ]).toEqual([1, 1, 0]);
   });
 });
 
@@ -145,6 +191,34 @@ describe('reduceCensus', () => {
   it('is marked reduced', () => {
     expect(reduced.reduced).toBe(true);
   });
+  it('never keeps a row with a null or empty icelandic', () => {
+    const c = {
+      schema: 'c19-census/1',
+      rows: [row('x', { icelandic: null }), row('y', { icelandic: '' })],
+    };
+    const out = reduceCensus(
+      c,
+      [
+        { english: 'x', icelandic: '' },
+        { english: 'y', icelandic: '' },
+      ],
+      rulingSet
+    );
+    expect(out.rows).toEqual([]);
+    expect(out.withheld.tie).toBe(2);
+  });
+  it('refuses a census of another schema', () => {
+    expect(() => reduceCensus({ ...census, schema: 'x/1' }, exportTerms, rulingSet)).toThrow(
+      /schema/
+    );
+  });
+  it('refuses an already reduced census', () => {
+    expect(() => reduceCensus(reduced, exportTerms, rulingSet)).toThrow(/reduced/);
+  });
+  it('does not carry dbPath', () => {
+    const out = reduceCensus({ ...census, dbPath: '/prod/x.db' }, exportTerms, rulingSet);
+    expect('dbPath' in out).toBe(false);
+  });
 });
 
 describe('CONTROLS', () => {
@@ -169,6 +243,9 @@ describe('CONTROLS', () => {
       'carbonate',
       'crystalline',
     ]);
+  });
+  it('limits the adding half to wrong-sense and some-senses-only', () => {
+    expect(CONTROLS.homograph[0].flagKinds).toEqual(['wrong-sense', 'some-senses-only']);
   });
   it('is frozen', () => {
     expect(Object.isFrozen(CONTROLS.homograph[0].segmentIds)).toBe(true);
@@ -207,6 +284,14 @@ describe('sentences', () => {
     expect(extractSentence('A [[b:bold]] word. The [[term:atom|t1]] is small.', 'atom')).toBe(
       'The atom is small.'
     );
+  });
+  it.each([
+    ['[[xref:fs-id123]]', 'See … for atom.'],
+    ['[[docref:m123]]', 'See … for atom.'],
+    ['[[xref:Figure 1|fs-id123]]', 'See Figure 1 for atom.'],
+    ['[[link:the site|http://x.org]]', 'See the site for atom.'],
+  ])('resolves %s to its visible text or an ellipsis', (marker, expected) => {
+    expect(extractSentence(`See ${marker} for atom.`, 'atom')).toBe(expected);
   });
   it('matches whole words only', () => {
     expect(
@@ -262,16 +347,58 @@ describe('assembleItems', () => {
     const pos = out.items.map((i, n) => (i.english === 'addition' ? n : -1)).filter((n) => n >= 0);
     expect(pos[1] - pos[0]).toBeGreaterThanOrEqual(8);
   });
-  it('moves a half that is too close, for a wide gap', () => {
-    const o = assembleItems({ population, controls, seed: 's', minGap: 15 });
+  it('moves a half that starts too close to (i + floor(len/2)) mod len', () => {
+    const o = assembleItems({ population, controls, seed: 'seed9' });
     const pos = o.items.map((i, n) => (i.english === 'addition' ? n : -1)).filter((n) => n >= 0);
-    expect(pos[1] - pos[0]).toBeGreaterThanOrEqual(15);
+    expect(pos).toEqual([6, 25]);
   });
   it('throws when the gap cannot be met', () => {
     expect(() => assembleItems({ population, controls, seed: 's', minGap: 40 })).toThrow(/minGap/);
   });
+  it('copies flagKinds into the key only where present', () => {
+    const o = assembleItems({
+      population,
+      controls: [
+        { ...controls[0], flagKinds: ['wrong-sense', 'some-senses-only'] },
+        controls[1],
+        controls[2],
+      ],
+      seed: 's',
+    });
+    const id = (c) => o.items.find((i) => i.sentences[0] === c).id;
+    expect(o.key[id('a')].flagKinds).toEqual(['wrong-sense', 'some-senses-only']);
+    expect('flagKinds' in o.key[id('b')]).toBe(false);
+  });
   it('keys controls with name and expected', () => {
     const id = out.items.find((i) => i.sentences[0] === 'b').id;
     expect(out.key[id]).toEqual({ kind: 'control', name: 'addition-reaction', expected: 'fine' });
+  });
+});
+
+describe('loadUnits', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'prescreen-units-'));
+  const put = (sub, file, id) => {
+    fs.mkdirSync(path.join(dir, '02-for-mt', sub), { recursive: true });
+    fs.writeFileSync(
+      path.join(dir, '02-for-mt', sub, file),
+      `<!-- SEG:${id}:para:p1 -->\nText ${id}.\n`
+    );
+  };
+  put('ch02', 'm2-segments.en.md', 'm2');
+  put('ch00', 'm0b-segments.en.md', 'm0b');
+  put('ch00', 'm0a-segments.en.md', 'm0a');
+  put('appendices', 'ma-segments.en.md', 'ma');
+  fs.writeFileSync(path.join(dir, '02-for-mt', 'stray.txt'), 'x');
+  const units = loadUnits(dir);
+  it('numbers chapters 0, 2 and -1, skips a stray file, and sorts', () => {
+    expect(units.map((u) => [u.chapter, u.moduleId])).toEqual([
+      [0, 'm0a'],
+      [0, 'm0b'],
+      [2, 'm2'],
+      [-1, 'ma'],
+    ]);
+  });
+  it('reads the segments', () => {
+    expect(units[0].segments).toEqual([{ segmentId: 'm0a:para:p1', en: 'Text m0a.' }]);
   });
 });
