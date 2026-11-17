@@ -112,7 +112,7 @@ save on the editor's behalf: a save has its own category, note and conflict answ
 1. **A new route for the new act, and the old send-for-review route removed (chosen, Claude's call).** Add
    `POST /:book/:chapter/:moduleId/done`. Delete the `/submit` route, which was the only route that opened review
    rows from the browser. Keep the old loop's service functions for the complete route. Then `module-submit` comes from
-   one place with one shape, and the route's name says what it does. The cost is updating six unit test files and two
+   one place with one shape, and the route's name says what it does. The cost is updating five unit test files and two
    E2E specs (§6).
 2. **The same route with a new body.** Keep the `/submit` URL and change what it does. It saves no test work: the
    same tests break, because they expect a review row. And it leaves a route named "submit" that submits nothing.
@@ -144,9 +144,10 @@ save on the editor's behalf: a save has its own category, note and conflict answ
   - the trace shows only the viewer's own press, with a second editor's press as the control;
   - the press is refused while a pane holds unsaved text;
   - an E2E pass through the button, the confirm and the trace.
-- **Tests to update.** Five unit files POST `/submit`: `reviewRoutesNoBefore`, `crossBookAuthz`,
+- **Tests to update.** Four unit files drive the `/submit` handler: `reviewRoutesNoBefore`,
   `researchConsentStates`, `researchReviewEvents` and `researchApplyEvents`. `servedBaseClientPins` pins the
-  `btn-submit` listener's source. The E2E specs `editor-workflow` and `review-cycle` drive `/submit`.
+  `btn-submit` listener's source. ✏️ *Corrected 2026-11-17, while planning: this listed `crossBookAuthz` too, but its
+  match is `/api/sections/:id/submit-review`, a different route, so five files in all, not six.* The E2E specs `editor-workflow` and `review-cycle` drive `/submit`.
   `researchFilter.test.js` lists `module-submit` by name, and the name is kept, so it is untouched. So are the tests
   that set up a review by calling `submitModuleForReview` directly.
 - **Records:**
