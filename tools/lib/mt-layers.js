@@ -411,7 +411,8 @@ function assertNoRedirect(book, layer, chapterDir) {
  * The units of one chapter, in a fixed order: the module stems named by
  * `02-structure/<chapterDir>/m<N>-structure.json` (numeric order), then `chapter-metadata`
  * when layer 1 has the literal `chapter-metadata-segments.is.md`. Names are built, never
- * globbed from a segment directory (`02-mt-output` holds untracked junk and legacy splits).
+ * globbed from a segment directory (`02-mt-output` holds untracked junk, and until 2026-11-17
+ * chemistry's ch05 held 7 tracked legacy split files there; register §C225).
  * Refuses a missing structure directory, a `*-structure.json` that names no module, and a
  * chapter with no modules.
  *
