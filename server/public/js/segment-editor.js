@@ -1603,6 +1603,7 @@
           )
         : metaText;
     metaEl.title = UI.tooltips.sourceTypes;
+    renderDoneTrace(moduleData.myLastDoneAt); // register §C222: the reader's own last "Merkja sem lokið"
 
     // Update topbar breadcrumb — human title, not the pipeline module id
     const topbarTitle = document.getElementById('topbar-title');
@@ -3424,43 +3425,60 @@
   }
 
   // ================================================================
-  // SUBMIT FOR REVIEW
+  // MERKJA SEM LOKIÐ (register §C222)
   // ================================================================
-  document.getElementById('btn-submit').addEventListener('click', async () => {
-    const stats = moduleData.stats || {};
-    if (!stats.pending || stats.pending === 0) {
-      alert(UI.alert.noChanges);
+  // A recorded moment, never a status: every press records, nothing changes for the unit's edits, and the trace
+  // shows only the reader's own last press. It replaced "Senda til yfirlestrar" on 2026-11-17.
+  document.getElementById('btn-done').addEventListener('click', async () => {
+    // Refused before asking: a "finished" moment recorded before the last edit lands would precede that edit.
+    if (unsavedBlocksDone()) {
+      alert(UI.alert.doneUnsaved);
       return;
     }
-
-    if (!confirm(UI.confirm.submitForReview(stats.pending))) return;
+    if (!confirm(UI.confirm.markDone)) return;
     const unit = openUnit();
-
+    const btn = document.getElementById('btn-done');
+    btn.disabled = true; // a double click would record two moments a fraction of a second apart
     try {
-      await fetchJson(`${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/submit`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-      });
-
-      // Show success toast with link to reviews page
-      const toast = document.createElement('div');
-      toast.className = 'toast toast-success show';
-      toast.innerHTML =
-        UI.segmentEditor.sentForReview +
-        ' <a href="/editor" style="color: inherit; text-decoration: underline; margin-left: 0.5rem;">' +
-        UI.segmentEditor.viewReview +
-        '</a>';
-      document.body.appendChild(toast);
-      setTimeout(() => {
-        toast.classList.remove('show');
-        setTimeout(() => toast.remove(), 300);
-      }, 6000);
-      await reloadIfOpen(unit);
-    } catch (err) {
-      alert(UI.common.errorPrefix + err.message);
+      const body = await fetchJson(
+        `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/done`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+        }
+      );
+      // Paint only the unit it was pressed in: the reader may have opened another one meanwhile.
+      if (openUnit() === unit) renderDoneTrace(body.doneAt);
+    } catch {
+      alert(UI.alert.doneNotRecorded);
+    } finally {
+      btn.disabled = false;
     }
   });
+
+  /**
+   * Whether the unit holds text that is not saved yet: a pane with changed text, a text a refused save kept, or a
+   * save still on its way. "Merkja sem lokið" refuses while any holds.
+   */
+  function unsavedBlocksDone() {
+    if (savesInFlight.size > 0 || heldDrafts.size > 0) return true;
+    for (const st of paneState.values()) if (st && st.refused) return true;
+    return [...dirtyEdits].some((id) => paneTextChanged(id));
+  }
+
+  /** The reader's own last press (a SQLite UTC "YYYY-MM-DD HH:MM:SS"), or hidden when there is none. */
+  function renderDoneTrace(raw) {
+    const el = document.getElementById('done-trace');
+    if (!el) return;
+    if (!raw) {
+      el.hidden = true;
+      el.textContent = '';
+      return;
+    }
+    el.textContent = UI.segmentEditor.doneTrace(vhFormatDate(raw));
+    el.hidden = false;
+  }
 
   // ================================================================
   // LEAVING A UNIT (Back, and a reload answered OPENING_UNRECORDED)

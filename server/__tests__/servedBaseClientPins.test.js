@@ -256,27 +256,33 @@ describe('an action answered after its unit was left touches nothing of it (PR2 
       /if \(openUnit\(\) !== unit\) return;\s*await loadModule\(currentModuleId/
     );
   });
-  it('the review actions, revoke and submit reload through reloadIfOpen', () => {
-    const submit = code(
-      src.slice(
-        src.indexOf("getElementById('btn-submit').addEventListener"),
-        src.indexOf('function openUnit(')
-      )
-    );
+  it('the review actions and revoke reload through reloadIfOpen', () => {
     const bodies = {
       reviewEdit: code(fnBody('reviewEdit', 'unapproveEdit')),
       unapproveEdit: code(fnBody('unapproveEdit', 'reopenEdit')),
       reopenEdit: code(
-        src.slice(src.indexOf('function reopenEdit('), src.indexOf("getElementById('btn-submit')"))
+        src.slice(src.indexOf('function reopenEdit('), src.indexOf("getElementById('btn-done')"))
       ),
       revokeAcceptance: code(fnBody('revokeAcceptance', 'openEditPanel')),
-      submit,
     };
     for (const [name, body] of Object.entries(bodies)) {
       expect(body, name).toContain('const unit = openUnit();');
       expect(body, name).toMatch(/await reloadIfOpen\(unit/);
       expect(body, name).not.toMatch(/loadModule\(/);
     }
+  });
+  // "Merkja sem lokið" (register §C222) changes no edit, so it reloads nothing; it paints its trace only on the unit
+  // it was pressed in, since the reader may have opened another one while the press was in flight.
+  it('the done press paints the trace only on the unit it was pressed in, and reloads nothing', () => {
+    const done = code(
+      src.slice(
+        src.indexOf("getElementById('btn-done').addEventListener"),
+        src.indexOf('function openUnit(')
+      )
+    );
+    expect(done).toContain('const unit = openUnit();');
+    expect(done).toMatch(/openUnit\(\) === unit/);
+    expect(done).not.toMatch(/loadModule\(|reloadIfOpen\(/);
   });
   it('every direct reload of the open unit is one of the sites above (a new one must be checked)', () => {
     // reloadIfOpen, onSaveParked (synchronous, behind its own moduleData check), saveEdit's two open-unit refusal
