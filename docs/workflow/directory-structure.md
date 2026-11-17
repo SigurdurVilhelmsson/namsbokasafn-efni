@@ -170,6 +170,11 @@ Students automatically see the highest quality version available for each chapte
 ## Removed Directories
 
 The following directories were removed during cleanup (backed up to `.backup-20260210/`):
+
+> ✏️ *2026-11-17: the backup tree `books/efnafraedi-2e/.backup-20260210/` was itself removed from the
+> repository ([USER]'s decision; register §C227). Its files stay in git history; `bde4a3c8c` is the last
+> commit that holds them.*
+
 - `05-publication/for-mt/` - Should never have existed
 - `03-machine-translation/` - Old markdown-based workflow (abandoned)
 - `03-faithful/` - Old directory name (replaced by 03-faithful-translation)
