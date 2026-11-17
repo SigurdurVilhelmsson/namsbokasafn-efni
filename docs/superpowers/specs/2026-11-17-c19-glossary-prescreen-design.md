@@ -171,7 +171,8 @@ output is committed as evidence. [USER] runs nothing for it; it is a read-only c
 The census runs **per chapter, as the editor does** (`findTermsInSegments` takes the module's chapter), so a
 chapter-level preference is seen where it applies. A census row is one **(English, expected Icelandic)** pair.
 
-**Population.** The census rows that raise an editor warning and that no person has decided. Out:
+**Population.** The census rows that **can** raise an editor warning (an in-scope winner, so the editor shows its
+word as the expected one at every match) and that no person has decided. Out:
 - rows whose English is ruled in the ruling set;
 - physics and biology rows (§C129's territory, §2);
 - **fallback rows** (domains outside the chain): they raise **no** warning and no report line, since the warning
