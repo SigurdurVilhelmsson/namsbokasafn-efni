@@ -848,10 +848,11 @@ export const E3 = defineCheck({
  * under `*.bak`. Real files of both families exist in the tree today. A glob covering one of
  * three is the "fix the line, not the class" failure.
  *
- * ⚠️ AND A SHAPE NEITHER DOCUMENT NAMES: parenthesised duplicates, `m68709-segments(b).en.md`
- * — **49 tracked in chemistry's `02-for-mt`**, none gitignored. They are the reason the
- * spec's "never `git status --porcelain`" rule is right for a SECOND mechanism it never
- * states: `git status` misses them not because they are ignored but because they are
+ * ⚠️ AND A SHAPE NEITHER DOCUMENT NAMES: parenthesised duplicates, `m68709-segments(b).en.md`.
+ * **49 were tracked in chemistry's `02-for-mt`** until 2026-11-17, none gitignored, when they
+ * were removed from the tree (register §C225); none is tracked there now. They are the
+ * reason the spec's "never `git status --porcelain`" rule is right for a SECOND mechanism it
+ * never states: `git status` missed them not because they were ignored but because they were
  * COMMITTED. An untracked-file detector cannot see junk that was checked in.
  */
 export function classifyEmittedFile(name) {

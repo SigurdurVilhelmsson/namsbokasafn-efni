@@ -826,7 +826,7 @@ function readG1g({ book, booksDir }) {
   const units = [];
   for (const dir of fs.readdirSync(forMt).filter((d) => chapterFromDir(d) !== null)) {
     for (const f of fs.readdirSync(path.join(forMt, dir))) {
-      if (!f.endsWith('-segments.en.md')) continue; // skips the legacy -segments(b).en.md files
+      if (!f.endsWith('-segments.en.md')) continue; // skips a legacy -segments(b).en.md file, should one reappear (the 49 were removed, §C225)
       const moduleId = f.slice(0, -'-segments.en.md'.length);
       if (!UNIT_ID.test(moduleId)) continue; // skips exercises-segments.en.md, as listChapterModules does
       const mtOutput = path.join(booksDir, book, '02-mt-output', dir, `${moduleId}-segments.is.md`);
