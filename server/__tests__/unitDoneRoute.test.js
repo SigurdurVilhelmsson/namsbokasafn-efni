@@ -93,6 +93,7 @@ beforeAll(() => {
     'm97308',
     'm97309',
     'm97310',
+    'm97311',
   ]) {
     addModule(m);
   }
@@ -236,6 +237,32 @@ describe('POST /done: a press is a recorded moment', () => {
     expect(r.status).toBe(500);
     expect(r.body.code).toBe('DONE_NOT_RECORDED');
     expect(eventsSince(mark)).toHaveLength(0);
+  });
+
+  // Final review, Important 1: the read-back runs after the press is recorded, so its failure must not turn a
+  // recorded press into "not recorded" (the editor would retry and record it twice).
+  it('a failed read-back after a recorded press still answers success, and the press is recorded once', async () => {
+    const before = pressRows('p-a').length;
+    vi.spyOn(activityLog, 'latestOfTypeByUser').mockImplementation(() => {
+      throw new Error('read failed');
+    });
+    const mark = eventMark();
+    const r = await press(A, 'm97311');
+    expect(r.status).toBe(200);
+    expect(r.body).toEqual({ success: true, doneAt: null });
+    expect(pressRows('p-a')).toHaveLength(before + 1);
+    expect(eventsSince(mark)).toHaveLength(1);
+  });
+
+  // Final review, Important 2: the module GET did not depend on the activity log before §C222.
+  it('the module GET still opens the unit when the trace cannot be read', async () => {
+    vi.spyOn(activityLog, 'latestOfTypeByUser').mockImplementation(() => {
+      throw new Error('read failed');
+    });
+    const r = await invoke(h.get, { params: params('m97311'), chapterNum: 1, user: A });
+    expect(r.status).toBe(200);
+    expect(r.body.myLastDoneAt).toBeNull();
+    expect(r.body.segments.length).toBeGreaterThan(0);
   });
 
   it('the activity description is the approved string', async () => {

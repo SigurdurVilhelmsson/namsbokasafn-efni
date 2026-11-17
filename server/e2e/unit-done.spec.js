@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const { test, expect } = require('@playwright/test');
 const { loginAs } = require('./helpers/auth');
+const segmentValidation = require('../public/js/segment-validation');
 
 /**
  * "Merkja sem lokið" in the segment editor (register §C222; design
@@ -49,6 +50,62 @@ function answerDialogs(page, accept) {
     (accept ? d.accept() : d.dismiss()).catch(() => {});
   });
   return asked;
+}
+
+const SUFFIX = ' ó';
+
+async function loadModuleJson(page) {
+  const res = await page.request.get(MODULE_URL);
+  expect(res.ok()).toBe(true);
+  return res.json();
+}
+
+/**
+ * The `index`-th virgin row, counted from the module's start (past the first rows other specs edit), whose text plus
+ * SUFFIX the client's validator passes with no warning, so Vista posts without asking. Every save these cases make is
+ * stubbed, so nothing is written and no other spec's rows are touched (helpers/segments.js).
+ */
+function plainRow(data, index) {
+  const ok = (s, i) =>
+    i > 3 &&
+    i < data.segments.length - 2 &&
+    s.hasTranslation &&
+    s.is &&
+    /^[0-9a-f]{64}$/.test(s.baseSha256 || '') &&
+    !(data.edits[s.segmentId] || []).length &&
+    !(data.acceptances || {})[s.segmentId] &&
+    !segmentValidation.validateStructure(s.en, s.is, `${s.is}${SUFFIX}`).blocked &&
+    !segmentValidation.validateStructure(s.en, s.is, `${s.is}${SUFFIX}`).warnings;
+  const picks = data.segments.filter((s, i) => ok(s, i));
+  expect(picks.length).toBeGreaterThan(index);
+  return picks[index];
+}
+
+const rowOf = (page, segmentId) =>
+  page.locator(`#segments-body tr[data-segment-id="${segmentId}"]`);
+
+/** Save answers held back for good: `posts` counts the saves sent. */
+async function holdSaves(page) {
+  const posts = [];
+  await page.route(`**${MODULE_URL}/edit`, async (route) => {
+    posts.push(route.request().postDataJSON());
+    await new Promise(() => {});
+  });
+  return posts;
+}
+
+/** Hold back every module GET until `release()`: the reload after a refusal does not come back meanwhile. */
+async function holdReload(page) {
+  let n = 0;
+  let release;
+  const gate = new Promise((resolve) => (release = resolve));
+  await page.route(`**${MODULE_URL}`, async (route) => {
+    if (route.request().method() !== 'GET') return route.continue();
+    n++;
+    await gate;
+    await route.continue();
+  });
+  return { held: () => n, release };
 }
 
 /** Every POST …/done this page sends, with its status. */
@@ -123,6 +180,61 @@ test.describe('Merkja sem lokið (§C222)', () => {
     await expect.poll(() => asked).toEqual([UI.alert.doneUnsaved]);
     await page.waitForTimeout(500);
     expect(posts).toEqual([]);
+  });
+
+  // Final review, Important 3: each arm of the refusal on its own. A pane typed back to its original no longer
+  // counts as changed, so in these two only the save in flight, or the kept text waiting for its pane, can refuse.
+  test('a save still in flight refuses the press, even with its pane typed back', async ({
+    page,
+  }) => {
+    await loginAs(page, 'admin', 89600 + RUN);
+    const target = plainRow(await loadModuleJson(page), 0);
+    await openModule(page);
+    const row = rowOf(page, target.segmentId);
+    await row.locator('.btn-edit').click();
+    const box = row.locator('textarea');
+    await box.fill(`${target.is}${SUFFIX}`);
+    const posts = await holdSaves(page); // never answered in this test
+    await row.getByRole('button', { name: 'Vista', exact: true }).click();
+    await expect.poll(() => posts.length).toBe(1);
+    await box.fill(target.is);
+    const asked = answerDialogs(page, true);
+    const dones = donePosts(page);
+    await page.locator('#btn-done').click();
+    await expect.poll(() => asked).toEqual([UI.alert.doneUnsaved]);
+    await page.waitForTimeout(500);
+    expect(dones).toEqual([]);
+  });
+
+  test("a refused save's text waiting for its pane refuses the press", async ({ page }) => {
+    await loginAs(page, 'admin', 89700 + RUN);
+    const target = plainRow(await loadModuleJson(page), 1);
+    await openModule(page);
+    const row = rowOf(page, target.segmentId);
+    await row.locator('.btn-edit').click();
+    await row.locator('textarea').fill(`${target.is}${SUFFIX}`);
+    await page.route(
+      `**${MODULE_URL}/edit`,
+      (route) =>
+        route.fulfill({
+          status: 409,
+          contentType: 'application/json',
+          body: JSON.stringify({ error: 'STALE_BASE', message: 'stub' }),
+        }),
+      { times: 1 }
+    );
+    const reload = await holdReload(page); // the refusal's reload is held: its text waits in the hold
+    const asked = answerDialogs(page, true);
+    await row.getByRole('button', { name: 'Vista', exact: true }).click();
+    await expect.poll(() => reload.held()).toBeGreaterThan(0);
+    await row.locator('textarea').fill(target.is);
+    const before = asked.length;
+    const dones = donePosts(page);
+    await page.locator('#btn-done').click();
+    await expect.poll(() => asked.slice(before)).toEqual([UI.alert.doneUnsaved]);
+    await page.waitForTimeout(500);
+    expect(dones).toEqual([]);
+    reload.release();
   });
 
   test('a refused press says it was not recorded', async ({ page }) => {

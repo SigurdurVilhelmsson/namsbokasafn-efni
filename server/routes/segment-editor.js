@@ -422,13 +422,7 @@ router.get(
         acceptances,
         otherPendingSegments,
         // The reader's own latest "Merkja sem lokið" in this unit (register §C222); never anyone else's.
-        myLastDoneAt: activityLog.latestOfTypeByUser(
-          activityLog.MODULE_MARKED_DONE,
-          String(req.user.id),
-          req.params.book,
-          String(req.chapterNum),
-          req.params.moduleId
-        ),
+        myLastDoneAt: lastDoneAt(req.user, req.params.book, req.chapterNum, req.params.moduleId),
       });
     } catch (err) {
       log.error({ err }, 'Error loading module');
@@ -1318,6 +1312,8 @@ router.delete('/edit/:editId', requireAuth, requireRole(ROLES.EDITOR), (req, res
  *
  * The activity row is written BEFORE the response, because the editor's trace reads it; activityLog.log never
  * throws and answers null on failure, so a null is a press that did not record, and nothing else is written.
+ * Once the row is written the press has happened: the read-back of its time is never-throw (lastDoneAt), so its
+ * failure answers success with `doneAt: null` rather than "not recorded", which the editor would retry.
  */
 router.post(
   '/:book/:chapter/:moduleId/done',
@@ -1344,22 +1340,42 @@ router.post(
         return res.status(500).json({ error: 'Not recorded', code: 'DONE_NOT_RECORDED' });
       }
       researchEmission.emitSubmit(req, { openEditIds });
-      res.json({
-        success: true,
-        doneAt: activityLog.latestOfTypeByUser(
-          activityLog.MODULE_MARKED_DONE,
-          userId,
-          book,
-          chapter,
-          moduleId
-        ),
-      });
+      res.json({ success: true, doneAt: lastDoneAt(req.user, book, req.chapterNum, moduleId) });
     } catch (err) {
       log.error({ err }, 'Error marking a unit done');
       res.status(500).json({ error: err.message });
     }
   }
 );
+
+/**
+ * When `user` last pressed "Merkja sem lokið" in this unit, or null (register §C222). Never throws: the module GET
+ * did not depend on the activity log before §C222 and must still open a unit if it cannot be read, and /done reads
+ * it only after the press is recorded. A failure is logged and answers null.
+ *
+ * @param {{id: (string|number)}} user `req.user`; its id is bound as a string, as the activity row stores it
+ * @param {string} book
+ * @param {number} chapterNum `req.chapterNum` (-1 for appendices); bound as a string, as the row stores it
+ * @param {string} moduleId
+ * @returns {string|null} SQLite UTC "YYYY-MM-DD HH:MM:SS", or null
+ */
+function lastDoneAt(user, book, chapterNum, moduleId) {
+  try {
+    return activityLog.latestOfTypeByUser(
+      activityLog.MODULE_MARKED_DONE,
+      String(user.id),
+      book,
+      String(chapterNum),
+      moduleId
+    );
+  } catch (err) {
+    log.error(
+      { err, book, moduleId },
+      'Could not read the last "Merkja sem lokið" (register §C222)'
+    );
+    return null;
+  }
+}
 
 // =====================================================================
 // REVIEW ENDPOINTS (Head Editor)
