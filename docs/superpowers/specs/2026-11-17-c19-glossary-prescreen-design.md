@@ -31,8 +31,11 @@ measured control result.
   ([USER] 2026-11-17: "clear errors only", option A). Term choice belongs to the ruling cards (10-10 plan 1.4).
 - **Applying fixes.** The script that writes [USER]'s rulings into the concept model on production is designed
   after the rulings exist (§9), because what it must do depends on them.
-- **Re-judging physics and biology rows.** §C129 (2026-09-05) judged every physics and biology row that fired on
-  chemistry; its 378 removals have all landed (0 of 378 remain in today's export). See §10 for its coverage gap.
+- **Physics and biology rows, by default.** §C129 (2026-09-05) judged every physics and biology row that fired on
+  chemistry, and its 378 removals have all landed (0 of 378 remain in today's export). But it judged **MT damage**,
+  keeping rows where damage was "measured absent", which is not a sense check of what the editor shows. So the
+  pilot measures them (§6), and **[USER] decides after the pilot** whether the full run includes them. By the §3
+  sizing they are about 1,256 rows against chemistry's 312. See §10 for §C129's coverage gap.
 - **Making the editor sense-aware.** Logged (§10), not built here.
 
 **Anti-goals (a run that "works" but fails)**
@@ -97,8 +100,20 @@ so none can appear in the population.
 | | `vessel → æð` | a blood vessel; the corpus means lab glassware (*ílát*) | flagged |
 | | `phases → kvartilaskipti` | phases of the moon; phases of matter are *fasar* | flagged |
 | **Easy positives** | `terms → tíðir` · `rays → skötur` · `moles → moldvörpur` | menses · the fish · the animal | flagged |
-| **Homograph pair** | `addition → álagning`, sent twice as two separate rows: once with only "adding something" sentences, once with only addition-reaction sentences | [USER]'s ruling: right for the addition-reaction sense only | first flagged (`wrong-sense` or `some-senses-only`); second **not** flagged |
-| **Negatives** | ruled rows where [USER] chose a word, including one against the official form (`atom → atóm`), plus 5 more drawn by a fixed rule from the ruling set's book-scope rulings with no sense | [USER] ruled them | not flagged |
+| **Homograph pair** | `addition → álagning`, sent twice as two separate rows, never in one request, each with five named sentences (below) | [USER]'s ruling: right for the addition-reaction sense only | the "adding" row flagged (`wrong-sense` or `some-senses-only`); the "reaction" row **not** flagged |
+| **Negatives** | `atom → atóm` (ruled against the official *frumeind*), `anode → anóða`, `calorimeter → varmamælir`, `bond length → tengilengd`, `carbonate → karbónat`, `crystalline → kristalkenndur` | [USER] ruled them; each is single-sense in chemistry's sentences (read 2026-11-17) | not flagged |
+
+**The homograph pair's sentences, by segment id** (read 2026-11-17; chemistry has only five addition-reaction
+segments, all in ch20):
+- *reaction:* `m68846:para:fs-idp51580832`, `m68846:para:fs-idp33513136`, `m68846:para:fs-idp10607328`,
+  `m68847:para:fs-idm8648512`, `m68846:glossary-term:fs-id1170893631592-term`;
+- *adding:* `m68667:para:fs-idm107801696` (energy), `m68703:para:fs-idm134700400` (solvent),
+  `m68735:para:fs-idm145149808` (electrons), `m68808:para:fs-idm115041904` (acid or base),
+  `m68811:para:fs-idp15157136` (lime).
+
+The positives' and negatives' sentences are drawn by the sampling rule (§7); a reading of five per word on
+2026-11-17 found every drawn sentence of the expected character (each positive wrong in all of them, each negative
+plainly single-sense).
 
 Considered and left out: `structure → gerð` (its §C129 reason is a displaced standard word, which reads as term
 choice) and June's `emission → útblástur` and `valence → girðitala` (*útblástur* is right for gas emissions, so the
@@ -110,9 +125,11 @@ and the negatives' selection rule are written to the run's records before the fi
 
 ## 6. Pilot, model choice and the cost gate
 
-**Pilot.** All controls plus about 24 population rows (spread across hit counts, chosen deterministically), about
-40 rows in about 5 requests, run **interactively** on **Fable 5.2** and **Opus 5.5**, both at effort `high`, with
-identical requests. Fable's guidance is to start at `high`; the term pass's `xhigh` is not inherited.
+**Pilot.** All controls, 24 population rows and **15 physics or biology rows** (each set spread across hit counts,
+chosen deterministically), about 55 rows in about 7 requests, run **interactively** on **Fable 5.2** and **Opus
+5.5**, both at effort `high`, with identical requests. Fable's guidance is to start at `high`; the term pass's
+`xhigh` is not inherited. The physics and biology rows' flag rate and the measured cost per row are reported
+separately: they are what [USER] decides the full run's scope on (§2).
 
 **Gate (per model).** Every positive flagged (any flag kind); the homograph pair answered as expected; no negative
 flagged. A miss stops the run there and is reported to [USER] with the model's own reason. **The prompt is never
@@ -174,7 +191,7 @@ chapter-level preference is seen where it applies. A census row is one **(Englis
 **Population.** The census rows that **can** raise an editor warning (an in-scope winner, so the editor shows its
 word as the expected one at every match) and that no person has decided. Out:
 - rows whose English is ruled in the ruling set;
-- physics and biology rows (§C129's territory, §2);
+- physics and biology rows, unless [USER] decides after the pilot to include them (§2);
 - **fallback rows** (domains outside the chain): they raise **no** warning and no report line, since the warning
   path skips them (`terminologyService.js`, `if (hit.isFallback || !seg.isContent) continue;`). Editors see them
   only as a "from another subject" highlight;
@@ -191,12 +208,13 @@ control missed in the full run is reported at the top of the report and the page
 **Public and private ([USER]'s 2026-10-31 rule, applied).** The repository is public, and Íðorðabankinn's rows have
 not been checked for re-release; on 2026-10-31 [USER] kept a full concept-model file private and committed only a
 reduced copy. So **nothing this work commits carries concept-model data beyond what the committed export
-(`glossary-unified.json`) already publishes**: English, expected Icelandic, domain, concept id. The model's input
-is (English, Icelandic) pairs plus OpenStax English, so the run records add nothing new; the build **asserts** that
-every population pair is in the committed export and holds back any that is not. The census fields the export does
-not carry (what the editor would show if a row were removed, the concept's other terms) go to a **private** census
-file outside the repository, located in project memory as the 2026-10-31 full file is, and onto the private review
-page.
+(`glossary-unified.json`) already publishes**. The committed census keeps only rows whose (English, Icelandic) pair
+is in that export, with English, expected Icelandic, domain and concept id from the concept model; every other row
+(fallback rows from other domains, ties, pairs changed since the export) is replaced by its count, as on
+2026-10-31. The model's input is (English, Icelandic) pairs plus OpenStax English, so the run records add nothing
+new. The census fields the export does not carry (what the editor would show if a row were removed, the concept's
+other terms), and the withheld rows themselves, stay in a **private** census file outside the repository, located
+in project memory as the 2026-10-31 full file is, and reach only the private review page.
 
 **Outputs (committed, in `experiments/terminology-consistency/results/<date>/`):** the reduced census; the verdicts
 (one per population row: a verdict or `unjudged`); a short report (row counts by verdict and kind, the excluded
@@ -223,8 +241,10 @@ Removing a row can promote a worse sibling (§C128, §C133), which is why the pa
 ## 10. Findings to log in the register (out of scope here)
 
 - **The editor's warnings are sense-blind.** The ruling set's senses are read by the AI gate (`gate.js`), not by
-  `findTermsInSegments`, so by the code `addition → álagning` is offered on "the addition of HCl to a buffer" too.
-  Read from the code, not observed.
+  `findTermsInSegments`, so by the code `addition → álagning` is offered at every whole-word *addition*. Counted
+  locally on 2026-11-17 over chemistry's English: of about 130 segments, **5** use the addition-reaction sense the
+  ruling covers (all in ch20); 67 are "addition of" (adding something), 47 "in addition", the rest arithmetic.
+  Read from the code and counted, not observed in the editor.
 - **§C129's coverage cannot be re-derived.** Only its removal set was frozen. Today's export holds 1,297 physics
   and biology rows against the 1,213 §C129 kept, so some may postdate it (or the counts differ by matcher); which
   ones cannot be told from the committed record.
@@ -235,11 +255,14 @@ Removing a row can promote a worse sibling (§C128, §C133), which is why the pa
 [USER] rules only the flags; clear errors only (option A); approach 1; Fable 5.2 if the pilot shows it is
 beneficial; fixes through a committed script [USER] runs on production.
 
-**Claude's calls (correct any):** the named controls (§5); the population's exclusions, including fallback rows,
-ties and preference rows (§8); the pilot and its gate on both models (§6); the stop-and-ask thresholds (450 rows,
-25%) and the USD 5 margin; effort `high`; about 8 rows and 5 sentences per request; the model sees only headword,
-word and sentences (no MT, no domain, no other terms); re-send unjudged rows once; physics and biology rows out;
-the public/private split (§8); the apply script designed after the rulings.
+**Claude's calls (correct any):** the named controls and their sentences (§5); the population's exclusions,
+including fallback rows, ties and preference rows (§8); the pilot, with physics and biology rows measured, and its
+gate on both models (§6); the stop-and-ask thresholds (450 rows, 25%) and the USD 5 margin; effort `high`; about 8
+rows and 5 sentences per request; the model sees only headword, word and sentences (no MT, no domain, no other
+terms); re-send unjudged rows once; the public/private split (§8); the apply script designed after the rulings.
+
+**For [USER] after the pilot:** whether the full run includes the physics and biology rows (§2), on their measured
+flag rate and cost per row.
 
 **Builder check (2026-11-17).** A fresh reviewer read the draft as its builder and raised three questions: whether
 the drawn controls were really clear errors, and whether the domain label gave them away (answered: §5 names the

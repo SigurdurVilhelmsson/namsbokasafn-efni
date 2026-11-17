@@ -17,7 +17,7 @@
 - Models: `claude-fable-5-2` and `claude-opus-5-5` only. Effort `high`. Default `max_tokens` 16000. No `fallbacks` field (the harness refuses it; batches reject it).
 - Harness `use`: `glossary-prescreen`. Prompt: `tools/ai-review/prompts/glossary-prescreen-v1.md`. Ruling set: `experiments/terminology-consistency/results/2026-11-02/ruling-set-2026-11-02.json`.
 - Production is read-only: the census script is sent on stdin over `ssh -o BatchMode=yes`, opens the database `{ readonly: true, fileMustExist: true }`, and leaves no file. No `sudo`.
-- **Public/private:** no committed file carries concept-model data beyond `english`, `icelandic`, `domain`, `conceptId` (plus our own flags, counts and segment ids). `alternatives` and `ifRemoved` exist only in files **outside the repository**.
+- **Public/private:** no committed file carries a concept-model row that `books/efnafraedi-2e/glossary/glossary-unified.json` does not already publish (matched on the (English, Icelandic) pair); every other row is replaced by a count. Within a published row, only `english`, `icelandic`, `domain` and `conceptId` come from the concept model (plus our own flags, counts and segment ids). `alternatives`, `ifRemoved` and the withheld rows exist only in files **outside the repository**.
 - `tools/` code never imports from `server/` (the MIT→AGPL boundary, CLAUDE.md E-2).
 - Never `process.exit()` after writing stdout; set `process.exitCode` (CLAUDE.md). CLI flags parse strictly (`node:util` `parseArgs`, `strict: true`).
 - Nothing writes `01-source/`, `02-mt-output/` or the concept model.
@@ -70,9 +70,11 @@
   - `rows.length > 0` (the control), and every match `findTermsInSegments` returns for those segments appears as exactly one row's match;
   - a match that `findTermsInSegments` marks `isFallback` gives a row with `isFallback: true`, and a tied match gives `isTied: true, icelandic: null`;
   - each row's `reason` equals `resolve(buildScope(db, book, chapter), english).reason`;
-  - the CLI, spawned with stdout as a **pipe** on a fixture whose output exceeds 64 KB, prints JSON that parses completely.
+  - the CLI, spawned with stdout as a **pipe** on a fixture whose output exceeds 64 KB, prints JSON that parses completely;
+  - the CLI, spawned against a temporary migrated database for a book with no domain priorities (so `findTermsInSegments` takes its warn-logging path), still prints stdout that parses as one JSON document, with no log line in it. **The server logger (`server/lib/logger.js`, pino) writes JSON to stdout in production**, so a log line would corrupt the census;
+  - with `fs.writeFileSync`, `fs.mkdirSync` and `fs.appendFileSync` spied, `collectFiringRows` on the readonly-injected database makes zero calls.
 - [ ] **Step 2:** Run `npx vitest run server/__tests__/readFiringRows.test.js` → FAIL.
-- [ ] **Step 3:** Implement. The CLI follows `server/scripts/read-term-resolutions.js`: `new Database(resolveDbPath(), { readonly: true, fileMustExist: true })`, `terminologyService._setTestDb(db)`, chapters from `segmentParser.listChapters(book)`, modules from `segmentParser.listChapterModules`, segments from `segmentParser.loadModuleForEditing` (`enContent: s.en, isContent: s.is`). Per chapter: call `findTermsInSegments(segments, book, chapter)`, then memoise `resolve(buildScope(db, book, chapter), english)` per English string for `reason`, `conceptId`, `alternatives` (`scope.stmts.terms.all(conceptId)`) and `ifRemoved` (the first of `alsoInScope`, else `outOfScope[0]`, else `null`). The header comment states the stdin invocation exactly as `read-term-resolutions.js` does. End with `process.exitCode = 0`.
+- [ ] **Step 3:** Implement. The CLI's first statements, before any `require` of a server module, set `process.env.LOG_LEVEL = 'silent'` and `process.env.NODE_ENV = 'production'`: the logger reads both at require time, and production mode also skips the `pino-pretty` transport. It then follows `server/scripts/read-term-resolutions.js`: `new Database(resolveDbPath(), { readonly: true, fileMustExist: true })`, `terminologyService._setTestDb(db)`, chapters from `segmentParser.listChapters(book)`, modules from `segmentParser.listChapterModules`, segments from `segmentParser.loadModuleForEditing` (`enContent: s.en, isContent: s.is`). Per chapter: call `findTermsInSegments(segments, book, chapter)`, then memoise `resolve(buildScope(db, book, chapter), english)` per English string for `reason`, `conceptId`, `alternatives` (`scope.stmts.terms.all(conceptId)`) and `ifRemoved` (the first of `alsoInScope`, else `outOfScope[0]`, else `null`). The header comment states the stdin invocation exactly as `read-term-resolutions.js` does. End with `process.exitCode = 0`.
 - [ ] **Step 4:** Re-run the test → PASS.
 - [ ] **Step 5:** Commit: `feat(server): a read-only census of the glossary rows the editor shows (c19)`.
 
@@ -85,37 +87,34 @@
 **Interfaces:**
 - Consumes: `CensusRow` (Task 2) as JSON.
 - Produces:
-  - `CENSUS_SCHEMA = 'c19-census/1'`; `reduceCensus(full) -> object`, which drops `alternatives` and `ifRemoved` from every row, sets `reduced: true` and keeps everything else;
-  - `loadUnits(bookDir) -> Array<{ chapter, moduleId, segments: Array<{ segmentId, en }> }>`, reading every `*-segments.en.md` under `02-for-mt/` with `parseLayerFile` (`tools/lib/mt-layers.js`, the parser `term-pass-apply.js` reads English with);
-  - `buildPopulation({ census, rulingSet, exportTerms, units, seed }) -> { rows: Array<{ english, icelandic, matchCount, sentences }>, excluded: { ruled, fallback, tie, decided, physicsBiology, notInExport, noSentence } }`, each count a number;
-  - `CONTROLS` (frozen): `positives` (the 8 pairs of spec §5, each `{ name, english, icelandic, expected: 'flag' }`, `name` being the English), `homograph` (`addition → álagning`, the two halves `addition-adding` expecting `flag` and `addition-reaction` expecting `fine`), `fixedNegative` (`atom → atóm`);
-  - `pickNegatives(rulingSet, units, n = 5) -> Array<{ english, icelandic }>`;
-  - `buildControls({ rulingSet, units, seed }) -> Array<{ english, icelandic, sentences, name, expected }>`: the positives, the two homograph halves (each half's sentences only from occurrences `classifyAddition` puts in its class), the fixed negative and `pickNegatives`' five (`name` = the English, `expected: 'fine'`);
+  - `CENSUS_SCHEMA = 'c19-census/1'`;
+  - `classifyRow(row, { rulingSet, exportPairs }) -> 'ruled'|'fallback'|'tie'|'decided'|'physicsBiology'|'notInExport'|'keep'`;
+  - `reduceCensus(full, exportTerms, rulingSet) -> object`: keeps only rows whose (english, icelandic) pair is in `exportTerms`, each with `alternatives` and `ifRemoved` removed; every other row is dropped and counted by its `classifyRow` class in `withheld: { ruled, fallback, tie, decided, physicsBiology, notInExport }`; sets `reduced: true`;
+  - `loadUnits(bookDir) -> Array<{ chapter, moduleId, segments: Array<{ segmentId, en }> }>`, reading every `*-segments.en.md` under `02-for-mt/` with `parseLayerFile` (`tools/lib/mt-layers.js`, the parser `term-pass-apply.js` reads English with; a record's text is its `body`, its id `segmentId`);
+  - `buildPopulation({ census, rulingSet, exportTerms, units, seed }) -> { rows, physicsBiology, excluded: { ruled, fallback, tie, decided, physicsBiology, notInExport, noSentence } }`, where `rows` and `physicsBiology` are `Array<{ english, icelandic, matchCount, sentences }>` (the chemistry population, and the physics and biology rows kept aside for the pilot and a possible full run), and each count adds the census's `withheld` count of the same class;
+  - `CONTROLS` (frozen, every value from spec §5): `positives` (8 × `{ name, english, icelandic, expected: 'flag' }`, `name` = the English), `homograph` (`addition → álagning`: `{ name: 'addition-adding', expected: 'flag', segmentIds: [5 ids] }` and `{ name: 'addition-reaction', expected: 'fine', segmentIds: [5 ids] }`), `negatives` (6 × `{ name, english, icelandic, expected: 'fine' }`);
+  - `buildControls({ units, seed }) -> Array<{ english, icelandic, sentences, name, expected }>`: positives and negatives through `findOccurrences` and `sampleSentences`; each homograph half from its named segment ids through `extractSentence`, refusing if an id is missing from `units`;
   - `findOccurrences(english, units) -> Array<{ chapter, moduleId, segmentId, en }>`;
-  - `sampleSentences(occurrences, { n = 5, seed }) -> string[]`; `extractSentence(text, english) -> string`; `classifyAddition(sentence) -> 'reaction'|'adding'|null`;
-  - `assembleItems({ population, controls, seed, minGap = 8 }) -> { items: Array<{ id, english, icelandic, sentences }>, key: Record<id, { kind: 'population'|'control', name?, expected? }> }`.
+  - `sampleSentences(occurrences, { n = 5, seed }) -> string[]`; `extractSentence(text, english) -> string`; `pickEvenly(rows, n) -> rows` (sorted by `matchCount`, then English; indices `floor(k * len / n)`);
+  - `assembleItems({ population, controls, seed, minGap = 8 }) -> { items: Array<{ id, english, icelandic, sentences }>, key: Record<id, { kind: 'population'|'physicsBiology'|'control', name?, expected? }> }`; `population` items carry their kind.
 
 Values and rules:
-- Exclusion order, each row counted once, in the first class that applies: `ruled` (the English, lowercased, is one of the ruling set's `en`) → `fallback` → `tie` (`isTied` or `icelandic` null or empty) → `decided` (`reason` is `book-preference`, `chapter-preference` or `house-style`) → `physicsBiology` (`domain` is `physics` or `biology`) → `notInExport` (the pair is not in `glossary-unified.json`'s `terms`) → `noSentence` (no match yields a sentence locally).
-- `pickNegatives`: the rulings with `scope.kind === 'book'`, `sense === null`, `matchable === true`, a non-empty `is`, `enNorm !== 'atom'` and at least 5 whole-word occurrences in chemistry's English, sorted by `enNorm`; take the indices `floor(k * len / n)` for k = 0…n−1.
+- `classifyRow` order, first match wins: `ruled` (the English, lowercased, is one of the ruling set's `en`) → `fallback` → `tie` (`isTied` or `icelandic` null or empty) → `decided` (`reason` is `book-preference`, `chapter-preference` or `house-style`) → `physicsBiology` (`domain` is `physics` or `biology`) → `notInExport` → `keep`. `buildPopulation` adds `noSentence` for a kept row with no match that yields a sentence locally.
 - `findOccurrences`: whole-word and case-folded, with a word character defined as `[\p{L}\p{N}_]` (as in `server/lib/wordBoundary.js`; write it locally, do not import it).
 - `sampleSentences`: group by chapter in chapter order; within a chapter, order by `sha256(seed + '\0' + segmentId)`; take one per chapter round-robin until `n`.
 - `extractSentence`: replace each `[[type:content|attr]]` with its content; replace opaque `[[MATH:…]]`, `[[MEDIA:…]]` and `[[TABLE:…]]` with `…`; split on `(?<=[.!?])\s+`; return the sentence holding the first whole-word match, cut to at most 400 characters centred on it.
-- `classifyAddition`: `/\baddition (reactions?|polymer)/i` → `'reaction'`; otherwise `/\baddition of\b/i` → `'adding'`; otherwise `null`.
 - `assembleItems`: ids `r001`, `r002`, … assigned after sorting all rows by `sha256(seed + '\0' + english + '\0' + icelandic + '\0' + name)`. Two items with the same (English, Icelandic) pair (the homograph halves) must sit at least `minGap` positions apart, so they never share a request: if they are closer, move the later one to position `(i + floor(len / 2)) mod len`. Population and control items have the same keys and nothing marks a control.
 
 - [ ] **Step 1: Write the failing tests:**
-  - on a hand-built census with one row per exclusion class plus two keepers: `excluded` is all 1s and `rows` holds the two keepers;
+  - on a hand-built census with one row per `classifyRow` class plus two keepers: `excluded` is all 1s, `rows` holds the two keepers, `physicsBiology` the physics row;
   - a row whose `icelandic` is null counts as `tie`, never as a population row;
   - a match whose segment id is absent from `units` is skipped; a row with no remaining sentence counts as `noSentence`;
-  - `reduceCensus` removes `alternatives` and `ifRemoved` from every row and leaves the other fields deep-equal;
-  - `CONTROLS.positives.map(p => p.english)` equals `['balanced','reduce','depression','vessel','phases','terms','rays','moles']`;
-  - `pickNegatives` gives the same 5 on two calls, never includes a ruling with a `sense`, and never `atom`;
+  - `reduceCensus`: a fallback row and a tie whose pairs are not in the export are **absent** from the output and counted in `withheld`; a kept row has no `alternatives` or `ifRemoved` and its other fields are deep-equal to the input's; `buildPopulation` over the reduced census gives the same `excluded` counts as over the full one;
+  - `CONTROLS.positives.map(p => p.english)` equals `['balanced','reduce','depression','vessel','phases','terms','rays','moles']`, and `CONTROLS.negatives.map(n => n.english)` equals `['atom','anode','calorimeter','bond length','carbonate','crystalline']`;
+  - `buildControls` refuses when a homograph segment id is missing from `units`;
   - `sampleSentences` over 3 chapters with `n = 5` covers all 3 chapters;
   - `extractSentence('A [[b:bold]] word. The [[term:atom|t1]] is small.', 'atom')` → `'The atom is small.'`;
-  - `classifyAddition('The addition of HCl to the buffer')` → `'adding'`; `('in addition reactions, atoms add')` → `'reaction'`;
-  - `assembleItems`: ids are unique, every item has exactly the keys `id, english, icelandic, sentences`, the same input gives the same order, and the two homograph halves sit at least 8 positions apart;
-  - `buildControls` gives the `addition-adding` half no sentence that `classifyAddition` calls `'reaction'`, and the reverse.
+  - `assembleItems`: ids are unique, every item has exactly the keys `id, english, icelandic, sentences`, the same input gives the same order, and the two homograph halves sit at least 8 positions apart.
 - [ ] **Step 2:** `npx vitest run tools/__tests__/ai-review-prescreen-population.test.js` → FAIL.
 - [ ] **Step 3:** Implement to the rules above.
 - [ ] **Step 4:** Re-run → PASS.
@@ -184,19 +183,19 @@ Rules: an entry is dropped as `unknown-id`, `duplicate-id`, `flag-without-kind` 
 
 **Interfaces:**
 - Consumes: Tasks 1–5; `estimateRequests` from `term-pass.js`; `runInteractive` from `harness.js`; `makeGit`, `cleanTrackedProblems` from `provenance.js`; `loadRulingSet` from `ruling-set.js`; `summarizeLedger`, `readLedger` from `ledger.js`.
-- Produces: `main(argv, deps = {}) -> Promise<{ exitCode }>`, with `deps` injectable as `term-pass.js`'s are (`transport`, `now`, `git`, `harnessCommit`, `harnessDirty`, `out`); `PRESCREEN_RECORD = 'prescreen.json'` with payload `{ schema: 'c19-prescreen/1', runId, phase: 'pilot'|'run'|'resend', model, effort, census: { path, sha256 }, rulingSet: { path, sha256 }, prompt: { path, sha256 }, items: Array<{ id, english, icelandic, kind, name?, expected? }>, rowsPerRequest }`; `PILOT_POPULATION_ROWS = 24`; `POPULATION_STOP = 450`; `PILOT_FLAG_STOP = 0.25`.
+- Produces: `main(argv, deps = {}) -> Promise<{ exitCode }>`, with `deps` injectable as `term-pass.js`'s are (`transport`, `now`, `git`, `harnessCommit`, `harnessDirty`, `out`); `PRESCREEN_RECORD = 'prescreen.json'` with payload `{ schema: 'c19-prescreen/1', runId, phase: 'pilot'|'run'|'resend', model, effort, census: { path, sha256 }, rulingSet: { path, sha256 }, prompt: { path, sha256 }, items: Array<{ id, english, icelandic, kind, name?, expected? }>, rowsPerRequest }`; `PILOT_POPULATION_ROWS = 24`; `PILOT_PHYSICS_BIOLOGY_ROWS = 15`; `POPULATION_STOP = 450`; `PILOT_FLAG_STOP = 0.25`.
 
 Subcommands, with exit codes 0 done · 1 refused · 2 stop and ask (or gate failed):
-- `reduce --census-full <abs path outside the repo> --out <repo path under experiments/terminology-consistency/results/>`: refuses a file that does not `JSON.parse`, has the wrong `schema`, or has no rows; writes `reduceCensus` output.
+- `reduce --census-full <abs path outside the repo> --out <repo path under experiments/terminology-consistency/results/>`: refuses a file that does not `JSON.parse`, has the wrong `schema`, or has no rows; writes `reduceCensus(full, export, rulingSet)`, reading the committed export and the default ruling set.
 - `plan --census <repo path>`: 0 ISK. Prints the population count, each exclusion count, the control count, the request count and the worst-case USD (interactive and batch) from `estimateRequests`. If the population exceeds `POPULATION_STOP`, prints a stop-and-ask line and exits 2.
 - Every subcommand that builds items uses the committed reduced census's sha256 as the `seed`, so a re-plan gives the same items, ids and requests.
-- `pilot --census <path> --model <m> [--yes]`: items = every control + `PILOT_POPULATION_ROWS` population rows (population sorted by `matchCount`, indices `floor(k * len / 24)`), assembled together. Preflight: `assertMainCheckout`; `cleanTrackedProblems` over the prompt, the ruling set, the census and `tools/ai-review`. Without `--yes` it prints the plan and sends nothing. With `--yes` it calls `runInteractive` with `extraRecords: [{ name: PRESCREEN_RECORD, payload }]`, parses every recorded response, prints `judgeControls`' table and the pilot's population flag rate, and exits 0 if the gate passes and the rate is at most `PILOT_FLAG_STOP`, otherwise 2.
+- `pilot --census <path> --model <m> [--yes]`: items = every control + `pickEvenly(rows, PILOT_POPULATION_ROWS)` + `pickEvenly(physicsBiology, PILOT_PHYSICS_BIOLOGY_ROWS)`, assembled together. Preflight: `assertMainCheckout`; `cleanTrackedProblems` over the prompt, the ruling set, the census and `tools/ai-review`. Without `--yes` it prints the plan and sends nothing. With `--yes` it calls `runInteractive` with `extraRecords: [{ name: PRESCREEN_RECORD, payload }]`, parses every recorded response, and prints `judgeControls`' table, the chemistry rows' flag rate, the physics and biology rows' flag rate, and the run's cost per row (its `run-end.json` total divided by the rows sent). It exits 0 if the gate passes and the chemistry flag rate is at most `PILOT_FLAG_STOP`, otherwise 2.
 
 - [ ] **Step 1: Write the failing tests** (fake transport and a records dir outside the repo, as `ai-review-term-pass.test.js` does):
   - `reduce` refuses truncated JSON (exit 1) and writes a reduced census for a valid file;
   - `plan` prints the population and each exclusion count; a census over 450 population rows exits 2;
   - `pilot` without `--yes` makes zero transport calls;
-  - `pilot --yes` with a transport answering every control as expected exits 0 and writes `prescreen.json`;
+  - `pilot --yes` with a transport answering every control as expected exits 0, writes `prescreen.json`, and prints the chemistry and the physics-and-biology flag rates on separate lines;
   - a transport answering `balanced` as `fine` exits 2 and prints `balanced`;
   - a git stub reporting a linked worktree refuses with exit 1 before any transport call.
 - [ ] **Step 2:** `npx vitest run tools/__tests__/ai-review-prescreen.test.js` → FAIL.
@@ -215,7 +214,7 @@ Subcommands, with exit codes 0 done · 1 refused · 2 stop and ask (or gate fail
 - Produces: `COST_MARGIN_USD = 5`; the verdicts file `{ schema: 'c19-prescreen-verdicts/1', runs: string[], model, prompt: { path, sha256 }, excluded, controls: <judgeControls result>, population: Array<{ english, icelandic, verdict: 'fine'|'flag'|'unjudged', kind, reason, proposed, rightSenses }> }`.
 
 Subcommands:
-- `run --census <path> --model <m> --pilot <runId> [--split <n>] [--max-tokens <n>] [--accept-large-population] --yes`: refuses unless the pilot run's `prescreen.json` names the same model and prompt sha256 and its controls pass. Refuses a population over `POPULATION_STOP` unless `--accept-large-population` (that flag records [USER]'s answer). Refuses if the batch worst case exceeds `CAP_USD − committedUsd − COST_MARGIN_USD`, naming `--split` and `--max-tokens` as remedies. Sends all population rows plus every control through `runBatch`, as `n` sequential batches with `--split`, and stops at the first that does not end `complete`.
+- `run --census <path> --model <m> --pilot <runId> [--include-physics-biology] [--split <n>] [--max-tokens <n>] [--accept-large-population] --yes`: refuses unless the pilot run's `prescreen.json` names the same model and prompt sha256 and its controls pass. `--include-physics-biology` adds the `physicsBiology` rows to the population; it records [USER]'s answer after the pilot (spec §2) and is written into `prescreen.json`. Refuses a population over `POPULATION_STOP` unless `--accept-large-population` (that flag records [USER]'s answer). Refuses if the batch worst case exceeds `CAP_USD − committedUsd − COST_MARGIN_USD`, naming `--split` and `--max-tokens` as remedies. Sends all population rows plus every control through `runBatch`, as `n` sequential batches with `--split`, and stops at the first that does not end `complete`.
 - `resume --run <runId>`: rebuilds the run's options from its `prescreen.json` and calls `runBatch`, which resumes and never resubmits.
 - `collect --run <runId> [--run …] --out <dir> --isk-rate <n> --isk-rate-source <text> [--resend --yes]`: loads each run's records, parses every response, and merges verdicts by item id. An id answered in two runs is an error unless the earlier run left it unjudged. With `--resend --yes`, the population ids still unjudged go one per request through `runInteractive` (phase `resend`) under the same cost check. Writes `prescreen-verdicts.json` and `prescreen-report.md` into `--out`, which must be under `experiments/terminology-consistency/results/`. The report gives counts by verdict and kind, the exclusion counts, the control table, each run's model, effort and cost in USD (from its `run-end.json`) and in ISK at the given rate with its source, and the prompt sha256.
 
@@ -264,7 +263,8 @@ No new code. Each step names its command and the result that lets the next one s
   - neither passes → stop and report each miss with the model's reason;
   - an account refusal for Fable (an `invalid_request_error` naming data retention) → stop and report.
   Report the two models' agreement on the 24 population rows.
-- [ ] **Step 5: Full run.** `run --model <chosen> --pilot <runId> --yes` (batch). If polling stops, `resume --run <runId>`.
+  **Then stop and bring [USER]** the physics-and-biology flag rate and the measured cost per row, with the projected cost of the full run with and without those rows against the cap's headroom. [USER] decides whether the full run includes them (spec §2).
+- [ ] **Step 5: Full run.** `run --model <chosen> --pilot <runId> [--include-physics-biology] --yes` (batch), the flag only if [USER] said so. If polling stops, `resume --run <runId>`.
 - [ ] **Step 6: Collect.** `collect --run <runId> --resend --yes --out experiments/terminology-consistency/results/<date> --isk-rate <rate> --isk-rate-source "<source, date>"`. A control missed in the full run → report it before anything else.
 - [ ] **Step 7: Commit the evidence:** the run records under `books/efnafraedi-2e/ai-review/runs/`, the ledger, the verdicts and the report.
 - [ ] **Step 8: The page.** `node tools/ai-review/prescreen-page.js …` writes `page-data.json` privately. Load the `artifact-design` and `artifact-capabilities` skills, write the page from that data with a `db` collection `answers` (one doc per row id: `choice` ∈ `keep|replace|remove|phrases|unsure`, `text`, `comment`, `savedAt`) and one `confirm` doc per batch of rows, and publish it privately. An unanswered row is open.
