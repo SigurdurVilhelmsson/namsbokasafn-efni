@@ -1692,30 +1692,36 @@ function getBookEditsByModule(book) {
 
 /**
  * Per-module reviewed-segment counts: DISTINCT(segment with an approved edit
- * ∪ segment with an active acceptance), keyed by module_id. Extracted from
+ * ∪ segment with an active acceptance), keyed by chapter, then module_id. The
+ * chapter is in the key because `chapter-metadata` is one module id shared by
+ * every chapter: keyed by module id alone it got one book-wide number, and each
+ * chapter's metadata read "complete" once any chapter's was reviewed (register
+ * §C209 residue, C59). Extracted from
  * getEditorialProgress (item 20b final-review F3) so routes/status.js's
  * per-module/per-chapter completion can use the exact same UNION instead of
  * drifting out of sync with the book-wide summary (which was already
  * acceptance-aware per item 20b Task 8, while the route stayed edits-only).
  *
  * @param {string} book - Book slug
- * @returns {Object<string, number>} moduleId -> distinct reviewed segment count
+ * @returns {Object<number, Object<string, number>>} chapter -> moduleId ->
+ *   distinct reviewed segment count (the appendices are chapter -1)
  */
 function getReviewedSegmentsByModule(book) {
   const conn = getDb();
   const reviewedByModule = {};
   for (const row of conn
     .prepare(
-      `SELECT module_id, COUNT(DISTINCT segment_id) as reviewed FROM (
-         SELECT module_id, segment_id FROM segment_edits
+      `SELECT chapter, module_id, COUNT(DISTINCT segment_id) as reviewed FROM (
+         SELECT chapter, module_id, segment_id FROM segment_edits
           WHERE book = ? AND status = 'approved'
          UNION
-         SELECT module_id, segment_id FROM segment_acceptances
+         SELECT chapter, module_id, segment_id FROM segment_acceptances
           WHERE book = ? AND status = 'active'
-       ) GROUP BY module_id`
+       ) GROUP BY chapter, module_id`
     )
     .all(book, book)) {
-    reviewedByModule[row.module_id] = row.reviewed;
+    if (!reviewedByModule[row.chapter]) reviewedByModule[row.chapter] = {};
+    reviewedByModule[row.chapter][row.module_id] = row.reviewed;
   }
   return reviewedByModule;
 }
@@ -1793,7 +1799,7 @@ function getEditorialProgress(book) {
       // Module is "complete" when reviewed (approved ∪ accepted) segments
       // cover the segment count (item 20b redefinition; F18-class comms —
       // numbers RISE at deploy, see register MTA-R1).
-      const reviewedCount = reviewedByModule[mod.moduleId] || 0;
+      const reviewedCount = reviewedByModule[chNum]?.[mod.moduleId] || 0;
       if (segCount > 0 && reviewedCount >= segCount) {
         modulesComplete++;
       }
