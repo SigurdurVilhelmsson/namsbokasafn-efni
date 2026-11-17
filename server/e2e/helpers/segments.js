@@ -32,6 +32,12 @@
  *      | segment-editor.spec.js      | literal id                   | `…:abstract:auto-2` |
  *      | served-base-client.spec.js  | virgin rows nearest the middle | mid-module rows |
  *      | unsaved-text.spec.js        | virgin rows nearest the three-quarter point (its freeRow 0..13) | third-quarter rows |
+ *      | acceptance.spec.js (MTA-R3) | literal ids, `MTA_R3_ROWS`   | three consecutive first-quarter rows |
+ *
+ *    ✏️ 2026-11-17 (register §C230): MTA-R3 used to take the first row offering "Staðfesta MT", which on the
+ *    fixture is the same row this helper picks for editor-workflow and ux-phase2. When the two ran at the same
+ *    moment, MTA-R3 rejected editor-workflow's edit. It now owns `MTA_R3_ROWS`, and `chooseSegment` never returns
+ *    them.
  *
  *    unsaved-text.spec.js also owns user ids 88710 and 88711. It writes real rows in two tests
  *    only and deletes them in an afterEach; everything else it does is a stub.
@@ -87,7 +93,20 @@ function isAppendSafe(segment, suffix) {
  */
 
 /**
- * Choose an append-safe segment that no sibling spec claims.
+ * The three consecutive rows of the E2E fixture's m68664 that acceptance.spec.js's MTA-R3 owns (register §C230).
+ * It gives `target` a rejected edit, accepts `before`, and expects the stream cursor to land on `after`, so the three
+ * must stay consecutive: e2eSegmentPicker.test.js checks that against the committed fixture. No other spec may
+ * write to them, and chooseSegment never returns them.
+ */
+const MTA_R3_ROWS = Object.freeze({
+  before: 'm68664:para:fs-idm148555376',
+  target: 'm68664:para:fs-idm148595088',
+  after: 'm68664:para:fs-idp130311264',
+});
+const RESERVED_ROWS = Object.freeze(Object.values(MTA_R3_ROWS));
+
+/**
+ * Choose an append-safe segment that no sibling spec claims (and never one of `MTA_R3_ROWS`).
  *
  * @param {Array<{segmentId: string, en?: string, is?: string, baseSha256?: string}>} segments
  * @param {{suffix: string, exclude?: string[], requireBaseSha256?: boolean}} options
@@ -120,6 +139,7 @@ function chooseSegment(segments, options = {}) {
       typeof segment.is === 'string' &&
       segment.is.length > 0 &&
       !exclude.includes(segment.segmentId) &&
+      !RESERVED_ROWS.includes(segment.segmentId) &&
       (!requireBaseSha256 || /^[0-9a-f]{64}$/.test(segment.baseSha256 || '')) &&
       isAppendSafe(segment, suffix)
   );
@@ -170,4 +190,4 @@ async function pickEditableSegment(request, options) {
 // pre-screen, and a future spec calling it directly would skip the first/last
 // and `exclude` guards that make a pick collision-safe — reintroducing the very
 // sibling-spec overlap the ownership table above exists to prevent.
-module.exports = { chooseSegment, pickEditableSegment };
+module.exports = { chooseSegment, pickEditableSegment, MTA_R3_ROWS };

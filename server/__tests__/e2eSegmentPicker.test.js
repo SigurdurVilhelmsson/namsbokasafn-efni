@@ -19,7 +19,7 @@ const fs = require('fs');
 const path = require('path');
 const segmentParser = require('../services/segmentParser');
 const segmentValidation = require('../public/js/segment-validation');
-const { chooseSegment, pickEditableSegment } = require('../e2e/helpers/segments');
+const { chooseSegment, pickEditableSegment, MTA_R3_ROWS } = require('../e2e/helpers/segments');
 
 /** The module GET sends a served hash per non-duplicated segment (spec §5.4 step 6). */
 const sha = (id) => require('crypto').createHash('sha256').update(id).digest('hex');
@@ -223,6 +223,40 @@ describe('the committed fixtures still offer a usable segment (rot detector)', (
       ).toBeNull();
     });
   }
+
+  // register §C230: acceptance.spec.js's MTA-R3 owns three consecutive rows of the E2E fixture's m68664. Its safety
+  // check accepts the first and expects the stream cursor to jump over the second (a rejected edit) to the third, so
+  // the three must stay consecutive, translated, and append-safe for its " MTA-R3." save.
+  it("MTA-R3's three rows are consecutive, translated rows of the E2E fixture's m68664", () => {
+    const onDisk = segmentIdsOnDisk('__e2e-fixture__', 1, 'm68664');
+    const at = [MTA_R3_ROWS.before, MTA_R3_ROWS.target, MTA_R3_ROWS.after].map((id) =>
+      onDisk.indexOf(id)
+    );
+    expect(at[0]).toBeGreaterThan(0);
+    expect(at).toEqual([at[0], at[0] + 1, at[0] + 2]);
+    const data = segmentParser.loadModuleForEditing('__e2e-fixture__', 1, 'm68664');
+    for (const id of Object.values(MTA_R3_ROWS)) {
+      const seg = data.segments.find((s) => s.segmentId === id);
+      expect(seg && seg.is, id).toBeTruthy();
+    }
+    const target = data.segments.find((s) => s.segmentId === MTA_R3_ROWS.target);
+    expect(
+      segmentValidation.validateStructure(target.en, target.is, `${target.is} MTA-R3.`).blocked
+    ).toBeNull();
+  });
+
+  it("the picker never returns one of MTA-R3's rows, even when they come first", () => {
+    const row = (segmentId) => ({ segmentId, en: 'Plain English.', is: 'Venjuleg íslenska.' });
+    const segments = [
+      row('m:first'),
+      row(MTA_R3_ROWS.before),
+      row(MTA_R3_ROWS.target),
+      row(MTA_R3_ROWS.after),
+      row('m:free'),
+      row('m:last'),
+    ];
+    expect(chooseSegment(segments, { suffix: ' [x]' }).segmentId).toBe('m:free');
+  });
 
   it('still contains the literal id segment-editor.spec.js hardcodes', () => {
     // segment-editor.spec.js:355 pins `m68664:abstract:auto-2` by literal for its
