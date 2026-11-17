@@ -285,6 +285,17 @@ describe('sentences', () => {
       'The atom is small.'
     );
   });
+  it('drops a bare [[BR]] token, so the sentence reads across it', () => {
+    expect(extractSentence('The atom[[BR]]is small.', 'atom')).toBe('The atom is small.');
+  });
+  it('collapses runs of bare [[SPACE]] tokens to one space', () => {
+    expect(extractSentence('A[[SPACE]][[SPACE]]big atom here.', 'atom')).toBe('A big atom here.');
+  });
+  it('keeps the ellipsis for a MATH marker beside a bare [[BR]] token', () => {
+    expect(extractSentence('Set[[BR]]x = [[MATH:3]] for the atom.', 'atom')).toBe(
+      'Set x = … for the atom.'
+    );
+  });
   it.each([
     ['[[xref:fs-id123]]', 'See … for atom.'],
     ['[[docref:m123]]', 'See … for atom.'],

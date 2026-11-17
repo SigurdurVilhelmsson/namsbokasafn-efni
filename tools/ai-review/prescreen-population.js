@@ -154,7 +154,9 @@ function plainText(text) {
  */
 export function extractSentence(text, english) {
   const re = wholeWord(english);
-  const sentence = plainText(text)
+  // A bare uppercase token (`[[BR]]`, `[[SPACE]]`) has no colon, so plainText leaves it; it is a
+  // layout marker, read as a space. Done before the split so a sentence break still lands on it.
+  const sentence = plainText(text.replace(/\[\[[A-Z]+\]\]/g, ' '))
     .split(/(?<=[.!?])\s+/)
     .find((s) => re.test(s));
   if (sentence === undefined) return '';
