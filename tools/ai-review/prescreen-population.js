@@ -63,9 +63,36 @@ export function classifyRow(row, { rulingSet, exportPairs }) {
   return 'keep';
 }
 
+/** The census's top-level keys the committed census keeps (`rows` is rebuilt; no `dbPath`). */
+const PUBLISHED_TOP_KEYS = Object.freeze(['schema', 'book', 'head', 'readAt']);
 /**
- * The committed form of a census: rows the export already publishes, minus `alternatives` and
- * `ifRemoved`; every other row is dropped and counted by class in `withheld`.
+ * A published row's keys: from the concept model only `english`, `icelandic`, `domain` and
+ * `conceptId`, plus the census's own flags, counts and segment ids (spec §8). Never
+ * `alternatives` or `ifRemoved`.
+ */
+const PUBLISHED_ROW_KEYS = Object.freeze([
+  'english',
+  'icelandic',
+  'domain',
+  'conceptId',
+  'isFallback',
+  'isTied',
+  'reason',
+  'chapters',
+  'matchCount',
+  'issueCount',
+  'matches',
+]);
+const PUBLISHED_MATCH_KEYS = Object.freeze(['chapter', 'moduleId', 'segmentId']);
+
+/** Only the named keys of `obj` that it has, in the order named. */
+const pick = (obj, keys) =>
+  Object.fromEntries(keys.filter((k) => Object.hasOwn(obj, k)).map((k) => [k, obj[k]]));
+
+/**
+ * The committed form of a census: rows the export already publishes, each holding only the
+ * allowed keys (an allowlist, so a field the census script gains later is never published by
+ * default); every other row is dropped and counted by class in `withheld`.
  *
  * @param {object} full a `c19-census/1` document
  * @param {Array<{english: string, icelandic: string}>} exportTerms
@@ -80,17 +107,28 @@ export function reduceCensus(full, exportTerms, rulingSet) {
   const rows = [];
   for (const row of full.rows) {
     if (nonEmpty(row.icelandic) && exportPairs.has(pairKey(row.english, row.icelandic))) {
-      const rest = { ...row };
-      delete rest.alternatives;
-      delete rest.ifRemoved;
-      rows.push(rest);
+      const kept = pick(row, PUBLISHED_ROW_KEYS);
+      if (Array.isArray(kept.matches))
+        kept.matches = kept.matches.map((m) => pick(m, PUBLISHED_MATCH_KEYS));
+      rows.push(kept);
     } else {
       withheld[classifyRow(row, { rulingSet, exportPairs })] += 1;
     }
   }
-  const out = { ...full, rows, withheld, reduced: true };
-  delete out.dbPath;
-  return out;
+  return { ...pick(full, PUBLISHED_TOP_KEYS), rows, withheld, reduced: true };
+}
+
+/**
+ * A census document as committed text: valid JSON with one row per line (the other keys on the
+ * first line, `rows` last), so the file stays reviewable at tens of thousands of matches.
+ * @param {object} doc
+ * @returns {string}
+ */
+export function formatCensus(doc) {
+  const { rows, ...rest } = doc;
+  const head = JSON.stringify(rest);
+  const open = head === '{}' ? '{"rows":[' : `${head.slice(0, -1)},"rows":[`;
+  return `${open}\n${rows.map((r) => JSON.stringify(r)).join(',\n')}\n]}\n`;
 }
 
 /**
@@ -130,7 +168,13 @@ const wholeWord = (english) =>
     'iu'
   );
 
-/** Segment text as a reader sees it: markers replaced by their content, whitespace collapsed. */
+/** The HTML escapes the English segments carry, and what a reader sees for each. */
+const ESCAPES = Object.freeze({ lt: '<', gt: '>', amp: '&', quot: '"', '#39': "'" });
+
+/**
+ * Segment text as a reader sees it: markers replaced by their content, the HTML escapes decoded
+ * (in one pass, so `&amp;lt;` reads `&lt;`), whitespace collapsed.
+ */
 function plainText(text) {
   let out = text.replace(/\[\[(?:MATH|MEDIA|TABLE):[^\]]*\]\]/g, '…');
   const marker = /\[\[([A-Za-z]+):((?:(?!\[\[|\]\]).)*?)(\|[^\]]*)?\]\]/g;
@@ -141,7 +185,10 @@ function plainText(text) {
     prev = out;
     out = out.replace(marker, visible);
   }
-  return out.replace(/\s+/g, ' ').trim();
+  return out
+    .replace(/&(lt|gt|amp|quot|#39);/g, (_m, name) => ESCAPES[name])
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 /**
@@ -257,6 +304,12 @@ export function pickEvenly(rows, n) {
  * sentence locally, `physicsBiologyNoSentence` the same for physics and biology rows; such a
  * row is left out, so the counts partition the rows.
  *
+ * `localMatches` counts, per group (chemistry; physics and biology), the census matches of those
+ * rows: in all, those whose segment is not in the local `02-for-mt` (production's English and
+ * this checkout's differ), and those whose segment is there but holds no whole-word match
+ * locally. Both kinds give no sentence; the counts make such a drift visible before a row loses
+ * every sentence.
+ *
  * @param {{census: object, rulingSet: object, exportTerms: object[], units: object[], seed: string}} args
  */
 export function buildPopulation({ census, rulingSet, exportTerms, units, seed }) {
@@ -265,6 +318,8 @@ export function buildPopulation({ census, rulingSet, exportTerms, units, seed })
   for (const u of units) for (const s of u.segments) bySegment.set(s.segmentId, { u, s });
   const excluded = { ...emptyCounts(), noSentence: 0, physicsBiologyNoSentence: 0 };
   for (const c of WITHHOLD_CLASSES) excluded[c] += census.withheld?.[c] ?? 0;
+  const noMatches = () => ({ total: 0, noLocalSegment: 0, noLocalSentence: 0 });
+  const localMatches = { chemistry: noMatches(), physicsBiology: noMatches() };
   const rows = [];
   const physicsBiology = [];
   for (const row of census.rows) {
@@ -273,15 +328,22 @@ export function buildPopulation({ census, rulingSet, exportTerms, units, seed })
       excluded[cls] += 1;
       continue;
     }
+    const tally = localMatches[cls === 'keep' ? 'chemistry' : 'physicsBiology'];
     const occurrences = [];
     for (const m of row.matches) {
+      tally.total += 1;
       const hit = bySegment.get(m.segmentId);
-      if (!hit) continue;
+      if (!hit) {
+        tally.noLocalSegment += 1;
+        continue;
+      }
+      const sentence = extractSentence(hit.s.en, row.english);
+      if (!sentence) tally.noLocalSentence += 1;
       occurrences.push({
         chapter: hit.u.chapter,
         moduleId: hit.u.moduleId,
         segmentId: m.segmentId,
-        sentence: extractSentence(hit.s.en, row.english),
+        sentence,
       });
     }
     const sentences = sampleSentences(occurrences, { n: 5, seed });
@@ -297,7 +359,7 @@ export function buildPopulation({ census, rulingSet, exportTerms, units, seed })
       sentences,
     });
   }
-  return { rows, physicsBiology, excluded };
+  return { rows, physicsBiology, excluded, localMatches };
 }
 
 const deepFreeze = (o) => {

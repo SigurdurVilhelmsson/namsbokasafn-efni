@@ -28,6 +28,21 @@ const PHASES = new Set(['full', 'resend']);
 const PRIVATE_FIELDS = Object.freeze(['alternatives', 'ifRemoved']);
 
 const isPopulation = (kind) => POPULATION_KINDS.includes(kind);
+/** The kinds collect --resend re-sends when unjudged: population rows and controls. */
+const RESENT_KINDS = Object.freeze([...POPULATION_KINDS, 'control']);
+
+/**
+ * A control result that failed, split by why: `notJudged` got no answer at all (unjudged, never
+ * counted as passed), `missed` got an answer that is not the expected one (or a bad expected).
+ * @param {Array<{ got: string, ok: boolean }>} results judgeControls' results
+ */
+export function controlMisses(results) {
+  const failed = results.filter((c) => !c.ok);
+  return {
+    missed: failed.filter((c) => c.got !== 'unjudged'),
+    notJudged: failed.filter((c) => c.got === 'unjudged'),
+  };
+}
 /** What identifies an item: its pair, its role and what the model saw. */
 export const itemSig = (it) =>
   JSON.stringify([
@@ -46,8 +61,9 @@ export const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
  * Check that runs can be merged and return what they share.
  * @param {Array<{ runId: string, prescreen: object }>} runs
  * @returns {{ model: string, effort: string, maxTokens: number, prompt: object, census: object,
- *   rulingSet: object, excluded: object, includePhysicsBiology: boolean, items: object[],
- *   byId: Map<string, object>, key: Record<string, object> }}
+ *   rulingSet: object, excluded: object, localMatches: object|null,
+ *   includePhysicsBiology: boolean, items: object[], byId: Map<string, object>,
+ *   key: Record<string, object> }}
  * @throws {Error} on a pilot (or other) phase, no full run, a different model, effort,
  *   max_tokens, prompt or census, full runs with different items or exclusion counts, or a
  *   resend item that is not the full run's item of the same id
@@ -123,6 +139,7 @@ export function checkRuns(runs) {
     census: p.census,
     rulingSet: p.rulingSet,
     excluded: p.excluded,
+    localMatches: p.localMatches ?? null,
     includePhysicsBiology: p.includePhysicsBiology === true,
     items,
     byId,
@@ -166,8 +183,9 @@ const sentIds = (r) => {
 };
 
 /**
- * The population ids to re-send: unjudged, and never sent by a resend run before (spec §8:
- * re-sent once). Controls are never re-sent.
+ * The ids to re-send: population rows and controls that are unjudged and were never sent by a
+ * resend run before (spec §8: re-sent once). A control rides along so that a refused or
+ * truncated group does not leave the gate failed for good.
  * @param {{ base: object, merged: Map<string, object>,
  *   runs: Array<{ prescreen: object, sentKeys?: string[] }> }} args
  * @returns {{ send: string[], resentBefore: string[] }}
@@ -175,7 +193,7 @@ const sentIds = (r) => {
 export function resendIds({ base, merged, runs }) {
   const resent = new Set(runs.filter((r) => r.prescreen.phase === 'resend').flatMap(sentIds));
   const unjudged = base.items
-    .filter((it) => isPopulation(it.kind) && !merged.has(it.id))
+    .filter((it) => RESENT_KINDS.includes(it.kind) && !merged.has(it.id))
     .map((it) => it.id)
     .sort();
   return {
@@ -185,9 +203,11 @@ export function resendIds({ base, merged, runs }) {
 }
 
 /**
- * The committed verdicts document: one row per population id, sorted by id.
- * @returns {{ schema: string, runs: string[], model: string, prompt: object, excluded: object,
- *   controls: object, population: object[] }}
+ * The committed verdicts document: one row per population id, sorted by id, each naming the
+ * `run` that answered it (null when unjudged: a resent row was judged alone, a different
+ * condition from a row judged in a group).
+ * @returns {{ schema: string, runs: string[], model: string, effort: string, prompt: object,
+ *   census: object, excluded: object, controls: object, population: object[] }}
  */
 export function buildVerdicts({ base, merged, runIds }) {
   const population = base.items
@@ -206,13 +226,16 @@ export function buildVerdicts({ base, merged, runIds }) {
         proposed: v ? v.proposed : [],
         rightSenses: v ? v.rightSenses : null,
         sentences: it.sentences,
+        run: v ? v.runId : null,
       };
     });
   return {
     schema: VERDICTS_SCHEMA,
     runs: [...runIds],
     model: base.model,
+    effort: base.effort,
     prompt: { path: base.prompt.path, sha256: base.prompt.sha256 },
+    census: { path: base.census.path, sha256: base.census.sha256 },
     excluded: base.excluded,
     controls: judgeControls({ verdicts: merged, key: base.key }),
     population,
@@ -257,8 +280,8 @@ export function assertPublishable(doc, censusRows) {
 }
 
 /**
- * Why the outcome needs a person (empty = none): an unjudged population row, a control missed,
- * or a run that did not end complete.
+ * Why the outcome needs a person (empty = none): an unjudged population row, a control missed
+ * (answered, wrongly), a control not judged (no answer), or a run that did not end complete.
  * @param {object} doc a buildVerdicts result
  * @param {Array<{ runId: string, status: string }>} runs
  * @returns {string[]}
@@ -267,12 +290,19 @@ export function stopReasons(doc, runs) {
   const reasons = [];
   const unjudged = doc.population.filter((r) => r.verdict === 'unjudged').length;
   if (unjudged) reasons.push(`${unjudged} population rows are unjudged (open, never fine)`);
-  const misses = doc.controls.results.filter((c) => !c.ok);
-  if (misses.length) {
+  const { missed, notJudged } = controlMisses(doc.controls.results);
+  if (missed.length) {
     reasons.push(
-      `${misses.length} controls missed: ${misses.map((c) => `${c.name} got ${c.got}`).join(', ')}`
+      `${missed.length} controls missed: ${missed.map((c) => `${c.name} got ${c.got}`).join(', ')}`
     );
-  } else if (!doc.controls.pass) {
+  }
+  if (notJudged.length) {
+    reasons.push(
+      `${notJudged.length} controls not judged (no answer; never counted as passed): ` +
+        notJudged.map((c) => c.name).join(', ')
+    );
+  }
+  if (!missed.length && !notJudged.length && !doc.controls.pass) {
     reasons.push('the control gate did not pass (no controls)');
   }
   for (const r of runs) {
@@ -295,7 +325,8 @@ function describeRun(r) {
 }
 
 /**
- * The committed report (Markdown): control misses first, the counts by verdict, flag kind and
+ * The committed report (Markdown): control misses first, then controls not judged, the counts by
+ * verdict, flag kind and
  * exclusion class, the unjudged rows, the control table, each run's cost in USD (run-end.json)
  * and ISK at the named rate, and the prompt sha256. Each of `pilots` adds a cost-only line and
  * its cost to the total; a pilot contributes no verdict.
@@ -309,8 +340,9 @@ export function renderReport({ doc, merged, runs, pilots = [], iskRate, iskRateS
   const lines = [];
   const add = (...l) => lines.push(...l);
   const reasonOf = (id) => cell(merged.get(id)?.reason ?? '');
+  const gotOf = (c) => (c.got === 'unjudged' ? 'not judged' : c.got);
   const controlRow = (c, withOk) =>
-    `| ${c.id} | ${cell(c.name)} | ${c.expected} | ${c.got} |` +
+    `| ${c.id} | ${cell(c.name)} | ${c.expected} | ${gotOf(c)} |` +
     `${withOk ? ` ${c.ok ? 'ok' : 'FAIL'} |` : ''} ${reasonOf(c.id)} |`;
   add('# Glossary pre-screen report (c19)', '');
   add(
@@ -318,11 +350,21 @@ export function renderReport({ doc, merged, runs, pilots = [], iskRate, iskRateS
       `sha256 \`${doc.prompt.sha256}\`.`,
     ''
   );
-  const misses = doc.controls.results.filter((c) => !c.ok);
-  if (misses.length) {
+  const { missed, notJudged } = controlMisses(doc.controls.results);
+  if (missed.length) {
     add('## Control misses (read first)', '');
     add('| id | control | expected | got | the model’s reason |', '|---|---|---|---|---|');
-    for (const c of misses) add(controlRow(c, false));
+    for (const c of missed) add(controlRow(c, false));
+    add('');
+  }
+  if (notJudged.length) {
+    add('## Controls not judged (read first)', '');
+    add(
+      'No answer survived for these controls, so the gate cannot pass; they were not missed.',
+      ''
+    );
+    add('| id | control | expected | got | the model’s reason |', '|---|---|---|---|---|');
+    for (const c of notJudged) add(controlRow(c, false));
     add('');
   }
   add('## Verdicts', '');

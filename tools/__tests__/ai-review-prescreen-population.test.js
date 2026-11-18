@@ -14,6 +14,7 @@ import {
   findOccurrences,
   pickEvenly,
   loadUnits,
+  formatCensus,
 } from '../ai-review/prescreen-population.js';
 
 const rulingSet = { rulings: [{ en: ['Ruled Word', 'ruled'] }] };
@@ -163,6 +164,21 @@ describe('buildPopulation', () => {
       excluded.physicsBiology,
     ]).toEqual([1, 1, 0]);
   });
+  it('counts the census matches with no local segment and with no local sentence, by group', () => {
+    const m = (id) => ({ chapter: 1, moduleId: 'm1', segmentId: id });
+    const c = {
+      ...census,
+      rows: [
+        row('keepa', { matches: [m('m1:para:keepa'), m('m1:para:gone'), m('m1:para:keepb')] }),
+        row('phys', { domain: 'physics', matches: [m('m1:para:phys'), m('m1:para:gone2')] }),
+        row('ruled', { matches: [m('m1:para:gone3')] }),
+      ],
+    };
+    expect(buildPopulation({ census: c, ...args }).localMatches).toEqual({
+      chemistry: { total: 3, noLocalSegment: 1, noLocalSentence: 1 },
+      physicsBiology: { total: 2, noLocalSegment: 1, noLocalSentence: 0 },
+    });
+  });
 });
 
 describe('reduceCensus', () => {
@@ -218,6 +234,54 @@ describe('reduceCensus', () => {
   it('does not carry dbPath', () => {
     const out = reduceCensus({ ...census, dbPath: '/prod/x.db' }, exportTerms, rulingSet);
     expect('dbPath' in out).toBe(false);
+  });
+  it('keeps only the allowed keys: a field the census gains later is not published', () => {
+    const grown = {
+      ...census,
+      book: 'efnafraedi-2e',
+      head: 'f'.repeat(40),
+      readAt: '2026-11-18T00:00:00.000Z',
+      hostname: 'prod-box',
+      rows: census.rows.map((r) => ({
+        ...r,
+        secretNote: 'private',
+        matches: r.matches.map((x) => ({ ...x, isText: 'Icelandic text' })),
+      })),
+    };
+    const out = reduceCensus(grown, exportTerms, rulingSet);
+    expect({
+      top: Object.keys(out).sort(),
+      row: [...new Set(out.rows.flatMap((r) => Object.keys(r)))].sort(),
+      match: [...new Set(out.rows.flatMap((r) => r.matches.flatMap((x) => Object.keys(x))))].sort(),
+    }).toEqual({
+      top: ['book', 'head', 'readAt', 'reduced', 'rows', 'schema', 'withheld'],
+      row: [
+        'chapters',
+        'conceptId',
+        'domain',
+        'english',
+        'icelandic',
+        'isFallback',
+        'isTied',
+        'issueCount',
+        'matchCount',
+        'matches',
+        'reason',
+      ],
+      match: ['chapter', 'moduleId', 'segmentId'],
+    });
+  });
+});
+
+describe('formatCensus', () => {
+  const doc = { ...reduceCensus(census, exportTerms, rulingSet), exportSource: { path: 'x' } };
+  it('parses back to the same document', () => {
+    expect(JSON.parse(formatCensus(doc))).toEqual(doc);
+  });
+  it('writes one row per line, each line a JSON row', () => {
+    const lines = formatCensus(doc).split('\n');
+    const rows = lines.slice(1, 1 + doc.rows.length).map((l) => JSON.parse(l.replace(/,$/, '')));
+    expect([lines.length, rows]).toEqual([doc.rows.length + 3, doc.rows]);
   });
 });
 
@@ -303,6 +367,21 @@ describe('sentences', () => {
     ['[[link:the site|http://x.org]]', 'See the site for atom.'],
   ])('resolves %s to its visible text or an ellipsis', (marker, expected) => {
     expect(extractSentence(`See ${marker} for atom.`, 'atom')).toBe(expected);
+  });
+  it('decodes the HTML escapes in the sentence sent to the model', () => {
+    expect(
+      extractSentence('PG&amp;E said x &lt; y &gt; z, &quot;q&quot; it&#39;s the atom.', 'atom')
+    ).toBe('PG&E said x < y > z, "q" it\'s the atom.');
+  });
+  it('decodes in one pass: an escaped escape stays one level escaped', () => {
+    expect(extractSentence('Write &amp;lt; for the atom.', 'atom')).toBe(
+      'Write &lt; for the atom.'
+    );
+  });
+  it('does not match a headword inside an escape', () => {
+    expect(findOccurrences('amp', [unit(1, 'm', { 'm:p:a': 'Used by PG&amp;E.' })])).toHaveLength(
+      0
+    );
   });
   it('matches whole words only', () => {
     expect(

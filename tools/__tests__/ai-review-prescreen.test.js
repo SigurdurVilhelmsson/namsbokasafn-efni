@@ -370,6 +370,18 @@ describe('reduce', () => {
     ]);
   });
 
+  it('writes the reduced census one row per line (reviewable in a public repository)', async () => {
+    const out = 'experiments/terminology-consistency/results/2026-11-21/census.json';
+    const { r } = await reduce(fx.fullPath, out);
+    const text = fs.readFileSync(path.join(fx.root, out), 'utf8');
+    const doc = JSON.parse(text);
+    const lines = text.split('\n');
+    const rowLines = lines
+      .slice(1, 1 + doc.rows.length)
+      .map((l) => JSON.parse(l.replace(/,$/, '')));
+    expect([r.exitCode, lines.length, rowLines]).toEqual([0, doc.rows.length + 3, doc.rows]);
+  });
+
   it('writes the reduced census: published rows only, private fields and dbPath gone', async () => {
     const { r } = await reduce(fx.fullPath);
     const written = JSON.parse(fs.readFileSync(path.join(fx.root, OUT), 'utf8'));
@@ -426,6 +438,17 @@ describe('plan', () => {
 
   it('prints the control count', () => {
     expect(res.text).toMatch(/^controls: 16$/m);
+  });
+
+  it('prints the census matches with no local segment and with no local sentence', () => {
+    expect([
+      /^census matches of chemistry rows: 36 \(6 with no local segment, 0 with no local sentence\)$/m.test(
+        res.text
+      ),
+      /^census matches of physics and biology rows: 23 \(7 with no local segment, 0 with no local sentence\)$/m.test(
+        res.text
+      ),
+    ]).toEqual([true, true]);
   });
 
   it('prints a request count and both worst cases for every model', () => {
@@ -486,6 +509,24 @@ describe('pilot', () => {
       runs: fs.existsSync(path.join(deps.recordsDir, 'runs')),
       notSending: /not sending/.test(text()),
     }).toEqual({ exitCode: 0, calls: 0, runs: false, notSending: true });
+  });
+
+  it('without --yes prints every control with its drawn sentences, to read before paying', async () => {
+    const { text } = await pilot(answerer(), []);
+    expect([
+      /^controls and their drawn sentences/m.test(text()),
+      (text().match(/^ {2}[\w -]+: .+ → .+, expected (flag|fine)/gm) ?? []).length,
+      /^ {2}balanced: balanced → í jafnvægi, expected flag$/m.test(text()),
+      /^ {4}- The text says balanced here\.$/m.test(text()),
+      /^ {2}addition-adding: addition → álagning, expected flag \(wrong-sense or some-senses-only\)$/m.test(
+        text()
+      ),
+    ]).toEqual([true, 16, true, true, true]);
+  });
+
+  it('with --yes does not print the control sentences', async () => {
+    const { text } = await pilot(passing());
+    expect(/^controls and their drawn sentences/m.test(text())).toBe(false);
   });
 
   it('refuses from a linked worktree (git stub) before any transport call', async () => {
@@ -562,10 +603,64 @@ describe('pilot', () => {
       ]);
     });
 
-    it('records the sampling rule for all three sentence paths', () => {
-      expect(Object.keys(record.prescreen.sampling).sort()).toEqual(
-        ['controls', 'homographs', 'itemOrder', 'pick', 'population', 'seed'].sort()
-      );
+    it('records the sampling rule, word for word: how a sentence is cut, each path, the negatives', () => {
+      expect(record.prescreen.sampling).toEqual({
+        seed: 'the reduced census file sha256 (census.sha256)',
+        sentence:
+          "one segment's English as a reader sees it: a [[MATH:…]], [[MEDIA:…]] or [[TABLE:…]] " +
+          'placeholder becomes "…"; a marker with no visible text ([[xref:id]] without a pipe, any ' +
+          '[[docref:…]]) becomes "…"; any other [[type:text]] or [[type:text|target]] marker ' +
+          'becomes its text; a bare layout marker ([[BR]], [[SPACE]]) becomes a space; the escapes ' +
+          '&lt; &gt; &amp; &quot; &#39; are decoded in one pass; whitespace is collapsed. That text ' +
+          'is split into sentences after ".", "!" or "?" followed by whitespace, and the sentence ' +
+          'holding the first whole-word, case-insensitive match of the headword is taken; a ' +
+          'sentence over 400 characters is cut to the 400-character window centred on that match, ' +
+          'kept within the sentence (prescreen-population.js extractSentence)',
+        population:
+          "up to 5 sentences per row, one from each of the row's census matches in 02-for-mt (a " +
+          'match whose segment is not in the local 02-for-mt, or holds no whole-word match there, ' +
+          'gives none; localMatches counts both): round-robin across chapters in chapter order ' +
+          '(one sentence per chapter per round), each chapter ordered by sha256(seed NUL ' +
+          'segmentId); a sentence identical to one already taken for the row is dropped, so a row ' +
+          'can carry fewer than 5; a row left with none is excluded as noSentence or ' +
+          'physicsBiologyNoSentence (prescreen-population.js sampleSentences)',
+        controls:
+          'positive and negative controls: up to 5 sentences from a whole-word search of the ' +
+          'headword over the English of 02-for-mt, sampled and de-duplicated the same way as ' +
+          'population rows (sentencesFor)',
+        negatives: {
+          rule:
+            'rows [USER] has ruled (atom against the official frumeind), each single-sense in ' +
+            "chemistry's sentences as read on 2026-11-17, so the expected answer is fine (spec §5)",
+          rows: [
+            { english: 'atom', icelandic: 'atóm' },
+            { english: 'anode', icelandic: 'anóða' },
+            { english: 'calorimeter', icelandic: 'varmamælir' },
+            { english: 'bond length', icelandic: 'tengilengd' },
+            { english: 'carbonate', icelandic: 'karbónat' },
+            { english: 'crystalline', icelandic: 'kristalkenndur' },
+          ],
+        },
+        homographs:
+          'the two addition halves: not sampled and not de-duplicated; the sentence of each of the ' +
+          'five named segment ids per half, cut as above (spec §5; prescreen-population.js ' +
+          'CONTROLS.homograph)',
+        itemOrder:
+          'sha256(seed NUL english NUL icelandic NUL control name); the two homograph rows kept at ' +
+          'least 8 apart (prescreen-population.js assembleItems)',
+        pick: {
+          population: 24,
+          physicsBiology: 15,
+          rule: 'pickEvenly: spread evenly over the rows sorted by match count, then English',
+        },
+      });
+    });
+
+    it('records the census matches with no local segment and with no local sentence', () => {
+      expect(record.prescreen.localMatches).toEqual({
+        chemistry: { total: 36, noLocalSegment: 6, noLocalSentence: 0 },
+        physicsBiology: { total: 23, noLocalSegment: 7, noLocalSentence: 0 },
+      });
     });
 
     it('takes the pilot rows by pickEvenly', () => {
@@ -581,7 +676,7 @@ describe('pilot', () => {
       expect(record.prescreen.requests).toEqual(sent);
     });
 
-    it("pre-registers the adding half's flag kinds in the record (ruling P8)", () => {
+    it("pre-registers the adding half's flag kinds in the record (the stricter answer)", () => {
       const adding = record.prescreen.items.find((i) => i.name === 'addition-adding');
       expect(adding.flagKinds).toEqual(['wrong-sense', 'some-senses-only']);
     });
@@ -712,14 +807,19 @@ const crowdLedger = (recordsDir, leftUsd) =>
     cap: CAP_USD,
   });
 
-/** A pilot run in `recordsDir`; by default every control is answered as expected. */
+/**
+ * A pilot run in `recordsDir`; by default every control is answered as expected. It passes
+ * --allow-second-pilot: these tests buy several pilots on one records directory on purpose (the
+ * repeat guard has its own tests, which call main without it).
+ */
 async function pilotIn(
   fx,
   recordsDir,
   { answer = answerer(), model = 'claude-opus-5-5', transport } = {}
 ) {
   const h = harnessDeps(fx, { recordsDir, transport: transport ?? mockTransport({ answer }) });
-  const r = await main(['pilot', '--census', CENSUS_REL, '--model', model, '--yes'], h.deps);
+  const argv = ['pilot', '--census', CENSUS_REL, '--model', model, '--allow-second-pilot'];
+  const r = await main([...argv, '--yes'], h.deps);
   return r.runId;
 }
 
@@ -1571,7 +1671,7 @@ describe('resume --yes closes an interrupted interactive run', () => {
   let recordsDir;
   let fullId;
   let resendId;
-  let refusedPopulation;
+  let refusedResent; // the refused request's population rows and controls (both are re-sent)
   let killed;
   const runEndOf = (runId) => path.join(recordsDir, 'runs', runId, 'run-end.json');
   beforeAll(async () => {
@@ -1585,9 +1685,9 @@ describe('resume --yes closes an interrupted interactive run', () => {
     const ps = recordOf(recordsDir, fullId, PRESCREEN_RECORD);
     const kind = new Map(ps.items.map((i) => [i.id, i.kind]));
     const target = ps.items.find((i) => i.english === 'qterm001').id;
-    refusedPopulation = ps.requests
+    refusedResent = ps.requests
       .find((q) => q.ids.includes(target))
-      .ids.filter((id) => kind.get(id) === 'population');
+      .ids.filter((id) => kind.get(id) === 'population' || kind.get(id) === 'control');
     // The process dies right after the second answer arrives, before the harness settles or
     // records it: anthropicVersion() throws on the call that follows that send. The request is
     // recorded, its reservation stays open, and no run-end.json is written.
@@ -1616,7 +1716,7 @@ describe('resume --yes closes an interrupted interactive run', () => {
   it('the killed resend left an open reservation and no run-end.json (the precondition)', () => {
     expect([
       killed instanceof Error && killed.message,
-      refusedPopulation.length >= 3,
+      refusedResent.length >= 3,
       recordOf(recordsDir, resendId, PRESCREEN_RECORD).phase,
       openUsdOf(recordsDir, resendId) > 0,
       fs.existsSync(runEndOf(resendId)),
@@ -1711,7 +1811,7 @@ describe('resume --yes closes an interrupted interactive run', () => {
       }).toEqual({
         taken: [2, [fullId, resendId]],
         sentBefore: 2,
-        sentNow: refusedPopulation.filter((id) => !sentBefore.some((q) => q.key === id)).sort(),
+        sentNow: refusedResent.filter((id) => !sentBefore.some((q) => q.key === id)).sort(),
       });
     });
   });
@@ -1722,6 +1822,7 @@ describe('collect', () => {
   let recordsDir;
   let fullId;
   let refusedPopulation;
+  let refusedControls;
   beforeAll(async () => {
     fx = makeFixture();
     recordsDir = makeTempDir('ps-rec-');
@@ -1734,10 +1835,9 @@ describe('collect', () => {
     const ps = recordOf(recordsDir, fullId, PRESCREEN_RECORD);
     const kind = new Map(ps.items.map((i) => [i.id, i.kind]));
     const target = ps.items.find((i) => i.english === 'qterm001').id;
-    refusedPopulation = ps.requests
-      .find((q) => q.ids.includes(target))
-      .ids.filter((id) => kind.get(id) === 'population')
-      .sort();
+    const refused = ps.requests.find((q) => q.ids.includes(target)).ids;
+    refusedPopulation = refused.filter((id) => kind.get(id) === 'population').sort();
+    refusedControls = refused.filter((id) => kind.get(id) === 'control').sort();
   });
 
   it("lists a refused request's population rows as unjudged and exits 2", async () => {
@@ -1904,7 +2004,7 @@ describe('collect', () => {
         args: ['--resend', '--yes'],
         transport,
       });
-      // Not refused (the refused request's controls stay unjudged, so it still exits 2).
+      // Not refused, and nothing left to send: the first resend judged every row and control.
       expect([again.r.refusal, transportCalls(transport), again.verdicts.runs]).toEqual([
         undefined,
         0,
@@ -1912,15 +2012,16 @@ describe('collect', () => {
       ]);
     });
 
-    it('sends only the unjudged population ids, one per request', () => {
+    it('sends only the unjudged population rows and controls, one per request', () => {
       const ids = readJsonl(
         path.join(recordsDir, 'runs', res.verdicts.runs[1], 'requests.jsonl')
       ).map((q) => JSON.parse(q.body.messages[0].content).rows.map((x) => x.id));
+      const expected = [...refusedPopulation, ...refusedControls].sort();
       expect([
         res.transport.calls.send,
         ids.every((x) => x.length === 1),
         ids.flat().sort(),
-      ]).toEqual([refusedPopulation.length, true, refusedPopulation]);
+      ]).toEqual([expected.length, true, expected]);
     });
 
     it('records the resend run as phase resend and adds it to the verdicts', () => {
@@ -2021,6 +2122,203 @@ describe('collect --resend after a resend that left a request unsent', () => {
   });
 });
 
+describe('a second pilot on the same model, census and prompt', () => {
+  let fx;
+  beforeAll(() => {
+    fx = makeFixture();
+  });
+  const pilotArgv = (model, more = []) => [
+    'pilot',
+    '--census',
+    CENSUS_REL,
+    '--model',
+    model,
+    ...more,
+  ];
+
+  it('refuses with zero calls, naming the first, dry or paid', async () => {
+    const own = makeTempDir('ps-rec-');
+    const first = await pilotIn(fx, own);
+    const t = mockTransport({ answer: answerer() });
+    const paid = harnessDeps(fx, { recordsDir: own, transport: t });
+    const pr = await main(pilotArgv('claude-opus-5-5', ['--yes']), paid.deps);
+    const dry = harnessDeps(fx, { recordsDir: own, transport: t });
+    const dr = await main(pilotArgv('claude-opus-5-5'), dry.deps);
+    expect({
+      paid: [pr.exitCode, pr.refusal],
+      dry: [dr.exitCode, dr.refusal],
+      calls: transportCalls(t),
+      named: paid.errText().includes(first) && /--allow-second-pilot/.test(paid.errText()),
+      runs: runsIn(own),
+    }).toEqual({
+      paid: [1, 'second-pilot'],
+      dry: [1, 'second-pilot'],
+      calls: 0,
+      named: true,
+      runs: [first],
+    });
+  });
+
+  it('--allow-second-pilot buys it and records the answer in prescreen.json', async () => {
+    const own = makeTempDir('ps-rec-');
+    await pilotIn(fx, own);
+    const h = harnessDeps(fx, { recordsDir: own });
+    const r = await main(pilotArgv('claude-opus-5-5', ['--allow-second-pilot', '--yes']), h.deps);
+    expect([r.exitCode, recordOf(own, r.runId, PRESCREEN_RECORD).allowSecondPilot]).toEqual([
+      0,
+      true,
+    ]);
+  });
+
+  it('a first pilot records that no second pilot was allowed', async () => {
+    const own = makeTempDir('ps-rec-');
+    const h = harnessDeps(fx, { recordsDir: own });
+    const r = await main(pilotArgv('claude-opus-5-5', ['--yes']), h.deps);
+    expect([r.exitCode, recordOf(own, r.runId, PRESCREEN_RECORD).allowSecondPilot]).toEqual([
+      0,
+      false,
+    ]);
+  });
+
+  it('a pilot on the other model is not a repeat', async () => {
+    const own = makeTempDir('ps-rec-');
+    await pilotIn(fx, own, { model: 'claude-opus-5-5' });
+    const h = harnessDeps(fx, { recordsDir: own });
+    const r = await main(pilotArgv('claude-fable-5-2', ['--yes']), h.deps);
+    expect([r.exitCode, r.refusal]).toEqual([0, undefined]);
+  });
+
+  it('an earlier pilot that sent nothing does not count', async () => {
+    const own = makeTempDir('ps-rec-');
+    const first = await pilotIn(fx, own);
+    fs.writeFileSync(path.join(own, 'runs', first, 'requests.jsonl'), '');
+    const h = harnessDeps(fx, { recordsDir: own });
+    const r = await main(pilotArgv('claude-opus-5-5', ['--yes']), h.deps);
+    expect([r.exitCode, r.refusal]).toEqual([0, undefined]);
+  });
+});
+
+/** An interactive transport that answers with a refusal every request whose rows `refuse` picks. */
+function refusingSend({ answer = answerer(), refuse }) {
+  const base = mockTransport({ answer });
+  return {
+    ...base,
+    async send(body) {
+      const m = await base.send(body);
+      if (!refuse(JSON.parse(body.messages[0].content).rows)) return m;
+      return { ...m, stop_reason: 'refusal', content: [] };
+    },
+  };
+}
+
+describe('collect --resend re-sends unjudged controls with the population rows', () => {
+  let fx;
+  let recordsDir;
+  let fullId;
+  let controlsInGroup;
+  beforeAll(async () => {
+    fx = makeFixture();
+    recordsDir = makeTempDir('ps-rec-');
+    const pid = await pilotIn(fx, recordsDir);
+    const refusing = refusingTransport({ refuse: (rows) => rows.some((x) => x.en === 'balanced') });
+    fullId = (await fullRun(fx, recordsDir, pid, { transport: refusing })).r.runIds[0];
+    const ps = recordOf(recordsDir, fullId, PRESCREEN_RECORD);
+    const kind = new Map(ps.items.map((i) => [i.id, i]));
+    const target = ps.items.find((i) => i.name === 'balanced').id;
+    controlsInGroup = ps.requests
+      .find((q) => q.ids.includes(target))
+      .ids.filter((id) => kind.get(id).kind === 'control')
+      .map((id) => kind.get(id).name)
+      .sort();
+  });
+
+  it('before the resend, the group’s controls read as not judged, never as missed', async () => {
+    const res = await collect(fx, recordsDir, [fullId]);
+    const notJudged = new RegExp(
+      `^stop and ask: ${controlsInGroup.length} controls not judged \\(no answer; never counted as passed\\): `,
+      'm'
+    );
+    expect([
+      res.r.exitCode,
+      controlsInGroup.includes('balanced'),
+      notJudged.test(res.text()),
+      /controls missed/.test(res.text()),
+      res.report.includes('## Controls not judged (read first)'),
+      res.report.includes('## Control misses (read first)'),
+    ]).toEqual([2, true, true, false, true, false]);
+  });
+
+  it('the resend sends those controls once and the gate then passes', async () => {
+    const t = mockTransport({ answer: answerer() });
+    const res = await collect(fx, recordsDir, [fullId], {
+      args: ['--resend', '--yes'],
+      transport: t,
+    });
+    const resendRun = res.verdicts.runs[1];
+    const sent = readJsonl(path.join(recordsDir, 'runs', resendRun, 'requests.jsonl')).map(
+      (q) => JSON.parse(q.body.messages[0].content).rows[0].en
+    );
+    expect([
+      res.r.exitCode,
+      res.verdicts.controls.pass,
+      sent.includes('balanced'),
+      /^resend: \d+ unjudged population rows and \d+ unjudged controls, one per request/m.test(
+        res.text()
+      ),
+    ]).toEqual([0, true, true, true]);
+  });
+
+  it('a control the resend leaves unjudged is reported as not judged, apart from missed', async () => {
+    const own = makeTempDir('ps-rec-');
+    const pid = await pilotIn(fx, own);
+    const refusing = refusingTransport({ refuse: (rows) => rows.some((x) => x.en === 'balanced') });
+    const fid = (await fullRun(fx, own, pid, { transport: refusing })).r.runIds[0];
+    const t = refusingSend({ refuse: (rows) => rows[0].en === 'balanced' });
+    const res = await collect(fx, own, [fid], { args: ['--resend', '--yes'], transport: t });
+    expect([
+      res.r.exitCode,
+      /^stop and ask: 1 controls not judged \(no answer; never counted as passed\): balanced$/m.test(
+        res.text()
+      ),
+      /controls missed/.test(res.text()),
+      /^\| r\d+ \| balanced \| flag \| not judged \| FAIL \|/m.test(res.report),
+    ]).toEqual([2, true, false, true]);
+  });
+});
+
+describe('collect over an answer that names one id twice', () => {
+  it('leaves that row unjudged and prints the dropped entries', async () => {
+    const fx = makeFixture();
+    const own = makeTempDir('ps-rec-');
+    const pid = await pilotIn(fx, own);
+    const base = answerer();
+    const answer = (body) => {
+      const out = base(body);
+      const hit = JSON.parse(body.messages[0].content).rows.find((x) => x.en === 'qterm001');
+      if (hit) {
+        out.rows.push({
+          id: hit.id,
+          verdict: 'flag',
+          kind: 'other-error',
+          reason: 'A second answer.',
+          proposed: [],
+          rightSenses: null,
+        });
+      }
+      return out;
+    };
+    const full = await fullRun(fx, own, pid, { transport: mockTransport({ answer }) });
+    const res = await collect(fx, own, full.r.runIds);
+    const row = res.verdicts.population.find((x) => x.english === 'qterm001');
+    const dropped = new RegExp(
+      `^answers \\(run ${full.r.runIds[0]}\\): \\d+ responses; problems \\{\\}; 2 entries dropped ` +
+        `\\[\\{"id":"${row.id}","reason":"duplicate-id"\\},\\{"id":"${row.id}","reason":"duplicate-id"\\}\\]$`,
+      'm'
+    );
+    expect([res.r.exitCode, row.verdict, dropped.test(res.text())]).toEqual([2, 'unjudged', true]);
+  });
+});
+
 describe('collect over a full run that missed a control', () => {
   it('writes the verdicts, puts the miss first in the report and exits 2', async () => {
     const fx = makeFixture();
@@ -2080,6 +2378,10 @@ describe('collect over complete runs', () => {
       ]);
     });
 
+    it('names on each row the run that answered it', () => {
+      expect([...new Set(res.verdicts.population.map((x) => x.run))]).toEqual([ids[0]]);
+    });
+
     it('writes only census pairs and no private field', () => {
       const keys = new Set(res.verdicts.population.flatMap((x) => Object.keys(x)));
       expect([...keys].sort()).toEqual(
@@ -2092,6 +2394,7 @@ describe('collect over complete runs', () => {
           'proposed',
           'reason',
           'rightSenses',
+          'run',
           'sentences',
           'verdict',
         ].sort()

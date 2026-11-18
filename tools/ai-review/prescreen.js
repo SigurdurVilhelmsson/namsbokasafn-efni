@@ -8,17 +8,22 @@
  *
  *   reduce  0 ISK. The private full census (an absolute path OUTSIDE the repository) → the
  *           committed reduced census under experiments/terminology-consistency/results/: only
- *           rows whose (English, Icelandic) pair the committed export already publishes, with
- *           no `alternatives`, `ifRemoved` or `dbPath`; every other row is a count.
- *   plan    0 ISK. The population, each exclusion count, the control count, and the requests and
- *           worst-case USD of a full run (with and without the physics and biology rows) on every
- *           model. A population over POPULATION_STOP prints a stop-and-ask line and exits 2.
+ *           rows whose (English, Icelandic) pair the committed export already publishes, each
+ *           holding only the allowed keys (no `alternatives`, `ifRemoved` or `dbPath`); every
+ *           other row is a count. Written one row per line.
+ *   plan    0 ISK. The population, each exclusion count, the census matches with no local
+ *           segment or no local sentence, the control count, and the requests and worst-case USD
+ *           of a full run (with and without the physics and biology rows) on every model. A
+ *           population over POPULATION_STOP prints a stop-and-ask line and exits 2.
  *   pilot   PAID with --yes. Every control, PILOT_POPULATION_ROWS chemistry rows and
  *           PILOT_PHYSICS_BIOLOGY_ROWS physics or biology rows (each set by pickEvenly), one
- *           interactive run. Preflight first (nothing is spent or written if it fails); without
- *           --yes it stops after the preflight and the plan. Then it judges the run FROM ITS
- *           RECORDS: the control table, the chemistry and the physics-and-biology flag rates, and
- *           the cost per row.
+ *           interactive run. Refuses, dry or paid, when an earlier pilot on the same model,
+ *           census and prompt MAY HAVE SPENT (it recorded a sent request), unless
+ *           --allow-second-pilot records the answer. Preflight first (nothing is spent or written
+ *           if it fails); without --yes it prints every control with its drawn sentences (read
+ *           them before paying) and stops after the preflight and the plan. Then it judges the
+ *           run FROM ITS RECORDS: the control table, the chemistry and the physics-and-biology
+ *           flag rates, and the cost per row.
  *   run     PAID with --yes. Every population row (plus the physics and biology rows with
  *           --include-physics-biology) and every control, through the Batch API, as --split
  *           sequential batches (one run each; every part's prescreen.json records EVERY item and
@@ -46,11 +51,11 @@
  *           open reservations settled at their worst case, so collect can take it.
  *   collect 0 ISK, or PAID with --resend --yes. Merges the named full (and resend) runs by item
  *           id into one verdict per population row (an id answered in two runs refuses), writes
- *           prescreen-verdicts.json and prescreen-report.md under RESULTS_DIR. With --resend the
- *           population rows still unjudged go once more, one per interactive request; it
- *           refuses first if the records directory holds a full or resend run of these rows that
- *           may have spent and is not named (re-sent once means once over every run, not only the
- *           named ones). Each
+ *           prescreen-verdicts.json and prescreen-report.md under RESULTS_DIR, and prints each
+ *           run's dropped answer entries. With --resend the population rows and controls still
+ *           unjudged go once more, one per interactive request; it refuses first if the records
+ *           directory holds a full or resend run of these rows that may have spent and is not
+ *           named (re-sent once means once over every run, not only the named ones). Each
  *           --pilot adds that pilot's cost to the report, never a verdict.
  *
  * Every command that builds items seeds them with the reduced census's sha256, so a re-plan gives
@@ -60,8 +65,8 @@
  * the stop line, or the pilot's gate failed, its chemistry flag rate is over PILOT_FLAG_STOP, its
  * run did not end complete, or a chemistry row is unjudged (a row is never counted as fine because
  * its answer is missing, spec §2); for run, resume and collect, a run did not end complete, a
- * population row is unjudged, or a control was missed (for resume, a control its own requests
- * presented).
+ * population row is unjudged, or a control was missed or not judged (for resume, a control its
+ * own requests presented). A control "not judged" got no answer; one "missed" got a wrong one.
  *
  * Preflight (pilot, run, collect --resend):
  *   - the repository is the MAIN checkout (the ledger, and so the cap, lives there);
@@ -97,7 +102,9 @@ import {
 import { loadPrompt } from './term-pass-request.js';
 import {
   CENSUS_SCHEMA,
+  CONTROLS,
   reduceCensus,
+  formatCensus,
   loadUnits,
   buildPopulation,
   buildControls,
@@ -127,6 +134,7 @@ import {
   assertPublishable,
   stopReasons,
   renderReport,
+  controlMisses,
 } from './prescreen-collect.js';
 
 export const PRESCREEN_RECORD = 'prescreen.json';
@@ -151,19 +159,47 @@ export const RESULTS_DIR = 'experiments/terminology-consistency/results';
  */
 export const CODE_PATHS = TERM_PASS_CODE_PATHS;
 
-/** How the items were drawn (spec §7: prescreen.json holds the sampling rule). */
-const SAMPLING = Object.freeze({
+/**
+ * How the items were drawn, written to every run's prescreen.json before the first call (spec
+ * §5 and §7: the sampling rule, how a sentence is cut, and the negatives' selection rule). A run
+ * record cannot be amended after it is paid for, so the wording is pinned by a test.
+ */
+export const SAMPLING = Object.freeze({
   seed: 'the reduced census file sha256 (census.sha256)',
+  sentence:
+    "one segment's English as a reader sees it: a [[MATH:…]], [[MEDIA:…]] or [[TABLE:…]] " +
+    'placeholder becomes "…"; a marker with no visible text ([[xref:id]] without a pipe, any ' +
+    '[[docref:…]]) becomes "…"; any other [[type:text]] or [[type:text|target]] marker ' +
+    'becomes its text; a bare layout marker ([[BR]], [[SPACE]]) becomes a space; the escapes ' +
+    '&lt; &gt; &amp; &quot; &#39; are decoded in one pass; whitespace is collapsed. That text ' +
+    'is split into sentences after ".", "!" or "?" followed by whitespace, and the sentence ' +
+    'holding the first whole-word, case-insensitive match of the headword is taken; a ' +
+    'sentence over 400 characters is cut to the 400-character window centred on that match, ' +
+    'kept within the sentence (prescreen-population.js extractSentence)',
   population:
-    "up to 5 sentences per row from the row's census matches in 02-for-mt: round-robin across " +
-    'chapters in chapter order (one sentence per chapter per round), each chapter ordered by ' +
-    'sha256(seed NUL segmentId) (prescreen-population.js sampleSentences)',
+    "up to 5 sentences per row, one from each of the row's census matches in 02-for-mt (a " +
+    'match whose segment is not in the local 02-for-mt, or holds no whole-word match there, ' +
+    'gives none; localMatches counts both): round-robin across chapters in chapter order ' +
+    '(one sentence per chapter per round), each chapter ordered by sha256(seed NUL ' +
+    'segmentId); a sentence identical to one already taken for the row is dropped, so a row ' +
+    'can carry fewer than 5; a row left with none is excluded as noSentence or ' +
+    'physicsBiologyNoSentence (prescreen-population.js sampleSentences)',
   controls:
-    'positive and negative controls: up to 5 sentences from a whole-word search of the headword ' +
-    'over the English of 02-for-mt, sampled the same way as population rows (sentencesFor)',
+    'positive and negative controls: up to 5 sentences from a whole-word search of the ' +
+    'headword over the English of 02-for-mt, sampled and de-duplicated the same way as ' +
+    'population rows (sentencesFor)',
+  negatives: Object.freeze({
+    rule:
+      'rows [USER] has ruled (atom against the official frumeind), each single-sense in ' +
+      "chemistry's sentences as read on 2026-11-17, so the expected answer is fine (spec §5)",
+    rows: Object.freeze(
+      CONTROLS.negatives.map(({ english, icelandic }) => Object.freeze({ english, icelandic }))
+    ),
+  }),
   homographs:
-    'the two addition halves: not sampled; the sentence of each of the five named segment ids ' +
-    'per half (spec §5; prescreen-population.js CONTROLS.homograph)',
+    'the two addition halves: not sampled and not de-duplicated; the sentence of each of the ' +
+    'five named segment ids per half, cut as above (spec §5; prescreen-population.js ' +
+    'CONTROLS.homograph)',
   itemOrder:
     'sha256(seed NUL english NUL icelandic NUL control name); the two homograph rows kept at ' +
     'least 8 apart (prescreen-population.js assembleItems)',
@@ -219,7 +255,7 @@ function usage() {
     '  reduce  --census-full <abs path outside the repo> --out <repo path under ' +
       `${RESULTS_DIR}/>`,
     '  plan    --census <repo path of the reduced census>',
-    `  pilot   --census <repo path> --model <${MODELS.join('|')}> [--yes]`,
+    `  pilot   --census <repo path> --model <${MODELS.join('|')}> [--allow-second-pilot] [--yes]`,
     '  run     --census <repo path> --model <m> --pilot <runId> [--include-physics-biology]',
     '          [--split <n>] [--max-tokens <n>] [--accept-large-population]',
     '          [--accept-pilot-flag-rate] [--allow-second-run] [--yes]',
@@ -245,6 +281,7 @@ const OPTIONS = {
   'accept-large-population': { type: 'boolean' },
   'accept-pilot-flag-rate': { type: 'boolean' },
   'allow-second-run': { type: 'boolean' },
+  'allow-second-pilot': { type: 'boolean' },
   run: { type: 'string', multiple: true },
   'isk-rate': { type: 'string' },
   'isk-rate-source': { type: 'string' },
@@ -396,8 +433,9 @@ export function buildRun({
  * The run's prescreen.json. Written by the harness right after run.json (its `extraRecords`),
  * before anything is spent, so a run killed mid-way still records what it was asked. Beyond the
  * brief's fields each item carries its `sentences` (what the model saw; OpenStax English, public)
- * and a control its `flagKinds` (ruling P8: the stricter answer is pre-registered here), so the
- * run can be judged, and its unjudged rows re-sent, from the records alone.
+ * and a control its `flagKinds` (the stricter answer a flag control needs is pre-registered
+ * here, before the call), so the run can be judged, and its unjudged rows re-sent, from the
+ * records alone. `localMatches` holds the census matches that gave no sentence locally.
  */
 export function prescreenPayload({
   runId,
@@ -410,6 +448,7 @@ export function prescreenPayload({
   key,
   requests,
   excluded = {},
+  localMatches = null,
   pick = null,
   rowsPerRequest = ROWS_PER_REQUEST,
   extra = {},
@@ -422,6 +461,7 @@ export function prescreenPayload({
     effort,
     maxTokens,
     excluded,
+    localMatches,
     ...extra,
     census: { path: inputs.census.path, sha256: inputs.census.sha256 },
     rulingSet: { path: inputs.rulingSet.path, sha256: inputs.rulingSet.sha256 },
@@ -473,9 +513,9 @@ function harnessOptions(ctx, deps, { inputs, model, effort, maxTokens, runId }) 
 /**
  * One run, read from its records only: prescreen.json, the requests sent, every response parsed
  * against the presented ids, run-end.json.
- * @returns {{ prescreen: object, key: Record<string, object>, verdicts: Map<string, object>,
- *   problems: Record<string, number>, dropped: object[], responses: number, rowsSent: number,
- *   runEnd: object|null }}
+ * @returns {{ runId: string, prescreen: object, key: Record<string, object>,
+ *   verdicts: Map<string, object>, problems: Record<string, number>, dropped: object[],
+ *   responses: number, rowsSent: number, runEnd: object|null }}
  */
 export function readRun({ recordsDir, runId, schema }) {
   const r = createRecordWriter({ dir: openRunDir(recordsDir, runId) });
@@ -509,7 +549,17 @@ export function readRun({ recordsDir, runId, schema }) {
     dropped.push(...parsed.dropped);
   }
   const runEnd = r.exists(RECORD_FILES.runEnd) ? r.readJson(RECORD_FILES.runEnd) : null;
-  return { prescreen, key, verdicts, problems, dropped, responses: lines.length, rowsSent, runEnd };
+  return {
+    runId,
+    prescreen,
+    key,
+    verdicts,
+    problems,
+    dropped,
+    responses: lines.length,
+    rowsSent,
+    runEnd,
+  };
 }
 
 /** Rows of one kind in a run: how many, how many answered, how many flagged. */
@@ -758,7 +808,7 @@ async function cmdReduce(ctx, values) {
     exportSource: { path: exported.path, sha256: exported.sha256 },
     rulingSetSource: { path: rulingSet.path, sha256: rulingSet.sha256 },
   };
-  const text = `${JSON.stringify(reduced, null, 1)}\n`;
+  const text = formatCensus(reduced);
   fs.mkdirSync(path.dirname(out.abs), { recursive: true });
   const tmp = `${out.abs}.tmp-${process.pid}`;
   fs.writeFileSync(tmp, text);
@@ -792,12 +842,42 @@ function printEstimates(ctx, label, { inputs, seed, rows, physicsBiology, contro
   }
 }
 
+/**
+ * The census matches of the rows that can be sent that gave no sentence locally: no segment in
+ * this checkout's 02-for-mt, or no whole-word match in it (production's English and this
+ * checkout's differ). A drift shows here before a row loses every sentence.
+ */
+function printLocalMatches(ctx, localMatches) {
+  const groups = { chemistry: 'chemistry', physicsBiology: 'physics and biology' };
+  for (const [g, label] of Object.entries(groups)) {
+    const m = localMatches[g];
+    ctx.out(
+      `census matches of ${label} rows: ${m.total} (${m.noLocalSegment} with no local segment, ` +
+        `${m.noLocalSentence} with no local sentence)\n`
+    );
+  }
+}
+
+/** Print one run's answers when any was dropped or any response had a problem. */
+function printAnswers(ctx, read, label = 'answers') {
+  if (read.dropped.length || Object.keys(read.problems).length) {
+    ctx.out(
+      `${label}: ${read.responses} responses; problems ${JSON.stringify(read.problems)}; ` +
+        `${read.dropped.length} entries dropped ${JSON.stringify(read.dropped)}\n`
+    );
+  }
+}
+
+/** The way a control result reads: one with no answer is "not judged", never "missed". */
+const gotLine = (c) => (c.got === 'unjudged' ? 'no answer (not judged)' : c.got);
+
 async function cmdPlan(ctx, values) {
   const inputs = loadInputs(ctx, values.census);
   const { seed, population, controls } = populationOf(inputs);
   ctx.out(`census ${inputs.census.path} (sha256 ${inputs.census.sha256}, the items' seed)\n`);
   ctx.out(`population: ${population.rows.length} chemistry rows\n`);
   for (const [cls, n] of Object.entries(population.excluded)) ctx.out(`excluded ${cls}: ${n}\n`);
+  printLocalMatches(ctx, population.localMatches);
   ctx.out(`controls: ${controls.length}\n`);
   const base = { inputs, seed, rows: population.rows, controls };
   printEstimates(ctx, 'full run (population + controls)', { ...base, physicsBiology: [] });
@@ -851,12 +931,15 @@ function judgePilot(ctx, read) {
     const why = v ? `${v.kind ? ` (${v.kind})` : ''}: ${v.reason}` : '';
     ctx.out(
       `  ${c.ok ? 'ok  ' : 'FAIL'} ${c.id} ${String(c.name).padEnd(18)} expected ${c.expected} ` +
-        `got ${c.got}${why}\n`
+        `got ${gotLine(c)}${why}\n`
     );
   }
   const passed = gate.results.filter((c) => c.ok).length;
+  const { missed, notJudged } = controlMisses(gate.results);
   ctx.out(
-    `gate: ${gate.pass ? 'PASS' : 'FAIL'} (${passed} of ${gate.results.length} controls as expected)\n`
+    `gate: ${gate.pass ? 'PASS' : 'FAIL'} (${passed} of ${gate.results.length} controls as expected` +
+      `${missed.length ? `; ${missed.length} missed` : ''}` +
+      `${notJudged.length ? `; ${notJudged.length} not judged` : ''})\n`
   );
   const chem = tally(read, 'population');
   const pb = tally(read, 'physicsBiology');
@@ -868,12 +951,7 @@ function judgePilot(ctx, read) {
     `physics and biology rows: ${rateOf(pb)}, ${pb.unjudged} of ${pb.total} unjudged; for the ` +
       'scope decision (spec §2), not gated\n'
   );
-  if (read.dropped.length || Object.keys(read.problems).length) {
-    ctx.out(
-      `answers: ${read.responses} responses; problems ${JSON.stringify(read.problems)}; ` +
-        `${read.dropped.length} entries dropped ${JSON.stringify(read.dropped)}\n`
-    );
-  }
+  printAnswers(ctx, read);
   if (read.runEnd && read.rowsSent > 0) {
     const perRow = Math.round((read.runEnd.totalUsd / read.rowsSent) * 1e6) / 1e6;
     ctx.out(
@@ -886,7 +964,12 @@ function judgePilot(ctx, read) {
   const stops = [];
   const status = read.runEnd?.status ?? 'without a run-end.json';
   if (status !== 'complete') stops.push(`the run ended ${status}, not complete`);
-  if (!gate.pass) stops.push('the control gate failed (FAIL rows above, with the model’s reasons)');
+  if (!gate.pass) {
+    stops.push(
+      'the control gate failed (FAIL rows above, with the model’s reasons' +
+        `${notJudged.length ? `; ${notJudged.length} got no answer, which fails the gate too` : ''})`
+    );
+  }
   if (chem.unjudged > 0) stops.push(`${chem.unjudged} chemistry rows have no verdict`);
   if (chem.total === 0) stops.push('the pilot holds no chemistry rows');
   else if (overFlagStop(chem))
@@ -894,6 +977,16 @@ function judgePilot(ctx, read) {
       `the chemistry flag rate ${pct(chem.flagged, chem.judged)} is over ${PILOT_FLAG_STOP * 100}%`
     );
   return stops;
+}
+
+/** Every control with the sentences drawn for it under this census's seed, to read before paying. */
+function printControls(ctx, controls) {
+  ctx.out('controls and their drawn sentences (read them before paying):\n');
+  for (const c of controls) {
+    const kinds = c.flagKinds ? ` (${c.flagKinds.join(' or ')})` : '';
+    ctx.out(`  ${c.name}: ${c.english} → ${c.icelandic}, expected ${c.expected}${kinds}\n`);
+    for (const sentence of c.sentences) ctx.out(`    - ${sentence}\n`);
+  }
 }
 
 async function cmdPilot(ctx, values, deps) {
@@ -914,6 +1007,29 @@ async function cmdPilot(ctx, values, deps) {
       `worst case USD ${est.worstCaseUsd.interactive} interactive (input ~${est.inputTokensEstimate} ` +
       `tokens; the cap is USD ${CAP_USD})\n`
   );
+  if (!values.yes) printControls(ctx, controls);
+  // A second pilot on the same model, census and prompt buys the same requests again. Only a
+  // pilot that may have spent counts (mayHaveSpent: it recorded a sent request).
+  // --allow-second-pilot records [USER]'s answer that a repeat is wanted.
+  const allowSecond = values['allow-second-pilot'] === true;
+  const earlier = scanPrescreenRuns(ctx, 'second-pilot')
+    .filter(
+      (x) =>
+        x.prescreen.phase === 'pilot' &&
+        x.prescreen.model === model &&
+        x.prescreen.census?.sha256 === inputs.census.sha256 &&
+        x.prescreen.prompt?.sha256 === inputs.prompt.sha256 &&
+        x.spent
+    )
+    .map((x) => x.runId);
+  if (earlier.length && !allowSecond) {
+    throw refusal(
+      'second-pilot',
+      `a pilot on ${model} over this census and prompt may already have bought its requests ` +
+        `(${earlier.join(', ')}); a repeat buys them again. Use that pilot; ` +
+        '--allow-second-pilot records the answer that a second pilot is wanted'
+    );
+  }
   preflight(ctx, inputs);
   ctx.out(
     `preflight passed: census ${inputs.census.sha256}; prompt ${inputs.prompt.sha256}; ruling set ` +
@@ -933,8 +1049,10 @@ async function cmdPilot(ctx, values, deps) {
     key: built.key,
     requests: built.requests,
     excluded: population.excluded,
+    localMatches: population.localMatches,
     maxTokens: DEFAULT_MAX_TOKENS,
     pick: PILOT_PICK,
+    extra: { allowSecondPilot: allowSecond },
   });
   const result = await runInteractive({
     ...harnessOptions(ctx, deps, {
@@ -1116,12 +1234,21 @@ function judgeFullRun(ctx, { items, key, reads }) {
   for (const c of gate.results.filter((x) => !x.ok)) {
     const v = merged.get(c.id);
     ctx.out(
-      `  FAIL ${c.id} ${String(c.name).padEnd(18)} expected ${c.expected} got ${c.got}` +
+      `  FAIL ${c.id} ${String(c.name).padEnd(18)} expected ${c.expected} got ${gotLine(c)}` +
         `${v ? `: ${v.reason}` : ''}\n`
     );
   }
   if (unjudged) stops.push(`${unjudged} population rows have no verdict (never counted as fine)`);
-  if (!gate.pass) stops.push('a control was missed in the full run (FAIL rows above)');
+  const { missed, notJudged } = controlMisses(gate.results);
+  if (missed.length) stops.push('a control was missed in the full run (FAIL rows above)');
+  if (notJudged.length) {
+    stops.push(
+      `${notJudged.length} controls were not judged in the full run (no answer; collect --resend ` +
+        're-sends them once)'
+    );
+  }
+  if (!gate.pass && !missed.length && !notJudged.length)
+    stops.push('the control gate did not pass (no controls)');
   return stops;
 }
 
@@ -1288,6 +1415,7 @@ async function cmdRun(ctx, values, deps) {
       key: built.key,
       requests: parts[k],
       excluded,
+      localMatches: population.localMatches,
       extra: {
         pilot: pilot.runId,
         includePhysicsBiology: includePB,
@@ -1484,23 +1612,29 @@ async function cmdResume(ctx, values, deps) {
       const read = readRun({ recordsDir: ctx.recordsDir, runId, schema: prompt.schema });
       const open = unjudgedPresented(read);
       const controls = presentedControls(read);
-      const misses = controls.filter((c) => !c.ok);
+      const { missed, notJudged } = controlMisses(controls);
       ctx.out(
         `its population rows: ${open.length} unjudged; the controls it presented: ` +
-          `${controls.length - misses.length} of ${controls.length} as expected\n`
+          `${controls.length - missed.length - notJudged.length} of ${controls.length} as expected\n`
       );
-      for (const c of misses) {
+      for (const c of [...missed, ...notJudged]) {
         const v = read.verdicts.get(c.id);
         ctx.out(
-          `  FAIL ${c.id} ${String(c.name).padEnd(18)} expected ${c.expected} got ${c.got}` +
+          `  FAIL ${c.id} ${String(c.name).padEnd(18)} expected ${c.expected} got ${gotLine(c)}` +
             `${v ? `: ${v.reason}` : ''}\n`
         );
       }
       if (open.length) stops.push(`run ${runId} left ${open.length} population rows unjudged`);
-      if (misses.length) {
+      if (missed.length) {
         stops.push(
-          `run ${runId} missed ${misses.length} of the ${controls.length} controls it presented ` +
+          `run ${runId} missed ${missed.length} of the ${controls.length} controls it presented ` +
             '(FAIL rows above)'
+        );
+      }
+      if (notJudged.length) {
+        stops.push(
+          `run ${runId} left ${notJudged.length} of the ${controls.length} controls it presented ` +
+            'not judged (no answer; collect --resend re-sends them once)'
         );
       }
     }
@@ -1643,13 +1777,15 @@ function iskRateOf(v) {
 }
 
 /**
- * Re-send the unjudged population rows once, one per interactive request (spec §8), after every
- * free check. Returns the resend run's records, or null when nothing was sent.
+ * Re-send the unjudged population rows and controls once, one per interactive request (spec
+ * §8), after every free check. Returns the resend run's records, or null when nothing was sent.
  */
 async function resend(ctx, values, deps, { base, merged, runs, prompt }) {
   const { send, resentBefore } = resendIds({ base, merged, runs });
+  const controlCount = send.filter((id) => base.key[id]?.kind === 'control').length;
   ctx.out(
-    `resend: ${send.length} unjudged population rows, one per request` +
+    `resend: ${send.length - controlCount} unjudged population rows and ${controlCount} ` +
+      'unjudged controls, one per request' +
       `${resentBefore.length ? `; ${resentBefore.length} were re-sent once already and stay unjudged` : ''}\n`
   );
   if (send.length === 0) return null;
@@ -1699,6 +1835,7 @@ async function resend(ctx, values, deps, { base, merged, runs, prompt }) {
     key: base.key,
     requests,
     excluded: base.excluded,
+    localMatches: base.localMatches,
     rowsPerRequest: 1,
     extra: {
       includePhysicsBiology: base.includePhysicsBiology,
@@ -1754,6 +1891,7 @@ async function cmdCollect(ctx, values, deps) {
   const reads = runs.map(({ runId }) =>
     guarded('bad-run', () => readRun({ recordsDir: ctx.recordsDir, runId, schema: prompt.schema }))
   );
+  for (const read of reads) printAnswers(ctx, read, `answers (run ${read.runId})`);
   let merged = guarded('bad-run', () => mergeVerdicts(reads));
   const verdictsOf = (ids) => {
     const doc = buildVerdicts({ base, merged, runIds: ids });
@@ -1766,7 +1904,13 @@ async function cmdCollect(ctx, values, deps) {
     if (sent === 'dry') return { exitCode: 0, sent: false };
     if (sent) {
       runs.push(sent);
-      reads.push(readRun({ recordsDir: ctx.recordsDir, runId: sent.runId, schema: prompt.schema }));
+      const read = readRun({
+        recordsDir: ctx.recordsDir,
+        runId: sent.runId,
+        schema: prompt.schema,
+      });
+      printAnswers(ctx, read, `answers (run ${sent.runId})`);
+      reads.push(read);
       merged = guarded('bad-run', () => mergeVerdicts(reads));
     }
   }
@@ -1794,7 +1938,7 @@ async function cmdCollect(ctx, values, deps) {
 const COMMANDS = {
   reduce: { flags: ['census-full', 'out'], run: cmdReduce },
   plan: { flags: ['census'], run: cmdPlan },
-  pilot: { flags: ['census', 'model', 'yes'], run: cmdPilot },
+  pilot: { flags: ['census', 'model', 'allow-second-pilot', 'yes'], run: cmdPilot },
   run: {
     flags: [
       'census',

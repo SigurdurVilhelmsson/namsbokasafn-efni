@@ -67,12 +67,23 @@ describe('parsePrescreenResponse', () => {
   it('drops an unknown id', () => {
     expect(parse([row('zz')], ['a']).dropped).toEqual([{ id: 'zz', reason: 'unknown-id' }]);
   });
-  it('drops the second of a duplicate id and keeps the first', () => {
-    const r = parse([row('a'), row('a', { verdict: 'flag', kind: 'other-error' })], ['a']);
-    expect([r.dropped, r.verdicts.get('a').verdict]).toEqual([
-      [{ id: 'a', reason: 'duplicate-id' }],
-      'fine',
+  it('an id answered twice is unjudged: both entries dropped, neither kept', () => {
+    const r = parse(
+      [row('a'), row('a', { verdict: 'flag', kind: 'other-error' }), row('b')],
+      ['a', 'b']
+    );
+    expect([r.dropped, r.verdicts.has('a'), r.missing, [...r.verdicts.keys()]]).toEqual([
+      [
+        { id: 'a', reason: 'duplicate-id' },
+        { id: 'a', reason: 'duplicate-id' },
+      ],
+      false,
+      ['a'],
+      ['b'],
     ]);
+  });
+  it('an id answered twice the same way is still unjudged', () => {
+    expect(parse([row('a'), row('a')], ['a']).missing).toEqual(['a']);
   });
   it('drops a flag without a kind', () => {
     expect(parse([row('a', { verdict: 'flag' })], ['a']).dropped).toEqual([
@@ -90,11 +101,11 @@ describe('parsePrescreenResponse', () => {
   it('reports a presented id with no entry as missing', () => {
     expect(parse([row('a')], ['a', 'b']).missing).toEqual(['b']);
   });
-  it('a duplicate whose first entry was dropped is dropped too, leaving the id missing', () => {
+  it('a duplicate whose first entry is malformed leaves the id missing too', () => {
     const r = parse([row('a', { verdict: 'flag' }), row('a')], ['a']);
     expect([r.dropped, r.missing]).toEqual([
       [
-        { id: 'a', reason: 'flag-without-kind' },
+        { id: 'a', reason: 'duplicate-id' },
         { id: 'a', reason: 'duplicate-id' },
       ],
       ['a'],

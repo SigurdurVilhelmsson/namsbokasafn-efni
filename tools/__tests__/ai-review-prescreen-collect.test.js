@@ -121,13 +121,38 @@ describe('mergeVerdicts', () => {
 });
 
 describe('resendIds', () => {
-  it('names the unjudged population and physics-biology ids, never a control', () => {
+  it('names the unjudged population, physics-biology and control ids', () => {
     const base = checkRuns([run('A')]);
     const merged = mergeVerdicts([read('A', [['r003', fine]])]);
     expect(resendIds({ base, merged, runs: [run('A')] })).toEqual({
-      send: ['r001', 'r004'],
+      send: ['r001', 'r002', 'r004', 'r005'],
       resentBefore: [],
     });
+  });
+
+  it('re-sends a control once too: one a resend run already sent stays unjudged', () => {
+    const runs = [
+      run('A'),
+      {
+        ...run('B', {
+          phase: 'resend',
+          items: [ITEMS[1]],
+          requests: [{ key: 'r002', ids: ['r002'] }],
+        }),
+        sentKeys: ['r002'],
+      },
+    ];
+    const base = checkRuns(runs);
+    const merged = mergeVerdicts([
+      read('A', [
+        ['r001', fine],
+        ['r003', fine],
+        ['r004', fine],
+        ['r005', fine],
+      ]),
+      read('B', []),
+    ]);
+    expect(resendIds({ base, merged, runs })).toEqual({ send: [], resentBefore: ['r002'] });
   });
 
   it('re-sends an id once: one a resend run already sent stays unjudged', () => {
@@ -145,7 +170,7 @@ describe('resendIds', () => {
     const base = checkRuns(runs);
     const merged = mergeVerdicts([read('A', [['r003', fine]]), read('B', [])]);
     expect(resendIds({ base, merged, runs })).toEqual({
-      send: ['r004'],
+      send: ['r002', 'r004', 'r005'],
       resentBefore: ['r001'],
     });
   });
@@ -169,7 +194,7 @@ describe('resendIds', () => {
     const base = checkRuns(runs);
     const merged = mergeVerdicts([read('A', [['r003', fine]]), read('B', [])]);
     expect(resendIds({ base, merged, runs })).toEqual({
-      send: ['r004'],
+      send: ['r002', 'r004', 'r005'],
       resentBefore: ['r001'],
     });
   });
@@ -206,6 +231,23 @@ describe('buildVerdicts', () => {
     ]);
   });
 
+  it('records the census it was drawn from and the effort', () => {
+    expect([doc.census, doc.effort]).toEqual([
+      { path: 'experiments/c.json', sha256: 'c'.repeat(64) },
+      'high',
+    ]);
+  });
+
+  it('gives each row the run that answered it (null when unjudged)', () => {
+    const two = mergeVerdicts([read('A', [['r001', flag]]), read('B', [['r003', fine]])]);
+    const d = buildVerdicts({ base, merged: two, runIds: ['A', 'B'] });
+    expect(d.population.map((r) => [r.id, r.run])).toEqual([
+      ['r001', 'A'],
+      ['r003', 'B'],
+      ['r004', null],
+    ]);
+  });
+
   it('holds one row per population id, with a verdict or unjudged', () => {
     expect(doc.population.map((r) => [r.id, r.group, r.verdict])).toEqual([
       ['r001', 'chemistry', 'flag'],
@@ -227,6 +269,7 @@ describe('buildVerdicts', () => {
         proposed: ['annað'],
         rightSenses: null,
         sentences: ['The en-r001 sentence.'],
+        run: 'A',
       },
       {
         id: 'r003',
@@ -239,6 +282,7 @@ describe('buildVerdicts', () => {
         proposed: [],
         rightSenses: null,
         sentences: ['The en-r003 sentence.'],
+        run: null,
       },
     ]);
   });
@@ -286,6 +330,22 @@ describe('stopReasons', () => {
     ]).toEqual([true, true, true]);
   });
 
+  it('tells a control with no answer (not judged) from one answered wrongly (missed)', () => {
+    const merged = mergeVerdicts([
+      read('A', [
+        ['r001', fine],
+        ['r002', fine],
+        ['r003', fine],
+        ['r004', fine],
+      ]),
+    ]);
+    const doc = buildVerdicts({ base, merged, runIds: ['A'] });
+    expect(stopReasons(doc, [{ runId: 'A', status: 'complete' }])).toEqual([
+      '1 controls missed: balanced got fine',
+      '1 controls not judged (no answer; never counted as passed): atom',
+    ]);
+  });
+
   it('is empty when every row is judged, every control passes and every run is complete', () => {
     const merged = mergeVerdicts([
       read('A', [
@@ -331,6 +391,16 @@ describe('renderReport', () => {
 
   it('puts a control miss above everything else', () => {
     expect(text.indexOf('## Control misses')).toBeLessThan(text.indexOf('## Verdicts'));
+  });
+
+  it('lists a control with no answer apart, as not judged, above the verdicts', () => {
+    const at = text.indexOf('## Controls not judged (read first)');
+    const section = text.slice(at, text.indexOf('## Verdicts'));
+    expect([
+      at > -1 && at < text.indexOf('## Verdicts'),
+      /^\| r005 \| atom \| fine \| not judged \|/m.test(section),
+      /r005/.test(text.slice(text.indexOf('## Control misses'), at)),
+    ]).toEqual([true, true, false]);
   });
 
   it("holds the control table with the model's reason, escaped for a table cell", () => {

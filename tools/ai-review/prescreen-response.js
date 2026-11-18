@@ -11,7 +11,9 @@ import { readDocument } from './response-document.js';
 
 /**
  * Parse a model message into verdicts keyed by presented id.
- * An entry is dropped as unknown-id, duplicate-id, flag-without-kind or fine-with-kind.
+ * An entry is dropped as unknown-id, duplicate-id, flag-without-kind or fine-with-kind. An id
+ * answered more than once is unjudged: every one of its entries is dropped as duplicate-id, since
+ * no rule can say which of two answers the model meant (never first-wins).
  * @param {{ message: object|null, presentedIds: string[], schema: object }} args
  * @returns {{ problem: string|null, verdicts: Map<string, Verdict>, missing: string[],
  *   dropped: Array<{id: string, reason: string}> }}
@@ -22,11 +24,12 @@ export function parsePrescreenResponse({ message, presentedIds, schema }) {
   const { problem, document } = readDocument(message, schema);
   if (problem) return { problem, verdicts, missing: [...presentedIds], dropped };
   const presented = new Set(presentedIds);
-  const seen = new Set();
+  const answers = new Map();
+  for (const { id } of document.rows) answers.set(id, (answers.get(id) ?? 0) + 1);
   for (const entry of document.rows) {
     const { id } = entry;
     if (!presented.has(id)) dropped.push({ id, reason: 'unknown-id' });
-    else if (seen.has(id)) dropped.push({ id, reason: 'duplicate-id' });
+    else if (answers.get(id) > 1) dropped.push({ id, reason: 'duplicate-id' });
     else if (entry.verdict === 'flag' && entry.kind === null)
       dropped.push({ id, reason: 'flag-without-kind' });
     else if (entry.verdict === 'fine' && entry.kind !== null)
@@ -40,7 +43,6 @@ export function parsePrescreenResponse({ message, presentedIds, schema }) {
         rightSenses: entry.rightSenses,
       });
     }
-    seen.add(id);
   }
   return {
     problem: null,
@@ -51,7 +53,8 @@ export function parsePrescreenResponse({ message, presentedIds, schema }) {
 }
 
 /**
- * Judge the control rows. Never matches on a control's name (ruling P8): a `flag` control passes
+ * Judge the control rows. Never matches on a control's name, so renaming a control cannot change
+ * its result: a `flag` control passes
  * on a flag whose kind is in `flagKinds` when the key gives one, else on any flag; a `fine`
  * control passes on `fine`; a control with no verdict is unjudged and fails; an `expected` that is
  * neither `flag` nor `fine` is `bad-expected` and fails. Fails closed: `pass` needs at least one
