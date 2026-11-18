@@ -972,7 +972,7 @@ describe('run', () => {
     });
   });
 
-  it('refuses a second full run of the same pilot with zero calls, naming the first', async () => {
+  it('refuses a second full run after a submitted one with zero calls, naming the first', async () => {
     const before = runsIn(recordsDir);
     const fullIds = before.filter(
       (id) => recordOf(recordsDir, id, PRESCREEN_RECORD).phase === 'full'
@@ -984,7 +984,7 @@ describe('run', () => {
       dry: [dry.r.exitCode, dry.r.refusal],
       named: fullIds.length === 1 && paid.errText().includes(fullIds[0]),
       runs: runsIn(recordsDir),
-    }).toEqual({ paid: [1, 'pilot-used', 0], dry: [1, 'pilot-used'], named: true, runs: before });
+    }).toEqual({ paid: [1, 'second-run', 0], dry: [1, 'second-run'], named: true, runs: before });
   });
 
   it('exits 2 when the full run misses a control, every population row judged', async () => {
@@ -1052,6 +1052,44 @@ describe('run', () => {
       sameItems: true,
       covered: a.items.map((i) => i.id).sort(),
     });
+  });
+
+  it('refuses a second full run from another pilot while a submitted full run exists (P25)', async () => {
+    const own = makeTempDir('ps-rec-');
+    const pid = await pilotIn(fx, own);
+    const first = await fullRun(fx, own, pid);
+    const pid2 = await pilotIn(fx, own);
+    const before = runsIn(own);
+    const second = await fullRun(fx, own, pid2);
+    expect({
+      first: first.r.exitCode,
+      second: [second.r.exitCode, second.r.refusal, transportCalls(second.transport)],
+      named: second.errText().includes(first.r.runIds[0]),
+      runs: runsIn(own),
+    }).toEqual({ first: 0, second: [1, 'second-run', 0], named: true, runs: before });
+  });
+
+  it('--allow-second-run lets it through and records the answer in prescreen.json (P25)', async () => {
+    const own = makeTempDir('ps-rec-');
+    const pid = await pilotIn(fx, own);
+    await fullRun(fx, own, pid);
+    const pid2 = await pilotIn(fx, own);
+    const second = await fullRun(fx, own, pid2, { args: ['--allow-second-run', '--yes'] });
+    expect([
+      second.r.exitCode,
+      second.r.runIds.length,
+      recordOf(own, second.r.runIds[0], PRESCREEN_RECORD).allowSecondRun,
+    ]).toEqual([0, 1, true]);
+  });
+
+  it('a full run that submitted nothing does not lock a later one (P25)', async () => {
+    const own = makeTempDir('ps-rec-');
+    const pid = await pilotIn(fx, own);
+    const first = await fullRun(fx, own, pid);
+    fs.rmSync(path.join(own, 'runs', first.r.runIds[0], 'batch.json'));
+    const pid2 = await pilotIn(fx, own);
+    const second = await fullRun(fx, own, pid2);
+    expect([second.r.exitCode, second.r.refusal]).toEqual([0, undefined]);
   });
 
   it('the paid preflight refuses a dirty input with zero calls', async () => {
@@ -1559,6 +1597,32 @@ describe('collect', () => {
       });
     });
 
+    it('a split full run: naming one part refuses and names the other, with zero calls; naming both proceeds (P24)', async () => {
+      const own = makeTempDir('ps-rec-');
+      const pid = await pilotIn(fx, own);
+      const split = await fullRun(fx, own, pid, { args: ['--split', '2', '--yes'] });
+      const [p1, p2] = split.r.runIds;
+      const transport = mockTransport({ answer: answerer() });
+      const before = runsIn(own);
+      const one = await collect(fx, own, [p1], { args: ['--resend', '--yes'], transport });
+      const dry = await collect(fx, own, [p1], { args: ['--resend'], transport });
+      const callsAfterRefusals = transportCalls(transport);
+      const both = await collect(fx, own, [p1, p2], { args: ['--resend', '--yes'], transport });
+      expect({
+        one: [one.r.exitCode, one.r.refusal, one.errText().includes(p2)],
+        dry: [dry.r.exitCode, dry.r.refusal],
+        callsAfterRefusals,
+        runsAfterRefusals: runsIn(own).length >= before.length,
+        both: both.r.refusal,
+      }).toEqual({
+        one: [1, 'unnamed-run', true],
+        dry: [1, 'unnamed-run'],
+        callsAfterRefusals: 0,
+        runsAfterRefusals: true,
+        both: undefined,
+      });
+    });
+
     it('naming that resend run lets collect --resend through, with nothing left to send', async () => {
       const transport = mockTransport({ answer: answerer() });
       const again = await collect(fx, recordsDir, res.verdicts.runs, {
@@ -1714,7 +1778,7 @@ describe('collect over complete runs', () => {
     // full runs the same items, so their ids collide.
     pids = [await pilotIn(fx, recordsDir), await pilotIn(fx, recordsDir)];
     const a = await fullRun(fx, recordsDir, pids[0]);
-    const b = await fullRun(fx, recordsDir, pids[1]);
+    const b = await fullRun(fx, recordsDir, pids[1], { args: ['--allow-second-run', '--yes'] });
     ids = [a.r.runIds[0], b.r.runIds[0]];
   });
 

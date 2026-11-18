@@ -191,7 +191,7 @@ function usage() {
     `  pilot   --census <repo path> --model <${MODELS.join('|')}> [--yes]`,
     '  run     --census <repo path> --model <m> --pilot <runId> [--include-physics-biology]',
     '          [--split <n>] [--max-tokens <n>] [--accept-large-population]',
-    '          [--accept-pilot-flag-rate] [--yes]',
+    '          [--accept-pilot-flag-rate] [--allow-second-run] [--yes]',
     '  resume  --run <runId> [--yes: close an interrupted pilot or resend]',
     `  collect --run <runId> [--run …] --out <repo dir under ${RESULTS_DIR}/>`,
     '          --isk-rate <ISK per USD> --isk-rate-source <text> [--pilot <runId> …]',
@@ -213,6 +213,7 @@ const OPTIONS = {
   'max-tokens': { type: 'string' },
   'accept-large-population': { type: 'boolean' },
   'accept-pilot-flag-rate': { type: 'boolean' },
+  'allow-second-run': { type: 'boolean' },
   run: { type: 'string', multiple: true },
   'isk-rate': { type: 'string' },
   'isk-rate-source': { type: 'string' },
@@ -1068,16 +1069,27 @@ async function cmdRun(ctx, values, deps) {
       `${rateOf(pilot.chemistry)}` +
       `${overFlagStop(pilot.chemistry) ? ` (over ${PILOT_FLAG_STOP * 100}%; accepted with --accept-pilot-flag-rate)` : ''}\n`
   );
-  // Spec §8 buys each row once: a second full run of this pilot would buy every row again.
-  const earlier = scanPrescreenRuns(ctx, 'pilot-used')
-    .filter((x) => x.prescreen.phase === 'full' && x.prescreen.pilot === pilot.runId)
+  // Spec §8 buys each row once: a second full run over the same census, prompt and model would
+  // buy every row again, whichever pilot it came from. Only a run that submitted a batch counts
+  // (one that stopped before submit bought nothing). --allow-second-run records [USER]'s answer.
+  const allowSecond = values['allow-second-run'] === true;
+  const earlier = scanPrescreenRuns(ctx, 'second-run')
+    .filter(
+      (x) =>
+        x.prescreen.phase === 'full' &&
+        x.prescreen.census?.sha256 === inputs.census.sha256 &&
+        x.prescreen.prompt?.sha256 === inputs.prompt.sha256 &&
+        x.prescreen.model === model &&
+        fs.existsSync(path.join(ctx.recordsDir, 'runs', x.runId, RECORD_FILES.batch))
+    )
     .map((x) => x.runId);
-  if (earlier.length) {
+  if (earlier.length && !allowSecond) {
     throw refusal(
-      'pilot-used',
-      `pilot ${pilot.runId} already has a full run (${earlier.join(', ')}); running it again ` +
-        'would buy every row again. Collect those runs (collect --resend sends their unjudged ' +
-        'rows once)'
+      'second-run',
+      `a full run over this census, prompt and model already submitted a batch ` +
+        `(${earlier.join(', ')}); running it again would buy every row again. Collect those ` +
+        'runs (collect --resend sends their unjudged rows once); --allow-second-run records ' +
+        'the answer that a second full run is wanted'
     );
   }
   if (lowered !== undefined) {
@@ -1182,6 +1194,7 @@ async function cmdRun(ctx, values, deps) {
         includePhysicsBiology: includePB,
         acceptLargePopulation: accepted,
         acceptPilotFlagRate: acceptFlagRate,
+        allowSecondRun: allowSecond,
         split: { part: k + 1, of: parts.length },
       },
     });
@@ -1446,16 +1459,18 @@ function assertResendsNamed(ctx, base, runs) {
   const unnamed = scanPrescreenRuns(ctx, 'unnamed-run').filter(
     ({ runId, prescreen: ps }) =>
       !named.has(runId) &&
-      ps.phase === 'resend' &&
+      (ps.phase === 'resend' || ps.phase === 'full') &&
       ps.census?.sha256 === base.census.sha256 &&
       mergeable(ps) &&
       ofThese(ps)
   );
   if (unnamed.length === 0) return;
-  const open = unnamed.filter((x) => !x.ended).map((x) => x.runId);
+  const open = unnamed
+    .filter((x) => !x.ended && x.prescreen.phase === 'resend')
+    .map((x) => x.runId);
   throw refusal(
     'unnamed-run',
-    `resend runs already re-sent rows of these runs and are not named: ` +
+    `full or resend runs already hold rows of these runs and are not named: ` +
       `${unnamed.map((x) => x.runId).join(', ')}. A row is re-sent once (spec §8): name each ` +
       'with --run' +
       (open.length
@@ -1672,6 +1687,7 @@ const COMMANDS = {
       'max-tokens',
       'accept-large-population',
       'accept-pilot-flag-rate',
+      'allow-second-run',
       'yes',
     ],
     run: cmdRun,
