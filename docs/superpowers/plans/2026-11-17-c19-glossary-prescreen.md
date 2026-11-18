@@ -252,20 +252,55 @@ Values: only rows with verdict `flag`. An MT count is the number of the row's ma
 
 No new code. Each step names its command and the result that lets the next one start. Paid steps need [USER]'s go in the session that runs them.
 
-- [ ] **Step 1: Census on production (0 ISK, read-only).** Run `ssh -o BatchMode=yes siggi@172.236.212.190 'free -m'` and confirm at least 1 GB available. Then send the script on stdin:
-  `ssh -o BatchMode=yes siggi@172.236.212.190 "cd ~/repos/namsbokasafn-efni/server/scripts && node - efnafraedi-2e" < server/scripts/read-firing-rows.js > <private dir>/census-full-<date>.json`
+**The cost margin.** The USD 5 margin (`COST_MARGIN_USD`, spec §6) binds the full run (each of its batches) and `collect --resend`, both on the estimate and on the harness's real reservation. It does **not** bind a pilot: a pilot reserves against the full cap, and the harness still stops it at `CAP_USD`.
+
+- [ ] **Step 1: Census on production (0 ISK, read-only).** Run `ssh -o BatchMode=yes siggi@172.236.212.190 'free -m'` and confirm at least 1 GB available. Then send the script on stdin, at low priority so the live server keeps its share of the CPU:
+  `ssh -o BatchMode=yes siggi@172.236.212.190 "cd ~/repos/namsbokasafn-efni/server/scripts && nice -n 10 node - efnafraedi-2e" < server/scripts/read-firing-rows.js > <private dir>/census-full-<date>.json`
   Done when the file `JSON.parse`s, ends with `}` and holds rows. The private directory is outside the repository; record its path in project memory, as the 2026-10-31 full file's is.
-- [ ] **Step 2: Reduce and commit.** `node tools/ai-review/prescreen.js reduce --census-full <private file> --out experiments/terminology-consistency/results/<date>/prescreen-census.json`; commit it.
-- [ ] **Step 3: Plan.** `node tools/ai-review/prescreen.js plan --census <that path>`. Exit 2 (population over 450) → stop and ask [USER].
-- [ ] **Step 4: Pilot on both models** (paid, small). Run `pilot --model claude-fable-5-2 --yes`, then `pilot --model claude-opus-5-5 --yes`. Decide per spec §6:
+- [ ] **Step 2: Reduce and commit.** `node tools/ai-review/prescreen.js reduce --census-full <private file> --out experiments/terminology-consistency/results/<date>/prescreen-census.json` (written one row per line); commit it. Its sha256 seeds every draw: a re-reduce after this point needs a new pilot.
+- [ ] **Step 3: Plan.** `node tools/ai-review/prescreen.js plan --census <that path>`. Exit 2 (population over 450) → stop and ask [USER]. Report the two census-match lines with the plan (matches with no local segment, and with no local sentence): they show whether production's English and this checkout's differ.
+- [ ] **Step 4: Pilot on both models** (paid, small). First, for each model, run `pilot --model <model>` **without** `--yes` (0 ISK): it prints every control with the sentences drawn for it under this census's seed. Read them; a control whose drawn sentences do not show the expected character is a stop-and-ask before paying. Then run `pilot --model claude-fable-5-2 --yes`, then `pilot --model claude-opus-5-5 --yes`. `pilot` refuses a second pilot on the same model, census and prompt once the first may have spent; `--allow-second-pilot` records [USER]'s answer that a repeat is wanted. Decide per spec §6:
   - Fable passes → Fable;
   - only Opus passes → stop and ask [USER];
-  - neither passes → stop and report each miss with the model's reason;
+  - neither passes → stop and report each miss with the model's reason (a control "not judged" got no answer; one "missed" got a wrong one);
   - an account refusal for Fable (an `invalid_request_error` naming data retention) → stop and report.
-  Report the two models' agreement on the 24 population rows.
+  Report the two models' agreement on the 24 population rows with `node tools/ai-review/prescreen.js compare --run <Fable pilot> --run <Opus pilot>` (0 ISK; stdout only): both flag, both fine, each one-sided flag and the rows either left unjudged, keyed by the (English, Icelandic) pair. Put its output in the report's model comparison.
   **Then stop and bring [USER]** the physics-and-biology flag rate and the measured cost per row, with the projected cost of the full run with and without those rows against the cap's headroom. [USER] decides whether the full run includes them (spec §2).
-- [ ] **Step 5: Full run.** `run --model <chosen> --pilot <runId> [--include-physics-biology] --yes` (batch), the flag only if [USER] said so. If polling stops, `resume --run <runId>`.
-- [ ] **Step 6: Collect.** `collect --run <runId> --resend --yes --out experiments/terminology-consistency/results/<date> --isk-rate <rate> --isk-rate-source "<source, date>"`. A control missed in the full run → report it before anything else.
+- [ ] **Step 5: Full run.** `run --model <chosen> --pilot <runId> [--include-physics-biology] --yes` (batch), the flag only if [USER] said so. `run` refuses a pilot drawn from another census, run against another ruling set, or whose control items differ from the ones the run builds now (a change to the code or to `02-for-mt` since the pilot): after any such change, run a new pilot. If polling stops, `resume --run <runId>`.
+  **If a batch is interrupted around its submit** (`run` or `resume` says to check the Anthropic Console; the run's `batch.json` says `submitting`, or its reservation is open in the ledger with no `batch.json`), no command settles it. Never edit the ledger by hand: release through `tools/ai-review/ledger.js`. From the repository root, with `<runId>` the interrupted run:
+  1. Look for the batch in the Anthropic Console (Batches), submitted at the run's time with as many requests as its `requests.jsonl` holds.
+  2. **The batch is there:** record it as submitted with its id, then resume it (the harness collects and settles it, and never resubmits):
+     `node --input-type=module -e "$SET_BATCH_STATE" books/efnafraedi-2e/ai-review/runs/<runId>/batch.json submitted <msgbatch_…>`, then `resume --run <runId>`, then collect as in Step 6.
+  3. **No batch is there** (wait a few minutes and look again first: a batch can appear late): release the run's reservation and mark the batch rejected, which bought nothing, so it no longer blocks a new run or a resend:
+     `node --input-type=module -e "$RELEASE_RUN" books/efnafraedi-2e/ai-review/ledger.jsonl <runId>`, then
+     `node --input-type=module -e "$SET_BATCH_STATE" books/efnafraedi-2e/ai-review/runs/<runId>/batch.json rejected`, then a new `run` as above.
+  4. **A reservation open with no `batch.json`** (killed after the reservation, before the submit, so no batch can exist): only the release, `node --input-type=module -e "$RELEASE_RUN" books/efnafraedi-2e/ai-review/ledger.jsonl <runId>`.
+  Each branch ends with nothing open in the ledger for that run (the next paid command prints the ledger's open USD, which reads 0 when no other run is in flight). Commit the edited `batch.json` (it carries `recoveredByHand: true`) and the ledger with the evidence in Step 7. The two scripts, set once in the shell; the test `a batch interrupted around its submit` in `tools/__tests__/ai-review-prescreen.test.js` rehearses them verbatim on a temporary records directory, so change both together:
+  ```bash
+  SET_BATCH_STATE='
+  import fs from "node:fs";
+  const [file, state, batchId] = process.argv.slice(1);
+  const rec = JSON.parse(fs.readFileSync(file, "utf8"));
+  if (rec.state !== "submitting") throw new Error("batch.json is " + rec.state + ", not submitting");
+  if (state !== "submitted" && state !== "rejected") throw new Error("state: submitted or rejected");
+  if (state === "submitted" && !/^msgbatch_/.test(batchId ?? "")) throw new Error("name the batch id");
+  const next = state === "submitted"
+    ? { ...rec, state, batchId, submittedAt: new Date().toISOString(), recoveredByHand: true }
+    : { ...rec, state, recoveredByHand: true };
+  fs.writeFileSync(file, JSON.stringify(next, null, 2) + "\n");
+  console.log("batch.json", rec.state, "->", state);
+  '
+  RELEASE_RUN='
+  import { readLedger, summarizeLedger, releaseAll } from "./tools/ai-review/ledger.js";
+  const [ledgerPath, runId] = process.argv.slice(1);
+  for (const [id, r] of summarizeLedger(readLedger(ledgerPath)).reservations) {
+    if (r.runId !== runId || r.released || r.openUsd === 0) continue;
+    releaseAll({ ledgerPath, id });
+    console.log("released", id, "USD", r.openUsd);
+  }
+  '
+  ```
+- [ ] **Step 6: Collect.** `collect --run <runId> --resend --yes --out experiments/terminology-consistency/results/<date> --isk-rate <rate> --isk-rate-source "<source, date>"`. The resend sends the population rows and the controls still unjudged once each, under the same margin. A control missed or not judged in the full run → report it before anything else.
 - [ ] **Step 7: Commit the evidence:** the run records under `books/efnafraedi-2e/ai-review/runs/`, the ledger, the verdicts and the report.
-- [ ] **Step 8: The page.** `node tools/ai-review/prescreen-page.js …` writes `page-data.json` privately. Load the `artifact-design` and `artifact-capabilities` skills, write the page from that data with a `db` collection `answers` (one doc per row id: `choice` ∈ `keep|replace|remove|phrases|unsure`, `text`, `comment`, `savedAt`) and one `confirm` doc per batch of rows, and publish it privately. An unanswered row is open.
+- [ ] **Step 8: The page.** `node tools/ai-review/prescreen-page.js …` writes `page-data.json` privately (it refuses the reduced census: pass the private full one). Load the `artifact-design` and `artifact-capabilities` skills, write the page from that data with a `db` collection `answers` (one doc per row id: `choice` ∈ `keep|replace|remove|phrases|unsure`, `text`, `comment`, `savedAt`) and one `confirm` doc per batch of rows, and publish it privately. An unanswered row is open. The page shows the control gate first (each miss, and each control not judged), then the flagged rows with their domain, then the unjudged rows as open, never as fine.
 - [ ] **Step 9: Register and PR.** In the register's 2026-11-10 c19 block, record what ran and its result, pointing to the report. Add two new numbered entries (re-derive the next free § number): the editor's warnings are sense-blind (`addition → álagning` is offered on "the addition of HCl"; read from the code); and §C129's coverage cannot be re-derived (only its removal set was frozen; 1,297 physics and biology rows today against 1,213 kept). Then open the PR on [USER]'s go.

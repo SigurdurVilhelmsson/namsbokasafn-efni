@@ -1381,31 +1381,20 @@ describe('run refuses a pilot that did not measure what the run would send', () 
 });
 
 /**
- * The recovery for a batch interrupted around its submit, rehearsed with the commands plan Task 9
- * gives (verbatim: keep the two in step). Each is run as an operator would, from the repository.
+ * The recovery for a batch interrupted around its submit, rehearsed with the two scripts plan
+ * Task 9 gives, read from the plan itself so the rehearsal cannot drift from what an operator
+ * types. Each runs as the plan says: `node --input-type=module -e "$SCRIPT" …` from the
+ * repository root.
  */
-const SET_BATCH_STATE = `
-import fs from 'node:fs';
-const [file, state, batchId] = process.argv.slice(1);
-const rec = JSON.parse(fs.readFileSync(file, 'utf8'));
-if (rec.state !== 'submitting') throw new Error('batch.json is ' + rec.state + ', not submitting');
-if (state !== 'submitted' && state !== 'rejected') throw new Error('state: submitted or rejected');
-if (state === 'submitted' && !/^msgbatch_/.test(batchId ?? '')) throw new Error('name the batch id');
-const next = state === 'submitted'
-  ? { ...rec, state, batchId, submittedAt: new Date().toISOString(), recoveredByHand: true }
-  : { ...rec, state, recoveredByHand: true };
-fs.writeFileSync(file, JSON.stringify(next, null, 2) + '\\n');
-console.log('batch.json', rec.state, '->', state);
-`;
-const RELEASE_RUN = `
-import { readLedger, summarizeLedger, releaseAll } from './tools/ai-review/ledger.js';
-const [ledgerPath, runId] = process.argv.slice(1);
-for (const [id, r] of summarizeLedger(readLedger(ledgerPath)).reservations) {
-  if (r.runId !== runId || r.released || r.openUsd === 0) continue;
-  releaseAll({ ledgerPath, id });
-  console.log('released', id, 'USD', r.openUsd);
+const PLAN = 'docs/superpowers/plans/2026-11-17-c19-glossary-prescreen.md';
+function planScript(name) {
+  const text = fs.readFileSync(path.join(REPO, PLAN), 'utf8');
+  const m = new RegExp(`^ *${name}='\\n([\\s\\S]*?)\\n *'$`, 'm').exec(text);
+  if (!m) throw new Error(`${PLAN} holds no ${name}='…' block (Task 9, Step 5)`);
+  return m[1];
 }
-`;
+const SET_BATCH_STATE = planScript('SET_BATCH_STATE');
+const RELEASE_RUN = planScript('RELEASE_RUN');
 const operator = (script, args) =>
   execFileSync('node', ['--input-type=module', '-e', script, ...args], {
     cwd: REPO,
