@@ -1,0 +1,890 @@
+{
+  "schema": "c19-prescreen/1",
+  "runId": "20261118T090147Z-33566f2f",
+  "phase": "pilot",
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "maxTokens": 16000,
+  "excluded": {
+    "ruled": 209,
+    "fallback": 1381,
+    "tie": 348,
+    "decided": 0,
+    "physicsBiology": 1236,
+    "notInExport": 124,
+    "noSentence": 0,
+    "physicsBiologyNoSentence": 1
+  },
+  "localMatches": {
+    "chemistry": {
+      "total": 18339,
+      "noLocalSegment": 0,
+      "noLocalSentence": 8
+    },
+    "physicsBiology": {
+      "total": 28292,
+      "noLocalSegment": 0,
+      "noLocalSentence": 722
+    }
+  },
+  "allowSecondPilot": false,
+  "census": {
+    "path": "experiments/terminology-consistency/results/2026-11-18/prescreen-census.json",
+    "sha256": "7d61b9d0bd9c77bed92ed938df6253572a801c6f99ab9c943ed10eaafb085caa"
+  },
+  "rulingSet": {
+    "path": "experiments/terminology-consistency/results/2026-11-02/ruling-set-2026-11-02.json",
+    "sha256": "0aa33690ca829be4baa4da2b34fbea1455517d426e939c3544b3a86b3049c3bd"
+  },
+  "prompt": {
+    "path": "tools/ai-review/prompts/glossary-prescreen-v1.md",
+    "sha256": "8d5e82e72cdd46ceb4ac2ffc9dea2f4d7106bf9623de4e25e523201c7a3eb07c"
+  },
+  "sampling": {
+    "seed": "the reduced census file sha256 (census.sha256)",
+    "sentence": "one segment's English as a reader sees it: a [[MATH:…]], [[MEDIA:…]] or [[TABLE:…]] placeholder becomes \"…\"; a marker with no visible text ([[xref:id]] without a pipe, any [[docref:…]]) becomes \"…\"; any other [[type:text]] or [[type:text|target]] marker becomes its text; a bare layout marker ([[BR]], [[SPACE]]) becomes a space; the escapes &lt; &gt; &amp; &quot; &#39; are decoded in one pass; whitespace is collapsed. That text is split into sentences after \".\", \"!\" or \"?\" followed by whitespace, and the sentence holding the first whole-word, case-insensitive match of the headword is taken; a sentence over 400 characters is cut to the 400-character window centred on that match, kept within the sentence (prescreen-population.js extractSentence)",
+    "population": "up to 5 sentences per row, one from each of the row's census matches in 02-for-mt (a match whose segment is not in the local 02-for-mt, or holds no whole-word match there, gives none; localMatches counts both): round-robin across chapters in chapter order (one sentence per chapter per round), each chapter ordered by sha256(seed NUL segmentId); a sentence identical to one already taken for the row is dropped, so a row can carry fewer than 5; a row left with none is excluded as noSentence or physicsBiologyNoSentence (prescreen-population.js sampleSentences)",
+    "controls": "positive and negative controls: up to 5 sentences from a whole-word search of the headword over the English of 02-for-mt, sampled and de-duplicated the same way as population rows (sentencesFor)",
+    "negatives": {
+      "rule": "rows [USER] has ruled (atom against the official frumeind), each single-sense in chemistry's sentences as read on 2026-11-17, so the expected answer is fine (spec §5)",
+      "rows": [
+        {
+          "english": "atom",
+          "icelandic": "atóm"
+        },
+        {
+          "english": "anode",
+          "icelandic": "anóða"
+        },
+        {
+          "english": "calorimeter",
+          "icelandic": "varmamælir"
+        },
+        {
+          "english": "bond length",
+          "icelandic": "tengilengd"
+        },
+        {
+          "english": "carbonate",
+          "icelandic": "karbónat"
+        },
+        {
+          "english": "crystalline",
+          "icelandic": "kristalkenndur"
+        }
+      ]
+    },
+    "homographs": "the two addition halves: not sampled and not de-duplicated; the sentence of each of the five named segment ids per half, cut as above (spec §5; prescreen-population.js CONTROLS.homograph)",
+    "itemOrder": "sha256(seed NUL english NUL icelandic NUL control name); the two homograph rows kept at least 8 apart (prescreen-population.js assembleItems)",
+    "pick": {
+      "population": 24,
+      "physicsBiology": 15,
+      "rule": "pickEvenly: spread evenly over the rows sorted by match count, then English"
+    }
+  },
+  "items": [
+    {
+      "id": "r001",
+      "english": "enthalpy change",
+      "icelandic": "vermibreyting",
+      "kind": "population",
+      "sentences": [
+        "This type of calculation usually involves the use of Hess’s law, which states: If a process can be written as the sum of several stepwise processes, the enthalpy change of the total process equals the sum of the enthalpy changes of the various steps.",
+        "Using the bond energies in …, determine the approximate enthalpy change for each of the following reactions:",
+        "Likewise, the enthalpy change for the reverse process of deposition is equal in magnitude but opposite in sign to that for sublimation:",
+        "Using a specific energy, the enthalpy (see chapter on thermochemistry), the enthalpy change of the reaction, ΔH, is estimated as the energy difference between the reactants and products.",
+        "Predicting the shift an equilibrium will experience in response to a change in temperature is most conveniently accomplished by considering the enthalpy change of the reaction."
+      ]
+    },
+    {
+      "id": "r002",
+      "english": "anode",
+      "icelandic": "anóða",
+      "kind": "control",
+      "name": "anode",
+      "expected": "fine",
+      "sentences": [
+        "The fuel cell consists of a proton exchange membrane sandwiched between an anode and a cathode.",
+        "(c) In the cathode ray, the beam (shown in yellow) comes from the cathode and is accelerated past the anode toward a fluorescent scale at the end of the tube.",
+        "(b) The cathode consists of a gold electrode in a 0.55 M Au(NO3)3 solution and the anode is a magnesium electrode in 0.75 M Mg(NO3)2 solution.",
+        "The electrolysis of a solution of cryolite and calcium fluoride results in aluminum metal at the cathode, and oxygen, carbon monoxide, and carbon dioxide at the anode.",
+        "The cathode ray tube consists of a cathode and an anode."
+      ]
+    },
+    {
+      "id": "r003",
+      "english": "irreversible",
+      "icelandic": "óafturkræfur",
+      "kind": "population",
+      "sentences": [
+        "Early detection of biomarkers, substances that indicate an organism’s disease or physiological state, could allow diagnosis and treatment before a condition becomes serious or irreversible.",
+        "Because the concentration of sucrose at equilibrium is so low, assume that the reaction is irreversible.",
+        "The entropy change for a real, irreversible process is then equal to that for the theoretical reversible process that involves the same initial and final states.",
+        "(c) Why does assuming that the reaction is irreversible simplify the calculation in part (b)?",
+        "Note that the idea of a reversible process is a formalism required to support the development of various thermodynamic concepts; no real processes are truly reversible, rather they are classified as irreversible."
+      ]
+    },
+    {
+      "id": "r004",
+      "english": "real gas",
+      "icelandic": "raungas",
+      "kind": "population",
+      "sentences": [
+        "Under which of the following sets of conditions does a real gas behave most like an ideal gas, and for which conditions is a real gas expected to deviate from ideal behavior?",
+        "To determine why this is, consider the differences between real gas properties and what is expected of a hypothetical ideal gas."
+      ]
+    },
+    {
+      "id": "r005",
+      "english": "reactant",
+      "icelandic": "hvarfefni",
+      "kind": "population",
+      "sentences": [
+        "For example, when calculating the amount of product generated from a given amount of reactant, it was assumed that any other reactants required were available in stoichiometric amounts (or greater).",
+        "Going from left to right in (i), we first see that ClF(g) is needed as a reactant.",
+        "Reactant molecules with sufficient energy can collide to form a high-energy activated complex or transition state.",
+        "(b) What will happen to the concentration of each reactant and product at equilibrium if more C is added?",
+        "Although water is a reactant in the reaction, it is the solvent as well, so we do not include [H2O] in the equation."
+      ]
+    },
+    {
+      "id": "r006",
+      "english": "moles",
+      "icelandic": "moldvörpur",
+      "kind": "control",
+      "name": "moles",
+      "expected": "flag",
+      "sentences": [
+        "What is the estimated average requirement of potassium in moles?",
+        "(c) The number of moles and the mass of magnesium carbonate, MgCO3, required to produce 283 g of carbon dioxide.",
+        "How many moles of isooctane must be burned to produce 100 kJ of heat under standard state conditions?",
+        "To form two moles of HCl, one mole of H–H bonds and one mole of Cl–Cl bonds must be broken.",
+        "How would the graph in … change if the number of moles of gas in the sample used to determine the curve were doubled?"
+      ]
+    },
+    {
+      "id": "r007",
+      "english": "refining",
+      "icelandic": "hreinsun",
+      "kind": "physicsBiology",
+      "sentences": [
+        "Digesting and assimilating food, synthesizing polymers that are used to make clothing, containers, cookware, and credit cards, and refining crude oil into gasoline and other products are just a few examples.",
+        "Benzene, C6H6, is produced during oil refining and has many industrial uses.",
+        "Sulfur trioxide in the atmosphere is naturally produced by volcanic activity, but it also originates from burning fossil fuels, which have traces of sulfur, and from the process of “roasting” ores of metal sulfides in metal-refining processes.",
+        "“Thermite” reactions have been used for welding metal parts such as railway rails and in metal refining.",
+        "Electrolysis is the basis for certain ore refining processes, the industrial production of many chemical commodities, and the electroplating of metal coatings on various products."
+      ]
+    },
+    {
+      "id": "r008",
+      "english": "carbonate",
+      "icelandic": "karbónat",
+      "kind": "control",
+      "name": "carbonate",
+      "expected": "fine",
+      "sentences": [
+        "(a) m = 18.58 g, V = 5.7 mL; (b) d = 3.3 g/mL; (c) malachite (basic copper carbonate, d = 3.25—4.10 g/mL).",
+        "carbonate",
+        "(c) 23 kg of calcium carbonate, CaCO3",
+        "(c) The number of moles and the mass of magnesium carbonate, MgCO3, required to produce 283 g of carbon dioxide.",
+        "(c) hydrogen carbonate ion, … (C is bonded to an OH group and two O atoms)"
+      ]
+    },
+    {
+      "id": "r009",
+      "english": "ADP",
+      "icelandic": "adenósíntvífosfat",
+      "kind": "physicsBiology",
+      "sentences": [
+        "In this process, ATP becomes ADP summarized by the following equation: …"
+      ]
+    },
+    {
+      "id": "r010",
+      "english": "period",
+      "icelandic": "lota",
+      "kind": "population",
+      "sentences": [
+        "To prepare for a laboratory period, a student lab assistant needs 125 g of a compound.",
+        "The second group (—, R 0) contains the following information: (not entry for period 1) B o = 9, 4, M g = 24, C a = 40, Z n = 65, S r = 87, C d = 112, B a = 187, —, —, H g = 200, —.",
+        "Studies like this help develop better recommendations and regimens for nutrition, exercise, and general wellbeing during this period of significant physiological change.",
+        "Within each period, the trend in atomic radius decreases as Z increases; for example, from K to Kr.",
+        "Lewis symbols illustrating the number of valence electrons for each element in the third period of the periodic table."
+      ]
+    },
+    {
+      "id": "r011",
+      "english": "addition",
+      "icelandic": "álagning",
+      "kind": "control",
+      "name": "addition-adding",
+      "expected": "flag",
+      "flagKinds": [
+        "wrong-sense",
+        "some-senses-only"
+      ],
+      "sentences": [
+        "Water can be broken down into hydrogen and oxygen gases by the addition of energy.",
+        "Dilution is the process whereby the concentration of a solution is lessened by the addition of solvent.",
+        "An anion (negative ion) is formed by the addition of one or more electrons to the valence shell of an atom.",
+        "Addition of large amounts of acid or base can exceed the buffer capacity, consuming most of one conjugate partner and preventing further buffering action.",
+        "The first step in the preparation of magnesium metal is the precipitation of Mg(OH)2 from sea water by the addition of lime, Ca(OH)2, a readily available inexpensive source of OH– ion:"
+      ]
+    },
+    {
+      "id": "r012",
+      "english": "chemical equilibrium",
+      "icelandic": "efnajafnvægi",
+      "kind": "population",
+      "sentences": [
+        "(The use of a double-arrow in the equation above denotes the partial reaction aspect of this process, a concept addressed fully in the chapters on chemical equilibrium.)",
+        "The process operates under conditions that stress the chemical equilibrium to favor product formation.",
+        "Changes in concentrations and Qc for a chemical equilibrium achieved beginning with (a) a mixture of reactants only and (b) products only.",
+        "Explain the dynamic nature of a chemical equilibrium"
+      ]
+    },
+    {
+      "id": "r013",
+      "english": "acid anhydride",
+      "icelandic": "sýruanhýdríð",
+      "kind": "population",
+      "sentences": [
+        "acid anhydride"
+      ]
+    },
+    {
+      "id": "r014",
+      "english": "weak acid",
+      "icelandic": "veik sýra",
+      "kind": "population",
+      "sentences": [
+        "A familiar example of a weak acid is acetic acid, the main ingredient in food vinegars:",
+        "The carbon dioxide was then dissolved in water, reacting to produce hydrogen carbonate, a weak acid that subsequently ionized to yield bicarbonate and hydrogen ions:",
+        "(b) The titration curve for the titration of 25.00 mL of 0.100 M acetic acid (weak acid) with 0.100 M NaOH (strong base) has an equivalence point of 8.72 pH.",
+        "In dilute aqueous solution HF acts as a weak acid.",
+        "Boric acid, shown in …, is a very weak acid that does not act as a proton donor but rather as a Lewis acid, accepting an unshared pair of electrons from the Lewis base OH−:"
+      ]
+    },
+    {
+      "id": "r015",
+      "english": "calorimeter",
+      "icelandic": "varmamælir",
+      "kind": "control",
+      "name": "calorimeter",
+      "expected": "fine",
+      "sentences": [
+        "When a 3.00-g sample of KCl was added to 3.00 … 102 g of water in a coffee cup calorimeter, the temperature decreased by 1.05 °C.",
+        "The pellet is burned inside a bomb calorimeter, and the measured temperature change is converted into energy per gram of food.",
+        "A sample of 0.562 g of carbon is burned in oxygen in a bomb calorimeter, producing carbon dioxide.",
+        "To do so, the heat is exchanged with a calibrated object (calorimeter).",
+        "Would the amount of heat measured for the reaction in … be greater, lesser, or remain the same if we used a calorimeter that was a poorer insulator than a coffee cup calorimeter?"
+      ]
+    },
+    {
+      "id": "r016",
+      "english": "lowercase letter",
+      "icelandic": "lágstafur",
+      "kind": "physicsBiology",
+      "sentences": [
+        "The first letter of the symbol is always an uppercase letter while the second letter of the symbol is always a lowercase letter."
+      ]
+    },
+    {
+      "id": "r017",
+      "english": "vessel",
+      "icelandic": "æð",
+      "kind": "control",
+      "name": "vessel",
+      "expected": "flag",
+      "sentences": [
+        "This diagram shows an arrow pointing from O subscript 2 into a tube that leads into a vessel containing a red material, labeled “Sample.” This vessel is inside a blue container with a red inner lining which is labeled “Furnace.” An arrow points from the tube to the right into the vessel above the red sample material.",
+        "Diagram a depicts a thermometer which passes through a disk-like insulating cover and into a metal cylinder which is labeled “metal inner vessel,” which is in turn nested in a metal cylinder labeled “metal outer vessel.” The inner cylinder rests on an insulating support ring.",
+        "(c) After a short time, both the slower-moving O2 molecules and the faster-moving H2 molecules have distributed themselves evenly on both sides of the vessel.",
+        "The area of the surface of the liquid in contact with a vapor and the size of the vessel have no effect on the vapor pressure, although they do affect the time required for the equilibrium to be reached.",
+        "The annual production of HNO3 in 2013 was 60 million metric tons Most of that was prepared by the following sequence of reactions, each run in a separate reaction vessel."
+      ]
+    },
+    {
+      "id": "r018",
+      "english": "distance",
+      "icelandic": "fjarlægð",
+      "kind": "physicsBiology",
+      "sentences": [
+        "A meter was originally specified as 1/10,000,000 of the distance from the North Pole to the equator.",
+        "The distance you traveled to the top of Kilimanjaro, however, is not a state function.",
+        "As can be seen in …, the wavelength is the distance between two consecutive peaks or troughs in a wave (measured in meters in the SI system).",
+        "bond distance",
+        "The bond energy is the difference between the energy minimum (which occurs at the bond distance) and the energy of the two separated atoms."
+      ]
+    },
+    {
+      "id": "r019",
+      "english": "refrigerant",
+      "icelandic": "kæliefni",
+      "kind": "physicsBiology",
+      "sentences": [
+        "Freon-12 has been banned and is no longer used as a refrigerant because it catalyzes the decomposition of ozone and has a very long lifetime in the atmosphere.",
+        "Due to intermolecular hydrogen bonding, the enthalpy of vaporization of liquid ammonia is higher than that of any other liquid except water, so ammonia is useful as a refrigerant."
+      ]
+    },
+    {
+      "id": "r020",
+      "english": "internal",
+      "icelandic": "innri",
+      "kind": "physicsBiology",
+      "sentences": [
+        "They are more efficient than vehicles with internal combustion engines, are nonpolluting, and reduce greenhouse gas emissions, making us less dependent on fossil fuels.",
+        "It sends and receives signals to and from muscles and other internal organs to monitor and control their functions; it processes stimuli detected by sensory organs to guide interactions with the external world; and it houses the complex physiological processes that give rise to our intellect and emotions.",
+        "This view of an internal combustion engine illustrates the conversion of energy produced by the exothermic combustion reaction of a fuel such as gasoline into energy of motion.",
+        "Nitric oxide, NO, is an example of an odd-electron molecule; it is produced in internal combustion engines when oxygen and nitrogen react at high temperatures.",
+        "(b) What are the electron pair and molecular geometries of the internal oxygen and nitrogen atoms in the HNO2 molecule?"
+      ]
+    },
+    {
+      "id": "r021",
+      "english": "phases",
+      "icelandic": "kvartilaskipti",
+      "kind": "control",
+      "name": "phases",
+      "expected": "flag",
+      "sentences": [
+        "(c) The formula H2O symbolizes water, and (g), (s), and (l) symbolize its phases.",
+        "In p orbitals, the wave function gives rise to two lobes with opposite phases, analogous to how a two-dimensional wave has both parts above and below the average.",
+        "temperature at which the solid and liquid phases of a substance are in equilibrium; see also melting point",
+        "For purposes of understanding the lowering of a liquid's vapor pressure, it is adequate to note that the more dispersed nature of matter in a solution, compared to separate solvent and solute phases, serves to effectively stabilize the solvent molecules and hinder their vaporization.",
+        "Reactions involving two phases proceed more rapidly when there is greater surface area contact."
+      ]
+    },
+    {
+      "id": "r022",
+      "english": "depression",
+      "icelandic": "þunglyndi",
+      "kind": "control",
+      "name": "depression",
+      "expected": "flag",
+      "sentences": [
+        "where m is the molal concentration of the solute and Kf is called the freezing point depression constant (or cryoscopic constant).",
+        "The first shows a green wedge-like shape with two small depressions in the upper surface of similar size, but the depression on the left has a curved shape, and the depression on the right has a pointed shape.",
+        "Water Cryoscopic (Freezing Point Depression) and Ebullioscopic (Boiling Point Elevation) Constants",
+        "Considering the first of these examples, and assuming complete dissociation, a 1.0 m aqueous solution of NaCl contains 2.0 mole of ions (1.0 mol Na+ and 1.0 mol Cl−) per each kilogram of water, and its freezing point depression is expected to be",
+        "A table with one column and two rows is titled “Water Cryoscopic ( Freezing Point Depression ) and Ebullioscopic ( Boiling Point Elevation ) Constants.” The first row contains the equation “K subscript f equals 1.86 K mol superscript negative one kg superscript negative one,” directly to the left of the text “( cryoscopic constant ).” The next row contains the equation “K subscript b equals 0.51 m"
+      ]
+    },
+    {
+      "id": "r023",
+      "english": "microwave",
+      "icelandic": "örbylgja",
+      "kind": "population",
+      "sentences": [
+        "ngerke; credit “Dental curing\": modification of work by the Department of the Navy; credit “Night vision\": modification of work by the Department of the Army; credit “Remote\": modification of work by Emilian Robert Vicol; credit “Cell phone\": modification of work by Brett Jordan; credit “Microwave oven\": modification of work by Billy Mabray; credit “AM radio\": modification of work by Dave Clausen)",
+        "agram has a double ended, horizontal arrow along its top, with the left end drawn in red and labeled “Non-ionizing” and the right end drawn in green and labeled “Ionizing.” Below this is a set of terms, read from left to right as “Broadcast and wireless radio,” “Microwave,” “Terahertz,” “Infrared,” “Visible light,” “Ultraviolet,” “X dash ray,” and “Gamma.” Four columns lie below this row of terms.",
+        "The figure includes a portion of the electromagnetic spectrum which extends from gamma radiation at the far left through x-ray, ultraviolet, visible, infrared, terahertz, and microwave to broadcast and wireless radio at the far right.",
+        "For example, radio waves from a mobile phone, X-rays used by dentists, the energy used to cook food in your microwave, the radiant heat from red-hot objects, and the light from your television screen are forms of electromagnetic radiation that all exhibit wavelike behavior.",
+        "(This is why most plastics and glass do not become hot in a microwave oven-they do not contain water molecules.) This frequency is about 3 … 109 Hz."
+      ]
+    },
+    {
+      "id": "r024",
+      "english": "addition",
+      "icelandic": "álagning",
+      "kind": "control",
+      "name": "addition-reaction",
+      "expected": "fine",
+      "sentences": [
+        "This reaction is called an addition reaction.",
+        "Since the … functional group has two π bonds, alkynes typically react even more readily, and react with twice as much reagent in addition reactions.",
+        "Aromatic compounds more readily undergo substitution reactions than addition reactions; replacement of one of the hydrogen atoms with another substituent will leave the delocalized double bonds intact.",
+        "Large quantities of ethanol are synthesized from the addition reaction of water with ethylene using an acid as a catalyst:",
+        "addition reaction"
+      ]
+    },
+    {
+      "id": "r025",
+      "english": "brightness",
+      "icelandic": "ljósstyrkur",
+      "kind": "population",
+      "sentences": [
+        "The amplitude is related to the intensity of the wave, which for light is the brightness, and for sound is the loudness.",
+        "Applying a voltage to electrodes immersed in a solution permits assessment of the relative concentration of dissolved ions, either quantitatively, by measuring the electrical current flow, or qualitatively, by observing the brightness of a light bulb included in the circuit (…).",
+        "Different levels of gamma radiation produce different amounts of brightness and colors in the image, which can then be interpreted by a radiologist to reveal what is going on.",
+        "(a) Increasing the brightness of incoming light increases the kinetic energy of the ejected electrons.",
+        "Increasing the brightness of incoming light has no effect on the kinetic energy of the ejected electrons."
+      ]
+    },
+    {
+      "id": "r026",
+      "english": "equilibrium concentration",
+      "icelandic": "jafnvægisstyrkur",
+      "kind": "population",
+      "sentences": [
+        "If a solution with the concentrations of I2 and I− both equal to 1.000 … 10−3 M before reaction gives an equilibrium concentration of I2 of 6.61 … 10−4 M, what is the equilibrium constant for the reaction?",
+        "The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ).",
+        "The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), and Equilibrium concentration ( M ).",
+        "The ICE table for this system is … Substituting the equilibrium concentration terms into the Kb expression gives … Assuming x << 0.25 and solving for x yields … This value is less than 5% of the initial concentration (0.25), so the assumption is justified.",
+        "Substitute the equilibrium concentration terms into the Kc expression"
+      ]
+    },
+    {
+      "id": "r027",
+      "english": "atmospheric pressure",
+      "icelandic": "loftþrýstingur",
+      "kind": "physicsBiology",
+      "sentences": [
+        "Temperature scales are defined relative to selected reference temperatures: Two of the most commonly used are the freezing and boiling temperatures of water at a specified atmospheric pressure.",
+        "However, this quantity depends on the atmospheric pressure and the starting temperature of the water.",
+        "Show the calculation supporting the claim that atmospheric pressure near sea level corresponds to the pressure exerted by a column of mercury that is about 760 mm high.",
+        "A typical atmospheric pressure in Leadville, Colorado (elevation 10,200 feet) is 68 kPa.",
+        "As described in the chapter on liquids and solids, the boiling point of a liquid is the temperature at which its vapor pressure is equal to ambient atmospheric pressure."
+      ]
+    },
+    {
+      "id": "r028",
+      "english": "mesosphere",
+      "icelandic": "miðhvolf",
+      "kind": "physicsBiology",
+      "sentences": [
+        "This is followed by a slightly thinner layer also in light blue labeled “Mesosphere 50 dash 80 k m.” Following this layer is a relatively thick light blue layer labeled “Thermosphere 80 dash 700 k m.” A blue layer appears that covers the rightmost two thirds of the diagram.",
+        "ughly 78.1% nitrogen and 21.0% oxygen, and can be subdivided further into the regions shown in …: the exosphere (furthest from earth, > 700 km above sea level), the thermosphere (80–700 km), the mesosphere (50–80 km), the stratosphere (second lowest level of our atmosphere, 12–50 km above sea level), and the troposphere (up to 12 km above sea level, roughly 80% of the earth’s atmosphere by mass an",
+        "Earth’s atmosphere has five layers: the troposphere, the stratosphere, the mesosphere, the thermosphere, and the exosphere."
+      ]
+    },
+    {
+      "id": "r029",
+      "english": "dependent variable",
+      "icelandic": "fylgibreyta",
+      "kind": "physicsBiology",
+      "sentences": [
+        "Such a graph has two axes: a horizontal one corresponding to the independent variable, or the variable whose value is being controlled (x), and a vertical axis corresponding to the dependent variable, or the variable whose value is being observed or measured (y)."
+      ]
+    },
+    {
+      "id": "r030",
+      "english": "electrical resistance",
+      "icelandic": "viðnám",
+      "kind": "population",
+      "sentences": [
+        "Formaldehyde is used in the manufacture of Bakelite, a hard plastic having high chemical and electrical resistance."
+      ]
+    },
+    {
+      "id": "r031",
+      "english": "pentagon",
+      "icelandic": "fimmhyrningur",
+      "kind": "physicsBiology",
+      "sentences": [
+        "The two right C atoms make up one side of a pentagon and the other points of the pentagon are made up of a C atom, an N atom, and an S atom if read clockwise.",
+        "For more on algal fuel, see http://www.theguardian.com/environment/2010/feb/13/algae-solve-pentagon-fuel-problem.",
+        "From the C H group, which is at the right side of the pentagon, a C H is bonded.",
+        "This figure shows a pentagon with a vertex pointing right, from which a line segment extends that has two line segments attached at its right end, one extending up and to the right, and the other extending down and to the right."
+      ]
+    },
+    {
+      "id": "r032",
+      "english": "rearrangement",
+      "icelandic": "umröðun",
+      "kind": "population",
+      "sentences": [
+        "Rearrangement of this equation yields the form useful for converting from Fahrenheit to Celsius:",
+        "The wavelength of a photon with this energy is found by the expression … Rearrangement gives:",
+        "Rearrangement gives …",
+        "Rearrangement of the Kw expression shows that [OH−] is inversely proportional to [H3O+]:",
+        "A balanced nuclear reaction equation indicates that there is a rearrangement during a nuclear reaction, but of nucleons (subatomic particles within the atoms’ nuclei) rather than atoms."
+      ]
+    },
+    {
+      "id": "r033",
+      "english": "crystalline",
+      "icelandic": "kristalkenndur",
+      "kind": "control",
+      "name": "crystalline",
+      "expected": "fine",
+      "sentences": [
+        "Mercury(II) oxide, an orange, crystalline solid, can be broken down by heat into the elements mercury and oxygen (…).",
+        "For example, copper and chlorine can form a green, crystalline solid with a mass ratio of 0.558 g chlorine to 1 g copper, as well as a brown crystalline solid with a mass ratio of 1.116 g chlorine to 1 g copper.",
+        "Since these wavelengths are comparable to the spaces between atoms in a crystalline solid, X-rays are scattered when they pass through crystals.",
+        "The vigorous reaction between the elements sodium and chlorine forms the white, crystalline compound sodium chloride, common table salt, which contains sodium cations and chloride anions (…).",
+        "Crystalline solids are generally classified according to the nature of the forces that hold its particles together."
+      ]
+    },
+    {
+      "id": "r034",
+      "english": "neutron",
+      "icelandic": "nifteind",
+      "kind": "population",
+      "sentences": [
+        "The existence of the neutron also explained isotopes: They differ in mass because they have different numbers of neutrons, but they are chemically identical because they have the same number of protons.",
+        "breakdown of a neutron into a proton, which remains in the nucleus, and an electron, which is emitted as a beta particle",
+        "For neutron rest mass, the symbol is lowercase italic m subscript lowercase italic n, and the value is 1.6749274 times 10 superscript negative 27 kg.",
+        "neutron",
+        "Cobalt-60 is a synthetic radioisotope produced by the neutron activation of Co-59, which then undergoes β decay to form Ni-60, along with the emission of γ radiation."
+      ]
+    },
+    {
+      "id": "r035",
+      "english": "Hz",
+      "icelandic": "herts",
+      "kind": "physicsBiology",
+      "sentences": [
+        "3 megahertz (MHz) = 3 … 106 Hz (3,000,000 Hz)",
+        "The unit for frequency, expressed as cycles per second [s−1], is the hertz (Hz).",
+        "hertz (Hz)",
+        "Red: 660 nm; 4.54 … 1014 Hz; 3.01 … 10−19 J.",
+        "Calculate the threshold energy in kJ/mol of electrons in aluminum, given that the lowest frequency photon for which the photoelectric effect is observed is 9.87 … 1014 Hz."
+      ]
+    },
+    {
+      "id": "r036",
+      "english": "complex",
+      "icelandic": "flóki",
+      "kind": "population",
+      "sentences": [
+        "Biology and chemistry converge in biochemistry, which is crucial to understanding the many complex factors and processes that keep living organisms (such as us) alive.",
+        "The first shows a light bulb as part of a complex lab equipment setup.",
+        "One important aspect of the complex processes related to dopamine signaling is the number of neurotransmitter molecules released during exocytosis.",
+        "Humans interact with one another in various and complex ways, and we classify these interactions according to common patterns of behavior.",
+        "The d and f orbitals are more complex."
+      ]
+    },
+    {
+      "id": "r037",
+      "english": "terms",
+      "icelandic": "tíðir",
+      "kind": "control",
+      "name": "terms",
+      "expected": "flag",
+      "sentences": [
+        "The description of water as comprising two hydrogen atoms and one oxygen atom, and the explanation of freezing and boiling in terms of attractions between these molecules, is within the microscopic arena.",
+        "What is the percent composition of Cu in terms of these two isotopes?",
+        "While atomic mass and molar mass are numerically equivalent, keep in mind that they are vastly different in terms of scale, as represented by the vast difference in the magnitudes of their respective units (amu versus g).",
+        "Under the first heading are the terms “helium,” “water,” “ethanol,” “ice,” “water vapor,” “nitrogen,” “air,” “oxygen,” “aluminum,” “carbon dioxide,” “argon,” “iron,” “copper,” “lead,” “gold” and “silicon.” The second column contains the symbols and signs: “H e (g),” “H subscript 2 O (l),” “C subscript 2 H subscript 6 O (l),” “H subscript 2 O (s),” “H subscript 2 O (g),” “N subscript 2 (g),” a blan",
+        "Electron spin describes an intrinsic electron \"rotation\" or \"spinning.\" Each electron acts as a tiny magnet or a tiny rotating object with an angular momentum, or as a loop with an electric current, even though this rotation or current cannot be observed in terms of spatial coordinates."
+      ]
+    },
+    {
+      "id": "r038",
+      "english": "rays",
+      "icelandic": "skötur",
+      "kind": "control",
+      "name": "rays",
+      "expected": "flag",
+      "sentences": [
+        "Millikan created microscopic oil droplets, which could be electrically charged by friction as they formed or by using X-rays.",
+        "X-rays exhibit wavelengths of approximately 0.01–10 nm.",
+        "The second-order reflection (n = 2) of X-rays for the planes that make up the tops and bottoms of the unit cells is at θ = 22.20°.",
+        "The heat from the sun’s rays is critical to the lizard’s survival.",
+        "The beam is shown to break into three beams as it passes in between the plates; in order from top to bottom, they are red, labeled “beta rays,” purple labeled “gamma rays” and green labeled “alpha rays.” The beams are shown to hit a vertical plate labeled “Photographic plate” on the far right side of the diagram."
+      ]
+    },
+    {
+      "id": "r039",
+      "english": "bond length",
+      "icelandic": "tengilengd",
+      "kind": "control",
+      "name": "bond length",
+      "expected": "fine",
+      "sentences": [
+        "4008 kJ/mol; both ions in MgO have twice the charge of the ions in LiF; the bond length is very similar and both have the same structure; a quadrupling of the energy is expected based on the equation for lattice energy",
+        "The lowest (most stable) energy occurs at a distance of 74 pm, which is the bond length observed for the H2 molecule.",
+        "A bond distance (or bond length) is the distance between the nuclei of two bonded atoms along the straight line joining the nuclei.",
+        "The graph slopes downward steeply to a point far below the zero joule line on the y-axis and the lowest point reads “0.74 p m” and “H bonded to H bond length.” It is also labeled “ negative 7.24 times 10 superscript negative 19 J.” The graph then rises again to zero J.",
+        "Bond Length (Å)"
+      ]
+    },
+    {
+      "id": "r040",
+      "english": "smog",
+      "icelandic": "þreykur",
+      "kind": "physicsBiology",
+      "sentences": [
+        "This ozone is a toxic component of photochemical smog."
+      ]
+    },
+    {
+      "id": "r041",
+      "english": "consciousness",
+      "icelandic": "meðvitund",
+      "kind": "physicsBiology",
+      "sentences": [
+        "Under the “Health Effect” column are the following: changes in blood chemistry, nausea, fatigue, vomiting, hair loss, diarrhea, hemorrhage, possible death, destruction of intestinal lining, internal bleeding, death, damage to central nervous system, loss of consciousness, and death.",
+        "loss of consciousness;"
+      ]
+    },
+    {
+      "id": "r042",
+      "english": "reaction rate",
+      "icelandic": "hvarfhraði",
+      "kind": "population",
+      "sentences": [
+        "Results for the last 6-hour period yield a reaction rate of:",
+        "Although low temperatures favor product formation for this exothermic process, the reaction rate at low temperatures is inefficiently slow.",
+        "mathematical representation defining reaction rate as change in amount, concentration, or pressure of reactant or product species per unit time",
+        "As the reaction begins (t = 0), the concentration of the N2O4 reactant is finite and that of the NO2 product is zero, so the forward reaction proceeds at a finite rate while the reverse reaction rate is zero.",
+        "The exponential term, e−Ea/RT, describes the effect of activation energy on reaction rate."
+      ]
+    },
+    {
+      "id": "r043",
+      "english": "dilution",
+      "icelandic": "þynning",
+      "kind": "population",
+      "sentences": [
+        "Use the simulation to explore the relations between solute amount, solution volume, and concentration and to confirm the dilution equation.",
+        "Will KClO4 precipitate when 20 mL of a 0.050-M solution of K+ is added to 80 mL of a 0.50-M solution of … (Hint: Use the dilution equation to calculate the concentrations of potassium and perchlorate ions in the mixture.)",
+        "Dilution of the products with water, followed by filtration to remove calcium sulfate, gives a dilute acid solution contaminated with calcium dihydrogen phosphate, Ca(H2PO4)2, and other compounds associated with calcium phosphate rock.",
+        "Dilution is also a common means of preparing solutions of a desired concentration.",
+        "Dilution is the process whereby the concentration of a solution is lessened by the addition of solvent."
+      ]
+    },
+    {
+      "id": "r044",
+      "english": "refraction",
+      "icelandic": "ljósbrot",
+      "kind": "population",
+      "sentences": [
+        "Others in the seventeenth century, such as Christiaan Huygens, had shown that optical phenomena such as reflection and refraction could be equally well explained in terms of light as waves travelling at high speed through a medium called \"luminiferous aether\" that was thought to permeate all space."
+      ]
+    },
+    {
+      "id": "r045",
+      "english": "alkyne",
+      "icelandic": "alkýn",
+      "kind": "physicsBiology",
+      "sentences": [
+        "(c) an alkyne",
+        "alkyne",
+        "Compound names include alkene, alkyne, alcohol, ether, aldehyde, ketone, carboxylic acid, ester, amine, and amide.",
+        "The simplest member of the alkyne series is ethyne, C2H2, commonly called acetylene.",
+        "Write Lewis structures and IUPAC names for the alkyne isomers of C4H6."
+      ]
+    },
+    {
+      "id": "r046",
+      "english": "equilibrium",
+      "icelandic": "jafnvægi",
+      "kind": "population",
+      "sentences": [
+        "The hydroxide ions generated in this equilibrium then go on to react with the hydronium ions from the stomach acid, so that:",
+        "The vapor pressure of water, which is the pressure exerted by water vapor in equilibrium with liquid water in a closed container, depends on the temperature (…); more detailed information on the temperature dependence of water vapor can be found in …, and vapor pressure will be discussed in more detail in the next chapter on liquids.",
+        "temperature at which the solid and liquid phases of a substance are in equilibrium; see also melting point",
+        "Such solutions are said to be supersaturated, and they are interesting examples of nonequilibrium states (a detailed treatment of this important concept is provided in the text chapters on equilibrium).",
+        "The rates of both the forward and the reverse reactions are increased, leading to a faster achievement of equilibrium."
+      ]
+    },
+    {
+      "id": "r047",
+      "english": "reduce",
+      "icelandic": "einfalda",
+      "kind": "control",
+      "name": "reduce",
+      "expected": "flag",
+      "sentences": [
+        "They are more efficient than vehicles with internal combustion engines, are nonpolluting, and reduce greenhouse gas emissions, making us less dependent on fossil fuels.",
+        "(b) Inline water filters reduce the concentration of solutes in tap water.",
+        "Some products are difficult to collect without some loss, and so less than perfect recovery will reduce the actual yield.",
+        "To reduce this pollutant, automobiles have catalytic converters that use a catalyst to carry out this reaction.",
+        "AgCl is insoluble; thus, the concentrations of ions are much less than 1 M; (b) … > 1 because PbCl2 is insoluble and formation of the solid will reduce the concentration of ions to a low level (<1 M)."
+      ]
+    },
+    {
+      "id": "r048",
+      "english": "atom",
+      "icelandic": "atóm",
+      "kind": "control",
+      "name": "atom",
+      "expected": "fine",
+      "sentences": [
+        "An atom is so small that its size is difficult to imagine.",
+        "For example, if an element such as copper consists of only one kind of atom, then it cannot be broken down into simpler substances, that is, into substances composed of fewer types of atoms.",
+        "A C atom forms a single bond with three H atoms each and with another C atom.",
+        "The H atom balance was upset by this change, but it is easily reestablished by changing the coefficient for the H2 product to 2.",
+        "… is the Hamiltonian operator, a set of mathematical operations representing the total energy of the quantum particle (such as an electron in an atom), ψ is the wavefunction of this particle that can be used to find the special distribution of the probability of finding the particle, and … is the actual value of the total energy of the particle."
+      ]
+    },
+    {
+      "id": "r049",
+      "english": "plasma",
+      "icelandic": "rafgas",
+      "kind": "physicsBiology",
+      "sentences": [
+        "Under high-temperature conditions, matter also can exist as a plasma.",
+        "This arrow is labeled, “C O subscript 2 dissolved in plasma.” The red tube has two round red shapes in it, and the upper one is labeled, “C O subscript 2 carried in red blood cells.” The gaps between the squares and the red tube are colored light blue.",
+        "Blood will not clot if calcium ions are removed from its plasma.",
+        "At these temperatures, all molecules dissociate into atoms, and the atoms ionize, forming plasma.",
+        "Bright, white colored plasma can be seen near the tip of the torch, where it is contacting the metal."
+      ]
+    },
+    {
+      "id": "r050",
+      "english": "strong base",
+      "icelandic": "sterkur basi",
+      "kind": "population",
+      "sentences": [
+        "(d) … (products are a strong base and a diatomic gas)",
+        "(a) The titration curve for the titration of 25.00 mL of 0.100 M HCl (strong acid) with 0.100 M NaOH (strong base) has an equivalence point of 7.00 pH.",
+        "For example, aluminum hydroxide dissolves in a solution of sodium hydroxide or another strong base because of the formation of the complex ion …",
+        "The compounds formed are crystalline, ionic hydrides that contain the hydride anion, H−, a strong reducing agent and a strong base, which reacts vigorously with water and other acids to form hydrogen gas.",
+        "They react with solutions of hydroxides to form salts of the oxyanions … … and … For example, the complete ionic equation for the reaction of chromium(VI) oxide with a strong base is given by:"
+      ]
+    },
+    {
+      "id": "r051",
+      "english": "balanced",
+      "icelandic": "í jafnvægi",
+      "kind": "control",
+      "name": "balanced",
+      "expected": "flag",
+      "sentences": [
+        "Balanced equations are those whose coefficients result in equal numbers of atoms for each element in the reactants and products.",
+        "(a) Write a balanced equation for the complete combustion of propane gas.",
+        "The ratio of the volumes of C3H8 and O2 will be equal to the ratio of their coefficients in the balanced equation for the reaction:",
+        "(b) Write a balanced chemical equation showing the products of the dissolution of Fe(NO3)3.",
+        "These elementary reactions occur precisely as represented in the step equations, and they must sum to yield the balanced chemical equation representing the overall reaction:"
+      ]
+    },
+    {
+      "id": "r052",
+      "english": "gas constant",
+      "icelandic": "gasfastinn",
+      "kind": "population",
+      "sentences": [
+        "ideal gas constant (R)",
+        "where ΔHvap is the enthalpy of vaporization for the liquid, R is the gas constant, and A is a constant whose value depends on the chemical identity of the substance.",
+        "In this equation, R is the ideal gas constant, which has a value 8.314 J/mol/K, T is temperature on the Kelvin scale, Ea is the activation energy in joules per mole, e is the constant 2.7183, and A is a constant called the frequency factor, which is related to the frequency of collisions and the orientation of the reacting molecules.",
+        "where P is partial pressure, V is volume, n is molar amount, R is the gas constant, T is temperature, and M is molar concentration.",
+        "R is the gas constant (8.314 J/K mol), T is the kelvin or absolute temperature, and Q is the reaction quotient."
+      ]
+    },
+    {
+      "id": "r053",
+      "english": "conjugate acid",
+      "icelandic": "samoka sýra",
+      "kind": "population",
+      "sentences": [
+        "One example for NH3 as a conjugate acid: … as a conjugate base: …",
+        "Draw Lewis structures for pyridine and its conjugate acid, the pyridinium ion, C5H5NH+.",
+        "At the equivalence point in the titration of a weak base with a strong acid, the resulting solution is slightly acidic due to the presence of the conjugate acid.",
+        "The conjugate acid of … is HNO2; Ka for HNO2 can be calculated using the relationship:",
+        "This equation states the relation between ionization constants for any conjugate acid-base pair, namely, their mathematical product is equal to the ion product of water, Kw."
+      ]
+    },
+    {
+      "id": "r054",
+      "english": "noble gas",
+      "icelandic": "eðalgas",
+      "kind": "population",
+      "sentences": [
+        "(b) the noble gas element with 75 neutrons in its nucleus and 54 electrons in the neutral atom",
+        "A core-abbreviated electron configuration (right) replaces the core electrons with the noble gas symbol whose configuration matches the core electron configuration of the other element.",
+        "Most monatomic anions form when a neutral nonmetal atom gains enough electrons to completely fill its outer s and p orbitals, thereby reaching the electron configuration of the next noble gas.",
+        "What is the oxidation state of the noble gas in each of the following?",
+        "A meteorite found in central Indiana contains traces of the noble gas neon picked up from the solar wind during the meteorite’s trip through the solar system."
+      ]
+    },
+    {
+      "id": "r055",
+      "english": "electrochemistry",
+      "icelandic": "rafefnafræði",
+      "kind": "population",
+      "sentences": [
+        "Redox reactions that take place in aqueous solutions are commonly encountered in electrochemistry, and many involve water or its characteristic ions, H+(aq) and OH−(aq), as reactants or products.",
+        "Ions of metals in of groups 1 and 2, along with aluminum, are very difficult to reduce; therefore, it is necessary to prepare these elements by electrolysis, an important process discussed in the chapter on electrochemistry.",
+        "This impure copper is cast into large plates, which are used as anodes in the electrolytic refining of the metal (which is described in the chapter on electrochemistry).",
+        "When measured for purposes of electrochemistry, a potential reflects the driving force for a specific type of charge transfer process, namely, the transfer of electrons between redox reactants.",
+        "You may wish to review the chapter on electrochemistry for relevant examples."
+      ]
+    }
+  ],
+  "rowsPerRequest": 8,
+  "requests": [
+    {
+      "key": "g001",
+      "ids": [
+        "r001",
+        "r002",
+        "r003",
+        "r004",
+        "r005",
+        "r006",
+        "r007",
+        "r008"
+      ]
+    },
+    {
+      "key": "g002",
+      "ids": [
+        "r009",
+        "r010",
+        "r011",
+        "r012",
+        "r013",
+        "r014",
+        "r015",
+        "r016"
+      ]
+    },
+    {
+      "key": "g003",
+      "ids": [
+        "r017",
+        "r018",
+        "r019",
+        "r020",
+        "r021",
+        "r022",
+        "r023",
+        "r024"
+      ]
+    },
+    {
+      "key": "g004",
+      "ids": [
+        "r025",
+        "r026",
+        "r027",
+        "r028",
+        "r029",
+        "r030",
+        "r031",
+        "r032"
+      ]
+    },
+    {
+      "key": "g005",
+      "ids": [
+        "r033",
+        "r034",
+        "r035",
+        "r036",
+        "r037",
+        "r038",
+        "r039",
+        "r040"
+      ]
+    },
+    {
+      "key": "g006",
+      "ids": [
+        "r041",
+        "r042",
+        "r043",
+        "r044",
+        "r045",
+        "r046",
+        "r047",
+        "r048"
+      ]
+    },
+    {
+      "key": "g007",
+      "ids": [
+        "r049",
+        "r050",
+        "r051",
+        "r052",
+        "r053",
+        "r054",
+        "r055"
+      ]
+    }
+  ]
+}

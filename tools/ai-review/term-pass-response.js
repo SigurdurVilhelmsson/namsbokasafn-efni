@@ -43,6 +43,14 @@
 import { usesHeadword } from '../lib/chapter-term-check.js';
 import { containsTargetStem } from './gate.js';
 import { UNCLEAR_SENSE } from './ruling-set.js';
+import {
+  REQUEST_PROBLEMS,
+  assertSupported,
+  isPlainObject,
+  readDocument,
+} from './response-document.js';
+
+export { REQUEST_PROBLEMS };
 
 /** The flag kinds the model may raise, sorted. */
 export const FLAG_KINDS = Object.freeze([
@@ -51,15 +59,6 @@ export const FLAG_KINDS = Object.freeze([
   'needs-rewrite', // a fix would rewrite more than a term pass may
   'sense-unclear', // the context does not settle a homograph's sense
   'target-other-sense', // the ruled target is used here in another sense
-]);
-
-/** What can be wrong with a response as a whole, sorted. Any one empties the result. */
-export const REQUEST_PROBLEMS = Object.freeze([
-  'response-empty', // no message at all
-  'response-invalid', // a stop_reason other than end_turn, or a shape that breaks the schema
-  'response-refusal', // stop_reason 'refusal'
-  'response-truncated', // stop_reason 'max_tokens'
-  'response-unparseable', // no text block, or the text blocks do not JSON.parse
 ]);
 
 /**
@@ -132,101 +131,7 @@ export const RESPONSE_SCHEMA = deepFreeze(
   })
 );
 
-// ── The shape check ──────────────────────────────────────────────────────────────────────
-
-const isPlainObject = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
-
-/** The schema keywords `conforms` understands; any other keyword is refused at load. */
-const SUPPORTED_KEYWORDS = new Set([
-  'type',
-  'properties',
-  'required',
-  'additionalProperties',
-  'items',
-  'enum',
-  'anyOf',
-]);
-
-function assertSupported(schema, where = 'RESPONSE_SCHEMA') {
-  const unknown = Object.keys(schema).filter((k) => !SUPPORTED_KEYWORDS.has(k));
-  if (unknown.length > 0) throw new Error(`${where}: unsupported keyword(s) ${unknown.join(', ')}`);
-  if (schema.type === 'object' && schema.additionalProperties !== false) {
-    throw new Error(`${where}: an object must set additionalProperties: false`);
-  }
-  for (const [k, sub] of Object.entries(schema.properties ?? {})) {
-    assertSupported(sub, `${where}.${k}`);
-  }
-  if (schema.items) assertSupported(schema.items, `${where}[]`);
-  (schema.anyOf ?? []).forEach((sub, i) => assertSupported(sub, `${where}|${i}`));
-}
 assertSupported(RESPONSE_SCHEMA);
-
-/**
- * Does `value` (a JSON.parse result) have exactly the shape `schema` describes? Exact keys
- * (additionalProperties is false everywhere), required keys present, types and enums.
- * @param {object} schema a node of RESPONSE_SCHEMA
- * @param {unknown} value
- * @returns {boolean}
- */
-function conforms(schema, value) {
-  if (schema.anyOf) return schema.anyOf.some((sub) => conforms(sub, value));
-  switch (schema.type) {
-    case 'object': {
-      if (!isPlainObject(value)) return false;
-      const keys = Object.keys(value);
-      return (
-        keys.every((k) => Object.hasOwn(schema.properties, k)) &&
-        schema.required.every((k) => Object.hasOwn(value, k)) &&
-        keys.every((k) => conforms(schema.properties[k], value[k]))
-      );
-    }
-    case 'array':
-      return Array.isArray(value) && value.every((v) => conforms(schema.items, v));
-    case 'string':
-      return typeof value === 'string' && (!schema.enum || schema.enum.includes(value));
-    case 'null':
-      return value === null;
-    default:
-      throw new Error(`term-pass-response: schema type ${JSON.stringify(schema.type)} unsupported`);
-  }
-}
-
-// ── The response envelope ────────────────────────────────────────────────────────────────
-
-/** Content blocks that carry no answer and are skipped. Any other non-text type is invalid. */
-const IGNORED_BLOCKS = new Set(['thinking', 'redacted_thinking']);
-
-/**
- * The parsed answer document, or the problem that stops it.
- * @returns {{ problem: string|null, document?: object }}
- */
-function readDocument(message) {
-  if (message === null || message === undefined) return { problem: 'response-empty' };
-  if (!isPlainObject(message)) return { problem: 'response-invalid' };
-  if (message.stop_reason === 'refusal') return { problem: 'response-refusal' };
-  if (message.stop_reason === 'max_tokens') return { problem: 'response-truncated' };
-  if (message.stop_reason !== 'end_turn') return { problem: 'response-invalid' };
-  if (!Array.isArray(message.content)) return { problem: 'response-invalid' };
-  const texts = [];
-  for (const block of message.content) {
-    if (!isPlainObject(block)) return { problem: 'response-invalid' };
-    if (block.type === 'text') {
-      if (typeof block.text !== 'string') return { problem: 'response-invalid' };
-      texts.push(block.text);
-    } else if (!IGNORED_BLOCKS.has(block.type)) {
-      return { problem: 'response-invalid' };
-    }
-  }
-  if (texts.length === 0) return { problem: 'response-unparseable' };
-  let document;
-  try {
-    document = JSON.parse(texts.join(''));
-  } catch {
-    return { problem: 'response-unparseable' };
-  }
-  if (!conforms(RESPONSE_SCHEMA, document)) return { problem: 'response-invalid' };
-  return { problem: null, document };
-}
 
 // ── The runner checks ────────────────────────────────────────────────────────────────────
 
@@ -389,7 +294,7 @@ export function parseTermPassResponse({ message, requestKey, presented, rulingsB
     dropped: [],
   };
 
-  const { problem, document } = readDocument(message);
+  const { problem, document } = readDocument(message, RESPONSE_SCHEMA);
   if (problem) return { ...result, problem };
 
   const offered = new Map(presented.map((p) => [p.segmentId, p.rulingIds]));

@@ -1,0 +1,36 @@
+{
+  "schema": "ai-review-run/1",
+  "runId": "20261118T085951Z-5f8273b4",
+  "use": "glossary-prescreen",
+  "mode": "interactive",
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "max_tokens": 16000,
+  "prompts": [
+    {
+      "path": "tools/ai-review/prompts/glossary-prescreen-v1.md",
+      "sha256": "8d5e82e72cdd46ceb4ac2ffc9dea2f4d7106bf9623de4e25e523201c7a3eb07c"
+    }
+  ],
+  "rulingSet": {
+    "path": "experiments/terminology-consistency/results/2026-11-02/ruling-set-2026-11-02.json",
+    "sha256": "0aa33690ca829be4baa4da2b34fbea1455517d426e939c3544b3a86b3049c3bd"
+  },
+  "sdk": {
+    "name": "@anthropic-ai/sdk",
+    "version": "1.3.0"
+  },
+  "anthropicVersion": "2026-10-21",
+  "harnessCommit": "6bd7627ef5d60708ff0a0472c68b0f89852800fe",
+  "harnessDirty": false,
+  "cap": {
+    "usd": 100,
+    "ledger": "ledger.jsonl"
+  },
+  "pricing": {
+    "source": "claude-api skill reference, model table (USD per million tokens)",
+    "cachedOn": "2026-11-14"
+  },
+  "startedAt": "2026-11-18T08:59:51.513Z",
+  "requestCount": 7
+}

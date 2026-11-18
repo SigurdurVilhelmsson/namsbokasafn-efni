@@ -85,6 +85,7 @@ import {
   cleanTrackedProblems,
   filesAtCommitProblems,
   listingAtCommitProblems,
+  assertMainCheckout,
 } from './provenance.js';
 import { LAYER_DIRS, CHAPTER_DIR_RE } from '../lib/mt-layers.js';
 
@@ -111,7 +112,8 @@ export const CODE_PATHS = Object.freeze(['tools/ai-review', 'tools/api-translate
 
 const MODES = ['interactive', 'batch'];
 
-const refusal = (code, message) => Object.assign(new Error(`[${code}] ${message}`), { code });
+export const refusal = (code, message) =>
+  Object.assign(new Error(`[${code}] ${message}`), { code });
 
 function usage() {
   return [
@@ -189,7 +191,7 @@ function positiveInt(v, name) {
   return Number(v);
 }
 
-const isInside = (p, root) => {
+export const isInside = (p, root) => {
   const rel = path.relative(root, p);
   return !(rel === '..' || rel.startsWith(`..${path.sep}`) || path.isAbsolute(rel));
 };
@@ -200,7 +202,7 @@ const isInside = (p, root) => {
  * component that exists but resolves to nothing (a dangling or looping symlink) refuses,
  * because a write through a dangling link creates the link's target, wherever that is.
  */
-function landingPath(abs, name) {
+export function landingPath(abs, name) {
   const tail = [];
   let cur = abs;
   for (;;) {
@@ -351,7 +353,7 @@ export function estimateRequests(requests, { model, maxTokens }) {
 
 const round2 = (x) => Math.round(x * 100) / 100;
 
-const repoRel = (repoRoot, abs) => path.relative(repoRoot, abs).split(path.sep).join('/');
+export const repoRel = (repoRoot, abs) => path.relative(repoRoot, abs).split(path.sep).join('/');
 
 /**
  * The shapes of the input files a chapter's run reads, by directory: what decides the unit
@@ -519,33 +521,6 @@ async function cmdPlan(ctx, values) {
     ctx.out(`wrote ${out}\n`);
   }
   return { rows, totals };
-}
-
-/**
- * Refuse a paid run from a LINKED git worktree. The ledger the cap is enforced against lives
- * in the checkout (`<repoRoot>/books/<slug>/ai-review/ledger.jsonl`), so a linked worktree
- * holds a ledger of its own and with it a USD 100 of its own (the runner review, 2026-10-27).
- * The cap is therefore enforced per MAIN checkout: a repository whose git dir differs from
- * its common git dir is a linked worktree, and `run` refuses there. `plan` and `apply` spend
- * nothing and are not checked.
- */
-function assertMainCheckout(git) {
-  const [common, own] = git([
-    'rev-parse',
-    '--path-format=absolute',
-    '--git-common-dir',
-    '--absolute-git-dir',
-  ])
-    .split('\n')
-    .map((s) => s.trim());
-  if (!common || !own || fs.realpathSync(common) !== fs.realpathSync(own)) {
-    throw refusal(
-      'linked-worktree',
-      `this checkout is a linked git worktree (git dir ${own}, common git dir ${common}); ` +
-        'it keeps a ledger of its own, so the spending cap would not hold. Run paid passes ' +
-        'from the main checkout.'
-    );
-  }
 }
 
 function preflight(
