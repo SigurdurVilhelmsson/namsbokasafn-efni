@@ -948,3 +948,18 @@ ec5cd8a55 Merge pull request #676 from SigurdurVilhelmsson/docs/g123-pr3-build-r
 **Why:** —
 
 ---
+
+## 2026-11-18 10:23 - c19 pre-screen built, run and merged (#736, a681ab107): 212 of 1,546 glossary rows flagged; next is [USER]'s rulings on the review page
+
+**Branch:** docs/register-c19-merged-736
+**Modified:**
+ (clean)
+
+**Recent commits:**
+59120b0ac docs(register): c19 is merged (#736, a681ab107)
+a681ab107 Merge pull request #736 from SigurdurVilhelmsson/feat/c19-glossary-prescreen
+d401f63f2 auto-backup: 2026-11-18 10:00
+
+**Why:** Clean editor term warnings before editors open many chapters (10-10 plan 1.5); the controls proved the run could see wrong-sense rows (Fable 16/16, Opus 15/16). (Both answers written by Claude at [USER]'s request to prepare a new session.)
+
+---
