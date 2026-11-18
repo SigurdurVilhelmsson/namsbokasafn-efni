@@ -25,8 +25,12 @@
  *           its own requests). Refuses unless the named pilot, RE-JUDGED FROM ITS RECORDS, ran
  *           the same model and prompt, ended complete, its controls pass and its chemistry flag
  *           rate is not over PILOT_FLAG_STOP (--accept-pilot-flag-rate records the answer to
- *           that one stop); refuses a pilot that already has a full run (a second would buy
- *           every row again); refuses a population over POPULATION_STOP without
+ *           that one stop) or has unjudged chemistry rows (no override); refuses when an earlier
+ *           full run over the same census, prompt and model MAY HAVE SPENT (its batch.json state is
+ *           submitting or submitted; a rejected batch or a run killed before its reservation does
+ *           not count), unless --allow-second-run records the answer; after that, collect --resend
+ *           on the second full run refuses (naming both runs would merge duplicate answers) and
+ *           plain collect works; refuses a population over POPULATION_STOP without
  *           --accept-large-population; refuses when the largest batch's worst case would leave
  *           less than COST_MARGIN_USD of the cap free, and passes the cap less that margin to
  *           the harness so it binds on the real reservation too. Stops at the first batch that
@@ -40,8 +44,9 @@
  *           id into one verdict per population row (an id answered in two runs refuses), writes
  *           prescreen-verdicts.json and prescreen-report.md under RESULTS_DIR. With --resend the
  *           population rows still unjudged go once more, one per interactive request; it
- *           refuses first if the records directory holds a resend run of these rows that is not
- *           named (re-sent once means once over every run, not only the named ones). Each
+ *           refuses first if the records directory holds a full or resend run of these rows that
+ *           may have spent and is not named (re-sent once means once over every run, not only the
+ *           named ones). Each
  *           --pilot adds that pilot's cost to the report, never a verdict.
  *
  * Every command that builds items seeds them with the reduced census's sha256, so a re-plan gives
@@ -587,9 +592,34 @@ function scanPrescreenRuns(ctx, code) {
       runId: entry.name,
       prescreen,
       ended: fs.existsSync(path.join(dir, RECORD_FILES.runEnd)),
+      spent: mayHaveSpent(dir, prescreen.phase),
     });
   }
   return found.sort((a, b) => (a.runId < b.runId ? -1 : 1));
+}
+
+/**
+ * Whether a run may have bought rows, from its records alone. A batch run (a full run) may have
+ * when its batch.json state is `submitting` or `submitted` (the harness writes `submitting` BEFORE
+ * the submit and rewrites a definitive 4xx as `rejected`, which bought nothing); with no
+ * batch.json it never reached a submit. An interactive run (a resend) may have when its
+ * requests.jsonl holds at least one sent request. A batch.json that does not parse counts as
+ * spent (what it did cannot be told). Both the second-full-run lock and the must-be-named rule
+ * before a resend use this, so neither refuses over a run that cost nothing.
+ */
+function mayHaveSpent(dir, phase) {
+  const batchFile = path.join(dir, RECORD_FILES.batch);
+  if (fs.existsSync(batchFile)) {
+    try {
+      const state = JSON.parse(fs.readFileSync(batchFile, 'utf8'))?.state;
+      return state === 'submitting' || state === 'submitted';
+    } catch {
+      return true;
+    }
+  }
+  if (phase === 'full') return false;
+  const requests = path.join(dir, RECORD_FILES.requests);
+  return fs.existsSync(requests) && fs.readFileSync(requests, 'utf8').trim() !== '';
 }
 
 /** How to bring a run that has not ended to an end, by its mode (run.json). */
@@ -975,6 +1005,14 @@ function judgePilotRecord(ctx, runId, { model, prompt, acceptFlagRate = false })
       `pilot ${runId} judged no chemistry row (${chemistry.total} in it): it measured no flag rate`
     );
   }
+  if (chemistry.unjudged > 0) {
+    throw refusal(
+      'pilot',
+      `pilot ${runId} left ${chemistry.unjudged} of its ${chemistry.total} chemistry rows without ` +
+        'a verdict (spec §2: a row is never counted as fine because its answer is missing); run a ' +
+        'new pilot'
+    );
+  }
   if (overFlagStop(chemistry) && !acceptFlagRate) {
     throw refusal(
       'pilot',
@@ -1070,8 +1108,9 @@ async function cmdRun(ctx, values, deps) {
       `${overFlagStop(pilot.chemistry) ? ` (over ${PILOT_FLAG_STOP * 100}%; accepted with --accept-pilot-flag-rate)` : ''}\n`
   );
   // Spec §8 buys each row once: a second full run over the same census, prompt and model would
-  // buy every row again, whichever pilot it came from. Only a run that submitted a batch counts
-  // (one that stopped before submit bought nothing). --allow-second-run records [USER]'s answer.
+  // buy every row again, whichever pilot it came from. Only a run that may have spent counts
+  // (mayHaveSpent: a rejected or never-submitted batch bought nothing). --allow-second-run
+  // records [USER]'s answer.
   const allowSecond = values['allow-second-run'] === true;
   const earlier = scanPrescreenRuns(ctx, 'second-run')
     .filter(
@@ -1080,13 +1119,13 @@ async function cmdRun(ctx, values, deps) {
         x.prescreen.census?.sha256 === inputs.census.sha256 &&
         x.prescreen.prompt?.sha256 === inputs.prompt.sha256 &&
         x.prescreen.model === model &&
-        fs.existsSync(path.join(ctx.recordsDir, 'runs', x.runId, RECORD_FILES.batch))
+        x.spent
     )
     .map((x) => x.runId);
   if (earlier.length && !allowSecond) {
     throw refusal(
       'second-run',
-      `a full run over this census, prompt and model already submitted a batch ` +
+      `a full run over this census, prompt and model may already have bought its rows ` +
         `(${earlier.join(', ')}); running it again would buy every row again. Collect those ` +
         'runs (collect --resend sends their unjudged rows once); --allow-second-run records ' +
         'the answer that a second full run is wanted'
@@ -1436,14 +1475,15 @@ function loadPilotCost(ctx, runId) {
 }
 
 /**
- * Refuse a resend while the records directory holds a resend run of these rows that is not
- * named (spec §8: a row is re-sent ONCE, over every run, not only the named ones; without this,
- * repeating the same collect --resend --yes buys the rows the first one answered again). A
- * resend run counts when it is over the same census and could merge with these runs (the same
- * model, effort, max_tokens and prompt; naming any other one would be refused by checkRuns), and
- * it re-sent one of the named full runs (`resendOf`) or holds one of their items. Named runs have
- * already been checked to have ended; an unnamed one that has not ended refuses too, with how to
- * close it.
+ * Refuse a resend while the records directory holds a full or resend run of these rows that is
+ * not named (spec §8: a row is re-sent ONCE, over every run, not only the named ones; without
+ * this, repeating the same collect --resend --yes buys the rows the first one answered again). A
+ * run counts when it MAY HAVE SPENT (mayHaveSpent: a full run killed before its reservation, or
+ * whose batch was rejected, and a resend with no sent request cost nothing and need no naming),
+ * is over the same census and could merge with these runs (the same model, effort, max_tokens and
+ * prompt; naming any other one would be refused by checkRuns), and it is a full run or re-sent
+ * one of the named full runs (`resendOf`) or holds one of their items. Named runs have already
+ * been checked to have ended; an unnamed one that has not ended refuses too, with how to close it.
  */
 function assertResendsNamed(ctx, base, runs) {
   const named = new Set(runs.map((r) => r.runId));
@@ -1457,8 +1497,9 @@ function assertResendsNamed(ctx, base, runs) {
         (it) => base.byId.has(it?.id) && itemSig(base.byId.get(it.id)) === itemSig(it)
       ));
   const unnamed = scanPrescreenRuns(ctx, 'unnamed-run').filter(
-    ({ runId, prescreen: ps }) =>
+    ({ runId, prescreen: ps, spent }) =>
       !named.has(runId) &&
+      spent &&
       (ps.phase === 'resend' || ps.phase === 'full') &&
       ps.census?.sha256 === base.census.sha256 &&
       mergeable(ps) &&

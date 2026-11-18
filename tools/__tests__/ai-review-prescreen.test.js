@@ -828,6 +828,21 @@ describe('run', () => {
       ]).toEqual([1, 'pilot', 0, [pid], true]);
     });
 
+    it('refuses a pilot with an unjudged chemistry row, even with --accept-pilot-flag-rate (P29)', async () => {
+      const own = makeTempDir('ps-rec-');
+      const pid = await pilotIn(fx, own, { answer: answerer({ omit: new Set([picked[0]]) }) });
+      const { r, transport, errText } = await fullRun(fx, own, pid, {
+        args: ['--accept-pilot-flag-rate', '--yes'],
+      });
+      expect([
+        r.exitCode,
+        r.refusal,
+        transportCalls(transport),
+        runsIn(own),
+        /1 of its 24 chemistry rows without a verdict/.test(errText()),
+      ]).toEqual([1, 'pilot', 0, [pid], true]);
+    });
+
     describe('a pilot whose chemistry flag rate is over the stop line', () => {
       let own;
       let pid;
@@ -1090,6 +1105,46 @@ describe('run', () => {
     const pid2 = await pilotIn(fx, own);
     const second = await fullRun(fx, own, pid2);
     expect([second.r.exitCode, second.r.refusal]).toEqual([0, undefined]);
+  });
+
+  const setBatchState = (own, runId, state) => {
+    const file = path.join(own, 'runs', runId, 'batch.json');
+    const rec = JSON.parse(fs.readFileSync(file, 'utf8'));
+    fs.writeFileSync(file, JSON.stringify({ ...rec, state }));
+  };
+
+  it('a full run whose batch was rejected (bought nothing) does not lock a later one (P28)', async () => {
+    const own = makeTempDir('ps-rec-');
+    const pid = await pilotIn(fx, own);
+    const first = await fullRun(fx, own, pid);
+    setBatchState(own, first.r.runIds[0], 'rejected');
+    const pid2 = await pilotIn(fx, own);
+    const second = await fullRun(fx, own, pid2);
+    expect([second.r.exitCode, second.r.refusal]).toEqual([0, undefined]);
+  });
+
+  it('a full run in state submitting (it may have bought) does lock a later one (P28)', async () => {
+    const own = makeTempDir('ps-rec-');
+    const pid = await pilotIn(fx, own);
+    const first = await fullRun(fx, own, pid);
+    setBatchState(own, first.r.runIds[0], 'submitting');
+    const pid2 = await pilotIn(fx, own);
+    const second = await fullRun(fx, own, pid2);
+    expect([second.r.exitCode, second.r.refusal]).toEqual([1, 'second-run']);
+  });
+
+  it('collect --resend does not ask to name a full run killed before its reservation (P28)', async () => {
+    const own = makeTempDir('ps-rec-');
+    const pid = await pilotIn(fx, own);
+    const first = await fullRun(fx, own, pid);
+    const dead = first.r.runIds[0];
+    fs.rmSync(path.join(own, 'runs', dead, 'batch.json'));
+    fs.rmSync(path.join(own, 'runs', dead, 'run-end.json'));
+    const pid2 = await pilotIn(fx, own);
+    const second = await fullRun(fx, own, pid2);
+    const transport = mockTransport({ answer: answerer() });
+    const dry = await collect(fx, own, [second.r.runIds[0]], { args: ['--resend'], transport });
+    expect([dry.r.refusal, transportCalls(transport)]).toEqual([undefined, 0]);
   });
 
   it('the paid preflight refuses a dirty input with zero calls', async () => {
@@ -1597,6 +1652,28 @@ describe('collect', () => {
       });
     });
 
+    it('a resend run with an empty requests.jsonl needs no naming (P28)', async () => {
+      const own = makeTempDir('ps-rec-');
+      const pid = await pilotIn(fx, own);
+      const refusing = refusingTransport({
+        refuse: (rows) => rows.some((x) => x.en === 'qterm001'),
+      });
+      const full = await fullRun(fx, own, pid, { transport: refusing });
+      const fid = full.r.runIds[0];
+      const resend = await collect(fx, own, [fid], { args: ['--resend', '--yes'] });
+      const rid = resend.verdicts.runs[1];
+      const reqs = path.join(own, 'runs', rid, 'requests.jsonl');
+      const control = await collect(fx, own, [fid], { args: ['--resend'] });
+      fs.writeFileSync(reqs, '');
+      const transport = mockTransport({ answer: answerer() });
+      const empty = await collect(fx, own, [fid], { args: ['--resend'], transport });
+      expect([control.r.refusal, empty.r.refusal, transportCalls(transport)]).toEqual([
+        'unnamed-run',
+        undefined,
+        0,
+      ]);
+    });
+
     it('a split full run: naming one part refuses and names the other, with zero calls; naming both proceeds (P24)', async () => {
       const own = makeTempDir('ps-rec-');
       const pid = await pilotIn(fx, own);
@@ -1612,13 +1689,13 @@ describe('collect', () => {
         one: [one.r.exitCode, one.r.refusal, one.errText().includes(p2)],
         dry: [dry.r.exitCode, dry.r.refusal],
         callsAfterRefusals,
-        runsAfterRefusals: runsIn(own).length >= before.length,
+        runsAfterRefusals: runsIn(own).filter((x) => !before.includes(x)),
         both: both.r.refusal,
       }).toEqual({
         one: [1, 'unnamed-run', true],
         dry: [1, 'unnamed-run'],
         callsAfterRefusals: 0,
-        runsAfterRefusals: true,
+        runsAfterRefusals: [],
         both: undefined,
       });
     });
