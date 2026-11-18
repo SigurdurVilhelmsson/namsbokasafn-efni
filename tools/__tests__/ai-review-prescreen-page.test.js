@@ -23,24 +23,43 @@ const vrow = (id, verdict, extra = {}) => ({
 const crow = (id, matches) => ({
   english: `en-${id}`,
   icelandic: 'hvarfast',
+  domain: 'chemistry',
   alternatives: ['other'],
   ifRemoved: { text: 'next', domain: 'chemistry' },
   matchCount: matches.length,
   matches,
 });
 const seg = (n) => ({ chapter: 1, moduleId: 'm1', segmentId: `p:x:s${n}` });
+const PASS = {
+  pass: true,
+  results: [{ id: 'c1', name: 'atom', expected: 'fine', got: 'fine', ok: true }],
+};
+/** A verdicts document (c19-prescreen-verdicts/1) holding `population`. */
+const V = (population, controls = PASS) => ({
+  schema: 'c19-prescreen-verdicts/1',
+  controls,
+  population,
+});
+/** A private (full) census (c19-census/1) holding `rows`. */
+const C = (rows, extra = {}) => ({ schema: 'c19-census/1', rows, ...extra });
 
 describe('buildPageData', () => {
-  const verdicts = {
-    population: [
-      vrow('r1', 'fine'),
-      vrow('r2', 'flag', { proposed: ['bregðast'] }),
-      vrow('r3', 'unjudged'),
-    ],
-  };
-  const privateCensus = {
-    rows: [crow('r1', [seg(1)]), crow('r2', [seg(1), seg(2), seg(3)]), crow('r3', [])],
-  };
+  const verdicts = V(
+    [vrow('r1', 'fine'), vrow('r2', 'flag', { proposed: ['bregðast'] }), vrow('r3', 'unjudged')],
+    {
+      pass: false,
+      results: [
+        { id: 'c1', name: 'atom', expected: 'fine', got: 'fine', ok: true },
+        { id: 'c2', name: 'vessel', expected: 'flag', got: 'fine', ok: false },
+        { id: 'c3', name: 'rays', expected: 'flag', got: 'unjudged', ok: false },
+      ],
+    }
+  );
+  const privateCensus = C([
+    crow('r1', [seg(1)]),
+    crow('r2', [seg(1), seg(2), seg(3)]),
+    crow('r3', [seg(4)]),
+  ]);
   const texts = {
     s1: 'Efnið hvarfast við sýru.',
     s2: 'Ekkert hér.',
@@ -63,17 +82,62 @@ describe('buildPageData', () => {
     expect(data.instrumentNote).toMatch(/stem match/);
   });
   it('fails closed on a flagged row missing from the census', () => {
-    expect(() => buildPageData({ verdicts, privateCensus: { rows: [] }, mtTextFor })).toThrow(
+    expect(() => buildPageData({ verdicts, privateCensus: C([]), mtTextFor })).toThrow(
       /not in the census/
     );
+  });
+  it('gives each row its domain from the private census', () => {
+    expect(data.rows[0].domain).toBe('chemistry');
+  });
+  it('lists the unjudged rows as open, with their sentences and the private fields', () => {
+    expect(data.unjudged).toEqual([
+      {
+        id: 'r3',
+        english: 'en-r3',
+        icelandic: 'hvarfast',
+        domain: 'chemistry',
+        sentences: ['A sentence.'],
+        alternatives: ['other'],
+        ifRemoved: { text: 'next', domain: 'chemistry' },
+        matchCount: 1,
+      },
+    ]);
+  });
+  it('fails closed on an unjudged row missing from the census', () => {
+    const census = C([crow('r1', [seg(1)]), crow('r2', [seg(1)])]);
+    expect(() => buildPageData({ verdicts, privateCensus: census, mtTextFor })).toThrow(
+      /r3.*not in the census/
+    );
+  });
+  it('carries the control gate: pass, and each miss with what it got, not judged apart', () => {
+    expect(data.controls).toEqual({
+      pass: false,
+      total: 3,
+      misses: [
+        { id: 'c2', name: 'vessel', expected: 'flag', got: 'fine', outcome: 'missed' },
+        { id: 'c3', name: 'rays', expected: 'flag', got: 'unjudged', outcome: 'not judged' },
+      ],
+    });
+  });
+  it('refuses a reduced census: it has no alternatives or ifRemoved to show', () => {
+    const reduced = C(privateCensus.rows, { reduced: true });
+    expect(() => buildPageData({ verdicts, privateCensus: reduced, mtTextFor })).toThrow(/reduced/);
+  });
+  it('refuses a census of another schema', () => {
+    const other = { ...privateCensus, schema: 'c19-census/2' };
+    expect(() => buildPageData({ verdicts, privateCensus: other, mtTextFor })).toThrow(/schema/);
+  });
+  it('refuses verdicts of another schema', () => {
+    const other = { ...verdicts, schema: 'something/1' };
+    expect(() => buildPageData({ verdicts: other, privateCensus, mtTextFor })).toThrow(/schema/);
   });
 });
 
 describe('denominator and proposed-word notes', () => {
   const run = (v, matches, mt) =>
     buildPageData({
-      verdicts: { population: [v] },
-      privateCensus: { rows: [crow(v.id, matches)] },
+      verdicts: V([v]),
+      privateCensus: C([crow(v.id, matches)]),
       mtTextFor: (c, m, sid) => mt[sid.split(':')[2]] ?? null,
     }).rows[0];
   it('reports how many matching segments had MT text', () => {
@@ -81,9 +145,9 @@ describe('denominator and proposed-word notes', () => {
     expect(r.mt.segmentsWithMt).toBe(2);
   });
   it('says the counts are over segments with MT text', () => {
-    expect(
-      buildPageData({ verdicts: { population: [] }, privateCensus: { rows: [] } }).instrumentNote
-    ).toMatch(/WITH MT TEXT/);
+    expect(buildPageData({ verdicts: V([]), privateCensus: C([]) }).instrumentNote).toMatch(
+      /WITH MT TEXT/
+    );
   });
   it('notes a multiword proposed word as counted by its first word', () => {
     const r = run(vrow('d2', 'flag', { proposed: ['bregðast við', 'sundrast'] }), [seg(1)], {
@@ -158,10 +222,10 @@ describe('main path guards', () => {
   const verdictsAbs = path.join(resultsDir, 'prescreen-verdicts.json');
   fs.writeFileSync(
     verdictsAbs,
-    JSON.stringify({ population: [vrow('g1', 'flag', { proposed: ['bregðast'] })] })
+    JSON.stringify(V([vrow('g1', 'flag', { proposed: ['bregðast'] })]))
   );
   const census = path.join(priv, 'census.json');
-  fs.writeFileSync(census, JSON.stringify({ rows: [crow('g1', [seg(1)])] }));
+  fs.writeFileSync(census, JSON.stringify(C([crow('g1', [seg(1)])])));
   const verdictsRel = 'experiments/terminology-consistency/results/x/prescreen-verdicts.json';
   const deps = { repoRoot: repo, mtTextFor: () => 'hvarfast' };
   let n = 0;
@@ -241,5 +305,16 @@ describe('main path guards', () => {
   });
   it('refuses an unknown flag', () => {
     expect(run(['--bogus', '1']).code).toBe(1);
+  });
+  it('refuses a --census-private that is the reduced census, writing nothing', () => {
+    const reduced = path.join(priv, 'reduced.json');
+    fs.writeFileSync(reduced, JSON.stringify(C([crow('g1', [seg(1)])], { reduced: true })));
+    const o = ok({ 'census-private': reduced });
+    const r = run(argv(o));
+    expect([r.code, r.msg, fs.existsSync(o.out)]).toEqual([
+      1,
+      expect.stringMatching(/reduced/),
+      false,
+    ]);
   });
 });

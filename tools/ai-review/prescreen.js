@@ -23,7 +23,8 @@
  *           --include-physics-biology) and every control, through the Batch API, as --split
  *           sequential batches (one run each; every part's prescreen.json records EVERY item and
  *           its own requests). Refuses unless the named pilot, RE-JUDGED FROM ITS RECORDS, ran
- *           the same model and prompt, ended complete, its controls pass and its chemistry flag
+ *           the same model, prompt, census and ruling set (by sha256), recorded the same control
+ *           items as the run builds now, ended complete, its controls pass and its chemistry flag
  *           rate is not over PILOT_FLAG_STOP (--accept-pilot-flag-rate records the answer to
  *           that one stop) or has unjudged chemistry rows (no override); refuses when an earlier
  *           full run over the same census, prompt and model MAY HAVE SPENT (its batch.json state is
@@ -34,10 +35,13 @@
  *           --accept-large-population; refuses when the largest batch's worst case would leave
  *           less than COST_MARGIN_USD of the cap free, and passes the cap less that margin to
  *           the harness so it binds on the real reservation too. Stops at the first batch that
- *           does not end complete or leaves one of its population rows unjudged.
+ *           does not end complete or leaves one of its population rows unjudged. A batch whose
+ *           submit ends ambiguously (batch.json state submitting) refuses with the recovery to
+ *           follow (plan Task 9): no command here settles or releases its reservation.
  *   resume  PAID (it settles what was already bought). A full run's batch whose polling stopped:
  *           the harness resumes it and never resubmits; then the run is judged on its own
- *           population rows and on the controls ITS OWN requests presented. An interactive run
+ *           population rows and on the controls ITS OWN requests presented. A batch in state
+ *           submitting, or with no batch.json, refuses with that recovery. An interactive run
  *           (a pilot or a resend) killed before it ended: with --yes, closed as interrupted, its
  *           open reservations settled at their worst case, so collect can take it.
  *   collect 0 ISK, or PAID with --resend --yes. Merges the named full (and resend) runs by item
@@ -182,6 +186,28 @@ function guarded(code, fn) {
     throw refusal(code, err.message);
   }
 }
+
+/**
+ * `guarded` for an async `fn`: a plain error it rejects with becomes a refusal with `code`, its
+ * message passed through `say` (a refusal passes through unchanged).
+ */
+async function guardedAsync(code, fn, say = (m) => m) {
+  try {
+    return await fn();
+  } catch (err) {
+    if (isRefusal(err)) throw err;
+    throw refusal(code, say(err.message));
+  }
+}
+
+/**
+ * What to do when a batch's submit may have reached the API but no batch id was recorded
+ * (batch.json state `submitting`), or a reservation was left open with no batch.json.
+ */
+const SUBMIT_RECOVERY =
+  'check the Anthropic Console for the batch before anything else, then follow the recovery ' +
+  'for a batch interrupted around its submit (plan Task 9, ' +
+  'docs/superpowers/plans/2026-11-17-c19-glossary-prescreen.md); never edit the ledger by hand';
 
 const sha256 = (bytes) => crypto.createHash('sha256').update(bytes).digest('hex');
 const isPlainObject = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
@@ -641,8 +667,8 @@ function remedyFor(status, runId) {
   const remedies = {
     pending: `resume with: node tools/ai-review/prescreen.js resume --run ${runId}`,
     'submit-unknown':
-      'the batch may exist: check the Anthropic Console before anything else; its reservation ' +
-      'stays open in the ledger (batch.json names it)',
+      'the batch may exist and its reservation stays open in the ledger (batch.json names it): ' +
+      SUBMIT_RECOVERY,
     'submit-failed': 'the API refused the batch; its reservation was released',
     'stopped-at-cap': 'the spending cap refused the reservation (see the ledger line)',
     'stopped-on-errors': "API errors stopped it (see the run's errors.jsonl)",
@@ -948,17 +974,26 @@ function openPrescreenRun(ctx, runId, code) {
   return { r, prescreen };
 }
 
+/** Control items keyed by name, each by itemSig (what identifies it, ids aside). */
+const controlSigs = (items) =>
+  new Map(items.filter((it) => it.kind === 'control').map((it) => [String(it.name), itemSig(it)]));
+
 /**
  * Decide that the named pilot passed by RE-JUDGING it from its records (its prescreen.json,
- * responses.jsonl and run-end.json), never from anything printed: phase pilot, the same model
- * and prompt sha256 as this run, ended complete (always: an incomplete pilot measured less than it
- * was asked), every control as expected, and its chemistry flag rate not over PILOT_FLAG_STOP
- * unless `acceptFlagRate` (the --accept-pilot-flag-rate answer). A pilot with no judged chemistry
- * row has no rate to accept, so it always refuses.
+ * responses.jsonl and run-end.json), never from anything printed: phase pilot, the same model,
+ * prompt, census and ruling set (by sha256) as this run, the same control items as this run
+ * builds now (compared by name: a change to the code or the English segments that draw them
+ * means the pilot did not measure what the run sends), ended complete (always: an incomplete
+ * pilot measured less than it was asked), every control as expected, and its chemistry flag rate
+ * not over PILOT_FLAG_STOP unless `acceptFlagRate` (the --accept-pilot-flag-rate answer). A pilot
+ * with no judged chemistry row has no rate to accept, so it always refuses.
+ * @param {{ model: string, inputs: object, controls: object[], acceptFlagRate?: boolean }} opts
+ *   `inputs` as loadInputs gives them; `controls` as buildControls gives them for this run
  * @returns {{ runId: string, passed: number, maxOutputTokens: number|null,
  *   chemistry: { total: number, judged: number, flagged: number, unjudged: number } }}
  */
-function judgePilotRecord(ctx, runId, { model, prompt, acceptFlagRate = false }) {
+function judgePilotRecord(ctx, runId, { model, inputs, controls, acceptFlagRate = false }) {
+  const { prompt } = inputs;
   const { r, prescreen } = openPrescreenRun(ctx, runId, 'pilot');
   if (prescreen.phase !== 'pilot')
     throw refusal('pilot', `run ${runId} is a ${prescreen.phase} run, not a pilot`);
@@ -974,6 +1009,35 @@ function judgePilotRecord(ctx, runId, { model, prompt, acceptFlagRate = false })
       'pilot',
       `pilot ${runId} ran the prompt with sha256 ${prescreen.prompt?.sha256}; it is now ` +
         `${prompt.sha256}. A revised prompt needs a new pilot (spec §6)`
+    );
+  }
+  if (prescreen.census?.sha256 !== inputs.census.sha256) {
+    throw refusal(
+      'pilot',
+      `pilot ${runId} drew its items from the census ${prescreen.census?.path} (sha256 ` +
+        `${prescreen.census?.sha256}); this run's census is ${inputs.census.path} (sha256 ` +
+        `${inputs.census.sha256}). The census is the seed, so the pilot never measured the ` +
+        'controls and rows this run would send; run a new pilot'
+    );
+  }
+  if (prescreen.rulingSet?.sha256 !== inputs.rulingSet.sha256) {
+    throw refusal(
+      'pilot',
+      `pilot ${runId} ran against the ruling set with sha256 ${prescreen.rulingSet?.sha256}; it ` +
+        `is now ${inputs.rulingSet.sha256}. The ruling set decides the population; run a new pilot`
+    );
+  }
+  const theirs = controlSigs(Array.isArray(prescreen.items) ? prescreen.items : []);
+  const ours = controlSigs(controls.map((c) => ({ ...c, kind: 'control' })));
+  const drifted = [...new Set([...theirs.keys(), ...ours.keys()])]
+    .filter((name) => theirs.get(name) !== ours.get(name))
+    .sort();
+  if (drifted.length) {
+    throw refusal(
+      'pilot',
+      `pilot ${runId}'s control items differ from the ones this run builds now ` +
+        `(${drifted.join(', ')}): the code or the English segments that draw them changed since ` +
+        'the pilot, so it did not measure what this run would send; run a new pilot'
     );
   }
   const read = guarded('pilot', () =>
@@ -1096,11 +1160,7 @@ async function cmdRun(ctx, values, deps) {
         'ask first; --accept-large-population records the answer'
     );
   }
-  const pilot = judgePilotRecord(ctx, pilotIds[0], {
-    model,
-    prompt: inputs.prompt,
-    acceptFlagRate,
-  });
+  const pilot = judgePilotRecord(ctx, pilotIds[0], { model, inputs, controls, acceptFlagRate });
   ctx.out(
     `pilot ${pilot.runId} re-judged from its records: ${model}, prompt ${inputs.prompt.sha256}, ` +
       `ended complete, controls PASS (${pilot.passed} of ${pilot.passed}), chemistry rows ` +
@@ -1237,14 +1297,22 @@ async function cmdRun(ctx, values, deps) {
         split: { part: k + 1, of: parts.length },
       },
     });
-    const result = await runBatch({
-      ...harnessOptions(ctx, deps, { inputs, model, effort: DEFAULT_EFFORT, maxTokens, runId }),
-      ...pollOptions(deps),
-      // Spec §6: the margin binds on the harness's real reservation, not only on the estimate.
-      cap: CAP_USD - COST_MARGIN_USD,
-      requests: parts[k].map(({ key, body }) => ({ key, body })),
-      extraRecords: [{ name: PRESCREEN_RECORD, payload }],
-    });
+    const earlierParts = runIds.length ? ` (earlier batches: ${runIds.join(', ')})` : '';
+    const result = await guardedAsync(
+      'bad-run',
+      () =>
+        runBatch({
+          ...harnessOptions(ctx, deps, { inputs, model, effort: DEFAULT_EFFORT, maxTokens, runId }),
+          ...pollOptions(deps),
+          // Spec §6: the margin binds on the harness's real reservation, not only on the estimate.
+          cap: CAP_USD - COST_MARGIN_USD,
+          requests: parts[k].map(({ key, body }) => ({ key, body })),
+          extraRecords: [{ name: PRESCREEN_RECORD, payload }],
+        }),
+      (msg) =>
+        `batch ${k + 1} of ${parts.length}, run ${runId}: ${msg}. Its batch.json and reservation ` +
+        `stay as they are: ${SUBMIT_RECOVERY}${unsent}${earlierParts}`
+    );
     runIds.push(runId);
     statuses.push(result.status);
     const usd = result.totalUsd !== undefined ? `, USD ${result.totalUsd}` : '';
@@ -1374,19 +1442,28 @@ async function cmdResume(ctx, values, deps) {
   if (!agree)
     throw refusal('bad-run', `run ${runId}: run.json and ${PRESCREEN_RECORD} disagree; refusing`);
   assertMainCheckout(ctx.git);
-  const result = await runBatch({
-    recordsDir: ctx.recordsDir,
-    use: USE,
-    model: run.model,
-    effort: run.effort,
-    maxTokens: run.max_tokens,
-    prompts: run.prompts,
-    rulingSet: run.rulingSet,
-    runId,
-    now: ctx.now,
-    ...transportOptions(deps),
-    ...pollOptions(deps),
-  });
+  const result = await guardedAsync(
+    'bad-run',
+    () =>
+      runBatch({
+        recordsDir: ctx.recordsDir,
+        use: USE,
+        model: run.model,
+        effort: run.effort,
+        maxTokens: run.max_tokens,
+        prompts: run.prompts,
+        rulingSet: run.rulingSet,
+        runId,
+        now: ctx.now,
+        ...transportOptions(deps),
+        ...pollOptions(deps),
+      }),
+    (msg) =>
+      `run ${runId}: ${msg}${
+        r.exists(RECORD_FILES.batch) ? '' : ' (no batch.json: the batch was never submitted)'
+      }. If its batch.json says submitting, or its reservation is open with no batch.json: ` +
+      SUBMIT_RECOVERY
+  );
   const usd = result.totalUsd !== undefined ? `, USD ${result.totalUsd}` : '';
   ctx.out(
     `run ${runId} ${result.status}${usd}${result.counts ? ` ${JSON.stringify(result.counts)}` : ''}\n`

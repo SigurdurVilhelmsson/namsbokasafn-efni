@@ -1220,6 +1220,204 @@ describe('run', () => {
   });
 });
 
+describe('run refuses a pilot that did not measure what the run would send', () => {
+  /** A fresh fixture with a pilot; `change(fx)` then edits and commits the tree. */
+  async function afterChange(change) {
+    const fx = makeFixture();
+    const own = makeTempDir('ps-rec-');
+    const pid = await pilotIn(fx, own);
+    change(fx);
+    fx.sh(['add', '.']);
+    fx.sh(['commit', '-q', '-m', 'changed after the pilot']);
+    return { fx, own, pid };
+  }
+
+  it('refuses a pilot drawn from another census (the seed), with zero calls', async () => {
+    const other = 'experiments/terminology-consistency/results/2026-11-17/census-again.json';
+    const { fx, own, pid } = await afterChange((f) => {
+      const bytes = fs.readFileSync(path.join(f.root, CENSUS_REL));
+      fs.writeFileSync(path.join(f.root, other), Buffer.concat([bytes, Buffer.from('\n')]));
+    });
+    const t = mockTransport({ answer: answerer() });
+    const h = harnessDeps(fx, { recordsDir: own, transport: t, ...NO_SLEEP });
+    const argv = ['run', '--census', other, '--model', 'claude-opus-5-5', '--pilot', pid, '--yes'];
+    const r = await main(argv, h.deps);
+    expect([
+      r.exitCode,
+      r.refusal,
+      transportCalls(t),
+      /census.*run a new pilot/.test(h.errText()),
+    ]).toEqual([1, 'pilot', 0, true]);
+  });
+
+  it('refuses a pilot that ran against another ruling set, with zero calls', async () => {
+    const { fx, own, pid } = await afterChange((f) => {
+      const file = path.join(f.root, DEFAULT_RULING_SET);
+      fs.writeFileSync(file, `${fs.readFileSync(file, 'utf8')}\n`);
+    });
+    const { r, transport, errText } = await fullRun(fx, own, pid);
+    expect([
+      r.exitCode,
+      r.refusal,
+      transportCalls(transport),
+      /ruling set.*run a new pilot/.test(errText()),
+    ]).toEqual([1, 'pilot', 0, true]);
+  });
+
+  it('refuses when a control item the run builds now differs from the pilot’s, naming it', async () => {
+    const { fx, own, pid } = await afterChange((f) => {
+      const file = path.join(f.book, '02-for-mt', 'ch03', 'm90003-segments.en.md');
+      const text = fs.readFileSync(file, 'utf8');
+      fs.writeFileSync(file, text.replace('says balanced here.', 'says balanced there.'));
+    });
+    const { r, transport, errText } = await fullRun(fx, own, pid);
+    expect([
+      r.exitCode,
+      r.refusal,
+      transportCalls(transport),
+      /control items differ.*balanced.*run a new pilot/.test(errText()),
+    ]).toEqual([1, 'pilot', 0, true]);
+  });
+});
+
+/**
+ * The recovery for a batch interrupted around its submit, rehearsed with the commands plan Task 9
+ * gives (verbatim: keep the two in step). Each is run as an operator would, from the repository.
+ */
+const SET_BATCH_STATE = `
+import fs from 'node:fs';
+const [file, state, batchId] = process.argv.slice(1);
+const rec = JSON.parse(fs.readFileSync(file, 'utf8'));
+if (rec.state !== 'submitting') throw new Error('batch.json is ' + rec.state + ', not submitting');
+if (state !== 'submitted' && state !== 'rejected') throw new Error('state: submitted or rejected');
+if (state === 'submitted' && !/^msgbatch_/.test(batchId ?? '')) throw new Error('name the batch id');
+const next = state === 'submitted'
+  ? { ...rec, state, batchId, submittedAt: new Date().toISOString(), recoveredByHand: true }
+  : { ...rec, state, recoveredByHand: true };
+fs.writeFileSync(file, JSON.stringify(next, null, 2) + '\\n');
+console.log('batch.json', rec.state, '->', state);
+`;
+const RELEASE_RUN = `
+import { readLedger, summarizeLedger, releaseAll } from './tools/ai-review/ledger.js';
+const [ledgerPath, runId] = process.argv.slice(1);
+for (const [id, r] of summarizeLedger(readLedger(ledgerPath)).reservations) {
+  if (r.runId !== runId || r.released || r.openUsd === 0) continue;
+  releaseAll({ ledgerPath, id });
+  console.log('released', id, 'USD', r.openUsd);
+}
+`;
+const operator = (script, args) =>
+  execFileSync('node', ['--input-type=module', '-e', script, ...args], {
+    cwd: REPO,
+    encoding: 'utf8',
+  });
+
+describe('a batch interrupted around its submit', () => {
+  let fx;
+  beforeAll(() => {
+    fx = makeFixture();
+  });
+
+  /** The submit reaches the API (the batch exists), but its answer is lost on the way back. */
+  function lostSubmit({ noId = false } = {}) {
+    const base = mockTransport({ answer: answerer() });
+    return {
+      ...base,
+      async submitBatch(requests) {
+        await base.submitBatch(requests);
+        if (noId) return { processing_status: 'in_progress' };
+        throw new Error('socket hang up'); // no status: the batch may exist
+      },
+    };
+  }
+  const batchFile = (own, runId) => path.join(own, 'runs', runId, 'batch.json');
+  const openUsd = (own) => summarizeLedger(readLedger(ledgerOf(own))).openUsd;
+
+  /** A full run left in batch.json state submitting, its reservation open. */
+  async function interrupted() {
+    const own = makeTempDir('ps-rec-');
+    const pid = await pilotIn(fx, own);
+    const transport = lostSubmit();
+    const started = await fullRun(fx, own, pid, { transport });
+    return { own, pid, transport, runId: started.r.runIds[0], started };
+  }
+
+  it('leaves state submitting with the reservation open, and run says to check the Console', async () => {
+    const { own, runId, started } = await interrupted();
+    expect([
+      started.r.exitCode,
+      recordOf(own, runId, 'batch.json').state,
+      fs.existsSync(path.join(own, 'runs', runId, 'run-end.json')),
+      openUsdOf(own, runId) > 0,
+      /Anthropic Console/.test(started.text()),
+    ]).toEqual([2, 'submitting', false, true, true]);
+  });
+
+  it('resume refuses with exit 1 and the remedy, not a stack trace', async () => {
+    const { own, runId, transport } = await interrupted();
+    const h = harnessDeps(fx, { recordsDir: own, transport, ...NO_SLEEP });
+    const r = await main(['resume', '--run', runId], h.deps);
+    expect([r.exitCode, r.refusal, /Anthropic Console/.test(h.errText())]).toEqual([
+      1,
+      'bad-run',
+      true,
+    ]);
+  });
+
+  it('a submit that returns no batch id refuses with exit 1, naming the run', async () => {
+    const own = makeTempDir('ps-rec-');
+    const pid = await pilotIn(fx, own);
+    const { r, errText } = await fullRun(fx, own, pid, { transport: lostSubmit({ noId: true }) });
+    const [runId] = runsIn(own).filter((id) => id !== pid);
+    expect([r.exitCode, r.refusal, errText().includes(runId), /Task 9/.test(errText())]).toEqual([
+      1,
+      'bad-run',
+      true,
+      true,
+    ]);
+  });
+
+  it('batch in the Console: recorded as submitted, resume and collect proceed, nothing left open', async () => {
+    const { own, runId, transport } = await interrupted();
+    operator(SET_BATCH_STATE, [batchFile(own, runId), 'submitted', 'msgbatch_test']);
+    const h = harnessDeps(fx, { recordsDir: own, transport, ...NO_SLEEP });
+    const resumed = await main(['resume', '--run', runId], h.deps);
+    const collected = await collect(fx, own, [runId]);
+    expect([
+      resumed.exitCode,
+      recordOf(own, runId, 'run-end.json').status,
+      transport.calls.submitBatch,
+      collected.r.exitCode,
+      openUsd(own),
+    ]).toEqual([0, 'complete', 1, 0, 0]);
+  });
+
+  it('no batch in the Console: released and marked rejected, a new run proceeds, nothing left open', async () => {
+    const { own, pid, runId } = await interrupted();
+    operator(RELEASE_RUN, [ledgerOf(own), runId]);
+    operator(SET_BATCH_STATE, [batchFile(own, runId), 'rejected']);
+    const afterRelease = openUsd(own);
+    const again = await fullRun(fx, own, pid);
+    const collected = await collect(fx, own, again.r.runIds);
+    expect([afterRelease, again.r.exitCode, collected.r.exitCode, openUsd(own)]).toEqual([
+      0, 0, 0, 0,
+    ]);
+  });
+
+  it('a reservation left open with no batch.json: released by run id, a new run proceeds', async () => {
+    const { own, pid, runId, transport } = await interrupted();
+    fs.rmSync(batchFile(own, runId)); // killed after the reservation, before batch.json
+    const h = harnessDeps(fx, { recordsDir: own, transport, ...NO_SLEEP });
+    const resumed = await main(['resume', '--run', runId], h.deps);
+    const before = openUsd(own);
+    operator(RELEASE_RUN, [ledgerOf(own), runId]);
+    const again = await fullRun(fx, own, pid);
+    expect([resumed.exitCode, resumed.refusal, before > 0, again.r.exitCode, openUsd(own)]).toEqual(
+      [1, 'bad-run', true, 0, 0]
+    );
+  });
+});
+
 describe('resume', () => {
   let fx;
   let recordsDir;

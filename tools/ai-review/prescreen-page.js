@@ -1,10 +1,11 @@
 /**
  * prescreen-page.js — the data behind the PRIVATE review page for the c19 glossary pre-screen
- * (spec §8). It joins the committed verdicts' flagged rows to the private census (which holds
- * what the repository must not: the concept's other terms and what the editor would show if the
- * row were removed) and counts, in the pure MT layer, how often the current and each proposed
- * Icelandic word actually appears. The output is written OUTSIDE the repository. A later step
- * renders the HTML. No import from server/ (the MIT to AGPL boundary).
+ * (spec §8). It joins the committed verdicts' flagged and unjudged rows to the private full
+ * census (which holds what the repository must not: the concept's other terms and what the editor
+ * would show if the row were removed), carries the control gate with each miss, and counts, in
+ * the pure MT layer, how often the current and each proposed Icelandic word of a flagged row
+ * actually appears. The output is written OUTSIDE the repository. A later step renders the HTML.
+ * No import from server/ (the MIT to AGPL boundary).
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -14,6 +15,8 @@ import { REPO_ROOT } from './config.js';
 import { landingPath, isInside, refusal } from './term-pass.js';
 import { icelandicStem, stemPattern } from '../compute-glossary-subset.js';
 import { parseLayerFile } from '../lib/mt-layers.js';
+import { VERDICTS_SCHEMA } from './prescreen-collect.js';
+import { CENSUS_SCHEMA } from './prescreen-population.js';
 
 const BOOK = 'efnafraedi-2e';
 const VERDICTS_DIR = 'experiments/terminology-consistency/results';
@@ -38,18 +41,78 @@ function countStem(word, texts) {
 }
 
 /**
- * @param {{ verdicts: object, privateCensus: {rows: object[]},
+ * Refuse inputs the page cannot be built from honestly: verdicts or a census of another schema,
+ * or a REDUCED census (its rows carry no `alternatives` or `ifRemoved`, so the page would
+ * silently lose what the person ruling needs to see).
+ */
+function checkInputs(verdicts, privateCensus) {
+  if (verdicts?.schema !== VERDICTS_SCHEMA)
+    throw new Error(
+      `the verdicts' schema is ${JSON.stringify(verdicts?.schema)}, not ${VERDICTS_SCHEMA}`
+    );
+  if (!Array.isArray(verdicts.population) || !Array.isArray(verdicts.controls?.results))
+    throw new Error('the verdicts hold no population or no control results');
+  if (privateCensus?.schema !== CENSUS_SCHEMA)
+    throw new Error(
+      `the census's schema is ${JSON.stringify(privateCensus?.schema)}, not ${CENSUS_SCHEMA}`
+    );
+  if (privateCensus.reduced === true)
+    throw new Error(
+      'the census is the reduced (committed) one: it has no alternatives or ifRemoved; pass the ' +
+        'private full census'
+    );
+  if (!Array.isArray(privateCensus.rows)) throw new Error('the census has no rows array');
+}
+
+/**
+ * The page's data (spec §8): the flagged rows with their evidence, the unjudged rows as open
+ * (never fine), and the control gate with each miss, a control that got no answer marked
+ * `not judged` apart from one answered wrongly.
+ * @param {{ verdicts: object, privateCensus: {schema: string, rows: object[]},
  *   mtTextFor: (chapter: number, moduleId: string, segmentId: string) => string|null }} args
  */
 export function buildPageData({ verdicts, privateCensus, mtTextFor }) {
+  checkInputs(verdicts, privateCensus);
   const byPair = new Map(privateCensus.rows.map((r) => [`${r.english}\0${r.icelandic}`, r]));
+  const censusRow = (v, what) => {
+    const c = byPair.get(`${v.english}\0${v.icelandic}`);
+    if (!c)
+      throw new Error(`${what} row ${v.id} (${v.english} / ${v.icelandic}) is not in the census`);
+    return c;
+  };
+  const unjudged = verdicts.population
+    .filter((r) => r.verdict === 'unjudged')
+    .map((v) => {
+      const c = censusRow(v, 'unjudged');
+      return {
+        id: v.id,
+        english: v.english,
+        icelandic: v.icelandic,
+        domain: c.domain,
+        sentences: v.sentences,
+        alternatives: c.alternatives,
+        ifRemoved: c.ifRemoved,
+        matchCount: c.matchCount,
+      };
+    });
+  const { results } = verdicts.controls;
+  const controls = {
+    pass: verdicts.controls.pass === true,
+    total: results.length,
+    misses: results
+      .filter((c) => !c.ok)
+      .map((c) => ({
+        id: c.id,
+        name: c.name,
+        expected: c.expected,
+        got: c.got,
+        outcome: c.got === 'unjudged' ? 'not judged' : 'missed',
+      })),
+  };
   const rows = verdicts.population
     .filter((r) => r.verdict === 'flag')
     .map((v) => {
-      const c = byPair.get(`${v.english}\0${v.icelandic}`);
-      if (!c) {
-        throw new Error(`flagged row ${v.id} (${v.english} / ${v.icelandic}) is not in the census`);
-      }
+      const c = censusRow(v, 'flagged');
       const texts = c.matches
         .map((m) => mtTextFor(m.chapter, m.moduleId, m.segmentId))
         .filter((t) => typeof t === 'string');
@@ -61,6 +124,7 @@ export function buildPageData({ verdicts, privateCensus, mtTextFor }) {
         id: v.id,
         english: v.english,
         icelandic: v.icelandic,
+        domain: c.domain,
         kind: v.kind,
         reason: v.reason,
         proposed: words,
@@ -82,7 +146,13 @@ export function buildPageData({ verdicts, privateCensus, mtTextFor }) {
         },
       };
     });
-  return { generated: new Date().toISOString(), instrumentNote: INSTRUMENT_NOTE, rows };
+  return {
+    generated: new Date().toISOString(),
+    instrumentNote: INSTRUMENT_NOTE,
+    controls,
+    rows,
+    unjudged,
+  };
 }
 
 /** The real reader: one segment's body from the pure MT layer, or null when absent. */
@@ -145,7 +215,11 @@ export function main(argv, deps = {}) {
     const data = buildPageData({ verdicts, privateCensus, mtTextFor });
     fs.mkdirSync(path.dirname(values.out), { recursive: true });
     fs.writeFileSync(values.out, `${JSON.stringify(data, null, 2)}\n`);
-    console.log(`wrote ${data.rows.length} flagged rows to ${values.out}`);
+    console.log(
+      `wrote ${data.rows.length} flagged rows and ${data.unjudged.length} unjudged rows (open) ` +
+        `to ${values.out}; controls ${data.controls.pass ? 'PASS' : 'FAIL'}` +
+        `${data.controls.misses.length ? ` (${data.controls.misses.length} not as expected)` : ''}`
+    );
     return 0;
   } catch (err) {
     console.error(err.message);
