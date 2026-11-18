@@ -112,7 +112,8 @@ export const CODE_PATHS = Object.freeze(['tools/ai-review', 'tools/api-translate
 
 const MODES = ['interactive', 'batch'];
 
-const refusal = (code, message) => Object.assign(new Error(`[${code}] ${message}`), { code });
+export const refusal = (code, message) =>
+  Object.assign(new Error(`[${code}] ${message}`), { code });
 
 function usage() {
   return [
@@ -190,7 +191,7 @@ function positiveInt(v, name) {
   return Number(v);
 }
 
-const isInside = (p, root) => {
+export const isInside = (p, root) => {
   const rel = path.relative(root, p);
   return !(rel === '..' || rel.startsWith(`..${path.sep}`) || path.isAbsolute(rel));
 };
@@ -201,7 +202,7 @@ const isInside = (p, root) => {
  * component that exists but resolves to nothing (a dangling or looping symlink) refuses,
  * because a write through a dangling link creates the link's target, wherever that is.
  */
-function landingPath(abs, name) {
+export function landingPath(abs, name) {
   const tail = [];
   let cur = abs;
   for (;;) {
@@ -352,7 +353,7 @@ export function estimateRequests(requests, { model, maxTokens }) {
 
 const round2 = (x) => Math.round(x * 100) / 100;
 
-const repoRel = (repoRoot, abs) => path.relative(repoRoot, abs).split(path.sep).join('/');
+export const repoRel = (repoRoot, abs) => path.relative(repoRoot, abs).split(path.sep).join('/');
 
 /**
  * The shapes of the input files a chapter's run reads, by directory: what decides the unit

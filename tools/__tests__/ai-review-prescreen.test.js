@@ -334,6 +334,35 @@ describe('reduce', () => {
     expect([r.exitCode, r.refusal]).toEqual([1, 'bad-flag']);
   });
 
+  it('refuses a modified export with exit 1 and writes nothing (spec §8)', async () => {
+    const real = makeGit({ cwd: fx.root });
+    const git = (args) =>
+      args[0] === 'status' ? ' M books/efnafraedi-2e/glossary/glossary-unified.json\0' : real(args);
+    const h = harnessDeps(fx, { git });
+    const out = 'experiments/terminology-consistency/results/2026-11-19/census.json';
+    const r = await main(['reduce', '--census-full', fx.fullPath, '--out', out], h.deps);
+    expect([r.exitCode, r.refusal, fs.existsSync(path.join(fx.root, out))]).toEqual([
+      1,
+      'preflight',
+      false,
+    ]);
+  });
+
+  it('records the sha256 of the export and the ruling set it reduced against', async () => {
+    await reduce(fx.fullPath);
+    const written = JSON.parse(fs.readFileSync(path.join(fx.root, OUT), 'utf8'));
+    const sha = (rel) =>
+      crypto
+        .createHash('sha256')
+        .update(fs.readFileSync(path.join(fx.root, rel)))
+        .digest('hex');
+    const exportRel = 'books/efnafraedi-2e/glossary/glossary-unified.json';
+    expect([written.exportSource, written.rulingSetSource]).toEqual([
+      { path: exportRel, sha256: sha(exportRel) },
+      { path: DEFAULT_RULING_SET, sha256: RULING_SET.sha256 },
+    ]);
+  });
+
   it('writes the reduced census: published rows only, private fields and dbPath gone', async () => {
     const { r } = await reduce(fx.fullPath);
     const written = JSON.parse(fs.readFileSync(path.join(fx.root, OUT), 'utf8'));
@@ -467,6 +496,17 @@ describe('pilot', () => {
     ]);
   });
 
+  it('the paid preflight refuses a dirty input with zero transport calls', async () => {
+    const real = makeGit({ cwd: fx.root });
+    const git = (args) => (args[0] === 'status' ? ` M ${CENSUS_REL}\0` : real(args));
+    const { r, transport } = await pilot(passing(), ['--yes'], { git });
+    expect([r.exitCode, r.refusal, transport.calls.countTokens + transport.calls.send]).toEqual([
+      1,
+      'preflight',
+      0,
+    ]);
+  });
+
   describe('--yes with every control answered as expected', () => {
     let res;
     let record;
@@ -497,6 +537,28 @@ describe('pilot', () => {
         model: 'claude-opus-5-5',
         kinds: { control: 16, population: 24, physicsBiology: 15 },
       });
+    });
+
+    it('records maxTokens and the population exclusion counts for resume and collect', () => {
+      expect([record.prescreen.maxTokens, record.prescreen.excluded]).toEqual([
+        16000,
+        {
+          ruled: 1,
+          fallback: 2,
+          tie: 3,
+          decided: 4,
+          physicsBiology: 16,
+          notInExport: 5,
+          noSentence: 6,
+          physicsBiologyNoSentence: 7,
+        },
+      ]);
+    });
+
+    it('records the sampling rule for all three sentence paths', () => {
+      expect(Object.keys(record.prescreen.sampling).sort()).toEqual(
+        ['controls', 'homographs', 'itemOrder', 'pick', 'population', 'seed'].sort()
+      );
     });
 
     it('takes the pilot rows by pickEvenly', () => {

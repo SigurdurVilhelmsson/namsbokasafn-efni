@@ -53,6 +53,10 @@ import {
   DEFAULT_RULING_SET,
   CODE_PATHS as TERM_PASS_CODE_PATHS,
   estimateRequests,
+  refusal,
+  isInside,
+  landingPath,
+  repoRel,
 } from './term-pass.js';
 import { loadPrompt } from './term-pass-request.js';
 import {
@@ -95,9 +99,16 @@ export const CODE_PATHS = TERM_PASS_CODE_PATHS;
 /** How the items were drawn (spec §7: prescreen.json holds the sampling rule). */
 const SAMPLING = Object.freeze({
   seed: 'the reduced census file sha256 (census.sha256)',
-  sentences:
-    'up to 5 per row from the matching segments of 02-for-mt, one chapter at a time in chapter ' +
-    'order, each chapter ordered by sha256(seed NUL segmentId) (prescreen-population.js sampleSentences)',
+  population:
+    "up to 5 sentences per row from the row's census matches in 02-for-mt: round-robin across " +
+    'chapters in chapter order (one sentence per chapter per round), each chapter ordered by ' +
+    'sha256(seed NUL segmentId) (prescreen-population.js sampleSentences)',
+  controls:
+    'positive and negative controls: up to 5 sentences from a whole-word search of the headword ' +
+    'over the English of 02-for-mt, sampled the same way as population rows (sentencesFor)',
+  homographs:
+    'the two addition halves: not sampled; the sentence of each of the five named segment ids ' +
+    'per half (spec §5; prescreen-population.js CONTROLS.homograph)',
   itemOrder:
     'sha256(seed NUL english NUL icelandic NUL control name); the two homograph rows kept at ' +
     'least 8 apart (prescreen-population.js assembleItems)',
@@ -108,7 +119,6 @@ const PILOT_PICK = Object.freeze({
   rule: 'pickEvenly: spread evenly over the rows sorted by match count, then English',
 });
 
-const refusal = (code, message) => Object.assign(new Error(`[${code}] ${message}`), { code });
 const isRefusal = (err) =>
   typeof err?.code === 'string' && String(err.message).startsWith(`[${err.code}]`);
 
@@ -124,11 +134,6 @@ function guarded(code, fn) {
 
 const sha256 = (bytes) => crypto.createHash('sha256').update(bytes).digest('hex');
 const isPlainObject = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
-const repoRel = (repoRoot, abs) => path.relative(repoRoot, abs).split(path.sep).join('/');
-const isInside = (p, root) => {
-  const rel = path.relative(root, p);
-  return !(rel === '..' || rel.startsWith(`..${path.sep}`) || path.isAbsolute(rel));
-};
 const pct = (n, d) => `${((100 * n) / d).toFixed(1)}%`;
 
 function usage() {
@@ -216,9 +221,10 @@ function loadCensus(ctx, p) {
 
 function loadExport(ctx) {
   const abs = path.join(ctx.bookDir, 'glossary', 'glossary-unified.json');
-  const terms = guarded('bad-input', () => JSON.parse(fs.readFileSync(abs, 'utf8')).terms);
+  const bytes = guarded('bad-input', () => fs.readFileSync(abs));
+  const terms = guarded('bad-input', () => JSON.parse(bytes.toString('utf8')).terms);
   if (!Array.isArray(terms)) throw refusal('bad-input', `${abs} has no terms array`);
-  return { path: repoRel(ctx.repoRoot, abs), terms };
+  return { path: repoRel(ctx.repoRoot, abs), terms, sha256: sha256(bytes) };
 }
 
 function loadDefaultRulingSet(ctx) {
@@ -301,10 +307,12 @@ export function prescreenPayload({
   phase,
   model,
   effort = DEFAULT_EFFORT,
+  maxTokens = DEFAULT_MAX_TOKENS,
   inputs,
   items,
   key,
   requests,
+  excluded = {},
   pick = null,
 }) {
   return {
@@ -313,6 +321,8 @@ export function prescreenPayload({
     phase,
     model,
     effort,
+    maxTokens,
+    excluded,
     census: { path: inputs.census.path, sha256: inputs.census.sha256 },
     rulingSet: { path: inputs.rulingSet.path, sha256: inputs.rulingSet.sha256 },
     prompt: { path: inputs.prompt.path, sha256: inputs.prompt.sha256 },
@@ -413,41 +423,6 @@ function printLedger(ctx) {
 
 // ── reduce ──────────────────────────────────────────────────────────────────────────────────
 
-/**
- * Where a write to `abs` would land: its deepest existing ancestor through every symlink, the
- * rest rebuilt below it. A component that exists but resolves to nothing refuses.
- */
-function landingPath(abs, name) {
-  const tail = [];
-  let cur = abs;
-  for (;;) {
-    if (fs.existsSync(cur) || isLink(cur)) {
-      let real;
-      try {
-        real = fs.realpathSync(cur);
-      } catch {
-        throw refusal(
-          'bad-flag',
-          `--${name} passes through a link that resolves to nothing: ${cur}`
-        );
-      }
-      return path.join(real, ...tail);
-    }
-    const parent = path.dirname(cur);
-    if (parent === cur) return abs;
-    tail.unshift(path.basename(cur));
-    cur = parent;
-  }
-}
-
-function isLink(p) {
-  try {
-    return fs.lstatSync(p).isSymbolicLink();
-  } catch {
-    return false;
-  }
-}
-
 /** The private full census: an absolute path whose file lies outside the repository. */
 function privateCensusPath(file, repoRoot) {
   if (typeof file !== 'string' || !path.isAbsolute(file))
@@ -480,12 +455,27 @@ async function cmdReduce(ctx, values) {
     throw refusal('bad-flag', 'reduce needs --census-full and --out');
   const src = privateCensusPath(values['census-full'], ctx.repoRoot);
   const out = resultsOutput(values.out, ctx.repoRoot);
+  // Only the COMMITTED export and ruling set may decide what is published (spec §8).
+  const exportRel = repoRel(
+    ctx.repoRoot,
+    path.join(ctx.bookDir, 'glossary', 'glossary-unified.json')
+  );
+  const problems = cleanTrackedProblems(ctx.git, [exportRel, DEFAULT_RULING_SET]);
+  if (problems.length)
+    throw refusal(
+      'preflight',
+      `refusing to reduce against an uncommitted export or ruling set:\n  - ${problems.join('\n  - ')}`
+    );
   const full = parseJson(fs.readFileSync(src, 'utf8'), '--census-full');
   checkCensusShape(full, '--census-full');
   if (full.reduced === true) throw refusal('bad-census', '--census-full is already reduced');
-  const reduced = guarded('bad-census', () =>
-    reduceCensus(full, loadExport(ctx).terms, loadDefaultRulingSet(ctx))
-  );
+  const exported = loadExport(ctx);
+  const rulingSet = loadDefaultRulingSet(ctx);
+  const reduced = {
+    ...guarded('bad-census', () => reduceCensus(full, exported.terms, rulingSet)),
+    exportSource: { path: exported.path, sha256: exported.sha256 },
+    rulingSetSource: { path: rulingSet.path, sha256: rulingSet.sha256 },
+  };
   const text = `${JSON.stringify(reduced, null, 1)}\n`;
   fs.mkdirSync(path.dirname(out.abs), { recursive: true });
   const tmp = `${out.abs}.tmp-${process.pid}`;
@@ -665,6 +655,8 @@ async function cmdPilot(ctx, values, deps) {
     items: built.items,
     key: built.key,
     requests: built.requests,
+    excluded: population.excluded,
+    maxTokens: DEFAULT_MAX_TOKENS,
     pick: PILOT_PICK,
   });
   const result = await runInteractive({
