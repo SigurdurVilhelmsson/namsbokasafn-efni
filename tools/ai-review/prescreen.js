@@ -23,16 +23,26 @@
  *           --include-physics-biology) and every control, through the Batch API, as --split
  *           sequential batches (one run each; every part's prescreen.json records EVERY item and
  *           its own requests). Refuses unless the named pilot, RE-JUDGED FROM ITS RECORDS, ran
- *           the same model and prompt and its controls pass; refuses a population over
- *           POPULATION_STOP without --accept-large-population; refuses when the largest batch's
- *           worst case would leave less than COST_MARGIN_USD of the cap free. Stops at the first
- *           batch that does not end complete or leaves one of its population rows unjudged.
- *   resume  PAID (it settles a batch already bought). Collects a batch whose polling stopped;
- *           the harness resumes it and never resubmits.
+ *           the same model and prompt, ended complete, its controls pass and its chemistry flag
+ *           rate is not over PILOT_FLAG_STOP (--accept-pilot-flag-rate records the answer to
+ *           that one stop); refuses a pilot that already has a full run (a second would buy
+ *           every row again); refuses a population over POPULATION_STOP without
+ *           --accept-large-population; refuses when the largest batch's worst case would leave
+ *           less than COST_MARGIN_USD of the cap free, and passes the cap less that margin to
+ *           the harness so it binds on the real reservation too. Stops at the first batch that
+ *           does not end complete or leaves one of its population rows unjudged.
+ *   resume  PAID (it settles what was already bought). A full run's batch whose polling stopped:
+ *           the harness resumes it and never resubmits; then the run is judged on its own
+ *           population rows and on the controls ITS OWN requests presented. An interactive run
+ *           (a pilot or a resend) killed before it ended: with --yes, closed as interrupted, its
+ *           open reservations settled at their worst case, so collect can take it.
  *   collect 0 ISK, or PAID with --resend --yes. Merges the named full (and resend) runs by item
  *           id into one verdict per population row (an id answered in two runs refuses), writes
  *           prescreen-verdicts.json and prescreen-report.md under RESULTS_DIR. With --resend the
- *           population rows still unjudged go once more, one per interactive request.
+ *           population rows still unjudged go once more, one per interactive request; it
+ *           refuses first if the records directory holds a resend run of these rows that is not
+ *           named (re-sent once means once over every run, not only the named ones). Each
+ *           --pilot adds that pilot's cost to the report, never a verdict.
  *
  * Every command that builds items seeds them with the reduced census's sha256, so a re-plan gives
  * the same items, ids and requests.
@@ -41,7 +51,8 @@
  * the stop line, or the pilot's gate failed, its chemistry flag rate is over PILOT_FLAG_STOP, its
  * run did not end complete, or a chemistry row is unjudged (a row is never counted as fine because
  * its answer is missing, spec §2); for run, resume and collect, a run did not end complete, a
- * population row is unjudged, or a control was missed.
+ * population row is unjudged, or a control was missed (for resume, a control its own requests
+ * presented).
  *
  * Preflight (pilot, run, collect --resend):
  *   - the repository is the MAIN checkout (the ledger, and so the cap, lives there);
@@ -59,7 +70,7 @@ import { parseArgs } from 'node:util';
 import { fileURLToPath } from 'node:url';
 import { REPO_ROOT, CAP_USD, LEDGER_FILE, assertBookSlug } from './config.js';
 import { loadRulingSet } from './ruling-set.js';
-import { runInteractive, runBatch } from './harness.js';
+import { runInteractive, runBatch, closeInterruptedRun } from './harness.js';
 import { summarizeLedger, readLedger } from './ledger.js';
 import { usdToPico } from './pricing.js';
 import { mintRunId, openRunDir, runDirFor, createRecordWriter, RECORD_FILES } from './records.js';
@@ -98,6 +109,8 @@ import {
   POPULATION_KINDS,
   VERDICTS_FILE,
   REPORT_FILE,
+  same,
+  itemSig,
   checkRuns,
   mergeVerdicts,
   resendIds,
@@ -177,10 +190,12 @@ function usage() {
     '  plan    --census <repo path of the reduced census>',
     `  pilot   --census <repo path> --model <${MODELS.join('|')}> [--yes]`,
     '  run     --census <repo path> --model <m> --pilot <runId> [--include-physics-biology]',
-    '          [--split <n>] [--max-tokens <n>] [--accept-large-population] [--yes]',
-    '  resume  --run <runId>',
+    '          [--split <n>] [--max-tokens <n>] [--accept-large-population]',
+    '          [--accept-pilot-flag-rate] [--yes]',
+    '  resume  --run <runId> [--yes: close an interrupted pilot or resend]',
     `  collect --run <runId> [--run …] --out <repo dir under ${RESULTS_DIR}/>`,
-    '          --isk-rate <ISK per USD> --isk-rate-source <text> [--resend [--yes]]',
+    '          --isk-rate <ISK per USD> --isk-rate-source <text> [--pilot <runId> …]',
+    '          [--resend [--yes]]',
     `The book is ${BOOK}. pilot, run and collect --resend spend only with --yes, from the main ` +
       'checkout.',
   ].join('\n');
@@ -191,11 +206,13 @@ const OPTIONS = {
   out: { type: 'string' },
   census: { type: 'string' },
   model: { type: 'string' },
-  pilot: { type: 'string' },
+  // Repeatable for collect's cost lines; run takes exactly one.
+  pilot: { type: 'string', multiple: true },
   'include-physics-biology': { type: 'boolean' },
   split: { type: 'string' },
   'max-tokens': { type: 'string' },
   'accept-large-population': { type: 'boolean' },
+  'accept-pilot-flag-rate': { type: 'boolean' },
   run: { type: 'string', multiple: true },
   'isk-rate': { type: 'string' },
   'isk-rate-source': { type: 'string' },
@@ -476,6 +493,16 @@ function tally({ prescreen, verdicts }, kind) {
   };
 }
 
+/**
+ * Spec §6's flag-rate stop, over the rows that have a verdict (an unjudged row is neither fine nor
+ * flagged). pilot and run share it, so they agree at exactly PILOT_FLAG_STOP.
+ */
+const overFlagStop = (t) => t.judged > 0 && t.flagged / t.judged > PILOT_FLAG_STOP;
+const rateOf = (t) =>
+  t.judged
+    ? `flagged ${t.flagged} of ${t.judged} (${pct(t.flagged, t.judged)}) judged rows`
+    : 'no judged rows';
+
 function printLedger(ctx) {
   const s = summarizeLedger(readLedger(path.join(ctx.recordsDir, LEDGER_FILE)));
   ctx.out(
@@ -514,6 +541,68 @@ function unjudgedPresented(read) {
   return read.prescreen.requests
     .flatMap((q) => q.ids)
     .filter((id) => POPULATION_KINDS.includes(read.key[id]?.kind) && !read.verdicts.has(id));
+}
+
+/**
+ * The controls a run's OWN requests presented, judged on its verdicts. A split part records every
+ * item but presents only its own requests, so judging every control would read the other parts'
+ * controls as missed. Not a gate: an empty list (a part that presented no control) is no miss.
+ */
+function presentedControls(read) {
+  const presented = new Set(read.prescreen.requests.flatMap((q) => q.ids));
+  const key = Object.fromEntries(Object.entries(read.key).filter(([id]) => presented.has(id)));
+  return judgeControls({ verdicts: read.verdicts, key }).results;
+}
+
+/**
+ * Every pre-screen run in the records directory (a run directory holding a prescreen.json; the
+ * directory is shared with other uses, whose runs are skipped), with whether it ended. A
+ * prescreen.json that does not parse refuses: what that run sent cannot be told.
+ * @returns {Array<{ runId: string, prescreen: object, ended: boolean }>}
+ */
+function scanPrescreenRuns(ctx, code) {
+  const root = path.join(ctx.recordsDir, 'runs');
+  if (!fs.existsSync(root)) return [];
+  const found = [];
+  for (const entry of fs.readdirSync(root, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const dir = path.join(root, entry.name);
+    const file = path.join(dir, PRESCREEN_RECORD);
+    if (!fs.existsSync(file)) continue;
+    let prescreen;
+    try {
+      prescreen = JSON.parse(fs.readFileSync(file, 'utf8'));
+    } catch (err) {
+      throw refusal(
+        code,
+        `run ${entry.name}: ${PRESCREEN_RECORD} does not parse (${err.message}); what it sent ` +
+          'cannot be told'
+      );
+    }
+    if (!isPlainObject(prescreen)) {
+      throw refusal(code, `run ${entry.name}: ${PRESCREEN_RECORD} is not a JSON object`);
+    }
+    found.push({
+      runId: entry.name,
+      prescreen,
+      ended: fs.existsSync(path.join(dir, RECORD_FILES.runEnd)),
+    });
+  }
+  return found.sort((a, b) => (a.runId < b.runId ? -1 : 1));
+}
+
+/** How to bring a run that has not ended to an end, by its mode (run.json). */
+function remedyForUnended(r, runId) {
+  let mode = null;
+  try {
+    mode = r.readJson(RECORD_FILES.run).mode;
+  } catch {
+    // No readable run.json: the batch remedy, whose own refusal will say what is wrong.
+  }
+  return mode === 'interactive'
+    ? `close it first: prescreen.js resume --run ${runId} --yes (make sure no process is still ` +
+        'running it)'
+    : `resume it first: prescreen.js resume --run ${runId}`;
 }
 
 /** What to do after a run that did not end complete, by its status. */
@@ -712,19 +801,14 @@ function judgePilot(ctx, read) {
   ctx.out(
     `gate: ${gate.pass ? 'PASS' : 'FAIL'} (${passed} of ${gate.results.length} controls as expected)\n`
   );
-  // A rate is over the rows that have a verdict: an unjudged row is neither fine nor flagged.
-  const rate = (t) =>
-    t.judged
-      ? `flagged ${t.flagged} of ${t.judged} (${pct(t.flagged, t.judged)}) judged rows`
-      : 'no judged rows';
   const chem = tally(read, 'population');
   const pb = tally(read, 'physicsBiology');
   ctx.out(
-    `chemistry rows: ${rate(chem)}, ${chem.unjudged} of ${chem.total} unjudged; stop line ` +
+    `chemistry rows: ${rateOf(chem)}, ${chem.unjudged} of ${chem.total} unjudged; stop line ` +
       `${PILOT_FLAG_STOP * 100}%\n`
   );
   ctx.out(
-    `physics and biology rows: ${rate(pb)}, ${pb.unjudged} of ${pb.total} unjudged; for the ` +
+    `physics and biology rows: ${rateOf(pb)}, ${pb.unjudged} of ${pb.total} unjudged; for the ` +
       'scope decision (spec §2), not gated\n'
   );
   if (read.dropped.length || Object.keys(read.problems).length) {
@@ -748,7 +832,7 @@ function judgePilot(ctx, read) {
   if (!gate.pass) stops.push('the control gate failed (FAIL rows above, with the model’s reasons)');
   if (chem.unjudged > 0) stops.push(`${chem.unjudged} chemistry rows have no verdict`);
   if (chem.total === 0) stops.push('the pilot holds no chemistry rows');
-  else if (chem.judged > 0 && chem.flagged / chem.judged > PILOT_FLAG_STOP)
+  else if (overFlagStop(chem))
     stops.push(
       `the chemistry flag rate ${pct(chem.flagged, chem.judged)} is over ${PILOT_FLAG_STOP * 100}%`
     );
@@ -834,12 +918,16 @@ function openPrescreenRun(ctx, runId, code) {
 }
 
 /**
- * Decide that the named pilot passed by RE-JUDGING it from its records (its prescreen.json and
- * responses.jsonl), never from anything printed: phase pilot, the same model and prompt sha256
- * as this run, and every control as expected.
- * @returns {{ runId: string, passed: number, maxOutputTokens: number|null }}
+ * Decide that the named pilot passed by RE-JUDGING it from its records (its prescreen.json,
+ * responses.jsonl and run-end.json), never from anything printed: phase pilot, the same model
+ * and prompt sha256 as this run, ended complete (always: an incomplete pilot measured less than it
+ * was asked), every control as expected, and its chemistry flag rate not over PILOT_FLAG_STOP
+ * unless `acceptFlagRate` (the --accept-pilot-flag-rate answer). A pilot with no judged chemistry
+ * row has no rate to accept, so it always refuses.
+ * @returns {{ runId: string, passed: number, maxOutputTokens: number|null,
+ *   chemistry: { total: number, judged: number, flagged: number, unjudged: number } }}
  */
-function judgePilotRecord(ctx, runId, { model, prompt }) {
+function judgePilotRecord(ctx, runId, { model, prompt, acceptFlagRate = false }) {
   const { r, prescreen } = openPrescreenRun(ctx, runId, 'pilot');
   if (prescreen.phase !== 'pilot')
     throw refusal('pilot', `run ${runId} is a ${prescreen.phase} run, not a pilot`);
@@ -860,6 +948,14 @@ function judgePilotRecord(ctx, runId, { model, prompt }) {
   const read = guarded('pilot', () =>
     readRun({ recordsDir: ctx.recordsDir, runId, schema: prompt.schema })
   );
+  const status = read.runEnd?.status ?? 'without a run-end.json';
+  if (status !== 'complete') {
+    throw refusal(
+      'pilot',
+      `pilot ${runId} ended ${status}, not complete: a full run needs a pilot that ran to the end ` +
+        '(spec §6); run a new pilot'
+    );
+  }
   const gate = judgeControls({ verdicts: read.verdicts, key: read.key });
   if (!gate.pass) {
     const misses = gate.results
@@ -871,6 +967,20 @@ function judgePilotRecord(ctx, runId, { model, prompt }) {
         `${misses.join('; ') || 'it holds no controls'}`
     );
   }
+  const chemistry = tally(read, 'population');
+  if (chemistry.judged === 0) {
+    throw refusal(
+      'pilot',
+      `pilot ${runId} judged no chemistry row (${chemistry.total} in it): it measured no flag rate`
+    );
+  }
+  if (overFlagStop(chemistry) && !acceptFlagRate) {
+    throw refusal(
+      'pilot',
+      `pilot ${runId}'s chemistry rows: ${rateOf(chemistry)}, over ${PILOT_FLAG_STOP * 100}% ` +
+        '(spec §6): ask first; --accept-pilot-flag-rate records the answer'
+    );
+  }
   const outputs = guarded('pilot', () => r.readJsonl(RECORD_FILES.responses))
     .map((l) => l.usage?.output_tokens)
     .filter(Number.isSafeInteger);
@@ -878,6 +988,7 @@ function judgePilotRecord(ctx, runId, { model, prompt }) {
     runId,
     passed: gate.results.length,
     maxOutputTokens: outputs.length ? Math.max(...outputs) : null,
+    chemistry,
   };
 }
 
@@ -914,9 +1025,14 @@ function judgeFullRun(ctx, { items, key, reads }) {
 async function cmdRun(ctx, values, deps) {
   if (values.model === undefined)
     throw refusal('bad-flag', `run needs --model (${MODELS.join(' or ')})`);
-  if (values.pilot === undefined)
-    throw refusal('bad-flag', 'run needs --pilot <runId>: the pilot that passed on this model');
+  const pilotIds = values.pilot ?? [];
+  if (pilotIds.length !== 1)
+    throw refusal(
+      'bad-flag',
+      'run needs exactly one --pilot <runId>: the pilot that passed on this model'
+    );
   const model = values.model;
+  const acceptFlagRate = values['accept-pilot-flag-rate'] === true;
   const split = positiveInt(values.split, 'split') ?? 1;
   const lowered = positiveInt(values['max-tokens'], 'max-tokens');
   if (lowered !== undefined && lowered > DEFAULT_MAX_TOKENS) {
@@ -941,11 +1057,29 @@ async function cmdRun(ctx, values, deps) {
         'ask first; --accept-large-population records the answer'
     );
   }
-  const pilot = judgePilotRecord(ctx, values.pilot, { model, prompt: inputs.prompt });
+  const pilot = judgePilotRecord(ctx, pilotIds[0], {
+    model,
+    prompt: inputs.prompt,
+    acceptFlagRate,
+  });
   ctx.out(
     `pilot ${pilot.runId} re-judged from its records: ${model}, prompt ${inputs.prompt.sha256}, ` +
-      `controls PASS (${pilot.passed} of ${pilot.passed})\n`
+      `ended complete, controls PASS (${pilot.passed} of ${pilot.passed}), chemistry rows ` +
+      `${rateOf(pilot.chemistry)}` +
+      `${overFlagStop(pilot.chemistry) ? ` (over ${PILOT_FLAG_STOP * 100}%; accepted with --accept-pilot-flag-rate)` : ''}\n`
   );
+  // Spec §8 buys each row once: a second full run of this pilot would buy every row again.
+  const earlier = scanPrescreenRuns(ctx, 'pilot-used')
+    .filter((x) => x.prescreen.phase === 'full' && x.prescreen.pilot === pilot.runId)
+    .map((x) => x.runId);
+  if (earlier.length) {
+    throw refusal(
+      'pilot-used',
+      `pilot ${pilot.runId} already has a full run (${earlier.join(', ')}); running it again ` +
+        'would buy every row again. Collect those runs (collect --resend sends their unjudged ' +
+        'rows once)'
+    );
+  }
   if (lowered !== undefined) {
     if (pilot.maxOutputTokens === null)
       throw refusal(
@@ -998,11 +1132,15 @@ async function cmdRun(ctx, values, deps) {
   ctx.out(`ledger: ${room.says}\n`);
   const largest = Math.max(...worst);
   if (!fits(largest, room)) {
+    const lower =
+      pilot.maxOutputTokens === null
+        ? '--max-tokens cannot be lowered: the pilot recorded no output usage to set its floor'
+        : 'or lower --max-tokens (to no less than twice the pilot’s largest output, ' +
+          `${2 * pilot.maxOutputTokens} tokens)`;
     throw refusal(
       'cost',
       `the largest batch's worst case USD ${largest} does not fit: ${room.says}. Split the run ` +
-        'into sequential batches with --split <n>, or lower --max-tokens (to no less than twice ' +
-        `the pilot's largest output, ${2 * (pilot.maxOutputTokens ?? 0)} tokens)`
+        `into sequential batches with --split <n>; ${lower}`
     );
   }
   preflight(ctx, inputs);
@@ -1043,12 +1181,15 @@ async function cmdRun(ctx, values, deps) {
         pilot: pilot.runId,
         includePhysicsBiology: includePB,
         acceptLargePopulation: accepted,
+        acceptPilotFlagRate: acceptFlagRate,
         split: { part: k + 1, of: parts.length },
       },
     });
     const result = await runBatch({
       ...harnessOptions(ctx, deps, { inputs, model, effort: DEFAULT_EFFORT, maxTokens, runId }),
       ...pollOptions(deps),
+      // Spec §6: the margin binds on the harness's real reservation, not only on the estimate.
+      cap: CAP_USD - COST_MARGIN_USD,
       requests: parts[k].map(({ key, body }) => ({ key, body })),
       extraRecords: [{ name: PRESCREEN_RECORD, payload }],
     });
@@ -1094,13 +1235,58 @@ async function cmdRun(ctx, values, deps) {
 
 // ── resume ──────────────────────────────────────────────────────────────────────────────────
 
-const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+/**
+ * Close an interactive run (a pilot or a resend) that was killed before it ended, so collect can
+ * take it and its open reservations stop lowering the cap: the harness settles them at their
+ * worst case and writes run-end.json `interrupted` (closeInterruptedRun). Asks for --yes, because
+ * closing a run that a live process is still running would settle its reservations under it.
+ * The main checkout is required (the ledger lives there); a clean tree is not.
+ */
+function closeInteractive(ctx, values, { r, prescreen, runId }) {
+  if (prescreen.phase !== 'pilot' && prescreen.phase !== 'resend') {
+    throw refusal(
+      'bad-run',
+      `run ${runId} is an interactive ${prescreen.phase} run; only a pilot or a resend runs ` +
+        'interactively'
+    );
+  }
+  if (r.exists(RECORD_FILES.runEnd))
+    throw refusal('bad-run', `run ${runId} already ended (run-end.json): nothing to close`);
+  if (!values.yes) {
+    throw refusal(
+      'bad-flag',
+      `run ${runId} is an interactive ${prescreen.phase} run that did not end. resume --run ` +
+        `${runId} --yes closes it as interrupted, settling its open reservations at their worst ` +
+        'case. Make sure no process is still running it first.'
+    );
+  }
+  assertMainCheckout(ctx.git);
+  const result = guarded('bad-run', () =>
+    closeInterruptedRun({ recordsDir: ctx.recordsDir, runId, now: ctx.now })
+  );
+  ctx.out(
+    `run ${runId} (${prescreen.phase}) closed as ${result.status}: USD ${result.settledOpenUsd} ` +
+      `still open settled at its worst case; USD ${result.totalUsd} in all; ` +
+      `${JSON.stringify(result.counts)}\n`
+  );
+  printLedger(ctx);
+  ctx.out(
+    prescreen.phase === 'resend'
+      ? `next: name it in collect (--run ${runId}) with the runs it re-sent; the rows it sent ` +
+          'stay re-sent once, the rows it never sent can go in a later --resend\n'
+      : `next: a pilot that did not end complete cannot pass run's check; run a new pilot\n`
+  );
+  ctx.out(`stop and ask: run ${runId} ended ${result.status}, not complete\n`);
+  return { exitCode: 2, runId, status: result.status };
+}
 
 /**
- * Collect a full run's batch whose polling stopped. The options come from the run's own records
- * (run.json, checked against prescreen.json), so the harness's parameter match holds and it
- * resumes, never resubmits. The main checkout is required (the ledger lives there), but NOT a
- * clean tree: a tree changed since the buy must not strand a batch already paid for.
+ * Collect a full run's batch whose polling stopped, or (--yes) close an interrupted interactive
+ * run (closeInteractive). For a batch, the options come from the run's own records (run.json,
+ * checked against prescreen.json), so the harness's parameter match holds and it resumes, never
+ * resubmits; the run is then judged on its own population rows and on the controls ITS OWN
+ * requests presented. The main checkout is required (the ledger lives there), but NOT a clean
+ * tree: a tree changed since the buy must not strand a batch already paid for.
  */
 async function cmdResume(ctx, values, deps) {
   const ids = values.run ?? [];
@@ -1109,6 +1295,15 @@ async function cmdResume(ctx, values, deps) {
   const { r, prescreen } = openPrescreenRun(ctx, runId, 'bad-run');
   if (!r.exists(RECORD_FILES.run)) throw refusal('bad-run', `run ${runId} has no run.json`);
   const run = guarded('bad-run', () => r.readJson(RECORD_FILES.run));
+  if (run.use === USE && run.mode === 'interactive')
+    return closeInteractive(ctx, values, { r, prescreen, runId });
+  if (values.yes) {
+    throw refusal(
+      'bad-flag',
+      '--yes applies only to closing an interrupted interactive run (a pilot or a resend); a ' +
+        'batch resume collects what was already bought'
+    );
+  }
   if (run.use !== USE || run.mode !== 'batch' || prescreen.phase !== 'full') {
     throw refusal(
       'bad-run',
@@ -1159,8 +1354,26 @@ async function cmdResume(ctx, values, deps) {
     } else {
       const read = readRun({ recordsDir: ctx.recordsDir, runId, schema: prompt.schema });
       const open = unjudgedPresented(read);
-      ctx.out(`its population rows: ${open.length} unjudged\n`);
+      const controls = presentedControls(read);
+      const misses = controls.filter((c) => !c.ok);
+      ctx.out(
+        `its population rows: ${open.length} unjudged; the controls it presented: ` +
+          `${controls.length - misses.length} of ${controls.length} as expected\n`
+      );
+      for (const c of misses) {
+        const v = read.verdicts.get(c.id);
+        ctx.out(
+          `  FAIL ${c.id} ${String(c.name).padEnd(18)} expected ${c.expected} got ${c.got}` +
+            `${v ? `: ${v.reason}` : ''}\n`
+        );
+      }
       if (open.length) stops.push(`run ${runId} left ${open.length} population rows unjudged`);
+      if (misses.length) {
+        stops.push(
+          `run ${runId} missed ${misses.length} of the ${controls.length} controls it presented ` +
+            '(FAIL rows above)'
+        );
+      }
     }
   }
   printLedger(ctx);
@@ -1179,15 +1392,78 @@ function loadEndedRun(ctx, runId) {
   if (!r.exists(RECORD_FILES.runEnd)) {
     throw refusal(
       'bad-run',
-      `run ${runId} has not ended (no run-end.json): resume it first (prescreen.js resume ` +
-        `--run ${runId}); collected now, its rows would read as unjudged and --resend would buy ` +
-        'them twice'
+      `run ${runId} has not ended (no run-end.json): ${remedyForUnended(r, runId)}; collected ` +
+        'now, its rows would read as unjudged and --resend would buy them twice'
     );
   }
   const runEnd = guarded('bad-run', () => r.readJson(RECORD_FILES.runEnd));
   // What it actually sent: resend's "once" rule must not count a request a stop left unsent.
   const sentKeys = guarded('bad-run', () => r.readJsonl(RECORD_FILES.requests)).map((l) => l.key);
   return { runId, prescreen, runEnd, sentKeys };
+}
+
+/**
+ * A pilot named for its cost only (collect --pilot): phase pilot and ended. It never contributes
+ * a verdict (its item ids are numbered within its own items), and it may have run on either
+ * model, since each model has its own pilot.
+ */
+function loadPilotCost(ctx, runId) {
+  const { r, prescreen } = openPrescreenRun(ctx, runId, 'bad-run');
+  if (prescreen.phase !== 'pilot')
+    throw refusal('bad-run', `--pilot ${runId} is a ${prescreen.phase} run, not a pilot`);
+  if (!r.exists(RECORD_FILES.runEnd)) {
+    throw refusal(
+      'bad-run',
+      `pilot ${runId} has not ended (no run-end.json), so its cost is not settled: ` +
+        remedyForUnended(r, runId)
+    );
+  }
+  const runEnd = guarded('bad-run', () => r.readJson(RECORD_FILES.runEnd));
+  return runInfo({ runId, prescreen, runEnd });
+}
+
+/**
+ * Refuse a resend while the records directory holds a resend run of these rows that is not
+ * named (spec §8: a row is re-sent ONCE, over every run, not only the named ones; without this,
+ * repeating the same collect --resend --yes buys the rows the first one answered again). A
+ * resend run counts when it is over the same census and could merge with these runs (the same
+ * model, effort, max_tokens and prompt; naming any other one would be refused by checkRuns), and
+ * it re-sent one of the named full runs (`resendOf`) or holds one of their items. Named runs have
+ * already been checked to have ended; an unnamed one that has not ended refuses too, with how to
+ * close it.
+ */
+function assertResendsNamed(ctx, base, runs) {
+  const named = new Set(runs.map((r) => r.runId));
+  const fullIds = new Set(runs.filter((r) => r.prescreen.phase === 'full').map((r) => r.runId));
+  const mergeable = (ps) =>
+    ['model', 'effort', 'maxTokens', 'prompt'].every((f) => same(ps[f], base[f]));
+  const ofThese = (ps) =>
+    (Array.isArray(ps.resendOf) && ps.resendOf.some((id) => fullIds.has(id))) ||
+    (Array.isArray(ps.items) &&
+      ps.items.some(
+        (it) => base.byId.has(it?.id) && itemSig(base.byId.get(it.id)) === itemSig(it)
+      ));
+  const unnamed = scanPrescreenRuns(ctx, 'unnamed-run').filter(
+    ({ runId, prescreen: ps }) =>
+      !named.has(runId) &&
+      ps.phase === 'resend' &&
+      ps.census?.sha256 === base.census.sha256 &&
+      mergeable(ps) &&
+      ofThese(ps)
+  );
+  if (unnamed.length === 0) return;
+  const open = unnamed.filter((x) => !x.ended).map((x) => x.runId);
+  throw refusal(
+    'unnamed-run',
+    `resend runs already re-sent rows of these runs and are not named: ` +
+      `${unnamed.map((x) => x.runId).join(', ')}. A row is re-sent once (spec §8): name each ` +
+      'with --run' +
+      (open.length
+        ? `; ${open.join(', ')} did not end: close each first with ` +
+          `${open.map((id) => `prescreen.js resume --run ${id} --yes`).join(', ')} (make sure ` +
+          'no process is still running it)'
+        : '')
+  );
 }
 
 /**
@@ -1306,6 +1582,8 @@ async function resend(ctx, values, deps, { base, merged, runs, prompt }) {
     }),
     requests: requests.map(({ key, body }) => ({ key, body })),
     extraRecords: [{ name: PRESCREEN_RECORD, payload }],
+    // Spec §6: the margin binds on the harness's real reservation, not only on the estimate.
+    cap: CAP_USD - COST_MARGIN_USD,
   });
   ctx.out(`resend: run ${runId} ${result.status}: ${JSON.stringify(result.counts)}\n`);
   return loadEndedRun(ctx, runId);
@@ -1324,8 +1602,13 @@ async function cmdCollect(ctx, values, deps) {
     throw refusal('bad-flag', '--isk-rate-source must name the rate’s source and date');
   if (values.yes && !values.resend)
     throw refusal('bad-flag', '--yes applies only with --resend (collect spends only to re-send)');
+  const pilotIds = values.pilot ?? [];
+  if (new Set(pilotIds).size !== pilotIds.length)
+    throw refusal('bad-flag', '--pilot names a run twice');
   const runs = runIds.map((id) => loadEndedRun(ctx, id));
+  const pilots = pilotIds.map((id) => loadPilotCost(ctx, id));
   const base = guarded('bad-run', () => checkRuns(runs));
+  if (values.resend) assertResendsNamed(ctx, base, runs);
   const prompt = guarded('bad-input', () => loadPrompt(path.join(ctx.repoRoot, base.prompt.path)));
   if (prompt.sha256 !== base.prompt.sha256) {
     throw refusal(
@@ -1357,7 +1640,7 @@ async function cmdCollect(ctx, values, deps) {
   const allIds = runs.map((r) => r.runId);
   const doc = verdictsOf(allIds);
   const infos = runs.map(runInfo);
-  const report = renderReport({ doc, merged, runs: infos, iskRate, iskRateSource });
+  const report = renderReport({ doc, merged, runs: infos, pilots, iskRate, iskRateSource });
   writeAtomic(out.abs, VERDICTS_FILE, `${JSON.stringify(doc, null, 1)}\n`);
   writeAtomic(out.abs, REPORT_FILE, report);
   const n = { fine: 0, flag: 0, unjudged: 0 };
@@ -1388,13 +1671,14 @@ const COMMANDS = {
       'split',
       'max-tokens',
       'accept-large-population',
+      'accept-pilot-flag-rate',
       'yes',
     ],
     run: cmdRun,
   },
-  resume: { flags: ['run'], run: cmdResume },
+  resume: { flags: ['run', 'yes'], run: cmdResume },
   collect: {
-    flags: ['run', 'out', 'isk-rate', 'isk-rate-source', 'resend', 'yes'],
+    flags: ['run', 'out', 'isk-rate', 'isk-rate-source', 'pilot', 'resend', 'yes'],
     run: cmdCollect,
   },
 };

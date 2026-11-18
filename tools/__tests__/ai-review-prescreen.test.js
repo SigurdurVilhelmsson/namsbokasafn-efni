@@ -713,11 +713,37 @@ const crowdLedger = (recordsDir, leftUsd) =>
   });
 
 /** A pilot run in `recordsDir`; by default every control is answered as expected. */
-async function pilotIn(fx, recordsDir, { answer = answerer(), model = 'claude-opus-5-5' } = {}) {
-  const h = harnessDeps(fx, { recordsDir, transport: mockTransport({ answer }) });
+async function pilotIn(
+  fx,
+  recordsDir,
+  { answer = answerer(), model = 'claude-opus-5-5', transport } = {}
+) {
+  const h = harnessDeps(fx, { recordsDir, transport: transport ?? mockTransport({ answer }) });
   const r = await main(['pilot', '--census', CENSUS_REL, '--model', model, '--yes'], h.deps);
   return r.runId;
 }
+
+/**
+ * A pilot transport whose last (7th) answer costs more than its reservation: every row is
+ * answered (so the control gate passes) and the run ends stopped-over-reservation.
+ */
+function overReservingTransport(answer = answerer()) {
+  const base = mockTransport({ answer });
+  return {
+    ...base,
+    async send(body) {
+      const m = await base.send(body);
+      if (base.calls.send === 7) m.usage = { ...m.usage, output_tokens: 10_000_000 };
+      return m;
+    },
+  };
+}
+
+/** The USD still open in the ledger for `runId`'s reservations. */
+const openUsdOf = (recordsDir, runId) =>
+  [...summarizeLedger(readLedger(ledgerOf(recordsDir))).reservations.values()]
+    .filter((r) => r.runId === runId)
+    .reduce((s, r) => s + r.openUsd, 0);
 
 /** A batch transport that answers with a refusal every request whose rows `refuse` picks. */
 function refusingTransport({ answer = answerer(), refuse }) {
@@ -773,10 +799,60 @@ describe('run', () => {
   let fx;
   let recordsDir;
   let pilotId;
+  let picked;
   beforeAll(async () => {
     fx = makeFixture();
     recordsDir = makeTempDir('ps-rec-');
     pilotId = await pilotIn(fx, recordsDir);
+    picked = pickEvenly(fx.popRows, PILOT_POPULATION_ROWS).map((r) => r.english);
+  });
+
+  it('refuses a --pilot named twice', async () => {
+    const { r, transport } = await fullRun(fx, recordsDir, pilotId, { args: ['--pilot', pilotId] });
+    expect([r.exitCode, r.refusal, transportCalls(transport)]).toEqual([1, 'bad-flag', 0]);
+  });
+
+  describe('the pilot re-checked from its records (spec §6)', () => {
+    it('refuses a pilot that did not end complete, even with --accept-pilot-flag-rate', async () => {
+      const own = makeTempDir('ps-rec-');
+      const pid = await pilotIn(fx, own, { transport: overReservingTransport() });
+      const { r, transport, errText } = await fullRun(fx, own, pid, {
+        args: ['--accept-pilot-flag-rate', '--yes'],
+      });
+      expect([
+        r.exitCode,
+        r.refusal,
+        transportCalls(transport),
+        runsIn(own),
+        /ended stopped-over-reservation, not complete/.test(errText()),
+      ]).toEqual([1, 'pilot', 0, [pid], true]);
+    });
+
+    describe('a pilot whose chemistry flag rate is over the stop line', () => {
+      let own;
+      let pid;
+      beforeAll(async () => {
+        own = makeTempDir('ps-rec-');
+        pid = await pilotIn(fx, own, { answer: answerer({ flag: new Set(picked.slice(0, 7)) }) });
+      });
+
+      it('refuses with zero calls, naming the rate and the flag that records an answer', async () => {
+        const { r, transport, errText } = await fullRun(fx, own, pid);
+        expect([
+          r.exitCode,
+          r.refusal,
+          transportCalls(transport),
+          /flagged 7 of 24 \(29\.2%\).*over 25%/.test(errText()),
+          /--accept-pilot-flag-rate/.test(errText()),
+        ]).toEqual([1, 'pilot', 0, true, true]);
+      });
+
+      it('--accept-pilot-flag-rate runs it and records the answer in prescreen.json', async () => {
+        const { r } = await fullRun(fx, own, pid, { args: ['--accept-pilot-flag-rate', '--yes'] });
+        const ps = recordOf(own, r.runIds[0], PRESCREEN_RECORD);
+        expect([r.exitCode, ps.acceptPilotFlagRate]).toEqual([0, true]);
+      });
+    });
   });
 
   it('refuses without a passing pilot, re-judged from its records, with zero calls', async () => {
@@ -884,6 +960,60 @@ describe('run', () => {
       const ids = prescreen.requests.flatMap((q) => q.ids).sort();
       expect(ids).toEqual(prescreen.items.map((i) => i.id).sort());
     });
+
+    it('records that no pilot flag rate over the stop line was accepted', () => {
+      expect(prescreen.acceptPilotFlagRate).toBe(false);
+    });
+
+    it('passes the cap less the USD 5 margin to the harness (spec §6)', () => {
+      expect(recordOf(recordsDir, res.r.runIds[0], 'run.json').cap.usd).toBe(
+        CAP_USD - COST_MARGIN_USD
+      );
+    });
+  });
+
+  it('refuses a second full run of the same pilot with zero calls, naming the first', async () => {
+    const before = runsIn(recordsDir);
+    const fullIds = before.filter(
+      (id) => recordOf(recordsDir, id, PRESCREEN_RECORD).phase === 'full'
+    );
+    const paid = await fullRun(fx, recordsDir, pilotId);
+    const dry = await fullRun(fx, recordsDir, pilotId, { args: [] });
+    expect({
+      paid: [paid.r.exitCode, paid.r.refusal, transportCalls(paid.transport)],
+      dry: [dry.r.exitCode, dry.r.refusal],
+      named: fullIds.length === 1 && paid.errText().includes(fullIds[0]),
+      runs: runsIn(recordsDir),
+    }).toEqual({ paid: [1, 'pilot-used', 0], dry: [1, 'pilot-used'], named: true, runs: before });
+  });
+
+  it('exits 2 when the full run misses a control, every population row judged', async () => {
+    const own = makeTempDir('ps-rec-');
+    const pid = await pilotIn(fx, own);
+    const transport = mockTransport({ answer: answerer({ fine: new Set(['vessel']) }) });
+    const { r, text } = await fullRun(fx, own, pid, { transport });
+    expect([
+      r.exitCode,
+      /^population rows: 30 of 30 judged, 0 unjudged; controls FAIL/m.test(text()),
+      /^ {2}FAIL r\d+ vessel /m.test(text()),
+      /^stop and ask: a control was missed in the full run/m.test(text()),
+    ]).toEqual([2, true, true, true]);
+  });
+
+  it('the cost refusal says the pilot recorded no output usage, not a 0-token floor', async () => {
+    const own = makeTempDir('ps-rec-');
+    const pid = await pilotIn(fx, own);
+    const file = path.join(own, 'runs', pid, 'responses.jsonl');
+    const lines = readJsonl(file).map((l) => JSON.stringify({ ...l, usage: null }));
+    fs.writeFileSync(file, `${lines.join('\n')}\n`);
+    crowdLedger(own, 0.5);
+    const { r, errText } = await fullRun(fx, own, pid);
+    expect([
+      r.exitCode,
+      r.refusal,
+      /recorded no output usage/.test(errText()),
+      /output, 0 tokens/.test(errText()),
+    ]).toEqual([1, 'cost', true, false]);
   });
 
   it('--include-physics-biology adds those rows and records the answer', async () => {
@@ -925,9 +1055,11 @@ describe('run', () => {
   });
 
   it('the paid preflight refuses a dirty input with zero calls', async () => {
+    const own = makeTempDir('ps-rec-');
+    const pid = await pilotIn(fx, own);
     const real = makeGit({ cwd: fx.root });
     const git = (args) => (args[0] === 'status' ? ` M ${CENSUS_REL}\0` : real(args));
-    const { r, transport } = await fullRun(fx, recordsDir, pilotId, { extra: { git } });
+    const { r, transport } = await fullRun(fx, own, pid, { extra: { git } });
     expect([r.exitCode, r.refusal, transportCalls(transport)]).toEqual([1, 'preflight', 0]);
   });
 
@@ -1034,6 +1166,13 @@ describe('resume', () => {
     ]);
   });
 
+  it('refuses --yes on a batch run (it only closes an interrupted interactive run)', async () => {
+    const polls = transport.calls.getBatch;
+    const h = harnessDeps(fx, { recordsDir, transport, ...NO_SLEEP, maxPolls: 1 });
+    const r = await main(['resume', '--run', started.r.runIds[0], '--yes'], h.deps);
+    expect([r.exitCode, r.refusal, transport.calls.getBatch]).toEqual([1, 'bad-flag', polls]);
+  });
+
   describe('resume --run', () => {
     let res;
     beforeAll(async () => {
@@ -1058,6 +1197,213 @@ describe('resume', () => {
       expect(await main(['resume', '--run', started.r.runIds[0]], h.deps)).toMatchObject({
         exitCode: 1,
         refusal: 'bad-run',
+      });
+    });
+  });
+});
+
+describe('resume judges the controls its own requests presented', () => {
+  let fx;
+  let recordsDir;
+  let transport;
+  let started;
+  let current = answerer();
+  beforeAll(async () => {
+    fx = makeFixture();
+    recordsDir = makeTempDir('ps-rec-');
+    const pid = await pilotIn(fx, recordsDir);
+    // The mock answers when the results are read, so the answer can change before the resume.
+    transport = mockTransport({
+      answer: (body) => current(body),
+      batchStates: ['in_progress', 'ended'],
+    });
+    started = await fullRun(fx, recordsDir, pid, { transport, extra: { maxPolls: 1 } });
+  });
+
+  it('refuses when run.json and prescreen.json disagree, polling nothing', async () => {
+    const file = path.join(recordsDir, 'runs', started.r.runIds[0], PRESCREEN_RECORD);
+    const golden = fs.readFileSync(file);
+    fs.writeFileSync(file, JSON.stringify({ ...JSON.parse(golden), maxTokens: 8000 }));
+    const polls = transport.calls.getBatch;
+    const h = harnessDeps(fx, { recordsDir, transport, ...NO_SLEEP, maxPolls: 1 });
+    const r = await main(['resume', '--run', started.r.runIds[0]], h.deps);
+    fs.writeFileSync(file, golden);
+    expect([r.exitCode, r.refusal, /disagree/.test(h.errText()), transport.calls.getBatch]).toEqual(
+      [1, 'bad-run', true, polls]
+    );
+  });
+
+  it('exits 2 when a control it presented is missed, naming the control', async () => {
+    current = answerer({ fine: new Set(['vessel']) });
+    const h = harnessDeps(fx, { recordsDir, transport, ...NO_SLEEP, maxPolls: 1 });
+    const r = await main(['resume', '--run', started.r.runIds[0]], h.deps);
+    expect([
+      r.exitCode,
+      recordOf(recordsDir, started.r.runIds[0], 'run-end.json').status,
+      /^its population rows: 0 unjudged/m.test(h.text()),
+      /^ {2}FAIL r\d+ vessel /m.test(h.text()),
+      /^stop and ask: run \S+ missed 1 of the 16 controls it presented/m.test(h.text()),
+    ]).toEqual([2, 'complete', true, true, true]);
+  });
+});
+
+describe('resume of one part of a split run', () => {
+  let fx;
+  let recordsDir;
+  let transport;
+  let started;
+  beforeAll(async () => {
+    fx = makeFixture();
+    recordsDir = makeTempDir('ps-rec-');
+    const pid = await pilotIn(fx, recordsDir);
+    transport = mockTransport({ answer: answerer(), batchStates: ['in_progress', 'ended'] });
+    started = await fullRun(fx, recordsDir, pid, {
+      args: ['--split', '2', '--yes'],
+      transport,
+      extra: { maxPolls: 1 },
+    });
+  });
+
+  it("judges only its own controls: another part's are never counted as missed", async () => {
+    const id = started.r.runIds[0];
+    const ps = recordOf(recordsDir, id, PRESCREEN_RECORD);
+    const own = new Set(ps.requests.flatMap((q) => q.ids));
+    const elsewhere = ps.items.filter((i) => i.kind === 'control' && !own.has(i.id)).length;
+    const h = harnessDeps(fx, { recordsDir, transport, ...NO_SLEEP, maxPolls: 1 });
+    const r = await main(['resume', '--run', id], h.deps);
+    expect([started.r.runIds.length, elsewhere > 0, r.exitCode]).toEqual([1, true, 0]);
+  });
+});
+
+describe('resume --yes closes an interrupted interactive run', () => {
+  let fx;
+  let recordsDir;
+  let fullId;
+  let resendId;
+  let refusedPopulation;
+  let killed;
+  const runEndOf = (runId) => path.join(recordsDir, 'runs', runId, 'run-end.json');
+  beforeAll(async () => {
+    fx = makeFixture();
+    recordsDir = makeTempDir('ps-rec-');
+    const pid = await pilotIn(fx, recordsDir);
+    const refusing = refusingTransport({
+      refuse: (rows) => rows.some((x) => x.en === 'qterm001'),
+    });
+    fullId = (await fullRun(fx, recordsDir, pid, { transport: refusing })).r.runIds[0];
+    const ps = recordOf(recordsDir, fullId, PRESCREEN_RECORD);
+    const kind = new Map(ps.items.map((i) => [i.id, i.kind]));
+    const target = ps.items.find((i) => i.english === 'qterm001').id;
+    refusedPopulation = ps.requests
+      .find((q) => q.ids.includes(target))
+      .ids.filter((id) => kind.get(id) === 'population');
+    // The process dies right after the second answer arrives, before the harness settles or
+    // records it: anthropicVersion() throws on the call that follows that send. The request is
+    // recorded, its reservation stays open, and no run-end.json is written.
+    const base = mockTransport({ answer: answerer() });
+    let armed = false;
+    const dying = {
+      ...base,
+      async send(body) {
+        const m = await base.send(body);
+        if (base.calls.send === 2) armed = true;
+        return m;
+      },
+      anthropicVersion() {
+        if (armed) throw new Error('killed mid-run');
+        return base.anthropicVersion();
+      },
+    };
+    const before = runsIn(recordsDir);
+    killed = await collect(fx, recordsDir, [fullId], {
+      args: ['--resend', '--yes'],
+      transport: dying,
+    }).catch((err) => err);
+    resendId = runsIn(recordsDir).find((id) => !before.includes(id));
+  });
+
+  it('the killed resend left an open reservation and no run-end.json (the precondition)', () => {
+    expect([
+      killed instanceof Error && killed.message,
+      refusedPopulation.length >= 3,
+      recordOf(recordsDir, resendId, PRESCREEN_RECORD).phase,
+      openUsdOf(recordsDir, resendId) > 0,
+      fs.existsSync(runEndOf(resendId)),
+    ]).toEqual(['killed mid-run', true, 'resend', true, false]);
+  });
+
+  it('collect --resend refuses while that resend run is open and unnamed, with zero calls', async () => {
+    const transport = mockTransport({ answer: answerer() });
+    const res = await collect(fx, recordsDir, [fullId], { args: ['--resend', '--yes'], transport });
+    expect([
+      res.r.exitCode,
+      res.r.refusal,
+      transportCalls(transport),
+      res.errText().includes(resendId),
+      res.errText().includes(`resume --run ${resendId} --yes`),
+      res.verdicts,
+    ]).toEqual([1, 'unnamed-run', 0, true, true, null]);
+  });
+
+  it('collect naming the open run says to close it with resume --yes', async () => {
+    const res = await collect(fx, recordsDir, [fullId, resendId]);
+    expect([
+      res.r.exitCode,
+      res.r.refusal,
+      res.errText().includes(`resume --run ${resendId} --yes`),
+    ]).toEqual([1, 'bad-run', true]);
+  });
+
+  it('resume without --yes refuses and leaves the run as it was', async () => {
+    const h = harnessDeps(fx, { recordsDir });
+    const r = await main(['resume', '--run', resendId], h.deps);
+    expect([
+      r.exitCode,
+      r.refusal,
+      openUsdOf(recordsDir, resendId) > 0,
+      fs.existsSync(runEndOf(resendId)),
+    ]).toEqual([1, 'bad-flag', true, false]);
+  });
+
+  describe('resume --run <id> --yes', () => {
+    let res;
+    beforeAll(async () => {
+      const h = harnessDeps(fx, { recordsDir });
+      res = { r: await main(['resume', '--run', resendId, '--yes'], h.deps), ...h };
+    });
+
+    it('closes it as interrupted and exits 2', () => {
+      expect([
+        res.r.exitCode,
+        recordOf(recordsDir, resendId, 'run-end.json').status,
+        /^stop and ask: run \S+ ended interrupted, not complete/m.test(res.text()),
+      ]).toEqual([2, 'interrupted', true]);
+    });
+
+    it('settles its open reservation at the worst case', () => {
+      expect(openUsdOf(recordsDir, resendId)).toBe(0);
+    });
+
+    it('collect then takes it, and a later --resend sends only the rows never sent', async () => {
+      const taken = await collect(fx, recordsDir, [fullId, resendId]);
+      const transport = mockTransport({ answer: answerer() });
+      const again = await collect(fx, recordsDir, [fullId, resendId], {
+        args: ['--resend', '--yes'],
+        transport,
+      });
+      const sentBefore = readJsonl(path.join(recordsDir, 'runs', resendId, 'requests.jsonl'));
+      const newRun = again.verdicts.runs[2];
+      const sentNow = readJsonl(path.join(recordsDir, 'runs', newRun, 'requests.jsonl')).map(
+        (q) => q.key
+      );
+      expect({
+        taken: [taken.r.exitCode, taken.verdicts?.runs],
+        sentBefore: sentBefore.length,
+        sentNow: sentNow.sort(),
+      }).toEqual({
+        taken: [2, [fullId, resendId]],
+        sentBefore: 2,
+        sentNow: refusedPopulation.filter((id) => !sentBefore.some((q) => q.key === id)).sort(),
       });
     });
   });
@@ -1146,11 +1492,68 @@ describe('collect', () => {
     ]);
   });
 
+  it('--resend without --yes runs every check, writes nothing and exits 0', async () => {
+    const transport = mockTransport({ answer: answerer() });
+    const before = runsIn(recordsDir);
+    const res = await collect(fx, recordsDir, [fullId], { args: ['--resend'], transport });
+    expect([
+      res.r.exitCode,
+      transportCalls(transport),
+      runsIn(recordsDir),
+      res.verdicts,
+      res.report,
+      /not sending/.test(res.text()),
+    ]).toEqual([0, 0, before, null, null, true]);
+  });
+
   describe('--resend --yes', () => {
     let res;
     beforeAll(async () => {
       const transport = mockTransport({ answer: answerer() });
       res = await collect(fx, recordsDir, [fullId], { args: ['--resend', '--yes'], transport });
+    });
+
+    it('passes the cap less the USD 5 margin to the harness (spec §6)', () => {
+      expect(recordOf(recordsDir, res.verdicts.runs[1], 'run.json').cap.usd).toBe(
+        CAP_USD - COST_MARGIN_USD
+      );
+    });
+
+    it('a second identical collect --resend refuses with zero calls, naming the first resend', async () => {
+      const transport = mockTransport({ answer: answerer() });
+      const before = runsIn(recordsDir);
+      const paid = await collect(fx, recordsDir, [fullId], {
+        args: ['--resend', '--yes'],
+        transport,
+      });
+      const dry = await collect(fx, recordsDir, [fullId], { args: ['--resend'], transport });
+      expect({
+        paid: [paid.r.exitCode, paid.r.refusal, paid.verdicts],
+        dry: [dry.r.exitCode, dry.r.refusal],
+        calls: transportCalls(transport),
+        named: paid.errText().includes(res.verdicts.runs[1]),
+        runs: runsIn(recordsDir),
+      }).toEqual({
+        paid: [1, 'unnamed-run', null],
+        dry: [1, 'unnamed-run'],
+        calls: 0,
+        named: true,
+        runs: before,
+      });
+    });
+
+    it('naming that resend run lets collect --resend through, with nothing left to send', async () => {
+      const transport = mockTransport({ answer: answerer() });
+      const again = await collect(fx, recordsDir, res.verdicts.runs, {
+        args: ['--resend', '--yes'],
+        transport,
+      });
+      // Not refused (the refused request's controls stay unjudged, so it still exits 2).
+      expect([again.r.refusal, transportCalls(transport), again.verdicts.runs]).toEqual([
+        undefined,
+        0,
+        res.verdicts.runs,
+      ]);
     });
 
     it('sends only the unjudged population ids, one per request', () => {
@@ -1176,6 +1579,33 @@ describe('collect', () => {
     it('leaves no population row unjudged', () => {
       expect(res.verdicts.population.filter((x) => x.verdict === 'unjudged')).toEqual([]);
     });
+  });
+});
+
+describe('collect --resend beside a resend run on the other model', () => {
+  it('does not ask to name a resend run it could not merge (another model), and sends', async () => {
+    const fx = makeFixture();
+    const recordsDir = makeTempDir('ps-rec-');
+    const refusing = () =>
+      refusingTransport({ refuse: (rows) => rows.some((x) => x.en === 'qterm001') });
+    const fullOn = async (model) => {
+      const pid = await pilotIn(fx, recordsDir, { model });
+      const h = harnessDeps(fx, { recordsDir, transport: refusing(), ...NO_SLEEP });
+      const argv = ['run', '--census', CENSUS_REL, '--model', model, '--pilot', pid, '--yes'];
+      return (await main(argv, h.deps)).runIds[0];
+    };
+    const fable = await fullOn('claude-fable-5-2');
+    const opus = await fullOn('claude-opus-5-5');
+    // A resend of the fable run: the same census and the same items, on the other model.
+    const fableResend = await collect(fx, recordsDir, [fable], { args: ['--resend', '--yes'] });
+    const transport = mockTransport({ answer: answerer() });
+    const res = await collect(fx, recordsDir, [opus], { args: ['--resend', '--yes'], transport });
+    expect({
+      fableResend: fableResend.verdicts.runs.length,
+      refusal: res.r.refusal,
+      sent: transport.calls.send > 0,
+      runs: res.verdicts.runs.length,
+    }).toEqual({ fableResend: 2, refusal: undefined, sent: true, runs: 2 });
   });
 });
 
@@ -1235,16 +1665,39 @@ describe('collect --resend after a resend that left a request unsent', () => {
   });
 });
 
+describe('collect over a full run that missed a control', () => {
+  it('writes the verdicts, puts the miss first in the report and exits 2', async () => {
+    const fx = makeFixture();
+    const recordsDir = makeTempDir('ps-rec-');
+    const pid = await pilotIn(fx, recordsDir);
+    const transport = mockTransport({ answer: answerer({ fine: new Set(['vessel']) }) });
+    const { r } = await fullRun(fx, recordsDir, pid, { transport });
+    const res = await collect(fx, recordsDir, r.runIds);
+    expect({
+      exitCode: res.r.exitCode,
+      unjudged: res.verdicts.population.filter((x) => x.verdict === 'unjudged').length,
+      missFirst:
+        res.report.indexOf('## Control misses (read first)') > -1 &&
+        res.report.indexOf('## Control misses (read first)') < res.report.indexOf('## Verdicts'),
+      missRow: /^\| r\d+ \| vessel \| flag \| fine \| Right sense\. \|$/m.test(res.report),
+      stop: /^stop and ask: 1 controls missed: vessel got fine$/m.test(res.text()),
+    }).toEqual({ exitCode: 2, unjudged: 0, missFirst: true, missRow: true, stop: true });
+  });
+});
+
 describe('collect over complete runs', () => {
   let fx;
   let recordsDir;
   let ids;
+  let pids;
   beforeAll(async () => {
     fx = makeFixture();
     recordsDir = makeTempDir('ps-rec-');
-    const pid = await pilotIn(fx, recordsDir);
-    const a = await fullRun(fx, recordsDir, pid);
-    const b = await fullRun(fx, recordsDir, pid);
+    // Two pilots, one full run each (a pilot takes one full run): the same census gives both
+    // full runs the same items, so their ids collide.
+    pids = [await pilotIn(fx, recordsDir), await pilotIn(fx, recordsDir)];
+    const a = await fullRun(fx, recordsDir, pids[0]);
+    const b = await fullRun(fx, recordsDir, pids[1]);
     ids = [a.r.runIds[0], b.r.runIds[0]];
   });
 
@@ -1303,6 +1756,45 @@ describe('collect over complete runs', () => {
         ).test(res.report),
         /140 ISK per USD; source: test rate, 2026-11-18/.test(res.report),
       ]).toEqual([true, true]);
+    });
+  });
+
+  describe('with --pilot', () => {
+    let res;
+    let plain;
+    beforeAll(async () => {
+      plain = await collect(fx, recordsDir, [ids[0]]);
+      res = await collect(fx, recordsDir, [ids[0]], { args: ['--pilot', pids[0]] });
+    });
+
+    it("adds the pilot's cost as a labelled cost-only line and into the total", () => {
+      const usd = (re) => Number(res.report.match(re)?.[1]);
+      const full = usd(new RegExp(`^- \`${ids[0]}\` \\(full\\): .*: USD ([\\d.]+) = ISK`, 'm'));
+      const pilot = usd(
+        new RegExp(
+          `^- \`${pids[0]}\` \\(pilot; cost only, no verdicts\\): claude-opus-5-5, effort high, ` +
+            'ended complete: USD ([\\d.]+) = ISK \\d+$',
+          'm'
+        )
+      );
+      const total = usd(/^- total: USD ([\d.]+) = ISK \d+$/m);
+      expect([res.r.exitCode, pilot > 0, Math.abs(total - (full + pilot)) < 2e-6]).toEqual([
+        0,
+        true,
+        true,
+      ]);
+    });
+
+    it('takes no verdict from the pilot', () => {
+      expect([
+        res.verdicts.runs,
+        JSON.stringify(res.verdicts.population) === JSON.stringify(plain.verdicts.population),
+      ]).toEqual([[ids[0]], true]);
+    });
+
+    it('refuses a --pilot that is not a pilot run, writing nothing', async () => {
+      const bad = await collect(fx, recordsDir, [ids[0]], { args: ['--pilot', ids[1]] });
+      expect([bad.r.exitCode, bad.r.refusal, bad.verdicts]).toEqual([1, 'bad-run', null]);
     });
   });
 

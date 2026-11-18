@@ -29,7 +29,7 @@ const PRIVATE_FIELDS = Object.freeze(['alternatives', 'ifRemoved']);
 
 const isPopulation = (kind) => POPULATION_KINDS.includes(kind);
 /** What identifies an item: its pair, its role and what the model saw. */
-const itemSig = (it) =>
+export const itemSig = (it) =>
   JSON.stringify([
     it.english,
     it.icelandic,
@@ -39,7 +39,8 @@ const itemSig = (it) =>
     it.flagKinds ?? null,
     it.sentences,
   ]);
-const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+/** Equal as serialised (the harness matches run parameters the same way). */
+export const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
 /**
  * Check that runs can be merged and return what they share.
@@ -296,13 +297,15 @@ function describeRun(r) {
 /**
  * The committed report (Markdown): control misses first, the counts by verdict, flag kind and
  * exclusion class, the unjudged rows, the control table, each run's cost in USD (run-end.json)
- * and ISK at the named rate, and the prompt sha256.
+ * and ISK at the named rate, and the prompt sha256. Each of `pilots` adds a cost-only line and
+ * its cost to the total; a pilot contributes no verdict.
  * @param {{ doc: object, merged: Map<string, object>, runs: Array<{ runId: string, phase: string,
  *   split: object|null, model: string, effort: string, status: string, totalUsd: number }>,
- *   iskRate: number, iskRateSource: string }} args
+ *   pilots?: Array<{ runId: string, model: string, effort: string, status: string,
+ *   totalUsd: number }>, iskRate: number, iskRateSource: string }} args
  * @returns {string}
  */
-export function renderReport({ doc, merged, runs, iskRate, iskRateSource }) {
+export function renderReport({ doc, merged, runs, pilots = [], iskRate, iskRateSource }) {
   const lines = [];
   const add = (...l) => lines.push(...l);
   const reasonOf = (id) => cell(merged.get(id)?.reason ?? '');
@@ -362,14 +365,17 @@ export function renderReport({ doc, merged, runs, iskRate, iskRateSource }) {
   add('## Cost', '');
   const isk = (usd) => Math.round(usd * iskRate);
   let total = 0;
-  for (const r of runs) {
+  const costLine = (r, label) => {
     total += r.totalUsd;
     add(
-      `- ${describeRun(r)}: ${r.model}, effort ${r.effort}, ended ${r.status}: ` +
+      `- ${label}: ${r.model}, effort ${r.effort}, ended ${r.status}: ` +
         `USD ${usd6(r.totalUsd)} = ISK ${isk(r.totalUsd)}`
     );
-  }
-  add(`- total: USD ${usd6(total)} = ISK ${isk(total)}`, '');
+  };
+  for (const r of runs) costLine(r, describeRun(r));
+  for (const p of pilots) costLine(p, `\`${p.runId}\` (pilot; cost only, no verdicts)`);
+  const noPilot = pilots.length ? '' : ' (no pilot named: pilot spend is not in this total)';
+  add(`- total: USD ${usd6(total)} = ISK ${isk(total)}${noPilot}`, '');
   add(
     `USD from each run's run-end.json; ISK at ${iskRate} ISK per USD; source: ${cell(iskRateSource)}.`,
     ''

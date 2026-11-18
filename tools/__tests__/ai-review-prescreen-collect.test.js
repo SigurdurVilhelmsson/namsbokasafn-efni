@@ -349,6 +349,50 @@ describe('renderReport', () => {
     expect(text).toMatch(/140 ISK per USD; source: Central Bank of Iceland mid rate, 2026-11-18/);
   });
 
+  it('says on the total line that pilot spend is not included when no pilot is named', () => {
+    expect(text).toMatch(
+      /^- total: USD 1\.234567 = ISK 173 \(no pilot named: pilot spend is not in this total\)$/m
+    );
+  });
+
+  it("adds each named pilot's cost as a cost-only line and into the total", () => {
+    const withPilot = renderReport({
+      doc,
+      merged,
+      runs: [
+        {
+          runId: 'A',
+          phase: 'full',
+          split: null,
+          model: 'claude-fable-5-2',
+          effort: 'high',
+          status: 'complete',
+          totalUsd: 1.234567,
+        },
+      ],
+      pilots: [
+        {
+          runId: 'P',
+          phase: 'pilot',
+          split: null,
+          model: 'claude-opus-5-5',
+          effort: 'high',
+          status: 'complete',
+          totalUsd: 0.5,
+        },
+      ],
+      iskRate: 140,
+      iskRateSource: 'Central Bank of Iceland mid rate, 2026-11-18',
+    });
+    expect([
+      /^- `P` \(pilot; cost only, no verdicts\): claude-opus-5-5, effort high, ended complete: USD 0\.5 = ISK 70$/m.test(
+        withPilot
+      ),
+      /^- total: USD 1\.734567 = ISK 243$/m.test(withPilot),
+      /^Runs: `A` \(full\)\./m.test(withPilot),
+    ]).toEqual([true, true, true]);
+  });
+
   it('counts the verdicts by group', () => {
     expect(text).toMatch(/^\| chemistry \| 1 \| 1 \| 0 \| 2 \|$/m);
   });
