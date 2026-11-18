@@ -56,6 +56,11 @@
 - Ruling P34: Task 9 (the plan's operational runbook) may be amended by the fix wave for I-2, M11, M12, M14 — Tasks 1–8 text untouched — cost if wrong: none.
 - Final: parked — the 9 re-review minors (polling error exits 1 not 2; afterBatchError wording without batch.json; recovery branch B can double-buy if a batch surfaces after release; RELEASE_RUN silent on no match; M5 guard vs I-1 after a non-census change; re-sent control lacks run attribution; guardedAsync turns bugs into refusals; usage() omits compare; SAMPLING says "chapter order") — Ruling: none blocks the run or merge (re-reviewer), two touch only the rare I-2 recovery path; recorded for a follow-up, no second fix wave per the process.
 
+### Made during the run (2026-11-18, added before the ledger was deleted)
+
+- Ruling P35: full run uses --max-tokens 4000 (pilot max output 1,847; spec §6 allows lowering to twice the largest measured) so 196 requests fit one batch (worst case USD 23.22 < 29.37 free), no split, P17 moot — cost if wrong: truncated requests, re-sent singly by collect --resend.
+- Ruling P36: keep this SDD workspace until Task 9 ends (the plan is not complete until the run is collected and the page published); rulings already frozen in docs — cost if wrong: none.
+
 ## The pre-flight table (verbatim)
 
 | Pair / task | Produces → consumes | Finding | Ruling |
