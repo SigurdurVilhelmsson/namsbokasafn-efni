@@ -252,6 +252,38 @@ const SUBMIT_RECOVERY =
   'for a batch interrupted around its submit (plan Task 9, ' +
   'docs/superpowers/plans/2026-11-17-c19-glossary-prescreen.md); never edit the ledger by hand';
 
+/**
+ * What to do after the harness threw on a batch run, read from the run's batch.json: submitted
+ * (an error while polling: resume it), submitting (the submit may have reached the API: the
+ * recovery), rejected (nothing bought), or none (no submit was attempted, though a reservation
+ * may be open: the recovery's release).
+ */
+function afterBatchError(recordsDir, runId) {
+  const file = path.join(runDirFor(recordsDir, runId), RECORD_FILES.batch);
+  let state = null;
+  if (fs.existsSync(file)) {
+    try {
+      state = JSON.parse(fs.readFileSync(file, 'utf8'))?.state ?? 'unknown';
+    } catch {
+      state = 'unreadable';
+    }
+  }
+  if (state === 'submitted') {
+    return (
+      'its batch.json says submitted, so the batch exists and its reservation stays open: ' +
+      `resume it with prescreen.js resume --run ${runId}`
+    );
+  }
+  if (state === 'rejected') return 'its batch.json says rejected: the API bought nothing';
+  if (state === null) {
+    return (
+      'it has no batch.json, so no submit was attempted, but a reservation may be open in the ' +
+      `ledger: ${SUBMIT_RECOVERY}`
+    );
+  }
+  return `its batch.json says ${state} and its reservation stays open: ${SUBMIT_RECOVERY}`;
+}
+
 const sha256 = (bytes) => crypto.createHash('sha256').update(bytes).digest('hex');
 const isPlainObject = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
 const pct = (n, d) => `${((100 * n) / d).toFixed(1)}%`;
@@ -1446,8 +1478,8 @@ async function cmdRun(ctx, values, deps) {
           extraRecords: [{ name: PRESCREEN_RECORD, payload }],
         }),
       (msg) =>
-        `batch ${k + 1} of ${parts.length}, run ${runId}: ${msg}. Its batch.json and reservation ` +
-        `stay as they are: ${SUBMIT_RECOVERY}${unsent}${earlierParts}`
+        `batch ${k + 1} of ${parts.length}, run ${runId}: ${msg}. ` +
+        `${afterBatchError(ctx.recordsDir, runId)}${unsent}${earlierParts}`
     );
     runIds.push(runId);
     statuses.push(result.status);
@@ -1594,11 +1626,7 @@ async function cmdResume(ctx, values, deps) {
         ...transportOptions(deps),
         ...pollOptions(deps),
       }),
-    (msg) =>
-      `run ${runId}: ${msg}${
-        r.exists(RECORD_FILES.batch) ? '' : ' (no batch.json: the batch was never submitted)'
-      }. If its batch.json says submitting, or its reservation is open with no batch.json: ` +
-      SUBMIT_RECOVERY
+    (msg) => `run ${runId}: ${msg}. ${afterBatchError(ctx.recordsDir, runId)}`
   );
   const usd = result.totalUsd !== undefined ? `, USD ${result.totalUsd}` : '';
   ctx.out(

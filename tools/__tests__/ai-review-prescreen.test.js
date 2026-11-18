@@ -1453,6 +1453,35 @@ describe('a batch interrupted around its submit', () => {
     ]);
   });
 
+  it('an error while polling a submitted batch says to resume it, not to recover a submit', async () => {
+    const own = makeTempDir('ps-rec-');
+    const pid = await pilotIn(fx, own);
+    const base = mockTransport({ answer: answerer() });
+    let fail = true;
+    const flaky = {
+      ...base,
+      async getBatch(id) {
+        if (fail) {
+          fail = false;
+          throw new Error('connection reset while polling');
+        }
+        return base.getBatch(id);
+      },
+    };
+    const { r, errText } = await fullRun(fx, own, pid, { transport: flaky });
+    const [runId] = runsIn(own).filter((id) => id !== pid);
+    const h = harnessDeps(fx, { recordsDir: own, transport: flaky, ...NO_SLEEP });
+    const resumed = await main(['resume', '--run', runId], h.deps);
+    expect([
+      r.exitCode,
+      r.refusal,
+      recordOf(own, runId, 'batch.json').state,
+      errText().includes(`resume --run ${runId}`),
+      /Anthropic Console/.test(errText()),
+      resumed.exitCode,
+    ]).toEqual([1, 'bad-run', 'submitted', true, false, 0]);
+  });
+
   it('a submit that returns no batch id refuses with exit 1, naming the run', async () => {
     const own = makeTempDir('ps-rec-');
     const pid = await pilotIn(fx, own);
@@ -2244,17 +2273,20 @@ describe('collect --resend re-sends unjudged controls with the population rows',
       transport: t,
     });
     const resendRun = res.verdicts.runs[1];
-    const sent = readJsonl(path.join(recordsDir, 'runs', resendRun, 'requests.jsonl')).map(
-      (q) => JSON.parse(q.body.messages[0].content).rows[0].en
+    const rows = readJsonl(path.join(recordsDir, 'runs', resendRun, 'requests.jsonl')).map(
+      (q) => JSON.parse(q.body.messages[0].content).rows[0]
     );
+    const sent = rows.map((x) => x.en);
     expect([
       res.r.exitCode,
       res.verdicts.controls.pass,
       sent.includes('balanced'),
+      // A re-sent control looks exactly like a population row: nothing marks it or its answer.
+      [...new Set(rows.flatMap((x) => Object.keys(x)))].sort(),
       /^resend: \d+ unjudged population rows and \d+ unjudged controls, one per request/m.test(
         res.text()
       ),
-    ]).toEqual([0, true, true, true]);
+    ]).toEqual([0, true, true, ['en', 'id', 'is', 'sentences'], true]);
   });
 
   it('a control the resend leaves unjudged is reported as not judged, apart from missed', async () => {
