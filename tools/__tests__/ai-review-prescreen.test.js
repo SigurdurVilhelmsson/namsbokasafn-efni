@@ -928,7 +928,7 @@ describe('run', () => {
       ]).toEqual([1, 'pilot', 0, [pid], true]);
     });
 
-    it('refuses a pilot with an unjudged chemistry row, even with --accept-pilot-flag-rate (P29)', async () => {
+    it('refuses a pilot with an unjudged chemistry row, even with --accept-pilot-flag-rate', async () => {
       const own = makeTempDir('ps-rec-');
       const pid = await pilotIn(fx, own, { answer: answerer({ omit: new Set([picked[0]]) }) });
       const { r, transport, errText } = await fullRun(fx, own, pid, {
@@ -1169,7 +1169,7 @@ describe('run', () => {
     });
   });
 
-  it('refuses a second full run from another pilot while a submitted full run exists (P25)', async () => {
+  it('refuses a second full run from another pilot while a submitted full run exists', async () => {
     const own = makeTempDir('ps-rec-');
     const pid = await pilotIn(fx, own);
     const first = await fullRun(fx, own, pid);
@@ -1184,7 +1184,7 @@ describe('run', () => {
     }).toEqual({ first: 0, second: [1, 'second-run', 0], named: true, runs: before });
   });
 
-  it('--allow-second-run lets it through and records the answer in prescreen.json (P25)', async () => {
+  it('--allow-second-run lets it through and records the answer in prescreen.json', async () => {
     const own = makeTempDir('ps-rec-');
     const pid = await pilotIn(fx, own);
     await fullRun(fx, own, pid);
@@ -1197,7 +1197,7 @@ describe('run', () => {
     ]).toEqual([0, 1, true]);
   });
 
-  it('a full run that submitted nothing does not lock a later one (P25)', async () => {
+  it('a full run that submitted nothing does not lock a later one', async () => {
     const own = makeTempDir('ps-rec-');
     const pid = await pilotIn(fx, own);
     const first = await fullRun(fx, own, pid);
@@ -1213,7 +1213,7 @@ describe('run', () => {
     fs.writeFileSync(file, JSON.stringify({ ...rec, state }));
   };
 
-  it('a full run whose batch was rejected (bought nothing) does not lock a later one (P28)', async () => {
+  it('a full run whose batch was rejected (bought nothing) does not lock a later one', async () => {
     const own = makeTempDir('ps-rec-');
     const pid = await pilotIn(fx, own);
     const first = await fullRun(fx, own, pid);
@@ -1223,7 +1223,7 @@ describe('run', () => {
     expect([second.r.exitCode, second.r.refusal]).toEqual([0, undefined]);
   });
 
-  it('a full run in state submitting (it may have bought) does lock a later one (P28)', async () => {
+  it('a full run in state submitting (it may have bought) does lock a later one', async () => {
     const own = makeTempDir('ps-rec-');
     const pid = await pilotIn(fx, own);
     const first = await fullRun(fx, own, pid);
@@ -1233,7 +1233,7 @@ describe('run', () => {
     expect([second.r.exitCode, second.r.refusal]).toEqual([1, 'second-run']);
   });
 
-  it('collect --resend does not ask to name a full run killed before its reservation (P28)', async () => {
+  it('collect --resend does not ask to name a full run killed before its reservation', async () => {
     const own = makeTempDir('ps-rec-');
     const pid = await pilotIn(fx, own);
     const first = await fullRun(fx, own, pid);
@@ -1950,7 +1950,7 @@ describe('collect', () => {
       });
     });
 
-    it('a resend run with an empty requests.jsonl needs no naming (P28)', async () => {
+    it('a resend run with an empty requests.jsonl needs no naming', async () => {
       const own = makeTempDir('ps-rec-');
       const pid = await pilotIn(fx, own);
       const refusing = refusingTransport({
@@ -1972,7 +1972,7 @@ describe('collect', () => {
       ]);
     });
 
-    it('a split full run: naming one part refuses and names the other, with zero calls; naming both proceeds (P24)', async () => {
+    it('a split full run: naming one part refuses and names the other, with zero calls; naming both proceeds', async () => {
       const own = makeTempDir('ps-rec-');
       const pid = await pilotIn(fx, own);
       const split = await fullRun(fx, own, pid, { args: ['--split', '2', '--yes'] });
@@ -2316,6 +2316,84 @@ describe('collect over an answer that names one id twice', () => {
       'm'
     );
     expect([res.r.exitCode, row.verdict, dropped.test(res.text())]).toEqual([2, 'unjudged', true]);
+  });
+});
+
+describe('compare two pilots (0 ISK)', () => {
+  let fx;
+  let own;
+  let a;
+  let b;
+  let picked;
+  beforeAll(async () => {
+    fx = makeFixture();
+    own = makeTempDir('ps-rec-');
+    picked = pickEvenly(fx.popRows, PILOT_POPULATION_ROWS).map((r) => r.english);
+    a = await pilotIn(fx, own, {
+      model: 'claude-fable-5-2',
+      answer: answerer({ flag: new Set([picked[0], picked[1]]) }),
+    });
+    b = await pilotIn(fx, own, {
+      model: 'claude-opus-5-5',
+      answer: answerer({ flag: new Set([picked[1], picked[2]]), omit: new Set([picked[3]]) }),
+    });
+  });
+  const compare = async (ids) => {
+    const t = mockTransport({ answer: answerer() });
+    const h = harnessDeps(fx, { recordsDir: own, transport: t });
+    const r = await main(['compare', ...ids.flatMap((id) => ['--run', id])], h.deps);
+    return { r, calls: transportCalls(t), text: h.text(), errText: h.errText() };
+  };
+
+  it('counts the two pilots’ agreement on the chemistry rows, keyed by pair, sending nothing', async () => {
+    const { r, calls, text } = await compare([a, b]);
+    expect([
+      r.exitCode,
+      calls,
+      /^chemistry rows: 24 in both pilots; both flag 1, both fine 20, flag in A only 1, flag in B only 1, unjudged in either 1$/m.test(
+        text
+      ),
+      new RegExp(`^ {2}flag in A only: ${picked[0]} → qorð\\d+ \\(A: wrong-sense\\)$`, 'm').test(
+        text
+      ),
+      new RegExp(`^ {2}flag in B only: ${picked[2]} → qorð\\d+ \\(B: wrong-sense\\)$`, 'm').test(
+        text
+      ),
+      new RegExp(
+        `^ {2}unjudged in either: ${picked[3]} → qorð\\d+ \\(A: fine; B: no answer\\)$`,
+        'm'
+      ).test(text),
+      /^agreement: 21 of the 23 rows both pilots judged \(91\.3%\)$/m.test(text),
+    ]).toEqual([0, 0, true, true, true, true, true]);
+  });
+
+  it('refuses one --run, or the same run twice', async () => {
+    const one = await compare([a]);
+    const twice = await compare([a, a]);
+    expect([
+      one.r.refusal,
+      twice.r.refusal,
+      /compare takes two different --run/.test(one.errText + twice.errText),
+    ]).toEqual(['bad-flag', 'bad-flag', true]);
+  });
+
+  it('refuses a run that is not a pilot', async () => {
+    const pid = await pilotIn(fx, own);
+    const full = await fullRun(fx, own, pid);
+    const { r } = await compare([a, full.r.runIds[0]]);
+    expect([r.exitCode, r.refusal]).toEqual([1, 'bad-run']);
+  });
+
+  it('refuses pilots drawn from different censuses (their rows are not the same draw)', async () => {
+    const c = await pilotIn(fx, own, { model: 'claude-fable-5-2' });
+    const file = path.join(own, 'runs', c, PRESCREEN_RECORD);
+    const ps = JSON.parse(fs.readFileSync(file, 'utf8'));
+    fs.writeFileSync(
+      file,
+      JSON.stringify({ ...ps, census: { ...ps.census, sha256: 'e'.repeat(64) } })
+    );
+    const { r, errText } = await compare([a, c]);
+    expect([r.exitCode, r.refusal, /census/.test(errText)]).toEqual([1, 'bad-run', true]);
   });
 });
 

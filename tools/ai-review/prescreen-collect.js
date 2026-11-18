@@ -242,6 +242,47 @@ export function buildVerdicts({ base, merged, runIds }) {
   };
 }
 
+/**
+ * Two runs' agreement on the same rows, keyed by the (English, Icelandic) pair (item ids are
+ * numbered within one run, so ids are never compared). A row unjudged in either run is its own
+ * count, never agreement or disagreement.
+ * @param {Array<{ english: string, icelandic: string, verdict: string|null, kind: string|null }>} a
+ * @param {Array<{ english: string, icelandic: string, verdict: string|null, kind: string|null }>} b
+ * @returns {{ inBoth: number, onlyInA: number, onlyInB: number, bothFlag: object[],
+ *   bothFine: object[], flagAOnly: object[], flagBOnly: object[], unjudged: object[] }}
+ *   each listed row is `{ english, icelandic, a, b }`, `a` and `b` the two runs' answers
+ */
+export function comparePilots(a, b) {
+  const key = (r) => `${r.english}\0${r.icelandic}`;
+  const byB = new Map(b.map((r) => [key(r), r]));
+  const inA = new Set(a.map(key));
+  const out = {
+    inBoth: 0,
+    onlyInA: 0,
+    onlyInB: b.filter((r) => !inA.has(key(r))).length,
+    bothFlag: [],
+    bothFine: [],
+    flagAOnly: [],
+    flagBOnly: [],
+    unjudged: [],
+  };
+  for (const ra of a) {
+    const rb = byB.get(key(ra));
+    if (!rb) {
+      out.onlyInA += 1;
+      continue;
+    }
+    out.inBoth += 1;
+    const row = { english: ra.english, icelandic: ra.icelandic, a: ra, b: rb };
+    if (!ra.verdict || !rb.verdict) out.unjudged.push(row);
+    else if (ra.verdict === 'flag' && rb.verdict === 'flag') out.bothFlag.push(row);
+    else if (ra.verdict === 'flag') out.flagAOnly.push(row);
+    else if (rb.verdict === 'flag') out.flagBOnly.push(row);
+    else out.bothFine.push(row);
+  }
+  return out;
+}
+
 function findPrivateField(value, where) {
   if (Array.isArray(value)) {
     for (let i = 0; i < value.length; i += 1) {

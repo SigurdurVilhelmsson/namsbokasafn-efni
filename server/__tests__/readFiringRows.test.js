@@ -215,6 +215,29 @@ describe('read-firing-rows CLI', () => {
     expect(doc.rows.length).toBeGreaterThan(0);
   });
 
+  it('reads the commit before any work, so a box without git fails before the database', () => {
+    const notARepo = mkdtempSync(path.join(os.tmpdir(), 'c19-nogit-'));
+    tmpDirs.push(notARepo);
+    const env = {
+      ...process.env,
+      SESSIONS_DB_PATH: path.join(notARepo, 'missing.db'),
+      GIT_CEILING_DIRECTORIES: path.dirname(notARepo),
+    };
+    delete env.GIT_DIR;
+    delete env.GIT_WORK_TREE;
+    const r = spawnSync('node', [SCRIPT, BOOK, '--books-dir', makeBooksDir(1)], {
+      cwd: notARepo,
+      env,
+      encoding: 'utf8',
+    });
+    expect([
+      r.status !== 0,
+      r.stdout,
+      /git rev-parse HEAD/.test(r.stderr),
+      /unable to open database/.test(r.stderr),
+    ]).toEqual([true, '', true, false]);
+  });
+
   it('keeps log lines out of stdout under node - too', () => {
     const bare = freshMigratedDb();
     bare.db.prepare('DELETE FROM book_domain_priority').run();

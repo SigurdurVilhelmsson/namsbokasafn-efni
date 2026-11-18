@@ -28,7 +28,10 @@ export const INSTRUMENT_NOTE =
   'compounds and other forms that do not contain the stem, and it can over-count a word that ' +
   'merely shares the stem.';
 
-/** Ruling P1: 1 -> ch01, 0 -> ch00, -1 -> appendices. */
+/**
+ * The chapter directory of a census chapter number, numbered as segmentParser.listChapters
+ * numbers them: 1 -> ch01, 0 -> ch00, -1 -> appendices.
+ */
 export const chapterDirOf = (chapter) =>
   chapter === -1 ? 'appendices' : `ch${String(chapter).padStart(2, '0')}`;
 
@@ -227,6 +230,19 @@ export function main(argv, deps = {}) {
   }
 }
 
-if (process.argv[1] && fs.realpathSync(process.argv[1]) === fileURLToPath(import.meta.url)) {
+/** Started as a script? Both sides resolved (a symlinked tree must still run); never throws. */
+const isEntry = (() => {
+  try {
+    return (
+      process.argv[1] !== undefined &&
+      fs.realpathSync(process.argv[1]) === fs.realpathSync(fileURLToPath(import.meta.url))
+    );
+  } catch {
+    return false;
+  }
+})();
+
+if (isEntry) {
+  process.exitCode = 1; // failure default: only a finished main sets another code
   process.exitCode = main(process.argv.slice(2));
 }

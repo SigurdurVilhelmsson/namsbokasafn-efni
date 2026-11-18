@@ -5,7 +5,12 @@ import { describe, it, expect, vi } from 'vitest';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 import { buildPageData, main, chapterDirOf, makeMtTextFor } from '../ai-review/prescreen-page.js';
+
+const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
+const PAGE_JS = path.join(REPO, 'tools', 'ai-review', 'prescreen-page.js');
 
 const vrow = (id, verdict, extra = {}) => ({
   id,
@@ -203,7 +208,7 @@ describe('makeMtTextFor (real reader)', () => {
 });
 
 describe('chapterDirOf', () => {
-  it('follows ruling P1', () => {
+  it('names a chapter directory as segmentParser.listChapters numbers chapters', () => {
     expect([chapterDirOf(1), chapterDirOf(0), chapterDirOf(-1)]).toEqual([
       'ch01',
       'ch00',
@@ -316,5 +321,37 @@ describe('main path guards', () => {
       expect.stringMatching(/reduced/),
       false,
     ]);
+  });
+});
+
+describe('the CLI entry guard', () => {
+  it('runs when started through a symlinked tree (it does not silently do nothing)', () => {
+    const tree = fs.mkdtempSync(path.join(os.tmpdir(), 'page-link-'));
+    for (const name of ['tools', 'package.json', 'node_modules'])
+      fs.symlinkSync(path.join(REPO, name), path.join(tree, name));
+    const r = spawnSync(
+      process.execPath,
+      [
+        '--preserve-symlinks',
+        '--preserve-symlinks-main',
+        path.join(tree, 'tools/ai-review/prescreen-page.js'),
+      ],
+      { encoding: 'utf8' }
+    );
+    fs.rmSync(tree, { recursive: true, force: true });
+    expect([r.status, /--verdicts is required/.test(r.stderr)]).toEqual([1, true]);
+  });
+  it('does not throw when imported by a script that has an argument', () => {
+    const r = spawnSync(
+      process.execPath,
+      [
+        '--input-type=module',
+        '-e',
+        `await import(${JSON.stringify(PAGE_JS)}); console.log('imported');`,
+        'no-such-file-arg',
+      ],
+      { encoding: 'utf8', cwd: os.tmpdir() }
+    );
+    expect([r.status, r.stdout.trim()]).toEqual([0, 'imported']);
   });
 });

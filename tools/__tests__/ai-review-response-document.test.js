@@ -42,6 +42,11 @@ describe('conforms and REQUEST_PROBLEMS', () => {
   it('lists the five codes', () => {
     expect(REQUEST_PROBLEMS).toHaveLength(5);
   });
+  it('names its own module in the error for a schema type it does not support', () => {
+    expect(() => conforms({ type: 'number' }, 1)).toThrow(
+      /^response-document: schema type "number" unsupported$/
+    );
+  });
 });
 
 describe('assertMainCheckout', () => {

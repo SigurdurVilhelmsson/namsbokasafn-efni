@@ -147,6 +147,8 @@ function main() {
     process.exitCode = 2;
     return;
   }
+  // The commit first: a box where it cannot be read fails here, before the long work.
+  const head = execFileSync('git', ['rev-parse', 'HEAD']).toString().trim();
   if (values['books-dir']) segmentParser._setTestBooksDir(values['books-dir']);
 
   const dbPath = resolveDbPath();
@@ -167,7 +169,6 @@ function main() {
     chapters: segmentParser.listChapters(book),
     loadSegments,
   });
-  const head = execFileSync('git', ['rev-parse', 'HEAD']).toString().trim();
   process.stdout.write(
     JSON.stringify({
       schema: 'c19-census/1',

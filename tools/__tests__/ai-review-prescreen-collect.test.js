@@ -12,6 +12,7 @@ import {
   assertPublishable,
   stopReasons,
   renderReport,
+  comparePilots,
 } from '../ai-review/prescreen-collect.js';
 
 const item = (id, kind, extra = {}) => ({
@@ -480,5 +481,39 @@ describe('renderReport', () => {
       true,
       true,
     ]);
+  });
+});
+
+describe('comparePilots', () => {
+  const r = (english, verdict, kind = verdict === 'flag' ? 'wrong-sense' : null) => ({
+    english,
+    icelandic: `is-${english}`,
+    verdict,
+    kind,
+  });
+  const c = comparePilots(
+    [r('a', 'flag'), r('b', 'fine'), r('c', 'flag'), r('d', null), r('only-a', 'fine')],
+    [r('c', 'flag'), r('b', 'flag'), r('a', 'fine'), r('d', 'fine'), r('only-b', 'flag')]
+  );
+  it('keys rows by pair, whatever their order, and counts each outcome', () => {
+    expect({
+      inBoth: c.inBoth,
+      onlyInA: c.onlyInA,
+      onlyInB: c.onlyInB,
+      bothFlag: c.bothFlag.map((x) => x.english),
+      bothFine: c.bothFine.map((x) => x.english),
+      flagAOnly: c.flagAOnly.map((x) => x.english),
+      flagBOnly: c.flagBOnly.map((x) => x.english),
+      unjudged: c.unjudged.map((x) => x.english),
+    }).toEqual({
+      inBoth: 4,
+      onlyInA: 1,
+      onlyInB: 1,
+      bothFlag: ['c'],
+      bothFine: [],
+      flagAOnly: ['a'],
+      flagBOnly: ['b'],
+      unjudged: ['d'],
+    });
   });
 });

@@ -23,7 +23,8 @@
  *           if it fails); without --yes it prints every control with its drawn sentences (read
  *           them before paying) and stops after the preflight and the plan. Then it judges the
  *           run FROM ITS RECORDS: the control table, the chemistry and the physics-and-biology
- *           flag rates, and the cost per row.
+ *           flag rates, and the cost per row. A pilot reserves against the full cap: the
+ *           COST_MARGIN_USD margin binds run and collect --resend only, never a pilot (spec §6).
  *   run     PAID with --yes. Every population row (plus the physics and biology rows with
  *           --include-physics-biology) and every control, through the Batch API, as --split
  *           sequential batches (one run each; every part's prescreen.json records EVERY item and
@@ -57,6 +58,10 @@
  *           directory holds a full or resend run of these rows that may have spent and is not
  *           named (re-sent once means once over every run, not only the named ones). Each
  *           --pilot adds that pilot's cost to the report, never a verdict.
+ *   compare 0 ISK. Two ended pilots over the same census and prompt (spec §6: the two models'
+ *           agreement on the pilot's chemistry rows, reported as information): keyed by the
+ *           (English, Icelandic) pair, how many rows both flag, both find fine, only one flags,
+ *           or either left unjudged, each disagreement listed; written to stdout only.
  *
  * Every command that builds items seeds them with the reduced census's sha256, so a re-plan gives
  * the same items, ids and requests.
@@ -135,6 +140,7 @@ import {
   stopReasons,
   renderReport,
   controlMisses,
+  comparePilots,
 } from './prescreen-collect.js';
 
 export const PRESCREEN_RECORD = 'prescreen.json';
@@ -147,7 +153,8 @@ export const POPULATION_STOP = 450;
 export const PILOT_FLAG_STOP = 0.25;
 /**
  * Spec §6: a full run (each of its batches) or a resend starts only if its worst case leaves at
- * least this much of the cap free.
+ * least this much of the cap free. It binds the full run and the resend, not the pilot: a pilot
+ * reserves against the full cap (the harness still stops it at CAP_USD).
  */
 export const COST_MARGIN_USD = 5;
 /** Where the reduced census (and later the verdicts) are committed. */
@@ -263,6 +270,7 @@ function usage() {
     `  collect --run <runId> [--run …] --out <repo dir under ${RESULTS_DIR}/>`,
     '          --isk-rate <ISK per USD> --isk-rate-source <text> [--pilot <runId> …]',
     '          [--resend [--yes]]',
+    '  compare --run <pilot runId> --run <pilot runId>',
     `The book is ${BOOK}. pilot, run and collect --resend spend only with --yes, from the main ` +
       'checkout.',
   ].join('\n');
@@ -1932,6 +1940,97 @@ async function cmdCollect(ctx, values, deps) {
   return { exitCode: stops.length ? 2 : 0, runIds: allIds, out: out.rel };
 }
 
+// ── compare ─────────────────────────────────────────────────────────────────────────────────
+
+/** A pilot compare can read: phase pilot and ended (run-end.json), so its verdicts are final. */
+function loadEndedPilot(ctx, runId) {
+  const { r, prescreen } = openPrescreenRun(ctx, runId, 'bad-run');
+  if (prescreen.phase !== 'pilot')
+    throw refusal('bad-run', `run ${runId} is a ${prescreen.phase} run; compare reads two pilots`);
+  if (!r.exists(RECORD_FILES.runEnd))
+    throw refusal('bad-run', `pilot ${runId} has not ended: ${remedyForUnended(r, runId)}`);
+  return prescreen;
+}
+
+/**
+ * Two pilots' agreement on their chemistry rows (spec §6, reported as information; 0 ISK): both
+ * must be pilots that ended, over the same census and prompt (the same draw), and the prompt
+ * must still have the recorded sha256 (its schema parses the answers).
+ */
+async function cmdCompare(ctx, values) {
+  const ids = values.run ?? [];
+  if (ids.length !== 2 || ids[0] === ids[1])
+    throw refusal('bad-flag', 'compare takes two different --run <pilot runId>');
+  const [pa, pb] = ids.map((id) => loadEndedPilot(ctx, id));
+  for (const [field, what] of [
+    ['census', 'census'],
+    ['prompt', 'prompt'],
+  ]) {
+    if (pa[field]?.sha256 !== pb[field]?.sha256) {
+      throw refusal(
+        'bad-run',
+        `pilots ${ids[0]} and ${ids[1]} ran over different ${what}s (sha256 ` +
+          `${pa[field]?.sha256} against ${pb[field]?.sha256}): their rows are not the same draw`
+      );
+    }
+  }
+  const prompt = guarded('bad-input', () => loadPrompt(path.join(ctx.repoRoot, pa.prompt.path)));
+  if (prompt.sha256 !== pa.prompt.sha256) {
+    throw refusal(
+      'bad-run',
+      `the prompt ${pa.prompt.path} changed since the pilots (sha256 ${prompt.sha256}, recorded ` +
+        `${pa.prompt.sha256}): their answers are parsed with its schema; restore it`
+    );
+  }
+  const rowsOf = (runId) => {
+    const read = guarded('bad-run', () =>
+      readRun({ recordsDir: ctx.recordsDir, runId, schema: prompt.schema })
+    );
+    return read.prescreen.items
+      .filter((it) => it.kind === 'population')
+      .map((it) => {
+        const v = read.verdicts.get(it.id);
+        return {
+          english: it.english,
+          icelandic: it.icelandic,
+          verdict: v?.verdict ?? null,
+          kind: v?.kind ?? null,
+        };
+      });
+  };
+  const c = comparePilots(rowsOf(ids[0]), rowsOf(ids[1]));
+  ctx.out(
+    `compare pilot A ${ids[0]} (${pa.model}) with pilot B ${ids[1]} (${pb.model}): census ` +
+      `${pa.census.sha256}, prompt ${pa.prompt.sha256}\n`
+  );
+  const onlyOne = c.onlyInA + c.onlyInB;
+  ctx.out(
+    `chemistry rows: ${c.inBoth} in both pilots; both flag ${c.bothFlag.length}, both fine ` +
+      `${c.bothFine.length}, flag in A only ${c.flagAOnly.length}, flag in B only ` +
+      `${c.flagBOnly.length}, unjudged in either ${c.unjudged.length}` +
+      `${onlyOne ? `; in one pilot only ${onlyOne}` : ''}\n`
+  );
+  const answer = (v) => (v.verdict ? (v.verdict === 'flag' ? v.kind : 'fine') : 'no answer');
+  for (const row of c.flagAOnly)
+    ctx.out(`  flag in A only: ${row.english} → ${row.icelandic} (A: ${answer(row.a)})\n`);
+  for (const row of c.flagBOnly)
+    ctx.out(`  flag in B only: ${row.english} → ${row.icelandic} (B: ${answer(row.b)})\n`);
+  for (const row of c.unjudged) {
+    ctx.out(
+      `  unjudged in either: ${row.english} → ${row.icelandic} (A: ${answer(row.a)}; B: ` +
+        `${answer(row.b)})\n`
+    );
+  }
+  const judged = c.inBoth - c.unjudged.length;
+  const agree = c.bothFlag.length + c.bothFine.length;
+  ctx.out(
+    judged
+      ? `agreement: ${agree} of the ${judged} rows both pilots judged (${pct(agree, judged)})\n`
+      : 'agreement: no row was judged by both pilots\n'
+  );
+  return { exitCode: 0, comparison: c };
+}
+
 // ── CLI ─────────────────────────────────────────────────────────────────────────────────────
 
 /** Each subcommand: the flags it admits (any other refuses) and its handler. */
@@ -1959,6 +2058,7 @@ const COMMANDS = {
     flags: ['run', 'out', 'isk-rate', 'isk-rate-source', 'pilot', 'resend', 'yes'],
     run: cmdCollect,
   },
+  compare: { flags: ['run'], run: cmdCompare },
 };
 
 async function dispatch(argv, deps) {

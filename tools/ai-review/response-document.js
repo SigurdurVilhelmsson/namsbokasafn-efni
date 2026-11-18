@@ -74,7 +74,7 @@ export function conforms(schema, value) {
     case 'null':
       return value === null;
     default:
-      throw new Error(`term-pass-response: schema type ${JSON.stringify(schema.type)} unsupported`);
+      throw new Error(`response-document: schema type ${JSON.stringify(schema.type)} unsupported`);
   }
 }
 
