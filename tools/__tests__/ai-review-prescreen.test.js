@@ -1365,6 +1365,23 @@ describe('resume --yes closes an interrupted interactive run', () => {
     ]).toEqual([1, 'bad-flag', true, false]);
   });
 
+  it('resume --yes refuses from a linked worktree (git stub) and leaves the run as it was', async () => {
+    const real = makeGit({ cwd: fx.root });
+    const [common, own] = [makeTempDir('ps-common-'), makeTempDir('ps-own-')];
+    const git = (args) =>
+      args[0] === 'rev-parse' && args.includes('--git-common-dir')
+        ? `${common}\n${own}\n`
+        : real(args);
+    const h = harnessDeps(fx, { recordsDir, git });
+    const r = await main(['resume', '--run', resendId, '--yes'], h.deps);
+    expect([
+      r.exitCode,
+      r.refusal,
+      openUsdOf(recordsDir, resendId) > 0,
+      fs.existsSync(runEndOf(resendId)),
+    ]).toEqual([1, 'linked-worktree', true, false]);
+  });
+
   describe('resume --run <id> --yes', () => {
     let res;
     beforeAll(async () => {
