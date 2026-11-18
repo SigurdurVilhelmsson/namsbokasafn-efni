@@ -25,7 +25,7 @@ import { PROMPT_PATH } from '../ai-review/prescreen-request.js';
 import { DEFAULT_RULING_SET } from '../ai-review/term-pass.js';
 import { loadRulingSet } from '../ai-review/ruling-set.js';
 import { makeGit } from '../ai-review/provenance.js';
-import { reserve, releaseAll } from '../ai-review/ledger.js';
+import { reserve, releaseAll, readLedger, summarizeLedger } from '../ai-review/ledger.js';
 import { CAP_USD } from '../ai-review/config.js';
 import { REPO, makeTempDir, removeTempDirs, mockTransport } from './helpers/term-pass-fixture.js';
 
@@ -922,6 +922,42 @@ describe('run', () => {
       sameItems: true,
       covered: a.items.map((i) => i.id).sort(),
     });
+  });
+
+  it('the paid preflight refuses a dirty input with zero calls', async () => {
+    const real = makeGit({ cwd: fx.root });
+    const git = (args) => (args[0] === 'status' ? ` M ${CENSUS_REL}\0` : real(args));
+    const { r, transport } = await fullRun(fx, recordsDir, pilotId, { extra: { git } });
+    expect([r.exitCode, r.refusal, transportCalls(transport)]).toEqual([1, 'preflight', 0]);
+  });
+
+  it('re-checks the cap before each later batch and stops when it no longer fits', async () => {
+    const own = makeTempDir('ps-rec-');
+    const pid = await pilotIn(fx, own);
+    const dry = await fullRun(fx, own, pid, { args: ['--split', '2'] });
+    const worst = [
+      ...dry.text().matchAll(/^ {2}batch \d of 2: \d+ requests, worst case USD ([\d.]+)$/gm),
+    ].map((m) => Number(m[1]));
+    const { committedUsd } = summarizeLedger(readLedger(ledgerOf(own)));
+    // Batch 1 fits with USD 0.1 to spare; its 3 answers cost about USD 0.3, so batch 2 does not.
+    crowdLedger(own, Math.max(...worst) + committedUsd + 0.1);
+    const base = mockTransport({ answer: answerer() });
+    const transport = {
+      ...base,
+      async *batchResults(id) {
+        for await (const r of base.batchResults(id)) {
+          r.result.message.usage = { ...r.result.message.usage, output_tokens: 10_000 };
+          yield r;
+        }
+      },
+    };
+    const { r, text } = await fullRun(fx, own, pid, { args: ['--split', '2', '--yes'], transport });
+    expect([
+      worst.length,
+      r.exitCode,
+      base.calls.submitBatch,
+      /^stop and ask: batch 2's worst case USD [\d.]+ no longer fits/m.test(text()),
+    ]).toEqual([2, 2, 1, true]);
   });
 
   it('stops at the first batch that does not end complete', async () => {
