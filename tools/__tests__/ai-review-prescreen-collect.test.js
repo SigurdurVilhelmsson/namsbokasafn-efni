@@ -130,10 +130,17 @@ describe('resendIds', () => {
     });
   });
 
-  it('re-sends an id once: one a resend run already presented stays unjudged', () => {
+  it('re-sends an id once: one a resend run already sent stays unjudged', () => {
     const runs = [
       run('A'),
-      run('B', { phase: 'resend', items: [ITEMS[0]], requests: [{ key: 'r001', ids: ['r001'] }] }),
+      {
+        ...run('B', {
+          phase: 'resend',
+          items: [ITEMS[0]],
+          requests: [{ key: 'r001', ids: ['r001'] }],
+        }),
+        sentKeys: ['r001'],
+      },
     ];
     const base = checkRuns(runs);
     const merged = mergeVerdicts([read('A', [['r003', fine]]), read('B', [])]);
@@ -141,6 +148,40 @@ describe('resendIds', () => {
       send: ['r004'],
       resentBefore: ['r001'],
     });
+  });
+
+  it('an id a stopped resend run planned but never sent (requests.jsonl) can still be sent', () => {
+    // The resend run planned r001 and r004 and stopped at the cap after sending r001.
+    const runs = [
+      run('A'),
+      {
+        ...run('B', {
+          phase: 'resend',
+          items: [ITEMS[0], ITEMS[3]],
+          requests: [
+            { key: 'r001', ids: ['r001'] },
+            { key: 'r004', ids: ['r004'] },
+          ],
+        }),
+        sentKeys: ['r001'],
+      },
+    ];
+    const base = checkRuns(runs);
+    const merged = mergeVerdicts([read('A', [['r003', fine]]), read('B', [])]);
+    expect(resendIds({ base, merged, runs })).toEqual({
+      send: ['r004'],
+      resentBefore: ['r001'],
+    });
+  });
+
+  it('without a record of what was sent, counts every planned id as sent (never twice)', () => {
+    const runs = [
+      run('A'),
+      run('B', { phase: 'resend', items: [ITEMS[0]], requests: [{ key: 'r001', ids: ['r001'] }] }),
+    ];
+    const base = checkRuns(runs);
+    const merged = mergeVerdicts([read('A', [['r003', fine]]), read('B', [])]);
+    expect(resendIds({ base, merged, runs }).resentBefore).toEqual(['r001']);
   });
 });
 

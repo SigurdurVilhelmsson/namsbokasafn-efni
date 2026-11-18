@@ -1185,7 +1185,9 @@ function loadEndedRun(ctx, runId) {
     );
   }
   const runEnd = guarded('bad-run', () => r.readJson(RECORD_FILES.runEnd));
-  return { runId, prescreen, runEnd };
+  // What it actually sent: resend's "once" rule must not count a request a stop left unsent.
+  const sentKeys = guarded('bad-run', () => r.readJsonl(RECORD_FILES.requests)).map((l) => l.key);
+  return { runId, prescreen, runEnd, sentKeys };
 }
 
 /**

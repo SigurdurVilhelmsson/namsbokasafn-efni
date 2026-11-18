@@ -1179,6 +1179,62 @@ describe('collect', () => {
   });
 });
 
+describe('collect --resend after a resend that left a request unsent', () => {
+  let fx;
+  let recordsDir;
+  let fullId;
+  let first;
+  let second;
+  let unjudged;
+  beforeAll(async () => {
+    fx = makeFixture();
+    recordsDir = makeTempDir('ps-rec-');
+    const pid = await pilotIn(fx, recordsDir);
+    const refusing = refusingTransport({
+      refuse: (rows) => rows.some((x) => x.en === 'qterm001'),
+    });
+    fullId = (await fullRun(fx, recordsDir, pid, { transport: refusing })).r.runIds[0];
+    // count_tokens fails on the first resend request: the harness records an error, never the
+    // request, so nothing was sent for it.
+    const base = mockTransport({ answer: answerer() });
+    let counted = 0;
+    const flaky = {
+      ...base,
+      async countTokens(body) {
+        counted += 1;
+        if (counted === 1) throw new Error('count_tokens unavailable');
+        return base.countTokens(body);
+      },
+    };
+    first = await collect(fx, recordsDir, [fullId], {
+      args: ['--resend', '--yes'],
+      transport: flaky,
+    });
+    unjudged = first.verdicts.population.filter((x) => x.verdict === 'unjudged').map((x) => x.id);
+    const again = mockTransport({ answer: answerer() });
+    second = await collect(fx, recordsDir, first.verdicts.runs, {
+      args: ['--resend', '--yes'],
+      transport: again,
+    });
+  });
+
+  it('the first resend leaves exactly the unsent row unjudged', () => {
+    expect([first.r.exitCode, unjudged.length]).toEqual([2, 1]);
+  });
+
+  it('a second resend sends that row, which no resend ever sent', () => {
+    const resendRun = second.verdicts.runs[2];
+    const ids = readJsonl(path.join(recordsDir, 'runs', resendRun, 'requests.jsonl')).map(
+      (q) => JSON.parse(q.body.messages[0].content).rows[0].id
+    );
+    expect([second.transport.calls.send, ids]).toEqual([1, unjudged]);
+  });
+
+  it('leaves no population row unjudged', () => {
+    expect(second.verdicts.population.filter((x) => x.verdict === 'unjudged')).toEqual([]);
+  });
+});
+
 describe('collect over complete runs', () => {
   let fx;
   let recordsDir;

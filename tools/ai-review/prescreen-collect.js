@@ -40,7 +40,6 @@ const itemSig = (it) =>
     it.sentences,
   ]);
 const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
-const presentedIds = (prescreen) => prescreen.requests.flatMap((q) => q.ids);
 
 /**
  * Check that runs can be merged and return what they share.
@@ -155,14 +154,25 @@ export function mergeVerdicts(reads) {
 }
 
 /**
- * The population ids to re-send: unjudged, and never presented by a resend run before (spec §8:
+ * The ids a run actually sent: those of its requests whose keys its requests.jsonl records
+ * (`sentKeys`; the harness records a request only once its reservation holds, so a run stopped
+ * at the cap leaves the rest unrecorded). Without `sentKeys`, every planned id counts as sent:
+ * the error that never buys a row twice.
+ */
+const sentIds = (r) => {
+  const keys = r.sentKeys ? new Set(r.sentKeys) : null;
+  return r.prescreen.requests.filter((q) => !keys || keys.has(q.key)).flatMap((q) => q.ids);
+};
+
+/**
+ * The population ids to re-send: unjudged, and never sent by a resend run before (spec §8:
  * re-sent once). Controls are never re-sent.
+ * @param {{ base: object, merged: Map<string, object>,
+ *   runs: Array<{ prescreen: object, sentKeys?: string[] }> }} args
  * @returns {{ send: string[], resentBefore: string[] }}
  */
 export function resendIds({ base, merged, runs }) {
-  const resent = new Set(
-    runs.filter((r) => r.prescreen.phase === 'resend').flatMap((r) => presentedIds(r.prescreen))
-  );
+  const resent = new Set(runs.filter((r) => r.prescreen.phase === 'resend').flatMap(sentIds));
   const unjudged = base.items
     .filter((it) => isPopulation(it.kind) && !merged.has(it.id))
     .map((it) => it.id)
