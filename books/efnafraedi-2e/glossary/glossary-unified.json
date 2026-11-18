@@ -1,14 +1,14 @@
 {
   "producer": "export-terminology-resolved",
-  "generated": "2026-11-01T10:00:03.740Z",
+  "generated": "2026-11-18T10:00:05.942Z",
   "book": "efnafraedi-2e",
   "stats": {
-    "total": 1750,
-    "approved": 1750,
+    "total": 1749,
+    "approved": 1749,
     "ties": 333,
     "nominalTies": 105,
     "outOfScopeOnly": 1510,
-    "censusStrings": 109321
+    "censusStrings": 109271
   },
   "terms": [
     {
@@ -2020,18 +2020,6 @@
       "position": 3,
       "conceptId": 46179,
       "alternatives": []
-    },
-    {
-      "english": "auto-",
-      "icelandic": "sjálf-",
-      "status": "approved",
-      "reason": "head-form",
-      "domain": "biology",
-      "position": 3,
-      "conceptId": 47083,
-      "alternatives": [
-        "sjálfs-"
-      ]
     },
     {
       "english": "autoionization",
