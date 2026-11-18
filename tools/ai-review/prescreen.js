@@ -19,6 +19,20 @@
  *           --yes it stops after the preflight and the plan. Then it judges the run FROM ITS
  *           RECORDS: the control table, the chemistry and the physics-and-biology flag rates, and
  *           the cost per row.
+ *   run     PAID with --yes. Every population row (plus the physics and biology rows with
+ *           --include-physics-biology) and every control, through the Batch API, as --split
+ *           sequential batches (one run each; every part's prescreen.json records EVERY item and
+ *           its own requests). Refuses unless the named pilot, RE-JUDGED FROM ITS RECORDS, ran
+ *           the same model and prompt and its controls pass; refuses a population over
+ *           POPULATION_STOP without --accept-large-population; refuses when the largest batch's
+ *           worst case would leave less than COST_MARGIN_USD of the cap free. Stops at the first
+ *           batch that does not end complete or leaves one of its population rows unjudged.
+ *   resume  PAID (it settles a batch already bought). Collects a batch whose polling stopped;
+ *           the harness resumes it and never resubmits.
+ *   collect 0 ISK, or PAID with --resend --yes. Merges the named full (and resend) runs by item
+ *           id into one verdict per population row (an id answered in two runs refuses), writes
+ *           prescreen-verdicts.json and prescreen-report.md under RESULTS_DIR. With --resend the
+ *           population rows still unjudged go once more, one per interactive request.
  *
  * Every command that builds items seeds them with the reduced census's sha256, so a re-plan gives
  * the same items, ids and requests.
@@ -26,9 +40,10 @@
  * Exit codes: 0 done; 1 refused (the message says why); 2 stop and ask: plan's population is over
  * the stop line, or the pilot's gate failed, its chemistry flag rate is over PILOT_FLAG_STOP, its
  * run did not end complete, or a chemistry row is unjudged (a row is never counted as fine because
- * its answer is missing, spec §2).
+ * its answer is missing, spec §2); for run, resume and collect, a run did not end complete, a
+ * population row is unjudged, or a control was missed.
  *
- * Preflight (pilot):
+ * Preflight (pilot, run, collect --resend):
  *   - the repository is the MAIN checkout (the ledger, and so the cap, lives there);
  *   - the prompt, the ruling set, the census, the export, the English segments and every file of
  *     the code (CODE_PATHS) are tracked and clean, so the commit a record names describes what
@@ -44,9 +59,10 @@ import { parseArgs } from 'node:util';
 import { fileURLToPath } from 'node:url';
 import { REPO_ROOT, CAP_USD, LEDGER_FILE, assertBookSlug } from './config.js';
 import { loadRulingSet } from './ruling-set.js';
-import { runInteractive } from './harness.js';
+import { runInteractive, runBatch } from './harness.js';
 import { summarizeLedger, readLedger } from './ledger.js';
-import { mintRunId, openRunDir, createRecordWriter, RECORD_FILES } from './records.js';
+import { usdToPico } from './pricing.js';
+import { mintRunId, openRunDir, runDirFor, createRecordWriter, RECORD_FILES } from './records.js';
 import { makeGit, cleanTrackedProblems, assertMainCheckout } from './provenance.js';
 import {
   BOOK,
@@ -78,6 +94,18 @@ import {
   buildRequests,
 } from './prescreen-request.js';
 import { parsePrescreenResponse, judgeControls } from './prescreen-response.js';
+import {
+  POPULATION_KINDS,
+  VERDICTS_FILE,
+  REPORT_FILE,
+  checkRuns,
+  mergeVerdicts,
+  resendIds,
+  buildVerdicts,
+  assertPublishable,
+  stopReasons,
+  renderReport,
+} from './prescreen-collect.js';
 
 export const PRESCREEN_RECORD = 'prescreen.json';
 export const PRESCREEN_SCHEMA = 'c19-prescreen/1';
@@ -87,6 +115,11 @@ export const PILOT_PHYSICS_BIOLOGY_ROWS = 15;
 export const POPULATION_STOP = 450;
 /** Spec §6: stop and ask if the model flags more than this share of the pilot's chemistry rows. */
 export const PILOT_FLAG_STOP = 0.25;
+/**
+ * Spec §6: a full run (each of its batches) or a resend starts only if its worst case leaves at
+ * least this much of the cap free.
+ */
+export const COST_MARGIN_USD = 5;
 /** Where the reduced census (and later the verdicts) are committed. */
 export const RESULTS_DIR = 'experiments/terminology-consistency/results';
 /**
@@ -138,12 +171,18 @@ const pct = (n, d) => `${((100 * n) / d).toFixed(1)}%`;
 
 function usage() {
   return [
-    'usage: node tools/ai-review/prescreen.js <reduce|plan|pilot> [flags]',
+    'usage: node tools/ai-review/prescreen.js <reduce|plan|pilot|run|resume|collect> [flags]',
     '  reduce  --census-full <abs path outside the repo> --out <repo path under ' +
       `${RESULTS_DIR}/>`,
     '  plan    --census <repo path of the reduced census>',
     `  pilot   --census <repo path> --model <${MODELS.join('|')}> [--yes]`,
-    `The book is ${BOOK}. pilot spends only with --yes, from the main checkout.`,
+    '  run     --census <repo path> --model <m> --pilot <runId> [--include-physics-biology]',
+    '          [--split <n>] [--max-tokens <n>] [--accept-large-population] [--yes]',
+    '  resume  --run <runId>',
+    `  collect --run <runId> [--run …] --out <repo dir under ${RESULTS_DIR}/>`,
+    '          --isk-rate <ISK per USD> --isk-rate-source <text> [--resend [--yes]]',
+    `The book is ${BOOK}. pilot, run and collect --resend spend only with --yes, from the main ` +
+      'checkout.',
   ].join('\n');
 }
 
@@ -152,6 +191,15 @@ const OPTIONS = {
   out: { type: 'string' },
   census: { type: 'string' },
   model: { type: 'string' },
+  pilot: { type: 'string' },
+  'include-physics-biology': { type: 'boolean' },
+  split: { type: 'string' },
+  'max-tokens': { type: 'string' },
+  'accept-large-population': { type: 'boolean' },
+  run: { type: 'string', multiple: true },
+  'isk-rate': { type: 'string' },
+  'isk-rate-source': { type: 'string' },
+  resend: { type: 'boolean' },
   yes: { type: 'boolean' },
   help: { type: 'boolean' },
 };
@@ -314,6 +362,8 @@ export function prescreenPayload({
   requests,
   excluded = {},
   pick = null,
+  rowsPerRequest = ROWS_PER_REQUEST,
+  extra = {},
 }) {
   return {
     schema: PRESCREEN_SCHEMA,
@@ -323,6 +373,7 @@ export function prescreenPayload({
     effort,
     maxTokens,
     excluded,
+    ...extra,
     census: { path: inputs.census.path, sha256: inputs.census.sha256 },
     rulingSet: { path: inputs.rulingSet.path, sha256: inputs.rulingSet.sha256 },
     prompt: { path: inputs.prompt.path, sha256: inputs.prompt.sha256 },
@@ -334,10 +385,25 @@ export function prescreenPayload({
       ...key[it.id],
       sentences: it.sentences,
     })),
-    rowsPerRequest: ROWS_PER_REQUEST,
+    rowsPerRequest,
     requests: requests.map((r) => ({ key: r.key, ids: r.presented })),
   };
 }
+
+/** The transport and code-version seams every harness call takes from `deps`. */
+const transportOptions = (deps) => ({
+  ...(deps.transport ? { transport: deps.transport } : {}),
+  ...(deps.keyOptions ? { keyOptions: deps.keyOptions } : {}),
+  ...(deps.harnessCommit ? { harnessCommit: deps.harnessCommit } : {}),
+  ...(deps.harnessDirty ? { harnessDirty: deps.harnessDirty } : {}),
+});
+
+/** A batch's polling seams (tests inject them; the real CLI polls every minute until it ends). */
+const pollOptions = (deps) => ({
+  ...(deps.sleep ? { sleep: deps.sleep } : {}),
+  ...(deps.pollIntervalMs !== undefined ? { pollIntervalMs: deps.pollIntervalMs } : {}),
+  ...(deps.maxPolls !== undefined ? { maxPolls: deps.maxPolls } : {}),
+});
 
 /** The harness options every paid command shares. */
 function harnessOptions(ctx, deps, { inputs, model, effort, maxTokens, runId }) {
@@ -351,10 +417,7 @@ function harnessOptions(ctx, deps, { inputs, model, effort, maxTokens, runId }) 
     rulingSet: { path: inputs.rulingSet.path, sha256: inputs.rulingSet.sha256 },
     runId,
     now: ctx.now,
-    ...(deps.transport ? { transport: deps.transport } : {}),
-    ...(deps.keyOptions ? { keyOptions: deps.keyOptions } : {}),
-    ...(deps.harnessCommit ? { harnessCommit: deps.harnessCommit } : {}),
-    ...(deps.harnessDirty ? { harnessDirty: deps.harnessDirty } : {}),
+    ...transportOptions(deps),
   };
 }
 
@@ -421,6 +484,57 @@ function printLedger(ctx) {
   );
 }
 
+/**
+ * What the cap leaves free after the ledger's committed USD and the COST_MARGIN_USD margin, in
+ * integer pico-USD (may be negative), and a sentence saying how it was computed.
+ */
+function headroom(ctx) {
+  const { committedUsd } = summarizeLedger(readLedger(path.join(ctx.recordsDir, LEDGER_FILE)));
+  const freeP = usdToPico(CAP_USD) - usdToPico(committedUsd) - usdToPico(COST_MARGIN_USD);
+  const freeUsd = Math.round(freeP / 1e6) / 1e6;
+  return {
+    freeP,
+    says:
+      `USD ${CAP_USD} cap − USD ${committedUsd} committed − USD ${COST_MARGIN_USD} margin = ` +
+      `USD ${freeUsd} free (spec §6)`,
+  };
+}
+
+/** Does a worst case of `usd` fit what the cap leaves free? */
+const fits = (usd, room) => usdToPico(usd) <= room.freeP;
+
+function positiveInt(v, name) {
+  if (v === undefined) return undefined;
+  if (!/^[1-9]\d*$/.test(v)) throw refusal('bad-flag', `--${name} must be a positive integer`);
+  return Number(v);
+}
+
+/** The population ids a run presented that have no verdict in it. */
+function unjudgedPresented(read) {
+  return read.prescreen.requests
+    .flatMap((q) => q.ids)
+    .filter((id) => POPULATION_KINDS.includes(read.key[id]?.kind) && !read.verdicts.has(id));
+}
+
+/** What to do after a run that did not end complete, by its status. */
+function remedyFor(status, runId) {
+  const remedies = {
+    pending: `resume with: node tools/ai-review/prescreen.js resume --run ${runId}`,
+    'submit-unknown':
+      'the batch may exist: check the Anthropic Console before anything else; its reservation ' +
+      'stays open in the ledger (batch.json names it)',
+    'submit-failed': 'the API refused the batch; its reservation was released',
+    'stopped-at-cap': 'the spending cap refused the reservation (see the ledger line)',
+    'stopped-on-errors': "API errors stopped it (see the run's errors.jsonl)",
+    'stopped-on-truncation': 'answers were cut off at max_tokens',
+    'stopped-over-reservation':
+      'a response cost more than its reserved worst case: the price assumptions did not hold',
+    'complete-over-reservation':
+      'the results are in, but a response cost more than its reserved worst case',
+  };
+  return remedies[status] ?? "read the run's records";
+}
+
 // ── reduce ──────────────────────────────────────────────────────────────────────────────────
 
 /** The private full census: an absolute path whose file lies outside the repository. */
@@ -448,6 +562,28 @@ function resultsOutput(p, repoRoot) {
   if (!isInside(landing, path.join(fs.realpathSync(repoRoot), RESULTS_DIR)))
     throw refusal('bad-flag', `--out lands outside ${RESULTS_DIR}/: ${landing}`);
   return { rel, abs: landing };
+}
+
+/** collect's destination: a repo directory strictly under RESULTS_DIR, judged where it lands. */
+function resultsDirOutput(p, repoRoot) {
+  const what = `--out must be a repo-relative directory under ${RESULTS_DIR}/`;
+  if (typeof p !== 'string' || p === '' || path.isAbsolute(p)) throw refusal('bad-flag', what);
+  const rel = path.posix.normalize(p.split(path.sep).join('/')).replace(/\/+$/, '');
+  if (!rel.startsWith(`${RESULTS_DIR}/`)) throw refusal('bad-flag', what);
+  const root = path.join(fs.realpathSync(repoRoot), RESULTS_DIR);
+  const landing = landingPath(path.join(repoRoot, rel), 'out');
+  if (!isInside(landing, root) || path.relative(root, landing) === '')
+    throw refusal('bad-flag', `--out lands outside ${RESULTS_DIR}/: ${landing}`);
+  return { rel, abs: landing };
+}
+
+/** Write `text` to `dir/name` atomically (tmp + rename). */
+function writeAtomic(dir, name, text) {
+  fs.mkdirSync(dir, { recursive: true });
+  const file = path.join(dir, name);
+  const tmp = `${file}.tmp-${process.pid}`;
+  fs.writeFileSync(tmp, text);
+  fs.renameSync(tmp, file);
 }
 
 async function cmdReduce(ctx, values) {
@@ -679,6 +815,561 @@ async function cmdPilot(ctx, values, deps) {
   return { exitCode: stops.length ? 2 : 0, sent: true, runId, status: result.status };
 }
 
+// ── run ─────────────────────────────────────────────────────────────────────────────────────
+
+/** A run directory's records, refused with `code` when it or its prescreen.json is missing. */
+function openPrescreenRun(ctx, runId, code) {
+  const dir = guarded('bad-flag', () => runDirFor(ctx.recordsDir, runId));
+  if (!fs.existsSync(dir)) throw refusal(code, `no run ${runId} in ${ctx.recordsDir}`);
+  const r = createRecordWriter({ dir });
+  if (!r.exists(PRESCREEN_RECORD))
+    throw refusal(code, `run ${runId} has no ${PRESCREEN_RECORD}; it is not a pre-screen run`);
+  const prescreen = guarded(code, () => r.readJson(PRESCREEN_RECORD));
+  if (prescreen.schema !== PRESCREEN_SCHEMA || prescreen.runId !== runId)
+    throw refusal(
+      code,
+      `run ${runId}: ${PRESCREEN_RECORD} is not a ${PRESCREEN_SCHEMA} record of it`
+    );
+  return { r, prescreen };
+}
+
+/**
+ * Decide that the named pilot passed by RE-JUDGING it from its records (its prescreen.json and
+ * responses.jsonl), never from anything printed: phase pilot, the same model and prompt sha256
+ * as this run, and every control as expected.
+ * @returns {{ runId: string, passed: number, maxOutputTokens: number|null }}
+ */
+function judgePilotRecord(ctx, runId, { model, prompt }) {
+  const { r, prescreen } = openPrescreenRun(ctx, runId, 'pilot');
+  if (prescreen.phase !== 'pilot')
+    throw refusal('pilot', `run ${runId} is a ${prescreen.phase} run, not a pilot`);
+  if (prescreen.model !== model) {
+    throw refusal(
+      'pilot',
+      `pilot ${runId} ran on ${prescreen.model}, not ${model}: a full run uses the model whose ` +
+        'pilot passed (spec §6: never switch silently)'
+    );
+  }
+  if (prescreen.prompt?.sha256 !== prompt.sha256) {
+    throw refusal(
+      'pilot',
+      `pilot ${runId} ran the prompt with sha256 ${prescreen.prompt?.sha256}; it is now ` +
+        `${prompt.sha256}. A revised prompt needs a new pilot (spec §6)`
+    );
+  }
+  const read = guarded('pilot', () =>
+    readRun({ recordsDir: ctx.recordsDir, runId, schema: prompt.schema })
+  );
+  const gate = judgeControls({ verdicts: read.verdicts, key: read.key });
+  if (!gate.pass) {
+    const misses = gate.results
+      .filter((c) => !c.ok)
+      .map((c) => `${c.name} expected ${c.expected} got ${c.got}`);
+    throw refusal(
+      'pilot',
+      `pilot ${runId}'s controls do not pass, re-judged from its records: ` +
+        `${misses.join('; ') || 'it holds no controls'}`
+    );
+  }
+  const outputs = guarded('pilot', () => r.readJsonl(RECORD_FILES.responses))
+    .map((l) => l.usage?.output_tokens)
+    .filter(Number.isSafeInteger);
+  return {
+    runId,
+    passed: gate.results.length,
+    maxOutputTokens: outputs.length ? Math.max(...outputs) : null,
+  };
+}
+
+/** `list` in `n` consecutive parts whose sizes differ by at most one. */
+const splitEvenly = (list, n) =>
+  Array.from({ length: n }, (_, k) =>
+    list.slice(Math.floor((k * list.length) / n), Math.floor(((k + 1) * list.length) / n))
+  );
+
+/** Print the outcome over every run read so far, and return its reasons to stop and ask. */
+function judgeFullRun(ctx, { items, key, reads }) {
+  const merged = guarded('bad-run', () => mergeVerdicts(reads));
+  const population = items.filter((it) => POPULATION_KINDS.includes(key[it.id].kind));
+  const unjudged = population.filter((it) => !merged.has(it.id)).length;
+  const gate = judgeControls({ verdicts: merged, key });
+  ctx.out(
+    `population rows: ${population.length - unjudged} of ${population.length} judged, ` +
+      `${unjudged} unjudged; controls ${gate.pass ? 'PASS' : 'FAIL'} ` +
+      `(${gate.results.filter((c) => c.ok).length} of ${gate.results.length} as expected)\n`
+  );
+  const stops = [];
+  for (const c of gate.results.filter((x) => !x.ok)) {
+    const v = merged.get(c.id);
+    ctx.out(
+      `  FAIL ${c.id} ${String(c.name).padEnd(18)} expected ${c.expected} got ${c.got}` +
+        `${v ? `: ${v.reason}` : ''}\n`
+    );
+  }
+  if (unjudged) stops.push(`${unjudged} population rows have no verdict (never counted as fine)`);
+  if (!gate.pass) stops.push('a control was missed in the full run (FAIL rows above)');
+  return stops;
+}
+
+async function cmdRun(ctx, values, deps) {
+  if (values.model === undefined)
+    throw refusal('bad-flag', `run needs --model (${MODELS.join(' or ')})`);
+  if (values.pilot === undefined)
+    throw refusal('bad-flag', 'run needs --pilot <runId>: the pilot that passed on this model');
+  const model = values.model;
+  const split = positiveInt(values.split, 'split') ?? 1;
+  const lowered = positiveInt(values['max-tokens'], 'max-tokens');
+  if (lowered !== undefined && lowered > DEFAULT_MAX_TOKENS) {
+    throw refusal(
+      'bad-flag',
+      `--max-tokens only lowers max_tokens (the default is ${DEFAULT_MAX_TOKENS})`
+    );
+  }
+  const maxTokens = lowered ?? DEFAULT_MAX_TOKENS;
+  const accepted = values['accept-large-population'] === true;
+  const includePB = values['include-physics-biology'] === true;
+  const inputs = loadInputs(ctx, values.census);
+  const { seed, population, controls } = populationOf(inputs);
+  const physicsBiology = includePB ? population.physicsBiology : [];
+  const size = population.rows.length + physicsBiology.length;
+  if (population.rows.length === 0)
+    throw refusal('bad-census', 'the population holds no chemistry rows: nothing to run');
+  if (size > POPULATION_STOP && !accepted) {
+    throw refusal(
+      'population-stop',
+      `the population is ${size} rows, over the ${POPULATION_STOP}-row stop line (spec §6): ` +
+        'ask first; --accept-large-population records the answer'
+    );
+  }
+  const pilot = judgePilotRecord(ctx, values.pilot, { model, prompt: inputs.prompt });
+  ctx.out(
+    `pilot ${pilot.runId} re-judged from its records: ${model}, prompt ${inputs.prompt.sha256}, ` +
+      `controls PASS (${pilot.passed} of ${pilot.passed})\n`
+  );
+  if (lowered !== undefined) {
+    if (pilot.maxOutputTokens === null)
+      throw refusal(
+        'bad-flag',
+        '--max-tokens: the pilot recorded no output usage to check against'
+      );
+    if (lowered < 2 * pilot.maxOutputTokens) {
+      throw refusal(
+        'bad-flag',
+        `--max-tokens ${lowered} is under twice the largest output the pilot measured ` +
+          `(${pilot.maxOutputTokens} tokens, spec §6)`
+      );
+    }
+  }
+  // Rows now in the population are no longer excluded (spec §8: each group counted once).
+  const excluded = includePB
+    ? {
+        ...population.excluded,
+        physicsBiology: population.excluded.physicsBiology - physicsBiology.length,
+      }
+    : population.excluded;
+  const built = buildRun({
+    inputs,
+    seed,
+    model,
+    rows: population.rows,
+    physicsBiology,
+    controls,
+    maxTokens,
+  });
+  if (split > built.requests.length)
+    throw refusal(
+      'bad-flag',
+      `--split ${split} is more than the ${built.requests.length} requests`
+    );
+  const parts = splitEvenly(built.requests, split);
+  const worst = parts.map((p) => estimateRequests(p, { model, maxTokens }).worstCaseUsd.batch);
+  ctx.out(
+    `full run on ${model}, effort ${DEFAULT_EFFORT}, max_tokens ${maxTokens}: ` +
+      `${population.rows.length} chemistry rows + ${physicsBiology.length} physics and biology ` +
+      `rows + ${controls.length} controls = ${built.items.length} rows in ` +
+      `${built.requests.length} requests, ${parts.length} batch(es)\n`
+  );
+  parts.forEach((p, k) =>
+    ctx.out(
+      `  batch ${k + 1} of ${parts.length}: ${p.length} requests, worst case USD ${worst[k]}\n`
+    )
+  );
+  const room = headroom(ctx);
+  ctx.out(`ledger: ${room.says}\n`);
+  const largest = Math.max(...worst);
+  if (!fits(largest, room)) {
+    throw refusal(
+      'cost',
+      `the largest batch's worst case USD ${largest} does not fit: ${room.says}. Split the run ` +
+        'into sequential batches with --split <n>, or lower --max-tokens (to no less than twice ' +
+        `the pilot's largest output, ${2 * (pilot.maxOutputTokens ?? 0)} tokens)`
+    );
+  }
+  preflight(ctx, inputs);
+  ctx.out(
+    `preflight passed: census ${inputs.census.sha256}; prompt ${inputs.prompt.sha256}; ruling set ` +
+      `${inputs.rulingSet.sha256}\n`
+  );
+  if (!values.yes) {
+    ctx.out('not sending: add --yes to spend.\n');
+    return { exitCode: 0, sent: false };
+  }
+  const runIds = [];
+  const statuses = [];
+  const reads = [];
+  const stops = [];
+  for (let k = 0; k < parts.length; k += 1) {
+    const unsent =
+      k + 1 < parts.length ? `; batches ${k + 2} to ${parts.length} were not sent` : '';
+    if (k > 0 && !fits(worst[k], headroom(ctx))) {
+      stops.push(
+        `batch ${k + 1}'s worst case USD ${worst[k]} no longer fits: ${headroom(ctx).says}; ` +
+          `batches ${k + 1} to ${parts.length} were not sent`
+      );
+      break;
+    }
+    const runId = mintRunId(ctx.now());
+    const payload = prescreenPayload({
+      runId,
+      phase: 'full',
+      model,
+      maxTokens,
+      inputs,
+      items: built.items,
+      key: built.key,
+      requests: parts[k],
+      excluded,
+      extra: {
+        pilot: pilot.runId,
+        includePhysicsBiology: includePB,
+        acceptLargePopulation: accepted,
+        split: { part: k + 1, of: parts.length },
+      },
+    });
+    const result = await runBatch({
+      ...harnessOptions(ctx, deps, { inputs, model, effort: DEFAULT_EFFORT, maxTokens, runId }),
+      ...pollOptions(deps),
+      requests: parts[k].map(({ key, body }) => ({ key, body })),
+      extraRecords: [{ name: PRESCREEN_RECORD, payload }],
+    });
+    runIds.push(runId);
+    statuses.push(result.status);
+    const usd = result.totalUsd !== undefined ? `, USD ${result.totalUsd}` : '';
+    ctx.out(
+      `batch ${k + 1} of ${parts.length}: run ${runId} ${result.status}${usd}` +
+        `${result.counts ? ` ${JSON.stringify(result.counts)}` : ''}\n`
+    );
+    const ended = createRecordWriter({ dir: runDirFor(ctx.recordsDir, runId) }).exists(
+      RECORD_FILES.runEnd
+    );
+    const read = ended
+      ? readRun({ recordsDir: ctx.recordsDir, runId, schema: inputs.prompt.schema })
+      : null;
+    if (read) reads.push(read);
+    if (result.status !== 'complete') {
+      stops.push(
+        `run ${runId} ended ${result.status}, not complete: ${remedyFor(result.status, runId)}` +
+          unsent
+      );
+      break;
+    }
+    const open = unjudgedPresented(read);
+    if (open.length) {
+      stops.push(
+        `run ${runId} left ${open.length} of its population rows unjudged (refused, truncated or ` +
+          `unparsed answers: read its records)${unsent}`
+      );
+      break;
+    }
+  }
+  stops.push(...judgeFullRun(ctx, { items: built.items, key: built.key, reads }));
+  printLedger(ctx);
+  for (const s of stops) ctx.out(`stop and ask: ${s}\n`);
+  ctx.out(
+    `next: node tools/ai-review/prescreen.js collect ${runIds.map((id) => `--run ${id}`).join(' ')} ` +
+      `--out ${RESULTS_DIR}/<date> --isk-rate <ISK per USD> --isk-rate-source <source, date>\n`
+  );
+  return { exitCode: stops.length ? 2 : 0, sent: true, runIds, statuses };
+}
+
+// ── resume ──────────────────────────────────────────────────────────────────────────────────
+
+const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+
+/**
+ * Collect a full run's batch whose polling stopped. The options come from the run's own records
+ * (run.json, checked against prescreen.json), so the harness's parameter match holds and it
+ * resumes, never resubmits. The main checkout is required (the ledger lives there), but NOT a
+ * clean tree: a tree changed since the buy must not strand a batch already paid for.
+ */
+async function cmdResume(ctx, values, deps) {
+  const ids = values.run ?? [];
+  if (ids.length !== 1) throw refusal('bad-flag', 'resume takes exactly one --run');
+  const runId = ids[0];
+  const { r, prescreen } = openPrescreenRun(ctx, runId, 'bad-run');
+  if (!r.exists(RECORD_FILES.run)) throw refusal('bad-run', `run ${runId} has no run.json`);
+  const run = guarded('bad-run', () => r.readJson(RECORD_FILES.run));
+  if (run.use !== USE || run.mode !== 'batch' || prescreen.phase !== 'full') {
+    throw refusal(
+      'bad-run',
+      `run ${runId} is not a ${USE} full batch run (use ${run.use}, mode ${run.mode}, phase ` +
+        `${prescreen.phase}); resume collects a full run's batch`
+    );
+  }
+  if (r.exists(RECORD_FILES.runEnd))
+    throw refusal('bad-run', `run ${runId} already ended (run-end.json): nothing to resume`);
+  const agree =
+    prescreen.model === run.model &&
+    prescreen.effort === run.effort &&
+    prescreen.maxTokens === run.max_tokens &&
+    same([prescreen.prompt], run.prompts) &&
+    same(prescreen.rulingSet, run.rulingSet);
+  if (!agree)
+    throw refusal('bad-run', `run ${runId}: run.json and ${PRESCREEN_RECORD} disagree; refusing`);
+  assertMainCheckout(ctx.git);
+  const result = await runBatch({
+    recordsDir: ctx.recordsDir,
+    use: USE,
+    model: run.model,
+    effort: run.effort,
+    maxTokens: run.max_tokens,
+    prompts: run.prompts,
+    rulingSet: run.rulingSet,
+    runId,
+    now: ctx.now,
+    ...transportOptions(deps),
+    ...pollOptions(deps),
+  });
+  const usd = result.totalUsd !== undefined ? `, USD ${result.totalUsd}` : '';
+  ctx.out(
+    `run ${runId} ${result.status}${usd}${result.counts ? ` ${JSON.stringify(result.counts)}` : ''}\n`
+  );
+  const stops = [];
+  if (result.status !== 'complete')
+    stops.push(`run ${runId} ended ${result.status}: ${remedyFor(result.status, runId)}`);
+  if (r.exists(RECORD_FILES.runEnd)) {
+    const prompt = guarded('bad-input', () =>
+      loadPrompt(path.join(ctx.repoRoot, prescreen.prompt.path))
+    );
+    if (prompt.sha256 !== prescreen.prompt.sha256) {
+      stops.push(
+        `the prompt ${prescreen.prompt.path} changed since the run, so its answers cannot be ` +
+          'parsed with the schema it ran: restore it, then collect'
+      );
+    } else {
+      const read = readRun({ recordsDir: ctx.recordsDir, runId, schema: prompt.schema });
+      const open = unjudgedPresented(read);
+      ctx.out(`its population rows: ${open.length} unjudged\n`);
+      if (open.length) stops.push(`run ${runId} left ${open.length} population rows unjudged`);
+    }
+  }
+  printLedger(ctx);
+  for (const s of stops) ctx.out(`stop and ask: ${s}\n`);
+  return { exitCode: stops.length ? 2 : 0, runId, status: result.status };
+}
+
+// ── collect ─────────────────────────────────────────────────────────────────────────────────
+
+/**
+ * A run collect may merge: its records, ended (run-end.json). A run still polling would read as
+ * every row unjudged, and --resend would then buy its rows twice.
+ */
+function loadEndedRun(ctx, runId) {
+  const { r, prescreen } = openPrescreenRun(ctx, runId, 'bad-run');
+  if (!r.exists(RECORD_FILES.runEnd)) {
+    throw refusal(
+      'bad-run',
+      `run ${runId} has not ended (no run-end.json): resume it first (prescreen.js resume ` +
+        `--run ${runId}); collected now, its rows would read as unjudged and --resend would buy ` +
+        'them twice'
+    );
+  }
+  const runEnd = guarded('bad-run', () => r.readJson(RECORD_FILES.runEnd));
+  return { runId, prescreen, runEnd };
+}
+
+/**
+ * The reduced census the runs name, read only if its bytes still have the recorded sha256: its
+ * rows are the pairs the verdicts may publish (the census holds only export-published pairs).
+ */
+function recordedCensusRows(ctx, ref) {
+  const abs = path.join(ctx.repoRoot, ref.path);
+  if (!fs.existsSync(abs))
+    throw refusal(
+      'private-data',
+      `the runs' census ${ref.path} is missing; cannot check the pairs`
+    );
+  const bytes = fs.readFileSync(abs);
+  if (sha256(bytes) !== ref.sha256) {
+    throw refusal(
+      'private-data',
+      `the census ${ref.path} changed since the runs (sha256 ${sha256(bytes)}, recorded ` +
+        `${ref.sha256}); cannot check which pairs the verdicts may publish`
+    );
+  }
+  const doc = parseJson(bytes.toString('utf8'), ref.path);
+  if (doc.reduced !== true || !Array.isArray(doc.rows))
+    throw refusal('private-data', `${ref.path} is not a reduced census`);
+  return doc.rows;
+}
+
+function runInfo({ runId, prescreen, runEnd }) {
+  return {
+    runId,
+    phase: prescreen.phase,
+    split: prescreen.split?.of > 1 ? prescreen.split : null,
+    model: prescreen.model,
+    effort: prescreen.effort,
+    status: runEnd.status,
+    totalUsd: runEnd.totalUsd,
+  };
+}
+
+function iskRateOf(v) {
+  if (v === undefined || !/^\d+(\.\d+)?$/.test(v) || !(Number(v) > 0))
+    throw refusal('bad-flag', '--isk-rate must be a positive number of ISK per USD');
+  return Number(v);
+}
+
+/**
+ * Re-send the unjudged population rows once, one per interactive request (spec §8), after every
+ * free check. Returns the resend run's records, or null when nothing was sent.
+ */
+async function resend(ctx, values, deps, { base, merged, runs, prompt }) {
+  const { send, resentBefore } = resendIds({ base, merged, runs });
+  ctx.out(
+    `resend: ${send.length} unjudged population rows, one per request` +
+      `${resentBefore.length ? `; ${resentBefore.length} were re-sent once already and stay unjudged` : ''}\n`
+  );
+  if (send.length === 0) return null;
+  const items = send.map((id) => base.byId.get(id));
+  const requests = guarded('bad-items', () =>
+    buildRequests({
+      items,
+      prompt,
+      model: base.model,
+      effort: base.effort,
+      maxTokens: base.maxTokens,
+      rowsPerRequest: 1,
+    })
+  ).map((q) => ({ ...q, key: q.presented[0] }));
+  const est = estimateRequests(requests, { model: base.model, maxTokens: base.maxTokens });
+  const room = headroom(ctx);
+  ctx.out(`resend worst case USD ${est.worstCaseUsd.interactive} interactive; ${room.says}\n`);
+  if (!fits(est.worstCaseUsd.interactive, room)) {
+    throw refusal(
+      'cost',
+      `the resend's worst case USD ${est.worstCaseUsd.interactive} does not fit: ${room.says}`
+    );
+  }
+  const inputs = {
+    prompt: { path: base.prompt.path, sha256: prompt.sha256 },
+    rulingSet: base.rulingSet,
+    census: base.census,
+    export: {
+      path: repoRel(ctx.repoRoot, path.join(ctx.bookDir, 'glossary', 'glossary-unified.json')),
+    },
+    unitsPath: repoRel(ctx.repoRoot, path.join(ctx.bookDir, '02-for-mt')),
+  };
+  preflight(ctx, inputs);
+  if (!values.yes) {
+    ctx.out('not sending: add --yes to spend; nothing written.\n');
+    return 'dry';
+  }
+  const runId = mintRunId(ctx.now());
+  const payload = prescreenPayload({
+    runId,
+    phase: 'resend',
+    model: base.model,
+    effort: base.effort,
+    maxTokens: base.maxTokens,
+    inputs,
+    items,
+    key: base.key,
+    requests,
+    excluded: base.excluded,
+    rowsPerRequest: 1,
+    extra: {
+      includePhysicsBiology: base.includePhysicsBiology,
+      resendOf: runs.map((r) => r.runId),
+    },
+  });
+  const result = await runInteractive({
+    ...harnessOptions(ctx, deps, {
+      inputs,
+      model: base.model,
+      effort: base.effort,
+      maxTokens: base.maxTokens,
+      runId,
+    }),
+    requests: requests.map(({ key, body }) => ({ key, body })),
+    extraRecords: [{ name: PRESCREEN_RECORD, payload }],
+  });
+  ctx.out(`resend: run ${runId} ${result.status}: ${JSON.stringify(result.counts)}\n`);
+  return loadEndedRun(ctx, runId);
+}
+
+async function cmdCollect(ctx, values, deps) {
+  const runIds = values.run ?? [];
+  if (runIds.length === 0) throw refusal('bad-flag', 'collect needs --run <runId> (one or more)');
+  if (new Set(runIds).size !== runIds.length) throw refusal('bad-flag', '--run names a run twice');
+  if (values.out === undefined)
+    throw refusal('bad-flag', `collect needs --out <repo directory under ${RESULTS_DIR}/>`);
+  const out = resultsDirOutput(values.out, ctx.repoRoot);
+  const iskRate = iskRateOf(values['isk-rate']);
+  const iskRateSource = (values['isk-rate-source'] ?? '').trim();
+  if (iskRateSource === '')
+    throw refusal('bad-flag', '--isk-rate-source must name the rate’s source and date');
+  if (values.yes && !values.resend)
+    throw refusal('bad-flag', '--yes applies only with --resend (collect spends only to re-send)');
+  const runs = runIds.map((id) => loadEndedRun(ctx, id));
+  const base = guarded('bad-run', () => checkRuns(runs));
+  const prompt = guarded('bad-input', () => loadPrompt(path.join(ctx.repoRoot, base.prompt.path)));
+  if (prompt.sha256 !== base.prompt.sha256) {
+    throw refusal(
+      'bad-run',
+      `the prompt ${base.prompt.path} changed since the runs (sha256 ${prompt.sha256}, recorded ` +
+        `${base.prompt.sha256}): their answers are parsed with its schema; restore it`
+    );
+  }
+  const censusRows = recordedCensusRows(ctx, base.census);
+  const reads = runs.map(({ runId }) =>
+    guarded('bad-run', () => readRun({ recordsDir: ctx.recordsDir, runId, schema: prompt.schema }))
+  );
+  let merged = guarded('bad-run', () => mergeVerdicts(reads));
+  const verdictsOf = (ids) => {
+    const doc = buildVerdicts({ base, merged, runIds: ids });
+    guarded('private-data', () => assertPublishable(doc, censusRows));
+    return doc;
+  };
+  verdictsOf(runIds); // refuse before any spend, not after
+  if (values.resend) {
+    const sent = await resend(ctx, values, deps, { base, merged, runs, prompt });
+    if (sent === 'dry') return { exitCode: 0, sent: false };
+    if (sent) {
+      runs.push(sent);
+      reads.push(readRun({ recordsDir: ctx.recordsDir, runId: sent.runId, schema: prompt.schema }));
+      merged = guarded('bad-run', () => mergeVerdicts(reads));
+    }
+  }
+  const allIds = runs.map((r) => r.runId);
+  const doc = verdictsOf(allIds);
+  const infos = runs.map(runInfo);
+  const report = renderReport({ doc, merged, runs: infos, iskRate, iskRateSource });
+  writeAtomic(out.abs, VERDICTS_FILE, `${JSON.stringify(doc, null, 1)}\n`);
+  writeAtomic(out.abs, REPORT_FILE, report);
+  const n = { fine: 0, flag: 0, unjudged: 0 };
+  for (const row of doc.population) n[row.verdict] += 1;
+  ctx.out(
+    `population: ${doc.population.length} rows: ${n.flag} flag, ${n.fine} fine, ${n.unjudged} ` +
+      `unjudged; controls ${doc.controls.pass ? 'PASS' : 'FAIL'}\n` +
+      `wrote ${out.rel}/${VERDICTS_FILE} and ${out.rel}/${REPORT_FILE}\n`
+  );
+  const stops = stopReasons(doc, infos);
+  for (const s of stops) ctx.out(`stop and ask: ${s}\n`);
+  return { exitCode: stops.length ? 2 : 0, runIds: allIds, out: out.rel };
+}
+
 // ── CLI ─────────────────────────────────────────────────────────────────────────────────────
 
 /** Each subcommand: the flags it admits (any other refuses) and its handler. */
@@ -686,6 +1377,24 @@ const COMMANDS = {
   reduce: { flags: ['census-full', 'out'], run: cmdReduce },
   plan: { flags: ['census'], run: cmdPlan },
   pilot: { flags: ['census', 'model', 'yes'], run: cmdPilot },
+  run: {
+    flags: [
+      'census',
+      'model',
+      'pilot',
+      'include-physics-biology',
+      'split',
+      'max-tokens',
+      'accept-large-population',
+      'yes',
+    ],
+    run: cmdRun,
+  },
+  resume: { flags: ['run'], run: cmdResume },
+  collect: {
+    flags: ['run', 'out', 'isk-rate', 'isk-rate-source', 'resend', 'yes'],
+    run: cmdCollect,
+  },
 };
 
 async function dispatch(argv, deps) {
@@ -719,7 +1428,8 @@ async function dispatch(argv, deps) {
  * any other error rejects.
  * @param {string[]} argv arguments after the script name
  * @param {object} [deps] injectable: repoRoot, bookDir, recordsDir, git, now, out, err, codePaths,
- *   transport, keyOptions, harnessCommit, harnessDirty
+ *   transport, keyOptions, harnessCommit, harnessDirty, and a batch's sleep, pollIntervalMs and
+ *   maxPolls
  * @returns {Promise<{ exitCode: number }>} 0 done, 1 refused, 2 stop and ask
  */
 export async function main(argv, deps = {}) {
