@@ -19,7 +19,8 @@ const BOOK = 'efnafraedi-2e';
 const VERDICTS_DIR = 'experiments/terminology-consistency/results';
 
 export const INSTRUMENT_NOTE =
-  'An MT count is the number of the row’s matching segments whose pure MT text contains the ' +
+  'An MT count is the number of the row’s matching segments WITH MT TEXT (a segment with no MT ' +
+  'text is not in the denominator; each row says how many it had) whose pure MT text contains the ' +
   'word’s stem (the first word, with its ending cut off). It is a stem match: it misses ' +
   'compounds and other forms that do not contain the stem, and it can over-count a word that ' +
   'merely shares the stem.';
@@ -52,21 +53,33 @@ export function buildPageData({ verdicts, privateCensus, mtTextFor }) {
       const texts = c.matches
         .map((m) => mtTextFor(m.chapter, m.moduleId, m.segmentId))
         .filter((t) => typeof t === 'string');
+      const words = [...new Set(v.proposed ?? [])]; // duplicates collapse to one key
       const proposed = {};
-      for (const w of v.proposed ?? []) proposed[w] = countStem(w, texts);
+      for (const w of words) proposed[w] = countStem(w, texts);
+      const multiword = words.filter((w) => /\s/.test(w.trim()));
       return {
         id: v.id,
         english: v.english,
         icelandic: v.icelandic,
         kind: v.kind,
         reason: v.reason,
-        proposed: v.proposed ?? [],
+        proposed: words,
         rightSenses: v.rightSenses,
         sentences: v.sentences,
         alternatives: c.alternatives,
         ifRemoved: c.ifRemoved,
         matchCount: c.matchCount,
-        mt: { current: countStem(v.icelandic, texts), proposed },
+        mt: {
+          segmentsWithMt: texts.length,
+          current: countStem(v.icelandic, texts),
+          proposed,
+          ...(multiword.length
+            ? {
+                note: `counted by its first word only: ${multiword.join('; ')}`,
+                firstWordOnly: multiword,
+              }
+            : {}),
+        },
       };
     });
   return { generated: new Date().toISOString(), instrumentNote: INSTRUMENT_NOTE, rows };
@@ -89,6 +102,7 @@ export function makeMtTextFor(repoRoot) {
       if (fs.existsSync(file)) parsed = parseLayerFile(fs.readFileSync(file, 'utf8'));
       cache.set(file, parsed);
     }
+    // A segmentId repeated within one file resolves to the first record.
     const rec = cache.get(file)?.records?.find((r) => r.segmentId === segmentId);
     return rec ? rec.body : null;
   };
@@ -121,6 +135,10 @@ export function main(argv, deps = {}) {
         throw refusal('bad-flag', `--${f} must be outside the repository`);
       }
     }
+    if (path.resolve(values.out) === path.resolve(values['census-private'])) {
+      throw refusal('bad-flag', '--out must not be the --census-private file');
+    }
+    if (fs.existsSync(values.out)) throw refusal('bad-flag', '--out already exists; refusing');
     const verdicts = JSON.parse(fs.readFileSync(verdictsAbs, 'utf8'));
     const privateCensus = JSON.parse(fs.readFileSync(values['census-private'], 'utf8'));
     const mtTextFor = deps.mtTextFor ?? makeMtTextFor(repoRoot);
