@@ -15,7 +15,12 @@ import { parseLayerFile } from '../lib/mt-layers.js';
 
 export const CENSUS_SCHEMA = 'c19-census/1';
 
-const DECIDED_REASONS = new Set(['book-preference', 'chapter-preference', 'house-style']);
+const DECIDED_REASONS = new Set([
+  'book-preference',
+  'chapter-preference',
+  'house-style',
+  'book-entry',
+]);
 const WITHHOLD_CLASSES = ['ruled', 'fallback', 'tie', 'decided', 'physicsBiology', 'notInExport'];
 const MAX_SENTENCE = 400;
 

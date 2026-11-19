@@ -2,7 +2,8 @@
 
 /**
  * Export each book's glossary from the terminology DB to
- * books/<book>/glossary/glossary-unified.json.
+ * books/<book>/glossary/glossary-unified.json, and write the book glossary layer's committed
+ * record, books/<book>/glossary/book-glossary.json (see THE PER-BOOK RECORD below).
  *
  * ⚠️ NOT an MT-only file: tools/api-translate.js's loadGlossary feeds it to
  * Málstaður as the MT glossary (Unit 6.1), but tools/lib/math-label-substitute.js
@@ -120,6 +121,18 @@
  * see server/lib/glossaryExportHealth.js for why liveness must come from the
  * heartbeat's absence and never from a file written on every outcome.
  *
+ * THE PER-BOOK RECORD, A THIRD WRITE (c19, spec 2026-11-19-book-glossary-layer-design §5.4):
+ *
+ *   books/<book>/glossary/book-glossary.json     the book glossary layer's record — !dryRun
+ *
+ * Written for each book the run covers that has layer rows, and only when its content
+ * (ignoring `generated`) changed; server/lib/bookGlossaryLayer.js builds and writes it. It is
+ * per book, NOT whole-corpus, so ⚠️ a `--book <slug>` run DOES write it, while it writes neither
+ * of the two artifacts above. It is written even when that book's glossary-unified.json is
+ * refused, and a failure to write it never changes a book's outcome or the exit code. Its
+ * per-book result is the status file's `bookGlossaryRecords`, so that result is recorded only
+ * on an unfiltered run.
+ *
  *   node server/scripts/export-terminology.js              # all glossary-bearing books
  *   node server/scripts/export-terminology.js --book efnafraedi-2e
  *   node server/scripts/export-terminology.js --dry-run
@@ -168,6 +181,7 @@ const {
   producerVerdict,
 } = require('../lib/glossaryExportDecision');
 const { createResolvedExportFn } = require('../lib/resolvedGlossary');
+const { createBookGlossaryRecordFn, writeBookGlossaryRecord } = require('../lib/bookGlossaryLayer');
 
 const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
@@ -523,6 +537,7 @@ function runGlossaryExport({
   booksDir = BOOKS_DIR,
   projectRoot = PROJECT_ROOT,
   exportFn = createResolvedExportFn(),
+  recordFn = createBookGlossaryRecordFn(),
   subjectFn = terminologyService.getBookSubject,
   book = null,
   force = false,
@@ -578,6 +593,9 @@ function runGlossaryExport({
   // ok=false across the run that wrote and pushed reader-visible content,
   // and why nobody learned the first prod export had happened.
   const outcomes = {};
+  // c19 (spec §5.4): per-book result of the book glossary record, kept apart from `outcomes` so a
+  // record failure can never change a glossary outcome or the exit code.
+  const bookGlossaryRecords = {};
   let errors = 0;
   // `extra` is `{}` at the two call sites reached BEFORE `next` exists
   // (subject resolution, exportFn itself throwing) — `integrityField` is not
@@ -593,6 +611,20 @@ function runGlossaryExport({
   };
 
   for (const b of books) {
+    // c19: the book glossary layer's committed record. FIRST in the loop, so a refused, unchanged
+    // or errored glossary-unified.json still gets its record. Never touches `outcomes`/`errors`.
+    if (!dryRun) {
+      try {
+        const record = recordFn(b);
+        bookGlossaryRecords[b] = record
+          ? writeBookGlossaryRecord(path.join(booksDir, b, 'glossary'), record)
+          : 'none';
+      } catch (err) {
+        logError(`${b}: book glossary record failed — ${err.message}`);
+        bookGlossaryRecords[b] = `error: ${err.message}`;
+      }
+    }
+
     // ⚠️ CORRECTED (Task 5 review, Important 3): this comment used to justify
     // the gate entirely in terms of the RETIRED builder — "a book with no
     // book_subject_mapping row makes exportBookGlossary's subject filter a
@@ -947,6 +979,7 @@ function runGlossaryExport({
     writeStatus(projectRoot, {
       ran: new Date(nowMs).toISOString(),
       errors,
+      bookGlossaryRecords,
       books: withSince(outcomes, readPreviousBookOutcomes(projectRoot), nowMs),
     });
   }
