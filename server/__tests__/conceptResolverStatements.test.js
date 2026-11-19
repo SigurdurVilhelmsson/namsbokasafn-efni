@@ -80,16 +80,19 @@ describe('prepared statements are hoisted onto the scope (spec §5)', () => {
     db.close();
   });
 
-  // ⚠️ Named for what it ASSERTS (exactly 8), not for the weaker property it
+  // ⚠️ Named for what it ASSERTS (exactly 11), not for the weaker property it
   // implies (boundedness). Six tests on this branch were found claiming more in
   // their name than their assertions proved; an exact count deserves an exact name.
-  it('buildScope prepares EXACTLY 8 statements — the 8 distinct SQL strings gate 4 measured', () => {
+  it("buildScope prepares EXACTLY 11 statements — gate 4's 8 plus the book layer's 3", () => {
     const { db } = freshMigratedDb();
     const prepares = countPrepares(db);
     buildScope(db, 'edlisfraedi-2e', 1);
     // 3 for the scope itself (book, priorities, preferences) + 5 hoisted for
-    // lookupCandidates/termById = the 8 distinct SQL strings gate 4 measured.
-    expect(prepares()).toBe(8);
+    // lookupCandidates/termById = the 8 distinct SQL strings gate 4 measured,
+    // + 3 for the book glossary layer (loadBookLayer: whole-headword exclusions,
+    // single-concept exclusions, every book's entries; spec 2026-11-19 §5.2).
+    // Once per scope: the test above still pins resolve() at 0.
+    expect(prepares()).toBe(11);
     db.close();
   });
 

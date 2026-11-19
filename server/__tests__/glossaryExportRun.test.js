@@ -161,6 +161,8 @@ function run(opts) {
     // predate the subject-mapping guard) don't have to know about it; tests
     // for the guard itself override subjectFn explicitly.
     subjectFn: () => 'chemistry',
+    // No real sessions.db: the book glossary record has its own tests (bookGlossaryRecord.test.js).
+    recordFn: () => null,
     log: () => {},
     logError: () => {},
     ...opts,
