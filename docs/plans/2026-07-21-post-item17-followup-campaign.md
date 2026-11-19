@@ -39,6 +39,10 @@
   - Readers see the change only after chemistry is re-rendered and synced to the website.
 - **▶ NEXT:** ✏️ *Until 2026-11-19 evening, the first two items here were [USER]'s review of #743 and the load after the deploy; both are done (above).*
   - Stage 2 (the head editor's screen and the worklist) is planned next. §C239 names two minors its plan must include.
+    - **A step its plan must also include ([USER], 2026-11-19):** after a ruling changes a book's committed glossary, run the glossary premise-pin tests against the new export before the 2-hourly cron commits it.
+      - **How:** production installs without dev dependencies, so `vitest` is not there. Copy the new `books/<book>/glossary/glossary-unified.json` from production to a dev checkout, and run the test files that read a committed glossary there. Find them with `grep -rlaF 'glossary-unified.json' tools/__tests__ server/__tests__ scripts/__tests__` rather than from a list.
+      - **If a pin goes red:** prepare the re-pin as a test-only PR from the copied file, so it can merge right after the cron's commit reaches `main`. Nothing here stops the cron from committing.
+      - **Why:** c19's export reached `main` in the 20:00 content backup (`7fd6a82f5`) and turned three glossary premise pins red there. No PR carried that change, and nothing watches `main`'s push CI, so `main` stayed red until [#745](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/745) re-pinned them (merged 2026-11-19, `e9d08edef`).
   - After #742 merges, `study-freeze.js` records `book-glossary.json` (spec §5.4).
 
 #### §C237 (NEW, 2026-11-19) — the segment editor's free-text term lookup reads the old terminology tables
