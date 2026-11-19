@@ -301,6 +301,7 @@ category of AI suggestions that fails the short look is not shown
   pure: revised (layer 2) leaves it, and layer 2 reaches editors only as suggestions (the follow-on plan's G1.23)
   ([record](../decisions/2026-10-28-ai-term-pass-as-editor-suggestions.md)). The first wording said 4.1 was not done
   at all, which would have left layer 1s, where 2.3's re-requested segments are written, with no reader.*
+  ✏️ *2026-11-19: ruled out for the study ([USER]); editors see the layer-1 text of the 8 segments held only in layer 1s ([G1.7 design](../superpowers/specs/2026-11-19-g17-freeze-and-mt-lock-design.md) §2).*
 - **4.2 Re-attach by content.** This replaces the id-based script.
   - Re-enter the 137 human segments, minus any already entered under 2.2; 28 need marker conversion.
   - Supersede the 151 old production rows (register §C114 ①).

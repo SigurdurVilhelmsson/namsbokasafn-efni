@@ -97,9 +97,13 @@ test.describe('Phase 2 UX fixes', () => {
  * below then wrote a fresh marker into READ-ONLY 02-mt-output on every run, and
  * mtRunDecision skips a locked module silently (§C118 (9)).
  *
- * The tree is now kept clean by global-setup.js + global-teardown.js, which
- * sweep markers this run created and keep any that predate it. Do NOT restore a
- * committed lock here to make this safe: that is what re-blocks the re-MT.
+ * The tree is kept clean by global-setup.js + global-teardown.js, which sweep
+ * markers this run created and keep any that predate it. Since G1.7, m68664,
+ * like every chemistry study unit, carries a COMMITTED content-free study-freeze
+ * marker, on purpose: it holds the unit's MT for the study, it predates every
+ * run so the sweep keeps it, and writeMtLock no-ops on it, so the edit below
+ * writes no marker. Never remove or replace it to make a run pass, and add no
+ * other committed lock here.
  *
  * C2: the segment id used to be the invented `m68664:para:test-persist`, which
  * the SR-OOS-2 backstop correctly 404s. It is now discovered at run time; the

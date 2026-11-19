@@ -1560,6 +1560,8 @@ describe('it can run where PR1 and PR2 are not deployed', () => {
     // PR4: '../lib/researchDbPath' and '../lib/researchFiles' are required lazily, inside G-1a's researchDir
     // default. G-1a and G-1h are read after PR4's deploy; a run on an older tree reports those sections as failed
     // while the others read.
+    // G1.7: '../lib/studyUnits' is required lazily, inside readG1g, so a production tree that predates it still
+    // runs the probe; only G-1g then fails.
     expect(specifiers.sort()).toEqual([
       '../../tools/lib/mt-lock.cjs',
       '../lib/chapterLabel',
@@ -1567,6 +1569,7 @@ describe('it can run where PR1 and PR2 are not deployed', () => {
       '../lib/researchBackupPolicy',
       '../lib/researchDbPath',
       '../lib/researchFiles',
+      '../lib/studyUnits',
       'better-sqlite3',
       'child_process',
       'dotenv',

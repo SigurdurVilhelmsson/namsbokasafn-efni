@@ -245,6 +245,8 @@ loader change in one deploy. It lands after the last planned `term-pass apply --
 the 83 modules opens, before G1.7's freeze manifest and before G1.13 assigns. The "editor fixes" batch below no
 longer carries G1.12; (b) is not built.*
 
+✏️ *2026-11-19, G1.7 ([design](../superpowers/specs/2026-11-19-g17-freeze-and-mt-lock-design.md), approved): two steps, markers now and the manifest and tag at a later cut; the production `backfill-mt-locks.js` run is dropped, because every unit it could reach is a chemistry unit the markers lock.*
+
 ✏️ *2026-11-03, G1.20 ([rulings](../decisions/2026-11-03-research-capture-consent-and-retention-rulings.md), R2): the research file has its own 7-day backup rotation, locally and in its
 own off-box bucket with versioning off, apart from the long-lived tier. The versioning planned here for the editorial
 database must never cover research copies. Before any consent is collected, a read-only check confirms that no
