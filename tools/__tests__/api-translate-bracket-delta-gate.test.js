@@ -139,8 +139,12 @@ describe('CORPUS ANCHOR — the real run that motivated this gate is held back',
     expect(firing).toEqual({ b: -2 }); // by VALUE — a dropped bold, not a tally
     expect(classifyModuleOutcome({ bracketDelta: firing }).heldBack).toBe(true);
 
-    const clean = deltaOf(pair('lifraen-efnafraedi', 'ch03', 'm00038'));
-    expect(clean).toEqual({}); // ⑲'s bare wire took this from {b:29} to {}
+    // RE-POINTED 2026-11-19: the clean sibling was organic m00038 (⑲'s bare wire took it from
+    // {b:29} to {}), whose MT left `main`'s tree with §C190 ②. Chemistry's m68663 is the
+    // replacement: a clean real pair, measured {} the same day, and the file the battery
+    // suites already use as their clean reference.
+    const clean = deltaOf(pair('efnafraedi-2e', 'ch01', 'm68663'));
+    expect(clean).toEqual({});
     expect(classifyModuleOutcome({ bracketDelta: clean }).heldBack).toBe(false);
   });
 });

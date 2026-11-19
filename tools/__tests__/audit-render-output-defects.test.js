@@ -176,26 +176,26 @@ describe('R4 defect 3 — a module that could not be audited is never a PASS', (
   });
 
   it('CONTROL — a chapter that genuinely audits is still AUDITED, not swept into the failure count', () => {
-    // 🔴 THIS IS WHAT SEPARATES A FIX FROM "MAKE EVERYTHING FAIL". organic ch03 is
-    // the one organic chapter with rendered output: 8 modules, 0 `not found`.
-    // Without this control, a repair that failed every chapter would read as a pass.
-    const r = runAudit(['--book', 'lifraen-efnafraedi', '--chapter', '3', '--track', 'mt-preview']);
+    // 🔴 THIS IS WHAT SEPARATES A FIX FROM "MAKE EVERYTHING FAIL". Without this control, a
+    // repair that failed every chapter would read as a pass.
+    // RE-POINTED 2026-11-19: this was organic ch03 (8 modules, 0 `not found`), whose rendered
+    // output left `main`'s tree with §C190 ②. Chemistry ch01 is the replacement: 7 modules,
+    // all audited, 0 unauditable, measured the same day.
+    const r = runAudit(['--book', 'efnafraedi-2e', '--chapter', '1', '--track', 'mt-preview']);
     expect(r.stderr).not.toMatch(/Rendered HTML not found/);
     // The defect-3 counter must stay at zero here — that is the property under test.
-    expect(r.stdout).toMatch(/Audit complete: 8 module\(s\) attempted, 8 audited/);
+    expect(r.stdout).toMatch(/Audit complete: 7 module\(s\) attempted, 7 audited/);
     expect(r.stdout).toMatch(/0 unauditable/);
     expect(r.stdout).not.toMatch(/could not be audited/);
 
-    // ⚠️ THIS CONTROL WAS WRITTEN ASSERTING `code === 0` AND IT WENT RED — CORRECTLY,
-    // AND THE RED IS A DISCOVERY RATHER THAN A BROKEN TEST. `m00038` really does drop
-    // 3 IDs; before defect 1's promotion that printed `PASS with warnings` and exited
-    // 0. So the honest control asserts that the chapter was fully AUDITED (above) and
-    // that its failure is attributable to the newly-visible ID drop (below) — not
-    // that the chapter passes. Asserting exit 0 here would have required un-fixing
-    // defect 1, i.e. letting the test dictate the behaviour instead of measuring it.
-    expect(r.stdout).toMatch(/m00038: 1 error\(s\)/);
-    expect(r.stdout).toMatch(/ERROR: 3 ID\(s\) missing from output/);
-    expect(r.code).toBe(1);
+    // ⚠️ THE EXIT CODE FOLLOWS THE ERRORS THE AUDIT REALLY FOUND, never "pass". The organic
+    // version of this control learned that the hard way (m00038's dropped IDs made it exit 1
+    // after defect 1's promotion). Chemistry ch01's pages carry real errors too (9 on
+    // 2026-11-19), and that count moves with every re-render, so it is not pinned; what is
+    // pinned is that a fully audited chapter exits 1 exactly when it reports an error.
+    const errors = Number((r.stdout.match(/\((\d+) error\(s\), \d+ unauditable\)/) || [])[1]);
+    expect(Number.isInteger(errors)).toBe(true); // control: the summary line parsed
+    expect(r.code).toBe(errors > 0 ? 1 : 0);
   });
 });
 
