@@ -17,6 +17,7 @@
  */
 
 const { HOUSE_STYLE_SOURCE } = require('./houseStyleTerms');
+const { isSymbolShaped } = require('./conceptMatcher');
 
 /**
  * Fold one English string to the key `book_term_preference`'s PRIMARY KEY
@@ -50,6 +51,18 @@ const { HOUSE_STYLE_SOURCE } = require('./houseStyleTerms');
  */
 function nocaseKey(s) {
   return s.replace(/[A-Z]/g, (c) => c.toLowerCase());
+}
+
+/**
+ * The book glossary layer's match key for an English headword (spec §5.1): a symbol-shaped
+ * headword keeps its exact text (`Co` and `CO` are different things), anything else is folded
+ * with `nocaseKey`. Never `toLowerCase()`.
+ *
+ * @param {string} english
+ * @returns {string}
+ */
+function matchKey(english) {
+  return isSymbolShaped(english) ? english : nocaseKey(english);
 }
 
 /**
@@ -96,6 +109,75 @@ function buildPreferenceMap(db, bookId, chapter) {
     }
   }
   return preference;
+}
+
+/**
+ * The book glossary layer (spec 2026-11-19-book-glossary-layer-design §5.2), loaded ONCE per
+ * scope by buildScope, in three queries. `resolveCandidates` then reads only these maps, so
+ * the layer adds no query to a resolution (§C24).
+ *
+ * ⚠️ `bookOwned` COVERS EVERY BOOK'S ENTRIES, NOT JUST THIS BOOK'S. A book entry is an ordinary
+ * concept in its book's first domain, and that domain sits in other books' chains too
+ * (chemistry is in four other chains, organic's at position 1). Dropping the other books'
+ * entries is what keeps one book's layer from changing what any other book resolves, and it
+ * needs to know every owner.
+ *
+ * Keys are the stored `match_key`, which the write API (bookGlossaryLayer.js) computes with
+ * `matchKey`, defined in this file, so the lookup must fold with `matchKey` too.
+ *
+ * @param {import('better-sqlite3').Database} db
+ * @param {number} bookId
+ * @returns {{excludedHeadwords: Set<string>, excludedConcepts: Map<string, Set<number>>,
+ *            bookOwned: Map<number, number>}}
+ */
+function loadBookLayer(db, bookId) {
+  const excludedHeadwords = new Set(
+    db
+      .prepare('SELECT match_key FROM book_glossary_exclusion WHERE book_id = ? AND concept_id = 0')
+      .all(bookId)
+      .map((r) => r.match_key)
+  );
+
+  const excludedConcepts = new Map();
+  for (const r of db
+    .prepare(
+      'SELECT match_key, concept_id FROM book_glossary_exclusion WHERE book_id = ? AND concept_id <> 0'
+    )
+    .all(bookId)) {
+    let ids = excludedConcepts.get(r.match_key);
+    if (!ids) excludedConcepts.set(r.match_key, (ids = new Set()));
+    ids.add(r.concept_id);
+  }
+
+  const bookOwned = new Map(
+    db
+      .prepare('SELECT concept_id, book_id FROM book_glossary_entry')
+      .all()
+      .map((r) => [r.concept_id, r.book_id])
+  );
+
+  return { excludedHeadwords, excludedConcepts, bookOwned };
+}
+
+/**
+ * Step 2 of the layer (spec §5.2): the candidates this book may see for one headword. Drops a
+ * concept another book owns, and a concept this book excluded for this headword. Returns the
+ * SAME array only when nothing can be dropped: no exclusion for this headword and no entry in
+ * ANY book. `bookOwned` is global, so once any book has an entry, every book filters.
+ *
+ * @param {object} layer from loadBookLayer
+ * @param {number} bookId
+ * @param {string} key matchKey(english)
+ * @param {Array} candidates from lookupCandidates
+ */
+function visibleCandidates(layer, bookId, key, candidates) {
+  const excluded = layer.excludedConcepts.get(key);
+  if (!excluded && layer.bookOwned.size === 0) return candidates;
+  return candidates.filter((c) => {
+    const owner = layer.bookOwned.get(c.conceptId);
+    if (owner !== undefined && owner !== bookId) return false;
+    return !(excluded && excluded.has(c.conceptId));
+  });
 }
 
 /**
@@ -182,6 +264,8 @@ function buildScope(db, bookSlug, chapter = 0) {
     chapter,
     positionOf: new Map(prio.map((r) => [r.domain, r.position])),
     preference: buildPreferenceMap(db, book.id, chapter),
+    // The book glossary layer, loaded once here and never per resolve (§C24).
+    layer: loadBookLayer(db, book.id),
     db,
     stmts: prepareLookupStatements(db),
     unscoped: false,
@@ -340,16 +424,47 @@ function emptyResolution(unscoped, integrity, outOfScope) {
  * @param {string[]} [integrity] codes carried in from lookupCandidates
  * @param {string|null} [english] the string being resolved. OPTIONAL so this
  *   function stays callable without a preference model; omitted, `scope.preference`
- *   is never consulted and the position walk is the whole answer.
+ *   is never consulted and the position walk is the whole answer. ⚠️ Omitted, the
+ *   book glossary layer (`scope.layer`) is not applied either: its exclusions are
+ *   keyed on the headword, and another book's entries stay visible. Every
+ *   production consumer passes it, through `resolve(scope, english)`.
  */
 function resolveCandidates(scope, candidates, integrity = [], english = null) {
   const codes = [...integrity];
   if (scope.unscoped) return emptyResolution(scope.unscoped, codes, []);
 
+  // THE BOOK GLOSSARY LAYER (spec 2026-11-19-book-glossary-layer-design §5.2), read from the
+  // maps buildScope loaded: no query here. Only with an `english` (the layer is keyed on the
+  // headword) and a scope that carries a layer (hand-built test scopes do not).
+  const layer = english != null && scope.layer ? scope.layer : null;
+  const layerKey = layer ? matchKey(english) : null;
+
+  // Layer step 1 — A WHOLE-HEADWORD EXCLUSION LETS NOTHING TAKE OVER: no winner, no tie, no
+  // in-scope alternative and no out-of-scope suggestion. `applyPreference` is skipped on
+  // purpose, so a preference row cannot bring the headword back either.
+  if (layer && layer.excludedHeadwords.has(layerKey)) {
+    // The write API refuses an exclusion beside an entry of this book for the same headword;
+    // if the state exists anyway, report it. The exclusion still wins.
+    if (candidates.some((c) => layer.bookOwned.get(c.conceptId) === scope.bookId)) {
+      codes.push('book-entry-conflict');
+    }
+    // ⚠️ `bookExcluded` is set on THIS return only, never `false` elsewhere: the existing
+    // shape pins (toEqual/toStrictEqual on whole resolutions) depend on its absence.
+    return { ...emptyResolution(false, codes, []), bookExcluded: true };
+  }
+
+  // Layer step 2 — drop another book's entries and the concepts this book excluded for this
+  // headword, BEFORE the partition, so they leave the in-scope and out-of-scope partitions
+  // alike. ⚠️ `pool` is ALSO the list `applyPreference` searches for the preferred term's
+  // owner: searching the raw `candidates` there would let a preference row bring back an
+  // excluded concept, or another book's entry, as the winner. Such a row now reports
+  // `preference-not-a-candidate` instead.
+  const pool = layer ? visibleCandidates(layer, scope.bookId, layerKey, candidates) : candidates;
+
   // Step 2 — partition. D1: out-of-scope survives as a soft badged tier.
   const inScope = [];
   const outOfScope = [];
-  for (const c of candidates) {
+  for (const c of pool) {
     if (scope.positionOf.has(c.domain)) {
       inScope.push(c);
     } else {
@@ -368,10 +483,13 @@ function resolveCandidates(scope, candidates, integrity = [], english = null) {
   // comparison now compares head forms only, so a preference can never make two
   // concepts *look* nominally tied.
   const chosen = [];
+  // Layer step 3's input, counted here rather than in a second pass over `chosen`.
+  let bookEntry = null;
+  let bookEntries = 0;
   for (const c of inScope) {
     const term = headForm(c);
     if (!term) continue; // ← the filter, between steps 3 and 4
-    chosen.push({
+    const pick = {
       conceptId: c.conceptId,
       termId: term.termId,
       text: term.text,
@@ -379,7 +497,12 @@ function resolveCandidates(scope, candidates, integrity = [], english = null) {
       position: scope.positionOf.get(c.domain),
       reason: 'head-form',
       houseStyle: c.collection === HOUSE_STYLE_SOURCE,
-    });
+    };
+    chosen.push(pick);
+    if (layer && layer.bookOwned.get(c.conceptId) === scope.bookId) {
+      bookEntry = pick;
+      bookEntries++;
+    }
   }
 
   // ⚠️ `alsoFrom` and `applyPreference` are DEFINED HERE, ABOVE THE EMPTY-CHOSEN
@@ -431,7 +554,9 @@ function resolveCandidates(scope, candidates, integrity = [], english = null) {
   //
   // ⚠️ FOUR CALL SITES, NOT THREE. The three position-walk returns below, PLUS
   // the empty-chosen return above them — see the comment there. A fault must be
-  // reported even when the walk produced nothing to override.
+  // reported even when the walk produced nothing to override. (Five since the book
+  // glossary layer: its book-entry return calls it too. The whole-headword
+  // exclusion return deliberately does not.)
   //
   // Determinism needs no sort: the primary key permits one preference per
   // (book, chapter, english), and a term_id belongs to exactly one concept, so
@@ -452,7 +577,10 @@ function resolveCandidates(scope, candidates, integrity = [], english = null) {
     // (pinned by 'a term-less out-of-scope concept is not listed as a
     // suggestion either') — so a check written against it stays silent for
     // exactly the concepts most likely to be broken.
-    const owner = candidates.find((c) => c.isTerms.some((t) => t.termId === pref.termId));
+    //
+    // ⚠️ "ALL" MEANS ALL THAT THE BOOK LAYER LEAVES VISIBLE — `pool`, not the raw
+    // `candidates` (see layer step 2 above). Without a layer the two are the same array.
+    const owner = pool.find((c) => c.isTerms.some((t) => t.termId === pref.termId));
 
     // ⚠️ THE FAULT PATHS PUSH ONTO `codes` AND THEN `return result` UNCHANGED —
     // no spread, unlike the success path below. It works only because
@@ -563,13 +691,8 @@ function resolveCandidates(scope, candidates, integrity = [], english = null) {
   // not "tidy" that into a copy without reading applyPreference's own warning.
   if (chosen.length === 0) return applyPreference(emptyResolution(false, codes, outOfScope));
 
-  // Step 4 — lowest position wins.
-  let best = chosen[0].position;
-  for (const c of chosen) if (c.position < best) best = c.position;
-  const atBest = chosen
-    .filter((c) => c.position === best)
-    .sort((a, b) => a.conceptId - b.conceptId);
-
+  // ⚠️ DEFINED ABOVE LAYER STEP 3, which calls it: a `const` arrow called before its
+  // initialiser is a TDZ ReferenceError (see `alsoFrom` above).
   const asWinner = (c) => ({
     conceptId: c.conceptId,
     termId: c.termId,
@@ -577,6 +700,34 @@ function resolveCandidates(scope, candidates, integrity = [], english = null) {
     domain: c.domain,
     position: c.position,
   });
+
+  // Layer step 3 — A BOOK ENTRY WINS (spec §5.2). It sits above the position walk and above
+  // the house-style tie rule: a book entry is this book's own ruling. The other in-scope
+  // answers stay offerable in `alsoInScope`. `applyPreference` still runs last, as on every
+  // other return (the write API refuses a preference beside an entry; if one exists anyway,
+  // it decides, as today).
+  //
+  // ⚠️ EXACTLY ONE. Two entries of this book carrying one English string is a state the write
+  // API refuses; if it exists anyway, the ordinary walk decides rather than row order.
+  if (bookEntries === 1) {
+    return applyPreference({
+      winner: asWinner(bookEntry),
+      reason: 'book-entry',
+      nominalTie: [],
+      tied: [],
+      outOfScope,
+      integrity: codes,
+      unscoped: false,
+      alsoInScope: alsoFrom(new Set([bookEntry.conceptId])),
+    });
+  }
+
+  // Step 4 — lowest position wins.
+  let best = chosen[0].position;
+  for (const c of chosen) if (c.position < best) best = c.position;
+  const atBest = chosen
+    .filter((c) => c.position === best)
+    .sort((a, b) => a.conceptId - b.conceptId);
 
   if (atBest.length === 1) {
     return applyPreference({
@@ -684,6 +835,7 @@ function resolve(scope, english) {
 
 module.exports = {
   buildScope,
+  loadBookLayer,
   lookupCandidates,
   resolveCandidates,
   resolve,
@@ -699,4 +851,5 @@ module.exports = {
   // — it would have gone on reporting 0 disagreements, green. Add new consumers
   // to this list; a stale list is how the next one re-implements it.
   nocaseKey,
+  matchKey,
 };
