@@ -78,7 +78,7 @@ The sidebar on the left is your main navigation. The sections visible depend on 
 - **Orðasafn** (Terminology) — The term database
 
 **Editors, head editors and admins also see a Yfirlestur (Review) section:**
-- **Yfirlestrar** (Reviews) — The segment editor, filtered to edits awaiting review
+- **Yfirlestrar** (Reviews) — A list of the modules with edits waiting for a decision (book, chapter, section, how many, the oldest), oldest first; each opens the module filtered to those edits
 - **Aðlögun** (Localization) — The localization editor for Pass 2 (head editors and admins only)
 
 **Head editors and admins also see a Stjórnun (Administration) section:**
@@ -142,6 +142,26 @@ Above the table, filters narrow the list by what to show (*Sýna*), by status (*
 
 **If the machine translation is already right**, click **✓ Staðfesta MT** (Confirm MT) instead of editing. It marks the segment as checked; you can undo it.
 
+**Keyboard shortcuts** (on a Mac, Cmd instead of Ctrl):
+
+| Keys | What they do |
+|------|--------------|
+| Ctrl+S or Ctrl+Enter | Save the open edit |
+| Esc | Throw away unsaved text (the editor asks first); press again to close the edit pane |
+| Ctrl+Shift+Enter | Confirm MT and move on: confirms the highlighted segment's machine translation and moves to the next one that can be confirmed. If no segment is highlighted, the first press highlights the next one. Segments that already have an edit or a confirmation are skipped. |
+
+### AI Terminology Suggestions (GG)
+
+In some books the editor shows terminology suggestions that an AI pass made over the machine translation, to bring it in line with the project's agreed terms. A head editor or admin switches them on for a book, and they appear only in some modules.
+
+- A suggestion sits in the Icelandic text: the old word struck through, the new word beside it, and a **GG** tag (*Tillaga gervigreindar*, AI suggestion). Below the text there is one line per term rule: the English headword → the Icelandic term, and how many changes it makes.
+- The changes one term rule makes in one segment are taken or rejected together: **✓ Nota** / **✗ Hafna** for one change, **✓ Nota báðar** / **✗ Hafna báðum** for two, and **✓ Nota allar (N)** / **✗ Hafna öllum (N)** for more.
+- **Nota** (Use) puts the changes into your edit's text, on the screen only; nothing is sent until you click **Vista**. **Hætta við** (Cancel) throws them away, and the suggestions are offered again.
+- **Hafna** (Reject) hides the suggestion on that segment at once, for everyone.
+- After you save, the words you took keep their GG tag until a head editor approves the edit.
+- Suggestions never hold you up: if you confirm the MT (**✓ Staðfesta MT**), or a head editor approves the segment, while suggestions are still open, they are closed without being used.
+- Judge each suggestion like any other change, and take it only if it is right in that sentence.
+
 **Other help in the editor:**
 - **Term lookup** (*Fletta upp hugtaki…*) — look up a term without leaving the page; terms in the text are highlighted and open a popup with their translations
 - **Samhengisleit** (context search) — search earlier approved translations
@@ -159,15 +179,19 @@ Above the table, filters narrow the list by what to show (*Sýna*), by status (*
 | Check terminology consistency | Remove or add content |
 | Verify technical accuracy | Localize anything |
 
-### Submitting for Review
+### When You Finish a Module
+
+Your edits go to review as soon as you save them; there is no separate step to send them. Head editors find them under **Yfirlestrar**.
 
 When you have reviewed all segments in a module:
 
-1. Click **"Senda til yfirlestrar"** (Submit for Review)
-2. Your edits go to the Head Editor for approval
-3. You can follow your submissions on the home page: **Nákvæmt yfirlit → Bíður yfirlestrar**
+1. Click **"Merkja sem lokið"** (Mark as done) and confirm
+2. The editor records that you finished; beside the button you see **Merkt sem lokið** with the date and time
+3. You can keep editing the module afterwards, and click the button again later
 
-The Head Editor then marks each edit:
+If the module has unsaved text, save it or throw it away first. You can follow your edits that await review on the home page: **Nákvæmt yfirlit → Bíður yfirlestrar**.
+
+A Head Editor then marks each edit:
 - **Samþykkja** (Approve)
 - **Hafna** (Reject), with a reason
 - **Ræða** (Discuss), with a topic for discussion
@@ -342,6 +366,7 @@ Click **✓ Staðfesta MT** so the segment counts as checked.
 | Task | Where to Go |
 |------|-------------|
 | Edit translations (Pass 1) | **Ritill** (Editor) |
+| Mark a module as done | **Merkja sem lokið** in **Ritill** |
 | See edits awaiting review | **Yfirlestrar** (Reviews) |
 | Localize content (Pass 2) | **Aðlögun** (Localization) — head editors and admins |
 | Look up / propose terms | **Orðasafn** (Terminology) |

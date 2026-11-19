@@ -62,14 +62,14 @@ For each segment you want to change:
 4. Optionally add an **editor note** explaining your change
 5. Save the edit
 
-### Submitting for Review
+### When You Finish a Module
 
-When you've reviewed all segments in a module:
-1. Click **"Submit for Review"**
-2. Your edits go to the Head Editor for approval
-3. You can track your submissions in the reviews list
+Your edits go to review as soon as you save them; there is no separate submit step. When you've reviewed all segments in a module:
+1. Click **"Merkja sem lokið"** (Mark as done) and confirm
+2. The editor records that you finished, and shows **Merkt sem lokið** with the date beside the button
+3. You can keep editing afterwards; follow your edits awaiting review on the home page (**Nákvæmt yfirlit → Bíður yfirlestrar**)
 
-### After Submission
+### After You Save
 
 The Head Editor will review your edits and either:
 - **Approve** — Your edit is accepted
@@ -141,7 +141,7 @@ If you encounter a term not in the glossary:
 | Localization Editor | `/localization` | Pass 2 cultural adaptation (head editors and admins) |
 | Terminology | `/terminology` | Term database and lookup |
 | Progress | `/progress` | Overall translation progress |
-| Reviews | `/editor?view=reviews` | Pending review queue |
+| Reviews | `/editor?view=reviews` | Modules with edits waiting for a decision |
 | Feedback | `/feedback` | Reader feedback form (public) |
 
 ## When You're Stuck
