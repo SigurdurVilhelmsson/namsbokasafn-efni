@@ -28,7 +28,7 @@
  * comment is never seen at runtime.
  */
 const fs = require('fs');
-const { HOUSE_STYLE_SOURCE } = require('../lib/houseStyleTerms');
+const { HOUSE_STYLE_SOURCE, BOOK_LAYER_SOURCE } = require('../lib/houseStyleTerms');
 const path = require('path');
 const {
   loadBinEntries,
@@ -234,9 +234,9 @@ async function main(argv) {
   const importedCandidates = db
     .prepare(
       `SELECT COUNT(*) n FROM concept_term
-        WHERE lang='is' AND text NOT LIKE '% %' AND source IS NOT ?`
+        WHERE lang='is' AND text NOT LIKE '% %' AND (source IS NULL OR source NOT IN (?, ?))`
     )
-    .get(HOUSE_STYLE_SOURCE).n;
+    .get(HOUSE_STYLE_SOURCE, BOOK_LAYER_SOURCE).n;
 
   const emptyReport = () => ({
     strings: {

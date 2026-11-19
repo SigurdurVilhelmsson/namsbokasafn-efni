@@ -635,6 +635,9 @@ const HOUSE_STYLE_TERMS = Object.freeze([
 /** The marker 051 uses to find and manage its own rows. Not an Íðorðabankinn source. */
 const HOUSE_STYLE_SOURCE = 'house-style';
 
+/** Concepts and terms written by the book glossary layer (bookGlossaryLayer.js): not an import. */
+const BOOK_LAYER_SOURCE = 'book-layer';
+
 /**
  * 🔴 THE ROWS 051 SEEDS ARE ENFORCEMENT, NOT CONTENT — so any check asking
  * "did the import actually put anything here?" MUST exclude them.
@@ -659,21 +662,22 @@ const HOUSE_STYLE_SOURCE = 'house-style';
  */
 function countImportedConcepts(db) {
   return db
-    .prepare('SELECT COUNT(*) n FROM concept WHERE collection IS NOT ?')
-    .get(HOUSE_STYLE_SOURCE).n;
+    .prepare('SELECT COUNT(*) n FROM concept WHERE collection IS NULL OR collection NOT IN (?, ?)')
+    .get(HOUSE_STYLE_SOURCE, BOOK_LAYER_SOURCE).n;
 }
 
 /** concept_term rows that came from an import rather than from 051. */
 function countImportedTerms(db) {
   return db
-    .prepare('SELECT COUNT(*) n FROM concept_term WHERE source IS NOT ?')
-    .get(HOUSE_STYLE_SOURCE).n;
+    .prepare('SELECT COUNT(*) n FROM concept_term WHERE source IS NULL OR source NOT IN (?, ?)')
+    .get(HOUSE_STYLE_SOURCE, BOOK_LAYER_SOURCE).n;
 }
 
 module.exports = {
   HOUSE_STYLE_TERMS,
   HOUSE_STYLE_DOMAIN,
   HOUSE_STYLE_SOURCE,
+  BOOK_LAYER_SOURCE,
   countImportedConcepts,
   countImportedTerms,
 };

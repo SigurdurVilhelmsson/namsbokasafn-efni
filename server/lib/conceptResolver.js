@@ -17,6 +17,7 @@
  */
 
 const { HOUSE_STYLE_SOURCE } = require('./houseStyleTerms');
+const { isSymbolShaped } = require('./conceptMatcher');
 
 /**
  * Fold one English string to the key `book_term_preference`'s PRIMARY KEY
@@ -50,6 +51,18 @@ const { HOUSE_STYLE_SOURCE } = require('./houseStyleTerms');
  */
 function nocaseKey(s) {
   return s.replace(/[A-Z]/g, (c) => c.toLowerCase());
+}
+
+/**
+ * The book glossary layer's match key for an English headword (spec §5.1): a symbol-shaped
+ * headword keeps its exact text (`Co` and `CO` are different things), anything else is folded
+ * with `nocaseKey`. Never `toLowerCase()`.
+ *
+ * @param {string} english
+ * @returns {string}
+ */
+function matchKey(english) {
+  return isSymbolShaped(english) ? english : nocaseKey(english);
 }
 
 /**
@@ -699,4 +712,5 @@ module.exports = {
   // — it would have gone on reporting 0 disagreements, green. Add new consumers
   // to this list; a stale list is how the next one re-implements it.
   nocaseKey,
+  matchKey,
 };
