@@ -76,7 +76,7 @@ import {
   writeSelectedOverlay,
   appendRerequestLog,
 } from './lib/mt-layers.js';
-import { isMtLocked } from './lib/mt-lock.cjs';
+import { isMtLocked, freezeLockState } from './lib/mt-lock.cjs';
 import segMarkers from './lib/seg-markers.cjs';
 const { parseSegmentRecords } = segMarkers;
 
@@ -1366,6 +1366,31 @@ export function glossaryStatusLine(glossary, skippedCount, omittedCount = 0) {
 // ─── MT Edit-Lock ───────────────────────────────────────────────────
 
 /**
+ * Wording for a locked MT output (G1.7). A study-freeze marker is not an editing lock and must
+ * never be cleared, so the messages tell the two apart. Wording only: `mtRunDecision` and every
+ * refusal stay as they are. Never prints a marker's body (`freezeLockState` returns a verdict).
+ * @param {string} outputPath the module's `*-segments.is.md` path
+ * @returns {'freeze'|'editing'}
+ */
+export function lockKindOf(outputPath) {
+  return freezeLockState(outputPath) === 'freeze' ? 'freeze' : 'editing';
+}
+
+/**
+ * The parenthesised reason in a locked-module summary, naming and counting each kind present.
+ * @param {string[]} outputPaths
+ * @returns {string}
+ */
+export function lockedBreakdown(outputPaths) {
+  const freeze = outputPaths.filter((p) => lockKindOf(p) === 'freeze').length;
+  const editing = outputPaths.length - freeze;
+  const parts = [];
+  if (freeze > 0) parts.push(`${freeze} study freeze (G1.7), never clear`);
+  if (editing > 0) parts.push(`${editing} editing started`);
+  return `MT re-run refused: ${parts.join(', ')}`;
+}
+
+/**
  * Decide what api-translate does with one module's MT output.
  *
  * `locked` (an existing `.locked` marker next to the mtOutput file — see
@@ -2624,7 +2649,11 @@ async function runRerequestMode(args, { glossary, statedArm }) {
     const enPath = path.join(forMt, chapterDir, `${stem}-segments.en.md`);
     const isPath = path.join(bookDir, '02-mt-output', chapterDir, `${stem}-segments.is.md`);
     if (isMtLocked(isPath)) {
-      return fail(`${chapterDir}/${stem} is LOCKED (editing started). Nothing was sent.`);
+      const why =
+        lockKindOf(isPath) === 'freeze'
+          ? 'LOCKED by the study freeze (G1.7); the marker must not be cleared'
+          : 'LOCKED (editing started)';
+      return fail(`${chapterDir}/${stem} is ${why}. Nothing was sent.`);
     }
     const where = { bookDir, chapterDir, stem };
     let plan;
@@ -2983,7 +3012,9 @@ async function main() {
     // run never reaches (this block exits the process first) — so locked
     // modules must be surfaced here too, or a dry run can't show lock state.
     if (lockedList.length > 0) {
-      console.log(`  Locked:        ${lockedList.length} (editing started — MT re-run refused)`);
+      console.log(
+        `  Locked:        ${lockedList.length} (${lockedBreakdown(lockedList.map((m) => m.outputPath))})`
+      );
       if (args.verbose) {
         for (const mod of lockedList) {
           console.log(`    🔒 ${mod.chapterDir}/${mod.moduleId}`);
@@ -3033,6 +3064,7 @@ async function main() {
     translated: 0,
     skipped: toSkip.length,
     lockedSkipped: 0,
+    lockedPaths: [], // output paths of the locked-skipped modules, for the summary's kinds
     failed: 0,
     markersNormalized: 0,
     mismatches: 0,
@@ -3047,10 +3079,14 @@ async function main() {
   for (const mod of workList) {
     if (mod.action === 'locked-skip') {
       console.warn(
-        `  🔒 ${mod.chapterDir}/${mod.moduleId} LOCKED (editing started) — MT re-run refused` +
-          `${args.force ? ' (--force ignored)' : ''}`
+        `  🔒 ${mod.chapterDir}/${mod.moduleId} LOCKED (${
+          lockKindOf(mod.outputPath) === 'freeze'
+            ? 'study freeze (G1.7), never clear'
+            : 'editing started'
+        }) — MT re-run refused` + `${args.force ? ' (--force ignored)' : ''}`
       );
       results.lockedSkipped++;
+      results.lockedPaths.push(mod.outputPath);
       continue;
     }
     // §C183: drift found while planning a top-up. Nothing is sent for it, and it is a
@@ -3142,7 +3178,7 @@ async function main() {
   }
   console.log(`  Skipped:    ${results.skipped}`);
   if (results.lockedSkipped > 0) {
-    console.log(`  Locked:     ${results.lockedSkipped} (editing started — MT re-run refused)`);
+    console.log(`  Locked:     ${results.lockedSkipped} (${lockedBreakdown(results.lockedPaths)})`);
   }
   console.log(`  Failed:     ${results.failed}`);
   if (results.markersNormalized > 0) {

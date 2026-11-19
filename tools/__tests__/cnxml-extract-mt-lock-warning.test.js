@@ -12,6 +12,7 @@ import { mkdtempSync, mkdirSync, writeFileSync, rmSync, readFileSync } from 'nod
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { mtLockWarnings } from '../cnxml-extract.js';
+import { FREEZE_LOCK_BODY } from '../lib/mt-lock.cjs';
 
 const dirs = [];
 afterEach(() => {
@@ -20,13 +21,13 @@ afterEach(() => {
 });
 
 /** A book tree with an 02-mt-output/<chapterDir>/ holding the named modules. */
-function bookWith(chapterDir, { locked = [], unlocked = [] } = {}) {
+function bookWith(chapterDir, { locked = [], unlocked = [], frozen = [] } = {}) {
   const root = mkdtempSync(path.join(tmpdir(), 'c110-'));
   dirs.push(root);
   const bookDir = path.join(root, 'books', 'efnafraedi-2e');
   const mtDir = path.join(bookDir, '02-mt-output', chapterDir);
   mkdirSync(mtDir, { recursive: true });
-  for (const m of [...locked, ...unlocked]) {
+  for (const m of [...locked, ...unlocked, ...frozen]) {
     writeFileSync(path.join(mtDir, `${m}-segments.is.md`), '<!-- SEG:x:para:y -->\nhalló\n');
   }
   for (const m of locked) {
@@ -34,6 +35,9 @@ function bookWith(chapterDir, { locked = [], unlocked = [] } = {}) {
       path.join(mtDir, `${m}-segments.locked`),
       JSON.stringify({ lockedAt: '2026-08-22T00:00:00.000Z', reason: 'test' })
     );
+  }
+  for (const m of frozen) {
+    writeFileSync(path.join(mtDir, `${m}-segments.locked`), FREEZE_LOCK_BODY);
   }
   return bookDir;
 }
@@ -97,6 +101,47 @@ describe('§C110 mtLockWarnings — extraction-time diagnostic for edit-locked m
     const bookDir = bookWith('ch01', { locked: ['m68663', 'm68664'] });
     const { summary } = mtLockWarnings(bookDir, 1, ['m68663', 'm68664']);
     expect(summary).toContain('m68663');
+  });
+});
+
+describe('G1.7 mtLockWarnings — a study-freeze marker is never advised to be cleared', () => {
+  it('reports a freeze-marked module as locked and frozen', () => {
+    const r = mtLockWarnings(bookWith('ch01', { frozen: ['m1'] }), 1, ['m1']);
+    expect([r.locked, r.frozen, r.editLocked]).toEqual([['m1'], ['m1'], []]);
+  });
+
+  it('words the per-module warning as the study freeze, not editing', () => {
+    const [w] = mtLockWarnings(bookWith('ch01', { frozen: ['m1'] }), 1, ['m1']).warnings;
+    expect([w.includes('study freeze (G1.7)'), w.includes('EDIT-LOCKED')]).toEqual([true, false]);
+  });
+
+  it('the summary advises restoring the extraction and never says Clear the lock', () => {
+    const { summary } = mtLockWarnings(bookWith('ch01', { frozen: ['m1'] }), 1, ['m1']);
+    expect([
+      summary.includes('restore the previous extraction'),
+      summary.includes('Clear the lock'),
+      summary.includes('editing started'),
+    ]).toEqual([true, false, false]);
+  });
+
+  it('a non-freeze marker keeps the editing wording and its advice', () => {
+    const r = mtLockWarnings(bookWith('ch01', { locked: ['m2'] }), 1, ['m2']);
+    expect([
+      r.warnings[0].includes('EDIT-LOCKED'),
+      r.summary.includes('Clear the lock'),
+      r.summary.includes('study freeze'),
+    ]).toEqual([true, true, false]);
+  });
+
+  it('a mixed run names each group with its own advice', () => {
+    const bookDir = bookWith('ch01', { frozen: ['m1'], locked: ['m2'] });
+    const { summary } = mtLockWarnings(bookDir, 1, ['m1', 'm2']);
+    expect([
+      summary.includes('1 held by the study freeze (G1.7) — m1'),
+      summary.includes('1 with editing started — m2'),
+      summary.includes('Do NOT clear'),
+      summary.includes('Clear the lock'),
+    ]).toEqual([true, true, true, true]);
   });
 });
 

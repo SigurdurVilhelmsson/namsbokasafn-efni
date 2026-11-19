@@ -339,18 +339,20 @@ describe('api-translate --rerequest (CLI)', () => {
     const r = cli('--rerequest', 'm68852:para:nope', '--dry-run');
     expect([
       r.status,
-      r.stderr.includes('ch21/m68852 is LOCKED'),
+      r.stderr.includes('ch21/m68852 is LOCKED by the study freeze (G1.7)'),
       r.stderr.includes('Nothing was sent'),
-    ]).toEqual([1, true, true]);
+      r.stderr.includes('editing started'),
+    ]).toEqual([1, true, true, false]);
   });
 
   it('a translated id on a frozen unit is refused at the lock: exit 1, nothing sent', () => {
     const r = cli('--rerequest', TRANSLATED_ID, '--dry-run');
     expect([
       r.status,
-      r.stderr.includes('ch21/m68852 is LOCKED'),
+      r.stderr.includes('ch21/m68852 is LOCKED by the study freeze (G1.7)'),
       r.stdout.includes('Re-request:'),
-    ]).toEqual([1, true, false]);
+      r.stderr.includes('editing started'),
+    ]).toEqual([1, true, false, false]);
   });
 
   it('refuses --rerequest with --force, --top-up, --june-wire or --update-status', () => {

@@ -49,7 +49,7 @@ import {
 } from './lib/alt-segments.js';
 import { decodeEntities } from './lib/math-label-inventory.js';
 import { flattenMarkersToText, scanTermMarkers } from './lib/term-text.js';
-import { isMtLocked } from './lib/mt-lock.cjs';
+import { isMtLocked, freezeLockState } from './lib/mt-lock.cjs';
 import {
   parseArgs,
   BOOK_OPTION,
@@ -3291,7 +3291,7 @@ function hasExtractTarget(args) {
  * @param {string} bookDir - the book's directory, e.g. `books/efnafraedi-2e`
  * @param {number|'appendices'} chapter - both `-1` and `'appendices'` mean appendices
  * @param {string[]} moduleIds - modules this run extracted
- * @returns {{locked: string[], warnings: string[], summary: string|null}}
+ * @returns {{locked: string[], frozen: string[], editLocked: string[], warnings: string[], summary: string|null}}
  */
 function mtLockWarnings(bookDir, chapter, moduleIds) {
   // Appendices are the -1 sentinel and are NOT `ch-1` (CLAUDE.md § Directory
@@ -3300,22 +3300,43 @@ function mtLockWarnings(bookDir, chapter, moduleIds) {
     chapter === 'appendices' || chapter === -1
       ? 'appendices'
       : `ch${String(chapter).padStart(2, '0')}`;
-  const locked = moduleIds.filter((moduleId) =>
-    isMtLocked(path.join(bookDir, '02-mt-output', chDir, `${moduleId}-segments.is.md`))
+  const mtPath = (moduleId) =>
+    path.join(bookDir, '02-mt-output', chDir, `${moduleId}-segments.is.md`);
+  const locked = moduleIds.filter((moduleId) => isMtLocked(mtPath(moduleId)));
+  // G1.7: a study-freeze marker is not an editing lock. It is never cleared (that breaks the
+  // study), so its wording differs and its advice is the opposite. The verdict never exposes
+  // the marker's body.
+  const frozen = locked.filter((m) => freezeLockState(mtPath(m)) === 'freeze');
+  const editLocked = locked.filter((m) => !frozen.includes(m));
+  const warnings = locked.map((moduleId) =>
+    frozen.includes(moduleId)
+      ? `  ⚠ ${moduleId}: MT output is held by the study freeze (G1.7). This extraction changed ` +
+        `02-for-mt, but the frozen English must not change during the study, and ` +
+        `api-translate will refuse this module (--force does NOT override).`
+      : `  ⚠ ${moduleId}: MT output is EDIT-LOCKED. This extraction advanced 02-for-mt, but ` +
+        `api-translate will return locked-skip (--force does NOT override), leaving 02-mt-output ` +
+        `at the older vintage. Inject will then refuse this module as "incomplete injection".`
   );
-  const warnings = locked.map(
-    (moduleId) =>
-      `  ⚠ ${moduleId}: MT output is EDIT-LOCKED. This extraction advanced 02-for-mt, but ` +
-      `api-translate will return locked-skip (--force does NOT override), leaving 02-mt-output ` +
-      `at the older vintage. Inject will then refuse this module as "incomplete injection".`
-  );
+  const groups = [];
+  if (frozen.length > 0) {
+    groups.push(
+      `${frozen.length} held by the study freeze (G1.7) — ${frozen.join(', ')}. Do NOT clear ` +
+        `the freeze marker: restore the previous extraction (the frozen English must not ` +
+        `change during the study; a deliberate change is a re-cut, [USER]'s decision).`
+    );
+  }
+  if (editLocked.length > 0) {
+    groups.push(
+      `${editLocked.length} with editing started — ${editLocked.join(', ')}. Clear the lock ` +
+        `and re-run api-translate, or restore the previous extraction.`
+    );
+  }
   const summary =
     locked.length === 0
       ? null
-      : `⚠ §C110: ${locked.length} module(s) extracted with a LOCKED MT output — ` +
-        `${locked.join(', ')}. Their 02-for-mt is now newer than their 02-mt-output. ` +
-        `Clear the lock and re-run api-translate, or restore the previous extraction.`;
-  return { locked, warnings, summary };
+      : `⚠ §C110: ${locked.length} module(s) extracted with a LOCKED MT output. ` +
+        `Their 02-for-mt is now newer than their 02-mt-output. ${groups.join(' ')}`;
+  return { locked, frozen, editLocked, warnings, summary };
 }
 
 async function main() {
