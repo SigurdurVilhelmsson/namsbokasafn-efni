@@ -56,6 +56,9 @@ in the register (§7).
   chemistry unit (the "five modules with old rows" of the Skerfur row are among them).
 - **The study units:** 170 in chemistry, which is 149 modules plus 21 `chapter-metadata` units, including `ch00` and
   `appendices`. Enumerated as check G-1g does (`readG1g` in `server/scripts/read-research-preconditions.js`).
+  `ch00` holds one module, `m68662`, which the module route refuses (`server/middleware/validateParams.js` rejects a
+  chapter below 1), so it is never opened and never minted. It is locked and listed all the same, so that G-1g and
+  the freeze keep one unit set; its manifest lines simply never join anything.
 - **The served base, computed at `474647ffb`** with `segmentParser.loadModuleForEditing` and
   `servedVersions.versionRowsFor` (no database): **22,591** segment occurrences, **0** duplicated ids (G1.12 holds),
   **0** without Icelandic, every one served from layer `mt-output`. It takes about 0.5 s. As JSONL with the
@@ -81,6 +84,10 @@ in the register (§7).
 - A tag on the commit that holds it.
 - A read-only check, runnable on production, that proves the markers and, once it exists, the manifest.
 - Tests that fail if a marker disappears or a frozen input changes.
+- **After the cut, a frozen unit's served text changes only through a deliberate re-cut (§6.6).** The served hash
+  depends on the files *and* on the loader's normalisation (`parseSegments`, `unescapeMtMarkers`,
+  `normalizeTermMarkers`, the first-copy rule), so a code change can move it as surely as a file change. Either one
+  fails CI until a re-cut records it.
 
 **Non-goals**
 - Fixing the first-act hooks for books outside the study (they fire only on a unit's first-ever row, and
@@ -163,6 +170,10 @@ Three subcommands:
   - each unit's English and MT file hashes against the manifest (these never change during the study);
   - each segment line, for every unit still served from its frozen layer. A unit now served from a faithful file
     (edits applied after the hold lifts) is reported as `moved to faithful`, which is expected and is not a failure.
+  - A segment mismatch carries one of two verdicts, because they call for different responses: `input changed` (the
+    unit's English or MT file hash differs from the manifest) or `served text changed, inputs unchanged` (the files
+    match, so the loader's code moved the hash). Either is a FAIL, and the output names the re-cut route (§6.6).
+  - It compares against the **current** manifest: the one no other manifest supersedes (§6.6).
   - It prints `STUDY FREEZE CHECK: PASS` or `FAIL`, the counts, and at most 20 differing keys (unit and segment
     ids, never text).
 
@@ -179,7 +190,10 @@ script computes no hash of its own. The texts are not copied: they are in git at
   computed), `segmentsSha256`.
 - `counts`: units, segments, segments by layer.
 - `units[]`: chapter, `chapterDir`, unit id, sha256 of its English file and of its MT file, sha256 of its faithful
-  file or `null`, segment count, `marker: "freeze"`.
+  file or `null`, sha256 of its layer-2 change log (`02-mt-revised/<chapterDir>/<unit>-changes.jsonl`, the file
+  G1.23 builds its suggestions from) or `null`, segment count, `marker: "freeze"`. The change-log hash is recorded,
+  not enforced: what each editor was actually shown is G1.23's own record, and the revision records do not hash the
+  change logs (all 170 carry the same 13 keys and `overlay: null`).
 - `layers`:
   - layer 1: `02-mt-output`, the last commit that touched it, and its hand repairs (each commit whose subject
     holds `HAND REPAIR` and that touched the book's `02-mt-output`, with its subject);
@@ -202,6 +216,16 @@ An annotated tag `freeze-<book>-<YYYY-MM-DD>` (the same style as `s-2026-11-01`)
 manifest PR, placed only after `check` passes at that commit. Its message names the manifest directory and the
 sha256 of `freeze.json`. Pushing a tag is outward-facing, so it waits for [USER]'s go.
 
+### 6.6 A change to the base after the cut: the re-cut
+
+If a frozen unit's served text must change after the cut (a loader fix, a re-extraction G1.5's protocol allows),
+the change lands together with a **re-cut**: a new manifest directory under a new tag, whose `freeze.json` carries
+`supersedes: "<earlier tag>"`. The earlier manifest stays, unedited: it is the record of the base for every unit
+opened before the re-cut. `check` and the guard test compare against the current manifest only. A served version
+is the frozen base if it joins a line of **any** manifest, and the manifest it joins says which cut it belongs to.
+A re-cut is [USER]'s decision, recorded in the register; this design builds no re-cut command beyond `manifest`
+plus the `supersedes` field (`--supersedes <tag>`, refused unless that tag's manifest exists and is current).
+
 ## 7. Step 1: the markers (now)
 
 **One PR, a draft until [USER] approves:**
@@ -211,6 +235,11 @@ sha256 of `freeze.json`. Pushing a tag is outward-facing, so it waits for [USER]
 - the 170 markers, written by `study-freeze.js markers --write` on the branch, never by hand;
 - a guard test on the real tree: every study unit holds the byte-identical freeze body and the count equals the
   unit count (with a planted control, so a broken comparison cannot pass);
+- the manifest guard, built now so that step 2 adds no code: for each study book's current manifest it recomputes
+  every segment line of every unit still served from its frozen layer and every unit's English and MT file hashes,
+  and fails on any difference, with `check`'s two verdicts (§6.3). It costs about 0.5 s. Until step 2 there is no
+  manifest, so it checks nothing on the real tree, but its planted controls (a temp manifest with one line's hash
+  changed, and one with an MT file hash changed) run every time, so the comparison is proven before it has work;
 - docs: a register entry; §C111 closed (its "properly safe format" is the freeze marker, written to every unit and
   not dependent on any database); a dated note under the Skerfur table (§2).
 
@@ -237,9 +266,9 @@ commit.
 - `manifest` passes its preconditions (§6.3).
 
 **Then:** `study-freeze.js manifest --write --tag freeze-efnafraedi-2e-<date>` on a branch from `origin/main`; a
-data-only PR adding the manifest and a second guard test (every committed manifest's English and MT file hashes
-still match the tree, with a one-byte control); merge; `check` at the merge commit; tag; deploy; `check` on
-production. It must land before any unit opens and before G1.13 assigns.
+data-only PR adding the manifest (step 1's manifest guard picks it up and runs on the real tree from then on);
+merge; `check` at the merge commit; tag; deploy; `check` on production. It must land before any unit opens and
+before G1.13 assigns.
 
 ## 9. The production step
 
@@ -263,7 +292,8 @@ Claude may run it over ssh, as with the other production checks.
 | T5 | `check`: PASS on a clean tree; FAIL for a deleted marker, a foreign marker (stdout never contains its body) and a changed MT file; a unit moved to faithful is reported and not a failure | A check that cannot fail, or one that leaks |
 | T6 | An unknown flag exits non-zero and writes nothing; a non-study `--book` is refused; the exit code is failure if no verdict is reached | A misspelt `--write` treated as a dry run, or the reverse |
 | T7 | `readG1g` output unchanged after the move to `listStudyUnits` (its existing tests) | G-1g and the freeze disagreeing on the unit set |
-| T8 | The real-tree guard of §7, with its control | A marker deleted later, or a new unit added without one |
+| T8 | The real-tree marker guard of §7, with its control | A marker deleted later, or a new unit added without one |
+| T9 | The manifest guard of §7: its controls fail with `served text changed, inputs unchanged` (a line's `is_sha256` altered, files untouched) and with `input changed` (an MT file hash altered); a manifest that `supersedes` another makes the earlier one ignored | A loader change that silently stops served versions joining the base, caught only on production or never |
 
 Every new test is run against the code with the behaviour broken before it is trusted (the register's rule for
 regression tests).
@@ -279,9 +309,18 @@ regression tests).
 6. The glossary file's hash stands for the terminology ruling-set snapshot; layer 2's own ruling-set files are listed
    beside it (§6.4).
 7. The G-1g enumeration moves to a shared function rather than being copied (§6.1).
+8. After the cut, the served text of a frozen unit is frozen, code included: the manifest guard recomputes every
+   line in CI, and a deliberate change goes through a re-cut that supersedes, never edits, the earlier manifest
+   (§4, §6.6). The alternative, freezing only the files, would let a loader change silently stop served versions
+   joining the base.
+9. Layer 2's change logs (the suggestions' source) are hashed per unit in the manifest but not enforced, like the
+   glossary; G1.23's logs record what each editor was shown (§6.4).
+10. `ch00`'s one module is locked and listed although the module route refuses it, to keep one unit set with G-1g
+    (§3).
 
 ## 12. Left to the builder
 
 The exact output wording; the order of the header's fields; how T3 drives the module route (the served-version
 tests' fixtures are the model); whether T21 (`server/__tests__/mtLockFreezeMarker.test.js`) switches its fixture to
-`FREEZE_LOCK_BODY`.
+`FREEZE_LOCK_BODY`. `server/__tests__/readResearchPreconditions.test.js` pins `readG1g`'s requires, so it gains
+`../lib/studyUnits` when the enumeration moves.
