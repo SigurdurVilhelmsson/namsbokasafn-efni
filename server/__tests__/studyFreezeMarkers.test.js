@@ -132,8 +132,7 @@ describe('study-freeze markers', () => {
     expect(main(['markers', '--book', 'liffraedi-2e'], io)).toBe(1);
   });
 
-  it('manifest and check are stubs that exit 1 for now', () => {
-    expect(main(['manifest'], io)).toBe(1);
+  it('check is a stub that exits 1 for now (manifest: studyFreezeManifest.test.js)', () => {
     expect(main(['check'], io)).toBe(1);
   });
 });
