@@ -268,3 +268,30 @@ describe('runGlossaryExport and the record', () => {
     expect(existsSync(path.join(dir, 'book-glossary.json'))).toBe(false);
   });
 });
+
+describe('the licence rule on the written file', () => {
+  it("book-glossary.json's bytes carry neither an excluded nor a replaced row's Icelandic", () => {
+    // ASCII markers, so JSON escapes nothing and a raw byte search is exact.
+    const EXCLUDED = 'MARKERc19ExcludedIdordabankiRow';
+    const REPLACED = 'MARKERc19ReplacedRow';
+    const dir = seedBook(BOOK);
+    // An Íðorðabankinn-style row (it carries an idordabanki_id), excluded for one headword.
+    const idb = addPair('chemistry', 'ATP', EXCLUDED, 555);
+    addExclusion(db, { ...base, english: 'ATP', conceptId: idb });
+    // A row a book entry replaces.
+    const old = addPair('physics', 'geometry', REPLACED, 777);
+    addEntry(db, { ...base, english: ['geometry'], icelandic: 'lögun', replaces: [old] });
+    // control: the database column the builder reads holds both markers
+    const column = db
+      .prepare('SELECT icelandic FROM book_glossary_exclusion ORDER BY id')
+      .all()
+      .map((r) => r.icelandic);
+    expect(column).toEqual(expect.arrayContaining([EXCLUDED, REPLACED]));
+    runExport({ recordFn: (b) => buildBookGlossaryRecord(db, b) });
+    const bytes = readFileSync(path.join(dir, 'book-glossary.json'));
+    // control: the file was written and carries the entry's own Icelandic
+    expect(bytes.includes('lögun')).toBe(true);
+    expect(bytes.includes(EXCLUDED)).toBe(false);
+    expect(bytes.includes(REPLACED)).toBe(false);
+  });
+});
