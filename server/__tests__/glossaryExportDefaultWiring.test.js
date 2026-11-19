@@ -103,7 +103,7 @@ describe('runGlossaryExport default exportFn wiring (Task 5, Important 2)', () =
       // The resolved builder's failure mode: a readonly open against a
       // non-existent file. THIS line is what discriminates — under a reverted
       // default the old builder never produces SQLITE_CANTOPEN.
-      expect(joined).toMatch(/SQLITE_CANTOPEN|unable to open database file/i);
+      expect(joined).toMatch(/export failed — .*(SQLITE_CANTOPEN|unable to open database file)/i);
 
       // ⚠️ CORRECTED 2026-08-09 (whole-branch adversarial review). This
       // assertion used to be justified as "NOT what the old builder
@@ -121,6 +121,9 @@ describe('runGlossaryExport default exportFn wiring (Task 5, Important 2)', () =
       );
       expect(status.errors).toBe(1);
       expect(status.books.testbook.outcome).toBe('error');
+      // c19: recordFn stays DEFAULTED here too, so `recordFn = createBookGlossaryRecordFn()` is
+      // pinned by the same missing-database shape (its own channel, apart from the export's).
+      expect(status.bookGlossaryRecords.testbook).toMatch(/^error: .*unable to open database file/);
     }
   );
 });
