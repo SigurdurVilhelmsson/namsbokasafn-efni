@@ -87,7 +87,7 @@ describe('contested headwords are masked in math labels', () => {
     expect(`${slug}: ${bad.join(', ')}`).toBe(`${slug}: `);
   });
 
-  it('📌 THE EXPOSURE IS BACK SINCE 2026-08-31 — so the guard above is NON-VACUOUS again', () => {
+  it('📌 THE EXPOSURE IS GONE AGAIN SINCE 2026-11-19 (c19 excluded `SI` and `Si`) — so the guard above is vacuous', () => {
     // 🔴 THIS ASSERTION WAS INVERTED, NOT DELETED. It used to read
     // `expect(exposed.length).toBeGreaterThan(0)` — a non-vacuity guard on the test above,
     // because "no contested headword reaches a math label" passes trivially if no contested
@@ -136,9 +136,18 @@ describe('contested headwords are masked in math labels', () => {
     // mixed-case label can never hit the map. Lowercase `si` WOULD resolve to `kísill` and
     // occurs 0 times. `math-label-map.json` now carries `"si": "si"` so that structural
     // accident is stated rather than relied upon.
-    expect(
-      exposed.length,
-      'the exposure population is empty — the guard above is vacuous'
-    ).toBeGreaterThan(0);
+    // 🔴 INVERTED AGAIN 2026-11-19 (c19), for the same reason as on 2026-08-30. Chemistry's
+    // book glossary layer excludes both `SI` (ruling r075) and `Si` (ruling r624), so the
+    // export of 2026-11-19 (`7fd6a82f5`) carries neither, `si` is no longer contested, and the
+    // 21 `Si` labels left the population. Measured before the change: `si` was the ONLY
+    // competition in chemistry, physics and organic, and biology's two (`quaternary`,
+    // `tertiary`) never reach a math label. So the population is empty, and asserting that
+    // records it, where deleting the assertion would hide it. Both consequences listed at the
+    // top of this test apply again: the guard above is vacuous and kept, and the `"si": "si"`
+    // self-map is inert and kept.
+    // ▶ `toEqual([])`, not a length check, so a returning exposure prints its labels.
+    expect(exposed, 'a contested headword reaches math labels again — see the note above').toEqual(
+      []
+    );
   });
 });
