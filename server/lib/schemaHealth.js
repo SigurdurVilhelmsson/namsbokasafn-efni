@@ -114,6 +114,42 @@ const EXPECTED_SCHEMA = deepFreeze({
       'closed_at_ms',
       'shown_at_finish',
     ],
+    // c19 (migration 058): the book glossary layer
+    book_glossary_exclusion: [
+      'id',
+      'book_id',
+      'english',
+      'match_key',
+      'concept_id',
+      'idordabanki_id',
+      'icelandic',
+      'reason',
+      'source',
+      'created_by',
+      'created_at',
+    ],
+    book_glossary_entry: [
+      'concept_id',
+      'book_id',
+      'reason',
+      'source',
+      'created_by',
+      'created_at',
+      'updated_by',
+      'updated_at',
+    ],
+    book_glossary_change: [
+      'id',
+      'book_id',
+      'at',
+      'by',
+      'action',
+      'english',
+      'before_json',
+      'after_json',
+      'reason',
+      'source',
+    ],
   },
   // An existing table → the columns the migrations add to it.
   columns: {
@@ -127,7 +163,11 @@ const EXPECTED_SCHEMA = deepFreeze({
     ],
     segment_acceptances: ['served_version_id', 'occurrence'],
   },
-  indexes: ['idx_served_text_versions_key'],
+  indexes: [
+    'idx_served_text_versions_key',
+    'idx_book_glossary_entry_book',
+    'idx_book_glossary_change_book',
+  ],
 });
 
 /**

@@ -104,17 +104,21 @@ describe('the wire body is the population every Tier-0 predicate reads', () => {
     expect(wire).toBeLessThan(file);
   });
 
-  it('📌 PREMISE — chemistry omits EXACTLY the `si` competition; organic omits nothing', () => {
+  it('📌 PREMISE — chemistry and organic omit nothing (c19 excluded `SI` and `Si`, 2026-11-19)', () => {
     // The other half of the statement above, over real data — a PREMISE PIN on glossary DATA.
     // 🔴 REWRITTEN 2026-08-31. It asserted `wire === file` on both books, true only under the
     // 2026-08-30 domain-scoped glossary (389 terms). §C116 restored the cross-domain fallback
     // and removed the harmful headwords individually instead, so chemistry again carries one
     // competition: `si` = `alþjóðlega einingakerfið` vs `kísill`. `formatGlossary` omits BOTH
     // candidates, so the wire is 2 shorter than the file.
-    // ▶ PINNED AS AN EXACT DELTA, NOT AS "some omission happens": a THIRD candidate, or a
-    // second competition, or a comma-list still turns this red. That is strictly stronger
-    // than the `toBe(file)` it replaces was after the cleanup emptied its subject.
-    const EXPECTED_OMISSIONS = { 'efnafraedi-2e': 2, 'lifraen-efnafraedi': 0 };
+    // 🔴 RE-PINNED 2026-11-19 (c19): chemistry's book glossary layer excludes both `SI` (ruling
+    // r075) and `Si` (ruling r624), so the export of 2026-11-19 (`7fd6a82f5`) carries neither and
+    // chemistry's one competition is gone: the wire equals the file again, now because the
+    // competition was ruled away rather than because a cleanup emptied the glossary.
+    // ▶ PINNED AS AN EXACT DELTA, NOT AS "some omission happens": a returning competition, or a
+    // comma-list, still turns this red. That is strictly stronger than the `toBe(file)` it
+    // replaced in 2026-08, and it reads the same real data.
+    const EXPECTED_OMISSIONS = { 'efnafraedi-2e': 0, 'lifraen-efnafraedi': 0 };
     for (const [slug, omitted] of Object.entries(EXPECTED_OMISSIONS)) {
       const raw = live(slug);
       const file = glossaryTerms(raw).length;
@@ -219,27 +223,58 @@ describe('G1 — the §C18 accepted-competitions baseline', () => {
     }
   });
 
-  /**
-   * 🔴 THE CORPUS ANCHOR, WITH ITS CONTROL IN THE SAME TEST.
-   *
-   * A blocking gate that passes is indistinguishable from one that has stopped looking, so the
-   * two arms are asserted together over the SAME real glossary: with the committed baseline it
-   * must PASS, and with the baseline withheld it must FAIL on the very row the baseline carries.
-   * Reading only the first arm is how "subtract the baseline" and "never fire again" become the
-   * same commit. Neither arm mutates the tree — the withheld arm simply passes null.
-   */
-  it('chemistry PASSES with its committed baseline and FAILS without it — both arms, same data', async () => {
-    const glossary = JSON.parse(
+  const chemistryGlossary = () =>
+    JSON.parse(
       fs.readFileSync(path.join(ROOT, 'books/efnafraedi-2e/glossary/glossary-unified.json'), 'utf8')
     );
-    const baseline = JSON.parse(
+  const chemistryBaseline = () =>
+    JSON.parse(
       fs.readFileSync(
         path.join(ROOT, 'books/efnafraedi-2e/glossary/glossary-collisions-baseline.json'),
         'utf8'
       )
     );
 
-    const withBaseline = await runCheck(G1, { glossary, collisionsBaseline: baseline });
+  /**
+   * 🔴 THE CORPUS ANCHOR, WITH ITS CONTROL IN THE SAME TEST.
+   *
+   * A blocking gate that passes is indistinguishable from one that has stopped looking, so the
+   * two arms are asserted together over the SAME glossary: with an accepting baseline it must
+   * PASS, and with the baseline withheld it must FAIL on the very row the baseline carries.
+   * Reading only the first arm is how "subtract the baseline" and "never fire again" become the
+   * same commit. Neither arm mutates the tree — the withheld arm simply passes null.
+   *
+   * 🔴 PLANTED 2026-11-19 (c19). Until then the withheld arm failed on chemistry's real `si`
+   * competition. c19 excluded both `SI` (r075) and `Si` (r624), so the real glossary has no
+   * competition left and the FAIL arm had nothing to fail on. The real glossary is still the
+   * population; ONE synthetic competition is planted into an in-memory copy, and BOTH arms judge
+   * that same copy, so the same-population control below still holds. The PASS arm's baseline
+   * is the committed one plus one entry accepting exactly the planted pair (G1 fails a changed
+   * `chosen` too, so the entry mirrors `findGlossaryCollisions`: last row wins). The real-data
+   * fact is pinned in the next test. Nothing on disk is read differently or written.
+   */
+  it('chemistry plus one planted competition PASSES with an accepting baseline and FAILS without it — both arms, same data', async () => {
+    const real = chemistryGlossary();
+    const PLANTED = 'zz-planted-competition';
+    const CANDIDATES = ['fyrsti kostur', 'annar kostur'];
+    // The plant must be new to the real data, or the test would judge a real row it did not plant.
+    expect(glossaryTerms(real).some((t) => String(t.english).toLowerCase() === PLANTED)).toBe(
+      false
+    );
+    const glossary = {
+      ...real,
+      terms: [...glossaryTerms(real), ...CANDIDATES.map((is) => term(PLANTED, is))],
+    };
+    const committed = chemistryBaseline();
+    const accepting = {
+      ...committed,
+      competitions: {
+        ...committed.competitions,
+        [PLANTED]: { candidates: CANDIDATES, chosen: CANDIDATES[CANDIDATES.length - 1] },
+      },
+    };
+
+    const withBaseline = await runCheck(G1, { glossary, collisionsBaseline: accepting });
     const without = await runCheck(G1, { glossary, collisionsBaseline: null });
 
     expect(withBaseline.verdict).toBe(VERDICT.PASS);
@@ -249,7 +284,25 @@ describe('G1 — the §C18 accepted-competitions baseline', () => {
     expect(withBaseline.examined).toBe(without.examined);
     expect(withBaseline.examined).toBeGreaterThan(1000);
     // And the row the baseline is doing the work for is named, so this test says WHY it passes.
-    expect(without.findings.map((f) => f.english)).toContain('si');
+    expect(without.findings.map((f) => f.english)).toContain(PLANTED);
+  });
+
+  it('📌 PREMISE — chemistry has carried no competition since c19 (2026-11-19): it PASSES with AND without its committed baseline', async () => {
+    // 🔴 RECORDED, NOT DELETED. Until 2026-11-19 the withheld arm above failed on this real data,
+    // on `si`. c19 excluded `SI` (r075) and `Si` (r624) in chemistry's book glossary layer, so the
+    // committed baseline does no work for chemistry any more: every entry in it is resolved (the
+    // next test's mechanism). Retiring those entries is a separate decision, not made here.
+    // ▶ If this goes red, a competition has returned to chemistry: read the finding it prints
+    // before touching the baseline.
+    const glossary = chemistryGlossary();
+    const withBaseline = await runCheck(G1, { glossary, collisionsBaseline: chemistryBaseline() });
+    const without = await runCheck(G1, { glossary, collisionsBaseline: null });
+
+    expect(without.findings.map((f) => `${f.kind}:${f.english}`)).toEqual([]);
+    expect(without.verdict).toBe(VERDICT.PASS);
+    expect(withBaseline.verdict).toBe(VERDICT.PASS);
+    // Control: a real walk, not an empty one.
+    expect(without.examined).toBeGreaterThan(1000);
   });
 
   it('reports baseline entries that no longer fire, so the worklist can SHRINK', async () => {
