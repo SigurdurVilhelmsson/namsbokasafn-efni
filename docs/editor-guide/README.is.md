@@ -78,7 +78,7 @@ Stikan vinstra megin er aðalleiðsögnin þín. Hlutar sem sjást fara eftir hl
 - **Orðasafn** — Hugtakagagnagrunnurinn
 
 **Ritstjórar, yfirritstjórar og kerfisstjórar sjá einnig hlutann Yfirlestur:**
-- **Yfirlestrar** — Ritillinn, síaður á breytingar sem bíða yfirlestrar
+- **Yfirlestrar** — Listi yfir einingar þar sem breytingar bíða ákvörðunar (bók, kafli, hluti, fjöldi og elsta breyting), elstu fyrst; hver opnast síuð á þær breytingar
 - **Aðlögun** — Staðfærsluritillinn fyrir Pass 2 (aðeins yfirritstjórar og kerfisstjórar)
 
 **Yfirritstjórar og kerfisstjórar sjá einnig hlutann Stjórnun:**
@@ -143,6 +143,26 @@ Fyrir ofan töfluna eru síur: hvað á að sýna (*Sýna*), staða (*Staða*: �
 
 **Ef vélþýðingin er þegar rétt** skaltu smella á **✓ Staðfesta MT** í stað þess að breyta. Þá telst textabúturinn yfirfarinn; hægt er að afturkalla það.
 
+**Flýtilyklar** (á Mac er Cmd notað í stað Ctrl):
+
+| Lyklar | Hvað þeir gera |
+|---|---|
+| Ctrl+S eða Ctrl+Enter | Vista breytinguna sem er opin |
+| Esc | Henda óvistuðum texta (ritillinn spyr fyrst); ýttu aftur til að loka breytingarglugganum |
+| Ctrl+Shift+Enter | Staðfesta MT og halda áfram: staðfestir vélþýðingu auðkennda textabútsins og fer í þann næsta sem hægt er að staðfesta. Ef enginn textabútur er auðkenndur er sá næsti auðkenndur fyrst. Textabútum sem þegar hafa breytingu eða staðfestingu er sleppt. |
+
+### Tillögur gervigreindar um hugtök (GG)
+
+Í sumum bókum sýnir ritillinn tillögur um hugtök sem gervigreind gerði við vélþýðinguna, til að samræma hana við samþykkt hugtök verkefnisins. Yfirritstjóri eða kerfisstjóri kveikir á þeim fyrir hverja bók, og þær birtast aðeins í sumum einingum.
+
+- Tillaga birtist í íslenska textanum: gamla orðið yfirstrikað, nýja orðið við hliðina og merkið **GG** (*Tillaga gervigreindar*). Undir textanum er ein lína fyrir hverja hugtakareglu: enska uppflettiorðið → íslenska hugtakið, og hve margar breytingar hún gerir.
+- Breytingar sem ein hugtakaregla gerir í einum textabút eru notaðar eða þeim hafnað saman: **✓ Nota** / **✗ Hafna** fyrir eina breytingu, **✓ Nota báðar** / **✗ Hafna báðum** fyrir tvær og **✓ Nota allar (N)** / **✗ Hafna öllum (N)** fyrir fleiri.
+- **Nota** setur breytingarnar inn í texta breytingarinnar þinnar, aðeins á skjánum; ekkert er sent fyrr en þú smellir á **Vista**. **Hætta við** hendir þeim og tillögurnar birtast aftur.
+- **Hafna** felur tillöguna í þessum textabút strax, hjá öllum.
+- Eftir að þú vistar halda orðin sem þú notaðir merkinu GG þar til yfirritstjóri samþykkir breytinguna.
+- Tillögur tefja þig aldrei: ef þú staðfestir vélþýðinguna (**✓ Staðfesta MT**), eða yfirritstjóri samþykkir textabútinn, á meðan tillögur eru opnar, er þeim lokað án þess að þær séu notaðar.
+- Leggðu mat á hverja tillögu eins og hverja aðra breytingu og notaðu hana aðeins ef hún á við í setningunni.
+
 **Fleiri hjálpartæki í ritlinum:**
 - **Hugtakaleit** (*Fletta upp hugtaki…*) — flettu upp hugtaki án þess að fara af síðunni; hugtök í textanum eru auðkennd og opna glugga með þýðingum sínum
 - **Samhengisleit** — leitaðu í áður samþykktum þýðingum
@@ -160,13 +180,17 @@ Fyrir ofan töfluna eru síur: hvað á að sýna (*Sýna*), staða (*Staða*: �
 | Athuga samræmi í hugtakanotkun | Fjarlægja eða bæta við efni |
 | Staðfesta tæknilega nákvæmni | Staðfæra nokkuð |
 
-### Senda til yfirlestrar
+### Þegar þú lýkur við einingu
+
+Breytingar fara til yfirlestrar um leið og þær eru vistaðar; ekki þarf að senda þær sérstaklega. Yfirritstjórar finna þær undir **Yfirlestrar**.
 
 Þegar þú hefur farið yfir alla textabúta í einingu:
 
-1. Smelltu á **„Senda til yfirlestrar“**
-2. Breytingarnar þínar fara til yfirritstjóra til samþykktar
-3. Þú getur fylgst með innsendingum þínum á heimasíðunni: **Nákvæmt yfirlit → Bíður yfirlestrar**
+1. Smelltu á **„Merkja sem lokið“** og staðfestu
+2. Ritillinn skráir að þú hafir lokið við hlutann; við hnappinn sérðu **Merkt sem lokið** með dagsetningu og tíma
+3. Þú getur haldið áfram að breyta einingunni á eftir og smellt aftur á hnappinn síðar
+
+Ef óvistaður texti er í einingunni þarftu að vista hann eða henda honum fyrst. Þú getur fylgst með breytingum þínum sem bíða yfirlestrar á heimasíðunni: **Nákvæmt yfirlit → Bíður yfirlestrar**
 
 Yfirritstjórinn merkir síðan hverja breytingu:
 - **Samþykkja**
@@ -342,6 +366,7 @@ Smelltu á **✓ Staðfesta MT** svo textabúturinn teljist yfirfarinn.
 | Verkefni | Hvert á að fara |
 |---|---|
 | Breyta þýðingum (yfirferð 1) | **Ritill** |
+| Merkja einingu sem lokið | **Merkja sem lokið** í **Ritli** |
 | Sjá breytingar sem bíða yfirlestrar | **Yfirlestrar** |
 | Staðfæra efni (yfirferð 2) | **Aðlögun** — yfirritstjórar og kerfisstjórar |
 | Fletta upp / stinga upp á hugtökum | **Orðasafn** |
