@@ -1,7 +1,9 @@
-# G1.7: the study freeze — content-free MT locks now, the manifest and tag at the cut (DESIGN, proposed 2026-11-19)
+# G1.7: the study freeze — content-free MT locks now, the manifest and tag at the cut (DESIGN, approved 2026-11-19)
 
-> ✏️ **DESIGN, proposed 2026-11-19, for [USER]'s approval.** Not status: open work and its state live in the active
-> register's ⏩ RESUME block. Once approved, this file is banner-frozen and amended only by dated notes.
+> ✅ **DESIGN, APPROVED BY [USER] 2026-11-19**, with that day's three changes folded in before approval (§2: 4.1 ruled
+> out; §8: the fresh-extraction landing condition, c19 and the Fable promotion optional). **Banner-frozen from
+> approval: amended only by dated notes.** Not status: open work and its state live in the active register's
+> ⏩ RESUME block.
 >
 > **Implements:** the Skerfur plan's G1.7 row (`docs/plans/2026-10-23-skerfur-development-plan.md`); the 10-10
 > plan's 4.4 ("MT locks re-applied") and 5.1 ("Freeze: a git tag plus a manifest of every layer"); the G1.1 spec's
@@ -36,6 +38,9 @@ a reader of that report check which base each editor worked from.
   wait for one.
 - **The production run of `scripts/backfill-mt-locks.js` is dropped.** Every unit it would reach on production is a
   chemistry unit that step 1 locks (§3).
+- **10-10 4.1 is ruled out for the study.** The loader does not read layer 1s, so editors see the layer-1 text of
+  the 8 segments whose fixed Icelandic exists only in `02-mt-selected/` (§3), and correcting it is ordinary editing
+  work. The markers also stop layer 1s from growing (a re-request refuses a locked unit), so this stays at 8.
 
 **Departures from the plan rows, for the record:**
 
@@ -74,7 +79,10 @@ in the register (§7).
 - **`cnxml-extract` warns, and does not refuse,** on a locked unit (§C110). After step 1, an extraction of chemistry
   prints a warning for every unit. That is expected.
 - **Layer 1s is not served.** No server code reads `02-mt-selected/`, which holds 8 segments in 3 modules (`m68744`,
-  `m68852`, `m68856`). The loader serves those segments' layer-1 text.
+  `m68852`, `m68856`). The loader serves those segments' layer-1 text, and with 4.1 ruled out (§2) it keeps doing so.
+- **No chemistry re-extraction is pending.** A fresh extraction of all 23 chapter directories at `474647ffb`, in a
+  throwaway worktree, rewrote all 170 English files and every one was byte-identical to the committed file; the only
+  other differences were the `extractedAt` timestamps of 149 structure manifests.
 
 ## 4. Goals, non-goals, anti-goals
 
@@ -93,8 +101,8 @@ in the register (§7).
 - Fixing the first-act hooks for books outside the study (they fire only on a unit's first-ever row, and
   propagation never locks). For the study book the markers make this moot; the other books are closed to editors by
   G1.13.
-- Deciding 10-10 4.1, c19's apply, or the Fable trial's ch10 promotion. The cut records whatever state they are in
-  (§8).
+- c19's apply and the Fable trial's ch10 promotion. The cut records whatever state they are in (§8). (10-10 4.1 is
+  ruled out, §2.)
 - The end-of-editing export (G1.1 PR5).
 - Freezing the glossary. It is recorded at the cut, not frozen: terminology work continues during editing.
 - Recording the in-flight edits that sit in production's database (G-1e). They live in `sessions.db`, they are
@@ -263,12 +271,16 @@ commit.
 ## 8. Step 2: the cut (later, when [USER] says)
 
 **Landing conditions**, written into the draft PR as G1.12's were:
-- c19's apply has run on production and its export is pulled, or [USER] cuts without it;
-- 10-10 4.1 is decided: either the loader serves layer 1s (the manifest then shows those 8 segments as served from
-  it), or it does not and editors see those segments' layer-1 text;
-- the Fable trial's ch10 promotion is done, or [USER] cuts without it (it changes layer 2's record, not the base);
-- no chemistry re-extraction is pending;
+- **a fresh extraction reproduces the English:** every chemistry chapter directory extracted at the cut's base
+  commit, in a throwaway worktree (never with `--output-dir`, which the extractor ignores), rewrites all study units'
+  `02-for-mt` files byte-identical to the committed ones. It passed on 2026-11-19 (§3); re-run it at the cut, because
+  an extractor change merged in between would otherwise move the English after the freeze;
 - `manifest` passes its preconditions (§6.3).
+
+**Optional, at [USER]'s choice:** neither changes the base, and the manifest records them without enforcing them,
+so landing either after the cut needs no re-cut. Waiting only keeps the manifest's record current.
+- c19's apply has run on production and its export is pulled (the manifest's glossary hash and approved-term count);
+- the Fable trial's ch10 promotion is done (layer 2's record and ch10's change-log hashes).
 
 **Then:** `study-freeze.js manifest --write --tag freeze-efnafraedi-2e-<date>` on a branch from `origin/main`; a
 data-only PR adding the manifest (step 1's manifest guard picks it up and runs on the real tree from then on);
