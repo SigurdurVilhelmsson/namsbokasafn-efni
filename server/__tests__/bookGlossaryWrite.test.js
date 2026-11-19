@@ -212,6 +212,30 @@ describe('addEntry', () => {
     expect(history()).toHaveLength(1);
   });
 
+  it('identical with replaces twice returns already', () => {
+    const physicsId = addPair('physics', 'geometry', 'rúmfræði');
+    const args = { ...base, english: ['geometry'], icelandic: 'lögun', replaces: [physicsId] };
+    const a = addEntry(db, args);
+    const b = addEntry(db, args);
+    expect(b).toEqual({ status: 'already', conceptId: a.conceptId });
+    expect(count('book_glossary_exclusion')).toBe(1);
+  });
+
+  it('over an existing entry with a replacement not yet excluded refuses and writes nothing', () => {
+    const physicsId = addPair('physics', 'geometry', 'rúmfræði');
+    addEntry(db, { ...base, english: ['geometry'], icelandic: 'lögun' });
+    const before = [count('book_glossary_exclusion'), count('book_glossary_change')];
+    let err;
+    try {
+      addEntry(db, { ...base, english: ['geometry'], icelandic: 'lögun', replaces: [physicsId] });
+    } catch (e) {
+      err = e;
+    }
+    expect(err.code).toBe('LAYER_REFUSED');
+    expect(err.message).toContain(String(physicsId));
+    expect([count('book_glossary_exclusion'), count('book_glossary_change')]).toEqual(before);
+  });
+
   it('with the same form and other Icelandic refuses', () => {
     addEntry(db, { ...base, english: ['geometry'], icelandic: 'lögun' });
     expect(() => addEntry(db, { ...base, english: ['geometry'], icelandic: 'form' })).toThrow(
