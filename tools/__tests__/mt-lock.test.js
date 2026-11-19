@@ -1,4 +1,4 @@
-import { describe, it, expect, afterEach } from 'vitest';
+import { describe, it, expect, afterEach, vi } from 'vitest';
 import { mkdtempSync, writeFileSync, rmSync, readFileSync, utimesSync, statSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -96,5 +96,52 @@ describe('freeze marker (G1.7)', () => {
     const mt = path.join(tmp(), 'm1-segments.is.md');
     writeFileSync(mtLockPathFor(mt), 'not json');
     expect(freezeLockState(mt)).toBe('foreign');
+  });
+});
+
+// The write is an exclusive create: a marker that appears between the state check and the write
+// (a first save on the editing path) is re-read, never overwritten. The seam: `mkdirSync` runs
+// between the two, so a spy on the shared CommonJS `fs` plants the marker there.
+describe('writeFreezeLock when a marker appears between its check and its write', () => {
+  const PAST = new Date('2020-01-01T00:00:00Z');
+  function plantDuringMkdir(lock, body) {
+    const fs = require('fs');
+    const realMkdir = fs.mkdirSync;
+    return vi.spyOn(fs, 'mkdirSync').mockImplementation((...args) => {
+      const r = realMkdir(...args);
+      writeFileSync(lock, body);
+      utimesSync(lock, PAST, PAST);
+      return r;
+    });
+  }
+  it('a freeze marker planted there: "already", and the planted file is not rewritten', () => {
+    const mt = path.join(tmp(), 'm1-segments.is.md');
+    const lock = mtLockPathFor(mt);
+    const spy = plantDuringMkdir(lock, FREEZE_LOCK_BODY);
+    let result;
+    try {
+      result = writeFreezeLock(mt);
+    } finally {
+      spy.mockRestore();
+    }
+    expect([result, statSync(lock).mtimeMs]).toEqual(['already', PAST.getTime()]);
+  });
+  it('a foreign marker planted there: FOREIGN_LOCK, its bytes unchanged, the message path only', () => {
+    const mt = path.join(tmp(), 'm1-segments.is.md');
+    const lock = mtLockPathFor(mt);
+    const body = '{"lockedAt":"2099-01-01T00:00:00.000Z","firstEditId":424242}';
+    const spy = plantDuringMkdir(lock, body);
+    let err;
+    try {
+      writeFreezeLock(mt);
+    } catch (e) {
+      err = e;
+    } finally {
+      spy.mockRestore();
+    }
+    expect(readFileSync(lock, 'utf8')).toBe(body);
+    expect(err && err.code).toBe('FOREIGN_LOCK');
+    expect(err.message).toContain(lock);
+    expect(err.message).not.toMatch(/2099|424242|lockedAt/);
   });
 });

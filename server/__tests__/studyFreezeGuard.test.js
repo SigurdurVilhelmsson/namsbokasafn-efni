@@ -15,7 +15,7 @@
  * books root; the controls repoint it and restore it in a `finally`.
  */
 import { mkdtempSync, mkdirSync, rmSync, readFileSync, writeFileSync, unlinkSync } from 'fs';
-import { readdirSync, existsSync } from 'fs';
+import { readdirSync, existsSync, renameSync } from 'fs';
 import { createHash } from 'crypto';
 import { spawnSync } from 'child_process';
 import { tmpdir } from 'os';
@@ -127,6 +127,7 @@ describe('controls on a planted tree: the same two predicates fail when they sho
     handRepairs: [],
     shallow: false,
     dirtyPaths: [],
+    layer1sFiles: [],
   });
   const UNITS = [
     { chapterDir: 'ch01', moduleId: 'm97001' },
@@ -220,6 +221,26 @@ describe('controls on a planted tree: the same two predicates fail when they sho
       expect(() => expectManifestHolds(BOOK, cur)).toThrow(/appendices\/m97003/);
       const r = study.compareToManifest({ book: BOOK, manifestDir: cur.dir });
       expect([r.inputChanged, r.servedChanged]).toEqual([['appendices/m97003'], []]);
+    } finally {
+      segmentParser._setTestBooksDir(REAL_ROOT);
+    }
+  });
+
+  it("control: a manifest write's temp directory (books/<book>/.freeze-tmp-*) is seen by neither listing", () => {
+    try {
+      // a complete manifest left where writeManifest stages one, as a crash between write and rename would
+      const built = study.buildManifest({ book: BOOK, tag: TAG, git: GIT });
+      const tmp = path.join(root, BOOK, `.freeze-tmp-${TAG}-x`);
+      mkdirSync(tmp, { recursive: true });
+      writeFileSync(path.join(tmp, 'segments.jsonl'), built.segmentsJsonl);
+      writeFileSync(path.join(tmp, 'freeze.json'), `${JSON.stringify(built.header, null, 2)}\n`);
+      expect(study.currentManifest({ book: BOOK })).toBe(null);
+      expect(freezeJsonsOnDisk(BOOK)).toEqual([]);
+      // positive control: the same directory moved into freeze/ is seen by both
+      mkdirSync(path.join(root, BOOK, 'freeze'));
+      renameSync(tmp, manifestDir());
+      expect(path.basename(study.currentManifest({ book: BOOK }).dir)).toBe(TAG);
+      expect(freezeJsonsOnDisk(BOOK)).toEqual([TAG]);
     } finally {
       segmentParser._setTestBooksDir(REAL_ROOT);
     }

@@ -159,10 +159,15 @@ function writeMarkers(plan) {
  * matches a body, and one chemistry commit's body says "NO HAND REPAIR WAS NEEDED", so the
  * subject is filtered after the grep. Oldest first.
  *
+ * `layer1sFiles` lists the files git tracks under the book's 02-mt-selected, book-relative and
+ * sorted: the manifest records those only. A gitignored file (a `*.bak` backup, say) is invisible
+ * to the dirty-input check, so recording it would make the manifest depend on local junk.
+ *
  * @param {{book: string, repoRoot?: string}} args `repoRoot` (default: this repository) is git's
  *   cwd and the base of the book-relative pathspecs
  * @returns {{baseCommit: string, layer1LastCommit: string,
- *   handRepairs: Array<{commit: string, subject: string}>, shallow: boolean, dirtyPaths: string[]}}
+ *   handRepairs: Array<{commit: string, subject: string}>, shallow: boolean, dirtyPaths: string[],
+ *   layer1sFiles: string[]}}
  */
 function gitFacts({ book, repoRoot = REPO_ROOT }) {
   const git = (...args) =>
@@ -201,6 +206,12 @@ function gitFacts({ book, repoRoot = REPO_ROOT }) {
     dirtyPaths: lines(git('status', '--porcelain', '--', ...INPUT_DIRS.map(rel))).map((l) =>
       l.slice(3)
     ),
+    // -z: NUL-separated and never quoted, so a path is read exactly as git stores it
+    layer1sFiles: git('ls-files', '-z', '--', rel('02-mt-selected'))
+      .split('\0')
+      .filter(Boolean)
+      .map((p) => p.slice(`books/${book}/`.length))
+      .sort(byString),
   };
 }
 
@@ -322,15 +333,22 @@ function composeSegments(base) {
 }
 
 /**
- * Layer 1s (`02-mt-selected`): every file with its sha256 and, for a `*-selected.json`, its entry
- * count (R5). `servedSegments` counts the manifest segments whose served Icelandic is exactly a
+ * Layer 1s (`02-mt-selected`): every file git tracks there (`tracked`, gitFacts' `layer1sFiles`)
+ * that is on disk, with its sha256 and, for a `*-selected.json`, its entry count. A file git does
+ * not track is not recorded (see gitFacts). Throws when `tracked` is not a list: injected git
+ * facts without it are refused rather than read as "every file on disk".
+ * `servedSegments` counts the manifest segments whose served Icelandic is exactly a
  * layer-1s entry's text at the same unit, segment id and occurrence: a value test, so it does not
  * depend on which file the loader read. The loader reads only the faithful or the MT file, so
  * today this is 0 (spec §3). Blind spot: the loader's own normalisation (unescaping, term-marker
  * repair) could make served text differ from an entry it came from, which this would not count.
  */
-function layer1sRecord(book, base) {
-  const files = filesUnder(book, '02-mt-selected');
+function layer1sRecord(book, base, tracked) {
+  if (!Array.isArray(tracked)) {
+    throw new Error('git facts carry no layer1sFiles list (the tracked 02-mt-selected files)');
+  }
+  const isTracked = new Set(tracked);
+  const files = filesUnder(book, '02-mt-selected').filter((rel) => isTracked.has(rel));
   let servedSegments = 0;
   const records = files.map((rel) => {
     if (!rel.endsWith('-selected.json')) {
@@ -422,9 +440,9 @@ function glossaryRecord(book) {
  * the path, when one of those JSON files does not parse; `runManifest` calls it on a dry run too,
  * so a corrupt input is a named refusal before the cut, not only at it.
  */
-function layerRecords(book, base) {
+function layerRecords(book, base, git) {
   return {
-    layer1s: layer1sRecord(book, base),
+    layer1s: layer1sRecord(book, base, git.layer1sFiles),
     layer2: layer2Record(book),
     layer3: layer3Record(book),
     glossary: glossaryRecord(book),
@@ -442,7 +460,7 @@ function buildManifest({ book, tag, supersedes = null, git, base = servedBase(bo
   const cutDate = cutDateOf(book, tag);
   const layerless = base.find((u) => u.rows === null);
   if (layerless) throw coded('NO_LAYER', `${layerless.unit} has no Icelandic layer`);
-  const recs = records || layerRecords(book, base);
+  const recs = records || layerRecords(book, base, git);
   const { count, segmentsJsonl, byLayer } = composeSegments(base);
   const header = {
     schema: 'study-freeze/1',
@@ -488,22 +506,41 @@ function buildManifest({ book, tag, supersedes = null, git, base = servedBase(bo
 /**
  * Write books/<book>/freeze/<tag>/: segments.jsonl, then freeze.json. Refuses (code REFUSED),
  * writing nothing, when that directory exists.
+ *
+ * Both files are written into a temp directory, `books/<book>/.freeze-tmp-<tag>-XXXXXX`, which
+ * is then renamed to freeze/<tag>/, so a failed write leaves no freeze/<tag>/ (which would block
+ * the re-run as manifest-exists). The temp sits OUTSIDE freeze/, where neither `currentManifest`
+ * nor the guard test's listing looks, and outside the input directories the dirty-input check
+ * reads. On any failure it is removed, and so is freeze/ if this call created it and it is empty.
  * @returns {string} the directory
  */
 function writeManifest({ book, tag, header, segmentsJsonl }) {
   cutDateOf(book, tag); // the tag reaches a path: never join one that is not well-formed
   const parent = path.join(bookDir(book), 'freeze');
   const dir = path.join(parent, tag);
-  fs.mkdirSync(parent, { recursive: true });
+  const exists = () => coded('REFUSED', `${book}/freeze/${tag}/ exists; nothing written`);
+  // rename(2) replaces an existing EMPTY directory, so existence is checked first; a non-empty
+  // one that appears after this check fails the rename (ENOTEMPTY or EEXIST) and is refused.
+  if (fs.existsSync(dir)) throw exists();
+  const tmp = fs.mkdtempSync(path.join(bookDir(book), `.freeze-tmp-${tag}-`));
+  let createdParent;
   try {
-    fs.mkdirSync(dir); // not recursive: an existing directory fails here, atomically
+    fs.writeFileSync(path.join(tmp, 'segments.jsonl'), segmentsJsonl, { flag: 'wx' });
+    fs.writeFileSync(path.join(tmp, 'freeze.json'), headerBytes(header), { flag: 'wx' });
+    createdParent = fs.mkdirSync(parent, { recursive: true }); // undefined when it existed
+    fs.renameSync(tmp, dir);
   } catch (e) {
-    if (e.code === 'EEXIST')
-      throw coded('REFUSED', `${book}/freeze/${tag}/ exists; nothing written`);
+    fs.rmSync(tmp, { recursive: true, force: true });
+    if (createdParent) {
+      try {
+        fs.rmdirSync(createdParent); // only an empty directory; otherwise leave it
+      } catch {
+        // not empty: it holds something this call did not write
+      }
+    }
+    if (e.code === 'EEXIST' || e.code === 'ENOTEMPTY') throw exists();
     throw e;
   }
-  fs.writeFileSync(path.join(dir, 'segments.jsonl'), segmentsJsonl, { flag: 'wx' });
-  fs.writeFileSync(path.join(dir, 'freeze.json'), headerBytes(header), { flag: 'wx' });
   return dir;
 }
 
@@ -612,7 +649,7 @@ function runManifest(args, io, deps) {
   const refusals = [...manifestRefusals({ book, git, base }), ...cutRefusals(args)];
   let records = null;
   try {
-    records = layerRecords(book, base);
+    records = layerRecords(book, base, git);
   } catch (e) {
     if (e.code !== 'BAD_INPUT') throw e;
     refusals.push({ reason: 'bad-input', detail: e.message });

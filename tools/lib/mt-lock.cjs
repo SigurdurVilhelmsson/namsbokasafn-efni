@@ -53,18 +53,27 @@ function freezeLockState(mtOutputPath) {
 /**
  * Write the freeze marker if absent. Returns 'written' or 'already'; throws
  * FOREIGN_LOCK (message names the marker path only, never its body) otherwise.
+ * The write is an exclusive create ('wx'): a marker that appears between the state
+ * check and the write (a first save on the editing path) is re-read, never overwritten.
  */
 function writeFreezeLock(mtOutputPath) {
   const lock = mtLockPathFor(mtOutputPath);
-  const state = freezeLockState(mtOutputPath);
-  if (state === 'freeze') return 'already';
-  if (state === 'foreign') {
+  const foreign = () => {
     const err = new Error(`foreign MT lock marker present: ${lock}`);
     err.code = 'FOREIGN_LOCK';
-    throw err;
-  }
+    return err;
+  };
+  const state = freezeLockState(mtOutputPath);
+  if (state === 'freeze') return 'already';
+  if (state === 'foreign') throw foreign();
   fs.mkdirSync(path.dirname(lock), { recursive: true });
-  fs.writeFileSync(lock, FREEZE_LOCK_BODY, 'utf8');
+  try {
+    fs.writeFileSync(lock, FREEZE_LOCK_BODY, { encoding: 'utf8', flag: 'wx' });
+  } catch (e) {
+    if (e.code !== 'EEXIST') throw e;
+    if (freezeLockState(mtOutputPath) === 'freeze') return 'already';
+    throw foreign();
+  }
   return 'written';
 }
 

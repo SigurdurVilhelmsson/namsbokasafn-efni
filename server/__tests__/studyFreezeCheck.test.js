@@ -36,6 +36,7 @@ const GIT = Object.freeze({
   handRepairs: [],
   shallow: false,
   dirtyPaths: [],
+  layer1sFiles: [],
 });
 const ids = (u) => [`${u.moduleId}:para:a`, `${u.moduleId}:para:b`];
 

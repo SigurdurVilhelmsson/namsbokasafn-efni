@@ -25,7 +25,7 @@ import {
 import { tmpdir } from 'os';
 import path from 'path';
 import crypto from 'crypto';
-import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, beforeEach, vi } from 'vitest';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
@@ -55,6 +55,11 @@ const GIT = Object.freeze({
   handRepairs: [{ commit: 'c'.repeat(40), subject: 'data(mt): HAND REPAIR — one title' }],
   shallow: false,
   dirtyPaths: [],
+  // the 02-mt-selected files git tracks, book-relative (gitFacts reads them with git ls-files)
+  layer1sFiles: [
+    '02-mt-selected/ch01/m95002-rerequest.jsonl',
+    '02-mt-selected/ch01/m95002-selected.json',
+  ],
 });
 const REVISIONS = {
   m95001: {
@@ -354,7 +359,7 @@ describe('the header, as spec §6.4', () => {
       handRepairs: GIT.handRepairs,
     });
   });
-  it('layer 1s lists every 02-mt-selected file, entries only for *-selected.json', () => {
+  it('layer 1s lists every tracked 02-mt-selected file, entries only for *-selected.json', () => {
     const f = (rel) => sha(readFileSync(bookPath(rel)));
     expect(header.layers.layer1s.files).toEqual([
       {
@@ -438,6 +443,26 @@ describe('the header with absent or served layer directories', () => {
       { path: 'glossary/glossary-unified.json', sha256: null, producer: null, terms: 0 },
       [null, null, null],
     ]);
+  });
+
+  it('a file under 02-mt-selected that git does not track (a gitignored x.bak) is not recorded', () => {
+    writeRaw(root, `${BOOK}/02-mt-selected/ch01/x.bak`, 'a local backup\n');
+    const { header } = study.buildManifest({ book: BOOK, tag: TAG, git: GIT });
+    expect(header.layers.layer1s.files.map((f) => f.path)).toEqual(GIT.layer1sFiles);
+  });
+
+  it('a tracked file absent from disk is not recorded and does not throw', () => {
+    const git = { ...GIT, layer1sFiles: [...GIT.layer1sFiles, '02-mt-selected/ch01/gone.json'] };
+    const { header } = study.buildManifest({ book: BOOK, tag: TAG, git });
+    expect(header.layers.layer1s.files.map((f) => f.path)).toEqual(GIT.layer1sFiles);
+  });
+
+  it('git facts without the tracked list are refused, never read as "every file on disk"', () => {
+    const { layer1sFiles, ...noList } = GIT;
+    expect(layer1sFiles.length).toBe(2);
+    expect(() => study.buildManifest({ book: BOOK, tag: TAG, git: noList })).toThrow(
+      /layer1sFiles/
+    );
   });
 
   it('control: a 02-mt-selected entry whose text is what the loader serves counts as served', () => {
@@ -530,6 +555,61 @@ describe('manifest through main', () => {
       readFileSync(path.join(dir, 'freeze.json'), 'utf8'),
     ]).toEqual([built.segmentsJsonl, `${JSON.stringify(built.header, null, 2)}\n`]);
   });
+
+  it('the write goes through a temp directory beside freeze/ (not in it), renamed into place', () => {
+    const fs = require('fs');
+    const realRename = fs.renameSync;
+    const renames = [];
+    const spy = vi.spyOn(fs, 'renameSync').mockImplementation((from, to) => {
+      renames.push([from, to]);
+      return realRename(from, to);
+    });
+    try {
+      expect(write()).toBe(0);
+    } finally {
+      spy.mockRestore();
+    }
+    expect(renames.length).toBe(1);
+    const [[from, to]] = renames;
+    expect([path.dirname(from), path.basename(from).startsWith('.freeze-tmp-'), to]).toEqual([
+      bookPath(),
+      true,
+      path.join(freezeDir(), TAG),
+    ]);
+    expect(readdirSync(bookPath()).filter((n) => n.startsWith('.freeze-tmp-'))).toEqual([]);
+  });
+
+  // Two failure points: the second file's write (before freeze/ exists) and the rename (after
+  // this call created freeze/), so both clean-up paths are exercised.
+  it.each([
+    ['writeFileSync', (p) => String(p).endsWith('freeze.json')],
+    ['renameSync', () => true],
+  ])(
+    'a failed %s leaves the book directory as it was, and the re-run is not manifest-exists',
+    (call, failsOn) => {
+      const listing = () => readdirSync(bookPath(), { recursive: true }).map(String).sort();
+      const before = listing();
+      expect(before.includes('freeze')).toBe(false);
+      const fs = require('fs');
+      const real = fs[call];
+      const spy = vi.spyOn(fs, call).mockImplementation((p, ...rest) => {
+        if (failsOn(p)) {
+          throw Object.assign(new Error('ENOSPC: injected for the test'), { code: 'ENOSPC' });
+        }
+        return real(p, ...rest);
+      });
+      try {
+        expect(() => write()).toThrow(/ENOSPC/);
+      } finally {
+        spy.mockRestore();
+      }
+      expect(listing()).toEqual(before); // no freeze/<tag>/, no freeze/, no temp directory
+      out.length = 0;
+      expect(write()).toBe(0);
+      expect(text()).not.toContain('manifest-exists');
+      expect(existsSync(path.join(freezeDir(), TAG, 'freeze.json'))).toBe(true);
+    }
+  );
 
   it('a dry run writes nothing and prints the counts and the segments sha256', () => {
     const { header } = study.buildManifest({ book: BOOK, tag: TAG, git: GIT });
@@ -630,6 +710,26 @@ describe('manifest through main', () => {
       expect(() => study.writeManifest({ book: BOOK, tag: TAG, ...built })).toThrow(
         expect.objectContaining({ code: 'REFUSED' })
       );
+    });
+    it('a non-empty freeze/<tag>/ that appears after the existence check is refused at the rename', () => {
+      const built = study.buildManifest({ book: BOOK, tag: TAG, git: GIT });
+      const dir = path.join(freezeDir(), TAG);
+      mkdirSync(dir, { recursive: true });
+      writeFileSync(path.join(dir, 'keep.txt'), 'x');
+      const fs = require('fs');
+      const realExists = fs.existsSync;
+      const spy = vi
+        .spyOn(fs, 'existsSync')
+        .mockImplementation((p) => (p === dir ? false : realExists(p)));
+      try {
+        expect(() => study.writeManifest({ book: BOOK, tag: TAG, ...built })).toThrow(
+          expect.objectContaining({ code: 'REFUSED' })
+        );
+      } finally {
+        spy.mockRestore();
+      }
+      expect(readdirSync(dir)).toEqual(['keep.txt']);
+      expect(readdirSync(bookPath()).filter((n) => n.startsWith('.freeze-tmp-'))).toEqual([]);
     });
     it.each([
       'freeze-2026-12-01',
