@@ -7,21 +7,24 @@
  *
  * The input is the committed `c19-book-layer-input/1` file (exclude-headword, exclude-concept
  * and entry actions). Checks, ALL before any write; one failure refuses everything (exit 1):
- *   schema and book match · each conceptId exists, still carries the English, and its rank-1
- *   Icelandic equals `icelandicAtCensus` · no house-style concept carries a headword under a
- *   whole-headword exclusion · no book_term_preference row for an entry's English · no
- *   exclusion/entry collision inside the input.
+ *   schema and book match · at least one action, and `counts` equals a tally of the actions by
+ *   kind (a truncated or wrong file disagrees with its own counts) · each conceptId exists,
+ *   still carries the English, and its rank-1 Icelandic equals `icelandicAtCensus` · no
+ *   house-style concept carries a headword under a whole-headword exclusion · no
+ *   book_term_preference row for an entry's English · no exclusion/entry collision inside the
+ *   input.
  *
  * Dry run: applies every action to an in-memory COPY (`new Database(db.serialize())`) inside one
- * transaction and prints, per action, chemistry before → after and the physics book (which must
- * not change: a change is a refusal). The real database is opened read-only and never written.
+ * transaction and prints, per action, chemistry before → after and the physics book before = after
+ * (`≠` when it would change: a change is a refusal). The real database is opened read-only and
+ * never written.
  *
- * --apply: opens read-write, re-runs the checks, applies in one transaction.
- * --verify (needs --input): checks the input against the layer AND books/<book>/glossary/
- * glossary-unified.json. Every action must be in the layer (headword exclusions also absent from
- * the export; entries carry their Icelandic, replacements excluded; 1-2 word entries match the
- * export, 3+ word entries are listed as editor only). Any missing action fails; exit 0 only if
- * all hold.
+ * --apply: opens read-write and runs the checks and the writes inside ONE immediate transaction.
+ * --verify (needs --input): refuses the input on the same file checks (schema, book, actions,
+ * counts), then checks it against the layer AND books/<book>/glossary/glossary-unified.json.
+ * Every action must be in the layer (headword exclusions also absent from the export; entries
+ * carry their Icelandic, replacements excluded; 1-2 word entries match the export, 3+ word
+ * entries are listed as editor only). Any missing action fails; exit 0 only if all hold.
  *
  * The `by`, `source` and `reason` values written reach a public repository through the committed
  * record, so they are fixed here and never read from a private file.
@@ -93,20 +96,46 @@ function checkedConcept(a) {
 }
 
 /**
+ * The checks on the input file itself, before any database read; shared by the load and
+ * `--verify`. Zero actions is a refusal, not a pass: a truncated or wrong file would otherwise
+ * load nothing, or verify nothing, and report success. `counts` must equal a tally of the actions
+ * by kind, and a missing `counts` is refused too, so this control cannot vanish silently.
+ *
+ * @param {object} input parsed input file
+ * @param {string} book slug
+ * @returns {string[]} one line per problem; empty when the file passes
+ */
+function inputProblems(input, book) {
+  const problems = [];
+  if (!input || input.schema !== SCHEMA) problems.push(`schema is not ${SCHEMA}`);
+  if (!input || input.book !== book)
+    problems.push(`input book ${input && input.book} is not ${book}`);
+  if (problems.length) return problems;
+  if (!Array.isArray(input.actions)) return ['input has no actions array'];
+  if (input.actions.length === 0) return ['input has no actions'];
+  const counts = input.counts;
+  if (!counts || typeof counts !== 'object' || Array.isArray(counts))
+    return ['input has no counts object to check its actions against'];
+  const tally = {};
+  for (const a of input.actions) tally[a && a.kind] = (tally[a && a.kind] || 0) + 1;
+  for (const k of new Set([...Object.keys(counts), ...Object.keys(tally)])) {
+    const said = counts[k] === undefined ? 0 : counts[k];
+    const held = tally[k] || 0;
+    if (said !== held)
+      problems.push(`counts["${k}"] is ${JSON.stringify(said)}, but the input holds ${held}`);
+  }
+  return problems;
+}
+
+/**
  * @param {object} db
  * @param {object} input parsed input file
  * @param {string} book slug
  * @returns {string[]} one line per problem; empty when every check passes
  */
 function runChecks(db, input, book) {
-  const problems = [];
-  if (!input || input.schema !== SCHEMA) problems.push(`schema is not ${SCHEMA}`);
-  if (!input || input.book !== book)
-    problems.push(`input book ${input && input.book} is not ${book}`);
-  if (problems.length || !Array.isArray(input.actions)) {
-    if (!problems.length) problems.push('input has no actions');
-    return problems;
-  }
+  const problems = inputProblems(input, book);
+  if (problems.length) return problems;
   const missing = REQUIRED_TABLES.filter(
     (t) => !db.prepare("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = ?").get(t)
   );
@@ -245,32 +274,47 @@ function refuseAll(io, problems) {
   return 1;
 }
 
+function refusal(lines) {
+  const err = new Error('refused');
+  err.refusals = lines;
+  return err;
+}
+
+/**
+ * --apply. The checks and the writes run inside ONE immediate transaction: BEGIN IMMEDIATE takes
+ * the write lock before the first check reads, so a commit by the live server cannot land between
+ * the checks and the writes (a deferred transaction met that as SQLITE_BUSY_SNAPSHOT: a stack
+ * trace, nothing written). Any refusal throws inside it, so the whole transaction rolls back and
+ * nothing is written.
+ */
+function runApply(db, args, io, input) {
+  let outcome;
+  try {
+    outcome = db
+      .transaction(() => {
+        const problems = runChecks(db, input, args.book);
+        if (problems.length) throw refusal(problems);
+        const o = applyAll(db, args.book, input.actions);
+        if (o.refusals.length) throw refusal(o.refusals);
+        return o;
+      })
+      .immediate();
+  } catch (e) {
+    if (!e.refusals) throw e;
+    return refuseAll(io, e.refusals);
+  }
+  printCounts(io, outcome.results);
+  return 0;
+}
+
 function runLoad(args, io, deps, input) {
   const { db, owned } = openDb(args, deps);
   try {
+    if (args.apply) return runApply(db, args, io, input);
+
     const problems = runChecks(db, input, args.book);
     if (problems.length) return refuseAll(io, problems);
     const actions = input.actions;
-
-    if (args.apply) {
-      let outcome;
-      try {
-        outcome = db.transaction(() => {
-          const o = applyAll(db, args.book, actions);
-          if (o.refusals.length) {
-            const err = new Error('refused');
-            err.refusals = o.refusals;
-            throw err;
-          }
-          return o;
-        })();
-      } catch (e) {
-        if (!e.refusals) throw e;
-        return refuseAll(io, e.refusals);
-      }
-      printCounts(io, outcome.results);
-      return 0;
-    }
 
     if (!db.prepare('SELECT 1 FROM registered_books WHERE slug = ?').get(PHYSICS_BOOK))
       return refuseAll(io, [
@@ -292,15 +336,20 @@ function runLoad(args, io, deps, input) {
     try {
       const o = copy.transaction(() => applyAll(copy, args.book, actions))();
       const refusals = [...o.refusals];
-      io.log('rulingId | kind | english | chemistry before → after | physics book before = after');
+      io.log(
+        'rulingId | kind | english | chemistry before → after | physics book before = after (≠: it would change, refused)'
+      );
       actions.forEach((a, i) => {
         const chem = snapshot(copy, args.book, formsOf(a));
         const phys = snapshot(copy, PHYSICS_BOOK, formsOf(a));
-        if (before[i].phys && phys && before[i].phys.sig !== phys.sig)
-          refusals.push(`${a.rulingId} (${a.kind}): the physics book would change`);
+        // The column shows the winner only, but the comparison covers all four lists, so the
+        // separator comes from the SAME comparison as the refusal: `=` can never sit beside one.
+        const physChanged = Boolean(before[i].phys && phys && before[i].phys.sig !== phys.sig);
+        if (physChanged) refusals.push(`${a.rulingId} (${a.kind}): the physics book would change`);
         io.log(
           `${a.rulingId} | ${a.kind} | ${formsOf(a)[0]} | ${before[i].chem.shown} → ${chem.shown} | ` +
-            `physics: ${before[i].phys ? before[i].phys.shown : 'n/a'} = ${phys ? phys.shown : 'n/a'}`
+            `physics: ${before[i].phys ? before[i].phys.shown : 'n/a'} ${physChanged ? '≠' : '='} ` +
+            `${phys ? phys.shown : 'n/a'}`
         );
       });
       printCounts(io, o.results);
@@ -327,13 +376,9 @@ function runVerify(args, io, deps, input) {
       io.error(`FAIL: this database lacks table(s) ${missing.join(', ')}: migrate it first`);
       return 1;
     }
-    if (
-      !input ||
-      input.schema !== SCHEMA ||
-      input.book !== args.book ||
-      !Array.isArray(input.actions)
-    ) {
-      io.error(`FAIL: the input is not a ${SCHEMA} file for ${args.book}`);
+    const inputFails = inputProblems(input, args.book);
+    if (inputFails.length) {
+      for (const p of inputFails) io.error(`FAIL: ${p}`);
       return 1;
     }
     let terms;

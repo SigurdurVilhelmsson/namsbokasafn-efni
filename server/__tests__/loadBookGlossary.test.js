@@ -40,8 +40,20 @@ function concept(domain, en, is, collection = null) {
 }
 
 const base = { choice: 'remove', flagKind: 'x', ruledAt: '2026-11-18T00:00:00.000Z' };
+/** Actions by kind, as the join writes the input's `counts`. */
+function tally(actions) {
+  const t = {};
+  for (const a of actions) t[a.kind] = (t[a.kind] || 0) + 1;
+  return t;
+}
 function input(actions, extra = {}) {
-  return { schema: 'c19-book-layer-input/1', book: CHEM, actions, ...extra };
+  return {
+    schema: 'c19-book-layer-input/1',
+    book: CHEM,
+    counts: tally(actions),
+    actions,
+    ...extra,
+  };
 }
 function writeInput(obj) {
   const file = path.join(tmp, `in-${Math.random().toString(36).slice(2)}.json`);
@@ -283,17 +295,113 @@ describe('fix round 1', () => {
     const row = db.prepare('SELECT * FROM registered_books WHERE slug = ?').get('edlisfraedi-2e');
     expect(row).toBeTruthy();
     expect(run(['--book', CHEM, '--input', file]).code).toBe(0); // control
-    db.prepare('DELETE FROM registered_books WHERE slug = ?').run('edlisfraedi-2e');
+    // ⚠️ Rolled back, not re-inserted: foreign keys are ON here, so the DELETE cascades to the
+    // book's book_domain_priority rows. Re-inserting the book row alone left physics with no
+    // priorities, so every later test in this file saw physics unscoped ("— = —").
+    db.exec('SAVEPOINT physics_unregistered');
     try {
+      db.prepare('DELETE FROM registered_books WHERE slug = ?').run('edlisfraedi-2e');
       const r = run(['--book', CHEM, '--input', file]);
       expect(r.code).toBe(1);
       expect(r.err).toContain('edlisfraedi-2e');
       expect(r.out).not.toContain('n/a');
     } finally {
-      const cols = Object.keys(row);
-      db.prepare(
-        `INSERT INTO registered_books (${cols.join(',')}) VALUES (${cols.map(() => '?').join(',')})`
-      ).run(...cols.map((c) => row[c]));
+      db.exec('ROLLBACK TO physics_unregistered; RELEASE physics_unregistered');
+    }
+    expect(
+      db.prepare('SELECT * FROM registered_books WHERE slug = ?').get('edlisfraedi-2e')
+    ).toEqual(row);
+  });
+});
+
+describe('final review', () => {
+  const CENSUS = ['function', 'substitution', 'geometry', 'standard cell potential'];
+  function writeExport() {
+    const exp = buildResolvedGlossary(db, CHEM, {
+      census: { strings: CENSUS, filesRead: 1, root: 'test' },
+    });
+    const dir = path.join(tmp, 'books', CHEM, 'glossary');
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, 'glossary-unified.json'), JSON.stringify(exp));
+  }
+
+  it('refuses an input with no actions', () => {
+    const good = writeInput(seed());
+    expect(run(['--book', CHEM, '--input', good, '--apply']).code).toBe(0);
+    writeExport();
+    // control: the same database and export pass --verify for an input that holds actions
+    expect(run(['--book', CHEM, '--input', good, '--verify']).code).toBe(0);
+    const rowsBefore = layerRows();
+    const empty = writeInput(input([]));
+    const dry = run(['--book', CHEM, '--input', empty]);
+    expect(dry.code).toBe(1);
+    expect(dry.err).toContain('input has no actions');
+    const apply = run(['--book', CHEM, '--input', empty, '--apply']);
+    expect(apply.code).toBe(1);
+    expect(apply.err).toContain('input has no actions');
+    const verify = run(['--book', CHEM, '--input', empty, '--verify']);
+    expect(verify.code).toBe(1);
+    expect(verify.err).toContain('input has no actions');
+    expect(verify.out).not.toContain('PASS');
+    expect(layerRows()).toBe(rowsBefore);
+  });
+
+  it('refuses an input whose counts disagree with its actions', () => {
+    const good = seed();
+    const miscounted = { ...good, counts: { ...good.counts, entry: good.counts.entry + 1 } };
+    const uncounted = { ...good };
+    delete uncounted.counts;
+    for (const bad of [miscounted, uncounted]) {
+      const file = writeInput(bad);
+      const dry = run(['--book', CHEM, '--input', file]);
+      expect(dry.code).toBe(1);
+      expect(dry.err).toContain('counts');
+      const apply = run(['--book', CHEM, '--input', file, '--apply']);
+      expect(apply.code).toBe(1);
+      expect(apply.err).toContain('counts');
+      expect(layerRows()).toBe(0);
+    }
+    // control: the correctly counted input is applied, and passes --verify on its export
+    const goodFile = writeInput(good);
+    expect(run(['--book', CHEM, '--input', goodFile, '--apply']).code).toBe(0);
+    expect(layerRows()).toBeGreaterThan(0);
+    writeExport();
+    expect(run(['--book', CHEM, '--input', goodFile, '--verify']).code).toBe(0);
+    for (const bad of [miscounted, uncounted]) {
+      const verify = run(['--book', CHEM, '--input', writeInput(bad), '--verify']);
+      expect(verify.code).toBe(1);
+      expect(verify.err).toContain('counts');
+      expect(verify.out).not.toContain('PASS');
+    }
+  });
+
+  it('the physics column prints ≠ when the physics book would change, never =', () => {
+    const file = writeInput(seed());
+    // control: physics unchanged prints = and the dry run passes
+    const ok = run(['--book', CHEM, '--input', file]);
+    expect(ok.code).toBe(0);
+    expect(ok.out).toMatch(/physics: rúmfræði = rúmfræði/);
+    // A trigger in the fixture adds an out-of-chain (biology) row for each excluded headword.
+    // It fires only in the dry run's in-memory copy, since the real database is never written:
+    // physics keeps its winner and gains an out-of-scope row, so its signature changes.
+    db.exec(`CREATE TRIGGER physics_change_probe AFTER INSERT ON book_glossary_exclusion BEGIN
+      INSERT INTO concept (domain) VALUES ('biology');
+      INSERT INTO concept_term (concept_id, lang, text, rank, source)
+        VALUES ((SELECT MAX(id) FROM concept), 'en', NEW.english, 1, 'test');
+      INSERT INTO concept_term (concept_id, lang, text, rank, source)
+        VALUES ((SELECT MAX(id) FROM concept), 'is', 'líffræðiprófun', 1, 'test');
+    END`);
+    const conceptsBefore = count('concept');
+    try {
+      const r = run(['--book', CHEM, '--input', file]);
+      const row = (id) => r.out.split('\n').find((l) => l.startsWith(id));
+      expect(r.code).toBe(1);
+      expect(r.err).toContain('r003 (entry): the physics book would change');
+      expect(row('r003')).toMatch(/physics: rúmfræði ≠ rúmfræði/);
+      expect(r.out).not.toMatch(/physics: rúmfræði = rúmfræði/);
+      expect(count('concept')).toBe(conceptsBefore); // the trigger fired in the copy only
+    } finally {
+      db.exec('DROP TRIGGER IF EXISTS physics_change_probe');
     }
   });
 });
