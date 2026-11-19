@@ -320,6 +320,11 @@ describe('rerequestModule', () => {
 // the 8 segments are committed to layer 1s the planner refuses them (`already-selected`), so
 // "the 8 ids plan cleanly" is a manual measurement, and its printout is pinned through the
 // pure formatter below instead.
+// ⚠️ SINCE G1.7 STEP 1 EVERY CHEMISTRY UNIT HOLDS THE FREEZE MARKER, so a --rerequest on
+// chemistry stops at `isMtLocked` before the planner runs: no MT run may overwrite the frozen
+// base (spec §7). The planner's own refusals are pinned without the CLI: `not-in-en` in
+// mt-rerequest.test.js, `not-untranslated` in 'refuses before any send when a named id is
+// already translated' above.
 
 const cli = (...args) =>
   spawnSync(process.execPath, ['tools/api-translate.js', '--book', 'efnafraedi-2e', ...args], {
@@ -330,20 +335,20 @@ const cli = (...args) =>
 const TRANSLATED_ID = 'm68852:abstract-item:abstract-item-1';
 
 describe('api-translate --rerequest (CLI)', () => {
-  it('the flag is declared: --rerequest with an unknown id exits 1 and names it', () => {
+  it('the flag is declared: --rerequest on a frozen unit exits 1 at the lock and names it', () => {
     const r = cli('--rerequest', 'm68852:para:nope', '--dry-run');
     expect([
       r.status,
-      r.stderr.includes('m68852:para:nope'),
-      r.stderr.includes('not-in-en'),
+      r.stderr.includes('ch21/m68852 is LOCKED'),
+      r.stderr.includes('Nothing was sent'),
     ]).toEqual([1, true, true]);
   });
 
-  it('a translated id is refused: not-untranslated, exit 1, nothing sent', () => {
+  it('a translated id on a frozen unit is refused at the lock: exit 1, nothing sent', () => {
     const r = cli('--rerequest', TRANSLATED_ID, '--dry-run');
     expect([
       r.status,
-      r.stderr.includes('not-untranslated'),
+      r.stderr.includes('ch21/m68852 is LOCKED'),
       r.stdout.includes('Re-request:'),
     ]).toEqual([1, true, false]);
   });
