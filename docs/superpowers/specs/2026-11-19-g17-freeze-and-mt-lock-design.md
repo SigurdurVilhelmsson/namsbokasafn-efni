@@ -207,8 +207,12 @@ script computes no hash of its own. The texts are not copied: they are in git at
   the repository through this file, so its hash is the ruling-set snapshot for terminology.
 - `markers`: the count and the sha256 of `FREEZE_LOCK_BODY`.
 
-The join: a served-version row is the frozen base when its `book` equals the header's and its (chapter, module id,
-segment id, occurrence, en_sha256, is_sha256, layer) equals a line of `segments.jsonl`.
+The join, as the G1.1 spec §5.2 fixes it: a served-version row is the frozen base when its `book` equals the
+header's and its (chapter, module id, segment id, occurrence, en_sha256, is_sha256) equals a line of
+`segments.jsonl`. **`layer` is recorded on each line but is not part of the join.** A unit's first apply writes its
+whole base into the faithful file, so an untouched segment is then served as `faithful` with the same hashes, and
+G1.1 mints a second row for it (§5.2: the same text under a new label gets its own row). That row is still the
+frozen base; a join on `layer` would drop every untouched segment of an applied unit.
 
 ### 6.5 The tag
 
@@ -251,7 +255,8 @@ person's time. [USER] decides what to do with it.
 
 **Order with other work:** before 4.2's re-attach runs on production, before any unit opens, before G1.13 assigns.
 
-**Test fallout to expect:** run the whole suite with the markers in place before opening the PR. Extraction warns
+**Test fallout to expect:** run the whole suite with the markers in place before opening the PR, **and the
+Playwright E2E run** (`server/`'s `test:e2e`): it saves into real chemistry units, and `npm test` does not run it. Extraction warns
 on every chemistry unit; anything that asserted chemistry was unlocked is recalibrated, with the reason in the
 commit.
 
@@ -287,7 +292,7 @@ Claude may run it over ssh, as with the other production checks.
 |---|---|---|
 | T1 | `writeFreezeLock`: absent → writes exactly `FREEZE_LOCK_BODY`; identical → no write (mtime unchanged); foreign → throws, file bytes unchanged. The body parses and holds no date-like string | A marker that carries a time, or an overwrite of a person's marker |
 | T2 | `markers --write` with one foreign marker planted among absent ones writes nothing at all, names the unit, and does not print the planted body; the same for a unit with no MT file | A half-written freeze, or a body printed into a log |
-| T3 | **The value join.** A temp books tree and a temp migrated database: serve every unit through the real module route (or `recordServe`) to mint rows; run `manifest`; every minted row joins a line and the counts are equal. Control: change one byte of one MT segment and serve again; exactly one minted row fails to join | A manifest computed one normalisation step away from what is served, which would join nothing |
+| T3 | **The value join.** A temp books tree and a temp migrated database: serve every unit through the real module route (or `recordServe`) to mint rows; run `manifest`; every minted row joins a line on the six values of §6.4 and the counts are equal. Relabel case: write the same text as a faithful file and serve again; the new `faithful` rows join too. Control: change one byte of one MT segment and serve again; exactly one minted row fails to join | A manifest computed one normalisation step away from what is served, which would join nothing |
 | T4 | Two `manifest` runs on the same tree produce identical bytes | A field that drifts by itself |
 | T5 | `check`: PASS on a clean tree; FAIL for a deleted marker, a foreign marker (stdout never contains its body) and a changed MT file; a unit moved to faithful is reported and not a failure | A check that cannot fail, or one that leaks |
 | T6 | An unknown flag exits non-zero and writes nothing; a non-study `--book` is refused; the exit code is failure if no verdict is reached | A misspelt `--write` treated as a dry run, or the reverse |
@@ -322,5 +327,7 @@ regression tests).
 
 The exact output wording; the order of the header's fields; how T3 drives the module route (the served-version
 tests' fixtures are the model); whether T21 (`server/__tests__/mtLockFreezeMarker.test.js`) switches its fixture to
-`FREEZE_LOCK_BODY`. `server/__tests__/readResearchPreconditions.test.js` pins `readG1g`'s requires, so it gains
+`FREEZE_LOCK_BODY`. The git-derived header fields (`baseCommit`, layer 1's last commit, the hand-repair list) are
+computed only by `manifest --write`, which needs full history; `check` and the guard never recompute them (CI
+clones shallow), and tests inject them. `server/__tests__/readResearchPreconditions.test.js` pins `readG1g`'s requires, so it gains
 `../lib/studyUnits` when the enumeration moves.
