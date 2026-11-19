@@ -3284,7 +3284,8 @@ function hasExtractTarget(args) {
  *
  * WARNS; NEVER REFUSES. Clearing a lock and re-extracting is a legitimate,
  * intended operation — it is exactly what the §C82 clean break does — so this
- * must not become a gate. The hazard it exists for is a lock created *during* a
+ * must not become a gate. That does not apply to a study-freeze marker (G1.7):
+ * it is never cleared, and its warning says so. The hazard it exists for is a lock created *during* a
  * long run (`saveSegmentEdit` locks a module on its first edit), which no
  * amount of up-front lock-clearing can prevent.
  *
@@ -3305,37 +3306,49 @@ function mtLockWarnings(bookDir, chapter, moduleIds) {
   const locked = moduleIds.filter((moduleId) => isMtLocked(mtPath(moduleId)));
   // G1.7: a study-freeze marker is not an editing lock. It is never cleared (that breaks the
   // study), so its wording differs and its advice is the opposite. The verdict never exposes
-  // the marker's body.
+  // the marker's body. This function compares no bytes, so for a frozen unit it says only that
+  // the unit was re-extracted and MAY have changed, and names the test that tells: a fresh
+  // extraction of every frozen unit is step 2's landing condition, where nothing should change.
   const frozen = locked.filter((m) => freezeLockState(mtPath(m)) === 'freeze');
   const editLocked = locked.filter((m) => !frozen.includes(m));
   const warnings = locked.map((moduleId) =>
     frozen.includes(moduleId)
-      ? `  ⚠ ${moduleId}: MT output is held by the study freeze (G1.7). This extraction changed ` +
-        `02-for-mt, but the frozen English must not change during the study, and ` +
-        `api-translate will refuse this module (--force does NOT override).`
+      ? `  ⚠ ${moduleId}: MT output is held by the study freeze (G1.7). This unit was ` +
+        `re-extracted, which may have changed its 02-for-mt; the frozen English must not change ` +
+        `during the study, and api-translate will refuse this module (--force does NOT override).`
       : `  ⚠ ${moduleId}: MT output is EDIT-LOCKED. This extraction advanced 02-for-mt, but ` +
         `api-translate will return locked-skip (--force does NOT override), leaving 02-mt-output ` +
         `at the older vintage. Inject will then refuse this module as "incomplete injection".`
   );
+  // Said of edit-locked modules only (a frozen unit's 02-for-mt may not have changed at all);
+  // in the head when they are all edit-locked, so that wording stays as it was.
+  const newer = 'Their 02-for-mt is now newer than their 02-mt-output.';
   const groups = [];
   if (frozen.length > 0) {
+    const forMt = `books/${path.basename(bookDir)}/02-for-mt`;
     groups.push(
-      `${frozen.length} held by the study freeze (G1.7) — ${frozen.join(', ')}. Do NOT clear ` +
-        `the freeze marker: restore the previous extraction (the frozen English must not ` +
-        `change during the study; a deliberate change is a re-cut, [USER]'s decision).`
+      `${frozen.length} held by the study freeze (G1.7) — ${frozen.join(', ')}. Their ` +
+        `02-for-mt may have changed. Do NOT clear the freeze marker. To tell, run ` +
+        `\`git status --porcelain ${forMt}\` from the repository root: empty means nothing ` +
+        `changed and there is nothing to do; otherwise restore the previous extraction (the ` +
+        `frozen English must not change during the study; a deliberate change is a re-cut, the ` +
+        `project lead's decision). Once a freeze manifest exists, \`node ` +
+        `server/scripts/study-freeze.js check\` is the authoritative test (git status compares ` +
+        `against HEAD, not the frozen state).`
     );
   }
   if (editLocked.length > 0) {
     groups.push(
-      `${editLocked.length} with editing started — ${editLocked.join(', ')}. Clear the lock ` +
-        `and re-run api-translate, or restore the previous extraction.`
+      `${editLocked.length} with editing started — ${editLocked.join(', ')}.` +
+        (frozen.length > 0 ? ` ${newer}` : '') +
+        ` Clear the lock and re-run api-translate, or restore the previous extraction.`
     );
   }
+  const head = `⚠ §C110: ${locked.length} module(s) extracted with a LOCKED MT output.`;
   const summary =
     locked.length === 0
       ? null
-      : `⚠ §C110: ${locked.length} module(s) extracted with a LOCKED MT output. ` +
-        `Their 02-for-mt is now newer than their 02-mt-output. ${groups.join(' ')}`;
+      : [head, frozen.length === 0 ? newer : null, ...groups].filter(Boolean).join(' ');
   return { locked, frozen, editLocked, warnings, summary };
 }
 

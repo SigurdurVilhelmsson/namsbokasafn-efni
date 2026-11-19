@@ -880,7 +880,7 @@ function runCheck(args, io) {
     if (bad.length > 0) {
       const current = manifest.header ? manifest.header.tag : path.basename(manifest.dir);
       bad.push(
-        "re-cut route: if the change is deliberate, record it with a re-cut, which is [USER]'s decision " +
+        "re-cut route: if the change is deliberate, record it with a re-cut, which is the project lead's decision " +
           `(spec §6.6): manifest --write --tag freeze-${book}-<YYYY-MM-DD> --supersedes ${current}`,
         'otherwise fix or revert the change that moved the hash'
       );

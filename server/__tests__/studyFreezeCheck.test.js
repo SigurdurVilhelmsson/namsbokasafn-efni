@@ -151,7 +151,8 @@ describe('check with a manifest', () => {
     expect(text()).toContain('input changed: 1 unit(s): ch01/m96002');
     expect(text()).not.toContain('served text changed');
     expect(text()).toContain('re-cut route');
-    expect(text()).toContain("[USER]'s decision (spec §6.6)");
+    expect(text()).toContain("the project lead's decision (spec §6.6)");
+    expect(text()).not.toContain('[USER]');
     expect(text()).toContain(`--supersedes ${TAG}`);
     expect(text()).toContain('otherwise fix or revert the change that moved the hash');
   });
@@ -179,7 +180,8 @@ describe('check with a manifest', () => {
       `served text changed, inputs unchanged: 1 segment(s): ch01/m96002#${altered.segment_id}#0`
     );
     expect(text()).toContain('re-cut route');
-    expect(text()).toContain("[USER]'s decision (spec §6.6)");
+    expect(text()).toContain("the project lead's decision (spec §6.6)");
+    expect(text()).not.toContain('[USER]');
     expect(text()).toContain(`--supersedes ${TAG}`);
     expect(text()).toContain('otherwise fix or revert the change that moved the hash');
     expect(text()).not.toContain('input changed');

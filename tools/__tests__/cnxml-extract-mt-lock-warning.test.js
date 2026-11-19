@@ -143,6 +143,70 @@ describe('G1.7 mtLockWarnings — a study-freeze marker is never advised to be c
       summary.includes('Clear the lock'),
     ]).toEqual([true, true, true, true]);
   });
+
+  // The extractor does not compare bytes, so for a frozen unit it may say only that the unit was
+  // re-extracted and MAY have changed, and name the test that tells. A fresh extraction of every
+  // frozen unit is exactly step 2's landing condition, where nothing is meant to change.
+  it('the per-module freeze warning says re-extracted and may have changed, never that it changed', () => {
+    const [w] = mtLockWarnings(bookWith('ch01', { frozen: ['m1'] }), 1, ['m1']).warnings;
+    expect([
+      w.includes('was re-extracted'),
+      w.includes('may have changed'),
+      w.includes('This extraction changed'),
+      w.includes('advanced 02-for-mt'),
+    ]).toEqual([true, true, false, false]);
+  });
+
+  it('a freeze-only summary names the git-status test and asserts no change as fact', () => {
+    const { summary } = mtLockWarnings(bookWith('ch01', { frozen: ['m1'] }), 1, ['m1']);
+    expect([
+      summary.includes('may have changed'),
+      summary.includes('`git status --porcelain books/efnafraedi-2e/02-for-mt`'),
+      summary.includes('empty means nothing changed and there is nothing to do'),
+      summary.includes('otherwise restore the previous extraction'),
+      summary.includes('is now newer than'),
+    ]).toEqual([true, true, true, true, false]);
+  });
+
+  it('the freeze summary names check as the authoritative test once a manifest exists', () => {
+    const { summary } = mtLockWarnings(bookWith('ch01', { frozen: ['m1'] }), 1, ['m1']);
+    expect([
+      summary.includes(
+        'Once a freeze manifest exists, `node server/scripts/study-freeze.js check` is the ' +
+          'authoritative test (git status compares against HEAD, not the frozen state)'
+      ),
+      summary.includes("a deliberate change is a re-cut, the project lead's decision"),
+      summary.includes('[USER]'),
+    ]).toEqual([true, true, false]);
+  });
+
+  it('a mixed run states "newer" of the editing group only', () => {
+    const { summary } = mtLockWarnings(bookWith('ch01', { frozen: ['m1'], locked: ['m2'] }), 1, [
+      'm1',
+      'm2',
+    ]);
+    const newer = summary.indexOf('is now newer than their 02-mt-output');
+    expect([newer > summary.indexOf('with editing started — m2'), newer > -1]).toEqual([
+      true,
+      true,
+    ]);
+  });
+
+  // Control: the editing lock's wording is today's, byte for byte (captured before G1.7's final
+  // review changed the freeze wording).
+  it("an edit-locked-only run keeps today's wording exactly", () => {
+    const r = mtLockWarnings(bookWith('ch01', { locked: ['m2', 'm3'] }), 1, ['m2', 'm3']);
+    expect(r.warnings[0]).toBe(
+      '  ⚠ m2: MT output is EDIT-LOCKED. This extraction advanced 02-for-mt, but api-translate ' +
+        'will return locked-skip (--force does NOT override), leaving 02-mt-output at the older ' +
+        'vintage. Inject will then refuse this module as "incomplete injection".'
+    );
+    expect(r.summary).toBe(
+      '⚠ §C110: 2 module(s) extracted with a LOCKED MT output. Their 02-for-mt is now newer ' +
+        'than their 02-mt-output. 2 with editing started — m2, m3. Clear the lock and re-run ' +
+        'api-translate, or restore the previous extraction.'
+    );
+  });
 });
 
 // A GATE THAT IS NEVER CALLED IS INDISTINGUISHABLE FROM ONE THAT DOES NOT
