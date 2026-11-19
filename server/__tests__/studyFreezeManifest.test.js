@@ -610,6 +610,10 @@ describe('manifest through main', () => {
         expect.objectContaining({ code: 'USAGE' })
       );
     });
+    it('--manifest is a usage error for manifest', () => {
+      expect(study.main(['manifest', '--manifest', 'x'], io, { git: GIT })).toBe(1);
+      expect(text()).toContain('--manifest applies to check only');
+    });
     it('--write without --tag is a usage error', () => {
       expect(study.main(['manifest', '--write'], io, { git: GIT })).toBe(1);
       expect([existsSync(freezeDir()), text().includes('--write needs --tag')]).toEqual([
@@ -646,6 +650,18 @@ describe('manifest through main', () => {
       expect([
         existsSync(path.join(freezeDir(), TAG3)),
         text().includes('supersedes-not-current'),
+      ]).toEqual([false, true]);
+    });
+    it('a write is refused while two manifests are current (ambiguous)', () => {
+      for (const t of [TAG, TAG2]) {
+        const built = study.buildManifest({ book: BOOK, tag: t, git: GIT });
+        study.writeManifest({ book: BOOK, tag: t, ...built });
+      }
+      const TAG3 = `freeze-${BOOK}-2026-12-20`;
+      expect(study.main(['manifest', '--write', '--tag', TAG3], io, { git: GIT })).toBe(1);
+      expect([
+        existsSync(path.join(freezeDir(), TAG3)),
+        text().includes('ambiguous-manifests'),
       ]).toEqual([false, true]);
     });
     it('a second manifest without --supersedes is refused while one is current', () => {
