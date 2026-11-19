@@ -48,13 +48,7 @@ import {
   formatReport,
 } from '../remt-sweep.js';
 import { REGISTRY, VERDICT } from '../lib/remt-battery.js';
-import {
-  modulesWithSegments,
-  mtOutputSegmentFiles,
-  enCounterpart,
-  withoutPreAltExerciseDrift,
-  withoutPreSummaryDrift,
-} from './helpers/remt-corpus.js';
+import { modulesWithSegments, mtOutputSegmentFiles } from './helpers/remt-corpus.js';
 
 const CHEM = 'efnafraedi-2e';
 const ORG = 'lifraen-efnafraedi';
@@ -94,14 +88,17 @@ describe('the partition over REGISTRY is TOTAL', () => {
 });
 
 describe('the populations — one unit per tier, each with its own denominator', () => {
-  it('tier 1 is 491 module pairs and tier 2 is 197 IS files — DIFFERENT numbers', () => {
+  it('tier 1 is 491 module pairs and tier 2 is 149 IS files — DIFFERENT numbers', () => {
     const t1 = modulePairUnits(CHEM).length + modulePairUnits(ORG).length;
     const t2 = isFileUnits(CHEM).length + isFileUnits(ORG).length;
     // 🔴 RE-PINNED 2026-09-02, 166 -> 491: §C82 ③ re-extracted organic in full, so tier 1
     // now pairs all 342 organic modules (149 + 342). Tier 2 is UNMOVED at 197 — the two
     // tiers count different things, which is this test's whole point.
     expect(t1).toBe(491);
-    expect(t2).toBe(197);
+    // RE-PINNED 2026-11-19, 197 -> 149: §C190 ② (2026-11-19) removed organic's translated trees (02-mt-output among
+    // them), so tier 2 is chemistry's 149 IS files alone. Tier 1 is unmoved: organic's English
+    // is still extracted, so its 342 modules still pair.
+    expect(t2).toBe(149);
     // 🔴 THE ASSERTION THAT MATTERS IS THAT THEY DIFFER. The register's
     // authoritative "197" is tier 2's; quoting it as tier 1's overstates that
     // tier's coverage by 31 units — organic's `exercises` bundles, which have no
@@ -110,7 +107,7 @@ describe('the populations — one unit per tier, each with its own denominator',
     // SMALLER population (166 < 197) and is now the larger (491 > 197), so the gap is
     // asserted as t1 - t2 rather than t2 - t1. The `not.toBe` above is the durable half.
     expect(t1).not.toBe(t2);
-    expect(t1 - t2).toBe(294);
+    expect(t1 - t2).toBe(342); // 294 -> 342 with tier 2 (§C190 ②)
   });
 
   it("the sweep's walkers agree UNIT-FOR-UNIT with the test helper's", () => {
@@ -164,11 +161,13 @@ describe('the populations — one unit per tier, each with its own denominator',
     // RE-PINNED 2026-10-03, 161 -> 157: the chemistry faithful track was retired (its 4
     // CNXML under 03-translated/faithful removed), leaving chemistry mt-preview 149 +
     // organic mt-preview 8.
-    expect(t3).toBe(157);
+    // RE-PINNED 2026-11-19, 157 -> 149: §C190 ② (2026-11-19) removed organic's translated trees, organic's 8 mt-preview
+    // CNXML with them. Chemistry's mt-preview 149 is the whole tier.
+    expect(t3).toBe(149);
     // organic has no `faithful` directory at all — an absent track is zero units,
     // not an error, and not a track full of empty ones.
     expect(translatedUnits(ORG).filter((u) => u.track === 'faithful')).toEqual([]);
-    expect(translatedUnits(ORG).filter((u) => u.track === 'mt-preview').length).toBe(8);
+    expect(translatedUnits(ORG).filter((u) => u.track === 'mt-preview').length).toBe(0);
   });
 });
 
@@ -419,22 +418,25 @@ describe('the acceptance figures Plan B names, re-derived here with their denomi
   // asserted "SKIPPED with examined 0 — no module carries a run record", true of every
   // module until the paid run wrote the first 16 run records. 14 of those sit on units
   // `isFileUnits` counts; the other 2 are `chapter-metadata`, which it excludes by design.
-  it('A2a / A4 / A8 measure the 158 units with a run record, and SKIP the other 39', async () => {
+  // RE-PINNED 2026-11-19: §C190 ② (2026-11-19) removed organic's translated trees. The 39 SKIPs were organic's unbought files
+  // plus one, and the 9 organic units that had run records went too, so every remaining unit is
+  // chemistry's and every one carries a run record: 149 evaluable, 0 SKIPPED.
+  it('A2a / A4 / A8 measure all 149 units, each with a run record, and SKIP none', async () => {
     const report = await sweep({ books: SWEEP_BOOKS, tiers: [2] });
     for (const id of ['A2a', 'A4', 'A8']) {
       const r = report.rows.find((x) => x.id === id);
-      expect(r.population, `${id} population`).toBe(197);
+      expect(r.population, `${id} population`).toBe(149);
       // 183 -> 39 and 14 -> 158: the ch09..ch21 + appendices buys wrote a run record to
       // every unit they touched, so the population these three can MEASURE grew elevenfold
       // while the population itself held at 197. The split, not the total, is the evidence.
-      expect(r.SKIPPED, `${id} skipped`).toBe(39);
-      expect(r.evaluable, `${id} evaluable`).toBe(158);
+      expect(r.SKIPPED, `${id} skipped`).toBe(0);
+      expect(r.evaluable, `${id} evaluable`).toBe(149);
       // 🔴 NOT `toBeGreaterThan(0)`, AND NOT 0. `examined` is 1 per judged unit, so 158 is
       // the only value consistent with 158 evaluable; the old `toBe(0)` pinned the QUIET
       // state and would stay green if every run record were deleted again.
       // ⚠️ The 39 SKIPs are the units with no run record left — organic's 38 unbought
       // segment files plus one. When organic is bought this pin moves again, by design.
-      expect(r.examinedTotal, `${id} examined`).toBe(158);
+      expect(r.examinedTotal, `${id} examined`).toBe(149);
       // The successor to the old `rate).toBeNull()`. That pin said "never 0% — that would
       // read as measured, clean"; now that these checks DO measure, the same distinction
       // is that the rate must exist. A null rate would mean the run-record units vanished
@@ -443,7 +445,7 @@ describe('the acceptance figures Plan B names, re-derived here with their denomi
     }
     // Control: the same run must produce real rates for the run-record-free
     // checks, or "everything SKIPPED" would be the trivial explanation.
-    expect(report.rows.find((x) => x.id === 'A3').evaluable).toBe(197);
+    expect(report.rows.find((x) => x.id === 'A3').evaluable).toBe(149);
   }, 60_000);
 
   it('K3 is SKIPPED on every cell — no before-snapshot artefact exists anywhere', async () => {
@@ -464,7 +466,9 @@ describe('the acceptance figures Plan B names, re-derived here with their denomi
     // the tier failing to run.
     // RE-PINNED 2026-10-03, 26 -> 24: the chemistry faithful track was retired, and its 2
     // published cells (ch01, ch03) went with it.
-    expect(report.rows.find((r) => r.id === 'K2').evaluable).toBe(24);
+    // RE-PINNED 2026-11-19, 24 -> 23: organic's one published cell went with its
+    // 05-publication tree (§C190 ②).
+    expect(report.rows.find((r) => r.id === 'K2').evaluable).toBe(23);
   }, 60_000);
 });
 
@@ -811,32 +815,20 @@ describe('the over-bar advice names the stage that actually rewrites that tier',
     // A2b and ONLY A2b; chemistry's A2b stays within the bar; and organic's A2b trips must be
     // EXACTLY ch12's nine plus the pre-alt-type bundles, counted here by an independent route
     // (the same predicate the battery pins use). A new failure of any other shape still fails.
+    // 🔴 RE-PINNED 2026-11-19 — THE OVER-BAR ROW WAS ORGANIC'S, AND IT LEFT WITH ORGANIC'S
+    // TREES. A2b was over the bar only on organic's vintage drift (ch12's nine, the pre-alt
+    // bundles, two pre-summary modules); §C190 ② (2026-11-19) removed organic's translated trees, so on the real corpus NO
+    // blocking row is over the bar and the advice block does not print. The negative this
+    // comment once promised is back: a blocking row over the bar on chemistry is a finding.
     const realText = formatReport(report);
     const overBar = report.rows.filter((x) => x.blocking && x.rate !== null && x.rate > 0.05);
-    expect(overBar.map((r) => r.id)).toEqual(['A2b']);
-    expect(realText).toContain('re-MT (02-mt-output)'); // the advice now correctly prints
-    const a2b = overBar[0];
+    expect(overBar.map((r) => r.id)).toEqual([]);
+    expect(realText).not.toContain('re-MT (02-mt-output)'); // no over-bar row, no advice
+    // Control: A2b really ran on chemistry, so "nothing over the bar" is a measurement.
+    const a2b = report.rows.find((x) => x.id === 'A2b');
     const byBook = Object.fromEntries(a2b.byBook.map((x) => [x.book, x]));
+    expect(byBook[CHEM].evaluable).toBe(149);
     expect(byBook[CHEM].rate).toBeLessThanOrEqual(0.05);
-    const preAltBundles = mtOutputSegmentFiles(ORG).filter((f) => {
-      const en = enCounterpart(f);
-      const isText = fs.readFileSync(f, 'utf8');
-      return (
-        en && withoutPreAltExerciseDrift(f, fs.readFileSync(en, 'utf8'), isText).removed.length
-      );
-    }).length;
-    expect(preAltBundles).toBeGreaterThan(0); // control: the predicate still sees the drift
-    // §C126 #4 — pre-type table-summary drift, by the same independent route (vintage-keyed).
-    const preSummaryModules = mtOutputSegmentFiles(ORG).filter((f) => {
-      const en = enCounterpart(f);
-      const isText = fs.readFileSync(f, 'utf8');
-      return (
-        en && withoutPreSummaryDrift(f, fs.readFileSync(en, 'utf8'), { isText }).removed.length
-      );
-    }).length;
-    expect(preSummaryModules).toBe(2); // organic ch03 m00032 + m00033
-    // ch12's nine (§C174/§C175) + alt drift + summary drift
-    expect(byBook[ORG].tripped).toBe(9 + preAltBundles + preSummaryModules);
   }, 120_000);
 });
 
@@ -848,8 +840,11 @@ describe('the OrNull-family keys reach their gate as `null`, never `undefined`',
   // warning about it in the first place.
   it('a book with NO fidelity-allowlist gets an explicit null, not undefined', () => {
     const spec = TIER_SPECS.find((x) => x.tier === 3);
-    const organic = translatedUnits(ORG)[0];
-    expect(organic, 'control: organic really has a translated unit').toBeDefined();
+    // RE-PINNED 2026-11-19: organic has no translated unit since §C190 ②, so the null arm is
+    // driven by a chemistry unit relabelled as organic. `tier3Ctx` reads the allowlist from
+    // `bookDir(unit.book)` alone, so this is the lookup a real organic unit made.
+    const organic = { ...translatedUnits(CHEM)[0], book: ORG };
+    expect(fs.existsSync(path.join('books', ORG, 'fidelity-allowlist.json'))).toBe(false); // the premise
     const ctx = spec.ctx(organic, {});
     // `toBe(null)` already separates the two (`Object.is(undefined, null)` is
     // false), but assert the KEY exists too — a deleted key is a third state and
@@ -862,43 +857,21 @@ describe('the OrNull-family keys reach their gate as `null`, never `undefined`',
     expect(spec.ctx(chem, {}).fidelityAllowlist).not.toBeNull();
   });
 
-  it('and R1 therefore JUDGES organic instead of SKIPping all 8 of its units', async () => {
-    // The consequence, end to end. Before the repair: 8 SKIPs, rate 0.0% of 153,
-    // and the organic column read `n/a of 0`. After: 0 SKIPs, 161 evaluable (157 since the
-    // 2026-10-03 chemistry faithful retirement removed 4 units), and
-    // organic reports 6 FAIL of 8 — findings that existed all along.
+  it("and R1 JUDGES every translated unit — chemistry's 149 — and organic reads 0, not n/a", async () => {
+    // 🔴 REWRITTEN 2026-11-19 — THE 8 ORGANIC UNITS THIS TEST WAS NAMED FOR ARE GONE (§C190 ②
+    // removed organic's translated trees). Its subject was R1 JUDGING a book whose allowlist is
+    // `null` instead of SKIPping it. The null arm's end-to-end evidence now lives where this
+    // file's earlier note said it also lived: remt-checks-output.test.js FAILs m68846 with a
+    // null allowlist on real bytes, and remt-selftest.js plants an R1 bad/good pair. The
+    // ctx-level null arm is pinned by the test above. What stays here: R1 SKIPs nothing.
     const report = await sweep({ books: SWEEP_BOOKS, tiers: [3] });
     const r1 = report.rows.find((r) => r.id === 'R1');
     expect(r1.SKIPPED).toBe(0);
-    expect(r1.evaluable).toBe(157);
+    expect(r1.evaluable).toBe(149);
+    expect(r1.PASS + r1.FAIL).toBe(149); // every unit judged
     const org = r1.byBook.find((b) => b.book === ORG);
-    expect(org.population).toBe(8);
-    expect(org.SKIPPED).toBe(0);
-    // 🔴 RE-PINNED 2026-09-02, EXACTLY AS THE COMMENT THIS REPLACES SAID IT WOULD BE.
-    // It read "SIX, NOT ZERO … 6 FAIL and 2 PASS", a VINTAGE number the re-inject was
-    // expected to move — and it did: organic ch03 was re-extracted and re-injected, all 8
-    // units now have ZERO tag-count discrepancies, and R1 is 0 FAIL over the whole corpus.
-    // ▶ THE 8 PASSES ARE THE PIN NOW, AND THEY ARE NOT WEAKER THAN THE 6 FAILS WERE:
-    // `runCheck` downgrades a PASS that examined 0 units to SKIPPED, so `PASS === 8` says
-    // 8 units were really compared, not that R1 returned early. Revert the `?? undefined`
-    // on `fidelityAllowlist` and R1 SKIPs all 8 — which reddens PASS, org.SKIPPED,
-    // r1.SKIPPED and r1.evaluable together.
-    // ⚠️ R1's FAIL leg keeps its evidence ELSEWHERE, and both are green today:
-    // remt-checks-output.test.js FAILs m68846 with a null allowlist on real bytes, and
-    // remt-selftest.js plants an R1 bad/good pair. Do not trim either.
-    // 🔴 RE-PINNED 2026-09-05 — and the PARTITION now leads, deliberately. The property
-    // this test is NAMED for is that R1 JUDGES all 8 organic units instead of SKIPping
-    // them; whether they PASS is a vintage number, exactly as the 6-FAIL era above was.
-    // Asserting the partition first means a future re-MT moves one number rather than
-    // silently changing what the test means.
-    expect(org.PASS + org.FAIL).toBe(8); // ← the repair this test exists to pin
-    // The one FAIL is m00035: `unexplained-tag-count` on `emphasis`, 33 -> 32. It is the
-    // SAME dropped English pronunciation gloss that A3 reports as a marker delta in
-    // remt-checks-mt-gating — two instruments, one cause, from organic ch03's §C121 re-MT.
-    // Organic has no fidelity-allowlist in which to record it as known-benign, which is
-    // the `fidelityAllowlist === null` arm this very describe block is about.
-    expect(org.FAIL).toBe(1);
-    expect(org.PASS).toBe(7);
+    expect(org.population).toBe(0);
+    expect(org.rate).toBeNull(); // no units -> no rate, never 0%
   }, 120_000);
 
   it('a book with NO residue-allowlist gets an explicit null too — the latent sibling', () => {
@@ -923,7 +896,9 @@ describe('the OrNull-family keys reach their gate as `null`, never `undefined`',
     const chem = spec.ctx(isFileUnits(CHEM)[0], {});
     expect(Object.prototype.hasOwnProperty.call(chem, 'unservedCopies')).toBe(true);
     expect(chem.unservedCopies.entries).toHaveLength(285);
-    const org = spec.ctx(isFileUnits(ORG)[0], {});
+    // RE-PINNED 2026-11-19: organic has no IS file since §C190 ②; a chemistry unit relabelled
+    // as organic drives the null arm (`tier2Ctx` reads the list from `bookDir(unit.book)`).
+    const org = spec.ctx({ ...isFileUnits(CHEM)[0], book: ORG }, {});
     expect(Object.prototype.hasOwnProperty.call(org, 'unservedCopies')).toBe(true);
     expect(org.unservedCopies).toBe(null);
   });

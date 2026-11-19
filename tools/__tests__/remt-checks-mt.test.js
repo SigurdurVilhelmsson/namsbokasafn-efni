@@ -83,6 +83,17 @@ const { parseSegmentsMap } = segMarkers;
 const read = (p) => fs.readFileSync(p, 'utf8');
 const BOOKS = ['efnafraedi-2e', 'lifraen-efnafraedi', 'orverufraedi'];
 const FILES = Object.fromEntries(BOOKS.map((b) => [b, mtOutputSegmentFiles(b)]));
+// §C190 ② (2026-11-19) removed organic's translated trees from `main`. Its ENGLISH (02-for-mt)
+// stays, so the tests that built a fresh IS from organic's English keep their bytes; they name
+// the IS path directly, since no organic IS file is left to find.
+const ORG_M00032_IS = path.join(
+  REPO_ROOT,
+  'books/lifraen-efnafraedi/02-mt-output/ch03/m00032-segments.is.md'
+);
+const ORG_CH01_EXERCISES_IS = path.join(
+  REPO_ROOT,
+  'books/lifraen-efnafraedi/02-mt-output/ch01/exercises-segments.is.md'
+);
 
 /** A real, clean chemistry IS file — 11 segments, no legacy dialect, no spaced marker. */
 const M68663_IS = 'books/efnafraedi-2e/02-mt-output/ch01/m68663-segments.is.md';
@@ -93,7 +104,8 @@ const enText68663 = read(M68663_EN);
 describe('population controls — an empty walk must not pass anything below', () => {
   it('walks the measured file counts', () => {
     expect(FILES['efnafraedi-2e'].length).toBe(149);
-    expect(FILES['lifraen-efnafraedi'].length).toBe(48);
+    // RE-PINNED 2026-11-19, 48 -> 0: §C190 ② removed organic's 02-mt-output.
+    expect(FILES['lifraen-efnafraedi'].length).toBe(0);
     expect(FILES['orverufraedi'].length).toBe(10);
   });
 });
@@ -170,7 +182,7 @@ describe('parseSegmentsMit — the MIT port of the AGPL segmentParser', () => {
         compared++;
       }
     }
-    expect(compared).toBe(207);
+    expect(compared).toBe(159); // 207 -> 159, §C190 ② (2026-11-19)
   });
 });
 
@@ -296,17 +308,10 @@ describe('A6 — zero legacy inline-marker dialects on the IS side (BLOCKING)', 
     expect(examined).toBe(22855); // segments inspected; an empty walk cannot reach it
   });
 
-  it('MUST-NOT-TRIP CONTROL — organic: 0 findings over all 48 files', async () => {
-    let clean = 0;
-    for (const f of FILES['lifraen-efnafraedi']) {
-      const r = await runCheck(A6, { isText: read(f) });
-      expect(r.verdict).toBe(VERDICT.PASS);
-      expect(r.findings).toHaveLength(0);
-      clean++;
-    }
-    // L37: `[].every(...)` is vacuously true, and so is a loop over an empty walk.
-    expect(clean).toBe(48);
-  });
+  // ✏️ REMOVED 2026-11-19: "MUST-NOT-TRIP CONTROL — organic: 0 findings over all 48 files".
+  // §C190 ② removed organic's 02-mt-output, so the control had no population left. The
+  // property it guarded, A6 PASSing a clean real corpus, is chemistry's premise pin directly
+  // above: 0 findings over 149 files with a measured, non-zero `examined`.
 
   it('PREMISE PIN — micro fixture bytes: 146 mustache over 4 of 10 files', async () => {
     let mustache = 0;
@@ -397,7 +402,7 @@ describe('A6 — zero legacy inline-marker dialects on the IS side (BLOCKING)', 
 });
 
 describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
-  it('BASE RATE — 0 mismatches over all 207 pairs, BOTH legs, so it can block', async () => {
+  it('BASE RATE — 0 mismatches over all 159 pairs, BOTH legs, so it can block', async () => {
     // 🔴 THE POPULATION IS NOW PAIRS, NOT FILES, because A2b acquired a cross-side leg.
     // Measured 2026-08-25: 207 IS files, 207 with an EN counterpart (0 without), 207
     // count-equal on the cross-side leg and 0 raw-vs-parsed mismatches. The two-book
@@ -439,83 +444,29 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
         pairs++;
       }
     }
-    expect(pairs).toBe(207);
+    expect(pairs).toBe(159); // 207 -> 159, §C190 ② (2026-11-19)
     // 30,715 -> 30,906 is +191, the SAME delta as A6 and A2c:
     // §C183 (2026-09-28): the summary top-up spliced all 191 `:table-summary:` segments into
     // chemistry's 83 IS files. The buy's own counts: 188 in the book run, + the m68829
     // control, + the m68862 retry, + m68867 on its third attempt (the API twice returned it
     // with no SEG marker) = 191, the number the dry run planned.
-    expect(examined).toBe(30906);
+    expect(examined).toBe(23509); // 30,906 -> 23,509, §C190 ② (2026-11-19)
 
-    // 🔴 §C126 #3 (2026-09-22) — 31 ORGANIC EXERCISE BUNDLES NOW FAIL THE CROSS-SIDE LEG, AND
-    // THEY ARE THE ch12 CASE BELOW AGAIN: VINTAGE, NOT DAMAGE. Their EN gained 2,375
-    // image-alt segments that no committed exercise IS has ever seen (every bundle was bought
-    // before the type existed). Raw, that is 40/207 = 19.3% — over Global Constraint 4's bar.
-    // ▶ The gate is NOT made to look healthy by allowlisting 31 more names: the drift is
-    // subtracted by a PREDICATE (`withoutPreAltExerciseDrift` — only a bundle whose IS carries
-    // ZERO alt ids), every assertion below runs on the subtracted view and must reproduce the
-    // pre-§C126 pins EXACTLY, and the raw failures are pinned here as precisely that drift.
-    // ▶ WHERE THE BLOCK BITES: A2b runs only in `remt-battery`/`remt-sweep`, which a person
-    // runs after a buy — and a fresh buy's IS is made from today's EN, so it carries no drift.
-    // ⚠️ `driftIds` FALLS WITH EVERY ORGANIC CHAPTER BOUGHT; re-pin it then, with the chapter.
-    expect(driftIds).toBe(2375);
-    // 🔴 §C126 #4 (2026-09-23) — TWO MORE, SAME CLASS, KEYED ON VINTAGE. Organic's 19
-    // summary-bearing modules gained one `:table-summary:` segment each; only ch03's m00032
-    // and m00033 have committed MT (2026-09-05, before the type), so they are the whole raw
-    // gap. Chemistry's 191 are NOT in this count because its committed extraction is HELD
-    // until its summaries are bought ([USER] 2026-09-23) — when it is regenerated, this
-    // becomes 2 + 191 and 83 more names join `rawOnly`.
-    // ✅ §C183 (2026-09-28) — CHEMISTRY WAS REGENERATED AND BOUGHT IN ONE CHANGE, so the
-    // prediction above ("2 + 191 and 83 more names") never came true: it became 2 + 0. The
-    // top-up bought all 191 and re-stamped each IS's `generatedAt`, so the vintage view KEEPS
-    // those summaries and A2b judges them (none fails). ▶ These 83 re-stamped files are the
-    // corpus's FIRST post-type summary IS on disk — see the next test's note.
-    expect(summaryDriftIds).toBe(2);
-    const rawOnly = rawNonPass.filter((x) => !nonPass.some((y) => y.f === x.f));
-    expect(rawOnly).toHaveLength(33);
-    const summaryOnly = rawOnly.filter((x) => !/exercises-segments/.test(x.f));
-    expect(summaryOnly.map((x) => x.f.split('/').slice(-2).join('/')).sort()).toEqual([
-      'ch03/m00032-segments.is.md',
-      'ch03/m00033-segments.is.md',
-    ]);
-    for (const { f, r } of rawOnly) {
-      expect(f).toMatch(
-        /lifraen-efnafraedi\/02-mt-output\/ch\d+\/(exercises|m00032|m00033)-segments\.is\.md$/
-      );
-      expect(r.message, `${f}: only the cross-side leg may fire`).toMatch(/cross-side/);
-      expect(r.message, `${f}: the raw leg must stay clean`).not.toMatch(/raw-vs-parsed/);
-    }
-
-    // 🔴 NINE REAL FAILURES, ALL ORGANIC ch12, ALL ON THE `cross-side` LEG — AND THEY ARE
-    // VINTAGE DRIFT, NOT DAMAGE. That chapter's MT is 2026-08-12; its EN was re-extracted
-    // 2026-09-01, which added figure-`alt` segments the committed Icelandic has never seen.
-    // Their EN−IS gaps sum to 58 — the ENTIRE residual gap between the two sides
-    // (30,773 EN against 30,715 IS) — so this set accounts for all of it and nothing else
-    // is drifting. ▶ **BUYING ORGANIC ch12 DISSOLVES THIS ENTIRE BLOCK** by regenerating
-    // the IS side from today's EN (§C174/§C175).
-    // ⚠️ PINNED BY NAME *AND* BY THE `{en, is}` PARSED PAIR, never by count: a 9-name
-    // allowlist alone would be a blind window over exactly the nine files where
-    // `cross-side` is the only defence against post-write damage.
-    expect(nonPass.map((x) => x.f.split('/').pop()).sort()).toEqual([
-      'm00134-segments.is.md',
-      'm00135-segments.is.md',
-      'm00136-segments.is.md',
-      'm00137-segments.is.md',
-      'm00138-segments.is.md',
-      'm00139-segments.is.md',
-      'm00140-segments.is.md',
-      'm00141-segments.is.md',
-      'm00142-segments.is.md',
-    ]);
-    for (const { f, r } of nonPass) {
-      expect(f, 'every A2b failure must be organic ch12').toContain('lifraen-efnafraedi');
-      expect(f, 'every A2b failure must be organic ch12').toContain('/ch12/');
-      expect(r.message, `${f}: only the cross-side leg may fire`).toMatch(/cross-side/);
-      expect(r.message, `${f}: the raw leg must stay clean`).not.toMatch(/raw-vs-parsed/);
-    }
-    // ⚠️ A2b IS BLOCKING, so its base rate is a LICENCE. 0.000% became 9/207 = 4.3%
-    // against Global Constraint 4's ~5% bar — it keeps the licence by 0.4 points, not by 5.
-    expect(nonPass.length / pairs).toBeLessThanOrEqual(0.05);
+    // 🔴 RE-PINNED 2026-11-19 — THE WHOLE NON-PASS SET WAS ORGANIC'S, AND IT LEFT WITH ORGANIC'S
+    // TREES (§C190 ② removed organic's 02-mt-output). Until then this block pinned, by name:
+    // 2,375 pre-alt-type ids in 31 organic exercise bundles (§C126 #3), the 2 pre-summary
+    // modules ch03/m00032 + m00033 (§C126 #4), 33 raw-only failures, and the 9 organic ch12
+    // vintage failures m00134..m00142 (§C174/§C175). All of it was VINTAGE drift, none damage.
+    // ▶ What remains is the title's claim, restored: 0 mismatches, raw OR subtracted, over the
+    // whole population. The subtraction's own must-trips (below) still prove it is not a blind
+    // spot, by building fresh buys from organic's ENGLISH, which stays.
+    expect(driftIds).toBe(0);
+    expect(summaryDriftIds).toBe(0);
+    expect(rawNonPass.map((x) => x.f)).toEqual([]);
+    expect(nonPass.map((x) => x.f)).toEqual([]);
+    // ⚠️ A2b IS BLOCKING, so its base rate is a LICENCE: 0/159 now, against Global
+    // Constraint 4's ~5% bar (it was 9/207 = 4.3% while organic's drift stood).
+    expect(nonPass.length / pairs).toBe(0);
   });
 
   it('the vintage view READS the provenance file beside the IS — post-type on disk is never subtracted', () => {
@@ -530,15 +481,24 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     // A review mutant that misnamed the provenance file survived every battery test. Without
     // this, a broken read would subtract every POST-type buy's summaries — and a destroyed
     // summary token would pass A2b green, from the first organic buy onwards.
-    const real = FILES['lifraen-efnafraedi'].find((f) => /\/ch03\/m00032-segments/.test(f));
+    const real = ORG_M00032_IS;
     const en = read(enCounterpart(real));
     const ids = [...en.matchAll(/<!-- SEG:(\S+:table-summary:\S+) -->/g)].map((m) => m[1]);
     expect(ids).toHaveLength(1);
+    // RE-BUILT 2026-11-19 (§C190 ②): the real pre-type IS left the tree. A pre-type IS is a
+    // full buy of every segment EXCEPT the summary (the real one carried 0 `table-summary`
+    // ids at `474647ffb`), so it is built from the English with that one block dropped.
+    const preTypeIs = en
+      .split(/(?=<!-- SEG:)/)
+      .filter((block) => !block.startsWith(`<!-- SEG:${ids[0]} -->`))
+      .join('')
+      .replace(/(<!-- SEG:\S+ -->\n)([^\n]+)/g, '$1ÞÝТ $2');
+    expect(preTypeIs).not.toContain(ids[0]); // control: the summary really is absent
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'c126-4-prov-'));
     try {
       const isPath = path.join(dir, 'm00032-segments.is.md');
       const provPath = path.join(dir, 'm00032-provenance.json');
-      fs.writeFileSync(isPath, read(real));
+      fs.writeFileSync(isPath, preTypeIs);
       const after = new Date(Date.parse(TABLE_SUMMARY_INTRODUCED) + 86_400_000).toISOString();
 
       fs.writeFileSync(provPath, JSON.stringify({ schemaVersion: 2, generatedAt: after }));
@@ -559,7 +519,7 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
       // §C183's shape: a top-up spliced the summary in WITHOUT re-stamping — the IS carries
       // the id under a pre-type (here: absent) stamp. Nothing may be set aside, or A2b would
       // fail in reverse on a healthy pair. Through the composed view, which passes isText.
-      const toppedUp = `${read(real)}<!-- SEG:${ids[0]} -->\nÞÝТ samantekt\n\n`;
+      const toppedUp = `${preTypeIs}<!-- SEG:${ids[0]} -->\nÞÝТ samantekt\n\n`;
       expect(withoutPreSummaryDrift(isPath, en, { isText: toppedUp }).removed).toEqual([]);
       expect(withoutPreTypeDrift(isPath, en, toppedUp).byType.summary).toEqual([]);
     } finally {
@@ -571,7 +531,7 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     // The content predicate the alt view uses would be BLIND here: m00032 carries exactly
     // one summary, so an IS missing it looks identical to a pre-type IS. The vintage key is
     // what separates them — this pins that it does, in both directions.
-    const isPath = FILES['lifraen-efnafraedi'].find((f) => /\/ch03\/m00032-segments/.test(f));
+    const isPath = ORG_M00032_IS; // a path only; the IS is built from the English below
     const en = read(enCounterpart(isPath));
     const ids = [...en.matchAll(/<!-- SEG:(\S+:table-summary:\S+) -->/g)].map((m) => m[1]);
     expect(ids).toHaveLength(1); // the blind-spot shape: ONE summary in the module
@@ -604,7 +564,7 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
     // ⚠️ The predicate's residual blind spot is a bundle whose EVERY alt token is destroyed
     // (the IS would then look pre-type). Every organic bundle carries ≥ 6 alts, so that is
     // six simultaneous destructions in one file, not one.
-    const isPath = FILES['lifraen-efnafraedi'].find((f) => /\/ch01\/exercises-segments/.test(f));
+    const isPath = ORG_CH01_EXERCISES_IS; // a path only; the IS is built from the English below
     const en = read(enCounterpart(isPath));
     const fresh = en.replace(/(<!-- SEG:\S+ -->\n)([^\n]+)/g, '$1ÞÝТ $2'); // every id, alts included
     const altIds = [...en.matchAll(/<!-- SEG:(\S+:alt:\S+) -->/g)].map((m) => m[1]);
@@ -836,7 +796,7 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
         if (en && read(en).includes('{{SEG:')) mustacheFiles++;
       }
     }
-    expect(files).toBe(207);
+    expect(files).toBe(159); // 207 -> 159, §C190 ② (2026-11-19)
     expect(mustacheFiles).toBe(0);
   });
 
@@ -973,7 +933,7 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
           }
         }
       }
-      expect(files).toBe(414);
+      expect(files).toBe(318); // 414 -> 318, §C190 ② (2026-11-19)
       // 60,800 -> 60,849 -> 60,931 is +49 then +82: a re-MT adds ONE figure-`alt` segment per
       // figure, and `figure-run` independently enumerated exactly 49 figures in ch09 and 82 in
       // ch10. The March MT predates alt extraction, so those modules carried 0. A2c's marker
@@ -990,7 +950,7 @@ describe('A2b — every marker-like token actually parses (BLOCKING)', () => {
       // 64,247 -> 63,962 is −285 (G1.12, 2026-11-12): chemistry's re-extract removed the second
       // EN copy of each of 285 duplicated note-paragraph ids; the IS keeps both copies (pure MT
       // is never rewritten), so only the EN side moves. verify-cut.mjs removed exactly 285 blocks.
-      expect(ids).toBe(63962); // L37: the COUNT beside the predicate — an empty walk fails here
+      expect(ids).toBe(46733); // L37: the COUNT beside the predicate — an empty walk fails here (63,962 -> 46,733, §C190 ②, 2026-11-19)
       expect(violations).toBe(0);
     });
 
@@ -1039,7 +999,7 @@ describe('A2c — no spaced `<!-- SEG: ` form (BLOCKING)', () => {
         files++;
       }
     }
-    expect(files).toBe(207);
+    expect(files).toBe(159); // 207 -> 159, §C190 ② (2026-11-19)
     // 30,027 -> 30,076 -> 30,158 is the SAME +49 then +82 A2b's id count moved by — the figure-`alt`
     // segments. Two independent censuses agreeing on the delta is what makes either
     // number worth trusting; if only one had moved, that would be the alarm.
@@ -1048,7 +1008,7 @@ describe('A2c — no spaced `<!-- SEG: ` form (BLOCKING)', () => {
     // chemistry's 83 IS files. The buy's own counts: 188 in the book run, + the m68829
     // control, + the m68862 retry, + m68867 on its third attempt (the API twice returned it
     // with no SEG marker) = 191, the number the dry run planned.
-    expect(markers).toBe(30906);
+    expect(markers).toBe(23509); // 30,906 -> 23,509, §C190 ② (2026-11-19)
   });
 
   it('PLANTED must-trip — and the SILENT DROP is proven by value, not by the verdict', async () => {
@@ -1125,7 +1085,7 @@ describe('A1 — the EN and IS seg-id SETS are equal (ADVISORY)', () => {
     expect(r.examined).toBe(12);
   });
 
-  it('NATURAL must-trip — 4 organic exercises bundles whose MT ALTERED seg-id digits', async () => {
+  it("NATURAL must-trip — 4 organic exercises bundles whose MT ALTERED seg-id digits (planted ids), and 0 hits in today's corpus", async () => {
     // 🔴 THIS FALSIFIES THE PLAN'S RATIONALE FOR A1 BEING ADVISORY, AND THE MECHANISM IS
     // THE POINT: `validateMarkers` (api-translate.js:280) compares
     // `input.match(/<!-- SEG:/g).length === output.match(...).length` — COUNTS. An id
@@ -1158,43 +1118,50 @@ describe('A1 — the EN and IS seg-id SETS are equal (ADVISORY)', () => {
         compared++;
       }
     }
-    expect(compared).toBe(207); // the population this base rate is OF
+    // RE-PINNED 2026-11-19, 207 -> 159: §C190 ② removed organic's 02-mt-output, and with it all
+    // 13 hits this census used to find (the 4 renames below and organic ch12's 9 vintage drifts).
+    expect(compared).toBe(159); // the population this base rate is OF
+    expect(hits.map(([f]) => f)).toEqual([]); // chemistry + micro: 0 of 159
 
-    // 🔴 RESTRUCTURED 2026-09-22 — THE OLD FORM WAS UNSATISFIABLE BY CONSTRUCTION AND HID
-    // A LIVE DEFECT. It asserted `toHaveLength(102)` and then mapped EVERY hit through
-    // `/(ch\d+)\/exercises/`, so the first hit that was not an exercises bundle threw a
-    // TypeError on `null[1]` instead of being reported. Two chemistry `:alt:` hits appeared
-    // in ordinary modules (§C174) and the test could no longer describe its own population.
-    // ▶ **A TEST WHOSE REPORTING PATH CANNOT REPRESENT A NEW MEMBER OF THE SET IT GUARDS
-    // WILL HIDE THAT MEMBER RATHER THAN NAME IT** — a crash reads as a broken test, not as
-    // a discovery. So the hits are PARTITIONED by shape first, and each partition is
-    // asserted on its own terms.
-    const rename = []; // counts equal, ids differ — the MT rewrote digits inside an id
-    const drift = []; // counts unequal — the two sides are of different vintages
-    for (const [f, r] of hits) {
-      const fi = r.findings[0] || {};
-      ((fi.enOnly || []).length === (fi.isOnly || []).length ? rename : drift).push(f);
+    // 🔴 THE NATURAL MUST-TRIP IS NOW PLANTED, BECAUSE ITS ONLY CORPUS EVIDENCE LEFT THE TREE.
+    // The four bundles whose MT rewrote digits inside a seg-id were all organic exercises. Their
+    // IS seg-id lists are kept verbatim (ids only, no text) in
+    // `fixtures/c190-a1-organic-is-seg-ids.json`, taken from `474647ffb` by script, and run
+    // against organic's ENGLISH, which stays in the tree. A1 reads only the two id SETS, and
+    // the verdict and findings were measured identical for the real IS and the id-only one on
+    // all four bundles (2026-11-19) — so this is the same evidence, not a synthetic stand-in.
+    const planted = JSON.parse(
+      fs.readFileSync(
+        path.join(REPO_ROOT, 'tools/__tests__/fixtures/c190-a1-organic-is-seg-ids.json'),
+        'utf8'
+      )
+    ).bundles;
+    const results = {};
+    for (const ch of ['ch06', 'ch12', 'ch26', 'ch29']) {
+      const isPath = path.join(
+        REPO_ROOT,
+        `books/lifraen-efnafraedi/02-mt-output/${ch}/exercises-segments.is.md`
+      );
+      const en = read(enCounterpart(isPath));
+      const isText = planted[ch].map((id) => `<!-- SEG:${id} -->\nx\n`).join('\n');
+      const { en: enText } = withoutPreTypeDrift(isPath, en, isText);
+      results[ch] = await runCheck(A1, { segText: enText, isText });
     }
-    expect(hits).toHaveLength(13);
-
-    // ✅ THE RENAME SET IS BACK TO THE FOUR THIS TEST IS NAMED FOR. It briefly held six:
-    // `efnafraedi-2e/appendices/m68863` and `ch11/m68783` joined it when the MT rewrote a
-    // digit inside a figure-`alt` id, which made inject miss the translation and publish
-    // the ENGLISH alt. Both were repaired on 2026-09-22 (§C174), and `repairSegTags` now
-    // carries an ordinal strategy so the class cannot silently recur.
-    expect(rename.map((f) => f.match(/(ch\d+)\/exercises/)[1])).toEqual([
-      'ch06',
-      'ch12',
-      'ch26',
-      'ch29',
-    ]);
-
-    // The other nine are organic ch12's vintage drift — the same nine A2b's cross-side leg
-    // reports, and they vanish together when that chapter is bought.
-    expect(drift).toHaveLength(9);
-    for (const f of drift) expect(f).toContain('lifraen-efnafraedi/02-mt-output/ch12/');
-
-    const [, first] = hits[0];
+    // Each is a RENAME: one id on each side, counts equal — the MT altered digits in place.
+    expect(
+      Object.fromEntries(
+        Object.entries(results).map(([ch, r]) => [
+          ch,
+          [r.verdict, r.findings[0].enOnly, r.findings[0].isOnly],
+        ])
+      )
+    ).toEqual({
+      ch06: [VERDICT.WARN, ['06-99-OC-VC03:stem:353278-b0'], ['06-99-OC-VC03:stem:353282-b0']],
+      ch12: [VERDICT.WARN, ['12-99-OC-AP33:stem:352255-b0'], ['12-99-OC-AP33:stem:352253-b0']],
+      ch26: [VERDICT.WARN, ['26-99-OC-VC01:stem:359601-b0'], ['26-99-OC-VC01:stem:3601-b0']],
+      ch29: [VERDICT.WARN, ['29-99-OC-MP08:stem:358571-b1'], ['29-99-OC-MP08:stem:358157-b1']],
+    });
+    const first = results.ch06;
     expect(first.verdict).toBe(VERDICT.WARN); // advisory: a finding, never a halt
     // L6, pinned by VALUE: the unit is the UNION of both sides. ch06 is 153 EN and 153 IS
     // seg-ids with one differing on each side, so the union is 154 — a number neither

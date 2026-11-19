@@ -35,14 +35,9 @@
  * this repo's §C115 defect three times over.
  */
 import { describe, it, expect } from 'vitest';
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
 import { planMarkerRepair, planMarkerRestore, sameVintage } from '../repair-invented-markers.js';
 
-const REPO_ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 const SEG = (id, body) => `<!-- SEG:${id} -->\n${body}\n`;
-const read = (p) => fs.readFileSync(path.join(REPO_ROOT, p), 'utf8');
 
 describe('planMarkerRepair — the precondition', () => {
   it('unwraps a surplus marker and keeps the real one', () => {
@@ -264,14 +259,21 @@ describe('planMarkerRestore — putting back a DROPPED marker', () => {
     expect((r.text.match(/\[\[i:/g) || []).length).toBe(4); // matches the source
   });
 
-  it('ch14 exercises is now CLEAN, and a further restore is REFUSED', () => {
-    const en = read('books/lifraen-efnafraedi/02-for-mt/ch14/exercises-segments.en.md');
-    const is = read('books/lifraen-efnafraedi/02-mt-output/ch14/exercises-segments.is.md');
+  // 🔴 PLANTED 2026-11-19 (§C190 ②): this test read the live ch14 file, which left `main`'s
+  // tree with organic's translated files. The repaired segment below is verbatim from
+  // `books/lifraen-efnafraedi/02-mt-output/ch14/exercises-segments.is.md` at `474647ffb`, the
+  // last commit that held it. The whole-file italic count (EN = IS, > 30) is narrowed to this
+  // segment, which is the one the restore was about.
+  const CH14_IS_AFTER =
+    'Tvítengi [[i:enamíns]] (alk[[i:en]] + [[i:amín]]) er mun kjarnsæknara en dæmigert tvítengi alkens. Gerðu ráð fyrir að niturfrumeindin í enamíni sé [[i:sp]][[sup:2]]-blendinguð, teiknaðu svigrúmsmynd af enamíni og útskýrðu hvers vegna tvítengið er rafeindaríkt.';
+
+  it('ch14 (planted, after the repair) is CLEAN, and a further restore is REFUSED', () => {
+    const en = SEG(CH14_SEG, CH14_EN);
+    const is = SEG(CH14_SEG, CH14_IS_AFTER);
     expect(is).toContain('Tvítengi [[i:enamíns]] (alk[[i:en]]'); // the repair, by value
-    const count = (s) => (s.match(/\[\[i:/g) || []).length;
+    const count = (t) => (t.match(/\[\[i:/g) || []).length;
     expect(count(is)).toBe(count(en));
-    // Non-vacuity: the file must still carry italics, or the equality is trivial.
-    expect(count(is)).toBeGreaterThan(30);
+    expect(count(is)).toBe(4); // non-vacuity: the segment still carries its italics
     // And the tool must now decline to add another — the segment is complete.
     const again = planMarkerRestore(en, is, { segId: CH14_SEG, type: 'i', target: 'enamíni' });
     expect(again.ok).toBe(false);
@@ -338,26 +340,66 @@ describe('CORPUS ANCHOR — the two real files, and one of them must be REFUSED'
     expect(PLANTED.reduce((n, f) => n + f.invented.length, 0)).toBe(8);
   });
 
-  it('ch23 exercises is now CLEAN, and the tool is a no-op on it (idempotence on real data)', () => {
-    const en = read('books/lifraen-efnafraedi/02-for-mt/ch23/exercises-segments.en.md');
-    const is = read('books/lifraen-efnafraedi/02-mt-output/ch23/exercises-segments.is.md');
+  // 🔴 PLANTED 2026-11-19 (§C190 ②): the two tests below read live organic files that left
+  // `main`'s tree. Their segments are verbatim from `474647ffb`, the last commit that held them.
+  // The ch23 pair is the SAME two segments as PLANTED above, after the repair, so the
+  // idempotence claim is about exactly the text the repair produced.
+  const PLANTED_AFTER = {
+    '23-07-OC-P12:stem:359727-b0':
+      'Eins og sýnt er á mynd 23.5 er Claisen-efnahvarfið afturkræft. Það er að segja, [[i:β]]-ketóester er hægt að kljúfa með basa í tvö brot. Notaðu sveigðar örvar til að sýna flæði rafeinda og sýndu hvarfganginn sem þessi klofningur verður fyrir.',
+    '23-10-OC-P17:stimulus:b0':
+      'Hvaða myndefni myndir þú fá úr Michael-efnahvarfi með basa sem hvata af 3-búten-2-óni með hvorum eftirfarandi kjarnsæknum gjöfum?',
+  };
+
+  it('ch23 (planted, after the repair) is CLEAN, and the tool is a no-op on it (idempotence)', () => {
+    const en = PLANTED.map((f) => SEG(f.segId, f.en)).join('\n');
+    const is = PLANTED.map((f) => SEG(f.segId, PLANTED_AFTER[f.segId])).join('\n');
     const plan = planMarkerRepair(en, is);
     expect(plan.perType.i.ok).toBe(true);
     expect(plan.removals).toHaveLength(0);
     expect(plan.text).toBe(is); // byte-identical
-    // Non-vacuity: the file must still CARRY italics, or "0 removals" is trivial.
-    expect((is.match(/\[\[i:/g) || []).length).toBe(19);
-    for (const real of ['[[i:β]]', '[[i:α]]']) expect(is).toContain(real);
+    // Non-vacuity: the text must still CARRY the real italic, or "0 removals" is trivial.
+    expect(is).toContain('[[i:β]]');
+    // …and it really is the repair's output: every invented marker is gone, its word kept.
+    for (const f of PLANTED) {
+      for (const w of f.invented) {
+        expect(is).not.toContain(`[[i:${w}]]`);
+        expect(is).toContain(w);
+      }
+    }
   });
 
-  it('ch03 m00038: [[b:]] is NOT separable and is REFUSED — the control', () => {
-    // Without this, a tool that repaired everything would satisfy the case above.
-    // All 21 real bolds in this module are translated prose, so none survives
-    // verbatim and nothing distinguishes them from the 29 invented ones.
-    const en = read('books/lifraen-efnafraedi/02-for-mt/ch03/m00038-segments.en.md');
-    const is = read('books/lifraen-efnafraedi/02-mt-output/ch03/m00038-segments.is.md');
+  it('ch03 m00038 (planted): [[b:]] is NOT separable and is REFUSED — the control', () => {
+    // Without this, a tool that repaired everything would satisfy the case above. Every real
+    // bold in this module is translated prose, so none survives verbatim and nothing tells a
+    // real one from an invented one. Three headings reproduce the module's verdict exactly
+    // (measured 2026-11-19: the whole file and these three both give `ok: false`,
+    // "N of N source marker(s) not present in the output").
+    // ✏️ The earlier comment here counted "21 real bolds … 29 invented"; at `474647ffb` the
+    // file held 21 on each side. The refusal never depended on a surplus count.
+    const ids = {
+      'm00038:para:para-00029': [
+        '[[b:[[span:Visualizing Chemistry|red-text]]]]',
+        '[[b:[[span:Sjónræn efnafræði|red-text]]]]',
+      ],
+      'm00038:para:para-00035': [
+        '[[b:[[span:Isomers|red-text]]]]',
+        '[[b:[[span:Ísómerur|red-text]]]]',
+      ],
+      'm00038:para:para-00052': [
+        '[[b:[[span:Conformations|red-text]]]]',
+        '[[b:[[span:Afstöður|red-text]]]]',
+      ],
+    };
+    const en = Object.entries(ids)
+      .map(([id, [e]]) => SEG(id, e))
+      .join('\n');
+    const is = Object.entries(ids)
+      .map(([id, [, i]]) => SEG(id, i))
+      .join('\n');
     const plan = planMarkerRepair(en, is);
     expect(plan.perType.b.ok).toBe(false);
+    expect(plan.perType.b.kept).toBe(0);
     expect(plan.text).toBe(is); // byte-identical: the b surplus is left alone
   });
 });

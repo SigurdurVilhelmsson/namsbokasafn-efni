@@ -82,7 +82,11 @@ describe('the premise: 180 of 220 sidecars now carry a run record — chemistry 
   // ⚠️ A PREMISE PIN, NOT A REGRESSION PIN. It is EXPECTED to go red the moment the
   // clean-break run writes its first sidecar. When it does, that is the corpus moving
   // — update the numbers in the commit that observes it, do not delete the test.
-  it('220 sidecars across the two kept books, 220 with a tool, 180 with a run record', () => {
+  // RE-PINNED 2026-11-19 (§C190 ②): organic's 02-mt-output left `main`'s tree, so its 50
+  // sidecars went with it and the corpus is chemistry's 170. The walk now tolerates an ABSENT
+  // directory, which is what a clean clone has for organic; a box may still hold gitignored
+  // backups there, so the directory existing proves nothing about the tracked tree.
+  it('170 sidecars across the two kept books, 170 with a tool, 170 with a run record', () => {
     const found = [];
     const walk = (p) => {
       for (const e of fs.readdirSync(p, { withFileTypes: true })) {
@@ -94,13 +98,14 @@ describe('the premise: 180 of 220 sidecars now carry a run record — chemistry 
     const byBook = {};
     for (const b of ['efnafraedi-2e', 'lifraen-efnafraedi']) {
       const before = found.length;
-      walk(path.join(ROOT, 'books', b, '02-mt-output'));
+      const dir = path.join(ROOT, 'books', b, '02-mt-output');
+      if (fs.existsSync(dir)) walk(dir);
       byBook[b] = found.length - before;
     }
     // The SPLIT, not just the total: a glob that swept in a third book would otherwise
     // still satisfy a bare `toBe(220)` by coincidence.
-    expect(byBook).toEqual({ 'efnafraedi-2e': 170, 'lifraen-efnafraedi': 50 });
-    expect(found).toHaveLength(220);
+    expect(byBook).toEqual({ 'efnafraedi-2e': 170, 'lifraen-efnafraedi': 0 });
+    expect(found).toHaveLength(170);
 
     // 🔴 STATE THE POPULATION IN THE SAME BREATH AS THE NUMBER, because this file's 208
     // is NOT the population every other number in this suite family uses. The sibling
@@ -111,18 +116,18 @@ describe('the premise: 180 of 220 sidecars now carry a run record — chemistry 
     // is comparing populations, which is this repo's commonest error. Asserted rather
     // than merely commented, so the reconciliation stays checkable.
     const metadata = found.filter((f) => path.basename(f).startsWith('chapter-metadata'));
-    expect(metadata).toHaveLength(23); // 21 chemistry (ch01..ch21) + 2 organic; appendices and ch00 have none
+    expect(metadata).toHaveLength(21); // chemistry ch01..ch21; appendices and ch00 have none (organic's 2 went with §C190 ②)
     // ⚠️ UNCHANGED AT 197 WHILE THE TOTAL ROSE, AND THAT ASYMMETRY IS THE EVIDENCE, NOT AN
     // ODDITY: buying ch09 and ch10 (2026-09-20) OVERWROTE the module sidecars they already had
     // and ADDED the one `chapter-metadata` sidecar each lacked. A buy that had also added modules
     // would have moved this line too, so a reader who sees only the total move can check
     // here which of the two happened.
-    expect(found.length - metadata.length).toBe(197); // 149 chemistry + 48 organic modules
+    expect(found.length - metadata.length).toBe(149); // chemistry's 149 modules (organic's 48 went with §C190 ②)
 
     const parsed = found.map((f) => JSON.parse(fs.readFileSync(f, 'utf8')));
     // The positive control. Without it, "0 with a run record" is what a broken walk
     // returns — an absence you manufactured is not an answer.
-    expect(parsed.filter((p) => p.tool !== undefined)).toHaveLength(220);
+    expect(parsed.filter((p) => p.tool !== undefined)).toHaveLength(170);
     // ⚠️ 180 AND 180 COINCIDE BY CIRCUMSTANCE, NOT BY DESIGN — only `api-translate` has
     // written v2 to the kept books; `docx-import` and `backfill-provenance` write v2
     // WITHOUT a run (see the docstring below). Keep these as TWO assertions.
@@ -139,8 +144,9 @@ describe('the premise: 180 of 220 sidecars now carry a run record — chemistry 
     // 100%, `schemaVersion === 2` can no longer distinguish a healthy corpus from a walk
     // that returned everything. What still separates them is the `found.length - metadata`
     // assertion above, which is keyed to a DIFFERENT population and did NOT move.
-    expect(parsed.filter((p) => p.schemaVersion === 2)).toHaveLength(180);
-    expect(parsed.filter((p) => p.run !== undefined)).toHaveLength(180);
+    // RE-PINNED 2026-11-19, 180 -> 170: organic's 10 (ch03) went with §C190 ②.
+    expect(parsed.filter((p) => p.schemaVersion === 2)).toHaveLength(170);
+    expect(parsed.filter((p) => p.run !== undefined)).toHaveLength(170);
   });
 });
 

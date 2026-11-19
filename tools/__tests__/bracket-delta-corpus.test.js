@@ -189,7 +189,9 @@ describe('the instrument still FIRES on the live corpus (non-vacuity, not accept
     }
     // The POPULATION is the control: a run that examined nothing would report
     // "0 findings" and look identical to a clean corpus.
-    expect(pairs).toBeGreaterThan(150);
+    // A FLOOR, not a pin, by this leg's design. RE-SET 2026-11-19, 150 -> 140: §C190 ② removed
+    // organic's 02-mt-output, so the walk is chemistry's 149 pairs (it was 197).
+    expect(pairs).toBeGreaterThan(140);
     expect(withFinding).toBeGreaterThan(0);
   });
 });

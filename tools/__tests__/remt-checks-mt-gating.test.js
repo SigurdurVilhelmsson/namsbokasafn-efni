@@ -76,10 +76,11 @@ const frozenPair = (m) => ({
 describe('population control — an empty walk must not pass anything below', () => {
   it('walks the measured run-target file counts', () => {
     expect(mtOutputSegmentFiles('efnafraedi-2e')).toHaveLength(149);
-    expect(mtOutputSegmentFiles('lifraen-efnafraedi')).toHaveLength(48);
+    // RE-PINNED 2026-11-19, 48 -> 0: §C190 ② removed organic's 02-mt-output.
+    expect(mtOutputSegmentFiles('lifraen-efnafraedi')).toHaveLength(0);
   });
 
-  it('🔴 pins that only 17 organic modules have BOTH sides — organic is 342/342 EXTRACTED', () => {
+  it('🔴 pins that NO organic module has both sides since §C190 ② — organic is 342/342 EXTRACTED', () => {
     // Raised as a lead question on 2026-08-26 ("have we downloaded the complete organic
     // source?"). The answer THEN was that the DOWNLOAD was complete and the EXTRACTION was not,
     // and the second is the more dangerous of the two because it is invisible: a
@@ -114,7 +115,9 @@ describe('population control — an empty walk must not pass anything below', ()
         (p2) => enCounterpart(p2) && path.basename(p2) !== 'exercises-segments.is.md'
       ).length;
     expect(enModules('efnafraedi-2e')).toBe(149); // 100% of source
-    expect(enModules('lifraen-efnafraedi')).toBe(17); // 17 of 342 modules have committed MT
+    // RE-PINNED 2026-11-19, 17 -> 0: §C190 ② removed organic's committed MT; its source and its
+    // extraction (both asserted here) stay, which is what keeps this denominator honest.
+    expect(enModules('lifraen-efnafraedi')).toBe(0);
 
     // ▶ THE DENOMINATOR THE TITLE NAMES, ASSERTED RATHER THAN DESCRIBED. NOT a duplicate of
     // srcCount above: srcCount walks `01-source`, modulesWithSegments walks `02-for-mt`, so
@@ -264,7 +267,7 @@ describe('A3 — per-segment bracket-marker delta', () => {
         if (f.length) anyMods++;
       }
     }
-    expect(pairs).toBe(197); // control: an empty walk cannot pass
+    expect(pairs).toBe(149); // control: an empty walk cannot pass (197 -> 149, §C190 ②)
     // 🔴 RE-BASELINED 2026-09-02 — AND THESE NO LONGER MEASURE WHAT THEIR OLD COMMENTS
     // SAID. They used to be MT-side marker destruction. §C82 ③ re-extracted 159 of the 197
     // EN files while the 2026-09-02 run re-translated only 16 in-population IS files, so
@@ -318,15 +321,23 @@ describe('A3 — per-segment bracket-marker delta', () => {
     // IN THE SAME CHANGE, so its 83 summary modules never appear unpaired here. (While
     // m68867's summary was still unbought, after two marker-less API responses, this read
     // 43 / 54, with the subtracted 17 / 13 / 24 unmoved.)
-    expect(rawUnpairedMods).toBe(42);
-    expect(rawAnyMods).toBe(53);
-    expect(deltaMods).toBe(17); //   8.6% of 197
-    expect(unpairedMods).toBe(13); //   6.6% — EN segments with no IS counterpart
-    expect(anyMods).toBe(24); //  12.2% — what A3 would halt on, were it blocking
+    // ✅ RE-PINNED 2026-11-19 — §C190 ② REMOVED ORGANIC'S 02-mt-output, AND WITH IT EVERY
+    // VINTAGE MODULE ABOVE: the 42 raw-unpaired (organic's exercise bundles, ch03's two
+    // summaries, ch12's nine) and the 13 subtracted-unpaired (organic ch12) were all organic.
+    // ▶ Chemistry is ONE VINTAGE: 0 unpaired, raw or subtracted. So the three counts have
+    // regained the meaning the 2026-09-02 note said they would — marker deltas on
+    // chemistry's own MT, ten modules (m68710 m68791 m68801 m68811 m68830 m68843 m68846
+    // m68847 m68849 and appendices m68863), measured 2026-11-19.
+    expect(rawUnpairedMods).toBe(0);
+    expect(rawAnyMods).toBe(10);
+    expect(deltaMods).toBe(10); //   6.7% of 149
+    expect(unpairedMods).toBe(0); // EN segments with no IS counterpart: none
+    expect(anyMods).toBe(10); //   6.7% — what A3 would halt on, were it blocking
     // Global Constraints rule 4 needs ≤ ~5%. ⚠️ THE MARGIN HAS NARROWED BY AN ORDER OF
     // MAGNITUDE — 79.2% was "obviously non-blocking", 12.2% is merely over the bar — so the
     // justification for `A3.blocking === false` is now a measurement to re-check each buy,
-    // not a settled fact. Buying organic ch12 would take it close to the bar.
+    // not a settled fact. ⚠️ 2026-11-19: on chemistry alone it is 10/149 = 6.7%, still over
+    // the bar, so `blocking: false` still holds — by 1.7 points. Re-check after each buy.
     expect(anyMods / pairs).toBeGreaterThan(0.05);
   });
 });
@@ -515,7 +526,10 @@ describe('A5 — untranslated-EN residue, two stages', () => {
     expect(r.findings.filter((f) => f.kind === 'en-residue')).toHaveLength(69);
   });
 
-  it('premise pin — 31 of the 197 pairs are exercises bundles A5 must skip', () => {
+  // RE-PINNED 2026-11-19 (§C190 ②): every one of the 31 skipped bundles was organic's. Chemistry
+  // has no exercises bundle in 02-mt-output, so the guard skips 0 of 149 in today's corpus;
+  // the guard itself is pinned by its own unit tests, not by this population fact.
+  it('premise pin — 0 of the 149 pairs are exercises bundles A5 must skip', () => {
     // A load-bearing population fact, not a curiosity: the guard removes 15.7% of the
     // corpus from A5's judgement, and ALL of it is organic — which has only 17
     // non-exercises modules carrying segments at all.
@@ -528,13 +542,13 @@ describe('A5 — untranslated-EN residue, two stages', () => {
         if (path.basename(isPath) === 'exercises-segments.is.md') skipped++;
       }
     }
-    expect(pairs).toBe(197); // control
-    expect(skipped).toBe(31);
+    expect(pairs).toBe(149); // control
+    expect(skipped).toBe(0);
   });
 
   // ⚠️ THIS PIN SHRINKS WITH EVERY CHAPTER BOUGHT, and at 0 it is vacuous — the planted
   // fixtures in this file become stage 2's only evidence. Re-measure, do not delete.
-  it('premise pin — stage 2 finds 5 long residues in 3 run-target modules', () => {
+  it('premise pin — stage 2 finds 7 long residues in 3 run-target modules', () => {
     const hits = [];
     let pairs = 0;
     for (const b of BOOKS) {
@@ -553,7 +567,7 @@ describe('A5 — untranslated-EN residue, two stages', () => {
         for (const f of r.findings.filter((x) => x.kind === 'long-en-residue')) hits.push({ m, f });
       }
     }
-    expect(pairs).toBe(197); // control
+    expect(pairs).toBe(149); // control (197 -> 149, §C190 ②)
     // ⚠️ 7 → 5 → 11, RE-MEASURED 2026-09-22. It ROSE, and the rise is accounted for rather
     // than absorbed: ch21's buy logged its residue instead of clearing it (§C175's register
     // entry records 7 segments left English in 2 modules after two paid attempts), so
@@ -564,7 +578,9 @@ describe('A5 — untranslated-EN residue, two stages', () => {
     // ▶ A RISING residue count is not automatically a regression — these were BOUGHT,
     // MEASURED and RECORDED as incomplete, which is the loop working. What would be a
     // regression is a module appearing here that nobody logged.
-    expect(hits).toHaveLength(11);
+    // RE-PINNED 2026-11-19, 11 -> 7: §C190 ② removed organic's MT, and with it m00037 (1) and
+    // m00135 (3). The three left are chemistry's, each bought, measured and recorded.
+    expect(hits).toHaveLength(7);
     // 🔴 RE-PINNED 2026-09-05 — m00037 RE-ENTERED this set (it had LEFT it at eeac7731,
     // when an earlier re-translation made it Icelandic). This is the §C121 re-MT's one
     // paid-for casualty, NOT a regression in the check: `m00037:para:para-00003` came back
@@ -586,13 +602,7 @@ describe('A5 — untranslated-EN residue, two stages', () => {
     // ▶ **THE SET IS THE ASSERTION, NOT THE COUNT**, and that is the point: every module
     // here is one somebody bought, measured and wrote down. A module appearing in this set
     // that is NOT in that record is the regression this line exists to catch.
-    expect([...new Set(hits.map((h) => h.m))].sort()).toEqual([
-      'm00037',
-      'm00135',
-      'm68744',
-      'm68852',
-      'm68856',
-    ]);
+    expect([...new Set(hits.map((h) => h.m))].sort()).toEqual(['m68744', 'm68852', 'm68856']);
   });
 });
 
