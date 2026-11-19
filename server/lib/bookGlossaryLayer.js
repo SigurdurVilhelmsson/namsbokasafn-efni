@@ -9,6 +9,8 @@
  * ⚠️ houseStyleTerms.js must NOT require this module: conceptResolver already requires
  * houseStyleTerms, and this module requires conceptResolver (require cycle).
  */
+const fs = require('fs');
+const path = require('path');
 const { matchKey } = require('./conceptResolver');
 const { BOOK_LAYER_SOURCE } = require('./houseStyleTerms');
 
@@ -222,4 +224,172 @@ function addEntry(db, a) {
   })();
 }
 
-module.exports = { addExclusion, addEntry };
+const RECORD_FILE = 'book-glossary.json';
+
+const parseJson = (s) => {
+  if (s === null || s === undefined) return null;
+  try {
+    return JSON.parse(s);
+  } catch {
+    return s;
+  }
+};
+
+/**
+ * The layer's committed record for one book (spec §5.4), or null when the book has no row in any
+ * of the three tables. Cumulative: the whole history every time, so a manual export between two
+ * cron runs cannot lose rows. An excluded row's Icelandic is NOT carried (licence note, §5.4).
+ *
+ * `dangling` (controller ruling R11): single-concept exclusions whose concept is missing, merged
+ * or no longer carries the English; entries whose concept is missing or merged.
+ *
+ * @param {object} db
+ * @param {string} bookSlug
+ * @returns {object|null}
+ */
+function buildBookGlossaryRecord(db, bookSlug) {
+  const book = db.prepare('SELECT id FROM registered_books WHERE slug = ?').get(bookSlug);
+  if (!book) return null;
+  const bookId = book.id;
+  const ex = db
+    .prepare(
+      'SELECT * FROM book_glossary_exclusion WHERE book_id = ? ORDER BY match_key, concept_id'
+    )
+    .all(bookId);
+  const en = db.prepare('SELECT * FROM book_glossary_entry WHERE book_id = ?').all(bookId);
+  const hist = db
+    .prepare('SELECT * FROM book_glossary_change WHERE book_id = ? ORDER BY id')
+    .all(bookId);
+  if (ex.length === 0 && en.length === 0 && hist.length === 0) return null;
+
+  const conceptRow = db.prepare('SELECT domain, merged_into FROM concept WHERE id = ?');
+  const dangling = [];
+  for (const e of ex) {
+    if (e.concept_id <= 0) continue;
+    const c = conceptRow.get(e.concept_id);
+    let reason = null;
+    if (!c) reason = 'missing';
+    else if (c.merged_into !== null) reason = 'merged';
+    else if (!conceptCarries(db, e.concept_id, e.english)) reason = 'no-english';
+    if (reason)
+      dangling.push({ kind: 'exclusion', english: e.english, conceptId: e.concept_id, reason });
+  }
+
+  const entries = en.map((e) => {
+    const c = conceptRow.get(e.concept_id);
+    const terms = db
+      .prepare('SELECT lang, text FROM concept_term WHERE concept_id = ? ORDER BY rank, id')
+      .all(e.concept_id);
+    const english = terms.filter((t) => t.lang === 'en').map((t) => t.text);
+    const is = terms.find((t) => t.lang === 'is');
+    if (!c || c.merged_into !== null) {
+      dangling.push({
+        kind: 'entry',
+        english: english[0] ?? '',
+        conceptId: e.concept_id,
+        reason: !c ? 'missing' : 'merged',
+      });
+    }
+    return {
+      conceptId: e.concept_id,
+      english,
+      icelandic: is ? is.text : null,
+      domain: c ? c.domain : null,
+      reason: e.reason,
+      source: e.source,
+      createdBy: e.created_by,
+      createdAt: e.created_at,
+      updatedBy: e.updated_by,
+      updatedAt: e.updated_at,
+    };
+  });
+  entries.sort((a, b) =>
+    (a.english[0] ?? '') < (b.english[0] ?? '')
+      ? -1
+      : (a.english[0] ?? '') > (b.english[0] ?? '')
+        ? 1
+        : a.conceptId - b.conceptId
+  );
+
+  return {
+    schema: 'book-glossary/1',
+    book: bookSlug,
+    generated: new Date().toISOString(),
+    exclusions: ex.map((e) => ({
+      english: e.english,
+      conceptId: e.concept_id,
+      idordabankiId: e.idordabanki_id,
+      reason: e.reason,
+      source: e.source,
+      createdBy: e.created_by,
+      createdAt: e.created_at,
+    })),
+    entries,
+    history: hist.map((h) => ({
+      id: h.id,
+      at: h.at,
+      by: h.by,
+      action: h.action,
+      english: h.english,
+      before: parseJson(h.before_json),
+      after: parseJson(h.after_json),
+      reason: h.reason,
+      source: h.source,
+    })),
+    dangling,
+  };
+}
+
+/**
+ * Write outDir/book-glossary.json when its content, ignoring `generated`, differs from the file
+ * on disk. Atomic (.tmp + rename).
+ *
+ * @param {string} outDir
+ * @param {object} record
+ * @returns {'written'|'unchanged'}
+ */
+function writeBookGlossaryRecord(outDir, record) {
+  const file = path.join(outDir, RECORD_FILE);
+  try {
+    const prev = JSON.parse(fs.readFileSync(file, 'utf8'));
+    if (
+      JSON.stringify({ ...prev, generated: null }) ===
+      JSON.stringify({ ...record, generated: null })
+    )
+      return 'unchanged';
+  } catch {
+    // absent or unreadable: write it
+  }
+  fs.mkdirSync(outDir, { recursive: true });
+  const tmp = `${file}.tmp`;
+  fs.writeFileSync(tmp, JSON.stringify(record, null, 2) + '\n', 'utf8');
+  fs.renameSync(tmp, file);
+  return 'written';
+}
+
+/**
+ * The `recordFn` runGlossaryExport injects. The read-only open is LAZY, as in
+ * createResolvedExportFn: a missing DB must surface inside the per-book try/catch.
+ *
+ * @param {string} [dbPath]
+ * @returns {(bookSlug: string) => object|null}
+ */
+function createBookGlossaryRecordFn(dbPath) {
+  let db = null;
+  return (slug) => {
+    if (!db) {
+      const Database = require('better-sqlite3');
+      const resolveDbPath = require('./dbPath');
+      db = new Database(dbPath || resolveDbPath(), { readonly: true });
+    }
+    return buildBookGlossaryRecord(db, slug);
+  };
+}
+
+module.exports = {
+  addExclusion,
+  addEntry,
+  buildBookGlossaryRecord,
+  writeBookGlossaryRecord,
+  createBookGlossaryRecordFn,
+};

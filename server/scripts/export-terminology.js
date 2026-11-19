@@ -168,6 +168,7 @@ const {
   producerVerdict,
 } = require('../lib/glossaryExportDecision');
 const { createResolvedExportFn } = require('../lib/resolvedGlossary');
+const { createBookGlossaryRecordFn, writeBookGlossaryRecord } = require('../lib/bookGlossaryLayer');
 
 const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
@@ -523,6 +524,7 @@ function runGlossaryExport({
   booksDir = BOOKS_DIR,
   projectRoot = PROJECT_ROOT,
   exportFn = createResolvedExportFn(),
+  recordFn = createBookGlossaryRecordFn(),
   subjectFn = terminologyService.getBookSubject,
   book = null,
   force = false,
@@ -578,6 +580,9 @@ function runGlossaryExport({
   // ok=false across the run that wrote and pushed reader-visible content,
   // and why nobody learned the first prod export had happened.
   const outcomes = {};
+  // c19 (spec §5.4): per-book result of the book glossary record, kept apart from `outcomes` so a
+  // record failure can never change a glossary outcome or the exit code.
+  const bookGlossaryRecords = {};
   let errors = 0;
   // `extra` is `{}` at the two call sites reached BEFORE `next` exists
   // (subject resolution, exportFn itself throwing) — `integrityField` is not
@@ -593,6 +598,20 @@ function runGlossaryExport({
   };
 
   for (const b of books) {
+    // c19: the book glossary layer's committed record. FIRST in the loop, so a refused, unchanged
+    // or errored glossary-unified.json still gets its record. Never touches `outcomes`/`errors`.
+    if (!dryRun) {
+      try {
+        const record = recordFn(b);
+        bookGlossaryRecords[b] = record
+          ? writeBookGlossaryRecord(path.join(booksDir, b, 'glossary'), record)
+          : 'none';
+      } catch (err) {
+        logError(`${b}: book glossary record failed — ${err.message}`);
+        bookGlossaryRecords[b] = `error: ${err.message}`;
+      }
+    }
+
     // ⚠️ CORRECTED (Task 5 review, Important 3): this comment used to justify
     // the gate entirely in terms of the RETIRED builder — "a book with no
     // book_subject_mapping row makes exportBookGlossary's subject filter a
@@ -947,6 +966,7 @@ function runGlossaryExport({
     writeStatus(projectRoot, {
       ran: new Date(nowMs).toISOString(),
       errors,
+      bookGlossaryRecords,
       books: withSince(outcomes, readPreviousBookOutcomes(projectRoot), nowMs),
     });
   }
