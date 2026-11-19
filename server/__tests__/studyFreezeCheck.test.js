@@ -96,6 +96,7 @@ describe('check with a manifest', () => {
     unlinkSync(mtLockPathFor(mtPath(UNITS[1])));
     expect(study.main(['check'], io)).toBe(1);
     expect(text()).toMatch(/FAIL[\s\S]*markers absent: 1: ch01\/m96002/);
+    expect(text()).not.toContain('re-cut route');
   });
 
   it('FAIL for a foreign marker; its body is never printed (T5)', () => {
@@ -114,6 +115,10 @@ describe('check with a manifest', () => {
     expect(study.main(['check'], io)).toBe(1);
     expect(text()).toContain('input changed: 1 unit(s): ch01/m96002');
     expect(text()).not.toContain('served text changed');
+    expect(text()).toContain('re-cut route');
+    expect(text()).toContain("[USER]'s decision (spec §6.6)");
+    expect(text()).toContain(`--supersedes ${TAG}`);
+    expect(text()).toContain('otherwise fix or revert the change that moved the hash');
   });
 
   it('FAIL input changed: an English file changed', () => {
@@ -138,7 +143,10 @@ describe('check with a manifest', () => {
     expect(text()).toContain(
       `served text changed, inputs unchanged: 1 segment(s): ch01/m96002#${altered.segment_id}#0`
     );
+    expect(text()).toContain('re-cut route');
+    expect(text()).toContain("[USER]'s decision (spec §6.6)");
     expect(text()).toContain(`--supersedes ${TAG}`);
+    expect(text()).toContain('otherwise fix or revert the change that moved the hash');
     expect(text()).not.toContain('input changed');
   });
 

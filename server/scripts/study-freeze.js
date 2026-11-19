@@ -730,10 +730,14 @@ function runCheck(args, io) {
     }
     if (r.servedChanged.length > 0) {
       const keys = r.servedChanged.map((s) => `${s.unit}#${s.segmentId}#${s.occurrence}`);
+      bad.push(`served text changed, inputs unchanged: ${keys.length} segment(s): ${listed(keys)}`);
+    }
+    if (r.inputChanged.length > 0 || r.servedChanged.length > 0) {
+      const current = manifest.header ? manifest.header.tag : path.basename(manifest.dir);
       bad.push(
-        `served text changed, inputs unchanged: ${keys.length} segment(s): ${listed(keys)}`,
-        'loader code moved a hash; the remedy is a re-cut: manifest --write --tag <new tag> ' +
-          `--supersedes ${manifest.header ? manifest.header.tag : path.basename(manifest.dir)} (spec §6.6)`
+        "re-cut route: if the change is deliberate, record it with a re-cut, which is [USER]'s decision " +
+          `(spec §6.6): manifest --write --tag freeze-${book}-<YYYY-MM-DD> --supersedes ${current}`,
+        'otherwise fix or revert the change that moved the hash'
       );
     }
     if (r.movedToFaithful.length > 0) {
