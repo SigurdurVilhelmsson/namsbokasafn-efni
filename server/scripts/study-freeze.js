@@ -152,28 +152,36 @@ function writeMarkers(plan) {
  * matches a body, and one chemistry commit's body says "NO HAND REPAIR WAS NEEDED", so the
  * subject is filtered after the grep. Oldest first.
  *
- * @param {{book: string}} args
+ * @param {{book: string, repoRoot?: string}} args `repoRoot` (default: this repository) is git's
+ *   cwd and the base of the book-relative pathspecs
  * @returns {{baseCommit: string, layer1LastCommit: string,
  *   handRepairs: Array<{commit: string, subject: string}>, shallow: boolean, dirtyPaths: string[]}}
  */
-function gitFacts({ book }) {
+function gitFacts({ book, repoRoot = REPO_ROOT }) {
   const git = (...args) =>
     execFileSync('git', args, {
-      cwd: REPO_ROOT,
+      cwd: repoRoot,
       encoding: 'utf8',
       stdio: ['ignore', 'pipe', 'pipe'],
       maxBuffer: 64 * 1024 * 1024,
     }).trimEnd(); // trimEnd, never trim: a porcelain line starts with a meaningful space
   const lines = (s) => (s === '' ? [] : s.split('\n'));
-  const rel = (dir) =>
-    path
-      .relative(REPO_ROOT, path.join(bookDir(book), dir))
-      .split(path.sep)
-      .join('/');
+  // Pathspecs derive from `repoRoot`, never from segmentParser.BOOKS_DIR, so a test repository
+  // is read as itself; in production repoRoot is REPO_ROOT and the result is the same.
+  const rel = (dir) => `books/${book}/${dir}`;
   const layer1 = rel('02-mt-output');
   return {
     baseCommit: git('rev-parse', 'HEAD'),
-    layer1LastCommit: git('log', '-1', '--format=%H', '--', layer1),
+    // Layer 1's last commit is the vintage of the MT TEXT: the freeze markers (`*.locked`, which
+    // live in 02-mt-output too and carry no text) are excluded, or the marker commit would be it.
+    layer1LastCommit: git(
+      'log',
+      '-1',
+      '--format=%H',
+      '--',
+      layer1,
+      `:(exclude,glob)${layer1}/**/*.locked`
+    ),
     handRepairs: lines(
       git('log', '--reverse', '--format=%H%x09%s', '--grep=HAND REPAIR', '--', layer1)
     )
