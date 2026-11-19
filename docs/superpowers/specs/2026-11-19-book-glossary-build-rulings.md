@@ -158,6 +158,9 @@ guard: `70a1d1b67` and its fix `f7609ff70` became `7be00f18c` (the fix's tree, t
 `6442aa750` became `29c462b81`; `57f1b1820` became `d07406e65`. The rebuilt head's tree equals `57f1b1820`'s,
 and the search above prints 0 over the range. The four replaced commits were never pushed: they exist only in
 the local reflog, so their hashes do not resolve on the remote.
+**Amended (2026-11-19, R23).** A second rebuild, for [USER]'s decision on the input's comments, gave the
+three commits named above new hashes: `943666c38` (the input), `2a6c05bbe` and `52d733dcb` (the loader). The
+search above still prints 0 over the range.
 
 ## R17 — the dry run opens a WAL database through a patched in-memory image
 
@@ -227,3 +230,20 @@ be done; the review's fix list was small.
   takes over, which becomes chemistry's exported winner after the load in any case.
 **Why.** Both are [USER]'s calls: a deviation from the approved design, and public prose in the committed input.
 **Cost if wrong.** A later edit.
+**Decided ([USER], 2026-11-19).** `dangling` in `book-glossary.json` stays the home for a missing excluded
+concept. The ruling comments stay as written, except that the phrase attributing a ruling to the assistant is
+removed from the committed input (R23). The two rulings that name the row taking over stay as written.
+
+## R23 — the attribution phrase is removed from the committed input, in every commit
+
+**Ruling.** [USER] decided on 2026-11-19 that the committed input keeps the ruling comments as written, but
+without the phrase attributing a ruling to the assistant. The join tool removes it when it writes a comment
+(`publicComment`, `tools/ai-review/prescreen-book-layer-input.js`), so a re-run reproduces the file. A test pins
+the committed file, and a fixture pins the tool. The regenerated file differs from the previous one in exactly
+those ten comments; every other field, the counts and the three input hashes are unchanged. Because the branch
+was not yet pushed, the eight commits from the input onwards were rebuilt with `git commit-tree`, substituting
+the tool, its test, the input and this file's corrected line in each tree, and the ref was moved with an
+old-value guard. No commit on the branch now carries the phrase in the input; it remains only as the pattern
+the tool removes and in a synthetic test fixture.
+**Why.** The input is public, and [USER] asked that the phrase not be published with the rulings.
+**Cost if wrong.** None: the phrase carried no ruling content.
