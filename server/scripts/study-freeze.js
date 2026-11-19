@@ -3,7 +3,11 @@
  * Spec: docs/superpowers/specs/2026-11-19-g17-freeze-and-mt-lock-design.md (§6.3, §6.4, §6.6,
  * anti-goals §4).
  *
- * Run it as a FILE (`node server/scripts/study-freeze.js <command> ...`), never piped.
+ * Run it as a FILE (`node server/scripts/study-freeze.js <command> ...`), from any directory. A
+ * piped run (`node - <command> < study-freeze.js`) works with server/scripts/ as the working
+ * directory: Node resolves a stdin script's relative requires from the working directory, so from
+ * the repository root it stops at the first require (MODULE_NOT_FOUND) and runs nothing. Both were
+ * run once with `check` on 2026-11-19.
  *
  * Subcommands:
  *   markers [--write]   write the content-free freeze marker to every study unit (dry run without
@@ -17,16 +21,19 @@
  *                       counts, the sha256 segments.jsonl would have and every refusal. --write
  *                       writes books/<book>/freeze/<tag>/{segments.jsonl,freeze.json} and refuses,
  *                       writing nothing, on any refusal (not-frozen, duplicated-id, no-layer,
- *                       shallow-clone, dirty-input; an existing tag directory; a --supersedes
- *                       that is not the current manifest; a current manifest the new one does
- *                       not supersede).
+ *                       shallow-clone, dirty-input; bad-input, a revision record, layer-1s file,
+ *                       glossary or freeze.json that is not valid JSON, named by path only; an
+ *                       existing tag directory; a --supersedes that is not the current manifest;
+ *                       a current manifest the new one does not supersede).
  *   check [--manifest <dir>]
  *                       read-only: every unit's marker is the freeze marker, and the tree still
  *                       matches the current manifest (or --manifest's). Two failures call for
  *                       different responses: "input changed" (a unit's English or MT file differs)
  *                       and "served text changed, inputs unchanged" (the files match, so loader
- *                       code moved a hash: re-cut, spec §6.6). Exit 0 only on PASS. Without a
- *                       manifest it verifies markers only and says so.
+ *                       code moved a hash: re-cut, spec §6.6). Exit 0 only on PASS, which needs
+ *                       at least one study unit and an MT file for every unit; it prints how many
+ *                       units and segments it compared. Without a manifest it verifies markers
+ *                       only and says so.
  *
  * Flags: --book <slug> (a study book; default the only one), --write, --tag <name>,
  * --supersedes <tag>, --manifest <dir>. Any other flag is a usage error.
@@ -272,13 +279,21 @@ function filesUnder(book, dir) {
   return files.sort(byString);
 }
 
+/**
+ * Parse JSON, or throw code BAD_INPUT naming `label` (a path) only: JSON.parse's own message
+ * quotes the input, and a corrupt file's content is never printed.
+ */
+const parseJson = (bytesOrText, label) => {
+  try {
+    return JSON.parse(bytesOrText.toString('utf8'));
+  } catch {
+    throw coded('BAD_INPUT', `${label}: not valid JSON`);
+  }
+};
+const isObject = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
 const readJson = (book, rel) => {
   const bytes = fs.readFileSync(path.join(bookDir(book), rel));
-  try {
-    return { bytes, json: JSON.parse(bytes.toString('utf8')) };
-  } catch (e) {
-    throw coded('BAD_INPUT', `${book}/${rel}: ${e.message}`);
-  }
+  return { bytes, json: parseJson(bytes, `${book}/${rel}`) };
 };
 
 /**
@@ -403,15 +418,31 @@ function glossaryRecord(book) {
 }
 
 /**
+ * The records the header reads from layer files and the glossary. Throws code BAD_INPUT, naming
+ * the path, when one of those JSON files does not parse; `runManifest` calls it on a dry run too,
+ * so a corrupt input is a named refusal before the cut, not only at it.
+ */
+function layerRecords(book, base) {
+  return {
+    layer1s: layer1sRecord(book, base),
+    layer2: layer2Record(book),
+    layer3: layer3Record(book),
+    glossary: glossaryRecord(book),
+  };
+}
+
+/**
  * The manifest of spec §6.4: the header (freeze.json) and segments.jsonl, built from the tree,
  * the tag and the injected git facts. Holds no time except the tag's cut date.
- * @param {{book: string, tag: string, supersedes?: string|null, git: object, base?: object[]}} args
+ * @param {{book: string, tag: string, supersedes?: string|null, git: object, base?: object[],
+ *   records?: object}} args `base` and `records` (internal) let main build from one read
  * @returns {{header: object, segmentsJsonl: string}}
  */
-function buildManifest({ book, tag, supersedes = null, git, base = servedBase(book) }) {
+function buildManifest({ book, tag, supersedes = null, git, base = servedBase(book), records }) {
   const cutDate = cutDateOf(book, tag);
   const layerless = base.find((u) => u.rows === null);
   if (layerless) throw coded('NO_LAYER', `${layerless.unit} has no Icelandic layer`);
+  const recs = records || layerRecords(book, base);
   const { count, segmentsJsonl, byLayer } = composeSegments(base);
   const header = {
     schema: 'study-freeze/1',
@@ -441,11 +472,11 @@ function buildManifest({ book, tag, supersedes = null, git, base = servedBase(bo
         lastCommit: git.layer1LastCommit,
         handRepairs: git.handRepairs.map(({ commit, subject }) => ({ commit, subject })),
       },
-      layer1s: layer1sRecord(book, base),
-      layer2: layer2Record(book),
-      layer3: layer3Record(book),
+      layer1s: recs.layer1s,
+      layer2: recs.layer2,
+      layer3: recs.layer3,
     },
-    glossary: glossaryRecord(book),
+    glossary: recs.glossary,
     markers: {
       count: base.filter((u) => u.marker === 'freeze').length,
       bodySha256: sha256(FREEZE_LOCK_BODY),
@@ -479,7 +510,8 @@ function writeManifest({ book, tag, header, segmentsJsonl }) {
 /**
  * The current manifest (spec §6.6): the one under books/<book>/freeze/ whose tag no other
  * manifest's `supersedes` names. A directory without freeze.json is not a manifest. Null when
- * there is none; throws code AMBIGUOUS when there is not exactly one current manifest.
+ * there is none; throws code AMBIGUOUS when there is not exactly one current manifest, and code
+ * BAD_INPUT (naming the path) when a freeze.json is not a JSON object.
  * @returns {{dir: string, header: object} | null}
  */
 function currentManifest({ book }) {
@@ -495,10 +527,12 @@ function currentManifest({ book }) {
     .filter((e) => e.isDirectory() && fs.existsSync(path.join(parent, e.name, 'freeze.json')))
     .map((e) => e.name)
     .sort(byString)
-    .map((name) => ({
-      dir: path.join(parent, name),
-      header: readJson(book, `freeze/${name}/freeze.json`).json,
-    }));
+    .map((name) => {
+      const rel = `freeze/${name}/freeze.json`;
+      const { json } = readJson(book, rel);
+      if (!isObject(json)) throw coded('BAD_INPUT', `${book}/${rel}: not a manifest header`);
+      return { dir: path.join(parent, name), header: json };
+    });
   if (manifests.length === 0) return null;
   const superseded = new Set(manifests.map((m) => m.header.supersedes).filter(Boolean));
   const current = manifests.filter((m) => !superseded.has(m.header.tag));
@@ -527,8 +561,10 @@ function cutRefusals({ book, tag, supersedes }) {
   try {
     current = currentManifest({ book });
   } catch (e) {
-    if (e.code !== 'AMBIGUOUS') throw e;
-    return [...refusals, { reason: 'ambiguous-manifests', detail: e.message }];
+    if (e.code === 'AMBIGUOUS')
+      return [...refusals, { reason: 'ambiguous-manifests', detail: e.message }];
+    if (e.code === 'BAD_INPUT') return [...refusals, { reason: 'bad-input', detail: e.message }];
+    throw e;
   }
   const currentTag = current ? current.header.tag : null;
   if (supersedes !== null && supersedes !== currentTag) {
@@ -574,13 +610,21 @@ function runManifest(args, io, deps) {
   }
   const base = servedBase(book);
   const refusals = [...manifestRefusals({ book, git, base }), ...cutRefusals(args)];
+  let records = null;
+  try {
+    records = layerRecords(book, base);
+  } catch (e) {
+    if (e.code !== 'BAD_INPUT') throw e;
+    refusals.push({ reason: 'bad-input', detail: e.message });
+  }
   let built = null;
   if (!base.some((u) => u.rows === null)) {
     const { count, segmentsJsonl, byLayer } = composeSegments(base);
     const layers = Object.entries(byLayer).map(([k, n]) => `${k} ${n}`);
     io.log(`${base.length} units, ${count} segments (${layers.join(', ') || 'none'})`);
     io.log(`segments.jsonl sha256 ${sha256(segmentsJsonl)}`);
-    if (tag !== null) built = buildManifest({ book, tag, supersedes, git, base });
+    if (tag !== null && records)
+      built = buildManifest({ book, tag, supersedes, git, base, records });
     if (built) io.log(`freeze.json sha256 ${sha256(headerBytes(built.header))}`);
     io.log(
       `layer 1: last commit ${git.layer1LastCommit}, ${git.handRepairs.length} hand repair(s)`
@@ -609,9 +653,10 @@ function runManifest(args, io, deps) {
 // ── check ────────────────────────────────────────────────────────────────────────────────────
 
 /**
- * Count the study units' markers by state. Reuses planMarkers' classification; names units only.
+ * Count the study units' markers by state, and name the units with no MT output (a state
+ * `markers` refuses). Reuses planMarkers' classification; names units only.
  * @param {{book: string}} args
- * @returns {{total: number, freeze: number, absent: string[], foreign: string[]}}
+ * @returns {{total: number, freeze: number, absent: string[], foreign: string[], noMt: string[]}}
  */
 function checkMarkers({ book }) {
   const { units } = planMarkers({ book });
@@ -621,6 +666,7 @@ function checkMarkers({ book }) {
     freeze: units.filter((u) => u.state === 'freeze').length,
     absent: named('absent'),
     foreign: named('foreign'),
+    noMt: units.filter((u) => !u.hasMt).map((u) => u.unit),
   };
 }
 
@@ -630,25 +676,51 @@ function checkMarkers({ book }) {
  * not compared), only for units still served from a non-faithful layer. A segment difference in a
  * unit whose files changed is explained by `inputChanged`; in a unit whose files match it is
  * `servedChanged` ("served text changed, inputs unchanged": loader code moved a hash).
+ *
+ * It also counts what it compared, so a PASS can show it compared something: `unitsCompared`
+ * (units in both the manifest and the tree, whose file hashes were compared), `segmentsCompared`
+ * (segment keys compared, in units still served from a non-faithful layer whose files match) and
+ * `unitsSkippedFaithful` (units served from a faithful file, whose segments are not compared).
+ * A manifest file that does not parse, or a header that is not one, throws code BAD_INPUT naming
+ * the path, never the content.
  * @param {{book: string, manifestDir: string, base?: object[]}} args
  */
 function compareToManifest({ book, manifestDir, base = servedBase(book) }) {
-  const header = JSON.parse(fs.readFileSync(path.join(manifestDir, 'freeze.json'), 'utf8'));
-  const segmentBytes = fs.readFileSync(path.join(manifestDir, 'segments.jsonl'));
+  const headerPath = path.join(manifestDir, 'freeze.json');
+  const header = parseJson(fs.readFileSync(headerPath), headerPath);
+  if (
+    !isObject(header) ||
+    typeof header.segmentsSha256 !== 'string' ||
+    !Array.isArray(header.units) ||
+    !header.units.every(isObject)
+  ) {
+    throw coded('BAD_INPUT', `${headerPath}: not a manifest header`);
+  }
+  const segmentsPath = path.join(manifestDir, 'segments.jsonl');
+  const segmentBytes = fs.readFileSync(segmentsPath);
   if (sha256(segmentBytes) !== header.segmentsSha256) {
     throw coded('BAD_INPUT', `${manifestDir}: segments.jsonl does not match its header's hash`);
   }
   const unitId = (u) => `${u.chapterDir}/${u.moduleId}`;
   const linesByUnit = new Map();
-  for (const l of segmentBytes.toString('utf8').split('\n').filter(Boolean)) {
-    const line = JSON.parse(l);
-    const k = `${line.chapter}/${line.module_id}`;
-    linesByUnit.set(k, [...(linesByUnit.get(k) || []), line]);
-  }
+  segmentBytes
+    .toString('utf8')
+    .split('\n')
+    .forEach((l, i) => {
+      if (l === '') return;
+      const label = `${segmentsPath} line ${i + 1}`;
+      const line = parseJson(l, label);
+      if (!isObject(line)) throw coded('BAD_INPUT', `${label}: not a segment line`);
+      const k = `${line.chapter}/${line.module_id}`;
+      linesByUnit.set(k, [...(linesByUnit.get(k) || []), line]);
+    });
   const frozen = new Map(header.units.map((u) => [unitId(u), u]));
   const current = new Map(base.map((u) => [unitId(u), u]));
   const result = {
     pass: true,
+    unitsCompared: 0,
+    segmentsCompared: 0,
+    unitsSkippedFaithful: 0,
     unitSetChanged: {
       missing: [...frozen.keys()].filter((k) => !current.has(k)).sort(byString),
       extra: [...current.keys()].filter((k) => !frozen.has(k)).sort(byString),
@@ -660,11 +732,13 @@ function compareToManifest({ book, manifestDir, base = servedBase(book) }) {
   for (const [id, was] of frozen) {
     const now = current.get(id);
     if (!now) continue;
+    result.unitsCompared++;
     const filesChanged =
       fileSha(now.enSource) !== was.enSha256 || fileSha(now.mtOutput) !== was.mtSha256;
     if (filesChanged) result.inputChanged.push(id);
     if (now.isSource === 'faithful') {
       result.movedToFaithful.push(id);
+      result.unitsSkippedFaithful++;
       continue;
     }
     if (filesChanged) continue;
@@ -676,7 +750,9 @@ function compareToManifest({ book, manifestDir, base = servedBase(book) }) {
       ])
     );
     const has = new Map((now.rows || []).map((r) => [key(r.segmentId, r.occurrence), r]));
-    for (const k of new Set([...had.keys(), ...has.keys()])) {
+    const keys = new Set([...had.keys(), ...has.keys()]);
+    result.segmentsCompared += keys.size;
+    for (const k of keys) {
       const a = had.get(k);
       const b = has.get(k);
       if (!a || !b || a.en_sha256 !== b.enSha256 || a.is_sha256 !== b.isSha256) {
@@ -698,23 +774,44 @@ function runCheck(args, io) {
     throw usage('--write, --tag and --supersedes do not apply to check');
   }
   const { book } = args;
-  const markers = checkMarkers({ book });
-  let pass = markers.absent.length === 0 && markers.foreign.length === 0;
+  let markers;
+  try {
+    markers = checkMarkers({ book });
+  } catch (e) {
+    if (e.code !== 'ENOENT') throw e; // listStudyUnits: the book has no 02-for-mt directory
+    io.error('STUDY FREEZE CHECK: FAIL');
+    io.error(`no study units: ${book}/02-for-mt does not exist`);
+    return 1;
+  }
   const lines = [`markers: ${markers.freeze}/${markers.total} units hold the freeze marker`];
+  if (markers.total === 0) lines.push(`no study units: ${book}/02-for-mt lists none`);
   if (markers.absent.length > 0) {
     lines.push(`markers absent: ${markers.absent.length}: ${listed(markers.absent)}`);
   }
   if (markers.foreign.length > 0) {
     lines.push(`markers foreign: ${markers.foreign.length}: ${listed(markers.foreign)}`);
   }
+  if (markers.noMt.length > 0) {
+    lines.push(`no MT output: ${markers.noMt.length} unit(s): ${listed(markers.noMt)}`);
+  }
+  let pass =
+    markers.total > 0 &&
+    markers.absent.length === 0 &&
+    markers.foreign.length === 0 &&
+    markers.noMt.length === 0;
+  // A FAIL that stops early still prints the marker summary first.
+  const failWith = (reason) => {
+    io.error('STUDY FREEZE CHECK: FAIL');
+    for (const l of [...lines, reason]) io.error(l);
+    return 1;
+  };
   let manifest;
   try {
     manifest = args.manifest ? { dir: path.resolve(args.manifest) } : currentManifest({ book });
   } catch (e) {
-    if (e.code !== 'AMBIGUOUS') throw e;
-    io.error('STUDY FREEZE CHECK: FAIL');
-    io.error(`no single current manifest: ${e.message}`);
-    return 1;
+    if (e.code === 'AMBIGUOUS') return failWith(`no single current manifest: ${e.message}`);
+    if (e.code === 'BAD_INPUT') return failWith(`manifest unreadable: ${e.message}`);
+    throw e;
   }
   const bad = [];
   if (manifest === null) {
@@ -724,12 +821,15 @@ function runCheck(args, io) {
     try {
       r = compareToManifest({ book, manifestDir: manifest.dir });
     } catch (e) {
-      if (e.code !== 'BAD_INPUT' && e.code !== 'ENOENT' && !(e instanceof SyntaxError)) throw e;
-      io.error('STUDY FREEZE CHECK: FAIL');
-      io.error(`manifest unreadable: ${path.basename(manifest.dir)}: ${e.message}`);
-      return 1;
+      if (e.code !== 'BAD_INPUT' && e.code !== 'ENOENT') throw e;
+      return failWith(`manifest unreadable: ${path.basename(manifest.dir)}: ${e.message}`);
     }
     lines.push(`manifest: ${path.basename(manifest.dir)}`);
+    lines.push(
+      `compared: ${r.unitsCompared} unit(s) by English and MT file hash, ${r.segmentsCompared} ` +
+        `segment(s) by served hash; ${r.unitsSkippedFaithful} unit(s) served from faithful, ` +
+        'their segments not compared'
+    );
     const { missing, extra } = r.unitSetChanged;
     if (missing.length > 0) bad.push(`units missing: ${missing.length}: ${listed(missing)}`);
     if (extra.length > 0) bad.push(`units added: ${extra.length}: ${listed(extra)}`);
@@ -740,7 +840,7 @@ function runCheck(args, io) {
       const keys = r.servedChanged.map((s) => `${s.unit}#${s.segmentId}#${s.occurrence}`);
       bad.push(`served text changed, inputs unchanged: ${keys.length} segment(s): ${listed(keys)}`);
     }
-    if (r.inputChanged.length > 0 || r.servedChanged.length > 0) {
+    if (bad.length > 0) {
       const current = manifest.header ? manifest.header.tag : path.basename(manifest.dir);
       bad.push(
         "re-cut route: if the change is deliberate, record it with a re-cut, which is [USER]'s decision " +
@@ -767,6 +867,12 @@ function runMarkers(args, io) {
   const plan = planMarkers(args);
   if (plan.refusals.length > 0) {
     for (const r of plan.refusals) io.error(`refused: ${r.unit} (${r.reason})`);
+    if (plan.refusals.some((r) => r.reason === 'foreign-marker')) {
+      io.error(
+        "a foreign marker may hold a person's first-save time: do not open, print or delete it; " +
+          "what to do with it is the project lead's call (spec §7)"
+      );
+    }
     io.error('nothing written');
     return 1;
   }

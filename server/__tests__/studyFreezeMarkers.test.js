@@ -114,6 +114,11 @@ describe('study-freeze markers', () => {
     it('never prints the body', () => {
       expect(out.join('\n')).not.toMatch(/2099|424242/);
     });
+    it("says the file is not to be opened, printed or deleted, and is the project lead's call", () => {
+      expect(out.join('\n')).toContain(
+        "do not open, print or delete it; what to do with it is the project lead's call (spec §7)"
+      );
+    });
   });
 
   it('a unit with no MT file refuses the whole run', () => {
@@ -121,6 +126,7 @@ describe('study-freeze markers', () => {
     expect(main(['markers', '--write'], io)).toBe(1);
     for (const m of MODULES) expect(exists(lockOf(m))).toBe(false);
     expect(out.join('\n')).toContain('ch01/m96004');
+    expect(out.join('\n')).not.toContain('do not open'); // the advice is for a foreign marker only
   });
 
   it('an unknown flag exits 1 and writes nothing', () => {
@@ -130,9 +136,5 @@ describe('study-freeze markers', () => {
 
   it('a non-study --book is refused', () => {
     expect(main(['markers', '--book', 'liffraedi-2e'], io)).toBe(1);
-  });
-
-  it('check is a stub that exits 1 for now (manifest: studyFreezeManifest.test.js)', () => {
-    expect(main(['check'], io)).toBe(1);
   });
 });

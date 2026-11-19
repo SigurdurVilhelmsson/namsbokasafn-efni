@@ -576,6 +576,46 @@ describe('manifest through main', () => {
     });
   });
 
+  describe('a corrupt input is a named refusal: the path, never a stack trace or the content', () => {
+    // A corrupt file starts with this, and JSON.parse's message quotes the input.
+    const LEAK = 'zqx-leak';
+    it.each([
+      '02-mt-revised/ch01/m95001-revision.json',
+      '02-mt-selected/ch01/m95002-selected.json',
+      'glossary/glossary-unified.json',
+    ])('%s: --write --tag refuses, names it, and still prints every other refusal', (rel) => {
+      writeFileSync(bookPath(rel), `${LEAK}{`);
+      unlinkSync(lockOf(UNITS[1]));
+      expect(write()).toBe(1);
+      expect(text()).toContain(`refused: bad-input (${BOOK}/${rel}: not valid JSON)`);
+      expect(text()).toMatch(/not-frozen.*ch01\/m95002/);
+      expect(text()).not.toContain(LEAK);
+      expect(existsSync(freezeDir())).toBe(false);
+    });
+    it('a dry run without --tag names a corrupt input too', () => {
+      writeFileSync(bookPath('02-mt-revised/ch01/m95002-revision.json'), `${LEAK}{`);
+      expect(study.main(['manifest'], io, { git: GIT })).toBe(1);
+      expect(text()).toContain(
+        `refused: bad-input (${BOOK}/02-mt-revised/ch01/m95002-revision.json: not valid JSON)`
+      );
+      expect(text()).not.toContain(LEAK);
+    });
+    it("the current manifest's corrupt freeze.json is a named refusal", () => {
+      expect(write()).toBe(0);
+      writeFileSync(path.join(freezeDir(), TAG, 'freeze.json'), `${LEAK}{`);
+      out.length = 0;
+      const TAG2 = `freeze-${BOOK}-2026-12-15`;
+      expect(
+        study.main(['manifest', '--write', '--tag', TAG2, '--supersedes', TAG], io, { git: GIT })
+      ).toBe(1);
+      expect(text()).toContain(
+        `refused: bad-input (${BOOK}/freeze/${TAG}/freeze.json: not valid JSON)`
+      );
+      expect(text()).not.toContain(LEAK);
+      expect(existsSync(path.join(freezeDir(), TAG2))).toBe(false);
+    });
+  });
+
   describe('tags (Review Focus 5)', () => {
     it('an existing freeze/<tag>/ directory is refused and left exactly as it was', () => {
       const dir = path.join(freezeDir(), TAG);

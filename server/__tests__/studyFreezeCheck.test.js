@@ -19,7 +19,7 @@ process.env.JWT_SECRET = process.env.JWT_SECRET || 'prufa-leyndarmal';
 
 const segmentParser = require('../services/segmentParser');
 const { writeModule } = require('./helpers/servedFixture');
-const { mtLockPathFor } = require('../../tools/lib/mt-lock.cjs');
+const { mtLockPathFor, writeFreezeLock } = require('../../tools/lib/mt-lock.cjs');
 const { STUDY_BOOKS } = require('../lib/researchScope');
 
 const BOOK = STUDY_BOOKS[0];
@@ -51,6 +51,20 @@ const text = () => out.join('\n');
 const cut = (tag = TAG, ...extra) =>
   study.main(['manifest', '--write', '--tag', tag, ...extra], io, { git: GIT });
 const manifestDir = (tag = TAG) => bookPath('freeze', tag);
+/** Write segments.jsonl and re-hash it into freeze.json, so only the edited lines differ. */
+const rewriteSegments = (jsonl, tag = TAG) => {
+  writeFileSync(path.join(manifestDir(tag), 'segments.jsonl'), jsonl);
+  const headerPath = path.join(manifestDir(tag), 'freeze.json');
+  const header = JSON.parse(readFileSync(headerPath, 'utf8'));
+  header.segmentsSha256 = require('crypto').createHash('sha256').update(jsonl).digest('hex');
+  writeFileSync(headerPath, `${JSON.stringify(header, null, 2)}\n`);
+};
+// A corrupt file starts with this, and JSON.parse's message quotes the input: output that
+// contains it has printed the file's content.
+const LEAK = 'zqx-leak';
+const COMPARED = (units, segments, faithful) =>
+  `compared: ${units} unit(s) by English and MT file hash, ${segments} segment(s) by served ` +
+  `hash; ${faithful} unit(s) served from faithful, their segments not compared`;
 
 beforeAll(() => {
   realBooksDir = segmentParser.BOOKS_DIR;
@@ -90,6 +104,26 @@ describe('check with a manifest', () => {
     expect(study.main(['check'], io)).toBe(0);
     expect(text()).toContain('STUDY FREEZE CHECK: PASS');
     expect(text()).toContain('markers: 3/3');
+  });
+
+  it('PASS prints what it compared: 3 units, 6 segments, 0 served from faithful', () => {
+    expect(study.main(['check'], io)).toBe(0);
+    expect(text()).toContain(COMPARED(3, 6, 0));
+  });
+
+  it('compareToManifest counts what it compared, on an unchanged tree', () => {
+    expect(study.compareToManifest({ book: BOOK, manifestDir: manifestDir() })).toMatchObject({
+      unitsCompared: 3,
+      segmentsCompared: 6,
+      unitsSkippedFaithful: 0,
+    });
+  });
+
+  it('FAIL also prints what it compared: a changed unit is compared by file, not by segment', () => {
+    const u = UNITS[1];
+    writeFileSync(mtPath(u), readFileSync(mtPath(u), 'utf8').replace('Íslenska', 'Íslensk'));
+    expect(study.main(['check'], io)).toBe(1);
+    expect(text()).toContain(COMPARED(3, 4, 0));
   });
 
   it('FAIL for a deleted marker, naming the unit', () => {
@@ -178,6 +212,65 @@ describe('check with a manifest', () => {
     expect(text()).toContain('manifest unreadable');
   });
 
+  it('an unreadable manifest still prints the marker summary first', () => {
+    writeFileSync(path.join(manifestDir(), 'segments.jsonl'), 'tampered\n');
+    expect(study.main(['check'], io)).toBe(1);
+    expect(text()).toMatch(/FAIL\nmarkers: 3\/3 units hold the freeze marker\nmanifest unreadable/);
+  });
+
+  it.each([
+    ['not JSON', `${LEAK}{`],
+    ['JSON null', 'null'],
+  ])(
+    'a current manifest whose freeze.json is %s is a named FAIL: the path, never its content',
+    (_, body) => {
+      writeFileSync(path.join(manifestDir(), 'freeze.json'), body);
+      expect(study.main(['check'], io)).toBe(1);
+      expect(text()).toContain('STUDY FREEZE CHECK: FAIL');
+      expect(text()).toContain('markers: 3/3');
+      expect(text()).toContain(`manifest unreadable: ${BOOK}/freeze/${TAG}/freeze.json`);
+      expect(text()).not.toContain(LEAK);
+    }
+  );
+
+  it('--manifest naming a manifest whose freeze.json is not JSON: a named FAIL, never its content', () => {
+    writeFileSync(path.join(manifestDir(), 'freeze.json'), `${LEAK}{`);
+    expect(study.main(['check', '--manifest', manifestDir()], io)).toBe(1);
+    expect(text()).toContain(`manifest unreadable: ${TAG}: `);
+    expect(text()).toContain(path.join(manifestDir(), 'freeze.json'));
+    expect(text()).not.toContain(LEAK);
+  });
+
+  it('a segments.jsonl line that is not JSON (hash re-computed) is a named FAIL, never its content', () => {
+    rewriteSegments(`${LEAK}\n`);
+    expect(study.main(['check'], io)).toBe(1);
+    expect(text()).toContain('manifest unreadable');
+    expect(text()).toContain('segments.jsonl line 1');
+    expect(text()).not.toContain(LEAK);
+  });
+
+  it('a unit added since the cut FAILs check and names the re-cut route', () => {
+    writeModule(root, {
+      book: BOOK,
+      chapterDir: 'ch01',
+      moduleId: 'm96009',
+      en: [['m96009:p:a', 'x']],
+      mt: [['m96009:p:a', 'y']],
+    });
+    study.writeMarkers(study.planMarkers({ book: BOOK }));
+    expect(study.main(['check'], io)).toBe(1);
+    expect(text()).toContain('units added: 1: ch01/m96009');
+    expect(text()).toContain('re-cut route');
+  });
+
+  it('a unit removed since the cut FAILs check and names the re-cut route', () => {
+    const u = UNITS[2];
+    rmSync(bookPath('02-for-mt', u.chapterDir, `${u.moduleId}-segments.en.md`));
+    expect(study.main(['check'], io)).toBe(1);
+    expect(text()).toContain('units missing: 1: appendices/m96003');
+    expect(text()).toContain('re-cut route');
+  });
+
   it('a unit added or removed since the cut is a unit-set change', () => {
     writeModule(root, {
       book: BOOK,
@@ -204,6 +297,12 @@ describe('check with a manifest', () => {
     writeFileSync(faithful, readFileSync(mtPath(u), 'utf8').replace('Íslenska', 'Íslensk'));
     expect(study.main(['check'], io)).toBe(0);
     expect(text()).toContain('moved to faithful (not a failure): 1: ch01/m96001');
+    expect(text()).toContain(COMPARED(3, 4, 1));
+    expect(study.compareToManifest({ book: BOOK, manifestDir: manifestDir() })).toMatchObject({
+      unitsCompared: 3,
+      segmentsCompared: 4,
+      unitsSkippedFaithful: 1,
+    });
   });
 
   it('control: a moved-to-faithful unit still fails when its MT file changed', () => {
@@ -243,6 +342,7 @@ describe('supersedes', () => {
     }
     expect(study.main(['check'], io)).toBe(1);
     expect(text()).toContain('no single current manifest');
+    expect(text()).toMatch(/FAIL\nmarkers: 3\/3 units hold the freeze marker\nno single current/);
   });
 });
 
@@ -256,6 +356,27 @@ describe('check without a manifest', () => {
     expect(study.main(['check'], io)).toBe(1);
     expect(text()).toContain('markers absent: 1: appendices/m96003');
   });
+  it('FAILs on a book with no study units: 0/0 is never a PASS', () => {
+    rmSync(bookPath('02-for-mt'), { recursive: true, force: true });
+    mkdirSync(bookPath('02-for-mt'));
+    expect(study.main(['check'], io)).toBe(1);
+    expect(text()).toContain('STUDY FREEZE CHECK: FAIL');
+    expect(text()).toContain('markers: 0/0');
+    expect(text()).toContain('no study units');
+  });
+  it('FAILs, named, when the book has no 02-for-mt at all', () => {
+    rmSync(bookPath('02-for-mt'), { recursive: true, force: true });
+    expect(study.main(['check'], io)).toBe(1);
+    expect(text()).toContain('STUDY FREEZE CHECK: FAIL');
+    expect(text()).toContain(`no study units: ${BOOK}/02-for-mt does not exist`);
+  });
+  it('FAILs on a study unit with no MT output, even when it holds the freeze marker', () => {
+    writeModule(root, { book: BOOK, chapterDir: 'ch01', moduleId: 'm96004', en: [['p', 'x']] });
+    writeFreezeLock(bookPath('02-mt-output', 'ch01', 'm96004-segments.is.md'));
+    expect(study.main(['check'], io)).toBe(1);
+    expect(text()).toContain('markers: 4/4');
+    expect(text()).toContain('no MT output: 1 unit(s): ch01/m96004');
+  });
 });
 
 describe('checkMarkers', () => {
@@ -267,6 +388,11 @@ describe('checkMarkers', () => {
       freeze: 1,
       absent: ['ch01/m96001'],
       foreign: ['ch01/m96002'],
+      noMt: [],
     });
+  });
+  it('names the units with no MT output', () => {
+    unlinkSync(mtPath(UNITS[2]));
+    expect(study.checkMarkers({ book: BOOK }).noMt).toEqual(['appendices/m96003']);
   });
 });

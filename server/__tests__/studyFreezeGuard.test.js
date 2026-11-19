@@ -112,7 +112,9 @@ describe('the real tree', () => {
     });
     expect(r.status, `stderr: ${r.stderr}`).toBe(0);
     expect(r.stdout).toContain('STUDY FREEZE CHECK: PASS');
-    expect(r.stdout).toMatch(/markers: (\d+)\/\1 units hold the freeze marker/);
+    const m = /markers: (\d+)\/\1 units hold the freeze marker/.exec(r.stdout);
+    expect(m, r.stdout).not.toBe(null);
+    expect(Number(m[1])).toBeGreaterThan(0); // the regex alone accepts 0/0
   });
 });
 
