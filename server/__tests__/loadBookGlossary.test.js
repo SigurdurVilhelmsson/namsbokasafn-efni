@@ -224,3 +224,76 @@ describe('load-book-glossary', () => {
     expect(bad.out + bad.err).toContain('function');
   });
 });
+
+describe('fix round 1', () => {
+  it('dry run works on a WAL database with an uncheckpointed row, and leaves file and -wal untouched', () => {
+    const wal = freshMigratedDb();
+    const saved = db;
+    db = wal.db;
+    try {
+      db.pragma('journal_mode = WAL');
+      const file = writeInput(seed()); // concepts are written now and NOT checkpointed
+      expect(db.pragma('journal_mode', { simple: true })).toBe('wal');
+      const walFile = `${wal.path}-wal`;
+      expect(fs.statSync(walFile).size).toBeGreaterThan(0); // control: rows live only in the WAL
+      const sha = (f) => crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');
+      const before = [sha(wal.path), sha(walFile)];
+      const r = run(['--book', CHEM, '--input', file]);
+      expect(r.code).toBe(0);
+      expect(r.out).toContain('r003');
+      expect(r.out).toContain('rúmfræði → lögun'); // the copy saw the uncheckpointed rows
+      expect([sha(wal.path), sha(walFile)]).toEqual(before);
+      expect(layerRows()).toBe(0);
+    } finally {
+      db = saved;
+      wal.db.close();
+    }
+  });
+
+  it('verify fails when the layer is empty', () => {
+    const file = writeInput(seed());
+    const exp = {
+      terms: [{ english: 'function', icelandic: 'fall', status: 'approved' }],
+    };
+    const dir = path.join(tmp, 'books', CHEM, 'glossary');
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, 'glossary-unified.json'), JSON.stringify(exp));
+    const r = run(['--book', CHEM, '--input', file, '--verify']);
+    expect(r.code).toBe(1);
+    expect(r.err).toContain('r001');
+    expect(r.out).not.toContain('PASS');
+  });
+
+  it('verify requires --input', () => {
+    const r = run(['--book', CHEM, '--verify']);
+    expect(r.code).toBe(1);
+    expect(r.err).toContain('--input is required');
+  });
+
+  it('verify on an unmigrated database is a named FAIL', () => {
+    const bare = new (require('better-sqlite3'))(':memory:');
+    const r = run(['--book', CHEM, '--input', writeInput(seed()), '--verify'], { db: bare });
+    bare.close();
+    expect(r.code).toBe(1);
+    expect(r.err).toContain('migrate it first');
+  });
+
+  it('the dry run refuses when the physics book is not registered', () => {
+    const file = writeInput(seed());
+    const row = db.prepare('SELECT * FROM registered_books WHERE slug = ?').get('edlisfraedi-2e');
+    expect(row).toBeTruthy();
+    expect(run(['--book', CHEM, '--input', file]).code).toBe(0); // control
+    db.prepare('DELETE FROM registered_books WHERE slug = ?').run('edlisfraedi-2e');
+    try {
+      const r = run(['--book', CHEM, '--input', file]);
+      expect(r.code).toBe(1);
+      expect(r.err).toContain('edlisfraedi-2e');
+      expect(r.out).not.toContain('n/a');
+    } finally {
+      const cols = Object.keys(row);
+      db.prepare(
+        `INSERT INTO registered_books (${cols.join(',')}) VALUES (${cols.map(() => '?').join(',')})`
+      ).run(...cols.map((c) => row[c]));
+    }
+  });
+});

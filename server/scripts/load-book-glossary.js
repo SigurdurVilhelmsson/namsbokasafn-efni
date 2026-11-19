@@ -17,9 +17,11 @@
  * not change: a change is a refusal). The real database is opened read-only and never written.
  *
  * --apply: opens read-write, re-runs the checks, applies in one transaction.
- * --verify: reads books/<book>/glossary/glossary-unified.json and the layer; every whole-headword
- * exclusion's headword must be absent, every one- or two-word entry must carry its Icelandic;
- * three-word entries are listed as editor only. Exit 0 only if all hold.
+ * --verify (needs --input): checks the input against the layer AND books/<book>/glossary/
+ * glossary-unified.json. Every action must be in the layer (headword exclusions also absent from
+ * the export; entries carry their Icelandic, replacements excluded; 1-2 word entries match the
+ * export, 3+ word entries are listed as editor only). Any missing action fails; exit 0 only if
+ * all hold.
  *
  * The `by`, `source` and `reason` values written reach a public repository through the committed
  * record, so they are fixed here and never read from a private file.
@@ -270,11 +272,23 @@ function runLoad(args, io, deps, input) {
       return 0;
     }
 
+    if (!db.prepare('SELECT 1 FROM registered_books WHERE slug = ?').get(PHYSICS_BOOK))
+      return refuseAll(io, [
+        `the physics control book ${PHYSICS_BOOK} is not registered: the dry run cannot show it unchanged`,
+      ]);
     const before = actions.map((a) => ({
       chem: snapshot(db, args.book, formsOf(a)),
       phys: snapshot(db, PHYSICS_BOOK, formsOf(a)),
     }));
-    const copy = new Database(db.serialize());
+    // ⚠️ A WAL database serialises with header bytes 18/19 = 2 (WAL), and SQLite's in-memory VFS
+    // cannot open a WAL: every statement on the copy would throw SQLITE_CANTOPEN. Production's
+    // sessions.db is WAL. Patch the IMAGE (a private in-memory buffer) to rollback-journal mode
+    // before opening it; the real file and its -wal are never touched, and the image already
+    // holds the rows that exist only in the uncheckpointed WAL.
+    const image = db.serialize();
+    image[18] = 1;
+    image[19] = 1;
+    const copy = new Database(image);
     try {
       const o = copy.transaction(() => applyAll(copy, args.book, actions))();
       const refusals = [...o.refusals];
@@ -301,11 +315,27 @@ function runLoad(args, io, deps, input) {
   }
 }
 
-function runVerify(args, io, deps) {
+function runVerify(args, io, deps, input) {
   const { db, owned } = openDb(args, deps);
   try {
     const booksDir = deps.booksDir || DEFAULT_BOOKS_DIR;
     const file = path.join(booksDir, args.book, 'glossary', 'glossary-unified.json');
+    const missing = REQUIRED_TABLES.filter(
+      (t) => !db.prepare("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = ?").get(t)
+    );
+    if (missing.length) {
+      io.error(`FAIL: this database lacks table(s) ${missing.join(', ')}: migrate it first`);
+      return 1;
+    }
+    if (
+      !input ||
+      input.schema !== SCHEMA ||
+      input.book !== args.book ||
+      !Array.isArray(input.actions)
+    ) {
+      io.error(`FAIL: the input is not a ${SCHEMA} file for ${args.book}`);
+      return 1;
+    }
     let terms;
     try {
       terms = JSON.parse(fs.readFileSync(file, 'utf8')).terms;
@@ -327,51 +357,62 @@ function runVerify(args, io, deps) {
       if (!byKey.has(k)) byKey.set(k, []);
       byKey.get(k).push(t);
     }
-    const fails = [];
-    let okCount = 0;
-    const editorOnly = [];
-    const wholes = db
-      .prepare(
-        'SELECT english, match_key FROM book_glossary_exclusion WHERE book_id = ? AND concept_id = 0'
-      )
-      .all(bookRow.id);
-    for (const e of wholes) {
-      if (byKey.has(e.match_key))
-        fails.push(`excluded headword "${e.english}" is present in the export`);
-      else okCount++;
-    }
-    const entries = db
+    const exclusion = db.prepare(
+      'SELECT 1 FROM book_glossary_exclusion WHERE book_id = ? AND match_key = ? AND concept_id = ?'
+    );
+    const entryIds = db
       .prepare('SELECT concept_id FROM book_glossary_entry WHERE book_id = ?')
-      .all(bookRow.id);
-    for (const { concept_id: cid } of entries) {
-      const en = db
-        .prepare("SELECT text FROM concept_term WHERE concept_id = ? AND lang = 'en'")
-        .all(cid)
-        .map((r) => r.text);
-      const is = db
-        .prepare(
-          "SELECT text FROM concept_term WHERE concept_id = ? AND lang = 'is' ORDER BY rank, id"
-        )
-        .get(cid);
-      const words = (s) => s.trim().split(/\s+/).length;
-      if (en.every((f) => words(f) >= 3)) {
-        editorOnly.push(`${en[0]} → ${is ? is.text : ''}`);
-        continue;
-      }
-      const present = en.filter((f) => byKey.has(matchKey(f)));
-      if (present.length === 0) {
-        fails.push(`entry "${en[0]}" is absent from the export`);
-        continue;
-      }
-      for (const f of present)
-        for (const t of byKey.get(matchKey(f)))
-          if (!is || t.icelandic !== is.text)
-            fails.push(
-              `entry "${f}" is "${t.icelandic}" in the export, not "${is ? is.text : ''}"`
-            );
-      okCount++;
+      .all(bookRow.id)
+      .map((r) => r.concept_id);
+    const termsOf = db.prepare(
+      'SELECT lang, text FROM concept_term WHERE concept_id = ? ORDER BY rank, id'
+    );
+    const words = (x) => x.trim().split(/\s+/).length;
+    const fails = [];
+    const editorOnly = [];
+    let okCount = 0;
+    for (const a of input.actions) {
+      const id = `${a.rulingId} (${a.kind})`;
+      const before = fails.length;
+      if (a.kind === 'exclude-headword') {
+        const k = matchKey(a.english);
+        if (!exclusion.get(bookRow.id, k, 0))
+          fails.push(`${id}: no whole-headword exclusion in the layer`);
+        if (byKey.has(k)) fails.push(`${id}: "${a.english}" is present in the export`);
+      } else if (a.kind === 'exclude-concept') {
+        if (!exclusion.get(bookRow.id, matchKey(a.english), a.conceptId))
+          fails.push(`${id}: no exclusion of concept ${a.conceptId} in the layer`);
+      } else if (a.kind === 'entry') {
+        const forms = a.entry.english;
+        const keys = forms.map(matchKey);
+        const cid = entryIds.find((c) => {
+          const t = termsOf.all(c);
+          const en = t.filter((x) => x.lang === 'en').map((x) => matchKey(x.text));
+          const is = t.find((x) => x.lang === 'is');
+          return keys.every((k) => en.includes(k)) && is && is.text === a.entry.icelandic;
+        });
+        if (cid === undefined)
+          fails.push(`${id}: no layer entry carries "${forms[0]}" → "${a.entry.icelandic}"`);
+        for (const rc of a.entry.replaces || []) {
+          if (!keys.some((k) => exclusion.get(bookRow.id, k, rc)))
+            fails.push(`${id}: replaced concept ${rc} is not excluded in the layer`);
+        }
+        if (forms.every((f) => words(f) >= 3))
+          editorOnly.push(`${forms[0]} → ${a.entry.icelandic}`);
+        else {
+          const present = forms.filter((f) => byKey.has(matchKey(f)));
+          if (present.length === 0) fails.push(`${id}: "${forms[0]}" is absent from the export`);
+          for (const f of present)
+            for (const t of byKey.get(matchKey(f)))
+              if (t.icelandic !== a.entry.icelandic)
+                fails.push(
+                  `${id}: "${f}" is "${t.icelandic}" in the export, not "${a.entry.icelandic}"`
+                );
+        }
+      } else fails.push(`${id}: unknown action kind`);
+      if (fails.length === before) okCount++;
     }
-    io.log(`verified: ${okCount} (exclusions absent, entries matching)`);
+    io.log(`verified: ${okCount} of ${input.actions.length} actions`);
     for (const x of editorOnly) io.log(`editor only (3+ words, not in the export): ${x}`);
     for (const f of fails) io.error(`FAIL: ${f}`);
     if (fails.length) return 1;
@@ -398,7 +439,7 @@ function main(argv, io = { log: console.log, error: console.error }, deps = {}) 
       io.error(`cannot read input ${args.input}: ${e.message}`);
       return 1;
     }
-    return args.verify ? runVerify(args, io, deps) : runLoad(args, io, deps, input);
+    return args.verify ? runVerify(args, io, deps, input) : runLoad(args, io, deps, input);
   } catch (e) {
     if (e.code !== 'USAGE') throw e;
     io.error(`usage error: ${e.message}`);
