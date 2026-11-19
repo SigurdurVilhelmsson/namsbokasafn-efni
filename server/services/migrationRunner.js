@@ -87,6 +87,7 @@ function runAllMigrations() {
     require('../migrations/055-research-consent-and-switches'),
     require('../migrations/056-research-deletions'),
     require('../migrations/057-suggestion-view'),
+    require('../migrations/058-book-glossary-layer'),
   ];
 
   let applied = 0;

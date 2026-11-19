@@ -1,0 +1,3827 @@
+{
+  "schema": "book-glossary/1",
+  "book": "efnafraedi-2e",
+  "generated": "2026-11-19T19:21:22.985Z",
+  "exclusions": [
+    {
+      "english": "ADP",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'ADP' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 1 tilvik, öll táknið/skammstöfunin (skammstöfun). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:18.926Z"
+    },
+    {
+      "english": "ATP",
+      "conceptId": 45649,
+      "idordabankiId": 685504,
+      "reason": "Talið yfir alla efnafræðibókina (02-for-mt): 5 tilvik í 5 bútum (ch12 x2, ch16 x3), öll skammstöfunin; fulla heitið kemur aldrei fyrir. Hrein vélþýðing heldur ATP 5 af 5. Ekkert tekur við ef línan fer (ifRemoved tómt). Stærðfræðimerki örugg: ATP (2 tákn í jöfnum) er stutt merki og helst á ensku. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:15.320Z"
+    },
+    {
+      "english": "Ag",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Ag' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill silfur (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 122 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:21.676Z"
+    },
+    {
+      "english": "Al",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Al' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ál (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 147 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:17.030Z"
+    },
+    {
+      "english": "Ar",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Ar' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill argon (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 41 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:20.986Z"
+    },
+    {
+      "english": "Au",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Au' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill gull (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 14 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:17.125Z"
+    },
+    {
+      "english": "Bi",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Bi' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill bismút (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 10 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:15.205Z"
+    },
+    {
+      "english": "Bq",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Bq' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill bekerel (biology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 12 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:19.375Z"
+    },
+    {
+      "english": "Br",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Br' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 161 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:20.041Z"
+    },
+    {
+      "english": "Cl",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Cl' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill klór (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 432 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:16.206Z"
+    },
+    {
+      "english": "Co",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Co' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill kóbalt (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 99 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:16.821Z"
+    },
+    {
+      "english": "Cr",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Cr' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill króm (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 82 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:19.088Z"
+    },
+    {
+      "english": "Cu",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Cu' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 111 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:16.653Z"
+    },
+    {
+      "english": "FM",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'FM' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 7 tilvik, öll táknið/skammstöfunin (skammstöfun). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:20.336Z"
+    },
+    {
+      "english": "Fe",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Fe' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill járn (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 123 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:21.793Z"
+    },
+    {
+      "english": "Ge",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Ge' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 8 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:15.549Z"
+    },
+    {
+      "english": "Gy",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Gy' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 11 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:21.354Z"
+    },
+    {
+      "english": "Hg",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Hg' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill kvikasilfur (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 84 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:21.172Z"
+    },
+    {
+      "english": "Hz",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Hz' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 14 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:21.492Z"
+    },
+    {
+      "english": "Kr",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Kr' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 18 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:18.542Z"
+    },
+    {
+      "english": "La",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'La' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 13 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:18.332Z"
+    },
+    {
+      "english": "MRT",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'MRT' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 3 tilvik, öll táknið/skammstöfunin (skammstöfun). Formúlan Π = MRT (M·R·T), ekki skammstöfun. Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:19.143Z"
+    },
+    {
+      "english": "Mn",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Mn' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill mangan (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 39 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:21.847Z"
+    },
+    {
+      "english": "Mo",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Mo' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 13 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:19.262Z"
+    },
+    {
+      "english": "Ne",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Ne' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 45 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:21.970Z"
+    },
+    {
+      "english": "Ni",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Ni' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 41 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:18.073Z"
+    },
+    {
+      "english": "Np",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Np' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 1 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:20.147Z"
+    },
+    {
+      "english": "PG",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'PG' hverfur úr sjón efnafræðinnar. Talið: 3 tilvik í 2 bútum (ch02), öll fyrirtækjaheitið PG&E; vélþýðing heldur PG&E. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:15.615Z"
+    },
+    {
+      "english": "Pb",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Pb' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill blý (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 62 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:19.836Z"
+    },
+    {
+      "english": "Po",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Po' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 10 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:15.484Z"
+    },
+    {
+      "english": "Pt",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Pt' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill platína (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 31 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:16.018Z"
+    },
+    {
+      "english": "Pu",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Pu' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill plútóníum (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 9 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:17.608Z"
+    },
+    {
+      "english": "Ru",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Ru' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 6 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:20.094Z"
+    },
+    {
+      "english": "SI",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'SI' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 48 tilvik, öll táknið/skammstöfunin (skammstöfun). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:15.706Z"
+    },
+    {
+      "english": "Sb",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Sb' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill antímon (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 13 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:16.156Z"
+    },
+    {
+      "english": "Se",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Se' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill seleníum (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 31 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:17.564Z"
+    },
+    {
+      "english": "Si",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Si' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill kísill (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 71 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:20.194Z"
+    },
+    {
+      "english": "Sm",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Sm' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 7 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:20.240Z"
+    },
+    {
+      "english": "Sn",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Sn' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill tin (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 25 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:16.605Z"
+    },
+    {
+      "english": "Sv",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Sv' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 8 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:17.284Z"
+    },
+    {
+      "english": "Te",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Te' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 17 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:17.874Z"
+    },
+    {
+      "english": "Ti",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Ti' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 19 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:21.108Z"
+    },
+    {
+      "english": "Xe",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Xe' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill senón (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 26 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:20.291Z"
+    },
+    {
+      "english": "Zn",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Zn' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill sink (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 54 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:20.809Z"
+    },
+    {
+      "english": "Zr",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'Zr' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 4 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:18.434Z"
+    },
+    {
+      "english": "absolute",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'absolute' hverfur úr sjón efnafræðinnar; beinn (líffr.) má EKKI taka við. absolute zero → alkul og absolute temperature → Kelvinhiti haldast. Línan er bundið forskeyti (al-) sem nýtist ekki sem tillögu. Talið: 32 tilvik; absolute zero 9, absolute temperature 9, absolute value 6 (algildi), absolute number/mass 5, kelvin-kvarðinn ≈4. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:16.069Z"
+    },
+    {
+      "english": "amu",
+      "conceptId": 150,
+      "idordabankiId": 324608,
+      "reason": "Talið: 137 tilvik, nær öll eining á eftir tölu. [USER]: bókin skrifar u. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:16.554Z"
+    },
+    {
+      "english": "angstrom",
+      "conceptId": 1,
+      "idordabankiId": 320640,
+      "reason": "[USER]: opinber ritháttur er ångström. Talið: 9 tilvik í 8 bútum; hrein vélþýðing skrifar angström í 8 af 9, aldrei aangström. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:20.428Z"
+    },
+    {
+      "english": "arithmetic",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'arithmetic' hverfur úr sjón efnafræðinnar; reiknings- (stærðfr.) má EKKI taka við. Talið: 17 tilvik; rétt 5 (reikningur), rangt 12 (arithmetic sign = formerki, vélþýðing 12/12). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:18.026Z"
+    },
+    {
+      "english": "atm",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'atm' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill lofthjúpur (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 192 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:15.373Z"
+    },
+    {
+      "english": "bar",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'bar' hverfur úr sjón efnafræðinnar; sandrif (jarðvísindi) má EKKI taka við. Talið: 137 tilvik í 50 bútum; ≈45 þrýstieiningin (sami ritháttur, vélþýðing skrifar bar), ≈90 súlur í myndum/súluritum (ch13, ch14, ch21 alt-textar), gullstangir, DNA-súlur. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:15.838Z"
+    },
+    {
+      "english": "base pair",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'base pair' hverfur úr sjón efnafræðinnar. Talið: 12 tilvik í 11 bútum; 2 DNA-basapar (ch10), 10 acid-base pair (ch14; bandstrik telst orðskil). conjugate acid-base pair skráð í §C234 (samoka sýru-basa par kemur til greina). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:19.523Z"
+    },
+    {
+      "english": "basis",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'basis' hverfur úr sjón efnafræðinnar; grunnur (líffærafr.) má EKKI taka við. Talið: 33 tilvik; ≈28 grundvöllur (vélþýðing grundvöllur/á grundvelli, nær aldrei grunnur), ≈5 orðatök. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:19.610Z"
+    },
+    {
+      "english": "binary",
+      "conceptId": 4102,
+      "idordabankiId": 321986,
+      "reason": "[USER]: íslensk efnafræði notar tvíefna-. Talið: 42 tilvik í 37 bútum, öll efnafræðimerkingin (binary compound/acid/hydride/halide). Hrein vélþýðing ósamræmd og stundum röng (tvíundar- ≈25, tvíefna- ≈4, tvítengd). binary compound og binary acid skráð í §C234. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:17.809Z"
+    },
+    {
+      "english": "bisect",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'bisect' hverfur úr sjón efnafræðinnar; helminga (líffæra- og lífeðlisfr.) má EKKI taka við. Talið: 2 tilvik (ch10), bæði 'skipta' í þrjú svæði; vélþýðing skrifar skipta. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:21.556Z"
+    },
+    {
+      "english": "bit",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'bit' hverfur úr sjón efnafræðinnar; biti (líffærafr.) má EKKI taka við. Talið: 16 tilvik, öll 'a bit' (aðeins). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:17.329Z"
+    },
+    {
+      "english": "bloodstream",
+      "conceptId": 47904,
+      "idordabankiId": 687465,
+      "reason": "[USER]: Replace með blóðrás. Talið: 4 tilvik, öll blóðrás; hrein vélþýðing skrifar blóðrás í öllum. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:18.979Z"
+    },
+    {
+      "english": "boundary",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'boundary' hverfur úr sjón efnafræðinnar; jaðar (jarðv.) má EKKI taka við. boundary layer → jaðarlag helst. Talið (nákvæm mynd): 10 tilvik; rétt ≈3, rangt ≈7 (skilrúm 4, mörk 2, landamæri 1). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:17.178Z"
+    },
+    {
+      "english": "bug",
+      "conceptId": 4349,
+      "idordabankiId": 320632,
+      "reason": "AÐEINS þessi lína; ekkert tekur við. Talið: 1 tilvik (ch10, skordýr á vatnsyfirborði). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:16.156Z"
+    },
+    {
+      "english": "burst",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'burst' hverfur úr sjón efnafræðinnar; hrina (stjörnufr.) má EKKI taka við. Talið: 3 tilvik; 1 gammablossi (ch21), 2 springa (ch09, ch11). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:19.998Z"
+    },
+    {
+      "english": "cal",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'cal' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill kaloría (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 18 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:16.720Z"
+    },
+    {
+      "english": "cane sugar",
+      "conceptId": 50118,
+      "idordabankiId": 694164,
+      "reason": "[USER]: Replace með reyrsykur. Talið: 1 tilvik (ch03, '(sucrose, cane sugar)'); hrein vélþýðing skrifar þegar súkrósi, reyrsykur. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:18.650Z"
+    },
+    {
+      "english": "capacity",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'capacity' hverfur úr sjón efnafræðinnar; rúmtak (líffr.) má EKKI taka við. heat capacity → varmarýmd helst. Talið: 66 tilvik; 38 inni í heat capacity, ≈10 buffer capacity (vélþýðing stuðpúðageta samræmt; vantar sérfærslu, §C234), ≈10 geta/lyftigeta, ≈6 rýmd svigrúms/tanks. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:15.896Z"
+    },
+    {
+      "english": "cardiac cycle",
+      "conceptId": 49482,
+      "idordabankiId": 687791,
+      "reason": "[USER]: opinbera heitið er hjartalota. Talið: 2 tilvik í 1 bút (ch09); hrein vélþýðing skrifar hjartahringur. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:16.116Z"
+    },
+    {
+      "english": "cause",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'cause' hverfur úr sjón efnafræðinnar; orsök (líffæra- og lífeðlisfr.) má EKKI taka við. Talið (nákvæm mynd): 67 tilvik í 59 bútum; ≈60 sagnorð (valda), ≈7 nafnorð (orsök); vélþýðing velur rétt. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:15.959Z"
+    },
+    {
+      "english": "cd",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'cd' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill kerti (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 1 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:16.773Z"
+    },
+    {
+      "english": "chemical substance",
+      "conceptId": 4815,
+      "idordabankiId": 931676,
+      "reason": "AÐEINS þessi lína; ekkert tekur við (ifRemoved tómt). Íðorðið hreint efni er rétt fyrir ströngu merkinguna, en bókin notar 'chemical substance' aldrei þannig: öll 5 tilvik (ch01 x4, ch04) eru almennt 'efni'. Hrein vélþýðing: efni. pure substance er sérstök ensk færsla og ósnert. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:21.555Z"
+    },
+    {
+      "english": "compact",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: compact á að hverfa ALVEG úr sjón efnafræðinnar; éttbein (líffræði) má EKKI taka við. Ef það er ekki hægt: Keep. Talið yfir alla efnafræðibókina (02-for-mt): 6 tilvik í 5 bútum. Rangt: 2 (ch04 smábíll, ch06 geisladiskur). Vafasöm: 3 (ch10 lögun sameinda x2, ch21 bylgja þéttist), og þar valdi hrein vélþýðing betra orð (fyrirferðarminni, þéttari). Vélþýðingin notar þjapp- 0 af 3. Ekkert samræmisgildi. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:15.267Z"
+    },
+    {
+      "english": "competition",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'competition' hverfur úr sjón efnafræðinnar. Talið: 2 tilvik (ch01), bæði keppni; vélþýðing skrifar keppni. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:18.851Z"
+    },
+    {
+      "english": "condition",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'condition' hverfur úr sjón efnafræðinnar; skilyrða (líffærafr.) má EKKI taka við. Talið í myndinni sem ritstjóratólið finnur (eintölu): 24 tilvik; rétt ≈7 (skilyrði), rangt ≈17 (ástand). Hrein vélþýðing velur sjálf skilyrði/ástand rétt. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:16.474Z"
+    },
+    {
+      "english": "connection",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'connection' hverfur úr sjón efnafræðinnar; samgangur (stærðfr.) má EKKI taka við. Talið (nákvæm mynd): 6 tilvik, ≈3 tengsl / ≈3 tenging; vélþýðing velur eftir samhengi. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:19.890Z"
+    },
+    {
+      "english": "coordinate",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'coordinate' hverfur úr sjón efnafræðinnar; fjórflötungshnit (stærðfr.) má EKKI taka við. Talið (nákvæm mynd): 36 tilvik í 30 bútum; 3 hnit (coordinate system/plane; coordinate system → hnitakerfi er til), ≈21 coordinate (covalent) bond(s), ≈12 sagnorð (ligands coordinate). coordinate covalent bond skráð í §C234 (gjafatengi kemur til greina). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:20.586Z"
+    },
+    {
+      "english": "corollary",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'corollary' hverfur úr sjón efnafræðinnar; fylgisetning (stærðfr.) má EKKI taka við. Talið: 1 tilvik (ch09, 'the corollary is also true', vélþýðing hið gagnstæða). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:16.394Z"
+    },
+    {
+      "english": "cos",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'cos' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 1 tilvik, öll táknið/skammstöfunin (stærðfræðifall). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:17.470Z"
+    },
+    {
+      "english": "cross over",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'cross over' hverfur úr sjón efnafræðinnar. Talið: 1 tilvik (ch11, örvar fara yfir himnu í myndlýsingu); vélþýðing skrifar yfir. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:21.236Z"
+    },
+    {
+      "english": "day",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'day' hverfur úr sjón efnafræðinnar; dagur (stjörnufr.) má EKKI taka við. Talið (nákvæm mynd): 43 tilvik; ≈12 sólarhringur (per day), ≈31 dagur. Hrein vélþýðing dag/dagur alls staðar, aldrei sólarhringur. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:18.754Z"
+    },
+    {
+      "english": "decompose",
+      "conceptId": 2068,
+      "idordabankiId": 321293,
+      "reason": "[USER]: brotna niður (samræmist niðurbrotsefnahvarf). Talið: 18 tilvik í 17 bútum, öll efnafræðilegt niðurbrot; hrein vélþýðing brotna niður ≈13, sundrast/sundra ≈5. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:18.279Z"
+    },
+    {
+      "english": "diastolic pressure",
+      "conceptId": 50504,
+      "idordabankiId": 688619,
+      "reason": "AÐEINS RÖÐIN: [USER]: opinbera heitið er hlébilsþrýstingur, svo hlébilsþrýstingur (líffæra- og lífeðlisfr.) Á að taka við. Talið: 1 tilvik (ch09); hrein vélþýðing skrifar blóðþrýstingur. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:19.948Z"
+    },
+    {
+      "english": "dip",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'dip' hverfur úr sjón efnafræðinnar; halli (jarðv.) má EKKI taka við. Talið: 1 tilvik (ch06, dýfa). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:18.123Z"
+    },
+    {
+      "english": "eV",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'eV' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill rafeindavolt (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 14 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:18.177Z"
+    },
+    {
+      "english": "electronics",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'electronics' hverfur úr sjón efnafræðinnar; rafeindatækni (líffæra- og lífeðlisfr.) má EKKI taka við. Talið (nákvæm mynd): 10 tilvik, öll merkja tæki (rafeindatæki/raftæki); vélþýðing velur rétt. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:19.724Z"
+    },
+    {
+      "english": "equal",
+      "conceptId": 50731,
+      "idordabankiId": 689000,
+      "reason": "[USER]: Replace með jafn. Talið (nákvæm mynd): 401 tilvik í 290 bútum, nær öll magnbundinn jöfnuður (equal to, equal numbers, set equal); hrein vélþýðing skrifar jafn- í 315 bútum, eins í 49. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:19.780Z"
+    },
+    {
+      "english": "evaluate",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'evaluate' hverfur úr sjón efnafræðinnar; 'finna gildi (einhvers)' (stærðfr.) má EKKI taka við. Talið: 3 tilvik, öll 'meta'. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:17.928Z"
+    },
+    {
+      "english": "expose",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'expose' hverfur úr sjón efnafræðinnar. Talið: 3 tilvik í 2 bútum (ch18); 1 útsetja fyrir, 2 afhjúpa; vélþýðing skrifar afhjúpa. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:17.700Z"
+    },
+    {
+      "english": "fall",
+      "conceptId": 631,
+      "idordabankiId": 322604,
+      "reason": "AÐEINS þessi lína; ekkert tekur við. Talið: 25 tilvik; nafnorðið ≈1, sögnin ≈16, zigzag alt-texti 5, haust 2, fall short 1. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:18.925Z"
+    },
+    {
+      "english": "family",
+      "conceptId": 756,
+      "idordabankiId": 322921,
+      "reason": "[USER]: íslensk efnafræði notar flokkur. Talið: 22 tilvik; 15 frumefnafjölskyldur (oxygen/halogen/alkali metal family), 3 efnafjölskyldur, 1 júrtaætt, 1 heimili, 1 geislavirk röð. Hrein vélþýðing skrifar oftast fjölskylda. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:17.421Z"
+    },
+    {
+      "english": "field strength",
+      "conceptId": 3887,
+      "idordabankiId": 322287,
+      "reason": "[USER]: rétt mynd er sviðsstyrkur. Talið: 2 tilvik (ch02 magnetic/electric field strength). Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:15.783Z"
+    },
+    {
+      "english": "fine structure",
+      "conceptId": 707,
+      "idordabankiId": 321594,
+      "reason": "[USER]: opinbera hugtakið er fíngerð. Talið: 2 tilvik (ch06); hrein vélþýðing fínbygging/fínskipting. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:18.803Z"
+    },
+    {
+      "english": "fit",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'fit' hverfur úr sjón efnafræðinnar; hviða (líffr.) má EKKI taka við. Talið (nákvæm mynd): 30 tilvik í 22 bútum; ≈5 ferlamátun (linear fit, best fit), ≈18 sagnorð (passa), ≈7 induced fit o.fl. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:20.755Z"
+    },
+    {
+      "english": "fluid",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'fluid' hverfur úr sjón efnafræðinnar; lögur (líffærafr.) má EKKI taka við. [USER]: bókin notar yfirmarksvökvi fyrir supercritical fluid. Talið: 39 tilvik; straumefni passar ≈5 (ch09), supercritical fluid 12, hversdagsvökvar ≈17. Hrein vélþýðing aldrei straumefni. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:17.652Z"
+    },
+    {
+      "english": "ft",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'ft' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill fet (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 13 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:21.906Z"
+    },
+    {
+      "english": "function",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'function' hverfur úr sjón efnafræðinnar; starfsemi (líffr.) má EKKI taka við. Talið (nákvæm mynd): 93 tilvik í 84 bútum; fall ≈49, hlutverk/virkni ≈44; vélþýðing velur rétt. state function → ástandsfall og wave function → bylgjufall eru þegar til í efnafræði; eins orðs ritháttur wavefunction(s) (ch06) skráður í §C234. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:19.666Z"
+    },
+    {
+      "english": "gal",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'gal' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 6 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:21.291Z"
+    },
+    {
+      "english": "gap",
+      "conceptId": 954,
+      "idordabankiId": 320720,
+      "reason": "Halda aðeins fyrir 'band gap' (fjölorða færsla band gap → orkugeil, að ósk [USER]); stakt gap fellur þá á skarð (líffr.). Talið (nákvæm mynd): 22 tilvik í 13 bútum; 9 band gap (ch08), ≈8 efnislegt bil, 2 munur, 1 formúLan GaP (ch02). Hrein vélþýðing skrifar bil, aldrei geil. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:20.865Z"
+    },
+    {
+      "english": "geometry",
+      "conceptId": 2949,
+      "idordabankiId": 322199,
+      "reason": "[USER]: bókin notar lögun. Talið: 147 tilvik í 115 bútum (ch07, ch08), öll rúmleg lögun sameindar: electron-pair geometry 73, molecular geometry 19, annað 55. Hrein vélþýðing skrifar oftast rúmfræði (≈140), lögun ≈50. Samsetningarnar electron-pair/molecular geometry skráðar í §C234. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:17.516Z"
+    },
+    {
+      "english": "gray",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'gray' hverfur úr sjón efnafræðinnar; grár (líffærafr.) má EKKI taka við. Talið (nákvæm mynd): 73 tilvik í 43 bútum; 71 liturinn, 2 geislaeiningin (ch21 lykilhugtak; vélþýðing grei). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:17.975Z"
+    },
+    {
+      "english": "jet",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'jet' hverfur úr sjón efnafræðinnar; stúfur (stærðfr.) má EKKI taka við. Talið: 4 tilvik, öll þotur (þotuhreyfill, þotueldsneyti); vélþýðing velur rétt. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:21.047Z"
+    },
+    {
+      "english": "kcal",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'kcal' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill kílókaloría (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 7 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:18.704Z"
+    },
+    {
+      "english": "kg",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'kg' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 136 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:17.374Z"
+    },
+    {
+      "english": "lb",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'lb' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 27 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:20.380Z"
+    },
+    {
+      "english": "link",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'link' hverfur úr sjón efnafræðinnar; hlekkjafesti (stærðfr.) má EKKI taka við. Talið: 171 tilvik í 155 bútum; rétt ≈9 (sögnin to link); rangt: 139 inni í [[link:…]] merkjunum sjálfum (ritstjóratólið les hrátt), ≈10 orðið link í tenglum, ≈5 'Link to Learning', ≈8 tengsl. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:15.321Z"
+    },
+    {
+      "english": "ln",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'ln' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 27 tilvik, öll táknið/skammstöfunin (stærðfræðifall). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:21.736Z"
+    },
+    {
+      "english": "log",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'log' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 17 tilvik, öll táknið/skammstöfunin (stærðfræðifall). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:18.599Z"
+    },
+    {
+      "english": "matrix",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'matrix' hverfur úr sjón efnafræðinnar; grunnfrymi (líffr.) má EKKI taka við. Talið: 1 tilvik (ch21, pökkunarefni í súlu), rangt. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:19.948Z"
+    },
+    {
+      "english": "max",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'max' hverfur úr sjón efnafræðinnar. Talið: 8 tilvik í 7 bútum; 6 skammstöfun fyrir maximum, 2 nafnið Max (Planck, Born); aldrei hástak. Vélþýðing heldur max/Max. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:22.030Z"
+    },
+    {
+      "english": "neptunium",
+      "conceptId": 2538,
+      "idordabankiId": 322703,
+      "reason": "[USER]: opinbera heitið er neptúníum. Talið: 11 tilvik (4 í alt-texta lotukerfis, 7 í ch21); hrein vélþýðing notar neptúníum í meginmáli ch21. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:15.423Z"
+    },
+    {
+      "english": "nm",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'nm' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill nanómetri (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 29 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:16.934Z"
+    },
+    {
+      "english": "nuclear medicine",
+      "conceptId": 981,
+      "idordabankiId": 324434,
+      "reason": "[USER]: opinbera hugtakið er kjarnlæknisfræði. Talið: 5 tilvik (ch06 1, ch21 4); hrein vélþýðing kjarnalæknisfræði. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:17.079Z"
+    },
+    {
+      "english": "operation",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'operation' hverfur úr sjón efnafræðinnar; aðgerð (líffærafr.) má EKKI taka við. Talið: 12 tilvik, öll virkni/notkun tækis. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:19.476Z"
+    },
+    {
+      "english": "oz",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'oz' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 19 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:21.424Z"
+    },
+    {
+      "english": "pH",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'pH' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill sýrustig (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 265 tilvik, öll táknið/skammstöfunin (skammstöfun). Bókin heldur pH ([USER]). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:19.426Z"
+    },
+    {
+      "english": "panning",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'panning' hverfur úr sjón efnafræðinnar. Talið: 2 tilvik (ch03, ch19), bæði gullþvottur. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:18.487Z"
+    },
+    {
+      "english": "peel",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'peel' hverfur úr sjón efnafræðinnar. Talið: 1 tilvik (ch10, sögnin að fletta lögum af grafíti); vélþýðing skrifar fletta. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:21.617Z"
+    },
+    {
+      "english": "power",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'power' hverfur úr sjón efnafræðinnar; afl (eðlisfr.) má EKKI taka við. Talið: 164 tilvik í 79 bútum; rétt ≈20 (eðlisfræðilegt afl); rangt: veldi ≈107 (flest alt-textar), power plant 22, máttur 3, sögnin 'to power' ≈10. Hrein vélþýðing velur rétt eftir samhengi. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:18.383Z"
+    },
+    {
+      "english": "ppm",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'ppm' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 20 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:16.880Z"
+    },
+    {
+      "english": "precipitate",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'precipitate' hverfur úr sjón efnafræðinnar; botnfall (eðlisfr.) má EKKI taka við. precipitation → útfelling helst. Talið: 78 tilvik í 64 bútum, nafnorð 24, sögn 54 (falla út, flest ch15). Hrein vélþýðing samræmd sjálf: botnfall 17/18 fyrir nafnorð, falla út 48/60 fyrir sögn. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:16.268Z"
+    },
+    {
+      "english": "pull",
+      "conceptId": 4015,
+      "idordabankiId": 323177,
+      "reason": "[USER]: aðdráttarkraftur. Talið: 7 tilvik; 4 togkraftur kjarnans á rafeindir (ch06; vélþýðing aðdráttarkraftur alltaf), 3 sögnin (toga/draga). Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:19.029Z"
+    },
+    {
+      "english": "pus",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'pus' hverfur úr sjón efnafræðinnar; gröftur (líffæra- og lífeðlisfr.) má EKKI taka við. Talið: 1 tilvik (viðauki), prentvilla fyrir 'plus'; hrein vélþýðing skrifar plús. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:20.480Z"
+    },
+    {
+      "english": "quantity",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'quantity' hverfur úr sjón efnafræðinnar; magn (líffr.) má EKKI taka við. Talið (nákvæm mynd): 66 tilvik í 59 bútum; stærð ≈30, magn ≈36. Hrein vélþýðing velur stærð/magn rétt. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:19.569Z"
+    },
+    {
+      "english": "rad",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'rad' hverfur úr sjón efnafræðinnar. Talið: 13 tilvik í 8 bútum (ch21), öll geislaskammtseiningin rad, aldrei bogamálseining; vélþýðing heldur rad. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:20.697Z"
+    },
+    {
+      "english": "reciprocal",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'reciprocal' hverfur úr sjón efnafræðinnar; gagnkvæmur (líffr.) má EKKI taka við. Talið: 15 tilvik; rétt 2 (umhverfa), rangt 13 (gagnstæð/gagnkvæmt eftir samhengi; vélþýðing velur rétt). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:19.323Z"
+    },
+    {
+      "english": "reflux",
+      "conceptId": 5060,
+      "idordabankiId": 931609,
+      "reason": "AÐEINS þessi lína; bakflæði (líffr.) MÁ taka við. Talið: 1 tilvik (ch15 'acid reflux disease', læknisfræði), þar sem bakflæði er rétt; tilraunaaðferðin (sísuða) kemur aldrei fyrir í efnafræðibókinni. Hrein vélþýðing: bakflæðissúkdóm. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:17.030Z"
+    },
+    {
+      "english": "reverse osmosis",
+      "conceptId": 52393,
+      "idordabankiId": 721391,
+      "reason": "[USER]: opinbera heitið er öfugt himnuflæði (samsvörun við osmosis → himnuflæði). Talið: 7 tilvik í 6 bútum (ch11); hrein vélþýðing skrifar öfug osmósa. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:16.988Z"
+    },
+    {
+      "english": "sec",
+      "conceptId": 3179,
+      "idordabankiId": 321690,
+      "reason": "AÐEINS þessi lína; ekkert tekur við. Talið: 1 tilvik (ch20, sec-butyl forskeyti). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:19.609Z"
+    },
+    {
+      "english": "set",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'set' hverfur úr sjón efnafræðinnar; setja brot (líffærafr.) má EKKI taka við. Talið (nákvæm mynd): 117 tilvik í 96 bútum; rétt ≈25 (mengi skammtatalna/svigrúma), rangt ≈90 (sögnin ≈53, set of conditions/rules/lines). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:17.234Z"
+    },
+    {
+      "english": "sin",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: enska táknið 'sin' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 1 tilvik, öll táknið/skammstöfunin (stærðfræðifall). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:17.752Z"
+    },
+    {
+      "english": "standard cell",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'standard cell' hverfur úr sjón efnafræðinnar; staðalrafhlaða (líffæra- og lífeðlisfr.) má EKKI taka við. Talið (nákvæm mynd): 29 tilvik í 26 bútum (ch17), öll 'standard cell potential'. [USER]: opinbert efnafræðiorðasafn hefur standard cell potential = staðalíspenna og cell potential = kerspenna, ekkert fyrir standard cell. Hrein vélþýðing skrifar staðalkerspenna. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:20.927Z"
+    },
+    {
+      "english": "strand",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'strand' hverfur úr sjón efnafræðinnar. Talið: 10 tilvik í 4 bútum; 7 þráður (ch01), 1 próteinstrengur (ch10), 2 DNA-áttur (ch20). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:19.196Z"
+    },
+    {
+      "english": "study",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'study' hverfur úr sjón efnafræðinnar; rannsókn (líffæra- og lífeðlisfr.) má EKKI taka við. Talið: 49 tilvik í 46 bútum; ≈10 rannsókn, ≈25 fræðigrein/fræðasvið, ≈12 nám/læra; vélþýðing velur eftir samhengi. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:20.639Z"
+    },
+    {
+      "english": "substitution",
+      "conceptId": 5073,
+      "idordabankiId": 931677,
+      "reason": "Halda aðeins fyrir 'substitution reaction' (fjölorða færsla substitution reaction → skiptihvarf); stakt substitution fellur þá á innsetning (eðlisfr.), sem er rétt í 8 jöfnutilvikum. Talið: 17 tilvik, hvarfmerking 7 (6 með 'substitution reaction'; ch18 'by substitution' utan), innsetning í jöfnu 8, kristalgallar ch10 2. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:16.325Z"
+    },
+    {
+      "english": "tan",
+      "conceptId": 3936,
+      "idordabankiId": 324109,
+      "reason": "AÐEINS þessi lína; ekkert tekur við. Talið: 17 tilvik, öll liturinn (ljósbrúnn) eða sólbrúnka; hornafallið kemur aldrei fyrir. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:15.896Z"
+    },
+    {
+      "english": "work",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'work' hverfur úr sjón efnafræðinnar; vinna (eðlisfr.) má EKKI taka við. Talið: 371 tilvik í 260 bútum; rétt ≈56 varmafræðileg vinna (ch05 37, ch16 9, ch17 5); rangt ≈315 (213 myndheimildir 'modification of work by', ≈50 sögnin, ≈30 verk vísindamanna). Hrein vélþýðing notar vinna sjálf fyrir varmafræði. Málamiðlun: work (w) er skilgreint hugtak í ch05. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:20.529Z"
+    },
+    {
+      "english": "yield",
+      "conceptId": 0,
+      "idordabankiId": null,
+      "reason": "SKILYRÐI: stakt enskt 'yield' hverfur ALVEG úr sjón efnafræðinnar; heimtur (líffr.) má EKKI taka við. percent yield → prósentuheimtur, theoretical yield → fræðilegar heimtur og actual yield → raunheimtur HALDAST. Talið: 611 tilvik í 349 bútum; ≈530 sögn (gefur/myndar), ≈80 nafnorð, ≈70 þeirra í orðasamböndunum þremur. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:18.230Z"
+    }
+  ],
+  "entries": [
+    {
+      "conceptId": 70256,
+      "english": [
+        "amu"
+      ],
+      "icelandic": "u",
+      "domain": "chemistry",
+      "reason": "Talið: 137 tilvik, nær öll eining á eftir tölu. [USER]: bókin skrifar u. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:16.554Z",
+      "updatedBy": null,
+      "updatedAt": null
+    },
+    {
+      "conceptId": 70268,
+      "english": [
+        "angstrom"
+      ],
+      "icelandic": "ångström",
+      "domain": "chemistry",
+      "reason": "[USER]: opinber ritháttur er ångström. Talið: 9 tilvik í 8 bútum; hrein vélþýðing skrifar angström í 8 af 9, aldrei aangström. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:20.428Z",
+      "updatedBy": null,
+      "updatedAt": null
+    },
+    {
+      "conceptId": 70269,
+      "english": [
+        "band gap"
+      ],
+      "icelandic": "orkugeil",
+      "domain": "chemistry",
+      "reason": "Halda aðeins fyrir 'band gap' (fjölorða færsla band gap → orkugeil, að ósk [USER]); stakt gap fellur þá á skarð (líffr.). Talið (nákvæm mynd): 22 tilvik í 13 bútum; 9 band gap (ch08), ≈8 efnislegt bil, 2 munur, 1 formúLan GaP (ch02). Hrein vélþýðing skrifar bil, aldrei geil. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:20.866Z",
+      "updatedBy": null,
+      "updatedAt": null
+    },
+    {
+      "conceptId": 70261,
+      "english": [
+        "binary"
+      ],
+      "icelandic": "tvíefna-",
+      "domain": "chemistry",
+      "reason": "[USER]: íslensk efnafræði notar tvíefna-. Talið: 42 tilvik í 37 bútum, öll efnafræðimerkingin (binary compound/acid/hydride/halide). Hrein vélþýðing ósamræmd og stundum röng (tvíundar- ≈25, tvíefna- ≈4, tvítengd). binary compound og binary acid skráð í §C234. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:17.809Z",
+      "updatedBy": null,
+      "updatedAt": null
+    },
+    {
+      "conceptId": 70265,
+      "english": [
+        "bloodstream"
+      ],
+      "icelandic": "blóðrás",
+      "domain": "chemistry",
+      "reason": "[USER]: Replace með blóðrás. Talið: 4 tilvik, öll blóðrás; hrein vélþýðing skrifar blóðrás í öllum. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:18.979Z",
+      "updatedBy": null,
+      "updatedAt": null
+    },
+    {
+      "conceptId": 70263,
+      "english": [
+        "cane sugar"
+      ],
+      "icelandic": "reyrsykur",
+      "domain": "chemistry",
+      "reason": "[USER]: Replace með reyrsykur. Talið: 1 tilvik (ch03, '(sucrose, cane sugar)'); hrein vélþýðing skrifar þegar súkrósi, reyrsykur. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:18.650Z",
+      "updatedBy": null,
+      "updatedAt": null
+    },
+    {
+      "conceptId": 70254,
+      "english": [
+        "cardiac cycle"
+      ],
+      "icelandic": "hjartalota",
+      "domain": "chemistry",
+      "reason": "[USER]: opinbera heitið er hjartalota. Talið: 2 tilvik í 1 bút (ch09); hrein vélþýðing skrifar hjartahringur. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:16.116Z",
+      "updatedBy": null,
+      "updatedAt": null
+    },
+    {
+      "conceptId": 70262,
+      "english": [
+        "decompose"
+      ],
+      "icelandic": "brotna niður",
+      "domain": "chemistry",
+      "reason": "[USER]: brotna niður (samræmist niðurbrotsefnahvarf). Talið: 18 tilvik í 17 bútum, öll efnafræðilegt niðurbrot; hrein vélþýðing brotna niður ≈13, sundrast/sundra ≈5. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:18.279Z",
+      "updatedBy": null,
+      "updatedAt": null
+    },
+    {
+      "conceptId": 70267,
+      "english": [
+        "equal"
+      ],
+      "icelandic": "jafn",
+      "domain": "chemistry",
+      "reason": "[USER]: Replace með jafn. Talið (nákvæm mynd): 401 tilvik í 290 bútum, nær öll magnbundinn jöfnuður (equal to, equal numbers, set equal); hrein vélþýðing skrifar jafn- í 315 bútum, eins í 49. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:19.780Z",
+      "updatedBy": null,
+      "updatedAt": null
+    },
+    {
+      "conceptId": 70259,
+      "english": [
+        "family"
+      ],
+      "icelandic": "flokkur",
+      "domain": "chemistry",
+      "reason": "[USER]: íslensk efnafræði notar flokkur. Talið: 22 tilvik; 15 frumefnafjölskyldur (oxygen/halogen/alkali metal family), 3 efnafjölskyldur, 1 júrtaætt, 1 heimili, 1 geislavirk röð. Hrein vélþýðing skrifar oftast fjölskylda. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:17.421Z",
+      "updatedBy": null,
+      "updatedAt": null
+    },
+    {
+      "conceptId": 70253,
+      "english": [
+        "field strength"
+      ],
+      "icelandic": "sviðsstyrkur",
+      "domain": "chemistry",
+      "reason": "[USER]: rétt mynd er sviðsstyrkur. Talið: 2 tilvik (ch02 magnetic/electric field strength). Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:15.783Z",
+      "updatedBy": null,
+      "updatedAt": null
+    },
+    {
+      "conceptId": 70264,
+      "english": [
+        "fine structure"
+      ],
+      "icelandic": "fíngerð",
+      "domain": "chemistry",
+      "reason": "[USER]: opinbera hugtakið er fíngerð. Talið: 2 tilvik (ch06); hrein vélþýðing fínbygging/fínskipting. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:18.803Z",
+      "updatedBy": null,
+      "updatedAt": null
+    },
+    {
+      "conceptId": 70260,
+      "english": [
+        "geometry"
+      ],
+      "icelandic": "lögun",
+      "domain": "chemistry",
+      "reason": "[USER]: bókin notar lögun. Talið: 147 tilvik í 115 bútum (ch07, ch08), öll rúmleg lögun sameindar: electron-pair geometry 73, molecular geometry 19, annað 55. Hrein vélþýðing skrifar oftast rúmfræði (≈140), lögun ≈50. Samsetningarnar electron-pair/molecular geometry skráðar í §C234. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:17.516Z",
+      "updatedBy": null,
+      "updatedAt": null
+    },
+    {
+      "conceptId": 70252,
+      "english": [
+        "neptunium"
+      ],
+      "icelandic": "neptúníum",
+      "domain": "chemistry",
+      "reason": "[USER]: opinbera heitið er neptúníum. Talið: 11 tilvik (4 í alt-texta lotukerfis, 7 í ch21); hrein vélþýðing notar neptúníum í meginmáli ch21. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:15.423Z",
+      "updatedBy": null,
+      "updatedAt": null
+    },
+    {
+      "conceptId": 70258,
+      "english": [
+        "nuclear medicine"
+      ],
+      "icelandic": "kjarnlæknisfræði",
+      "domain": "chemistry",
+      "reason": "[USER]: opinbera hugtakið er kjarnlæknisfræði. Talið: 5 tilvik (ch06 1, ch21 4); hrein vélþýðing kjarnalæknisfræði. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:17.079Z",
+      "updatedBy": null,
+      "updatedAt": null
+    },
+    {
+      "conceptId": 70266,
+      "english": [
+        "pull"
+      ],
+      "icelandic": "aðdráttarkraftur",
+      "domain": "chemistry",
+      "reason": "[USER]: aðdráttarkraftur. Talið: 7 tilvik; 4 togkraftur kjarnans á rafeindir (ch06; vélþýðing aðdráttarkraftur alltaf), 3 sögnin (toga/draga). Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:19.029Z",
+      "updatedBy": null,
+      "updatedAt": null
+    },
+    {
+      "conceptId": 70257,
+      "english": [
+        "reverse osmosis"
+      ],
+      "icelandic": "öfugt himnuflæði",
+      "domain": "chemistry",
+      "reason": "[USER]: opinbera heitið er öfugt himnuflæði (samsvörun við osmosis → himnuflæði). Talið: 7 tilvik í 6 bútum (ch11); hrein vélþýðing skrifar öfug osmósa. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:16.988Z",
+      "updatedBy": null,
+      "updatedAt": null
+    },
+    {
+      "conceptId": 70270,
+      "english": [
+        "standard cell potential",
+        "standard cell potentials"
+      ],
+      "icelandic": "staðalíspenna",
+      "domain": "chemistry",
+      "reason": "the official chemistry glossary has standard cell potential = staðalíspenna ([USER], 2026-11-18; register §C234 ⑧)",
+      "source": "§C234",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:22.086Z",
+      "updatedBy": null,
+      "updatedAt": null
+    },
+    {
+      "conceptId": 70255,
+      "english": [
+        "substitution reaction"
+      ],
+      "icelandic": "skiptihvarf",
+      "domain": "chemistry",
+      "reason": "Halda aðeins fyrir 'substitution reaction' (fjölorða færsla substitution reaction → skiptihvarf); stakt substitution fellur þá á innsetning (eðlisfr.), sem er rétt í 8 jöfnutilvikum. Talið: 17 tilvik, hvarfmerking 7 (6 með 'substitution reaction'; ch18 'by substitution' utan), innsetning í jöfnu 8, kristalgallar ch10 2. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen",
+      "createdBy": "c19-load ([USER] rulings 2026-11-18)",
+      "createdAt": "2026-11-19T19:21:16.325Z",
+      "updatedBy": null,
+      "updatedAt": null
+    }
+  ],
+  "history": [
+    {
+      "id": 1,
+      "at": "2026-11-19T19:21:15.205Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Bi",
+      "before": null,
+      "after": {
+        "english": "Bi",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Bi' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill bismút (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 10 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 2,
+      "at": "2026-11-19T19:21:15.267Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "compact",
+      "before": null,
+      "after": {
+        "english": "compact",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: compact á að hverfa ALVEG úr sjón efnafræðinnar; éttbein (líffræði) má EKKI taka við. Ef það er ekki hægt: Keep. Talið yfir alla efnafræðibókina (02-for-mt): 6 tilvik í 5 bútum. Rangt: 2 (ch04 smábíll, ch06 geisladiskur). Vafasöm: 3 (ch10 lögun sameinda x2, ch21 bylgja þéttist), og þar valdi hrein vélþýðing betra orð (fyrirferðarminni, þéttari). Vélþýðingin notar þjapp- 0 af 3. Ekkert samræmisgildi. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 3,
+      "at": "2026-11-19T19:21:15.320Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "ATP",
+      "before": null,
+      "after": {
+        "english": "ATP",
+        "conceptId": 45649,
+        "idordabankiId": 685504
+      },
+      "reason": "Talið yfir alla efnafræðibókina (02-for-mt): 5 tilvik í 5 bútum (ch12 x2, ch16 x3), öll skammstöfunin; fulla heitið kemur aldrei fyrir. Hrein vélþýðing heldur ATP 5 af 5. Ekkert tekur við ef línan fer (ifRemoved tómt). Stærðfræðimerki örugg: ATP (2 tákn í jöfnum) er stutt merki og helst á ensku. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 4,
+      "at": "2026-11-19T19:21:15.321Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "link",
+      "before": null,
+      "after": {
+        "english": "link",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'link' hverfur úr sjón efnafræðinnar; hlekkjafesti (stærðfr.) má EKKI taka við. Talið: 171 tilvik í 155 bútum; rétt ≈9 (sögnin to link); rangt: 139 inni í [[link:…]] merkjunum sjálfum (ritstjóratólið les hrátt), ≈10 orðið link í tenglum, ≈5 'Link to Learning', ≈8 tengsl. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 5,
+      "at": "2026-11-19T19:21:15.373Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "atm",
+      "before": null,
+      "after": {
+        "english": "atm",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'atm' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill lofthjúpur (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 192 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 6,
+      "at": "2026-11-19T19:21:15.423Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "entry-add",
+      "english": "neptunium",
+      "before": null,
+      "after": {
+        "english": [
+          "neptunium"
+        ],
+        "icelandic": "neptúníum",
+        "replaces": [
+          2538
+        ]
+      },
+      "reason": "[USER]: opinbera heitið er neptúníum. Talið: 11 tilvik (4 í alt-texta lotukerfis, 7 í ch21); hrein vélþýðing notar neptúníum í meginmáli ch21. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 7,
+      "at": "2026-11-19T19:21:15.423Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "neptunium",
+      "before": null,
+      "after": {
+        "english": "neptunium",
+        "conceptId": 2538,
+        "idordabankiId": 322703
+      },
+      "reason": "[USER]: opinbera heitið er neptúníum. Talið: 11 tilvik (4 í alt-texta lotukerfis, 7 í ch21); hrein vélþýðing notar neptúníum í meginmáli ch21. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 8,
+      "at": "2026-11-19T19:21:15.484Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Po",
+      "before": null,
+      "after": {
+        "english": "Po",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Po' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 10 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 9,
+      "at": "2026-11-19T19:21:15.549Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Ge",
+      "before": null,
+      "after": {
+        "english": "Ge",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Ge' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 8 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 10,
+      "at": "2026-11-19T19:21:15.615Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "PG",
+      "before": null,
+      "after": {
+        "english": "PG",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'PG' hverfur úr sjón efnafræðinnar. Talið: 3 tilvik í 2 bútum (ch02), öll fyrirtækjaheitið PG&E; vélþýðing heldur PG&E. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 11,
+      "at": "2026-11-19T19:21:15.706Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "SI",
+      "before": null,
+      "after": {
+        "english": "SI",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'SI' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 48 tilvik, öll táknið/skammstöfunin (skammstöfun). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 12,
+      "at": "2026-11-19T19:21:15.783Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "entry-add",
+      "english": "field strength",
+      "before": null,
+      "after": {
+        "english": [
+          "field strength"
+        ],
+        "icelandic": "sviðsstyrkur",
+        "replaces": [
+          3887
+        ]
+      },
+      "reason": "[USER]: rétt mynd er sviðsstyrkur. Talið: 2 tilvik (ch02 magnetic/electric field strength). Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 13,
+      "at": "2026-11-19T19:21:15.783Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "field strength",
+      "before": null,
+      "after": {
+        "english": "field strength",
+        "conceptId": 3887,
+        "idordabankiId": 322287
+      },
+      "reason": "[USER]: rétt mynd er sviðsstyrkur. Talið: 2 tilvik (ch02 magnetic/electric field strength). Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 14,
+      "at": "2026-11-19T19:21:15.838Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "bar",
+      "before": null,
+      "after": {
+        "english": "bar",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'bar' hverfur úr sjón efnafræðinnar; sandrif (jarðvísindi) má EKKI taka við. Talið: 137 tilvik í 50 bútum; ≈45 þrýstieiningin (sami ritháttur, vélþýðing skrifar bar), ≈90 súlur í myndum/súluritum (ch13, ch14, ch21 alt-textar), gullstangir, DNA-súlur. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 15,
+      "at": "2026-11-19T19:21:15.896Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "tan",
+      "before": null,
+      "after": {
+        "english": "tan",
+        "conceptId": 3936,
+        "idordabankiId": 324109
+      },
+      "reason": "AÐEINS þessi lína; ekkert tekur við. Talið: 17 tilvik, öll liturinn (ljósbrúnn) eða sólbrúnka; hornafallið kemur aldrei fyrir. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 16,
+      "at": "2026-11-19T19:21:15.896Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "capacity",
+      "before": null,
+      "after": {
+        "english": "capacity",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'capacity' hverfur úr sjón efnafræðinnar; rúmtak (líffr.) má EKKI taka við. heat capacity → varmarýmd helst. Talið: 66 tilvik; 38 inni í heat capacity, ≈10 buffer capacity (vélþýðing stuðpúðageta samræmt; vantar sérfærslu, §C234), ≈10 geta/lyftigeta, ≈6 rýmd svigrúms/tanks. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 17,
+      "at": "2026-11-19T19:21:15.959Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "cause",
+      "before": null,
+      "after": {
+        "english": "cause",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'cause' hverfur úr sjón efnafræðinnar; orsök (líffæra- og lífeðlisfr.) má EKKI taka við. Talið (nákvæm mynd): 67 tilvik í 59 bútum; ≈60 sagnorð (valda), ≈7 nafnorð (orsök); vélþýðing velur rétt. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 18,
+      "at": "2026-11-19T19:21:16.018Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Pt",
+      "before": null,
+      "after": {
+        "english": "Pt",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Pt' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill platína (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 31 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 19,
+      "at": "2026-11-19T19:21:16.069Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "absolute",
+      "before": null,
+      "after": {
+        "english": "absolute",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'absolute' hverfur úr sjón efnafræðinnar; beinn (líffr.) má EKKI taka við. absolute zero → alkul og absolute temperature → Kelvinhiti haldast. Línan er bundið forskeyti (al-) sem nýtist ekki sem tillögu. Talið: 32 tilvik; absolute zero 9, absolute temperature 9, absolute value 6 (algildi), absolute number/mass 5, kelvin-kvarðinn ≈4. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 20,
+      "at": "2026-11-19T19:21:16.116Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "entry-add",
+      "english": "cardiac cycle",
+      "before": null,
+      "after": {
+        "english": [
+          "cardiac cycle"
+        ],
+        "icelandic": "hjartalota",
+        "replaces": [
+          49482
+        ]
+      },
+      "reason": "[USER]: opinbera heitið er hjartalota. Talið: 2 tilvik í 1 bút (ch09); hrein vélþýðing skrifar hjartahringur. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 21,
+      "at": "2026-11-19T19:21:16.116Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "cardiac cycle",
+      "before": null,
+      "after": {
+        "english": "cardiac cycle",
+        "conceptId": 49482,
+        "idordabankiId": 687791
+      },
+      "reason": "[USER]: opinbera heitið er hjartalota. Talið: 2 tilvik í 1 bút (ch09); hrein vélþýðing skrifar hjartahringur. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 22,
+      "at": "2026-11-19T19:21:16.156Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "bug",
+      "before": null,
+      "after": {
+        "english": "bug",
+        "conceptId": 4349,
+        "idordabankiId": 320632
+      },
+      "reason": "AÐEINS þessi lína; ekkert tekur við. Talið: 1 tilvik (ch10, skordýr á vatnsyfirborði). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 23,
+      "at": "2026-11-19T19:21:16.156Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Sb",
+      "before": null,
+      "after": {
+        "english": "Sb",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Sb' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill antímon (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 13 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 24,
+      "at": "2026-11-19T19:21:16.206Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Cl",
+      "before": null,
+      "after": {
+        "english": "Cl",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Cl' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill klór (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 432 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 25,
+      "at": "2026-11-19T19:21:16.268Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "precipitate",
+      "before": null,
+      "after": {
+        "english": "precipitate",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'precipitate' hverfur úr sjón efnafræðinnar; botnfall (eðlisfr.) má EKKI taka við. precipitation → útfelling helst. Talið: 78 tilvik í 64 bútum, nafnorð 24, sögn 54 (falla út, flest ch15). Hrein vélþýðing samræmd sjálf: botnfall 17/18 fyrir nafnorð, falla út 48/60 fyrir sögn. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 26,
+      "at": "2026-11-19T19:21:16.325Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "substitution",
+      "before": null,
+      "after": {
+        "english": "substitution",
+        "conceptId": 5073,
+        "idordabankiId": 931677
+      },
+      "reason": "Halda aðeins fyrir 'substitution reaction' (fjölorða færsla substitution reaction → skiptihvarf); stakt substitution fellur þá á innsetning (eðlisfr.), sem er rétt í 8 jöfnutilvikum. Talið: 17 tilvik, hvarfmerking 7 (6 með 'substitution reaction'; ch18 'by substitution' utan), innsetning í jöfnu 8, kristalgallar ch10 2. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 27,
+      "at": "2026-11-19T19:21:16.325Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "entry-add",
+      "english": "substitution reaction",
+      "before": null,
+      "after": {
+        "english": [
+          "substitution reaction"
+        ],
+        "icelandic": "skiptihvarf",
+        "replaces": []
+      },
+      "reason": "Halda aðeins fyrir 'substitution reaction' (fjölorða færsla substitution reaction → skiptihvarf); stakt substitution fellur þá á innsetning (eðlisfr.), sem er rétt í 8 jöfnutilvikum. Talið: 17 tilvik, hvarfmerking 7 (6 með 'substitution reaction'; ch18 'by substitution' utan), innsetning í jöfnu 8, kristalgallar ch10 2. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 28,
+      "at": "2026-11-19T19:21:16.394Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "corollary",
+      "before": null,
+      "after": {
+        "english": "corollary",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'corollary' hverfur úr sjón efnafræðinnar; fylgisetning (stærðfr.) má EKKI taka við. Talið: 1 tilvik (ch09, 'the corollary is also true', vélþýðing hið gagnstæða). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 29,
+      "at": "2026-11-19T19:21:16.474Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "condition",
+      "before": null,
+      "after": {
+        "english": "condition",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'condition' hverfur úr sjón efnafræðinnar; skilyrða (líffærafr.) má EKKI taka við. Talið í myndinni sem ritstjóratólið finnur (eintölu): 24 tilvik; rétt ≈7 (skilyrði), rangt ≈17 (ástand). Hrein vélþýðing velur sjálf skilyrði/ástand rétt. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 30,
+      "at": "2026-11-19T19:21:16.554Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "entry-add",
+      "english": "amu",
+      "before": null,
+      "after": {
+        "english": [
+          "amu"
+        ],
+        "icelandic": "u",
+        "replaces": [
+          150
+        ]
+      },
+      "reason": "Talið: 137 tilvik, nær öll eining á eftir tölu. [USER]: bókin skrifar u. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 31,
+      "at": "2026-11-19T19:21:16.554Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "amu",
+      "before": null,
+      "after": {
+        "english": "amu",
+        "conceptId": 150,
+        "idordabankiId": 324608
+      },
+      "reason": "Talið: 137 tilvik, nær öll eining á eftir tölu. [USER]: bókin skrifar u. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 32,
+      "at": "2026-11-19T19:21:16.605Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Sn",
+      "before": null,
+      "after": {
+        "english": "Sn",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Sn' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill tin (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 25 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 33,
+      "at": "2026-11-19T19:21:16.653Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Cu",
+      "before": null,
+      "after": {
+        "english": "Cu",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Cu' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 111 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 34,
+      "at": "2026-11-19T19:21:16.720Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "cal",
+      "before": null,
+      "after": {
+        "english": "cal",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'cal' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill kaloría (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 18 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 35,
+      "at": "2026-11-19T19:21:16.773Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "cd",
+      "before": null,
+      "after": {
+        "english": "cd",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'cd' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill kerti (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 1 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 36,
+      "at": "2026-11-19T19:21:16.821Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Co",
+      "before": null,
+      "after": {
+        "english": "Co",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Co' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill kóbalt (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 99 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 37,
+      "at": "2026-11-19T19:21:16.880Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "ppm",
+      "before": null,
+      "after": {
+        "english": "ppm",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'ppm' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 20 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 38,
+      "at": "2026-11-19T19:21:16.934Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "nm",
+      "before": null,
+      "after": {
+        "english": "nm",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'nm' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill nanómetri (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 29 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 39,
+      "at": "2026-11-19T19:21:16.988Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "entry-add",
+      "english": "reverse osmosis",
+      "before": null,
+      "after": {
+        "english": [
+          "reverse osmosis"
+        ],
+        "icelandic": "öfugt himnuflæði",
+        "replaces": [
+          52393
+        ]
+      },
+      "reason": "[USER]: opinbera heitið er öfugt himnuflæði (samsvörun við osmosis → himnuflæði). Talið: 7 tilvik í 6 bútum (ch11); hrein vélþýðing skrifar öfug osmósa. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 40,
+      "at": "2026-11-19T19:21:16.988Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "reverse osmosis",
+      "before": null,
+      "after": {
+        "english": "reverse osmosis",
+        "conceptId": 52393,
+        "idordabankiId": 721391
+      },
+      "reason": "[USER]: opinbera heitið er öfugt himnuflæði (samsvörun við osmosis → himnuflæði). Talið: 7 tilvik í 6 bútum (ch11); hrein vélþýðing skrifar öfug osmósa. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 41,
+      "at": "2026-11-19T19:21:17.030Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "reflux",
+      "before": null,
+      "after": {
+        "english": "reflux",
+        "conceptId": 5060,
+        "idordabankiId": 931609
+      },
+      "reason": "AÐEINS þessi lína; bakflæði (líffr.) MÁ taka við. Talið: 1 tilvik (ch15 'acid reflux disease', læknisfræði), þar sem bakflæði er rétt; tilraunaaðferðin (sísuða) kemur aldrei fyrir í efnafræðibókinni. Hrein vélþýðing: bakflæðissúkdóm. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 42,
+      "at": "2026-11-19T19:21:17.030Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Al",
+      "before": null,
+      "after": {
+        "english": "Al",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Al' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ál (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 147 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 43,
+      "at": "2026-11-19T19:21:17.079Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "entry-add",
+      "english": "nuclear medicine",
+      "before": null,
+      "after": {
+        "english": [
+          "nuclear medicine"
+        ],
+        "icelandic": "kjarnlæknisfræði",
+        "replaces": [
+          981
+        ]
+      },
+      "reason": "[USER]: opinbera hugtakið er kjarnlæknisfræði. Talið: 5 tilvik (ch06 1, ch21 4); hrein vélþýðing kjarnalæknisfræði. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 44,
+      "at": "2026-11-19T19:21:17.079Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "nuclear medicine",
+      "before": null,
+      "after": {
+        "english": "nuclear medicine",
+        "conceptId": 981,
+        "idordabankiId": 324434
+      },
+      "reason": "[USER]: opinbera hugtakið er kjarnlæknisfræði. Talið: 5 tilvik (ch06 1, ch21 4); hrein vélþýðing kjarnalæknisfræði. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 45,
+      "at": "2026-11-19T19:21:17.125Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Au",
+      "before": null,
+      "after": {
+        "english": "Au",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Au' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill gull (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 14 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 46,
+      "at": "2026-11-19T19:21:17.178Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "boundary",
+      "before": null,
+      "after": {
+        "english": "boundary",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'boundary' hverfur úr sjón efnafræðinnar; jaðar (jarðv.) má EKKI taka við. boundary layer → jaðarlag helst. Talið (nákvæm mynd): 10 tilvik; rétt ≈3, rangt ≈7 (skilrúm 4, mörk 2, landamæri 1). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 47,
+      "at": "2026-11-19T19:21:17.234Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "set",
+      "before": null,
+      "after": {
+        "english": "set",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'set' hverfur úr sjón efnafræðinnar; setja brot (líffærafr.) má EKKI taka við. Talið (nákvæm mynd): 117 tilvik í 96 bútum; rétt ≈25 (mengi skammtatalna/svigrúma), rangt ≈90 (sögnin ≈53, set of conditions/rules/lines). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 48,
+      "at": "2026-11-19T19:21:17.284Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Sv",
+      "before": null,
+      "after": {
+        "english": "Sv",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Sv' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 8 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 49,
+      "at": "2026-11-19T19:21:17.329Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "bit",
+      "before": null,
+      "after": {
+        "english": "bit",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'bit' hverfur úr sjón efnafræðinnar; biti (líffærafr.) má EKKI taka við. Talið: 16 tilvik, öll 'a bit' (aðeins). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 50,
+      "at": "2026-11-19T19:21:17.374Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "kg",
+      "before": null,
+      "after": {
+        "english": "kg",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'kg' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 136 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 51,
+      "at": "2026-11-19T19:21:17.421Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "entry-add",
+      "english": "family",
+      "before": null,
+      "after": {
+        "english": [
+          "family"
+        ],
+        "icelandic": "flokkur",
+        "replaces": [
+          756
+        ]
+      },
+      "reason": "[USER]: íslensk efnafræði notar flokkur. Talið: 22 tilvik; 15 frumefnafjölskyldur (oxygen/halogen/alkali metal family), 3 efnafjölskyldur, 1 júrtaætt, 1 heimili, 1 geislavirk röð. Hrein vélþýðing skrifar oftast fjölskylda. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 52,
+      "at": "2026-11-19T19:21:17.421Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "family",
+      "before": null,
+      "after": {
+        "english": "family",
+        "conceptId": 756,
+        "idordabankiId": 322921
+      },
+      "reason": "[USER]: íslensk efnafræði notar flokkur. Talið: 22 tilvik; 15 frumefnafjölskyldur (oxygen/halogen/alkali metal family), 3 efnafjölskyldur, 1 júrtaætt, 1 heimili, 1 geislavirk röð. Hrein vélþýðing skrifar oftast fjölskylda. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 53,
+      "at": "2026-11-19T19:21:17.470Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "cos",
+      "before": null,
+      "after": {
+        "english": "cos",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'cos' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 1 tilvik, öll táknið/skammstöfunin (stærðfræðifall). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 54,
+      "at": "2026-11-19T19:21:17.516Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "entry-add",
+      "english": "geometry",
+      "before": null,
+      "after": {
+        "english": [
+          "geometry"
+        ],
+        "icelandic": "lögun",
+        "replaces": [
+          2949
+        ]
+      },
+      "reason": "[USER]: bókin notar lögun. Talið: 147 tilvik í 115 bútum (ch07, ch08), öll rúmleg lögun sameindar: electron-pair geometry 73, molecular geometry 19, annað 55. Hrein vélþýðing skrifar oftast rúmfræði (≈140), lögun ≈50. Samsetningarnar electron-pair/molecular geometry skráðar í §C234. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 55,
+      "at": "2026-11-19T19:21:17.516Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "geometry",
+      "before": null,
+      "after": {
+        "english": "geometry",
+        "conceptId": 2949,
+        "idordabankiId": 322199
+      },
+      "reason": "[USER]: bókin notar lögun. Talið: 147 tilvik í 115 bútum (ch07, ch08), öll rúmleg lögun sameindar: electron-pair geometry 73, molecular geometry 19, annað 55. Hrein vélþýðing skrifar oftast rúmfræði (≈140), lögun ≈50. Samsetningarnar electron-pair/molecular geometry skráðar í §C234. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 56,
+      "at": "2026-11-19T19:21:17.564Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Se",
+      "before": null,
+      "after": {
+        "english": "Se",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Se' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill seleníum (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 31 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 57,
+      "at": "2026-11-19T19:21:17.608Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Pu",
+      "before": null,
+      "after": {
+        "english": "Pu",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Pu' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill plútóníum (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 9 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 58,
+      "at": "2026-11-19T19:21:17.652Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "fluid",
+      "before": null,
+      "after": {
+        "english": "fluid",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'fluid' hverfur úr sjón efnafræðinnar; lögur (líffærafr.) má EKKI taka við. [USER]: bókin notar yfirmarksvökvi fyrir supercritical fluid. Talið: 39 tilvik; straumefni passar ≈5 (ch09), supercritical fluid 12, hversdagsvökvar ≈17. Hrein vélþýðing aldrei straumefni. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 59,
+      "at": "2026-11-19T19:21:17.700Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "expose",
+      "before": null,
+      "after": {
+        "english": "expose",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'expose' hverfur úr sjón efnafræðinnar. Talið: 3 tilvik í 2 bútum (ch18); 1 útsetja fyrir, 2 afhjúpa; vélþýðing skrifar afhjúpa. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 60,
+      "at": "2026-11-19T19:21:17.752Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "sin",
+      "before": null,
+      "after": {
+        "english": "sin",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'sin' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 1 tilvik, öll táknið/skammstöfunin (stærðfræðifall). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 61,
+      "at": "2026-11-19T19:21:17.809Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "entry-add",
+      "english": "binary",
+      "before": null,
+      "after": {
+        "english": [
+          "binary"
+        ],
+        "icelandic": "tvíefna-",
+        "replaces": [
+          4102
+        ]
+      },
+      "reason": "[USER]: íslensk efnafræði notar tvíefna-. Talið: 42 tilvik í 37 bútum, öll efnafræðimerkingin (binary compound/acid/hydride/halide). Hrein vélþýðing ósamræmd og stundum röng (tvíundar- ≈25, tvíefna- ≈4, tvítengd). binary compound og binary acid skráð í §C234. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 62,
+      "at": "2026-11-19T19:21:17.809Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "binary",
+      "before": null,
+      "after": {
+        "english": "binary",
+        "conceptId": 4102,
+        "idordabankiId": 321986
+      },
+      "reason": "[USER]: íslensk efnafræði notar tvíefna-. Talið: 42 tilvik í 37 bútum, öll efnafræðimerkingin (binary compound/acid/hydride/halide). Hrein vélþýðing ósamræmd og stundum röng (tvíundar- ≈25, tvíefna- ≈4, tvítengd). binary compound og binary acid skráð í §C234. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 63,
+      "at": "2026-11-19T19:21:17.874Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Te",
+      "before": null,
+      "after": {
+        "english": "Te",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Te' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 17 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 64,
+      "at": "2026-11-19T19:21:17.928Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "evaluate",
+      "before": null,
+      "after": {
+        "english": "evaluate",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'evaluate' hverfur úr sjón efnafræðinnar; 'finna gildi (einhvers)' (stærðfr.) má EKKI taka við. Talið: 3 tilvik, öll 'meta'. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 65,
+      "at": "2026-11-19T19:21:17.975Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "gray",
+      "before": null,
+      "after": {
+        "english": "gray",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'gray' hverfur úr sjón efnafræðinnar; grár (líffærafr.) má EKKI taka við. Talið (nákvæm mynd): 73 tilvik í 43 bútum; 71 liturinn, 2 geislaeiningin (ch21 lykilhugtak; vélþýðing grei). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 66,
+      "at": "2026-11-19T19:21:18.026Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "arithmetic",
+      "before": null,
+      "after": {
+        "english": "arithmetic",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'arithmetic' hverfur úr sjón efnafræðinnar; reiknings- (stærðfr.) má EKKI taka við. Talið: 17 tilvik; rétt 5 (reikningur), rangt 12 (arithmetic sign = formerki, vélþýðing 12/12). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 67,
+      "at": "2026-11-19T19:21:18.073Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Ni",
+      "before": null,
+      "after": {
+        "english": "Ni",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Ni' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 41 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 68,
+      "at": "2026-11-19T19:21:18.123Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "dip",
+      "before": null,
+      "after": {
+        "english": "dip",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'dip' hverfur úr sjón efnafræðinnar; halli (jarðv.) má EKKI taka við. Talið: 1 tilvik (ch06, dýfa). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 69,
+      "at": "2026-11-19T19:21:18.177Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "eV",
+      "before": null,
+      "after": {
+        "english": "eV",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'eV' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill rafeindavolt (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 14 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 70,
+      "at": "2026-11-19T19:21:18.230Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "yield",
+      "before": null,
+      "after": {
+        "english": "yield",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: stakt enskt 'yield' hverfur ALVEG úr sjón efnafræðinnar; heimtur (líffr.) má EKKI taka við. percent yield → prósentuheimtur, theoretical yield → fræðilegar heimtur og actual yield → raunheimtur HALDAST. Talið: 611 tilvik í 349 bútum; ≈530 sögn (gefur/myndar), ≈80 nafnorð, ≈70 þeirra í orðasamböndunum þremur. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 71,
+      "at": "2026-11-19T19:21:18.279Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "entry-add",
+      "english": "decompose",
+      "before": null,
+      "after": {
+        "english": [
+          "decompose"
+        ],
+        "icelandic": "brotna niður",
+        "replaces": [
+          2068
+        ]
+      },
+      "reason": "[USER]: brotna niður (samræmist niðurbrotsefnahvarf). Talið: 18 tilvik í 17 bútum, öll efnafræðilegt niðurbrot; hrein vélþýðing brotna niður ≈13, sundrast/sundra ≈5. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 72,
+      "at": "2026-11-19T19:21:18.279Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "decompose",
+      "before": null,
+      "after": {
+        "english": "decompose",
+        "conceptId": 2068,
+        "idordabankiId": 321293
+      },
+      "reason": "[USER]: brotna niður (samræmist niðurbrotsefnahvarf). Talið: 18 tilvik í 17 bútum, öll efnafræðilegt niðurbrot; hrein vélþýðing brotna niður ≈13, sundrast/sundra ≈5. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 73,
+      "at": "2026-11-19T19:21:18.332Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "La",
+      "before": null,
+      "after": {
+        "english": "La",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'La' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 13 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 74,
+      "at": "2026-11-19T19:21:18.383Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "power",
+      "before": null,
+      "after": {
+        "english": "power",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'power' hverfur úr sjón efnafræðinnar; afl (eðlisfr.) má EKKI taka við. Talið: 164 tilvik í 79 bútum; rétt ≈20 (eðlisfræðilegt afl); rangt: veldi ≈107 (flest alt-textar), power plant 22, máttur 3, sögnin 'to power' ≈10. Hrein vélþýðing velur rétt eftir samhengi. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 75,
+      "at": "2026-11-19T19:21:18.434Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Zr",
+      "before": null,
+      "after": {
+        "english": "Zr",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Zr' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 4 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 76,
+      "at": "2026-11-19T19:21:18.487Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "panning",
+      "before": null,
+      "after": {
+        "english": "panning",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'panning' hverfur úr sjón efnafræðinnar. Talið: 2 tilvik (ch03, ch19), bæði gullþvottur. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 77,
+      "at": "2026-11-19T19:21:18.542Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Kr",
+      "before": null,
+      "after": {
+        "english": "Kr",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Kr' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 18 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 78,
+      "at": "2026-11-19T19:21:18.599Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "log",
+      "before": null,
+      "after": {
+        "english": "log",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'log' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 17 tilvik, öll táknið/skammstöfunin (stærðfræðifall). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 79,
+      "at": "2026-11-19T19:21:18.650Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "entry-add",
+      "english": "cane sugar",
+      "before": null,
+      "after": {
+        "english": [
+          "cane sugar"
+        ],
+        "icelandic": "reyrsykur",
+        "replaces": [
+          50118
+        ]
+      },
+      "reason": "[USER]: Replace með reyrsykur. Talið: 1 tilvik (ch03, '(sucrose, cane sugar)'); hrein vélþýðing skrifar þegar súkrósi, reyrsykur. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 80,
+      "at": "2026-11-19T19:21:18.650Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "cane sugar",
+      "before": null,
+      "after": {
+        "english": "cane sugar",
+        "conceptId": 50118,
+        "idordabankiId": 694164
+      },
+      "reason": "[USER]: Replace með reyrsykur. Talið: 1 tilvik (ch03, '(sucrose, cane sugar)'); hrein vélþýðing skrifar þegar súkrósi, reyrsykur. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 81,
+      "at": "2026-11-19T19:21:18.704Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "kcal",
+      "before": null,
+      "after": {
+        "english": "kcal",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'kcal' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill kílókaloría (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 7 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 82,
+      "at": "2026-11-19T19:21:18.754Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "day",
+      "before": null,
+      "after": {
+        "english": "day",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'day' hverfur úr sjón efnafræðinnar; dagur (stjörnufr.) má EKKI taka við. Talið (nákvæm mynd): 43 tilvik; ≈12 sólarhringur (per day), ≈31 dagur. Hrein vélþýðing dag/dagur alls staðar, aldrei sólarhringur. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 83,
+      "at": "2026-11-19T19:21:18.803Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "entry-add",
+      "english": "fine structure",
+      "before": null,
+      "after": {
+        "english": [
+          "fine structure"
+        ],
+        "icelandic": "fíngerð",
+        "replaces": [
+          707
+        ]
+      },
+      "reason": "[USER]: opinbera hugtakið er fíngerð. Talið: 2 tilvik (ch06); hrein vélþýðing fínbygging/fínskipting. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 84,
+      "at": "2026-11-19T19:21:18.803Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "fine structure",
+      "before": null,
+      "after": {
+        "english": "fine structure",
+        "conceptId": 707,
+        "idordabankiId": 321594
+      },
+      "reason": "[USER]: opinbera hugtakið er fíngerð. Talið: 2 tilvik (ch06); hrein vélþýðing fínbygging/fínskipting. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 85,
+      "at": "2026-11-19T19:21:18.851Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "competition",
+      "before": null,
+      "after": {
+        "english": "competition",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'competition' hverfur úr sjón efnafræðinnar. Talið: 2 tilvik (ch01), bæði keppni; vélþýðing skrifar keppni. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 86,
+      "at": "2026-11-19T19:21:18.925Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "fall",
+      "before": null,
+      "after": {
+        "english": "fall",
+        "conceptId": 631,
+        "idordabankiId": 322604
+      },
+      "reason": "AÐEINS þessi lína; ekkert tekur við. Talið: 25 tilvik; nafnorðið ≈1, sögnin ≈16, zigzag alt-texti 5, haust 2, fall short 1. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 87,
+      "at": "2026-11-19T19:21:18.926Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "ADP",
+      "before": null,
+      "after": {
+        "english": "ADP",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'ADP' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 1 tilvik, öll táknið/skammstöfunin (skammstöfun). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 88,
+      "at": "2026-11-19T19:21:18.979Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "entry-add",
+      "english": "bloodstream",
+      "before": null,
+      "after": {
+        "english": [
+          "bloodstream"
+        ],
+        "icelandic": "blóðrás",
+        "replaces": [
+          47904
+        ]
+      },
+      "reason": "[USER]: Replace með blóðrás. Talið: 4 tilvik, öll blóðrás; hrein vélþýðing skrifar blóðrás í öllum. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 89,
+      "at": "2026-11-19T19:21:18.979Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "bloodstream",
+      "before": null,
+      "after": {
+        "english": "bloodstream",
+        "conceptId": 47904,
+        "idordabankiId": 687465
+      },
+      "reason": "[USER]: Replace með blóðrás. Talið: 4 tilvik, öll blóðrás; hrein vélþýðing skrifar blóðrás í öllum. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 90,
+      "at": "2026-11-19T19:21:19.029Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "entry-add",
+      "english": "pull",
+      "before": null,
+      "after": {
+        "english": [
+          "pull"
+        ],
+        "icelandic": "aðdráttarkraftur",
+        "replaces": [
+          4015
+        ]
+      },
+      "reason": "[USER]: aðdráttarkraftur. Talið: 7 tilvik; 4 togkraftur kjarnans á rafeindir (ch06; vélþýðing aðdráttarkraftur alltaf), 3 sögnin (toga/draga). Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 91,
+      "at": "2026-11-19T19:21:19.029Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "pull",
+      "before": null,
+      "after": {
+        "english": "pull",
+        "conceptId": 4015,
+        "idordabankiId": 323177
+      },
+      "reason": "[USER]: aðdráttarkraftur. Talið: 7 tilvik; 4 togkraftur kjarnans á rafeindir (ch06; vélþýðing aðdráttarkraftur alltaf), 3 sögnin (toga/draga). Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 92,
+      "at": "2026-11-19T19:21:19.088Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Cr",
+      "before": null,
+      "after": {
+        "english": "Cr",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Cr' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill króm (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 82 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 93,
+      "at": "2026-11-19T19:21:19.143Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "MRT",
+      "before": null,
+      "after": {
+        "english": "MRT",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'MRT' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 3 tilvik, öll táknið/skammstöfunin (skammstöfun). Formúlan Π = MRT (M·R·T), ekki skammstöfun. Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 94,
+      "at": "2026-11-19T19:21:19.196Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "strand",
+      "before": null,
+      "after": {
+        "english": "strand",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'strand' hverfur úr sjón efnafræðinnar. Talið: 10 tilvik í 4 bútum; 7 þráður (ch01), 1 próteinstrengur (ch10), 2 DNA-áttur (ch20). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 95,
+      "at": "2026-11-19T19:21:19.262Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Mo",
+      "before": null,
+      "after": {
+        "english": "Mo",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Mo' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 13 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 96,
+      "at": "2026-11-19T19:21:19.323Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "reciprocal",
+      "before": null,
+      "after": {
+        "english": "reciprocal",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'reciprocal' hverfur úr sjón efnafræðinnar; gagnkvæmur (líffr.) má EKKI taka við. Talið: 15 tilvik; rétt 2 (umhverfa), rangt 13 (gagnstæð/gagnkvæmt eftir samhengi; vélþýðing velur rétt). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 97,
+      "at": "2026-11-19T19:21:19.375Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Bq",
+      "before": null,
+      "after": {
+        "english": "Bq",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Bq' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill bekerel (biology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 12 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 98,
+      "at": "2026-11-19T19:21:19.426Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "pH",
+      "before": null,
+      "after": {
+        "english": "pH",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'pH' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill sýrustig (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 265 tilvik, öll táknið/skammstöfunin (skammstöfun). Bókin heldur pH ([USER]). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 99,
+      "at": "2026-11-19T19:21:19.476Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "operation",
+      "before": null,
+      "after": {
+        "english": "operation",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'operation' hverfur úr sjón efnafræðinnar; aðgerð (líffærafr.) má EKKI taka við. Talið: 12 tilvik, öll virkni/notkun tækis. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 100,
+      "at": "2026-11-19T19:21:19.523Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "base pair",
+      "before": null,
+      "after": {
+        "english": "base pair",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'base pair' hverfur úr sjón efnafræðinnar. Talið: 12 tilvik í 11 bútum; 2 DNA-basapar (ch10), 10 acid-base pair (ch14; bandstrik telst orðskil). conjugate acid-base pair skráð í §C234 (samoka sýru-basa par kemur til greina). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 101,
+      "at": "2026-11-19T19:21:19.569Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "quantity",
+      "before": null,
+      "after": {
+        "english": "quantity",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'quantity' hverfur úr sjón efnafræðinnar; magn (líffr.) má EKKI taka við. Talið (nákvæm mynd): 66 tilvik í 59 bútum; stærð ≈30, magn ≈36. Hrein vélþýðing velur stærð/magn rétt. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 102,
+      "at": "2026-11-19T19:21:19.609Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "sec",
+      "before": null,
+      "after": {
+        "english": "sec",
+        "conceptId": 3179,
+        "idordabankiId": 321690
+      },
+      "reason": "AÐEINS þessi lína; ekkert tekur við. Talið: 1 tilvik (ch20, sec-butyl forskeyti). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 103,
+      "at": "2026-11-19T19:21:19.610Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "basis",
+      "before": null,
+      "after": {
+        "english": "basis",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'basis' hverfur úr sjón efnafræðinnar; grunnur (líffærafr.) má EKKI taka við. Talið: 33 tilvik; ≈28 grundvöllur (vélþýðing grundvöllur/á grundvelli, nær aldrei grunnur), ≈5 orðatök. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 104,
+      "at": "2026-11-19T19:21:19.666Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "function",
+      "before": null,
+      "after": {
+        "english": "function",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'function' hverfur úr sjón efnafræðinnar; starfsemi (líffr.) má EKKI taka við. Talið (nákvæm mynd): 93 tilvik í 84 bútum; fall ≈49, hlutverk/virkni ≈44; vélþýðing velur rétt. state function → ástandsfall og wave function → bylgjufall eru þegar til í efnafræði; eins orðs ritháttur wavefunction(s) (ch06) skráður í §C234. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 105,
+      "at": "2026-11-19T19:21:19.724Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "electronics",
+      "before": null,
+      "after": {
+        "english": "electronics",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'electronics' hverfur úr sjón efnafræðinnar; rafeindatækni (líffæra- og lífeðlisfr.) má EKKI taka við. Talið (nákvæm mynd): 10 tilvik, öll merkja tæki (rafeindatæki/raftæki); vélþýðing velur rétt. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 106,
+      "at": "2026-11-19T19:21:19.780Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "entry-add",
+      "english": "equal",
+      "before": null,
+      "after": {
+        "english": [
+          "equal"
+        ],
+        "icelandic": "jafn",
+        "replaces": [
+          50731
+        ]
+      },
+      "reason": "[USER]: Replace með jafn. Talið (nákvæm mynd): 401 tilvik í 290 bútum, nær öll magnbundinn jöfnuður (equal to, equal numbers, set equal); hrein vélþýðing skrifar jafn- í 315 bútum, eins í 49. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 107,
+      "at": "2026-11-19T19:21:19.780Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "equal",
+      "before": null,
+      "after": {
+        "english": "equal",
+        "conceptId": 50731,
+        "idordabankiId": 689000
+      },
+      "reason": "[USER]: Replace með jafn. Talið (nákvæm mynd): 401 tilvik í 290 bútum, nær öll magnbundinn jöfnuður (equal to, equal numbers, set equal); hrein vélþýðing skrifar jafn- í 315 bútum, eins í 49. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 108,
+      "at": "2026-11-19T19:21:19.836Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Pb",
+      "before": null,
+      "after": {
+        "english": "Pb",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Pb' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill blý (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 62 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 109,
+      "at": "2026-11-19T19:21:19.890Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "connection",
+      "before": null,
+      "after": {
+        "english": "connection",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'connection' hverfur úr sjón efnafræðinnar; samgangur (stærðfr.) má EKKI taka við. Talið (nákvæm mynd): 6 tilvik, ≈3 tengsl / ≈3 tenging; vélþýðing velur eftir samhengi. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 110,
+      "at": "2026-11-19T19:21:19.948Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "diastolic pressure",
+      "before": null,
+      "after": {
+        "english": "diastolic pressure",
+        "conceptId": 50504,
+        "idordabankiId": 688619
+      },
+      "reason": "AÐEINS RÖÐIN: [USER]: opinbera heitið er hlébilsþrýstingur, svo hlébilsþrýstingur (líffæra- og lífeðlisfr.) Á að taka við. Talið: 1 tilvik (ch09); hrein vélþýðing skrifar blóðþrýstingur. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 111,
+      "at": "2026-11-19T19:21:19.948Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "matrix",
+      "before": null,
+      "after": {
+        "english": "matrix",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'matrix' hverfur úr sjón efnafræðinnar; grunnfrymi (líffr.) má EKKI taka við. Talið: 1 tilvik (ch21, pökkunarefni í súlu), rangt. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 112,
+      "at": "2026-11-19T19:21:19.998Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "burst",
+      "before": null,
+      "after": {
+        "english": "burst",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'burst' hverfur úr sjón efnafræðinnar; hrina (stjörnufr.) má EKKI taka við. Talið: 3 tilvik; 1 gammablossi (ch21), 2 springa (ch09, ch11). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 113,
+      "at": "2026-11-19T19:21:20.041Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Br",
+      "before": null,
+      "after": {
+        "english": "Br",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Br' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 161 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 114,
+      "at": "2026-11-19T19:21:20.094Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Ru",
+      "before": null,
+      "after": {
+        "english": "Ru",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Ru' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 6 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 115,
+      "at": "2026-11-19T19:21:20.147Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Np",
+      "before": null,
+      "after": {
+        "english": "Np",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Np' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 1 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 116,
+      "at": "2026-11-19T19:21:20.194Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Si",
+      "before": null,
+      "after": {
+        "english": "Si",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Si' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill kísill (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 71 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 117,
+      "at": "2026-11-19T19:21:20.240Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Sm",
+      "before": null,
+      "after": {
+        "english": "Sm",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Sm' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 7 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 118,
+      "at": "2026-11-19T19:21:20.291Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Xe",
+      "before": null,
+      "after": {
+        "english": "Xe",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Xe' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill senón (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 26 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 119,
+      "at": "2026-11-19T19:21:20.336Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "FM",
+      "before": null,
+      "after": {
+        "english": "FM",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'FM' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 7 tilvik, öll táknið/skammstöfunin (skammstöfun). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 120,
+      "at": "2026-11-19T19:21:20.380Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "lb",
+      "before": null,
+      "after": {
+        "english": "lb",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'lb' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 27 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 121,
+      "at": "2026-11-19T19:21:20.428Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "entry-add",
+      "english": "angstrom",
+      "before": null,
+      "after": {
+        "english": [
+          "angstrom"
+        ],
+        "icelandic": "ångström",
+        "replaces": [
+          1
+        ]
+      },
+      "reason": "[USER]: opinber ritháttur er ångström. Talið: 9 tilvik í 8 bútum; hrein vélþýðing skrifar angström í 8 af 9, aldrei aangström. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 122,
+      "at": "2026-11-19T19:21:20.428Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "angstrom",
+      "before": null,
+      "after": {
+        "english": "angstrom",
+        "conceptId": 1,
+        "idordabankiId": 320640
+      },
+      "reason": "[USER]: opinber ritháttur er ångström. Talið: 9 tilvik í 8 bútum; hrein vélþýðing skrifar angström í 8 af 9, aldrei aangström. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 123,
+      "at": "2026-11-19T19:21:20.480Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "pus",
+      "before": null,
+      "after": {
+        "english": "pus",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'pus' hverfur úr sjón efnafræðinnar; gröftur (líffæra- og lífeðlisfr.) má EKKI taka við. Talið: 1 tilvik (viðauki), prentvilla fyrir 'plus'; hrein vélþýðing skrifar plús. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 124,
+      "at": "2026-11-19T19:21:20.529Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "work",
+      "before": null,
+      "after": {
+        "english": "work",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'work' hverfur úr sjón efnafræðinnar; vinna (eðlisfr.) má EKKI taka við. Talið: 371 tilvik í 260 bútum; rétt ≈56 varmafræðileg vinna (ch05 37, ch16 9, ch17 5); rangt ≈315 (213 myndheimildir 'modification of work by', ≈50 sögnin, ≈30 verk vísindamanna). Hrein vélþýðing notar vinna sjálf fyrir varmafræði. Málamiðlun: work (w) er skilgreint hugtak í ch05. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 125,
+      "at": "2026-11-19T19:21:20.586Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "coordinate",
+      "before": null,
+      "after": {
+        "english": "coordinate",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'coordinate' hverfur úr sjón efnafræðinnar; fjórflötungshnit (stærðfr.) má EKKI taka við. Talið (nákvæm mynd): 36 tilvik í 30 bútum; 3 hnit (coordinate system/plane; coordinate system → hnitakerfi er til), ≈21 coordinate (covalent) bond(s), ≈12 sagnorð (ligands coordinate). coordinate covalent bond skráð í §C234 (gjafatengi kemur til greina). Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 126,
+      "at": "2026-11-19T19:21:20.639Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "study",
+      "before": null,
+      "after": {
+        "english": "study",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'study' hverfur úr sjón efnafræðinnar; rannsókn (líffæra- og lífeðlisfr.) má EKKI taka við. Talið: 49 tilvik í 46 bútum; ≈10 rannsókn, ≈25 fræðigrein/fræðasvið, ≈12 nám/læra; vélþýðing velur eftir samhengi. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 127,
+      "at": "2026-11-19T19:21:20.697Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "rad",
+      "before": null,
+      "after": {
+        "english": "rad",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'rad' hverfur úr sjón efnafræðinnar. Talið: 13 tilvik í 8 bútum (ch21), öll geislaskammtseiningin rad, aldrei bogamálseining; vélþýðing heldur rad. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 128,
+      "at": "2026-11-19T19:21:20.755Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "fit",
+      "before": null,
+      "after": {
+        "english": "fit",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'fit' hverfur úr sjón efnafræðinnar; hviða (líffr.) má EKKI taka við. Talið (nákvæm mynd): 30 tilvik í 22 bútum; ≈5 ferlamátun (linear fit, best fit), ≈18 sagnorð (passa), ≈7 induced fit o.fl. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 129,
+      "at": "2026-11-19T19:21:20.809Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Zn",
+      "before": null,
+      "after": {
+        "english": "Zn",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Zn' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill sink (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 54 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 130,
+      "at": "2026-11-19T19:21:20.865Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "gap",
+      "before": null,
+      "after": {
+        "english": "gap",
+        "conceptId": 954,
+        "idordabankiId": 320720
+      },
+      "reason": "Halda aðeins fyrir 'band gap' (fjölorða færsla band gap → orkugeil, að ósk [USER]); stakt gap fellur þá á skarð (líffr.). Talið (nákvæm mynd): 22 tilvik í 13 bútum; 9 band gap (ch08), ≈8 efnislegt bil, 2 munur, 1 formúLan GaP (ch02). Hrein vélþýðing skrifar bil, aldrei geil. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 131,
+      "at": "2026-11-19T19:21:20.866Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "entry-add",
+      "english": "band gap",
+      "before": null,
+      "after": {
+        "english": [
+          "band gap"
+        ],
+        "icelandic": "orkugeil",
+        "replaces": []
+      },
+      "reason": "Halda aðeins fyrir 'band gap' (fjölorða færsla band gap → orkugeil, að ósk [USER]); stakt gap fellur þá á skarð (líffr.). Talið (nákvæm mynd): 22 tilvik í 13 bútum; 9 band gap (ch08), ≈8 efnislegt bil, 2 munur, 1 formúLan GaP (ch02). Hrein vélþýðing skrifar bil, aldrei geil. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 132,
+      "at": "2026-11-19T19:21:20.927Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "standard cell",
+      "before": null,
+      "after": {
+        "english": "standard cell",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'standard cell' hverfur úr sjón efnafræðinnar; staðalrafhlaða (líffæra- og lífeðlisfr.) má EKKI taka við. Talið (nákvæm mynd): 29 tilvik í 26 bútum (ch17), öll 'standard cell potential'. [USER]: opinbert efnafræðiorðasafn hefur standard cell potential = staðalíspenna og cell potential = kerspenna, ekkert fyrir standard cell. Hrein vélþýðing skrifar staðalkerspenna. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 133,
+      "at": "2026-11-19T19:21:20.986Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Ar",
+      "before": null,
+      "after": {
+        "english": "Ar",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Ar' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill argon (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 41 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 134,
+      "at": "2026-11-19T19:21:21.047Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "jet",
+      "before": null,
+      "after": {
+        "english": "jet",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'jet' hverfur úr sjón efnafræðinnar; stúfur (stærðfr.) má EKKI taka við. Talið: 4 tilvik, öll þotur (þotuhreyfill, þotueldsneyti); vélþýðing velur rétt. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 135,
+      "at": "2026-11-19T19:21:21.108Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Ti",
+      "before": null,
+      "after": {
+        "english": "Ti",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Ti' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 19 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 136,
+      "at": "2026-11-19T19:21:21.172Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Hg",
+      "before": null,
+      "after": {
+        "english": "Hg",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Hg' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill kvikasilfur (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 84 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 137,
+      "at": "2026-11-19T19:21:21.236Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "cross over",
+      "before": null,
+      "after": {
+        "english": "cross over",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'cross over' hverfur úr sjón efnafræðinnar. Talið: 1 tilvik (ch11, örvar fara yfir himnu í myndlýsingu); vélþýðing skrifar yfir. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 138,
+      "at": "2026-11-19T19:21:21.291Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "gal",
+      "before": null,
+      "after": {
+        "english": "gal",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'gal' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 6 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 139,
+      "at": "2026-11-19T19:21:21.354Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Gy",
+      "before": null,
+      "after": {
+        "english": "Gy",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Gy' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 11 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 140,
+      "at": "2026-11-19T19:21:21.424Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "oz",
+      "before": null,
+      "after": {
+        "english": "oz",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'oz' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 19 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 141,
+      "at": "2026-11-19T19:21:21.492Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Hz",
+      "before": null,
+      "after": {
+        "english": "Hz",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Hz' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 14 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 142,
+      "at": "2026-11-19T19:21:21.555Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "chemical substance",
+      "before": null,
+      "after": {
+        "english": "chemical substance",
+        "conceptId": 4815,
+        "idordabankiId": 931676
+      },
+      "reason": "AÐEINS þessi lína; ekkert tekur við (ifRemoved tómt). Íðorðið hreint efni er rétt fyrir ströngu merkinguna, en bókin notar 'chemical substance' aldrei þannig: öll 5 tilvik (ch01 x4, ch04) eru almennt 'efni'. Hrein vélþýðing: efni. pure substance er sérstök ensk færsla og ósnert. Úrskurðað 2026-11-18.",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 143,
+      "at": "2026-11-19T19:21:21.556Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "bisect",
+      "before": null,
+      "after": {
+        "english": "bisect",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'bisect' hverfur úr sjón efnafræðinnar; helminga (líffæra- og lífeðlisfr.) má EKKI taka við. Talið: 2 tilvik (ch10), bæði 'skipta' í þrjú svæði; vélþýðing skrifar skipta. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 144,
+      "at": "2026-11-19T19:21:21.617Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "peel",
+      "before": null,
+      "after": {
+        "english": "peel",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'peel' hverfur úr sjón efnafræðinnar. Talið: 1 tilvik (ch10, sögnin að fletta lögum af grafíti); vélþýðing skrifar fletta. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 145,
+      "at": "2026-11-19T19:21:21.676Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Ag",
+      "before": null,
+      "after": {
+        "english": "Ag",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Ag' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill silfur (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 122 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 146,
+      "at": "2026-11-19T19:21:21.736Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "ln",
+      "before": null,
+      "after": {
+        "english": "ln",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'ln' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 27 tilvik, öll táknið/skammstöfunin (stærðfræðifall). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 147,
+      "at": "2026-11-19T19:21:21.793Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Fe",
+      "before": null,
+      "after": {
+        "english": "Fe",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Fe' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill járn (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 123 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 148,
+      "at": "2026-11-19T19:21:21.847Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Mn",
+      "before": null,
+      "after": {
+        "english": "Mn",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Mn' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill mangan (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 39 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 149,
+      "at": "2026-11-19T19:21:21.906Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "ft",
+      "before": null,
+      "after": {
+        "english": "ft",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'ft' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill fet (anatomy-physiology) má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 13 tilvik, öll táknið/skammstöfunin (eining). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 150,
+      "at": "2026-11-19T19:21:21.970Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "Ne",
+      "before": null,
+      "after": {
+        "english": "Ne",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: enska táknið 'Ne' hverfur ALVEG úr sjón efnafræðinnar sem uppflettiliður (staðgengill ekkert má EKKI taka við); færslur fyrir nafnið sjálft haldast. Talið: 45 tilvik, öll táknið/skammstöfunin (frumefnistákn). Úrskurðað 2026-11-18 af [USER] (lota 1, wrong-register).",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 151,
+      "at": "2026-11-19T19:21:22.030Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "exclude",
+      "english": "max",
+      "before": null,
+      "after": {
+        "english": "max",
+        "conceptId": 0,
+        "idordabankiId": null
+      },
+      "reason": "SKILYRÐI: allur enski uppflettiliðurinn 'max' hverfur úr sjón efnafræðinnar. Talið: 8 tilvik í 7 bútum; 6 skammstöfun fyrir maximum, 2 nafnið Max (Planck, Born); aldrei hástak. Vélþýðing heldur max/Max. Úrskurðað 2026-11-18 af [USER].",
+      "source": "c19 pre-screen"
+    },
+    {
+      "id": 152,
+      "at": "2026-11-19T19:21:22.086Z",
+      "by": "c19-load ([USER] rulings 2026-11-18)",
+      "action": "entry-add",
+      "english": "standard cell potential",
+      "before": null,
+      "after": {
+        "english": [
+          "standard cell potential",
+          "standard cell potentials"
+        ],
+        "icelandic": "staðalíspenna",
+        "replaces": []
+      },
+      "reason": "the official chemistry glossary has standard cell potential = staðalíspenna ([USER], 2026-11-18; register §C234 ⑧)",
+      "source": "§C234"
+    }
+  ],
+  "dangling": []
+}
