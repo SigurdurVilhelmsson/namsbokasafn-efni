@@ -28,7 +28,7 @@
 - **The build's own rulings**, the choices it made on [USER]'s behalf, R1 to R23 with each one's reason and cost if wrong, are frozen in [`2026-11-19-book-glossary-build-rulings.md`](../superpowers/specs/2026-11-19-book-glossary-build-rulings.md). The final review's minors that were left unbuilt are §C239, directly below this entry. **[USER] decided on 2026-11-19** that a missing excluded concept is reported in `book-glossary.json`'s `dangling` list (not as an export integrity code), and that the committed input keeps the ruling comments as written but without the phrase attributing a ruling to the assistant (build ruling R23).
 - **Logged from this work:** §C237 (the lookup box), §C238 (the resolver bench's control) and §C239 (the final review's parked minors).
 - **▶ NEXT:**
-  - [USER] reviews the draft PR.
+  - [USER] reviews the draft PR ([#743](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/743)).
   - After the merge and deploy, [USER] runs the loader's dry run on production, then `--apply`, then `node server/scripts/export-terminology.js`, then `git status --porcelain books/`, which must show only `books/efnafraedi-2e/glossary/` (no other book's glossary may change; this is the physics control after the write; an extra path may also be content the 2-hourly cron has not pushed yet, so read it before taking it for a physics change), then `--verify`, then pulls.
   - Stage 2 (the head editor's screen and the worklist) is planned next.
   - After #742 merges, `study-freeze.js` records `book-glossary.json` (spec §5.4).
