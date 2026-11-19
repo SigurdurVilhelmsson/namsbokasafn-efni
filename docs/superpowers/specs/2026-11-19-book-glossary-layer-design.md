@@ -1,7 +1,8 @@
 # A book-scoped glossary layer, and c19's rulings applied through it
 
-> Status: DRAFT for [USER]'s approval, 2026-11-19. Once approved this file is the design record (frozen,
-> banner-dated); status lives in the register (`docs/plans/2026-07-21-post-item17-followup-campaign.md`).
+> 🧊 APPROVED by [USER] 2026-11-19 ("write the implementation"), with the calls in §7. Frozen from that date: this
+> is the design record (evidence, never status). Status lives in the register
+> (`docs/plans/2026-07-21-post-item17-followup-campaign.md`).
 
 ## 1. Intent
 
@@ -217,7 +218,7 @@ The cron's pathspec `books/*/glossary/` then commits it every 2 hours, with no n
    | `remove` + `AÐEINS` (7) | exclude that concept for the headword |
    | `remove` with no prefix: `ATP` (1) | exclude that concept (either reading gives the same result) |
    | `replace` (16) | a book entry (English = the row's English, Icelandic = `text`) plus a single-concept exclusion of the replaced row (§5.2) |
-   | `phrases` (2) | exclude the bare headword as a whole (the ruling keeps "only the phrase"), plus a book entry for the phrase (English = `text`, Icelandic = `phraseIcelandic` when given, else the row's Icelandic) unless an in-scope concept already carries that pair |
+   | `phrases` (2) | exclude **that concept** for the bare headword, so the next row takes over, plus a book entry for the phrase (English = `text`, Icelandic = `phraseIcelandic` when given, else the row's Icelandic) unless an in-scope concept already carries that pair. ✏️ *Corrected 2026-11-19, before the build, from "exclude the bare headword as a whole": both rulings' comments say the bare word falls to the next row (r1104: `substitution` falls to* innsetning*, physics, right in 8 equation uses; r769: `gap` falls to* skarð*, biology). r1104's row Icelandic* skiptihvarf *is already the phrase's Icelandic.* |
 
    Plus one entry from §C234 ⑧: `standard cell potential` and `standard cell potentials` → `staðalíspenna`.
    - Each action carries the ruling id, kind, [USER]'s comment, the date, and the census row's `conceptId`, English,
@@ -301,8 +302,9 @@ already on this branch (§C234, §C235) and the probe test `server/__tests__/fin
 
 ## 7. Calls made in this draft (for [USER] to check)
 
-1. **A phrases ruling excludes the bare headword as a whole**, not only its row, because the ruling keeps "only the
-   phrase".
+1. **A phrases ruling excludes only that row for the bare headword**, so the next row takes over, and adds the
+   phrase as a book entry. ✏️ *Corrected 2026-11-19 before the build: this call first said "the bare headword as a
+   whole", which contradicted both rulings' own comments (§5.5).*
 2. **A book entry outranks everything** for its headword in its book: the domain walk, house style, and (by refusal
    at write time) a book preference.
 3. **A replacement hides the word it replaces** (entry plus single-concept exclusion), so the editor's prompt and
