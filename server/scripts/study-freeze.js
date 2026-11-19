@@ -20,7 +20,13 @@
  *                       shallow-clone, dirty-input; an existing tag directory; a --supersedes
  *                       that is not the current manifest; a current manifest the new one does
  *                       not supersede).
- *   check               (a later task) verify the tree against the manifest.
+ *   check [--manifest <dir>]
+ *                       read-only: every unit's marker is the freeze marker, and the tree still
+ *                       matches the current manifest (or --manifest's). Two failures call for
+ *                       different responses: "input changed" (a unit's English or MT file differs)
+ *                       and "served text changed, inputs unchanged" (the files match, so loader
+ *                       code moved a hash: re-cut, spec §6.6). Exit 0 only on PASS. Without a
+ *                       manifest it verifies markers only and says so.
  *
  * Flags: --book <slug> (a study book; default the only one), --write, --tag <name>,
  * --supersedes <tag>, --manifest <dir>. Any other flag is a usage error.
@@ -195,10 +201,10 @@ function servedBase(book) {
     try {
       const data = segmentParser.loadModuleForEditing(book, u.chapter, u.moduleId);
       const { rows, duplicatedIds } = servedVersions.versionRowsFor(data, key);
-      return { ...u, marker, rows, duplicatedIds };
+      return { ...u, marker, rows, duplicatedIds, isSource: data.isSource };
     } catch (e) {
       if (e.code !== 'NO_LAYER') throw e;
-      return { ...u, marker, rows: null, duplicatedIds: [] };
+      return { ...u, marker, rows: null, duplicatedIds: [], isSource: null };
     }
   });
 }
@@ -592,6 +598,157 @@ function runManifest(args, io, deps) {
   return 0;
 }
 
+// ── check ────────────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Count the study units' markers by state. Reuses planMarkers' classification; names units only.
+ * @param {{book: string}} args
+ * @returns {{total: number, freeze: number, absent: string[], foreign: string[]}}
+ */
+function checkMarkers({ book }) {
+  const { units } = planMarkers({ book });
+  const named = (state) => units.filter((u) => u.state === state).map((u) => u.unit);
+  return {
+    total: units.length,
+    freeze: units.filter((u) => u.state === 'freeze').length,
+    absent: named('absent'),
+    foreign: named('foreign'),
+  };
+}
+
+/**
+ * Compare the tree with a manifest (spec §6.3). File hashes (English, MT) for every unit; segment
+ * lines, keyed on (segment_id, occurrence) and compared on en_sha256 and is_sha256 (`layer` is
+ * not compared), only for units still served from a non-faithful layer. A segment difference in a
+ * unit whose files changed is explained by `inputChanged`; in a unit whose files match it is
+ * `servedChanged` ("served text changed, inputs unchanged": loader code moved a hash).
+ * @param {{book: string, manifestDir: string, base?: object[]}} args
+ */
+function compareToManifest({ book, manifestDir, base = servedBase(book) }) {
+  const header = JSON.parse(fs.readFileSync(path.join(manifestDir, 'freeze.json'), 'utf8'));
+  const segmentBytes = fs.readFileSync(path.join(manifestDir, 'segments.jsonl'));
+  if (sha256(segmentBytes) !== header.segmentsSha256) {
+    throw coded('BAD_INPUT', `${manifestDir}: segments.jsonl does not match its header's hash`);
+  }
+  const unitId = (u) => `${u.chapterDir}/${u.moduleId}`;
+  const linesByUnit = new Map();
+  for (const l of segmentBytes.toString('utf8').split('\n').filter(Boolean)) {
+    const line = JSON.parse(l);
+    const k = `${line.chapter}/${line.module_id}`;
+    linesByUnit.set(k, [...(linesByUnit.get(k) || []), line]);
+  }
+  const frozen = new Map(header.units.map((u) => [unitId(u), u]));
+  const current = new Map(base.map((u) => [unitId(u), u]));
+  const result = {
+    pass: true,
+    unitSetChanged: {
+      missing: [...frozen.keys()].filter((k) => !current.has(k)).sort(byString),
+      extra: [...current.keys()].filter((k) => !frozen.has(k)).sort(byString),
+    },
+    inputChanged: [],
+    servedChanged: [],
+    movedToFaithful: [],
+  };
+  for (const [id, was] of frozen) {
+    const now = current.get(id);
+    if (!now) continue;
+    const filesChanged =
+      fileSha(now.enSource) !== was.enSha256 || fileSha(now.mtOutput) !== was.mtSha256;
+    if (filesChanged) result.inputChanged.push(id);
+    if (now.isSource === 'faithful') {
+      result.movedToFaithful.push(id);
+      continue;
+    }
+    if (filesChanged) continue;
+    const key = (segmentId, occurrence) => JSON.stringify([segmentId, occurrence]);
+    const had = new Map(
+      (linesByUnit.get(`${was.chapter}/${was.moduleId}`) || []).map((l) => [
+        key(l.segment_id, l.occurrence),
+        l,
+      ])
+    );
+    const has = new Map((now.rows || []).map((r) => [key(r.segmentId, r.occurrence), r]));
+    for (const k of new Set([...had.keys(), ...has.keys()])) {
+      const a = had.get(k);
+      const b = has.get(k);
+      if (!a || !b || a.en_sha256 !== b.enSha256 || a.is_sha256 !== b.isSha256) {
+        const [segmentId, occurrence] = JSON.parse(k);
+        result.servedChanged.push({ unit: id, segmentId, occurrence });
+      }
+    }
+  }
+  result.pass =
+    result.unitSetChanged.missing.length === 0 &&
+    result.unitSetChanged.extra.length === 0 &&
+    result.inputChanged.length === 0 &&
+    result.servedChanged.length === 0;
+  return result;
+}
+
+function runCheck(args, io) {
+  if (args.write || args.tag !== null || args.supersedes !== null) {
+    throw usage('--write, --tag and --supersedes do not apply to check');
+  }
+  const { book } = args;
+  const markers = checkMarkers({ book });
+  let pass = markers.absent.length === 0 && markers.foreign.length === 0;
+  const lines = [`markers: ${markers.freeze}/${markers.total} units hold the freeze marker`];
+  if (markers.absent.length > 0) {
+    lines.push(`markers absent: ${markers.absent.length}: ${listed(markers.absent)}`);
+  }
+  if (markers.foreign.length > 0) {
+    lines.push(`markers foreign: ${markers.foreign.length}: ${listed(markers.foreign)}`);
+  }
+  let manifest;
+  try {
+    manifest = args.manifest ? { dir: path.resolve(args.manifest) } : currentManifest({ book });
+  } catch (e) {
+    if (e.code !== 'AMBIGUOUS') throw e;
+    io.error('STUDY FREEZE CHECK: FAIL');
+    io.error(`no single current manifest: ${e.message}`);
+    return 1;
+  }
+  const bad = [];
+  if (manifest === null) {
+    lines.push('no manifest yet: verified markers only');
+  } else {
+    let r;
+    try {
+      r = compareToManifest({ book, manifestDir: manifest.dir });
+    } catch (e) {
+      if (e.code !== 'BAD_INPUT' && e.code !== 'ENOENT' && !(e instanceof SyntaxError)) throw e;
+      io.error('STUDY FREEZE CHECK: FAIL');
+      io.error(`manifest unreadable: ${path.basename(manifest.dir)}: ${e.message}`);
+      return 1;
+    }
+    lines.push(`manifest: ${path.basename(manifest.dir)}`);
+    const { missing, extra } = r.unitSetChanged;
+    if (missing.length > 0) bad.push(`units missing: ${missing.length}: ${listed(missing)}`);
+    if (extra.length > 0) bad.push(`units added: ${extra.length}: ${listed(extra)}`);
+    if (r.inputChanged.length > 0) {
+      bad.push(`input changed: ${r.inputChanged.length} unit(s): ${listed(r.inputChanged)}`);
+    }
+    if (r.servedChanged.length > 0) {
+      const keys = r.servedChanged.map((s) => `${s.unit}#${s.segmentId}#${s.occurrence}`);
+      bad.push(
+        `served text changed, inputs unchanged: ${keys.length} segment(s): ${listed(keys)}`,
+        'loader code moved a hash; the remedy is a re-cut: manifest --write --tag <new tag> ' +
+          `--supersedes ${manifest.header ? manifest.header.tag : path.basename(manifest.dir)} (spec §6.6)`
+      );
+    }
+    if (r.movedToFaithful.length > 0) {
+      lines.push(
+        `moved to faithful (not a failure): ${r.movedToFaithful.length}: ${listed(r.movedToFaithful)}`
+      );
+    }
+    pass = pass && r.pass;
+  }
+  const log = pass ? io.log : io.error;
+  log(`STUDY FREEZE CHECK: ${pass ? 'PASS' : 'FAIL'}`);
+  for (const l of [...lines, ...bad]) log(l);
+  return pass ? 0 : 1;
+}
+
 // ── main ─────────────────────────────────────────────────────────────────────────────────────
 
 function runMarkers(args, io) {
@@ -622,7 +779,7 @@ function main(argv, io = { log: console.log, error: console.error }, deps = {}) 
     const args = parseArgs(argv);
     if (args.command === 'markers') return runMarkers(args, io);
     if (args.command === 'manifest') return runManifest(args, io, deps);
-    throw usage(`${args.command} is not implemented yet`);
+    return runCheck(args, io);
   } catch (e) {
     if (e.code !== 'USAGE') throw e;
     io.error(`usage error: ${e.message}`);
@@ -646,5 +803,7 @@ module.exports = {
   buildManifest,
   writeManifest,
   currentManifest,
+  checkMarkers,
+  compareToManifest,
   main,
 };
