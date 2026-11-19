@@ -88,6 +88,10 @@ function buildResolvedGlossary(db, bookSlug, { census, booksDir } = {}) {
     ties: 0,
     nominalTies: 0,
     outOfScopeOnly: 0,
+    // Census strings this book's glossary layer excluded as a whole headword (spec
+    // 2026-11-19-book-glossary-layer-design §5.3), so a shrink the layer caused can be told
+    // apart from a lost term.
+    excludedByBook: 0,
     censusStrings: source.strings.length,
   };
   const terms = [];
@@ -104,7 +108,8 @@ function buildResolvedGlossary(db, bookSlug, { census, booksDir } = {}) {
     for (const code of r.integrity) integrity[code] = (integrity[code] || 0) + 1;
 
     if (!r.winner) {
-      if (r.tied.length) stats.ties++;
+      if (r.bookExcluded) stats.excludedByBook++;
+      else if (r.tied.length) stats.ties++;
       else if (r.outOfScope.length) stats.outOfScopeOnly++;
       continue;
     }
