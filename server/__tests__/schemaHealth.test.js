@@ -210,7 +210,11 @@ describe('EXPECTED_SCHEMA', () => {
       ],
       segment_acceptances: ['served_version_id', 'occurrence'],
     });
-    expect(EXPECTED_SCHEMA.indexes).toEqual(['idx_served_text_versions_key']);
+    expect(EXPECTED_SCHEMA.indexes).toEqual([
+      'idx_served_text_versions_key',
+      'idx_book_glossary_entry_book',
+      'idx_book_glossary_change_book',
+    ]);
   });
 
   it('is deeply frozen', () => {
