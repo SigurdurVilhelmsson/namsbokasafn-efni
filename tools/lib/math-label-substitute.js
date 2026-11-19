@@ -138,7 +138,8 @@ export function substituteMathLabels(mathml, resolve) {
       );
     }
     if (value === key) return full;
-    return open + inner.replace(key, value) + close;
+    // A function replacement writes `value` as is; a string one would expand `$$` and `` $` ``.
+    return open + inner.replace(key, () => value) + close;
   });
 }
 
