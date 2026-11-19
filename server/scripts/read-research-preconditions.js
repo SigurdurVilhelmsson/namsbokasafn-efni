@@ -289,7 +289,6 @@ function readG1e({ db, book, booksDir }) {
   return { originColumn, inflight, appliedWithoutFaithful };
 }
 
-const UNIT_ID = /^(m\d{5}|chapter-metadata)$/; // what the module route serves (validateModule, validateParams.js)
 // The retention keys (the Runtime* limits bound the journal when it is volatile, under /run), and
 // ForwardToSyslog, which decides whether the request log also reaches rsyslog. Each with the grammar of
 // the parser systemd 255's journald gives it (journald-gperf: config_parse_storage, _iec_uint64,
@@ -821,22 +820,13 @@ function readG1f({ pathEnv }) {
 
 function readG1g({ book, booksDir }) {
   const { mtLockPathFor } = require('../../tools/lib/mt-lock.cjs');
-  const { chapterFromDir } = require('../lib/chapterLabel');
-  const forMt = path.join(booksDir, book, '02-for-mt');
-  const units = [];
-  for (const dir of fs.readdirSync(forMt).filter((d) => chapterFromDir(d) !== null)) {
-    for (const f of fs.readdirSync(path.join(forMt, dir))) {
-      if (!f.endsWith('-segments.en.md')) continue; // skips a legacy -segments(b).en.md file, should one reappear (the 49 were removed, §C225)
-      const moduleId = f.slice(0, -'-segments.en.md'.length);
-      if (!UNIT_ID.test(moduleId)) continue; // skips exercises-segments.en.md, as listChapterModules does
-      const mtOutput = path.join(booksDir, book, '02-mt-output', dir, `${moduleId}-segments.is.md`);
-      units.push({
-        unit: `${dir}/${moduleId}`,
-        mt: fs.existsSync(mtOutput),
-        locked: fs.existsSync(mtLockPathFor(mtOutput)), // presence only: never the body (spec §5.19)
-      });
-    }
-  }
+  // Lazy: a production tree that predates G1.7 has no studyUnits module; only this section then fails.
+  const { listStudyUnits } = require('../lib/studyUnits');
+  const units = listStudyUnits({ book, booksDir }).map((u) => ({
+    unit: u.unit,
+    mt: fs.existsSync(u.mtOutput),
+    locked: fs.existsSync(mtLockPathFor(u.mtOutput)), // presence only: never the body (spec §5.19)
+  }));
   const sorted = (xs) => xs.map((u) => u.unit).sort();
   return {
     unitCount: units.length,
