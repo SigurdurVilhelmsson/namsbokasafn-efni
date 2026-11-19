@@ -227,6 +227,7 @@ no marker body can reach it. The fix is a catch in `runCheck` that moves no serv
 re-cut.
 **Cost if wrong.** After the cut, a corrupt generated file gives the operator on production a stack trace,
 which may quote an excerpt of that file, instead of a FAIL line.
+**Overtaken.** At the finish [USER] asked for both Minors to be fixed before the PR; fixed in `8f8065378`.
 
 ## R26 — `check`'s foreign-marker line has no do-not-open advice (re-review (b))
 
@@ -237,3 +238,4 @@ only on a unit added later or one whose marker was removed. Before the deploy, t
 the instrument.
 **Cost if wrong.** An operator who meets a foreign marker through `check` does not get the advice `markers`
 gives.
+**Overtaken.** Fixed in the same commit as R25 (`8f8065378`).
