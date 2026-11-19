@@ -22,7 +22,8 @@
  *                       writes books/<book>/freeze/<tag>/{segments.jsonl,freeze.json} and refuses,
  *                       writing nothing, on any refusal (not-frozen, duplicated-id, no-layer,
  *                       shallow-clone, dirty-input; bad-input, a revision record, layer-1s file,
- *                       glossary or freeze.json that is not valid JSON, named by path only; an
+ *                       glossary or freeze.json that is not valid JSON, named by path only, or a
+ *                       unit's 02-structure file that is not, named by unit; an
  *                       existing tag directory; a --supersedes that is not the current manifest;
  *                       a current manifest the new one does not supersede).
  *   check [--manifest <dir>]
@@ -33,7 +34,7 @@
  *                       code moved a hash: re-cut, spec §6.6). Exit 0 only on PASS, which needs
  *                       at least one study unit and an MT file for every unit; it prints how many
  *                       units and segments it compared. Without a manifest it verifies markers
- *                       only and says so.
+ *                       only and says so. A file it cannot read is a named FAIL, never its content.
  *
  * Flags: --book <slug> (a study book; default the only one), --write, --tag <name>,
  * --supersedes <tag>, --manifest <dir>. Any other flag is a usage error.
@@ -71,6 +72,10 @@ const INPUT_DIRS = [
 ];
 const GLOSSARY = 'glossary/glossary-unified.json';
 const MAX_LISTED = 20;
+/** Printed by `markers` and by `check` whenever a study unit holds a foreign marker (spec §7). */
+const FOREIGN_MARKER_ADVICE =
+  "a foreign marker may hold a person's first-save time: do not open, print or delete it; " +
+  "what to do with it is the project lead's call (spec §7)";
 
 function usage(message) {
   return Object.assign(new Error(message), { code: 'USAGE' });
@@ -229,6 +234,14 @@ function servedBase(book) {
       const { rows, duplicatedIds } = servedVersions.versionRowsFor(data, key);
       return { ...u, marker, rows, duplicatedIds, isSource: data.isSource };
     } catch (e) {
+      // The loader parses three generated files with a raw JSON.parse, whose message quotes the
+      // input: name the unit, never the content.
+      if (e instanceof SyntaxError) {
+        throw coded(
+          'BAD_INPUT',
+          `${u.unit}: a 02-structure file (structure, equations or extraction manifest) is not valid JSON`
+        );
+      }
       if (e.code !== 'NO_LAYER') throw e;
       return { ...u, marker, rows: null, duplicatedIds: [], isSource: null };
     }
@@ -645,7 +658,15 @@ function runManifest(args, io, deps) {
     io.error('nothing written');
     return 1;
   }
-  const base = servedBase(book);
+  let base;
+  try {
+    base = servedBase(book);
+  } catch (e) {
+    if (e.code !== 'BAD_INPUT') throw e;
+    printRefusals([{ reason: 'bad-input', detail: e.message }], io);
+    io.error('nothing written');
+    return 1;
+  }
   const refusals = [...manifestRefusals({ book, git, base }), ...cutRefusals(args)];
   let records = null;
   try {
@@ -827,6 +848,7 @@ function runCheck(args, io) {
   }
   if (markers.foreign.length > 0) {
     lines.push(`markers foreign: ${markers.foreign.length}: ${listed(markers.foreign)}`);
+    lines.push(FOREIGN_MARKER_ADVICE);
   }
   if (markers.noMt.length > 0) {
     lines.push(`no MT output: ${markers.noMt.length} unit(s): ${listed(markers.noMt)}`);
@@ -854,9 +876,17 @@ function runCheck(args, io) {
   if (manifest === null) {
     lines.push('no manifest yet: verified markers only');
   } else {
+    // The served text is read apart from the manifest, so a fault in either is named as its own.
+    let base;
+    try {
+      base = servedBase(book);
+    } catch (e) {
+      if (e.code !== 'BAD_INPUT' && e.code !== 'ENOENT') throw e;
+      return failWith(`served text unreadable: ${e.message}`);
+    }
     let r;
     try {
-      r = compareToManifest({ book, manifestDir: manifest.dir });
+      r = compareToManifest({ book, manifestDir: manifest.dir, base });
     } catch (e) {
       if (e.code !== 'BAD_INPUT' && e.code !== 'ENOENT') throw e;
       return failWith(`manifest unreadable: ${path.basename(manifest.dir)}: ${e.message}`);
@@ -904,12 +934,7 @@ function runMarkers(args, io) {
   const plan = planMarkers(args);
   if (plan.refusals.length > 0) {
     for (const r of plan.refusals) io.error(`refused: ${r.unit} (${r.reason})`);
-    if (plan.refusals.some((r) => r.reason === 'foreign-marker')) {
-      io.error(
-        "a foreign marker may hold a person's first-save time: do not open, print or delete it; " +
-          "what to do with it is the project lead's call (spec §7)"
-      );
-    }
+    if (plan.refusals.some((r) => r.reason === 'foreign-marker')) io.error(FOREIGN_MARKER_ADVICE);
     io.error('nothing written');
     return 1;
   }

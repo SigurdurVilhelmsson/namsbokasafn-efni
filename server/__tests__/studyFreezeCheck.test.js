@@ -144,6 +144,19 @@ describe('check with a manifest', () => {
     expect(/2099|424242/.test(text())).toBe(false);
   });
 
+  it("a foreign marker's FAIL says not to open, print or delete it (the markers command's advice)", () => {
+    writeFileSync(mtLockPathFor(mtPath(UNITS[0])), '{"lockedAt":"2099-01-01T00:00:00.000Z"}');
+    expect(study.main(['check'], io)).toBe(1);
+    expect(text()).toMatch(/markers foreign: 1: ch01\/m96001\n.*do not open, print or delete it/);
+    expect(text()).toContain("the project lead's call (spec §7)");
+  });
+
+  it('control: an absent marker does not get the foreign-marker advice', () => {
+    unlinkSync(mtLockPathFor(mtPath(UNITS[0])));
+    expect(study.main(['check'], io)).toBe(1);
+    expect(text()).not.toContain('do not open, print or delete');
+  });
+
   it('FAIL input changed: an MT file changed, naming the unit and no served verdict', () => {
     const u = UNITS[1];
     writeFileSync(mtPath(u), readFileSync(mtPath(u), 'utf8').replace('Íslenska', 'Íslensk'));
@@ -249,6 +262,33 @@ describe('check with a manifest', () => {
     expect(study.main(['check'], io)).toBe(1);
     expect(text()).toContain('manifest unreadable');
     expect(text()).toContain('segments.jsonl line 1');
+    expect(text()).not.toContain(LEAK);
+  });
+
+  // The editor's loader parses three generated files with a raw JSON.parse, whose message quotes
+  // the input. check reads them through servedBase once a manifest exists.
+  it.each(['structure', 'equations', 'manifest'])(
+    'a generated %s file that is not JSON is a named FAIL: the unit, never its content',
+    (kind) => {
+      const file = segmentParser.getModulePaths(BOOK, 1, UNITS[0].moduleId)[kind];
+      mkdirSync(path.dirname(file), { recursive: true });
+      writeFileSync(file, `${LEAK}{`);
+      expect(study.main(['check'], io)).toBe(1);
+      expect(text()).toMatch(
+        /^STUDY FREEZE CHECK: FAIL\nmarkers: 3\/3 units hold the freeze marker\nserved text unreadable: ch01\/m96001: /
+      );
+      expect(text()).not.toContain('manifest unreadable');
+      expect(text()).not.toContain(LEAK);
+    }
+  );
+
+  it('manifest: a generated file that is not JSON is a named bad-input refusal, never its content', () => {
+    const file = segmentParser.getModulePaths(BOOK, 1, UNITS[0].moduleId).structure;
+    mkdirSync(path.dirname(file), { recursive: true });
+    writeFileSync(file, `${LEAK}{`);
+    expect(study.main(['manifest'], io, { git: GIT })).toBe(1);
+    expect(text()).toContain('refused: bad-input (ch01/m96001: ');
+    expect(text()).toContain('nothing written');
     expect(text()).not.toContain(LEAK);
   });
 
