@@ -19,7 +19,8 @@ Labels used below: "Task N" is a task of the plan. I1–I3 (Important) and M1–
 whole-branch review's findings, and "T*n*(*k*)" is item *k* of the minors that review parked from Task *n*'s
 review. Those reviews are not committed; §C236 in the register lists the minors left unbuilt.
 
-R1 to R11 were made during the build of Tasks 1 to 6; R12 to R24 settle the final review's fix wave.
+R1 to R11 were made during the build of Tasks 1 to 6; R12 to R24 settle the final review's fix wave; R25 and
+R26 settle the two Minors the fix wave's scoped re-review confirmed.
 
 ## R1 — a test for refusing a `--supersedes` that names no current manifest
 
@@ -189,6 +190,7 @@ and the header states truthfully where a piped run works.
 project's instructions and [USER]'s to approve; it is surfaced to [USER] at the finish.
 **Why.** An edit to project instructions needs [USER]'s approval.
 **Cost if wrong.** The rule lives only in the design and the tools' wording until [USER] decides.
+**Overtaken.** After the fix wave [USER] approved the line; it is in `CLAUDE.md` § Purpose (`e2703caf1`).
 
 ## R22 — the register entry drops its push-state wording (M7)
 
@@ -212,3 +214,26 @@ the committed comments and test names citing R1, R2 and R5 point to it.
 **Why.** The local, unpushed branch `docs/register-c234-raftrod-compounds` (`e204e4dfb`, 2026-11-18) already
 claims §C234 and §C235. No item number goes in a code comment, so a renumber at merge touches docs only.
 **Cost if wrong.** A renumber.
+
+## R25 — `check`'s loader parse error is parked, not fixed (re-review (a))
+
+**Ruling.** Since the fix wave, a `SyntaxError` from the loader's three raw `JSON.parse` calls ends `check` with
+a stack trace and no FAIL line. The calls read the equations, structure and extraction-manifest files, and
+`check` reaches them once a manifest exists. This is parked in the register (§C236) with the trigger "before
+step 2's cut", not fixed: the build allows one fix wave, and this was found by that wave's re-review. It was
+put to [USER] at the finish, with the option to fold it into the PR.
+**Why.** The exit code is still 1, so it never reads as a PASS. It is unreachable until a manifest exists, and
+no marker body can reach it. The fix is a catch in `runCheck` that moves no served-text hash, so it needs no
+re-cut.
+**Cost if wrong.** After the cut, a corrupt generated file gives the operator on production a stack trace,
+which may quote an excerpt of that file, instead of a FAIL line.
+
+## R26 — `check`'s foreign-marker line has no do-not-open advice (re-review (b))
+
+**Ruling.** Only `markers`' refusal prints the "do not open, print or delete" line. `check`'s foreign-marker
+line does not. This is parked in §C236 with the same trigger as R25, and was put to [USER] with it.
+**Why.** After the deploy every study unit holds a committed freeze marker, so `check` meets a foreign marker
+only on a unit added later or one whose marker was removed. Before the deploy, the register's `find` read is
+the instrument.
+**Cost if wrong.** An operator who meets a foreign marker through `check` does not get the advice `markers`
+gives.
