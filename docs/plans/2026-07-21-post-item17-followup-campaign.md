@@ -4,6 +4,41 @@
 
 ## ⏩ RESUME — state as of **2026-10-09 — ✅ '6' PR-B IS MERGED ([#546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546)) AND DEPLOYED, with the 7 Dependabot PRs; R-22's condition is met and the LIVE-RUN HOLD's condition is met on `main`. ⏹ The whole-book re-render and the chemistry sync are HELD for [USER]. ▶ [CODE] in parallel: the ② code batch (end of this block)** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence) ✏️ *Heading re-dated 2026-10-09; it had said PR-B was BUILT and UNPUSHED, with step 2b and the LIVE-RUN HOLD outstanding, after all three had changed. The bullets directly under the SINGLE NEXT ACTION are PR-B's record.*
 
+### ⏭ 2026-11-19 (c19: the book glossary layer, stage 1 built) — SUPERSEDES THE NEXT OF THE 2026-11-18 (c19) ENTRY; IT DOES NOT CHANGE THE OTHER ENTRIES OR THEIR NEXT: **✅ Stage 1 of the book glossary layer is BUILT on branch `feat/c19-book-glossary`; [USER] reviews the draft PR. The layer applies c19's rulings to chemistry without editing the shared concept model.**
+- **Design and plan:** [the design](../superpowers/specs/2026-11-19-book-glossary-layer-design.md) (approved by [USER] on 2026-11-19; the phrases call was corrected before the build) and [the plan](../superpowers/plans/2026-11-19-book-glossary-layer-stage1.md).
+- **What stage 1 is:** a book-scoped glossary layer over the shared concept model, with:
+  - three tables (migration 058);
+  - a write API (`server/lib/bookGlossaryLayer.js`);
+  - resolver support (`server/lib/conceptResolver.js`): a whole-headword exclusion, a single-concept exclusion, and a book entry that wins;
+  - a committed record: the export writes `books/<book>/glossary/book-glossary.json`, and the 2-hourly cron commits it.
+- **The c19 input and loader:**
+  - The input, `experiments/terminology-consistency/results/2026-11-18/c19-book-layer-input.json`, holds 136 actions as printed by the join run: 107 whole-headword exclusions, 10 single-concept exclusions and 19 entries (16 replacements and 2 phrase entries, §C234 ⑧).
+  - The loader, `server/scripts/load-book-glossary.js`, is a dry run by default; then `--apply`, then `--verify`.
+- **Commits on the branch** (base `e204e4dfb`, the §C234/§C235 register commit, on `origin/main` `474647ffb`):
+  - the spec: `817c2e5be`, `649a4f6bc`;
+  - migration 058: `2a4850e41`, `19f2f4d43`, `1a3de9b97`;
+  - the write API: `d2a8a39c5`, `a53a82f2e`, `5a1a5b5d0`;
+  - the resolver: `03499ff8e`;
+  - the record: `75f258a49`, `037defbcf`;
+  - the input: `7be00f18c`;
+  - the loader: `29c462b81`, `d07406e65`.
+- **Production, read-only, 2026-11-19, HEAD `474647ffb`:** a check of the input against production's `sessions.db` found all 136 actions consistent. Every concept id exists, is unmerged and still carries its English; its rank-1 Icelandic equals the census value; no house-style concept carries an excluded headword; and no chemistry book preference blocks an entry. The layer tables were not present, as expected before the deploy. Production's `journal_mode` is `wal`; the loader's dry run handles it.
+- **Logged from this work:** §C237 (the lookup box) and §C238 (the resolver bench's control).
+- **▶ NEXT:**
+  - [USER] reviews the draft PR.
+  - After the merge and deploy, [USER] runs the loader's dry run on production, then `--apply`, then `node server/scripts/export-terminology.js`, then `--verify`, then pulls.
+  - Stage 2 (the head editor's screen and the worklist) is planned next.
+  - After #742 merges, `study-freeze.js` records `book-glossary.json` (spec §5.4).
+
+#### §C237 (NEW, 2026-11-19) — the segment editor's free-text term lookup reads the old terminology tables
+- **Read from the code:** `terminologyService.lookupTerm` (`server/services/terminologyService.js:217`) is called by the lookup box (`server/routes/segment-editor.js:144`). It reads the old terminology tables, so it sees neither the concept model nor the book layer.
+- **Effect:** a term the layer excludes or replaces can still appear in the lookup box, and a layer entry cannot.
+- **Owner:** code. **Trigger:** G1.17 or stage 2.
+
+#### §C238 (NEW, 2026-11-19) — `server/scripts/bench-c24.js` stops at its own corpus control
+- **Measured by the Task 3 implementer on 2026-11-19:** the bench records 70,187 concepts and 192,189 terms; a current scratch build has 70,248 and 192,315. The house-style rows are newer than the recorded figures, so the bench refuses to run until they are re-derived. `bench-resolve.js` was used instead.
+- **Owner:** code. **Trigger:** the next performance check of the resolver.
+
 ### ⏭ 2026-11-18 (c19: the glossary pre-screen built and run) — SUPERSEDES THE NEXT OF THE 2026-11-10 (c19) ENTRY; IT DOES NOT CHANGE THE OTHER ENTRIES OR THEIR NEXT: **✅ The 10-10 plan's 1.5 AI pre-screen is BUILT, REVIEWED AND RUN, and MERGED: [#736](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/736), a merge commit (`a681ab107`, 2026-11-18), pinned to the head whose full `npm test` passed (`f5caca072`: 640 of 640 files); CI passed but for the known §C231 audit red. Claude Fable 5.2 judged the 1,546 approved rows the segment editor shows on chemistry that no one has ruled; 212 are flagged. ✅ **2026-11-18: [USER] ruled all 26 chemistry-domain rows and confirmed the chemistry group** (19 keep, 6 remove, 1 phrases), plus 3 rows from the other tabs; each ruling's comment on the page carries its whole-book count and any condition. ✅ **2026-11-18: [USER] ruled the remaining physics- and biology-domain flags on the same review page, https://claude.ai/artifact/PkPZSK3LSBaC2QSAJZTbLy, and both groups are confirmed:** physics 148 of 148 (90 remove, 46 keep, 11 replace, 1 phrases), biology 38 of 38 (19 remove, 14 keep, 5 replace); all 212 flags have a ruling, checked by a read-back of the page against the local list before each confirm. Two record shapes the apply script must read: a remove whose comment begins "SKILYRÐI:" removes the whole headword and the fallback must NOT take over, one beginning "AÐEINS" (row only; written "AÐEINS þessi lína" or "AÐEINS RÖÐIN") lets it, and one remove carries no prefix (r032 `ATP`, where nothing takes over); a phrases ruling with a `phraseIcelandic` field changes the Icelandic too (`band gap → orkugeil`). The missing compound entries found along the way are §C234 ①–⑨. ▶ NEXT: a committed, dry-run-by-default script that [USER] runs on production applies the rulings in the concept model (10-10 plan 1.5); its design follows from the rulings.** ✏️ *This said the branch was not pushed or merged and that its PR waited for [USER]'s go until #736 merged; it then said #736 was not deployed. Production pulled to `474647ffb` at 10:44:55Z on 2026-11-18 and the service restarted at 10:45:08Z, so #736 and #737 are deployed.*
 - **Production, read on 2026-11-18 at 10:25Z (read-only):** HEAD `d401f63f2`, the 10:00 content backup, pushed (`content_backup` "Pushed d401f63f2"); last deploy at 08:45:54Z to `2db429412`, service restarted at 08:46:08Z; `/api/health` `ok` on every check. #736 (and this entry's own PR) were not deployed at that reading; both were deployed later that morning (pull to `474647ffb` at 10:44:55Z, service at 10:45:08Z). **The 10:00 glossary export wrote chemistry's `glossary-unified.json`:** one pair left it (`auto- → sjálf-`, 1,750 → 1,749 terms). It was not in the pre-screen's population and no flagged row is affected; the census was checked against the 2026-11-01 export, whose sha256 the reduced census records (`exportSource`).
 - **Design, plan and the build's decisions:** [the design](../superpowers/specs/2026-11-17-c19-glossary-prescreen-design.md), [the plan](../superpowers/plans/2026-11-17-c19-glossary-prescreen.md), and the 40 rulings the build made on [USER]'s behalf, frozen in [the rulings file](../superpowers/specs/2026-11-17-c19-build-rulings.md) (with the parked minor findings). [USER] approved the design and its controls on 2026-11-17.
