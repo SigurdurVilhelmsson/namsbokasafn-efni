@@ -4,6 +4,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const freshMigratedDb = require('./helpers/freshMigratedDb');
 const Database = require('better-sqlite3');
+const { checkSchema, EXPECTED_SCHEMA } = require('../lib/schemaHealth');
 const migration = require('../migrations/058-book-glossary-layer');
 
 const COLUMNS = {
@@ -99,5 +100,25 @@ describe('migration 058: the book glossary layer', () => {
     } finally {
       warn.mockRestore();
     }
+  });
+
+  it('schema health lists the three tables and two indexes, and flags their absence', () => {
+    for (const [table, cols] of Object.entries(COLUMNS)) {
+      expect(EXPECTED_SCHEMA.tables[table]).toEqual(cols);
+    }
+    expect(EXPECTED_SCHEMA.indexes).toEqual(
+      expect.arrayContaining(['idx_book_glossary_entry_book', 'idx_book_glossary_change_book'])
+    );
+    const bare = new Database(':memory:');
+    try {
+      const { ok, missing } = checkSchema(bare, EXPECTED_SCHEMA);
+      expect(ok).toBe(false);
+      expect(missing).toContain('book_glossary_exclusion');
+      expect(missing).toContain('index idx_book_glossary_change_book');
+    } finally {
+      bare.close();
+    }
+    // Control: a database every migration built is healthy.
+    expect(checkSchema(freshMigratedDb().db, EXPECTED_SCHEMA).ok).toBe(true);
   });
 });
