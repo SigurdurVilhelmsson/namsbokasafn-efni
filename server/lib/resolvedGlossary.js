@@ -88,9 +88,12 @@ function buildResolvedGlossary(db, bookSlug, { census, booksDir } = {}) {
     ties: 0,
     nominalTies: 0,
     outOfScopeOnly: 0,
-    // Census strings this book's glossary layer excluded as a whole headword (spec
-    // 2026-11-19-book-glossary-layer-design §5.3), so a shrink the layer caused can be told
-    // apart from a lost term.
+    // Census strings that resolved to nothing because this book's glossary layer excludes them
+    // as a whole headword (spec 2026-11-19-book-glossary-layer-design §5.3). ⚠️ AN UPPER BOUND
+    // on what the layer removed: it also counts a census string that had no candidate at all
+    // (the resolver marks the exclusion before it looks at candidates), so by itself it cannot
+    // tell a layer shrink from a lost term. Compare the excluded headwords with the previous
+    // export's terms for that.
     excludedByBook: 0,
     censusStrings: source.strings.length,
   };

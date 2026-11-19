@@ -122,8 +122,8 @@ function buildPreferenceMap(db, bookId, chapter) {
  * entries is what keeps one book's layer from changing what any other book resolves, and it
  * needs to know every owner.
  *
- * Keys are the stored `match_key`, written by `matchKey` (bookGlossaryLayer.js), so the
- * lookup must fold with `matchKey` too.
+ * Keys are the stored `match_key`, which the write API (bookGlossaryLayer.js) computes with
+ * `matchKey`, defined in this file, so the lookup must fold with `matchKey` too.
  *
  * @param {import('better-sqlite3').Database} db
  * @param {number} bookId
@@ -162,7 +162,8 @@ function loadBookLayer(db, bookId) {
 /**
  * Step 2 of the layer (spec §5.2): the candidates this book may see for one headword. Drops a
  * concept another book owns, and a concept this book excluded for this headword. Returns the
- * SAME array when nothing could be dropped, so a book with an empty layer allocates nothing.
+ * SAME array only when nothing can be dropped: no exclusion for this headword and no entry in
+ * ANY book. `bookOwned` is global, so once any book has an entry, every book filters.
  *
  * @param {object} layer from loadBookLayer
  * @param {number} bookId

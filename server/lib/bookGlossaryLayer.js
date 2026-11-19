@@ -1,10 +1,15 @@
 /**
- * The book glossary layer's write API (spec 2026-11-19-book-glossary-layer-design §5.1-§5.2).
+ * The book glossary layer's write API (spec 2026-11-19-book-glossary-layer-design §5.1-§5.2)
+ * and its committed record (§5.4).
  *
- * A book can exclude a headword (concept_id 0), exclude one concept for a headword, or own an
- * entry. Every added row writes one book_glossary_change row in the SAME transaction.
+ * Write API (`addExclusion`, `addEntry`): a book can exclude a headword (concept_id 0), exclude
+ * one concept for a headword, or own an entry. Every added row writes one book_glossary_change
+ * row in the SAME transaction. Refusals throw an Error with `code: 'LAYER_REFUSED'` and a
+ * one-line message.
  *
- * Refusals throw an Error with `code: 'LAYER_REFUSED'` and a one-line message.
+ * Record: `buildBookGlossaryRecord` builds books/<book>/glossary/book-glossary.json's content,
+ * `writeBookGlossaryRecord` writes it when it changed, and `createBookGlossaryRecordFn` is the
+ * `recordFn` the glossary export (server/scripts/export-terminology.js) calls for each book.
  *
  * ⚠️ houseStyleTerms.js must NOT require this module: conceptResolver already requires
  * houseStyleTerms, and this module requires conceptResolver (require cycle).
@@ -26,7 +31,10 @@ function bookIdOf(db, slug) {
   return row.id;
 }
 
-/** R1: a concept carries the English iff it has an en term whose matchKey equals the form's. */
+/**
+ * A concept carries the English iff it has an en term whose matchKey equals the form's:
+ * build ruling R1 (docs/superpowers/specs/2026-11-19-book-glossary-build-rulings.md).
+ */
 function conceptCarries(db, conceptId, english) {
   const key = matchKey(english);
   return db
@@ -152,8 +160,9 @@ function addEntry(db, a) {
           .map((r) => r.text);
         const sameForms = ens.length === keys.size && ens.every((k) => keys.has(k));
         if (sameForms && is.length === 1 && is[0] === a.icelandic) {
-          // R7: 'already' only if every requested replacement is currently excluded. Never write the
-          // missing ones here (a head editor may have un-excluded the word on purpose).
+          // 'already' only if every requested replacement is currently excluded. Never write the
+          // missing ones here (a head editor may have un-excluded the word on purpose):
+          // build ruling R7 (docs/superpowers/specs/2026-11-19-book-glossary-build-rulings.md).
           for (const rc of replaces) {
             for (const f2 of forms.filter((x) => conceptCarries(db, rc, x))) {
               const ex = db
@@ -182,7 +191,8 @@ function addEntry(db, a) {
         .get(bookId, f);
       if (pref) throw refuse(`"${f}" has a book_term_preference row for this book`);
     }
-    // R2: a replaced concept must carry at least one of the entry's forms.
+    // A replaced concept must carry at least one of the entry's forms:
+    // build ruling R2 (docs/superpowers/specs/2026-11-19-book-glossary-build-rulings.md).
     const carried = new Map();
     for (const cid of replaces) {
       const mine = forms.filter((f) => conceptCarries(db, cid, f));
@@ -240,8 +250,10 @@ const parseJson = (s) => {
  * of the three tables. Cumulative: the whole history every time, so a manual export between two
  * cron runs cannot lose rows. An excluded row's Icelandic is NOT carried (licence note, §5.4).
  *
- * `dangling` (controller ruling R11): single-concept exclusions whose concept is missing, merged
- * or no longer carries the English; entries whose concept is missing or merged.
+ * `dangling`: single-concept exclusions whose concept is missing, merged or no longer carries
+ * the English; entries whose concept is missing or merged. Merged concepts are listed because
+ * the lookup follows a merge to its survivor, so a merged key would miss silently:
+ * build ruling R11 (docs/superpowers/specs/2026-11-19-book-glossary-build-rulings.md).
  *
  * @param {object} db
  * @param {string} bookSlug

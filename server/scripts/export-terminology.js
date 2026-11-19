@@ -2,7 +2,8 @@
 
 /**
  * Export each book's glossary from the terminology DB to
- * books/<book>/glossary/glossary-unified.json.
+ * books/<book>/glossary/glossary-unified.json, and write the book glossary layer's committed
+ * record, books/<book>/glossary/book-glossary.json (see THE PER-BOOK RECORD below).
  *
  * ⚠️ NOT an MT-only file: tools/api-translate.js's loadGlossary feeds it to
  * Málstaður as the MT glossary (Unit 6.1), but tools/lib/math-label-substitute.js
@@ -119,6 +120,18 @@
  * per-book breakdown is most useful. Neither is a substitute for the other:
  * see server/lib/glossaryExportHealth.js for why liveness must come from the
  * heartbeat's absence and never from a file written on every outcome.
+ *
+ * THE PER-BOOK RECORD, A THIRD WRITE (c19, spec 2026-11-19-book-glossary-layer-design §5.4):
+ *
+ *   books/<book>/glossary/book-glossary.json     the book glossary layer's record — !dryRun
+ *
+ * Written for each book the run covers that has layer rows, and only when its content
+ * (ignoring `generated`) changed; server/lib/bookGlossaryLayer.js builds and writes it. It is
+ * per book, NOT whole-corpus, so ⚠️ a `--book <slug>` run DOES write it, while it writes neither
+ * of the two artifacts above. It is written even when that book's glossary-unified.json is
+ * refused, and a failure to write it never changes a book's outcome or the exit code. Its
+ * per-book result is the status file's `bookGlossaryRecords`, so that result is recorded only
+ * on an unfiltered run.
  *
  *   node server/scripts/export-terminology.js              # all glossary-bearing books
  *   node server/scripts/export-terminology.js --book efnafraedi-2e

@@ -652,9 +652,15 @@ const BOOK_LAYER_SOURCE = 'book-layer';
  * model is empty, you have pointed me at the wrong database" refusal could
  * never fire once 'Celsíus' was always a candidate.
  *
- * ⚠️ `IS NOT`, never `<>`. A row with a NULL collection/source is IMPORTED and
- * must still be counted; `<>` evaluates to NULL against NULL and would silently
- * drop it, turning one under-count into another.
+ * The predicate is `collection IS NULL OR collection NOT IN (house-style, book-layer)`
+ * (`source` for terms): it drops 051's rows AND the book glossary layer's rows
+ * (BOOK_LAYER_SOURCE), which are not an import either.
+ *
+ * ⚠️ The `IS NULL OR` arm is load-bearing. A row with a NULL collection/source is
+ * IMPORTED and must still be counted, but `NOT IN (…)` evaluates to NULL against a
+ * NULL column, exactly as `<>` does, and WHERE drops a NULL. Remove that arm and
+ * every NULL-collection import silently stops being counted, turning one
+ * under-count into another.
  *
  * ⚠️ And NOT `WHERE idordabanki_id IS NOT NULL` as the positive test:
  * conceptFromEntry does `idordabankiId: entry.id ?? null`, so a legitimately
@@ -666,7 +672,7 @@ function countImportedConcepts(db) {
     .get(HOUSE_STYLE_SOURCE, BOOK_LAYER_SOURCE).n;
 }
 
-/** concept_term rows that came from an import rather than from 051. */
+/** concept_term rows that came from an import rather than from 051 or the book layer. */
 function countImportedTerms(db) {
   return db
     .prepare('SELECT COUNT(*) n FROM concept_term WHERE source IS NULL OR source NOT IN (?, ?)')
