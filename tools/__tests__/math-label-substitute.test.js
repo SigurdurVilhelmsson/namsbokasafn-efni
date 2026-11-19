@@ -140,6 +140,18 @@ describe('substituteMathLabels', () => {
     const r = buildResolver({ overlay: { 'a"b': 'a"b' }, glossaryMap: new Map() });
     expect(() => substituteMathLabels('<m:mtext>a"b</m:mtext>', r)).toThrow(/forbidden/);
   });
+  // A replacement string's `$` patterns must be written, not expanded (register, 2026-10-09:
+  // the same shape renderItemBody had, fixed in e2a1d7a6a). `$&` and `$'` cannot reach here,
+  // because FORBIDDEN_XML refuses `&` and `'`; `$$` and `` $` `` can, and String.replace
+  // would turn them into `$` and the text before the label.
+  it('writes a value holding `$$` literally', () => {
+    const r = buildResolver({ overlay: { rate: 'a$$b' }, glossaryMap: new Map() });
+    expect(substituteMathLabels('<m:mi>rate</m:mi>', r)).toBe('<m:mi>a$$b</m:mi>');
+  });
+  it('writes a value holding `$`` literally, even after leading whitespace', () => {
+    const r = buildResolver({ overlay: { rate: 'x$`y' }, glossaryMap: new Map() });
+    expect(substituteMathLabels('<m:mtext>  rate</m:mtext>', r)).toBe('<m:mtext>  x$`y</m:mtext>');
+  });
   it('does not throw on english-passthrough text containing legal quotes/entities', () => {
     const r = buildResolver({ overlay: { rate: 'hraði' }, glossaryMap: new Map() });
     const s = '<m:mtext>"products" &amp; more</m:mtext>';
