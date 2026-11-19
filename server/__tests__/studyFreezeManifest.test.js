@@ -765,7 +765,7 @@ describe('manifest through main', () => {
 
   describe('supersedes (spec §6.6)', () => {
     const TAG2 = `freeze-${BOOK}-2026-12-15`;
-    it('R1: --supersedes naming a tag with no current manifest is refused; nothing written', () => {
+    it('build ruling R1 (docs/superpowers/specs/2026-11-19-g17-build-rulings.md): --supersedes naming a tag with no current manifest is refused; nothing written', () => {
       expect(write('--supersedes', `freeze-${BOOK}-2026-11-01`)).toBe(1);
       expect([existsSync(freezeDir()), text().includes('supersedes-not-current')]).toEqual([
         false,

@@ -7,7 +7,7 @@
  *   - the current manifest, if any, still matches the tree (`compareToManifest`, `check`'s two
  *     verdicts). Until step 2 there is no manifest, and then the guard asserts that none exists
  *     on disk, read with its own directory listing, so a manifest `currentManifest` fails to find
- *     cannot pass silently (controller ruling R2).
+ *     cannot pass silently: build ruling R2 (docs/superpowers/specs/2026-11-19-g17-build-rulings.md).
  *
  * The planted controls call the SAME two predicates on a temp tree and require them to fail on an
  * absent marker, a near-miss marker body, a served-text change, an MT file change and a manifest
@@ -74,7 +74,8 @@ function freezeJsonsOnDisk(book) {
 }
 
 /**
- * The manifest guard, asserting in both states (R2). `cur` is what `currentManifest` returned:
+ * The manifest guard, asserting in both states: build ruling R2 (docs/superpowers/specs/2026-11-19-g17-build-rulings.md).
+ * `cur` is what `currentManifest` returned:
  * with none, no manifest may exist on disk; with one, the tree must still match it.
  */
 function expectManifestHolds(book, cur) {
@@ -246,7 +247,7 @@ describe('controls on a planted tree: the same two predicates fail when they sho
     }
   });
 
-  it('control (R2): with no manifest found, a manifest on disk still fails the guard', () => {
+  it('control, build ruling R2 (docs/superpowers/specs/2026-11-19-g17-build-rulings.md): with no manifest found, a manifest on disk still fails the guard', () => {
     try {
       // baseline: no manifest anywhere, so the no-manifest branch passes
       expect(study.currentManifest({ book: BOOK })).toBe(null);
