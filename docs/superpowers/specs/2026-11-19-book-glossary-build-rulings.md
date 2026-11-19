@@ -19,7 +19,8 @@ Labels used below: "Task N" is a task of the plan. "Important n" and "Minor n" a
 review's findings, and "T*n*" items are the minors that review triaged from Task *n*'s review. Those reviews
 are not committed; §C239 in the register lists the minors left unbuilt.
 
-R1 to R19 were made during the build of Tasks 1 to 7; R20 to R22 settle the final review.
+R1 to R19 were made during the build of Tasks 1 to 7; R20 to R22 settle the final review; R23 records [USER]'s
+decision on the input's comments.
 
 ## R1 — what "a concept carries the English" means
 
@@ -218,7 +219,7 @@ the review triage's register items, in a new register item §C239 (parked minors
 **Why.** The loader runs once on production, so a loader item parked in the register would in practice never
 be done; the review's fix list was small.
 **Cost if wrong.** A second small PR.
-**Note.** The ruling named R1–R21 for this file; it holds R1–R22.
+**Note.** The ruling named R1–R21 for this file; it holds R1–R23.
 
 ## R22 — two calls surfaced to [USER], not changed
 
