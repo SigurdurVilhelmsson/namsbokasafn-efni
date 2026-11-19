@@ -149,8 +149,21 @@ function addEntry(db, a) {
           .all(cid)
           .map((r) => r.text);
         const sameForms = ens.length === keys.size && ens.every((k) => keys.has(k));
-        if (sameForms && is.length === 1 && is[0] === a.icelandic)
+        if (sameForms && is.length === 1 && is[0] === a.icelandic) {
+          // R7: 'already' only if every requested replacement is currently excluded. Never write the
+          // missing ones here (a head editor may have un-excluded the word on purpose).
+          for (const rc of replaces) {
+            for (const f2 of forms.filter((x) => conceptCarries(db, rc, x))) {
+              const ex = db
+                .prepare(
+                  'SELECT 1 FROM book_glossary_exclusion WHERE book_id = ? AND match_key = ? AND concept_id = ?'
+                )
+                .get(bookId, matchKey(f2), rc);
+              if (!ex) throw refuse(`entry exists but concept ${rc} is not excluded for "${f2}"`);
+            }
+          }
           return { status: 'already', conceptId: cid };
+        }
         throw refuse(`conflict: the book already has an entry for "${f}"`);
       }
     }
