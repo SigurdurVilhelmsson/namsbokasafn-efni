@@ -61,6 +61,11 @@ python3 -I build-fix-targets-fetch.py nine-readonly.cjs ../data/dry-count-ruthen
 python3 -I extract-bin-forms.py <SHsnid.csv.zip> ../data/comparison-official-vs-resolver.json bin.json
 python3 -I build-editor-fixes.py ../data/fix-targets.json ../data/comparison-official-vs-resolver.json \
     ../data/render-census-69-names.json ../data/dry-counts-9-names.json bin.json ../reports/editor-fixes
+# measurement 8 (after measurement 7: it reads ../reports/editor-fixes.json):
+python3 -I build-fix-targets-fetch.py --never-official nine-readonly.cjs ../data/never-official-lists.json fetch-never-official-targets.cjs
+python3 -I build-editor-fixes.py ../data/never-official-targets.json ../data/comparison-official-vs-resolver.json \
+    ../data/render-census-69-names.json ../data/dry-counts-9-names.json bin.json \
+    ../reports/editor-fixes-never-official ../reports/editor-fixes.json
 ```
 
 In the sections below, paths are relative to `evidence/2026-11-20-census/`.
@@ -224,6 +229,34 @@ the nominative, so the form is the official name. **The fixes shrink the nine bo
 expected worklists**, because the worklist reads pending edits too. Both columns are in
 `reports/editor-fixes.md`.
 
+### 8. The editors' fixes for the never-official segments
+
+The same rule script and the same rulings as measurement 7, run over every distinct segment of the 14
+never-official names' dry lists (measurement 6). `instruments/fetch-never-official-targets.cjs` (built
+by `build-fix-targets-fetch.py --never-official`) read their current text read-only on production
+→ `data/never-official-targets.json`. No segment had a live edit. In these segments both stem rules
+apply wherever they occur.
+
+Two refinements to the rule script, written for this run. Neither changes any measurement-7 output,
+which still rebuilds byte-identically:
+
+- **Compounds on an `-ín`/`-íum` base change their element part only** (`litíumklóríð` →
+  `liþíumklóríð`, `samarínjón` → `samaríumjón`). A derived word is left alone (the remainder starts
+  `íð`/`óíð`, as in `aktíníðaröðina`). So is a compound on one of the nine entries' short forms,
+  where `german` + `skur` would be the ordinary word *germanskur*; that case is flagged for review
+  instead.
+- **Three census bases that are not element names are excluded:** `kalkstein` (limestone),
+  `aktiníðaröðin` (the actinide series) and `alúmín` (from *alúmínat*, aluminate).
+
+→ `reports/editor-fixes-never-official.md` (review), `reports/editor-fixes-never-official-paste.txt`,
+`reports/editor-fixes-never-official.json`
+
+**Result.** 65 segments. **4 are the periodic-table alts already drafted in measurement 7:** this
+run's text for them is asserted identical, and they are left out of the paste file, so nothing is
+pasted twice. **The other 61 all change:** 59 name fixes, 32 compound fixes (31 `litíum-` →
+`liþíum-` and `samarínjón`), and no flagged compound or derived word. The review file has the nine
+book entries' expected worklists three ways: entries first, after these fixes, and after both sets.
+
 ## Blind spots
 
 - **The English anchor sees only the name as a whole word.** A segment whose English says `Na+`,
@@ -256,6 +289,9 @@ expected worklists**, because the worklist reads pending edits too. Both columns
 - **A census word can come from inside markup.** The lanthanide census matched `Lanthanoid` in one
   segment. It is the target id of a cross-reference marker (`[[xref:CNX_Chem_19_01_Lanthanoid]]`),
   not reader-visible English, so it is counted as neither form.
+- **A compound's element part is replaced by rule.** The rule is right for `liþíum-` compounds, where
+  only the spelling changes. For an `-ín` → `-íum` compound (`samarínjón` → `samaríumjón`) it assumes the
+  `-íum` form compounds the same way. Compounds on short forms are never changed, only flagged.
 - **The editors' fixes are drafts against the 2026-11-20 text.** Pasting a whole segment replaces
   whatever it holds at that moment. If any of the 26 is edited first, re-run the fetch and the build
   before pasting.

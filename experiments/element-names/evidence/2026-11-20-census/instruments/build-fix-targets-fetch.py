@@ -1,18 +1,31 @@
-"""Build fetch-fix-targets.cjs: a READ-ONLY fetch of the current effective Icelandic (what the segment
-editor shows) and any live edit for the 26 segments the editors' fixes cover. Targets: the 8 ruthenium
-segments (data/dry-count-ruthenium-mt-forms.json) and the 18 lanthanide segments still holding the old
-derived forms (data/lanthanide-census.json). Reuses nine-readonly.cjs's read-only header.
-Usage (from this folder):
-  python3 -I build-fix-targets-fetch.py nine-readonly.cjs ../data/dry-count-ruthenium-mt-forms.json ../data/lanthanide-census.json fetch-fix-targets.cjs"""
+"""Build a READ-ONLY fetch of the current effective Icelandic (what the segment editor shows) and any live
+edit, for a fixed list of segments. Reuses nine-readonly.cjs's read-only header.
+
+Measurement 7 (the 8 ruthenium segments, data/dry-count-ruthenium-mt-forms.json, and the 18 lanthanide
+segments still holding the old derived forms, data/lanthanide-census.json):
+  python3 -I build-fix-targets-fetch.py nine-readonly.cjs ../data/dry-count-ruthenium-mt-forms.json ../data/lanthanide-census.json fetch-fix-targets.cjs
+Measurement 8 (every distinct segment of the 14 never-official names' dry lists, data/never-official-lists.json):
+  python3 -I build-fix-targets-fetch.py --never-official nine-readonly.cjs ../data/never-official-lists.json fetch-never-official-targets.cjs"""
 import json
 import sys
 
-src_path, ru_path, la_path, out_path = sys.argv[1:5]
-ru = json.load(open(ru_path, encoding='utf-8'))
-la = json.load(open(la_path, encoding='utf-8'))
-targets = [{'set': 'ruthenium', 'chapter': i['chapter'], 'moduleId': i['moduleId'], 'segmentId': i['segmentId']} for i in ru['items']]
-targets += [{'set': 'lanthanide', 'chapter': i['chapter'], 'moduleId': i['moduleId'], 'segmentId': i['segmentId']}
-            for i in la['items'] if 'derived-old' in i['kinds']]
+if sys.argv[1] == '--never-official':
+    src_path, no_path, out_path = sys.argv[2:5]
+    no = json.load(open(no_path, encoding='utf-8'))
+    targets, seen = [], set()
+    for r in no['rows']:
+        for i in r['items']:
+            if i['segmentId'] in seen:
+                continue
+            seen.add(i['segmentId'])
+            targets.append({'set': 'never-official', 'chapter': i['chapter'], 'moduleId': i['moduleId'], 'segmentId': i['segmentId']})
+else:
+    src_path, ru_path, la_path, out_path = sys.argv[1:5]
+    ru = json.load(open(ru_path, encoding='utf-8'))
+    la = json.load(open(la_path, encoding='utf-8'))
+    targets = [{'set': 'ruthenium', 'chapter': i['chapter'], 'moduleId': i['moduleId'], 'segmentId': i['segmentId']} for i in ru['items']]
+    targets += [{'set': 'lanthanide', 'chapter': i['chapter'], 'moduleId': i['moduleId'], 'segmentId': i['segmentId']}
+                for i in la['items'] if 'derived-old' in i['kinds']]
 src = open(src_path, encoding='utf-8').read()
 head = src[:src.index('const scope = buildScope')]
 head = head.replace(head[:head.index('process.exitCode = 1;')],
