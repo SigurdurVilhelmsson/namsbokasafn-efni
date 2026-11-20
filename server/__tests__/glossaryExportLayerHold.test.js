@@ -29,7 +29,7 @@ import path from 'node:path';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
-const { runGlossaryExport } = require('../scripts/export-terminology');
+const { runGlossaryExport, parseArgs } = require('../scripts/export-terminology');
 const { termsSha256 } = require('../../tools/lib/glossary-terms-hash.cjs');
 
 let root;
@@ -343,5 +343,154 @@ describe('runGlossaryExport — restamp', () => {
     });
     expect(lines.some((m) => m.includes('prufubok') && /restamp/i.test(m))).toBe(true);
     expect(readBytes('prufubok')).toBe(before);
+  });
+});
+
+describe('runGlossaryExport — R8: a stamp the database cannot confirm', () => {
+  it('a stamped file whose layer history is gone is held when the terms change', () => {
+    seedBook('prufubok', stamped(approved(1), 7));
+    const before = readBytes('prufubok');
+    run({ layerChangeIdFn: () => null, exportFn: () => payload(approved(3)) });
+    expect(readStatus().books.prufubok.outcome).toBe('refused-layer-change');
+    expect(readBytes('prufubok')).toBe(before);
+    expect(existsSync(heldFile('prufubok'))).toBe(true);
+  });
+
+  it('a stamped file whose layer history is gone is left alone when the terms match', () => {
+    seedBook('prufubok', stamped(approved(3), 7));
+    const before = readBytes('prufubok');
+    run({ layerChangeIdFn: () => null, exportFn: () => payload(approved(3)) });
+    expect(readStatus().books.prufubok.outcome).toBe('unchanged');
+    expect(readBytes('prufubok')).toBe(before);
+  });
+
+  it('a stamp ahead of the database is held', () => {
+    seedBook('prufubok', stamped(approved(1), 10));
+    run({ layerChangeIdFn: () => 9, exportFn: () => payload(approved(3)) });
+    expect(readStatus().books.prufubok.outcome).toBe('refused-layer-change');
+  });
+
+  it('a stamp ahead of the database is restamped when the terms match', () => {
+    seedBook('prufubok', stamped(approved(3), 10));
+    run({ layerChangeIdFn: () => 9, exportFn: () => payload(approved(3)) });
+    expect(readStatus().books.prufubok.outcome).toBe('restamped');
+    expect(readExport('prufubok').bookLayer).toEqual({ lastChangeId: 9 });
+  });
+
+  it('a matching release lets a gone-history hold write, without a stamp', () => {
+    seedBook('prufubok', stamped(approved(1), 7));
+    const exportFn = () => payload(approved(3));
+    run({ layerChangeIdFn: () => null, exportFn });
+    const hash = readStatus().books.prufubok.termsSha256;
+    run({ layerChangeIdFn: () => null, exportFn, releaseLayer: hash });
+    expect(readStatus().books.prufubok.outcome).toBe('released');
+    expect(readExport('prufubok')).not.toHaveProperty('bookLayer');
+  });
+});
+
+describe('runGlossaryExport — release', () => {
+  const exportFn = () => payload(approved(3));
+
+  function hold() {
+    seedBook('prufubok', stamped(approved(1), 7));
+    run({ layerChangeIdFn: () => 9, exportFn });
+    return readStatus().books.prufubok.termsSha256;
+  }
+
+  it('release with the held hash writes the export, stamped', () => {
+    const hash = hold();
+    run({ layerChangeIdFn: () => 9, exportFn, releaseLayer: hash });
+    expect(readStatus().books.prufubok.outcome).toBe('released');
+    expect(readExport('prufubok').terms).toEqual(approved(3));
+    expect(readExport('prufubok').bookLayer).toEqual({ lastChangeId: 9 });
+  });
+
+  it('release with a stale hash refuses and names both hashes', () => {
+    const held = hold();
+    const before = readBytes('prufubok');
+    const stale = 'a'.repeat(64);
+    const lines = [];
+    run({
+      layerChangeIdFn: () => 9,
+      exportFn,
+      releaseLayer: stale,
+      logError: (m) => lines.push(m),
+    });
+    expect(readStatus().books.prufubok.outcome).toBe('refused-layer-change');
+    expect(readBytes('prufubok')).toBe(before);
+    expect(lines.some((m) => m.includes(stale) && m.includes(held) && /test again/.test(m))).toBe(
+      true
+    );
+  });
+
+  it('release does not stand down the shrink gate', () => {
+    seedBook('prufubok', stamped(approved(10), 7));
+    const small = () => payload(approved(3));
+    run({ layerChangeIdFn: () => 9, exportFn: small });
+    const hash = readStatus().books.prufubok.termsSha256;
+    const before = readBytes('prufubok');
+    run({ layerChangeIdFn: () => 9, exportFn: small, releaseLayer: hash });
+    expect(readStatus().books.prufubok.outcome).toBe('refused-shrink');
+    expect(readBytes('prufubok')).toBe(before);
+  });
+
+  it('release with nothing held has no effect', () => {
+    seedBook('prufubok', stamped(approved(1), 9));
+    const lines = [];
+    run({
+      layerChangeIdFn: () => 9,
+      exportFn,
+      releaseLayer: 'b'.repeat(64),
+      log: (m) => lines.push(m),
+      logError: (m) => lines.push(m),
+    });
+    expect(readStatus().books.prufubok.outcome).toBe('wrote');
+    expect(lines.some((m) => m.includes('prufubok') && /no effect/.test(m))).toBe(true);
+  });
+
+  it('after a release the next bare run reads unchanged', () => {
+    const hash = hold();
+    run({ layerChangeIdFn: () => 9, exportFn, releaseLayer: hash });
+    run({ layerChangeIdFn: () => 9, exportFn });
+    const entry = readStatus().books.prufubok;
+    expect(entry.outcome).toBe('unchanged');
+    expect(entry).not.toHaveProperty('held');
+    expect(entry).not.toHaveProperty('termsSha256');
+  });
+});
+
+describe('parseArgs — --release-layer', () => {
+  const hex = 'ab12'.repeat(16);
+
+  it('parses --release-layer trimmed and lowercased', () => {
+    const r = parseArgs(['--book', 'x', '--release-layer', ` ${hex.toUpperCase()} `]);
+    expect(r.releaseLayer).toBe(hex);
+    expect(r.error).toBe(null);
+  });
+
+  it('rejects a value that is not 64 hex characters', () => {
+    expect(parseArgs(['--book', 'x', '--release-layer', hex.slice(1)]).error).toMatch(
+      /--release-layer/
+    );
+    expect(parseArgs(['--book', 'x', '--release-layer', 'xyz']).error).toMatch(/--release-layer/);
+  });
+
+  it('requires --book', () => {
+    const r = parseArgs(['--release-layer', hex]);
+    expect(r.error).toMatch(/--release-layer/);
+    expect(r.error).toMatch(/requires? --book/);
+  });
+
+  it('does not swallow the next flag as its value', () => {
+    expect(parseArgs(['--release-layer', '--book', 'x']).error).toMatch(/--release-layer/);
+  });
+
+  it('reports releaseLayer on every return path', () => {
+    expect(parseArgs(['--release-layer', hex, '--book']).releaseLayer).toBe(hex);
+    expect(parseArgs(['--release-layer', hex, '--book', '']).releaseLayer).toBe(hex);
+    expect(parseArgs(['--release-layer', hex, '--frobnicate']).releaseLayer).toBe(hex);
+    expect(parseArgs(['--release-layer', hex, '--book', 'x']).releaseLayer).toBe(hex);
+    expect(parseArgs(['--release-layer', hex]).releaseLayer).toBe(hex); // override-scoping return
+    expect(parseArgs([]).releaseLayer).toBe(null);
   });
 });

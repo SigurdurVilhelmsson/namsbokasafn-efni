@@ -589,6 +589,10 @@ function writeStatus(projectRoot, status) {
  *   Deliberately independent of `force`: neither implies the other, because a
  *   producer swap and a catastrophic shrink are different risks and each
  *   deserves its own explicit acknowledgement.
+ * @param {string|null} [options.releaseLayer] - the terms sha256 of a held book-layer export.
+ *   When it equals the hash of the export this run built, the layer gate stands down for that
+ *   book (the shrink and growth gates still apply) and a write records `released`. Any other
+ *   value holds as usual. Needs no parseArgs: callers scope it themselves.
  * @param {(bookSlug: string) => number|null} [options.layerChangeIdFn] - injected in tests;
  *   defaults to createLayerChangeIdFn() (server/lib/bookGlossaryLayer.js), a lazy read-only
  *   open. Returns the book layer's last change id, or null when the book has no layer history.
@@ -623,6 +627,7 @@ function runGlossaryExport({
   book = null,
   force = false,
   adopt = false,
+  releaseLayer = null,
   dryRun = false,
   nowMs = Date.now(),
   log = console.log,
@@ -931,14 +936,22 @@ function runGlossaryExport({
     // §5.6: the committed stamp, `undefined` when absent (including an absent or unreadable
     // committed file, so an --adopt'ed first export of a book WITH layer history is held too:
     // --adopt answers the producer/baseline question, not "the layer moved").
-    //
+    const stamp = prev?.[STAMP_KEY]?.lastChangeId;
+    const stampText = stamp === undefined ? 'none' : JSON.stringify(stamp);
+
     // The layer has MOVED when the book has history and the committed stamp is anything other
     // than the current id. Strict inequality, not "lower than": a stamp AHEAD of the database
     // (a restored backup, a different box's file) also means the export was not built from
     // the layer as it now stands, so it is held rather than trusted.
-    const stamp = prev?.[STAMP_KEY]?.lastChangeId;
-    const stampText = stamp === undefined ? 'none' : JSON.stringify(stamp);
-    const layerMoved = layerId !== null && stamp !== layerId;
+    //
+    // R8: a committed stamp that the database cannot confirm (`layerId === null`: no layer
+    // history now, a restored or different database) counts as moved FOR THE HOLD, so changed
+    // terms are held and not written with the stamp silently dropped. Unchanged terms stay
+    // `unchanged` and the file is left as it is: there is no current id to restamp to, and
+    // "restamping" to no stamp would erase the only record of what the file was built from.
+    // `restampable` is the narrower question (a current id exists and differs).
+    const restampable = layerId !== null && stamp !== layerId;
+    const layerMoved = restampable || (layerId === null && stamp !== undefined);
 
     // Producer first, shrink second. A producer swap is categorical; a shrink
     // is quantitative. Reporting "1117 → 709, a 36.5% shrink" about a file
@@ -967,7 +980,7 @@ function runGlossaryExport({
       // reason. "Rewritten with the current stamp ONLY": the committed payload is kept as it
       // is (its `generated` included) and only the stamp changes, so the cron's commit is a
       // one-line diff. A resolved outcome, not `refused-`: nothing waits on a human.
-      if (layerMoved) {
+      if (restampable) {
         if (dryRun) {
           log(
             `[dry-run] ${b}: terms unchanged — would restamp the book layer stamp ` +
@@ -1007,9 +1020,17 @@ function runGlossaryExport({
     // /api/health pick it up by the `refused-` prefix with no enumeration anywhere. The held
     // file is replaced on every held run; its terms hash goes in the status entry so that what
     // is released can be checked against what was tested.
-    if (layerMoved) {
-      const hash = termsSha256(next);
+    const hash = layerMoved ? termsSha256(next) : null;
+    const released = layerMoved && releaseLayer !== null && releaseLayer === hash;
+    if (layerMoved && !released) {
       const heldAbs = heldPath(projectRoot, b);
+      if (releaseLayer !== null) {
+        logError(
+          `${b}: --release-layer ${releaseLayer} does not match the export this run built ` +
+            `(terms sha256 ${hash}) — the glossary changed since it was tested. Held again; ` +
+            `test again and release the new hash.`
+        );
+      }
       if (!dryRun) {
         try {
           writeFileAtomic(heldAbs, persisted);
@@ -1035,6 +1056,12 @@ function runGlossaryExport({
         ...integrityField,
       };
       continue;
+    }
+
+    if (releaseLayer !== null && !layerMoved) {
+      log(
+        `${b}: --release-layer has no effect — nothing is held for this book; running as normal.`
+      );
     }
 
     const verdict = shrinkVerdict(prev, next);
@@ -1118,7 +1145,9 @@ function runGlossaryExport({
       outcome:
         existing.kind === 'corrupt' || existing.kind === 'absent' || pv.refuse
           ? 'adopted'
-          : 'wrote',
+          : released
+            ? 'released'
+            : 'wrote',
       ...integrityField,
     };
   }
@@ -1244,6 +1273,7 @@ function parseArgs(argv) {
   let dryRun = false;
   let force = false;
   let adopt = false;
+  let releaseLayer = null;
   let help = false;
   for (let i = 0; i < argv.length; i++) {
     if (argv[i] === '--book') {
@@ -1254,6 +1284,7 @@ function parseArgs(argv) {
           dryRun,
           force,
           adopt,
+          releaseLayer,
           help,
           error: '--book requires a value (a book slug)',
         };
@@ -1284,6 +1315,7 @@ function parseArgs(argv) {
           dryRun,
           force,
           adopt,
+          releaseLayer,
           help,
           error:
             `--book requires a value, but the next argument is the flag ${JSON.stringify(raw)}. ` +
@@ -1296,6 +1328,7 @@ function parseArgs(argv) {
           dryRun,
           force,
           adopt,
+          releaseLayer,
           help,
           error: `--book requires a non-empty value (a book slug) — got ${JSON.stringify(raw)}`,
         };
@@ -1308,6 +1341,26 @@ function parseArgs(argv) {
       force = true;
     } else if (argv[i] === '--adopt') {
       adopt = true;
+    } else if (argv[i] === '--release-layer') {
+      // The hash of a HELD export (the status entry's `termsSha256`), after it was tested.
+      // Same shape as --book: the next argument, never a flag, validated here at the boundary.
+      const raw = argv[i + 1];
+      const value = raw === undefined ? '' : raw.trim().toLowerCase();
+      if (!/^[0-9a-f]{64}$/.test(value)) {
+        return {
+          book: null,
+          dryRun,
+          force,
+          adopt,
+          releaseLayer,
+          help,
+          error:
+            `--release-layer requires the terms sha256 of a held export (64 hex characters) ` +
+            `as the next argument — got ${raw === undefined ? 'nothing' : JSON.stringify(raw)}`,
+        };
+      }
+      releaseLayer = value;
+      i++;
     } else if (argv[i] === '-h' || argv[i] === '--help') {
       help = true;
     } else {
@@ -1316,10 +1369,11 @@ function parseArgs(argv) {
         dryRun,
         force,
         adopt,
+        releaseLayer,
         help,
         error:
           `unrecognised argument '${argv[i]}' — accepted: --book <slug>, --dry-run, ` +
-          `--force, --adopt, -h/--help (note: --book takes its value as the NEXT ` +
+          `--force, --adopt, --release-layer <hash>, -h/--help (note: --book takes its value as the NEXT ` +
           `argument, not --book=<slug>)`,
       };
     }
@@ -1350,13 +1404,18 @@ function parseArgs(argv) {
   // not depend on parseArgs, and a programmatic caller scoping by other means
   // is legitimate. The cron invokes the script bare, so it reaches neither
   // override either way.
-  if (book === null && (adopt || force)) {
-    const passed = [adopt ? '--adopt' : null, force ? '--force' : null].filter(Boolean);
+  if (book === null && (adopt || force || releaseLayer !== null)) {
+    const passed = [
+      adopt ? '--adopt' : null,
+      force ? '--force' : null,
+      releaseLayer !== null ? '--release-layer' : null,
+    ].filter(Boolean);
     return {
       book: null,
       dryRun,
       force,
       adopt,
+      releaseLayer,
       help,
       error:
         `${passed.join(' and ')} ${passed.length > 1 ? 'require' : 'requires'} --book <slug>. ` +
@@ -1366,7 +1425,7 @@ function parseArgs(argv) {
     };
   }
 
-  return { book, dryRun, force, adopt, help, error: null };
+  return { book, dryRun, force, adopt, releaseLayer, help, error: null };
 }
 
 function main() {
@@ -1380,14 +1439,17 @@ function main() {
   if (parsed.help) {
     console.log(
       'Usage: node server/scripts/export-terminology.js [--book <slug>] [--dry-run] ' +
-        '[--force] [--adopt]\n' +
+        '[--force] [--adopt] [--release-layer <terms-hash>]\n' +
         '  --force  accept a catastrophic shrink\n' +
         '  --adopt  accept a producer swap (migrate a book whose committed\n' +
         '           glossary another program wrote, or replace an unreadable one),\n' +
         "           OR authorise a book's FIRST export — a book with no committed\n" +
         '           glossary has nothing to compare against, so both gates are\n' +
         '           inert and that write is unreviewed by construction (§C21)\n' +
-        '  Neither implies the other, and the 2h cron passes neither.\n' +
+        '  --release-layer <terms-hash>  release a held book-layer change after testing\n' +
+        "           it: the hash is the held export's terms sha256; see\n" +
+        '           scripts/check-held-glossary.sh. The shrink and growth gates still apply.\n' +
+        '  None implies another, and the 2h cron passes none.\n' +
         '  Scope an override with --book: without it, --force/--adopt apply to\n' +
         '  EVERY glossary-bearing book at once. Adoption is a per-book decision.\n' +
         '  NOTE: since B3 this exporter emits a RESOLVED VIEW of the concept model\n' +
@@ -1405,6 +1467,7 @@ function main() {
       dryRun: parsed.dryRun,
       force: parsed.force,
       adopt: parsed.adopt,
+      releaseLayer: parsed.releaseLayer,
     })
   );
 }

@@ -1097,6 +1097,7 @@ describe('parseArgs', () => {
       dryRun: false,
       force: false,
       adopt: false,
+      releaseLayer: null,
       help: false,
       error: null,
     });
@@ -1108,6 +1109,7 @@ describe('parseArgs', () => {
       dryRun: true,
       force: false,
       adopt: false,
+      releaseLayer: null,
       help: false,
       error: null,
     });
