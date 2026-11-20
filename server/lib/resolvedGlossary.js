@@ -28,8 +28,16 @@ const { PRODUCER_RESOLVED } = require('./glossaryProducer');
  *   before the payload is written to disk (its NON_PAYLOAD_KEYS). It is not
  *   part of glossary-unified.json's shape.
  * @throws when the book is unscoped, or its census is empty
+ *
+ * ⚠️ The whole build runs in ONE read transaction (register §C241 F3). `buildScope` loads the
+ * global book-owned map once, while every `resolve` runs live candidate queries, so without a
+ * single snapshot another book's commit in between could leak into this book's export.
  */
-function buildResolvedGlossary(db, bookSlug, { census, booksDir } = {}) {
+function buildResolvedGlossary(db, bookSlug, opts = {}) {
+  return db.transaction(() => buildResolvedGlossaryBody(db, bookSlug, opts))();
+}
+
+function buildResolvedGlossaryBody(db, bookSlug, { census, booksDir } = {}) {
   // ⚠️ Chapter 0 — the book default — ALWAYS. glossary-unified.json is one file
   // per book, so a chapter-scoped answer is not expressible here; consulting
   // chapter preferences would silently pick one chapter's choices for the book.
