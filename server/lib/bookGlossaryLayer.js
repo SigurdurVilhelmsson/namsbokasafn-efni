@@ -18,29 +18,47 @@ const fs = require('fs');
 const path = require('path');
 const { matchKey } = require('./conceptResolver');
 const { BOOK_LAYER_SOURCE } = require('./houseStyleTerms');
+const {
+  conceptCarries,
+  dedupeForms,
+  houseStyleInScope,
+  preferenceBlocksExclusion,
+} = require('./bookGlossaryRules');
 
-function refuse(message) {
+/** Every refusal code the write API (and the routes built on it) can throw. */
+const REFUSALS = Object.freeze([
+  'invalid',
+  'unknown-book',
+  'concept-missing',
+  'not-carried',
+  'entry-conflict',
+  'excluded-headword',
+  'preference',
+  'own-entry',
+  'replaced-not-carried',
+  'no-scope',
+  'needs-confirm',
+  'not-found',
+  'merged-into',
+]);
+
+/**
+ * @param {string} message English, for logs
+ * @param {string} refusal one of REFUSALS
+ * @param {object} [extra] copied onto the error (e.g. `houseStyle`)
+ */
+function refuse(message, refusal, extra = {}) {
   const err = new Error(message);
   err.code = 'LAYER_REFUSED';
+  err.refusal = refusal;
+  Object.assign(err, extra);
   return err;
 }
 
 function bookIdOf(db, slug) {
   const row = db.prepare('SELECT id FROM registered_books WHERE slug = ?').get(slug);
-  if (!row) throw refuse(`unknown book: ${slug}`);
+  if (!row) throw refuse(`unknown book: ${slug}`, 'unknown-book');
   return row.id;
-}
-
-/**
- * A concept carries the English iff it has an en term whose matchKey equals the form's:
- * build ruling R1 (docs/superpowers/specs/2026-11-19-book-glossary-build-rulings.md).
- */
-function conceptCarries(db, conceptId, english) {
-  const key = matchKey(english);
-  return db
-    .prepare("SELECT text FROM concept_term WHERE concept_id = ? AND lang = 'en'")
-    .all(conceptId)
-    .some((r) => matchKey(r.text) === key);
 }
 
 /** Book entries (concept ids) that carry the given English for this book. */
@@ -58,16 +76,21 @@ function entriesClaiming(db, bookId, english) {
 }
 
 function writeHistory(db, bookId, a, action, english, afterObj) {
-  db.prepare(
-    `INSERT INTO book_glossary_change (book_id, at, by, action, english, before_json, after_json, reason, source)
+  return Number(
+    db
+      .prepare(
+        `INSERT INTO book_glossary_change (book_id, at, by, action, english, before_json, after_json, reason, source)
      VALUES (?,?,?,?,?,NULL,?,?,?)`
-  ).run(bookId, a.at, a.by, action, english, JSON.stringify(afterObj), a.reason, a.source);
+      )
+      .run(bookId, a.at, a.by, action, english, JSON.stringify(afterObj), a.reason, a.source)
+      .lastInsertRowid
+  );
 }
 
 /**
  * @param {object} db
- * @param {{book:string, english:string, conceptId?:number, reason:string, source:string, by:string, at?:string}} a
- * @returns {{status:'added'|'already', id:number}}
+ * @param {{book:string, english:string, conceptId?:number, reason:string, source:string, by:string, at?:string, confirmHouseStyle?:boolean}} a
+ * @returns {{status:'added'|'already', id:number, changeId?:number}}
  */
 function addExclusion(db, a) {
   const at = a.at || new Date().toISOString();
@@ -86,9 +109,12 @@ function addExclusion(db, a) {
     let icelandic = null;
     if (conceptId > 0) {
       const c = db.prepare('SELECT idordabanki_id FROM concept WHERE id = ?').get(conceptId);
-      if (!c) throw refuse(`concept ${conceptId} does not exist`);
+      if (!c) throw refuse(`concept ${conceptId} does not exist`, 'concept-missing');
       if (!conceptCarries(db, conceptId, a.english)) {
-        throw refuse(`concept ${conceptId} does not carry the English "${a.english}"`);
+        throw refuse(
+          `concept ${conceptId} does not carry the English "${a.english}"`,
+          'not-carried'
+        );
       }
       idordabankiId = c.idordabanki_id ?? null;
       const is = db
@@ -98,7 +124,28 @@ function addExclusion(db, a) {
         .get(conceptId);
       icelandic = is ? is.text : null;
     } else if (entriesClaiming(db, bookId, a.english).length > 0) {
-      throw refuse(`conflict: a book entry claims the headword "${a.english}"`);
+      throw refuse(`conflict: a book entry claims the headword "${a.english}"`, 'entry-conflict');
+    }
+
+    // New refusals sit after the `already` return so re-running the c19 loader stays idempotent.
+    if (
+      conceptId > 0 &&
+      db
+        .prepare('SELECT 1 FROM book_glossary_entry WHERE book_id = ? AND concept_id = ?')
+        .get(bookId, conceptId)
+    ) {
+      throw refuse(`concept ${conceptId} is this book's own entry`, 'own-entry');
+    }
+    if (preferenceBlocksExclusion(db, bookId, a.english, conceptId)) {
+      throw refuse(`"${a.english}" has a book_term_preference row for this book`, 'preference');
+    }
+    const houseStyle = houseStyleInScope(db, bookId, a.english).filter(
+      (h) => conceptId === 0 || h.conceptId === conceptId
+    );
+    if (houseStyle.length > 0 && !a.confirmHouseStyle) {
+      throw refuse(`"${a.english}" is a house-style term in this book's scope`, 'needs-confirm', {
+        houseStyle,
+      });
     }
 
     const id = Number(
@@ -122,27 +169,28 @@ function addExclusion(db, a) {
         ).lastInsertRowid
     );
     // spec §5.4: the committed history omits the Icelandic of an excluded row.
-    writeHistory(db, bookId, { ...a, at }, 'exclude', a.english, {
+    const changeId = writeHistory(db, bookId, { ...a, at }, 'exclude', a.english, {
       english: a.english,
       conceptId,
       idordabankiId,
+      ...(houseStyle.length > 0 ? { houseStyleOverride: houseStyle } : {}),
     });
-    return { status: 'added', id };
+    return { status: 'added', id, changeId };
   })();
 }
 
 /**
  * @param {object} db
- * @param {{book:string, english:string[], icelandic:string, replaces?:number[], reason:string, source:string, by:string, at?:string}} a
- * @returns {{status:'added'|'already', conceptId:number}}
+ * @param {{book:string, english:string[], icelandic:string, replaces?:number[], reason:string, source:string, by:string, at?:string, confirmHouseStyle?:boolean}} a
+ * @returns {{status:'added'|'already', conceptId:number, changeId?:number}}
  */
 function addEntry(db, a) {
   const at = a.at || new Date().toISOString();
   const replaces = a.replaces || [];
-  const forms = a.english;
-  if (!Array.isArray(forms) || forms.length === 0)
-    throw refuse('an entry needs at least one English form');
-  if (!a.icelandic) throw refuse('an entry needs an Icelandic term');
+  if (!Array.isArray(a.english) || a.english.length === 0)
+    throw refuse('an entry needs at least one English form', 'invalid');
+  if (!a.icelandic) throw refuse('an entry needs an Icelandic term', 'invalid');
+  const forms = dedupeForms(a.english);
   return db.transaction(() => {
     const bookId = bookIdOf(db, a.book);
     const keys = new Set(forms.map(matchKey));
@@ -170,12 +218,16 @@ function addEntry(db, a) {
                   'SELECT 1 FROM book_glossary_exclusion WHERE book_id = ? AND match_key = ? AND concept_id = ?'
                 )
                 .get(bookId, matchKey(f2), rc);
-              if (!ex) throw refuse(`entry exists but concept ${rc} is not excluded for "${f2}"`);
+              if (!ex)
+                throw refuse(
+                  `entry exists but concept ${rc} is not excluded for "${f2}"`,
+                  'replaced-not-carried'
+                );
             }
           }
           return { status: 'already', conceptId: cid };
         }
-        throw refuse(`conflict: the book already has an entry for "${f}"`);
+        throw refuse(`conflict: the book already has an entry for "${f}"`, 'entry-conflict');
       }
     }
     for (const f of forms) {
@@ -185,11 +237,12 @@ function addEntry(db, a) {
           'SELECT 1 FROM book_glossary_exclusion WHERE book_id = ? AND match_key = ? AND concept_id = 0'
         )
         .get(bookId, k);
-      if (whole) throw refuse(`"${f}" is excluded as a whole headword for this book`);
+      if (whole)
+        throw refuse(`"${f}" is excluded as a whole headword for this book`, 'excluded-headword');
       const pref = db
         .prepare('SELECT 1 FROM book_term_preference WHERE book_id = ? AND english = ?')
         .get(bookId, f);
-      if (pref) throw refuse(`"${f}" has a book_term_preference row for this book`);
+      if (pref) throw refuse(`"${f}" has a book_term_preference row for this book`, 'preference');
     }
     // A replaced concept must carry at least one of the entry's forms:
     // build ruling R2 (docs/superpowers/specs/2026-11-19-book-glossary-build-rulings.md).
@@ -197,7 +250,10 @@ function addEntry(db, a) {
     for (const cid of replaces) {
       const mine = forms.filter((f) => conceptCarries(db, cid, f));
       if (mine.length === 0)
-        throw refuse(`replaced concept ${cid} carries none of the English forms`);
+        throw refuse(
+          `replaced concept ${cid} carries none of the English forms`,
+          'replaced-not-carried'
+        );
       carried.set(cid, mine);
     }
 
@@ -206,7 +262,14 @@ function addEntry(db, a) {
         'SELECT domain FROM book_domain_priority WHERE book_id = ? ORDER BY position LIMIT 1'
       )
       .get(bookId);
-    if (!dom) throw refuse(`book ${a.book} has no domain priority`);
+    if (!dom) throw refuse(`book ${a.book} has no domain priority`, 'no-scope');
+
+    const houseStyle = forms.flatMap((f) => houseStyleInScope(db, bookId, f));
+    if (houseStyle.length > 0 && !a.confirmHouseStyle) {
+      throw refuse("an English form is a house-style term in this book's scope", 'needs-confirm', {
+        houseStyle,
+      });
+    }
 
     const conceptId = Number(
       db
@@ -222,15 +285,20 @@ function addEntry(db, a) {
       `INSERT INTO book_glossary_entry (concept_id, book_id, reason, source, created_by, created_at)
        VALUES (?,?,?,?,?,?)`
     ).run(conceptId, bookId, a.reason, a.source, a.by, at);
-    writeHistory(db, bookId, { ...a, at }, 'entry-add', forms[0], {
+    const changeId = writeHistory(db, bookId, { ...a, at }, 'entry-add', forms[0], {
       english: forms,
       icelandic: a.icelandic,
       replaces,
+      ...(houseStyle.length > 0 ? { houseStyleOverride: houseStyle } : {}),
     });
+    // Ruling C1: the entry-add row comes first, then one exclude row per replaced concept; the
+    // returned changeId is the entry-add row's. The entry now claims these headwords, but
+    // exclusions of replaced concepts are single-concept rows, which never hit entry-conflict.
     for (const [cid, mine] of carried) {
-      for (const f of mine) addExclusion(db, { ...a, at, english: f, conceptId: cid });
+      for (const f of mine)
+        addExclusion(db, { ...a, at, english: f, conceptId: cid, confirmHouseStyle: true });
     }
-    return { status: 'added', conceptId };
+    return { status: 'added', conceptId, changeId };
   })();
 }
 
@@ -436,6 +504,7 @@ function createLayerChangeIdFn(dbPath) {
 
 module.exports = {
   RECORD_FILE,
+  REFUSALS,
   addExclusion,
   addEntry,
   buildBookGlossaryRecord,

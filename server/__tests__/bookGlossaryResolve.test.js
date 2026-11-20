@@ -51,7 +51,7 @@ function concept(domain, en, is, collection = null) {
 const exclude = (english, conceptId = 0) =>
   addExclusion(db, { ...PROV, book: CHEM, english, conceptId });
 const entry = (english, icelandic, replaces = []) =>
-  addEntry(db, { ...PROV, book: CHEM, english, icelandic, replaces });
+  addEntry(db, { ...PROV, book: CHEM, english, icelandic, replaces, confirmHouseStyle: true });
 const res = (book, english) => resolve(buildScope(db, book, 0), english);
 const texts = (list) => list.map((x) => x.text);
 /** Everything a resolution offers an editor. */
@@ -212,7 +212,13 @@ describe('resolver', () => {
       'INSERT INTO book_term_preference (book_id, chapter, english, term_id) VALUES (?, 0, ?, ?)'
     ).run(bookId, 'substitution', termId);
     expect(res(CHEM, 'substitution').reason).toBe('book-preference'); // control
-    exclude('substitution', chemId);
+    // The write API now refuses this exclusion (a preference protects its headword), so the
+    // state is planted by SQL: the resolver must still cope with it.
+    db.prepare(
+      `INSERT INTO book_glossary_exclusion
+         (book_id, english, match_key, concept_id, reason, source, created_by, created_at)
+       VALUES (?, 'substitution', 'substitution', ?, 'test', 'test', 'test', 'test')`
+    ).run(bookId, chemId);
     const r = res(CHEM, 'substitution');
     expect(r.winner.text).toBe('innsetning');
     expect(r.integrity).toContain('preference-not-a-candidate');
