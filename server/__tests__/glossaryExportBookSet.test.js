@@ -120,6 +120,21 @@ describe('B3 changes no book outcome (spec D6)', () => {
     }
   }
 
+  /**
+   * R14: the layer reader returns the COPIED file's own committed stamp (or
+   * null when it has none), so the layer reads as current whether or not main's
+   * file is stamped. This test checks book outcomes under a shrinking stub, not
+   * the layer.
+   */
+  const ownStampFn = (tmpBooksDir) => (slug) => {
+    try {
+      const f = path.join(tmpBooksDir, slug, 'glossary', 'glossary-unified.json');
+      return JSON.parse(fs.readFileSync(f, 'utf8')).bookLayer?.lastChangeId ?? null;
+    } catch {
+      return null;
+    }
+  };
+
   let root;
 
   afterEach(() => {
@@ -148,7 +163,7 @@ describe('B3 changes no book outcome (spec D6)', () => {
       projectRoot: root,
       exportFn: resolvedStub,
       recordFn: () => null,
-      layerChangeIdFn: () => null,
+      layerChangeIdFn: ownStampFn(tmpBooksDir),
       // A truthy subject, so the run reaches the producer/absent gates rather
       // than stopping at refused-no-mapping. The real subjectFn needs a DB.
       subjectFn: () => 'chemistry',
@@ -225,7 +240,7 @@ describe('B3 changes no book outcome (spec D6)', () => {
       projectRoot: root,
       exportFn: resolvedStub,
       recordFn: () => null,
-      layerChangeIdFn: () => null,
+      layerChangeIdFn: ownStampFn(tmpBooksDir),
       subjectFn: () => 'chemistry',
       log: () => {},
       logError: () => {},
