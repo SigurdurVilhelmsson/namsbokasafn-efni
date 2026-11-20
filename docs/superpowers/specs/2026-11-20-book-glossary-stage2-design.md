@@ -7,6 +7,33 @@
 > [`2026-11-19-book-glossary-layer-design.md`](2026-11-19-book-glossary-layer-design.md) (cited below as **S1**),
 > whose §5.6 sketched stage 2. Where this document and S1 §5.6 differ, this one is the later decision.
 
+> **✏️ AMENDED 2026-11-20 — [USER]'s answers to the three questions PR 2's build raised** (register §C243; PR 2 is
+> #749). They amend §5.1 ("Rulings made elsewhere") and §5.2 ("Validation at the route"), and PR 2's plan rulings
+> P3 and P8 ([`../plans/2026-11-20-book-glossary-stage2-pr2-write-api.md`](../plans/2026-11-20-book-glossary-stage2-pr2-write-api.md)).
+> 1. **`reason` and `source` are normalised, not refused, for line breaks.** The route collapses every run of
+>    whitespace (including `\r`, `\n` and `\t`) to one space and trims, *then* applies the control-character rule.
+>    *Why:* a reason pasted from a terminology-committee email with a line break was refused with no hint why;
+>    collapsing keeps the published record single-line and loses no words. *Rejected:* keeping the refusal and giving
+>    PR 3's page a single-line input (a paste would still fail, or be silently altered by the browser); allowing raw
+>    line breaks (multi-line values in a one-line field of the public record).
+> 2. **Headwords refuse invisible characters.** An `english` headword and every entry form are refused (400) when
+>    they hold a zero-width character (U+200B, U+200C, U+200D, U+2060), a byte-order mark (U+FEFF) or a bidi control
+>    (U+200E, U+200F, U+061C, U+202A–U+202E, U+2066–U+2069). *Why:* a headword pasted from Word with a zero-width
+>    space would make an entry that looks right and matches nothing, since the resolver matches English by text.
+>    *Rejected:* stripping them silently (the head editor would not learn the paste was dirty). *Extended the same day by [USER] to the Icelandic term (the add and change routes), so no term field can hold a hidden character.*
+> 3. **P3 covers forms-only changes.** `changeEntry` is refused when any book preference points at the entry's terms
+>    and the change removes a form, as well as when it changes the Icelandic. *Why:* removing a form could otherwise
+>    disable a preference silently in two ways: a preference whose `term_id` is the removed English row is
+>    cascade-deleted, and a preference on the removed headword that points at the entry's Icelandic row is left on a
+>    concept that no longer carries its English, so the resolver ignores it. Both are the anti-goal "a layer change
+>    that silently disables a book preference". No production writer creates either row today, which is why the
+>    build left it open; [USER] chose to close it. A change that only adds forms stays allowed.
+>
+> **Consequences.** PR 2 (#749) implements all three. PR 3's page may use a multi-line reason input, since the route
+> normalises it. The build rulings that recorded the earlier state (R6, R15 in
+> [`2026-11-20-book-glossary-stage2-pr2-build-rulings.md`](2026-11-20-book-glossary-stage2-pr2-build-rulings.md)) are
+> superseded by this block.
+
 ## 1. Intent
 
 Terms will change while chemistry is being edited: new translations, and proposals to the Chemical Society's

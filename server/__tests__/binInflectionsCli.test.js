@@ -92,6 +92,29 @@ describe('parseArgs', () => {
   });
 });
 
+describe('parseArgs — --concept-term-ids', () => {
+  it('reads --concept-term-ids as a list', () => {
+    expect(parseArgs(['--concept-term-ids', '3,7,3']).conceptTermIds).toEqual([3, 7]);
+  });
+
+  it('reads the = form too', () => {
+    expect(parseArgs(['--concept-term-ids=12']).conceptTermIds).toEqual([12]);
+  });
+
+  it('defaults to null, meaning the whole corpus', () => {
+    expect(parseArgs([]).conceptTermIds).toBeNull();
+  });
+
+  it.each([['abc'], ['0'], ['1,0'], ['1,,2'], ['1,'], ['-3'], ['1.5'], ['']])(
+    'refuses a non-integer, zero or empty list (%j)',
+    (v) => {
+      expect(() => parseArgs([`--concept-term-ids=${v}`])).toThrow(
+        /--concept-term-ids expects a comma-separated list of positive integers/
+      );
+    }
+  );
+});
+
 describe('parseArgs — the B4b-0b additions', () => {
   it('accepts --report as a path', () => {
     expect(parseArgs(['--report', '/tmp/r.json']).report).toBe('/tmp/r.json');
@@ -205,6 +228,14 @@ describe('candidateSql', () => {
     expect(candidateSql({ force: false })).not.toMatch(/LIMIT/);
   });
 
+  it('restricts to the given ids', () => {
+    expect(candidateSql({ force: false, conceptTermIds: [4, 9] })).toMatch(/ct\.id IN \(4, ?9\)/);
+  });
+
+  it('does not restrict without ids', () => {
+    expect(candidateSql({ force: false })).not.toMatch(/ct\.id IN/);
+  });
+
   it('orders by ct.id so the string grouping is deterministic', () => {
     expect(candidateSql({ force: false })).toContain('ORDER BY ct.id');
   });
@@ -233,11 +264,13 @@ function writeCsv() {
 }
 
 /** One concept per term, so the string->row fan-out is controllable per test. */
-function seedTerm(db, text, domain = 'chemistry') {
-  const c = db.prepare("INSERT INTO concept (domain, collection) VALUES (?, 'test')").run(domain);
+function seedTerm(db, text, domain = 'chemistry', source = 'test') {
+  const c = db
+    .prepare('INSERT INTO concept (domain, collection) VALUES (?, ?)')
+    .run(domain, source === 'test' ? 'test' : source);
   db.prepare(
-    "INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?, 'is', ?, 1, 'test')"
-  ).run(c.lastInsertRowid, text);
+    "INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?, 'is', ?, 1, ?)"
+  ).run(c.lastInsertRowid, text, source);
   return c.lastInsertRowid;
 }
 
@@ -442,5 +475,125 @@ describe('fetch-bin-inflections main()', () => {
     const out = path.join(os.tmpdir(), `rep-${Math.random().toString(36).slice(2)}.json`);
     await run(['--report', out]);
     expect(fs.readFileSync(out, 'utf-8')).not.toContain('zhverfu');
+  });
+
+  describe('--concept-term-ids', () => {
+    const termId = (text) => db.prepare('SELECT id FROM concept_term WHERE text = ?').get(text).id;
+
+    it('a restricted run writes only the named rows', async () => {
+      seedTerm(db, 'zsolo');
+      seedTerm(db, 'zhverfa');
+      const rep = await run(['--execute', '--concept-term-ids', String(termId('zsolo'))]);
+      expect(JSON.parse(inflOf('zsolo'))).toEqual(['zsolu']);
+      expect(inflOf('zhverfa')).toBeNull();
+      expect(rep.rows.total).toBe(1);
+    });
+
+    // The book layer's rows carry source 'book-layer', which the emptiness
+    // judgement deliberately does not count; a run for one entry must not be
+    // refused as "the concept model is empty" on a database holding only those.
+    it('a restricted run on a database holding only book-layer rows does not refuse as empty', async () => {
+      seedTerm(db, 'zsolo', 'chemistry', 'book-layer');
+      const rep = await run(['--execute', '--concept-term-ids', String(termId('zsolo'))]);
+      expect(rep.rows.written).toBe(1);
+      expect(JSON.parse(inflOf('zsolo'))).toEqual(['zsolu']);
+    });
+
+    // A caller reading the outcome across a process boundary has only the report file. With no
+    // file it cannot tell "nothing left to do" from a run that failed to write its report.
+    it('a restricted run with nothing left to do still writes its --report', async () => {
+      seedTerm(db, 'zsolo', 'chemistry', 'book-layer');
+      const id = String(termId('zsolo'));
+      await run(['--execute', '--concept-term-ids', id]);
+      const out = path.join(os.tmpdir(), `rep-${Math.random().toString(36).slice(2)}.json`);
+      try {
+        await run(['--execute', '--concept-term-ids', id, '--report', out]);
+        expect(fs.existsSync(out)).toBe(true);
+        const j = JSON.parse(fs.readFileSync(out, 'utf-8'));
+        expect([j.strings.total, j.rows.written]).toEqual([0, 0]);
+      } finally {
+        fs.rmSync(out, { force: true });
+      }
+    });
+
+    it('a restricted run whose only row is multi-word reports it skipped', async () => {
+      seedTerm(db, 'zafl zsolo', 'chemistry', 'book-layer');
+      const rep = await run(['--execute', '--concept-term-ids', String(termId('zafl zsolo'))]);
+      expect(rep.rows.multiWordSkipped).toBe(1);
+    });
+
+    // The candidate query runs before main's first await, so a change made
+    // synchronously after calling main lands between the SELECT and the UPDATE.
+    it('a row whose text changed during the lookup is superseded, not written', async () => {
+      seedTerm(db, 'zsolo');
+      const id = termId('zsolo');
+      const p = run(['--execute', '--concept-term-ids', String(id)]);
+      db.prepare("UPDATE concept_term SET text = 'zflat' WHERE id = ?").run(id);
+      const rep = await p;
+      expect(rep.rows.superseded).toBe(1);
+      expect(rep.rows.written).toBe(0);
+      expect(
+        db.prepare('SELECT inflections FROM concept_term WHERE id = ?').get(id).inflections
+      ).toBeNull();
+    });
+
+    it('a row deleted during the lookup is superseded', async () => {
+      seedTerm(db, 'zsolo');
+      const id = termId('zsolo');
+      const p = run(['--execute', '--concept-term-ids', String(id)]);
+      db.prepare('DELETE FROM concept_term WHERE id = ?').run(id);
+      const rep = await p;
+      expect(rep.rows.superseded).toBe(1);
+      expect(rep.rows.written).toBe(0);
+    });
+
+    it('a row filled by another writer during the lookup is superseded and keeps that value', async () => {
+      seedTerm(db, 'zsolo');
+      const id = termId('zsolo');
+      const p = run(['--execute', '--concept-term-ids', String(id)]);
+      db.prepare('UPDATE concept_term SET inflections = \'["x"]\' WHERE id = ?').run(id);
+      const rep = await p;
+      expect(rep.rows.superseded).toBe(1);
+      expect(rep.rows.written).toBe(0);
+      expect(
+        db.prepare('SELECT inflections FROM concept_term WHERE id = ?').get(id).inflections
+      ).toBe('["x"]');
+    });
+
+    // The write binds the stored text, not the lowercased lookup key. A
+    // capitalised row that matched nothing would otherwise read as "superseded".
+    it('a capitalised term is WRITTEN, which pins the bound text', async () => {
+      seedTerm(db, 'Zsolo');
+      const id = termId('Zsolo');
+      const rep = await run(['--execute', '--concept-term-ids', String(id)]);
+      expect(rep.rows.written).toBe(1);
+      expect(rep.rows.superseded).toBe(0);
+      expect(
+        db.prepare('SELECT inflections FROM concept_term WHERE id = ?').get(id).inflections
+      ).not.toBeNull();
+    });
+
+    // A write that matches nothing for none of the three legitimate reasons
+    // (row gone, text changed, already filled) must break the partition check.
+    it('a write that silently matches nothing fails as partition broken', async () => {
+      seedTerm(db, 'zsolo');
+      const id = termId('zsolo');
+      db.exec(
+        'CREATE TRIGGER swallow_bin_update BEFORE UPDATE ON concept_term BEGIN SELECT RAISE(IGNORE); END'
+      );
+      await expect(run(['--execute', '--concept-term-ids', String(id)])).rejects.toThrow(
+        /partition broken/
+      );
+    });
+
+    it('the text guard also holds under --force', async () => {
+      seedTerm(db, 'zsolo');
+      const id = termId('zsolo');
+      const p = run(['--execute', '--force', '--concept-term-ids', String(id)]);
+      db.prepare("UPDATE concept_term SET text = 'zflat' WHERE id = ?").run(id);
+      const rep = await p;
+      expect(rep.rows.superseded).toBe(1);
+      expect(rep.rows.written).toBe(0);
+    });
   });
 });
