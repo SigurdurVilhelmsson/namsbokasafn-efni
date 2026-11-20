@@ -22,6 +22,7 @@ import {
   existsSync,
   statSync,
   utimesSync,
+  chmodSync,
 } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
@@ -330,6 +331,31 @@ describe('runGlossaryExport — restamp', () => {
     expect(statSync(glossaryFile('prufubok')).mtimeMs).toBe(past.getTime());
   });
 
+  it('a restamp that cannot be written fails that book, not the run', () => {
+    seedBook('prufubok', stamped(approved(3), 7));
+    seedBook('annarbok', stamped(approved(1), 9));
+    // Both modes are needed: a read-only file alone is replaced by the atomic rename, and a
+    // read-only directory alone still lets a direct write into the existing file through.
+    const dir = path.dirname(glossaryFile('prufubok'));
+    const before = readBytes('prufubok');
+    chmodSync(glossaryFile('prufubok'), 0o444);
+    chmodSync(dir, 0o555);
+    let code;
+    try {
+      code = run({ layerChangeIdFn: () => 9, exportFn: () => payload(approved(3)) });
+    } finally {
+      chmodSync(dir, 0o755);
+      chmodSync(glossaryFile('prufubok'), 0o644);
+    }
+    const books = readStatus().books;
+    expect(code).toBe(1);
+    expect(books.prufubok.outcome).toBe('error');
+    expect(books.prufubok.detail).toMatch(/^could not restamp — /);
+    expect(readBytes('prufubok')).toBe(before);
+    // Control: the other book in the same run still reached its own outcome.
+    expect(books.annarbok.outcome).toBe('wrote');
+  });
+
   it('a dry run reports a restamp and writes nothing', () => {
     seedBook('prufubok', stamped(approved(3), 7));
     const before = readBytes('prufubok');
@@ -346,12 +372,93 @@ describe('runGlossaryExport — restamp', () => {
   });
 });
 
+describe('runGlossaryExport — a layer change during the build', () => {
+  // The id is read before and after exportFn. A change landing while the export is built may
+  // or may not be in it, so the export is held whatever its terms. These tests move the id
+  // FROM INSIDE exportFn, so a single read (before or after) sees one value and fails them.
+  const advancing = (from, to, terms) => {
+    let id = from;
+    return {
+      layerChangeIdFn: () => id,
+      exportFn: () => {
+        id = to;
+        return payload(terms);
+      },
+    };
+  };
+
+  it('a change during the build holds the export', () => {
+    seedBook('prufubok', stamped(approved(1), 9));
+    const before = readBytes('prufubok');
+    const code = run(advancing(9, 10, approved(3)));
+    expect(code).toBe(0);
+    expect(readStatus().books.prufubok).toMatchObject({
+      outcome: 'refused-layer-change',
+      detail: 'layer changed during the export: 9 → 10',
+      termsSha256: termsSha256(payload(approved(3))),
+      held: 'pipeline-output/glossary-held/prufubok.json',
+    });
+    expect(readBytes('prufubok')).toBe(before);
+    expect(readHeld('prufubok').terms).toEqual(approved(3));
+  });
+
+  it('a change during the build holds the export even when the terms are the same', () => {
+    seedBook('prufubok', stamped(approved(3), 9));
+    const before = readBytes('prufubok');
+    run(advancing(9, 10, approved(3)));
+    expect(readStatus().books.prufubok.outcome).toBe('refused-layer-change');
+    expect(readBytes('prufubok')).toBe(before);
+    expect(existsSync(heldFile('prufubok'))).toBe(true);
+  });
+
+  it('a layer that gains its first history during the build holds the export', () => {
+    seedBook('prufubok', payload(approved(3)));
+    const before = readBytes('prufubok');
+    run(advancing(null, 1, approved(3)));
+    expect(readStatus().books.prufubok).toMatchObject({
+      outcome: 'refused-layer-change',
+      detail: 'layer changed during the export: no layer history → 1',
+    });
+    expect(readBytes('prufubok')).toBe(before);
+  });
+
+  it('a matching release does not release a run whose layer changed during the build', () => {
+    seedBook('prufubok', stamped(approved(1), 9));
+    run({ layerChangeIdFn: () => 10, exportFn: () => payload(approved(3)) });
+    const hash = readStatus().books.prufubok.termsSha256;
+    const before = readBytes('prufubok');
+    const lines = [];
+    run({
+      ...advancing(10, 11, approved(3)),
+      releaseLayer: hash,
+      log: (m) => lines.push(m),
+      logError: (m) => lines.push(m),
+    });
+    expect(readStatus().books.prufubok.outcome).toBe('refused-layer-change');
+    expect(readBytes('prufubok')).toBe(before);
+    expect(lines.some((m) => m.includes('prufubok') && /not applied in this run/.test(m))).toBe(
+      true
+    );
+  });
+
+  it('a dry run reports a change during the build and writes no held file', () => {
+    seedBook('prufubok', stamped(approved(1), 9));
+    const before = readBytes('prufubok');
+    run({ ...advancing(9, 10, approved(3)), dryRun: true });
+    expect(existsSync(heldFile('prufubok'))).toBe(false);
+    expect(readBytes('prufubok')).toBe(before);
+  });
+});
+
 describe('runGlossaryExport — R8: a stamp the database cannot confirm', () => {
   it('a stamped file whose layer history is gone is held when the terms change', () => {
     seedBook('prufubok', stamped(approved(1), 7));
     const before = readBytes('prufubok');
     run({ layerChangeIdFn: () => null, exportFn: () => payload(approved(3)) });
-    expect(readStatus().books.prufubok.outcome).toBe('refused-layer-change');
+    expect(readStatus().books.prufubok).toMatchObject({
+      outcome: 'refused-layer-change',
+      detail: 'layer moved: stamp 7 → no layer history in this database',
+    });
     expect(readBytes('prufubok')).toBe(before);
     expect(existsSync(heldFile('prufubok'))).toBe(true);
   });
@@ -446,6 +553,31 @@ describe('runGlossaryExport — release', () => {
     });
     expect(readStatus().books.prufubok.outcome).toBe('wrote');
     expect(lines.some((m) => m.includes('prufubok') && /no effect/.test(m))).toBe(true);
+  });
+
+  it('a release run as production runs it (--book) writes the stamped file and no status file', () => {
+    // The CLI requires --book with --release-layer, and a --book run writes no status file, so
+    // the hold is made with --book too and the hash taken from the held file.
+    seedBook('prufubok', stamped(approved(1), 7));
+    run({ book: 'prufubok', layerChangeIdFn: () => 9, exportFn });
+    const hash = termsSha256(readHeld('prufubok'));
+    const lines = [];
+    const code = run({
+      book: 'prufubok',
+      layerChangeIdFn: () => 9,
+      exportFn,
+      releaseLayer: hash,
+      log: (m) => lines.push(m),
+      logError: (m) => lines.push(m),
+    });
+    expect(code).toBe(0);
+    expect(readExport('prufubok').terms).toEqual(approved(3));
+    expect(readExport('prufubok').bookLayer).toEqual({ lastChangeId: 9 });
+    expect(existsSync(path.join(root, 'pipeline-output', '.glossary-export-status.json'))).toBe(
+      false
+    );
+    expect(lines.some((m) => m.includes('prufubok') && /released/.test(m))).toBe(true);
+    expect(lines.some((m) => /wrote terms/.test(m))).toBe(false);
   });
 
   it('after a release the next bare run reads unchanged', () => {
