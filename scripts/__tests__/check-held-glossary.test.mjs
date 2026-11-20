@@ -81,6 +81,91 @@ describe('check-held-glossary.sh', () => {
       rmSync(dir, { recursive: true, force: true });
     }
   });
+
+  /**
+   * A fake `ssh` on PATH: answers `git … rev-parse` with `head` and anything else (the status
+   * read) with `status`, and records every call in `<dir>/ssh-calls`.
+   */
+  function fakeSsh(dir, { status, head }) {
+    const calls = path.join(dir, 'ssh-calls');
+    writeFileSync(
+      path.join(dir, 'ssh'),
+      `#!/bin/sh\necho "$*" >> '${calls}'\ncase "$*" in\n*rev-parse*) echo '${head}' ;;\n*) printf '%s' '${status}' ;;\nesac\n`
+    );
+    chmodSync(path.join(dir, 'ssh'), 0o755);
+    return { ...process.env, PATH: `${dir}:${process.env.PATH}`, PROD_SSH: 'fake-host' };
+  }
+
+  it('exits 2 on a token that looks like a flag, without reaching ssh', () => {
+    const dir = mkdtempSync(path.join(tmpdir(), 'chg-'));
+    try {
+      const env = fakeSsh(dir, { status: '{}', head: 'x' });
+      const r = run(['--held-file-onyl', 'chemistry'], env);
+      expect(r.status).toBe(2);
+      expect(r.stderr).toContain('Usage');
+      expect(existsSync(path.join(dir, 'ssh-calls'))).toBe(false);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it('without --held-file-only, a hold the status does not show is "nothing held" and names the flag', () => {
+    const dir = mkdtempSync(path.join(tmpdir(), 'chg-'));
+    try {
+      const status = JSON.stringify({
+        books: { chemistry: { outcome: 'refused-absent-baseline' } },
+      });
+      const r = run(['chemistry'], fakeSsh(dir, { status, head: 'not-a-sha' }));
+      expect(r.status).toBe(2);
+      expect(r.stderr).toContain('nothing held');
+      expect(r.stderr).toContain('--held-file-only');
+      expect(r.stderr).not.toContain('HEAD');
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it('--held-file-only skips the status check, says so, and goes on to the HEAD check', () => {
+    const dir = mkdtempSync(path.join(tmpdir(), 'chg-'));
+    try {
+      const status = JSON.stringify({
+        books: { chemistry: { outcome: 'refused-absent-baseline' } },
+      });
+      const r = run(['--held-file-only', 'chemistry'], fakeSsh(dir, { status, head: 'not-a-sha' }));
+      expect(r.status).toBe(2);
+      expect(r.stderr).toContain("production's HEAD is not a commit id");
+      expect(r.stderr).toMatch(/--held-file-only.*status.*NOT consulted/);
+      expect(r.stderr).not.toContain('nothing held');
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it('exits 2 with "unreadable", not "nothing held", when production\'s status is not JSON', () => {
+    const dir = mkdtempSync(path.join(tmpdir(), 'chg-'));
+    try {
+      const r = run(['chemistry'], fakeSsh(dir, { status: 'not json at all', head: 'x' }));
+      expect(r.status).toBe(2);
+      expect(r.stderr).toContain("production's status file is unreadable");
+      expect(r.stderr).not.toContain('nothing held');
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it('--hash-only exits 2, not 1, on a file that is not valid JSON', () => {
+    const dir = mkdtempSync(path.join(tmpdir(), 'chg-'));
+    try {
+      const file = path.join(dir, 'p.json');
+      writeFileSync(file, '{ not json');
+      const r = run(['--hash-only', file], envWithout('PROD_SSH'));
+      expect(r.status).toBe(2);
+      expect(r.stderr).toContain('could not hash');
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
   it('exits 2 when the worktree filesystem has too little space', () => {
     const dir = mkdtempSync(path.join(tmpdir(), 'chg-'));
     const work = path.join(dir, 'work');
