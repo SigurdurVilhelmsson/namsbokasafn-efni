@@ -432,14 +432,32 @@ describe('the activity log', () => {
   it('every result writes one activity row', async () => {
     db.exec("DELETE FROM activity_log WHERE type = 'book_glossary_inflections'");
     const forms = entryWith('znu');
+    const timedOut = entryWith('zrho');
+    const thrown = entryWith('zsigma');
     const several = entryWith('zxi zomicron');
     const noTerm = Number(
       db
         .prepare("INSERT INTO concept (domain, collection) VALUES ('chemistry', 'book-layer')")
         .run().lastInsertRowid
     );
-    inflections._setRunner(async () => FORMS);
+    // The failure paths log with the runner's outcome in hand, a branch the other results skip.
+    const byTerm = new Map([
+      [isRowOf(forms).id, async () => FORMS],
+      [
+        isRowOf(timedOut).id,
+        async () => ({ code: null, signal: 'SIGTERM', report: null, stderr: '' }),
+      ],
+      [
+        isRowOf(thrown).id,
+        async () => {
+          throw new Error('spawn failed');
+        },
+      ],
+    ]);
+    inflections._setRunner((args) => byTerm.get(args.conceptTermIds[0])());
     inflections.schedule(forms, CTX);
+    inflections.schedule(timedOut, CTX);
+    inflections.schedule(thrown, CTX);
     inflections.schedule(several, CTX);
     inflections.schedule(noTerm, CTX);
     await inflections._idle();
@@ -455,6 +473,8 @@ describe('the activity log', () => {
       .all();
     expect(rows.map((r) => JSON.parse(r.metadata))).toEqual([
       { conceptId: forms, result: 'forms' },
+      { conceptId: timedOut, result: 'timeout' },
+      { conceptId: thrown, result: 'error' },
       { conceptId: several, result: 'several-words' },
       { conceptId: noTerm, result: 'no-term' },
       { conceptId: absent, result: 'file-absent' },
