@@ -34,6 +34,24 @@
 > [`2026-11-20-book-glossary-stage2-pr2-build-rulings.md`](2026-11-20-book-glossary-stage2-pr2-build-rulings.md)) are
 > superseded by this block.
 
+> **✏️ AMENDED 2026-11-20 (second) — [USER]'s answers to the two questions PR 3's build raised** (register §C244 M7
+> and M8; PR 3 is #753). They amend §5.5 ("The worklist").
+> 1. **A change that is later reversed keeps its worklist (M7: leave it).** After A → B and then B → A, the first
+>    change's worklist still lists the segments that hold A, although A is again the book's word. *Why:* the head editor
+>    reads the newer history row, which says the change was reversed. *Rejected:* marking a row's worklist as superseded
+>    when a later row restores its old word.
+> 2. **A segment whose effective Icelandic also holds the new Icelandic is not listed (M8).** §5.5's two conditions
+>    gain a third: the segment's effective Icelandic does not hold the change's new Icelandic. It is matched as §5.5
+>    matches the old word: as a whole word, case-insensitively. *Why:* a new word that contains the old one as a
+>    separate word (*ker* → *galvanískt ker*) otherwise keeps every fixed segment on the list forever, because the old
+>    word is still inside the new one. *Rejected:* leaving it (only exact equality between an old form and the new word
+>    was subtracted, plan ruling Q3). It applies where a change has a new word: a replacement and a change of
+>    Icelandic, not a removal.
+>
+> **Consequences.** A segment that holds both words, the new word in one place and the old word, unfixed, in another,
+> is also left off the list; that follows from the rule as given. Whether and where the M8 rule is implemented is the
+> register's to say (§C244).
+
 ## 1. Intent
 
 Terms will change while chemistry is being edited: new translations, and proposals to the Chemical Society's
