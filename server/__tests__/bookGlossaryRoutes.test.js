@@ -336,6 +336,40 @@ describe('POST: who writes', () => {
     const change = db.prepare('SELECT source FROM book_glossary_change').get();
     expect([row.source, change.source]).toEqual(['', '']);
   });
+
+  it('a provided source is written trimmed', async () => {
+    await post(`${url}/exclusions`, {
+      english: 'zsourced',
+      conceptId: 0,
+      reason: REASON,
+      source: '  fundur 20. nóvember  ',
+    });
+    const row = db.prepare('SELECT source FROM book_glossary_exclusion').get();
+    expect(row.source).toBe('fundur 20. nóvember');
+  });
+
+  it("removing a replacing entry with undoExclusions undoes that entry's exclusion", async () => {
+    const old = addPair('chemistry', 'zreplaced', 'zgamla');
+    const entry = await post(`${url}/entries`, {
+      forms: ['zreplaced'],
+      icelandic: 'znýja',
+      mode: 'replace',
+      replaces: [old.id],
+      reason: REASON,
+    });
+    const exclusion = db
+      .prepare('SELECT id FROM book_glossary_exclusion WHERE concept_id = ?')
+      .get(old.id);
+    const removed = await post(`${url}/entries/${entry.body.conceptId}/remove`, {
+      reason: REASON,
+      undoExclusions: [exclusion.id],
+    });
+    expect({
+      status: removed.status,
+      undone: removed.body.undone,
+      left: db.prepare('SELECT count(*) n FROM book_glossary_exclusion').get().n,
+    }).toEqual({ status: 200, undone: [exclusion.id], left: 0 });
+  });
 });
 
 describe('POST: validation', () => {
@@ -399,6 +433,42 @@ describe('POST: validation', () => {
       () => '/entries/abc/remove',
       { reason: REASON },
       'conceptId',
+    ],
+    [
+      'a 2001-character reason',
+      () => '/exclusions',
+      { english: 'zv', conceptId: 0, reason: 'r'.repeat(2001) },
+      'reason',
+    ],
+    [
+      'a 501-character source',
+      () => '/exclusions',
+      { english: 'zv', conceptId: 0, reason: REASON, source: 's'.repeat(501) },
+      'source',
+    ],
+    [
+      'a numeric source',
+      () => '/exclusions',
+      { english: 'zv', conceptId: 0, reason: REASON, source: 7 },
+      'source',
+    ],
+    [
+      'a 201-character icelandic',
+      () => '/entries',
+      { ...add, forms: ['zv'], icelandic: 'í'.repeat(201) },
+      'icelandic',
+    ],
+    [
+      'a control character inside a form',
+      () => '/entries',
+      { ...add, forms: ['z\u0007v'] },
+      'forms',
+    ],
+    [
+      'a non-numeric undoExclusions id',
+      (s) => `/entries/${s.conceptId}/remove`,
+      { reason: REASON, undoExclusions: ['x'] },
+      'undoExclusions',
     ],
   ])(
     'each validation failure is 400 and writes nothing: %s',
