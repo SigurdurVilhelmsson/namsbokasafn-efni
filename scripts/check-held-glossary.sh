@@ -1,0 +1,135 @@
+#!/usr/bin/env bash
+# Tests a HELD glossary export against the premise pins, on a throwaway worktree.
+# Design: docs/superpowers/specs/2026-11-20-book-glossary-stage2-design.md §5.7.
+#
+# Read-only against production: it only reads status, HEAD and the held file over ssh.
+
+set -euo pipefail
+
+usage() {
+  cat <<'USAGE'
+Usage:
+  scripts/check-held-glossary.sh <slug>
+  scripts/check-held-glossary.sh --hash-only <file>
+
+Tests production's held glossary export for <slug> against the tests that pin
+premises on glossary-unified.json, in a temporary worktree at production's HEAD.
+
+Environment:
+  PROD_SSH   required, e.g. user@host (never written into this script)
+  PROD_REPO  production checkout, default ~/repos/namsbokasafn-efni
+
+Exit codes:
+  0  every premise pin passed
+  1  a pin failed
+  2  usage or refusal (bad slug, PROD_SSH unset, nothing held on production,
+     no held file, production's HEAD not on origin)
+USAGE
+}
+
+die() { echo "check-held-glossary: $*" >&2; exit 2; }
+
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+HASH_LIB="$PROJECT_ROOT/tools/lib/glossary-terms-hash.cjs"
+
+hash_file() {
+  node -e '
+    const { termsSha256 } = require(process.argv[1]);
+    const payload = JSON.parse(require("fs").readFileSync(process.argv[2], "utf8"));
+    process.stdout.write(termsSha256(payload) + "\n");
+  ' "$HASH_LIB" "$1"
+}
+
+case "${1:-}" in
+  -h|--help) usage; exit 0 ;;
+  --hash-only)
+    [ -n "${2:-}" ] || { usage >&2; exit 2; }
+    hash_file "$2"
+    exit 0
+    ;;
+esac
+
+SLUG="${1:-}"
+[ -n "$SLUG" ] || { usage >&2; exit 2; }
+[[ "$SLUG" =~ ^[a-z0-9-]+$ ]] || die "slug must match [a-z0-9-]+: '$SLUG'"
+[ -n "${PROD_SSH:-}" ] || die "PROD_SSH is not set (e.g. PROD_SSH=user@host)"
+PROD_REPO="${PROD_REPO:-~/repos/namsbokasafn-efni}"
+
+# 1. Status first: a held file is never deleted when its hold resolves, so its
+#    existence alone does not mean "held".
+STATUS_JSON="$(ssh "$PROD_SSH" "cat $PROD_REPO/pipeline-output/.glossary-export-status.json")" \
+  || die "could not read production's glossary export status"
+ENTRY="$(printf '%s' "$STATUS_JSON" | node -e '
+  const fs = require("fs");
+  let s; try { s = JSON.parse(fs.readFileSync(0, "utf8")); } catch { process.exit(3); }
+  const e = s && s.books && s.books[process.argv[1]];
+  if (!e || e.outcome !== "refused-layer-change") process.exit(4);
+  process.stdout.write(String(e.termsSha256 || ""));
+' "$SLUG")" && STATUS_RC=0 || STATUS_RC=$?
+[ "$STATUS_RC" -eq 0 ] || die "nothing held for '$SLUG': production's status outcome is not refused-layer-change"
+STATUS_HASH="$ENTRY"
+
+# 2. Production's HEAD and the held file (read-only).
+PROD_HEAD="$(ssh "$PROD_SSH" "git -C $PROD_REPO rev-parse HEAD")" || die "could not read production's HEAD"
+[[ "$PROD_HEAD" =~ ^[0-9a-f]{40}$ ]] || die "production's HEAD is not a commit id: '$PROD_HEAD'"
+
+TMP="$(mktemp -d)"
+WORKTREE="$TMP/worktree"
+cleanup() {
+  git -C "$PROJECT_ROOT" worktree remove --force "$WORKTREE" >/dev/null 2>&1 || true
+  rm -rf "$TMP"
+  git -C "$PROJECT_ROOT" worktree prune >/dev/null 2>&1 || true
+}
+trap cleanup EXIT
+
+HELD_COPY="$TMP/held.json"
+ssh "$PROD_SSH" "cat $PROD_REPO/pipeline-output/glossary-held/$SLUG.json" > "$HELD_COPY" \
+  || die "no held export for '$SLUG' on production"
+[ -s "$HELD_COPY" ] || die "the held export for '$SLUG' is empty"
+
+# 3. Production's HEAD must be a commit we can check out.
+git -C "$PROJECT_ROOT" fetch origin >/dev/null 2>&1 || die "git fetch origin failed"
+git -C "$PROJECT_ROOT" cat-file -e "$PROD_HEAD^{commit}" 2>/dev/null \
+  || die "production's HEAD $PROD_HEAD is not a commit here (not on origin)"
+
+# 4. The hash a release must carry: of the bytes tested, not of the status entry.
+RELEASE_HASH="$(hash_file "$HELD_COPY")"
+if [ -n "$STATUS_HASH" ] && [ "$STATUS_HASH" != "$RELEASE_HASH" ]; then
+  echo "WARNING: the status entry's termsSha256 ($STATUS_HASH) differs from the held file's ($RELEASE_HASH)." >&2
+  echo "         The status can lag after a --book run on production; the release uses the hash of the file tested." >&2
+fi
+
+# 5. Throwaway worktree at production's HEAD.
+git -C "$PROJECT_ROOT" worktree add --detach "$WORKTREE" "$PROD_HEAD" >/dev/null 2>&1 \
+  || die "could not create a worktree at $PROD_HEAD"
+ln -s "$PROJECT_ROOT/node_modules" "$WORKTREE/node_modules"
+ln -s "$PROJECT_ROOT/server/node_modules" "$WORKTREE/server/node_modules"
+mkdir -p "$WORKTREE/books/$SLUG/glossary"
+cp "$HELD_COPY" "$WORKTREE/books/$SLUG/glossary/glossary-unified.json"
+
+# 6. The premise pins: test files that mention glossary-unified.json.
+cd "$WORKTREE"
+PINS=()
+while IFS= read -r f; do
+  case "$f" in *.test.js|*.test.mjs|*.test.cjs) PINS+=("$f") ;; esac
+done < <(grep -rlaF 'glossary-unified.json' tools/__tests__ server/__tests__ scripts/__tests__ 2>/dev/null | sort)
+[ "${#PINS[@]}" -gt 0 ] || die "found no premise-pin test files"
+
+OUT="$TMP/vitest.out"
+set +e
+npx vitest run "${PINS[@]}" > "$OUT" 2>&1
+RC=$?
+set -e
+cat "$OUT"
+
+echo
+if [ "$RC" -eq 0 ]; then
+  echo "VERDICT: PASS (${#PINS[@]} premise-pin files) for held '$SLUG' at production HEAD $PROD_HEAD"
+else
+  echo "VERDICT: FAIL for held '$SLUG' at production HEAD $PROD_HEAD. Failing files:"
+  grep -aoE '(FAIL|❯)  *[^ ]+\.test\.(js|mjs|cjs)' "$OUT" | awk '{print $2}' | sort -u | sed 's/^/  /'
+fi
+echo "Held terms hash: $RELEASE_HASH"
+echo "Release (run on production, only after a pass):"
+echo "  node server/scripts/export-terminology.js --book $SLUG --release-layer $RELEASE_HASH"
+[ "$RC" -eq 0 ] && exit 0 || exit 1
