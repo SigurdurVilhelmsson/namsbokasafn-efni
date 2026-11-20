@@ -349,14 +349,26 @@ describe('the record shows names, never emails or inflections', () => {
     expect(displayNameFor(db, 'someone@skoli.example')).toBe('óþekktur notandi');
   });
 
-  it('no email anywhere in the record', () => {
+  it('no email and no account id anywhere in the record', () => {
     addUser(GUID, 'nafn@skoli.example', 'viewer', 'nafn@skoli.example');
     addExclusion(db, { ...base, by: GUID, english: 'Function' });
-    addEntry(db, { ...base, by: GUID, english: ['unit cell'], icelandic: 'grindareining' });
+    const e = addEntry(db, {
+      ...base,
+      by: GUID,
+      english: ['unit cell'],
+      icelandic: 'grindareining',
+    });
+    // A change by the same account, so the entry's updatedBy goes through the name lookup too.
+    changeEntry(db, { ...base, by: GUID, conceptId: e.conceptId, icelandic: 'grindareiningar' });
     addExclusion(db, { ...base, by: 'other@skoli.example', english: 'Other' });
-    const json = JSON.stringify(buildBookGlossaryRecord(db, BOOK));
+    const rec = buildBookGlossaryRecord(db, BOOK);
+    const json = JSON.stringify(rec);
     expect(json).toContain('lesandi'); // control: the account's changes are in the record
+    // control: the change wrote updated_by, so updatedBy is a looked-up name and not null
+    expect(rec.entries[0].updatedBy).toBe('lesandi');
     expect(json).not.toContain('@');
+    // An account id is not an email, so the check above cannot see it; the record is public.
+    expect(json).not.toContain(GUID);
   });
 
   it('no inflection list anywhere in the record', () => {

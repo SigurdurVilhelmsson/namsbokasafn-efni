@@ -372,6 +372,88 @@ describe('POST: who writes', () => {
   });
 });
 
+describe('POST: the guard', () => {
+  // Every route gets ids that exist and a body it would accept, so a route that lost its guard
+  // shows as a write here, never as a 400 or a 409 that would look like a refusal.
+  it.each([
+    [
+      '/exclusions',
+      () => ({ path: '/exclusions', body: { english: 'zguard', conceptId: 0, reason: REASON } }),
+    ],
+    [
+      '/exclusions/:id/undo',
+      () => {
+        const ex = layer.addExclusion(db, { ...write, book: BOOK, english: 'zgone', by: 'tester' });
+        return { path: `/exclusions/${ex.id}/undo`, body: { reason: REASON } };
+      },
+    ],
+    [
+      '/entries',
+      () => ({
+        path: '/entries',
+        body: { forms: ['zguarded'], icelandic: 'zvarið', mode: 'add', reason: REASON },
+      }),
+    ],
+    [
+      '/entries/:conceptId/change',
+      () => ({
+        path: `/entries/${seedEntry('zchange').conceptId}/change`,
+        body: { icelandic: 'zbreytt', reason: REASON },
+      }),
+    ],
+    [
+      '/entries/:conceptId/remove',
+      () => ({
+        path: `/entries/${seedEntry('zremove').conceptId}/remove`,
+        body: { reason: REASON },
+      }),
+    ],
+    [
+      '/entries/:conceptId/inflections',
+      () => ({ path: `/entries/${seedEntry('zretry').conceptId}/inflections`, body: {} }),
+    ],
+  ])(
+    'an editor of the book, a head editor of another book and no session are refused, and nothing is written: %s',
+    async (_route, setup) => {
+      const { path: p, body } = setup();
+      const before = counts();
+      const statuses = [];
+      for (const cookie of [cookieFor('editor', [BOOK]), cookieFor('head-editor', [OTHER]), null]) {
+        statuses.push((await post(url + p, body, cookie)).status);
+      }
+      // The retry route's lookup writes its activity row after the response.
+      await inflections._idle();
+      expect({ statuses, after: counts(), lookups: runner.mock.calls.length }).toEqual({
+        statuses: [403, 403, 401],
+        after: before,
+        lookups: 0,
+      });
+    }
+  );
+
+  it('an admin passes the same guard and writes (control)', async () => {
+    const before = counts().book_glossary_exclusion;
+    const res = await post(
+      `${url}/exclusions`,
+      { english: 'zguard', conceptId: 0, reason: REASON },
+      cookieFor('admin')
+    );
+    expect({ status: res.status, written: counts().book_glossary_exclusion - before }).toEqual({
+      status: 201,
+      written: 1,
+    });
+  });
+
+  it('no session on an unknown book is 401, not 400: the guard answers before the registry is read', async () => {
+    const res = await post(
+      '/api/book-glossary/ekki-til/exclusions',
+      { english: 'zguard', conceptId: 0, reason: REASON },
+      null
+    );
+    expect(res.status).toBe(401);
+  });
+});
+
 describe('POST: validation', () => {
   const add = { icelandic: 'zí', mode: 'add', reason: REASON };
   it.each([
@@ -469,6 +551,25 @@ describe('POST: validation', () => {
       (s) => `/entries/${s.conceptId}/remove`,
       { reason: REASON, undoExclusions: ['x'] },
       'undoExclusions',
+    ],
+    // changeEntry checks neither length nor characters itself, so the route is the only boundary.
+    [
+      'a 201-character icelandic in a change',
+      (s) => `/entries/${s.conceptId}/change`,
+      { icelandic: 'í'.repeat(201), reason: REASON },
+      'icelandic',
+    ],
+    [
+      'a control character inside a form in a change',
+      (s) => `/entries/${s.conceptId}/change`,
+      { forms: ['zseeded', 'z\u0007v'], reason: REASON },
+      'forms',
+    ],
+    [
+      'a non-numeric exclusion id in the path',
+      () => '/exclusions/abc/undo',
+      { reason: REASON },
+      'id',
     ],
   ])(
     'each validation failure is 400 and writes nothing: %s',
