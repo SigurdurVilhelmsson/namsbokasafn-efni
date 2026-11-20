@@ -1184,6 +1184,37 @@ describe('the worklist', () => {
     expect(body.chapters.map((c) => c.chapter)).toEqual([1, 2]);
   });
 
+  it('unreadable units are logged once per request, with the first error', async () => {
+    // A second unreadable unit, so one warning per unit and one per request differ.
+    put('02-for-mt/ch04/m00004-segments.en.md', seg('m00004:para:s1', 'A zcell.'));
+    put('02-mt-output/ch04/m00004-segments.is.md', seg('m00004:para:s1', 'Zker.'));
+    put('02-structure/ch04/m00004-structure.json', '{');
+    const warned = vi.spyOn(logger, 'warn').mockImplementation(() => {});
+    try {
+      const { body } = await list();
+      const calls = warned.mock.calls.filter(
+        ([, message]) => message === 'book glossary worklist: units could not be read'
+      );
+      expect({
+        unreadable: body.unreadable,
+        calls: calls.length,
+        book: calls[0]?.[0].book,
+        units: calls[0]?.[0].units,
+        err: calls[0]?.[0].err instanceof Error,
+      }).toEqual({
+        unreadable: ['ch03/m00003', 'ch04/m00004'],
+        calls: 1,
+        book: BOOK,
+        units: 2,
+        err: true,
+      });
+    } finally {
+      for (const dir of ['02-for-mt', '02-mt-output', '02-structure']) {
+        rmSync(path.join(booksRoot, BOOK, dir, 'ch04'), { recursive: true, force: true });
+      }
+    }
+  });
+
   it('a book with no 02-for-mt scans no units', async () => {
     const parser = require('../services/segmentParser');
     const empty = path.join(work, 'empty-books');

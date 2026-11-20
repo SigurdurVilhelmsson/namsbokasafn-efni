@@ -50,6 +50,8 @@
   // exclusions and the resolution from them.
   let layerData = null;
   let looked = null;
+  // True while the latest look-up request has not answered.
+  let lookupBusy = false;
   // The open dialog's action ({request}), and a body waiting for house-style confirmation.
   let current = null;
   let pending = null;
@@ -127,11 +129,6 @@
     if (english) box.appendChild(actionButton(T.history, 'history', { english: english }));
     if (writable) for (const b of writes || []) box.appendChild(b);
     return box;
-  }
-
-  /** A link only to a path on this site: the worklist builds editor links, nothing else. */
-  function isSitePath(link) {
-    return typeof link === 'string' && /^\/(?![/\\])/.test(link);
   }
 
   function apiPath(slug) {
@@ -286,16 +283,20 @@
 
   /**
    * Read the selected book's layer again; the history and worklist panels are left as they are.
-   * `note` is shown in the status line once the layer is shown (after a write, "Vistað.").
+   * `note` is shown in the status line once the layer is shown (after a write, "Vistað."). A quiet
+   * read (the pending re-reads below) leaves the status line alone and redraws the layer only when
+   * the answer differs from the one shown. Resolves true when the answer is the one now shown,
+   * false when it was dropped for a newer request or failed.
    */
-  async function loadLayer(note) {
+  async function loadLayer(note, quiet) {
     const slug = book;
     const ticket = ++latest.layer;
-    if (!slug) return;
-    statusLine.textContent = UI.common.loading;
+    if (!slug) return false;
+    if (!quiet) statusLine.textContent = UI.common.loading;
     try {
       const data = await fetchJson(apiPath(slug));
-      if (ticket !== latest.layer) return;
+      if (ticket !== latest.layer) return false;
+      if (quiet && layerData && JSON.stringify(data) === JSON.stringify(layerData)) return true;
       writable = data.writable === true;
       layerData = data;
       renderHold(data.hold);
@@ -304,14 +305,60 @@
       readOnlyLine.hidden = data.writable !== false;
       renderLayer(data);
       lookupPanel.hidden = false;
-      statusLine.textContent = typeof note === 'string' ? note : '';
+      if (!quiet) statusLine.textContent = typeof note === 'string' ? note : '';
+      // The shown look-up lists the headword's entries with the same inflection labels.
+      if (quiet && looked) lookUp(looked.english, true);
+      return true;
     } catch (err) {
-      if (ticket !== latest.layer) return;
-      statusLine.textContent = T.loadError + err.message;
+      if (ticket !== latest.layer) return false;
+      if (!quiet) statusLine.textContent = T.loadError + err.message;
+      return false;
     }
   }
 
+  // After a write or a retry the inflection lookup runs in the background, one pass over the BÍN
+  // file, so the layer's first answer usually still says "sæki…". The layer is read again while an
+  // entry is pending, once after each delay in turn, and then no more; a read that finds the layer
+  // changed also re-reads the shown look-up. A book switch or a new write ends the chain, and a
+  // write stops it before its own read, so a quiet read does not overtake that read. (A retry
+  // pressed while a write's read is still running can, if that read takes over 2 s; the status
+  // line then keeps its loading text until the next read.)
+  const PENDING_DELAYS = [2000, 4000, 8000, 16000];
+  let watchTimer = null;
+  let watchGen = 0;
+
+  function anyPending(data) {
+    return (
+      Boolean(data) &&
+      Array.isArray(data.entries) &&
+      data.entries.some((e) => e.inflections && e.inflections.state === 'pending')
+    );
+  }
+
+  function stopWatching() {
+    watchGen += 1;
+    if (watchTimer !== null) clearTimeout(watchTimer);
+    watchTimer = null;
+  }
+
+  function watchPending() {
+    stopWatching();
+    const gen = watchGen;
+    const slug = book;
+    const next = function (i) {
+      if (i >= PENDING_DELAYS.length) return;
+      watchTimer = setTimeout(async function () {
+        watchTimer = null;
+        if (gen !== watchGen || slug !== book) return;
+        const shown = await loadLayer(null, true);
+        if (shown && gen === watchGen && slug === book && anyPending(layerData)) next(i + 1);
+      }, PENDING_DELAYS[i]);
+    };
+    next(0);
+  }
+
   function selectBook() {
+    stopWatching();
     book = select.value;
     writable = false;
     layerData = null;
@@ -344,6 +391,9 @@
       head.appendChild(txt(' · '));
       head.appendChild(el('span', 'bg-en', h.english));
       row.appendChild(head);
+      // What the row changed, from the Icelandic the row holds (none on an exclusion row).
+      const detail = view.historyDetail(h);
+      if (detail) row.appendChild(el('div', 'bg-detail', detail));
       row.appendChild(metaLine(h.by, h.at));
       appendReason(row, h.reason, h.source);
       // Plan ruling Q6: offered exactly where the worklist route answers with a list.
@@ -388,7 +438,7 @@
     quote.appendChild(txt(parts.after + '“'));
     row.appendChild(quote);
     const open = el('a', 'bg-open btn btn-secondary btn-sm', T.open);
-    if (isSitePath(item.link)) open.href = item.link;
+    if (view.isSitePath(item.link)) open.href = item.link;
     open.target = '_blank';
     open.rel = 'noopener';
     row.appendChild(open);
@@ -442,6 +492,7 @@
 
   function resetLookup() {
     latest.lookup += 1;
+    lookupBusy = false;
     looked = null;
     clear(lookupResult);
   }
@@ -522,21 +573,31 @@
     }
   }
 
-  async function lookUp(text) {
+  /**
+   * Look a headword up. A quiet look-up (a pending re-read) shows no loading text, keeps the shown
+   * answer when it fails, and is not sent while another look-up is on its way, so it never takes
+   * the latest ticket from a headword the head editor has just asked for.
+   */
+  async function lookUp(text, quiet) {
     const english = String(text || '').trim();
     if (!book || !english) return;
+    if (quiet && lookupBusy) return;
     const slug = book;
     const ticket = ++latest.lookup;
-    lookupResult.textContent = UI.common.loading;
+    lookupBusy = true;
+    if (!quiet) lookupResult.textContent = UI.common.loading;
     try {
       const data = await fetchJson(
         apiPath(slug) + '/lookup?english=' + encodeURIComponent(english)
       );
       if (ticket !== latest.lookup) return;
+      lookupBusy = false;
       looked = { english: english, data: data };
       renderLookup(english, data);
     } catch (err) {
       if (ticket !== latest.lookup) return;
+      lookupBusy = false;
+      if (quiet) return;
       looked = null;
       lookupResult.textContent = T.lookupError + err.message;
     }
@@ -657,9 +718,15 @@
     return send(p.req, Object.assign({}, p.body, { confirmHouseStyle: true }));
   }
 
-  /** After a write the layer and the shown look-up are read again. */
+  /**
+   * After a write the layer and the shown look-up are read again, and the layer again while an
+   * added or changed entry's inflection lookup is pending.
+   */
   function afterWrite() {
-    loadLayer(T.saved);
+    stopWatching();
+    loadLayer(T.saved).then(function (shown) {
+      if (shown && anyPending(layerData)) watchPending();
+    });
     if (looked) lookUp(looked.english);
   }
 
@@ -883,8 +950,9 @@
         body: '{}',
       });
       statusLine.textContent = T.retryStarted;
-      // The lookup runs in the background (202); the layer shows its state once read again.
-      setTimeout(loadLayer, 1500);
+      // The lookup runs in the background (202); the layer shows its state once read again, and
+      // is read again while it is pending.
+      watchPending();
     } catch (err) {
       b.disabled = false;
       statusLine.textContent = T.retryError + err.message;

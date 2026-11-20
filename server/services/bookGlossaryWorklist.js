@@ -10,6 +10,7 @@ const { matchSegment, excerptOf } = require('../lib/worklistMatch');
 const { listStudyUnits } = require('../lib/studyUnits');
 const segmentParser = require('./segmentParser');
 const segmentEditorService = require('./segmentEditorService');
+const log = require('../lib/logger');
 
 const EMPTY = { units: 0, unreadable: [], chapters: [], total: 0 };
 
@@ -50,14 +51,16 @@ function buildWorklist(db, bookSlug, changeId) {
 
   const units = unitsOf(bookSlug);
   const unreadable = [];
+  let firstError = null;
   const byChapter = new Map();
   let total = 0;
   for (const u of units) {
     let segments;
     try {
       segments = segmentEditorService.buildEffectiveSegments(bookSlug, u.chapter, u.moduleId);
-    } catch {
+    } catch (err) {
       unreadable.push(u.unit);
+      if (firstError === null) firstError = err;
       continue;
     }
     for (const s of segments) {
@@ -76,6 +79,14 @@ function buildWorklist(db, bookSlug, changeId) {
       });
       total += 1;
     }
+  }
+  // Once per request, not per unit: a database fault would otherwise log once for every unit.
+  // The page names the units; the log keeps the cause.
+  if (unreadable.length > 0) {
+    log.warn(
+      { err: firstError, book: bookSlug, units: unreadable.length },
+      'book glossary worklist: units could not be read'
+    );
   }
   return {
     ...head,

@@ -89,14 +89,15 @@ describe('the page', () => {
 
 const SINK =
   /innerHTML|outerHTML|insertAdjacentHTML|document\.write|createContextualFragment|DOMParser|srcdoc|setAttribute\(\s*['"]on/g;
-const ALLOWED = "innerHTML = ''";
+// Exactly this text, statement end included, so `innerHTML = '' + x` is still a sink.
+const ALLOWED = "innerHTML = '';";
 
-/** Every HTML sink in a script's code (comments stripped) other than the text `innerHTML = ''`. */
+/** Every HTML sink in a script's code (comments stripped) other than the text `innerHTML = '';`. */
 function sinks(source) {
   const code = source.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '');
   return [...code.matchAll(SINK)]
     .filter((m) => !code.startsWith(ALLOWED, m.index))
-    .map((m) => code.slice(m.index, m.index + 40));
+    .map((m) => code.slice(m.index, m.index + 40).split('\n')[0]);
 }
 
 describe('the page script', () => {
@@ -106,8 +107,10 @@ describe('the page script', () => {
       '// row.innerHTML = reason;',
       '/* row.outerHTML = reason; */',
       'row.innerHTML = reason;',
+      // Starts like the one permitted text, and is not it.
+      "row.innerHTML = '' + x;",
     ].join('\n');
-    expect(sinks(planted)).toEqual(['innerHTML = reason;']);
+    expect(sinks(planted)).toEqual(['innerHTML = reason;', "innerHTML = '' + x;"]);
   });
 
   it('book-glossary.js uses no HTML sink', () => {

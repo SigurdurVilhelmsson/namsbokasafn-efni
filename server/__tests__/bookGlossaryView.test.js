@@ -18,6 +18,16 @@ describe('inflection labels', () => {
     expect(view.inflectionLabel({ state: 'forms', count: 3 })).toBe('3 beygingarmyndir');
   });
 
+  // Icelandic agreement: singular for 1, 21, 31 … but not 11.
+  it.each([
+    [1, '1 beygingarmynd'],
+    [2, '2 beygingarmyndir'],
+    [11, '11 beygingarmyndir'],
+    [21, '21 beygingarmynd'],
+  ])('inflectionLabel agrees with %i', (count, expected) => {
+    expect(view.inflectionLabel({ state: 'forms', count })).toBe(expected);
+  });
+
   it('inflectionLabel says a lookup is pending', () => {
     expect(view.inflectionLabel({ state: 'pending' })).toBe('sæki…');
   });
@@ -54,6 +64,77 @@ describe('actionLabel', () => {
       'Færslu breytt',
       'Færsla fjarlægð',
     ]);
+  });
+});
+
+describe('historyDetail', () => {
+  const row = (action, before, after) => ({ action, before, after });
+  const added = { english: ['salt bridge'], icelandic: 'saltbrú', replaces: [] };
+  const was = { english: ['cell'], icelandic: 'ker', inflections: ['kerið', 'kersins'] };
+
+  it('an added entry shows its Icelandic', () => {
+    expect(view.historyDetail(row('entry-add', null, added))).toBe('Þýðing: saltbrú');
+  });
+
+  it('a change of Icelandic shows the old word and the new', () => {
+    const now = { english: ['cell'], icelandic: 'rafhlaða' };
+    expect(view.historyDetail(row('entry-change', was, now))).toBe('Þýðing: ker → rafhlaða');
+  });
+
+  it('a change of forms alone shows the forms', () => {
+    const now = { english: ['cell', 'cells'], icelandic: 'ker' };
+    expect(view.historyDetail(row('entry-change', was, now))).toBe(
+      'Orðmyndir: cell → cell · cells'
+    );
+  });
+
+  it('a change of both shows both', () => {
+    const now = { english: ['cell', 'cells'], icelandic: 'rafhlaða' };
+    expect(view.historyDetail(row('entry-change', was, now))).toBe(
+      'Þýðing: ker → rafhlaða; orðmyndir: cell → cell · cells'
+    );
+  });
+
+  it('reordered forms are not shown as a change', () => {
+    const before = { english: ['salt bridge', 'bridge'], icelandic: 'saltbrú' };
+    const after = { english: ['bridge', 'salt bridge'], icelandic: 'jónabrú' };
+    expect(view.historyDetail(row('entry-change', before, after))).toBe(
+      'Þýðing: saltbrú → jónabrú'
+    );
+  });
+
+  it('a removal shows the removed Icelandic and no inflections', () => {
+    expect(view.historyDetail(row('entry-remove', was, { removed: true }))).toBe('Þýðing: ker');
+  });
+
+  it('shows nothing where the row holds no Icelandic', () => {
+    expect([
+      // The record omits an excluded row's Icelandic (design §5.4).
+      view.historyDetail(row('exclude', null, { english: 'cell', conceptId: 5 })),
+      view.historyDetail(row('unexclude', { english: 'cell' }, { english: 'cell' })),
+      view.historyDetail(row('entry-remove', { english: ['cell'], icelandic: null }, {})),
+      view.historyDetail(row('entry-add', null, null)),
+      view.historyDetail(row('entry-change', 'not json', added)),
+      view.historyDetail(row('entry-change', was, { ...was, inflections: [] })),
+    ]).toEqual([null, null, null, null, null, null]);
+  });
+});
+
+describe('isSitePath', () => {
+  it('accepts a path on this site', () => {
+    expect(view.isSitePath('/editor?book=efnafraedi-2e&chapter=17&module=m1')).toBe(true);
+  });
+
+  it.each([
+    ['protocol-relative', '//host'],
+    ['backslash', '/\\host'],
+    ['absolute', 'https://host/'],
+    ['tab', '/\t/host'],
+    ['newline', '/\n/host'],
+    ['carriage-return', '/\r/host'],
+    ['non-string', null],
+  ])('refuses a %s link', (_, link) => {
+    expect(view.isSitePath(link)).toBe(false);
   });
 });
 
@@ -97,6 +178,15 @@ describe('worklistSummary', () => {
       '4 bútar nota enn gamla orðið.'
     );
   });
+
+  it.each([
+    [1, '1 bútur notar enn gamla orðið.'],
+    [2, '2 bútar nota enn gamla orðið.'],
+    [11, '11 bútar nota enn gamla orðið.'],
+    [21, '21 bútur notar enn gamla orðið.'],
+  ])('worklistSummary agrees with %i', (total, expected) => {
+    expect(view.worklistSummary({ kind: 'change', reason: null, units: 5, total })).toBe(expected);
+  });
 });
 
 describe('unreadableNote', () => {
@@ -108,6 +198,16 @@ describe('unreadableNote', () => {
     expect(view.unreadableNote({ unreadable: ['m1', 'm2'] })).toBe(
       'Ekki tókst að lesa 2 einingar (m1, m2); þær voru ekki skoðaðar.'
     );
+  });
+
+  const units = (n) => Array.from({ length: n }, (_, i) => 'm' + (i + 1));
+  it.each([
+    [1, 'Ekki tókst að lesa 1 einingu (m1); hún var ekki skoðuð.'],
+    [2, 'Ekki tókst að lesa 2 einingar (m1, m2); þær voru ekki skoðaðar.'],
+    [11, `Ekki tókst að lesa 11 einingar (${units(11).join(', ')}); þær voru ekki skoðaðar.`],
+    [21, `Ekki tókst að lesa 21 einingu (${units(21).join(', ')}); hún var ekki skoðuð.`],
+  ])('unreadableNote agrees with %i', (n, expected) => {
+    expect(view.unreadableNote({ unreadable: units(n) })).toBe(expected);
   });
 });
 

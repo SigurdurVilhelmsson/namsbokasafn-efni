@@ -41,13 +41,26 @@
   });
 
   /**
+   * Icelandic number agreement: a count ending in 1 takes the singular, except one ending in 11
+   * (1, 21, 31 … but not 11, 111).
+   *
+   * @param {number} n
+   * @returns {boolean}
+   */
+  function singular(n) {
+    return n % 10 === 1 && n % 100 !== 11;
+  }
+
+  /**
    * One line for an entry's inflection state, as GET /:book reports it.
    *
    * @param {{state: string, count?: number, reason?: string|null}} state
    * @returns {string}
    */
   function inflectionLabel(state) {
-    if (state.state === 'forms') return state.count + ' beygingarmyndir';
+    if (state.state === 'forms') {
+      return state.count + (singular(state.count) ? ' beygingarmynd' : ' beygingarmyndir');
+    }
     if (state.state === 'pending') return 'sæki…';
     if (state.reason == null) {
       return 'aðeins rithátturinn — engin leit skráð (t.d. eftir endurræsingu)';
@@ -96,7 +109,7 @@
     if (w.kind === null) return EMPTY_REASONS[w.reason];
     if (w.units === 0) return 'Bókin hefur engar einingar til að leita í.';
     if (w.total === 0) return 'Enginn bútur notar lengur gamla orðið.';
-    return w.total + ' bútar nota enn gamla orðið.';
+    return w.total + (singular(w.total) ? ' bútur notar' : ' bútar nota') + ' enn gamla orðið.';
   }
 
   /**
@@ -107,13 +120,61 @@
    */
   function unreadableNote(w) {
     if (!w.unreadable || w.unreadable.length === 0) return null;
+    const one = singular(w.unreadable.length);
     return (
       'Ekki tókst að lesa ' +
       w.unreadable.length +
-      ' einingar (' +
+      (one ? ' einingu (' : ' einingar (') +
       w.unreadable.join(', ') +
-      '); þær voru ekki skoðaðar.'
+      (one ? '); hún var ekki skoðuð.' : '); þær voru ekki skoðaðar.')
     );
+  }
+
+  const isText = (s) => typeof s === 'string' && s !== '';
+  const formsOf = (side) =>
+    Array.isArray(side.english) && side.english.every(isText) ? side.english : null;
+  const isSide = (side) => side !== null && typeof side === 'object';
+
+  /**
+   * One line saying what a history row changed, from the Icelandic the row itself holds: an added
+   * entry's word, a changed entry's old and new word (and its forms when they differ, compared as
+   * sets), a removed entry's word. Exclusion rows hold no Icelandic (the record omits an excluded
+   * row's Icelandic, design §5.4), so they get none, and neither does a row whose sides are not
+   * what the layer writes. Inflection lists are never shown.
+   *
+   * @param {{action: string, before: unknown, after: unknown}} row a GET /history row
+   * @returns {string|null}
+   */
+  function historyDetail(row) {
+    const before = row.before;
+    const after = row.after;
+    if (row.action === 'entry-add') {
+      return isSide(after) && isText(after.icelandic) ? 'Þýðing: ' + after.icelandic : null;
+    }
+    if (row.action === 'entry-remove') {
+      return isSide(before) && isText(before.icelandic) ? 'Þýðing: ' + before.icelandic : null;
+    }
+    if (row.action !== 'entry-change' || !isSide(before) || !isSide(after)) return null;
+    const parts = [];
+    if (
+      isText(before.icelandic) &&
+      isText(after.icelandic) &&
+      before.icelandic !== after.icelandic
+    ) {
+      parts.push('þýðing: ' + before.icelandic + ' → ' + after.icelandic);
+    }
+    const was = formsOf(before);
+    const now = formsOf(after);
+    if (was && now) {
+      const wasSet = new Set(was);
+      const nowSet = new Set(now);
+      if (wasSet.size !== nowSet.size || now.some((f) => !wasSet.has(f))) {
+        parts.push('orðmyndir: ' + was.join(' · ') + ' → ' + now.join(' · '));
+      }
+    }
+    if (parts.length === 0) return null;
+    const line = parts.join('; ');
+    return line.charAt(0).toUpperCase() + line.slice(1);
   }
 
   /**
@@ -173,17 +234,32 @@
     return out;
   }
 
+  /**
+   * A link only to a path on this site: the worklist builds editor links, nothing else.
+   *
+   * @param {unknown} link
+   * @returns {boolean}
+   */
+  function isSitePath(link) {
+    // A URL parser drops tabs and newlines anywhere in a URL, so "/\t/host" reads as "//host",
+    // off-site: no whitespace or control character is accepted at all. Every part of an editor
+    // link is encoded or numeric, so a real link never holds one.
+    return typeof link === 'string' && !/[\s\p{Cc}]/u.test(link) && /^\/(?![/\\])/.test(link);
+  }
+
   const api = {
     INFLECTION_RESULT_LABELS: INFLECTION_RESULT_LABELS,
     inflectionLabel: inflectionLabel,
     editorOnlyForms: editorOnlyForms,
     actionLabel: actionLabel,
+    historyDetail: historyDetail,
     excerptParts: excerptParts,
     worklistSummary: worklistSummary,
     unreadableNote: unreadableNote,
     formsFromText: formsFromText,
     changeBody: changeBody,
     replaceCandidates: replaceCandidates,
+    isSitePath: isSitePath,
   };
   root.bookGlossaryView = api;
   if (typeof module !== 'undefined' && module.exports) {

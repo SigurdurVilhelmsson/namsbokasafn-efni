@@ -18,6 +18,7 @@ const BOOK = 'efnafraedi-2e';
 const LAYER = `/api/book-glossary/${BOOK}`;
 const PAGE = `/book-glossary?book=${BOOK}`;
 const PAYLOAD = '<img src=x onerror="window.__bg=1">';
+const PAYLOAD_AFTER = '<svg onload="window.__bg=2">';
 const SEGMENT = 'm68822:para:fs-idm196674112';
 // The seeded concept (seed-fixture.js, plan ruling Q10).
 const SALT = 'salt bridge';
@@ -122,6 +123,18 @@ test.describe('the book glossary page', () => {
       [`${LAYER}/history`]: {
         history: [
           {
+            id: 8,
+            at: '2026-11-20T15:00:00Z',
+            by: 'Test Head-editor',
+            action: 'entry-change',
+            english: 'salt bridge',
+            before: { english: ['salt bridge'], icelandic: PAYLOAD, inflections: [] },
+            after: { english: ['salt bridge'], icelandic: PAYLOAD_AFTER },
+            reason: 'prófun',
+            source: null,
+            worklist: false,
+          },
+          {
             id: 7,
             at: '2026-11-20T14:02:00Z',
             by: 'Test Head-editor',
@@ -176,13 +189,22 @@ test.describe('the book glossary page', () => {
     // Saga → Verkefnalisti: the only way to an old change's worklist.
     await row.locator('[data-action="history"]').click();
     await expect(page.locator('#bg-history')).toContainText(PAYLOAD);
-    await page.locator('#bg-history [data-action="worklist"]').click();
+    // What each row changed, whole, at the row's own detail line: the Icelandic the row holds.
+    await expect(page.locator('#bg-history [data-change-id="8"] .bg-detail')).toHaveText(
+      `Þýðing: ${PAYLOAD} → ${PAYLOAD_AFTER}`
+    );
+    await expect(page.locator('#bg-history [data-change-id="7"] .bg-detail')).toHaveText(
+      `Þýðing: ${PAYLOAD}`
+    );
+    await page.locator('#bg-history [data-change-id="7"] [data-action="worklist"]').click();
     const item = page.locator(`#bg-worklist [data-segment-id="${SEGMENT}"]`);
     await expect(item).toContainText(PAYLOAD);
     await expect(item.locator('mark')).toHaveText('saltbrú');
     await expect(item.locator('a.bg-open')).toHaveAttribute('href', /^\/editor\?book=/);
 
-    await expect(page.locator('#bg-layer img, #bg-history img, #bg-worklist img')).toHaveCount(0);
+    await expect(
+      page.locator('#bg-layer img, #bg-history img, #bg-history svg, #bg-worklist img')
+    ).toHaveCount(0);
     expect(await page.evaluate(() => /** @type {any} */ (window).__bg)).toBeUndefined();
   });
 
