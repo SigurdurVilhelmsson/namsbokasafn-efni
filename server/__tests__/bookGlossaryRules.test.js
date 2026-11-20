@@ -156,6 +156,26 @@ describe('addEntry forms and house style', () => {
       .get(r.changeId);
     expect(JSON.parse(h.after_json).houseStyleOverride[0].conceptId).toBe(houseId);
   });
+
+  it('a house-style concept carried by two of the forms is named once, in the refusal and in the history', () => {
+    // A second English form on the house-style concept, with a match key of its own, so dedupeForms
+    // keeps both of the entry's forms.
+    db.prepare(
+      "INSERT INTO concept_term (concept_id, lang, text, rank, source) VALUES (?, 'en', 'zhouses', 2, 'test')"
+    ).run(houseId);
+    const entry = { ...base, english: ['zhouse', 'zhouses'], icelandic: 'x' };
+    const refused = refusalOf(() => addEntry(db, entry));
+    const r = addEntry(db, { ...entry, confirmHouseStyle: true });
+    const h = db
+      .prepare('SELECT after_json FROM book_glossary_change WHERE id = ?')
+      .get(r.changeId);
+    const once = [{ conceptId: houseId, english: 'zhouse', icelandic: 'zhús' }];
+    expect({
+      refusal: refused.refusal,
+      houseStyle: refused.houseStyle,
+      override: JSON.parse(h.after_json).houseStyleOverride,
+    }).toEqual({ refusal: 'needs-confirm', houseStyle: once, override: once });
+  });
 });
 
 describe('addExclusion refusals', () => {

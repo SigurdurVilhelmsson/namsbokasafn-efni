@@ -326,7 +326,8 @@ function addEntry(db, a) {
       .get(bookId);
     if (!dom) throw refuse(`book ${a.book} has no domain priority`, 'no-scope');
 
-    const houseStyle = forms.flatMap((f) => houseStyleInScope(db, bookId, f));
+    // Each concept once, as changeEntry lists it: the history row it lands in is append-only.
+    const houseStyle = houseStyleForForms(db, bookId, forms);
     if (houseStyle.length > 0 && !a.confirmHouseStyle) {
       throw refuse("an English form is a house-style term in this book's scope", 'needs-confirm', {
         houseStyle,
@@ -624,11 +625,21 @@ function historyFor(db, bookSlug, english) {
  * the lookup follows a merge to its survivor, so a merged key would miss silently:
  * build ruling R11 (docs/superpowers/specs/2026-11-19-book-glossary-build-rulings.md).
  *
+ * ⚠️ The whole build runs in ONE read transaction, as buildResolvedGlossary's does: it reads the
+ * layer in several statements while head editors write from another process, so without a single
+ * snapshot a record could pair a history row with a layer state that lacks its row, and be
+ * committed. A deferred read transaction writes nothing, so the exporter's read-only connection
+ * can run it.
+ *
  * @param {object} db
  * @param {string} bookSlug
  * @returns {object|null}
  */
 function buildBookGlossaryRecord(db, bookSlug) {
+  return db.transaction(() => buildBookGlossaryRecordBody(db, bookSlug))();
+}
+
+function buildBookGlossaryRecordBody(db, bookSlug) {
   const book = db.prepare('SELECT id FROM registered_books WHERE slug = ?').get(bookSlug);
   if (!book) return null;
   const bookId = book.id;

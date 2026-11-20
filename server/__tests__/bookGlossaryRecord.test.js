@@ -18,6 +18,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
+const Database = require('better-sqlite3');
 const freshMigratedDb = require('./helpers/freshMigratedDb');
 const {
   addExclusion,
@@ -214,6 +215,64 @@ describe('buildBookGlossaryRecord / the export', () => {
     expect(buildBookGlossaryRecord(db, BOOK).dangling).toEqual([
       { kind: 'entry', english: 'unit cell', conceptId, reason: 'merged' },
     ]);
+  });
+});
+
+describe('the record is read from one snapshot', () => {
+  // Head editors write while the cron exports, from another process: a second connection to the
+  // same file, in WAL mode as production, plays that writer.
+  it('a commit from another connection between two of its reads does not reach the record', () => {
+    const fresh = freshMigratedDb();
+    const local = fresh.db;
+    local.pragma('journal_mode = WAL');
+    const other = new Database(fresh.path, { timeout: 0 }); // never waits: a refused write throws
+    try {
+      addExclusion(local, { ...base, english: 'Function' });
+      const before = buildBookGlossaryRecord(local, BOOK);
+      // `local`, with the other connection's exclusion committed just after the builder's first
+      // read (the exclusions) has returned, and before its next (the entries, then the history).
+      let raced = false;
+      const racing = new Proxy(local, {
+        get(target, prop) {
+          const v = Reflect.get(target, prop);
+          if (prop !== 'prepare') return typeof v === 'function' ? v.bind(target) : v;
+          return (sql) => {
+            const stmt = target.prepare(sql);
+            if (raced || !/FROM book_glossary_exclusion/.test(sql)) return stmt;
+            return {
+              all: (...args) => {
+                const rows = stmt.all(...args);
+                raced = true;
+                addExclusion(other, { ...base, english: 'Raced' });
+                return rows;
+              },
+            };
+          };
+        },
+      });
+      const built = buildBookGlossaryRecord(racing, BOOK);
+      const after = buildBookGlossaryRecord(local, BOOK);
+      const unstamped = (r) => ({ ...r, generated: null });
+      expect({
+        raced, // control: the write was planted mid-build
+        landed: after.history.map((h) => h.english), // control: and it committed
+        built: unstamped(built),
+      }).toEqual({
+        raced: true,
+        landed: ['Function', 'Raced'],
+        built: unstamped(before),
+      });
+      // The exporter's connection is read-only, and a read transaction must work on it.
+      const readOnly = new Database(fresh.path, { readonly: true });
+      try {
+        expect(unstamped(buildBookGlossaryRecord(readOnly, BOOK))).toEqual(unstamped(after));
+      } finally {
+        readOnly.close();
+      }
+    } finally {
+      other.close();
+      local.close();
+    }
   });
 });
 
