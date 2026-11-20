@@ -70,6 +70,20 @@
 | POST | `/logout` |
 | GET | `/roles` |
 
+## /book-glossary
+
+| Method | Path |
+|--------|------|
+| GET | `/:book` |
+| GET | `/:book/lookup` |
+| GET | `/:book/history` |
+| POST | `/:book/exclusions` |
+| POST | `/:book/exclusions/:id/undo` |
+| POST | `/:book/entries` |
+| POST | `/:book/entries/:conceptId/change` |
+| POST | `/:book/entries/:conceptId/remove` |
+| POST | `/:book/entries/:conceptId/inflections` |
+
 ## /books
 
 | Method | Path |
