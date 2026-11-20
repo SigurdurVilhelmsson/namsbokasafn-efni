@@ -1737,6 +1737,8 @@ function formatActivityType(type) {
     submit_localization: 'Staðfæring send',
     approve_localization: 'Staðfæring samþykkt',
     request_localization_changes: 'Breytingar á staðfæringu óskast',
+    book_glossary_changed: 'Orðasafni bókar breytt',
+    book_glossary_inflections: 'Beygingar orðasafns sóttar',
   };
   return labels[type] || type;
 }

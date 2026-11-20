@@ -50,6 +50,10 @@ const ACTIVITY_TYPES = {
   SUGGESTION_MODIFIED: 'suggestion_modified',
   SUGGESTIONS_BULK_REVIEWED: 'suggestions_bulk_reviewed',
   SUGGESTIONS_SYNCED: 'suggestions_synced',
+
+  // Book glossary layer (plan ruling P7)
+  BOOK_GLOSSARY_CHANGED: 'book_glossary_changed',
+  BOOK_GLOSSARY_INFLECTIONS: 'book_glossary_inflections',
 };
 
 /**

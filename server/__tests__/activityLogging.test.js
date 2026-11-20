@@ -101,10 +101,11 @@ describe('ACTIVITY_TYPES', () => {
     expect(ACTIVITY_TYPES.SUGGESTIONS_SYNCED).toBe('suggestions_synced');
   });
 
-  it('has 23 activity types total', () => {
+  it('has 25 activity types total', () => {
     // 16 pre-existing + 6 suggestions-family members added for B1-F1 + SEGMENT_EDIT_REOPENED
-    // (head-editor manual exit path, server/services/activityLog.js).
-    expect(Object.keys(ACTIVITY_TYPES)).toHaveLength(23);
+    // (head-editor manual exit path, server/services/activityLog.js) + the book glossary's two
+    // (plan ruling P7).
+    expect(Object.keys(ACTIVITY_TYPES)).toHaveLength(25);
   });
 
   it('all values are non-empty strings', () => {
