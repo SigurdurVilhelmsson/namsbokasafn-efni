@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="is">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orðasafn bókar - Námsbókasafn</title>
+    <link rel="stylesheet" href="/css/common.css" />
+    <style>
+      .bg-section {
+        margin-top: var(--spacing-lg);
+      }
+      #bg-hold-banner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .bg-status {
+        color: var(--text-secondary);
+        margin: var(--spacing-sm) 0;
+      }
+      .bg-status:empty {
+        display: none;
+      }
+      .bg-panel-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--spacing-md);
+      }
+      .bg-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .bg-row {
+        padding: var(--spacing-sm) 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .bg-row:last-child {
+        border-bottom: none;
+      }
+      .bg-claimed {
+        list-style: none;
+        margin: var(--spacing-sm) 0 0 var(--spacing-lg);
+        padding: 0 0 0 var(--spacing-sm);
+        border-left: 2px solid var(--border);
+      }
+      .bg-en {
+        font-weight: 600;
+      }
+      .bg-whole {
+        margin-left: var(--spacing-xs);
+        padding: 0 var(--spacing-xs);
+        border: 1px solid var(--border-strong);
+        border-radius: var(--radius-sm);
+        font-size: var(--text-xs);
+      }
+      .bg-meta,
+      .bg-reason,
+      .bg-source,
+      .bg-inflections,
+      .bg-note {
+        font-size: var(--text-sm);
+        color: var(--text-secondary);
+        margin-top: 0.125rem;
+      }
+      .bg-inflections .btn {
+        margin-left: var(--spacing-sm);
+      }
+      .bg-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+        margin-top: var(--spacing-xs);
+      }
+      .bg-actions:empty {
+        display: none;
+      }
+      .bg-credit {
+        margin-top: var(--spacing-md);
+        font-size: var(--text-xs);
+        color: var(--text-muted);
+      }
+      .bg-worklist-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: var(--spacing-sm);
+      }
+      .bg-module,
+      .bg-segment {
+        font-family: var(--font-mono);
+        font-size: var(--text-sm);
+        color: var(--text-secondary);
+      }
+      .bg-excerpt {
+        flex: 1 1 20rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="bg-page" class="page-content" data-title="Orðasafn bókar">
+      <div class="controls-row">
+        <!-- No book-select class: the list holds the books the user may change, known only once the user is -->
+        <select id="bg-book-select" class="form-select" aria-label="Bók"></select>
+      </div>
+
+      <div id="bg-hold-banner" class="alert alert-warning" role="status" hidden></div>
+      <p id="bg-readonly" class="alert alert-info" hidden></p>
+      <p id="bg-status" class="bg-status" role="status"></p>
+
+      <section id="bg-layer" class="card card-padded bg-section" hidden></section>
+      <section id="bg-history" class="card card-padded bg-section" hidden></section>
+      <section id="bg-worklist" class="card card-padded bg-section" hidden></section>
+    </main>
+
+    <script src="/js/htmlUtils.js"></script>
+    <script src="/js/ui-strings.js"></script>
+    <script src="/js/theme.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/bookSelector.js"></script>
+    <script src="/js/chapter-label.js"></script>
+    <script src="/js/book-glossary-view.js"></script>
+    <script src="/js/book-glossary.js"></script>
+  </body>
+</html>

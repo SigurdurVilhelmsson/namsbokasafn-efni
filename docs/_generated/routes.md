@@ -347,6 +347,7 @@
 | GET | `/terminology` |
 | GET | `/reviews` |
 | GET | `/localization` |
+| GET | `/book-glossary` |
 | GET | `/library` |
 | GET | `/admin` |
 | GET | `/assignments` |

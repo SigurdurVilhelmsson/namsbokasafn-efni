@@ -46,6 +46,7 @@ test.describe('CSP compliance', () => {
     { path: '/editor', name: 'editor' },
     { path: '/library', name: 'library' },
     { path: '/localization', name: 'localization' },
+    { path: '/book-glossary', name: 'book glossary' },
     { path: '/admin', name: 'admin' },
   ];
 

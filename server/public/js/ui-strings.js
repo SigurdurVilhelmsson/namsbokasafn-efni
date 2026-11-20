@@ -581,4 +581,45 @@ const UI = {
     tag: 'GG',
     tagTitle: 'Tillaga gervigreindar',
   },
+
+  // ── Book glossary page (design §5.3) ────────────────────────
+  // Labels the server also needs (inflection results, history actions, worklist summaries) live in
+  // book-glossary-view.js, which the server can require.
+  bookGlossary: {
+    noBooksHeld: 'Þú ert ekki aðalritstjóri neinnar bókar á listanum',
+    loadError: 'Ekki tókst að sækja orðasafn bókarinnar: ',
+    historyError: 'Ekki tókst að sækja söguna: ',
+    worklistError: 'Ekki tókst að sækja verkefnalistann: ',
+    // Design §5.6: shown only while the export is held, or after the record failed to write.
+    held: (time) => '⏸ Útflutningur orðasafns bíður forritara' + (time ? ' síðan ' + time : ''),
+    recordError:
+      '⚠ Skrá orðasafnsins (book-glossary.json) var ekki skrifuð í síðustu keyrslu. Láttu forritara vita.',
+    // Plan ruling Q13: a held book with no glossary/ directory is shown read-only.
+    readOnly: 'Bókin hefur enga glossary-möppu; orðasafni hennar verður ekki breytt hér.',
+    layerTitle: 'Lag bókarinnar',
+    layerEmpty: 'Bókin hefur hvorki færslur né útilokanir í orðasafni sínu.',
+    unclaimedTitle: 'Útilokanir',
+    excluded: 'útilokað',
+    wholeHeadword: 'allt orðið',
+    noIcelandic: '(engin íslensk þýðing)',
+    reason: 'Ástæða: ',
+    source: 'Heimild: ',
+    updated: 'breytt',
+    inflections: 'Beygingar: ',
+    retryInflections: 'Sækja beygingar',
+    editorOnly: 'ⓘ Þrjú orð eða fleiri: nær til ritilsins, ekki útflutnings',
+    // The credit BÍN's terms require wherever its forms are shown (server/scripts/fetch-bin-inflections.js).
+    binCredit:
+      'Beygingarmyndir: Beygingarlýsing íslensks nútímamáls (BÍN). Stofnun Árna Magnússonar í íslenskum fræðum. Höfundur og ritstjóri Kristín Bjarnadóttir. bin.arnastofnun.is — CC BY-SA 4.0. Myndunum er breytt: valið er úr þeim og grunnmyndin felld brott.',
+    history: 'Saga',
+    historyTitle: (english) => 'Saga: ' + english,
+    historyEmpty: 'Engin saga er skráð fyrir þetta orð.',
+    worklist: 'Verkefnalisti',
+    worklistTitle: 'Verkefnalisti',
+    oldWords: (n) => (n === 1 ? 'Gamla orðið: ' : 'Gömlu orðin: '),
+    newWord: 'nýja orðið: ',
+    inflected: ' (og beygingarmyndir)',
+    open: 'Opna',
+    close: 'Loka',
+  },
 };
