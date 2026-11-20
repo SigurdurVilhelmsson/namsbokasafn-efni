@@ -963,3 +963,32 @@ d401f63f2 auto-backup: 2026-11-18 10:00
 **Why:** Clean editor term warnings before editors open many chapters (10-10 plan 1.5); the controls proved the run could see wrong-sense rows (Fable 16/16, Opus 15/16). (Both answers written by Claude at [USER]'s request to prepare a new session.)
 
 ---
+
+## 2026-11-20 14:19 - Book glossary stage 2 PR 2 (#749) built, reviewed and amended; next session picks up CI + #747 merge order
+
+**Branch:** main checkout on `docs/book-glossary-stage2-pr2-plan`; build worktree `~/.cache/nsb-stage2-pr2-wt` on `feat/book-glossary-stage2-write-api` (pushed, PR #749, base `feat/book-glossary-stage2-hold` = #747)
+**Modified (main checkout, uncommitted, user's own):**
+ M .claude/settings.json   (typescript-native-lsp on; typescript-lsp@claude-plugins-official OFF for this project)
+ M CLAUDE.md               (dashboard-sync rule — also in PR #748)
+
+**Recent commits (#749):**
+fa09b84a9 docs: the invisible-character rule also covers the Icelandic term
+dede02ad1 fix(glossary-layer): the invisible-character rule covers the Icelandic term too
+aab917d05 docs(register): §C243's three questions answered (design AMENDED block); implemented on #749
+
+**Open at session end:**
+- CI dispatched on fa09b84a9: e2e ✓, lint ✓, unit `test` still running (Tests run 44749962075). Check: `gh api repos/SigurdurVilhelmsson/namsbokasafn-efni/actions/runs/44749962075/jobs`.
+- #749 is stacked on #747: retarget to main AFTER #747 merges, BEFORE merging anything stacked. Must not deploy before PR 1.
+- PR #748 (CLAUDE.md dashboard rule) open, separate.
+- Build workspace `~/.cache/nsb-stage2-pr2-wt/.superpowers/sdd/…` holds every task verdict + ledger (rulings C1-C25 also frozen as R1-R24 in docs/superpowers/specs/2026-11-20-book-glossary-stage2-pr2-build-rulings.md). Delete worktree only after #749 merges.
+- ✅ DONE (Update 14:45) — After reload, `/reload-plugins` reported 2 plugin LSP servers — confirm typescript-lsp is really off in a fresh session.
+
+**Why:** register ⏩ RESUME owns status (2026-11-20 entry + §C243); this is only the breadcrumb.
+
+---
+**Update 14:21:** CI on fa09b84a9 finished — Tests run 44749962075: `test` success ("Test Files 661 passed | 1 skipped (662)", "Tests 13652 passed | 1 expected fail | 28 skipped (13681)"), `e2e` success ("356 passed (3.4m)", "1 skipped"); Lint run 44749967197 success. Nothing open on CI.
+
+---
+**Update 14:45:** typescript-lsp@claude-plugins-official confirmed off. The 2 servers at 14:19 were typescript-native-lsp and jdtls-lsp (enabled at user level, never overridden here); the official plugin was already disabled. jdtls-lsp is now off for this project too (0 `.java` files). The `enabledPlugins` block landed via PR #750 (merge 9b862179a, commit 4883dab44) and is merged into this branch (87079dc76), so `.claude/settings.json` is no longer an uncommitted edit. After `/reload-plugins` ("1 plugin LSP server"), an LSP call on `server/lib/domains.js` plus `ps` showed exactly one LSP server: typescript-native-lsp's `launch.mjs` (child `tsc --lsp --stdio`); 0 `typescript-language-server`, 0 jdtls.
+
+---
