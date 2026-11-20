@@ -64,6 +64,9 @@ const USAGE = `Usage: node server/scripts/fetch-bin-inflections.js [--db <path>]
                      separated). Used to fill ONE book-glossary entry; the
                      whole-corpus "concept model is empty" refusal is skipped,
                      since a restricted run is about its rows, not the corpus.
+                     With --execute the summary's "rows superseded" counts rows
+                     skipped because the row was deleted, retyped or (without
+                     --force) filled by someone else between the lookup and the write.
   --report <path>    write the FULL rescue/refusal lists as JSON; stdout shows 50
                      of each. Do NOT commit the file — it carries BÍN ids.
 
@@ -462,12 +465,26 @@ async function main(argv) {
     // transaction and wrote only at commit(). better-sqlite3's db.transaction()
     // gives that directly (node:sqlite has no such helper — one reason server/
     // placement is simpler than the tools/ workaround it replaced).
+    //
+    // ⚠️ `superseded` IS CLASSIFIED BY RE-READING THE ROW, NOT BY `changes === 0`.
+    // The update matches on the primary key, so every planned row yields 0 or 1
+    // changes and "0 changes ⇒ superseded" would make written + superseded equal
+    // resolvedRows for every run — a partition check that can never fire, hiding
+    // a statement that matches nothing for a reason of our own (a wrong bound
+    // parameter). A zero-change row counts as superseded only when it is gone,
+    // its text differs, or (unforced) another writer filled it; otherwise it is
+    // counted nowhere and the partition check reports it.
+    const reread = db.prepare('SELECT text, inflections FROM concept_term WHERE id = ?');
     const apply = db.transaction((list) => {
       for (const p of list) {
         for (const r of p.rows) {
           const changes = update.run(p.json, r.id, r.text).changes;
           rowStats.written += changes;
-          if (changes === 0) rowStats.superseded++;
+          if (changes !== 0) continue;
+          const now = reread.get(r.id);
+          if (!now || now.text !== r.text || (!args.force && now.inflections !== null)) {
+            rowStats.superseded++;
+          }
         }
       }
     });

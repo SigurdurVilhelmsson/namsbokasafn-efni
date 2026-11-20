@@ -530,6 +530,45 @@ describe('fetch-bin-inflections main()', () => {
       expect(rep.rows.written).toBe(0);
     });
 
+    it('a row filled by another writer during the lookup is superseded and keeps that value', async () => {
+      seedTerm(db, 'zsolo');
+      const id = termId('zsolo');
+      const p = run(['--execute', '--concept-term-ids', String(id)]);
+      db.prepare('UPDATE concept_term SET inflections = \'["x"]\' WHERE id = ?').run(id);
+      const rep = await p;
+      expect(rep.rows.superseded).toBe(1);
+      expect(rep.rows.written).toBe(0);
+      expect(
+        db.prepare('SELECT inflections FROM concept_term WHERE id = ?').get(id).inflections
+      ).toBe('["x"]');
+    });
+
+    // The write binds the stored text, not the lowercased lookup key. A
+    // capitalised row that matched nothing would otherwise read as "superseded".
+    it('a capitalised term is WRITTEN, which pins the bound text', async () => {
+      seedTerm(db, 'Zsolo');
+      const id = termId('Zsolo');
+      const rep = await run(['--execute', '--concept-term-ids', String(id)]);
+      expect(rep.rows.written).toBe(1);
+      expect(rep.rows.superseded).toBe(0);
+      expect(
+        db.prepare('SELECT inflections FROM concept_term WHERE id = ?').get(id).inflections
+      ).not.toBeNull();
+    });
+
+    // A write that matches nothing for none of the three legitimate reasons
+    // (row gone, text changed, already filled) must break the partition check.
+    it('a write that silently matches nothing fails as partition broken', async () => {
+      seedTerm(db, 'zsolo');
+      const id = termId('zsolo');
+      db.exec(
+        'CREATE TRIGGER swallow_bin_update BEFORE UPDATE ON concept_term BEGIN SELECT RAISE(IGNORE); END'
+      );
+      await expect(run(['--execute', '--concept-term-ids', String(id)])).rejects.toThrow(
+        /partition broken/
+      );
+    });
+
     it('the text guard also holds under --force', async () => {
       seedTerm(db, 'zsolo');
       const id = termId('zsolo');
