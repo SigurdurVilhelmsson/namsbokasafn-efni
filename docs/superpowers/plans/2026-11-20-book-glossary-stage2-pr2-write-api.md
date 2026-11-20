@@ -175,8 +175,9 @@ Measured 2026-11-20 on a `freshMigratedDb` file: `db.transaction()` works on a `
   carrying `en 'zhouse'` / `is 'zhus'`, inserted after the cleanup):
   - `dedupeForms keeps the first spelling per match key` → `dedupeForms(['Geometry', 'geometry', 'SI', 'Si'])` equals
     `['Geometry', 'SI', 'Si']`.
-  - `houseStyleInScope finds a 051 concept for chemistry and nothing for a book whose chain lacks its domain` → one
-    hit for `efnafraedi-2e`/`'zhouse'`; `[]` for `edlisfraedi-2e`.
+  - `houseStyleInScope finds a house-style concept for chemistry and nothing for a book whose chain lacks its domain`
+    → one hit for `efnafraedi-2e`/`'zhouse'`; `[]` for `stjornufraedi`. ✏️ *Corrected 2026-11-20 during the build: this
+    line first named `edlisfraedi-2e`, whose chain in `server/lib/domains.js` ends in `chemistry`.*
   - `addEntry dedupes forms: ['zgeo', 'ZGEO'] writes one en term, and a re-run returns already` (T2a).
   - `addEntry with an exact duplicate form does not reach SQLite` → `['zgeo', 'zgeo']` succeeds with one en term.
   - `addExclusion refuses the book's own entry concept` → `refusal: 'own-entry'`, exclusion count unchanged (T2c).
