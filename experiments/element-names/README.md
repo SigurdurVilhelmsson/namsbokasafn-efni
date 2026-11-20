@@ -41,6 +41,10 @@ Everything this measurement used is kept in `evidence/2026-11-20-census/`: `inst
 and `reports/` (the segment tables). The instruments load AGPL `server/` code, so they sit in a dated
 `evidence/` folder. The root `LICENSE` keeps those outside its list of MIT→AGPL edges: they replay
 one past measurement and are not tooling.
+Segment text in `data/` and `reports/` comes from `efnafraedi-2e` and carries that book's licence
+(`books/efnafraedi-2e/book-config.json`). No BÍN data is committed: BÍN is CC BY-SA 4.0, and
+`instruments/extract-bin-forms.py` rebuilds what measurement 7 used from your own BÍN download
+(`docs/decisions/2026-08-06-bin-licensing-corrected-and-malstadur-integration.md`).
 
 To rebuild the derived files from the committed data (run inside `instruments/`):
 
@@ -52,6 +56,11 @@ python3 -I assemble-render-census.py render-census.template.cjs ../data/elements
 python3 -I build-never-official.py render-census.cjs ../data/render-census-69-names.json never-official-readonly.cjs
 python3 -I summarise.py ../data ../reports   # rewrites reports/*.md, prints every tally quoted below
 node classify-test.cjs                        # the classifier's unit cases
+# measurement 7 (needs your own BÍN download, SHsnid.csv.zip):
+python3 -I build-fix-targets-fetch.py nine-readonly.cjs ../data/dry-count-ruthenium-mt-forms.json ../data/lanthanide-census.json fetch-fix-targets.cjs
+python3 -I extract-bin-forms.py <SHsnid.csv.zip> ../data/comparison-official-vs-resolver.json bin.json
+python3 -I build-editor-fixes.py ../data/fix-targets.json ../data/comparison-official-vs-resolver.json \
+    ../data/render-census-69-names.json ../data/dry-counts-9-names.json bin.json ../reports/editor-fixes
 ```
 
 In the sections below, paths are relative to `evidence/2026-11-20-census/`.
@@ -181,6 +190,40 @@ the English `lithium` in 1). Each of the other 13 has 4–6. One gadolinium segm
 the near match `gadólíni`, a real rendering. One lithium near match, `lítil` ("little"), is noise, and
 its segment is listed for its `litíum` anyway.
 
+### 7. The editors' fixes for the ruthenium and lanthanide segments
+
+Drafts for the editors' layer, not a measurement. They cover the 8 ruthenium segments (measurement 3)
+and the 18 lanthanide segments holding the old derived forms (measurement 5), and apply [USER]'s
+rulings of 2026-11-20:
+
+1. **Masculine `lanþaníð-`, as in chemistry's glossary** (`lanthanides → lanþaníðar`). The MT's
+   masculine forms are kept. `öll lanþaníð` becomes `allir lanþaníðar`, and the problem segment's
+   `lanþaníð frumefnin` becomes `lanþaníðarnir`.
+2. **The `óíð` alternatives are dropped, lanthanide and actinide.** One removal in
+   `m68842:para:fs-idm9696240` takes both term markers with it (`term-00008`, `term-00010`), so the
+   Icelandic page loses those two key-term highlights.
+3. **Every other off-list element name in the same segments is fixed** to the official list.
+
+`instruments/fetch-fix-targets.cjs` (built by `build-fix-targets-fetch.py`) read the current
+effective text of the 26 segments read-only on production → `data/fix-targets.json`. No segment had
+a live edit. `instruments/build-editor-fixes.py` then applies the rules in steps, each verified on
+its own:
+
+- the requested substitutions (`rúþen` → `rúþeníum` by case, as BÍN declines it; `lantan-` →
+  `lanþan-` in the derived words);
+- the exact phrase edits of rulings 1 and 2, each matched exactly once;
+- ruling 3's name fixes, with an inflection map checked against BÍN. An `-ín` name turned `-íum`
+  takes BÍN's main dative (`osmíni` → `osmíum`).
+
+A word diff confirms that nothing else changed. → `reports/editor-fixes.md` (review),
+`reports/editor-fixes-paste.txt` (one block per segment), `reports/editor-fixes.json`
+
+**Result.** 35 requested substitutions, 5 phrase edits and 221 name fixes (50–52 in each
+periodic-table alt) over 26 segments. Fifteen official names are not in BÍN; they occur here only in
+the nominative, so the form is the official name. **The fixes shrink the nine book entries'
+expected worklists**, because the worklist reads pending edits too. Both columns are in
+`reports/editor-fixes.md`.
+
 ## Blind spots
 
 - **The English anchor sees only the name as a whole word.** A segment whose English says `Na+`,
@@ -213,5 +256,8 @@ its segment is listed for its `litíum` anyway.
 - **A census word can come from inside markup.** The lanthanide census matched `Lanthanoid` in one
   segment. It is the target id of a cross-reference marker (`[[xref:CNX_Chem_19_01_Lanthanoid]]`),
   not reader-visible English, so it is counted as neither form.
+- **The editors' fixes are drafts against the 2026-11-20 text.** Pasting a whole segment replaces
+  whatever it holds at that moment. If any of the 26 is edited first, re-run the fetch and the build
+  before pasting.
 - **This is a snapshot.** The MT layer does not change by hand, but pending and approved edits do,
   so the effective segments move as editors work.
