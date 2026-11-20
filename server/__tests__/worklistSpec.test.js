@@ -95,6 +95,15 @@ describe('worklistSpec', () => {
     expect(specOf(changeId)).toMatchObject({ kind: null, reason: 'exclusion-undone' });
   });
 
+  it("a replacement over two concepts sharing one Icelandic word searches both concepts' inflections", () => {
+    const a = concept('chemistry', 'zcell', 'zker', '["zkeri"]');
+    const b = concept('chemistry', 'zcell', 'zker', '["zkersins"]');
+    const { changeId } = addedChange(['zcell'], 'zrafhlada', [a, b]);
+    const s = specOf(changeId);
+    expect(s.old).toEqual([{ icelandic: 'zker', inflected: true }]);
+    expect([...s.oldForms].sort()).toEqual(['zker', 'zkeri', 'zkersins']);
+  });
+
   it('a change of Icelandic searches the old word kept in before_json', () => {
     const e = addEntry(db, { ...base, english: ['zfoo', 'zfooa'], icelandic: 'zfoo' });
     db.prepare("UPDATE concept_term SET inflections = ? WHERE concept_id = ? AND lang = 'is'").run(

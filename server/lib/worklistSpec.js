@@ -95,8 +95,10 @@ function finish(kind, english, words, newIcelandic) {
     const forms = [w.icelandic, ...(w.inflections || [])].filter(
       (f) => f && (newIcelandic == null || fold(f) !== fold(newIcelandic))
     );
-    if (old.some((o) => o.icelandic === w.icelandic)) continue;
-    old.push({ icelandic: w.icelandic, inflected: Array.isArray(w.inflections) });
+    // Concepts sharing one word (compared case-insensitively) are listed once; their forms merge.
+    const seen = old.find((o) => fold(o.icelandic) === fold(w.icelandic));
+    if (seen) seen.inflected = seen.inflected || Array.isArray(w.inflections);
+    else old.push({ icelandic: w.icelandic, inflected: Array.isArray(w.inflections) });
     for (const f of forms) if (!oldForms.includes(f)) oldForms.push(f);
   }
   if (oldForms.length === 0) return NONE('nothing-to-search');
