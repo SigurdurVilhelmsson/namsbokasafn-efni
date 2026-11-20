@@ -499,6 +499,23 @@ describe('fetch-bin-inflections main()', () => {
       expect(JSON.parse(inflOf('zsolo'))).toEqual(['zsolu']);
     });
 
+    // A caller reading the outcome across a process boundary has only the report file. With no
+    // file it cannot tell "nothing left to do" from a run that failed to write its report.
+    it('a restricted run with nothing left to do still writes its --report', async () => {
+      seedTerm(db, 'zsolo', 'chemistry', 'book-layer');
+      const id = String(termId('zsolo'));
+      await run(['--execute', '--concept-term-ids', id]);
+      const out = path.join(os.tmpdir(), `rep-${Math.random().toString(36).slice(2)}.json`);
+      try {
+        await run(['--execute', '--concept-term-ids', id, '--report', out]);
+        expect(fs.existsSync(out)).toBe(true);
+        const j = JSON.parse(fs.readFileSync(out, 'utf-8'));
+        expect([j.strings.total, j.rows.written]).toEqual([0, 0]);
+      } finally {
+        fs.rmSync(out, { force: true });
+      }
+    });
+
     it('a restricted run whose only row is multi-word reports it skipped', async () => {
       seedTerm(db, 'zafl zsolo', 'chemistry', 'book-layer');
       const rep = await run(['--execute', '--concept-term-ids', String(termId('zafl zsolo'))]);

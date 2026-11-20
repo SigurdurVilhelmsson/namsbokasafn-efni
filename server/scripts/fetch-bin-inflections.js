@@ -206,6 +206,12 @@ function candidateSql({ force, conceptTermIds }) {
         ORDER BY ct.id`;
 }
 
+/** Write the --report file; both of main()'s returns use it, so the file always matches. */
+function writeReport(file, { strings, rows, rescues, refusals }) {
+  fs.writeFileSync(file, JSON.stringify({ strings, rows, rescues, refusals }, null, 2), 'utf-8');
+  console.log(`\n  full rescue/refusal lists → ${file} (do NOT commit: BÍN-derived ids)`);
+}
+
 async function main(argv) {
   let args;
   try {
@@ -321,7 +327,12 @@ async function main(argv) {
       `\nNo candidates: all ${alreadyPopulatedBefore} populated row(s) already have inflections. ` +
         'That is the D5 no-op, not an empty database — the count above is what distinguishes them.'
     );
-    return emptyReport();
+    // ⚠️ THE REPORT IS WRITTEN HERE TOO. A caller in another process (the server's background
+    // lookup) learns the outcome only from this file; with no file, "nothing left to do" and a
+    // run that failed to write its report look the same.
+    const rep = emptyReport();
+    if (args.report) writeReport(args.report, rep);
+    return rep;
   }
 
   // ONE lookup per distinct lowercased STRING; the write fans out to its rows.
@@ -577,14 +588,7 @@ async function main(argv) {
   //
   // ⚠️ NEVER COMMIT THE FILE. It carries BÍN ids and word classes; it carries no
   // forms, and it must not start to (§C41: BÍN is CC BY-SA, this repo is public).
-  if (args.report) {
-    fs.writeFileSync(
-      args.report,
-      JSON.stringify({ strings, rows: rowStats, rescues, refusals }, null, 2),
-      'utf-8'
-    );
-    console.log(`\n  full rescue/refusal lists → ${args.report} (do NOT commit: BÍN-derived ids)`);
-  }
+  if (args.report) writeReport(args.report, { strings, rows: rowStats, rescues, refusals });
 
   db.close();
   return { strings, rows: rowStats, refusals, rescues };
