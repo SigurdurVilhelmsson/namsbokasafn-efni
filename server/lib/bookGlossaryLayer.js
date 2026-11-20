@@ -358,7 +358,8 @@ function buildBookGlossaryRecord(db, bookSlug) {
  *
  * @param {string} outDir
  * @param {object} record
- * @returns {'written'|'unchanged'}
+ * @returns {'written'|'unchanged'|'no-glossary-dir'} 'no-glossary-dir' when outDir does not exist:
+ *   the record never creates a book's glossary/ directory.
  */
 function writeBookGlossaryRecord(outDir, record) {
   const file = path.join(outDir, RECORD_FILE);
@@ -372,7 +373,7 @@ function writeBookGlossaryRecord(outDir, record) {
   } catch {
     // absent or unreadable: write it
   }
-  fs.mkdirSync(outDir, { recursive: true });
+  if (!fs.existsSync(outDir)) return 'no-glossary-dir';
   const tmp = `${file}.tmp`;
   fs.writeFileSync(tmp, JSON.stringify(record, null, 2) + '\n', 'utf8');
   fs.renameSync(tmp, file);
@@ -398,6 +399,41 @@ function createBookGlossaryRecordFn(dbPath) {
   };
 }
 
+/**
+ * The largest book_glossary_change.id of a book: a stamp of how far the layer has moved.
+ *
+ * @param {import('better-sqlite3').Database} db
+ * @param {string} bookSlug
+ * @returns {number|null} null when the book has no layer history or is not registered
+ */
+function lastLayerChangeId(db, bookSlug) {
+  const book = db.prepare('SELECT id FROM registered_books WHERE slug = ?').get(bookSlug);
+  if (!book) return null;
+  const row = db
+    .prepare('SELECT MAX(id) AS last FROM book_glossary_change WHERE book_id = ?')
+    .get(book.id);
+  return row.last ?? null;
+}
+
+/**
+ * Lazy read-only reader of the layer's change id, as createBookGlossaryRecordFn is. An
+ * unreadable database throws, inside the caller's per-book try/catch.
+ *
+ * @param {string} [dbPath]
+ * @returns {(bookSlug: string) => number|null}
+ */
+function createLayerChangeIdFn(dbPath) {
+  let db = null;
+  return (slug) => {
+    if (!db) {
+      const Database = require('better-sqlite3');
+      const resolveDbPath = require('./dbPath');
+      db = new Database(dbPath || resolveDbPath(), { readonly: true });
+    }
+    return lastLayerChangeId(db, slug);
+  };
+}
+
 module.exports = {
   RECORD_FILE,
   addExclusion,
@@ -405,4 +441,6 @@ module.exports = {
   buildBookGlossaryRecord,
   writeBookGlossaryRecord,
   createBookGlossaryRecordFn,
+  lastLayerChangeId,
+  createLayerChangeIdFn,
 };
