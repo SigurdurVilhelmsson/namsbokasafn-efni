@@ -441,8 +441,12 @@ function changeEntry(db, a) {
         throw refuse(`conflict: the book already has an entry for "${f}"`, 'entry-conflict');
       refuseClaimedHeadword(db, bookId, f);
     }
-    // plan ruling P3: a preference's term_id would silently select the new word.
-    if (icelandicChanged && preferencesOnTermsOf(db, a.conceptId) > 0) {
+    // plan ruling P3, amended by design §AMENDED 2026-11-20 (3): a changed Icelandic would make a
+    // preference's term_id silently select the new word; a removed form would either cascade-delete
+    // a preference pointing at that English row, or strand one on the removed headword (its concept
+    // no longer carries the English, so the resolver ignores it). A change that only adds forms
+    // disables nothing and stays allowed.
+    if ((icelandicChanged || removed.length > 0) && preferencesOnTermsOf(db, a.conceptId) > 0) {
       throw refuse(
         `a book_term_preference points at a term of concept ${a.conceptId}`,
         'preference'

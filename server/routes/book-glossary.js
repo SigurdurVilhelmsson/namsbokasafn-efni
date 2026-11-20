@@ -19,12 +19,15 @@ const inflections = require('../services/bookGlossaryInflections');
 const { getDb } = require('../services/bookGlossaryDb');
 const service = require('../services/bookGlossaryService');
 
-// plan ruling P8
+// plan ruling P8 (amended by design §AMENDED 2026-11-20)
 const MAX_TERM = 200;
 const MAX_FORMS = 20;
 const MAX_REASON = 2000;
 const MAX_SOURCE = 500;
 const CONTROL_CHARS = /[\u0000-\u001f\u007f]/;
+// Design §AMENDED 2026-11-20 (2): zero-width characters, the byte-order mark and bidi controls.
+// A headword pasted with one looks right and matches nothing, since English is matched by text.
+const INVISIBLE_CHARS = /[​-‏‪-‮⁠⁦-⁩﻿؜]/;
 
 /** The Icelandic answer to each write-API refusal, keyed by its code. */
 const MESSAGES = Object.freeze({
@@ -79,8 +82,20 @@ function cleanText(v, max) {
   return s;
 }
 
-/** A trimmed headword, or null when it is missing, too long or holds a control character. */
-const cleanEnglish = (v) => cleanText(v, MAX_TERM);
+/**
+ * A trimmed headword, or null when it is missing, too long, or holds a control or an invisible
+ * character. The invisible check reads the raw value: trim() strips U+FEFF, so a byte-order mark
+ * at either end would otherwise be removed silently instead of refused.
+ */
+const cleanEnglish = (v) =>
+  typeof v === 'string' && INVISIBLE_CHARS.test(v) ? null : cleanText(v, MAX_TERM);
+
+/**
+ * Free text (a reason or a source): every whitespace run, line breaks and tabs included, becomes
+ * one space before the control-character rule applies (design §AMENDED 2026-11-20 (1)), so a
+ * reason pasted from an email keeps its words and the published record stays single-line.
+ */
+const collapseWhitespace = (s) => s.replace(/\s+/g, ' ').trim();
 
 /**
  * A whole number ≥ min, from a JSON integer or a string of digits, or null. Strict on purpose:
@@ -109,10 +124,13 @@ function cleanForms(v) {
 
 /** The reason and source every write records. An omitted source is written as '' (NOT NULL). */
 function provenance(b) {
-  const reason = need(cleanText(b.reason, MAX_REASON), 'reason');
+  const reason = need(
+    cleanText(typeof b.reason === 'string' ? collapseWhitespace(b.reason) : b.reason, MAX_REASON),
+    'reason'
+  );
   if (b.source == null) return { reason, source: '' };
   if (typeof b.source !== 'string') throw new Invalid('source');
-  const source = b.source.trim();
+  const source = collapseWhitespace(b.source);
   if (source.length > MAX_SOURCE || CONTROL_CHARS.test(source)) throw new Invalid('source');
   return { reason, source };
 }

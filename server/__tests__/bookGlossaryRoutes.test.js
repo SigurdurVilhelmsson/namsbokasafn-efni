@@ -348,6 +348,23 @@ describe('POST: who writes', () => {
     expect(row.source).toBe('fundur 20. nóvember');
   });
 
+  // Design §AMENDED 2026-11-20 (1): a reason pasted from an email keeps its words on one line.
+  it('line breaks and tabs in reason and source are collapsed to one space', async () => {
+    const res = await post(`${url}/exclusions`, {
+      english: 'zcollapsed',
+      conceptId: 0,
+      reason: 'fyrsta lína\r\n\tönnur   lína',
+      source: ' nefnd\nfundur ',
+    });
+    const row = db.prepare('SELECT reason, source FROM book_glossary_exclusion').get();
+    const change = db.prepare('SELECT reason, source FROM book_glossary_change').get();
+    expect({ status: res.status, row, change }).toEqual({
+      status: 201,
+      row: { reason: 'fyrsta lína önnur lína', source: 'nefnd fundur' },
+      change: { reason: 'fyrsta lína önnur lína', source: 'nefnd fundur' },
+    });
+  });
+
   it("removing a replacing entry with undoExclusions undoes that entry's exclusion", async () => {
     const old = addPair('chemistry', 'zreplaced', 'zgamla');
     const entry = await post(`${url}/entries`, {
@@ -570,6 +587,33 @@ describe('POST: validation', () => {
       () => '/exclusions/abc/undo',
       { reason: REASON },
       'id',
+    ],
+    // Design §AMENDED 2026-11-20 (2): invisible characters make a headword that matches nothing.
+    [
+      'a zero-width space inside english',
+      () => '/exclusions',
+      { english: 'z​v', conceptId: 0, reason: REASON },
+      'english',
+    ],
+    // trim() strips U+FEFF, so a trailing byte-order mark must be refused before trimming.
+    [
+      'a byte-order mark at the end of a form',
+      () => '/entries',
+      { ...add, forms: ['zv﻿'] },
+      'forms',
+    ],
+    [
+      'a bidi override inside english',
+      () => '/exclusions',
+      { english: 'z‮v', conceptId: 0, reason: REASON },
+      'english',
+    ],
+    // Design §AMENDED 2026-11-20 (1): collapsing whitespace must not let other control characters in.
+    [
+      'a control character inside a reason',
+      () => '/exclusions',
+      { english: 'zv', conceptId: 0, reason: 'a\u0001b' },
+      'reason',
     ],
   ])(
     'each validation failure is 400 and writes nothing: %s',

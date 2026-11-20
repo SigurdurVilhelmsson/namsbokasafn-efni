@@ -255,13 +255,47 @@ describe('changeEntry', () => {
       { term_id: termId },
     ]);
 
-    // P3 covers the Icelandic only: a forms-only change goes through, and the preference stays
+    // A change that only ADDS a form disables no preference, so it goes through (design §AMENDED
+    // 2026-11-20 (3) refuses removals, not additions), and the preference stays
     expect(
       changeEntry(db, { ...base, conceptId: e.conceptId, forms: ['zcell', 'zcells'] }).status
     ).toBe('changed');
     expect(db.prepare('SELECT term_id FROM book_term_preference').all()).toEqual([
       { term_id: termId },
     ]);
+  });
+
+  // Design §AMENDED 2026-11-20 (3): removing a form would disable a preference silently, two ways.
+  it('changeEntry refuses removing a form while a preference points at the entry (P3, amended)', () => {
+    const e = addEntry(db, { ...base, english: ['zcell', 'zcells'], icelandic: 'zsella' });
+    const enTermId = (text) =>
+      db
+        .prepare("SELECT id FROM concept_term WHERE concept_id = ? AND lang = 'en' AND text = ?")
+        .get(e.conceptId, text).id;
+
+    // shape 2: a preference on the removed headword, pointing at the entry's Icelandic row
+    preferOn('zcells', isTermOf(e.conceptId).id);
+    let before = snapshot();
+    expect(
+      refusalOf(() => changeEntry(db, { ...base, conceptId: e.conceptId, forms: ['zcell'] }))
+    ).toMatchObject({ code: 'LAYER_REFUSED', refusal: 'preference' });
+    expect(snapshot()).toEqual(before);
+
+    // shape 1: a preference whose term_id is the removed ENGLISH row (it would cascade away)
+    db.exec('DELETE FROM book_term_preference');
+    preferOn('zcells', enTermId('zcells'));
+    before = snapshot();
+    expect(
+      refusalOf(() => changeEntry(db, { ...base, conceptId: e.conceptId, forms: ['zcell'] }))
+    ).toMatchObject({ code: 'LAYER_REFUSED', refusal: 'preference' });
+    expect(snapshot()).toEqual(before);
+    expect(db.prepare('SELECT COUNT(*) n FROM book_term_preference').get().n).toBe(1);
+
+    // control: with no preference, the same removal goes through
+    db.exec('DELETE FROM book_term_preference');
+    expect(changeEntry(db, { ...base, conceptId: e.conceptId, forms: ['zcell'] }).status).toBe(
+      'changed'
+    );
   });
 
   it('changeEntry with nothing different returns unchanged and writes no history row', () => {
