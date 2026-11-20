@@ -70,6 +70,7 @@ Freeze them, with the build's own rulings, in a build-rulings file at the end.
   points at the entry's terms.** `term_id` cascades from `concept_term` (migration 048), so a removal would delete the
   preference silently and a change would silently change what it selects — the design's anti-goal "a layer change that
   silently disables a book preference". Same Icelandic "ask a developer" message as the design's preference refusal.
+  ✏️ *Amended by [USER] 2026-11-20 ([design §AMENDED block](../specs/2026-11-20-book-glossary-stage2-design.md)): P3 also refuses a `changeEntry` that **removes a form** while a preference points at the entry's terms; a change that only adds forms stays allowed.*
 - **P4 — `removeEntry` refuses when another concept is merged into the entry's concept** (`concept.merged_into` has no
   cascade, so the `DELETE` would otherwise throw a raw foreign-key error).
 - **P5 — `changeEntry` re-checks house style on every form of the resulting entry whenever it writes**, so a confirmed
@@ -81,6 +82,7 @@ Freeze them, with the build's own rulings, in a build-rulings file at the end.
   (*Beygingar orðasafns sóttar*).
 - **P8 — validation limits:** a headword, form or Icelandic term ≤ 200 characters; at most 20 forms; `reason` ≤ 2,000;
   `source` ≤ 500. No control characters (`/[\u0000-\u001f\u007f]/`).
+  ✏️ *Amended by [USER] 2026-11-20 ([design §AMENDED block](../specs/2026-11-20-book-glossary-stage2-design.md)): `reason` and `source` have every whitespace run (`\r`, `\n`, `\t` included) collapsed to one space and are trimmed before the control-character rule applies; an `english` headword and every form are also refused for zero-width characters, a byte-order mark and bidi controls.*
 - **P9 — a BÍN lookup child is killed after 10 minutes** and recorded as `timeout`; the queue moves on.
 - **P10 — `GET /history?english=` matches a headword against a row's `english` and against every form in its
   `before`/`after`**, because an entry's history row names only its first form.

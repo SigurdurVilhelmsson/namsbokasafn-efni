@@ -45,6 +45,7 @@ would change P1–P10 or a design call, or a plan defect with no checkable fix.
   book-layer concept never has. The final review found a second, equally unreachable shape and described a
   one-condition closure; both are questions for [USER] in §C243. *Cost if wrong:* a hand-planted preference is
   silently disabled by a forms-only change.
+  ✏️ *Superseded 2026-11-20 by [USER]'s answer in the design's AMENDED block ([`2026-11-20-book-glossary-stage2-design.md`](2026-11-20-book-glossary-stage2-design.md)): P3 now also refuses a form removal.*
 - **R7.** A form removed by `changeEntry` leaves its replaced concept's single-concept exclusion in place.
   Exclusions are independent layer rows: `GET /` lists them and `POST /exclusions/:id/undo` removes them; only
   `removeEntry`'s convenience undo (keyed on the entry's current forms) cannot reach them. PR 3's page should list
@@ -75,6 +76,7 @@ would change P1–P10 or a design call, or a plan defect with no checkable fix.
 - **R15.** P8's control-character rule is applied to `reason` and `source` as written, so a newline in a reason is
   refused (fail-closed). Design §5.2 requires the check only for `english` and forms; whether a reason may span
   lines is a question for [USER] before PR 3's page (§C243). *Cost if wrong:* one regular expression.
+  ✏️ *Superseded 2026-11-20 by [USER]'s answer in the design's AMENDED block ([`2026-11-20-book-glossary-stage2-design.md`](2026-11-20-book-glossary-stage2-design.md)): `reason` and `source` are whitespace-collapsed, then checked.*
 - **R16.** The final review's single fix wave also put `buildBookGlossaryRecord` inside one read transaction, the
   same fix the build made for the resolved-glossary export, since head editors writing while the cron exports
   make a torn record reachable once PR 2 deploys. *Cost if wrong:* a slightly larger fix diff.
