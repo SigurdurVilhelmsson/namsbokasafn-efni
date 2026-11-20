@@ -15,6 +15,7 @@ names on 2026-11-20: <https://www.visindavefur.is/svar.php?id=89909>, *"Hvað he
 íslensku?"* (published 2026-11-13, updated 2026-11-18). The page describes its names as a
 recommendation for compulsory-school teaching materials, following a November 2026 resolution by
 chemists and other experts. All 118 elements are in `evidence/2026-11-20-census/data/visindavefur-89909-official-names.json`.
+The ruling is recorded in `../../docs/decisions/2026-11-20-official-element-names-visindavefur.md`.
 
 ## How the measurements were taken
 
