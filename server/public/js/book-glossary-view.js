@@ -116,6 +116,63 @@
     );
   }
 
+  /**
+   * The English forms typed into a form's box: one per line, trimmed, blank lines and exact
+   * duplicates dropped, order kept. Case is kept: the server decides what counts as the same form.
+   *
+   * @param {string} text
+   * @returns {string[]}
+   */
+  function formsFromText(text) {
+    const forms = [];
+    for (const line of String(text).split('\n')) {
+      const form = line.trim();
+      if (form && forms.indexOf(form) === -1) forms.push(form);
+    }
+    return forms;
+  }
+
+  /**
+   * The body of a change to the book's own entry: only the fields that differ, with the forms
+   * compared as sets of exact strings, so a reordering alone sends nothing. Null when nothing
+   * differs, and the page then sends nothing.
+   *
+   * @param {{english: string[], icelandic: string|null}} entry
+   * @param {{icelandic: string, forms: string[]}} edited
+   * @returns {{icelandic?: string, forms?: string[]}|null}
+   */
+  function changeBody(entry, edited) {
+    const body = {};
+    if (edited.icelandic !== entry.icelandic) body.icelandic = edited.icelandic;
+    const was = new Set(entry.english);
+    const now = new Set(edited.forms);
+    if (was.size !== now.size || [...now].some((f) => !was.has(f))) body.forms = edited.forms;
+    return Object.keys(body).length > 0 ? body : null;
+  }
+
+  /**
+   * The concepts a "replace" may hide (design §5.3): the winner, checked, then the tied and the
+   * other in-scope answers, unchecked, each concept once. None when the book's own entry wins: that
+   * entry is changed, not replaced.
+   *
+   * @param {{winner: object|null, reason: string|null, tied: object[], alsoInScope: object[]}} resolution
+   * @returns {Array<{conceptId: number, text: string, domain: string, checked: boolean}>}
+   */
+  function replaceCandidates(resolution) {
+    if (!resolution || resolution.reason === 'book-entry') return [];
+    const out = [];
+    const seen = new Set();
+    const offer = (c, checked) => {
+      if (!c || seen.has(c.conceptId)) return;
+      seen.add(c.conceptId);
+      out.push({ conceptId: c.conceptId, text: c.text, domain: c.domain, checked: checked });
+    };
+    offer(resolution.winner, true);
+    for (const c of resolution.tied || []) offer(c, false);
+    for (const c of resolution.alsoInScope || []) offer(c, false);
+    return out;
+  }
+
   const api = {
     INFLECTION_RESULT_LABELS: INFLECTION_RESULT_LABELS,
     inflectionLabel: inflectionLabel,
@@ -124,6 +181,9 @@
     excerptParts: excerptParts,
     worklistSummary: worklistSummary,
     unreadableNote: unreadableNote,
+    formsFromText: formsFromText,
+    changeBody: changeBody,
+    replaceCandidates: replaceCandidates,
   };
   root.bookGlossaryView = api;
   if (typeof module !== 'undefined' && module.exports) {

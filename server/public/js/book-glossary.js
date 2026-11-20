@@ -1,6 +1,8 @@
 /**
- * The book glossary page (design §5.3): the book's layer, one headword's history and one change's
- * worklist, for head editors and admins.
+ * The book glossary page (design §5.3): look a headword up and change the book's answer to it, and
+ * see the book's layer, one headword's history and one change's worklist, for head editors and
+ * admins. Every write goes through one dialog that asks for a reason and an optional source, says
+ * both are published, and resends a house-style override only after the head editor confirms it.
  *
  * 🔴 Every server-supplied value (reasons, sources, Icelandic terms, names, excerpts of editors'
  * text, error messages) is set with textContent or document.createElement. CSP allows inline
@@ -27,14 +29,34 @@
   const layerPanel = document.getElementById('bg-layer');
   const historyPanel = document.getElementById('bg-history');
   const worklistPanel = document.getElementById('bg-worklist');
+  const lookupPanel = document.getElementById('bg-lookup');
+  const lookupInput = document.getElementById('bg-lookup-input');
+  const lookupResult = document.getElementById('bg-lookup-result');
+  const dialog = document.getElementById('bg-action-dialog');
+  const dialogTitle = document.getElementById('bg-action-title');
+  const dialogFields = document.getElementById('bg-action-fields');
+  const reasonBox = document.getElementById('bg-reason');
+  const sourceBox = document.getElementById('bg-source');
+  const actionError = document.getElementById('bg-action-error');
+  const houseStyleBox = document.getElementById('bg-house-style');
+  const confirmButton = document.getElementById('bg-confirm-house-style');
+  const submitButton = document.getElementById('bg-submit');
 
   let currentUser = null;
   let book = '';
   // True only when the server says so: an answer without `writable` offers no action either.
   let writable = false;
+  // The last layer answer, and the shown look-up ({english, data}): the dialogs read entries,
+  // exclusions and the resolution from them.
+  let layerData = null;
+  let looked = null;
+  // The open dialog's action ({request}), and a body waiting for house-style confirmation.
+  let current = null;
+  let pending = null;
+  let sending = false;
   // Each request takes a ticket; an answer whose ticket is no longer the latest is dropped, so a
   // slow answer for the previous book or headword cannot overwrite the current one.
-  const latest = { layer: 0, history: 0, worklist: 0 };
+  const latest = { layer: 0, history: 0, worklist: 0, lookup: 0 };
 
   // ── DOM helpers ─────────────────────────────────────────────
 
@@ -96,10 +118,14 @@
     if (source) node.appendChild(el('div', 'bg-source', T.source + source));
   }
 
-  /** The row's own buttons: Saga, when there is an English word to ask the history for. */
-  function rowActions(english) {
+  /**
+   * The row's own buttons: Saga, when there is an English word to ask the history for, and the
+   * row's write buttons only for a book the write routes accept (Q13).
+   */
+  function rowActions(english, writes) {
     const box = el('div', 'bg-actions');
     if (english) box.appendChild(actionButton(T.history, 'history', { english: english }));
+    if (writable) for (const b of writes || []) box.appendChild(b);
     return box;
   }
 
@@ -155,7 +181,7 @@
     row.appendChild(head);
     row.appendChild(metaLine(x.createdBy, x.createdAt));
     appendReason(row, x.reason, x.source);
-    row.appendChild(rowActions(x.english));
+    row.appendChild(rowActions(x.english, [actionButton(T.undo, 'undo-exclusion')]));
     return row;
   }
 
@@ -183,7 +209,7 @@
       'bg-inflections',
       T.inflections + view.inflectionLabel(entry.inflections)
     );
-    // Wired with the page's write actions; a book the write routes refuse gets none (Q13).
+    // A book the write routes refuse gets no retry (Q13).
     if (writable && entry.inflections.state === 'exact-only') {
       inflections.appendChild(actionButton(T.retryInflections, 'retry-inflections'));
     }
@@ -192,7 +218,12 @@
       row.appendChild(el('div', 'bg-note', T.editorOnly + ' — ' + form));
     }
 
-    row.appendChild(rowActions(entry.english[0]));
+    row.appendChild(
+      rowActions(entry.english[0], [
+        actionButton(T.change, 'change-entry'),
+        actionButton(T.remove, 'remove-entry'),
+      ])
+    );
     if (claimed.length > 0) {
       const list = el('ul', 'bg-claimed');
       for (const x of claimed) list.appendChild(exclusionRow(x));
@@ -201,15 +232,16 @@
     return row;
   }
 
-  function renderLayer(data) {
-    clear(layerPanel);
-    layerPanel.appendChild(el('h2', 'card-title', T.layerTitle));
-
+  /**
+   * Entries and exclusions as lists, into `container` (the layer panel, or a look-up's rows on its
+   * headword). Returns false when there was nothing to list.
+   */
+  function appendLayerRows(container, entries, exclusions) {
     // §C243 T3: an exclusion an entry claims is listed under that entry, the rest on their own.
-    const entryIds = new Set(data.entries.map((e) => e.conceptId));
+    const entryIds = new Set(entries.map((e) => e.conceptId));
     const claimedBy = new Map();
     const unclaimed = [];
-    for (const x of data.exclusions) {
+    for (const x of exclusions) {
       if (x.claimedBy != null && entryIds.has(x.claimedBy)) {
         if (!claimedBy.has(x.claimedBy)) claimedBy.set(x.claimedBy, []);
         claimedBy.get(x.claimedBy).push(x);
@@ -217,24 +249,28 @@
         unclaimed.push(x);
       }
     }
-
-    if (data.entries.length === 0 && unclaimed.length === 0) {
-      layerPanel.appendChild(el('p', 'bg-empty', T.layerEmpty));
-    }
-    if (data.entries.length > 0) {
+    if (entries.length > 0) {
       const list = el('ul', 'bg-list');
-      for (const e of data.entries) list.appendChild(entryRow(e, claimedBy.get(e.conceptId) || []));
-      layerPanel.appendChild(list);
+      for (const e of entries) list.appendChild(entryRow(e, claimedBy.get(e.conceptId) || []));
+      container.appendChild(list);
     }
     if (unclaimed.length > 0) {
-      layerPanel.appendChild(el('h3', 'bg-subtitle', T.unclaimedTitle));
+      container.appendChild(el('h3', 'bg-subtitle', T.unclaimedTitle));
       const list = el('ul', 'bg-list');
       for (const x of unclaimed) list.appendChild(exclusionRow(x));
-      layerPanel.appendChild(list);
+      container.appendChild(list);
     }
     // Design §5.3: the BÍN credit stands wherever inflections are listed.
-    if (data.entries.length > 0) layerPanel.appendChild(el('p', 'bg-credit', T.binCredit));
+    if (entries.length > 0) container.appendChild(el('p', 'bg-credit', T.binCredit));
+    return entries.length + unclaimed.length > 0;
+  }
 
+  function renderLayer(data) {
+    clear(layerPanel);
+    layerPanel.appendChild(el('h2', 'card-title', T.layerTitle));
+    if (!appendLayerRows(layerPanel, data.entries, data.exclusions)) {
+      layerPanel.appendChild(el('p', 'bg-empty', T.layerEmpty));
+    }
     layerPanel.dataset.loadedBook = data.book;
     layerPanel.hidden = false;
   }
@@ -248,8 +284,11 @@
     holdBanner.hidden = lines.length === 0;
   }
 
-  /** Read the selected book's layer again; the history and worklist panels are left as they are. */
-  async function loadLayer() {
+  /**
+   * Read the selected book's layer again; the history and worklist panels are left as they are.
+   * `note` is shown in the status line once the layer is shown (after a write, "Vistað.").
+   */
+  async function loadLayer(note) {
     const slug = book;
     const ticket = ++latest.layer;
     if (!slug) return;
@@ -258,12 +297,14 @@
       const data = await fetchJson(apiPath(slug));
       if (ticket !== latest.layer) return;
       writable = data.writable === true;
+      layerData = data;
       renderHold(data.hold);
       // Q13: the line says why nothing can be changed; an answer without `writable` claims nothing.
       readOnlyLine.textContent = T.readOnly;
       readOnlyLine.hidden = data.writable !== false;
       renderLayer(data);
-      statusLine.textContent = '';
+      lookupPanel.hidden = false;
+      statusLine.textContent = typeof note === 'string' ? note : '';
     } catch (err) {
       if (ticket !== latest.layer) return;
       statusLine.textContent = T.loadError + err.message;
@@ -273,11 +314,15 @@
   function selectBook() {
     book = select.value;
     writable = false;
+    layerData = null;
     closePanel(historyPanel, 'history');
     closePanel(worklistPanel, 'worklist');
+    if (dialog.open) dialog.close();
+    resetLookup();
     holdBanner.hidden = true;
     readOnlyLine.hidden = true;
     layerPanel.hidden = true;
+    lookupPanel.hidden = true;
     statusLine.textContent = '';
     return loadLayer();
   }
@@ -392,11 +437,456 @@
     }
   }
 
+  // ── Look up (design §5.3) ───────────────────────────────────
+
+  function resetLookup() {
+    latest.lookup += 1;
+    looked = null;
+    clear(lookupResult);
+  }
+
+  /** A label, then "text (domain)" for each answer; null when there are none. */
+  function answerLine(label, answers) {
+    if (!answers || answers.length === 0) return null;
+    const line = el('p', 'bg-answers', label);
+    answers.forEach(function (c, i) {
+      if (i > 0) line.appendChild(txt(' · '));
+      line.appendChild(el('span', 'bg-is', c.text));
+      line.appendChild(txt(' (' + c.domain + ')'));
+    });
+    return line;
+  }
+
+  /** "english → icelandic" after a label. */
+  function termLine(className, label, english, icelandic) {
+    const line = el('p', className, label);
+    if (english) {
+      line.appendChild(el('span', 'bg-en', english));
+      line.appendChild(txt(' → '));
+    }
+    line.appendChild(el('span', 'bg-is', icelandic));
+    return line;
+  }
+
+  function renderLookup(english, data) {
+    clear(lookupResult);
+    const r = data.resolution;
+    const own = r.reason === 'book-entry';
+    // The winner has its own slot, so a test (or a reader) never has to find it in prose.
+    const winner = el('p', 'bg-winner');
+    if (r.winner) {
+      winner.dataset.conceptId = String(r.winner.conceptId);
+      winner.dataset.reason = String(r.reason);
+      winner.appendChild(txt(T.winner));
+      winner.appendChild(el('span', 'bg-is', r.winner.text));
+      winner.appendChild(txt(' (' + r.winner.domain + (own ? ', ' + T.bookItself : '') + ')'));
+    } else {
+      winner.textContent = r.tied.length > 0 ? T.tiedNone : T.noWinner;
+    }
+    lookupResult.appendChild(winner);
+    const lines = [
+      answerLine(T.tied, r.tied),
+      answerLine(T.alsoInScope, r.alsoInScope),
+      answerLine(T.outOfScope, r.outOfScope),
+    ];
+    for (const h of data.houseStyle) {
+      lines.push(termLine('bg-house', T.houseStyleMark, h.english, h.icelandic));
+    }
+    for (const p of data.preferences) {
+      const where = p.chapter === 0 ? T.wholeBook : window.chapterLabel.full(p.chapter);
+      lines.push(termLine('bg-preference', T.preference(where), null, p.icelandic));
+    }
+    for (const line of lines) if (line) lookupResult.appendChild(line);
+
+    // Saga orðsins reaches a removed entry's history too. The rest are writes (Q13).
+    const actions = el('div', 'bg-actions');
+    actions.appendChild(actionButton(T.wordHistory, 'history', { english: english }));
+    if (writable) {
+      if (!own) actions.appendChild(actionButton(T.setIcelandic, 'set-icelandic'));
+      actions.appendChild(actionButton(T.excludeHeadword, 'exclude-headword'));
+      // One per in-scope concept except the book's own entry, which is changed or removed instead.
+      const ownIds = new Set(data.layer.entries.map((e) => e.conceptId));
+      for (const c of own ? r.alsoInScope : view.replaceCandidates(r)) {
+        if (ownIds.has(c.conceptId)) continue;
+        const label = T.excludeRow + ': ' + c.text + ' (' + c.domain + ')';
+        actions.appendChild(actionButton(label, 'exclude-row', { conceptId: c.conceptId }));
+      }
+    }
+    lookupResult.appendChild(actions);
+
+    const rows = el('div', 'bg-on-headword');
+    rows.appendChild(el('h3', 'bg-subtitle', T.onHeadword));
+    if (appendLayerRows(rows, data.layer.entries, data.layer.exclusions)) {
+      lookupResult.appendChild(rows);
+    }
+  }
+
+  async function lookUp(text) {
+    const english = String(text || '').trim();
+    if (!book || !english) return;
+    const slug = book;
+    const ticket = ++latest.lookup;
+    lookupResult.textContent = UI.common.loading;
+    try {
+      const data = await fetchJson(
+        apiPath(slug) + '/lookup?english=' + encodeURIComponent(english)
+      );
+      if (ticket !== latest.lookup) return;
+      looked = { english: english, data: data };
+      renderLookup(english, data);
+    } catch (err) {
+      if (ticket !== latest.lookup) return;
+      looked = null;
+      lookupResult.textContent = T.lookupError + err.message;
+    }
+  }
+
+  // ── The action dialog ───────────────────────────────────────
+
+  function field(labelText, control) {
+    const wrap = el('div', 'form-group');
+    const label = el('label', 'form-label', labelText);
+    label.htmlFor = control.id;
+    wrap.appendChild(label);
+    wrap.appendChild(control);
+    return wrap;
+  }
+
+  function textField(id, value, multiline) {
+    const node = el(multiline ? 'textarea' : 'input', 'form-input');
+    node.id = id;
+    if (multiline) node.rows = 3;
+    else node.type = 'text';
+    node.value = value || '';
+    return node;
+  }
+
+  /** A radio button or a checkbox inside its label. */
+  function choice(type, name, value, labelText, checked, className) {
+    const label = el('label', 'bg-choice' + (className ? ' ' + className : ''));
+    const box = document.createElement('input');
+    box.type = type;
+    box.name = name;
+    box.value = String(value);
+    box.checked = Boolean(checked);
+    label.appendChild(box);
+    label.appendChild(txt(' ' + labelText));
+    return label;
+  }
+
+  function fieldValue(id) {
+    return document.getElementById(id).value;
+  }
+
+  function checkedIds(name) {
+    return Array.from(dialogFields.querySelectorAll('input[name="' + name + '"]:checked')).map(
+      (box) => Number(box.value)
+    );
+  }
+
+  function showMessage(text) {
+    actionError.textContent = text;
+  }
+
+  /** Forget a body waiting for confirmation: it was built from the form as it was. */
+  function dropPending() {
+    pending = null;
+    clear(houseStyleBox);
+    houseStyleBox.hidden = true;
+    confirmButton.hidden = true;
+  }
+
+  function resetDialog() {
+    current = null;
+    dropPending();
+    showMessage('');
+    clear(dialogFields);
+  }
+
+  /**
+   * Open the dialog for one action. `fill` adds the action's own fields. `request` reads them and
+   * returns {path, body, worklist?(answer)}, or, when nothing should be sent, the message to show.
+   */
+  function openDialog(title, fill, request) {
+    if (!writable) return;
+    resetDialog();
+    dialogTitle.textContent = title;
+    if (fill) fill(dialogFields);
+    reasonBox.value = '';
+    sourceBox.value = '';
+    current = { request: request };
+    if (!dialog.open) dialog.showModal();
+    (dialogFields.querySelector('input[type="text"], textarea') || reasonBox).focus();
+  }
+
+  async function submitDialog() {
+    if (!current || sending) return;
+    showMessage('');
+    const req = current.request();
+    if (typeof req === 'string') {
+      showMessage(req);
+      return;
+    }
+    const reason = reasonBox.value.trim();
+    if (!reason) {
+      showMessage(T.reasonRequired);
+      reasonBox.focus();
+      return;
+    }
+    const body = Object.assign({}, req.body, { reason: reason });
+    const source = sourceBox.value.trim();
+    if (source) body.source = source;
+    await send(req, body);
+  }
+
+  /** The house-style terms a write would override, and the button that resends it confirmed. */
+  function showHouseStyle(terms, req, body) {
+    clear(houseStyleBox);
+    for (const h of terms) houseStyleBox.appendChild(termLine(null, '', h.english, h.icelandic));
+    houseStyleBox.hidden = false;
+    confirmButton.hidden = false;
+    pending = { req: req, body: body };
+  }
+
+  function confirmHouseStyle() {
+    if (!pending || sending) return;
+    const p = pending;
+    dropPending();
+    // The same body, confirmed: never rebuilt from the form.
+    return send(p.req, Object.assign({}, p.body, { confirmHouseStyle: true }));
+  }
+
+  /** After a write the layer and the shown look-up are read again. */
+  function afterWrite() {
+    loadLayer(T.saved);
+    if (looked) lookUp(looked.english);
+  }
+
+  /** POST one write and answer it (design §5.3; the answers are PR 2's routes'). */
+  async function send(req, body) {
+    sending = true;
+    submitButton.disabled = true;
+    confirmButton.disabled = true;
+    try {
+      const answer = await fetchJson(apiPath(book) + req.path, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+      if (answer.status === 'unchanged' || answer.status === 'already') {
+        // Nothing was written. §C243 R8: forms are matched without regard to case, so a change
+        // of case alone comes back unchanged.
+        showMessage(
+          answer.status === 'already'
+            ? T.already
+            : T.unchanged + (body.forms ? ' ' + T.caseHint : '')
+        );
+        return;
+      }
+      dialog.close();
+      afterWrite();
+      // Design G2: the worklist opens for a replacement, a change of Icelandic or a removal.
+      if (answer.changeId != null && req.worklist && req.worklist(answer)) {
+        openWorklist(answer.changeId);
+      }
+    } catch (err) {
+      // 400 and 409 carry the server's Icelandic message; a preference refusal offers nothing more.
+      showMessage(err.message);
+      const data = err.data || {};
+      if (data.refusal === 'needs-confirm' && Array.isArray(data.houseStyle)) {
+        showHouseStyle(data.houseStyle, req, body);
+      }
+    } finally {
+      sending = false;
+      submitButton.disabled = false;
+      confirmButton.disabled = false;
+    }
+  }
+
+  // ── Write actions ───────────────────────────────────────────
+
+  /**
+   * The id a row's button acts on, read from the row itself: the button carries none, so a test
+   * keyed on a row's [data-concept-id] or [data-exclusion-id] matches the row alone.
+   */
+  function rowIdOf(b, rowClass, key) {
+    const row = b.closest('.' + rowClass);
+    return row ? Number(row.dataset[key]) : NaN;
+  }
+
+  /** An entry or exclusion of the last layer answer, or of the shown look-up's rows. */
+  function findRow(kind, key, value) {
+    for (const source of [layerData, looked && looked.data.layer]) {
+      const found = source && source[kind].find((x) => x[key] === value);
+      if (found) return found;
+    }
+    return null;
+  }
+
+  function exclusionLabel(x) {
+    return x.english + (x.icelandic ? ' → ' + x.icelandic : '');
+  }
+
+  function openSetIcelandic() {
+    if (!looked) return;
+    const english = looked.english;
+    const candidates = view.replaceCandidates(looked.data.resolution);
+    openDialog(
+      T.setIcelandicTitle(english),
+      function (box) {
+        box.appendChild(field(T.icelandicLabel, textField('bg-icelandic', '')));
+        box.appendChild(field(T.formsLabel, textField('bg-forms', english, true)));
+        const modes = el('fieldset');
+        modes.appendChild(el('legend', 'form-label', T.modeLegend));
+        if (candidates.length > 0) {
+          modes.appendChild(choice('radio', 'bg-mode', 'replace', T.modeReplace, true));
+          for (const c of candidates) {
+            const label = c.text + ' (' + c.domain + ')';
+            modes.appendChild(
+              choice('checkbox', 'bg-replaces', c.conceptId, label, c.checked, 'bg-sub')
+            );
+          }
+        }
+        modes.appendChild(choice('radio', 'bg-mode', 'add', T.modeAdd, candidates.length === 0));
+        box.appendChild(modes);
+      },
+      function () {
+        const mode = dialogFields.querySelector('input[name="bg-mode"]:checked').value;
+        const body = {
+          forms: view.formsFromText(fieldValue('bg-forms')),
+          icelandic: fieldValue('bg-icelandic').trim(),
+          mode: mode,
+        };
+        if (mode === 'replace') {
+          body.replaces = checkedIds('bg-replaces');
+          if (body.replaces.length === 0) return T.replacesRequired;
+        }
+        return { path: '/entries', body: body, worklist: () => mode === 'replace' };
+      }
+    );
+  }
+
+  function openExcludeHeadword() {
+    if (!looked) return;
+    const english = looked.english;
+    openDialog(
+      T.excludeHeadwordTitle(english),
+      (box) => box.appendChild(el('p', 'bg-note', T.excludeHeadwordNote)),
+      () => ({ path: '/exclusions', body: { english: english, conceptId: 0 } })
+    );
+  }
+
+  function openExcludeRow(b) {
+    if (!looked) return;
+    const english = looked.english;
+    const conceptId = Number(b.dataset.conceptId);
+    const r = looked.data.resolution;
+    const c = [r.winner].concat(r.tied, r.alsoInScope).find((x) => x && x.conceptId === conceptId);
+    if (!c) return;
+    openDialog(T.excludeRowTitle(english, c.text), null, () => ({
+      path: '/exclusions',
+      body: { english: english, conceptId: conceptId },
+    }));
+  }
+
+  function openUndo(b) {
+    const id = rowIdOf(b, 'bg-exclusion', 'exclusionId');
+    const x = findRow('exclusions', 'id', id);
+    if (!x) return;
+    openDialog(T.undoTitle(exclusionLabel(x)), null, () => ({
+      path: '/exclusions/' + id + '/undo',
+      body: {},
+    }));
+  }
+
+  function openChange(b) {
+    const conceptId = rowIdOf(b, 'bg-entry', 'conceptId');
+    const entry = findRow('entries', 'conceptId', conceptId);
+    if (!entry) return;
+    openDialog(
+      T.changeTitle(entry.english.join(' · ')),
+      function (box) {
+        box.appendChild(field(T.icelandicLabel, textField('bg-icelandic', entry.icelandic)));
+        box.appendChild(field(T.formsLabel, textField('bg-forms', entry.english.join('\n'), true)));
+      },
+      function () {
+        const body = view.changeBody(entry, {
+          icelandic: fieldValue('bg-icelandic').trim(),
+          forms: view.formsFromText(fieldValue('bg-forms')),
+        });
+        // Nothing differs, so nothing is sent.
+        if (!body) return T.unchanged;
+        return {
+          path: '/entries/' + conceptId + '/change',
+          body: body,
+          worklist: (answer) => answer.icelandicChanged === true,
+        };
+      }
+    );
+  }
+
+  function openRemove(b) {
+    const conceptId = rowIdOf(b, 'bg-entry', 'conceptId');
+    const entry = findRow('entries', 'conceptId', conceptId);
+    if (!entry) return;
+    const claimed = ((layerData && layerData.exclusions) || []).filter(
+      (x) => x.claimedBy === conceptId
+    );
+    openDialog(
+      T.removeTitle(entry.english.join(' · ')),
+      function (box) {
+        if (claimed.length === 0) return;
+        const set = el('fieldset');
+        set.appendChild(el('legend', 'form-label', T.undoClaimed));
+        // Plan ruling Q7: each is checked, so the shared word can come back in one step.
+        for (const x of claimed) {
+          set.appendChild(choice('checkbox', 'bg-undo', x.id, exclusionLabel(x), true));
+        }
+        box.appendChild(set);
+      },
+      () => ({
+        path: '/entries/' + conceptId + '/remove',
+        body: { undoExclusions: checkedIds('bg-undo') },
+        worklist: () => true,
+      })
+    );
+  }
+
+  async function retryInflections(b) {
+    const conceptId = rowIdOf(b, 'bg-entry', 'conceptId');
+    if (!book || !writable || !Number.isInteger(conceptId)) return;
+    b.disabled = true;
+    try {
+      await fetchJson(apiPath(book) + '/entries/' + conceptId + '/inflections', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: '{}',
+      });
+      statusLine.textContent = T.retryStarted;
+      // The lookup runs in the background (202); the layer shows its state once read again.
+      setTimeout(loadLayer, 1500);
+    } catch (err) {
+      b.disabled = false;
+      statusLine.textContent = T.retryError + err.message;
+    }
+  }
+
   // ── Actions ─────────────────────────────────────────────────
 
   const ACTIONS = {
     history: (b) => openHistory(b.dataset.english),
     worklist: (b) => openWorklist(Number(b.dataset.changeId)),
+    lookup: () => lookUp(lookupInput.value),
+    'set-icelandic': openSetIcelandic,
+    'exclude-headword': openExcludeHeadword,
+    'exclude-row': openExcludeRow,
+    'undo-exclusion': openUndo,
+    'change-entry': openChange,
+    'remove-entry': openRemove,
+    'retry-inflections': retryInflections,
+    submit: submitDialog,
+    cancel: () => dialog.close(),
+    'confirm-house-style': confirmHouseStyle,
   };
 
   // On the document: layout.js replaces <main> with its shell once the DOM is ready, moving the
@@ -446,6 +936,29 @@
       );
     });
   }
+
+  // The view's static labels come from UI.bookGlossary, like every other string on the page.
+  const LABELS = {
+    'bg-lookup-title': T.lookupTitle,
+    'bg-lookup-button': T.lookupButton,
+    'bg-reason-label': T.reasonLabel,
+    'bg-source-label': T.sourceLabel,
+    'bg-notice': T.publicNotice,
+    'bg-cancel': T.cancel,
+    'bg-confirm-house-style': T.confirmHouseStyle,
+    'bg-submit': T.submit,
+  };
+  for (const id of Object.keys(LABELS)) document.getElementById(id).textContent = LABELS[id];
+  lookupInput.setAttribute('aria-label', T.lookupLabel);
+  lookupInput.addEventListener('keydown', function (event) {
+    if (event.key !== 'Enter') return;
+    event.preventDefault();
+    lookUp(lookupInput.value);
+  });
+  // An edit makes a body waiting for confirmation stale; however the dialog closes (Escape
+  // included), its state goes with it.
+  dialog.addEventListener('input', dropPending);
+  dialog.addEventListener('close', resetDialog);
 
   select.addEventListener('change', selectBook);
 

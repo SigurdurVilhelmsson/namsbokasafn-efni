@@ -95,6 +95,62 @@
       .bg-excerpt {
         flex: 1 1 20rem;
       }
+      .bg-lookup-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+      }
+      .bg-lookup-row .form-input {
+        flex: 1 1 16rem;
+      }
+      #bg-lookup-result > * {
+        margin-top: var(--spacing-sm);
+      }
+      .bg-dialog {
+        width: calc(100% - 2rem);
+        max-width: 38rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        background: var(--bg-elevated);
+        color: var(--text-primary);
+        padding: var(--spacing-lg);
+      }
+      .bg-dialog::backdrop {
+        background: rgba(0, 0, 0, 0.6);
+      }
+      .bg-dialog .form-group {
+        margin-bottom: var(--spacing-md);
+      }
+      .bg-dialog fieldset {
+        border: none;
+        margin: 0 0 var(--spacing-md);
+        padding: 0;
+      }
+      .bg-choice {
+        display: block;
+        margin-top: var(--spacing-xs);
+      }
+      .bg-choice.bg-sub {
+        margin-left: var(--spacing-lg);
+      }
+      #bg-action-error {
+        color: var(--error, #b42318);
+        margin: var(--spacing-sm) 0;
+      }
+      #bg-action-error:empty {
+        display: none;
+      }
+      #bg-house-style {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .bg-dialog-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: var(--spacing-sm);
+        margin-top: var(--spacing-md);
+      }
     </style>
   </head>
   <body>
@@ -108,9 +164,41 @@
       <p id="bg-readonly" class="alert alert-info" hidden></p>
       <p id="bg-status" class="bg-status" role="status"></p>
 
+      <!-- Every label below is filled from UI.bookGlossary (ui-strings.js) by book-glossary.js. -->
+      <section id="bg-lookup" class="card card-padded bg-section" hidden>
+        <h2 id="bg-lookup-title" class="card-title"></h2>
+        <div class="bg-lookup-row">
+          <input id="bg-lookup-input" class="form-input" type="text" autocomplete="off" />
+          <button id="bg-lookup-button" class="btn btn-primary" type="button" data-action="lookup"></button>
+        </div>
+        <div id="bg-lookup-result" aria-live="polite"></div>
+      </section>
+
       <section id="bg-layer" class="card card-padded bg-section" hidden></section>
       <section id="bg-history" class="card card-padded bg-section" hidden></section>
       <section id="bg-worklist" class="card card-padded bg-section" hidden></section>
+
+      <!-- One dialog for every write action; book-glossary.js fills #bg-action-fields per action. -->
+      <dialog id="bg-action-dialog" class="bg-dialog" aria-labelledby="bg-action-title">
+        <h2 id="bg-action-title" class="card-title"></h2>
+        <div id="bg-action-fields"></div>
+        <div class="form-group">
+          <label id="bg-reason-label" class="form-label" for="bg-reason"></label>
+          <textarea id="bg-reason" class="form-input" rows="3" maxlength="2000" required></textarea>
+        </div>
+        <div class="form-group">
+          <label id="bg-source-label" class="form-label" for="bg-source"></label>
+          <input id="bg-source" class="form-input" type="text" maxlength="500" />
+        </div>
+        <p id="bg-notice" class="bg-note"></p>
+        <p id="bg-action-error" role="alert"></p>
+        <div id="bg-house-style" class="alert alert-warning" hidden></div>
+        <div class="bg-dialog-buttons">
+          <button id="bg-cancel" class="btn btn-secondary" type="button" data-action="cancel"></button>
+          <button id="bg-confirm-house-style" class="btn btn-primary" type="button" data-action="confirm-house-style" hidden></button>
+          <button id="bg-submit" class="btn btn-primary" type="button" data-action="submit"></button>
+        </div>
+      </dialog>
     </main>
 
     <script src="/js/htmlUtils.js"></script>

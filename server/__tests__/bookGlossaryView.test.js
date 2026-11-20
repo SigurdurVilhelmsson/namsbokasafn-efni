@@ -110,3 +110,69 @@ describe('unreadableNote', () => {
     );
   });
 });
+
+describe('formsFromText', () => {
+  it('formsFromText drops blanks and duplicates and keeps order', () => {
+    expect(view.formsFromText('  salt bridge \n\nbridge\nsalt bridge\n Salt bridge\n')).toEqual([
+      'salt bridge',
+      'bridge',
+      'Salt bridge',
+    ]);
+  });
+});
+
+describe('changeBody', () => {
+  const entry = { english: ['salt bridge', 'bridge'], icelandic: 'saltbrú' };
+
+  it('changeBody sends only what changed: the Icelandic', () => {
+    expect(
+      view.changeBody(entry, { icelandic: 'jónabrú', forms: ['salt bridge', 'bridge'] })
+    ).toEqual({ icelandic: 'jónabrú' });
+  });
+
+  it('changeBody sends only what changed: the forms', () => {
+    expect(view.changeBody(entry, { icelandic: 'saltbrú', forms: ['salt bridge'] })).toEqual({
+      forms: ['salt bridge'],
+    });
+  });
+
+  it('changeBody treats reordered forms as no change', () => {
+    expect(
+      view.changeBody(entry, { icelandic: 'saltbrú', forms: ['bridge', 'salt bridge'] })
+    ).toBeNull();
+  });
+
+  it('changeBody is null when nothing differs', () => {
+    expect(
+      view.changeBody(entry, { icelandic: 'saltbrú', forms: ['salt bridge', 'bridge'] })
+    ).toBeNull();
+  });
+});
+
+describe('replaceCandidates', () => {
+  const resolution = (over) => ({
+    winner: { conceptId: 1, termId: 11, text: 'saltbrú', domain: 'chemistry', position: 1 },
+    reason: 'position',
+    tied: [{ conceptId: 2, text: 'brú', domain: 'physics' }],
+    alsoInScope: [
+      { conceptId: 2, termId: 12, text: 'brú', domain: 'physics', position: 2 },
+      { conceptId: 3, termId: 13, text: 'jónabrú', domain: 'biology', position: 3 },
+    ],
+    outOfScope: [{ conceptId: 4, text: 'utan', domain: 'astronomy' }],
+    ...over,
+  });
+
+  it('replaceCandidates checks the winner and offers nothing for the book own entry', () => {
+    expect({
+      ordinary: view.replaceCandidates(resolution()),
+      bookEntry: view.replaceCandidates(resolution({ reason: 'book-entry' })),
+    }).toEqual({
+      ordinary: [
+        { conceptId: 1, text: 'saltbrú', domain: 'chemistry', checked: true },
+        { conceptId: 2, text: 'brú', domain: 'physics', checked: false },
+        { conceptId: 3, text: 'jónabrú', domain: 'biology', checked: false },
+      ],
+      bookEntry: [],
+    });
+  });
+});

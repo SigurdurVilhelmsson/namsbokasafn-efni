@@ -55,6 +55,16 @@ function getReferencedKeys(filename) {
     refs.add(match[1]);
   }
 
+  // A section alias, `const T = UI.bookGlossary;`: each `T.key` is the key `bookGlossary.key`.
+  // book-glossary.js reads every string this way, so without this its keys go unchecked.
+  for (const [, alias, section] of source.matchAll(
+    /\b(?:const|let|var)\s+(\w+)\s*=\s*UI\.(\w+);/g
+  )) {
+    for (const [, key] of source.matchAll(new RegExp(`(?<![\\w.$])${alias}\\.(\\w+)`, 'g'))) {
+      refs.add(`${section}.${key}`);
+    }
+  }
+
   return refs;
 }
 
@@ -65,7 +75,7 @@ describe('UI string key validation', () => {
     expect(definedKeys.size).toBeGreaterThan(50);
   });
 
-  for (const file of ['segment-editor.js', 'localization-editor.js']) {
+  for (const file of ['segment-editor.js', 'localization-editor.js', 'book-glossary.js']) {
     it(`all UI.* references in ${file} have matching definitions`, () => {
       const refs = getReferencedKeys(file);
       const missing = [];
