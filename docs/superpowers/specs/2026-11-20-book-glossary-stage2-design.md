@@ -1,7 +1,7 @@
 # The book glossary layer, stage 2: the head editor's screen, the worklist and the export hold
 
-> DRAFT 2026-11-20, for [USER]'s approval. Once approved it is frozen and banner-dated: the design record (evidence,
-> never status). Status lives in the register (`docs/plans/2026-07-21-post-item17-followup-campaign.md`).
+> DRAFT 2026-11-20, for [USER]'s approval. Builder-checked the same day; [USER]'s answers to its two questions are in
+> §4 and §5.1. Once approved it is frozen and banner-dated: the design record (evidence, never status). Status lives in the register (`docs/plans/2026-07-21-post-item17-followup-campaign.md`).
 >
 > It builds on the approved stage-1 design,
 > [`2026-11-19-book-glossary-layer-design.md`](2026-11-19-book-glossary-layer-design.md) (cited below as **S1**),
@@ -57,6 +57,8 @@ When stage 2 is needed: before editors start changing terms. With the December p
 - A layer change that cannot be traced to a person, a date and a reason (S1).
 - A change in one book that alters what another book resolves (S1).
 - A worklist that edits text, or that reads a source other than the editor's effective text.
+- An email address in the public record.
+- A layer change that silently disables a book preference, or silently overrides a house-style ruling.
 
 ## 3. Constraints
 
@@ -96,6 +98,8 @@ Chosen by [USER] on 2026-11-20 unless marked as a call.
 | Inflections for a new or changed entry | (A) a background BÍN lookup on save; (B) a developer runs `fetch-bin-inflections.js` by hand | **(A)** — under (B) the worklist misses inflected forms (*keri*, *kersins* for *ker*) until a developer acts, which is the main thing the list is for |
 | How the worklist is computed | on request book-wide; per chapter; a stored index | **On request, book-wide** — the one sensible way: the scan costs about 0.24 s, so a chapter filter or an index buys nothing, and S1 §5.6 asked for no stored state |
 | Where the screen lives | a new page; a tab in an existing page | **A new page, `/book-glossary`** (my call; S1 §6 left it to the builder, provided it does not grow `terminology.html`) |
+| What the public record shows about a change (raised by the builder check) | (a) the person's display name, the account id in the database, reason and source published with a notice on the form; (b) as (a) with a role instead of a name; (c) a role, with reason and source kept in the database | **(a)** — editors are already credited by name in public (*ritstjórn*), the email never appears, and git still says why a term changed |
+| Whether the head editor may override a ruling made elsewhere (raised by the builder check) | refuse; warn and confirm; allow silently — decided separately for house style and for book preferences | **House style: warn and confirm** (the head editor owns the book's terms during editing). **Book preference: refuse, telling the head editor to ask a developer** (the page cannot edit preferences, so it would leave a broken setting behind) |
 
 ## 5. Design
 
@@ -109,13 +113,22 @@ three operations, each in one transaction with its history row, `before_json` an
   single-concept exclusion while its entry stays makes the old word acceptable again (the entry becomes an "add").
 - **`changeEntry(db, {book, conceptId, icelandic?, forms?, by, reason, source, at})`** → history `entry-change`.
   - A new Icelandic replaces the entry's rank-1 Icelandic `concept_term` text and **clears its `inflections`**, so the
-    stale forms of the old word are never used for the new one; the lookup (§5.4) refills them.
+    stale forms of the old word are never used for the new one; the lookup (§5.4) refills them. **The old word's
+    inflections are kept in the history row's `before_json`** (the database), so the change's worklist can still find
+    its inflected forms (call 12).
   - New English forms are added, removed forms deleted; every form keeps the stage-1 refusals (another entry on that
     headword, a whole-headword exclusion of it, a `book_term_preference` for it).
 - **`removeEntry(db, {book, conceptId, by, reason, source, at})`** → history `entry-remove`. Deletes the
   `book_glossary_entry` row and the book-owned `concept` (its `concept_term` rows follow by `ON DELETE CASCADE`;
-  `foreign_keys` is on, CLAUDE.md). The page then offers to undo the single-concept exclusions on the entry's
+  `foreign_keys` is on, CLAUDE.md), after copying the entry's Icelandic and its inflections into the history row's
+  `before_json`, for the removal's worklist. The page then offers to undo the single-concept exclusions on the entry's
   headwords, one `removeExclusion` each (call 2).
+
+**The committed record never carries inflections** (call 12). `buildBookGlossaryRecord` writes each history row's
+`before` and `after` into the public `book-glossary.json`; it strips any `inflections` key from them, as it already
+leaves out an excluded row's Icelandic (S1 §5.4). The BÍN data stays out of the repository (`tools/data/` is
+gitignored), and whether forms derived from it may be published under the books' licences is not settled by anything
+this design rests on. A test pins that no field of the record holds an inflection list.
 
 Refusals added to the write API (all throw `LAYER_REFUSED`, as stage 1's do):
 - forms that collide by match key within one call are deduplicated before writing, and an exact duplicate never
@@ -125,7 +138,27 @@ Refusals added to the write API (all throw `LAYER_REFUSED`, as stage 1's do):
 - (stage 1, kept) a whole-headword exclusion beside an entry; a preference on an entry's English; a `replace` whose
   replaced concept does not carry the form.
 
-`by` always comes from the signed-in user, never from the request body.
+**Rulings made elsewhere** ([USER], 2026-11-20):
+- **A book preference is never broken from the page.** An exclusion is refused when a `book_term_preference` row of
+  the book (any chapter) is on that headword (`english`, case-insensitive) and either the exclusion is whole-headword
+  or the preference's `term_id` belongs to the excluded concept. The stage-1 refusal of an entry on a preferred
+  English stays. Both refusals carry an Icelandic message telling the head editor to ask a developer, since the page
+  does not edit preferences.
+- **House style is overridden only on confirmation.** An entry (add or replace) on a headword where a candidate
+  concept of the `house-style` collection is in scope, or an exclusion that removes such a concept, is refused with
+  the code `needs-confirm`, naming the house-style term, unless the request carries `confirmHouseStyle: true`. A
+  confirmed write records the overridden house-style concept and term in its history row's `after_json`, so the
+  record shows that a ruling was overridden and by whom.
+
+**Who made a change** ([USER], 2026-11-20):
+- The database stores the **account id**: `req.user.id`, the provider id that `userService.findByProviderId` takes,
+  in `by`, `created_by` and `updated_by`. It always comes from the session, never from the request body.
+- The committed record shows the person's **display name** instead: `buildBookGlossaryRecord` maps an account id to
+  the `display_name` of its `users` row. A `by` that matches no account (the c19 loader's label,
+  `c19-load ([USER] rulings 2026-11-18)`) is written as it is. With no display name it writes the role
+  (*aðalritstjóri*, *stjórnandi*, the labels Ritstjóri already uses) (call 14).
+- **The record never carries an email address**: not the session's `username` (which is the email, `auth.js`), not
+  the `users.email` column. A test pins it.
 
 ### 5.2 The API
 
@@ -136,12 +169,12 @@ Names are indicative; the builder may adjust them.
 | Route | Does |
 |---|---|
 | `GET /` | The book's layer: exclusions and entries with provenance and inflection status; the hold state (§5.6); the last record write result |
-| `GET /lookup?english=` | What the book resolves the headword to now: winner, `alsoInScope`, out-of-scope suggestions, any preference, any layer rows on it (from `conceptResolver`'s `buildScope` + `resolveCandidates`) |
+| `GET /lookup?english=` | What the book resolves the headword to now: winner, `alsoInScope`, out-of-scope suggestions, any layer rows on it (from `conceptResolver`'s `buildScope` + `resolveCandidates`), **whether a house-style concept is in scope, and the book's preferences on the headword by chapter** |
 | `GET /history?english=` | The history rows for a headword, newest first |
-| `POST /exclusions` | `{english, conceptId, reason, source?}`; `conceptId` 0 = the whole headword |
+| `POST /exclusions` | `{english, conceptId, reason, source?, confirmHouseStyle?}`; `conceptId` 0 = the whole headword |
 | `POST /exclusions/:id/undo` | `{reason, source?}` |
-| `POST /entries` | `{forms[], icelandic, mode: 'replace'|'add', replaces?: conceptId[], reason, source?}` |
-| `POST /entries/:conceptId/change` | `{icelandic?, forms?, reason, source?}` |
+| `POST /entries` | `{forms[], icelandic, mode: 'replace'|'add', replaces?: conceptId[], reason, source?, confirmHouseStyle?}` |
+| `POST /entries/:conceptId/change` | `{icelandic?, forms?, reason, source?, confirmHouseStyle?}` |
 | `POST /entries/:conceptId/remove` | `{reason, source?, undoExclusions?: id[]}` |
 | `POST /entries/:conceptId/inflections` | Retry the BÍN lookup (§5.4) |
 | `GET /worklist?changeId=` | The worklist for one history row (§5.5) |
@@ -149,8 +182,9 @@ Names are indicative; the builder may adjust them.
 **Validation at the route (§C239 T2b):** `:book` is a registered book; `english` and each form are non-empty after
 trimming, hold no control characters, and have a length limit (builder's value); `conceptId` is an integer ≥ 0;
 `icelandic` is non-empty; `reason` is required and non-empty; `source` is an optional string; `forms` is a non-empty
-array; `mode` is one of the two values. A refusal from the write API returns 409 with an Icelandic message mapped
-from the refusal; a validation failure returns 400.
+array; `mode` is one of the two values; `confirmHouseStyle`, when present, is a boolean. A refusal from the write API
+returns 409 with an Icelandic message mapped from the refusal, and `needs-confirm` returns 409 with that code and the
+house-style term so the page can ask; a validation failure returns 400.
 
 **A book with no `glossary/` directory cannot be written to** (409): its layer could never reach git, because the
 exporter only visits books that have that directory (call 3; §C239 T4e).
@@ -182,10 +216,16 @@ a script in `server/public/js/`). A book selector lists only the books the user 
 └─────────────────────────────────────────────────────────┘
 ```
 
-- **Look up.** Shows the resolution and the actions that fit it. Every action asks for a reason and an optional source
-  (for example "terminology committee, proposal of 2026-12-03"). "Set the book's Icelandic" asks whether it
-  **replaces** the current word (hides it: entry plus single-concept exclusions, S1 §5.2) or is added **alongside**
-  (an entry only).
+- **Look up.** Shows the resolution and the actions that fit it, and marks a house-style term and any book preference
+  on the headword. Every action asks for a reason and an optional source (for example "terminology committee,
+  proposal of 2026-12-03"). "Set the book's Icelandic" asks whether it **replaces** the current word (hides it: entry
+  plus single-concept exclusions, S1 §5.2) or is added **alongside** (an entry only).
+- **The public notice.** Every action form says, beside the reason and source fields, that they and the person's name
+  are published in the project's public repository, and asks the head editor not to quote a rejected
+  Íðorðabankinn term in the reason (S1 §5.4 keeps those out of the record). Wording is the builder's, in Icelandic.
+- **House style and preferences.** A `needs-confirm` answer shows the house-style term the change would override and
+  asks for confirmation; confirming resends with `confirmHouseStyle: true`. A preference refusal shows the message
+  telling the head editor to ask a developer, and offers no way past it.
 - **The layer.** Every exclusion and entry, with who, when, reason and source, its history, and for an entry its
   inflection status: *N beygingarmyndir*, *aðeins rithátturinn* with the reason (not in BÍN, ambiguous, several words,
   file absent), or *sæki…*. The BÍN credit line is shown wherever inflections are listed. An entry of three or more
@@ -217,8 +257,9 @@ background lookup, following the fire-and-forget child-process pattern `tmServic
 `GET /worklist?changeId=N` reads one history row and derives:
 - **the English forms**: the entry's forms (for a removal, the forms in `before_json`);
 - **the old Icelandic**: for a replacement, the rank-1 Icelandic of each replaced concept (stage 1 stores it on the
-  exclusion row, column `icelandic`, at writing); for a change, the Icelandic in `before_json`; for a removal, the
-  entry's own Icelandic in `before_json` (the book word that may now be wrong).
+  exclusion row, column `icelandic`, at writing), with that concept's inflections; for a change, the Icelandic and
+  inflections in `before_json`; for a removal, the entry's own Icelandic and inflections in `before_json` (the book
+  word that may now be wrong).
 
 An "add alongside" has no worklist: the old word stays acceptable.
 
@@ -312,7 +353,13 @@ standing permission).
 - The write API: each new operation's history row (`before_json`/`after_json`), each refusal by code and row count,
   forms deduplication, inflections cleared on a changed Icelandic.
 - The routes: the guard (another book's head editor gets 403), each validation failure (400), each refusal (409), `by`
-  taken from the session, and the no-`glossary/` refusal.
+  taken from the session (a `by` in the body is ignored), and the no-`glossary/` refusal.
+- Rulings made elsewhere: an exclusion on a preferred headword refused, whole-headword and single-concept, with the
+  preference row unchanged; an exclusion of a non-preferred concept on that headword allowed; a house-style override
+  refused with `needs-confirm` without the flag, written with it, and its history row naming the overridden term.
+- The record's identity: an account id written as its display name; the c19 label passed through; the role written
+  when there is no display name; **no email anywhere in the record** (assert on the serialised file, against a user
+  whose email is set); and no inflection list anywhere in it (call 12).
 - The hold: stamp written; held on a layer change (record still written, held file written, outcome and hash);
   not held on a non-layer change; a mixed change held; restamp; release with a matching hash writes, with a stale hash
   refuses, without `--book` is rejected, and does not stand down the shrink gate; a book without a layer untouched.
@@ -356,3 +403,19 @@ Three PRs, in this order (call 9):
 9. **Three PRs, the hold first**, deployed before the page can change anything.
 10. **"Add alongside" has no worklist**; a replacement, a change and a removal do.
 11. **The held export lives in `pipeline-output/glossary-held/<book>.json`**, gitignored, replaced on every run.
+12. **A change or removal keeps the old word's inflections in the history row's `before_json`, and the committed
+    record strips them.** Without this, `changeEntry` clears them and `removeEntry` deletes them, so those two
+    worklists would match only the exact old form, against the reason inflections are looked up at all (§4). Keeping
+    them in the database needs no migration; stripping them from the record keeps BÍN-derived forms out of the
+    public repository. *(Raised by the builder check, 2026-11-20.)*
+13. **The record resolves names when it is built**, from the account's current `display_name`, rather than storing a
+    name at writing. No migration is needed; the cost is that renaming an account rewrites that person's past rows
+    in the next record (one cron commit).
+14. **With no display name, the record writes the role** (*aðalritstjóri*, *stjórnandi*, the labels Ritstjóri already uses), never the email and never
+    the account id.
+15. **A confirmed house-style override is recorded in the history row**, naming the overridden concept and term, so
+    the research record shows which of [USER]'s rulings a head editor set aside.
+
+[USER]'s decisions of 2026-11-20, for reference (§4): the export hold (option 2), the stamp (1A), inflections on save
+(2A), the worklist on request, the page; the record shows the display name with reason and source published under a
+notice (option a); house style warn-and-confirm, book preferences refused with an "ask a developer" message.
