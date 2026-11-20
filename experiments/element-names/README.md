@@ -149,6 +149,20 @@ never official. Over the 65: 1,522 official occurrences against 481 others. Patt
   potassium/kalium 3, lithium 1, vanadium 1, cesium 1, americium 1.
 - **MT garble:** hafnium is `hafnfn` in 4 of its 5 segments (the periodic-table alts).
 
+### 5. The lanthanide words
+
+Added the same day, after [USER] ruled that `lanþan` carries into its derived words (`lanþaníð-`,
+`lanþanóíð-`). `instruments/lanthanide-readonly.cjs` searches segments whose English holds
+*lanthanide*, *lanthanides*, *lanthanoid* or *lanthanoids* (whole word, any case) and lists every
+Icelandic word there starting with `lant` or `lanþ`. → `data/lanthanide-census.json`,
+`reports/lanthanide-segments.md`
+
+**Result.** 19 segments (ch2 4, ch6 2, ch18 1, ch19 12), and every one holds a `lant`/`lanþ` word.
+**18 hold the old derived forms** (27 occurrences: `lantaníð-`, `lantanóíð-`). One already holds the
+official `lanþaníðar` (`m68842:para:fs-idm272953936`); that is the MT's own output, as received in
+`02-mt-output`. Three of the segments also hold the element name `lantan`, and they are in the
+lanthanum list too.
+
 ## Blind spots
 
 - **The English anchor sees only the name as a whole word.** A segment whose English says `Na+`,
@@ -178,5 +192,8 @@ never official. Over the 65: 1,522 official occurrences against 481 others. Patt
 - **The official list is parsed, not transcribed.** The page carries the table twice; both copies
   were identical. The þ spellings (`liþíum`, `rúþeníum`, `lanþan`, `prómeþíum`, `þallíum`) are where
   a transcription drifts.
+- **A census word can come from inside markup.** The lanthanide census matched `Lanthanoid` in one
+  segment. It is the target id of a cross-reference marker (`[[xref:CNX_Chem_19_01_Lanthanoid]]`),
+  not reader-visible English, so it is counted as neither form.
 - **This is a snapshot.** The MT layer does not change by hand, but pending and approved edits do,
   so the effective segments move as editors work.

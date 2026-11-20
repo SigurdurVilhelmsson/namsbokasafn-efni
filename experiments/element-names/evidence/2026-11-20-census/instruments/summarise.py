@@ -88,3 +88,16 @@ for r in cen['rows']:
 open(f'{OUT}/render-census-table.md', 'w', encoding='utf-8').write('\n'.join(lines))
 print('census categories:', dict(cat), 'official', tot_off, 'non-official', tot_non,
       'unmatched EN segments >0:', {r['english'][0]: r['noCandidateCount'] for r in cen['rows'] if r['noCandidateCount']})
+
+# 5. lanthanide words (added after [USER] ruled that lanþan carries into its derived words)
+la = load('lanthanide-census.json')
+rows = ['| Ch. | Segment id | Icelandic lant-/lanþ- words | Excerpt |', '|---|---|---|---|']
+for i in la['items']:
+    rows.append(f"| {ch(i['chapter'])} | `{i['segmentId']}` | {', '.join(i['words'])} | {excerpt(i['excerpt'])} |")
+open(f'{OUT}/lanthanide-segments.md', 'w', encoding='utf-8').write(
+    f"### lanthanide words: English *lanthanide(s)* / *lanthanoid(s)* ({la['englishSegments']} segments)\n\n" + '\n'.join(rows) + '\n')
+old = sum(v['count'] for v in la['forms'].values() if v['kind'] == 'derived-old')
+new = sum(v['count'] for v in la['forms'].values() if v['kind'] == 'derived-official')
+print('lanthanide: EN segments', la['englishSegments'], 'with a lant/lanþ word', la['withStemWord'], 'unmatched', len(la['misses']),
+      '| segments with old derived', la['withDerivedOld'], 'with official derived', la['withDerivedOfficial'],
+      '| occurrences old', old, 'official', new, '| by chapter', dict(collections.Counter(ch(i['chapter']) for i in la['items'])))

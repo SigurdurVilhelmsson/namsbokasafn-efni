@@ -1,0 +1,471 @@
+{
+ "_meta": {
+  "measured": "2026-11-20",
+  "book": "efnafraedi-2e",
+  "prodHead": "844f13d2f",
+  "readOnly": true,
+  "script": "instruments/lanthanide-readonly.cjs",
+  "what": "segments whose English holds lanthanide(s)/lanthanoid(s), and every Icelandic word there starting with lant/lanþ (after [USER] ruled that lanþan carries into its derived words)"
+ },
+ "control": {
+  "registeredBooks": 6,
+  "unitsListed": 170,
+  "unreadable": [],
+  "openedDbPaths": [
+   "pipeline-output/sessions.db"
+  ]
+ },
+ "englishSegments": 19,
+ "englishForms": {
+  "lanthanides": 10,
+  "lanthanide": 8,
+  "lanthanoid": 5,
+  "lanthanoids": 2
+ },
+ "withStemWord": 19,
+ "withDerivedOld": 18,
+ "withDerivedOfficial": 1,
+ "forms": {
+  "lantaníðar": {
+   "count": 1,
+   "kind": "derived-old"
+  },
+  "Lantaníðar": {
+   "count": 2,
+   "kind": "derived-old"
+  },
+  "lantaníð": {
+   "count": 5,
+   "kind": "derived-old"
+  },
+  "lantaníða": {
+   "count": 7,
+   "kind": "derived-old"
+  },
+  "Lantaníðaröðin": {
+   "count": 1,
+   "kind": "derived-old"
+  },
+  "lantan": {
+   "count": 3,
+   "kind": "element"
+  },
+  "lantaníðum": {
+   "count": 5,
+   "kind": "derived-old"
+  },
+  "lanþaníðar": {
+   "count": 1,
+   "kind": "derived-official"
+  },
+  "lantaníðaröðina": {
+   "count": 1,
+   "kind": "derived-old"
+  },
+  "lantanóíðaröðina": {
+   "count": 1,
+   "kind": "derived-old"
+  },
+  "lantaníðaröðinni": {
+   "count": 1,
+   "kind": "derived-old"
+  },
+  "lantaníðinn": {
+   "count": 1,
+   "kind": "derived-old"
+  },
+  "Lanthanoid": {
+   "count": 1,
+   "kind": "other"
+  },
+  "lantaníðaröð": {
+   "count": 1,
+   "kind": "derived-old"
+  },
+  "lantanóíðaröð": {
+   "count": 1,
+   "kind": "derived-old"
+  }
+ },
+ "items": [
+  {
+   "chapter": 2,
+   "moduleId": "m68695",
+   "segmentId": "m68695:para:fs-idm177301632",
+   "english": "lanthanides",
+   "words": [
+    "lantaníðar"
+   ],
+   "kinds": [
+    "derived-old"
+   ],
+   "excerpt": {
+    "text": "eðst í töflunni (frumefnin í efri röðinni eru kölluð [[term:lantaníðar|term-00015]] og frumefnin í neðri röðinni eru [[term:aktiní",
+    "start": 60,
+    "length": 10,
+    "cutBefore": true,
+    "cutAfter": true
+   }
+  },
+  {
+   "chapter": 2,
+   "moduleId": "m68695",
+   "segmentId": "m68695:alt:fs-idm201007936-alt",
+   "english": "lanthanides",
+   "words": [
+    "Lantaníðar"
+   ],
+   "kinds": [
+    "derived-old"
+   ],
+   "excerpt": {
+    "text": "álmar, sem eru í flokkum 3 til 11, ekki aðalflokkafrumefni. Lantaníðar og aktiníðar eru tilgreindir neðst í lotukerfinu.",
+    "start": 60,
+    "length": 10,
+    "cutBefore": true,
+    "cutAfter": false
+   }
+  },
+  {
+   "chapter": 2,
+   "moduleId": "m68695",
+   "segmentId": "m68695:glossary-def:fs-idm376829360-def",
+   "english": "lanthanide",
+   "words": [
+    "lantaníð",
+    "lantaníð"
+   ],
+   "kinds": [
+    "derived-old"
+   ],
+   "excerpt": {
+    "text": "(einnig lantaníð eða aktiníð) frumefni í tveimur neðstu röðunum; ef í fyrstu",
+    "start": 8,
+    "length": 8,
+    "cutBefore": false,
+    "cutAfter": true
+   }
+  },
+  {
+   "chapter": 2,
+   "moduleId": "m68695",
+   "segmentId": "m68695:glossary-term:fs-idm380448704-term",
+   "english": "lanthanide",
+   "words": [
+    "lantaníð"
+   ],
+   "kinds": [
+    "derived-old"
+   ],
+   "excerpt": {
+    "text": "lantaníð",
+    "start": 0,
+    "length": 8,
+    "cutBefore": false,
+    "cutAfter": false
+   }
+  },
+  {
+   "chapter": 6,
+   "moduleId": "m68734",
+   "segmentId": "m68734:caption:CNX_Chem_06_04_Econtable-caption",
+   "english": "lanthanides",
+   "words": [
+    "lantaníða"
+   ],
+   "kinds": [
+    "derived-old"
+   ],
+   "excerpt": {
+    "text": "yrir atóm flestra frumefna í lotukerfinu. (Rafeindaskipanir lantaníða og aktiníða eru ekki nákvæmlega spáð með þessari einföldu n",
+    "start": 60,
+    "length": 9,
+    "cutBefore": true,
+    "cutAfter": true
+   }
+  },
+  {
+   "chapter": 6,
+   "moduleId": "m68734",
+   "segmentId": "m68734:item:fs-idp203626048-item-1",
+   "english": "lanthanide",
+   "words": [
+    "Lantaníðaröðin",
+    "lantan"
+   ],
+   "kinds": [
+    "derived-old",
+    "element"
+   ],
+   "excerpt": {
+    "text": "Lantaníðaröðin: lantan (La) til lútetín (Lu)",
+    "start": 0,
+    "length": 14,
+    "cutBefore": false,
+    "cutAfter": false
+   }
+  },
+  {
+   "chapter": 18,
+   "moduleId": "m68831",
+   "segmentId": "m68831:para:fs-idp421952",
+   "english": "lanthanides",
+   "words": [
+    "lantaníðum"
+   ],
+   "kinds": [
+    "derived-old"
+   ],
+   "excerpt": {
+    "text": "ru tellúríð – sölt Te[[sup:2−]] mynduð með virkum málmum og lantaníðum – og efnasambönd með súrefni, flúori og klóri, þar sem tell",
+    "start": 60,
+    "length": 10,
+    "cutBefore": true,
+    "cutAfter": true
+   }
+  },
+  {
+   "chapter": 19,
+   "moduleId": "m68842",
+   "segmentId": "m68842:para:fs-idm272953936",
+   "english": "lanthanides",
+   "words": [
+    "lanþaníðar"
+   ],
+   "kinds": [
+    "derived-official"
+   ],
+   "excerpt": {
+    "text": "nin|term-00002]], einnig kölluð [[i:innri hliðarfrumefni]] (lanþaníðar og aktiníðar), uppfylla einnig þetta skilyrði þar sem [[i:d",
+    "start": 60,
+    "length": 10,
+    "cutBefore": true,
+    "cutAfter": true
+   }
+  },
+  {
+   "chapter": 19,
+   "moduleId": "m68842",
+   "segmentId": "m68842:para:fs-idm9696240",
+   "english": "lanthanide",
+   "words": [
+    "lantaníðaröðina",
+    "lantanóíðaröðina",
+    "lantan",
+    "lantaníðum",
+    "lantaníða"
+   ],
+   "kinds": [
+    "derived-old",
+    "element"
+   ],
+   "excerpt": {
+    "text": "n í [[i:f]]-blokk eru frumefnin Ce til Lu, sem mynda [[term:lantaníðaröðina|term-00007]] (eða [[term:lantanóíðaröðina|term-00008]]), og",
+    "start": 60,
+    "length": 15,
+    "cutBefore": true,
+    "cutAfter": true
+   }
+  },
+  {
+   "chapter": 19,
+   "moduleId": "m68842",
+   "segmentId": "m68842:para:fs-idm126025504",
+   "english": "lanthanide",
+   "words": [
+    "lantaníðaröðinni"
+   ],
+   "kinds": [
+    "derived-old"
+   ],
+   "excerpt": {
+    "text": "e]4[[i:f]][[sup:1]]; Ce[[sup:3+]] er innra hliðarfrumefni í lantaníðaröðinni.",
+    "start": 60,
+    "length": 16,
+    "cutBefore": true,
+    "cutAfter": false
+   }
+  },
+  {
+   "chapter": 19,
+   "moduleId": "m68842",
+   "segmentId": "m68842:note-title:fs-idm229057952-title",
+   "english": "lanthanides",
+   "words": [
+    "lantaníða"
+   ],
+   "kinds": [
+    "derived-old"
+   ],
+   "excerpt": {
+    "text": "Notkun lantaníða í tækjum",
+    "start": 7,
+    "length": 9,
+    "cutBefore": false,
+    "cutAfter": false
+   }
+  },
+  {
+   "chapter": 19,
+   "moduleId": "m68842",
+   "segmentId": "m68842:para:fs-idm24167088",
+   "english": "lanthanide",
+   "words": [
+    "Lantaníðar",
+    "lantaníðinn",
+    "lantaníðum",
+    "lantaníða"
+   ],
+   "kinds": [
+    "derived-old"
+   ],
+   "excerpt": {
+    "text": "Lantaníðar (frumefni 57–71) eru nokkuð algengir í jarðskorpunni, þrátt",
+    "start": 0,
+    "length": 10,
+    "cutBefore": false,
+    "cutAfter": true
+   }
+  },
+  {
+   "chapter": 19,
+   "moduleId": "m68842",
+   "segmentId": "m68842:para:fs-idm256905072",
+   "english": "lanthanides",
+   "words": [
+    "lantaníða",
+    "Lanthanoid",
+    "lantaníðum"
+   ],
+   "kinds": [
+    "derived-old",
+    "other"
+   ],
+   "excerpt": {
+    "text": "Notkun lantaníða í atvinnuskyni fer ört vaxandi. Til dæmis er evrópíum mikil",
+    "start": 7,
+    "length": 9,
+    "cutBefore": false,
+    "cutAfter": true
+   }
+  },
+  {
+   "chapter": 19,
+   "moduleId": "m68842",
+   "segmentId": "m68842:para:fs-idm272757680",
+   "english": "lanthanide",
+   "words": [
+    "lantaníðum",
+    "lantaníða"
+   ],
+   "kinds": [
+    "derived-old"
+   ],
+   "excerpt": {
+    "text": "Þar sem eftirspurn eftir lantaníðum hefur aukist hraðar en framboð hefur verð einnig hækkað. Ár",
+    "start": 25,
+    "length": 10,
+    "cutBefore": false,
+    "cutAfter": true
+   }
+  },
+  {
+   "chapter": 19,
+   "moduleId": "m68842",
+   "segmentId": "m68842:para:fs-idm265281664",
+   "english": "lanthanides",
+   "words": [
+    "lantaníð"
+   ],
+   "kinds": [
+    "derived-old"
+   ],
+   "excerpt": {
+    "text": "eðan aðrir hafa mjög lítinn hvarfgirni. Til dæmis mynda öll lantaníð stöðugar 3+ vatnskatjónir. Drifkrafturinn fyrir slíkum oxun",
+    "start": 60,
+    "length": 8,
+    "cutBefore": true,
+    "cutAfter": true
+   }
+  },
+  {
+   "chapter": 19,
+   "moduleId": "m68842",
+   "segmentId": "m68842:problem:fs-idm214633312",
+   "english": "lanthanoid",
+   "words": [
+    "lantaníð"
+   ],
+   "kinds": [
+    "derived-old"
+   ],
+   "excerpt": {
+    "text": "Hvers vegna finnast lantaníð frumefnin ekki í náttúrunni á frumefnisformi?",
+    "start": 20,
+    "length": 8,
+    "cutBefore": false,
+    "cutAfter": false
+   }
+  },
+  {
+   "chapter": 19,
+   "moduleId": "m68842",
+   "segmentId": "m68842:glossary-term:fs-idm108395328-term",
+   "english": "lanthanide",
+   "words": [
+    "lantaníðaröð"
+   ],
+   "kinds": [
+    "derived-old"
+   ],
+   "excerpt": {
+    "text": "lantaníðaröð",
+    "start": 0,
+    "length": 12,
+    "cutBefore": false,
+    "cutAfter": false
+   }
+  },
+  {
+   "chapter": 19,
+   "moduleId": "m68842",
+   "segmentId": "m68842:glossary-def:fs-idm108395328-def",
+   "english": "lanthanoid",
+   "words": [
+    "lantanóíðaröð",
+    "lantan"
+   ],
+   "kinds": [
+    "derived-old",
+    "element"
+   ],
+   "excerpt": {
+    "text": "(einnig lantanóíðaröð) lantan og frumefnin í fyrstu röð [[i:f]]-blokkarinnar, sæt",
+    "start": 8,
+    "length": 13,
+    "cutBefore": false,
+    "cutAfter": true
+   }
+  },
+  {
+   "chapter": 19,
+   "moduleId": "m68842",
+   "segmentId": "m68842:glossary-def:fs-idm42041824-def",
+   "english": "lanthanides",
+   "words": [
+    "lantaníða"
+   ],
+   "kinds": [
+    "derived-old"
+   ],
+   "excerpt": {
+    "text": "safn 17 frumefna, þar á meðal lantaníða, skandíns og yttríns, sem oft koma fyrir saman og hafa svip",
+    "start": 30,
+    "length": 9,
+    "cutBefore": false,
+    "cutAfter": true
+   }
+  }
+ ],
+ "misses": []
+}
