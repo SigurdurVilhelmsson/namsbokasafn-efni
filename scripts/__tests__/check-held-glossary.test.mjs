@@ -1,6 +1,14 @@
 import { describe, it, expect } from 'vitest';
 import { execFileSync } from 'node:child_process';
-import { chmodSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import {
+  chmodSync,
+  existsSync,
+  mkdirSync,
+  mkdtempSync,
+  readdirSync,
+  rmSync,
+  writeFileSync,
+} from 'node:fs';
 import { createRequire } from 'node:module';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -69,6 +77,38 @@ describe('check-held-glossary.sh', () => {
       });
       expect(r.status).toBe(2);
       expect(r.stderr + r.stdout).toContain('nothing held');
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+  it('exits 2 when the worktree filesystem has too little space', () => {
+    const dir = mkdtempSync(path.join(tmpdir(), 'chg-'));
+    const work = path.join(dir, 'work');
+    try {
+      mkdirSync(work);
+      const status = JSON.stringify({
+        books: { chemistry: { outcome: 'refused-layer-change', termsSha256: 'x' } },
+      });
+      const head = 'a'.repeat(40);
+      writeFileSync(
+        path.join(dir, 'ssh'),
+        `#!/bin/sh\ncase "$*" in\n*rev-parse*) echo ${head} ;;\n*) printf '%s' '${status}' ;;\nesac\n`
+      );
+      writeFileSync(
+        path.join(dir, 'df'),
+        "#!/bin/sh\necho 'Filesystem 1024-blocks Used Available Capacity Mounted on'\necho '/dev/x 100 99 1024 99% /'\n"
+      );
+      chmodSync(path.join(dir, 'ssh'), 0o755);
+      chmodSync(path.join(dir, 'df'), 0o755);
+      const r = run(['chemistry'], {
+        ...process.env,
+        PATH: `${dir}:${process.env.PATH}`,
+        PROD_SSH: 'fake-host',
+        HELD_GLOSSARY_WORKDIR: work,
+      });
+      expect(r.status).toBe(2);
+      expect(r.stderr).toContain('5 GB');
+      expect(existsSync(work) && readdirSync(work)).toEqual([]);
     } finally {
       rmSync(dir, { recursive: true, force: true });
     }

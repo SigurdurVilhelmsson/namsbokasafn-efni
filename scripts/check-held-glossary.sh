@@ -18,12 +18,20 @@ premises on glossary-unified.json, in a temporary worktree at production's HEAD.
 Environment:
   PROD_SSH   required, e.g. user@host (never written into this script)
   PROD_REPO  production checkout, default ~/repos/namsbokasafn-efni
+  HELD_GLOSSARY_WORKDIR
+             directory under which the throwaway worktree is made (a temp
+             directory inside it, removed on exit). Default: the PARENT of
+             this checkout. It must be on disk, not tmpfs: the checkout is
+             about 3 GB (tracked books/), and /tmp here is a RAM-backed
+             tmpfs. The script refuses (exit 2) when that filesystem has
+             under 5 GB available.
 
 Exit codes:
   0  every premise pin passed
   1  a pin failed
   2  usage or refusal (bad slug, PROD_SSH unset, nothing held on production,
-     no held file, production's HEAD not on origin)
+     no held file, less than 5 GB free for the worktree, production's HEAD
+     not on origin)
 USAGE
 }
 
@@ -74,13 +82,28 @@ PROD_HEAD="$(ssh "$PROD_SSH" "git -C $PROD_REPO rev-parse HEAD")" || die "could 
 [[ "$PROD_HEAD" =~ ^[0-9a-f]{40}$ ]] || die "production's HEAD is not a commit id: '$PROD_HEAD'"
 
 TMP="$(mktemp -d)"
-WORKTREE="$TMP/worktree"
+WORKBASE="${HELD_GLOSSARY_WORKDIR:-$(dirname "$PROJECT_ROOT")}"
+WORKDIR=""
+WORKTREE=""
 cleanup() {
-  git -C "$PROJECT_ROOT" worktree remove --force "$WORKTREE" >/dev/null 2>&1 || true
+  if [ -n "$WORKTREE" ]; then
+    git -C "$PROJECT_ROOT" worktree remove --force "$WORKTREE" >/dev/null 2>&1 || true
+  fi
+  [ -z "$WORKDIR" ] || rm -rf "$WORKDIR"
   rm -rf "$TMP"
   git -C "$PROJECT_ROOT" worktree prune >/dev/null 2>&1 || true
 }
 trap cleanup EXIT
+
+# The worktree goes on disk, never tmpfs, and only if there is room for it.
+[ -d "$WORKBASE" ] || die "HELD_GLOSSARY_WORKDIR is not a directory: $WORKBASE"
+MIN_KB=$((5 * 1024 * 1024))
+AVAIL_KB="$(df -Pk "$WORKBASE" | awk 'NR==2 {print $4}')"
+[[ "$AVAIL_KB" =~ ^[0-9]+$ ]] || die "could not read free space on $WORKBASE"
+[ "$AVAIL_KB" -ge "$MIN_KB" ] \
+  || die "only $((AVAIL_KB / 1024)) MB free under $WORKBASE; the worktree needs 5 GB (set HELD_GLOSSARY_WORKDIR to a roomier disk directory)"
+WORKDIR="$(mktemp -d -p "$WORKBASE" .held-glossary-XXXXXX)" || die "could not create a work directory under $WORKBASE"
+WORKTREE="$WORKDIR/worktree"
 
 HELD_COPY="$TMP/held.json"
 ssh "$PROD_SSH" "cat $PROD_REPO/pipeline-output/glossary-held/$SLUG.json" > "$HELD_COPY" \
@@ -127,7 +150,9 @@ if [ "$RC" -eq 0 ]; then
   echo "VERDICT: PASS (${#PINS[@]} premise-pin files) for held '$SLUG' at production HEAD $PROD_HEAD"
 else
   echo "VERDICT: FAIL for held '$SLUG' at production HEAD $PROD_HEAD. Failing files:"
-  grep -aoE '(FAIL|❯)  *[^ ]+\.test\.(js|mjs|cjs)' "$OUT" | awk '{print $2}' | sort -u | sed 's/^/  /'
+  # vitest prints "FAIL  <file> > ..." and "❯ <file> (n tests | m failed)"; a crash
+  # may name no file at all, so an empty list must not abort before the hash lines.
+  { grep -aoE '(FAIL|❯)  *[^ ]+\.test\.(js|mjs|cjs)' "$OUT" || true; } | awk '{print $2}' | sort -u | sed 's/^/  /'
 fi
 echo "Held terms hash: $RELEASE_HASH"
 echo "Release (run on production, only after a pass):"
