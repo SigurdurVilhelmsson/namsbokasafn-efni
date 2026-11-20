@@ -406,3 +406,59 @@ describe('readGlossaryExportHealth — `ran` (Task 7 §C)', () => {
     expect(h.ok).toBe(false);
   });
 });
+
+describe('readGlossaryExportHealth — book glossary record errors (§C239 T4h)', () => {
+  const withRecords = (bookGlossaryRecords, books = {}) => {
+    heartbeat(1);
+    status({ ran: 'x', errors: 0, books, bookGlossaryRecords });
+    return readGlossaryExportHealth({ projectRoot: root, nowMs: NOW });
+  };
+
+  it('a record write error is listed by slug and makes ok false', () => {
+    const h = withRecords({ 'liffraedi-2e': 'error: boom', 'efnafraedi-2e': 'written' });
+    expect(h.record_errors).toEqual(['liffraedi-2e']);
+    expect(h.ok).toBe(false);
+  });
+
+  it('no-glossary-dir is a record error', () => {
+    const h = withRecords({ 'efnafraedi-2e': 'no-glossary-dir' });
+    expect(h.record_errors).toEqual(['efnafraedi-2e']);
+    expect(h.ok).toBe(false);
+  });
+
+  it('written, unchanged and none are not record errors', () => {
+    const h = withRecords({ a: 'written', b: 'unchanged', c: 'none' });
+    expect(h.record_errors).toEqual([]);
+    expect(h.ok).toBe(true);
+  });
+
+  it('record_errors are sorted slugs', () => {
+    const h = withRecords({ zz: 'error: x', aa: 'no-glossary-dir' });
+    expect(h.record_errors).toEqual(['aa', 'zz']);
+  });
+
+  it('record_errors never carries the message', () => {
+    const h = withRecords({ 'efnafraedi-2e': "error: EACCES open '/srv/secret/path'" });
+    expect(JSON.stringify(h)).not.toContain('/srv/secret/path');
+    expect(JSON.stringify(h)).not.toContain('EACCES');
+  });
+
+  it('a missing bookGlossaryRecords map is no record error', () => {
+    heartbeat(1);
+    status({ ran: 'x', errors: 0, books: {} });
+    const h = readGlossaryExportHealth({ projectRoot: root, nowMs: NOW });
+    expect(h.record_errors).toEqual([]);
+  });
+
+  it('a refused-layer-change older than the threshold is a stale refusal', () => {
+    heartbeat(1);
+    status({
+      ran: 'x',
+      errors: 0,
+      books: { 'efnafraedi-2e': refusedSince(8, 'refused-layer-change') },
+    });
+    const h = readGlossaryExportHealth({ projectRoot: root, nowMs: NOW });
+    expect(h.stale_refusals).toEqual(['efnafraedi-2e']);
+    expect(h.ok).toBe(false);
+  });
+});

@@ -137,6 +137,21 @@ function findStaleRefusals(books, nowMs, refusalStaleDays) {
 }
 
 /**
+ * Slugs whose book glossary record was NOT written (§C239 T4h): a value that
+ * starts with `error` (the write threw) or equals `no-glossary-dir` (the record
+ * no longer creates a missing directory). `written`, `unchanged` and `none` are
+ * healthy. ⚠️ ONLY slugs leave this function: the value after `error: ` is an
+ * err.message and can carry a server path, and /api/health is unauthenticated.
+ * The message stays in pipeline-output/.glossary-export-status.json on the box.
+ */
+function findRecordErrors(records) {
+  return Object.entries(records)
+    .filter(([, v]) => typeof v === 'string' && (v.startsWith('error') || v === 'no-glossary-dir'))
+    .map(([slug]) => slug)
+    .sort();
+}
+
+/**
  * Project one book's status-file entry down to what is safe to expose over
  * `GET /api/health` — UNAUTHENTICATED (server/index.js has no auth
  * middleware on that route) on an internet-facing server, and this
@@ -188,7 +203,8 @@ function projectBooksForHealth(books) {
  *   projectRoot — the repo root. Derive it from `__dirname`, never
  *   `process.cwd()`: the server runs with cwd=server/.
  * @returns {{age_hours: number|null, stale: boolean, errors: number,
- *   ran: string|null, books: object, stale_refusals: string[], ok: boolean}}
+ *   ran: string|null, books: object, stale_refusals: string[], record_errors: string[],
+ *   ok: boolean}}
  *   `books` is `{[slug]: {outcome, since}}` — `detail` is deliberately not
  *   included; see `projectBookForHealth`. `ran` is the status file's own
  *   `ran` timestamp (ISO string), or null if the file is missing/unreadable.
@@ -214,7 +230,7 @@ function readGlossaryExportHealth({
     /* missing heartbeat => stale, handled by the helper */
   }
 
-  let detail = { errors: 0, books: {}, ran: null };
+  let detail = { errors: 0, books: {}, ran: null, records: {} };
   try {
     const raw = fs.readFileSync(
       path.join(projectRoot, 'pipeline-output', '.glossary-export-status.json'),
@@ -225,6 +241,10 @@ function readGlossaryExportHealth({
       errors: Number(parsed.errors) || 0,
       books: parsed.books && typeof parsed.books === 'object' ? parsed.books : {},
       ran: typeof parsed.ran === 'string' ? parsed.ran : null,
+      records:
+        parsed.bookGlossaryRecords && typeof parsed.bookGlossaryRecords === 'object'
+          ? parsed.bookGlossaryRecords
+          : {},
     };
   } catch {
     // No status file (or an unreadable one) — the heartbeat alone still
@@ -232,6 +252,7 @@ function readGlossaryExportHealth({
   }
 
   const stale_refusals = findStaleRefusals(detail.books, nowMs, refusalStaleDays);
+  const record_errors = findRecordErrors(detail.records);
 
   const health = computeBackupHeartbeatHealth({ heartbeatMtimeMs, nowMs, staleHours });
   return {
@@ -240,7 +261,12 @@ function readGlossaryExportHealth({
     ran: detail.ran,
     books: projectBooksForHealth(detail.books),
     stale_refusals,
-    ok: !health.stale && detail.errors === 0 && stale_refusals.length === 0,
+    record_errors,
+    ok:
+      !health.stale &&
+      detail.errors === 0 &&
+      stale_refusals.length === 0 &&
+      record_errors.length === 0,
   };
 }
 
