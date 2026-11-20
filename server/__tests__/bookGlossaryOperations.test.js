@@ -196,6 +196,7 @@ describe('changeEntry', () => {
   it('changeEntry adds and removes forms', () => {
     const e = addEntry(db, { ...base, english: ['zcella', 'zcellb'], icelandic: 'zsella' });
     expect(winnerOf('zcella').conceptId).toBe(e.conceptId); // control
+    expect(winnerOf('zcellc')).toBeNull(); // control
 
     const r = changeEntry(db, { ...base, conceptId: e.conceptId, forms: ['zcellb', 'zcellc'] });
     expect(r).toMatchObject({ status: 'changed', icelandicChanged: false });
@@ -386,6 +387,7 @@ describe('removeEntry', () => {
       .all()
       .map((x) => x.id);
     expect(ids).toHaveLength(2);
+    expect(winnerOf('zcell').conceptId).toBe(e.conceptId); // control: the entry wins first
     const n = count('book_glossary_change');
 
     const r = removeEntry(db, { ...base, conceptId: e.conceptId, undoExclusions: ids });
@@ -394,6 +396,33 @@ describe('removeEntry', () => {
     expect(r).toEqual({ status: 'removed', changeId: rows[0].id, undone: ids });
     expect(count('book_glossary_exclusion')).toBe(0);
     expect(winnerOf('zcell').conceptId).toBe(chem);
+  });
+
+  it('removeEntry undoes a repeated undo id once', () => {
+    const old = concept('chemistry', 'zcell', 'zfruma');
+    const e = addEntry(db, { ...base, english: ['zcell'], icelandic: 'zsella', replaces: [old] });
+    const own = db.prepare('SELECT id FROM book_glossary_exclusion').get().id;
+    const n = count('book_glossary_change');
+
+    const r = removeEntry(db, { ...base, conceptId: e.conceptId, undoExclusions: [own, own] });
+    expect(r.undone).toEqual([own]);
+    expect(
+      history()
+        .slice(n)
+        .map((h) => h.action)
+    ).toEqual(['entry-remove', 'unexclude']);
+  });
+
+  it('removeEntry removes a dangling entry whose concept is already gone', () => {
+    const e = addEntry(db, { ...base, english: ['zcell'], icelandic: 'zsella' });
+    db.prepare('DELETE FROM concept WHERE id = ?').run(e.conceptId);
+
+    const r = removeEntry(db, { ...base, conceptId: e.conceptId });
+    const h = lastHistory();
+    expect(r).toEqual({ status: 'removed', changeId: h.id, undone: [] });
+    expect(count('book_glossary_entry')).toBe(0);
+    expect(h).toMatchObject({ action: 'entry-remove', english: '' });
+    expect(JSON.parse(h.before_json)).toEqual({ english: [], icelandic: null, inflections: null });
   });
 
   describe("removeEntry refuses an undo id that is not the entry's own exclusion and writes nothing", () => {
