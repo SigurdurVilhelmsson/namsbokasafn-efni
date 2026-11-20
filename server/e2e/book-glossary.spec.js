@@ -24,6 +24,8 @@ const SALT = 'salt bridge';
 const SALT_IS = 'saltbrú';
 const NEEDS_CONFIRM =
   'Þessi breyting víkur til hliðar ákvörðun um orðanotkun verksins. Staðfestu til að halda áfram.';
+const PREFERENCE =
+  'Bókin hefur valið þýðingu fyrir þetta orð. Síðan getur ekki breytt því vali; biddu forritara um að gera það.';
 
 function layerAnswer(over) {
   return {
@@ -338,6 +340,10 @@ test.describe('the book glossary page', () => {
     await lookUp(page, SALT);
     await expect(winnerText(page)).toHaveText(SALT_IS);
     await page.locator('#bg-lookup-result [data-action="set-icelandic"]').click();
+    // Nothing to confirm before the server has asked. Checked before any field is touched, since
+    // an edit hides the button on its own.
+    await expect(dialog).toBeVisible();
+    await expect(confirm).toBeHidden();
     await dialog.locator('input[name="bg-mode"][value="replace"]').check();
     await page.locator('#bg-icelandic').fill('jónabrú-e2e');
     await page.locator('#bg-reason').fill('E2E: staðfesting prófuð');
@@ -353,4 +359,180 @@ test.describe('the book glossary page', () => {
     expect(bodies[1]).toEqual({ ...bodies[0], confirmHouseStyle: true });
     await expect(dialog).toBeHidden();
   });
+
+  test('a preference refusal offers no confirmation, even after a needs-confirm', async ({
+    page,
+  }) => {
+    await loginAs(page, 'head-editor');
+    await cleanSaltBridge(page);
+    /** @type {any[]} */
+    const bodies = [];
+    await page.route('**/api/book-glossary/**', (route) => {
+      const request = route.request();
+      const { pathname } = new URL(request.url());
+      if (request.method() !== 'POST' || pathname !== `${LAYER}/entries`) return route.continue();
+      bodies.push(request.postDataJSON());
+      return route.fulfill({
+        status: 409,
+        contentType: 'application/json',
+        body: JSON.stringify(
+          bodies.length === 1
+            ? {
+                error: NEEDS_CONFIRM,
+                refusal: 'needs-confirm',
+                houseStyle: [{ conceptId: 1, english: SALT, icelandic: 'zhús' }],
+              }
+            : { error: PREFERENCE, refusal: 'preference' }
+        ),
+      });
+    });
+    await page.goto(PAGE);
+    const confirm = page.locator('#bg-confirm-house-style');
+
+    await lookUp(page, SALT);
+    await expect(winnerText(page)).toHaveText(SALT_IS);
+    await page.locator('#bg-lookup-result [data-action="set-icelandic"]').click();
+    await page.locator('#bg-icelandic').fill('jónabrú-e2e');
+    await page.locator('#bg-reason').fill('E2E: val bókarinnar prófað');
+    await page.locator('#bg-submit').click();
+    // Control: the first answer armed the confirmation.
+    await expect(confirm).toBeVisible();
+
+    // Vista again with no edit in between (an edit would drop the confirmation on its own).
+    await page.locator('#bg-submit').click();
+    await expect(page.locator('#bg-action-error')).toHaveText(PREFERENCE);
+    expect(bodies).toHaveLength(2);
+    expect(bodies[1].confirmHouseStyle).not.toBe(true);
+    // Design §5.3: a preference refusal offers no way past it.
+    await expect(confirm).toBeHidden();
+    await expect(page.locator('#bg-house-style')).toBeHidden();
+  });
+
+  test('an unchanged answer to a forms change says how case is changed', async ({ page }) => {
+    await loginAs(page, 'head-editor');
+    await stub(page, { [LAYER]: layerAnswer({ entries: [entry()] }) });
+    /** @type {any[]} */
+    const bodies = [];
+    // Registered after stub(), so it runs first and hands every other request back to it.
+    await page.route('**/api/book-glossary/**', (route) => {
+      const request = route.request();
+      const { pathname } = new URL(request.url());
+      if (request.method() !== 'POST' || pathname !== `${LAYER}/entries/990001/change`) {
+        return route.fallback();
+      }
+      bodies.push(request.postDataJSON());
+      return route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({ status: 'unchanged' }),
+      });
+    });
+    await page.goto(PAGE);
+
+    const row = page.locator('#bg-layer [data-concept-id="990001"]');
+    await row.locator('[data-action="change-entry"]').click();
+    await page.locator('#bg-forms').fill('Salt bridge');
+    await page.locator('#bg-reason').fill('E2E: hástafur');
+    await page.locator('#bg-submit').click();
+
+    // §C243 R8: the strings come from UI.bookGlossary, a top-level const (so not on window).
+    const expected = await page.evaluate(
+      'UI.bookGlossary.unchanged + " " + UI.bookGlossary.caseHint'
+    );
+    await expect(page.locator('#bg-action-error')).toHaveText(String(expected));
+    expect(bodies).toEqual([{ forms: ['Salt bridge'], reason: 'E2E: hástafur' }]);
+  });
+
+  test("a late needs-confirm does not arm a later dialog's confirmation", async ({ page }) => {
+    const held = await holdFirstEntryWrite(page, {
+      status: 409,
+      body: {
+        error: NEEDS_CONFIRM,
+        refusal: 'needs-confirm',
+        houseStyle: [{ conceptId: 1, english: SALT, icelandic: 'zhús' }],
+      },
+    });
+    await abandonForAnother(page, held);
+
+    held.release();
+    // The answer has been handled once the request's buttons are enabled again.
+    await expect(page.locator('#bg-submit')).toBeEnabled();
+    await expect(page.locator('#bg-action-title')).toHaveText(await excludeHeadwordTitle(page));
+    await expect(page.locator('#bg-confirm-house-style')).toBeHidden();
+    await expect(page.locator('#bg-house-style')).toBeHidden();
+    await expect(page.locator('#bg-action-error')).toHaveText('');
+  });
+
+  test('a late success refreshes the layer and leaves a later dialog open', async ({ page }) => {
+    const held = await holdFirstEntryWrite(page, {
+      status: 201,
+      body: { status: 'added', conceptId: 1, changeId: 1 },
+    });
+    await abandonForAnother(page, held);
+
+    held.release();
+    await expect(page.locator('#bg-submit')).toBeEnabled();
+    // The write happened, so the layer is read again; the open dialog is not the one that sent it.
+    await expect(page.locator('#bg-status')).toHaveText(
+      String(await page.evaluate('UI.bookGlossary.saved'))
+    );
+    await expect(page.locator('#bg-action-dialog')).toBeVisible();
+    await expect(page.locator('#bg-action-title')).toHaveText(await excludeHeadwordTitle(page));
+    await expect(page.locator('#bg-worklist')).toBeHidden();
+  });
 });
+
+/**
+ * Log in, hold the first POST to …/entries until `release()` is called, then answer it with
+ * `answer` ({status, body}); every other request reaches the server.
+ */
+async function holdFirstEntryWrite(page, answer) {
+  await loginAs(page, 'head-editor');
+  await cleanSaltBridge(page);
+  const held = { posts: 0, release: () => {} };
+  const released = new Promise((resolve) => {
+    held.release = () => resolve(undefined);
+  });
+  await page.route('**/api/book-glossary/**', async (route) => {
+    const request = route.request();
+    const { pathname } = new URL(request.url());
+    if (request.method() !== 'POST' || pathname !== `${LAYER}/entries`) return route.continue();
+    held.posts += 1;
+    await released;
+    return route.fulfill({
+      status: answer.status,
+      contentType: 'application/json',
+      body: JSON.stringify(answer.body),
+    });
+  });
+  return held;
+}
+
+/**
+ * Submit Setja þýðingu bókar, give up on it with Escape while its request is held, and open
+ * Útiloka orðið instead.
+ */
+async function abandonForAnother(page, held) {
+  const dialog = page.locator('#bg-action-dialog');
+  await page.goto(PAGE);
+  await lookUp(page, SALT);
+  await expect(winnerText(page)).toHaveText(SALT_IS);
+  await page.locator('#bg-lookup-result [data-action="set-icelandic"]').click();
+  await page.locator('#bg-icelandic').fill('jónabrú-e2e');
+  await page.locator('#bg-reason').fill('E2E: svar sem berst seint');
+  await page.locator('#bg-submit').click();
+  await expect.poll(() => held.posts).toBe(1);
+  await page.locator('#bg-reason').press('Escape');
+  await expect(dialog).toBeHidden();
+  await page.locator('#bg-lookup-result [data-action="exclude-headword"]').click();
+  await expect(page.locator('#bg-action-title')).toHaveText(await excludeHeadwordTitle(page));
+  // Control: the first request is still running.
+  await expect(page.locator('#bg-submit')).toBeDisabled();
+}
+
+/** The Útiloka orðið dialog's title for SALT, from UI.bookGlossary. */
+async function excludeHeadwordTitle(page) {
+  return String(
+    await page.evaluate(`UI.bookGlossary.excludeHeadwordTitle(${JSON.stringify(SALT)})`)
+  );
+}

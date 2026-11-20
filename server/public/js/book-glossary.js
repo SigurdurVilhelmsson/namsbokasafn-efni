@@ -422,9 +422,10 @@
     }
   }
 
-  async function openWorklist(changeId) {
-    if (!book || !Number.isInteger(changeId) || changeId < 1) return;
-    const slug = book;
+  /** One change's worklist, for `forBook` (the book a write was sent for) or the shown book. */
+  async function openWorklist(changeId, forBook) {
+    const slug = forBook || book;
+    if (!slug || !Number.isInteger(changeId) || changeId < 1) return;
     const ticket = ++latest.worklist;
     const body = openPanel(worklistPanel, T.worklistTitle, 'worklist');
     try {
@@ -662,18 +663,32 @@
     if (looked) lookUp(looked.english);
   }
 
-  /** POST one write and answer it (design §5.3; the answers are PR 2's routes'). */
+  /**
+   * POST one write and answer it (design §5.3; the answers are PR 2's routes'). The answer belongs
+   * to the dialog and the book that sent it: the dialog can be closed (Escape, Hætta við) and
+   * another opened, or the book changed, while the request runs. An answer for a dialog that is
+   * no longer open touches no dialog, arms no confirmation and opens no worklist; a write it
+   * reports still happened, so the layer is read again if its book is still shown.
+   */
   async function send(req, body) {
+    const owner = current;
+    const slug = book;
+    // `current` alone is not enough: the dialog's close event (which resets it) is queued, while
+    // dialog.open and `book` change at once.
+    const ours = () => owner !== null && owner === current && slug === book && dialog.open;
+    // A confirmation offered for an earlier answer does not stand beside this one's.
+    dropPending();
     sending = true;
     submitButton.disabled = true;
     confirmButton.disabled = true;
     try {
-      const answer = await fetchJson(apiPath(book) + req.path, {
+      const answer = await fetchJson(apiPath(slug) + req.path, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       });
       if (answer.status === 'unchanged' || answer.status === 'already') {
+        if (!ours()) return;
         // Nothing was written. §C243 R8: forms are matched without regard to case, so a change
         // of case alone comes back unchanged.
         showMessage(
@@ -683,13 +698,18 @@
         );
         return;
       }
+      if (!ours()) {
+        if (slug === book) afterWrite();
+        return;
+      }
       dialog.close();
       afterWrite();
       // Design G2: the worklist opens for a replacement, a change of Icelandic or a removal.
       if (answer.changeId != null && req.worklist && req.worklist(answer)) {
-        openWorklist(answer.changeId);
+        openWorklist(answer.changeId, slug);
       }
     } catch (err) {
+      if (!ours()) return;
       // 400 and 409 carry the server's Icelandic message; a preference refusal offers nothing more.
       showMessage(err.message);
       const data = err.data || {};
