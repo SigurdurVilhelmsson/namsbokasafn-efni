@@ -227,6 +227,101 @@ describe('addExclusion refusals', () => {
   });
 });
 
+describe('every refusal code, pinned (nothing is written on a refusal)', () => {
+  const expectRefused = (fn, refusal) => {
+    const before = snapshot();
+    expect(refusalOf(fn)).toMatchObject({ code: 'LAYER_REFUSED', refusal });
+    expect(snapshot()).toEqual(before);
+  };
+
+  it('unknown-book', () => {
+    expectRefused(
+      () => addExclusion(db, { ...base, book: 'no-such-book', english: 'zx' }),
+      'unknown-book'
+    );
+  });
+
+  it('concept-missing', () => {
+    expectRefused(
+      () => addExclusion(db, { ...base, english: 'zx', conceptId: 987654 }),
+      'concept-missing'
+    );
+  });
+
+  it('not-carried', () => {
+    const c = addPair('physics', 'zcell', 'zker');
+    expectRefused(
+      () => addExclusion(db, { ...base, english: 'zother', conceptId: c }),
+      'not-carried'
+    );
+  });
+
+  it('entry-conflict: a whole-headword exclusion on a word a book entry claims', () => {
+    addEntry(db, { ...base, english: ['zown'], icelandic: 'zeigin' });
+    expectRefused(() => addExclusion(db, { ...base, english: 'zown' }), 'entry-conflict');
+  });
+
+  it('entry-conflict: an entry on a word another book entry already claims', () => {
+    addEntry(db, { ...base, english: ['zown'], icelandic: 'zeigin' });
+    expectRefused(
+      () => addEntry(db, { ...base, english: ['zown'], icelandic: 'zannad' }),
+      'entry-conflict'
+    );
+  });
+
+  it('entry-conflict: an identical entry re-submitted after its replacement exclusion was undone', () => {
+    const c = addPair('physics', 'zr7', 'zsjö');
+    const args = { ...base, english: ['zr7'], icelandic: 'zný', replaces: [c] };
+    addEntry(db, args);
+    db.exec('DELETE FROM book_glossary_exclusion');
+    expectRefused(() => addEntry(db, args), 'entry-conflict');
+  });
+
+  it('excluded-headword', () => {
+    addExclusion(db, { ...base, english: 'zgone' });
+    expectRefused(
+      () => addEntry(db, { ...base, english: ['zgone'], icelandic: 'zfarið' }),
+      'excluded-headword'
+    );
+  });
+
+  it('preference: an entry on a preferred English', () => {
+    const c = addPair('physics', 'zcell', 'zker');
+    prefer(0, 'zcell', c);
+    expectRefused(
+      () => addEntry(db, { ...base, english: ['zcell'], icelandic: 'zx' }),
+      'preference'
+    );
+  });
+
+  it('replaced-not-carried: a replaced concept carrying none of the forms', () => {
+    const c = addPair('physics', 'zcell', 'zker');
+    expectRefused(
+      () => addEntry(db, { ...base, english: ['zq'], icelandic: 'zx', replaces: [c] }),
+      'replaced-not-carried'
+    );
+  });
+
+  it('no-scope: a book with no domain priority', () => {
+    const rows = db.prepare('SELECT * FROM book_domain_priority WHERE book_id = ?').all(bookId);
+    db.prepare('DELETE FROM book_domain_priority WHERE book_id = ?').run(bookId);
+    try {
+      expectRefused(() => addEntry(db, { ...base, english: ['zq'], icelandic: 'zx' }), 'no-scope');
+    } finally {
+      const cols = Object.keys(rows[0]);
+      const ins = db.prepare(
+        `INSERT INTO book_domain_priority (${cols.join(',')}) VALUES (${cols.map(() => '?').join(',')})`
+      );
+      for (const r of rows) ins.run(...cols.map((k) => r[k]));
+    }
+  });
+
+  it('invalid: an empty forms list, and a missing Icelandic term', () => {
+    expectRefused(() => addEntry(db, { ...base, english: [], icelandic: 'zx' }), 'invalid');
+    expectRefused(() => addEntry(db, { ...base, english: ['zq'] }), 'invalid');
+  });
+});
+
 describe('lookup and write agree on house style', () => {
   it.each(['zhouse', 'zcell'])('%s', (english) => {
     addPair('physics', 'zcell', 'zker');

@@ -221,7 +221,7 @@ function addEntry(db, a) {
               if (!ex)
                 throw refuse(
                   `entry exists but concept ${rc} is not excluded for "${f2}"`,
-                  'replaced-not-carried'
+                  'entry-conflict'
                 );
             }
           }
@@ -291,8 +291,8 @@ function addEntry(db, a) {
       replaces,
       ...(houseStyle.length > 0 ? { houseStyleOverride: houseStyle } : {}),
     });
-    // Ruling C1: the entry-add row comes first, then one exclude row per replaced concept; the
-    // returned changeId is the entry-add row's. The entry now claims these headwords, but
+    // The entry-add row is written first and its id is returned; one exclude row per replaced
+    // concept follows it. The entry now claims these headwords, but
     // exclusions of replaced concepts are single-concept rows, which never hit entry-conflict.
     for (const [cid, mine] of carried) {
       for (const f of mine)
