@@ -83,12 +83,14 @@ function cleanText(v, max) {
 }
 
 /**
- * A trimmed headword, or null when it is missing, too long, or holds a control or an invisible
- * character. The invisible check reads the raw value: trim() strips U+FEFF, so a byte-order mark
- * at either end would otherwise be removed silently instead of refused.
+ * A trimmed term (an English headword or form, or the Icelandic term), or null when it is missing,
+ * too long, or holds a control or an invisible character. The invisible check reads the raw value:
+ * trim() strips U+FEFF, so a byte-order mark at either end would otherwise be removed silently
+ * instead of refused.
  */
-const cleanEnglish = (v) =>
+const cleanTerm = (v) =>
   typeof v === 'string' && INVISIBLE_CHARS.test(v) ? null : cleanText(v, MAX_TERM);
+const cleanEnglish = cleanTerm;
 
 /**
  * Free text (a reason or a source): every whitespace run, line breaks and tabs included, becomes
@@ -290,7 +292,7 @@ router.post(
   ...writeGuard,
   layerWrite((req, b) => {
     const forms = need(cleanForms(b.forms), 'forms');
-    const icelandic = need(cleanText(b.icelandic, MAX_TERM), 'icelandic');
+    const icelandic = need(cleanTerm(b.icelandic), 'icelandic');
     if (b.mode !== 'replace' && b.mode !== 'add') throw new Invalid('mode');
     // 'replace' names the concepts the entry replaces; 'add' stands beside them and takes none.
     const replaces = b.replaces === undefined ? [] : need(cleanIds(b.replaces), 'replaces');
@@ -319,7 +321,7 @@ router.post(
   layerWrite((req, b) => {
     const conceptId = need(cleanInt(req.params.conceptId, 1), 'conceptId');
     const icelandic =
-      b.icelandic === undefined ? undefined : need(cleanText(b.icelandic, MAX_TERM), 'icelandic');
+      b.icelandic === undefined ? undefined : need(cleanTerm(b.icelandic), 'icelandic');
     const forms = b.forms === undefined ? undefined : need(cleanForms(b.forms), 'forms');
     if (icelandic === undefined && forms === undefined) throw new Invalid('icelandic');
     const result = layer.changeEntry(getDb(), {

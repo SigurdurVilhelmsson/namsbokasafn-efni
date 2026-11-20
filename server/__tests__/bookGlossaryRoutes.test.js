@@ -651,6 +651,19 @@ describe('POST: validation', () => {
       { english: '\uFEFFzv', conceptId: 0, reason: REASON },
       'english',
     ],
+    // The rule covers the Icelandic term too (add and change routes), so it cannot hold a hidden character.
+    [
+      'a zero-width space inside the icelandic of a new entry',
+      () => '/entries',
+      { ...add, forms: ['zv'], icelandic: 'z\u200Bí' },
+      'icelandic',
+    ],
+    [
+      'a byte-order mark at the end of the icelandic in a change',
+      (s) => `/entries/${s.conceptId}/change`,
+      { icelandic: 'zí\uFEFF', reason: REASON },
+      'icelandic',
+    ],
     // Design §AMENDED 2026-11-20 (1): collapsing whitespace must not let other control characters in.
     [
       'a control character inside a reason',
