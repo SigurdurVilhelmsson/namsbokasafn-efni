@@ -253,6 +253,62 @@ describe('scripts/deploy.sh health readout — glossary refusals (register C14, 
     expect(out).not.toMatch(/--force/);
   });
 
+  it('a STALE refused-layer-change names check-held-glossary.sh and prints no exporter command', () => {
+    const out = runReadout(staleBody('efnafraedi-2e', 'refused-layer-change', 8 * D));
+    expect(out).toMatch(/^ {2}⚠ STALE efnafraedi-2e: refused-layer-change \(8\.0d\) — unattended/m);
+    expect(out).toMatch(/check-held-glossary\.sh efnafraedi-2e/);
+    expect(out).not.toMatch(/unrecognised refusal/);
+    expect(printedCommands(out)).toHaveLength(0);
+    expect(out).not.toMatch(/--adopt/);
+    expect(out).not.toMatch(/--force/);
+  });
+
+  it('a FRESH refused-layer-change prints its remedy; a fresh refused-shrink still prints none', () => {
+    // A hold is the one refusal that is routine and waits on a person, so its remedy is printed
+    // at any age. Every other refusal keeps the stale-only rule (the shrink line is the control).
+    const body = JSON.stringify({
+      status: 'ok',
+      checks: {
+        glossary_export: {
+          ok: true,
+          ran: iso(1 * H),
+          stale_refusals: [],
+          books: {
+            'efnafraedi-2e': { outcome: 'refused-layer-change', since: iso(3 * H) },
+            'liffraedi-2e': { outcome: 'refused-shrink', since: iso(3 * H) },
+          },
+        },
+      },
+    });
+    const out = runReadout(body);
+    expect(out).toMatch(
+      /^ {2}⚠ efnafraedi-2e: refused-layer-change \(3\.0h\) — .*check-held-glossary\.sh efnafraedi-2e/m
+    );
+    expect(out).toMatch(/not been tested against the premise pins/);
+    expect(out).not.toMatch(/editors/);
+    expect(out).not.toMatch(/STALE/);
+    expect(out).toMatch(/^ {2}⚠ liffraedi-2e: refused-shrink \(3\.0h\)$/m);
+  });
+
+  it('a record error prints its slug line', () => {
+    const body = JSON.stringify({
+      status: 'degraded',
+      checks: {
+        glossary_export: {
+          ok: false,
+          ran: iso(1 * H),
+          stale_refusals: [],
+          record_errors: ['liffraedi-2e'],
+          books: { 'liffraedi-2e': { outcome: 'unchanged', since: iso(1 * H) } },
+        },
+      },
+    });
+    const out = runReadout(body);
+    expect(out).toMatch(
+      /^ {2}⚠ liffraedi-2e: book glossary record not written — read pipeline-output\/\.glossary-export-status\.json on the box$/m
+    );
+  });
+
   it('a mixed run round-trips EVERY printed command through the real parser', () => {
     // The whole-corpus shape a lead actually sees post-containment: three
     // books, three different refusals, three different remedies. Two of them
@@ -263,8 +319,9 @@ describe('scripts/deploy.sh health readout — glossary refusals (register C14, 
         glossary_export: {
           ok: false,
           ran: iso(1 * H),
-          stale_refusals: ['efnafraedi-2e', 'liffraedi-2e', 'stjornufraedi'],
+          stale_refusals: ['efnafraedi-2e', 'liffraedi-2e', 'stjornufraedi', 'orverufraedi'],
           books: {
+            orverufraedi: { outcome: 'refused-layer-change', since: iso(8 * D) },
             'efnafraedi-2e': { outcome: 'refused-producer', since: iso(8 * D) },
             'liffraedi-2e': { outcome: 'refused-shrink', since: iso(9 * D) },
             stjornufraedi: { outcome: 'refused-no-mapping', since: iso(10 * D) },

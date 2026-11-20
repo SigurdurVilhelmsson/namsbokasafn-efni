@@ -163,6 +163,8 @@ function run(opts) {
     subjectFn: () => 'chemistry',
     // No real sessions.db: the book glossary record has its own tests (bookGlossaryRecord.test.js).
     recordFn: () => null,
+    // No book layer history: the layer gate has its own tests (glossaryExportLayerHold.test.js).
+    layerChangeIdFn: () => null,
     log: () => {},
     logError: () => {},
     ...opts,
@@ -1095,6 +1097,7 @@ describe('parseArgs', () => {
       dryRun: false,
       force: false,
       adopt: false,
+      releaseLayer: null,
       help: false,
       error: null,
     });
@@ -1106,6 +1109,7 @@ describe('parseArgs', () => {
       dryRun: true,
       force: false,
       adopt: false,
+      releaseLayer: null,
       help: false,
       error: null,
     });

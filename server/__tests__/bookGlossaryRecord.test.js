@@ -88,6 +88,7 @@ function runExport(opts) {
       stats: {},
       terms: [{ english: 'a', icelandic: 'b', status: 'approved' }],
     }),
+    layerChangeIdFn: () => null,
     log: () => {},
     logError: () => {},
     ...opts,
@@ -158,6 +159,13 @@ describe('buildBookGlossaryRecord / the export', () => {
     expect(writeBookGlossaryRecord(dir, second)).toBe('unchanged');
     expect(readFileSync(file, 'utf8')).toBe(bytes);
     expect(statSync(file).mtimeMs).toBe(old.getTime());
+  });
+
+  it('writeBookGlossaryRecord does not create a missing glossary directory', () => {
+    addExclusion(db, { ...base, english: 'Function' });
+    const dir = path.join(root, 'books', BOOK, 'glossary');
+    expect(writeBookGlossaryRecord(dir, buildBookGlossaryRecord(db, BOOK))).toBe('no-glossary-dir');
+    expect(existsSync(dir)).toBe(false);
   });
 
   it('a dangling exclusion is listed', () => {
