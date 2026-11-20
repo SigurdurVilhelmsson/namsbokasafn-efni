@@ -1,0 +1,2499 @@
+{
+ "_meta": {
+  "measured": "2026-11-20",
+  "book": "efnafraedi-2e",
+  "prodHead": "844f13d2f",
+  "readOnly": true,
+  "script": "scripts/compare.py",
+  "what": "official list (Vísindavefur 89909) vs chemistry resolver, per atomic number"
+ },
+ "parsedRows": 118,
+ "rowCopies": {
+  "1": 2,
+  "2": 2,
+  "3": 2,
+  "4": 2,
+  "5": 2,
+  "6": 2,
+  "7": 2,
+  "8": 2,
+  "9": 2,
+  "10": 2,
+  "11": 2,
+  "12": 2,
+  "13": 2,
+  "14": 2,
+  "15": 2,
+  "16": 2,
+  "17": 2,
+  "18": 2,
+  "19": 2,
+  "20": 2,
+  "21": 2,
+  "22": 2,
+  "23": 2,
+  "24": 2,
+  "25": 2,
+  "26": 2,
+  "27": 2,
+  "28": 2,
+  "29": 2,
+  "30": 2,
+  "31": 2,
+  "32": 2,
+  "33": 2,
+  "34": 2,
+  "35": 2,
+  "36": 2,
+  "37": 2,
+  "38": 2,
+  "39": 2,
+  "40": 2,
+  "41": 2,
+  "42": 2,
+  "43": 2,
+  "44": 2,
+  "45": 2,
+  "46": 2,
+  "47": 2,
+  "48": 2,
+  "49": 2,
+  "50": 2,
+  "51": 2,
+  "52": 2,
+  "53": 2,
+  "54": 2,
+  "55": 2,
+  "56": 2,
+  "57": 2,
+  "58": 2,
+  "59": 2,
+  "60": 2,
+  "61": 2,
+  "62": 2,
+  "63": 2,
+  "64": 2,
+  "65": 2,
+  "66": 2,
+  "67": 2,
+  "68": 2,
+  "69": 2,
+  "70": 2,
+  "71": 2,
+  "72": 2,
+  "73": 2,
+  "74": 2,
+  "75": 2,
+  "76": 2,
+  "77": 2,
+  "78": 2,
+  "79": 2,
+  "80": 2,
+  "81": 2,
+  "82": 2,
+  "83": 2,
+  "84": 2,
+  "85": 2,
+  "86": 2,
+  "87": 2,
+  "88": 2,
+  "89": 2,
+  "90": 2,
+  "91": 2,
+  "92": 2,
+  "93": 2,
+  "94": 2,
+  "95": 2,
+  "96": 2,
+  "97": 2,
+  "98": 2,
+  "99": 2,
+  "100": 2,
+  "101": 2,
+  "102": 2,
+  "103": 2,
+  "104": 2,
+  "105": 2,
+  "106": 2,
+  "107": 2,
+  "108": 2,
+  "109": 2,
+  "110": 2,
+  "111": 2,
+  "112": 2,
+  "113": 2,
+  "114": 2,
+  "115": 2,
+  "116": 2,
+  "117": 2,
+  "118": 2
+ },
+ "copiesDisagree": {},
+ "items": [
+  {
+   "n": 1,
+   "symbol": "H",
+   "en": "hydrogen",
+   "official": [
+    "vetni"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "hydrogen",
+     "icelandic": "vetni",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "vetni@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "symbol": "He",
+   "en": "helium",
+   "official": [
+    "helíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "helium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [
+      "helíum@anatomy-physiology",
+      "helín@astronomy"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "symbol": "Li",
+   "en": "lithium",
+   "official": [
+    "liþíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "lithium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [
+      "litíum@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "symbol": "Be",
+   "en": "beryllium",
+   "official": [
+    "beryllíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "beryllium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [
+      "beryllíum@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "symbol": "B",
+   "en": "boron",
+   "official": [
+    "bór"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "boron",
+     "icelandic": "bór",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "bór@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "symbol": "C",
+   "en": "carbon",
+   "official": [
+    "kolefni"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "carbon",
+     "icelandic": "kolefni",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "kolefni@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "symbol": "N",
+   "en": "nitrogen",
+   "official": [
+    "köfnunarefni",
+    "nitur"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "nitrogen",
+     "icelandic": "nitur",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "nitur@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "symbol": "O",
+   "en": "oxygen",
+   "official": [
+    "súrefni"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "oxygen",
+     "icelandic": "súrefni",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "súrefni@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "symbol": "F",
+   "en": "fluorine",
+   "official": [
+    "flúor"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "fluorine",
+     "icelandic": "flúor",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "flúr@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "symbol": "Ne",
+   "en": "neon",
+   "official": [
+    "neon"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "neon",
+     "icelandic": "neon",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "symbol": "Na",
+   "en": "sodium (natrium)",
+   "official": [
+    "natríum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "sodium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [
+      "natríum@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "symbol": "Mg",
+   "en": "magnesium",
+   "official": [
+    "magnesíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "magnesium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [
+      "magnesíum@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "symbol": "Al",
+   "en": "aluminium (aluminum)",
+   "official": [
+    "ál"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "aluminium",
+     "icelandic": "ál",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [],
+     "alsoInScope": []
+    },
+    {
+     "english": "aluminum",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [
+      "ál@anatomy-physiology",
+      "ál@earth-science"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "symbol": "Si",
+   "en": "silicon",
+   "official": [
+    "kísill"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "silicon",
+     "icelandic": "kísill",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "kísill@anatomy-physiology"
+     ],
+     "alsoInScope": [
+      "kísill@biology"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "symbol": "P",
+   "en": "phosphorus",
+   "official": [
+    "fosfór"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "phosphorus",
+     "icelandic": "fosfór",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "fosfór@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "symbol": "S",
+   "en": "sulfur",
+   "official": [
+    "brennisteinn"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "sulfur",
+     "icelandic": "brennisteinn",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "brennisteinn@anatomy-physiology"
+     ],
+     "alsoInScope": [
+      "brennisteinn@biology"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "symbol": "Cl",
+   "en": "chlorine",
+   "official": [
+    "klór"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "chlorine",
+     "icelandic": "klór",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "klór@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "symbol": "Ar",
+   "en": "argon",
+   "official": [
+    "argon"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "argon",
+     "icelandic": "argon",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "argon@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "symbol": "K",
+   "en": "potassium (kalium)",
+   "official": [
+    "kalíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "potassium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [
+      "kalíum@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 20,
+   "symbol": "Ca",
+   "en": "calcium",
+   "official": [
+    "kalsíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "calcium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [
+      "kalsíum@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 21,
+   "symbol": "Sc",
+   "en": "scandium",
+   "official": [
+    "skandíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "scandium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 22,
+   "symbol": "Ti",
+   "en": "titanium",
+   "official": [
+    "títan"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "titanium",
+     "icelandic": "títan",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 23,
+   "symbol": "V",
+   "en": "vanadium",
+   "official": [
+    "vanadíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "vanadium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [
+      "vanadíum@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 24,
+   "symbol": "Cr",
+   "en": "chromium",
+   "official": [
+    "króm"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "chromium",
+     "icelandic": "króm",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "króm@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 25,
+   "symbol": "Mn",
+   "en": "manganese",
+   "official": [
+    "mangan"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "manganese",
+     "icelandic": "mangan",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "mangan@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 26,
+   "symbol": "Fe",
+   "en": "iron (ferrum)",
+   "official": [
+    "járn"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "iron",
+     "icelandic": "járn",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "járn@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 27,
+   "symbol": "Co",
+   "en": "cobalt",
+   "official": [
+    "kóbalt"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "cobalt",
+     "icelandic": "kóbalt",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "kóbalt@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 28,
+   "symbol": "Ni",
+   "en": "nickel",
+   "official": [
+    "nikkel"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "nickel",
+     "icelandic": "nikkel",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 29,
+   "symbol": "Cu",
+   "en": "copper (cuprum)",
+   "official": [
+    "kopar"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "copper",
+     "icelandic": "kopar",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 30,
+   "symbol": "Zn",
+   "en": "zinc",
+   "official": [
+    "sink"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "zinc",
+     "icelandic": "sink",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "sink@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 31,
+   "symbol": "Ga",
+   "en": "gallium",
+   "official": [
+    "gallíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "gallium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [
+      "gallíum@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 32,
+   "symbol": "Ge",
+   "en": "germanium",
+   "official": [
+    "germaníum"
+   ],
+   "status": "differs",
+   "prod": [
+    {
+     "english": "germanium",
+     "icelandic": "german",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 33,
+   "symbol": "As",
+   "en": "arsenic",
+   "official": [
+    "arsen"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "arsenic",
+     "icelandic": "arsen",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 34,
+   "symbol": "Se",
+   "en": "selenium",
+   "official": [
+    "selen"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "selenium",
+     "icelandic": "selen",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "seleníum@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 35,
+   "symbol": "Br",
+   "en": "bromine",
+   "official": [
+    "bróm"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "bromine",
+     "icelandic": "bróm",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 36,
+   "symbol": "Kr",
+   "en": "krypton",
+   "official": [
+    "krypton"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "krypton",
+     "icelandic": "krypton",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 37,
+   "symbol": "Rb",
+   "en": "rubidium",
+   "official": [
+    "rúbidíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "rubidium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 38,
+   "symbol": "Sr",
+   "en": "strontium",
+   "official": [
+    "strontíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "strontium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [
+      "strontíum@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 39,
+   "symbol": "Y",
+   "en": "yttrium",
+   "official": [
+    "yttríum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "yttrium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [
+      "yttríum@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 40,
+   "symbol": "Zr",
+   "en": "zirconium",
+   "official": [
+    "sirkoníum"
+   ],
+   "status": "differs",
+   "prod": [
+    {
+     "english": "zirconium",
+     "icelandic": "sirkon",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 41,
+   "symbol": "Nb",
+   "en": "niobium",
+   "official": [
+    "níóbíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "niobium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 42,
+   "symbol": "Mo",
+   "en": "molybdenum",
+   "official": [
+    "mólýbden"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "molybdenum",
+     "icelandic": "mólýbden",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 43,
+   "symbol": "Tc *",
+   "en": "technetium",
+   "official": [
+    "teknetíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "technetium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 44,
+   "symbol": "Ru",
+   "en": "ruthenium",
+   "official": [
+    "rúþeníum"
+   ],
+   "status": "differs",
+   "prod": [
+    {
+     "english": "ruthenium",
+     "icelandic": "rúten",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 45,
+   "symbol": "Rh",
+   "en": "rhodium",
+   "official": [
+    "ródíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "rhodium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 46,
+   "symbol": "Pd",
+   "en": "palladium",
+   "official": [
+    "palladíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "palladium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 47,
+   "symbol": "Ag",
+   "en": "silver (argentum)",
+   "official": [
+    "silfur"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "silver",
+     "icelandic": "silfur",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "silfur@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 48,
+   "symbol": "Cd",
+   "en": "cadmium",
+   "official": [
+    "kadmíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "cadmium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [
+      "kadmíum@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 49,
+   "symbol": "In",
+   "en": "indium",
+   "official": [
+    "indíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "indium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 50,
+   "symbol": "Sn",
+   "en": "tin (stannum)",
+   "official": [
+    "tin"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "tin",
+     "icelandic": "tin",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "tin@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 51,
+   "symbol": "Sb",
+   "en": "antimony (stibium)",
+   "official": [
+    "antímon"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "antimony",
+     "icelandic": "antímon",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "antímon@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 52,
+   "symbol": "Te",
+   "en": "tellurium",
+   "official": [
+    "tellúr"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "tellurium",
+     "icelandic": "tellúr",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 53,
+   "symbol": "I",
+   "en": "iodine",
+   "official": [
+    "joð"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "iodine",
+     "icelandic": "joð",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "joð@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 54,
+   "symbol": "Xe",
+   "en": "xenon",
+   "official": [
+    "xenon"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "xenon",
+     "icelandic": "xenon",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "senón@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 55,
+   "symbol": "Cs",
+   "en": "caesium (cesium)",
+   "official": [
+    "sesíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "caesium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    },
+    {
+     "english": "cesium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 56,
+   "symbol": "Ba",
+   "en": "barium",
+   "official": [
+    "baríum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "barium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [
+      "baríum@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 57,
+   "symbol": "La",
+   "en": "lanthanum",
+   "official": [
+    "lanþan"
+   ],
+   "status": "differs",
+   "prod": [
+    {
+     "english": "lanthanum",
+     "icelandic": "lantan",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 58,
+   "symbol": "Ce",
+   "en": "cerium",
+   "official": [
+    "seríum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "cerium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 59,
+   "symbol": "Pr",
+   "en": "praseodymium",
+   "official": [
+    "praseódýmíum"
+   ],
+   "status": "differs",
+   "prod": [
+    {
+     "english": "praseodymium",
+     "icelandic": "praseódým",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 60,
+   "symbol": "Nd",
+   "en": "neodymium",
+   "official": [
+    "neódýmíum"
+   ],
+   "status": "differs",
+   "prod": [
+    {
+     "english": "neodymium",
+     "icelandic": "neódým",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 61,
+   "symbol": "Pm *",
+   "en": "promethium",
+   "official": [
+    "prómeþíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "promethium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 62,
+   "symbol": "Sm",
+   "en": "samarium",
+   "official": [
+    "samaríum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "samarium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 63,
+   "symbol": "Eu",
+   "en": "europium",
+   "official": [
+    "evrópíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "europium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 64,
+   "symbol": "Gd",
+   "en": "gadolinium",
+   "official": [
+    "gadólíníum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "gadolinium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 65,
+   "symbol": "Tb",
+   "en": "terbium",
+   "official": [
+    "terbíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "terbium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 66,
+   "symbol": "Dy",
+   "en": "dysprosium",
+   "official": [
+    "dysprósíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "dysprosium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 67,
+   "symbol": "Ho",
+   "en": "holmium",
+   "official": [
+    "hólmíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "holmium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 68,
+   "symbol": "Er",
+   "en": "erbium",
+   "official": [
+    "erbíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "erbium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 69,
+   "symbol": "Tm",
+   "en": "thulium",
+   "official": [
+    "túlíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "thulium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 70,
+   "symbol": "Yb",
+   "en": "ytterbium",
+   "official": [
+    "ytterbíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "ytterbium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 71,
+   "symbol": "Lu",
+   "en": "lutetium",
+   "official": [
+    "lútetíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "lutetium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 72,
+   "symbol": "Hf",
+   "en": "hafnium",
+   "official": [
+    "hafníum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "hafnium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 73,
+   "symbol": "Ta",
+   "en": "tantalum",
+   "official": [
+    "tantal"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "tantalum",
+     "icelandic": "tantal",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 74,
+   "symbol": "W",
+   "en": "tungsten",
+   "official": [
+    "wolfram",
+    "tungsten"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "tungsten",
+     "icelandic": "wolfram",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 75,
+   "symbol": "Re",
+   "en": "rhenium",
+   "official": [
+    "reníum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "rhenium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 76,
+   "symbol": "Os",
+   "en": "osmium",
+   "official": [
+    "osmíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "osmium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 77,
+   "symbol": "Ir",
+   "en": "iridium",
+   "official": [
+    "iridíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "iridium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 78,
+   "symbol": "Pt",
+   "en": "platinum",
+   "official": [
+    "platína"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "platinum",
+     "icelandic": "platína",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "platína@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 79,
+   "symbol": "Au",
+   "en": "gold (aurum)",
+   "official": [
+    "gull"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "gold",
+     "icelandic": "gull",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "gull@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 80,
+   "symbol": "Hg",
+   "en": "mercury (hydrargyrum)",
+   "official": [
+    "kvikasilfur"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "mercury",
+     "icelandic": "kvikasilfur",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "kvikasilfur@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 81,
+   "symbol": "Tl",
+   "en": "thallium",
+   "official": [
+    "þallíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "thallium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [
+      "þallín@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 82,
+   "symbol": "Pb",
+   "en": "lead (plumbum)",
+   "official": [
+    "blý"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "lead",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [
+      "blý@anatomy-physiology",
+      "leiðsla@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 83,
+   "symbol": "Bi",
+   "en": "bismuth",
+   "official": [
+    "bismút"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "bismuth",
+     "icelandic": "bismút",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "bismút@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 84,
+   "symbol": "Po *",
+   "en": "polonium",
+   "official": [
+    "póloníum"
+   ],
+   "status": "differs",
+   "prod": [
+    {
+     "english": "polonium",
+     "icelandic": "pólon",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 85,
+   "symbol": "At *",
+   "en": "astatine",
+   "official": [
+    "astatín"
+   ],
+   "status": "differs",
+   "prod": [
+    {
+     "english": "astatine",
+     "icelandic": "astat",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 86,
+   "symbol": "Rn *",
+   "en": "radon",
+   "official": [
+    "radon"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "radon",
+     "icelandic": "radon",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "radon@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 87,
+   "symbol": "Fr *",
+   "en": "francium",
+   "official": [
+    "fransíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "francium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [
+      "fransíum@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 88,
+   "symbol": "Ra *",
+   "en": "radium",
+   "official": [
+    "radíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "radium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [
+      "radíum@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 89,
+   "symbol": "Ac *",
+   "en": "actinium",
+   "official": [
+    "aktíníum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "actinium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 90,
+   "symbol": "Th *",
+   "en": "thorium",
+   "official": [
+    "þóríum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "thorium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [
+      "þóríum@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 91,
+   "symbol": "Pa *",
+   "en": "protactinium",
+   "official": [
+    "prótaktíníum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "protactinium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 92,
+   "symbol": "U *",
+   "en": "uranium",
+   "official": [
+    "úran"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "uranium",
+     "icelandic": "úran",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "úraníum@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 93,
+   "symbol": "Np *",
+   "en": "neptunium",
+   "official": [
+    "neptúníum"
+   ],
+   "status": "match",
+   "prod": [
+    {
+     "english": "neptunium",
+     "icelandic": "neptúníum",
+     "domain": "chemistry",
+     "reason": "book-entry",
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 94,
+   "symbol": "Pu *",
+   "en": "plutonium",
+   "official": [
+    "plútóníum"
+   ],
+   "status": "differs",
+   "prod": [
+    {
+     "english": "plutonium",
+     "icelandic": "plúton",
+     "domain": "physics",
+     "reason": "head-form",
+     "outOfScope": [
+      "plútóníum@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 95,
+   "symbol": "Am *",
+   "en": "americium",
+   "official": [
+    "ameríkíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "americium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 96,
+   "symbol": "Cm *",
+   "en": "curium",
+   "official": [
+    "curíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "curium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 97,
+   "symbol": "Bk *",
+   "en": "berkelium",
+   "official": [
+    "berkelíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "berkelium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [
+      "berkelíum@anatomy-physiology"
+     ],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 98,
+   "symbol": "Cf *",
+   "en": "californium",
+   "official": [
+    "kaliforníum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "californium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 99,
+   "symbol": "Es *",
+   "en": "einsteinium",
+   "official": [
+    "einsteiníum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "einsteinium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 100,
+   "symbol": "Fm *",
+   "en": "fermium",
+   "official": [
+    "fermíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "fermium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 101,
+   "symbol": "Md *",
+   "en": "mendelevium",
+   "official": [
+    "mendelevíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "mendelevium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 102,
+   "symbol": "No *",
+   "en": "nobelium",
+   "official": [
+    "nóbelíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "nobelium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 103,
+   "symbol": "Lr *",
+   "en": "lawrencium",
+   "official": [
+    "lawrensíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "lawrencium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 104,
+   "symbol": "Rf *",
+   "en": "rutherfordium",
+   "official": [
+    "rutherfordíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "rutherfordium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 105,
+   "symbol": "Db *",
+   "en": "dubnium",
+   "official": [
+    "dubníum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "dubnium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 106,
+   "symbol": "Sg *",
+   "en": "seaborgium",
+   "official": [
+    "seaborgíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "seaborgium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 107,
+   "symbol": "Bh *",
+   "en": "bohrium",
+   "official": [
+    "bohríum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "bohrium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 108,
+   "symbol": "Hs *",
+   "en": "hassium",
+   "official": [
+    "hassíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "hassium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 109,
+   "symbol": "Mt *",
+   "en": "meitnerium",
+   "official": [
+    "meitneríum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "meitnerium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 110,
+   "symbol": "Ds *",
+   "en": "darmstadtium",
+   "official": [
+    "darmstadtíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "darmstadtium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 111,
+   "symbol": "Rg *",
+   "en": "roentgenium",
+   "official": [
+    "röntgeníum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "roentgenium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 112,
+   "symbol": "Cn *",
+   "en": "copernicium",
+   "official": [
+    "kópernikíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "copernicium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 113,
+   "symbol": "Nh *",
+   "en": "nihonium",
+   "official": [
+    "níhoníum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "nihonium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 114,
+   "symbol": "Fl *",
+   "en": "flerovium",
+   "official": [
+    "fleróvíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "flerovium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 115,
+   "symbol": "Mc *",
+   "en": "moscovium",
+   "official": [
+    "moskóvíum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "moscovium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 116,
+   "symbol": "Lv *",
+   "en": "livermorium",
+   "official": [
+    "livermoríum"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "livermorium",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 117,
+   "symbol": "Ts *",
+   "en": "tennessine",
+   "official": [
+    "tennessín"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "tennessine",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  },
+  {
+   "n": 118,
+   "symbol": "Og *",
+   "en": "oganesson",
+   "official": [
+    "oganesson"
+   ],
+   "status": "unresolved",
+   "prod": [
+    {
+     "english": "oganesson",
+     "icelandic": null,
+     "domain": null,
+     "reason": null,
+     "outOfScope": [],
+     "alsoInScope": []
+    }
+   ]
+  }
+ ]
+}
