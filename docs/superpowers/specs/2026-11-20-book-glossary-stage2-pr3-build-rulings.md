@@ -80,3 +80,11 @@ the 2026-11-20 stage 2 entry and §C244).
 
 R3 and R13–R17 carry no behaviour; they are recorded so the build can be reconstructed. (R3 sits out of order
 because it was decided before the first task, with R1 and R2.)
+
+## Recorded late (appended 2026-11-20, before the PR merged)
+
+- **R18.** Task 2's review graded as Minor that a replacement over two concepts sharing one Icelandic word kept only
+  the first concept's inflections. It was re-graded Important and fixed in a fix round (`3bd388b9b`), because the
+  worklist exists to find inflected forms (design §4) and a silent miss is exactly that failure. *Cost if wrong:* one
+  extra round. This ruling was missed when the file was first written; it is appended rather than inserted, as for
+  any frozen record.
