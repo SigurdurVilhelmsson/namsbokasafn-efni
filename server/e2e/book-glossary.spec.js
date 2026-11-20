@@ -502,7 +502,104 @@ test.describe('the book glossary page', () => {
     await expect(page.locator('#bg-action-title')).toHaveText(await excludeHeadwordTitle(page));
     await expect(page.locator('#bg-worklist')).toBeHidden();
   });
+
+  test('a retry that finds nothing new re-enables the button and clears the status', async ({
+    page,
+  }) => {
+    const scene = await retryScene(page, null);
+    // Control: the first answer is the one shown.
+    await expect(scene.inflections).toContainText(await scene.label(null));
+
+    scene.reason = 'several-words';
+    await scene.retry();
+    await expect(scene.inflections).toContainText(await scene.label('several-words'));
+    await expect(scene.button).toBeEnabled();
+    await expect(page.locator('#bg-status')).not.toHaveText(scene.started);
+  });
+
+  test('a retry whose answer is the one already shown re-enables the button and clears the status', async ({
+    page,
+  }) => {
+    // §C244 N1: "several-words" is set before the BÍN pass, so the entry is never pending.
+    const scene = await retryScene(page, 'several-words');
+    await expect(scene.inflections).toContainText(await scene.label('several-words'));
+    const reads = scene.reads;
+
+    await scene.retry();
+    // Control: the layer was read again, and its answer is the one already shown.
+    await expect.poll(() => scene.reads).toBeGreaterThan(reads);
+    await expect(scene.button).toBeEnabled();
+    await expect(scene.inflections).toContainText(await scene.label('several-words'));
+    await expect(page.locator('#bg-status')).not.toHaveText(scene.started);
+  });
 });
+
+/**
+ * Log in and open PAGE on one entry whose inflection state is exact-only with `scene.reason`, read
+ * afresh on each layer read, and answer its retry with 202. Returns the scene: the entry's
+ * inflection line and retry button, the retry's status text, a label from book-glossary-view.js,
+ * the reads and retries counted, and `retry()`, which clicks the button and waits for the retry to
+ * have started.
+ *
+ * @param {import('@playwright/test').Page} page
+ * @param {string|null} reason
+ */
+async function retryScene(page, reason) {
+  await loginAs(page, 'head-editor');
+  const row = page.locator('#bg-layer [data-concept-id="990001"]');
+  const button = row.locator('[data-action="retry-inflections"]');
+  const status = page.locator('#bg-status');
+  const scene = {
+    reason,
+    reads: 0,
+    posts: 0,
+    inflections: row.locator('.bg-inflections'),
+    button,
+    started: '',
+    /** "Beygingar: " and the line's label for exact-only with `r`, from the page's own scripts. */
+    label: async (/** @type {string|null} */ r) =>
+      String(
+        await page.evaluate(
+          `UI.bookGlossary.inflections + bookGlossaryView.inflectionLabel(${JSON.stringify({ state: 'exact-only', reason: r })})`
+        )
+      ),
+    retry: async () => {
+      const posts = scene.posts;
+      await button.click();
+      // Control: the retry reached the stub and started. A POST that missed it would fail on the
+      // real server, whose error branch re-enables the button and says so in the status line.
+      await expect(button).toBeDisabled();
+      await expect(status).toHaveText(scene.started);
+      expect(scene.posts).toBe(posts + 1);
+    },
+  };
+  await stub(page, {
+    [LAYER]: () => {
+      scene.reads += 1;
+      return layerAnswer({
+        entries: [entry({ inflections: { state: 'exact-only', reason: scene.reason } })],
+      });
+    },
+  });
+  // Registered after stub(), so it runs first and hands every other request back to it.
+  await page.route('**/api/book-glossary/**', (route) => {
+    const request = route.request();
+    const { pathname } = new URL(request.url());
+    if (request.method() !== 'POST' || pathname !== `${LAYER}/entries/990001/inflections`) {
+      return route.fallback();
+    }
+    scene.posts += 1;
+    return route.fulfill({
+      status: 202,
+      contentType: 'application/json',
+      body: JSON.stringify({ status: 'scheduled', conceptId: 990001 }),
+    });
+  });
+  await page.goto(PAGE);
+  await expect(button).toBeEnabled();
+  scene.started = String(await page.evaluate('UI.bookGlossary.retryStarted'));
+  return scene;
+}
 
 /**
  * Log in, hold the first POST to …/entries until `release()` is called, then answer it with

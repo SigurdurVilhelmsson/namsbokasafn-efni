@@ -285,10 +285,11 @@
    * Read the selected book's layer again; the history and worklist panels are left as they are.
    * `note` is shown in the status line once the layer is shown (after a write, "Vistað."). A quiet
    * read (the pending re-reads below) leaves the status line alone and redraws the layer only when
-   * the answer differs from the one shown. Resolves true when the answer is the one now shown,
-   * false when it was dropped for a newer request or failed.
+   * the answer differs from the one shown, or when `redraw` is set (a retry's first re-read, which
+   * rebuilds the button it disabled). Resolves true when the answer is the one now shown, false
+   * when it was dropped for a newer request or failed.
    */
-  async function loadLayer(note, quiet) {
+  async function loadLayer(note, quiet, redraw) {
     const slug = book;
     const ticket = ++latest.layer;
     if (!slug) return false;
@@ -296,7 +297,9 @@
     try {
       const data = await fetchJson(apiPath(slug));
       if (ticket !== latest.layer) return false;
-      if (quiet && layerData && JSON.stringify(data) === JSON.stringify(layerData)) return true;
+      if (quiet && !redraw && layerData && JSON.stringify(data) === JSON.stringify(layerData)) {
+        return true;
+      }
       writable = data.writable === true;
       layerData = data;
       renderHold(data.hold);
@@ -318,11 +321,14 @@
 
   // After a write or a retry the inflection lookup runs in the background, one pass over the BÍN
   // file, so the layer's first answer usually still says "sæki…". The layer is read again while an
-  // entry is pending, once after each delay in turn, and then no more; a read that finds the layer
-  // changed also re-reads the shown look-up. A book switch or a new write ends the chain, and a
+  // entry is pending, once after each delay in turn, and then no more; a read that redraws the
+  // layer also re-reads the shown look-up. A retry's first read redraws even an unchanged answer
+  // (§C244 N1: a result fixed before the BÍN pass, "several-words" say, is never pending), so the
+  // button it disabled comes back, and the retry's status text is cleared when the chain ends
+  // unless something else has replaced it. A book switch or a new write ends the chain, and a
   // write stops it before its own read, so a quiet read does not overtake that read. (A retry
-  // pressed while a write's read is still running can, if that read takes over 2 s; the status
-  // line then keeps its loading text until the next read.)
+  // pressed while a write's read is still running can, if that read takes over 2 s; that write's
+  // "Vistað." is then never shown.)
   const PENDING_DELAYS = [2000, 4000, 8000, 16000];
   let watchTimer = null;
   let watchGen = 0;
@@ -341,17 +347,32 @@
     watchTimer = null;
   }
 
-  function watchPending() {
+  /**
+   * Start the re-reads. `retryText`, given by a retry, is the status text it set: the first read
+   * redraws the layer whatever it holds, and the text is cleared once the chain ends.
+   */
+  function watchPending(retryText) {
     stopWatching();
     const gen = watchGen;
     const slug = book;
+    const ours = () => gen === watchGen && slug === book;
+    // A stopped chain clears nothing: whatever stopped it (a write, a book switch, another retry)
+    // sets the status line itself.
+    const end = function () {
+      if (retryText && statusLine.textContent === retryText) statusLine.textContent = '';
+    };
     const next = function (i) {
-      if (i >= PENDING_DELAYS.length) return;
+      if (i >= PENDING_DELAYS.length) {
+        end();
+        return;
+      }
       watchTimer = setTimeout(async function () {
         watchTimer = null;
-        if (gen !== watchGen || slug !== book) return;
-        const shown = await loadLayer(null, true);
-        if (shown && gen === watchGen && slug === book && anyPending(layerData)) next(i + 1);
+        if (!ours()) return;
+        const shown = await loadLayer(null, true, Boolean(retryText) && i === 0);
+        if (!ours()) return;
+        if (shown && anyPending(layerData)) next(i + 1);
+        else end();
       }, PENDING_DELAYS[i]);
     };
     next(0);
@@ -951,8 +972,9 @@
       });
       statusLine.textContent = T.retryStarted;
       // The lookup runs in the background (202); the layer shows its state once read again, and
-      // is read again while it is pending.
-      watchPending();
+      // is read again while it is pending. The first read redraws it even unchanged, which brings
+      // this button back.
+      watchPending(T.retryStarted);
     } catch (err) {
       b.disabled = false;
       statusLine.textContent = T.retryError + err.message;
