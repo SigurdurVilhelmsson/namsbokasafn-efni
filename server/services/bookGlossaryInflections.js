@@ -82,8 +82,10 @@ function defaultRunner({ conceptTermIds, binDataPath, dbPath }) {
     };
     try {
       tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'bin-inflections-report-'));
+      // The server's own Node executable, not whatever `node` PATH resolves to: the child loads the
+      // native better-sqlite3 build, which only matches the runtime that installed it.
       const child = childProcess.spawn(
-        'node',
+        process.execPath,
         [
           SCRIPT,
           '--db',

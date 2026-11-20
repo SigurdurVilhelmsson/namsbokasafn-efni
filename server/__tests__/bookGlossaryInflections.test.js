@@ -419,7 +419,7 @@ describe('the real script', () => {
     await inflections._idle();
     expect(spy).toHaveBeenCalledTimes(1);
     const [cmd, args, opts] = spy.mock.calls[0];
-    expect(cmd).toBe('node');
+    expect(cmd).toBe(process.execPath);
     expect(args).toContain('--execute');
     expect(args[args.indexOf('--concept-term-ids') + 1]).toBe(String(isRowOf(a).id));
     expect(args[args.indexOf('--db') + 1]).toBe(db.name);
