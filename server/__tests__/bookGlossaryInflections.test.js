@@ -268,6 +268,78 @@ describe('the queue', () => {
   });
 });
 
+describe('a logger that throws inside the drain', () => {
+  // The drain runs detached from the request that scheduled it, so a throw that escapes it is an
+  // unhandled rejection, which ends a Node 22 process.
+  it.each([
+    [
+      'the lookup threw',
+      () => ({
+        runner: vi.fn().mockRejectedValueOnce(new Error('spawn failed')).mockResolvedValue(FORMS),
+        resultA: 'error',
+        message: 'book glossary inflection lookup failed',
+      }),
+    ],
+    [
+      'its activity row threw',
+      () => {
+        vi.spyOn(activityLog, 'log').mockImplementationOnce(() => {
+          throw new Error('activity log down');
+        });
+        return {
+          runner: vi.fn(async () => FORMS),
+          resultA: 'forms',
+          message: 'book glossary inflection result not logged',
+        };
+      },
+    ],
+  ])(
+    '%s: no unhandled rejection, the failure reaches stderr and the queue goes on',
+    async (_site, setup) => {
+      const a = entryWith('zlambda');
+      const b = entryWith('zmu');
+      const c = entryWith('znu');
+      const { runner, resultA, message } = setup();
+      inflections._setRunner(runner);
+      logger.error.mockImplementationOnce(() => {
+        throw new Error('logger down');
+      });
+      const stderr = vi.spyOn(console, 'error').mockImplementation(() => {});
+      const unhandled = [];
+      const onUnhandled = (reason) => unhandled.push(String(reason));
+      process.on('unhandledRejection', onUnhandled);
+      try {
+        inflections.schedule(a, CTX);
+        inflections.schedule(b, CTX); // queued behind a, and never scheduled again
+        // Taken now and awaited only after the checks: the route never awaits the drain, and an
+        // await here would handle a rejection the server would leave unhandled.
+        const idle = inflections._idle();
+        await flush();
+        await flush();
+        expect({
+          loggerThrew: logger.error.mock.results.some((r) => r.type === 'throw'), // control
+          unhandled,
+          stderr: stderr.mock.calls.map((call) => call[0]),
+          a: inflections.status(a),
+          b: inflections.status(b),
+        }).toEqual({
+          loggerThrew: true,
+          unhandled: [],
+          stderr: [message],
+          a: { state: 'done', result: resultA },
+          b: { state: 'done', result: 'forms' },
+        });
+        await idle;
+        inflections.schedule(c, CTX);
+        await inflections._idle();
+        expect(inflections.status(c)).toEqual({ state: 'done', result: 'forms' });
+      } finally {
+        process.off('unhandledRejection', onUnhandled);
+      }
+    }
+  );
+});
+
 describe('before any child runs', () => {
   it('file absent: recorded without spawning', async () => {
     const a = entryWith('zlambda');

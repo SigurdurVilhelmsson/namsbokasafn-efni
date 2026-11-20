@@ -194,6 +194,24 @@ let running = null; // the concept whose lookup is under way
 const results = new Map(); // conceptId -> the latest finished result
 let draining = null; // the drain's promise while it runs
 
+/**
+ * log.error that never throws. The drain runs detached from the request that scheduled it, so a
+ * throw from the logger (a dead transport, say) would leave the concept marked as running, strand
+ * the lookups queued behind it, and reject a promise nobody awaits, which ends a Node 22 process.
+ * When the logger itself fails, stderr still reaches the service's journal.
+ */
+function logError(fields, message) {
+  try {
+    log.error(fields, message);
+  } catch (loggerErr) {
+    try {
+      console.error(message, fields, loggerErr);
+    } catch {
+      // Nothing is left to report to.
+    }
+  }
+}
+
 async function drain() {
   try {
     while (queue.length > 0) {
@@ -205,7 +223,7 @@ async function drain() {
         ({ result, outcome } = await lookupOne(item.conceptId));
       } catch (err) {
         result = 'error';
-        log.error({ err, conceptId: item.conceptId }, 'book glossary inflection lookup failed');
+        logError({ err, conceptId: item.conceptId }, 'book glossary inflection lookup failed');
       }
       // Both in one synchronous step, so status() never sees the concept as neither pending nor done.
       results.set(item.conceptId, result);
@@ -213,7 +231,7 @@ async function drain() {
       try {
         record(item, result, outcome);
       } catch (err) {
-        log.error({ err, conceptId: item.conceptId }, 'book glossary inflection result not logged');
+        logError({ err, conceptId: item.conceptId }, 'book glossary inflection result not logged');
       }
     }
   } finally {
@@ -231,7 +249,13 @@ function schedule(conceptId, ctx) {
   try {
     if (queue.some((q) => q.conceptId === conceptId)) return;
     queue.push({ conceptId, ctx: ctx || {} });
-    if (!draining) draining = drain();
+    // drain() guards each of its own steps; the catch is a backstop for any step added later,
+    // because nothing awaits this promise and an unhandled rejection ends the process.
+    if (!draining) {
+      draining = drain().catch((err) =>
+        logError({ err }, 'book glossary inflection queue stopped')
+      );
+    }
   } catch (err) {
     log.error({ err, conceptId }, 'book glossary inflection lookup could not be scheduled');
   }
