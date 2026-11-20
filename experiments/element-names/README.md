@@ -49,6 +49,7 @@ curl -sS -o page.html 'https://www.visindavefur.is/svar.php?id=89909'
 python3 -I compare.py page.html ../data/resolver-121-names.json comparison.json
 python3 -I build-elements-table.py ../data/comparison-official-vs-resolver.json ../data/elements-table.json
 python3 -I assemble-render-census.py render-census.template.cjs ../data/elements-table.json render-census.cjs
+python3 -I build-never-official.py render-census.cjs ../data/render-census-69-names.json never-official-readonly.cjs
 python3 -I summarise.py ../data ../reports   # rewrites reports/*.md, prints every tally quoted below
 node classify-test.cjs                        # the classifier's unit cases
 ```
@@ -162,6 +163,23 @@ Icelandic word there starting with `lant` or `lanþ`. → `data/lanthanide-censu
 official `lanþaníðar` (`m68842:para:fs-idm272953936`); that is the MT's own output, as received in
 `02-mt-output`. Three of the segments also hold the element name `lantan`, and they are in the
 lanthanum list too.
+
+### 6. Dry lists for the 14 names that are never official
+
+The census rows marked ✗ in measurement 4: the names whose MT forms are never the official one.
+`instruments/never-official-readonly.cjs` is built by `instruments/build-never-official.py` from
+`render-census.cjs`, so it reuses the same read-only header, element table and classifier, and it
+takes its 14 targets from the committed census, not from a typed list. A segment is listed when its
+English names the element and its Icelandic holds a non-official strong form, or failing that a weak
+or unshaped near match. Segments already holding the official name are skipped, as the worklist
+skips them. → `data/never-official-lists.json`, `reports/never-official-segments.md`
+
+**Result.** 119 listings over 65 distinct segments; the four periodic-table alts carry most of the 13
+rare names. Every segment whose English names one of the 14 is listed: none already holds the
+official name, and none is unmatched. Lithium accounts for 58 (`litíum` in 54 segments, `litín` in 4,
+the English `lithium` in 1). Each of the other 13 has 4–6. One gadolinium segment is listed only for
+the near match `gadólíni`, a real rendering. One lithium near match, `lítil` ("little"), is noise, and
+its segment is listed for its `litíum` anyway.
 
 ## Blind spots
 

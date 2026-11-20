@@ -101,3 +101,25 @@ new = sum(v['count'] for v in la['forms'].values() if v['kind'] == 'derived-offi
 print('lanthanide: EN segments', la['englishSegments'], 'with a lant/lanþ word', la['withStemWord'], 'unmatched', len(la['misses']),
       '| segments with old derived', la['withDerivedOld'], 'with official derived', la['withDerivedOfficial'],
       '| occurrences old', old, 'official', new, '| by chapter', dict(collections.Counter(ch(i['chapter']) for i in la['items'])))
+
+# 6. dry lists for the 14 names whose MT forms are never official
+no = load('never-official-lists.json')
+out = []
+distinct = set()
+for r in no['rows']:
+    if not r['items']:
+        continue
+    out.append(f"### {r['english'][0]}: official `{'/'.join(r['official'])}` ({r['listed']} segments)\n\n"
+               '| Ch. | Segment id | MT forms | Excerpt |\n|---|---|---|---|')
+    for i in r['items']:
+        distinct.add(i['segmentId'])
+        forms = ', '.join(i['forms']) if i['forms'] else '(none strong)'
+        if i['near']:
+            forms += ' · near: ' + ', '.join(i['near'])
+        out.append(f"| {ch(i['chapter'])} | `{i['segmentId']}` | {forms} | {excerpt(i['excerpt'])} |")
+    out.append('')
+open(f'{OUT}/never-official-segments.md', 'w', encoding='utf-8').write('\n'.join(out))
+print('never-official:', 'names', len(no['rows']), 'listings', sum(r['listed'] for r in no['rows']), 'distinct segments', len(distinct),
+      '| EN segments', sum(r['enSegments'] for r in no['rows']), 'already official', sum(r['alreadyOfficial'] for r in no['rows']),
+      'unmatched', sum(len(r['misses']) for r in no['rows']),
+      '| listed only by a near form', [(r['english'][0], r['listed'] - r['listedStrong']) for r in no['rows'] if r['listed'] != r['listedStrong']])
