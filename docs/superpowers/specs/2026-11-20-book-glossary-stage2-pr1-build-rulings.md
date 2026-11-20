@@ -52,3 +52,9 @@ The scan read every pair of adjacent tasks, and each task alone, for a product o
 | T5 alone | tests vs behaviour | consistent |
 | T6 alone | Step 3 runs the full floor | ruling R1 |
 | Template vs memory | implementer template says "run the full suite once before committing" | ruling R1 |
+
+## Added before merge (final-review fix wave)
+
+- Ruling R12: one fix wave covers I1, I2, I3, M1-M5, T2a, T5a, T5b, the stamped e2e check (M6/Rec 2) and the CLAUDE.md draft (Rec 5); the rest of §C241 stays as the reviewer triaged — small, same files, cheaper now than after PR 2 — cost if wrong: a larger fix diff to re-review.
+- Ruling R13: I1 is fixed by reading the layer id BEFORE and AFTER the export and holding the book when they differ (no restamp, no write, no release that run), NOT by the reviewer's single read before the export — a single early read flips the race: a change during the build lands in the export while id equals the committed stamp, so it is written unheld in the same run; the history is append-only, so a before/after difference catches any change during the build — cost if wrong: a rare extra hold.
+- Ruling R14: B3's injected layer reader returns the copied file's own committed stamp (bookLayer.lastChangeId, or null when the file has none), in both of its runExport calls — the test checks book outcomes under a shrinking stub, not the layer; modelling "layer current relative to the file" keeps that intent whether or not main's file is stamped, and leaves R8 (correct for production) untouched — cost if wrong: none to production; B3 would no longer catch a stamp-related outcome change (other tests own that).
