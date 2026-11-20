@@ -88,6 +88,7 @@ function runExport(opts) {
       stats: {},
       terms: [{ english: 'a', icelandic: 'b', status: 'approved' }],
     }),
+    layerChangeIdFn: () => null,
     log: () => {},
     logError: () => {},
     ...opts,

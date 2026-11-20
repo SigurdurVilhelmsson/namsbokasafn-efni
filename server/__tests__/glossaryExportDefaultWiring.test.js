@@ -126,4 +126,54 @@ describe('runGlossaryExport default exportFn wiring (Task 5, Important 2)', () =
       expect(status.bookGlossaryRecords.testbook).toMatch(/^error: .*unable to open database file/);
     }
   );
+
+  // Stage 2 (§5.6): `layerChangeIdFn = createLayerChangeIdFn()` is the default under test here.
+  // exportFn, subjectFn and recordFn are injected so that the layer reader is the only thing
+  // that opens the (missing) database; its failure must fail the book closed, after the export
+  // has been built and before anything is written or held.
+  it('the layer change id is read from the database by default', () => {
+    root = fs.mkdtempSync(path.join(os.tmpdir(), 'default-layerid-'));
+    const booksDir = path.join(root, 'books');
+    const glossaryDir = path.join(booksDir, 'testbook', 'glossary');
+    fs.mkdirSync(glossaryDir, { recursive: true });
+    const committedFile = path.join(glossaryDir, 'glossary-unified.json');
+    const committed =
+      JSON.stringify(
+        { generated: 'g', book: 'testbook', stats: {}, terms: [{ english: 'a', icelandic: 'b' }] },
+        null,
+        2
+      ) + '\n';
+    fs.writeFileSync(committedFile, committed);
+
+    // Same missing-database shape as the case above: `root` exists, `sessions.db` does not.
+    process.env.SESSIONS_DB_PATH = path.join(root, 'sessions.db');
+
+    const code = runGlossaryExport({
+      booksDir,
+      projectRoot: root,
+      subjectFn: () => 'chemistry',
+      recordFn: () => null,
+      // Different terms from the committed file, so a run that skipped the read would write.
+      exportFn: () => ({
+        generated: 'h',
+        book: 'testbook',
+        stats: {},
+        terms: [{ english: 'c', icelandic: 'd' }],
+      }),
+      // NO layerChangeIdFn — the default parameter must run.
+      log: () => {},
+      logError: () => {},
+    });
+
+    expect(code).toBe(1);
+    const status = JSON.parse(
+      fs.readFileSync(path.join(root, 'pipeline-output', '.glossary-export-status.json'), 'utf8')
+    );
+    expect(status.books.testbook.outcome).toBe('error');
+    expect(status.books.testbook.detail).toMatch(
+      /book layer change id unreadable — .*unable to open database file/
+    );
+    expect(fs.readFileSync(committedFile, 'utf8')).toBe(committed);
+    expect(fs.existsSync(path.join(root, 'pipeline-output', 'glossary-held'))).toBe(false);
+  });
 });

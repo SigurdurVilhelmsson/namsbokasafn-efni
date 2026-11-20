@@ -26,9 +26,10 @@
  * requirement rather than as "already done" on purpose — the sentence this
  * replaces was a status claim that went stale and hid the gap for months.)
  *
- * SAFE TO RUN UNATTENDED because of FIVE rules — three in
- * lib/glossaryExportDecision.js, TWO here (the subject-mapping refusal and,
- * since register §C21, the absent-baseline refusal at the write path below).
+ * SAFE TO RUN UNATTENDED because of SIX rules — three in
+ * lib/glossaryExportDecision.js, THREE here (the subject-mapping refusal;
+ * since register §C21, the absent-baseline refusal at the write path below;
+ * since stage 2 of the book glossary layer, the layer gate, rule 6).
  * ⚠️ This count has now gone stale once; if you add a gate, it is this line
  * and the refusal list further down that a prefix-keyed consumer will NOT
  * remind you to update:
@@ -70,6 +71,23 @@
  *      away: createBookDirectories() scaffolds an empty `glossary/` for every
  *      book registered through the admin route.
  *
+ *   6. LAYER GATE (spec 2026-11-20-book-glossary-stage2-design §5.6) —
+ *      `refused-layer-change`. A book with book-glossary-layer history carries
+ *      a stamp in its written file, `bookLayer: { lastChangeId: N }` (the
+ *      layer's last book_glossary_change id when the export was built; a book
+ *      with no history gets no key). When the committed stamp differs from the
+ *      current id AND the terms differ, a person has changed the book's
+ *      glossary and nobody has yet run the premise pins against the result: the
+ *      committed file is left alone and the would-be export goes to
+ *      pipeline-output/glossary-held/<book>.json, its terms hash in the status
+ *      entry. Evaluated after `unchanged` and BEFORE the shrink and growth
+ *      gates. It applies after --adopt too (an absent or unreadable committed
+ *      file has no stamp), so adopting a book with layer history needs a second
+ *      acknowledgement for the layer: two risks, two acknowledgements, as below.
+ *      RESTAMP is its resolved twin: same terms, stamp behind or missing → the
+ *      committed file is rewritten with the current stamp only, outcome
+ *      `restamped`. An unreadable layer id fails the book closed (`error`).
+ *
  * ⚠️ RULES 2 AND 3 ARE NOT REDUNDANT, AND THEIR OVERRIDES ARE SEPARATE ON
  * PURPOSE. --adopt does not imply --force and --force does not imply --adopt:
  * two distinct risks, two distinct acknowledgements. The 2026-08-03 production
@@ -85,8 +103,8 @@
  * Exit code 0 means no book ERRORED. It does NOT mean every book was written:
  * a book that refuses for a correct reason (un-adopted producer swap, no
  * subject mapping, catastrophic shrink, un-adopted first export, an EMPTY
- * CENSUS, or an UNSCOPED book) is a healthy outcome and keeps the exit
- * code at 0. Only a genuine error — the exporter threw, or a malformed payload
+ * CENSUS, an UNSCOPED book, or a held book-layer change) is a healthy outcome
+ * and keeps the exit code at 0. Only a genuine error — the exporter threw, or a malformed payload
  * — returns 1. Before 2026-08-05 a refusal counted as a failure, which let ONE
  * book's correct refusal mark the whole exporter unhealthy for every other book
  * (register C14 ②, decision D2).
@@ -132,6 +150,14 @@
  * refused, and a failure to write it never changes a book's outcome or the exit code. Its
  * per-book result is the status file's `bookGlossaryRecords`, so that result is recorded only
  * on an unfiltered run.
+ *
+ * THE HELD EXPORT, A FOURTH WRITE (stage 2 spec §5.6, rule 6 above):
+ *
+ *   pipeline-output/glossary-held/<book>.json     the would-be export of a held book — !dryRun
+ *
+ * Per book, like the record, so a `--book <slug>` run writes it too. Written atomically and
+ * replaced on every held run; it holds exactly the bytes the real write would have produced
+ * (serializePayload), stamp included. Gitignored with the rest of pipeline-output/.
  *
  *   node server/scripts/export-terminology.js              # all glossary-bearing books
  *   node server/scripts/export-terminology.js --book efnafraedi-2e
@@ -181,7 +207,12 @@ const {
   producerVerdict,
 } = require('../lib/glossaryExportDecision');
 const { createResolvedExportFn } = require('../lib/resolvedGlossary');
-const { createBookGlossaryRecordFn, writeBookGlossaryRecord } = require('../lib/bookGlossaryLayer');
+const {
+  createBookGlossaryRecordFn,
+  writeBookGlossaryRecord,
+  createLayerChangeIdFn,
+} = require('../lib/bookGlossaryLayer');
+const { termsSha256 } = require('../../tools/lib/glossary-terms-hash.cjs');
 
 const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
@@ -202,6 +233,51 @@ const PROJECT_ROOT = path.join(__dirname, '..', '..');
  * catch — do not rely on that gate alone; strip it here too.
  */
 const NON_PAYLOAD_KEYS = new Set(['integrity']);
+
+/**
+ * The book-layer stamp (stage 2 spec §5.6): a top-level `bookLayer: { lastChangeId: N }` on
+ * the written payload, present only when the book has layer history. THIS SCRIPT owns the key:
+ * serializePayload drops any `bookLayer` exportFn might return and writes the current one, so
+ * "no layer history ⇒ no key" holds whatever the builder hands back. detectProducer reads only
+ * `producer` and `terms`, so the key cannot move the producer gate.
+ */
+const STAMP_KEY = 'bookLayer';
+
+/**
+ * The bytes a write of `next` produces: NON_PAYLOAD_KEYS stripped, the stamp set when `layerId`
+ * is not null. ONE function for both the held file and the real write, and the caller computes
+ * it ONCE per book, so the held file is exactly what a write (and a later release) would put
+ * in glossary-unified.json.
+ *
+ * @param {object} next - exportFn's validated return
+ * @param {number|null} layerId
+ * @returns {string}
+ */
+function serializePayload(next, layerId) {
+  // ⚠️ NOT `next` directly — see NON_PAYLOAD_KEYS above. `next.integrity` already did its job
+  // (integrityNote/integrityField, in the loop); the reader-facing file must not carry it.
+  const toPersist = Object.fromEntries(
+    Object.entries(next).filter(([k]) => !NON_PAYLOAD_KEYS.has(k) && k !== STAMP_KEY)
+  );
+  if (layerId !== null) toPersist[STAMP_KEY] = { lastChangeId: layerId };
+  return JSON.stringify(toPersist, null, 2) + '\n';
+}
+
+/**
+ * Where a held export goes (§5.6): `<projectRoot>/pipeline-output/glossary-held/<slug>.json`,
+ * gitignored with the rest of pipeline-output/. The status file records the POSIX relative form.
+ */
+const heldRel = (slug) => path.posix.join('pipeline-output', 'glossary-held', `${slug}.json`);
+const heldPath = (projectRoot, slug) =>
+  path.join(projectRoot, 'pipeline-output', 'glossary-held', `${slug}.json`);
+
+/** Write `text` to `file` atomically (.tmp + rename), creating the directory. */
+function writeFileAtomic(file, text) {
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  const tmp = `${file}.tmp`;
+  fs.writeFileSync(tmp, text, 'utf-8');
+  fs.renameSync(tmp, file);
+}
 
 /** Heartbeat consumed by GET /api/health — see server/lib/glossaryExportHealth.js. */
 const HEARTBEAT_REL = path.join('pipeline-output', '.last-glossary-export');
@@ -445,7 +521,7 @@ function isUnresolved(outcome) {
  * it was always for. A book alternating error/refused is exactly as unattended
  * as one refusing steadily, and should age at the same rate.
  *
- * ⚠️ A RESOLVED outcome (`wrote`, `adopted`, `unchanged`, `dry-run`) must
+ * ⚠️ A RESOLVED outcome (`wrote`, `adopted`, `unchanged`, `restamped`, `dry-run`) must
  * still RESET the clock — that is the event the operator acted on, and
  * carrying `since` through it would report a book as refusing since long
  * before it was fixed.
@@ -513,7 +589,11 @@ function writeStatus(projectRoot, status) {
  *   Deliberately independent of `force`: neither implies the other, because a
  *   producer swap and a catastrophic shrink are different risks and each
  *   deserves its own explicit acknowledgement.
- * @param {boolean} [options.dryRun] - write neither export nor heartbeat
+ * @param {(bookSlug: string) => number|null} [options.layerChangeIdFn] - injected in tests;
+ *   defaults to createLayerChangeIdFn() (server/lib/bookGlossaryLayer.js), a lazy read-only
+ *   open. Returns the book layer's last change id, or null when the book has no layer history.
+ *   A throw fails that book closed (`error`, nothing written, nothing held).
+ * @param {boolean} [options.dryRun] - write neither export nor heartbeat, nor a held file
  * @param {number} [options.nowMs] - injectable clock, used for the status
  *   file's `ran` stamp and every `since`. Injectable because carry-forward is
  *   a property ACROSS runs, so a test cannot exercise it without controlling
@@ -538,6 +618,7 @@ function runGlossaryExport({
   projectRoot = PROJECT_ROOT,
   exportFn = createResolvedExportFn(),
   recordFn = createBookGlossaryRecordFn(),
+  layerChangeIdFn = createLayerChangeIdFn(),
   subjectFn = terminologyService.getBookSubject,
   book = null,
   force = false,
@@ -763,6 +844,21 @@ function runGlossaryExport({
       : '';
     const integrityField = integrityNote ? { integrity: next.integrity } : {};
 
+    // Stage 2 (§5.6): the book layer's last change id, read ONCE per book. Read AFTER the
+    // malformed-payload check on purpose, so an exportFn failure is still reported as itself
+    // (`export failed — …`) when the layer reader would also fail on the same missing
+    // database (glossaryExportDefaultWiring.test.js pins both). A throw fails the book CLOSED:
+    // without the id this run cannot tell whether the layer moved, so it neither writes nor
+    // holds, and the committed file stays exactly as it is.
+    let layerId;
+    try {
+      layerId = layerChangeIdFn(b);
+    } catch (err) {
+      logError(`${b}: book layer change id unreadable — ${err.message}${integrityNote}`);
+      fail(b, `book layer change id unreadable — ${err.message}`, integrityField);
+      continue;
+    }
+
     let existing;
     try {
       existing = readExisting(outPath);
@@ -832,6 +928,18 @@ function runGlossaryExport({
 
     const prev = existing.kind === 'ok' ? existing.payload : null;
 
+    // §5.6: the committed stamp, `undefined` when absent (including an absent or unreadable
+    // committed file, so an --adopt'ed first export of a book WITH layer history is held too:
+    // --adopt answers the producer/baseline question, not "the layer moved").
+    //
+    // The layer has MOVED when the book has history and the committed stamp is anything other
+    // than the current id. Strict inequality, not "lower than": a stamp AHEAD of the database
+    // (a restored backup, a different box's file) also means the export was not built from
+    // the layer as it now stands, so it is held rather than trusted.
+    const stamp = prev?.[STAMP_KEY]?.lastChangeId;
+    const stampText = stamp === undefined ? 'none' : JSON.stringify(stamp);
+    const layerMoved = layerId !== null && stamp !== layerId;
+
     // Producer first, shrink second. A producer swap is categorical; a shrink
     // is quantitative. Reporting "1117 → 709, a 36.5% shrink" about a file
     // another program wrote invites the operator to reason about two numbers
@@ -853,8 +961,79 @@ function runGlossaryExport({
     }
 
     if (sameTerms(prev, next)) {
+      // §5.6 item 4, RESTAMP: the terms are the same but the stamp is behind or missing.
+      // Without this, a layer change that did not move the export (a three-word entry, say)
+      // would leave the stamp behind, and the next UNRELATED change would be held for no
+      // reason. "Rewritten with the current stamp ONLY": the committed payload is kept as it
+      // is (its `generated` included) and only the stamp changes, so the cron's commit is a
+      // one-line diff. A resolved outcome, not `refused-`: nothing waits on a human.
+      if (layerMoved) {
+        if (dryRun) {
+          log(
+            `[dry-run] ${b}: terms unchanged — would restamp the book layer stamp ` +
+              `${stampText} → ${layerId}${integrityNote}`
+          );
+          outcomes[b] = { outcome: 'dry-run', ...integrityField };
+          continue;
+        }
+        const restamped = { ...prev, [STAMP_KEY]: { lastChangeId: layerId } };
+        fs.writeFileSync(outPath, JSON.stringify(restamped, null, 2) + '\n', 'utf-8');
+        log(
+          `${b}: terms unchanged (${countApproved(next)} approved) — restamped the book layer ` +
+            `stamp ${stampText} → ${layerId} → ${outPath}${integrityNote}`
+        );
+        outcomes[b] = { outcome: 'restamped', ...integrityField };
+        continue;
+      }
       log(`${b}: unchanged (${countApproved(next)} approved) — not rewritten${integrityNote}`);
       outcomes[b] = { outcome: 'unchanged', ...integrityField };
+      continue;
+    }
+
+    // The bytes a write would produce, computed ONCE: the held file below and the write at the
+    // end of this loop use this same string, so they cannot drift (see serializePayload).
+    const persisted = serializePayload(next, layerId);
+
+    // §5.6 item 2, THE LAYER GATE. After `unchanged` (a restamp is not a hold) and BEFORE the
+    // shrink and growth gates: the layer moved AND the terms differ, so a person changed the
+    // book's glossary and nobody has yet run the premise pins against the result. The committed
+    // file stays as it is; the would-be export is held for the developer's release step.
+    //
+    // ⚠️ A MIXED CHANGE IS HELD WHOLE (§5.6 item 3). If the layer moved and something else
+    // moved too (an Íðorðabankinn import, a house-style deploy), this gate cannot tell which
+    // terms came from where, so the whole export waits. The release covers both.
+    //
+    // A refusal like every other: exit 0, heartbeat written, the D6 `since` clock and
+    // /api/health pick it up by the `refused-` prefix with no enumeration anywhere. The held
+    // file is replaced on every held run; its terms hash goes in the status entry so that what
+    // is released can be checked against what was tested.
+    if (layerMoved) {
+      const hash = termsSha256(next);
+      const heldAbs = heldPath(projectRoot, b);
+      if (!dryRun) {
+        try {
+          writeFileAtomic(heldAbs, persisted);
+        } catch (err) {
+          // Not an abort: an uncaught throw here would end the loop for every later book and
+          // withhold the status file. The committed file is untouched either way.
+          logError(`${b}: could not write held export at ${heldAbs} — ${err.message}`);
+          fail(b, `could not write held export — ${err.message}`, integrityField);
+          continue;
+        }
+      }
+      logError(
+        `${dryRun ? '[dry-run] ' : ''}${b}: HOLDING the export — the book glossary layer moved ` +
+          `(stamp ${stampText} → ${layerId}) and the terms differ from the committed file. ` +
+          `${dryRun ? 'Would hold' : 'Held'} at ${heldAbs} (terms sha256 ${hash}); the committed ` +
+          `file is unchanged until the held export is tested and released.${integrityNote}`
+      );
+      outcomes[b] = {
+        outcome: 'refused-layer-change',
+        detail: `layer moved: stamp ${stampText} → ${layerId}`,
+        termsSha256: hash,
+        held: heldRel(b),
+        ...integrityField,
+      };
       continue;
     }
 
@@ -910,13 +1089,10 @@ function runGlossaryExport({
     }
 
     fs.mkdirSync(outDir, { recursive: true });
-    // ⚠️ NOT `next` directly — see NON_PAYLOAD_KEYS above. `next.integrity`
-    // already did its job (integrityNote/integrityField, above); the
-    // reader-facing file must not carry it.
-    const toPersist = Object.fromEntries(
-      Object.entries(next).filter(([k]) => !NON_PAYLOAD_KEYS.has(k))
-    );
-    fs.writeFileSync(outPath, JSON.stringify(toPersist, null, 2) + '\n', 'utf-8');
+    // ⚠️ NOT `next` directly — `persisted` is serializePayload's output: NON_PAYLOAD_KEYS
+    // stripped (the reader-facing file must not carry `integrity`) and the book-layer stamp
+    // set when the book has layer history. The same string a hold would have written.
+    fs.writeFileSync(outPath, persisted, 'utf-8');
     log(
       `${b}: wrote terms ${verdict.prevTotal} → ${countTerms(next)} ` +
         `(approved ${verdict.prevApproved} → ${verdict.nextApproved}) → ${outPath}${integrityNote}`

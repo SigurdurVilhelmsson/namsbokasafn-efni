@@ -148,6 +148,7 @@ describe('B3 changes no book outcome (spec D6)', () => {
       projectRoot: root,
       exportFn: resolvedStub,
       recordFn: () => null,
+      layerChangeIdFn: () => null,
       // A truthy subject, so the run reaches the producer/absent gates rather
       // than stopping at refused-no-mapping. The real subjectFn needs a DB.
       subjectFn: () => 'chemistry',
@@ -224,6 +225,7 @@ describe('B3 changes no book outcome (spec D6)', () => {
       projectRoot: root,
       exportFn: resolvedStub,
       recordFn: () => null,
+      layerChangeIdFn: () => null,
       subjectFn: () => 'chemistry',
       log: () => {},
       logError: () => {},
