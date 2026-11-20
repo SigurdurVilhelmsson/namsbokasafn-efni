@@ -100,6 +100,7 @@ beforeEach(() => {
     'concept_term',
     'concept',
     'activity_log',
+    'segment_edits',
   ]) {
     db.exec(`DELETE FROM ${t}`);
   }
@@ -210,6 +211,69 @@ describe('GET /', () => {
   it('reports no hold when the status file is absent', async () => {
     const { body } = await get(`/api/book-glossary/${BOOK}`);
     expect(body.hold).toEqual({ held: false, since: null, recordError: false });
+  });
+  it('says which entry claims each exclusion', async () => {
+    const old = addPair('chemistry', 'zcell', 'zgamla');
+    const entry = await post(`/api/book-glossary/${BOOK}/entries`, {
+      forms: ['zcell', 'zcell2'],
+      icelandic: 'znýja',
+      mode: 'replace',
+      replaces: [old.id],
+      reason: 'af því bara',
+    });
+    const claimed = (await get(`/api/book-glossary/${BOOK}`)).body.exclusions.map(
+      (x) => x.claimedBy
+    );
+    await post(`/api/book-glossary/${BOOK}/entries/${entry.body.conceptId}/change`, {
+      forms: ['zcell2'],
+      reason: 'af því bara',
+    });
+    const after = (await get(`/api/book-glossary/${BOOK}`)).body.exclusions.map((x) => x.claimedBy);
+    expect({ claimed, after }).toEqual({ claimed: [entry.body.conceptId], after: [null] });
+  });
+
+  it('a whole-headword exclusion is claimed by no entry', async () => {
+    layer.addExclusion(db, { ...write, book: BOOK, english: 'zwhole', by: 'tester' });
+    const { body } = await get(`/api/book-glossary/${BOOK}`);
+    expect(body.exclusions.map((x) => x.claimedBy)).toEqual([null]);
+  });
+
+  it('reports pending and forms inflection states', async () => {
+    let release;
+    const held = new Promise((r) => {
+      release = r;
+    });
+    inflections._setRunner(async () => {
+      await held;
+      return FOUND_FORMS;
+    });
+    const e = seedEntry('zpend', 'zbið');
+    inflections.schedule(e.conceptId, { book: BOOK, userId: 'u', username: 'u' });
+    const pending = (await get(`/api/book-glossary/${BOOK}`)).body.entries[0].inflections;
+    release();
+    await inflections._idle();
+    db.prepare('UPDATE concept_term SET inflections = \'["a","b"]\' WHERE id = ?').run(
+      isTermId(e.conceptId)
+    );
+    const forms = (await get(`/api/book-glossary/${BOOK}`)).body.entries[0].inflections;
+    expect({ pending, forms }).toEqual({
+      pending: { state: 'pending' },
+      forms: { state: 'forms', count: 2 },
+    });
+  });
+
+  it('answers with no export status file', async () => {
+    rmSync(path.join(projectRoot, 'pipeline-output', '.glossary-export-status.json'));
+    const { status, body } = await get(`/api/book-glossary/${BOOK}`);
+    expect({ status, held: body.hold.held }).toEqual({ status: 200, held: false });
+  });
+
+  it('says whether the book can be changed (Q13)', async () => {
+    const admin = cookieFor('admin');
+    expect([
+      (await get(`/api/book-glossary/${BOOK}`, admin)).body.writable,
+      (await get(`/api/book-glossary/${OTHER}`, admin)).body.writable,
+    ]).toEqual([true, false]);
   });
 });
 
@@ -1024,5 +1088,220 @@ describe('POST: activity', () => {
       state: 'unchanged',
       changed: 0,
     });
+  });
+});
+
+describe('the worklist', () => {
+  const seg = (id, text) => `<!-- SEG:${id} -->\n${text}\n\n`;
+  const put = (rel, text) => {
+    const f = path.join(booksRoot, BOOK, rel);
+    mkdirSync(path.dirname(f), { recursive: true });
+    writeFileSync(f, text);
+  };
+  let changeId;
+  let exclusionId;
+
+  beforeAll(() => {
+    put(
+      '02-for-mt/ch01/m00001-segments.en.md',
+      seg('m00001:para:p1', 'The zcell is full.') +
+        seg('m00001:para:p2', 'A zcell.') +
+        seg('m00001:para:p3', 'No match here.') +
+        seg('m00001:para:p4', 'A zcell again.') +
+        seg('m00001:para:p5', 'A zcell, third.')
+    );
+    put(
+      '02-mt-output/ch01/m00001-segments.is.md',
+      seg('m00001:para:p1', 'Zkerið er fullt.') +
+        seg('m00001:para:p2', 'Eitt zker.') +
+        seg('m00001:para:p3', 'zker') +
+        seg('m00001:para:p4', 'Eitt zker og zrafhlada.') +
+        seg('m00001:para:p5', 'Ein zrafhlada.')
+    );
+    put('02-for-mt/ch02/m00002-segments.en.md', seg('m00002:para:q1', 'Another zcell.'));
+    put('02-mt-output/ch02/m00002-segments.is.md', seg('m00002:para:q1', 'Annað zker.'));
+    put('02-for-mt/ch03/m00003-segments.en.md', seg('m00003:para:r1', 'A zcell here.'));
+    put('02-mt-output/ch03/m00003-segments.is.md', seg('m00003:para:r1', 'Zker hér.'));
+    put('02-structure/ch03/m00003-structure.json', '{');
+  });
+
+  beforeEach(async () => {
+    const old = addPair('chemistry', 'zcell', 'zker');
+    db.prepare('UPDATE concept_term SET inflections = ? WHERE id = ?').run(
+      '["zkerið","zkersins"]',
+      old.termId
+    );
+    const res = await post(`/api/book-glossary/${BOOK}/entries`, {
+      forms: ['zcell'],
+      icelandic: 'zrafhlada',
+      mode: 'replace',
+      replaces: [old.id],
+      reason: 'r',
+    });
+    changeId = res.body.changeId;
+    exclusionId = db
+      .prepare('SELECT id FROM book_glossary_change WHERE action = ?')
+      .all('exclude')
+      .map((r) => r.id)[0];
+  });
+
+  const list = (id = changeId, cookie) =>
+    get(`/api/book-glossary/${BOOK}/worklist?changeId=${id}`, cookie);
+  const ids = (body, chapter) =>
+    (body.chapters.find((c) => c.chapter === chapter)?.items || []).map((i) => i.segmentId);
+
+  it('GET /worklist lists matching segments by id, grouped by chapter, with editor links', async () => {
+    const { status, body } = await list();
+    expect(status).toBe(200);
+    expect(ids(body, 1)).toEqual(['m00001:para:p1', 'm00001:para:p2']);
+    expect(ids(body, 2)).toEqual(['m00002:para:q1']);
+    const p1 = body.chapters.find((c) => c.chapter === 1).items[0];
+    const q = new URL(p1.link, 'http://x').searchParams;
+    expect({
+      book: q.get('book'),
+      chapter: q.get('chapter'),
+      module: q.get('module'),
+      segment: q.get('segment'),
+    }).toEqual({ book: BOOK, chapter: '1', module: 'm00001', segment: 'm00001:para:p1' });
+    expect(p1.excerpt.text.slice(p1.excerpt.start, p1.excerpt.start + p1.excerpt.length)).toBe(
+      'Zkerið'
+    );
+  });
+
+  it('a segment that also holds the new word is not listed', async () => {
+    const { body } = await list();
+    expect(ids(body, 1)).not.toContain('m00001:para:p4');
+    expect(ids(body, 1)).toContain('m00001:para:p2');
+  });
+
+  it('a removal is not affected by the new-word rule', async () => {
+    const entry = await post(`/api/book-glossary/${BOOK}/entries`, {
+      forms: ['zcell'],
+      icelandic: 'zrafhlada',
+      mode: 'add',
+      reason: 'r',
+    });
+    const removed = await post(
+      `/api/book-glossary/${BOOK}/entries/${entry.body.conceptId}/remove`,
+      {
+        reason: 'r',
+      }
+    );
+    const { body } = await list(removed.body.changeId);
+    expect(body.kind).toBe('removal');
+    expect(ids(body, 1)).toEqual(['m00001:para:p4', 'm00001:para:p5']);
+  });
+
+  it('a segment holding only the base form is listed while inflections are known', async () => {
+    const { body } = await list();
+    expect(ids(body, 1)).toContain('m00001:para:p2');
+  });
+
+  it('a live edit that removed the old word drops the segment', async () => {
+    expect(ids((await list()).body, 1)).toContain('m00001:para:p1');
+    db.prepare(
+      "INSERT INTO segment_edits (book, chapter, module_id, segment_id, original_content, edited_content, editor_id, editor_username, status) VALUES (?, 1, ?, ?, 'x', ?, 'u2', 'editor2', 'pending')"
+    ).run(BOOK, 'm00001', 'm00001:para:p1', 'Rafhlaðan er full.');
+    const { body } = await list();
+    expect(ids(body, 1)).toEqual(['m00001:para:p2']);
+  });
+
+  it('an unreadable unit is named and the other units are still listed', async () => {
+    const { body } = await list();
+    expect(body.unreadable).toEqual(['ch03/m00003']);
+    expect(body.chapters.map((c) => c.chapter)).toEqual([1, 2]);
+  });
+
+  it('unreadable units are logged once per request, with the first error', async () => {
+    // A second unreadable unit, so one warning per unit and one per request differ.
+    put('02-for-mt/ch04/m00004-segments.en.md', seg('m00004:para:s1', 'A zcell.'));
+    put('02-mt-output/ch04/m00004-segments.is.md', seg('m00004:para:s1', 'Zker.'));
+    put('02-structure/ch04/m00004-structure.json', '{');
+    const warned = vi.spyOn(logger, 'warn').mockImplementation(() => {});
+    try {
+      const { body } = await list();
+      const calls = warned.mock.calls.filter(
+        ([, message]) => message === 'book glossary worklist: units could not be read'
+      );
+      expect({
+        unreadable: body.unreadable,
+        calls: calls.length,
+        book: calls[0]?.[0].book,
+        units: calls[0]?.[0].units,
+        err: calls[0]?.[0].err instanceof Error,
+      }).toEqual({
+        unreadable: ['ch03/m00003', 'ch04/m00004'],
+        calls: 1,
+        book: BOOK,
+        units: 2,
+        err: true,
+      });
+    } finally {
+      for (const dir of ['02-for-mt', '02-mt-output', '02-structure']) {
+        rmSync(path.join(booksRoot, BOOK, dir, 'ch04'), { recursive: true, force: true });
+      }
+    }
+  });
+
+  it('a book with no 02-for-mt scans no units', async () => {
+    const parser = require('../services/segmentParser');
+    const empty = path.join(work, 'empty-books');
+    mkdirSync(empty, { recursive: true });
+    parser._setTestBooksDir(empty);
+    try {
+      const { body } = await list();
+      expect({ units: body.units, kind: body.kind, total: body.total }).toEqual({
+        units: 0,
+        kind: 'replacement',
+        total: 0,
+      });
+    } finally {
+      parser._setTestBooksDir(booksRoot);
+    }
+  });
+
+  it('an add alongside answers its reason and scans nothing', async () => {
+    const res = await post(`/api/book-glossary/${BOOK}/entries`, {
+      forms: ['zalone'],
+      icelandic: 'zeinn',
+      mode: 'add',
+      reason: 'r',
+    });
+    const { body } = await list(res.body.changeId);
+    expect({ kind: body.kind, reason: body.reason, units: body.units }).toEqual({
+      kind: null,
+      reason: 'add-alongside',
+      units: 0,
+    });
+  });
+
+  it("GET /worklist answers 404 for another book's change id and 400 for a bad one", async () => {
+    const other = layer.addExclusion(db, {
+      ...write,
+      book: 'edlisfraedi-2e',
+      english: 'zother',
+      conceptId: 0,
+      reason: 'r',
+      source: '',
+      by: 't',
+    });
+    const foreign = await list(other.changeId);
+    expect({ status: foreign.status, refusal: foreign.body.refusal }).toEqual({
+      status: 404,
+      refusal: 'not-found',
+    });
+    expect((await list('abc')).status).toBe(400);
+    expect((await list(0)).status).toBe(400);
+    expect((await list(changeId, cookieFor('editor'))).status).toBe(403);
+  });
+
+  it('GET /history marks the rows that have a worklist', async () => {
+    const { body } = await get(`/api/book-glossary/${BOOK}/history?english=zcell`);
+    const flag = (action) => body.history.find((h) => h.action === action).worklist;
+    expect({ add: flag('entry-add'), exclude: flag('exclude') }).toEqual({
+      add: true,
+      exclude: false,
+    });
+    expect(exclusionId).toBeDefined();
   });
 });

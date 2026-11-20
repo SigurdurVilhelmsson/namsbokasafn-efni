@@ -141,7 +141,7 @@ test.describe('§5a page-auth + console sweep', () => {
       if (m.type() === 'error') errors.push(`console: ${m.text()}`);
     });
     await loginAs(page, 'admin');
-    for (const route of ['/editor', '/localization', '/library', '/admin']) {
+    for (const route of ['/editor', '/localization', '/book-glossary', '/library', '/admin']) {
       await page.goto(route);
       await page.waitForLoadState('networkidle');
     }

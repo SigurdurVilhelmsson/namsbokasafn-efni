@@ -136,6 +136,16 @@ try {
   seedTerm.run(ancestorsConcept, 'en', 'ancestors');
   seedTerm.run(ancestorsConcept, 'is', 'forfeður-e2e-seed');
 
+  // ⚠️ The concept server/e2e/book-glossary.spec.js replaces and restores through the book
+  // glossary page (plan ruling Q10). Measured 2026-11-20 on the real tree: 14 chemistry EN segments
+  // hold "salt bridge", 12 of them with "saltbrú" whole-word in the served Icelandic, and none is in
+  // a module another spec opens (m68663, m68664, m68667, m68684, m68693). The first is ch17 m68822,
+  // segment m68822:para:fs-idm196674112, which the spec's worklist assertion keys on. No other
+  // spec counts concepts, and the spec removes its own entry and the exclusion it claims.
+  const saltBridgeConcept = Number(seedConcept.run('chemistry').lastInsertRowid);
+  seedTerm.run(saltBridgeConcept, 'en', 'salt bridge');
+  seedTerm.run(saltBridgeConcept, 'is', 'saltbrú');
+
   // ⚠️ The dedicated editor of server/e2e/suggestion-view.spec.js (G1.23, spec §9.4–9.6), and its
   // assignment to efnafraedi-2e chapter 2, which that spec owns (helpers/segments.js). A module of a
   // study book opens at its first serve to a user whose users row holds a user_chapter_assignments

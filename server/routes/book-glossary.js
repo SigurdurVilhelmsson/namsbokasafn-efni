@@ -18,6 +18,8 @@ const activityLog = require('../services/activityLog');
 const inflections = require('../services/bookGlossaryInflections');
 const { getDb } = require('../services/bookGlossaryDb');
 const service = require('../services/bookGlossaryService');
+const { buildWorklist } = require('../services/bookGlossaryWorklist');
+const { worklistSpec } = require('../lib/worklistSpec');
 
 // plan ruling P8 (amended by design §AMENDED 2026-11-20)
 const MAX_TERM = 200;
@@ -223,7 +225,13 @@ const writeGuard = [...guard, writableBook];
 router.get('/:book', ...guard, (req, res) => {
   const db = getDb();
   const slug = req.params.book;
-  res.json({ book: slug, ...service.listLayer(db, slug), hold: service.exportState(slug) });
+  res.json({
+    book: slug,
+    ...service.listLayer(db, slug),
+    hold: service.exportState(slug),
+    // Plan ruling Q13: the page offers no action for a book the write routes would refuse.
+    writable: service.hasGlossaryDir(slug),
+  });
 });
 
 router.get('/:book/lookup', ...guard, (req, res) => {
@@ -239,8 +247,22 @@ router.get('/:book/history', ...guard, (req, res) => {
   const history = layer.historyFor(db, req.params.book, english).map((h) => ({
     ...h,
     by: layer.displayNameFor(db, h.by),
+    // Plan ruling Q6: the page offers the worklist button exactly where the route answers with a list.
+    worklist: worklistSpec(db, req.params.book, h).kind !== null,
   }));
   res.json({ history });
+});
+
+router.get('/:book/worklist', ...guard, (req, res) => {
+  const changeId = cleanInt(req.query.changeId, 1);
+  if (changeId === null) return invalid(res, 'changeId');
+  try {
+    const out = buildWorklist(getDb(), req.params.book, changeId);
+    if (!out) return res.status(404).json({ error: MESSAGES['not-found'], refusal: 'not-found' });
+    return res.json(out);
+  } catch (err) {
+    return serverError(req, res, err);
+  }
 });
 
 router.post(

@@ -57,6 +57,10 @@ router.get('/reviews', (req, res) => res.redirect(301, '/editor'));
 router.get('/localization', requirePageAuth(ROLES.HEAD_EDITOR), (req, res) =>
   sendView(res, 'localization-editor.html')
 );
+// The book glossary layer (design §5.3): head editors and admins, as its API is. An editor is sent to Heim.
+router.get('/book-glossary', requirePageAuth(ROLES.HEAD_EDITOR), (req, res) =>
+  sendView(res, 'book-glossary.html')
+);
 router.get('/library', requirePageAuth(), (req, res) => sendView(res, 'books.html'));
 router.get('/admin', requirePageAuth(ROLES.ADMIN), (req, res) => sendView(res, 'admin.html'));
 router.get('/assignments', requirePageAuth(ROLES.HEAD_EDITOR), (req, res) =>

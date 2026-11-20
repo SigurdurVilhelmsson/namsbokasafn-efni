@@ -77,6 +77,7 @@
 | GET | `/:book` |
 | GET | `/:book/lookup` |
 | GET | `/:book/history` |
+| GET | `/:book/worklist` |
 | POST | `/:book/exclusions` |
 | POST | `/:book/exclusions/:id/undo` |
 | POST | `/:book/entries` |
@@ -346,6 +347,7 @@
 | GET | `/terminology` |
 | GET | `/reviews` |
 | GET | `/localization` |
+| GET | `/book-glossary` |
 | GET | `/library` |
 | GET | `/admin` |
 | GET | `/assignments` |

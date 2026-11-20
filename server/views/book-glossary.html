@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="is">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orðasafn bókar - Námsbókasafn</title>
+    <link rel="stylesheet" href="/css/common.css" />
+    <style>
+      .bg-section {
+        margin-top: var(--spacing-lg);
+      }
+      #bg-hold-banner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .bg-status {
+        color: var(--text-secondary);
+        margin: var(--spacing-sm) 0;
+      }
+      .bg-status:empty {
+        display: none;
+      }
+      .bg-panel-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--spacing-md);
+      }
+      .bg-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .bg-row {
+        padding: var(--spacing-sm) 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .bg-row:last-child {
+        border-bottom: none;
+      }
+      .bg-claimed {
+        list-style: none;
+        margin: var(--spacing-sm) 0 0 var(--spacing-lg);
+        padding: 0 0 0 var(--spacing-sm);
+        border-left: 2px solid var(--border);
+      }
+      .bg-en {
+        font-weight: 600;
+      }
+      .bg-whole {
+        margin-left: var(--spacing-xs);
+        padding: 0 var(--spacing-xs);
+        border: 1px solid var(--border-strong);
+        border-radius: var(--radius-sm);
+        font-size: var(--text-xs);
+      }
+      .bg-meta,
+      .bg-reason,
+      .bg-source,
+      .bg-inflections,
+      .bg-note {
+        font-size: var(--text-sm);
+        color: var(--text-secondary);
+        margin-top: 0.125rem;
+      }
+      .bg-detail {
+        margin-top: 0.125rem;
+      }
+      .bg-inflections .btn {
+        margin-left: var(--spacing-sm);
+      }
+      .bg-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+        margin-top: var(--spacing-xs);
+      }
+      .bg-actions:empty {
+        display: none;
+      }
+      .bg-credit {
+        margin-top: var(--spacing-md);
+        font-size: var(--text-xs);
+        color: var(--text-muted);
+      }
+      .bg-worklist-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: var(--spacing-sm);
+      }
+      .bg-module,
+      .bg-segment {
+        font-family: var(--font-mono);
+        font-size: var(--text-sm);
+        color: var(--text-secondary);
+      }
+      .bg-excerpt {
+        flex: 1 1 20rem;
+      }
+      .bg-lookup-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+      }
+      .bg-lookup-row .form-input {
+        flex: 1 1 16rem;
+      }
+      #bg-lookup-result > * {
+        margin-top: var(--spacing-sm);
+      }
+      .bg-dialog {
+        width: calc(100% - 2rem);
+        max-width: 38rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        background: var(--bg-elevated);
+        color: var(--text-primary);
+        padding: var(--spacing-lg);
+      }
+      .bg-dialog::backdrop {
+        background: rgba(0, 0, 0, 0.6);
+      }
+      .bg-dialog .form-group {
+        margin-bottom: var(--spacing-md);
+      }
+      .bg-dialog fieldset {
+        border: none;
+        margin: 0 0 var(--spacing-md);
+        padding: 0;
+      }
+      .bg-choice {
+        display: block;
+        margin-top: var(--spacing-xs);
+      }
+      .bg-choice.bg-sub {
+        margin-left: var(--spacing-lg);
+      }
+      #bg-action-error {
+        color: var(--error, #b42318);
+        margin: var(--spacing-sm) 0;
+      }
+      #bg-action-error:empty {
+        display: none;
+      }
+      #bg-house-style {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .bg-dialog-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: var(--spacing-sm);
+        margin-top: var(--spacing-md);
+      }
+    </style>
+  </head>
+  <body>
+    <main id="bg-page" class="page-content" data-title="Orðasafn bókar">
+      <div class="controls-row">
+        <!-- No book-select class: the list holds the books the user may change, known only once the user is -->
+        <select id="bg-book-select" class="form-select" aria-label="Bók"></select>
+      </div>
+
+      <div id="bg-hold-banner" class="alert alert-warning" role="status" hidden></div>
+      <p id="bg-readonly" class="alert alert-info" hidden></p>
+      <p id="bg-status" class="bg-status" role="status"></p>
+
+      <!-- Every label below is filled from UI.bookGlossary (ui-strings.js) by book-glossary.js. -->
+      <section id="bg-lookup" class="card card-padded bg-section" hidden>
+        <h2 id="bg-lookup-title" class="card-title"></h2>
+        <div class="bg-lookup-row">
+          <input id="bg-lookup-input" class="form-input" type="text" autocomplete="off" />
+          <button id="bg-lookup-button" class="btn btn-primary" type="button" data-action="lookup"></button>
+        </div>
+        <div id="bg-lookup-result" aria-live="polite"></div>
+      </section>
+
+      <section id="bg-layer" class="card card-padded bg-section" hidden></section>
+      <section id="bg-history" class="card card-padded bg-section" hidden></section>
+      <section id="bg-worklist" class="card card-padded bg-section" hidden></section>
+
+      <!-- One dialog for every write action; book-glossary.js fills #bg-action-fields per action. -->
+      <dialog id="bg-action-dialog" class="bg-dialog" aria-labelledby="bg-action-title">
+        <h2 id="bg-action-title" class="card-title"></h2>
+        <div id="bg-action-fields"></div>
+        <div class="form-group">
+          <label id="bg-reason-label" class="form-label" for="bg-reason"></label>
+          <textarea id="bg-reason" class="form-input" rows="3" maxlength="2000" required></textarea>
+        </div>
+        <div class="form-group">
+          <label id="bg-source-label" class="form-label" for="bg-source"></label>
+          <input id="bg-source" class="form-input" type="text" maxlength="500" />
+        </div>
+        <p id="bg-notice" class="bg-note"></p>
+        <p id="bg-action-error" role="alert"></p>
+        <div id="bg-house-style" class="alert alert-warning" hidden></div>
+        <div class="bg-dialog-buttons">
+          <button id="bg-cancel" class="btn btn-secondary" type="button" data-action="cancel"></button>
+          <button id="bg-confirm-house-style" class="btn btn-primary" type="button" data-action="confirm-house-style" hidden></button>
+          <button id="bg-submit" class="btn btn-primary" type="button" data-action="submit"></button>
+        </div>
+      </dialog>
+    </main>
+
+    <script src="/js/htmlUtils.js"></script>
+    <script src="/js/ui-strings.js"></script>
+    <script src="/js/theme.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/bookSelector.js"></script>
+    <script src="/js/chapter-label.js"></script>
+    <script src="/js/book-glossary-view.js"></script>
+    <script src="/js/book-glossary.js"></script>
+  </body>
+</html>
