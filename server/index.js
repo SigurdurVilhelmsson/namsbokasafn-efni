@@ -86,6 +86,7 @@ const { errorHandler } = require('./middleware/errorHandler');
 const segmentEditorRoutes = require('./routes/segment-editor');
 const localizationEditorRoutes = require('./routes/localization-editor');
 const terminologyRoutes = require('./routes/terminology');
+const bookGlossaryRoutes = require('./routes/book-glossary');
 const suggestionsRoutes = require('./routes/suggestions');
 
 // Administration & status
@@ -240,6 +241,7 @@ app.use('/api/profile', profileRoutes);
 app.use('/api/segment-editor', segmentEditorRoutes);
 app.use('/api/localization-editor', localizationEditorRoutes);
 app.use('/api/terminology', terminologyRoutes);
+app.use('/api/book-glossary', bookGlossaryRoutes);
 app.use('/api/suggestions', suggestionsRoutes);
 
 // Administration & status
