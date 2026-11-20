@@ -1,7 +1,7 @@
 # The book glossary layer, stage 2: the head editor's screen, the worklist and the export hold
 
-> DRAFT 2026-11-20, for [USER]'s approval. Builder-checked the same day; [USER]'s answers to its two questions are in
-> §4 and §5.1. Once approved it is frozen and banner-dated: the design record (evidence, never status). Status lives in the register (`docs/plans/2026-07-21-post-item17-followup-campaign.md`).
+> 🧊 APPROVED by [USER] 2026-11-20, with the calls in §7. Builder-checked the same day; [USER]'s answers to its two
+> questions are in §4 and §5.1. Frozen from that date: this is the design record (evidence, never status). Status lives in the register (`docs/plans/2026-07-21-post-item17-followup-campaign.md`).
 >
 > It builds on the approved stage-1 design,
 > [`2026-11-19-book-glossary-layer-design.md`](2026-11-19-book-glossary-layer-design.md) (cited below as **S1**),
