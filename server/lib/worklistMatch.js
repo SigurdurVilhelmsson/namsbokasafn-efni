@@ -54,14 +54,18 @@ function englishHit(enText, forms) {
 
 /**
  * A segment matches when its English holds one of the forms AND its Icelandic
- * holds one of the old words.
+ * holds one of the old words. A segment whose Icelandic also holds the change's
+ * new Icelandic (whole word, any case) is already fixed and does not match
+ * (design 2026-11-20, second AMENDED block; register §C244 M8). A null or
+ * absent `newIcelandic` (a removal) never skips.
  * @param {{enContent: string, isContent: string}} segment
- * @param {{english: string[], oldForms: string[]}} words
+ * @param {{english: string[], oldForms: string[], newIcelandic?: string | null}} words
  * @returns {null | {english: string, index: number, length: number}}
  */
-function matchSegment({ enContent, isContent }, { english, oldForms }) {
+function matchSegment({ enContent, isContent }, { english, oldForms, newIcelandic }) {
   const hit = englishHit(enContent, english);
   if (hit === null) return null;
+  if (newIcelandic && findWholeWord(isContent, [newIcelandic], { exactCase: false })) return null;
   const is = findWholeWord(isContent, oldForms, { exactCase: false });
   if (is === null) return null;
   return { english: hit, index: is.index, length: is.length };

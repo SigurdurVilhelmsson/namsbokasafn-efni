@@ -66,7 +66,7 @@ function buildWorklist(db, bookSlug, changeId) {
     for (const s of segments) {
       const hit = matchSegment(
         { enContent: s.enContent, isContent: s.isContent },
-        { english: spec.english, oldForms: spec.oldForms }
+        { english: spec.english, oldForms: spec.oldForms, newIcelandic: spec.newIcelandic }
       );
       if (!hit) continue;
       if (!byChapter.has(u.chapter)) byChapter.set(u.chapter, []);

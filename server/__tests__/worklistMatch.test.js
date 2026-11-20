@@ -75,6 +75,30 @@ describe('matchSegment', () => {
   });
 });
 
+describe('matchSegment, new word (§C244 M8)', () => {
+  const words = { english: ['zcell'], oldForms: ['zker'], newIcelandic: 'galvanískt zker' };
+
+  it('matchSegment skips a segment that also holds the new Icelandic', () => {
+    const en = 'A zcell.';
+    expect(matchSegment({ enContent: en, isContent: 'Eitt galvanískt zker.' }, words)).toBeNull();
+    expect(matchSegment({ enContent: en, isContent: 'Eitt zker.' }, words)).toMatchObject({
+      english: 'zcell',
+    });
+  });
+
+  it('a new word in another case still skips the segment', () => {
+    expect(
+      matchSegment({ enContent: 'A zcell.', isContent: 'Eitt Galvanískt Zker.' }, words)
+    ).toBeNull();
+  });
+
+  it('a null or absent new Icelandic never skips', () => {
+    const seg = { enContent: 'A zcell.', isContent: 'Eitt galvanískt zker.' };
+    expect(matchSegment(seg, { ...words, newIcelandic: null })).not.toBeNull();
+    expect(matchSegment(seg, { english: words.english, oldForms: words.oldForms })).not.toBeNull();
+  });
+});
+
 describe('excerptOf', () => {
   it('keeps the match offset and says where it cut', () => {
     const text = 'a'.repeat(150) + 'MATCH' + 'b'.repeat(145);

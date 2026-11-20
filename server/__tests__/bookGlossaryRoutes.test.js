@@ -1106,13 +1106,17 @@ describe('the worklist', () => {
       '02-for-mt/ch01/m00001-segments.en.md',
       seg('m00001:para:p1', 'The zcell is full.') +
         seg('m00001:para:p2', 'A zcell.') +
-        seg('m00001:para:p3', 'No match here.')
+        seg('m00001:para:p3', 'No match here.') +
+        seg('m00001:para:p4', 'A zcell again.') +
+        seg('m00001:para:p5', 'A zcell, third.')
     );
     put(
       '02-mt-output/ch01/m00001-segments.is.md',
       seg('m00001:para:p1', 'Zkerið er fullt.') +
         seg('m00001:para:p2', 'Eitt zker.') +
-        seg('m00001:para:p3', 'zker')
+        seg('m00001:para:p3', 'zker') +
+        seg('m00001:para:p4', 'Eitt zker og zrafhlada.') +
+        seg('m00001:para:p5', 'Ein zrafhlada.')
     );
     put('02-for-mt/ch02/m00002-segments.en.md', seg('m00002:para:q1', 'Another zcell.'));
     put('02-mt-output/ch02/m00002-segments.is.md', seg('m00002:para:q1', 'Annað zker.'));
@@ -1162,6 +1166,30 @@ describe('the worklist', () => {
     expect(p1.excerpt.text.slice(p1.excerpt.start, p1.excerpt.start + p1.excerpt.length)).toBe(
       'Zkerið'
     );
+  });
+
+  it('a segment that also holds the new word is not listed', async () => {
+    const { body } = await list();
+    expect(ids(body, 1)).not.toContain('m00001:para:p4');
+    expect(ids(body, 1)).toContain('m00001:para:p2');
+  });
+
+  it('a removal is not affected by the new-word rule', async () => {
+    const entry = await post(`/api/book-glossary/${BOOK}/entries`, {
+      forms: ['zcell'],
+      icelandic: 'zrafhlada',
+      mode: 'add',
+      reason: 'r',
+    });
+    const removed = await post(
+      `/api/book-glossary/${BOOK}/entries/${entry.body.conceptId}/remove`,
+      {
+        reason: 'r',
+      }
+    );
+    const { body } = await list(removed.body.changeId);
+    expect(body.kind).toBe('removal');
+    expect(ids(body, 1)).toEqual(['m00001:para:p4', 'm00001:para:p5']);
   });
 
   it('a segment holding only the base form is listed while inflections are known', async () => {
