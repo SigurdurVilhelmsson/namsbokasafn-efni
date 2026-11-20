@@ -47,6 +47,7 @@ const segmentParser = require('../services/segmentParser');
 const servedVersions = require('../services/servedVersions');
 const { listStudyUnits } = require('../lib/studyUnits');
 const { STUDY_BOOKS } = require('../lib/researchScope');
+const { RECORD_FILE } = require('../lib/bookGlossaryLayer');
 const {
   FREEZE_LOCK_BODY,
   freezeLockState,
@@ -71,6 +72,8 @@ const INPUT_DIRS = [
   'glossary',
 ];
 const GLOSSARY = 'glossary/glossary-unified.json';
+/** The book glossary layer's committed record, written by export-terminology.js (book-layer spec §5.4). */
+const BOOK_LAYER = `glossary/${RECORD_FILE}`;
 const MAX_LISTED = 20;
 /** Printed by `markers` and by `check` whenever a study unit holds a foreign marker (spec §7). */
 const FOREIGN_MARKER_ADVICE =
@@ -434,9 +437,15 @@ function layer3Record(book) {
   };
 }
 
+/**
+ * The glossary: `glossary-unified.json` (path, sha256, producer, term count) and, beside it, the
+ * book layer's record (path and sha256 only; null when the book has none). Both are recorded,
+ * not frozen: terminology work continues during editing.
+ */
 function glossaryRecord(book) {
+  const bookLayer = { path: BOOK_LAYER, sha256: fileSha(path.join(bookDir(book), BOOK_LAYER)) };
   if (!fs.existsSync(path.join(bookDir(book), GLOSSARY))) {
-    return { path: GLOSSARY, sha256: null, producer: null, terms: 0 };
+    return { path: GLOSSARY, sha256: null, producer: null, terms: 0, bookLayer };
   }
   const { bytes, json } = readJson(book, GLOSSARY);
   const g = json && typeof json === 'object' ? json : {};
@@ -445,6 +454,7 @@ function glossaryRecord(book) {
     sha256: sha256(bytes),
     producer: typeof g.producer === 'string' ? g.producer : null,
     terms: Array.isArray(g.terms) ? g.terms.length : 0,
+    bookLayer,
   };
 }
 

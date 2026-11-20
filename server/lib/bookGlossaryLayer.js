@@ -399,6 +399,7 @@ function createBookGlossaryRecordFn(dbPath) {
 }
 
 module.exports = {
+  RECORD_FILE,
   addExclusion,
   addEntry,
   buildBookGlossaryRecord,
