@@ -50,6 +50,7 @@ const DEFAULT_BIN = path.join(__dirname, '..', '..', 'tools', 'data', 'SHsnid.cs
 
 const USAGE = `Usage: node server/scripts/fetch-bin-inflections.js [--db <path>] [--bin-data <path>]
                              [--execute] [--limit <n>] [--force] [--report <path>]
+                             [--concept-term-ids <id,id,…>]
 
   --db <path>        SQLite database (default: resolveDbPath())
   --bin-data <path>  SHsnid.csv, 6 fields (default: ${DEFAULT_BIN})
@@ -58,6 +59,11 @@ const USAGE = `Usage: node server/scripts/fetch-bin-inflections.js [--db <path>]
                      only, so a limited run never half-populates one. It is a
                      smoke test: its yield ratios are not the corpus's.
   --force            re-fetch even for rows that already have inflections
+  --concept-term-ids <id,id,…>
+                     only these concept_term rows (positive integers, comma-
+                     separated). Used to fill ONE book-glossary entry; the
+                     whole-corpus "concept model is empty" refusal is skipped,
+                     since a restricted run is about its rows, not the corpus.
   --report <path>    write the FULL rescue/refusal lists as JSON; stdout shows 50
                      of each. Do NOT commit the file — it carries BÍN ids.
 
@@ -90,8 +96,9 @@ function parseArgs(argv) {
     limit: 0,
     force: false,
     report: null,
+    conceptTermIds: null,
   };
-  const VALUE_FLAGS = new Set(['--db', '--bin-data', '--limit', '--report']);
+  const VALUE_FLAGS = new Set(['--db', '--bin-data', '--limit', '--report', '--concept-term-ids']);
   for (let i = 0; i < argv.length; i++) {
     const raw = argv[i];
     // ⚠️ Support `--flag=value`, not only `--flag value` — argparse accepts both
@@ -118,7 +125,14 @@ function parseArgs(argv) {
       if (a === '--db') out.db = v;
       else if (a === '--bin-data') out.binData = v;
       else if (a === '--report') out.report = v;
-      else {
+      else if (a === '--concept-term-ids') {
+        // ⚠️ Strict, like --limit: a lenient parse of a bad list would drop the
+        // restriction (or half of it) and the run would widen to the corpus.
+        if (!/^[1-9]\d*(,[1-9]\d*)*$/.test(v)) {
+          throw new Error('--concept-term-ids expects a comma-separated list of positive integers');
+        }
+        out.conceptTermIds = [...new Set(v.split(',').map(Number))];
+      } else {
         // ⚠️ I-1: Number('abc') is NaN, which is FALSY, so an invalid --limit
         // used to silently drop the LIMIT clause entirely and the run processed
         // EVERY row instead of refusing. Python's argparse(type=int) exits 2
@@ -167,12 +181,19 @@ function parseArgs(argv) {
  * inconsistency would be invisible to every check here. The candidate set is
  * ~74k rows; fetching it whole costs nothing.
  */
-function candidateSql({ force }) {
+function candidateSql({ force, conceptTermIds }) {
+  // The ids were validated as positive integers by parseArgs, so inlining them
+  // cannot carry SQL; a caller that skips parseArgs gets the same coercion here.
+  const idFilter =
+    conceptTermIds && conceptTermIds.length
+      ? [`ct.id IN (${conceptTermIds.map((n) => Number(n)).join(', ')})`]
+      : [];
   const where = [
     "ct.lang = 'is'",
     force ? '1=1' : 'ct.inflections IS NULL',
     "ct.text NOT LIKE '% %'", // BÍN handles single words
     'ct.text IS NOT NULL',
+    ...idFilter,
   ].join(' AND ');
   return `
         SELECT ct.id, ct.text, c.domain
@@ -211,10 +232,12 @@ async function main(argv) {
   const db = new Database(args.db);
 
   const rows = db.prepare(candidateSql(args)).all();
+  const restricted = Boolean(args.conceptTermIds);
   const multiWordSkipped = db
     .prepare(
       "SELECT COUNT(*) c FROM concept_term WHERE lang='is' AND text LIKE '% %'" +
-        (args.force ? '' : ' AND inflections IS NULL')
+        (args.force ? '' : ' AND inflections IS NULL') +
+        (restricted ? ` AND id IN (${args.conceptTermIds.join(', ')})` : '')
     )
     .get().c;
   const countPopulated = () =>
@@ -251,6 +274,7 @@ async function main(argv) {
     rows: {
       total: 0,
       written: 0,
+      superseded: 0,
       refused: 0,
       baseFormOnly: 0,
       notInBin: 0,
@@ -273,9 +297,16 @@ async function main(argv) {
   // corpus ALSO returns zero candidates — that is the idempotent no-op the gate
   // exists to demonstrate. `alreadyPopulatedBefore`, measured above, is the
   // discriminator; without it a correct implementation fails its own gate.
-  if (rows.length === 0 || (importedCandidates === 0 && alreadyPopulatedBefore === 0)) {
+  // ⚠️ A RESTRICTED RUN SKIPS THE EMPTINESS REFUSAL. That judgement is about the
+  // whole corpus and counts only imported rows, so a database holding just the
+  // book layer's rows would be refused for the one entry a caller asked about.
+  // With the ids named, "no candidate" simply means those rows need nothing.
+  if (
+    rows.length === 0 ||
+    (!restricted && importedCandidates === 0 && alreadyPopulatedBefore === 0)
+  ) {
     db.close();
-    if (importedCandidates === 0 && alreadyPopulatedBefore === 0) {
+    if (!restricted && importedCandidates === 0 && alreadyPopulatedBefore === 0) {
       throw new Error(
         `no candidate rows in ${args.db}, and NO row is populated either: concept_term holds no ` +
           "single-word lang='is' row at all. If this is a dev box, the concept model is empty — " +
@@ -346,6 +377,7 @@ async function main(argv) {
   const rowStats = {
     total: candidateRowCount,
     written: 0,
+    superseded: 0,
     refused: 0,
     baseFormOnly: 0,
     notInBin: 0,
@@ -390,10 +422,13 @@ async function main(argv) {
     if (outcome === 'rescued-nominal') {
       rescues.push({ text: key, chosen: brief(entry), discarded: discarded.map(brief) });
     }
-    plan.push({ ids: group.rows.map((r) => r.id), json: formatInflectionsJson(forms) });
+    plan.push({
+      rows: group.rows.map((r) => ({ id: r.id, text: r.text })),
+      json: formatInflectionsJson(forms),
+    });
   }
 
-  const resolvedRows = plan.reduce((a, p) => a + p.ids.length, 0);
+  const resolvedRows = plan.reduce((a, p) => a + p.rows.length, 0);
   if (args.execute) {
     // ⚠️ THE `IS NULL` GUARD IS REPEATED HERE, NOT ONLY IN candidateSql — D5's
     // one-way fill must hold even if something populated the row between the
@@ -406,10 +441,17 @@ async function main(argv) {
     // read" shape CLAUDE.md names as durable. Caught while implementing, not by
     // a test: the row partition still balanced, because 0 written is a legal
     // outcome for the dry-run path.
+    //
+    // ⚠️ BOTH STATEMENTS ALSO MATCH ON THE TEXT THE LOOKUP WAS MADE FOR (plan
+    // ruling P6). The BÍN lookup is async and the row can change under it: an
+    // editor retypes the word, or the entry is removed. Writing the old word's
+    // paradigm onto a row that now holds a different word is a wrong answer
+    // that every count would still call a success. A row that no longer matches
+    // is counted as `superseded`, not written and not an error.
     const update = db.prepare(
       args.force
-        ? 'UPDATE concept_term SET inflections = ? WHERE id = ?'
-        : 'UPDATE concept_term SET inflections = ? WHERE id = ? AND inflections IS NULL'
+        ? 'UPDATE concept_term SET inflections = ? WHERE id = ? AND text = ?'
+        : 'UPDATE concept_term SET inflections = ? WHERE id = ? AND text = ? AND inflections IS NULL'
     );
     if (args.force) {
       console.log(
@@ -422,7 +464,11 @@ async function main(argv) {
     // placement is simpler than the tools/ workaround it replaced).
     const apply = db.transaction((list) => {
       for (const p of list) {
-        for (const id of p.ids) rowStats.written += update.run(p.json, id).changes;
+        for (const r of p.rows) {
+          const changes = update.run(p.json, r.id, r.text).changes;
+          rowStats.written += changes;
+          if (changes === 0) rowStats.superseded++;
+        }
       }
     });
     apply(plan);
@@ -446,8 +492,10 @@ async function main(argv) {
     unexplained.push(`strings: ${sSum} bucketed vs ${strings.total} total`);
   if (rSum !== rowStats.total)
     unexplained.push(`rows: ${rSum} bucketed vs ${rowStats.total} total`);
-  if (args.execute && rowStats.written !== resolvedRows) {
-    unexplained.push(`rows: ${rowStats.written} written vs ${resolvedRows} resolved`);
+  if (args.execute && rowStats.written + rowStats.superseded !== resolvedRows) {
+    unexplained.push(
+      `rows: ${rowStats.written} written + ${rowStats.superseded} superseded vs ${resolvedRows} resolved`
+    );
   }
 
   const pctS = (n) => `${((n / strings.total) * 100).toFixed(2)}%`;
@@ -466,6 +514,7 @@ async function main(argv) {
   console.log(`  base-form-only    ${strings.baseFormOnly} (${pctS(strings.baseFormOnly)})`);
   console.log(`  not in BÍN        ${strings.notInBin} (${pctS(strings.notInBin)})`);
   console.log(`  rows written      ${rowStats.written} (${pctR(rowStats.written)} of rows)`);
+  console.log(`  rows superseded   ${rowStats.superseded} (changed or removed during the lookup)`);
   console.log(`  multi-word rows skipped  ${multiWordSkipped}`);
   console.log(
     `  already populated (rows) ${alreadyPopulatedBefore} → ${rowStats.alreadyPopulatedAfter}`
