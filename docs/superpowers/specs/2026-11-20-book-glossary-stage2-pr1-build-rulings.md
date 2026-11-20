@@ -18,10 +18,10 @@ R6b is a note to R6.
 
 ## Rulings
 
-- Ruling R1: implementers and reviewers never run root `npm test`, `npm run lint` or `format:check`; they run the focused
-- Ruling R2: Task 2's Step 2 includes the test `an adopted first export of a book with layer history is held` (from the
-- Ruling R3: Task 2's new default-wiring case injects `subjectFn: () => 'chemistry'` and `recordFn: () => null`, leaves
-- Ruling R4: implementers stage files by explicit path, never `git add -A` / `git add .`. — `.claude/settings.json` is
+- Ruling R1: implementers and reviewers never run root `npm test`, `npm run lint` or `format:check`; they run the focused vitest files their task names (plus `npx eslint`/`npx prettier --check` on the files they touch). The controller runs the full floor once, at Task 6 Step 3. — memory agent-fanout-memory-budget: each root suite ≈310 MB, the box is capped at 10 GB and has crashed under fan-out — cost if wrong: a cross-file red surfaces only at Task 6, one fix round later.
+- Ruling R2: Task 2's Step 2 includes the test `an adopted first export of a book with layer history is held` (from the task's Rules block). — the plan states the pin; the Step 2 list just omits it — cost if wrong: one extra test.
+- Ruling R3: Task 2's new default-wiring case injects `subjectFn: () => 'chemistry'` and `recordFn: () => null`, leaves `layerChangeIdFn` defaulted, and seeds a committed glossary file. — only the layer reader is under test there; a defaulted subjectFn fails first on a missing DB — cost if wrong: none, the case still pins the default reader.
+- Ruling R4: implementers stage files by explicit path, never `git add -A` / `git add .`. — `.claude/settings.json` is dirty and unrelated — cost if wrong: an unrelated file in a commit.
 - Ruling R5: restamp rewrites the COMMITTED file with only bookLayer changed (not the new export + stamp). — spec §5.6 item 4 says "rewritten with the current stamp only"; terms are identical by construction and the commit diff is one line — cost if wrong: one line + one test to switch.
 - Ruling R6: keep `stamp !== id` (the brief) over the spec's "missing or lower" — a stamp ahead of the DB (restored backup, another box) is held, a fail-safe superset of the spec — cost if wrong: a rare extra hold a developer releases.
 - Ruling R6b: the terms hash lives in the status entry's own `termsSha256` field, not inside `detail` (spec §5.6 item 2 wording) — same information, machine-readable, and /api/health shows neither — cost if wrong: none.
