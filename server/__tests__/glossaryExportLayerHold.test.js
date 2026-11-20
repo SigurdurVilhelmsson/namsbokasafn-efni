@@ -125,6 +125,21 @@ describe('runGlossaryExport — the stamp', () => {
     expect(readStatus().books.prufubok.outcome).toBe('wrote');
     expect(readExport('prufubok').bookLayer).toEqual({ lastChangeId: 7 });
   });
+
+  it('a bookLayer the builder returns is dropped; the stamp is always this script’s', () => {
+    // prufubok has no layer history (no key may be written); annarbok's history is at 7.
+    seedBook('prufubok', payload(approved(1)));
+    seedBook('annarbok', stamped(approved(1), 7));
+    run({
+      layerChangeIdFn: (b) => (b === 'annarbok' ? 7 : null),
+      exportFn: () => ({ ...payload(approved(3)), bookLayer: { lastChangeId: 99 } }),
+    });
+    const books = readStatus().books;
+    expect(books.prufubok.outcome).toBe('wrote');
+    expect(readExport('prufubok')).not.toHaveProperty('bookLayer');
+    expect(books.annarbok.outcome).toBe('wrote');
+    expect(readExport('annarbok').bookLayer).toEqual({ lastChangeId: 7 });
+  });
 });
 
 describe('runGlossaryExport — the hold', () => {
