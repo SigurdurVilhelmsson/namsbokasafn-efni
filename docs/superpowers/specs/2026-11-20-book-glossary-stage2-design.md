@@ -20,7 +20,7 @@
 >    they hold a zero-width character (U+200B, U+200C, U+200D, U+2060), a byte-order mark (U+FEFF) or a bidi control
 >    (U+200E, U+200F, U+061C, U+202A–U+202E, U+2066–U+2069). *Why:* a headword pasted from Word with a zero-width
 >    space would make an entry that looks right and matches nothing, since the resolver matches English by text.
->    *Rejected:* stripping them silently (the head editor would not learn the paste was dirty).
+>    *Rejected:* stripping them silently (the head editor would not learn the paste was dirty). *Extended the same day by [USER] to the Icelandic term (the add and change routes), so no term field can hold a hidden character.*
 > 3. **P3 covers forms-only changes.** `changeEntry` is refused when any book preference points at the entry's terms
 >    and the change removes a form, as well as when it changes the Icelandic. *Why:* removing a form could otherwise
 >    disable a preference silently in two ways: a preference whose `term_id` is the removed English row is
