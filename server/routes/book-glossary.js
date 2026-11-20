@@ -27,7 +27,7 @@ const MAX_SOURCE = 500;
 const CONTROL_CHARS = /[\u0000-\u001f\u007f]/;
 // Design §AMENDED 2026-11-20 (2): zero-width characters, the byte-order mark and bidi controls.
 // A headword pasted with one looks right and matches nothing, since English is matched by text.
-const INVISIBLE_CHARS = /[​-‏‪-‮⁠⁦-⁩﻿؜]/;
+const INVISIBLE_CHARS = /[\u200B-\u200F\u202A-\u202E\u2060\u2066-\u2069\uFEFF\u061C]/;
 
 /** The Icelandic answer to each write-API refusal, keyed by its code. */
 const MESSAGES = Object.freeze({

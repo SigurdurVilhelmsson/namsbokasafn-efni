@@ -592,20 +592,63 @@ describe('POST: validation', () => {
     [
       'a zero-width space inside english',
       () => '/exclusions',
-      { english: 'z​v', conceptId: 0, reason: REASON },
+      { english: 'z\u200Bv', conceptId: 0, reason: REASON },
       'english',
     ],
     // trim() strips U+FEFF, so a trailing byte-order mark must be refused before trimming.
     [
       'a byte-order mark at the end of a form',
       () => '/entries',
-      { ...add, forms: ['zv﻿'] },
+      { ...add, forms: ['zv\uFEFF'] },
       'forms',
     ],
     [
       'a bidi override inside english',
       () => '/exclusions',
-      { english: 'z‮v', conceptId: 0, reason: REASON },
+      { english: 'z\u202Ev', conceptId: 0, reason: REASON },
+      'english',
+    ],
+    // One sample per invisible range, so dropping any range from INVISIBLE_CHARS fails a row.
+    [
+      'a zero-width non-joiner inside english',
+      () => '/exclusions',
+      { english: 'z\u200Cv', conceptId: 0, reason: REASON },
+      'english',
+    ],
+    [
+      'a left-to-right mark inside english',
+      () => '/exclusions',
+      { english: 'z\u200Ev', conceptId: 0, reason: REASON },
+      'english',
+    ],
+    [
+      'a bidi embedding inside english',
+      () => '/exclusions',
+      { english: 'z\u202Av', conceptId: 0, reason: REASON },
+      'english',
+    ],
+    [
+      'a word joiner inside english',
+      () => '/exclusions',
+      { english: 'z\u2060v', conceptId: 0, reason: REASON },
+      'english',
+    ],
+    [
+      'a bidi isolate inside english',
+      () => '/exclusions',
+      { english: 'z\u2066v', conceptId: 0, reason: REASON },
+      'english',
+    ],
+    [
+      'an Arabic letter mark inside english',
+      () => '/exclusions',
+      { english: 'z\u061Cv', conceptId: 0, reason: REASON },
+      'english',
+    ],
+    [
+      'a byte-order mark at the start of english',
+      () => '/exclusions',
+      { english: '\uFEFFzv', conceptId: 0, reason: REASON },
       'english',
     ],
     // Design §AMENDED 2026-11-20 (1): collapsing whitespace must not let other control characters in.
