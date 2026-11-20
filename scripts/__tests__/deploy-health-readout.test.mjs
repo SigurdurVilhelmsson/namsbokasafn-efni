@@ -263,6 +263,33 @@ describe('scripts/deploy.sh health readout — glossary refusals (register C14, 
     expect(out).not.toMatch(/--force/);
   });
 
+  it('a FRESH refused-layer-change prints its remedy; a fresh refused-shrink still prints none', () => {
+    // A hold is the one refusal that is routine and waits on a person, so its remedy is printed
+    // at any age. Every other refusal keeps the stale-only rule (the shrink line is the control).
+    const body = JSON.stringify({
+      status: 'ok',
+      checks: {
+        glossary_export: {
+          ok: true,
+          ran: iso(1 * H),
+          stale_refusals: [],
+          books: {
+            'efnafraedi-2e': { outcome: 'refused-layer-change', since: iso(3 * H) },
+            'liffraedi-2e': { outcome: 'refused-shrink', since: iso(3 * H) },
+          },
+        },
+      },
+    });
+    const out = runReadout(body);
+    expect(out).toMatch(
+      /^ {2}⚠ efnafraedi-2e: refused-layer-change \(3\.0h\) — .*check-held-glossary\.sh efnafraedi-2e/m
+    );
+    expect(out).toMatch(/not been tested against the premise pins/);
+    expect(out).not.toMatch(/editors/);
+    expect(out).not.toMatch(/STALE/);
+    expect(out).toMatch(/^ {2}⚠ liffraedi-2e: refused-shrink \(3\.0h\)$/m);
+  });
+
   it('a record error prints its slug line', () => {
     const body = JSON.stringify({
       status: 'degraded',

@@ -245,7 +245,7 @@ for i in $(seq 1 30); do
               if(outcome==='refused-absent-baseline')
                 return 'this book has no committed glossary, so there is nothing to compare against and BOTH gates are inert — a first export is unreviewed by construction. --force does NOT substitute here (it answers whether a shrink is intended). Decide what this book’s glossary should be, then run: '+EXPORTER+' --book '+slug+' --adopt';
               if(outcome==='refused-layer-change')
-                return 'a book-layer change is HELD: the export would publish a glossary the editors have not tested. On a dev box run scripts/check-held-glossary.sh '+slug+' — it tests the held export and prints the release command';
+                return 'a book-layer change is HELD: the export has not been tested against the premise pins. On a dev box run scripts/check-held-glossary.sh '+slug+' — it tests the held export and prints the release command';
               if(outcome==='refused-no-mapping')
                 // ⚠ The tail used to promise '…after which it exports on the
                 // next tick'. Since §C21 that is FALSE, and the false half was
@@ -255,7 +255,10 @@ for i in $(seq 1 30); do
                 return 'NO flag fixes this: add a book_subject_mapping row for '+slug+' (see migration 032). That alone does NOT make it export — a book with no committed glossary then refuses as refused-absent-baseline, which is correct: its first export is a separate, deliberate decision';
               return 'unrecognised refusal — read the status file on the box';
             };
-            const advice=stale?' — unattended past the threshold; '+remedy(o.outcome,slug):'';
+            // A HOLD gets its remedy at ANY age: it is the one refusal that is routine and
+            // waits on a person. Every other refusal keeps the stale-only rule.
+            const advice=stale?' — unattended past the threshold; '+remedy(o.outcome,slug)
+              :o.outcome==='refused-layer-change'?' — '+remedy(o.outcome,slug):'';
               console.log('  '+tag+' '+slug+': '+o.outcome+' ('+ageStr(o.since)+')'+advice);
             }
             for(const slug of recordErrors){
