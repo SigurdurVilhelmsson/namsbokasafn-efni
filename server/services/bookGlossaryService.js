@@ -71,22 +71,6 @@ function inflectionState(db, conceptId) {
  */
 function listLayer(db, slug) {
   const bookId = bookIdOf(db, slug);
-  const exclusions = db
-    .prepare(
-      'SELECT * FROM book_glossary_exclusion WHERE book_id = ? ORDER BY match_key, concept_id'
-    )
-    .all(bookId)
-    .map((r) => ({
-      id: r.id,
-      english: r.english,
-      conceptId: r.concept_id,
-      idordabankiId: r.idordabanki_id,
-      icelandic: r.icelandic,
-      reason: r.reason,
-      source: r.source,
-      createdBy: displayNameFor(db, r.created_by),
-      createdAt: r.created_at,
-    }));
   const entries = db
     .prepare('SELECT * FROM book_glossary_entry WHERE book_id = ? ORDER BY concept_id')
     .all(bookId)
@@ -111,6 +95,26 @@ function listLayer(db, slug) {
       updatedBy: r.updated_by == null ? null : displayNameFor(db, r.updated_by),
       updatedAt: r.updated_at,
       inflections: inflectionState(db, r.concept_id),
+    }));
+  // The book entry one of whose forms an exclusion's match key names (§C243 T3).
+  const claimant = new Map();
+  for (const e of entries) for (const f of e.english) claimant.set(matchKey(f), e.conceptId);
+  const exclusions = db
+    .prepare(
+      'SELECT * FROM book_glossary_exclusion WHERE book_id = ? ORDER BY match_key, concept_id'
+    )
+    .all(bookId)
+    .map((r) => ({
+      id: r.id,
+      english: r.english,
+      conceptId: r.concept_id,
+      claimedBy: r.concept_id > 0 ? (claimant.get(r.match_key) ?? null) : null,
+      idordabankiId: r.idordabanki_id,
+      icelandic: r.icelandic,
+      reason: r.reason,
+      source: r.source,
+      createdBy: displayNameFor(db, r.created_by),
+      createdAt: r.created_at,
     }));
   return { exclusions, entries };
 }

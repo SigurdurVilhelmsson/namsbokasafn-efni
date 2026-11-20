@@ -26,6 +26,7 @@ const path = require('path');
 const log = require('../lib/logger');
 const activityLog = require('./activityLog');
 const { getDb } = require('./bookGlossaryDb');
+const { INFLECTION_RESULT_LABELS } = require('../public/js/book-glossary-view');
 
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
 const SCRIPT = path.join(__dirname, '..', 'scripts', 'fetch-bin-inflections.js');
@@ -184,7 +185,7 @@ function record(item, result, outcome) {
     userId: ctx.userId,
     username: ctx.username,
     book: ctx.book,
-    description: `Beygingar orðasafns sóttar fyrir hugtak ${conceptId}: ${result}`,
+    description: `Beygingar orðasafns sóttar fyrir hugtak ${conceptId}: ${INFLECTION_RESULT_LABELS[result]}`,
     metadata: { conceptId, result },
   });
 }

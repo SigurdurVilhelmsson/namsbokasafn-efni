@@ -212,6 +212,69 @@ describe('GET /', () => {
     const { body } = await get(`/api/book-glossary/${BOOK}`);
     expect(body.hold).toEqual({ held: false, since: null, recordError: false });
   });
+  it('says which entry claims each exclusion', async () => {
+    const old = addPair('chemistry', 'zcell', 'zgamla');
+    const entry = await post(`/api/book-glossary/${BOOK}/entries`, {
+      forms: ['zcell', 'zcell2'],
+      icelandic: 'znýja',
+      mode: 'replace',
+      replaces: [old.id],
+      reason: 'af því bara',
+    });
+    const claimed = (await get(`/api/book-glossary/${BOOK}`)).body.exclusions.map(
+      (x) => x.claimedBy
+    );
+    await post(`/api/book-glossary/${BOOK}/entries/${entry.body.conceptId}/change`, {
+      forms: ['zcell2'],
+      reason: 'af því bara',
+    });
+    const after = (await get(`/api/book-glossary/${BOOK}`)).body.exclusions.map((x) => x.claimedBy);
+    expect({ claimed, after }).toEqual({ claimed: [entry.body.conceptId], after: [null] });
+  });
+
+  it('a whole-headword exclusion is claimed by no entry', async () => {
+    layer.addExclusion(db, { ...write, book: BOOK, english: 'zwhole', by: 'tester' });
+    const { body } = await get(`/api/book-glossary/${BOOK}`);
+    expect(body.exclusions.map((x) => x.claimedBy)).toEqual([null]);
+  });
+
+  it('reports pending and forms inflection states', async () => {
+    let release;
+    const held = new Promise((r) => {
+      release = r;
+    });
+    inflections._setRunner(async () => {
+      await held;
+      return FOUND_FORMS;
+    });
+    const e = seedEntry('zpend', 'zbið');
+    inflections.schedule(e.conceptId, { book: BOOK, userId: 'u', username: 'u' });
+    const pending = (await get(`/api/book-glossary/${BOOK}`)).body.entries[0].inflections;
+    release();
+    await inflections._idle();
+    db.prepare('UPDATE concept_term SET inflections = \'["a","b"]\' WHERE id = ?').run(
+      isTermId(e.conceptId)
+    );
+    const forms = (await get(`/api/book-glossary/${BOOK}`)).body.entries[0].inflections;
+    expect({ pending, forms }).toEqual({
+      pending: { state: 'pending' },
+      forms: { state: 'forms', count: 2 },
+    });
+  });
+
+  it('answers with no export status file', async () => {
+    rmSync(path.join(projectRoot, 'pipeline-output', '.glossary-export-status.json'));
+    const { status, body } = await get(`/api/book-glossary/${BOOK}`);
+    expect({ status, held: body.hold.held }).toEqual({ status: 200, held: false });
+  });
+
+  it('says whether the book can be changed (Q13)', async () => {
+    const admin = cookieFor('admin');
+    expect([
+      (await get(`/api/book-glossary/${BOOK}`, admin)).body.writable,
+      (await get(`/api/book-glossary/${OTHER}`, admin)).body.writable,
+    ]).toEqual([true, false]);
+  });
 });
 
 describe('GET /lookup', () => {

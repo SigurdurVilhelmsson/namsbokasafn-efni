@@ -225,7 +225,13 @@ const writeGuard = [...guard, writableBook];
 router.get('/:book', ...guard, (req, res) => {
   const db = getDb();
   const slug = req.params.book;
-  res.json({ book: slug, ...service.listLayer(db, slug), hold: service.exportState(slug) });
+  res.json({
+    book: slug,
+    ...service.listLayer(db, slug),
+    hold: service.exportState(slug),
+    // Plan ruling Q13: the page offers no action for a book the write routes would refuse.
+    writable: service.hasGlossaryDir(slug),
+  });
 });
 
 router.get('/:book/lookup', ...guard, (req, res) => {

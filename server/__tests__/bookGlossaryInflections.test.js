@@ -556,6 +556,23 @@ describe('the activity log', () => {
     }
   });
 
+  it('the activity text uses the Icelandic label', async () => {
+    db.exec("DELETE FROM activity_log WHERE type = 'book_glossary_inflections'");
+    const a = entryWith('zlabel');
+    inflections._setRunner(async () =>
+      ok(report({ strings: { notInBin: 1 }, rows: { notInBin: 1 } }))
+    );
+    inflections.schedule(a, CTX);
+    await inflections._idle();
+    const row = db
+      .prepare("SELECT description FROM activity_log WHERE type = 'book_glossary_inflections'")
+      .get();
+    expect([
+      row.description.endsWith('ekki í BÍN'),
+      row.description.includes('not-in-bin'),
+    ]).toEqual([true, false]);
+  });
+
   it('the two activity types exist (plan ruling P7)', () => {
     expect(activityLog.ACTIVITY_TYPES.BOOK_GLOSSARY_CHANGED).toBe('book_glossary_changed');
     expect(activityLog.ACTIVITY_TYPES.BOOK_GLOSSARY_INFLECTIONS).toBe('book_glossary_inflections');

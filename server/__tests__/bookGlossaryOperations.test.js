@@ -528,4 +528,10 @@ describe('historyFor', () => {
     // control: a row named by its own `english` is found too
     expect(historyFor(db, BOOK, 'zother').map((r) => r.action)).toEqual(['exclude']);
   });
+
+  it('historyFor finds a change by a form that only its before side carries (P10)', () => {
+    const e = addEntry(db, { ...base, english: ['za', 'zb'], icelandic: 'zsella' });
+    changeEntry(db, { ...base, at: LATER, conceptId: e.conceptId, forms: ['za'] });
+    expect(historyFor(db, BOOK, 'zb').map((r) => r.action)).toContain('entry-change');
+  });
 });
