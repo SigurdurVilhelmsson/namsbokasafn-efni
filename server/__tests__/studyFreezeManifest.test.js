@@ -41,6 +41,7 @@ const segmentParser = require('../services/segmentParser');
 const { writeModule, writeRaw, handlerFor, invoke } = require('./helpers/servedFixture');
 const { FREEZE_LOCK_BODY, mtLockPathFor, writeFreezeLock } = require('../../tools/lib/mt-lock.cjs');
 const { STUDY_BOOKS } = require('../lib/researchScope');
+const { writeBookGlossaryRecord } = require('../lib/bookGlossaryLayer');
 
 const BOOK = STUDY_BOOKS[0];
 const TAG = `freeze-${BOOK}-2026-12-01`;
@@ -78,6 +79,17 @@ const REVISIONS = {
     model: 'claude-opus-5-5',
     runIds: ['run-a'],
   },
+};
+// A book glossary layer record (book-layer spec §5.4), written below by the exporter's own writer
+// so the manifest is tested against the path the export really uses.
+const BOOK_LAYER_RECORD = {
+  schema: 'book-glossary/1',
+  book: BOOK,
+  generated: '2026-11-20T00:00:00.000Z',
+  exclusions: [{ english: 'tan', conceptId: 0 }],
+  entries: [],
+  history: [],
+  dangling: [],
 };
 const JOIN = ['chapter', 'module_id', 'segment_id', 'occurrence', 'en_sha256', 'is_sha256'];
 const VISITOR = Object.freeze({
@@ -158,6 +170,7 @@ function buildTree() {
     `${BOOK}/glossary/glossary-unified.json`,
     JSON.stringify({ producer: 'export-terminology-resolved', terms: [{}, {}, {}] })
   );
+  writeBookGlossaryRecord(path.join(root, BOOK, 'glossary'), BOOK_LAYER_RECORD);
   writeRaw(root, `${BOOK}/03-faithful-translation/README.md`, 'readme\n');
   writeRaw(root, `${BOOK}/03-faithful-translation/ch01/m95001-review-status.json`, '{}\n');
 }
@@ -408,6 +421,13 @@ describe('the header, as spec §6.4', () => {
       sha256: sha(readFileSync(bookPath('glossary', 'glossary-unified.json'))),
       producer: 'export-terminology-resolved',
       terms: 3,
+      bookLayer: expect.any(Object), // its content: the next test
+    });
+  });
+  it("the glossary carries the book layer record's path and hash (book-layer spec §5.4)", () => {
+    expect(header.glossary.bookLayer).toEqual({
+      path: 'glossary/book-glossary.json',
+      sha256: sha(readFileSync(bookPath('glossary', 'book-glossary.json'))),
     });
   });
   it('markers: the count and the sha256 of the freeze body', () => {
@@ -440,9 +460,24 @@ describe('the header with absent or served layer directories', () => {
         },
         layer3: { dir: '03-faithful-translation', faithfulFiles: 0, reviewStatusSidecars: 0 },
       },
-      { path: 'glossary/glossary-unified.json', sha256: null, producer: null, terms: 0 },
+      {
+        path: 'glossary/glossary-unified.json',
+        sha256: null,
+        producer: null,
+        terms: 0,
+        bookLayer: { path: 'glossary/book-glossary.json', sha256: null },
+      },
       [null, null, null],
     ]);
+  });
+
+  it('a book layer record is still hashed when glossary-unified.json is absent', () => {
+    rmSync(bookPath('glossary', 'glossary-unified.json'));
+    const { header } = study.buildManifest({ book: BOOK, tag: TAG, git: GIT });
+    expect(header.glossary.bookLayer).toEqual({
+      path: 'glossary/book-glossary.json',
+      sha256: sha(readFileSync(bookPath('glossary', 'book-glossary.json'))),
+    });
   });
 
   it('a file under 02-mt-selected that git does not track (a gitignored x.bak) is not recorded', () => {
