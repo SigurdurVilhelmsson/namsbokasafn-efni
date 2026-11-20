@@ -1,5 +1,7 @@
 """Parse the Vísindavefur element table (argv[1]) and compare with the prod resolver report (argv[2]).
-Writes comparison JSON to argv[3]."""
+Writes comparison JSON to argv[3].
+Usage (from this folder): python3 -I compare.py page.html ../data/resolver-121-names.json out.json
+Fetch the page first: curl -sS -o page.html 'https://www.visindavefur.is/svar.php?id=89909'"""
 import html
 import json
 import re
@@ -20,8 +22,11 @@ for r in rows:
     table.setdefault(n, cells)
 disagree = {n: c for n, c in copies.items() if len(set(c)) > 1}
 
-lines = open(sys.argv[2], encoding='utf-8').read().splitlines()
-rep = json.loads(lines[0])
+# Accepts the raw stdin output (one JSON line + END-OF-REPORT) or the committed, pretty-printed copy.
+raw = open(sys.argv[2], encoding='utf-8').read().rstrip()
+if raw.endswith('END-OF-REPORT'):
+    raw = raw[:-len('END-OF-REPORT')]
+rep = json.loads(raw)
 prod = {r['english']: r for r in rep['rows']}
 
 

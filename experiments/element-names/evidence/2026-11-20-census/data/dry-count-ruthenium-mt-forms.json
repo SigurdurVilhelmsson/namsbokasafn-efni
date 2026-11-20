@@ -4,7 +4,7 @@
   "book": "efnafraedi-2e",
   "prodHead": "844f13d2f",
   "readOnly": true,
-  "script": "scripts/ruthenium-mt-forms-readonly.cjs",
+  "script": "instruments/ruthenium-mt-forms-readonly.cjs",
   "what": "ruthenium x the forms the MT wrote (rúþen, rúþens, rúþeni, Rúþen), skipping segments that hold rúþeníum"
  },
  "control": {

@@ -4,7 +4,7 @@
   "book": "efnafraedi-2e",
   "prodHead": "844f13d2f",
   "readOnly": true,
-  "script": "scripts/nine-readonly.cjs",
+  "script": "instruments/nine-readonly.cjs",
   "what": "worklist-matcher dry count: English name x the old form chemistry resolves to (+ stored inflections), skipping segments that hold the official name"
  },
  "control": {

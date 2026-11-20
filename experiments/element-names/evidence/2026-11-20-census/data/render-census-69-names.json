@@ -4,7 +4,7 @@
   "book": "efnafraedi-2e",
   "prodHead": "844f13d2f",
   "readOnly": true,
-  "script": "scripts/render-census.cjs",
+  "script": "instruments/render-census.cjs",
   "what": "how segments render element names with no chemistry glossary row (68 + US aluminum); tiers strong/weak/unshaped"
  },
  "control": {

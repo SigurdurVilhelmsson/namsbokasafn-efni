@@ -1,5 +1,5 @@
 """Build data/elements-table.json (the census targets plus every competitor) from the comparison.
-Usage: python3 -I build-elements-table.py ../data/comparison-official-vs-resolver.json ../data/elements-table.json
+Usage (from this folder): python3 -I build-elements-table.py ../data/comparison-official-vs-resolver.json ../data/elements-table.json
 Targets = elements with no chemistry glossary row, plus aluminum (US spelling, used by OpenStax),
 which has no row although 'aluminium' resolves to ál."""
 import json, re, sys

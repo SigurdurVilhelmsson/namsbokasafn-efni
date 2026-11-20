@@ -4,7 +4,7 @@
   "book": "efnafraedi-2e",
   "prodHead": "844f13d2f",
   "readOnly": true,
-  "script": "scripts/compare.py",
+  "script": "instruments/compare.py",
   "what": "official list (Vísindavefur 89909) vs chemistry resolver, per atomic number"
  },
  "parsedRows": 118,

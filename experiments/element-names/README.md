@@ -14,7 +14,7 @@
 names on 2026-11-20: <https://www.visindavefur.is/svar.php?id=89909>, *"Hvað heita öll frumefnin á
 íslensku?"* (published 2026-11-13, updated 2026-11-18). The page describes its names as a
 recommendation for compulsory-school teaching materials, following a November 2026 resolution by
-chemists and other experts. All 118 elements are in `data/visindavefur-89909-official-names.json`.
+chemists and other experts. All 118 elements are in `evidence/2026-11-20-census/data/visindavefur-89909-official-names.json`.
 
 ## How the measurements were taken
 
@@ -27,7 +27,7 @@ The scripts were sent to production on stdin, so production keeps no file:
 
 ```bash
 ssh <prod> "cd <repo>/server/scripts && /usr/bin/node - efnafraedi-2e" \
-  < experiments/element-names/scripts/<script>.cjs > out.json
+  < experiments/element-names/evidence/2026-11-20-census/instruments/<script>.cjs > out.json
 ```
 
 Each output starts with a control block and ends with `END-OF-REPORT`. In every run here:
@@ -35,16 +35,35 @@ Each output starts with a control block and ends with `END-OF-REPORT`. In every 
 and production's `git status --porcelain` was empty afterwards. Every run that read segments
 listed 170 units, none of them unreadable.
 
+Everything this measurement used is kept in `evidence/2026-11-20-census/`: `instruments/` (the scripts),
+`data/` (each output as returned, with a `_meta` block added and absolute production paths removed)
+and `reports/` (the segment tables). The instruments load AGPL `server/` code, so they sit in a dated
+`evidence/` folder. The root `LICENSE` keeps those outside its list of MIT→AGPL edges: they replay
+one past measurement and are not tooling.
+
+To rebuild the derived files from the committed data (run inside `instruments/`):
+
+```bash
+curl -sS -o page.html 'https://www.visindavefur.is/svar.php?id=89909'
+python3 -I compare.py page.html ../data/resolver-121-names.json comparison.json
+python3 -I build-elements-table.py ../data/comparison-official-vs-resolver.json ../data/elements-table.json
+python3 -I assemble-render-census.py render-census.template.cjs ../data/elements-table.json render-census.cjs
+python3 -I summarise.py ../data ../reports   # rewrites reports/*.md, prints every tally quoted below
+node classify-test.cjs                        # the classifier's unit cases
+```
+
+In the sections below, paths are relative to `evidence/2026-11-20-census/`.
+
 Segment text is what the editor sees: `segmentEditorService.buildEffectiveSegments`, i.e. the files
 on production plus the newest edit that is not rejected or superseded (pending edits count).
 
 ### 1. The glossary against the official list
 
-- `scripts/elements-readonly.cjs` resolves 121 names: the 118 IUPAC names plus *aluminium*, *sulphur*
+- `instruments/elements-readonly.cjs` resolves 121 names: the 118 IUPAC names plus *aluminium*, *sulphur*
   and *caesium*. It uses `conceptResolver.buildScope`/`resolve`, at the book default and at every
   chapter scope (0–21 and appendices), and reads the exported `glossary-unified.json`.
   → `data/resolver-121-names.json`
-- `scripts/compare.py` parses the official page's HTML table (`<td>` cells, NFC normalisation) and
+- `instruments/compare.py` parses the official page's HTML table (`<td>` cells, NFC normalisation) and
   compares it with that output. → `data/comparison-official-vs-resolver.json`
 
 **Result.** 51 of the 121 names resolve. Every one comes from the physics domain (`head-form`),
@@ -60,12 +79,12 @@ The 9 that differ: `germanium → german` (official `germaníum`) · `zirconium 
 
 ### 2. Dry worklists for the 9
 
-`scripts/nine-readonly.cjs` runs the worklist's own matcher (`worklistMatch.matchSegment`) the way
+`instruments/nine-readonly.cjs` runs the worklist's own matcher (`worklistMatch.matchSegment`) the way
 `bookGlossaryWorklist.buildWorklist` would. A segment is listed if its English contains the name
 (whole word) and its Icelandic contains the resolved old form or one of that term's stored
 inflections (whole word, any case). Segments that already contain the official name are skipped.
 All 9 old forms had stored inflections. → `data/dry-counts-9-names.json`,
-`results/nine-name-segments.md`
+`reports/nine-name-segments.md`
 
 | English | Old form | Segments with the English | Already official | Listed |
 |---|---|---:|---:|---:|
@@ -84,15 +103,15 @@ That is 61 listings and 36 distinct segments. The four copies of the periodic-ta
 
 ### 3. Ruthenium, searched by what the MT wrote
 
-The MT never wrote `rúten`; it wrote `rúþen`. `scripts/ruthenium-mt-forms-readonly.cjs` runs the
+The MT never wrote `rúten`; it wrote `rúþen`. `instruments/ruthenium-mt-forms-readonly.cjs` runs the
 same matcher with the MT's forms (`rúþen`, `rúþens`, `rúþeni`, `Rúþen`), skipping segments that
 contain `rúþeníum`. **8 of 8 segments are listed.** A census of every word starting with `rúþen`
 found only those four forms (`rúþen` 5, `rúþens` 1, `Rúþen` 1, `rúþeni` 1).
-→ `data/dry-count-ruthenium-mt-forms.json`, `results/ruthenium-segments.md`
+→ `data/dry-count-ruthenium-mt-forms.json`, `reports/ruthenium-segments.md`
 
 ### 4. How the MT rendered the names with no glossary row
 
-`scripts/render-census.cjs` covers the 68 names with no chemistry row, plus *aluminum*. OpenStax
+`instruments/render-census.cjs` covers the 68 names with no chemistry row, plus *aluminum*. OpenStax
 writes *aluminum*, and that spelling has no row although *aluminium* resolves to `ál`. Since there
 is no old form to search for, the script has to find the rendering itself:
 
@@ -100,7 +119,8 @@ is no old form to search for, the script has to find the rendering itself:
 2. **Shape.** A candidate word ends in an `-íum` or `-ín` base, either standalone with an
    inflection or as the first part of a compound. The base is the shortest split that leaves a valid
    remainder, and a split may not end inside the prefix matched in step 3. For the two names that
-   are not `-íum`/`-ín` (`ál`, `blý`), the word must start with the exact, accented official name.
+   are not `-íum`/`-ín` (`ál`, `blý`), a word starting with the exact, accented official name is
+   counted first. Other words still go through the shape test, which is how `alúmín` was found.
 3. **Assignment.** All 118 elements compete for each word. Accents are folded and þ→t, c→k, ð→d,
    æ→a, ö→o are treated as equal. The longest prefix shared with an element's official or English
    name wins. A tie goes to the tied element the segment's English names, otherwise it is reported as
@@ -111,10 +131,10 @@ is no old form to search for, the script has to find the rendering itself:
 5. **Control.** For each element, the English segments where nothing was found are counted, with
    samples.
 
-`scripts/classify-test.cjs` holds the local unit cases the classifier was checked against before it
+`instruments/classify-test.cjs` holds the local unit cases the classifier was checked against before it
 ran on production (`node classify-test.cjs`). `data/elements-table.json` is its input, built by
-`scripts/build-elements-table.py`. → `data/render-census-69-names.json`,
-`results/render-census-table.md`
+`instruments/build-elements-table.py`. → `data/render-census-69-names.json`,
+`reports/render-census-table.md`
 
 **Result.** 65 of the 69 names occur; nihonium, moscovium, tennessine and oganesson do not. Every
 form is official for 2 names (lead; hafnium, though see the blind spots). 49 are mixed and 14 are
@@ -141,7 +161,8 @@ never official. Over the 65: 1,522 official occurrences against 481 others. Patt
   `data/dry-counts-9-names.json` shows them.
 - **A segment holding the official name is skipped,** even if it also holds the old form. That is
   the worklist's rule, and these counts follow it.
-- **Two kinds of list the head-editor page cannot produce.**
+- **Two kinds of list the head-editor page cannot produce.** Both statements come from reading
+  `worklistSpec`/`buildWorklist`, not from running the page or creating an entry.
   1. A list where the MT's form differs from the resolved old form (ruthenium).
   2. A list for a name with no row: `worklistSpec` returns `add-alongside`, with no worklist, for an
      `entry-add` that replaces nothing.
