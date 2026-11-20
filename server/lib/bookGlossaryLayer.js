@@ -637,7 +637,9 @@ function buildBookGlossaryRecord(db, bookSlug) {
       'SELECT * FROM book_glossary_exclusion WHERE book_id = ? ORDER BY match_key, concept_id'
     )
     .all(bookId);
-  const en = db.prepare('SELECT * FROM book_glossary_entry WHERE book_id = ?').all(bookId);
+  const en = db
+    .prepare('SELECT * FROM book_glossary_entry WHERE book_id = ? ORDER BY concept_id')
+    .all(bookId);
   const hist = db
     .prepare('SELECT * FROM book_glossary_change WHERE book_id = ? ORDER BY id')
     .all(bookId);
@@ -678,9 +680,9 @@ function buildBookGlossaryRecord(db, bookSlug) {
       domain: c ? c.domain : null,
       reason: e.reason,
       source: e.source,
-      createdBy: e.created_by,
+      createdBy: displayNameFor(db, e.created_by),
       createdAt: e.created_at,
-      updatedBy: e.updated_by,
+      updatedBy: e.updated_by === null ? null : displayNameFor(db, e.updated_by),
       updatedAt: e.updated_at,
     };
   });
@@ -702,23 +704,67 @@ function buildBookGlossaryRecord(db, bookSlug) {
       idordabankiId: e.idordabanki_id,
       reason: e.reason,
       source: e.source,
-      createdBy: e.created_by,
+      createdBy: displayNameFor(db, e.created_by),
       createdAt: e.created_at,
     })),
     entries,
     history: hist.map((h) => ({
       id: h.id,
       at: h.at,
-      by: h.by,
+      by: displayNameFor(db, h.by),
       action: h.action,
       english: h.english,
-      before: parseJson(h.before_json),
-      after: parseJson(h.after_json),
+      before: withoutInflections(parseJson(h.before_json)),
+      after: withoutInflections(parseJson(h.after_json)),
       reason: h.reason,
       source: h.source,
     })),
     dangling,
   };
+}
+
+const ROLE_LABELS = {
+  admin: 'stjórnandi',
+  'head-editor': 'aðalritstjóri',
+  editor: 'yfirlesari',
+  viewer: 'lesandi',
+};
+const GUID_SHAPE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+/**
+ * The name the committed record shows for an account id (design §5.1). The record goes to a
+ * public repository, so an email never appears: a display_name that is an email (login falls
+ * back to the address when Microsoft gives no name) counts as absent (plan ruling P1), and an
+ * account id that is a GUID, or holds an `@`, with no users row is written generically (P2).
+ * Any other label, such as the c19 loader's, passes through unchanged.
+ *
+ * @param {object} db
+ * @param {string} by An account id or a free-form label.
+ * @returns {string}
+ */
+function displayNameFor(db, by) {
+  const u = db.prepare('SELECT display_name, role FROM users WHERE provider_id = ?').get(by);
+  if (u) {
+    const name = typeof u.display_name === 'string' ? u.display_name.trim() : '';
+    if (name && !name.includes('@')) return name;
+    return ROLE_LABELS[u.role] ?? 'notandi';
+  }
+  if (typeof by === 'string' && (GUID_SHAPE.test(by) || by.includes('@')))
+    return 'óþekktur notandi';
+  return by;
+}
+
+/** A deep copy of a parsed history payload without any `inflections` key, at any depth. */
+function withoutInflections(v) {
+  if (Array.isArray(v)) return v.map(withoutInflections);
+  if (v && typeof v === 'object') {
+    return Object.fromEntries(
+      Object.entries(v)
+        .filter(([k]) => k !== 'inflections')
+        .map(([k, x]) => [k, withoutInflections(x)])
+    );
+  }
+  return v;
 }
 
 /**
@@ -813,6 +859,7 @@ module.exports = {
   removeEntry,
   historyFor,
   buildBookGlossaryRecord,
+  displayNameFor,
   writeBookGlossaryRecord,
   createBookGlossaryRecordFn,
   lastLayerChangeId,
