@@ -4602,7 +4602,11 @@
       const start = ta.selectionStart;
       const end = ta.selectionEnd;
       const text = ta.value;
-      const insertion = '__' + icelandicTerm + '__';
+      // G1.16 ([USER] 2026-11-08): the plain word. The `__term__` wrapper this used to add was probed
+      // and does not survive inject and render: in a segment carrying any new-format marker readers get
+      // the underscores, and in one without, a <dfn class="term"> key term the editor never asked for
+      // (cnxml-inject.js converts `__x__` only when hasApiMarkers is false). Disabled until it survives.
+      const insertion = icelandicTerm;
       ta.value = text.slice(0, start) + insertion + text.slice(end);
       ta.selectionStart = ta.selectionEnd = start + insertion.length;
       if (ta._segmentId) {
