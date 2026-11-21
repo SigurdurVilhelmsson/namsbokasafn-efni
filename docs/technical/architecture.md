@@ -237,7 +237,7 @@ actions. There are three independent lanes:
 ```
                   (1) code + committed content
    GitHub (efni) ───────── Deploy workflow / `git pull` ─────────► Production server
-        ▲                  (git reset --hard origin/main)          ┌────────────────────────┐
+        ▲                  (./scripts/deploy.sh)                   ┌────────────────────────┐
         │                                                          │ pipeline-output/       │
         │   (2) content files, auto-backup cron every 2h           │   sessions.db  ← edits,│
         └────────── scripts/git-backup.sh (push to main) ──────────│   approvals (gitignored)│
@@ -246,15 +246,16 @@ actions. There are three independent lanes:
                     translation-errors.json}                       │   Vista+Birta          │
                                                                    └────────────────────────┘
 
-   GitHub (efni) ──(3) "Sync Content to Vefur" Action──► GitHub (vefur) ──build/deploy──► namsbokasafn.is
-                     (scripts/sync-content.js, runs IN the vefur repo,
-                      reads efni FROM GitHub — not from the server)
+   efni checkout ──(3) manual: node scripts/sync-content.js──► vefur ──build/deploy──► namsbokasafn.is
+                     (run by hand IN a vefur checkout, reading a local
+                      efni checkout — not the server)
 ```
 
-**Lane 1 — GitHub → server (code & committed content).** The Deploy
-workflow (`.github/workflows/deploy.yml`, manual `workflow_dispatch`) SSHes
-in, backs up the DB, `git reset --hard origin/main`, `npm ci`, restarts the
-service. A manual `git pull` on the box does the same for content.
+**Lane 1 — GitHub → server (code & committed content).** `./scripts/deploy.sh`
+on the server is the single deploy path (register C11(c)): it backs up the DB,
+stashes and re-applies local editorial changes, pulls, runs `npm ci` and
+restarts the service. The Deploy workflow (`.github/workflows/deploy.yml`,
+manual `workflow_dispatch`) only SSHes in and runs that script.
 
 **Lane 2 — server → GitHub (editorial output).** The DB is gitignored, so
 the durable artifact is the *files* that "Vista í skrár" / "Vista + Birta"
@@ -264,20 +265,20 @@ those paths and pushes to `main` as `auto-backup: …` commits.
 made against a laptop's local server sits in that laptop's DB and never
 reaches production or GitHub.
 
-**Lane 3 — GitHub → reader.** "Vista + Birta" runs apply → inject → render
-and writes HTML to `05-publication/` **on the server's disk only**. To reach
-the reader, the "Sync Content to Vefur" Action
-(`.github/workflows/sync-content.yml`) copies content from the efni repo *on
-GitHub* into namsbokasafn-vefur, which then builds and deploys. This Action
-runs automatically on any push to `main` that touches
-`books/*/05-publication/**` (so the backup cron's push triggers it), and can
-also be run manually.
+**Lane 3 — GitHub → reader (manual).** "Vista + Birta" runs apply → inject →
+render and writes HTML to `05-publication/` **on the server's disk only**. To
+reach the reader, a person pulls `main` into a local efni checkout and runs
+`node scripts/sync-content.js --source ../namsbokasafn-efni` from a vefur
+checkout, then builds and deploys vefur. Nothing does this automatically. The
+"Sync Content to Vefur" Action that was meant to was retired on [USER]'s
+ruling of 2026-11-08 (`docs/decisions/2026-11-08-editing-gates-and-housekeeping-answers.md`,
+answer 8): it never succeeded once, and armed it would have run a bare
+all-books sync.
 
 **End-to-end latency of a publish:** `Vista + Birta` (instant on server) →
-auto-backup cron pushes to `main` (**up to 2h**) → sync Action fires on that
-push → vefur builds → live. The 2h gap is the backup cadence; run
-`scripts/git-backup.sh` by hand on the server, or dispatch the sync Action
-after a manual push, to publish immediately.
+auto-backup cron pushes to `main` (**up to 2h**) → a person runs the sync and
+deploys vefur. The 2h gap is the backup cadence; run `scripts/git-backup.sh`
+by hand on the server to shorten it.
 
 **Why a `git pull` on the server can report a dirty tree:** inject
 regenerates `books/*/translation-errors.json` on every render. It is now in
