@@ -26,7 +26,6 @@ const mtLock = require('../../tools/lib/mt-lock.cjs');
 const segmentParser = require('./segmentParser');
 const servedVersions = require('./servedVersions');
 const resolveDbPath = require('../lib/dbPath');
-const { pickLatest } = require('../lib/editRecency');
 const { isNotMintedBook } = require('../lib/servedText');
 const {
   normalizeWraps,
@@ -473,71 +472,81 @@ function sidecarPathFor(book, chapter, moduleId) {
  *               every sidecar regeneration, so an active acceptance is
  *               content-verified for the CURRENT bytes even when an older
  *               applied edit exists on the segment (restore edge).
- *   edited    — an approved+applied edit exists (newest by the canonical
- *               recency rule); by/at = editor_username/reviewed_at.
+ *   edited    — an approved+applied edit exists.
  *   carryover — published without per-segment review.
  *
+ * G2.3 ([USER] 2026-11-08): each entry is its status alone, and `generated` is a UTC date
+ * (YYYY-MM-DD). The backup pushes this file to the public repository, so it names no one and gives
+ * no time of day. `tools/export-corpus.js` reads only `status`.
+ *
+ * @param {{keepGenerated?: boolean}} [opts] keepGenerated: keep the existing file's date (cut to
+ *   YYYY-MM-DD if it is an older full timestamp) instead of today's. A revoke passes it, so the
+ *   file does not record the revoke's date ("a revoke refreshes statuses without re-stamping").
+ *   With no readable date in an existing file, today's is written.
  * @returns {string} the sidecar path
  */
-function writeReviewStatusSidecar(book, chapter, moduleId, dbConn = getDb()) {
+function writeReviewStatusSidecar(book, chapter, moduleId, dbConn = getDb(), opts = {}) {
   const { faithful } = segmentParser.getModulePaths(book, chapter, moduleId);
   if (!fs.existsSync(faithful)) {
     throw new Error(`Faithful file not found — no sidecar to derive: ${faithful}`);
   }
   const fileSegments = segmentParser.parseSegments(fs.readFileSync(faithful, 'utf-8'));
 
-  const acceptancesBySeg = new Map(
+  // Only the segment ids are read: nothing that names a person or a time reaches this function.
+  const acceptedSegs = new Set(
     dbConn
       .prepare(
-        `SELECT * FROM segment_acceptances
+        `SELECT segment_id FROM segment_acceptances
          WHERE book = ? AND module_id = ? AND status = 'active'`
       )
       .all(book, moduleId)
-      .map((a) => [a.segment_id, a])
+      .map((a) => a.segment_id)
   );
 
-  const appliedEditsBySeg = {};
-  for (const e of dbConn
-    .prepare(
-      `SELECT id, segment_id, editor_username, reviewed_at, created_at
-       FROM segment_edits
-       WHERE book = ? AND module_id = ? AND status = 'approved' AND applied_at IS NOT NULL`
-    )
-    .all(book, moduleId)) {
-    (appliedEditsBySeg[e.segment_id] = appliedEditsBySeg[e.segment_id] || []).push(e);
-  }
+  const editedSegs = new Set(
+    dbConn
+      .prepare(
+        `SELECT DISTINCT segment_id FROM segment_edits
+         WHERE book = ? AND module_id = ? AND status = 'approved' AND applied_at IS NOT NULL`
+      )
+      .all(book, moduleId)
+      .map((e) => e.segment_id)
+  );
 
   const segments = {};
   for (const seg of fileSegments) {
-    const acc = acceptancesBySeg.get(seg.segmentId);
-    if (acc) {
-      segments[seg.segmentId] = {
-        status: 'accepted',
-        by: acc.accepted_by_username,
-        at: acc.accepted_at,
-      };
-    } else if (appliedEditsBySeg[seg.segmentId]) {
-      const winner = pickLatest(appliedEditsBySeg[seg.segmentId]);
-      segments[seg.segmentId] = {
-        status: 'edited',
-        by: winner.editor_username,
-        at: winner.reviewed_at,
-      };
+    if (acceptedSegs.has(seg.segmentId)) {
+      segments[seg.segmentId] = { status: 'accepted' };
+    } else if (editedSegs.has(seg.segmentId)) {
+      segments[seg.segmentId] = { status: 'edited' };
     } else {
       segments[seg.segmentId] = { status: 'carryover' };
     }
   }
 
+  const outPath = sidecarPathFor(book, chapter, moduleId);
   const sidecar = {
-    generated: new Date().toISOString(),
+    generated:
+      (opts.keepGenerated && existingGeneratedDate(outPath)) ||
+      new Date().toISOString().slice(0, 10),
     book,
     chapter: String(chapter),
     module: moduleId,
     segments,
   };
-  const outPath = sidecarPathFor(book, chapter, moduleId);
   fs.writeFileSync(outPath, JSON.stringify(sidecar, null, 2) + '\n', 'utf-8');
   return outPath;
+}
+
+/** The YYYY-MM-DD an existing sidecar's `generated` starts with, or null (no file, unreadable, none). */
+function existingGeneratedDate(outPath) {
+  try {
+    const prev = JSON.parse(fs.readFileSync(outPath, 'utf-8'));
+    const m = typeof prev.generated === 'string' ? /^\d{4}-\d{2}-\d{2}/.exec(prev.generated) : null;
+    return m ? m[0] : null;
+  } catch {
+    return null;
+  }
 }
 
 /**
@@ -551,7 +560,7 @@ function writeReviewStatusSidecar(book, chapter, moduleId, dbConn = getDb()) {
  */
 function regenSidecarSafe(book, chapter, moduleId, dbConn = getDb()) {
   try {
-    writeReviewStatusSidecar(book, chapter, moduleId, dbConn);
+    writeReviewStatusSidecar(book, chapter, moduleId, dbConn, { keepGenerated: true });
   } catch (err) {
     if (!/Faithful file not found/.test(err.message)) {
       log.error({ err, book, moduleId }, 'Sidecar regen failed');
