@@ -470,7 +470,8 @@ the text as it is and with the fix drafts of measurements 7–9 overlaid. → `r
 - **Not in the runs:** the nine replacement entries (§C245 ①), and measurement 13's draft, which came
   after.
 - **[USER] ruled on 2026-11-21 to hold the 59 adds** until the term check accepts a word that starts
-  with the term (register §C245; step 3 of `reports/c73-entries.md`).
+  with the term (the ruling: register §C245; the change it waits for: §C246, with this measurement as
+  its acceptance test; step 3 of `reports/c73-entries.md`).
 
 ## Blind spots
 

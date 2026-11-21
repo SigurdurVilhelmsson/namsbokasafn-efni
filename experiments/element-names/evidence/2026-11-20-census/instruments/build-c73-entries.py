@@ -101,7 +101,7 @@ md = ["# The 59 book glossary entries of the §C73 ruling (drafts, 2026-11-21)",
       "3. **Hold: do not enter the 59 yet** ([USER]'s ruling, 2026-11-21). The editor's term check accepts a term only as a whole "
       'word, so these entries would raise 151 advisory warnings, across 19 names, on segments that hold the official name only '
       'inside a closed compound (`magnesíumhýdroxíð`; measurement 14, `termcheck-dryruns.md`). Enter them only once the term check '
-      'accepts a word that starts with the term; that change is tracked in register §C245. ✏️ *Until 2026-11-21 this step said to '
+      'accepts a word that starts with the term; that change is its own register item, §C246. ✏️ *Until 2026-11-21 this step said to '
       'enter magnesium first, read its warnings and stop if a compound warned; measurement 14 measured exactly that, and the ruling '
       'followed.*',
       f'4. **When the hold lifts, enter {FIRST} first** and check that its 43 compound segments (listed in `termcheck-dryruns.md`) '
