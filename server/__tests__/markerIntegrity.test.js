@@ -206,6 +206,39 @@ describe('rule 5: legacy markup that would reach readers raw warns', () => {
       { code: 'legacy-wrap', params: { direction: 'flip' } },
     ]);
   });
+  it.each([
+    ['*', ' *skáletrað*'],
+    ['__', ' __lykilorð__'],
+    ['~', ' CO~2~'],
+    ['^', ' Na^+^'],
+  ])('(a) a %s wrap added to a new-format segment warns with that marker', (marker, added) => {
+    const base = 'H[[sub:2]]O';
+    expect(check(base, base, base + added).warnings).toEqual([
+      { code: 'legacy-wrap', params: { direction: 'added', marker } },
+    ]);
+  });
+  // Final review, Important 2: `\w` is ASCII, so a Greek or Icelandic letter did not stop an asterisk opening an
+  // italic. These are the reviewer's measured false positives.
+  it("control: Greek letters' literal asterisks added to a new-format segment are silent", () => {
+    const base = 'H[[sub:2]]O';
+    expect(check(base, base, base + ' og (σ*, π*)').warnings).toEqual([]);
+  });
+  it('control: an asterisk after an Icelandic letter opens no italic', () => {
+    const base = 'H[[sub:2]]O';
+    expect(check(base, base, base + ' þ*a b*').warnings).toEqual([]);
+  });
+  // Final review, Important 3: `*x*` is not legacy markup for the dialect test (a literal asterisk would make a
+  // segment legacy), so a segment whose only legacy markup is an italic flipped without a warning, and inject
+  // then leaves the asterisks raw.
+  it('(b) a bracket marker added to a segment whose only legacy markup is *italic* warns flip', () => {
+    expect(check('E. coli is', '*E. coli* er', '*E. coli* er [[b:x]]').warnings).toEqual([
+      { code: 'legacy-wrap', params: { direction: 'flip' } },
+    ]);
+  });
+  it("control: chemistry's (σ, σ*, π, π*) in a plain segment that gains a bracket marker is silent", () => {
+    const t = 'sameindasvigrúm (σ, σ*, π, π*)';
+    expect(check(t, t, t + ' [[b:x]]').warnings).toEqual([]);
+  });
 });
 
 describe('additions do not block', () => {

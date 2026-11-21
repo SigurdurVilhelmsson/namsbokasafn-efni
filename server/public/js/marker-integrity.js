@@ -111,11 +111,16 @@
     };
   }
 
-  // Rule 5(a)'s legacy wraps, by the marker the editor would have typed. Italic is counted with the boundary
-  // rule the editor's own highlighting uses, so `σ*` and `**x**` are not italics.
+  // An italic as an editor types it: an asterisk that no letter, digit or asterisk touches on its outer side.
+  // Unicode-aware (`\p{L}`, not `\w`), so `σ*`, `π*` and an asterisk after an Icelandic letter open nothing, and
+  // `**x**` is not an italic. Inject's own `*x*` conversion has no boundary; it stands down by comparing the
+  // asterisk count with the CNXML source's literal ones, a count checkMarkers cannot see.
+  const ITALIC_WRAP = /(?<![*\p{L}\p{N}_])\*[^*\s][^*\n]*\*(?![*\p{L}\p{N}_])/gu;
+
+  // Rule 5(a)'s legacy wraps, by the marker the editor would have typed.
   const LEGACY_WRAPS = [
     ['**', /\*\*([^*]+)\*\*/g],
-    ['*', /(?<![*\w])\*[^*\s][^*\n]*\*(?![*\w])/g],
+    ['*', ITALIC_WRAP],
     ['__', /(?<!_)__([^_]+)__(?!_)/g],
     ['~', /(?<=[^\s~])~([^\s~]{1,15})~/g],
     ['^', /(?<=[^\s^])\^([^\s^]{1,15})\^/g],
@@ -200,8 +205,11 @@
         }
       }
     }
-    // 5(b): new-format markup added to a legacy segment, after which its legacy markup prints raw.
-    if (!isBracketDialect(originalIs) && isBracketDialect(editedIs) && hasLegacyMarkup(editedIs)) {
+    // 5(b): new-format markup added to a legacy segment, after which its legacy markup prints raw. An italic
+    // counts here though the dialect test leaves `*x*` out: a segment whose only legacy markup is `*E. coli*`
+    // flips too, and a false warning on a literal pair is cheaper than raw asterisks on a page.
+    const legacyAfter = hasLegacyMarkup(editedIs) || legacyWrapCount(editedIs, ITALIC_WRAP) > 0;
+    if (!isBracketDialect(originalIs) && isBracketDialect(editedIs) && legacyAfter) {
       warnings.push({ code: 'legacy-wrap', params: { direction: 'flip' } });
     }
     return { blocked, warnings };
