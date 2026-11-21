@@ -1,9 +1,10 @@
 # The term check accepts a word that starts with the term (§C246)
 
-> 🧊 DRAFT, 2026-11-21, for [USER]'s review. Every design choice below is one of [USER]'s five rulings of
-> 2026-11-21. The rest is how to build them, and §8 lists the calls this draft makes on its own. Once [USER]
-> approves it, it is frozen: the design record (evidence, never status). Status lives in the register
-> (`docs/plans/2026-07-21-post-item17-followup-campaign.md`, §C246).
+> 🧊 APPROVED by [USER] 2026-11-21 ("I approve the §C246 design spec as drafted, including the six calls in its
+> §8"). Frozen from that date: this is the design record (evidence, never status). Every design choice below is
+> one of [USER]'s five rulings of 2026-11-21, and §8 lists the six calls the draft made on its own, all approved.
+> Status lives in the register (`docs/plans/2026-07-21-post-item17-followup-campaign.md`, §C246).
+> ✏️ *Until its approval this banner said DRAFT, for [USER]'s review.*
 
 ## 1. Intent
 
@@ -197,7 +198,7 @@ warning, no relabelling, and a false range of the same order.
 - **Tie options remove at a higher false rate:** 7.3–28.0% on the 232 tie-only removals of measurement 16. [USER]
   ruled them in (A2).
 
-## 8. Calls made in this draft (for [USER] to check)
+## 8. Calls made in this draft (approved by [USER], 2026-11-21)
 
 1. **The values live in a new module,** `server/lib/termPrefixRule.js`, with its own test, not in
    `server/constants.js`.
