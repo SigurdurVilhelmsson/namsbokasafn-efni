@@ -93,6 +93,17 @@ python3 -I build-c73-recommendations.py ../data/comparison-official-vs-resolver.
 node bin-outcomes-c73.cjs <SHsnid.csv> ../reports/c73-entries.json ../data/c73-bin-outcomes.json
 python3 -I build-c73-entries.py ../reports/c73-entry-recommendations.json ../data/render-census-69-names.json \
     ../data/comparison-official-vs-resolver.json ../reports/c73-entries ../data/c73-bin-outcomes.json
+# 14. the term check's two dry runs: rebuild the scripts that ran (send each on stdin to production, cwd server/scripts,
+#     `node - efnafraedi-2e`), ingest each raw output, and write the report:
+python3 -I build-termcheck-dryruns.py magnesium termcheck-dryrun-magnesium.template.cjs termcheck-dryrun-magnesium.cjs \
+    ../reports/editor-fixes.json ../reports/editor-fixes-never-official.json ../reports/editor-fixes-mixed.json
+python3 -I build-termcheck-dryruns.py c73 termcheck-dryrun-c73.template.cjs termcheck-dryrun-c73.cjs \
+    ../reports/editor-fixes.json ../reports/editor-fixes-never-official.json ../reports/editor-fixes-mixed.json \
+    --entries ../reports/c73-entries.json ../data/render-census-69-names.json
+python3 -I ingest-termcheck-dryrun.py <raw output> ../data/termcheck-dryrun-<magnesium|c73>.json \
+    termcheck-dryrun-<magnesium|c73>.template.cjs "<what>"   # the what strings are in each file's _meta
+python3 -I summarise-termcheck-dryruns.py ../data/termcheck-dryrun-magnesium.json ../data/termcheck-dryrun-c73.json \
+    ../reports/termcheck-dryruns.md
 ```
 
 In the sections below, paths are relative to `evidence/2026-11-20-census/`.
@@ -364,10 +375,12 @@ name's share is in the report; calcium, yttrium, magnesium and cadmium sit withi
 Beryllium's one-*l* forms and hafnium's `hafnfn` garble count as not official, and the noise bases
 are left out.
 
-**Not measured:** how the editor's term check treats compounds. For frequent names an entry might
-warn on a segment that uses the official name only in a compound, so the report suggests entering
-one and reading its warnings first. None of these names has a chemistry row, so each entry is an
-*add*, which gets no worklist from the page; the segment fixes come from measurements 8–9.
+**How the editor's term check treats compounds: measured in measurement 14.** It accepts the term
+only as a whole word, so an entry warns on a segment that holds the official name only inside a
+compound. For the 59 adds that is 151 warnings across 19 names (43 for magnesium), all advisory.
+✏️ *Until 2026-11-21 this said "not measured" and suggested entering one frequent name first and
+reading its warnings.* None of these names has a chemistry row, so each entry is an *add*, which gets
+no worklist from the page; the segment fixes come from measurements 8–9.
 
 ### 12. The 59 book glossary entries of the §C73 ruling
 
@@ -399,7 +412,7 @@ builds them from the accepted recommendation, the census and the official list.
 ### 13. A non-official name inside a compound (beryllium, 1 segment)
 
 Found on 2026-11-21 by a read-only dry run of the editor's term check for the 59 adds on production
-(not committed). One of its warnings was not a compound: `miðberyllínatómið` in
+(measurement 14). One of its warnings was not a compound: `miðberyllínatómið` in
 `m68742:para:fs-idp122770240` (ch 7, "around the central beryllium atom"). The non-official
 `beryllín` sits inside the compound. The census (measurement 4), and the dry lists and drafts built
 on it (measurements 6–9), look for a non-official form only at the start of a word, so none of them
@@ -423,6 +436,37 @@ saw it.
   new word, it takes the longest official form of five or more letters that the word contains. It
   reports 0 unanchored in all four sets, and the first three sets' results are unchanged.
 - The segment is in none of the nine entries' worklists.
+
+### 14. The editor's term check on compounds: two read-only dry runs
+
+Measured 2026-11-21 on production, read-only. One run is for magnesium alone, the other for the 59
+§C73 adds entered together. Each added the entries to an **in-memory copy** of the database: the
+file was opened read-only, serialized and reopened from the buffer, so the file was never written.
+It then ran the server's own functions on that copy: `addEntry`, the BÍN chooser that the page's
+automatic lookup runs, `buildEffectiveSegments` and `findTermsInSegments` (the term check). The
+file's size and mtime were unchanged after each run, and the checkout stayed clean. Each run
+measures three states (no entry; the entry before its BÍN inflections are stored; after), each on
+the text as it is and with the fix drafts of measurements 7–9 overlaid. → `reports/termcheck-dryruns.md`
+
+- **Instruments.** `termcheck-dryrun-magnesium.template.cjs` and `termcheck-dryrun-c73.template.cjs`
+  are the templates as they ran. `build-termcheck-dryruns.py` refills them from the committed drafts
+  and entries, and the scripts it builds are byte-identical to the ones sent to production. The built
+  scripts are not committed, since they embed the drafts.
+- **Data.** `data/termcheck-dryrun-magnesium.json` and `data/termcheck-dryrun-c73.json` are the raw
+  outputs, ingested by `ingest-termcheck-dryrun.py`. That script reduces every BÍN form list to a
+  count and asserts that no list survives under a `bin` key. BÍN is CC BY-SA and is not committed.
+- **Result.** With the drafts pasted and the inflections stored, the 59 adds warn **152 times on 140
+  segments, across 19 names. 151 are closed compounds only**: the segment holds the official name only
+  as the first part of a longer word (`magnesíumhýdroxíð`, `baríumefni`). The other 1 is
+  `miðberyllínatómið`, drafted in measurement 13. Before the lookup finishes the count is 212, and
+  without the drafts it is 491. Magnesium alone gives 43, the same as its row in the 59-name run.
+- **Why.** `wholeWordRegex` rejects a letter on either side of the term, so a closed compound does not
+  contain it for the check; a hyphen is not a letter, so `magnesíum-jón` passes. The synthetic
+  controls show this for every one of the 59 names.
+- **Advisory.** The module report's route says "Advisory — no block", and a save cannot fail on its
+  warnings. This is read from the code, not run.
+- **Not in the runs:** the nine replacement entries (§C245 ①), and measurement 13's draft, which came
+  after.
 
 ## Blind spots
 
