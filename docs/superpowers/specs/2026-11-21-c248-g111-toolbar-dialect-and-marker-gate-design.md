@@ -1,6 +1,10 @@
-# §C248 + G1.11 — the editor writes the dialect the segment uses, and the save gate guards the bracket markers: design
+# §C248 + G1.11 — the editor writes the dialect the segment uses, and the save gate guards the bracket markers: design (APPROVED 2026-11-21)
 
-**Status:** DESIGN, written 2026-11-21 for [USER]'s approval. No plan, no code.
+> ✅ **DESIGN, APPROVED BY [USER] 2026-11-21, as written**, after the builder check was folded in and §2.3's
+> correction was put to [USER] (approach 1 kept; rule 1c added). **Banner-frozen from approval: amended only by
+> dated notes.** Not status: open work and its state live in the active register.
+
+**Status:** DESIGN, approved 2026-11-21. The plan is `docs/superpowers/plans/2026-11-21-c248-g111-marker-gate.md`.
 **Register:** `docs/plans/2026-07-21-post-item17-followup-campaign.md` **§C248** and the Skerfur plan's **G1.11**. The register owns status; this document owns the design.
 **Builds on:** [`2026-08-12-marker-integrity-design.md`](2026-08-12-marker-integrity-design.md) (§C53, never approved). That spec's rules, taxonomy and module split are reused; §3 below lists every point where this design departs from it, each re-measured on 2026-11-21.
 
