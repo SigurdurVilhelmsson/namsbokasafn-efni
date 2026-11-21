@@ -389,6 +389,25 @@ app.get('/api/health', (req, res) => {
     checks.glossary_export = { ok: false, error: err.message };
   }
 
+  // The editing tool's retention dates (G1.15(b), spec §4.6): not ok when a step has been due and unrecorded past two
+  // backup cycles, or while a refusal for continued use stands. Names only, never counts: the endpoint is public.
+  try {
+    const Database = require('better-sqlite3');
+    const { readRetentionHealth, DEFAULT_STALE_HOURS } = require('./lib/retentionHealth');
+    const db = new Database(require('./lib/dbPath')(), { readonly: true, fileMustExist: true });
+    try {
+      checks.retention = readRetentionHealth({
+        db,
+        nowMs: Date.now(),
+        staleHours: Number(process.env.RETENTION_STALE_HOURS) || DEFAULT_STALE_HOURS,
+      });
+    } finally {
+      db.close();
+    }
+  } catch (err) {
+    checks.retention = { ok: false, error: err.code || err.name };
+  }
+
   // The research file (G1.2, spec §5.20): { ok, reason } and nothing else — this endpoint is public, and a count of
   // anything research-related would tell the world that someone consented or withdrew.
   try {
