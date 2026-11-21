@@ -203,6 +203,14 @@ describe('stored inflected forms stay whole-word (ruling 1)', () => {
       'sýra'
     );
   });
+
+  // Register §C247 (3): R3's `magnesíums` also starts with the base, so R3 passes whether or not
+  // the prefix shape keeps the stored forms. Here the stored form does NOT start with the base
+  // (`sýru` against `sýra`), so only the stored-form branch can pass it.
+  it('R3b control: under the prefix, a stored form that does not start with the base still passes (sýru)', () => {
+    addPair('chemistry', 'acid', 'sýra', ['sýru', 'sýrur']);
+    expectPasses(run('The strength of the acid.', 'Styrkur sýru.'), 'acid');
+  });
 });
 
 describe('ties take the prefix, each option on its own text (A2, call 6)', () => {
@@ -217,12 +225,9 @@ describe('ties take the prefix, each option on its own text (A2, call 6)', () =>
     addPair('chemistry', 'sign', 'formerki');
     const s1 = run('The sign is visible.', 'Merkingin sést.');
     expectMatched(s1, 'sign');
-    expect(s1.issues).toEqual([
-      expect.objectContaining({
-        type: 'missing',
-        options: expect.arrayContaining(['merki', 'formerki']),
-      }),
-    ]);
+    expect(s1.issues).toEqual([expect.objectContaining({ type: 'missing' })]);
+    // Exact, not arrayContaining (register §C247 (3)): a grown option list must fail.
+    expect([...s1.issues[0].options].sort()).toEqual(['formerki', 'merki']);
   });
 });
 
