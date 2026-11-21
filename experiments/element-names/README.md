@@ -107,6 +107,9 @@ python3 -I summarise-termcheck-dryruns.py ../data/termcheck-dryrun-magnesium.jso
 # 15. the §C246 census: send c246-census.cjs on stdin to production (cwd server/scripts, `node - efnafraedi-2e`;
 #     it reads tools/data/SHsnid.csv there), keep its raw output (not committed: per-word BÍN classes), then:
 python3 -I summarise-c246-census.py <raw output> ../reports/c246-census.md [<earlier raw outputs, same corpus hashes>]
+# 16. the options census for §C246's two open questions: send c246-options.cjs on stdin to production the same way,
+#     keep its raw output (not committed), then:
+python3 -I summarise-c246-options.py <raw output> ../reports/c246-options.md [<measurement-15 raw output>]
 ```
 
 In the sections below, paths are relative to `evidence/2026-11-20-census/`.
@@ -505,6 +508,29 @@ covers every chemistry segment as editors see it today, so it includes none of �
 - **Licensing.** Per the BÍN licensing decision (2026-08-06), no BÍN-derived data is committed. The
   report carries aggregate counts and a short list of illustrative examples. The raw output, which
   labels every enabling word, stays out of the tree, and rerunning the instrument regenerates it.
+
+### 16. §C246's two open questions: an options census
+
+Measured 2026-11-21 on production, read-only, with [USER]'s first three §C246 rulings built in: the base rule,
+a four-letter minimum, and the form `merki` excluded. → `reports/c246-options.md`
+
+- **Instrument.** `instruments/c246-options.cjs` gives each of the check's three uses of a form (the winner,
+  the tie options, alternatives) a role, and patches a role-aware prefix rule into a copy of the real
+  `terminologyService`. The five arms are T1–T3 (which roles take the prefix) and M1–M2 (multi-word and
+  hyphenated terms: the whole phrase, or only when the last word has four letters or more). Controls as in
+  measurement 15, all passed; the installed check's corpus hash equals measurement 15's.
+- **Population.** 31,573 warnings, 8,152 of them ties.
+- **Result.**
+  - **Alternatives remove nothing:** T1 and T2 remove the identical 4,382 warnings. Under T1, 311 more turn
+    from `missing` into `alternative`, some of them misleading (`gildistala` would name `gildi`, from
+    `gildishvolf`).
+  - **The tie options** remove 232 warnings that winner-only keeps, at a false range of 7.3–28.0%.
+  - **Multi-word and hyphenated terms:** the whole phrase adds 78 removals; the last-word rule adds 69
+    (65 true, 4 false), and it excludes terms that end in a hyphen (`upphafs-`).
+- **[USER] ruled on 2026-11-21: A2 (the winner and the tie options take the prefix; alternatives stay
+  whole-word) and B3 (the last-word rule)** (register §C246). Because alternatives remove nothing, A2 with B3
+  removes what M2 removed: 4,451 of 31,573 warnings (14.1%), false range 1.3–6.0%, with no relabelling.
+- **Licensing.** As in measurement 15: aggregate counts and illustrative examples only.
 
 ## Blind spots
 
