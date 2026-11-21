@@ -140,6 +140,35 @@ published.)*
 >      `server/lib/houseStyleTerms.js` and runs it under `node`, in a child process,
 >      at module level, so importing the script runs it, and there is no fallback.
 >      It also hardcodes one machine's checkout path.
+>    - **`experiments/element-names/evidence/2026-11-20-census/instruments/`:
+>      18 read-only instruments** require `server/` modules with no fallback.
+>      They are scripts that are run, never imported, so every run needs
+>      `server/`.
+>      - **16 are sent on stdin to production** and run with the working
+>        directory `server/scripts`. They reach `server/` as
+>        `path.resolve(process.cwd(), '..')` and require `lib/dbPath`,
+>        `lib/conceptResolver`, `lib/studyUnits`, `lib/worklistMatch`,
+>        `lib/binInflections`, `lib/bookGlossaryLayer`,
+>        `services/segmentParser`, `services/segmentEditorService` and
+>        `services/terminologyService` from it, in varying subsets.
+>      - **The 16 files:** `elements-readonly.cjs`, `nine-readonly.cjs`,
+>        `ruthenium-mt-forms-readonly.cjs`, `lanthanide-readonly.cjs`,
+>        `never-official-readonly.cjs`, `mixed-readonly.cjs`,
+>        `render-census.cjs` (and its `render-census.template.cjs`), the four
+>        `fetch-*-targets.cjs`, the two `termcheck-dryrun-*.template.cjs` (filled
+>        by `build-termcheck-dryruns.py`), `c246-census.cjs` and `c246-options.cjs`.
+>      - **`c246-census.cjs` and `c246-options.cjs` also recompile
+>        `services/terminologyService.js`** from its source, with its form test
+>        changed.
+>      - **Two run locally:** `classify-test.cjs` → `server/lib/worklistMatch`
+>        and `bin-outcomes-c73.cjs` → `server/lib/binInflections`, both through
+>        a literal `'../server/…'`.
+>
+>      *(Added 2026-11-21. The first 16 came with the evidence folder on its
+>      unmerged branch and were never listed here; the census instrument made
+>      the 17th and the options census the 18th. The 16 stdin scripts name no
+>      `server` path at all, so none of
+>      the first five search shapes below finds them; the sixth does.)*
 >
 >    **(b) At run time, not import time — the module imports fine without
 >    `server/`. Whether it also RUNS without it differs per entry, so each one
@@ -259,12 +288,14 @@ published.)*
 >      2026-11-08.)*
 >
 > This list is the authoritative enumeration — update it here when an edge is
-> added or removed, and re-derive rather than trusting it. **Five** search shapes
+> added or removed, and re-derive rather than trusting it. **Six** search shapes
 > are needed, because none of them sees the others' matches. *(This said three
 > until 2026-09-07, when adding `experiments/` found two edges that all three
 > missed — the note's own instruction to re-derive rather than trust it is what
 > caught them. It said four until 2026-11-08, when the fifth, an interpolated
-> path, turned up in a Python script and a shell script.)*
+> path, turned up in a Python script and a shell script. It said five until
+> 2026-11-21, when the sixth, a working-directory-relative path, turned up in
+> the element-names instruments.)*
 >
 > - a literal `'../server/…'`;
 > - a computed `path.join`/`path.resolve` (or Python's `os.path.join`) over a
@@ -284,6 +315,12 @@ published.)*
 >   or JavaScript `${ROOT}/server/…` — whose string begins with the interpolation,
 >   so none of the four shapes above can match it. Search for `}/server/`.
 >   `binreach.py` and `scripts/git-backup.sh:141` are reachable only this way.
+> - a **working-directory-relative** path: a script meant to run from
+>   `server/scripts` resolves `server/` as `path.resolve(process.cwd(), '..')`.
+>   It names no `server` at all, so none of the five shapes above can match it.
+>   Search for `process.cwd(), '..'` (and its other spellings, such as
+>   `path.dirname(process.cwd())`). The element-names stdin instruments are
+>   reachable only this way. *(Added 2026-11-21.)*
 >
 > Run every shape over all the code in these trees — `.js`, `.mjs`, `.cjs`, `.py`
 > and `.sh` — not over JavaScript alone. Until 2026-11-08 the census had only

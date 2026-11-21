@@ -104,6 +104,12 @@ python3 -I ingest-termcheck-dryrun.py <raw output> ../data/termcheck-dryrun-<mag
     termcheck-dryrun-<magnesium|c73>.template.cjs "<what>"   # the what strings are in each file's _meta
 python3 -I summarise-termcheck-dryruns.py ../data/termcheck-dryrun-magnesium.json ../data/termcheck-dryrun-c73.json \
     ../reports/termcheck-dryruns.md
+# 15. the §C246 census: send c246-census.cjs on stdin to production (cwd server/scripts, `node - efnafraedi-2e`;
+#     it reads tools/data/SHsnid.csv there), keep its raw output (not committed: per-word BÍN classes), then:
+python3 -I summarise-c246-census.py <raw output> ../reports/c246-census.md [<earlier raw outputs, same corpus hashes>]
+# 16. the options census for §C246's two open questions: send c246-options.cjs on stdin to production the same way,
+#     keep its raw output (not committed), then:
+python3 -I summarise-c246-options.py <raw output> ../reports/c246-options.md [<measurement-15 raw output>]
 ```
 
 In the sections below, paths are relative to `evidence/2026-11-20-census/`.
@@ -472,6 +478,59 @@ the text as it is and with the fix drafts of measurements 7–9 overlaid. → `r
 - **[USER] ruled on 2026-11-21 to hold the 59 adds** until the term check accepts a word that starts
   with the term (the ruling: register §C245; the change it waits for: §C246, with this measurement as
   its acceptance test; step 3 of `reports/c73-entries.md`).
+
+### 15. The term check under a "word starts with the term" rule: a corpus census (§C246)
+
+Measured 2026-11-21 on production, read-only, in three runs whose corpus result was identical. It
+covers every chemistry segment as editors see it today, so it includes none of §C245's 59 held adds.
+→ `reports/c246-census.md`
+
+- **Instrument.** `instruments/c246-census.cjs` runs the real term check twice: as installed, and as a
+  copy compiled from the same source with only `buildInflectionRegex` changed. The copy has three arms:
+  *off*, which must equal the installed check over the whole corpus; *base*, where the term counts if a
+  word starts with it and stored forms still count only as whole words; and *all*, where stored forms
+  count as the start of a word too.
+- **Classification.** Each removed warning is classified by its best enabling word, using ordered rules
+  over BÍN and the concept model: inflection, compound, three kinds of false pass, inflection by
+  ending, or undecided. The rules are written out in the report. They were refined in three rounds on
+  this data, so they are heuristics: "true" is a ceiling and "false" a floor.
+- **Controls, all passed.** The *off* arm equals the installed check. No arm adds a warning.
+  Attribution has 0 disagreements in both directions. A planted pair of words behaves.
+- **Result.** The base rule removes **5,135 of today's 31,573 warnings** (16.3%), across 418 of 1,646
+  terms; another 354 change from `missing` to `alternative`. The false range falls with term length:
+  - 1–2 letters: 16.8–23.0% (`u` → `um`, `upp`);
+  - 3 letters: 6.6–19.9% (`jón` → `jónun`, `jónast`);
+  - 4 letters: 2.2–10.7%;
+  - 5 letters: 9.1–14.8%, where `merki` → `merking` is 74 of the 100 false passes;
+  - 6–7 letters: 0.7–5.7%; 8–10 letters: 0.6–2.0%; 11 or more: 0–0.5%.
+- **The *all* arm** removes 1,697 more, with 8.8–17.7% false overall and 19.6–29.8% in the 6–7 bucket.
+  Short stored forms start other words (`hvarfa` → `hvarfast`, `staðla` → `staðlaðar`).
+- **Licensing.** Per the BÍN licensing decision (2026-08-06), no BÍN-derived data is committed. The
+  report carries aggregate counts and a short list of illustrative examples. The raw output, which
+  labels every enabling word, stays out of the tree, and rerunning the instrument regenerates it.
+
+### 16. §C246's two open questions: an options census
+
+Measured 2026-11-21 on production, read-only, with [USER]'s first three §C246 rulings built in: the base rule,
+a four-letter minimum, and the form `merki` excluded. → `reports/c246-options.md`
+
+- **Instrument.** `instruments/c246-options.cjs` gives each of the check's three uses of a form (the winner,
+  the tie options, alternatives) a role, and patches a role-aware prefix rule into a copy of the real
+  `terminologyService`. The five arms are T1–T3 (which roles take the prefix) and M1–M2 (multi-word and
+  hyphenated terms: the whole phrase, or only when the last word has four letters or more). Controls as in
+  measurement 15, all passed; the installed check's corpus hash equals measurement 15's.
+- **Population.** 31,573 warnings, 8,152 of them ties.
+- **Result.**
+  - **Alternatives remove nothing:** T1 and T2 remove the identical 4,382 warnings. Under T1, 311 more turn
+    from `missing` into `alternative`, some of them misleading (`gildistala` would name `gildi`, from
+    `gildishvolf`).
+  - **The tie options** remove 232 warnings that winner-only keeps, at a false range of 7.3–28.0%.
+  - **Multi-word and hyphenated terms:** the whole phrase adds 78 removals; the last-word rule adds 69
+    (65 true, 4 false), and it excludes terms that end in a hyphen (`upphafs-`).
+- **[USER] ruled on 2026-11-21: A2 (the winner and the tie options take the prefix; alternatives stay
+  whole-word) and B3 (the last-word rule)** (register §C246). Because alternatives remove nothing, A2 with B3
+  removes what M2 removed: 4,451 of 31,573 warnings (14.1%), false range 1.3–6.0%, with no relabelling.
+- **Licensing.** As in measurement 15: aggregate counts and illustrative examples only.
 
 ## Blind spots
 
