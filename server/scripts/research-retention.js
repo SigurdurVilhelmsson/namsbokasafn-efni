@@ -5,19 +5,20 @@
  *
  * Usage: node server/scripts/research-retention.js [--write] [--no-derived-dataset]
  *   Dry run unless --write. There is NO date option, and an unknown argument is refused: the date
- *   is SD6's, held in server/lib/researchRetention.js, and while it is empty nothing is ever due,
- *   so the research backup job's every-cycle --write call changes nothing.
+ *   is SD6's (31 Dec 2029; docs/decisions/2026-11-21-retention-dates-2028-2029-2030.md), held in
+ *   server/lib/researchRetention.js. Until it takes effect, at 00:00 UTC on 1 Jan 2030, nothing is
+ *   due, so the research backup job's every-cycle --write call changes nothing.
  *
- * DUE (decision 11; spec ✏️ AMENDED 2026-11-04): the date is set and has passed, and either a
- * research row exists (an event, an item or a key), or no retention deletion has been recorded
- * at or after the date. The second arm keeps a run that deleted every row but could not compact
+ * DUE (decision 11; spec ✏️ AMENDED 2026-11-04): the date is set and has taken effect (00:00 UTC on
+ * the day after it; G1.15(b) spec §4.1), and either a research row exists (an event, an item or a
+ * key), or no retention deletion has been recorded at or after that moment. The second arm keeps a run that deleted every row but could not compact
  * due: the deleted bytes may still be in free pages and the WAL, and with no row left the literal
  * rule would never select the file again.
  *
  * THE DERIVED-DATASET GUARD (decision 12; spec ✏️ AMENDED 2026-11-04): --write is refused while no
  * derived dataset is recorded, but only when something is due. The backup job runs this script
  * with --write every cycle and takes no copy when it exits non-zero, so refusing while nothing is
- * due would fail every cycle long before SD6 sets a date. A dataset row counts only when its path
+ * due would fail every cycle long before the date takes effect. A dataset row counts only when its path
  * is absolute and lies outside research-exports/, the copies directory and the research file
  * (§5.15: the dataset never lives in research.db or research-exports/): a row naming a file this
  * same run deletes would let the date destroy the only copy. An absolute path, because resolving
