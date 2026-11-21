@@ -1,0 +1,950 @@
+{
+ "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909",
+ "entries": [
+  {
+   "n": 12,
+   "english": "magnesium",
+   "lookup": "magnesium",
+   "forms": [
+    "magnesium"
+   ],
+   "icelandic": "magnesíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 119,
+   "officialOccurrences": 162,
+   "nonOfficialOccurrences": 21,
+   "reason": "[USER]: opinbera heitið er magnesíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 119 bútum: vélþýðingin skrifar „magnesíum“ í 162 tilvikum en annað í 21 tilviki („magnesín“ 21). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 2,
+   "english": "helium",
+   "lookup": "helium",
+   "forms": [
+    "helium"
+   ],
+   "icelandic": "helíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 55,
+   "officialOccurrences": 54,
+   "nonOfficialOccurrences": 27,
+   "reason": "[USER]: opinbera heitið er helíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 55 bútum: vélþýðingin skrifar „helíum“ í 54 tilvikum en annað í 27 tilvikum („helín“ 24, „helium“ 3). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 3,
+   "english": "lithium",
+   "lookup": "lithium",
+   "forms": [
+    "lithium"
+   ],
+   "icelandic": "liþíum",
+   "mode": "add",
+   "class": "never official",
+   "enSegments": 58,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 78,
+   "reason": "[USER]: opinbera heitið er liþíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 58 bútum: vélþýðingin skrifar aldrei „liþíum“, heldur „litíum“ 71, „litín“ 6, „lithium“ 1. Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 4,
+   "english": "beryllium",
+   "lookup": "beryllium",
+   "forms": [
+    "beryllium"
+   ],
+   "icelandic": "beryllíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 31,
+   "officialOccurrences": 26,
+   "nonOfficialOccurrences": 10,
+   "reason": "[USER]: opinbera heitið er beryllíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 31 bút: vélþýðingin skrifar „beryllíum“ í 26 tilvikum en annað í 10 tilvikum („beryllín“ 7, „berillíum“ 2, „Berillínatómið“ 1). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 21,
+   "english": "scandium",
+   "lookup": "scandium",
+   "forms": [
+    "scandium"
+   ],
+   "icelandic": "skandíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 12,
+   "officialOccurrences": 12,
+   "nonOfficialOccurrences": 3,
+   "reason": "[USER]: opinbera heitið er skandíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 12 bútum: vélþýðingin skrifar „skandíum“ í 12 tilvikum en annað í 3 tilvikum („skandín“ 3). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 23,
+   "english": "vanadium",
+   "lookup": "vanadium",
+   "forms": [
+    "vanadium"
+   ],
+   "icelandic": "vanadíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 11,
+   "officialOccurrences": 9,
+   "nonOfficialOccurrences": 3,
+   "reason": "[USER]: opinbera heitið er vanadíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 11 bútum: vélþýðingin skrifar „vanadíum“ í 9 tilvikum en annað í 3 tilvikum („vanadín“ 2, „vanadium“ 1). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 31,
+   "english": "gallium",
+   "lookup": "gallium",
+   "forms": [
+    "gallium"
+   ],
+   "icelandic": "gallíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 19,
+   "officialOccurrences": 13,
+   "nonOfficialOccurrences": 10,
+   "reason": "[USER]: opinbera heitið er gallíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 19 bútum: vélþýðingin skrifar „gallíum“ í 13 tilvikum en annað í 10 tilvikum („gallín“ 10). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 37,
+   "english": "rubidium",
+   "lookup": "rubidium",
+   "forms": [
+    "rubidium"
+   ],
+   "icelandic": "rúbidíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 16,
+   "officialOccurrences": 14,
+   "nonOfficialOccurrences": 4,
+   "reason": "[USER]: opinbera heitið er rúbidíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 16 bútum: vélþýðingin skrifar „rúbidíum“ í 14 tilvikum en annað í 4 tilvikum („rúbidín“ 4). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 38,
+   "english": "strontium",
+   "lookup": "strontium",
+   "forms": [
+    "strontium"
+   ],
+   "icelandic": "strontíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 29,
+   "officialOccurrences": 29,
+   "nonOfficialOccurrences": 6,
+   "reason": "[USER]: opinbera heitið er strontíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 29 bútum: vélþýðingin skrifar „strontíum“ í 29 tilvikum en annað í 6 tilvikum („strontín“ 6). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 41,
+   "english": "niobium",
+   "lookup": "niobium",
+   "forms": [
+    "niobium"
+   ],
+   "icelandic": "níóbíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 5,
+   "officialOccurrences": 4,
+   "nonOfficialOccurrences": 1,
+   "reason": "[USER]: opinbera heitið er níóbíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 5 bútum: vélþýðingin skrifar „níóbíum“ í 4 tilvikum en annað í 1 tilviki („níóbín“ 1). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 43,
+   "english": "technetium",
+   "lookup": "technetium",
+   "forms": [
+    "technetium"
+   ],
+   "icelandic": "teknetíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 14,
+   "officialOccurrences": 6,
+   "nonOfficialOccurrences": 13,
+   "reason": "[USER]: opinbera heitið er teknetíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 14 bútum: vélþýðingin skrifar „teknetíum“ í 6 tilvikum en annað í 13 tilvikum („teknetín“ 13). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 45,
+   "english": "rhodium",
+   "lookup": "rhodium",
+   "forms": [
+    "rhodium"
+   ],
+   "icelandic": "ródíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 8,
+   "officialOccurrences": 6,
+   "nonOfficialOccurrences": 2,
+   "reason": "[USER]: opinbera heitið er ródíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 8 bútum: vélþýðingin skrifar „ródíum“ í 6 tilvikum en annað í 2 tilvikum („ródín“ 2). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 46,
+   "english": "palladium",
+   "lookup": "palladium",
+   "forms": [
+    "palladium"
+   ],
+   "icelandic": "palladíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 11,
+   "officialOccurrences": 11,
+   "nonOfficialOccurrences": 2,
+   "reason": "[USER]: opinbera heitið er palladíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 11 bútum: vélþýðingin skrifar „palladíum“ í 11 tilvikum en annað í 2 tilvikum („palladín“ 2). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 48,
+   "english": "cadmium",
+   "lookup": "cadmium",
+   "forms": [
+    "cadmium"
+   ],
+   "icelandic": "kadmíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 38,
+   "officialOccurrences": 43,
+   "nonOfficialOccurrences": 7,
+   "reason": "[USER]: opinbera heitið er kadmíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 38 bútum: vélþýðingin skrifar „kadmíum“ í 43 tilvikum en annað í 7 tilvikum („kadmín“ 7). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 49,
+   "english": "indium",
+   "lookup": "indium",
+   "forms": [
+    "indium"
+   ],
+   "icelandic": "indíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 9,
+   "officialOccurrences": 8,
+   "nonOfficialOccurrences": 3,
+   "reason": "[USER]: opinbera heitið er indíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 9 bútum: vélþýðingin skrifar „indíum“ í 8 tilvikum en annað í 3 tilvikum („indín“ 3). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 55,
+   "english": "caesium",
+   "lookup": "cesium",
+   "forms": [
+    "cesium",
+    "caesium"
+   ],
+   "icelandic": "sesíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 21,
+   "officialOccurrences": 11,
+   "nonOfficialOccurrences": 20,
+   "reason": "[USER]: opinbera heitið er sesíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 21 bút: vélþýðingin skrifar „sesíum“ í 11 tilvikum en annað í 20 tilvikum („sesín“ 19, „cesium“ 1). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 56,
+   "english": "barium",
+   "lookup": "barium",
+   "forms": [
+    "barium"
+   ],
+   "icelandic": "baríum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 47,
+   "officialOccurrences": 54,
+   "nonOfficialOccurrences": 15,
+   "reason": "[USER]: opinbera heitið er baríum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 47 bútum: vélþýðingin skrifar „baríum“ í 54 tilvikum en annað í 15 tilvikum („barín“ 12, „barium“ 3). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 58,
+   "english": "cerium",
+   "lookup": "cerium",
+   "forms": [
+    "cerium"
+   ],
+   "icelandic": "seríum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 7,
+   "officialOccurrences": 2,
+   "nonOfficialOccurrences": 5,
+   "reason": "[USER]: opinbera heitið er seríum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 7 bútum: vélþýðingin skrifar „seríum“ í 2 tilvikum en annað í 5 tilvikum („serín“ 5). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 61,
+   "english": "promethium",
+   "lookup": "promethium",
+   "forms": [
+    "promethium"
+   ],
+   "icelandic": "prómeþíum",
+   "mode": "add",
+   "class": "never official",
+   "enSegments": 5,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 5,
+   "reason": "[USER]: opinbera heitið er prómeþíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 5 bútum: vélþýðingin skrifar aldrei „prómeþíum“, heldur „prómetín“ 5. Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 62,
+   "english": "samarium",
+   "lookup": "samarium",
+   "forms": [
+    "samarium"
+   ],
+   "icelandic": "samaríum",
+   "mode": "add",
+   "class": "never official",
+   "enSegments": 5,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 5,
+   "reason": "[USER]: opinbera heitið er samaríum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 5 bútum: vélþýðingin skrifar aldrei „samaríum“, heldur „samarín“ 5. Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 63,
+   "english": "europium",
+   "lookup": "europium",
+   "forms": [
+    "europium"
+   ],
+   "icelandic": "evrópíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 7,
+   "officialOccurrences": 3,
+   "nonOfficialOccurrences": 4,
+   "reason": "[USER]: opinbera heitið er evrópíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 7 bútum: vélþýðingin skrifar „evrópíum“ í 3 tilvikum en annað í 4 tilvikum („evrópín“ 4). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 64,
+   "english": "gadolinium",
+   "lookup": "gadolinium",
+   "forms": [
+    "gadolinium"
+   ],
+   "icelandic": "gadólíníum",
+   "mode": "add",
+   "class": "never official",
+   "enSegments": 6,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 5,
+   "reason": "[USER]: opinbera heitið er gadólíníum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 6 bútum: vélþýðingin skrifar aldrei „gadólíníum“, heldur „gadólín“ 5. Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 65,
+   "english": "terbium",
+   "lookup": "terbium",
+   "forms": [
+    "terbium"
+   ],
+   "icelandic": "terbíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 5,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 4,
+   "reason": "[USER]: opinbera heitið er terbíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 5 bútum: vélþýðingin skrifar „terbíum“ í 1 tilviki en annað í 4 tilvikum („terbín“ 4). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 66,
+   "english": "dysprosium",
+   "lookup": "dysprosium",
+   "forms": [
+    "dysprosium"
+   ],
+   "icelandic": "dysprósíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 6,
+   "officialOccurrences": 2,
+   "nonOfficialOccurrences": 4,
+   "reason": "[USER]: opinbera heitið er dysprósíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 6 bútum: vélþýðingin skrifar „dysprósíum“ í 2 tilvikum en annað í 4 tilvikum („dysprósín“ 4). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 67,
+   "english": "holmium",
+   "lookup": "holmium",
+   "forms": [
+    "holmium"
+   ],
+   "icelandic": "hólmíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 5,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 4,
+   "reason": "[USER]: opinbera heitið er hólmíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 5 bútum: vélþýðingin skrifar „hólmíum“ í 1 tilviki en annað í 4 tilvikum („hólmín“ 4). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 68,
+   "english": "erbium",
+   "lookup": "erbium",
+   "forms": [
+    "erbium"
+   ],
+   "icelandic": "erbíum",
+   "mode": "add",
+   "class": "never official",
+   "enSegments": 4,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 4,
+   "reason": "[USER]: opinbera heitið er erbíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 4 bútum: vélþýðingin skrifar aldrei „erbíum“, heldur „erbín“ 4. Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 69,
+   "english": "thulium",
+   "lookup": "thulium",
+   "forms": [
+    "thulium"
+   ],
+   "icelandic": "túlíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 5,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 4,
+   "reason": "[USER]: opinbera heitið er túlíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 5 bútum: vélþýðingin skrifar „túlíum“ í 1 tilviki en annað í 4 tilvikum („túlín“ 4). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 70,
+   "english": "ytterbium",
+   "lookup": "ytterbium",
+   "forms": [
+    "ytterbium"
+   ],
+   "icelandic": "ytterbíum",
+   "mode": "add",
+   "class": "never official",
+   "enSegments": 4,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 4,
+   "reason": "[USER]: opinbera heitið er ytterbíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 4 bútum: vélþýðingin skrifar aldrei „ytterbíum“, heldur „ytterbín“ 4. Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 71,
+   "english": "lutetium",
+   "lookup": "lutetium",
+   "forms": [
+    "lutetium"
+   ],
+   "icelandic": "lútetíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 6,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 5,
+   "reason": "[USER]: opinbera heitið er lútetíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 6 bútum: vélþýðingin skrifar „lútetíum“ í 1 tilviki en annað í 5 tilvikum („lútetín“ 5). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 72,
+   "english": "hafnium",
+   "lookup": "hafnium",
+   "forms": [
+    "hafnium"
+   ],
+   "icelandic": "hafníum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 5,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 4,
+   "reason": "[USER]: opinbera heitið er hafníum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 5 bútum: vélþýðingin skrifar „hafníum“ í 1 tilviki en annað í 4 tilvikum („hafnfn“ 4). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 75,
+   "english": "rhenium",
+   "lookup": "rhenium",
+   "forms": [
+    "rhenium"
+   ],
+   "icelandic": "reníum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 6,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 5,
+   "reason": "[USER]: opinbera heitið er reníum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 6 bútum: vélþýðingin skrifar „reníum“ í 1 tilviki en annað í 5 tilvikum („renín“ 5). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 76,
+   "english": "osmium",
+   "lookup": "osmium",
+   "forms": [
+    "osmium"
+   ],
+   "icelandic": "osmíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 9,
+   "officialOccurrences": 3,
+   "nonOfficialOccurrences": 6,
+   "reason": "[USER]: opinbera heitið er osmíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 9 bútum: vélþýðingin skrifar „osmíum“ í 3 tilvikum en annað í 6 tilvikum („osmín“ 6). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 77,
+   "english": "iridium",
+   "lookup": "iridium",
+   "forms": [
+    "iridium"
+   ],
+   "icelandic": "iridíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 11,
+   "officialOccurrences": 4,
+   "nonOfficialOccurrences": 7,
+   "reason": "[USER]: opinbera heitið er iridíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 11 bútum: vélþýðingin skrifar „iridíum“ í 4 tilvikum en annað í 7 tilvikum („iridín“ 7). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 81,
+   "english": "thallium",
+   "lookup": "thallium",
+   "forms": [
+    "thallium"
+   ],
+   "icelandic": "þallíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 22,
+   "officialOccurrences": 14,
+   "nonOfficialOccurrences": 21,
+   "reason": "[USER]: opinbera heitið er þallíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 22 bútum: vélþýðingin skrifar „þallíum“ í 14 tilvikum en annað í 21 tilviki („þallín“ 12, „tallín“ 9). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 87,
+   "english": "francium",
+   "lookup": "francium",
+   "forms": [
+    "francium"
+   ],
+   "icelandic": "fransíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 8,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 7,
+   "reason": "[USER]: opinbera heitið er fransíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 8 bútum: vélþýðingin skrifar „fransíum“ í 1 tilviki en annað í 7 tilvikum („fransín“ 7). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 88,
+   "english": "radium",
+   "lookup": "radium",
+   "forms": [
+    "radium"
+   ],
+   "icelandic": "radíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 12,
+   "officialOccurrences": 7,
+   "nonOfficialOccurrences": 5,
+   "reason": "[USER]: opinbera heitið er radíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 12 bútum: vélþýðingin skrifar „radíum“ í 7 tilvikum en annað í 5 tilvikum („radín“ 5). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 89,
+   "english": "actinium",
+   "lookup": "actinium",
+   "forms": [
+    "actinium"
+   ],
+   "icelandic": "aktíníum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 11,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 12,
+   "reason": "[USER]: opinbera heitið er aktíníum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 11 bútum: vélþýðingin skrifar „aktíníum“ í 1 tilviki en annað í 12 tilvikum („aktín“ 11, „aktiníum“ 1). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 90,
+   "english": "thorium",
+   "lookup": "thorium",
+   "forms": [
+    "thorium"
+   ],
+   "icelandic": "þóríum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 9,
+   "officialOccurrences": 3,
+   "nonOfficialOccurrences": 6,
+   "reason": "[USER]: opinbera heitið er þóríum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 9 bútum: vélþýðingin skrifar „þóríum“ í 3 tilvikum en annað í 6 tilvikum („þórín“ 6). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 91,
+   "english": "protactinium",
+   "lookup": "protactinium",
+   "forms": [
+    "protactinium"
+   ],
+   "icelandic": "prótaktíníum",
+   "mode": "add",
+   "class": "never official",
+   "enSegments": 4,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 4,
+   "reason": "[USER]: opinbera heitið er prótaktíníum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 4 bútum: vélþýðingin skrifar aldrei „prótaktíníum“, heldur „prótaktín“ 4. Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 95,
+   "english": "americium",
+   "lookup": "americium",
+   "forms": [
+    "americium"
+   ],
+   "icelandic": "ameríkíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 11,
+   "officialOccurrences": 2,
+   "nonOfficialOccurrences": 10,
+   "reason": "[USER]: opinbera heitið er ameríkíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 11 bútum: vélþýðingin skrifar „ameríkíum“ í 2 tilvikum en annað í 10 tilvikum („ameríkín“ 6, „amerísín“ 3, „americium“ 1). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 96,
+   "english": "curium",
+   "lookup": "curium",
+   "forms": [
+    "curium"
+   ],
+   "icelandic": "curíum",
+   "mode": "add",
+   "class": "never official",
+   "enSegments": 6,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 6,
+   "reason": "[USER]: opinbera heitið er curíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 6 bútum: vélþýðingin skrifar aldrei „curíum“, heldur „kúríum“ 5, „kúrín“ 1. Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 97,
+   "english": "berkelium",
+   "lookup": "berkelium",
+   "forms": [
+    "berkelium"
+   ],
+   "icelandic": "berkelíum",
+   "mode": "add",
+   "class": "never official",
+   "enSegments": 5,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 5,
+   "reason": "[USER]: opinbera heitið er berkelíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 5 bútum: vélþýðingin skrifar aldrei „berkelíum“, heldur „berkelín“ 5. Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 98,
+   "english": "californium",
+   "lookup": "californium",
+   "forms": [
+    "californium"
+   ],
+   "icelandic": "kaliforníum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 6,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 5,
+   "reason": "[USER]: opinbera heitið er kaliforníum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 6 bútum: vélþýðingin skrifar „kaliforníum“ í 1 tilviki en annað í 5 tilvikum („kalifornín“ 5). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 99,
+   "english": "einsteinium",
+   "lookup": "einsteinium",
+   "forms": [
+    "einsteinium"
+   ],
+   "icelandic": "einsteiníum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 6,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 5,
+   "reason": "[USER]: opinbera heitið er einsteiníum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 6 bútum: vélþýðingin skrifar „einsteiníum“ í 1 tilviki en annað í 5 tilvikum („einsteinín“ 5). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 100,
+   "english": "fermium",
+   "lookup": "fermium",
+   "forms": [
+    "fermium"
+   ],
+   "icelandic": "fermíum",
+   "mode": "add",
+   "class": "never official",
+   "enSegments": 5,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 5,
+   "reason": "[USER]: opinbera heitið er fermíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 5 bútum: vélþýðingin skrifar aldrei „fermíum“, heldur „fermín“ 5. Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 101,
+   "english": "mendelevium",
+   "lookup": "mendelevium",
+   "forms": [
+    "mendelevium"
+   ],
+   "icelandic": "mendelevíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 6,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 5,
+   "reason": "[USER]: opinbera heitið er mendelevíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 6 bútum: vélþýðingin skrifar „mendelevíum“ í 1 tilviki en annað í 5 tilvikum („mendelevín“ 5). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 102,
+   "english": "nobelium",
+   "lookup": "nobelium",
+   "forms": [
+    "nobelium"
+   ],
+   "icelandic": "nóbelíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 7,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 6,
+   "reason": "[USER]: opinbera heitið er nóbelíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 7 bútum: vélþýðingin skrifar „nóbelíum“ í 1 tilviki en annað í 6 tilvikum („nóbelín“ 6). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 103,
+   "english": "lawrencium",
+   "lookup": "lawrencium",
+   "forms": [
+    "lawrencium"
+   ],
+   "icelandic": "lawrensíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 7,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 6,
+   "reason": "[USER]: opinbera heitið er lawrensíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 7 bútum: vélþýðingin skrifar „lawrensíum“ í 1 tilviki en annað í 6 tilvikum („lawrensín“ 6). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 104,
+   "english": "rutherfordium",
+   "lookup": "rutherfordium",
+   "forms": [
+    "rutherfordium"
+   ],
+   "icelandic": "rutherfordíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 6,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 5,
+   "reason": "[USER]: opinbera heitið er rutherfordíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 6 bútum: vélþýðingin skrifar „rutherfordíum“ í 1 tilviki en annað í 5 tilvikum („rutherfordín“ 5). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 105,
+   "english": "dubnium",
+   "lookup": "dubnium",
+   "forms": [
+    "dubnium"
+   ],
+   "icelandic": "dubníum",
+   "mode": "add",
+   "class": "never official",
+   "enSegments": 5,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 5,
+   "reason": "[USER]: opinbera heitið er dubníum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 5 bútum: vélþýðingin skrifar aldrei „dubníum“, heldur „dubnín“ 5. Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 106,
+   "english": "seaborgium",
+   "lookup": "seaborgium",
+   "forms": [
+    "seaborgium"
+   ],
+   "icelandic": "seaborgíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 7,
+   "officialOccurrences": 2,
+   "nonOfficialOccurrences": 5,
+   "reason": "[USER]: opinbera heitið er seaborgíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 7 bútum: vélþýðingin skrifar „seaborgíum“ í 2 tilvikum en annað í 5 tilvikum („seaborgín“ 5). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 107,
+   "english": "bohrium",
+   "lookup": "bohrium",
+   "forms": [
+    "bohrium"
+   ],
+   "icelandic": "bohríum",
+   "mode": "add",
+   "class": "never official",
+   "enSegments": 4,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 4,
+   "reason": "[USER]: opinbera heitið er bohríum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 4 bútum: vélþýðingin skrifar aldrei „bohríum“, heldur „bohrín“ 4. Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 108,
+   "english": "hassium",
+   "lookup": "hassium",
+   "forms": [
+    "hassium"
+   ],
+   "icelandic": "hassíum",
+   "mode": "add",
+   "class": "never official",
+   "enSegments": 4,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 4,
+   "reason": "[USER]: opinbera heitið er hassíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 4 bútum: vélþýðingin skrifar aldrei „hassíum“, heldur „hassín“ 4. Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 109,
+   "english": "meitnerium",
+   "lookup": "meitnerium",
+   "forms": [
+    "meitnerium"
+   ],
+   "icelandic": "meitneríum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 6,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 5,
+   "reason": "[USER]: opinbera heitið er meitneríum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 6 bútum: vélþýðingin skrifar „meitneríum“ í 1 tilviki en annað í 5 tilvikum („meitnerín“ 5). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 110,
+   "english": "darmstadtium",
+   "lookup": "darmstadtium",
+   "forms": [
+    "darmstadtium"
+   ],
+   "icelandic": "darmstadtíum",
+   "mode": "add",
+   "class": "never official",
+   "enSegments": 4,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 4,
+   "reason": "[USER]: opinbera heitið er darmstadtíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 4 bútum: vélþýðingin skrifar aldrei „darmstadtíum“, heldur „darmstadtín“ 4. Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 111,
+   "english": "roentgenium",
+   "lookup": "roentgenium",
+   "forms": [
+    "roentgenium"
+   ],
+   "icelandic": "röntgeníum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 5,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 4,
+   "reason": "[USER]: opinbera heitið er röntgeníum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 5 bútum: vélþýðingin skrifar „röntgeníum“ í 1 tilviki en annað í 4 tilvikum („röntgenín“ 4). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 112,
+   "english": "copernicium",
+   "lookup": "copernicium",
+   "forms": [
+    "copernicium"
+   ],
+   "icelandic": "kópernikíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 6,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 5,
+   "reason": "[USER]: opinbera heitið er kópernikíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 6 bútum: vélþýðingin skrifar „kópernikíum“ í 1 tilviki en annað í 5 tilvikum („kópernikín“ 5). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 114,
+   "english": "flerovium",
+   "lookup": "flerovium",
+   "forms": [
+    "flerovium"
+   ],
+   "icelandic": "fleróvíum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 7,
+   "officialOccurrences": 2,
+   "nonOfficialOccurrences": 5,
+   "reason": "[USER]: opinbera heitið er fleróvíum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 7 bútum: vélþýðingin skrifar „fleróvíum“ í 2 tilvikum en annað í 5 tilvikum („fleróvín“ 5). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  },
+  {
+   "n": 116,
+   "english": "livermorium",
+   "lookup": "livermorium",
+   "forms": [
+    "livermorium"
+   ],
+   "icelandic": "livermoríum",
+   "mode": "add",
+   "class": "unreliable",
+   "enSegments": 5,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 4,
+   "reason": "[USER]: opinbera heitið er livermoríum (Vísindavefurinn 89909; ákvörðun docs/decisions/2026-11-20-official-element-names-visindavefur.md; §C73-úrskurður 2026-11-21, §C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md). Talið í 5 bútum: vélþýðingin skrifar „livermoríum“ í 1 tilviki en annað í 4 tilvikum („livermorín“ 4). Úrskurðað 2026-11-21.",
+   "source": "Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909"
+  }
+ ]
+}

@@ -78,6 +78,9 @@ python3 -I check-anchoring.py ../data/comparison-official-vs-resolver.json ../..
 # 11. the draft §C73 recommendations for the 68 names with no chemistry row:
 python3 -I build-c73-recommendations.py ../data/comparison-official-vs-resolver.json \
     ../data/render-census-69-names.json ../reports/c73-entry-recommendations
+# 12. the 59 entry drafts of the §C73 ruling:
+python3 -I build-c73-entries.py ../reports/c73-entry-recommendations.json ../data/render-census-69-names.json \
+    ../data/comparison-official-vs-resolver.json ../reports/c73-entries
 ```
 
 In the sections below, paths are relative to `evidence/2026-11-20-census/`.
@@ -353,6 +356,25 @@ are left out.
 warn on a segment that uses the official name only in a compound, so the report suggests entering
 one and reading its warnings first. None of these names has a chemistry row, so each entry is an
 *add*, which gets no worklist from the page; the segment fixes come from measurements 8–9.
+
+### 12. The 59 book glossary entries of the §C73 ruling
+
+Drafts for the head-editor page, not a measurement. [USER] accepted the §C73 draft (item 11) as is on
+2026-11-21, so these 59 element names get a book glossary entry. `instruments/build-c73-entries.py`
+builds them from the accepted recommendation, the census and the official list.
+→ `reports/c73-entries.md` (the steps, the table and the 59 reasons), `reports/c73-entries.json`
+
+- **Every entry is an *add*.** None of the 59 has a chemistry row to replace, so the page gives no
+  worklist.
+- **Checked read-only on production on 2026-11-21:** none of the 60 English forms (the 59 plus
+  *cesium*) resolves in chemistry, is excluded as a whole headword, has a `book_term_preference` row
+  or is claimed by a book entry; none is a house-style term.
+- **Caesium** is looked up by OpenStax's spelling, *cesium*, with *caesium* as a second English form.
+- **The reasons** follow change 6's convention: `[USER]:`, the official name, the decision record,
+  the ruling (§C245), that name's measurement-4 counts in Icelandic, and the ruling date.
+- **Order of work:** merge #756, paste the editors' fix drafts, enter **magnesium first** and read
+  its term warnings (the ruling's compound check), then enter the rest in one sitting (one export
+  hold and release).
 
 ## Blind spots
 
