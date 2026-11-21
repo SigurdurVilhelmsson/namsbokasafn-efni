@@ -43,7 +43,17 @@
       - **`scripts/backup-db.sh`** runs `editorial-retention.js --write` before its checkpoint and copy. It finds node with `/usr/bin` first, as `research-backup.sh` does, and a failure is logged without stopping the backup.
       - **`/api/health` gains `checks.retention`** (`server/lib/retentionHealth.js`). It is not ok when a step has been due and unrecorded past 14 h, which is two backup cycles plus margin, re-derived from `install-cron.sh` in the test. It is also not ok at once while a refusal stands. Before 2029 it is ok and reads no table. **It says only which steps are due or overdue and whether a refusal stands: no table, reason or count**, because the endpoint is public and a reason on a research table would say that someone consented (security review, 2026-11-21, fixed test-first). Which refusal stands: the script's dry run on the server.
       - Twelve tests, including the existing `backup-db.sh` suite. Mutants, all killed: the backup stopping on a failed retention, refusals ignored, overdue ignored, details leaking.
-      - Tasks 2–8 have had no fresh review yet. It is due before anything beyond #772 is pushed.
+    - ✅ **G1.15(b) is BUILT: Tasks 1–9, all test-first.** Task 1 is draft PR #772; Tasks 2–8 are LOCAL on `feat/g115b-glossary-record-role`, unpushed, and not yet reviewed. The plan is `docs/superpowers/plans/2026-11-21-g115b-retention-dates.md`, whose "as built" notes record each departure. `docs/technical/architecture.md` § *Retention of editors' data* names each part's owner.
+      - **Next:** a fresh whole-branch review of Tasks 2–8. After it, [USER] decides how they reach `main`: on #772, or as their own PR after it.
+      - **Deploy steps:**
+        - The first glossary export after #772 deploys rewrites every time in `book-glossary.json` to its date: one expected diff.
+        - Tasks 2–8 act on nothing before 2029-01-01: `checks.retention` is ok and every step returns before reading a table.
+        - From 2030-01-01 the research deletion is armed (`RETENTION_DATE` is set), and the derived-dataset guard still applies.
+        - `backup-db.sh` needs `server/node_modules` installed, which deploy does.
+      - **Left outside, and still open:**
+        - G1.20's 12-month backup cap. A backup taken before a step still holds the names until it ages out.
+        - The production log limits ([USER]'s change).
+        - The consent draft's item 14 wording: *names removed*, not *anonymous*.
     - ⚠️ **That glossary-record change ships first, ahead of the dates:** each head-editor decision recorded before it commits a display name to public git history for good. Today all 152 of production's glossary change rows are the c19 loader's (read 2026-11-21).
     - Two dependencies sit outside the design: G1.20's 12-month backup cap, and the production log limits, which stay a production change for [USER].
     - The private consent draft's item 14 needs one wording change: names are removed after 2028 and the records are kept without them (*names removed*, not *anonymous*).
