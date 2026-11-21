@@ -21,7 +21,7 @@ RULING = '§C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md'
 SOURCE = 'Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909'
 NOISE = {'kalkstein', 'aktiníðaröðin', 'alúmín'}
 EXTRA = {'beryllium': {'berillíum': 2, 'Berillínatómið': 1}, 'hafnium': {'hafnfn': 4}}
-FIRST = 'magnesium'  # [USER]'s ruling: enter one frequent name first and read its warnings
+FIRST = 'magnesium'  # entered first once the hold lifts: the check that compounds no longer warn (measurement 14)
 
 aliases = {}
 for it in cmp_['items']:
@@ -97,13 +97,17 @@ md = ["# The 59 book glossary entries of the §C73 ruling (drafts, 2026-11-21)",
       "will offer only *Til hliðar*, with no confirmation.", '',
       '## Order of work', '',
       '1. **Merge #756 first.** The reasons cite the decision record and §C245 by their repo paths.',
-      "2. **Paste the editors' fix drafts first** (`editor-fixes*-paste.txt`). Then the term check's warnings after step 3 are not "
-      'mixed with segments that still hold a non-official form.',
-      f'3. **Enter {FIRST} first and read its warnings** (the ruling). The editor\'s term check expects the official name wherever '
-      'the English names the element; a warning on a segment that uses the official name only inside a compound means the check '
-      'does not see compounds. Stop and tell Claude if that happens.',
-      '4. **Then enter the rest in one sitting.** Adding entries moves the book layer, so chemistry\'s next cron export is held '
-      "(`refused-layer-change`) until it is released with the register's four-line runbook; one sitting means one release.", '',
+      "2. **Paste the editors' fix drafts** (`editor-fixes*-paste.txt`). They do not wait for the hold in step 3.",
+      "3. **Hold: do not enter the 59 yet** ([USER]'s ruling, 2026-11-21). The editor's term check accepts a term only as a whole "
+      'word, so these entries would raise 151 advisory warnings, across 19 names, on segments that hold the official name only '
+      'inside a closed compound (`magnesíumhýdroxíð`; measurement 14, `termcheck-dryruns.md`). Enter them only once the term check '
+      'accepts a word that starts with the term; that change is tracked in register §C245. ✏️ *Until 2026-11-21 this step said to '
+      'enter magnesium first, read its warnings and stop if a compound warned; measurement 14 measured exactly that, and the ruling '
+      'followed.*',
+      f'4. **When the hold lifts, enter {FIRST} first** and check that its 43 compound segments (listed in `termcheck-dryruns.md`) '
+      "no longer warn; **then enter the rest in one sitting.** Adding entries moves the book layer, so chemistry's next cron "
+      "export is held (`refused-layer-change`) until it is released with the register's four-line runbook; one sitting means one "
+      'release.', '',
       '## For every entry', '',
       '- **Enskt orð:** the English headword, then *Fletta*; then *Setja þýðingu bókar*.',
       '- **Íslensk þýðing bókarinnar:** the official name.',

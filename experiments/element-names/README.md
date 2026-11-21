@@ -397,9 +397,11 @@ builds them from the accepted recommendation, the census and the official list.
 - **Caesium** is looked up by OpenStax's spelling, *cesium*, with *caesium* as a second English form.
 - **The reasons** follow change 6's convention: `[USER]:`, the official name, the decision record,
   the ruling (§C245), that name's measurement-4 counts in Icelandic, and the ruling date.
-- **Order of work:** merge #756, paste the editors' fix drafts, enter **magnesium first** and read
-  its term warnings (the ruling's compound check), then enter the rest in one sitting (one export
-  hold and release).
+- **Order of work:** merge #756 and paste the editors' fix drafts, then **hold the 59** ([USER]'s
+  ruling, 2026-11-21) until the term check accepts a word that starts with the term (measurement
+  14). When the hold lifts, enter magnesium first and check that its 43 compound segments no longer
+  warn, then enter the rest in one sitting (one export hold and release). ✏️ *Until 2026-11-21 this
+  said to enter magnesium first and read its term warnings.*
 - **Inflections** (✏️ *corrected 2026-11-21; the page had said that only superheavy names lack BÍN
   forms*). The page starts the BÍN lookup by itself after each add (`routes/book-glossary.js`);
   *Sækja beygingar* only retries it. `instruments/bin-outcomes-c73.cjs` runs the page's own chooser
@@ -467,6 +469,8 @@ the text as it is and with the fix drafts of measurements 7–9 overlaid. → `r
   warnings. This is read from the code, not run.
 - **Not in the runs:** the nine replacement entries (§C245 ①), and measurement 13's draft, which came
   after.
+- **[USER] ruled on 2026-11-21 to hold the 59 adds** until the term check accepts a word that starts
+  with the term (register §C245; step 3 of `reports/c73-entries.md`).
 
 ## Blind spots
 
