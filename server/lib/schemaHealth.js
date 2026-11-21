@@ -150,6 +150,8 @@ const EXPECTED_SCHEMA = deepFreeze({
       'reason',
       'source',
     ],
+    // G1.15(b) (migration 059): one row per finished retention step
+    retention_runs: ['kind', 'done_at_ms', 'rows_changed'],
   },
   // An existing table → the columns the migrations add to it.
   columns: {
