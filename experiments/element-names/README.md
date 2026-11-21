@@ -39,8 +39,9 @@ listed 170 units, none of them unreadable.
 Everything this measurement used is kept in `evidence/2026-11-20-census/`: `instruments/` (the scripts),
 `data/` (each output as returned, with a `_meta` block added and absolute production paths removed)
 and `reports/` (the segment tables). The instruments load AGPL `server/` code, so they sit in a dated
-`evidence/` folder. The root `LICENSE` keeps those outside its list of MIT→AGPL edges: they replay
-one past measurement and are not tooling.
+`evidence/` folder. The root `LICENSE` lists them among its MIT→AGPL edges: they are run, never imported, so
+every run needs `server/`. ✏️ *Until 2026-11-21 this said `LICENSE` kept them outside that list; it has listed
+them since #757.*
 ✏️ *Until 2026-11-21 three files in `data/` still held production's absolute repo path, despite the line above:
 `termcheck-dryrun-magnesium.json` and `termcheck-dryrun-c73.json` (in `dbPath` and `opened`) and `inner-targets.json`
 (in `openedDbPaths`). It is now replaced by `<repo>` in them, five occurrences in all, and nothing else in those
@@ -119,6 +120,9 @@ python3 -I summarise-c246-census.py <raw output> ../reports/c246-census.md [<ear
 # 16. the options census for §C246's two open questions: send c246-options.cjs on stdin to production the same way,
 #     keep its raw output (not committed), then:
 python3 -I summarise-c246-options.py <raw output> ../reports/c246-options.md [<measurement-15 raw output>]
+# 17. change 6's worklist fix drafts: send fetch-neptunium-targets.cjs on stdin to production the same way, keep
+#     its output as ../data/neptunium-targets.json (the production repo root replaced by <repo>), then:
+python3 -I build-neptunium-fixes.py ../data/neptunium-targets.json ../reports/editor-fixes-neptunium
 ```
 
 In the sections below, paths are relative to `evidence/2026-11-20-census/`.
@@ -554,6 +558,25 @@ a four-letter minimum, and the form `merki` excluded. → `reports/c246-options.
   whole-word) and B3 (the last-word rule)** (register §C246). Because alternatives remove nothing, A2 with B3
   removes what M2 removed: 4,451 of 31,573 warnings (14.1%), false range 1.3–6.0%, with no relabelling.
 - **Licensing.** As in measurement 15: aggregate counts and illustrative examples only.
+
+### 17. Editors' fix drafts for change 6's worklist (neptunium, 4 segments)
+
+Drafted 2026-11-21 from the effective Icelandic on production (read-only, `data/neptunium-targets.json`, from
+`instruments/fetch-neptunium-targets.cjs`; production at `69640a624`, the database file and checkout unchanged).
+Change 6 is the book entry *neptunium → neptúníum*; its worklist, run read-only the same day, lists four
+segments that still hold the old form `neptún`: the periodic-table image description, once each in ch 2, 18, 19
+and the appendices. → `reports/editor-fixes-neptunium.md`, `reports/editor-fixes-neptunium-paste.txt` (4 blocks),
+`reports/editor-fixes-neptunium.json`
+
+- **Built on the earlier drafts.** All four segments already have a draft in measurements 7-9, identical in all
+  three sets and pasted from `editor-fixes-paste.txt`. A paste replaces the whole segment, so
+  `instruments/build-neptunium-fixes.py` starts from that drafted text and changes exactly one word, `neptún` →
+  `neptúníum` (asserted per segment, and checked again against the earlier paste blocks). It also asserts that
+  each segment's text on production still equals the drafts' base or their drafted text; all four were not
+  yet pasted.
+- **Paste these four blocks instead of the blocks for the same segments in `editor-fixes-paste.txt`**, or after
+  them: each contains all of that set's fixes as well as this one. Once they are pasted, change 6's worklist
+  should list nothing, since it reads pending edits too.
 
 ## Blind spots
 

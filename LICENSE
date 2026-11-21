@@ -141,20 +141,20 @@ published.)*
 >      at module level, so importing the script runs it, and there is no fallback.
 >      It also hardcodes one machine's checkout path.
 >    - **`experiments/element-names/evidence/2026-11-20-census/instruments/`:
->      18 read-only instruments** require `server/` modules with no fallback.
+>      19 read-only instruments** require `server/` modules with no fallback.
 >      They are scripts that are run, never imported, so every run needs
 >      `server/`.
->      - **16 are sent on stdin to production** and run with the working
+>      - **17 are sent on stdin to production** and run with the working
 >        directory `server/scripts`. They reach `server/` as
 >        `path.resolve(process.cwd(), '..')` and require `lib/dbPath`,
 >        `lib/conceptResolver`, `lib/studyUnits`, `lib/worklistMatch`,
 >        `lib/binInflections`, `lib/bookGlossaryLayer`,
 >        `services/segmentParser`, `services/segmentEditorService` and
 >        `services/terminologyService` from it, in varying subsets.
->      - **The 16 files:** `elements-readonly.cjs`, `nine-readonly.cjs`,
+>      - **The 17 files:** `elements-readonly.cjs`, `nine-readonly.cjs`,
 >        `ruthenium-mt-forms-readonly.cjs`, `lanthanide-readonly.cjs`,
 >        `never-official-readonly.cjs`, `mixed-readonly.cjs`,
->        `render-census.cjs` (and its `render-census.template.cjs`), the four
+>        `render-census.cjs` (and its `render-census.template.cjs`), the five
 >        `fetch-*-targets.cjs`, the two `termcheck-dryrun-*.template.cjs` (filled
 >        by `build-termcheck-dryruns.py`), `c246-census.cjs` and `c246-options.cjs`.
 >      - **`c246-census.cjs` and `c246-options.cjs` also recompile
@@ -166,7 +166,8 @@ published.)*
 >
 >      *(Added 2026-11-21. The first 16 came with the evidence folder on its
 >      unmerged branch and were never listed here; the census instrument made
->      the 17th and the options census the 18th. The 16 stdin scripts name no
+>      the 17th and the options census the 18th; `fetch-neptunium-targets.cjs`, for
+>      change 6's fix drafts, made the 19th. The 17 stdin scripts name no
 >      `server` path at all, so none of
 >      the first five search shapes below finds them; the sixth does.)*
 >
