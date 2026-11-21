@@ -330,6 +330,38 @@ describe('regenSidecarSafe (final-review F1: revoke must refresh the stale sidec
   it('no-ops (never throws) when there is no faithful file yet', () => {
     expect(() => acceptance.regenSidecarSafe(BOOK, 1, MODULE)).not.toThrow();
   });
+
+  // G2.3 ([USER] 2026-11-08): "A revoke refreshes statuses without re-stamping." The revoke's own date
+  // would otherwise be written into the published file, which is the moment the ruling keeps out.
+  describe('G2.3: a revoke refreshes statuses without re-stamping', () => {
+    function applyThenRevoke(seedGenerated) {
+      accept('m00001:para:fs-id001', 'Fyrsta efnisgrein.');
+      vi.spyOn(pipelineStatusService, 'transitionStage').mockImplementation(() => {});
+      service.applyApprovedEdits(BOOK, 1, MODULE);
+      const p = acceptance.sidecarPathFor(BOOK, 1, MODULE);
+      const applied = JSON.parse(readFileSync(p, 'utf-8'));
+      writeFileSync(p, JSON.stringify({ ...applied, generated: seedGenerated }, null, 2) + '\n');
+      db.prepare(
+        `UPDATE segment_acceptances SET status = 'superseded', superseded_reason = 'revoked'`
+      ).run();
+      acceptance.regenSidecarSafe(BOOK, 1, MODULE);
+      return JSON.parse(readFileSync(p, 'utf-8'));
+    }
+
+    it('control: the revoke still refreshes the status', () => {
+      expect(applyThenRevoke('2026-01-02').segments['m00001:para:fs-id001'].status).toBe(
+        'carryover'
+      );
+    });
+
+    it('keeps the date the apply wrote', () => {
+      expect(applyThenRevoke('2026-01-02').generated).toBe('2026-01-02');
+    });
+
+    it("cuts a pre-G2.3 file's full timestamp to its own date, not today's", () => {
+      expect(applyThenRevoke('2026-01-02T09:30:00.000Z').generated).toBe('2026-01-02');
+    });
+  });
 });
 
 describe('getReviewedSegmentsByModule (final-review F3 extraction)', () => {

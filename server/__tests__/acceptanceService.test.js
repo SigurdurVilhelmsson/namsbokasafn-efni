@@ -615,16 +615,53 @@ describe('writeReviewStatusSidecar (spec §8)', () => {
       'm00001:para:fs-id002',
       'm00001:para:fs-id003',
     ]);
-    expect(sidecar.segments['m00001:para:fs-id001']).toEqual({
-      status: 'edited',
-      by: 'editor2',
-      at: '2026-07-19 10:00:00',
-    });
-    expect(sidecar.segments['m00001:para:fs-id002']).toMatchObject({
-      status: 'accepted',
-      by: 'editor1',
-    });
+    // G2.3 ([USER] 2026-11-08): a status and nothing else, so the file names no one and gives no time.
+    expect(sidecar.segments['m00001:para:fs-id001']).toEqual({ status: 'edited' });
+    expect(sidecar.segments['m00001:para:fs-id002']).toEqual({ status: 'accepted' });
     expect(sidecar.segments['m00001:para:fs-id003']).toEqual({ status: 'carryover' });
+  });
+
+  // G2.3, checked by value: the planted usernames and the planted time of day must be absent from the
+  // whole file, in any field. The control is the file's own statuses, which must be present.
+  describe('G2.3: the sidecar names no one and gives no time', () => {
+    let text;
+    beforeEach(() => {
+      writeFaithful([
+        ['m00001:para:fs-id001', 'Breytt og birt.'],
+        ['m00001:para:fs-id002', 'Önnur efnisgrein.'],
+      ]);
+      db.prepare(
+        `INSERT INTO segment_edits
+           (book, chapter, module_id, segment_id, original_content, edited_content,
+            editor_id, editor_username, status, reviewed_at, applied_at)
+         VALUES (?, 1, ?, 'm00001:para:fs-id001', 'x', 'Breytt og birt.',
+                 'u2', 'editor2', 'approved', '2026-07-19 10:17:43', '2026-07-19 10:05:00')`
+      ).run(BOOK, MODULE);
+      accept('m00001:para:fs-id002', 'Önnur efnisgrein.');
+      text = readFileSync(acceptance.writeReviewStatusSidecar(BOOK, 1, MODULE), 'utf-8');
+    });
+
+    it('control: both planted statuses reach the file', () => {
+      const statuses = Object.values(JSON.parse(text).segments).map((s) => s.status);
+      expect(statuses).toEqual(['edited', 'accepted']);
+    });
+
+    it("carries no editor's username", () => {
+      expect(text.includes('editor1') || text.includes('editor2')).toBe(false);
+    });
+
+    it('carries no time of day', () => {
+      expect(text).not.toMatch(/\d{2}:\d{2}/);
+    });
+
+    it('cuts `generated` to the date', () => {
+      expect(JSON.parse(text).generated).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    });
+
+    it('dates `generated` today (UTC)', () => {
+      const today = new Date().toISOString().slice(0, 10);
+      expect(JSON.parse(text).generated).toBe(today);
+    });
   });
 
   it('an active acceptance outranks an older applied edit on the same segment (restore edge)', () => {
