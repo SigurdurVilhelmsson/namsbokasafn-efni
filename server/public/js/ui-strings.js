@@ -660,7 +660,7 @@ const UI = {
     reasonLabel: 'Ástæða',
     sourceLabel: 'Heimild (má sleppa), t.d. „íðorðanefnd, tillaga 3.12.2026“',
     publicNotice:
-      'Ástæðan, heimildin og nafn þitt birtast í opinberri skrá verkefnisins (book-glossary.json á GitHub). Ekki vitna í hafnað orð úr Íðorðabankanum í ástæðunni.',
+      'Ástæðan og heimildin birtast í opinberri skrá verkefnisins (book-glossary.json á GitHub). Þar stendur „aðalritstjóri“ en ekki nafn þitt. Ekki vitna í hafnað orð úr Íðorðabankanum í ástæðunni.',
     reasonRequired: 'Skráðu ástæðu.',
     submit: 'Vista',
     cancel: 'Hætta við',

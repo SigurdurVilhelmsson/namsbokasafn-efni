@@ -695,9 +695,9 @@ function buildBookGlossaryRecordBody(db, bookSlug) {
       domain: c ? c.domain : null,
       reason: e.reason,
       source: e.source,
-      createdBy: recordLabelFor(db, e.created_by),
+      createdBy: recordLabelFor(e.created_by),
       createdAt: recordDay(e.created_at),
-      updatedBy: e.updated_by === null ? null : recordLabelFor(db, e.updated_by),
+      updatedBy: e.updated_by === null ? null : recordLabelFor(e.updated_by),
       updatedAt: recordDay(e.updated_at),
     };
   });
@@ -719,14 +719,14 @@ function buildBookGlossaryRecordBody(db, bookSlug) {
       idordabankiId: e.idordabanki_id,
       reason: e.reason,
       source: e.source,
-      createdBy: recordLabelFor(db, e.created_by),
+      createdBy: recordLabelFor(e.created_by),
       createdAt: recordDay(e.created_at),
     })),
     entries,
     history: hist.map((h) => ({
       id: h.id,
       at: recordDay(h.at),
-      by: recordLabelFor(db, h.by),
+      by: recordLabelFor(h.by),
       action: h.action,
       english: h.english,
       before: withoutInflections(parseJson(h.before_json)),
@@ -770,24 +770,35 @@ function displayNameFor(db, by) {
 }
 
 /**
+ * The labels a pipeline tool writes as who decided, the only ones the committed record shows as written. The c19
+ * loader (server/scripts/load-book-glossary.js) takes its label from here. A new tool label is added here, with a
+ * test; until then the record writes it as aðalritstjóri.
+ */
+const C19_LOAD_LABEL = 'c19-load ([USER] rulings 2026-11-18)';
+const TOOL_LABELS = new Set([C19_LOAD_LABEL]);
+
+/** @param {unknown} by @returns {boolean} whether `by` is a known tool label rather than a person's act. */
+function isToolLabel(by) {
+  return TOOL_LABELS.has(by);
+}
+
+/**
  * The label the COMMITTED record shows for who decided (G1.15(b) spec §4.5; [USER] 2026-11-21; the glossary layer
  * spec's ✏️ note of 2026-11-21). The record goes to a public repository whose history cannot be stripped, and the
- * editors' consent text promises names are removed after 2028, so an account-made act is written as the authority
- * it required, never as a person. Every write route is behind requireHeadEditor('book'), so that authority is
- * aðalritstjóri for every act: fixed, so a later role change or a deleted account cannot rewrite a past row of
- * this cumulative record. An account id is one with a users row, or one shaped like an account (a GUID, or holding
- * an `@`) whose row is gone. Any other label, such as the c19 loader's, passes through. The head editor's own
- * screen keeps showing names through displayNameFor.
+ * editors' consent text promises names are removed after 2028, so an act is written as the authority it required,
+ * never as a person. Every write route is behind requireHeadEditor('book'), so that authority is aðalritstjóri for
+ * every act: fixed, so a later role change or a deleted account cannot rewrite a past row of this cumulative record.
  *
- * @param {object} db
- * @param {string} by An account id or a free-form label.
+ * It fails closed (final review, Important 3): a known tool label (TOOL_LABELS) passes through, and anything else,
+ * whether an account id of any shape, a retention placeholder or an unlisted label, is written as aðalritstjóri. A
+ * rule listing the shapes of an account id would let through the one nobody listed. The head editor's own screen
+ * keeps showing names through displayNameFor.
+ *
+ * @param {string} by An account id or a tool label.
  * @returns {string}
  */
-function recordLabelFor(db, by) {
-  const isAccount =
-    db.prepare('SELECT 1 FROM users WHERE provider_id = ?').get(by) !== undefined ||
-    (typeof by === 'string' && (GUID_SHAPE.test(by) || by.includes('@')));
-  return isAccount ? 'aðalritstjóri' : by;
+function recordLabelFor(by) {
+  return isToolLabel(by) ? by : 'aðalritstjóri';
 }
 
 /**
@@ -910,6 +921,8 @@ module.exports = {
   buildBookGlossaryRecord,
   displayNameFor,
   recordLabelFor,
+  isToolLabel,
+  C19_LOAD_LABEL,
   writeBookGlossaryRecord,
   createBookGlossaryRecordFn,
   lastLayerChangeId,

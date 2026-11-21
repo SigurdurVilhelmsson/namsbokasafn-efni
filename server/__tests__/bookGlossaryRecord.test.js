@@ -130,7 +130,7 @@ describe('buildBookGlossaryRecord / the export', () => {
       idordabankiId: 555,
       reason: 'because',
       source: 'test',
-      createdBy: 'tester',
+      createdBy: 'aðalritstjóri',
     });
     expect(rec.entries).toHaveLength(1);
     expect(rec.entries[0]).toMatchObject({
@@ -399,15 +399,27 @@ describe('the record shows the role, never a name', () => {
     expect(historyBys()).toEqual(['aðalritstjóri']);
   });
 
-  it('an account id with no users row, GUID- or email-shaped, is written as aðalritstjóri', () => {
-    expect(recordLabelFor(db, GUID)).toBe('aðalritstjóri');
-    expect(recordLabelFor(db, 'someone@skoli.example')).toBe('aðalritstjóri');
+  // Fail closed (final review, Important 3): only a known tool label is shown as written. Anything else is
+  // written as the authority, so an id the shape tests miss (a numeric id whose users row is gone, a retention
+  // placeholder, a label nobody listed) can never reach the public record.
+  it.each([
+    ['a GUID with no users row', GUID],
+    ['an email with no users row', 'someone@skoli.example'],
+    ['a numeric id whose users row is gone', '90123'],
+    ['a retention placeholder', 'fjarlægt-7'],
+    ['an unlisted free label', 'tester'],
+  ])('%s is written as aðalritstjóri', (_what, by) => {
+    expect(recordLabelFor(by)).toBe('aðalritstjóri');
   });
 
-  it('the c19 label and a free label pass through', () => {
+  it('a non-GUID account id with a users row is written as aðalritstjóri', () => {
+    addUser('acct-1', 'Jóna Jónsdóttir', 'head-editor');
+    expect(recordLabelFor('acct-1')).toBe('aðalritstjóri');
+  });
+
+  it("the c19 loader's label passes through", () => {
     const c19 = 'c19-load ([USER] rulings 2026-11-18)';
-    expect(recordLabelFor(db, c19)).toBe(c19);
-    expect(recordLabelFor(db, 'tester')).toBe('tester');
+    expect(recordLabelFor(c19)).toBe(c19);
   });
 
   it('every time a person acted is a date; generated stays a full time', () => {
@@ -480,7 +492,7 @@ describe('the record shows the role, never a name', () => {
       ...rec.entries.map((e) => e.updatedBy).filter((v) => v !== null),
     ];
     expect(names.length).toBeGreaterThan(0); // control
-    for (const v of names) expect(recordLabelFor(db, v)).toBe(v);
+    for (const v of names) expect(recordLabelFor(v)).toBe(v);
     expect(text).not.toContain('"inflections"');
   });
 });
