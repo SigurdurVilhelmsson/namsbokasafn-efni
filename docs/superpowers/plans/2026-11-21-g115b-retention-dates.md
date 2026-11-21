@@ -145,6 +145,11 @@ Expected: PASS
 - **Ruling (final review of Task 1, Important 1): the strip must leave the public glossary record unchanged.** Two consequences:
   - The `book_glossary_exclusion`, `book_glossary_entry` and `book_glossary_change` person columns (`created_by`, `updated_by`, `by`) are stripped **through the layer's write API**, never by SQL from `editorialRetention.js` (CLAUDE.md: the book layer is written only through `server/lib/bookGlossaryLayer.js`). Add `stripLayerPersons(db, { throughDay })` there; `applyStep('named')` calls it inside its own transaction. It skips every value for which `isToolLabel` is true, so the c19 loader's 152 rows keep their label.
   - A stripped account value becomes `fjarlægt-<rowid>`, which `recordLabelFor` writes as `aðalritstjóri` (it fails closed), and the layer's times are already days in the record. So the committed record is the same before and after.
+- **As built (2026-11-21):**
+  - The SQL lives in `server/lib/retentionStrip.js`, which requires nothing. The layer calls it from `stripLayerPersons` and `surveyLayerPersons`, so the require goes one way: core → layer → strip.
+  - `planStep`/`applyStep` return `refusals: [{ reason, table, rows }]`, not one `refusal`. The reasons are `later-records`, `unreadable-time`, `undated-name` and `unreadable-json`. Each is left as it is and reported, and the step still applies to everything else (fail closed).
+  - Every trigger on a strip table is dropped and recreated from `sqlite_master` inside the step's IMMEDIATE transaction. Four tables' triggers stamp `updated_at` with the current time.
+  - Times are cut only where they are covered. A time after the date is never touched, even in a stripped row.
 
 - [ ] Tests first, with a planting helper that writes one row per `SCOPE` table using names absent from `users`:
   - nothing changes before `effectiveMs`;

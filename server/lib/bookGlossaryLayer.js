@@ -29,6 +29,8 @@ const {
   preferenceBlocksExclusion,
   preferencesOnTermsOf,
 } = require('./bookGlossaryRules');
+const { SCOPE } = require('./editorialRetentionScope');
+const { surveyStrip, stripTable } = require('./retentionStrip');
 
 /** Every refusal code the write API (and the routes built on it) can throw. */
 const REFUSALS = Object.freeze([
@@ -801,6 +803,48 @@ function recordLabelFor(by) {
   return isToolLabel(by) ? by : 'aðalritstjóri';
 }
 
+/** The layer's tables, as the editorial retention scope names them (via: 'layer'). */
+const LAYER_TABLES = Object.freeze(Object.keys(SCOPE).filter((t) => SCOPE[t].via === 'layer'));
+
+/**
+ * What the editorial retention strip would do to the layer's tables, read-only (G1.15(b) plan Task 5).
+ *
+ * @param {object} db
+ * @param {{ day: string, effMs: number }} when
+ * @returns {Record<string, ReturnType<typeof surveyStrip>>} by table
+ */
+function surveyLayerPersons(db, when) {
+  return Object.fromEntries(
+    LAYER_TABLES.map((t) => [t, surveyStrip(db, t, SCOPE[t], { ...when, keep: [...TOOL_LABELS] })])
+  );
+}
+
+/**
+ * The editorial retention strip of the layer's own tables (G1.15(b) spec §4.3; plan Task 5 ruling): each person value
+ * dated on or before `day` becomes `fjarlægt-<rowid>` and its row's times are cut to the day. The layer is written only
+ * here (CLAUDE.md), so the retention core calls this rather than writing the tables by SQL.
+ *
+ * Two things keep the committed record (book-glossary.json) exactly as it was. A tool label (TOOL_LABELS) is never
+ * stripped, so the c19 loader's rows keep their label; a stripped value is written by recordLabelFor as aðalritstjóri,
+ * as the account was, and the record already shows days. And NO history row is written: the strip is not an editorial
+ * decision, and a book_glossary_change row would add an entry to the public history.
+ *
+ * Runs inside the caller's transaction (a nested savepoint if there is one).
+ *
+ * @param {object} db
+ * @param {{ day: string, effMs: number }} when
+ * @returns {{ changed: number }} rows whose person values were stripped
+ */
+function stripLayerPersons(db, when) {
+  return db.transaction(() => {
+    let changed = 0;
+    for (const t of LAYER_TABLES) {
+      changed += stripTable(db, t, SCOPE[t], { ...when, keep: [...TOOL_LABELS] }).changed;
+    }
+    return { changed };
+  })();
+}
+
 /**
  * The day a person acted, as the committed record shows it (G1.15(b) spec §4.5): the YYYY-MM-DD an ISO-shaped
  * time starts with, so the record cannot tie a decision to a person's working hours. null stays null.
@@ -923,6 +967,9 @@ module.exports = {
   recordLabelFor,
   isToolLabel,
   C19_LOAD_LABEL,
+  LAYER_TABLES,
+  surveyLayerPersons,
+  stripLayerPersons,
   writeBookGlossaryRecord,
   createBookGlossaryRecordFn,
   lastLayerChangeId,
