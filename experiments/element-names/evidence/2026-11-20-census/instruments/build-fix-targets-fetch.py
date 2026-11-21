@@ -7,11 +7,21 @@ segments still holding the old derived forms, data/lanthanide-census.json):
 Measurement 8 (every distinct segment of the 14 never-official names' dry lists, data/never-official-lists.json):
   python3 -I build-fix-targets-fetch.py --never-official nine-readonly.cjs ../data/never-official-lists.json fetch-never-official-targets.cjs
 Measurement 9 (every distinct segment of the 49 mixed names' dry lists, data/mixed-lists.json):
-  python3 -I build-fix-targets-fetch.py --mixed nine-readonly.cjs ../data/mixed-lists.json fetch-mixed-targets.cjs"""
+  python3 -I build-fix-targets-fetch.py --mixed nine-readonly.cjs ../data/mixed-lists.json fetch-mixed-targets.cjs
+Measurement 13 (the genuine hits of the inner-word scan, data/inner-non-official-scan.json):
+  python3 -I build-fix-targets-fetch.py --inner nine-readonly.cjs ../data/inner-non-official-scan.json fetch-inner-targets.cjs"""
 import json
 import sys
 
-if sys.argv[1] in ('--never-official', '--mixed'):
+if sys.argv[1] == '--inner':
+    src_path, scan_path, out_path = sys.argv[2:5]
+    targets, seen = [], set()
+    for h in json.load(open(scan_path, encoding='utf-8'))['genuine']:
+        if h['segmentId'] in seen:
+            continue
+        seen.add(h['segmentId'])
+        targets.append({'set': 'inner', 'chapter': h['chapter'], 'moduleId': h['moduleId'], 'segmentId': h['segmentId']})
+elif sys.argv[1] in ('--never-official', '--mixed'):
     set_name = sys.argv[1][2:]
     src_path, no_path, out_path = sys.argv[2:5]
     no = json.load(open(no_path, encoding='utf-8'))

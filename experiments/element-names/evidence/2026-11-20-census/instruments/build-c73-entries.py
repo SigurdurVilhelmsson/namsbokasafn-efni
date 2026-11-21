@@ -4,14 +4,17 @@ decision record and the ruling, with that name's measurement-4 counts.
 
 Usage (from this folder):
   python3 -I build-c73-entries.py ../reports/c73-entry-recommendations.json \\
-      ../data/render-census-69-names.json ../data/comparison-official-vs-resolver.json ../reports/c73-entries"""
+      ../data/render-census-69-names.json ../data/comparison-official-vs-resolver.json ../reports/c73-entries \\
+      ../data/c73-bin-outcomes.json
+../data/c73-bin-outcomes.json comes from bin-outcomes-c73.cjs (the page's own BÍN chooser)."""
 import json
 import sys
 
-rec_path, census_path, cmp_path, out = sys.argv[1:5]
+rec_path, census_path, cmp_path, out, bin_path = sys.argv[1:6]
 rec = json.load(open(rec_path, encoding='utf-8'))
 census = {r['english'][0]: r for r in json.load(open(census_path, encoding='utf-8'))['rows']}
 cmp_ = json.load(open(cmp_path, encoding='utf-8'))
+bin_rows = {r['english']: r for r in json.load(open(bin_path, encoding='utf-8'))['rows']}
 
 DECISION = 'docs/decisions/2026-11-20-official-element-names-visindavefur.md'
 RULING = '§C245 í docs/plans/2026-07-21-post-item17-followup-campaign.md'
@@ -66,6 +69,23 @@ for r in rec['rows']:
                     'officialOccurrences': off_n, 'nonOfficialOccurrences': non_n, 'reason': reason, 'source': SOURCE})
 
 entries.sort(key=lambda e: (e['english'] != FIRST, e['n']))
+
+def inflection_line():
+    """The BÍN line, from the page's own chooser (data/c73-bin-outcomes.json), not from memory."""
+    z = {e['english']: e['n'] for e in entries}
+    assert set(bin_rows) == set(z), 'the BÍN outcomes must cover exactly the 59 entries'
+    absent = sorted((r for r in bin_rows.values() if r['outcome'] == 'not-in-bin'), key=lambda r: z[r['english']])
+    refused = sorted((r for r in bin_rows.values() if r['outcome'].startswith('refused')), key=lambda r: z[r['english']])
+    heavy = [r['english'] for r in absent if z[r['english']] >= 104]
+    light = [r['english'] for r in absent if z[r['english']] < 104]
+    assert len(refused) == 1 and refused[0]['outcome'] == 'refused-ambiguous', refused
+    none_ = len(absent) + len(refused)
+    return (f"- **Inflections:** the page starts the BÍN lookup by itself after each add; *Sækja beygingar* only retries it. "
+            f"BÍN has no entry for {len(absent)} of the 59 ({', '.join(light)} and the {len(heavy)} superheavy names "
+            f"{', '.join(heavy)}), and gives {refused[0]['english']} {refused[0]['binEntries']} possible entries, so the lookup "
+            f"refuses it. These {none_} get no inflections: the term check accepts only their base form, so an inflected form "
+            "will warn. (✏️ Corrected 2026-11-21: this line said that only superheavy names lack BÍN forms.)")
+
 assert len(entries) == 59 and entries[0]['english'] == FIRST
 json.dump({'source': SOURCE, 'entries': entries}, open(out + '.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 
@@ -91,7 +111,7 @@ md = ["# The 59 book glossary entries of the §C73 ruling (drafts, 2026-11-21)",
       '- **Mode:** *Til hliðar (núverandi orð er áfram leyfilegt)*, which is the only option.',
       f'- **Heimild:** `{SOURCE}`',
       '- **Worklist:** none. The page gives an add no worklist; the segment fixes are the editors\' fix drafts.',
-      '- *Sækja beygingar* is optional. Superheavy names are not in BÍN, so it finds no inflections for them.', '',
+      inflection_line(), '',
       '## The 59', '',
       '| # | Enskt orð | Enskar orðmyndir | Íslensk þýðing | Class | Segments |', '|---:|---|---|---|---|---:|']
 for k, e in enumerate(entries, 1):

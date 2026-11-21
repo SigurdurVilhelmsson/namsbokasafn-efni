@@ -1,9 +1,12 @@
 """Check that every name fix in a set of editors' fix drafts sits in a segment whose ENGLISH names that
 element. The rule script fixes every off-list name in a segment, and a few non-official bases are also
-ordinary words (serín is serine too), so an unanchored change would be a wrong one.
+ordinary words (serín is serine too), so an unanchored change would be a wrong one. A change maps to its element by
+the official form the new word starts with; failing that (a name inside a compound, measurement 13), by the longest
+official form of at least 5 letters it contains, so short names like `ál` cannot match inside ordinary words.
 Usage (from this folder):
   python3 -I check-anchoring.py ../data/comparison-official-vs-resolver.json ../../../../../books/efnafraedi-2e/02-for-mt \\
-      ../reports/editor-fixes.json ../reports/editor-fixes-never-official.json ../reports/editor-fixes-mixed.json
+      ../reports/editor-fixes.json ../reports/editor-fixes-never-official.json ../reports/editor-fixes-mixed.json \\
+      ../reports/editor-fixes-inner.json
 Prints the count of unanchored changes per file and exits 1 if any exist."""
 import glob
 import json
@@ -28,6 +31,8 @@ for path in drafts:
         en = EN.get(r['segmentId'], '').lower()
         for old, new in r['names'] + r.get('hand', []):  # hand fixes too (step H)
             off = max((o for o in off2en if new.lower().startswith(o)), key=len, default=None)
+            if off is None:  # a name inside a compound
+                off = max((o for o in off2en if len(o) >= 5 and o in new.lower()), key=len, default=None)
             if off is None or not any(re.search(r'(?<![a-z])' + re.escape(a) + r'(?![a-z])', en) for a in off2en[off]):
                 bad.append((r['segmentId'], old, new))
     print(f'{path.rsplit("/", 1)[-1]}: {len(bad)} unanchored name changes')

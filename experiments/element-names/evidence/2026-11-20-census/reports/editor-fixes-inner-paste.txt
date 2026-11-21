@@ -1,0 +1,2 @@
+=== m68742:para:fs-idp122770240 (ch 7) ===
+Sem einfalt dæmi um VSEPR-kenninguna skulum við spá fyrir um byggingu BeF[[sub:2]]-sameindar á gasformi. Lewis-bygging BeF[[sub:2]] ([[xref:CNX_Chem_07_06_BeF2]]) sýnir aðeins tvö rafeindapör í kringum miðberyllíumatómið. Með tvö tengi og engin stök rafeindapör á miðatóminu eru tengin eins langt í sundur og mögulegt er og rafstöðufráhrindingin milli þessara svæða með háan rafeindaþéttleika er minnkuð í lágmark þegar þau eru á gagnstæðum hliðum miðatómsins. Bindishornið er 180° ([[xref:CNX_Chem_07_06_BeF2]]).

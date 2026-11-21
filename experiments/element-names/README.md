@@ -72,15 +72,27 @@ python3 -I build-fix-targets-fetch.py --mixed nine-readonly.cjs ../data/mixed-li
 python3 -I build-editor-fixes.py ../data/mixed-targets.json ../data/comparison-official-vs-resolver.json \
     ../data/render-census-69-names.json ../data/dry-counts-9-names.json bin.json \
     ../reports/editor-fixes-mixed ../reports/editor-fixes.json ../reports/editor-fixes-never-official.json
-# every name fix and hand fix in measurements 7–10 sits in a segment whose English names that element (exit 1 if not):
+# measurement 13 (after measurements 7–9; the scan reads their drafts):
+python3 -I scan-inner-non-official.py ../data/render-census-69-names.json ../data/comparison-official-vs-resolver.json \
+    ../data/mixed-lists.json ../data/never-official-lists.json ../../../../../books/efnafraedi-2e/02-mt-output \
+    ../data/inner-non-official-scan.json ../reports/editor-fixes.json ../reports/editor-fixes-never-official.json \
+    ../reports/editor-fixes-mixed.json
+python3 -I build-fix-targets-fetch.py --inner nine-readonly.cjs ../data/inner-non-official-scan.json fetch-inner-targets.cjs
+python3 -I build-editor-fixes.py ../data/inner-targets.json ../data/comparison-official-vs-resolver.json \
+    ../data/render-census-69-names.json ../data/dry-counts-9-names.json bin.json \
+    ../reports/editor-fixes-inner ../reports/editor-fixes.json ../reports/editor-fixes-never-official.json \
+    ../reports/editor-fixes-mixed.json
+# every name fix and hand fix in measurements 7–10 and 13 sits in a segment whose English names that element (exit 1 if not):
 python3 -I check-anchoring.py ../data/comparison-official-vs-resolver.json ../../../../../books/efnafraedi-2e/02-for-mt \
-    ../reports/editor-fixes.json ../reports/editor-fixes-never-official.json ../reports/editor-fixes-mixed.json
+    ../reports/editor-fixes.json ../reports/editor-fixes-never-official.json ../reports/editor-fixes-mixed.json \
+    ../reports/editor-fixes-inner.json
 # 11. the draft §C73 recommendations for the 68 names with no chemistry row:
 python3 -I build-c73-recommendations.py ../data/comparison-official-vs-resolver.json \
     ../data/render-census-69-names.json ../reports/c73-entry-recommendations
-# 12. the 59 entry drafts of the §C73 ruling:
+# 12. the 59 entry drafts of the §C73 ruling (the BÍN outcomes need SHsnid.csv, unpacked from your own download):
+node bin-outcomes-c73.cjs <SHsnid.csv> ../reports/c73-entries.json ../data/c73-bin-outcomes.json
 python3 -I build-c73-entries.py ../reports/c73-entry-recommendations.json ../data/render-census-69-names.json \
-    ../data/comparison-official-vs-resolver.json ../reports/c73-entries
+    ../data/comparison-official-vs-resolver.json ../reports/c73-entries ../data/c73-bin-outcomes.json
 ```
 
 In the sections below, paths are relative to `evidence/2026-11-20-census/`.
@@ -375,6 +387,42 @@ builds them from the accepted recommendation, the census and the official list.
 - **Order of work:** merge #756, paste the editors' fix drafts, enter **magnesium first** and read
   its term warnings (the ruling's compound check), then enter the rest in one sitting (one export
   hold and release).
+- **Inflections** (✏️ *corrected 2026-11-21; the page had said that only superheavy names lack BÍN
+  forms*). The page starts the BÍN lookup by itself after each add (`routes/book-glossary.js`);
+  *Sækja beygingar* only retries it. `instruments/bin-outcomes-c73.cjs` runs the page's own chooser
+  (`server/lib/binInflections`) over BÍN and writes only each name's outcome and number of forms
+  → `data/c73-bin-outcomes.json`. **46 names get forms; 12 are not in BÍN** (protactinium, curium,
+  lawrencium and nine superheavy names), **and lutetium has two BÍN entries, so it is refused.** The
+  line in `reports/c73-entries.md` is now generated from that file. The outcomes matched the same
+  chooser run read-only on production against its own copy of `SHsnid.csv` (same size, 376,901,553 bytes).
+
+### 13. A non-official name inside a compound (beryllium, 1 segment)
+
+Found on 2026-11-21 by a read-only dry run of the editor's term check for the 59 adds on production
+(not committed). One of its warnings was not a compound: `miðberyllínatómið` in
+`m68742:para:fs-idp122770240` (ch 7, "around the central beryllium atom"). The non-official
+`beryllín` sits inside the compound. The census (measurement 4), and the dry lists and drafts built
+on it (measurements 6–9), look for a non-official form only at the start of a word, so none of them
+saw it.
+
+- **The scan.** `instruments/scan-inner-non-official.py` reads every segment of the committed MT
+  for the 69 census names' non-official bases of five or more letters inside a word, and gives each
+  hit a verdict → `data/inner-non-official-scan.json`. **59 hits, 1 genuine.**
+  - 16 start with another name's non-official base, a form the census already counts (`ytterbín`).
+  - 42 are not element names: `glýserín` 15, `strikalína` 12, `alkalínrafhlaða` 11, `enteróbaktín` 4.
+  - The genuine hit is the beryllium word, which is in no earlier draft.
+- **The fetch.** `fetch-inner-targets.cjs` (from `build-fix-targets-fetch.py --inner`) read the
+  segment's effective text read-only on production. It had no live edit. → `data/inner-targets.json`
+- **[USER] ruled on 2026-11-21 that it reads `miðberyllíumatómið`.** The rule script holds it in the
+  hand-fix table beside `hafnfn`, and the check after the hand step now covers every hand-fix word.
+  Nothing else in the segment changes. → `reports/editor-fixes-inner.md`,
+  `reports/editor-fixes-inner-paste.txt` (1 block), `reports/editor-fixes-inner.json`
+- **Measurements 7–9 rebuild byte for byte** with the changed rule script, since the new hand fix
+  occurs in none of their segments.
+- **`check-anchoring.py` now finds a name inside a compound too.** When no official form starts the
+  new word, it takes the longest official form of five or more letters that the word contains. It
+  reports 0 unanchored in all four sets, and the first three sets' results are unchanged.
+- The segment is in none of the nine entries' worklists.
 
 ## Blind spots
 
@@ -402,6 +450,10 @@ builds them from the accepted recommendation, the census and the official list.
   protactinium, though none occurred. Weak and unshaped words are listed, never counted. A garble
   is visible only if it shares 4 letters with the name (`hafnfn` did). Because of that garble,
   hafnium's "all official" covers 1 occurrence.
+- **A non-official form inside a compound was invisible until measurement 13.** Its scan reads the
+  committed MT, not pending edits. It knows only the census's non-official bases of five or more
+  letters, skips any word holding an official name, and excludes the words it lists as not element
+  names. A spelling the census never saw is still invisible.
 - **The official list is parsed, not transcribed.** The page carries the table twice; both copies
   were identical. The þ spellings (`liþíum`, `rúþeníum`, `lanþan`, `prómeþíum`, `þallíum`) are where
   a transcription drifts.

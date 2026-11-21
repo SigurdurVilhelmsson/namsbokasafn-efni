@@ -17,7 +17,7 @@
 - **Mode:** *Til hliðar (núverandi orð er áfram leyfilegt)*, which is the only option.
 - **Heimild:** `Vísindavefurinn, svar 89909 (13.11.2026), https://www.visindavefur.is/svar.php?id=89909`
 - **Worklist:** none. The page gives an add no worklist; the segment fixes are the editors' fix drafts.
-- *Sækja beygingar* is optional. Superheavy names are not in BÍN, so it finds no inflections for them.
+- **Inflections:** the page starts the BÍN lookup by itself after each add; *Sækja beygingar* only retries it. BÍN has no entry for 12 of the 59 (protactinium, curium, lawrencium and the 9 superheavy names rutherfordium, dubnium, seaborgium, bohrium, meitnerium, darmstadtium, roentgenium, flerovium, livermorium), and gives lutetium 2 possible entries, so the lookup refuses it. These 13 get no inflections: the term check accepts only their base form, so an inflected form will warn. (✏️ Corrected 2026-11-21: this line said that only superheavy names lack BÍN forms.)
 
 ## The 59
 

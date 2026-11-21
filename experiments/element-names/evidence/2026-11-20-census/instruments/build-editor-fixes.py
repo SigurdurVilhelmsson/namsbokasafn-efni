@@ -16,6 +16,11 @@ Usage (from this folder):
   python3 -I build-editor-fixes.py ../data/mixed-targets.json ../data/comparison-official-vs-resolver.json \\
       ../data/render-census-69-names.json ../data/dry-counts-9-names.json <bin-official.json> \\
       ../reports/editor-fixes-mixed ../reports/editor-fixes.json ../reports/editor-fixes-never-official.json
+  measurement 13 (the inner-word scan's genuine hit; all three earlier sets mark the overlap):
+  python3 -I build-editor-fixes.py ../data/inner-targets.json ../data/comparison-official-vs-resolver.json \\
+      ../data/render-census-69-names.json ../data/dry-counts-9-names.json <bin-official.json> \\
+      ../reports/editor-fixes-inner ../reports/editor-fixes.json ../reports/editor-fixes-never-official.json \\
+      ../reports/editor-fixes-mixed.json
 <bin-official.json> comes from extract-bin-forms.py and your own BÍN download; it is not committed
 (docs/decisions/2026-08-06-bin-licensing-corrected-and-malstadur-integration.md)."""
 import difflib
@@ -25,7 +30,7 @@ import sys
 
 tgt_path, cmp_path, census_path, nine_path, bin_path, out = sys.argv[1:7]
 prior_paths = sys.argv[7:]
-LIST_SETS = ('never-official', 'mixed')
+LIST_SETS = ('never-official', 'mixed', 'inner')
 
 
 def load_report(path):
@@ -196,7 +201,9 @@ def step_d3(text):
 
 # ── Step H: hand fixes, one-off corrections of MT garbles that match no rule ─────────────
 # [USER] 2026-11-21: `hafnfn` (hafnium in the four periodic-table alts) is an MT garble; read it as hafníum.
-HAND = {'hafnfn': 'hafníum'}
+# [USER] 2026-11-21: `miðberyllínatómið` holds the non-official beryllín- inside a compound, where no name rule
+# looks; it reads miðberyllíumatómið (measurement 13).
+HAND = {'hafnfn': 'hafníum', 'miðberyllínatómið': 'miðberyllíumatómið'}
 
 
 def step_hand(text):
@@ -218,10 +225,11 @@ for s in segs:
     c = verified(b, c, pc, 'D3', sid)
     h, ph = step_hand(c)
     c = verified(c, h, ph, 'H', sid)
-    assert not re.search(r'(?i)hafnfn', c), (sid, 'a garble the hand fixes name is still there')
+    assert not re.search(W + '(?:' + '|'.join(map(re.escape, HAND)) + ')' + WE, c, flags=re.I), (sid, 'a word the hand fixes name is still there')
     left_re = {'ruthenium': [r'rúþen(?!íum)\w*'], 'lanthanide': [r'lantan(?:íð|óíð)\w*'],
                'never-official': [r'rúþen(?!íum)\w*', r'lantan(?:íð|óíð)\w*'],
-               'mixed': [r'rúþen(?!íum)\w*', r'lantan(?:íð|óíð)\w*']}[s['set']]
+               'mixed': [r'rúþen(?!íum)\w*', r'lantan(?:íð|óíð)\w*'],
+               'inner': [r'rúþen(?!íum)\w*', r'lantan(?:íð|óíð)\w*']}[s['set']]
     for lr in left_re:
         assert not re.findall(W + lr + WE, c, flags=re.I), (sid, lr)
     assert 'lanþanóíð' not in c and 'aktínóíð' not in c, (sid, 'an óíð alternative needs a ruling-2 phrase rule')
@@ -244,6 +252,7 @@ for sp in nine['specs']:
 
 NEVER = any(r['set'] in LIST_SETS for r in res)
 MIXED = any(r['set'] == 'mixed' for r in res)
+INNER = any(r['set'] == 'inner' for r in res)
 if NEVER:
     prior, prior_file = {}, {}
     for pp in prior_paths:
@@ -263,7 +272,7 @@ if NEVER:
         both = [i for i in ids if still(combined.get(i))]
         impact.append((sp['english'], len(ids), len(this), len(both)))
     unchanged = [r['segmentId'] for r in res if not (r['stem'] or r['names'] or r['phrases'] or r.get('hand'))]
-    if MIXED:
+    if MIXED or INNER:
         json.dump({'segments': res, 'overlapWithEarlierSets': {k: prior_file[k] for k in overlap},
                    'nothingToFix': unchanged, 'worklistImpact': impact},
                   open(out + '.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
@@ -322,7 +331,20 @@ if not NEVER:
     open(out + '-paste.txt', 'w', encoding='utf-8').write('\n'.join(paste))
 else:
     ch = lambda c: 'App.' if c == -1 else str(c)
-    if MIXED:
+    if INNER:
+        md = ["# Editors' fix: a non-official name inside a compound (measurement 13)", '',
+              "Drafted 2026-11-21 from the effective Icelandic on production (read-only; the segment had no live edit), with the same "
+              "rule script and rulings as `editor-fixes.md`. The census and measurements 6-9 looked for a non-official form only at "
+              "the start of a word, so a form inside a compound was invisible to them. The inner-word scan "
+              "(`data/inner-non-official-scan.json`) finds exactly one; [USER] ruled on 2026-11-21 that it reads "
+              "`miðberyllíumatómið`, applied as a hand fix.", '',
+              f"- **{len(res)} segment**, in no earlier set of drafts" + (f" ({len(overlap)} overlap)" if overlap else '') + '.',
+              "- Every other word is checked by the same name rules as measurements 7-9; nothing else differs, and no marker or id changes.", '',
+              f"Full text for pasting: `editor-fixes-inner-paste.txt` ({len(res) - len(overlap) - len(unchanged)} block).", '',
+              "## Order of work with the nine book entries", '',
+              "The worklist reads pending edits too; this segment is in none of the nine entries' worklists:", '',
+              '| Entry | Entries first | after this fix | after all four sets of fixes |', '|---|---:|---:|---:|']
+    elif MIXED:
         md = ["# Editors' fixes: the segments of the 49 mixed element names", '',
               "Drafted 2026-11-20/21 from the effective Icelandic on production (read-only; no segment had a live edit), with the same "
               "rule script and [USER]'s rulings of 2026-11-20 as `editor-fixes.md`: (1) masculine `lanþaníð-`, as in the glossary; "
