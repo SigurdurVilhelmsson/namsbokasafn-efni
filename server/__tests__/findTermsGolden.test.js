@@ -379,10 +379,20 @@ describe('findTermsInSegments claims the C24 golden SPAN SETS (21 of 24 segments
     // was aimed at and nothing else. Measured, not assumed — the split was
     // discovered by letting each assertion fail in turn rather than by reasoning
     // about which one "should" have moved.
+    //
+    // ⚠️ 21 → 20 ON 2026-11-21 (§C246, the prefix rule), and again the ONE that
+    // left is the point of the change: `atomic mass unit` → `atómmassaeining` on
+    // m001:para:fs-id0001, whose Icelandic writes the definite form
+    // `Atómmassaeiningin`. That word starts with the base, which [USER]'s ruling 1
+    // accepts (spec docs/superpowers/specs/2026-11-21-c246-term-check-prefix-rule-design.md
+    // §3.4, "an unstored inflection passes because it starts with the base").
+    // `missing` 6 → 5; `alternative` UNCHANGED at 15, because alternatives stay
+    // whole-word (ruling 4, A2). Measured by diffing the issue lists before and
+    // after: that one issue is the whole difference.
     const actual = terminologyService.findTermsInSegments(segments, 'efnafraedi-2e');
     const issues = Object.values(actual).flatMap((r) => r.issues);
-    expect(issues).toHaveLength(21);
-    expect(issues.filter((i) => i.type === 'missing')).toHaveLength(6);
+    expect(issues).toHaveLength(20);
+    expect(issues.filter((i) => i.type === 'missing')).toHaveLength(5);
     expect(issues.filter((i) => i.type === 'alternative')).toHaveLength(15);
     // For contrast, and so the move is visible in the file rather than only in
     // the register: the pre-swap golden carried 5.
