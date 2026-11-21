@@ -1854,7 +1854,7 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
         const paradigm = term.termId == null ? [] : paradigmFor(paradigmStmt, term.termId);
         const prefix = (role === 'winner' || role === 'tie') && prefixQualifies(term.text);
         const re = buildInflectionRegex(term.text, paradigm, { prefix });
-        // Insurance, not correction: wholeWordRegex always returns a fresh
+        // Insurance, not correction: buildInflectionRegex always returns a fresh
         // RegExp per call today, so lastIndex is already 0 on arrival and this
         // is presently a no-op. It becomes load-bearing the moment anyone
         // memoises buildInflectionRegex per termId — a stateful /g regex lies
