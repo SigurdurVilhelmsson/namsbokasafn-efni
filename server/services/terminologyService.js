@@ -15,6 +15,7 @@ const log = require('../lib/logger');
 const { PRODUCER_EXPORT } = require('../lib/glossaryProducer');
 const { buildTermAutomaton, findFirstOccurrences } = require('../lib/termAutomaton');
 const { buildScope, resolve } = require('../lib/conceptResolver');
+const { prefixQualifies } = require('../lib/termPrefixRule');
 const { ROLES, ROLE_HIERARCHY } = require('../constants');
 const {
   loadEnglishEntries,
@@ -1836,7 +1837,13 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
       // than one — so it flows through, into its own arm below.
       if (hit.isFallback || !seg.isContent) continue;
 
-      const matchesForm = (term) => {
+      // §C246: a winner or tie option whose text qualifies (prefixQualifies)
+      // may START a word; alternatives and stored inflections stay whole-word.
+      // Spec: docs/superpowers/specs/2026-11-21-c246-term-check-prefix-rule-design.md §3.3.
+      // ⚠️ Every call site passes `role` explicitly. `.some(matchesForm)` /
+      // `.find(matchesForm)` would pass the array index as `role`, so the gate
+      // names the two roles that take the prefix and anything else fails closed.
+      const matchesForm = (term, role) => {
         // ⚠️ `term.termId == null` is REACHABLE, not defensive noise: a tied
         // candidate's termId is recovered by text lookup at :1553 and can come
         // back undefined if the resolver's chosen text is not among the
@@ -1845,8 +1852,9 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
         // paradigm (surface form only) is the degradation, matching what ~70% of
         // this corpus's Icelandic terms get anyway for want of a BÍN entry.
         const paradigm = term.termId == null ? [] : paradigmFor(paradigmStmt, term.termId);
-        const re = buildInflectionRegex(term.text, paradigm);
-        // Insurance, not correction: wholeWordRegex always returns a fresh
+        const prefix = (role === 'winner' || role === 'tie') && prefixQualifies(term.text);
+        const re = buildInflectionRegex(term.text, paradigm, { prefix });
+        // Insurance, not correction: buildInflectionRegex always returns a fresh
         // RegExp per call today, so lastIndex is already 0 on arrival and this
         // is presently a no-op. It becomes load-bearing the moment anyone
         // memoises buildInflectionRegex per termId — a stateful /g regex lies
@@ -1885,7 +1893,7 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
       // the fallback path, where `hit.isFallback` skipped the Icelandic-side
       // check entirely. QA went quiet on exactly the terms with a real choice.
       if (hit.isTied) {
-        if (hit.tied.some(matchesForm)) continue;
+        if (hit.tied.some((t) => matchesForm(t, 'tie'))) continue;
         const options = hit.tied.map((t) => t.text);
         issues.push({
           type: 'missing',
@@ -1902,7 +1910,7 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
         continue;
       }
 
-      if (matchesForm(winner)) continue;
+      if (matchesForm(winner, 'winner')) continue;
 
       // D5: the resolver returns ONE winner, so a legitimate synonym would
       // start failing. Say "you used a known alternative" instead of "missing".
@@ -1911,8 +1919,10 @@ function findTermsInSegments(segments, bookSlug = null, chapter) {
       // winner excluded here in JS — see the isTermsFor comment above for why
       // that exclusion cannot live in the SQL/memo instead).
       const used =
-        alts.find(matchesForm) ||
-        isTermsFor(winner.conceptId).find((t) => t.termId !== winner.termId && matchesForm(t));
+        alts.find((t) => matchesForm(t, 'alternative')) ||
+        isTermsFor(winner.conceptId).find(
+          (t) => t.termId !== winner.termId && matchesForm(t, 'alternative')
+        );
       issues.push(
         used
           ? {
@@ -2351,9 +2361,31 @@ function wholeWordRegex(forms) {
 
 /**
  * Build a regex that matches the base Icelandic form or any inflected form.
+ *
+ * §C246 prefix rule: with `prefix`, the base text may also START a word (left
+ * boundary only, so `magnesíum` matches `magnesíumklóríð`), while the stored
+ * inflections stay whole-word. Spec:
+ * docs/superpowers/specs/2026-11-21-c246-term-check-prefix-rule-design.md §3.2.
+ * Without `prefix` this is exactly wholeWordRegex, which the English-side
+ * matcher promises to reproduce, so that builder is never changed.
+ *
+ * ⚠️ An empty inflection list must add NO alternative: an empty branch
+ * followed by the right-boundary lookahead matches at any gap between two
+ * non-letters, and every segment would pass.
+ *
+ * @param {string} icelandic the term text
+ * @param {string[]} inflections the stored paradigm
+ * @param {{ prefix?: boolean }} [options]
+ * @returns {RegExp} a fresh `giu` RegExp
  */
-function buildInflectionRegex(icelandic, inflections) {
-  return wholeWordRegex([icelandic, ...inflections]);
+function buildInflectionRegex(icelandic, inflections, { prefix = false } = {}) {
+  if (!prefix || !icelandic) return wholeWordRegex([icelandic, ...inflections]);
+  const head = `(?<![\\p{L}\\p{N}_])(?:${escapeRegex(icelandic)})`;
+  const forms = inflections.filter(Boolean).map(escapeRegex);
+  if (forms.length === 0) return new RegExp(head, 'giu');
+  forms.sort((a, b) => b.length - a.length);
+  const whole = `(?<![\\p{L}\\p{N}_])(?:${forms.join('|')})(?![\\p{L}\\p{N}_])`;
+  return new RegExp(`${head}|${whole}`, 'giu');
 }
 
 function escapeRegex(string) {
