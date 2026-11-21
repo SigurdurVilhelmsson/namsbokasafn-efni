@@ -26,6 +26,7 @@ const {
   changeEntry,
   removeEntry,
   displayNameFor,
+  recordLabelFor,
   buildBookGlossaryRecord,
   writeBookGlossaryRecord,
 } = require('../lib/bookGlossaryLayer');
@@ -376,40 +377,57 @@ function addUser(providerId, displayName, role, email = null) {
 const GUID = '3f2b8c1e-9a4d-4e7b-8c55-1d2e3f4a5b6c';
 const historyBys = () => buildBookGlossaryRecord(db, BOOK).history.map((h) => h.by);
 
-describe('the record shows names, never emails or inflections', () => {
-  it('an account id is written as its display name', () => {
-    addUser(GUID, 'Jóna Jónsdóttir', 'editor');
+// G1.15(b) spec §4.5 ([USER] 2026-11-21): the record is committed to a public repository whose history cannot be
+// stripped, so it shows the authority a decision required, aðalritstjóri, never a person's name, and the day, not
+// the time. The head editor's own screen still shows names (displayNameFor, below).
+describe('the record shows the role, never a name', () => {
+  it("an account's decision is written as aðalritstjóri, never its display name", () => {
+    addUser(GUID, 'Jóna Jónsdóttir', 'head-editor');
     addExclusion(db, { ...base, by: GUID, english: 'Function' });
-    expect(historyBys()).toEqual(['Jóna Jónsdóttir']);
-    expect(buildBookGlossaryRecord(db, BOOK).exclusions[0].createdBy).toBe('Jóna Jónsdóttir');
+    const rec = buildBookGlossaryRecord(db, BOOK);
+    expect(rec.history.map((h) => h.by)).toEqual(['aðalritstjóri']);
+    expect(rec.exclusions[0].createdBy).toBe('aðalritstjóri');
+    expect(JSON.stringify(rec)).not.toContain('Jóna');
   });
 
-  it('an email-shaped display_name is written as the role', () => {
-    addUser('acct-1', 'nafn@skoli.example', 'head-editor');
-    addExclusion(db, { ...base, by: 'acct-1', english: 'Function' });
+  it('the label does not follow a later role change or a deleted account', () => {
+    addUser(GUID, 'Jóna Jónsdóttir', 'head-editor');
+    addExclusion(db, { ...base, by: GUID, english: 'Function' });
+    db.prepare("UPDATE users SET role = 'editor' WHERE provider_id = ?").run(GUID);
+    expect(historyBys()).toEqual(['aðalritstjóri']);
+    db.prepare('DELETE FROM users WHERE provider_id = ?').run(GUID);
     expect(historyBys()).toEqual(['aðalritstjóri']);
   });
 
-  it('a blank display_name falls back to the role label, and an unknown role to notandi', () => {
-    addUser('acct-2', '   ', 'admin');
-    addUser('acct-3', null, 'mystery');
-    expect(displayNameFor(db, 'acct-2')).toBe('stjórnandi');
-    expect(displayNameFor(db, 'acct-3')).toBe('notandi');
+  it('an account id with no users row, GUID- or email-shaped, is written as aðalritstjóri', () => {
+    expect(recordLabelFor(db, GUID)).toBe('aðalritstjóri');
+    expect(recordLabelFor(db, 'someone@skoli.example')).toBe('aðalritstjóri');
   });
 
-  it('the c19 label and a by with no account pass through', () => {
+  it('the c19 label and a free label pass through', () => {
     const c19 = 'c19-load ([USER] rulings 2026-11-18)';
-    expect(displayNameFor(db, c19)).toBe(c19);
-    expect(displayNameFor(db, 'tester')).toBe('tester');
+    expect(recordLabelFor(db, c19)).toBe(c19);
+    expect(recordLabelFor(db, 'tester')).toBe('tester');
   });
 
-  it('a GUID-shaped by with no account is written as óþekktur notandi', () => {
-    expect(displayNameFor(db, GUID)).toBe('óþekktur notandi');
-    expect(displayNameFor(db, 'someone@skoli.example')).toBe('óþekktur notandi');
+  it('every time a person acted is a date; generated stays a full time', () => {
+    const e = addEntry(db, { ...base, english: ['unit cell'], icelandic: 'grindareining' });
+    changeEntry(db, { ...base, conceptId: e.conceptId, icelandic: 'grindareiningar' });
+    addExclusion(db, { ...base, english: 'Function' });
+    const rec = buildBookGlossaryRecord(db, BOOK);
+    const DAY = /^\d{4}-\d{2}-\d{2}$/;
+    const times = [
+      ...rec.history.map((h) => h.at),
+      ...rec.exclusions.map((x) => x.createdAt),
+      ...rec.entries.flatMap((x) => [x.createdAt, x.updatedAt]),
+    ];
+    expect(times.length).toBe(6); // control: 3 history rows + the exclusion's time + the entry's two
+    for (const t of times) expect(t).toMatch(DAY);
+    expect(rec.generated).toMatch(/T\d{2}:\d{2}/); // control: the export time is not cut
   });
 
-  it('no email and no account id anywhere in the record', () => {
-    addUser(GUID, 'nafn@skoli.example', 'viewer', 'nafn@skoli.example');
+  it('no display name, email or account id anywhere in the record', () => {
+    addUser(GUID, 'Jóna Jónsdóttir', 'head-editor', 'nafn@skoli.example');
     addExclusion(db, { ...base, by: GUID, english: 'Function' });
     const e = addEntry(db, {
       ...base,
@@ -417,14 +435,14 @@ describe('the record shows names, never emails or inflections', () => {
       english: ['unit cell'],
       icelandic: 'grindareining',
     });
-    // A change by the same account, so the entry's updatedBy goes through the name lookup too.
+    // A change by the same account, so the entry's updatedBy goes through the label too.
     changeEntry(db, { ...base, by: GUID, conceptId: e.conceptId, icelandic: 'grindareiningar' });
     addExclusion(db, { ...base, by: 'other@skoli.example', english: 'Other' });
     const rec = buildBookGlossaryRecord(db, BOOK);
     const json = JSON.stringify(rec);
-    expect(json).toContain('lesandi'); // control: the account's changes are in the record
-    // control: the change wrote updated_by, so updatedBy is a looked-up name and not null
-    expect(rec.entries[0].updatedBy).toBe('lesandi');
+    // control: the change wrote updated_by, so updatedBy is a label and not null
+    expect(rec.entries[0].updatedBy).toBe('aðalritstjóri');
+    expect(json).not.toContain('Jóna');
     expect(json).not.toContain('@');
     // An account id is not an email, so the check above cannot see it; the record is public.
     expect(json).not.toContain(GUID);
@@ -451,7 +469,7 @@ describe('the record shows names, never emails or inflections', () => {
     expect(json).not.toContain('"inflections"');
   });
 
-  it('the committed chemistry record is a fixed point of this task', () => {
+  it("the committed chemistry record's labels are a fixed point of the record label", () => {
     const file = path.join(__dirname, '..', '..', 'books', BOOK, 'glossary', 'book-glossary.json');
     const text = readFileSync(file, 'utf8');
     const rec = JSON.parse(text);
@@ -462,7 +480,38 @@ describe('the record shows names, never emails or inflections', () => {
       ...rec.entries.map((e) => e.updatedBy).filter((v) => v !== null),
     ];
     expect(names.length).toBeGreaterThan(0); // control
-    for (const v of names) expect(displayNameFor(db, v)).toBe(v);
+    for (const v of names) expect(recordLabelFor(db, v)).toBe(v);
     expect(text).not.toContain('"inflections"');
+  });
+});
+
+// The head editor's own screen (server/routes/book-glossary.js) shows names: it is not public.
+describe("displayNameFor: the head editor's screen shows names, never emails", () => {
+  it('an account id is shown as its display name', () => {
+    addUser(GUID, 'Jóna Jónsdóttir', 'editor');
+    expect(displayNameFor(db, GUID)).toBe('Jóna Jónsdóttir');
+  });
+
+  it('an email-shaped display_name is shown as the role', () => {
+    addUser('acct-1', 'nafn@skoli.example', 'head-editor');
+    expect(displayNameFor(db, 'acct-1')).toBe('aðalritstjóri');
+  });
+
+  it('a blank display_name falls back to the role label, and an unknown role to notandi', () => {
+    addUser('acct-2', '   ', 'admin');
+    addUser('acct-3', null, 'mystery');
+    expect(displayNameFor(db, 'acct-2')).toBe('stjórnandi');
+    expect(displayNameFor(db, 'acct-3')).toBe('notandi');
+  });
+
+  it('the c19 label and a by with no account pass through', () => {
+    const c19 = 'c19-load ([USER] rulings 2026-11-18)';
+    expect(displayNameFor(db, c19)).toBe(c19);
+    expect(displayNameFor(db, 'tester')).toBe('tester');
+  });
+
+  it('a GUID-shaped by with no account is shown as óþekktur notandi', () => {
+    expect(displayNameFor(db, GUID)).toBe('óþekktur notandi');
+    expect(displayNameFor(db, 'someone@skoli.example')).toBe('óþekktur notandi');
   });
 });

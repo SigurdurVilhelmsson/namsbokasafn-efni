@@ -695,10 +695,10 @@ function buildBookGlossaryRecordBody(db, bookSlug) {
       domain: c ? c.domain : null,
       reason: e.reason,
       source: e.source,
-      createdBy: displayNameFor(db, e.created_by),
-      createdAt: e.created_at,
-      updatedBy: e.updated_by === null ? null : displayNameFor(db, e.updated_by),
-      updatedAt: e.updated_at,
+      createdBy: recordLabelFor(db, e.created_by),
+      createdAt: recordDay(e.created_at),
+      updatedBy: e.updated_by === null ? null : recordLabelFor(db, e.updated_by),
+      updatedAt: recordDay(e.updated_at),
     };
   });
   entries.sort((a, b) =>
@@ -719,14 +719,14 @@ function buildBookGlossaryRecordBody(db, bookSlug) {
       idordabankiId: e.idordabanki_id,
       reason: e.reason,
       source: e.source,
-      createdBy: displayNameFor(db, e.created_by),
-      createdAt: e.created_at,
+      createdBy: recordLabelFor(db, e.created_by),
+      createdAt: recordDay(e.created_at),
     })),
     entries,
     history: hist.map((h) => ({
       id: h.id,
-      at: h.at,
-      by: displayNameFor(db, h.by),
+      at: recordDay(h.at),
+      by: recordLabelFor(db, h.by),
       action: h.action,
       english: h.english,
       before: withoutInflections(parseJson(h.before_json)),
@@ -767,6 +767,40 @@ function displayNameFor(db, by) {
   if (typeof by === 'string' && (GUID_SHAPE.test(by) || by.includes('@')))
     return 'óþekktur notandi';
   return by;
+}
+
+/**
+ * The label the COMMITTED record shows for who decided (G1.15(b) spec §4.5; [USER] 2026-11-21; the glossary layer
+ * spec's ✏️ note of 2026-11-21). The record goes to a public repository whose history cannot be stripped, and the
+ * editors' consent text promises names are removed after 2028, so an account-made act is written as the authority
+ * it required, never as a person. Every write route is behind requireHeadEditor('book'), so that authority is
+ * aðalritstjóri for every act: fixed, so a later role change or a deleted account cannot rewrite a past row of
+ * this cumulative record. An account id is one with a users row, or one shaped like an account (a GUID, or holding
+ * an `@`) whose row is gone. Any other label, such as the c19 loader's, passes through. The head editor's own
+ * screen keeps showing names through displayNameFor.
+ *
+ * @param {object} db
+ * @param {string} by An account id or a free-form label.
+ * @returns {string}
+ */
+function recordLabelFor(db, by) {
+  const isAccount =
+    db.prepare('SELECT 1 FROM users WHERE provider_id = ?').get(by) !== undefined ||
+    (typeof by === 'string' && (GUID_SHAPE.test(by) || by.includes('@')));
+  return isAccount ? 'aðalritstjóri' : by;
+}
+
+/**
+ * The day a person acted, as the committed record shows it (G1.15(b) spec §4.5): the YYYY-MM-DD an ISO-shaped
+ * time starts with, so the record cannot tie a decision to a person's working hours. null stays null.
+ *
+ * @param {string|null} t
+ * @returns {string|null}
+ */
+function recordDay(t) {
+  if (t === null || t === undefined) return t;
+  const m = /^(\d{4}-\d{2}-\d{2})/.exec(String(t));
+  return m ? m[1] : t;
 }
 
 /** A deep copy of a parsed history payload without any `inflections` key, at any depth. */
@@ -875,6 +909,7 @@ module.exports = {
   historyFor,
   buildBookGlossaryRecord,
   displayNameFor,
+  recordLabelFor,
   writeBookGlossaryRecord,
   createBookGlossaryRecordFn,
   lastLayerChangeId,
