@@ -1,0 +1,3859 @@
+{
+ "_meta": {
+  "measured": "2026-11-21",
+  "book": "efnafraedi-2e",
+  "prodHead": "a676d0bab",
+  "readOnly": true,
+  "method": "the entries were added to an in-memory copy of the database (file opened read-only, serialized, reopened from the buffer); the file's size and mtime were unchanged after the run, and the checkout stayed clean",
+  "script": "instruments/termcheck-dryrun-c73.template.cjs",
+  "what": "the term check's warnings for the 59 §C73 adds entered together, per name, in the same states, with each warning classified by its name-bearing words, plus synthetic controls per name; re-run after §C246 (PR #758, merged and deployed as a676d0bab) as its acceptance test (Task 3)"
+ },
+ "head": "a676d0baba319b72791e0c1f45a083681e0d67e6",
+ "book": "efnafraedi-2e",
+ "dbPath": "<repo>/pipeline-output/sessions.db",
+ "opened": [
+  "<repo>/pipeline-output/sessions.db"
+ ],
+ "walHeader": [
+  2,
+  2
+ ],
+ "fileUnchanged": true,
+ "before": {
+  "db": {
+   "size": 54603776,
+   "mtimeMs": 1795250316176.4636
+  },
+  "wal": {
+   "size": 0,
+   "mtimeMs": 1795250316555.465
+  }
+ },
+ "after": {
+  "db": {
+   "size": 54603776,
+   "mtimeMs": 1795250316176.4636
+  },
+  "wal": {
+   "size": 0,
+   "mtimeMs": 1795250316555.465
+  }
+ },
+ "totals": {
+  "segments": 22591,
+  "candidateSegments": 435,
+  "units": 71
+ },
+ "drafts": {
+  "unique": 226,
+  "conflicts": [],
+  "same": 226,
+  "drifted": [],
+  "missing": []
+ },
+ "added": 59,
+ "refusals": [],
+ "resolveCheck": [],
+ "bin": {
+  "magnesium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "helium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "lithium": {
+   "outcome": "unambiguous",
+   "nForms": 5
+  },
+  "beryllium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "scandium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "vanadium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "gallium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "rubidium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "strontium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "niobium": {
+   "outcome": "unambiguous",
+   "nForms": 5
+  },
+  "technetium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "rhodium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "palladium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "cadmium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "indium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "caesium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "barium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "cerium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "promethium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "samarium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "europium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "gadolinium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "terbium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "dysprosium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "holmium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "erbium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "thulium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "ytterbium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "lutetium": {
+   "outcome": "refused-ambiguous",
+   "nForms": 0
+  },
+  "hafnium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "rhenium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "osmium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "iridium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "thallium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "francium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "radium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "actinium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "thorium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "protactinium": {
+   "outcome": "not-in-bin",
+   "nForms": 0
+  },
+  "americium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "curium": {
+   "outcome": "not-in-bin",
+   "nForms": 0
+  },
+  "berkelium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "californium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "einsteinium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "fermium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "mendelevium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "nobelium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "lawrencium": {
+   "outcome": "not-in-bin",
+   "nForms": 0
+  },
+  "rutherfordium": {
+   "outcome": "not-in-bin",
+   "nForms": 0
+  },
+  "dubnium": {
+   "outcome": "not-in-bin",
+   "nForms": 0
+  },
+  "seaborgium": {
+   "outcome": "not-in-bin",
+   "nForms": 0
+  },
+  "bohrium": {
+   "outcome": "not-in-bin",
+   "nForms": 0
+  },
+  "hassium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "meitnerium": {
+   "outcome": "not-in-bin",
+   "nForms": 0
+  },
+  "darmstadtium": {
+   "outcome": "not-in-bin",
+   "nForms": 0
+  },
+  "roentgenium": {
+   "outcome": "not-in-bin",
+   "nForms": 0
+  },
+  "copernicium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "flerovium": {
+   "outcome": "not-in-bin",
+   "nForms": 0
+  },
+  "livermorium": {
+   "outcome": "not-in-bin",
+   "nForms": 0
+  }
+ },
+ "synthetic": {
+  "before": {
+   "passOk": 0,
+   "compoundWarns": 0,
+   "notMatched": [
+    "scandium|pass",
+    "scandium|compound",
+    "rubidium|pass",
+    "rubidium|compound",
+    "niobium|pass",
+    "niobium|compound",
+    "technetium|pass",
+    "technetium|compound",
+    "rhodium|pass",
+    "rhodium|compound",
+    "palladium|pass",
+    "palladium|compound",
+    "indium|pass",
+    "indium|compound",
+    "caesium|pass",
+    "caesium|compound",
+    "cerium|pass",
+    "cerium|compound",
+    "promethium|pass",
+    "promethium|compound",
+    "samarium|pass",
+    "samarium|compound",
+    "europium|pass",
+    "europium|compound",
+    "gadolinium|pass",
+    "gadolinium|compound",
+    "terbium|pass",
+    "terbium|compound",
+    "dysprosium|pass",
+    "dysprosium|compound",
+    "holmium|pass",
+    "holmium|compound",
+    "erbium|pass",
+    "erbium|compound",
+    "thulium|pass",
+    "thulium|compound",
+    "ytterbium|pass",
+    "ytterbium|compound",
+    "lutetium|pass",
+    "lutetium|compound",
+    "hafnium|pass",
+    "hafnium|compound",
+    "rhenium|pass",
+    "rhenium|compound",
+    "osmium|pass",
+    "osmium|compound",
+    "iridium|pass",
+    "iridium|compound",
+    "actinium|pass",
+    "actinium|compound",
+    "protactinium|pass",
+    "protactinium|compound",
+    "americium|pass",
+    "americium|compound",
+    "curium|pass",
+    "curium|compound",
+    "californium|pass",
+    "californium|compound",
+    "einsteinium|pass",
+    "einsteinium|compound",
+    "fermium|pass",
+    "fermium|compound",
+    "mendelevium|pass",
+    "mendelevium|compound",
+    "nobelium|pass",
+    "nobelium|compound",
+    "lawrencium|pass",
+    "lawrencium|compound",
+    "rutherfordium|pass",
+    "rutherfordium|compound",
+    "dubnium|pass",
+    "dubnium|compound",
+    "seaborgium|pass",
+    "seaborgium|compound",
+    "bohrium|pass",
+    "bohrium|compound",
+    "hassium|pass",
+    "hassium|compound",
+    "meitnerium|pass",
+    "meitnerium|compound",
+    "darmstadtium|pass",
+    "darmstadtium|compound",
+    "roentgenium|pass",
+    "roentgenium|compound",
+    "copernicium|pass",
+    "copernicium|compound",
+    "flerovium|pass",
+    "flerovium|compound",
+    "livermorium|pass",
+    "livermorium|compound"
+   ],
+   "anomalies": [
+    {
+     "id": "magnesium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "magnesium|compound",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "helium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "helium|compound",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "lithium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "lithium|compound",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "beryllium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "beryllium|compound",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "vanadium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "vanadium|compound",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "gallium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "gallium|compound",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "strontium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "strontium|compound",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "cadmium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "cadmium|compound",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "barium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "barium|compound",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "thallium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "thallium|compound",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "francium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "francium|compound",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "radium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "radium|compound",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "thorium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "thorium|compound",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "berkelium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "berkelium|compound",
+     "isFallback": true,
+     "issue": null
+    }
+   ]
+  },
+  "A": {
+   "passOk": 59,
+   "compoundWarns": 0,
+   "notMatched": [],
+   "anomalies": [
+    {
+     "id": "magnesium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "helium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "lithium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "beryllium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "scandium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "vanadium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "gallium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "rubidium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "strontium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "niobium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "technetium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "rhodium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "palladium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "cadmium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "indium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "caesium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "barium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "cerium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "promethium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "samarium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "europium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "gadolinium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "terbium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "dysprosium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "holmium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "erbium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "thulium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "ytterbium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "lutetium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "hafnium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "rhenium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "osmium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "iridium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "thallium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "francium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "radium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "actinium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "thorium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "protactinium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "americium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "curium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "berkelium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "californium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "einsteinium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "fermium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "mendelevium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "nobelium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "lawrencium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "rutherfordium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "dubnium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "seaborgium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "bohrium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "hassium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "meitnerium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "darmstadtium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "roentgenium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "copernicium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "flerovium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "livermorium|compound",
+     "isFallback": false,
+     "issue": null
+    }
+   ]
+  },
+  "B": {
+   "passOk": 59,
+   "compoundWarns": 0,
+   "notMatched": [],
+   "anomalies": [
+    {
+     "id": "magnesium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "helium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "lithium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "beryllium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "scandium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "vanadium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "gallium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "rubidium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "strontium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "niobium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "technetium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "rhodium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "palladium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "cadmium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "indium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "caesium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "barium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "cerium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "promethium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "samarium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "europium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "gadolinium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "terbium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "dysprosium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "holmium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "erbium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "thulium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "ytterbium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "lutetium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "hafnium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "rhenium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "osmium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "iridium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "thallium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "francium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "radium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "actinium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "thorium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "protactinium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "americium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "curium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "berkelium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "californium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "einsteinium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "fermium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "mendelevium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "nobelium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "lawrencium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "rutherfordium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "dubnium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "seaborgium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "bohrium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "hassium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "meitnerium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "darmstadtium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "roentgenium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "copernicium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "flerovium|compound",
+     "isFallback": false,
+     "issue": null
+    },
+    {
+     "id": "livermorium|compound",
+     "isFallback": false,
+     "issue": null
+    }
+   ]
+  }
+ },
+ "counts": {
+  "base.fixed": {
+   "magnesium": {
+    "enSegments": 119,
+    "matched": 119,
+    "passed": 119,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "helium": {
+    "enSegments": 55,
+    "matched": 55,
+    "passed": 55,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "lithium": {
+    "enSegments": 58,
+    "matched": 58,
+    "passed": 58,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "beryllium": {
+    "enSegments": 31,
+    "matched": 31,
+    "passed": 31,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "scandium": {
+    "enSegments": 12,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 12
+   },
+   "vanadium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 11,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "gallium": {
+    "enSegments": 19,
+    "matched": 19,
+    "passed": 19,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "rubidium": {
+    "enSegments": 16,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 16
+   },
+   "strontium": {
+    "enSegments": 29,
+    "matched": 29,
+    "passed": 29,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "niobium": {
+    "enSegments": 5,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 5
+   },
+   "technetium": {
+    "enSegments": 14,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 14
+   },
+   "rhodium": {
+    "enSegments": 8,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 8
+   },
+   "palladium": {
+    "enSegments": 11,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 11
+   },
+   "cadmium": {
+    "enSegments": 38,
+    "matched": 38,
+    "passed": 38,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "indium": {
+    "enSegments": 9,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 9
+   },
+   "caesium": {
+    "enSegments": 21,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 21
+   },
+   "barium": {
+    "enSegments": 47,
+    "matched": 47,
+    "passed": 47,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "cerium": {
+    "enSegments": 7,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 7
+   },
+   "promethium": {
+    "enSegments": 5,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 5
+   },
+   "samarium": {
+    "enSegments": 5,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 5
+   },
+   "europium": {
+    "enSegments": 7,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 7
+   },
+   "gadolinium": {
+    "enSegments": 6,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 6
+   },
+   "terbium": {
+    "enSegments": 5,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 5
+   },
+   "dysprosium": {
+    "enSegments": 6,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 6
+   },
+   "holmium": {
+    "enSegments": 5,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 5
+   },
+   "erbium": {
+    "enSegments": 4,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 4
+   },
+   "thulium": {
+    "enSegments": 5,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 5
+   },
+   "ytterbium": {
+    "enSegments": 4,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 4
+   },
+   "lutetium": {
+    "enSegments": 6,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 6
+   },
+   "hafnium": {
+    "enSegments": 5,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 5
+   },
+   "rhenium": {
+    "enSegments": 6,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 6
+   },
+   "osmium": {
+    "enSegments": 9,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 9
+   },
+   "iridium": {
+    "enSegments": 11,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 11
+   },
+   "thallium": {
+    "enSegments": 22,
+    "matched": 22,
+    "passed": 22,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "francium": {
+    "enSegments": 8,
+    "matched": 8,
+    "passed": 8,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "radium": {
+    "enSegments": 12,
+    "matched": 12,
+    "passed": 12,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "actinium": {
+    "enSegments": 11,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 11
+   },
+   "thorium": {
+    "enSegments": 9,
+    "matched": 9,
+    "passed": 9,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "protactinium": {
+    "enSegments": 4,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 4
+   },
+   "americium": {
+    "enSegments": 11,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 11
+   },
+   "curium": {
+    "enSegments": 6,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 6
+   },
+   "berkelium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "californium": {
+    "enSegments": 6,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 6
+   },
+   "einsteinium": {
+    "enSegments": 6,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 6
+   },
+   "fermium": {
+    "enSegments": 5,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 5
+   },
+   "mendelevium": {
+    "enSegments": 6,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 6
+   },
+   "nobelium": {
+    "enSegments": 7,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 7
+   },
+   "lawrencium": {
+    "enSegments": 7,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 7
+   },
+   "rutherfordium": {
+    "enSegments": 6,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 6
+   },
+   "dubnium": {
+    "enSegments": 5,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 5
+   },
+   "seaborgium": {
+    "enSegments": 7,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 7
+   },
+   "bohrium": {
+    "enSegments": 4,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 4
+   },
+   "hassium": {
+    "enSegments": 4,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 4
+   },
+   "meitnerium": {
+    "enSegments": 6,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 6
+   },
+   "darmstadtium": {
+    "enSegments": 4,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 4
+   },
+   "roentgenium": {
+    "enSegments": 5,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 5
+   },
+   "copernicium": {
+    "enSegments": 6,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 6
+   },
+   "flerovium": {
+    "enSegments": 7,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 7
+   },
+   "livermorium": {
+    "enSegments": 5,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 5
+   }
+  },
+  "A.fixed": {
+   "magnesium": {
+    "enSegments": 119,
+    "matched": 119,
+    "passed": 119,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "helium": {
+    "enSegments": 55,
+    "matched": 55,
+    "passed": 55,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "lithium": {
+    "enSegments": 58,
+    "matched": 58,
+    "passed": 58,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "beryllium": {
+    "enSegments": 31,
+    "matched": 31,
+    "passed": 30,
+    "warned": 1,
+    "byClass": {
+     "no-name-token": 1
+    },
+    "unclaimed": 0
+   },
+   "scandium": {
+    "enSegments": 12,
+    "matched": 12,
+    "passed": 12,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "vanadium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 11,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "gallium": {
+    "enSegments": 19,
+    "matched": 19,
+    "passed": 19,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "rubidium": {
+    "enSegments": 16,
+    "matched": 16,
+    "passed": 16,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "strontium": {
+    "enSegments": 29,
+    "matched": 29,
+    "passed": 29,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "niobium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "technetium": {
+    "enSegments": 14,
+    "matched": 14,
+    "passed": 14,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "rhodium": {
+    "enSegments": 8,
+    "matched": 8,
+    "passed": 8,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "palladium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 11,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "cadmium": {
+    "enSegments": 38,
+    "matched": 38,
+    "passed": 38,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "indium": {
+    "enSegments": 9,
+    "matched": 9,
+    "passed": 9,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "caesium": {
+    "enSegments": 21,
+    "matched": 21,
+    "passed": 21,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "barium": {
+    "enSegments": 47,
+    "matched": 47,
+    "passed": 47,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "cerium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 7,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "promethium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "samarium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "europium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 7,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "gadolinium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "terbium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "dysprosium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "holmium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "erbium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 4,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "thulium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "ytterbium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 4,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "lutetium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "hafnium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "rhenium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "osmium": {
+    "enSegments": 9,
+    "matched": 9,
+    "passed": 9,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "iridium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 11,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "thallium": {
+    "enSegments": 22,
+    "matched": 22,
+    "passed": 22,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "francium": {
+    "enSegments": 8,
+    "matched": 8,
+    "passed": 8,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "radium": {
+    "enSegments": 12,
+    "matched": 12,
+    "passed": 12,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "actinium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 11,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "thorium": {
+    "enSegments": 9,
+    "matched": 9,
+    "passed": 9,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "protactinium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 4,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "americium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 11,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "curium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "berkelium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "californium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "einsteinium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "fermium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "mendelevium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "nobelium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 7,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "lawrencium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 7,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "rutherfordium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "dubnium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "seaborgium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 7,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "bohrium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 4,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "hassium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 4,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "meitnerium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "darmstadtium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 4,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "roentgenium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "copernicium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "flerovium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 7,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "livermorium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   }
+  },
+  "B.now": {
+   "magnesium": {
+    "enSegments": 119,
+    "matched": 119,
+    "passed": 107,
+    "warned": 12,
+    "byClass": {
+     "non-official": 12
+    },
+    "unclaimed": 0
+   },
+   "helium": {
+    "enSegments": 55,
+    "matched": 55,
+    "passed": 39,
+    "warned": 16,
+    "byClass": {
+     "non-official": 16
+    },
+    "unclaimed": 0
+   },
+   "lithium": {
+    "enSegments": 58,
+    "matched": 58,
+    "passed": 0,
+    "warned": 58,
+    "byClass": {
+     "non-official": 58
+    },
+    "unclaimed": 0
+   },
+   "beryllium": {
+    "enSegments": 31,
+    "matched": 31,
+    "passed": 22,
+    "warned": 9,
+    "byClass": {
+     "non-official": 8,
+     "no-name-token": 1
+    },
+    "unclaimed": 0
+   },
+   "scandium": {
+    "enSegments": 12,
+    "matched": 12,
+    "passed": 10,
+    "warned": 2,
+    "byClass": {
+     "non-official": 2
+    },
+    "unclaimed": 0
+   },
+   "vanadium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 9,
+    "warned": 2,
+    "byClass": {
+     "non-official": 2
+    },
+    "unclaimed": 0
+   },
+   "gallium": {
+    "enSegments": 19,
+    "matched": 19,
+    "passed": 11,
+    "warned": 8,
+    "byClass": {
+     "non-official": 8
+    },
+    "unclaimed": 0
+   },
+   "rubidium": {
+    "enSegments": 16,
+    "matched": 16,
+    "passed": 13,
+    "warned": 3,
+    "byClass": {
+     "non-official": 3
+    },
+    "unclaimed": 0
+   },
+   "strontium": {
+    "enSegments": 29,
+    "matched": 29,
+    "passed": 24,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "niobium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 4,
+    "warned": 1,
+    "byClass": {
+     "non-official": 1
+    },
+    "unclaimed": 0
+   },
+   "technetium": {
+    "enSegments": 14,
+    "matched": 14,
+    "passed": 6,
+    "warned": 8,
+    "byClass": {
+     "non-official": 8
+    },
+    "unclaimed": 0
+   },
+   "rhodium": {
+    "enSegments": 8,
+    "matched": 8,
+    "passed": 6,
+    "warned": 2,
+    "byClass": {
+     "non-official": 2
+    },
+    "unclaimed": 0
+   },
+   "palladium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 9,
+    "warned": 2,
+    "byClass": {
+     "non-official": 2
+    },
+    "unclaimed": 0
+   },
+   "cadmium": {
+    "enSegments": 38,
+    "matched": 38,
+    "passed": 32,
+    "warned": 6,
+    "byClass": {
+     "non-official": 6
+    },
+    "unclaimed": 0
+   },
+   "indium": {
+    "enSegments": 9,
+    "matched": 9,
+    "passed": 7,
+    "warned": 2,
+    "byClass": {
+     "non-official": 2
+    },
+    "unclaimed": 0
+   },
+   "caesium": {
+    "enSegments": 21,
+    "matched": 21,
+    "passed": 11,
+    "warned": 10,
+    "byClass": {
+     "non-official": 10
+    },
+    "unclaimed": 0
+   },
+   "barium": {
+    "enSegments": 47,
+    "matched": 47,
+    "passed": 37,
+    "warned": 10,
+    "byClass": {
+     "non-official": 10
+    },
+    "unclaimed": 0
+   },
+   "cerium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 2,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "promethium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 0,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "samarium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 0,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "europium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 3,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   },
+   "gadolinium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 0,
+    "warned": 6,
+    "byClass": {
+     "non-official": 6
+    },
+    "unclaimed": 0
+   },
+   "terbium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 1,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   },
+   "dysprosium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 2,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   },
+   "holmium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 1,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   },
+   "erbium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 0,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   },
+   "thulium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 1,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   },
+   "ytterbium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 0,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   },
+   "lutetium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 1,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "hafnium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 1,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   },
+   "rhenium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 1,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "osmium": {
+    "enSegments": 9,
+    "matched": 9,
+    "passed": 3,
+    "warned": 6,
+    "byClass": {
+     "non-official": 6
+    },
+    "unclaimed": 0
+   },
+   "iridium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 4,
+    "warned": 7,
+    "byClass": {
+     "non-official": 7
+    },
+    "unclaimed": 0
+   },
+   "thallium": {
+    "enSegments": 22,
+    "matched": 22,
+    "passed": 7,
+    "warned": 15,
+    "byClass": {
+     "non-official": 15
+    },
+    "unclaimed": 0
+   },
+   "francium": {
+    "enSegments": 8,
+    "matched": 8,
+    "passed": 1,
+    "warned": 7,
+    "byClass": {
+     "non-official": 7
+    },
+    "unclaimed": 0
+   },
+   "radium": {
+    "enSegments": 12,
+    "matched": 12,
+    "passed": 7,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "actinium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 1,
+    "warned": 10,
+    "byClass": {
+     "non-official": 10
+    },
+    "unclaimed": 0
+   },
+   "thorium": {
+    "enSegments": 9,
+    "matched": 9,
+    "passed": 3,
+    "warned": 6,
+    "byClass": {
+     "non-official": 6
+    },
+    "unclaimed": 0
+   },
+   "protactinium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 0,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   },
+   "americium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 2,
+    "warned": 9,
+    "byClass": {
+     "non-official": 9
+    },
+    "unclaimed": 0
+   },
+   "curium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 0,
+    "warned": 6,
+    "byClass": {
+     "non-official": 6
+    },
+    "unclaimed": 0
+   },
+   "berkelium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 0,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "californium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 1,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "einsteinium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 1,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "fermium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 0,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "mendelevium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 1,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "nobelium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 1,
+    "warned": 6,
+    "byClass": {
+     "non-official": 6
+    },
+    "unclaimed": 0
+   },
+   "lawrencium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 1,
+    "warned": 6,
+    "byClass": {
+     "non-official": 6
+    },
+    "unclaimed": 0
+   },
+   "rutherfordium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 1,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "dubnium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 0,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "seaborgium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 2,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "bohrium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 0,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   },
+   "hassium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 0,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   },
+   "meitnerium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 1,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "darmstadtium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 0,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   },
+   "roentgenium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 1,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   },
+   "copernicium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 1,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "flerovium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 2,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "livermorium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 1,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   }
+  },
+  "B.fixed": {
+   "magnesium": {
+    "enSegments": 119,
+    "matched": 119,
+    "passed": 119,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "helium": {
+    "enSegments": 55,
+    "matched": 55,
+    "passed": 55,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "lithium": {
+    "enSegments": 58,
+    "matched": 58,
+    "passed": 58,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "beryllium": {
+    "enSegments": 31,
+    "matched": 31,
+    "passed": 30,
+    "warned": 1,
+    "byClass": {
+     "no-name-token": 1
+    },
+    "unclaimed": 0
+   },
+   "scandium": {
+    "enSegments": 12,
+    "matched": 12,
+    "passed": 12,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "vanadium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 11,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "gallium": {
+    "enSegments": 19,
+    "matched": 19,
+    "passed": 19,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "rubidium": {
+    "enSegments": 16,
+    "matched": 16,
+    "passed": 16,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "strontium": {
+    "enSegments": 29,
+    "matched": 29,
+    "passed": 29,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "niobium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "technetium": {
+    "enSegments": 14,
+    "matched": 14,
+    "passed": 14,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "rhodium": {
+    "enSegments": 8,
+    "matched": 8,
+    "passed": 8,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "palladium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 11,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "cadmium": {
+    "enSegments": 38,
+    "matched": 38,
+    "passed": 38,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "indium": {
+    "enSegments": 9,
+    "matched": 9,
+    "passed": 9,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "caesium": {
+    "enSegments": 21,
+    "matched": 21,
+    "passed": 21,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "barium": {
+    "enSegments": 47,
+    "matched": 47,
+    "passed": 47,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "cerium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 7,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "promethium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "samarium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "europium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 7,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "gadolinium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "terbium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "dysprosium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "holmium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "erbium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 4,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "thulium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "ytterbium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 4,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "lutetium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "hafnium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "rhenium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "osmium": {
+    "enSegments": 9,
+    "matched": 9,
+    "passed": 9,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "iridium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 11,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "thallium": {
+    "enSegments": 22,
+    "matched": 22,
+    "passed": 22,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "francium": {
+    "enSegments": 8,
+    "matched": 8,
+    "passed": 8,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "radium": {
+    "enSegments": 12,
+    "matched": 12,
+    "passed": 12,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "actinium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 11,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "thorium": {
+    "enSegments": 9,
+    "matched": 9,
+    "passed": 9,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "protactinium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 4,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "americium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 11,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "curium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "berkelium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "californium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "einsteinium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "fermium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "mendelevium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "nobelium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 7,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "lawrencium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 7,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "rutherfordium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "dubnium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "seaborgium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 7,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "bohrium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 4,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "hassium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 4,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "meitnerium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "darmstadtium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 4,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "roentgenium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "copernicium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "flerovium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 7,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "livermorium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   }
+  }
+ },
+ "warnedB": {
+  "magnesium": [],
+  "helium": [],
+  "lithium": [],
+  "beryllium": [
+   {
+    "segmentId": "m68742:para:fs-idp122770240",
+    "chapter": 7,
+    "type": "missing",
+    "cls": "no-name-token",
+    "kinds": [],
+    "tokens": [],
+    "untranslatedEnglish": false,
+    "is": "…ub:2]] ([[xref:CNX_Chem_07_06_BeF2]]) sýnir aðeins tvö rafeindapör í kringum miðberyllínatómið. Með tvö tengi og engin stök rafeindapör á miðatóminu eru tengin eins …",
+    "en": "…06_BeF2]]) shows only two electron pairs around the central beryllium atom. With two bonds and no lone pairs of electrons on the …"
+   }
+  ],
+  "scandium": [],
+  "vanadium": [],
+  "gallium": [],
+  "rubidium": [],
+  "strontium": [],
+  "niobium": [],
+  "technetium": [],
+  "rhodium": [],
+  "palladium": [],
+  "cadmium": [],
+  "indium": [],
+  "caesium": [],
+  "barium": [],
+  "cerium": [],
+  "promethium": [],
+  "samarium": [],
+  "europium": [],
+  "gadolinium": [],
+  "terbium": [],
+  "dysprosium": [],
+  "holmium": [],
+  "erbium": [],
+  "thulium": [],
+  "ytterbium": [],
+  "lutetium": [],
+  "hafnium": [],
+  "rhenium": [],
+  "osmium": [],
+  "iridium": [],
+  "thallium": [],
+  "francium": [],
+  "radium": [],
+  "actinium": [],
+  "thorium": [],
+  "protactinium": [],
+  "americium": [],
+  "curium": [],
+  "berkelium": [],
+  "californium": [],
+  "einsteinium": [],
+  "fermium": [],
+  "mendelevium": [],
+  "nobelium": [],
+  "lawrencium": [],
+  "rutherfordium": [],
+  "dubnium": [],
+  "seaborgium": [],
+  "bohrium": [],
+  "hassium": [],
+  "meitnerium": [],
+  "darmstadtium": [],
+  "roentgenium": [],
+  "copernicium": [],
+  "flerovium": [],
+  "livermorium": []
+ },
+ "warnedBnowIds": {
+  "magnesium": [
+   "m68710:problem:fs-idp26248864",
+   "m68727:entry:auto-71",
+   "m68734:para:fs-idp77726784",
+   "m68773:problem:fs-idp109499216",
+   "m68829:para:fs-idp45202896",
+   "m68829:para:fs-idp261367120",
+   "m68829:para:fs-idm12445424",
+   "m68829:caption:CNX_Chem_18_01_CalciWater-caption",
+   "m68829:para:fs-idp171667088",
+   "m68829:para:fs-idp110638672",
+   "m68834:para:fs-idm37877696",
+   "m68834:para:fs-idm59038240"
+  ],
+  "helium": [
+   "m68724:entry:auto-52",
+   "m68734:para:fs-idp241397616",
+   "m68734:para:fs-idp9284128",
+   "m68734:para:fs-idp29682592",
+   "m68840:para:fs-idm47164624",
+   "m68840:para:fs-idm76574784",
+   "m68840:para:fs-idm66671520",
+   "m68840:para:fs-idp93284368",
+   "m68840:para:fs-idm74477856",
+   "m68840:para:fs-idm146709616",
+   "m68851:para:fs-idm36435184",
+   "m68851:para:fs-idp28406768",
+   "m68852:para:fs-idm5999248",
+   "m68852:alt:fs-idp74884384-alt",
+   "m68852:glossary-def:fs-idm57603984-def",
+   "m68854:para:fs-idp130339440"
+  ],
+  "lithium": [
+   "m68667:para:fs-idm49120320",
+   "m68667:alt:fs-idm54034640-alt",
+   "m68692:table-summary:fs-idm87646592-summary",
+   "m68692:entry:auto-161",
+   "m68692:problem:fs-idm56609680",
+   "m68692:solution:fs-idm134038192",
+   "m68692:problem:fs-idm130368688",
+   "m68695:para:fs-idm392133488",
+   "m68695:alt:fs-idm413728400-alt",
+   "m68695:para:fs-idm147211136",
+   "m68695:problem:fs-idm447823856",
+   "m68695:problem:fs-idm203188176",
+   "m68696:para:fs-idp187565648",
+   "m68696:para:fs-idp214730704",
+   "m68696:para:fs-idp187587072",
+   "m68698:table-summary:fs-idp282234816-summary",
+   "m68698:entry:auto-18",
+   "m68698:problem:fs-idp279466208",
+   "m68710:para:fs-idm5793440",
+   "m68710:problem:fs-idp89419440",
+   "m68714:problem:fs-idp47839312",
+   "m68729:problem:fs-idm1476208",
+   "m68734:para:fs-idp29682592",
+   "m68734:para:fs-idp28826352",
+   "m68734:para:fs-idm8891728",
+   "m68734:para:fs-idp77726784",
+   "m68747:para:fs-idm113916160",
+   "m68747:problem:fs-idm111685776",
+   "m68773:para:fs-idp135414368",
+   "m68773:para:fs-idp187605664",
+   "m68773:problem:fs-idp109499216",
+   "m68805:alt:fs-idp3283088-alt",
+   "m68825:para:fs-idm181217728",
+   "m68825:para:fs-idm162456704",
+   "m68825:caption:CNX_Chem_17_05_LiIon-caption",
+   "m68825:alt:fs-idm137917328-alt",
+   "m68825:para:fs-idm171820144",
+   "m68825:glossary-term:fs-idm118911936-term",
+   "m68825:glossary-def:fs-idm118911936-def",
+   "m68825:glossary-def:fs-idm206318304-def",
+   "m68826:problem:fs-idp71069984",
+   "m68826:solution:fs-idm142282624",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68829:para:fs-idm8683616",
+   "m68829:para:fs-idp103075664",
+   "m68829:para:fs-idp66398992",
+   "m68829:caption:CNX_Chem_18_01_LithiumRx-caption",
+   "m68829:para:fs-idp151382672",
+   "m68829:para:fs-idp44141360",
+   "m68829:problem:fs-idm16110016",
+   "m68830:para:fs-idp233041184",
+   "m68830:problem:fs-idp111274816",
+   "m68835:para:fs-idp20917824",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68856:para:fs-idm24991392",
+   "m68859:alt:fs-idp64991424-alt",
+   "m68865:table-summary:fs-idp78188768-summary",
+   "m68865:entry:auto-803"
+  ],
+  "beryllium": [
+   "m68692:entry:auto-174",
+   "m68734:para:fs-idp10466880",
+   "m68734:para:fs-idp77726784",
+   "m68742:para:fs-idp122770240",
+   "m68742:alt:fs-idp229524848-alt",
+   "m68742:alt:fs-idp73717728-alt",
+   "m68745:para:fs-idp208078752",
+   "m68829:para:fs-idp45202896",
+   "m68865:entry:auto-139"
+  ],
+  "scandium": [
+   "m68842:para:fs-idm168637008",
+   "m68842:glossary-def:fs-idm42041824-def"
+  ],
+  "vanadium": [
+   "m68842:para:fs-idm168637008",
+   "m68843:para:fs-idp55376000"
+  ],
+  "gallium": [
+   "m68698:para:fs-idp283457040",
+   "m68710:para:fs-idp218627312",
+   "m68713:problem:fs-idp134804848",
+   "m68713:problem:fs-idp7152848",
+   "m68734:item:fs-idp170969264-item-1",
+   "m68752:para:fs-idm2007840",
+   "m68829:para:fs-idm20198000",
+   "m68829:para:fs-idp79289248"
+  ],
+  "rubidium": [
+   "m68773:problem:fs-idp62730896",
+   "m68854:problem:fs-idp125426976",
+   "m68854:problem:fs-idm22718704"
+  ],
+  "strontium": [
+   "m68829:para:fs-idp45202896",
+   "m68829:para:fs-idm12445424",
+   "m68834:para:fs-idm37877696",
+   "m68854:problem:fs-idp126089680",
+   "m68854:problem:fs-idp125426976"
+  ],
+  "niobium": [
+   "m68734:para:fs-idp38113648"
+  ],
+  "technetium": [
+   "m68695:para:fs-idm382436640",
+   "m68791:problem:fs-idm22532432",
+   "m68816:para:fs-idp3956976",
+   "m68852:problem:fs-idp250174032",
+   "m68854:problem:fs-idp219506992",
+   "m68856:para:fs-idm172997504",
+   "m68857:para:fs-idp247341312",
+   "m68857:problem:fs-idp3550720"
+  ],
+  "rhodium": [
+   "m68795:para:fs-idm247003792",
+   "m68842:glossary-def:fs-idm194011232-def"
+  ],
+  "palladium": [
+   "m68842:para:fs-idm195995744",
+   "m68842:glossary-def:fs-idm194011232-def"
+  ],
+  "cadmium": [
+   "m68829:para:fs-idp107097008",
+   "m68829:para:fs-idm12601472",
+   "m68837:problem:fs-idp223600240",
+   "m68837:problem:fs-idp61077712",
+   "m68837:problem:fs-idm14502784",
+   "m68868:entry:auto-32"
+  ],
+  "indium": [
+   "m68829:para:fs-idm20198000",
+   "m68829:para:fs-idp79289248"
+  ],
+  "caesium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68741:para:fs-idm6705632",
+   "m68741:para:fs-idp53345328",
+   "m68741:para:fs-idp28364752",
+   "m68773:para:fs-idm42504800",
+   "m68773:para:fs-idm48376560",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt",
+   "m68865:entry:auto-438"
+  ],
+  "barium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68695:para:fs-idm421488352",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68829:para:fs-idp45202896",
+   "m68829:para:fs-idm12445424",
+   "m68834:para:fs-idm37877696",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt",
+   "m68865:entry:auto-114",
+   "m68868:entry:auto-8"
+  ],
+  "cerium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68842:para:fs-idm126105600",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "promethium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68695:para:fs-idm382436640",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "samarium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68734:para:fs-idp203409520",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "europium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "gadolinium": [
+   "m68667:para:fs-idm49120320",
+   "m68667:alt:fs-idm54034640-alt",
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "terbium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "dysprosium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "holmium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "erbium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "thulium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "ytterbium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "lutetium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68734:item:fs-idp203626048-item-1",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "hafnium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "rhenium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68695:para:eip-630",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "osmium": [
+   "m68683:problem:fs-idp63994848",
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68842:glossary-def:fs-idm194011232-def",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "iridium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68832:para:fs-idm162489136",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68842:glossary-def:fs-idm194011232-def",
+   "m68851:para:fs-idm77528832",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "thallium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68773:problem:fs-idm18156720",
+   "m68773:solution:fs-idp56072368",
+   "m68773:problem:fs-idm2190992",
+   "m68791:problem:fs-idm22532432",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68829:para:fs-idm20198000",
+   "m68829:para:fs-idp79289248",
+   "m68837:para:fs-idp19845744",
+   "m68837:para:fs-idm71724768",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68857:para:fs-idp247341312",
+   "m68857:caption:CNX_Chem_21_05_Thallium-caption",
+   "m68859:alt:fs-idp64991424-alt",
+   "m68868:entry:auto-204"
+  ],
+  "francium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68695:para:eip-630",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68837:problem:fs-idp209794048",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68851:problem:fs-idm56820256",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "radium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68829:para:fs-idp45202896",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "actinium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68734:item:fs-idp203626048-item-2",
+   "m68734:para:fs-idm11513792",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68842:para:fs-idm165890960",
+   "m68842:para:fs-idm9696240",
+   "m68842:glossary-def:fs-idm98560816-def",
+   "m68854:problem:fs-idp77337360",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "thorium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68854:caption:CNX_Chem_21_03_Reaction1-caption",
+   "m68854:para:fs-idp54304864",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "protactinium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "americium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68842:para:fs-idm248047376",
+   "m68856:table-summary:fs-idm128006320-summary",
+   "m68856:entry:auto-29",
+   "m68856:para:fs-idm28146592",
+   "m68857:para:fs-idp105479248",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "curium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68856:table-summary:fs-idm128006320-summary",
+   "m68856:entry:auto-33",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "berkelium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68856:problem:fs-idm202190128",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "californium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68856:entry:auto-37",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "einsteinium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68856:entry:auto-41",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "fermium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68856:problem:fs-idm32448240",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "mendelevium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68856:entry:auto-45",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "nobelium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68854:problem:fs-idm37225376",
+   "m68856:entry:auto-49",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "lawrencium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68734:item:fs-idp203626048-item-2",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68856:problem:fs-idm84813904",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "rutherfordium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68856:entry:auto-53",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "dubnium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68856:problem:fs-idm30976288",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "seaborgium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68856:entry:auto-57",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "bohrium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "hassium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "meitnerium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68856:entry:auto-61",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "darmstadtium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "roentgenium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "copernicium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68829:para:fs-idp107097008",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "flerovium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68829:para:fs-idp48530944",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "livermorium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ]
+ },
+ "warnedAIds": {
+  "magnesium": [],
+  "helium": [],
+  "lithium": [],
+  "beryllium": [
+   "m68742:para:fs-idp122770240"
+  ],
+  "scandium": [],
+  "vanadium": [],
+  "gallium": [],
+  "rubidium": [],
+  "strontium": [],
+  "niobium": [],
+  "technetium": [],
+  "rhodium": [],
+  "palladium": [],
+  "cadmium": [],
+  "indium": [],
+  "caesium": [],
+  "barium": [],
+  "cerium": [],
+  "promethium": [],
+  "samarium": [],
+  "europium": [],
+  "gadolinium": [],
+  "terbium": [],
+  "dysprosium": [],
+  "holmium": [],
+  "erbium": [],
+  "thulium": [],
+  "ytterbium": [],
+  "lutetium": [],
+  "hafnium": [],
+  "rhenium": [],
+  "osmium": [],
+  "iridium": [],
+  "thallium": [],
+  "francium": [],
+  "radium": [],
+  "actinium": [],
+  "thorium": [],
+  "protactinium": [],
+  "americium": [],
+  "curium": [],
+  "berkelium": [],
+  "californium": [],
+  "einsteinium": [],
+  "fermium": [],
+  "mendelevium": [],
+  "nobelium": [],
+  "lawrencium": [],
+  "rutherfordium": [],
+  "dubnium": [],
+  "seaborgium": [],
+  "bohrium": [],
+  "hassium": [],
+  "meitnerium": [],
+  "darmstadtium": [],
+  "roentgenium": [],
+  "copernicium": [],
+  "flerovium": [],
+  "livermorium": []
+ },
+ "unclaimedB": {
+  "magnesium": [],
+  "helium": [],
+  "lithium": [],
+  "beryllium": [],
+  "scandium": [],
+  "vanadium": [],
+  "gallium": [],
+  "rubidium": [],
+  "strontium": [],
+  "niobium": [],
+  "technetium": [],
+  "rhodium": [],
+  "palladium": [],
+  "cadmium": [],
+  "indium": [],
+  "caesium": [],
+  "barium": [],
+  "cerium": [],
+  "promethium": [],
+  "samarium": [],
+  "europium": [],
+  "gadolinium": [],
+  "terbium": [],
+  "dysprosium": [],
+  "holmium": [],
+  "erbium": [],
+  "thulium": [],
+  "ytterbium": [],
+  "lutetium": [],
+  "hafnium": [],
+  "rhenium": [],
+  "osmium": [],
+  "iridium": [],
+  "thallium": [],
+  "francium": [],
+  "radium": [],
+  "actinium": [],
+  "thorium": [],
+  "protactinium": [],
+  "americium": [],
+  "curium": [],
+  "berkelium": [],
+  "californium": [],
+  "einsteinium": [],
+  "fermium": [],
+  "mendelevium": [],
+  "nobelium": [],
+  "lawrencium": [],
+  "rutherfordium": [],
+  "dubnium": [],
+  "seaborgium": [],
+  "bohrium": [],
+  "hassium": [],
+  "meitnerium": [],
+  "darmstadtium": [],
+  "roentgenium": [],
+  "copernicium": [],
+  "flerovium": [],
+  "livermorium": []
+ },
+ "otherIssueChanges": []
+}

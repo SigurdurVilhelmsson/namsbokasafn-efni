@@ -1,0 +1,830 @@
+{
+ "_meta": {
+  "measured": "2026-11-21",
+  "book": "efnafraedi-2e",
+  "prodHead": "a676d0bab",
+  "readOnly": true,
+  "method": "the entries were added to an in-memory copy of the database (file opened read-only, serialized, reopened from the buffer); the file's size and mtime were unchanged after the run, and the checkout stayed clean",
+  "script": "instruments/termcheck-dryrun-magnesium.template.cjs",
+  "what": "the term check's warnings for a magnesium -> magnesíum book entry, in four states (no entry; the entry before and after its BÍN inflections) x (text as it is; with the fix drafts of measurements 7-9 overlaid), plus synthetic controls; re-run after §C246 (PR #758, merged and deployed as a676d0bab) as its acceptance test (Task 3)"
+ },
+ "head": "a676d0baba319b72791e0c1f45a083681e0d67e6",
+ "book": "efnafraedi-2e",
+ "dbPath": "<repo>/pipeline-output/sessions.db",
+ "opened": [
+  "<repo>/pipeline-output/sessions.db"
+ ],
+ "walHeader": [
+  2,
+  2
+ ],
+ "fileUnchanged": true,
+ "before": {
+  "db": {
+   "size": 54603776,
+   "mtimeMs": 1795250316176.4636
+  },
+  "wal": {
+   "size": 0,
+   "mtimeMs": 1795250316555.465
+  }
+ },
+ "after": {
+  "db": {
+   "size": 54603776,
+   "mtimeMs": 1795250316176.4636
+  },
+  "wal": {
+   "size": 0,
+   "mtimeMs": 1795250316555.465
+  }
+ },
+ "totals": {
+  "segments": 22591,
+  "magnesiumSegments": 119,
+  "units": 34
+ },
+ "enRowsBefore": [
+  {
+   "id": 5746,
+   "domain": "physics"
+  },
+  {
+   "id": 111625,
+   "domain": "anatomy-physiology"
+  }
+ ],
+ "entry": {
+  "status": "added",
+  "conceptId": 70271,
+  "isTerm": {
+   "text": "magnesíum",
+   "inflections": null
+  }
+ },
+ "bin": {
+  "outcome": "unambiguous",
+  "nForms": 4
+ },
+ "drafts": {
+  "unique": 226,
+  "conflicts": [],
+  "same": 226,
+  "drifted": [],
+  "missing": [],
+  "inMagnesiumSegments": 31
+ },
+ "resolve": {
+  "before": {
+   "chapter": 18,
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": [
+    "magnesíum (anatomy-physiology)"
+   ]
+  },
+  "afterA": {
+   "chapter": 18,
+   "winner": {
+    "conceptId": 70271,
+    "text": "magnesíum",
+    "domain": "chemistry"
+   },
+   "reason": "book-entry",
+   "tied": [],
+   "outOfScope": [
+    "magnesíum (anatomy-physiology)"
+   ]
+  },
+  "afterB": {
+   "chapter": 18,
+   "winner": {
+    "conceptId": 70271,
+    "text": "magnesíum",
+    "domain": "chemistry"
+   },
+   "reason": "book-entry",
+   "tied": [],
+   "outOfScope": [
+    "magnesíum (anatomy-physiology)"
+   ]
+  }
+ },
+ "synthetic": {
+  "chapter": 18,
+  "before": {
+   "S1-standalone": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": true
+    },
+    "issue": null,
+    "allMatches": [
+     "magnesium",
+     "air"
+    ]
+   },
+   "S2-genitive": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": true
+    },
+    "issue": null,
+    "allMatches": [
+     "mass",
+     "magnesium",
+     "small"
+    ]
+   },
+   "S3-closed-compound": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": true
+    },
+    "issue": null,
+    "allMatches": [
+     "ion",
+     "magnesium",
+     "small"
+    ]
+   },
+   "S4-hyphenated": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": true
+    },
+    "issue": null,
+    "allMatches": [
+     "ion",
+     "magnesium",
+     "small"
+    ]
+   },
+   "S5-symbol-only": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": true
+    },
+    "issue": null,
+    "allMatches": [
+     "metal",
+     "magnesium"
+    ]
+   },
+   "S6-non-official": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": true
+    },
+    "issue": null,
+    "allMatches": [
+     "metal",
+     "magnesium"
+    ]
+   },
+   "S7-chloride": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": true
+    },
+    "issue": null,
+    "allMatches": [
+     "add",
+     "magnesium",
+     "chloride"
+    ]
+   }
+  },
+  "A": {
+   "S1-standalone": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": null,
+    "allMatches": [
+     "magnesium",
+     "air"
+    ]
+   },
+   "S2-genitive": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": null,
+    "allMatches": [
+     "magnesium",
+     "mass",
+     "small"
+    ]
+   },
+   "S3-closed-compound": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": null,
+    "allMatches": [
+     "magnesium",
+     "ion",
+     "small"
+    ]
+   },
+   "S4-hyphenated": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": null,
+    "allMatches": [
+     "magnesium",
+     "ion",
+     "small"
+    ]
+   },
+   "S5-symbol-only": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": "missing",
+    "allMatches": [
+     "magnesium",
+     "metal"
+    ]
+   },
+   "S6-non-official": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": "missing",
+    "allMatches": [
+     "magnesium",
+     "metal"
+    ]
+   },
+   "S7-chloride": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": null,
+    "allMatches": [
+     "magnesium",
+     "add",
+     "chloride"
+    ]
+   }
+  },
+  "B": {
+   "S1-standalone": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": null,
+    "allMatches": [
+     "magnesium",
+     "air"
+    ]
+   },
+   "S2-genitive": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": null,
+    "allMatches": [
+     "magnesium",
+     "mass",
+     "small"
+    ]
+   },
+   "S3-closed-compound": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": null,
+    "allMatches": [
+     "magnesium",
+     "ion",
+     "small"
+    ]
+   },
+   "S4-hyphenated": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": null,
+    "allMatches": [
+     "magnesium",
+     "ion",
+     "small"
+    ]
+   },
+   "S5-symbol-only": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": "missing",
+    "allMatches": [
+     "magnesium",
+     "metal"
+    ]
+   },
+   "S6-non-official": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": "missing",
+    "allMatches": [
+     "magnesium",
+     "metal"
+    ]
+   },
+   "S7-chloride": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": null,
+    "allMatches": [
+     "magnesium",
+     "add",
+     "chloride"
+    ]
+   }
+  }
+ },
+ "variants": {
+  "base.now": {
+   "segments": 119,
+   "matchedMagnesium": 119,
+   "passed": 119,
+   "issues": [],
+   "unclaimed": [],
+   "issueCount": 0,
+   "unclaimedCount": 0
+  },
+  "base.fixed": {
+   "segments": 119,
+   "matchedMagnesium": 119,
+   "passed": 119,
+   "issues": [],
+   "unclaimed": [],
+   "issueCount": 0,
+   "unclaimedCount": 0
+  },
+  "A.now": {
+   "segments": 119,
+   "matchedMagnesium": 119,
+   "passed": 107,
+   "issues": [
+    {
+     "segmentId": "m68710:problem:fs-idp26248864",
+     "chapter": 4,
+     "moduleId": "m68710",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesínmálmur",
+      "magnesínsins"
+     ],
+     "hasMgSymbol": true,
+     "is": "Í algengri tilraun á almennri efnafræðistofu er magnesínmálmur hitaður í lofti til að framleiða MgO. MgO er hvítt fast efni, en í þessum tilraunum lítur…",
+     "en": "In a common experiment in the general chemistry laboratory, magnesium metal is heated in air to produce MgO. MgO is a white solid…"
+    },
+    {
+     "segmentId": "m68727:entry:auto-71",
+     "chapter": 5,
+     "moduleId": "m68727",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "magnesín",
+     "en": "magnesium"
+    },
+    {
+     "segmentId": "m68734:para:fs-idp77726784",
+     "chapter": 6,
+     "moduleId": "m68734",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "…tín og natrín hafa hvor um sig aðeins eina gildisrafeind, jarðalkalímálmarnir beryllín og magnesín hafa hvor um sig tvær og halógenarnir flúor og klór hafa hvor um sig sjö gildisrafeindir.…",
+     "en": "…e valence electron, the alkaline earth metals beryllium and magnesium each have two, and the halogens fluorine and chlorine each …"
+    },
+    {
+     "segmentId": "m68773:problem:fs-idp109499216",
+     "chapter": 10,
+     "moduleId": "m68773",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesíni"
+     ],
+     "hasMgSymbol": false,
+     "is": "…ni kviku settust mismunandi jónir í sömu sæti í kristöllunum. Litín kemur oft fyrir ásamt magnesíni í steindum þrátt fyrir mismunandi hleðslu jónanna. Stingdu upp á útskýringu.",
+     "en": "…same cites in the crystals. Lithium often occurs along with magnesium in minerals despite the difference in the charge on their i…"
+    },
+    {
+     "segmentId": "m68829:para:fs-idp45202896",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesín",
+      "magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "[[term:Jarðalkalímálmarnir|term-00006]] (beryllín, magnesín, kalsín, strontín, barín og radín) mynda flokk 2 í lotukerfinu. Nafnið jarðalkalímálmur k…",
+     "en": "The [[term:alkaline earth metals|term-00006]] (beryllium, magnesium, calcium, strontium, barium, and radium) constitute group 2…"
+    },
+    {
+     "segmentId": "m68829:para:fs-idp261367120",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "Magnesín",
+      "magnesínmálms",
+      "magnesínoxýkarbónati",
+      "Magnesín",
+      "magnesínframleiðslu"
+     ],
+     "hasMgSymbol": false,
+     "is": "Magnesín er silfurhvítur málmur sem er teygjanlegur og sveigjanlegur við hátt hitastig. Yfirborðsh…",
+     "en": "Magnesium is a silver-white metal that is malleable and ductile at hi…"
+    },
+    {
+     "segmentId": "m68829:para:fs-idm12445424",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "Magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "Magnesín (sýnt á [[xref:CNX_Chem_18_01_CalciWater]]), kalsín, strontín og barín hvarfast við vatn …",
+     "en": "Magnesium (shown in [[xref:CNX_Chem_18_01_CalciWater]]), calcium, str…"
+    },
+    {
+     "segmentId": "m68829:caption:CNX_Chem_18_01_CalciWater-caption",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "Magnesínmálmur"
+     ],
+     "hasMgSymbol": true,
+     "is": "Magnesínmálmur (vinstri krukka) hvarfast hægt við heitt vatn (miðkrukka) og myndar Mg[[sup:2+]] og OH[[s…",
+     "en": "Magnesium metal (left jar) reacts slowly with hot water (center jar) …"
+    },
+    {
+     "segmentId": "m68829:para:fs-idp171667088",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesíns",
+      "magnesíns",
+      "magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "Hinn öflugi afoxunarmáttur heits magnesíns er gagnlegur við framleiðslu sumra málma úr oxíðum þeirra. Sækni magnesíns í súrefni er s…",
+     "en": "The potent reducing power of hot magnesium is useful in preparing some metals from their oxides. Indee…"
+    },
+    {
+     "segmentId": "m68829:para:fs-idp110638672",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesíneld",
+      "magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "Af þessari ástæðu mun CO[[sub:2]]-slökkvitæki ekki slökkva magnesíneld. Auk þess gerir hið skærhvíta ljós sem brennandi magnesín gefur frá sér það gagnlegt í ne…",
+     "en": "…ason, a CO[[sub:2]] fire extinguisher will not extinguish a magnesium fire. Additionally, the brilliant white light emitted by bu…"
+    },
+    {
+     "segmentId": "m68834:para:fs-idm37877696",
+     "chapter": 18,
+     "moduleId": "m68834",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "…|term-00001]] – efnasambönd sem innihalda karbónatanjónir, [[MATH:1]]. Málmar í flokki 1, magnesín, kalsín, strontín og barín mynda einnig [[term:vetniskarbónöt|term-00002]] – efnasambönd …",
+     "en": "…ain the carbonate anions, [[MATH:1]] The metals of group 1, magnesium, calcium, strontium, and barium also form [[term:hydrogen c…"
+    },
+    {
+     "segmentId": "m68834:para:fs-idm59038240",
+     "chapter": 18,
+     "moduleId": "m68834",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesínkarbónati"
+     ],
+     "hasMgSymbol": false,
+     "is": "Að undanskildu magnesínkarbónati er hægt að framleiða karbónöt málma í flokkum 1 og 2 með hvarfi koltvíoxíðs við samsvaran…",
+     "en": "With the exception of magnesium carbonate, it is possible to prepare carbonates of the meta…"
+    }
+   ],
+   "unclaimed": [],
+   "issueCount": 12,
+   "unclaimedCount": 0
+  },
+  "A.fixed": {
+   "segments": 119,
+   "matchedMagnesium": 119,
+   "passed": 119,
+   "issues": [],
+   "unclaimed": [],
+   "issueCount": 0,
+   "unclaimedCount": 0
+  },
+  "B.now": {
+   "segments": 119,
+   "matchedMagnesium": 119,
+   "passed": 107,
+   "issues": [
+    {
+     "segmentId": "m68710:problem:fs-idp26248864",
+     "chapter": 4,
+     "moduleId": "m68710",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesínmálmur",
+      "magnesínsins"
+     ],
+     "hasMgSymbol": true,
+     "is": "Í algengri tilraun á almennri efnafræðistofu er magnesínmálmur hitaður í lofti til að framleiða MgO. MgO er hvítt fast efni, en í þessum tilraunum lítur…",
+     "en": "In a common experiment in the general chemistry laboratory, magnesium metal is heated in air to produce MgO. MgO is a white solid…"
+    },
+    {
+     "segmentId": "m68727:entry:auto-71",
+     "chapter": 5,
+     "moduleId": "m68727",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "magnesín",
+     "en": "magnesium"
+    },
+    {
+     "segmentId": "m68734:para:fs-idp77726784",
+     "chapter": 6,
+     "moduleId": "m68734",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "…tín og natrín hafa hvor um sig aðeins eina gildisrafeind, jarðalkalímálmarnir beryllín og magnesín hafa hvor um sig tvær og halógenarnir flúor og klór hafa hvor um sig sjö gildisrafeindir.…",
+     "en": "…e valence electron, the alkaline earth metals beryllium and magnesium each have two, and the halogens fluorine and chlorine each …"
+    },
+    {
+     "segmentId": "m68773:problem:fs-idp109499216",
+     "chapter": 10,
+     "moduleId": "m68773",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesíni"
+     ],
+     "hasMgSymbol": false,
+     "is": "…ni kviku settust mismunandi jónir í sömu sæti í kristöllunum. Litín kemur oft fyrir ásamt magnesíni í steindum þrátt fyrir mismunandi hleðslu jónanna. Stingdu upp á útskýringu.",
+     "en": "…same cites in the crystals. Lithium often occurs along with magnesium in minerals despite the difference in the charge on their i…"
+    },
+    {
+     "segmentId": "m68829:para:fs-idp45202896",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesín",
+      "magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "[[term:Jarðalkalímálmarnir|term-00006]] (beryllín, magnesín, kalsín, strontín, barín og radín) mynda flokk 2 í lotukerfinu. Nafnið jarðalkalímálmur k…",
+     "en": "The [[term:alkaline earth metals|term-00006]] (beryllium, magnesium, calcium, strontium, barium, and radium) constitute group 2…"
+    },
+    {
+     "segmentId": "m68829:para:fs-idp261367120",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "Magnesín",
+      "magnesínmálms",
+      "magnesínoxýkarbónati",
+      "Magnesín",
+      "magnesínframleiðslu"
+     ],
+     "hasMgSymbol": false,
+     "is": "Magnesín er silfurhvítur málmur sem er teygjanlegur og sveigjanlegur við hátt hitastig. Yfirborðsh…",
+     "en": "Magnesium is a silver-white metal that is malleable and ductile at hi…"
+    },
+    {
+     "segmentId": "m68829:para:fs-idm12445424",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "Magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "Magnesín (sýnt á [[xref:CNX_Chem_18_01_CalciWater]]), kalsín, strontín og barín hvarfast við vatn …",
+     "en": "Magnesium (shown in [[xref:CNX_Chem_18_01_CalciWater]]), calcium, str…"
+    },
+    {
+     "segmentId": "m68829:caption:CNX_Chem_18_01_CalciWater-caption",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "Magnesínmálmur"
+     ],
+     "hasMgSymbol": true,
+     "is": "Magnesínmálmur (vinstri krukka) hvarfast hægt við heitt vatn (miðkrukka) og myndar Mg[[sup:2+]] og OH[[s…",
+     "en": "Magnesium metal (left jar) reacts slowly with hot water (center jar) …"
+    },
+    {
+     "segmentId": "m68829:para:fs-idp171667088",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesíns",
+      "magnesíns",
+      "magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "Hinn öflugi afoxunarmáttur heits magnesíns er gagnlegur við framleiðslu sumra málma úr oxíðum þeirra. Sækni magnesíns í súrefni er s…",
+     "en": "The potent reducing power of hot magnesium is useful in preparing some metals from their oxides. Indee…"
+    },
+    {
+     "segmentId": "m68829:para:fs-idp110638672",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesíneld",
+      "magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "Af þessari ástæðu mun CO[[sub:2]]-slökkvitæki ekki slökkva magnesíneld. Auk þess gerir hið skærhvíta ljós sem brennandi magnesín gefur frá sér það gagnlegt í ne…",
+     "en": "…ason, a CO[[sub:2]] fire extinguisher will not extinguish a magnesium fire. Additionally, the brilliant white light emitted by bu…"
+    },
+    {
+     "segmentId": "m68834:para:fs-idm37877696",
+     "chapter": 18,
+     "moduleId": "m68834",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "…|term-00001]] – efnasambönd sem innihalda karbónatanjónir, [[MATH:1]]. Málmar í flokki 1, magnesín, kalsín, strontín og barín mynda einnig [[term:vetniskarbónöt|term-00002]] – efnasambönd …",
+     "en": "…ain the carbonate anions, [[MATH:1]] The metals of group 1, magnesium, calcium, strontium, and barium also form [[term:hydrogen c…"
+    },
+    {
+     "segmentId": "m68834:para:fs-idm59038240",
+     "chapter": 18,
+     "moduleId": "m68834",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesínkarbónati"
+     ],
+     "hasMgSymbol": false,
+     "is": "Að undanskildu magnesínkarbónati er hægt að framleiða karbónöt málma í flokkum 1 og 2 með hvarfi koltvíoxíðs við samsvaran…",
+     "en": "With the exception of magnesium carbonate, it is possible to prepare carbonates of the meta…"
+    }
+   ],
+   "unclaimed": [],
+   "issueCount": 12,
+   "unclaimedCount": 0
+  },
+  "B.fixed": {
+   "segments": 119,
+   "matchedMagnesium": 119,
+   "passed": 119,
+   "issues": [],
+   "unclaimed": [],
+   "issueCount": 0,
+   "unclaimedCount": 0
+  }
+ },
+ "otherIssueChanges": {
+  "now": [],
+  "fixed": []
+ }
+}

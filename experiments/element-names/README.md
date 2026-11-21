@@ -41,6 +41,11 @@ Everything this measurement used is kept in `evidence/2026-11-20-census/`: `inst
 and `reports/` (the segment tables). The instruments load AGPL `server/` code, so they sit in a dated
 `evidence/` folder. The root `LICENSE` keeps those outside its list of MIT→AGPL edges: they replay
 one past measurement and are not tooling.
+✏️ *Until 2026-11-21 three files in `data/` still held production's absolute repo path, despite the line above:
+`termcheck-dryrun-magnesium.json` and `termcheck-dryrun-c73.json` (in `dbPath` and `opened`) and `inner-targets.json`
+(in `openedDbPaths`). It is now replaced by `<repo>` in them, five occurrences in all, and nothing else in those
+files changed. No instrument reads those fields, and `reports/termcheck-dryruns.md` still rebuilds byte for byte from
+the two dry-run files.*
 Segment text in `data/` and `reports/` comes from `efnafraedi-2e` and carries that book's licence
 (`books/efnafraedi-2e/book-config.json`). No BÍN data is committed: BÍN is CC BY-SA 4.0, and
 `instruments/extract-bin-forms.py` rebuilds what measurement 7 used from your own BÍN download
@@ -104,6 +109,10 @@ python3 -I ingest-termcheck-dryrun.py <raw output> ../data/termcheck-dryrun-<mag
     termcheck-dryrun-<magnesium|c73>.template.cjs "<what>"   # the what strings are in each file's _meta
 python3 -I summarise-termcheck-dryruns.py ../data/termcheck-dryrun-magnesium.json ../data/termcheck-dryrun-c73.json \
     ../reports/termcheck-dryruns.md
+# 14b. §C246's acceptance re-run (2026-11-21, after #758 was deployed): the same two builds, plus the c73 build
+#      once more with ../reports/editor-fixes-inner.json added to the draft list; send each to production as above,
+#      ingest each raw output to ../data/termcheck-dryrun-<magnesium|c73|c73-inner>-c246-acceptance.json (the what
+#      strings are in each file's _meta), then replace the production repo root with <repo> in those three files.
 # 15. the §C246 census: send c246-census.cjs on stdin to production (cwd server/scripts, `node - efnafraedi-2e`;
 #     it reads tools/data/SHsnid.csv there), keep its raw output (not committed: per-word BÍN classes), then:
 python3 -I summarise-c246-census.py <raw output> ../reports/c246-census.md [<earlier raw outputs, same corpus hashes>]
@@ -478,6 +487,20 @@ the text as it is and with the fix drafts of measurements 7–9 overlaid. → `r
 - **[USER] ruled on 2026-11-21 to hold the 59 adds** until the term check accepts a word that starts
   with the term (the ruling: register §C245; the change it waits for: §C246, with this measurement as
   its acceptance test; step 3 of `reports/c73-entries.md`). ✅ **Lifted by [USER] on 2026-11-21** after §C246's acceptance run on production: magnesium 43 → 0, the 59 adds 152 → 1. The one left, beryllium inside a word (`miðberyllíumatómið`), may stand by the same ruling.
+
+- **Re-run on 2026-11-21 as §C246's acceptance test**, read-only on production at `a676d0bab`, after
+  PR #758 was merged and deployed. Same method as above; the scripts were rebuilt from the same templates
+  and drafts, plus a third run with measurement 13's draft overlaid as well. → `data/termcheck-dryrun-magnesium-c246-acceptance.json`,
+  `data/termcheck-dryrun-c73-c246-acceptance.json`, `data/termcheck-dryrun-c73-inner-c246-acceptance.json`
+  (ingested by `ingest-termcheck-dryrun.py`; the production repo root is replaced by `<repo>` in their paths).
+  - **Magnesium alone:** 43 warnings → **0** with the drafts and inflections (57 → 0 before the lookup).
+    The closed-compound control passes; `Mg` alone and `Magnesín` still warn.
+  - **The 59 adds:** 152 → **1** (212 → 1 before the lookup). The closed compound passes for 59 of 59
+    names. The one left is beryllium on `m68742:para:fs-idp122770240`.
+  - **With measurement 13's draft as well: still 1.** The draft writes `miðberyllíumatómið`, the official
+    name inside the word, which the term check keeps as a warning by design (the left boundary).
+  - **[USER] ruled on 2026-11-21** that the acceptance counts as passed, that the hold on the 59 adds
+    lifts, and that the beryllium warning may stand (register §C246 and §C245).
 
 ### 15. The term check under a "word starts with the term" rule: a corpus census (§C246)
 

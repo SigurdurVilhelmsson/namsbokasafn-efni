@@ -8,7 +8,7 @@
   "what": "the current effective Icelandic and any live edit for the genuine hit of the inner-word scan (data/inner-non-official-scan.json); it had no live edit"
  },
  "openedDbPaths": [
-  "/home/siggi/repos/namsbokasafn-efni/pipeline-output/sessions.db"
+  "<repo>/pipeline-output/sessions.db"
  ],
  "registeredBooks": 6,
  "n": 1,
