@@ -1,0 +1,141 @@
+{
+ "_meta": {
+  "measured": "2026-11-20",
+  "book": "efnafraedi-2e",
+  "prodHead": "844f13d2f",
+  "readOnly": true,
+  "script": "instruments/ruthenium-mt-forms-readonly.cjs",
+  "what": "ruthenium x the forms the MT wrote (rúþen, rúþens, rúþeni, Rúþen), skipping segments that hold rúþeníum"
+ },
+ "control": {
+  "registeredBooks": 6,
+  "unitsListed": 170,
+  "unreadable": [],
+  "openedDbPaths": [
+   "pipeline-output/sessions.db"
+  ]
+ },
+ "enSegments": 8,
+ "alreadyOfficial": 0,
+ "listed": 8,
+ "census": {
+  "rúþen": 5,
+  "rúþens": 1,
+  "Rúþen": 1,
+  "rúþeni": 1
+ },
+ "items": [
+  {
+   "chapter": 2,
+   "moduleId": "m68695",
+   "segmentId": "m68695:alt:fs-idm413728400-alt",
+   "form": "rúþen",
+   "occurrences": 1,
+   "excerpt": {
+    "text": "m; Tc; málmur; fast efni; og 97“. Flokkur 8 inniheldur „44; rúþen; Ru; málmur; fast efni; og 101,1“. Flokkur 9 inniheldur „45",
+    "start": 60,
+    "length": 5,
+    "cutBefore": true,
+    "cutAfter": true
+   }
+  },
+  {
+   "chapter": 2,
+   "moduleId": "m68695",
+   "segmentId": "m68695:para:eip-630",
+   "form": "rúþens",
+   "occurrences": 1,
+   "excerpt": {
+    "text": "tu þau, með því að rannsaka málmgrýti sem innihélt steindir rúþens (Ru), wolframs (W), osmíums (Os) og svo framvegis, greint n",
+    "start": 60,
+    "length": 6,
+    "cutBefore": true,
+    "cutAfter": true
+   }
+  },
+  {
+   "chapter": 18,
+   "moduleId": "m68829",
+   "segmentId": "m68829:alt:fs-idp101665920-alt",
+   "form": "rúþen",
+   "occurrences": 1,
+   "excerpt": {
+    "text": "irkt frumefni; fast efni; og 97“. Flokkur 8 inniheldur „44; rúþen; Ru; hliðarmálmur og innri hliðarmálmur; fast efni; og 101,",
+    "start": 60,
+    "length": 5,
+    "cutBefore": true,
+    "cutAfter": true
+   }
+  },
+  {
+   "chapter": 18,
+   "moduleId": "m68832",
+   "segmentId": "m68832:para:fs-idm162489136",
+   "form": "rúþen",
+   "occurrences": 1,
+   "excerpt": {
+    "text": "itt lag af kolefnisatómum á yfirborð einhvers annars efnis (rúþen, iridín eða kopar) eða að mynda það á yfirborði kísilkarbíð",
+    "start": 60,
+    "length": 5,
+    "cutBefore": true,
+    "cutAfter": true
+   }
+  },
+  {
+   "chapter": 19,
+   "moduleId": "m68842",
+   "segmentId": "m68842:alt:fs-idm272821040-alt",
+   "form": "rúþen",
+   "occurrences": 1,
+   "excerpt": {
+    "text": "m; Tc; málmur; fast efni; og 97“. Flokkur 8 inniheldur „44; rúþen; Ru; málmur; fast efni; og 101,1“. Flokkur 9 inniheldur „45",
+    "start": 60,
+    "length": 5,
+    "cutBefore": true,
+    "cutAfter": true
+   }
+  },
+  {
+   "chapter": 19,
+   "moduleId": "m68842",
+   "segmentId": "m68842:para:fs-idm66167072",
+   "form": "Rúþen",
+   "occurrences": 1,
+   "excerpt": {
+    "text": "Rúþen, osmíum, ródíum, iridíum, palladíum og platína eru [[term:p",
+    "start": 0,
+    "length": 5,
+    "cutBefore": false,
+    "cutAfter": true
+   }
+  },
+  {
+   "chapter": 19,
+   "moduleId": "m68842",
+   "segmentId": "m68842:glossary-def:fs-idm194011232-def",
+   "form": "rúþeni",
+   "occurrences": 1,
+   "excerpt": {
+    "text": "hópur sex hliðarfrumefna sem samanstendur af rúþeni, osmíni, ródíni, iridíni, palladíni og platínu sem hafa til",
+    "start": 45,
+    "length": 6,
+    "cutBefore": false,
+    "cutAfter": true
+   }
+  },
+  {
+   "chapter": -1,
+   "moduleId": "m68859",
+   "segmentId": "m68859:alt:fs-idp64991424-alt",
+   "form": "rúþen",
+   "occurrences": 1,
+   "excerpt": {
+    "text": "m; Tc; málmur; fast efni; og 97.“ Flokkur 8 inniheldur „44; rúþen; Ru; málmur; fast efni; og 101,1.“ Flokkur 9 inniheldur „45",
+    "start": 60,
+    "length": 5,
+    "cutBefore": true,
+    "cutAfter": true
+   }
+  }
+ ]
+}

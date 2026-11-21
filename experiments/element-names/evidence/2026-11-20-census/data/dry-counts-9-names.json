@@ -1,0 +1,1085 @@
+{
+ "_meta": {
+  "measured": "2026-11-20",
+  "book": "efnafraedi-2e",
+  "prodHead": "844f13d2f",
+  "readOnly": true,
+  "script": "instruments/nine-readonly.cjs",
+  "what": "worklist-matcher dry count: English name x the old form chemistry resolves to (+ stored inflections), skipping segments that hold the official name"
+ },
+ "control": {
+  "registeredBooks": 6,
+  "unitsListed": 170,
+  "unreadable": [],
+  "openedDbPaths": [
+   "pipeline-output/sessions.db"
+  ]
+ },
+ "totals": {
+  "listings": 61,
+  "distinctSegments": 36
+ },
+ "specs": [
+  {
+   "english": "germanium",
+   "official": "germaníum",
+   "resolvesTo": "german",
+   "domain": "physics",
+   "reason": "head-form",
+   "conceptId": 1013,
+   "termId": 2554,
+   "inflectionsKnown": true,
+   "termTextMatches": true,
+   "oldForms": [
+    "german",
+    "germani",
+    "germaninu",
+    "germanið",
+    "germans",
+    "germansins"
+   ],
+   "stem": "german",
+   "enSegments": 12,
+   "alreadyOfficial": 3,
+   "items": [
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:alt:fs-idp101665920-alt",
+     "form": "german",
+     "excerpt": {
+      "text": "kkamálmur; fast efni; og 69,72“. Flokkur 14 inniheldur „32; german; Ge; málmungur; fast efni; og 72,63“. Flokkur 15 inniheldur",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:para:fs-idp48530944",
+     "form": "german",
+     "excerpt": {
+      "text": "æmigerður málmleysingi. Hin frumefnin í flokknum, kísill og german, eru dæmi um hálfmálma eða málmunga. Tin og blý mynda stöðu",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68831",
+     "segmentId": "m68831:para:fs-idp17717312",
+     "form": "german",
+     "excerpt": {
+      "text": "málmleysingjum í lotukerfinu. Málmungarnir eru bór, kísill, german, arsen, antimon og tellúr. Þessi frumefni líta út eins og m",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68831",
+     "segmentId": "m68831:para:fs-idp63064256",
+     "form": "German",
+     "excerpt": {
+      "text": "ngar kolefnisefnasambanda geta ekki virkað sem Lewis-sýrur. German er mjög líkt kísli í efnafræðilegri hegðun sinni.",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68831",
+     "segmentId": "m68831:para:fs-idp235228864",
+     "form": "german",
+     "excerpt": {
+      "text": "Frumefnin kísill, german, arsen, antimon og tellúr eru gljáandi, málmkennd föst efni",
+      "start": 18,
+      "length": 6,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68831",
+     "segmentId": "m68831:para:fs-idp222483968",
+     "form": "german",
+     "excerpt": {
+      "text": "Frumefnin bór, kísill, german, arsen, antímon og tellúr aðskilja málmana frá málmleysingj",
+      "start": 23,
+      "length": 6,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68831",
+     "segmentId": "m68831:solution:fs-idp210135392",
+     "form": "german",
+     "excerpt": {
+      "text": "ellúrdíoxíð eða tellúr(IV)oxíð; (b) antímon(III)súlfíð; (c) german(IV)flúoríð; (d) sílan eða kísil(IV)hýdríð; (e) german(IV)hý",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": -1,
+     "moduleId": "m68859",
+     "segmentId": "m68859:alt:fs-idp64991424-alt",
+     "form": "german",
+     "excerpt": {
+      "text": "a; málmur; fast efni; og 69,72.“ Flokkur 14 inniheldur „32; german; Ge; hálfmálmur; fast efni; og 72,63.“ Flokkur 15 inniheldu",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    }
+   ],
+   "stemCensus": {
+    "germaníums": 1,
+    "germaníum": 3,
+    "german": 9,
+    "German": 1,
+    "germans": 1
+   }
+  },
+  {
+   "english": "zirconium",
+   "official": "sirkoníum",
+   "resolvesTo": "sirkon",
+   "domain": "physics",
+   "reason": "head-form",
+   "conceptId": 3220,
+   "termId": 8124,
+   "inflectionsKnown": true,
+   "termTextMatches": true,
+   "oldForms": [
+    "sirkon",
+    "sirkoni",
+    "sirkoninu",
+    "sirkonið",
+    "sirkons",
+    "sirkonsins"
+   ],
+   "stem": "sirkon",
+   "enSegments": 13,
+   "alreadyOfficial": 1,
+   "items": [
+    {
+     "chapter": 2,
+     "moduleId": "m68692",
+     "segmentId": "m68692:caption:CNX_Chem_02_03_MassSpec-caption",
+     "form": "sirkoni",
+     "excerpt": {
+      "text": "Greining á sirkoni í massagreiningartæki gefur massaróf með toppum sem sýna mi",
+      "start": 11,
+      "length": 7,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 2,
+     "moduleId": "m68692",
+     "segmentId": "m68692:alt:fs-idp221044352-alt",
+     "form": "sirkons",
+     "excerpt": {
+      "text": "unni. Grafið hægra megin við greiningartækið sýnir massaróf sirkons. Hlutfallslegt magn, sem prósentutala frá 0 til 100, er tei",
+      "start": 60,
+      "length": 7,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 2,
+     "moduleId": "m68695",
+     "segmentId": "m68695:alt:fs-idm413728400-alt",
+     "form": "sirkon",
+     "excerpt": {
+      "text": " Y; málmur; fast efni; og 88,91“. Flokkur 4 inniheldur „40; sirkon; Zr; málmur; fast efni; og 91,22“. Flokkur 5 inniheldur „41",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:problem:fs-idp42865184",
+     "form": "sirkons",
+     "excerpt": {
+      "text": "Ákvarðaðu fjölda atóma og massa sirkons, kísils og súrefnis sem finnast í 0,3384 mólum af sirkoni, ",
+      "start": 32,
+      "length": 7,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 3,
+     "moduleId": "m68700",
+     "segmentId": "m68700:solution:fs-idp42866464",
+     "form": "sirkon",
+     "excerpt": {
+      "text": "sirkon: 2,038 [[MATH:29]] 10[[sup:23]] atóm; 30,87 g; kísill: 2,03",
+      "start": 0,
+      "length": 6,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:alt:fs-idp101665920-alt",
+     "form": "sirkon",
+     "excerpt": {
+      "text": "iðarmálmur; fast efni; og 88,91“. Flokkur 4 inniheldur „40; sirkon; Zr; hliðarmálmur og innri hliðarmálmur; fast efni; og 91,2",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:para:fs-idp151382672",
+     "form": "sirkons",
+     "excerpt": {
+      "text": "ostur. Til dæmis byggir framleiðsla málma eins og títans og sirkons að hluta til á getu natríums til að afoxa efnasambönd þessa",
+      "start": 60,
+      "length": 7,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 21,
+     "moduleId": "m68854",
+     "segmentId": "m68854:problem:fs-idp136801104",
+     "form": "sirkon",
+     "excerpt": {
+      "text": "(b) sirkon-90 og rafeind myndast við sundrun óstöðugs kjarna",
+      "start": 4,
+      "length": 6,
+      "cutBefore": false,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": -1,
+     "moduleId": "m68859",
+     "segmentId": "m68859:alt:fs-idp64991424-alt",
+     "form": "sirkon",
+     "excerpt": {
+      "text": " Y; málmur; fast efni; og 88,91.“ Flokkur 4 inniheldur „40; sirkon; Zr; málmur; fast efni; og 91,22.“ Flokkur 5 inniheldur „41",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    }
+   ],
+   "stemCensus": {
+    "sirkoni": 2,
+    "sirkons": 4,
+    "sirkonsamsætan": 1,
+    "sirkon": 5,
+    "sirkonsilikat": 1,
+    "sirkoníum": 1,
+    "sirkonmálmblönduklæðning": 1,
+    "sirkonmálmblöndu": 1
+   }
+  },
+  {
+   "english": "ruthenium",
+   "official": "rúþeníum",
+   "resolvesTo": "rúten",
+   "domain": "physics",
+   "reason": "head-form",
+   "conceptId": 2961,
+   "termId": 7490,
+   "inflectionsKnown": true,
+   "termTextMatches": true,
+   "oldForms": [
+    "rúten",
+    "rúteni",
+    "rúteninu",
+    "rútenið",
+    "rútens",
+    "rútensins"
+   ],
+   "stem": "rúten",
+   "enSegments": 8,
+   "alreadyOfficial": 0,
+   "items": [],
+   "stemCensus": {}
+  },
+  {
+   "english": "lanthanum",
+   "official": "lanþan",
+   "resolvesTo": "lantan",
+   "domain": "physics",
+   "reason": "head-form",
+   "conceptId": 1993,
+   "termId": 5036,
+   "inflectionsKnown": true,
+   "termTextMatches": true,
+   "oldForms": [
+    "lantan",
+    "lantani",
+    "lantaninu",
+    "lantanið",
+    "lantans",
+    "lantansins"
+   ],
+   "stem": "lantan",
+   "enSegments": 10,
+   "alreadyOfficial": 0,
+   "items": [
+    {
+     "chapter": 2,
+     "moduleId": "m68695",
+     "segmentId": "m68695:alt:fs-idm413728400-alt",
+     "form": "lantan",
+     "excerpt": {
+      "text": "ir sætistölu inniheldur fyrsti reiturinn í þessari röð „57; lantan; La; málmur; fast efni; og 138,9.“ Til hægri við hann er næ",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 6,
+     "moduleId": "m68734",
+     "segmentId": "m68734:para:fs-idp7806208",
+     "form": "lantan",
+     "excerpt": {
+      "text": "ndíum (Sc) til kopars (Cu), yttríum (Y) til silfurs (Ag) og lantan (La) til gulls (Au), er samtals 10 [[i:d]] rafeindum bætt v",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 6,
+     "moduleId": "m68734",
+     "segmentId": "m68734:item:fs-idp203626048-item-1",
+     "form": "lantan",
+     "excerpt": {
+      "text": "Lantaníðaröðin: lantan (La) til lútetín (Lu)",
+      "start": 16,
+      "length": 6,
+      "cutBefore": false,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": 6,
+     "moduleId": "m68734",
+     "segmentId": "m68734:para:fs-idm11513792",
+     "form": "Lantan",
+     "excerpt": {
+      "text": "Lantan og aktín, vegna líkinda þeirra við aðra meðlimi raðarinnar,",
+      "start": 0,
+      "length": 6,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:alt:fs-idp101665920-alt",
+     "form": "lantan",
+     "excerpt": {
+      "text": "ir sætistölu inniheldur fyrsti reiturinn í þessari röð „57; lantan; La; aðalflokkamálmur; fast efni; og 138,9.“ Til hægri við ",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 19,
+     "moduleId": "m68842",
+     "segmentId": "m68842:alt:fs-idm272821040-alt",
+     "form": "lantan",
+     "excerpt": {
+      "text": " röð eftir sætistölu er í fyrsta reitnum í þessari röð „57; lantan; La; málmur; fast efni; og 138,9.“ Til hægri við það er næs",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 19,
+     "moduleId": "m68842",
+     "segmentId": "m68842:para:fs-idm9696240",
+     "form": "lantan",
+     "excerpt": {
+      "text": "-00009]] (eða [[term:aktínóíðaröðina|term-00010]]). Þar sem lantan hegðar sér mjög líkt lantaníðum er það talið til lantaníða,",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 19,
+     "moduleId": "m68842",
+     "segmentId": "m68842:glossary-def:fs-idm108395328-def",
+     "form": "lantan",
+     "excerpt": {
+      "text": "(einnig lantanóíðaröð) lantan og frumefnin í fyrstu röð [[i:f]]-blokkarinnar, sætistölur ",
+      "start": 23,
+      "length": 6,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 21,
+     "moduleId": "m68856",
+     "segmentId": "m68856:para:fs-idm70978352",
+     "form": "lantan",
+     "excerpt": {
+      "text": "unarhvarfs Meitner, Hahn og Strassman voru baríum, krypton, lantan og seríum, sem öll hafa kjarna sem eru stöðugri en úran-235",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": -1,
+     "moduleId": "m68859",
+     "segmentId": "m68859:alt:fs-idp64991424-alt",
+     "form": "lantan",
+     "excerpt": {
+      "text": "ir sætistölu inniheldur fyrsti reiturinn í þessari röð „57; lantan; La; málmur; fast efni; og 138,9.“ Til hægri við hann er næ",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    }
+   ],
+   "stemCensus": {
+    "lantan": 10,
+    "Lantaníðaröðin": 1,
+    "Lantan": 1,
+    "lantaníðaröðina": 1,
+    "lantanóíðaröðina": 1,
+    "lantaníðum": 1,
+    "lantaníða": 1,
+    "lantanóíðaröð": 1
+   }
+  },
+  {
+   "english": "praseodymium",
+   "official": "praseódýmíum",
+   "resolvesTo": "praseódým",
+   "domain": "physics",
+   "reason": "head-form",
+   "conceptId": 2712,
+   "termId": 6861,
+   "inflectionsKnown": true,
+   "termTextMatches": true,
+   "oldForms": [
+    "praseódým",
+    "praseódýminu",
+    "praseódýmið",
+    "praseódýms",
+    "praseódýmsins"
+   ],
+   "stem": "praseódým",
+   "enSegments": 5,
+   "alreadyOfficial": 0,
+   "items": [
+    {
+     "chapter": 1,
+     "moduleId": "m68667",
+     "segmentId": "m68667:para:fs-idm49120320",
+     "form": "praseódým",
+     "excerpt": {
+      "text": ", silfur og gull; og ókunnuglegri frumefni eins og yttríum, praseódým og gadólín. Rafhlaðan byggir á litíumjónum og ýmsum öðrum e",
+      "start": 60,
+      "length": 9,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 2,
+     "moduleId": "m68695",
+     "segmentId": "m68695:alt:fs-idm413728400-alt",
+     "form": "praseódým",
+     "excerpt": {
+      "text": " „58; serín; Ce; málmur; fast efni; og 140,1.“ Næst er „59; praseódým; Pr; málmur; fast efni; og 140,9.“ Næst er „60; neódým; Nd;",
+      "start": 60,
+      "length": 9,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:alt:fs-idp101665920-alt",
+     "form": "praseódým",
+     "excerpt": {
+      "text": "n; Ce; aðalflokkamálmur; fast efni; og 140,1.“ Næst er „59; praseódým; Pr; aðalflokkamálmur; fast efni; og 140,9.“ Næst er „60; n",
+      "start": 60,
+      "length": 9,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 19,
+     "moduleId": "m68842",
+     "segmentId": "m68842:alt:fs-idm272821040-alt",
+     "form": "praseódým",
+     "excerpt": {
+      "text": " „58; serín; Ce; málmur; fast efni; og 140,1.“ Næst er „59; praseódým; Pr; málmur; fast efni; og 140,9.“ Næst er „60; neódým; Nd;",
+      "start": 60,
+      "length": 9,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": -1,
+     "moduleId": "m68859",
+     "segmentId": "m68859:alt:fs-idp64991424-alt",
+     "form": "praseódým",
+     "excerpt": {
+      "text": " „58; serín; Ce; málmur; fast efni; og 140,1.“ Næst er „59; praseódým; Pr; málmur; fast efni; og 140,9.“ Næst er „60; neódým; Nd;",
+      "start": 60,
+      "length": 9,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    }
+   ],
+   "stemCensus": {
+    "praseódým": 5
+   }
+  },
+  {
+   "english": "neodymium",
+   "official": "neódýmíum",
+   "resolvesTo": "neódým",
+   "domain": "physics",
+   "reason": "head-form",
+   "conceptId": 2537,
+   "termId": 6411,
+   "inflectionsKnown": true,
+   "termTextMatches": true,
+   "oldForms": [
+    "neódým",
+    "neódýminu",
+    "neódýmið",
+    "neódýms",
+    "neódýmsins"
+   ],
+   "stem": "neódým",
+   "enSegments": 6,
+   "alreadyOfficial": 0,
+   "items": [
+    {
+     "chapter": 2,
+     "moduleId": "m68695",
+     "segmentId": "m68695:alt:fs-idm413728400-alt",
+     "form": "neódým",
+     "excerpt": {
+      "text": "; praseódým; Pr; málmur; fast efni; og 140,9.“ Næst er „60; neódým; Nd; málmur; fast efni; og 144,2.“ Næst er „61; prómetín; P",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:alt:fs-idp101665920-alt",
+     "form": "neódým",
+     "excerpt": {
+      "text": "m; Pr; aðalflokkamálmur; fast efni; og 140,9.“ Næst er „60; neódým; Nd; aðalflokkamálmur; fast efni; og 144,2.“ Næst er „61; p",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 19,
+     "moduleId": "m68842",
+     "segmentId": "m68842:alt:fs-idm272821040-alt",
+     "form": "neódým",
+     "excerpt": {
+      "text": "; praseódým; Pr; málmur; fast efni; og 140,9.“ Næst er „60; neódým; Nd; málmur; fast efni; og 144,2.“ Næst er „61; prómetín; P",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 19,
+     "moduleId": "m68842",
+     "segmentId": "m68842:para:fs-idm256905072",
+     "form": "Neódým",
+     "excerpt": {
+      "text": "latskjáum sem finnast í tölvuskjám, farsímum og sjónvörpum. Neódým er nytsamlegt í hörðum drifum fartölva og í ferlum sem brey",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": -1,
+     "moduleId": "m68859",
+     "segmentId": "m68859:alt:fs-idp64991424-alt",
+     "form": "neódým",
+     "excerpt": {
+      "text": "; praseódým; Pr; málmur; fast efni; og 140,9.“ Næst er „60; neódým; Nd; málmur; fast efni; og 144,2.“ Næst er „61; prómetín; P",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    }
+   ],
+   "stemCensus": {
+    "neódým": 4,
+    "Neódým": 2,
+    "Neódýmseglar": 1
+   }
+  },
+  {
+   "english": "polonium",
+   "official": "póloníum",
+   "resolvesTo": "pólon",
+   "domain": "physics",
+   "reason": "head-form",
+   "conceptId": 2706,
+   "termId": 6845,
+   "inflectionsKnown": true,
+   "termTextMatches": true,
+   "oldForms": [
+    "pólon",
+    "póloni",
+    "póloninu",
+    "pólonið",
+    "pólons",
+    "pólonsins"
+   ],
+   "stem": "pólon",
+   "enSegments": 17,
+   "alreadyOfficial": 1,
+   "items": [
+    {
+     "chapter": 2,
+     "moduleId": "m68695",
+     "segmentId": "m68695:alt:fs-idm413728400-alt",
+     "form": "pólon",
+     "excerpt": {
+      "text": "i; málmur; fast efni; og 209,0.“ Flokkur 16 inniheldur „84; pólon; Po; málmur; fast efni; og 209.“ Flokkur 17 inniheldur „85;",
+      "start": 60,
+      "length": 5,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 10,
+     "moduleId": "m68773",
+     "segmentId": "m68773:para:fs-idm2044016",
+     "form": "pólon",
+     "excerpt": {
+      "text": "tta er tiltölulega óhagkvæm uppröðun og aðeins einn málmur (pólon, Po) kristallast í einfaldri teningsformgerð. Eins og sýnt ",
+      "start": 60,
+      "length": 5,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 10,
+     "moduleId": "m68773",
+     "segmentId": "m68773:para:fs-idp168483760",
+     "form": "pólons",
+     "excerpt": {
+      "text": "Brúnlengd grindareiningar alfa-pólons er 336 pm.",
+      "start": 31,
+      "length": 6,
+      "cutBefore": false,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": 10,
+     "moduleId": "m68773",
+     "segmentId": "m68773:para:fs-idp27972848",
+     "form": "pólons",
+     "excerpt": {
+      "text": "(b) Ákvarðaðu eðlismassa alfa-pólons.",
+      "start": 30,
+      "length": 6,
+      "cutBefore": false,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": 10,
+     "moduleId": "m68773",
+     "segmentId": "m68773:para:fs-idm50199232",
+     "form": "pólon",
+     "excerpt": {
+      "text": "Alfa-pólon kristallast í einfaldri rúmmiðjaðri grindareiningu:",
+      "start": 5,
+      "length": 5,
+      "cutBefore": false,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": 10,
+     "moduleId": "m68773",
+     "segmentId": "m68773:para:fs-idp25499616",
+     "form": "pólons",
+     "excerpt": {
+      "text": "(b) Eðlismassi er gefinn með [[MATH:3]] Eðlismassa pólons má finna með því að ákvarða eðlismassa grindareiningar þess",
+      "start": 51,
+      "length": 6,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:para:fs-idp149998640",
+     "form": "pólon",
+     "excerpt": {
+      "text": "riodicPU3]]). Geislavirku frumefnin kópernikíum, fleróvíum, pólon og livermoríum eru einnig málmar en eru utan gildissviðs þe",
+      "start": 60,
+      "length": 5,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:alt:fs-idp101665920-alt",
+     "form": "pólon",
+     "excerpt": {
+      "text": "kkamálmur; fast efni; og 209,0.“ Flokkur 16 inniheldur „84; pólon; Po; geislavirkt frumefni; fast efni; og 209.“ Flokkur 17 i",
+      "start": 60,
+      "length": 5,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 19,
+     "moduleId": "m68842",
+     "segmentId": "m68842:alt:fs-idm272821040-alt",
+     "form": "pólon",
+     "excerpt": {
+      "text": "smút; Bi; málmur; fast efni; og 209,0.“ Í flokki 16 er „84; pólon; Po; málmur; fast efni; og 209.“ Í flokki 17 er „85; astat;",
+      "start": 60,
+      "length": 5,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 21,
+     "moduleId": "m68854",
+     "segmentId": "m68854:para:fs-idm41800032",
+     "form": "pólon",
+     "excerpt": {
+      "text": "erm-00004]] er losun α-agnar úr kjarnanum. Til dæmis gengst pólon-210 undir α-sundrun:",
+      "start": 60,
+      "length": 5,
+      "cutBefore": true,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": -1,
+     "moduleId": "m68859",
+     "segmentId": "m68859:alt:fs-idp64991424-alt",
+     "form": "pólon",
+     "excerpt": {
+      "text": "i; málmur; fast efni; og 209,0.“ Flokkur 16 inniheldur „84; pólon; Po; málmur; fast efni; og 209.“ Flokkur 17 inniheldur „85;",
+      "start": 60,
+      "length": 5,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    }
+   ],
+   "stemCensus": {
+    "pólon": 8,
+    "pólonatóm": 1,
+    "pólons": 3,
+    "pólonatóns": 1,
+    "póloníum": 1
+   }
+  },
+  {
+   "english": "astatine",
+   "official": "astatín",
+   "resolvesTo": "astat",
+   "domain": "physics",
+   "reason": "head-form",
+   "conceptId": 141,
+   "termId": 360,
+   "inflectionsKnown": true,
+   "termTextMatches": true,
+   "oldForms": [
+    "astat",
+    "astati",
+    "astatinu",
+    "astatið",
+    "astats",
+    "astatsins"
+   ],
+   "stem": "astat",
+   "enSegments": 8,
+   "alreadyOfficial": 1,
+   "items": [
+    {
+     "chapter": 2,
+     "moduleId": "m68695",
+     "segmentId": "m68695:alt:fs-idm413728400-alt",
+     "form": "astat",
+     "excerpt": {
+      "text": " Po; málmur; fast efni; og 209.“ Flokkur 17 inniheldur „85; astat; At; málmungur; fast efni; og 210.“ Flokkur 18 inniheldur „",
+      "start": 60,
+      "length": 5,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 10,
+     "moduleId": "m68761",
+     "segmentId": "m68761:table-summary:fs-idp55860464-summary",
+     "form": "astat",
+     "excerpt": {
+      "text": "ð lækkuðu 2; bróm, B r með lækkuðu 2; joð, I með lækkuðu 2; astat, A t með lækkuðu 2. Undir dálkinum „Mólmassi“ er eftirfaran",
+      "start": 60,
+      "length": 5,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 10,
+     "moduleId": "m68761",
+     "segmentId": "m68761:entry:auto-57",
+     "form": "astat",
+     "excerpt": {
+      "text": "astat, At[[sub:2]]",
+      "start": 0,
+      "length": 5,
+      "cutBefore": false,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:alt:fs-idp101665920-alt",
+     "form": "astat",
+     "excerpt": {
+      "text": "kt frumefni; fast efni; og 209.“ Flokkur 17 inniheldur „85; astat; At; geislavirkt frumefni; fast efni; og 210.“ Flokkur 18 i",
+      "start": 60,
+      "length": 5,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68839",
+     "segmentId": "m68839:para:fs-idp88544400",
+     "form": "astat",
+     "excerpt": {
+      "text": "ru halógenar. Þetta eru frumefnin flúor, klór, bróm, joð og astat. Þessi frumefni eru of hvarfgjörn til að finnast óbundin í ",
+      "start": 60,
+      "length": 5,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 19,
+     "moduleId": "m68842",
+     "segmentId": "m68842:alt:fs-idm272821040-alt",
+     "form": "astat",
+     "excerpt": {
+      "text": " pólon; Po; málmur; fast efni; og 209.“ Í flokki 17 er „85; astat; At; hálfmálmur; fast efni; og 210.“ Í flokki 18 er „86; ra",
+      "start": 60,
+      "length": 5,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": -1,
+     "moduleId": "m68859",
+     "segmentId": "m68859:alt:fs-idp64991424-alt",
+     "form": "astat",
+     "excerpt": {
+      "text": " Po; málmur; fast efni; og 209.“ Flokkur 17 inniheldur „85; astat; At; hálfmálmur; fast efni; og 210.“ Flokkur 18 inniheldur ",
+      "start": 60,
+      "length": 5,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    }
+   ],
+   "stemCensus": {
+    "astat": 7,
+    "astatín": 1
+   }
+  },
+  {
+   "english": "plutonium",
+   "official": "plútóníum",
+   "resolvesTo": "plúton",
+   "domain": "physics",
+   "reason": "head-form",
+   "conceptId": 2699,
+   "termId": 6826,
+   "inflectionsKnown": true,
+   "termTextMatches": true,
+   "oldForms": [
+    "plúton",
+    "plútoni",
+    "plútoninu",
+    "plútonið",
+    "plútons",
+    "plútonsins"
+   ],
+   "stem": "plúton",
+   "enSegments": 17,
+   "alreadyOfficial": 5,
+   "items": [
+    {
+     "chapter": 2,
+     "moduleId": "m68695",
+     "segmentId": "m68695:alt:fs-idm413728400-alt",
+     "form": "plúton",
+     "excerpt": {
+      "text": "er „93; neptún; Np; málmur; fast efni; og Np.“ Næst er „94; plúton; Pu; málmur; fast efni; og 244.“ Næst er „95; ameríkín; Am;",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:alt:fs-idp101665920-alt",
+     "form": "plúton",
+     "excerpt": {
+      "text": "; Np; geislavirkt frumefni; fast efni; og Np.“ Næst er „94; plúton; Pu; geislavirkt frumefni; fast efni; og 244.“ Næst er „95;",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 19,
+     "moduleId": "m68842",
+     "segmentId": "m68842:alt:fs-idm272821040-alt",
+     "form": "plúton",
+     "excerpt": {
+      "text": "er „93; neptún; Np; málmur; fast efni; og Np.“ Næst er „94; plúton; Pu; málmur; fast efni; og 244.“ Næst er „95; amerísín; Am;",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 21,
+     "moduleId": "m68856",
+     "segmentId": "m68856:para:fs-idm202710144",
+     "form": "plúton",
+     "excerpt": {
+      "text": "Þótt þær hafi ekki verið framleiddar í sama magni og plúton hafa margar aðrar tilbúnar kjarnategundir verið búnar til. ",
+      "start": 53,
+      "length": 6,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 21,
+     "moduleId": "m68856",
+     "segmentId": "m68856:para:fs-idm28146592",
+     "form": "plúton",
+     "excerpt": {
+      "text": "m með sætistölu frá 25 til 60, nokkur þungefni, þar á meðal plúton og ameríkín, og óhvarfaðar úran samsætur. Óstöðugu kjarnarn",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": -1,
+     "moduleId": "m68859",
+     "segmentId": "m68859:alt:fs-idp64991424-alt",
+     "form": "plúton",
+     "excerpt": {
+      "text": "er „93; neptún; Np; málmur; fast efni; og Np.“ Næst er „94; plúton; Pu; málmur; fast efni; og 244.“ Næst er „95; amerísín; Am;",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    }
+   ],
+   "stemCensus": {
+    "plúton": 6,
+    "plútoníum": 2,
+    "Plútoníum": 1,
+    "plútoníums": 1,
+    "plútoníumkjarnar": 1,
+    "plútoníumi": 1
+   }
+  }
+ ]
+}

@@ -1,0 +1,2269 @@
+{
+ "_meta": {
+  "measured": "2026-11-20",
+  "book": "efnafraedi-2e",
+  "prodHead": "844f13d2f",
+  "readOnly": true,
+  "script": "instruments/elements-readonly.cjs",
+  "what": "chemistry resolver result per element name, book default and every chapter scope, plus the export row"
+ },
+ "control": {
+  "registeredBooks": 6,
+  "openedDbPaths": [
+   "pipeline-output/sessions.db"
+  ],
+  "chapterScopes": [
+   -1,
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21
+  ],
+  "exportProducer": "export-terminology-resolved",
+  "exportTerms": 1638,
+  "exportMtime": "2026-11-20T16:00:04.621Z",
+  "namesChecked": 121
+ },
+ "rows": [
+  {
+   "english": "hydrogen",
+   "icelandic": "vetni",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 4308,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "vetni@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "vetni",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "helium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "helíum@anatomy-physiology",
+    "helín@astronomy"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "lithium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "litíum@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "beryllium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "beryllíum@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "boron",
+   "icelandic": "bór",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 303,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "bór@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "bór",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "carbon",
+   "icelandic": "kolefni",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 1845,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "kolefni@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "kolefni",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "nitrogen",
+   "icelandic": "nitur",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 2548,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "nitur@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "nitur",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "oxygen",
+   "icelandic": "súrefni",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 3848,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "súrefni@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "súrefni",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "fluorine",
+   "icelandic": "flúor",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 789,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "flúr@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "flúor",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "neon",
+   "icelandic": "neon",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 2536,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "neon",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "sodium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "natríum@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "magnesium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "magnesíum@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "aluminum",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "ál@anatomy-physiology",
+    "ál@earth-science"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "aluminium",
+   "icelandic": "ál",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 172,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": false
+  },
+  {
+   "english": "silicon",
+   "icelandic": "kísill",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 1789,
+   "reason": "head-form",
+   "alsoInScope": [
+    "kísill@biology"
+   ],
+   "tied": [],
+   "outOfScope": [
+    "kísill@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "kísill",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "phosphorus",
+   "icelandic": "fosfór",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 824,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "fosfór@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "fosfór",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "sulfur",
+   "icelandic": "brennisteinn",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 334,
+   "reason": "head-form",
+   "alsoInScope": [
+    "brennisteinn@biology"
+   ],
+   "tied": [],
+   "outOfScope": [
+    "brennisteinn@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "brennisteinn",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "sulphur",
+   "icelandic": "brennisteinn",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 334,
+   "reason": "head-form",
+   "alsoInScope": [
+    "brennisteinn@biology"
+   ],
+   "tied": [],
+   "outOfScope": [
+    "brennisteinn@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": false
+  },
+  {
+   "english": "chlorine",
+   "icelandic": "klór",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 1838,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "klór@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "klór",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "argon",
+   "icelandic": "argon",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 135,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "argon@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "argon",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "potassium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "kalíum@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "calcium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "kalsíum@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "scandium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "titanium",
+   "icelandic": "títan",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 4012,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "títan",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "vanadium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "vanadíum@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "chromium",
+   "icelandic": "króm",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 1899,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "króm@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "króm",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "manganese",
+   "icelandic": "mangan",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 2278,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "mangan@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "mangan",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "iron",
+   "icelandic": "járn",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 1714,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "járn@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "járn",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "cobalt",
+   "icelandic": "kóbalt",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 1856,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "kóbalt@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "kóbalt",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "nickel",
+   "icelandic": "nikkel",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 2547,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "nikkel",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "copper",
+   "icelandic": "kopar",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 1850,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "kopar",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "zinc",
+   "icelandic": "sink",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 3218,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "sink@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "sink",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "gallium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "gallíum@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "germanium",
+   "icelandic": "german",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 1013,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "german",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "arsenic",
+   "icelandic": "arsen",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 140,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "arsen",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "selenium",
+   "icelandic": "selen",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 3181,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "seleníum@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "selen",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "bromine",
+   "icelandic": "bróm",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 360,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "bróm",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "krypton",
+   "icelandic": "krypton",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 1901,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "krypton",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "rubidium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "strontium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "strontíum@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "yttrium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "yttríum@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "zirconium",
+   "icelandic": "sirkon",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 3220,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "sirkon",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "niobium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "molybdenum",
+   "icelandic": "mólýbden",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 2431,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "mólýbden",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "technetium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "ruthenium",
+   "icelandic": "rúten",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 2961,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "rúten",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "rhodium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "palladium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "silver",
+   "icelandic": "silfur",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 3214,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "silfur@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "silfur",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "cadmium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "kadmíum@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "indium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "tin",
+   "icelandic": "tin",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 3986,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "tin@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "tin",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "antimony",
+   "icelandic": "antímon",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 134,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "antímon@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "antímon",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "tellurium",
+   "icelandic": "tellúr",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 3956,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "tellúr",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "iodine",
+   "icelandic": "joð",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 1718,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "joð@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "joð",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "xenon",
+   "icelandic": "xenon",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 4425,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "senón@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "xenon",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "cesium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "caesium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "barium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "baríum@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "lanthanum",
+   "icelandic": "lantan",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 1993,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "lantan",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "cerium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "praseodymium",
+   "icelandic": "praseódým",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 2712,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "praseódým",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "neodymium",
+   "icelandic": "neódým",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 2537,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "neódým",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "promethium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "samarium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "europium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "gadolinium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "terbium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "dysprosium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "holmium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "erbium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "thulium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "ytterbium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "lutetium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "hafnium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "tantalum",
+   "icelandic": "tantal",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 3937,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "tantal",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "tungsten",
+   "icelandic": "wolfram",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 4424,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "wolfram",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "rhenium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "osmium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "iridium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "platinum",
+   "icelandic": "platína",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 2694,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "platína@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "platína",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "gold",
+   "icelandic": "gull",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 1116,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "gull@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "gull",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "mercury",
+   "icelandic": "kvikasilfur",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 1943,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "kvikasilfur@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "kvikasilfur",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "thallium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "þallín@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "lead",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [
+    "blý@physics",
+    "forskot@physics",
+    "leiðsla@physics"
+   ],
+   "outOfScope": [
+    "blý@anatomy-physiology",
+    "leiðsla@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "bismuth",
+   "icelandic": "bismút",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 258,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "bismút@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "bismút",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "polonium",
+   "icelandic": "pólon",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 2706,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "pólon",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "astatine",
+   "icelandic": "astat",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 141,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "astat",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "radon",
+   "icelandic": "radon",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 2725,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "radon@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "radon",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "francium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "fransíum@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "radium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "radíum@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "actinium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "thorium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "þóríum@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "protactinium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "uranium",
+   "icelandic": "úran",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 4175,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "úraníum@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "úran",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "neptunium",
+   "icelandic": "neptúníum",
+   "domain": "chemistry",
+   "position": 1,
+   "conceptId": 70252,
+   "reason": "book-entry",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "neptúníum",
+     "domain": "chemistry",
+     "reason": "book-entry"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "plutonium",
+   "icelandic": "plúton",
+   "domain": "physics",
+   "position": 2,
+   "conceptId": 2699,
+   "reason": "head-form",
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "plútóníum@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [
+    {
+     "icelandic": "plúton",
+     "domain": "physics",
+     "reason": "head-form"
+    }
+   ],
+   "exportAgrees": true
+  },
+  {
+   "english": "americium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "curium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "berkelium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [
+    "berkelíum@anatomy-physiology"
+   ],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "californium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "einsteinium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "fermium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "mendelevium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "nobelium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "lawrencium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "rutherfordium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "dubnium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "seaborgium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "bohrium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "hassium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "meitnerium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "darmstadtium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "roentgenium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "copernicium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "nihonium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "flerovium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "moscovium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "livermorium",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "tennessine",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  },
+  {
+   "english": "oganesson",
+   "icelandic": null,
+   "domain": null,
+   "position": null,
+   "conceptId": null,
+   "reason": null,
+   "alsoInScope": [],
+   "tied": [],
+   "outOfScope": [],
+   "integrity": [],
+   "chapterDeviations": [],
+   "exportRows": [],
+   "exportAgrees": true
+  }
+ ]
+}

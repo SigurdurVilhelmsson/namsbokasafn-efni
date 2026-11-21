@@ -1,0 +1,6075 @@
+{
+ "_meta": {
+  "measured": "2026-11-21",
+  "book": "efnafraedi-2e",
+  "prodHead": "844f13d2f",
+  "readOnly": true,
+  "method": "the entries were added to an in-memory copy of the database (file opened read-only, serialized, reopened from the buffer); the file's size and mtime were unchanged after the run, and the checkout stayed clean",
+  "script": "instruments/termcheck-dryrun-c73.template.cjs",
+  "what": "the term check's warnings for the 59 §C73 adds entered together, per name, in the same states, with each warning classified by its name-bearing words, plus synthetic controls per name"
+ },
+ "head": "844f13d2f9ec589b35dc5da271187c3783a7282f",
+ "book": "efnafraedi-2e",
+ "dbPath": "/home/siggi/repos/namsbokasafn-efni/pipeline-output/sessions.db",
+ "opened": [
+  "/home/siggi/repos/namsbokasafn-efni/pipeline-output/sessions.db"
+ ],
+ "walHeader": [
+  2,
+  2
+ ],
+ "fileUnchanged": true,
+ "before": {
+  "db": {
+   "size": 54603776,
+   "mtimeMs": 1795221001487.723
+  },
+  "wal": {
+   "size": 0,
+   "mtimeMs": 1795221001488.723
+  }
+ },
+ "after": {
+  "db": {
+   "size": 54603776,
+   "mtimeMs": 1795221001487.723
+  },
+  "wal": {
+   "size": 0,
+   "mtimeMs": 1795221001488.723
+  }
+ },
+ "totals": {
+  "segments": 22591,
+  "candidateSegments": 435,
+  "units": 71
+ },
+ "drafts": {
+  "unique": 226,
+  "conflicts": [],
+  "same": 226,
+  "drifted": [],
+  "missing": []
+ },
+ "added": 59,
+ "refusals": [],
+ "resolveCheck": [],
+ "bin": {
+  "magnesium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "helium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "lithium": {
+   "outcome": "unambiguous",
+   "nForms": 5
+  },
+  "beryllium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "scandium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "vanadium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "gallium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "rubidium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "strontium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "niobium": {
+   "outcome": "unambiguous",
+   "nForms": 5
+  },
+  "technetium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "rhodium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "palladium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "cadmium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "indium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "caesium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "barium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "cerium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "promethium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "samarium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "europium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "gadolinium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "terbium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "dysprosium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "holmium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "erbium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "thulium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "ytterbium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "lutetium": {
+   "outcome": "refused-ambiguous",
+   "nForms": 0
+  },
+  "hafnium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "rhenium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "osmium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "iridium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "thallium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "francium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "radium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "actinium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "thorium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "protactinium": {
+   "outcome": "not-in-bin",
+   "nForms": 0
+  },
+  "americium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "curium": {
+   "outcome": "not-in-bin",
+   "nForms": 0
+  },
+  "berkelium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "californium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "einsteinium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "fermium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "mendelevium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "nobelium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "lawrencium": {
+   "outcome": "not-in-bin",
+   "nForms": 0
+  },
+  "rutherfordium": {
+   "outcome": "not-in-bin",
+   "nForms": 0
+  },
+  "dubnium": {
+   "outcome": "not-in-bin",
+   "nForms": 0
+  },
+  "seaborgium": {
+   "outcome": "not-in-bin",
+   "nForms": 0
+  },
+  "bohrium": {
+   "outcome": "not-in-bin",
+   "nForms": 0
+  },
+  "hassium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "meitnerium": {
+   "outcome": "not-in-bin",
+   "nForms": 0
+  },
+  "darmstadtium": {
+   "outcome": "not-in-bin",
+   "nForms": 0
+  },
+  "roentgenium": {
+   "outcome": "not-in-bin",
+   "nForms": 0
+  },
+  "copernicium": {
+   "outcome": "unambiguous",
+   "nForms": 4
+  },
+  "flerovium": {
+   "outcome": "not-in-bin",
+   "nForms": 0
+  },
+  "livermorium": {
+   "outcome": "not-in-bin",
+   "nForms": 0
+  }
+ },
+ "synthetic": {
+  "before": {
+   "passOk": 0,
+   "compoundWarns": 0,
+   "notMatched": [
+    "scandium|pass",
+    "scandium|compound",
+    "rubidium|pass",
+    "rubidium|compound",
+    "niobium|pass",
+    "niobium|compound",
+    "technetium|pass",
+    "technetium|compound",
+    "rhodium|pass",
+    "rhodium|compound",
+    "palladium|pass",
+    "palladium|compound",
+    "indium|pass",
+    "indium|compound",
+    "caesium|pass",
+    "caesium|compound",
+    "cerium|pass",
+    "cerium|compound",
+    "promethium|pass",
+    "promethium|compound",
+    "samarium|pass",
+    "samarium|compound",
+    "europium|pass",
+    "europium|compound",
+    "gadolinium|pass",
+    "gadolinium|compound",
+    "terbium|pass",
+    "terbium|compound",
+    "dysprosium|pass",
+    "dysprosium|compound",
+    "holmium|pass",
+    "holmium|compound",
+    "erbium|pass",
+    "erbium|compound",
+    "thulium|pass",
+    "thulium|compound",
+    "ytterbium|pass",
+    "ytterbium|compound",
+    "lutetium|pass",
+    "lutetium|compound",
+    "hafnium|pass",
+    "hafnium|compound",
+    "rhenium|pass",
+    "rhenium|compound",
+    "osmium|pass",
+    "osmium|compound",
+    "iridium|pass",
+    "iridium|compound",
+    "actinium|pass",
+    "actinium|compound",
+    "protactinium|pass",
+    "protactinium|compound",
+    "americium|pass",
+    "americium|compound",
+    "curium|pass",
+    "curium|compound",
+    "californium|pass",
+    "californium|compound",
+    "einsteinium|pass",
+    "einsteinium|compound",
+    "fermium|pass",
+    "fermium|compound",
+    "mendelevium|pass",
+    "mendelevium|compound",
+    "nobelium|pass",
+    "nobelium|compound",
+    "lawrencium|pass",
+    "lawrencium|compound",
+    "rutherfordium|pass",
+    "rutherfordium|compound",
+    "dubnium|pass",
+    "dubnium|compound",
+    "seaborgium|pass",
+    "seaborgium|compound",
+    "bohrium|pass",
+    "bohrium|compound",
+    "hassium|pass",
+    "hassium|compound",
+    "meitnerium|pass",
+    "meitnerium|compound",
+    "darmstadtium|pass",
+    "darmstadtium|compound",
+    "roentgenium|pass",
+    "roentgenium|compound",
+    "copernicium|pass",
+    "copernicium|compound",
+    "flerovium|pass",
+    "flerovium|compound",
+    "livermorium|pass",
+    "livermorium|compound"
+   ],
+   "anomalies": [
+    {
+     "id": "magnesium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "magnesium|compound",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "helium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "helium|compound",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "lithium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "lithium|compound",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "beryllium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "beryllium|compound",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "vanadium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "vanadium|compound",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "gallium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "gallium|compound",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "strontium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "strontium|compound",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "cadmium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "cadmium|compound",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "barium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "barium|compound",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "thallium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "thallium|compound",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "francium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "francium|compound",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "radium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "radium|compound",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "thorium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "thorium|compound",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "berkelium|pass",
+     "isFallback": true,
+     "issue": null
+    },
+    {
+     "id": "berkelium|compound",
+     "isFallback": true,
+     "issue": null
+    }
+   ]
+  },
+  "A": {
+   "passOk": 59,
+   "compoundWarns": 59,
+   "notMatched": [],
+   "anomalies": []
+  },
+  "B": {
+   "passOk": 59,
+   "compoundWarns": 59,
+   "notMatched": [],
+   "anomalies": []
+  }
+ },
+ "counts": {
+  "base.fixed": {
+   "magnesium": {
+    "enSegments": 119,
+    "matched": 119,
+    "passed": 119,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "helium": {
+    "enSegments": 55,
+    "matched": 55,
+    "passed": 55,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "lithium": {
+    "enSegments": 58,
+    "matched": 58,
+    "passed": 58,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "beryllium": {
+    "enSegments": 31,
+    "matched": 31,
+    "passed": 31,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "scandium": {
+    "enSegments": 12,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 12
+   },
+   "vanadium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 11,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "gallium": {
+    "enSegments": 19,
+    "matched": 19,
+    "passed": 19,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "rubidium": {
+    "enSegments": 16,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 16
+   },
+   "strontium": {
+    "enSegments": 29,
+    "matched": 29,
+    "passed": 29,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "niobium": {
+    "enSegments": 5,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 5
+   },
+   "technetium": {
+    "enSegments": 14,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 14
+   },
+   "rhodium": {
+    "enSegments": 8,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 8
+   },
+   "palladium": {
+    "enSegments": 11,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 11
+   },
+   "cadmium": {
+    "enSegments": 38,
+    "matched": 38,
+    "passed": 38,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "indium": {
+    "enSegments": 9,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 9
+   },
+   "caesium": {
+    "enSegments": 21,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 21
+   },
+   "barium": {
+    "enSegments": 47,
+    "matched": 47,
+    "passed": 47,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "cerium": {
+    "enSegments": 7,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 7
+   },
+   "promethium": {
+    "enSegments": 5,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 5
+   },
+   "samarium": {
+    "enSegments": 5,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 5
+   },
+   "europium": {
+    "enSegments": 7,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 7
+   },
+   "gadolinium": {
+    "enSegments": 6,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 6
+   },
+   "terbium": {
+    "enSegments": 5,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 5
+   },
+   "dysprosium": {
+    "enSegments": 6,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 6
+   },
+   "holmium": {
+    "enSegments": 5,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 5
+   },
+   "erbium": {
+    "enSegments": 4,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 4
+   },
+   "thulium": {
+    "enSegments": 5,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 5
+   },
+   "ytterbium": {
+    "enSegments": 4,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 4
+   },
+   "lutetium": {
+    "enSegments": 6,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 6
+   },
+   "hafnium": {
+    "enSegments": 5,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 5
+   },
+   "rhenium": {
+    "enSegments": 6,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 6
+   },
+   "osmium": {
+    "enSegments": 9,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 9
+   },
+   "iridium": {
+    "enSegments": 11,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 11
+   },
+   "thallium": {
+    "enSegments": 22,
+    "matched": 22,
+    "passed": 22,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "francium": {
+    "enSegments": 8,
+    "matched": 8,
+    "passed": 8,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "radium": {
+    "enSegments": 12,
+    "matched": 12,
+    "passed": 12,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "actinium": {
+    "enSegments": 11,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 11
+   },
+   "thorium": {
+    "enSegments": 9,
+    "matched": 9,
+    "passed": 9,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "protactinium": {
+    "enSegments": 4,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 4
+   },
+   "americium": {
+    "enSegments": 11,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 11
+   },
+   "curium": {
+    "enSegments": 6,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 6
+   },
+   "berkelium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "californium": {
+    "enSegments": 6,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 6
+   },
+   "einsteinium": {
+    "enSegments": 6,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 6
+   },
+   "fermium": {
+    "enSegments": 5,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 5
+   },
+   "mendelevium": {
+    "enSegments": 6,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 6
+   },
+   "nobelium": {
+    "enSegments": 7,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 7
+   },
+   "lawrencium": {
+    "enSegments": 7,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 7
+   },
+   "rutherfordium": {
+    "enSegments": 6,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 6
+   },
+   "dubnium": {
+    "enSegments": 5,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 5
+   },
+   "seaborgium": {
+    "enSegments": 7,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 7
+   },
+   "bohrium": {
+    "enSegments": 4,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 4
+   },
+   "hassium": {
+    "enSegments": 4,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 4
+   },
+   "meitnerium": {
+    "enSegments": 6,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 6
+   },
+   "darmstadtium": {
+    "enSegments": 4,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 4
+   },
+   "roentgenium": {
+    "enSegments": 5,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 5
+   },
+   "copernicium": {
+    "enSegments": 6,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 6
+   },
+   "flerovium": {
+    "enSegments": 7,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 7
+   },
+   "livermorium": {
+    "enSegments": 5,
+    "matched": 0,
+    "passed": 0,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 5
+   }
+  },
+  "A.fixed": {
+   "magnesium": {
+    "enSegments": 119,
+    "matched": 119,
+    "passed": 62,
+    "warned": 57,
+    "byClass": {
+     "compound+inflection": 4,
+     "compound-only": 43,
+     "inflection-only": 10
+    },
+    "unclaimed": 0
+   },
+   "helium": {
+    "enSegments": 55,
+    "matched": 55,
+    "passed": 36,
+    "warned": 19,
+    "byClass": {
+     "inflection-only": 4,
+     "compound-only": 14,
+     "compound+inflection": 1
+    },
+    "unclaimed": 0
+   },
+   "lithium": {
+    "enSegments": 58,
+    "matched": 58,
+    "passed": 32,
+    "warned": 26,
+    "byClass": {
+     "compound-only": 22,
+     "inflection-only": 4
+    },
+    "unclaimed": 0
+   },
+   "beryllium": {
+    "enSegments": 31,
+    "matched": 31,
+    "passed": 22,
+    "warned": 9,
+    "byClass": {
+     "compound-only": 6,
+     "inflection-only": 2,
+     "no-name-token": 1
+    },
+    "unclaimed": 0
+   },
+   "scandium": {
+    "enSegments": 12,
+    "matched": 12,
+    "passed": 8,
+    "warned": 4,
+    "byClass": {
+     "inflection-only": 2,
+     "compound-only": 2
+    },
+    "unclaimed": 0
+   },
+   "vanadium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 6,
+    "warned": 5,
+    "byClass": {
+     "inflection-only": 1,
+     "compound-only": 4
+    },
+    "unclaimed": 0
+   },
+   "gallium": {
+    "enSegments": 19,
+    "matched": 19,
+    "passed": 12,
+    "warned": 7,
+    "byClass": {
+     "inflection-only": 1,
+     "compound-only": 6
+    },
+    "unclaimed": 0
+   },
+   "rubidium": {
+    "enSegments": 16,
+    "matched": 16,
+    "passed": 10,
+    "warned": 6,
+    "byClass": {
+     "compound-only": 3,
+     "inflection-only": 3
+    },
+    "unclaimed": 0
+   },
+   "strontium": {
+    "enSegments": 29,
+    "matched": 29,
+    "passed": 20,
+    "warned": 9,
+    "byClass": {
+     "compound-only": 4,
+     "inflection-only": 5
+    },
+    "unclaimed": 0
+   },
+   "niobium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "technetium": {
+    "enSegments": 14,
+    "matched": 14,
+    "passed": 14,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "rhodium": {
+    "enSegments": 8,
+    "matched": 8,
+    "passed": 8,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "palladium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 11,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "cadmium": {
+    "enSegments": 38,
+    "matched": 38,
+    "passed": 26,
+    "warned": 12,
+    "byClass": {
+     "compound-only": 9,
+     "inflection-only": 3
+    },
+    "unclaimed": 0
+   },
+   "indium": {
+    "enSegments": 9,
+    "matched": 9,
+    "passed": 8,
+    "warned": 1,
+    "byClass": {
+     "compound-only": 1
+    },
+    "unclaimed": 0
+   },
+   "caesium": {
+    "enSegments": 21,
+    "matched": 21,
+    "passed": 9,
+    "warned": 12,
+    "byClass": {
+     "compound-only": 9,
+     "inflection-only": 3
+    },
+    "unclaimed": 0
+   },
+   "barium": {
+    "enSegments": 47,
+    "matched": 47,
+    "passed": 19,
+    "warned": 28,
+    "byClass": {
+     "compound-only": 21,
+     "inflection-only": 6,
+     "compound+inflection": 1
+    },
+    "unclaimed": 0
+   },
+   "cerium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 6,
+    "warned": 1,
+    "byClass": {
+     "compound-only": 1
+    },
+    "unclaimed": 0
+   },
+   "promethium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "samarium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 4,
+    "warned": 1,
+    "byClass": {
+     "compound-only": 1
+    },
+    "unclaimed": 0
+   },
+   "europium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 7,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "gadolinium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "terbium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "dysprosium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "holmium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "erbium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 4,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "thulium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "ytterbium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 4,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "lutetium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "hafnium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "rhenium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "osmium": {
+    "enSegments": 9,
+    "matched": 9,
+    "passed": 8,
+    "warned": 1,
+    "byClass": {
+     "inflection-only": 1
+    },
+    "unclaimed": 0
+   },
+   "iridium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 9,
+    "warned": 2,
+    "byClass": {
+     "compound-only": 1,
+     "inflection-only": 1
+    },
+    "unclaimed": 0
+   },
+   "thallium": {
+    "enSegments": 22,
+    "matched": 22,
+    "passed": 17,
+    "warned": 5,
+    "byClass": {
+     "compound+inflection": 1,
+     "inflection-only": 2,
+     "compound-only": 2
+    },
+    "unclaimed": 0
+   },
+   "francium": {
+    "enSegments": 8,
+    "matched": 8,
+    "passed": 7,
+    "warned": 1,
+    "byClass": {
+     "inflection-only": 1
+    },
+    "unclaimed": 0
+   },
+   "radium": {
+    "enSegments": 12,
+    "matched": 12,
+    "passed": 9,
+    "warned": 3,
+    "byClass": {
+     "inflection-only": 2,
+     "compound-only": 1
+    },
+    "unclaimed": 0
+   },
+   "actinium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 10,
+    "warned": 1,
+    "byClass": {
+     "non-official": 1
+    },
+    "unclaimed": 0
+   },
+   "thorium": {
+    "enSegments": 9,
+    "matched": 9,
+    "passed": 7,
+    "warned": 2,
+    "byClass": {
+     "inflection-only": 1,
+     "compound-only": 1
+    },
+    "unclaimed": 0
+   },
+   "protactinium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 4,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "americium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 11,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "curium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "berkelium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "californium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "einsteinium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "fermium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "mendelevium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "nobelium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 7,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "lawrencium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 7,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "rutherfordium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "dubnium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "seaborgium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 7,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "bohrium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 4,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "hassium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 4,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "meitnerium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "darmstadtium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 4,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "roentgenium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "copernicium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "flerovium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 7,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "livermorium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   }
+  },
+  "B.now": {
+   "magnesium": {
+    "enSegments": 119,
+    "matched": 119,
+    "passed": 66,
+    "warned": 53,
+    "byClass": {
+     "compound-only": 41,
+     "non-official": 12
+    },
+    "unclaimed": 0
+   },
+   "helium": {
+    "enSegments": 55,
+    "matched": 55,
+    "passed": 29,
+    "warned": 26,
+    "byClass": {
+     "non-official": 16,
+     "compound-only": 10
+    },
+    "unclaimed": 0
+   },
+   "lithium": {
+    "enSegments": 58,
+    "matched": 58,
+    "passed": 0,
+    "warned": 58,
+    "byClass": {
+     "non-official": 58
+    },
+    "unclaimed": 0
+   },
+   "beryllium": {
+    "enSegments": 31,
+    "matched": 31,
+    "passed": 19,
+    "warned": 12,
+    "byClass": {
+     "non-official": 8,
+     "compound-only": 3,
+     "no-name-token": 1
+    },
+    "unclaimed": 0
+   },
+   "scandium": {
+    "enSegments": 12,
+    "matched": 12,
+    "passed": 8,
+    "warned": 4,
+    "byClass": {
+     "non-official": 2,
+     "compound-only": 2
+    },
+    "unclaimed": 0
+   },
+   "vanadium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 6,
+    "warned": 5,
+    "byClass": {
+     "non-official": 2,
+     "compound-only": 3
+    },
+    "unclaimed": 0
+   },
+   "gallium": {
+    "enSegments": 19,
+    "matched": 19,
+    "passed": 7,
+    "warned": 12,
+    "byClass": {
+     "non-official": 8,
+     "compound-only": 4
+    },
+    "unclaimed": 0
+   },
+   "rubidium": {
+    "enSegments": 16,
+    "matched": 16,
+    "passed": 11,
+    "warned": 5,
+    "byClass": {
+     "compound-only": 2,
+     "non-official": 3
+    },
+    "unclaimed": 0
+   },
+   "strontium": {
+    "enSegments": 29,
+    "matched": 29,
+    "passed": 20,
+    "warned": 9,
+    "byClass": {
+     "compound-only": 4,
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "niobium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 4,
+    "warned": 1,
+    "byClass": {
+     "non-official": 1
+    },
+    "unclaimed": 0
+   },
+   "technetium": {
+    "enSegments": 14,
+    "matched": 14,
+    "passed": 6,
+    "warned": 8,
+    "byClass": {
+     "non-official": 8
+    },
+    "unclaimed": 0
+   },
+   "rhodium": {
+    "enSegments": 8,
+    "matched": 8,
+    "passed": 6,
+    "warned": 2,
+    "byClass": {
+     "non-official": 2
+    },
+    "unclaimed": 0
+   },
+   "palladium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 9,
+    "warned": 2,
+    "byClass": {
+     "non-official": 2
+    },
+    "unclaimed": 0
+   },
+   "cadmium": {
+    "enSegments": 38,
+    "matched": 38,
+    "passed": 24,
+    "warned": 14,
+    "byClass": {
+     "compound-only": 8,
+     "non-official": 6
+    },
+    "unclaimed": 0
+   },
+   "indium": {
+    "enSegments": 9,
+    "matched": 9,
+    "passed": 6,
+    "warned": 3,
+    "byClass": {
+     "compound-only": 1,
+     "non-official": 2
+    },
+    "unclaimed": 0
+   },
+   "caesium": {
+    "enSegments": 21,
+    "matched": 21,
+    "passed": 6,
+    "warned": 15,
+    "byClass": {
+     "non-official": 10,
+     "compound-only": 5
+    },
+    "unclaimed": 0
+   },
+   "barium": {
+    "enSegments": 47,
+    "matched": 47,
+    "passed": 16,
+    "warned": 31,
+    "byClass": {
+     "non-official": 10,
+     "compound-only": 21
+    },
+    "unclaimed": 0
+   },
+   "cerium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 1,
+    "warned": 6,
+    "byClass": {
+     "non-official": 5,
+     "compound-only": 1
+    },
+    "unclaimed": 0
+   },
+   "promethium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 0,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "samarium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 0,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "europium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 3,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   },
+   "gadolinium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 0,
+    "warned": 6,
+    "byClass": {
+     "non-official": 6
+    },
+    "unclaimed": 0
+   },
+   "terbium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 1,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   },
+   "dysprosium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 2,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   },
+   "holmium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 1,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   },
+   "erbium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 0,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   },
+   "thulium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 1,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   },
+   "ytterbium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 0,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   },
+   "lutetium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 1,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "hafnium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 1,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   },
+   "rhenium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 1,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "osmium": {
+    "enSegments": 9,
+    "matched": 9,
+    "passed": 3,
+    "warned": 6,
+    "byClass": {
+     "non-official": 6
+    },
+    "unclaimed": 0
+   },
+   "iridium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 3,
+    "warned": 8,
+    "byClass": {
+     "compound-only": 1,
+     "non-official": 7
+    },
+    "unclaimed": 0
+   },
+   "thallium": {
+    "enSegments": 22,
+    "matched": 22,
+    "passed": 5,
+    "warned": 17,
+    "byClass": {
+     "non-official": 15,
+     "compound-only": 2
+    },
+    "unclaimed": 0
+   },
+   "francium": {
+    "enSegments": 8,
+    "matched": 8,
+    "passed": 1,
+    "warned": 7,
+    "byClass": {
+     "non-official": 7
+    },
+    "unclaimed": 0
+   },
+   "radium": {
+    "enSegments": 12,
+    "matched": 12,
+    "passed": 6,
+    "warned": 6,
+    "byClass": {
+     "compound-only": 1,
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "actinium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 1,
+    "warned": 10,
+    "byClass": {
+     "non-official": 10
+    },
+    "unclaimed": 0
+   },
+   "thorium": {
+    "enSegments": 9,
+    "matched": 9,
+    "passed": 3,
+    "warned": 6,
+    "byClass": {
+     "non-official": 6
+    },
+    "unclaimed": 0
+   },
+   "protactinium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 0,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   },
+   "americium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 1,
+    "warned": 10,
+    "byClass": {
+     "non-official": 10
+    },
+    "unclaimed": 0
+   },
+   "curium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 0,
+    "warned": 6,
+    "byClass": {
+     "non-official": 6
+    },
+    "unclaimed": 0
+   },
+   "berkelium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 0,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "californium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 1,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "einsteinium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 1,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "fermium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 0,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "mendelevium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 1,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "nobelium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 1,
+    "warned": 6,
+    "byClass": {
+     "non-official": 6
+    },
+    "unclaimed": 0
+   },
+   "lawrencium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 1,
+    "warned": 6,
+    "byClass": {
+     "non-official": 6
+    },
+    "unclaimed": 0
+   },
+   "rutherfordium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 1,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "dubnium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 0,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "seaborgium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 2,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "bohrium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 0,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   },
+   "hassium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 0,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   },
+   "meitnerium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 1,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "darmstadtium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 0,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   },
+   "roentgenium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 1,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   },
+   "copernicium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 1,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "flerovium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 2,
+    "warned": 5,
+    "byClass": {
+     "non-official": 5
+    },
+    "unclaimed": 0
+   },
+   "livermorium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 1,
+    "warned": 4,
+    "byClass": {
+     "non-official": 4
+    },
+    "unclaimed": 0
+   }
+  },
+  "B.fixed": {
+   "magnesium": {
+    "enSegments": 119,
+    "matched": 119,
+    "passed": 76,
+    "warned": 43,
+    "byClass": {
+     "compound-only": 43
+    },
+    "unclaimed": 0
+   },
+   "helium": {
+    "enSegments": 55,
+    "matched": 55,
+    "passed": 41,
+    "warned": 14,
+    "byClass": {
+     "compound-only": 14
+    },
+    "unclaimed": 0
+   },
+   "lithium": {
+    "enSegments": 58,
+    "matched": 58,
+    "passed": 36,
+    "warned": 22,
+    "byClass": {
+     "compound-only": 22
+    },
+    "unclaimed": 0
+   },
+   "beryllium": {
+    "enSegments": 31,
+    "matched": 31,
+    "passed": 24,
+    "warned": 7,
+    "byClass": {
+     "compound-only": 6,
+     "no-name-token": 1
+    },
+    "unclaimed": 0
+   },
+   "scandium": {
+    "enSegments": 12,
+    "matched": 12,
+    "passed": 10,
+    "warned": 2,
+    "byClass": {
+     "compound-only": 2
+    },
+    "unclaimed": 0
+   },
+   "vanadium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 7,
+    "warned": 4,
+    "byClass": {
+     "compound-only": 4
+    },
+    "unclaimed": 0
+   },
+   "gallium": {
+    "enSegments": 19,
+    "matched": 19,
+    "passed": 13,
+    "warned": 6,
+    "byClass": {
+     "compound-only": 6
+    },
+    "unclaimed": 0
+   },
+   "rubidium": {
+    "enSegments": 16,
+    "matched": 16,
+    "passed": 13,
+    "warned": 3,
+    "byClass": {
+     "compound-only": 3
+    },
+    "unclaimed": 0
+   },
+   "strontium": {
+    "enSegments": 29,
+    "matched": 29,
+    "passed": 25,
+    "warned": 4,
+    "byClass": {
+     "compound-only": 4
+    },
+    "unclaimed": 0
+   },
+   "niobium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "technetium": {
+    "enSegments": 14,
+    "matched": 14,
+    "passed": 14,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "rhodium": {
+    "enSegments": 8,
+    "matched": 8,
+    "passed": 8,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "palladium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 11,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "cadmium": {
+    "enSegments": 38,
+    "matched": 38,
+    "passed": 29,
+    "warned": 9,
+    "byClass": {
+     "compound-only": 9
+    },
+    "unclaimed": 0
+   },
+   "indium": {
+    "enSegments": 9,
+    "matched": 9,
+    "passed": 8,
+    "warned": 1,
+    "byClass": {
+     "compound-only": 1
+    },
+    "unclaimed": 0
+   },
+   "caesium": {
+    "enSegments": 21,
+    "matched": 21,
+    "passed": 12,
+    "warned": 9,
+    "byClass": {
+     "compound-only": 9
+    },
+    "unclaimed": 0
+   },
+   "barium": {
+    "enSegments": 47,
+    "matched": 47,
+    "passed": 26,
+    "warned": 21,
+    "byClass": {
+     "compound-only": 21
+    },
+    "unclaimed": 0
+   },
+   "cerium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 6,
+    "warned": 1,
+    "byClass": {
+     "compound-only": 1
+    },
+    "unclaimed": 0
+   },
+   "promethium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "samarium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 4,
+    "warned": 1,
+    "byClass": {
+     "compound-only": 1
+    },
+    "unclaimed": 0
+   },
+   "europium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 7,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "gadolinium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "terbium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "dysprosium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "holmium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "erbium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 4,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "thulium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "ytterbium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 4,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "lutetium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "hafnium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "rhenium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "osmium": {
+    "enSegments": 9,
+    "matched": 9,
+    "passed": 9,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "iridium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 10,
+    "warned": 1,
+    "byClass": {
+     "compound-only": 1
+    },
+    "unclaimed": 0
+   },
+   "thallium": {
+    "enSegments": 22,
+    "matched": 22,
+    "passed": 20,
+    "warned": 2,
+    "byClass": {
+     "compound-only": 2
+    },
+    "unclaimed": 0
+   },
+   "francium": {
+    "enSegments": 8,
+    "matched": 8,
+    "passed": 8,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "radium": {
+    "enSegments": 12,
+    "matched": 12,
+    "passed": 11,
+    "warned": 1,
+    "byClass": {
+     "compound-only": 1
+    },
+    "unclaimed": 0
+   },
+   "actinium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 11,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "thorium": {
+    "enSegments": 9,
+    "matched": 9,
+    "passed": 8,
+    "warned": 1,
+    "byClass": {
+     "compound-only": 1
+    },
+    "unclaimed": 0
+   },
+   "protactinium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 4,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "americium": {
+    "enSegments": 11,
+    "matched": 11,
+    "passed": 11,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "curium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "berkelium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "californium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "einsteinium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "fermium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "mendelevium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "nobelium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 7,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "lawrencium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 7,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "rutherfordium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "dubnium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "seaborgium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 7,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "bohrium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 4,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "hassium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 4,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "meitnerium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "darmstadtium": {
+    "enSegments": 4,
+    "matched": 4,
+    "passed": 4,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "roentgenium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "copernicium": {
+    "enSegments": 6,
+    "matched": 6,
+    "passed": 6,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "flerovium": {
+    "enSegments": 7,
+    "matched": 7,
+    "passed": 7,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   },
+   "livermorium": {
+    "enSegments": 5,
+    "matched": 5,
+    "passed": 5,
+    "warned": 0,
+    "byClass": {},
+    "unclaimed": 0
+   }
+  }
+ },
+ "warnedB": {
+  "magnesium": [
+   {
+    "segmentId": "m68698:table-summary:fs-idp282234816-summary",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumnítríð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…nskrift 2 O natríumoxíð, C d S kadmíumsúlfíð, M g neðanskrift 3 N neðanskrift 2 magnesíumnítríð, C a neðanskrift 3 P neðanskrift 2 kalsíumfosfíð og A l neðanskrift 4 C neðansk…",
+    "en": "…oxide, C d S cadmium sulfide, M g subscript 3 N subscript 2 magnesium nitride, C a subscript 3 P subscript 2 calcium phosphide, a…"
+   },
+   {
+    "segmentId": "m68698:entry:auto-15",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumnítríð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Mg[[sub:3]]N[[sub:2]], magnesíumnítríð",
+    "en": "Mg[[sub:3]]N[[sub:2]], magnesium nitride"
+   },
+   {
+    "segmentId": "m68698:table-summary:fs-idp279316112-summary",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumfosfat"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…skrift 4 kalsíumsúlfat og M g neðanskrift 3 ( P O neðanskrift 4 ) neðanskrift 2 magnesíumfosfat.",
+    "en": "…ulfate, and M g subscript 3 ( P O subscript 4 ) subscript 2 magnesium phosphate."
+   },
+   {
+    "segmentId": "m68698:entry:auto-28",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumfosfat"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Mg[[sub:3]](PO[[sub:4]])[[sub:2]], magnesíumfosfat",
+    "en": "Mg[[sub:3]](PO[[sub:4]])[[sub:2]], magnesium phosphate"
+   },
+   {
+    "segmentId": "m68698:table-summary:fs-idp268265360-summary",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumhýdroxíð",
+     "magnesíumsúlfat"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…karbónat sem er innihaldsefni í sýrubindandi lyfjum, M g ( O H ) neðanskrift 2, magnesíumhýdroxíð sem er einnig innihaldsefni í sýrubindandi lyfjum, A l ( O H ) neðanskrift 3 ál…",
+    "en": "…hich is an ingredient of antacids, M g ( O H ) subscript 2, magnesium hydroxide which is also an ingredient of antacids, A l ( O …"
+   },
+   {
+    "segmentId": "m68698:entry:auto-48",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumhýdroxíð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Mg(OH)[[sub:2]], magnesíumhýdroxíð",
+    "en": "Mg(OH)[[sub:2]], magnesium hydroxide"
+   },
+   {
+    "segmentId": "m68698:entry:auto-56",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumsúlfat"
+    ],
+    "untranslatedEnglish": false,
+    "is": "MgSO[[sub:4]], magnesíumsúlfat",
+    "en": "MgSO[[sub:4]], magnesium sulfate"
+   },
+   {
+    "segmentId": "m68698:para:fs-idp283457424",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumsúlfat"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(d) magnesíumsúlfat heptahýdrat",
+    "en": "(d) magnesium sulfate heptahydrate"
+   },
+   {
+    "segmentId": "m68698:problem:fs-idm306432",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumseleníð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(b) magnesíumseleníð",
+    "en": "(b) magnesium selenide"
+   },
+   {
+    "segmentId": "m68698:problem:fs-idp279468704",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumfosfat"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(g) magnesíumfosfat",
+    "en": "(g) magnesium phosphate"
+   },
+   {
+    "segmentId": "m68698:problem:fs-idp279320480",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumnítríð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(b) magnesíumnítríð",
+    "en": "(b) magnesium nitride"
+   },
+   {
+    "segmentId": "m68709:problem:fs-idp45919792",
+    "chapter": 4,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumklóríði",
+     "magnesíumhýdroxíð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(c) Vatnslausnir af magnesíumklóríði og natríumhýdroxíði hvarfast og mynda fast magnesíumhýdroxíð og vatnslausn af n…",
+    "en": "(c) Aqueous solutions of magnesium chloride and sodium hydroxide react to produce solid magnes…"
+   },
+   {
+    "segmentId": "m68709:problem:fs-idm721584",
+    "chapter": 4,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumklóríð",
+     "magnesíumhýdroxíð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…u kalsíumhýdroxíði er síðan bætt út í sjóinn, þar sem það hvarfast við uppleyst magnesíumklóríð og myndar fast magnesíumhýdroxíð og vatnslausn af kalsíumklóríði.",
+    "en": "…xide is then added to the seawater, reacting with dissolved magnesium chloride to yield solid magnesium hydroxide and aqueous cal…"
+   },
+   {
+    "segmentId": "m68709:problem:fs-idm721024",
+    "chapter": 4,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumhýdroxíðinu",
+     "magnesíumklóríð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(d) Fasta magnesíumhýdroxíðinu er bætt út í saltsýrulausn, sem myndar uppleyst magnesíumklóríð og fljótandi va…",
+    "en": "(d) The solid magnesium hydroxide is added to a hydrochloric acid solution, produci…"
+   },
+   {
+    "segmentId": "m68709:problem:fs-idm720496",
+    "chapter": 4,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumklóríðið",
+     "magnesíummálm"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(e) Að lokum er magnesíumklóríðið brætt og rafgreint til að gefa af sér fljótandi magnesíummálm og tvíatóma klórg…",
+    "en": "(e) Finally, the magnesium chloride is melted and electrolyzed to yield liquid magnesi…"
+   },
+   {
+    "segmentId": "m68710:para:fs-idm52053696",
+    "chapter": 4,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumklóríð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Takið eftir að auk vatns myndar þetta hvarf salt, magnesíumklóríð.",
+    "en": "…e that in addition to water, this reaction produces a salt, magnesium chloride."
+   },
+   {
+    "segmentId": "m68713:para:fs-idp56844080",
+    "chapter": 4,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíummjólk",
+     "magnesíumhýdroxíð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…n massa af natríumhýdroxíði, NaOH, þyrfti til að framleiða 16 g af sýrubindandi magnesíummjólk [magnesíumhýdroxíð, Mg(OH)[[sub:2]]] með eftirfarandi efnahvarfi?",
+    "en": "…e required to produce 16 g of the antacid milk of magnesia [magnesium hydroxide, Mg(OH)[[sub:2]]] by the following reaction?"
+   },
+   {
+    "segmentId": "m68713:problem:fs-idp38709616",
+    "chapter": 4,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumkarbónats"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(c) Fjölda móla og massa magnesíumkarbónats, MgCO[[sub:3]], sem þarf til að mynda 283 g af koltvíoxíði. (MgO er hin afurðin…",
+    "en": "(c) The number of moles and the mass of magnesium carbonate, MgCO[[sub:3]], required to produce 283 g of carb…"
+   },
+   {
+    "segmentId": "m68739:alt:fs-idp678720-alt",
+    "chapter": 7,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "Magnesíumtákn",
+     "magnesíumtákn",
+     "magnesíumatóm",
+     "magnesíumoxíð",
+     "magnesíumjón"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…)“ eru skrifuð undir efnahvarfið. Þriðja röðin sýnir Lewis-formúlur efnahvarfs. Magnesíumtákn með tveimur rauðum punktum, plúsmerki og súrefnistákn með sex punktum eru vinst…",
+    "en": "…. The third row shows the Lewis structures of a reaction. A magnesium symbol with two red dots, a plus sign, and an oxygen symbol…"
+   },
+   {
+    "segmentId": "m68783:para:fs-idp175903616",
+    "chapter": 11,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumklóríð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Natríumklóríð og hliðstæður þess í flokki 2, kalsíum- og magnesíumklóríð, eru oft notuð til að afísa vegi og gangstéttir, vegna þess að lausn af einhver…",
+    "en": "Sodium chloride and its group 2 analogs calcium and magnesium chloride are often used to de-ice roadways and sidewalks, d…"
+   },
+   {
+    "segmentId": "m68784:para:fs-idm189696128",
+    "chapter": 11,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumsambönd"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…—[[MATH:3]] ([[xref:CNX_Chem_11_05_detrg]]). Sápur mynda óleysanleg kalsíum- og magnesíumsambönd í hörðu vatni; þvottaefni mynda vatnsleysanlegar afurðir—sem er afgerandi kostu…",
+    "en": "…f:CNX_Chem_11_05_detrg]]). Soaps form insoluble calcium and magnesium compounds in hard water; detergents form water-soluble prod…"
+   },
+   {
+    "segmentId": "m68787:problem:fs-idm151736608",
+    "chapter": 12,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíummálms",
+     "magnesíumbitanna"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Lýstu áhrifum hvers eftirfarandi á hraða efnahvarfs magnesíummálms við lausn af saltsýru: mólstyrk saltsýrunnar, hitastig lausnarinnar og stærð ma…",
+    "en": "…ect of each of the following on the rate of the reaction of magnesium metal with a solution of hydrochloric acid: the molarity of…"
+   },
+   {
+    "segmentId": "m68787:solution:fs-idm120667552",
+    "chapter": 12,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíummálmi"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…r hraða efnahvarfsins. Hærra hitastig eykur hraða efnahvarfsins. Minni bitar af magnesíummálmi hvarfast hraðar en stærri bitar vegna þess að meira hvarfgjarnt yfirborð er til…",
+    "en": "…ature increases the rate of the reaction. Smaller pieces of magnesium metal will react more rapidly than larger pieces because mo…"
+   },
+   {
+    "segmentId": "m68811:para:fs-idp681040",
+    "chapter": 15,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumhýdroxíð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(c) Mg(OH)[[sub:2]], magnesíumhýdroxíð, virka efnið í Milk of Magnesia",
+    "en": "(c) Mg(OH)[[sub:2]], magnesium hydroxide, the active ingredient in Milk of Magnesia"
+   },
+   {
+    "segmentId": "m68811:para:fs-idp15157136",
+    "chapter": 15,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíummálmi"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Fyrsta skrefið í framleiðslu á magnesíummálmi er botnfelling Mg(OH)[[sub:2]] úr sjó með því að bæta við kalki, Ca(OH)[[sub:2]…",
+    "en": "The first step in the preparation of magnesium metal is the precipitation of Mg(OH)[[sub:2]] from sea wate…"
+   },
+   {
+    "segmentId": "m68811:para:fs-idp11854608",
+    "chapter": 15,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumhýdroxíð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…[[sub:sp]] = 8,9 [[MATH:35]] 10[[sup:–12]]), mun öfuga hvarfið eiga sér stað og magnesíumhýdroxíð falla út þar til styrkur uppleystra jóna hefur lækkað nægilega, þannig að [[i:Q…",
+    "en": "…up:–12]]), the reverse reaction will proceed, precipitating magnesium hydroxide until the dissolved ion concentrations have been …"
+   },
+   {
+    "segmentId": "m68811:para:fs-idp1193504",
+    "chapter": 15,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíummálmi"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Fyrsta skrefið í framleiðslu á magnesíummálmi er botnfelling Mg(OH)[[sub:2]] úr sjó með því að bæta við Ca(OH)[[sub:2]]. Styr…",
+    "en": "The first step in the preparation of magnesium metal is the precipitation of Mg(OH)[[sub:2]] from sea wate…"
+   },
+   {
+    "segmentId": "m68811:para:fs-idm745168",
+    "chapter": 15,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumhýdroxíðs"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…afnvæginu til vinstri, sem minnkar styrk hýdroxíðjónar og eykur magn óuppleysts magnesíumhýdroxíðs.",
+    "en": "…n of hydroxide ion and increasing the amount of undissolved magnesium hydroxide."
+   },
+   {
+    "segmentId": "m68811:para:fs-idm743248",
+    "chapter": 15,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumjónar",
+     "magnesíumhýdroxíðs"
+    ],
+    "untranslatedEnglish": false,
+    "is": "… styrk þessarar jónar og hliðra leysnijafnvæginu til vinstri, sem minnkar styrk magnesíumjónar og eykur magn óuppleysts magnesíumhýdroxíðs.",
+    "en": "…ty equilibrium to the left, decreasing the concentration of magnesium ion and increasing the amount of undissolved magnesium hydr…"
+   },
+   {
+    "segmentId": "m68811:para:fs-idm330455632",
+    "chapter": 15,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumhýdroxíðs"
+    ],
+    "untranslatedEnglish": false,
+    "is": "… inniheldur ekki sameiginlega jón og engin áhrif eru væntanleg á leysnijafnvægi magnesíumhýdroxíðs.",
+    "en": "…ompound does not contain a common ion, and no effect on the magnesium hydroxide solubility equilibrium is expected."
+   },
+   {
+    "segmentId": "m68811:para:fs-idm735616",
+    "chapter": 15,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumhýdroxíðs"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Þannig hefur það engin áhrif á gildi [[i:Q]] að breyta magni fasts magnesíumhýdroxíðs í blöndunni og engin hliðrun er nauðsynleg til að endurheimta gildi jafnvægisfa…",
+    "en": "Thus, changing the amount of solid magnesium hydroxide in the mixture has no effect on the value of [[i:…"
+   },
+   {
+    "segmentId": "m68811:problem:fs-idp2651648",
+    "chapter": 15,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "Magnesíummálmur"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Magnesíummálmur (hluti af málmblöndum sem notaðar eru í flugvélar og afoxunarefni sem notað er …",
+    "en": "Magnesium metal (a component of alloys used in aircraft and a reducin…"
+   },
+   {
+    "segmentId": "m68822:para:fs-idm215655008",
+    "chapter": 17,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumanóða",
+     "magnesíumklóríði"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Í þessu keri er föst magnesíumanóða á kafi í vatnslausn af magnesíumklóríði sem er tengd með saltbrú við vatnslausn…",
+    "en": "In this cell, a solid magnesium anode is immersed in an aqueous solution of magnesium chlor…"
+   },
+   {
+    "segmentId": "m68822:problem:fs-idm95770176",
+    "chapter": 17,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumrafskaut"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…af gullrafskauti í 0,55 [[i:M]] Au(NO[[sub:3]])[[sub:3]]-lausn og forskautið er magnesíumrafskaut í 0,75 [[i:M]] Mg(NO[[sub:3]])[[sub:2]]-lausn.",
+    "en": "…[i:M]] Au(NO[[sub:3]])[[sub:3]] solution and the anode is a magnesium electrode in 0.75 [[i:M]] Mg(NO[[sub:3]])[[sub:2]] solution…"
+   },
+   {
+    "segmentId": "m68829:caption:CNX_Chem_18_01_CalciWater-caption",
+    "chapter": 18,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "Magnesíummálmur"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Magnesíummálmur (vinstri krukka) hvarfast hægt við heitt vatn (miðkrukka) og myndar Mg[[sup:2+]…",
+    "en": "Magnesium metal (left jar) reacts slowly with hot water (center jar) …"
+   },
+   {
+    "segmentId": "m68831:para:fs-idp120612224",
+    "chapter": 18,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumdufti"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Afoxun bóroxíðs með magnesíumdufti myndar bór (95–98,5% hreint) sem brúnt, myndlaust duft:",
+    "en": "Reduction of boric oxide with magnesium powder forms boron (95–98.5% pure) as a brown, amorphous po…"
+   },
+   {
+    "segmentId": "m68831:para:fs-idp204527824",
+    "chapter": 18,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumoxíðið"
+    ],
+    "untranslatedEnglish": false,
+    "is": "… langdræga röðun eins og raunverulegt fast efni. Meðferð með saltsýru fjarlægir magnesíumoxíðið. Frekari hreinsun á bórinu hefst með því að breyta óhreina bórinu í bórtríklórí…",
+    "en": "… a true solid. Treatment with hydrochloric acid removes the magnesium oxide. Further purification of the boron begins with conver…"
+   },
+   {
+    "segmentId": "m68831:problem:fs-idp114681504",
+    "chapter": 18,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumsílisíð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(e) magnesíumsílisíð",
+    "en": "(e) magnesium silicide"
+   },
+   {
+    "segmentId": "m68834:para:fs-idm59038240",
+    "chapter": 18,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumkarbónati"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Að undanskildu magnesíumkarbónati er hægt að framleiða karbónöt málma í flokkum 1 og 2 með hvarfi koltvíoxíðs við…",
+    "en": "With the exception of magnesium carbonate, it is possible to prepare carbonates of the meta…"
+   },
+   {
+    "segmentId": "m68837:para:fs-idp12102384",
+    "chapter": 18,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumoxíði",
+     "Magnesíumoxíð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Oxíð alkalímálma hafa litla iðnaðarnotkun, ólíkt magnesíumoxíði, kalsíumoxíði og áloxíði. Magnesíumoxíð er mikilvægt við framleiðslu á eldföstu…",
+    "en": "…of the alkali metals have little industrial utility, unlike magnesium oxide, calcium oxide, and aluminum oxide. Magnesium oxide i…"
+   },
+   {
+    "segmentId": "m68837:para:fs-idm33972064",
+    "chapter": 18,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumhýdroxíði",
+     "magnesíummjólk"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…09_CaOH2]]) og til framleiðslu á oxíðum með hitaniðurbroti. Vatnskennd lausn af magnesíumhýdroxíði er sýrubindandi lyfið magnesíummjólk. Vegna þess hve auðvelt er að nálgast það …",
+    "en": "…f oxides by thermal decomposition. An aqueous suspension of magnesium hydroxide constitutes the antacid milk of magnesia. Because…"
+   },
+   {
+    "segmentId": "m68843:caption:CNX_Chem_19_02_ChlorBlue-caption",
+    "chapter": 19,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíummiðjuna"
+    ],
+    "untranslatedEnglish": false,
+    "is": "… fyrir í nokkrum mismunandi myndum, sem allar hafa sömu grunnbyggingu í kringum magnesíummiðjuna. (b) Koparþalósýanínblátt, ferningslaga flatt kopargirðisamband, er til staðar …",
+    "en": "…t forms, which all have the same basic structure around the magnesium center. (b) Copper phthalocyanine blue, a square planar cop…"
+   },
+   {
+    "segmentId": "m68868:table-summary:fs-idm454814336-summary",
+    "chapter": -1,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "magnesíumefni",
+     "magnesíumefni",
+     "magnesíumefni",
+     "magnesíumefni",
+     "magnesíumefni"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…ysnimargfeldið 1 sinnum 10 í veldinu mínus 54. Fyrir M g ( O H ) neðanskrift 2, magnesíumefni, er leysnimargfeldið 8,9 sinnum 10 í veldinu mínus 12. Fyrir M g C O neðanskrif…",
+    "en": "… 10 superscript negative 54. For M g ( O H ) subscript 2, a magnesium substance, the solubility product is 8.9 times 10 superscri…"
+   }
+  ],
+  "helium": [
+   {
+    "segmentId": "m68734:para:fs-idp9284128",
+    "chapter": 6,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "helíumatómi"
+    ],
+    "untranslatedEnglish": false,
+    "is": "[[i:n]] = 1 hvolfið er alveg fyllt í helíumatómi.",
+    "en": "The [[i:n]] = 1 shell is completely filled in a helium atom."
+   },
+   {
+    "segmentId": "m68734:para:fs-idp28826352",
+    "chapter": 6,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "helíumatómsins"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…kna stytta skipan liþíums sem [He]2[[i:s]][[sup:1]], þar sem [He] táknar skipan helíumatómsins, sem er eins og fyllt innra hvolf liþíums. Með því að skrifa skipanirnar á þenn…",
+    "en": "…]][[sup:1]], where [He] represents the configuration of the helium atom, which is identical to that of the filled inner shell …"
+   },
+   {
+    "segmentId": "m68751:problem:fs-idm192031120",
+    "chapter": 9,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "helíumkjarna",
+     "helíumgasatomi",
+     "helíumgasinu"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…nu radíum rotnar á einu ári myndar það 1,16 [[MATH:30]] 10[[sup:18]] alfaagnir (helíumkjarna). Hver alfaögn verður að helíumgasatomi. Hver er þrýstingurinn í paskölum á hel…",
+    "en": "… it produces 1.16 [[MATH:30]] 10[[sup:18]] alpha particles (helium nuclei). Each alpha particle becomes an atom of helium gas.…"
+   },
+   {
+    "segmentId": "m68758:problem:fs-idm89452736",
+    "chapter": 9,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "helíumsýni"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Dreifing sameindahraða í helíumsýni er sýnd í [[xref:CNX_Chem_09_05_MolSpeed3]]. Ef sýnið er kælt, mun hraðadreifin…",
+    "en": "The distribution of molecular speeds in a sample of helium is shown in [[xref:CNX_Chem_09_05_MolSpeed3]]. If the sampl…"
+   },
+   {
+    "segmentId": "m68816:problem:fs-idm2629152",
+    "chapter": 16,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "Helíumfyllt"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Helíumfyllt blaðra tæmist sjálfkrafa yfir nótt þegar He-atóm dreifast í gegnum vegg blöðrun…",
+    "en": "A helium-filled balloon spontaneously deflates overnight as He atoms…"
+   },
+   {
+    "segmentId": "m68851:para:fs-idm36435184",
+    "chapter": 21,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "helíumatóm"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Sem einfalt dæmi um orkuna sem tengist sterka kjarnakraftinum skulum við skoða helíumatóm sem samanstendur af tveimur róteindum, tveimur nifteindum og tveimur rafeindum.…",
+    "en": "…ergy associated with the strong nuclear force, consider the helium atom composed of two protons, two neutrons, and two electro…"
+   },
+   {
+    "segmentId": "m68852:para:fs-idp3176832",
+    "chapter": 21,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "helíumkjarnar"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…jáeindir (sem eru jákvætt hlaðnar rafeindir), alfaagnir (α) (sem eru orkumiklir helíumkjarnar), betaagnir (β) (sem eru orkumiklar rafeindir) og gammageislar (γ) (sem samanst…",
+    "en": "…rged electrons), alpha (α) particles (which are high-energy helium nuclei), beta (β) particles (which are high-energy electron…"
+   },
+   {
+    "segmentId": "m68852:solution:fs-idp227711248",
+    "chapter": 21,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "helíumatóms"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…r og nifteindir. (b) α-ögn er ein afurð náttúrulegrar geislavirkni og er kjarni helíumatóms. (c) β-ögn er afurð náttúrulegrar geislavirkni og er háhraða rafeind. (d) Jáein…",
+    "en": "…ne product of natural radioactivity and is the nucleus of a helium atom. (c) A β particle is a product of natural radioactivit…"
+   },
+   {
+    "segmentId": "m68852:glossary-def:fs-idm57603984-def",
+    "chapter": 21,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "helíumkjarni",
+     "helíumatóm"
+    ],
+    "untranslatedEnglish": false,
+    "is": "[[b:(α]] eða [[MATH:45]] eða [[MATH:46]] orkuríkur helíumkjarni; helíumatóm sem hefur misst tvær rafeindir og inniheldur tvær róteindir og tvær…",
+    "en": "[[b:(α]] or [[MATH:45]] or [[MATH:46]] high-energy helium nucleus; a helium atom that has lost two electrons and cont…"
+   },
+   {
+    "segmentId": "m68854:para:fs-idp130339440",
+    "chapter": 21,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "helíumkjarnar"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…oru óhlaðnar rafsegulbylgjur, γ-geislar. Við vitum nú að α-agnir eru orkumiklir helíumkjarnar, β-agnir eru orkumiklar rafeindir og γ-geislun samanstendur af orkumikilli rafs…",
+    "en": "…waves, γ rays. We now know that α particles are high-energy helium nuclei, β particles are high-energy electrons, and γ radiat…"
+   },
+   {
+    "segmentId": "m68854:solution:fs-idm33283872",
+    "chapter": 21,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "helíumkjarnar"
+    ],
+    "untranslatedEnglish": false,
+    "is": "α (helíumkjarnar), β (rafeindir), β[[sup:+]] (jáeindir) og η (nifteindir) geta losnað frá geisla…",
+    "en": "α (helium nuclei), β (electrons), β[[sup:+]] (positrons), and η (neut…"
+   },
+   {
+    "segmentId": "m68856:para:fs-idm69471456",
+    "chapter": 21,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "helíumkjarna"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…ar er nettó samrunahvarf þar sem fjórir vetniskjarnar renna saman og mynda einn helíumkjarna og tvær jáeindir. Þetta er nettóhvarf flóknari atburðarásar:",
+    "en": "…reaction in which four hydrogen nuclei fuse and produce one helium nucleus and two positrons. This is a net reaction of a more…"
+   },
+   {
+    "segmentId": "m68856:para:fs-idm178516816",
+    "chapter": 21,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "Helíumkjarni"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Helíumkjarni hefur massa sem er 0,7% minni en massi fjögurra vetniskjarna; þessum tapaða mas…",
+    "en": "A helium nucleus has a mass that is 0.7% less than that of four hydr…"
+   },
+   {
+    "segmentId": "m68856:para:fs-idm244318448",
+    "chapter": 21,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "helíumkjarna"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…ist undir samruna við gríðarlega hátt hitastig (varmakjarnasamruni). Þeir mynda helíumkjarna og nifteind:",
+    "en": "…emely high temperatures (thermonuclear fusion). They form a helium nucleus and a neutron:"
+   }
+  ],
+  "lithium": [
+   {
+    "segmentId": "m68667:para:fs-idm49120320",
+    "chapter": 1,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "liþíumjónum"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…glegri frumefni eins og yttríum, praseódýmíum og gadólíníum. Rafhlaðan byggir á liþíumjónum og ýmsum öðrum efnum, þar á meðal járni, kóbalti, kopar, pólýetýlenoxíði og pól…",
+    "en": "…rium, praseodymium, and gadolinium. The battery relies upon lithium ions and a variety of other materials, including iron, coba…"
+   },
+   {
+    "segmentId": "m68696:para:fs-idp187565648",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "liþíumjónarinnar",
+     "liþíumjónarinnar"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Spáðu fyrir um formúlu jónaefnisins sem myndast milli liþíumjónarinnar og peroxíðjónarinnar, [[MATH:33]] (Vísbending: Notaðu lotukerfið til að spá fyr…",
+    "en": "…redict the formula of the ionic compound formed between the lithium ion and the peroxide ion, [[MATH:33]] (Hint: Use the period…"
+   },
+   {
+    "segmentId": "m68696:para:fs-idp214730704",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "liþíumgjafi"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(d) Li[[sub:2]]CO[[sub:3]], liþíumgjafi í þunglyndislyfjum",
+    "en": "(d) Li[[sub:2]]CO[[sub:3]], a source of lithium in antidepressants"
+   },
+   {
+    "segmentId": "m68698:table-summary:fs-idp282234816-summary",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "liþíumklóríð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "… r kalíumbrómíð, C a I neðanskrift 2 kalsíumjoðíð, C s F sesíumflúoríð, L i C l liþíumklóríð, N a neðanskrift 2 O natríumoxíð, C d S kadmíumsúlfíð, M g neðanskrift 3 N neða…",
+    "en": "… subscript 2 calcium iodide, C s F cesium fluoride, L i C l lithium chloride, N a subscript 2 O sodium oxide, C d S cadmium sul…"
+   },
+   {
+    "segmentId": "m68698:entry:auto-18",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "liþíumklóríð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "LiCl, liþíumklóríð",
+    "en": "LiCl, lithium chloride"
+   },
+   {
+    "segmentId": "m68698:problem:fs-idp279466208",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "liþíumkarbónat"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(a) liþíumkarbónat",
+    "en": "(a) lithium carbonate"
+   },
+   {
+    "segmentId": "m68710:para:fs-idm5793440",
+    "chapter": 4,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "liþíumklóríð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(b) liþíumklóríð og silfurasetat",
+    "en": "(b) lithium chloride and silver acetate"
+   },
+   {
+    "segmentId": "m68710:problem:fs-idp89419440",
+    "chapter": 4,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "Liþíumhýdroxíð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Liþíumhýdroxíð má nota til að gleypa koltvíoxíð í lokuðu umhverfi, svo sem í mönnuðum geimföru…",
+    "en": "Lithium hydroxide may be used to absorb carbon dioxide in enclosed …"
+   },
+   {
+    "segmentId": "m68729:problem:fs-idm1476208",
+    "chapter": 6,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "liþíumatóm"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Hituð liþíumatóm gefa frá sér ljóseindir með orkuna 2,961 [[MATH:22]] 10[[sup:−19]] J. Reiknaðu …",
+    "en": "Heated lithium atoms emit photons of light with an energy of 2.961 [[MATH:…"
+   },
+   {
+    "segmentId": "m68747:para:fs-idm113916160",
+    "chapter": 8,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "liþíumatóma",
+     "liþíumsameind",
+     "liþíumatómanna",
+     "liþíumgufu"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Samruni tveggja liþíumatóma til að mynda liþíumsameind, Li[[sub:2]], er hliðstæður myndun H[[sub:2]], en at…",
+    "en": "The combination of two lithium atoms to form a lithium molecule, Li[[sub:2]], is analogous…"
+   },
+   {
+    "segmentId": "m68773:para:fs-idp135414368",
+    "chapter": 10,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "liþíumseleníði",
+     "liþíumjónum",
+     "liþíumseleníðs"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Lýsa má liþíumseleníði sem þéttpökkuðu fylki seleníðjóna með liþíumjónum í öllum fjórfletningsholunum.…",
+    "en": "Lithium selenide can be described as a closest-packed array of sele…"
+   },
+   {
+    "segmentId": "m68773:para:fs-idp187605664",
+    "chapter": 10,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "liþíumjónin"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…ar LiCl (NaCl-lík bygging, FCC) er 0,514 nm eða 5,14 Å. Ef gert er ráð fyrir að liþíumjónin sé nógu lítil til að klóríðjónirnar snertist, eins og í [[xref:CNX_Chem_10_07_N…",
+    "en": "…ke structure, FCC) is 0.514 nm or 5.14 Å. Assuming that the lithium ion is small enough so that the chloride ions are in contac…"
+   },
+   {
+    "segmentId": "m68805:alt:fs-idp3283088-alt",
+    "chapter": 14,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "liþíumhýdroxíð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…f 4 brennisteinssýra. Undir dálkinum „6 sterkir basar“ er eftirfarandi: L i O H liþíumhýdroxíð; N a O H natríumhýdroxíð; K O H kalíumhýdroxíð; C a ( O H ) með lágstaf 2 kalsí…",
+    "en": "…nder the “6 Strong Bases” column are the following: L i O H lithium hydroxide; N a O H sodium hydroxide; K O H potassium hydrox…"
+   },
+   {
+    "segmentId": "m68825:para:fs-idm181217728",
+    "chapter": 17,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "Liþíumjónarafhlöður"
+    ],
+    "untranslatedEnglish": false,
+    "is": "[[term:Liþíumjónarafhlöður|term-00007]] ([[xref:CNX_Chem_17_05_LiIon]]) eru meðal vinsælustu endurhlaðanle…",
+    "en": "[[term:Lithium ion batteries|term-00007]] ([[xref:CNX_Chem_17_05_LiIon]]) …"
+   },
+   {
+    "segmentId": "m68825:para:fs-idm162456704",
+    "chapter": 17,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "Liþíumrafhlöður"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…tæður er [[i:x]] yfirleitt ekki meira en 0,5 og kerspennan er um það bil 3,7 V. Liþíumrafhlöður eru vinsælar vegna þess að þær geta veitt mikinn straum, eru léttari en sambæri…",
+    "en": "… more than 0.5 and the cell voltage is approximately 3.7 V. Lithium batteries are popular because they can provide a large amou…"
+   },
+   {
+    "segmentId": "m68825:caption:CNX_Chem_17_05_LiIon-caption",
+    "chapter": 17,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "liþíumjónarafhlöðu",
+     "liþíumjónirnar"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Í liþíumjónarafhlöðu flæðir hleðsla þegar liþíumjónirnar flytjast milli rafskauts og bakskauts.",
+    "en": "In a lithium ion battery, charge flows as the lithium ions are transferr…"
+   },
+   {
+    "segmentId": "m68825:para:fs-idm171820144",
+    "chapter": 17,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "liþíumjónarafhlöður"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…link:síðu|http://openstax.org/l/16lithiumion]] til að fá frekari upplýsingar um liþíumjónarafhlöður.",
+    "en": "…://openstax.org/l/16lithiumion]] for more information about lithium ion batteries."
+   },
+   {
+    "segmentId": "m68825:glossary-term:fs-idm118911936-term",
+    "chapter": 17,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "Liþíumjónarafhlaða"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Liþíumjónarafhlaða",
+    "en": "lithium ion battery"
+   },
+   {
+    "segmentId": "m68825:glossary-def:fs-idm118911936-def",
+    "chapter": 17,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "liþíumjóna"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…hlaðanleg rafhlaða sem er algeng í færanlegum rafeindatækjum, byggð á flutningi liþíumjóna milli rafskauts og bakskauts",
+    "en": "…tery commonly used in portable electronic devices, based on lithium ion transfer between the anode and cathode"
+   },
+   {
+    "segmentId": "m68825:glossary-def:fs-idm206318304-def",
+    "chapter": 17,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "liþíumjónarafhlöður"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Endurhlaðanleg rafhlaða byggð á Ni/Cd-helmingakerum með notkunarsvið svipað og liþíumjónarafhlöður",
+    "en": "…d on Ni/Cd half-cells with applications similar to those of lithium ion batteries"
+   },
+   {
+    "segmentId": "m68826:problem:fs-idp71069984",
+    "chapter": 17,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "liþíummálmi"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Hvers vegna væri fórnarskaut úr liþíummálmi slæmur kostur?",
+    "en": "Why would a sacrificial anode made of lithium metal be a bad choice"
+   },
+   {
+    "segmentId": "m68830:problem:fs-idp111274816",
+    "chapter": 18,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "liþíumklóríði"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Settu fram stilltar efnajöfnur fyrir heildarhvarfið við rafgreiningu á bráðnu liþíumklóríði og fyrir efnahvörfin sem eiga sér stað við rafskautin. Þú gætir viljað rifja up…",
+    "en": "…ions for the overall reaction in the electrolysis of molten lithium chloride and for the reactions occurring at the electrodes.…"
+   }
+  ],
+  "beryllium": [
+   {
+    "segmentId": "m68698:solution:fs-idp283374992",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "beryllíumklóríð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(a) sesíumklóríð; (b) baríumoxíð; (c) kalíumsúlfíð; (d) beryllíumklóríð; (e) vetnisbrómíð; (f) álflúoríð",
+    "en": "…sium chloride; (b) barium oxide; (c) potassium sulfide; (d) beryllium chloride; (e) hydrogen bromide; (f) aluminum fluoride"
+   },
+   {
+    "segmentId": "m68739:para:fs-idm12065312",
+    "chapter": 7,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "beryllíumdíhýdríðs"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…u vetni, eða önnur atóm sem mynda ekki fjöltengi. Til dæmis innihalda sameindir beryllíumdíhýdríðs, BeH[[sub:2]], og bórtríflúoríðs, BF[[sub:3]], miðjuatóm með aðeins tvær og þrj…",
+    "en": "… that do not form multiple bonds. For example, molecules of beryllium dihydride, BeH[[sub:2]], and boron trifluoride, BF[[sub:3]]…"
+   },
+   {
+    "segmentId": "m68739:alt:fs-idm19104608-alt",
+    "chapter": 7,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "beryllíumatóm"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Tvær Lewis-byggingar eru sýndar. Sú vinstri sýnir beryllíumatóm eintengt við tvö vetnisatóm. Sú hægri sýnir bóratóm eintengt við þrjú flúoratóm…",
+    "en": "Two Lewis structures are shown. The left shows a beryllium atom single bonded to two hydrogen atoms. The right shows a…"
+   },
+   {
+    "segmentId": "m68742:para:fs-idp122770240",
+    "chapter": 7,
+    "type": "missing",
+    "cls": "no-name-token",
+    "kinds": [],
+    "tokens": [],
+    "untranslatedEnglish": false,
+    "is": "…ub:2]] ([[xref:CNX_Chem_07_06_BeF2]]) sýnir aðeins tvö rafeindapör í kringum miðberyllínatómið. Með tvö tengi og engin stök rafeindapör á miðatóminu eru tengin eins …",
+    "en": "…06_BeF2]]) shows only two electron pairs around the central beryllium atom. With two bonds and no lone pairs of electrons on the …"
+   },
+   {
+    "segmentId": "m68742:alt:fs-idp229524848-alt",
+    "chapter": 7,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "beryllíumatóm",
+     "beryllíumatómsins"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…ewis-bygging er sýnd. Flúoratóm með þremur stökum rafeindapörum er eintengt við beryllíumatóm sem er eintengt við flúoratóm með þremur stökum rafeindapörum. Hornið á tengjun…",
+    "en": "…om with three lone pairs of electrons is single bonded to a beryllium atom which is single bonded to a fluorine atom with three l…"
+   },
+   {
+    "segmentId": "m68742:alt:fs-idp73717728-alt",
+    "chapter": 7,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "beryllíumatóm"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…ir 90 gráðu horn. Þriðja röðin inniheldur Lewis-formúlur. Fyrsta formúlan sýnir beryllíumatóm með eintengi við tvö vetnisatóm. Önnur formúlan sýnir bóratóm með eintengi við …",
+    "en": "… row contains Lewis structures. The first structure shows a beryllium atom single bonded to two hydrogen atoms. The second struct…"
+   },
+   {
+    "segmentId": "m68745:para:fs-idp208078752",
+    "chapter": 8,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "Beryllíumatómið"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Beryllíumatómið í BeCl[[sub:2]]-sameind á gasformi er dæmi um miðatómið með engin einmana rafei…",
+    "en": "The beryllium atom in a gaseous BeCl[[sub:2]] molecule is an example of a…"
+   }
+  ],
+  "scandium": [
+   {
+    "segmentId": "m68842:para:fs-idm149455392",
+    "chapter": 19,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "Skandíummálmur",
+     "skandíumbrómíði"
+    ],
+    "untranslatedEnglish": false,
+    "is": "… ýmis sölt úr málmum sem eru virkari en vetni með hvarfi við samsvarandi sýrur: Skandíummálmur hvarfast við vetnisbrómíðsýru og myndar lausn af skandíumbrómíði:",
+    "en": "…ive than hydrogen by reaction with the corresponding acids: Scandium metal reacts with hydrobromic acid to form a solution of sc…"
+   },
+   {
+    "segmentId": "m68843:caption:CNX_Chem_19_02_BondType-caption",
+    "chapter": 19,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "skandíumjónina"
+    ],
+    "untranslatedEnglish": false,
+    "is": "… eru gefnar til málmmiðju. Einmana pörin frá sex vatnssameindum mynda tengi við skandíumjónina til að mynda áttflötungsflóka. (Aðeins gefnu pörin eru sýnd.)",
+    "en": "…. The lone pairs from six water molecules form bonds to the scandium ion to form an octahedral complex. (Only the donated pairs …"
+   }
+  ],
+  "vanadium": [
+   {
+    "segmentId": "m68842:para:fs-idm120512480",
+    "chapter": 19,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "vanadíumtetrahalíð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…mtetrahalíða við vatn. Líkt og samgilt kísiltetraklóríð hvarfast bæði títan- og vanadíumtetrahalíð við vatn og mynda lausnir sem innihalda samsvarandi halógenvetnissýrur og málmo…",
+    "en": "… Like covalent silicon tetrachloride, both the titanium and vanadium tetrahalides react with water to give solutions containing …"
+   },
+   {
+    "segmentId": "m68843:para:fs-idp55376000",
+    "chapter": 19,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "Vanadíumoxíð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…xunartölum gerir hliðarmálmahvata vel til þess fallna að nota í hvatunarferlum. Vanadíumoxíð er notað til að framleiða 230.000.000 tonn af brennisteinssýru um allan heim á …",
+    "en": "…ion metal catalysts well suited for catalytic applications. Vanadium oxide is used to produce 230,000,000 tons of sulfuric acid …"
+   },
+   {
+    "segmentId": "m68844:para:fs-idm164326160",
+    "chapter": 19,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "vanadíumsamböndin"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…nandi oxunarástand eins málms framkallað mismunandi liti, eins og sýnt er fyrir vanadíumsamböndin í hlekknum hér að neðan.",
+    "en": "…of one metal can produce different colors, as shown for the vanadium complexes in the link below."
+   },
+   {
+    "segmentId": "m68844:para:fs-idp20917280",
+    "chapter": 19,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "vanadíumsambanda"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Horfðu á þetta [[link:myndband|http://openstax.org/l/16vanadium]] um afoxun vanadíumsambanda til að sjá litrík áhrif breyttra oxunarástanda.",
+    "en": "…ideo|http://openstax.org/l/16vanadium]] of the reduction of vanadium complexes to observe the colorful effect of changing oxidat…"
+   }
+  ],
+  "gallium": [
+   {
+    "segmentId": "m68698:problem:fs-idm304768",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "gallíumfosfíð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(f) gallíumfosfíð",
+    "en": "(f) gallium phosphide"
+   },
+   {
+    "segmentId": "m68713:para:fs-idp52759328",
+    "chapter": 4,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "gallíumoxíði",
+     "gallíummálmi"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Hversu mikinn massa af gallíumoxíði, Ga[[sub:2]]O[[sub:3]], er hægt að útbúa úr 29,0 g af gallíummálmi? Jafnan fyri…",
+    "en": "What mass of gallium oxide, Ga[[sub:2]]O[[sub:3]], can be prepared from 29.0 g o…"
+   },
+   {
+    "segmentId": "m68713:problem:fs-idp134804848",
+    "chapter": 4,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "Gallíumklóríð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Gallíumklóríð er myndað með efnahvarfi 2,6 L af 1,44 M lausn af HCl samkvæmt eftirfarandi jöf…",
+    "en": "Gallium chloride is formed by the reaction of 2.6 L of a 1.44 M sol…"
+   },
+   {
+    "segmentId": "m68713:problem:fs-idp7152848",
+    "chapter": 4,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "gallíumklóríðs"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(a) Lýstu þeim skrefum sem eru nauðsynleg til að ákvarða fjölda móla og massa gallíumklóríðs.",
+    "en": "…teps necessary to determine the number of moles and mass of gallium chloride."
+   },
+   {
+    "segmentId": "m68716:problem:fs-idp91725088",
+    "chapter": 4,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "gallíumbrómíði"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Sýni af gallíumbrómíði, GaBr[[sub:3]], sem vó 0,165 g, var leyst upp í vatni og meðhöndlað með silfurn…",
+    "en": "A sample of gallium bromide, GaBr[[sub:3]], weighing 0.165 g was dissolved in w…"
+   },
+   {
+    "segmentId": "m68761:para:fs-idp29466368",
+    "chapter": 10,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "gallíumarseníð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…ana, að því að gekkóar loðuðu jafn vel við bæði skautað kísildíoxíð og óskautað gallíumarseníð. Þetta sannaði að gekkóar festast við yfirborð vegna dreifkrafta – veikra milli…",
+    "en": "…red equally well to both polar silicon dioxide and nonpolar gallium arsenide. This proved that geckos stick to surfaces because…"
+   }
+  ],
+  "rubidium": [
+   {
+    "segmentId": "m68698:problem:fs-idm306848",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "rúbidíumbrómíð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(a) rúbidíumbrómíð",
+    "en": "(a) rubidium bromide"
+   },
+   {
+    "segmentId": "m68729:problem:fs-idp66304512",
+    "chapter": 6,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "rúbidíumjónir",
+     "rúbidíumsamband"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Þegar rúbidíumjónir eru hitaðar að háu hitastigi sjást tvær línur í línurófi þess við bylgjulengdir…",
+    "en": "When rubidium ions are heated to a high temperature, two lines are observ…"
+   },
+   {
+    "segmentId": "m68773:problem:fs-idp62730896",
+    "chapter": 10,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "Rúbidíumjoðíð",
+     "rúbidíumjón"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Rúbidíumjoðíð kristallast með teningslaga grindareiningu sem inniheldur joðíðjónir á hornunum…",
+    "en": "Rubidium iodide crystallizes with a cubic unit cell that contains io…"
+   }
+  ],
+  "strontium": [
+   {
+    "segmentId": "m68805:alt:fs-idp3283088-alt",
+    "chapter": 14,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "strontíumhýdroxíð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…mhýdroxíð; C a ( O H ) með lágstaf 2 kalsíumhýdroxíð; S r ( O H ) með lágstaf 2 strontíumhýdroxíð; B a ( O H ) með lágstaf 2 baríumhýdroxíð.",
+    "en": "… H ) subscript 2 calcium hydroxide; S r ( O H ) subscript 2 strontium hydroxide; B a ( O H ) subscript 2 barium hydroxide."
+   },
+   {
+    "segmentId": "m68829:problem:fs-idp78283584",
+    "chapter": 18,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "strontíumklóríð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Natríumklóríð og strontíumklóríð eru bæði hvít föst efni. Hvernig gætir þú greint á milli þeirra?",
+    "en": "Sodium chloride and strontium chloride are both white solids. How could you distinguish o…"
+   },
+   {
+    "segmentId": "m68839:problem:fs-idm68463232",
+    "chapter": 18,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "strontíumhýdroxíðs",
+     "strontíumklóríði"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(c) undirbúningur strontíumhýdroxíðs með rafgreiningu á lausn af strontíumklóríði[[BR]] [[MATH:5]]",
+    "en": "(c) preparation of strontium hydroxide by electrolysis of a solution of strontium chlori…"
+   },
+   {
+    "segmentId": "m68868:table-summary:fs-idm454814336-summary",
+    "chapter": -1,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "strontíumefni",
+     "strontíumefni",
+     "strontíumefni",
+     "strontíumefni",
+     "strontíumefni"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…num 10 í veldinu mínus 18. Fyrir S r ( O H ) subscript 2 dot 8 H subscript 2 O, strontíumefni, er leysnimargfeldið 3,2 sinnum 10 í veldinu mínus 4. Fyrir S r C O subscript 3…",
+    "en": "…ve 18. For S r ( O H ) subscript 2 dot 8 H subscript 2 O, a strontium substance, the solubility product is 3.2 times 10 superscri…"
+   }
+  ],
+  "niobium": [],
+  "technetium": [],
+  "rhodium": [],
+  "palladium": [],
+  "cadmium": [
+   {
+    "segmentId": "m68698:table-summary:fs-idp282234816-summary",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "kadmíumsúlfíð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…s F sesíumflúoríð, L i C l liþíumklóríð, N a neðanskrift 2 O natríumoxíð, C d S kadmíumsúlfíð, M g neðanskrift 3 N neðanskrift 2 magnesíumnítríð, C a neðanskrift 3 P neðansk…",
+    "en": "…C l lithium chloride, N a subscript 2 O sodium oxide, C d S cadmium sulfide, M g subscript 3 N subscript 2 magnesium nitride, C…"
+   },
+   {
+    "segmentId": "m68698:entry:auto-13",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "kadmíumsúlfíð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "CdS, kadmíumsúlfíð",
+    "en": "CdS, cadmium sulfide"
+   },
+   {
+    "segmentId": "m68773:solution:fs-idm14571344",
+    "chapter": 10,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "kadmíumsúlfíð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…fjórflötungsholanna er fylltur er fjöldi anjóna og katjóna jafn. Formúlan fyrir kadmíumsúlfíð er CdS.",
+    "en": "…he numbers of anions and cations are equal. The formula for cadmium sulfide is CdS."
+   },
+   {
+    "segmentId": "m68783:problem:fs-idm56692944",
+    "chapter": 11,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "kadmíumjoðíði"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Í mikilvægri tilraun sem gerð var fyrir mörgum árum hækkuðu 5,6977 g af kadmíumjoðíði í 44,69 g af vatni suðumarkið um 0,181 °C. Hvað gefur þetta til kynna um eðli l…",
+    "en": "…ignificant experiment performed many years ago, 5.6977 g of cadmium iodide in 44.69 g of water raised the boiling point 0.181 °…"
+   },
+   {
+    "segmentId": "m68811:para:fs-idp15318768",
+    "chapter": 15,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "kadmíumsúlfíðs",
+     "kadmíumbrómíði"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Reiknaðu mólleysni kadmíumsúlfíðs (CdS) í 0,010-[[i:M]] lausn af kadmíumbrómíði (CdBr[[sub:2]]). [[i:K]][[sub:sp]…",
+    "en": "Calculate the molar solubility of cadmium sulfide (CdS) in a 0.010-[[i:M]] solution of cadmium bromid…"
+   },
+   {
+    "segmentId": "m68813:problem:fs-idm6072880",
+    "chapter": 15,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "kadmíumjóna"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Reiknaðu styrk kadmíumjóna, [Cd[[sup:2+]]], í lausn sem er búin til með því að blanda 0,100 L af 0,0100 [[…",
+    "en": "Calculate the cadmium ion concentration, [Cd[[sup:2+]]], in a solution prepared b…"
+   },
+   {
+    "segmentId": "m68823:problem:fs-idm3160720",
+    "chapter": 17,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "kadmíumskaut",
+     "kadmíumnítrati"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…rspennu við 25 °C fyrir ker sem er búið til úr forskautshálfkeri sem inniheldur kadmíumskaut í 1 [[i:M]] kadmíumnítrati og bakskautshálfkeri sem samanstendur af álskauti í …",
+    "en": "… 25 °C for a cell made from an anode half-cell containing a cadmium electrode in 1 [[i:M]] cadmium nitrate and a cathode half-c…"
+   },
+   {
+    "segmentId": "m68837:problem:fs-idm14502784",
+    "chapter": 18,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "kadmíumhýdroxíði"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(c) kadmíumhýdroxíði bætt við lausn af ediksýru, CH[[sub:3]]CO[[sub:2]]H",
+    "en": "(c) cadmium hydroxide added to a solution of acetic acid, CH[[sub:3]]CO…"
+   },
+   {
+    "segmentId": "m68868:table-summary:fs-idm454814336-summary",
+    "chapter": -1,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "kadmíumefni",
+     "kadmíumefni",
+     "kadmíumefni"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…ysnimargfeldið 1 sinnum 10 í veldinu mínus 97. Fyrir C d ( O H ) með lágstaf 2, kadmíumefni, er leysnimargfeldið 5,9 sinnum 10 í veldinu mínus 15. Fyrir C d S, kadmíumefni…",
+    "en": "… 10 superscript negative 97. For C d ( O H ) subscript 2, a cadmium substance, the solubility product is 5.9 times 10 superscri…"
+   }
+  ],
+  "indium": [
+   {
+    "segmentId": "m68667:para:fs-idm49120320",
+    "chapter": 1,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "indíumtinoxíð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "… áli, natríum og kalíum) og húðaður með efni til að gera hann leiðandi (eins og indíumtinoxíð). Rásaborðið notar hálfleiðaraefni (venjulega kísil); algenga málma eins og kop…",
+    "en": "…) and coated with a material to make it conductive (such as indium tin oxide). The circuit board uses a semiconductor material…"
+   }
+  ],
+  "caesium": [
+   {
+    "segmentId": "m68698:table-summary:fs-idp282234816-summary",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "sesíumflúoríð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "… C l natríumklóríð, K B r kalíumbrómíð, C a I neðanskrift 2 kalsíumjoðíð, C s F sesíumflúoríð, L i C l liþíumklóríð, N a neðanskrift 2 O natríumoxíð, C d S kadmíumsúlfíð, M …",
+    "en": "… potassium bromide, C a I subscript 2 calcium iodide, C s F cesium fluoride, L i C l lithium chloride, N a subscript 2 O sodiu…"
+   },
+   {
+    "segmentId": "m68698:entry:auto-16",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "sesíumflúoríð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "CsF, sesíumflúoríð",
+    "en": "CsF, cesium fluoride"
+   },
+   {
+    "segmentId": "m68698:solution:fs-idp283374992",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "sesíumklóríð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(a) sesíumklóríð; (b) baríumoxíð; (c) kalíumsúlfíð; (d) beryllíumklóríð; (e) vetnisbrómíð; (f) á…",
+    "en": "(a) cesium chloride; (b) barium oxide; (c) potassium sulfide; (d) bery…"
+   },
+   {
+    "segmentId": "m68741:para:fs-idm6705632",
+    "chapter": 7,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "sesíumflúoríðs"
+    ],
+    "untranslatedEnglish": false,
+    "is": "[[xref:CNX_Chem_07_05_BornHaber]] sýnir Born-Haber-hringferlið fyrir myndun sesíumflúoríðs í föstu formi.",
+    "en": "…]] diagrams the Born-Haber cycle for the formation of solid cesium fluoride."
+   },
+   {
+    "segmentId": "m68741:para:fs-idp28364752",
+    "chapter": 7,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "sesíumflúoríð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Þannig er hægt að reikna grindarorkuna út frá öðrum gildum. Fyrir sesíumflúoríð, með því að nota þessi gögn, er grindarorkan:",
+    "en": "…the lattice energy can be calculated from other values. For cesium fluoride, using this data, the lattice energy is:"
+   },
+   {
+    "segmentId": "m68773:para:fs-idm42504800",
+    "chapter": 10,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "Sesíumklóríð",
+     "sesíumjón",
+     "sesíumjónir",
+     "Sesíumjónir",
+     "sesíumjón",
+     "sesíumklóríð",
+     "sesíumjón"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…aðri stærð í hlutfallinu 1:1 myndar það yfirleitt einfalda rúmmiðjaða byggingu. Sesíumklóríð, CsCl, (sýnt á [[xref:CNX_Chem_10_07_CsClStrctr]]) er dæmi um þetta, þar sem Cs…",
+    "en": "…n a 1:1 ratio, it typically forms a simple cubic structure. Cesium chloride, CsCl, (illustrated in [[xref:CNX_Chem_10_07_CsClS…"
+   },
+   {
+    "segmentId": "m68773:para:fs-idm48376560",
+    "chapter": 10,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "sesíumjónanna",
+     "sesíumjónirnar"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…ri lýsingu á CsCl-byggingunni þar sem grindarpunktarnir eru staðsettir í miðjum sesíumjónanna. Í þessari lýsingu eru sesíumjónirnar staðsettar á grindarpunktunum á hornum ei…",
+    "en": "… which the lattice points are located in the centers of the cesium ions. In this description, the cesium ions are located on t…"
+   },
+   {
+    "segmentId": "m68830:problem:fs-idp3792624",
+    "chapter": 18,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "sesíumklóríðs"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Skrifaðu jöfnu fyrir afoxun sesíumklóríðs með frumefninu kalsíum við hátt hitastig.",
+    "en": "Write an equation for the reduction of cesium chloride by elemental calcium at high temperature."
+   },
+   {
+    "segmentId": "m68837:problem:fs-idp1006736",
+    "chapter": 18,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "sesíumkarbónati"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(b) sesíumkarbónati bætt við umframmagn af vatnslausn af HF",
+    "en": "(b) cesium carbonate added to an excess of an aqueous solution of HF"
+   }
+  ],
+  "barium": [
+   {
+    "segmentId": "m68698:solution:fs-idp283374992",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "baríumoxíð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(a) sesíumklóríð; (b) baríumoxíð; (c) kalíumsúlfíð; (d) beryllíumklóríð; (e) vetnisbrómíð; (f) álflúoríð",
+    "en": "(a) cesium chloride; (b) barium oxide; (c) potassium sulfide; (d) beryllium chloride; (e) h…"
+   },
+   {
+    "segmentId": "m68698:problem:fs-idp279467040",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "baríumhýdroxíð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(c) baríumhýdroxíð",
+    "en": "(c) barium hydroxide"
+   },
+   {
+    "segmentId": "m68698:problem:fs-idp279320064",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "baríumklóríð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(a) baríumklóríð",
+    "en": "(a) barium chloride"
+   },
+   {
+    "segmentId": "m68709:problem:fs-idm22160384",
+    "chapter": 4,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "baríumnítrats"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Litríkir flugeldar fela oft í sér niðurbrot baríumnítrats og kalíumklórats og hvarf málmanna magnesíums, áls og járns við súrefni.",
+    "en": "Colorful fireworks often involve the decomposition of barium nitrate and potassium chlorate and the reaction of the meta…"
+   },
+   {
+    "segmentId": "m68709:problem:fs-idm22159824",
+    "chapter": 4,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "baríumnítrat"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(a) Skrifið formúlur fyrir baríumnítrat og kalíumklórat.",
+    "en": "(a) Write the formulas of barium nitrate and potassium chlorate."
+   },
+   {
+    "segmentId": "m68709:problem:fs-idm22158880",
+    "chapter": 4,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "baríumnítrati",
+     "baríumoxíði"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(c) Niðurbrot á föstu baríumnítrati leiðir til myndunar á föstu baríumoxíði, tvíatóma köfnunarefnisgasi og tvíatóma…",
+    "en": "(c) The decomposition of solid barium nitrate leads to the formation of solid barium oxide, diato…"
+   },
+   {
+    "segmentId": "m68710:para:fs-idp8541200",
+    "chapter": 4,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "baríumnítrat"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(a) kalíumsúlfat og baríumnítrat",
+    "en": "(a) potassium sulfate and barium nitrate"
+   },
+   {
+    "segmentId": "m68710:para:fs-idm72085968",
+    "chapter": 4,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "baríumjónina"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Hvaða lausn mætti nota til að fella út baríumjónina, Ba[[sup:2+]], í vatnssýni: natríumklóríð, natríumhýdroxíð eða natríumsúlfat? H…",
+    "en": "Which solution could be used to precipitate the barium ion, Ba[[sup:2+]], in a water sample: sodium chloride, sodi…"
+   },
+   {
+    "segmentId": "m68710:para:fs-idm22923872",
+    "chapter": 4,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "baríumhýdroxíði"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(b) lausn af baríumhýdroxíði er hlutleyst með lausn af saltpéturssýru",
+    "en": "(b) a solution of barium hydroxide is neutralized with a solution of nitric acid"
+   },
+   {
+    "segmentId": "m68710:problem:fs-idp89843040",
+    "chapter": 4,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "baríumsalt",
+     "baríumkarbónat",
+     "baríumsúlfat"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…að í Bandaríkjunum. Það er hægt að hreinsa það í iðnaði með því að breyta því í baríumsalt með hvarfi sýrunnar C[[sub:6]]H[[sub:11]]NHSO[[sub:3]]H við baríumkarbónat, með…",
+    "en": "…es. It can be purified industrially by converting it to the barium salt through reaction of the acid C[[sub:6]]H[[sub:11]]NHSO…"
+   },
+   {
+    "segmentId": "m68713:problem:fs-idp149673136",
+    "chapter": 4,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "baríumperoxíðs",
+     "baríumoxíði"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(e) Fjölda móla og massa baríumperoxíðs, BaO[[sub:2]], sem þarf til að mynda 2,500 kg af baríumoxíði, BaO (O[[sub:2]] e…",
+    "en": "(e) The number of moles and the mass of barium peroxide, BaO[[sub:2]], needed to produce 2.500 kg of bariu…"
+   },
+   {
+    "segmentId": "m68805:alt:fs-idp3283088-alt",
+    "chapter": 14,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "baríumhýdroxíð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…ýdroxíð; S r ( O H ) með lágstaf 2 strontíumhýdroxíð; B a ( O H ) með lágstaf 2 baríumhýdroxíð.",
+    "en": "… ) subscript 2 strontium hydroxide; B a ( O H ) subscript 2 barium hydroxide."
+   },
+   {
+    "segmentId": "m68811:note-title:fs-idp765232-title",
+    "chapter": 15,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "baríumsúlfats"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Notkun baríumsúlfats við myndgreiningu í læknisfræði",
+    "en": "Using Barium Sulfate for Medical Imaging"
+   },
+   {
+    "segmentId": "m68811:para:fs-idp766160",
+    "chapter": 15,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "baríumsambandi",
+     "baríumsúlfati",
+     "baríumsúlfats",
+     "Baríumhúðuð"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…dómsgreiningar á sem minnst ífarandi hátt. Ein slík tækni felur í sér inntöku á baríumsambandi áður en röntgenmynd er tekin. Sjúklingurinn innbyrðir grugglausn af baríumsúlfa…",
+    "en": "…sive manner. One such technique utilizes the ingestion of a barium compound before taking an X-ray image. A suspension of bari…"
+   },
+   {
+    "segmentId": "m68811:para:fs-idp772848",
+    "chapter": 15,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "baríumsúlfati"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Myndgreiningu með baríumsúlfati má nota til að greina bakflæðissjúkdóm, Crohns-sjúkdóm og magasár auk annarra k…",
+    "en": "Medical imaging using barium sulfate can be used to diagnose acid reflux disease, Crohn’…"
+   },
+   {
+    "segmentId": "m68811:caption:CNX_Chem_15_01_BariumXray-caption",
+    "chapter": 15,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "baríumsúlfati"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Grugglausn af baríumsúlfati þekur meltingarveginn og gefur meiri sjónrænar upplýsingar en hefðbundin röntge…",
+    "en": "A suspension of barium sulfate coats the intestinal tract, permitting greater visu…"
+   },
+   {
+    "segmentId": "m68837:para:fs-idm9228176",
+    "chapter": 18,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "baríumklóríts"
+    ],
+    "untranslatedEnglish": false,
+    "is": "… sem vitað er um með vissu er klórsýrlingur, HClO[[sub:2]], sem fæst með hvarfi baríumklóríts við þynnta brennisteinssýru:",
+    "en": "…s chlorous acid, HClO[[sub:2]], obtained by the reaction of barium chlorite with dilute sulfuric acid:"
+   },
+   {
+    "segmentId": "m68837:para:fs-idm3702800",
+    "chapter": 18,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "baríumsúlfatið"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Þegar óleysanlega baríumsúlfatið er síað frá er eftir lausn af HClO[[sub:2]]. Klórsýrlingur er ekki stöðugur; ha…",
+    "en": "Filtering the insoluble barium sulfate leaves a solution of HClO[[sub:2]]. Chlorous acid i…"
+   },
+   {
+    "segmentId": "m68837:para:fs-idm69933232",
+    "chapter": 18,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "baríumsöltum"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Það er hægt að fá léttari halógensýrurnar úr baríumsöltum þeirra með hvarfi við þynnta brennisteinssýru. Hvarfið er hliðstætt því sem not…",
+    "en": "It is possible to obtain the lighter halic acids from their barium salts by reaction with dilute sulfuric acid. The reaction i…"
+   },
+   {
+    "segmentId": "m68837:problem:fs-idm4135888",
+    "chapter": 18,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "baríumnítratlausn"
+    ],
+    "untranslatedEnglish": false,
+    "is": "(d) natríumkarbónatlausn bætt við baríumnítratlausn",
+    "en": "(d) a solution of sodium carbonate added to solution of barium nitrate"
+   },
+   {
+    "segmentId": "m68868:table-summary:fs-idm454814336-summary",
+    "chapter": -1,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "baríumefni",
+     "baríumefni",
+     "baríumefni",
+     "baríumefni",
+     "baríumefni",
+     "baríumefni",
+     "baríumefni",
+     "baríumefni"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…fni, er leysnimargfeldið 2 sinnum 10 í veldinu 32. Fyrir B a C O með lágstaf 3, baríumefni, er leysnimargfeldið 1,6 sinnum 10 í veldinu mínus 9. Fyrir B a C með lágstaf 2…",
+    "en": "…ct is 2 times 10 superscript 32. For B a C O subscript 3, a barium substance, the solubility product is 1.6 times 10 superscri…"
+   }
+  ],
+  "cerium": [
+   {
+    "segmentId": "m68782:para:fs-idp49095104",
+    "chapter": 11,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "seríumsúlfati"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…eð hækkandi hitastigi, þótt undantekningar séu á því, eins og sést á jónaefninu seríumsúlfati.",
+    "en": "… there are exceptions, as illustrated by the ionic compound cerium sulfate."
+   }
+  ],
+  "promethium": [],
+  "samarium": [
+   {
+    "segmentId": "m68734:para:fs-idp203409520",
+    "chapter": 6,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "samaríumjón"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…]4[[i:d]][[sup:10]]5[[i:p]][[sup:6]]6[[i:s]][[sup:2]]4[[i:f]][[sup:6]]. Þrígild samaríumjón missir þrjár rafeindir. Fyrstu tvær missast af 6[[i:s]]-sviði og sú síðasta er …",
+    "en": "…up:10]]5[[i:p]][[sup:6]]6[[i:s]][[sup:2]]4[[i:f]][[sup:6]]. Samarium trication loses three electrons. The first two will be lost…"
+   }
+  ],
+  "europium": [],
+  "gadolinium": [],
+  "terbium": [],
+  "dysprosium": [],
+  "holmium": [],
+  "erbium": [],
+  "thulium": [],
+  "ytterbium": [],
+  "lutetium": [],
+  "hafnium": [],
+  "rhenium": [],
+  "osmium": [],
+  "iridium": [
+   {
+    "segmentId": "m68674:para:fs-idp222999216",
+    "chapter": 1,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "iridíumblöndu"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…r upphaflega einn lítri af hreinu vatni, en síðar var það málmhólkur úr platínu-iridíumblöndu með hæð og þvermál 39 mm ([[xref:CNX_Chem_01_04_Kilogram]]). Í maí 2019 var þes…",
+    "en": "… more recently it was a metal cylinder made from a platinum-iridium alloy with a height and diameter of 39 mm ([[xref:CNX_Chem_…"
+   }
+  ],
+  "thallium": [
+   {
+    "segmentId": "m68830:para:fs-idp233041184",
+    "chapter": 18,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "þallíummálmgrýtin"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…íði. Helsta tinmálmgrýtið er oxíðið kassíterít, SnO[[sub:2]], og helstu blý- og þallíummálmgrýtin eru súlfíðin eða afurðir veðrunar súlfíðanna. Hinir aðalflokkamálmarnir koma fy…",
+    "en": "…oxide cassiterite, SnO[[sub:2]], and the principle lead and thallium ores are the sulfides or the products of weathering of the …"
+   },
+   {
+    "segmentId": "m68868:table-summary:fs-idm454814336-summary",
+    "chapter": -1,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "þallíumefni",
+     "þallíumefni",
+     "þallíumefni",
+     "þallíumefni"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…trontíumefni, er leysnimargfeldið 4 sinnum 10 í veldinu mínus 7. Fyrir T l C l, þallíumefni, er leysnimargfeldið 1,7 sinnum 10 í veldinu mínus 4. Fyrir T l S C N, þallíume…",
+    "en": "…roduct is 4 times 10 superscript negative 7. For T l C l, a thallium substance, the solubility product is 1.7 times 10 superscri…"
+   }
+  ],
+  "francium": [],
+  "radium": [
+   {
+    "segmentId": "m68687:alt:fs-idp57121104-alt",
+    "chapter": 2,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "radíumgjafa"
+    ],
+    "untranslatedEnglish": false,
+    "is": "Þessi mynd sýnir kassa til vinstri sem inniheldur radíumgjafa alfaagna sem myndar geisla af alfaögnum. Geislinn fer í gegnum op á hringlaga l…",
+    "en": "This figure shows a box on the left that contains a radium source of alpha particles which generates a beam of alpha p…"
+   }
+  ],
+  "actinium": [],
+  "thorium": [
+   {
+    "segmentId": "m68854:para:fs-idp54304864",
+    "chapter": 21,
+    "type": "missing",
+    "cls": "compound-only",
+    "kinds": [
+     "closed-compound"
+    ],
+    "tokens": [
+     "þóríumröðin"
+    ],
+    "untranslatedEnglish": false,
+    "is": "…úrulega geislavirk frumefni lotukerfisins. Þetta eru úranröðin, aktiníðröðin og þóríumröðin. Neptúnínröðin er fjórða röðin, sem er ekki lengur marktæk á jörðinni vegna stu…",
+    "en": "…. They are the uranium series, the actinide series, and the thorium series. The neptunium series is a fourth series, which is n…"
+   }
+  ],
+  "protactinium": [],
+  "americium": [],
+  "curium": [],
+  "berkelium": [],
+  "californium": [],
+  "einsteinium": [],
+  "fermium": [],
+  "mendelevium": [],
+  "nobelium": [],
+  "lawrencium": [],
+  "rutherfordium": [],
+  "dubnium": [],
+  "seaborgium": [],
+  "bohrium": [],
+  "hassium": [],
+  "meitnerium": [],
+  "darmstadtium": [],
+  "roentgenium": [],
+  "copernicium": [],
+  "flerovium": [],
+  "livermorium": []
+ },
+ "warnedBnowIds": {
+  "magnesium": [
+   "m68698:table-summary:fs-idp282234816-summary",
+   "m68698:entry:auto-15",
+   "m68698:table-summary:fs-idp279316112-summary",
+   "m68698:entry:auto-28",
+   "m68698:table-summary:fs-idp268265360-summary",
+   "m68698:entry:auto-48",
+   "m68698:entry:auto-56",
+   "m68698:para:fs-idp283457424",
+   "m68698:problem:fs-idm306432",
+   "m68698:problem:fs-idp279468704",
+   "m68698:problem:fs-idp279320480",
+   "m68709:problem:fs-idp45919792",
+   "m68709:problem:fs-idm721584",
+   "m68709:problem:fs-idm721024",
+   "m68709:problem:fs-idm720496",
+   "m68710:para:fs-idm52053696",
+   "m68710:problem:fs-idp26248864",
+   "m68713:para:fs-idp56844080",
+   "m68713:problem:fs-idp38709616",
+   "m68727:entry:auto-71",
+   "m68734:para:fs-idp77726784",
+   "m68739:alt:fs-idp678720-alt",
+   "m68773:problem:fs-idp109499216",
+   "m68783:para:fs-idp175903616",
+   "m68784:para:fs-idm189696128",
+   "m68787:problem:fs-idm151736608",
+   "m68787:solution:fs-idm120667552",
+   "m68811:para:fs-idp681040",
+   "m68811:para:fs-idp15157136",
+   "m68811:para:fs-idp11854608",
+   "m68811:para:fs-idp1193504",
+   "m68811:para:fs-idm745168",
+   "m68811:para:fs-idm743248",
+   "m68811:para:fs-idm330455632",
+   "m68811:para:fs-idm735616",
+   "m68811:problem:fs-idp2651648",
+   "m68822:para:fs-idm215655008",
+   "m68822:problem:fs-idm95770176",
+   "m68829:para:fs-idp45202896",
+   "m68829:para:fs-idp261367120",
+   "m68829:para:fs-idm12445424",
+   "m68829:caption:CNX_Chem_18_01_CalciWater-caption",
+   "m68829:para:fs-idp171667088",
+   "m68829:para:fs-idp110638672",
+   "m68831:para:fs-idp120612224",
+   "m68831:para:fs-idp204527824",
+   "m68831:problem:fs-idp114681504",
+   "m68834:para:fs-idm37877696",
+   "m68834:para:fs-idm59038240",
+   "m68837:para:fs-idp12102384",
+   "m68837:para:fs-idm33972064",
+   "m68843:caption:CNX_Chem_19_02_ChlorBlue-caption",
+   "m68868:table-summary:fs-idm454814336-summary"
+  ],
+  "helium": [
+   "m68724:entry:auto-52",
+   "m68734:para:fs-idp241397616",
+   "m68734:para:fs-idp9284128",
+   "m68734:para:fs-idp29682592",
+   "m68734:para:fs-idp28826352",
+   "m68751:problem:fs-idm192031120",
+   "m68758:problem:fs-idm89452736",
+   "m68816:problem:fs-idm2629152",
+   "m68840:para:fs-idm47164624",
+   "m68840:para:fs-idm76574784",
+   "m68840:para:fs-idm66671520",
+   "m68840:para:fs-idp93284368",
+   "m68840:para:fs-idm74477856",
+   "m68840:para:fs-idm146709616",
+   "m68851:para:fs-idm36435184",
+   "m68851:para:fs-idp28406768",
+   "m68852:para:fs-idm5999248",
+   "m68852:alt:fs-idp74884384-alt",
+   "m68852:para:fs-idp3176832",
+   "m68852:solution:fs-idp227711248",
+   "m68852:glossary-def:fs-idm57603984-def",
+   "m68854:para:fs-idp130339440",
+   "m68854:solution:fs-idm33283872",
+   "m68856:para:fs-idm69471456",
+   "m68856:para:fs-idm178516816",
+   "m68856:para:fs-idm244318448"
+  ],
+  "lithium": [
+   "m68667:para:fs-idm49120320",
+   "m68667:alt:fs-idm54034640-alt",
+   "m68692:table-summary:fs-idm87646592-summary",
+   "m68692:entry:auto-161",
+   "m68692:problem:fs-idm56609680",
+   "m68692:solution:fs-idm134038192",
+   "m68692:problem:fs-idm130368688",
+   "m68695:para:fs-idm392133488",
+   "m68695:alt:fs-idm413728400-alt",
+   "m68695:para:fs-idm147211136",
+   "m68695:problem:fs-idm447823856",
+   "m68695:problem:fs-idm203188176",
+   "m68696:para:fs-idp187565648",
+   "m68696:para:fs-idp214730704",
+   "m68696:para:fs-idp187587072",
+   "m68698:table-summary:fs-idp282234816-summary",
+   "m68698:entry:auto-18",
+   "m68698:problem:fs-idp279466208",
+   "m68710:para:fs-idm5793440",
+   "m68710:problem:fs-idp89419440",
+   "m68714:problem:fs-idp47839312",
+   "m68729:problem:fs-idm1476208",
+   "m68734:para:fs-idp29682592",
+   "m68734:para:fs-idp28826352",
+   "m68734:para:fs-idm8891728",
+   "m68734:para:fs-idp77726784",
+   "m68747:para:fs-idm113916160",
+   "m68747:problem:fs-idm111685776",
+   "m68773:para:fs-idp135414368",
+   "m68773:para:fs-idp187605664",
+   "m68773:problem:fs-idp109499216",
+   "m68805:alt:fs-idp3283088-alt",
+   "m68825:para:fs-idm181217728",
+   "m68825:para:fs-idm162456704",
+   "m68825:caption:CNX_Chem_17_05_LiIon-caption",
+   "m68825:alt:fs-idm137917328-alt",
+   "m68825:para:fs-idm171820144",
+   "m68825:glossary-term:fs-idm118911936-term",
+   "m68825:glossary-def:fs-idm118911936-def",
+   "m68825:glossary-def:fs-idm206318304-def",
+   "m68826:problem:fs-idp71069984",
+   "m68826:solution:fs-idm142282624",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68829:para:fs-idm8683616",
+   "m68829:para:fs-idp103075664",
+   "m68829:para:fs-idp66398992",
+   "m68829:caption:CNX_Chem_18_01_LithiumRx-caption",
+   "m68829:para:fs-idp151382672",
+   "m68829:para:fs-idp44141360",
+   "m68829:problem:fs-idm16110016",
+   "m68830:para:fs-idp233041184",
+   "m68830:problem:fs-idp111274816",
+   "m68835:para:fs-idp20917824",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68856:para:fs-idm24991392",
+   "m68859:alt:fs-idp64991424-alt",
+   "m68865:table-summary:fs-idp78188768-summary",
+   "m68865:entry:auto-803"
+  ],
+  "beryllium": [
+   "m68692:entry:auto-174",
+   "m68698:solution:fs-idp283374992",
+   "m68734:para:fs-idp10466880",
+   "m68734:para:fs-idp77726784",
+   "m68739:para:fs-idm12065312",
+   "m68739:alt:fs-idm19104608-alt",
+   "m68742:para:fs-idp122770240",
+   "m68742:alt:fs-idp229524848-alt",
+   "m68742:alt:fs-idp73717728-alt",
+   "m68745:para:fs-idp208078752",
+   "m68829:para:fs-idp45202896",
+   "m68865:entry:auto-139"
+  ],
+  "scandium": [
+   "m68842:para:fs-idm168637008",
+   "m68842:para:fs-idm149455392",
+   "m68842:glossary-def:fs-idm42041824-def",
+   "m68843:caption:CNX_Chem_19_02_BondType-caption"
+  ],
+  "vanadium": [
+   "m68842:para:fs-idm168637008",
+   "m68842:para:fs-idm120512480",
+   "m68843:para:fs-idp55376000",
+   "m68844:para:fs-idm164326160",
+   "m68844:para:fs-idp20917280"
+  ],
+  "gallium": [
+   "m68698:para:fs-idp283457040",
+   "m68698:problem:fs-idm304768",
+   "m68710:para:fs-idp218627312",
+   "m68713:para:fs-idp52759328",
+   "m68713:problem:fs-idp134804848",
+   "m68713:problem:fs-idp7152848",
+   "m68716:problem:fs-idp91725088",
+   "m68734:item:fs-idp170969264-item-1",
+   "m68752:para:fs-idm2007840",
+   "m68761:para:fs-idp29466368",
+   "m68829:para:fs-idm20198000",
+   "m68829:para:fs-idp79289248"
+  ],
+  "rubidium": [
+   "m68698:problem:fs-idm306848",
+   "m68729:problem:fs-idp66304512",
+   "m68773:problem:fs-idp62730896",
+   "m68854:problem:fs-idp125426976",
+   "m68854:problem:fs-idm22718704"
+  ],
+  "strontium": [
+   "m68805:alt:fs-idp3283088-alt",
+   "m68829:para:fs-idp45202896",
+   "m68829:para:fs-idm12445424",
+   "m68829:problem:fs-idp78283584",
+   "m68834:para:fs-idm37877696",
+   "m68839:problem:fs-idm68463232",
+   "m68854:problem:fs-idp126089680",
+   "m68854:problem:fs-idp125426976",
+   "m68868:table-summary:fs-idm454814336-summary"
+  ],
+  "niobium": [
+   "m68734:para:fs-idp38113648"
+  ],
+  "technetium": [
+   "m68695:para:fs-idm382436640",
+   "m68791:problem:fs-idm22532432",
+   "m68816:para:fs-idp3956976",
+   "m68852:problem:fs-idp250174032",
+   "m68854:problem:fs-idp219506992",
+   "m68856:para:fs-idm172997504",
+   "m68857:para:fs-idp247341312",
+   "m68857:problem:fs-idp3550720"
+  ],
+  "rhodium": [
+   "m68795:para:fs-idm247003792",
+   "m68842:glossary-def:fs-idm194011232-def"
+  ],
+  "palladium": [
+   "m68842:para:fs-idm195995744",
+   "m68842:glossary-def:fs-idm194011232-def"
+  ],
+  "cadmium": [
+   "m68698:table-summary:fs-idp282234816-summary",
+   "m68698:entry:auto-13",
+   "m68773:solution:fs-idm14571344",
+   "m68783:problem:fs-idm56692944",
+   "m68811:para:fs-idp15318768",
+   "m68813:problem:fs-idm6072880",
+   "m68823:problem:fs-idm3160720",
+   "m68829:para:fs-idp107097008",
+   "m68829:para:fs-idm12601472",
+   "m68837:problem:fs-idp223600240",
+   "m68837:problem:fs-idp61077712",
+   "m68837:problem:fs-idm14502784",
+   "m68868:table-summary:fs-idm454814336-summary",
+   "m68868:entry:auto-32"
+  ],
+  "indium": [
+   "m68667:para:fs-idm49120320",
+   "m68829:para:fs-idm20198000",
+   "m68829:para:fs-idp79289248"
+  ],
+  "caesium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68698:table-summary:fs-idp282234816-summary",
+   "m68698:entry:auto-16",
+   "m68698:solution:fs-idp283374992",
+   "m68741:para:fs-idm6705632",
+   "m68741:para:fs-idp53345328",
+   "m68741:para:fs-idp28364752",
+   "m68773:para:fs-idm42504800",
+   "m68773:para:fs-idm48376560",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68830:problem:fs-idp3792624",
+   "m68837:problem:fs-idp1006736",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt",
+   "m68865:entry:auto-438"
+  ],
+  "barium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68695:para:fs-idm421488352",
+   "m68698:solution:fs-idp283374992",
+   "m68698:problem:fs-idp279467040",
+   "m68698:problem:fs-idp279320064",
+   "m68709:problem:fs-idm22160384",
+   "m68709:problem:fs-idm22159824",
+   "m68709:problem:fs-idm22158880",
+   "m68710:para:fs-idp8541200",
+   "m68710:para:fs-idm72085968",
+   "m68710:para:fs-idm22923872",
+   "m68710:problem:fs-idp89843040",
+   "m68713:problem:fs-idp149673136",
+   "m68805:alt:fs-idp3283088-alt",
+   "m68811:note-title:fs-idp765232-title",
+   "m68811:para:fs-idp766160",
+   "m68811:para:fs-idp772848",
+   "m68811:caption:CNX_Chem_15_01_BariumXray-caption",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68829:para:fs-idp45202896",
+   "m68829:para:fs-idm12445424",
+   "m68834:para:fs-idm37877696",
+   "m68837:para:fs-idm9228176",
+   "m68837:para:fs-idm3702800",
+   "m68837:para:fs-idm69933232",
+   "m68837:problem:fs-idm4135888",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt",
+   "m68865:entry:auto-114",
+   "m68868:table-summary:fs-idm454814336-summary",
+   "m68868:entry:auto-8"
+  ],
+  "cerium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68782:para:fs-idp49095104",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68842:para:fs-idm126105600",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "promethium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68695:para:fs-idm382436640",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "samarium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68734:para:fs-idp203409520",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "europium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "gadolinium": [
+   "m68667:para:fs-idm49120320",
+   "m68667:alt:fs-idm54034640-alt",
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "terbium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "dysprosium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "holmium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "erbium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "thulium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "ytterbium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "lutetium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68734:item:fs-idp203626048-item-1",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "hafnium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "rhenium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68695:para:eip-630",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "osmium": [
+   "m68683:problem:fs-idp63994848",
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68842:glossary-def:fs-idm194011232-def",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "iridium": [
+   "m68674:para:fs-idp222999216",
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68832:para:fs-idm162489136",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68842:glossary-def:fs-idm194011232-def",
+   "m68851:para:fs-idm77528832",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "thallium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68773:problem:fs-idm18156720",
+   "m68773:solution:fs-idp56072368",
+   "m68773:problem:fs-idm2190992",
+   "m68791:problem:fs-idm22532432",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68829:para:fs-idm20198000",
+   "m68829:para:fs-idp79289248",
+   "m68830:para:fs-idp233041184",
+   "m68837:para:fs-idp19845744",
+   "m68837:para:fs-idm71724768",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68857:para:fs-idp247341312",
+   "m68857:caption:CNX_Chem_21_05_Thallium-caption",
+   "m68859:alt:fs-idp64991424-alt",
+   "m68868:table-summary:fs-idm454814336-summary",
+   "m68868:entry:auto-204"
+  ],
+  "francium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68695:para:eip-630",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68837:problem:fs-idp209794048",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68851:problem:fs-idm56820256",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "radium": [
+   "m68687:alt:fs-idp57121104-alt",
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68829:para:fs-idp45202896",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "actinium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68734:item:fs-idp203626048-item-2",
+   "m68734:para:fs-idm11513792",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68842:para:fs-idm165890960",
+   "m68842:para:fs-idm9696240",
+   "m68842:glossary-def:fs-idm98560816-def",
+   "m68854:problem:fs-idp77337360",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "thorium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68854:caption:CNX_Chem_21_03_Reaction1-caption",
+   "m68854:para:fs-idp54304864",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "protactinium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "americium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68842:para:fs-idm248047376",
+   "m68856:table-summary:fs-idm128006320-summary",
+   "m68856:entry:auto-29",
+   "m68856:para:fs-idm28146592",
+   "m68857:para:fs-idp105479248",
+   "m68857:alt:fs-idp22507536-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "curium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68856:table-summary:fs-idm128006320-summary",
+   "m68856:entry:auto-33",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "berkelium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68856:problem:fs-idm202190128",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "californium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68856:entry:auto-37",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "einsteinium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68856:entry:auto-41",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "fermium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68856:problem:fs-idm32448240",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "mendelevium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68856:entry:auto-45",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "nobelium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68854:problem:fs-idm37225376",
+   "m68856:entry:auto-49",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "lawrencium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68734:item:fs-idp203626048-item-2",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68856:problem:fs-idm84813904",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "rutherfordium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68856:entry:auto-53",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "dubnium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68856:problem:fs-idm30976288",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "seaborgium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68856:entry:auto-57",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "bohrium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "hassium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "meitnerium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68856:entry:auto-61",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "darmstadtium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "roentgenium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "copernicium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68829:para:fs-idp107097008",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "flerovium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68829:para:fs-idp48530944",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ],
+  "livermorium": [
+   "m68695:alt:fs-idm413728400-alt",
+   "m68829:alt:fs-idp101665920-alt",
+   "m68842:alt:fs-idm272821040-alt",
+   "m68859:alt:fs-idp64991424-alt"
+  ]
+ },
+ "warnedAIds": {
+  "magnesium": [
+   "m68696:para:fs-idp196671632",
+   "m68698:table-summary:fs-idp282234816-summary",
+   "m68698:entry:auto-15",
+   "m68698:table-summary:fs-idp279316112-summary",
+   "m68698:entry:auto-28",
+   "m68698:table-summary:fs-idp268265360-summary",
+   "m68698:entry:auto-48",
+   "m68698:entry:auto-56",
+   "m68698:para:fs-idp283457424",
+   "m68698:problem:fs-idm306432",
+   "m68698:problem:fs-idp279468704",
+   "m68698:problem:fs-idp279320480",
+   "m68709:problem:fs-idp45919792",
+   "m68709:problem:fs-idm22160384",
+   "m68709:problem:fs-idp208977456",
+   "m68709:problem:fs-idm721584",
+   "m68709:problem:fs-idm721024",
+   "m68709:problem:fs-idm720496",
+   "m68710:para:fs-idm52053696",
+   "m68710:problem:fs-idp26248864",
+   "m68713:para:fs-idp56844080",
+   "m68713:problem:fs-idp38709616",
+   "m68739:alt:fs-idp678720-alt",
+   "m68783:para:fs-idp175903616",
+   "m68784:para:fs-idm189696128",
+   "m68787:problem:fs-idm151736608",
+   "m68787:solution:fs-idm120667552",
+   "m68811:para:fs-idp681040",
+   "m68811:para:fs-idp15157136",
+   "m68811:para:fs-idp11854608",
+   "m68811:para:fs-idp1193504",
+   "m68811:para:fs-idm745168",
+   "m68811:para:fs-idm743248",
+   "m68811:para:fs-idm330455632",
+   "m68811:para:fs-idm735616",
+   "m68811:problem:fs-idp2651648",
+   "m68811:problem:fs-idp2976512",
+   "m68822:para:fs-idm183571200",
+   "m68822:para:fs-idm215655008",
+   "m68822:caption:CNX_Chem_17_02_Oxidareduc-caption",
+   "m68822:problem:fs-idm95770176",
+   "m68829:caption:CNX_Chem_18_01_CalciWater-caption",
+   "m68829:problem:fs-idp14648448",
+   "m68830:para:fs-idp217984240",
+   "m68830:para:fs-idp34921904",
+   "m68830:para:fs-idp270452384",
+   "m68831:para:fs-idp120612224",
+   "m68831:para:fs-idp204527824",
+   "m68831:problem:fs-idp114681504",
+   "m68834:para:fs-idm59038240",
+   "m68837:para:fs-idp12102384",
+   "m68837:para:fs-idm50382768",
+   "m68837:para:fs-idm33972064",
+   "m68838:para:fs-idm222212272",
+   "m68839:para:fs-idm16552608",
+   "m68843:caption:CNX_Chem_19_02_ChlorBlue-caption",
+   "m68868:table-summary:fs-idm454814336-summary"
+  ],
+  "helium": [
+   "m68733:para:fs-idm176608480",
+   "m68734:para:fs-idp9284128",
+   "m68734:para:fs-idp28826352",
+   "m68751:problem:fs-idm192031120",
+   "m68754:problem:fs-idm41721952",
+   "m68758:problem:fs-idm89452736",
+   "m68782:para:fs-idp65103440",
+   "m68816:problem:fs-idm2629152",
+   "m68840:para:fs-idm146709616",
+   "m68851:para:fs-idm36435184",
+   "m68851:para:fs-idp28406768",
+   "m68852:para:fs-idp3176832",
+   "m68852:solution:fs-idp227711248",
+   "m68852:glossary-def:fs-idm57603984-def",
+   "m68854:para:fs-idp130339440",
+   "m68854:solution:fs-idm33283872",
+   "m68856:para:fs-idm69471456",
+   "m68856:para:fs-idm178516816",
+   "m68856:para:fs-idm244318448"
+  ],
+  "lithium": [
+   "m68667:para:fs-idm49120320",
+   "m68696:para:fs-idp187565648",
+   "m68696:para:fs-idp214730704",
+   "m68698:table-summary:fs-idp282234816-summary",
+   "m68698:entry:auto-18",
+   "m68698:problem:fs-idp279466208",
+   "m68710:para:fs-idm5793440",
+   "m68710:problem:fs-idp89419440",
+   "m68729:problem:fs-idm1476208",
+   "m68734:para:fs-idp28826352",
+   "m68747:para:fs-idm113916160",
+   "m68747:problem:fs-idm111685776",
+   "m68773:para:fs-idp135414368",
+   "m68773:para:fs-idp187605664",
+   "m68805:alt:fs-idp3283088-alt",
+   "m68825:para:fs-idm181217728",
+   "m68825:para:fs-idm162456704",
+   "m68825:caption:CNX_Chem_17_05_LiIon-caption",
+   "m68825:para:fs-idm171820144",
+   "m68825:glossary-term:fs-idm118911936-term",
+   "m68825:glossary-def:fs-idm118911936-def",
+   "m68825:glossary-def:fs-idm206318304-def",
+   "m68826:problem:fs-idp71069984",
+   "m68829:para:fs-idp66398992",
+   "m68829:problem:fs-idm16110016",
+   "m68830:problem:fs-idp111274816"
+  ],
+  "beryllium": [
+   "m68698:solution:fs-idp283374992",
+   "m68735:para:fs-idm79820288",
+   "m68739:para:fs-idm12065312",
+   "m68739:alt:fs-idm19104608-alt",
+   "m68742:para:fs-idp122770240",
+   "m68742:alt:fs-idp229524848-alt",
+   "m68742:alt:fs-idp73717728-alt",
+   "m68745:para:fs-idp208078752",
+   "m68837:para:fs-idm50382768"
+  ],
+  "scandium": [
+   "m68842:para:fs-idm24167088",
+   "m68842:para:fs-idm149455392",
+   "m68842:glossary-def:fs-idm42041824-def",
+   "m68843:caption:CNX_Chem_19_02_BondType-caption"
+  ],
+  "vanadium": [
+   "m68842:para:fs-idm168637008",
+   "m68842:para:fs-idm120512480",
+   "m68843:para:fs-idp55376000",
+   "m68844:para:fs-idm164326160",
+   "m68844:para:fs-idp20917280"
+  ],
+  "gallium": [
+   "m68695:para:fs-idm421502880",
+   "m68698:problem:fs-idm304768",
+   "m68713:para:fs-idp52759328",
+   "m68713:problem:fs-idp134804848",
+   "m68713:problem:fs-idp7152848",
+   "m68716:problem:fs-idp91725088",
+   "m68761:para:fs-idp29466368"
+  ],
+  "rubidium": [
+   "m68698:problem:fs-idm306848",
+   "m68729:problem:fs-idp66304512",
+   "m68773:problem:fs-idp62730896",
+   "m68829:problem:fs-idp14648448",
+   "m68837:para:fs-idp38768608",
+   "m68854:problem:fs-idm22718704"
+  ],
+  "strontium": [
+   "m68805:alt:fs-idp3283088-alt",
+   "m68811:problem:fs-idp2976512",
+   "m68829:problem:fs-idp78283584",
+   "m68829:problem:fs-idp98077824",
+   "m68837:para:fs-idp65527104",
+   "m68837:para:fs-idm8078544",
+   "m68839:problem:fs-idm68463232",
+   "m68854:problem:fs-idp126089680",
+   "m68868:table-summary:fs-idm454814336-summary"
+  ],
+  "niobium": [],
+  "technetium": [],
+  "rhodium": [],
+  "palladium": [],
+  "cadmium": [
+   "m68698:table-summary:fs-idp282234816-summary",
+   "m68698:entry:auto-13",
+   "m68703:problem:fs-idm26438416",
+   "m68773:solution:fs-idm14571344",
+   "m68783:problem:fs-idm56692944",
+   "m68811:para:fs-idp15318768",
+   "m68813:problem:fs-idm6072880",
+   "m68823:problem:fs-idm3160720",
+   "m68829:para:fs-idm12601472",
+   "m68834:para:fs-idm37877696",
+   "m68837:problem:fs-idm14502784",
+   "m68868:table-summary:fs-idm454814336-summary"
+  ],
+  "indium": [
+   "m68667:para:fs-idm49120320"
+  ],
+  "caesium": [
+   "m68698:table-summary:fs-idp282234816-summary",
+   "m68698:entry:auto-16",
+   "m68698:solution:fs-idp283374992",
+   "m68729:problem:fs-idp8734240",
+   "m68741:para:fs-idm6705632",
+   "m68741:para:fs-idp28364752",
+   "m68773:para:fs-idm42504800",
+   "m68773:para:fs-idm48376560",
+   "m68787:para:fs-idm33181984",
+   "m68830:problem:fs-idp3792624",
+   "m68837:para:fs-idp38768608",
+   "m68837:problem:fs-idp1006736"
+  ],
+  "barium": [
+   "m68698:solution:fs-idp283374992",
+   "m68698:problem:fs-idp279467040",
+   "m68698:problem:fs-idp279320064",
+   "m68709:problem:fs-idm22160384",
+   "m68709:problem:fs-idm22159824",
+   "m68709:problem:fs-idm22158880",
+   "m68710:para:fs-idp8541200",
+   "m68710:para:fs-idm72085968",
+   "m68710:para:fs-idm22923872",
+   "m68710:problem:fs-idp89843040",
+   "m68713:problem:fs-idp149673136",
+   "m68773:problem:fs-idp29513328",
+   "m68773:problem:fs-idm40747632",
+   "m68805:alt:fs-idp3283088-alt",
+   "m68811:note-title:fs-idp765232-title",
+   "m68811:para:fs-idp766160",
+   "m68811:para:fs-idp772848",
+   "m68811:caption:CNX_Chem_15_01_BariumXray-caption",
+   "m68811:problem:fs-idp14816288",
+   "m68811:problem:fs-idp2976512",
+   "m68837:para:fs-idp65527104",
+   "m68837:para:fs-idm8078544",
+   "m68837:para:fs-idm9228176",
+   "m68837:para:fs-idm3702800",
+   "m68837:para:fs-idm69933232",
+   "m68837:problem:fs-idm4135888",
+   "m68838:para:fs-idm222212272",
+   "m68868:table-summary:fs-idm454814336-summary"
+  ],
+  "cerium": [
+   "m68782:para:fs-idp49095104"
+  ],
+  "promethium": [],
+  "samarium": [
+   "m68734:para:fs-idp203409520"
+  ],
+  "europium": [],
+  "gadolinium": [],
+  "terbium": [],
+  "dysprosium": [],
+  "holmium": [],
+  "erbium": [],
+  "thulium": [],
+  "ytterbium": [],
+  "lutetium": [],
+  "hafnium": [],
+  "rhenium": [],
+  "osmium": [
+   "m68695:para:eip-630"
+  ],
+  "iridium": [
+   "m68674:para:fs-idp222999216",
+   "m68842:para:fs-idm34798016"
+  ],
+  "thallium": [
+   "m68773:problem:fs-idm18156720",
+   "m68773:solution:fs-idp56072368",
+   "m68830:para:fs-idp233041184",
+   "m68843:para:fs-idp158915696",
+   "m68868:table-summary:fs-idm454814336-summary"
+  ],
+  "francium": [
+   "m68837:problem:fs-idp209794048"
+  ],
+  "radium": [
+   "m68687:para:fs-idp53512848",
+   "m68687:alt:fs-idp57121104-alt",
+   "m68856:para:fs-idp8018320"
+  ],
+  "actinium": [
+   "m68842:para:fs-idm9696240"
+  ],
+  "thorium": [
+   "m68687:para:fs-idp40043728",
+   "m68854:para:fs-idp54304864"
+  ],
+  "protactinium": [],
+  "americium": [],
+  "curium": [],
+  "berkelium": [],
+  "californium": [],
+  "einsteinium": [],
+  "fermium": [],
+  "mendelevium": [],
+  "nobelium": [],
+  "lawrencium": [],
+  "rutherfordium": [],
+  "dubnium": [],
+  "seaborgium": [],
+  "bohrium": [],
+  "hassium": [],
+  "meitnerium": [],
+  "darmstadtium": [],
+  "roentgenium": [],
+  "copernicium": [],
+  "flerovium": [],
+  "livermorium": []
+ },
+ "unclaimedB": {
+  "magnesium": [],
+  "helium": [],
+  "lithium": [],
+  "beryllium": [],
+  "scandium": [],
+  "vanadium": [],
+  "gallium": [],
+  "rubidium": [],
+  "strontium": [],
+  "niobium": [],
+  "technetium": [],
+  "rhodium": [],
+  "palladium": [],
+  "cadmium": [],
+  "indium": [],
+  "caesium": [],
+  "barium": [],
+  "cerium": [],
+  "promethium": [],
+  "samarium": [],
+  "europium": [],
+  "gadolinium": [],
+  "terbium": [],
+  "dysprosium": [],
+  "holmium": [],
+  "erbium": [],
+  "thulium": [],
+  "ytterbium": [],
+  "lutetium": [],
+  "hafnium": [],
+  "rhenium": [],
+  "osmium": [],
+  "iridium": [],
+  "thallium": [],
+  "francium": [],
+  "radium": [],
+  "actinium": [],
+  "thorium": [],
+  "protactinium": [],
+  "americium": [],
+  "curium": [],
+  "berkelium": [],
+  "californium": [],
+  "einsteinium": [],
+  "fermium": [],
+  "mendelevium": [],
+  "nobelium": [],
+  "lawrencium": [],
+  "rutherfordium": [],
+  "dubnium": [],
+  "seaborgium": [],
+  "bohrium": [],
+  "hassium": [],
+  "meitnerium": [],
+  "darmstadtium": [],
+  "roentgenium": [],
+  "copernicium": [],
+  "flerovium": [],
+  "livermorium": []
+ },
+ "otherIssueChanges": []
+}

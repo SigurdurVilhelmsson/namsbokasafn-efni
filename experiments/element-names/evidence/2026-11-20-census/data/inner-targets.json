@@ -1,0 +1,26 @@
+{
+ "_meta": {
+  "measured": "2026-11-21",
+  "book": "efnafraedi-2e",
+  "prodHead": "844f13d2f",
+  "readOnly": true,
+  "script": "instruments/fetch-inner-targets.cjs",
+  "what": "the current effective Icelandic and any live edit for the genuine hit of the inner-word scan (data/inner-non-official-scan.json); it had no live edit"
+ },
+ "openedDbPaths": [
+  "/home/siggi/repos/namsbokasafn-efni/pipeline-output/sessions.db"
+ ],
+ "registeredBooks": 6,
+ "n": 1,
+ "segments": [
+  {
+   "set": "inner",
+   "chapter": 7,
+   "moduleId": "m68742",
+   "segmentId": "m68742:para:fs-idp122770240",
+   "found": true,
+   "current": "Sem einfalt dæmi um VSEPR-kenninguna skulum við spá fyrir um byggingu BeF[[sub:2]]-sameindar á gasformi. Lewis-bygging BeF[[sub:2]] ([[xref:CNX_Chem_07_06_BeF2]]) sýnir aðeins tvö rafeindapör í kringum miðberyllínatómið. Með tvö tengi og engin stök rafeindapör á miðatóminu eru tengin eins langt í sundur og mögulegt er og rafstöðufráhrindingin milli þessara svæða með háan rafeindaþéttleika er minnkuð í lágmark þegar þau eru á gagnstæðum hliðum miðatómsins. Bindishornið er 180° ([[xref:CNX_Chem_07_06_BeF2]]).",
+   "liveEdits": []
+  }
+ ]
+}

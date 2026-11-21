@@ -1,0 +1,82 @@
+{
+ "segments": [
+  {
+   "set": "inner",
+   "chapter": 7,
+   "moduleId": "m68742",
+   "segmentId": "m68742:para:fs-idp122770240",
+   "current": "Sem einfalt dæmi um VSEPR-kenninguna skulum við spá fyrir um byggingu BeF[[sub:2]]-sameindar á gasformi. Lewis-bygging BeF[[sub:2]] ([[xref:CNX_Chem_07_06_BeF2]]) sýnir aðeins tvö rafeindapör í kringum miðberyllínatómið. Með tvö tengi og engin stök rafeindapör á miðatóminu eru tengin eins langt í sundur og mögulegt er og rafstöðufráhrindingin milli þessara svæða með háan rafeindaþéttleika er minnkuð í lágmark þegar þau eru á gagnstæðum hliðum miðatómsins. Bindishornið er 180° ([[xref:CNX_Chem_07_06_BeF2]]).",
+   "proposed": "Sem einfalt dæmi um VSEPR-kenninguna skulum við spá fyrir um byggingu BeF[[sub:2]]-sameindar á gasformi. Lewis-bygging BeF[[sub:2]] ([[xref:CNX_Chem_07_06_BeF2]]) sýnir aðeins tvö rafeindapör í kringum miðberyllíumatómið. Með tvö tengi og engin stök rafeindapör á miðatóminu eru tengin eins langt í sundur og mögulegt er og rafstöðufráhrindingin milli þessara svæða með háan rafeindaþéttleika er minnkuð í lágmark þegar þau eru á gagnstæðum hliðum miðatómsins. Bindishornið er 180° ([[xref:CNX_Chem_07_06_BeF2]]).",
+   "stem": [],
+   "phrases": [],
+   "names": [],
+   "notes": [],
+   "masculineKept": [],
+   "length": 512,
+   "hand": [
+    [
+     "miðberyllínatómið",
+     "miðberyllíumatómið"
+    ]
+   ]
+  }
+ ],
+ "overlapWithEarlierSets": {},
+ "nothingToFix": [],
+ "worklistImpact": [
+  [
+   "germanium",
+   8,
+   8,
+   5
+  ],
+  [
+   "zirconium",
+   9,
+   9,
+   5
+  ],
+  [
+   "ruthenium",
+   0,
+   0,
+   0
+  ],
+  [
+   "lanthanum",
+   10,
+   10,
+   2
+  ],
+  [
+   "praseodymium",
+   5,
+   5,
+   0
+  ],
+  [
+   "neodymium",
+   5,
+   5,
+   0
+  ],
+  [
+   "polonium",
+   11,
+   11,
+   7
+  ],
+  [
+   "astatine",
+   7,
+   7,
+   3
+  ],
+  [
+   "plutonium",
+   6,
+   6,
+   1
+  ]
+ ]
+}

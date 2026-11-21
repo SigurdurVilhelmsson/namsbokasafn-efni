@@ -1,0 +1,364 @@
+{
+ "_meta": {
+  "measured": "2026-11-21",
+  "chooser": "server/lib/binInflections",
+  "bin": "SHsnid.csv (not committed)"
+ },
+ "rows": [
+  {
+   "english": "magnesium",
+   "icelandic": "magnesíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "helium",
+   "icelandic": "helíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "lithium",
+   "icelandic": "liþíum",
+   "outcome": "unambiguous",
+   "forms": 5
+  },
+  {
+   "english": "beryllium",
+   "icelandic": "beryllíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "scandium",
+   "icelandic": "skandíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "vanadium",
+   "icelandic": "vanadíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "gallium",
+   "icelandic": "gallíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "rubidium",
+   "icelandic": "rúbidíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "strontium",
+   "icelandic": "strontíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "niobium",
+   "icelandic": "níóbíum",
+   "outcome": "unambiguous",
+   "forms": 5
+  },
+  {
+   "english": "technetium",
+   "icelandic": "teknetíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "rhodium",
+   "icelandic": "ródíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "palladium",
+   "icelandic": "palladíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "cadmium",
+   "icelandic": "kadmíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "indium",
+   "icelandic": "indíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "caesium",
+   "icelandic": "sesíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "barium",
+   "icelandic": "baríum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "cerium",
+   "icelandic": "seríum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "promethium",
+   "icelandic": "prómeþíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "samarium",
+   "icelandic": "samaríum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "europium",
+   "icelandic": "evrópíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "gadolinium",
+   "icelandic": "gadólíníum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "terbium",
+   "icelandic": "terbíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "dysprosium",
+   "icelandic": "dysprósíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "holmium",
+   "icelandic": "hólmíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "erbium",
+   "icelandic": "erbíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "thulium",
+   "icelandic": "túlíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "ytterbium",
+   "icelandic": "ytterbíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "lutetium",
+   "icelandic": "lútetíum",
+   "outcome": "refused-ambiguous",
+   "forms": 0,
+   "binEntries": 2
+  },
+  {
+   "english": "hafnium",
+   "icelandic": "hafníum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "rhenium",
+   "icelandic": "reníum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "osmium",
+   "icelandic": "osmíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "iridium",
+   "icelandic": "iridíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "thallium",
+   "icelandic": "þallíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "francium",
+   "icelandic": "fransíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "radium",
+   "icelandic": "radíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "actinium",
+   "icelandic": "aktíníum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "thorium",
+   "icelandic": "þóríum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "protactinium",
+   "icelandic": "prótaktíníum",
+   "outcome": "not-in-bin",
+   "forms": 0
+  },
+  {
+   "english": "americium",
+   "icelandic": "ameríkíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "curium",
+   "icelandic": "curíum",
+   "outcome": "not-in-bin",
+   "forms": 0
+  },
+  {
+   "english": "berkelium",
+   "icelandic": "berkelíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "californium",
+   "icelandic": "kaliforníum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "einsteinium",
+   "icelandic": "einsteiníum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "fermium",
+   "icelandic": "fermíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "mendelevium",
+   "icelandic": "mendelevíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "nobelium",
+   "icelandic": "nóbelíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "lawrencium",
+   "icelandic": "lawrensíum",
+   "outcome": "not-in-bin",
+   "forms": 0
+  },
+  {
+   "english": "rutherfordium",
+   "icelandic": "rutherfordíum",
+   "outcome": "not-in-bin",
+   "forms": 0
+  },
+  {
+   "english": "dubnium",
+   "icelandic": "dubníum",
+   "outcome": "not-in-bin",
+   "forms": 0
+  },
+  {
+   "english": "seaborgium",
+   "icelandic": "seaborgíum",
+   "outcome": "not-in-bin",
+   "forms": 0
+  },
+  {
+   "english": "bohrium",
+   "icelandic": "bohríum",
+   "outcome": "not-in-bin",
+   "forms": 0
+  },
+  {
+   "english": "hassium",
+   "icelandic": "hassíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "meitnerium",
+   "icelandic": "meitneríum",
+   "outcome": "not-in-bin",
+   "forms": 0
+  },
+  {
+   "english": "darmstadtium",
+   "icelandic": "darmstadtíum",
+   "outcome": "not-in-bin",
+   "forms": 0
+  },
+  {
+   "english": "roentgenium",
+   "icelandic": "röntgeníum",
+   "outcome": "not-in-bin",
+   "forms": 0
+  },
+  {
+   "english": "copernicium",
+   "icelandic": "kópernikíum",
+   "outcome": "unambiguous",
+   "forms": 4
+  },
+  {
+   "english": "flerovium",
+   "icelandic": "fleróvíum",
+   "outcome": "not-in-bin",
+   "forms": 0
+  },
+  {
+   "english": "livermorium",
+   "icelandic": "livermoríum",
+   "outcome": "not-in-bin",
+   "forms": 0
+  }
+ ]
+}

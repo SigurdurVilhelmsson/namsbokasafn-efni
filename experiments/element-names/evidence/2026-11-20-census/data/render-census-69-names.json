@@ -1,0 +1,2789 @@
+{
+ "_meta": {
+  "measured": "2026-11-20",
+  "book": "efnafraedi-2e",
+  "prodHead": "844f13d2f",
+  "readOnly": true,
+  "script": "instruments/render-census.cjs",
+  "what": "how segments render element names with no chemistry glossary row (68 + US aluminum); tiers strong/weak/unshaped"
+ },
+ "control": {
+  "registeredBooks": 6,
+  "unitsListed": 170,
+  "unreadable": [],
+  "openedDbPaths": [
+   "pipeline-output/sessions.db"
+  ],
+  "targets": 69
+ },
+ "rows": [
+  {
+   "n": 2,
+   "symbol": "He",
+   "english": [
+    "helium"
+   ],
+   "official": [
+    "helíum"
+   ],
+   "note": null,
+   "enSegments": 55,
+   "withCandidate": 55,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "helíum": {
+     "standalone": 36,
+     "compound": 18,
+     "segments": 39,
+     "official": true
+    },
+    "helín": {
+     "standalone": 18,
+     "compound": 6,
+     "segments": 14,
+     "official": false
+    },
+    "helium": {
+     "standalone": 3,
+     "compound": 0,
+     "segments": 2,
+     "official": false
+    }
+   },
+   "topCompounds": [
+    [
+     "helíumkjarna",
+     3
+    ],
+    [
+     "helíumatóm",
+     2
+    ],
+    [
+     "helínatóm",
+     2
+    ],
+    [
+     "helíumkjarnar",
+     2
+    ],
+    [
+     "Helínatóm",
+     1
+    ],
+    [
+     "helínatómi",
+     1
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 3,
+   "symbol": "Li",
+   "english": [
+    "lithium"
+   ],
+   "official": [
+    "liþíum"
+   ],
+   "note": null,
+   "enSegments": 58,
+   "withCandidate": 58,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "litíum": {
+     "standalone": 40,
+     "compound": 31,
+     "segments": 54,
+     "official": false
+    },
+    "litín": {
+     "standalone": 6,
+     "compound": 0,
+     "segments": 4,
+     "official": false
+    },
+    "lithium": {
+     "standalone": 0,
+     "compound": 1,
+     "segments": 1,
+     "official": false
+    }
+   },
+   "topCompounds": [
+    [
+     "litíumklóríð",
+     3
+    ],
+    [
+     "litíumjónum",
+     2
+    ],
+    [
+     "litíumjónarinnar",
+     2
+    ],
+    [
+     "litíumjónarafhlöðu",
+     2
+    ],
+    [
+     "litíumjónarafhlöður",
+     2
+    ],
+    [
+     "litíumgjafi",
+     1
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {
+    "lítil": 1
+   }
+  },
+  {
+   "n": 4,
+   "symbol": "Be",
+   "english": [
+    "beryllium"
+   ],
+   "official": [
+    "beryllíum"
+   ],
+   "note": null,
+   "enSegments": 31,
+   "withCandidate": 30,
+   "noCandidateCount": 1,
+   "noCandidateSamples": [
+    {
+     "chapter": 7,
+     "segmentId": "m68742:para:fs-idp122770240",
+     "is": "Sem einfalt dæmi um VSEPR-kenninguna skulum við spá fyrir um byggingu BeF[[sub:2]]-sameindar á gasformi. Lewis-bygging BeF[[sub:2]] ([[xref:CNX_Chem_07_06_BeF2]"
+    }
+   ],
+   "bases": {
+    "beryllíum": {
+     "standalone": 23,
+     "compound": 3,
+     "segments": 22,
+     "official": true
+    },
+    "beryllín": {
+     "standalone": 5,
+     "compound": 2,
+     "segments": 5,
+     "official": false
+    }
+   },
+   "topCompounds": [
+    [
+     "beryllíumklóríð",
+     1
+    ],
+    [
+     "beryllíumdíhýdríðs",
+     1
+    ],
+    [
+     "beryllíumatóm",
+     1
+    ],
+    [
+     "beryllínatóm",
+     1
+    ],
+    [
+     "beryllínatómsins",
+     1
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {
+    "berillíum": 1,
+    "berillíumatóm": 1,
+    "Berillínatómið": 1
+   },
+   "unshaped": {
+    "beryll": 1
+   }
+  },
+  {
+   "n": 11,
+   "symbol": "Na",
+   "english": [
+    "sodium",
+    "natrium"
+   ],
+   "official": [
+    "natríum"
+   ],
+   "note": null,
+   "enSegments": 232,
+   "withCandidate": 232,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "natríum": {
+     "standalone": 89,
+     "compound": 270,
+     "segments": 227,
+     "official": true
+    },
+    "natrín": {
+     "standalone": 4,
+     "compound": 2,
+     "segments": 4,
+     "official": false
+    },
+    "natrium": {
+     "standalone": 2,
+     "compound": 0,
+     "segments": 2,
+     "official": false
+    },
+    "sodium": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": false
+    }
+   },
+   "topCompounds": [
+    [
+     "natríumklóríð",
+     26
+    ],
+    [
+     "natríumklóríði",
+     25
+    ],
+    [
+     "natríumhýdroxíði",
+     16
+    ],
+    [
+     "natríumhýdroxíð",
+     15
+    ],
+    [
+     "Natríumklóríð",
+     9
+    ],
+    [
+     "natríummálmi",
+     7
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 12,
+   "symbol": "Mg",
+   "english": [
+    "magnesium"
+   ],
+   "official": [
+    "magnesíum"
+   ],
+   "note": null,
+   "enSegments": 119,
+   "withCandidate": 119,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "magnesíum": {
+     "standalone": 80,
+     "compound": 82,
+     "segments": 107,
+     "official": true
+    },
+    "magnesín": {
+     "standalone": 14,
+     "compound": 7,
+     "segments": 12,
+     "official": false
+    }
+   },
+   "topCompounds": [
+    [
+     "magnesíumhýdroxíð",
+     9
+    ],
+    [
+     "magnesíumklóríð",
+     7
+    ],
+    [
+     "magnesíumefni",
+     5
+    ],
+    [
+     "magnesíumhýdroxíði",
+     4
+    ],
+    [
+     "magnesíumhýdroxíðs",
+     4
+    ],
+    [
+     "magnesíumoxíðs",
+     3
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {
+    "magns": 1,
+    "Magnesia": 1,
+    "magn": 3,
+    "magni": 4
+   }
+  },
+  {
+   "n": 13,
+   "symbol": "Al",
+   "english": [
+    "aluminum"
+   ],
+   "official": [
+    "ál"
+   ],
+   "note": "aluminum (US) only; aluminium resolves to ál",
+   "enSegments": 134,
+   "withCandidate": 133,
+   "noCandidateCount": 1,
+   "noCandidateSamples": [
+    {
+     "chapter": 11,
+     "segmentId": "m68784:table-summary:fs-idm34982368-summary",
+     "is": "Þessi tafla sýnir dreifða fasann og dreifimiðilinn fyrir ýmsar kvoðulausnir. Í sterkjudreifingu er dreifði fasinn sterkja og dreifimiðillinn er vatn. Í reyk er "
+    }
+   ],
+   "bases": {
+    "ál": {
+     "standalone": 93,
+     "compound": 90,
+     "segments": 133,
+     "official": true
+    },
+    "alúmín": {
+     "standalone": 0,
+     "compound": 1,
+     "segments": 1,
+     "official": false
+    }
+   },
+   "topCompounds": [
+    [
+     "álhýdroxíð",
+     9
+    ],
+    [
+     "álhýdroxíðs",
+     8
+    ],
+    [
+     "áloxíð",
+     6
+    ],
+    [
+     "áloxíði",
+     3
+    ],
+    [
+     "áljónin",
+     2
+    ],
+    [
+     "áljón",
+     2
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {
+    "aluminumhg": 1
+   }
+  },
+  {
+   "n": 19,
+   "symbol": "K",
+   "english": [
+    "potassium",
+    "kalium"
+   ],
+   "official": [
+    "kalíum"
+   ],
+   "note": null,
+   "enSegments": 98,
+   "withCandidate": 98,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "kalíum": {
+     "standalone": 36,
+     "compound": 80,
+     "segments": 96,
+     "official": true
+    },
+    "kalium": {
+     "standalone": 2,
+     "compound": 0,
+     "segments": 2,
+     "official": false
+    },
+    "kalín": {
+     "standalone": 1,
+     "compound": 1,
+     "segments": 1,
+     "official": false
+    },
+    "potassium": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": false
+    }
+   },
+   "topCompounds": [
+    [
+     "kalíumbrómíð",
+     4
+    ],
+    [
+     "kalíumhýdroxíð",
+     4
+    ],
+    [
+     "kalíumjoðíð",
+     3
+    ],
+    [
+     "kalíumfosfat",
+     3
+    ],
+    [
+     "kalíumklórat",
+     3
+    ],
+    [
+     "kalíumhýdroxíði",
+     3
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 20,
+   "symbol": "Ca",
+   "english": [
+    "calcium"
+   ],
+   "official": [
+    "kalsíum"
+   ],
+   "note": null,
+   "enSegments": 146,
+   "withCandidate": 146,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "kalsíum": {
+     "standalone": 54,
+     "compound": 154,
+     "segments": 136,
+     "official": true
+    },
+    "kalsín": {
+     "standalone": 5,
+     "compound": 7,
+     "segments": 10,
+     "official": false
+    },
+    "kalkstein": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": false
+    }
+   },
+   "topCompounds": [
+    [
+     "kalsíumkarbónat",
+     16
+    ],
+    [
+     "kalsíumkarbónati",
+     7
+    ],
+    [
+     "kalsíumhýdroxíði",
+     7
+    ],
+    [
+     "kalsíumefni",
+     7
+    ],
+    [
+     "kalsíumhýdroxíð",
+     6
+    ],
+    [
+     "kalsíumjóna",
+     5
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {
+    "kalksteinn": 3,
+    "kalki": 1,
+    "CalciWater": 1,
+    "kalk": 2,
+    "kalsít": 1
+   }
+  },
+  {
+   "n": 21,
+   "symbol": "Sc",
+   "english": [
+    "scandium"
+   ],
+   "official": [
+    "skandíum"
+   ],
+   "note": null,
+   "enSegments": 12,
+   "withCandidate": 12,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "skandíum": {
+     "standalone": 9,
+     "compound": 3,
+     "segments": 10,
+     "official": true
+    },
+    "skandín": {
+     "standalone": 3,
+     "compound": 0,
+     "segments": 2,
+     "official": false
+    }
+   },
+   "topCompounds": [
+    [
+     "Skandíummálmur",
+     1
+    ],
+    [
+     "skandíumbrómíði",
+     1
+    ],
+    [
+     "skandíumjónina",
+     1
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 23,
+   "symbol": "V",
+   "english": [
+    "vanadium"
+   ],
+   "official": [
+    "vanadíum"
+   ],
+   "note": null,
+   "enSegments": 11,
+   "withCandidate": 11,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "vanadíum": {
+     "standalone": 6,
+     "compound": 3,
+     "segments": 9,
+     "official": true
+    },
+    "vanadín": {
+     "standalone": 1,
+     "compound": 1,
+     "segments": 2,
+     "official": false
+    },
+    "vanadium": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": false
+    }
+   },
+   "topCompounds": [
+    [
+     "vanadíumtetrahalíð",
+     1
+    ],
+    [
+     "Vanadínoxíð",
+     1
+    ],
+    [
+     "vanadíumsamböndin",
+     1
+    ],
+    [
+     "vanadíumsambanda",
+     1
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 31,
+   "symbol": "Ga",
+   "english": [
+    "gallium"
+   ],
+   "official": [
+    "gallíum"
+   ],
+   "note": null,
+   "enSegments": 19,
+   "withCandidate": 19,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "gallíum": {
+     "standalone": 8,
+     "compound": 5,
+     "segments": 11,
+     "official": true
+    },
+    "gallín": {
+     "standalone": 8,
+     "compound": 2,
+     "segments": 8,
+     "official": false
+    }
+   },
+   "topCompounds": [
+    [
+     "gallíumfosfíð",
+     1
+    ],
+    [
+     "gallíumoxíði",
+     1
+    ],
+    [
+     "gallíummálmi",
+     1
+    ],
+    [
+     "Gallínklóríð",
+     1
+    ],
+    [
+     "gallínklóríðs",
+     1
+    ],
+    [
+     "gallíumbrómíði",
+     1
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 37,
+   "symbol": "Rb",
+   "english": [
+    "rubidium"
+   ],
+   "official": [
+    "rúbidíum"
+   ],
+   "note": null,
+   "enSegments": 16,
+   "withCandidate": 16,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "rúbidíum": {
+     "standalone": 11,
+     "compound": 3,
+     "segments": 13,
+     "official": true
+    },
+    "rúbidín": {
+     "standalone": 2,
+     "compound": 2,
+     "segments": 3,
+     "official": false
+    }
+   },
+   "topCompounds": [
+    [
+     "rúbidíumbrómíð",
+     1
+    ],
+    [
+     "rúbidíumjónir",
+     1
+    ],
+    [
+     "rúbidíumsamband",
+     1
+    ],
+    [
+     "Rúbidínjoðíð",
+     1
+    ],
+    [
+     "rúbidínjón",
+     1
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 38,
+   "symbol": "Sr",
+   "english": [
+    "strontium"
+   ],
+   "official": [
+    "strontíum"
+   ],
+   "note": null,
+   "enSegments": 29,
+   "withCandidate": 29,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "strontíum": {
+     "standalone": 20,
+     "compound": 9,
+     "segments": 24,
+     "official": true
+    },
+    "strontín": {
+     "standalone": 6,
+     "compound": 0,
+     "segments": 5,
+     "official": false
+    }
+   },
+   "topCompounds": [
+    [
+     "strontíumefni",
+     5
+    ],
+    [
+     "strontíumhýdroxíð",
+     1
+    ],
+    [
+     "strontíumklóríð",
+     1
+    ],
+    [
+     "strontíumhýdroxíðs",
+     1
+    ],
+    [
+     "strontíumklóríði",
+     1
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 39,
+   "symbol": "Y",
+   "english": [
+    "yttrium"
+   ],
+   "official": [
+    "yttríum"
+   ],
+   "note": null,
+   "enSegments": 11,
+   "withCandidate": 11,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "yttríum": {
+     "standalone": 11,
+     "compound": 0,
+     "segments": 10,
+     "official": true
+    },
+    "yttrín": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": false
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 41,
+   "symbol": "Nb",
+   "english": [
+    "niobium"
+   ],
+   "official": [
+    "níóbíum"
+   ],
+   "note": null,
+   "enSegments": 5,
+   "withCandidate": 5,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "níóbíum": {
+     "standalone": 4,
+     "compound": 0,
+     "segments": 4,
+     "official": true
+    },
+    "níóbín": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": false
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 43,
+   "symbol": "Tc",
+   "english": [
+    "technetium"
+   ],
+   "official": [
+    "teknetíum"
+   ],
+   "note": null,
+   "enSegments": 14,
+   "withCandidate": 14,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "teknetín": {
+     "standalone": 11,
+     "compound": 2,
+     "segments": 8,
+     "official": false
+    },
+    "teknetíum": {
+     "standalone": 6,
+     "compound": 0,
+     "segments": 6,
+     "official": true
+    }
+   },
+   "topCompounds": [
+    [
+     "teknetínefnasambönd",
+     1
+    ],
+    [
+     "teknetínsambandsins",
+     1
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 45,
+   "symbol": "Rh",
+   "english": [
+    "rhodium"
+   ],
+   "official": [
+    "ródíum"
+   ],
+   "note": null,
+   "enSegments": 8,
+   "withCandidate": 8,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "ródíum": {
+     "standalone": 6,
+     "compound": 0,
+     "segments": 6,
+     "official": true
+    },
+    "ródín": {
+     "standalone": 2,
+     "compound": 0,
+     "segments": 2,
+     "official": false
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {
+    "röðina": 4
+   }
+  },
+  {
+   "n": 46,
+   "symbol": "Pd",
+   "english": [
+    "palladium"
+   ],
+   "official": [
+    "palladíum"
+   ],
+   "note": null,
+   "enSegments": 11,
+   "withCandidate": 11,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "palladíum": {
+     "standalone": 10,
+     "compound": 1,
+     "segments": 9,
+     "official": true
+    },
+    "palladín": {
+     "standalone": 2,
+     "compound": 0,
+     "segments": 2,
+     "official": false
+    }
+   },
+   "topCompounds": [
+    [
+     "palladíummálmi",
+     1
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 48,
+   "symbol": "Cd",
+   "english": [
+    "cadmium"
+   ],
+   "official": [
+    "kadmíum"
+   ],
+   "note": null,
+   "enSegments": 38,
+   "withCandidate": 38,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "kadmíum": {
+     "standalone": 28,
+     "compound": 15,
+     "segments": 32,
+     "official": true
+    },
+    "kadmín": {
+     "standalone": 6,
+     "compound": 1,
+     "segments": 6,
+     "official": false
+    }
+   },
+   "topCompounds": [
+    [
+     "kadmíumsúlfíð",
+     3
+    ],
+    [
+     "kadmíumefni",
+     3
+    ],
+    [
+     "kadmíumsúlfíðs",
+     2
+    ],
+    [
+     "Kadmíumsúlfíð",
+     1
+    ],
+    [
+     "kadmíumjoðíði",
+     1
+    ],
+    [
+     "kadmíumbrómíði",
+     1
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 49,
+   "symbol": "In",
+   "english": [
+    "indium"
+   ],
+   "official": [
+    "indíum"
+   ],
+   "note": null,
+   "enSegments": 9,
+   "withCandidate": 9,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "indíum": {
+     "standalone": 7,
+     "compound": 1,
+     "segments": 7,
+     "official": true
+    },
+    "indín": {
+     "standalone": 3,
+     "compound": 0,
+     "segments": 2,
+     "official": false
+    }
+   },
+   "topCompounds": [
+    [
+     "indíumtinoxíð",
+     1
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 55,
+   "symbol": "Cs",
+   "english": [
+    "caesium",
+    "cesium"
+   ],
+   "official": [
+    "sesíum"
+   ],
+   "note": null,
+   "enSegments": 21,
+   "withCandidate": 21,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "sesín": {
+     "standalone": 6,
+     "compound": 13,
+     "segments": 10,
+     "official": false
+    },
+    "sesíum": {
+     "standalone": 6,
+     "compound": 5,
+     "segments": 11,
+     "official": true
+    },
+    "cesium": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": false
+    }
+   },
+   "topCompounds": [
+    [
+     "sesínjón",
+     3
+    ],
+    [
+     "sesíumflúoríð",
+     2
+    ],
+    [
+     "sesínflúoríð",
+     2
+    ],
+    [
+     "sesíumklóríð",
+     1
+    ],
+    [
+     "sesínflúoríðs",
+     1
+    ],
+    [
+     "sesínatómum",
+     1
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 56,
+   "symbol": "Ba",
+   "english": [
+    "barium"
+   ],
+   "official": [
+    "baríum"
+   ],
+   "note": null,
+   "enSegments": 47,
+   "withCandidate": 47,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "baríum": {
+     "standalone": 17,
+     "compound": 37,
+     "segments": 37,
+     "official": true
+    },
+    "barín": {
+     "standalone": 12,
+     "compound": 0,
+     "segments": 10,
+     "official": false
+    },
+    "barium": {
+     "standalone": 1,
+     "compound": 2,
+     "segments": 3,
+     "official": false
+    }
+   },
+   "topCompounds": [
+    [
+     "baríumefni",
+     8
+    ],
+    [
+     "baríumsúlfati",
+     3
+    ],
+    [
+     "baríumhýdroxíð",
+     2
+    ],
+    [
+     "baríumnítrat",
+     2
+    ],
+    [
+     "baríumoxíði",
+     2
+    ],
+    [
+     "baríumsúlfat",
+     2
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 58,
+   "symbol": "Ce",
+   "english": [
+    "cerium"
+   ],
+   "official": [
+    "seríum"
+   ],
+   "note": null,
+   "enSegments": 7,
+   "withCandidate": 7,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "serín": {
+     "standalone": 5,
+     "compound": 0,
+     "segments": 5,
+     "official": false
+    },
+    "seríum": {
+     "standalone": 1,
+     "compound": 1,
+     "segments": 2,
+     "official": true
+    }
+   },
+   "topCompounds": [
+    [
+     "seríumsúlfati",
+     1
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 61,
+   "symbol": "Pm",
+   "english": [
+    "promethium"
+   ],
+   "official": [
+    "prómeþíum"
+   ],
+   "note": null,
+   "enSegments": 5,
+   "withCandidate": 5,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "prómetín": {
+     "standalone": 5,
+     "compound": 0,
+     "segments": 5,
+     "official": false
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 62,
+   "symbol": "Sm",
+   "english": [
+    "samarium"
+   ],
+   "official": [
+    "samaríum"
+   ],
+   "note": null,
+   "enSegments": 5,
+   "withCandidate": 5,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "samarín": {
+     "standalone": 4,
+     "compound": 1,
+     "segments": 5,
+     "official": false
+    }
+   },
+   "topCompounds": [
+    [
+     "samarínjón",
+     1
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 63,
+   "symbol": "Eu",
+   "english": [
+    "europium"
+   ],
+   "official": [
+    "evrópíum"
+   ],
+   "note": null,
+   "enSegments": 7,
+   "withCandidate": 7,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "evrópín": {
+     "standalone": 4,
+     "compound": 0,
+     "segments": 4,
+     "official": false
+    },
+    "evrópíum": {
+     "standalone": 3,
+     "compound": 0,
+     "segments": 3,
+     "official": true
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 64,
+   "symbol": "Gd",
+   "english": [
+    "gadolinium"
+   ],
+   "official": [
+    "gadólíníum"
+   ],
+   "note": null,
+   "enSegments": 6,
+   "withCandidate": 6,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "gadólín": {
+     "standalone": 5,
+     "compound": 0,
+     "segments": 5,
+     "official": false
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {
+    "gadólíni": 1
+   }
+  },
+  {
+   "n": 65,
+   "symbol": "Tb",
+   "english": [
+    "terbium"
+   ],
+   "official": [
+    "terbíum"
+   ],
+   "note": null,
+   "enSegments": 5,
+   "withCandidate": 5,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "terbín": {
+     "standalone": 4,
+     "compound": 0,
+     "segments": 4,
+     "official": false
+    },
+    "terbíum": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": true
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 66,
+   "symbol": "Dy",
+   "english": [
+    "dysprosium"
+   ],
+   "official": [
+    "dysprósíum"
+   ],
+   "note": null,
+   "enSegments": 6,
+   "withCandidate": 6,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "dysprósín": {
+     "standalone": 4,
+     "compound": 0,
+     "segments": 4,
+     "official": false
+    },
+    "dysprósíum": {
+     "standalone": 2,
+     "compound": 0,
+     "segments": 2,
+     "official": true
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 67,
+   "symbol": "Ho",
+   "english": [
+    "holmium"
+   ],
+   "official": [
+    "hólmíum"
+   ],
+   "note": null,
+   "enSegments": 5,
+   "withCandidate": 5,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "hólmín": {
+     "standalone": 4,
+     "compound": 0,
+     "segments": 4,
+     "official": false
+    },
+    "hólmíum": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": true
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 68,
+   "symbol": "Er",
+   "english": [
+    "erbium"
+   ],
+   "official": [
+    "erbíum"
+   ],
+   "note": null,
+   "enSegments": 4,
+   "withCandidate": 4,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "erbín": {
+     "standalone": 4,
+     "compound": 0,
+     "segments": 4,
+     "official": false
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 69,
+   "symbol": "Tm",
+   "english": [
+    "thulium"
+   ],
+   "official": [
+    "túlíum"
+   ],
+   "note": null,
+   "enSegments": 5,
+   "withCandidate": 5,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "túlín": {
+     "standalone": 4,
+     "compound": 0,
+     "segments": 4,
+     "official": false
+    },
+    "túlíum": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": true
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 70,
+   "symbol": "Yb",
+   "english": [
+    "ytterbium"
+   ],
+   "official": [
+    "ytterbíum"
+   ],
+   "note": null,
+   "enSegments": 4,
+   "withCandidate": 4,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "ytterbín": {
+     "standalone": 4,
+     "compound": 0,
+     "segments": 4,
+     "official": false
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 71,
+   "symbol": "Lu",
+   "english": [
+    "lutetium"
+   ],
+   "official": [
+    "lútetíum"
+   ],
+   "note": null,
+   "enSegments": 6,
+   "withCandidate": 6,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "lútetín": {
+     "standalone": 5,
+     "compound": 0,
+     "segments": 5,
+     "official": false
+    },
+    "lútetíum": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": true
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 72,
+   "symbol": "Hf",
+   "english": [
+    "hafnium"
+   ],
+   "official": [
+    "hafníum"
+   ],
+   "note": null,
+   "enSegments": 5,
+   "withCandidate": 5,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "hafníum": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": true
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {
+    "hafnfn": 4
+   }
+  },
+  {
+   "n": 75,
+   "symbol": "Re",
+   "english": [
+    "rhenium"
+   ],
+   "official": [
+    "reníum"
+   ],
+   "note": null,
+   "enSegments": 6,
+   "withCandidate": 6,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "renín": {
+     "standalone": 5,
+     "compound": 0,
+     "segments": 5,
+     "official": false
+    },
+    "reníum": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": true
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 76,
+   "symbol": "Os",
+   "english": [
+    "osmium"
+   ],
+   "official": [
+    "osmíum"
+   ],
+   "note": null,
+   "enSegments": 9,
+   "withCandidate": 9,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "osmín": {
+     "standalone": 6,
+     "compound": 0,
+     "segments": 6,
+     "official": false
+    },
+    "osmíum": {
+     "standalone": 3,
+     "compound": 0,
+     "segments": 3,
+     "official": true
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 77,
+   "symbol": "Ir",
+   "english": [
+    "iridium"
+   ],
+   "official": [
+    "iridíum"
+   ],
+   "note": null,
+   "enSegments": 11,
+   "withCandidate": 11,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "iridín": {
+     "standalone": 7,
+     "compound": 0,
+     "segments": 7,
+     "official": false
+    },
+    "iridíum": {
+     "standalone": 3,
+     "compound": 1,
+     "segments": 4,
+     "official": true
+    }
+   },
+   "topCompounds": [
+    [
+     "iridíumblöndu",
+     1
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 81,
+   "symbol": "Tl",
+   "english": [
+    "thallium"
+   ],
+   "official": [
+    "þallíum"
+   ],
+   "note": null,
+   "enSegments": 22,
+   "withCandidate": 22,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "þallíum": {
+     "standalone": 9,
+     "compound": 5,
+     "segments": 7,
+     "official": true
+    },
+    "þallín": {
+     "standalone": 11,
+     "compound": 1,
+     "segments": 7,
+     "official": false
+    },
+    "tallín": {
+     "standalone": 9,
+     "compound": 0,
+     "segments": 8,
+     "official": false
+    }
+   },
+   "topCompounds": [
+    [
+     "þallíumefni",
+     4
+    ],
+    [
+     "þallínjónum",
+     1
+    ],
+    [
+     "þallíummálmgrýtin",
+     1
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {
+    "talin": 1
+   },
+   "unshaped": {}
+  },
+  {
+   "n": 82,
+   "symbol": "Pb",
+   "english": [
+    "lead",
+    "plumbum"
+   ],
+   "official": [
+    "blý"
+   ],
+   "note": null,
+   "enSegments": 114,
+   "withCandidate": 77,
+   "noCandidateCount": 37,
+   "noCandidateSamples": [
+    {
+     "chapter": 1,
+     "segmentId": "m68664:para:fs-idm183676832",
+     "is": "Hvaða breytingar á efni eiga sér stað í daglegu lífi? Melting og upptaka fæðu, nýmyndun fjölliða sem notaðar eru til að búa til fatnað, ílát, eldunaráhöld og gr"
+    },
+    {
+     "chapter": 2,
+     "segmentId": "m68692:para:fs-idm54131248",
+     "is": "Joð er nauðsynlegt snefilefni í fæðunni; það er nauðsynlegt til að framleiða skjaldkirtilshormón. Ófullnægjandi joð í fæðunni getur leitt til þróunar á skjaldki"
+    },
+    {
+     "chapter": 2,
+     "segmentId": "m68693:para:fs-idp191392048",
+     "is": "Þú hefur lært um þróun atómkenningarinnar og ert farin(n) að kanna mismunandi efnaformgerðir. Þessar formgerðir valda því að sameindir laða hver aðra að sér eða"
+    }
+   ],
+   "bases": {
+    "blý": {
+     "standalone": 76,
+     "compound": 45,
+     "segments": 76,
+     "official": true
+    }
+   },
+   "topCompounds": [
+    [
+     "blýefni",
+     10
+    ],
+    [
+     "blýsýrurafgeymi",
+     3
+    ],
+    [
+     "Blýsýrurafgeymirinn",
+     2
+    ],
+    [
+     "blýdíoxíð",
+     2
+    ],
+    [
+     "blýgeymum",
+     2
+    ],
+    [
+     "blýrörs",
+     1
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {
+    "plumbum": 2,
+    "LeadIodide": 1,
+    "Lead": 1,
+    "leadacid": 1
+   }
+  },
+  {
+   "n": 87,
+   "symbol": "Fr",
+   "english": [
+    "francium"
+   ],
+   "official": [
+    "fransíum"
+   ],
+   "note": null,
+   "enSegments": 8,
+   "withCandidate": 8,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "fransín": {
+     "standalone": 7,
+     "compound": 0,
+     "segments": 7,
+     "official": false
+    },
+    "fransíum": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": true
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 88,
+   "symbol": "Ra",
+   "english": [
+    "radium"
+   ],
+   "official": [
+    "radíum"
+   ],
+   "note": null,
+   "enSegments": 12,
+   "withCandidate": 12,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "radíum": {
+     "standalone": 6,
+     "compound": 1,
+     "segments": 7,
+     "official": true
+    },
+    "radín": {
+     "standalone": 5,
+     "compound": 0,
+     "segments": 5,
+     "official": false
+    }
+   },
+   "topCompounds": [
+    [
+     "radíumgjafa",
+     1
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {
+    "raðirnar": 2
+   }
+  },
+  {
+   "n": 89,
+   "symbol": "Ac",
+   "english": [
+    "actinium"
+   ],
+   "official": [
+    "aktíníum"
+   ],
+   "note": null,
+   "enSegments": 11,
+   "withCandidate": 11,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "aktín": {
+     "standalone": 9,
+     "compound": 2,
+     "segments": 9,
+     "official": false
+    },
+    "aktíníum": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": true
+    },
+    "aktiníðaröðin": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": false
+    },
+    "aktiníum": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": false
+    }
+   },
+   "topCompounds": [
+    [
+     "aktínóíðaröðina",
+     1
+    ],
+    [
+     "aktínóíðaröð",
+     1
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {
+    "aktíníðaröðina": 1,
+    "aktíníðaröðinni": 1
+   }
+  },
+  {
+   "n": 90,
+   "symbol": "Th",
+   "english": [
+    "thorium"
+   ],
+   "official": [
+    "þóríum"
+   ],
+   "note": null,
+   "enSegments": 9,
+   "withCandidate": 9,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "þórín": {
+     "standalone": 5,
+     "compound": 1,
+     "segments": 6,
+     "official": false
+    },
+    "þóríum": {
+     "standalone": 3,
+     "compound": 0,
+     "segments": 3,
+     "official": true
+    }
+   },
+   "topCompounds": [
+    [
+     "þórínröðin",
+     1
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 91,
+   "symbol": "Pa",
+   "english": [
+    "protactinium"
+   ],
+   "official": [
+    "prótaktíníum"
+   ],
+   "note": null,
+   "enSegments": 4,
+   "withCandidate": 4,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "prótaktín": {
+     "standalone": 4,
+     "compound": 0,
+     "segments": 4,
+     "official": false
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 95,
+   "symbol": "Am",
+   "english": [
+    "americium"
+   ],
+   "official": [
+    "ameríkíum"
+   ],
+   "note": null,
+   "enSegments": 11,
+   "withCandidate": 11,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "ameríkín": {
+     "standalone": 6,
+     "compound": 0,
+     "segments": 6,
+     "official": false
+    },
+    "amerísín": {
+     "standalone": 3,
+     "compound": 0,
+     "segments": 3,
+     "official": false
+    },
+    "ameríkíum": {
+     "standalone": 1,
+     "compound": 1,
+     "segments": 2,
+     "official": true
+    },
+    "americium": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": false
+    }
+   },
+   "topCompounds": [
+    [
+     "ameríkíumgjafi",
+     1
+    ]
+   ],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 96,
+   "symbol": "Cm",
+   "english": [
+    "curium"
+   ],
+   "official": [
+    "curíum"
+   ],
+   "note": null,
+   "enSegments": 6,
+   "withCandidate": 6,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "kúríum": {
+     "standalone": 5,
+     "compound": 0,
+     "segments": 5,
+     "official": false
+    },
+    "kúrín": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": false
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 97,
+   "symbol": "Bk",
+   "english": [
+    "berkelium"
+   ],
+   "official": [
+    "berkelíum"
+   ],
+   "note": null,
+   "enSegments": 5,
+   "withCandidate": 5,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "berkelín": {
+     "standalone": 5,
+     "compound": 0,
+     "segments": 5,
+     "official": false
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 98,
+   "symbol": "Cf",
+   "english": [
+    "californium"
+   ],
+   "official": [
+    "kaliforníum"
+   ],
+   "note": null,
+   "enSegments": 6,
+   "withCandidate": 6,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "kalifornín": {
+     "standalone": 5,
+     "compound": 0,
+     "segments": 5,
+     "official": false
+    },
+    "kaliforníum": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": true
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 99,
+   "symbol": "Es",
+   "english": [
+    "einsteinium"
+   ],
+   "official": [
+    "einsteiníum"
+   ],
+   "note": null,
+   "enSegments": 6,
+   "withCandidate": 6,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "einsteinín": {
+     "standalone": 5,
+     "compound": 0,
+     "segments": 5,
+     "official": false
+    },
+    "einsteiníum": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": true
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 100,
+   "symbol": "Fm",
+   "english": [
+    "fermium"
+   ],
+   "official": [
+    "fermíum"
+   ],
+   "note": null,
+   "enSegments": 5,
+   "withCandidate": 5,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "fermín": {
+     "standalone": 5,
+     "compound": 0,
+     "segments": 5,
+     "official": false
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 101,
+   "symbol": "Md",
+   "english": [
+    "mendelevium"
+   ],
+   "official": [
+    "mendelevíum"
+   ],
+   "note": null,
+   "enSegments": 6,
+   "withCandidate": 6,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "mendelevín": {
+     "standalone": 5,
+     "compound": 0,
+     "segments": 5,
+     "official": false
+    },
+    "mendelevíum": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": true
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 102,
+   "symbol": "No",
+   "english": [
+    "nobelium"
+   ],
+   "official": [
+    "nóbelíum"
+   ],
+   "note": null,
+   "enSegments": 7,
+   "withCandidate": 7,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "nóbelín": {
+     "standalone": 6,
+     "compound": 0,
+     "segments": 6,
+     "official": false
+    },
+    "nóbelíum": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": true
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 103,
+   "symbol": "Lr",
+   "english": [
+    "lawrencium"
+   ],
+   "official": [
+    "lawrensíum"
+   ],
+   "note": null,
+   "enSegments": 7,
+   "withCandidate": 7,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "lawrensín": {
+     "standalone": 6,
+     "compound": 0,
+     "segments": 6,
+     "official": false
+    },
+    "lawrensíum": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": true
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 104,
+   "symbol": "Rf",
+   "english": [
+    "rutherfordium"
+   ],
+   "official": [
+    "rutherfordíum"
+   ],
+   "note": null,
+   "enSegments": 6,
+   "withCandidate": 6,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "rutherfordín": {
+     "standalone": 5,
+     "compound": 0,
+     "segments": 5,
+     "official": false
+    },
+    "rutherfordíum": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": true
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 105,
+   "symbol": "Db",
+   "english": [
+    "dubnium"
+   ],
+   "official": [
+    "dubníum"
+   ],
+   "note": null,
+   "enSegments": 5,
+   "withCandidate": 5,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "dubnín": {
+     "standalone": 5,
+     "compound": 0,
+     "segments": 5,
+     "official": false
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 106,
+   "symbol": "Sg",
+   "english": [
+    "seaborgium"
+   ],
+   "official": [
+    "seaborgíum"
+   ],
+   "note": null,
+   "enSegments": 7,
+   "withCandidate": 7,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "seaborgín": {
+     "standalone": 5,
+     "compound": 0,
+     "segments": 5,
+     "official": false
+    },
+    "seaborgíum": {
+     "standalone": 2,
+     "compound": 0,
+     "segments": 2,
+     "official": true
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {
+    "Seaborg": 1
+   }
+  },
+  {
+   "n": 107,
+   "symbol": "Bh",
+   "english": [
+    "bohrium"
+   ],
+   "official": [
+    "bohríum"
+   ],
+   "note": null,
+   "enSegments": 4,
+   "withCandidate": 4,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "bohrín": {
+     "standalone": 4,
+     "compound": 0,
+     "segments": 4,
+     "official": false
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 108,
+   "symbol": "Hs",
+   "english": [
+    "hassium"
+   ],
+   "official": [
+    "hassíum"
+   ],
+   "note": null,
+   "enSegments": 4,
+   "withCandidate": 4,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "hassín": {
+     "standalone": 4,
+     "compound": 0,
+     "segments": 4,
+     "official": false
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 109,
+   "symbol": "Mt",
+   "english": [
+    "meitnerium"
+   ],
+   "official": [
+    "meitneríum"
+   ],
+   "note": null,
+   "enSegments": 6,
+   "withCandidate": 6,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "meitnerín": {
+     "standalone": 5,
+     "compound": 0,
+     "segments": 5,
+     "official": false
+    },
+    "meitneríum": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": true
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 110,
+   "symbol": "Ds",
+   "english": [
+    "darmstadtium"
+   ],
+   "official": [
+    "darmstadtíum"
+   ],
+   "note": null,
+   "enSegments": 4,
+   "withCandidate": 4,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "darmstadtín": {
+     "standalone": 4,
+     "compound": 0,
+     "segments": 4,
+     "official": false
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 111,
+   "symbol": "Rg",
+   "english": [
+    "roentgenium"
+   ],
+   "official": [
+    "röntgeníum"
+   ],
+   "note": null,
+   "enSegments": 5,
+   "withCandidate": 5,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "röntgenín": {
+     "standalone": 4,
+     "compound": 0,
+     "segments": 4,
+     "official": false
+    },
+    "röntgeníum": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": true
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 112,
+   "symbol": "Cn",
+   "english": [
+    "copernicium"
+   ],
+   "official": [
+    "kópernikíum"
+   ],
+   "note": null,
+   "enSegments": 6,
+   "withCandidate": 6,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "kópernikín": {
+     "standalone": 5,
+     "compound": 0,
+     "segments": 5,
+     "official": false
+    },
+    "kópernikíum": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": true
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 113,
+   "symbol": "Nh",
+   "english": [
+    "nihonium"
+   ],
+   "official": [
+    "níhoníum"
+   ],
+   "note": null,
+   "enSegments": 0,
+   "withCandidate": 0,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {},
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 114,
+   "symbol": "Fl",
+   "english": [
+    "flerovium"
+   ],
+   "official": [
+    "fleróvíum"
+   ],
+   "note": null,
+   "enSegments": 7,
+   "withCandidate": 7,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "fleróvín": {
+     "standalone": 5,
+     "compound": 0,
+     "segments": 5,
+     "official": false
+    },
+    "fleróvíum": {
+     "standalone": 2,
+     "compound": 0,
+     "segments": 2,
+     "official": true
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 115,
+   "symbol": "Mc",
+   "english": [
+    "moscovium"
+   ],
+   "official": [
+    "moskóvíum"
+   ],
+   "note": null,
+   "enSegments": 0,
+   "withCandidate": 0,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {},
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 116,
+   "symbol": "Lv",
+   "english": [
+    "livermorium"
+   ],
+   "official": [
+    "livermoríum"
+   ],
+   "note": null,
+   "enSegments": 5,
+   "withCandidate": 5,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {
+    "livermorín": {
+     "standalone": 4,
+     "compound": 0,
+     "segments": 4,
+     "official": false
+    },
+    "livermoríum": {
+     "standalone": 1,
+     "compound": 0,
+     "segments": 1,
+     "official": true
+    }
+   },
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 117,
+   "symbol": "Ts",
+   "english": [
+    "tennessine"
+   ],
+   "official": [
+    "tennessín"
+   ],
+   "note": null,
+   "enSegments": 0,
+   "withCandidate": 0,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {},
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  },
+  {
+   "n": 118,
+   "symbol": "Og",
+   "english": [
+    "oganesson"
+   ],
+   "official": [
+    "oganesson"
+   ],
+   "note": null,
+   "enSegments": 0,
+   "withCandidate": 0,
+   "noCandidateCount": 0,
+   "noCandidateSamples": [],
+   "bases": {},
+   "topCompounds": [],
+   "ambiguous": {},
+   "weak": {},
+   "unshaped": {}
+  }
+ ]
+}

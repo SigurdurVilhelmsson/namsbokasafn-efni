@@ -1,0 +1,2542 @@
+{
+ "_meta": {
+  "measured": "2026-11-20",
+  "book": "efnafraedi-2e",
+  "prodHead": "844f13d2f",
+  "readOnly": true,
+  "script": "instruments/never-official-readonly.cjs",
+  "what": "dry lists for the 14 names whose MT forms are never official (census rows marked ✗): segments whose English names the element and whose Icelandic holds a non-official form; segments already holding the official name are skipped (the worklist's rule)"
+ },
+ "control": {
+  "registeredBooks": 6,
+  "unitsListed": 170,
+  "unreadable": [],
+  "openedDbPaths": [
+   "pipeline-output/sessions.db"
+  ],
+  "targets": [
+   "lithium",
+   "promethium",
+   "samarium",
+   "gadolinium",
+   "erbium",
+   "ytterbium",
+   "protactinium",
+   "curium",
+   "berkelium",
+   "fermium",
+   "dubnium",
+   "bohrium",
+   "hassium",
+   "darmstadtium"
+  ]
+ },
+ "rows": [
+  {
+   "n": 3,
+   "english": [
+    "lithium"
+   ],
+   "official": [
+    "liþíum"
+   ],
+   "enSegments": 58,
+   "alreadyOfficial": 0,
+   "listed": 58,
+   "listedStrong": 58,
+   "items": [
+    {
+     "chapter": 1,
+     "moduleId": "m68667",
+     "segmentId": "m68667:para:fs-idm49120320",
+     "forms": [
+      "litíumjónum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "i eins og yttríum, praseódým og gadólín. Rafhlaðan byggir á litíumjónum og ýmsum öðrum efnum, þar á meðal járni, kóbalti, kopar, pó",
+      "start": 60,
+      "length": 11,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68667",
+     "segmentId": "m68667:alt:fs-idm54034640-alt",
+     "forms": [
+      "litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "ættu áli, natríum og kalíum. Íhlutir rafhlöðunnar innihalda litíum ásamt öðrum málmum eins og kóbalti, járni og kopar.",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": 2,
+     "moduleId": "m68692",
+     "segmentId": "m68692:table-summary:fs-idm87646592-summary",
+     "forms": [
+      "Litíum",
+      "Litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "2 nifteindir, massa 4,0026 og náttúrulega gnægð upp á 100%. Litíum, vinstra uppskrift 6, vinstra niðurskrift 3, hefur sætistöl",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 2,
+     "moduleId": "m68692",
+     "segmentId": "m68692:entry:auto-161",
+     "forms": [
+      "litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "litíum",
+      "start": 0,
+      "length": 6,
+      "cutBefore": false,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": 2,
+     "moduleId": "m68692",
+     "segmentId": "m68692:problem:fs-idm56609680",
+     "forms": [
+      "litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "indir yfir á atómsniðmátið til að búa til hlutlaust atóm af litíum-6 og gefðu upp samsætutákn fyrir þetta atóm.",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": 2,
+     "moduleId": "m68692",
+     "segmentId": "m68692:solution:fs-idm134038192",
+     "forms": [
+      "Litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "(a) Litíum-6 inniheldur þrjár róteindir, þrjár nifteindir og þrjár raf",
+      "start": 4,
+      "length": 6,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 2,
+     "moduleId": "m68692",
+     "segmentId": "m68692:problem:fs-idm130368688",
+     "forms": [
+      "Litíum",
+      "litíums",
+      "Litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": " má sjá hjá frumefnum sem fengin eru úr mismunandi uppruna. Litíum er dæmi um þetta. Samsætusamsetning litíums úr náttúrulegum",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 2,
+     "moduleId": "m68695",
+     "segmentId": "m68695:para:fs-idm392133488",
+     "forms": [
+      "litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "paðri efnafræðilegri hegðun. Einn slíkur flokkur inniheldur litíum (Li), natríum (Na) og kalíum (K): Þessi frumefni eru öll gl",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 2,
+     "moduleId": "m68695",
+     "segmentId": "m68695:alt:fs-idm413728400-alt",
+     "forms": [
+      "litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "gi; lofttegund; og 4,003“. Lota 2, flokkur 1 inniheldur „3; litíum; Li; málmur; fast efni; og 6,94“. Flokkur 2 inniheldur „4; ",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 2,
+     "moduleId": "m68695",
+     "segmentId": "m68695:para:fs-idm147211136",
+     "forms": [
+      "litín"
+     ],
+     "bases": [
+      "litín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "(d) litín",
+      "start": 4,
+      "length": 5,
+      "cutBefore": false,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": 2,
+     "moduleId": "m68695",
+     "segmentId": "m68695:problem:fs-idm447823856",
+     "forms": [
+      "litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "(e) litíum",
+      "start": 4,
+      "length": 6,
+      "cutBefore": false,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": 2,
+     "moduleId": "m68695",
+     "segmentId": "m68695:problem:fs-idm203188176",
+     "forms": [
+      "litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "(c) halógeninn í sömu lotu og litíum",
+      "start": 30,
+      "length": 6,
+      "cutBefore": false,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": 2,
+     "moduleId": "m68696",
+     "segmentId": "m68696:para:fs-idp187565648",
+     "forms": [
+      "litíumjónarinnar",
+      "litíumjónarinnar"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "Spáðu fyrir um formúlu jónaefnisins sem myndast milli litíumjónarinnar og peroxíðjónarinnar, [[MATH:33]] (Vísbending: Notaðu lotuk",
+      "start": 54,
+      "length": 16,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 2,
+     "moduleId": "m68696",
+     "segmentId": "m68696:para:fs-idp214730704",
+     "forms": [
+      "litíumgjafi"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "(d) Li[[sub:2]]CO[[sub:3]], litíumgjafi í þunglyndislyfjum",
+      "start": 28,
+      "length": 11,
+      "cutBefore": false,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": 2,
+     "moduleId": "m68696",
+     "segmentId": "m68696:para:fs-idp187587072",
+     "forms": [
+      "Litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "(d) Litíum (flokkur 1) er málmur og karbónat er fjölatóma jón; gert er",
+      "start": 4,
+      "length": 6,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 2,
+     "moduleId": "m68698",
+     "segmentId": "m68698:table-summary:fs-idp282234816-summary",
+     "forms": [
+      "litíumklóríð"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": " I neðanskrift 2 kalsíumjoðíð, C s F sesíumflúoríð, L i C l litíumklóríð, N a neðanskrift 2 O natríumoxíð, C d S kadmíumsúlfíð, M g ",
+      "start": 60,
+      "length": 12,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 2,
+     "moduleId": "m68698",
+     "segmentId": "m68698:entry:auto-18",
+     "forms": [
+      "litíumklóríð"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "LiCl, litíumklóríð",
+      "start": 6,
+      "length": 12,
+      "cutBefore": false,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": 2,
+     "moduleId": "m68698",
+     "segmentId": "m68698:problem:fs-idp279466208",
+     "forms": [
+      "litíumkarbónat"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "(a) litíumkarbónat",
+      "start": 4,
+      "length": 14,
+      "cutBefore": false,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": 4,
+     "moduleId": "m68710",
+     "segmentId": "m68710:para:fs-idm5793440",
+     "forms": [
+      "litíumklóríð"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "(b) litíumklóríð og silfurasetat",
+      "start": 4,
+      "length": 12,
+      "cutBefore": false,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": 4,
+     "moduleId": "m68710",
+     "segmentId": "m68710:problem:fs-idp89419440",
+     "forms": [
+      "Litíumhýdroxíð"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "Litíumhýdroxíð má nota til að gleypa koltvíoxíð í lokuðu umhverfi, svo sem",
+      "start": 0,
+      "length": 14,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 4,
+     "moduleId": "m68714",
+     "segmentId": "m68714:problem:fs-idp47839312",
+     "forms": [
+      "litíum",
+      "litíumnítríð"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "Hvað er takmarkandi hvarfefni þegar 1,50 g af litíum og 1,50 g af köfnunarefni sameinast og mynda litíumnítríð, ",
+      "start": 46,
+      "length": 6,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 6,
+     "moduleId": "m68729",
+     "segmentId": "m68729:problem:fs-idm1476208",
+     "forms": [
+      "litíumatóm"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "Hituð litíumatóm gefa frá sér ljóseindir með orkuna 2,961 [[MATH:22]] 10[[su",
+      "start": 6,
+      "length": 10,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 6,
+     "moduleId": "m68734",
+     "segmentId": "m68734:para:fs-idp29682592",
+     "forms": [
+      "litín",
+      "litíni",
+      "litíns"
+     ],
+     "bases": [
+      "litín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "Næsta atóm er alkalímálmurinn litín með sætistöluna 3. Fyrstu tvær rafeindirnar í litíni fylla ",
+      "start": 30,
+      "length": 5,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 6,
+     "moduleId": "m68734",
+     "segmentId": "m68734:para:fs-idp28826352",
+     "forms": [
+      "litíums",
+      "litíums",
+      "litíums"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "Á sama hátt má tákna stytta skipan litíums sem [He]2[[i:s]][[sup:1]], þar sem [He] táknar skipan helíu",
+      "start": 35,
+      "length": 7,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 6,
+     "moduleId": "m68734",
+     "segmentId": "m68734:para:fs-idm8891728",
+     "forms": [
+      "litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "r og eðlisfræðilegar sannanir til þess að kalíum sé eins og litíum og natríum og að næstu rafeind sé ekki bætt við 3[[i:d]] or",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 6,
+     "moduleId": "m68734",
+     "segmentId": "m68734:para:fs-idp77726784",
+     "forms": [
+      "litín"
+     ],
+     "bases": [
+      "litín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "ki) sem er hafa sama fjölda gildisrafeinda; alkalímálmarnir litín og natrín hafa hvor um sig aðeins eina gildisrafeind, jarða",
+      "start": 60,
+      "length": 5,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 8,
+     "moduleId": "m68747",
+     "segmentId": "m68747:para:fs-idm113916160",
+     "forms": [
+      "litíumatóma",
+      "litíumsameind",
+      "litíumatómanna",
+      "litíumgufu"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "Samruni tveggja litíumatóma til að mynda litíumsameind, Li[[sub:2]], er hliðstæður mynd",
+      "start": 16,
+      "length": 11,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 8,
+     "moduleId": "m68747",
+     "segmentId": "m68747:problem:fs-idm111685776",
+     "forms": [
+      "litíums"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "] svigrúm flúors byrji á mun lægri orku en 2[[i:s]] svigrúm litíums, þannig að σ[[sub:2[[i:s]]]] sameindasvigrúmið sem myndast ",
+      "start": 60,
+      "length": 7,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 10,
+     "moduleId": "m68773",
+     "segmentId": "m68773:para:fs-idp135414368",
+     "forms": [
+      "litíumseleníði",
+      "litíumjónum",
+      "litíumseleníðs"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "Lýsa má litíumseleníði sem þéttpökkuðu fylki seleníðjóna með litíumjónum í öllum f",
+      "start": 8,
+      "length": 14,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 10,
+     "moduleId": "m68773",
+     "segmentId": "m68773:para:fs-idp187605664",
+     "forms": [
+      "litíumjónin"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [
+      "lítil (unshaped)"
+     ],
+     "excerpt": {
+      "text": "gging, FCC) er 0,514 nm eða 5,14 Å. Ef gert er ráð fyrir að litíumjónin sé nógu lítil til að klóríðjónirnar snertist, eins og í [[x",
+      "start": 60,
+      "length": 11,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 10,
+     "moduleId": "m68773",
+     "segmentId": "m68773:problem:fs-idp109499216",
+     "forms": [
+      "Litín"
+     ],
+     "bases": [
+      "litín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": " kviku settust mismunandi jónir í sömu sæti í kristöllunum. Litín kemur oft fyrir ásamt magnesíni í steindum þrátt fyrir mism",
+      "start": 60,
+      "length": 5,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 14,
+     "moduleId": "m68805",
+     "segmentId": "m68805:alt:fs-idp3283088-alt",
+     "forms": [
+      "litíumhýdroxíð"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": ". Undir dálkinum „6 sterkir basar“ er eftirfarandi: L i O H litíumhýdroxíð; N a O H natríumhýdroxíð; K O H kalíumhýdroxíð; C a ( O H )",
+      "start": 60,
+      "length": 14,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 17,
+     "moduleId": "m68825",
+     "segmentId": "m68825:para:fs-idm181217728",
+     "forms": [
+      "Litíumjónarafhlöður"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "[[term:Litíumjónarafhlöður|term-00007]] ([[xref:CNX_Chem_17_05_LiIon]]) eru meðal vins",
+      "start": 7,
+      "length": 19,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 17,
+     "moduleId": "m68825",
+     "segmentId": "m68825:para:fs-idm162456704",
+     "forms": [
+      "Litíumrafhlöður"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "rleitt ekki meira en 0,5 og kerspennan er um það bil 3,7 V. Litíumrafhlöður eru vinsælar vegna þess að þær geta veitt mikinn straum, er",
+      "start": 60,
+      "length": 15,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 17,
+     "moduleId": "m68825",
+     "segmentId": "m68825:caption:CNX_Chem_17_05_LiIon-caption",
+     "forms": [
+      "litíumjónarafhlöðu",
+      "litíumjónirnar"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "Í litíumjónarafhlöðu flæðir hleðsla þegar litíumjónirnar flytjast milli rafskaut",
+      "start": 2,
+      "length": 18,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 17,
+     "moduleId": "m68825",
+     "segmentId": "m68825:alt:fs-idm137917328-alt",
+     "forms": [
+      "litíumjónarafhlöðu",
+      "litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "Þessi mynd sýnir líkan af hleðsluflæði í litíumjónarafhlöðu. Vinstra megin er um það bil teningslaga bygging mynduð af ",
+      "start": 41,
+      "length": 18,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 17,
+     "moduleId": "m68825",
+     "segmentId": "m68825:para:fs-idm171820144",
+     "forms": [
+      "lithiumion",
+      "litíumjónarafhlöður"
+     ],
+     "bases": [
+      "lithium",
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "Farðu á þessa [[link:síðu|http://openstax.org/l/16lithiumion]] til að fá frekari upplýsingar um litíumjónarafhlöður.",
+      "start": 50,
+      "length": 10,
+      "cutBefore": false,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": 17,
+     "moduleId": "m68825",
+     "segmentId": "m68825:glossary-term:fs-idm118911936-term",
+     "forms": [
+      "Litíumjónarafhlaða"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "Litíumjónarafhlaða",
+      "start": 0,
+      "length": 18,
+      "cutBefore": false,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": 17,
+     "moduleId": "m68825",
+     "segmentId": "m68825:glossary-def:fs-idm118911936-def",
+     "forms": [
+      "litíumjóna"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "em er algeng í færanlegum rafeindatækjum, byggð á flutningi litíumjóna milli rafskauts og bakskauts",
+      "start": 60,
+      "length": 10,
+      "cutBefore": true,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": 17,
+     "moduleId": "m68825",
+     "segmentId": "m68825:glossary-def:fs-idm206318304-def",
+     "forms": [
+      "litíumjónarafhlöður"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "laða byggð á Ni/Cd-helmingakerum með notkunarsvið svipað og litíumjónarafhlöður",
+      "start": 60,
+      "length": 19,
+      "cutBefore": true,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": 17,
+     "moduleId": "m68826",
+     "segmentId": "m68826:problem:fs-idp71069984",
+     "forms": [
+      "litíummálmi"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "Hvers vegna væri fórnarskaut úr litíummálmi slæmur kostur?",
+      "start": 32,
+      "length": 11,
+      "cutBefore": false,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": 17,
+     "moduleId": "m68826",
+     "segmentId": "m68826:solution:fs-idm142282624",
+     "forms": [
+      "litíums",
+      "litíum",
+      "litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "Þótt afoxunarspenna litíums myndi gera það kleift að verja hina málmana, er þessi háa s",
+      "start": 20,
+      "length": 7,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:alt:fs-idp101665920-alt",
+     "forms": [
+      "litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "gi; lofttegund; og 4,003“. Lota 2, flokkur 1 inniheldur „3; litíum; Li; aðalflokkamálmur; fast efni; og 6,94“. Flokkur 2 innih",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:para:fs-idm8683616",
+     "forms": [
+      "litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "Alkalímálmarnir litíum, natríum, kalíum, rúbidíum, sesíum og fransíum mynda flokk ",
+      "start": 16,
+      "length": 6,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:para:fs-idp103075664",
+     "forms": [
+      "litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "ngra frumefnin. Alkalímálmar á föstu formi eru mjög mjúkir; litíum, sem sýnt er á [[xref:CNX_Chem_18_01_LithiumRx]], hefur læg",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:para:fs-idp66398992",
+     "forms": [
+      "litíums"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "r að þeir eru auðveldari að oxa en vetni. Sem dæmi er hvarf litíums við vatn:",
+      "start": 60,
+      "length": 7,
+      "cutBefore": true,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:caption:CNX_Chem_18_01_LithiumRx-caption",
+     "forms": [
+      "Litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "Litíum flýtur í paraffínolíu vegna þess að eðlismassi þess er minn",
+      "start": 0,
+      "length": 6,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:para:fs-idp151382672",
+     "forms": [
+      "litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "al ákveðinna litarefna, lyfja og ilmvatna, nýtir afoxun með litíum eða natríum.",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:para:fs-idp44141360",
+     "forms": [
+      "Litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "inir alkalímálmarnir og sölt þeirra gefa einnig lit í loga. Litíum myndar skæran, karmínrauðan lit, en hinir mynda fölfjólublá",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:problem:fs-idm16110016",
+     "forms": [
+      "litíums"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "Af hverju minnkar hvarfgirni alkalímálma frá sesíum til litíums?",
+      "start": 56,
+      "length": 7,
+      "cutBefore": false,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68830",
+     "segmentId": "m68830:para:fs-idp233041184",
+     "forms": [
+      "litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "Þessir málmar koma aðallega fyrir í steindum, þar sem litíum finnst í silíkat- eða fosfatsteindum og natríum og kalíum f",
+      "start": 54,
+      "length": 6,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68830",
+     "segmentId": "m68830:problem:fs-idp111274816",
+     "forms": [
+      "litíumklóríði"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "r efnajöfnur fyrir heildarhvarfið við rafgreiningu á bráðnu litíumklóríði og fyrir efnahvörfin sem eiga sér stað við rafskautin. Þú g",
+      "start": 60,
+      "length": 13,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68835",
+     "segmentId": "m68835:para:fs-idp20917824",
+     "forms": [
+      "litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "a. Einu algengu efnahvörfin við stofuhita eiga sér stað með litíum til að mynda Li[[sub:3]]N, með ákveðnum hliðarmálmafléttum ",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 19,
+     "moduleId": "m68842",
+     "segmentId": "m68842:alt:fs-idm272821040-alt",
+     "forms": [
+      "litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "gi; lofttegund; og 4,003“. Lota 2, flokkur 1 inniheldur „3; litíum; Li; málmur; fast efni; og 6,94“. Flokkur 2 inniheldur „4; ",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 21,
+     "moduleId": "m68856",
+     "segmentId": "m68856:para:fs-idm24991392",
+     "forms": [
+      "litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "10, til dæmis, gleypir nifteindir með hvarfi sem framleiðir litíum-7 og alfaagnir:",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": -1,
+     "moduleId": "m68859",
+     "segmentId": "m68859:alt:fs-idp64991424-alt",
+     "forms": [
+      "litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "mleysingi; gas; og 4,003.“ Lota 2, flokkur 1 inniheldur „3; litíum; Li; málmur; fast efni; og 6,94.“ Flokkur 2 inniheldur „4; ",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": -1,
+     "moduleId": "m68865",
+     "segmentId": "m68865:table-summary:fs-idp78188768-summary",
+     "forms": [
+      "litíum",
+      "litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "fast efni með gildin –359,4, –314,1 og 136,0. Næsta efni er litíum. Fyrsta efnaformúlan undir litíum er Li fast efni með gildi",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": -1,
+     "moduleId": "m68865",
+     "segmentId": "m68865:entry:auto-803",
+     "forms": [
+      "litíum"
+     ],
+     "bases": [
+      "litíum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "litíum",
+      "start": 0,
+      "length": 6,
+      "cutBefore": false,
+      "cutAfter": false
+     }
+    }
+   ],
+   "misses": []
+  },
+  {
+   "n": 61,
+   "english": [
+    "promethium"
+   ],
+   "official": [
+    "prómeþíum"
+   ],
+   "enSegments": 5,
+   "alreadyOfficial": 0,
+   "listed": 5,
+   "listedStrong": 5,
+   "items": [
+    {
+     "chapter": 2,
+     "moduleId": "m68695",
+     "segmentId": "m68695:alt:fs-idm413728400-alt",
+     "forms": [
+      "prómetín"
+     ],
+     "bases": [
+      "prómetín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "„60; neódým; Nd; málmur; fast efni; og 144,2.“ Næst er „61; prómetín; Pm; málmur; fast efni; og 145.“ Næst er „62; samarín; Sm; ",
+      "start": 60,
+      "length": 8,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 2,
+     "moduleId": "m68695",
+     "segmentId": "m68695:para:fs-idm382436640",
+     "forms": [
+      "prómetín"
+     ],
+     "bases": [
+      "prómetín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": " frumefna. Atómmassi frumefnis 43 (teknetín), frumefnis 61 (prómetín) og flestra frumefna með sætistöluna 84 (pólón) og hærri er",
+      "start": 60,
+      "length": 8,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:alt:fs-idp101665920-alt",
+     "forms": [
+      "prómetín"
+     ],
+     "bases": [
+      "prómetín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "m; Nd; aðalflokkamálmur; fast efni; og 144,2.“ Næst er „61; prómetín; Pm; geislavirkt frumefni; fast efni; og 145.“ Næst er „62;",
+      "start": 60,
+      "length": 8,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 19,
+     "moduleId": "m68842",
+     "segmentId": "m68842:alt:fs-idm272821040-alt",
+     "forms": [
+      "prómetín"
+     ],
+     "bases": [
+      "prómetín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "„60; neódým; Nd; málmur; fast efni; og 144,2.“ Næst er „61; prómetín; Pm; málmur; fast efni; og 145.“ Næst er „62; samarín; Sm; ",
+      "start": 60,
+      "length": 8,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": -1,
+     "moduleId": "m68859",
+     "segmentId": "m68859:alt:fs-idp64991424-alt",
+     "forms": [
+      "prómetín"
+     ],
+     "bases": [
+      "prómetín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "„60; neódým; Nd; málmur; fast efni; og 144,2.“ Næst er „61; prómetín; Pm; málmur; fast efni; og 145.“ Næst er „62; samarín; Sm; ",
+      "start": 60,
+      "length": 8,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    }
+   ],
+   "misses": []
+  },
+  {
+   "n": 62,
+   "english": [
+    "samarium"
+   ],
+   "official": [
+    "samaríum"
+   ],
+   "enSegments": 5,
+   "alreadyOfficial": 0,
+   "listed": 5,
+   "listedStrong": 5,
+   "items": [
+    {
+     "chapter": 2,
+     "moduleId": "m68695",
+     "segmentId": "m68695:alt:fs-idm413728400-alt",
+     "forms": [
+      "samarín"
+     ],
+     "bases": [
+      "samarín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "„61; prómetín; Pm; málmur; fast efni; og 145.“ Næst er „62; samarín; Sm; málmur; fast efni; og 150,4.“ Næst er „63; evrópín; Eu",
+      "start": 60,
+      "length": 7,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 6,
+     "moduleId": "m68734",
+     "segmentId": "m68734:para:fs-idp203409520",
+     "forms": [
+      "samarínjón"
+     ],
+     "bases": [
+      "samarín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "[[i:p]][[sup:6]]6[[i:s]][[sup:2]]4[[i:f]][[sup:6]]. Þrígild samarínjón missir þrjár rafeindir. Fyrstu tvær missast af 6[[i:s]]-svi",
+      "start": 60,
+      "length": 10,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:alt:fs-idp101665920-alt",
+     "forms": [
+      "samarín"
+     ],
+     "bases": [
+      "samarín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": " Pm; geislavirkt frumefni; fast efni; og 145.“ Næst er „62; samarín; Sm; aðalflokkamálmur; fast efni; og 150,4.“ Næst er „63; e",
+      "start": 60,
+      "length": 7,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 19,
+     "moduleId": "m68842",
+     "segmentId": "m68842:alt:fs-idm272821040-alt",
+     "forms": [
+      "samarín"
+     ],
+     "bases": [
+      "samarín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "„61; prómetín; Pm; málmur; fast efni; og 145.“ Næst er „62; samarín; Sm; málmur; fast efni; og 150,4.“ Næst er „63; evrópín; Eu",
+      "start": 60,
+      "length": 7,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": -1,
+     "moduleId": "m68859",
+     "segmentId": "m68859:alt:fs-idp64991424-alt",
+     "forms": [
+      "samarín"
+     ],
+     "bases": [
+      "samarín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "„61; prómetín; Pm; málmur; fast efni; og 145.“ Næst er „62; samarín; Sm; málmur; fast efni; og 150,4.“ Næst er „63; evrópín; Eu",
+      "start": 60,
+      "length": 7,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    }
+   ],
+   "misses": []
+  },
+  {
+   "n": 64,
+   "english": [
+    "gadolinium"
+   ],
+   "official": [
+    "gadólíníum"
+   ],
+   "enSegments": 6,
+   "alreadyOfficial": 0,
+   "listed": 6,
+   "listedStrong": 5,
+   "items": [
+    {
+     "chapter": 1,
+     "moduleId": "m68667",
+     "segmentId": "m68667:para:fs-idm49120320",
+     "forms": [
+      "gadólín"
+     ],
+     "bases": [
+      "gadólín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "ull; og ókunnuglegri frumefni eins og yttríum, praseódým og gadólín. Rafhlaðan byggir á litíumjónum og ýmsum öðrum efnum, þar á",
+      "start": 60,
+      "length": 7,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 1,
+     "moduleId": "m68667",
+     "segmentId": "m68667:alt:fs-idm54034640-alt",
+     "forms": [],
+     "bases": [],
+     "near": [
+      "gadólíni (unshaped)"
+     ],
+     "excerpt": {
+      "text": "r, tini og gulli, og óalgengum frumefnum eins og yttríum og gadólíni. Íhlutir skjásins eru gerðir úr kísiloxíði, einnig þekkt se",
+      "start": 60,
+      "length": 8,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 2,
+     "moduleId": "m68695",
+     "segmentId": "m68695:alt:fs-idm413728400-alt",
+     "forms": [
+      "gadólín"
+     ],
+     "bases": [
+      "gadólín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "63; evrópín; Eu; málmur; fast efni; og 152,0.“ Næst er „64; gadólín; Gd; málmur; fast efni; og 157,3.“ Næst er „65; terbín; Tb;",
+      "start": 60,
+      "length": 7,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:alt:fs-idp101665920-alt",
+     "forms": [
+      "gadólín"
+     ],
+     "bases": [
+      "gadólín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "n; Eu; aðalflokkamálmur; fast efni; og 152,0.“ Næst er „64; gadólín; Gd; aðalflokkamálmur; fast efni; og 157,3.“ Næst er „65; t",
+      "start": 60,
+      "length": 7,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 19,
+     "moduleId": "m68842",
+     "segmentId": "m68842:alt:fs-idm272821040-alt",
+     "forms": [
+      "gadólín"
+     ],
+     "bases": [
+      "gadólín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "63; evrópín; Eu; málmur; fast efni; og 152,0.“ Næst er „64; gadólín; Gd; málmur; fast efni; og 157,3.“ Næst er „65; terbín; Tb;",
+      "start": 60,
+      "length": 7,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": -1,
+     "moduleId": "m68859",
+     "segmentId": "m68859:alt:fs-idp64991424-alt",
+     "forms": [
+      "gadólín"
+     ],
+     "bases": [
+      "gadólín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "63; evrópín; Eu; málmur; fast efni; og 152,0.“ Næst er „64; gadólín; Gd; málmur; fast efni; og 157,3.“ Næst er „65; terbín; Tb;",
+      "start": 60,
+      "length": 7,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    }
+   ],
+   "misses": []
+  },
+  {
+   "n": 68,
+   "english": [
+    "erbium"
+   ],
+   "official": [
+    "erbíum"
+   ],
+   "enSegments": 4,
+   "alreadyOfficial": 0,
+   "listed": 4,
+   "listedStrong": 4,
+   "items": [
+    {
+     "chapter": 2,
+     "moduleId": "m68695",
+     "segmentId": "m68695:alt:fs-idm413728400-alt",
+     "forms": [
+      "erbín"
+     ],
+     "bases": [
+      "erbín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "„67; hólmín; Ho; málmur; fast efni; og 164,9.“ Næst er „68; erbín; Er; málmur; fast efni; og 167,3.“ Næst er „69; túlín; Tm; ",
+      "start": 60,
+      "length": 5,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:alt:fs-idp101665920-alt",
+     "forms": [
+      "erbín"
+     ],
+     "bases": [
+      "erbín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "n; Ho; aðalflokkamálmur; fast efni; og 164,9.“ Næst er „68; erbín; Er; aðalflokkamálmur; fast efni; og 167,3.“ Næst er „69; t",
+      "start": 60,
+      "length": 5,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 19,
+     "moduleId": "m68842",
+     "segmentId": "m68842:alt:fs-idm272821040-alt",
+     "forms": [
+      "erbín"
+     ],
+     "bases": [
+      "erbín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "„67; hólmín; Ho; málmur; fast efni; og 164,9.“ Næst er „68; erbín; Er; málmur; fast efni; og 167,3.“ Næst er „69; túlín; Tm; ",
+      "start": 60,
+      "length": 5,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": -1,
+     "moduleId": "m68859",
+     "segmentId": "m68859:alt:fs-idp64991424-alt",
+     "forms": [
+      "erbín"
+     ],
+     "bases": [
+      "erbín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "„67; hólmín; Ho; málmur; fast efni; og 164,9.“ Næst er „68; erbín; Er; málmur; fast efni; og 167,3.“ Næst er „69; túlín; Tm; ",
+      "start": 60,
+      "length": 5,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    }
+   ],
+   "misses": []
+  },
+  {
+   "n": 70,
+   "english": [
+    "ytterbium"
+   ],
+   "official": [
+    "ytterbíum"
+   ],
+   "enSegments": 4,
+   "alreadyOfficial": 0,
+   "listed": 4,
+   "listedStrong": 4,
+   "items": [
+    {
+     "chapter": 2,
+     "moduleId": "m68695",
+     "segmentId": "m68695:alt:fs-idm413728400-alt",
+     "forms": [
+      "ytterbín"
+     ],
+     "bases": [
+      "ytterbín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": " „69; túlín; Tm; málmur; fast efni; og 168,9.“ Næst er „70; ytterbín; Yb; málmur; fast efni; og 173,1.“ Sá síðasti í þessari sér",
+      "start": 60,
+      "length": 8,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:alt:fs-idp101665920-alt",
+     "forms": [
+      "ytterbín"
+     ],
+     "bases": [
+      "ytterbín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "n; Tm; aðalflokkamálmur; fast efni; og 168,9.“ Næst er „70; ytterbín; Yb; aðalflokkamálmur; fast efni; og 173,1.“ Síðasti reitur",
+      "start": 60,
+      "length": 8,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 19,
+     "moduleId": "m68842",
+     "segmentId": "m68842:alt:fs-idm272821040-alt",
+     "forms": [
+      "ytterbín"
+     ],
+     "bases": [
+      "ytterbín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": " „69; túlín; Tm; málmur; fast efni; og 168,9.“ Næst er „70; ytterbín; Yb; málmur; fast efni; og 173,1.“ Síðast í þessari sérstök",
+      "start": 60,
+      "length": 8,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": -1,
+     "moduleId": "m68859",
+     "segmentId": "m68859:alt:fs-idp64991424-alt",
+     "forms": [
+      "ytterbín"
+     ],
+     "bases": [
+      "ytterbín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": " „69; túlín; Tm; málmur; fast efni; og 168,9.“ Næst er „70; ytterbín; Yb; málmur; fast efni; og 173,1.“ Sá síðasti í þessari sér",
+      "start": 60,
+      "length": 8,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    }
+   ],
+   "misses": []
+  },
+  {
+   "n": 91,
+   "english": [
+    "protactinium"
+   ],
+   "official": [
+    "prótaktíníum"
+   ],
+   "enSegments": 4,
+   "alreadyOfficial": 0,
+   "listed": 4,
+   "listedStrong": 4,
+   "items": [
+    {
+     "chapter": 2,
+     "moduleId": "m68695",
+     "segmentId": "m68695:alt:fs-idm413728400-alt",
+     "forms": [
+      "prótaktín"
+     ],
+     "bases": [
+      "prótaktín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": " „90; þórín; Th; málmur; fast efni; og 232,0.“ Næst er „91; prótaktín; Pa; málmur; fast efni; og 231,0.“ Næst er „92; úran; U; má",
+      "start": 60,
+      "length": 9,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:alt:fs-idp101665920-alt",
+     "forms": [
+      "prótaktín"
+     ],
+     "bases": [
+      "prótaktín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "h; geislavirkt frumefni; fast efni; og 232,0.“ Næst er „91; prótaktín; Pa; geislavirkt frumefni; fast efni; og 231,0.“ Næst er „9",
+      "start": 60,
+      "length": 9,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 19,
+     "moduleId": "m68842",
+     "segmentId": "m68842:alt:fs-idm272821040-alt",
+     "forms": [
+      "prótaktín"
+     ],
+     "bases": [
+      "prótaktín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": " „90; þórín; Th; málmur; fast efni; og 232,0.“ Næst er „91; prótaktín; Pa; málmur; fast efni; og 231,0.“ Næst er „92; úran; U; má",
+      "start": 60,
+      "length": 9,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": -1,
+     "moduleId": "m68859",
+     "segmentId": "m68859:alt:fs-idp64991424-alt",
+     "forms": [
+      "prótaktín"
+     ],
+     "bases": [
+      "prótaktín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": " „90; þórín; Th; málmur; fast efni; og 232,0.“ Næst er „91; prótaktín; Pa; málmur; fast efni; og 231,0.“ Næst er „92; úran; U; má",
+      "start": 60,
+      "length": 9,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    }
+   ],
+   "misses": []
+  },
+  {
+   "n": 96,
+   "english": [
+    "curium"
+   ],
+   "official": [
+    "curíum"
+   ],
+   "enSegments": 6,
+   "alreadyOfficial": 0,
+   "listed": 6,
+   "listedStrong": 6,
+   "items": [
+    {
+     "chapter": 2,
+     "moduleId": "m68695",
+     "segmentId": "m68695:alt:fs-idm413728400-alt",
+     "forms": [
+      "kúríum"
+     ],
+     "bases": [
+      "kúríum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "„95; ameríkín; Am; málmur; fast efni; og 243.“ Næst er „96; kúríum; Cm; málmur; fast efni; og 247.“ Næst er „97; berkelín; Bk;",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:alt:fs-idp101665920-alt",
+     "forms": [
+      "kúríum"
+     ],
+     "bases": [
+      "kúríum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": " Am; geislavirkt frumefni; fast efni; og 243.“ Næst er „96; kúríum; Cm; geislavirkt frumefni; fast efni; og 247.“ Næst er „97;",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 19,
+     "moduleId": "m68842",
+     "segmentId": "m68842:alt:fs-idm272821040-alt",
+     "forms": [
+      "kúríum"
+     ],
+     "bases": [
+      "kúríum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "„95; amerísín; Am; málmur; fast efni; og 243.“ Næst er „96; kúríum; Cm; málmur; fast efni; og 247.“ Næst er „97; berkelín; Bk;",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 21,
+     "moduleId": "m68856",
+     "segmentId": "m68856:table-summary:fs-idm128006320-summary",
+     "forms": [
+      "kúríum"
+     ],
+     "bases": [
+      "kúríum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "g „Hvarf“. Undir dálkinum „Nafn“ er eftirfarandi: ameríkín, kúríum, kaliforníum, einsteiníum, mendelevíum, nóbelíum, rutherfor",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 21,
+     "moduleId": "m68856",
+     "segmentId": "m68856:entry:auto-33",
+     "forms": [
+      "kúrín"
+     ],
+     "bases": [
+      "kúrín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "kúrín",
+      "start": 0,
+      "length": 5,
+      "cutBefore": false,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": -1,
+     "moduleId": "m68859",
+     "segmentId": "m68859:alt:fs-idp64991424-alt",
+     "forms": [
+      "kúríum"
+     ],
+     "bases": [
+      "kúríum"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "„95; amerísín; Am; málmur; fast efni; og 243.“ Næst er „96; kúríum; Cm; málmur; fast efni; og 247.“ Næst er „97; berkelín; Bk;",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    }
+   ],
+   "misses": []
+  },
+  {
+   "n": 97,
+   "english": [
+    "berkelium"
+   ],
+   "official": [
+    "berkelíum"
+   ],
+   "enSegments": 5,
+   "alreadyOfficial": 0,
+   "listed": 5,
+   "listedStrong": 5,
+   "items": [
+    {
+     "chapter": 2,
+     "moduleId": "m68695",
+     "segmentId": "m68695:alt:fs-idm413728400-alt",
+     "forms": [
+      "berkelín"
+     ],
+     "bases": [
+      "berkelín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "r „96; kúríum; Cm; málmur; fast efni; og 247.“ Næst er „97; berkelín; Bk; málmur; fast efni; og 247.“ Næst er „98; kalifornín; C",
+      "start": 60,
+      "length": 8,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:alt:fs-idp101665920-alt",
+     "forms": [
+      "berkelín"
+     ],
+     "bases": [
+      "berkelín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": " Cm; geislavirkt frumefni; fast efni; og 247.“ Næst er „97; berkelín; Bk; geislavirkt frumefni; fast efni; og 247.“ Næst er „98;",
+      "start": 60,
+      "length": 8,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 19,
+     "moduleId": "m68842",
+     "segmentId": "m68842:alt:fs-idm272821040-alt",
+     "forms": [
+      "berkelín"
+     ],
+     "bases": [
+      "berkelín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "r „96; kúríum; Cm; málmur; fast efni; og 247.“ Næst er „97; berkelín; Bk; málmur; fast efni; og 247.“ Næst er „98; kalifornín; C",
+      "start": 60,
+      "length": 8,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 21,
+     "moduleId": "m68856",
+     "segmentId": "m68856:problem:fs-idm202190128",
+     "forms": [
+      "berkelín"
+     ],
+     "bases": [
+      "berkelín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "(a) berkelín-244, framleitt með hvarfi Am-241 og He-4",
+      "start": 4,
+      "length": 8,
+      "cutBefore": false,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": -1,
+     "moduleId": "m68859",
+     "segmentId": "m68859:alt:fs-idp64991424-alt",
+     "forms": [
+      "berkelín"
+     ],
+     "bases": [
+      "berkelín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "r „96; kúríum; Cm; málmur; fast efni; og 247.“ Næst er „97; berkelín; Bk; málmur; fast efni; og 247.“ Næst er „98; kalifornín; C",
+      "start": 60,
+      "length": 8,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    }
+   ],
+   "misses": []
+  },
+  {
+   "n": 100,
+   "english": [
+    "fermium"
+   ],
+   "official": [
+    "fermíum"
+   ],
+   "enSegments": 5,
+   "alreadyOfficial": 0,
+   "listed": 5,
+   "listedStrong": 5,
+   "items": [
+    {
+     "chapter": 2,
+     "moduleId": "m68695",
+     "segmentId": "m68695:alt:fs-idm413728400-alt",
+     "forms": [
+      "fermín"
+     ],
+     "bases": [
+      "fermín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "; einsteinín; Es; málmur; fast efni; og 252.“ Næst er „100; fermín; Fm; málmur; fast efni; og 257.“ Næst er „101; mendelevín; ",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:alt:fs-idp101665920-alt",
+     "forms": [
+      "fermín"
+     ],
+     "bases": [
+      "fermín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "Es; geislavirkt frumefni; fast efni; og 252.“ Næst er „100; fermín; Fm; geislavirkt frumefni; fast efni; og 257.“ Næst er „101",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 19,
+     "moduleId": "m68842",
+     "segmentId": "m68842:alt:fs-idm272821040-alt",
+     "forms": [
+      "fermín"
+     ],
+     "bases": [
+      "fermín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "; einsteinín; Es; málmur; fast efni; og 252.“ Næst er „100; fermín; Fm; málmur; fast efni; og 257.“ Næst er „101; mendelevín; ",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 21,
+     "moduleId": "m68856",
+     "segmentId": "m68856:problem:fs-idm32448240",
+     "forms": [
+      "fermín"
+     ],
+     "bases": [
+      "fermín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "(b) fermín-254, framleitt með hvarfi Pu-239 við mikinn fjölda nifteind",
+      "start": 4,
+      "length": 6,
+      "cutBefore": false,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": -1,
+     "moduleId": "m68859",
+     "segmentId": "m68859:alt:fs-idp64991424-alt",
+     "forms": [
+      "fermín"
+     ],
+     "bases": [
+      "fermín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "; einsteinín; Es; málmur; fast efni; og 252.“ Næst er „100; fermín; Fm; málmur; fast efni; og 257.“ Næst er „101; mendelevín; ",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    }
+   ],
+   "misses": []
+  },
+  {
+   "n": 105,
+   "english": [
+    "dubnium"
+   ],
+   "official": [
+    "dubníum"
+   ],
+   "enSegments": 5,
+   "alreadyOfficial": 0,
+   "listed": 5,
+   "listedStrong": 5,
+   "items": [
+    {
+     "chapter": 2,
+     "moduleId": "m68695",
+     "segmentId": "m68695:alt:fs-idm413728400-alt",
+     "forms": [
+      "dubnín"
+     ],
+     "bases": [
+      "dubnín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": " Rf; málmur; fast efni; og 267.“ Flokkur 5 inniheldur „105; dubnín; Db; málmur; fast efni; og 270.“ Flokkur 6 inniheldur „106;",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:alt:fs-idp101665920-alt",
+     "forms": [
+      "dubnín"
+     ],
+     "bases": [
+      "dubnín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "liðarmálmur; fast efni; og 267.“ Flokkur 5 inniheldur „105; dubnín; Db; hliðarmálmur og innri hliðarmálmur; fast efni; og 270.",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 19,
+     "moduleId": "m68842",
+     "segmentId": "m68842:alt:fs-idm272821040-alt",
+     "forms": [
+      "dubnín"
+     ],
+     "bases": [
+      "dubnín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "fordín; Rf; málmur; fast efni; og 267.“ Í flokki 5 er „105; dubnín; Db; málmur; fast efni; og 270.“ Í flokki 6 er „106; seabor",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 21,
+     "moduleId": "m68856",
+     "segmentId": "m68856:problem:fs-idm30976288",
+     "forms": [
+      "dubnín"
+     ],
+     "bases": [
+      "dubnín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "(d) dubnín-260, framleitt með hvarfi Cf-249 og N-15",
+      "start": 4,
+      "length": 6,
+      "cutBefore": false,
+      "cutAfter": false
+     }
+    },
+    {
+     "chapter": -1,
+     "moduleId": "m68859",
+     "segmentId": "m68859:alt:fs-idp64991424-alt",
+     "forms": [
+      "dubnín"
+     ],
+     "bases": [
+      "dubnín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": " Rf; málmur; fast efni; og 267.“ Flokkur 5 inniheldur „105; dubnín; Db; málmur; fast efni; og 270.“ Flokkur 6 inniheldur „106;",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    }
+   ],
+   "misses": []
+  },
+  {
+   "n": 107,
+   "english": [
+    "bohrium"
+   ],
+   "official": [
+    "bohríum"
+   ],
+   "enSegments": 4,
+   "alreadyOfficial": 0,
+   "listed": 4,
+   "listedStrong": 4,
+   "items": [
+    {
+     "chapter": 2,
+     "moduleId": "m68695",
+     "segmentId": "m68695:alt:fs-idm413728400-alt",
+     "forms": [
+      "bohrín"
+     ],
+     "bases": [
+      "bohrín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": " Sg; málmur; fast efni; og 271.“ Flokkur 7 inniheldur „107; bohrín; Bh; málmur; fast efni; og 270.“ Flokkur 8 inniheldur „108;",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:alt:fs-idp101665920-alt",
+     "forms": [
+      "bohrín"
+     ],
+     "bases": [
+      "bohrín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "liðarmálmur; fast efni; og 271.“ Flokkur 7 inniheldur „107; bohrín; Bh; hliðarmálmur og innri hliðarmálmur; fast efni; og 270.",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 19,
+     "moduleId": "m68842",
+     "segmentId": "m68842:alt:fs-idm272821040-alt",
+     "forms": [
+      "bohrín"
+     ],
+     "bases": [
+      "bohrín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "borgín; Sg; málmur; fast efni; og 271.“ Í flokki 7 er „107; bohrín; Bh; málmur; fast efni; og 270.“ Í flokki 8 er „108; hassín",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": -1,
+     "moduleId": "m68859",
+     "segmentId": "m68859:alt:fs-idp64991424-alt",
+     "forms": [
+      "bohrín"
+     ],
+     "bases": [
+      "bohrín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": " Sg; málmur; fast efni; og 271.“ Flokkur 7 inniheldur „107; bohrín; Bh; málmur; fast efni; og 270.“ Flokkur 8 inniheldur „108;",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    }
+   ],
+   "misses": []
+  },
+  {
+   "n": 108,
+   "english": [
+    "hassium"
+   ],
+   "official": [
+    "hassíum"
+   ],
+   "enSegments": 4,
+   "alreadyOfficial": 0,
+   "listed": 4,
+   "listedStrong": 4,
+   "items": [
+    {
+     "chapter": 2,
+     "moduleId": "m68695",
+     "segmentId": "m68695:alt:fs-idm413728400-alt",
+     "forms": [
+      "hassín"
+     ],
+     "bases": [
+      "hassín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": " Bh; málmur; fast efni; og 270.“ Flokkur 8 inniheldur „108; hassín; Hs; málmur; fast efni; og 277.“ Flokkur 9 inniheldur „109;",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:alt:fs-idp101665920-alt",
+     "forms": [
+      "hassín"
+     ],
+     "bases": [
+      "hassín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "liðarmálmur; fast efni; og 270.“ Flokkur 8 inniheldur „108; hassín; Hs; hliðarmálmur og innri hliðarmálmur; fast efni; og 277.",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 19,
+     "moduleId": "m68842",
+     "segmentId": "m68842:alt:fs-idm272821040-alt",
+     "forms": [
+      "hassín"
+     ],
+     "bases": [
+      "hassín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "bohrín; Bh; málmur; fast efni; og 270.“ Í flokki 8 er „108; hassín; Hs; málmur; fast efni; og 277.“ Í flokki 9 er „109; meitne",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": -1,
+     "moduleId": "m68859",
+     "segmentId": "m68859:alt:fs-idp64991424-alt",
+     "forms": [
+      "hassín"
+     ],
+     "bases": [
+      "hassín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": " Bh; málmur; fast efni; og 270.“ Flokkur 8 inniheldur „108; hassín; Hs; málmur; fast efni; og 277.“ Flokkur 9 inniheldur „109;",
+      "start": 60,
+      "length": 6,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    }
+   ],
+   "misses": []
+  },
+  {
+   "n": 110,
+   "english": [
+    "darmstadtium"
+   ],
+   "official": [
+    "darmstadtíum"
+   ],
+   "enSegments": 4,
+   "alreadyOfficial": 0,
+   "listed": 4,
+   "listedStrong": 4,
+   "items": [
+    {
+     "chapter": 2,
+     "moduleId": "m68695",
+     "segmentId": "m68695:alt:fs-idm413728400-alt",
+     "forms": [
+      "darmstadtín"
+     ],
+     "bases": [
+      "darmstadtín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": " tilgreint; fast efni; og 276.“ Flokkur 10 inniheldur „110; darmstadtín; Ds; ekki tilgreint; fast efni; og 281.“ Flokkur 11 innihel",
+      "start": 60,
+      "length": 11,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 18,
+     "moduleId": "m68829",
+     "segmentId": "m68829:alt:fs-idp101665920-alt",
+     "forms": [
+      "darmstadtín"
+     ],
+     "bases": [
+      "darmstadtín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "t frumefni; fast efni; og 276.“ Flokkur 10 inniheldur „110; darmstadtín; Ds; geislavirkt frumefni; fast efni; og 281.“ Flokkur 11 i",
+      "start": 60,
+      "length": 11,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": 19,
+     "moduleId": "m68842",
+     "segmentId": "m68842:alt:fs-idm272821040-alt",
+     "forms": [
+      "darmstadtín"
+     ],
+     "bases": [
+      "darmstadtín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": "t; ekki tilgreint; fast efni; og 276.“ Í flokki 10 er „110; darmstadtín; Ds; ekki tilgreint; fast efni; og 281.“ Í flokki 11 er „11",
+      "start": 60,
+      "length": 11,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    },
+    {
+     "chapter": -1,
+     "moduleId": "m68859",
+     "segmentId": "m68859:alt:fs-idp64991424-alt",
+     "forms": [
+      "darmstadtín"
+     ],
+     "bases": [
+      "darmstadtín"
+     ],
+     "near": [],
+     "excerpt": {
+      "text": " tilgreint; fast efni; og 276.“ Flokkur 10 inniheldur „110; darmstadtín; Ds; ekki tilgreint; fast efni; og 281.“ Flokkur 11 innihel",
+      "start": 60,
+      "length": 11,
+      "cutBefore": true,
+      "cutAfter": true
+     }
+    }
+   ],
+   "misses": []
+  }
+ ]
+}

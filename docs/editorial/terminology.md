@@ -61,6 +61,7 @@ Once a term is chosen:
 | Íðorðabankinn | https://idord.arnastofnun.is/ | Official Icelandic term database |
 | Orðabanki HÍ | https://ordabanki.hi.is/ | University of Iceland terminology |
 | Orðabók.is | https://ordabok.is/ | General Icelandic dictionary |
+| Vísindavefur 89909 | https://www.visindavefur.is/svar.php?id=89909 | **Official list of element names for chemistry** ([USER] 2026-11-20) → `docs/decisions/2026-11-20-official-element-names-visindavefur.md` |
 
 ### Secondary Sources
 
@@ -153,6 +154,8 @@ Once a term is chosen:
 | halogen | halógen | | Íðorðabankinn |
 | noble gas | eðallofttegund | | Íðorðabankinn |
 | transition metal | siðarmálmur | | Íðorðabankinn |
+
+Element names themselves follow the official list (Vísindavefur 89909), not this table → `docs/decisions/2026-11-20-official-element-names-visindavefur.md`.
 
 ## Adding New Terms
 

@@ -1,0 +1,959 @@
+{
+ "_meta": {
+  "source": "https://www.visindavefur.is/svar.php?id=89909",
+  "title": "Hvað heita öll frumefnin á íslensku?",
+  "published": "2026-11-13",
+  "updated": "2026-11-18",
+  "fetched": "2026-11-20",
+  "parsedBy": "instruments/compare.py (HTML <td> cells, NFC); the page carries the table twice, both copies identical",
+  "authority": "[USER] 2026-11-20: the official list of Icelandic element names"
+ },
+ "elements": [
+  {
+   "n": 1,
+   "symbol": "H",
+   "english": "hydrogen",
+   "official": [
+    "vetni"
+   ]
+  },
+  {
+   "n": 2,
+   "symbol": "He",
+   "english": "helium",
+   "official": [
+    "helíum"
+   ]
+  },
+  {
+   "n": 3,
+   "symbol": "Li",
+   "english": "lithium",
+   "official": [
+    "liþíum"
+   ]
+  },
+  {
+   "n": 4,
+   "symbol": "Be",
+   "english": "beryllium",
+   "official": [
+    "beryllíum"
+   ]
+  },
+  {
+   "n": 5,
+   "symbol": "B",
+   "english": "boron",
+   "official": [
+    "bór"
+   ]
+  },
+  {
+   "n": 6,
+   "symbol": "C",
+   "english": "carbon",
+   "official": [
+    "kolefni"
+   ]
+  },
+  {
+   "n": 7,
+   "symbol": "N",
+   "english": "nitrogen",
+   "official": [
+    "köfnunarefni",
+    "nitur"
+   ]
+  },
+  {
+   "n": 8,
+   "symbol": "O",
+   "english": "oxygen",
+   "official": [
+    "súrefni"
+   ]
+  },
+  {
+   "n": 9,
+   "symbol": "F",
+   "english": "fluorine",
+   "official": [
+    "flúor"
+   ]
+  },
+  {
+   "n": 10,
+   "symbol": "Ne",
+   "english": "neon",
+   "official": [
+    "neon"
+   ]
+  },
+  {
+   "n": 11,
+   "symbol": "Na",
+   "english": "sodium (natrium)",
+   "official": [
+    "natríum"
+   ]
+  },
+  {
+   "n": 12,
+   "symbol": "Mg",
+   "english": "magnesium",
+   "official": [
+    "magnesíum"
+   ]
+  },
+  {
+   "n": 13,
+   "symbol": "Al",
+   "english": "aluminium (aluminum)",
+   "official": [
+    "ál"
+   ]
+  },
+  {
+   "n": 14,
+   "symbol": "Si",
+   "english": "silicon",
+   "official": [
+    "kísill"
+   ]
+  },
+  {
+   "n": 15,
+   "symbol": "P",
+   "english": "phosphorus",
+   "official": [
+    "fosfór"
+   ]
+  },
+  {
+   "n": 16,
+   "symbol": "S",
+   "english": "sulfur",
+   "official": [
+    "brennisteinn"
+   ]
+  },
+  {
+   "n": 17,
+   "symbol": "Cl",
+   "english": "chlorine",
+   "official": [
+    "klór"
+   ]
+  },
+  {
+   "n": 18,
+   "symbol": "Ar",
+   "english": "argon",
+   "official": [
+    "argon"
+   ]
+  },
+  {
+   "n": 19,
+   "symbol": "K",
+   "english": "potassium (kalium)",
+   "official": [
+    "kalíum"
+   ]
+  },
+  {
+   "n": 20,
+   "symbol": "Ca",
+   "english": "calcium",
+   "official": [
+    "kalsíum"
+   ]
+  },
+  {
+   "n": 21,
+   "symbol": "Sc",
+   "english": "scandium",
+   "official": [
+    "skandíum"
+   ]
+  },
+  {
+   "n": 22,
+   "symbol": "Ti",
+   "english": "titanium",
+   "official": [
+    "títan"
+   ]
+  },
+  {
+   "n": 23,
+   "symbol": "V",
+   "english": "vanadium",
+   "official": [
+    "vanadíum"
+   ]
+  },
+  {
+   "n": 24,
+   "symbol": "Cr",
+   "english": "chromium",
+   "official": [
+    "króm"
+   ]
+  },
+  {
+   "n": 25,
+   "symbol": "Mn",
+   "english": "manganese",
+   "official": [
+    "mangan"
+   ]
+  },
+  {
+   "n": 26,
+   "symbol": "Fe",
+   "english": "iron (ferrum)",
+   "official": [
+    "járn"
+   ]
+  },
+  {
+   "n": 27,
+   "symbol": "Co",
+   "english": "cobalt",
+   "official": [
+    "kóbalt"
+   ]
+  },
+  {
+   "n": 28,
+   "symbol": "Ni",
+   "english": "nickel",
+   "official": [
+    "nikkel"
+   ]
+  },
+  {
+   "n": 29,
+   "symbol": "Cu",
+   "english": "copper (cuprum)",
+   "official": [
+    "kopar"
+   ]
+  },
+  {
+   "n": 30,
+   "symbol": "Zn",
+   "english": "zinc",
+   "official": [
+    "sink"
+   ]
+  },
+  {
+   "n": 31,
+   "symbol": "Ga",
+   "english": "gallium",
+   "official": [
+    "gallíum"
+   ]
+  },
+  {
+   "n": 32,
+   "symbol": "Ge",
+   "english": "germanium",
+   "official": [
+    "germaníum"
+   ]
+  },
+  {
+   "n": 33,
+   "symbol": "As",
+   "english": "arsenic",
+   "official": [
+    "arsen"
+   ]
+  },
+  {
+   "n": 34,
+   "symbol": "Se",
+   "english": "selenium",
+   "official": [
+    "selen"
+   ]
+  },
+  {
+   "n": 35,
+   "symbol": "Br",
+   "english": "bromine",
+   "official": [
+    "bróm"
+   ]
+  },
+  {
+   "n": 36,
+   "symbol": "Kr",
+   "english": "krypton",
+   "official": [
+    "krypton"
+   ]
+  },
+  {
+   "n": 37,
+   "symbol": "Rb",
+   "english": "rubidium",
+   "official": [
+    "rúbidíum"
+   ]
+  },
+  {
+   "n": 38,
+   "symbol": "Sr",
+   "english": "strontium",
+   "official": [
+    "strontíum"
+   ]
+  },
+  {
+   "n": 39,
+   "symbol": "Y",
+   "english": "yttrium",
+   "official": [
+    "yttríum"
+   ]
+  },
+  {
+   "n": 40,
+   "symbol": "Zr",
+   "english": "zirconium",
+   "official": [
+    "sirkoníum"
+   ]
+  },
+  {
+   "n": 41,
+   "symbol": "Nb",
+   "english": "niobium",
+   "official": [
+    "níóbíum"
+   ]
+  },
+  {
+   "n": 42,
+   "symbol": "Mo",
+   "english": "molybdenum",
+   "official": [
+    "mólýbden"
+   ]
+  },
+  {
+   "n": 43,
+   "symbol": "Tc *",
+   "english": "technetium",
+   "official": [
+    "teknetíum"
+   ]
+  },
+  {
+   "n": 44,
+   "symbol": "Ru",
+   "english": "ruthenium",
+   "official": [
+    "rúþeníum"
+   ]
+  },
+  {
+   "n": 45,
+   "symbol": "Rh",
+   "english": "rhodium",
+   "official": [
+    "ródíum"
+   ]
+  },
+  {
+   "n": 46,
+   "symbol": "Pd",
+   "english": "palladium",
+   "official": [
+    "palladíum"
+   ]
+  },
+  {
+   "n": 47,
+   "symbol": "Ag",
+   "english": "silver (argentum)",
+   "official": [
+    "silfur"
+   ]
+  },
+  {
+   "n": 48,
+   "symbol": "Cd",
+   "english": "cadmium",
+   "official": [
+    "kadmíum"
+   ]
+  },
+  {
+   "n": 49,
+   "symbol": "In",
+   "english": "indium",
+   "official": [
+    "indíum"
+   ]
+  },
+  {
+   "n": 50,
+   "symbol": "Sn",
+   "english": "tin (stannum)",
+   "official": [
+    "tin"
+   ]
+  },
+  {
+   "n": 51,
+   "symbol": "Sb",
+   "english": "antimony (stibium)",
+   "official": [
+    "antímon"
+   ]
+  },
+  {
+   "n": 52,
+   "symbol": "Te",
+   "english": "tellurium",
+   "official": [
+    "tellúr"
+   ]
+  },
+  {
+   "n": 53,
+   "symbol": "I",
+   "english": "iodine",
+   "official": [
+    "joð"
+   ]
+  },
+  {
+   "n": 54,
+   "symbol": "Xe",
+   "english": "xenon",
+   "official": [
+    "xenon"
+   ]
+  },
+  {
+   "n": 55,
+   "symbol": "Cs",
+   "english": "caesium (cesium)",
+   "official": [
+    "sesíum"
+   ]
+  },
+  {
+   "n": 56,
+   "symbol": "Ba",
+   "english": "barium",
+   "official": [
+    "baríum"
+   ]
+  },
+  {
+   "n": 57,
+   "symbol": "La",
+   "english": "lanthanum",
+   "official": [
+    "lanþan"
+   ]
+  },
+  {
+   "n": 58,
+   "symbol": "Ce",
+   "english": "cerium",
+   "official": [
+    "seríum"
+   ]
+  },
+  {
+   "n": 59,
+   "symbol": "Pr",
+   "english": "praseodymium",
+   "official": [
+    "praseódýmíum"
+   ]
+  },
+  {
+   "n": 60,
+   "symbol": "Nd",
+   "english": "neodymium",
+   "official": [
+    "neódýmíum"
+   ]
+  },
+  {
+   "n": 61,
+   "symbol": "Pm *",
+   "english": "promethium",
+   "official": [
+    "prómeþíum"
+   ]
+  },
+  {
+   "n": 62,
+   "symbol": "Sm",
+   "english": "samarium",
+   "official": [
+    "samaríum"
+   ]
+  },
+  {
+   "n": 63,
+   "symbol": "Eu",
+   "english": "europium",
+   "official": [
+    "evrópíum"
+   ]
+  },
+  {
+   "n": 64,
+   "symbol": "Gd",
+   "english": "gadolinium",
+   "official": [
+    "gadólíníum"
+   ]
+  },
+  {
+   "n": 65,
+   "symbol": "Tb",
+   "english": "terbium",
+   "official": [
+    "terbíum"
+   ]
+  },
+  {
+   "n": 66,
+   "symbol": "Dy",
+   "english": "dysprosium",
+   "official": [
+    "dysprósíum"
+   ]
+  },
+  {
+   "n": 67,
+   "symbol": "Ho",
+   "english": "holmium",
+   "official": [
+    "hólmíum"
+   ]
+  },
+  {
+   "n": 68,
+   "symbol": "Er",
+   "english": "erbium",
+   "official": [
+    "erbíum"
+   ]
+  },
+  {
+   "n": 69,
+   "symbol": "Tm",
+   "english": "thulium",
+   "official": [
+    "túlíum"
+   ]
+  },
+  {
+   "n": 70,
+   "symbol": "Yb",
+   "english": "ytterbium",
+   "official": [
+    "ytterbíum"
+   ]
+  },
+  {
+   "n": 71,
+   "symbol": "Lu",
+   "english": "lutetium",
+   "official": [
+    "lútetíum"
+   ]
+  },
+  {
+   "n": 72,
+   "symbol": "Hf",
+   "english": "hafnium",
+   "official": [
+    "hafníum"
+   ]
+  },
+  {
+   "n": 73,
+   "symbol": "Ta",
+   "english": "tantalum",
+   "official": [
+    "tantal"
+   ]
+  },
+  {
+   "n": 74,
+   "symbol": "W",
+   "english": "tungsten",
+   "official": [
+    "wolfram",
+    "tungsten"
+   ]
+  },
+  {
+   "n": 75,
+   "symbol": "Re",
+   "english": "rhenium",
+   "official": [
+    "reníum"
+   ]
+  },
+  {
+   "n": 76,
+   "symbol": "Os",
+   "english": "osmium",
+   "official": [
+    "osmíum"
+   ]
+  },
+  {
+   "n": 77,
+   "symbol": "Ir",
+   "english": "iridium",
+   "official": [
+    "iridíum"
+   ]
+  },
+  {
+   "n": 78,
+   "symbol": "Pt",
+   "english": "platinum",
+   "official": [
+    "platína"
+   ]
+  },
+  {
+   "n": 79,
+   "symbol": "Au",
+   "english": "gold (aurum)",
+   "official": [
+    "gull"
+   ]
+  },
+  {
+   "n": 80,
+   "symbol": "Hg",
+   "english": "mercury (hydrargyrum)",
+   "official": [
+    "kvikasilfur"
+   ]
+  },
+  {
+   "n": 81,
+   "symbol": "Tl",
+   "english": "thallium",
+   "official": [
+    "þallíum"
+   ]
+  },
+  {
+   "n": 82,
+   "symbol": "Pb",
+   "english": "lead (plumbum)",
+   "official": [
+    "blý"
+   ]
+  },
+  {
+   "n": 83,
+   "symbol": "Bi",
+   "english": "bismuth",
+   "official": [
+    "bismút"
+   ]
+  },
+  {
+   "n": 84,
+   "symbol": "Po *",
+   "english": "polonium",
+   "official": [
+    "póloníum"
+   ]
+  },
+  {
+   "n": 85,
+   "symbol": "At *",
+   "english": "astatine",
+   "official": [
+    "astatín"
+   ]
+  },
+  {
+   "n": 86,
+   "symbol": "Rn *",
+   "english": "radon",
+   "official": [
+    "radon"
+   ]
+  },
+  {
+   "n": 87,
+   "symbol": "Fr *",
+   "english": "francium",
+   "official": [
+    "fransíum"
+   ]
+  },
+  {
+   "n": 88,
+   "symbol": "Ra *",
+   "english": "radium",
+   "official": [
+    "radíum"
+   ]
+  },
+  {
+   "n": 89,
+   "symbol": "Ac *",
+   "english": "actinium",
+   "official": [
+    "aktíníum"
+   ]
+  },
+  {
+   "n": 90,
+   "symbol": "Th *",
+   "english": "thorium",
+   "official": [
+    "þóríum"
+   ]
+  },
+  {
+   "n": 91,
+   "symbol": "Pa *",
+   "english": "protactinium",
+   "official": [
+    "prótaktíníum"
+   ]
+  },
+  {
+   "n": 92,
+   "symbol": "U *",
+   "english": "uranium",
+   "official": [
+    "úran"
+   ]
+  },
+  {
+   "n": 93,
+   "symbol": "Np *",
+   "english": "neptunium",
+   "official": [
+    "neptúníum"
+   ]
+  },
+  {
+   "n": 94,
+   "symbol": "Pu *",
+   "english": "plutonium",
+   "official": [
+    "plútóníum"
+   ]
+  },
+  {
+   "n": 95,
+   "symbol": "Am *",
+   "english": "americium",
+   "official": [
+    "ameríkíum"
+   ]
+  },
+  {
+   "n": 96,
+   "symbol": "Cm *",
+   "english": "curium",
+   "official": [
+    "curíum"
+   ]
+  },
+  {
+   "n": 97,
+   "symbol": "Bk *",
+   "english": "berkelium",
+   "official": [
+    "berkelíum"
+   ]
+  },
+  {
+   "n": 98,
+   "symbol": "Cf *",
+   "english": "californium",
+   "official": [
+    "kaliforníum"
+   ]
+  },
+  {
+   "n": 99,
+   "symbol": "Es *",
+   "english": "einsteinium",
+   "official": [
+    "einsteiníum"
+   ]
+  },
+  {
+   "n": 100,
+   "symbol": "Fm *",
+   "english": "fermium",
+   "official": [
+    "fermíum"
+   ]
+  },
+  {
+   "n": 101,
+   "symbol": "Md *",
+   "english": "mendelevium",
+   "official": [
+    "mendelevíum"
+   ]
+  },
+  {
+   "n": 102,
+   "symbol": "No *",
+   "english": "nobelium",
+   "official": [
+    "nóbelíum"
+   ]
+  },
+  {
+   "n": 103,
+   "symbol": "Lr *",
+   "english": "lawrencium",
+   "official": [
+    "lawrensíum"
+   ]
+  },
+  {
+   "n": 104,
+   "symbol": "Rf *",
+   "english": "rutherfordium",
+   "official": [
+    "rutherfordíum"
+   ]
+  },
+  {
+   "n": 105,
+   "symbol": "Db *",
+   "english": "dubnium",
+   "official": [
+    "dubníum"
+   ]
+  },
+  {
+   "n": 106,
+   "symbol": "Sg *",
+   "english": "seaborgium",
+   "official": [
+    "seaborgíum"
+   ]
+  },
+  {
+   "n": 107,
+   "symbol": "Bh *",
+   "english": "bohrium",
+   "official": [
+    "bohríum"
+   ]
+  },
+  {
+   "n": 108,
+   "symbol": "Hs *",
+   "english": "hassium",
+   "official": [
+    "hassíum"
+   ]
+  },
+  {
+   "n": 109,
+   "symbol": "Mt *",
+   "english": "meitnerium",
+   "official": [
+    "meitneríum"
+   ]
+  },
+  {
+   "n": 110,
+   "symbol": "Ds *",
+   "english": "darmstadtium",
+   "official": [
+    "darmstadtíum"
+   ]
+  },
+  {
+   "n": 111,
+   "symbol": "Rg *",
+   "english": "roentgenium",
+   "official": [
+    "röntgeníum"
+   ]
+  },
+  {
+   "n": 112,
+   "symbol": "Cn *",
+   "english": "copernicium",
+   "official": [
+    "kópernikíum"
+   ]
+  },
+  {
+   "n": 113,
+   "symbol": "Nh *",
+   "english": "nihonium",
+   "official": [
+    "níhoníum"
+   ]
+  },
+  {
+   "n": 114,
+   "symbol": "Fl *",
+   "english": "flerovium",
+   "official": [
+    "fleróvíum"
+   ]
+  },
+  {
+   "n": 115,
+   "symbol": "Mc *",
+   "english": "moscovium",
+   "official": [
+    "moskóvíum"
+   ]
+  },
+  {
+   "n": 116,
+   "symbol": "Lv *",
+   "english": "livermorium",
+   "official": [
+    "livermoríum"
+   ]
+  },
+  {
+   "n": 117,
+   "symbol": "Ts *",
+   "english": "tennessine",
+   "official": [
+    "tennessín"
+   ]
+  },
+  {
+   "n": 118,
+   "symbol": "Og *",
+   "english": "oganesson",
+   "official": [
+    "oganesson"
+   ]
+  }
+ ]
+}

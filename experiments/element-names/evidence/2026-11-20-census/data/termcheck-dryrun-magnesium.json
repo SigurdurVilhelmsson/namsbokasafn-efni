@@ -1,0 +1,4054 @@
+{
+ "_meta": {
+  "measured": "2026-11-21",
+  "book": "efnafraedi-2e",
+  "prodHead": "844f13d2f",
+  "readOnly": true,
+  "method": "the entries were added to an in-memory copy of the database (file opened read-only, serialized, reopened from the buffer); the file's size and mtime were unchanged after the run, and the checkout stayed clean",
+  "script": "instruments/termcheck-dryrun-magnesium.template.cjs",
+  "what": "the term check's warnings for a magnesium -> magnesíum book entry, in four states (no entry; the entry before and after its BÍN inflections) x (text as it is; with the fix drafts of measurements 7-9 overlaid), plus synthetic controls"
+ },
+ "head": "844f13d2f9ec589b35dc5da271187c3783a7282f",
+ "book": "efnafraedi-2e",
+ "dbPath": "/home/siggi/repos/namsbokasafn-efni/pipeline-output/sessions.db",
+ "opened": [
+  "/home/siggi/repos/namsbokasafn-efni/pipeline-output/sessions.db"
+ ],
+ "walHeader": [
+  2,
+  2
+ ],
+ "fileUnchanged": true,
+ "before": {
+  "db": {
+   "size": 54603776,
+   "mtimeMs": 1795221001487.723
+  },
+  "wal": {
+   "size": 0,
+   "mtimeMs": 1795221001488.723
+  }
+ },
+ "after": {
+  "db": {
+   "size": 54603776,
+   "mtimeMs": 1795221001487.723
+  },
+  "wal": {
+   "size": 0,
+   "mtimeMs": 1795221001488.723
+  }
+ },
+ "totals": {
+  "segments": 22591,
+  "magnesiumSegments": 119,
+  "units": 34
+ },
+ "enRowsBefore": [
+  {
+   "id": 5746,
+   "domain": "physics"
+  },
+  {
+   "id": 111625,
+   "domain": "anatomy-physiology"
+  }
+ ],
+ "entry": {
+  "status": "added",
+  "conceptId": 70271,
+  "isTerm": {
+   "text": "magnesíum",
+   "inflections": null
+  }
+ },
+ "bin": {
+  "outcome": "unambiguous",
+  "nForms": 4
+ },
+ "drafts": {
+  "unique": 226,
+  "conflicts": [],
+  "same": 226,
+  "drifted": [],
+  "missing": [],
+  "inMagnesiumSegments": 31
+ },
+ "resolve": {
+  "before": {
+   "chapter": 18,
+   "winner": null,
+   "reason": null,
+   "tied": [],
+   "outOfScope": [
+    "magnesíum (anatomy-physiology)"
+   ]
+  },
+  "afterA": {
+   "chapter": 18,
+   "winner": {
+    "conceptId": 70271,
+    "text": "magnesíum",
+    "domain": "chemistry"
+   },
+   "reason": "book-entry",
+   "tied": [],
+   "outOfScope": [
+    "magnesíum (anatomy-physiology)"
+   ]
+  },
+  "afterB": {
+   "chapter": 18,
+   "winner": {
+    "conceptId": 70271,
+    "text": "magnesíum",
+    "domain": "chemistry"
+   },
+   "reason": "book-entry",
+   "tied": [],
+   "outOfScope": [
+    "magnesíum (anatomy-physiology)"
+   ]
+  }
+ },
+ "synthetic": {
+  "chapter": 18,
+  "before": {
+   "S1-standalone": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": true
+    },
+    "issue": null,
+    "allMatches": [
+     "magnesium",
+     "air"
+    ]
+   },
+   "S2-genitive": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": true
+    },
+    "issue": null,
+    "allMatches": [
+     "mass",
+     "magnesium",
+     "small"
+    ]
+   },
+   "S3-closed-compound": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": true
+    },
+    "issue": null,
+    "allMatches": [
+     "ion",
+     "magnesium",
+     "small"
+    ]
+   },
+   "S4-hyphenated": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": true
+    },
+    "issue": null,
+    "allMatches": [
+     "ion",
+     "magnesium",
+     "small"
+    ]
+   },
+   "S5-symbol-only": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": true
+    },
+    "issue": null,
+    "allMatches": [
+     "metal",
+     "magnesium"
+    ]
+   },
+   "S6-non-official": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": true
+    },
+    "issue": null,
+    "allMatches": [
+     "metal",
+     "magnesium"
+    ]
+   },
+   "S7-chloride": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": true
+    },
+    "issue": null,
+    "allMatches": [
+     "add",
+     "magnesium",
+     "chloride"
+    ]
+   }
+  },
+  "A": {
+   "S1-standalone": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": null,
+    "allMatches": [
+     "magnesium",
+     "air"
+    ]
+   },
+   "S2-genitive": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": "missing",
+    "allMatches": [
+     "magnesium",
+     "mass",
+     "small"
+    ]
+   },
+   "S3-closed-compound": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": "missing",
+    "allMatches": [
+     "magnesium",
+     "ion",
+     "small"
+    ]
+   },
+   "S4-hyphenated": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": null,
+    "allMatches": [
+     "magnesium",
+     "ion",
+     "small"
+    ]
+   },
+   "S5-symbol-only": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": "missing",
+    "allMatches": [
+     "magnesium",
+     "metal"
+    ]
+   },
+   "S6-non-official": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": "missing",
+    "allMatches": [
+     "magnesium",
+     "metal"
+    ]
+   },
+   "S7-chloride": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": "missing",
+    "allMatches": [
+     "magnesium",
+     "add",
+     "chloride"
+    ]
+   }
+  },
+  "B": {
+   "S1-standalone": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": null,
+    "allMatches": [
+     "magnesium",
+     "air"
+    ]
+   },
+   "S2-genitive": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": null,
+    "allMatches": [
+     "magnesium",
+     "mass",
+     "small"
+    ]
+   },
+   "S3-closed-compound": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": "missing",
+    "allMatches": [
+     "magnesium",
+     "ion",
+     "small"
+    ]
+   },
+   "S4-hyphenated": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": null,
+    "allMatches": [
+     "magnesium",
+     "ion",
+     "small"
+    ]
+   },
+   "S5-symbol-only": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": "missing",
+    "allMatches": [
+     "magnesium",
+     "metal"
+    ]
+   },
+   "S6-non-official": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": "missing",
+    "allMatches": [
+     "magnesium",
+     "metal"
+    ]
+   },
+   "S7-chloride": {
+    "matched": {
+     "icelandic": "magnesíum",
+     "isFallback": false
+    },
+    "issue": "missing",
+    "allMatches": [
+     "magnesium",
+     "add",
+     "chloride"
+    ]
+   }
+  }
+ },
+ "variants": {
+  "base.now": {
+   "segments": 119,
+   "matchedMagnesium": 119,
+   "passed": 119,
+   "issues": [],
+   "unclaimed": [],
+   "issueCount": 0,
+   "unclaimedCount": 0
+  },
+  "base.fixed": {
+   "segments": 119,
+   "matchedMagnesium": 119,
+   "passed": 119,
+   "issues": [],
+   "unclaimed": [],
+   "issueCount": 0,
+   "unclaimedCount": 0
+  },
+  "A.now": {
+   "segments": 119,
+   "matchedMagnesium": 119,
+   "passed": 53,
+   "issues": [
+    {
+     "segmentId": "m68696:para:fs-idp196671632",
+     "chapter": 2,
+     "moduleId": "m68696",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "inflected-not-in-paradigm",
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíums",
+      "Magnesíumatóm",
+      "magnesíumatóm",
+      "magnesíumjón"
+     ],
+     "hasMgSymbol": true,
+     "is": "Staða magnesíums í lotukerfinu (flokkur 2) segir okkur að það er málmur. Málmar mynda jákvæðar jónir (katj…",
+     "en": "Magnesium’s position in the periodic table (group 2) tells us that it…"
+    },
+    {
+     "segmentId": "m68698:table-summary:fs-idp282234816-summary",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumnítríð"
+     ],
+     "hasMgSymbol": false,
+     "is": "…, N a neðanskrift 2 O natríumoxíð, C d S kadmíumsúlfíð, M g neðanskrift 3 N neðanskrift 2 magnesíumnítríð, C a neðanskrift 3 P neðanskrift 2 kalsíumfosfíð og A l neðanskrift 4 C neðanskrift 3 álk…",
+     "en": "…oxide, C d S cadmium sulfide, M g subscript 3 N subscript 2 magnesium nitride, C a subscript 3 P subscript 2 calcium phosphide, a…"
+    },
+    {
+     "segmentId": "m68698:entry:auto-15",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumnítríð"
+     ],
+     "hasMgSymbol": true,
+     "is": "Mg[[sub:3]]N[[sub:2]], magnesíumnítríð",
+     "en": "Mg[[sub:3]]N[[sub:2]], magnesium nitride"
+    },
+    {
+     "segmentId": "m68698:table-summary:fs-idp279316112-summary",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumfosfat"
+     ],
+     "hasMgSymbol": false,
+     "is": "… S O neðanskrift 4 kalsíumsúlfat og M g neðanskrift 3 ( P O neðanskrift 4 ) neðanskrift 2 magnesíumfosfat.",
+     "en": "…ulfate, and M g subscript 3 ( P O subscript 4 ) subscript 2 magnesium phosphate."
+    },
+    {
+     "segmentId": "m68698:entry:auto-28",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumfosfat"
+     ],
+     "hasMgSymbol": true,
+     "is": "Mg[[sub:3]](PO[[sub:4]])[[sub:2]], magnesíumfosfat",
+     "en": "Mg[[sub:3]](PO[[sub:4]])[[sub:2]], magnesium phosphate"
+    },
+    {
+     "segmentId": "m68698:table-summary:fs-idp268265360-summary",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíð",
+      "magnesíumsúlfat"
+     ],
+     "hasMgSymbol": false,
+     "is": "… 3 kalsíumkarbónat sem er innihaldsefni í sýrubindandi lyfjum, M g ( O H ) neðanskrift 2, magnesíumhýdroxíð sem er einnig innihaldsefni í sýrubindandi lyfjum, A l ( O H ) neðanskrift 3 álhýdroxíð s…",
+     "en": "…hich is an ingredient of antacids, M g ( O H ) subscript 2, magnesium hydroxide which is also an ingredient of antacids, A l ( O …"
+    },
+    {
+     "segmentId": "m68698:entry:auto-48",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíð"
+     ],
+     "hasMgSymbol": true,
+     "is": "Mg(OH)[[sub:2]], magnesíumhýdroxíð",
+     "en": "Mg(OH)[[sub:2]], magnesium hydroxide"
+    },
+    {
+     "segmentId": "m68698:entry:auto-56",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumsúlfat"
+     ],
+     "hasMgSymbol": false,
+     "is": "MgSO[[sub:4]], magnesíumsúlfat",
+     "en": "MgSO[[sub:4]], magnesium sulfate"
+    },
+    {
+     "segmentId": "m68698:para:fs-idp283457424",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumsúlfat"
+     ],
+     "hasMgSymbol": false,
+     "is": "(d) magnesíumsúlfat heptahýdrat",
+     "en": "(d) magnesium sulfate heptahydrate"
+    },
+    {
+     "segmentId": "m68698:problem:fs-idm306432",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumseleníð"
+     ],
+     "hasMgSymbol": false,
+     "is": "(b) magnesíumseleníð",
+     "en": "(b) magnesium selenide"
+    },
+    {
+     "segmentId": "m68698:problem:fs-idp279468704",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumfosfat"
+     ],
+     "hasMgSymbol": false,
+     "is": "(g) magnesíumfosfat",
+     "en": "(g) magnesium phosphate"
+    },
+    {
+     "segmentId": "m68698:problem:fs-idp279320480",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumnítríð"
+     ],
+     "hasMgSymbol": false,
+     "is": "(b) magnesíumnítríð",
+     "en": "(b) magnesium nitride"
+    },
+    {
+     "segmentId": "m68709:problem:fs-idp45919792",
+     "chapter": 4,
+     "moduleId": "m68709",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumklóríði",
+      "magnesíumhýdroxíð"
+     ],
+     "hasMgSymbol": false,
+     "is": "(c) Vatnslausnir af magnesíumklóríði og natríumhýdroxíði hvarfast og mynda fast magnesíumhýdroxíð og vatnslausn af natríumklór…",
+     "en": "(c) Aqueous solutions of magnesium chloride and sodium hydroxide react to produce solid magnes…"
+    },
+    {
+     "segmentId": "m68709:problem:fs-idm22160384",
+     "chapter": 4,
+     "moduleId": "m68709",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "inflected-not-in-paradigm"
+     ],
+     "tokens": [
+      "magnesíums"
+     ],
+     "hasMgSymbol": false,
+     "is": "…ríkir flugeldar fela oft í sér niðurbrot baríumnítrats og kalíumklórats og hvarf málmanna magnesíums, áls og járns við súrefni.",
+     "en": "…trate and potassium chlorate and the reaction of the metals magnesium, aluminum, and iron with oxygen."
+    },
+    {
+     "segmentId": "m68709:problem:fs-idp208977456",
+     "chapter": 4,
+     "moduleId": "m68709",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "inflected-not-in-paradigm"
+     ],
+     "tokens": [
+      "magnesíums"
+     ],
+     "hasMgSymbol": false,
+     "is": "(d) Skrifið aðskildar jöfnur fyrir hvörf föstu málmanna magnesíums, áls og járns við tvíatóma súrefnisgas til að mynda samsvarandi málmoxíð. (Gerið ráð fyri…",
+     "en": "…te separate equations for the reactions of the solid metals magnesium, aluminum, and iron with diatomic oxygen gas to yield the c…"
+    },
+    {
+     "segmentId": "m68709:problem:fs-idm721584",
+     "chapter": 4,
+     "moduleId": "m68709",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumklóríð",
+      "magnesíumhýdroxíð"
+     ],
+     "hasMgSymbol": false,
+     "is": "(c) Föstu kalsíumhýdroxíði er síðan bætt út í sjóinn, þar sem það hvarfast við uppleyst magnesíumklóríð og myndar fast magnesíumhýdroxíð og vatnslausn af kalsíumklóríði.",
+     "en": "…xide is then added to the seawater, reacting with dissolved magnesium chloride to yield solid magnesium hydroxide and aqueous cal…"
+    },
+    {
+     "segmentId": "m68709:problem:fs-idm721024",
+     "chapter": 4,
+     "moduleId": "m68709",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíðinu",
+      "magnesíumklóríð"
+     ],
+     "hasMgSymbol": false,
+     "is": "(d) Fasta magnesíumhýdroxíðinu er bætt út í saltsýrulausn, sem myndar uppleyst magnesíumklóríð og fljótandi vatn.",
+     "en": "(d) The solid magnesium hydroxide is added to a hydrochloric acid solution, produci…"
+    },
+    {
+     "segmentId": "m68709:problem:fs-idm720496",
+     "chapter": 4,
+     "moduleId": "m68709",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumklóríðið",
+      "magnesíummálm"
+     ],
+     "hasMgSymbol": false,
+     "is": "(e) Að lokum er magnesíumklóríðið brætt og rafgreint til að gefa af sér fljótandi magnesíummálm og tvíatóma klórgas.",
+     "en": "(e) Finally, the magnesium chloride is melted and electrolyzed to yield liquid magnesi…"
+    },
+    {
+     "segmentId": "m68710:para:fs-idm52053696",
+     "chapter": 4,
+     "moduleId": "m68710",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumklóríð"
+     ],
+     "hasMgSymbol": false,
+     "is": "Takið eftir að auk vatns myndar þetta hvarf salt, magnesíumklóríð.",
+     "en": "…e that in addition to water, this reaction produces a salt, magnesium chloride."
+    },
+    {
+     "segmentId": "m68710:problem:fs-idp26248864",
+     "chapter": 4,
+     "moduleId": "m68710",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesínmálmur",
+      "magnesínsins"
+     ],
+     "hasMgSymbol": true,
+     "is": "Í algengri tilraun á almennri efnafræðistofu er magnesínmálmur hitaður í lofti til að framleiða MgO. MgO er hvítt fast efni, en í þessum tilraunum lítur…",
+     "en": "In a common experiment in the general chemistry laboratory, magnesium metal is heated in air to produce MgO. MgO is a white solid…"
+    },
+    {
+     "segmentId": "m68713:para:fs-idp56844080",
+     "chapter": 4,
+     "moduleId": "m68713",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíummjólk",
+      "magnesíumhýdroxíð"
+     ],
+     "hasMgSymbol": true,
+     "is": "…ersu mikinn massa af natríumhýdroxíði, NaOH, þyrfti til að framleiða 16 g af sýrubindandi magnesíummjólk [magnesíumhýdroxíð, Mg(OH)[[sub:2]]] með eftirfarandi efnahvarfi?",
+     "en": "…e required to produce 16 g of the antacid milk of magnesia [magnesium hydroxide, Mg(OH)[[sub:2]]] by the following reaction?"
+    },
+    {
+     "segmentId": "m68713:problem:fs-idp38709616",
+     "chapter": 4,
+     "moduleId": "m68713",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumkarbónats"
+     ],
+     "hasMgSymbol": false,
+     "is": "(c) Fjölda móla og massa magnesíumkarbónats, MgCO[[sub:3]], sem þarf til að mynda 283 g af koltvíoxíði. (MgO er hin afurðin.)",
+     "en": "(c) The number of moles and the mass of magnesium carbonate, MgCO[[sub:3]], required to produce 283 g of carb…"
+    },
+    {
+     "segmentId": "m68727:entry:auto-71",
+     "chapter": 5,
+     "moduleId": "m68727",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "magnesín",
+     "en": "magnesium"
+    },
+    {
+     "segmentId": "m68734:para:fs-idp77726784",
+     "chapter": 6,
+     "moduleId": "m68734",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "…tín og natrín hafa hvor um sig aðeins eina gildisrafeind, jarðalkalímálmarnir beryllín og magnesín hafa hvor um sig tvær og halógenarnir flúor og klór hafa hvor um sig sjö gildisrafeindir.…",
+     "en": "…e valence electron, the alkaline earth metals beryllium and magnesium each have two, and the halogens fluorine and chlorine each …"
+    },
+    {
+     "segmentId": "m68739:alt:fs-idp678720-alt",
+     "chapter": 7,
+     "moduleId": "m68739",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "Magnesíumtákn",
+      "magnesíumtákn",
+      "magnesíumatóm",
+      "magnesíumoxíð",
+      "magnesíumjón"
+     ],
+     "hasMgSymbol": false,
+     "is": "… klóríðjón)“ eru skrifuð undir efnahvarfið. Þriðja röðin sýnir Lewis-formúlur efnahvarfs. Magnesíumtákn með tveimur rauðum punktum, plúsmerki og súrefnistákn með sex punktum eru vinstra megin v…",
+     "en": "…. The third row shows the Lewis structures of a reaction. A magnesium symbol with two red dots, a plus sign, and an oxygen symbol…"
+    },
+    {
+     "segmentId": "m68773:problem:fs-idp109499216",
+     "chapter": 10,
+     "moduleId": "m68773",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesíni"
+     ],
+     "hasMgSymbol": false,
+     "is": "…ni kviku settust mismunandi jónir í sömu sæti í kristöllunum. Litín kemur oft fyrir ásamt magnesíni í steindum þrátt fyrir mismunandi hleðslu jónanna. Stingdu upp á útskýringu.",
+     "en": "…same cites in the crystals. Lithium often occurs along with magnesium in minerals despite the difference in the charge on their i…"
+    },
+    {
+     "segmentId": "m68783:para:fs-idp175903616",
+     "chapter": 11,
+     "moduleId": "m68783",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumklóríð"
+     ],
+     "hasMgSymbol": false,
+     "is": "Natríumklóríð og hliðstæður þess í flokki 2, kalsíum- og magnesíumklóríð, eru oft notuð til að afísa vegi og gangstéttir, vegna þess að lausn af einhverju þessara…",
+     "en": "Sodium chloride and its group 2 analogs calcium and magnesium chloride are often used to de-ice roadways and sidewalks, d…"
+    },
+    {
+     "segmentId": "m68784:para:fs-idm189696128",
+     "chapter": 11,
+     "moduleId": "m68784",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumsambönd"
+     ],
+     "hasMgSymbol": false,
+     "is": "…a súlfónat—[[MATH:3]] ([[xref:CNX_Chem_11_05_detrg]]). Sápur mynda óleysanleg kalsíum- og magnesíumsambönd í hörðu vatni; þvottaefni mynda vatnsleysanlegar afurðir—sem er afgerandi kostur fyrir þv…",
+     "en": "…f:CNX_Chem_11_05_detrg]]). Soaps form insoluble calcium and magnesium compounds in hard water; detergents form water-soluble prod…"
+    },
+    {
+     "segmentId": "m68787:problem:fs-idm151736608",
+     "chapter": 12,
+     "moduleId": "m68787",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíummálms",
+      "magnesíumbitanna"
+     ],
+     "hasMgSymbol": false,
+     "is": "Lýstu áhrifum hvers eftirfarandi á hraða efnahvarfs magnesíummálms við lausn af saltsýru: mólstyrk saltsýrunnar, hitastig lausnarinnar og stærð magnesíumbit…",
+     "en": "…ect of each of the following on the rate of the reaction of magnesium metal with a solution of hydrochloric acid: the molarity of…"
+    },
+    {
+     "segmentId": "m68787:solution:fs-idm120667552",
+     "chapter": 12,
+     "moduleId": "m68787",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíummálmi"
+     ],
+     "hasMgSymbol": false,
+     "is": "…yrkur eykur hraða efnahvarfsins. Hærra hitastig eykur hraða efnahvarfsins. Minni bitar af magnesíummálmi hvarfast hraðar en stærri bitar vegna þess að meira hvarfgjarnt yfirborð er til staðar.",
+     "en": "…ature increases the rate of the reaction. Smaller pieces of magnesium metal will react more rapidly than larger pieces because mo…"
+    },
+    {
+     "segmentId": "m68811:para:fs-idp681040",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound",
+      "other-magnes"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíð",
+      "Magnesia"
+     ],
+     "hasMgSymbol": true,
+     "is": "(c) Mg(OH)[[sub:2]], magnesíumhýdroxíð, virka efnið í Milk of Magnesia",
+     "en": "(c) Mg(OH)[[sub:2]], magnesium hydroxide, the active ingredient in Milk of Magnesia"
+    },
+    {
+     "segmentId": "m68811:para:fs-idp15157136",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíummálmi"
+     ],
+     "hasMgSymbol": true,
+     "is": "Fyrsta skrefið í framleiðslu á magnesíummálmi er botnfelling Mg(OH)[[sub:2]] úr sjó með því að bæta við kalki, Ca(OH)[[sub:2]], sem er …",
+     "en": "The first step in the preparation of magnesium metal is the precipitation of Mg(OH)[[sub:2]] from sea wate…"
+    },
+    {
+     "segmentId": "m68811:para:fs-idp11854608",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíð"
+     ],
+     "hasMgSymbol": false,
+     "is": "…en [[i:K]][[sub:sp]] = 8,9 [[MATH:35]] 10[[sup:–12]]), mun öfuga hvarfið eiga sér stað og magnesíumhýdroxíð falla út þar til styrkur uppleystra jóna hefur lækkað nægilega, þannig að [[i:Q[[sub:sp]]…",
+     "en": "…up:–12]]), the reverse reaction will proceed, precipitating magnesium hydroxide until the dissolved ion concentrations have been …"
+    },
+    {
+     "segmentId": "m68811:para:fs-idp1193504",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíummálmi"
+     ],
+     "hasMgSymbol": true,
+     "is": "Fyrsta skrefið í framleiðslu á magnesíummálmi er botnfelling Mg(OH)[[sub:2]] úr sjó með því að bæta við Ca(OH)[[sub:2]]. Styrkur Mg[[su…",
+     "en": "The first step in the preparation of magnesium metal is the precipitation of Mg(OH)[[sub:2]] from sea wate…"
+    },
+    {
+     "segmentId": "m68811:para:fs-idm745168",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíðs"
+     ],
+     "hasMgSymbol": true,
+     "is": "…ra leysnijafnvæginu til vinstri, sem minnkar styrk hýdroxíðjónar og eykur magn óuppleysts magnesíumhýdroxíðs.",
+     "en": "…n of hydroxide ion and increasing the amount of undissolved magnesium hydroxide."
+    },
+    {
+     "segmentId": "m68811:para:fs-idm743248",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumjónar",
+      "magnesíumhýdroxíðs"
+     ],
+     "hasMgSymbol": false,
+     "is": "…, mun auka styrk þessarar jónar og hliðra leysnijafnvæginu til vinstri, sem minnkar styrk magnesíumjónar og eykur magn óuppleysts magnesíumhýdroxíðs.",
+     "en": "…ty equilibrium to the left, decreasing the concentration of magnesium ion and increasing the amount of undissolved magnesium hydr…"
+    },
+    {
+     "segmentId": "m68811:para:fs-idm330455632",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíðs"
+     ],
+     "hasMgSymbol": false,
+     "is": "…ætt er við inniheldur ekki sameiginlega jón og engin áhrif eru væntanleg á leysnijafnvægi magnesíumhýdroxíðs.",
+     "en": "…ompound does not contain a common ion, and no effect on the magnesium hydroxide solubility equilibrium is expected."
+    },
+    {
+     "segmentId": "m68811:para:fs-idm735616",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíðs"
+     ],
+     "hasMgSymbol": false,
+     "is": "Þannig hefur það engin áhrif á gildi [[i:Q]] að breyta magni fasts magnesíumhýdroxíðs í blöndunni og engin hliðrun er nauðsynleg til að endurheimta gildi jafnvægisfastans fyri…",
+     "en": "Thus, changing the amount of solid magnesium hydroxide in the mixture has no effect on the value of [[i:…"
+    },
+    {
+     "segmentId": "m68811:problem:fs-idp2651648",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "Magnesíummálmur"
+     ],
+     "hasMgSymbol": false,
+     "is": "Magnesíummálmur (hluti af málmblöndum sem notaðar eru í flugvélar og afoxunarefni sem notað er við framle…",
+     "en": "Magnesium metal (a component of alloys used in aircraft and a reducin…"
+    },
+    {
+     "segmentId": "m68811:problem:fs-idp2976512",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "inflected-not-in-paradigm"
+     ],
+     "tokens": [
+      "magnesíums"
+     ],
+     "hasMgSymbol": false,
+     "is": "…rbónatjóna er aukinn smám saman í lausn sem inniheldur jafnan styrk af tvígildum katjónum magnesíums, kalsíums, strontíums, baríums og mangans. Hvert af eftirfarandi karbónötum fellur út fyr…",
+     "en": "… containing equal concentrations of the divalent cations of magnesium, calcium, strontium, barium, and manganese. Which of the fo…"
+    },
+    {
+     "segmentId": "m68822:para:fs-idm183571200",
+     "chapter": 17,
+     "moduleId": "m68822",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "inflected-not-in-paradigm"
+     ],
+     "tokens": [
+      "magnesíums"
+     ],
+     "hasMgSymbol": false,
+     "is": "…r (sjá [[xref:CNX_Chem_17_02_Oxidareduc]]) sem byggir á sjálfkrafa efnahvarfi milli fasts magnesíums og járn(III)jóna í vatnslausn:",
+     "en": "…idareduc]]) based on the spontaneous reaction between solid magnesium and aqueous iron(III) ions:"
+    },
+    {
+     "segmentId": "m68822:para:fs-idm215655008",
+     "chapter": 17,
+     "moduleId": "m68822",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumanóða",
+      "magnesíumklóríði"
+     ],
+     "hasMgSymbol": false,
+     "is": "Í þessu keri er föst magnesíumanóða á kafi í vatnslausn af magnesíumklóríði sem er tengd með saltbrú við vatnslausn sem innih…",
+     "en": "In this cell, a solid magnesium anode is immersed in an aqueous solution of magnesium chlor…"
+    },
+    {
+     "segmentId": "m68822:caption:CNX_Chem_17_02_Oxidareduc-caption",
+     "chapter": 17,
+     "moduleId": "m68822",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "inflected-not-in-paradigm"
+     ],
+     "tokens": [
+      "magnesíums"
+     ],
+     "hasMgSymbol": false,
+     "is": "Galvaníker sem byggir á sjálfkrafa efnahvarfi milli magnesíums og járn(III)jóna.",
+     "en": "A galvanic cell based on the spontaneous reaction between magnesium and iron(III) ions."
+    },
+    {
+     "segmentId": "m68822:problem:fs-idm95770176",
+     "chapter": 17,
+     "moduleId": "m68822",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumrafskaut"
+     ],
+     "hasMgSymbol": true,
+     "is": "…anstendur af gullrafskauti í 0,55 [[i:M]] Au(NO[[sub:3]])[[sub:3]]-lausn og forskautið er magnesíumrafskaut í 0,75 [[i:M]] Mg(NO[[sub:3]])[[sub:2]]-lausn.",
+     "en": "…[i:M]] Au(NO[[sub:3]])[[sub:3]] solution and the anode is a magnesium electrode in 0.75 [[i:M]] Mg(NO[[sub:3]])[[sub:2]] solution…"
+    },
+    {
+     "segmentId": "m68829:para:fs-idp45202896",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesín",
+      "magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "[[term:Jarðalkalímálmarnir|term-00006]] (beryllín, magnesín, kalsín, strontín, barín og radín) mynda flokk 2 í lotukerfinu. Nafnið jarðalkalímálmur k…",
+     "en": "The [[term:alkaline earth metals|term-00006]] (beryllium, magnesium, calcium, strontium, barium, and radium) constitute group 2…"
+    },
+    {
+     "segmentId": "m68829:para:fs-idp261367120",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "Magnesín",
+      "magnesínmálms",
+      "magnesínoxýkarbónati",
+      "Magnesín",
+      "magnesínframleiðslu"
+     ],
+     "hasMgSymbol": false,
+     "is": "Magnesín er silfurhvítur málmur sem er teygjanlegur og sveigjanlegur við hátt hitastig. Yfirborðsh…",
+     "en": "Magnesium is a silver-white metal that is malleable and ductile at hi…"
+    },
+    {
+     "segmentId": "m68829:para:fs-idm12445424",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "Magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "Magnesín (sýnt á [[xref:CNX_Chem_18_01_CalciWater]]), kalsín, strontín og barín hvarfast við vatn …",
+     "en": "Magnesium (shown in [[xref:CNX_Chem_18_01_CalciWater]]), calcium, str…"
+    },
+    {
+     "segmentId": "m68829:caption:CNX_Chem_18_01_CalciWater-caption",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "Magnesínmálmur"
+     ],
+     "hasMgSymbol": true,
+     "is": "Magnesínmálmur (vinstri krukka) hvarfast hægt við heitt vatn (miðkrukka) og myndar Mg[[sup:2+]] og OH[[s…",
+     "en": "Magnesium metal (left jar) reacts slowly with hot water (center jar) …"
+    },
+    {
+     "segmentId": "m68829:para:fs-idp171667088",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesíns",
+      "magnesíns",
+      "magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "Hinn öflugi afoxunarmáttur heits magnesíns er gagnlegur við framleiðslu sumra málma úr oxíðum þeirra. Sækni magnesíns í súrefni er s…",
+     "en": "The potent reducing power of hot magnesium is useful in preparing some metals from their oxides. Indee…"
+    },
+    {
+     "segmentId": "m68829:para:fs-idp110638672",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesíneld",
+      "magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "Af þessari ástæðu mun CO[[sub:2]]-slökkvitæki ekki slökkva magnesíneld. Auk þess gerir hið skærhvíta ljós sem brennandi magnesín gefur frá sér það gagnlegt í ne…",
+     "en": "…ason, a CO[[sub:2]] fire extinguisher will not extinguish a magnesium fire. Additionally, the brilliant white light emitted by bu…"
+    },
+    {
+     "segmentId": "m68829:problem:fs-idp14648448",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "inflected-not-in-paradigm"
+     ],
+     "tokens": [
+      "magnesíums"
+     ],
+     "hasMgSymbol": false,
+     "is": "Er hvarf rúbidíums við vatn öflugra eða veikara en hvarf natríums? Hvernig er hvarfhraði magnesíums í samanburði?",
+     "en": "…orous than that of sodium? How does the rate of reaction of magnesium compare?"
+    },
+    {
+     "segmentId": "m68830:para:fs-idp217984240",
+     "chapter": 18,
+     "moduleId": "m68830",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "inflected-not-in-paradigm"
+     ],
+     "tokens": [
+      "magnesíums"
+     ],
+     "hasMgSymbol": false,
+     "is": "… rafgreiningu. Í næsta kafla munum við sjá hvernig Pidgeon-ferlið leiðir til efnaafoxunar magnesíums.",
+     "en": "… how the Pidgeon process leads to the chemical reduction of magnesium."
+    },
+    {
+     "segmentId": "m68830:para:fs-idp34921904",
+     "chapter": 18,
+     "moduleId": "m68830",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound",
+      "inflected-not-in-paradigm"
+     ],
+     "tokens": [
+      "magnesíumgufunnar",
+      "magnesíums"
+     ],
+     "hasMgSymbol": false,
+     "is": "Þrátt fyrir að þetta hvarf sé óhagstætt frá varmafræðilegu sjónarmiði, nýtir brottnám magnesíumgufunnar sem myndast lögmál Le Châteliers til að halda hvarfinu áfram í framátt. Yfir 75% af heims…",
+     "en": "… unfavorable in terms of thermodynamics, the removal of the magnesium vapor produced takes advantage of Le Châtelier’s principle …"
+    },
+    {
+     "segmentId": "m68830:para:fs-idp270452384",
+     "chapter": 18,
+     "moduleId": "m68830",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "inflected-not-in-paradigm"
+     ],
+     "tokens": [
+      "magnesíums"
+     ],
+     "hasMgSymbol": false,
+     "is": "…kilvæg við framleiðslu á natríum, kalíum og áli. Efnaafoxun er aðalaðferðin við einangrun magnesíums, sinks og tins. Svipaðar aðferðir eru mikilvægar fyrir aðra aðalflokkamálma.",
+     "en": "…emical reduction is the primary method for the isolation of magnesium, zinc, and tin. Similar procedures are important for the ot…"
+    },
+    {
+     "segmentId": "m68831:para:fs-idp120612224",
+     "chapter": 18,
+     "moduleId": "m68831",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumdufti"
+     ],
+     "hasMgSymbol": false,
+     "is": "Afoxun bóroxíðs með magnesíumdufti myndar bór (95–98,5% hreint) sem brúnt, myndlaust duft:",
+     "en": "Reduction of boric oxide with magnesium powder forms boron (95–98.5% pure) as a brown, amorphous po…"
+    },
+    {
+     "segmentId": "m68831:para:fs-idp204527824",
+     "chapter": 18,
+     "moduleId": "m68831",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumoxíðið"
+     ],
+     "hasMgSymbol": false,
+     "is": "…hefur ekki langdræga röðun eins og raunverulegt fast efni. Meðferð með saltsýru fjarlægir magnesíumoxíðið. Frekari hreinsun á bórinu hefst með því að breyta óhreina bórinu í bórtríklóríð. Næsta s…",
+     "en": "… a true solid. Treatment with hydrochloric acid removes the magnesium oxide. Further purification of the boron begins with conver…"
+    },
+    {
+     "segmentId": "m68831:problem:fs-idp114681504",
+     "chapter": 18,
+     "moduleId": "m68831",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumsílisíð"
+     ],
+     "hasMgSymbol": false,
+     "is": "(e) magnesíumsílisíð",
+     "en": "(e) magnesium silicide"
+    },
+    {
+     "segmentId": "m68834:para:fs-idm37877696",
+     "chapter": 18,
+     "moduleId": "m68834",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "…|term-00001]] – efnasambönd sem innihalda karbónatanjónir, [[MATH:1]]. Málmar í flokki 1, magnesín, kalsín, strontín og barín mynda einnig [[term:vetniskarbónöt|term-00002]] – efnasambönd …",
+     "en": "…ain the carbonate anions, [[MATH:1]] The metals of group 1, magnesium, calcium, strontium, and barium also form [[term:hydrogen c…"
+    },
+    {
+     "segmentId": "m68834:para:fs-idm59038240",
+     "chapter": 18,
+     "moduleId": "m68834",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesínkarbónati"
+     ],
+     "hasMgSymbol": false,
+     "is": "Að undanskildu magnesínkarbónati er hægt að framleiða karbónöt málma í flokkum 1 og 2 með hvarfi koltvíoxíðs við samsvaran…",
+     "en": "With the exception of magnesium carbonate, it is possible to prepare carbonates of the meta…"
+    },
+    {
+     "segmentId": "m68837:para:fs-idp12102384",
+     "chapter": 18,
+     "moduleId": "m68837",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumoxíði",
+      "Magnesíumoxíð"
+     ],
+     "hasMgSymbol": false,
+     "is": "Oxíð alkalímálma hafa litla iðnaðarnotkun, ólíkt magnesíumoxíði, kalsíumoxíði og áloxíði. Magnesíumoxíð er mikilvægt við framleiðslu á eldföstum múrstein…",
+     "en": "…of the alkali metals have little industrial utility, unlike magnesium oxide, calcium oxide, and aluminum oxide. Magnesium oxide i…"
+    },
+    {
+     "segmentId": "m68837:para:fs-idm50382768",
+     "chapter": 18,
+     "moduleId": "m68837",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "inflected-not-in-paradigm",
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíums",
+      "magnesíumsalt"
+     ],
+     "hasMgSymbol": false,
+     "is": "Hægt er að búa til óleysanleg hýdroxíð beryllíums, magnesíums og annarra aðalflokkamálma með því að bæta natríumhýdroxíði við lausn af salti viðkomandi…",
+     "en": "… possible to prepare the insoluble hydroxides of beryllium, magnesium, and other representative metals by the addition of sodium …"
+    },
+    {
+     "segmentId": "m68837:para:fs-idm33972064",
+     "chapter": 18,
+     "moduleId": "m68837",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíði",
+      "magnesíummjólk"
+     ],
+     "hasMgSymbol": false,
+     "is": "…X_Chem_18_09_CaOH2]]) og til framleiðslu á oxíðum með hitaniðurbroti. Vatnskennd lausn af magnesíumhýdroxíði er sýrubindandi lyfið magnesíummjólk. Vegna þess hve auðvelt er að nálgast það (úr hvarfi…",
+     "en": "…f oxides by thermal decomposition. An aqueous suspension of magnesium hydroxide constitutes the antacid milk of magnesia. Because…"
+    },
+    {
+     "segmentId": "m68838:para:fs-idm222212272",
+     "chapter": 18,
+     "moduleId": "m68838",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "inflected-not-in-paradigm"
+     ],
+     "tokens": [
+      "magnesíums"
+     ],
+     "hasMgSymbol": false,
+     "is": "…mum, sem súlfíð járns, sinks, blýs og kopars og sem súlföt natríums, kalsíums, baríums og magnesíums. Brennisteinsvetni er oft hluti af jarðgasi og finnst í mörgum eldfjallagösum, eins og þe…",
+     "en": "…d, and copper, and sulfates of sodium, calcium, barium, and magnesium. Hydrogen sulfide is often a component of natural gas and o…"
+    },
+    {
+     "segmentId": "m68839:para:fs-idm16552608",
+     "chapter": 18,
+     "moduleId": "m68839",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "inflected-not-in-paradigm"
+     ],
+     "tokens": [
+      "magnesíums"
+     ],
+     "hasMgSymbol": false,
+     "is": "… Klór er einnig myndefni við rafgreiningarframleiðslu málma eins og natríums, kalsíums og magnesíums úr bræddum klóríðum þeirra. Einnig er hægt að framleiða klór með efnafræðilegri oxun klór…",
+     "en": "…ctrolytic production of metals such as sodium, calcium, and magnesium from their fused chlorides. It is also possible to prepare …"
+    },
+    {
+     "segmentId": "m68843:caption:CNX_Chem_19_02_ChlorBlue-caption",
+     "chapter": 19,
+     "moduleId": "m68843",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíummiðjuna"
+     ],
+     "hasMgSymbol": false,
+     "is": "…ræna kemur fyrir í nokkrum mismunandi myndum, sem allar hafa sömu grunnbyggingu í kringum magnesíummiðjuna. (b) Koparþalósýanínblátt, ferningslaga flatt kopargirðisamband, er til staðar í sumum bl…",
+     "en": "…t forms, which all have the same basic structure around the magnesium center. (b) Copper phthalocyanine blue, a square planar cop…"
+    },
+    {
+     "segmentId": "m68868:table-summary:fs-idm454814336-summary",
+     "chapter": -1,
+     "moduleId": "m68868",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumefni",
+      "magnesíumefni",
+      "magnesíumefni",
+      "magnesíumefni",
+      "magnesíumefni"
+     ],
+     "hasMgSymbol": false,
+     "is": "…fni, er leysnimargfeldið 1 sinnum 10 í veldinu mínus 54. Fyrir M g ( O H ) neðanskrift 2, magnesíumefni, er leysnimargfeldið 8,9 sinnum 10 í veldinu mínus 12. Fyrir M g C O neðanskrift 3 punktu…",
+     "en": "… 10 superscript negative 54. For M g ( O H ) subscript 2, a magnesium substance, the solubility product is 8.9 times 10 superscri…"
+    }
+   ],
+   "unclaimed": [],
+   "issueCount": 66,
+   "unclaimedCount": 0
+  },
+  "A.fixed": {
+   "segments": 119,
+   "matchedMagnesium": 119,
+   "passed": 62,
+   "issues": [
+    {
+     "segmentId": "m68696:para:fs-idp196671632",
+     "chapter": 2,
+     "moduleId": "m68696",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "inflected-not-in-paradigm",
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíums",
+      "Magnesíumatóm",
+      "magnesíumatóm",
+      "magnesíumjón"
+     ],
+     "hasMgSymbol": true,
+     "is": "Staða magnesíums í lotukerfinu (flokkur 2) segir okkur að það er málmur. Málmar mynda jákvæðar jónir (katj…",
+     "en": "Magnesium’s position in the periodic table (group 2) tells us that it…"
+    },
+    {
+     "segmentId": "m68698:table-summary:fs-idp282234816-summary",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumnítríð"
+     ],
+     "hasMgSymbol": false,
+     "is": "…, N a neðanskrift 2 O natríumoxíð, C d S kadmíumsúlfíð, M g neðanskrift 3 N neðanskrift 2 magnesíumnítríð, C a neðanskrift 3 P neðanskrift 2 kalsíumfosfíð og A l neðanskrift 4 C neðanskrift 3 álk…",
+     "en": "…oxide, C d S cadmium sulfide, M g subscript 3 N subscript 2 magnesium nitride, C a subscript 3 P subscript 2 calcium phosphide, a…"
+    },
+    {
+     "segmentId": "m68698:entry:auto-15",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumnítríð"
+     ],
+     "hasMgSymbol": true,
+     "is": "Mg[[sub:3]]N[[sub:2]], magnesíumnítríð",
+     "en": "Mg[[sub:3]]N[[sub:2]], magnesium nitride"
+    },
+    {
+     "segmentId": "m68698:table-summary:fs-idp279316112-summary",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumfosfat"
+     ],
+     "hasMgSymbol": false,
+     "is": "… S O neðanskrift 4 kalsíumsúlfat og M g neðanskrift 3 ( P O neðanskrift 4 ) neðanskrift 2 magnesíumfosfat.",
+     "en": "…ulfate, and M g subscript 3 ( P O subscript 4 ) subscript 2 magnesium phosphate."
+    },
+    {
+     "segmentId": "m68698:entry:auto-28",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumfosfat"
+     ],
+     "hasMgSymbol": true,
+     "is": "Mg[[sub:3]](PO[[sub:4]])[[sub:2]], magnesíumfosfat",
+     "en": "Mg[[sub:3]](PO[[sub:4]])[[sub:2]], magnesium phosphate"
+    },
+    {
+     "segmentId": "m68698:table-summary:fs-idp268265360-summary",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíð",
+      "magnesíumsúlfat"
+     ],
+     "hasMgSymbol": false,
+     "is": "… 3 kalsíumkarbónat sem er innihaldsefni í sýrubindandi lyfjum, M g ( O H ) neðanskrift 2, magnesíumhýdroxíð sem er einnig innihaldsefni í sýrubindandi lyfjum, A l ( O H ) neðanskrift 3 álhýdroxíð s…",
+     "en": "…hich is an ingredient of antacids, M g ( O H ) subscript 2, magnesium hydroxide which is also an ingredient of antacids, A l ( O …"
+    },
+    {
+     "segmentId": "m68698:entry:auto-48",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíð"
+     ],
+     "hasMgSymbol": true,
+     "is": "Mg(OH)[[sub:2]], magnesíumhýdroxíð",
+     "en": "Mg(OH)[[sub:2]], magnesium hydroxide"
+    },
+    {
+     "segmentId": "m68698:entry:auto-56",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumsúlfat"
+     ],
+     "hasMgSymbol": false,
+     "is": "MgSO[[sub:4]], magnesíumsúlfat",
+     "en": "MgSO[[sub:4]], magnesium sulfate"
+    },
+    {
+     "segmentId": "m68698:para:fs-idp283457424",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumsúlfat"
+     ],
+     "hasMgSymbol": false,
+     "is": "(d) magnesíumsúlfat heptahýdrat",
+     "en": "(d) magnesium sulfate heptahydrate"
+    },
+    {
+     "segmentId": "m68698:problem:fs-idm306432",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumseleníð"
+     ],
+     "hasMgSymbol": false,
+     "is": "(b) magnesíumseleníð",
+     "en": "(b) magnesium selenide"
+    },
+    {
+     "segmentId": "m68698:problem:fs-idp279468704",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumfosfat"
+     ],
+     "hasMgSymbol": false,
+     "is": "(g) magnesíumfosfat",
+     "en": "(g) magnesium phosphate"
+    },
+    {
+     "segmentId": "m68698:problem:fs-idp279320480",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumnítríð"
+     ],
+     "hasMgSymbol": false,
+     "is": "(b) magnesíumnítríð",
+     "en": "(b) magnesium nitride"
+    },
+    {
+     "segmentId": "m68709:problem:fs-idp45919792",
+     "chapter": 4,
+     "moduleId": "m68709",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumklóríði",
+      "magnesíumhýdroxíð"
+     ],
+     "hasMgSymbol": false,
+     "is": "(c) Vatnslausnir af magnesíumklóríði og natríumhýdroxíði hvarfast og mynda fast magnesíumhýdroxíð og vatnslausn af natríumklór…",
+     "en": "(c) Aqueous solutions of magnesium chloride and sodium hydroxide react to produce solid magnes…"
+    },
+    {
+     "segmentId": "m68709:problem:fs-idm22160384",
+     "chapter": 4,
+     "moduleId": "m68709",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "inflected-not-in-paradigm"
+     ],
+     "tokens": [
+      "magnesíums"
+     ],
+     "hasMgSymbol": false,
+     "is": "…ríkir flugeldar fela oft í sér niðurbrot baríumnítrats og kalíumklórats og hvarf málmanna magnesíums, áls og járns við súrefni.",
+     "en": "…trate and potassium chlorate and the reaction of the metals magnesium, aluminum, and iron with oxygen."
+    },
+    {
+     "segmentId": "m68709:problem:fs-idp208977456",
+     "chapter": 4,
+     "moduleId": "m68709",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "inflected-not-in-paradigm"
+     ],
+     "tokens": [
+      "magnesíums"
+     ],
+     "hasMgSymbol": false,
+     "is": "(d) Skrifið aðskildar jöfnur fyrir hvörf föstu málmanna magnesíums, áls og járns við tvíatóma súrefnisgas til að mynda samsvarandi málmoxíð. (Gerið ráð fyri…",
+     "en": "…te separate equations for the reactions of the solid metals magnesium, aluminum, and iron with diatomic oxygen gas to yield the c…"
+    },
+    {
+     "segmentId": "m68709:problem:fs-idm721584",
+     "chapter": 4,
+     "moduleId": "m68709",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumklóríð",
+      "magnesíumhýdroxíð"
+     ],
+     "hasMgSymbol": false,
+     "is": "(c) Föstu kalsíumhýdroxíði er síðan bætt út í sjóinn, þar sem það hvarfast við uppleyst magnesíumklóríð og myndar fast magnesíumhýdroxíð og vatnslausn af kalsíumklóríði.",
+     "en": "…xide is then added to the seawater, reacting with dissolved magnesium chloride to yield solid magnesium hydroxide and aqueous cal…"
+    },
+    {
+     "segmentId": "m68709:problem:fs-idm721024",
+     "chapter": 4,
+     "moduleId": "m68709",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíðinu",
+      "magnesíumklóríð"
+     ],
+     "hasMgSymbol": false,
+     "is": "(d) Fasta magnesíumhýdroxíðinu er bætt út í saltsýrulausn, sem myndar uppleyst magnesíumklóríð og fljótandi vatn.",
+     "en": "(d) The solid magnesium hydroxide is added to a hydrochloric acid solution, produci…"
+    },
+    {
+     "segmentId": "m68709:problem:fs-idm720496",
+     "chapter": 4,
+     "moduleId": "m68709",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumklóríðið",
+      "magnesíummálm"
+     ],
+     "hasMgSymbol": false,
+     "is": "(e) Að lokum er magnesíumklóríðið brætt og rafgreint til að gefa af sér fljótandi magnesíummálm og tvíatóma klórgas.",
+     "en": "(e) Finally, the magnesium chloride is melted and electrolyzed to yield liquid magnesi…"
+    },
+    {
+     "segmentId": "m68710:para:fs-idm52053696",
+     "chapter": 4,
+     "moduleId": "m68710",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumklóríð"
+     ],
+     "hasMgSymbol": false,
+     "is": "Takið eftir að auk vatns myndar þetta hvarf salt, magnesíumklóríð.",
+     "en": "…e that in addition to water, this reaction produces a salt, magnesium chloride."
+    },
+    {
+     "segmentId": "m68710:problem:fs-idp26248864",
+     "chapter": 4,
+     "moduleId": "m68710",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound",
+      "inflected-not-in-paradigm"
+     ],
+     "tokens": [
+      "magnesíummálmur",
+      "magnesíumsins"
+     ],
+     "hasMgSymbol": true,
+     "is": "Í algengri tilraun á almennri efnafræðistofu er magnesíummálmur hitaður í lofti til að framleiða MgO. MgO er hvítt fast efni, en í þessum tilraunum lítur…",
+     "en": "In a common experiment in the general chemistry laboratory, magnesium metal is heated in air to produce MgO. MgO is a white solid…"
+    },
+    {
+     "segmentId": "m68713:para:fs-idp56844080",
+     "chapter": 4,
+     "moduleId": "m68713",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíummjólk",
+      "magnesíumhýdroxíð"
+     ],
+     "hasMgSymbol": true,
+     "is": "…ersu mikinn massa af natríumhýdroxíði, NaOH, þyrfti til að framleiða 16 g af sýrubindandi magnesíummjólk [magnesíumhýdroxíð, Mg(OH)[[sub:2]]] með eftirfarandi efnahvarfi?",
+     "en": "…e required to produce 16 g of the antacid milk of magnesia [magnesium hydroxide, Mg(OH)[[sub:2]]] by the following reaction?"
+    },
+    {
+     "segmentId": "m68713:problem:fs-idp38709616",
+     "chapter": 4,
+     "moduleId": "m68713",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumkarbónats"
+     ],
+     "hasMgSymbol": false,
+     "is": "(c) Fjölda móla og massa magnesíumkarbónats, MgCO[[sub:3]], sem þarf til að mynda 283 g af koltvíoxíði. (MgO er hin afurðin.)",
+     "en": "(c) The number of moles and the mass of magnesium carbonate, MgCO[[sub:3]], required to produce 283 g of carb…"
+    },
+    {
+     "segmentId": "m68739:alt:fs-idp678720-alt",
+     "chapter": 7,
+     "moduleId": "m68739",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "Magnesíumtákn",
+      "magnesíumtákn",
+      "magnesíumatóm",
+      "magnesíumoxíð",
+      "magnesíumjón"
+     ],
+     "hasMgSymbol": false,
+     "is": "… klóríðjón)“ eru skrifuð undir efnahvarfið. Þriðja röðin sýnir Lewis-formúlur efnahvarfs. Magnesíumtákn með tveimur rauðum punktum, plúsmerki og súrefnistákn með sex punktum eru vinstra megin v…",
+     "en": "…. The third row shows the Lewis structures of a reaction. A magnesium symbol with two red dots, a plus sign, and an oxygen symbol…"
+    },
+    {
+     "segmentId": "m68783:para:fs-idp175903616",
+     "chapter": 11,
+     "moduleId": "m68783",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumklóríð"
+     ],
+     "hasMgSymbol": false,
+     "is": "Natríumklóríð og hliðstæður þess í flokki 2, kalsíum- og magnesíumklóríð, eru oft notuð til að afísa vegi og gangstéttir, vegna þess að lausn af einhverju þessara…",
+     "en": "Sodium chloride and its group 2 analogs calcium and magnesium chloride are often used to de-ice roadways and sidewalks, d…"
+    },
+    {
+     "segmentId": "m68784:para:fs-idm189696128",
+     "chapter": 11,
+     "moduleId": "m68784",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumsambönd"
+     ],
+     "hasMgSymbol": false,
+     "is": "…a súlfónat—[[MATH:3]] ([[xref:CNX_Chem_11_05_detrg]]). Sápur mynda óleysanleg kalsíum- og magnesíumsambönd í hörðu vatni; þvottaefni mynda vatnsleysanlegar afurðir—sem er afgerandi kostur fyrir þv…",
+     "en": "…f:CNX_Chem_11_05_detrg]]). Soaps form insoluble calcium and magnesium compounds in hard water; detergents form water-soluble prod…"
+    },
+    {
+     "segmentId": "m68787:problem:fs-idm151736608",
+     "chapter": 12,
+     "moduleId": "m68787",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíummálms",
+      "magnesíumbitanna"
+     ],
+     "hasMgSymbol": false,
+     "is": "Lýstu áhrifum hvers eftirfarandi á hraða efnahvarfs magnesíummálms við lausn af saltsýru: mólstyrk saltsýrunnar, hitastig lausnarinnar og stærð magnesíumbit…",
+     "en": "…ect of each of the following on the rate of the reaction of magnesium metal with a solution of hydrochloric acid: the molarity of…"
+    },
+    {
+     "segmentId": "m68787:solution:fs-idm120667552",
+     "chapter": 12,
+     "moduleId": "m68787",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíummálmi"
+     ],
+     "hasMgSymbol": false,
+     "is": "…yrkur eykur hraða efnahvarfsins. Hærra hitastig eykur hraða efnahvarfsins. Minni bitar af magnesíummálmi hvarfast hraðar en stærri bitar vegna þess að meira hvarfgjarnt yfirborð er til staðar.",
+     "en": "…ature increases the rate of the reaction. Smaller pieces of magnesium metal will react more rapidly than larger pieces because mo…"
+    },
+    {
+     "segmentId": "m68811:para:fs-idp681040",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound",
+      "other-magnes"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíð",
+      "Magnesia"
+     ],
+     "hasMgSymbol": true,
+     "is": "(c) Mg(OH)[[sub:2]], magnesíumhýdroxíð, virka efnið í Milk of Magnesia",
+     "en": "(c) Mg(OH)[[sub:2]], magnesium hydroxide, the active ingredient in Milk of Magnesia"
+    },
+    {
+     "segmentId": "m68811:para:fs-idp15157136",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíummálmi"
+     ],
+     "hasMgSymbol": true,
+     "is": "Fyrsta skrefið í framleiðslu á magnesíummálmi er botnfelling Mg(OH)[[sub:2]] úr sjó með því að bæta við kalki, Ca(OH)[[sub:2]], sem er …",
+     "en": "The first step in the preparation of magnesium metal is the precipitation of Mg(OH)[[sub:2]] from sea wate…"
+    },
+    {
+     "segmentId": "m68811:para:fs-idp11854608",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíð"
+     ],
+     "hasMgSymbol": false,
+     "is": "…en [[i:K]][[sub:sp]] = 8,9 [[MATH:35]] 10[[sup:–12]]), mun öfuga hvarfið eiga sér stað og magnesíumhýdroxíð falla út þar til styrkur uppleystra jóna hefur lækkað nægilega, þannig að [[i:Q[[sub:sp]]…",
+     "en": "…up:–12]]), the reverse reaction will proceed, precipitating magnesium hydroxide until the dissolved ion concentrations have been …"
+    },
+    {
+     "segmentId": "m68811:para:fs-idp1193504",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíummálmi"
+     ],
+     "hasMgSymbol": true,
+     "is": "Fyrsta skrefið í framleiðslu á magnesíummálmi er botnfelling Mg(OH)[[sub:2]] úr sjó með því að bæta við Ca(OH)[[sub:2]]. Styrkur Mg[[su…",
+     "en": "The first step in the preparation of magnesium metal is the precipitation of Mg(OH)[[sub:2]] from sea wate…"
+    },
+    {
+     "segmentId": "m68811:para:fs-idm745168",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíðs"
+     ],
+     "hasMgSymbol": true,
+     "is": "…ra leysnijafnvæginu til vinstri, sem minnkar styrk hýdroxíðjónar og eykur magn óuppleysts magnesíumhýdroxíðs.",
+     "en": "…n of hydroxide ion and increasing the amount of undissolved magnesium hydroxide."
+    },
+    {
+     "segmentId": "m68811:para:fs-idm743248",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumjónar",
+      "magnesíumhýdroxíðs"
+     ],
+     "hasMgSymbol": false,
+     "is": "…, mun auka styrk þessarar jónar og hliðra leysnijafnvæginu til vinstri, sem minnkar styrk magnesíumjónar og eykur magn óuppleysts magnesíumhýdroxíðs.",
+     "en": "…ty equilibrium to the left, decreasing the concentration of magnesium ion and increasing the amount of undissolved magnesium hydr…"
+    },
+    {
+     "segmentId": "m68811:para:fs-idm330455632",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíðs"
+     ],
+     "hasMgSymbol": false,
+     "is": "…ætt er við inniheldur ekki sameiginlega jón og engin áhrif eru væntanleg á leysnijafnvægi magnesíumhýdroxíðs.",
+     "en": "…ompound does not contain a common ion, and no effect on the magnesium hydroxide solubility equilibrium is expected."
+    },
+    {
+     "segmentId": "m68811:para:fs-idm735616",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíðs"
+     ],
+     "hasMgSymbol": false,
+     "is": "Þannig hefur það engin áhrif á gildi [[i:Q]] að breyta magni fasts magnesíumhýdroxíðs í blöndunni og engin hliðrun er nauðsynleg til að endurheimta gildi jafnvægisfastans fyri…",
+     "en": "Thus, changing the amount of solid magnesium hydroxide in the mixture has no effect on the value of [[i:…"
+    },
+    {
+     "segmentId": "m68811:problem:fs-idp2651648",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "Magnesíummálmur"
+     ],
+     "hasMgSymbol": false,
+     "is": "Magnesíummálmur (hluti af málmblöndum sem notaðar eru í flugvélar og afoxunarefni sem notað er við framle…",
+     "en": "Magnesium metal (a component of alloys used in aircraft and a reducin…"
+    },
+    {
+     "segmentId": "m68811:problem:fs-idp2976512",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "inflected-not-in-paradigm"
+     ],
+     "tokens": [
+      "magnesíums"
+     ],
+     "hasMgSymbol": false,
+     "is": "…rbónatjóna er aukinn smám saman í lausn sem inniheldur jafnan styrk af tvígildum katjónum magnesíums, kalsíums, strontíums, baríums og mangans. Hvert af eftirfarandi karbónötum fellur út fyr…",
+     "en": "… containing equal concentrations of the divalent cations of magnesium, calcium, strontium, barium, and manganese. Which of the fo…"
+    },
+    {
+     "segmentId": "m68822:para:fs-idm183571200",
+     "chapter": 17,
+     "moduleId": "m68822",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "inflected-not-in-paradigm"
+     ],
+     "tokens": [
+      "magnesíums"
+     ],
+     "hasMgSymbol": false,
+     "is": "…r (sjá [[xref:CNX_Chem_17_02_Oxidareduc]]) sem byggir á sjálfkrafa efnahvarfi milli fasts magnesíums og járn(III)jóna í vatnslausn:",
+     "en": "…idareduc]]) based on the spontaneous reaction between solid magnesium and aqueous iron(III) ions:"
+    },
+    {
+     "segmentId": "m68822:para:fs-idm215655008",
+     "chapter": 17,
+     "moduleId": "m68822",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumanóða",
+      "magnesíumklóríði"
+     ],
+     "hasMgSymbol": false,
+     "is": "Í þessu keri er föst magnesíumanóða á kafi í vatnslausn af magnesíumklóríði sem er tengd með saltbrú við vatnslausn sem innih…",
+     "en": "In this cell, a solid magnesium anode is immersed in an aqueous solution of magnesium chlor…"
+    },
+    {
+     "segmentId": "m68822:caption:CNX_Chem_17_02_Oxidareduc-caption",
+     "chapter": 17,
+     "moduleId": "m68822",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "inflected-not-in-paradigm"
+     ],
+     "tokens": [
+      "magnesíums"
+     ],
+     "hasMgSymbol": false,
+     "is": "Galvaníker sem byggir á sjálfkrafa efnahvarfi milli magnesíums og járn(III)jóna.",
+     "en": "A galvanic cell based on the spontaneous reaction between magnesium and iron(III) ions."
+    },
+    {
+     "segmentId": "m68822:problem:fs-idm95770176",
+     "chapter": 17,
+     "moduleId": "m68822",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumrafskaut"
+     ],
+     "hasMgSymbol": true,
+     "is": "…anstendur af gullrafskauti í 0,55 [[i:M]] Au(NO[[sub:3]])[[sub:3]]-lausn og forskautið er magnesíumrafskaut í 0,75 [[i:M]] Mg(NO[[sub:3]])[[sub:2]]-lausn.",
+     "en": "…[i:M]] Au(NO[[sub:3]])[[sub:3]] solution and the anode is a magnesium electrode in 0.75 [[i:M]] Mg(NO[[sub:3]])[[sub:2]] solution…"
+    },
+    {
+     "segmentId": "m68829:caption:CNX_Chem_18_01_CalciWater-caption",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "Magnesíummálmur"
+     ],
+     "hasMgSymbol": true,
+     "is": "Magnesíummálmur (vinstri krukka) hvarfast hægt við heitt vatn (miðkrukka) og myndar Mg[[sup:2+]] og OH[[s…",
+     "en": "Magnesium metal (left jar) reacts slowly with hot water (center jar) …"
+    },
+    {
+     "segmentId": "m68829:problem:fs-idp14648448",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "inflected-not-in-paradigm"
+     ],
+     "tokens": [
+      "magnesíums"
+     ],
+     "hasMgSymbol": false,
+     "is": "Er hvarf rúbidíums við vatn öflugra eða veikara en hvarf natríums? Hvernig er hvarfhraði magnesíums í samanburði?",
+     "en": "…orous than that of sodium? How does the rate of reaction of magnesium compare?"
+    },
+    {
+     "segmentId": "m68830:para:fs-idp217984240",
+     "chapter": 18,
+     "moduleId": "m68830",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "inflected-not-in-paradigm"
+     ],
+     "tokens": [
+      "magnesíums"
+     ],
+     "hasMgSymbol": false,
+     "is": "… rafgreiningu. Í næsta kafla munum við sjá hvernig Pidgeon-ferlið leiðir til efnaafoxunar magnesíums.",
+     "en": "… how the Pidgeon process leads to the chemical reduction of magnesium."
+    },
+    {
+     "segmentId": "m68830:para:fs-idp34921904",
+     "chapter": 18,
+     "moduleId": "m68830",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound",
+      "inflected-not-in-paradigm"
+     ],
+     "tokens": [
+      "magnesíumgufunnar",
+      "magnesíums"
+     ],
+     "hasMgSymbol": false,
+     "is": "Þrátt fyrir að þetta hvarf sé óhagstætt frá varmafræðilegu sjónarmiði, nýtir brottnám magnesíumgufunnar sem myndast lögmál Le Châteliers til að halda hvarfinu áfram í framátt. Yfir 75% af heims…",
+     "en": "… unfavorable in terms of thermodynamics, the removal of the magnesium vapor produced takes advantage of Le Châtelier’s principle …"
+    },
+    {
+     "segmentId": "m68830:para:fs-idp270452384",
+     "chapter": 18,
+     "moduleId": "m68830",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "inflected-not-in-paradigm"
+     ],
+     "tokens": [
+      "magnesíums"
+     ],
+     "hasMgSymbol": false,
+     "is": "…kilvæg við framleiðslu á natríum, kalíum og áli. Efnaafoxun er aðalaðferðin við einangrun magnesíums, sinks og tins. Svipaðar aðferðir eru mikilvægar fyrir aðra aðalflokkamálma.",
+     "en": "…emical reduction is the primary method for the isolation of magnesium, zinc, and tin. Similar procedures are important for the ot…"
+    },
+    {
+     "segmentId": "m68831:para:fs-idp120612224",
+     "chapter": 18,
+     "moduleId": "m68831",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumdufti"
+     ],
+     "hasMgSymbol": false,
+     "is": "Afoxun bóroxíðs með magnesíumdufti myndar bór (95–98,5% hreint) sem brúnt, myndlaust duft:",
+     "en": "Reduction of boric oxide with magnesium powder forms boron (95–98.5% pure) as a brown, amorphous po…"
+    },
+    {
+     "segmentId": "m68831:para:fs-idp204527824",
+     "chapter": 18,
+     "moduleId": "m68831",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumoxíðið"
+     ],
+     "hasMgSymbol": false,
+     "is": "…hefur ekki langdræga röðun eins og raunverulegt fast efni. Meðferð með saltsýru fjarlægir magnesíumoxíðið. Frekari hreinsun á bórinu hefst með því að breyta óhreina bórinu í bórtríklóríð. Næsta s…",
+     "en": "… a true solid. Treatment with hydrochloric acid removes the magnesium oxide. Further purification of the boron begins with conver…"
+    },
+    {
+     "segmentId": "m68831:problem:fs-idp114681504",
+     "chapter": 18,
+     "moduleId": "m68831",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumsílisíð"
+     ],
+     "hasMgSymbol": false,
+     "is": "(e) magnesíumsílisíð",
+     "en": "(e) magnesium silicide"
+    },
+    {
+     "segmentId": "m68834:para:fs-idm59038240",
+     "chapter": 18,
+     "moduleId": "m68834",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumkarbónati"
+     ],
+     "hasMgSymbol": false,
+     "is": "Að undanskildu magnesíumkarbónati er hægt að framleiða karbónöt málma í flokkum 1 og 2 með hvarfi koltvíoxíðs við samsvaran…",
+     "en": "With the exception of magnesium carbonate, it is possible to prepare carbonates of the meta…"
+    },
+    {
+     "segmentId": "m68837:para:fs-idp12102384",
+     "chapter": 18,
+     "moduleId": "m68837",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumoxíði",
+      "Magnesíumoxíð"
+     ],
+     "hasMgSymbol": false,
+     "is": "Oxíð alkalímálma hafa litla iðnaðarnotkun, ólíkt magnesíumoxíði, kalsíumoxíði og áloxíði. Magnesíumoxíð er mikilvægt við framleiðslu á eldföstum múrstein…",
+     "en": "…of the alkali metals have little industrial utility, unlike magnesium oxide, calcium oxide, and aluminum oxide. Magnesium oxide i…"
+    },
+    {
+     "segmentId": "m68837:para:fs-idm50382768",
+     "chapter": 18,
+     "moduleId": "m68837",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "inflected-not-in-paradigm",
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíums",
+      "magnesíumsalt"
+     ],
+     "hasMgSymbol": false,
+     "is": "Hægt er að búa til óleysanleg hýdroxíð beryllíums, magnesíums og annarra aðalflokkamálma með því að bæta natríumhýdroxíði við lausn af salti viðkomandi…",
+     "en": "… possible to prepare the insoluble hydroxides of beryllium, magnesium, and other representative metals by the addition of sodium …"
+    },
+    {
+     "segmentId": "m68837:para:fs-idm33972064",
+     "chapter": 18,
+     "moduleId": "m68837",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíði",
+      "magnesíummjólk"
+     ],
+     "hasMgSymbol": false,
+     "is": "…X_Chem_18_09_CaOH2]]) og til framleiðslu á oxíðum með hitaniðurbroti. Vatnskennd lausn af magnesíumhýdroxíði er sýrubindandi lyfið magnesíummjólk. Vegna þess hve auðvelt er að nálgast það (úr hvarfi…",
+     "en": "…f oxides by thermal decomposition. An aqueous suspension of magnesium hydroxide constitutes the antacid milk of magnesia. Because…"
+    },
+    {
+     "segmentId": "m68838:para:fs-idm222212272",
+     "chapter": 18,
+     "moduleId": "m68838",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "inflected-not-in-paradigm"
+     ],
+     "tokens": [
+      "magnesíums"
+     ],
+     "hasMgSymbol": false,
+     "is": "…mum, sem súlfíð járns, sinks, blýs og kopars og sem súlföt natríums, kalsíums, baríums og magnesíums. Brennisteinsvetni er oft hluti af jarðgasi og finnst í mörgum eldfjallagösum, eins og þe…",
+     "en": "…d, and copper, and sulfates of sodium, calcium, barium, and magnesium. Hydrogen sulfide is often a component of natural gas and o…"
+    },
+    {
+     "segmentId": "m68839:para:fs-idm16552608",
+     "chapter": 18,
+     "moduleId": "m68839",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "inflected-not-in-paradigm"
+     ],
+     "tokens": [
+      "magnesíums"
+     ],
+     "hasMgSymbol": false,
+     "is": "… Klór er einnig myndefni við rafgreiningarframleiðslu málma eins og natríums, kalsíums og magnesíums úr bræddum klóríðum þeirra. Einnig er hægt að framleiða klór með efnafræðilegri oxun klór…",
+     "en": "…ctrolytic production of metals such as sodium, calcium, and magnesium from their fused chlorides. It is also possible to prepare …"
+    },
+    {
+     "segmentId": "m68843:caption:CNX_Chem_19_02_ChlorBlue-caption",
+     "chapter": 19,
+     "moduleId": "m68843",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíummiðjuna"
+     ],
+     "hasMgSymbol": false,
+     "is": "…ræna kemur fyrir í nokkrum mismunandi myndum, sem allar hafa sömu grunnbyggingu í kringum magnesíummiðjuna. (b) Koparþalósýanínblátt, ferningslaga flatt kopargirðisamband, er til staðar í sumum bl…",
+     "en": "…t forms, which all have the same basic structure around the magnesium center. (b) Copper phthalocyanine blue, a square planar cop…"
+    },
+    {
+     "segmentId": "m68868:table-summary:fs-idm454814336-summary",
+     "chapter": -1,
+     "moduleId": "m68868",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumefni",
+      "magnesíumefni",
+      "magnesíumefni",
+      "magnesíumefni",
+      "magnesíumefni"
+     ],
+     "hasMgSymbol": false,
+     "is": "…fni, er leysnimargfeldið 1 sinnum 10 í veldinu mínus 54. Fyrir M g ( O H ) neðanskrift 2, magnesíumefni, er leysnimargfeldið 8,9 sinnum 10 í veldinu mínus 12. Fyrir M g C O neðanskrift 3 punktu…",
+     "en": "… 10 superscript negative 54. For M g ( O H ) subscript 2, a magnesium substance, the solubility product is 8.9 times 10 superscri…"
+    }
+   ],
+   "unclaimed": [],
+   "issueCount": 57,
+   "unclaimedCount": 0
+  },
+  "B.now": {
+   "segments": 119,
+   "matchedMagnesium": 119,
+   "passed": 66,
+   "issues": [
+    {
+     "segmentId": "m68698:table-summary:fs-idp282234816-summary",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumnítríð"
+     ],
+     "hasMgSymbol": false,
+     "is": "…, N a neðanskrift 2 O natríumoxíð, C d S kadmíumsúlfíð, M g neðanskrift 3 N neðanskrift 2 magnesíumnítríð, C a neðanskrift 3 P neðanskrift 2 kalsíumfosfíð og A l neðanskrift 4 C neðanskrift 3 álk…",
+     "en": "…oxide, C d S cadmium sulfide, M g subscript 3 N subscript 2 magnesium nitride, C a subscript 3 P subscript 2 calcium phosphide, a…"
+    },
+    {
+     "segmentId": "m68698:entry:auto-15",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumnítríð"
+     ],
+     "hasMgSymbol": true,
+     "is": "Mg[[sub:3]]N[[sub:2]], magnesíumnítríð",
+     "en": "Mg[[sub:3]]N[[sub:2]], magnesium nitride"
+    },
+    {
+     "segmentId": "m68698:table-summary:fs-idp279316112-summary",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumfosfat"
+     ],
+     "hasMgSymbol": false,
+     "is": "… S O neðanskrift 4 kalsíumsúlfat og M g neðanskrift 3 ( P O neðanskrift 4 ) neðanskrift 2 magnesíumfosfat.",
+     "en": "…ulfate, and M g subscript 3 ( P O subscript 4 ) subscript 2 magnesium phosphate."
+    },
+    {
+     "segmentId": "m68698:entry:auto-28",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumfosfat"
+     ],
+     "hasMgSymbol": true,
+     "is": "Mg[[sub:3]](PO[[sub:4]])[[sub:2]], magnesíumfosfat",
+     "en": "Mg[[sub:3]](PO[[sub:4]])[[sub:2]], magnesium phosphate"
+    },
+    {
+     "segmentId": "m68698:table-summary:fs-idp268265360-summary",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíð",
+      "magnesíumsúlfat"
+     ],
+     "hasMgSymbol": false,
+     "is": "… 3 kalsíumkarbónat sem er innihaldsefni í sýrubindandi lyfjum, M g ( O H ) neðanskrift 2, magnesíumhýdroxíð sem er einnig innihaldsefni í sýrubindandi lyfjum, A l ( O H ) neðanskrift 3 álhýdroxíð s…",
+     "en": "…hich is an ingredient of antacids, M g ( O H ) subscript 2, magnesium hydroxide which is also an ingredient of antacids, A l ( O …"
+    },
+    {
+     "segmentId": "m68698:entry:auto-48",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíð"
+     ],
+     "hasMgSymbol": true,
+     "is": "Mg(OH)[[sub:2]], magnesíumhýdroxíð",
+     "en": "Mg(OH)[[sub:2]], magnesium hydroxide"
+    },
+    {
+     "segmentId": "m68698:entry:auto-56",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumsúlfat"
+     ],
+     "hasMgSymbol": false,
+     "is": "MgSO[[sub:4]], magnesíumsúlfat",
+     "en": "MgSO[[sub:4]], magnesium sulfate"
+    },
+    {
+     "segmentId": "m68698:para:fs-idp283457424",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumsúlfat"
+     ],
+     "hasMgSymbol": false,
+     "is": "(d) magnesíumsúlfat heptahýdrat",
+     "en": "(d) magnesium sulfate heptahydrate"
+    },
+    {
+     "segmentId": "m68698:problem:fs-idm306432",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumseleníð"
+     ],
+     "hasMgSymbol": false,
+     "is": "(b) magnesíumseleníð",
+     "en": "(b) magnesium selenide"
+    },
+    {
+     "segmentId": "m68698:problem:fs-idp279468704",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumfosfat"
+     ],
+     "hasMgSymbol": false,
+     "is": "(g) magnesíumfosfat",
+     "en": "(g) magnesium phosphate"
+    },
+    {
+     "segmentId": "m68698:problem:fs-idp279320480",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumnítríð"
+     ],
+     "hasMgSymbol": false,
+     "is": "(b) magnesíumnítríð",
+     "en": "(b) magnesium nitride"
+    },
+    {
+     "segmentId": "m68709:problem:fs-idp45919792",
+     "chapter": 4,
+     "moduleId": "m68709",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumklóríði",
+      "magnesíumhýdroxíð"
+     ],
+     "hasMgSymbol": false,
+     "is": "(c) Vatnslausnir af magnesíumklóríði og natríumhýdroxíði hvarfast og mynda fast magnesíumhýdroxíð og vatnslausn af natríumklór…",
+     "en": "(c) Aqueous solutions of magnesium chloride and sodium hydroxide react to produce solid magnes…"
+    },
+    {
+     "segmentId": "m68709:problem:fs-idm721584",
+     "chapter": 4,
+     "moduleId": "m68709",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumklóríð",
+      "magnesíumhýdroxíð"
+     ],
+     "hasMgSymbol": false,
+     "is": "(c) Föstu kalsíumhýdroxíði er síðan bætt út í sjóinn, þar sem það hvarfast við uppleyst magnesíumklóríð og myndar fast magnesíumhýdroxíð og vatnslausn af kalsíumklóríði.",
+     "en": "…xide is then added to the seawater, reacting with dissolved magnesium chloride to yield solid magnesium hydroxide and aqueous cal…"
+    },
+    {
+     "segmentId": "m68709:problem:fs-idm721024",
+     "chapter": 4,
+     "moduleId": "m68709",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíðinu",
+      "magnesíumklóríð"
+     ],
+     "hasMgSymbol": false,
+     "is": "(d) Fasta magnesíumhýdroxíðinu er bætt út í saltsýrulausn, sem myndar uppleyst magnesíumklóríð og fljótandi vatn.",
+     "en": "(d) The solid magnesium hydroxide is added to a hydrochloric acid solution, produci…"
+    },
+    {
+     "segmentId": "m68709:problem:fs-idm720496",
+     "chapter": 4,
+     "moduleId": "m68709",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumklóríðið",
+      "magnesíummálm"
+     ],
+     "hasMgSymbol": false,
+     "is": "(e) Að lokum er magnesíumklóríðið brætt og rafgreint til að gefa af sér fljótandi magnesíummálm og tvíatóma klórgas.",
+     "en": "(e) Finally, the magnesium chloride is melted and electrolyzed to yield liquid magnesi…"
+    },
+    {
+     "segmentId": "m68710:para:fs-idm52053696",
+     "chapter": 4,
+     "moduleId": "m68710",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumklóríð"
+     ],
+     "hasMgSymbol": false,
+     "is": "Takið eftir að auk vatns myndar þetta hvarf salt, magnesíumklóríð.",
+     "en": "…e that in addition to water, this reaction produces a salt, magnesium chloride."
+    },
+    {
+     "segmentId": "m68710:problem:fs-idp26248864",
+     "chapter": 4,
+     "moduleId": "m68710",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesínmálmur",
+      "magnesínsins"
+     ],
+     "hasMgSymbol": true,
+     "is": "Í algengri tilraun á almennri efnafræðistofu er magnesínmálmur hitaður í lofti til að framleiða MgO. MgO er hvítt fast efni, en í þessum tilraunum lítur…",
+     "en": "In a common experiment in the general chemistry laboratory, magnesium metal is heated in air to produce MgO. MgO is a white solid…"
+    },
+    {
+     "segmentId": "m68713:para:fs-idp56844080",
+     "chapter": 4,
+     "moduleId": "m68713",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíummjólk",
+      "magnesíumhýdroxíð"
+     ],
+     "hasMgSymbol": true,
+     "is": "…ersu mikinn massa af natríumhýdroxíði, NaOH, þyrfti til að framleiða 16 g af sýrubindandi magnesíummjólk [magnesíumhýdroxíð, Mg(OH)[[sub:2]]] með eftirfarandi efnahvarfi?",
+     "en": "…e required to produce 16 g of the antacid milk of magnesia [magnesium hydroxide, Mg(OH)[[sub:2]]] by the following reaction?"
+    },
+    {
+     "segmentId": "m68713:problem:fs-idp38709616",
+     "chapter": 4,
+     "moduleId": "m68713",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumkarbónats"
+     ],
+     "hasMgSymbol": false,
+     "is": "(c) Fjölda móla og massa magnesíumkarbónats, MgCO[[sub:3]], sem þarf til að mynda 283 g af koltvíoxíði. (MgO er hin afurðin.)",
+     "en": "(c) The number of moles and the mass of magnesium carbonate, MgCO[[sub:3]], required to produce 283 g of carb…"
+    },
+    {
+     "segmentId": "m68727:entry:auto-71",
+     "chapter": 5,
+     "moduleId": "m68727",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "magnesín",
+     "en": "magnesium"
+    },
+    {
+     "segmentId": "m68734:para:fs-idp77726784",
+     "chapter": 6,
+     "moduleId": "m68734",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "…tín og natrín hafa hvor um sig aðeins eina gildisrafeind, jarðalkalímálmarnir beryllín og magnesín hafa hvor um sig tvær og halógenarnir flúor og klór hafa hvor um sig sjö gildisrafeindir.…",
+     "en": "…e valence electron, the alkaline earth metals beryllium and magnesium each have two, and the halogens fluorine and chlorine each …"
+    },
+    {
+     "segmentId": "m68739:alt:fs-idp678720-alt",
+     "chapter": 7,
+     "moduleId": "m68739",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "Magnesíumtákn",
+      "magnesíumtákn",
+      "magnesíumatóm",
+      "magnesíumoxíð",
+      "magnesíumjón"
+     ],
+     "hasMgSymbol": false,
+     "is": "… klóríðjón)“ eru skrifuð undir efnahvarfið. Þriðja röðin sýnir Lewis-formúlur efnahvarfs. Magnesíumtákn með tveimur rauðum punktum, plúsmerki og súrefnistákn með sex punktum eru vinstra megin v…",
+     "en": "…. The third row shows the Lewis structures of a reaction. A magnesium symbol with two red dots, a plus sign, and an oxygen symbol…"
+    },
+    {
+     "segmentId": "m68773:problem:fs-idp109499216",
+     "chapter": 10,
+     "moduleId": "m68773",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesíni"
+     ],
+     "hasMgSymbol": false,
+     "is": "…ni kviku settust mismunandi jónir í sömu sæti í kristöllunum. Litín kemur oft fyrir ásamt magnesíni í steindum þrátt fyrir mismunandi hleðslu jónanna. Stingdu upp á útskýringu.",
+     "en": "…same cites in the crystals. Lithium often occurs along with magnesium in minerals despite the difference in the charge on their i…"
+    },
+    {
+     "segmentId": "m68783:para:fs-idp175903616",
+     "chapter": 11,
+     "moduleId": "m68783",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumklóríð"
+     ],
+     "hasMgSymbol": false,
+     "is": "Natríumklóríð og hliðstæður þess í flokki 2, kalsíum- og magnesíumklóríð, eru oft notuð til að afísa vegi og gangstéttir, vegna þess að lausn af einhverju þessara…",
+     "en": "Sodium chloride and its group 2 analogs calcium and magnesium chloride are often used to de-ice roadways and sidewalks, d…"
+    },
+    {
+     "segmentId": "m68784:para:fs-idm189696128",
+     "chapter": 11,
+     "moduleId": "m68784",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumsambönd"
+     ],
+     "hasMgSymbol": false,
+     "is": "…a súlfónat—[[MATH:3]] ([[xref:CNX_Chem_11_05_detrg]]). Sápur mynda óleysanleg kalsíum- og magnesíumsambönd í hörðu vatni; þvottaefni mynda vatnsleysanlegar afurðir—sem er afgerandi kostur fyrir þv…",
+     "en": "…f:CNX_Chem_11_05_detrg]]). Soaps form insoluble calcium and magnesium compounds in hard water; detergents form water-soluble prod…"
+    },
+    {
+     "segmentId": "m68787:problem:fs-idm151736608",
+     "chapter": 12,
+     "moduleId": "m68787",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíummálms",
+      "magnesíumbitanna"
+     ],
+     "hasMgSymbol": false,
+     "is": "Lýstu áhrifum hvers eftirfarandi á hraða efnahvarfs magnesíummálms við lausn af saltsýru: mólstyrk saltsýrunnar, hitastig lausnarinnar og stærð magnesíumbit…",
+     "en": "…ect of each of the following on the rate of the reaction of magnesium metal with a solution of hydrochloric acid: the molarity of…"
+    },
+    {
+     "segmentId": "m68787:solution:fs-idm120667552",
+     "chapter": 12,
+     "moduleId": "m68787",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíummálmi"
+     ],
+     "hasMgSymbol": false,
+     "is": "…yrkur eykur hraða efnahvarfsins. Hærra hitastig eykur hraða efnahvarfsins. Minni bitar af magnesíummálmi hvarfast hraðar en stærri bitar vegna þess að meira hvarfgjarnt yfirborð er til staðar.",
+     "en": "…ature increases the rate of the reaction. Smaller pieces of magnesium metal will react more rapidly than larger pieces because mo…"
+    },
+    {
+     "segmentId": "m68811:para:fs-idp681040",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound",
+      "other-magnes"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíð",
+      "Magnesia"
+     ],
+     "hasMgSymbol": true,
+     "is": "(c) Mg(OH)[[sub:2]], magnesíumhýdroxíð, virka efnið í Milk of Magnesia",
+     "en": "(c) Mg(OH)[[sub:2]], magnesium hydroxide, the active ingredient in Milk of Magnesia"
+    },
+    {
+     "segmentId": "m68811:para:fs-idp15157136",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíummálmi"
+     ],
+     "hasMgSymbol": true,
+     "is": "Fyrsta skrefið í framleiðslu á magnesíummálmi er botnfelling Mg(OH)[[sub:2]] úr sjó með því að bæta við kalki, Ca(OH)[[sub:2]], sem er …",
+     "en": "The first step in the preparation of magnesium metal is the precipitation of Mg(OH)[[sub:2]] from sea wate…"
+    },
+    {
+     "segmentId": "m68811:para:fs-idp11854608",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíð"
+     ],
+     "hasMgSymbol": false,
+     "is": "…en [[i:K]][[sub:sp]] = 8,9 [[MATH:35]] 10[[sup:–12]]), mun öfuga hvarfið eiga sér stað og magnesíumhýdroxíð falla út þar til styrkur uppleystra jóna hefur lækkað nægilega, þannig að [[i:Q[[sub:sp]]…",
+     "en": "…up:–12]]), the reverse reaction will proceed, precipitating magnesium hydroxide until the dissolved ion concentrations have been …"
+    },
+    {
+     "segmentId": "m68811:para:fs-idp1193504",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíummálmi"
+     ],
+     "hasMgSymbol": true,
+     "is": "Fyrsta skrefið í framleiðslu á magnesíummálmi er botnfelling Mg(OH)[[sub:2]] úr sjó með því að bæta við Ca(OH)[[sub:2]]. Styrkur Mg[[su…",
+     "en": "The first step in the preparation of magnesium metal is the precipitation of Mg(OH)[[sub:2]] from sea wate…"
+    },
+    {
+     "segmentId": "m68811:para:fs-idm745168",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíðs"
+     ],
+     "hasMgSymbol": true,
+     "is": "…ra leysnijafnvæginu til vinstri, sem minnkar styrk hýdroxíðjónar og eykur magn óuppleysts magnesíumhýdroxíðs.",
+     "en": "…n of hydroxide ion and increasing the amount of undissolved magnesium hydroxide."
+    },
+    {
+     "segmentId": "m68811:para:fs-idm743248",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumjónar",
+      "magnesíumhýdroxíðs"
+     ],
+     "hasMgSymbol": false,
+     "is": "…, mun auka styrk þessarar jónar og hliðra leysnijafnvæginu til vinstri, sem minnkar styrk magnesíumjónar og eykur magn óuppleysts magnesíumhýdroxíðs.",
+     "en": "…ty equilibrium to the left, decreasing the concentration of magnesium ion and increasing the amount of undissolved magnesium hydr…"
+    },
+    {
+     "segmentId": "m68811:para:fs-idm330455632",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíðs"
+     ],
+     "hasMgSymbol": false,
+     "is": "…ætt er við inniheldur ekki sameiginlega jón og engin áhrif eru væntanleg á leysnijafnvægi magnesíumhýdroxíðs.",
+     "en": "…ompound does not contain a common ion, and no effect on the magnesium hydroxide solubility equilibrium is expected."
+    },
+    {
+     "segmentId": "m68811:para:fs-idm735616",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíðs"
+     ],
+     "hasMgSymbol": false,
+     "is": "Þannig hefur það engin áhrif á gildi [[i:Q]] að breyta magni fasts magnesíumhýdroxíðs í blöndunni og engin hliðrun er nauðsynleg til að endurheimta gildi jafnvægisfastans fyri…",
+     "en": "Thus, changing the amount of solid magnesium hydroxide in the mixture has no effect on the value of [[i:…"
+    },
+    {
+     "segmentId": "m68811:problem:fs-idp2651648",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "Magnesíummálmur"
+     ],
+     "hasMgSymbol": false,
+     "is": "Magnesíummálmur (hluti af málmblöndum sem notaðar eru í flugvélar og afoxunarefni sem notað er við framle…",
+     "en": "Magnesium metal (a component of alloys used in aircraft and a reducin…"
+    },
+    {
+     "segmentId": "m68822:para:fs-idm215655008",
+     "chapter": 17,
+     "moduleId": "m68822",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumanóða",
+      "magnesíumklóríði"
+     ],
+     "hasMgSymbol": false,
+     "is": "Í þessu keri er föst magnesíumanóða á kafi í vatnslausn af magnesíumklóríði sem er tengd með saltbrú við vatnslausn sem innih…",
+     "en": "In this cell, a solid magnesium anode is immersed in an aqueous solution of magnesium chlor…"
+    },
+    {
+     "segmentId": "m68822:problem:fs-idm95770176",
+     "chapter": 17,
+     "moduleId": "m68822",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumrafskaut"
+     ],
+     "hasMgSymbol": true,
+     "is": "…anstendur af gullrafskauti í 0,55 [[i:M]] Au(NO[[sub:3]])[[sub:3]]-lausn og forskautið er magnesíumrafskaut í 0,75 [[i:M]] Mg(NO[[sub:3]])[[sub:2]]-lausn.",
+     "en": "…[i:M]] Au(NO[[sub:3]])[[sub:3]] solution and the anode is a magnesium electrode in 0.75 [[i:M]] Mg(NO[[sub:3]])[[sub:2]] solution…"
+    },
+    {
+     "segmentId": "m68829:para:fs-idp45202896",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesín",
+      "magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "[[term:Jarðalkalímálmarnir|term-00006]] (beryllín, magnesín, kalsín, strontín, barín og radín) mynda flokk 2 í lotukerfinu. Nafnið jarðalkalímálmur k…",
+     "en": "The [[term:alkaline earth metals|term-00006]] (beryllium, magnesium, calcium, strontium, barium, and radium) constitute group 2…"
+    },
+    {
+     "segmentId": "m68829:para:fs-idp261367120",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "Magnesín",
+      "magnesínmálms",
+      "magnesínoxýkarbónati",
+      "Magnesín",
+      "magnesínframleiðslu"
+     ],
+     "hasMgSymbol": false,
+     "is": "Magnesín er silfurhvítur málmur sem er teygjanlegur og sveigjanlegur við hátt hitastig. Yfirborðsh…",
+     "en": "Magnesium is a silver-white metal that is malleable and ductile at hi…"
+    },
+    {
+     "segmentId": "m68829:para:fs-idm12445424",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "Magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "Magnesín (sýnt á [[xref:CNX_Chem_18_01_CalciWater]]), kalsín, strontín og barín hvarfast við vatn …",
+     "en": "Magnesium (shown in [[xref:CNX_Chem_18_01_CalciWater]]), calcium, str…"
+    },
+    {
+     "segmentId": "m68829:caption:CNX_Chem_18_01_CalciWater-caption",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "Magnesínmálmur"
+     ],
+     "hasMgSymbol": true,
+     "is": "Magnesínmálmur (vinstri krukka) hvarfast hægt við heitt vatn (miðkrukka) og myndar Mg[[sup:2+]] og OH[[s…",
+     "en": "Magnesium metal (left jar) reacts slowly with hot water (center jar) …"
+    },
+    {
+     "segmentId": "m68829:para:fs-idp171667088",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesíns",
+      "magnesíns",
+      "magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "Hinn öflugi afoxunarmáttur heits magnesíns er gagnlegur við framleiðslu sumra málma úr oxíðum þeirra. Sækni magnesíns í súrefni er s…",
+     "en": "The potent reducing power of hot magnesium is useful in preparing some metals from their oxides. Indee…"
+    },
+    {
+     "segmentId": "m68829:para:fs-idp110638672",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesíneld",
+      "magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "Af þessari ástæðu mun CO[[sub:2]]-slökkvitæki ekki slökkva magnesíneld. Auk þess gerir hið skærhvíta ljós sem brennandi magnesín gefur frá sér það gagnlegt í ne…",
+     "en": "…ason, a CO[[sub:2]] fire extinguisher will not extinguish a magnesium fire. Additionally, the brilliant white light emitted by bu…"
+    },
+    {
+     "segmentId": "m68831:para:fs-idp120612224",
+     "chapter": 18,
+     "moduleId": "m68831",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumdufti"
+     ],
+     "hasMgSymbol": false,
+     "is": "Afoxun bóroxíðs með magnesíumdufti myndar bór (95–98,5% hreint) sem brúnt, myndlaust duft:",
+     "en": "Reduction of boric oxide with magnesium powder forms boron (95–98.5% pure) as a brown, amorphous po…"
+    },
+    {
+     "segmentId": "m68831:para:fs-idp204527824",
+     "chapter": 18,
+     "moduleId": "m68831",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumoxíðið"
+     ],
+     "hasMgSymbol": false,
+     "is": "…hefur ekki langdræga röðun eins og raunverulegt fast efni. Meðferð með saltsýru fjarlægir magnesíumoxíðið. Frekari hreinsun á bórinu hefst með því að breyta óhreina bórinu í bórtríklóríð. Næsta s…",
+     "en": "… a true solid. Treatment with hydrochloric acid removes the magnesium oxide. Further purification of the boron begins with conver…"
+    },
+    {
+     "segmentId": "m68831:problem:fs-idp114681504",
+     "chapter": 18,
+     "moduleId": "m68831",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumsílisíð"
+     ],
+     "hasMgSymbol": false,
+     "is": "(e) magnesíumsílisíð",
+     "en": "(e) magnesium silicide"
+    },
+    {
+     "segmentId": "m68834:para:fs-idm37877696",
+     "chapter": 18,
+     "moduleId": "m68834",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesín"
+     ],
+     "hasMgSymbol": false,
+     "is": "…|term-00001]] – efnasambönd sem innihalda karbónatanjónir, [[MATH:1]]. Málmar í flokki 1, magnesín, kalsín, strontín og barín mynda einnig [[term:vetniskarbónöt|term-00002]] – efnasambönd …",
+     "en": "…ain the carbonate anions, [[MATH:1]] The metals of group 1, magnesium, calcium, strontium, and barium also form [[term:hydrogen c…"
+    },
+    {
+     "segmentId": "m68834:para:fs-idm59038240",
+     "chapter": 18,
+     "moduleId": "m68834",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "non-official-magnesín"
+     ],
+     "tokens": [
+      "magnesínkarbónati"
+     ],
+     "hasMgSymbol": false,
+     "is": "Að undanskildu magnesínkarbónati er hægt að framleiða karbónöt málma í flokkum 1 og 2 með hvarfi koltvíoxíðs við samsvaran…",
+     "en": "With the exception of magnesium carbonate, it is possible to prepare carbonates of the meta…"
+    },
+    {
+     "segmentId": "m68837:para:fs-idp12102384",
+     "chapter": 18,
+     "moduleId": "m68837",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumoxíði",
+      "Magnesíumoxíð"
+     ],
+     "hasMgSymbol": false,
+     "is": "Oxíð alkalímálma hafa litla iðnaðarnotkun, ólíkt magnesíumoxíði, kalsíumoxíði og áloxíði. Magnesíumoxíð er mikilvægt við framleiðslu á eldföstum múrstein…",
+     "en": "…of the alkali metals have little industrial utility, unlike magnesium oxide, calcium oxide, and aluminum oxide. Magnesium oxide i…"
+    },
+    {
+     "segmentId": "m68837:para:fs-idm33972064",
+     "chapter": 18,
+     "moduleId": "m68837",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíði",
+      "magnesíummjólk"
+     ],
+     "hasMgSymbol": false,
+     "is": "…X_Chem_18_09_CaOH2]]) og til framleiðslu á oxíðum með hitaniðurbroti. Vatnskennd lausn af magnesíumhýdroxíði er sýrubindandi lyfið magnesíummjólk. Vegna þess hve auðvelt er að nálgast það (úr hvarfi…",
+     "en": "…f oxides by thermal decomposition. An aqueous suspension of magnesium hydroxide constitutes the antacid milk of magnesia. Because…"
+    },
+    {
+     "segmentId": "m68843:caption:CNX_Chem_19_02_ChlorBlue-caption",
+     "chapter": 19,
+     "moduleId": "m68843",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíummiðjuna"
+     ],
+     "hasMgSymbol": false,
+     "is": "…ræna kemur fyrir í nokkrum mismunandi myndum, sem allar hafa sömu grunnbyggingu í kringum magnesíummiðjuna. (b) Koparþalósýanínblátt, ferningslaga flatt kopargirðisamband, er til staðar í sumum bl…",
+     "en": "…t forms, which all have the same basic structure around the magnesium center. (b) Copper phthalocyanine blue, a square planar cop…"
+    },
+    {
+     "segmentId": "m68868:table-summary:fs-idm454814336-summary",
+     "chapter": -1,
+     "moduleId": "m68868",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumefni",
+      "magnesíumefni",
+      "magnesíumefni",
+      "magnesíumefni",
+      "magnesíumefni"
+     ],
+     "hasMgSymbol": false,
+     "is": "…fni, er leysnimargfeldið 1 sinnum 10 í veldinu mínus 54. Fyrir M g ( O H ) neðanskrift 2, magnesíumefni, er leysnimargfeldið 8,9 sinnum 10 í veldinu mínus 12. Fyrir M g C O neðanskrift 3 punktu…",
+     "en": "… 10 superscript negative 54. For M g ( O H ) subscript 2, a magnesium substance, the solubility product is 8.9 times 10 superscri…"
+    }
+   ],
+   "unclaimed": [],
+   "issueCount": 53,
+   "unclaimedCount": 0
+  },
+  "B.fixed": {
+   "segments": 119,
+   "matchedMagnesium": 119,
+   "passed": 76,
+   "issues": [
+    {
+     "segmentId": "m68698:table-summary:fs-idp282234816-summary",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumnítríð"
+     ],
+     "hasMgSymbol": false,
+     "is": "…, N a neðanskrift 2 O natríumoxíð, C d S kadmíumsúlfíð, M g neðanskrift 3 N neðanskrift 2 magnesíumnítríð, C a neðanskrift 3 P neðanskrift 2 kalsíumfosfíð og A l neðanskrift 4 C neðanskrift 3 álk…",
+     "en": "…oxide, C d S cadmium sulfide, M g subscript 3 N subscript 2 magnesium nitride, C a subscript 3 P subscript 2 calcium phosphide, a…"
+    },
+    {
+     "segmentId": "m68698:entry:auto-15",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumnítríð"
+     ],
+     "hasMgSymbol": true,
+     "is": "Mg[[sub:3]]N[[sub:2]], magnesíumnítríð",
+     "en": "Mg[[sub:3]]N[[sub:2]], magnesium nitride"
+    },
+    {
+     "segmentId": "m68698:table-summary:fs-idp279316112-summary",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumfosfat"
+     ],
+     "hasMgSymbol": false,
+     "is": "… S O neðanskrift 4 kalsíumsúlfat og M g neðanskrift 3 ( P O neðanskrift 4 ) neðanskrift 2 magnesíumfosfat.",
+     "en": "…ulfate, and M g subscript 3 ( P O subscript 4 ) subscript 2 magnesium phosphate."
+    },
+    {
+     "segmentId": "m68698:entry:auto-28",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumfosfat"
+     ],
+     "hasMgSymbol": true,
+     "is": "Mg[[sub:3]](PO[[sub:4]])[[sub:2]], magnesíumfosfat",
+     "en": "Mg[[sub:3]](PO[[sub:4]])[[sub:2]], magnesium phosphate"
+    },
+    {
+     "segmentId": "m68698:table-summary:fs-idp268265360-summary",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíð",
+      "magnesíumsúlfat"
+     ],
+     "hasMgSymbol": false,
+     "is": "… 3 kalsíumkarbónat sem er innihaldsefni í sýrubindandi lyfjum, M g ( O H ) neðanskrift 2, magnesíumhýdroxíð sem er einnig innihaldsefni í sýrubindandi lyfjum, A l ( O H ) neðanskrift 3 álhýdroxíð s…",
+     "en": "…hich is an ingredient of antacids, M g ( O H ) subscript 2, magnesium hydroxide which is also an ingredient of antacids, A l ( O …"
+    },
+    {
+     "segmentId": "m68698:entry:auto-48",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíð"
+     ],
+     "hasMgSymbol": true,
+     "is": "Mg(OH)[[sub:2]], magnesíumhýdroxíð",
+     "en": "Mg(OH)[[sub:2]], magnesium hydroxide"
+    },
+    {
+     "segmentId": "m68698:entry:auto-56",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumsúlfat"
+     ],
+     "hasMgSymbol": false,
+     "is": "MgSO[[sub:4]], magnesíumsúlfat",
+     "en": "MgSO[[sub:4]], magnesium sulfate"
+    },
+    {
+     "segmentId": "m68698:para:fs-idp283457424",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumsúlfat"
+     ],
+     "hasMgSymbol": false,
+     "is": "(d) magnesíumsúlfat heptahýdrat",
+     "en": "(d) magnesium sulfate heptahydrate"
+    },
+    {
+     "segmentId": "m68698:problem:fs-idm306432",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumseleníð"
+     ],
+     "hasMgSymbol": false,
+     "is": "(b) magnesíumseleníð",
+     "en": "(b) magnesium selenide"
+    },
+    {
+     "segmentId": "m68698:problem:fs-idp279468704",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumfosfat"
+     ],
+     "hasMgSymbol": false,
+     "is": "(g) magnesíumfosfat",
+     "en": "(g) magnesium phosphate"
+    },
+    {
+     "segmentId": "m68698:problem:fs-idp279320480",
+     "chapter": 2,
+     "moduleId": "m68698",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumnítríð"
+     ],
+     "hasMgSymbol": false,
+     "is": "(b) magnesíumnítríð",
+     "en": "(b) magnesium nitride"
+    },
+    {
+     "segmentId": "m68709:problem:fs-idp45919792",
+     "chapter": 4,
+     "moduleId": "m68709",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumklóríði",
+      "magnesíumhýdroxíð"
+     ],
+     "hasMgSymbol": false,
+     "is": "(c) Vatnslausnir af magnesíumklóríði og natríumhýdroxíði hvarfast og mynda fast magnesíumhýdroxíð og vatnslausn af natríumklór…",
+     "en": "(c) Aqueous solutions of magnesium chloride and sodium hydroxide react to produce solid magnes…"
+    },
+    {
+     "segmentId": "m68709:problem:fs-idm721584",
+     "chapter": 4,
+     "moduleId": "m68709",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumklóríð",
+      "magnesíumhýdroxíð"
+     ],
+     "hasMgSymbol": false,
+     "is": "(c) Föstu kalsíumhýdroxíði er síðan bætt út í sjóinn, þar sem það hvarfast við uppleyst magnesíumklóríð og myndar fast magnesíumhýdroxíð og vatnslausn af kalsíumklóríði.",
+     "en": "…xide is then added to the seawater, reacting with dissolved magnesium chloride to yield solid magnesium hydroxide and aqueous cal…"
+    },
+    {
+     "segmentId": "m68709:problem:fs-idm721024",
+     "chapter": 4,
+     "moduleId": "m68709",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíðinu",
+      "magnesíumklóríð"
+     ],
+     "hasMgSymbol": false,
+     "is": "(d) Fasta magnesíumhýdroxíðinu er bætt út í saltsýrulausn, sem myndar uppleyst magnesíumklóríð og fljótandi vatn.",
+     "en": "(d) The solid magnesium hydroxide is added to a hydrochloric acid solution, produci…"
+    },
+    {
+     "segmentId": "m68709:problem:fs-idm720496",
+     "chapter": 4,
+     "moduleId": "m68709",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumklóríðið",
+      "magnesíummálm"
+     ],
+     "hasMgSymbol": false,
+     "is": "(e) Að lokum er magnesíumklóríðið brætt og rafgreint til að gefa af sér fljótandi magnesíummálm og tvíatóma klórgas.",
+     "en": "(e) Finally, the magnesium chloride is melted and electrolyzed to yield liquid magnesi…"
+    },
+    {
+     "segmentId": "m68710:para:fs-idm52053696",
+     "chapter": 4,
+     "moduleId": "m68710",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumklóríð"
+     ],
+     "hasMgSymbol": false,
+     "is": "Takið eftir að auk vatns myndar þetta hvarf salt, magnesíumklóríð.",
+     "en": "…e that in addition to water, this reaction produces a salt, magnesium chloride."
+    },
+    {
+     "segmentId": "m68713:para:fs-idp56844080",
+     "chapter": 4,
+     "moduleId": "m68713",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíummjólk",
+      "magnesíumhýdroxíð"
+     ],
+     "hasMgSymbol": true,
+     "is": "…ersu mikinn massa af natríumhýdroxíði, NaOH, þyrfti til að framleiða 16 g af sýrubindandi magnesíummjólk [magnesíumhýdroxíð, Mg(OH)[[sub:2]]] með eftirfarandi efnahvarfi?",
+     "en": "…e required to produce 16 g of the antacid milk of magnesia [magnesium hydroxide, Mg(OH)[[sub:2]]] by the following reaction?"
+    },
+    {
+     "segmentId": "m68713:problem:fs-idp38709616",
+     "chapter": 4,
+     "moduleId": "m68713",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumkarbónats"
+     ],
+     "hasMgSymbol": false,
+     "is": "(c) Fjölda móla og massa magnesíumkarbónats, MgCO[[sub:3]], sem þarf til að mynda 283 g af koltvíoxíði. (MgO er hin afurðin.)",
+     "en": "(c) The number of moles and the mass of magnesium carbonate, MgCO[[sub:3]], required to produce 283 g of carb…"
+    },
+    {
+     "segmentId": "m68739:alt:fs-idp678720-alt",
+     "chapter": 7,
+     "moduleId": "m68739",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "Magnesíumtákn",
+      "magnesíumtákn",
+      "magnesíumatóm",
+      "magnesíumoxíð",
+      "magnesíumjón"
+     ],
+     "hasMgSymbol": false,
+     "is": "… klóríðjón)“ eru skrifuð undir efnahvarfið. Þriðja röðin sýnir Lewis-formúlur efnahvarfs. Magnesíumtákn með tveimur rauðum punktum, plúsmerki og súrefnistákn með sex punktum eru vinstra megin v…",
+     "en": "…. The third row shows the Lewis structures of a reaction. A magnesium symbol with two red dots, a plus sign, and an oxygen symbol…"
+    },
+    {
+     "segmentId": "m68783:para:fs-idp175903616",
+     "chapter": 11,
+     "moduleId": "m68783",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumklóríð"
+     ],
+     "hasMgSymbol": false,
+     "is": "Natríumklóríð og hliðstæður þess í flokki 2, kalsíum- og magnesíumklóríð, eru oft notuð til að afísa vegi og gangstéttir, vegna þess að lausn af einhverju þessara…",
+     "en": "Sodium chloride and its group 2 analogs calcium and magnesium chloride are often used to de-ice roadways and sidewalks, d…"
+    },
+    {
+     "segmentId": "m68784:para:fs-idm189696128",
+     "chapter": 11,
+     "moduleId": "m68784",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumsambönd"
+     ],
+     "hasMgSymbol": false,
+     "is": "…a súlfónat—[[MATH:3]] ([[xref:CNX_Chem_11_05_detrg]]). Sápur mynda óleysanleg kalsíum- og magnesíumsambönd í hörðu vatni; þvottaefni mynda vatnsleysanlegar afurðir—sem er afgerandi kostur fyrir þv…",
+     "en": "…f:CNX_Chem_11_05_detrg]]). Soaps form insoluble calcium and magnesium compounds in hard water; detergents form water-soluble prod…"
+    },
+    {
+     "segmentId": "m68787:problem:fs-idm151736608",
+     "chapter": 12,
+     "moduleId": "m68787",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíummálms",
+      "magnesíumbitanna"
+     ],
+     "hasMgSymbol": false,
+     "is": "Lýstu áhrifum hvers eftirfarandi á hraða efnahvarfs magnesíummálms við lausn af saltsýru: mólstyrk saltsýrunnar, hitastig lausnarinnar og stærð magnesíumbit…",
+     "en": "…ect of each of the following on the rate of the reaction of magnesium metal with a solution of hydrochloric acid: the molarity of…"
+    },
+    {
+     "segmentId": "m68787:solution:fs-idm120667552",
+     "chapter": 12,
+     "moduleId": "m68787",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíummálmi"
+     ],
+     "hasMgSymbol": false,
+     "is": "…yrkur eykur hraða efnahvarfsins. Hærra hitastig eykur hraða efnahvarfsins. Minni bitar af magnesíummálmi hvarfast hraðar en stærri bitar vegna þess að meira hvarfgjarnt yfirborð er til staðar.",
+     "en": "…ature increases the rate of the reaction. Smaller pieces of magnesium metal will react more rapidly than larger pieces because mo…"
+    },
+    {
+     "segmentId": "m68811:para:fs-idp681040",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound",
+      "other-magnes"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíð",
+      "Magnesia"
+     ],
+     "hasMgSymbol": true,
+     "is": "(c) Mg(OH)[[sub:2]], magnesíumhýdroxíð, virka efnið í Milk of Magnesia",
+     "en": "(c) Mg(OH)[[sub:2]], magnesium hydroxide, the active ingredient in Milk of Magnesia"
+    },
+    {
+     "segmentId": "m68811:para:fs-idp15157136",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíummálmi"
+     ],
+     "hasMgSymbol": true,
+     "is": "Fyrsta skrefið í framleiðslu á magnesíummálmi er botnfelling Mg(OH)[[sub:2]] úr sjó með því að bæta við kalki, Ca(OH)[[sub:2]], sem er …",
+     "en": "The first step in the preparation of magnesium metal is the precipitation of Mg(OH)[[sub:2]] from sea wate…"
+    },
+    {
+     "segmentId": "m68811:para:fs-idp11854608",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíð"
+     ],
+     "hasMgSymbol": false,
+     "is": "…en [[i:K]][[sub:sp]] = 8,9 [[MATH:35]] 10[[sup:–12]]), mun öfuga hvarfið eiga sér stað og magnesíumhýdroxíð falla út þar til styrkur uppleystra jóna hefur lækkað nægilega, þannig að [[i:Q[[sub:sp]]…",
+     "en": "…up:–12]]), the reverse reaction will proceed, precipitating magnesium hydroxide until the dissolved ion concentrations have been …"
+    },
+    {
+     "segmentId": "m68811:para:fs-idp1193504",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíummálmi"
+     ],
+     "hasMgSymbol": true,
+     "is": "Fyrsta skrefið í framleiðslu á magnesíummálmi er botnfelling Mg(OH)[[sub:2]] úr sjó með því að bæta við Ca(OH)[[sub:2]]. Styrkur Mg[[su…",
+     "en": "The first step in the preparation of magnesium metal is the precipitation of Mg(OH)[[sub:2]] from sea wate…"
+    },
+    {
+     "segmentId": "m68811:para:fs-idm745168",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíðs"
+     ],
+     "hasMgSymbol": true,
+     "is": "…ra leysnijafnvæginu til vinstri, sem minnkar styrk hýdroxíðjónar og eykur magn óuppleysts magnesíumhýdroxíðs.",
+     "en": "…n of hydroxide ion and increasing the amount of undissolved magnesium hydroxide."
+    },
+    {
+     "segmentId": "m68811:para:fs-idm743248",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumjónar",
+      "magnesíumhýdroxíðs"
+     ],
+     "hasMgSymbol": false,
+     "is": "…, mun auka styrk þessarar jónar og hliðra leysnijafnvæginu til vinstri, sem minnkar styrk magnesíumjónar og eykur magn óuppleysts magnesíumhýdroxíðs.",
+     "en": "…ty equilibrium to the left, decreasing the concentration of magnesium ion and increasing the amount of undissolved magnesium hydr…"
+    },
+    {
+     "segmentId": "m68811:para:fs-idm330455632",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíðs"
+     ],
+     "hasMgSymbol": false,
+     "is": "…ætt er við inniheldur ekki sameiginlega jón og engin áhrif eru væntanleg á leysnijafnvægi magnesíumhýdroxíðs.",
+     "en": "…ompound does not contain a common ion, and no effect on the magnesium hydroxide solubility equilibrium is expected."
+    },
+    {
+     "segmentId": "m68811:para:fs-idm735616",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíðs"
+     ],
+     "hasMgSymbol": false,
+     "is": "Þannig hefur það engin áhrif á gildi [[i:Q]] að breyta magni fasts magnesíumhýdroxíðs í blöndunni og engin hliðrun er nauðsynleg til að endurheimta gildi jafnvægisfastans fyri…",
+     "en": "Thus, changing the amount of solid magnesium hydroxide in the mixture has no effect on the value of [[i:…"
+    },
+    {
+     "segmentId": "m68811:problem:fs-idp2651648",
+     "chapter": 15,
+     "moduleId": "m68811",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "Magnesíummálmur"
+     ],
+     "hasMgSymbol": false,
+     "is": "Magnesíummálmur (hluti af málmblöndum sem notaðar eru í flugvélar og afoxunarefni sem notað er við framle…",
+     "en": "Magnesium metal (a component of alloys used in aircraft and a reducin…"
+    },
+    {
+     "segmentId": "m68822:para:fs-idm215655008",
+     "chapter": 17,
+     "moduleId": "m68822",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumanóða",
+      "magnesíumklóríði"
+     ],
+     "hasMgSymbol": false,
+     "is": "Í þessu keri er föst magnesíumanóða á kafi í vatnslausn af magnesíumklóríði sem er tengd með saltbrú við vatnslausn sem innih…",
+     "en": "In this cell, a solid magnesium anode is immersed in an aqueous solution of magnesium chlor…"
+    },
+    {
+     "segmentId": "m68822:problem:fs-idm95770176",
+     "chapter": 17,
+     "moduleId": "m68822",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumrafskaut"
+     ],
+     "hasMgSymbol": true,
+     "is": "…anstendur af gullrafskauti í 0,55 [[i:M]] Au(NO[[sub:3]])[[sub:3]]-lausn og forskautið er magnesíumrafskaut í 0,75 [[i:M]] Mg(NO[[sub:3]])[[sub:2]]-lausn.",
+     "en": "…[i:M]] Au(NO[[sub:3]])[[sub:3]] solution and the anode is a magnesium electrode in 0.75 [[i:M]] Mg(NO[[sub:3]])[[sub:2]] solution…"
+    },
+    {
+     "segmentId": "m68829:caption:CNX_Chem_18_01_CalciWater-caption",
+     "chapter": 18,
+     "moduleId": "m68829",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "Magnesíummálmur"
+     ],
+     "hasMgSymbol": true,
+     "is": "Magnesíummálmur (vinstri krukka) hvarfast hægt við heitt vatn (miðkrukka) og myndar Mg[[sup:2+]] og OH[[s…",
+     "en": "Magnesium metal (left jar) reacts slowly with hot water (center jar) …"
+    },
+    {
+     "segmentId": "m68831:para:fs-idp120612224",
+     "chapter": 18,
+     "moduleId": "m68831",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumdufti"
+     ],
+     "hasMgSymbol": false,
+     "is": "Afoxun bóroxíðs með magnesíumdufti myndar bór (95–98,5% hreint) sem brúnt, myndlaust duft:",
+     "en": "Reduction of boric oxide with magnesium powder forms boron (95–98.5% pure) as a brown, amorphous po…"
+    },
+    {
+     "segmentId": "m68831:para:fs-idp204527824",
+     "chapter": 18,
+     "moduleId": "m68831",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumoxíðið"
+     ],
+     "hasMgSymbol": false,
+     "is": "…hefur ekki langdræga röðun eins og raunverulegt fast efni. Meðferð með saltsýru fjarlægir magnesíumoxíðið. Frekari hreinsun á bórinu hefst með því að breyta óhreina bórinu í bórtríklóríð. Næsta s…",
+     "en": "… a true solid. Treatment with hydrochloric acid removes the magnesium oxide. Further purification of the boron begins with conver…"
+    },
+    {
+     "segmentId": "m68831:problem:fs-idp114681504",
+     "chapter": 18,
+     "moduleId": "m68831",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumsílisíð"
+     ],
+     "hasMgSymbol": false,
+     "is": "(e) magnesíumsílisíð",
+     "en": "(e) magnesium silicide"
+    },
+    {
+     "segmentId": "m68834:para:fs-idm59038240",
+     "chapter": 18,
+     "moduleId": "m68834",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumkarbónati"
+     ],
+     "hasMgSymbol": false,
+     "is": "Að undanskildu magnesíumkarbónati er hægt að framleiða karbónöt málma í flokkum 1 og 2 með hvarfi koltvíoxíðs við samsvaran…",
+     "en": "With the exception of magnesium carbonate, it is possible to prepare carbonates of the meta…"
+    },
+    {
+     "segmentId": "m68837:para:fs-idp12102384",
+     "chapter": 18,
+     "moduleId": "m68837",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumoxíði",
+      "Magnesíumoxíð"
+     ],
+     "hasMgSymbol": false,
+     "is": "Oxíð alkalímálma hafa litla iðnaðarnotkun, ólíkt magnesíumoxíði, kalsíumoxíði og áloxíði. Magnesíumoxíð er mikilvægt við framleiðslu á eldföstum múrstein…",
+     "en": "…of the alkali metals have little industrial utility, unlike magnesium oxide, calcium oxide, and aluminum oxide. Magnesium oxide i…"
+    },
+    {
+     "segmentId": "m68837:para:fs-idm33972064",
+     "chapter": 18,
+     "moduleId": "m68837",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumhýdroxíði",
+      "magnesíummjólk"
+     ],
+     "hasMgSymbol": false,
+     "is": "…X_Chem_18_09_CaOH2]]) og til framleiðslu á oxíðum með hitaniðurbroti. Vatnskennd lausn af magnesíumhýdroxíði er sýrubindandi lyfið magnesíummjólk. Vegna þess hve auðvelt er að nálgast það (úr hvarfi…",
+     "en": "…f oxides by thermal decomposition. An aqueous suspension of magnesium hydroxide constitutes the antacid milk of magnesia. Because…"
+    },
+    {
+     "segmentId": "m68843:caption:CNX_Chem_19_02_ChlorBlue-caption",
+     "chapter": 19,
+     "moduleId": "m68843",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíummiðjuna"
+     ],
+     "hasMgSymbol": false,
+     "is": "…ræna kemur fyrir í nokkrum mismunandi myndum, sem allar hafa sömu grunnbyggingu í kringum magnesíummiðjuna. (b) Koparþalósýanínblátt, ferningslaga flatt kopargirðisamband, er til staðar í sumum bl…",
+     "en": "…t forms, which all have the same basic structure around the magnesium center. (b) Copper phthalocyanine blue, a square planar cop…"
+    },
+    {
+     "segmentId": "m68868:table-summary:fs-idm454814336-summary",
+     "chapter": -1,
+     "moduleId": "m68868",
+     "type": "missing",
+     "used": null,
+     "kinds": [
+      "closed-compound"
+     ],
+     "tokens": [
+      "magnesíumefni",
+      "magnesíumefni",
+      "magnesíumefni",
+      "magnesíumefni",
+      "magnesíumefni"
+     ],
+     "hasMgSymbol": false,
+     "is": "…fni, er leysnimargfeldið 1 sinnum 10 í veldinu mínus 54. Fyrir M g ( O H ) neðanskrift 2, magnesíumefni, er leysnimargfeldið 8,9 sinnum 10 í veldinu mínus 12. Fyrir M g C O neðanskrift 3 punktu…",
+     "en": "… 10 superscript negative 54. For M g ( O H ) subscript 2, a magnesium substance, the solubility product is 8.9 times 10 superscri…"
+    }
+   ],
+   "unclaimed": [],
+   "issueCount": 43,
+   "unclaimedCount": 0
+  }
+ },
+ "otherIssueChanges": {
+  "now": [],
+  "fixed": []
+ }
+}

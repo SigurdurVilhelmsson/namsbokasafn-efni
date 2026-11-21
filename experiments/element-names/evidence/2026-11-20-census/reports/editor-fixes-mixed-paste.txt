@@ -1,0 +1,350 @@
+=== m68683:problem:fs-idm277853776 (ch 1) ===
+(a) Hver er massi 4,00 cm[[sup:3]] af natríum, eðlismassi = 0,97 g/cm[[sup:3]]?
+
+=== m68683:problem:fs-idp63994848 (ch 1) ===
+Osmíum er eitt af eðlisþyngstu frumefnum sem þekkt eru. Hver er eðlismassi þess ef 2,72 g hefur rúmmálið 0,121 cm[[sup:3]]?
+
+=== m68692:entry:auto-101 (ch 2) ===
+Na (úr [[i:natríum]])
+
+=== m68692:entry:auto-174 (ch 2) ===
+beryllíum
+
+=== m68692:entry:auto-89 (ch 2) ===
+K (úr [[i:kalíum]])
+
+=== m68692:table-summary:fs-idm36686800-summary (ch 2) ===
+Þessi tafla hefur tvo dálka sem merkja frumefni og tákn. Fyrsti stafur táknsins er alltaf hástafur en annar stafur táknsins er alltaf lágstafur. Ál hefur táknið A L. Bróm hefur táknið B R, kalsíum hefur táknið C A, kolefni hefur táknið C, klór hefur táknið C L, króm hefur táknið C R, kóbalt hefur táknið C O, kopar hefur táknið C U, úr cuprum, flúor hefur táknið F, gull hefur táknið A U, úr aurum, helíum hefur táknið H E, vetni hefur táknið H, joð hefur táknið I, járn hefur táknið F E, úr ferrum, blý hefur táknið P B, úr plumbum, magnesíum hefur táknið M G, kvikasilfur hefur táknið H G úr hydrargyrum, köfnunarefni hefur táknið N, súrefni hefur táknið O, kalíum hefur táknið K, úr kalíum, kísill hefur táknið S I, silfur hefur táknið A G, úr argentum, natríum hefur táknið N A úr natríum, brennisteinn hefur táknið S, tin hefur táknið S N úr stannum og sink hefur táknið Z N.
+
+=== m68695:para:fs-idm421488352 (ch 2) ===
+(c) baríum
+
+=== m68698:para:fs-idp283457040 (ch 2) ===
+(c) gallíum(III)nítríð
+
+=== m68710:para:fs-idp218627312 (ch 4) ===
+(b) Þetta er oxunar-afoxunarhvarf. Gallíum er oxað, oxunartala þess hækkar úr 0 í Ga([[i:l]]) í +3 í GaBr[[sub:3]]([[i:s]]). Afoxarinn er Ga([[i:l]]). Bróm er afoxað, oxunartala þess lækkar úr 0 í Br[[sub:2]]([[i:l]]) í −1 í GaBr[[sub:3]]([[i:s]]). Oxarinn er Br[[sub:2]]([[i:l]]).
+
+=== m68710:problem:fs-idp26248864 (ch 4) ===
+Í algengri tilraun á almennri efnafræðistofu er magnesíummálmur hitaður í lofti til að framleiða MgO. MgO er hvítt fast efni, en í þessum tilraunum lítur það oft út fyrir að vera grátt, vegna lítils magns af Mg[[sub:3]]N[[sub:2]], efnasambands sem myndast þegar hluti magnesíumsins hvarfast við köfnunarefni. Skrifaðu stillta jöfnu fyrir hvort hvarf.
+
+=== m68713:problem:fs-idp134804848 (ch 4) ===
+Gallíumklóríð er myndað með efnahvarfi 2,6 L af 1,44 M lausn af HCl samkvæmt eftirfarandi jöfnu: [[MATH:13]]
+
+=== m68713:problem:fs-idp7152848 (ch 4) ===
+(a) Lýstu þeim skrefum sem eru nauðsynleg til að ákvarða fjölda móla og massa gallíumklóríðs.
+
+=== m68724:entry:auto-52 (ch 5) ===
+helíum
+
+=== m68727:entry:auto-71 (ch 5) ===
+magnesíum
+
+=== m68734:item:fs-idp170969264-item-1 (ch 6) ===
+[[b:Aðalflokkafrumefni]] (stundum kölluð [[b:fulltrúafrumefni]]) eru þau þar sem síðasta rafeindin sem bætist við fer inn í [[i:s]]- eða [[i:p]]-svigrúm í ysta hvolfinu, sýnt með bláu og rauðu í [[xref:CNX_Chem_06_04_Ptableconf]]. Þessi flokkur inniheldur öll málmleysingja, auk margra málma og málmunga. Gildisrafeindir fyrir aðalflokkafrumefni eru þær með hæsta [[i:n]]-gildið. Til dæmis hefur gallíum (Ga, sætistala 31) rafeindaskipanina [Ar][[u:4[[i:s]][[sup:2]]]]3[[i:d]][[sup:10]][[u:4[[i:p]][[sup:1]]]], sem inniheldur þrjár gildisrafeindir (undirstrikaðar). Alveg fyllt [[i:d]]-svigrúm teljast sem kjarna-, ekki gildisrafeindir.
+
+=== m68734:item:fs-idp203626048-item-2 (ch 6) ===
+Aktiníðaröðin: aktíníum (Ac) til lawrensíum (Lr)
+
+=== m68734:para:fs-idm11513792 (ch 6) ===
+Lanþan og aktíníum, vegna líkinda þeirra við aðra meðlimi raðarinnar, eru innifalin og notuð til að nefna raðirnar, jafnvel þótt þau séu hliðarmálmar án [[i:f]]-rafeinda.
+
+=== m68734:para:fs-idp10466880 (ch 6) ===
+Atóm af jarðalkalímálminum beryllíum, með sætistöluna 4, inniheldur fjórar róteindir í kjarnanum og fjórar rafeindir umhverfis kjarnann. Fjórða rafeindin fyllir það pláss sem eftir er í 2[[i:s]]-svigrúminu.
+
+=== m68734:para:fs-idp241397616 (ch 6) ===
+Á eftir vetni kemur eðallofttegundin helíum, sem hefur sætistöluna 2. Helíumatóm inniheldur tvær róteindir og tvær rafeindir. Fyrri rafeindin hefur sömu fjórar skammtatölur og rafeind vetnisatómsins ([[i:n]] = 1, [[i:l]] = 0, [[i:m[[sub:l]]]] = 0, [[MATH:2]]). Seinni rafeindin fer einnig í 1[[i:s]]-svigrúmið og fyllir það. Seinni rafeindin hefur sömu [[i:n]], [[i:l]] og [[i:m[[sub:l]]]] skammtatölur, en verður að hafa gagnstæða spinnskammtatölu, [[MATH:3]]. Þetta er í samræmi við einsetulögmál Paulis: Engar tvær rafeindir í sama atómi geta haft sama sett af fjórum skammtatölum. Fyrir svigrúmsmyndir þýðir þetta að tvær örvar fara í hvern kassa (sem tákna tvær rafeindir í hverju svigrúmi) og örvarnar verða að vísa í gagnstæðar áttir (sem tákna paraðan spuna). Rafeindaskipan og svigrúmsmynd helíums eru:
+
+=== m68734:para:fs-idp38113648 (ch 6) ===
+Þegar um Cr og Cu er að ræða sjáum við að hálffyllt og alveg fyllt undirhvolf virðast tákna ákjósanlegan stöðugleika. Þessi stöðugleiki er slíkur að rafeind færist úr 4[[i:s]]-svigrúmi yfir í 3[[i:d]]-svigrúm til að ná auknum stöðugleika hálffyllts 3[[i:d]]-undirhvolfs (í Cr) eða fyllts 3[[i:d]]-undirhvolfs (í Cu). Aðrar undantekningar koma einnig fyrir. Til dæmis er spáð að níóbíum (Nb, sætistala 41) hafi rafeindaskipanina [Kr]5[[i:s]][[sup:2]]4[[i:d]][[sup:3]]. Tilraunir sýna að rafeindaskipan þess í grunnástandi er í raun [Kr]5[[i:s]][[sup:1]]4[[i:d]][[sup:4]]. Við getum réttlætt þessa athugun með því að segja að fráhrindikraftar milli rafeinda sem verða til við pörun rafeinda í 5[[i:s]]-svigrúminu séu stærri en orkumunurinn á milli 5[[i:s]]- og 4[[i:d]]-svigrúmanna. Það er engin einföld aðferð til að spá fyrir um undantekningar fyrir frumeindir þar sem stærð fráhrindikrafta milli rafeinda er meiri en litli orkumunurinn á milli undirhvolfa.
+
+=== m68734:para:fs-idp9284128 (ch 6) ===
+[[i:n]] = 1 hvolfið er alveg fyllt í helíumatómi.
+
+=== m68741:para:fs-idm6705632 (ch 7) ===
+[[xref:CNX_Chem_07_05_BornHaber]] sýnir Born-Haber-hringferlið fyrir myndun sesíumflúoríðs í föstu formi.
+
+=== m68741:para:fs-idp28364752 (ch 7) ===
+Þannig er hægt að reikna grindarorkuna út frá öðrum gildum. Fyrir sesíumflúoríð, með því að nota þessi gögn, er grindarorkan:
+
+=== m68741:para:fs-idp53345328 (ch 7) ===
+Við byrjum með frumefnin í sínu algengasta ástandi, Cs([[i:s]]) og F[[sub:2]]([[i:g]]). [[MATH:21]] táknar umbreytingu á föstu sesíum í gas og síðan breytir jónunarorkan sesíumatómum á gasformi í katjónir. Í næsta skrefi tökum við tillit til orkunnar sem þarf til að rjúfa F–F tengið til að mynda flúoratóm. Að breyta einu móli af flúoratómi í flúoríðjónir er útvermið ferli, þannig að þetta skref gefur frá sér orku (rafeindasækni) og er sýnt sem lækkun meðfram [[i:y]]-ásnum. Við höfum nú eitt mól af Cs-katjónum og eitt mól af F-anjónum. Þessar jónir sameinast og mynda fast sesíumflúoríð. Vermibreytingin í þessu skrefi er neikvæða gildi grindarorkunnar, þannig að hún er einnig útvermið stærð. Heildarorkan sem fer í þessa umbreytingu er jöfn myndunarvermi efnasambandsins út frá frumefnum sínum, [[MATH:22]], sem ákvarðað er með tilraunum. Í þessu tilfelli er heildarbreytingin útvermin.
+
+=== m68742:alt:fs-idp229524848-alt (ch 7) ===
+Lewis-bygging er sýnd. Flúoratóm með þremur stökum rafeindapörum er eintengt við beryllíumatóm sem er eintengt við flúoratóm með þremur stökum rafeindapörum. Hornið á tengjunum milli flúratómanna tveggja og beryllíumatómsins er merkt „180 gráður“.
+
+=== m68742:alt:fs-idp73717728-alt (ch 7) ===
+Sýnd er tafla með fjórum röðum og sex dálkum. Í hausdálknum eru setningarnar „Fjöldi svæða“, „Rúmfyrirkomulag“, „Fleyg-/strikaritun“ og „Rafeindasvæðislögun“. Í fyrstu röðinni stendur: „Tvö svæði með háum rafeindaþéttleika (tengi og/eða ódeild rafeindapör)“, „Þrjú svæði með háum rafeindaþéttleika (tengi og/eða ódeild rafeindapör)“, „Fjögur svæði með háum rafeindaþéttleika (tengi og/eða ódeild rafeindapör)“, „Fimm svæði með háum rafeindaþéttleika (tengi og/eða ódeild rafeindapör)“ og „Sex svæði með háum rafeindaþéttleika (tengi og/eða ódeild rafeindapör)“. Önnur röðin sýnir skýringarmyndir af svigrúmum. Fyrsta myndin sýnir tvö sporöskjulaga svigrúm með ör sem sýnir 180 gráðu horn. Önnur myndin sýnir þrjú sporöskjulaga svigrúm með ör sem sýnir 120 gráðu horn. Þriðja myndin sýnir fjögur sporöskjulaga svigrúm með ör sem sýnir 109,5 gráðu horn. Fjórða myndin sýnir fimm sporöskjulaga svigrúm með ör sem sýnir 90 og 120 gráðu horn. Fimmta myndin sýnir sex sporöskjulaga svigrúm með ör sem sýnir 90 gráðu horn. Þriðja röðin inniheldur Lewis-formúlur. Fyrsta formúlan sýnir beryllíumatóm með eintengi við tvö vetnisatóm. Önnur formúlan sýnir bóratóm með eintengi við þrjú vetnisatóm. Þriðja formúlan sýnir kolefnisatóm með eintengi við fjögur vetnisatóm. Fjórða formúlan sýnir fosfóratóm með eintengi við fimm flúoratóm. Fimmta formúlan sýnir brennisteinsatóm með eintengi við sex flúoratóm. Fjórða röðin inniheldur setningarnar „Línuleg; 180 gráðu horn“, „Þríhyrnd flatneskja; öll horn 120 gráður“, „Fjórflettingur; öll horn 109,5 gráður“, „Þríhyrnd tvípýramídalögun; horn 90 gráður og 120 gráður. Tengt atóm getur verið miðbaugslægt (í plani þríhyrningsins) eða áslægt (fyrir ofan plan þríhyrningsins)“ og „Áttflettingur; 90 gráður eða 180 gráður“.
+
+=== m68745:para:fs-idp208078752 (ch 8) ===
+Beryllíumatómið í BeCl[[sub:2]]-sameind á gasformi er dæmi um miðatómið með engin einmana rafeindapör í línulegri uppröðun þriggja atóma. Það eru tvö svæði gildisrafeindaþéttleika í BeCl[[sub:2]]-sameindinni sem samsvara tveimur samgildu Be–Cl-tengjunum. Til að rúma þessi tvö rafeindasvið munu tvö af fjórum gildissvigrúmum Be-atómsins blandast og mynda tvö blendingssvigrúm. Þetta svigrúmablöndunarferli felur í sér blöndun gildis-[[i:s]]-svigrúmsins við eitt af gildis-[[i:p]]-svigrúmunum til að mynda tvö jafngild [[term:[[i:sp]]-blendingssvigrúm|term-00003]] sem eru stillt upp í línulegri rúmfræði ([[xref:CNX_Chem_08_02_spGeom]]). Á þessari mynd virðist settið af [[i:sp]]-svigrúmum vera svipað í lögun og upprunalega [[i:p]]-svigrúmið, en það er mikilvægur munur. Fjöldi atómsvigrúma sem blandast saman er alltaf jafn fjölda blendingssvigrúma sem myndast. [[i:p]]-svigrúmið er eitt svigrúm sem getur rúmað allt að tvær rafeindir. [[i:sp]]-settið eru tvö jafngild svigrúm sem vísa 180° hvort frá öðru. Rafeindirnar tvær sem voru upphaflega í [[i:s]]-svigrúminu dreifast nú á [[i:sp]]-svigrúmin tvö, sem eru hálffyllt. Í BeCl[[sub:2]] á gasformi munu þessi hálffylltu blendingssvigrúm skarast við svigrúm frá klóratómunum og mynda tvö eins σ-tengi.
+
+=== m68752:para:fs-idm2007840 (ch 9) ===
+Hvaða rúmmál af vetni við 27 °C og 723 torr er hægt að framleiða með hvarfi 8,88 g af gallíum við umframmagn af saltsýru?
+
+=== m68773:para:fs-idm42504800 (ch 10) ===
+Þegar jónaefni er samsett úr katjónum og anjónum af svipaðri stærð í hlutfallinu 1:1 myndar það yfirleitt einfalda rúmmiðjaða byggingu. Sesíumklóríð, CsCl, (sýnt á [[xref:CNX_Chem_10_07_CsClStrctr]]) er dæmi um þetta, þar sem Cs[[sup:+]] og Cl[[sup:−]] hafa geisla sem eru 174 pm og 181 pm. Við getum hugsað okkur þetta sem klóríðjónir sem mynda einfalda rúmmiðjaða grindareiningu með sesíumjón í miðjunni; eða sem sesíumjónir sem mynda grindareiningu með klóríðjón í miðjunni; eða sem einfaldar rúmmiðjaðar grindareiningar myndaðar af Cs[[sup:+]] jónum sem skarast við grindareiningar myndaðar af Cl[[sup:−]] jónum. Sesíumjónir og klóríðjónir snertast eftir hornalínum grindareininganna. Ein sesíumjón og ein klóríðjón eru í hverri grindareiningu, sem gefur hlutfallið 1:1 sem formúlan fyrir sesíumklóríð krefst. Athugið að það er enginn grindarpunktur í miðju einingarinnar og CsCl er ekki með rúmmiðjaða byggingu (BCC) því sesíumjón er ekki eins og klóríðjón.
+
+=== m68773:para:fs-idm48376560 (ch 10) ===
+Við höfum sagt að staðsetning grindarpunkta sé handahófskennd. Þetta sést á annarri lýsingu á CsCl-byggingunni þar sem grindarpunktarnir eru staðsettir í miðjum sesíumjónanna. Í þessari lýsingu eru sesíumjónirnar staðsettar á grindarpunktunum á hornum einingarinnar og klóríðjónin er staðsett í miðju einingarinnar. Grindareiningarnar tvær eru ólíkar en þær lýsa sömu byggingunni.
+
+=== m68773:problem:fs-idm18156720 (ch 10) ===
+Efnasamband þallíums og joðs kristallast í einföldu teningsfylki joðíðjóna með þallíumjónum í öllum teningsholunum. Hver er formúla þessa joðíðs? Útskýrðu svarið.
+
+=== m68773:problem:fs-idm2190992 (ch 10) ===
+Við hitastig yfir ~175 °C kristallast þallíum(I)joðíð með sömu byggingu og CsCl. Brúnarlengd grindareiningar TlI er 4,20 Å. Að því gefnu að snerting sé á milli miðjusettar Tl[[sup:+]] jónar og I[[sup:−]] jóna á hornum tenings grindareiningar, reiknaðu jónradíus TI[[sup:+]]. (Jónradíus I[[sup:−]] er 2,16 Å.)
+
+=== m68773:problem:fs-idp62730896 (ch 10) ===
+Rúbidíumjoðíð kristallast með teningslaga grindareiningu sem inniheldur joðíðjónir á hornunum og rúbidíumjón í miðjunni. Hver er formúla efnasambandsins?
+
+=== m68773:solution:fs-idp56072368 (ch 10) ===
+Í einföldu teningsfylki getur aðeins ein katjón setið í hverju teningsholi fyrir hverja anjón í fylkinu. Hlutfall þallíums og joðíðs verður að vera 1:1; þess vegna er formúla þallíums TlI.
+
+=== m68791:problem:fs-idm22532432 (ch 12) ===
+Bæði teknetíum-99 og þallíum-201 eru notuð til að mynda hjartavöðva hjá sjúklingum með grun um hjartavandamál. Helmingunartíminn er 6 klst. og 73 klst. Hversu mörg prósent af geislavirkninni yrðu eftir fyrir hvora samsætuna eftir 2 daga (48 klst.)?
+
+=== m68795:para:fs-idm247003792 (ch 12) ===
+Flestir nútíma þríhliða hvarfakútar hafa yfirborð sem er gegndreypt með platínu-ródíum hvata, sem hvetur umbreytingu nituroxíðs í tvíköfnunarefni og súrefni, auk umbreytingar kolmónoxíðs og kolvetna eins og oktans í koltvíoxíð og vatnsgufu:
+
+=== m68816:para:fs-idp3956976 (ch 16) ===
+[[i:Ekki]] er fylgni á milli sjálfgengis ferlis og hraða þess. Sjálfgeng breyting getur verið svo hröð að hún er nánast samstundis eða svo hæg að ekki er hægt að fylgjast með henni á neinum raunhæfum tíma. Til að útskýra þetta hugtak skulum við skoða rotnun geislavirkra samsætna, efni sem fjallað er ítarlegar um í kaflanum um kjarnakemíu. Geislavirk rotnun er samkvæmt skilgreiningu sjálfgengt ferli þar sem kjarnar óstöðugra samsætna gefa frá sér geislun þegar þeir breytast í stöðugri kjarna. Öll rotnunarferli eiga sér stað sjálfkrafa, en hraðinn sem mismunandi samsætur rotna á er mjög breytilegur. Teknetíum-99m er vinsæl geislasamsæta fyrir læknisfræðilegar myndgreiningarrannsóknir sem gengst undir tiltölulega hraða rotnun og sýnir helmingunartíma upp á um sex klukkustundir. Úran-238 er algengasta samsæta úrans og rotnun þess á sér stað mun hægar og sýnir helmingunartíma upp á meira en fjóra milljarða ára ([[xref:CNX_Chem_16_01_decayrates]]).
+
+=== m68829:caption:CNX_Chem_18_01_AlkMetStor-caption (ch 18) ===
+Til að koma í veg fyrir snertingu við loft og vatn er kalíum til notkunar á rannsóknarstofu selt sem stangir eða perlur geymdar undir steinolíu eða í lokuðum ílátum. (heimild: http://images-of-elements.com/kalíum.php)
+
+=== m68829:caption:CNX_Chem_18_01_CalciWater-caption (ch 18) ===
+Magnesíummálmur (vinstri krukka) hvarfast hægt við heitt vatn (miðkrukka) og myndar Mg[[sup:2+]] og OH[[sup:-]] og basíska lausn (hægri krukka eftir að fenólftaleín-litavísi hefur verið bætt við). (heimild: breyting á verki eftir Sahar Atwa)
+
+=== m68829:para:fs-idm12445424 (ch 18) ===
+Magnesíum (sýnt á [[xref:CNX_Chem_18_01_CalciWater]]), kalsíum, strontíum og baríum hvarfast við vatn og loft. Við stofuhita sýnir baríum öflugasta hvarfið. Myndefni hvarfsins við vatn eru vetni og málmhýdroxíð. Myndun vetnisgass gefur til kynna að þyngri jarðalkalímálmarnir séu betri afoxarar (oxast auðveldlegar) en vetni. Eins og við var að búast hvarfast þessir málmar bæði við sýrur og málmleysingja og mynda jónísk efnasambönd. Ólíkt flestum söltum alkalímálma eru mörg algeng sölt jarðalkalímálma óleysanleg í vatni vegna mikillar grindarorku þessara efnasambanda sem innihalda tvígilda málmjón.
+
+=== m68829:para:fs-idm12601472 (ch 18) ===
+Sink er hvarfgjarnast í flokki 12 og kvikasilfur er síst hvarfgjarnt. (Þetta er öfugt við hvarfgirniþróun málma í flokkum 1 og 2, þar sem hvarfgirni eykst niður eftir flokki. Aukning hvarfgirni með hækkandi sætistölu á aðeins við um málma í flokkum 1 og 2.) Minnkun hvarfgirni stafar af myndun jóna með rafeindaskipan sem líkist eðallofttegund og öðrum þáttum sem eru utan gildissviðs þessarar umfjöllunar. Efnafræðileg hegðun sinks og kadmíums er nokkuð svipuð en ólík hegðun kvikasilfurs.
+
+=== m68829:para:fs-idm20198000 (ch 18) ===
+Flokkur 13 inniheldur hálfmálminn bór og málmana ál, gallíum, indíum og þallíum. Léttasta frumefnið, bór, er hálfleiðari og tvíundarefnasambönd þess hafa tilhneigingu til að vera samgild en ekki jónísk. Hin frumefnin í flokknum eru málmar, en oxíð þeirra og hýdroxíð breyta um eðli. Oxíð og hýdroxíð áls og gallíums sýna bæði súra og basíska eiginleika. Efni, eins og þessi tvö, sem hvarfast bæði við sýrur og basa er tvíeðla. Þessi eiginleiki sýnir blöndu af málmleysingja- og málmeiginleikum þessara tveggja frumefna. Oxíð og hýdroxíð indíums og þallíums sýna aðeins basíska eiginleika, í samræmi við augljóst málmeðli þessara tveggja frumefna. Bræðslumark gallíums er óvenju lágt (um 30 °C) og það bráðnar í hendi þér.
+
+=== m68829:para:fs-idp107097008 (ch 18) ===
+Frumefnin í flokki 12 eru hliðarmálmar; hins vegar er síðasta rafeindin sem bætist við ekki [[i:d]]-rafeind, heldur [[i:s]]-rafeind. Þar sem síðasta rafeindin sem bætist við er [[i:s]]-rafeind, teljast þessi frumefni til aðalflokkamálma, eða eftir-hliðarmálma. Frumefnin í flokki 12 hegða sér meira eins og jarðalkalímálmar en hliðarmálmar. Flokkur 12 inniheldur frumefnin fjögur sink, kadmíum, kvikasilfur og kópernikíum. Hvert þessara frumefna hefur tvær rafeindir í ysta hveli sínu ([[i:ns]][[sup:2]]). Þegar atóm þessara málma mynda katjónir með hleðsluna 2+, þar sem ytri rafeindirnar tvær tapast, hafa þær rafeindaskipan sem líkist eðallofttegund. Kvikasilfur er stundum undantekning því það sýnir einnig oxunartöluna 1+ í efnasamböndum sem innihalda tvíatóma [[MATH:1]] jón. Bæði kadmíum og kvikasilfur eru eitruð, bæði í frumefnisformi og í efnasamböndum.
+
+=== m68829:para:fs-idp110638672 (ch 18) ===
+Af þessari ástæðu mun CO[[sub:2]]-slökkvitæki ekki slökkva magnesíumeld. Auk þess gerir hið skærhvíta ljós sem brennandi magnesíum gefur frá sér það gagnlegt í neyðarblysum og flugeldum.
+
+=== m68829:para:fs-idp171667088 (ch 18) ===
+Hinn öflugi afoxunarmáttur heits magnesíums er gagnlegur við framleiðslu sumra málma úr oxíðum þeirra. Sækni magnesíums í súrefni er svo mikil að brennandi magnesíum hvarfast við koltvíoxíð og myndar frumefnið kolefni:
+
+=== m68829:para:fs-idp261367120 (ch 18) ===
+Magnesíum er silfurhvítur málmur sem er teygjanlegur og sveigjanlegur við hátt hitastig. Yfirborðshömlun dregur úr hvarfgirni magnesíummálms. Þegar hann kemst í snertingu við loft myndast þétt lag af magnesíumoxýkarbónati á yfirborði málmsins sem hindrar frekari hvarf. (Karbónatið kemur frá hvarfi koltvíoxíðs í andrúmsloftinu.) Magnesíum er léttastur þeirra burðarmálma sem eru mikið notaðir og þess vegna er mestur hluti magnesíumframleiðslu fyrir léttar málmblöndur.
+
+=== m68829:para:fs-idp45202896 (ch 18) ===
+[[term:Jarðalkalímálmarnir|term-00006]] (beryllíum, magnesíum, kalsíum, strontíum, baríum og radíum) mynda flokk 2 í lotukerfinu. Nafnið jarðalkalímálmur kemur frá því að oxíð þyngri frumefnanna í flokknum hvarfast við vatn og mynda basískar lausnir. Kjarnhleðslan eykst þegar farið er úr flokki 1 í flokk 2. Vegna þessarar hleðsluaukningar eru atóm jarðalkalímálma minni og hafa hærri fyrstu jónunarorku en alkalímálmarnir í sömu lotu. Hærri jónunarorka gerir jarðalkalímálma minna hvarfgjarna en alkalímálma; þeir eru þó enn mjög hvarfgjörn frumefni. Hvarfgirni þeirra eykst, eins og við var að búast, með aukinni stærð og minnkandi jónunarorku. Í efnahvörfum missa þessir málmar auðveldlega báðar gildisrafeindirnar og mynda efnasambönd þar sem þeir hafa oxunartöluna 2+. Vegna mikillar hvarfgirni þeirra er algengt að framleiða jarðalkalímálma, líkt og alkalímálma, með rafgreiningu. Jafnvel þótt jónunarorkan sé lág mynda málmarnir tveir með hæstu jónunarorkuna (beryllíum og magnesíum) efnasambönd sem sýna nokkra samgilda eiginleika. Líkt og alkalímálmar lita þyngri jarðalkalímálmarnir loga. Eins og í tilfelli alkalímálma er þetta hluti af útgeislunarrófi þessara frumefna. Kalsíum og strontíum gefa frá sér rauða litatóna en baríum gefur frá sér grænan lit.
+
+=== m68829:para:fs-idp48530944 (ch 18) ===
+Málmarnir í flokki 14 eru tin, blý og fleróvíum. Kolefni er dæmigerður málmleysingi. Hin frumefnin í flokknum, kísill og germaníum, eru dæmi um hálfmálma eða málmunga. Tin og blý mynda stöðugar tvígildar katjónir, Sn[[sup:2+]] og Pb[[sup:2+]], með oxunartölur tveimur lægri en oxunartala flokksins sem er 4+. Stöðugleiki þessarar oxunartölu er afleiðing tregra rafeindaparaáhrifanna. Tin og blý mynda einnig samgild efnasambönd með formlega 4+ oxunartölu. Til dæmis eru SnCl[[sub:4]] og PbCl[[sub:4]] samgildir vökvar með lágt suðumark.
+
+=== m68829:para:fs-idp79289248 (ch 18) ===
+Frumefni í flokki 13 hafa gildisrafeindaskipanina [[i:ns]][[sup:2]][[i:np]][[sup:1]]. Ál notar venjulega allar gildisrafeindir sínar þegar það hvarfast og myndar efnasambönd þar sem það hefur oxunartöluna 3+. Þótt mörg þessara efnasambanda séu samgild eru önnur, eins og AlF[[sub:3]] og Al[[sub:2]](SO[[sub:4]])[[sub:3]], jónísk. Vatnslausnir álsalta innihalda katjónina [[MATH:3]] sem er skammstöfuð sem Al[[sup:3+]]([[i:aq]]). Gallíum, indíum og þallíum mynda einnig jónísk efnasambönd sem innihalda M[[sup:3+]] jónir. Þessi þrjú frumefni sýna ekki aðeins vænta oxunartölu 3+ frá þremur gildisrafeindum heldur einnig oxunartölu (í þessu tilfelli 1+) sem er tveimur lægri en væntanleg tala. Þetta fyrirbæri, tregra rafeindaparaáhrifin, vísar til myndunar stöðugrar jónar með oxunartölu sem er tveimur lægri en búist er við fyrir flokkinn. Rafeindaparið er gildis-[[i:s]] svigrúm þessara frumefna. Almennt séð eru tregra rafeindaparaáhrifin mikilvæg fyrir neðri [[i:p]]-blokkar frumefnin. Í vatnslausn er Tl[[sup:+]]([[i:aq]]) jónin stöðugri en Tl[[sup:3+]]([[i:aq]]). Almennt hvarfast þessir málmar við loft og vatn og mynda 3+ jónir; þallíum hvarfast hins vegar og myndar þallíum(I) afleiður. Málmar í flokki 13 hvarfast allir beint við málmleysingja eins og brennistein, fosfór og halógena og mynda tvíundarefnasambönd.
+
+=== m68834:caption:CNX_Chem_18_06_CarbonCO2-caption (ch 18) ===
+Hvarf kalsíumkarbónats við saltsýru er sýnt. (Heimild: Mark Ott)
+
+=== m68834:caption:CNX_Chem_18_06_Cave-caption (ch 18) ===
+(a) Dropsteinar og (b) stalagmítar eru hellamyndanir úr kalsíumkarbónati. (Heimild a: breyting á verki eftir Arvind Govindaraj; heimild b: breyting á verki eftir National Park Service.)
+
+=== m68834:para:fs-idm37877696 (ch 18) ===
+Efnafræði kolefnis er umfangsmikil, en stærstur hluti hennar á ekki við í þessum kafla. Aðrir þættir efnafræði kolefnis koma fyrir í kaflanum um lífræna efnafræði. Í þessum kafla munum við einbeita okkur að karbónatjóninni og skyldum efnum. Málmar í flokkum 1 og 2, auk sinks, kadmíums, kvikasilfurs og blýs(II), mynda jónísk [[term:karbónöt|term-00001]] – efnasambönd sem innihalda karbónatanjónir, [[MATH:1]]. Málmar í flokki 1, magnesíum, kalsíum, strontíum og baríum mynda einnig [[term:vetniskarbónöt|term-00002]] – efnasambönd sem innihalda vetniskarbónatanjónina, [[MATH:2]], einnig þekkt sem [[term:tvíkarbónatanjónin|term-00003]].
+
+=== m68834:para:fs-idm40761024 (ch 18) ===
+Vetniskarbónöt jarðalkalímálma eru aðeins stöðug í lausn; uppgufun lausnarinnar framleiðir karbónatið. Dropsteinar og stalagmítar, eins og þeir sem sýndir eru á [[xref:CNX_Chem_18_06_Cave]], myndast í hellum þegar vatnsdropar sem innihalda uppleyst kalsíumvetniskarbónat gufa upp og skilja eftir sig útfellingu af kalsíumkarbónati.
+
+=== m68834:para:fs-idm59038240 (ch 18) ===
+Að undanskildu magnesíumkarbónati er hægt að framleiða karbónöt málma í flokkum 1 og 2 með hvarfi koltvíoxíðs við samsvarandi oxíð eða hýdroxíð. Dæmi um slík efnahvörf eru:
+
+=== m68834:para:fs-idm80443440 (ch 18) ===
+Karbónötin tvö sem notuð eru í stærstum mæli í atvinnuskyni eru natríumkarbónat og kalsíumkarbónat. Í Bandaríkjunum er natríumkarbónat unnið úr steinefninu tróna, Na[[sub:3]](CO[[sub:3]])(HCO[[sub:3]])(H[[sub:2]]O)[[sub:2]]. Eftir endurkristöllun til að fjarlægja leir og önnur óhreinindi er endurkristallað tróna hitað til að framleiða Na[[sub:2]]CO[[sub:3]]:
+
+=== m68834:para:fs-idp108109248 (ch 18) ===
+Perlur og skeljar flestra lindýra eru kalsíumkarbónat. Tin(II) eða ein af þrígildu eða fergildu jónunum eins og Al[[sup:3+]] eða Sn[[sup:4+]] hegða sér öðruvísi í þessu hvarfi þar sem koltvíoxíð og samsvarandi oxíð myndast í stað karbónatsins.
+
+=== m68834:para:fs-idp146223104 (ch 18) ===
+Karbónöt hvarfast við sýrur og mynda sölt málmsins, loftkennt koltvíoxíð og vatn. Hvarf kalsíumkarbónats, virka efnisins í sýrubindandi lyfinu Tums, við saltsýru (magasýru), eins og sýnt er á [[xref:CNX_Chem_18_06_CarbonCO2]], sýnir hvarfið:
+
+=== m68837:para:fs-idm71724768 (ch 18) ===
+Oxíð málma í flokkum 1 og 2 og þallíum(I)oxíð hvarfast við vatn og mynda hýdroxíð. Dæmi um slík hvörf eru:
+
+=== m68837:para:fs-idp19845744 (ch 18) ===
+Að undanskildu kvikasilfurs(II)oxíði er hægt að framleiða oxíð málma í flokkum 2–15 með því að brenna samsvarandi málm í lofti. Þyngsti meðlimur hvers flokks, sá sem tregrafeindaparsáhrifin eru mest áberandi fyrir, myndar oxíð þar sem oxunartala málmjónarinnar er tveimur minni en oxunartala flokksins (tregrafeindaparsáhrif). Þannig myndast Tl[[sub:2]]O, PbO og Bi[[sub:2]]O[[sub:3]] við bruna á þallíum, blýi og bismúti, í sömu röð. Oxíð léttari meðlima hvers flokks sýna oxunartölu flokksins. Til dæmis myndast SnO[[sub:2]] við bruna á tini. Kvikasilfurs(II)oxíð, HgO, myndast hægt þegar kvikasilfur er hitað undir 500 °C; það brotnar niður við hærra hitastig.
+
+=== m68837:problem:fs-idm14502784 (ch 18) ===
+(c) kadmíumhýdroxíði bætt við lausn af ediksýru, CH[[sub:3]]CO[[sub:2]]H
+
+=== m68837:problem:fs-idp17846160 (ch 18) ===
+Lýstu með jöfnum hvarfi vatns við kalíum og við kalíumoxíð.
+
+=== m68837:problem:fs-idp209794048 (ch 18) ===
+Spáðu fyrir um myndefnið sem myndast við bruna fransíums í lofti.
+
+=== m68837:problem:fs-idp223600240 (ch 18) ===
+(a) kadmíum brennt í lofti
+
+=== m68837:problem:fs-idp61077712 (ch 18) ===
+(b) frumefninu kadmíum bætt við lausn af saltsýru
+
+=== m68840:para:fs-idm146709616 (ch 18) ===
+Óstöðug efnasambönd argons myndast við lágt hitastig en engin stöðug efnasambönd helíums og neons eru þekkt.
+
+=== m68840:para:fs-idm47164624 (ch 18) ===
+Frumefnin í flokki 18 eru eðallofttegundir (helíum, neon, argon, krypton, xenon og radon). Þau fengu nafnið „eðal“ vegna þess að þau voru talin óhvarfgjörn þar sem þau hafa fullskipuð gildisrafeindahvel. Árið 1962 sannaði dr. Neil [[term:Bartlett|term-00001]] við Háskólann í Bresku Kólumbíu að þessi forsenda væri röng.
+
+=== m68840:para:fs-idm66671520 (ch 18) ===
+Suðumark og bræðslumark eðallofttegunda eru afar lág miðað við önnur efni með sambærilegan atóm- eða sameindamassa. Þetta er vegna þess að aðeins veikir London-dreifkraftar eru til staðar og þessir kraftar geta aðeins haldið atómunum saman þegar sameindahreyfing er mjög lítil, eins og hún er við mjög lágt hitastig. Helíum er eina þekkta efnið sem storknar ekki við kælingu við venjulegan þrýsting. Það helst fljótandi nálægt alkuli (0,001 K) við venjulegan þrýsting en storknar undir auknum þrýstingi.
+
+=== m68840:para:fs-idm74477856 (ch 18) ===
+Fljótandi helíum (suðumark, 4,2 K) er mikilvægt kælimiðill til að ná því lága hitastigi sem er nauðsynlegt fyrir frosttæknirannsóknir og það er ómissandi til að ná því lága hitastigi sem þarf til að framkalla ofurleiðni í hefðbundnum ofurleiðandi efnum sem notuð eru í öfluga segla og önnur tæki. Þessi kæligeta er nauðsynleg fyrir seglana sem notaðir eru í segulómun, sem er algeng læknisfræðileg greiningaraðferð. Hinn algengi kælimiðillinn er fljótandi köfnunarefni (suðumark, 77 K), sem er umtalsvert ódýrara.
+
+=== m68840:para:fs-idm76574784 (ch 18) ===
+Þessi frumefni er að finna í litlu magni í andrúmsloftinu. Sumt jarðgas inniheldur 1–2% helíum miðað við massa. Helíum er einangrað úr jarðgasi með því að breyta þéttanlegum efnisþáttum í vökva og skilja aðeins helíum eftir sem gas. Bandaríkin eiga mest af viðskiptabirgðum heimsins af þessu frumefni á gaslindum sínum sem innihalda helíum. Argon, neon, krypton og xenon eru unnin með hlutaeimingu á fljótandi lofti. Radon kemur frá öðrum geislavirkum frumefnum. Nýlega kom í ljós að þessi geislavirka lofttegund er til staðar í mjög litlu magni í jarðvegi og steinefnum. Uppsöfnun þess í vel einangruðum, þétt lokuðum byggingum er þó heilsuspillandi, einkum vegna hættu á lungnakrabbameini.
+
+=== m68840:para:fs-idp93284368 (ch 18) ===
+Helíum er notað til að fylla blöðrur og loftför sem eru léttari en loft vegna þess að það brennur ekki, sem gerir það öruggara í notkun en vetni. Helíum við háan þrýsting er ekki deyfandi eins og köfnunarefni. Þess vegna eru blöndur af súrefni og helíum mikilvægar fyrir kafara sem vinna undir háum þrýstingi. Notkun helíum-súrefnisblöndu kemur í veg fyrir ruglað andlegt ástand sem kallast köfnunarefnisvíma, hin svokallaða djúpsjávargleði. Helíum er mikilvægt sem hvarflaust andrúmsloft við bræðslu og suðu á málmum sem oxast auðveldlega og fyrir mörg efnaferli sem eru viðkvæm fyrir lofti.
+
+=== m68842:glossary-def:fs-idm98560816-def (ch 19) ===
+aktíníum og frumefnin í annarri röð eða [[i:f]]-blokkinni, sætistölur 89–103
+
+=== m68842:para:fs-idm126105600 (ch 19) ===
+(a) seríum(III)
+
+=== m68842:para:fs-idm165890960 (ch 19) ===
+Frumefnum í [[i:d]]-blokk er skipt í [[term:fyrstu hliðarfrumefnaröðina|term-00003]] (frumefnin Sc til Cu), [[term:aðra hliðarfrumefnaröðina|term-00004]] (frumefnin Y til Ag) og [[term:þriðju hliðarfrumefnaröðina|term-00005]] (frumefnið La og frumefnin Hf til Au). Aktíníum, Ac, er fyrsta frumefnið í [[term:fjórðu hliðarfrumefnaröðinni|term-00006]], sem inniheldur einnig Rf til Rg.
+
+=== m68842:para:fs-idm168637008 (ch 19) ===
+Fyrir frumefnin skandíum til mangan (fyrri helmingur fyrstu hliðarfrumefnaraðarinnar) samsvarar hæsta oxunarástandið því að missa allar rafeindirnar í bæði [[i:s]]- og [[i:d]]-svigrúmum gildisskeljar þeirra. Títan(IV)-jónin myndast til dæmis þegar títanatóm missir tvær 3[[i:d]]- og tvær 4[[i:s]]-rafeindir sínar. Þessi hæstu oxunarástönd eru stöðugustu form skandíums, títans og vanadíums. Hins vegar er ekki hægt að halda áfram að fjarlægja allar gildisrafeindir úr málmum eftir því sem við förum lengra í röðinni. Vitað er að járn myndar oxunarástönd frá 2+ til 6+, þar sem járn(II) og járn(III) eru algengust. Flest frumefni fyrstu hliðarfrumefnaraðarinnar mynda jónir með hleðsluna 2+ eða 3+ sem eru stöðugar í vatni, þótt auðvelt sé að oxa jónir fyrstu frumefnanna í röðinni með lofti.
+
+=== m68842:para:fs-idm195995744 (ch 19) ===
+(e) palladíum(II) [Kr]4[[i:d]][[sup:8]]; önnur hliðarfrumefnaröð
+
+=== m68842:para:fs-idm248047376 (ch 19) ===
+(d) ameríkíum(III) [Rn]5[[i:f]][[sup:6]]; aktíníði
+
+=== m68843:para:fs-idp55376000 (ch 19) ===
+Eitt mikilvægasta notagildi hliðarmálma er sem hvatar í iðnaði. Eins og þú manst úr kaflanum um efnahvörf eykur hvati hraða efnahvarfs með því að lækka virkjunarorkuna og endurmyndast í hvatunarferlinu. Yfir 90% allra framleiddra vara eru gerðar með hjálp eins eða fleiri hvata. Hæfileikinn til að binda tengla og breyta oxunartölum gerir hliðarmálmahvata vel til þess fallna að nota í hvatunarferlum. Vanadíumoxíð er notað til að framleiða 230.000.000 tonn af brennisteinssýru um allan heim á hverju ári, sem aftur er notuð til að framleiða allt frá áburði til niðursuðudósa. Plastefni eru framleidd með hjálp hliðarmálmahvata, ásamt þvottaefnum, áburði, málningu og fleiru (sjá [[xref:CNX_Chem_19_02_Cat]]). Mjög flókin lyf eru framleidd með hvötum sem eru sértækir og hvarfast við eitt tiltekið tengi af mörgum mögulegum. Hvatar gera ferla hagkvæmari og umhverfisvænni. Þróun nýrra hvata og betri skilningur á núverandi kerfum eru mikilvæg svið í rannsóknum samtímans.
+
+=== m68851:para:fs-idm36435184 (ch 21) ===
+Sem einfalt dæmi um orkuna sem tengist sterka kjarnakraftinum skulum við skoða helíumatóm sem samanstendur af tveimur róteindum, tveimur nifteindum og tveimur rafeindum. Heildarmassa þessara sex öreinda má reikna sem:
+
+=== m68851:para:fs-idm77528832 (ch 21) ===
+Róteindir og nifteindir, sem sameiginlega eru kallaðar [[term:kjarnaeindir|term-00003]], pakkast þétt saman í kjarna. Kjarni er fremur lítill, með radíus um 10[[sup:−15]] metra, samanborið við radíus alls atómsins, sem er um 10[[sup:−10]] metrar. Kjarnar eru gríðarlega þéttir miðað við efni í föstu formi, að meðaltali 1,8 [[MATH:5]] 10[[sup:14]] grömm á rúmsentimetra. Til dæmis hefur vatn eðlismassa upp á 1 gramm á rúmsentimetra og iridíum, eitt þéttasta frumefni sem þekkt er, hefur eðlismassa upp á 22,6 g/cm[[sup:3]]. Ef eðlismassi jarðar væri jafn meðaleðlismassa kjarna væri radíus jarðar aðeins um 200 metrar (raunverulegur radíus jarðar er um það bil 6,4 [[MATH:6]] 10[[sup:6]] metrar, 30.000 sinnum stærri). [[xref:fs-idp85198000]] sýnir hversu gríðarlega mikill eðlismassi kjarna getur verið í náttúrunni.
+
+=== m68851:para:fs-idp28406768 (ch 21) ===
+Hins vegar sýna massarófsmælingar að massi [[MATH:16]] atóms er 4,0026 amu, sem er minna en samanlagður massi sex öreindanna sem það er myndað úr. Þessi munur á útreiknuðum og mældum massa er þekktur sem [[term:massarýrð|term-00005]] atómsins. Í tilfelli helíums gefur massarýrðin til kynna „tap“ á massa upp á 4,0331 amu – 4,0026 amu = 0,0305 amu. Massatapið sem fylgir myndun atóms úr róteindum, nifteindum og rafeindum stafar af umbreytingu þess massa í orku sem losnar þegar atómið myndast. [[term:Kjarnabindingsorka|term-00006]] er orkan sem myndast þegar kjarnaeindir atómsins bindast saman; þetta er líka orkan sem þarf til að brjóta kjarna í sundur í róteindir og nifteindir. Í samanburði við efnatengisorku er kjarnabindingsorka [[i:gríðarlega]] miklu meiri, eins og við munum læra í þessum kafla. Þar af leiðandi eru orkubreytingarnar sem tengjast kjarnahvörfum gríðarlega miklu meiri en þær sem eiga sér stað í efnahvörfum.
+
+=== m68851:problem:fs-idm56820256 (ch 21) ===
+(d) fransíum-217
+
+=== m68852:alt:fs-idp74884384-alt (ch 21) ===
+This table has four columns and seven rows. The first row is a header row and it labels each column: “Name,” “Symbol(s),” “Representation,” and “Description.” Under the “Name” column are the following: “Alpha particle,” “Beta particle,” “Positron,” “Proton,” “Neutron,” and “Gamma ray.” Under the “Symbol(s)” column are the following: “ superscript 4 stacked over a subscript 2 H e or lowercase alpha,” “superscript 0 stacked over a subscript 1 e or lowercase beta,” “superscript 0 stacked over a positive subscript 1 e or lowercase beta superscript positive sign,” “superscript 1 stacked over a subscript 1 H or lowercase rho superscript 1 stacked over a subscript 1 H,” “superscript 1 stacked over a subscript 0 n or lowercase eta superscript 1 stacked over a subscript 0 n,” and a lowercase gamma. Under the “Representation column,” are the following: two white sphere attached to two blue spheres of about the same size with positive signs in them; a small red sphere with a negative sign in it; a small red sphere with a positive sign in it; a blue spheres with a positive sign in it; a white sphere; and a purple squiggle ling with an arrow pointing right to a lowercase gamma. Under the “Description” column are the following: “(High-energy) helíum nuclei consisting of two protons and two neutrons,” “(High-energy) elections,” “Particles with the same mass as an electron but with 1 unit of positive charge,” “Nuclei of hydrogen atoms,” “Particles with a mass approximately equal to that of a proton but with no charge,” and “Very high-energy electromagnetic radiation.”
+
+=== m68852:glossary-def:fs-idm57603984-def (ch 21) ===
+[[b:(α]] eða [[MATH:45]] eða [[MATH:46]] orkuríkur helíumkjarni; helíumatóm sem hefur misst tvær rafeindir og inniheldur tvær róteindir og tvær nifteindir
+
+=== m68852:para:fs-idm5999248 (ch 21) ===
+Many entities can be involved in nuclear reactions. The most common are protons, neutrons, alpha particles, beta particles, positrons, and gamma rays, as shown in [[xref:CNX_Chem_21_02_Nuclearrxs]]. Protons [[MATH:1]] also represented by the symbol [[MATH:2]] and neutrons [[MATH:3]] are the constituents of atomic nuclei, and have been described previously. [[term:Alpha particles|term-00002]] [[MATH:4]] also represented by the symbol [[MATH:5]] are high-energy helíum nuclei. [[term:Beta particles|term-00003]] [[MATH:6]] also represented by the symbol [[MATH:7]] are high-energy electrons, and gamma rays are photons of very high-energy electromagnetic radiation. [[term:Positrons|term-00004]] [[MATH:8]] also represented by the symbol [[MATH:9]] are positively charged electrons (“anti-electrons”). The subscripts and superscripts are necessary for balancing nuclear equations, but are usually optional in other circumstances. For example, an alpha particle is a helíum nucleus (He) with a charge of +2 and a mass number of 4, so it is symbolized [[MATH:10]] This works because, in general, the ion charge is not important in the balancing of nuclear equations.
+
+=== m68852:problem:fs-idp250174032 (ch 21) ===
+Teknetíum-99 er búið til úr [[sup:98]]Mo. Mólýbden-98 sameinast nifteind og myndar mólýbden-99, óstöðuga samsætu sem gefur frá sér β-eind og myndar örvað form af teknetíum-99, táknað sem [[sup:99]]Tc[[sup:*]]. Þessi örvaði kjarni slakar á niður í grunnástand, táknað sem [[sup:99]]Tc, með því að gefa frá sér γ-geisla. Grunnástand [[sup:99]]Tc gefur síðan frá sér β-eind. Skrifaðu jöfnurnar fyrir hvert þessara kjarnahvarfa.
+
+=== m68854:caption:CNX_Chem_21_03_Reaction1-caption (ch 21) ===
+Kjarni úrans-238 (móðurkjarnategundin) gengst undir α-sundrun og myndar þóríum-234 (dótturkjarnategundina). Alfaagnirnar fjarlægja tvær róteindir (grænar) og tvær nifteindir (gráar) úr úran-238 kjarnanum.
+
+=== m68854:para:fs-idp130339440 (ch 21) ===
+Tilraunir Ernests Rutherfords sem fólu í sér víxlverkun geislunar við segul- eða rafsvið ([[xref:CNX_Chem_21_03_Radiation]]) hjálpuðu honum að ákvarða að ein tegund geislunar samanstóð af jákvætt hlöðnum og tiltölulega massamiklum α-ögnum; önnur tegund var samsett úr neikvætt hlöðnum og mun minni β-ögnum; og sú þriðja voru óhlaðnar rafsegulbylgjur, γ-geislar. Við vitum nú að α-agnir eru orkumiklir helíumkjarnar, β-agnir eru orkumiklar rafeindir og γ-geislun samanstendur af orkumikilli rafsegulgeislun. Við flokkum mismunandi tegundir geislasundrunar eftir geisluninni sem myndast.
+
+=== m68854:para:fs-idp54304864 (ch 21) ===
+Náttúrulega geislavirkar samsætur þyngstu frumefnanna falla í keðjur af samfelldum sundrunum og allar tegundir í einni keðju mynda geislavirka fjölskyldu, eða [[term:geislasundrunarröð|term-00009]]. Þrjár af þessum röðum innihalda flest náttúrulega geislavirk frumefni lotukerfisins. Þetta eru úranröðin, aktiníðröðin og þóríumröðin. Neptúnínröðin er fjórða röðin, sem er ekki lengur marktæk á jörðinni vegna stutts helmingunartíma þeirra tegunda sem hún inniheldur. Hver röð einkennist af móðurefni (fyrsta meðlim) sem hefur langan helmingunartíma og röð dótturkjarnategunda sem að lokum leiða til stöðugrar lokaafurðar – það er að segja kjarnategundar á stöðugleikabeltinu ([[xref:CNX_Chem_21_03_DecayS]]). Í öllum þremur röðunum er lokaafurðin stöðug samsæta blýs. Neptúnínröðin, sem áður var talin enda með bismút-209, endar með þallíum-205.
+
+=== m68854:problem:fs-idm22718704 (ch 21) ===
+(a) Reiknaðu aldur bergsins ef helmingunartími sundrunar rúbidíums með β-losun er 4,7 [[MATH:94]] 10[[sup:10]] ár.
+
+=== m68854:problem:fs-idm37225376 (ch 21) ===
+1,00 [[MATH:85]] 10[[sup:–6]] g sýni af nóbelíum, [[MATH:86]], hefur helmingunartíma upp á 55 sekúndur eftir að það myndast. Hvert er hlutfall [[MATH:87]] sem er eftir á eftirfarandi tímum?
+
+=== m68854:problem:fs-idp125426976 (ch 21) ===
+Bergsýni reyndist innihalda 8,23 mg af rúbidíum-87 og 0,47 mg af strontíum-87.
+
+=== m68854:problem:fs-idp126089680 (ch 21) ===
+Samsætan [[MATH:92]] er ein af afar hættulegum tegundum í leifum frá kjarnorkuframleiðslu. Strontíumið í 0,500 g sýni minnkar í 0,393 g á 10,0 árum. Reiknaðu helmingunartímann.
+
+=== m68854:problem:fs-idp219506992 (ch 21) ===
+Teknetíum-99 er oft notað til að meta skemmdir á hjarta, lifur og lungum vegna þess að ákveðin teknetíumefnasambönd frásogast af skemmdum vefjum. Það hefur helmingunartíma upp á 6,0 klst. Reiknaðu sundrunarstuðulinn fyrir sundrun [[MATH:93]].
+
+=== m68854:problem:fs-idp77337360 (ch 21) ===
+(c) þóríum-232 sundrast og myndar alfaögn og radíum-228 kjarna, sem sundrast í aktíníum-228 með betasundrun
+
+=== m68856:entry:auto-29 (ch 21) ===
+ameríkíum
+
+=== m68856:entry:auto-37 (ch 21) ===
+kaliforníum
+
+=== m68856:entry:auto-41 (ch 21) ===
+einsteiníum
+
+=== m68856:entry:auto-45 (ch 21) ===
+mendelevíum
+
+=== m68856:entry:auto-49 (ch 21) ===
+nóbelíum
+
+=== m68856:entry:auto-53 (ch 21) ===
+rutherfordíum
+
+=== m68856:entry:auto-57 (ch 21) ===
+seaborgíum
+
+=== m68856:entry:auto-61 (ch 21) ===
+meitneríum
+
+=== m68856:para:fs-idm172997504 (ch 21) ===
+Hægt er að framleiða ný atóm með því að skjóta kjörnum eða háhraða ögnum á önnur atóm. Afurðir þessara frumefnabreytinga geta verið stöðugar eða geislavirkar. Fjöldi tilbúinna frumefna, þar á meðal teknetíum, astatín og þverúranar, hafa verið framleidd á þennan hátt.
+
+=== m68856:para:fs-idm28146592 (ch 21) ===
+Notaðar eldsneytisstangir innihalda ýmsar afurðir, sem samanstanda af óstöðugum kjörnum með sætistölu frá 25 til 60, nokkur þungefni, þar á meðal plútóníum og ameríkíum, og óhvarfaðar úran samsætur. Óstöðugu kjarnarnir og þungefnin gefa notuðu eldsneyti hættulega mikla geislavirkni. Það tekur þúsundir ára fyrir langlífu samsæturnar að sundrast niður á öruggt stig. Endanleg örlög kjarnaofnsins sem mikilvægs orkugjafa í Bandaríkjunum velta líklega á því hvort hægt verði að þróa pólitískt og vísindalega viðunandi tækni til að vinna úr og geyma íhluti notaðra eldsneytisstanga.
+
+=== m68856:problem:fs-idm84813904 (ch 21) ===
+(c) lawrensíum-257, framleitt með hvarfi Cf-250 og B-11
+
+=== m68857:alt:fs-idp22507536-alt (ch 21) ===
+Sýnd er ljósmynd og skýringarmynd. Ljósmyndin sýnir reykskynjara að innan. Hringlaga plaststykki í neðri hluta skynjarans er merkt „Alarm“ (viðvörun) en málmdiskur efst til vinstri á myndinni er merktur „Ionization chamber“ (jónunarhólf). Rafhlaða er efst til hægri í skynjaranum. Skýringarmyndin sýnir stækkaða mynd af jónunarhólfinu. Inni í sívalningslaga hlífinni eru tvær láréttar, hringlaga plötur merktar „Metal plates“ (málmplötur); efri platan er merkt með plúsmerki og sú neðri með mínusmerki. Vírarnir eru sýndir tengdir við plöturnar og skauta rafhlöðu utan á hólfinu. Diskur í botni hólfsins er merktur „Ameríkíum source“ (ameríkíumgjafi) og fjórar örvar, merktar „Alpha particles“ (alfaeindir), vísa lóðrétt frá þessum diski, í gegnum gat á neikvæðu plötunni og inn í efra rými hólfsins. Tvær sameindir með plúsmerkjum, samsettar úr tveimur bláum kúlum, og tvær sameindir með plúsmerkjum, samsettar úr tveimur rauðum kúlum, eru í þessu rými, auk tveggja gulra kúla sem eru merktar með mínusmerkjum og örvum sem vísa niður á við. Ellefu hvítir punktar umkringja tvær sameindanna hægra megin á myndinni og eru merktir „smoke particles“ (reykagnir). Fyrir ofan vinstri hluta myndarinnar er setningin „No smoke, charged particles complete the circuit“ (Enginn reykur, hlaðnar agnir ljúka við rásina) en setning fyrir ofan hægri hluta myndarinnar segir „Smoke uncharges the particles, circuit is broken, alarm is triggered“ (Reykur afhleður agnirnar, rásin rofnar, viðvörun fer í gang).
+
+=== m68857:caption:CNX_Chem_21_05_Thallium-caption (ch 21) ===
+Að gefa sjúklingi þallíum-201 og framkvæma síðan álagspróf gefur heilbrigðisstarfsfólki tækifæri til að greina sjónrænt starfsemi hjartans og blóðflæði. (Heimild: breyting á verki eftir „Blue0ctane“/Wikimedia Commons)
+
+=== m68857:para:fs-idp105479248 (ch 21) ===
+Ameríkíum-241, α-geislari með helmingunartíma 458 ár, er notað í örlitlu magni í jónandi reykskynjurum ([[xref:CNX_Chem_21_05_SmokeAlarm]]). α-geislunin frá Am-241 jónar loftið milli tveggja rafskautsplata í jónunarhólfinu. Rafhlaða veitir spennu sem veldur hreyfingu jónanna og skapar þannig lítinn rafstraum. Þegar reykur kemur inn í hólfið er hreyfing jónanna hindruð, sem dregur úr leiðni loftsins. Þetta veldur verulegri lækkun á straumnum og kemur viðvörun af stað.
+
+=== m68857:para:fs-idp247341312 (ch 21) ===
+Geislasamsætur hafa gjörbylt læknisfræði (sjá [[docref:viðauka M|m68871]]), þar sem þær eru mikið notaðar. Árlega eru framkvæmdar yfir 10 milljónir kjarnalæknisfræðilegra aðgerða og meira en 100 milljónir kjarnalæknisfræðilegra prófa í Bandaríkjunum. Fjögur dæmigerð geislavirk sporefni sem notuð eru í læknisfræði eru teknetíum-99 [[MATH:1]], þallíum-201 [[MATH:2]], joð-131 [[MATH:3]] og natríum-24 [[MATH:4]]. Skemmdir vefir í hjarta, lifur og lungum draga í sig ákveðin efnasambönd teknetíums-99 í forgangi. Eftir að því er sprautað inn er hægt að ákvarða staðsetningu teknetíumsambandsins, og þar með skemmda vefjarins, með því að greina γ-geislana sem Tc-99 samsætan gefur frá sér. Þallíum-201 ([[xref:CNX_Chem_21_05_Thallium]]) safnast fyrir í heilbrigðum hjartavef, þannig að samsæturnar tvær, Tc-99 og Tl-201, eru notaðar saman til að rannsaka hjartavef. Joð-131 safnast fyrir í skjaldkirtli, lifur og sumum hlutum heilans. Það er því hægt að nota til að fylgjast með skjaldkirtilsstækkun og meðhöndla skjaldkirtilssjúkdóma, svo sem Graves-sjúkdóm, auk lifrar- og heilaæxla. Saltlausnum sem innihalda efnasambönd af natríum-24 er sprautað í blóðrásina til að hjálpa til við að finna hindranir í blóðflæði.
+
+=== m68857:problem:fs-idp3550720 (ch 21) ===
+Teknetíum-99m hefur helmingunartíma upp á 6,01 klukkustund. Ef sjúklingur sem fær teknetíum-99m í æð má yfirgefa sjúkrahúsið þegar 75% af skammtinum hefur sundrast, hvenær má sjúklingurinn þá fara?
+
+=== m68865:entry:auto-114 (ch App.) ===
+baríum
+
+=== m68865:entry:auto-139 (ch App.) ===
+beryllíum
+
+=== m68865:entry:auto-438 (ch App.) ===
+Sesíum
+
+=== m68868:entry:auto-204 (ch App.) ===
+þallíum
+
+=== m68868:entry:auto-32 (ch App.) ===
+kadmíum
+
+=== m68868:entry:auto-39 (ch App.) ===
+kalsíum
+
+=== m68868:entry:auto-8 (ch App.) ===
+baríum

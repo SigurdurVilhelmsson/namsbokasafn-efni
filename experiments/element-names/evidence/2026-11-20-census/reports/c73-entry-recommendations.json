@@ -1,0 +1,964 @@
+{
+ "threshold": 0.1,
+ "summary": {
+  "unreliable": 45,
+  "never official": 14,
+  "reliable": 4,
+  "homograph": 1,
+  "absent": 4
+ },
+ "rows": [
+  {
+   "n": 2,
+   "english": "helium",
+   "official": [
+    "helíum"
+   ],
+   "enSegments": 55,
+   "officialOccurrences": 54,
+   "nonOfficialOccurrences": 27,
+   "nonOfficialShare": 0.333,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "33% of the MT's forms are not official"
+  },
+  {
+   "n": 3,
+   "english": "lithium",
+   "official": [
+    "liþíum"
+   ],
+   "enSegments": 58,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 78,
+   "nonOfficialShare": 1.0,
+   "class": "never official",
+   "recommendation": "entry",
+   "why": "the MT never produces the official name"
+  },
+  {
+   "n": 4,
+   "english": "beryllium",
+   "official": [
+    "beryllíum"
+   ],
+   "enSegments": 31,
+   "officialOccurrences": 26,
+   "nonOfficialOccurrences": 10,
+   "nonOfficialShare": 0.278,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "28% of the MT's forms are not official"
+  },
+  {
+   "n": 11,
+   "english": "sodium",
+   "official": [
+    "natríum"
+   ],
+   "enSegments": 232,
+   "officialOccurrences": 359,
+   "nonOfficialOccurrences": 9,
+   "nonOfficialShare": 0.024,
+   "class": "reliable",
+   "recommendation": "not needed by §C73",
+   "why": "only 2% of the MT's forms are not official, and the drafted fixes clear those"
+  },
+  {
+   "n": 12,
+   "english": "magnesium",
+   "official": [
+    "magnesíum"
+   ],
+   "enSegments": 119,
+   "officialOccurrences": 162,
+   "nonOfficialOccurrences": 21,
+   "nonOfficialShare": 0.115,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "11% of the MT's forms are not official"
+  },
+  {
+   "n": 19,
+   "english": "potassium",
+   "official": [
+    "kalíum"
+   ],
+   "enSegments": 98,
+   "officialOccurrences": 116,
+   "nonOfficialOccurrences": 5,
+   "nonOfficialShare": 0.041,
+   "class": "reliable",
+   "recommendation": "not needed by §C73",
+   "why": "only 4% of the MT's forms are not official, and the drafted fixes clear those"
+  },
+  {
+   "n": 20,
+   "english": "calcium",
+   "official": [
+    "kalsíum"
+   ],
+   "enSegments": 146,
+   "officialOccurrences": 208,
+   "nonOfficialOccurrences": 12,
+   "nonOfficialShare": 0.055,
+   "class": "reliable",
+   "recommendation": "not needed by §C73",
+   "why": "only 5% of the MT's forms are not official, and the drafted fixes clear those"
+  },
+  {
+   "n": 21,
+   "english": "scandium",
+   "official": [
+    "skandíum"
+   ],
+   "enSegments": 12,
+   "officialOccurrences": 12,
+   "nonOfficialOccurrences": 3,
+   "nonOfficialShare": 0.2,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "20% of the MT's forms are not official"
+  },
+  {
+   "n": 23,
+   "english": "vanadium",
+   "official": [
+    "vanadíum"
+   ],
+   "enSegments": 11,
+   "officialOccurrences": 9,
+   "nonOfficialOccurrences": 3,
+   "nonOfficialShare": 0.25,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "25% of the MT's forms are not official"
+  },
+  {
+   "n": 31,
+   "english": "gallium",
+   "official": [
+    "gallíum"
+   ],
+   "enSegments": 19,
+   "officialOccurrences": 13,
+   "nonOfficialOccurrences": 10,
+   "nonOfficialShare": 0.435,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "43% of the MT's forms are not official"
+  },
+  {
+   "n": 37,
+   "english": "rubidium",
+   "official": [
+    "rúbidíum"
+   ],
+   "enSegments": 16,
+   "officialOccurrences": 14,
+   "nonOfficialOccurrences": 4,
+   "nonOfficialShare": 0.222,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "22% of the MT's forms are not official"
+  },
+  {
+   "n": 38,
+   "english": "strontium",
+   "official": [
+    "strontíum"
+   ],
+   "enSegments": 29,
+   "officialOccurrences": 29,
+   "nonOfficialOccurrences": 6,
+   "nonOfficialShare": 0.171,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "17% of the MT's forms are not official"
+  },
+  {
+   "n": 39,
+   "english": "yttrium",
+   "official": [
+    "yttríum"
+   ],
+   "enSegments": 11,
+   "officialOccurrences": 11,
+   "nonOfficialOccurrences": 1,
+   "nonOfficialShare": 0.083,
+   "class": "reliable",
+   "recommendation": "not needed by §C73",
+   "why": "only 8% of the MT's forms are not official, and the drafted fixes clear those"
+  },
+  {
+   "n": 41,
+   "english": "niobium",
+   "official": [
+    "níóbíum"
+   ],
+   "enSegments": 5,
+   "officialOccurrences": 4,
+   "nonOfficialOccurrences": 1,
+   "nonOfficialShare": 0.2,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "20% of the MT's forms are not official"
+  },
+  {
+   "n": 43,
+   "english": "technetium",
+   "official": [
+    "teknetíum"
+   ],
+   "enSegments": 14,
+   "officialOccurrences": 6,
+   "nonOfficialOccurrences": 13,
+   "nonOfficialShare": 0.684,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "68% of the MT's forms are not official"
+  },
+  {
+   "n": 45,
+   "english": "rhodium",
+   "official": [
+    "ródíum"
+   ],
+   "enSegments": 8,
+   "officialOccurrences": 6,
+   "nonOfficialOccurrences": 2,
+   "nonOfficialShare": 0.25,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "25% of the MT's forms are not official"
+  },
+  {
+   "n": 46,
+   "english": "palladium",
+   "official": [
+    "palladíum"
+   ],
+   "enSegments": 11,
+   "officialOccurrences": 11,
+   "nonOfficialOccurrences": 2,
+   "nonOfficialShare": 0.154,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "15% of the MT's forms are not official"
+  },
+  {
+   "n": 48,
+   "english": "cadmium",
+   "official": [
+    "kadmíum"
+   ],
+   "enSegments": 38,
+   "officialOccurrences": 43,
+   "nonOfficialOccurrences": 7,
+   "nonOfficialShare": 0.14,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "14% of the MT's forms are not official"
+  },
+  {
+   "n": 49,
+   "english": "indium",
+   "official": [
+    "indíum"
+   ],
+   "enSegments": 9,
+   "officialOccurrences": 8,
+   "nonOfficialOccurrences": 3,
+   "nonOfficialShare": 0.273,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "27% of the MT's forms are not official"
+  },
+  {
+   "n": 55,
+   "english": "caesium",
+   "official": [
+    "sesíum"
+   ],
+   "enSegments": 21,
+   "officialOccurrences": 11,
+   "nonOfficialOccurrences": 20,
+   "nonOfficialShare": 0.645,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "65% of the MT's forms are not official"
+  },
+  {
+   "n": 56,
+   "english": "barium",
+   "official": [
+    "baríum"
+   ],
+   "enSegments": 47,
+   "officialOccurrences": 54,
+   "nonOfficialOccurrences": 15,
+   "nonOfficialShare": 0.217,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "22% of the MT's forms are not official"
+  },
+  {
+   "n": 58,
+   "english": "cerium",
+   "official": [
+    "seríum"
+   ],
+   "enSegments": 7,
+   "officialOccurrences": 2,
+   "nonOfficialOccurrences": 5,
+   "nonOfficialShare": 0.714,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "71% of the MT's forms are not official"
+  },
+  {
+   "n": 61,
+   "english": "promethium",
+   "official": [
+    "prómeþíum"
+   ],
+   "enSegments": 5,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 5,
+   "nonOfficialShare": 1.0,
+   "class": "never official",
+   "recommendation": "entry",
+   "why": "the MT never produces the official name"
+  },
+  {
+   "n": 62,
+   "english": "samarium",
+   "official": [
+    "samaríum"
+   ],
+   "enSegments": 5,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 5,
+   "nonOfficialShare": 1.0,
+   "class": "never official",
+   "recommendation": "entry",
+   "why": "the MT never produces the official name"
+  },
+  {
+   "n": 63,
+   "english": "europium",
+   "official": [
+    "evrópíum"
+   ],
+   "enSegments": 7,
+   "officialOccurrences": 3,
+   "nonOfficialOccurrences": 4,
+   "nonOfficialShare": 0.571,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "57% of the MT's forms are not official"
+  },
+  {
+   "n": 64,
+   "english": "gadolinium",
+   "official": [
+    "gadólíníum"
+   ],
+   "enSegments": 6,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 5,
+   "nonOfficialShare": 1.0,
+   "class": "never official",
+   "recommendation": "entry",
+   "why": "the MT never produces the official name"
+  },
+  {
+   "n": 65,
+   "english": "terbium",
+   "official": [
+    "terbíum"
+   ],
+   "enSegments": 5,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 4,
+   "nonOfficialShare": 0.8,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "80% of the MT's forms are not official"
+  },
+  {
+   "n": 66,
+   "english": "dysprosium",
+   "official": [
+    "dysprósíum"
+   ],
+   "enSegments": 6,
+   "officialOccurrences": 2,
+   "nonOfficialOccurrences": 4,
+   "nonOfficialShare": 0.667,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "67% of the MT's forms are not official"
+  },
+  {
+   "n": 67,
+   "english": "holmium",
+   "official": [
+    "hólmíum"
+   ],
+   "enSegments": 5,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 4,
+   "nonOfficialShare": 0.8,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "80% of the MT's forms are not official"
+  },
+  {
+   "n": 68,
+   "english": "erbium",
+   "official": [
+    "erbíum"
+   ],
+   "enSegments": 4,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 4,
+   "nonOfficialShare": 1.0,
+   "class": "never official",
+   "recommendation": "entry",
+   "why": "the MT never produces the official name"
+  },
+  {
+   "n": 69,
+   "english": "thulium",
+   "official": [
+    "túlíum"
+   ],
+   "enSegments": 5,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 4,
+   "nonOfficialShare": 0.8,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "80% of the MT's forms are not official"
+  },
+  {
+   "n": 70,
+   "english": "ytterbium",
+   "official": [
+    "ytterbíum"
+   ],
+   "enSegments": 4,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 4,
+   "nonOfficialShare": 1.0,
+   "class": "never official",
+   "recommendation": "entry",
+   "why": "the MT never produces the official name"
+  },
+  {
+   "n": 71,
+   "english": "lutetium",
+   "official": [
+    "lútetíum"
+   ],
+   "enSegments": 6,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 5,
+   "nonOfficialShare": 0.833,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "83% of the MT's forms are not official"
+  },
+  {
+   "n": 72,
+   "english": "hafnium",
+   "official": [
+    "hafníum"
+   ],
+   "enSegments": 5,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 4,
+   "nonOfficialShare": 0.8,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "80% of the MT's forms are not official"
+  },
+  {
+   "n": 75,
+   "english": "rhenium",
+   "official": [
+    "reníum"
+   ],
+   "enSegments": 6,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 5,
+   "nonOfficialShare": 0.833,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "83% of the MT's forms are not official"
+  },
+  {
+   "n": 76,
+   "english": "osmium",
+   "official": [
+    "osmíum"
+   ],
+   "enSegments": 9,
+   "officialOccurrences": 3,
+   "nonOfficialOccurrences": 6,
+   "nonOfficialShare": 0.667,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "67% of the MT's forms are not official"
+  },
+  {
+   "n": 77,
+   "english": "iridium",
+   "official": [
+    "iridíum"
+   ],
+   "enSegments": 11,
+   "officialOccurrences": 4,
+   "nonOfficialOccurrences": 7,
+   "nonOfficialShare": 0.636,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "64% of the MT's forms are not official"
+  },
+  {
+   "n": 81,
+   "english": "thallium",
+   "official": [
+    "þallíum"
+   ],
+   "enSegments": 22,
+   "officialOccurrences": 14,
+   "nonOfficialOccurrences": 21,
+   "nonOfficialShare": 0.6,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "60% of the MT's forms are not official"
+  },
+  {
+   "n": 82,
+   "english": "lead",
+   "official": [
+    "blý"
+   ],
+   "enSegments": 114,
+   "officialOccurrences": 121,
+   "nonOfficialOccurrences": 0,
+   "nonOfficialShare": 0.0,
+   "class": "homograph",
+   "recommendation": "no entry",
+   "why": "an entry would make the editor's term check fire on the English verb \"lead\" (as in \"lead to\")"
+  },
+  {
+   "n": 87,
+   "english": "francium",
+   "official": [
+    "fransíum"
+   ],
+   "enSegments": 8,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 7,
+   "nonOfficialShare": 0.875,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "88% of the MT's forms are not official"
+  },
+  {
+   "n": 88,
+   "english": "radium",
+   "official": [
+    "radíum"
+   ],
+   "enSegments": 12,
+   "officialOccurrences": 7,
+   "nonOfficialOccurrences": 5,
+   "nonOfficialShare": 0.417,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "42% of the MT's forms are not official"
+  },
+  {
+   "n": 89,
+   "english": "actinium",
+   "official": [
+    "aktíníum"
+   ],
+   "enSegments": 11,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 12,
+   "nonOfficialShare": 0.923,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "92% of the MT's forms are not official"
+  },
+  {
+   "n": 90,
+   "english": "thorium",
+   "official": [
+    "þóríum"
+   ],
+   "enSegments": 9,
+   "officialOccurrences": 3,
+   "nonOfficialOccurrences": 6,
+   "nonOfficialShare": 0.667,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "67% of the MT's forms are not official"
+  },
+  {
+   "n": 91,
+   "english": "protactinium",
+   "official": [
+    "prótaktíníum"
+   ],
+   "enSegments": 4,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 4,
+   "nonOfficialShare": 1.0,
+   "class": "never official",
+   "recommendation": "entry",
+   "why": "the MT never produces the official name"
+  },
+  {
+   "n": 95,
+   "english": "americium",
+   "official": [
+    "ameríkíum"
+   ],
+   "enSegments": 11,
+   "officialOccurrences": 2,
+   "nonOfficialOccurrences": 10,
+   "nonOfficialShare": 0.833,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "83% of the MT's forms are not official"
+  },
+  {
+   "n": 96,
+   "english": "curium",
+   "official": [
+    "curíum"
+   ],
+   "enSegments": 6,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 6,
+   "nonOfficialShare": 1.0,
+   "class": "never official",
+   "recommendation": "entry",
+   "why": "the MT never produces the official name"
+  },
+  {
+   "n": 97,
+   "english": "berkelium",
+   "official": [
+    "berkelíum"
+   ],
+   "enSegments": 5,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 5,
+   "nonOfficialShare": 1.0,
+   "class": "never official",
+   "recommendation": "entry",
+   "why": "the MT never produces the official name"
+  },
+  {
+   "n": 98,
+   "english": "californium",
+   "official": [
+    "kaliforníum"
+   ],
+   "enSegments": 6,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 5,
+   "nonOfficialShare": 0.833,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "83% of the MT's forms are not official"
+  },
+  {
+   "n": 99,
+   "english": "einsteinium",
+   "official": [
+    "einsteiníum"
+   ],
+   "enSegments": 6,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 5,
+   "nonOfficialShare": 0.833,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "83% of the MT's forms are not official"
+  },
+  {
+   "n": 100,
+   "english": "fermium",
+   "official": [
+    "fermíum"
+   ],
+   "enSegments": 5,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 5,
+   "nonOfficialShare": 1.0,
+   "class": "never official",
+   "recommendation": "entry",
+   "why": "the MT never produces the official name"
+  },
+  {
+   "n": 101,
+   "english": "mendelevium",
+   "official": [
+    "mendelevíum"
+   ],
+   "enSegments": 6,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 5,
+   "nonOfficialShare": 0.833,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "83% of the MT's forms are not official"
+  },
+  {
+   "n": 102,
+   "english": "nobelium",
+   "official": [
+    "nóbelíum"
+   ],
+   "enSegments": 7,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 6,
+   "nonOfficialShare": 0.857,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "86% of the MT's forms are not official"
+  },
+  {
+   "n": 103,
+   "english": "lawrencium",
+   "official": [
+    "lawrensíum"
+   ],
+   "enSegments": 7,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 6,
+   "nonOfficialShare": 0.857,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "86% of the MT's forms are not official"
+  },
+  {
+   "n": 104,
+   "english": "rutherfordium",
+   "official": [
+    "rutherfordíum"
+   ],
+   "enSegments": 6,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 5,
+   "nonOfficialShare": 0.833,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "83% of the MT's forms are not official"
+  },
+  {
+   "n": 105,
+   "english": "dubnium",
+   "official": [
+    "dubníum"
+   ],
+   "enSegments": 5,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 5,
+   "nonOfficialShare": 1.0,
+   "class": "never official",
+   "recommendation": "entry",
+   "why": "the MT never produces the official name"
+  },
+  {
+   "n": 106,
+   "english": "seaborgium",
+   "official": [
+    "seaborgíum"
+   ],
+   "enSegments": 7,
+   "officialOccurrences": 2,
+   "nonOfficialOccurrences": 5,
+   "nonOfficialShare": 0.714,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "71% of the MT's forms are not official"
+  },
+  {
+   "n": 107,
+   "english": "bohrium",
+   "official": [
+    "bohríum"
+   ],
+   "enSegments": 4,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 4,
+   "nonOfficialShare": 1.0,
+   "class": "never official",
+   "recommendation": "entry",
+   "why": "the MT never produces the official name"
+  },
+  {
+   "n": 108,
+   "english": "hassium",
+   "official": [
+    "hassíum"
+   ],
+   "enSegments": 4,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 4,
+   "nonOfficialShare": 1.0,
+   "class": "never official",
+   "recommendation": "entry",
+   "why": "the MT never produces the official name"
+  },
+  {
+   "n": 109,
+   "english": "meitnerium",
+   "official": [
+    "meitneríum"
+   ],
+   "enSegments": 6,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 5,
+   "nonOfficialShare": 0.833,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "83% of the MT's forms are not official"
+  },
+  {
+   "n": 110,
+   "english": "darmstadtium",
+   "official": [
+    "darmstadtíum"
+   ],
+   "enSegments": 4,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 4,
+   "nonOfficialShare": 1.0,
+   "class": "never official",
+   "recommendation": "entry",
+   "why": "the MT never produces the official name"
+  },
+  {
+   "n": 111,
+   "english": "roentgenium",
+   "official": [
+    "röntgeníum"
+   ],
+   "enSegments": 5,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 4,
+   "nonOfficialShare": 0.8,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "80% of the MT's forms are not official"
+  },
+  {
+   "n": 112,
+   "english": "copernicium",
+   "official": [
+    "kópernikíum"
+   ],
+   "enSegments": 6,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 5,
+   "nonOfficialShare": 0.833,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "83% of the MT's forms are not official"
+  },
+  {
+   "n": 113,
+   "english": "nihonium",
+   "official": [
+    "níhoníum"
+   ],
+   "enSegments": 0,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 0,
+   "nonOfficialShare": null,
+   "class": "absent",
+   "recommendation": "no entry",
+   "why": "the name does not occur in the book"
+  },
+  {
+   "n": 114,
+   "english": "flerovium",
+   "official": [
+    "fleróvíum"
+   ],
+   "enSegments": 7,
+   "officialOccurrences": 2,
+   "nonOfficialOccurrences": 5,
+   "nonOfficialShare": 0.714,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "71% of the MT's forms are not official"
+  },
+  {
+   "n": 115,
+   "english": "moscovium",
+   "official": [
+    "moskóvíum"
+   ],
+   "enSegments": 0,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 0,
+   "nonOfficialShare": null,
+   "class": "absent",
+   "recommendation": "no entry",
+   "why": "the name does not occur in the book"
+  },
+  {
+   "n": 116,
+   "english": "livermorium",
+   "official": [
+    "livermoríum"
+   ],
+   "enSegments": 5,
+   "officialOccurrences": 1,
+   "nonOfficialOccurrences": 4,
+   "nonOfficialShare": 0.8,
+   "class": "unreliable",
+   "recommendation": "entry",
+   "why": "80% of the MT's forms are not official"
+  },
+  {
+   "n": 117,
+   "english": "tennessine",
+   "official": [
+    "tennessín"
+   ],
+   "enSegments": 0,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 0,
+   "nonOfficialShare": null,
+   "class": "absent",
+   "recommendation": "no entry",
+   "why": "the name does not occur in the book"
+  },
+  {
+   "n": 118,
+   "english": "oganesson",
+   "official": [
+    "oganesson"
+   ],
+   "enSegments": 0,
+   "officialOccurrences": 0,
+   "nonOfficialOccurrences": 0,
+   "nonOfficialShare": null,
+   "class": "absent",
+   "recommendation": "no entry",
+   "why": "the name does not occur in the book"
+  }
+ ]
+}
