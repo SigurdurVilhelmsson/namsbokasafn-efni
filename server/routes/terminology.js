@@ -37,6 +37,7 @@ function forReader(req, payload) {
   return isBelowEditor(req.user) ? withoutKeys(payload, TERM_PEOPLE_KEYS) : payload;
 }
 const terminology = require('../services/terminologyService');
+const binCredit = require('../public/js/bin-credit');
 const { VALID_BOOKS } = require('../config');
 const seed = require('../lib/arnastofnunSeed');
 const termMining = require('../services/termMiningService');
@@ -280,9 +281,14 @@ router.get('/export', requireAuth, (req, res) => {
       return res.send(csv);
     }
 
-    // JSON format
+    // JSON format. G1.16 ([USER] 2026-11-08): a file that carries BÍN forms carries BÍN's credit and
+    // the statement of how the forms were modified. (The CSV carries no forms, so it needs none.)
+    const carriesBinForms = terms.some((hw) =>
+      (hw.translations || []).some((tr) => tr.inflections && tr.inflections.length)
+    );
     res.json({
       generated: new Date().toISOString(),
+      ...(carriesBinForms ? { binCredit: binCredit.OLD_MODEL } : {}),
       stats: {
         headwords: terms.length,
         translations: terms.reduce((n, hw) => n + (hw.translations || []).length, 0),

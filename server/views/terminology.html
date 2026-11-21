@@ -442,6 +442,14 @@
       color: var(--text-secondary);
     }
 
+    /* G1.16: the BÍN credit under a headword's translations when any lists BÍN forms. */
+    .bin-credit {
+      margin: 0;
+      padding: 0.5rem 1rem;
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+    }
+
     /* ========================================
        PAGINATION
        ======================================== */
@@ -1138,6 +1146,7 @@
   <script src="/js/bookSelector.js"></script>
   <script src="/js/theme.js"></script>
   <script src="/js/htmlUtils.js"></script>
+  <script src="/js/bin-credit.js"></script>
   <script>
     /* ==========================================================================
        TERMINOLOGY PAGE — Client Logic
@@ -1835,6 +1844,13 @@
             ${tr.notes ? '<div class="translation-detail">Ath.: ' + escapeHtml(tr.notes) + '</div>' : ''}
           </div>`;
         }).join('');
+        // G1.16 ([USER] 2026-11-08): the BÍN credit stands wherever BÍN forms ("Beyging:") are shown.
+        if (translations.some(tr => tr.inflections && tr.inflections.length)) {
+          translationsEl.insertAdjacentHTML(
+            'beforeend',
+            '<p class="bin-credit">' + escapeHtml(window.binCredit.OLD_MODEL) + '</p>'
+          );
+        }
       }
 
       // Render discussions. A guest gets the headword without its discussion (the server says so with

@@ -374,6 +374,21 @@ test.describe('G1.1 client: the row is what the save and the accept echo', () =>
     for (const a of body.assists) expect(typeof a.clientTimeMs).toBe('number');
   });
 
+  // G1.16 ([USER] 2026-11-08): the lookup's `__term__` wrapper was probed and did not survive inject
+  // and render — literal underscores on the page in a segment carrying any new-format marker, a
+  // <dfn class="term"> key term in one without — so it is disabled until it does: the plain word.
+  test('the term lookup inserts the plain word, with no __ wrapper (G1.16)', async ({ page }) => {
+    const [target] = middleVirginRows(await loadModuleJson(page), { plain: true });
+    await openModule(page);
+    const row = rowOf(page, target.segmentId);
+    await row.locator('.btn-edit').click();
+    const ta = row.locator('textarea');
+    await ta.focus();
+    await ta.evaluate((el) => el.setSelectionRange(el.value.length, el.value.length));
+    await page.evaluate(() => window.insertTermFromLookup('hugtak'));
+    await expect(ta).toHaveValue(`${target.is}hugtak`);
+  });
+
   test('a stale-base refusal keeps the text, its base, its insert and its wrap; the next save lists them and draft-restore (T23)', async ({
     page,
   }) => {

@@ -608,9 +608,7 @@ const UI = {
     inflections: 'Beygingar: ',
     retryInflections: 'Sækja beygingar',
     editorOnly: 'ⓘ Þrjú orð eða fleiri: nær til ritilsins, ekki útflutnings',
-    // The credit BÍN's terms require wherever its forms are shown (server/scripts/fetch-bin-inflections.js).
-    binCredit:
-      'Beygingarmyndir: Beygingarlýsing íslensks nútímamáls (BÍN). Stofnun Árna Magnússonar í íslenskum fræðum. Höfundur og ritstjóri Kristín Bjarnadóttir. bin.arnastofnun.is — CC BY-SA 4.0. Myndunum er breytt: valið er úr þeim og grunnmyndin felld brott.',
+    // The BÍN credit moved to bin-credit.js (G1.16), which the old screen and the server also read.
     history: 'Saga',
     historyTitle: (english) => 'Saga: ' + english,
     historyEmpty: 'Engin saga er skráð fyrir þetta orð.',

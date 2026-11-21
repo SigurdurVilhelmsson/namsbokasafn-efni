@@ -14,7 +14,8 @@
  * `worklist` is rendered.
  *
  * Relies on fetchJson (htmlUtils.js), UI (ui-strings.js), window.bookSelector (bookSelector.js),
- * window.chapterLabel (chapter-label.js) and window.bookGlossaryView (book-glossary-view.js).
+ * window.chapterLabel (chapter-label.js), window.bookGlossaryView (book-glossary-view.js) and
+ * window.binCredit (bin-credit.js).
  */
 (function () {
   'use strict';
@@ -258,7 +259,9 @@
       container.appendChild(list);
     }
     // Design §5.3: the BÍN credit stands wherever inflections are listed.
-    if (entries.length > 0) container.appendChild(el('p', 'bg-credit', T.binCredit));
+    if (entries.length > 0) {
+      container.appendChild(el('p', 'bg-credit', window.binCredit.BOOK_GLOSSARY));
+    }
     return entries.length + unclaimed.length > 0;
   }
 

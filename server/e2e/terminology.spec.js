@@ -870,3 +870,87 @@ test.describe('Terminology import page: a refused upload says why', () => {
     expect([alerts, cleanupIds.length]).toEqual([[], 1]);
   });
 });
+
+// ─── G1.16: BÍN forms carry their credit ────────────────────────
+//
+// [USER] 2026-11-08: "show the credit" wherever BÍN forms appear. The old screen lists a translation's
+// stored forms ("Beyging: …"), and the JSON export carries them; each now carries the credit. Each
+// assertion has a control with no forms, which must carry none, so a page or export that always
+// printed the credit could not pass.
+
+test.describe('G1.16: BÍN forms carry their credit', () => {
+  const cleanupIds = [];
+
+  test.beforeEach(async ({ page }) => {
+    await loginAs(page, 'admin');
+  });
+
+  test.afterEach(async ({ page }) => {
+    for (const id of cleanupIds) {
+      try {
+        await page.request.delete(`${API}/${id}`);
+      } catch {
+        /* best effort */
+      }
+    }
+    cleanupIds.length = 0;
+  });
+
+  /** A headword whose second translation lists `inflections` (none when omitted). */
+  async function headword(page, inflections) {
+    const english = `bincredit-${uid()}`;
+    const res = await page.request.post(API, {
+      data: { english, icelandic: `orð-${uid()}` },
+    });
+    expect(res.status()).toBe(201);
+    const { term } = await res.json();
+    cleanupIds.push(term.id);
+    if (inflections) {
+      const add = await page.request.post(`${API}/${term.id}/translations`, {
+        data: { icelandic: `orðs-${uid()}`, inflections },
+      });
+      expect(add.ok()).toBe(true);
+    }
+    return { id: term.id, english };
+  }
+
+  async function openDetail(page, id) {
+    await page.goto('/terminology');
+    await page.waitForFunction(() => typeof window.showTermDetail === 'function');
+    await page.evaluate((i) => window.showTermDetail(i), id);
+    await expect(page.locator('#detail-modal')).toBeVisible();
+    await expect(page.locator('#detail-translations .translation-row').first()).toBeVisible();
+  }
+
+  test('a headword whose translation lists BÍN forms shows the credit', async ({ page }) => {
+    const { id } = await headword(page, ['orðsins', 'orðinu']);
+    await openDetail(page, id);
+    await expect(page.locator('#detail-modal .bin-credit')).toContainText(
+      'Stofnun Árna Magnússonar í íslenskum fræðum'
+    );
+  });
+
+  test('control: a headword with no BÍN forms shows no credit', async ({ page }) => {
+    const { id } = await headword(page, null);
+    await openDetail(page, id);
+    await expect(page.locator('#detail-modal .bin-credit')).toHaveCount(0);
+  });
+
+  test('the JSON export carries the credit when it carries BÍN forms', async ({ page }) => {
+    const { english } = await headword(page, ['orðsins']);
+    const res = await page.request.get(
+      `${API}/export?format=json&q=${encodeURIComponent(english)}`
+    );
+    expect(res.ok()).toBe(true);
+    expect((await res.json()).binCredit).toContain('Stofnun Árna Magnússonar í íslenskum fræðum');
+  });
+
+  test('control: an export with no BÍN forms carries no credit', async ({ page }) => {
+    const { english } = await headword(page, null);
+    const res = await page.request.get(
+      `${API}/export?format=json&q=${encodeURIComponent(english)}`
+    );
+    expect(res.ok()).toBe(true);
+    expect('binCredit' in (await res.json())).toBe(false);
+  });
+});
