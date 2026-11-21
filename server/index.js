@@ -193,6 +193,8 @@ const publicSubmitLimiter = rateLimit({
 // Static file serving for public assets (CSS, JS) — BEFORE rate limiter
 // so static assets don't consume rate limit budget
 const publicPath = path.join(__dirname, 'public');
+// G1.11: the bracket-marker taxonomy as a script, built from tools/lib/marker-types.json (its one owner).
+app.get('/js/marker-types.js', require('./lib/markerTypesScript').markerTypesScript);
 app.use(express.static(publicPath));
 
 // Request-duration logging (register C23) — mounted HERE, directly after

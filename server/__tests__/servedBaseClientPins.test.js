@@ -61,7 +61,8 @@ describe('assists are recorded at their three sites and sent (§5.10)', () => {
     expect(fnBody('wrapSelection', 'waitFor')).toMatch(
       /'markup-wrap',\s*source === 'keyboard' \? 'keyboard' : 'toolbar'/
     );
-    expect(src).toMatch(/wrapSelection\(taId, '\*\*', '\*\*', 'keyboard'\)/);
+    // §C248: the keyboard names the kind; wrapSelection asks markerIntegrity.wrapFor for the pair.
+    expect(src).toMatch(/wrapSelection\(taId, 'bold', 'keyboard'\)/);
   });
 
   it("saveEdit sends the pane's list and clears it on success", () => {
