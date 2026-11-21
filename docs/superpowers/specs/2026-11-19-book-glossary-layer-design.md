@@ -320,3 +320,7 @@ already on this branch (§C234, §C235) and the probe test `server/__tests__/fin
    sees and changes.
 9. **Stage 1 lands after #742**, so it can add the layer file to the G1.7 manifest's record.
 10. **The editor's free-text lookup box stays out of scope**, logged in the register as its own item.
+
+## ✏️ AMENDED 2026-11-21 — the committed record shows a role, not a name
+
+[USER]'s ruling of 2026-11-21, in the G1.15(b) retention design §4.5 ([`2026-11-21-g115b-retention-dates-design.md`](2026-11-21-g115b-retention-dates-design.md)): `book-glossary.json` (§5.4) shows the deciding account's **role label** (`aðalritstjóri` for a head editor), never its display name, with times cut to the date. The record is committed to a public repository whose history cannot be stripped, and the editors' consent text promises that names are removed after 2028; the database keeps the account id until then. The c19 loader's label passes through as before. §5.4 is otherwise unchanged. Status lives in the register.
