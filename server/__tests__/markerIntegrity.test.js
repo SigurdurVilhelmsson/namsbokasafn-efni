@@ -89,3 +89,130 @@ describe('edgeSplit (edge spaces stay outside the pair)', () => {
     expect(mi.edgeSplit('')).toEqual({ lead: '', core: '', trail: '' });
   });
 });
+
+// The save-gate rules (spec §4.3). checkMarkers(enText, originalIs, editedIs); the baseline is originalIs.
+const check = (en, orig, edited) => mi.checkMarkers(en, orig, edited);
+const codes = (list) => list.map((v) => v.code);
+
+describe('scanMarkers counts by [[type prefix (nesting-safe)', () => {
+  const NESTED = '[[b:Some representations of butane, C[[sub:4]]H[[sub:10]].]]';
+  it('counts both subscripts inside a bold marker', () => {
+    expect(mi.scanMarkers(NESTED).counts.sub).toBe(2);
+  });
+  it('sees the brackets of a nested construct as balanced', () => {
+    const s = mi.scanMarkers(NESTED);
+    expect([s.open, s.close]).toEqual([3, 3]);
+  });
+});
+
+describe('rule 1a: an ADDED space after the colon blocks', () => {
+  it('[[i:x]] -> [[i: x]] blocks marker-spaced', () => {
+    expect(check('[[i:x]]', '[[i:x]]', '[[i: x]]').blocked).toEqual([
+      { code: 'marker-spaced', params: { type: 'i' } },
+    ]);
+  });
+  it("control: chemistry's own source space saved unchanged is silent", () => {
+    const t = 'Ag (úr[[i: argentum]])';
+    expect(check(' Ag (from[[i: argentum]]) ', t, t)).toEqual({ blocked: [], warnings: [] });
+  });
+});
+
+describe('rule 1b: unbalanced brackets block', () => {
+  it('H[[sub:2]]O -> H[[sub:2O blocks marker-unbalanced', () => {
+    expect(codes(check('H[[sub:2]]O', 'H[[sub:2]]O', 'H[[sub:2O').blocked)).toContain(
+      'marker-unbalanced'
+    );
+  });
+  it('control: the nested construct saved unchanged is silent', () => {
+    const t = '[[b:Some representations of butane, C[[sub:4]]H[[sub:10]].]]';
+    expect(check(t, t, t)).toEqual({ blocked: [], warnings: [] });
+  });
+});
+
+describe('rule 1c: an ADDED empty marker blocks', () => {
+  it('adding [[b:]] blocks marker-empty', () => {
+    expect(check('x', 'x', 'x [[b:]]').blocked).toEqual([
+      { code: 'marker-empty', params: { type: 'b' } },
+    ]);
+  });
+  it('control: an existing [[b:]] kept is silent', () => {
+    expect(check('x', 'x [[b:]]', 'y [[b:]]').blocked).toEqual([]);
+  });
+  it('control: adding [[lb:]] (empty by nature) is not marker-empty', () => {
+    expect(codes(check('x', 'x', 'x [[lb:]]').blocked)).not.toContain('marker-empty');
+  });
+});
+
+describe('rule 2s: a structural marker below min(baseline, English) blocks', () => {
+  it('H[[sub:2]]O -> H2O blocks marker-dropped', () => {
+    expect(check('H[[sub:2]]O', 'H[[sub:2]]O', 'H2O').blocked).toEqual([
+      { code: 'marker-dropped', params: { type: 'sub', from: 1, to: 0 } },
+    ]);
+  });
+  it('the English floor: deleting a marker the MT invented is silent', () => {
+    expect(check('alt text', '[[sub:2]] x', '2 x')).toEqual({ blocked: [], warnings: [] });
+  });
+  it('control: a marker the MT already lost is not demanded back', () => {
+    expect(check('H[[sub:2]]O', 'H2O', 'H 2 O').blocked).toEqual([]);
+  });
+});
+
+describe('rule 2a: an exact TABLE/lb/rb string in baseline and English blocks when missing', () => {
+  it('dropping [[TABLE:fs-1]] blocks marker-dropped with the marker', () => {
+    expect(check('a [[TABLE:fs-1]]', 'a [[TABLE:fs-1]]', 'a').blocked).toEqual([
+      { code: 'marker-dropped', params: { marker: '[[TABLE:fs-1]]' } },
+    ]);
+  });
+});
+
+describe('rule 2p: a presentational marker below the floor warns, never blocks', () => {
+  it('[[i:orð]] -> orð warns formatting-dropped', () => {
+    expect(check('[[i:word]]', '[[i:orð]]', 'orð')).toEqual({
+      blocked: [],
+      warnings: [{ code: 'formatting-dropped', params: { type: 'i', from: 1, to: 0 } }],
+    });
+  });
+});
+
+describe('rule 3: an unknown type warns', () => {
+  it('[[zz:x]] warns marker-unknown', () => {
+    expect(check('x', 'x', 'x [[zz:y]]').warnings).toEqual([
+      { code: 'marker-unknown', params: { type: 'zz' } },
+    ]);
+  });
+});
+
+describe('rule 4: unpaired lb/rb warns', () => {
+  it('[[lb:]]x warns marker-lb-rb', () => {
+    expect(codes(check('x', 'x', '[[lb:]]x').warnings)).toContain('marker-lb-rb');
+  });
+});
+
+describe('rule 5: legacy markup that would reach readers raw warns', () => {
+  it('(a) **x** added to a new-format segment warns legacy-wrap added', () => {
+    expect(check('H[[sub:2]]O', 'H[[sub:2]]O', 'H[[sub:2]]O **feitt**').warnings).toEqual([
+      { code: 'legacy-wrap', params: { direction: 'added', marker: '**' } },
+    ]);
+  });
+  it("control: chemistry's own approximately-tildes kept are silent", () => {
+    const t = '~10[[sup:−3]]) úr móli og því ætti samsvarandi massi að vera (~';
+    expect(check(t, t, t).warnings).toEqual([]);
+  });
+  it('control: **x** added to a plain segment is silent (inject converts it there)', () => {
+    expect(check('plain', 'Engin merki.', 'Engin **feit** merki.').warnings).toEqual([]);
+  });
+  it('(b) a bracket marker added to a legacy segment warns legacy-wrap flip', () => {
+    expect(check('NO3-', 'NO~3~^-^', 'NO~3~^-^ [[b:x]]').warnings).toEqual([
+      { code: 'legacy-wrap', params: { direction: 'flip' } },
+    ]);
+  });
+});
+
+describe('additions do not block', () => {
+  it('a bracket wrap added to a plain segment is silent', () => {
+    expect(check('No markers.', 'Engin merki.', '[[b:Engin]] merki.')).toEqual({
+      blocked: [],
+      warnings: [],
+    });
+  });
+});
