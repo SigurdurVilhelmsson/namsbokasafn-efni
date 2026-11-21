@@ -41,6 +41,11 @@ Everything this measurement used is kept in `evidence/2026-11-20-census/`: `inst
 and `reports/` (the segment tables). The instruments load AGPL `server/` code, so they sit in a dated
 `evidence/` folder. The root `LICENSE` keeps those outside its list of MIT→AGPL edges: they replay
 one past measurement and are not tooling.
+✏️ *Until 2026-11-21 three files in `data/` still held production's absolute repo path, despite the line above:
+`termcheck-dryrun-magnesium.json` and `termcheck-dryrun-c73.json` (in `dbPath` and `opened`) and `inner-targets.json`
+(in `openedDbPaths`). It is now replaced by `<repo>` in them, five occurrences in all, and nothing else in those
+files changed. No instrument reads those fields, and `reports/termcheck-dryruns.md` still rebuilds byte for byte from
+the two dry-run files.*
 Segment text in `data/` and `reports/` comes from `efnafraedi-2e` and carries that book's licence
 (`books/efnafraedi-2e/book-config.json`). No BÍN data is committed: BÍN is CC BY-SA 4.0, and
 `instruments/extract-bin-forms.py` rebuilds what measurement 7 used from your own BÍN download

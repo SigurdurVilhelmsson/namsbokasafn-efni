@@ -10,9 +10,9 @@
  },
  "head": "844f13d2f9ec589b35dc5da271187c3783a7282f",
  "book": "efnafraedi-2e",
- "dbPath": "/home/siggi/repos/namsbokasafn-efni/pipeline-output/sessions.db",
+ "dbPath": "<repo>/pipeline-output/sessions.db",
  "opened": [
-  "/home/siggi/repos/namsbokasafn-efni/pipeline-output/sessions.db"
+  "<repo>/pipeline-output/sessions.db"
  ],
  "walHeader": [
   2,
