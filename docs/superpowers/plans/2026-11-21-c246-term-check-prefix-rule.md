@@ -277,7 +277,7 @@ recording the database file's `stat` and `git status --porcelain` before and aft
 Expected:
 - **c73 script, measurements 7–9's drafts:** `counts['B.fixed']` totals **1** warning, `beryllium` on
   `m68742:para:fs-idp122770240`. `magnesium` is 0.
-- **c73 script with the inner draft as well:** **0**.
+- **c73 script with the inner draft as well:** **0**. ✏️ *2026-11-21: wrong. Measured **1**, on the same beryllium segment: the draft's `miðberyllíumatómið` holds the term inside the word, which this plan's own Review Focus 1 (test `RF1`) keeps as a warning. The expectation came from spec §6.1. Register §C246.*
 - **The c73 synthetic block:** `synthetic.B.compoundWarns` is **0** and `passOk` is **59**. The 59 `|compound`
   ids now appear under `anomalies` with `issue: null`, which is the new behaviour, not an error.
 - **The magnesium script:** `variants['B.fixed'].issueCount` is **0**, down from 43. `synthetic.B` has
