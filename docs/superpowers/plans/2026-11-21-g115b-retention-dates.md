@@ -151,6 +151,10 @@ Expected: PASS
   - Every trigger on a strip table is dropped and recreated from `sqlite_master` inside the step's IMMEDIATE transaction. Four tables' triggers stamp `updated_at` with the current time.
   - Times are cut only where they are covered. A time after the date is never touched, even in a stripped row.
 - **Task 6 as built (2026-11-21):** an outright refusal is a `refusals` entry with `blocking: true`, and applyStep then writes nothing. Step 2 judges a reference by whether every present time in its row is readable and on or before 2028; a reference that cannot be shown to be is treated as later. Step 3 refuses outright on a record dated after 2030 ([USER], 2026-11-21).
+- **Task 7 as built (2026-11-21):**
+  - The run record is written only when verification passes **and** no refusal stands ([USER]). Usage errors exit 2, like `research-retention.js` ([USER]).
+  - **The plan's "a mutant that skips VACUUM leaves the step unrecorded" was measured false.** The step was recorded with 12 names left in the file. The script therefore also sets `secure_delete = ON` on its write connection, and a test with free pages keeps `VACUUM` detectable.
+  - Every due step is compacted before it is recorded, even when it changed nothing this run, because a previous run's bytes may remain.
 
 - [ ] Tests first, with a planting helper that writes one row per `SCOPE` table using names absent from `users`:
   - nothing changes before `effectiveMs`;

@@ -289,4 +289,22 @@ function applyStep(db, kind, nowMs) {
     .immediate();
 }
 
-module.exports = { planStep, applyStep, STEPS };
+/** The steps in the order a run takes them. */
+const STEP_ORDER = Object.freeze(['named', 'unnamed', 'consent']);
+
+/**
+ * The structural half of a step's verification (spec §4.4): nothing the step acts on is left. For `named`, every
+ * covered person value is a placeholder (or a kept tool label) and no delete table holds a covered row; for
+ * `unnamed`, no served version, opening or reference is left; for `consent`, no consent or loss record. It reads the
+ * same predicates the step acts by; the byte scan in the tests is the independent proof. The file half (free pages,
+ * WAL) is the CLI's.
+ *
+ * @returns {{ ok: boolean, remaining: Record<string, number> }}
+ */
+function verifyStep(db, kind) {
+  const { date } = stepOf(kind);
+  const { counts } = stepOf(kind).survey(db, { day: date, effMs: effectiveMs(date) });
+  return { ok: Object.keys(counts).length === 0, remaining: counts };
+}
+
+module.exports = { planStep, applyStep, verifyStep, STEPS, STEP_ORDER };
