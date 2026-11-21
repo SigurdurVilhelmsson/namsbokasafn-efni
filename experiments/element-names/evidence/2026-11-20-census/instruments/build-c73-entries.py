@@ -97,14 +97,16 @@ md = ["# The 59 book glossary entries of the §C73 ruling (drafts, 2026-11-21)",
       "will offer only *Til hliðar*, with no confirmation.", '',
       '## Order of work', '',
       '1. **Merge #756 first.** The reasons cite the decision record and §C245 by their repo paths.',
-      "2. **Paste the editors' fix drafts** (`editor-fixes*-paste.txt`). They do not wait for the hold in step 3.",
-      "3. **Hold: do not enter the 59 yet** ([USER]'s ruling, 2026-11-21). The editor's term check accepts a term only as a whole "
-      'word, so these entries would raise 151 advisory warnings, across 19 names, on segments that hold the official name only '
-      'inside a closed compound (`magnesíumhýdroxíð`; measurement 14, `termcheck-dryruns.md`). Enter them only once the term check '
-      'accepts a word that starts with the term; that change is its own register item, §C246. ✏️ *Until 2026-11-21 this step said to '
-      'enter magnesium first, read its warnings and stop if a compound warned; measurement 14 measured exactly that, and the ruling '
-      'followed.*',
-      f'4. **When the hold lifts, enter {FIRST} first** and check that its 43 compound segments (listed in `termcheck-dryruns.md`) '
+      "2. **Paste the editors' fix drafts** (`editor-fixes*-paste.txt`). They do not depend on the entries in step 4.",
+      "3. **The hold is lifted** ([USER], 2026-11-21). [USER] had held the 59 because the editor's term check accepted a term only "
+      'as a whole word, so these entries would have raised 151 advisory warnings, across 19 names, on segments that hold the '
+      'official name only inside a closed compound (`magnesíumhýdroxíð`; measurement 14, `termcheck-dryruns.md`). §C246 changed '
+      'the check to accept a word that starts with the term, and its acceptance run on production (2026-11-21) measured magnesium '
+      '43 → 0 and the 59 entries 152 → 1. The one left is beryllium in `miðberyllíumatómið`, the official name inside the word, and '
+      "[USER] ruled that it may stand. ✏️ *Until 2026-11-21 this step said to hold the 59 until the term check accepted a word that "
+      'starts with the term. Before that it said to enter magnesium first, read its warnings and stop if a compound warned; '
+      'measurement 14 measured exactly that, and the hold followed.*',
+      f'4. **Enter {FIRST} first** and check that its 43 compound segments (listed in `termcheck-dryruns.md`) '
       "no longer warn; **then enter the rest in one sitting.** Adding entries moves the book layer, so chemistry's next cron "
       "export is held (`refused-layer-change`) until it is released with the register's four-line runbook; one sitting means one "
       'release.', '',

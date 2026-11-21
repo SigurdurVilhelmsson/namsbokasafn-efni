@@ -407,7 +407,7 @@ builds them from the accepted recommendation, the census and the official list.
   ruling, 2026-11-21) until the term check accepts a word that starts with the term (measurement
   14). When the hold lifts, enter magnesium first and check that its 43 compound segments no longer
   warn, then enter the rest in one sitting (one export hold and release). ✏️ *Until 2026-11-21 this
-  said to enter magnesium first and read its term warnings.*
+  said to enter magnesium first and read its term warnings.* ✅ *[USER] lifted the hold on 2026-11-21, after §C246's acceptance run (register §C245, §C246).*
 - **Inflections** (✏️ *corrected 2026-11-21; the page had said that only superheavy names lack BÍN
   forms*). The page starts the BÍN lookup by itself after each add (`routes/book-glossary.js`);
   *Sækja beygingar* only retries it. `instruments/bin-outcomes-c73.cjs` runs the page's own chooser
@@ -477,7 +477,7 @@ the text as it is and with the fix drafts of measurements 7–9 overlaid. → `r
   after.
 - **[USER] ruled on 2026-11-21 to hold the 59 adds** until the term check accepts a word that starts
   with the term (the ruling: register §C245; the change it waits for: §C246, with this measurement as
-  its acceptance test; step 3 of `reports/c73-entries.md`).
+  its acceptance test; step 3 of `reports/c73-entries.md`). ✅ **Lifted by [USER] on 2026-11-21** after §C246's acceptance run on production: magnesium 43 → 0, the 59 adds 152 → 1. The one left, beryllium inside a word (`miðberyllíumatómið`), may stand by the same ruling.
 
 ### 15. The term check under a "word starts with the term" rule: a corpus census (§C246)
 
