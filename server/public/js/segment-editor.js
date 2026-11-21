@@ -2511,12 +2511,12 @@
             <div class="edit-panel" id="edit-${cssId(seg.segmentId)}">
               <div class="preview-panel" id="preview-${cssId(seg.segmentId)}"></div>
               <div class="format-toolbar">
-                <button type="button" class="tb-bold" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','**','**')" title="Feitletrað (Ctrl+B)"><b>B</b></button>
-                <button type="button" class="tb-italic" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','*','*')" title="Skáletrað (Ctrl+I)"><i>I</i></button>
-                <button type="button" class="tb-term" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','__','__')" title="Hugtak (Ctrl+T)">T</button>
-                <button type="button" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','++','++')"><u>U</u></button>
-                <button type="button" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','~','~')" title="Niðurskrift">x<sub>2</sub></button>
-                <button type="button" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','^','^')" title="Uppskrift">x<sup>2</sup></button>
+                <button type="button" class="tb-bold" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','bold')" title="Feitletrað (Ctrl+B)"><b>B</b></button>
+                <button type="button" class="tb-italic" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','italic')" title="Skáletrað (Ctrl+I)"><i>I</i></button>
+                <button type="button" class="tb-term" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','term')" title="Hugtak (Ctrl+T)">T</button>
+                <button type="button" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','underline')"><u>U</u></button>
+                <button type="button" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','sub')" title="Niðurskrift">x<sub>2</sub></button>
+                <button type="button" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','sup')" title="Uppskrift">x<sup>2</sup></button>
               </div>
               <div class="editor-overlay-wrap">
                 <div class="marker-backdrop" id="backdrop-${cssId(seg.segmentId)}" aria-hidden="true"></div>
@@ -4670,7 +4670,14 @@
    * If no selection, inserts both markers and places cursor between them.
    * Fires an input event so live preview and dirty tracking update.
    */
-  function wrapSelection(textareaId, prefix, suffix, source = 'toolbar') {
+  /**
+   * Wrap the selection in a kind of formatting ('bold', 'italic', 'term', 'underline', 'sub', 'sup').
+   * §C248: the pair is the dialect the segment already uses (markerIntegrity.wrapFor): bracket markup, unless
+   * the segment holds legacy markup and no new-format marker, because inject converts legacy markup only in
+   * such a segment and leaves it raw elsewhere. The selection's edge spaces stay outside the pair, so the
+   * toolbar never writes `[[b: word]]` (the save gate refuses an added space after the colon).
+   */
+  function wrapSelection(textareaId, kind, source = 'toolbar') {
     const ta = document.getElementById(textareaId);
     if (!ta) return;
     ta.focus();
@@ -4678,19 +4685,20 @@
     const start = ta.selectionStart;
     const end = ta.selectionEnd;
     const text = ta.value;
-    const selected = text.slice(start, end);
+    const { open: prefix, close: suffix } = markerIntegrity.wrapFor(kind, text);
+    const { lead, core, trail } = markerIntegrity.edgeSplit(text.slice(start, end));
 
-    const before = text.slice(0, start);
-    const after = text.slice(end);
+    const before = text.slice(0, start) + lead;
+    const after = trail + text.slice(end);
 
-    ta.value = before + prefix + selected + suffix + after;
+    ta.value = before + prefix + core + suffix + after;
 
-    // Place cursor: after selected text if there was a selection, between markers if not
-    if (selected) {
-      ta.selectionStart = start + prefix.length;
-      ta.selectionEnd = end + prefix.length;
+    // Place cursor: around the wrapped text if there was a selection, between the markers if not
+    if (core) {
+      ta.selectionStart = before.length + prefix.length;
+      ta.selectionEnd = before.length + prefix.length + core.length;
     } else {
-      ta.selectionStart = ta.selectionEnd = start + prefix.length;
+      ta.selectionStart = ta.selectionEnd = before.length + prefix.length;
     }
 
     // Trigger input event for live preview and dirty tracking
@@ -4833,13 +4841,13 @@
       const taId = document.activeElement.id;
       if (e.key === 'b') {
         e.preventDefault();
-        wrapSelection(taId, '**', '**', 'keyboard');
+        wrapSelection(taId, 'bold', 'keyboard');
       } else if (e.key === 'i') {
         e.preventDefault();
-        wrapSelection(taId, '*', '*', 'keyboard');
+        wrapSelection(taId, 'italic', 'keyboard');
       } else if (e.key === 't') {
         e.preventDefault();
-        wrapSelection(taId, '__', '__', 'keyboard');
+        wrapSelection(taId, 'term', 'keyboard');
       }
     }
   });

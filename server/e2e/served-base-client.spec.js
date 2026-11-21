@@ -368,8 +368,9 @@ test.describe('G1.1 client: the row is what the save and the accept echo', () =>
       chapter: 3,
       moduleId: 'm68000',
     });
-    expect(body.assists[1].detail).toEqual({ marker: '**' });
-    expect(body.assists[2].detail).toEqual({ marker: '*' });
+    // §C248: the row is plain, so the toolbar writes the bracket dialect and the assist records that opening.
+    expect(body.assists[1].detail).toEqual({ marker: '[[b:' });
+    expect(body.assists[2].detail).toEqual({ marker: '[[i:' });
     expect(body.assists[3].detail).toEqual({ term: 'hugtak' });
     for (const a of body.assists) expect(typeof a.clientTimeMs).toBe('number');
   });
@@ -1182,5 +1183,103 @@ test.describe('G1.1 client: the row is what the save and the accept echo', () =>
     // Control: only this module's prefix is taken; another module's parked replay waits for that module.
     const left = JSON.parse(await page.evaluate(() => localStorage.getItem('saveRetryParked')));
     expect(left.map((p) => p.key)).toEqual([other]);
+  });
+});
+
+// §C248 + G1.11 (spec docs/superpowers/specs/2026-11-21-c248-g111-toolbar-dialect-and-marker-gate-design.md):
+// the toolbar writes the dialect the segment uses, and the save gate refuses an empty marker and warns on an
+// old-style wrap in new-format text. The fixture book has no new-format segment, so a row is made new-format
+// with rewriteFirstServe (the row's served text only; nothing is saved).
+test.describe("§C248: the toolbar writes the segment's dialect", () => {
+  test.beforeEach(async ({ page }) => {
+    await loginAs(page, 'admin', USER_ID);
+  });
+
+  /** Open a virgin plain row, optionally rewriting its served text first; returns {row, ta, before}. */
+  async function openRow(page, rewrite) {
+    const [target] = middleVirginRows(await loadModuleJson(page), { plain: true });
+    if (rewrite) await rewriteFirstServe(page, target.segmentId, rewrite);
+    await openModule(page);
+    const row = rowOf(page, target.segmentId);
+    await row.locator('.btn-edit').click();
+    const ta = row.locator('textarea');
+    return { row, ta, before: await ta.inputValue() };
+  }
+
+  /** Select the first three characters (asserted free of edge whitespace, which the toolbar moves out). */
+  async function selectFirstThree(ta, before) {
+    expect(before.slice(0, 3).trim()).toBe(before.slice(0, 3));
+    await ta.evaluate((el) => el.setSelectionRange(0, 3));
+  }
+
+  test('B in a new-format row writes [[b:…]]', async ({ page }) => {
+    const { row, ta, before } = await openRow(page, (s) => {
+      s.is = `${s.is} H[[sub:2]]O`;
+    });
+    await selectFirstThree(ta, before);
+    await row.locator('.format-toolbar .tb-bold').click();
+    await expect(ta).toHaveValue(`[[b:${before.slice(0, 3)}]]${before.slice(3)}`);
+  });
+
+  test('Ctrl+I in a plain row writes [[i:…]]', async ({ page }) => {
+    const { ta, before } = await openRow(page);
+    expect(await page.evaluate((t) => window.markerIntegrity.hasLegacyMarkup(t), before)).toBe(
+      false
+    );
+    await selectFirstThree(ta, before);
+    await ta.press('Control+i');
+    await expect(ta).toHaveValue(`[[i:${before.slice(0, 3)}]]${before.slice(3)}`);
+  });
+
+  test('B in a legacy row writes **…**', async ({ page }) => {
+    const { row, ta, before } = await openRow(page, (s) => {
+      s.is = `NO~3~^-^ ${s.is}`;
+    });
+    await ta.evaluate((el) => el.setSelectionRange(0, 2));
+    await row.locator('.format-toolbar .tb-bold').click();
+    await expect(ta).toHaveValue(`**NO**${before.slice(2)}`);
+  });
+
+  test('an empty wrap saved is refused with the empty-marker message', async ({ page }) => {
+    const { row, ta } = await openRow(page);
+    let posted = false;
+    await page.route(`**${MODULE_URL}/edit`, (route) => {
+      posted = true;
+      return route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify(STUB_SAVED),
+      });
+    });
+    await ta.evaluate((el) => el.setSelectionRange(el.value.length, el.value.length));
+    await row.locator('.format-toolbar .tb-term').click();
+    await expect(ta).toHaveValue(/\[\[term:\]\]$/);
+    const expected = await page.evaluate("UI.validation.markerEmpty('term')");
+    // The block is an alert: the click returns only once it is handled, so the handler is set first.
+    let message = null;
+    page.once('dialog', async (d) => {
+      message = d.message();
+      await d.accept();
+    });
+    await row.getByRole('button', { name: 'Vista', exact: true }).click();
+    await expect.poll(() => message).not.toBeNull();
+    expect([message.includes(expected), posted]).toEqual([true, false]);
+  });
+
+  test('typing **x** into a new-format row warns that it will show raw', async ({ page }) => {
+    const { row, ta, before } = await openRow(page, (s) => {
+      s.is = `${s.is} H[[sub:2]]O`;
+    });
+    await ta.fill(`${before} **feitt**`);
+    const expected = await page.evaluate("UI.validation.legacyWrapAdded('**')");
+    // The warning is a confirm; dismissing it cancels the save.
+    let message = null;
+    page.once('dialog', async (d) => {
+      message = d.message();
+      await d.dismiss();
+    });
+    await row.getByRole('button', { name: 'Vista', exact: true }).click();
+    await expect.poll(() => message).not.toBeNull();
+    expect(message).toContain(expected);
   });
 });
