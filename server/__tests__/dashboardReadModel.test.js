@@ -317,6 +317,51 @@ describe('getEditorWorkload', () => {
     });
     expect(readModel.getEditorWorkload({ days: 7 })).toEqual([]);
   });
+
+  // SD7 + [USER] 2026-11-21, answers 3 and 4 (docs/decisions/2026-11-21-g115-editor-privacy-split-and-sd7-scope.md).
+  describe('SD7: listed by name, held to the given books', () => {
+    function twoBooks() {
+      insertEdit(db, { editor_username: 'zeta', book: 'efnafraedi-2e' });
+      insertEdit(db, {
+        editor_username: 'zeta',
+        book: 'efnafraedi-2e',
+        segment_id: 'm00001:para:fs-id002',
+      });
+      insertEdit(db, { editor_username: 'alfa', book: 'efnafraedi-2e', status: 'approved' });
+      insertEdit(db, { editor_username: 'beta', book: 'liffraedi-2e', module_id: 'm00009' });
+    }
+
+    it('lists editors by name, not by volume', () => {
+      twoBooks();
+      expect(readModel.getEditorWorkload({ days: 7 }).map((r) => r.editor)).toEqual([
+        'alfa',
+        'beta',
+        'zeta',
+      ]);
+    });
+
+    it("holds the list to the given books (a head editor's own)", () => {
+      twoBooks();
+      const rows = readModel.getEditorWorkload({ days: 7, books: ['efnafraedi-2e'] });
+      expect(rows.map((r) => r.editor)).toEqual(['alfa', 'zeta']);
+    });
+
+    it('an empty book list gives no rows', () => {
+      twoBooks();
+      expect(readModel.getEditorWorkload({ days: 7, books: [] })).toEqual([]);
+    });
+
+    it('control: no book list (an admin) gives every book', () => {
+      twoBooks();
+      expect(readModel.getEditorWorkload({ days: 7, books: null })).toHaveLength(3);
+    });
+
+    it("control: the review queue's waiting time stays (answer 4)", () => {
+      twoBooks();
+      const zeta = readModel.getEditorWorkload({ days: 7 }).find((r) => r.editor === 'zeta');
+      expect(Number.isInteger(zeta.oldestPendingHours)).toBe(true);
+    });
+  });
 });
 
 // =====================================================================

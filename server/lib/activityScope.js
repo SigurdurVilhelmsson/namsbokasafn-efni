@@ -40,6 +40,26 @@ function mayReadLogOf(user, book) {
   return books === null || (typeof book === 'string' && books.includes(book));
 }
 
+/**
+ * The books whose people this reader may see in a PER-PERSON figure (SD7, as answered on 2026-11-21:
+ * docs/decisions/2026-11-21-g115-editor-privacy-split-and-sd7-scope.md). A different, narrower rule than
+ * the log's: the log's rows follow every book a reader works on (readableLogBooks above), while a count or
+ * total per person follows only the books the reader HEADS. A head editor who is an editor on another book
+ * reads that book's log rows and sees none of its people in the dashboard's workload, the analytics' team
+ * metrics or the meeting agenda's activity counts.
+ *
+ * `user.books` is the head editor's books: requireAuth refreshes it from the account row on every request
+ * (services/auth.js currentAccess), and a session with no account row carries its token's.
+ *
+ * @param {{role: string, books?: string[]}} user  `req.user`
+ * @returns {string[]|null} the slugs of the books the reader heads; `null` means every book (an admin)
+ */
+function headedBooks(user) {
+  if (!user) return [];
+  if (user.role === ROLES.ADMIN) return null;
+  return [...new Set(user.books || [])];
+}
+
 /** The 403 every log read answers for a book that is not the reader's. It names no row and no person. */
 function refuseOtherBook(res, book) {
   return res.status(403).json({
@@ -49,4 +69,4 @@ function refuseOtherBook(res, book) {
   });
 }
 
-module.exports = { readableLogBooks, mayReadLogOf, refuseOtherBook };
+module.exports = { readableLogBooks, mayReadLogOf, refuseOtherBook, headedBooks };
