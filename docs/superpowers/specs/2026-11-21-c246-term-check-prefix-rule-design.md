@@ -5,6 +5,11 @@
 > one of [USER]'s five rulings of 2026-11-21, and §8 lists the six calls the draft made on its own, all approved.
 > Status lives in the register (`docs/plans/2026-07-21-post-item17-followup-campaign.md`, §C246).
 > ✏️ *Until its approval this banner said DRAFT, for [USER]'s review.*
+>
+> ✏️ **AMENDED 2026-11-21 ([USER]):** ruling 2's minimum counts the **letters** of the term's last part, not its
+> code points, so punctuation and digits do not count and `(lyf)` (three letters) does not qualify. This replaces the
+> code-point wording in §3.1 and §8 call 2. Measured on chemistry's 1,638 exported terms: no term changes whether it
+> qualifies. The change and its status: the register's §C247 (2).
 
 ## 1. Intent
 

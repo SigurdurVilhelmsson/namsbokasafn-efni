@@ -14,8 +14,16 @@
  * pins them. Change them here, never restate them elsewhere.
  */
 
-/** A term shorter than this many code points never takes the prefix (ruling 2). */
+/**
+ * A term whose last part has fewer than this many LETTERS never takes the prefix (ruling 2).
+ * Letters, not code points: punctuation and digits do not count, so `(lyf)` (three letters)
+ * does not qualify ([USER] 2026-11-21, register §C247 (2); this amends the spec's §3.1 and §8
+ * call 2, which counted code points).
+ */
 const MIN_PREFIX_TERM_LENGTH = 4;
+
+/** One letter in any script; a combining mark is not counted on its own. */
+const LETTER = /\p{L}/u;
 
 /**
  * Forms that never take the prefix, compared to the lowercased term text
@@ -27,7 +35,7 @@ const PREFIX_EXCLUDED_FORMS = Object.freeze(['merki']);
 /**
  * Whether a term's text may match as the start of a word.
  *
- * A single word qualifies at MIN_PREFIX_TERM_LENGTH code points or more. A
+ * A single word qualifies with MIN_PREFIX_TERM_LENGTH letters or more. A
  * multi-word or hyphenated term qualifies when its last part (split on
  * whitespace and hyphens) does (ruling 5, B3), so a term ending in a hyphen
  * (`upphafs-`) has an empty last part and never qualifies.
@@ -40,7 +48,7 @@ function prefixQualifies(text) {
   if (PREFIX_EXCLUDED_FORMS.includes(text.toLowerCase())) return false;
   const parts = text.split(/[\s-]/);
   const last = parts[parts.length - 1];
-  return [...last].length >= MIN_PREFIX_TERM_LENGTH;
+  return [...last].filter((ch) => LETTER.test(ch)).length >= MIN_PREFIX_TERM_LENGTH;
 }
 
 module.exports = { MIN_PREFIX_TERM_LENGTH, PREFIX_EXCLUDED_FORMS, prefixQualifies };
