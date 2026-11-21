@@ -47,6 +47,12 @@ describe('prefixQualifies', () => {
     ['sýrubindandi lyf', false],
     ['fjölatóma jón', false],
     ['upphafs-', false],
+    // the minimum counts LETTERS of the last part ([USER] 2026-11-21, register §C247 (2)):
+    // punctuation and digits do not count
+    ['(lyf)', false],
+    ['sýrubindandi (lyf)', false],
+    ['abc1', false],
+    ['mól (eining)', true],
   ])('%j → %s', (text, expected) => {
     expect(prefixQualifies(text)).toBe(expected);
   });

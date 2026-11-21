@@ -7,7 +7,8 @@
  * five rulings of 2026-11-21 (spec
  * docs/superpowers/specs/2026-11-21-c246-term-check-prefix-rule-design.md):
  *   1. the base text may start a word; stored inflected forms stay whole-word;
- *   2. only terms of four code points or more;
+ *   2. only terms of four letters or more (letters of the last part; punctuation and digits
+ *      do not count, [USER] 2026-11-21, register §C247 (2));
  *   3. never the form `merki`;
  *   4. (A2) the winner and the tie options take the prefix, alternatives do not;
  *   5. (B3) a multi-word or hyphenated term only when its last part qualifies.
@@ -188,9 +189,17 @@ describe('which terms qualify (rulings 2, 3 and 5)', () => {
     expectMissing(run('The initial pH is 7.', 'Upphafs-pH er 7.'), 'initial pH', 'upphafs-');
   });
 
-  it('RF3 control: a qualifying term with regex metacharacters matches its literal text', () => {
+  it('RF3 control: a term with regex metacharacters matches its literal text (whole-word path)', () => {
     addPair('chemistry', 'mole unit', 'eining (mól)');
     expectPasses(run('One mole unit here.', 'Ein eining (mól) hér.'), 'mole unit');
+  });
+
+  // `(mól)` has three letters, so since §C247 (2) `eining (mól)` no longer qualifies and RF3
+  // tests only the whole-word path. This term's last part, `(eining)`, has six letters, so it
+  // exercises the prefix branch with regex metacharacters, which is what Review Focus 3 asked.
+  it('RF3b control: a qualifying term with regex metacharacters matches through the prefix branch', () => {
+    addPair('chemistry', 'unit mole', 'mól (eining)');
+    expectPasses(run('One unit mole here.', 'Eitt mól (eining) hér.'), 'unit mole');
   });
 });
 
