@@ -5,11 +5,14 @@ Measurement 7 (the 8 ruthenium segments, data/dry-count-ruthenium-mt-forms.json,
 segments still holding the old derived forms, data/lanthanide-census.json):
   python3 -I build-fix-targets-fetch.py nine-readonly.cjs ../data/dry-count-ruthenium-mt-forms.json ../data/lanthanide-census.json fetch-fix-targets.cjs
 Measurement 8 (every distinct segment of the 14 never-official names' dry lists, data/never-official-lists.json):
-  python3 -I build-fix-targets-fetch.py --never-official nine-readonly.cjs ../data/never-official-lists.json fetch-never-official-targets.cjs"""
+  python3 -I build-fix-targets-fetch.py --never-official nine-readonly.cjs ../data/never-official-lists.json fetch-never-official-targets.cjs
+Measurement 9 (every distinct segment of the 49 mixed names' dry lists, data/mixed-lists.json):
+  python3 -I build-fix-targets-fetch.py --mixed nine-readonly.cjs ../data/mixed-lists.json fetch-mixed-targets.cjs"""
 import json
 import sys
 
-if sys.argv[1] == '--never-official':
+if sys.argv[1] in ('--never-official', '--mixed'):
+    set_name = sys.argv[1][2:]
     src_path, no_path, out_path = sys.argv[2:5]
     no = json.load(open(no_path, encoding='utf-8'))
     targets, seen = [], set()
@@ -18,7 +21,7 @@ if sys.argv[1] == '--never-official':
             if i['segmentId'] in seen:
                 continue
             seen.add(i['segmentId'])
-            targets.append({'set': 'never-official', 'chapter': i['chapter'], 'moduleId': i['moduleId'], 'segmentId': i['segmentId']})
+            targets.append({'set': set_name, 'chapter': i['chapter'], 'moduleId': i['moduleId'], 'segmentId': i['segmentId']})
 else:
     src_path, ru_path, la_path, out_path = sys.argv[1:5]
     ru = json.load(open(ru_path, encoding='utf-8'))

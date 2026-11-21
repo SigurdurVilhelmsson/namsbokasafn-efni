@@ -123,3 +123,26 @@ print('never-official:', 'names', len(no['rows']), 'listings', sum(r['listed'] f
       '| EN segments', sum(r['enSegments'] for r in no['rows']), 'already official', sum(r['alreadyOfficial'] for r in no['rows']),
       'unmatched', sum(len(r['misses']) for r in no['rows']),
       '| listed only by a near form', [(r['english'][0], r['listed'] - r['listedStrong']) for r in no['rows'] if r['listed'] != r['listedStrong']])
+
+# 7. dry lists for the 49 mixed names (a segment that also holds the official name is kept)
+mx = load('mixed-lists.json')
+out = []
+distinct = set()
+for r in mx['rows']:
+    if not r['items']:
+        continue
+    out.append(f"### {r['english'][0]}: official `{'/'.join(r['official'])}` ({r['listed']} segments)\n\n"
+               '| Ch. | Segment id | MT forms | Excerpt |\n|---|---|---|---|')
+    for i in r['items']:
+        distinct.add(i['segmentId'])
+        forms = ', '.join(i['forms']) if i['forms'] else '(none strong)'
+        if i['near']:
+            forms += ' · near: ' + ', '.join(i['near'])
+        if i.get('alsoOfficial'):
+            forms += ' · also holds the official name'
+        out.append(f"| {ch(i['chapter'])} | `{i['segmentId']}` | {forms} | {excerpt(i['excerpt'])} |")
+    out.append('')
+open(f'{OUT}/mixed-segments.md', 'w', encoding='utf-8').write('\n'.join(out))
+print('mixed:', 'names', len(mx['rows']), 'listings', sum(r['listed'] for r in mx['rows']), 'distinct segments', len(distinct),
+      '| also holding the official name', sum(1 for r in mx['rows'] for i in r['items'] if i.get('alsoOfficial')),
+      '| listed only by a near form', sum(r['listed'] - r['listedStrong'] for r in mx['rows']))

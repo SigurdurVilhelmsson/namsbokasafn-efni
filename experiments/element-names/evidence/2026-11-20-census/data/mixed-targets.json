@@ -1,0 +1,1421 @@
+{
+ "_meta": {
+  "measured": "2026-11-21",
+  "book": "efnafraedi-2e",
+  "prodHead": "844f13d2f",
+  "readOnly": true,
+  "script": "instruments/fetch-mixed-targets.cjs",
+  "what": "the current effective Icelandic and any live edit for every distinct segment of the 49 mixed names' dry lists; no segment had a live edit"
+ },
+ "openedDbPaths": [
+  "pipeline-output/sessions.db"
+ ],
+ "registeredBooks": 6,
+ "n": 156,
+ "segments": [
+  {
+   "set": "mixed",
+   "chapter": 5,
+   "moduleId": "m68724",
+   "segmentId": "m68724:entry:auto-52",
+   "found": true,
+   "current": "helín",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 6,
+   "moduleId": "m68734",
+   "segmentId": "m68734:para:fs-idp241397616",
+   "found": true,
+   "current": "Á eftir vetni kemur eðallofttegundin helín, sem hefur sætistöluna 2. Helínatóm inniheldur tvær róteindir og tvær rafeindir. Fyrri rafeindin hefur sömu fjórar skammtatölur og rafeind vetnisatómsins ([[i:n]] = 1, [[i:l]] = 0, [[i:m[[sub:l]]]] = 0, [[MATH:2]]). Seinni rafeindin fer einnig í 1[[i:s]]-svigrúmið og fyllir það. Seinni rafeindin hefur sömu [[i:n]], [[i:l]] og [[i:m[[sub:l]]]] skammtatölur, en verður að hafa gagnstæða spinnskammtatölu, [[MATH:3]]. Þetta er í samræmi við einsetulögmál Paulis: Engar tvær rafeindir í sama atómi geta haft sama sett af fjórum skammtatölum. Fyrir svigrúmsmyndir þýðir þetta að tvær örvar fara í hvern kassa (sem tákna tvær rafeindir í hverju svigrúmi) og örvarnar verða að vísa í gagnstæðar áttir (sem tákna paraðan spuna). Rafeindaskipan og svigrúmsmynd helíns eru:",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 6,
+   "moduleId": "m68734",
+   "segmentId": "m68734:para:fs-idp9284128",
+   "found": true,
+   "current": "[[i:n]] = 1 hvolfið er alveg fyllt í helínatómi.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 6,
+   "moduleId": "m68734",
+   "segmentId": "m68734:para:fs-idp29682592",
+   "found": true,
+   "current": "Næsta atóm er alkalímálmurinn litín með sætistöluna 3. Fyrstu tvær rafeindirnar í litíni fylla 1[[i:s]]-svigrúmið og hafa sömu sett af fjórum skammtatölum og rafeindirnar tvær í helíni. Rafeindin sem eftir er verður að fara í svigrúm með næstlægstu orkuna, 2[[i:s]]-svigrúmið ([[xref:CNX_Chem_06_04_Efillorder]] eða [[xref:CNX_Chem_06_04_Econtable]]). Þannig eru rafeindaskipan og svigrúmsmynd litíns:",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 6,
+   "moduleId": "m68734",
+   "segmentId": "m68734:para:fs-idp10466880",
+   "found": true,
+   "current": "Atóm af jarðalkalímálminum beryllíni, með sætistöluna 4, inniheldur fjórar róteindir í kjarnanum og fjórar rafeindir umhverfis kjarnann. Fjórða rafeindin fyllir það pláss sem eftir er í 2[[i:s]]-svigrúminu.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 6,
+   "moduleId": "m68734",
+   "segmentId": "m68734:para:fs-idp77726784",
+   "found": true,
+   "current": "Frumefni í hvaða flokki (eða dálki) sem er hafa sama fjölda gildisrafeinda; alkalímálmarnir litín og natrín hafa hvor um sig aðeins eina gildisrafeind, jarðalkalímálmarnir beryllín og magnesín hafa hvor um sig tvær og halógenarnir flúor og klór hafa hvor um sig sjö gildisrafeindir. Líkindi í efnafræðilegum eiginleikum meðal frumefna í sama flokki stafa af því að þau hafa sama fjölda gildisrafeinda. Það er tap, ávinningur eða deiling gildisrafeinda sem skilgreinir hvernig frumefni hvarfast.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 6,
+   "moduleId": "m68734",
+   "segmentId": "m68734:item:fs-idp170969264-item-1",
+   "found": true,
+   "current": "[[b:Aðalflokkafrumefni]] (stundum kölluð [[b:fulltrúafrumefni]]) eru þau þar sem síðasta rafeindin sem bætist við fer inn í [[i:s]]- eða [[i:p]]-svigrúm í ysta hvolfinu, sýnt með bláu og rauðu í [[xref:CNX_Chem_06_04_Ptableconf]]. Þessi flokkur inniheldur öll málmleysingja, auk margra málma og málmunga. Gildisrafeindir fyrir aðalflokkafrumefni eru þær með hæsta [[i:n]]-gildið. Til dæmis hefur gallín (Ga, sætistala 31) rafeindaskipanina [Ar][[u:4[[i:s]][[sup:2]]]]3[[i:d]][[sup:10]][[u:4[[i:p]][[sup:1]]]], sem inniheldur þrjár gildisrafeindir (undirstrikaðar). Alveg fyllt [[i:d]]-svigrúm teljast sem kjarna-, ekki gildisrafeindir.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 6,
+   "moduleId": "m68734",
+   "segmentId": "m68734:para:fs-idp38113648",
+   "found": true,
+   "current": "Þegar um Cr og Cu er að ræða sjáum við að hálffyllt og alveg fyllt undirhvolf virðast tákna ákjósanlegan stöðugleika. Þessi stöðugleiki er slíkur að rafeind færist úr 4[[i:s]]-svigrúmi yfir í 3[[i:d]]-svigrúm til að ná auknum stöðugleika hálffyllts 3[[i:d]]-undirhvolfs (í Cr) eða fyllts 3[[i:d]]-undirhvolfs (í Cu). Aðrar undantekningar koma einnig fyrir. Til dæmis er spáð að níóbín (Nb, sætistala 41) hafi rafeindaskipanina [Kr]5[[i:s]][[sup:2]]4[[i:d]][[sup:3]]. Tilraunir sýna að rafeindaskipan þess í grunnástandi er í raun [Kr]5[[i:s]][[sup:1]]4[[i:d]][[sup:4]]. Við getum réttlætt þessa athugun með því að segja að fráhrindikraftar milli rafeinda sem verða til við pörun rafeinda í 5[[i:s]]-svigrúminu séu stærri en orkumunurinn á milli 5[[i:s]]- og 4[[i:d]]-svigrúmanna. Það er engin einföld aðferð til að spá fyrir um undantekningar fyrir frumeindir þar sem stærð fráhrindikrafta milli rafeinda er meiri en litli orkumunurinn á milli undirhvolfa.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 6,
+   "moduleId": "m68734",
+   "segmentId": "m68734:item:fs-idp203626048-item-1",
+   "found": true,
+   "current": "Lantaníðaröðin: lantan (La) til lútetín (Lu)",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 6,
+   "moduleId": "m68734",
+   "segmentId": "m68734:item:fs-idp203626048-item-2",
+   "found": true,
+   "current": "Aktiníðaröðin: aktín (Ac) til lawrensín (Lr)",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 6,
+   "moduleId": "m68734",
+   "segmentId": "m68734:para:fs-idm11513792",
+   "found": true,
+   "current": "Lantan og aktín, vegna líkinda þeirra við aðra meðlimi raðarinnar, eru innifalin og notuð til að nefna raðirnar, jafnvel þótt þau séu hliðarmálmar án [[i:f]]-rafeinda.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68840",
+   "segmentId": "m68840:para:fs-idm47164624",
+   "found": true,
+   "current": "Frumefnin í flokki 18 eru eðallofttegundir (helín, neon, argon, krypton, xenon og radon). Þau fengu nafnið „eðal“ vegna þess að þau voru talin óhvarfgjörn þar sem þau hafa fullskipuð gildisrafeindahvel. Árið 1962 sannaði dr. Neil [[term:Bartlett|term-00001]] við Háskólann í Bresku Kólumbíu að þessi forsenda væri röng.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68840",
+   "segmentId": "m68840:para:fs-idm76574784",
+   "found": true,
+   "current": "Þessi frumefni er að finna í litlu magni í andrúmsloftinu. Sumt jarðgas inniheldur 1–2% helín miðað við massa. Helín er einangrað úr jarðgasi með því að breyta þéttanlegum efnisþáttum í vökva og skilja aðeins helín eftir sem gas. Bandaríkin eiga mest af viðskiptabirgðum heimsins af þessu frumefni á gaslindum sínum sem innihalda helín. Argon, neon, krypton og xenon eru unnin með hlutaeimingu á fljótandi lofti. Radon kemur frá öðrum geislavirkum frumefnum. Nýlega kom í ljós að þessi geislavirka lofttegund er til staðar í mjög litlu magni í jarðvegi og steinefnum. Uppsöfnun þess í vel einangruðum, þétt lokuðum byggingum er þó heilsuspillandi, einkum vegna hættu á lungnakrabbameini.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68840",
+   "segmentId": "m68840:para:fs-idm66671520",
+   "found": true,
+   "current": "Suðumark og bræðslumark eðallofttegunda eru afar lág miðað við önnur efni með sambærilegan atóm- eða sameindamassa. Þetta er vegna þess að aðeins veikir London-dreifkraftar eru til staðar og þessir kraftar geta aðeins haldið atómunum saman þegar sameindahreyfing er mjög lítil, eins og hún er við mjög lágt hitastig. Helín er eina þekkta efnið sem storknar ekki við kælingu við venjulegan þrýsting. Það helst fljótandi nálægt alkuli (0,001 K) við venjulegan þrýsting en storknar undir auknum þrýstingi.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68840",
+   "segmentId": "m68840:para:fs-idp93284368",
+   "found": true,
+   "current": "Helín er notað til að fylla blöðrur og loftför sem eru léttari en loft vegna þess að það brennur ekki, sem gerir það öruggara í notkun en vetni. Helín við háan þrýsting er ekki deyfandi eins og köfnunarefni. Þess vegna eru blöndur af súrefni og helíni mikilvægar fyrir kafara sem vinna undir háum þrýstingi. Notkun helín-súrefnisblöndu kemur í veg fyrir ruglað andlegt ástand sem kallast köfnunarefnisvíma, hin svokallaða djúpsjávargleði. Helín er mikilvægt sem hvarflaust andrúmsloft við bræðslu og suðu á málmum sem oxast auðveldlega og fyrir mörg efnaferli sem eru viðkvæm fyrir lofti.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68840",
+   "segmentId": "m68840:para:fs-idm74477856",
+   "found": true,
+   "current": "Fljótandi helín (suðumark, 4,2 K) er mikilvægt kælimiðill til að ná því lága hitastigi sem er nauðsynlegt fyrir frosttæknirannsóknir og það er ómissandi til að ná því lága hitastigi sem þarf til að framkalla ofurleiðni í hefðbundnum ofurleiðandi efnum sem notuð eru í öfluga segla og önnur tæki. Þessi kæligeta er nauðsynleg fyrir seglana sem notaðir eru í segulómun, sem er algeng læknisfræðileg greiningaraðferð. Hinn algengi kælimiðillinn er fljótandi köfnunarefni (suðumark, 77 K), sem er umtalsvert ódýrara.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68840",
+   "segmentId": "m68840:para:fs-idm146709616",
+   "found": true,
+   "current": "Óstöðug efnasambönd argons myndast við lágt hitastig en engin stöðug efnasambönd helíns og neons eru þekkt.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68851",
+   "segmentId": "m68851:para:fs-idm36435184",
+   "found": true,
+   "current": "Sem einfalt dæmi um orkuna sem tengist sterka kjarnakraftinum skulum við skoða helínatóm sem samanstendur af tveimur róteindum, tveimur nifteindum og tveimur rafeindum. Heildarmassa þessara sex öreinda má reikna sem:",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68851",
+   "segmentId": "m68851:para:fs-idp28406768",
+   "found": true,
+   "current": "Hins vegar sýna massarófsmælingar að massi [[MATH:16]] atóms er 4,0026 amu, sem er minna en samanlagður massi sex öreindanna sem það er myndað úr. Þessi munur á útreiknuðum og mældum massa er þekktur sem [[term:massarýrð|term-00005]] atómsins. Í tilfelli helíns gefur massarýrðin til kynna „tap“ á massa upp á 4,0331 amu – 4,0026 amu = 0,0305 amu. Massatapið sem fylgir myndun atóms úr róteindum, nifteindum og rafeindum stafar af umbreytingu þess massa í orku sem losnar þegar atómið myndast. [[term:Kjarnabindingsorka|term-00006]] er orkan sem myndast þegar kjarnaeindir atómsins bindast saman; þetta er líka orkan sem þarf til að brjóta kjarna í sundur í róteindir og nifteindir. Í samanburði við efnatengisorku er kjarnabindingsorka [[i:gríðarlega]] miklu meiri, eins og við munum læra í þessum kafla. Þar af leiðandi eru orkubreytingarnar sem tengjast kjarnahvörfum gríðarlega miklu meiri en þær sem eiga sér stað í efnahvörfum.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68851",
+   "segmentId": "m68851:para:fs-idm77528832",
+   "found": true,
+   "current": "Róteindir og nifteindir, sem sameiginlega eru kallaðar [[term:kjarnaeindir|term-00003]], pakkast þétt saman í kjarna. Kjarni er fremur lítill, með radíus um 10[[sup:−15]] metra, samanborið við radíus alls atómsins, sem er um 10[[sup:−10]] metrar. Kjarnar eru gríðarlega þéttir miðað við efni í föstu formi, að meðaltali 1,8 [[MATH:5]] 10[[sup:14]] grömm á rúmsentimetra. Til dæmis hefur vatn eðlismassa upp á 1 gramm á rúmsentimetra og iridín, eitt þéttasta frumefni sem þekkt er, hefur eðlismassa upp á 22,6 g/cm[[sup:3]]. Ef eðlismassi jarðar væri jafn meðaleðlismassa kjarna væri radíus jarðar aðeins um 200 metrar (raunverulegur radíus jarðar er um það bil 6,4 [[MATH:6]] 10[[sup:6]] metrar, 30.000 sinnum stærri). [[xref:fs-idp85198000]] sýnir hversu gríðarlega mikill eðlismassi kjarna getur verið í náttúrunni.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68851",
+   "segmentId": "m68851:problem:fs-idm56820256",
+   "found": true,
+   "current": "(d) fransín-217",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68852",
+   "segmentId": "m68852:para:fs-idm5999248",
+   "found": true,
+   "current": "Many entities can be involved in nuclear reactions. The most common are protons, neutrons, alpha particles, beta particles, positrons, and gamma rays, as shown in [[xref:CNX_Chem_21_02_Nuclearrxs]]. Protons [[MATH:1]] also represented by the symbol [[MATH:2]] and neutrons [[MATH:3]] are the constituents of atomic nuclei, and have been described previously. [[term:Alpha particles|term-00002]] [[MATH:4]] also represented by the symbol [[MATH:5]] are high-energy helium nuclei. [[term:Beta particles|term-00003]] [[MATH:6]] also represented by the symbol [[MATH:7]] are high-energy electrons, and gamma rays are photons of very high-energy electromagnetic radiation. [[term:Positrons|term-00004]] [[MATH:8]] also represented by the symbol [[MATH:9]] are positively charged electrons (“anti-electrons”). The subscripts and superscripts are necessary for balancing nuclear equations, but are usually optional in other circumstances. For example, an alpha particle is a helium nucleus (He) with a charge of +2 and a mass number of 4, so it is symbolized [[MATH:10]] This works because, in general, the ion charge is not important in the balancing of nuclear equations.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68852",
+   "segmentId": "m68852:alt:fs-idp74884384-alt",
+   "found": true,
+   "current": "This table has four columns and seven rows. The first row is a header row and it labels each column: “Name,” “Symbol(s),” “Representation,” and “Description.” Under the “Name” column are the following: “Alpha particle,” “Beta particle,” “Positron,” “Proton,” “Neutron,” and “Gamma ray.” Under the “Symbol(s)” column are the following: “ superscript 4 stacked over a subscript 2 H e or lowercase alpha,” “superscript 0 stacked over a subscript 1 e or lowercase beta,” “superscript 0 stacked over a positive subscript 1 e or lowercase beta superscript positive sign,” “superscript 1 stacked over a subscript 1 H or lowercase rho superscript 1 stacked over a subscript 1 H,” “superscript 1 stacked over a subscript 0 n or lowercase eta superscript 1 stacked over a subscript 0 n,” and a lowercase gamma. Under the “Representation column,” are the following: two white sphere attached to two blue spheres of about the same size with positive signs in them; a small red sphere with a negative sign in it; a small red sphere with a positive sign in it; a blue spheres with a positive sign in it; a white sphere; and a purple squiggle ling with an arrow pointing right to a lowercase gamma. Under the “Description” column are the following: “(High-energy) helium nuclei consisting of two protons and two neutrons,” “(High-energy) elections,” “Particles with the same mass as an electron but with 1 unit of positive charge,” “Nuclei of hydrogen atoms,” “Particles with a mass approximately equal to that of a proton but with no charge,” and “Very high-energy electromagnetic radiation.”",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68852",
+   "segmentId": "m68852:glossary-def:fs-idm57603984-def",
+   "found": true,
+   "current": "[[b:(α]] eða [[MATH:45]] eða [[MATH:46]] orkuríkur helínkjarni; helínatóm sem hefur misst tvær rafeindir og inniheldur tvær róteindir og tvær nifteindir",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68852",
+   "segmentId": "m68852:problem:fs-idp250174032",
+   "found": true,
+   "current": "Teknetín-99 er búið til úr [[sup:98]]Mo. Mólýbden-98 sameinast nifteind og myndar mólýbden-99, óstöðuga samsætu sem gefur frá sér β-eind og myndar örvað form af teknetíni-99, táknað sem [[sup:99]]Tc[[sup:*]]. Þessi örvaði kjarni slakar á niður í grunnástand, táknað sem [[sup:99]]Tc, með því að gefa frá sér γ-geisla. Grunnástand [[sup:99]]Tc gefur síðan frá sér β-eind. Skrifaðu jöfnurnar fyrir hvert þessara kjarnahvarfa.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68854",
+   "segmentId": "m68854:para:fs-idp130339440",
+   "found": true,
+   "current": "Tilraunir Ernests Rutherfords sem fólu í sér víxlverkun geislunar við segul- eða rafsvið ([[xref:CNX_Chem_21_03_Radiation]]) hjálpuðu honum að ákvarða að ein tegund geislunar samanstóð af jákvætt hlöðnum og tiltölulega massamiklum α-ögnum; önnur tegund var samsett úr neikvætt hlöðnum og mun minni β-ögnum; og sú þriðja voru óhlaðnar rafsegulbylgjur, γ-geislar. Við vitum nú að α-agnir eru orkumiklir helínkjarnar, β-agnir eru orkumiklar rafeindir og γ-geislun samanstendur af orkumikilli rafsegulgeislun. Við flokkum mismunandi tegundir geislasundrunar eftir geisluninni sem myndast.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68854",
+   "segmentId": "m68854:problem:fs-idp125426976",
+   "found": true,
+   "current": "Bergsýni reyndist innihalda 8,23 mg af rúbidín-87 og 0,47 mg af strontín-87.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68854",
+   "segmentId": "m68854:problem:fs-idm22718704",
+   "found": true,
+   "current": "(a) Reiknaðu aldur bergsins ef helmingunartími sundrunar rúbidíns með β-losun er 4,7 [[MATH:94]] 10[[sup:10]] ár.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68854",
+   "segmentId": "m68854:problem:fs-idp126089680",
+   "found": true,
+   "current": "Samsætan [[MATH:92]] er ein af afar hættulegum tegundum í leifum frá kjarnorkuframleiðslu. Strontínið í 0,500 g sýni minnkar í 0,393 g á 10,0 árum. Reiknaðu helmingunartímann.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68854",
+   "segmentId": "m68854:problem:fs-idp219506992",
+   "found": true,
+   "current": "Teknetín-99 er oft notað til að meta skemmdir á hjarta, lifur og lungum vegna þess að ákveðin teknetínefnasambönd frásogast af skemmdum vefjum. Það hefur helmingunartíma upp á 6,0 klst. Reiknaðu sundrunarstuðulinn fyrir sundrun [[MATH:93]].",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68854",
+   "segmentId": "m68854:para:fs-idp54304864",
+   "found": true,
+   "current": "Náttúrulega geislavirkar samsætur þyngstu frumefnanna falla í keðjur af samfelldum sundrunum og allar tegundir í einni keðju mynda geislavirka fjölskyldu, eða [[term:geislasundrunarröð|term-00009]]. Þrjár af þessum röðum innihalda flest náttúrulega geislavirk frumefni lotukerfisins. Þetta eru úranröðin, aktiníðröðin og þórínröðin. Neptúnínröðin er fjórða röðin, sem er ekki lengur marktæk á jörðinni vegna stutts helmingunartíma þeirra tegunda sem hún inniheldur. Hver röð einkennist af móðurefni (fyrsta meðlim) sem hefur langan helmingunartíma og röð dótturkjarnategunda sem að lokum leiða til stöðugrar lokaafurðar – það er að segja kjarnategundar á stöðugleikabeltinu ([[xref:CNX_Chem_21_03_DecayS]]). Í öllum þremur röðunum er lokaafurðin stöðug samsæta blýs. Neptúnínröðin, sem áður var talin enda með bismút-209, endar með þallíum-205.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68854",
+   "segmentId": "m68854:problem:fs-idp77337360",
+   "found": true,
+   "current": "(c) þóríum-232 sundrast og myndar alfaögn og radíum-228 kjarna, sem sundrast í aktiníum-228 með betasundrun",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68854",
+   "segmentId": "m68854:caption:CNX_Chem_21_03_Reaction1-caption",
+   "found": true,
+   "current": "Kjarni úrans-238 (móðurkjarnategundin) gengst undir α-sundrun og myndar þórín-234 (dótturkjarnategundina). Alfaagnirnar fjarlægja tvær róteindir (grænar) og tvær nifteindir (gráar) úr úran-238 kjarnanum.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68854",
+   "segmentId": "m68854:problem:fs-idm37225376",
+   "found": true,
+   "current": "1,00 [[MATH:85]] 10[[sup:–6]] g sýni af nóbelíni, [[MATH:86]], hefur helmingunartíma upp á 55 sekúndur eftir að það myndast. Hvert er hlutfall [[MATH:87]] sem er eftir á eftirfarandi tímum?",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 2,
+   "moduleId": "m68692",
+   "segmentId": "m68692:entry:auto-174",
+   "found": true,
+   "current": "berillíum",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 2,
+   "moduleId": "m68692",
+   "segmentId": "m68692:table-summary:fs-idm36686800-summary",
+   "found": true,
+   "current": "Þessi tafla hefur tvo dálka sem merkja frumefni og tákn. Fyrsti stafur táknsins er alltaf hástafur en annar stafur táknsins er alltaf lágstafur. Ál hefur táknið A L. Bróm hefur táknið B R, kalsíum hefur táknið C A, kolefni hefur táknið C, klór hefur táknið C L, króm hefur táknið C R, kóbalt hefur táknið C O, kopar hefur táknið C U, úr cuprum, flúor hefur táknið F, gull hefur táknið A U, úr aurum, helíum hefur táknið H E, vetni hefur táknið H, joð hefur táknið I, járn hefur táknið F E, úr ferrum, blý hefur táknið P B, úr plumbum, magnesíum hefur táknið M G, kvikasilfur hefur táknið H G úr hydrargyrum, köfnunarefni hefur táknið N, súrefni hefur táknið O, kalíum hefur táknið K, úr kalium, kísill hefur táknið S I, silfur hefur táknið A G, úr argentum, natríum hefur táknið N A úr natrium, brennisteinn hefur táknið S, tin hefur táknið S N úr stannum og sink hefur táknið Z N.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 2,
+   "moduleId": "m68692",
+   "segmentId": "m68692:entry:auto-101",
+   "found": true,
+   "current": "Na (úr [[i:natrium]])",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 2,
+   "moduleId": "m68692",
+   "segmentId": "m68692:entry:auto-89",
+   "found": true,
+   "current": "K (úr [[i:kalium]])",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 2,
+   "moduleId": "m68692",
+   "segmentId": "m68692:para:fs-idm105035264",
+   "found": true,
+   "current": "Venjan er sú að sá eða þeir sem uppgötva nýtt frumefni gefa því nafn. Hins vegar, þar til nafnið er viðurkennt af Alþjóðasamtökum um hreina og hagnýta efnafræði (IUPAC), er ráðlagt nafn nýja frumefnisins byggt á latneska orðinu/orðunum fyrir sætistölu þess. Til dæmis var frumefni 106 kallað unnilhexíum (Unh), frumefni 107 var kallað unnilseptíum (Uns) og frumefni 108 var kallað unniloktíum (Uno) í nokkur ár. Þessi frumefni eru nú nefnd eftir vísindamönnum (eða stundum stöðum); til dæmis er frumefni 106 nú þekkt sem [[i:seaborgíum]] (Sg) til heiðurs Glenn Seaborg, Nóbelsverðlaunahafa sem tók virkan þátt í uppgötvun nokkurra þungra frumefna. Frumefni 109 var nefnt til heiðurs Lise Meitner, sem uppgötvaði kjarnaklofnun, fyrirbæri sem myndi hafa heimsumbreytandi áhrif; Meitner lagði einnig sitt af mörkum til uppgötvunar nokkurra mikilvægra samsæta, sem fjallað er um hér á eftir.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 7,
+   "moduleId": "m68742",
+   "segmentId": "m68742:alt:fs-idp229524848-alt",
+   "found": true,
+   "current": "Lewis-bygging er sýnd. Flúoratóm með þremur stökum rafeindapörum er eintengt við beryllínatóm sem er eintengt við flúoratóm með þremur stökum rafeindapörum. Hornið á tengjunum milli flúratómanna tveggja og beryllínatómsins er merkt „180 gráður“.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 7,
+   "moduleId": "m68742",
+   "segmentId": "m68742:alt:fs-idp73717728-alt",
+   "found": true,
+   "current": "Sýnd er tafla með fjórum röðum og sex dálkum. Í hausdálknum eru setningarnar „Fjöldi svæða“, „Rúmfyrirkomulag“, „Fleyg-/strikaritun“ og „Rafeindasvæðislögun“. Í fyrstu röðinni stendur: „Tvö svæði með háum rafeindaþéttleika (tengi og/eða ódeild rafeindapör)“, „Þrjú svæði með háum rafeindaþéttleika (tengi og/eða ódeild rafeindapör)“, „Fjögur svæði með háum rafeindaþéttleika (tengi og/eða ódeild rafeindapör)“, „Fimm svæði með háum rafeindaþéttleika (tengi og/eða ódeild rafeindapör)“ og „Sex svæði með háum rafeindaþéttleika (tengi og/eða ódeild rafeindapör)“. Önnur röðin sýnir skýringarmyndir af svigrúmum. Fyrsta myndin sýnir tvö sporöskjulaga svigrúm með ör sem sýnir 180 gráðu horn. Önnur myndin sýnir þrjú sporöskjulaga svigrúm með ör sem sýnir 120 gráðu horn. Þriðja myndin sýnir fjögur sporöskjulaga svigrúm með ör sem sýnir 109,5 gráðu horn. Fjórða myndin sýnir fimm sporöskjulaga svigrúm með ör sem sýnir 90 og 120 gráðu horn. Fimmta myndin sýnir sex sporöskjulaga svigrúm með ör sem sýnir 90 gráðu horn. Þriðja röðin inniheldur Lewis-formúlur. Fyrsta formúlan sýnir berillíumatóm með eintengi við tvö vetnisatóm. Önnur formúlan sýnir bóratóm með eintengi við þrjú vetnisatóm. Þriðja formúlan sýnir kolefnisatóm með eintengi við fjögur vetnisatóm. Fjórða formúlan sýnir fosfóratóm með eintengi við fimm flúoratóm. Fimmta formúlan sýnir brennisteinsatóm með eintengi við sex flúoratóm. Fjórða röðin inniheldur setningarnar „Línuleg; 180 gráðu horn“, „Þríhyrnd flatneskja; öll horn 120 gráður“, „Fjórflettingur; öll horn 109,5 gráður“, „Þríhyrnd tvípýramídalögun; horn 90 gráður og 120 gráður. Tengt atóm getur verið miðbaugslægt (í plani þríhyrningsins) eða áslægt (fyrir ofan plan þríhyrningsins)“ og „Áttflettingur; 90 gráður eða 180 gráður“.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 8,
+   "moduleId": "m68745",
+   "segmentId": "m68745:para:fs-idp208078752",
+   "found": true,
+   "current": "Berillínatómið í BeCl[[sub:2]]-sameind á gasformi er dæmi um miðatómið með engin einmana rafeindapör í línulegri uppröðun þriggja atóma. Það eru tvö svæði gildisrafeindaþéttleika í BeCl[[sub:2]]-sameindinni sem samsvara tveimur samgildu Be–Cl-tengjunum. Til að rúma þessi tvö rafeindasvið munu tvö af fjórum gildissvigrúmum Be-atómsins blandast og mynda tvö blendingssvigrúm. Þetta svigrúmablöndunarferli felur í sér blöndun gildis-[[i:s]]-svigrúmsins við eitt af gildis-[[i:p]]-svigrúmunum til að mynda tvö jafngild [[term:[[i:sp]]-blendingssvigrúm|term-00003]] sem eru stillt upp í línulegri rúmfræði ([[xref:CNX_Chem_08_02_spGeom]]). Á þessari mynd virðist settið af [[i:sp]]-svigrúmum vera svipað í lögun og upprunalega [[i:p]]-svigrúmið, en það er mikilvægur munur. Fjöldi atómsvigrúma sem blandast saman er alltaf jafn fjölda blendingssvigrúma sem myndast. [[i:p]]-svigrúmið er eitt svigrúm sem getur rúmað allt að tvær rafeindir. [[i:sp]]-settið eru tvö jafngild svigrúm sem vísa 180° hvort frá öðru. Rafeindirnar tvær sem voru upphaflega í [[i:s]]-svigrúminu dreifast nú á [[i:sp]]-svigrúmin tvö, sem eru hálffyllt. Í BeCl[[sub:2]] á gasformi munu þessi hálffylltu blendingssvigrúm skarast við svigrúm frá klóratómunum og mynda tvö eins σ-tengi.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68829",
+   "segmentId": "m68829:para:fs-idp45202896",
+   "found": true,
+   "current": "[[term:Jarðalkalímálmarnir|term-00006]] (beryllín, magnesín, kalsín, strontín, barín og radín) mynda flokk 2 í lotukerfinu. Nafnið jarðalkalímálmur kemur frá því að oxíð þyngri frumefnanna í flokknum hvarfast við vatn og mynda basískar lausnir. Kjarnhleðslan eykst þegar farið er úr flokki 1 í flokk 2. Vegna þessarar hleðsluaukningar eru atóm jarðalkalímálma minni og hafa hærri fyrstu jónunarorku en alkalímálmarnir í sömu lotu. Hærri jónunarorka gerir jarðalkalímálma minna hvarfgjarna en alkalímálma; þeir eru þó enn mjög hvarfgjörn frumefni. Hvarfgirni þeirra eykst, eins og við var að búast, með aukinni stærð og minnkandi jónunarorku. Í efnahvörfum missa þessir málmar auðveldlega báðar gildisrafeindirnar og mynda efnasambönd þar sem þeir hafa oxunartöluna 2+. Vegna mikillar hvarfgirni þeirra er algengt að framleiða jarðalkalímálma, líkt og alkalímálma, með rafgreiningu. Jafnvel þótt jónunarorkan sé lág mynda málmarnir tveir með hæstu jónunarorkuna (beryllín og magnesín) efnasambönd sem sýna nokkra samgilda eiginleika. Líkt og alkalímálmar lita þyngri jarðalkalímálmarnir loga. Eins og í tilfelli alkalímálma er þetta hluti af útgeislunarrófi þessara frumefna. Kalsín og strontín gefa frá sér rauða litatóna en barín gefur frá sér grænan lit.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68829",
+   "segmentId": "m68829:para:fs-idp261367120",
+   "found": true,
+   "current": "Magnesín er silfurhvítur málmur sem er teygjanlegur og sveigjanlegur við hátt hitastig. Yfirborðshömlun dregur úr hvarfgirni magnesínmálms. Þegar hann kemst í snertingu við loft myndast þétt lag af magnesínoxýkarbónati á yfirborði málmsins sem hindrar frekari hvarf. (Karbónatið kemur frá hvarfi koltvíoxíðs í andrúmsloftinu.) Magnesín er léttastur þeirra burðarmálma sem eru mikið notaðir og þess vegna er mestur hluti magnesínframleiðslu fyrir léttar málmblöndur.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68829",
+   "segmentId": "m68829:para:fs-idm12445424",
+   "found": true,
+   "current": "Magnesín (sýnt á [[xref:CNX_Chem_18_01_CalciWater]]), kalsín, strontín og barín hvarfast við vatn og loft. Við stofuhita sýnir barín öflugasta hvarfið. Myndefni hvarfsins við vatn eru vetni og málmhýdroxíð. Myndun vetnisgass gefur til kynna að þyngri jarðalkalímálmarnir séu betri afoxarar (oxast auðveldlegar) en vetni. Eins og við var að búast hvarfast þessir málmar bæði við sýrur og málmleysingja og mynda jónísk efnasambönd. Ólíkt flestum söltum alkalímálma eru mörg algeng sölt jarðalkalímálma óleysanleg í vatni vegna mikillar grindarorku þessara efnasambanda sem innihalda tvígilda málmjón.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68829",
+   "segmentId": "m68829:caption:CNX_Chem_18_01_CalciWater-caption",
+   "found": true,
+   "current": "Magnesínmálmur (vinstri krukka) hvarfast hægt við heitt vatn (miðkrukka) og myndar Mg[[sup:2+]] og OH[[sup:-]] og basíska lausn (hægri krukka eftir að fenólftaleín-litavísi hefur verið bætt við). (heimild: breyting á verki eftir Sahar Atwa)",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68829",
+   "segmentId": "m68829:para:fs-idp171667088",
+   "found": true,
+   "current": "Hinn öflugi afoxunarmáttur heits magnesíns er gagnlegur við framleiðslu sumra málma úr oxíðum þeirra. Sækni magnesíns í súrefni er svo mikil að brennandi magnesín hvarfast við koltvíoxíð og myndar frumefnið kolefni:",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68829",
+   "segmentId": "m68829:para:fs-idp110638672",
+   "found": true,
+   "current": "Af þessari ástæðu mun CO[[sub:2]]-slökkvitæki ekki slökkva magnesíneld. Auk þess gerir hið skærhvíta ljós sem brennandi magnesín gefur frá sér það gagnlegt í neyðarblysum og flugeldum.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68829",
+   "segmentId": "m68829:para:fs-idp110417152",
+   "found": true,
+   "current": "Þrátt fyrir að oxast auðveldlega gerir yfirborðshömlun áls það mjög gagnlegt sem sterkt og létt byggingarefni. Vegna myndunar amalgams er kvikasilfur tærandi fyrir burðarvirki úr áli. Þetta [[link:myndband|http://openstax.org/l/16aluminumhg]] sýnir hvernig hægt er að eyðileggja burðarþol álbita með því að bæta við litlu magni af hreinu kvikasilfri.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68829",
+   "segmentId": "m68829:caption:CNX_Chem_18_01_AlkMetStor-caption",
+   "found": true,
+   "current": "Til að koma í veg fyrir snertingu við loft og vatn er kalíum til notkunar á rannsóknarstofu selt sem stangir eða perlur geymdar undir steinolíu eða í lokuðum ílátum. (heimild: http://images-of-elements.com/potassium.php)",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68829",
+   "segmentId": "m68829:para:fs-idm20198000",
+   "found": true,
+   "current": "Flokkur 13 inniheldur hálfmálminn bór og málmana ál, gallín, indín og þallín. Léttasta frumefnið, bór, er hálfleiðari og tvíundarefnasambönd þess hafa tilhneigingu til að vera samgild en ekki jónísk. Hin frumefnin í flokknum eru málmar, en oxíð þeirra og hýdroxíð breyta um eðli. Oxíð og hýdroxíð áls og gallíns sýna bæði súra og basíska eiginleika. Efni, eins og þessi tvö, sem hvarfast bæði við sýrur og basa er tvíeðla. Þessi eiginleiki sýnir blöndu af málmleysingja- og málmeiginleikum þessara tveggja frumefna. Oxíð og hýdroxíð indíns og þallíns sýna aðeins basíska eiginleika, í samræmi við augljóst málmeðli þessara tveggja frumefna. Bræðslumark gallíns er óvenju lágt (um 30 °C) og það bráðnar í hendi þér.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68829",
+   "segmentId": "m68829:para:fs-idp79289248",
+   "found": true,
+   "current": "Frumefni í flokki 13 hafa gildisrafeindaskipanina [[i:ns]][[sup:2]][[i:np]][[sup:1]]. Ál notar venjulega allar gildisrafeindir sínar þegar það hvarfast og myndar efnasambönd þar sem það hefur oxunartöluna 3+. Þótt mörg þessara efnasambanda séu samgild eru önnur, eins og AlF[[sub:3]] og Al[[sub:2]](SO[[sub:4]])[[sub:3]], jónísk. Vatnslausnir álsalta innihalda katjónina [[MATH:3]] sem er skammstöfuð sem Al[[sup:3+]]([[i:aq]]). Gallín, indín og þallín mynda einnig jónísk efnasambönd sem innihalda M[[sup:3+]] jónir. Þessi þrjú frumefni sýna ekki aðeins vænta oxunartölu 3+ frá þremur gildisrafeindum heldur einnig oxunartölu (í þessu tilfelli 1+) sem er tveimur lægri en væntanleg tala. Þetta fyrirbæri, tregra rafeindaparaáhrifin, vísar til myndunar stöðugrar jónar með oxunartölu sem er tveimur lægri en búist er við fyrir flokkinn. Rafeindaparið er gildis-[[i:s]] svigrúm þessara frumefna. Almennt séð eru tregra rafeindaparaáhrifin mikilvæg fyrir neðri [[i:p]]-blokkar frumefnin. Í vatnslausn er Tl[[sup:+]]([[i:aq]]) jónin stöðugri en Tl[[sup:3+]]([[i:aq]]). Almennt hvarfast þessir málmar við loft og vatn og mynda 3+ jónir; þallín hvarfast hins vegar og myndar þallín(I) afleiður. Málmar í flokki 13 hvarfast allir beint við málmleysingja eins og brennistein, fosfór og halógena og mynda tvíundarefnasambönd.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68829",
+   "segmentId": "m68829:alt:fs-idp101665920-alt",
+   "found": true,
+   "current": "Lotukerfi frumefnanna er sýnt. Dálkarnir 18 eru merktir „Flokkur“ og raðirnar 7 eru merktar „Lota“. Fyrir neðan töfluna til hægri er kassi merktur „Litakóði“ með mismunandi litum fyrir aðalflokkamálma, hliðarmálma og innri hliðarmálma, geislavirk frumefni, málmunga og málmleysingja, auk fastra efna, vökva og lofttegunda. Hverju frumefni verður lýst í þessari röð: sætistala; nafn; tákn; hvort það er aðalflokkamálmur, hliðarmálmur og innri hliðarmálmur, geislavirkt frumefni, málmungur eða málmleysingi; hvort það er fast efni, vökvi eða lofttegund; og atómmassi. Efst til vinstri í töflunni, eða í lotu 1, flokki 1, er kassi sem inniheldur „1; vetni; H; málmleysingi; lofttegund; og 1,008“. Það er aðeins einn annar frumefnakassi í lotu 1, flokki 18, sem inniheldur „2; helíum; He; málmleysingi; lofttegund; og 4,003“. Lota 2, flokkur 1 inniheldur „3; litíum; Li; aðalflokkamálmur; fast efni; og 6,94“. Flokkur 2 inniheldur „4; beryllíum; Be; aðalflokkamálmur; fast efni; og 9,012“. Flokkum 3 til 12 er sleppt og flokkur 13 inniheldur „5; bór; B; málmungur; fast efni; 10,81“. Flokkur 14 inniheldur „6; kolefni; C; málmleysingi; fast efni; og 12,01“. Flokkur 15 inniheldur „7; köfnunarefni; N; málmleysingi; lofttegund; og 14,01“. Flokkur 16 inniheldur „8; súrefni; O; málmleysingi; lofttegund; og 16,00“. Flokkur 17 inniheldur „9; flúor; F; málmleysingi; lofttegund; og 19,00“. Flokkur 18 inniheldur „10; neon; Ne; málmleysingi; lofttegund; og 20,18“. Lota 3, flokkur 1 inniheldur „11; natríum; Na; aðalflokkamálmur; fast efni; og 22,99“. Flokkur 2 inniheldur „12; magnesíum; Mg; aðalflokkamálmur; fast efni; og 24,31“. Flokkum 3 til 12 er aftur sleppt í lotu 3 og flokkur 13 inniheldur „13; ál; Al; aðalflokkamálmur; fast efni; og 26,98“. Flokkur 14 inniheldur „14; kísill; Si; málmungur; fast efni; og 28,09“. Flokkur 15 inniheldur „15; fosfór; P; málmleysingi; fast efni; og 30,97“. Flokkur 16 inniheldur „16; brennisteinn; S; málmleysingi; fast efni; og 32,06“. Flokkur 17 inniheldur „17; klór; Cl; málmleysingi; lofttegund; og 35,45“. Flokkur 18 inniheldur „18; argon; Ar; málmleysingi; lofttegund; og 39,95“. Lota 4, flokkur 1 inniheldur „19; kalíum; K; aðalflokkamálmur; fast efni; og 39,10“. Flokkur 2 inniheldur „20; kalsíum; Ca; aðalflokkamálmur; fast efni; og 40,08“. Flokkur 3 inniheldur „21; skandíum; Sc; hliðarmálmur og innri hliðarmálmur; fast efni; og 44,96“. Flokkur 4 inniheldur „22; títan; Ti; hliðarmálmur og innri hliðarmálmur; fast efni; og 47,87“. Flokkur 5 inniheldur „23; vanadíum; V; hliðarmálmur og innri hliðarmálmur; fast efni; og 50,94“. Flokkur 6 inniheldur „24; króm; Cr; hliðarmálmur og innri hliðarmálmur; fast efni; og 52,00“. Flokkur 7 inniheldur „25; mangan; Mn; hliðarmálmur og innri hliðarmálmur; fast efni; og 54,94“. Flokkur 8 inniheldur „26; járn; Fe; hliðarmálmur og innri hliðarmálmur; fast efni; og 55,85“. Flokkur 9 inniheldur „27; kóbalt; Co; hliðarmálmur og innri hliðarmálmur; fast efni; og 58,93“. Flokkur 10 inniheldur „28; nikkel; Ni; hliðarmálmur og innri hliðarmálmur; fast efni; og 58,69“. Flokkur 11 inniheldur „29; kopar; Cu; hliðarmálmur og innri hliðarmálmur; fast efni; og 63,55“. Flokkur 12 inniheldur „30; sink; Zn; hliðarmálmur og innri hliðarmálmur; fast efni; og 65,38“. Flokkur 13 inniheldur „31; gallíum; Ga; aðalflokkamálmur; fast efni; og 69,72“. Flokkur 14 inniheldur „32; german; Ge; málmungur; fast efni; og 72,63“. Flokkur 15 inniheldur „33; arsen; As; málmungur; fast efni; og 74,92“. Flokkur 16 inniheldur „34; selen; Se; málmleysingi; fast efni; og 78,97“. Flokkur 17 inniheldur „35; bróm; Br; málmleysingi; vökvi; og 79,90“. Flokkur 18 inniheldur „36; krypton; Kr; málmleysingi; lofttegund; og 83,80“. Lota 5, flokkur 1 inniheldur „37; rúbidíum; Rb; aðalflokkamálmur; fast efni; og 85,47“. Flokkur 2 inniheldur „38; strontíum; Sr; aðalflokkamálmur; fast efni; og 87,62“. Flokkur 3 inniheldur „39; yttríum; Y; hliðarmálmur og innri hliðarmálmur; fast efni; og 88,91“. Flokkur 4 inniheldur „40; sirkon; Zr; hliðarmálmur og innri hliðarmálmur; fast efni; og 91,22“. Flokkur 5 inniheldur „41; níóbíum; Nb; hliðarmálmur og innri hliðarmálmur; fast efni; og 92,91“. Flokkur 6 inniheldur „42; mólýbden; Mo; hliðarmálmur og innri hliðarmálmur; fast efni; og 95,95“. Flokkur 7 inniheldur „43; teknetíum; Tc; geislavirkt frumefni; fast efni; og 97“. Flokkur 8 inniheldur „44; rúþen; Ru; hliðarmálmur og innri hliðarmálmur; fast efni; og 101,1“. Flokkur 9 inniheldur „45; ródíum; Rh; hliðarmálmur og innri hliðarmálmur; fast efni; og 102,9“. Flokkur 10 inniheldur „46; palladíum; Pd; hliðarmálmur og innri hliðarmálmur; fast efni; og 106,4“. Flokkur 11 inniheldur „47; silfur; Ag; hliðarmálmur og innri hliðarmálmur; fast efni; og 107,9“. Flokkur 12 inniheldur „48; kadmíum; Cd; hliðarmálmur og innri hliðarmálmur; fast efni; og 112,4“. Flokkur 13 inniheldur „49; indíum; In; aðalflokkamálmur; fast efni; og 114,8“. Flokkur 14 inniheldur „50; tin; Sn; aðalflokkamálmur; fast efni; og 118,7“. Flokkur 15 inniheldur „51; antímon; Sb; málmungur; fast efni; og 121,8“. Flokkur 16 inniheldur „52; tellúr; Te; málmungur; fast efni; og 127,6“. Flokkur 17 inniheldur „53; joð; I; málmleysingi; fast efni; og 126,9“. Flokkur 18 inniheldur „54; xenon; Xe; málmleysingi; lofttegund; og 131,3“.“ Loturöð 6, flokkur 1 inniheldur „55; sesín; Cs; aðalflokkamálmur; fast efni; og 132,9.“ Flokkur 2 inniheldur „56; barín; Ba; aðalflokkamálmur; fast efni; og 137,3.“ Flokkur 3 brýtur mynstrið. Í reitnum er stór ör sem vísar á röð frumefna fyrir neðan töfluna með sætistölur frá 57–71. Í röð eftir sætistölu inniheldur fyrsti reiturinn í þessari röð „57; lantan; La; aðalflokkamálmur; fast efni; og 138,9.“ Til hægri við hann er næsti reitur „58; serín; Ce; aðalflokkamálmur; fast efni; og 140,1.“ Næst er „59; praseódým; Pr; aðalflokkamálmur; fast efni; og 140,9.“ Næst er „60; neódým; Nd; aðalflokkamálmur; fast efni; og 144,2.“ Næst er „61; prómetín; Pm; geislavirkt frumefni; fast efni; og 145.“ Næst er „62; samarín; Sm; aðalflokkamálmur; fast efni; og 150,4.“ Næst er „63; evrópín; Eu; aðalflokkamálmur; fast efni; og 152,0.“ Næst er „64; gadólín; Gd; aðalflokkamálmur; fast efni; og 157,3.“ Næst er „65; terbín; Tb; aðalflokkamálmur; fast efni; og 158,9.“ Næst er „66; dysprósín; Dy; aðalflokkamálmur; fast efni; og 162,5.“ Næst er „67; hólmín; Ho; aðalflokkamálmur; fast efni; og 164,9.“ Næst er „68; erbín; Er; aðalflokkamálmur; fast efni; og 167,3.“ Næst er „69; túlín; Tm; aðalflokkamálmur; fast efni; og 168,9.“ Næst er „70; ytterbín; Yb; aðalflokkamálmur; fast efni; og 173,1.“ Síðasti reiturinn í þessari sérstöku röð er „71; lútetín; Lu; aðalflokkamálmur; fast efni; og 175,0.“ Áfram í loturöð 6, flokkur 4 inniheldur „72; hafnfn; Hf; hliðarmálmur og innri hliðarmálmur; fast efni; og 178,5.“ Flokkur 5 inniheldur „73; tantal; Ta; hliðarmálmur og innri hliðarmálmur; fast efni; og 180,9.“ Flokkur 6 inniheldur „74; volfram; W; hliðarmálmur og innri hliðarmálmur; fast efni; og 183,8.“ Flokkur 7 inniheldur „75; renín; Re; hliðarmálmur og innri hliðarmálmur; fast efni; og 186,2.“ Flokkur 8 inniheldur „76; osmín; Os; hliðarmálmur og innri hliðarmálmur; fast efni; og 190,2.“ Flokkur 9 inniheldur „77; iridín; Ir; hliðarmálmur og innri hliðarmálmur; fast efni; og 192,2.“ Flokkur 10 inniheldur „78; platína; Pt; hliðarmálmur og innri hliðarmálmur; fast efni; og 195,1.“ Flokkur 11 inniheldur „79; gull; Au; hliðarmálmur og innri hliðarmálmur; fast efni; og 197,0.“ Flokkur 12 inniheldur „80; kvikasilfur; Hg; hliðarmálmur og innri hliðarmálmur; vökvi; og 200,6.“ Flokkur 13 inniheldur „81; tallín; Tl; aðalflokkamálmur; fast efni; og 204,4.“ Flokkur 14 inniheldur „82; blý; Pb; aðalflokkamálmur; fast efni; og 207,2.“ Flokkur 15 inniheldur „83; bismút; Bi; aðalflokkamálmur; fast efni; og 209,0.“ Flokkur 16 inniheldur „84; pólon; Po; geislavirkt frumefni; fast efni; og 209.“ Flokkur 17 inniheldur „85; astat; At; geislavirkt frumefni; fast efni; og 210.“ Flokkur 18 inniheldur „86; radon; Rn; geislavirkt frumefni; gas; og 222.“ Loturöð 7, flokkur 1 inniheldur „87; fransín; Fr; geislavirkt frumefni; fast efni; og 223.“ Flokkur 2 inniheldur „88; radín; Ra; geislavirkt frumefni; fast efni; og 226.“ Flokkur 3 brýtur mynstrið á svipaðan hátt og gerist í loturöð 6. Stór ör vísar frá reitnum í loturöð 7, flokki 3 yfir í sérstaka röð sem inniheldur frumefni með sætistölur frá 89–103, rétt fyrir neðan röðina sem inniheldur sætistölur 57–71. Í röð eftir sætistölu inniheldur fyrsti reiturinn í þessari röð „89; aktín; Ac; geislavirkt frumefni; fast efni; og 227.“ Til hægri við hann er næsti reitur „90; þórín; Th; geislavirkt frumefni; fast efni; og 232,0.“ Næst er „91; prótaktín; Pa; geislavirkt frumefni; fast efni; og 231,0.“ Næst er „92; úran; U; geislavirkt frumefni; fast efni; og 238,0.“ Næst er „93; neptún; Np; geislavirkt frumefni; fast efni; og Np.“ Næst er „94; plúton; Pu; geislavirkt frumefni; fast efni; og 244.“ Næst er „95; amerísín; Am; geislavirkt frumefni; fast efni; og 243.“ Næst er „96; kúríum; Cm; geislavirkt frumefni; fast efni; og 247.“ Næst er „97; berkelín; Bk; geislavirkt frumefni; fast efni; og 247.“ Næst er „98; kalifornín; Cf; geislavirkt frumefni; fast efni; og 251.“ Næst er „99; einsteinín; Es; geislavirkt frumefni; fast efni; og 252.“ Næst er „100; fermín; Fm; geislavirkt frumefni; fast efni; og 257.“ Næst er „101; mendelevín; Md; geislavirkt frumefni; fast efni; og 258.“ Næst er „102; nóbelín; No; geislavirkt frumefni; fast efni; og 259.“ Síðasti reiturinn í þessari sérstöku röð er „103; lawrensín; Lr; geislavirkt frumefni; fast efni; og 262.“ Áfram í loturöð 7, flokkur 4 inniheldur „104; rutherfordín; Rf; hliðarmálmur og innri hliðarmálmur; fast efni; og 267.“ Flokkur 5 inniheldur „105; dubnín; Db; hliðarmálmur og innri hliðarmálmur; fast efni; og 270.“ Flokkur 6 inniheldur „106; seaborgín; Sg; hliðarmálmur og innri hliðarmálmur; fast efni; og 271.“ Flokkur 7 inniheldur „107; bohrín; Bh; hliðarmálmur og innri hliðarmálmur; fast efni; og 270.“ Flokkur 8 inniheldur „108; hassín; Hs; hliðarmálmur og innri hliðarmálmur; fast efni; og 277.“ Flokkur 9 inniheldur „109; meitnerín; Mt; geislavirkt frumefni; fast efni; og 276.“ Flokkur 10 inniheldur „110; darmstadtín; Ds; geislavirkt frumefni; fast efni; og 281.“ Flokkur 11 inniheldur „111; röntgenín; Rg; geislavirkt frumefni; fast efni; og 282.“ Flokkur 12 inniheldur „112; kópernikín; Cn; geislavirkt frumefni; vökvi; og 285.“ Flokkur 13 inniheldur „113; ununtrín; Uut; geislavirkt frumefni; fast efni; og 285.“ Flokkur 14 inniheldur „114; fleróvín; F l; geislavirkt frumefni; fast efni; og 289.“ Flokkur 15 inniheldur „115; ununpentín; U u p; geislavirkt frumefni; fast efni; og 288.“ Flokkur 16 inniheldur „116; livermorín; L v; geislavirkt frumefni; fast efni; og 293.“ Flokkur 17 inniheldur „117; ununseptín; U u s; geislavirkt; fast efni; og 294.“ Flokkur 18 inniheldur „118; ununoktín; U u o; geislavirkt frumefni; fast efni; og 294.“",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68829",
+   "segmentId": "m68829:para:fs-idp107097008",
+   "found": true,
+   "current": "Frumefnin í flokki 12 eru hliðarmálmar; hins vegar er síðasta rafeindin sem bætist við ekki [[i:d]]-rafeind, heldur [[i:s]]-rafeind. Þar sem síðasta rafeindin sem bætist við er [[i:s]]-rafeind, teljast þessi frumefni til aðalflokkamálma, eða eftir-hliðarmálma. Frumefnin í flokki 12 hegða sér meira eins og jarðalkalímálmar en hliðarmálmar. Flokkur 12 inniheldur frumefnin fjögur sink, kadmín, kvikasilfur og kópernikín. Hvert þessara frumefna hefur tvær rafeindir í ysta hveli sínu ([[i:ns]][[sup:2]]). Þegar atóm þessara málma mynda katjónir með hleðsluna 2+, þar sem ytri rafeindirnar tvær tapast, hafa þær rafeindaskipan sem líkist eðallofttegund. Kvikasilfur er stundum undantekning því það sýnir einnig oxunartöluna 1+ í efnasamböndum sem innihalda tvíatóma [[MATH:1]] jón. Bæði kadmín og kvikasilfur eru eitruð, bæði í frumefnisformi og í efnasamböndum.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68829",
+   "segmentId": "m68829:para:fs-idm12601472",
+   "found": true,
+   "current": "Sink er hvarfgjarnast í flokki 12 og kvikasilfur er síst hvarfgjarnt. (Þetta er öfugt við hvarfgirniþróun málma í flokkum 1 og 2, þar sem hvarfgirni eykst niður eftir flokki. Aukning hvarfgirni með hækkandi sætistölu á aðeins við um málma í flokkum 1 og 2.) Minnkun hvarfgirni stafar af myndun jóna með rafeindaskipan sem líkist eðallofttegund og öðrum þáttum sem eru utan gildissviðs þessarar umfjöllunar. Efnafræðileg hegðun sinks og kadmíns er nokkuð svipuð en ólík hegðun kvikasilfurs.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68829",
+   "segmentId": "m68829:para:fs-idp48530944",
+   "found": true,
+   "current": "Málmarnir í flokki 14 eru tin, blý og fleróvín. Kolefni er dæmigerður málmleysingi. Hin frumefnin í flokknum, kísill og german, eru dæmi um hálfmálma eða málmunga. Tin og blý mynda stöðugar tvígildar katjónir, Sn[[sup:2+]] og Pb[[sup:2+]], með oxunartölur tveimur lægri en oxunartala flokksins sem er 4+. Stöðugleiki þessarar oxunartölu er afleiðing tregra rafeindaparaáhrifanna. Tin og blý mynda einnig samgild efnasambönd með formlega 4+ oxunartölu. Til dæmis eru SnCl[[sub:4]] og PbCl[[sub:4]] samgildir vökvar með lágt suðumark.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68830",
+   "segmentId": "m68830:para:fs-idp233041184",
+   "found": true,
+   "current": "Þessir málmar koma aðallega fyrir í steindum, þar sem litíum finnst í silíkat- eða fosfatsteindum og natríum og kalíum finnast í saltleifum frá uppgufun fornra hafa og í silíkötum. Jarðalkalímálmarnir koma fyrir sem silíköt og, að undanskildu beryllíum, sem karbónöt og súlföt. Beryllíum kemur fyrir sem steindin beryll, Be[[sub:3]]Al[[sub:2]]Si[[sub:6]]O[[sub:18]], sem með ákveðnum óhreinindum getur verið annaðhvort gimsteinninn smaragður eða akvamarín. Magnesíum er í sjó og, ásamt þyngri jarðalkalímálmunum, kemur fyrir sem silíköt, karbónöt og súlföt. Ál kemur fyrir í miklu magni í mörgum tegundum leirs og í báxíti, óhreinu áloxíðhýdroxíði. Helsta tinmálmgrýtið er oxíðið kassíterít, SnO[[sub:2]], og helstu blý- og þallíummálmgrýtin eru súlfíðin eða afurðir veðrunar súlfíðanna. Hinir aðalflokkamálmarnir koma fyrir sem óhreinindi í sink- eða álmálmgrýti.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68830",
+   "segmentId": "m68830:para:fs-idp141293808",
+   "found": true,
+   "current": "Magnesíum er hinn málmurinn sem er einangraður í miklu magni með rafgreiningu. Sjór, sem inniheldur um það bil 0,5% magnesíumklóríð, er aðaluppspretta magnesíums. Með því að bæta kalsíumhýdroxíði við sjó fellur magnesíumhýdroxíð út. Viðbót saltsýru við magnesíumhýdroxíð, og síðan uppgufun á vatnslausninni sem myndast, skilur eftir hreint magnesíumklóríð. Rafgreining á bráðnu magnesíumklóríði myndar fljótandi magnesíum og klórgas:",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68830",
+   "segmentId": "m68830:para:fs-idp157686224",
+   "found": true,
+   "current": "Eftir að óhreinindin hafa verið fjarlægð með síun leiðir viðbót sýru við alúmínatið til endurútfellingar á álhýdroxíði:",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": -1,
+   "moduleId": "m68865",
+   "segmentId": "m68865:entry:auto-139",
+   "found": true,
+   "current": "beryllín",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": -1,
+   "moduleId": "m68865",
+   "segmentId": "m68865:table-summary:fs-idp78188768-summary",
+   "found": true,
+   "current": "Þetta er tafla með fjórum dálkum. Dálkarnir eru merktir „Efni“, „Delta h neðanskrift 1 ofanskrift gráðutákn ( k J mol ofanskrift mínusmerki )“, „Delta g neðanskrift 1 ofanskrift gráðutákn ( k J mol ofanskrift mínusmerki )“, „s neðanskrift 298 ofanskrift gráðutákn ( J K ofanskrift mínus eitt mol ofanskrift mínus eitt)“. Í töflunni eru efni skráð og undir hverju efni eru mismunandi efnaformúlur. Fyrst er ál. Undir áli er fyrsta formúlan A l fast efni með gildin 0, 0 og 28,3 sem spanna dálkana þrjá. Næst er A l gas með gildin 324,4, 285,7 og 164,54. Næst er A l neðanskrift 2 O neðanskrift 3 fast efni með gildin –1676, –1582 og 50,92. Næst er A l F neðanskrift 3 fast efni með gildin –1510,4, –1425 og 66,5. Næst er A l C l neðanskrift 3 fast efni með gildin –704,2, –628,8 og 110,67. Næst er A l C l neðanskrift 3 punktur 6 H neðanskrift 2 O fast efni með gildin –2691,57, –2269,40 og 376,56. Næst er A l neðanskrift 2 S neðanskrift 3 fast efni með gildin –724,0, –492,4 og 116,9. Næst er A l neðanskrift 2 ( S O neðanskrift 4 ) neðanskrift 3 fast efni með gildin –3445,06, –3506,61 og 239,32. Næsta efni er antímon. Fyrsta efnaformúlan undir antímon er S b fast efni með gildin 0, 0, 45,69. Næst er S b gas með gildin 262,34, 222,17 og 180,16. Næst er S b neðanskrift 4 O neðanskrift 6 fast efni með gildin –1440,55, –1268,17 og 220,92. Næst er S b C l neðanskrift 3 gas með gildin –313,8, –301,2 og 337,80. Næst er S b C l neðanskrift 5 gas með gildin –394,34, –334,29 og 401,94. Næst er S b neðanskrift 2 S neðanskrift 3 fast efni með gildin –174,89, –173,64 og 182,00. Næst er S b C l neðanskrift 3 fast efni með gildin –382,17, –323,72 og 184,10. Næst er S b O C l fast efni með gildin –374,0, ekkert skráð og ekkert skráð. Næsta efni er arsen. Fyrsta efnaformúlan undir arsen er A s fast efni með gildin 0, 0, 35,1. Næst er A s gas með gildin 302,5, 261,0 og 174,21. Næst er A s neðanskrift 4 gas með gildin 143,9, 92,4 og 314. Næst er A s neðanskrift 4 O neðanskrift 6 fast efni með gildin –1313,94, –1152,52 og 214,22. Næst er A s neðanskrift 2 O neðanskrift 5 fast efni með gildin –924,87, –782,41 og 105,44. Næst er A s C l neðanskrift 3 gas með gildin –261,50, –248,95 og 327,06. Næst er A s neðanskrift 2 S neðanskrift 3 fast efni með gildin –169,03, –168,62 og 163,59. Næst er A s H neðanskrift 3 gas með gildin 66,44, 68,93 og 222,78. Næst er H neðanskrift 3 A s O neðanskrift 4 fast efni með gildin –906,3, ekkert skráð og ekkert skráð. Næsta efni er baríum. Fyrsta efnaformúlan undir baríum er B a fast efni með gildin 0, 0 og 62,5. Næst er B a gas með gildin 180, 146, 170,24. Næst er B a O fast efni með gildin –548,0, –520,3 og 72,1. Næst er B a C l neðanskrift 2 fast efni með gildin –855,0, –806,7 og 132,2. Næst er B a S O neðanskrift 4 fast efni með gildin –1473,2, –1362,3 og 132,2. Næsta efni er beryllíum. Fyrsta efnaformúlan sem skráð er undir beryllíum er B e fast efni með gildin 0, 0 og 9,50. Næst er B e gas með gildin 324,3, 286,6 og 136,27. Næst er B e O fast efni með gildin –609,4, –580,1 og 13,8. Næsta efni er bismút. Fyrsta efnaformúlan sem skráð er undir bismút er B I fast efni með gildin 0, 0 og 56,74. Næst er B I gas með gildin 207,1, 168,2 og 187,00. Næst er B I neðanskrift 2 O neðanskrift 3 fast efni með gildin –573,88, –493,7 og 151,5. Næst er B I C l neðanskrift 3 fast efni með gildin –379,07, –315,06 og 176,98. Næst er B I neðanskrift 2 S neðanskrift 3 fast efni með gildin –143,1, –140,6 og 200,4. Næsta efni er bór. Fyrsta efnaformúlan sem skráð er undir bór er B fast efni með gildin 0, 0 og 5,86. Næst er B gas með gildin 565,0, 521,0 og 153,4. Næst er B neðanskrift 2 O neðanskrift 3 fast efni með gildin –1273,5, –1194,3 og 53,97. Næst er B neðanskrift 2 H neðanskrift 6 gas með gildin 36,4, 87,6 og 232,1. Næst er H neðanskrift 3 B O neðanskrift 3 fast efni með gildin –1094,33, –968,92 og 88,83. Næst er B F neðanskrift 3 gas með gildin –1136,0, –1119,4 og 254,4. Næst er B C l neðanskrift 3 gas með gildin –403,8, –388,7 og 290,1. Næst er B neðanskrift 3 N neðanskrift 3 H neðanskrift 6 vökvi með gildin –540,99, –392,79 og 199,58. Næst er H B O neðanskrift 2 fast efni með gildin –794,25, –723,41 og 37,66. Næsta efni er bróm. Fyrsta efnaformúlan undir bróm er B r neðanskrift 2 vökvi með gildin 0, 0 og 152,23. Næst er B r með neðanskrift 2 gas með gildin 30,91, 3,142 og 245,5. Næst er B r gas með gildin 111,88, 82,429 og 175,0. Næst er B r F með neðanskrift 3 gas með gildin –255,60, –229,45 og 292,42. Næst er H B r gas með gildin –36,3, –53,43 og 198,7. Næsta efni er kadmíum. Fyrsta efnaformúlan undir kadmíum er C d fast efni með gildin 0, 0 og 51,76. Næst er C d gas með gildin 112,01, 77,41 og 167,75. Næst er C d O fast efni með gildin –258,2, –228,4 og 54,8. Næst er C d C l með neðanskrift 2 fast efni með gildin –391,5, –343,9 og 115,3. Næst er C d S O með neðanskrift 4 fast efni með gildin –933,3, –822,7 og 123,0. Næst er C d S fast efni með gildin –161,9, –156,5 og 64,9. Næsta efni er kalsíum. Fyrsta efnaformúlan undir kalsíum er C a fast efni með gildin 0, 0 og 41,6. Næst er C a gas með gildin 178,2, 144,3 og 154,88. Næst er C a O fast efni með gildin –634,9, –603,3 og 38,1. Næst er C a (O H) með neðanskrift 2 fast efni með gildin –985,2, –897,5 og 83,4. Næst er C a S O með neðanskrift 4 fast efni með gildin –1434,5, –1322,0 og 106,5. Næst er C a S O með neðanskrift 4 bullet 2 H með neðanskrift 2 O fast efni með gildin –2022,63, –1797,45 og 194,14. Næst er C a C O með neðanskrift 3 fast efni (kalsít) með gildin –1220,0, –1081,4 og 110,0. Næst er C a S O með neðanskrift 3 bullet H með neðanskrift 2 O fast efni með gildin –1752,68, –1555,19 og 184,10. Næsta efni er kolefni. Fyrsta efnaformúlan undir kolefni er C fast efni (grafít) með gildin 0, 0 og 5,740. Næst er C fast efni (demantur) með gildin 1,89, 2,90 og 2,38. Næst er C gas með gildin 716,681, 671,2 og 158,1. Næst er C O gas með gildin –110,52, –137,15 og 197,7. Næst er C O með neðanskrift 2 gas með gildin –393,51, –394,36 og 213,8. Næst er C H með neðanskrift 4 gas með gildin –74,6, –50,5 og 186,3. Næst er C H með neðanskrift 3 O H vökvi með gildin –239,2, –166,6 og 126,8. Næst er C H með neðanskrift 3 O H gas með gildin –201,0, –162,3 og 239,9. Næst er C C l með neðanskrift 4 vökvi með gildin –128,2, –62,5 og 214,4. Næst er C C l með neðanskrift 4 gas með gildin –95,7, –58,2 og 309,7. Næst er C H C l með neðanskrift 3 vökvi með gildin –134,1, –73,7 og 201,7. Næst er C H C l með neðanskrift 3 gas með gildin –103,14, –70,34 og 295,71. Næst er C S með neðanskrift 2 vökvi með gildin 89,70, 65,27 og 151,34. Næst er C S með neðanskrift 2 gas með gildin 116,9, 66,8 og 238,0. Næst er C með neðanskrift 2 H með neðanskrift 2 gas með gildin 227,4, 209,2 og 200,9. Næst er C með neðanskrift 2 H með neðanskrift 4 gas með gildin 52,4, 68,4 og 219,3. Næst er C með neðanskrift 2 H með neðanskrift 6 gas með gildin –84,0, –32,0 og 229,2. Næst er C H með neðanskrift 3 C O með neðanskrift 2 H vökvi með gildin –484,3, –389,9 og 159,8. Næst er C H með neðanskrift 3 C O með neðanskrift 2 H gas með gildin –434,84, –376,69 og 282,50. Næst er C með neðanskrift 2 H með neðanskrift 5 O H vökvi með gildin –277,6, –174,8 og 160,7. Næst er C með neðanskrift 2 H með neðanskrift 5 O H gas með gildin –234,8, –167,9 og 281,6. Næst er C með neðanskrift 3 H með neðanskrift 8 gas með gildin –103,8, –23,4 og 270,3. Næst er C með neðanskrift 6 H með neðanskrift 6 gas með gildin 82,927, 129,66 og 269,2. Næst er C með neðanskrift 6 H með neðanskrift 6 vökvi með gildin 49,1, 124,50 og 173,4. Næst er C H með neðanskrift 2 C l með neðanskrift 2 vökvi með gildin –124,2, –63,2 og 177,8. Næst er C H með neðanskrift 2 C l með neðanskrift 2 gas með gildin –95,4, –65,90 og 270,2. Næst er C H með neðanskrift 3 C l gas með gildin –81,9, –60,2 og 234,6. Næst er C með neðanskrift 2 H með neðanskrift 5 C l vökvi með gildin –136,52, –59,31 og 190,79. Næst er C með neðanskrift 2 H með neðanskrift 5 C l gas með gildin –112,17, –60,39 og 276,00. Næst er C með neðanskrift 2 N með neðanskrift 2 gas með gildin 308,98, 297,36 og 241,90. Næst er H C N vökvi með gildin 108,9, 125,0 og 112,8. Næst er H C N gas með gildin 135,5, 124,7 og 201,8. Næsta efni er klór. Fyrsta efnaformúlan undir klór er C l með neðanskrift 2 gas með gildin 0, 0 og 223,1. Næst er C l gas með gildin 121,3, 105,70 og 165,2. Næst er C l F gas með gildin –54,48, –55.94 og 217.78. Næst er ClF~3~-gas með gildin –158.99, –118.83 og 281.50. Næst er Cl~2~O-gas með gildin 80.3, 97.9 og 266.2. Næst er Cl~2~O~7~-vökvi með gildin 238.1, autt og autt. Næst er Cl~2~O~7~-gas með gildin 272.0, autt og autt. Næst er HCl-gas með gildin –92.307, –95.299 og 186.9. Næst er HClO~4~-vökvi með gildin –40.58, autt og autt. Næsta efni er króm. Fyrsta efnaformúlan undir króm er Cr fast efni með gildin 0, 0 og 23.77. Næst er Cr-gas með gildin 396.6, 351.8 og 174.50. Næst er Cr~2~O~3~ fast efni með gildin –1139.7, –1058.1 og 81.2. Næst er CrO~3~ fast efni með gildin –589.5, autt og autt. Næst er (NH~4~)~2~Cr~2~O~7~ fast efni með gildin –1806.7, autt og autt. Næsta efni er kóbalt. Fyrsta efnaformúlan undir kóbalt er Co fast efni með gildin 0, 0 og 30.0. Næst er CoO fast efni með gildin –237.9, –214.2 og 52.97. Næst er Co~3~O~4~ fast efni með gildin –910.02, –794.98 og 114.22. Næst er Co(NO~3~)~2~ fast efni með gildin –420.5, autt og autt. Næsta efni er kopar. Fyrsta efnaformúlan undir kopar er Cu fast efni með gildin 0, 0 og 33.15. Næst er Cu-gas með gildin 338.32, 298.58 og 166.38. Næst er CuO fast efni með gildin –157.3, –129.7 og 42.63. Næst er Cu~2~O fast efni með gildin –168.6, –146.0 og 93.14. Næst er CuS fast efni með gildin –53.1, –53.6 og 66.5. Næst er Cu~2~S fast efni með gildin –79.5, –86.2 og 120.9. Næst er CuSO~4~ fast efni með gildin –771.36, –662.2 og 109.2. Næst er Cu(NO~3~)~2~ fast efni með gildin –302.9, autt og autt. Næsta efni er flúor. Fyrsta efnaformúlan undir flúor er F~2~-gas með gildin 0, 0 og 202.8. Næst er F-gas með gildin 79.4, 62.3 og 158.8. Næst er F~2~O-gas með gildin 24.7, 41.9 og 247.43. Næst er HF-gas með gildin –273.3, –275.4 og 173.8. Næsta efni er vetni. Fyrsta efnaformúlan undir vetni er H~2~-gas með gildin 0, 0 og 130.7. Næst er H-gas með gildin 217.97, 203.26 og 114.7. Næst er H~2~O-vökvi með gildin –285.83, –237.1 og 70.0. Næst er H~2~O-gas með gildin –241.82, –228.59 og 188.8. Næst er H~2~O~2~-vökvi með gildin –187.78, –120.35 og 109.6. Næst er H~2~O~2~-gas með gildin –136.3, –105.6 og 232.7. Næst er HF-gas með gildin –273.3, –275.4 og 173.8. Næst er HCl-gas með gildin –92.307, –95.299 og 186.9. Næst er HBr-gas með gildin –36.3, –53.43 og 198.7. Næst er HI-gas með gildin 26.48, 1.70 og 206.59. Næst er H~2~S-gas með gildin –20.6, –33.4 og 205.8. Næst er H~2~Se-gas með gildin 29.7, 15.9 og 219.0. Næsta efni er joð. Fyrsta efnaformúlan undir joð er I~2~ fast efni með gildin 0, 0 og 116.14. Næst er I~2~-gas með gildin 62.438, 19.3 og 260.7. Næst er I-gas með gildin 106.84, 70.2 og 180.8. Næst er IF-gas með gildin 95.65, –118.49 og 236.06. Næst er ICl-gas með gildin 17.78, –5.44 og 247.44. Næst er IBr-gas með gildin 40.84, 3.72 og 258.66. Næst er IF~7~-gas með gildin –943.91, –818.39 og 346.44. Næst er HI-gas með gildin 26.48, 1.70 og 206.59. Næsta efni er járn. Fyrsta efnaformúlan undir járn er Fe fast efni með gildin 0, 0 og 27.3. Næst er Fe-gas með gildin 416.3, 370.7 og 180.5. Næst er Fe~2~O~3~ fast efni með gildin –824.2, –742.2 og 87.40. Næst er Fe~3~O~4~ fast efni með gildin –1118.4, –1015.4 og 146.4. Næst er Fe(CO)~5~-vökvi með gildin –774.04, –705.42 og 338.07. Næst er Fe(CO)~5~-gas með gildin –733.87, –697.26 og 445.18. Næst er FeCl~2~ fast efni með gildin –341.79, –302.30 og 117.95. Næst er FeCl~3~ fast efni með gildin –399.49, –334.00 og 142.3. Næst er FeO fast efni með gildin –272.0, –255.2 og 60.75. Næst er Fe(OH)~2~ fast efni með gildin –569,0, –486,5 og 88. Næst er Fe(OH)~3~ fast efni með gildin –823,0, –696,5 og 106,7. Næst er FeS fast efni með gildin –100,0, –100,4 og 60,29. Næst er Fe~3~C fast efni með gildin 25,10, 20,08 og 104,60. Næsta efni er blý. Fyrsta efnaformúlan undir blýi er Pb fast efni með gildin 0, 0 og 64,81. Næst er Pb gas með gildin 195,2, 162 og 175,4. Næst er PbO fast efni (gult) með gildin –217,32, –187,89 og 68,70. Næst er PbO fast efni (rautt) með gildin –218,99, –188,93 og 66,5. Næst er Pb(OH)~2~ fast efni með gildin –515,9, autt og autt. Næst er PbS fast efni með gildin –100,4, –98,7 og 91,2. Næst er Pb(NO~3~)~2~ fast efni með gildin –451,9, autt og autt. Næst er PbO~2~ fast efni með gildin –277,4, –217,3 og 68,6. Næst er PbCl~2~ fast efni með gildin –359,4, –314,1 og 136,0. Næsta efni er litíum. Fyrsta efnaformúlan undir litíum er Li fast efni með gildin 0, 0, 29,1. Næst er Li gas með gildin 159,3, 126,6 og 138,8. Næst er LiH fast efni með gildin –90,5, –68,3 og 20,0. Næst er Li(OH) fast efni með gildin –487,5, –441,5 og 42,8. Næst er LiF fast efni með gildin –616,0, –587,5 og 35,7. Næst er Li~2~CO~3~ fast efni með gildin –1216,04, –1132,19 og 90,17. Næsta efni er mangan. Fyrsta efnaformúlan undir mangan er Mn fast efni með gildin 0, 0 og 32,0. Næst er Mn gas með gildin 280,7, 238,5 og 173,7. Næst er MnO fast efni með gildin –385,2, –362,9 og 59,71. Næst er MnO~2~ fast efni með gildin –520,03, –465,1 og 53,05. Næst er Mn~2~O~3~ fast efni með gildin –958,97, –881,15 og 110,46. Næst er Mn~3~O~4~ fast efni með gildin –1378,83, –1283,23 og 155,64. Næsta efni er kvikasilfur. Fyrsta efnaformúlan undir kvikasilfri er Hg vökvi með gildin 0, 0 og 75,9. Næst er Hg gas með gildin 61,4, 31,8 og 175,0. Næst er HgO fast efni (rautt) með gildin –90,83, –58,5 og 70,29. Næst er HgO fast efni (gult) með gildin –90,46, –58,43 og 71,13. Næst er HgCl~2~ fast efni með gildin –224,3, –178,6 og 146,0. Næst er Hg~2~Cl~2~ fast efni með gildin –265,4, –210,7 og 191,6. Næst er HgS fast efni (rautt) með gildin –58,16, –50,6 og 82,4. Næst er HgS fast efni (svart) með gildin –53,56, –47,70 og 88,28. Næst er HgSO~4~ fast efni með gildin –707,51, –594,13 og 0,00. Næsta efni er köfnunarefni. Fyrsta efnaformúlan undir köfnunarefni er N~2~ gas með gildin 0, 0 og 191,6. Næst er N gas með gildin 472,704, 455,5 og 153,3. Næst er NO gas með gildin 90,25, 87,6 og 210,8. Næst er NO~2~ með gildin 33,2, 51,30 og 240,1. Næst er N~2~O gas með gildin 81,6, 103,7 og 220,0. Næst er N~2~O~3~ gas með gildin 83,72, 139,41 og 312,17. Næst er N~2~O~4~ gas með gildin 11,1, 99,8 og 304,4. Næst er N~2~O~5~ gas með gildin 11,3, 115,1 og 355,7. Næst er NH~3~ gas með gildin –45,9, –16,5 og 192,8. Næst er N~2~H~4~ vökvi með gildin 50,63, 149,43 og 121,21. Næst er H~2~H~4~ gas með gildin 95,4, 159,4 og 238,5. Næst er NH~4~NO~3~ fast efni með gildin –365,56, –183,87 og 151,08. Næst er NH~4~Cl fast efni með gildin –314,43, –202,87 og 94,6. Næst er NH~4~Br fast efni með gildin –270,8, –175,2 og 113,0. Næst er NH~4~I fast efni með gildin –201,4, –112,5 og 117,0. Næst er NH~4~NO~2~ fast efni með gildin –256,5, autt og autt. Næst er HNO~3~ vökvi með gildin –174,1, –80,7 og 155,6. Næst er HNO~3~ gas með gildin –133,9, –73,5 og 266,9. Næsta efni er súrefni. Fyrsta efnaformúlan undir súrefni er O~2~ gas með gildin 0, 0 og 205,2. Næst er O gas með gildin 249,17, 231,7 og 161,1. Næst er O~3~ gas með gildin 142,7, 163,2 og 238,9.. Næsta efni er fosfór. Fyrsta efnaformúlan undir fosfór er P með lágstaf 4 fast efni með gildin 0, 0 og 164,4. Næst er P með lágstaf 4 gas með gildin 58,91, 24,4 og 280,0. Næst er P gas með gildin 314,64, 278,25 og 163,19. Næst er P H með lágstaf 3 gas með gildin 5,4, 13,5 og 210,2. Næst er P C l með lágstaf 3 gas með gildin –287,0, –267,8 og 311,78. Næst er P C l með lágstaf 5 gas með gildin –374,9, –305,0 og 364,4. Næst er P með lágstaf 4 O með lágstaf 6 fast efni með gildin –1640,1, autt og autt. Næst er P með lágstaf 4 O með lágstaf 10 fast efni með gildin –2984,0, –2697,0 og 228,86. Næst er H P O með lágstaf 3 fast efni með gildin –948,5, autt og autt. Næst er H með lágstaf 3 P O með lágstaf 2 fast efni með gildin –604,6, autt og autt. Næst er H með lágstaf 3 P O með lágstaf 3 fast efni með gildin –964,4, autt og autt. Næst er H með lágstaf 3 P O með lágstaf 4 fast efni með gildin –1279,0, –1119,1 og 110,50. Næst er H með lágstaf 3 P O með lágstaf 4 vökvi með gildin –1266,9, –1124,3 og 110,5. Næst er H með lágstaf 4 P með lágstaf 2 O með lágstaf 7 fast efni með gildin –2241,0, autt og autt. Næst er P O C l með lágstaf 3 vökvi með gildin –597,1, –520,8 og 222,5. Næst er P O C l með lágstaf 3 gas með gildin –558,5, –512,9 og 325,5. Næsta efni er kalíum. Fyrsta efnaformúlan undir kalíum er K fast efni með gildin 0, 0 og 64,7. Næst er K gas með gildin 89,0, 60,5 og 160,3. Næst er K F fast efni með gildin –576,27, –537,75 og 66,57. Næst er K C l fast efni með gildin –436,5, –408,5 og 82,6. Næsta efni er kísill. Fyrsta efnaformúlan undir kísli er S I fast efni með gildin 0, 0 og 18,8. Næst er S I gas með gildin 450,0, 405,5 og 168,0. Næst er S I O með lágstaf 2 fast efni með gildin –910,7, –856,3 og 41,5. Næst er S I H með lágstaf 4 gas með gildin 34,3, 56,9 og 204,6. Næst er H með lágstaf 2 S I O með lágstaf 3 fast efni með gildin –1188,67, –1092,44 og 133,89. Næst er H með lágstaf 4 S I O með lágstaf 4 fast efni með gildin –1481,14, –1333,02 og 192,46. Næst er S I F með lágstaf 4 gas með gildin –1615,0, –1572,8 og 282,8. Næst er S I C l með lágstaf 4 vökvi með gildin –687,0, –619,8 og 239,7. Næst er S I C l með lágstaf 4 gas með gildin –662,75, –622,58 og 330,62. Næst er S I C (fast efni, beta-kúbískt) með gildin –73,22, –70,71 og 16,61. Næst er S I C (fast efni, alfa-sexhyrnt) með gildin –71,55, –69,04 og 16,48. Næsta efni er silfur. Fyrsta efnaformúlan undir silfri er A g fast efni með gildin 0, 0 og 42,55. Næst er A g gas með gildin 284,9, 246,0 og 172,89. Næst er A g með lágstaf 2 O fast efni með gildin –31,05, –11,20 og 121,3. Næst er A g C l fast efni með gildin –127,0, –109,8 og 96,3. Næst er A g með lágstaf 2 S fast efni með gildin –32,6, –40,7 og 144,0. Næsta efni er natríum. Fyrsta efnaformúlan undir natríum er N a fast efni með gildin 0, 0 og 51,3. Næst er N a gas með gildin 107,5, 77,0 og 153,7. Næst er N a með lágstaf 2 O fast efni með gildin –414,2, –375,5 og 75,1. Næst er N a C l fast efni með gildin –411,2, –384,1 og 72,1. Næsta efni er brennisteinn. Fyrsta efnaformúlan undir brennisteini er S með lágstaf 8 fast efni (tígullaga) með gildin 0, 0 og 256,8. Næst er S gas með gildin 278,81, 238,25 og 167,82. Næst er S O með lágstaf 2 gas með gildin –296,83, –300,1 og 248,2. Næst er S O með lágstaf 3 gas með gildin –395,72, –371,06 og 256,76. Næst er H með lágstaf 2 S gas með gildin –20,6, –33,4 og 205,8. Næst er H með lágstaf 2 S O með lágstaf 4 vökvi með gildin –813,989, –690,00 og 156,90. Næst er H með lágstaf 2 S með lágstaf 2 O með lágstaf 7 fast efni með gildin –1273,6, autt og autt. Næst er S F með lágstaf 4 gas með gildin –728,43, –684,84 og 291,12. Næst er S F með lágstaf 6 gas með gildin –1220,5, –1116,5 og 291,5. Næst er S C l með lágstaf 2 vökvi með gildin –50, autt og autt. Næst er S C l með lágstaf 2 gas með gildin –19,7, autt og autt. Næst er S með lágstaf 2 C l með lágstaf 2 vökvi með gildin –59,4, autt og autt. Næst er S með lágstaf 2 C l með lágstaf 2 gas með gildin –19,50, –29,25 og 319,45. Næst er S O C l með lágstaf 2 gas með gildin –212,55, –198,32 og 309,66. Næst er S O C l með lágstaf 2 vökvi með gildin –245,6, autt og autt. Næst er S O neðanskrift 2 C l neðanskrift 2 vökvi með gildin –394,1, autt og autt. Næst er S O neðanskrift 2 C l neðanskrift 2 gas með gildin –354,80, –310,45 og 311,83. Næsta efni er tin. Fyrsta efnaformúlan undir tin er S n fast efni með gildin 0, 0 og 51,2. Næst er S n gas með gildin 301,2, 266,2 og 168,5. Næst er S n O fast efni með gildin –285,8, –256,9 og 56,5. Næst er S n O neðanskrift 2 fast efni með gildin –577,6, –515,8 og 49,0. Næst er S n C l neðanskrift 4 vökvi með gildin –511,3, –440,1 og 258,6. Næst er S n C l neðanskrift 4 gas með gildin –471,5, –432,2 og 365,8. Næsta efni er títan. Fyrsta efnaformúlan undir títan er T I fast efni með gildin 0, 0 og 30,7. Næst er T I gas með gildin 473,0, 428,4 og 180,3. Næst er T I O neðanskrift 2 fast efni með gildin –944,0, –888,8 og 50,6. Næst er T I C l neðanskrift 4 vökvi með gildin –804,2, –737,2 og 252,4. Næst er T I C l neðanskrift 4 gas með gildin –763,2, –726,3 og 353,2. Næsta efni er volfram. Fyrsta efnaformúlan undir volfram er W fast efni með gildin 0, 0 og 32,6. Næst er W gas með gildin 849,4, 807,1 og 174,0. Næst er W O neðanskrift 3 fast efni með gildin –842,9, –764,0 og 75,9. Næsta efni er sink. Fyrsta efnaformúlan undir sink er Z n fast efni með gildin 0, 0 og 41,6. Næst er Z n gas með gildin 130,73, 95,14 og 160,98. Næst er Z n O fast efni með gildin –350,5, –320,5 og 43,7. Næst er Z n C l neðanskrift 2 fast efni með gildin –415,1, –369,43 og 111,5. Næst er Z n S fast efni með gildin –206,0, –201,3 og 57,7. Næst er Z n S O neðanskrift 4 fast efni með gildin –982,8, –871,5 og 110,5. Næst er Z n C O neðanskrift 3 fast efni með gildin –812,78, –731,57 og 82,42. Næsti flokkur er komplexar. Fyrsta efnaformúlan undir komplexum er [C o(N H neðanskrift 3) neðanskrift 4(N O neðanskrift 2) neðanskrift 2] N O neðanskrift 3, cis með gildin –898,7, autt og autt. Næst er [C o(N H neðanskrift 3) neðanskrift 4(N O neðanskrift 2) neðanskrift 2] N O neðanskrift 3, trans með gildin –896,2, autt og autt. Næst er N H neðanskrift 4[C o(N H neðanskrift 3) neðanskrift 2 (N O neðanskrift 2) neðanskrift 4] með gildin –837,6, autt og autt. Næst er [C o (N H neðanskrift 3) neðanskrift 6][C o (N H neðanskrift 3) neðanskrift 2 (N O neðanskrift 2 ) neðanskrift 4] neðanskrift 3 með gildin –2733,0, autt og autt. Næst er [C o (N H neðanskrift 3) neðanskrift 4 C l neðanskrift 2] C l, cis með gildin –874,9, autt og autt. Næst er [C o (N H neðanskrift 3) neðanskrift 4 C l neðanskrift 2] C l, trans með gildin –877,4, autt og autt. Næst er [C o (e n) neðanskrift 2 (N O neðanskrift 2) neðanskrift 2] N O neðanskrift 3, cis með gildin –689,5, autt og autt. Næst er [C o (e n) neðanskrift 2 C l neðanskrift 2] C l, cis með gildin –681,2, autt og autt. Næst er [C o (e n) neðanskrift 2 C l neðanskrift 2] C l, trans með gildin –677,4, autt og autt. Næst er [C o (e n) neðanskrift 3](C l O neðanskrift 4) neðanskrift 3 með gildin –762,7, autt og autt. Næst er [C o(e n) neðanskrift 3] B r neðanskrift 2 með gildin –595,8, autt og autt. Næst er [C o(e n) neðanskrift 3] I neðanskrift 2 með gildin –475,3, autt og autt. Næst er [C o(e n) neðanskrift 3] I neðanskrift 3 með gildin –519,2, autt og autt. Næst er [C o (N H neðanskrift 3) neðanskrift 6] ( C l O neðanskrift 4) neðanskrift 3 með gildin –1034,7, –221,1 og 615. Næst er [C o (N H neðanskrift 3) neðanskrift 5 N O neðanskrift 2](N O neðanskrift 3) neðanskrift 2 með gildin –1088,7, –412,9 og 331. Næst er [C o (N H neðanskrift 3) neðanskrift 6](N O neðanskrift 3) neðanskrift 3 með gildin –1282,0, –524,5 og 448. Næst er [C o (N H neðanskrift 3) neðanskrift 5 C l] C l neðanskrift 2 með gildin –1017,1, –582,5 og 366,1. Næst er [P t (N H neðanskrift 3) neðanskrift 4] C l neðanskrift 2 með gildin –725,5, autt og autt. Næst er [N I (N H neðanskrift 3) neðanskrift 6] C l neðanskrift 2 með gildin –994,1, autt og autt. Næst er [N I (N H neðanskrift 3) neðanskrift 6] B r neðanskrift 2 með gildin –923,8, autt og autt. Síðast er [N I (N H neðanskrift 3) neðanskrift 6] I neðanskrift 2 með gildin –808,3, autt og autt.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": -1,
+   "moduleId": "m68865",
+   "segmentId": "m68865:entry:auto-438",
+   "found": true,
+   "current": "Sesín",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": -1,
+   "moduleId": "m68865",
+   "segmentId": "m68865:entry:auto-114",
+   "found": true,
+   "current": "barín",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 1,
+   "moduleId": "m68683",
+   "segmentId": "m68683:problem:fs-idm277853776",
+   "found": true,
+   "current": "(a) Hver er massi 4,00 cm[[sup:3]] af natríni, eðlismassi = 0,97 g/cm[[sup:3]]?",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 1,
+   "moduleId": "m68683",
+   "segmentId": "m68683:problem:fs-idp63994848",
+   "found": true,
+   "current": "Osmín er eitt af eðlisþyngstu frumefnum sem þekkt eru. Hver er eðlismassi þess ef 2,72 g hefur rúmmálið 0,121 cm[[sup:3]]?",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68834",
+   "segmentId": "m68834:para:fs-idm80443440",
+   "found": true,
+   "current": "Karbónötin tvö sem notuð eru í stærstum mæli í atvinnuskyni eru natrínkarbónat og kalsínkarbónat. Í Bandaríkjunum er natrínkarbónat unnið úr steinefninu tróna, Na[[sub:3]](CO[[sub:3]])(HCO[[sub:3]])(H[[sub:2]]O)[[sub:2]]. Eftir endurkristöllun til að fjarlægja leir og önnur óhreinindi er endurkristallað tróna hitað til að framleiða Na[[sub:2]]CO[[sub:3]]:",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68834",
+   "segmentId": "m68834:para:fs-idm37877696",
+   "found": true,
+   "current": "Efnafræði kolefnis er umfangsmikil, en stærstur hluti hennar á ekki við í þessum kafla. Aðrir þættir efnafræði kolefnis koma fyrir í kaflanum um lífræna efnafræði. Í þessum kafla munum við einbeita okkur að karbónatjóninni og skyldum efnum. Málmar í flokkum 1 og 2, auk sinks, kadmíums, kvikasilfurs og blýs(II), mynda jónísk [[term:karbónöt|term-00001]] – efnasambönd sem innihalda karbónatanjónir, [[MATH:1]]. Málmar í flokki 1, magnesín, kalsín, strontín og barín mynda einnig [[term:vetniskarbónöt|term-00002]] – efnasambönd sem innihalda vetniskarbónatanjónina, [[MATH:2]], einnig þekkt sem [[term:tvíkarbónatanjónin|term-00003]].",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68834",
+   "segmentId": "m68834:para:fs-idm59038240",
+   "found": true,
+   "current": "Að undanskildu magnesínkarbónati er hægt að framleiða karbónöt málma í flokkum 1 og 2 með hvarfi koltvíoxíðs við samsvarandi oxíð eða hýdroxíð. Dæmi um slík efnahvörf eru:",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68834",
+   "segmentId": "m68834:para:fs-idp108109248",
+   "found": true,
+   "current": "Perlur og skeljar flestra lindýra eru kalsínkarbónat. Tin(II) eða ein af þrígildu eða fergildu jónunum eins og Al[[sup:3+]] eða Sn[[sup:4+]] hegða sér öðruvísi í þessu hvarfi þar sem koltvíoxíð og samsvarandi oxíð myndast í stað karbónatsins.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68834",
+   "segmentId": "m68834:para:fs-idm40761024",
+   "found": true,
+   "current": "Vetniskarbónöt jarðalkalímálma eru aðeins stöðug í lausn; uppgufun lausnarinnar framleiðir karbónatið. Dropsteinar og stalagmítar, eins og þeir sem sýndir eru á [[xref:CNX_Chem_18_06_Cave]], myndast í hellum þegar vatnsdropar sem innihalda uppleyst kalsínvetniskarbónat gufa upp og skilja eftir sig útfellingu af kalsínkarbónati.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68834",
+   "segmentId": "m68834:caption:CNX_Chem_18_06_Cave-caption",
+   "found": true,
+   "current": "(a) Dropsteinar og (b) stalagmítar eru hellamyndanir úr kalsínkarbónati. (Heimild a: breyting á verki eftir Arvind Govindaraj; heimild b: breyting á verki eftir National Park Service.)",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68834",
+   "segmentId": "m68834:para:fs-idp146223104",
+   "found": true,
+   "current": "Karbónöt hvarfast við sýrur og mynda sölt málmsins, loftkennt koltvíoxíð og vatn. Hvarf kalsínkarbónats, virka efnisins í sýrubindandi lyfinu Tums, við saltsýru (magasýru), eins og sýnt er á [[xref:CNX_Chem_18_06_CarbonCO2]], sýnir hvarfið:",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68834",
+   "segmentId": "m68834:caption:CNX_Chem_18_06_CarbonCO2-caption",
+   "found": true,
+   "current": "Hvarf kalsínkarbónats við saltsýru er sýnt. (Heimild: Mark Ott)",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68839",
+   "segmentId": "m68839:para:fs-idm131537424",
+   "found": true,
+   "current": "Hvörf alkalímálma við frumefnishalógena eru mjög útvermin og oft nokkuð kröftug. Við stýrðar aðstæður veita þau spennandi sýnikennslu fyrir verðandi efnafræðinema. Þú getur skoðað [[link:fyrstu upphitunina|http://openstax.org/l/16sodium]] á natríuminu sem fjarlægir húðina af natríumhýdroxíði, natríumperoxíði og leifum af jarðolíu til að afhjúpa hvarfgjarna yfirborðið. Hvarfið við klórgas gengur síðan mjög vel.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68839",
+   "segmentId": "m68839:para:fs-idm16247664",
+   "found": true,
+   "current": "Nokkur halíð finnast í miklu magni í náttúrunni. Hafsvæði og neðanjarðar saltpæklar innihalda mörg halíð. Til dæmis er magnesíumklóríð í sjónum uppspretta magnesíumjóna sem notaðar eru við framleiðslu á magnesíum. Stórar neðanjarðar setmyndanir af natríumklóríði, eins og saltnáman sem sýnd er í [[xref:CNX_Chem_18_11_SaltMine]], finnast víða um heim. Þessar setmyndanir þjóna sem uppspretta natríums og klórs í næstum öllum öðrum efnasamböndum sem innihalda þessi frumefni. Klór-alkalíferlið er eitt dæmi.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68857",
+   "segmentId": "m68857:para:fs-idp247341312",
+   "found": true,
+   "current": "Geislasamsætur hafa gjörbylt læknisfræði (sjá [[docref:viðauka M|m68871]]), þar sem þær eru mikið notaðar. Árlega eru framkvæmdar yfir 10 milljónir kjarnalæknisfræðilegra aðgerða og meira en 100 milljónir kjarnalæknisfræðilegra prófa í Bandaríkjunum. Fjögur dæmigerð geislavirk sporefni sem notuð eru í læknisfræði eru teknetín-99 [[MATH:1]], tallín-201 [[MATH:2]], joð-131 [[MATH:3]] og natrín-24 [[MATH:4]]. Skemmdir vefir í hjarta, lifur og lungum draga í sig ákveðin efnasambönd teknetíns-99 í forgangi. Eftir að því er sprautað inn er hægt að ákvarða staðsetningu teknetínsambandsins, og þar með skemmda vefjarins, með því að greina γ-geislana sem Tc-99 samsætan gefur frá sér. Tallín-201 ([[xref:CNX_Chem_21_05_Thallium]]) safnast fyrir í heilbrigðum hjartavef, þannig að samsæturnar tvær, Tc-99 og Tl-201, eru notaðar saman til að rannsaka hjartavef. Joð-131 safnast fyrir í skjaldkirtli, lifur og sumum hlutum heilans. Það er því hægt að nota til að fylgjast með skjaldkirtilsstækkun og meðhöndla skjaldkirtilssjúkdóma, svo sem Graves-sjúkdóm, auk lifrar- og heilaæxla. Saltlausnum sem innihalda efnasambönd af natríni-24 er sprautað í blóðrásina til að hjálpa til við að finna hindranir í blóðflæði.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68857",
+   "segmentId": "m68857:problem:fs-idp3550720",
+   "found": true,
+   "current": "Teknetín-99m hefur helmingunartíma upp á 6,01 klukkustund. Ef sjúklingur sem fær teknetín-99m í æð má yfirgefa sjúkrahúsið þegar 75% af skammtinum hefur sundrast, hvenær má sjúklingurinn þá fara?",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68857",
+   "segmentId": "m68857:caption:CNX_Chem_21_05_Thallium-caption",
+   "found": true,
+   "current": "Að gefa sjúklingi tallín-201 og framkvæma síðan álagspróf gefur heilbrigðisstarfsfólki tækifæri til að greina sjónrænt starfsemi hjartans og blóðflæði. (Heimild: breyting á verki eftir „Blue0ctane“/Wikimedia Commons)",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68857",
+   "segmentId": "m68857:para:fs-idp105479248",
+   "found": true,
+   "current": "Ameríkín-241, α-geislari með helmingunartíma 458 ár, er notað í örlitlu magni í jónandi reykskynjurum ([[xref:CNX_Chem_21_05_SmokeAlarm]]). α-geislunin frá Am-241 jónar loftið milli tveggja rafskautsplata í jónunarhólfinu. Rafhlaða veitir spennu sem veldur hreyfingu jónanna og skapar þannig lítinn rafstraum. Þegar reykur kemur inn í hólfið er hreyfing jónanna hindruð, sem dregur úr leiðni loftsins. Þetta veldur verulegri lækkun á straumnum og kemur viðvörun af stað.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68857",
+   "segmentId": "m68857:alt:fs-idp22507536-alt",
+   "found": true,
+   "current": "Sýnd er ljósmynd og skýringarmynd. Ljósmyndin sýnir reykskynjara að innan. Hringlaga plaststykki í neðri hluta skynjarans er merkt „Alarm“ (viðvörun) en málmdiskur efst til vinstri á myndinni er merktur „Ionization chamber“ (jónunarhólf). Rafhlaða er efst til hægri í skynjaranum. Skýringarmyndin sýnir stækkaða mynd af jónunarhólfinu. Inni í sívalningslaga hlífinni eru tvær láréttar, hringlaga plötur merktar „Metal plates“ (málmplötur); efri platan er merkt með plúsmerki og sú neðri með mínusmerki. Vírarnir eru sýndir tengdir við plöturnar og skauta rafhlöðu utan á hólfinu. Diskur í botni hólfsins er merktur „Americium source“ (ameríkíumgjafi) og fjórar örvar, merktar „Alpha particles“ (alfaeindir), vísa lóðrétt frá þessum diski, í gegnum gat á neikvæðu plötunni og inn í efra rými hólfsins. Tvær sameindir með plúsmerkjum, samsettar úr tveimur bláum kúlum, og tvær sameindir með plúsmerkjum, samsettar úr tveimur rauðum kúlum, eru í þessu rými, auk tveggja gulra kúla sem eru merktar með mínusmerkjum og örvum sem vísa niður á við. Ellefu hvítir punktar umkringja tvær sameindanna hægra megin á myndinni og eru merktir „smoke particles“ (reykagnir). Fyrir ofan vinstri hluta myndarinnar er setningin „No smoke, charged particles complete the circuit“ (Enginn reykur, hlaðnar agnir ljúka við rásina) en setning fyrir ofan hægri hluta myndarinnar segir „Smoke uncharges the particles, circuit is broken, alarm is triggered“ (Reykur afhleður agnirnar, rásin rofnar, viðvörun fer í gang).",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 4,
+   "moduleId": "m68710",
+   "segmentId": "m68710:problem:fs-idp26248864",
+   "found": true,
+   "current": "Í algengri tilraun á almennri efnafræðistofu er magnesínmálmur hitaður í lofti til að framleiða MgO. MgO er hvítt fast efni, en í þessum tilraunum lítur það oft út fyrir að vera grátt, vegna lítils magns af Mg[[sub:3]]N[[sub:2]], efnasambands sem myndast þegar hluti magnesínsins hvarfast við köfnunarefni. Skrifaðu stillta jöfnu fyrir hvort hvarf.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 4,
+   "moduleId": "m68710",
+   "segmentId": "m68710:para:fs-idp218627312",
+   "found": true,
+   "current": "(b) Þetta er oxunar-afoxunarhvarf. Gallín er oxað, oxunartala þess hækkar úr 0 í Ga([[i:l]]) í +3 í GaBr[[sub:3]]([[i:s]]). Afoxarinn er Ga([[i:l]]). Bróm er afoxað, oxunartala þess lækkar úr 0 í Br[[sub:2]]([[i:l]]) í −1 í GaBr[[sub:3]]([[i:s]]). Oxarinn er Br[[sub:2]]([[i:l]]).",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 5,
+   "moduleId": "m68727",
+   "segmentId": "m68727:entry:auto-71",
+   "found": true,
+   "current": "magnesín",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 10,
+   "moduleId": "m68773",
+   "segmentId": "m68773:problem:fs-idp109499216",
+   "found": true,
+   "current": "Þegar steindir mynduðust úr bráðinni kviku settust mismunandi jónir í sömu sæti í kristöllunum. Litín kemur oft fyrir ásamt magnesíni í steindum þrátt fyrir mismunandi hleðslu jónanna. Stingdu upp á útskýringu.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 10,
+   "moduleId": "m68773",
+   "segmentId": "m68773:problem:fs-idp62730896",
+   "found": true,
+   "current": "Rúbidínjoðíð kristallast með teningslaga grindareiningu sem inniheldur joðíðjónir á hornunum og rúbidínjón í miðjunni. Hver er formúla efnasambandsins?",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 10,
+   "moduleId": "m68773",
+   "segmentId": "m68773:para:fs-idm42504800",
+   "found": true,
+   "current": "Þegar jónaefni er samsett úr katjónum og anjónum af svipaðri stærð í hlutfallinu 1:1 myndar það yfirleitt einfalda rúmmiðjaða byggingu. Sesínklóríð, CsCl, (sýnt á [[xref:CNX_Chem_10_07_CsClStrctr]]) er dæmi um þetta, þar sem Cs[[sup:+]] og Cl[[sup:−]] hafa geisla sem eru 174 pm og 181 pm. Við getum hugsað okkur þetta sem klóríðjónir sem mynda einfalda rúmmiðjaða grindareiningu með sesínjón í miðjunni; eða sem sesínjónir sem mynda grindareiningu með klóríðjón í miðjunni; eða sem einfaldar rúmmiðjaðar grindareiningar myndaðar af Cs[[sup:+]] jónum sem skarast við grindareiningar myndaðar af Cl[[sup:−]] jónum. Sesínjónir og klóríðjónir snertast eftir hornalínum grindareininganna. Ein sesínjón og ein klóríðjón eru í hverri grindareiningu, sem gefur hlutfallið 1:1 sem formúlan fyrir sesínklóríð krefst. Athugið að það er enginn grindarpunktur í miðju einingarinnar og CsCl er ekki með rúmmiðjaða byggingu (BCC) því sesínjón er ekki eins og klóríðjón.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 10,
+   "moduleId": "m68773",
+   "segmentId": "m68773:para:fs-idm48376560",
+   "found": true,
+   "current": "Við höfum sagt að staðsetning grindarpunkta sé handahófskennd. Þetta sést á annarri lýsingu á CsCl-byggingunni þar sem grindarpunktarnir eru staðsettir í miðjum sesínjónanna. Í þessari lýsingu eru sesínjónirnar staðsettar á grindarpunktunum á hornum einingarinnar og klóríðjónin er staðsett í miðju einingarinnar. Grindareiningarnar tvær eru ólíkar en þær lýsa sömu byggingunni.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 10,
+   "moduleId": "m68773",
+   "segmentId": "m68773:problem:fs-idm18156720",
+   "found": true,
+   "current": "Efnasamband þallíns og joðs kristallast í einföldu teningsfylki joðíðjóna með þallínjónum í öllum teningsholunum. Hver er formúla þessa joðíðs? Útskýrðu svarið.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 10,
+   "moduleId": "m68773",
+   "segmentId": "m68773:solution:fs-idp56072368",
+   "found": true,
+   "current": "Í einföldu teningsfylki getur aðeins ein katjón setið í hverju teningsholi fyrir hverja anjón í fylkinu. Hlutfall þallíns og joðíðs verður að vera 1:1; þess vegna er formúla þallíns TlI.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 10,
+   "moduleId": "m68773",
+   "segmentId": "m68773:problem:fs-idm2190992",
+   "found": true,
+   "current": "Við hitastig yfir ~175 °C kristallast þallín(I)joðíð með sömu byggingu og CsCl. Brúnarlengd grindareiningar TlI er 4,20 Å. Að því gefnu að snerting sé á milli miðjusettar Tl[[sup:+]] jónar og I[[sup:−]] jóna á hornum tenings grindareiningar, reiknaðu jónradíus TI[[sup:+]]. (Jónradíus I[[sup:−]] er 2,16 Å.)",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 15,
+   "moduleId": "m68811",
+   "segmentId": "m68811:para:fs-idp681040",
+   "found": true,
+   "current": "(c) Mg(OH)[[sub:2]], magnesíumhýdroxíð, virka efnið í Milk of Magnesia",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 15,
+   "moduleId": "m68811",
+   "segmentId": "m68811:para:fs-idm745168",
+   "found": true,
+   "current": "(a) Að bæta við sameiginlegri jón, Mg[[sup:2+]], mun auka styrk þessarar jónar og hliðra leysnijafnvæginu til vinstri, sem minnkar styrk hýdroxíðjónar og eykur magn óuppleysts magnesíumhýdroxíðs.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 15,
+   "moduleId": "m68811",
+   "segmentId": "m68811:para:fs-idm743248",
+   "found": true,
+   "current": "(b) Að bæta við sameiginlegri jón, OH[[sup:–]], mun auka styrk þessarar jónar og hliðra leysnijafnvæginu til vinstri, sem minnkar styrk magnesíumjónar og eykur magn óuppleysts magnesíumhýdroxíðs.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 15,
+   "moduleId": "m68811",
+   "segmentId": "m68811:para:fs-idm330455104",
+   "found": true,
+   "current": "(d) Ef meira af föstu magnesíumhýdroxíði er bætt við eykst magn óuppleysta efnasambandsins í blöndunni. Lausnin er þó þegar mettuð, þannig að styrkur uppleystra magnesíum- og hýdroxíðjóna helst óbreyttur.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 15,
+   "moduleId": "m68811",
+   "segmentId": "m68811:para:fs-idm735616",
+   "found": true,
+   "current": "Þannig hefur það engin áhrif á gildi [[i:Q]] að breyta magni fasts magnesíumhýdroxíðs í blöndunni og engin hliðrun er nauðsynleg til að endurheimta gildi jafnvægisfastans fyrir [[i:Q]].",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 15,
+   "moduleId": "m68811",
+   "segmentId": "m68811:para:fs-idp1223232",
+   "found": true,
+   "current": "Ein algeng leið til að fjarlægja fosföt úr vatni er með því að bæta við kalsíumhýdroxíði, eða kalki, Ca(OH)[[sub:2]]. Þegar vatnið verður basískara hvarfast kalsíumjónirnar við fosfatjónir og mynda hýdroxýlapatít, Ca[[sub:5]](PO4)[[sub:3]]OH, sem fellur síðan út úr lausninni:",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 15,
+   "moduleId": "m68811",
+   "segmentId": "m68811:para:fs-idp766160",
+   "found": true,
+   "current": "Ýmsar gerðir myndgreiningartækni eru notaðar til að auðvelda sjúkdómsgreiningar á sem minnst ífarandi hátt. Ein slík tækni felur í sér inntöku á baríumsambandi áður en röntgenmynd er tekin. Sjúklingurinn innbyrðir grugglausn af baríumsúlfati, sem er kalkkennt duft. Þar sem [[i:K]][[sub:sp]] baríumsúlfats er 10,08 [[MATH:33]] 10[[sup:–10]] leysist mjög lítið af því upp þegar það þekur slímhúð meltingarvegar sjúklingsins. Baríumhúðuð svæði meltingarvegarins birtast þá hvít á röntgenmynd, sem gefur meiri sjónrænar upplýsingar en hefðbundin röntgenmynd ([[xref:CNX_Chem_15_01_BariumXray]]).",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 15,
+   "moduleId": "m68811",
+   "segmentId": "m68811:para:fs-idp774080",
+   "found": true,
+   "current": "Farðu inn á þessa [[link:vefsíðu|http://openstax.org/l/16barium]] til að fá frekari upplýsingar um hvernig baríum er notað við sjúkdómsgreiningar og hvaða kvillar eru greindir með því.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 15,
+   "moduleId": "m68811",
+   "segmentId": "m68811:problem:fs-idp14816288",
+   "found": true,
+   "current": "Flest baríumsambönd eru mjög eitruð; hins vegar er baríumsúlfat oft gefið innvortis sem hjálpartæki við röntgenrannsókn á neðri hluta meltingarvegar ([[xref:CNX_Chem_15_01_BariumXray]]). Þessi notkun á BaSO[[sub:4]] er möguleg vegna lítillar leysni þess. Reiknaðu út mólleysni BaSO[[sub:4]] og massa baríums sem er til staðar í 1,00 L af vatni sem er mettað af BaSO[[sub:4]].",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68837",
+   "segmentId": "m68837:problem:fs-idp17846160",
+   "found": true,
+   "current": "Lýstu með jöfnum hvarfi vatns við kalín og við kalínoxíð.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68837",
+   "segmentId": "m68837:para:fs-idp12102384",
+   "found": true,
+   "current": "Oxíð alkalímálma hafa litla iðnaðarnotkun, ólíkt magnesíumoxíði, kalsíumoxíði og áloxíði. Magnesíumoxíð er mikilvægt við framleiðslu á eldföstum múrsteinum, deiglum, ofnafóðringum og varmaeinangrun – notkun sem krefst efna- og hitastöðugleika. Kalsíumoxíð, stundum kallað [[i:brennt kalk]] eða kalk á iðnaðarmarkaði, er mjög hvarfgjarnt og helstu not þess endurspegla hvarfgirni þess. Hreint kalsíumoxíð gefur frá sér ákaft hvítt ljós þegar það er hitað að háu hitastigi (eins og sýnt er á [[xref:CNX_Chem_18_09_Limelight]]). Kubbar úr kalsíumoxíði sem hitaðir voru með gaslogum voru sviðsljós í leikhúsum áður en rafmagn varð aðgengilegt. Þaðan er komið orðatiltækið „að vera í sviðsljósinu“.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68837",
+   "segmentId": "m68837:para:fs-idm68622384",
+   "found": true,
+   "current": "Kalsíumoxíð og kalsíumhýdroxíð eru ódýrir basar sem eru mikið notaðir í efnavinnslu, þótt flest nytsamleg myndefni sem unnin eru úr þeim innihaldi ekki kalsíum. Kalsíumoxíð, CaO, er búið til með því að hita kalsíumkarbónat, CaCO[[sub:3]], sem er víða og ódýrt fáanlegt sem kalksteinn eða ostruskeljar:",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68837",
+   "segmentId": "m68837:para:fs-idm33972064",
+   "found": true,
+   "current": "Mörg not hýdroxíða eru til hlutleysingar sýra (eins og sýrubindandi lyfið sem sýnt er í [[xref:CNX_Chem_18_09_CaOH2]]) og til framleiðslu á oxíðum með hitaniðurbroti. Vatnskennd lausn af magnesíumhýdroxíði er sýrubindandi lyfið magnesíummjólk. Vegna þess hve auðvelt er að nálgast það (úr hvarfi vatns við kalsíumoxíð sem framleitt er með niðurbroti kalksteins, CaCO[[sub:3]]), lágs kostnaðar og virkni, er kalsíumhýdroxíð mikið notað í iðnaði þar sem þörf er á ódýrum, sterkum basa. Hvarf hýdroxíða við viðeigandi sýrur er einnig notað til að framleiða sölt.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68837",
+   "segmentId": "m68837:problem:fs-idp223600240",
+   "found": true,
+   "current": "(a) kadmín brennt í lofti",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68837",
+   "segmentId": "m68837:problem:fs-idp61077712",
+   "found": true,
+   "current": "(b) frumefninu kadmíni bætt við lausn af saltsýru",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68837",
+   "segmentId": "m68837:problem:fs-idm14502784",
+   "found": true,
+   "current": "(c) kadmínhýdroxíði bætt við lausn af ediksýru, CH[[sub:3]]CO[[sub:2]]H",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68837",
+   "segmentId": "m68837:para:fs-idp19845744",
+   "found": true,
+   "current": "Að undanskildu kvikasilfurs(II)oxíði er hægt að framleiða oxíð málma í flokkum 2–15 með því að brenna samsvarandi málm í lofti. Þyngsti meðlimur hvers flokks, sá sem tregrafeindaparsáhrifin eru mest áberandi fyrir, myndar oxíð þar sem oxunartala málmjónarinnar er tveimur minni en oxunartala flokksins (tregrafeindaparsáhrif). Þannig myndast Tl[[sub:2]]O, PbO og Bi[[sub:2]]O[[sub:3]] við bruna á tallíni, blýi og bismúti, í sömu röð. Oxíð léttari meðlima hvers flokks sýna oxunartölu flokksins. Til dæmis myndast SnO[[sub:2]] við bruna á tini. Kvikasilfurs(II)oxíð, HgO, myndast hægt þegar kvikasilfur er hitað undir 500 °C; það brotnar niður við hærra hitastig.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68837",
+   "segmentId": "m68837:para:fs-idm71724768",
+   "found": true,
+   "current": "Oxíð málma í flokkum 1 og 2 og tallín(I)oxíð hvarfast við vatn og mynda hýdroxíð. Dæmi um slík hvörf eru:",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68837",
+   "segmentId": "m68837:problem:fs-idp209794048",
+   "found": true,
+   "current": "Spáðu fyrir um myndefnið sem myndast við bruna fransíns í lofti.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 9,
+   "moduleId": "m68752",
+   "segmentId": "m68752:problem:fs-idp56791712",
+   "found": true,
+   "current": "Brenndur kalksteinn, CaO, er framleiddur með því að hita kalsíumkarbónat, CaCO[[sub:3]]; koltvíoxíð er hin afurðin.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 9,
+   "moduleId": "m68752",
+   "segmentId": "m68752:para:fs-idm2007840",
+   "found": true,
+   "current": "Hvaða rúmmál af vetni við 27 °C og 723 torr er hægt að framleiða með hvarfi 8,88 g af gallíni við umframmagn af saltsýru?",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 19,
+   "moduleId": "m68842",
+   "segmentId": "m68842:para:fs-idm63036992",
+   "found": true,
+   "current": "Járnoxíðin afoxast í efri hluta ofnsins. Í miðhlutanum brotnar kalksteinn (kalsíumkarbónat) niður og kalsíumoxíðið sem myndast sameinast kísli og sílikötum í málmgrýtinu og myndar gjall. Gjallið er að mestu leyti kalsíumsílikat og inniheldur flesta þá efnisþætti málmgrýtisins sem ekki hafa viðskiptalegt gildi:",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 19,
+   "moduleId": "m68842",
+   "segmentId": "m68842:para:fs-idm168637008",
+   "found": true,
+   "current": "Fyrir frumefnin skandín til mangan (fyrri helmingur fyrstu hliðarfrumefnaraðarinnar) samsvarar hæsta oxunarástandið því að missa allar rafeindirnar í bæði [[i:s]]- og [[i:d]]-svigrúmum gildisskeljar þeirra. Títan(IV)-jónin myndast til dæmis þegar títanatóm missir tvær 3[[i:d]]- og tvær 4[[i:s]]-rafeindir sínar. Þessi hæstu oxunarástönd eru stöðugustu form skandíns, títans og vanadíns. Hins vegar er ekki hægt að halda áfram að fjarlægja allar gildisrafeindir úr málmum eftir því sem við förum lengra í röðinni. Vitað er að járn myndar oxunarástönd frá 2+ til 6+, þar sem járn(II) og járn(III) eru algengust. Flest frumefni fyrstu hliðarfrumefnaraðarinnar mynda jónir með hleðsluna 2+ eða 3+ sem eru stöðugar í vatni, þótt auðvelt sé að oxa jónir fyrstu frumefnanna í röðinni með lofti.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 19,
+   "moduleId": "m68842",
+   "segmentId": "m68842:glossary-def:fs-idm42041824-def",
+   "found": true,
+   "current": "safn 17 frumefna, þar á meðal lantaníða, skandíns og yttríns, sem oft koma fyrir saman og hafa svipaða efnafræðilega eiginleika, sem gerir aðskilnað erfiðan",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 19,
+   "moduleId": "m68842",
+   "segmentId": "m68842:alt:fs-idm272821040-alt",
+   "found": true,
+   "current": "Lotukerfi frumefnanna er sýnt. Dálkarnir 18 eru merktir „Flokkur“ og línurnar 7 eru merktar „Lota“. Fyrir neðan töfluna til hægri er kassi merktur „Litakóði“ með mismunandi litum fyrir málma, hálfmálma og málmleysingja, auk fastra efna, vökva og lofttegunda. Vinstra megin við þennan kassa er stækkuð mynd af efsta reitnum lengst til vinstri í töflunni. Talan 1 er í efra vinstra horninu og er merkt „Sætistala“. Bókstafurinn „H“ er í miðjunni í rauðum lit sem gefur til kynna að það sé lofttegund. Hann er merktur „Efnatákn“. Fyrir neðan það er talan 1,008 sem er merkt „Atómmassi“. Fyrir neðan það er orðið vetni sem er merkt „heiti“. Liturinn á kassanum gefur til kynna að það sé málmleysingi. Hverju frumefni verður lýst í þessari röð: sætistala; heiti; efnatákn; hvort það er málmur, hálfmálmur eða málmleysingi; hvort það er fast efni, vökvi eða lofttegund; og atómmassi. Efst til vinstri í töflunni, eða í lotu 1, flokki 1, er reitur sem inniheldur „1; vetni; H; málmleysingi; lofttegund; og 1,008“. Það er aðeins einn annar frumefnisreitur í lotu 1, flokki 18, sem inniheldur „2; helíum; He; málmleysingi; lofttegund; og 4,003“. Lota 2, flokkur 1 inniheldur „3; litíum; Li; málmur; fast efni; og 6,94“. Flokkur 2 inniheldur „4; beryllíum; Be; málmur; fast efni; og 9,012“. Flokkum 3 til 12 er sleppt og flokkur 13 inniheldur „5; bór; B; hálfmálmur; fast efni; 10,81“. Flokkur 14 inniheldur „6; kolefni; C; málmleysingi; fast efni; og 12,01“. Flokkur 15 inniheldur „7; nitur; N; málmleysingi; lofttegund; og 14,01“. Flokkur 16 inniheldur „8; súrefni; O; málmleysingi; lofttegund; og 16,00“. Flokkur 17 inniheldur „9; flúor; F; málmleysingi; lofttegund; og 19,00“. Flokkur 18 inniheldur „10; neon; Ne; málmleysingi; lofttegund; og 20,18“. Lota 3, flokkur 1 inniheldur „11; natríum; Na; málmur; fast efni; og 22,99“. Flokkur 2 inniheldur „12; magnesíum; Mg; málmur; fast efni; og 24,31“. Flokkum 3 til 12 er aftur sleppt í lotu 3 og flokkur 13 inniheldur „13; ál; Al; málmur; fast efni; og 26,98“. Flokkur 14 inniheldur „14; kísill; Si; hálfmálmur; fast efni; og 28,09“. Flokkur 15 inniheldur „15; fosfór; P; málmleysingi; fast efni; og 30,97“. Flokkur 16 inniheldur „16; brennisteinn; S; málmleysingi; fast efni; og 32,06“. Flokkur 17 inniheldur „17; klór; Cl; málmleysingi; lofttegund; og 35,45“. Flokkur 18 inniheldur „18; argon; Ar; málmleysingi; lofttegund; og 39,95“. Lota 4, flokkur 1 inniheldur „19; kalíum; K; málmur; fast efni; og 39,10“. Flokkur 2 inniheldur „20; kalsíum; Ca; málmur; fast efni; og 40,08“. Flokkur 3 inniheldur „21; skandíum; Sc; málmur; fast efni; og 44,96“. Flokkur 4 inniheldur „22; títan; Ti; málmur; fast efni; og 47,87“. Flokkur 5 inniheldur „23; vanadíum; V; málmur; fast efni; og 50,94“. Flokkur 6 inniheldur „24; króm; Cr; málmur; fast efni; og 52,00“. Flokkur 7 inniheldur „25; mangan; Mn; málmur; fast efni; og 54,94“. Flokkur 8 inniheldur „26; járn; Fe; málmur; fast efni; og 55,85“. Flokkur 9 inniheldur „27; kóbalt; Co; málmur; fast efni; og 58,93“. Flokkur 10 inniheldur „28; nikkel; Ni; málmur; fast efni; og 58,69“. Flokkur 11 inniheldur „29; kopar; Cu; málmur; fast efni; og 63,55“. Flokkur 12 inniheldur „30; sink; Zn; málmur; fast efni; og 65,38“. Flokkur 13 inniheldur „31; gallíum; Ga; málmur; fast efni; og 69,72“. Flokkur 14 inniheldur „32; germaníum; Ge; hálfmálmur; fast efni; og 72,63“. Flokkur 15 inniheldur „33; arsen; As; hálfmálmur; fast efni; og 74,92“. Flokkur 16 inniheldur „34; selen; Se; málmleysingi; fast efni; og 78,97“. Flokkur 17 inniheldur „35; bróm; Br; málmleysingi; vökvi; og 79,90“. Flokkur 18 inniheldur „36; krypton; Kr; málmleysingi; lofttegund; og 83,80“. Lota 5, flokkur 1 inniheldur „37; rúbidíum; Rb; málmur; fast efni; og 85,47“. Flokkur 2 inniheldur „38; strontíum; Sr; málmur; fast efni; og 87,62“. Flokkur 3 inniheldur „39; yttríum; Y; málmur; fast efni; og 88,91“. Flokkur 4 inniheldur „40; sirkoníum; Zr; málmur; fast efni; og 91,22“. Flokkur 5 inniheldur „41; níóbíum; Nb; málmur; fast efni; og 92,91“. Flokkur 6 inniheldur „42; mólýbden; Mo; málmur; fast efni; og 95,95“. Flokkur 7 inniheldur „43; teknetíum; Tc; málmur; fast efni; og 97“. Flokkur 8 inniheldur „44; rúþen; Ru; málmur; fast efni; og 101,1“. Flokkur 9 inniheldur „45; ródíum; Rh; málmur; fast efni; og 102,9“. Flokkur 10 inniheldur „46; palladíum; Pd; málmur; fast efni; og 106,4“. Flokkur 11 inniheldur „47; silfur; Ag; málmur; fast efni; og 107,9“. Flokkur 12 inniheldur „48; kadmíum; Cd; málmur; fast efni; og 112,4“. Flokkur 13 inniheldur „49; indíum; In; málmur; fast efni; og 114,8“. Flokkur 14 inniheldur „50; tin; Sn; málmur; fast efni; og 118,7“. Flokkur 15 inniheldur „51; antímon; Sb; hálfmálmur; fast efni; og 121,8“. Flokkur 16 inniheldur „52; tellúr; Te; hálfmálmur; fast efni; og 127,6“. Flokkur 17 inniheldur „53; joð; I; málmleysingi; fast efni; og 126,9“. Flokkur 18 inniheldur „54; xenon; Xe; málmleysingi; lofttegund; og 131,3“.“ Í lotu 6, flokki 1 er „55; sesín; Cs; málmur; fast efni; og 132,9.“ Í flokki 2 er „56; barín; Ba; málmur; fast efni; og 137,3.“ Flokkur 3 brýtur mynstrið. Í reitnum er stór ör sem bendir á röð frumefna fyrir neðan töfluna með sætistölur frá 57–71. Í röð eftir sætistölu er í fyrsta reitnum í þessari röð „57; lantan; La; málmur; fast efni; og 138,9.“ Til hægri við það er næst „58; serín; Ce; málmur; fast efni; og 140,1.“ Næst er „59; praseódým; Pr; málmur; fast efni; og 140,9.“ Næst er „60; neódým; Nd; málmur; fast efni; og 144,2.“ Næst er „61; prómetín; Pm; málmur; fast efni; og 145.“ Næst er „62; samarín; Sm; málmur; fast efni; og 150,4.“ Næst er „63; evrópín; Eu; málmur; fast efni; og 152,0.“ Næst er „64; gadólín; Gd; málmur; fast efni; og 157,3.“ Næst er „65; terbín; Tb; málmur; fast efni; og 158,9.“ Næst er „66; dysprósín; Dy; málmur; fast efni; og 162,5.“ Næst er „67; hólmín; Ho; málmur; fast efni; og 164,9.“ Næst er „68; erbín; Er; málmur; fast efni; og 167,3.“ Næst er „69; túlín; Tm; málmur; fast efni; og 168,9.“ Næst er „70; ytterbín; Yb; málmur; fast efni; og 173,1.“ Síðast í þessari sérstöku röð er „71; lútetín; Lu; málmur; fast efni; og 175,0.“ Áfram í lotu 6, flokki 4 er „72; hafnfn; Hf; málmur; fast efni; og 178,5.“ Í flokki 5 er „73; tantal; Ta; málmur; fast efni; og 180,9.“ Í flokki 6 er „74; volfram; W; málmur; fast efni; og 183,8.“ Í flokki 7 er „75; renín; Re; málmur; fast efni; og 186,2.“ Í flokki 8 er „76; osmín; Os; málmur; fast efni; og 190,2.“ Í flokki 9 er „77; iridín; Ir; málmur; fast efni; og 192,2.“ Í flokki 10 er „78; platína; Pt; málmur; fast efni; og 195,1.“ Í flokki 11 er „79; gull; Au; málmur; fast efni; og 197,0.“ Í flokki 12 er „80; kvikasilfur; Hg; málmur; vökvi; og 200,6.“ Í flokki 13 er „81; þallín; Tl; málmur; fast efni; og 204,4.“ Í flokki 14 er „82; blý; Pb; málmur; fast efni; og 207,2.“ Í flokki 15 er „83; bismút; Bi; málmur; fast efni; og 209,0.“ Í flokki 16 er „84; pólon; Po; málmur; fast efni; og 209.“ Í flokki 17 er „85; astat; At; hálfmálmur; fast efni; og 210.“ Í flokki 18 er „86; radon; Rn; málmleysingi; gas; og 222.“ Í lotu 7, flokki 1 er „87; fransín; Fr; málmur; fast efni; og 223.“ Í flokki 2 er „88; radín; Ra; málmur; fast efni; og 226.“ Flokkur 3 brýtur mynstrið á svipaðan hátt og gerist í lotu 6. Stór ör bendir frá reitnum í lotu 7, flokki 3 á sérstaka röð sem inniheldur frumefni með sætistölur frá 89–103, rétt fyrir neðan röðina sem inniheldur sætistölur 57–71. Í röð eftir sætistölu er í fyrsta reitnum í þessari röð „89; aktín; Ac; málmur; fast efni; og 227.“ Til hægri við það er næst „90; þórín; Th; málmur; fast efni; og 232,0.“ Næst er „91; prótaktín; Pa; málmur; fast efni; og 231,0.“ Næst er „92; úran; U; málmur; fast efni; og 238,0.“ Næst er „93; neptún; Np; málmur; fast efni; og Np.“ Næst er „94; plúton; Pu; málmur; fast efni; og 244.“ Næst er „95; amerísín; Am; málmur; fast efni; og 243.“ Næst er „96; kúríum; Cm; málmur; fast efni; og 247.“ Næst er „97; berkelín; Bk; málmur; fast efni; og 247.“ Næst er „98; kalifornín; Cf; málmur; fast efni; og 251.“ Næst er „99; einsteinín; Es; málmur; fast efni; og 252.“ Næst er „100; fermín; Fm; málmur; fast efni; og 257.“ Næst er „101; mendelevín; Md; málmur; fast efni; og 258.“ Næst er „102; nóbelín; No; málmur; fast efni; og 259.“ Síðast í þessari sérstöku röð er „103; lawrensín; Lr; málmur; fast efni; og 262.“ Áfram í lotu 7, flokki 4 er „104; rutherfordín; Rf; málmur; fast efni; og 267.“ Í flokki 5 er „105; dubnín; Db; málmur; fast efni; og 270.“ Í flokki 6 er „106; seaborgín; Sg; málmur; fast efni; og 271.“ Í flokki 7 er „107; bohrín; Bh; málmur; fast efni; og 270.“ Í flokki 8 er „108; hassín; Hs; málmur; fast efni; og 277.“ Í flokki 9 er „109; meitnerín; Mt; ekki tilgreint; fast efni; og 276.“ Í flokki 10 er „110; darmstadtín; Ds; ekki tilgreint; fast efni; og 281.“ Í flokki 11 er „111; röntgenín; Rg; ekki tilgreint; fast efni; og 282.“ Í flokki 12 er „112; kópernikín; Cn; málmur; vökvi; og 285.“ Í flokki 13 er „113; ununtrín; Uut; ekki tilgreint; fast efni; og 285.“ Í flokki 14 er „114; fleróvín; Fl; ekki tilgreint; fast efni; og 289.“ Í flokki 15 er „115; ununpentín; Uup; ekki tilgreint; fast efni; og 288.“ Í flokki 16 er „116; livermorín; Lv; ekki tilgreint; fast efni; og 293.“ Í flokki 17 er „117; ununseptín; Uus; ekki tilgreint; fast efni; og 294.“ Flokkur 18 inniheldur „118; ununoctium; U u o; ekki gefið til kynna; fast efni; og 294.“",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 19,
+   "moduleId": "m68842",
+   "segmentId": "m68842:glossary-def:fs-idm194011232-def",
+   "found": true,
+   "current": "hópur sex hliðarfrumefna sem samanstendur af rúþeni, osmíni, ródíni, iridíni, palladíni og platínu sem hafa tilhneigingu til að finnast í sömu steindum og sýna svipaða efnafræðilega eiginleika",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 19,
+   "moduleId": "m68842",
+   "segmentId": "m68842:para:fs-idm195995744",
+   "found": true,
+   "current": "(e) palladín(II) [Kr]4[[i:d]][[sup:8]]; önnur hliðarfrumefnaröð",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 19,
+   "moduleId": "m68842",
+   "segmentId": "m68842:para:fs-idm126105600",
+   "found": true,
+   "current": "(a) serín(III)",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 19,
+   "moduleId": "m68842",
+   "segmentId": "m68842:para:fs-idm165890960",
+   "found": true,
+   "current": "Frumefnum í [[i:d]]-blokk er skipt í [[term:fyrstu hliðarfrumefnaröðina|term-00003]] (frumefnin Sc til Cu), [[term:aðra hliðarfrumefnaröðina|term-00004]] (frumefnin Y til Ag) og [[term:þriðju hliðarfrumefnaröðina|term-00005]] (frumefnið La og frumefnin Hf til Au). Aktín, Ac, er fyrsta frumefnið í [[term:fjórðu hliðarfrumefnaröðinni|term-00006]], sem inniheldur einnig Rf til Rg.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 19,
+   "moduleId": "m68842",
+   "segmentId": "m68842:para:fs-idm9696240",
+   "found": true,
+   "current": "Frumefnin í [[i:f]]-blokk eru frumefnin Ce til Lu, sem mynda [[term:lantaníðaröðina|term-00007]] (eða [[term:lantanóíðaröðina|term-00008]]), og frumefnin Th til Lr, sem mynda [[term:aktíníðaröðina|term-00009]] (eða [[term:aktínóíðaröðina|term-00010]]). Þar sem lantan hegðar sér mjög líkt lantaníðum er það talið til lantaníða, jafnvel þótt rafeindaskipan þess geri það að fyrsta frumefni þriðju hliðarfrumefnaraðarinnar. Á sama hátt þýðir hegðun aktíns að það er hluti af aktíníðaröðinni, þótt rafeindaskipan þess geri það að fyrsta frumefni fjórðu hliðarfrumefnaraðarinnar.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 19,
+   "moduleId": "m68842",
+   "segmentId": "m68842:glossary-def:fs-idm98560816-def",
+   "found": true,
+   "current": "(einnig, aktínóíðaröð) aktín og frumefnin í annarri röð eða [[i:f]]-blokkinni, sætistölur 89–103",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 19,
+   "moduleId": "m68842",
+   "segmentId": "m68842:para:fs-idm248047376",
+   "found": true,
+   "current": "(d) ameríkín(III) [Rn]5[[i:f]][[sup:6]]; aktíníði",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": -1,
+   "moduleId": "m68868",
+   "segmentId": "m68868:entry:auto-39",
+   "found": true,
+   "current": "kalsín",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": -1,
+   "moduleId": "m68868",
+   "segmentId": "m68868:entry:auto-32",
+   "found": true,
+   "current": "kadmín",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": -1,
+   "moduleId": "m68868",
+   "segmentId": "m68868:entry:auto-8",
+   "found": true,
+   "current": "barín",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": -1,
+   "moduleId": "m68868",
+   "segmentId": "m68868:entry:auto-204",
+   "found": true,
+   "current": "þallín",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 19,
+   "moduleId": "m68843",
+   "segmentId": "m68843:para:fs-idp55376000",
+   "found": true,
+   "current": "Eitt mikilvægasta notagildi hliðarmálma er sem hvatar í iðnaði. Eins og þú manst úr kaflanum um efnahvörf eykur hvati hraða efnahvarfs með því að lækka virkjunarorkuna og endurmyndast í hvatunarferlinu. Yfir 90% allra framleiddra vara eru gerðar með hjálp eins eða fleiri hvata. Hæfileikinn til að binda tengla og breyta oxunartölum gerir hliðarmálmahvata vel til þess fallna að nota í hvatunarferlum. Vanadínoxíð er notað til að framleiða 230.000.000 tonn af brennisteinssýru um allan heim á hverju ári, sem aftur er notuð til að framleiða allt frá áburði til niðursuðudósa. Plastefni eru framleidd með hjálp hliðarmálmahvata, ásamt þvottaefnum, áburði, málningu og fleiru (sjá [[xref:CNX_Chem_19_02_Cat]]). Mjög flókin lyf eru framleidd með hvötum sem eru sértækir og hvarfast við eitt tiltekið tengi af mörgum mögulegum. Hvatar gera ferla hagkvæmari og umhverfisvænni. Þróun nýrra hvata og betri skilningur á núverandi kerfum eru mikilvæg svið í rannsóknum samtímans.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 19,
+   "moduleId": "m68844",
+   "segmentId": "m68844:para:fs-idp20917280",
+   "found": true,
+   "current": "Horfðu á þetta [[link:myndband|http://openstax.org/l/16vanadium]] um afoxun vanadíumsambanda til að sjá litrík áhrif breyttra oxunarástanda.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 2,
+   "moduleId": "m68698",
+   "segmentId": "m68698:para:fs-idp283457040",
+   "found": true,
+   "current": "(c) gallín(III)nítríð",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 4,
+   "moduleId": "m68713",
+   "segmentId": "m68713:problem:fs-idp134804848",
+   "found": true,
+   "current": "Gallínklóríð er myndað með efnahvarfi 2,6 L af 1,44 M lausn af HCl samkvæmt eftirfarandi jöfnu: [[MATH:13]]",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 4,
+   "moduleId": "m68713",
+   "segmentId": "m68713:problem:fs-idp7152848",
+   "found": true,
+   "current": "(a) Lýstu þeim skrefum sem eru nauðsynleg til að ákvarða fjölda móla og massa gallínklóríðs.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 2,
+   "moduleId": "m68695",
+   "segmentId": "m68695:para:fs-idm382436640",
+   "found": true,
+   "current": "Við athugun á lotukerfinu gætir þú hafa tekið eftir einhverju varðandi atómmassa sumra frumefna. Atómmassi frumefnis 43 (teknetín), frumefnis 61 (prómetín) og flestra frumefna með sætistöluna 84 (pólón) og hærri er gefinn upp í hornklofum. Þetta er gert fyrir frumefni sem samanstanda eingöngu af óstöðugum, geislavirkum samsætum (þú munt læra meira um geislavirkni í kaflanum um kjarnaefnafræði). Ekki er hægt að ákvarða meðalatómmassa fyrir þessi frumefni vegna þess að hlutfallslegt magn geislasamsæta þeirra getur verið mjög breytilegt, allt eftir uppruna, eða þær finnast jafnvel ekki í náttúrunni. Talan í hornklofunum er massatala (nálgaður atómmassi) stöðugustu samsætu þess frumefnis.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 2,
+   "moduleId": "m68695",
+   "segmentId": "m68695:alt:fs-idm413728400-alt",
+   "found": true,
+   "current": "Lotukerfi frumefnanna er sýnt. Dálkarnir 18 eru merktir „Flokkur“ og línurnar 7 eru merktar „Lota“. Fyrir neðan töfluna til hægri er reitur merktur „Litakóði“ með mismunandi litum fyrir málma, hálfmálma og málmleysingja, sem og föst efni, vökva og lofttegundir. Vinstra megin við þennan reit er stækkuð mynd af efsta reitnum lengst til vinstri í töflunni. Talan 1 er í efra vinstra horninu og er merkt „Sætistala“. Bókstafurinn „H“ er í miðjunni í rauðum lit, sem gefur til kynna að það sé lofttegund. Hann er merktur „Efnatákn“. Fyrir neðan það er talan 1,008 sem er merkt „Atómmassi“. Fyrir neðan það er orðið vetni sem er merkt „heiti“. Liturinn á reitnum gefur til kynna að það sé málmleysingi. Hverju frumefni verður lýst í þessari röð: sætistala; heiti; efnatákn; hvort það er málmur, hálfmálmur eða málmleysingi; hvort það er fast efni, vökvi eða lofttegund; og atómmassi. Efst til vinstri í töflunni, eða í lotu 1, flokki 1, er reitur sem inniheldur „1; vetni; H; málmleysingi; lofttegund; og 1,008“. Það er aðeins einn annar frumefnisreitur í lotu 1, flokki 18, sem inniheldur „2; helíum; He; málmleysingi; lofttegund; og 4,003“. Lota 2, flokkur 1 inniheldur „3; litíum; Li; málmur; fast efni; og 6,94“. Flokkur 2 inniheldur „4; beryllíum; Be; málmur; fast efni; og 9,012“. Flokkum 3 til 12 er sleppt og flokkur 13 inniheldur „5; bór; B; hálfmálmur; fast efni; 10,81“. Flokkur 14 inniheldur „6; kolefni; C; málmleysingi; fast efni; og 12,01“. Flokkur 15 inniheldur „7; nitur; N; málmleysingi; lofttegund; og 14,01“. Flokkur 16 inniheldur „8; súrefni; O; málmleysingi; lofttegund; og 16,00“. Flokkur 17 inniheldur „9; flúor; F; málmleysingi; lofttegund; og 19,00“. Flokkur 18 inniheldur „10; neon; Ne; málmleysingi; lofttegund; og 20,18“. Lota 3, flokkur 1 inniheldur „11; natríum; Na; málmur; fast efni; og 22,99“. Flokkur 2 inniheldur „12; magnesíum; Mg; málmur; fast efni; og 24,31“. Flokkum 3 til 12 er aftur sleppt í lotu 3 og flokkur 13 inniheldur „13; ál; Al; málmur; fast efni; og 26,98“. Flokkur 14 inniheldur „14; kísill; Si; hálfmálmur; fast efni; og 28,09“. Flokkur 15 inniheldur „15; fosfór; P; málmleysingi; fast efni; og 30,97“. Flokkur 16 inniheldur „16; brennisteinn; S; málmleysingi; fast efni; og 32,06“. Flokkur 17 inniheldur „17; klór; Cl; málmleysingi; lofttegund; og 35,45“. Flokkur 18 inniheldur „18; argon; Ar; málmleysingi; lofttegund; og 39,95“. Lota 4, flokkur 1 inniheldur „19; kalíum; K; málmur; fast efni; og 39,10“. Flokkur 2 inniheldur „20; kalsíum; Ca; málmur; fast efni; og 40,08“. Flokkur 3 inniheldur „21; skandíum; Sc; málmur; fast efni; og 44,96“. Flokkur 4 inniheldur „22; títan; Ti; málmur; fast efni; og 47,87“. Flokkur 5 inniheldur „23; vanadíum; V; málmur; fast efni; og 50,94“. Flokkur 6 inniheldur „24; króm; Cr; málmur; fast efni; og 52,00“. Flokkur 7 inniheldur „25; mangan; Mn; málmur; fast efni; og 54,94“. Flokkur 8 inniheldur „26; járn; Fe; málmur; fast efni; og 55,85“. Flokkur 9 inniheldur „27; kóbalt; Co; málmur; fast efni; og 58,93“. Flokkur 10 inniheldur „28; nikkel; Ni; málmur; fast efni; og 58,69“. Flokkur 11 inniheldur „29; kopar; Cu; málmur; fast efni; og 63,55“. Flokkur 12 inniheldur „30; sink; Zn; málmur; fast efni; og 65,38“. Flokkur 13 inniheldur „31; gallíum; Ga; málmur; fast efni; og 69,72“. Flokkur 14 inniheldur „32; germaníum; Ge; hálfmálmur; fast efni; og 72,63“. Flokkur 15 inniheldur „33; arsen; As; hálfmálmur; fast efni; og 74,92“. Flokkur 16 inniheldur „34; selen; Se; málmleysingi; fast efni; og 78,97“. Flokkur 17 inniheldur „35; bróm; Br; málmleysingi; vökvi; og 79,90“. Flokkur 18 inniheldur „36; krypton; Kr; málmleysingi; lofttegund; og 83,80“. Lota 5, flokkur 1 inniheldur „37; rúbidíum; Rb; málmur; fast efni; og 85,47“. Flokkur 2 inniheldur „38; strontíum; Sr; málmur; fast efni; og 87,62“. Flokkur 3 inniheldur „39; yttríum; Y; málmur; fast efni; og 88,91“. Flokkur 4 inniheldur „40; sirkon; Zr; málmur; fast efni; og 91,22“. Flokkur 5 inniheldur „41; níóbíum; Nb; málmur; fast efni; og 92,91“. Flokkur 6 inniheldur „42; mólýbden; Mo; málmur; fast efni; og 95,95“. Flokkur 7 inniheldur „43; teknetíum; Tc; málmur; fast efni; og 97“. Flokkur 8 inniheldur „44; rúþen; Ru; málmur; fast efni; og 101,1“. Flokkur 9 inniheldur „45; ródíum; Rh; málmur; fast efni; og 102,9“. Flokkur 10 inniheldur „46; palladíum; Pd; málmur; fast efni; og 106,4“. Flokkur 11 inniheldur „47; silfur; Ag; málmur; fast efni; og 107,9“. Flokkur 12 inniheldur „48; kadmíum; Cd; málmur; fast efni; og 112,4“. Flokkur 13 inniheldur „49; indíum; In; málmur; fast efni; og 114,8“. Flokkur 14 inniheldur „50; tin; Sn; málmur; fast efni; og 118,7“. Flokkur 15 inniheldur „51; antímon; Sb; hálfmálmur; fast efni; og 121,8“. Flokkur 16 inniheldur „52; tellúr; Te; hálfmálmur; fast efni; og 127,6“. Flokkur 17 inniheldur „53; joð; I; málmleysingi; fast efni; og 126,9“. Flokkur 18 inniheldur „54; xenon; Xe; málmleysingi; lofttegund; og 131,3“.“ Lotan 6, flokkur 1 inniheldur „55; sesín; Cs; málmur; fast efni; og 132,9.“ Flokkur 2 inniheldur „56; barín; Ba; málmur; fast efni; og 137,3.“ Flokkur 3 brýtur mynstrið. Í reitnum er stór ör sem vísar á röð frumefna fyrir neðan töfluna með sætistölur frá 57–71. Í röð eftir sætistölu inniheldur fyrsti reiturinn í þessari röð „57; lantan; La; málmur; fast efni; og 138,9.“ Til hægri við hann er næsti reitur „58; serín; Ce; málmur; fast efni; og 140,1.“ Næst er „59; praseódým; Pr; málmur; fast efni; og 140,9.“ Næst er „60; neódým; Nd; málmur; fast efni; og 144,2.“ Næst er „61; prómetín; Pm; málmur; fast efni; og 145.“ Næst er „62; samarín; Sm; málmur; fast efni; og 150,4.“ Næst er „63; evrópín; Eu; málmur; fast efni; og 152,0.“ Næst er „64; gadólín; Gd; málmur; fast efni; og 157,3.“ Næst er „65; terbín; Tb; málmur; fast efni; og 158,9.“ Næst er „66; dysprósín; Dy; málmur; fast efni; og 162,5.“ Næst er „67; hólmín; Ho; málmur; fast efni; og 164,9.“ Næst er „68; erbín; Er; málmur; fast efni; og 167,3.“ Næst er „69; túlín; Tm; málmur; fast efni; og 168,9.“ Næst er „70; ytterbín; Yb; málmur; fast efni; og 173,1.“ Sá síðasti í þessari sérstöku röð er „71; lútetín; Lu; málmur; fast efni; og 175,0.“ Áfram í lotu 6, flokkur 4 inniheldur „72; hafnfn; Hf; málmur; fast efni; og 178,5.“ Flokkur 5 inniheldur „73; tantal; Ta; málmur; fast efni; og 180,9.“ Flokkur 6 inniheldur „74; volfram; W; málmur; fast efni; og 183,8.“ Flokkur 7 inniheldur „75; renín; Re; málmur; fast efni; og 186,2.“ Flokkur 8 inniheldur „76; osmín; Os; málmur; fast efni; og 190,2.“ Flokkur 9 inniheldur „77; iridín; Ir; málmur; fast efni; og 192,2.“ Flokkur 10 inniheldur „78; platína; Pt; málmur; fast efni; og 195,1.“ Flokkur 11 inniheldur „79; gull; Au; málmur; fast efni; og 197,0.“ Flokkur 12 inniheldur „80; kvikasilfur; Hg; málmur; vökvi; og 200,6.“ Flokkur 13 inniheldur „81; tallín; Tl; málmur; fast efni; og 204,4.“ Flokkur 14 inniheldur „82; blý; Pb; málmur; fast efni; og 207,2.“ Flokkur 15 inniheldur „83; bismút; Bi; málmur; fast efni; og 209,0.“ Flokkur 16 inniheldur „84; pólon; Po; málmur; fast efni; og 209.“ Flokkur 17 inniheldur „85; astat; At; málmungur; fast efni; og 210.“ Flokkur 18 inniheldur „86; radon; Rn; málmleysingi; gas; og 222.“ Lotan 7, flokkur 1 inniheldur „87; fransín; Fr; málmur; fast efni; og 223.“ Flokkur 2 inniheldur „88; radín; Ra; málmur; fast efni; og 226.“ Flokkur 3 brýtur mynstrið á svipaðan hátt og gerist í lotu 6. Stór ör vísar frá reitnum í lotu 7, flokki 3 yfir í sérstaka röð sem inniheldur frumefni með sætistölur frá 89–103, rétt fyrir neðan röðina sem inniheldur sætistölur 57–71. Í röð eftir sætistölu inniheldur fyrsti reiturinn í þessari röð „89; aktín; Ac; málmur; fast efni; og 227.“ Til hægri við hann er næsti reitur „90; þórín; Th; málmur; fast efni; og 232,0.“ Næst er „91; prótaktín; Pa; málmur; fast efni; og 231,0.“ Næst er „92; úran; U; málmur; fast efni; og 238,0.“ Næst er „93; neptún; Np; málmur; fast efni; og Np.“ Næst er „94; plúton; Pu; málmur; fast efni; og 244.“ Næst er „95; ameríkín; Am; málmur; fast efni; og 243.“ Næst er „96; kúríum; Cm; málmur; fast efni; og 247.“ Næst er „97; berkelín; Bk; málmur; fast efni; og 247.“ Næst er „98; kalifornín; Cf; málmur; fast efni; og 251.“ Næst er „99; einsteinín; Es; málmur; fast efni; og 252.“ Næst er „100; fermín; Fm; málmur; fast efni; og 257.“ Næst er „101; mendelevín; Md; málmur; fast efni; og 258.“ Næst er „102; nóbelín; No; málmur; fast efni; og 259.“ Sá síðasti í þessari sérstöku röð er „103; lawrensín; Lr; málmur; fast efni; og 262.“ Áfram í lotu 7, flokkur 4 inniheldur „104; rutherfordín; Rf; málmur; fast efni; og 267.“ Flokkur 5 inniheldur „105; dubnín; Db; málmur; fast efni; og 270.“ Flokkur 6 inniheldur „106; seaborgín; Sg; málmur; fast efni; og 271.“ Flokkur 7 inniheldur „107; bohrín; Bh; málmur; fast efni; og 270.“ Flokkur 8 inniheldur „108; hassín; Hs; málmur; fast efni; og 277.“ Flokkur 9 inniheldur „109; meitnerín; Mt; ekki tilgreint; fast efni; og 276.“ Flokkur 10 inniheldur „110; darmstadtín; Ds; ekki tilgreint; fast efni; og 281.“ Flokkur 11 inniheldur „111; röntgenín; Rg; ekki tilgreint; fast efni; og 282.“ Flokkur 12 inniheldur „112; kópernikín; Cn; málmur; vökvi; og 285.“ Flokkur 13 inniheldur „113; ununtrín; Uut; ekki tilgreint; fast efni; og 285.“ Flokkur 14 inniheldur „114; fleróvín; Fl; ekki tilgreint; fast efni; og 289.“ Flokkur 15 inniheldur „115; ununpentín; Uup; ekki tilgreint; fast efni; og 288.“ Flokkur 16 inniheldur „116; livermorín; Lv; ekki tilgreint; fast efni; og 293.“ Flokkur 17 inniheldur „117; ununseptín; Uus; ekki tilgreint; fast efni; og 294“.“ Flokkur 18 inniheldur „118; ununoktíum; U u o; ekki tilgreint; fast efni; og 294.“",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 2,
+   "moduleId": "m68695",
+   "segmentId": "m68695:para:fs-idm421488352",
+   "found": true,
+   "current": "(c) barín",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 2,
+   "moduleId": "m68695",
+   "segmentId": "m68695:para:eip-630",
+   "found": true,
+   "current": "Jafnvel eftir að lotubundnir eiginleikar frumefna og lotukerfið sjálft voru almennt viðurkennd voru enn eyður í því. Mendelejev hafði spáð fyrir um það, og aðrir, þar á meðal Henry Moseley, höfðu síðar staðfest, að það ættu að vera frumefni fyrir neðan mangan í flokki 7. Þýsku efnafræðingarnir Ida Tacke og Walter Noddack lögðu upp með að finna frumefnin, en það var verkefni sem vísindamenn um allan heim voru að fást við. Aðferð þeirra var einstök að því leyti að þau skoðuðu ekki aðeins eiginleika mangans, heldur einnig frumefnin sem voru lárétt við hliðina á frumefnunum 43 og 75 sem vantaði í töfluna. Þannig gátu þau, með því að rannsaka málmgrýti sem innihélt steindir rúþens (Ru), wolframs (W), osmíums (Os) og svo framvegis, greint náttúruleg frumefni sem hjálpuðu til við að fullkomna töfluna. Renín, ein af uppgötvunum þeirra, var eitt af síðustu náttúrulegu frumefnunum sem uppgötvaðist og er síðasta stöðuga frumefnið sem uppgötvaðist. (Fransín, síðasta náttúrulega frumefnið sem uppgötvaðist, var greint af Marguerite Perey árið 1939.)",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 12,
+   "moduleId": "m68791",
+   "segmentId": "m68791:problem:fs-idm22532432",
+   "found": true,
+   "current": "Bæði teknetín-99 og tallín-201 eru notuð til að mynda hjartavöðva hjá sjúklingum með grun um hjartavandamál. Helmingunartíminn er 6 klst. og 73 klst. Hversu mörg prósent af geislavirkninni yrðu eftir fyrir hvora samsætuna eftir 2 daga (48 klst.)?",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 16,
+   "moduleId": "m68816",
+   "segmentId": "m68816:para:fs-idp3956976",
+   "found": true,
+   "current": "[[i:Ekki]] er fylgni á milli sjálfgengis ferlis og hraða þess. Sjálfgeng breyting getur verið svo hröð að hún er nánast samstundis eða svo hæg að ekki er hægt að fylgjast með henni á neinum raunhæfum tíma. Til að útskýra þetta hugtak skulum við skoða rotnun geislavirkra samsætna, efni sem fjallað er ítarlegar um í kaflanum um kjarnakemíu. Geislavirk rotnun er samkvæmt skilgreiningu sjálfgengt ferli þar sem kjarnar óstöðugra samsætna gefa frá sér geislun þegar þeir breytast í stöðugri kjarna. Öll rotnunarferli eiga sér stað sjálfkrafa, en hraðinn sem mismunandi samsætur rotna á er mjög breytilegur. Teknetín-99m er vinsæl geislasamsæta fyrir læknisfræðilegar myndgreiningarrannsóknir sem gengst undir tiltölulega hraða rotnun og sýnir helmingunartíma upp á um sex klukkustundir. Úran-238 er algengasta samsæta úrans og rotnun þess á sér stað mun hægar og sýnir helmingunartíma upp á meira en fjóra milljarða ára ([[xref:CNX_Chem_16_01_decayrates]]).",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68856",
+   "segmentId": "m68856:para:fs-idm172997504",
+   "found": true,
+   "current": "Hægt er að framleiða ný atóm með því að skjóta kjörnum eða háhraða ögnum á önnur atóm. Afurðir þessara frumefnabreytinga geta verið stöðugar eða geislavirkar. Fjöldi tilbúinna frumefna, þar á meðal teknetín, astatín og þverúranar, hafa verið framleidd á þennan hátt.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68856",
+   "segmentId": "m68856:table-summary:fs-idm128006320-summary",
+   "found": true,
+   "current": "Þessi tafla hefur fjóra dálka og tíu raðir. Fyrsta röðin er fyrirsagnarröð og hún merkir hvern dálk: „Nafn“, „Tákn“, „Sætistala“ og „Hvarf“. Undir dálkinum „Nafn“ er eftirfarandi: ameríkín, kúríum, kaliforníum, einsteiníum, mendelevíum, nóbelíum, rutherfordíum, seaborgíum og meitneríum. Undir dálkinum „Tákn“ er eftirfarandi: Am, Cm, Cf, Es, Md, No, Rf, Sg og Mt. Undir dálkinum „Sætistala“ er eftirfarandi: 95; 96; 98; 99; 101; 102; 104; 106; og 107. Undir dálkinum „Hvarf“ eru eftirfarandi efnahvörf: hávísir 239 yfir lágvísi 94 Pu plús hávísir 1 yfir lágvísi 0 n gefur hávísi 240 yfir lágvísi 95 Am plús hávísi 0 yfir lágvísi mínus 1 e; hávísir 239 yfir lágvísi 94 Pu plús hávísir 4 yfir lágvísi 2 He gefur hávísi 242 yfir lágvísi 96 Cm plús hávísi 1 yfir lágvísi 0 n; hávísir 242 yfir lágvísi 96 Cm plús hávísir 4 yfir lágvísi 2 He gefur hávísi 243 yfir lágvísi 97 Bk plús 2 hávísir 1 yfir lágvísi 0 n; hávísir 238 yfir lágvísi 92 U plús 15 hávísir 1 yfir lágvísi 0 n gefur hávísi 253 yfir lágvísi 99 Es plús 7 hávísir 0 yfir lágvísi mínus 1 e; hávísir 253 yfir lágvísi 99 Es plús hávísir 4 yfir lágvísi 2 He gefur hávísi 256 yfir lágvísi 101 Md plús hávísi 1 yfir lágvísi 0 n; hávísir 246 yfir lágvísi 96 Cm plús hávísir 12 yfir lágvísi 6 C gefur hávísi 257 yfir lágvísi 104 Rf plús 4 hávísir 1 yfir lágvísi 0 n; hávísir 206 yfir lágvísi 82 Pb plús hávísir 54 yfir lágvísi 24 Cr gefur hávísi 257 yfir lágvísi 106 Sg plús 3 hávísir 1 yfir lágvísi 0 n; í sömu röð og fyrri jafna: hávísir 249 yfir lágvísi 98 Cf plús hávísir 18 yfir lágvísi 8 O gefur hávísi 263 yfir lágvísi 106 Sg plús 4 hávísir 1 yfir lágvísi 0 n; og hávísir 209 yfir lágvísi 83 Bi plús hávísir 58 yfir lágvísi 26 Fe gefur hávísi 266 yfir lágvísi 109 Mt plús hávísi 1 yfir lágvísi 0 n.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68856",
+   "segmentId": "m68856:entry:auto-29",
+   "found": true,
+   "current": "ameríkín",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68856",
+   "segmentId": "m68856:para:fs-idm28146592",
+   "found": true,
+   "current": "Notaðar eldsneytisstangir innihalda ýmsar afurðir, sem samanstanda af óstöðugum kjörnum með sætistölu frá 25 til 60, nokkur þungefni, þar á meðal plúton og ameríkín, og óhvarfaðar úran samsætur. Óstöðugu kjarnarnir og þungefnin gefa notuðu eldsneyti hættulega mikla geislavirkni. Það tekur þúsundir ára fyrir langlífu samsæturnar að sundrast niður á öruggt stig. Endanleg örlög kjarnaofnsins sem mikilvægs orkugjafa í Bandaríkjunum velta líklega á því hvort hægt verði að þróa pólitískt og vísindalega viðunandi tækni til að vinna úr og geyma íhluti notaðra eldsneytisstanga.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68856",
+   "segmentId": "m68856:entry:auto-37",
+   "found": true,
+   "current": "kalifornín",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68856",
+   "segmentId": "m68856:entry:auto-41",
+   "found": true,
+   "current": "einsteinín",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68856",
+   "segmentId": "m68856:entry:auto-45",
+   "found": true,
+   "current": "mendelevín",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68856",
+   "segmentId": "m68856:entry:auto-49",
+   "found": true,
+   "current": "nóbelín",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68856",
+   "segmentId": "m68856:problem:fs-idm84813904",
+   "found": true,
+   "current": "(c) lawrensín-257, framleitt með hvarfi Cf-250 og B-11",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68856",
+   "segmentId": "m68856:entry:auto-53",
+   "found": true,
+   "current": "rutherfordín",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68856",
+   "segmentId": "m68856:entry:auto-57",
+   "found": true,
+   "current": "seaborgín",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 21,
+   "moduleId": "m68856",
+   "segmentId": "m68856:entry:auto-61",
+   "found": true,
+   "current": "meitnerín",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 12,
+   "moduleId": "m68795",
+   "segmentId": "m68795:para:fs-idm247003792",
+   "found": true,
+   "current": "Flestir nútíma þríhliða hvarfakútar hafa yfirborð sem er gegndreypt með platínu-ródín hvata, sem hvetur umbreytingu nituroxíðs í tvíköfnunarefni og súrefni, auk umbreytingar kolmónoxíðs og kolvetna eins og oktans í koltvíoxíð og vatnsgufu:",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": -1,
+   "moduleId": "m68859",
+   "segmentId": "m68859:alt:fs-idp64991424-alt",
+   "found": true,
+   "current": "Lotukerfi frumefnanna er sýnt. Dálkarnir 18 eru merktir „Flokkur“ og raðirnar 7 eru merktar „Lota.“ Fyrir neðan töfluna til hægri er reitur merktur „Litakóði“ með mismunandi litum fyrir málma, hálfmálma og málmleysingja, ásamt föstum efnum, vökvum og gasi. Vinstra megin við þennan reit er stækkuð mynd af efsta reitnum lengst til vinstri í töflunni. Talan 1 er í efra vinstra horninu og er merkt „Sætistala.“ Bókstafurinn „H“ er í miðjunni í rauðum lit sem gefur til kynna að það sé gas. Hann er merktur „Efnatákn.“ Fyrir neðan það er talan 1,008 sem er merkt „Atómmassi.“ Fyrir neðan það er orðið vetni sem er merkt „heiti.“ Liturinn á reitnum gefur til kynna að það sé málmleysingi. Hverju frumefni verður lýst í þessari röð: sætistala; heiti; efnatákn; hvort það er málmur, hálfmálmur eða málmleysingi; hvort það er fast efni, vökvi eða gas; og atómmassi. Efst til vinstri í töflunni, eða í lotu 1, flokki 1, er reitur sem inniheldur „1; vetni; H; málmleysingi; gas; og 1,008.“ Það er aðeins einn annar frumefnisreitur í lotu 1, flokki 18, sem inniheldur „2; helíum; He; málmleysingi; gas; og 4,003.“ Lota 2, flokkur 1 inniheldur „3; litíum; Li; málmur; fast efni; og 6,94.“ Flokkur 2 inniheldur „4; beryllíum; Be; málmur; fast efni; og 9,012.“ Sleppt er úr flokkum 3 til 12 og flokkur 13 inniheldur „5; bór; B; hálfmálmur; fast efni; 10,81.“ Flokkur 14 inniheldur „6; kolefni; C; málmleysingi; fast efni; og 12,01.“ Flokkur 15 inniheldur „7; nitur; N; málmleysingi; gas; og 14,01.“ Flokkur 16 inniheldur „8; súrefni; O; málmleysingi; gas; og 16,00.“ Flokkur 17 inniheldur „9; flúor; F; málmleysingi; gas; og 19,00.“ Flokkur 18 inniheldur „10; neon; Ne; málmleysingi; gas; og 20,18.“ Lota 3, flokkur 1 inniheldur „11; natríum; Na; málmur; fast efni; og 22,99.“ Flokkur 2 inniheldur „12; magnesíum; Mg; málmur; fast efni; og 24,31.“ Aftur er sleppt úr flokkum 3 til 12 í lotu 3 og flokkur 13 inniheldur „13; ál; Al; málmur; fast efni; og 26,98.“ Flokkur 14 inniheldur „14; kísill; Si; hálfmálmur; fast efni; og 28,09.“ Flokkur 15 inniheldur „15; fosfór; P; málmleysingi; fast efni; og 30,97.“ Flokkur 16 inniheldur „16; brennisteinn; S; málmleysingi; fast efni; og 32,06.“ Flokkur 17 inniheldur „17; klór; Cl; málmleysingi; gas; og 35,45.“ Flokkur 18 inniheldur „18; argon; Ar; málmleysingi; gas; og 39,95.“ Lota 4, flokkur 1 inniheldur „19; kalíum; K; málmur; fast efni; og 39,10.“ Flokkur 2 inniheldur „20; kalsíum; Ca; málmur; fast efni; og 40,08.“ Flokkur 3 inniheldur „21; skandíum; Sc; málmur; fast efni; og 44,96.“ Flokkur 4 inniheldur „22; títan; Ti; málmur; fast efni; og 47,87.“ Flokkur 5 inniheldur „23; vanadíum; V; málmur; fast efni; og 50,94.“ Flokkur 6 inniheldur „24; króm; Cr; málmur; fast efni; og 52,00.“ Flokkur 7 inniheldur „25; mangan; Mn; málmur; fast efni; og 54,94.“ Flokkur 8 inniheldur „26; járn; Fe; málmur; fast efni; og 55,85.“ Flokkur 9 inniheldur „27; kóbalt; Co; málmur; fast efni; og 58,93.“ Flokkur 10 inniheldur „28; nikkel; Ni; málmur; fast efni; og 58,69.“ Flokkur 11 inniheldur „29; kopar; Cu; málmur; fast efni; og 63,55.“ Flokkur 12 inniheldur „30; sink; Zn; málmur; fast efni; og 65,38.“ Flokkur 13 inniheldur „31; gallíum; Ga; málmur; fast efni; og 69,72.“ Flokkur 14 inniheldur „32; german; Ge; hálfmálmur; fast efni; og 72,63.“ Flokkur 15 inniheldur „33; arsen; As; hálfmálmur; fast efni; og 74,92.“ Flokkur 16 inniheldur „34; selen; Se; málmleysingi; fast efni; og 78,97.“ Flokkur 17 inniheldur „35; bróm; Br; málmleysingi; vökvi; og 79,90.“ Flokkur 18 inniheldur „36; krypton; Kr; málmleysingi; gas; og 83,80.“ Lota 5, flokkur 1 inniheldur „37; rúbidíum; Rb; málmur; fast efni; og 85,47.“ Flokkur 2 inniheldur „38; strontíum; Sr; málmur; fast efni; og 87,62.“ Flokkur 3 inniheldur „39; yttríum; Y; málmur; fast efni; og 88,91.“ Flokkur 4 inniheldur „40; sirkon; Zr; málmur; fast efni; og 91,22.“ Flokkur 5 inniheldur „41; níóbíum; Nb; málmur; fast efni; og 92,91.“ Flokkur 6 inniheldur „42; mólýbden; Mo; málmur; fast efni; og 95,95.“ Flokkur 7 inniheldur „43; teknetíum; Tc; málmur; fast efni; og 97.“ Flokkur 8 inniheldur „44; rúþen; Ru; málmur; fast efni; og 101,1.“ Flokkur 9 inniheldur „45; ródíum; Rh; málmur; fast efni; og 102,9.“ Flokkur 10 inniheldur „46; palladíum; Pd; málmur; fast efni; og 106,4.“ Flokkur 11 inniheldur „47; silfur; Ag; málmur; fast efni; og 107,9.“ Flokkur 12 inniheldur „48; kadmíum; Cd; málmur; fast efni; og 112,4.“ Flokkur 13 inniheldur „49; indíum; In; málmur; fast efni; og 114,8.“ Flokkur 14 inniheldur „50; tin; Sn; málmur; fast efni; og 118,7.“ Flokkur 15 inniheldur „51; antímon; Sb; hálfmálmur; fast efni; og 121,8.“ Flokkur 16 inniheldur „52; tellúr; Te; hálfmálmur; fast efni; og 127,6.“ Flokkur 17 inniheldur „53; joð; I; málmleysingi; fast efni; og 126,9.“ Flokkur 18 inniheldur „54; xenon; Xe; málmleysingi; gas; og 131,3.“.“ Lota 6, flokkur 1 inniheldur „55; sesín; Cs; málmur; fast efni; og 132,9.“ Flokkur 2 inniheldur „56; barín; Ba; málmur; fast efni; og 137,3.“ Flokkur 3 rýfur mynstrið. Í reitnum er stór ör sem vísar á röð frumefna fyrir neðan töfluna með sætistölur frá 57–71. Í röð eftir sætistölu inniheldur fyrsti reiturinn í þessari röð „57; lantan; La; málmur; fast efni; og 138,9.“ Til hægri við hann er næsti reitur „58; serín; Ce; málmur; fast efni; og 140,1.“ Næst er „59; praseódým; Pr; málmur; fast efni; og 140,9.“ Næst er „60; neódým; Nd; málmur; fast efni; og 144,2.“ Næst er „61; prómetín; Pm; málmur; fast efni; og 145.“ Næst er „62; samarín; Sm; málmur; fast efni; og 150,4.“ Næst er „63; evrópín; Eu; málmur; fast efni; og 152,0.“ Næst er „64; gadólín; Gd; málmur; fast efni; og 157,3.“ Næst er „65; terbín; Tb; málmur; fast efni; og 158,9.“ Næst er „66; dysprósín; Dy; málmur; fast efni; og 162,5.“ Næst er „67; hólmín; Ho; málmur; fast efni; og 164,9.“ Næst er „68; erbín; Er; málmur; fast efni; og 167,3.“ Næst er „69; túlín; Tm; málmur; fast efni; og 168,9.“ Næst er „70; ytterbín; Yb; málmur; fast efni; og 173,1.“ Sá síðasti í þessari sérstöku röð er „71; lútetín; Lu; málmur; fast efni; og 175,0.“ Áfram í lotu 6, flokkur 4 inniheldur „72; hafnfn; Hf; málmur; fast efni; og 178,5.“ Flokkur 5 inniheldur „73; tantal; Ta; málmur; fast efni; og 180,9.“ Flokkur 6 inniheldur „74; volfram; W; málmur; fast efni; og 183,8.“ Flokkur 7 inniheldur „75; renín; Re; málmur; fast efni; og 186,2.“ Flokkur 8 inniheldur „76; osmín; Os; málmur; fast efni; og 190,2.“ Flokkur 9 inniheldur „77; iridín; Ir; málmur; fast efni; og 192,2.“ Flokkur 10 inniheldur „78; platína; Pt; málmur; fast efni; og 195,1.“ Flokkur 11 inniheldur „79; gull; Au; málmur; fast efni; og 197,0.“ Flokkur 12 inniheldur „80; kvikasilfur; Hg; málmur; vökvi; og 200,6.“ Flokkur 13 inniheldur „81; tallín; Tl; málmur; fast efni; og 204,4.“ Flokkur 14 inniheldur „82; blý; Pb; málmur; fast efni; og 207,2.“ Flokkur 15 inniheldur „83; bismút; Bi; málmur; fast efni; og 209,0.“ Flokkur 16 inniheldur „84; pólon; Po; málmur; fast efni; og 209.“ Flokkur 17 inniheldur „85; astat; At; hálfmálmur; fast efni; og 210.“ Flokkur 18 inniheldur „86; radon; Rn; málmleysingi; gas; og 222.“ Lota 7, flokkur 1 inniheldur „87; fransín; Fr; málmur; fast efni; og 223.“ Flokkur 2 inniheldur „88; radín; Ra; málmur; fast efni; og 226.“ Flokkur 3 rýfur mynstrið á svipaðan hátt og gerist í lotu 6. Stór ör vísar frá reitnum í lotu 7, flokki 3 yfir í sérstaka röð sem inniheldur frumefnin með sætistölur frá 89–103, rétt fyrir neðan röðina sem inniheldur sætistölur 57–71. Í röð eftir sætistölu inniheldur fyrsti reiturinn í þessari röð „89; aktín; Ac; málmur; fast efni; og 227.“ Til hægri við hann er næsti reitur „90; þórín; Th; málmur; fast efni; og 232,0.“ Næst er „91; prótaktín; Pa; málmur; fast efni; og 231,0.“ Næst er „92; úran; U; málmur; fast efni; og 238,0.“ Næst er „93; neptún; Np; málmur; fast efni; og Np.“ Næst er „94; plúton; Pu; málmur; fast efni; og 244.“ Næst er „95; amerísín; Am; málmur; fast efni; og 243.“ Næst er „96; kúríum; Cm; málmur; fast efni; og 247.“ Næst er „97; berkelín; Bk; málmur; fast efni; og 247.“ Næst er „98; kalifornín; Cf; málmur; fast efni; og 251.“ Næst er „99; einsteinín; Es; málmur; fast efni; og 252.“ Næst er „100; fermín; Fm; málmur; fast efni; og 257.“ Næst er „101; mendelevín; Md; málmur; fast efni; og 258.“ Næst er „102; nóbelín; No; málmur; fast efni; og 259.“ Sá síðasti í þessari sérstöku röð er „103; lawrensín; Lr; málmur; fast efni; og 262.“ Áfram í lotu 7, flokkur 4 inniheldur „104; rutherfordín; Rf; málmur; fast efni; og 267.“ Flokkur 5 inniheldur „105; dubnín; Db; málmur; fast efni; og 270.“ Flokkur 6 inniheldur „106; seaborgín; Sg; málmur; fast efni; og 271.“ Flokkur 7 inniheldur „107; bohrín; Bh; málmur; fast efni; og 270.“ Flokkur 8 inniheldur „108; hassín; Hs; málmur; fast efni; og 277.“ Flokkur 9 inniheldur „109; meitnerín; Mt; ekki tilgreint; fast efni; og 276.“ Flokkur 10 inniheldur „110; darmstadtín; Ds; ekki tilgreint; fast efni; og 281.“ Flokkur 11 inniheldur „111; röntgenín; Rg; ekki tilgreint; fast efni; og 282.“ Flokkur 12 inniheldur „112; kópernikín; Cn; málmur; vökvi; og 285.“ Flokkur 13 inniheldur „113; ununtrín; Uut; ekki tilgreint; fast efni; og 285.“ Flokkur 14 inniheldur „114; fleróvín; Fl; ekki tilgreint; fast efni; og 289.“ Flokkur 15 inniheldur „115; ununpentín; Uup; ekki tilgreint; fast efni; og 288.“ Flokkur 16 inniheldur „116; livermorín; Lv; ekki tilgreint; fast efni; og 293.“ Flokkur 17 inniheldur „117; ununseptín; Uus; ekki tilgreint; fast efni; og 294.“ Flokkur 18 inniheldur „118; ununoctium; U u o; ótilgreint; fast efni; og 294.“",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 7,
+   "moduleId": "m68741",
+   "segmentId": "m68741:para:fs-idm6705632",
+   "found": true,
+   "current": "[[xref:CNX_Chem_07_05_BornHaber]] sýnir Born-Haber-hringferlið fyrir myndun sesínflúoríðs í föstu formi.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 7,
+   "moduleId": "m68741",
+   "segmentId": "m68741:para:fs-idp53345328",
+   "found": true,
+   "current": "Við byrjum með frumefnin í sínu algengasta ástandi, Cs([[i:s]]) og F[[sub:2]]([[i:g]]). [[MATH:21]] táknar umbreytingu á föstu sesíni í gas og síðan breytir jónunarorkan sesínatómum á gasformi í katjónir. Í næsta skrefi tökum við tillit til orkunnar sem þarf til að rjúfa F–F tengið til að mynda flúoratóm. Að breyta einu móli af flúoratómi í flúoríðjónir er útvermið ferli, þannig að þetta skref gefur frá sér orku (rafeindasækni) og er sýnt sem lækkun meðfram [[i:y]]-ásnum. Við höfum nú eitt mól af Cs-katjónum og eitt mól af F-anjónum. Þessar jónir sameinast og mynda fast sesínflúoríð. Vermibreytingin í þessu skrefi er neikvæða gildi grindarorkunnar, þannig að hún er einnig útvermið stærð. Heildarorkan sem fer í þessa umbreytingu er jöfn myndunarvermi efnasambandsins út frá frumefnum sínum, [[MATH:22]], sem ákvarðað er með tilraunum. Í þessu tilfelli er heildarbreytingin útvermin.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 7,
+   "moduleId": "m68741",
+   "segmentId": "m68741:para:fs-idp28364752",
+   "found": true,
+   "current": "Þannig er hægt að reikna grindarorkuna út frá öðrum gildum. Fyrir sesínflúoríð, með því að nota þessi gögn, er grindarorkan:",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 12,
+   "moduleId": "m68787",
+   "segmentId": "m68787:para:fs-idm33181984",
+   "found": true,
+   "current": "Horfðu á [[link:þetta myndband|http://openstax.org/l/16cesium]] til að sjá hvarf sesíums við vatn í hægri hreyfingu og umræðu um hvernig ástand hvarfefna og agnastærð hafa áhrif á efnahvarfshraða.",
+   "liveEdits": []
+  },
+  {
+   "set": "mixed",
+   "chapter": 18,
+   "moduleId": "m68832",
+   "segmentId": "m68832:para:fs-idm162489136",
+   "found": true,
+   "current": "Einfaldasta aðferðin til að útbúa grafen er að nota límband til að fjarlægja eitt lag af grafeni af yfirborði grafítbúts. Þessi aðferð virkar vegna þess að það eru aðeins veikir London-dreifikraftar milli laganna í grafíti. Aðrar aðferðir eru að setja eitt lag af kolefnisatómum á yfirborð einhvers annars efnis (rúþen, iridín eða kopar) eða að mynda það á yfirborði kísilkarbíðs með þurrgufun kísils.",
+   "liveEdits": []
+  }
+ ]
+}

@@ -1,14 +1,26 @@
 """Build never-official-readonly.cjs from render-census.cjs (same read-only header, element table and
 classifier) with a main loop that LISTS segments instead of counting forms. The targets are computed
 from the committed census: every name that occurs and whose forms are never the official one.
-Usage (from this folder): python3 -I build-never-official.py render-census.cjs ../data/render-census-69-names.json never-official-readonly.cjs"""
+Usage (from this folder): python3 -I build-never-official.py render-census.cjs ../data/render-census-69-names.json never-official-readonly.cjs
+
+With --mixed first, it builds mixed-readonly.cjs instead: the targets are the names whose MT forms are partly
+official and partly not, and a segment that ALSO holds the official name is kept (marked alsoOfficial), because
+an editor fixes the non-official form there too:
+  python3 -I build-never-official.py --mixed render-census.cjs ../data/render-census-69-names.json mixed-readonly.cjs"""
 import json
 import sys
 
-src = open(sys.argv[1], encoding='utf-8').read()
-census = json.load(open(sys.argv[2], encoding='utf-8'))
-targets = [r['english'][0] for r in census['rows']
-           if r['enSegments'] > 0 and r['bases'] and not any(v['official'] for v in r['bases'].values())]
+MIXED = sys.argv[1] == '--mixed'
+args = sys.argv[2:] if MIXED else sys.argv[1:]
+src = open(args[0], encoding='utf-8').read()
+census = json.load(open(args[1], encoding='utf-8'))
+if MIXED:
+    targets = [r['english'][0] for r in census['rows']
+               if r['enSegments'] > 0 and r['bases'] and any(v['official'] for v in r['bases'].values())
+               and not all(v['official'] for v in r['bases'].values())]
+else:
+    targets = [r['english'][0] for r in census['rows']
+               if r['enSegments'] > 0 and r['bases'] and not any(v['official'] for v in r['bases'].values())]
 
 cut = src.index('const targets = ELEMENTS.filter')
 head = src[:cut]
@@ -101,5 +113,27 @@ process.stdout.write(JSON.stringify(doc) + '\\nEND-OF-REPORT\\n', () => {
 });
 """ % json.dumps(targets)
 
-open(sys.argv[3], 'w', encoding='utf-8').write(head + main)
+if MIXED:
+    old_c = ("// READ-ONLY dry lists: for each element name whose MT forms are never the official one, the segments\n"
+             "// holding a non-official form.")
+    assert head.count(old_c) == 1
+    head = head.replace(old_c, "// READ-ONLY dry lists: for each element name whose MT forms are partly official, the segments\n"
+                               "// holding a non-official form (a segment that also holds the official name is kept).")
+    old_skip = """      // The worklist's rule: a segment already holding the official name is not listed.
+      if (findWholeWord(is, t.e.official, { exactCase: false })) {
+        t.alreadyOfficial += 1;
+        continue;
+      }"""
+    assert main.count(old_skip) == 1
+    main = main.replace(old_skip, """      // Kept even when it also holds the official name: the editor fixes the non-official form there too.
+      const alsoOfficial = !!findWholeWord(is, t.e.official, { exactCase: false });
+      if (alsoOfficial) t.alreadyOfficial += 1;""")
+    old_item = "        excerpt: excerptOf(is, first.index, first.word.length),\n      });"
+    assert main.count(old_item) == 1
+    main = main.replace(old_item, "        excerpt: excerptOf(is, first.index, first.word.length),\n        alsoOfficial,\n      });")
+    # The census names aluminum by its search spelling; the element table's first English name is aluminium.
+    old_match = "ELEMENTS.filter((e) => tset.has(e.english[0]))"
+    assert main.count(old_match) == 1
+    main = main.replace(old_match, "ELEMENTS.filter((e) => tset.has(e.searchEnglish[0]))")
+open(args[2], 'w', encoding='utf-8').write(head + main)
 print('targets', len(targets), targets)

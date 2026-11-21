@@ -66,6 +66,15 @@ python3 -I build-fix-targets-fetch.py --never-official nine-readonly.cjs ../data
 python3 -I build-editor-fixes.py ../data/never-official-targets.json ../data/comparison-official-vs-resolver.json \
     ../data/render-census-69-names.json ../data/dry-counts-9-names.json bin.json \
     ../reports/editor-fixes-never-official ../reports/editor-fixes.json
+# measurement 9 (after measurements 7 and 8):
+python3 -I build-never-official.py --mixed render-census.cjs ../data/render-census-69-names.json mixed-readonly.cjs
+python3 -I build-fix-targets-fetch.py --mixed nine-readonly.cjs ../data/mixed-lists.json fetch-mixed-targets.cjs
+python3 -I build-editor-fixes.py ../data/mixed-targets.json ../data/comparison-official-vs-resolver.json \
+    ../data/render-census-69-names.json ../data/dry-counts-9-names.json bin.json \
+    ../reports/editor-fixes-mixed ../reports/editor-fixes.json ../reports/editor-fixes-never-official.json
+# every name fix in measurements 7–9 sits in a segment whose English names that element (exit 1 if not):
+python3 -I check-anchoring.py ../data/comparison-official-vs-resolver.json ../../../../../books/efnafraedi-2e/02-for-mt \
+    ../reports/editor-fixes.json ../reports/editor-fixes-never-official.json ../reports/editor-fixes-mixed.json
 ```
 
 In the sections below, paths are relative to `evidence/2026-11-20-census/`.
@@ -256,6 +265,44 @@ run's text for them is asserted identical, and they are left out of the paste fi
 pasted twice. **The other 61 all change:** 59 name fixes, 32 compound fixes (31 `litíum-` →
 `liþíum-` and `samarínjón`), and no flagged compound or derived word. The review file has the nine
 book entries' expected worklists three ways: entries first, after these fixes, and after both sets.
+
+### 9. The mixed names: dry lists and the editors' fixes
+
+The 49 census rows marked ⚠ in measurement 4: names whose MT forms are partly official.
+
+**Dry lists.** `instruments/mixed-readonly.cjs` is built by `build-never-official.py --mixed` from the
+same classifier as measurement 6. Unlike measurement 6, it keeps a segment that also holds the
+official name and marks it `alsoOfficial`, because an editor fixes the non-official form there too.
+The worklist's skip rule would have dropped exactly those segments. → `data/mixed-lists.json`,
+`reports/mixed-segments.md`. **Result:** 309 listings over 156 distinct segments; 17 also hold the
+official name, and 25 listings rest only on a near match.
+
+**Fixes.** Same rule script, same rulings. `instruments/fetch-mixed-targets.cjs` read the 156
+segments read-only on production → `data/mixed-targets.json`. No segment had a live edit.
+→ `reports/editor-fixes-mixed.md`, `reports/editor-fixes-mixed-paste.txt`,
+`reports/editor-fixes-mixed.json`
+
+- **17 are already drafted in an earlier set** (10 in measurement 7, 7 in measurement 8).
+  Their text is asserted identical, and they are left out of the paste file.
+- **22 have nothing to fix.** They were listed only by a near match that is not an element name
+  (`röðina`, `talin`, `kalksteinn`, `magn`, `Seaborg`) or by an excluded noise base. They are named in
+  the review and left out of the paste file.
+- **The other 117 change:** 150 name fixes, 50 compound fixes and 1 phrase edit.
+
+Three additions to the rule script for this run; none changes a measurement-7 or measurement-8
+output, which still rebuild byte-identically:
+
+1. **A ruling-2 phrase rule** for the actinide series' glossary definition,
+   `(einnig, aktínóíðaröð) aktín og …` → `aktíníum og …`. It is the counterpart of the lanthanide one.
+2. **Beryllium misspelt with one *l*** (`berillíum`, `berillín`) is added as a base by name. The
+   census had it only in its weak tier; that tier's other words are not element names.
+3. **A marker guard.** In each word-level step, every marker's type and every id after a `|` must
+   come out unchanged, so no name inside an xref or a term id is ever rewritten.
+
+**Anchoring check.** `instruments/check-anchoring.py` confirms that every name fix in measurements
+7–9 sits in a segment whose *English* names that element: **0 unanchored**, in all three sets. It
+exists because the rule script fixes every off-list name in a segment, and a few bases are also
+ordinary words (`serín` is also the amino acid serine, `renín` the enzyme renin).
 
 ## Blind spots
 
