@@ -72,7 +72,7 @@ python3 -I build-fix-targets-fetch.py --mixed nine-readonly.cjs ../data/mixed-li
 python3 -I build-editor-fixes.py ../data/mixed-targets.json ../data/comparison-official-vs-resolver.json \
     ../data/render-census-69-names.json ../data/dry-counts-9-names.json bin.json \
     ../reports/editor-fixes-mixed ../reports/editor-fixes.json ../reports/editor-fixes-never-official.json
-# every name fix in measurements 7–9 sits in a segment whose English names that element (exit 1 if not):
+# every name fix and hand fix in measurements 7–10 sits in a segment whose English names that element (exit 1 if not):
 python3 -I check-anchoring.py ../data/comparison-official-vs-resolver.json ../../../../../books/efnafraedi-2e/02-for-mt \
     ../reports/editor-fixes.json ../reports/editor-fixes-never-official.json ../reports/editor-fixes-mixed.json
 ```
@@ -303,6 +303,26 @@ output, which still rebuild byte-identically:
 7–9 sits in a segment whose *English* names that element: **0 unanchored**, in all three sets. It
 exists because the rule script fixes every off-list name in a segment, and a few bases are also
 ordinary words (`serín` is also the amino acid serine, `renín` the enzyme renin).
+
+### 10. The hand fix: hafnium's garble in the periodic-table alts
+
+The MT wrote **`hafnfn`** for hafnium in the four periodic-table alts (ch2 `m68695`, ch18 `m68829`,
+ch19 `m68842`, appendices `m68859`), always in the nominative slot `„72; hafnfn; Hf; …“`. It is not a
+recognisable form of any name, so no rule in measurements 7–9 could fix it. **[USER] ruled on
+2026-11-21 that it reads `hafníum`.** BÍN has the form.
+
+The rule script holds this in an explicit hand-fix table (`HAND`), applied as its own verified step
+after the name fixes, and asserts that no `hafnfn` remains. The four alts belong to measurement 7's
+set and are the overlaps in measurements 8 and 9, so all three runs were regenerated:
+
+- **In each run, only those four segments change, and only by `hafnfn` → `hafníum`.** Every other
+  segment, count and key is identical.
+- `editor-fixes-paste.txt` differs by those four words. The paste files of measurements 8 and 9 are
+  unchanged, since they leave the alts out.
+
+`check-anchoring.py` now covers hand fixes as well; it reports 0 unanchored in all three runs.
+Measurement 7's counts above (35 substitutions, 5 phrase edits, 221 name fixes) stand; the hand fix
+is counted on its own, 4 per run.
 
 ## Blind spots
 

@@ -26,7 +26,7 @@ for path in drafts:
     bad = []
     for r in json.load(open(path, encoding='utf-8'))['segments']:
         en = EN.get(r['segmentId'], '').lower()
-        for old, new in r['names']:
+        for old, new in r['names'] + r.get('hand', []):  # hand fixes too (step H)
             off = max((o for o in off2en if new.lower().startswith(o)), key=len, default=None)
             if off is None or not any(re.search(r'(?<![a-z])' + re.escape(a) + r'(?![a-z])', en) for a in off2en[off]):
                 bad.append((r['segmentId'], old, new))

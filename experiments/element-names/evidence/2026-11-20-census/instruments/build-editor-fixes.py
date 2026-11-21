@@ -194,6 +194,20 @@ def step_d3(text):
     return re.sub(r'\w+', rep, text), pairs, notes, compounds
 
 
+# ── Step H: hand fixes, one-off corrections of MT garbles that match no rule ─────────────
+# [USER] 2026-11-21: `hafnfn` (hafnium in the four periodic-table alts) is an MT garble; read it as hafníum.
+HAND = {'hafnfn': 'hafníum'}
+
+
+def step_hand(text):
+    pairs = []
+    def rep(m):
+        w = m.group(0)
+        n = keepcase(w, HAND[w.lower()]); pairs.append((w, n)); return n
+    t = re.sub(W + '(?:' + '|'.join(map(re.escape, HAND)) + ')' + WE, rep, text, flags=re.I)
+    return t, pairs
+
+
 res = []
 for s in segs:
     sid, cur = s['segmentId'], s['current']
@@ -202,6 +216,9 @@ for s in segs:
     b, phrases = step_phrases(a, sid)
     c, pc, notes, comps = step_d3(b)
     c = verified(b, c, pc, 'D3', sid)
+    h, ph = step_hand(c)
+    c = verified(c, h, ph, 'H', sid)
+    assert not re.search(r'(?i)hafnfn', c), (sid, 'a garble the hand fixes name is still there')
     left_re = {'ruthenium': [r'rúþen(?!íum)\w*'], 'lanthanide': [r'lantan(?:íð|óíð)\w*'],
                'never-official': [r'rúþen(?!íum)\w*', r'lantan(?:íð|óíð)\w*'],
                'mixed': [r'rúþen(?!íum)\w*', r'lantan(?:íð|óíð)\w*']}[s['set']]
@@ -214,7 +231,7 @@ for s in segs:
     res.append({'set': s['set'], 'chapter': s['chapter'], 'moduleId': s['moduleId'], 'segmentId': sid,
                 'current': cur, 'proposed': c, 'stem': pa, 'phrases': phrases, 'names': pc,
                 'notes': sorted(set(notes)), 'masculineKept': masc, 'length': len(cur),
-                **({'compounds': comps} if comps else {})})
+                **({'compounds': comps} if comps else {}), **({'hand': ph} if ph else {})})
 
 # The nine book entries' expected worklists, before and after these fixes are saved.
 by_id = {r['segmentId']: r for r in res}
@@ -245,7 +262,7 @@ if NEVER:
         this = [i for i in ids if not (i in by_id and not still(by_id[i]['proposed']))]
         both = [i for i in ids if still(combined.get(i))]
         impact.append((sp['english'], len(ids), len(this), len(both)))
-    unchanged = [r['segmentId'] for r in res if not (r['stem'] or r['names'] or r['phrases'])]
+    unchanged = [r['segmentId'] for r in res if not (r['stem'] or r['names'] or r['phrases'] or r.get('hand'))]
     if MIXED:
         json.dump({'segments': res, 'overlapWithEarlierSets': {k: prior_file[k] for k in overlap},
                    'nothingToFix': unchanged, 'worklistImpact': impact},
@@ -294,6 +311,8 @@ if not NEVER:
                           + '; '.join(f'`{o}` → `{n}`' + (f' ×{c}' if c > 1 else '') for (o, n), c in pairs.items()))
             if r['masculineKept']:
                 md.append('- **Masculine (ruling 1):** ' + ', '.join(f'`{w}`' for w in r['masculineKept']))
+            if r.get('hand'):
+                md.append('- **Hand fix ([USER] 2026-11-21):** ' + '; '.join(f'`{o}` → `{n}`' for o, n in r['hand']))
             if r['length'] <= 1200:
                 md += ['', 'Current:', '```', r['current'], '```', 'Proposed:', '```', r['proposed'], '```', '']
             else:
@@ -365,6 +384,8 @@ else:
                       + '; '.join(f'`{o}` → `{n}`' + (f' ×{c}' if c > 1 else '') for (o, n), c in pairs.items()))
         if r['notes']:
             md.append('- **Notes:** ' + '; '.join(r['notes']))
+        if r.get('hand'):
+            md.append('- **Hand fix ([USER] 2026-11-21):** ' + '; '.join(f'`{o}` → `{n}`' for o, n in r['hand']))
         if dup or idle:
             md.append('')
             continue
@@ -376,4 +397,4 @@ else:
     open(out + '.md', 'w', encoding='utf-8').write('\n'.join(md))
     open(out + '-paste.txt', 'w', encoding='utf-8').write('\n'.join(paste))
 print('segments', len(res), '| stem', sum(len(r['stem']) for r in res), '| phrases', sum(len(r['phrases']) for r in res),
-      '| names', sum(len(r['names']) for r in res), '| impact', impact)
+      '| names', sum(len(r['names']) for r in res), '| hand', sum(len(r.get('hand', [])) for r in res), '| impact', impact)
