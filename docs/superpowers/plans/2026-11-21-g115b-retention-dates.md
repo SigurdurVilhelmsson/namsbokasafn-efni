@@ -40,10 +40,11 @@ Ships first, on its own branch and PR: each head-editor decision recorded before
 - Modify: `docs/plans/2026-07-21-post-item17-followup-campaign.md` (register: G1.15(b) Task 1 built)
 
 **Interfaces:**
-- Produces: `recordLabelFor(db, by) → string`. Returns `'aðalritstjóri'` for any account-made act: `by` has a `users` row (any role), or is GUID-shaped, or contains `@`. Any other `by` (the c19 loader's label, a test label) passes through unchanged. `displayNameFor` is unchanged: the head editor's screen (`server/routes/book-glossary.js`) keeps showing names.
+- Produces: `recordLabelFor(by) → string`. **Changed at the final review (2026-11-21, Important 3): it fails closed.** A known tool label passes through (`isToolLabel(by)`, true only for a member of `TOOL_LABELS`, which today holds `C19_LOAD_LABEL`, the c19 loader's label, imported by `server/scripts/load-book-glossary.js`); anything else, whether an account id of any shape, a retention placeholder or an unlisted label, is `'aðalritstjóri'`. The first build listed account shapes (a `users` row, a GUID, an `@`) and let everything else through, which would have published a numeric id whose row was gone. Later tasks use `isToolLabel` and `C19_LOAD_LABEL` from `bookGlossaryLayer.js`. `displayNameFor` is unchanged: the head editor's screen (`server/routes/book-glossary.js`) keeps showing names.
 - Produces: `recordDay(t) → string|null`. The `YYYY-MM-DD` an ISO-shaped time starts with; `null` stays `null`.
 - **Ruling (plan):** every write route is behind `requireHeadEditor('book')`, so the label names the authority the act required, not the account's current role. A later role change or account deletion therefore cannot rewrite a past row of the cumulative record.
 - The first export after deploy rewrites every time in the committed record to its date: one diff, expected.
+- **Final review (2026-11-21):** the terms page's notice (`UI.bookGlossary.publicNotice`) said the head editor's name is published; it now says the record shows `aðalritstjóri`, not their name, and still says the reason and source are public (`server/__tests__/ui-strings.test.js`). The label cases in Step 1 below are the first build's; the built tests are the fail-closed ones.
 
 - [ ] **Step 1: Write the failing tests** (in the renamed describe; reuse `addUser`, `GUID`, `historyBys`, `base`)
 
@@ -141,6 +142,9 @@ Expected: PASS
 **Files:** Create `server/lib/editorialRetention.js`; Test `server/__tests__/editorialRetention.test.js` (+ a planting helper in `server/__tests__/helpers/`).
 
 **Interfaces:** Produces `planStep(db, kind, nowMs) → { due: boolean, refusal: null|{reason, rows}, counts }` and `applyStep(db, kind, nowMs) → { changed, refusal }`. The `named` step, in one transaction: placeholders `fjarlægt-<rowid>` (text) and `-<rowid>` (integer), set on each person column whose `timeCol` is on or before the date; times in those rows cut to the day (text `YYYY-MM-DD`, `*_ms` to that day's 00:00 UTC, `jsonTimes` inside the JSON); `delete` tables lose their date-covered rows. Rows dated after the date are untouched and reported as `refusal: { reason: 'later-records' }` (step 1 still applies).
+- **Ruling (final review of Task 1, Important 1): the strip must leave the public glossary record unchanged.** Two consequences:
+  - The `book_glossary_exclusion`, `book_glossary_entry` and `book_glossary_change` person columns (`created_by`, `updated_by`, `by`) are stripped **through the layer's write API**, never by SQL from `editorialRetention.js` (CLAUDE.md: the book layer is written only through `server/lib/bookGlossaryLayer.js`). Add `stripLayerPersons(db, { throughDay })` there; `applyStep('named')` calls it inside its own transaction. It skips every value for which `isToolLabel` is true, so the c19 loader's 152 rows keep their label.
+  - A stripped account value becomes `fjarlægt-<rowid>`, which `recordLabelFor` writes as `aðalritstjóri` (it fails closed), and the layer's times are already days in the record. So the committed record is the same before and after.
 
 - [ ] Tests first, with a planting helper that writes one row per `SCOPE` table using names absent from `users`:
   - nothing changes before `effectiveMs`;
@@ -151,7 +155,8 @@ Expected: PASS
   - a second `applyStep` changes nothing;
   - a later row raises the refusal;
   - a control `users` row is unchanged;
-  - a thrown error mid-step leaves every row as it was.
+  - a thrown error mid-step leaves every row as it was;
+  - `buildBookGlossaryRecord(db, book)` is deep-equal before and after `applyStep('named')`, with an account-made row and a c19-labelled row both planted (control: the account row's `by` in the database did change, and the c19 row's did not).
 
   Watch red, implement, commit.
 
@@ -162,7 +167,7 @@ Expected: PASS
 **Interfaces:**
 - `unnamed`: clears `served_version_id` in `segment_edits` and `segment_acceptances`, then deletes `served_text_versions` and `module_openings` (inflight rows cascade). It refuses before `named` is recorded, and refuses outright while a row dated after 2028 references a served version or an opening is dated after 2028.
 - `consent`: deletes `research_consent` and `research_capture_losses`, and refuses before `research-retention.js` has recorded its retention deletion.
-- **Ruling (plan):** `research_deletions` holds no person column (migration 056: kind, interval id, time, verified flag), so by spec §4.4 step 3 none of its rows is deleted. That keeps `research-retention.js` from becoming due again. Flag to [USER]: the decision record's table lists deletion records as deleted after 2030; these name no one.
+- **Ruling (plan), confirmed by [USER] on 2026-11-21:** `research_deletions` holds no person column (migration 056: kind, interval id, time, verified flag), so by spec §4.4 step 3 none of its rows is deleted. That keeps `research-retention.js` from becoming due again. The decision record's table lists deletion records as deleted after 2030; [USER] ruled they are kept (register, G1.15(b)), and the register wins over that frozen table.
 
 - [ ] Tests first:
   - step 2 succeeds with references present, and a mutant that skips the clearing fails on the foreign key;
