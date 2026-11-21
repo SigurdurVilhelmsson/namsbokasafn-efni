@@ -75,6 +75,9 @@ python3 -I build-editor-fixes.py ../data/mixed-targets.json ../data/comparison-o
 # every name fix and hand fix in measurements 7–10 sits in a segment whose English names that element (exit 1 if not):
 python3 -I check-anchoring.py ../data/comparison-official-vs-resolver.json ../../../../../books/efnafraedi-2e/02-for-mt \
     ../reports/editor-fixes.json ../reports/editor-fixes-never-official.json ../reports/editor-fixes-mixed.json
+# 11. the draft §C73 recommendations for the 68 names with no chemistry row:
+python3 -I build-c73-recommendations.py ../data/comparison-official-vs-resolver.json \
+    ../data/render-census-69-names.json ../reports/c73-entry-recommendations
 ```
 
 In the sections below, paths are relative to `evidence/2026-11-20-census/`.
@@ -323,6 +326,33 @@ set and are the overlaps in measurements 8 and 9, so all three runs were regener
 `check-anchoring.py` now covers hand fixes as well; it reports 0 unanchored in all three runs.
 Measurement 7's counts above (35 substitutions, 5 phrase edits, 221 name fixes) stand; the hand fix
 is counted on its own, 4 per run.
+
+### 11. A draft §C73 recommendation for the 68 names with no chemistry row
+
+**A draft for [USER]'s ruling, not a ruling.** For each of the 68, it says whether a book glossary
+entry is needed. `instruments/build-c73-recommendations.py` computes it from the measurement-4 census
+and the official list. → `reports/c73-entry-recommendations.md`, `reports/c73-entry-recommendations.json`
+
+§C73 asks what the MT does unprompted, so the rule classifies each name by how often the MT gets it
+wrong:
+
+| Class | Recommendation | Names |
+|---|---|---:|
+| never official | entry | 14 |
+| unreliable (10% or more of the forms not official) | entry | 45 |
+| reliable (under 10%: sodium, potassium, calcium, yttrium) | not needed by §C73 | 4 |
+| homograph (*lead*, also the English verb) | no entry | 1 |
+| absent from the book | no entry | 4 |
+
+That makes **59 entries recommended**. The 10% threshold is the one free parameter, and every
+name's share is in the report; calcium, yttrium, magnesium and cadmium sit within 5 points of it.
+Beryllium's one-*l* forms and hafnium's `hafnfn` garble count as not official, and the noise bases
+are left out.
+
+**Not measured:** how the editor's term check treats compounds. For frequent names an entry might
+warn on a segment that uses the official name only in a compound, so the report suggests entering
+one and reading its warnings first. None of these names has a chemistry row, so each entry is an
+*add*, which gets no worklist from the page; the segment fixes come from measurements 8–9.
 
 ## Blind spots
 
