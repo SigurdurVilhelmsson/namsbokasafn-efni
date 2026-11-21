@@ -13,7 +13,15 @@ const require = createRequire(import.meta.url);
 const freshMigratedDb = require('./helpers/freshMigratedDb');
 const { plantAll, insert } = require('./helpers/retentionPlant.cjs');
 const { SCOPE } = require('../lib/editorialRetentionScope');
-const { NAMED_EDITING_RECORDS, effectiveMs } = require('../lib/retentionDates');
+const {
+  NAMED_EDITING_RECORDS,
+  UNNAMED_RECORDS,
+  CONSENT_RECORDS,
+  RESEARCH_RAW_ROWS,
+  effectiveMs,
+} = require('../lib/retentionDates');
+const Database = require('better-sqlite3');
+const { isDue: isResearchDue } = require('../scripts/research-retention');
 const { planStep, applyStep } = require('../lib/editorialRetention');
 const {
   addExclusion,
@@ -40,6 +48,12 @@ const SNAP_TABLES = [
   'book_chapters',
   'terminology_headwords',
   'retention_runs',
+  'served_text_versions',
+  'module_openings',
+  'module_opening_inflight',
+  'research_capture_losses',
+  'research_deletions',
+  'research_derived_datasets',
 ];
 /** Every row of the tables the step may touch, order-independent, plus every trigger's stored SQL. */
 function snapshot(d) {
@@ -448,5 +462,282 @@ describe('editorialRetention: the public glossary record is unchanged by the str
     expect(entry.created_by).toMatch(/^fjarlægt-/);
     expect(entry.updated_by).toMatch(/^fjarlægt-/);
     expect(db.prepare('SELECT COUNT(*) FROM book_glossary_change').pluck().get()).toBe(5); // no history row added
+  });
+});
+
+// ── Task 6: steps 2 and 3 (spec §4.4) ──
+
+const AT2 = effectiveMs(UNNAMED_RECORDS); // 00:00 UTC on 1 Jan 2030
+const AT3 = effectiveMs(CONSENT_RECORDS); // 00:00 UTC on 1 Jan 2031
+const HEX = 'a'.repeat(64);
+const blocking = (res) => res.refusals.filter((r) => r.blocking).map((r) => r.reason);
+const recordRun = (kind, ms) =>
+  db
+    .prepare('INSERT INTO retention_runs (kind, done_at_ms, rows_changed) VALUES (?, ?, 0)')
+    .run(kind, ms);
+
+function servedVersion(seg = 's1') {
+  return insert(db, 'served_text_versions', {
+    book: 'b',
+    chapter: 1,
+    module_id: 'm1',
+    segment_id: seg,
+    occurrence: 0,
+    en_sha256: HEX,
+    is_sha256: HEX,
+    layer: 'faithful',
+    en_text: 'en',
+    is_text: 'is',
+  });
+}
+function opening(module, ms) {
+  insert(db, 'module_openings', {
+    book: 'b',
+    chapter: 1,
+    module_id: module,
+    opened_at_ms: ms,
+    inflight_count: 1,
+  });
+  insert(db, 'module_opening_inflight', {
+    book: 'b',
+    chapter: 1,
+    module_id: module,
+    segment_id: 's1',
+    occurrence: 0,
+  });
+}
+function editServed(versionId, createdAt) {
+  return insert(db, 'segment_edits', {
+    book: 'b',
+    chapter: 1,
+    module_id: 'm1',
+    segment_id: `s-${versionId}-${createdAt}`,
+    original_content: 'a',
+    edited_content: 'b',
+    status: 'approved',
+    editor_id: 'fjarlægt-0',
+    editor_username: 'fjarlægt-0',
+    created_at: createdAt,
+    served_version_id: versionId,
+  });
+}
+const countOf = (t) => db.prepare(`SELECT COUNT(*) FROM "${t}"`).pluck().get();
+
+describe('editorialRetention: step 2, unnamed', () => {
+  it('nothing changes before its date takes effect', () => {
+    recordRun('named', AT);
+    editServed(servedVersion(), '2028-04-04 04:04:04');
+    opening('m1', Date.UTC(2028, 3, 4));
+    const before = snapshot(db);
+    expect(applyStep(db, 'unnamed', AT2 - 1)).toMatchObject({ due: false, changed: 0 });
+    expect(snapshot(db)).toEqual(before);
+  });
+
+  it('refuses before step 1 is recorded, and changes nothing', () => {
+    servedVersion();
+    const before = snapshot(db);
+    const res = applyStep(db, 'unnamed', AT2);
+    expect(blocking(res)).toEqual(['named-not-recorded']);
+    expect(res.changed).toBe(0);
+    expect(snapshot(db)).toEqual(before);
+  });
+
+  it('clears the served-version references, then deletes every served version and opening; inflight rows go by cascade', () => {
+    recordRun('named', AT);
+    const v1 = servedVersion('s1');
+    const v2 = servedVersion('s2');
+    const edit = editServed(v1, '2028-04-04 04:04:04');
+    const acc = insert(db, 'segment_acceptances', {
+      book: 'b',
+      chapter: 1,
+      module_id: 'm1',
+      segment_id: 's2',
+      accepted_content: 'x',
+      accepted_by: 'fjarlægt-0',
+      accepted_by_username: 'fjarlægt-0',
+      status: 'active',
+      accepted_at: '2028-04-05 05:05:05',
+      served_version_id: v2,
+    });
+    opening('m1', Date.UTC(2028, 3, 4));
+    // Control: the foreign key is live, so the references must be cleared before the delete.
+    expect(() => db.prepare('DELETE FROM served_text_versions WHERE id = ?').run(v1)).toThrow(
+      /FOREIGN KEY/
+    );
+
+    const res = applyStep(db, 'unnamed', AT2);
+    expect(blocking(res)).toEqual([]);
+    expect(
+      db.prepare('SELECT served_version_id FROM segment_edits WHERE id = ?').pluck().get(edit)
+    ).toBeNull();
+    expect(
+      db.prepare('SELECT served_version_id FROM segment_acceptances WHERE id = ?').pluck().get(acc)
+    ).toBeNull();
+    expect([
+      countOf('served_text_versions'),
+      countOf('module_openings'),
+      countOf('module_opening_inflight'),
+    ]).toEqual([0, 0, 0]);
+    expect(res.changed).toBe(2 + 2 + 1 + 1); // two references cleared, two versions, one opening, its inflight row
+  });
+
+  it('refuses outright while a row dated after 2028 references a served version', () => {
+    recordRun('named', AT);
+    editServed(servedVersion(), '2029-03-01 10:00:00');
+    const before = snapshot(db);
+    const res = applyStep(db, 'unnamed', AT2);
+    expect(blocking(res)).toEqual(['later-references']);
+    expect(res.refusals.find((r) => r.reason === 'later-references')).toMatchObject({
+      table: 'segment_edits',
+      rows: 1,
+    });
+    expect(snapshot(db)).toEqual(before);
+  });
+
+  it('refuses outright while a unit was opened after 2028', () => {
+    recordRun('named', AT);
+    servedVersion();
+    opening('m2', AT);
+    const before = snapshot(db);
+    const res = applyStep(db, 'unnamed', AT2);
+    expect(blocking(res)).toEqual(['later-openings']);
+    expect(snapshot(db)).toEqual(before);
+  });
+
+  it('a second unnamed changes nothing', () => {
+    recordRun('named', AT);
+    editServed(servedVersion(), '2028-04-04 04:04:04');
+    opening('m1', Date.UTC(2028, 3, 4));
+    applyStep(db, 'unnamed', AT2);
+    const once = snapshot(db);
+    expect(applyStep(db, 'unnamed', AT2).changed).toBe(0);
+    expect(snapshot(db)).toEqual(once);
+  });
+
+  it('planStep predicts it and writes nothing', () => {
+    recordRun('named', AT);
+    editServed(servedVersion(), '2028-04-04 04:04:04');
+    const before = snapshot(db);
+    const plan = planStep(db, 'unnamed', AT2);
+    expect(snapshot(db)).toEqual(before);
+    const res = applyStep(db, 'unnamed', AT2);
+    expect(Object.values(plan.counts).reduce((a, b) => a + b, 0)).toBe(res.changed);
+  });
+});
+
+describe('editorialRetention: step 3, consent', () => {
+  const consentRow = (givenMs, extra = {}) =>
+    insert(db, 'research_consent', {
+      user_id: 41,
+      decision: 'consented',
+      interval_id: 9,
+      consent_text_version: 'v1',
+      consent_text_sha256: HEX,
+      given_at_ms: givenMs,
+      ...extra,
+    });
+  const loss = (day) =>
+    insert(db, 'research_capture_losses', {
+      interval_id: 9,
+      book: 'b',
+      chapter: 1,
+      module_id: 'm1',
+      event_type: 'edit-save',
+      loss_day: day,
+      error_class: 'busy',
+      client_action_id: `l-${day}`,
+    });
+  const retentionDeletion = (ms) =>
+    db
+      .prepare(
+        "INSERT INTO research_deletions (kind, interval_id, done_at_ms, verified) VALUES ('retention', NULL, ?, 1)"
+      )
+      .run(ms);
+  const withdrawalDeletion = (ms) =>
+    db
+      .prepare(
+        "INSERT INTO research_deletions (kind, interval_id, done_at_ms, verified) VALUES ('withdrawal', 9, ?, 1)"
+      )
+      .run(ms);
+
+  it('nothing changes before its date takes effect', () => {
+    consentRow(Date.UTC(2027, 0, 5));
+    retentionDeletion(effectiveMs('2029-12-31'));
+    const before = snapshot(db);
+    expect(applyStep(db, 'consent', AT3 - 1)).toMatchObject({ due: false, changed: 0 });
+    expect(snapshot(db)).toEqual(before);
+  });
+
+  it('refuses before research-retention.js has recorded its deletion, and changes nothing', () => {
+    consentRow(Date.UTC(2027, 0, 5));
+    const before = snapshot(db);
+    const res = applyStep(db, 'consent', AT3);
+    expect(blocking(res)).toEqual(['research-retention-not-recorded']);
+    expect(snapshot(db)).toEqual(before);
+  });
+
+  it('deletes the consent and loss records, keeps the deletion and dataset records, and research-retention.js stays not due', () => {
+    consentRow(Date.UTC(2027, 0, 5), {
+      withdrawn_at_ms: Date.UTC(2027, 5, 1),
+      deletion_done_at_ms: Date.UTC(2027, 5, 2),
+    });
+    consentRow(Date.UTC(2027, 1, 6));
+    loss('2027-03-03');
+    withdrawalDeletion(Date.UTC(2027, 5, 2));
+    retentionDeletion(effectiveMs('2029-12-31'));
+    db.prepare(
+      "INSERT INTO research_derived_datasets (path, sha256, created_day) VALUES ('/data/set.jsonl', ?, '2029-11-30')"
+    ).run(HEX);
+
+    const res = applyStep(db, 'consent', AT3);
+    expect(blocking(res)).toEqual([]);
+    expect(res.changed).toBe(3);
+    expect([countOf('research_consent'), countOf('research_capture_losses')]).toEqual([0, 0]);
+    expect([countOf('research_deletions'), countOf('research_derived_datasets')]).toEqual([2, 1]);
+
+    // research-retention.js's isDue on an emptied research file (only the three tables its first arm reads): the
+    // retention row kept here is what keeps it from becoming due again and writing a fresh row.
+    const research = new Database(':memory:');
+    try {
+      research.exec(
+        'CREATE TABLE editor_keys (x); CREATE TABLE research_events (x); CREATE TABLE research_event_items (x);'
+      );
+      const due = (sessionsDb) =>
+        isResearchDue({
+          research,
+          sessions: sessionsDb,
+          retentionDate: RESEARCH_RAW_ROWS,
+          nowMs: AT3,
+        });
+      expect(due(db)).toBe(false);
+      // Control: with the retention row gone, it would be due again.
+      db.prepare("DELETE FROM research_deletions WHERE kind = 'retention'").run();
+      expect(due(db)).toBe(true);
+    } finally {
+      research.close();
+    }
+  });
+
+  it('refuses outright while a consent or loss record is dated after 2030', () => {
+    consentRow(Date.UTC(2027, 0, 5));
+    loss('2031-01-01');
+    retentionDeletion(effectiveMs('2029-12-31'));
+    const before = snapshot(db);
+    const res = applyStep(db, 'consent', AT3);
+    expect(blocking(res)).toEqual(['later-records']);
+    expect(res.refusals.find((r) => r.reason === 'later-records')).toMatchObject({
+      table: 'research_capture_losses',
+      rows: 1,
+    });
+    expect(snapshot(db)).toEqual(before);
+  });
+
+  it('a second consent changes nothing', () => {
+    consentRow(Date.UTC(2027, 0, 5));
+    retentionDeletion(effectiveMs('2029-12-31'));
+    applyStep(db, 'consent', AT3);
+    const once = snapshot(db);
+    expect(applyStep(db, 'consent', AT3).changed).toBe(0);
+    expect(snapshot(db)).toEqual(once);
   });
 });

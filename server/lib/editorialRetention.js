@@ -1,6 +1,6 @@
 /**
  * The editorial retention core (G1.15(b) spec §4.3, §4.4; plan Task 5): plan and apply one retention step against a
- * clock argument. Task 5 builds step 1, `named`; steps 2 and 3 come in Task 6, the CLI and the run record in Task 7.
+ * clock argument: step 1 `named`, step 2 `unnamed` and step 3 `consent`. The CLI and the run record are Task 7's.
  *
  * `named` (NAMED_EDITING_RECORDS, 31 Dec 2028), in one IMMEDIATE transaction:
  *   - every strip table (server/lib/editorialRetentionScope.js): each person value dated on or before the date, by its
@@ -18,15 +18,30 @@
  * dropped and recreated from sqlite_master's own SQL inside the step's transaction: a failure anywhere rolls the
  * triggers back with the rows. This is DDL on the live database, run by the backup cron (Task 8).
  *
+ * `unnamed` (UNNAMED_RECORDS, 31 Dec 2029): clears served_version_id in segment_edits and segment_acceptances, then
+ * deletes served_text_versions and module_openings (module_opening_inflight goes by cascade). It REFUSES OUTRIGHT,
+ * changing nothing, before `named` is recorded, while a row not provably dated on or before 2028 references a served
+ * version, or while a unit was opened after 2028 (spec §4.4: continued use is a refusal, not a guess).
+ *
+ * `consent` (CONSENT_RECORDS, 31 Dec 2030): deletes research_consent and research_capture_losses. It refuses outright
+ * before research-retention.js has recorded its retention deletion, and while a consent or loss record is dated after
+ * 2030 ([USER], 2026-11-21). research_deletions is kept ([USER], 2026-11-21): it names no one, and its retention row
+ * is what keeps research-retention.js from becoming due again. research_derived_datasets is kept too.
+ *
+ * A blocking refusal carries `blocking: true`; applyStep then writes nothing.
+ *
  * The core neither compacts nor records a run (Task 7: VACUUM, verification, retention_runs). It reads retention_runs
  * only to know whether a step is already recorded.
  */
 const { SCOPE } = require('./editorialRetentionScope');
-const { NAMED_EDITING_RECORDS, effectiveMs } = require('./retentionDates');
+const {
+  NAMED_EDITING_RECORDS,
+  UNNAMED_RECORDS,
+  CONSENT_RECORDS,
+  effectiveMs,
+} = require('./retentionDates');
 const { surveyStrip, stripTable, covered, later, unreadable, bind } = require('./retentionStrip');
 const { LAYER_TABLES, surveyLayerPersons, stripLayerPersons } = require('./bookGlossaryLayer');
-
-const STEPS = Object.freeze({ named: Object.freeze({ date: NAMED_EDITING_RECORDS }) });
 
 const STRIP_TABLES = Object.freeze(
   Object.keys(SCOPE).filter((t) => SCOPE[t].action === 'strip' && !LAYER_TABLES.includes(t))
@@ -58,8 +73,8 @@ function count(db, sql, params) {
   return db.prepare(sql).pluck().get(bind(sql, params));
 }
 
-/** Read-only: the rows the step changes, by table, and what it leaves and reports. */
-function survey(db, when) {
+/** Step 1, read-only: the rows it changes, by table, and what it leaves and reports. */
+function surveyNamed(db, when) {
   const counts = {};
   const refusals = [];
   const report = (table, s) => {
@@ -87,6 +102,148 @@ function survey(db, when) {
   return { counts, refusals };
 }
 
+/** Step 1's writes (survey first; the caller holds the transaction). */
+function applyNamed(db, when) {
+  const triggers = db
+    .prepare(
+      `SELECT name, sql FROM sqlite_master WHERE type = 'trigger' AND tbl_name IN (${ALL_STRIP_TABLES.map(() => '?').join(', ')}) ORDER BY name`
+    )
+    .all(...ALL_STRIP_TABLES);
+  for (const { name } of triggers) db.exec(`DROP TRIGGER "${name}"`);
+  for (const t of STRIP_TABLES) stripTable(db, t, SCOPE[t], when);
+  stripLayerPersons(db, when);
+  for (const t of DELETE_TABLES) {
+    const sql = `DELETE FROM "${t}" WHERE ${covered(rowTimeOf(t))}`;
+    db.prepare(sql).run(bind(sql, when));
+  }
+  for (const { sql } of triggers) db.exec(sql);
+}
+
+/** 2028, the date step 2's references and openings are judged by: editing ends with it. */
+const EDITING_ENDS = Object.freeze({
+  day: NAMED_EDITING_RECORDS,
+  effMs: effectiveMs(NAMED_EDITING_RECORDS),
+});
+const SERVED_REFS = Object.freeze(['segment_edits', 'segment_acceptances']);
+
+/** SQL true when some present time of `table`'s row is not readable and on or before the bound @day/@effMs. */
+function notProvablyCovered(table) {
+  const cols = SCOPE[table].times;
+  return `(${cols.map((c) => `("${c}" IS NOT NULL AND NOT ${covered(c)})`).join(' OR ')})`;
+}
+
+function surveyUnnamed(db) {
+  const counts = {};
+  const refusals = [];
+  if (!isRecorded(db, 'named')) {
+    refusals.push({
+      reason: 'named-not-recorded',
+      table: 'retention_runs',
+      rows: 0,
+      blocking: true,
+    });
+  }
+  for (const t of SERVED_REFS) {
+    const n = count(
+      db,
+      `SELECT COUNT(*) FROM "${t}" WHERE served_version_id IS NOT NULL AND ${notProvablyCovered(t)}`,
+      EDITING_ENDS
+    );
+    if (n) refusals.push({ reason: 'later-references', table: t, rows: n, blocking: true });
+    const refs = count(db, `SELECT COUNT(*) FROM "${t}" WHERE served_version_id IS NOT NULL`, {});
+    if (refs) counts[t] = refs;
+  }
+  const lateOpenings = count(
+    db,
+    `SELECT COUNT(*) FROM module_openings WHERE NOT ${covered('opened_at_ms')}`,
+    EDITING_ENDS
+  );
+  if (lateOpenings) {
+    refusals.push({
+      reason: 'later-openings',
+      table: 'module_openings',
+      rows: lateOpenings,
+      blocking: true,
+    });
+  }
+  for (const t of ['served_text_versions', 'module_openings', 'module_opening_inflight']) {
+    const n = count(db, `SELECT COUNT(*) FROM "${t}"`, {});
+    if (n) counts[t] = n;
+  }
+  return { counts, refusals };
+}
+
+function applyUnnamed(db) {
+  for (const t of SERVED_REFS) {
+    db.prepare(
+      `UPDATE "${t}" SET served_version_id = NULL WHERE served_version_id IS NOT NULL`
+    ).run();
+  }
+  db.prepare('DELETE FROM served_text_versions').run();
+  db.prepare('DELETE FROM module_openings').run(); // module_opening_inflight goes by ON DELETE CASCADE
+}
+
+function surveyConsent(db, when) {
+  const counts = {};
+  const refusals = [];
+  if (!db.prepare("SELECT 1 FROM research_deletions WHERE kind = 'retention'").get()) {
+    refusals.push({
+      reason: 'research-retention-not-recorded',
+      table: 'research_deletions',
+      rows: 0,
+      blocking: true,
+    });
+  }
+  const laterConsent = count(
+    db,
+    `SELECT COUNT(*) FROM research_consent WHERE ${[
+      'given_at_ms',
+      'withdrawn_at_ms',
+      'deletion_done_at_ms',
+    ]
+      .map((c) => `("${c}" IS NOT NULL AND NOT ${covered(c)})`)
+      .join(' OR ')}`,
+    when
+  );
+  if (laterConsent) {
+    refusals.push({
+      reason: 'later-records',
+      table: 'research_consent',
+      rows: laterConsent,
+      blocking: true,
+    });
+  }
+  const laterLosses = count(
+    db,
+    `SELECT COUNT(*) FROM research_capture_losses WHERE NOT ${covered('loss_day')}`,
+    when
+  );
+  if (laterLosses) {
+    refusals.push({
+      reason: 'later-records',
+      table: 'research_capture_losses',
+      rows: laterLosses,
+      blocking: true,
+    });
+  }
+  for (const t of ['research_consent', 'research_capture_losses']) {
+    const n = count(db, `SELECT COUNT(*) FROM "${t}"`, {});
+    if (n) counts[t] = n;
+  }
+  return { counts, refusals };
+}
+
+function applyConsent(db) {
+  db.prepare('DELETE FROM research_consent').run();
+  db.prepare('DELETE FROM research_capture_losses').run();
+}
+
+const STEPS = Object.freeze({
+  named: Object.freeze({ date: NAMED_EDITING_RECORDS, survey: surveyNamed, apply: applyNamed }),
+  unnamed: Object.freeze({ date: UNNAMED_RECORDS, survey: surveyUnnamed, apply: applyUnnamed }),
+  consent: Object.freeze({ date: CONSENT_RECORDS, survey: surveyConsent, apply: applyConsent }),
+});
+
 function whenOf(kind, nowMs) {
   const { date } = stepOf(kind);
   return { day: date, effMs: effectiveMs(date), due: nowMs >= effectiveMs(date) };
@@ -96,14 +253,14 @@ function whenOf(kind, nowMs) {
  * What a step would do, read-only.
  *
  * @param {import('better-sqlite3').Database} db
- * @param {'named'} kind
+ * @param {'named' | 'unnamed' | 'consent'} kind
  * @param {number} nowMs
  * @returns {{ due: boolean, counts: Record<string, number>, refusals: {reason: string, table: string, rows: number}[] }}
  */
 function planStep(db, kind, nowMs) {
   const { day, effMs, due } = whenOf(kind, nowMs);
   if (!due || isRecorded(db, kind)) return { due: false, counts: {}, refusals: [] };
-  return { due: true, ...survey(db, { day, effMs }) };
+  return { due: true, ...stepOf(kind).survey(db, { day, effMs }) };
 }
 
 /**
@@ -111,7 +268,7 @@ function planStep(db, kind, nowMs) {
  * changes nothing. A throw rolls back every row and trigger.
  *
  * @param {import('better-sqlite3').Database} db
- * @param {'named'} kind
+ * @param {'named' | 'unnamed' | 'consent'} kind
  * @param {number} nowMs
  * @returns {{ due: boolean, changed: number, refusals: {reason: string, table: string, rows: number}[] }}
  */
@@ -122,20 +279,11 @@ function applyStep(db, kind, nowMs) {
     .transaction(() => {
       if (isRecorded(db, kind)) return { due: false, changed: 0, refusals: [] };
       const when = { day, effMs };
-      const { counts, refusals } = survey(db, when);
-      const triggers = db
-        .prepare(
-          `SELECT name, sql FROM sqlite_master WHERE type = 'trigger' AND tbl_name IN (${ALL_STRIP_TABLES.map(() => '?').join(', ')}) ORDER BY name`
-        )
-        .all(...ALL_STRIP_TABLES);
-      for (const { name } of triggers) db.exec(`DROP TRIGGER "${name}"`);
-      for (const t of STRIP_TABLES) stripTable(db, t, SCOPE[t], when);
-      stripLayerPersons(db, when);
-      for (const t of DELETE_TABLES) {
-        const sql = `DELETE FROM "${t}" WHERE ${covered(rowTimeOf(t))}`;
-        db.prepare(sql).run(bind(sql, when));
-      }
-      for (const { sql } of triggers) db.exec(sql);
+      const step = stepOf(kind);
+      const { counts, refusals } = step.survey(db, when);
+      if (refusals.some((r) => r.blocking))
+        return { due: true, changed: 0, refusals, blocked: true };
+      step.apply(db, when);
       return { due: true, changed: Object.values(counts).reduce((a, b) => a + b, 0), refusals };
     })
     .immediate();

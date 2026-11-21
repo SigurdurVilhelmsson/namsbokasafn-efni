@@ -150,6 +150,7 @@ Expected: PASS
   - `planStep`/`applyStep` return `refusals: [{ reason, table, rows }]`, not one `refusal`. The reasons are `later-records`, `unreadable-time`, `undated-name` and `unreadable-json`. Each is left as it is and reported, and the step still applies to everything else (fail closed).
   - Every trigger on a strip table is dropped and recreated from `sqlite_master` inside the step's IMMEDIATE transaction. Four tables' triggers stamp `updated_at` with the current time.
   - Times are cut only where they are covered. A time after the date is never touched, even in a stripped row.
+- **Task 6 as built (2026-11-21):** an outright refusal is a `refusals` entry with `blocking: true`, and applyStep then writes nothing. Step 2 judges a reference by whether every present time in its row is readable and on or before 2028; a reference that cannot be shown to be is treated as later. Step 3 refuses outright on a record dated after 2030 ([USER], 2026-11-21).
 
 - [ ] Tests first, with a planting helper that writes one row per `SCOPE` table using names absent from `users`:
   - nothing changes before `effectiveMs`;
