@@ -510,6 +510,48 @@ const UI = {
       term: 'hugtak (__)',
       underline: 'undirstrikað (++)',
     },
+    // G1.11 + §C248: the bracket-marker rules (marker-integrity.js). Read by [USER] before the PR.
+    markerSpaced: function (type) {
+      return 'Bil á eftir tvípunkti í merkinu [[' + type + ': — færðu bilið út fyrir merkið.';
+    },
+    markerUnbalanced: function (open, close) {
+      return 'Ójafn fjöldi [[ og ]] (' + open + ' á móti ' + close + ') — merki er ekki lokað.';
+    },
+    markerEmpty: function (type) {
+      return 'Tómt merki [[' + type + ':]] — skrifaðu texta inn í það eða eyddu því.';
+    },
+    markerDropped: function (type, from, to) {
+      return (
+        'Merkið [[' +
+        type +
+        ': vantar (' +
+        from +
+        ' → ' +
+        to +
+        ') — það er í enskum texta og má ekki fjarlægja.'
+      );
+    },
+    markerDroppedExact: function (marker) {
+      return 'Merkið ' + marker + ' vantar — það er í enskum texta og má ekki fjarlægja.';
+    },
+    formattingDropped: function (type, from, to) {
+      return 'Sniðmerkjum [[' + type + ': fækkaði (' + from + ' → ' + to + ') — var það viljandi?';
+    },
+    markerUnknown: function (type) {
+      return 'Óþekkt merki [[' + type + ': — athugaðu hvort það sé rétt skrifað.';
+    },
+    markerLbRb: function (lb, rb) {
+      return 'Ójafn fjöldi hornklofamerkja: ' + lb + '× [[lb:]] en ' + rb + '× [[rb:]].';
+    },
+    legacyWrapAdded: function (marker) {
+      return (
+        'Gamalt sniðmerki ' +
+        marker +
+        ' í texta sem notar ný merki — það birtist lesendum sem tákn. Notaðu hnappana á tækjastikunni í staðinn.'
+      );
+    },
+    legacyWrapFlip:
+      'Nýtt merki í texta sem notar gömul sniðmerki — gömlu merkin birtast þá lesendum sem tákn. Notaðu hnappana á tækjastikunni.',
   },
 
   // ── Module badges ───────────────────────────────────────────

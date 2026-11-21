@@ -2930,6 +2930,14 @@
       'media-missing': (p) => UI.validation.mediaMissing(p.marker),
       'space-removed': (p) => UI.validation.spaceRemoved(p.from, p.to),
       'seg-marker-injected': (p) => UI.validation.segMarkerInjected(p.marker),
+      // G1.11 + §C248 (marker-integrity.js)
+      'marker-spaced': (p) => UI.validation.markerSpaced(p.type),
+      'marker-unbalanced': (p) => UI.validation.markerUnbalanced(p.open, p.close),
+      'marker-empty': (p) => UI.validation.markerEmpty(p.type),
+      'marker-dropped': (p) =>
+        p.marker
+          ? UI.validation.markerDroppedExact(p.marker)
+          : UI.validation.markerDropped(p.type, p.from, p.to),
     };
     const WARN_MSG = {
       'unmatched-pair': (p) => UI.validation.unmatchedPair(PAIR_NAMES[p.marker], p.count),
@@ -2937,6 +2945,14 @@
       'unmatched-subscript': (p) => UI.validation.unmatchedSubscript(p.count),
       'unmatched-superscript': (p) => UI.validation.unmatchedSuperscript(p.count),
       'segment-cleared': () => UI.validation.segmentCleared,
+      // G1.11 + §C248 (marker-integrity.js)
+      'formatting-dropped': (p) => UI.validation.formattingDropped(p.type, p.from, p.to),
+      'marker-unknown': (p) => UI.validation.markerUnknown(p.type),
+      'marker-lb-rb': (p) => UI.validation.markerLbRb(p.lb, p.rb),
+      'legacy-wrap': (p) =>
+        p.direction === 'flip'
+          ? UI.validation.legacyWrapFlip
+          : UI.validation.legacyWrapAdded(p.marker),
     };
     return {
       blocked: result.blocked ? result.blocked.map((v) => BLOCK_MSG[v.code](v.params)) : null,

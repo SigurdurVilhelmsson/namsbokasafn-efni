@@ -183,3 +183,56 @@ describe('warnings (advisory — never enforced server-side)', () => {
     expect(result.warnings).toBeNull();
   });
 });
+
+// G1.11 (spec docs/superpowers/specs/2026-11-21-c248-g111-toolbar-dialect-and-marker-gate-design.md §4.3):
+// the bracket-marker rules reach every consumer through validateStructure.
+describe('the bracket-marker rules ride on validateStructure', () => {
+  it('a dropped [[sub:]] is blocked as marker-dropped', () => {
+    expect(validateStructure('H[[sub:2]]O', 'H[[sub:2]]O', 'H2O').blocked).toContainEqual({
+      code: 'marker-dropped',
+      params: { type: 'sub', from: 1, to: 0 },
+    });
+  });
+
+  it('an added empty marker is blocked as marker-empty', () => {
+    expect(codes(validateStructure('x', 'x', 'x [[term:]]'))).toContain('marker-empty');
+  });
+
+  // Review Focus 2: no real segment, saved unchanged, gains a block from the new rules.
+  it('an unchanged save of every chemistry segment gains no bracket-marker block', async () => {
+    const fs = await import('node:fs');
+    const path = await import('node:path');
+    const repo = path.join(path.dirname(new URL(import.meta.url).pathname), '..', '..');
+    const NEW_BLOCKS = ['marker-spaced', 'marker-unbalanced', 'marker-empty', 'marker-dropped'];
+    const segs = (file) => {
+      const m = new Map();
+      if (!fs.existsSync(file)) return m;
+      const text = fs.readFileSync(file, 'utf8');
+      const re = /<!--\s*SEG:([^\s>]+)\s*-->([\s\S]*?)(?=<!--\s*SEG:|$)/g;
+      let x;
+      while ((x = re.exec(text)) !== null) m.set(x[1], x[2].trim());
+      return m;
+    };
+    const book = path.join(repo, 'books', 'efnafraedi-2e');
+    let pairs = 0;
+    const hits = [];
+    for (const ch of fs
+      .readdirSync(path.join(book, '02-mt-output'))
+      .filter((d) => /^(ch\d\d|appendices)$/.test(d))) {
+      for (const f of fs
+        .readdirSync(path.join(book, '02-mt-output', ch))
+        .filter((x) => x.endsWith('-segments.is.md'))) {
+        const is = segs(path.join(book, '02-mt-output', ch, f));
+        const en = segs(path.join(book, '02-for-mt', ch, f.replace('.is.md', '.en.md')));
+        for (const [id, isText] of is) {
+          if (!en.has(id)) continue;
+          pairs++;
+          const blocked = validateStructure(en.get(id), isText, isText).blocked || [];
+          for (const v of blocked) if (NEW_BLOCKS.includes(v.code)) hits.push(`${id} ${v.code}`);
+        }
+      }
+    }
+    expect(pairs).toBeGreaterThan(20000);
+    expect(hits).toEqual([]);
+  });
+});

@@ -42,6 +42,7 @@ const M91001_EN = [
   [SEG('d'), 'EN d'],
   [SEG('d'), 'EN d'],
   [SEG('e'), 'EN e'], // only the step 6 transaction test touches it, so nothing earlier mints it
+  [SEG('f'), 'Water H[[sub:2]]O.'], // G1.11: a structural bracket marker, for the marker-dropped backstop
 ];
 const M91001_MT = [
   [SEG('a'), 'IS a'],
@@ -50,6 +51,7 @@ const M91001_MT = [
   [SEG('d'), 'IS d1'],
   [SEG('d'), 'IS d2'],
   [SEG('e'), 'IS e'],
+  [SEG('f'), 'Vatn H[[sub:2]]O.'],
 ];
 
 /** Rewrites m91001 from its literal; `isOverrides` replaces one id's Icelandic. */
@@ -642,6 +644,24 @@ describe('step 5, the backstop, for every caller (index decision 16)', () => {
 
   it('control: the same re-attach keeping the marker is written', () => {
     const result = reattach({ segmentId: SEG('b'), editedContent: 'Eitthvað annað [[MATH:1]] x.' });
+    expect(result.outcome).toBe('inserted');
+  });
+
+  // G1.11 (spec docs/superpowers/specs/2026-11-21-c248-g111-toolbar-dialect-and-marker-gate-design.md §4.3):
+  // the server backstop refuses a dropped structural bracket marker for every caller.
+  it('a save that drops a [[sub:]] is STRUCTURE_BLOCKED as marker-dropped', () => {
+    const err = refusedWith(
+      () => save({ segmentId: SEG('f'), editedContent: 'Vatn H2O.' }),
+      'STRUCTURE_BLOCKED'
+    );
+    expect(err.violations).toContainEqual({
+      code: 'marker-dropped',
+      params: { type: 'sub', from: 1, to: 0 },
+    });
+  });
+
+  it('control: the same save keeping the [[sub:]] is written', () => {
+    const result = save({ segmentId: SEG('f'), editedContent: 'Vatnið H[[sub:2]]O.' });
     expect(result.outcome).toBe('inserted');
   });
 
