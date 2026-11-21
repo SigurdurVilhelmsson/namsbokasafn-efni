@@ -390,7 +390,7 @@ app.get('/api/health', (req, res) => {
   }
 
   // The editing tool's retention dates (G1.15(b), spec §4.6): not ok when a step has been due and unrecorded past two
-  // backup cycles, or while a refusal for continued use stands. Names only, never counts: the endpoint is public.
+  // backup cycles, or while a refusal for continued use stands. No table, reason or count: the endpoint is public.
   try {
     const Database = require('better-sqlite3');
     const { readRetentionHealth, DEFAULT_STALE_HOURS } = require('./lib/retentionHealth');

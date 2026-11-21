@@ -3,8 +3,8 @@
  * checks.retention in /api/health (G1.15(b) spec §4.6; plan Task 8).
  *
  * Not ok when a step has been due and unrecorded for longer than two backup cycles plus margin, or when a refusal
- * stands. Until 2029 it is ok and nothing is due (Review Focus 5). /api/health is public, so it carries names only —
- * steps, reasons, tables — and never a count (the rule schemaHealth.js and research_db already follow).
+ * stands. Until 2029 it is ok and nothing is due (Review Focus 5). /api/health is public, so it carries the steps
+ * and whether a refusal stands, and never a table, a reason or a count (the security review of 2026-11-21).
  */
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { readFileSync } from 'fs';
@@ -37,7 +37,7 @@ describe('readRetentionHealth', () => {
       ok: true,
       due: [],
       overdue: [],
-      refusals: [],
+      refused: false,
     });
   });
 
@@ -46,7 +46,7 @@ describe('readRetentionHealth', () => {
       ok: true,
       due: ['named'],
       overdue: [],
-      refusals: [],
+      refused: false,
     });
   });
 
@@ -55,7 +55,9 @@ describe('readRetentionHealth', () => {
     expect(res).toMatchObject({ ok: false, due: ['named'], overdue: ['named'] });
   });
 
-  it('a standing refusal is not ok at once, and names its step, reason and table but no count', () => {
+  // /api/health is public. A refusal's table or reason would say what the database holds (a later consent record
+  // says someone consented), so the check says only that one stands; the script's dry run on the server says which.
+  it('a standing refusal is not ok at once, and the check says only that one stands', () => {
     insert(db, 'feedback', {
       type: 'bug',
       message: 'm',
@@ -63,9 +65,8 @@ describe('readRetentionHealth', () => {
       created_at: '2029-02-01 09:00:00',
     });
     const res = readRetentionHealth({ db, nowMs: AT + HOUR });
-    expect(res.ok).toBe(false);
-    expect(res.refusals).toEqual([{ kind: 'named', reason: 'later-records', table: 'feedback' }]);
-    expect(JSON.stringify(res)).not.toMatch(/"rows"|\d{2,}/);
+    expect(res).toEqual({ ok: false, due: ['named'], overdue: [], refused: true });
+    expect(JSON.stringify(res)).not.toMatch(/feedback|later-records|rows/);
   });
 
   it('a recorded step is no longer due', () => {
@@ -76,7 +77,7 @@ describe('readRetentionHealth', () => {
       ok: true,
       due: [],
       overdue: [],
-      refusals: [],
+      refused: false,
     });
   });
 

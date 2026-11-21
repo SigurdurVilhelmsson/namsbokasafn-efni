@@ -7,8 +7,11 @@
  * refusal stands (spec §4.4: continued use is a refusal, shown until a person decides). Until 2029 nothing is due, so
  * it is ok and costs nothing: every step's plan returns before reading a table.
  *
- * ⚠️ NAMES ONLY, NEVER COUNTS. /api/health is unauthenticated, so the result carries steps, reasons and tables and no
- * row count (schemaHealth.js and research_db follow the same rule).
+ * ⚠️ NO TABLE, NO REASON, NO COUNT. /api/health is unauthenticated. A refusal's table or reason says what the database
+ * holds (a later consent record says that someone consented; research_db's comment states the same rule), so the
+ * result carries only which steps are due or overdue and whether a refusal stands (security review, 2026-11-21). Which
+ * refusal, on which table and how many rows: the script's dry run on the server,
+ * `node server/scripts/editorial-retention.js`.
  */
 const { planStep, STEPS, STEP_ORDER } = require('./editorialRetention');
 const { effectiveMs } = require('./retentionDates');
@@ -20,22 +23,22 @@ const HOUR_MS = 3600000;
 
 /**
  * @param {{ db: import('better-sqlite3').Database, nowMs: number, staleHours?: number }} p
- * @returns {{ ok: boolean, due: string[], overdue: string[], refusals: {kind: string, reason: string, table: string}[] }
- *   | { ok: false, error: string }} never throws
+ * @returns {{ ok: boolean, due: string[], overdue: string[], refused: boolean } | { ok: false, error: string }}
+ *   never throws
  */
 function readRetentionHealth({ db, nowMs, staleHours = DEFAULT_STALE_HOURS }) {
   try {
     const due = [];
     const overdue = [];
-    const refusals = [];
+    let refused = false;
     for (const kind of STEP_ORDER) {
       const plan = planStep(db, kind, nowMs);
       if (!plan.due) continue;
       due.push(kind);
       if (nowMs - effectiveMs(STEPS[kind].date) > staleHours * HOUR_MS) overdue.push(kind);
-      for (const r of plan.refusals) refusals.push({ kind, reason: r.reason, table: r.table });
+      if (plan.refusals.length) refused = true;
     }
-    return { ok: overdue.length === 0 && refusals.length === 0, due, overdue, refusals };
+    return { ok: overdue.length === 0 && !refused, due, overdue, refused };
   } catch (err) {
     return { ok: false, error: err.code || err.name };
   }
