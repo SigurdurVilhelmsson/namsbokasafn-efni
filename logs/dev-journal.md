@@ -992,3 +992,56 @@ aab917d05 docs(register): §C243's three questions answered (design AMENDED bloc
 **Update 14:45:** typescript-lsp@claude-plugins-official confirmed off. The 2 servers at 14:19 were typescript-native-lsp and jdtls-lsp (enabled at user level, never overridden here); the official plugin was already disabled. jdtls-lsp is now off for this project too (0 `.java` files). The `enabledPlugins` block landed via PR #750 (merge 9b862179a, commit 4883dab44) and is merged into this branch (87079dc76), so `.claude/settings.json` is no longer an uncommitted edit. After `/reload-plugins` ("1 plugin LSP server"), an LSP call on `server/lib/domains.js` plus `ps` showed exactly one LSP server: typescript-native-lsp's `launch.mjs` (child `tsc --lsp --stdio`); 0 `typescript-language-server`, 0 jdtls.
 
 ---
+
+## 2026-11-20 16:22 - Stage 2 PRs 1 and 2 merged and deployed, chemistry restamped, inflections runbook done (7 of 19); pending: 18:00 cron check, register + dashboard update, then plan PR 3
+
+**Branch:** main
+**Modified:**
+ M CLAUDE.md   (dashboard-sync rule — in PR #748)
+
+**Recent commits:**
+3b7791f03 Merge pull request #752 from SigurdurVilhelmsson/docs/book-glossary-stage2-deployed
+cb838cb22 docs(register): stage 2 PRs 1 and 2 deployed; chemistry restamped once as expected
+02be59a20 auto-backup: 2026-11-20 16:00
+
+**Done since 14:45:** #750 (per-project LSP plugins), #747 and #749 merged and deployed (pulls 15:19:24 / 15:28:53), #751 (journal) and #752 (register) merged; chemistry's 16:00 export read `restamped`; inflections runbook on prod wrote 7 rows (27686 → 27693), dashboard s21 at tasks v16.
+**Pending:** read the 18:00 cron (expect chemistry `unchanged`, no `book-glossary.json` / `glossary-unified.json` commit); then one register update (runbook result + cron) on a docs branch + PR, roll dashboard s21; then plan PR 3 (page and worklist).
+
+**Why:** register ⏩ RESUME owns status (2026-11-20 stage 2 entry); this is only the breadcrumb.
+
+---
+
+## 2026-11-20 21:21 - Book glossary stage 2 complete: #753 merged and deployed, #754 and #755 merged; next is the page's first real use
+
+**Branch:** main
+**Modified:**
+ M CLAUDE.md   (dashboard-sync rule — in PR #748)
+ M logs/dev-journal.md
+
+**Recent commits:**
+844f13d2f Merge pull request #755 from SigurdurVilhelmsson/docs/book-glossary-stage2-runbook-cron
+90dd7cb09 docs(register): PR 2's inflections runbook done (7 of 19); 18:00 cron unchanged
+7c82d424f Merge pull request #754 from SigurdurVilhelmsson/docs/book-glossary-stage2-pr3-deployed
+
+**Done since 16:22:** PR 3 planned (Q1–Q13 confirmed) and built task by task; final review on Fable, one fix wave; §C244 N1 fixed and M8 built at [USER]'s request (M7 left as is); #753 merged (36accdad3) and deployed (pull 20:28:54, restart 20:29:03, all read-only post-deploy checks passing); #754 records the deploy, #755 the runbook (7 of 19, 16:17) and the 18:00 cron (`unchanged`, no commit). Dashboard s21 at tasks v25. Build worktree, notes and merged branches deleted.
+**Pending:** first real use of `/book-glossary` (change 6, *neptunium → neptúníum*, through *Saga → Verkefnalisti*); §C244 minors whenever wanted; next deploy releases any content-backup commit stranded by today's pushes to `main`.
+
+**Why:** register ⏩ RESUME owns status (2026-11-20 stage 2 entry); this is only the breadcrumb.
+
+---
+
+## 2026-11-21 07:20 - §C246 spec and plan on PR #757, waiting for merge before the build
+
+**Branch:** main
+**Modified:**
+ M CLAUDE.md
+ M logs/dev-journal.md
+
+**Recent commits:**
+844f13d2f Merge pull request #755 from SigurdurVilhelmsson/docs/book-glossary-stage2-runbook-cron
+90dd7cb09 docs(register): PR 2's inflections runbook done (7 of 19); 18:00 cron unchanged
+7c82d424f Merge pull request #754 from SigurdurVilhelmsson/docs/book-glossary-stage2-pr3-deployed
+
+**Why:** —
+
+---
