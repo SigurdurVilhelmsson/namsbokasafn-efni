@@ -44,7 +44,7 @@ describe('teamMetricsFrom', () => {
       [row('segment_edit_saved', 'p-a'), row('module_marked_done', 'p-a', '2026-11-16 11:00:00')],
       NOW
     );
-    expect(m).toMatchObject({ totalActions: 1, submissions: 1, lastActive: '2026-11-16 10:00:00' });
+    expect(m).toMatchObject({ totalActions: 1, submissions: 1 });
   });
 
   it('rows older than 30 days are skipped, as before', () => {
@@ -53,7 +53,10 @@ describe('teamMetricsFrom', () => {
     );
   });
 
-  it('sorts by total actions, most first, as before', () => {
+  // SD7 + [USER] 2026-11-21, answer 3 (docs/decisions/2026-11-21-g115-editor-privacy-split-and-sd7-scope.md):
+  // the counts stay, listed by name; no list orders people by volume. p-b has more actions, so a volume sort
+  // would put it first.
+  it('lists people by name, not by volume', () => {
     const out = teamMetricsFrom(
       [
         row('segment_edit_saved', 'p-a'),
@@ -63,8 +66,23 @@ describe('teamMetricsFrom', () => {
       NOW
     );
     expect(out.map((m) => [m.username, m.totalActions, m.approvals])).toEqual([
-      ['p-b', 2, 1],
       ['p-a', 1, 0],
+      ['p-b', 2, 1],
     ]);
+  });
+
+  it('the name order is Icelandic (á after a, þ æ ö at the end)', () => {
+    const names = ['Ögmundur', 'Björn', 'Þóra', 'Ása', 'Anna', 'Æsa'];
+    const out = teamMetricsFrom(
+      names.map((n) => row('segment_edit_saved', n)),
+      NOW
+    );
+    expect(out.map((m) => m.username)).toEqual(['Anna', 'Ása', 'Björn', 'Þóra', 'Æsa', 'Ögmundur']);
+  });
+
+  // [USER] 2026-11-21, answer 4: no per-person "last active" time (when a person worked).
+  it('carries no per-person last-active time', () => {
+    const [m] = teamMetricsFrom([row('segment_edit_saved', 'p-a')], NOW);
+    expect('lastActive' in m).toBe(false);
   });
 });

@@ -6,16 +6,21 @@
  * a line in the shared activity feed, never a per-person count: [USER] ruled on 2026-11-17 that presses appear in the
  * feed and stay out of these figures. A user whose only rows are presses therefore does not appear at all.
  *
+ * SD7, as answered on 2026-11-21 (docs/decisions/2026-11-21-g115-editor-privacy-split-and-sd7-scope.md): the
+ * figures are listed by name, never by volume, and carry no per-person "last active" time (when a person worked).
+ * Which books' rows reach here is the route's call (lib/activityScope.js headedBooks).
+ *
  * Requiring activityLog here is safe: its database opens lazily, on the first statement.
  */
 
 const { MODULE_MARKED_DONE } = require('../services/activityLog');
+const { byName } = require('./personOrder');
 
 /**
  * @param {object[]} activities rows as activityLog.search returns them (`type`, `username`, `createdAt`, …)
  * @param {Date} now the moment the 30-day window is counted back from
- * @returns {object[]} one entry per user ({username, totalActions, reviews, approvals, drafts, submissions,
- *   lastActive}), most actions first
+ * @returns {object[]} one entry per user ({username, totalActions, reviews, approvals, drafts, submissions}),
+ *   listed by name
  */
 function teamMetricsFrom(activities, now) {
   const last30Days = new Date(now);
@@ -38,7 +43,6 @@ function teamMetricsFrom(activities, now) {
         approvals: 0,
         drafts: 0,
         submissions: 0,
-        lastActive: null,
       };
     }
 
@@ -61,16 +65,9 @@ function teamMetricsFrom(activities, now) {
     } else if (activity.type === 'segment_edits_applied') {
       userStats[user].approvals++;
     }
-
-    if (
-      !userStats[user].lastActive ||
-      new Date(activity.createdAt) > new Date(userStats[user].lastActive)
-    ) {
-      userStats[user].lastActive = activity.createdAt;
-    }
   }
 
-  return Object.values(userStats).sort((a, b) => b.totalActions - a.totalActions);
+  return Object.values(userStats).sort((a, b) => byName(a.username, b.username));
 }
 
 module.exports = { teamMetricsFrom };

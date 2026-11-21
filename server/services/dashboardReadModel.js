@@ -20,6 +20,7 @@ const path = require('path');
 const fs = require('fs');
 const resolveDbPath = require('../lib/dbPath');
 const { faithfulWriteHold } = require('../lib/applyHold');
+const { byName } = require('../lib/personOrder');
 
 const DB_PATH = resolveDbPath();
 
@@ -172,8 +173,15 @@ function getUserHeadlineCounts(username) {
  * Per-editor activity over a rolling window. Powers the previously-broken
  * Vinnuálag panel on the home page.
  *
+ * SD7, as answered on 2026-11-21 (docs/decisions/2026-11-21-g115-editor-privacy-split-and-sd7-scope.md):
+ * editors are listed by name, never by volume, and `books` holds the list to the books a head editor heads
+ * (lib/activityScope.js headedBooks). `oldestPendingHours` stays: it measures how long work has waited for
+ * review, not when a person worked.
+ *
  * @param {object} [opts]
  * @param {number} [opts.days=7]
+ * @param {string[]|null} [opts.books] the books whose edits count; null or absent = every book (an admin),
+ *   [] = none
  * @returns {Array<{editor:string, active:number, pending:number,
  *   approved:number, rejected:number, oldestPendingHours:number|null}>}
  */
@@ -181,7 +189,10 @@ function getEditorWorkload(opts = {}) {
   const conn = getDb();
   if (!tableExists(conn, 'segment_edits')) return [];
   const days = opts.days || 7;
+  const books = Array.isArray(opts.books) ? opts.books : null;
+  if (books && books.length === 0) return [];
 
+  const bookFilter = books ? `AND book IN (${books.map(() => '?').join(', ')})` : '';
   return conn
     .prepare(
       `SELECT editor_username AS editor,
@@ -195,11 +206,11 @@ function getEditorWorkload(opts = {}) {
                 END
               ) AS INTEGER) AS oldestPendingHours
        FROM segment_edits
-       WHERE created_at >= datetime('now', ?)
-       GROUP BY editor_username
-       ORDER BY active DESC`
+       WHERE created_at >= datetime('now', ?) ${bookFilter}
+       GROUP BY editor_username`
     )
-    .all(`-${days} days`);
+    .all(`-${days} days`, ...(books || []))
+    .sort((a, b) => byName(a.editor, b.editor));
 }
 
 // =====================================================================

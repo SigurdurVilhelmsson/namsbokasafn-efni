@@ -18,7 +18,8 @@ const fs = require('fs');
 const path = require('path');
 const log = require('../lib/logger');
 const activityLog = require('../services/activityLog');
-const { readableLogBooks, refuseOtherBook } = require('../lib/activityScope');
+const { readableLogBooks, refuseOtherBook, headedBooks } = require('../lib/activityScope');
+const { byName } = require('../lib/personOrder');
 const { teamMetricsFrom } = require('../lib/teamMetrics');
 const segmentEditorService = require('../services/segmentEditorService');
 const dashboardReadModel = require('../services/dashboardReadModel');
@@ -338,7 +339,11 @@ router.get('/dashboard', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (req
     // saved edit is visible to admins without a module_reviews wrapper.
     try {
       dashboard.globalPendingCount = dashboardReadModel.getAdminHeadlineCount();
-      dashboard.workload = dashboardReadModel.getEditorWorkload({ days: 7 });
+      // A per-person figure: the books the reader heads, listed by name (SD7, 2026-11-21 answers 2–3).
+      dashboard.workload = dashboardReadModel.getEditorWorkload({
+        days: 7,
+        books: headedBooks(req.user),
+      });
       dashboard.readyForAssignment = dashboardReadModel.getReadyToApply();
     } catch (err) {
       log.error({ err }, 'Failed to populate read-model fields');
@@ -582,10 +587,11 @@ router.get('/analytics', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (req
 
     // Per-user team metrics
     try {
-      // Per-person figures come from the rows of the books this reader works on (lib/activityScope).
-      // lib/teamMetrics counts them; it skips "Merkja sem lokið" presses (register §C222).
+      // Per-person figures come from the rows of the books this reader HEADS (lib/activityScope headedBooks;
+      // SD7, 2026-11-21 answers 2–3), not every book they work on, which is the log's own rule.
+      // lib/teamMetrics counts them, by name; it skips "Merkja sem lokið" presses (register §C222).
       const result = activityLog.search({
-        books: readableLogBooks(req.user),
+        books: headedBooks(req.user),
         limit: 1000,
       });
 
@@ -855,7 +861,8 @@ router.get('/meeting-agenda', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req,
       const weekAgo = new Date();
       weekAgo.setDate(weekAgo.getDate() - 7);
 
-      const recentActivity = activityLog.search({ books: readableLogBooks(req.user), limit: 10 });
+      // A per-person count: the books the reader heads, listed by name (SD7, 2026-11-21 answers 2–3).
+      const recentActivity = activityLog.search({ books: headedBooks(req.user), limit: 10 });
       const recentUsers = new Map();
 
       for (const activity of recentActivity.activities) {
@@ -866,7 +873,7 @@ router.get('/meeting-agenda', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req,
         }
       }
 
-      for (const [username, totalActions] of recentUsers) {
+      for (const [username, totalActions] of [...recentUsers].sort((a, b) => byName(a[0], b[0]))) {
         lowItems.push({ username, totalActions });
       }
     } catch {
