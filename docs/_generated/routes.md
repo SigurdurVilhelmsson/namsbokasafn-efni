@@ -56,7 +56,6 @@
 |--------|------|
 | GET | `/stats` |
 | GET | `/recent` |
-| POST | `/event` |
 | GET | `/dashboard-data` |
 
 ## /auth

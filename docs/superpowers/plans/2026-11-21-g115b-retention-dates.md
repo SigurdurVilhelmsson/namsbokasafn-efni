@@ -165,6 +165,10 @@ Expected: PASS
   - `backup-db.sh` keeps the retention's stderr (a failure's reason) and still discards its report.
   - Every retention test pins a migration's seeds to the plant time (`retentionPlant.pinSeeds`), so none depends on the day the suite runs.
   - Not built: spec §4.3's "ties in `ORDER BY created_at` reads break by id". The ruling and the open question are in the register.
+- **[USER]'s answer to the final review's I-1 (2026-11-22):**
+  - `POST /api/analytics/event` and the analytics service's write helpers are removed; `analyticsWriteRetired.test.js` holds that no server code inserts into `analytics_events`. The read routes stay for the stored rows.
+  - `surveyStrip`'s later count reads every time column of a row (`times` plus each person's time column), so any row dated after the date counts, named or not: a kept tool label (the c19 loader's, which the strip still keeps), a tool write that stores no person, a nameless report from the public feedback form. The unreadable-time and undated-name counts still read person values and skip kept labels, because they decide what the strip may touch.
+  - `createRetentionHealthCache` keeps an answer with a due step for `DEFAULT_CACHE_MS`; `index.js` calls the process's one reader with the path and an `open` function, so a hit opens no database. `readRetentionHealth` itself stays uncached.
 
 - [ ] Tests first, with a planting helper that writes one row per `SCOPE` table using names absent from `users`:
   - nothing changes before `effectiveMs`;

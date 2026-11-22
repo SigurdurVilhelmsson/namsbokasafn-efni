@@ -403,10 +403,12 @@ pending lives in the active register, not here.** Each part has one owner:
   name, does not change.
 - **The run:** `server/scripts/editorial-retention.js`, called by `scripts/backup-db.sh` before its copy. It compacts
   the file (secure delete on, then `VACUUM`) and records each verified step in `retention_runs` (migration 059). A
-  record dated after a step's date is never acted on: the step refuses and stays due.
+  record dated after a step's date, named or not and whoever wrote it, is never acted on: the step refuses and stays
+  due.
 - **The signal:** `checks.retention` in `GET /api/health` (`server/lib/retentionHealth.js`): which steps are due or
   overdue and whether a refusal stands, never a table, a reason or a count (the endpoint is public). Which refusal:
-  the script's dry run on the server.
+  the script's dry run on the server. While a step is due, the answer is kept for `DEFAULT_CACHE_MS`
+  (`createRetentionHealthCache`), so it can lag by that much.
 - **Outside this mechanism:** the backups' own retention (G1.20) and the production log limits.
 
 ## Configuration

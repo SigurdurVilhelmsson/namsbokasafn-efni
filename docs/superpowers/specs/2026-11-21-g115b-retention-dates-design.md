@@ -147,3 +147,13 @@ The migration number for `retention_runs`; the exact census pattern beside its e
 ## 9. Claude's calls
 
 From the builder check: placeholders derived from the row's id rather than NULL or a table rebuild (§4.3); each name dated by its own action (§4.3); pending rows stripped (§4.3); verification structural, and a step recorded only when verified (§4.4); step 3 keeps the `research_deletions` rows that name no one (§4.4); refusal on continued use (§4.4). From the first draft: free-text notes stay (§4.2); times cut to the date (§4.3); the script runs before the backup copy (§4.6). **Withdrawn after the builder check:** keeping the access and assignment rows and `notification_preferences`, which contradicted the scope answer (§4.2).
+
+## ✏️ Dated note, 2026-11-22: [USER]'s answers to the final review's I-1 (who trips the continued-use refusal)
+
+The final whole-branch review found that §4.4's refusal could be raised by writes nobody would call editing. As built, the pure logs counted any row dated after a date, and the strip tables counted such a row only when it named someone. [USER] answered on 2026-11-22:
+
+- **The public analytics write is retired.** `POST /api/analytics/event` needed no sign-in and wrote `analytics_events`, a delete table under §4.3, so one anonymous request after 2028 would have held step 2. The route and the service's write helpers are removed. The rows already stored stay until step 1 deletes them.
+- **Every tool's write after a date counts as continued use** (§0, answer 1: a person decides then). [USER] added during the build that this covers the c19 loader's label (§4.5) too. The label is kept from the strip so the committed record is unchanged, but that keep-list does not hide its later writes.
+- **A report from the public feedback form counts too**, as the tools' writes do. `POST /api/feedback` needs no sign-in.
+- **A later record is any row with a time after the date, named or not**, as §4.4 words it: "a record dated after a date". [USER] chose this when a nameless report turned out to raise nothing. It also covers a tool write that stores no person.
+- **`checks.retention` (§4.6) keeps an answer with a due step for five minutes**, because each survey costs about 0.15 s on a public endpoint. It can therefore show a change up to five minutes late. Before 2029 nothing is kept.
