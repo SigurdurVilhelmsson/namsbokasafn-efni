@@ -5,6 +5,21 @@
 > (`docs/plans/2026-07-21-post-item17-followup-campaign.md`); this file is the design record. If the two disagree,
 > the register wins.
 
+> ✏️ **AMENDED 2026-11-22, while writing the plan** (`docs/superpowers/plans/2026-11-22-g113-scope-guards.md`). These
+> change no decision and add no feature; they record what the code showed.
+> 1. **T10 at route level.** Chemistry is the only writable book and the only study book, so no route-level write can
+>    test the toggle-off rule on a "non-study fixture book". The toggle logic stays covered at the service level and
+>    on GET routes, and route-level writes in other books now expect `BOOK_CLOSED`.
+> 2. **Interfaces.** `canWriteChapter` takes `{ user, book, chapter }`, with `user` being `req.user`, because the
+>    middleware decides admin and head editor from the token. `assignmentRefusal` takes `(conn, { userId, book,
+>    chapter })`. The chapter carries §6.6's `chapter-not-editable`, which is checked second, after `book-closed`.
+> 3. **A deploy effect §7 omits.** The reads behind the book-access check also refuse a plain editor with no chapter
+>    in chemistry: `GET /api/suggestions/:sectionId`, `GET /api/suggestions/:sectionId/stats` and
+>    `GET /api/books/:book/chapters/:chapter/faithful-count`. This follows from §6.2.
+> 4. **The E2E fixture book `__e2e-fixture__` is closed** like every book off the allowlist. Its non-admin writes move
+>    to chemistry or to an admin login, and the slug is not added to the allowlist.
+> 5. **"Append-only" (§6.4) is enforced in the schema** by a `BEFORE UPDATE` trigger.
+
 **Sources:** the Skerfur plan's G1.13 row and its 2026-11-03 dated note
 (`docs/plans/2026-10-23-skerfur-development-plan.md`); rulings R6 and the consent/licence condition
 (`docs/decisions/2026-11-03-research-capture-consent-and-retention-rulings.md`); the G1.1 + G1.2 design's §5.14 and
