@@ -159,6 +159,12 @@ Expected: PASS
   - The order test lives in `scripts/__tests__/backup-db-retention.test.mjs`, beside `backup-db.test.mjs`, not in `tools/__tests__`.
   - `checks.retention` carries no row count: `/api/health` is public (the rule of `schemaHealth.js`).
   - The threshold reuses `offboxBackupHealth.js`'s `DEFAULT_STALE_HOURS`, since it is the same cron, and `RETENTION_STALE_HOURS` overrides it.
+  - After a security review (`8fed0406f`) it carries no table and no reason either, only `{ ok, due, overdue, refused }`: a reason on a research table says that someone consented. Which refusal stands is in the script's dry run on the server.
+- **Final review fixes (2026-11-22):**
+  - A time is readable only when it can be shown to be UTC: text with nothing after its day that reads as an offset, and a `*_ms` integer from 1e11. Anything else is unreadable and never covered, so steps 2 and 3 refuse on it.
+  - `backup-db.sh` keeps the retention's stderr (a failure's reason) and still discards its report.
+  - Every retention test pins a migration's seeds to the plant time (`retentionPlant.pinSeeds`), so none depends on the day the suite runs.
+  - Not built: spec §4.3's "ties in `ORDER BY created_at` reads break by id". The ruling and the open question are in the register.
 
 - [ ] Tests first, with a planting helper that writes one row per `SCOPE` table using names absent from `users`:
   - nothing changes before `effectiveMs`;
