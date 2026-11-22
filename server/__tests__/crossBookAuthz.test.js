@@ -472,8 +472,7 @@ describe('section head-editor actions are book-scoped', () => {
   });
   // The status route's guard is route-level: the book's head editor or an admin, for every move (the by-role
   // describe further down), so it runs before the transition check. Section 48 is still a fresh row, untouched
-  // by any other test, so that the admin's move is valid and the answer is a genuine 200. Section 46 is already
-  // 'review_approved' from the test above and would answer 400.
+  // by any other test, so that the admin's move is valid and the answer is a genuine 200.
   it('status elevated transition: admin bypasses book scope (fresh row, a genuine 200)', async () => {
     const res = await post('/api/sections/48/status', ADMIN, { status: 'review_approved' });
     expect(res.status).toBe(200);

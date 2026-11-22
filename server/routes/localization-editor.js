@@ -48,8 +48,10 @@ function bookFromLocEditId(req) {
 }
 
 // The closed-book guard (G1.13, spec §6.1): a non-admin may write only to a book open to editors.
-// It reads the book from the :book param or from the localization edit the route acts on, after the
-// auth and role middleware.
+// It reads the book from the :book param or from the localization edit the route acts on. It sits
+// after the auth middleware and, on the routes that have one, before validateModule. On every route
+// but /log it follows the role check; on /log it comes first, and requireHeadEditor follows
+// validateModule there.
 const refuseClosedParamBook = refuseClosedBookForNonAdmins((req) => req.params.book, 'param');
 const refuseClosedLocEditBook = refuseClosedBookForNonAdmins(bookFromLocEditId, 'row');
 

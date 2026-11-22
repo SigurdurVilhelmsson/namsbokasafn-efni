@@ -156,12 +156,14 @@ function requireHeadEditorFor(resolveBook) {
  * book + chapter are resolved via bookRegistration.getSection, then the request is
  * delegated to requireBookAccess() — so the semantics are exactly its semantics:
  * admin passes; a head-editor OF THIS BOOK passes; everyone else (plain editors
- * AND head-editors of other books) takes the chapter-assignment path — fail-open
- * when the caller has no assignments for the book and enforcement is OFF,
- * default-deny when the book's enforce_assignments toggle is ON. A JWT holder
- * with no `users` row is decided the same way — denied under enforcement
- * (batch 4 D7: hasChapterAccess's null-user branch), fail-open otherwise —
- * 503 fail-closed when enforcement is ON but assignments cannot be evaluated.
+ * AND head-editors of other books) takes the chapter-assignment path. A study
+ * book is always enforced, whatever its enforce_assignments row says (spec
+ * §6.2): default-deny, only an assigned chapter passes. Any other book is
+ * default-deny when its enforce_assignments toggle is ON and fail-open when it
+ * is OFF and the caller has no assignments for the book. A JWT holder with no
+ * `users` row is decided the same way — denied under enforcement (batch 4 D7:
+ * hasChapterAccess's null-user branch), fail-open otherwise — and enforcement
+ * that cannot evaluate assignments answers 503, fail-closed.
  *
  * Also attaches the resolved section as req.section for downstream handlers.
  *
@@ -232,7 +234,9 @@ function requireAdmin() {
  * Checks (in order):
  * 1. Admin → always pass
  * 2. Head-editor for the book → always pass
- * 3. Editor → check chapter assignments (if any exist for that book)
+ * 3. Editor → check chapter assignments: a study book is always enforced, and refuses a
+ *    request that names no chapter (spec §6.2); any other book checks them only when its
+ *    enforcement is on or the caller holds assignments in it
  * 4. No access → 403
  *
  * Extracts book from req.params.book and chapter from req.params.chapter or req.chapterNum.
@@ -267,7 +271,9 @@ function requireBookAccess() {
       return next();
     }
 
-    // Check chapter assignment (backward compat: no assignments = full access)
+    // Check chapter assignment. A study book is always enforced (spec §6.2): only an assigned
+    // chapter passes. Any other book keeps the legacy rule while its enforcement is off: a caller
+    // with no assignments for the book passes every chapter (hasChapterAccess).
     // `??` keeps chapter 0 and -1 (the appendices sentinel) as real chapters (spec §6.2, T4).
     const chapter = req.chapterNum ?? req.params.chapter;
 
