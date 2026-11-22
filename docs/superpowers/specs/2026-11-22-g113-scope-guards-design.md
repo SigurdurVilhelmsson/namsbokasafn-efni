@@ -1,6 +1,7 @@
-# G1.13: scope guards — closed books, chemistry always enforced, propagation, and a gated assign (DESIGN, draft 2026-11-22)
+# G1.13: scope guards — closed books, chemistry always enforced, propagation, and a gated assign (DESIGN, approved 2026-11-22)
 
-> **Status: a draft for [USER]'s approval.** Status lives in the active register
+> **Approved by [USER] on 2026-11-22, as written, Claude's calls 1–12 included (§10).** Frozen from here: a change
+> is a dated amendment block, never an edit. Status lives in the active register
 > (`docs/plans/2026-07-21-post-item17-followup-campaign.md`); this file is the design record. If the two disagree,
 > the register wins.
 
