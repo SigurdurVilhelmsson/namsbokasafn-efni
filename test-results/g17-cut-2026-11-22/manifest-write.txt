@@ -1,0 +1,5 @@
+170 units, 22591 segments (mt-output 22591)
+segments.jsonl sha256 55b34c8326414131ec1d6304f000659f0b7c2bf3bbcc82a2d5670cf85b88fdd1
+freeze.json sha256 94b8a91ee8ed44bc946baa218ed0a341be25f4b23d3f92282fe7ffe7fb61c2e8
+layer 1: last commit 34e1350f216c350f83b5ffb80145a8b3c64a2c54, 4 hand repair(s)
+written efnafraedi-2e/freeze/freeze-efnafraedi-2e-2026-11-22/ (segments.jsonl, freeze.json)

@@ -1,0 +1,4 @@
+170 units, 22591 segments (mt-output 22591)
+segments.jsonl sha256 55b34c8326414131ec1d6304f000659f0b7c2bf3bbcc82a2d5670cf85b88fdd1
+layer 1: last commit 34e1350f216c350f83b5ffb80145a8b3c64a2c54, 4 hand repair(s)
+dry run: nothing written (pass --write --tag freeze-efnafraedi-2e-YYYY-MM-DD to write)

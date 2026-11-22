@@ -1,0 +1,15 @@
+{
+ "units": 170,
+ "rewrittenIdentical": 170,
+ "rewrittenDifferent": [],
+ "notRewritten": [],
+ "missing": [],
+ "other": {
+  "forMtChanged": [],
+  "forMtNew": [],
+  "structureChanged": 149,
+  "structureChangedOnlyExtractedAt": 149,
+  "structureOtherChange": []
+ },
+ "verdict": "LANDING CONDITION 1: PASS"
+}
