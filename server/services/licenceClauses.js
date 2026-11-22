@@ -3,6 +3,8 @@
 // Rows are append-only (migration 060) and never touched by the retention steps. Only admins write them, through
 // routes/admin.js. `nowMs` is a parameter so the "not in the future" rule never depends on the clock of the test.
 
+const { EDITOR_WRITABLE_BOOKS } = require('../lib/editorScope');
+
 function refusal(code, message) {
   return Object.assign(new Error(message), { code });
 }
@@ -87,17 +89,41 @@ function isUsersClause(conn, { userId, rowId }) {
 }
 
 /**
- * Remove one row; false when the row is not this user's (or does not exist).
+ * True when the account holds a chapter in a book open to editors. A row in a closed book does
+ * not count: closed books take no editor writes, and the assign gate checks only writable books.
+ * @param {import('better-sqlite3').Database} conn
+ * @param {number} userId
+ * @returns {boolean}
+ */
+function holdsOpenBookChapter(conn, userId) {
+  const marks = EDITOR_WRITABLE_BOOKS.map(() => '?').join(', ');
+  return !!conn
+    .prepare(
+      `SELECT 1 FROM user_chapter_assignments WHERE user_id = ? AND book_slug IN (${marks}) LIMIT 1`
+    )
+    .get(userId, ...EDITOR_WRITABLE_BOOKS);
+}
+
+/**
+ * Remove one row; false when the row is not this user's (or does not exist). Refuses while the
+ * account holds a chapter in a book open to editors, because the gate asks for the row only when
+ * a chapter is assigned: removing it later would leave the editor assigned with no record (spec §6.4).
  * @param {import('better-sqlite3').Database} conn
  * @param {{ userId: number, rowId: number }} args
  * @returns {boolean}
+ * @throws {Error & { code: 'HOLDS_CHAPTERS' }}
  */
 function removeClause(conn, { userId, rowId }) {
-  return (
-    conn
-      .prepare('DELETE FROM editor_licence_clauses WHERE id = ? AND user_id = ?')
-      .run(rowId, userId).changes > 0
-  );
+  return conn.transaction(() => {
+    if (holdsOpenBookChapter(conn, userId)) {
+      throw refusal('HOLDS_CHAPTERS', 'licence clause in use');
+    }
+    return (
+      conn
+        .prepare('DELETE FROM editor_licence_clauses WHERE id = ? AND user_id = ?')
+        .run(rowId, userId).changes > 0
+    );
+  })();
 }
 
 module.exports = {
@@ -107,5 +133,6 @@ module.exports = {
   latestSignedOn,
   hasClause,
   isUsersClause,
+  holdsOpenBookChapter,
   removeClause,
 };

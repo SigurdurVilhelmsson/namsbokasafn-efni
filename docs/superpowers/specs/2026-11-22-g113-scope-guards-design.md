@@ -28,6 +28,10 @@
 >    chapter rows first, or their rows open units on their first look. (b) Do not switch a study book's suggestion
 >    view off while an assigned chapter has units not yet opened: the gate checks the switch only at assign time
 >    (R6).
+> 8. **Removing a licence clause refuses while the user holds a chapter in a book open to editors** (409
+>    `HOLDS_CHAPTERS`); remove their chapters first. This closes a gap the assign-gate model found: a licence row removed
+>    after the assignment left the editor assigned, able to open the unit and save edits with no licence record.
+>    [USER]'s decision, 2026-11-22.
 
 **Sources:** the Skerfur plan's G1.13 row and its 2026-11-03 dated note
 (`docs/plans/2026-10-23-skerfur-development-plan.md`); rulings R6 and the consent/licence condition

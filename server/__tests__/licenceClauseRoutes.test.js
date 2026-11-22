@@ -227,3 +227,87 @@ describe('licence-clause routes', () => {
     ).toBe(0);
   });
 });
+
+// A licence row removed after the assignment would leave the editor assigned with no record, so the
+// removal refuses while the user holds a chapter in a book open to editors (spec §6.4, amendment 8).
+describe('removing a licence clause while the user holds a chapter', () => {
+  const { plantAssignment } = require('./helpers/plantAssignment.cjs');
+  const licenceClauses = require('../services/licenceClauses');
+  const MESSAGE =
+    'Ekki er hægt að fjarlægja leyfisákvæðið á meðan notandinn hefur kafla úthlutaðan. Fjarlægðu fyrst kaflaúthlutanir notandans.';
+  let n = 0;
+
+  const newEditor = () => {
+    n += 1;
+    const info = seeded.db
+      .prepare(
+        'INSERT INTO users (provider_id, provider_username, display_name, role) VALUES (?, ?, ?, ?)'
+      )
+      .run(`u-holder-${n}`, `test-holder-${n}`, `Test Holder ${n}`, 'editor');
+    return Number(info.lastInsertRowid);
+  };
+  const withClause = async (id) =>
+    (await (await call(ADMIN, 'POST', `${id}/licence-clause`, { signedOn: utcDay(0) })).json()).id;
+  const remove = (id, rowId) =>
+    call(ADMIN, 'DELETE', `${id}/licence-clause/${rowId}`, {
+      reason: 'recorded against the wrong account',
+    });
+
+  describe('an editor holding a chemistry chapter', () => {
+    let id;
+    let rowId;
+    let res;
+    let body;
+    let logsBefore;
+    beforeAll(async () => {
+      id = newEditor();
+      rowId = await withClause(id);
+      plantAssignment(seeded.db, { userId: id, book: 'efnafraedi-2e', chapter: 1 });
+      logsBefore = removalLogCount();
+      res = await remove(id, rowId);
+      body = await res.json();
+    });
+
+    it('is refused with 409', () => expect(res.status).toBe(409));
+
+    it('gets HOLDS_CHAPTERS and the Icelandic message', () =>
+      expect(body).toEqual({ error: 'HOLDS_CHAPTERS', message: MESSAGE }));
+
+    it('keeps the licence row', () => expect(rowCount(rowId)).toBe(1));
+
+    it('writes no activity_log entry', () => expect(removalLogCount()).toBe(logsBefore));
+
+    it('is removed (200, row gone, one log row) once the chapter is removed', async () => {
+      seeded.db.prepare('DELETE FROM user_chapter_assignments WHERE user_id = ?').run(id);
+      const again = await remove(id, rowId);
+      expect([again.status, rowCount(rowId), removalLogCount()]).toEqual([200, 0, logsBefore + 1]);
+    });
+  });
+
+  it('removes the row of an editor holding only a closed-book chapter', async () => {
+    const id = newEditor();
+    const rowId = await withClause(id);
+    plantAssignment(seeded.db, { userId: id, book: 'orverufraedi', chapter: 1 });
+    const res = await remove(id, rowId);
+    expect([res.status, rowCount(rowId)]).toEqual([200, 0]);
+  });
+
+  it('removeClause throws HOLDS_CHAPTERS and deletes nothing while a chemistry row is held', async () => {
+    const id = newEditor();
+    const rowId = await withClause(id);
+    plantAssignment(seeded.db, { userId: id, book: 'efnafraedi-2e', chapter: 2 });
+    let code;
+    try {
+      licenceClauses.removeClause(seeded.db, { userId: id, rowId });
+    } catch (err) {
+      code = err.code;
+    }
+    expect([code, rowCount(rowId)]).toEqual(['HOLDS_CHAPTERS', 1]);
+  });
+
+  it("removeClause still returns false for a row that is not the user's", () => {
+    expect(licenceClauses.removeClause(seeded.db, { userId: newEditor(), rowId: 999999 })).toBe(
+      false
+    );
+  });
+});

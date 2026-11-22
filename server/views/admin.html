@@ -787,7 +787,7 @@
       try {
         await fetchJson('/api/admin/users/' + currentEditUser.id + '/licence-clause/' + rowId, { method:'DELETE', headers:{'Content-Type':'application/json'}, body:JSON.stringify({reason:reason}) });
         usersLoadLicenceClause(); showToast('Færsla fjarlægð','success');
-      } catch(e) { showToast(e.message || 'Villa við að fjarlægja færslu','error'); }
+      } catch(e) { showToast((e.data && e.data.message) || e.message || 'Villa við að fjarlægja færslu','error'); }
     };
 
     function usersRenderBookAccess(user) {

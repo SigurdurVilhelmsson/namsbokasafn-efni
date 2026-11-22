@@ -1111,9 +1111,20 @@ router.post('/users/:id/licence-clause', requireAuth, requireAdmin(), (req, res)
   }
 });
 
+const HOLDS_CHAPTERS_BODY = {
+  error: 'HOLDS_CHAPTERS',
+  message:
+    'Ekki er hægt að fjarlægja leyfisákvæðið á meðan notandinn hefur kafla úthlutaðan. Fjarlægðu fyrst kaflaúthlutanir notandans.',
+};
+
 /**
  * DELETE /api/admin/users/:id/licence-clause/:rowId
  * Remove a wrongly recorded row. Body: { reason } (at least 10 characters), kept in the activity log.
+ *
+ * Refuses with 409 HOLDS_CHAPTERS while the user holds a chapter in a book open to editors: the
+ * assign gate asks for the row only at assign time, so removing it later would leave the editor
+ * assigned with no record. Chapters are removed first. The refusal is checked before the log
+ * entry, so a refused removal logs nothing.
  *
  * The activity log entry is written before the row is deleted (spec §6.4). activityLog.log never
  * throws; it returns null when the write failed, and then nothing is deleted, so a licence record
@@ -1134,6 +1145,9 @@ router.delete('/users/:id/licence-clause/:rowId', requireAuth, requireAdmin(), (
     if (!licenceClauses.isUsersClause(conn, { userId, rowId })) {
       return res.status(404).json({ error: 'Færsla fannst ekki hjá þessum notanda' });
     }
+    if (licenceClauses.holdsOpenBookChapter(conn, userId)) {
+      return res.status(409).json(HOLDS_CHAPTERS_BODY);
+    }
     const logged = activityLog.log({
       type: 'licence_clause_removed',
       userId: req.user.id,
@@ -1148,6 +1162,8 @@ router.delete('/users/:id/licence-clause/:rowId', requireAuth, requireAdmin(), (
     const removed = licenceClauses.removeClause(conn, { userId, rowId });
     res.json({ removed });
   } catch (err) {
+    // A race: a chapter was assigned between the check above and the delete.
+    if (err.code === 'HOLDS_CHAPTERS') return res.status(409).json(HOLDS_CHAPTERS_BODY);
     log.error({ err }, 'Remove licence clause error');
     res.status(500).json({ error: err.message });
   }
