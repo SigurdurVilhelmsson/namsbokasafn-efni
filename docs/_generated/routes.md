@@ -40,6 +40,9 @@
 | GET | `/users/:id/chapters` |
 | POST | `/users/:id/chapters` |
 | DELETE | `/users/:id/chapters/:book/:chapter` |
+| GET | `/users/:id/licence-clause` |
+| POST | `/users/:id/licence-clause` |
+| DELETE | `/users/:id/licence-clause/:rowId` |
 | GET | `/assignments/:book` |
 | POST | `/assignments/:book/enforcement` |
 | GET | `/books/:book/suggestion-view` |
