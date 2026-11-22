@@ -1,0 +1,38 @@
+{
+  "module": "m68667",
+  "baseSegments": 214,
+  "A": {
+    "complete": true,
+    "found": 201,
+    "missing": 0,
+    "bytes": 47583
+  },
+  "B": {
+    "complete": true,
+    "found": 201,
+    "missing": 0,
+    "bytes": 47583,
+    "identicalToA": true,
+    "sentinelsInOutput": [
+      [
+        "ZQXSENTINELPARA",
+        0
+      ],
+      [
+        "ZQXSENTINELNOTE",
+        0
+      ],
+      [
+        "ZQXSENTINELEX",
+        0
+      ]
+    ],
+    "stderrMentionsUnused": [],
+    "stderrLines": 0
+  },
+  "C": {
+    "controlId": "m68667:para:fs-idm2368272",
+    "sentinelInOutput": 1,
+    "complete": true
+  }
+}

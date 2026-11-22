@@ -1,0 +1,1 @@
+  Warning: inline-attrs count mismatch [m68667:para:fs-idm2368272] — terms: sidecar has 1, text has 0. Attaching NO terms attributes for this segment (a dropped/duplicated marker would mis-assign ids positionally).
