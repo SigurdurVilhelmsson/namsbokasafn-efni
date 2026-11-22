@@ -373,7 +373,7 @@ const UI = {
         const parts = [];
         if (blocked) parts.push(`${blocked} vegna þess að byggingarmerki hindra`);
         if (foreign) parts.push(`${foreign} ${inChapters(foreign)} sem þú ritstýrir ekki`);
-        if (closed) parts.push(`${closed} ${inChapters(closed)} sem ekki er ritstýrt`);
+        if (closed) parts.push(`${closed} ${inChapters(closed)} sem ekki er hægt að ritstýra`);
         if (other > 0) parts.push(`${other} þegar breytt`);
         msg += `, sleppt ${skipped} (${parts.join(', ')})`;
       }
@@ -384,7 +384,8 @@ const UI = {
     propagateNoneScoped: (notYours, notEditable) => {
       const parts = [];
       if (notYours) parts.push(`${notYours} ${inChapters(notYours)} sem þú ritstýrir ekki`);
-      if (notEditable) parts.push(`${notEditable} ${inChapters(notEditable)} sem ekki er ritstýrt`);
+      if (notEditable)
+        parts.push(`${notEditable} ${inChapters(notEditable)} sem ekki er hægt að ritstýra`);
       return `Þessi texti birtist annars staðar (${parts.join(', ')}), en þú mátt ekki breyta þar.`;
     },
     propagateError: (msg) => 'Villa við fjölgun: ' + msg,

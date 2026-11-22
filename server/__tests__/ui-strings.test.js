@@ -130,7 +130,7 @@ describe('propagateResult (SR-OOS-2 FIX6c)', () => {
 
   it('G1.13: chapter-not-editable skips get their own phrase', () => {
     const msg = UI.segmentEditor.propagateResult(1, 1, 0, 0, 1);
-    expect(msg).toContain('1 í kafla sem ekki er ritstýrt');
+    expect(msg).toContain('1 í kafla sem ekki er hægt að ritstýra');
     expect(msg).not.toContain('þegar breytt');
   });
 
@@ -156,10 +156,10 @@ describe('propagateResult (SR-OOS-2 FIX6c)', () => {
 
   it('G1.13: a count of 1 chapter-not-editable skip reads "í kafla", 2 reads "í köflum"', () => {
     expect(UI.segmentEditor.propagateResult(1, 1, 0, 0, 1)).toContain(
-      '1 í kafla sem ekki er ritstýrt'
+      '1 í kafla sem ekki er hægt að ritstýra'
     );
     expect(UI.segmentEditor.propagateResult(1, 2, 0, 0, 2)).toContain(
-      '2 í köflum sem ekki er ritstýrt'
+      '2 í köflum sem ekki er hægt að ritstýra'
     );
   });
 
@@ -168,8 +168,12 @@ describe('propagateResult (SR-OOS-2 FIX6c)', () => {
     expect(UI.segmentEditor.propagateNoneScoped(2, 0)).toContain(
       '2 í köflum sem þú ritstýrir ekki'
     );
-    expect(UI.segmentEditor.propagateNoneScoped(0, 1)).toContain('1 í kafla sem ekki er ritstýrt');
-    expect(UI.segmentEditor.propagateNoneScoped(0, 2)).toContain('2 í köflum sem ekki er ritstýrt');
+    expect(UI.segmentEditor.propagateNoneScoped(0, 1)).toContain(
+      '1 í kafla sem ekki er hægt að ritstýra'
+    );
+    expect(UI.segmentEditor.propagateNoneScoped(0, 2)).toContain(
+      '2 í köflum sem ekki er hægt að ritstýra'
+    );
   });
 
   it('G1.13: the editor routes scope skips into both messages', () => {
