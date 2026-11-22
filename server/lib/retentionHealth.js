@@ -44,4 +44,55 @@ function readRetentionHealth({ db, nowMs, staleHours = DEFAULT_STALE_HOURS }) {
   }
 }
 
-module.exports = { readRetentionHealth, DEFAULT_STALE_HOURS };
+/**
+ * How long the cached reader keeps an answer that has a due step. While a step is due, readRetentionHealth surveys
+ * every scope table (0.10-0.15 s measured on a test database of 30,000 terms and 20,000 edits; the final review's
+ * I-1), and /api/health is public. Kept this long, the survey runs at most once a window, however often it is called;
+ * the price is that the check can show a refusal, its clearing, or a recorded step up to this late. Shorter than one
+ * backup cycle, so it never hides a whole run of backup-db.sh (retentionHealth.test.js derives the cycle).
+ */
+const DEFAULT_CACHE_MS = 5 * 60 * 1000;
+
+/**
+ * A reader for /api/health that keeps an answer with a due step for `ttlMs` ([USER] 2026-11-22, the final review's
+ * I-1). Before 2029 nothing is due, so nothing is kept and every read is readRetentionHealth's. An error is never kept.
+ * A read inside the window opens no database. The answer has the same shape either way: no age, no time.
+ *
+ * @param {{ ttlMs?: number }} [opts]
+ * @returns {(p: { key: string, open: () => import('better-sqlite3').Database, nowMs: number, staleHours?: number })
+ *   => ReturnType<typeof readRetentionHealth>} never throws; `open` is called only on a miss, and its handle closed
+ */
+function createRetentionHealthCache({ ttlMs = DEFAULT_CACHE_MS } = {}) {
+  let kept = null; // { key, atMs, result }
+  const copy = (r) => ({ ...r, due: [...r.due], overdue: [...r.overdue] });
+  return function read({ key, open, nowMs, staleHours = DEFAULT_STALE_HOURS }) {
+    if (kept && kept.key === key && nowMs >= kept.atMs && nowMs - kept.atMs < ttlMs) {
+      return copy(kept.result);
+    }
+    kept = null;
+    let result;
+    try {
+      const db = open();
+      try {
+        result = readRetentionHealth({ db, nowMs, staleHours });
+      } finally {
+        db.close();
+      }
+    } catch (err) {
+      return { ok: false, error: err.code || err.name };
+    }
+    if (!result.error && result.due.length) kept = { key, atMs: nowMs, result: copy(result) };
+    return result;
+  };
+}
+
+/** The process's one cached reader, which index.js calls for checks.retention. */
+const readRetentionHealthCached = createRetentionHealthCache();
+
+module.exports = {
+  readRetentionHealth,
+  readRetentionHealthCached,
+  createRetentionHealthCache,
+  DEFAULT_STALE_HOURS,
+  DEFAULT_CACHE_MS,
+};

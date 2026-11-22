@@ -390,19 +390,17 @@ app.get('/api/health', (req, res) => {
 
   // The editing tool's retention dates (G1.15(b), spec §4.6): not ok when a step has been due and unrecorded past two
   // backup cycles, or while a refusal for continued use stands. No table, reason or count: the endpoint is public.
+  // While a step is due the answer is kept for a few minutes (the final review's I-1: each survey costs 0.10-0.15 s).
   try {
     const Database = require('better-sqlite3');
-    const { readRetentionHealth, DEFAULT_STALE_HOURS } = require('./lib/retentionHealth');
-    const db = new Database(require('./lib/dbPath')(), { readonly: true, fileMustExist: true });
-    try {
-      checks.retention = readRetentionHealth({
-        db,
-        nowMs: Date.now(),
-        staleHours: Number(process.env.RETENTION_STALE_HOURS) || DEFAULT_STALE_HOURS,
-      });
-    } finally {
-      db.close();
-    }
+    const { readRetentionHealthCached, DEFAULT_STALE_HOURS } = require('./lib/retentionHealth');
+    const dbPath = require('./lib/dbPath')();
+    checks.retention = readRetentionHealthCached({
+      key: dbPath,
+      open: () => new Database(dbPath, { readonly: true, fileMustExist: true }),
+      nowMs: Date.now(),
+      staleHours: Number(process.env.RETENTION_STALE_HOURS) || DEFAULT_STALE_HOURS,
+    });
   } catch (err) {
     checks.retention = { ok: false, error: err.code || err.name };
   }
