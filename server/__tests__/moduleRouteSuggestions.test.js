@@ -35,6 +35,7 @@ const serverCommit = require('../lib/serverCommit');
 const L = require('../lib/suggestionLogs');
 const { sha256Text } = require('../lib/servedText');
 const { writeModule, handlerFor, invoke } = require('./helpers/servedFixture');
+const { plantAssignment } = require('./helpers/plantAssignment.cjs');
 const { APPROVED, consent } = require('./helpers/researchFixture.cjs');
 
 const BOOK = 'efnafraedi-2e';
@@ -192,7 +193,7 @@ beforeAll(() => {
     email: 'sug-ed@skoli.example',
     role: 'editor',
   });
-  userService.assignChapter(editor.id, BOOK, 1);
+  plantAssignment(db, { userId: editor.id, book: BOOK, chapter: 1 });
   // The editor consents, so the opening serve really reaches the research file (the failure test
   // below stubs its handle; without consent the stub would never be called).
   researchConsentText._setTestApprovedTexts(APPROVED);

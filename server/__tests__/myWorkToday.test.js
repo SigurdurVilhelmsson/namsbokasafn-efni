@@ -24,6 +24,7 @@ process.env.JWT_SECRET = process.env.JWT_SECRET || 'prufa-leyndarmal';
 
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const { plantAssignment } = require('./helpers/plantAssignment.cjs');
 
 let server;
 let base;
@@ -76,11 +77,10 @@ beforeAll(async () => {
     '2026-11-13 09:30:00',
     '2026-11-13 09:00:00'
   );
+  // Fixture rows, planted: assigning is gated (G1.13 spec §6.5), and this file tests the front page.
+  plantAssignment(db, { userId: editorRow, book: BOOK, chapter: 2 });
+  plantAssignment(db, { userId: editorRow, book: BOOK, chapter: -1 });
   db.close();
-
-  const userService = require('../services/userService');
-  userService.assignChapter(editorRow, BOOK, 2, 'test');
-  userService.assignChapter(editorRow, BOOK, -1, 'test');
 
   const app = express();
   app.use(cookieParser());

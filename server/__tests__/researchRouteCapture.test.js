@@ -32,6 +32,7 @@ const logger = require('../lib/logger');
 const userService = require('../services/userService');
 const { resolveResearchDbPath } = require('../lib/researchDbPath');
 const { writeModule, handlerFor, invoke } = require('./helpers/servedFixture');
+const { plantAssignment } = require('./helpers/plantAssignment.cjs');
 const {
   APPROVED,
   makeUser,
@@ -106,7 +107,10 @@ beforeAll(() => {
   const h = makeUser('p-h', 'head-editor');
   makeUser('p-d');
   makeUser('p-u');
-  userService.assignChapter(e, CHEM, 1);
+  // A fixture row, planted: assigning is gated (G1.13 spec §6.5).
+  const seed = new Database(dbPath);
+  plantAssignment(seed, { userId: e, book: CHEM, chapter: 1 });
+  seed.close();
   decline(userService.findByProviderId('p-d').id);
   // No consenting row exists yet, so the boot creates the file; a checkpoint puts the schema in the main file.
   researchDb.openAtBoot();

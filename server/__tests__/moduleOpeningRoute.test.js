@@ -31,6 +31,7 @@ const segmentParser = require('../services/segmentParser');
 const moduleOpenings = require('../services/moduleOpenings');
 const m054 = require('../migrations/054-module-openings');
 const { writeModule, handlerFor, invoke, invokeChain } = require('./helpers/servedFixture');
+const { plantAssignment } = require('./helpers/plantAssignment.cjs');
 
 const BOOK = 'efnafraedi-2e';
 const T0 = 1_700_000_000_123;
@@ -101,7 +102,7 @@ const asUser = (u, books = []) => ({
 const bearer = (user) => ({
   authorization: `Bearer ${auth.createToken({ ...user, name: user.username, avatar: '' })}`,
 });
-/** A users row the way the admin page creates one, with assignment rows (userService's own writers). */
+/** A users row the way the admin page creates one, with assignment rows planted directly (assigning is gated). */
 function member(providerId, role, chapters = [], book = BOOK) {
   const u = userService.createUser({
     providerId,
@@ -109,7 +110,7 @@ function member(providerId, role, chapters = [], book = BOOK) {
     email: `${providerId}@skoli.example`,
     role,
   });
-  for (const ch of chapters) userService.assignChapter(u.id, book, ch);
+  for (const ch of chapters) plantAssignment(db, { userId: u.id, book, chapter: ch });
   return u;
 }
 const everySegmentHasBase = (body) =>
@@ -138,7 +139,7 @@ beforeAll(() => {
   auth = require('../services/auth');
 
   ed1 = member('p-ed1', 'editor', [1, 2, -1]);
-  userService.assignChapter(ed1.id, 'liffraedi-2e', 1);
+  plantAssignment(db, { userId: ed1.id, book: 'liffraedi-2e', chapter: 1 });
   ed1b = member('p-ed1b', 'editor', [1]);
   ed5 = member('p-ed5', 'editor', [5]);
   zero = member('p-zero', 'editor');
@@ -207,7 +208,7 @@ describe('T6, opened time, through the route (spec §5.5, §10)', () => {
     // the study book is always enforced (spec §6.2); the fail-open neighbour lives on a non-study book and
     // would have let the zero-row editor through, so the "no" is the predicate's
     expect(userService.isAssignmentEnforced(BOOK)).toBe(true);
-    userService.assignChapter(ed1.id, 'testbook', 1, 'admin');
+    plantAssignment(db, { userId: ed1.id, book: 'testbook', chapter: 1, assignedBy: 'admin' });
     expect(userService.hasChapterAccess(zero.id, 'testbook', 1)).toBe(true);
     // positive control: an assigned editor's serve sets it
     moduleOpenings._setTestClock(() => T0);
@@ -286,7 +287,7 @@ describe('T6, opened time, through the route (spec §5.5, §10)', () => {
   });
 
   it('chapter 0 cannot be served, so an assignment row for it opens nothing', async () => {
-    // the row this case is about really exists (assignChapter is INSERT OR IGNORE)
+    // the row this case is about really exists (plantAssignment is INSERT OR IGNORE)
     expect(
       db
         .prepare('SELECT chapter FROM user_chapter_assignments WHERE user_id = ? AND book_slug = ?')
@@ -303,7 +304,7 @@ describe('T6, opened time, through the route (spec §5.5, §10)', () => {
       []
     );
     // positive control: the same member, assigned chapter 1, opens a chapter-1 unit through the chain
-    userService.assignChapter(ch00.id, BOOK, 1);
+    plantAssignment(db, { userId: ch00.id, book: BOOK, chapter: 1 });
     const ok = await invokeChain(router, 'get', ROUTE, {
       params: { book: BOOK, chapter: '1', moduleId: 'm94010' },
       headers: bearer(asUser(ch00)),
@@ -428,7 +429,7 @@ describe('T6, opened time, through the route (spec §5.5, §10)', () => {
     expect(everySegmentHasBase(r.body)).toBe(true);
     expect(opening('m94015')).toBeUndefined();
     // positive control: the same member, given the chemistry row, opens it
-    userService.assignChapter(bio.id, BOOK, 1);
+    plantAssignment(db, { userId: bio.id, book: BOOK, chapter: 1 });
     expect((await serve(asUser(bio), 'm94015')).status).toBe(200);
     expect(opening('m94015')).toBeDefined();
   });

@@ -13,6 +13,7 @@ const log = require('../lib/logger');
 const { ROLES, ROLE_HIERARCHY } = require('../constants');
 const resolveDbPath = require('../lib/dbPath');
 const { isAlwaysEnforced } = require('../lib/editorScope');
+const { assignmentRefusal } = require('./assignmentGate');
 
 const DB_PATH = resolveDbPath();
 
@@ -703,9 +704,21 @@ function hasChapterAccess(userId, bookSlug, chapter) {
 }
 
 /**
+ * The error a gated write throws when the assign gate refuses (G1.13 spec §6.5). The routes answer it 409.
+ * @param {string} reason
+ */
+function assignmentRefusedError(reason) {
+  return Object.assign(new Error('assignment refused: ' + reason), {
+    code: 'ASSIGNMENT_REFUSED',
+    reason,
+  });
+}
+
+/**
  * Add one assignment row. It replaces nobody, so on its own it does NOT keep the rule of one assignee per
- * chapter: the routes that assign use setChapterAssignee. This stays for fixtures and for the rows written
- * before the rule.
+ * chapter: the routes that assign use setChapterAssignee, and tests plant their fixture rows directly
+ * (server/__tests__/helpers/plantAssignment.cjs). The assign gate is asked first, as on every path that
+ * creates a row, and a refusal throws ASSIGNMENT_REFUSED.
  */
 function assignChapter(userId, bookSlug, chapter, assignedBy = null) {
   if (!isUserTableReady()) {
@@ -713,15 +726,29 @@ function assignChapter(userId, bookSlug, chapter, assignedBy = null) {
   }
 
   const db = getDb();
-  try {
-    db.prepare(
-      `
-      INSERT OR IGNORE INTO user_chapter_assignments (user_id, book_slug, chapter, assigned_by)
-      VALUES (?, ?, ?, ?)
+  const ch = parseInt(chapter, 10);
+  // The gate sees the number the row would carry (spec §6.5).
+  const reason = assignmentRefusal(db, { userId, book: bookSlug, chapter: ch });
+  if (reason) throw assignmentRefusedError(reason);
+  db.prepare(
     `
-    ).run(userId, bookSlug, parseInt(chapter, 10), assignedBy);
-  } finally {
-  }
+    INSERT OR IGNORE INTO user_chapter_assignments (user_id, book_slug, chapter, assigned_by)
+    VALUES (?, ?, ?, ?)
+  `
+  ).run(userId, bookSlug, ch, assignedBy);
+}
+
+/**
+ * The assign gate (G1.13 spec §6.5) on this module's connection, for routes: why `userId` may not be given
+ * `chapter` of `bookSlug`, or null. With no chapter, the answer the assignments page shows per editor.
+ *
+ * @param {number} userId
+ * @param {string} bookSlug
+ * @param {number} [chapter]
+ * @returns {string|null} a reason from assignmentGate's REFUSAL_MESSAGES, or null
+ */
+function assignmentRefusalFor(userId, bookSlug, chapter) {
+  return assignmentRefusal(getDb(), { userId, book: bookSlug, chapter });
 }
 
 /**
@@ -782,6 +809,9 @@ function chapterHolders(db, bookSlug, chapter) {
  * the foreign key refuses (no such user) leaves the chapter exactly as it was. A chapter that held several
  * rows from before the rule is settled by this call. Returns the users it replaced.
  *
+ * The assign gate (G1.13 spec §6.5) is asked inside the same transaction, before anything is deleted, so a
+ * refusal (thrown as ASSIGNMENT_REFUSED) leaves the chapter exactly as it was too.
+ *
  * @returns {{ replaced: Array<{id: number, name: string|null}> }}
  */
 function setChapterAssignee(userId, bookSlug, chapter, assignedBy = null) {
@@ -792,6 +822,8 @@ function setChapterAssignee(userId, bookSlug, chapter, assignedBy = null) {
   const db = getDb();
   const ch = parseInt(chapter, 10);
   return db.transaction(() => {
+    const reason = assignmentRefusal(db, { userId, book: bookSlug, chapter: ch });
+    if (reason) throw assignmentRefusedError(reason);
     const replaced = chapterHolders(db, bookSlug, ch).filter((u) => u.id !== userId);
     db.prepare(
       'DELETE FROM user_chapter_assignments WHERE book_slug = ? AND chapter = ? AND user_id != ?'
@@ -964,6 +996,7 @@ module.exports = {
   isAssignmentEnforced,
   setAssignmentEnforced,
   assignChapter,
+  assignmentRefusalFor,
   isAssignableUser,
   setChapterAssignee,
   clearChapterAssignees,

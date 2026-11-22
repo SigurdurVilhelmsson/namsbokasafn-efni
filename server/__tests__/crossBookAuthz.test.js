@@ -15,6 +15,8 @@ const express = require('express');
 const Database = require('better-sqlite3');
 const jwt = require('jsonwebtoken');
 const migration040 = require('../migrations/040-service-table-ownership');
+const migration060 = require('../migrations/060-editor-licence-clauses');
+const { plantAssignment } = require('./helpers/plantAssignment.cjs');
 const { createSegmentEditsSchema } = require('./helpers/segmentEditsSchema.cjs');
 const logger = require('../lib/logger');
 
@@ -58,6 +60,9 @@ beforeAll(() => {
   // this harness DB skips the real migration runner, so apply 040 directly, same
   // as production's boot-time runAllMigrations()).
   migration040.up(db);
+  // editor_licence_clauses: GET /api/admin/assignments/:book reads each listed editor's signature date
+  // (G1.13 spec §6.4). The real migration, as for 040.
+  migration060.up(db);
   // segment_edits (canonical post-039 shape, batch-2 helper): GET
   // /api/admin/assignments/:book reaches getEditorialProgress, whose first
   // query hits this table. Without it the call threw — silently pre-batch-4,
@@ -671,9 +676,12 @@ describe('admin chapter-assignment routes are book-scoped (Task 6)', () => {
     const res = await del(ASSIGN, HE_B);
     expect(await verdictOf(res)).toEqual(BOOK_CLOSED);
   });
-  // B1-F8 rider, both arms, as the admin (G1.13: the head editor's DELETE above was refused, so the
-  // admin's POST above left the only assignment).
-  it('DELETE assign: admin clears authz and reports removed:true (assignment exists from the POST tests above, B1-F8 rider)', async () => {
+  // B1-F8 rider, both arms, as the admin. The row is planted: the admin's POST above no longer writes
+  // one, because the assign gate refuses a closed book (G1.13 spec §6.5).
+  it('DELETE assign: admin clears authz and reports removed:true (the assignment is planted, B1-F8 rider)', async () => {
+    const conn = new Database(process.env.SESSIONS_DB_PATH);
+    plantAssignment(conn, { userId: 1, book: 'liffraedi-2e', chapter: 1 });
+    conn.close();
     const res = await del(ASSIGN, ADMIN);
     expect([401, 403]).not.toContain(res.status);
     expect(res.status).toBe(200);

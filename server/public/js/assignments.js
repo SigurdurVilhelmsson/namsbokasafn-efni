@@ -16,6 +16,8 @@
 
   let currentBook = '';
   let currentEditors = [];
+  // The assign gate's message per refusal reason (G1.13 spec §6.5), from the server.
+  let refusalMessages = {};
   // The value of the dropdown's "choose one" line, shown (disabled) while a chapter holds several assignees.
   const CHOOSE_ONE = '__choose';
 
@@ -110,13 +112,18 @@
       editors.forEach(function (ed) {
         const selected = only && only.user_id === ed.id ? ' selected' : '';
         if (selected) onlyIsListed = true;
+        // An editor the assign gate refuses cannot be chosen, and the option says why. The chapter's
+        // present holder stays choosable, so the row goes on showing who holds it.
+        const refused = ed.refusal && !selected;
         options +=
           '<option value="' +
           escapeHtml(String(ed.id)) +
           '"' +
           selected +
+          (refused ? ' disabled' : '') +
           '>' +
           escapeHtml(ed.name || 'Notandi ' + ed.id) +
+          (refused ? ' — ' + escapeHtml(refusalMessages[ed.refusal] || ed.refusal) : '') +
           '</option>';
       });
       // The assignee is no longer on the list (deactivated, or without book access): still shown, so the row
@@ -198,6 +205,34 @@
     tbody.innerHTML = rows.join('');
   }
 
+  /**
+   * Under the table: each listed editor's licence-clause status, read-only (spec §6.4), and why the
+   * assign gate refuses them, if it does (spec §6.5).
+   * @param {Array<{id: number, name: string, licenceSignedOn: string|null, refusal: string|null}>} editors
+   */
+  function renderEditorStatus(editors) {
+    let list = document.getElementById('assign-editor-status');
+    if (!list) {
+      list = document.createElement('ul');
+      list.id = 'assign-editor-status';
+      list.className = 'assign-hint';
+      document.getElementById('assignments-content').appendChild(list);
+    }
+    list.innerHTML = editors
+      .map(function (ed) {
+        const licence = ed.licenceSignedOn
+          ? 'leyfisákvæði undirritað ' + ed.licenceSignedOn
+          : 'ekkert leyfisákvæði skráð';
+        const refusal = ed.refusal
+          ? '; ekki hægt að úthluta: ' + (refusalMessages[ed.refusal] || ed.refusal)
+          : '';
+        return (
+          '<li>' + escapeHtml((ed.name || 'Notandi ' + ed.id) + ': ' + licence + refusal) + '</li>'
+        );
+      })
+      .join('');
+  }
+
   // ================================================================
   // ASSIGNMENT HANDLER
   // ================================================================
@@ -239,7 +274,8 @@
         loadAssignments(currentBook);
       })
       .catch(function (err) {
-        showToast(err.message || 'Villa við vistun', 'error');
+        // A refused assign (409 ASSIGNMENT_REFUSED) carries the reason in Icelandic as `message`.
+        showToast((err.data && err.data.message) || err.message || 'Villa við vistun', 'error');
         // Reload to restore correct state
         loadAssignments(currentBook);
       });
@@ -365,6 +401,7 @@
 
         const assignments = adminData.assignments || [];
         currentEditors = adminData.editors || [];
+        refusalMessages = adminData.refusalMessages || {};
         const chapterProgress = adminData.chapterProgress || {};
 
         // Reflect the per-book enforcement toggle
@@ -405,6 +442,7 @@
 
         renderStats(chapters);
         renderTable(chapters, book);
+        renderEditorStatus(currentEditors);
 
         loadingEl.style.display = 'none';
         contentEl.style.display = '';

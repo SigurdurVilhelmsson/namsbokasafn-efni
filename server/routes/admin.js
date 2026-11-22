@@ -32,11 +32,19 @@ const bookDataGenerator = require('../services/bookDataGenerator');
 const userService = require('../services/userService');
 const suggestionSwitch = require('../services/suggestionSwitch');
 const licenceClauses = require('../services/licenceClauses');
+const { REFUSAL_MESSAGES } = require('../services/assignmentGate');
 const { isStudyBook } = require('../lib/researchScope');
 const pipeline = require('../services/pipelineService');
 const segmentEditorService = require('../services/segmentEditorService');
 const { refuseClosedBookForNonAdmins, isAlwaysEnforced } = require('../lib/editorScope');
 // https import removed — no longer needed (GitHub user lookup removed)
+
+/** The 409 body for an assign the gate refused (G1.13 spec §6.5). */
+const refusedBody = (reason) => ({
+  error: 'ASSIGNMENT_REFUSED',
+  reason,
+  message: REFUSAL_MESSAGES[reason],
+});
 
 // ============================================================================
 // CATALOGUE MANAGEMENT
@@ -1008,6 +1016,13 @@ router.post('/users/:id/chapters', requireAuth, requireAdmin(), (req, res) => {
         .json({ error: 'This user cannot be assigned chapters', code: 'NOT_ASSIGNABLE' });
     }
 
+    // The assign gate, for every chapter before any is written: one refusal refuses the whole request
+    // (spec §6.5), so a refused chapter never leaves the chapters before it assigned.
+    for (const ch of chapters) {
+      const reason = userService.assignmentRefusalFor(userId, bookSlug, parseInt(ch, 10));
+      if (reason) return res.status(409).json(refusedBody(reason));
+    }
+
     const replaced = [];
     for (const ch of chapters) {
       const result = userService.setChapterAssignee(userId, bookSlug, ch, req.user.username);
@@ -1024,6 +1039,7 @@ router.post('/users/:id/chapters', requireAuth, requireAdmin(), (req, res) => {
       replaced,
     });
   } catch (err) {
+    if (err.code === 'ASSIGNMENT_REFUSED') return res.status(409).json(refusedBody(err.reason));
     log.error({ err }, 'Assign chapters error');
     res.status(500).json({ error: err.message });
   }
@@ -1141,7 +1157,13 @@ router.get('/assignments/:book', requireAuth, requireHeadEditor('book'), (req, r
 
   try {
     const assignments = userService.getBookAssignments(book);
-    const editors = userService.getEditorsForBook(book);
+    // Per editor, whether the assign gate would let them take a chapter of this book, and why not
+    // (spec §6.5), and the licence-clause date the head editor sees read-only (spec §6.4).
+    const editors = userService.getEditorsForBook(book).map((ed) => ({
+      ...ed,
+      licenceSignedOn: licenceClauses.latestSignedOn(segmentEditorService.getDb(), ed.id),
+      refusal: userService.assignmentRefusalFor(ed.id, book),
+    }));
 
     let chapterProgress = {};
     try {
@@ -1163,6 +1185,8 @@ router.get('/assignments/:book', requireAuth, requireHeadEditor('book'), (req, r
       enforceAssignments: userService.isAssignmentEnforced(book),
       // true: the toggle is always on for this book and cannot be switched off (spec §6.2).
       enforcementLocked: isAlwaysEnforced(book),
+      // The text for each editor's `refusal`, so the page says why without a copy of its own.
+      refusalMessages: REFUSAL_MESSAGES,
     });
   } catch (err) {
     log.error({ err }, 'Get book assignments error');
@@ -1324,6 +1348,8 @@ router.post(
       });
       res.json({ success: true, replaced });
     } catch (err) {
+      // The assign gate refused, inside setChapterAssignee's transaction (spec §6.5): nothing was written.
+      if (err.code === 'ASSIGNMENT_REFUSED') return res.status(409).json(refusedBody(err.reason));
       log.error({ err }, 'Assign chapter error');
       res.status(500).json({ error: err.message });
     }
