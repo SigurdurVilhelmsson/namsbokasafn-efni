@@ -6,6 +6,12 @@
  *
  * The two editors and chapter 9's two rows come from seed-fixture.js. This spec owns chapters 7, 8 and 9 of
  * efnafraedi-2e's assignments.
+ *
+ * The assign gate (G1.13 spec §6.5) gives a chemistry chapter only to an editor with a consent decision and a
+ * licence clause on record, which seed-fixture.js plants for both, and only while the editors' suggestion view is
+ * on for the book. suggestion-view.spec.js switches it on, so this spec runs in playwright.config.js's
+ * `chromium-after-switch-on` project, which depends on the project that runs that spec. An editor the gate refuses
+ * is a disabled line "Name — reason" in the dropdown, so a refusal shows here as a missing label.
  */
 const { test, expect } = require('@playwright/test');
 const { loginAs } = require('./helpers/auth');
@@ -45,6 +51,25 @@ async function choose(page, chapter, label) {
 }
 
 test.describe('Úthlutanir: one assignee per chapter', () => {
+  // Fail here, with the cause, rather than as a timeout on a label the gate has disabled.
+  test.beforeAll(async ({ browser }) => {
+    const context = await browser.newContext();
+    try {
+      const page = await context.newPage();
+      await loginAs(page, 'admin');
+      const res = await page.request.get('/api/admin/books/' + BOOK + '/suggestion-view');
+      expect(res.ok(), await res.text()).toBe(true);
+      expect(
+        (await res.json()).enabled,
+        'the suggestion view must be on before this spec assigns (spec §6.5). It runs in the ' +
+          '`chromium-after-switch-on` project, which depends on `chromium`, where suggestion-view.spec.js ' +
+          'switches the view on: run the whole suite (CI=1 npm run test:e2e), not this file with --no-deps'
+      ).toBe(true);
+    } finally {
+      await context.close();
+    }
+  });
+
   test('choosing another editor replaces the first; "— Óúthlutað —" then leaves nobody', async ({
     page,
   }) => {

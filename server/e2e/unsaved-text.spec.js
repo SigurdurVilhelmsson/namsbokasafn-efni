@@ -95,18 +95,24 @@ function answerDialogs(page, accept) {
   return { asked, stop: () => page.off('dialog', handler) };
 }
 
-/** The two people this spec saves real rows as (ED-02 and ED-05). The helper names a user after its role. */
+/**
+ * The two people this spec saves real rows as (ED-02 and ED-05). Both are admins: the fixture book is closed to
+ * every non-admin (G1.13 spec §6.1), for a save and for the afterEach's delete alike. The helper names a user after
+ * its role, so USER_B carries a name of its own (OTHER_ADMIN): the row's Breyta rule goes by name, and two admins
+ * with one name would look like one person, the other editor's edit like this editor's own.
+ */
+const OTHER_ADMIN = { username: 'test-admin-b', name: 'Test Admin B' };
 const WRITERS = [
-  ['admin', USER_A],
-  ['head-editor', USER_B],
+  ['admin', USER_A, undefined],
+  ['admin', USER_B, OTHER_ADMIN],
 ];
 
 // No real row outlives its test, also when the test timed out and its own page is gone.
 test.afterEach(async ({ playwright }) => {
-  for (const [role, id] of WRITERS) {
+  for (const [role, id, identity] of WRITERS) {
     const api = await playwright.request.newContext({
       baseURL: 'http://localhost:3456',
-      extraHTTPHeaders: { cookie: `auth_token=${getTestToken(role, id)}` },
+      extraHTTPHeaders: { cookie: `auth_token=${getTestToken(role, id, identity)}` },
     });
     try {
       const res = await api.get(MODULE_URL);
@@ -249,9 +255,8 @@ test.describe('unsaved text in the segment editor is never lost unasked', () => 
     // Another editor saves the same row first.
     const other = await browser.newContext({ baseURL: 'http://localhost:3456' });
     const otherPage = await other.newPage();
-    // A different role, because the helper names a user after its role and the row's Breyta rule goes by name:
-    // two admins would look like one person, and the other editor's edit like this editor's own.
-    await loginAs(otherPage, 'head-editor', USER_B);
+    // Another admin with a name of its own (OTHER_ADMIN, above WRITERS): the row's Breyta rule goes by name.
+    await loginAs(otherPage, 'admin', USER_B, OTHER_ADMIN);
     const theirs = `${target.is}${SUFFIX} B`;
     try {
       // (a plain API save: it names no edit and does not say it handles UNSEEN_EDIT, like any script)
