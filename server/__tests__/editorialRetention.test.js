@@ -543,6 +543,45 @@ describe('editorialRetention: the public glossary record is unchanged by the str
   });
 });
 
+// [USER] 2026-11-22 (the final review's I-1): a tool still writing after the date is continued use, so a person
+// decides then (§0 answer 1). That holds for every tool's label, the c19 loader's included: its label is kept from
+// the strip so the committed record stays as it is, and that keep-list must not also hide its later writes.
+describe("editorialRetention: every tool's write after the date is continued use (final review I-1)", () => {
+  it('a book registration by a tool label after the date raises the refusal (the ruling keeps this)', () => {
+    insert(db, 'registered_books', {
+      slug: 'gate-later',
+      title_is: 'x',
+      registered_by: 'gate',
+      registered_at: LATER,
+    });
+    const res = planStep(db, 'named', AT);
+    expect(refusal(res, 'later-records', 'registered_books')).toMatchObject({ rows: 1 });
+  });
+
+  it("a row by the c19 loader's label after the date raises the refusal too, and the label is still never stripped", () => {
+    const base = { book: 'efnafraedi-2e', reason: 'because', source: 'test' };
+    addExclusion(db, {
+      ...base,
+      english: 'Late',
+      by: C19_LOAD_LABEL,
+      at: '2029-01-05T10:00:00.000Z',
+    });
+    addExclusion(db, {
+      ...base,
+      english: 'Early',
+      by: C19_LOAD_LABEL,
+      at: '2026-11-18T12:00:00.000Z',
+    });
+    const res = applyStep(db, 'named', AT);
+    expect(refusal(res, 'later-records', 'book_glossary_change')).toMatchObject({ rows: 1 });
+    expect(refusal(res, 'later-records', 'book_glossary_exclusion')).toMatchObject({ rows: 1 });
+    expect(db.prepare('SELECT by FROM book_glossary_change ORDER BY id').pluck().all()).toEqual([
+      C19_LOAD_LABEL,
+      C19_LOAD_LABEL,
+    ]);
+  });
+});
+
 // ── Task 6: steps 2 and 3 (spec §4.4) ──
 
 const AT2 = effectiveMs(UNNAMED_RECORDS); // 00:00 UTC on 1 Jan 2030
