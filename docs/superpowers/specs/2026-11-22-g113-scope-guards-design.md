@@ -67,7 +67,11 @@ waits on the data protection officer. The guards ship first; the assigning is a 
   unique per (user, book, chapter); appendices are chapter `-1`. One assignee per chapter is enforced in
   `setChapterAssignee` (a transaction), not by the schema; `assignChapter` only adds. The assign routes check only
   that the user is active and at least an editor. **Migration 012's `chapter_assignments` table is read by nothing.**
-- **The assignments page** lists chapters from the disk and **drops ch00**, which holds one study unit (`m68662`).
+- **The assignments page** lists chapters from the disk and **drops ch00** on purpose. ch00 holds one study unit
+  (`m68662`), but `validateParams` refuses any chapter below 1 on every load, save, accept, done and propagate route,
+  so no one can open it. The G1.7 design (§3, call 10) already records that `m68662` "is never opened and never
+  minted". Propagation's `findOccurrences` still scans ch00, so today a head editor's propagation can write pending
+  edits into a chapter nobody can open or apply.
 - **`scripts/backfill-appendix-sections.js`** (dry run by default, `--db` writes, `--book` scopes) adds appendix
   `book_chapters`/`book_sections` rows. It writes no assignment rows; section-keyed routes (assigning a reviewer or
   localizer to an appendix section) need it.
@@ -82,7 +86,6 @@ waits on the data protection officer. The guards ship first; the assigning is a 
 - Propagation writes only into chapters the editor may write.
 - No assignment row is created for an editor without a recorded consent decision (study books) and a recorded
   licence clause, nor for anyone who needs no row.
-- ch00 can be assigned.
 
 **Non-goals**
 - **The terminology routes.** They write the shared concept model, not a book's text, and take no book. G1.17 owns
@@ -90,6 +93,9 @@ waits on the data protection officer. The guards ship first; the assigning is a 
 - **Section assignments** (reviewer, localizer): unchanged, apart from the backfill running before appendix sections
   are assigned.
 - **Migration 012's `chapter_assignments`:** left as it is (read by nothing).
+- **Making ch00 editable or assignable.** The G1.7 design (§3, call 10) settles that `m68662` is never opened; making
+  front matter editable is a separate feature, and it would change the study's population. ch00 stays off the
+  assignments page.
 - **Removing organic from `main` or the website:** §C190's other items.
 
 **Anti-goals** (would make G1.13 a failure even if it worked)
@@ -137,9 +143,11 @@ waits on the data protection officer. The guards ship first; the assigning is a 
 - **`hasChapterAccess` for a study book has no fail-open branch:** users table not ready, a null user id, a missing
   assignment table, or no row for that chapter all refuse (a missing table keeps today's 503,
   `ASSIGNMENT_TABLE_UNAVAILABLE`). Chapter is compared as a number: `0` and `-1` are chapters.
-- **The middleware's chapter-less path:** in a study book, a guarded write route whose chapter cannot be determined is
-  refused, not waved through. The census test (§6.1) also asserts that each guarded segment-editor write route
-  resolves a chapter.
+- **The middleware's chapter-less path:** in a study book, a route that runs `requireBookAccess` and whose chapter
+  cannot be determined is refused, not waved through. The census test (§6.1) also asserts that each segment-editor
+  write route carrying `requireBookAccess` with a `:chapter` parameter (today `/edit`, `/suggestions/reject`, the two
+  figure routes, `/accept`, `/done`, `/propagate`) resolves a chapter. The writes outside `requireBookAccess` get the
+  book check only (§6.7).
 - **The toggle:** `POST /api/admin/assignments/:book/enforcement` refuses to turn a study book off (409
   `STUDY_BOOK_ALWAYS_ENFORCED`), and the assignments page shows the switch on and locked for a study book, with the
   reason.
@@ -157,7 +165,10 @@ waits on the data protection officer. The guards ship first; the assigning is a 
   write is dropped, and the response lists it with a new skip reason, `not-your-chapter`.
 - **Preview** (`GET /propagation-preview`): the same helper, the same reason, so preview and apply stay in parity. The
   preview also gains the book check of §6.1's allowlist (a GET, so the census does not require it; the parity does).
-- ch00 and appendix targets are ordinary chapters (0 and -1).
+- **Appendix targets** (chapter -1) are ordinary chapters.
+- **ch00 targets are skipped for everyone**, head editor and admin included, with the reason `chapter-not-editable`:
+  every route that would load, review or apply them refuses chapter 0 (§3), so an edit written there could never be
+  seen or applied. This replaces today's behaviour, in which a head editor's propagation can write such edits.
 
 ### 6.4 The licence-clause record
 
@@ -173,11 +184,13 @@ waits on the data protection officer. The guards ship first; the assigning is a 
 
 - **Append-only.** The current state is "at least one row for the user". A row recorded in error is removed only by an
   admin, through a route that writes an `activity_log` entry naming the row's id and why; nothing edits a row.
-- **Writing it:** `POST /api/admin/users/:id/licence-clause { signedOn }`, for an admin or the head editor of a
-  writable book, from a field on the users admin page (next to the user's chapters). `signedOn` must be a real date,
-  not in the future.
-- **Reading it:** the users admin page shows "leyfisákvæði undirritað <date>" or its absence, and the assign gate
-  reads it (§6.5).
+- **Writing it: admins only.** `POST /api/admin/users/:id/licence-clause { signedOn }` under `requireAdmin()`, like
+  every other `/api/admin/users/:id/*` route, from a field on the users admin page (`/admin`, admin-only), next to the
+  user's chapters. The agreement is between the editor and the project, and the record belongs to a user, not a book,
+  so no book's head editor records it. `signedOn` must be a real date, not in the future.
+- **Reading it:** the users admin page shows "leyfisákvæði undirritað <date>" or its absence. The assignments page,
+  which the head editor can open, shows the same status read-only beside each editor, so they can see why an editor
+  cannot be assigned. The assign gate reads it (§6.5).
 - **Retention:** the table names people, so `editorialRetentionScope.js` must classify it, or its test fails by name.
   **Which class is [USER]'s to set** (§11, open question 1).
 
@@ -196,20 +209,31 @@ route answers **409** with that reason:
    `consented` or `declined`**: an editor who declines the research may still edit; their work is just not captured
    (§5.14). Until [USER] approves a G1.4 text, no such row can exist, so no study-book assignment can be made.
 4. **`no-licence-clause`:** no `editor_licence_clauses` row for the user.
+5. **`suggestion-view-off`** (study books only): the book's `suggestion-view` switch is not on now
+   (`server/lib/bookSwitches.js`, `currentSwitchValue`). This is R6 in code: units opened before the view is on lose
+   their suggestions for good. It holds today (on since 2026-11-12); the check keeps it holding if the switch is ever
+   turned off.
 
 - The assignments page shows the reason in Icelandic beside the chapter, and lists which editors are assignable.
 - Existing rows are untouched (production holds none). Removing an assignment is not gated.
 - `setChapterAssignee`'s one-assignee rule is unchanged, and stays inside the same transaction as the gate's read.
 
-### 6.6 ch00 is assignable
+### 6.6 ch00 stays off the assignments page
 
-The chapter list the assignments page uses includes ch00 when the book has it. The admin routes already accept
-chapter 0.
+Unchanged. The admin routes accept chapter 0, so the gate (§6.5) also refuses a chapter-0 assignment in a study book,
+with the reason `chapter-not-editable`, so that no route can create a row for a unit that can never open.
 
-### 6.7 Edit comments
+### 6.7 Writes outside `requireBookAccess`: the book check only
 
-`POST /edit/:editId/comment` gets the allowlist guard (book from the edit's row) and nothing more: commenting changes
-no text, and a discussion across chapters within chemistry stays possible (§10, call 4).
+These get the allowlist guard (§6.1), with the book taken from the row they act on, and **no chapter check**:
+
+- **commenting on an edit** (`POST /edit/:editId/comment`): it changes no text, and a discussion across chapters
+  within chemistry stays possible;
+- **deleting one's own pending edit** and **revoking an acceptance**: already limited to the owner (or the head
+  editor and admins);
+- **pipeline status lock and unlock:** a status flag, not text;
+- **a section's submit-review:** done by the section's assigned reviewer, who may be a plain editor and never holds a
+  chapter row (G1.1 + G1.2 design §8). A chapter check here would lock every reviewer out.
 
 ## 7. Effects of the deploy
 
@@ -241,10 +265,10 @@ no text, and a discussion across chapters within chemistry stays possible (§10,
 | T3 | A study book is enforced with the toggle at 0 and at 1; a non-study control book follows the toggle | The rule keyed on the toggle after all |
 | T4 | For a study book: users table missing, null user id, missing assignment table and no row each refuse; chapter 0 and -1 are checked, not skipped | A fail-open branch left behind, or a truthiness test |
 | T5 | The toggle route refuses to turn a study book off (409) | A click turns the study's guard off |
-| T6 | Propagation: an editor holding ch2 propagating a phrase also in ch3, ch0 and -1 creates edits in ch2 only; the response and the preview list the other targets as `not-your-chapter`; the head editor's propagation reaches all four | Preview and apply disagree, or the bypass is lost |
-| T7 | The assign gate: each of the four refusals, in order, through both assign routes and `setChapterAssignee`; success with a `declined` consent row plus a licence row; no row is written on refusal | A route that skips the gate, or a declined editor wrongly refused |
+| T6 | Propagation: an editor holding ch2 propagating a phrase also in ch3, ch0 and -1 creates edits in ch2 only; the response and the preview list ch3 and -1 as `not-your-chapter` and ch0 as `chapter-not-editable`; the head editor's propagation reaches ch2, ch3 and -1 and also skips ch0 | Preview and apply disagree, the bypass is lost, or edits land where no one can open them |
+| T7 | The assign gate: each refusal (`book-closed`, `bypass-role`, `no-consent-decision`, `no-licence-clause`, `suggestion-view-off`, and `chapter-not-editable` for chapter 0), through both assign routes and `setChapterAssignee`; success with a `declined` consent row plus a licence row; no row is written on refusal | A route that skips the gate, or a declined editor wrongly refused |
 | T8 | `editor_licence_clauses`: the migration, the write route's validation (bad date, future date), the logged admin removal; `editorialRetentionScope.test.js` passes with the table classified | An unclassified person table |
-| T9 | ch00 appears on the assignments page's chapter list and can be assigned | The study unit in ch00 can never open |
+| T9 | The writes of §6.7 refuse a closed book for a non-admin and do not check the chapter: a section's reviewer with no chapter row can still submit-review in chemistry | A reviewer locked out by a chapter check |
 | T10 | Recalibration: tests that pin enforcement-off behaviour (`assignmentEnforcement.test.js`, `crossBookAuthz.test.js`) keep testing it on a **non-study** fixture book, so the toggle logic stays covered; the E2E specs that have an editor save in chemistry plant that editor's assignment row directly in their throwaway database | A test silently deleted, or E2E red for a reason no one reads |
 
 Every new test is run against the code with the behaviour broken before it is trusted (the register's rule for
@@ -258,12 +282,19 @@ specs save into chemistry as editors.
 2. **403 `BOOK_CLOSED`**, not the 423 `heldBookWrites` uses: a closed book is a scope rule, not a temporary hold.
 3. **The gate refuses rows for admins and head editors** (`bypass-role`, §6.5), because those rows would only open
    units on a first look.
-4. **Edit comments get the book check only, not the chapter check** (§6.7).
+4. **The writes outside `requireBookAccess` get the book check only, not the chapter check** (§6.7): comments, an
+   owner's delete or revoke, pipeline status, and a reviewer's submit-review.
 5. **A licence row recorded in error is removed by an admin with a logged reason**, not edited (§6.4).
 6. **The consent check is "any recorded decision"**, so a declining editor can be assigned (§6.5, from §5.14).
 7. **The gate checks the licence clause in every writable book, and consent only in study books.** Today the two sets
    are the same book.
 8. **The preview gains the allowlist check** for parity, though the census covers only non-GET routes (§6.3).
+9. **Only admins record a licence clause** (§6.4); the head editor sees its status read-only on the assignments page.
+10. **R6 is in the gate too** (`suggestion-view-off`, §6.5), for the same reason the gate is in code at all.
+11. **Propagation skips ch00 for everyone** (`chapter-not-editable`, §6.3), and the gate refuses a chapter-0
+    assignment in a study book (§6.6). ✏️ *An earlier draft of this conversation offered "ch00 becomes assignable";
+    the builder check found that ch00 cannot be opened at all and that the G1.7 design already settles it, so that
+    item is dropped.*
 
 ## 11. Open for [USER]
 
@@ -276,5 +307,8 @@ specs save into chemistry as editors.
 
 The exact Icelandic messages; whether `canWriteChapter` lives in `userService` or its own module; how the census test
 walks the router (the `heldBookWrites` label is the model); the migration number; the page layout of the licence
-field; how the E2E fixtures plant assignment rows; splitting the build into two PRs (guards §6.1–§6.3, §6.6–§6.7;
-then the licence record and the gate §6.4–§6.5) or one.
+field; how the E2E fixtures plant assignment rows; whether the gate's consent read uses `userService`'s connection
+or `researchConsent.js`'s (the research boundary test forbids only the `research-*` scripts from naming the table);
+whether `not-your-chapter` skips go into the propagation research event (the G1.2 design already says the event
+carries skipped targets); splitting the build into two PRs (guards §6.1–§6.3, §6.6–§6.7; then the licence record and
+the gate §6.4–§6.5) or one.
