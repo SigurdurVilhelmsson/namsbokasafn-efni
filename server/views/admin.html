@@ -1326,8 +1326,8 @@
       }).join('');
     }
 
-    // Every value in an analytics event comes from POST /api/analytics/event, which needs no
-    // sign-in. anGetEventDesc returns plain text; it is escaped HERE, at the one place it meets
+    // Every value in an analytics event came from POST /api/analytics/event, which needed no
+    // sign-in (retired 2026-11-22; its rows stay until 2029). anGetEventDesc returns plain text; it is escaped HERE, at the one place it meets
     // innerHTML, so a field added to the description later is covered too. Pinned by
     // server/__tests__/adminAnalyticsEscaping.test.js.
     function anUpdateActivity(events) {

@@ -1,36 +1,20 @@
 /**
  * Analytics Service
  *
- * Simple server-side analytics tracking for the pilot.
- * Tracks page views and events without requiring user login.
- *
- * Privacy-conscious design:
- * - No personal identifiers stored
- * - Session IDs are random UUIDs (not tied to users)
- * - User agent stored for browser stats only
- * - No cookies set by this service
+ * Reads the analytics events the reader once sent to the public route POST /api/analytics/event, for the statistics
+ * tab of /admin. That route and every write helper here are retired ([USER] 2026-11-22; the G1.15(b) final review's
+ * I-1): from 2029 a row written after 2028 would have raised the editorial retention script's continued-use refusal.
+ * The stored rows stay until retention step 1 deletes them (server/lib/editorialRetentionScope.js), and
+ * analyticsWriteRetired.test.js holds that no server code writes the table.
  */
 
 const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
-const crypto = require('crypto');
-const log = require('../lib/logger');
 const resolveDbPath = require('../lib/dbPath');
 
 // Database path
 const DB_PATH = resolveDbPath();
-
-// Event types
-const EVENT_TYPES = {
-  PAGE_VIEW: 'page_view',
-  CHAPTER_VIEW: 'chapter_view',
-  SECTION_VIEW: 'section_view',
-  FEEDBACK_SUBMIT: 'feedback_submit',
-  ERROR: 'error',
-  SEARCH: 'search',
-  DOWNLOAD: 'download',
-};
 
 let _testDb = null;
 function _setTestDb(db) {
@@ -54,10 +38,6 @@ function getDb() {
 
 function initStatements(db) {
   return {
-    insert: db.prepare(`
-      INSERT INTO analytics_events (event_type, book, chapter, section, user_agent, referrer, session_id, metadata)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-    `),
     getRecent: db.prepare(`
       SELECT * FROM analytics_events
       ORDER BY created_at DESC
@@ -111,103 +91,6 @@ function stmts() {
     _stmts = initStatements(getDb());
   }
   return _stmts;
-}
-
-/**
- * Generate a session ID
- */
-function generateSessionId() {
-  return crypto.randomUUID();
-}
-
-/**
- * Log an analytics event
- */
-function logEvent(options) {
-  const {
-    eventType,
-    book = null,
-    chapter = null,
-    section = null,
-    userAgent = null,
-    referrer = null,
-    sessionId = null,
-    metadata = {},
-  } = options;
-
-  const result = stmts().insert.run(
-    eventType,
-    book,
-    chapter,
-    section,
-    userAgent ? userAgent.substring(0, 500) : null, // Limit UA length
-    referrer ? referrer.substring(0, 500) : null,
-    sessionId,
-    JSON.stringify(metadata)
-  );
-
-  return {
-    id: result.lastInsertRowid,
-    eventType,
-    book,
-    chapter,
-    section,
-  };
-}
-
-/**
- * Log a page view
- */
-function logPageView(req, book = null, chapter = null, section = null) {
-  return logEvent({
-    eventType: EVENT_TYPES.PAGE_VIEW,
-    book,
-    chapter,
-    section,
-    userAgent: req.get('user-agent'),
-    referrer: req.get('referer'),
-    sessionId: req.cookies?.sessionId || null,
-  });
-}
-
-/**
- * Log a chapter view
- */
-function logChapterView(req, book, chapter) {
-  return logEvent({
-    eventType: EVENT_TYPES.CHAPTER_VIEW,
-    book,
-    chapter,
-    userAgent: req.get('user-agent'),
-    referrer: req.get('referer'),
-    sessionId: req.cookies?.sessionId || null,
-  });
-}
-
-/**
- * Log a section view
- */
-function logSectionView(req, book, chapter, section) {
-  return logEvent({
-    eventType: EVENT_TYPES.SECTION_VIEW,
-    book,
-    chapter,
-    section,
-    userAgent: req.get('user-agent'),
-    referrer: req.get('referer'),
-    sessionId: req.cookies?.sessionId || null,
-  });
-}
-
-/**
- * Log an error
- */
-function logError(req, errorType, errorMessage) {
-  return logEvent({
-    eventType: EVENT_TYPES.ERROR,
-    userAgent: req.get('user-agent'),
-    metadata: { errorType, errorMessage },
-  });
 }
 
 /**
@@ -276,60 +159,9 @@ function parseRow(row) {
   };
 }
 
-/**
- * Express middleware to log page views
- * Use selectively on routes you want to track
- */
-function trackingMiddleware(options = {}) {
-  const { book = null, extractFromPath = false } = options;
-
-  return (req, res, next) => {
-    // Only track GET requests
-    if (req.method !== 'GET') {
-      return next();
-    }
-
-    let trackBook = book;
-    let trackChapter = null;
-    let trackSection = null;
-
-    // Extract book/chapter/section from path if requested
-    if (extractFromPath) {
-      const pathParts = req.path.split('/').filter(Boolean);
-      // Expecting patterns like /efnafraedi/kafli/1 or /efnafraedi/1/1-1
-      if (pathParts.length >= 1) trackBook = pathParts[0];
-      if (pathParts.length >= 2) trackChapter = pathParts[1];
-      if (pathParts.length >= 3) trackSection = pathParts[2];
-    }
-
-    try {
-      if (trackSection) {
-        logSectionView(req, trackBook, trackChapter, trackSection);
-      } else if (trackChapter) {
-        logChapterView(req, trackBook, trackChapter);
-      } else {
-        logPageView(req, trackBook, trackChapter, trackSection);
-      }
-    } catch (err) {
-      // Don't let analytics errors break the request
-      log.error({ err }, 'Analytics error logging event');
-    }
-
-    next();
-  };
-}
-
 module.exports = {
-  EVENT_TYPES,
-  generateSessionId,
-  logEvent,
-  logPageView,
-  logChapterView,
-  logSectionView,
-  logError,
   getRecentEvents,
   getStats,
-  trackingMiddleware,
   // Test helpers
   _setTestDb,
 };

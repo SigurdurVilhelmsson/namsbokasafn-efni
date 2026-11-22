@@ -262,7 +262,6 @@ app.use('/api/notifications', notificationsRoutes);
 app.use('/api/research', researchRoutes);
 app.use('/api/activity', activityRoutes);
 app.post('/api/feedback', publicSubmitLimiter);
-app.post('/api/analytics/event', publicSubmitLimiter);
 app.use('/api/feedback', feedbackRoutes);
 app.use('/api/analytics', analyticsRoutes);
 

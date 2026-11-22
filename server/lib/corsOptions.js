@@ -6,9 +6,8 @@
  * SameSite=Lax session cookie travels with a reader page's credentialed request, and with
  * `credentials: true` CORS then let that page READ the reply. Any script on a reader page,
  * a third-party one or an injected one, could act as whichever editor was signed in. The
- * reader needs no credentials: its only call is the analytics beacon, which reads no reply
- * and which [USER] has ruled to remove. (A JSON beacon needs a preflight, and a credentialed
- * preflight now fails, so the beacon stops counting. That is expected.)
+ * reader needs no credentials: its only call was the analytics beacon, which [USER] ruled to
+ * remove (D03); the route it called, POST /api/analytics/event, is retired too (2026-11-22).
  *
  * Ritstjóri's own pages are same-origin, so CORS does not apply to them and nothing here
  * changes them. The origin rules are unchanged: the reader's domain and its subdomains,
