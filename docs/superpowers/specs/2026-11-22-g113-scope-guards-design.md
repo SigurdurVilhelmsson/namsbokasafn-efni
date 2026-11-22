@@ -19,6 +19,10 @@
 > 4. **The E2E fixture book `__e2e-fixture__` is closed** like every book off the allowlist. Its non-admin writes move
 >    to chemistry or to an admin login, and the slug is not added to the allowlist.
 > 5. **"Append-only" (§6.4) is enforced in the schema** by a `BEFORE UPDATE` trigger.
+> 6. **§3's production line was wrong about assignments.** A read-only read on 2026-11-22 found one
+>    `user_chapter_assignments` row, in microbiology (chapter 1, assigned 2026-04-08), not zero. It opens no study
+>    unit (microbiology is not a study book; 0 module openings), and G1.13 closes that book to non-admin writes. The
+>    rest of §3's line stands: no row in chemistry.
 
 **Sources:** the Skerfur plan's G1.13 row and its 2026-11-03 dated note
 (`docs/plans/2026-10-23-skerfur-development-plan.md`); rulings R6 and the consent/licence condition
