@@ -5,7 +5,7 @@
 // on. A non-admin is refused 403 BOOK_CLOSED on a closed book; an admin passes; the allowlisted
 // book passes. The writes of §6.7 get the book check and no chapter check: a section's assigned
 // reviewer, a plain editor holding no chapter row, still submits review and comments in chemistry.
-import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, afterEach, vi } from 'vitest';
 import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -137,6 +137,7 @@ beforeAll(() => {
   app.use('/api/segment-editor', require('../routes/segment-editor'));
   app.use('/api/sections', require('../routes/sections'));
   app.use('/api/pipeline', require('../routes/pipeline'));
+  app.use(require('../middleware/errorHandler').errorHandler); // last, as index.js mounts it
   server = app.listen(0);
   base = `http://127.0.0.1:${server.address().port}`;
 });
@@ -145,6 +146,8 @@ afterAll(() => {
   server?.close();
   rmSync(work, { recursive: true, force: true });
 });
+
+afterEach(() => vi.restoreAllMocks());
 
 const BOOK_CLOSED = { status: 403, error: 'BOOK_CLOSED' };
 const verdict = (r) => ({ status: r.status, error: r.body?.error });
@@ -209,6 +212,19 @@ describe('the closed-book guard, row-derived book (T2)', () => {
     expect(
       (await post('/api/segment-editor/edit/999999/comment', ED, { comment: 'x' })).status
     ).toBe(404));
+
+  // The guard is the comment route's first row lookup. A lookup that fails for any reason other
+  // than a missing row is an outage: the app's error handler answers 500 and withholds the message.
+  it("answers a failed row lookup with the error handler's 500, never a 404 carrying the message", async () => {
+    vi.spyOn(require('../services/segmentEditorService'), 'getEditById').mockImplementation(() => {
+      throw new Error('SQLITE_BUSY: database is locked');
+    });
+    const r = await post(`/api/segment-editor/edit/${editChem}/comment`, ED, { comment: 'x' });
+    expect([r.status, r.body]).toEqual([
+      500,
+      { error: 'Internal Server Error', message: 'An unexpected error occurred' },
+    ]);
+  });
 
   it("refuses the assigned reviewer's submit-review in a closed book", async () =>
     expect(verdict(await post(`/api/sections/${SECTION_LIF}/submit-review`, ED, {}))).toEqual(

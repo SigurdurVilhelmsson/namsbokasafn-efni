@@ -847,7 +847,8 @@
         var previous = ((assigned.replaced || [])[0] || {}).users || [];
         var previousNote = previous.length === 0 ? '' : '. ' + (previous.length === 1 ? 'Fyrri yfirlesari: ' : 'Fyrri yfirlesarar: ') + previous.map(function(u) { return u.name || 'Notandi ' + u.id; }).join(', ');
         document.getElementById('assign-chapter').value = ''; usersLoadChapterAssignments(); showToast('\u00dathluta\u00f0: ' + chapterLabel.full(chapter) + previousNote,'success');
-      } catch(e) { showToast(e.message || 'Villa vi\u00f0 \u00fathlutun','error'); }
+        // A refused assign answers 409 ASSIGNMENT_REFUSED with the reason, in Icelandic, in `message` (spec §6.5).
+      } catch(e) { showToast((e.data && e.data.message) || e.message || 'Villa vi\u00f0 \u00fathlutun','error'); }
     };
 
     window.usersRemoveChapter = async function(book, chapter) {

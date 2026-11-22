@@ -2,7 +2,7 @@
  * The licence-clause routes (G1.13 spec §6.4): admin-only, validated dates, a logged reason on removal.
  * The database is a fully migrated one (every real migration), mounted through the real admin router.
  */
-import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, afterEach, vi } from 'vitest';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
@@ -56,6 +56,16 @@ afterAll(() => {
   server.close();
   seeded.db.close();
 });
+
+afterEach(() => vi.restoreAllMocks());
+
+const removalLogCount = () =>
+  seeded.db
+    .prepare("SELECT COUNT(*) FROM activity_log WHERE type = 'licence_clause_removed'")
+    .pluck()
+    .get();
+const rowCount = (id) =>
+  seeded.db.prepare('SELECT COUNT(*) FROM editor_licence_clauses WHERE id = ?').pluck().get(id);
 
 const call = (user, method, path, body) =>
   fetch(`${base}/api/admin/users/${path}`, {
@@ -144,6 +154,46 @@ describe('licence-clause routes', () => {
       reason: 'a long enough reason',
     });
     expect(res.status).toBe(404);
+  });
+
+  // The row is checked before the log is written, so a refused id leaves no removal entry.
+  it("a 404 for a row that is not this user's writes no activity_log entry", async () => {
+    const rec = await (
+      await call(ADMIN, 'POST', `${userId}/licence-clause`, { signedOn: utcDay(0) })
+    ).json();
+    const before = removalLogCount();
+    await call(ADMIN, 'DELETE', `${userId + 1000}/licence-clause/${rec.id}`, {
+      reason: 'a long enough reason',
+    });
+    expect(removalLogCount()).toBe(before);
+  });
+
+  // spec §6.4: the log entry comes first. activityLog.log returns null when its write fails (it
+  // never throws), and then the route answers 500 and deletes nothing.
+  describe('when the activity log write fails', () => {
+    let rec;
+    let res;
+    beforeAll(async () => {
+      rec = await (
+        await call(ADMIN, 'POST', `${userId}/licence-clause`, { signedOn: utcDay(0) })
+      ).json();
+      vi.spyOn(require('../services/activityLog'), 'log').mockReturnValue(null);
+      res = await call(ADMIN, 'DELETE', `${userId}/licence-clause/${rec.id}`, {
+        reason: 'recorded against the wrong account',
+      });
+      vi.restoreAllMocks();
+    });
+
+    it('answers 500', () => expect(res.status).toBe(500));
+
+    it('keeps the row', () => expect(rowCount(rec.id)).toBe(1));
+
+    it('control: the same request with the log working removes the row', async () => {
+      const again = await call(ADMIN, 'DELETE', `${userId}/licence-clause/${rec.id}`, {
+        reason: 'recorded against the wrong account',
+      });
+      expect([again.status, rowCount(rec.id)]).toEqual([200, 0]);
+    });
   });
 
   it('a good DELETE removes the row and writes one activity_log row naming the row id and reason', async () => {

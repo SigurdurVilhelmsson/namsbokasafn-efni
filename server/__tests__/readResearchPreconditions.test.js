@@ -19,6 +19,7 @@ const Database = require('better-sqlite3');
 const freshMigratedDb = require('./helpers/freshMigratedDb');
 const {
   readResearchPreconditions,
+  readG1d,
   execNeverThrow,
 } = require('../scripts/read-research-preconditions');
 
@@ -301,6 +302,60 @@ describe('G-1d (spec §9): whether units would open the moment the step ships', 
       { id: userA, role: 'editor', active: true },
       { id: userB, role: 'head-editor', active: false },
     ]);
+  });
+});
+
+describe('G-1d: only an absent editorScope falls back to the stored row (spec §6.2)', () => {
+  /** Node's own MODULE_NOT_FOUND for `request`, required from <tmp>/scripts/ over a tree of `files`. */
+  function moduleError(files, request) {
+    const tree = fs.mkdtempSync(path.join(os.tmpdir(), 'g1d-module-'));
+    try {
+      for (const [rel, text] of Object.entries(files)) {
+        fs.mkdirSync(path.dirname(path.join(tree, rel)), { recursive: true });
+        fs.writeFileSync(path.join(tree, rel), text);
+      }
+      try {
+        createRequire(path.join(tree, 'scripts', 'probe.js'))(request);
+      } catch (err) {
+        return err;
+      }
+      throw new Error(`${request} loaded`);
+    } finally {
+      fs.rmSync(tree, { recursive: true, force: true });
+    }
+  }
+  const g1d = (loadEditorScope) =>
+    readG1d({
+      db: () => db,
+      book: BOOK,
+      serverDir: path.join(root, 'server'),
+      exec: stubExec(),
+      loadEditorScope,
+    });
+  const throwing = (err) => () => {
+    throw err;
+  };
+
+  it('an absent editorScope reads the stored row alone', () => {
+    db.prepare('UPDATE book_settings SET enforce_assignments = 0 WHERE book = ?').run(BOOK);
+    expect(g1d().studyBookEnforced).toBe(true); // control: the real module enforces the study book
+    const absent = moduleError({}, '../lib/editorScope');
+    expect(g1d(throwing(absent)).studyBookEnforced).toBe(false);
+  });
+
+  it('a missing dependency of editorScope is thrown, not read as an absent editorScope', () => {
+    const err = moduleError(
+      { 'lib/editorScope.js': "require('./researchScope');\n" },
+      '../lib/editorScope'
+    );
+    // Control: the trap is real; the require stack names editorScope.js although editorScope loaded.
+    expect(err.requireStack.some((p) => p.endsWith(path.join('lib', 'editorScope.js')))).toBe(true);
+    expect(() => g1d(throwing(err))).toThrow(err);
+  });
+
+  it('a MODULE_NOT_FOUND for another module is thrown', () => {
+    const err = moduleError({}, '../lib/editorScopeExempt');
+    expect(() => g1d(throwing(err))).toThrow(err);
   });
 });
 

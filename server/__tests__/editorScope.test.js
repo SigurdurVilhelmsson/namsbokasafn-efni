@@ -43,10 +43,12 @@ function call(mw, user) {
     },
   };
   let nexted = false;
-  mw({ user }, res, () => {
+  const nextArgs = [];
+  mw({ user }, res, (...args) => {
     nexted = true;
+    nextArgs.push(...args);
   });
-  return { res, nexted };
+  return { res, nexted, nextArgs };
 }
 
 const callOn = (book, role) =>
@@ -92,14 +94,30 @@ describe('refuseClosedBookForNonAdmins', () => {
   it('lets an editor through on chemistry', () => {
     expect(callOn('efnafraedi-2e', 'editor').nexted).toBe(true);
   });
-  it('answers 404 with the message when bookOf throws', () => {
-    const mw = refuseClosedBookForNonAdmins(() => {
-      throw new Error('Edit not found');
+  const throwing = (thrown) =>
+    refuseClosedBookForNonAdmins(() => {
+      throw thrown;
     }, 'row');
-    const { res, nexted } = call(mw, { role: 'editor' });
-    expect(nexted).toBe(false);
-    expect(res.statusCode).toBe(404);
-    expect(res.body).toEqual({ error: 'Edit not found' });
+
+  // The row resolvers' own not-found messages (segment-editor.js, localization-editor.js and
+  // segmentEditorService.getModuleReviewWithEdits).
+  it.each(['Edit not found', 'Review not found', 'Acceptance not found'])(
+    "answers 404 with the message when bookOf throws '%s'",
+    (message) => {
+      const { res, nexted } = call(throwing(new Error(message)), { role: 'editor' });
+      expect([nexted, res.statusCode, res.body]).toEqual([false, 404, { error: message }]);
+    }
+  );
+
+  it('passes any other throw to next(err) and answers nothing itself', () => {
+    const err = new Error('SQLITE_BUSY: database is locked');
+    const { res, nextArgs } = call(throwing(err), { role: 'editor' });
+    expect([nextArgs, res.statusCode, res.body]).toEqual([[err], 200, null]);
+  });
+
+  it('turns a falsy throw into an Error, so next() cannot pass the request on', () => {
+    const { nextArgs } = call(throwing(undefined), { role: 'editor' });
+    expect(nextArgs[0]).toBeInstanceOf(Error);
   });
   it('carries its label', () => {
     expect(refuseClosedBookForNonAdmins(() => 'x', 'row').editorScopeGuard).toBe('row');

@@ -75,6 +75,18 @@ function hasClause(conn, userId) {
 }
 
 /**
+ * True when the row exists and is this user's.
+ * @param {import('better-sqlite3').Database} conn
+ * @param {{ userId: number, rowId: number }} args
+ * @returns {boolean}
+ */
+function isUsersClause(conn, { userId, rowId }) {
+  return !!conn
+    .prepare('SELECT 1 FROM editor_licence_clauses WHERE id = ? AND user_id = ?')
+    .get(rowId, userId);
+}
+
+/**
  * Remove one row; false when the row is not this user's (or does not exist).
  * @param {import('better-sqlite3').Database} conn
  * @param {{ userId: number, rowId: number }} args
@@ -88,4 +100,12 @@ function removeClause(conn, { userId, rowId }) {
   );
 }
 
-module.exports = { isRealDate, recordClause, clausesFor, latestSignedOn, hasClause, removeClause };
+module.exports = {
+  isRealDate,
+  recordClause,
+  clausesFor,
+  latestSignedOn,
+  hasClause,
+  isUsersClause,
+  removeClause,
+};

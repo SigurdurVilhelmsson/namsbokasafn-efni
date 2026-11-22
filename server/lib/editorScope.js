@@ -27,11 +27,20 @@ const isEditorWritableBook = (book) =>
 const isAlwaysEnforced = (book) => isStudyBook(book);
 
 /**
+ * The row resolvers signal an unknown id by throwing 'Edit not found', 'Review not found' or
+ * 'Acceptance not found': one word, then "not found". Only that is a 404. Any other throw (a
+ * locked or broken database) is an outage, not a missing row, and its message is not for clients.
+ */
+const ROW_NOT_FOUND = /^\w+ not found$/;
+
+/**
  * Express middleware: answer 403 BOOK_CLOSED to a non-admin when the book is not on the
  * allowlist. Place it after the route's auth middleware, so req.user is set. `label` marks the
  * returned function, which is how the route census checks that a route carries it.
  *
- * @param {(req: object) => string} bookOf resolves the book; may throw (answered as 404)
+ * @param {(req: object) => string} bookOf resolves the book; may throw. A resolver's not-found
+ *   throw answers 404; any other throw goes to next(err), the app's error handler (a 500 that
+ *   withholds the message).
  * @param {'param'|'body'|'row'} label where the route's book comes from
  */
 function refuseClosedBookForNonAdmins(bookOf, label) {
@@ -41,7 +50,11 @@ function refuseClosedBookForNonAdmins(bookOf, label) {
     try {
       book = bookOf(req);
     } catch (err) {
-      return res.status(404).json({ error: err.message });
+      if (err && ROW_NOT_FOUND.test(err.message)) {
+        return res.status(404).json({ error: err.message });
+      }
+      // next() with no argument would pass the request on, so a falsy throw becomes an Error.
+      return next(err || new Error('book resolver threw without an error'));
     }
     if (!isEditorWritableBook(book)) {
       return res.status(403).json({ error: 'BOOK_CLOSED', message: BOOK_CLOSED_MESSAGE });

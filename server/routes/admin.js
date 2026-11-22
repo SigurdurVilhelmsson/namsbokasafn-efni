@@ -1114,6 +1114,10 @@ router.post('/users/:id/licence-clause', requireAuth, requireAdmin(), (req, res)
 /**
  * DELETE /api/admin/users/:id/licence-clause/:rowId
  * Remove a wrongly recorded row. Body: { reason } (at least 10 characters), kept in the activity log.
+ *
+ * The activity log entry is written before the row is deleted (spec §6.4). activityLog.log never
+ * throws; it returns null when the write failed, and then nothing is deleted, so a licence record
+ * never disappears without a trace. The row is checked first, so a refused id logs nothing.
  */
 router.delete('/users/:id/licence-clause/:rowId', requireAuth, requireAdmin(), (req, res) => {
   const userId = parseInt(req.params.id, 10);
@@ -1126,16 +1130,22 @@ router.delete('/users/:id/licence-clause/:rowId', requireAuth, requireAdmin(), (
     });
   }
   try {
-    const removed = licenceClauses.removeClause(segmentEditorService.getDb(), { userId, rowId });
-    if (!removed) {
+    const conn = segmentEditorService.getDb();
+    if (!licenceClauses.isUsersClause(conn, { userId, rowId })) {
       return res.status(404).json({ error: 'Færsla fannst ekki hjá þessum notanda' });
     }
-    activityLog.log({
+    const logged = activityLog.log({
       type: 'licence_clause_removed',
       userId: req.user.id,
       username: req.user.username,
       description: `Leyfisákvæði fjarlægt: færsla ${rowId} hjá notanda ${userId}. Ástæða: ${reason}`,
     });
+    if (!logged) {
+      return res.status(500).json({
+        error: 'Ekki tókst að skrá fjarlæginguna í aðgerðaskrá, svo ekkert var fjarlægt.',
+      });
+    }
+    const removed = licenceClauses.removeClause(conn, { userId, rowId });
     res.json({ removed });
   } catch (err) {
     log.error({ err }, 'Remove licence clause error');
