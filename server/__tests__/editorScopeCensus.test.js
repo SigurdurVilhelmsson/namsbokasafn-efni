@@ -129,14 +129,13 @@ function bookAccessWithoutChapter(mounts = DEFAULT_MOUNTS) {
     .map((r) => r.key);
 }
 
-/** Every `require('./routes/…')` in a repo file. */
-function routeRequiresIn(relPath) {
-  const src = readFileSync(path.join(REPO_ROOT, relPath), 'utf8');
-  return [...src.matchAll(/require\(\s*['"](\.\/routes\/[^'"]+)['"]\s*\)/g)].map((m) => m[1]);
-}
-
 /** server/index.js's source, read from this file's location. */
 const indexSource = () => readFileSync(path.join(REPO_ROOT, 'server/index.js'), 'utf8');
+
+/** Every `require('./routes/…')` in a source text. */
+function routeRequiresIn(src) {
+  return [...src.matchAll(/require\(\s*['"](\.\/routes\/[^'"]+)['"]\s*\)/g)].map((m) => m[1]);
+}
 
 /**
  * Every line of a source text that declares a route directly on `app` with a method that can
@@ -180,7 +179,7 @@ describe('editor scope route census (spec §6.1)', () => {
     expect(bookAccessWithoutChapter()).toEqual([]));
 
   it('index.js mounts routers only through apiMounts and views', () =>
-    expect(routeRequiresIn('server/index.js').sort()).toEqual([
+    expect(routeRequiresIn(indexSource()).sort()).toEqual([
       './routes/apiMounts',
       './routes/views',
     ]));
@@ -275,6 +274,15 @@ describe('editor scope route census: the controls', () => {
     expect(bookAccessWithoutChapter(planted(r))).toEqual([
       'GET /api/planted/:book/list',
       'POST /api/planted/:book/:chapterNum/x',
+    ]);
+  });
+
+  it('control: a third route module required in index.js is named', () => {
+    const src = `${indexSource()}\nconst extra = require('./routes/x');\n`;
+    expect(routeRequiresIn(src).sort()).toEqual([
+      './routes/apiMounts',
+      './routes/views',
+      './routes/x',
     ]);
   });
 

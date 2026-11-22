@@ -18,7 +18,7 @@
 import { mkdtempSync, rmSync, mkdirSync } from 'fs';
 import { tmpdir } from 'os';
 import path from 'path';
-import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, beforeEach, afterEach, vi } from 'vitest';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
@@ -30,7 +30,7 @@ process.env.SESSIONS_DB_PATH = dbPath;
 process.env.JWT_SECRET = process.env.JWT_SECRET || 'prufa-leyndarmal';
 
 const Database = require('better-sqlite3');
-const { writeModule, handlerFor, invoke, EDITOR } = require('./helpers/servedFixture');
+const { writeModule, handlerFor, invoke, invokeChain, EDITOR } = require('./helpers/servedFixture');
 const { plantAssignment } = require('./helpers/plantAssignment.cjs');
 
 const CHEM = 'efnafraedi-2e';
@@ -405,5 +405,84 @@ describe('propagation checks each target chapter (G1.13, spec §6.3; T6)', () =>
     const ok = await post({ segmentId: SOURCE, editedContent: 'Texti.' });
     expect(ok.body.created).toEqual([{ moduleId: 'm96002', segmentId: T }]);
     expect(editRows().filter((row) => row.module_id === 'm96002')).toHaveLength(1);
+  });
+});
+
+// G1.13 (spec §6.3): when a target chapter cannot be checked, propagation answers 503, as
+// requireBookAccess does when assignments cannot be evaluated, and writes nothing.
+describe('propagation answers 503 when a target chapter cannot be checked (G1.13, spec §6.3)', () => {
+  const UNAVAILABLE = {
+    error: 'Assignment enforcement unavailable',
+    message:
+      'Chapter assignments cannot be verified right now. Access is blocked until this is resolved.',
+  };
+
+  // The assignment table renamed, and named back in `finally`. The rename is committed because the
+  // handler reads through userService's own connection, which could not see an open transaction on
+  // this one. Chemistry is a study book, always enforced (spec §6.2), so hasChapterAccess throws
+  // ASSIGNMENT_TABLE_UNAVAILABLE and canWriteChapter passes it on.
+  async function withoutAssignmentTable(fn) {
+    db.exec('ALTER TABLE user_chapter_assignments RENAME TO user_chapter_assignments_hidden');
+    try {
+      return await fn();
+    } finally {
+      db.exec('ALTER TABLE user_chapter_assignments_hidden RENAME TO user_chapter_assignments');
+    }
+  }
+
+  afterEach(() => vi.restoreAllMocks());
+
+  // These two drive the handlers alone, as the rest of this file does, so requireBookAccess (the
+  // source chapter's check on /propagate, whose 503 body is the same) does not run: the per-target
+  // check is what answers.
+  it('the preview answers 503', async () => {
+    const r = await withoutAssignmentTable(() => previewOf(SOURCE, { moduleId: 'm96001' }));
+    expect([r.status, r.body]).toEqual([503, UNAVAILABLE]);
+  });
+
+  it('the apply answers 503 and writes nothing', async () => {
+    const before = snapshot();
+    const r = await withoutAssignmentTable(() =>
+      post({ segmentId: SOURCE, editedContent: 'Texti.' })
+    );
+    expect([r.status, r.body]).toEqual([503, UNAVAILABLE]);
+    expect(snapshot()).toEqual(before);
+  });
+
+  // The whole chain: requireBookAccess checks the source chapter (1, which EDITOR holds) for real
+  // and passes; only the target chapter's check (2) fails. So the 503 can only be the route's own
+  // mapping of the per-target throw.
+  it('the apply through its whole chain: the source chapter allowed, the target chapter unverifiable, answers 503 and writes nothing', async () => {
+    const userService = require('../services/userService');
+    const real = userService.canWriteChapter;
+    const asked = [];
+    vi.spyOn(userService, 'canWriteChapter').mockImplementation((args) => {
+      asked.push(args.chapter);
+      if (args.chapter === 2) {
+        throw Object.assign(new Error('assignments unavailable'), {
+          code: 'ASSIGNMENT_TABLE_UNAVAILABLE',
+        });
+      }
+      return real(args);
+    });
+    const auth = require('../services/auth');
+    const before = snapshot();
+    const r = await invokeChain(
+      require('../routes/segment-editor'),
+      'post',
+      '/:book/:chapter/:moduleId/propagate',
+      {
+        params: { book: CHEM, chapter: '1', moduleId: 'm96001' },
+        headers: {
+          authorization: `Bearer ${auth.createToken({ ...EDITOR, name: EDITOR.username, avatar: '' })}`,
+        },
+        cookies: {},
+        query: {},
+        body: { segmentId: SOURCE, editedContent: 'Texti.' },
+      }
+    );
+    expect([r.status, r.body]).toEqual([503, UNAVAILABLE]);
+    expect(asked).toEqual([2]); // the route asked for the target chapter, and only for it
+    expect(snapshot()).toEqual(before);
   });
 });

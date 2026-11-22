@@ -158,8 +158,22 @@ describe('the closed-book guard, :book param (T2)', () => {
   it("refuses a closed book's own head editor", async () =>
     expect(verdict(await post(save(LIF), HE_LIF, {}))).toEqual(BOOK_CLOSED));
 
-  it('refuses a plain editor before the chapter check', async () =>
+  it('refuses a plain editor on a closed book', async () =>
     expect(verdict(await post(save(LIF), ED, {}))).toEqual(BOOK_CLOSED));
+
+  // The placement, which the requests above cannot show: biology's enforcement is off and ED holds
+  // no chapter row there, so requireBookAccess would let ED through and the guard answers on either
+  // side of it. The stack itself says the guard runs first, so a closed book never reaches the
+  // chapter check (spec §6.1).
+  it('runs the closed-book guard before requireBookAccess on the edit save', () => {
+    const layer = require('../routes/segment-editor').stack.find(
+      (l) => l.route?.path === '/:book/:chapter/:moduleId/edit' && l.route.methods.post
+    );
+    const handles = layer.route.stack.map((l) => l.handle);
+    const guardAt = handles.findIndex((h) => h.editorScopeGuard);
+    const accessAt = handles.findIndex((h) => h.bookAccessGuard);
+    expect([guardAt >= 0, accessAt >= 0, guardAt < accessAt]).toEqual([true, true, true]);
+  });
 
   // An empty body stops each passing request at the handler's own validation.
   it('lets an admin through to the handler', async () =>
@@ -186,9 +200,14 @@ describe('the closed-book guard, body book (T2)', () => {
   it('lets an admin through to validation', async () =>
     expect((await post(inject, ADM, { book: LIF, chapter: 9999 })).status).toBe(400));
 
-  // Chemistry passes the guard and then meets the pipeline hold (G1.14), which answers 423.
-  it("lets the allowlisted book's head editor past the guard", async () =>
-    expect((await post(inject, HE_CHEM, { book: CHEM, chapter: 9999 })).status).toBe(423));
+  // Only the guard's verdict is this test's subject. Whatever answers next (today the pipeline
+  // hold of G1.14, with 423) is not, so the test names no later status. The body must still be a
+  // JSON error, so a route that answered nothing at all cannot pass.
+  it("lets the allowlisted book's head editor past the guard", async () => {
+    const r = await post(inject, HE_CHEM, { book: CHEM, chapter: 9999 });
+    expect(r.body?.error).toEqual(expect.any(String));
+    expect(r.body.error).not.toBe('BOOK_CLOSED');
+  });
 
   // Refused, never accepted. requireHeadEditorFor, which runs before the guard, answers first:
   // 404 "Target not found" when the body names no book, 403 when the book is not one of the

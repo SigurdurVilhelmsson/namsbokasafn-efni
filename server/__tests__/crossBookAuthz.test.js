@@ -311,6 +311,9 @@ async function verdictOf(res) {
 // book through to a liffraedi-2e row, the guard would still answer 403 BOOK_CLOSED and a bare 403
 // would stay green. The cases against another book's rows assert this body, and the reverse cases (a
 // liffraedi-2e head editor at chemistry, which the guard lets through) assert it too (spec §6.1).
+// requireRole refuses with the same body, so a plain editor at a head-editor route asserts it as
+// well: a broken head-editor check would let the plain editor reach the guard, whose BOOK_CLOSED a
+// bare 403 cannot tell apart from that check's refusal.
 const SCOPE_REFUSED = { status: 403, error: 'Insufficient permissions' };
 
 // SAFETY: every pipeline probe uses chapter 9999 so validateParams 400s any request
@@ -352,13 +355,13 @@ describe('pipeline POSTs are book-scoped', () => {
       });
       expect(res.status).toBe(400);
     });
-    it(`${route}: plain editor → 403 (role gate, unchanged)`, async () => {
+    it(`${route}: plain editor → 403 from the head-editor check`, async () => {
       const res = await post(route, EDITOR, {
         book: 'liffraedi-2e',
         chapter: 9999,
         track: 'faithful',
       });
-      expect(res.status).toBe(403);
+      expect(await verdictOf(res)).toEqual(SCOPE_REFUSED);
     });
   }
 
@@ -415,9 +418,9 @@ describe('section head-editor actions are book-scoped', () => {
       const res = await post(c.path, HE_B, c.body);
       expect(await verdictOf(res)).toEqual(BOOK_CLOSED);
     });
-    it(`${c.name}: plain editor → 403`, async () => {
+    it(`${c.name}: plain editor → 403 from the head-editor check`, async () => {
       const res = await post(c.path, EDITOR, c.body);
-      expect(res.status).toBe(403);
+      expect(await verdictOf(res)).toEqual(SCOPE_REFUSED);
     });
     // G4 (whole-branch review, design §6): the requireHeadEditorFor admin bypass runs
     // unconditionally in middleware, before any of these handlers' business-logic gates
@@ -658,9 +661,9 @@ describe('admin chapter-assignment routes are book-scoped (Task 6)', () => {
     expect([401, 403]).not.toContain(res.status);
     expect(res.status).toBeLessThan(500);
   });
-  it('POST assign: plain editor → 403', async () => {
+  it('POST assign: plain editor → 403 from the head-editor check', async () => {
     const res = await post(ASSIGN, EDITOR, { userId: 1 });
-    expect(res.status).toBe(403);
+    expect(await verdictOf(res)).toEqual(SCOPE_REFUSED);
   });
 
   it('DELETE assign: head-editor of another book → 403 from the scope check', async () => {
@@ -693,9 +696,9 @@ describe('admin chapter-assignment routes are book-scoped (Task 6)', () => {
     const body = await res.json();
     expect(body).toEqual({ success: true, removed: false });
   });
-  it('DELETE assign: plain editor → 403', async () => {
+  it('DELETE assign: plain editor → 403 from the head-editor check', async () => {
     const res = await del(ASSIGN, EDITOR);
-    expect(res.status).toBe(403);
+    expect(await verdictOf(res)).toEqual(SCOPE_REFUSED);
   });
 });
 
@@ -839,9 +842,9 @@ describe('suggestions scan-book is head-editor-of-book scoped (B1-F1)', () => {
     const res = await post(SCAN_BOOK, ADMIN);
     expect(res.status).toBe(200);
   });
-  it('plain editor → 403 (role gate, unchanged)', async () => {
+  it('plain editor → 403 from the head-editor check', async () => {
     const res = await post(SCAN_BOOK, EDITOR);
-    expect(res.status).toBe(403);
+    expect(await verdictOf(res)).toEqual(SCOPE_REFUSED);
   });
 });
 
@@ -853,9 +856,9 @@ describe('suggestions section-keyed routes are book/section-scoped (B1-F2/F3 fol
   // the same editor path — see the middleware JSDoc). The cross-book denials live
   // in the enforcement-ON block below. The WRITES do not fail open: they are for
   // the book's head editor and admins (the by-role describe further down).
-  it('scan: plain editor → 403 where enforcement is off too (a write; was a fail-open 200)', async () => {
+  it('scan: plain editor → 403 from the head-editor check where enforcement is off too (a write; was a fail-open 200)', async () => {
     const res = await post('/api/suggestions/scan/60', EDITOR);
-    expect(res.status).toBe(403);
+    expect(await verdictOf(res)).toEqual(SCOPE_REFUSED);
   });
   it('read: head-editor of another book ALSO clears fail-open (no-row caller, legacy fail-open, same as any editor)', async () => {
     const res = await get('/api/suggestions/60', HE_A);
@@ -869,9 +872,9 @@ describe('suggestions section-keyed routes are book/section-scoped (B1-F2/F3 fol
   // ── Enforcement-ON block (efnafraedi-2e, enforce_assignments=1 in the
   // harness): the chapter-assignment path turns default-deny, which is where
   // the middleware's cross-book protection actually bites.
-  it('scan: plain editor → 403 on the enforced book as well (a write is refused by role, whatever the enforcement)', async () => {
+  it('scan: plain editor → 403 from the head-editor check on the enforced book as well, whatever the enforcement', async () => {
     const res = await post('/api/suggestions/scan/61', EDITOR);
-    expect(res.status).toBe(403);
+    expect(await verdictOf(res)).toEqual(SCOPE_REFUSED);
   });
   it('stats: unassigned editor → 403 under enforcement (pins the stats-route wiring — the fail-open 200 alone also passes under the old role gate)', async () => {
     const res = await get('/api/suggestions/61/stats', EDITOR);
@@ -945,9 +948,9 @@ describe("suggestions sync-log is for the book's head editor and admins", () => 
     const res = await post('/api/suggestions/62/sync-log', HE_A);
     expect(await verdictOf(res)).toEqual(SCOPE_REFUSED);
   });
-  it('plain editor (not the assigned localizer) → 403', async () => {
+  it('plain editor (not the assigned localizer) → 403 from the head-editor check', async () => {
     const res = await post('/api/suggestions/62/sync-log', EDITOR);
-    expect(res.status).toBe(403);
+    expect(await verdictOf(res)).toEqual(SCOPE_REFUSED);
   });
   // G1.13 (spec §6.1): the admin control in the by-role describe below carries the sync-log site.
   it('owning head-editor of a closed book → 403 BOOK_CLOSED (spec §6.1)', async () => {
@@ -957,9 +960,9 @@ describe("suggestions sync-log is for the book's head editor and admins", () => 
   // Section 63's localizer is the EDITOR persona. Being the assigned localizer used to be enough to sync.
   // Localization is the head editor's work ([USER] 2026-11-14, answer 12), so the assignment no longer opens
   // the route.
-  it('assigned localizer (plain editor) → 403 on their own section (was a genuine 200)', async () => {
+  it('assigned localizer (plain editor) → 403 from the head-editor check on their own section (was a genuine 200)', async () => {
     const res = await post('/api/suggestions/63/sync-log', EDITOR);
-    expect(res.status).toBe(403);
+    expect(await verdictOf(res)).toEqual(SCOPE_REFUSED);
   });
 });
 
@@ -974,9 +977,9 @@ describe('suggestion-id routes resolve to their owning section and book-scope on
     expect(res.status).toBe(200);
   });
   // Suggestions 70-72 → section 60 → liffraedi-2e (enforcement off).
-  it('accept: plain editor → 403 on liffraedi, where enforcement is off (a write; was a fail-open 200)', async () => {
+  it('accept: plain editor → 403 from the head-editor check on liffraedi, where enforcement is off (a write; was a fail-open 200)', async () => {
     const res = await post('/api/suggestions/70/accept', EDITOR);
-    expect(res.status).toBe(403);
+    expect(await verdictOf(res)).toEqual(SCOPE_REFUSED);
   });
   // G1.13 (spec §6.1): liffraedi-2e is closed; the admin controls in the by-role describe below
   // carry the reject and modify sites.

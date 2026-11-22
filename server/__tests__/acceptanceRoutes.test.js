@@ -111,10 +111,18 @@ function acceptReq(overrides = {}) {
 }
 
 describe('route registration + gate pins', () => {
-  // G1.13 (spec §6.1): the closed-book guard sits between validateBookChapter and requireBookAccess.
-  it('accept mounts the edit-save chain: requireAuth, validateBookChapter, the closed-book guard, requireBookAccess, validateModule', () => {
+  it('accept mounts six handles', () => {
     expect(acceptLayer).toBeTruthy();
     expect(acceptLayer.route.stack).toHaveLength(6);
+  });
+
+  // G1.13 (spec §6.1): the closed-book guard runs before requireBookAccess, so a closed book never
+  // reaches the chapter check. Both are found by their labels; a missing one is -1 and fails here.
+  it('accept runs the closed-book guard before requireBookAccess', () => {
+    const handles = acceptLayer.route.stack.map((l) => l.handle);
+    const guardAt = handles.findIndex((h) => h.editorScopeGuard);
+    const accessAt = handles.findIndex((h) => h.bookAccessGuard);
+    expect([guardAt >= 0, accessAt >= 0, guardAt < accessAt]).toEqual([true, true, true]);
   });
 
   // Found by its label, not its index: at index 2 the closed-book guard would also answer a viewer
