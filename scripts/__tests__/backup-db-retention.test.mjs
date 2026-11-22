@@ -34,7 +34,13 @@ function setup() {
 /** A stand-in for node that records how it was called and exits with STUB_EXIT. */
 function stub(dir) {
   const p = path.join(dir, 'node-stub.sh');
-  writeFileSync(p, '#!/bin/sh\nprintf "%s\\n" "$SESSIONS_DB_PATH" "$@" > "$STUB_OUT"\nexit "${STUB_EXIT:-0}"\n');
+  writeFileSync(
+    p,
+    '#!/bin/sh\nprintf "%s\\n" "$SESSIONS_DB_PATH" "$@" > "$STUB_OUT"\n' +
+      '[ -n "$STUB_STDOUT" ] && printf "%s\\n" "$STUB_STDOUT"\n' +
+      '[ -n "$STUB_STDERR" ] && printf "%s\\n" "$STUB_STDERR" >&2\n' +
+      'exit "${STUB_EXIT:-0}"\n'
+  );
   chmodSync(p, 0o755);
   return p;
 }
@@ -73,6 +79,22 @@ describe('backup-db.sh and the editorial retention', () => {
     const r = backup(s, { RETENTION_NODE: stub(s.dir), STUB_OUT: path.join(s.dir, 'stub.out'), STUB_EXIT: '1' });
     expect(r.status).toBe(0);
     expect(r.stderr).toMatch(/WARNING: editorial retention did not complete/);
+    expect(backupFiles(s.backups)).toHaveLength(1);
+  });
+
+  it("a failed retention's reason reaches the log; its report (stdout, counts) does not (final review I-3)", () => {
+    const s = setup();
+    const r = backup(s, {
+      RETENTION_NODE: stub(s.dir),
+      STUB_OUT: path.join(s.dir, 'stub.out'),
+      STUB_EXIT: '1',
+      STUB_STDOUT: 'REPORT-ON-STDOUT',
+      STUB_STDERR: 'editorial-retention: SQLITE_BUSY: database is locked',
+    });
+    expect(r.status).toBe(0);
+    expect(r.stderr).toMatch(/editorial-retention: SQLITE_BUSY: database is locked/);
+    expect(r.stderr).toMatch(/WARNING: editorial retention did not complete/);
+    expect(`${r.stdout}${r.stderr}`).not.toMatch(/REPORT-ON-STDOUT/);
     expect(backupFiles(s.backups)).toHaveLength(1);
   });
 
