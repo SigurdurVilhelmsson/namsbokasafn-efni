@@ -38,6 +38,10 @@ waits on the data protection officer. The guards ship first; the assigning is a 
 - **Chemistry's enforcement: a study book is always enforced, in code**, whatever the per-book toggle says.
 - **Propagation: skip the targets the editor does not hold**, and show them as skipped.
 - **The licence clause: its own table, `editor_licence_clauses`**, not a column on `users`.
+- **The licence records are kept permanently** (retention class `keep`), never deleted: a record proves that an
+  editor's edits were released under CC BY 4.0, and that licence does not expire while the text is published. The
+  alternative, deleting them on 31 December 2030 with the consent records, was rejected because it would leave
+  published edits with no record of their licence.
 
 ## 3. What the code does today (read at `88285194a`)
 
@@ -174,13 +178,13 @@ waits on the data protection officer. The guards ship first; the assigning is a 
 
 **`editor_licence_clauses`** (`sessions.db`, a new migration):
 
-| Column | Meaning |
-|---|---|
-| `id` | AUTOINCREMENT |
-| `user_id` | `users.id`, a plain integer, **no foreign key** (the record outlives the user, as `research_consent`'s does) |
-| `signed_on` | the date on the signed agreement, `YYYY-MM-DD` |
-| `recorded_by` | `users.id` of whoever recorded it |
-| `recorded_at_ms` | when it was recorded |
+| Column | Declared type | Meaning |
+|---|---|---|
+| `id` | `INTEGER PRIMARY KEY AUTOINCREMENT` | |
+| `user_id` | `INTEGER NOT NULL` | `users.id`, **no foreign key** (the record outlives the user, as `research_consent`'s does) |
+| `signed_on` | `TEXT NOT NULL` | the date on the signed agreement, `YYYY-MM-DD` |
+| `recorded_by` | `TEXT NOT NULL` | the recording admin's username, the value the assign routes write into `user_chapter_assignments.assigned_by` (`req.user.username`) |
+| `recorded_at_ms` | `INTEGER NOT NULL` | when it was recorded |
 
 - **Append-only.** The current state is "at least one row for the user". A row recorded in error is removed only by an
   admin, through a route that writes an `activity_log` entry naming the row's id and why; nothing edits a row.
@@ -191,8 +195,29 @@ waits on the data protection officer. The guards ship first; the assigning is a 
 - **Reading it:** the users admin page shows "leyfisákvæði undirritað <date>" or its absence. The assignments page,
   which the head editor can open, shows the same status read-only beside each editor, so they can see why an editor
   cannot be assigned. The assign gate reads it (§6.5).
-- **Retention:** the table names people, so `editorialRetentionScope.js` must classify it, or its test fails by name.
-  **Which class is [USER]'s to set** (§11, open question 1).
+- **Retention: `keep`, never deleted** ([USER], 2026-11-22; §2). The table names people, so
+  `server/lib/editorialRetentionScope.js` must classify it, or its test fails by name. **The entry lands in the same
+  commit as the migration**: the scope test also requires every classified table and column to exist in the migrated
+  schema, so the entry cannot go in before the table does. The entry, exactly:
+
+  ```js
+  editor_licence_clauses: {
+    action: 'keep',
+    person: [integer('user_id', null), text('recorded_by', null)],
+    times: [],
+  },
+  ```
+
+  Both person columns match the test's person-name pattern (`user`, `_by`); each helper follows its column's declared
+  type, and a kept table's `timeCol` is `null`, both as the test requires. In the same commit,
+  `editorialRetentionScope.test.js` moves from 34 tables to 35 and its `keep` list from `['users']` to
+  `['editor_licence_clauses', 'users']`, and the module's header comment, which today says `keep` means `users`, names
+  both tables.
+- **No other retention code changes.** `server/lib/editorialRetention.js` picks the 2028 strip and delete tables by
+  `action`, and the 2030 step names its two tables (`research_consent`, `research_capture_losses`) directly, so a kept
+  table is skipped by construction. T8 proves it rather than trusting that reading.
+- **One consequence, accepted:** the `activity_log` entry for an admin's removal of a row recorded in error is in a
+  `delete` table, so it goes in 2028 while the kept rows stay. A removed row was never proof of a licence.
 
 ### 6.5 The assign gate
 
@@ -267,7 +292,7 @@ These get the allowlist guard (§6.1), with the book taken from the row they act
 | T5 | The toggle route refuses to turn a study book off (409) | A click turns the study's guard off |
 | T6 | Propagation: an editor holding ch2 propagating a phrase also in ch3, ch0 and -1 creates edits in ch2 only; the response and the preview list ch3 and -1 as `not-your-chapter` and ch0 as `chapter-not-editable`; the head editor's propagation reaches ch2, ch3 and -1 and also skips ch0 | Preview and apply disagree, the bypass is lost, or edits land where no one can open them |
 | T7 | The assign gate: each refusal (`book-closed`, `bypass-role`, `no-consent-decision`, `no-licence-clause`, `suggestion-view-off`, and `chapter-not-editable` for chapter 0), through both assign routes and `setChapterAssignee`; success with a `declined` consent row plus a licence row; no row is written on refusal | A route that skips the gate, or a declined editor wrongly refused |
-| T8 | `editor_licence_clauses`: the migration, the write route's validation (bad date, future date), the logged admin removal; `editorialRetentionScope.test.js` passes with the table classified | An unclassified person table |
+| T8 | `editor_licence_clauses`: the migration, the write route's validation (bad date, future date), the logged admin removal; `editorialRetentionScope.test.js` passes with the table classified `keep` (35 tables; `keep` = `editor_licence_clauses`, `users`); **a licence row dated before both retention dates comes through the 2028 step and the 2030 step unchanged, while the 2030 run deletes a `research_consent` row planted beside it** (the control: the run did run), in `editorialRetention.test.js` beside its "a users row is never changed" | An unclassified person table, or a licence record a retention step deletes or strips |
 | T9 | The writes of §6.7 refuse a closed book for a non-admin and do not check the chapter: a section's reviewer with no chapter row can still submit-review in chemistry | A reviewer locked out by a chapter check |
 | T10 | Recalibration: tests that pin enforcement-off behaviour (`assignmentEnforcement.test.js`, `crossBookAuthz.test.js`) keep testing it on a **non-study** fixture book, so the toggle logic stays covered; the E2E specs that have an editor save in chemistry plant that editor's assignment row directly in their throwaway database | A test silently deleted, or E2E red for a reason no one reads |
 
@@ -295,13 +320,12 @@ specs save into chemistry as editors.
     assignment in a study book (§6.6). ✏️ *An earlier draft of this conversation offered "ch00 becomes assignable";
     the builder check found that ch00 cannot be opened at all and that the G1.7 design already settles it, so that
     item is dropped.*
+12. **`recorded_by` holds the recording admin's username (`TEXT`)**, the value the assign routes already write into
+    `assigned_by`, rather than a `users.id` (§6.4). One convention for "who did it" across the assignment records.
 
 ## 11. Open for [USER]
 
-1. **The licence records' retention class.** `editorialRetentionScope.js` must classify `editor_licence_clauses`.
-   Options: `consent` (deleted 31 December 2030 with `research_consent`), or `keep` (never deleted), since the record
-   proves that the edits were released under CC BY 4.0, a licence that does not expire while the text is published.
-   Claude's pick is `keep`, for that reason; it is a legal call, so it is yours.
+Nothing. The one open question, the licence records' retention class, was answered on 2026-11-22: `keep` (§2, §6.4).
 
 ## 12. Left to the builder
 
