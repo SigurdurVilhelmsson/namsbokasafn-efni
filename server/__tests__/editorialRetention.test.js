@@ -580,6 +580,33 @@ describe("editorialRetention: every tool's write after the date is continued use
       C19_LOAD_LABEL,
     ]);
   });
+
+  // [USER] 2026-11-22: a report from the public feedback form counts as the tools' writes do, and a later record is
+  // any row with a time after the date, whether or not it names anyone (spec §4.4: "a record dated after a date").
+  it('a public report with no name or email after the date raises the refusal', () => {
+    insert(db, 'feedback', { type: 'bug', message: 'm', created_at: LATER });
+    const res = planStep(db, 'named', AT);
+    expect(refusal(res, 'later-records', 'feedback')).toMatchObject({ rows: 1 });
+  });
+
+  it('a row whose only later time is a tool update raises it too, and its covered name is still stripped', () => {
+    insert(db, 'chapter_pipeline_status', {
+      book_slug: 'b',
+      chapter_num: 1,
+      stage: 'extraction',
+      status: 'complete',
+      completed_by: 'Early Editor',
+      completed_at: '2028-11-30 10:00:00',
+      updated_at: LATER,
+    });
+    const res = applyStep(db, 'named', AT);
+    expect(refusal(res, 'later-records', 'chapter_pipeline_status')).toMatchObject({ rows: 1 });
+    const by = db
+      .prepare("SELECT completed_by FROM chapter_pipeline_status WHERE book_slug = 'b'")
+      .pluck()
+      .get();
+    expect(by).toMatch(/^fjarlægt-/);
+  });
 });
 
 // ── Task 6: steps 2 and 3 (spec §4.4) ──

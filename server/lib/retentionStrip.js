@@ -114,7 +114,7 @@ function unreadableJson(db, table, entry, opts) {
  *
  * @param {import('better-sqlite3').Database} db
  * @param {string} table
- * @param {{ person: {col: string, timeCol: string, type: string}[], jsonTimes?: string[] }} entry
+ * @param {{ person: {col: string, timeCol: string, type: string}[], times?: string[], jsonTimes?: string[] }} entry
  * @param {{ day: string, effMs: number, keep?: string[] }} opts keep: values never stripped (tool labels)
  * @returns {{ rows: number, later: number, unreadableTime: number, undated: number, unreadableJson: number }}
  */
@@ -124,9 +124,10 @@ function surveyStrip(db, table, entry, opts) {
   const present = (p) =>
     `${q(p.col)} IS NOT NULL AND ${q(p.col)} IS NOT ${placeholder(p)}${keepSql(p)}`;
   const any = (f) => entry.person.map((p) => `(${present(p)} AND ${f(p)})`).join(' OR ');
-  // A later record is any person value dated after the date, a kept tool label included: the keep-list spares a
-  // label from the strip, never from the continued-use refusal ([USER] 2026-11-22, the final review's I-1).
-  const written = (p) => `${q(p.col)} IS NOT NULL AND ${q(p.col)} IS NOT ${placeholder(p)}`;
+  // A later record is any row with a time after the date, whether or not it names anyone, and whoever wrote it: a
+  // kept tool label, a tool that stores no person, a report from the public feedback form (spec §4.4, "a record dated
+  // after a date"; [USER] 2026-11-22, the final review's I-1). The keep-list spares a label from the strip only.
+  const timeCols = [...new Set([...(entry.times ?? []), ...entry.person.map((p) => p.timeCol)])];
   return {
     rows: count(
       db,
@@ -135,7 +136,7 @@ function surveyStrip(db, table, entry, opts) {
     ),
     later: count(
       db,
-      `SELECT COUNT(*) FROM "${table}" WHERE ${entry.person.map((p) => `(${written(p)} AND ${later(p.timeCol)})`).join(' OR ')}`,
+      `SELECT COUNT(*) FROM "${table}" WHERE ${timeCols.map((c) => later(c)).join(' OR ')}`,
       params
     ),
     unreadableTime: count(
