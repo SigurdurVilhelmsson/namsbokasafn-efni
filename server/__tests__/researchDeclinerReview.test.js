@@ -37,6 +37,7 @@ const {
   decline,
   readResearch,
 } = require('./helpers/researchFixture.cjs');
+const { plantAssignment } = require('./helpers/plantAssignment.cjs');
 const {
   allEvents,
   eventMark,
@@ -111,6 +112,11 @@ beforeAll(() => {
     approve: handlerFor(router, 'post', '/edit/:editId/approve'),
   };
   db = new Database(dbPath);
+  // G1.13 (spec §6.2): chemistry is assignment-enforced, so every editor here holds the chapters
+  // the fixture's modules sit in, as the study's editors do.
+  for (const { id } of db.prepare("SELECT id FROM users WHERE role = 'editor'").all()) {
+    for (const chapter of [1, 2]) plantAssignment(db, { userId: id, book: CHEM, chapter });
+  }
 });
 
 afterAll(() => {

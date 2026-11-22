@@ -31,6 +31,7 @@ process.env.JWT_SECRET = process.env.JWT_SECRET || 'prufa-leyndarmal';
 
 const Database = require('better-sqlite3');
 const { writeModule, handlerFor, invoke, EDITOR } = require('./helpers/servedFixture');
+const { plantAssignment } = require('./helpers/plantAssignment.cjs');
 
 const CHEM = 'efnafraedi-2e';
 const ORGANIC = 'lifraen-efnafraedi';
@@ -42,6 +43,7 @@ const U = 'm96003:para:u';
 const DUP = 'm96101:para:d';
 const PLAIN = 'm96101:para:c';
 const LAYERLESS = 'm96103:para:n';
+const NARROW = Object.freeze({ id: 'u-ed2', username: 'editor2', role: 'editor', books: [] });
 
 let root;
 let realBooksDir;
@@ -156,6 +158,20 @@ beforeAll(() => {
   propagate = handlerFor(router, 'post', '/:book/:chapter/:moduleId/propagate');
   preview = handlerFor(router, 'get', '/:book/:chapter/:moduleId/propagation-preview');
   db = new Database(dbPath);
+  // G1.13 (spec §6.2): chemistry is assignment-enforced. EDITOR holds chapters 1 and 2, the
+  // chapters the fixtures' modules sit in; NARROW holds only chapter 1.
+  const addEditor = (providerId) =>
+    Number(
+      db
+        .prepare(
+          "INSERT INTO users (display_name, role, provider_id, provider_username) VALUES (?, 'editor', ?, ?)"
+        )
+        .run(providerId, providerId, providerId).lastInsertRowid
+    );
+  const wide = addEditor(EDITOR.id);
+  const narrow = addEditor(NARROW.id);
+  for (const chapter of [1, 2]) plantAssignment(db, { userId: wide, book: CHEM, chapter });
+  plantAssignment(db, { userId: narrow, book: CHEM, chapter: 1 });
 });
 
 afterAll(() => {
@@ -361,5 +377,33 @@ describe('POST /propagate and its preview place the SOURCE (PR1 review C3; spec 
     }
 
     expect(snapshot()).toEqual(before);
+  });
+});
+
+describe('propagation checks each target chapter (G1.13, spec §6.3; T6)', () => {
+  it('an editor holding only the source chapter: the other chapter is not-your-chapter on the preview and the apply, and nothing is written for it', async () => {
+    const p = await previewOf(SOURCE, { moduleId: 'm96001', user: NARROW });
+    expect(p.status).toBe(200);
+    expect(p.body.eligible).toEqual([]);
+    const notYours = p.body.skipped.filter((x) => x.reason === 'not-your-chapter');
+    expect(notYours.map((x) => [x.moduleId, x.chapter])).toEqual([
+      ['m96002', 2],
+      ['m96003', 2], // the duplicated target's two copies
+      ['m96003', 2],
+    ]);
+
+    const before = snapshot();
+    const r = await post({ segmentId: SOURCE, editedContent: 'Texti.' }, { user: NARROW });
+    expect(r.status).toBe(200);
+    expect(r.body.created).toEqual([]);
+    expect(
+      r.body.skipped.filter((x) => x.reason === 'not-your-chapter').map((x) => x.moduleId)
+    ).toEqual(['m96002', 'm96003', 'm96003']);
+    expect(snapshot()).toEqual(before);
+
+    // Control: the editor holding both chapters writes the same target.
+    const ok = await post({ segmentId: SOURCE, editedContent: 'Texti.' });
+    expect(ok.body.created).toEqual([{ moduleId: 'm96002', segmentId: T }]);
+    expect(editRows().filter((row) => row.module_id === 'm96002')).toHaveLength(1);
   });
 });

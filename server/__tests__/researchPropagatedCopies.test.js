@@ -45,6 +45,7 @@ const serverCommit = require('../lib/serverCommit');
 const applyHold = require('../lib/applyHold');
 const { sha256Text } = require('../lib/servedText');
 const { writeModule, handlerFor, invoke } = require('./helpers/servedFixture');
+const { plantAssignment } = require('./helpers/plantAssignment.cjs');
 const { APPROVED, makeUser, consent, decline } = require('./helpers/researchFixture.cjs');
 const {
   allEvents,
@@ -197,6 +198,11 @@ beforeAll(() => {
     apply: handlerFor(router, 'post', '/:book/:chapter/:moduleId/apply'),
   };
   db = new Database(dbPath);
+  // G1.13 (spec §6.2): chemistry is assignment-enforced, so every editor here holds the chapters
+  // the fixture's modules sit in, as the study's editors do.
+  for (const { id } of db.prepare("SELECT id FROM users WHERE role = 'editor'").all()) {
+    for (const chapter of [1, 2]) plantAssignment(db, { userId: id, book: CHEM, chapter });
+  }
 });
 
 afterAll(() => {

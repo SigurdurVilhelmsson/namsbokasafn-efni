@@ -917,6 +917,25 @@ function getEditorsForBook(bookSlug) {
     .all();
 }
 
+/**
+ * May this caller write chapter `chapter` of `book`? (G1.13, spec §6.3.) Propagation asks it once
+ * per target chapter, because a propagated edit lands in a chapter other than the source's.
+ *
+ * `user` is `req.user` (the token's `{ id, role, books }`): admin and head editor are decided from
+ * the token, as the middleware decides them. Anyone else is decided by `hasChapterAccess` on the
+ * caller's users row, which may throw `ASSIGNMENT_TABLE_UNAVAILABLE`. `chapter` is a number and is
+ * never tested by truthiness: 0 and -1 are chapters.
+ *
+ * @param {{user: {id: string, role: string, books?: string[]}, book: string, chapter: number}} args
+ * @returns {boolean}
+ */
+function canWriteChapter({ user, book, chapter }) {
+  if (user.role === ROLES.ADMIN) return true;
+  if (user.role === ROLES.HEAD_EDITOR && user.books && user.books.includes(book)) return true;
+  const dbUser = findByProviderId(user.id);
+  return hasChapterAccess(dbUser ? dbUser.id : null, book, chapter);
+}
+
 module.exports = {
   // Query
   findByProviderId,
@@ -941,6 +960,7 @@ module.exports = {
 
   // Chapter assignments
   hasChapterAccess,
+  canWriteChapter,
   isAssignmentEnforced,
   setAssignmentEnforced,
   assignChapter,

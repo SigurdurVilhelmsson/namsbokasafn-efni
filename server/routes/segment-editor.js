@@ -110,6 +110,7 @@ const { readableLogBooks } = require('../lib/activityScope');
 const { PASS1_CATEGORIES: VALID_CATEGORIES, VALID_TRACKS } = require('../constants');
 const { figureReviewClosed, refuseHeldForNonAdmins } = require('../lib/heldBookWrites');
 const { refuseClosedBookForNonAdmins } = require('../lib/editorScope');
+const userService = require('../services/userService');
 
 // ─── Book-ownership resolvers for ID-keyed head-editor endpoints ──────
 // These endpoints are keyed by :editId / :reviewId, not :book, so the owning
@@ -141,6 +142,34 @@ const refuseClosedParamBook = refuseClosedBookForNonAdmins((req) => req.params.b
 const refuseClosedEditBook = refuseClosedBookForNonAdmins(bookFromEditId, 'row');
 const refuseClosedReviewBook = refuseClosedBookForNonAdmins(bookFromReviewId, 'row');
 const refuseClosedAcceptanceBook = refuseClosedBookForNonAdmins(bookFromAcceptanceId, 'row');
+
+/**
+ * Per-request "may this caller write chapter N of this book", memoised per chapter (G1.13, spec
+ * §6.3). It may throw ASSIGNMENT_TABLE_UNAVAILABLE, which `sendAssignmentUnavailable` answers.
+ */
+function chapterWriter(req) {
+  const memo = new Map();
+  return (chapter) => {
+    if (!memo.has(chapter)) {
+      memo.set(
+        chapter,
+        userService.canWriteChapter({ user: req.user, book: req.params.book, chapter })
+      );
+    }
+    return memo.get(chapter);
+  };
+}
+
+/** 503 as requireBookAccess answers it when assignments cannot be evaluated; true when sent. */
+function sendAssignmentUnavailable(res, err) {
+  if (!err || err.code !== 'ASSIGNMENT_TABLE_UNAVAILABLE') return false;
+  res.status(503).json({
+    error: 'Assignment enforcement unavailable',
+    message:
+      'Chapter assignments cannot be verified right now. Access is blocked until this is resolved.',
+  });
+  return true;
+}
 
 // =====================================================================
 // NON-PARAMETERIZED ROUTES (must come before /:book/:chapter)
@@ -1931,6 +1960,7 @@ router.get(
   requireAuth,
   requireRole(ROLES.EDITOR),
   validateBookChapter,
+  refuseClosedParamBook,
   validateModule,
   (req, res) => {
     try {
@@ -1953,8 +1983,10 @@ router.get(
         excludeSegmentId: segmentId,
       });
       const eligible = [];
-      const skipped = [];
-      for (const o of occ) {
+      // Targets the caller may not write are listed, not offered (G1.13, spec §6.3).
+      const scope = propagation.scopeOccurrences(occ, chapterWriter(req));
+      const skipped = [...scope.skipped];
+      for (const o of scope.inScope) {
         // Pass editorId so the preview's eligible/skipped split matches what
         // propagate actually writes (own pending edit → eligible-supersede).
         const verdict = propagation.classifyOccurrence(propagatedText, {
@@ -1970,6 +2002,7 @@ router.get(
       }
       res.json({ enNorm, eligible, skipped });
     } catch (err) {
+      if (sendAssignmentUnavailable(res, err)) return;
       if (sendRefusal(res, err)) return;
       log.error({ err }, 'propagation-preview failed');
       res.status(500).json({ error: err.message });
@@ -2045,6 +2078,8 @@ router.post(
           'Propagation preview read failed; its research events carry no preview (spec §5.11)'
         );
       }
+      // G1.13 (spec §6.3): each target chapter is checked; the scope skips come first.
+      const scope = propagation.scopeOccurrences(occurrences, chapterWriter(req));
       const created = propagation.createPropagatedEdits(propagation.getDb(), {
         book: req.params.book,
         editorId: req.user.id,
@@ -2052,11 +2087,12 @@ router.post(
         propagatedText: editedContent,
         category,
         note: note || 'Sjálfvirk fjölgun',
-        occurrences,
+        occurrences: scope.inScope,
         sourceEn: sourceSeg?.en,
       });
+      const skipped = [...scope.skipped, ...created.skipped];
       // G1.2: `created.writes` is the research event's; the response stays PR1's.
-      const result = withoutResearchKeys(created);
+      const result = { ...withoutResearchKeys(created), skipped };
       researchEmission.emitPropagation(req, {
         sourceSegmentId: segmentId,
         sourceIs: sourceSeg?.is ?? '',
@@ -2066,7 +2102,7 @@ router.post(
         category,
         note: note || 'Sjálfvirk fjölgun',
         writes: created.writes,
-        skipped: created.skipped,
+        skipped,
       });
       res.json(result);
     } catch (err) {
@@ -2079,6 +2115,7 @@ router.post(
           origin: 'propagation',
         });
       }
+      if (sendAssignmentUnavailable(res, err)) return;
       if (sendRefusal(res, err)) return;
       log.error({ err }, 'propagate failed');
       res.status(500).json({ error: err.message });

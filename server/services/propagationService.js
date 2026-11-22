@@ -353,11 +353,46 @@ function findOccurrences(book, enNorm, { excludeModuleId, excludeSegmentId } = {
   return out;
 }
 
+/**
+ * Split occurrences by whether the caller may write their chapter (G1.13, spec §6.3).
+ * Chapter 0 is not editable for anyone; any other chapter is decided by `mayWrite`. Skipped entries
+ * name their chapter for both reasons. `inScope` keeps the input objects unchanged.
+ *
+ * @param {object[]} occurrences each with `chapter`, `moduleId`, `segmentId`
+ * @param {(chapter: number) => boolean} mayWrite
+ * @returns {{inScope: object[], skipped: object[]}}
+ */
+function scopeOccurrences(occurrences, mayWrite) {
+  const inScope = [];
+  const skipped = [];
+  for (const occ of occurrences) {
+    if (occ.chapter === 0) {
+      skipped.push({
+        moduleId: occ.moduleId,
+        segmentId: occ.segmentId,
+        chapter: 0,
+        reason: 'chapter-not-editable',
+      });
+    } else if (!mayWrite(occ.chapter)) {
+      skipped.push({
+        moduleId: occ.moduleId,
+        segmentId: occ.segmentId,
+        chapter: occ.chapter,
+        reason: 'not-your-chapter',
+      });
+    } else {
+      inScope.push(occ);
+    }
+  }
+  return { inScope, skipped };
+}
+
 module.exports = {
   getDb,
   _setTestDb,
   classifyOccurrence,
   createPropagatedEdits,
+  scopeOccurrences,
   findOccurrences,
   latestEditedText,
   latestLiveEdit,
