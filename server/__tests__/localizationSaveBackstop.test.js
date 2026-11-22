@@ -46,14 +46,20 @@ const SYN_MODULE = 'mLOCB01';
 const SEG1 = `${SYN_MODULE}:para:seg1`;
 const SEG2 = `${SYN_MODULE}:para:seg2`;
 const SEG3 = `${SYN_MODULE}:para:seg3`;
+const SEG4 = `${SYN_MODULE}:para:seg4`;
 
 const EN_SEG1 = 'Content with formula [[MATH:1]] here.';
 const EN_SEG2 = 'Second paragraph with formula [[MATH:2]] included.';
 const EN_SEG3 = 'Third paragraph with formula [[MATH:3]] present.';
+const EN_SEG4 = 'Pressure 14.7 lb/in[[sup:2]] is one [[term:atmosphere]].';
 
 const FAITHFUL_SEG1 = 'Efni með formúlu [[MATH:1]] hér.';
 const FAITHFUL_SEG2 = 'Önnur efnisgrein með formúlu [[MATH:2]] hér.';
 const FAITHFUL_SEG3 = 'Þriðja efnisgrein með formúlu [[MATH:3]] hér.';
+const FAITHFUL_SEG4 = 'Þrýstingur 14,7 lb/in[[sup:2]] er ein [[term:loftþyngd]].';
+// seg4 (§C248, [USER] 2026-11-22): a unit conversion removes the superscript the English carries.
+const LOCALIZED_SEG4_KPA = 'Þrýstingur 101 kPa er ein [[term:loftþyngd]].';
+const LOCALIZED_SEG4_NO_TERM = 'Þrýstingur 14,7 lb/in[[sup:2]] er ein loftþyngd.';
 
 // seg3's PRE-EXISTING localized entry: degraded — the marker EN still
 // carries is already missing from this saved baseline.
@@ -67,12 +73,14 @@ const STRIPPED_SEG2 = FAITHFUL_SEG2.split('[[MATH:2]]').join('');
 const EN_CONTENT =
   `<!-- SEG:${SEG1} -->\n${EN_SEG1}\n\n` +
   `<!-- SEG:${SEG2} -->\n${EN_SEG2}\n\n` +
-  `<!-- SEG:${SEG3} -->\n${EN_SEG3}\n`;
+  `<!-- SEG:${SEG3} -->\n${EN_SEG3}\n\n` +
+  `<!-- SEG:${SEG4} -->\n${EN_SEG4}\n`;
 
 const FAITHFUL_CONTENT =
   `<!-- SEG:${SEG1} -->\n${FAITHFUL_SEG1}\n\n` +
   `<!-- SEG:${SEG2} -->\n${FAITHFUL_SEG2}\n\n` +
-  `<!-- SEG:${SEG3} -->\n${FAITHFUL_SEG3}\n`;
+  `<!-- SEG:${SEG3} -->\n${FAITHFUL_SEG3}\n\n` +
+  `<!-- SEG:${SEG4} -->\n${FAITHFUL_SEG4}\n`;
 
 const LOCALIZED_INITIAL = `<!-- SEG:${SEG3} -->\n${DEGRADED_SEG3}\n`;
 
@@ -310,5 +318,44 @@ describe('POST /save-all — structural backstop (whole-batch reject)', () => {
     const seg3 = data.segments.find((s) => s.segmentId === SEG3);
     expect(seg1.localized).toBe(EDITED_SEG1_VALID);
     expect(seg3.localized).toBe(DEGRADED_SEG3);
+  });
+});
+
+// ─── §C248 ([USER] 2026-11-22): in localization a dropped [[sub:/[[sup: warns, never blocks ───
+describe('localization routes: a dropped [[sup: saves, another structural marker still blocks', () => {
+  beforeEach(() => {
+    resetLocalizedFixture();
+  });
+
+  it('POST /save: 14,7 lb/in[[sup:2]] -> 101 kPa is saved', async () => {
+    const req = baseReq({ body: { segmentId: SEG4, content: LOCALIZED_SEG4_KPA } });
+    const { status, body } = await invoke(saveHandler, req);
+
+    expect(status).toBe(200);
+    expect(body.success).toBe(true);
+    const data = segmentParser.loadModuleForLocalization(SYN_BOOK, 1, SYN_MODULE);
+    expect(data.segments.find((s) => s.segmentId === SEG4).localized).toBe(LOCALIZED_SEG4_KPA);
+  });
+
+  it('POST /save-all: the same conversion is saved', async () => {
+    const req = baseReq({ body: { segments: [{ segmentId: SEG4, content: LOCALIZED_SEG4_KPA }] } });
+    const { status, body } = await invoke(saveAllHandler, req);
+
+    expect(status).toBe(200);
+    expect(body.success).toBe(true);
+    const data = segmentParser.loadModuleForLocalization(SYN_BOOK, 1, SYN_MODULE);
+    expect(data.segments.find((s) => s.segmentId === SEG4).localized).toBe(LOCALIZED_SEG4_KPA);
+  });
+
+  it('control: dropping the [[term: is still rejected 400 + marker-dropped, file untouched', async () => {
+    const before = readLocalizedRaw();
+    const req = baseReq({ body: { segmentId: SEG4, content: LOCALIZED_SEG4_NO_TERM } });
+    const { status, body } = await invoke(saveHandler, req);
+
+    expect(status).toBe(400);
+    expect(body.violations).toEqual([
+      { code: 'marker-dropped', params: { type: 'term', from: 1, to: 0 } },
+    ]);
+    expect(readLocalizedRaw()).toBe(before);
   });
 });

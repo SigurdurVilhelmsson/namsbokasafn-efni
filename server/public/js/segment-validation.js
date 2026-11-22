@@ -16,15 +16,23 @@
 (function (root) {
   'use strict';
 
+  // G1.11: the bracket-marker rules live in marker-integrity.js (loaded before this file on both editor pages).
+  const markerIntegrity =
+    typeof module !== 'undefined' && module.exports
+      ? require('./marker-integrity')
+      : root.markerIntegrity;
+
   /**
    * @param {string} enText     EN source segment (trusted, server-loaded)
    * @param {string} originalIs baseline IS text (segment editor: seg.is;
    *                            localization: seg.faithful)
    * @param {string} editedIs   the proposed content
+   * @param {{localization?: boolean}} [options] localization: set by the localization pane and
+   *                            routes only; a dropped [[sub:/[[sup: then warns (§C248, 2026-11-22)
    * @returns {{ blocked: Array<{code:string, params:Object}>|null,
    *             warnings: Array<{code:string, params:Object}>|null }}
    */
-  function validateStructure(enText, originalIs, editedIs) {
+  function validateStructure(enText, originalIs, editedIs, options) {
     const blocked = [];
     const warnings = [];
     const en = enText || '';
@@ -148,6 +156,12 @@
     if (orig.trim() && !edited.trim()) {
       warnings.push({ code: 'segment-cleared', params: {} });
     }
+
+    // G1.11 + §C248: the bracket-marker rules (spec 2026-11-21-c248-g111…-design.md §4.3). Blocks are enforced
+    // server-side like every other block here; warnings stay advisory.
+    const markers = markerIntegrity.checkMarkers(en, orig, edited, options);
+    for (let b = 0; b < markers.blocked.length; b++) blocked.push(markers.blocked[b]);
+    for (let w = 0; w < markers.warnings.length; w++) warnings.push(markers.warnings[w]);
 
     return {
       blocked: blocked.length > 0 ? blocked : null,

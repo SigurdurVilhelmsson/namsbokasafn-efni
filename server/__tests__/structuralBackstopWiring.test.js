@@ -38,6 +38,33 @@ describe('server enforcement sites', () => {
   });
 });
 
+// §C248, [USER] 2026-11-22: in localization a dropped [[sub:/[[sup: warns. Only the localization sites say so;
+// the segment editor's save path and propagation keep rule 2s whole.
+describe('only the localization sites relax rule 2s for sub/sup', () => {
+  // The last argument of the call, as prettier writes it inline or across lines (trailing commas allowed).
+  const LOC_CALL =
+    'segmentValidation\\.validateStructure\\([^;]*?\\{\\s*localization:\\s*true\\s*,?\\s*\\}\\s*,?\\s*\\)';
+  const count = (src, re) => (src.match(new RegExp(re, 'g')) || []).length;
+  it('routes/localization-editor.js passes { localization: true } at both call sites', () => {
+    const src = read('routes/localization-editor.js');
+    expect(count(src, LOC_CALL)).toBe(count(src, 'segmentValidation\\.validateStructure\\('));
+    expect(count(src, LOC_CALL)).toBeGreaterThanOrEqual(2);
+  });
+  it('the localization pane passes it', () => {
+    expect(count(read('public/js/localization-editor.js'), LOC_CALL)).toBe(1);
+  });
+  it('the segment editor, servedEdit and propagation do not', () => {
+    for (const rel of [
+      'public/js/segment-editor.js',
+      'services/servedEdit.js',
+      'services/propagationService.js',
+    ]) {
+      expect(read(rel), rel).toMatch(/validateStructure\(/);
+      expect(read(rel), rel).not.toMatch(/localization:\s*true/);
+    }
+  });
+});
+
 describe('propagation guard arming (SR-OOS-2 FIX4)', () => {
   it('routes/segment-editor.js wires sourceEn into the propagate call (omitting it would disarm the guard)', () => {
     const src = read('routes/segment-editor.js');

@@ -931,7 +931,10 @@
    * (advisory only).
    */
   function edValidateSegmentEdit(enText, originalIs, editedIs) {
-    var result = segmentValidation.validateStructure(enText, originalIs, editedIs);
+    // A dropped [[sub:/[[sup: only warns in this pane (§C248, 2026-11-22): a unit conversion can rightly remove one.
+    var result = segmentValidation.validateStructure(enText, originalIs, editedIs, {
+      localization: true,
+    });
     var pairNames = {
       '**': UI.validation.pairNames.bold,
       __: UI.validation.pairNames.term,
@@ -962,6 +965,21 @@
       'seg-marker-injected': function (p) {
         return UI.validation.segMarkerInjected(p.marker);
       },
+      // G1.11 + §C248 (marker-integrity.js)
+      'marker-spaced': function (p) {
+        return UI.validation.markerSpaced(p.type);
+      },
+      'marker-unbalanced': function (p) {
+        return UI.validation.markerUnbalanced(p.open, p.close);
+      },
+      'marker-empty': function (p) {
+        return UI.validation.markerEmpty(p.type);
+      },
+      'marker-dropped': function (p) {
+        return p.marker
+          ? UI.validation.markerDroppedExact(p.marker)
+          : UI.validation.markerDropped(p.type, p.from, p.to);
+      },
     };
     var warnMsg = {
       'unmatched-pair': function (p) {
@@ -978,6 +996,21 @@
       },
       'segment-cleared': function () {
         return UI.validation.segmentCleared;
+      },
+      // G1.11 + §C248 (marker-integrity.js)
+      'formatting-dropped': function (p) {
+        return UI.validation.formattingDropped(p.type, p.from, p.to);
+      },
+      'marker-unknown': function (p) {
+        return UI.validation.markerUnknown(p.type);
+      },
+      'marker-lb-rb': function (p) {
+        return UI.validation.markerLbRb(p.lb, p.rb);
+      },
+      'legacy-wrap': function (p) {
+        return p.direction === 'flip'
+          ? UI.validation.legacyWrapFlip
+          : UI.validation.legacyWrapAdded(p.marker);
       },
     };
     return {

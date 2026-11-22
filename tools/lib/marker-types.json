@@ -1,0 +1,25 @@
+{
+  "description": "The one owner of the bracket-marker type list and its tiers (G1.11; spec docs/superpowers/specs/2026-11-21-c248-g111-toolbar-dialect-and-marker-gate-design.md §4.1). atomic: present exactly; structural: count may not fall below min(baseline, English); presentational: a fall warns. Read by server/public/js/marker-integrity.js (Node) and served to the browser by GET /js/marker-types.js.",
+  "types": {
+    "MATH": "atomic",
+    "MEDIA": "atomic",
+    "TABLE": "atomic",
+    "BR": "atomic",
+    "SPACE": "atomic",
+    "lb": "atomic",
+    "rb": "atomic",
+    "sub": "structural",
+    "sup": "structural",
+    "xref": "structural",
+    "link": "structural",
+    "term": "structural",
+    "docref": "structural",
+    "fn": "structural",
+    "span": "structural",
+    "i": "presentational",
+    "b": "presentational",
+    "em": "presentational",
+    "u": "presentational",
+    "sc": "presentational"
+  }
+}

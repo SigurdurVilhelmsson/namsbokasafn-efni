@@ -1302,6 +1302,22 @@ function buildMediaElement(media) {
  * @param {Array} inlineTables - Inline table structures
  * @returns {string} CNXML-compatible text
  */
+/**
+ * Whether a segment's text carries a new-format (bracket/brace) marker. reverseInlineMarkup converts the legacy
+ * forms (`**x**`, `*x*`, `__x__`, `~x~`, `^x^`) only when this is false. Exported so the editor's toolbar can be
+ * held to the same decision: server/public/js/marker-integrity.js `isBracketDialect` carries this regex verbatim,
+ * and server/__tests__/markerDialectAgreement.test.js asserts the two agree on every segment of the corpus (§C248).
+ *
+ * @param {string} text
+ * @returns {boolean}
+ */
+export function hasApiMarkers(text) {
+  return /\{\{[ib]\}\}|\{\{[ib]:|\{\{term\}\}|\{\{fn\}\}|\[\[sub:|\[\[sup:|\[\[i:|\[\[b:|\[\[term:|\[\[fn:|\[\[u:|\[\[em:|\[\[span:|\[\[sc:/.test(
+    text
+  );
+}
+const segmentHasApiMarkers = hasApiMarkers;
+
 function reverseInlineMarkup(
   text,
   equations,
@@ -1317,10 +1333,7 @@ function reverseInlineMarkup(
   // Detect if this segment was API-translated by looking for new-format markers.
   // API segments use {{i}}, {{b}}, {{term}}, {{fn}}, [[sub:]], [[sup:]] — so legacy
   // patterns (*text*, ~text~, ^text^) would be false positives from translated content.
-  const hasApiMarkers =
-    /\{\{[ib]\}\}|\{\{[ib]:|\{\{term\}\}|\{\{fn\}\}|\[\[sub:|\[\[sup:|\[\[i:|\[\[b:|\[\[term:|\[\[fn:|\[\[u:|\[\[em:|\[\[span:|\[\[sc:/.test(
-      text
-    );
+  const hasApiMarkers = segmentHasApiMarkers(text);
 
   // B4: id-anchored markers make the positional attr restore unnecessary AND
   // unsafe (an attr-less [[term:text]] must not consume a positional slot).
