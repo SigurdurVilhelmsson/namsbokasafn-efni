@@ -1045,3 +1045,33 @@ cb838cb22 docs(register): stage 2 PRs 1 and 2 deployed; chemistry restamped once
 **Why:** —
 
 ---
+
+## 2026-11-22 11:41 - G1.15(b) retention dates and the §C248 marker gate merged (#772, #770) and deployed (fb729a9d8); finishing the post-deploy reads (glossary export diff, 12:30Z backup log) and the docs PR #773.
+
+**Branch:** docs/register-772-770-deployed
+**Modified:**
+(clean)
+
+**Recent commits:**
+5cabde697 docs(register): #772 and #770 merged and deployed (fb729a9d8); post-deploy reads; §C248's deploy moment
+fb729a9d8 Merge pull request #770 from SigurdurVilhelmsson/feat/c248-g111-marker-gate
+3452782c4 Merge pull request #772 from SigurdurVilhelmsson/feat/g115b-glossary-record-role
+
+**Why:** —
+
+---
+
+## 2026-11-22 11:43 - Finishing the post-deploy reads for the G1.15(b) + marker-gate deploy (glossary export diff at 12:03Z, 12:30Z backup log) and the docs PR #773; main is green at fb729a9d8.
+
+**Branch:** docs/register-772-770-deployed
+**Modified:**
+ M logs/dev-journal.md
+
+**Recent commits:**
+5cabde697 docs(register): #772 and #770 merged and deployed (fb729a9d8); post-deploy reads; §C248's deploy moment
+fb729a9d8 Merge pull request #770 from SigurdurVilhelmsson/feat/c248-g111-marker-gate
+3452782c4 Merge pull request #772 from SigurdurVilhelmsson/feat/g115b-glossary-record-role
+
+**Why:** —
+
+---
