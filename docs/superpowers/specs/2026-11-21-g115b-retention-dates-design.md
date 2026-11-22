@@ -157,3 +157,4 @@ The final whole-branch review found that §4.4's refusal could be raised by writ
 - **A report from the public feedback form counts too**, as the tools' writes do. `POST /api/feedback` needs no sign-in.
 - **A later record is any row with a time after the date, named or not**, as §4.4 words it: "a record dated after a date". [USER] chose this when a nameless report turned out to raise nothing. It also covers a tool write that stores no person.
 - **`checks.retention` (§4.6) keeps an answer with a due step for five minutes**, because each survey costs about 0.15 s on a public endpoint. It can therefore show a change up to five minutes late. Before 2029 nothing is kept.
+- **Spec §4.3's "ties in `ORDER BY created_at` reads break by id" stays unbuilt** ([USER], 2026-11-22, the review's M-1). No read that decides content depends on it; after the 2029 cut, one day's entries may show out of order.
