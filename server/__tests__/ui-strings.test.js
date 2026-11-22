@@ -145,6 +145,33 @@ describe('propagateResult (SR-OOS-2 FIX6c)', () => {
     expect(msg).not.toContain('hvergi');
   });
 
+  it('G1.13: a count of 1 not-your-chapter skip reads "í kafla", 2 reads "í köflum"', () => {
+    expect(UI.segmentEditor.propagateResult(1, 1, 0, 1, 0)).toContain(
+      '1 í kafla sem þú ritstýrir ekki'
+    );
+    expect(UI.segmentEditor.propagateResult(1, 2, 0, 2, 0)).toContain(
+      '2 í köflum sem þú ritstýrir ekki'
+    );
+  });
+
+  it('G1.13: a count of 1 chapter-not-editable skip reads "í kafla", 2 reads "í köflum"', () => {
+    expect(UI.segmentEditor.propagateResult(1, 1, 0, 0, 1)).toContain(
+      '1 í kafla sem ekki er ritstýrt'
+    );
+    expect(UI.segmentEditor.propagateResult(1, 2, 0, 0, 2)).toContain(
+      '2 í köflum sem ekki er ritstýrt'
+    );
+  });
+
+  it('G1.13: the scoped none-message is singular for 1 and plural for 2, for both phrases', () => {
+    expect(UI.segmentEditor.propagateNoneScoped(1, 0)).toContain('1 í kafla sem þú ritstýrir ekki');
+    expect(UI.segmentEditor.propagateNoneScoped(2, 0)).toContain(
+      '2 í köflum sem þú ritstýrir ekki'
+    );
+    expect(UI.segmentEditor.propagateNoneScoped(0, 1)).toContain('1 í kafla sem ekki er ritstýrt');
+    expect(UI.segmentEditor.propagateNoneScoped(0, 2)).toContain('2 í köflum sem ekki er ritstýrt');
+  });
+
   it('G1.13: the editor routes scope skips into both messages', () => {
     const js = readFileSync(join(publicJs, 'segment-editor.js'), 'utf-8');
     expect(js).toMatch(/propagateNoneScoped\(scope\.notYours, scope\.notEditable\)/);

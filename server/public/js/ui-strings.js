@@ -8,6 +8,9 @@
  *   UI.confirm.draftRecovery(5) → 'Fundust 5 óvistuð drög frá síðustu lotu. Endurheimta? (…)'
  */
 
+// "í kafla" (dative singular) for a count of 1, "í köflum" (dative plural) otherwise.
+const inChapters = (n) => (n === 1 ? 'í kafla' : 'í köflum');
+
 // eslint-disable-next-line no-unused-vars
 const UI = {
   // ── Common ──────────────────────────────────────────────────
@@ -369,8 +372,8 @@ const UI = {
         const other = skipped - blocked - foreign - closed;
         const parts = [];
         if (blocked) parts.push(`${blocked} vegna þess að byggingarmerki hindra`);
-        if (foreign) parts.push(`${foreign} í köflum sem þú ritstýrir ekki`);
-        if (closed) parts.push(`${closed} í kafla sem ekki er ritstýrt`);
+        if (foreign) parts.push(`${foreign} ${inChapters(foreign)} sem þú ritstýrir ekki`);
+        if (closed) parts.push(`${closed} ${inChapters(closed)} sem ekki er ritstýrt`);
         if (other > 0) parts.push(`${other} þegar breytt`);
         msg += `, sleppt ${skipped} (${parts.join(', ')})`;
       }
@@ -380,8 +383,8 @@ const UI = {
     // the text "finds nowhere else".
     propagateNoneScoped: (notYours, notEditable) => {
       const parts = [];
-      if (notYours) parts.push(`${notYours} í köflum sem þú ritstýrir ekki`);
-      if (notEditable) parts.push(`${notEditable} í kafla sem ekki er ritstýrt`);
+      if (notYours) parts.push(`${notYours} ${inChapters(notYours)} sem þú ritstýrir ekki`);
+      if (notEditable) parts.push(`${notEditable} ${inChapters(notEditable)} sem ekki er ritstýrt`);
       return `Þessi texti birtist annars staðar (${parts.join(', ')}), en þú mátt ekki breyta þar.`;
     },
     propagateError: (msg) => 'Villa við fjölgun: ' + msg,
