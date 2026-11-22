@@ -371,6 +371,43 @@ describe('editorialRetention: the named step', () => {
     expect(refusal(res, 'unreadable-time', 'segment_discussions')).toMatchObject({ rows: 1 });
   });
 
+  it('a text time with a UTC offset is never read as covered: the row is left and reported (final review M-2)', () => {
+    const { rows } = plantAll(db);
+    const id = insert(db, 'segment_discussions', {
+      segment_edit_id: rows.segment_edits,
+      comment: 'c',
+      user_id: 'Offset Time',
+      username: 'offset',
+      created_at: '2028-12-31T23:30:00-02:00', // 2029-01-01T01:30Z, after the date, though its day reads 2028-12-31
+    });
+    const res = applyStep(db, 'named', AT);
+    expect(rowOf('segment_discussions', id).user_id).toBe('Offset Time');
+    expect(refusal(res, 'unreadable-time', 'segment_discussions')).toMatchObject({ rows: 1 });
+  });
+
+  it('an integer time no millisecond clock wrote (seconds, or a small number) is never read as covered (final review M-3)', () => {
+    const rej = (op, ms) =>
+      insert(db, 'suggestion_rejections', {
+        book: 'b',
+        chapter: 1,
+        module_id: 'm1',
+        segment_id: 's1',
+        occurrence: 0,
+        op_id: op,
+        ruling_id: 'r',
+        rejected_by: 7,
+        rejected_at_ms: ms,
+      });
+    const secs = rej('secs', Math.floor(Date.UTC(2029, 5, 1) / 1000)); // a 2029 time in seconds
+    const small = rej('small', 5); // the schema refuses 0 and negatives here (CHECK > 0)
+    const res = applyStep(db, 'named', AT);
+    expect([
+      rowOf('suggestion_rejections', secs).rejected_by,
+      rowOf('suggestion_rejections', small).rejected_by,
+    ]).toEqual([7, 7]);
+    expect(refusal(res, 'unreadable-time', 'suggestion_rejections')).toMatchObject({ rows: 2 });
+  });
+
   it('a name beside a NULL time is left and reported', () => {
     const id = insert(db, 'content_versions', {
       book: 'b',
@@ -645,6 +682,16 @@ describe('editorialRetention: step 2, unnamed', () => {
     expect(snapshot(db)).toEqual(before);
   });
 
+  it('refuses outright on an opening time it cannot read as on or before 2028 (seconds), and deletes nothing (final review M-3)', () => {
+    recordRun('named', AT);
+    servedVersion();
+    opening('m2', Math.floor(Date.UTC(2029, 5, 1) / 1000)); // a 2029 opening in seconds
+    const before = snapshot(db);
+    const res = applyStep(db, 'unnamed', AT2);
+    expect(blocking(res)).toEqual(['later-openings']);
+    expect(snapshot(db)).toEqual(before);
+  });
+
   it('a second unnamed changes nothing', () => {
     recordRun('named', AT);
     editServed(servedVersion(), '2028-04-04 04:04:04');
@@ -757,6 +804,15 @@ describe('editorialRetention: step 3, consent', () => {
     } finally {
       research.close();
     }
+  });
+
+  it('refuses outright on a consent time it cannot read as on or before 2030 (seconds), and deletes nothing (final review M-3)', () => {
+    consentRow(Math.floor(Date.UTC(2031, 0, 2) / 1000)); // a 2031 consent in seconds
+    retentionDeletion(effectiveMs('2029-12-31'));
+    const before = snapshot(db);
+    const res = applyStep(db, 'consent', AT3);
+    expect(blocking(res)).toEqual(['later-records']);
+    expect(snapshot(db)).toEqual(before);
   });
 
   it('refuses outright while a consent or loss record is dated after 2030', () => {

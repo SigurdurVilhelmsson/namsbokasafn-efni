@@ -7,40 +7,49 @@
  * server/lib/bookGlossaryLayer.js (stripLayerPersons, the layer's own tables). It requires nothing, so neither of
  * those can form a cycle through it.
  *
- * A time is read only when it can be: an integer for a `*_ms` column, and for any other column text that starts with
- * a YYYY-MM-DD day (both `2028-12-31 23:59:59` and `2028-12-31T23:59:59.999Z`). A value that cannot be read is never
- * covered and never later: its row is left and reported (fail closed). Covered means on or before the day (`*_ms`:
- * before effMs, 00:00 UTC on the day after).
+ * A time is read only when it can be: for a `*_ms` column an integer no smaller than MIN_MS, and for any other column
+ * text that starts with a YYYY-MM-DD day and carries no UTC offset after it (both `2028-12-31 23:59:59` and
+ * `2028-12-31T23:59:59.999Z` are read; `2028-12-31T23:30:00-02:00`, really 2029-01-01T01:30Z, is not). A value that
+ * cannot be read is never covered and never later: its row is left and reported (fail closed; final review M-2, M-3:
+ * an offset or a seconds value used to read as covered, and steps 2 and 3 delete). Covered means on or before the day
+ * (`*_ms`: before effMs, 00:00 UTC on the day after).
  *
  * Every statement binds only the named parameters it uses.
  */
 
 const DAY_MS = 86400000;
 const READABLE_DAY = "GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]*'";
+/** 1e11 ms is 1973-03-03: Date.now() writes every `*_ms` time, so a smaller integer is seconds, negative, or no time. */
+const MIN_MS = 100000000000;
 const JSON_TIME_KEYS = Object.freeze(['timestamp', 'updatedAt', 'createdAt']);
 
 const isMs = (c) => /_ms$/.test(c);
 const q = (c) => `"${c}"`;
 
+/** SQL true when column `c` holds a time this module can read (see the header). */
+function readable(c) {
+  return isMs(c)
+    ? `(typeof(${q(c)}) = 'integer' AND ${q(c)} >= ${MIN_MS})`
+    : `(typeof(${q(c)}) = 'text' AND ${q(c)} ${READABLE_DAY} AND instr(substr(${q(c)}, 11), '+') = 0 AND instr(substr(${q(c)}, 11), '-') = 0)`;
+}
+
 /** SQL true when column `c` holds a readable time on or before the day. */
 function covered(c) {
   return isMs(c)
-    ? `(typeof(${q(c)}) = 'integer' AND ${q(c)} < @effMs)`
-    : `(typeof(${q(c)}) = 'text' AND ${q(c)} ${READABLE_DAY} AND substr(${q(c)}, 1, 10) <= @day)`;
+    ? `(${readable(c)} AND ${q(c)} < @effMs)`
+    : `(${readable(c)} AND substr(${q(c)}, 1, 10) <= @day)`;
 }
 
 /** SQL true when column `c` holds a readable time after the day. */
 function later(c) {
   return isMs(c)
-    ? `(typeof(${q(c)}) = 'integer' AND ${q(c)} >= @effMs)`
-    : `(typeof(${q(c)}) = 'text' AND ${q(c)} ${READABLE_DAY} AND substr(${q(c)}, 1, 10) > @day)`;
+    ? `(${readable(c)} AND ${q(c)} >= @effMs)`
+    : `(${readable(c)} AND substr(${q(c)}, 1, 10) > @day)`;
 }
 
 /** SQL true when column `c` holds a value that is not a readable time. */
 function unreadable(c) {
-  return isMs(c)
-    ? `(${q(c)} IS NOT NULL AND typeof(${q(c)}) != 'integer')`
-    : `(${q(c)} IS NOT NULL AND NOT (typeof(${q(c)}) = 'text' AND ${q(c)} ${READABLE_DAY}))`;
+  return `(${q(c)} IS NOT NULL AND NOT ${readable(c)})`;
 }
 
 /** The placeholder expression for a person column: made from the row's own rowid, so no two rows share it. */
