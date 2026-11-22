@@ -37,6 +37,8 @@ const EDITOR_SCOPE_EXEMPT = Object.freeze({
   'DELETE /api/admin/users/:id/books/:bookSlug': ADMIN_ONLY,
   'POST /api/admin/users/:id/chapters': ADMIN_ONLY,
   'DELETE /api/admin/users/:id/chapters/:book/:chapter': ADMIN_ONLY,
+  'POST /api/admin/users/:id/licence-clause': ADMIN_ONLY,
+  'DELETE /api/admin/users/:id/licence-clause/:rowId': ADMIN_ONLY,
   'POST /api/admin/assignments/:book/enforcement': ADMIN_ONLY,
   'POST /api/admin/books/:book/suggestion-view': ADMIN_ONLY,
   'POST /api/admin/migrate': ADMIN_ONLY,

@@ -152,6 +152,8 @@ const EXPECTED_SCHEMA = deepFreeze({
     ],
     // G1.15(b) (migration 059): one row per finished retention step
     retention_runs: ['kind', 'done_at_ms', 'rows_changed'],
+    // G1.13 (migration 060): the licence-clause record, kept permanently
+    editor_licence_clauses: ['id', 'user_id', 'signed_on', 'recorded_by', 'recorded_at_ms'],
   },
   // An existing table → the columns the migrations add to it.
   columns: {

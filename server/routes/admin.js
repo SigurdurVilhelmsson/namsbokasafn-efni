@@ -31,6 +31,7 @@ const bookRegistration = require('../services/bookRegistration');
 const bookDataGenerator = require('../services/bookDataGenerator');
 const userService = require('../services/userService');
 const suggestionSwitch = require('../services/suggestionSwitch');
+const licenceClauses = require('../services/licenceClauses');
 const { isStudyBook } = require('../lib/researchScope');
 const pipeline = require('../services/pipelineService');
 const segmentEditorService = require('../services/segmentEditorService');
@@ -1047,6 +1048,81 @@ router.delete('/users/:id/chapters/:book/:chapter', requireAuth, requireAdmin(),
     });
   } catch (err) {
     log.error({ err }, 'Remove chapter assignment error');
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// ─── Licence-clause record (G1.13 spec §6.4) ───
+
+/**
+ * GET /api/admin/users/:id/licence-clause
+ * The signature dates recorded for an account, oldest first.
+ */
+router.get('/users/:id/licence-clause', requireAuth, requireAdmin(), (req, res) => {
+  const userId = parseInt(req.params.id, 10);
+  try {
+    res.json({ rows: licenceClauses.clausesFor(segmentEditorService.getDb(), userId) });
+  } catch (err) {
+    log.error({ err }, 'List licence clauses error');
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/admin/users/:id/licence-clause
+ * Record the date an editor signed the licence clause. Body: { signedOn: 'YYYY-MM-DD' }
+ */
+router.post('/users/:id/licence-clause', requireAuth, requireAdmin(), (req, res) => {
+  const userId = parseInt(req.params.id, 10);
+  try {
+    if (!userService.findById(userId)) {
+      return res.status(404).json({ error: 'Notandi fannst ekki', code: 'USER_NOT_FOUND' });
+    }
+    const signedOn = req.body && req.body.signedOn;
+    const { id } = licenceClauses.recordClause(segmentEditorService.getDb(), {
+      userId,
+      signedOn,
+      recordedBy: req.user.username,
+      nowMs: Date.now(),
+    });
+    res.status(201).json({ id, signedOn });
+  } catch (err) {
+    if (err.code === 'BAD_DATE' || err.code === 'FUTURE_DATE') {
+      return res.status(400).json({ error: err.message, code: err.code });
+    }
+    log.error({ err }, 'Record licence clause error');
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * DELETE /api/admin/users/:id/licence-clause/:rowId
+ * Remove a wrongly recorded row. Body: { reason } (at least 10 characters), kept in the activity log.
+ */
+router.delete('/users/:id/licence-clause/:rowId', requireAuth, requireAdmin(), (req, res) => {
+  const userId = parseInt(req.params.id, 10);
+  const rowId = parseInt(req.params.rowId, 10);
+  const reason = String((req.body && req.body.reason) || '').trim();
+  if (reason.length < 10) {
+    return res.status(400).json({
+      error: 'Skrifaðu ástæðu (að minnsta kosti 10 stafir)',
+      code: 'REASON_REQUIRED',
+    });
+  }
+  try {
+    const removed = licenceClauses.removeClause(segmentEditorService.getDb(), { userId, rowId });
+    if (!removed) {
+      return res.status(404).json({ error: 'Færsla fannst ekki hjá þessum notanda' });
+    }
+    activityLog.log({
+      type: 'licence_clause_removed',
+      userId: req.user.id,
+      username: req.user.username,
+      description: `Leyfisákvæði fjarlægt: færsla ${rowId} hjá notanda ${userId}. Ástæða: ${reason}`,
+    });
+    res.json({ removed });
+  } catch (err) {
+    log.error({ err }, 'Remove licence clause error');
     res.status(500).json({ error: err.message });
   }
 });

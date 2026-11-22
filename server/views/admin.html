@@ -747,10 +747,47 @@
         '<div class="form-group"><label class="form-label">B\u00f3kaheimildir</label><div id="book-access-list">' + usersRenderBookAccess(user) + '</div><button class="btn btn-sm btn-secondary" style="margin-top:0.5rem" onclick="usersShowAddBookAccess()">B\u00e6ta vi\u00f0 b\u00f3k</button></div>' +
         '<div class="form-group" id="add-book-access-form" style="display:none"><div style="display:flex;gap:0.5rem"><select class="form-select" id="new-book-slug"><option value="">Veldu b\u00f3k...</option>' + userBooks.map(function(b){return '<option value="'+b.slug+'">' + escapeHtml(b.titleIs||b.slug) + '</option>';}).join('') + '</select><select class="form-select" id="new-book-role"><option value="editor">Yfirlesari</option><option value="head-editor">A\u00f0alritstj\u00f3ri</option></select></div><button class="btn btn-sm btn-primary" style="margin-top:0.5rem" onclick="usersAddBookAccess()">B\u00e6ta vi\u00f0</button></div>' +
         '<div class="form-group"><label class="form-label">Kaflaverkefni</label><p style="font-size:0.8rem;color:var(--text-muted);font-style:italic">Ef engir kaflar eru \u00fathluta\u00f0ir hefur notandi a\u00f0gang a\u00f0 \u00f6llum k\u00f6flum.</p><div id="chapter-assignments"><div style="text-align:center;color:var(--text-muted)">Hle\u00f0ur...</div></div>' +
-        '<div class="add-chapter-row"><select class="form-select" id="assign-book"><option value="">B\u00f3k...</option>' + userBooks.map(function(b){return '<option value="'+b.slug+'">' + escapeHtml(b.titleIs||b.slug) + '</option>';}).join('') + '</select><input type="number" id="assign-chapter" min="1" max="30" placeholder="Kafli nr." style="width:80px"><button class="btn btn-sm btn-secondary" onclick="usersAssignChapter()">\u00dathluta</button></div></div>';
+        '<div class="add-chapter-row"><select class="form-select" id="assign-book"><option value="">B\u00f3k...</option>' + userBooks.map(function(b){return '<option value="'+b.slug+'">' + escapeHtml(b.titleIs||b.slug) + '</option>';}).join('') + '</select><input type="number" id="assign-chapter" min="1" max="30" placeholder="Kafli nr." style="width:80px"><button class="btn btn-sm btn-secondary" onclick="usersAssignChapter()">\u00dathluta</button></div></div>' +
+        '<div class="form-group"><label class="form-label">Leyfis\u00e1kv\u00e6\u00f0i</label><div id="licence-clause"><div style="color:var(--text-muted)">Hle\u00f0ur...</div></div>' +
+        '<div class="add-chapter-row"><input type="date" class="form-input" id="licence-signed-on"><button class="btn btn-sm btn-secondary" onclick="usersRecordLicenceClause()">Skr\u00e1 undirritun</button></div></div>';
       document.getElementById('edit-backdrop').classList.add('open');
       document.getElementById('edit-panel').classList.add('open');
       usersLoadChapterAssignments();
+      usersLoadLicenceClause();
+    };
+
+    async function usersLoadLicenceClause() {
+      if (!currentEditUser) return;
+      var container = document.getElementById('licence-clause');
+      if (!container) return;
+      try {
+        var data = await fetchJson('/api/admin/users/' + currentEditUser.id + '/licence-clause');
+        if (!data.rows || data.rows.length === 0) { container.innerHTML = '<p style="font-size:0.8rem;color:var(--text-muted);font-style:italic">Ekkert leyfisákvæði skráð.</p>'; return; }
+        container.innerHTML = data.rows.map(function(r) {
+          return '<div class="book-access-item"><div>Leyfisákvæði undirritað <strong>' + escapeHtml(r.signedOn) + '</strong> <span style="color:var(--text-muted);font-size:0.8rem">(skráð af ' + escapeHtml(r.recordedBy) + ')</span></div><button class="action-btn danger" onclick="usersRemoveLicenceClause(' + r.id + ')" title="Fjarlægja">✘</button></div>';
+        }).join('');
+      } catch(e) { container.innerHTML = '<p style="color:var(--text-muted)">Villa við að sækja leyfisákvæði</p>'; }
+    }
+
+    window.usersRecordLicenceClause = async function() {
+      if (!currentEditUser) return;
+      var signedOn = document.getElementById('licence-signed-on').value;
+      if (!signedOn) { showToast('Veldu dagsetningu','error'); return; }
+      try {
+        await fetchJson('/api/admin/users/' + currentEditUser.id + '/licence-clause', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({signedOn:signedOn}) });
+        document.getElementById('licence-signed-on').value = '';
+        usersLoadLicenceClause(); showToast('Undirritun skráð','success');
+      } catch(e) { showToast(e.message || 'Villa við að skrá undirritun','error'); }
+    };
+
+    window.usersRemoveLicenceClause = async function(rowId) {
+      if (!currentEditUser) return;
+      var reason = window.prompt('Ástæða fyrir því að færslan er fjarlægð (að minnsta kosti 10 stafir):');
+      if (reason === null) return;
+      try {
+        await fetchJson('/api/admin/users/' + currentEditUser.id + '/licence-clause/' + rowId, { method:'DELETE', headers:{'Content-Type':'application/json'}, body:JSON.stringify({reason:reason}) });
+        usersLoadLicenceClause(); showToast('Færsla fjarlægð','success');
+      } catch(e) { showToast(e.message || 'Villa við að fjarlægja færslu','error'); }
     };
 
     function usersRenderBookAccess(user) {

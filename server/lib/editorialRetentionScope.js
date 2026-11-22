@@ -4,7 +4,8 @@
  * SCOPE, keyed by table: what the editorial retention script does on each date, and to which columns.
  *   action  'strip'   (2028-12-31) each person column gets a placeholder made from the row's rowid, and the row's
  *                     times are cut to the day (spec §4.3); 'delete' (2028-12-31) the date-covered rows are deleted;
- *                     'keep' never touched (users: [USER]'s scope answer); 'consent' (2030-12-31) step 3 deletes it.
+ *                     'keep' never touched (users: [USER]'s scope answer; editor_licence_clauses: the licence
+ *                     evidence, G1.13 spec §2 and §6.4); 'consent' (2030-12-31) step 3 deletes it.
  *   person  [{ col, timeCol, type }]: timeCol is the actor's own time column, or the row's creation time when the
  *           actor has none (spec §4.3); null only for a kept table. type is the placeholder's shape: 'text'
  *           (`fjarlægt-<rowid>`) or 'integer' (`-<rowid>`), from the column's declared type.
@@ -246,6 +247,13 @@ const SCOPE = deepFreeze({
       text('email', null),
       text('created_by', null),
     ],
+    times: [],
+  },
+
+  // ── kept: the licence-clause record (G1.13 spec §6.4) ──
+  editor_licence_clauses: {
+    action: 'keep',
+    person: [integer('user_id', null), text('recorded_by', null)],
     times: [],
   },
 
