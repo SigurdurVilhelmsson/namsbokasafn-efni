@@ -34,6 +34,7 @@ const suggestionSwitch = require('../services/suggestionSwitch');
 const { isStudyBook } = require('../lib/researchScope');
 const pipeline = require('../services/pipelineService');
 const segmentEditorService = require('../services/segmentEditorService');
+const { refuseClosedBookForNonAdmins } = require('../lib/editorScope');
 // https import removed — no longer needed (GitHub user lookup removed)
 
 // ============================================================================
@@ -1188,90 +1189,102 @@ router.post('/books/:book/suggestion-view', requireAuth, requireRole(ROLES.ADMIN
  * Make a user the chapter's one assignee: whoever held the chapter is replaced, and `replaced` names them.
  * Only an active account with the editor role or above can be assigned (400 NOT_ASSIGNABLE otherwise).
  */
-router.post('/assignments/:book/:chapter', requireAuth, requireHeadEditor('book'), (req, res) => {
-  const { book, chapter } = req.params;
-  const { userId } = req.body;
+router.post(
+  '/assignments/:book/:chapter',
+  requireAuth,
+  requireHeadEditor('book'),
+  refuseClosedBookForNonAdmins((req) => req.params.book, 'param'), // G1.13, spec §6.1
+  (req, res) => {
+    const { book, chapter } = req.params;
+    const { userId } = req.body;
 
-  if (!VALID_BOOKS.includes(book)) {
-    return res.status(400).json({ error: `Invalid book: ${book}` });
-  }
-  // I14-R1 (lead-decided): appendices (-1) is assignable like any chapter —
-  // the uniform assignment model; normalizeChapter accepts 'appendices'/'-1'/-1.
-  const chapterNum = chapterLabel.normalizeChapter(chapter);
-  if (chapterNum === null || chapterNum < -1 || chapterNum > 30) {
-    return res.status(400).json({ error: `Invalid chapter: ${chapter}` });
-  }
-  if (!userId || typeof userId !== 'number') {
-    return res.status(400).json({ error: 'userId (number) required' });
-  }
-
-  try {
-    // A guest, a deactivated account or an id with no account cannot take a chapter, and (replacing being
-    // what this route does) cannot push its editor off it either.
-    if (!userService.isAssignableUser(userId)) {
-      return res
-        .status(400)
-        .json({ error: 'This user cannot be assigned to this book', code: 'NOT_ASSIGNABLE' });
+    if (!VALID_BOOKS.includes(book)) {
+      return res.status(400).json({ error: `Invalid book: ${book}` });
+    }
+    // I14-R1 (lead-decided): appendices (-1) is assignable like any chapter —
+    // the uniform assignment model; normalizeChapter accepts 'appendices'/'-1'/-1.
+    const chapterNum = chapterLabel.normalizeChapter(chapter);
+    if (chapterNum === null || chapterNum < -1 || chapterNum > 30) {
+      return res.status(400).json({ error: `Invalid chapter: ${chapter}` });
+    }
+    if (!userId || typeof userId !== 'number') {
+      return res.status(400).json({ error: 'userId (number) required' });
     }
 
-    const { replaced } = userService.setChapterAssignee(
-      userId,
-      book,
-      chapterNum,
-      req.user.username
-    );
-    activityLog.log({
-      type: 'assign_chapter',
-      userId: req.user.id,
-      username: req.user.username,
-      book,
-      chapter: chapterNum,
-      description:
-        `Assigned chapter ${chapterNum} to user ${userId}` +
-        (replaced.length > 0 ? ` (replaced user ${replaced.map((u) => u.id).join(', ')})` : ''),
-    });
-    res.json({ success: true, replaced });
-  } catch (err) {
-    log.error({ err }, 'Assign chapter error');
-    res.status(500).json({ error: err.message });
+    try {
+      // A guest, a deactivated account or an id with no account cannot take a chapter, and (replacing being
+      // what this route does) cannot push its editor off it either.
+      if (!userService.isAssignableUser(userId)) {
+        return res
+          .status(400)
+          .json({ error: 'This user cannot be assigned to this book', code: 'NOT_ASSIGNABLE' });
+      }
+
+      const { replaced } = userService.setChapterAssignee(
+        userId,
+        book,
+        chapterNum,
+        req.user.username
+      );
+      activityLog.log({
+        type: 'assign_chapter',
+        userId: req.user.id,
+        username: req.user.username,
+        book,
+        chapter: chapterNum,
+        description:
+          `Assigned chapter ${chapterNum} to user ${userId}` +
+          (replaced.length > 0 ? ` (replaced user ${replaced.map((u) => u.id).join(', ')})` : ''),
+      });
+      res.json({ success: true, replaced });
+    } catch (err) {
+      log.error({ err }, 'Assign chapter error');
+      res.status(500).json({ error: err.message });
+    }
   }
-});
+);
 
 /**
  * DELETE /api/admin/assignments/:book/:chapter
  * Leave a chapter with no assignee. Everyone on it is removed, however many rows it held.
  */
-router.delete('/assignments/:book/:chapter', requireAuth, requireHeadEditor('book'), (req, res) => {
-  const { book, chapter } = req.params;
+router.delete(
+  '/assignments/:book/:chapter',
+  requireAuth,
+  requireHeadEditor('book'),
+  refuseClosedBookForNonAdmins((req) => req.params.book, 'param'), // G1.13, spec §6.1
+  (req, res) => {
+    const { book, chapter } = req.params;
 
-  if (!VALID_BOOKS.includes(book)) {
-    return res.status(400).json({ error: `Invalid book: ${book}` });
-  }
-  // I14-R1 (lead-decided): appendices (-1) is assignable like any chapter —
-  // the uniform assignment model; normalizeChapter accepts 'appendices'/'-1'/-1.
-  const chapterNum = chapterLabel.normalizeChapter(chapter);
-  if (chapterNum === null || chapterNum < -1 || chapterNum > 30) {
-    return res.status(400).json({ error: `Invalid chapter: ${chapter}` });
-  }
-
-  try {
-    const removed = userService.clearChapterAssignees(book, chapterNum);
-    if (removed.length > 0) {
-      activityLog.log({
-        type: 'unassign_chapter',
-        userId: req.user.id,
-        username: req.user.username,
-        book,
-        chapter: chapterNum,
-        description: `Unassigned chapter ${chapterNum} (user ${removed.map((u) => u.id).join(', ')})`,
-      });
+    if (!VALID_BOOKS.includes(book)) {
+      return res.status(400).json({ error: `Invalid book: ${book}` });
     }
-    res.json({ success: true, removed: removed.length > 0 });
-  } catch (err) {
-    log.error({ err }, 'Unassign chapter error');
-    res.status(500).json({ error: err.message });
+    // I14-R1 (lead-decided): appendices (-1) is assignable like any chapter —
+    // the uniform assignment model; normalizeChapter accepts 'appendices'/'-1'/-1.
+    const chapterNum = chapterLabel.normalizeChapter(chapter);
+    if (chapterNum === null || chapterNum < -1 || chapterNum > 30) {
+      return res.status(400).json({ error: `Invalid chapter: ${chapter}` });
+    }
+
+    try {
+      const removed = userService.clearChapterAssignees(book, chapterNum);
+      if (removed.length > 0) {
+        activityLog.log({
+          type: 'unassign_chapter',
+          userId: req.user.id,
+          username: req.user.username,
+          book,
+          chapter: chapterNum,
+          description: `Unassigned chapter ${chapterNum} (user ${removed.map((u) => u.id).join(', ')})`,
+        });
+      }
+      res.json({ success: true, removed: removed.length > 0 });
+    } catch (err) {
+      log.error({ err }, 'Unassign chapter error');
+      res.status(500).json({ error: err.message });
+    }
   }
-});
+);
 
 /**
  * Helper: Format user for API response

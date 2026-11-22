@@ -37,6 +37,7 @@ const {
 } = require('../middleware/requireRole');
 const { validateBookChapter, validateModule } = require('../middleware/validateParams');
 const { PASS2_CATEGORIES: VALID_CATEGORIES } = require('../constants');
+const { refuseClosedBookForNonAdmins } = require('../lib/editorScope');
 
 // Resolve the owning book for a localization edit id (for book-scoped authz on
 // the :editId-keyed approve/reject endpoints).
@@ -45,6 +46,12 @@ function bookFromLocEditId(req) {
   if (!edit) throw new Error('Edit not found');
   return edit.book;
 }
+
+// The closed-book guard (G1.13, spec §6.1): a non-admin may write only to a book open to editors.
+// It reads the book from the :book param or from the localization edit the route acts on, after the
+// auth and role middleware.
+const refuseClosedParamBook = refuseClosedBookForNonAdmins((req) => req.params.book, 'param');
+const refuseClosedLocEditBook = refuseClosedBookForNonAdmins(bookFromLocEditId, 'row');
 
 // Per-module write lock to prevent read-modify-write race conditions.
 // Key: "book/chapter/moduleId", Value: Promise chain
@@ -147,6 +154,7 @@ router.post(
   '/loc-edit/:editId/approve',
   requireAuth,
   requireHeadEditorFor(bookFromLocEditId),
+  refuseClosedLocEditBook,
   (req, res) => {
     try {
       const { edit, savedPath } = localizationReview.approveAndApply(
@@ -181,6 +189,7 @@ router.post(
   '/loc-edit/:editId/reject',
   requireAuth,
   requireHeadEditorFor(bookFromLocEditId),
+  refuseClosedLocEditBook,
   (req, res) => {
     try {
       const edit = localizationReview.rejectEdit(
@@ -299,6 +308,7 @@ router.post(
   requireAuth,
   validateBookChapter,
   requireHeadEditor('book'), // localization is for the book's head editors and admins (answer 12)
+  refuseClosedParamBook,
   validateModule,
   async (req, res) => {
     const { segmentId, content, category, lastModified } = req.body;
@@ -477,6 +487,7 @@ router.post(
   requireAuth,
   validateBookChapter,
   requireHeadEditor('book'), // localization is for the book's head editors and admins (answer 12)
+  refuseClosedParamBook,
   validateModule,
   async (req, res) => {
     const { segments, lastModified } = req.body;
@@ -874,6 +885,7 @@ router.post(
   requireAuth,
   requireHeadEditorGuard,
   validateBookChapter,
+  refuseClosedParamBook,
   validateModule,
   async (req, res) => {
     const version = parseInt(req.params.version, 10);
@@ -922,6 +934,7 @@ router.post(
   '/:book/:chapter/:moduleId/log',
   requireAuth,
   validateBookChapter,
+  refuseClosedParamBook,
   validateModule,
   requireHeadEditor('book'), // localization is for the book's head editors and admins (answer 12)
   (req, res) => {

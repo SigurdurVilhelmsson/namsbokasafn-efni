@@ -219,9 +219,14 @@ describe('consent routes (spec §5.14)', () => {
     expect(keys[0][0].editor_key).not.toBe(keys[1][0].editor_key);
   });
 
+  // Since G1.13 index.js mounts every /api router from routes/apiMounts.js, in one loop.
   it('the routes are mounted before the API 404 handler', () => {
+    const mounts = fs.readFileSync(path.join(__dirname, '..', 'routes', 'apiMounts.js'), 'utf8');
+    expect(mounts).toContain("{ prefix: '/api/research', router: require('./research') }");
     const src = fs.readFileSync(path.join(__dirname, '..', 'index.js'), 'utf8');
-    const mount = src.indexOf("app.use('/api/research'");
+    const mount = src.indexOf(
+      'for (const { prefix, router } of API_MOUNTS) app.use(prefix, router);'
+    );
     expect(mount).toBeGreaterThan(-1);
     expect(mount).toBeLessThan(src.indexOf("app.use('/api/*path'"));
   });

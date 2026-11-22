@@ -23,10 +23,14 @@ describe('Server startup smoke tests', () => {
   const indexSource = readFileSync(join(serverDir, 'index.js'), 'utf-8');
 
   describe('route file existence', () => {
-    // Extract all require('./routes/...') from index.js
-    const routeRequires = [...indexSource.matchAll(/require\('\.\/routes\/([^']+)'\)/g)].map(
-      (m) => m[1]
-    );
+    // Extract all require('./routes/...') from index.js, and the routers routes/apiMounts.js requires:
+    // since G1.13 index.js mounts every /api router from that one list (spec §6.1's route census
+    // walks the same list).
+    const mountsSource = readFileSync(join(serverDir, 'routes', 'apiMounts.js'), 'utf-8');
+    const routeRequires = [
+      ...[...indexSource.matchAll(/require\('\.\/routes\/([^']+)'\)/g)].map((m) => m[1]),
+      ...[...mountsSource.matchAll(/require\('\.\/([^']+)'\)/g)].map((m) => m[1]),
+    ];
 
     it('index.js imports at least 14 route files', () => {
       expect(routeRequires.length).toBeGreaterThanOrEqual(14);

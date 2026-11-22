@@ -58,6 +58,10 @@
 | GET | `/recent` |
 | GET | `/dashboard-data` |
 
+## /apiMounts
+
+*No routes found*
+
 ## /auth
 
 | Method | Path |

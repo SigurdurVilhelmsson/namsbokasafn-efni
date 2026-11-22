@@ -34,6 +34,11 @@ const activityLog = require('../services/activityLog');
 const { VALID_BOOKS } = require('../config');
 const { normalizeChapter, chapterFromDir, compareChapters } = require('../lib/chapterLabel');
 const { pipelineHold, refuseHeldForNonAdmins } = require('../lib/heldBookWrites');
+const { refuseClosedBookForNonAdmins } = require('../lib/editorScope');
+
+// The closed-book guard (G1.13, spec §6.1): a head editor of a book not open to editors cannot
+// publish it; an admin can.
+const refuseClosedParamBook = refuseClosedBookForNonAdmins((req) => req.params.bookSlug, 'param');
 
 // Validation middleware for chapter params
 function validateChapterParams(req, res, next) {
@@ -134,6 +139,7 @@ router.post(
   '/:bookSlug/:chapterNum/mt-preview',
   requireAuth,
   requireHeadEditor('bookSlug'),
+  refuseClosedParamBook,
   refuseHeldForNonAdmins(pipelineHold, (req) => req.params.bookSlug, 'pipeline'), // G1.14
   validateChapterParams,
   async (req, res) => {
@@ -190,6 +196,7 @@ router.post(
   '/:bookSlug/:chapterNum/faithful',
   requireAuth,
   requireHeadEditor('bookSlug'),
+  refuseClosedParamBook,
   refuseHeldForNonAdmins(pipelineHold, (req) => req.params.bookSlug, 'pipeline'), // G1.14
   validateChapterParams,
   async (req, res) => {
@@ -247,6 +254,7 @@ router.post(
   '/:bookSlug/:chapterNum/localized',
   requireAuth,
   requireHeadEditor('bookSlug'),
+  refuseClosedParamBook,
   refuseHeldForNonAdmins(pipelineHold, (req) => req.params.bookSlug, 'pipeline'), // G1.14
   validateChapterParams,
   async (req, res) => {
