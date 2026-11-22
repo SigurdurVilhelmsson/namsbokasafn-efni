@@ -34,11 +34,11 @@ const path = require('path');
 const Database = require('better-sqlite3');
 const resolveDbPath = require('../lib/dbPath');
 const { buildScope, resolve, matchKey } = require('../lib/conceptResolver');
-const { addExclusion, addEntry } = require('../lib/bookGlossaryLayer');
+const { addExclusion, addEntry, C19_LOAD_LABEL } = require('../lib/bookGlossaryLayer');
 const { HOUSE_STYLE_SOURCE } = require('../lib/houseStyleTerms');
 
 const SCHEMA = 'c19-book-layer-input/1';
-const BY = 'c19-load ([USER] rulings 2026-11-18)';
+const BY = C19_LOAD_LABEL;
 const PHYSICS_BOOK = 'edlisfraedi-2e';
 const DEFAULT_BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 const REQUIRED_TABLES = [

@@ -154,3 +154,19 @@ describe('OPENING_UNRECORDED string (G1.1 + G1.2 PR2; PR2 plan decision 28)', ()
     );
   });
 });
+
+describe('the book glossary public notice (G1.15(b) spec §4.5; final review, Important 2)', () => {
+  const source = readFileSync(join(publicJs, 'ui-strings.js'), 'utf-8');
+  const T = new Function(`${source}; return UI;`)().bookGlossary;
+
+  // The committed record writes every decision as aðalritstjóri (recordLabelFor), so the notice on the form where
+  // a head editor decides must not say their name is published. The reason and source still are, so it keeps
+  // saying so.
+  it('says the record shows aðalritstjóri, not the editor’s name', () => {
+    expect(T.publicNotice).toContain('„aðalritstjóri“ en ekki nafn þitt');
+  });
+
+  it('still says the reason and the source are public', () => {
+    expect(T.publicNotice).toMatch(/^Ástæðan og heimildin birtast í opinberri skrá/);
+  });
+});

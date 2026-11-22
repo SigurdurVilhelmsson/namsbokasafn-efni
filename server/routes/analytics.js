@@ -4,9 +4,14 @@
  * API endpoints for analytics data (admin only).
  *
  * Endpoints:
- *   GET  /api/analytics/stats         Get statistics summary
- *   GET  /api/analytics/recent        Get recent events
- *   POST /api/analytics/event         Log a client-side event (public)
+ *   GET  /api/analytics/stats           Get statistics summary
+ *   GET  /api/analytics/recent          Get recent events
+ *   GET  /api/analytics/dashboard-data  Get the dashboard's figures
+ *
+ * The public write, POST /api/analytics/event, is retired ([USER] 2026-11-22; the G1.15(b) final review's I-1). It
+ * needed no sign-in, and from 2029 a row it wrote would have raised the editorial retention script's continued-use
+ * refusal. The reader had stopped sending it (D03). These reads show the rows it stored until retention step 1
+ * deletes them (server/lib/editorialRetentionScope.js); analyticsWriteRetired.test.js holds that nothing writes them.
  */
 
 const express = require('express');
@@ -14,38 +19,8 @@ const router = express.Router();
 
 const log = require('../lib/logger');
 const analyticsService = require('../services/analyticsService');
-const { requireAuth, optionalAuth } = require('../middleware/requireAuth');
+const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, ROLES } = require('../middleware/requireRole');
-
-const PLACE_FIELD_MAX_LENGTH = 200;
-
-/**
- * A book, chapter or section named by an analytics event: absent, a number, or short plain text.
- *
- * No book slug, chapter number or section id contains a markup delimiter or a control character,
- * so a value that does is refused, not repaired. Free text belongs in `metadata` (a search query,
- * say), which is never trusted as markup either: see anUpdateActivity in views/admin.html.
- *
- * A number is stored as its digits: the columns are text, and a number bound as it came was
- * kept as "3.0" (and the appendices sentinel -1 as "-1.0").
- *
- * @param {unknown} value
- * @returns {{ok: true, value: string|null}|{ok: false}}
- */
-function placeField(value) {
-  if (value === undefined || value === null || value === '' || value === 0 || value === false) {
-    return { ok: true, value: null }; // what `value || null` stored before this check existed
-  }
-  if (typeof value === 'number') {
-    return Number.isFinite(value) ? { ok: true, value: String(value) } : { ok: false };
-  }
-  if (typeof value !== 'string' || value.length > PLACE_FIELD_MAX_LENGTH) return { ok: false };
-  for (const ch of value) {
-    const code = ch.codePointAt(0);
-    if (ch === '<' || ch === '>' || code < 0x20 || code === 0x7f) return { ok: false };
-  }
-  return { ok: true, value };
-}
 
 /**
  * GET /api/analytics/stats
@@ -84,74 +59,6 @@ router.get('/recent', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) =>
     log.error({ err }, 'Error getting recent events');
     res.status(500).json({
       error: 'Failed to get events',
-      message: err.message,
-    });
-  }
-});
-
-/**
- * POST /api/analytics/event
- * Log a client-side event (public - for tracking frontend events)
- */
-router.post('/event', optionalAuth, (req, res) => {
-  const { eventType, book, chapter, section, metadata = {} } = req.body || {};
-
-  // Validate event type
-  const allowedTypes = ['page_view', 'chapter_view', 'section_view', 'error', 'search', 'download'];
-  if (!eventType || !allowedTypes.includes(eventType)) {
-    return res.status(400).json({
-      error: 'Invalid event type',
-      message: `Event type must be one of: ${allowedTypes.join(', ')}`,
-    });
-  }
-
-  // This route needs no sign-in, and what it stores is shown to admins. The place fields are
-  // held to short plain text here, as well as being escaped where the admin page displays them.
-  const where = {
-    book: placeField(book),
-    chapter: placeField(chapter),
-    section: placeField(section),
-  };
-  if (!where.book.ok || !where.chapter.ok || !where.section.ok) {
-    return res.status(400).json({
-      error: 'Invalid event',
-      message: `book, chapter and section must be plain text of at most ${PLACE_FIELD_MAX_LENGTH} characters`,
-    });
-  }
-
-  if (metadata === null || typeof metadata !== 'object' || Array.isArray(metadata)) {
-    return res.status(400).json({
-      error: 'Invalid event',
-      message: 'metadata must be an object',
-    });
-  }
-
-  // Validate metadata size to prevent abuse
-  const metadataStr = JSON.stringify(metadata);
-  if (metadataStr.length > 2048) {
-    return res.status(400).json({
-      error: 'Metadata too large',
-      message: `Metadata must be under 2048 characters when serialized (got ${metadataStr.length})`,
-    });
-  }
-
-  try {
-    const event = analyticsService.logEvent({
-      eventType,
-      book: where.book.value,
-      chapter: where.chapter.value,
-      section: where.section.value,
-      userAgent: req.get('user-agent'),
-      referrer: req.get('referer'),
-      sessionId: req.cookies?.sessionId || null,
-      metadata,
-    });
-
-    res.json({ success: true, eventId: event.id });
-  } catch (err) {
-    log.error({ err }, 'Error logging event');
-    res.status(500).json({
-      error: 'Failed to log event',
       message: err.message,
     });
   }

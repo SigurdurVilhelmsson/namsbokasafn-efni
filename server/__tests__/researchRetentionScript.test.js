@@ -19,6 +19,7 @@ const { runAllMigrations } = require('../services/migrationRunner');
 const { resolveResearchDbPath } = require('../lib/researchDbPath');
 const { researchFilesFor } = require('../lib/researchFiles');
 const { RETENTION_DATE } = require('../lib/researchRetention');
+const { RESEARCH_RAW_ROWS, effectiveMs } = require('../lib/retentionDates');
 const researchDb = require('../services/researchDb');
 const researchLog = require('../services/researchLog');
 const researchConsent = require('../services/researchConsent');
@@ -77,11 +78,11 @@ const addDataset = (p) =>
   sessions()
     .prepare('INSERT INTO research_derived_datasets (path, sha256, created_day) VALUES (?, ?, ?)')
     .run(p, 'a'.repeat(64), '2026-11-01');
-function dueNow(retentionDate = PAST) {
+function dueNow(retentionDate = PAST, nowMs = NOW) {
   const research = openResearch({ researchPath });
   const editorial = new Database(editorialPath, { readonly: true });
   try {
-    return isDue({ research, sessions: editorial, retentionDate, nowMs: NOW });
+    return isDue({ research, sessions: editorial, retentionDate, nowMs });
   } finally {
     research.close();
     editorial.close();
@@ -168,7 +169,7 @@ const cli = (args) =>
   });
 
 describe('research-retention.js', () => {
-  it('the real date is empty, so nothing is ever due, even with rows (spec §5.15)', () => {
+  it('before the real date takes effect nothing is due, even with rows (spec §5.15)', () => {
     const before = researchRows();
     expect(run({ write: true, retentionDate: RETENTION_DATE, nowMs: NOW })).toEqual({
       script: 'research-retention',
@@ -177,12 +178,36 @@ describe('research-retention.js', () => {
       ok: true,
     });
     expect(researchRows()).toEqual(before);
-    const r = cli(['--write']);
+    // main reads the real date and the real clock. A dry run never deletes and exits 0 whether or not something is
+    // due, so this holds on either side of the date (a --write here would start refusing on 1 Jan 2030).
+    const r = cli([]);
     expect(r.status).toBe(0);
-    expect(JSON.parse(r.stdout).due).toBe(false);
+    expect(JSON.parse(r.stdout).due).toBe(Date.now() >= effectiveMs(RESEARCH_RAW_ROWS));
     expect(researchRows()).toEqual(before);
     // Control: a passed date with rows is due.
     expect(dueNow(PAST)).toBe(true);
+  });
+
+  // G1.15(b) spec §4.1: raw research rows are kept TO 31 Dec 2029, so deletion is due from 00:00 UTC on 1 Jan 2030.
+  it('the real date is due from 00:00 UTC on the day after it, not a moment before', () => {
+    const at = effectiveMs(RESEARCH_RAW_ROWS);
+    expect(dueNow(RETENTION_DATE, at - 1)).toBe(false);
+    expect(dueNow(RETENTION_DATE, at)).toBe(true);
+  });
+
+  it('the same moment holds on a fresh research file, with no row and no deletion recorded', () => {
+    const w = new Database(researchPath, { timeout: 1000 });
+    try {
+      w.exec(
+        'DELETE FROM research_event_items; DELETE FROM research_events; DELETE FROM editor_keys;'
+      );
+    } finally {
+      w.close();
+    }
+    expect(withResearch((db) => anyResearchRow(db))).toBe(false); // control: the file is empty
+    const at = effectiveMs(RESEARCH_RAW_ROWS);
+    expect(dueNow(RETENTION_DATE, at - 1)).toBe(false);
+    expect(dueNow(RETENTION_DATE, at)).toBe(true);
   });
 
   it('a date that has not passed is not due', () => {
@@ -206,7 +231,7 @@ describe('research-retention.js', () => {
       ok: true,
       derivedDataset: false,
     });
-    // Control: with the empty date and no dataset row, the backup job's every-cycle call is fine.
+    // Control: before the real date takes effect, with no dataset row, the backup job's every-cycle call is fine.
     expect(run({ write: true, retentionDate: RETENTION_DATE, nowMs: NOW })).toEqual({
       script: 'research-retention',
       write: true,
@@ -339,8 +364,10 @@ describe('research-retention.js', () => {
     const refused = cli(['--retention-date', '2020-01-01']);
     expect(refused.status).toBe(2);
     expect(refused.stdout).toBe('');
-    const r = cli(['--write', '--no-derived-dataset']);
+    // A valid invocation runs against the real date and the real clock. A dry run deletes nothing and exits 0 on
+    // either side of the date; with --write it would start deleting on 1 Jan 2030.
+    const r = cli(['--no-derived-dataset']);
     expect(r.status).toBe(0);
-    expect(JSON.parse(r.stdout).due).toBe(false);
+    expect(JSON.parse(r.stdout).due).toBe(Date.now() >= effectiveMs(RESEARCH_RAW_ROWS));
   });
 });

@@ -262,7 +262,6 @@ app.use('/api/notifications', notificationsRoutes);
 app.use('/api/research', researchRoutes);
 app.use('/api/activity', activityRoutes);
 app.post('/api/feedback', publicSubmitLimiter);
-app.post('/api/analytics/event', publicSubmitLimiter);
 app.use('/api/feedback', feedbackRoutes);
 app.use('/api/analytics', analyticsRoutes);
 
@@ -387,6 +386,23 @@ app.get('/api/health', (req, res) => {
     });
   } catch (err) {
     checks.glossary_export = { ok: false, error: err.message };
+  }
+
+  // The editing tool's retention dates (G1.15(b), spec §4.6): not ok when a step has been due and unrecorded past two
+  // backup cycles, or while a refusal for continued use stands. No table, reason or count: the endpoint is public.
+  // While a step is due the answer is kept for a few minutes (the final review's I-1: each survey costs 0.10-0.15 s).
+  try {
+    const Database = require('better-sqlite3');
+    const { readRetentionHealthCached, DEFAULT_STALE_HOURS } = require('./lib/retentionHealth');
+    const dbPath = require('./lib/dbPath')();
+    checks.retention = readRetentionHealthCached({
+      key: dbPath,
+      open: () => new Database(dbPath, { readonly: true, fileMustExist: true }),
+      nowMs: Date.now(),
+      staleHours: Number(process.env.RETENTION_STALE_HOURS) || DEFAULT_STALE_HOURS,
+    });
+  } catch (err) {
+    checks.retention = { ok: false, error: err.code || err.name };
   }
 
   // The research file (G1.2, spec §5.20): { ok, reason } and nothing else — this endpoint is public, and a count of

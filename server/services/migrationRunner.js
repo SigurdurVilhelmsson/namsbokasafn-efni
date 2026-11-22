@@ -88,6 +88,7 @@ function runAllMigrations() {
     require('../migrations/056-research-deletions'),
     require('../migrations/057-suggestion-view'),
     require('../migrations/058-book-glossary-layer'),
+    require('../migrations/059-retention-runs'),
   ];
 
   let applied = 0;

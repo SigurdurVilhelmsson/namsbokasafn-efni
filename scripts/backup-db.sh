@@ -10,6 +10,7 @@
 #   0 */6 * * * /path/to/namsbokasafn-efni/scripts/backup-db.sh
 #
 # The script:
+#   0. Runs the editorial retention (server/scripts/editorial-retention.js --write) before anything is copied
 #   1. Checkpoints the WAL to ensure all data is in the main DB file
 #   2. Copies the DB file with a timestamp
 #   3. Keeps the most recent 30 backups (prunes older ones, with their
@@ -34,6 +35,21 @@ fi
 
 # Create backup directory
 mkdir -p "$BACKUP_DIR"
+
+# Enforce the editing tool's retention dates BEFORE the copy, so no new backup holds what a step just removed
+# (G1.15(b) spec §4.6; server/scripts/editorial-retention.js). Until 2029 nothing is due and it changes nothing. A
+# failure is logged and does not stop the backup: an unrecorded step stays due, runs again next cycle, and
+# /api/health's checks.retention reports it. Its report (stdout) holds counts and is discarded here; its stderr, a
+# failure's reason (an error code and message, never a row's value), stays in this log, so a retention that cannot
+# run is diagnosable before the health check would show it (final review I-3).
+# /usr/bin first: better-sqlite3's binary is built for the service's /usr/bin/node.
+# RETENTION_NODE is a test seam (scripts/__tests__); cron never sets it.
+RETENTION_NODE="${RETENTION_NODE:-$(PATH="/usr/bin:$PATH" command -v node || true)}"
+if [ -z "$RETENTION_NODE" ]; then
+  echo "WARNING: editorial retention did not complete: node not found" >&2
+elif ! SESSIONS_DB_PATH="$DB_PATH" "$RETENTION_NODE" "${PROJECT_ROOT}/server/scripts/editorial-retention.js" --write >/dev/null; then
+  echo "WARNING: editorial retention did not complete; see checks.retention in /api/health" >&2
+fi
 
 # Checkpoint WAL to flush pending writes into the main DB file
 sqlite3 "$DB_PATH" "PRAGMA wal_checkpoint(TRUNCATE);" 2>/dev/null || {

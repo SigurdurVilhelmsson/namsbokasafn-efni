@@ -387,6 +387,30 @@ through `fetchJson`, which defaults `credentials: 'same-origin'`.
 > dispositioned. Authoritative: `server/routes/auth.js` (the `sameSite` values)
 > and CLAUDE.md § auth. (Audit ref: F11.)
 
+#### Retention of editors' data (G1.15(b))
+The editing tool removes what it holds about editors on fixed dates, automatically. **What is built, deployed or
+pending lives in the active register, not here.** Each part has one owner:
+
+- **The dates:** `server/lib/retentionDates.js` (four dates; a date takes effect at 00:00 UTC on the day after it).
+  They were decided in `docs/decisions/2026-11-21-retention-dates-2028-2029-2030.md`, which is also SD6's record for
+  the research date that `server/lib/researchRetention.js` reads.
+- **What each column gets:** `server/lib/editorialRetentionScope.js` classifies every person column once (strip,
+  delete, keep, consent). Its test builds the schema from every migration and fails, by name, on a person-shaped
+  column it does not classify.
+- **The steps:** `server/lib/editorialRetention.js` (`named`, `unnamed`, `consent`; the SQL in
+  `server/lib/retentionStrip.js`). The book glossary layer's tables are stripped only through
+  `bookGlossaryLayer.stripLayerPersons`, so the public `book-glossary.json`, which shows `aðalritstjóri` and never a
+  name, does not change.
+- **The run:** `server/scripts/editorial-retention.js`, called by `scripts/backup-db.sh` before its copy. It compacts
+  the file (secure delete on, then `VACUUM`) and records each verified step in `retention_runs` (migration 059). A
+  record dated after a step's date, named or not and whoever wrote it, is never acted on: the step refuses and stays
+  due.
+- **The signal:** `checks.retention` in `GET /api/health` (`server/lib/retentionHealth.js`): which steps are due or
+  overdue and whether a refusal stands, never a table, a reason or a count (the endpoint is public). Which refusal:
+  the script's dry run on the server. While a step is due, the answer is kept for `DEFAULT_CACHE_MS`
+  (`createRetentionHealthCache`), so it can lag by that much.
+- **Outside this mechanism:** the backups' own retention (G1.20) and the production log limits.
+
 ## Configuration
 
 ### Environment Variables

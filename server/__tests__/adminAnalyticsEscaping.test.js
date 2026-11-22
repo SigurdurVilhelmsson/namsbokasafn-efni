@@ -1,6 +1,8 @@
 /**
- * The statistics tab of /admin shows analytics events, and every value in an event comes from
- * POST /api/analytics/event, which needs no sign-in. Those values must reach the page as text.
+ * The statistics tab of /admin shows analytics events, and every value in an event came from
+ * POST /api/analytics/event, which needed no sign-in. The route is retired ([USER] 2026-11-22;
+ * analyticsWriteRetired.test.js), but the rows it stored are shown until retention step 1 deletes
+ * them in 2029, so those values must still reach the page as text.
  *
  * This runs the page's own three functions (taken from views/admin.html as written) against
  * events whose every field carries markup, and compares the VALUES that come out: the markup
@@ -70,7 +72,8 @@ const HOSTILE_EVENTS = [
 ];
 
 describe('admin statistics tab: one malformed event cannot blank the list', () => {
-  // POST /api/analytics/event needs no sign-in and puts no type on what is inside `metadata`.
+  // POST /api/analytics/event (retired; its rows remain) needed no sign-in and put no type on
+  // what is inside `metadata`.
   // A search event whose `query` is an object with no usable toString made the description's
   // string concatenation throw, and the page then replaced every counter and both panels with
   // an error for as long as that event was among the newest.
