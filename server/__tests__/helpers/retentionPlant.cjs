@@ -278,4 +278,36 @@ function plantAll(db, { at = AT, atMs = AT_MS, tag = 'A' } = {}) {
   return { names, ints, rows, accountId, bookId };
 }
 
-module.exports = { plantAll, insert, AT, AT_MS };
+/**
+ * Dates every row already in a SCOPE table at `at` (`atMs` for a `*_ms` column), so no fixture depends on the day the
+ * suite runs. A migration stamps its seeds with CURRENT_TIMESTAMP, which reads the OS clock and no injected clock
+ * reaches: once that clock passes a retention date the seeds are later records, and every step on an injected clock
+ * meets a refusal (final review I-2, measured: 4 tests red with the seeds dated 2029-06-01). Call it right after
+ * freshMigratedDb(), before planting. NULL times stay NULL. The timestamp triggers are dropped around the writes and
+ * recreated, as step 1 does, so a seed in one of their tables cannot be re-stamped with today's clock.
+ *
+ * @param {import('better-sqlite3').Database} db
+ * @param {{ at?: string, atMs?: number }} [o]
+ */
+function pinSeeds(db, { at = AT, atMs = AT_MS } = {}) {
+  const tables = Object.keys(SCOPE).filter(
+    (t) => db.prepare("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = ?").get(t) !== undefined
+  );
+  db.transaction(() => {
+    const triggers = db
+      .prepare(
+        `SELECT name, sql FROM sqlite_master WHERE type = 'trigger' AND tbl_name IN (${tables.map(() => '?').join(', ')})`
+      )
+      .all(...tables);
+    for (const { name } of triggers) db.exec(`DROP TRIGGER "${name}"`);
+    for (const t of tables) {
+      const e = SCOPE[t];
+      for (const c of new Set([...e.times, ...e.person.map((p) => p.timeCol).filter(Boolean)])) {
+        db.prepare(`UPDATE "${t}" SET "${c}" = ? WHERE "${c}" IS NOT NULL`).run(/_ms$/.test(c) ? atMs : at);
+      }
+    }
+    for (const { sql } of triggers) db.exec(sql);
+  })();
+}
+
+module.exports = { plantAll, insert, pinSeeds, AT, AT_MS };

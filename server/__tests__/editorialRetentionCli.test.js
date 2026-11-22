@@ -19,7 +19,7 @@ import { fileURLToPath } from 'url';
 const require = createRequire(import.meta.url);
 const Database = require('better-sqlite3');
 const freshMigratedDb = require('./helpers/freshMigratedDb');
-const { plantAll, insert } = require('./helpers/retentionPlant.cjs');
+const { plantAll, insert, pinSeeds } = require('./helpers/retentionPlant.cjs');
 const { NAMED_EDITING_RECORDS, effectiveMs } = require('../lib/retentionDates');
 const { planStep } = require('../lib/editorialRetention');
 const { runEditorialRetention } = require('../scripts/editorial-retention');
@@ -38,6 +38,7 @@ let names;
 beforeEach(() => {
   const fresh = freshMigratedDb();
   fresh.db.pragma('journal_mode = WAL');
+  pinSeeds(fresh.db);
   names = plantAll(fresh.db).names;
   fresh.db.close();
   dbPath = fresh.path;

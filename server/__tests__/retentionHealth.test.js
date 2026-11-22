@@ -13,7 +13,7 @@ import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const freshMigratedDb = require('./helpers/freshMigratedDb');
-const { plantAll, insert } = require('./helpers/retentionPlant.cjs');
+const { plantAll, insert, pinSeeds } = require('./helpers/retentionPlant.cjs');
 const { NAMED_EDITING_RECORDS, effectiveMs } = require('../lib/retentionDates');
 const { readRetentionHealth, DEFAULT_STALE_HOURS } = require('../lib/retentionHealth');
 
@@ -25,6 +25,7 @@ const HOUR = 3600000;
 let db;
 beforeEach(() => {
   db = freshMigratedDb().db;
+  pinSeeds(db);
   plantAll(db);
 });
 afterEach(() => {

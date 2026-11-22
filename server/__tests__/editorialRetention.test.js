@@ -11,7 +11,13 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const freshMigratedDb = require('./helpers/freshMigratedDb');
-const { plantAll, insert } = require('./helpers/retentionPlant.cjs');
+const {
+  plantAll,
+  insert,
+  pinSeeds,
+  AT: PLANT_AT,
+  AT_MS: PLANT_AT_MS,
+} = require('./helpers/retentionPlant.cjs');
 const { SCOPE } = require('../lib/editorialRetentionScope');
 const {
   NAMED_EDITING_RECORDS,
@@ -39,6 +45,7 @@ const DAY_MS = 86400000;
 let db;
 beforeEach(() => {
   db = freshMigratedDb().db;
+  pinSeeds(db);
 });
 afterEach(() => db.close());
 
@@ -74,6 +81,40 @@ const rowOf = (t, rowid) =>
   db.prepare(`SELECT rowid AS _rowid, * FROM "${t}" WHERE rowid = ?`).get(rowid);
 const refusal = (res, reason, table) =>
   res.refusals.find((r) => r.reason === reason && r.table === table);
+
+describe('editorialRetention: no fixture depends on the day the suite runs (final review I-2)', () => {
+  // A migration stamps its seeds with CURRENT_TIMESTAMP, which reads the OS clock, and no injected clock reaches it: a
+  // suite run after a date would meet its own seeds as later records. pinSeeds dates every row already in a SCOPE
+  // table at the plant time; every retention test calls it right after freshMigratedDb().
+  const LATE = '2029-06-01 00:00:00';
+  const LATE_MS = Date.UTC(2029, 5, 1);
+
+  it('a database migrated after the date meets a later-records refusal until its seeds are pinned', () => {
+    pinSeeds(db, { at: LATE, atMs: LATE_MS }); // as a migration run on 2029-06-01 stamps them
+    expect(planStep(db, 'named', AT).refusals).toContainEqual(
+      expect.objectContaining({ reason: 'later-records', table: 'registered_books' })
+    );
+    pinSeeds(db);
+    expect(planStep(db, 'named', AT).refusals).toEqual([]);
+  });
+
+  it('pins every time of every SCOPE row to the plant time exactly, past the timestamp triggers', () => {
+    plantAll(db, { at: LATE, atMs: LATE_MS, tag: 'L' });
+    pinSeeds(db);
+    const off = [];
+    for (const [t, e] of Object.entries(SCOPE)) {
+      for (const c of new Set([...e.times, ...e.person.map((p) => p.timeCol).filter(Boolean)])) {
+        const want = /_ms$/.test(c) ? PLANT_AT_MS : PLANT_AT;
+        const n = db
+          .prepare(`SELECT COUNT(*) FROM "${t}" WHERE "${c}" IS NOT NULL AND "${c}" IS NOT ?`)
+          .pluck()
+          .get(want);
+        if (n) off.push(`${t}.${c}`);
+      }
+    }
+    expect(off).toEqual([]);
+  });
+});
 
 describe('editorialRetention: the named step', () => {
   it('the planting helper reaches every strip and delete table', () => {

@@ -12,10 +12,22 @@ const require = createRequire(import.meta.url);
 const REPO = path.resolve(import.meta.dirname, '..', '..');
 const SCRIPT = path.join(REPO, 'scripts', 'backup-db.sh');
 const freshMigratedDb = require(path.join(REPO, 'server', '__tests__', 'helpers', 'freshMigratedDb'));
+const { pinSeeds } = require(path.join(REPO, 'server', '__tests__', 'helpers', 'retentionPlant.cjs'));
+const Database = createRequire(path.join(REPO, 'server', 'package.json'))('better-sqlite3');
 
+/**
+ * A migrated database on which every step can run in any year: its seeds pinned before the first date (a migration
+ * stamps them with the OS clock), and the research retention recorded, which step 3 requires (final review I-2).
+ */
 function setup() {
   const dir = mkdtempSync(path.join(tmpdir(), 'backup-retention-'));
   const fresh = freshMigratedDb();
+  pinSeeds(fresh.db);
+  fresh.db
+    .prepare(
+      "INSERT INTO research_deletions (kind, interval_id, done_at_ms, verified) VALUES ('retention', NULL, ?, 1)"
+    )
+    .run(Date.UTC(2030, 0, 1, 1));
   fresh.db.close();
   return { dir, dbPath: fresh.path, backups: path.join(dir, 'backups') };
 }
@@ -70,5 +82,23 @@ describe('backup-db.sh and the editorial retention', () => {
     expect(r.status).toBe(0);
     expect(r.stderr).not.toMatch(/editorial retention/);
     expect(backupFiles(s.backups)).toHaveLength(1);
+  });
+
+  // The script reads its own clock (Date.now()); a test pins it by preloading a fake one into the spawned node. Never a
+  // clock override in the script or in backup-db.sh: on a script that deletes on dates that is an early-deletion lever.
+  it('in 2031 too (a clock preloaded past every date), the real script logs nothing as failed (final review I-2)', () => {
+    const s = setup();
+    const clock = path.join(s.dir, 'clock-2031.cjs');
+    writeFileSync(clock, 'Date.now = () => Date.UTC(2031, 0, 2);\n');
+    const r = backup(s, { RETENTION_NODE: process.execPath, NODE_OPTIONS: `--require ${clock}` });
+    expect(r.status).toBe(0);
+    expect(r.stderr).not.toMatch(/editorial retention/);
+    expect(backupFiles(s.backups)).toHaveLength(1);
+    // The control: the clock reached the script, so all three steps ran and were recorded (an ignored preload would
+    // leave nothing due, and the lines above would pass on a run that did nothing).
+    const db = new Database(s.dbPath, { readonly: true });
+    const kinds = db.prepare('SELECT kind FROM retention_runs ORDER BY kind').pluck().all();
+    db.close();
+    expect(kinds).toEqual(['consent', 'named', 'unnamed']);
   });
 });
