@@ -1,0 +1,5 @@
+HEAD ae833a0d1bf042f0818867b245f0739d7178eedd
+STUDY FREEZE CHECK: PASS
+markers: 170/170 units hold the freeze marker
+no manifest yet: verified markers only
+exit 0
