@@ -21,7 +21,7 @@ const log = require('../lib/logger');
  * @returns {function} Express middleware
  */
 function requireRole(minimumRole) {
-  return (req, res, next) => {
+  const guard = (req, res, next) => {
     if (!req.user) {
       return res.status(401).json({
         error: 'Authentication required',
@@ -40,6 +40,8 @@ function requireRole(minimumRole) {
 
     next();
   };
+  guard.minimumRole = minimumRole;
+  return guard;
 }
 
 /**
@@ -236,7 +238,7 @@ function requireAdmin() {
  * Requires at minimum EDITOR role.
  */
 function requireBookAccess() {
-  return (req, res, next) => {
+  const guard = (req, res, next) => {
     if (!req.user) {
       return res.status(401).json({
         error: 'Authentication required',
@@ -306,6 +308,8 @@ function requireBookAccess() {
 
     next();
   };
+  guard.bookAccessGuard = true;
+  return guard;
 }
 
 module.exports = {
