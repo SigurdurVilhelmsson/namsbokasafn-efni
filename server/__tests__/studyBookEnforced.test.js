@@ -227,3 +227,40 @@ describe('T5: the enforcement toggle', () => {
     ]);
   });
 });
+
+describe('requireBookAccess, chapter-denied refusal', () => {
+  function deny(chapter) {
+    const req = {
+      user: { id: 'u-prufa', username: 'prufa', role: 'editor', books: [] },
+      params: { book: CHEM, chapter },
+    };
+    const out = { status: null, body: null };
+    const res = {
+      status(s) {
+        out.status = s;
+        return this;
+      },
+      json(b) {
+        out.body = b;
+        return this;
+      },
+    };
+    requireBookAccess()(req, res, () => {});
+    return out;
+  }
+
+  it('an unassigned editor gets 403 with the code kept and the message in Icelandic', () => {
+    const out = deny('3');
+    expect(out.status).toBe(403);
+    expect(out.body.error).toBe('Chapter access denied');
+    expect(out.body.message).toBe(
+      `Þér hefur ekki verið úthlutað þessum hluta bókarinnar (Kafli 3, ${CHEM}).`
+    );
+  });
+
+  it('the appendices chapter reads as "Viðaukar", never "-1"', () => {
+    const msg = deny('-1').body.message;
+    expect(msg).toBe(`Þér hefur ekki verið úthlutað þessum hluta bókarinnar (Viðaukar, ${CHEM}).`);
+    expect(msg).not.toContain('-1');
+  });
+});

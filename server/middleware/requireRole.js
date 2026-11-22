@@ -10,6 +10,8 @@ const userService = require('../services/userService');
 const bookRegistration = require('../services/bookRegistration');
 const log = require('../lib/logger');
 const { isAlwaysEnforced } = require('../lib/editorScope');
+// UMD display half of the chapter-label contract: -1 → 'Viðaukar', N → 'Kafli N' (no DB read).
+const chapterLabel = require('../public/js/chapter-label');
 
 /**
  * Require minimum role middleware factory
@@ -317,7 +319,7 @@ function requireBookAccess() {
         }
         return res.status(403).json({
           error: 'Chapter access denied',
-          message: `You are not assigned to chapter ${chapter} of ${book}`,
+          message: `Þér hefur ekki verið úthlutað þessum hluta bókarinnar (${chapterLabel.full(chapter)}, ${book}).`,
           yourRole: req.user.role,
         });
       }
