@@ -135,6 +135,23 @@ function routeRequiresIn(relPath) {
   return [...src.matchAll(/require\(\s*['"](\.\/routes\/[^'"]+)['"]\s*\)/g)].map((m) => m[1]);
 }
 
+/** server/index.js's source, read from this file's location. */
+const indexSource = () => readFileSync(path.join(REPO_ROOT, 'server/index.js'), 'utf8');
+
+/**
+ * Every line of a source text that declares a route directly on `app` with a method that can
+ * write, trimmed. The router walk cannot see such a route, because it is on no mounted router.
+ */
+function appWriteRoutesIn(src) {
+  return [...src.matchAll(/\bapp\s*\.\s*(?:post|put|patch|delete|all|route)\s*\(.*/g)].map((m) =>
+    m[0].trim()
+  );
+}
+
+// The one write registration on `app` itself: the public feedback form's rate limiter, in front of
+// the exempt `POST /api/feedback` route that the census does see.
+const FEEDBACK_LIMITER = "app.post('/api/feedback', publicSubmitLimiter);";
+
 const ok = (req, res) => res.end();
 const planted = (router) => [{ prefix: '/api/planted', router }];
 
@@ -167,6 +184,9 @@ describe('editor scope route census (spec §6.1)', () => {
       './routes/apiMounts',
       './routes/views',
     ]));
+
+  it('index.js declares no write route directly on app, beyond the feedback rate limiter', () =>
+    expect(appWriteRoutesIn(indexSource())).toEqual([FEEDBACK_LIMITER]));
 });
 
 describe('editor scope route census: the controls', () => {
@@ -256,6 +276,19 @@ describe('editor scope route census: the controls', () => {
       'GET /api/planted/:book/list',
       'POST /api/planted/:book/:chapterNum/x',
     ]);
+  });
+
+  it('control: a write route added directly on app in index.js is named, for every method', () => {
+    const extra = [
+      "app.post('/api/x', h);",
+      "app.put('/api/x', h);",
+      "app.patch('/api/x', h);",
+      "app.delete('/api/x', h);",
+      "app.all('/api/x', h);",
+      "app.route('/api/x').post(h);",
+    ];
+    const src = `${indexSource()}\n${extra.join('\n')}\n`;
+    expect(appWriteRoutesIn(src)).toEqual([FEEDBACK_LIMITER, ...extra]);
   });
 
   it('control: the route census sees the real routers (not an empty walk)', () => {

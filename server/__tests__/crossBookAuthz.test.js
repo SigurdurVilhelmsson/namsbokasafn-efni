@@ -242,6 +242,10 @@ beforeAll(() => {
   ins.run(74, 1, 1, '1.34', 'localization_assigned'); // the admin's status moves
   ins.run(75, 1, 1, '1.35', 'localization_approved');
   ins.run(76, 1, 1, '1.36', 'review_assigned');
+  // The reverse direction (spec §6.1): an efnafraedi-2e row (book_id 2, chapter_id 2, as for 47) that
+  // the closed book's head editor is refused on, for every section write. Its own row, so a refusal
+  // that went missing writes here and nowhere a control reads.
+  ins.run(77, 2, 2, '1.37', 'review_submitted');
   // Four suggestions per section, in the order: accept, reject, modify, bulk.
   for (const [first, section] of [
     [80, 64],
@@ -297,18 +301,35 @@ const BOOK_CLOSED = { status: 403, error: 'BOOK_CLOSED' };
 async function verdictOf(res) {
   return { status: res.status, error: (await res.json().catch(() => ({}))).error };
 }
+// The head-editor scope check's own refusal (requireHeadEditor / requireHeadEditorFor). On these
+// routes the closed-book guard runs after that check, so if the check let a head editor of another
+// book through to a liffraedi-2e row, the guard would still answer 403 BOOK_CLOSED and a bare 403
+// would stay green. The cases against another book's rows assert this body, and the reverse cases (a
+// liffraedi-2e head editor at chemistry, which the guard lets through) assert it too (spec §6.1).
+const SCOPE_REFUSED = { status: 403, error: 'Insufficient permissions' };
 
 // SAFETY: every pipeline probe uses chapter 9999 so validateParams 400s any request
 // that clears authz — no pipeline job is ever actually started by this suite.
 describe('pipeline POSTs are book-scoped', () => {
   for (const route of ['/api/pipeline/inject', '/api/pipeline/render', '/api/pipeline/run']) {
-    it(`${route}: head-editor of another book → 403`, async () => {
+    it(`${route}: head-editor of another book → 403 from the scope check`, async () => {
       const res = await post(route, HE_A, {
         book: 'liffraedi-2e',
         chapter: 9999,
         track: 'faithful',
       });
-      expect(res.status).toBe(403);
+      expect(await verdictOf(res)).toEqual(SCOPE_REFUSED);
+    });
+    // The reverse direction: the closed-book guard lets the open book through, so only the scope
+    // check stands between a closed book's head editor and chemistry's pipeline (then the G1.14 hold's
+    // 423, which a broken scope check would answer).
+    it(`${route}: head-editor of a closed book, at the open book → 403 from the scope check`, async () => {
+      const res = await post(route, HE_B, {
+        book: 'efnafraedi-2e',
+        chapter: 9999,
+        track: 'faithful',
+      });
+      expect(await verdictOf(res)).toEqual(SCOPE_REFUSED);
     });
     it(`${route}: owning head-editor of a closed book → 403 BOOK_CLOSED (spec §6.1)`, async () => {
       const res = await post(route, HE_B, {
@@ -381,9 +402,9 @@ describe('section head-editor actions are book-scoped', () => {
     { name: 'request-changes', path: '/api/sections/45/request-changes', body: { notes: 'x' } },
   ];
   for (const c of CASES) {
-    it(`${c.name}: head-editor of another book → 403`, async () => {
+    it(`${c.name}: head-editor of another book → 403 from the scope check`, async () => {
       const res = await post(c.path, HE_A, c.body);
-      expect(res.status).toBe(403);
+      expect(await verdictOf(res)).toEqual(SCOPE_REFUSED);
     });
     it(`${c.name}: owning head-editor of a closed book → 403 BOOK_CLOSED (spec §6.1)`, async () => {
       const res = await post(c.path, HE_B, c.body);
@@ -420,9 +441,25 @@ describe('section head-editor actions are book-scoped', () => {
     expect(res.status).toBe(200);
   });
 
-  it('status elevated transition: head-editor of another book → 403', async () => {
+  // The reverse direction (spec §6.1): the closed book's head editor at an efnafraedi-2e section. The
+  // closed-book guard lets the open book through, so only the scope check can refuse here.
+  it.each([
+    ['approve-review', {}],
+    ['assign-reviewer', { reviewerId: 'someone', reviewerName: 'Someone' }],
+    ['assign-localizer', { localizerId: 'someone', localizerName: 'Someone' }],
+    ['request-changes', { notes: 'x' }],
+    ['status', { status: 'review_approved' }],
+  ])(
+    '%s: head-editor of a closed book, at the open book → 403 from the scope check',
+    async (name, body) => {
+      const res = await post(`/api/sections/77/${name}`, HE_B, body);
+      expect(await verdictOf(res)).toEqual(SCOPE_REFUSED);
+    }
+  );
+
+  it('status elevated transition: head-editor of another book → 403 from the scope check', async () => {
     const res = await post('/api/sections/46/status', HE_A, { status: 'review_approved' });
-    expect(res.status).toBe(403);
+    expect(await verdictOf(res)).toEqual(SCOPE_REFUSED);
   });
   it('status elevated transition: owning head-editor of a closed book → 403 BOOK_CLOSED (spec §6.1)', async () => {
     const res = await post('/api/sections/46/status', HE_B, { status: 'review_approved' });
@@ -596,9 +633,17 @@ describe('admin chapter-assignment routes are book-scoped (Task 6)', () => {
   // liffraedi-2e is HE_B's book (owner). HE_A only has efnafraedi-2e.
   const ASSIGN = '/api/admin/assignments/liffraedi-2e/1';
 
-  it('POST assign: head-editor of another book → 403', async () => {
+  // The reverse direction (spec §6.1): chemistry is open, so the closed-book guard lets it through and
+  // only the scope check can refuse the closed book's head editor there.
+  const ASSIGN_OPEN = '/api/admin/assignments/efnafraedi-2e/1';
+
+  it('POST assign: head-editor of another book → 403 from the scope check', async () => {
     const res = await post(ASSIGN, HE_A, { userId: 1 });
-    expect(res.status).toBe(403);
+    expect(await verdictOf(res)).toEqual(SCOPE_REFUSED);
+  });
+  it('POST assign: head-editor of a closed book, at the open book → 403 from the scope check', async () => {
+    const res = await post(ASSIGN_OPEN, HE_B, { userId: 1 });
+    expect(await verdictOf(res)).toEqual(SCOPE_REFUSED);
   });
   it('POST assign: owning head-editor of a closed book → 403 BOOK_CLOSED (spec §6.1)', async () => {
     const res = await post(ASSIGN, HE_B, { userId: 1 });
@@ -614,9 +659,13 @@ describe('admin chapter-assignment routes are book-scoped (Task 6)', () => {
     expect(res.status).toBe(403);
   });
 
-  it('DELETE assign: head-editor of another book → 403', async () => {
+  it('DELETE assign: head-editor of another book → 403 from the scope check', async () => {
     const res = await del(ASSIGN, HE_A);
-    expect(res.status).toBe(403);
+    expect(await verdictOf(res)).toEqual(SCOPE_REFUSED);
+  });
+  it('DELETE assign: head-editor of a closed book, at the open book → 403 from the scope check', async () => {
+    const res = await del(ASSIGN_OPEN, HE_B);
+    expect(await verdictOf(res)).toEqual(SCOPE_REFUSED);
   });
   it('DELETE assign: owning head-editor of a closed book → 403 BOOK_CLOSED (spec §6.1)', async () => {
     const res = await del(ASSIGN, HE_B);
@@ -765,9 +814,14 @@ describe('activity search and the cross-book reads follow the same scope', () =>
 describe('suggestions scan-book is head-editor-of-book scoped (B1-F1)', () => {
   const SCAN_BOOK = '/api/suggestions/scan-book/liffraedi-2e';
 
-  it('head-editor of another book → 403 (was: any head-editor could regenerate any book)', async () => {
+  it('head-editor of another book → 403 from the scope check (was: any head-editor could regenerate any book)', async () => {
     const res = await post(SCAN_BOOK, HE_A);
-    expect(res.status).toBe(403);
+    expect(await verdictOf(res)).toEqual(SCOPE_REFUSED);
+  });
+  // The reverse direction (spec §6.1): the closed-book guard lets the open book through.
+  it('head-editor of a closed book, at the open book → 403 from the scope check', async () => {
+    const res = await post('/api/suggestions/scan-book/efnafraedi-2e', HE_B);
+    expect(await verdictOf(res)).toEqual(SCOPE_REFUSED);
   });
   // G1.13 (spec §6.1): the admin case below now carries the scan-book activityLog site.
   it('owning head-editor of a closed book → 403 BOOK_CLOSED (spec §6.1)', async () => {
@@ -880,9 +934,9 @@ describe('suggestions bulk route contains ids to the gated section (id-smuggling
 describe("suggestions sync-log is for the book's head editor and admins", () => {
   // Section 62 is liffraedi-owned and suggestion-free (entriesCreated: 0), so a
   // genuine 200 needs no localization_log table and no cross-test ordering.
-  it('head-editor of another book → 403', async () => {
+  it('head-editor of another book → 403 from the scope check', async () => {
     const res = await post('/api/suggestions/62/sync-log', HE_A);
-    expect(res.status).toBe(403);
+    expect(await verdictOf(res)).toEqual(SCOPE_REFUSED);
   });
   it('plain editor (not the assigned localizer) → 403', async () => {
     const res = await post('/api/suggestions/62/sync-log', EDITOR);
@@ -904,9 +958,9 @@ describe("suggestions sync-log is for the book's head editor and admins", () => 
 
 describe('suggestion-id routes resolve to their owning section and book-scope on it', () => {
   // Suggestion 75 → section 61 → efnafraedi-2e (enforcement ON, HE_A's book).
-  it('accept: head-editor of another book → 403 (suggestion 75 is efnafraedi)', async () => {
+  it('accept: head-editor of another book → 403 from the scope check (suggestion 75 is efnafraedi)', async () => {
     const res = await post('/api/suggestions/75/accept', HE_B);
-    expect(res.status).toBe(403);
+    expect(await verdictOf(res)).toEqual(SCOPE_REFUSED);
   });
   it('accept: owning head-editor → genuine 200 via the suggestion→section resolver (discriminates the resolver from a liffraedi constant; accept activityLog site executes)', async () => {
     const res = await post('/api/suggestions/75/accept', HE_A);
@@ -973,13 +1027,15 @@ describe("the suggestion writes and the section status route are for the book's 
   ];
 
   const refusedRows = { section: 64, firstSuggestion: 80, syncSection: 64, firstStatusSection: 68 };
+  // Both refusals are the role or scope check's own (SCOPE_REFUSED), not the closed-book guard's: on
+  // liffraedi-2e that guard would answer 403 as well (spec §6.1).
   for (const [who, user] of [
     ['a plain editor', EDITOR],
     ['a head editor of another book', HE_A],
   ]) {
     it.each(writesOn(refusedRows))(`${who} is refused %s`, async (_name, pathname, body) => {
       const res = await post(pathname, user, body);
-      expect(res.status).toBe(403);
+      expect(await verdictOf(res)).toEqual(SCOPE_REFUSED);
     });
   }
 
