@@ -157,6 +157,35 @@ describe('rule 2s: a structural marker below min(baseline, English) blocks', () 
   });
 });
 
+// [USER] 2026-11-22 (§C248's open question): in localization a unit conversion can rightly remove a sub/sup the
+// English carries, so there a dropped [[sub: or [[sup: warns. Every other structural type still blocks there, and
+// the segment editor keeps rule 2s whole.
+describe('rule 2s in localization: a dropped [[sub: or [[sup: warns, never blocks', () => {
+  const LOC = { localization: true };
+  it('14,7 lb/in[[sup:2]] -> 101 kPa warns formatting-dropped', () => {
+    expect(mi.checkMarkers('14.7 lb/in[[sup:2]]', '14,7 lb/in[[sup:2]]', '101 kPa', LOC)).toEqual({
+      blocked: [],
+      warnings: [{ code: 'formatting-dropped', params: { type: 'sup', from: 1, to: 0 } }],
+    });
+  });
+  it('a dropped [[sub: warns the same way', () => {
+    expect(mi.checkMarkers('H[[sub:2]]O', 'H[[sub:2]]O', 'vatn', LOC)).toEqual({
+      blocked: [],
+      warnings: [{ code: 'formatting-dropped', params: { type: 'sub', from: 1, to: 0 } }],
+    });
+  });
+  it('control: the same drop outside localization still blocks marker-dropped', () => {
+    expect(check('14.7 lb/in[[sup:2]]', '14,7 lb/in[[sup:2]]', '101 kPa').blocked).toEqual([
+      { code: 'marker-dropped', params: { type: 'sup', from: 1, to: 0 } },
+    ]);
+  });
+  it('another structural type still blocks in localization ([[term:)', () => {
+    expect(mi.checkMarkers('[[term:mole]]', '[[term:mól]]', 'mól', LOC).blocked).toEqual([
+      { code: 'marker-dropped', params: { type: 'term', from: 1, to: 0 } },
+    ]);
+  });
+});
+
 describe('rule 2a: an exact TABLE/lb/rb string in baseline and English blocks when missing', () => {
   it('dropping [[TABLE:fs-1]] blocks marker-dropped with the marker', () => {
     expect(check('a [[TABLE:fs-1]]', 'a [[TABLE:fs-1]]', 'a').blocked).toEqual([

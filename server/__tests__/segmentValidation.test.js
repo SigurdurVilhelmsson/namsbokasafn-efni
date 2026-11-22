@@ -198,6 +198,17 @@ describe('the bracket-marker rules ride on validateStructure', () => {
     expect(codes(validateStructure('x', 'x', 'x [[term:]]'))).toContain('marker-empty');
   });
 
+  it('with { localization: true } a dropped [[sup:]] only warns ([USER] 2026-11-22, §C248)', () => {
+    const res = validateStructure('14.7 lb/in[[sup:2]]', '14,7 lb/in[[sup:2]]', '101 kPa', {
+      localization: true,
+    });
+    expect(res.blocked).toBeNull();
+    expect(res.warnings).toContainEqual({
+      code: 'formatting-dropped',
+      params: { type: 'sup', from: 1, to: 0 },
+    });
+  });
+
   // Review Focus 2: no real segment, saved unchanged, gains a block from the new rules.
   it('an unchanged save of every chemistry segment gains no bracket-marker block', async () => {
     const fs = await import('node:fs');

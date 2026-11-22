@@ -126,6 +126,11 @@
     ['^', /(?<=[^\s^])\^([^\s^]{1,15})\^/g],
   ];
 
+  // [USER] 2026-11-22 (§C248): in localization a unit conversion can rightly remove a sub/sup the English carries
+  // (`14,7 lb/in[[sup:2]]` → `101 kPa`), so there rule 2s warns for these two types (formatting-dropped: "was it
+  // intentional?"). Every other structural type still blocks there, and the segment editor keeps rule 2s whole.
+  const LOCALIZATION_WARN_ONLY = new Set(['sub', 'sup']);
+
   function legacyWrapCount(text, re) {
     return (
       String(text || '')
@@ -142,9 +147,12 @@
    * @param {string} enText the English source segment
    * @param {string} originalIs the served base text
    * @param {string} editedIs the proposed text
+   * @param {{localization?: boolean}} [opts] localization: the localization pane and routes, where a dropped
+   *   sub/sup warns instead of blocking (LOCALIZATION_WARN_ONLY)
    * @returns {{blocked: Array<{code: string, params: Object}>, warnings: Array<{code: string, params: Object}>}}
    */
-  function checkMarkers(enText, originalIs, editedIs) {
+  function checkMarkers(enText, originalIs, editedIs, opts) {
+    const localization = Boolean(opts && opts.localization === true);
     const blocked = [];
     const warnings = [];
     const en = scanMarkers(enText);
@@ -175,7 +183,7 @@
       const floor = Math.min(orig.counts[type] || 0, en.counts[type] || 0);
       const now = edit.counts[type] || 0;
       if (now >= floor) continue;
-      if (tier === 'structural') {
+      if (tier === 'structural' && !(localization && LOCALIZATION_WARN_ONLY.has(type))) {
         blocked.push({ code: 'marker-dropped', params: { type, from: floor, to: now } });
       } else {
         warnings.push({ code: 'formatting-dropped', params: { type, from: floor, to: now } });

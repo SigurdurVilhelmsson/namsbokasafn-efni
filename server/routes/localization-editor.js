@@ -367,10 +367,12 @@ router.post(
       // are advisory-only and never enforced here (design D3/D5). Identity edits
       // (content unchanged from what the pane currently shows) skip validation.
       if (content !== previousContent) {
+        // A dropped [[sub:/[[sup: only warns here: a unit conversion can rightly remove one (§C248, 2026-11-22).
         const structure = segmentValidation.validateStructure(
           targetSeg.en,
           targetSeg.faithful,
-          content
+          content,
+          { localization: true }
         );
         if (structure.blocked) {
           return res.status(400).json({
@@ -579,7 +581,8 @@ router.post(
         const structure = segmentValidation.validateStructure(
           segData.en,
           segData.faithful,
-          e.newContent
+          e.newContent,
+          { localization: true }
         );
         if (structure.blocked) {
           for (const v of structure.blocked) {

@@ -931,7 +931,10 @@
    * (advisory only).
    */
   function edValidateSegmentEdit(enText, originalIs, editedIs) {
-    var result = segmentValidation.validateStructure(enText, originalIs, editedIs);
+    // A dropped [[sub:/[[sup: only warns in this pane (§C248, 2026-11-22): a unit conversion can rightly remove one.
+    var result = segmentValidation.validateStructure(enText, originalIs, editedIs, {
+      localization: true,
+    });
     var pairNames = {
       '**': UI.validation.pairNames.bold,
       __: UI.validation.pairNames.term,
