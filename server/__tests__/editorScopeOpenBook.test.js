@@ -2,8 +2,8 @@
 //
 // G1.13 (spec §6.1): the closed-book guard lets the open book through, on every guarded family the
 // other route tests do not already drive in that direction: the pipeline-status lock and unlock,
-// publication, the localization editor's writes, acceptance revoke, review complete, and the admin
-// chapter-assignment POST and DELETE. A guard that read the wrong field on one of them would refuse
+// publication, the localization editor's writes (a :book save and a row-keyed reject), acceptance
+// revoke, review complete, and the admin chapter-assignment POST and DELETE. A guard that read the wrong field on one of them would refuse
 // chemistry's head editor (or the row's owner) with BOOK_CLOSED, and nothing else would notice.
 //
 // Each chemistry case asserts only that the answer is not BOOK_CLOSED. Its control sends the same
@@ -11,8 +11,9 @@
 // rather than being refused before it.
 //
 // SAFETY: every request is answered by a later layer before it can touch the books tree: chapter
-// 9999 or an invalid module id, the pipeline hold (G1.14), an acceptance that is no longer active,
-// or a review with a pending edit (so review complete records changes_requested and never applies).
+// 9999 or an invalid module id, the pipeline hold (G1.14), an acceptance or a localization edit that
+// is no longer open, or a review with a pending edit (so review complete records changes_requested
+// and never applies). The localization reject is used, never approve, which writes the books tree.
 // The database is a fully migrated temp file.
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { createRequire } from 'node:module';
@@ -42,6 +43,7 @@ let server;
 let base;
 const acceptanceOf = {};
 const reviewOf = {};
+const locEditOf = {};
 
 function mintToken(user) {
   return jwt.sign(
@@ -93,6 +95,16 @@ beforeAll(() => {
          edited_content, editor_id, editor_username, status, review_id)
        VALUES (?, 1, 'm68664', 'm68664:para:a', 'a', 'b', 'u-onnur', 'onnur', 'pending', ?)`
     ).run(book, reviewOf[book]);
+    // Already rejected, so reject answers 400 'Edit is not pending' once the guard has passed.
+    locEditOf[book] = Number(
+      db
+        .prepare(
+          `INSERT INTO localization_pending_edits (book, chapter, module_id, segment_id,
+             original_content, edited_content, status, editor_id, editor_username)
+           VALUES (?, 1, 'm68664', 'm68664:para:a', 'a', 'b', 'rejected', 'u-onnur', 'onnur')`
+        )
+        .run(book).lastInsertRowid
+    );
   }
 
   const app = express();
@@ -121,6 +133,10 @@ const FAMILIES = [
   [
     'localization-editor save',
     (b) => ['POST', `/api/localization-editor/${b}/1/ogilt/save`, HE[b], { segmentId: 'x' }],
+  ],
+  [
+    'localization-editor reject (row-keyed)',
+    (b) => ['POST', `/api/localization-editor/loc-edit/${locEditOf[b]}/reject`, HE[b]],
   ],
   [
     'acceptance revoke (the row’s owner)',
