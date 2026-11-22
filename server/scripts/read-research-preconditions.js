@@ -216,10 +216,19 @@ function readG1d({ db, book, serverDir, exec }) {
     .prepare('SELECT book, enforce_assignments FROM book_settings ORDER BY book')
     .all()
     .map((r) => ({ book: r.book, enforceAssignments: !!r.enforce_assignments }));
-  // isAssignmentEnforced's rule (userService.js): truthiness, and no row is not enforced, so the study book
-  // is never absent.
+  // isAssignmentEnforced's rule (userService.js): a study book is always enforced (spec §6.2); otherwise
+  // truthiness, and no row is not enforced. `stored` is the row alone, kept so a stored 0 stays visible.
   const own = enforcement.find((e) => e.book === book);
-  const studyBookEnforced = own ? own.enforceAssignments : false;
+  const studyBookEnforcedStored = own ? own.enforceAssignments : false;
+  // '../lib/editorScope' is required lazily, so a production tree that predates it still runs the probe;
+  // there the old rule (the row alone) is the right one.
+  let alwaysEnforced = false;
+  try {
+    alwaysEnforced = require('../lib/editorScope').isAlwaysEnforced(book);
+  } catch (err) {
+    if (err.code !== 'MODULE_NOT_FOUND') throw err;
+  }
+  const studyBookEnforced = alwaysEnforced || studyBookEnforcedStored;
   const assignments = conn
     .prepare(
       'SELECT user_id, chapter FROM user_chapter_assignments WHERE book_slug = ? ORDER BY chapter, user_id'
@@ -233,6 +242,7 @@ function readG1d({ db, book, serverDir, exec }) {
   return {
     enforcement,
     studyBookEnforced,
+    studyBookEnforcedStored,
     assignments,
     assignedChapters: [...new Set(assignments.map((a) => a.chapter))].sort((a, b) => a - b),
     users,

@@ -396,7 +396,8 @@ describe('getEffectiveRole', () => {
 describe('chapter assignments', () => {
   it('hasChapterAccess returns true when no assignments (backward compat)', () => {
     const id = seedUser();
-    const result = userService.hasChapterAccess(id, 'efnafraedi-2e', 1);
+    // A non-study book: chemistry no longer has this fail-open (spec §6.2, T10).
+    const result = userService.hasChapterAccess(id, 'testbook', 1);
     expect(result).toBe(true);
   });
 

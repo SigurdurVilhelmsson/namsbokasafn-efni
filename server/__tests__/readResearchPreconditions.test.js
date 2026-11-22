@@ -190,6 +190,7 @@ describe('G-1d (spec §9): whether units would open the moment the step ships', 
         { book: 'liffraedi-2e', enforceAssignments: false },
       ],
       studyBookEnforced: true,
+      studyBookEnforcedStored: true,
       assignments: [
         { userId: userA, chapter: 1 },
         { userId: userA, chapter: 2 },
@@ -221,11 +222,13 @@ describe('G-1d (spec §9): whether units would open the moment the step ships', 
     ).toBe(1);
   });
 
-  it('a study book with no book_settings row reads as not enforced, not as missing', () => {
-    expect(readResearchPreconditions(ctx()).sections['G-1d'].studyBookEnforced).toBe(true); // control
+  it('a study book with no book_settings row is enforced all the same; the stored value reads false (spec §6.2)', () => {
+    const before = readResearchPreconditions(ctx()).sections['G-1d'];
+    expect(before.studyBookEnforcedStored).toBe(true); // control: the row is read
     db.prepare('DELETE FROM book_settings WHERE book = ?').run(BOOK);
     const g = readResearchPreconditions(ctx()).sections['G-1d'];
-    expect(g.studyBookEnforced).toBe(false);
+    expect(g.studyBookEnforced).toBe(true);
+    expect(g.studyBookEnforcedStored).toBe(false);
     expect(g.enforcement).toEqual([{ book: 'liffraedi-2e', enforceAssignments: false }]);
   });
 
@@ -1562,10 +1565,13 @@ describe('it can run where PR1 and PR2 are not deployed', () => {
     // while the others read.
     // G1.7: '../lib/studyUnits' is required lazily, inside readG1g, so a production tree that predates it still
     // runs the probe; only G-1g then fails.
+    // G1.13: '../lib/editorScope' is required lazily, inside readG1d, for the same reason; an older tree reads
+    // the stored row alone, which was its rule.
     expect(specifiers.sort()).toEqual([
       '../../tools/lib/mt-lock.cjs',
       '../lib/chapterLabel',
       '../lib/dbPath',
+      '../lib/editorScope',
       '../lib/researchBackupPolicy',
       '../lib/researchDbPath',
       '../lib/researchFiles',

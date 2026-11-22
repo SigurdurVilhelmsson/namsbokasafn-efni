@@ -34,7 +34,7 @@ const suggestionSwitch = require('../services/suggestionSwitch');
 const { isStudyBook } = require('../lib/researchScope');
 const pipeline = require('../services/pipelineService');
 const segmentEditorService = require('../services/segmentEditorService');
-const { refuseClosedBookForNonAdmins } = require('../lib/editorScope');
+const { refuseClosedBookForNonAdmins, isAlwaysEnforced } = require('../lib/editorScope');
 // https import removed — no longer needed (GitHub user lookup removed)
 
 // ============================================================================
@@ -1085,6 +1085,8 @@ router.get('/assignments/:book', requireAuth, requireHeadEditor('book'), (req, r
       editorsLimited: userService.editorsLimitedToBookAccess(book),
       chapterProgress,
       enforceAssignments: userService.isAssignmentEnforced(book),
+      // true: the toggle is always on for this book and cannot be switched off (spec §6.2).
+      enforcementLocked: isAlwaysEnforced(book),
     });
   } catch (err) {
     log.error({ err }, 'Get book assignments error');
@@ -1104,6 +1106,14 @@ router.post('/assignments/:book/enforcement', requireAuth, requireRole(ROLES.ADM
   }
   if (typeof req.body?.enabled !== 'boolean') {
     return res.status(400).json({ error: 'enabled (boolean) required' });
+  }
+
+  if (req.body.enabled === false && isAlwaysEnforced(book)) {
+    return res.status(409).json({
+      error: 'STUDY_BOOK_ALWAYS_ENFORCED',
+      message:
+        'Kaflaúthlutun er alltaf þvinguð fyrir rannsóknarbókina og því ekki hægt að slökkva á henni.',
+    });
   }
 
   try {

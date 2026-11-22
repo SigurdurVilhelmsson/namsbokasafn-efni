@@ -133,11 +133,14 @@ describe('openingPredicate (spec §5.5; T6, service half)', () => {
   });
 
   it("the zero-row editor's no is the predicate's own: the fail-open neighbour would have let them in", () => {
-    member('p-ed1', 'editor', [1]);
+    const ed1 = member('p-ed1', 'editor', [1]);
     const zero = member('p-zero', 'editor');
-    expect(userService.isAssignmentEnforced(BOOK)).toBe(false);
+    // The study book is always enforced now (spec §6.2); the legacy fail-open lives on a non-study book.
+    expect(userService.isAssignmentEnforced(BOOK)).toBe(true);
+    userService.assignChapter(ed1.id, 'testbook', 1, 'admin');
+    expect(userService.isAssignmentEnforced('testbook')).toBe(false);
     // userService.js hasChapterAccess, legacy fail-open: no rows for the book = every chapter.
-    expect(userService.hasChapterAccess(zero.id, BOOK, 1)).toBe(true);
+    expect(userService.hasChapterAccess(zero.id, 'testbook', 1)).toBe(true);
     expect(pred('p-zero').holds).toBe(false);
   });
 

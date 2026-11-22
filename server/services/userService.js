@@ -12,6 +12,7 @@ const fs = require('fs');
 const log = require('../lib/logger');
 const { ROLES, ROLE_HIERARCHY } = require('../constants');
 const resolveDbPath = require('../lib/dbPath');
+const { isAlwaysEnforced } = require('../lib/editorScope');
 
 const DB_PATH = resolveDbPath();
 
@@ -582,8 +583,11 @@ function getBooksWorkedOn(userId) {
 /**
  * Whether chapter-assignment enforcement is ON for a book (book_settings).
  * Default false, so books that never opt in keep the legacy fail-open behaviour.
+ * A study book is always enforced, before any DB read, whatever its row says
+ * (G1.13, spec §6.2): `hasChapterAccess`'s fail-open branches all sit under `!enforce`.
  */
 function isAssignmentEnforced(bookSlug) {
+  if (isAlwaysEnforced(bookSlug)) return true;
   const db = getDb();
   try {
     const row = db

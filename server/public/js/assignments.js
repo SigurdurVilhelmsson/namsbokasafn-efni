@@ -371,7 +371,12 @@
         const enforceWrap = document.getElementById('enforce-toggle-wrap');
         const enforceToggle = document.getElementById('enforce-assignments-toggle');
         if (enforceWrap && enforceToggle) {
-          enforceToggle.checked = !!adminData.enforceAssignments;
+          // A study book is always enforced: shown on and disabled, with the reason (spec §6.2).
+          const locked = !!adminData.enforcementLocked;
+          enforceToggle.checked = locked || !!adminData.enforceAssignments;
+          enforceToggle.disabled = locked;
+          const lockNote = document.getElementById('enforce-locked-note');
+          if (lockNote) lockNote.style.display = locked ? 'inline' : 'none';
           enforceWrap.style.display = 'inline-flex';
         }
 

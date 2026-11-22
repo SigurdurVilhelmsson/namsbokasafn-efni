@@ -9,6 +9,7 @@ const { ROLES, hasRole } = require('../services/auth');
 const userService = require('../services/userService');
 const bookRegistration = require('../services/bookRegistration');
 const log = require('../lib/logger');
+const { isAlwaysEnforced } = require('../lib/editorScope');
 
 /**
  * Require minimum role middleware factory
@@ -267,9 +268,19 @@ function requireBookAccess() {
     }
 
     // Check chapter assignment (backward compat: no assignments = full access)
-    const chapter = req.chapterNum || req.params.chapter;
+    // `??` keeps chapter 0 and -1 (the appendices sentinel) as real chapters (spec §6.2, T4).
+    const chapter = req.chapterNum ?? req.params.chapter;
 
-    if (chapter) {
+    // A study book refuses a write that names no chapter: nothing to check the assignment against
+    // (spec §6.2). A non-study book keeps the legacy pass-through.
+    if ((chapter === undefined || chapter === null || chapter === '') && isAlwaysEnforced(book)) {
+      return res.status(403).json({
+        error: 'CHAPTER_UNKNOWN',
+        message: 'Beiðnin tilgreinir engan kafla, svo ekki er hægt að staðfesta úthlutun.',
+      });
+    }
+
+    if (chapter !== undefined && chapter !== null && chapter !== '') {
       // Look up the DB user ID from the provider ID in the JWT. A caller
       // with no users row is decided by hasChapterAccess: denied under
       // enforcement, legacy fail-open otherwise (batch 4, design D7).

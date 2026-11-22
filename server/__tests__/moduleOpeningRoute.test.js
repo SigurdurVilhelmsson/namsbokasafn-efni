@@ -193,7 +193,7 @@ afterAll(() => {
 });
 
 describe('T6, opened time, through the route (spec §5.5, §10)', () => {
-  it('an admin, a head editor, an editor with zero rows while enforcement is off and colleagues hold rows, and a token with no users row: each leaves the record unset', async () => {
+  it('an admin, a head editor, an editor with zero rows while colleagues hold rows, and a token with no users row: each leaves the record unset', async () => {
     for (const user of [asUser(admin), asUser(head, [BOOK]), asUser(zero), ghost]) {
       const r = await serve(user, 'm94001');
       expect(r.status).toBe(200);
@@ -204,9 +204,11 @@ describe('T6, opened time, through the route (spec §5.5, §10)', () => {
     expect(db.prepare("SELECT provider_id FROM users WHERE provider_id = 'p-ghost'").all()).toEqual(
       []
     );
-    // the fail-open neighbour would have let the zero-row editor through, so the "no" is the predicate's
-    expect(userService.isAssignmentEnforced(BOOK)).toBe(false);
-    expect(userService.hasChapterAccess(zero.id, BOOK, 1)).toBe(true);
+    // the study book is always enforced (spec §6.2); the fail-open neighbour lives on a non-study book and
+    // would have let the zero-row editor through, so the "no" is the predicate's
+    expect(userService.isAssignmentEnforced(BOOK)).toBe(true);
+    userService.assignChapter(ed1.id, 'testbook', 1, 'admin');
+    expect(userService.hasChapterAccess(zero.id, 'testbook', 1)).toBe(true);
     // positive control: an assigned editor's serve sets it
     moduleOpenings._setTestClock(() => T0);
     expect((await serve(asUser(ed1), 'm94001')).status).toBe(200);
