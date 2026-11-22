@@ -23,6 +23,11 @@
 >    `user_chapter_assignments` row, in microbiology (chapter 1, assigned 2026-04-08), not zero. It opens no study
 >    unit (microbiology is not a study book; 0 module openings), and G1.13 closes that book to non-admin writes. The
 >    rest of §3's line stands: no row in chemistry.
+> 7. **Two runbook additions to §8**, which the code deliberately does not enforce (the spec gates creation only).
+>    (a) Before promoting an editor who holds chapter rows to head editor of that book, or to admin, remove their
+>    chapter rows first, or their rows open units on their first look. (b) Do not switch a study book's suggestion
+>    view off while an assigned chapter has units not yet opened: the gate checks the switch only at assign time
+>    (R6).
 
 **Sources:** the Skerfur plan's G1.13 row and its 2026-11-03 dated note
 (`docs/plans/2026-10-23-skerfur-development-plan.md`); rulings R6 and the consent/licence condition
