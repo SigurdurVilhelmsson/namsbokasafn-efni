@@ -18,17 +18,39 @@ const DB_PATH = resolveDbPath();
  * Run all pending migrations.
  * Called automatically on server startup.
  *
- * @returns {{ applied: number, skipped: number, errors: string[] }}
+ * When this start creates sessions.db, the migrations run TWICE (register §C250): a fresh database's
+ * first pass is not the full schema, because some migrations depend on work a LATER one does. 022
+ * rebuilds `users` after 006 made its indexes and trigger, and 049 registers books after 032 seeded
+ * book_subject_mapping; each waited for a second start. A second pass reaches the fixed point an
+ * existing database is already at, so only a new database pays for it, once. The counts are the
+ * first pass's; `secondPass` says whether one ran, and its errors are reported too.
+ *
+ * @returns {{ applied: number, skipped: number, errors: string[], secondPass: boolean }}
  */
 function runAllMigrations() {
   // On a fresh checkout the DB doesn't exist yet. Create it (and its
   // directory) so the full schema is built by the migrations below —
   // services connect lazily via getDb() and assume the tables exist.
-  if (!fs.existsSync(DB_PATH)) {
+  const created = !fs.existsSync(DB_PATH);
+  if (created) {
     fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
     new Database(DB_PATH).close();
   }
 
+  const first = runPass();
+  // Not after a failed first pass: its errors are what failLoudOnMigrationErrors must report, and a
+  // second pass over a half-built schema would only add noise.
+  if (!created || first.errors.length) return { ...first, secondPass: false };
+  const second = runPass();
+  return { ...first, errors: second.errors.map((e) => `second pass: ${e}`), secondPass: true };
+}
+
+/**
+ * One pass over every migration, in order.
+ *
+ * @returns {{ applied: number, skipped: number, errors: string[] }}
+ */
+function runPass() {
   const migrations = [
     require('../migrations/001-add-error-recovery'),
     require('../migrations/002-editor-tables'),

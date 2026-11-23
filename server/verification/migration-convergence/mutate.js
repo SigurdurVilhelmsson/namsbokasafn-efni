@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 /**
- * Proves check.js can fail, in both directions:
- *   - a BREAK: a migration that converges today stops converging, and the check must name it;
- *   - a FIX: a pinned migration is made atomic, and the check must say its pin no longer fails.
+ * Proves check.js can fail: each BREAK makes something that converges today stop converging (a
+ * migration, or the runner's second pass on a new database), and the check must name it. There used
+ * to be a FIX direction too (a pinned migration made atomic, its pin reported as no longer failing);
+ * since register §C250 nothing is pinned, so there is no pin left for a FIX to clear. If a pin is
+ * ever added again, add a FIX change here that makes its migration converge.
  * Each scratch change is applied to the real file, check.js runs, and the expected line must appear
  * in its output (with a non-zero exit: an unexpected failure and a stale pin both fail the check).
  *
@@ -29,6 +31,7 @@ const CHECK = path.join(__dirname, 'check.js');
 const M014 = path.join(MIGRATIONS, '014-source-tracking.js');
 const M024 = path.join(MIGRATIONS, '024-fix-discussions-fk.js');
 const M060 = path.join(MIGRATIONS, '060-editor-licence-clauses.js');
+const RUNNER = path.resolve(__dirname, '..', '..', 'services', 'migrationRunner.js');
 
 // 014's §C250 body (transaction + per-column guards), and the bare ALTERs it replaced.
 const M014_FIXED_BODY = fs
@@ -62,19 +65,23 @@ const CHANGES = [
     /^FAIL: point \d+ \(014-source-tracking\) .*SHORT/m,
   ],
   [
-    'FIX: 024 runs its table rebuild in one transaction',
+    // Without the transaction, a crash after the DROP and before the RENAME leaves no original
+    // table, so the next start returns early and the `_new` table stays: the §C250 fix reverted.
+    'BREAK: 024 loses its transaction (one bare exec again)',
     M024,
+    [['    db.transaction(() => {\n', '    (() => {\n']],
+    /^FAIL: point \d+ \(024-fix-discussions-fk\) .*SHORT/m,
+  ],
+  [
+    'BREAK: migrationRunner loses its second pass on a new database',
+    RUNNER,
     [
       [
-        '    db.exec(`\n      -- Preserve existing data',
-        '    db.transaction(() => db.exec(`\n      -- Preserve existing data',
-      ],
-      [
-        '        ON terminology_discussions(term_id);\n    `);',
-        '        ON terminology_discussions(term_id);\n    `))();',
+        '  if (!created || first.errors.length) return { ...first, secondPass: false };',
+        '  return { ...first, secondPass: false };',
       ],
     ],
-    /^FAIL: pinned finding no longer failing: 024-fix-discussions-fk/m,
+    /^FAIL: first boot is short in a NEW way/m,
   ],
 ];
 
