@@ -6,10 +6,14 @@
  * - pending_reviews: Review queue for submitted edits
  */
 
+const { legacyTablesRetired } = require('../lib/migrationSchema');
+
 module.exports = {
   name: '002-editor-tables',
 
   up(db) {
+    // Retired by 021 (dropped) once 032 has run: do not bring them back on a later boot (§C250).
+    if (legacyTablesRetired(db)) return;
     // Create edit_history table
     db.exec(`
       CREATE TABLE IF NOT EXISTS edit_history (

@@ -10,10 +10,15 @@
  * DROP CONSTRAINT.
  */
 
+const { tableExists } = require('../lib/migrationSchema');
+
 module.exports = {
   name: '020-glossary-definitions',
 
   up(db) {
+    // Retired by 032: with no terminology_terms there is nothing to do, and touching it would throw
+    // "no such table" and wedge the boot (§C250).
+    if (!tableExists(db, 'terminology_terms')) return;
     // Check if migration was already applied (pos column exists)
     const columns = db.pragma('table_info(terminology_terms)');
     const hasPos = columns.some((c) => c.name === 'pos');

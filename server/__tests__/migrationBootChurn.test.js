@@ -1,0 +1,93 @@
+// server/__tests__/migrationBootChurn.test.js
+//
+// Register §C250 (every-boot churn): migrationRunner keeps no ledger and re-runs every migration on
+// every start. Before this fix, each boot recreated the retired legacy tables (002: edit_history,
+// pending_reviews; 004: terminology_terms, terminology_imports) only for later migrations to redo
+// work on them and drop them again (021; 026, 028, then 032), logging "Applying migration 026" and
+// "dropped edit_history" on every restart (prod journal, 2026-11-23). Once 032 has run, the legacy
+// tables are retired and a later boot must not bring them back.
+import { describe, it, expect } from 'vitest';
+import { createRequire } from 'module';
+import fs from 'fs';
+import os from 'os';
+import path from 'path';
+const require = createRequire(import.meta.url);
+const Database = require('better-sqlite3');
+
+const MIGRATIONS = path.join(import.meta.dirname, '..', 'migrations');
+const LEGACY = ['edit_history', 'pending_reviews', 'terminology_terms', 'terminology_imports'];
+const CHURN_LOGS = [
+  /Migration 021: dropped/,
+  /Applying migration 026/,
+  /Applying migration 028/,
+  /idordabanki_id column added/,
+];
+
+/**
+ * One server start's migrations, as migrationRunner runs them: every up(db) in order, a throw
+ * naming "duplicate column" or "already exists" counted as skipped, any other throw an error.
+ * Records which legacy tables existed after each migration, and what the migrations logged.
+ */
+function boot(db) {
+  const files = fs
+    .readdirSync(MIGRATIONS)
+    .filter((f) => /^\d{3}-.*\.js$/.test(f))
+    .sort();
+  const seen = new Set();
+  const errors = [];
+  const logs = [];
+  const origLog = console.log;
+  console.log = (...a) => logs.push(a.join(' '));
+  try {
+    for (const f of files) {
+      try {
+        require(path.join(MIGRATIONS, f)).up(db);
+      } catch (e) {
+        if (!/duplicate column|already exists/.test(e.message)) errors.push(`${f}: ${e.message}`);
+      }
+      for (const t of LEGACY) {
+        if (db.prepare("SELECT 1 FROM sqlite_master WHERE type='table' AND name = ?").get(t))
+          seen.add(t);
+      }
+    }
+  } finally {
+    console.log = origLog;
+  }
+  return { seen: [...seen].sort(), errors, logs };
+}
+
+describe('a later boot does not recreate the retired legacy tables (§C250 churn)', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'boot-churn-'));
+  const db = new Database(path.join(dir, 'sessions.db'));
+  const first = boot(db);
+  const second = boot(db);
+
+  it('CONTROL: the first boot of a fresh database creates them (they are later retired by 021 and 032)', () => {
+    expect(first.errors).toEqual([]);
+    expect(first.seen).toEqual([...LEGACY].sort());
+  });
+
+  it('a later boot never creates any legacy table', () => {
+    expect(second.errors).toEqual([]);
+    expect(second.seen).toEqual([]);
+  });
+
+  it('a later boot logs none of the churn lines', () => {
+    const churn = second.logs.filter((l) => CHURN_LOGS.some((re) => re.test(l)));
+    expect(churn).toEqual([]);
+  });
+
+  it('the final schema is the same after the later boot', () => {
+    const tables = (d) =>
+      d
+        .prepare(
+          "SELECT name FROM sqlite_master WHERE type IN ('table','index','trigger') ORDER BY name"
+        )
+        .all()
+        .map((r) => r.name);
+    const after = tables(db);
+    const third = boot(db);
+    expect(third.errors).toEqual([]);
+    expect(tables(db)).toEqual(after);
+  });
+});

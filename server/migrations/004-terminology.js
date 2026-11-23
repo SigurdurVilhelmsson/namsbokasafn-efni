@@ -6,14 +6,19 @@
  * - Localization suggestions (auto-detected changes)
  */
 
-const { createIndexIfColumnsExist } = require('../lib/migrationSchema');
+const { createIndexIfColumnsExist, legacyTablesRetired } = require('../lib/migrationSchema');
 
 module.exports = {
   name: '004-terminology',
 
   up(db) {
-    // Create terminology_terms table
-    db.exec(`
+    // terminology_terms and terminology_imports are retired by 032 (dropped, replaced): do not bring
+    // them back on a later boot (§C250). terminology_discussions stays: 032 rebuilds it under that name.
+    const retired = legacyTablesRetired(db);
+
+    if (!retired) {
+      // Create terminology_terms table
+      db.exec(`
       CREATE TABLE IF NOT EXISTS terminology_terms (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         book_id INTEGER,
@@ -36,14 +41,17 @@ module.exports = {
       );
     `);
 
-    createIndexIfColumnsExist(db, 'idx_terminology_terms_book', 'terminology_terms', ['book_id']);
-    createIndexIfColumnsExist(db, 'idx_terminology_terms_english', 'terminology_terms', [
-      'english',
-    ]);
-    createIndexIfColumnsExist(db, 'idx_terminology_terms_status', 'terminology_terms', ['status']);
-    createIndexIfColumnsExist(db, 'idx_terminology_terms_category', 'terminology_terms', [
-      'category',
-    ]);
+      createIndexIfColumnsExist(db, 'idx_terminology_terms_book', 'terminology_terms', ['book_id']);
+      createIndexIfColumnsExist(db, 'idx_terminology_terms_english', 'terminology_terms', [
+        'english',
+      ]);
+      createIndexIfColumnsExist(db, 'idx_terminology_terms_status', 'terminology_terms', [
+        'status',
+      ]);
+      createIndexIfColumnsExist(db, 'idx_terminology_terms_category', 'terminology_terms', [
+        'category',
+      ]);
+    }
 
     // Create terminology_discussions table
     db.exec(`
@@ -65,7 +73,8 @@ module.exports = {
     ]);
 
     // Create terminology_imports table
-    db.exec(`
+    if (!retired) {
+      db.exec(`
       CREATE TABLE IF NOT EXISTS terminology_imports (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         source_name TEXT NOT NULL,
@@ -79,6 +88,7 @@ module.exports = {
         error_message TEXT
       );
     `);
+    }
 
     // Create localization_suggestions table
     db.exec(`
@@ -117,8 +127,9 @@ module.exports = {
       'suggestion_type',
     ]);
 
-    // Create trigger to update terminology_terms.updated_at
-    db.exec(`
+    // Create trigger to update terminology_terms.updated_at (on a retired table it would throw)
+    if (!retired) {
+      db.exec(`
       CREATE TRIGGER IF NOT EXISTS update_terminology_terms_timestamp
         AFTER UPDATE ON terminology_terms
         FOR EACH ROW
@@ -126,5 +137,6 @@ module.exports = {
           UPDATE terminology_terms SET updated_at = CURRENT_TIMESTAMP WHERE id = OLD.id;
         END;
     `);
+    }
   },
 };

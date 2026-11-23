@@ -31,4 +31,25 @@ function createIndexIfColumnsExist(db, indexName, table, columns) {
   }
 }
 
-module.exports = { createIndexIfColumnsExist };
+/** Whether a TABLE of that name exists (a view does not count). */
+function tableExists(db, name) {
+  return Boolean(
+    db.prepare("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = ?").get(name)
+  );
+}
+
+/**
+ * Whether the legacy tables are retired: 021 dropped edit_history and pending_reviews, and 032
+ * replaced terminology_terms and terminology_imports with the terminology_headwords tables. 032
+ * runs after 021, and no later migration drops terminology_headwords, so its presence means both
+ * retirements have run (register §C250, every-boot churn).
+ *
+ * Before this guard, every boot recreated those tables (002, 004) only for 021, 026, 028 and 032
+ * to redo work on them and drop them again, logging it as if each were applied anew; and each
+ * restart reopened 026's crash window. A fresh database still creates them on its first boot.
+ */
+function legacyTablesRetired(db) {
+  return tableExists(db, 'terminology_headwords');
+}
+
+module.exports = { createIndexIfColumnsExist, tableExists, legacyTablesRetired };
