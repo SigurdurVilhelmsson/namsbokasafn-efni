@@ -5,11 +5,15 @@
  * (UNIQUE constraint on registered_books.slug). This migration handles
  * all possible DB states:
  *
- * - Both "efnafraedi" AND "efnafraedi-2e" exist → merge FK refs, delete old
  * - Only "efnafraedi" exists → rename to "efnafraedi-2e"
- * - Only "efnafraedi-2e" exists → no-op
+ * - "efnafraedi-2e" exists → the rename is done: ensure its title, leave any "efnafraedi" alone
  *
- * Also ensures title_is = 'Efnafræði 2e' in all cases.
+ * ⚠️ IT USED TO MERGE when both existed (move the old book's rows onto efnafraedi-2e, then delete it).
+ * That cleaned up a historical double registration, but migrationRunner re-runs every migration on
+ * every boot, so once the rename was done it swallowed any book an admin later registered as
+ * "efnafraedi" (register §C250). A fresh database never registers "efnafraedi" (only 049 registers
+ * efnafraedi-2e), and production ran the merge long ago, so an "efnafraedi" row beside efnafraedi-2e
+ * is now a deliberate new book.
  */
 
 const { tableExists } = require('../lib/migrationSchema');
@@ -30,8 +34,8 @@ module.exports = {
       return;
     }
 
-    if (!oldRow && newRow) {
-      // Only new slug exists — just ensure title is correct
+    if (newRow) {
+      // The rename is done: ensure the title, and leave any `efnafraedi` row alone (see the header)
       db.prepare('UPDATE registered_books SET title_is = ? WHERE id = ?').run(newTitle, newRow.id);
       return;
     }
@@ -61,47 +65,20 @@ module.exports = {
       'user_chapter_assignments',
     ]);
 
-    // Tables with FK column "book_id" (integer)
-    const bookIdTables = present(['book_chapters', 'book_sections', 'terminology_terms']);
-
     const cleanup = db.transaction(() => {
-      if (oldRow && newRow) {
-        // Both exist — merge: move FK references from old to new, then delete old
-        const oldId = oldRow.id;
-        const newId = newRow.id;
+      // Only the old slug exists — rename it
+      db.prepare('UPDATE registered_books SET slug = ?, title_is = ? WHERE id = ?').run(
+        newSlug,
+        newTitle,
+        oldRow.id
+      );
 
-        for (const table of bookTables) {
-          db.prepare(`UPDATE ${table} SET book = ? WHERE book = ?`).run(newSlug, oldSlug);
-        }
+      for (const table of bookTables) {
+        db.prepare(`UPDATE ${table} SET book = ? WHERE book = ?`).run(newSlug, oldSlug);
+      }
 
-        for (const table of bookSlugTables) {
-          db.prepare(`UPDATE ${table} SET book_slug = ? WHERE book_slug = ?`).run(newSlug, oldSlug);
-        }
-
-        for (const table of bookIdTables) {
-          db.prepare(`UPDATE ${table} SET book_id = ? WHERE book_id = ?`).run(newId, oldId);
-        }
-
-        // Delete the old entry
-        db.prepare('DELETE FROM registered_books WHERE id = ?').run(oldId);
-
-        // Ensure correct title
-        db.prepare('UPDATE registered_books SET title_is = ? WHERE id = ?').run(newTitle, newId);
-      } else if (oldRow && !newRow) {
-        // Only old slug exists — safe to rename
-        db.prepare('UPDATE registered_books SET slug = ?, title_is = ? WHERE id = ?').run(
-          newSlug,
-          newTitle,
-          oldRow.id
-        );
-
-        for (const table of bookTables) {
-          db.prepare(`UPDATE ${table} SET book = ? WHERE book = ?`).run(newSlug, oldSlug);
-        }
-
-        for (const table of bookSlugTables) {
-          db.prepare(`UPDATE ${table} SET book_slug = ? WHERE book_slug = ?`).run(newSlug, oldSlug);
-        }
+      for (const table of bookSlugTables) {
+        db.prepare(`UPDATE ${table} SET book_slug = ? WHERE book_slug = ?`).run(newSlug, oldSlug);
       }
     });
 
