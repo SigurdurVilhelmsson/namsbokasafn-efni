@@ -222,6 +222,9 @@ describe('scripts/deploy.sh health readout — glossary refusals (register C14, 
       /^ {2}⚠ STALE orverufraedi: refused-absent-baseline \(8\.0d\) — unattended/m
     );
     expect(out).toMatch(/no committed glossary/);
+    // §C249: the same outcome also means a committed file holding no terms, and the health
+    // payload carries no `detail` to tell them apart, so the remedy names both.
+    expect(out).toMatch(/holds no terms/);
 
     const cmds = printedCommands(out);
     expect(cmds).toHaveLength(1);

@@ -1022,6 +1022,41 @@ function runGlossaryExport({
       continue;
     }
 
+    // §C249: A BASELINE THAT HOLDS NO TERMS IS AN ABSENT BASELINE BY ANOTHER NAME, and it gets
+    // the same refusal. A committed file stamped by this exporter passes the producer gate on
+    // its stamp before any term is read (detectProducer), §C21's gate above keys on a MISSING
+    // file only, and shrink and growth both need a non-zero baseline — so a stamped file with
+    // `terms: []` or no `terms` at all was a "nothing" no gate saw, and the bare cron wrote the
+    // whole export onto it unreviewed. Reachable after a deliberate --force to an empty export
+    // or an --adopt of an empty first one; found by server/verification/glossary-export/.
+    //
+    // Two shapes, one rule: refuse (unless --adopt) whenever this run would put terms onto a
+    // baseline that holds none, and whenever the baseline has no `terms` array at all (any
+    // write replaces a file that is not a glossary). An empty array meeting an empty export is
+    // left to the unchanged/restamp path below: nothing is populated, so nothing is decided.
+    // Placed AFTER the producer gate, so an unstamped empty file keeps its producer refusal.
+    // --force does not satisfy this, exactly as for §C21: it answers a different question.
+    const prevHasTermsArray = Array.isArray(prev?.terms);
+    const emptyBaseline =
+      existing.kind === 'ok' &&
+      countTerms(prev) === 0 &&
+      (!prevHasTermsArray || countTerms(next) > 0);
+    if (emptyBaseline && !adopt) {
+      logError(
+        `${b}: REFUSING to write — the committed glossary holds no terms, so like a missing ` +
+          `file there is nothing to compare against and the shrink and growth gates are ` +
+          `inert. Populating it is unreviewed by construction. Decide what this book's ` +
+          `glossary should be, then pass --adopt --book ${b} to write it. ` +
+          `Do NOT expect --force to work here: it answers a different question.${integrityNote}`
+      );
+      outcomes[b] = {
+        outcome: 'refused-absent-baseline',
+        detail: 'committed file holds no terms',
+        ...integrityField,
+      };
+      continue;
+    }
+
     // Not when the layer changed during the build: equal terms prove nothing about an export
     // that may predate the change, so that case goes on to the hold below.
     if (!changedDuringBuild && sameTerms(prev, next)) {
@@ -1217,7 +1252,7 @@ function runGlossaryExport({
     // would be recorded under the label for its most routine one.
     outcomes[b] = {
       outcome:
-        existing.kind === 'corrupt' || existing.kind === 'absent' || pv.refuse
+        existing.kind === 'corrupt' || existing.kind === 'absent' || emptyBaseline || pv.refuse
           ? 'adopted'
           : released
             ? 'released'

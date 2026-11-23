@@ -4,13 +4,11 @@
 
 ## ⏩ RESUME — state as of **2026-10-09 — ✅ '6' PR-B IS MERGED ([#546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546)) AND DEPLOYED, with the 7 Dependabot PRs; R-22's condition is met and the LIVE-RUN HOLD's condition is met on `main`. ⏹ The whole-book re-render and the chemistry sync are HELD for [USER]. ▶ [CODE] in parallel: the ② code batch (end of this block)** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence) ✏️ *Heading re-dated 2026-10-09; it had said PR-B was BUILT and UNPUSHED, with step 2b and the LIVE-RUN HOLD outstanding, after all three had changed. The bullets directly under the SINGLE NEXT ACTION are PR-B's record.*
 
-### ⏭ 2026-11-22 (G1.13 scope guards: spec approved, built, open as PR #777; the licence-removal refusal; the TLA+ verification) — IT DOES NOT SUPERSEDE THE NEXT OF ANY OTHER ENTRY
+### ⏭ 2026-11-22 (G1.13 scope guards: spec approved, built, merged as #777 and DEPLOYED 2026-11-23; the licence-removal refusal; the TLA+ verification) — IT DOES NOT SUPERSEDE THE NEXT OF ANY OTHER ENTRY
 - ✅ **Spec approved by [USER] on 2026-11-22**, Claude's calls 1–12 included, with licence records kept permanently
   (retention class `keep`): [design](../superpowers/specs/2026-11-22-g113-scope-guards-design.md), its AMENDED block
   items 1–8, and [plan](../superpowers/plans/2026-11-22-g113-scope-guards.md).
-- ✅ **Built** on `feat/g113-scope-guards` (each task reviewed, then a whole-branch review) and **open as
-  [#777](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/777)** against `main`; the PR carries the spec
-  and plan. What it does:
+- ✅ **Built** on `feat/g113-scope-guards` (each task reviewed, then a whole-branch review). What it does:
   - only chemistry takes non-admin writes (an allowlist, closed by default; a route census test names any write route
     that neither carries the guard nor is exempt);
   - chemistry is always assignment-enforced and fails closed, and its toggle is locked;
@@ -20,8 +18,8 @@
     clause, and the suggestion view on.
 - ✅ **[USER]'s additions on the PR:**
   - ten parked review findings fixed before merge;
-  - three Icelandic strings: "í kafla" singular for one, "sem ekki er hægt að ritstýra" for ch00, and the
-    chapter-denied 403 in Icelandic;
+  - Icelandic strings: "í kafla" singular for one, "sem ekki er hægt að ritstýra" for ch00, the chapter-denied 403 in
+    Icelandic, and the `HOLDS_CHAPTERS` message in Fable's wording;
   - **licence removal refuses (409 `HOLDS_CHAPTERS`) while the user holds a chapter in a book open to editors**
     (`22c5f0c01`; AMENDED item 8). This closes the gap the model found below.
 - ✅ **A TLA+ model of the assign gate and the study-unit opening** (`server/verification/assign-gate/`, checked with
@@ -31,16 +29,35 @@
     gets a row, and every row holder and opener has a licence clause.
   - One known finding remains and is pinned: an editor given head-editor or admin rights after the assignment keeps the
     chapter (AMENDED item 7a is its runbook line).
-- **Production read** (read-only, 2026-11-22):
+- **Production read before the deploy** (read-only, 2026-11-22):
   - no head editor of a closed book, and no head editor of chemistry;
   - two plain editors hold book-access rows in closed books and lose writes there;
   - one old microbiology assignment row (AMENDED item 6).
-- ⏭ **NEXT, [USER]'s:**
-  - merge #777 and deploy (merging pushes `main`, so deploy right after, away from the even-hour cron);
-  - then spec §8's runbook: the A4 §3 walk, the appendix backfill (dry run, then `--db`), and licence clauses recorded
-    as agreements are signed.
-  - Assigning waits on G1.4's consent text.
-  - Docs PR #776 (the G1.7 done record) stays open to ride with a deploy.
+- ✅ **MERGED and DEPLOYED** on [USER]'s word:
+  - [#776](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/776) (the G1.7 done record) first, at
+    00:18:28Z as `4182b74dd`;
+  - then [#777](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/777) at 00:33:06Z as `9dca06c91`, each
+    pinned to its checked head;
+  - deployed by [USER]: production pulled `9dca06c91` at 00:33:14Z and the service restarted at 00:34:07Z.
+- ✅ **Post-deploy reads** (read-only, 2026-11-23):
+  - production is at `9dca06c91`, 0/0, with a clean tree;
+  - `/api/health` ok, and `checks.schema`, whose list now includes `editor_licence_clauses`, reports nothing missing;
+  - `editor_licence_clauses` exists with its index and its append-only trigger, and holds no rows;
+  - the deployed `isAssignmentEnforced('efnafraedi-2e')` answers on, by the study-book rule, while the stored toggle
+    row is still 0;
+  - `EDITOR_WRITABLE_BOOKS` is chemistry alone, and no chemistry assignment row exists.
+- ✅ **§8 step 2, the appendix backfill, DONE on production (2026-11-23):**
+  - Claude's read-only dry run of `scripts/backfill-appendix-sections.js --book efnafraedi-2e` listed 13 sections
+    (`m68859`–`m68871`); the script opens the database read-only without `--db`;
+  - [USER] ran it with `--db`;
+  - the re-run dry run reports nothing left to insert;
+  - read-only counts: one appendices chapter row (`book_chapters` id 156, chapter `-1`, 13 sections), the 13 section
+    rows `m68859`–`m68871`, and still no chemistry assignment row (no unit opened).
+- ⏭ **NEXT, [USER]'s:** the rest of spec §8's runbook:
+  - the A4 §3 walk on production;
+  - licence clauses recorded as agreements are signed.
+
+  Assigning waits on G1.4's consent text, and the two runbook lines of AMENDED item 7 hold from now on.
 
 ### ⏭ 2026-11-21 (the c46 bundle, batch B4: G2.3, §C11 ① and G1.16 merged; G1.15 answered, its route half merged and deployed, its retention half a design to write) — IT DOES NOT SUPERSEDE THE NEXT OF ANY OTHER ENTRY: **✅ On [USER]'s "Go on c46" (2026-11-21), three of the 2026-11-08 rulings ([record](../decisions/2026-11-08-editing-gates-and-housekeeping-answers.md), answers 8 and 9) are built test-first, each on its own branch cut from `main` at `69640a624`, each opened as a draft PR: G2.3 ([#765](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/765)), §C11 ① ([#766](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/766), which carries this entry) and G1.16 ([#767](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/767)). ✅ **All three are MERGED** on [USER]'s word, as merge commits pinned to their checked heads: #765 at 14:05:38Z as `1df1be82c`, #766 at 14:05:43Z as `264802845` (#764, recorded under §C245, went first at 14:05:34Z as `e63f9afc2`), and #767 at 14:15:05Z as `bda1feb40`, after [USER] read G1.16's new Icelandic credit sentence and found it reads fine. ✅ **The first three DEPLOYED by [USER]:** production pulled `264802845` at 14:07:50Z and the service restarted at 14:08:03Z; read over ssh at 14:08Z, the tree is clean at 0/0, `/api/health` is `ok`, and the content backup's last run (14:00:09Z, nothing to commit) is not stale. **#767:** DEPLOYED by [USER]: production pulled `bda1feb40` at 14:16:33Z and the service restarted at 14:16:41Z; read over ssh at 14:17Z, the tree is clean at 0/0, `/api/health` is `ok` with every check ok, and the content backup is not stale. ✅ **[USER] answered G1.15's four questions the same day** ([record](../decisions/2026-11-21-g115-editor-privacy-split-and-sd7-scope.md)): G1.15(a), route privacy, is MERGED as [#768](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/768) (2026-11-21 14:37:59Z, `701d36c23`, a merge commit pinned to its checked head `d8c5dddb9`, on which all five checks passed). ✅ **DEPLOYED by [USER]:** production pulled `701d36c23` at 14:41:48Z and the service restarted at 14:42:03Z; read over ssh afterwards, the tree is clean at 0/0, `/api/health` is `ok` with every check ok, and the content backup is not stale. G1.15(b), the retention dates, is MERGED as #772 and DEPLOYED (2026-11-22; bullets below), and so is #770 (§C248 + G1.11). ▶ NEXT: nothing in G1.15(b) is open before 2029: both post-deploy reads that waited on the crons pass (G1.15(b) bullets below). The production log limits stay [USER]'s production change (the "Two dependencies" bullet below). ✏️ *Until 2026-11-22 ~12:35Z the NEXT here was two post-deploy reads that waited on the crons (the 12:30Z backup cycle's log and the first glossary export's diff). Until 2026-11-22 ~11:45Z this said #772 was ready for review, with its review and merge next. Until earlier on 2026-11-22 it said G1.15(b) was a design spec to write first, with the spec as the next step. Until 2026-11-21 it said all three PRs were drafts, nothing was merged or deployed, and G1.15 waited on answers.***
 - **G2.3, the review-status sidecar** ([#765](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/765), `805e4aebb`). Each segment's entry is its status alone, `generated` is a UTC date, and a revoke keeps the existing file's date (a pre-G2.3 full timestamp is cut to its own date). The writer reads only segment ids from both tables, so no name or time reaches it. No sidecar is committed yet (0 tracked), so nothing public changes. This makes true the consent text's statement that the published status file names no one and gives no time (G1.4's precondition 4, in the 2026-11-08 PR4 entry below), before G2.7 lifts the apply hold. Its tests were watched red first.
@@ -129,6 +146,22 @@
 - **Found by** `server/verification/research-withdrawal/check.sh` (TLA+, TLC): one editor, two intervals, every order of consent, the withdraw route's two commits, capture and loss, the withdrawal script's commits with crashes, both copies and both restores. Shortest path: consent → `backup-db.sh` copy → withdraw → restore. **With the sessions.db restore left out, every rule holds** (the research copy modelled as the code takes it: copy, then re-check; `check.sh` prints the state count). Four model mutants are each caught. `server/__tests__/researchSessionsRestore.test.js` proves the precondition on the real functions (each beside its control: on a pre-withdrawal copy capture resumes, and the interval stops being due so its key row stays). It cannot detect a fix: the restore is a manual runbook step with no code to run.
 - **Not live today:** no consent text is approved in the repo, so no one can consent yet. It becomes live when the study opens.
 - **A fix is a product change for [USER]** (for example, reconcile `research_consent` after a `sessions.db` restore, or refuse a restore older than the newest withdrawal); **the fix must bring its own test** that runs the new step on such a copy; then the model's `SessionsRestore` is updated and the finding leaves `check.sh`. Skill: `.claude/skills/verify-research-withdrawal/`.
+
+#### §C250 (NEW, 2026-11-23) — a crash during a migration's first run can strand it for good: four migrations never finish, and a fresh database's first boot is short; found by the new exhaustive check
+**✅ 013 and 014 FIXED (built 2026-11-23 on [USER]'s instruction; not yet merged):** each runs its statements in one `db.transaction`, so a crash leaves all or nothing; their pins are removed and `mutate.js` shows the check catches 014 reverting to bare `ALTER`s. **014 also guards each column** (`PRAGMA table_info` before each `ALTER`), so a database ALREADY stranded (only `source_commit_hash`, or the first two) gets the missing columns on its next start, where a transaction alone would throw on the first `ALTER` and be skipped again; pinned by `server/__tests__/migration014.test.js`, verified red against the transaction-only 014 first. 013 has no such guard: a database stranded before this fix keeps its missing index (slower queries only). Production's schema was not read. **Still open, [USER]'s ruling:** 024 and 026 (stray `*_new` tables, cosmetic) and the first-boot item.
+- **What:** `migrationRunner` keeps no record of what has run; every start re-runs every migration and counts a `duplicate column` / `already exists` throw as skipped. So a migration whose first application dies part-way, and whose re-run throws on its FIRST statement, never finishes, and nothing reports it (`failLoudOnMigrationErrors` sees no error; `schemaHealth` lists only 053 onward). Measured on the real runner from an empty database, a SIGKILL after each of the build's 216 commits, then clean restarts to a fixed point: 207 converge, 9 do not, in four migrations:
+  - **014** (three bare `ALTER`s): `registered_books.source_fetched_at` / `source_repo` missing for good, so `pipelineService.updateSourceTracking` fails (caught and logged) and source tracking is lost;
+  - **013** (`ALTER` then `CREATE INDEX`): `idx_openstax_catalogue_subject` missing (slower queries only);
+  - **024** and **026** (table rebuilds as one non-transactional `exec`): a stray empty `*_new` table; cosmetic on today's code, because 032 drops the legacy tables itself.
+- **And with no crash at all:** a fresh database's FIRST start is not the full schema; the second is. 022 rebuilds `users`, discarding 006's `idx_users_role`, `idx_users_is_active` and the `update_users_timestamp` trigger (006 restores them next start); 049 registers books after 032 seeded `book_subject_mapping` (032 fills them next start). Matters for a fresh clone, a new box or the E2E seed; production has restarted many times.
+- **Not known to be live:** reaching the four needs a crash during that migration's first application; production's schema was not read.
+- **Evidence:** `node server/verification/migration-convergence/check.js` pins all five narrowly; `mutate.js` proves it catches a new break (060 without `IF NOT EXISTS`) and sees a fix (014 in one `db.transaction` makes its pin report no longer failing); the skill `.claude/skills/verify-migration-convergence/` explains it. Fixes (a transaction or per-statement guards per migration; a re-run order or a second pass for the first boot) are product changes, so they wait for [USER]; each fix then removes its pin.
+
+#### §C249 (NEW, 2026-11-23) — the glossary export's bare (cron) run populates a committed glossary that is stamped but holds no terms; found by the new exhaustive check
+**✅ FIXED (built 2026-11-23, [USER]'s ruling the same day; not yet merged):** a bare run treats a baseline with no terms like an absent one. The `emptyBaseline` refusal in `runGlossaryExport`, right after the producer gate, records `refused-absent-baseline` (detail `committed file holds no terms`) unless `--adopt`; `--force` does not satisfy it. It fires when the run would put terms onto a baseline that holds none, and on any write over a stamped file with no `terms` array; an empty export meeting `terms: []` stays `unchanged`. The check's pins are removed (`KNOWN_FINDINGS = {}`) and every rule holds; two new mutants (labels `§C249` in `mutate.js`) are caught; regression tests in `glossaryExportRun.test.js`. The text below is the finding as logged.
+- **What:** a committed `glossary-unified.json` stamped `"producer": "export-terminology-resolved"` whose `terms` is `[]` or missing walks past every gate on a run with no flags. The stamp satisfies the producer gate before any term is read (`detectProducer`). The absent-baseline gate (§C21) keys on a missing file only (`readExisting` → `kind: 'absent'`). Shrink and growth both need a non-zero baseline. So the next cron tick writes the whole export unreviewed: the "first population is a decision" rule (§C21), reached through another representation of nothing.
+- **Reachable only after a deliberate flagged run** (measured on the real `runGlossaryExport`): `--force` of a shrink to an empty export, or `--adopt` of an empty first export; the next bare run then writes 0 → 1000 as `wrote`. Controls: a bare run refuses 1000 → 0 and 1 → 1000. **Not live in the dev tree on 2026-11-23:** all four committed glossaries are resolved-stamped with 290–1,638 terms; production not read.
+- **Evidence:** `node server/verification/glossary-export/check.js` now holds every rule with nothing pinned (`KNOWN_FINDINGS = {}`), and `mutate.js '§C249'` shows it catches the fix going missing; the skill `.claude/skills/verify-glossary-export/` explains both. `scripts/deploy.sh`'s `refused-absent-baseline` remedy names the empty-file case too, since the health payload carries no `detail` to tell it from a missing file. ✏️ *Until 2026-11-23 this bullet said: the check "pins it narrowly (`KNOWN_FINDINGS`) … A fix (for example, a bare run treating a baseline with no terms like an absent one) is a product change, so it waits for [USER]; the check's pin then has to be removed." [USER] ruled that fix the same day; see the banner above.*
 
 #### §C248 (NEW, 2026-11-21) — the editor's toolbar writes the legacy markup dialect, and in a segment carrying any new-format marker readers get the characters
 **✅ [USER] chose on 2026-11-21, with G1.11 (the bracket-marker save gate) designed alongside:** (1) **the toolbar writes the bracket dialect, choosing per segment**: bracket markup unless the segment already holds legacy markup and no new-format marker, then legacy (inject and the MT untouched); (2) **G1.11's rule 1a is relative**: an edit may not ADD a `[[type: ` marker, because every one in today's corpus comes from the OpenStax source (7 English, 2 chemistry MT segments, e.g. `from<emphasis> argentum</emphasis>`), so the absolute rule would refuse unchanged saves; (3) **an added legacy wrap in a new-format segment warns**, it does not block. Rejected: making inject convert legacy markup everywhere, because chemistry's new-format segments use a literal `~` for "approximately" (`~10[[sup:−3]]`, `~150 torr`). 📐 **The design is APPROVED** (2026-11-21, as written): `docs/superpowers/specs/2026-11-21-c248-g111-toolbar-dialect-and-marker-gate-design.md`. Before approval, the builder check's five questions were folded in, and §2.3 was corrected and put back to [USER]: with inject's own patterns, converting legacy markup everywhere would change no current output (0 matches in every book's new-format MT; control 258 elsewhere), and [USER] kept approach 1 for consistent stored data and inject's guard. [USER] also ruled that an ADDED empty marker blocks, because inject fails the whole module on one. Its probes and counts are off-repo in `~/.cache/namsbokasafn-audit/2026-11-21-c46/`.

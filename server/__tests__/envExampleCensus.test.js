@@ -10,7 +10,7 @@
  * Server: the set of `process.env.NAME` reads in the running server's code must
  * equal the set of keys the template lists (commented-out `# NAME=` lines count).
  * `server/scripts/` is excluded because the cron scripts do not load `.env`;
- * tests and E2E are excluded because they are not the server.
+ * tests, E2E and the verification harnesses are excluded because they are not the server.
  *
  * Root: every key the root template lists must be read from the root `.env` by
  * some tool (`loadEnvFile` plus the key, in one file). This direction only: a
@@ -33,6 +33,9 @@ const NOT_SERVER = new Set([
   'scripts',
   'greynir-sidecar',
   'test-results',
+  // Verification harnesses (server/verification/*): run by hand, never load .env, and their
+  // variables (the migration check's MIG_CRASH_AT and friends) steer the harness, not the server.
+  'verification',
 ]);
 
 /** Read by server code only to detect a test run; not configuration. */
