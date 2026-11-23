@@ -30,6 +30,7 @@ const serverCommit = require('../lib/serverCommit');
 const { sha256Text } = require('../lib/servedText');
 const { writeModule, handlerFor, invoke } = require('./helpers/servedFixture');
 const { APPROVED, makeUser, consent, losses } = require('./helpers/researchFixture.cjs');
+const { plantAssignment } = require('./helpers/plantAssignment.cjs');
 const { eventMark, eventsSince } = require('./helpers/researchEventsFixture.cjs');
 
 const CHEM = 'efnafraedi-2e';
@@ -114,6 +115,11 @@ beforeAll(() => {
     propagate: handlerFor(router, 'post', '/:book/:chapter/:moduleId/propagate'),
   };
   db = new Database(dbPath);
+  // G1.13 (spec §6.2): chemistry is assignment-enforced, so every editor here holds the chapters
+  // the fixture's modules sit in, as the study's editors do.
+  for (const { id } of db.prepare("SELECT id FROM users WHERE role = 'editor'").all()) {
+    for (const chapter of [1, 2]) plantAssignment(db, { userId: id, book: CHEM, chapter });
+  }
 });
 
 afterAll(() => {

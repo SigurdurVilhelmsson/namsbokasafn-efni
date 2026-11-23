@@ -87,8 +87,14 @@ test.describe('Phase 2 UX fixes', () => {
 });
 
 /**
- * This block writes to the real `efnafraedi-2e` (not the fixture book), as
- * `segment-editor.spec.js` already does for the same module.
+ * This block writes to the real `efnafraedi-2e` (not the fixture book), in
+ * chapter 6, module m68729, which it owns (seed-fixture.js). Chemistry is a
+ * study book and so always assignment-enforced (G1.13 spec §6.2): the editor
+ * (88010) saves there through the users row and chapter 6 assignment that
+ * seed-fixture.js plants. That row also makes its first serve open the module,
+ * and an opened module gets suggestions for every viewer once the view is on,
+ * so the block moved off m68664, which several specs serve, to a module no
+ * other spec serves.
  *
  * This used to read "that stays safe because the module's MT edit-lock marker
  * is committed and writeMtLock no-ops when one exists". That was true when
@@ -98,7 +104,7 @@ test.describe('Phase 2 UX fixes', () => {
  * mtRunDecision skips a locked module silently (§C118 (9)).
  *
  * The tree is kept clean by global-setup.js + global-teardown.js, which sweep
- * markers this run created and keep any that predate it. Since G1.7, m68664,
+ * markers this run created and keep any that predate it. Since G1.7, m68729,
  * like every chemistry study unit, carries a COMMITTED content-free study-freeze
  * marker, on purpose: it holds the unit's MT for the study, it predates every
  * run so the sweep keeps it, and writeMtLock no-ops on it, so the edit below
@@ -110,8 +116,8 @@ test.describe('Phase 2 UX fixes', () => {
  * per-run uniqueness that identifies "our" edit moved into the text.
  */
 const M5_BOOK = 'efnafraedi-2e';
-const M5_CHAPTER = '1';
-const M5_MODULE = 'm68664';
+const M5_CHAPTER = '6';
+const M5_MODULE = 'm68729';
 const M5_API = `/api/segment-editor/${M5_BOOK}/${M5_CHAPTER}/${M5_MODULE}`;
 
 test.describe('M5 revert bug regression', () => {
@@ -124,9 +130,6 @@ test.describe('M5 revert bug regression', () => {
       chapter: M5_CHAPTER,
       moduleId: M5_MODULE,
       suffix: ` [persist-test-${Date.now()}]`,
-      // Owned by segment-editor.spec.js's propagation tests, which run in a
-      // parallel worker against this same book and module.
-      exclude: ['m68664:abstract:auto-2'],
     });
 
     // Save via API

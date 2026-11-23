@@ -111,13 +111,24 @@ function acceptReq(overrides = {}) {
 }
 
 describe('route registration + gate pins', () => {
-  it('accept mounts the edit-save chain: requireAuth, validateBookChapter, requireBookAccess, validateModule', () => {
+  it('accept mounts six handles', () => {
     expect(acceptLayer).toBeTruthy();
-    expect(acceptLayer.route.stack).toHaveLength(5);
+    expect(acceptLayer.route.stack).toHaveLength(6);
   });
 
+  // G1.13 (spec §6.1): the closed-book guard runs before requireBookAccess, so a closed book never
+  // reaches the chapter check. Both are found by their labels; a missing one is -1 and fails here.
+  it('accept runs the closed-book guard before requireBookAccess', () => {
+    const handles = acceptLayer.route.stack.map((l) => l.handle);
+    const guardAt = handles.findIndex((h) => h.editorScopeGuard);
+    const accessAt = handles.findIndex((h) => h.bookAccessGuard);
+    expect([guardAt >= 0, accessAt >= 0, guardAt < accessAt]).toEqual([true, true, true]);
+  });
+
+  // Found by its label, not its index: at index 2 the closed-book guard would also answer a viewer
+  // on this (closed) book with 403, and the test would pass without reaching requireBookAccess.
   it('accept requireBookAccess gate FIRES: viewer → 403', async () => {
-    const gate = acceptLayer.route.stack[2].handle;
+    const gate = acceptLayer.route.stack.find((l) => l.handle.bookAccessGuard).handle;
     const out = await invoke(gate, {
       params: { book: BOOK, chapter: '1', moduleId: MODULE },
       user: { id: 'v1', username: 'v', role: 'viewer' },
@@ -126,7 +137,8 @@ describe('route registration + gate pins', () => {
   });
 
   it('revoke requireRole(EDITOR) gate FIRES: viewer → 403', async () => {
-    expect(revokeLayer.route.stack).toHaveLength(3);
+    // 4 since G1.13: the closed-book guard (spec §6.7) sits after requireRole (index 2).
+    expect(revokeLayer.route.stack).toHaveLength(4);
     const gate = revokeLayer.route.stack[1].handle;
     const out = await invoke(gate, {
       user: { id: 'v1', username: 'v', role: 'viewer' },

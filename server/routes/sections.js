@@ -25,6 +25,7 @@ const { normalizeChapter } = require('../lib/chapterLabel');
 const bookRegistration = require('../services/bookRegistration');
 const notifications = require('../services/notifications');
 const activityLog = require('../services/activityLog');
+const { refuseClosedBookForNonAdmins } = require('../lib/editorScope');
 
 // Middleware to load section data
 function loadSection(req, res, next) {
@@ -48,6 +49,14 @@ function loadSection(req, res, next) {
     });
   }
 }
+
+// The closed-book guard (G1.13, spec §6.1, §6.7): a non-admin may write only to a book open to
+// editors. It reads the section loadSection put on the request. submit-review gets the book check
+// only: its caller is the section's assigned reviewer, who holds no chapter row.
+const refuseClosedSectionBook = refuseClosedBookForNonAdmins(
+  (req) => req.sectionData.bookSlug,
+  'row'
+);
 
 // ============================================================================
 // SECTION DETAILS
@@ -139,6 +148,7 @@ router.post(
   requireAuth,
   loadSection,
   requireHeadEditorFor((req) => req.sectionData?.bookSlug),
+  refuseClosedSectionBook,
   async (req, res) => {
     const section = req.sectionData;
     const { reviewerId, reviewerName } = req.body;
@@ -222,6 +232,7 @@ router.post(
   requireAuth,
   loadSection,
   requireHeadEditorFor((req) => req.sectionData?.bookSlug),
+  refuseClosedSectionBook,
   async (req, res) => {
     const section = req.sectionData;
     const { localizerId, localizerName } = req.body;
@@ -314,6 +325,7 @@ router.post(
   requireRole(ROLES.HEAD_EDITOR), // anyone below is refused before the section is looked up
   loadSection,
   requireHeadEditorFor((req) => req.sectionData?.bookSlug),
+  refuseClosedSectionBook,
   async (req, res) => {
     const section = req.sectionData;
     const { status, notes } = req.body;
@@ -402,6 +414,7 @@ router.post(
   requireAuth,
   requireRole(ROLES.EDITOR),
   loadSection,
+  refuseClosedSectionBook,
   async (req, res) => {
     const section = req.sectionData;
 
@@ -468,6 +481,7 @@ router.post(
   requireAuth,
   loadSection,
   requireHeadEditorFor((req) => req.sectionData?.bookSlug),
+  refuseClosedSectionBook,
   async (req, res) => {
     const section = req.sectionData;
 
@@ -540,6 +554,7 @@ router.post(
   requireAuth,
   loadSection,
   requireHeadEditorFor((req) => req.sectionData?.bookSlug),
+  refuseClosedSectionBook,
   async (req, res) => {
     const section = req.sectionData;
     const { notes } = req.body;

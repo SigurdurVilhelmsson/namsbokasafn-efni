@@ -11,6 +11,7 @@ const express = require('express');
 const router = express.Router();
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireHeadEditor } = require('../middleware/requireRole');
+const { refuseClosedBookForNonAdmins } = require('../lib/editorScope');
 // Called through the module object, not destructured, so a test can make a write throw.
 const layer = require('../lib/bookGlossaryLayer');
 const log = require('../lib/logger');
@@ -220,7 +221,13 @@ function writableBook(req, res, next) {
 }
 
 const guard = [requireAuth, requireHeadEditor('book'), registeredBook];
-const writeGuard = [...guard, writableBook];
+// The closed-book guard (G1.13, spec §6.1): a head editor of a book not open to editors cannot write
+// its layer; an admin can.
+const writeGuard = [
+  ...guard,
+  writableBook,
+  refuseClosedBookForNonAdmins((req) => req.params.book, 'param'),
+];
 
 router.get('/:book', ...guard, (req, res) => {
   const db = getDb();

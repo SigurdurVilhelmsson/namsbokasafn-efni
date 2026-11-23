@@ -12,6 +12,7 @@ const Database = require('better-sqlite3');
 
 const userService = require('../services/userService');
 const { ROLES } = require('../constants');
+const { plantAssignable } = require('./helpers/plantAssignment.cjs');
 
 let db;
 
@@ -55,6 +56,35 @@ const SCHEMA = `
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     UNIQUE(user_id, book_slug, chapter)
   );
+
+  -- What the assign gate reads (G1.13 spec §6.5), as migrations 055 and 060 create them.
+  CREATE TABLE research_consent (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    decision TEXT NOT NULL CHECK (decision IN ('consented', 'declined')),
+    interval_id INTEGER CHECK (decision = 'consented' OR interval_id IS NULL),
+    consent_text_version TEXT NOT NULL,
+    consent_text_sha256 TEXT NOT NULL,
+    given_at_ms INTEGER NOT NULL,
+    withdrawn_at_ms INTEGER,
+    deletion_done_at_ms INTEGER
+  );
+
+  CREATE TABLE editor_licence_clauses (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    signed_on TEXT NOT NULL,
+    recorded_by TEXT NOT NULL,
+    recorded_at_ms INTEGER NOT NULL
+  );
+
+  CREATE TABLE book_switch_events (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    book TEXT NOT NULL,
+    switch_name TEXT NOT NULL,
+    value INTEGER NOT NULL CHECK (value IN (0, 1)),
+    switched_at_ms INTEGER NOT NULL
+  );
 `;
 
 beforeAll(() => {
@@ -73,6 +103,9 @@ beforeEach(() => {
   db.exec('DELETE FROM user_chapter_assignments');
   db.exec('DELETE FROM user_book_access');
   db.exec('DELETE FROM users');
+  db.exec('DELETE FROM research_consent');
+  db.exec('DELETE FROM editor_licence_clauses');
+  db.exec('DELETE FROM book_switch_events');
 });
 
 /** Helper to insert a user directly and return the id */
@@ -396,12 +429,22 @@ describe('getEffectiveRole', () => {
 describe('chapter assignments', () => {
   it('hasChapterAccess returns true when no assignments (backward compat)', () => {
     const id = seedUser();
-    const result = userService.hasChapterAccess(id, 'efnafraedi-2e', 1);
+    // A non-study book: chemistry no longer has this fail-open (spec §6.2, T10).
+    const result = userService.hasChapterAccess(id, 'testbook', 1);
     expect(result).toBe(true);
+  });
+
+  it('assignChapter refuses an editor the assign gate does not let through, and writes nothing', () => {
+    const id = seedUser();
+    expect(() => userService.assignChapter(id, 'efnafraedi-2e', 3, 'admin')).toThrow(
+      expect.objectContaining({ code: 'ASSIGNMENT_REFUSED', reason: 'no-consent-decision' })
+    );
+    expect(userService.getChapterAssignments(id, 'efnafraedi-2e')).toEqual([]);
   });
 
   it('assignChapter + hasChapterAccess returns true for assigned chapter', () => {
     const id = seedUser();
+    plantAssignable(db, { userId: id, book: 'efnafraedi-2e' });
     userService.assignChapter(id, 'efnafraedi-2e', 3, 'admin');
     const result = userService.hasChapterAccess(id, 'efnafraedi-2e', 3);
     expect(result).toBe(true);
@@ -409,6 +452,7 @@ describe('chapter assignments', () => {
 
   it('hasChapterAccess returns false for non-assigned chapter when assignments exist', () => {
     const id = seedUser();
+    plantAssignable(db, { userId: id, book: 'efnafraedi-2e' });
     userService.assignChapter(id, 'efnafraedi-2e', 3, 'admin');
     const result = userService.hasChapterAccess(id, 'efnafraedi-2e', 5);
     expect(result).toBe(false);

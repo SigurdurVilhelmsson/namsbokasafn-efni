@@ -985,14 +985,16 @@ describe('rejecting a suggestion group (the route)', () => {
     const save = stackOf('/:book/:chapter/:moduleId/edit');
     const rej = stackOf('/:book/:chapter/:moduleId/suggestions/reject');
     expect(rej).toHaveLength(save.length);
-    expect(rej).toHaveLength(4);
+    // 5 since G1.13: the closed-book guard (spec §6.1), one shared function, at index 2.
+    expect(rej).toHaveLength(5);
     // The shared middleware are the same functions; requireBookAccess() builds a closure per call, so
     // that one is compared by source.
     expect(rej.map((h) => h.name)).toEqual(save.map((h) => h.name));
     expect(rej[0]).toBe(save[0]);
     expect(rej[1]).toBe(save[1]);
-    expect(String(rej[2])).toBe(String(save[2]));
-    expect(rej[3]).toBe(save[3]);
+    expect(rej[2]).toBe(save[2]);
+    expect(String(rej[3])).toBe(String(save[3]));
+    expect(rej[4]).toBe(save[4]);
     // Control: another route's stack is seen as different.
     const other = stackOf('/edit/:editId/approve');
     expect(other.length === save.length && other.every((h, i) => h === save[i])).toBe(false);

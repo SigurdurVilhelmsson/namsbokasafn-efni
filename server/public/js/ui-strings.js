@@ -8,6 +8,9 @@
  *   UI.confirm.draftRecovery(5) → 'Fundust 5 óvistuð drög frá síðustu lotu. Endurheimta? (…)'
  */
 
+// "í kafla" (dative singular) for a count of 1, "í köflum" (dative plural) otherwise.
+const inChapters = (n) => (n === 1 ? 'í kafla' : 'í köflum');
+
 // eslint-disable-next-line no-unused-vars
 const UI = {
   // ── Common ──────────────────────────────────────────────────
@@ -356,17 +359,34 @@ const UI = {
     // "(þegar breytt)" bucket with every other skip reason — give them an
     // explicit label so an editor isn't told a propagation-blocking
     // structural marker is just "already changed".
-    propagateResult: (created, skipped, structureBlocked) => {
+    //
+    // G1.13 (spec §2, §6.3): the scope guards add two skip reasons the editor must be told about, again not as
+    // "already changed": `not-your-chapter` (a chapter the editor does not hold) and `chapter-not-editable`
+    // (chapter 0, which nobody edits).
+    propagateResult: (created, skipped, structureBlocked, notYours, notEditable) => {
       let msg = `Fjölgað á ${created} stað/staði`;
       if (skipped) {
         const blocked = structureBlocked || 0;
-        const other = skipped - blocked;
+        const foreign = notYours || 0;
+        const closed = notEditable || 0;
+        const other = skipped - blocked - foreign - closed;
         const parts = [];
         if (blocked) parts.push(`${blocked} vegna þess að byggingarmerki hindra`);
+        if (foreign) parts.push(`${foreign} ${inChapters(foreign)} sem þú ritstýrir ekki`);
+        if (closed) parts.push(`${closed} ${inChapters(closed)} sem ekki er hægt að ritstýra`);
         if (other > 0) parts.push(`${other} þegar breytt`);
         msg += `, sleppt ${skipped} (${parts.join(', ')})`;
       }
       return msg;
+    },
+    // G1.13: no eligible target, but some occurrences exist where this editor may not write. Say that, not that
+    // the text "finds nowhere else".
+    propagateNoneScoped: (notYours, notEditable) => {
+      const parts = [];
+      if (notYours) parts.push(`${notYours} ${inChapters(notYours)} sem þú ritstýrir ekki`);
+      if (notEditable)
+        parts.push(`${notEditable} ${inChapters(notEditable)} sem ekki er hægt að ritstýra`);
+      return `Þessi texti birtist annars staðar (${parts.join(', ')}), en þú mátt ekki breyta þar.`;
     },
     propagateError: (msg) => 'Villa við fjölgun: ' + msg,
     // spec §5.4 (G1.1 + G1.2 PR2): a serve whose opening could not be recorded answers 503 OPENING_UNRECORDED.

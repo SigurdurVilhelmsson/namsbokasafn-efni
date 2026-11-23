@@ -109,6 +109,8 @@ const dashboardReadModel = require('../services/dashboardReadModel');
 const { readableLogBooks } = require('../lib/activityScope');
 const { PASS1_CATEGORIES: VALID_CATEGORIES, VALID_TRACKS } = require('../constants');
 const { figureReviewClosed, refuseHeldForNonAdmins } = require('../lib/heldBookWrites');
+const { refuseClosedBookForNonAdmins } = require('../lib/editorScope');
+const userService = require('../services/userService');
 
 // ─── Book-ownership resolvers for ID-keyed head-editor endpoints ──────
 // These endpoints are keyed by :editId / :reviewId, not :book, so the owning
@@ -123,6 +125,50 @@ function bookFromReviewId(req) {
   // getModuleReviewWithEdits throws 'Review not found' when the id is unknown
   const { review } = segmentEditor.getModuleReviewWithEdits(parseInt(req.params.reviewId, 10));
   return review.book;
+}
+
+function bookFromAcceptanceId(req) {
+  const acceptance = acceptanceService.getAcceptanceById(parseInt(req.params.id, 10));
+  if (!acceptance) throw new Error('Acceptance not found');
+  return acceptance.book;
+}
+
+// ─── The closed-book guard (G1.13, spec §6.1) ─────────────────────────
+// A non-admin may write only to a book open to editors. Each guard reads the book from where its
+// routes carry it: the :book param, or the row the route acts on. It sits after the auth, role and
+// row-resolving middleware and before requireBookAccess, so the chapter check is never reached for a
+// closed book. The row-keyed writes of spec §6.7 (comment, delete, revoke) get the book check only.
+const refuseClosedParamBook = refuseClosedBookForNonAdmins((req) => req.params.book, 'param');
+const refuseClosedEditBook = refuseClosedBookForNonAdmins(bookFromEditId, 'row');
+const refuseClosedReviewBook = refuseClosedBookForNonAdmins(bookFromReviewId, 'row');
+const refuseClosedAcceptanceBook = refuseClosedBookForNonAdmins(bookFromAcceptanceId, 'row');
+
+/**
+ * Per-request "may this caller write chapter N of this book", memoised per chapter (G1.13, spec
+ * §6.3). It may throw ASSIGNMENT_TABLE_UNAVAILABLE, which `sendAssignmentUnavailable` answers.
+ */
+function chapterWriter(req) {
+  const memo = new Map();
+  return (chapter) => {
+    if (!memo.has(chapter)) {
+      memo.set(
+        chapter,
+        userService.canWriteChapter({ user: req.user, book: req.params.book, chapter })
+      );
+    }
+    return memo.get(chapter);
+  };
+}
+
+/** 503 as requireBookAccess answers it when assignments cannot be evaluated; true when sent. */
+function sendAssignmentUnavailable(res, err) {
+  if (!err || err.code !== 'ASSIGNMENT_TABLE_UNAVAILABLE') return false;
+  res.status(503).json({
+    error: 'Assignment enforcement unavailable',
+    message:
+      'Chapter assignments cannot be verified right now. Access is blocked until this is resolved.',
+  });
+  return true;
 }
 
 // =====================================================================
@@ -462,6 +508,7 @@ router.post(
   '/:book/:chapter/:moduleId/edit',
   requireAuth,
   validateBookChapter,
+  refuseClosedParamBook,
   requireBookAccess(),
   validateModule,
   (req, res) => {
@@ -652,6 +699,7 @@ router.post(
   '/:book/:chapter/:moduleId/suggestions/reject',
   requireAuth,
   validateBookChapter,
+  refuseClosedParamBook,
   requireBookAccess(),
   validateModule,
   (req, res) => {
@@ -944,6 +992,7 @@ router.post(
   '/:book/:chapter/:moduleId/figures/:basename/block',
   requireAuth,
   validateBookChapter,
+  refuseClosedParamBook,
   requireBookAccess(),
   refuseHeldForNonAdmins(figureReviewClosed, (req) => req.params.book, 'figure-review'), // G1.14, R-22
   validateModule,
@@ -1022,6 +1071,7 @@ router.post(
   '/:book/:chapter/:moduleId/figures/:basename/state',
   requireAuth,
   validateBookChapter,
+  refuseClosedParamBook,
   requireBookAccess(),
   refuseHeldForNonAdmins(figureReviewClosed, (req) => req.params.book, 'figure-review'), // G1.14, R-22
   validateModule,
@@ -1114,6 +1164,7 @@ router.post(
   '/:book/:chapter/:moduleId/accept',
   requireAuth,
   validateBookChapter,
+  refuseClosedParamBook,
   requireBookAccess(),
   validateModule,
   (req, res) => {
@@ -1242,66 +1293,78 @@ router.post(
  * book-scoped-head-editor rule lives in the service (owner-OR-HE cannot be
  * expressed as middleware — same pattern as DELETE /edit/:editId).
  */
-router.post('/acceptance/:id/revoke', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
-  try {
-    const revoked = acceptanceService.revokeAcceptance(parseInt(req.params.id, 10), {
-      actorId: String(req.user.id),
-      actorRole: req.user.role,
-      actorBooks: req.user.books || [],
-    });
-    const row = withoutResearchKeys(revoked);
-    researchEmission.emitRevoke(req, { row, before: revoked.before });
-    res.json({ success: true, acceptance: row });
-    activityLog.log({
-      type: 'acceptance_revoked',
-      userId: String(req.user.id),
-      username: req.user.username,
-      book: row.book,
-      chapter: String(row.chapter),
-      section: row.module_id,
-      description: `${req.user.username} afturkallaði staðfestingu á ${row.module_id}:${row.segment_id}`,
-    });
-    // item 20b final-review F1: a revoke changes the segment's review status,
-    // so refresh the durable sidecar (parity with apply/restore). Best-effort
-    // and never fails the revoke — regenSidecarSafe swallows the expected
-    // "no faithful file yet" case and logs (never throws) anything else.
-    acceptanceService.regenSidecarSafe(row.book, row.chapter, row.module_id);
-  } catch (err) {
-    if (err.code === 'FORBIDDEN') {
-      return res.status(403).json({ error: err.message });
+router.post(
+  '/acceptance/:id/revoke',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  refuseClosedAcceptanceBook,
+  (req, res) => {
+    try {
+      const revoked = acceptanceService.revokeAcceptance(parseInt(req.params.id, 10), {
+        actorId: String(req.user.id),
+        actorRole: req.user.role,
+        actorBooks: req.user.books || [],
+      });
+      const row = withoutResearchKeys(revoked);
+      researchEmission.emitRevoke(req, { row, before: revoked.before });
+      res.json({ success: true, acceptance: row });
+      activityLog.log({
+        type: 'acceptance_revoked',
+        userId: String(req.user.id),
+        username: req.user.username,
+        book: row.book,
+        chapter: String(row.chapter),
+        section: row.module_id,
+        description: `${req.user.username} afturkallaði staðfestingu á ${row.module_id}:${row.segment_id}`,
+      });
+      // item 20b final-review F1: a revoke changes the segment's review status,
+      // so refresh the durable sidecar (parity with apply/restore). Best-effort
+      // and never fails the revoke — regenSidecarSafe swallows the expected
+      // "no faithful file yet" case and logs (never throws) anything else.
+      acceptanceService.regenSidecarSafe(row.book, row.chapter, row.module_id);
+    } catch (err) {
+      if (err.code === 'FORBIDDEN') {
+        return res.status(403).json({ error: err.message });
+      }
+      res.status(err.message.includes('not found') ? 404 : 400).json({ error: err.message });
     }
-    res.status(err.message.includes('not found') ? 404 : 400).json({ error: err.message });
   }
-});
+);
 
 /**
  * DELETE /edit/:editId
  * Delete a pending segment edit.
  */
-router.delete('/edit/:editId', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
-  try {
-    const editId = parseInt(req.params.editId, 10);
-    // Read edit before deletion for logging
-    const edit = segmentEditor.getEditById(editId);
-    const { before } = segmentEditor.deleteSegmentEdit(editId, req.user.id);
-    researchEmission.emitDelete(req, { before });
-    res.json({ success: true });
-    activityLog.log({
-      type: 'segment_edit_deleted',
-      userId: String(req.user.id),
-      username: req.user.username,
-      book: edit?.book || '',
-      chapter: String(edit?.chapter || ''),
-      section: edit?.module_id || '',
-      description: `${req.user.username} eyddi breytingu á ${edit?.segment_id || editId}`,
-    });
-  } catch (err) {
-    if (err.code === 'HAS_DISCUSSION') {
-      return res.status(409).json({ error: 'HAS_DISCUSSION', message: err.message });
+router.delete(
+  '/edit/:editId',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  refuseClosedEditBook,
+  (req, res) => {
+    try {
+      const editId = parseInt(req.params.editId, 10);
+      // Read edit before deletion for logging
+      const edit = segmentEditor.getEditById(editId);
+      const { before } = segmentEditor.deleteSegmentEdit(editId, req.user.id);
+      researchEmission.emitDelete(req, { before });
+      res.json({ success: true });
+      activityLog.log({
+        type: 'segment_edit_deleted',
+        userId: String(req.user.id),
+        username: req.user.username,
+        book: edit?.book || '',
+        chapter: String(edit?.chapter || ''),
+        section: edit?.module_id || '',
+        description: `${req.user.username} eyddi breytingu á ${edit?.segment_id || editId}`,
+      });
+    } catch (err) {
+      if (err.code === 'HAS_DISCUSSION') {
+        return res.status(409).json({ error: 'HAS_DISCUSSION', message: err.message });
+      }
+      res.status(err.message === 'Not your edit' ? 403 : 400).json({ error: err.message });
     }
-    res.status(err.message === 'Not your edit' ? 403 : 400).json({ error: err.message });
   }
-});
+);
 
 /**
  * POST /:book/:chapter/:moduleId/done
@@ -1319,6 +1382,7 @@ router.post(
   '/:book/:chapter/:moduleId/done',
   requireAuth,
   validateBookChapter,
+  refuseClosedParamBook,
   requireBookAccess(),
   validateModule,
   (req, res) => {
@@ -1479,6 +1543,7 @@ router.post(
   '/edit/:editId/approve',
   requireAuth,
   requireHeadEditorFor(bookFromEditId),
+  refuseClosedEditBook,
   (req, res) => {
     try {
       const result = segmentEditor.approveEdit(
@@ -1543,6 +1608,7 @@ router.post(
   '/edit/:editId/reject',
   requireAuth,
   requireHeadEditorFor(bookFromEditId),
+  refuseClosedEditBook,
   (req, res) => {
     try {
       const result = segmentEditor.rejectEdit(
@@ -1578,6 +1644,7 @@ router.post(
   '/edit/:editId/discuss',
   requireAuth,
   requireHeadEditorFor(bookFromEditId),
+  refuseClosedEditBook,
   (req, res) => {
     try {
       const result = segmentEditor.markForDiscussion(
@@ -1613,6 +1680,7 @@ router.post(
   '/edit/:editId/unapprove',
   requireAuth,
   requireHeadEditorFor(bookFromEditId),
+  refuseClosedEditBook,
   (req, res) => {
     try {
       const result = segmentEditor.unapproveEdit(parseInt(req.params.editId, 10));
@@ -1642,6 +1710,7 @@ router.post(
   '/edit/:editId/return-to-pending',
   requireAuth,
   requireHeadEditorFor(bookFromEditId),
+  refuseClosedEditBook,
   (req, res) => {
     try {
       const result = segmentEditor.returnEditToPending(parseInt(req.params.editId, 10));
@@ -1675,6 +1744,7 @@ router.post(
   '/reviews/:reviewId/complete',
   requireAuth,
   requireHeadEditorFor(bookFromReviewId),
+  refuseClosedReviewBook,
   (req, res) => {
     try {
       const result = segmentEditor.completeModuleReview(
@@ -1757,48 +1827,54 @@ router.post(
  * POST /edit/:editId/comment
  * Add a comment to a segment edit discussion.
  */
-router.post('/edit/:editId/comment', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
-  const { comment } = req.body;
-  if (!comment) {
-    return res.status(400).json({ error: 'comment is required' });
-  }
-
-  try {
-    const result = segmentEditor.addDiscussionComment(
-      parseInt(req.params.editId, 10),
-      req.user.id,
-      req.user.username,
-      comment
-    );
-    // The comment IS saved: the research event, then the response (spec §5.11; emit cannot
-    // throw), then the audit write. A context-lookup failure after the response must not flip a
-    // committed mutation into a 400 — that is the nested-site defect class this batch fixes. Only
-    // the lookup is guarded, with a log; the audit write goes bare with degraded context on lookup
-    // failure (edit stays null → the || '' fallbacks apply).
-    researchEmission.emitComment(req, { edit: result.edit, comment });
-    res.json({ success: true, commentId: result.id });
-    let edit = null;
-    try {
-      edit = segmentEditor.getEditById(parseInt(req.params.editId, 10));
-    } catch (lookupErr) {
-      log.error(
-        { err: lookupErr, editId: req.params.editId },
-        'Edit lookup for comment audit failed'
-      );
+router.post(
+  '/edit/:editId/comment',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  refuseClosedEditBook,
+  (req, res) => {
+    const { comment } = req.body;
+    if (!comment) {
+      return res.status(400).json({ error: 'comment is required' });
     }
-    activityLog.log({
-      type: 'segment_edit_comment',
-      userId: String(req.user.id),
-      username: req.user.username,
-      book: edit?.book || '',
-      chapter: String(edit?.chapter || ''),
-      section: edit?.module_id || '',
-      description: `${req.user.username} bætti við athugasemd á ${edit?.segment_id || req.params.editId}`,
-    });
-  } catch (err) {
-    res.status(400).json({ error: err.message });
+
+    try {
+      const result = segmentEditor.addDiscussionComment(
+        parseInt(req.params.editId, 10),
+        req.user.id,
+        req.user.username,
+        comment
+      );
+      // The comment IS saved: the research event, then the response (spec §5.11; emit cannot
+      // throw), then the audit write. A context-lookup failure after the response must not flip a
+      // committed mutation into a 400 — that is the nested-site defect class this batch fixes. Only
+      // the lookup is guarded, with a log; the audit write goes bare with degraded context on lookup
+      // failure (edit stays null → the || '' fallbacks apply).
+      researchEmission.emitComment(req, { edit: result.edit, comment });
+      res.json({ success: true, commentId: result.id });
+      let edit = null;
+      try {
+        edit = segmentEditor.getEditById(parseInt(req.params.editId, 10));
+      } catch (lookupErr) {
+        log.error(
+          { err: lookupErr, editId: req.params.editId },
+          'Edit lookup for comment audit failed'
+        );
+      }
+      activityLog.log({
+        type: 'segment_edit_comment',
+        userId: String(req.user.id),
+        username: req.user.username,
+        book: edit?.book || '',
+        chapter: String(edit?.chapter || ''),
+        section: edit?.module_id || '',
+        description: `${req.user.username} bætti við athugasemd á ${edit?.segment_id || req.params.editId}`,
+      });
+    } catch (err) {
+      res.status(400).json({ error: err.message });
+    }
   }
-});
+);
 
 // =====================================================================
 // TERMINOLOGY INTEGRATION
@@ -1884,6 +1960,7 @@ router.get(
   requireAuth,
   requireRole(ROLES.EDITOR),
   validateBookChapter,
+  refuseClosedParamBook,
   validateModule,
   (req, res) => {
     try {
@@ -1906,8 +1983,10 @@ router.get(
         excludeSegmentId: segmentId,
       });
       const eligible = [];
-      const skipped = [];
-      for (const o of occ) {
+      // Targets the caller may not write are listed, not offered (G1.13, spec §6.3).
+      const scope = propagation.scopeOccurrences(occ, chapterWriter(req));
+      const skipped = [...scope.skipped];
+      for (const o of scope.inScope) {
         // Pass editorId so the preview's eligible/skipped split matches what
         // propagate actually writes (own pending edit → eligible-supersede).
         const verdict = propagation.classifyOccurrence(propagatedText, {
@@ -1923,6 +2002,7 @@ router.get(
       }
       res.json({ enNorm, eligible, skipped });
     } catch (err) {
+      if (sendAssignmentUnavailable(res, err)) return;
       if (sendRefusal(res, err)) return;
       log.error({ err }, 'propagation-preview failed');
       res.status(500).json({ error: err.message });
@@ -1936,6 +2016,7 @@ router.post(
   requireAuth,
   requireRole(ROLES.EDITOR),
   validateBookChapter,
+  refuseClosedParamBook,
   requireBookAccess(),
   validateModule,
   (req, res) => {
@@ -1997,6 +2078,8 @@ router.post(
           'Propagation preview read failed; its research events carry no preview (spec §5.11)'
         );
       }
+      // G1.13 (spec §6.3): each target chapter is checked; the scope skips come first.
+      const scope = propagation.scopeOccurrences(occurrences, chapterWriter(req));
       const created = propagation.createPropagatedEdits(propagation.getDb(), {
         book: req.params.book,
         editorId: req.user.id,
@@ -2004,11 +2087,12 @@ router.post(
         propagatedText: editedContent,
         category,
         note: note || 'Sjálfvirk fjölgun',
-        occurrences,
+        occurrences: scope.inScope,
         sourceEn: sourceSeg?.en,
       });
+      const skipped = [...scope.skipped, ...created.skipped];
       // G1.2: `created.writes` is the research event's; the response stays PR1's.
-      const result = withoutResearchKeys(created);
+      const result = { ...withoutResearchKeys(created), skipped };
       researchEmission.emitPropagation(req, {
         sourceSegmentId: segmentId,
         sourceIs: sourceSeg?.is ?? '',
@@ -2018,7 +2102,7 @@ router.post(
         category,
         note: note || 'Sjálfvirk fjölgun',
         writes: created.writes,
-        skipped: created.skipped,
+        skipped,
       });
       res.json(result);
     } catch (err) {
@@ -2031,6 +2115,7 @@ router.post(
           origin: 'propagation',
         });
       }
+      if (sendAssignmentUnavailable(res, err)) return;
       if (sendRefusal(res, err)) return;
       log.error({ err }, 'propagate failed');
       res.status(500).json({ error: err.message });
@@ -2157,6 +2242,7 @@ router.post(
   requireAuth,
   requireHeadEditor(),
   validateBookChapter,
+  refuseClosedParamBook,
   validateModule,
   (req, res) => {
     try {
@@ -2213,6 +2299,7 @@ router.post(
   requireAuth,
   requireHeadEditor(),
   validateBookChapter,
+  refuseClosedParamBook,
   validateModule,
   (req, res) => {
     try {
@@ -2357,6 +2444,7 @@ router.post(
   requireAuth,
   requireHeadEditor(),
   validateBookChapter,
+  refuseClosedParamBook,
   validateModule,
   (req, res) => {
     const version = parseInt(req.params.version, 10);

@@ -18,6 +18,7 @@ const pipelineStatus = require('../services/pipelineStatusService');
 const chapterLock = require('../lib/chapterLock');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, ROLES } = require('../middleware/requireRole');
+const { refuseClosedBookForNonAdmins } = require('../lib/editorScope');
 const { isBelowEditor, withoutKeys } = require('../lib/withoutPeople');
 
 // What names a person in the status read: who completed a stage, who holds the lock, a log row's author, and a
@@ -188,31 +189,45 @@ router.post('/:bookSlug/:chapterNum/revert', requireRole(ROLES.ADMIN), (req, res
 
 // --- POST /:bookSlug/:chapterNum/lock ---
 
-router.post('/:bookSlug/:chapterNum/lock', requireRole(ROLES.EDITOR), (req, res) => {
-  try {
-    const result = chapterLock.acquireLock(req.lockId, req.user.username);
-    if (!result.ok) {
-      return res.status(409).json(lockErrorResponse(result));
+// The closed-book guard (G1.13, spec §6.1, §6.7): a lock is a status flag, not text, so it gets the
+// book check only.
+const refuseClosedLockBook = refuseClosedBookForNonAdmins((req) => req.params.bookSlug, 'param');
+
+router.post(
+  '/:bookSlug/:chapterNum/lock',
+  requireRole(ROLES.EDITOR),
+  refuseClosedLockBook,
+  (req, res) => {
+    try {
+      const result = chapterLock.acquireLock(req.lockId, req.user.username);
+      if (!result.ok) {
+        return res.status(409).json(lockErrorResponse(result));
+      }
+      res.json({ success: true });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
     }
-    res.json({ success: true });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
   }
-});
+);
 
 // --- DELETE /:bookSlug/:chapterNum/lock ---
 
-router.delete('/:bookSlug/:chapterNum/lock', requireRole(ROLES.EDITOR), (req, res) => {
-  try {
-    const username = req.user.role === 'admin' ? 'admin:' + req.user.username : req.user.username;
-    const result = chapterLock.releaseLock(req.lockId, username);
-    if (!result.ok) {
-      return res.status(403).json({ error: 'Þú átt ekki þessa læsingu' });
+router.delete(
+  '/:bookSlug/:chapterNum/lock',
+  requireRole(ROLES.EDITOR),
+  refuseClosedLockBook,
+  (req, res) => {
+    try {
+      const username = req.user.role === 'admin' ? 'admin:' + req.user.username : req.user.username;
+      const result = chapterLock.releaseLock(req.lockId, username);
+      if (!result.ok) {
+        return res.status(403).json({ error: 'Þú átt ekki þessa læsingu' });
+      }
+      res.json({ success: true });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
     }
-    res.json({ success: true });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
   }
-});
+);
 
 module.exports = router;

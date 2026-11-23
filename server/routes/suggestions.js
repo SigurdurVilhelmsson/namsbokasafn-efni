@@ -24,6 +24,7 @@ const {
 const bookRegistration = require('../services/bookRegistration');
 const suggestions = require('../services/localizationSuggestions');
 const activityLog = require('../services/activityLog');
+const { refuseClosedBookForNonAdmins } = require('../lib/editorScope');
 
 // ── Section resolvers ──
 // Resolve the gated section straight from the :sectionId route param.
@@ -58,6 +59,11 @@ const requireHeadEditorOfSection = (resolveSectionId) => [
   requireHeadEditorFor((req) => req.section.bookSlug),
 ];
 
+// The closed-book guard (G1.13, spec §6.1): a non-admin may write only to a book open to editors. On
+// the section-keyed writes it reads the section requireHeadEditorOfSection loaded; on scan-book, the
+// :bookSlug param.
+const refuseClosedSectionBook = refuseClosedBookForNonAdmins((req) => req.section.bookSlug, 'row');
+
 // ============================================================================
 // SCANNING
 // ============================================================================
@@ -70,6 +76,7 @@ router.post(
   '/scan/:sectionId',
   requireAuth,
   requireHeadEditorOfSection(bySectionParam),
+  refuseClosedSectionBook,
   (req, res) => {
     const { sectionId } = req.params;
 
@@ -102,34 +109,40 @@ router.post(
  * POST /api/suggestions/scan-book/:bookSlug
  * Scan an entire book for localization suggestions
  */
-router.post('/scan-book/:bookSlug', requireAuth, requireHeadEditor('bookSlug'), (req, res) => {
-  const { bookSlug } = req.params;
+router.post(
+  '/scan-book/:bookSlug',
+  requireAuth,
+  requireHeadEditor('bookSlug'),
+  refuseClosedBookForNonAdmins((req) => req.params.bookSlug, 'param'),
+  (req, res) => {
+    const { bookSlug } = req.params;
 
-  try {
-    const result = suggestions.scanBook(bookSlug);
+    try {
+      const result = suggestions.scanBook(bookSlug);
 
-    activityLog.log({
-      type: activityLog.ACTIVITY_TYPES.SUGGESTIONS_SCANNED,
-      userId: req.user.id,
-      username: req.user.username,
-      book: bookSlug,
-      description: `${req.user.username} skannaði bókina ${bookSlug} eftir staðfæringartillögum`,
-      metadata: {
-        bookSlug,
-        sectionsScanned: result.sectionsScanned,
-        totalSuggestions: result.totalSuggestions,
-      },
-    });
+      activityLog.log({
+        type: activityLog.ACTIVITY_TYPES.SUGGESTIONS_SCANNED,
+        userId: req.user.id,
+        username: req.user.username,
+        book: bookSlug,
+        description: `${req.user.username} skannaði bókina ${bookSlug} eftir staðfæringartillögum`,
+        metadata: {
+          bookSlug,
+          sectionsScanned: result.sectionsScanned,
+          totalSuggestions: result.totalSuggestions,
+        },
+      });
 
-    res.json(result);
-  } catch (err) {
-    log.error({ err }, 'Scan book error');
-    res.status(500).json({
-      error: 'Failed to scan book',
-      message: err.message,
-    });
+      res.json(result);
+    } catch (err) {
+      log.error({ err }, 'Scan book error');
+      res.status(500).json({
+        error: 'Failed to scan book',
+        message: err.message,
+      });
+    }
   }
-});
+);
 
 // ============================================================================
 // GET SUGGESTIONS
@@ -219,6 +232,7 @@ router.post(
   '/:id/accept',
   requireAuth,
   requireHeadEditorOfSection(bySuggestionParam),
+  refuseClosedSectionBook,
   (req, res) => {
     const { id } = req.params;
 
@@ -263,6 +277,7 @@ router.post(
   '/:id/reject',
   requireAuth,
   requireHeadEditorOfSection(bySuggestionParam),
+  refuseClosedSectionBook,
   (req, res) => {
     const { id } = req.params;
 
@@ -310,6 +325,7 @@ router.post(
   '/:id/modify',
   requireAuth,
   requireHeadEditorOfSection(bySuggestionParam),
+  refuseClosedSectionBook,
   (req, res) => {
     const { id } = req.params;
     const { modifiedText } = req.body;
@@ -372,6 +388,7 @@ router.post(
   '/:sectionId/bulk',
   requireAuth,
   requireHeadEditorOfSection(bySectionParam),
+  refuseClosedSectionBook,
   (req, res) => {
     const { sectionId } = req.params;
     const { ids, action } = req.body;
@@ -451,6 +468,7 @@ router.post(
   '/:sectionId/sync-log',
   requireAuth,
   requireHeadEditorOfSection(bySectionParam),
+  refuseClosedSectionBook,
   (req, res) => {
     const { sectionId } = req.params;
 

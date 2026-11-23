@@ -51,6 +51,13 @@
  *      | spec                        | reserved                     | why             |
  *      |-----------------------------|------------------------------|-----------------|
  *      | suggestion-view.spec.js     | `efnafraedi-2e` chapter 2, and user id 90123 | G1.23 |
+ *      | editor-workflow.spec.js     | `efnafraedi-2e` chapter 4 (m68710), and user id 88001 | G1.13 |
+ *      | ux-phase2.spec.js (M5)      | `efnafraedi-2e` chapter 6 (m68729), and user id 88010 | G1.13 |
+ *
+ *    The two G1.13 rows: chemistry is always assignment-enforced, so a plain editor saves there only
+ *    through a users row and a chapter assignment (seed-fixture.js). Such a user's first serve opens the
+ *    module, and an opened module gets suggestions for every viewer once the view is on, so each owns a
+ *    module that no other spec serves.
  *
  *    That spec's rejections, left-open closures and approvals in chapter 2 are
  *    permanent for the run's DB, and its eligibility checks need m68684 and

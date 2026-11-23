@@ -71,8 +71,8 @@ describe('editorialRetentionScope: SCOPE', () => {
     }
   });
 
-  it('holds the 34 tables that name a person, and no other', () => {
-    expect(Object.keys(SCOPE)).toHaveLength(34);
+  it('holds the 35 tables that name a person, and no other', () => {
+    expect(Object.keys(SCOPE)).toHaveLength(35);
     for (const t of Object.keys(SCOPE)) expect(tableNames(db), t).toContain(t);
   });
 
@@ -129,7 +129,7 @@ describe('editorialRetentionScope: SCOPE', () => {
       'user_book_access',
       'user_chapter_assignments',
     ]);
-    expect(byAction('keep')).toEqual(['users']);
+    expect(byAction('keep')).toEqual(['editor_licence_clauses', 'users']);
     expect(byAction('consent')).toEqual(['research_consent']);
     expect(byAction('strip')).toHaveLength(23);
     // Named by no line of the spec's table, and each names a person (final census, Task 4):

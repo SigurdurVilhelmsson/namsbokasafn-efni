@@ -31,10 +31,20 @@ const bookRegistration = require('../services/bookRegistration');
 const bookDataGenerator = require('../services/bookDataGenerator');
 const userService = require('../services/userService');
 const suggestionSwitch = require('../services/suggestionSwitch');
+const licenceClauses = require('../services/licenceClauses');
+const { REFUSAL_MESSAGES } = require('../services/assignmentGate');
 const { isStudyBook } = require('../lib/researchScope');
 const pipeline = require('../services/pipelineService');
 const segmentEditorService = require('../services/segmentEditorService');
+const { refuseClosedBookForNonAdmins, isAlwaysEnforced } = require('../lib/editorScope');
 // https import removed — no longer needed (GitHub user lookup removed)
+
+/** The 409 body for an assign the gate refused (G1.13 spec §6.5). */
+const refusedBody = (reason) => ({
+  error: 'ASSIGNMENT_REFUSED',
+  reason,
+  message: REFUSAL_MESSAGES[reason],
+});
 
 // ============================================================================
 // CATALOGUE MANAGEMENT
@@ -1006,6 +1016,13 @@ router.post('/users/:id/chapters', requireAuth, requireAdmin(), (req, res) => {
         .json({ error: 'This user cannot be assigned chapters', code: 'NOT_ASSIGNABLE' });
     }
 
+    // The assign gate, for every chapter before any is written: one refusal refuses the whole request
+    // (spec §6.5), so a refused chapter never leaves the chapters before it assigned.
+    for (const ch of chapters) {
+      const reason = userService.assignmentRefusalFor(userId, bookSlug, parseInt(ch, 10));
+      if (reason) return res.status(409).json(refusedBody(reason));
+    }
+
     const replaced = [];
     for (const ch of chapters) {
       const result = userService.setChapterAssignee(userId, bookSlug, ch, req.user.username);
@@ -1022,6 +1039,7 @@ router.post('/users/:id/chapters', requireAuth, requireAdmin(), (req, res) => {
       replaced,
     });
   } catch (err) {
+    if (err.code === 'ASSIGNMENT_REFUSED') return res.status(409).json(refusedBody(err.reason));
     log.error({ err }, 'Assign chapters error');
     res.status(500).json({ error: err.message });
   }
@@ -1050,6 +1068,107 @@ router.delete('/users/:id/chapters/:book/:chapter', requireAuth, requireAdmin(),
   }
 });
 
+// ─── Licence-clause record (G1.13 spec §6.4) ───
+
+/**
+ * GET /api/admin/users/:id/licence-clause
+ * The signature dates recorded for an account, oldest first.
+ */
+router.get('/users/:id/licence-clause', requireAuth, requireAdmin(), (req, res) => {
+  const userId = parseInt(req.params.id, 10);
+  try {
+    res.json({ rows: licenceClauses.clausesFor(segmentEditorService.getDb(), userId) });
+  } catch (err) {
+    log.error({ err }, 'List licence clauses error');
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/admin/users/:id/licence-clause
+ * Record the date an editor signed the licence clause. Body: { signedOn: 'YYYY-MM-DD' }
+ */
+router.post('/users/:id/licence-clause', requireAuth, requireAdmin(), (req, res) => {
+  const userId = parseInt(req.params.id, 10);
+  try {
+    if (!userService.findById(userId)) {
+      return res.status(404).json({ error: 'Notandi fannst ekki', code: 'USER_NOT_FOUND' });
+    }
+    const signedOn = req.body && req.body.signedOn;
+    const { id } = licenceClauses.recordClause(segmentEditorService.getDb(), {
+      userId,
+      signedOn,
+      recordedBy: req.user.username,
+      nowMs: Date.now(),
+    });
+    res.status(201).json({ id, signedOn });
+  } catch (err) {
+    if (err.code === 'BAD_DATE' || err.code === 'FUTURE_DATE') {
+      return res.status(400).json({ error: err.message, code: err.code });
+    }
+    log.error({ err }, 'Record licence clause error');
+    res.status(500).json({ error: err.message });
+  }
+});
+
+const HOLDS_CHAPTERS_BODY = {
+  error: 'HOLDS_CHAPTERS',
+  message:
+    'Ekki er hægt að fjarlægja leyfisákvæðið á meðan notandanum hefur verið úthlutað kafla. Fjarlægðu fyrst kaflaúthlutanir notandans.',
+};
+
+/**
+ * DELETE /api/admin/users/:id/licence-clause/:rowId
+ * Remove a wrongly recorded row. Body: { reason } (at least 10 characters), kept in the activity log.
+ *
+ * Refuses with 409 HOLDS_CHAPTERS while the user holds a chapter in a book open to editors: the
+ * assign gate asks for the row only at assign time, so removing it later would leave the editor
+ * assigned with no record. Chapters are removed first. The refusal is checked before the log
+ * entry, so a refused removal logs nothing.
+ *
+ * The activity log entry is written before the row is deleted (spec §6.4). activityLog.log never
+ * throws; it returns null when the write failed, and then nothing is deleted, so a licence record
+ * never disappears without a trace. The row is checked first, so a refused id logs nothing.
+ */
+router.delete('/users/:id/licence-clause/:rowId', requireAuth, requireAdmin(), (req, res) => {
+  const userId = parseInt(req.params.id, 10);
+  const rowId = parseInt(req.params.rowId, 10);
+  const reason = String((req.body && req.body.reason) || '').trim();
+  if (reason.length < 10) {
+    return res.status(400).json({
+      error: 'Skrifaðu ástæðu (að minnsta kosti 10 stafir)',
+      code: 'REASON_REQUIRED',
+    });
+  }
+  try {
+    const conn = segmentEditorService.getDb();
+    if (!licenceClauses.isUsersClause(conn, { userId, rowId })) {
+      return res.status(404).json({ error: 'Færsla fannst ekki hjá þessum notanda' });
+    }
+    if (licenceClauses.holdsOpenBookChapter(conn, userId)) {
+      return res.status(409).json(HOLDS_CHAPTERS_BODY);
+    }
+    const logged = activityLog.log({
+      type: 'licence_clause_removed',
+      userId: req.user.id,
+      username: req.user.username,
+      description: `Leyfisákvæði fjarlægt: færsla ${rowId} hjá notanda ${userId}. Ástæða: ${reason}`,
+    });
+    if (!logged) {
+      return res.status(500).json({
+        error: 'Ekki tókst að skrá fjarlæginguna í aðgerðaskrá, svo ekkert var fjarlægt.',
+      });
+    }
+    const removed = licenceClauses.removeClause(conn, { userId, rowId });
+    res.json({ removed });
+  } catch (err) {
+    // A race: a chapter was assigned between the check above and the delete.
+    if (err.code === 'HOLDS_CHAPTERS') return res.status(409).json(HOLDS_CHAPTERS_BODY);
+    log.error({ err }, 'Remove licence clause error');
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // ─── Chapter-centric assignment routes (/api/admin/assignments) ───
 
 /**
@@ -1064,7 +1183,13 @@ router.get('/assignments/:book', requireAuth, requireHeadEditor('book'), (req, r
 
   try {
     const assignments = userService.getBookAssignments(book);
-    const editors = userService.getEditorsForBook(book);
+    // Per editor, whether the assign gate would let them take a chapter of this book, and why not
+    // (spec §6.5), and the licence-clause date the head editor sees read-only (spec §6.4).
+    const editors = userService.getEditorsForBook(book).map((ed) => ({
+      ...ed,
+      licenceSignedOn: licenceClauses.latestSignedOn(segmentEditorService.getDb(), ed.id),
+      refusal: userService.assignmentRefusalFor(ed.id, book),
+    }));
 
     let chapterProgress = {};
     try {
@@ -1084,6 +1209,10 @@ router.get('/assignments/:book', requireAuth, requireHeadEditor('book'), (req, r
       editorsLimited: userService.editorsLimitedToBookAccess(book),
       chapterProgress,
       enforceAssignments: userService.isAssignmentEnforced(book),
+      // true: the toggle is always on for this book and cannot be switched off (spec §6.2).
+      enforcementLocked: isAlwaysEnforced(book),
+      // The text for each editor's `refusal`, so the page says why without a copy of its own.
+      refusalMessages: REFUSAL_MESSAGES,
     });
   } catch (err) {
     log.error({ err }, 'Get book assignments error');
@@ -1103,6 +1232,14 @@ router.post('/assignments/:book/enforcement', requireAuth, requireRole(ROLES.ADM
   }
   if (typeof req.body?.enabled !== 'boolean') {
     return res.status(400).json({ error: 'enabled (boolean) required' });
+  }
+
+  if (req.body.enabled === false && isAlwaysEnforced(book)) {
+    return res.status(409).json({
+      error: 'STUDY_BOOK_ALWAYS_ENFORCED',
+      message:
+        'Kaflaúthlutun er alltaf þvinguð fyrir rannsóknarbókina og því ekki hægt að slökkva á henni.',
+    });
   }
 
   try {
@@ -1188,90 +1325,104 @@ router.post('/books/:book/suggestion-view', requireAuth, requireRole(ROLES.ADMIN
  * Make a user the chapter's one assignee: whoever held the chapter is replaced, and `replaced` names them.
  * Only an active account with the editor role or above can be assigned (400 NOT_ASSIGNABLE otherwise).
  */
-router.post('/assignments/:book/:chapter', requireAuth, requireHeadEditor('book'), (req, res) => {
-  const { book, chapter } = req.params;
-  const { userId } = req.body;
+router.post(
+  '/assignments/:book/:chapter',
+  requireAuth,
+  requireHeadEditor('book'),
+  refuseClosedBookForNonAdmins((req) => req.params.book, 'param'), // G1.13, spec §6.1
+  (req, res) => {
+    const { book, chapter } = req.params;
+    const { userId } = req.body;
 
-  if (!VALID_BOOKS.includes(book)) {
-    return res.status(400).json({ error: `Invalid book: ${book}` });
-  }
-  // I14-R1 (lead-decided): appendices (-1) is assignable like any chapter —
-  // the uniform assignment model; normalizeChapter accepts 'appendices'/'-1'/-1.
-  const chapterNum = chapterLabel.normalizeChapter(chapter);
-  if (chapterNum === null || chapterNum < -1 || chapterNum > 30) {
-    return res.status(400).json({ error: `Invalid chapter: ${chapter}` });
-  }
-  if (!userId || typeof userId !== 'number') {
-    return res.status(400).json({ error: 'userId (number) required' });
-  }
-
-  try {
-    // A guest, a deactivated account or an id with no account cannot take a chapter, and (replacing being
-    // what this route does) cannot push its editor off it either.
-    if (!userService.isAssignableUser(userId)) {
-      return res
-        .status(400)
-        .json({ error: 'This user cannot be assigned to this book', code: 'NOT_ASSIGNABLE' });
+    if (!VALID_BOOKS.includes(book)) {
+      return res.status(400).json({ error: `Invalid book: ${book}` });
+    }
+    // I14-R1 (lead-decided): appendices (-1) is assignable like any chapter —
+    // the uniform assignment model; normalizeChapter accepts 'appendices'/'-1'/-1.
+    const chapterNum = chapterLabel.normalizeChapter(chapter);
+    if (chapterNum === null || chapterNum < -1 || chapterNum > 30) {
+      return res.status(400).json({ error: `Invalid chapter: ${chapter}` });
+    }
+    if (!userId || typeof userId !== 'number') {
+      return res.status(400).json({ error: 'userId (number) required' });
     }
 
-    const { replaced } = userService.setChapterAssignee(
-      userId,
-      book,
-      chapterNum,
-      req.user.username
-    );
-    activityLog.log({
-      type: 'assign_chapter',
-      userId: req.user.id,
-      username: req.user.username,
-      book,
-      chapter: chapterNum,
-      description:
-        `Assigned chapter ${chapterNum} to user ${userId}` +
-        (replaced.length > 0 ? ` (replaced user ${replaced.map((u) => u.id).join(', ')})` : ''),
-    });
-    res.json({ success: true, replaced });
-  } catch (err) {
-    log.error({ err }, 'Assign chapter error');
-    res.status(500).json({ error: err.message });
+    try {
+      // A guest, a deactivated account or an id with no account cannot take a chapter, and (replacing being
+      // what this route does) cannot push its editor off it either.
+      if (!userService.isAssignableUser(userId)) {
+        return res
+          .status(400)
+          .json({ error: 'This user cannot be assigned to this book', code: 'NOT_ASSIGNABLE' });
+      }
+
+      const { replaced } = userService.setChapterAssignee(
+        userId,
+        book,
+        chapterNum,
+        req.user.username
+      );
+      activityLog.log({
+        type: 'assign_chapter',
+        userId: req.user.id,
+        username: req.user.username,
+        book,
+        chapter: chapterNum,
+        description:
+          `Assigned chapter ${chapterNum} to user ${userId}` +
+          (replaced.length > 0 ? ` (replaced user ${replaced.map((u) => u.id).join(', ')})` : ''),
+      });
+      res.json({ success: true, replaced });
+    } catch (err) {
+      // The assign gate refused, inside setChapterAssignee's transaction (spec §6.5): nothing was written.
+      if (err.code === 'ASSIGNMENT_REFUSED') return res.status(409).json(refusedBody(err.reason));
+      log.error({ err }, 'Assign chapter error');
+      res.status(500).json({ error: err.message });
+    }
   }
-});
+);
 
 /**
  * DELETE /api/admin/assignments/:book/:chapter
  * Leave a chapter with no assignee. Everyone on it is removed, however many rows it held.
  */
-router.delete('/assignments/:book/:chapter', requireAuth, requireHeadEditor('book'), (req, res) => {
-  const { book, chapter } = req.params;
+router.delete(
+  '/assignments/:book/:chapter',
+  requireAuth,
+  requireHeadEditor('book'),
+  refuseClosedBookForNonAdmins((req) => req.params.book, 'param'), // G1.13, spec §6.1
+  (req, res) => {
+    const { book, chapter } = req.params;
 
-  if (!VALID_BOOKS.includes(book)) {
-    return res.status(400).json({ error: `Invalid book: ${book}` });
-  }
-  // I14-R1 (lead-decided): appendices (-1) is assignable like any chapter —
-  // the uniform assignment model; normalizeChapter accepts 'appendices'/'-1'/-1.
-  const chapterNum = chapterLabel.normalizeChapter(chapter);
-  if (chapterNum === null || chapterNum < -1 || chapterNum > 30) {
-    return res.status(400).json({ error: `Invalid chapter: ${chapter}` });
-  }
-
-  try {
-    const removed = userService.clearChapterAssignees(book, chapterNum);
-    if (removed.length > 0) {
-      activityLog.log({
-        type: 'unassign_chapter',
-        userId: req.user.id,
-        username: req.user.username,
-        book,
-        chapter: chapterNum,
-        description: `Unassigned chapter ${chapterNum} (user ${removed.map((u) => u.id).join(', ')})`,
-      });
+    if (!VALID_BOOKS.includes(book)) {
+      return res.status(400).json({ error: `Invalid book: ${book}` });
     }
-    res.json({ success: true, removed: removed.length > 0 });
-  } catch (err) {
-    log.error({ err }, 'Unassign chapter error');
-    res.status(500).json({ error: err.message });
+    // I14-R1 (lead-decided): appendices (-1) is assignable like any chapter —
+    // the uniform assignment model; normalizeChapter accepts 'appendices'/'-1'/-1.
+    const chapterNum = chapterLabel.normalizeChapter(chapter);
+    if (chapterNum === null || chapterNum < -1 || chapterNum > 30) {
+      return res.status(400).json({ error: `Invalid chapter: ${chapter}` });
+    }
+
+    try {
+      const removed = userService.clearChapterAssignees(book, chapterNum);
+      if (removed.length > 0) {
+        activityLog.log({
+          type: 'unassign_chapter',
+          userId: req.user.id,
+          username: req.user.username,
+          book,
+          chapter: chapterNum,
+          description: `Unassigned chapter ${chapterNum} (user ${removed.map((u) => u.id).join(', ')})`,
+        });
+      }
+      res.json({ success: true, removed: removed.length > 0 });
+    } catch (err) {
+      log.error({ err }, 'Unassign chapter error');
+      res.status(500).json({ error: err.message });
+    }
   }
-});
+);
 
 /**
  * Helper: Format user for API response

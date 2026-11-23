@@ -3204,6 +3204,15 @@
    * its other book-wide occurrences. Manual — the O(book) scan runs only here,
    * never on an ordinary save. (Item O)
    */
+  /** Counts the G1.13 scope skips in a propagation `skipped` list (spec §6.3). */
+  function scopeSkipCounts(skipped) {
+    const list = Array.isArray(skipped) ? skipped : [];
+    return {
+      notYours: list.filter((s) => s.reason === 'not-your-chapter').length,
+      notEditable: list.filter((s) => s.reason === 'chapter-not-editable').length,
+    };
+  }
+
   async function propagateSegment(segmentId) {
     if (!moduleData?.segments) return;
     const st = paneState.get(segmentId);
@@ -3234,7 +3243,14 @@
       );
       if (openUnit() !== unit) return;
       if (!pv || !pv.eligible || pv.eligible.length === 0) {
-        saveRetry.showToast(UI.segmentEditor.propagateNone, 'info');
+        // G1.13: occurrences the scope guards skip are not "nowhere else" — say where they are.
+        const scope = scopeSkipCounts(pv && pv.skipped);
+        saveRetry.showToast(
+          scope.notYours || scope.notEditable
+            ? UI.segmentEditor.propagateNoneScoped(scope.notYours, scope.notEditable)
+            : UI.segmentEditor.propagateNone,
+          'info'
+        );
         return;
       }
       if (!confirm(UI.segmentEditor.propagateConfirm(pv.eligible.length))) return;
@@ -3247,6 +3263,7 @@
           body: JSON.stringify({ segmentId, editedContent, category: category || undefined }),
         }
       );
+      const applyScope = scopeSkipCounts(pr.skipped);
       const structureBlockedCount = pr.skipped.filter(
         (s) => s.reason === 'structure_blocked'
       ).length;
@@ -3254,7 +3271,9 @@
         UI.segmentEditor.propagateResult(
           pr.created.length,
           pr.skipped.length,
-          structureBlockedCount
+          structureBlockedCount,
+          applyScope.notYours,
+          applyScope.notEditable
         ),
         'success'
       );

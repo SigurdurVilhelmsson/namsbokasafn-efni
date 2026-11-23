@@ -19,6 +19,7 @@ const Database = require('better-sqlite3');
 const freshMigratedDb = require('./helpers/freshMigratedDb');
 const {
   readResearchPreconditions,
+  readG1d,
   execNeverThrow,
 } = require('../scripts/read-research-preconditions');
 
@@ -190,6 +191,7 @@ describe('G-1d (spec §9): whether units would open the moment the step ships', 
         { book: 'liffraedi-2e', enforceAssignments: false },
       ],
       studyBookEnforced: true,
+      studyBookEnforcedStored: true,
       assignments: [
         { userId: userA, chapter: 1 },
         { userId: userA, chapter: 2 },
@@ -221,11 +223,13 @@ describe('G-1d (spec §9): whether units would open the moment the step ships', 
     ).toBe(1);
   });
 
-  it('a study book with no book_settings row reads as not enforced, not as missing', () => {
-    expect(readResearchPreconditions(ctx()).sections['G-1d'].studyBookEnforced).toBe(true); // control
+  it('a study book with no book_settings row is enforced all the same; the stored value reads false (spec §6.2)', () => {
+    const before = readResearchPreconditions(ctx()).sections['G-1d'];
+    expect(before.studyBookEnforcedStored).toBe(true); // control: the row is read
     db.prepare('DELETE FROM book_settings WHERE book = ?').run(BOOK);
     const g = readResearchPreconditions(ctx()).sections['G-1d'];
-    expect(g.studyBookEnforced).toBe(false);
+    expect(g.studyBookEnforced).toBe(true);
+    expect(g.studyBookEnforcedStored).toBe(false);
     expect(g.enforcement).toEqual([{ book: 'liffraedi-2e', enforceAssignments: false }]);
   });
 
@@ -298,6 +302,60 @@ describe('G-1d (spec §9): whether units would open the moment the step ships', 
       { id: userA, role: 'editor', active: true },
       { id: userB, role: 'head-editor', active: false },
     ]);
+  });
+});
+
+describe('G-1d: only an absent editorScope falls back to the stored row (spec §6.2)', () => {
+  /** Node's own MODULE_NOT_FOUND for `request`, required from <tmp>/scripts/ over a tree of `files`. */
+  function moduleError(files, request) {
+    const tree = fs.mkdtempSync(path.join(os.tmpdir(), 'g1d-module-'));
+    try {
+      for (const [rel, text] of Object.entries(files)) {
+        fs.mkdirSync(path.dirname(path.join(tree, rel)), { recursive: true });
+        fs.writeFileSync(path.join(tree, rel), text);
+      }
+      try {
+        createRequire(path.join(tree, 'scripts', 'probe.js'))(request);
+      } catch (err) {
+        return err;
+      }
+      throw new Error(`${request} loaded`);
+    } finally {
+      fs.rmSync(tree, { recursive: true, force: true });
+    }
+  }
+  const g1d = (loadEditorScope) =>
+    readG1d({
+      db: () => db,
+      book: BOOK,
+      serverDir: path.join(root, 'server'),
+      exec: stubExec(),
+      loadEditorScope,
+    });
+  const throwing = (err) => () => {
+    throw err;
+  };
+
+  it('an absent editorScope reads the stored row alone', () => {
+    db.prepare('UPDATE book_settings SET enforce_assignments = 0 WHERE book = ?').run(BOOK);
+    expect(g1d().studyBookEnforced).toBe(true); // control: the real module enforces the study book
+    const absent = moduleError({}, '../lib/editorScope');
+    expect(g1d(throwing(absent)).studyBookEnforced).toBe(false);
+  });
+
+  it('a missing dependency of editorScope is thrown, not read as an absent editorScope', () => {
+    const err = moduleError(
+      { 'lib/editorScope.js': "require('./researchScope');\n" },
+      '../lib/editorScope'
+    );
+    // Control: the trap is real; the require stack names editorScope.js although editorScope loaded.
+    expect(err.requireStack.some((p) => p.endsWith(path.join('lib', 'editorScope.js')))).toBe(true);
+    expect(() => g1d(throwing(err))).toThrow(err);
+  });
+
+  it('a MODULE_NOT_FOUND for another module is thrown', () => {
+    const err = moduleError({}, '../lib/editorScopeExempt');
+    expect(() => g1d(throwing(err))).toThrow(err);
   });
 });
 
@@ -1562,10 +1620,13 @@ describe('it can run where PR1 and PR2 are not deployed', () => {
     // while the others read.
     // G1.7: '../lib/studyUnits' is required lazily, inside readG1g, so a production tree that predates it still
     // runs the probe; only G-1g then fails.
+    // G1.13: '../lib/editorScope' is required lazily, inside readG1d, for the same reason; an older tree reads
+    // the stored row alone, which was its rule.
     expect(specifiers.sort()).toEqual([
       '../../tools/lib/mt-lock.cjs',
       '../lib/chapterLabel',
       '../lib/dbPath',
+      '../lib/editorScope',
       '../lib/researchBackupPolicy',
       '../lib/researchDbPath',
       '../lib/researchFiles',

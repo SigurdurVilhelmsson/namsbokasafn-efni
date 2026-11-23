@@ -210,16 +210,42 @@ function readAutoCreateUsers({ serverDir, exec }) {
   return { dotEnv, service, environmentFiles, effective };
 }
 
-function readG1d({ db, book, serverDir, exec }) {
+/**
+ * True only when the missing module is '../lib/editorScope' itself. Node names the missing specifier
+ * on the message's first line. `err.requireStack` is the wrong field: it lists the modules that asked,
+ * so a missing dependency OF editorScope lists editorScope.js there, and must not read as "editorScope
+ * absent".
+ */
+const isEditorScopeAbsent = (err) =>
+  !!err &&
+  err.code === 'MODULE_NOT_FOUND' &&
+  String(err.message).split('\n')[0] === "Cannot find module '../lib/editorScope'";
+
+function readG1d({
+  db,
+  book,
+  serverDir,
+  exec,
+  loadEditorScope = () => require('../lib/editorScope'),
+}) {
   const conn = db();
   const enforcement = conn
     .prepare('SELECT book, enforce_assignments FROM book_settings ORDER BY book')
     .all()
     .map((r) => ({ book: r.book, enforceAssignments: !!r.enforce_assignments }));
-  // isAssignmentEnforced's rule (userService.js): truthiness, and no row is not enforced, so the study book
-  // is never absent.
+  // isAssignmentEnforced's rule (userService.js): a study book is always enforced (spec §6.2); otherwise
+  // truthiness, and no row is not enforced. `stored` is the row alone, kept so a stored 0 stays visible.
   const own = enforcement.find((e) => e.book === book);
-  const studyBookEnforced = own ? own.enforceAssignments : false;
+  const studyBookEnforcedStored = own ? own.enforceAssignments : false;
+  // '../lib/editorScope' is required lazily, so a production tree that predates it still runs the probe;
+  // there the old rule (the row alone) is the right one. Any other failure to load it is thrown.
+  let alwaysEnforced = false;
+  try {
+    alwaysEnforced = loadEditorScope().isAlwaysEnforced(book);
+  } catch (err) {
+    if (!isEditorScopeAbsent(err)) throw err;
+  }
+  const studyBookEnforced = alwaysEnforced || studyBookEnforcedStored;
   const assignments = conn
     .prepare(
       'SELECT user_id, chapter FROM user_chapter_assignments WHERE book_slug = ? ORDER BY chapter, user_id'
@@ -233,6 +259,7 @@ function readG1d({ db, book, serverDir, exec }) {
   return {
     enforcement,
     studyBookEnforced,
+    studyBookEnforcedStored,
     assignments,
     assignedChapters: [...new Set(assignments.map((a) => a.chapter))].sort((a, b) => a - b),
     users,

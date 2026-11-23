@@ -27,6 +27,7 @@ const researchConsentText = require('../lib/researchConsentText');
 const serverCommit = require('../lib/serverCommit');
 const userService = require('../services/userService');
 const { writeModule, handlerFor, invoke } = require('./helpers/servedFixture');
+const { plantAssignment } = require('./helpers/plantAssignment.cjs');
 const { APPROVED, makeUser, consent, decline, losses } = require('./helpers/researchFixture.cjs');
 const { eventMark, eventsSince } = require('./helpers/researchEventsFixture.cjs');
 
@@ -83,9 +84,9 @@ beforeAll(() => {
   consent(opId);
   decline(decId);
   consent(userService.findByProviderId('p-un').id);
-  userService.assignChapter(opId, CHEM, 1);
-  userService.assignChapter(decId, CHEM, 1);
   db = new Database(dbPath);
+  plantAssignment(db, { userId: opId, book: CHEM, chapter: 1 });
+  plantAssignment(db, { userId: decId, book: CHEM, chapter: 1 });
   // A pending edit by p-dec before the opening, so the snapshot holds one segment.
   db.prepare(
     `INSERT INTO segment_edits (book, chapter, module_id, segment_id, original_content, edited_content, status,

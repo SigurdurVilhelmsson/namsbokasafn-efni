@@ -26,6 +26,11 @@ const { VALID_BOOKS } = require('../config');
 const { VALID_TRACKS, MAX_CHAPTERS } = require('../constants');
 const { normalizeChapter } = require('../lib/chapterLabel');
 const { pipelineHold, refuseHeldForNonAdmins } = require('../lib/heldBookWrites');
+const { refuseClosedBookForNonAdmins } = require('../lib/editorScope');
+
+// The closed-book guard (G1.13, spec §6.1): a head editor of a book not open to editors cannot run
+// its pipeline; an admin can. It reads the body's book after requireHeadEditorFor has checked it.
+const refuseClosedBodyBook = refuseClosedBookForNonAdmins((req) => req.body?.book, 'body');
 
 // All pipeline operations require HEAD_EDITOR
 router.use(requireAuth, requireRole(ROLES.HEAD_EDITOR));
@@ -68,6 +73,7 @@ function validateParams(req, res) {
 router.post(
   '/inject',
   requireHeadEditorFor((req) => req.body?.book),
+  refuseClosedBodyBook,
   refuseHeldForNonAdmins(pipelineHold, (req) => req.body?.book, 'pipeline'), // G1.14
   (req, res) => {
     const params = validateParams(req, res);
@@ -120,6 +126,7 @@ router.post(
 router.post(
   '/render',
   requireHeadEditorFor((req) => req.body?.book),
+  refuseClosedBodyBook,
   refuseHeldForNonAdmins(pipelineHold, (req) => req.body?.book, 'pipeline'), // G1.14
   (req, res) => {
     const params = validateParams(req, res);
@@ -171,6 +178,7 @@ router.post(
 router.post(
   '/run',
   requireHeadEditorFor((req) => req.body?.book),
+  refuseClosedBodyBook,
   refuseHeldForNonAdmins(pipelineHold, (req) => req.body?.book, 'pipeline'), // G1.14
   (req, res) => {
     const params = validateParams(req, res);

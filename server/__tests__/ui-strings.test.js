@@ -121,6 +121,66 @@ describe('propagateResult (SR-OOS-2 FIX6c)', () => {
     expect(msg).toContain('2 þegar breytt');
     expect(msg).not.toContain('byggingarmerki hindra');
   });
+
+  it('G1.13: not-your-chapter skips are named, not counted as already changed', () => {
+    const msg = UI.segmentEditor.propagateResult(1, 2, 0, 2, 0);
+    expect(msg).toContain('2 í köflum sem þú ritstýrir ekki');
+    expect(msg).not.toContain('þegar breytt');
+  });
+
+  it('G1.13: chapter-not-editable skips get their own phrase', () => {
+    const msg = UI.segmentEditor.propagateResult(1, 1, 0, 0, 1);
+    expect(msg).toContain('1 í kafla sem ekki er hægt að ritstýra');
+    expect(msg).not.toContain('þegar breytt');
+  });
+
+  it('G1.13: scope skips mixed with other reasons leave only the remainder as already changed', () => {
+    const msg = UI.segmentEditor.propagateResult(1, 5, 1, 2, 1);
+    expect(msg).toContain('1 þegar breytt');
+  });
+
+  it('G1.13: with no eligible target, the scoped none-message does not say the text occurs nowhere', () => {
+    const msg = UI.segmentEditor.propagateNoneScoped(3, 0);
+    expect(msg).toContain('3 í köflum sem þú ritstýrir ekki');
+    expect(msg).not.toContain('hvergi');
+  });
+
+  it('G1.13: a count of 1 not-your-chapter skip reads "í kafla", 2 reads "í köflum"', () => {
+    expect(UI.segmentEditor.propagateResult(1, 1, 0, 1, 0)).toContain(
+      '1 í kafla sem þú ritstýrir ekki'
+    );
+    expect(UI.segmentEditor.propagateResult(1, 2, 0, 2, 0)).toContain(
+      '2 í köflum sem þú ritstýrir ekki'
+    );
+  });
+
+  it('G1.13: a count of 1 chapter-not-editable skip reads "í kafla", 2 reads "í köflum"', () => {
+    expect(UI.segmentEditor.propagateResult(1, 1, 0, 0, 1)).toContain(
+      '1 í kafla sem ekki er hægt að ritstýra'
+    );
+    expect(UI.segmentEditor.propagateResult(1, 2, 0, 0, 2)).toContain(
+      '2 í köflum sem ekki er hægt að ritstýra'
+    );
+  });
+
+  it('G1.13: the scoped none-message is singular for 1 and plural for 2, for both phrases', () => {
+    expect(UI.segmentEditor.propagateNoneScoped(1, 0)).toContain('1 í kafla sem þú ritstýrir ekki');
+    expect(UI.segmentEditor.propagateNoneScoped(2, 0)).toContain(
+      '2 í köflum sem þú ritstýrir ekki'
+    );
+    expect(UI.segmentEditor.propagateNoneScoped(0, 1)).toContain(
+      '1 í kafla sem ekki er hægt að ritstýra'
+    );
+    expect(UI.segmentEditor.propagateNoneScoped(0, 2)).toContain(
+      '2 í köflum sem ekki er hægt að ritstýra'
+    );
+  });
+
+  it('G1.13: the editor routes scope skips into both messages', () => {
+    const js = readFileSync(join(publicJs, 'segment-editor.js'), 'utf-8');
+    expect(js).toMatch(/propagateNoneScoped\(scope\.notYours, scope\.notEditable\)/);
+    expect(js).toMatch(/structureBlockedCount,\s*applyScope\.notYours,\s*applyScope\.notEditable/);
+  });
 });
 
 describe('refused-save strings (G1.1 §5.18; index decisions 12–13)', () => {

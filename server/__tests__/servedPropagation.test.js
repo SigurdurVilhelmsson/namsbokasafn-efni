@@ -18,7 +18,7 @@
 import { mkdtempSync, rmSync, mkdirSync } from 'fs';
 import { tmpdir } from 'os';
 import path from 'path';
-import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, beforeEach, afterEach, vi } from 'vitest';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
@@ -30,7 +30,8 @@ process.env.SESSIONS_DB_PATH = dbPath;
 process.env.JWT_SECRET = process.env.JWT_SECRET || 'prufa-leyndarmal';
 
 const Database = require('better-sqlite3');
-const { writeModule, handlerFor, invoke, EDITOR } = require('./helpers/servedFixture');
+const { writeModule, handlerFor, invoke, invokeChain, EDITOR } = require('./helpers/servedFixture');
+const { plantAssignment } = require('./helpers/plantAssignment.cjs');
 
 const CHEM = 'efnafraedi-2e';
 const ORGANIC = 'lifraen-efnafraedi';
@@ -42,6 +43,7 @@ const U = 'm96003:para:u';
 const DUP = 'm96101:para:d';
 const PLAIN = 'm96101:para:c';
 const LAYERLESS = 'm96103:para:n';
+const NARROW = Object.freeze({ id: 'u-ed2', username: 'editor2', role: 'editor', books: [] });
 
 let root;
 let realBooksDir;
@@ -156,6 +158,20 @@ beforeAll(() => {
   propagate = handlerFor(router, 'post', '/:book/:chapter/:moduleId/propagate');
   preview = handlerFor(router, 'get', '/:book/:chapter/:moduleId/propagation-preview');
   db = new Database(dbPath);
+  // G1.13 (spec §6.2): chemistry is assignment-enforced. EDITOR holds chapters 1 and 2, the
+  // chapters the fixtures' modules sit in; NARROW holds only chapter 1.
+  const addEditor = (providerId) =>
+    Number(
+      db
+        .prepare(
+          "INSERT INTO users (display_name, role, provider_id, provider_username) VALUES (?, 'editor', ?, ?)"
+        )
+        .run(providerId, providerId, providerId).lastInsertRowid
+    );
+  const wide = addEditor(EDITOR.id);
+  const narrow = addEditor(NARROW.id);
+  for (const chapter of [1, 2]) plantAssignment(db, { userId: wide, book: CHEM, chapter });
+  plantAssignment(db, { userId: narrow, book: CHEM, chapter: 1 });
 });
 
 afterAll(() => {
@@ -360,6 +376,113 @@ describe('POST /propagate and its preview place the SOURCE (PR1 review C3; spec 
       expect(r.body).toEqual({ error: 'segment not found' });
     }
 
+    expect(snapshot()).toEqual(before);
+  });
+});
+
+describe('propagation checks each target chapter (G1.13, spec §6.3; T6)', () => {
+  it('an editor holding only the source chapter: the other chapter is not-your-chapter on the preview and the apply, and nothing is written for it', async () => {
+    const p = await previewOf(SOURCE, { moduleId: 'm96001', user: NARROW });
+    expect(p.status).toBe(200);
+    expect(p.body.eligible).toEqual([]);
+    const notYours = p.body.skipped.filter((x) => x.reason === 'not-your-chapter');
+    expect(notYours.map((x) => [x.moduleId, x.chapter])).toEqual([
+      ['m96002', 2],
+      ['m96003', 2], // the duplicated target's two copies
+      ['m96003', 2],
+    ]);
+
+    const before = snapshot();
+    const r = await post({ segmentId: SOURCE, editedContent: 'Texti.' }, { user: NARROW });
+    expect(r.status).toBe(200);
+    expect(r.body.created).toEqual([]);
+    expect(
+      r.body.skipped.filter((x) => x.reason === 'not-your-chapter').map((x) => x.moduleId)
+    ).toEqual(['m96002', 'm96003', 'm96003']);
+    expect(snapshot()).toEqual(before);
+
+    // Control: the editor holding both chapters writes the same target.
+    const ok = await post({ segmentId: SOURCE, editedContent: 'Texti.' });
+    expect(ok.body.created).toEqual([{ moduleId: 'm96002', segmentId: T }]);
+    expect(editRows().filter((row) => row.module_id === 'm96002')).toHaveLength(1);
+  });
+});
+
+// G1.13 (spec §6.3): when a target chapter cannot be checked, propagation answers 503, as
+// requireBookAccess does when assignments cannot be evaluated, and writes nothing.
+describe('propagation answers 503 when a target chapter cannot be checked (G1.13, spec §6.3)', () => {
+  const UNAVAILABLE = {
+    error: 'Assignment enforcement unavailable',
+    message:
+      'Chapter assignments cannot be verified right now. Access is blocked until this is resolved.',
+  };
+
+  // The assignment table renamed, and named back in `finally`. The rename is committed because the
+  // handler reads through userService's own connection, which could not see an open transaction on
+  // this one. Chemistry is a study book, always enforced (spec §6.2), so hasChapterAccess throws
+  // ASSIGNMENT_TABLE_UNAVAILABLE and canWriteChapter passes it on.
+  async function withoutAssignmentTable(fn) {
+    db.exec('ALTER TABLE user_chapter_assignments RENAME TO user_chapter_assignments_hidden');
+    try {
+      return await fn();
+    } finally {
+      db.exec('ALTER TABLE user_chapter_assignments_hidden RENAME TO user_chapter_assignments');
+    }
+  }
+
+  afterEach(() => vi.restoreAllMocks());
+
+  // These two drive the handlers alone, as the rest of this file does, so requireBookAccess (the
+  // source chapter's check on /propagate, whose 503 body is the same) does not run: the per-target
+  // check is what answers.
+  it('the preview answers 503', async () => {
+    const r = await withoutAssignmentTable(() => previewOf(SOURCE, { moduleId: 'm96001' }));
+    expect([r.status, r.body]).toEqual([503, UNAVAILABLE]);
+  });
+
+  it('the apply answers 503 and writes nothing', async () => {
+    const before = snapshot();
+    const r = await withoutAssignmentTable(() =>
+      post({ segmentId: SOURCE, editedContent: 'Texti.' })
+    );
+    expect([r.status, r.body]).toEqual([503, UNAVAILABLE]);
+    expect(snapshot()).toEqual(before);
+  });
+
+  // The whole chain: requireBookAccess checks the source chapter (1, which EDITOR holds) for real
+  // and passes; only the target chapter's check (2) fails. So the 503 can only be the route's own
+  // mapping of the per-target throw.
+  it('the apply through its whole chain: the source chapter allowed, the target chapter unverifiable, answers 503 and writes nothing', async () => {
+    const userService = require('../services/userService');
+    const real = userService.canWriteChapter;
+    const asked = [];
+    vi.spyOn(userService, 'canWriteChapter').mockImplementation((args) => {
+      asked.push(args.chapter);
+      if (args.chapter === 2) {
+        throw Object.assign(new Error('assignments unavailable'), {
+          code: 'ASSIGNMENT_TABLE_UNAVAILABLE',
+        });
+      }
+      return real(args);
+    });
+    const auth = require('../services/auth');
+    const before = snapshot();
+    const r = await invokeChain(
+      require('../routes/segment-editor'),
+      'post',
+      '/:book/:chapter/:moduleId/propagate',
+      {
+        params: { book: CHEM, chapter: '1', moduleId: 'm96001' },
+        headers: {
+          authorization: `Bearer ${auth.createToken({ ...EDITOR, name: EDITOR.username, avatar: '' })}`,
+        },
+        cookies: {},
+        query: {},
+        body: { segmentId: SOURCE, editedContent: 'Texti.' },
+      }
+    );
+    expect([r.status, r.body]).toEqual([503, UNAVAILABLE]);
+    expect(asked).toEqual([2]); // the route asked for the target chapter, and only for it
     expect(snapshot()).toEqual(before);
   });
 });

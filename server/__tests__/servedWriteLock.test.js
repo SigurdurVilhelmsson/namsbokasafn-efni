@@ -67,6 +67,7 @@ process.env.JWT_SECRET = process.env.JWT_SECRET || 'prufa-leyndarmal';
 const Database = require('better-sqlite3');
 const { sha256Text } = require('../lib/servedText');
 const { writeModule, handlerFor, invoke } = require('./helpers/servedFixture');
+const { plantAssignment } = require('./helpers/plantAssignment.cjs');
 
 const CHEM = 'efnafraedi-2e';
 const SAVE = Object.freeze({ book: CHEM, chapter: 1, moduleId: 'm95001' });
@@ -167,14 +168,14 @@ beforeAll(() => {
     });
   }
   // Cases (f) and (h): a users row holding a user_chapter_assignments row for chapter 1, written by
-  // userService's own writers on its own connection, as the admin page writes them.
+  // planted directly (assigning is gated, G1.13 spec §6.5; this file tests the write lock).
   opener = userService.createUser({
     providerId: 'p-lock-opener',
     providerUsername: 'p-lock-opener@skoli.example',
     email: 'p-lock-opener@skoli.example',
     role: 'editor',
   });
-  userService.assignChapter(opener.id, CHEM, 1);
+  plantAssignment(db, { userId: opener.id, book: CHEM, chapter: 1 });
   for (const [{ moduleId }, is] of [
     [PROP_SOURCE, 'IS uppruni'],
     [PROP_TARGET, 'IS mark'],

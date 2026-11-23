@@ -60,7 +60,8 @@ describe('the flag registry (spec §5.13)', () => {
       'apply-hold': true,
       'auto-create-users': 'visitor',
       email: false,
-      'enforce-assignments': false,
+      // A study book is always enforced, whatever its row says (spec §6.2).
+      'enforce-assignments': true,
       'enforce-localization-review': false,
       'figure-review-closed': true,
       greynir: false,
@@ -76,9 +77,14 @@ describe('the flag registry (spec §5.13)', () => {
   it('each flag follows its own source, and only that flag moves (T14, snapshot half)', () => {
     const bio = flagSnapshot('liffraedi-2e', { conn });
     const before = flagSnapshot(CHEM, { conn });
-    userService.setAssignmentEnforced(CHEM, true);
+    // The assignment flag moves on a non-study book; chemistry's is always on (spec §6.2), so its row
+    // changes nothing there.
+    userService.setAssignmentEnforced('liffraedi-2e', true);
+    expect(changed(bio, flagSnapshot('liffraedi-2e', { conn }))).toEqual(['enforce-assignments']);
+    userService.setAssignmentEnforced('liffraedi-2e', false);
+    userService.setAssignmentEnforced(CHEM, false);
     const afterAssign = flagSnapshot(CHEM, { conn });
-    expect(changed(before, afterAssign)).toEqual(['enforce-assignments']);
+    expect(changed(before, afterAssign)).toEqual([]);
     conn
       .prepare(
         "INSERT INTO book_switch_events (book, switch_name, value, switched_at_ms) VALUES (?, 'suggestion-view', 1, ?)"
@@ -87,7 +93,6 @@ describe('the flag registry (spec §5.13)', () => {
     const afterSwitch = flagSnapshot(CHEM, { conn });
     expect(changed(afterAssign, afterSwitch)).toEqual(['suggestion-view']);
     expect(flagSnapshot('liffraedi-2e', { conn })).toEqual(bio);
-    userService.setAssignmentEnforced(CHEM, false);
   });
 
   it('a configured service reads as a boolean, never its value', () => {

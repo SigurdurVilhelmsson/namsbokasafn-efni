@@ -26,6 +26,7 @@ afterAll(() => rmSync(work, { recursive: true, force: true }));
 
 const freshMigratedDb = require('./helpers/freshMigratedDb');
 const { writeModule, handlerFor, invoke, EDITOR } = require('./helpers/servedFixture');
+const { plantAssignment } = require('./helpers/plantAssignment.cjs');
 
 // Every column the module route sends to every editor's browser through SELECT *
 // (segmentEditorService.getModuleEdits, acceptanceService.getModuleAcceptances). A column joins
@@ -357,7 +358,7 @@ describe('T17 (PR2): no opened time, no switch time and no snapshot in any respo
       providerUsername: 'p-t17',
       role: 'editor',
     });
-    userService.assignChapter(opener.id, PR2_BOOK, 1);
+    plantAssignment(db, { userId: opener.id, book: PR2_BOOK, chapter: 1 });
     // seeded by SQL on this db, so jsonDrift finds an edit row and an acceptance row and nothing
     // is written under books/
     addEdit({ moduleId: 'm94030', seg: 'm94030:para:a' });

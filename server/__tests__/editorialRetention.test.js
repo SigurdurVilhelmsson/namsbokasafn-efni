@@ -458,6 +458,36 @@ describe('editorialRetention: the named step', () => {
     expect(before.some((u) => u.id === accountId)).toBe(true); // control
   });
 
+  it('a licence-clause row comes through the named and consent steps unchanged, while the consent step deletes the research_consent row beside it', () => {
+    insert(db, 'editor_licence_clauses', {
+      user_id: 41,
+      signed_on: '2026-11-01',
+      recorded_by: 'test-admin',
+      recorded_at_ms: Date.UTC(2026, 10, 1),
+    });
+    const kept = () => db.prepare('SELECT * FROM editor_licence_clauses').all();
+    const before = kept();
+    expect(before).toHaveLength(1); // control: the row exists
+    insert(db, 'research_consent', {
+      user_id: 41,
+      decision: 'consented',
+      interval_id: 9,
+      consent_text_version: 'v1',
+      consent_text_sha256: 'a'.repeat(64),
+      given_at_ms: Date.UTC(2027, 0, 5),
+    });
+    db.prepare(
+      "INSERT INTO research_deletions (kind, interval_id, done_at_ms, verified) VALUES ('retention', NULL, ?, 1)"
+    ).run(effectiveMs(RESEARCH_RAW_ROWS));
+
+    applyStep(db, 'named', AT);
+    expect(kept()).toEqual(before);
+    const res = applyStep(db, 'consent', effectiveMs(CONSENT_RECORDS));
+    expect(res.changed).toBeGreaterThan(0);
+    expect(db.prepare('SELECT COUNT(*) FROM research_consent').pluck().get()).toBe(0); // control: it ran
+    expect(kept()).toEqual(before);
+  });
+
   it('a failure mid-step leaves every row and every trigger as it was', () => {
     plantAll(db);
     db.exec(

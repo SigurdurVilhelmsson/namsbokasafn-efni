@@ -29,6 +29,7 @@ process.env.JWT_SECRET = process.env.JWT_SECRET || 'prufa-leyndarmal';
 
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const { plantAssignment } = require('./helpers/plantAssignment.cjs');
 
 const MINE = 'efnafraedi-2e';
 const OTHER = 'liffraedi-2e';
@@ -68,9 +69,9 @@ beforeAll(async () => {
       addUser.run(reader.id, `${name}@skoli.example`, name, reader.role).lastInsertRowid
     );
   }
+  // A fixture row, planted: assigning is gated (G1.13 spec §6.5), and this file tests the log's scope.
+  plantAssignment(db, { userId: ids.assigned, book: MINE, chapter: 3 });
   db.close();
-
-  userService.assignChapter(ids.assigned, MINE, 3, 'test');
   userService.assignBookAccess(ids.access, MINE, 'editor', 'test');
   userService.assignBookAccess(ids.head, MINE, 'head-editor', 'test');
 

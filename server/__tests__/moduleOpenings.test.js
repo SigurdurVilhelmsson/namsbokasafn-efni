@@ -22,6 +22,7 @@ process.env.SESSIONS_DB_PATH = path.join(
 
 const Database = require('better-sqlite3');
 const freshMigratedDb = require('./helpers/freshMigratedDb');
+const { plantAssignment } = require('./helpers/plantAssignment.cjs');
 const userService = require('../services/userService');
 const notifications = require('../services/notifications');
 const log = require('../lib/logger');
@@ -46,7 +47,7 @@ afterEach(() => {
   db.close();
 });
 
-/** A users row the way the admin page creates one, with assignment rows (userService's own writers). */
+/** A users row the way the admin page creates one, with assignment rows planted directly (assigning is gated). */
 function member(providerId, role, chapters = [], book = BOOK) {
   const u = userService.createUser({
     providerId,
@@ -54,7 +55,7 @@ function member(providerId, role, chapters = [], book = BOOK) {
     email: `${providerId}@skoli.example`,
     role,
   });
-  for (const ch of chapters) userService.assignChapter(u.id, book, ch);
+  for (const ch of chapters) plantAssignment(db, { userId: u.id, book, chapter: ch });
   return u;
 }
 const key = (over = {}) => ({ book: BOOK, chapter: 1, moduleId: 'm95001', ...over });
@@ -133,11 +134,14 @@ describe('openingPredicate (spec §5.5; T6, service half)', () => {
   });
 
   it("the zero-row editor's no is the predicate's own: the fail-open neighbour would have let them in", () => {
-    member('p-ed1', 'editor', [1]);
+    const ed1 = member('p-ed1', 'editor', [1]);
     const zero = member('p-zero', 'editor');
-    expect(userService.isAssignmentEnforced(BOOK)).toBe(false);
+    // The study book is always enforced now (spec §6.2); the legacy fail-open lives on a non-study book.
+    expect(userService.isAssignmentEnforced(BOOK)).toBe(true);
+    plantAssignment(db, { userId: ed1.id, book: 'testbook', chapter: 1, assignedBy: 'admin' });
+    expect(userService.isAssignmentEnforced('testbook')).toBe(false);
     // userService.js hasChapterAccess, legacy fail-open: no rows for the book = every chapter.
-    expect(userService.hasChapterAccess(zero.id, BOOK, 1)).toBe(true);
+    expect(userService.hasChapterAccess(zero.id, 'testbook', 1)).toBe(true);
     expect(pred('p-zero').holds).toBe(false);
   });
 
@@ -178,7 +182,7 @@ describe('openingPredicate (spec §5.5; T6, service half)', () => {
     const bio = member('p-bio-only', 'editor', [1], 'liffraedi-2e');
     expect(pred('p-bio-only')).toEqual({ holds: false, reason: 'no-assignment' });
     // positive control: the same member, given this book's row, meets it
-    userService.assignChapter(bio.id, BOOK, 1);
+    plantAssignment(db, { userId: bio.id, book: BOOK, chapter: 1 });
     expect(pred('p-bio-only')).toEqual({ holds: true, reason: 'holds' });
   });
 
@@ -225,7 +229,7 @@ describe('openingPredicate (spec §5.5; T6, service half)', () => {
     ).run(zero.id, admin.id);
     expect(pred('p-zero').reason).toBe('no-assignment');
     // Control: the table the predicate reads.
-    userService.assignChapter(zero.id, BOOK, 1);
+    plantAssignment(db, { userId: zero.id, book: BOOK, chapter: 1 });
     expect(pred('p-zero').reason).toBe('holds');
   });
 

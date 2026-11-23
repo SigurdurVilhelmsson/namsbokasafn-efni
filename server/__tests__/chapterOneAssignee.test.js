@@ -17,6 +17,7 @@ import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
+const { plantAssignment, plantAssignable } = require('./helpers/plantAssignment.cjs');
 
 const work = mkdtempSync(path.join(tmpdir(), 'one-assignee-'));
 process.env.SESSIONS_DB_PATH = path.join(work, 'sessions.db');
@@ -30,6 +31,7 @@ const GONE = 7005; // deactivated: not assignable
 let BOOK;
 let userService;
 let handlers;
+let db;
 
 function invoke(h, req) {
   let resolveResult;
@@ -78,7 +80,7 @@ beforeAll(() => {
   BOOK = VALID_BOOKS[0];
 
   const Database = require('better-sqlite3');
-  const db = new Database(process.env.SESSIONS_DB_PATH);
+  db = new Database(process.env.SESSIONS_DB_PATH);
   const ins = db.prepare(
     `INSERT INTO users (id, provider_id, provider_username, display_name, role, is_active)
      VALUES (?, ?, ?, ?, ?, ?)`
@@ -88,7 +90,8 @@ beforeAll(() => {
   ins.run(DORA, 't-7003', 'dora', 'Dóra', 'editor', 1);
   ins.run(GUEST, 't-7004', 'gestur', 'Gestur', 'viewer', 1);
   ins.run(GONE, 't-7005', 'farinn', 'Farinn', 'editor', 0);
-  db.close();
+  // The assign gate (G1.13 spec §6.5) lets these three through, so this file tests the one-assignee rule.
+  for (const userId of [ANNA, BJORN, DORA]) plantAssignable(db, { userId, book: BOOK });
 
   userService = require('../services/userService');
   const router = require('../routes/admin');
@@ -105,8 +108,13 @@ beforeAll(() => {
 });
 
 afterAll(() => {
+  db.close();
   rmSync(work, { recursive: true, force: true });
 });
+
+/** A row written before the one-assignee rule: planted, as no door that assigns writes a second one. */
+const plantOld = (userId, chapter) =>
+  plantAssignment(db, { userId, book: BOOK, chapter, assignedBy: 'before-the-rule' });
 
 describe('Úthlutanir: the chapter row (POST and DELETE /assignments/:book/:chapter)', () => {
   it('choosing another editor replaces the first, and says whom it replaced', async () => {
@@ -127,8 +135,8 @@ describe('Úthlutanir: the chapter row (POST and DELETE /assignments/:book/:chap
   });
 
   it('a chapter that holds two editors from before the rule is settled by the next choice', async () => {
-    userService.assignChapter(ANNA, BOOK, 5, 'before-the-rule');
-    userService.assignChapter(BJORN, BOOK, 5, 'before-the-rule');
+    plantOld(ANNA, 5);
+    plantOld(BJORN, 5);
     expect(holders(5)).toEqual([ANNA, BJORN]);
 
     const r = await assign(5, DORA);
@@ -138,8 +146,8 @@ describe('Úthlutanir: the chapter row (POST and DELETE /assignments/:book/:chap
   });
 
   it('keeping one of two editors drops only the other', async () => {
-    userService.assignChapter(ANNA, BOOK, 6, 'before-the-rule');
-    userService.assignChapter(BJORN, BOOK, 6, 'before-the-rule');
+    plantOld(ANNA, 6);
+    plantOld(BJORN, 6);
 
     const r = await assign(6, ANNA);
     expect(r.status).toBe(200);
@@ -148,8 +156,8 @@ describe('Úthlutanir: the chapter row (POST and DELETE /assignments/:book/:chap
   });
 
   it('clearing a chapter removes everyone on it, not one row at a time', async () => {
-    userService.assignChapter(ANNA, BOOK, 8, 'before-the-rule');
-    userService.assignChapter(BJORN, BOOK, 8, 'before-the-rule');
+    plantOld(ANNA, 8);
+    plantOld(BJORN, 8);
 
     const r = await clear(8);
     expect(r.status).toBe(200);
@@ -219,11 +227,20 @@ describe('the service', () => {
   it('setChapterAssignee leaves the chapter as it was when the new row cannot be written', () => {
     userService.setChapterAssignee(ANNA, BOOK, 15, 'admin1');
     // No such user: the foreign key refuses the row, and the delete before it must be undone with it.
-    expect(() => userService.setChapterAssignee(424242, BOOK, 15, 'admin1')).toThrow();
+    // The gate's rows have no foreign key, so it lets the id through and the insert is what fails.
+    plantAssignable(db, { userId: 424242, book: BOOK });
+    let thrown;
+    try {
+      userService.setChapterAssignee(424242, BOOK, 15, 'admin1');
+    } catch (err) {
+      thrown = err;
+    }
+    expect(thrown).toBeInstanceOf(Error);
+    expect(thrown.code).not.toBe('ASSIGNMENT_REFUSED');
     expect(holders(15)).toEqual([ANNA]);
   });
 
-  it('assignChapter still only adds a row (fixtures and rows written before the rule use it)', () => {
+  it('assignChapter still only adds a row (it replaces nobody)', () => {
     userService.assignChapter(ANNA, BOOK, 16, 'x');
     userService.assignChapter(BJORN, BOOK, 16, 'x');
     expect(holders(16)).toEqual([ANNA, BJORN]);

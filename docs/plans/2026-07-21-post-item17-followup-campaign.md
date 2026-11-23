@@ -4,6 +4,44 @@
 
 ## ⏩ RESUME — state as of **2026-10-09 — ✅ '6' PR-B IS MERGED ([#546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546)) AND DEPLOYED, with the 7 Dependabot PRs; R-22's condition is met and the LIVE-RUN HOLD's condition is met on `main`. ⏹ The whole-book re-render and the chemistry sync are HELD for [USER]. ▶ [CODE] in parallel: the ② code batch (end of this block)** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence) ✏️ *Heading re-dated 2026-10-09; it had said PR-B was BUILT and UNPUSHED, with step 2b and the LIVE-RUN HOLD outstanding, after all three had changed. The bullets directly under the SINGLE NEXT ACTION are PR-B's record.*
 
+### ⏭ 2026-11-22 (G1.13 scope guards: spec approved, built, open as PR #777; the licence-removal refusal; the TLA+ verification) — IT DOES NOT SUPERSEDE THE NEXT OF ANY OTHER ENTRY
+- ✅ **Spec approved by [USER] on 2026-11-22**, Claude's calls 1–12 included, with licence records kept permanently
+  (retention class `keep`): [design](../superpowers/specs/2026-11-22-g113-scope-guards-design.md), its AMENDED block
+  items 1–8, and [plan](../superpowers/plans/2026-11-22-g113-scope-guards.md).
+- ✅ **Built** on `feat/g113-scope-guards` (each task reviewed, then a whole-branch review) and **open as
+  [#777](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/777)** against `main`; the PR carries the spec
+  and plan. What it does:
+  - only chemistry takes non-admin writes (an allowlist, closed by default; a route census test names any write route
+    that neither carries the guard nor is exempt);
+  - chemistry is always assignment-enforced and fails closed, and its toggle is locked;
+  - propagation skips chapters the editor does not hold, and ch00 for everyone;
+  - `editor_licence_clauses` (migration 060), recorded and removed by admins only;
+  - the assign gate: book open, chapter not 0, not an admin or the book's head editor, a consent decision, a licence
+    clause, and the suggestion view on.
+- ✅ **[USER]'s additions on the PR:**
+  - ten parked review findings fixed before merge;
+  - three Icelandic strings: "í kafla" singular for one, "sem ekki er hægt að ritstýra" for ch00, and the
+    chapter-denied 403 in Icelandic;
+  - **licence removal refuses (409 `HOLDS_CHAPTERS`) while the user holds a chapter in a book open to editors**
+    (`22c5f0c01`; AMENDED item 8). This closes the gap the model found below.
+- ✅ **A TLA+ model of the assign gate and the study-unit opening** (`server/verification/assign-gate/`, checked with
+  TLC v1.7.4, installed by [USER] under `~/.cache`; the skill `.claude/skills/verify-assign-gate` says when and how to
+  rerun it).
+  - Within its bounds, no unit opens without a consent decision or before the view's first switch-on, chapter 0 never
+    gets a row, and every row holder and opener has a licence clause.
+  - One known finding remains and is pinned: an editor given head-editor or admin rights after the assignment keeps the
+    chapter (AMENDED item 7a is its runbook line).
+- **Production read** (read-only, 2026-11-22):
+  - no head editor of a closed book, and no head editor of chemistry;
+  - two plain editors hold book-access rows in closed books and lose writes there;
+  - one old microbiology assignment row (AMENDED item 6).
+- ⏭ **NEXT, [USER]'s:**
+  - merge #777 and deploy (merging pushes `main`, so deploy right after, away from the even-hour cron);
+  - then spec §8's runbook: the A4 §3 walk, the appendix backfill (dry run, then `--db`), and licence clauses recorded
+    as agreements are signed.
+  - Assigning waits on G1.4's consent text.
+  - Docs PR #776 (the G1.7 done record) stays open to ride with a deploy.
+
 ### ⏭ 2026-11-21 (the c46 bundle, batch B4: G2.3, §C11 ① and G1.16 merged; G1.15 answered, its route half merged and deployed, its retention half a design to write) — IT DOES NOT SUPERSEDE THE NEXT OF ANY OTHER ENTRY: **✅ On [USER]'s "Go on c46" (2026-11-21), three of the 2026-11-08 rulings ([record](../decisions/2026-11-08-editing-gates-and-housekeeping-answers.md), answers 8 and 9) are built test-first, each on its own branch cut from `main` at `69640a624`, each opened as a draft PR: G2.3 ([#765](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/765)), §C11 ① ([#766](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/766), which carries this entry) and G1.16 ([#767](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/767)). ✅ **All three are MERGED** on [USER]'s word, as merge commits pinned to their checked heads: #765 at 14:05:38Z as `1df1be82c`, #766 at 14:05:43Z as `264802845` (#764, recorded under §C245, went first at 14:05:34Z as `e63f9afc2`), and #767 at 14:15:05Z as `bda1feb40`, after [USER] read G1.16's new Icelandic credit sentence and found it reads fine. ✅ **The first three DEPLOYED by [USER]:** production pulled `264802845` at 14:07:50Z and the service restarted at 14:08:03Z; read over ssh at 14:08Z, the tree is clean at 0/0, `/api/health` is `ok`, and the content backup's last run (14:00:09Z, nothing to commit) is not stale. **#767:** DEPLOYED by [USER]: production pulled `bda1feb40` at 14:16:33Z and the service restarted at 14:16:41Z; read over ssh at 14:17Z, the tree is clean at 0/0, `/api/health` is `ok` with every check ok, and the content backup is not stale. ✅ **[USER] answered G1.15's four questions the same day** ([record](../decisions/2026-11-21-g115-editor-privacy-split-and-sd7-scope.md)): G1.15(a), route privacy, is MERGED as [#768](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/768) (2026-11-21 14:37:59Z, `701d36c23`, a merge commit pinned to its checked head `d8c5dddb9`, on which all five checks passed). ✅ **DEPLOYED by [USER]:** production pulled `701d36c23` at 14:41:48Z and the service restarted at 14:42:03Z; read over ssh afterwards, the tree is clean at 0/0, `/api/health` is `ok` with every check ok, and the content backup is not stale. G1.15(b), the retention dates, is MERGED as #772 and DEPLOYED (2026-11-22; bullets below), and so is #770 (§C248 + G1.11). ▶ NEXT: nothing in G1.15(b) is open before 2029: both post-deploy reads that waited on the crons pass (G1.15(b) bullets below). The production log limits stay [USER]'s production change (the "Two dependencies" bullet below). ✏️ *Until 2026-11-22 ~12:35Z the NEXT here was two post-deploy reads that waited on the crons (the 12:30Z backup cycle's log and the first glossary export's diff). Until 2026-11-22 ~11:45Z this said #772 was ready for review, with its review and merge next. Until earlier on 2026-11-22 it said G1.15(b) was a design spec to write first, with the spec as the next step. Until 2026-11-21 it said all three PRs were drafts, nothing was merged or deployed, and G1.15 waited on answers.***
 - **G2.3, the review-status sidecar** ([#765](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/765), `805e4aebb`). Each segment's entry is its status alone, `generated` is a UTC date, and a revoke keeps the existing file's date (a pre-G2.3 full timestamp is cut to its own date). The writer reads only segment ids from both tables, so no name or time reaches it. No sidecar is committed yet (0 tracked), so nothing public changes. This makes true the consent text's statement that the published status file names no one and gives no time (G1.4's precondition 4, in the 2026-11-08 PR4 entry below), before G2.7 lifts the apply hold. Its tests were watched red first.
 - **§C11 ①, the content-sync workflow retired** ([#766](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/766), `2c312596a`). `.github/workflows/sync-content.yml` is deleted; CLAUDE.md § Content delivery says it is retired and must not be re-created; `docs/technical/architecture.md`'s Lane 3 describes the manual sync (and its Lane 1 no longer claims the deploy hard-resets, which C11(c) changed). A tripwire, `tools/__tests__/content-sync-workflow-retired.test.js`, fails if any workflow runs the vefur sync script or reads a vefur deploy token; watched red with the old workflow restored.

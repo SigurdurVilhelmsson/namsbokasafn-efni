@@ -26,15 +26,18 @@ const DEFAULT_USER_IDS = {
  * Create a JWT token for a test user with the given role.
  * @param {'admin'|'head-editor'|'editor'|'viewer'} role
  * @param {number} [userId] - Override the default user ID for this role
+ * @param {{username?: string, name?: string}} [identity] - Override the names the token carries. The
+ *   segment editor tells one person's edit from another's by `username`, which defaults to one per role,
+ *   so two users of the same role need this to be told apart.
  * @returns {string} Signed JWT
  */
-function getTestToken(role = 'admin', userId) {
+function getTestToken(role = 'admin', userId, identity = {}) {
   const sub = userId ?? DEFAULT_USER_IDS[role] ?? 99999;
   return jwt.sign(
     {
       sub,
-      username: `test-${role}`,
-      name: `Test ${role.charAt(0).toUpperCase() + role.slice(1)}`,
+      username: identity.username ?? `test-${role}`,
+      name: identity.name ?? `Test ${role.charAt(0).toUpperCase() + role.slice(1)}`,
       avatar: '',
       role,
       books: role === 'head-editor' ? ['efnafraedi-2e', '__e2e-fixture__'] : [],
@@ -50,9 +53,10 @@ function getTestToken(role = 'admin', userId) {
  * @param {import('@playwright/test').Page} page
  * @param {'admin'|'head-editor'|'editor'|'viewer'} role
  * @param {number} [userId] - Override the default user ID for this role
+ * @param {{username?: string, name?: string}} [identity] - As getTestToken's
  */
-async function loginAs(page, role = 'admin', userId) {
-  const token = getTestToken(role, userId);
+async function loginAs(page, role = 'admin', userId, identity) {
+  const token = getTestToken(role, userId, identity);
   await page.context().addCookies([
     {
       name: 'auth_token',

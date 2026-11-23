@@ -12,6 +12,7 @@ import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
+const { plantAssignment, plantAssignable } = require('./helpers/plantAssignment.cjs');
 
 const work = mkdtempSync(path.join(tmpdir(), 'admin-assign-app-'));
 process.env.SESSIONS_DB_PATH = path.join(work, 'sessions.db');
@@ -22,6 +23,7 @@ let BOOK;
 let userService;
 let assignHandler;
 let unassignHandler;
+let db;
 
 function invoke(h, req) {
   let resolveResult;
@@ -52,13 +54,14 @@ beforeAll(() => {
   // user_chapter_assignments.user_id has a real FK — seed the users rows
   // (post-022 schema: provider_id/provider_username).
   const Database = require('better-sqlite3');
-  const db = new Database(process.env.SESSIONS_DB_PATH);
+  db = new Database(process.env.SESSIONS_DB_PATH);
   const ins = db.prepare(
     `INSERT INTO users (id, provider_id, provider_username, role) VALUES (?, ?, ?, 'editor')`
   );
   ins.run(USER_ID, 'test-4242', 'appendix-editor');
   ins.run(5555, 'test-5555', 'chapter-editor');
-  db.close();
+  // The assign gate (G1.13 spec §6.5) lets the appendix editor through, so the POST reaches the write.
+  plantAssignable(db, { userId: USER_ID, book: BOOK });
 
   userService = require('../services/userService');
   const router = require('../routes/admin');
@@ -71,6 +74,7 @@ beforeAll(() => {
 });
 
 afterAll(() => {
+  db.close();
   rmSync(work, { recursive: true, force: true });
 });
 
@@ -94,7 +98,7 @@ describe('appendix assignment rows (I14-R1)', () => {
   });
 
   it('an editor with only a numbered-chapter assignment still lacks appendix access (uniform model)', () => {
-    userService.assignChapter(5555, BOOK, 3, 'admin1');
+    plantAssignment(db, { userId: 5555, book: BOOK, chapter: 3, assignedBy: 'admin1' });
     expect(userService.hasChapterAccess(5555, BOOK, -1)).toBe(false);
   });
 

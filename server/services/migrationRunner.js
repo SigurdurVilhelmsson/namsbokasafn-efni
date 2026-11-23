@@ -89,6 +89,7 @@ function runAllMigrations() {
     require('../migrations/057-suggestion-view'),
     require('../migrations/058-book-glossary-layer'),
     require('../migrations/059-retention-runs'),
+    require('../migrations/060-editor-licence-clauses'),
   ];
 
   let applied = 0;

@@ -44,5 +44,18 @@ module.exports = defineConfig({
     stdout: 'pipe',
     stderr: 'pipe',
   },
-  projects: [{ name: 'chromium', use: { browserName: 'chromium' } }],
+  // Two projects, because of one ordering in the shared database. The assign gate (G1.13 spec §6.5) refuses
+  // a chemistry assignment while the editors' suggestion view is off, and suggestion-view.spec.js needs the
+  // view off until its own step (2) switches it on, and never switches it off. So assignments.spec.js runs
+  // in a second project that starts after every test of the first has finished. A failure anywhere in the
+  // first project means the second does not run.
+  projects: [
+    { name: 'chromium', use: { browserName: 'chromium' }, testIgnore: 'assignments.spec.js' },
+    {
+      name: 'chromium-after-switch-on',
+      use: { browserName: 'chromium' },
+      testMatch: 'assignments.spec.js',
+      dependencies: ['chromium'],
+    },
+  ],
 });

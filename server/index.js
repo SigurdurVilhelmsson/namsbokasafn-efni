@@ -75,39 +75,13 @@ const rateLimit = require('express-rate-limit');
 
 // ─── Route imports ──────────────────────────────────────────────────────────
 
-// Authentication & user management
-const authRoutes = require('./routes/auth');
-const profileRoutes = require('./routes/profile');
 const { createRequestTimer, DEFAULT_SLOW_REQUEST_MS } = require('./middleware/requestTiming');
 const { refuseCompressedBodies } = require('./middleware/refuseCompressedBodies');
 const { errorHandler } = require('./middleware/errorHandler');
 
-// Editorial workflow
-const segmentEditorRoutes = require('./routes/segment-editor');
-const localizationEditorRoutes = require('./routes/localization-editor');
-const terminologyRoutes = require('./routes/terminology');
-const bookGlossaryRoutes = require('./routes/book-glossary');
-const suggestionsRoutes = require('./routes/suggestions');
-
-// Administration & status
-const statusRoutes = require('./routes/status');
-const adminRoutes = require('./routes/admin');
-const booksRoutes = require('./routes/books');
-const tmRoutes = require('./routes/tm');
-const sectionsRoutes = require('./routes/sections');
-const myWorkRoutes = require('./routes/my-work');
-
-// Pipeline (inject/render for apply-and-render flow)
-const pipelineRoutes = require('./routes/pipeline');
-const pipelineStatusRoutes = require('./routes/pipeline-status');
-const publicationRoutes = require('./routes/publication');
-
-// Support
-const notificationsRoutes = require('./routes/notifications');
-const activityRoutes = require('./routes/activity');
-const feedbackRoutes = require('./routes/feedback');
-const analyticsRoutes = require('./routes/analytics');
-const researchRoutes = require('./routes/research');
+// Every /api/* router, in mount order (routes/apiMounts.js). The route census reads the same list
+// (G1.13 spec §6.1), so mount a new API router there, not here.
+const { API_MOUNTS } = require('./routes/apiMounts');
 
 // HTML views
 const viewRoutes = require('./routes/views');
@@ -233,39 +207,12 @@ app.use(express.urlencoded({ extended: true, limit: '1mb', inflate: false }));
 
 // ─── API Routes ─────────────────────────────────────────────────────────────
 
-// Authentication
+// Rate limiters first: they run before the router they guard.
 app.use('/api/auth/login', authLimiter);
 app.use('/api/auth/callback', authLimiter);
-app.use('/api/auth', authRoutes);
-app.use('/api/profile', profileRoutes);
-
-// Editorial workflow
-app.use('/api/segment-editor', segmentEditorRoutes);
-app.use('/api/localization-editor', localizationEditorRoutes);
-app.use('/api/terminology', terminologyRoutes);
-app.use('/api/book-glossary', bookGlossaryRoutes);
-app.use('/api/suggestions', suggestionsRoutes);
-
-// Administration & status
-app.use('/api/status', statusRoutes);
-app.use('/api/admin', adminRoutes);
-app.use('/api/books', booksRoutes);
-app.use('/api/tm', tmRoutes);
-app.use('/api/sections', sectionsRoutes);
-app.use('/api/my-work', myWorkRoutes);
-
-// Pipeline (inject/render, job tracking, publication)
-app.use('/api/pipeline', pipelineRoutes);
-app.use('/api/pipeline-status', pipelineStatusRoutes);
-app.use('/api/publication', publicationRoutes);
-
-// Support
-app.use('/api/notifications', notificationsRoutes);
-app.use('/api/research', researchRoutes);
-app.use('/api/activity', activityRoutes);
 app.post('/api/feedback', publicSubmitLimiter);
-app.use('/api/feedback', feedbackRoutes);
-app.use('/api/analytics', analyticsRoutes);
+
+for (const { prefix, router } of API_MOUNTS) app.use(prefix, router);
 
 // Health check — verifies DB, migrations, books, auth configuration
 app.get('/api/health', (req, res) => {

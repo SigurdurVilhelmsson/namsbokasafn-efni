@@ -1,6 +1,7 @@
 // E2E-only: build the throwaway DB schema and register the __e2e-fixture__ book.
 // Run by playwright.config.js's webServer command BEFORE `node ../index.js`,
 // with SESSIONS_DB_PATH pointing at the throwaway DB. Never runs in production.
+const crypto = require('crypto');
 const Database = require('better-sqlite3');
 const { runAllMigrations, failLoudOnMigrationErrors } = require('../services/migrationRunner');
 const resolveDbPath = require('../lib/dbPath');
@@ -151,9 +152,11 @@ try {
   // study book opens at its first serve to a user whose users row holds a user_chapter_assignments
   // row for the chapter (services/moduleOpenings.js: the row is looked up by provider_id, which is
   // the token's `sub`), and a module gets suggestions only if it opened strictly after the view's
-  // first switch-on. No other login has a users row, so only this editor's serves open a module.
-  // NO switch row is seeded: the spec switches the view on itself, between its two openings. The
-  // provider id must match SUGGESTION_EDITOR_ID in that spec, and no other spec may use it.
+  // first switch-on. The other logins seeded below with an assignment hold chapters 4, 5 and 6, so
+  // only this editor's serves open a chapter 2 module.
+  // NO switch row is seeded: the spec switches the view on itself, between its two openings, and
+  // never switches it off. The provider id must match SUGGESTION_EDITOR_ID in that spec, and no
+  // other spec may use it.
   const suggestionEditor = db
     .prepare(
       `INSERT INTO users (provider_id, provider_username, display_name, role, created_by)
@@ -186,6 +189,30 @@ try {
   addLegacyRow.run(assignA);
   addLegacyRow.run(assignB);
 
+  // What the assign gate asks of both before that spec can give them a chapter (G1.13 spec §6.5): a consent
+  // decision on record (either kind, so a decline here) and a signed licence clause. The gate's third condition,
+  // the suggestion view being on, is that spec's to meet: it runs in the playwright.config.js project that
+  // depends on the one where suggestion-view.spec.js switches the view on. Planted directly, as every row here
+  // is; the user_id is users.id, which neither table checks.
+  const consentText = 'E2E consent text';
+  const addDeclinedConsent = db.prepare(
+    `INSERT INTO research_consent
+       (user_id, decision, interval_id, consent_text_version, consent_text_sha256, given_at_ms)
+     VALUES (?, 'declined', NULL, 'e2e', ?, ?)`
+  );
+  const addLicenceClause = db.prepare(
+    `INSERT INTO editor_licence_clauses (user_id, signed_on, recorded_by, recorded_at_ms)
+     VALUES (?, '2026-11-01', 'e2e', ?)`
+  );
+  for (const userId of [assignA, assignB]) {
+    addDeclinedConsent.run(
+      userId,
+      crypto.createHash('sha256').update(consentText).digest('hex'),
+      Date.now()
+    );
+    addLicenceClause.run(userId, Date.now());
+  }
+
   // The editor of server/e2e/front-page.spec.js (Heim lists a member's chapters, interface audit 2026-11-13,
   // HM-01): efnafraedi-2e chapter 5, which that spec owns. It only reads Heim, so it opens no module.
   const heimEditor = Number(
@@ -195,6 +222,30 @@ try {
     `INSERT INTO user_chapter_assignments (user_id, book_slug, chapter, assigned_by)
      VALUES (?, 'efnafraedi-2e', 5, 'e2e')`
   ).run(heimEditor);
+
+  // The two editors who save in efnafraedi-2e as plain editors. Chemistry is a study book, so it is always
+  // assignment-enforced (G1.13 spec §6.2): such an editor saves only with a users row whose provider_id is the
+  // token's `sub` and an assignment row for the chapter. The rows are planted, not given through the assign gate.
+  // A users row with an assignment makes the editor's first serve of a module in that chapter open it
+  // (services/moduleOpenings.js), and an opened module gets suggestions for every viewer once the view is on, so
+  // each spec owns a chapter and a module that no other spec serves:
+  //   - server/e2e/editor-workflow.spec.js (provider id 88001): chapter 4, module m68710. It moved there from the
+  //     fixture book, which is closed to non-admins (spec §6.1). Its head editor (88002) passes by the token's
+  //     `books` and needs no row.
+  //   - server/e2e/ux-phase2.spec.js's M5 block (provider id 88010): chapter 6, module m68729.
+  // The provider ids must match those specs, and no other spec may use them or save in those chapters.
+  const workflowEditor = Number(
+    addAssignEditor.run('88001', 'e2e-workflow-editor', 'E2E Workflow Editor').lastInsertRowid
+  );
+  const m5Editor = Number(
+    addAssignEditor.run('88010', 'e2e-m5-editor', 'E2E M5 Editor').lastInsertRowid
+  );
+  const addChemistryRow = db.prepare(
+    `INSERT INTO user_chapter_assignments (user_id, book_slug, chapter, assigned_by)
+     VALUES (?, 'efnafraedi-2e', ?, 'e2e')`
+  );
+  addChemistryRow.run(workflowEditor, 4);
+  addChemistryRow.run(m5Editor, 6);
 } finally {
   db.close();
 }
