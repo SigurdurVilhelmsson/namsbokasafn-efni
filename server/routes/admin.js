@@ -1114,7 +1114,7 @@ router.post('/users/:id/licence-clause', requireAuth, requireAdmin(), (req, res)
 const HOLDS_CHAPTERS_BODY = {
   error: 'HOLDS_CHAPTERS',
   message:
-    'Ekki er hægt að fjarlægja leyfisákvæðið á meðan notandinn hefur kafla úthlutaðan. Fjarlægðu fyrst kaflaúthlutanir notandans.',
+    'Ekki er hægt að fjarlægja leyfisákvæðið á meðan notandanum hefur verið úthlutað kafla. Fjarlægðu fyrst kaflaúthlutanir notandans.',
 };
 
 /**

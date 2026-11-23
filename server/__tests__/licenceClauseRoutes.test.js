@@ -234,7 +234,7 @@ describe('removing a licence clause while the user holds a chapter', () => {
   const { plantAssignment } = require('./helpers/plantAssignment.cjs');
   const licenceClauses = require('../services/licenceClauses');
   const MESSAGE =
-    'Ekki er hægt að fjarlægja leyfisákvæðið á meðan notandinn hefur kafla úthlutaðan. Fjarlægðu fyrst kaflaúthlutanir notandans.';
+    'Ekki er hægt að fjarlægja leyfisákvæðið á meðan notandanum hefur verið úthlutað kafla. Fjarlægðu fyrst kaflaúthlutanir notandans.';
   let n = 0;
 
   const newEditor = () => {
