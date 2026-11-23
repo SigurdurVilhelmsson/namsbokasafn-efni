@@ -144,4 +144,6 @@ between the two, and `RemoveLicence` now says what they do).
 | `Init` | production read 2026-11-22 (spec AMENDED item 6) |
 
 Files: `server/verification/assign-gate/AssignGate.tla` (the model), `AssignGate.cfg` (the rules), `check.sh` (the
-one command), `replay-findings.js` (the findings against the real code).
+one command), `replay-findings.js` (the findings against the real code), `view.mjs` (plain-word state and step labels
+for the `/statechart` skill's chart and report; give it to `/statechart` as the view, and update it when you add an
+action or a variable).

@@ -247,6 +247,72 @@ describe('runGlossaryExport — absent baseline (§C21)', () => {
   });
 });
 
+/**
+ * §C249: a committed file STAMPED by this exporter but holding no terms is an absent baseline by
+ * another name. Its stamp satisfied the producer gate before any term was read, §C21 keys on a
+ * missing file only, and shrink/growth need a non-zero baseline, so the bare cron populated it
+ * unreviewed. Found by server/verification/glossary-export/check.js. Uses the resolved stamp and
+ * per-term `domain` so the producer gate genuinely passes on both sides.
+ */
+describe('runGlossaryExport — a stamped baseline holding no terms (§C249)', () => {
+  const RESOLVED = 'export-terminology-resolved';
+  const resolvedTerms = (n) => approved(n).map((t) => ({ ...t, domain: 'chemistry' }));
+  const resolvedExport = (n) => ({ ...payload(resolvedTerms(n)), producer: RESOLVED });
+  const file = () => path.join(root, 'books', 'prufubok', 'glossary', 'glossary-unified.json');
+  const outcome = () =>
+    JSON.parse(
+      readFileSync(path.join(root, 'pipeline-output', '.glossary-export-status.json'), 'utf8')
+    ).books.prufubok.outcome;
+
+  for (const [name, baseline] of [
+    ['terms: []', { producer: RESOLVED, terms: [] }],
+    ['no terms key', { producer: RESOLVED }],
+  ]) {
+    it(`a bare run refuses to populate a stamped baseline with ${name}`, () => {
+      seedBook('prufubok', JSON.stringify(baseline));
+      const before = readFileSync(file(), 'utf8');
+      expect(run({ exportFn: () => resolvedExport(1000) })).toBe(0);
+      expect(readFileSync(file(), 'utf8')).toBe(before);
+      expect(outcome()).toBe('refused-absent-baseline');
+    });
+
+    it(`--force does not stand in for --adopt on a stamped baseline with ${name}`, () => {
+      seedBook('prufubok', JSON.stringify(baseline));
+      const before = readFileSync(file(), 'utf8');
+      run({ exportFn: () => resolvedExport(1000), force: true });
+      expect(readFileSync(file(), 'utf8')).toBe(before);
+    });
+
+    it(`--adopt populates a stamped baseline with ${name}, recorded as "adopted"`, () => {
+      seedBook('prufubok', JSON.stringify(baseline));
+      run({ exportFn: () => resolvedExport(1000), adopt: true });
+      expect(readExport('prufubok').terms).toHaveLength(1000);
+      expect(outcome()).toBe('adopted');
+    });
+  }
+
+  it('a bare run does not replace a stamped file with no terms key even by an empty export', () => {
+    seedBook('prufubok', JSON.stringify({ producer: RESOLVED }));
+    const before = readFileSync(file(), 'utf8');
+    run({ exportFn: () => resolvedExport(0) });
+    expect(readFileSync(file(), 'utf8')).toBe(before);
+    expect(outcome()).toBe('refused-absent-baseline');
+  });
+
+  it('CONTROL: an empty export meeting terms: [] is "unchanged", not a refusal', () => {
+    seedBook('prufubok', JSON.stringify({ producer: RESOLVED, terms: [] }));
+    run({ exportFn: () => resolvedExport(0) });
+    expect(outcome()).toBe('unchanged');
+  });
+
+  it('CONTROL: a stamped baseline WITH terms still refreshes on a bare run', () => {
+    seedBook('prufubok', JSON.stringify({ producer: RESOLVED, terms: resolvedTerms(1000) }));
+    run({ exportFn: () => resolvedExport(1001) });
+    expect(readExport('prufubok').terms).toHaveLength(1001);
+    expect(outcome()).toBe('wrote');
+  });
+});
+
 describe('runGlossaryExport — writing', () => {
   it('writes a first export when --adopt is passed and no file exists, and returns 0', () => {
     // ⚠️ This test used to read "writes a first export when no file exists" and
