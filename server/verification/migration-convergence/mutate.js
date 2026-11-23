@@ -10,7 +10,7 @@
  * the system temp dir), a restore plus byte comparison after every round, and a final restore in
  * `finally`. Never restore with `git checkout --` or `git stash`.
  *
- * Usage, from the repo root (about 4 minutes per scratch change; run it in the background):
+ * Usage (any cwd; about 4 minutes per scratch change; run it in the background):
  *   node server/verification/migration-convergence/mutate.js
  */
 'use strict';
@@ -22,9 +22,13 @@ const os = require('node:os');
 const path = require('node:path');
 const { spawnSync } = require('node:child_process');
 
-const M014 = 'server/migrations/014-source-tracking.js';
-const M024 = 'server/migrations/024-fix-discussions-fk.js';
-const M060 = 'server/migrations/060-editor-licence-clauses.js';
+// Resolved against this file, never the cwd (CLAUDE.md § resolve resource paths against something
+// intrinsic): run from server/ instead of the repo root, a relative path would miss the migrations.
+const MIGRATIONS = path.resolve(__dirname, '..', '..', 'migrations');
+const CHECK = path.join(__dirname, 'check.js');
+const M014 = path.join(MIGRATIONS, '014-source-tracking.js');
+const M024 = path.join(MIGRATIONS, '024-fix-discussions-fk.js');
+const M060 = path.join(MIGRATIONS, '060-editor-licence-clauses.js');
 
 // 014's §C250 body (transaction + per-column guards), and the bare ALTERs it replaced.
 const M014_FIXED_BODY = fs
@@ -99,7 +103,7 @@ try {
     }
     for (const [from, to] of edits) src = src.replace(from, () => to);
     fs.writeFileSync(file, src);
-    const r = spawnSync(process.execPath, ['server/verification/migration-convergence/check.js'], {
+    const r = spawnSync(process.execPath, [CHECK], {
       encoding: 'utf8',
       timeout: 900_000,
     });

@@ -158,7 +158,7 @@ Exit 0 with `targets restored byte for byte: yes` means all three were seen. If 
 | What | Code (open it to check) |
 |---|---|
 | the runner, its skip rule, its migration list | `server/services/migrationRunner.js` `runAllMigrations` |
-| every migration's `up(db)` | `server/migrations/001-*.js` … `060-*.js` (all 60 at the sync commit) |
+| every migration's `up(db)` | every file in `server/migrations/`, in the runner's list order |
 | libraries migrations import | `server/lib/migrationSchema.js`, `server/lib/domains.js`, `server/lib/houseStyleTerms.js` |
 | what boot does after the runner (harm, not checked) | `server/index.js` (`failLoudOnMigrationErrors`), `server/lib/schemaHealth.js` |
 
