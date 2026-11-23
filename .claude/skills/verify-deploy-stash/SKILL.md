@@ -107,7 +107,7 @@ is there now (one could have been dropped by hand): the findings are possible, n
 ## Does your change touch the verified code?
 
 ```sh
-git diff --stat ea08576a9 -- scripts/deploy.sh .gitattributes scripts/git-backup.sh scripts/record-deployed-commit.sh
+git diff --stat 27791aa2c -- scripts/deploy.sh .gitattributes scripts/git-backup.sh scripts/record-deployed-commit.sh
 ```
 
 Empty: the check still describes the code. Any output: run the check. A change to deploy.sh outside steps 2–4 does
@@ -170,7 +170,7 @@ are asserted first, with `GIT_*` variables removed and global and system git con
 
 ## Coverage record
 
-**Sync commit: `ea08576a9`.** The check was last confirmed to describe the code below at this commit. Move it forward
+**Sync commit: `27791aa2c`.** The check was last confirmed to describe the code below at this commit. Move it forward
 only after reading the change and running `check.mjs` and `mutate.mjs`.
 
 | Part                   | Code                                                                                                                                                                                |
