@@ -22,14 +22,19 @@ The rules the code keeps (the model proves them for every reachable state within
 | `NoChapterZero` | No assignment row for chapter 0; its unit never opens. | A row for a unit nobody can open or edit (spec §6.6). |
 | `RowsCreatedOnlyForEditors` | When a row is created, its holder is a plain editor. | Admins and head editors would open units on a first look. |
 | `RowsCreatedWithLicence` | When a row is created, its holder has a recorded licence clause. | Edits with no proof of their CC BY release. |
+| `EveryRowHolderHasLicence`, `OpenerHadLicence` | Every row holder, and every opener, has a recorded licence clause at every moment. | An editor keeps a chapter and saves edits after their licence record was removed. |
 
-Two **known findings** — the code does not keep these, by the spec's choice to gate only the *creation* of a row.
-`check.sh` pins each as expected to fail, and `replay-findings.js` reproduces each against the real code:
+The last row was a known finding until 2026-11-22: removing a licence row (recorded in error) after the assignment left
+the editor assigned. [USER] closed it in code — `licenceClauses.removeClause` and its route refuse (409
+`HOLDS_CHAPTERS`) while the user holds a chapter in a book open to editors (spec AMENDED item 8) — and it became a
+rule. `replay-findings.js` checks the refusal against the real code.
+
+One **known finding** remains — the code does not keep it, by the spec's choice to gate only the *creation* of a row.
+`check.sh` pins it as expected to fail, and `replay-findings.js` reproduces it against the real code:
 
 | Finding (TLA+ name) | The shortest path TLC finds, in the code's words |
 |---|---|
 | `OnlyEditorsHoldRows`, `OnlyEditorsOpen` | the editor records a consent decision → an admin records their licence → the editor is assigned the chapter → **an admin makes them head editor (or admin)** → they open the module, and the unit opens. Runbook line: spec AMENDED item 7a. |
-| `EveryRowHolderHasLicence`, `OpenerHadLicence` | consent → licence → assigned → **an admin removes the licence row (recorded in error)** → the editor keeps the chapter, opens the module, and can save edits with no licence record. No runbook line covers this yet. |
 
 ## Does your change touch the verified code?
 
@@ -37,7 +42,7 @@ Run this; any output means yes. It compares the sync commit (in the coverage rec
 so uncommitted edits count — do not add `HEAD`, which would hide them:
 
 ```sh
-git diff --stat 8a3540e15 -- server/services/assignmentGate.js server/services/userService.js \
+git diff --stat 22c5f0c01 -- server/services/assignmentGate.js server/services/userService.js \
   server/services/moduleOpenings.js server/services/licenceClauses.js server/services/researchConsent.js \
   server/services/suggestionSwitch.js server/lib/bookSwitches.js server/lib/researchScope.js \
   server/lib/editorScope.js server/middleware/validateParams.js server/routes/admin.js server/routes/research.js \
@@ -65,8 +70,8 @@ node server/verification/assign-gate/replay-findings.js
 ```
 
 `check.sh` refuses any jar whose SHA-256 is not `936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88`.
-A clean run ends `OK: rules hold, known findings pinned, every gate check guarded` and exits 0; the replay ends with
-both findings `REPRODUCED` and exits 0. Read every result with the `/statechart` skill if it is installed (it is
+A clean run ends `OK: rules hold, known findings pinned, every guard covered by a rule` and exits 0; the replay prints
+the role-change finding `REPRODUCED` and the licence removal `REFUSED (closed)`, and exits 0. Read every result with the `/statechart` skill if it is installed (it is
 user-invoked: ask the user to run it on `AssignGate.tla`); it gives each broken rule as its shortest path in plain
 words and draws how the system moves between states. Without it, `check.sh` prints the shortest path itself, one
 action per line.
@@ -80,10 +85,13 @@ action per line.
   the model is wrong: find the action whose guard or effect differs from its function, fix that, and say so.
 - **`CHANGED: known finding X no longer fails`** — the gap closed (good, if your change meant to close it) or the
   model drifted. If the code now refuses that path, move X from the findings list in `check.sh` to the rules in
-  `AssignGate.cfg`, update the findings table above and `replay-findings.js`, and tell the user. Otherwise find the
-  drift.
-- **`MUTANT without 'R' NOT caught by …`** — a gate check is no longer guarded by any rule: either a rule was
-  weakened or a line lost its `\* gate: R` marker. Restore it; never delete the mutant.
+  `AssignGate.cfg`, give the new guard a marker and a mutant, update the tables above and `replay-findings.js`, and
+  tell the user (the licence-removal finding went this way on 2026-11-22). Otherwise find the drift.
+- **`MUTANT without 'R' NOT caught by …`** — a guard is no longer protected by any rule: either a rule was weakened or
+  a line lost its marker (`\* gate: R` in `GateAllows`, `\* removal: R` in `RemoveLicence`). Restore it; never delete
+  the mutant.
+- **`replay-findings.js` prints `NOT refused: the gap is open again`** — the licence removal no longer refuses while
+  the editor holds a chapter. That is a regression in the code; report it.
 - **TLC itself errors** (parse or semantic error in its output) — the model text is broken; nothing it says counts.
 
 ## When your change is intended: update the model
@@ -91,9 +99,9 @@ action per line.
 1. Find the changed function in the coverage table; edit the matching action in
    `server/verification/assign-gate/AssignGate.tla` so its guard and effect say what the code now does. Keep one action
    per indivisible step (one transaction or one synchronous handler).
-2. A **new gate reason** in `assignmentGate.assignmentRefusal`: add one conjunct to `GateAllows` ending
-   `\* gate: <reason>`, a rule that only that conjunct protects, and a `<reason>:<Rule>` pair to the mutant loop in
-   `check.sh`.
+2. A **new gate reason** in `assignmentGate.assignmentRefusal`, or a **new refusal** on another action: add one
+   conjunct ending `\* gate: <reason>` (in `GateAllows`) or `\* <action>: <reason>` (in that action), a rule that
+   only that conjunct protects, and a `"<marker>|<Rule>"` pair to the mutant loop in `check.sh`.
 3. A **new path that writes a row, a role, consent, a licence or the switch**: add an action to `Next` and a row to the
    coverage table.
 4. Run `check.sh` and `replay-findings.js`. Then move the sync commit (below and in the `git diff` command above)
@@ -115,7 +123,9 @@ action per line.
 
 ## Coverage record
 
-**Sync commit: `8a3540e15`** — the model was last confirmed to describe the code at this commit.
+**Sync commit: `22c5f0c01`** — the model was last confirmed to describe the code at this commit (moved from
+`8a3540e15` after the licence-removal refusal: only `licenceClauses.js` and the licence route in `admin.js` changed
+between the two, and `RemoveLicence` now says what they do).
 
 | Model action / rule | Code (open it to check) |
 |---|---|
@@ -125,7 +135,7 @@ action per line.
 | `RemoveRow`, `ClearChapter` | `server/services/userService.js` `removeChapterAssignment`, `clearChapterAssignees` |
 | `SetRole` | `server/services/userService.js` `updateUser`, `assignBookAccess`, `removeBookAccess`; routes `PUT /api/admin/users/:id`, `POST`/`DELETE /api/admin/users/:id/books` |
 | `RecordDecision`, `Withdraw` | `server/services/researchConsent.js` `recordDecision`, `withdraw`; routes in `server/routes/research.js` |
-| `RecordLicence`, `RemoveLicence` | `server/services/licenceClauses.js` `recordClause`, `removeClause`; routes `POST`/`DELETE /api/admin/users/:id/licence-clause` |
+| `RecordLicence`, `RemoveLicence` | `server/services/licenceClauses.js` `recordClause`, `removeClause` (refuses `HOLDS_CHAPTERS` via `holdsOpenBookChapter`, in its transaction); routes `POST`/`DELETE /api/admin/users/:id/licence-clause` (the DELETE checks `holdsOpenBookChapter` before its log entry) |
 | `SwitchView`, `viewOn`, `everOn` | `server/services/suggestionSwitch.js` `setSuggestionView`; `server/lib/bookSwitches.js` `currentSwitchValue`, `firstSwitchOnMs` |
 | `Serve` | `server/services/moduleOpenings.js` `openingPredicate`, `recordOpening`, `openOnServe`; chapter 0 refused by `server/middleware/validateParams.js` `validateBookChapter` |
 | the study book | `server/lib/researchScope.js` `STUDY_BOOKS`; `server/lib/editorScope.js` `EDITOR_WRITABLE_BOOKS` |

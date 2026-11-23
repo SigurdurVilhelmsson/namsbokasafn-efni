@@ -3,8 +3,8 @@
 #   1. the rules hold: AssignGate.cfg passes;
 #   2. each known finding still fails, on its own rule (a finding that starts passing means the
 #      code or the model changed, and someone must look);
-#   3. each mutant (one gate check removed from GateAllows) fails on the rule that check guards,
-#      so no gate check is left unguarded by the model.
+#   3. each mutant (one guard removed: a gate check in GateAllows, or the licence-removal refusal in
+#      RemoveLicence) fails on the rule that guard protects, so no guard is left unguarded by the model.
 # Usage: server/verification/assign-gate/check.sh            (TLC jar from TLA2TOOLS_JAR or the cache)
 set -eu
 here=$(cd "$(dirname "$0")" && pwd)
@@ -56,7 +56,7 @@ else
 fi
 
 # 2. The known findings still fail, each on its own rule.
-for rule in OnlyEditorsHoldRows OnlyEditorsOpen EveryRowHolderHasLicence OpenerHadLicence; do
+for rule in OnlyEditorsHoldRows OnlyEditorsOpen; do
   printf 'SPECIFICATION Spec\nCONSTANTS\n  Users = {u1, u2}\n  Chapters = {0, 1}\nINVARIANT %s\n' "$rule" > "$work/$rule.cfg"
   run "$rule" "$rule.cfg" AssignGate.tla
   if [ "$(violated "$rule")" = "$rule" ]; then
@@ -69,15 +69,18 @@ for rule in OnlyEditorsHoldRows OnlyEditorsOpen EveryRowHolderHasLicence OpenerH
   fi
 done
 
-# 3. Each mutant fails on the rule its gate check guards.
-for pair in chapter-not-editable:NoChapterZero bypass-role:RowsCreatedOnlyForEditors \
-            no-consent-decision:ConsentBeforeOpening no-licence-clause:RowsCreatedWithLicence \
-            suggestion-view-off:OpenedOnlyAfterFirstSwitchOn; do
-  reason=${pair%%:*}; rule=${pair#*:}
+# 3. Each mutant fails on the rule its guard protects. A pair is "<marker>|<rule>"; the marker is the
+#    comment that ends the guard's line in AssignGate.tla, and the mutant is the model without that line.
+for pair in "gate: chapter-not-editable|NoChapterZero" "gate: bypass-role|RowsCreatedOnlyForEditors" \
+            "gate: no-consent-decision|ConsentBeforeOpening" "gate: no-licence-clause|EveryRowHolderHasLicence" \
+            "gate: suggestion-view-off|OpenedOnlyAfterFirstSwitchOn" \
+            "removal: holds-chapter|EveryRowHolderHasLicence"; do
+  marker=${pair%%|*}; rule=${pair#*|}
+  reason=$(printf '%s' "${marker#*: }")
   mdir="$work/mutant-$reason"; mkdir -p "$mdir"
-  grep -v "gate: $reason\$" "$here/AssignGate.tla" > "$mdir/AssignGate.tla"
+  grep -v "$marker\$" "$here/AssignGate.tla" > "$mdir/AssignGate.tla"
   if cmp -s "$here/AssignGate.tla" "$mdir/AssignGate.tla"; then
-    fail=1; echo "MUTANT $reason: no line marked 'gate: $reason' in GateAllows; the model and this script disagree"; continue
+    fail=1; echo "MUTANT $reason: no line marked '$marker' in AssignGate.tla; the model and this script disagree"; continue
   fi
   cp "$here/AssignGate.cfg" "$mdir/"
   (cd "$mdir" && java -XX:+UseParallelGC -cp "$jar" tlc2.TLC -workers 1 -metadir "$mdir/states" \
@@ -91,5 +94,5 @@ for pair in chapter-not-editable:NoChapterZero bypass-role:RowsCreatedOnlyForEdi
   fi
 done
 
-if [ "$fail" -eq 0 ]; then echo "OK: rules hold, known findings pinned, every gate check guarded"; fi
+if [ "$fail" -eq 0 ]; then echo "OK: rules hold, known findings pinned, every guard covered by a rule"; fi
 exit "$fail"

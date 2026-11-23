@@ -122,9 +122,11 @@ RecordLicence(u) ==
   /\ UNCHANGED <<role, consent, viewOn, everOn, rows, opened, openings>>
 
 \* licenceClauses.removeClause (DELETE /api/admin/users/:id/licence-clause/:rowId), taking
-\* the user's last row. It does not read or touch assignment rows.
+\* the user's last row. It refuses (409 HOLDS_CHAPTERS) while the user holds a chapter in a
+\* book open to editors (licenceClauses.holdsOpenBookChapter; the one modelled book is open).
 RemoveLicence(u) ==
   /\ licence[u]
+  /\ ~\E c \in Chapters : <<u, c>> \in rows    \* removal: holds-chapter
   /\ licence' = [licence EXCEPT ![u] = FALSE]
   /\ UNCHANGED <<role, consent, viewOn, everOn, rows, opened, openings>>
 
@@ -188,17 +190,18 @@ RowsCreatedOnlyForEditors == [][\A r \in rows' \ rows : role[r[1]] = "editor"]_v
 \* no-licence-clause reason; spec §6.5).
 RowsCreatedWithLicence == [][\A r \in rows' \ rows : licence[r[1]]]_vars
 
+\* Every row holder has a recorded licence clause, at every moment, and so has every opener.
+\* Kept since the licence removal refuses while the user holds a chapter (spec AMENDED item 8);
+\* before that it was a known finding.
+EveryRowHolderHasLicence == \A r \in rows : licence[r[1]]
+OpenerHadLicence == \A o \in openings : o.licenceAt
+
 -----------------------------------------------------------------------------
-\* Known findings (AssignGateFindings.cfg): the code does NOT keep these, by the spec's
-\* choice to gate only the creation of a row. Each is pinned as expected to fail.
+\* Known findings: the code does NOT keep these, by the spec's choice to gate only the
+\* creation of a row. check.sh pins each as expected to fail.
 
 \* G1.1 + G1.2 design §8: rows only for a unit's editors. Broken by a role change after
 \* the assignment (spec AMENDED item 7a is the runbook line for it).
 OnlyEditorsHoldRows == \A r \in rows : role[r[1]] = "editor"
 OnlyEditorsOpen == \A o \in openings : o.roleAt = "editor"
-
-\* Every row holder has a recorded licence clause. Broken by removing a licence row
-\* (recorded in error) after the assignment: the editor keeps the chapter.
-EveryRowHolderHasLicence == \A r \in rows : licence[r[1]]
-OpenerHadLicence == \A o \in openings : o.licenceAt
 =============================================================================
