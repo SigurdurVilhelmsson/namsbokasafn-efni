@@ -9,7 +9,8 @@
  * `git checkout --` or `git stash`: both can discard uncommitted work.
  *
  * Usage (from the repo root; takes about 3 minutes per mutant, so run it in the background):
- *   node server/verification/glossary-export/mutate.js
+ *   node server/verification/glossary-export/mutate.js            # every mutant
+ *   node server/verification/glossary-export/mutate.js '§C249'    # labels containing the text
  * Exit 0 only if every mutant was caught and every target was restored byte for byte.
  */
 'use strict';
@@ -111,6 +112,20 @@ const MUTANTS = [
     '  return PRODUCER_RESOLVED;\n}',
     'NoProducerSwap',
   ],
+  [
+    '§C249: a baseline holding no terms is not treated as absent',
+    EXPORTER,
+    'if (emptyBaseline && !adopt) {',
+    'if (false) {',
+    'NoUnreviewedFirstPopulation',
+  ],
+  [
+    '§C249: a stamped file with no terms array is replaced by an empty export',
+    EXPORTER,
+    '(!prevHasTermsArray || countTerms(next) > 0);',
+    'countTerms(next) > 0;',
+    'NoOverwriteUnreadable',
+  ],
 ];
 
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'glossary-mutate-'));
@@ -128,7 +143,14 @@ const restoreAll = () =>
 let allCaught = true;
 let restored = true;
 try {
-  for (const [label, file, from, to, expected] of MUTANTS) {
+  // Optional filter: only mutants whose label contains this text (e.g. `§C249`).
+  const only = process.argv[2];
+  const chosen = only ? MUTANTS.filter((m) => m[0].includes(only)) : MUTANTS;
+  if (chosen.length === 0) {
+    console.log(`no mutant label contains "${only}"`);
+    allCaught = false;
+  }
+  for (const [label, file, from, to, expected] of chosen) {
     const src = fs.readFileSync(goldens[file], 'utf8');
     const n = src.split(from).length - 1;
     if (n !== 1) {

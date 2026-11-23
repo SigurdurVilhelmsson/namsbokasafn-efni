@@ -61,21 +61,9 @@ const RULES = {
 // Known findings, pinned NARROWLY: a rule may fail only on the committed-file variants listed
 // for it. A failure on any other variant is BROKEN, so a pin cannot hide a new regression of the
 // same rule. The check also fails if a pinned variant stops failing, so a fix removes its pin.
-// One hole, two faces: a committed file stamped export-terminology-resolved is trusted on its
-// stamp before its terms are read, and the absent-baseline gate keys on a MISSING file only, so a
-// stamped file holding no terms is a "nothing" no gate sees. See SKILL.md § Known finding.
-const KNOWN_FINDINGS = {
-  NoOverwriteUnreadable: ['resolved-no-terms', 'resolved-no-terms+stamp5'],
-  // `exporter-output-0-terms` is route A in SKILL.md: a --force or --adopt run wrote an empty
-  // export, and the next unattended run repopulates it unreviewed.
-  NoUnreviewedFirstPopulation: [
-    'resolved-terms-empty',
-    'resolved-terms-empty+stamp5',
-    'resolved-no-terms',
-    'resolved-no-terms+stamp5',
-    'exporter-output-0-terms',
-  ],
-};
+// Empty: the one finding (register §C249, a stamped baseline holding no terms) was fixed in the
+// exporter, and its pins on NoOverwriteUnreadable and NoUnreviewedFirstPopulation were removed.
+const KNOWN_FINDINGS = {};
 
 // ── Generators (each output carries its ground truth) ────────────────────────────────────────────
 /** mode: true = all approved, false = none, 'half' = every second one (approved and total then move apart). */
@@ -457,7 +445,10 @@ function main() {
     console.log('\nFAIL');
     process.exitCode = 1;
   } else {
-    console.log('\nOK: rules hold, known findings pinned, positive control writes');
+    const pinned = Object.keys(KNOWN_FINDINGS).length > 0;
+    console.log(
+      `\nOK: rules hold, ${pinned ? 'known findings pinned' : 'no known findings pinned'}, positive control writes`
+    );
     process.exitCode = 0;
   }
 }

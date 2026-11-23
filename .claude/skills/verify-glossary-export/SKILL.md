@@ -30,31 +30,25 @@ The rules (necessary conditions for the committed file to change):
 | `RestampOnlyStamp` | If the terms do not change, only `bookLayer` may change, and only to the current layer id. | A "restamp" that silently rewrites content. |
 | `WritesWhatWasExported` | When terms change, the file holds exactly the exported terms. | A write that drops or alters terms. |
 
-## Known finding (pinned; the check expects it)
+## Known findings: none pinned (§C249 closed)
 
-**One hole, two faces.** A committed file **stamped `"producer": "export-terminology-resolved"` but holding no terms**
-(`"terms": []`, or no `terms` key) walks past every gate on an unattended run:
-- `detectProducer` trusts the stamp before it reads any term, so the producer gate passes;
-- the absent-baseline gate keys on a **missing file** only (`readExisting` → `kind: 'absent'`);
-- shrink and growth both require a non-zero baseline count.
+`KNOWN_FINDINGS` in `check.js` is empty, so every rule must hold on every variant. If you ever pin a finding, pin it
+**narrowly** (by baseline name, never by rule): a failure on any other variant prints `BROKEN`, and a pinned variant
+that stops failing is also an error, so a fix forces the pin to be removed.
 
-So the next cron tick writes the full export, unreviewed. This is CLAUDE.md's lesson that *a gate keyed on one
-representation of "nothing" can be walked past by another*, in a new spot. `growthVerdict`'s comment says first
-population is "the absent-baseline gate's business (§C21)", but that gate cannot see this state.
+**The one finding this check found, now fixed (register §C249).** A committed file **stamped
+`"producer": "export-terminology-resolved"` but holding no terms** (`"terms": []`, or no `terms` key) used to walk past
+every gate on an unattended run: `detectProducer` trusts the stamp before it reads any term, the absent-baseline gate
+keyed on a **missing file** only, and shrink and growth both need a non-zero baseline. It was reachable after a
+deliberate `--force` to an empty export (route A) or an `--adopt` of an empty first one (route B), after which the next
+bare run wrote 0 → 1000 as `wrote`. This is CLAUDE.md's lesson that *a gate keyed on one representation of "nothing"
+can be walked past by another*.
 
-**Within the checked space, it is reached only after a deliberate flagged run** (measured with the real function):
-- **route A:** `--force` accepts a shrink to an empty export, then the next bare run writes 0 → 1000 as `wrote`;
-- **route B:** `--adopt` accepts an empty first export, then the next bare run writes 0 → 1000 as `wrote`.
-
-Controls: a bare run refuses 1000 → 0 (`refused-shrink`) and 1 → 1000 (`refused-growth`). The cliff is exactly zero
-terms against one. Route A has the shape of the organic "trim rebound" that `growthVerdict`'s comment records.
-Not present in the dev tree on 2026-11-23 (every committed glossary is stamped and non-empty); production not read.
-Logged in the active register as §C249.
-
-The pins are **narrow**: a rule may fail only on the variants named in `KNOWN_FINDINGS` in `check.js`. A failure on
-any other variant prints `BROKEN`, and a pinned variant that stops failing is also an error, so a fix forces the pin
-to be removed. Closing it, for example by having the bare run treat a baseline with no terms like an absent one, is a
-product change for [USER] to rule on. Do not make it to turn this check green.
+**The fix** ([USER]'s ruling, 2026-11-23): the `emptyBaseline` refusal in `runGlossaryExport`, right after the producer
+gate, records `refused-absent-baseline` (detail `committed file holds no terms`) unless `--adopt`, exactly like §C21.
+It fires when the run would put terms onto a baseline that holds none, and on any write over a stamped file with no
+`terms` array. An empty export meeting `terms: []` still goes to `unchanged`/`restamped`. `--force` does not satisfy it.
+Two mutants in `mutate.js` (labels starting `§C249`) prove the check sees each half of it go missing.
 
 ## Does your change touch the verified code?
 
@@ -79,7 +73,7 @@ goes to stderr, one line per committed-file variant.
 node server/verification/glossary-export/check.js
 ```
 
-A clean run ends `OK: rules hold, known findings pinned, positive control writes` and exits 0. Each rule line prints
+A clean run ends `OK: rules hold, known findings pinned, positive control writes` (with no pins, "known findings pinned" is vacuous) and exits 0. Each rule line prints
 how many file-changing runs met its precondition. That count only shows the rule was *reached*: a rule reached 0
 times prints `NOT EXERCISED` and fails. It does not show the rule can *fail*; `mutate.js` shows that (below). The
 **positive control** (a healthy bare refresh of a 1000-term file must write) stops a harness that refuses everything
@@ -89,7 +83,8 @@ To prove the check can still fail (after editing it, or before trusting a new ru
 background; about 3 minutes per mutant:
 
 ```sh
-node server/verification/glossary-export/mutate.js
+node server/verification/glossary-export/mutate.js            # every mutant
+node server/verification/glossary-export/mutate.js '§C249'    # only mutants whose label contains the text
 ```
 
 It applies each mutant in its `MUTANTS` list to the real code and expects the named rule to print `BROKEN`. It
@@ -153,7 +148,7 @@ mutant in the tree.
 - **By design, not findings:**
   - growth below the threshold compounds across ticks ("catastrophe, not drift");
   - a resolved stamp is trusted over a contradictory term shape, a trade-off pinned in `glossaryProducer.test.js`.
-  The known finding above is the case where that trust meets an empty file.
+  Where that trust met an empty file was §C249, now refused by the `emptyBaseline` gate.
 - **Mutants it catches:** the `MUTANTS` list in `mutate.js` is the record. It covers every gate in
   `export-terminology.js`, one mutant in `glossaryExportDecision.js` and one in `glossaryProducer.js`.
 
@@ -164,7 +159,7 @@ mutant in the tree.
 | Rule(s) | Code (open it to check) |
 |---|---|
 | all: the one entry point | `server/scripts/export-terminology.js` `runGlossaryExport` (per-book loop), `serializePayload`, `writeFileAtomic` |
-| `NoCreate`, `NoOverwriteUnreadable`, `NoUnreviewedFirstPopulation` | `readExisting`; the `existing.kind === 'corrupt'` and `=== 'absent'` refusals in `runGlossaryExport` |
+| `NoCreate`, `NoOverwriteUnreadable`, `NoUnreviewedFirstPopulation` | `readExisting`; the `existing.kind === 'corrupt'` and `=== 'absent'` refusals and the `emptyBaseline` refusal (§C249) in `runGlossaryExport` |
 | `NoProducerSwap` | `server/lib/glossaryExportDecision.js` `producerVerdict`; `server/lib/glossaryProducer.js` `detectProducer` |
 | `RestampOnlyStamp` | `sameTerms` + the restamp branch (`restampable`, `STAMP_KEY`) |
 | `LayerSettled` | `layerChangeIdFn` read before and after `exportFn`, `changedDuringBuild`, `layerMoved`, `released`; `tools/lib/glossary-terms-hash.cjs` `termsSha256` |
