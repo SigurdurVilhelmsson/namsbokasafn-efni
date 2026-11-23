@@ -28,7 +28,15 @@ module.exports = {
 
     console.log('Applying migration 026: Making icelandic column nullable...');
 
-    db.exec(`
+    // ONE transaction, and a leftover terminology_terms_new dropped first (register §C250). This rebuild was one
+    // multi-statement exec with no transaction: a crash before the RENAME left terminology_terms_new behind, and
+    // the next start's CREATE threw "already exists", which migrationRunner counts as skipped, so the
+    // rebuild never finished. Now a crash leaves all or nothing, and a database an older crash already
+    // stranded finishes on its next start. The DROP is reached only while terminology_terms itself still
+    // exists (the early returns above), so it can never remove the only copy of the rows.
+    db.transaction(() => {
+      db.exec('DROP TABLE IF EXISTS terminology_terms_new');
+      db.exec(`
       CREATE TABLE terminology_terms_new (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         book_id INTEGER,
@@ -83,6 +91,7 @@ module.exports = {
       CREATE INDEX IF NOT EXISTS idx_terminology_terms_book
         ON terminology_terms(book_id);
     `);
+    })();
 
     console.log('Migration 026: icelandic column is now nullable');
   },

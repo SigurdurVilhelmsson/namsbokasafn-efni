@@ -51,27 +51,15 @@ const MAX_STARTS = 4;
 // and never finishes. A crash after that first statement and before the last strands it.
 // (013 and 014 had this shape too, register §C250; each now runs in one db.transaction, and
 // mutate.js's BREAK on 014 shows the check still catches it coming back.)
-const KNOWN_CRASH_FINDINGS = {
-  // A table rebuild as one multi-statement exec, no transaction: CREATE _new; INSERT; DROP; RENAME.
-  // A crash before the RENAME leaves `_new` behind, and the restart either re-runs CREATE ("already
-  // exists", skipped) or finds the old table gone and returns. On today's code 032 later drops the
-  // legacy table itself, so what remains is a stray empty `_new` table, not lost rows.
-  '024-fix-discussions-fk': {
-    class: 'short',
-    diffs: ['schema: table terminology_discussions_new'],
-  },
-  '026-nullable-icelandic': { class: 'short', diffs: ['schema: table terminology_terms_new'] },
-};
-// A fresh database's FIRST start is not the full schema; the second start is. 022 rebuilds `users`
-// (DROP + RENAME), discarding the indexes and trigger 006 created, which 006 restores on the next
-// start; 049 registers books after 032 seeded book_subject_mapping, which 032 fills next start.
-const KNOWN_FIRST_BOOT_DIFFS = [
-  'data: book_subject_mapping',
-  'schema: index idx_users_is_active',
-  'schema: index idx_users_role',
-  'schema: table users',
-  'schema: trigger update_users_timestamp',
-];
+// None pinned (register §C250). 024 and 026 used to leave a stray empty `*_new` table after a crash
+// inside their one-exec table rebuild; each now runs in one db.transaction and drops a leftover
+// `*_new` first. A pin, if one is ever needed again, names the migration, the class and the exact
+// diffs: { '<migration id>': { class: 'short', diffs: ['schema: table x_new'] } }.
+const KNOWN_CRASH_FINDINGS = {};
+// None pinned (register §C250). A fresh database's first start used to stop short of the full schema
+// (022 rebuilt `users` after 006 made its indexes and trigger; 049 registered books after 032 seeded
+// book_subject_mapping). migrationRunner now runs a second pass when it has just created sessions.db.
+const KNOWN_FIRST_BOOT_DIFFS = [];
 
 // ── Child runs ───────────────────────────────────────────────────────────────────────────────────
 const root = fs.mkdtempSync(path.join(os.tmpdir(), 'migration-convergence-'));

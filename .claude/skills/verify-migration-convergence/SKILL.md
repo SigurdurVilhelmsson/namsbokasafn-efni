@@ -30,7 +30,8 @@ Bounded exhaustive enumeration over the **real** `runAllMigrations()`; no model.
   **Multi-statement `exec` strings are split** and get a point after each statement, because SQLite autocommits
   each one and a process can die between them.
 - `child.js` is one server start: hooks, then the real runner, against `SESSIONS_DB_PATH` (a throwaway file).
-- `check.js` lists every crash point of a fresh build (about 216), then for each one: a child dies by **SIGKILL**
+- `check.js` lists every crash point of a fresh build (368 on 2026-11-23, up from about 216: a new database's build now
+  runs the second pass too, which adds the commits of whatever it re-applies), then for each one: a child dies by **SIGKILL**
   just after that commit, and clean children restart it until two starts in a row leave the same database.
   `snapshot.js` compares that with the reference **by structure, not SQL text**: columns, indexes, foreign keys
   via pragmas; triggers and views as normalised SQL; rows as content (an `INTEGER PRIMARY KEY` is dropped and a
@@ -42,28 +43,29 @@ Bounded exhaustive enumeration over the **real** `runAllMigrations()`; no model.
   equals the plain runner's (the `exec` split changes nothing); a clean build has a fixed point with no errors;
   every crash child died by SIGKILL at exactly the commit recorded for its point.
 
-## Known findings (pinned; the check expects them)
+## Known findings: none pinned (register §C250)
 
-Pins are narrow: per migration (the one on the stack at the crash point), per class, with the exact list of
-differences. A failure anywhere else, or with other differences, prints `FAIL`; a pin that stops failing is a
-`FAIL` too, so a fix forces its pin out. Fixing any of these is a product change for [USER].
+`KNOWN_CRASH_FINDINGS` and `KNOWN_FIRST_BOOT_DIFFS` in `check.js` are both empty, so every crash point must
+converge and a fresh database's first start must reach the full schema. If you ever pin a finding, pin it
+**narrowly** (per migration, per class, with the exact list of differences): a failure anywhere else prints
+`FAIL`, and a pin that stops failing is a `FAIL` too, so a fix forces its pin out. Pinning instead of fixing is a
+product call for [USER].
 
-Both share one shape: **the re-run's FIRST statement throws on a crash-partial state, so the rest never runs.**
-013 and 014 had it too (register §C250); each now runs in one `db.transaction`, 014 also guards each column so an
-already-stranded database is repaired (`server/__tests__/migration014.test.js`), and `mutate.js`'s 014 BREAK shows
-the check catches that fix being reverted.
+**What this check found, all now fixed.** Every crash finding shared one shape: **the re-run's FIRST statement threw
+on a crash-partial state, so the rest never ran.**
+- **013 and 014** (bare `ALTER`s): each runs in one `db.transaction`; 014 also guards each column, so an
+  already-stranded database is repaired (`server/__tests__/migration014.test.js`).
+- **024 and 026** (a table rebuild as one multi-statement `exec`: `CREATE x_new; INSERT; DROP; RENAME`): a crash
+  before the `RENAME` left a stray `x_new`, and the next start's `CREATE` threw `already exists`, which the runner
+  counts as skipped. Each now runs in one `db.transaction` that first drops a leftover `x_new`, so a database an
+  older crash stranded finishes on its next start (`server/__tests__/migrationCrashSafeFirstBoot.test.js`).
+- **The first boot** (no crash needed): a fresh database's first start was not the full schema. 022 rebuilt
+  `users` after 006 made its indexes and trigger, and 049 registered books after 032 seeded
+  `book_subject_mapping`; each waited for a second start. `migrationRunner` now runs a **second pass** when it has
+  just created `sessions.db` (same test file). Its result carries `secondPass: true`; an existing database never
+  pays for it.
 
-| Migration | Crash window | Left behind for good | Harm on today's code |
-|---|---|---|---|
-| `024-fix-discussions-fk` | inside its one-`exec` table rebuild, before the `RENAME` | stray `terminology_discussions_new` table | cosmetic: 032 later drops the legacy table itself |
-| `026-nullable-icelandic` | same, before its `RENAME` | stray `terminology_terms_new` table | cosmetic, same reason |
-
-**A second finding, about the first boot (no crash needed):** a fresh database's first start is **not** the full
-schema; the second start is. 022 rebuilds `users` (`DROP` + `RENAME`), discarding the `idx_users_role` and
-`idx_users_is_active` indexes and the `update_users_timestamp` trigger that 006 created, and 006 restores them on
-the next start; 049 registers books after 032 seeded `book_subject_mapping`, and 032 fills them in on the next
-start. Pinned as `KNOWN_FIRST_BOOT_DIFFS`. It matters for a fresh clone, a new box, or the E2E seed, which start
-once; production has restarted many times.
+`mutate.js`'s BREAK changes show the check catches each of these fixes being reverted (014, 024, the second pass).
 
 ## Does your change touch the verified code?
 
@@ -77,7 +79,7 @@ A new migration is the common case. It adds crash points, so the point count cha
 
 ## Run the check
 
-From the repo root (about 4 minutes; it prints its verdict only at the end, so give it a 10-minute timeout or run
+From the repo root (about 3 minutes, measured 2026-11-23; it prints its verdict only at the end, so give it a 10-minute timeout or run
 it in the background):
 
 ```sh
@@ -90,20 +92,23 @@ A clean run ends `OK: every crash point converges or fails only as pinned; contr
 point; the numbers come from the listing (a new migration shifts every later number, which is why pins use names).
 
 To prove the check can still fail, after editing it or before trusting it on a new kind of change, run in the
-background (about 12 minutes):
+background (about 12 minutes, measured 2026-11-23: 691 s for its four check runs):
 
 ```sh
 node server/verification/migration-convergence/mutate.js
 ```
 
-It applies three scratch changes to the real files, restoring each from a golden copy and comparing bytes:
+It applies four scratch changes to the real files, restoring each from a golden copy and comparing bytes:
 - **BREAK 060**: loses `IF NOT EXISTS` on its `CREATE TABLE`; the check must report a new SHORT on 060;
 - **BREAK 014**: back to three bare `ALTER`s (the §C250 fix reverted; its guards alone would still repair a
   crash, so removing only the transaction is not a break); the check must report a SHORT on 014;
-- **FIX 024**: its table rebuild runs in one `db.transaction`; the check must report 024's pin as no longer
-  failing, and nothing else.
+- **BREAK 024**: its rebuild loses the transaction (the leftover-`_new` drop alone does not save a crash between
+  the `DROP` and the `RENAME`); the check must report a SHORT on 024;
+- **BREAK the runner**: no second pass on a new database; the check must report `first boot is short in a NEW
+  way`.
 
-Exit 0 with `targets restored byte for byte: yes` means all three were seen. If it dies part-way, run
+There is no FIX change any more: nothing is pinned, so there is no pin for one to clear. Exit 0 with
+`targets restored byte for byte: yes` means all four were seen. If it dies part-way, run
 `git status --porcelain` at once.
 
 ## Reading a failure: real bug or harness error?
@@ -122,8 +127,10 @@ Exit 0 with `targets restored byte for byte: yes` means all three were seen. If 
 - **`hooked build differs from the plain runner's`**: the `exec` splitter in `crash-hooks.js` mis-split an SQL
   string (a new construct: a trigger body, a quoted `;`). Fix `splitStatements`; the check is untrustworthy until
   this control passes.
-- **`first boot is short in a NEW way`**: a migration now leaves work for the second start. Real; decide whether
-  to fix or pin it in `KNOWN_FIRST_BOOT_DIFFS`.
+- **`first boot is short in a NEW way`**: the first start (both passes, on a new database) no longer reaches the
+  full schema. Either the runner's second pass is gone, or a migration now leaves work that even a second pass
+  does not finish (a dependency two steps deep). Real; fix it, or pin it in `KNOWN_FIRST_BOOT_DIFFS` with
+  [USER]'s ruling.
 - **`pinned finding no longer failing`**: if you fixed it on purpose, remove the pin from `KNOWN_CRASH_FINDINGS`
   and this skill's table; otherwise find out what changed.
 
