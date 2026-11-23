@@ -101,7 +101,9 @@ action per line.
    per indivisible step (one transaction or one synchronous handler).
 2. A **new gate reason** in `assignmentGate.assignmentRefusal`, or a **new refusal** on another action: add one
    conjunct ending `\* gate: <reason>` (in `GateAllows`) or `\* <action>: <reason>` (in that action), a rule that
-   only that conjunct protects, and a `"<marker>|<Rule>"` pair to the mutant loop in `check.sh`.
+   breaks when that conjunct is removed (it may share the rule with another guard: both licence guards are caught by
+   `EveryRowHolderHasLicence`), and a `"<marker>|<Rule>"` pair to the mutant loop in `check.sh`. Check that the new
+   mutant is reported on the rule you named.
 3. A **new path that writes a row, a role, consent, a licence or the switch**: add an action to `Next` and a row to the
    coverage table.
 4. Run `check.sh` and `replay-findings.js`. Then move the sync commit (below and in the `git diff` command above)
