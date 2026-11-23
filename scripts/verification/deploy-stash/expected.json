@@ -1,0 +1,1445 @@
+{
+  "gitVersion": "git version 2.53.0",
+  "rows": {
+    "clean|write:none|untracked:no|lock:none": {
+      "after": {
+        "G": "tree",
+        "F": "tree",
+        "T": "tree",
+        "exit": 0,
+        "warned": false,
+        "stashes": 0,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      },
+      "next": {
+        "G": "tree",
+        "F": "tree",
+        "T": "tree",
+        "exit": 0,
+        "warned": false,
+        "stashes": 0,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "clean|write:none|untracked:yes|lock:none": {
+      "after": {
+        "G": "tree",
+        "F": "tree",
+        "T": "tree",
+        "N": "tree",
+        "exit": 0,
+        "warned": false,
+        "stashes": 0,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      },
+      "next": {
+        "G": "tree",
+        "F": "tree",
+        "T": "tree",
+        "N": "tree",
+        "exit": 0,
+        "warned": false,
+        "stashes": 0,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "clean|write:B1|untracked:no|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "exit": 128,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "write@B1"
+      },
+      "next": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "clean|write:B1|untracked:yes|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "N": "tree",
+        "exit": 128,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "write@B1"
+      },
+      "next": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "N": "tree",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "clean|write:B2|untracked:no|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "exit": 0,
+        "warned": true,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "write@B2"
+      },
+      "next": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "clean|write:B2|untracked:yes|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "N": "tree",
+        "exit": 0,
+        "warned": true,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "write@B2"
+      },
+      "next": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "N": "tree",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "clean|write:none|untracked:no|lock:B0": {
+      "after": {
+        "G": "tree",
+        "F": "tree",
+        "T": "tree",
+        "exit": 1,
+        "warned": false,
+        "stashes": 0,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "lock@B0"
+      },
+      "next": {
+        "G": "tree",
+        "F": "tree",
+        "T": "tree",
+        "exit": 0,
+        "warned": false,
+        "stashes": 0,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "clean|write:none|untracked:no|lock:B1": {
+      "after": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "exit": 1,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "lock@B1"
+      },
+      "next": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "clean|write:none|untracked:no|lock:B2": {
+      "after": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "exit": 0,
+        "warned": true,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "lock@B2"
+      },
+      "next": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "same-file|write:none|untracked:no|lock:none": {
+      "after": {
+        "G": "tree",
+        "F": "conflict",
+        "T": "tree",
+        "exit": 0,
+        "warned": true,
+        "stashes": 1,
+        "markersInHead": true,
+        "markersOnOrigin": true,
+        "midOperation": false,
+        "injected": ""
+      },
+      "next": {
+        "G": "tree",
+        "F": "conflict",
+        "T": "tree",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": true,
+        "markersOnOrigin": true,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "same-file|write:none|untracked:yes|lock:none": {
+      "after": {
+        "G": "tree",
+        "F": "conflict",
+        "T": "tree",
+        "N": "tree",
+        "exit": 0,
+        "warned": true,
+        "stashes": 1,
+        "markersInHead": true,
+        "markersOnOrigin": true,
+        "midOperation": false,
+        "injected": ""
+      },
+      "next": {
+        "G": "tree",
+        "F": "conflict",
+        "T": "tree",
+        "N": "tree",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": true,
+        "markersOnOrigin": true,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "same-file|write:B1|untracked:no|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "exit": 128,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "write@B1"
+      },
+      "next": {
+        "G": "stash",
+        "F": "conflict",
+        "T": "stash",
+        "exit": 1,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": true,
+        "injected": ""
+      }
+    },
+    "same-file|write:B1|untracked:yes|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "N": "tree",
+        "exit": 128,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "write@B1"
+      },
+      "next": {
+        "G": "stash",
+        "F": "conflict",
+        "T": "stash",
+        "N": "tree",
+        "exit": 1,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": true,
+        "injected": ""
+      }
+    },
+    "same-file|write:B2|untracked:no|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "exit": 0,
+        "warned": true,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "write@B2"
+      },
+      "next": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "same-file|write:B2|untracked:yes|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "N": "tree",
+        "exit": 0,
+        "warned": true,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "write@B2"
+      },
+      "next": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "N": "tree",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "same-file|write:none|untracked:no|lock:B0": {
+      "after": {
+        "G": "tree",
+        "F": "tree",
+        "T": "tree",
+        "exit": 1,
+        "warned": false,
+        "stashes": 0,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "lock@B0"
+      },
+      "next": {
+        "G": "tree",
+        "F": "conflict",
+        "T": "tree",
+        "exit": 1,
+        "warned": false,
+        "stashes": 0,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": true,
+        "injected": ""
+      }
+    },
+    "same-file|write:none|untracked:no|lock:B1": {
+      "after": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "exit": 1,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "lock@B1"
+      },
+      "next": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "same-file|write:none|untracked:no|lock:B2": {
+      "after": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "exit": 0,
+        "warned": true,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "lock@B2"
+      },
+      "next": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "manifest|write:none|untracked:no|lock:none": {
+      "after": {
+        "G": "tree",
+        "F": "tree",
+        "T": "gone",
+        "exit": 0,
+        "warned": false,
+        "stashes": 0,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      },
+      "next": {
+        "G": "tree",
+        "F": "tree",
+        "T": "gone",
+        "exit": 0,
+        "warned": false,
+        "stashes": 0,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "manifest|write:none|untracked:yes|lock:none": {
+      "after": {
+        "G": "tree",
+        "F": "tree",
+        "T": "gone",
+        "N": "tree",
+        "exit": 0,
+        "warned": false,
+        "stashes": 0,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      },
+      "next": {
+        "G": "tree",
+        "F": "tree",
+        "T": "gone",
+        "N": "tree",
+        "exit": 0,
+        "warned": false,
+        "stashes": 0,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "manifest|write:B1|untracked:no|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "exit": 128,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "write@B1"
+      },
+      "next": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "manifest|write:B1|untracked:yes|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "N": "tree",
+        "exit": 128,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "write@B1"
+      },
+      "next": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "N": "tree",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "manifest|write:B2|untracked:no|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "exit": 0,
+        "warned": true,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "write@B2"
+      },
+      "next": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "manifest|write:B2|untracked:yes|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "N": "tree",
+        "exit": 0,
+        "warned": true,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "write@B2"
+      },
+      "next": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "N": "tree",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "manifest|write:none|untracked:no|lock:B0": {
+      "after": {
+        "G": "tree",
+        "F": "tree",
+        "T": "tree",
+        "exit": 1,
+        "warned": false,
+        "stashes": 0,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "lock@B0"
+      },
+      "next": {
+        "G": "tree",
+        "F": "tree",
+        "T": "gone",
+        "exit": 0,
+        "warned": false,
+        "stashes": 0,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "manifest|write:none|untracked:no|lock:B1": {
+      "after": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "exit": 1,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "lock@B1"
+      },
+      "next": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "manifest|write:none|untracked:no|lock:B2": {
+      "after": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "exit": 0,
+        "warned": true,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "lock@B2"
+      },
+      "next": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "adds-path|write:none|untracked:no|lock:none": {
+      "after": {
+        "G": "tree",
+        "F": "tree",
+        "T": "tree",
+        "exit": 0,
+        "warned": false,
+        "stashes": 0,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      },
+      "next": {
+        "G": "tree",
+        "F": "tree",
+        "T": "tree",
+        "exit": 0,
+        "warned": false,
+        "stashes": 0,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "adds-path|write:none|untracked:yes|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "N": "tree",
+        "exit": 1,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      },
+      "next": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "N": "conflict",
+        "exit": 1,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": true,
+        "injected": ""
+      }
+    },
+    "adds-path|write:B1|untracked:no|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "exit": 128,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "write@B1"
+      },
+      "next": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "adds-path|write:B1|untracked:yes|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "N": "tree",
+        "exit": 128,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "write@B1"
+      },
+      "next": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "N": "conflict",
+        "exit": 1,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": true,
+        "injected": ""
+      }
+    },
+    "adds-path|write:B2|untracked:no|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "exit": 0,
+        "warned": true,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "write@B2"
+      },
+      "next": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "adds-path|write:B2|untracked:yes|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "N": "tree",
+        "exit": 1,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      },
+      "next": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "N": "conflict",
+        "exit": 1,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": true,
+        "injected": ""
+      }
+    },
+    "adds-path|write:none|untracked:no|lock:B0": {
+      "after": {
+        "G": "tree",
+        "F": "tree",
+        "T": "tree",
+        "exit": 1,
+        "warned": false,
+        "stashes": 0,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "lock@B0"
+      },
+      "next": {
+        "G": "tree",
+        "F": "tree",
+        "T": "tree",
+        "exit": 0,
+        "warned": false,
+        "stashes": 0,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "adds-path|write:none|untracked:no|lock:B1": {
+      "after": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "exit": 1,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "lock@B1"
+      },
+      "next": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "adds-path|write:none|untracked:no|lock:B2": {
+      "after": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "exit": 0,
+        "warned": true,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "lock@B2"
+      },
+      "next": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "diverged|write:none|untracked:no|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "conflict",
+        "T": "stash",
+        "exit": 1,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": true,
+        "markersOnOrigin": false,
+        "midOperation": true,
+        "injected": ""
+      },
+      "next": {
+        "G": "stash",
+        "F": "conflict",
+        "T": "stash",
+        "exit": 128,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": true,
+        "markersOnOrigin": false,
+        "midOperation": true,
+        "injected": ""
+      }
+    },
+    "diverged|write:none|untracked:yes|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "conflict",
+        "T": "stash",
+        "N": "tree",
+        "exit": 1,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": true,
+        "markersOnOrigin": false,
+        "midOperation": true,
+        "injected": ""
+      },
+      "next": {
+        "G": "stash",
+        "F": "conflict",
+        "T": "stash",
+        "N": "tree",
+        "exit": 128,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": true,
+        "markersOnOrigin": false,
+        "midOperation": true,
+        "injected": ""
+      }
+    },
+    "diverged|write:B1|untracked:no|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "exit": 128,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "write@B1"
+      },
+      "next": {
+        "G": "stash",
+        "F": "conflict",
+        "T": "stash",
+        "exit": 1,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": true,
+        "injected": ""
+      }
+    },
+    "diverged|write:B1|untracked:yes|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "N": "tree",
+        "exit": 128,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "write@B1"
+      },
+      "next": {
+        "G": "stash",
+        "F": "conflict",
+        "T": "stash",
+        "N": "branch",
+        "exit": 1,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": true,
+        "injected": ""
+      }
+    },
+    "diverged|write:B2|untracked:no|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "conflict",
+        "T": "stash",
+        "exit": 1,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": true,
+        "markersOnOrigin": false,
+        "midOperation": true,
+        "injected": ""
+      },
+      "next": {
+        "G": "stash",
+        "F": "conflict",
+        "T": "stash",
+        "exit": 128,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": true,
+        "markersOnOrigin": false,
+        "midOperation": true,
+        "injected": ""
+      }
+    },
+    "diverged|write:B2|untracked:yes|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "conflict",
+        "T": "stash",
+        "N": "tree",
+        "exit": 1,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": true,
+        "markersOnOrigin": false,
+        "midOperation": true,
+        "injected": ""
+      },
+      "next": {
+        "G": "stash",
+        "F": "conflict",
+        "T": "stash",
+        "N": "tree",
+        "exit": 128,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": true,
+        "markersOnOrigin": false,
+        "midOperation": true,
+        "injected": ""
+      }
+    },
+    "diverged|write:none|untracked:no|lock:B0": {
+      "after": {
+        "G": "tree",
+        "F": "tree",
+        "T": "tree",
+        "exit": 1,
+        "warned": false,
+        "stashes": 0,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "lock@B0"
+      },
+      "next": {
+        "G": "branch",
+        "F": "conflict",
+        "T": "branch",
+        "exit": 1,
+        "warned": false,
+        "stashes": 0,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": true,
+        "injected": ""
+      }
+    },
+    "diverged|write:none|untracked:no|lock:B1": {
+      "after": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "exit": 1,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "lock@B1"
+      },
+      "next": {
+        "G": "stash",
+        "F": "conflict",
+        "T": "stash",
+        "exit": 1,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": true,
+        "injected": ""
+      }
+    },
+    "diverged|write:none|untracked:no|lock:B2": {
+      "after": {
+        "G": "stash",
+        "F": "conflict",
+        "T": "stash",
+        "exit": 1,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": true,
+        "markersOnOrigin": false,
+        "midOperation": true,
+        "injected": ""
+      },
+      "next": {
+        "G": "stash",
+        "F": "conflict",
+        "T": "stash",
+        "exit": 128,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": true,
+        "markersOnOrigin": false,
+        "midOperation": true,
+        "injected": ""
+      }
+    },
+    "unreachable|write:none|untracked:no|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "exit": 1,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      },
+      "next": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "unreachable|write:none|untracked:yes|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "N": "tree",
+        "exit": 1,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      },
+      "next": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "N": "tree",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "unreachable|write:B1|untracked:no|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "exit": 128,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "write@B1"
+      },
+      "next": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "unreachable|write:B1|untracked:yes|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "N": "tree",
+        "exit": 128,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "write@B1"
+      },
+      "next": {
+        "G": "stash",
+        "F": "tree",
+        "T": "stash",
+        "N": "tree",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "unreachable|write:B2|untracked:no|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "exit": 1,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      },
+      "next": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "unreachable|write:B2|untracked:yes|lock:none": {
+      "after": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "N": "tree",
+        "exit": 1,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      },
+      "next": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "N": "tree",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "unreachable|write:none|untracked:no|lock:B0": {
+      "after": {
+        "G": "tree",
+        "F": "tree",
+        "T": "tree",
+        "exit": 1,
+        "warned": false,
+        "stashes": 0,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "lock@B0"
+      },
+      "next": {
+        "G": "tree",
+        "F": "tree",
+        "T": "tree",
+        "exit": 0,
+        "warned": false,
+        "stashes": 0,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "unreachable|write:none|untracked:no|lock:B1": {
+      "after": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "exit": 1,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": "lock@B1"
+      },
+      "next": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    },
+    "unreachable|write:none|untracked:no|lock:B2": {
+      "after": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "exit": 1,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      },
+      "next": {
+        "G": "stash",
+        "F": "stash",
+        "T": "stash",
+        "exit": 0,
+        "warned": false,
+        "stashes": 1,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": false,
+        "injected": ""
+      }
+    }
+  }
+}
