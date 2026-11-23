@@ -268,11 +268,14 @@ fi
 # tick) leaves no unmerged entry, but the markers are still in the file. Refuse any staged change that
 # ADDS a marker line. Only the unambiguous opening and closing markers count: a line of `=======` is
 # also a Markdown heading underline, so it is not a marker on its own.
+# ⚠️ NOT `grep -q`: under `set -o pipefail`, -q exits on the first match, `git diff` (still writing a
+# large diff) dies of SIGPIPE with 141, the pipeline reads as false, and the markers would be committed
+# (#792 review, measured). grep must read to the end; its output goes to /dev/null instead.
 MARKER_RE='^\+(<<<<<<<|>>>>>>>)( |$)'
-if git diff --cached -U0 --no-color --no-ext-diff | grep -aqE "$MARKER_RE"; then
+if git diff --cached -U0 --no-color --no-ext-diff | grep -aE "$MARKER_RE" > /dev/null; then
   MARKED=""
   while IFS= read -r f; do
-    if git diff --cached -U0 --no-color --no-ext-diff -- "$f" | grep -aqE "$MARKER_RE"; then
+    if git diff --cached -U0 --no-color --no-ext-diff -- "$f" | grep -aE "$MARKER_RE" > /dev/null; then
       MARKED="${MARKED}${f} "
     fi
   done < <(git diff --cached --name-only)

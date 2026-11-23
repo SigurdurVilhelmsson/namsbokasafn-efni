@@ -567,6 +567,21 @@ describe('git-backup.sh refuses to commit a conflicted tree (register §C254 D3)
     expectRefused(/conflict marker/);
   });
 
+  it('refuses markers early in a LARGE staged diff (grep must read it all, or pipefail fails open)', () => {
+    // #792 review: `git diff … | grep -q` under `set -o pipefail` let grep exit on the first match;
+    // git diff, still writing, died of SIGPIPE (141), the pipeline read as false, and the markers were
+    // committed. It needs a diff bigger than the pipe buffer with the marker BEFORE the bulk: git diff
+    // lists paths in order, so the page (05-publication) comes before a large new TMX (tm/).
+    conflictedPop();
+    git(['add', PAGE]);
+    const big = Array.from(
+      { length: 30000 },
+      (_, i) => `<tu tuid="${i}"><seg>line ${i}</seg></tu>`
+    );
+    writeFileSync(path.join(work, 'books/prufubok/tm/prufubok-big.tmx'), big.join('\n') + '\n');
+    expectRefused(/conflict marker/);
+  });
+
   it('CONTROL: a line of ======= (a Markdown heading underline) still commits', () => {
     writeFileSync(
       path.join(work, 'books/prufubok/03-faithful-translation/ch01/m00001-segments.is.md'),
