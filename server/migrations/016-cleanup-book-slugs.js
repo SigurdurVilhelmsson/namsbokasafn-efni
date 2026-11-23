@@ -11,7 +11,7 @@
  * ⚠️ IT USED TO MERGE when both existed (move the old book's rows onto efnafraedi-2e, then delete it).
  * That cleaned up a historical double registration, but migrationRunner re-runs every migration on
  * every boot, so once the rename was done it swallowed any book an admin later registered as
- * "efnafraedi" (register §C250). A fresh database never registers "efnafraedi" (019 and 049 register
+ * "efnafraedi" (register §C250). A fresh database never registers "efnafraedi" (only 049 registers
  * efnafraedi-2e), and production ran the merge long ago, so an "efnafraedi" row beside efnafraedi-2e
  * is now a deliberate new book.
  */

@@ -103,7 +103,7 @@ describe('a later boot does not recreate the retired legacy tables (§C250 churn
   it('a later boot with a registered `efnafraedi` book does not wedge on 015s rename (§C250)', () => {
     // 015 renamed efnafraedi → efnafraedi-2e once, historically; with no ledger it re-runs every boot.
     // Once efnafraedi-2e exists, a newly registered `efnafraedi` (a valid slug) made the rename hit
-    // UNIQUE(registered_books.slug), an error the runner does not skip: the server never booted again.
+    // UNIQUE(registered_books.slug), an error the runner does not skip: that start failed.
     // That the book itself then survives (016 leaves it alone) is the next case.
     const sdir = fs.mkdtempSync(path.join(os.tmpdir(), 'boot-churn-efna-'));
     const sdb = new Database(path.join(sdir, 'sessions.db'));
@@ -126,7 +126,7 @@ describe('a later boot does not recreate the retired legacy tables (§C250 churn
     // 016 cleaned up a historical state in which both efnafraedi and efnafraedi-2e existed by merging
     // the old book into the new one and deleting it. With no ledger it re-ran every boot, so once the
     // historical rename was done it swallowed any book an admin later registered as `efnafraedi`.
-    // A fresh database never registers `efnafraedi` (019 and 049 register efnafraedi-2e), so once
+    // A fresh database never registers `efnafraedi` (only 049 registers efnafraedi-2e), so once
     // efnafraedi-2e exists such a row is a deliberate new book, and both are left alone (§C250).
     const sdir = fs.mkdtempSync(path.join(os.tmpdir(), 'boot-churn-efna-keep-'));
     const sdb = new Database(path.join(sdir, 'sessions.db'));

@@ -105,8 +105,13 @@ module.exports = {
       // ONLY while efnafraedi-2e does not exist yet (register §C250). This was a one-time rename, but
       // migrationRunner re-runs it on every boot: once efnafraedi-2e exists, a newly registered
       // `efnafraedi` (a valid slug) made this UPDATE hit UNIQUE(registered_books.slug), an error the
-      // runner does not skip, so the server never booted again. And moving that new book's rows onto
+      // runner does not skip: that start failed (failLoudOnMigrationErrors exits), and since the runner
+      // carries on past a failed migration, 016 then merged the new book into efnafraedi-2e and deleted
+      // it in the same boot; the next start was clean, the book gone. Moving the new book's rows onto
       // efnafraedi-2e would be wrong too, so the slug-column moves are skipped with it.
+      // ⚠️ That also ends 015's every-boot move of STRAY rows tagged book / book_slug = 'efnafraedi'
+      // (no such book registered, e.g. a feedback row) onto efnafraedi-2e: once efnafraedi-2e exists
+      // they now keep their tag.
       const renameDone = Boolean(
         db.prepare(`SELECT 1 FROM registered_books WHERE slug = 'efnafraedi-2e'`).get()
       );
@@ -115,7 +120,7 @@ module.exports = {
       // --- Remove liffraedi (no pipeline content, safe to delete) ---
       // ONLY while liffraedi-2e does not exist yet (register §C250): re-run on every boot, the removal
       // deleted any book an admin later registered as `liffraedi`, with its chapters and sections. A
-      // fresh database never registers `liffraedi` (019 and 049 register liffraedi-2e), so once
+      // fresh database never registers `liffraedi` (only 049 registers liffraedi-2e: 019's INSERT OR IGNORE is dropped, registered_by being NOT NULL), so once
       // liffraedi-2e exists such a row is a deliberate new book.
       const removalDone = Boolean(
         db.prepare("SELECT 1 FROM registered_books WHERE slug = 'liffraedi-2e'").get()
