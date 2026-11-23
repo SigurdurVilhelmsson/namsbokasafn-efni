@@ -68,7 +68,7 @@ once; production has restarted many times.
 ## Does your change touch the verified code?
 
 ```sh
-git diff --stat 9dca06c91 -- server/services/migrationRunner.js server/migrations/ \
+git diff --stat 5ee99b0b1 -- server/services/migrationRunner.js server/migrations/ \
   server/lib/migrationSchema.js server/lib/domains.js server/lib/houseStyleTerms.js
 ```
 
@@ -153,7 +153,7 @@ Exit 0 with `targets restored byte for byte: yes` means all three were seen. If 
 
 ## Coverage record
 
-**Sync commit: `9dca06c91`.** The check was last confirmed to drive the code below at this commit.
+**Sync commit: `5ee99b0b1`.** The check was last confirmed to drive the code below at this commit.
 
 | What | Code (open it to check) |
 |---|---|
