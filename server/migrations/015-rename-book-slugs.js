@@ -107,7 +107,6 @@ module.exports = {
       // `efnafraedi` (a valid slug) made this UPDATE hit UNIQUE(registered_books.slug), an error the
       // runner does not skip, so the server never booted again. And moving that new book's rows onto
       // efnafraedi-2e would be wrong too, so the slug-column moves are skipped with it.
-      // ⚠️ 016 then merges such a book into efnafraedi-2e and deletes it (register §C250, not fixed).
       const renameDone = Boolean(
         db.prepare(`SELECT 1 FROM registered_books WHERE slug = 'efnafraedi-2e'`).get()
       );

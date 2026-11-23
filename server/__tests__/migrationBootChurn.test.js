@@ -104,7 +104,7 @@ describe('a later boot does not recreate the retired legacy tables (§C250 churn
     // 015 renamed efnafraedi → efnafraedi-2e once, historically; with no ledger it re-runs every boot.
     // Once efnafraedi-2e exists, a newly registered `efnafraedi` (a valid slug) made the rename hit
     // UNIQUE(registered_books.slug), an error the runner does not skip: the server never booted again.
-    // Not asserted here: 016 then merges that book into efnafraedi-2e and deletes it (register §C250).
+    // That the book itself then survives (016 leaves it alone) is the next case.
     const sdir = fs.mkdtempSync(path.join(os.tmpdir(), 'boot-churn-efna-'));
     const sdb = new Database(path.join(sdir, 'sessions.db'));
     expect(boot(sdb).errors).toEqual([]);
