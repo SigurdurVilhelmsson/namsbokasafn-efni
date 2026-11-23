@@ -62,6 +62,14 @@ const MUTANTS = [
     expect: 'adds-path|write:none|untracked:yes|lock:none',
   },
   {
+    // #793 review: without the guard, a deploy started mid-rebase lets the trap abort that rebase and pop
+    // the stash onto the wrong base.
+    label: 'BREAK the guard against a rebase already in progress does not stop the deploy',
+    from: '  echo "  Nothing was changed."\n  exit 1\nfi\n',
+    to: '  echo "  Nothing was changed."\n  :\nfi\n',
+    expect: 'mid-rebase|write:none|untracked:no|lock:none',
+  },
+  {
     // §C254 D5: without the abort, a rebase stopped on a conflict is left half-way.
     label: 'BREAK the trap does not abort a stopped rebase',
     from: '    git rebase --abort || echo',

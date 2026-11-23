@@ -63,6 +63,15 @@ fi
 # it aborts a rebase that stopped on a conflict (prod's branch returns to its pre-deploy tip), then
 # pops the stash. Before this, a failed pull or a stopped rebase exited with the changes in a stash
 # that no later deploy restores. Found by scripts/verification/deploy-stash/check.mjs.
+# Refuse a checkout that is ALREADY mid-rebase (an earlier deploy's stopped rebase, or someone resolving one
+# by hand), before anything is stashed and before the trap below exists: the trap aborts a stopped rebase,
+# and here that would throw away the work in progress and pop the stash onto the wrong base (#793 review).
+if [ -d "$(git rev-parse --git-path rebase-merge)" ] || [ -d "$(git rev-parse --git-path rebase-apply)" ]; then
+  echo "ERROR: a rebase is already in progress in this checkout (an earlier deploy's, or one being resolved by hand)."
+  echo "  Finish it (git rebase --continue) or abort it (git rebase --abort) first, then deploy again."
+  echo "  Nothing was changed."
+  exit 1
+fi
 echo "Fetching from origin..."
 git fetch origin main
 STASHED=0

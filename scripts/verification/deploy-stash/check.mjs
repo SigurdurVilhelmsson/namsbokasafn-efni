@@ -45,6 +45,7 @@ const LABEL_ORDER = [
   'D2 pop refused',
   'D3 pop left conflict markers',
   'D5 rebase stopped half-way',
+  'refused: a rebase was already in progress (nothing moved)',
   'failed, every change back in the tree',
   'restored',
   'UNCLASSIFIED (add a rule)',
@@ -125,6 +126,7 @@ const CONTENT = {
     server: 'page PROD-RENDER-2\n',
     dev: 'page DEV\n',
     prodCommit: 'page PROD-COMMIT\n',
+    resolved: 'page RESOLVED-BY-HAND\n',
   },
   T: { base: '{"v":0}\n', local: '{"v":"prod"}\n', dev: '{"v":"dev"}\n' },
   N: { prod: 'new page PROD\n', dev: 'new page DEV\n' },
@@ -147,6 +149,10 @@ for (const origin of ORIGINS) {
   for (const lock of ['B0', 'B1', 'B2'])
     SCENARIOS.push({ origin, serverWrite: 'none', untracked: false, lock });
 }
+// 'mid-rebase': prod is ALREADY mid-rebase when the deploy starts (an operator resolving the old script's
+// stopped rebase by hand: the clash resolved and staged, not continued), with an uncommitted edit beside it.
+// One row, no injections: the question is only what the deploy does to that state.
+SCENARIOS.push({ origin: 'mid-rebase', serverWrite: 'none', untracked: false, lock: 'none' });
 const keyOf = (s) =>
   `${s.origin}|write:${s.serverWrite}|untracked:${s.untracked ? 'yes' : 'no'}|lock:${s.lock}`;
 
@@ -175,24 +181,36 @@ function runScenario(s) {
     fs.mkdirSync(path.join(prod, 'pipeline-output'));
 
     // prod's own unpushed commit (a cron commit whose push failed), only for 'diverged'
-    if (s.origin === 'diverged') {
+    if (s.origin === 'diverged' || s.origin === 'mid-rebase') {
       write(prod, F, CONTENT.F.prodCommit);
       sh('git', ['commit', '-qam', 'auto-backup: unpushed'], prod, env);
     }
-    // prod's uncommitted changes
-    write(prod, G, CONTENT.G.local);
-    write(prod, F, CONTENT.F.local);
-    write(prod, T, CONTENT.T.local);
-    if (s.untracked) write(prod, N, CONTENT.N.prod);
-
     // the dev side's push
-    if (s.origin === 'same-file' || s.origin === 'diverged') write(dev, F, CONTENT.F.dev);
+    if (s.origin === 'same-file' || s.origin === 'diverged' || s.origin === 'mid-rebase')
+      write(dev, F, CONTENT.F.dev);
     else if (s.origin === 'manifest') write(dev, T, CONTENT.T.dev);
     else if (s.origin === 'adds-path') write(dev, N, CONTENT.N.dev);
     else write(dev, U, 'readme v1\n');
     sh('git', ['add', '-A'], dev, env);
     sh('git', ['commit', '-qm', 'dev change'], dev, env);
     sh('git', ['push', '-q', 'origin', 'main'], dev, env);
+
+    // mid-rebase: prod rebases onto dev's push by hand, stops on the clash, resolves it and stages it
+    if (s.origin === 'mid-rebase') {
+      sh('git', ['fetch', '-q', 'origin'], prod, env);
+      if (sh('git', ['rebase', 'origin/main'], prod, env, true).status === 0) {
+        throw new Error('mid-rebase fixture: the rebase was expected to stop on a conflict');
+      }
+      write(prod, F, CONTENT.F.resolved);
+      sh('git', ['add', F], prod, env);
+    }
+
+    // prod's uncommitted changes (the page too, except mid-rebase, where it holds the staged resolution)
+    write(prod, G, CONTENT.G.local);
+    if (s.origin !== 'mid-rebase') write(prod, F, CONTENT.F.local);
+    write(prod, T, CONTENT.T.local);
+    if (s.untracked) write(prod, N, CONTENT.N.prod);
+
     if (s.origin === 'unreachable')
       sh('git', ['remote', 'set-url', 'origin', path.join(root, 'gone.git')], prod, env);
 
@@ -278,9 +296,11 @@ function observe(s, prod, origin, env, run, injected, reportInjected = true) {
     return elsewhere(rel, want);
   };
   const wantF =
-    s.serverWrite !== 'none' && injected.includes(`write@${s.serverWrite}`)
-      ? CONTENT.F.server
-      : CONTENT.F.local;
+    s.origin === 'mid-rebase'
+      ? CONTENT.F.resolved
+      : s.serverWrite !== 'none' && injected.includes(`write@${s.serverWrite}`)
+        ? CONTENT.F.server
+        : CONTENT.F.local;
   const out = {
     G: where(G, CONTENT.G.local),
     F: where(F, wantF),
@@ -366,6 +386,14 @@ if (PRINT) {
 // The label of a first-run outcome. Order matters: the first rule that holds names the row.
 function label(a) {
   const locs = ['G', 'F', 'T', 'N'].filter((k) => k in a).map((k) => a[k]);
+  // deploy.sh refuses a checkout that is already mid-rebase, before it stashes or fetches anything
+  if (
+    a.midOperation &&
+    a.exit !== 0 &&
+    a.stashes === 0 &&
+    locs.every((l) => l === 'tree' || l === 'head')
+  )
+    return 'refused: a rebase was already in progress (nothing moved)';
   if (a.midOperation) return 'D5 rebase stopped half-way';
   if (a.warned && locs.some((l) => l.startsWith('conflict'))) return 'D3 pop left conflict markers';
   if (a.warned) return 'D2 pop refused';

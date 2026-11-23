@@ -1440,6 +1440,32 @@
         "midOperation": false,
         "injected": ""
       }
+    },
+    "mid-rebase|write:none|untracked:no|lock:none": {
+      "after": {
+        "G": "tree",
+        "F": "tree",
+        "T": "tree",
+        "exit": 1,
+        "warned": false,
+        "stashes": 0,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": true,
+        "injected": ""
+      },
+      "next": {
+        "G": "tree",
+        "F": "tree",
+        "T": "tree",
+        "exit": 1,
+        "warned": false,
+        "stashes": 0,
+        "markersInHead": false,
+        "markersOnOrigin": false,
+        "midOperation": true,
+        "injected": ""
+      }
     }
   }
 }
