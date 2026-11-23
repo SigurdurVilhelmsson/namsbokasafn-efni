@@ -28,12 +28,27 @@ module.exports = {
 
     console.log('Applying migration 026: Making icelandic column nullable...');
 
-    // ONE transaction, and a leftover terminology_terms_new dropped first (register §C250). This rebuild was one
-    // multi-statement exec with no transaction: a crash before the RENAME left terminology_terms_new behind, and
-    // the next start's CREATE threw "already exists", which migrationRunner counts as skipped, so the
-    // rebuild never finished. Now a crash leaves all or nothing, and a database an older crash already
-    // stranded finishes on its next start. The DROP is reached only while terminology_terms itself still
-    // exists (the early returns above), so it can never remove the only copy of the rows.
+    // ONE transaction, and an EMPTY leftover terminology_terms_new dropped first (register §C250). This
+    // rebuild was one multi-statement exec with no transaction, so an older crash could leave
+    // terminology_terms_new behind at two points:
+    //   - BEFORE the old DROP: the original is intact and terminology_terms_new is a partial copy. The next
+    //     start's CREATE threw "already exists" (counted as skipped), so the rebuild never finished;
+    //     now the leftover is dropped and the rebuild completes.
+    //   - AFTER the old DROP, before the RENAME: the rows live ONLY in terminology_terms_new, and 004 recreates
+    //     the original EMPTY on the next start. Dropping terminology_terms_new there would delete the only
+    //     copy (#788 review, measured), so a terminology_terms_new that holds rows is left untouched and
+    //     reported, for a person to recover. Never a throw: that would stop the server booting.
+    // Now the rebuild itself is atomic, so a crash leaves all or nothing and neither state can arise anew.
+    const leftover = db
+      .prepare("SELECT 1 FROM sqlite_master WHERE type='table' AND name='terminology_terms_new'")
+      .get();
+    if (leftover && db.prepare('SELECT COUNT(*) AS n FROM terminology_terms_new').get().n > 0) {
+      console.warn(
+        'Migration 026: terminology_terms_new holds rows (left by an older crash); leaving it and the ' +
+          'terminology_terms rebuild alone, recover it by hand (register §C250)'
+      );
+      return;
+    }
     db.transaction(() => {
       db.exec('DROP TABLE IF EXISTS terminology_terms_new');
       db.exec(`

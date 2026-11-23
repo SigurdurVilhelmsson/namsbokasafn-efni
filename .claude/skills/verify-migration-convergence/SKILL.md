@@ -57,8 +57,10 @@ on a crash-partial state, so the rest never ran.**
   already-stranded database is repaired (`server/__tests__/migration014.test.js`).
 - **024 and 026** (a table rebuild as one multi-statement `exec`: `CREATE x_new; INSERT; DROP; RENAME`): a crash
   before the `RENAME` left a stray `x_new`, and the next start's `CREATE` threw `already exists`, which the runner
-  counts as skipped. Each now runs in one `db.transaction` that first drops a leftover `x_new`, so a database an
-  older crash stranded finishes on its next start (`server/__tests__/migrationCrashSafeFirstBoot.test.js`).
+  counts as skipped. Each now runs in one `db.transaction` that first drops an EMPTY leftover `x_new`, so a crash
+  leaves all or nothing, and a database an older crash stranded BEFORE its `DROP` finishes on its next start. A
+  leftover `x_new` that holds rows (an older crash AFTER the `DROP`, where 004 recreates the original empty) is left
+  untouched and logged, never dropped: it is the only copy (`server/__tests__/migrationCrashSafeFirstBoot.test.js`).
 - **The first boot** (no crash needed): a fresh database's first start was not the full schema. 022 rebuilt
   `users` after 006 made its indexes and trigger, and 049 registered books after 032 seeded
   `book_subject_mapping`; each waited for a second start. `migrationRunner` now runs a **second pass** when it has
