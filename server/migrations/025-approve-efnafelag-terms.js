@@ -12,10 +12,15 @@
  * system placeholder if no admin exists (e.g. local dev).
  */
 
+const { tableExists } = require('../lib/migrationSchema');
+
 module.exports = {
   id: '025-approve-efnafelag-terms',
 
   up(db) {
+    // Retired by 032: with no terminology_terms there is nothing to do, and touching it would throw
+    // "no such table" and wedge the boot (§C250).
+    if (!tableExists(db, 'terminology_terms')) return;
     // Step 1: Re-tag chemistry-association → chemistry-society-csv
     const retagged = db
       .prepare(
