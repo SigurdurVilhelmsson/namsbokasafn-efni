@@ -55,7 +55,7 @@ Two mutants in `mutate.js` (labels starting `§C249`) prove the check sees each 
 Run this; any output means yes. It compares the sync commit with your **working tree**, so uncommitted edits count:
 
 ```sh
-git diff --stat 9dca06c91 -- server/scripts/export-terminology.js server/lib/glossaryExportDecision.js \
+git diff --stat 5bbcbe87d -- server/scripts/export-terminology.js server/lib/glossaryExportDecision.js \
   server/lib/glossaryProducer.js tools/lib/glossary-terms-hash.cjs scripts/git-backup.sh
 ```
 
@@ -73,7 +73,7 @@ goes to stderr, one line per committed-file variant.
 node server/verification/glossary-export/check.js
 ```
 
-A clean run ends `OK: rules hold, known findings pinned, positive control writes` (with no pins, "known findings pinned" is vacuous) and exits 0. Each rule line prints
+A clean run ends `OK: rules hold, no known findings pinned, positive control writes` and exits 0 (with a pin in `KNOWN_FINDINGS`, the middle part reads `known findings pinned`). Each rule line prints
 how many file-changing runs met its precondition. That count only shows the rule was *reached*: a rule reached 0
 times prints `NOT EXERCISED` and fails. It does not show the rule can *fail*; `mutate.js` shows that (below). The
 **positive control** (a healthy bare refresh of a 1000-term file must write) stops a harness that refuses everything
@@ -154,7 +154,7 @@ mutant in the tree.
 
 ## Coverage record
 
-**Sync commit: `9dca06c91`.** The check was last confirmed to drive the code below at this commit.
+**Sync commit: `5bbcbe87d`.** The check was last confirmed to drive the code below at this commit.
 
 | Rule(s) | Code (open it to check) |
 |---|---|
