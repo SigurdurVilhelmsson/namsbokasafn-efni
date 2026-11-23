@@ -1,0 +1,161 @@
+#!/usr/bin/env node
+/**
+ * Proves check.js can fail: applies each mutant below to the real code, runs the check, and
+ * records which rules it reported BROKEN. Every mutant must make the check exit non-zero.
+ *
+ * Restores follow CLAUDE.md's mutation-test rule: a golden copy of each target is taken BEFORE
+ * the first mutation (in the system temp dir, never the repo), every round restores from it and
+ * compares the bytes, and a final restore runs even if a round dies. Never restore with
+ * `git checkout --` or `git stash`: both can discard uncommitted work.
+ *
+ * Usage (from the repo root; takes about 3 minutes per mutant, so run it in the background):
+ *   node server/verification/glossary-export/mutate.js
+ * Exit 0 only if every mutant was caught and every target was restored byte for byte.
+ */
+'use strict';
+
+process.exitCode = 1;
+
+const fs = require('node:fs');
+const os = require('node:os');
+const path = require('node:path');
+const { spawnSync } = require('node:child_process');
+
+const EXPORTER = 'server/scripts/export-terminology.js';
+const DECISION = 'server/lib/glossaryExportDecision.js';
+const PRODUCER = 'server/lib/glossaryProducer.js';
+
+// [label, file, exact text (must occur once), replacement, rule(s) expected BROKEN]
+const MUTANTS = [
+  [
+    'readExisting lets a committed null through',
+    EXPORTER,
+    "if (parsed === null || typeof parsed !== 'object') return { kind: 'corrupt' };",
+    "if (typeof parsed !== 'object') return { kind: 'corrupt' };",
+    'NoOverwriteUnreadable',
+  ],
+  [
+    '--force crosses the absent-baseline gate',
+    EXPORTER,
+    "if (existing.kind === 'absent' && !adopt) {",
+    "if (existing.kind === 'absent' && !adopt && !force) {",
+    'NoCreate',
+  ],
+  [
+    '--adopt crosses the shrink gate',
+    EXPORTER,
+    'if (verdict.refuse && !force) {',
+    'if (verdict.refuse && !(force || adopt)) {',
+    'NoHalving',
+  ],
+  [
+    '--force crosses the producer gate',
+    EXPORTER,
+    'if (pv.refuse && !adopt) {',
+    'if (pv.refuse && !adopt && !force) {',
+    'NoProducerSwap',
+  ],
+  [
+    'a change during the build no longer holds',
+    EXPORTER,
+    'changedDuringBuild || restampable || (layerId === null && stamp !== undefined);',
+    'restampable || (layerId === null && stamp !== undefined);',
+    'LayerSettled',
+  ],
+  [
+    'growth gate removed',
+    EXPORTER,
+    'if (growth.refuse && !force) {',
+    'if (false) {',
+    'NoExplosion',
+  ],
+  [
+    'restamp writes the wrong id',
+    EXPORTER,
+    'const restamped = { ...prev, [STAMP_KEY]: { lastChangeId: layerId } };',
+    'const restamped = { ...prev, [STAMP_KEY]: { lastChangeId: layerId + 1 } };',
+    'RestampOnlyStamp',
+  ],
+  [
+    '--force crosses the unreadable-file gate',
+    EXPORTER,
+    "if (existing.kind === 'corrupt' && !adopt) {",
+    "if (existing.kind === 'corrupt' && !adopt && !force) {",
+    'NoOverwriteUnreadable',
+  ],
+  [
+    'the write drops a term',
+    EXPORTER,
+    "fs.writeFileSync(outPath, persisted, 'utf-8');",
+    "fs.writeFileSync(outPath, serializePayload({ ...next, terms: next.terms.slice(1) }, layerId), 'utf-8');",
+    'WritesWhatWasExported',
+  ],
+  [
+    'any --release-layer value releases a hold',
+    EXPORTER,
+    'layerMoved && !changedDuringBuild && releaseLayer !== null && releaseLayer === hash;',
+    'layerMoved && !changedDuringBuild && releaseLayer !== null;',
+    'LayerSettled',
+  ],
+  [
+    'shrink measured on approved terms only',
+    DECISION,
+    '(prevTotal > 0 && nextTotal < prevTotal * SHRINK_RATIO);',
+    'false;',
+    'NoHalving',
+  ],
+  [
+    'an unidentifiable file is taken for the resolved producer',
+    PRODUCER,
+    '  return PRODUCER_UNKNOWN;\n}',
+    '  return PRODUCER_RESOLVED;\n}',
+    'NoProducerSwap',
+  ],
+];
+
+const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'glossary-mutate-'));
+const goldens = {};
+for (const f of new Set(MUTANTS.map((m) => m[1]))) {
+  goldens[f] = path.join(tmp, path.basename(f));
+  fs.copyFileSync(f, goldens[f]);
+}
+const restoreAll = () =>
+  Object.entries(goldens).every(([f, g]) => {
+    fs.copyFileSync(g, f);
+    return fs.readFileSync(f).equals(fs.readFileSync(g));
+  });
+
+let allCaught = true;
+let restored = true;
+try {
+  for (const [label, file, from, to, expected] of MUTANTS) {
+    const src = fs.readFileSync(goldens[file], 'utf8');
+    const n = src.split(from).length - 1;
+    if (n !== 1) {
+      console.log(`${label}: anchor found ${n} times in ${file} — update the mutant`);
+      allCaught = false;
+      continue;
+    }
+    fs.writeFileSync(file, src.replace(from, to));
+    const r = spawnSync('node', ['server/verification/glossary-export/check.js'], {
+      encoding: 'utf8',
+      timeout: 900_000,
+    });
+    restored = restoreAll() && restored;
+    const broken = (r.stdout || '')
+      .split('\n')
+      .filter((l) => /: BROKEN$/.test(l))
+      .map((l) => l.split(':')[0]);
+    const caught = r.status !== 0 && broken.includes(expected);
+    if (!caught) allCaught = false;
+    console.log(
+      `${caught ? 'caught' : 'MISSED'}  ${label} (${path.basename(file)}): exit ${r.status}, ` +
+        `BROKEN [${broken.join(', ')}], expected ${expected}`
+    );
+  }
+} finally {
+  restored = restoreAll() && restored;
+  fs.rmSync(tmp, { recursive: true, force: true });
+}
+console.log(`targets restored byte for byte: ${restored ? 'yes' : 'NO — check git status now'}`);
+process.exitCode = allCaught && restored ? 0 : 1;
