@@ -16,16 +16,19 @@ const DEPLOY = path.join(repo, 'scripts/deploy.sh');
 const before = fs.readFileSync(DEPLOY);
 const src = before.toString('utf8');
 
+// Step 4's pop, anchored on the POPPED line so it cannot match the EXIT trap's own `git stash pop`.
+const STEP4_POP =
+  '  POPPED=1 # from here on the EXIT trap must not pop again, whatever this pop does\n  if git stash pop; then';
 const MUTANTS = [
   {
     label: 'BREAK step 4 never pops the stash',
-    from: '  if git stash pop; then',
-    to: '  if true; then',
+    from: STEP4_POP,
+    to: STEP4_POP.replace('if git stash pop; then', 'if true; then'),
     expect: 'clean|write:none|untracked:no|lock:none',
   },
   {
-    label: 'BREAK step 2 never stashes (the pull meets a dirty tree)',
-    from: '  git stash push -m "deploy-$(date +%Y%m%d-%H%M%S)"',
+    label: 'BREAK step 2 never stashes (the rebase meets a dirty tree)',
+    from: '  git stash push -m "$STASH_MSG"',
     to: '  :',
     expect: 'clean|write:none|untracked:no|lock:none',
   },
@@ -39,16 +42,39 @@ const MUTANTS = [
     // The control for check.mjs's lost-change count: a mutant that really loses changes must
     // make that count non-zero, or the "0" it prints on the real script proves nothing.
     label: 'BREAK step 4 drops the stash instead of popping it',
-    from: '  if git stash pop; then',
-    to: '  if git stash drop; then',
+    from: STEP4_POP,
+    to: STEP4_POP.replace('if git stash pop; then', 'if git stash drop; then'),
     expect: 'clean|write:none|untracked:no|lock:none',
     expectLost: true,
   },
   {
-    label: 'FIX a failed pull puts the stash back before exiting',
-    from: 'git pull --rebase origin main\n',
-    to: 'git pull --rebase origin main || { if [ "$STASHED" -eq 1 ]; then git stash pop; fi; exit 1; }\n',
-    expect: 'unreachable|write:none|untracked:no|lock:none',
+    // §C254 D4-A: without the early fetch, an unreachable origin fails after the stash again.
+    label: 'BREAK the early fetch is removed',
+    from: 'echo "Fetching from origin..."\ngit fetch origin main\n',
+    to: '',
+    expect: 'unreachable|write:none|untracked:no|lock:B1',
+  },
+  {
+    // §C254 D4-B: without the EXIT trap, a failed rebase leaves the changes in the stash.
+    label: 'BREAK the EXIT trap is not installed',
+    from: 'trap restore_after_failure EXIT\n',
+    to: '',
+    expect: 'adds-path|write:none|untracked:yes|lock:none',
+  },
+  {
+    // #793 review: without the guard, a deploy started mid-rebase lets the trap abort that rebase and pop
+    // the stash onto the wrong base.
+    label: 'BREAK the guard against a rebase already in progress does not stop the deploy',
+    from: '  echo "  Nothing was changed."\n  exit 1\nfi\n',
+    to: '  echo "  Nothing was changed."\n  :\nfi\n',
+    expect: 'mid-rebase|write:none|untracked:no|lock:none',
+  },
+  {
+    // §C254 D5: without the abort, a rebase stopped on a conflict is left half-way.
+    label: 'BREAK the trap does not abort a stopped rebase',
+    from: '    git rebase --abort || echo',
+    to: '    : || echo',
+    expect: 'diverged|write:none|untracked:no|lock:none',
   },
 ];
 

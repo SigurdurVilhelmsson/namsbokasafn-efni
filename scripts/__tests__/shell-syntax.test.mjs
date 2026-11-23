@@ -41,14 +41,24 @@ describe('production shell scripts parse', () => {
     expect(src).not.toMatch(/curl -sf http:\/\/localhost:3000\/api\/health > \/dev\/null/);
   });
 
-  it('deploy.sh records the deployed commit after its pull and before the stash pop (G1.2, spec §5.12)', () => {
+  it('deploy.sh records the deployed commit after its fetch and rebase and before the stash pop (G1.2, spec §5.12)', () => {
+    // Since §C254 D4 the fetch comes first (before the stash) and step 3 rebases onto FETCH_HEAD. The
+    // record reads FETCH_HEAD and HEAD, so it must follow the rebase too: above it, `head` would be the
+    // pre-deploy commit.
     const src = readFileSync(path.join(REPO, 'scripts', 'deploy.sh'), 'utf8');
-    const pull = src.indexOf('git pull --rebase origin main');
+    const fetch = src.indexOf('git fetch origin main');
+    const rebase = src.indexOf('git rebase FETCH_HEAD');
     const record = src.indexOf(
       'record-deployed-commit.sh FETCH_HEAD pipeline-output/.deployed-commit'
     );
-    const pop = src.indexOf('git stash pop');
-    expect([pull > -1, record > pull, pop > record]).toEqual([true, true, true]);
+    // step 4's pop (the EXIT trap, set in step 2, carries its own `git stash pop` for a failed run)
+    const pop = src.indexOf('git stash pop', src.indexOf('\n# 4. '));
+    expect([fetch > -1, rebase > fetch, record > rebase, pop > record]).toEqual([
+      true,
+      true,
+      true,
+      true,
+    ]);
     // never fails the deploy: the call carries its own fallback
     expect(src.slice(record, src.indexOf('\n', record))).toMatch(/\|\|/);
   });
