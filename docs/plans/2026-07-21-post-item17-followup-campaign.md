@@ -46,10 +46,15 @@
   - the deployed `isAssignmentEnforced('efnafraedi-2e')` answers on, by the study-book rule, while the stored toggle
     row is still 0;
   - `EDITOR_WRITABLE_BOOKS` is chemistry alone, and no chemistry assignment row exists.
-- ⏭ **NEXT, [USER]'s:** spec §8's runbook:
+- ✅ **§8 step 2, the appendix backfill, DONE on production (2026-11-23):**
+  - Claude's read-only dry run of `scripts/backfill-appendix-sections.js --book efnafraedi-2e` listed 13 sections
+    (`m68859`–`m68871`); the script opens the database read-only without `--db`;
+  - [USER] ran it with `--db`;
+  - the re-run dry run reports nothing left to insert;
+  - read-only counts: one appendices chapter row (`book_chapters` id 156, chapter `-1`, 13 sections), the 13 section
+    rows `m68859`–`m68871`, and still no chemistry assignment row (no unit opened).
+- ⏭ **NEXT, [USER]'s:** the rest of spec §8's runbook:
   - the A4 §3 walk on production;
-  - the appendix backfill (`scripts/backfill-appendix-sections.js --book efnafraedi-2e`, dry run, then `--db`) before
-    any appendix section is assigned;
   - licence clauses recorded as agreements are signed.
 
   Assigning waits on G1.4's consent text, and the two runbook lines of AMENDED item 7 hold from now on.
