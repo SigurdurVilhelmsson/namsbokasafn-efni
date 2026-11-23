@@ -48,12 +48,15 @@ no longer due (so its key stays in the research file, `QuiescentClean`), and the
 withdrew (`NoCaptureAfterWithdrawal`, one step more). The research-file restore re-purges every withdrawn interval
 (§5.15 "A restore"); nothing does the same for `sessions.db`, where the consent rows live.
 
-Replayed on the real functions: `server/__tests__/researchSessionsRestore.test.js` (a control, and the finding as it is
-today). **Latent today:** no consent text is approved in the repo, so no one can consent yet. A fix (for example,
+`server/__tests__/researchSessionsRestore.test.js` proves the finding's **precondition** on the real functions: on a
+pre-withdrawal copy, `captureStateFor` captures and `dueIntervals` drops the interval (each beside its control). It
+**cannot detect a fix**: the restore is a manual runbook step with no code to run, so the test opens the copy directly,
+and a fix outside those two functions (a reconcile at boot, a migration, a runbook step) leaves it passing. **Latent today:** no consent text is approved in the repo, so no one can consent yet. A fix (for example,
 reconcile research_consent after a sessions.db restore, or refuse the restore while a withdrawal is newer than the
-copy) is a product change for [USER]; then flip the replay test and remove the finding from `check.sh`.
+copy) is a product change for [USER]. **The fix must bring its own test** that runs the new step on such a copy; then
+update the model's `SessionsRestore` to match, remove the finding from `check.sh`, and retire the precondition test.
 
-With the restore left out (`SessionsRestoreOn = FALSE`), every rule holds (27,468 distinct states at the sync commit).
+With the restore left out (`SessionsRestoreOn = FALSE`), every rule holds; `check.sh` prints the distinct-state count on each run.
 
 ## Does your change touch the verified code?
 
@@ -93,8 +96,9 @@ pass draws how the lifecycle moves between states.
   to the action table, then replay it on the real functions, as `researchSessionsRestore.test.js` does, before calling
   it a finding. A path that needs two server requests to interleave is a modelling error while the server stays
   synchronous (see "What is ONE step").
-- **`pinned finding no longer failing`**: the sessions.db restore was fixed, or the model changed. If fixed on purpose,
-  update the model's `SessionsRestore` to the new runbook, remove the finding, and flip the replay test.
+- **`pinned finding no longer failing`**: someone edited the model (a runbook or code fix alone cannot flip it: the
+  model's `SessionsRestore` is written by hand). If the restore path was fixed on purpose, `SessionsRestore` should now
+  match it: remove the finding, and confirm the fix's own test covers the new step.
 - **`MUTANT MISSED`**: the model no longer depends on that guard, so the rule it protects is no longer tested. Fix the
   model; the tail of TLC's output is printed under the line. If every mutant "passes" with the same state count as
   the clean run, TLC loaded the wrong module file (it resolves the module from its working directory).

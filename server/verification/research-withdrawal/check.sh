@@ -1,8 +1,9 @@
 #!/bin/sh
 # Check the research-withdrawal model (ResearchWithdrawal.tla) with TLC. Exits 0 only when all three hold:
 #   1. the rules hold without the sessions.db restore: NoSessionsRestore.cfg passes;
-#   2. each known finding still fails, on its own rule, with the restore on (a finding that starts passing
-#      means the code, the runbook or the model changed, and someone must look);
+#   2. each known finding still fails, on its own rule, with the restore on. The model's SessionsRestore is
+#      written by hand from the runbook, so a fix to the runbook or the code does NOT flip this by itself:
+#      whoever fixes the restore path updates SessionsRestore to match, and then this step says so;
 #   3. each mutant (one guard removed from the model) fails on the rule that guard protects, so every guard
 #      the model credits to the code is shown to matter.
 # Usage: server/verification/research-withdrawal/check.sh   (TLC jar from TLA2TOOLS_JAR or the cache)
@@ -64,7 +65,7 @@ for rule in QuiescentClean NoCaptureAfterWithdrawal; do
   if [ "$got" = "$rule" ]; then
     echo "known finding still present: $rule, shortest path:"; path "find-$rule"
   else
-    echo "pinned finding no longer failing: $rule (got '${got:-pass}') — if the sessions.db restore was fixed on purpose, remove it"
+    echo "pinned finding no longer failing: $rule (got '${got:-pass}') — if the sessions.db restore was fixed on purpose, update SessionsRestore and remove the finding"
     fail=1
   fi
 done

@@ -7,8 +7,13 @@
 // the restored row is live again, and captureStateFor (record()'s step 3) captures for someone who
 // withdrew.
 //
-// THE FINDING IS ASSERTED AS IT IS TODAY, beside its control. When the restore path is fixed, the
-// second test fails: flip it, and remove the finding from check.sh and the skill.
+// WHAT THIS PROVES: the finding's PRECONDITION, on the real code. On a sessions.db copy taken before the
+// withdrawal, captureStateFor captures and dueIntervals drops the interval: the consent functions hold no
+// state of their own that survives a restore of that file. Each half sits beside its control.
+// WHAT IT CANNOT DO: detect a fix. The restore is a manual runbook step with no code to run, so these
+// tests open the copy directly. A fix (a reconcile at boot, a migration, a runbook step) is not on their
+// path and leaves them passing; only a fix inside captureStateFor or dueIntervals would flip them.
+// A FIX MUST BRING ITS OWN TEST that runs the new step on such a copy; then remove these and the finding.
 // Latent today: no consent text is approved in the repo, so no one can consent yet.
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { createRequire } from 'module';
@@ -56,14 +61,14 @@ describe('a sessions.db restore after a withdrawal (verify-research-withdrawal f
     expect(researchConsent.captureStateFor(USER).capturing).toBe(false);
   });
 
-  it('KNOWN FINDING: restoring the pre-withdrawal copy makes the interval capture again', () => {
+  it('PRECONDITION: restoring the pre-withdrawal copy makes the interval capture again', () => {
     // SessionsRestore: the runbook's step, the copy put in place as it is.
     const restored = new Database(copy);
     researchConsent._setTestDb(restored);
     expect(researchConsent.captureStateFor(USER).capturing).toBe(true);
   });
 
-  it('KNOWN FINDING: after the restore the interval is no longer due, so its key row stays', () => {
+  it('PRECONDITION: after the restore the interval is no longer due, so its key row stays', () => {
     // The research file, with the real schema, still holding the interval's key (the withdraw route's
     // immediate deletion leaves the key row for research-withdrawal.js).
     const research = new Database(':memory:');
