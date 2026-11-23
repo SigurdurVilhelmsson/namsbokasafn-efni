@@ -9,6 +9,14 @@
 
 set -euo pipefail
 
+# The whole script is one function, called on the LAST line (register §C254 follow-up). Bash reads a running
+# script from the file as it goes, and step 3 rewrites this file whenever a deploy changes it: without the
+# function, the rest of that run would execute the NEW file from the OLD byte offset (seen on prod 2026-11-23,
+# `line 192: terms:: command not found`). Bash parses a function whole before running it, and the last line
+# (`main "$@"; exit $?`) is read in full before main starts, so nothing after the pull is read from the file.
+# The body is deliberately NOT indented: scripts/verification/deploy-stash/check.mjs finds the steps by their
+# `# N. ` headings at the start of a line. This protects every deploy AFTER the one that installs it.
+main() {
 echo "=== Deploy: namsbokasafn-efni ==="
 
 # 0. Pin Node runtime to the system version BEFORE any npm runs.
@@ -321,3 +329,5 @@ done
 echo "=== Deploy complete. WARNING: Server did not become healthy in 30s ==="
 echo "  Check logs: journalctl -u ritstjorn -n 50 --no-pager"
 exit 1
+}
+main "$@"; exit $?
