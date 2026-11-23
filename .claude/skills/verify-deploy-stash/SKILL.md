@@ -36,7 +36,7 @@ undisturbed run of steps 2–4 (the next deploy).
 | server write              | none, at B1 (after the stash, before the pull), at B2 (after the pull, before the pop)                                                                                                                                                            | the running server re-renders a page: `pipelineService.js` `runRender` ("Vista + Birta"); the server is only restarted at step 6                   |
 | untracked page            | no, yes (prod has a new page dev also adds in `adds-path`)                                                                                                                                                                                        | a render on each side; the stash has no `-u`, so it stays in the tree                                                                              |
 | lock                      | none, `.git/index.lock` held at B0 / B1 / B2                                                                                                                                                                                                      | a `git-backup.sh` tick's `git add`/`commit` mid-flight: neither script takes a lock against the other                                              |
-| cron tick (always, after) | stage `git-backup.sh`'s own `PATHSPECS`, commit, push                                                                                                                                                                                             | a **stand-in** for `git-backup.sh`'s core (no exporter, no status file)                                                                            |
+| cron tick (always, after) | the real `scripts/git-backup.sh`, committed into the clone and run there                                                                                                                                                                          | the 2-hourly backup cron (its glossary-export step finds no exporter in the clone, warns and carries on)                                           |
 
 **Each row records**, after the deploy plus one cron tick, and again after the next deploy: where each local change is
 (`tree`; `head`; `branch`, committed on `main` while a stopped rebase has detached `HEAD`; `stash` only; or `gone`,
@@ -67,17 +67,20 @@ are that output at the sync commit. If they ever disagree, the `--findings` outp
   `clean`, `same-file` and `manifest` with `write:B2` or `lock:B2`; `adds-path|write:B2|untracked:no|lock:none`;
   `adds-path|write:none|untracked:no|lock:B2`. (The other origins never reach step 4 with those injections: their
   pull or rebase stops first, and the row's `injected` field is empty.)
-- **D3. When dev and prod both changed a file, the pop leaves conflict markers in the tree, and the next cron tick
-  commits and pushes them to `main`.** Rows (2): `same-file|write:none|untracked:*|lock:none`: `F:conflict+stash`,
-  `markersOnOrigin: true`. For a `05-publication` page that is reader-visible on the next sync.
+- **D3. When dev and prod both changed a file, the pop leaves conflict markers in the tree.** Rows (2):
+  `same-file|write:none|untracked:*|lock:none`: `F:conflict+stash`. **The harmful half is FIXED (register §C254):**
+  the cron used to commit and push those markers to `main`; `git-backup.sh` now refuses to commit while the index has
+  unmerged entries, a rebase or merge is in progress, or a staged change adds a marker line, so `markersInHead` and
+  `markersOnOrigin` are `false` and the refusal shows as an error (no heartbeat). The markers stay in prod's tree,
+  and the next deploy stops (exit 1: it cannot stash unmerged entries) until a person resolves the conflict.
 - **D4. A failed pull (origin unreachable, a cron's index lock, or a prod-only page where dev added the same path)
   exits non-zero with the changes in the stash, and nothing says where they are.** Rows (13): every `*|lock:B1`;
   `unreachable` with `write:none` or `write:B2` and `lock:none`, and `unreachable|write:none|untracked:no|lock:B2`;
   `adds-path|write:none|untracked:yes|lock:none` and `adds-path|write:B2|untracked:yes|lock:none`. Not
   `unreachable|write:B1` (that is D1: the pull refuses the dirty tree before it fetches) and not `*|lock:B0` (below).
 - **D5. A prod commit that never got pushed and conflicts with dev stops the rebase half-way.** Exit 1, the repo
-  mid-rebase, the changes stashed; the cron tick then commits on the detached rebase `HEAD` (markers in `HEAD`), and
-  the next deploy fails too. Rows (5): `diverged` with `write:none` or `write:B2` and `lock:none`, and
+  mid-rebase, the changes stashed, and the next deploy fails too (exit 1). The cron no longer commits on the detached
+  rebase `HEAD` (it used to, with the markers; the D3 fix refuses while a rebase is in progress). Rows (5): `diverged` with `write:none` or `write:B2` and `lock:none`, and
   `diverged|write:none|untracked:no|lock:B2`. The other four `diverged` rows stop earlier, as D1, D4 or before the
   stash.
 - **Across all of them: a later deploy never restores an earlier deploy's stash.** Step 2 stashes only a dirty tree and
@@ -156,8 +159,8 @@ are asserted first, with `GIT_*` variables removed and global and system git con
 - **Covered:** 54 scenarios, each followed by one cron tick and one more deploy: every origin crossed with every
   server-write and untracked-page value (36), plus every origin with each lock position (18). **A lock is varied only
   on its own** (no server write, no untracked page): the full product of the four dimensions would be 144.
-- **Not covered:** a lock combined with a server write or an untracked page; overlap inside a single git command; steps 0, 1, 5–7; the real `git-backup.sh` beyond its
-  add/commit/push (its exporter and status file); more than one dev commit or more than three prod files; prod's git
+- **Not covered:** a lock combined with a server write or an untracked page; overlap inside a single git command; steps 0, 1, 5–7; `git-backup.sh`'s glossary exporter (absent in the
+  clone); more than one dev commit or more than three prod files; prod's git
   version (2.43.0, not run).
 
 ## Coverage record
@@ -169,5 +172,5 @@ only after reading the change and running `check.mjs` and `mutate.mjs`.
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | steps run              | `scripts/deploy.sh` from `# 2. Stash` to `# 5. Install` (stash, `merge.ours.driver`, `pull --rebase`, `record-deployed-commit.sh`, pop) |
 | `merge=ours` behaviour | `.gitattributes`                                                                                                                        |
-| cron tick              | `scripts/git-backup.sh` `PATHSPECS` (read from the file) and its add/commit/push                                                        |
+| cron tick              | `scripts/git-backup.sh`, run whole (its §C254 D3 refusal included)                                                                      |
 | server write           | `server/services/pipelineService.js` `runRender` (writes `05-publication`)                                                              |

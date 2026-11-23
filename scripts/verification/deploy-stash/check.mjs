@@ -11,7 +11,7 @@
 // line, `inject <boundary>`, inserted between its steps (B0 before step 2, B1 before step 3, B2 before
 // step 4, B3 after). An injection stands for another process acting between two of deploy's commands:
 // the running server rewriting a file, or a git-backup cron holding .git/index.lock. Then one cron tick
-// (a stand-in for scripts/git-backup.sh's add/commit/push, using its own PATHSPECS), then a second,
+// (the real scripts/git-backup.sh, run inside the clone), then a second,
 // undisturbed run of the same steps (the next deploy). Each scenario's outcome is one row; the rows are
 // pinned in expected.json, so any change in git behaviour or in deploy.sh shows up as a changed row.
 //
@@ -88,15 +88,6 @@ if (!fs.readFileSync(DEPLOY, 'utf8').split('\n').includes(SET_LINE)) {
   throw new Error(`deploy.sh no longer has "${SET_LINE}"; the harness assumes it`);
 }
 
-// The cron's pathspecs, read from git-backup.sh itself (its PATHSPECS=( … ) array).
-function cronPathspecs() {
-  const src = fs.readFileSync(path.join(repo, 'scripts/git-backup.sh'), 'utf8');
-  const m = src.match(/\nPATHSPECS=\(\n([\s\S]*?)\n\)/);
-  if (!m) throw new Error('git-backup.sh: PATHSPECS array not found');
-  return [...m[1].matchAll(/^\s*'([^']+)'/gm)].map((x) => x[1]);
-}
-const PATHSPECS = cronPathspecs();
-
 // ── a clean git environment ─────────────────────────────────────────────────────────────────
 const baseEnv = Object.fromEntries(Object.entries(process.env).filter(([k]) => !/^GIT_/.test(k)));
 function envFor(home) {
@@ -170,11 +161,9 @@ function runScenario(s) {
     sh('git', ['clone', '-q', origin, dev], root, env);
     fs.copyFileSync(path.join(repo, '.gitattributes'), path.join(dev, '.gitattributes'));
     write(dev, '.gitignore', 'pipeline-output/\n');
-    write(
-      dev,
-      'scripts/record-deployed-commit.sh',
-      fs.readFileSync(path.join(repo, 'scripts/record-deployed-commit.sh'), 'utf8')
-    );
+    for (const rel of ['scripts/record-deployed-commit.sh', 'scripts/git-backup.sh']) {
+      write(dev, rel, fs.readFileSync(path.join(repo, rel), 'utf8'));
+    }
     write(dev, G, CONTENT.G.base);
     write(dev, F, CONTENT.F.base);
     write(dev, T, CONTENT.T.base);
@@ -248,19 +237,15 @@ function runScenario(s) {
   }
 }
 
-// A stand-in for git-backup.sh's core: stage its PATHSPECS (skipping ignored matches, as it does),
-// commit if anything is staged, push. Not the whole script: no exporter, no status file.
+// One cron tick: the REAL scripts/git-backup.sh, committed into the clone with the seed, run from the
+// clone (it finds its project root from its own location). Its glossary-export step finds no
+// exporter here, logs a warning and carries on, as the git-backup tests rely on too. It refuses to
+// commit a conflicted tree (register §C254 D3).
 function cronTick(prod, env) {
-  const specs = PATHSPECS.map((p) => `'${p}'`).join(' ');
-  const body = [
-    'for spec in ' + specs + '; do',
-    '  for m in $(compgen -G "$spec" || true); do git check-ignore -q "$m" || git add -- "$m" 2>/dev/null || true; done',
-    'done',
-    'git diff --cached --quiet || git commit -qm "auto-backup: tick" 2>/dev/null || true',
-    'git push -q origin main 2>/dev/null || true',
-  ].join('\n');
-  sh('bash', ['-c', body], prod, env, true);
+  sh('bash', [path.join(prod, 'scripts/git-backup.sh')], prod, env, true);
 }
+
+const MARKER_LINE = '^(<<<<<<<|>>>>>>>)( |$)';
 
 function observe(s, prod, origin, env, run, injected, reportInjected = true) {
   const git = (...a) => sh('git', a, prod, env, true);
@@ -309,11 +294,13 @@ function observe(s, prod, origin, env, run, injected, reportInjected = true) {
     exit: run.status,
     warned: /WARNING: Merge conflict/.test(run.stdout),
     stashes,
-    markersInHead: markers(['grep', '-l', '<<<<<<<', 'HEAD']),
+    // A real marker LINE, in content only: the committed scripts (git-backup.sh) mention the marker
+    // text in their own code, which a bare '<<<<<<<' search would count.
+    markersInHead: markers(['grep', '-l', '-E', MARKER_LINE, 'HEAD', '--', 'books/']),
     markersOnOrigin:
       sh(
         'git',
-        ['--git-dir', origin, 'grep', '-l', '<<<<<<<', 'main'],
+        ['--git-dir', origin, 'grep', '-l', '-E', MARKER_LINE, 'main', '--', 'books/'],
         prod,
         env,
         true

@@ -477,3 +477,103 @@ describe('git-backup.sh glossary export (register C14)', () => {
     expect(git(['show', 'HEAD:books/prufubok/glossary/glossary-unified.json'])).toMatch(/syra/);
   });
 });
+
+/**
+ * Register §C254 D3: after a conflicted `git stash pop` (deploy.sh step 4) the tree holds conflict
+ * markers and the index holds unmerged entries; `git add` silently marks them resolved, so the cron
+ * used to commit the markers and push them to main. The same holds during a stopped rebase or merge.
+ * Each state below is produced by real git, the way it arises on prod.
+ */
+describe('git-backup.sh refuses to commit a conflicted tree (register §C254 D3)', () => {
+  const PAGE = 'books/prufubok/05-publication/faithful/ch01/m00001.html';
+  const page = () => path.join(work, PAGE);
+  const tryGit = (args) => {
+    try {
+      git(args);
+      return 0;
+    } catch (err) {
+      return err.status ?? 1;
+    }
+  };
+  /** A dev commit to PAGE, pushed to origin from a second clone. */
+  function pushDevPage(content) {
+    const other = mkdtempSync(path.join(tmpdir(), 'gitbackup-dev-'));
+    execFileSync('git', ['clone', '--quiet', bare, other]);
+    execFileSync('git', ['config', 'user.email', 'annar@example.is'], { cwd: other });
+    execFileSync('git', ['config', 'user.name', 'Annar'], { cwd: other });
+    writeFileSync(path.join(other, PAGE), content);
+    execFileSync('git', ['commit', '--quiet', '-am', 'dev page'], { cwd: other });
+    execFileSync('git', ['push', '--quiet', 'origin', 'main'], { cwd: other });
+    rmSync(other, { recursive: true, force: true });
+  }
+  const originPage = () =>
+    execFileSync('git', ['show', `main:${PAGE}`], { cwd: bare, encoding: 'utf8' });
+  /** deploy.sh's stash -> pull -> pop, where dev changed the same page: the pop conflicts. */
+  function conflictedPop() {
+    writeFileSync(page(), '<p>prod render</p>\n');
+    git(['stash', 'push', '-q', '-m', 'deploy-test']);
+    pushDevPage('<p>dev render</p>\n');
+    git(['pull', '-q', '--rebase', 'origin', 'main']);
+    expect(tryGit(['stash', 'pop'])).not.toBe(0);
+    expect(readFileSync(page(), 'utf8')).toMatch(/^<<<<<<< /m);
+  }
+  /** Assert the run refused: error status naming why, nothing committed, nothing pushed. */
+  function expectRefused(why) {
+    const headBefore = git(['rev-parse', 'HEAD']).trim();
+    const originBefore = originPage();
+    const result = runBackup(true);
+    expect(result.status).toBe(1);
+    expect(readStatus().status).toBe('error');
+    expect(readStatus().message).toMatch(why);
+    expect(git(['rev-parse', 'HEAD']).trim()).toBe(headBefore);
+    expect(originPage()).toBe(originBefore);
+    expect(originPage()).not.toMatch(/^<<<<<<< /m);
+    expect(existsSync(heartbeatPath())).toBe(false);
+  }
+
+  it('refuses while the index holds unmerged entries (a conflicted stash pop)', () => {
+    conflictedPop();
+    expect(git(['ls-files', '-u'])).not.toBe('');
+    expectRefused(/unmerged/);
+  });
+
+  it('refuses while a rebase is in progress, even with every conflict marked resolved', () => {
+    writeFileSync(page(), '<p>prod commit</p>\n');
+    git(['commit', '-q', '-am', 'auto-backup: unpushed']);
+    pushDevPage('<p>dev render</p>\n');
+    expect(tryGit(['pull', '-q', '--rebase', 'origin', 'main'])).not.toBe(0);
+    writeFileSync(page(), '<p>resolved</p>\n');
+    git(['add', PAGE]); // no unmerged entries left, but the rebase has not finished
+    expect(git(['ls-files', '-u'])).toBe('');
+    expectRefused(/rebase in progress/);
+  });
+
+  it('refuses while a merge is in progress, even with every conflict marked resolved', () => {
+    writeFileSync(page(), '<p>prod commit</p>\n');
+    git(['commit', '-q', '-am', 'auto-backup: unpushed']);
+    pushDevPage('<p>dev render</p>\n');
+    git(['fetch', '-q', 'origin']);
+    expect(tryGit(['merge', '-q', '--no-edit', 'origin/main'])).not.toBe(0);
+    writeFileSync(page(), '<p>resolved</p>\n');
+    git(['add', PAGE]);
+    expect(git(['ls-files', '-u'])).toBe('');
+    expectRefused(/merge in progress/);
+  });
+
+  it('refuses a staged file whose added lines are conflict markers (a conflict marked resolved by git add)', () => {
+    conflictedPop();
+    git(['add', PAGE]); // marks it resolved; the markers are still in the file
+    expect(git(['ls-files', '-u'])).toBe('');
+    expectRefused(/conflict marker/);
+  });
+
+  it('CONTROL: a line of ======= (a Markdown heading underline) still commits', () => {
+    writeFileSync(
+      path.join(work, 'books/prufubok/03-faithful-translation/ch01/m00001-segments.is.md'),
+      'Fyrirsögn\n=======\n\ntexti\n'
+    );
+    runBackup();
+    expect(readStatus().status).toBe('success');
+    expect(git(['log', '-1', '--format=%s'])).toMatch(/^auto-backup: /);
+  });
+});
