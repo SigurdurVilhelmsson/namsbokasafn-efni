@@ -94,7 +94,7 @@ A clean run ends `OK: every crash point converges or fails only as pinned; contr
 point; the numbers come from the listing (a new migration shifts every later number, which is why pins use names).
 
 To prove the check can still fail, after editing it or before trusting it on a new kind of change, run in the
-background (about 12 minutes, measured 2026-11-23: 691 s for its four check runs):
+background (about 12–16 minutes for its four check runs; 691 s and 979 s measured on 2026-11-23):
 
 ```sh
 node server/verification/migration-convergence/mutate.js
