@@ -68,6 +68,9 @@ module.exports = {
 
         // Clean up FK-referenced tables
         for (const table of ['book_chapters', 'book_sections', 'terminology_terms']) {
+          // terminology_terms is retired by 032 and no longer recreated on later boots (§C250):
+          // a DELETE on it would throw "no such table" and wedge the boot.
+          if (!tableExists(db, table)) continue;
           db.prepare(`DELETE FROM ${table} WHERE book_id = ?`).run(bookId);
         }
 

@@ -77,6 +77,29 @@ describe('a later boot does not recreate the retired legacy tables (§C250 churn
     expect(churn).toEqual([]);
   });
 
+  it('a later boot with a registered `liffraedi` book does not wedge on the retired tables (#784 review)', () => {
+    // 015 cleans up a `liffraedi` book by book_id across book_chapters, book_sections and
+    // terminology_terms. While 004 recreated terminology_terms on every boot that worked; once it is
+    // retired, an unguarded DELETE throws "no such table" and the server never boots again. An admin
+    // can register that slug (it passes bookRegistration's BOOK_SLUG), so this is reachable.
+    // Not asserted here: 015 also DELETES that book on every boot (register §C250, logged, not fixed).
+    const sdir = fs.mkdtempSync(path.join(os.tmpdir(), 'boot-churn-seeded-'));
+    const sdb = new Database(path.join(sdir, 'sessions.db'));
+    expect(boot(sdb).errors).toEqual([]);
+    expect(boot(sdb).errors).toEqual([]);
+    const required = sdb
+      .pragma('table_info(registered_books)')
+      .filter((c) => c.notnull && c.dflt_value === null && !c.pk)
+      .map((c) => c.name);
+    const cols = required.includes('slug') ? required : [...required, 'slug'];
+    sdb
+      .prepare(
+        `INSERT INTO registered_books (${cols.join(', ')}) VALUES (${cols.map(() => '?').join(', ')})`
+      )
+      .run(...cols.map((c) => (c === 'slug' ? 'liffraedi' : 'x')));
+    expect(boot(sdb).errors).toEqual([]);
+  });
+
   it('the final schema is the same after the later boot', () => {
     const tables = (d) =>
       d

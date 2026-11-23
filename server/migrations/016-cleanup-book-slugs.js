@@ -12,6 +12,8 @@
  * Also ensures title_is = 'Efnafræði 2e' in all cases.
  */
 
+const { tableExists } = require('../lib/migrationSchema');
+
 module.exports = {
   name: '016-cleanup-book-slugs',
 
@@ -36,7 +38,11 @@ module.exports = {
 
     // Tables with FK column "book" (text slug)
     // Note: sessions_backup is omitted — it only exists ephemerally during migration 001
-    const bookTables = [
+    // Only tables that still exist: edit_history and pending_reviews (021) and terminology_terms (032)
+    // are retired and no longer recreated on later boots (§C250), so an UPDATE on them would throw.
+    const present = (tables) => tables.filter((t) => tableExists(db, t));
+
+    const bookTables = present([
       'segment_edits',
       'module_reviews',
       'edit_history',
@@ -45,18 +51,18 @@ module.exports = {
       'analytics_events',
       'chapter_assignments',
       'localization_edits',
-    ];
+    ]);
 
     // Tables with FK column "book_slug" (text slug)
-    const bookSlugTables = [
+    const bookSlugTables = present([
       'chapter_generated_files',
       'chapter_generation_log',
       'user_book_access',
       'user_chapter_assignments',
-    ];
+    ]);
 
     // Tables with FK column "book_id" (integer)
-    const bookIdTables = ['book_chapters', 'book_sections', 'terminology_terms'];
+    const bookIdTables = present(['book_chapters', 'book_sections', 'terminology_terms']);
 
     const cleanup = db.transaction(() => {
       if (oldRow && newRow) {
