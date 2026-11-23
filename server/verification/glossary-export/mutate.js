@@ -8,7 +8,7 @@
  * compares the bytes, and a final restore runs even if a round dies. Never restore with
  * `git checkout --` or `git stash`: both can discard uncommitted work.
  *
- * Usage (from the repo root; takes about 3 minutes per mutant, so run it in the background):
+ * Usage (any cwd; takes about 3 minutes per mutant, so run it in the background):
  *   node server/verification/glossary-export/mutate.js            # every mutant
  *   node server/verification/glossary-export/mutate.js '§C249'    # labels containing the text
  * Exit 0 only if every mutant was caught and every target was restored byte for byte.
@@ -22,9 +22,13 @@ const os = require('node:os');
 const path = require('node:path');
 const { spawnSync } = require('node:child_process');
 
-const EXPORTER = 'server/scripts/export-terminology.js';
-const DECISION = 'server/lib/glossaryExportDecision.js';
-const PRODUCER = 'server/lib/glossaryProducer.js';
+// Resolved against this file, never the cwd (CLAUDE.md § resolve resource paths against something
+// intrinsic): run from server/ instead of the repo root, a relative path would miss its targets.
+const SERVER = path.resolve(__dirname, '..', '..');
+const CHECK = path.join(__dirname, 'check.js');
+const EXPORTER = path.join(SERVER, 'scripts', 'export-terminology.js');
+const DECISION = path.join(SERVER, 'lib', 'glossaryExportDecision.js');
+const PRODUCER = path.join(SERVER, 'lib', 'glossaryProducer.js');
 
 // [label, file, exact text (must occur once), replacement, rule(s) expected BROKEN]
 const MUTANTS = [
@@ -159,7 +163,7 @@ try {
       continue;
     }
     fs.writeFileSync(file, src.replace(from, to));
-    const r = spawnSync('node', ['server/verification/glossary-export/check.js'], {
+    const r = spawnSync(process.execPath, [CHECK], {
       encoding: 'utf8',
       timeout: 900_000,
     });
