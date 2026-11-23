@@ -19,7 +19,7 @@ sync to readers.
 ## How it is checked
 
 **Tool: a bounded exhaustive run of the real code, with real git.** The outcomes depend on what git does (`stash pop`
-on a conflict or a dirty file, `pull --rebase` on a dirty tree or an untracked file in the way, a `merge=ours` driver
+on a conflict or a dirty file, `rebase` on a dirty tree or an untracked file in the way, a `merge=ours` driver
 during a pop), which a hand model would have to guess. So `check.mjs` runs the **verbatim text of deploy.sh from
 `# 2. Stash` to `# 5. Install`** in bash, inside a throwaway clone, for every scenario below, and pins each scenario's
 outcome in `expected.json`.
@@ -33,7 +33,7 @@ undisturbed run of steps 2–4 (the next deploy).
 | Scenario dimension        | Values                                                                                                                                                                                                                                            | What it stands for (open it to check)                                                                                                              |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
 | origin                    | `clean` (dev touches another file), `same-file` (dev changed the page prod changed), `manifest` (dev changed `translation-errors.json`), `adds-path` (dev added a page), `diverged` (prod has an unpushed commit to the same page), `unreachable` | dev pushes to `main`; a prod cron commit whose push was rejected (CLAUDE.md "your own push to main can strand prod's content backup"); the network |
-| server write              | none, at B1 (after the stash, before the pull), at B2 (after the pull, before the pop)                                                                                                                                                            | the running server re-renders a page: `pipelineService.js` `runRender` ("Vista + Birta"); the server is only restarted at step 6                   |
+| server write              | none, at B1 (after the stash, before the rebase), at B2 (after the rebase, before the pop)                                                                                                                                                        | the running server re-renders a page: `pipelineService.js` `runRender` ("Vista + Birta"); the server is only restarted at step 6                   |
 | untracked page            | no, yes (prod has a new page dev also adds in `adds-path`)                                                                                                                                                                                        | a render on each side; the stash has no `-u`, so it stays in the tree                                                                              |
 | lock                      | none, `.git/index.lock` held at B0 / B1 / B2                                                                                                                                                                                                      | a `git-backup.sh` tick's `git add`/`commit` mid-flight: neither script takes a lock against the other                                              |
 | cron tick (always, after) | the real `scripts/git-backup.sh`, committed into the clone and run there                                                                                                                                                                          | the 2-hourly backup cron (its glossary-export step finds no exporter in the clone, warns and carries on)                                           |
@@ -52,55 +52,49 @@ normal restart.
 
 ## Findings (pinned in `expected.json`; register §C254)
 
-None is fixed: each is a product change for [USER] to rule on. Do not change deploy.sh to turn this check green
-without that ruling.
+Status lives in register §C254; this section describes what the check measures in the code at the sync commit.
 
-**Each row's finding is derived from its measured first-run outcome, not from its scenario name**: `check.mjs` labels
+**Each row's class is derived from its measured first-run outcome, not from its scenario name**: `check.mjs` labels
 every row by the rules in its `label()` and prints the count per label; `--findings` lists the rows. The lists below
 are that output at the sync commit. If they ever disagree, the `--findings` output is right and this file is stale.
 
-- **D1. A server write between the stash and the pull aborts the pull.** `git pull --rebase` refuses a dirty tree (exit
-  128), `set -euo pipefail` stops the script, and every stashed change stays in the stash. Rows: every `*|write:B1|*`
-  (12).
-- **D2. A server write, or a cron's index lock, between the pull and the pop makes the pop refuse.** Step 4 prints its
-  warning and the deploy carries on; every stashed change (not only the clashing file) stays in the stash. Rows (11):
-  `clean`, `same-file` and `manifest` with `write:B2` or `lock:B2`; `adds-path|write:B2|untracked:no|lock:none`;
-  `adds-path|write:none|untracked:no|lock:B2`. (The other origins never reach step 4 with those injections: their
-  pull or rebase stops first, and the row's `injected` field is empty.)
-- **D3. When dev and prod both changed a file, the pop leaves conflict markers in the tree.** Rows (2):
-  `same-file|write:none|untracked:*|lock:none`: `F:conflict+stash`. **The harmful half is FIXED (register §C254):**
-  the cron used to commit and push those markers to `main`; `git-backup.sh` now refuses to commit while the index has
-  unmerged entries, a rebase or merge is in progress, or a staged change adds a marker line, so `markersInHead` and
-  `markersOnOrigin` are `false` and the refusal shows as an error (no heartbeat). The markers stay in prod's tree,
-  and the next deploy stops (exit 1: it cannot stash unmerged entries) until a person resolves the conflict.
-- **D4. A failed pull (origin unreachable, a cron's index lock, or a prod-only page where dev added the same path)
-  exits non-zero with the changes in the stash, and nothing says where they are.** Rows (13): every `*|lock:B1`;
-  `unreachable` with `write:none` or `write:B2` and `lock:none`, and `unreachable|write:none|untracked:no|lock:B2`;
-  `adds-path|write:none|untracked:yes|lock:none` and `adds-path|write:B2|untracked:yes|lock:none`. Not
-  `unreachable|write:B1` (that is D1: the pull refuses the dirty tree before it fetches) and not `*|lock:B0` (below).
-- **D5. A prod commit that never got pushed and conflicts with dev stops the rebase half-way.** Exit 1, the repo
-  mid-rebase, the changes stashed, and the next deploy fails too (exit 1). The cron no longer commits on the detached
-  rebase `HEAD` (it used to, with the markers; the D3 fix refuses while a rebase is in progress). Rows (5): `diverged` with `write:none` or `write:B2` and `lock:none`, and
-  `diverged|write:none|untracked:no|lock:B2`. The other four `diverged` rows stop earlier, as D1, D4 or before the
-  stash.
-- **Across all of them: a later deploy never restores an earlier deploy's stash.** Step 2 stashes only a dirty tree and
-  step 4 pops only what this run stashed, so every row whose first run left `stash` still shows `stash` after the next
-  deploy. In several rows the next deploy itself stops mid-rebase (`same-file|write:B1|*`,
-  `adds-path|*|untracked:yes|*`, `diverged|*`, and `same-file|…|lock:B0`): the first failure's cron tick committed
-  prod's state, and that commit now conflicts with dev's.
-- **No row loses an applied text or a page.** Measured on both runs: every such change is in the tree, `HEAD`, on
-  `main` (`branch`) or in a stash, including behind conflict markers (`conflict+stash`, `conflict+branch`); `check.mjs`
-  prints the count of rows where one is gone, which is 0. Only the `merge=ours` manifest is dropped, by design. The
-  harm is where a change ends up and that nothing says so.
+What deploy.sh does now (steps 2–4): **fetch first** (`git fetch origin main`, before the stash: a network failure has
+moved nothing), install an **EXIT trap**, stash, **rebase onto `FETCH_HEAD`**, record, pop. On any failure between the
+stash and the pop the trap **aborts a stopped rebase** (prod's branch returns to its pre-deploy tip) and **pops the
+stash back**. The cron (`git-backup.sh`) refuses to commit unmerged entries, a rebase or merge in progress, or a staged
+marker line.
+
+- **failed, changes left in the stash (D1, D4)** (15): every `*|write:B1|*` except `unreachable`, and every
+  `*|lock:B1` except `unreachable`. The rebase refuses (a server write left the tree dirty, or a cron's lock is held),
+  the trap pops, and the pop cannot apply for the same reason (the server's write clashes with the stashed file, or the
+  lock is still held), so the changes stay in the stash and the trap says so. **This is the remaining open part:** a
+  server write or a lock during the deploy (D1/D2's fix, stopping the service or a shared lock, is separate).
+- **D2. A server write, or a cron's index lock, between the rebase and the pop makes the pop refuse** (11): `clean`,
+  `same-file` and `manifest` with `write:B2` or `lock:B2`; `adds-path|write:B2|untracked:no|lock:none`;
+  `adds-path|write:none|untracked:no|lock:B2`. Step 4 prints its warning and the deploy carries on; every stashed
+  change stays in the stash.
+- **D3. When dev and prod both changed a file, the pop leaves conflict markers in the tree** (2):
+  `same-file|write:none|untracked:*|lock:none`: `F:conflict+stash`. The cron refuses to commit that tree
+  (`markersInHead`/`markersOnOrigin` `false`), and the next deploy stops (exit 1: git cannot stash unmerged entries)
+  until a person resolves the conflict.
+- **failed, every change back in the tree** (21): every `unreachable` row (the fetch fails before the stash); every
+  `*|lock:B0` (the stash fails on the lock); `adds-path` with an untracked page and `write:none`/`write:B2` (the
+  rebase refuses the untracked page, the trap pops); `diverged` with `write:none`/`write:B2` and `lock:none`, and
+  `diverged|write:none|untracked:no|lock:B2` (the rebase stops on prod's unpushed commit, the trap aborts it and pops).
+  Nothing is left moved and the deploy exits non-zero. A `diverged` clash fails the same way on every deploy until a
+  person resolves it.
+- **restored** (5): `clean|write:none|untracked:*|lock:none`, both `manifest|write:none|…|lock:none` rows (the manifest
+  dropped by design) and `adds-path|write:none|untracked:no|lock:none`.
+- **No row is left mid-rebase** (the former D5) and **no row loses an applied text or a page**: measured on both runs,
+  every change is in the tree, `HEAD`, on `main` (`branch`) or in a stash, including behind conflict markers;
+  `check.mjs` prints the count of rows where one is gone, which is 0.
+- **A later deploy never restores an earlier deploy's stash** (step 2 stashes only a dirty tree; step 4 pops only its
+  own): every row whose first run left `stash` still shows `stash` after the next deploy.
 
 **By design, not a finding:** `manifest` rows show `T:gone`: the `merge=ours` driver keeps the pulled
 `translation-errors.json` and drops prod's, as `.gitattributes` intends for that derived file.
 
-**Controls:** label `restored` (5): `clean|write:none|untracked:*|lock:none`, both `manifest|write:none|…|lock:none`
-rows (the manifest dropped by design) and `adds-path|write:none|untracked:no|lock:none`, all restored on both runs.
-Label `stopped before stashing` (6): every `*|lock:B0`, where step 2 fails on the lock before anything moves, so the
-first run is clean; the second is not always: the cron tick commits prod's changes, and where dev changed the same
-file (`same-file`, `diverged`) the next deploy stops mid-rebase, the D5 shape reached another way.
+**Controls:** the `restored` rows, on both runs; and the `lock:B0` rows, where step 2 fails before anything moves.
 
 **On prod (read-only, 2026-11-23):** 17 stash entries, all untagged "WIP on main" from February to April 2026; none
 carries deploy.sh's `deploy-<date>` tag (added with the script on 2026-03-25). So no stash left by the current script
@@ -132,10 +126,10 @@ never edits `scripts/deploy.sh`, only temp copies):
 node scripts/verification/deploy-stash/mutate.mjs
 ```
 
-Five mutants: BREAK step 4 never pops; BREAK step 2 never stashes; BREAK the `ours` driver is not registered; BREAK
-step 4 drops the stash instead of popping it, which must also make the lost-change count non-zero (the control that
-the `0` the real script gets is a measurement, not a blind counter); FIX a failed pull puts the stash back before
-exiting (D4's row must change). Each must print `seen`.
+Seven mutants, all BREAK: step 4 never pops; step 2 never stashes; the `ours` driver is not registered; step 4 drops
+the stash instead of popping it, which must also make the lost-change count non-zero (the control that the `0` the
+real script gets is a measurement, not a blind counter); the early fetch is removed; the EXIT trap is not installed;
+the trap does not abort a stopped rebase. Each must print `seen`.
 
 It never touches this repository's tree or stash: every git command runs in a temp clone whose toplevel and origin
 are asserted first, with `GIT_*` variables removed and global and system git config disabled.
@@ -162,15 +156,20 @@ are asserted first, with `GIT_*` variables removed and global and system git con
 - **Not covered:** a lock combined with a server write or an untracked page; overlap inside a single git command; steps 0, 1, 5–7; `git-backup.sh`'s glossary exporter (absent in the
   clone); more than one dev commit or more than three prod files; prod's git
   version (2.43.0, not run).
+- **Not covered, about the EXIT trap:** it stays installed through steps 5–7 (npm, restart, health), which are not
+  run here; by its flags it does nothing there (`POPPED=1` after step 4, and no rebase is in progress). `git stash pop`,
+  in step 4 and in the trap, takes the TOP stash entry: the fixture starts with none, so a pop of the wrong entry is not
+  seen (prod holds 17 older, untagged entries). The trap aborts ANY rebase it finds, including one already in progress
+  before the deploy started.
 
 ## Coverage record
 
 **Sync commit: `ea08576a9`.** The check was last confirmed to describe the code below at this commit. Move it forward
 only after reading the change and running `check.mjs` and `mutate.mjs`.
 
-| Part                   | Code                                                                                                                                    |
-| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| steps run              | `scripts/deploy.sh` from `# 2. Stash` to `# 5. Install` (stash, `merge.ours.driver`, `pull --rebase`, `record-deployed-commit.sh`, pop) |
-| `merge=ours` behaviour | `.gitattributes`                                                                                                                        |
-| cron tick              | `scripts/git-backup.sh`, run whole (its §C254 D3 refusal included)                                                                      |
-| server write           | `server/services/pipelineService.js` `runRender` (writes `05-publication`)                                                              |
+| Part                   | Code                                                                                                                                                                                |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| steps run              | `scripts/deploy.sh` from `# 2. ` to `# 5. ` (early fetch, the EXIT trap `restore_after_failure`, stash, `merge.ours.driver`, `rebase FETCH_HEAD`, `record-deployed-commit.sh`, pop) |
+| `merge=ours` behaviour | `.gitattributes`                                                                                                                                                                    |
+| cron tick              | `scripts/git-backup.sh`, run whole (its §C254 D3 refusal included)                                                                                                                  |
+| server write           | `server/services/pipelineService.js` `runRender` (writes `05-publication`)                                                                                                          |

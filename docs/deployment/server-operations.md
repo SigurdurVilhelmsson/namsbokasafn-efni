@@ -30,7 +30,7 @@ flowchart LR
     D3 -->|git push| G
     D4 -->|git push| G
 
-    G -->|"scripts/deploy.sh:<br/>git stash → pull --rebase → stash pop<br/>→ npm install → systemctl restart"| PROD
+    G -->|"scripts/deploy.sh:<br/>git fetch → stash → rebase FETCH_HEAD → stash pop<br/>(a failure in between: abort the rebase, pop back)<br/>→ npm install → systemctl restart"| PROD
 
     P1 --> P2 --> P3
     P3 -->|"git push origin main<br/>(ONLY: 03-faithful-translation/, 03-translated/,<br/>04-localized-content/, 04-localization/,<br/>05-publication/, chapters/)"| G

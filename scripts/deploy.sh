@@ -56,21 +56,49 @@ if [ -f scripts/backup-db.sh ]; then
 fi
 
 # 2. Stash any local changes (editorial edits, generated files)
+#
+# Register §C254 D4/D5. Fetch FIRST: the network is the likeliest thing to fail, and a fetch that fails
+# here has moved nothing. Step 3 then rebases onto what was fetched, with no network call after the
+# stash. And if anything fails between the stash and the pop, the EXIT trap below puts prod back:
+# it aborts a rebase that stopped on a conflict (prod's branch returns to its pre-deploy tip), then
+# pops the stash. Before this, a failed pull or a stopped rebase exited with the changes in a stash
+# that no later deploy restores. Found by scripts/verification/deploy-stash/check.mjs.
+echo "Fetching from origin..."
+git fetch origin main
+STASHED=0
+POPPED=0
+restore_after_failure() {
+  local rc=$?
+  [ "$rc" -eq 0 ] && return 0
+  if [ -d "$(git rev-parse --git-path rebase-merge)" ] || [ -d "$(git rev-parse --git-path rebase-apply)" ]; then
+    echo "The rebase stopped on a conflict: aborting it, so prod's branch is as it was before the deploy."
+    git rebase --abort || echo "WARNING: git rebase --abort failed. Resolve the rebase by hand (git status)."
+  fi
+  if [ "$STASHED" -eq 1 ] && [ "$POPPED" -eq 0 ]; then
+    echo "The deploy failed after stashing local changes: putting them back."
+    if git stash pop; then
+      echo "Local changes restored. Nothing was deployed."
+    else
+      echo "WARNING: could not re-apply the local changes. They are in 'git stash list' as ${STASH_MSG}."
+    fi
+  fi
+  return "$rc"
+}
+trap restore_after_failure EXIT
 if ! git diff --quiet || ! git diff --cached --quiet; then
   echo "Stashing local changes..."
-  git stash push -m "deploy-$(date +%Y%m%d-%H%M%S)"
+  STASH_MSG="deploy-$(date +%Y%m%d-%H%M%S)"
+  git stash push -m "$STASH_MSG"
   STASHED=1
-else
-  STASHED=0
 fi
 
-# 3. Pull latest from origin
+# 3. Rebase onto what step 2 fetched
 # Register the "ours" merge driver (see .gitattributes) so the perpetually-dirty
-# books/*/translation-errors.json manifest never conflicts on the rebase pull.
+# books/*/translation-errors.json manifest never conflicts on the rebase.
 # Idempotent; lives in .git/config (not committed), so re-assert it every deploy.
 git config merge.ours.driver true
-echo "Pulling from origin..."
-git pull --rebase origin main
+echo "Rebasing onto origin/main as fetched..."
+git rebase FETCH_HEAD
 
 # 3a. Record which code this deploy pulled (G1.2, spec §5.12). Research events stamp it; without it the server
 # falls back to HEAD, which also carries content commits. Never fails the deploy.
@@ -79,12 +107,13 @@ bash scripts/record-deployed-commit.sh FETCH_HEAD pipeline-output/.deployed-comm
 # 4. Re-apply local changes (if any)
 if [ "$STASHED" -eq 1 ]; then
   echo "Re-applying local changes..."
+  POPPED=1 # from here on the EXIT trap must not pop again, whatever this pop does
   if git stash pop; then
     echo "Local changes re-applied successfully."
   else
     echo "WARNING: Merge conflict when re-applying local changes."
     echo "Your changes are still in 'git stash list'. Resolve manually."
-    echo "The pull itself succeeded — new code is deployed."
+    echo "The rebase itself succeeded — new code is deployed."
   fi
 fi
 

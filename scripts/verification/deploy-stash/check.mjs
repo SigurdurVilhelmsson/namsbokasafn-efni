@@ -41,22 +41,22 @@ const DEPLOY = path.resolve(flag('--deploy') ?? path.join(repo, 'scripts/deploy.
 const PRINT = argv.includes('--print');
 const FINDINGS = argv.includes('--findings'); // also list the rows under each label
 const LABEL_ORDER = [
-  'D1 pull refused a dirty tree',
+  'failed, changes left in the stash (D1, D4)',
   'D2 pop refused',
   'D3 pop left conflict markers',
-  'D4 pull failed, changes stashed',
   'D5 rebase stopped half-way',
-  'stopped before stashing (nothing moved)',
+  'failed, every change back in the tree',
   'restored',
   'UNCLASSIFIED (add a rule)',
 ];
 process.exitCode = 1; // a verdict must be reached to clear this
 
 // ── the code under test ──────────────────────────────────────────────────────────────────────
-const START = '# 2. Stash any local changes';
-const B1_AT = '# 3. Pull latest from origin';
-const B2_AT = '# 4. Re-apply local changes';
-const END = '# 5. Install any new dependencies';
+// Step headings by NUMBER, so rewording a heading does not break the extraction.
+const START = '# 2. ';
+const B1_AT = '# 3. ';
+const B2_AT = '# 4. ';
+const END = '# 5. ';
 function extractSteps(text) {
   const lines = text.split('\n');
   const at = (m) => {
@@ -367,11 +367,13 @@ if (PRINT) {
 function label(a) {
   const locs = ['G', 'F', 'T', 'N'].filter((k) => k in a).map((k) => a[k]);
   if (a.midOperation) return 'D5 rebase stopped half-way';
-  if (a.exit === 128) return 'D1 pull refused a dirty tree';
   if (a.warned && locs.some((l) => l.startsWith('conflict'))) return 'D3 pop left conflict markers';
   if (a.warned) return 'D2 pop refused';
-  if (a.exit !== 0 && a.stashes > 0) return 'D4 pull failed, changes stashed';
-  if (a.exit !== 0) return 'stopped before stashing (nothing moved)';
+  // Since the §C254 D4/D5 fix (fetch first, an EXIT trap that aborts a rebase and pops the stash) a
+  // failed run either puts everything back or, when the trap's pop cannot apply (a server write or a
+  // held lock on a stashed file), leaves the stash: the outcome, not the exit code, tells them apart.
+  if (a.exit !== 0 && a.stashes > 0) return 'failed, changes left in the stash (D1, D4)';
+  if (a.exit !== 0) return 'failed, every change back in the tree';
   // exit 0, no warning: everything back, except a merge=ours manifest the driver dropped by design
   if (['G', 'F', 'N'].filter((k) => k in a).every((k) => a[k] === 'tree' || a[k] === 'head')) {
     return 'restored';
