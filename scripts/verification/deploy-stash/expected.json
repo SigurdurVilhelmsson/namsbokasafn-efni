@@ -244,7 +244,7 @@
     "same-file|write:none|untracked:no|lock:none": {
       "after": {
         "G": "tree",
-        "F": "conflict",
+        "F": "conflict+stash",
         "T": "tree",
         "exit": 0,
         "warned": true,
@@ -256,7 +256,7 @@
       },
       "next": {
         "G": "tree",
-        "F": "conflict",
+        "F": "conflict+stash",
         "T": "tree",
         "exit": 0,
         "warned": false,
@@ -270,7 +270,7 @@
     "same-file|write:none|untracked:yes|lock:none": {
       "after": {
         "G": "tree",
-        "F": "conflict",
+        "F": "conflict+stash",
         "T": "tree",
         "N": "tree",
         "exit": 0,
@@ -283,7 +283,7 @@
       },
       "next": {
         "G": "tree",
-        "F": "conflict",
+        "F": "conflict+stash",
         "T": "tree",
         "N": "tree",
         "exit": 0,
@@ -310,7 +310,7 @@
       },
       "next": {
         "G": "stash",
-        "F": "conflict",
+        "F": "conflict+branch",
         "T": "stash",
         "exit": 1,
         "warned": false,
@@ -337,7 +337,7 @@
       },
       "next": {
         "G": "stash",
-        "F": "conflict",
+        "F": "conflict+branch",
         "T": "stash",
         "N": "tree",
         "exit": 1,
@@ -418,7 +418,7 @@
       },
       "next": {
         "G": "tree",
-        "F": "conflict",
+        "F": "conflict+branch",
         "T": "tree",
         "exit": 1,
         "warned": false,
@@ -765,7 +765,7 @@
         "G": "stash",
         "F": "stash",
         "T": "stash",
-        "N": "conflict",
+        "N": "conflict+branch",
         "exit": 1,
         "warned": false,
         "stashes": 1,
@@ -819,7 +819,7 @@
         "G": "stash",
         "F": "tree",
         "T": "stash",
-        "N": "conflict",
+        "N": "conflict+branch",
         "exit": 1,
         "warned": false,
         "stashes": 1,
@@ -873,7 +873,7 @@
         "G": "stash",
         "F": "stash",
         "T": "stash",
-        "N": "conflict",
+        "N": "conflict+branch",
         "exit": 1,
         "warned": false,
         "stashes": 1,
@@ -964,7 +964,7 @@
     "diverged|write:none|untracked:no|lock:none": {
       "after": {
         "G": "stash",
-        "F": "conflict",
+        "F": "conflict+stash",
         "T": "stash",
         "exit": 1,
         "warned": false,
@@ -976,7 +976,7 @@
       },
       "next": {
         "G": "stash",
-        "F": "conflict",
+        "F": "conflict+stash",
         "T": "stash",
         "exit": 128,
         "warned": false,
@@ -990,7 +990,7 @@
     "diverged|write:none|untracked:yes|lock:none": {
       "after": {
         "G": "stash",
-        "F": "conflict",
+        "F": "conflict+stash",
         "T": "stash",
         "N": "tree",
         "exit": 1,
@@ -1003,7 +1003,7 @@
       },
       "next": {
         "G": "stash",
-        "F": "conflict",
+        "F": "conflict+stash",
         "T": "stash",
         "N": "tree",
         "exit": 128,
@@ -1030,7 +1030,7 @@
       },
       "next": {
         "G": "stash",
-        "F": "conflict",
+        "F": "conflict+branch",
         "T": "stash",
         "exit": 1,
         "warned": false,
@@ -1057,7 +1057,7 @@
       },
       "next": {
         "G": "stash",
-        "F": "conflict",
+        "F": "conflict+branch",
         "T": "stash",
         "N": "branch",
         "exit": 1,
@@ -1072,7 +1072,7 @@
     "diverged|write:B2|untracked:no|lock:none": {
       "after": {
         "G": "stash",
-        "F": "conflict",
+        "F": "conflict+stash",
         "T": "stash",
         "exit": 1,
         "warned": false,
@@ -1084,7 +1084,7 @@
       },
       "next": {
         "G": "stash",
-        "F": "conflict",
+        "F": "conflict+stash",
         "T": "stash",
         "exit": 128,
         "warned": false,
@@ -1098,7 +1098,7 @@
     "diverged|write:B2|untracked:yes|lock:none": {
       "after": {
         "G": "stash",
-        "F": "conflict",
+        "F": "conflict+stash",
         "T": "stash",
         "N": "tree",
         "exit": 1,
@@ -1111,7 +1111,7 @@
       },
       "next": {
         "G": "stash",
-        "F": "conflict",
+        "F": "conflict+stash",
         "T": "stash",
         "N": "tree",
         "exit": 128,
@@ -1138,7 +1138,7 @@
       },
       "next": {
         "G": "branch",
-        "F": "conflict",
+        "F": "conflict+branch",
         "T": "branch",
         "exit": 1,
         "warned": false,
@@ -1164,7 +1164,7 @@
       },
       "next": {
         "G": "stash",
-        "F": "conflict",
+        "F": "conflict+stash",
         "T": "stash",
         "exit": 1,
         "warned": false,
@@ -1178,7 +1178,7 @@
     "diverged|write:none|untracked:no|lock:B2": {
       "after": {
         "G": "stash",
-        "F": "conflict",
+        "F": "conflict+stash",
         "T": "stash",
         "exit": 1,
         "warned": false,
@@ -1190,7 +1190,7 @@
       },
       "next": {
         "G": "stash",
-        "F": "conflict",
+        "F": "conflict+stash",
         "T": "stash",
         "exit": 128,
         "warned": false,

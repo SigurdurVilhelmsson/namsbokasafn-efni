@@ -39,11 +39,11 @@ undisturbed run of steps 2–4 (the next deploy).
 | cron tick (always, after) | stage `git-backup.sh`'s own `PATHSPECS`, commit, push                                                                                                                                                                                             | a **stand-in** for `git-backup.sh`'s core (no exporter, no status file)                                                                            |
 
 **Each row records**, after the deploy plus one cron tick, and again after the next deploy: where each local change is
-(`tree`; `head`; `branch`, committed on `main` while a stopped rebase has detached `HEAD`; `stash` only; `conflict`
-markers in the tree; or `gone`, in none of those places), the steps' exit code, whether step 4
-printed its warning, the stash count, whether conflict markers are committed in `HEAD` or on origin's `main`, whether
-the repo is mid-rebase/merge, and which injections landed (an injection after the script stopped never happens, and
-the row says so).
+(`tree`; `head`; `branch`, committed on `main` while a stopped rebase has detached `HEAD`; `stash` only; or `gone`,
+in none of those places; a file holding conflict markers is `conflict+<where the change survives>`, for example
+`conflict+stash`), the steps' exit code, whether step 4 printed its warning, the stash count, whether conflict markers
+are committed in `HEAD` or on origin's `main`, whether the repo is mid-rebase/merge, and which injections landed (an
+injection after the script stopped never happens, and the row says so).
 
 **What a row cannot see:** another process acting _inside_ one git command (a lock taken mid-`pull` rather than
 before it). Steps 5–7 (npm, restart, health) are not run: a row reports what steps 2–4 leave, not what the deploy
@@ -55,35 +55,49 @@ normal restart.
 None is fixed: each is a product change for [USER] to rule on. Do not change deploy.sh to turn this check green
 without that ruling.
 
+**Each row's finding is derived from its measured first-run outcome, not from its scenario name**: `check.mjs` labels
+every row by the rules in its `label()` and prints the count per label; `--findings` lists the rows. The lists below
+are that output at the sync commit. If they ever disagree, the `--findings` output is right and this file is stale.
+
 - **D1. A server write between the stash and the pull aborts the pull.** `git pull --rebase` refuses a dirty tree (exit
-  128), `set -euo pipefail` stops the script, and every stashed change stays in the stash. Rows `*|write:B1|*`.
+  128), `set -euo pipefail` stops the script, and every stashed change stays in the stash. Rows: every `*|write:B1|*`
+  (12).
 - **D2. A server write, or a cron's index lock, between the pull and the pop makes the pop refuse.** Step 4 prints its
-  warning and the deploy carries on; every stashed change (not only the clashing file) stays in the stash. Rows
-  `*|write:B2|*` and `*|lock:B2` wherever the script reached step 4 (the row's `injected` field names the B2 event;
-  where it is empty, an earlier failure stopped the script first).
+  warning and the deploy carries on; every stashed change (not only the clashing file) stays in the stash. Rows (11):
+  `clean`, `same-file` and `manifest` with `write:B2` or `lock:B2`; `adds-path|write:B2|untracked:no|lock:none`;
+  `adds-path|write:none|untracked:no|lock:B2`. (The other origins never reach step 4 with those injections: their
+  pull or rebase stops first, and the row's `injected` field is empty.)
 - **D3. When dev and prod both changed a file, the pop leaves conflict markers in the tree, and the next cron tick
-  commits and pushes them to `main`.** Row `same-file|write:none|*|lock:none`: `F:conflict`, `markersOnOrigin: true`.
-  For a `05-publication` page that is reader-visible on the next sync.
+  commits and pushes them to `main`.** Rows (2): `same-file|write:none|untracked:*|lock:none`: `F:conflict+stash`,
+  `markersOnOrigin: true`. For a `05-publication` page that is reader-visible on the next sync.
 - **D4. A failed pull (origin unreachable, a cron's index lock, or a prod-only page where dev added the same path)
-  exits non-zero with the changes in the stash, and nothing says where they are.** Rows `unreachable|*`,
-  `*|lock:B1`, `adds-path|*|untracked:yes|*`.
+  exits non-zero with the changes in the stash, and nothing says where they are.** Rows (13): every `*|lock:B1`;
+  `unreachable` with `write:none` or `write:B2` and `lock:none`, and `unreachable|write:none|untracked:no|lock:B2`;
+  `adds-path|write:none|untracked:yes|lock:none` and `adds-path|write:B2|untracked:yes|lock:none`. Not
+  `unreachable|write:B1` (that is D1: the pull refuses the dirty tree before it fetches) and not `*|lock:B0` (below).
 - **D5. A prod commit that never got pushed and conflicts with dev stops the rebase half-way.** Exit 1, the repo
   mid-rebase, the changes stashed; the cron tick then commits on the detached rebase `HEAD` (markers in `HEAD`), and
-  the next deploy fails too. Rows `diverged|*`.
+  the next deploy fails too. Rows (5): `diverged` with `write:none` or `write:B2` and `lock:none`, and
+  `diverged|write:none|untracked:no|lock:B2`. The other four `diverged` rows stop earlier, as D1, D4 or before the
+  stash.
 - **Across all of them: a later deploy never restores an earlier deploy's stash.** Step 2 stashes only a dirty tree and
   step 4 pops only what this run stashed, so every row whose first run left `stash` still shows `stash` after the next
-  deploy. In several rows the next deploy itself stops mid-rebase (`same-file|write:B1|*`, `adds-path|*|untracked:yes`,
-  `diverged|*`): the first failure's cron tick committed prod's state, and that commit now conflicts with dev's.
-- **No row loses a change outright.** Every change ends in the tree, `HEAD`, on `main` (`branch`) or in a stash; only
-  the `merge=ours` manifest is dropped, by design. The harm is where it ends up and that nothing says so.
+  deploy. In several rows the next deploy itself stops mid-rebase (`same-file|write:B1|*`,
+  `adds-path|*|untracked:yes|*`, `diverged|*`, and `same-file|…|lock:B0`): the first failure's cron tick committed
+  prod's state, and that commit now conflicts with dev's.
+- **No row loses an applied text or a page.** Measured on both runs: every such change is in the tree, `HEAD`, on
+  `main` (`branch`) or in a stash, including behind conflict markers (`conflict+stash`, `conflict+branch`); `check.mjs`
+  prints the count of rows where one is gone, which is 0. Only the `merge=ours` manifest is dropped, by design. The
+  harm is where a change ends up and that nothing says so.
 
 **By design, not a finding:** `manifest` rows show `T:gone`: the `merge=ours` driver keeps the pulled
 `translation-errors.json` and drops prod's, as `.gitattributes` intends for that derived file.
 
-**Controls:** `clean|write:none|untracked:*|lock:none` restores everything, on both runs. `*|lock:B0` stops at the
-stash before anything moves, so its first column is clean; its second is not always: the cron tick commits prod's
-changes, and where dev changed the same file (`same-file`, `diverged`) the next deploy stops mid-rebase, the D5 shape
-reached another way.
+**Controls:** label `restored` (5): `clean|write:none|untracked:*|lock:none`, both `manifest|write:none|…|lock:none`
+rows (the manifest dropped by design) and `adds-path|write:none|untracked:no|lock:none`, all restored on both runs.
+Label `stopped before stashing` (6): every `*|lock:B0`, where step 2 fails on the lock before anything moves, so the
+first run is clean; the second is not always: the cron tick commits prod's changes, and where dev changed the same
+file (`same-file`, `diverged`) the next deploy stops mid-rebase, the D5 shape reached another way.
 
 **On prod (read-only, 2026-11-23):** 17 stash entries, all untagged "WIP on main" from February to April 2026; none
 carries deploy.sh's `deploy-<date>` tag (added with the script on 2026-03-25). So no stash left by the current script
@@ -108,15 +122,17 @@ node scripts/verification/deploy-stash/check.mjs
 ```
 
 A clean run ends `OK: every scenario matches its pinned outcome` and exits 0; it prints the git version it ran beside
-the one the table was pinned with. To prove the check can still fail (after editing it), run (about a minute; it
+the one the table was pinned with. To prove the check can still fail (after editing it), run (about a minute and a half; it
 never edits `scripts/deploy.sh`, only temp copies):
 
 ```sh
 node scripts/verification/deploy-stash/mutate.mjs
 ```
 
-Four mutants: BREAK step 4 never pops; BREAK step 2 never stashes; BREAK the `ours` driver is not registered; FIX a
-failed pull puts the stash back before exiting (D4's row must change). Each must print `seen`.
+Five mutants: BREAK step 4 never pops; BREAK step 2 never stashes; BREAK the `ours` driver is not registered; BREAK
+step 4 drops the stash instead of popping it, which must also make the lost-change count non-zero (the control that
+the `0` the real script gets is a measurement, not a blind counter); FIX a failed pull puts the stash back before
+exiting (D4's row must change). Each must print `seen`.
 
 It never touches this repository's tree or stash: every git command runs in a temp clone whose toplevel and origin
 are asserted first, with `GIT_*` variables removed and global and system git config disabled.
@@ -137,8 +153,10 @@ are asserted first, with `GIT_*` variables removed and global and system git con
 
 ## Scope
 
-- **Covered:** every combination above (54 scenarios), each followed by one cron tick and one more deploy.
-- **Not covered:** overlap inside a single git command; steps 0, 1, 5–7; the real `git-backup.sh` beyond its
+- **Covered:** 54 scenarios, each followed by one cron tick and one more deploy: every origin crossed with every
+  server-write and untracked-page value (36), plus every origin with each lock position (18). **A lock is varied only
+  on its own** (no server write, no untracked page): the full product of the four dimensions would be 144.
+- **Not covered:** a lock combined with a server write or an untracked page; overlap inside a single git command; steps 0, 1, 5–7; the real `git-backup.sh` beyond its
   add/commit/push (its exporter and status file); more than one dev commit or more than three prod files; prod's git
   version (2.43.0, not run).
 

@@ -23,6 +23,7 @@
 //   --deploy  the script to extract steps 2-4 from (default: this repo's scripts/deploy.sh); mutate.mjs
 //             passes temp copies here, so the real file is never edited
 //   --print   print every row as JSON (for reviewing a deliberate re-pin) instead of comparing
+//   --findings  also list the scenarios under each finding label (labels come from the measured outcome)
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
@@ -38,6 +39,17 @@ const flag = (name) => {
 };
 const DEPLOY = path.resolve(flag('--deploy') ?? path.join(repo, 'scripts/deploy.sh'));
 const PRINT = argv.includes('--print');
+const FINDINGS = argv.includes('--findings'); // also list the rows under each label
+const LABEL_ORDER = [
+  'D1 pull refused a dirty tree',
+  'D2 pop refused',
+  'D3 pop left conflict markers',
+  'D4 pull failed, changes stashed',
+  'D5 rebase stopped half-way',
+  'stopped before stashing (nothing moved)',
+  'restored',
+  'UNCLASSIFIED (add a rule)',
+];
 process.exitCode = 1; // a verdict must be reached to clear this
 
 // ── the code under test ──────────────────────────────────────────────────────────────────────
@@ -260,10 +272,8 @@ function observe(s, prod, origin, env, run, injected, reportInjected = true) {
     }
   };
   const stashes = git('stash', 'list').stdout.split('\n').filter(Boolean).length;
-  const where = (rel, want) => {
-    const t = tree(rel);
-    if (t === want) return 'tree';
-    if (t !== null && t.includes('<<<<<<<')) return 'conflict';
+  // Where the wanted bytes survive outside the working tree, or 'gone'.
+  const elsewhere = (rel, want) => {
     if (git('show', `HEAD:${rel}`).stdout === want) return 'head';
     // A stopped rebase detaches HEAD and leaves the branch at its pre-rebase tip: a change the cron
     // committed there is on `main` but not in HEAD or the tree.
@@ -273,6 +283,14 @@ function observe(s, prod, origin, env, run, injected, reportInjected = true) {
       if (git('show', `stash@{${i}}^3:${rel}`).stdout === want) return 'stash';
     }
     return 'gone';
+  };
+  const where = (rel, want) => {
+    const t = tree(rel);
+    if (t === want) return 'tree';
+    // Markers in the tree say nothing about whether the change survives: keep looking, and record
+    // both facts (`conflict+stash`, `conflict+branch`, … or `conflict+gone`).
+    if (t !== null && t.includes('<<<<<<<')) return `conflict+${elsewhere(rel, want)}`;
+    return elsewhere(rel, want);
   };
   const wantF =
     s.serverWrite !== 'none' && injected.includes(`write@${s.serverWrite}`)
@@ -333,24 +351,43 @@ if (PRINT) {
       changed++;
       console.log(`MISSING ${k}`);
     }
-  const findings = Object.entries(rows).filter(([, r]) => isFinding(r.after));
   console.log(
     `${gitVersion} (pinned with ${expected.gitVersion}); ${Object.keys(rows).length} scenarios`
   );
-  console.log(
-    `scenarios where a change is not back in the tree, or markers were committed, or the repo is mid-operation: ${findings.length}`
+  // Each row's finding, derived from its measured first-run outcome (never from its scenario name):
+  // the skill's row lists come from this output.
+  const byLabel = {};
+  for (const [k, r] of Object.entries(rows)) (byLabel[label(r.after)] ??= []).push(k);
+  for (const l of LABEL_ORDER.filter((x) => byLabel[x])) {
+    console.log(`  ${l}: ${byLabel[l].length}`);
+    if (FINDINGS) for (const k of byLabel[l]) console.log(`      ${k}`);
+  }
+  const lost = Object.entries(rows).filter(([, r]) =>
+    [r.after, r.next].some((o) =>
+      ['G', 'F', 'N'].some((f) => typeof o[f] === 'string' && o[f].endsWith('gone'))
+    )
   );
+  console.log(
+    `rows where an applied text or a page is gone from every place looked at: ${lost.length}`
+  );
+  for (const [k] of lost) console.log(`      ${k}`);
   if (changed) console.log(`\nFAIL: ${changed} row(s) differ from expected.json`);
   else console.log('\nOK: every scenario matches its pinned outcome');
   process.exitCode = changed ? 1 : 0;
 }
 
-function isFinding(a) {
+// The label of a first-run outcome. Order matters: the first rule that holds names the row.
+function label(a) {
   const locs = ['G', 'F', 'T', 'N'].filter((k) => k in a).map((k) => a[k]);
-  return (
-    locs.some((l) => l !== 'tree' && l !== 'head') ||
-    a.markersInHead ||
-    a.markersOnOrigin ||
-    a.midOperation
-  );
+  if (a.midOperation) return 'D5 rebase stopped half-way';
+  if (a.exit === 128) return 'D1 pull refused a dirty tree';
+  if (a.warned && locs.some((l) => l.startsWith('conflict'))) return 'D3 pop left conflict markers';
+  if (a.warned) return 'D2 pop refused';
+  if (a.exit !== 0 && a.stashes > 0) return 'D4 pull failed, changes stashed';
+  if (a.exit !== 0) return 'stopped before stashing (nothing moved)';
+  // exit 0, no warning: everything back, except a merge=ours manifest the driver dropped by design
+  if (['G', 'F', 'N'].filter((k) => k in a).every((k) => a[k] === 'tree' || a[k] === 'head')) {
+    return 'restored';
+  }
+  return 'UNCLASSIFIED (add a rule)';
 }
