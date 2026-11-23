@@ -146,6 +146,32 @@ else
   log "WARN: node not found in cron PATH — glossary export skipped"
 fi
 
+# Register §C254 D3: NEVER COMMIT A CONFLICTED TREE. After deploy.sh's `git stash pop` conflicts
+# (dev and prod changed the same file), the tree holds conflict markers and the index holds unmerged
+# entries; `git add` below would silently mark them resolved, and this run would commit the markers
+# and push them to main, where a 05-publication page reaches readers on the next sync. A stopped
+# rebase or merge is the same hazard (this run would commit on a detached HEAD). These checks run
+# BEFORE staging because staging is what erases the unmerged state. A refusal is an error: no
+# heartbeat, so /api/health and the deploy readout show it until a human resolves the conflict.
+# Found by scripts/verification/deploy-stash/check.mjs.
+GIT_DIR_PATH="$(git rev-parse --git-dir)"
+UNMERGED="$(git ls-files -u | awk '{print $4}' | sort -u | tr '\n' ' ')"
+if [ -n "$UNMERGED" ]; then
+  log "ERROR: unmerged paths in the index (a conflicted stash pop, merge or rebase) — refusing to commit: ${UNMERGED}"
+  write_status "error" "unmerged paths in the index; resolve the conflict by hand, nothing committed"
+  exit 1
+fi
+if [ -d "${GIT_DIR_PATH}/rebase-merge" ] || [ -d "${GIT_DIR_PATH}/rebase-apply" ]; then
+  log "ERROR: a rebase is in progress — refusing to commit on its detached HEAD"
+  write_status "error" "rebase in progress; finish or abort it by hand, nothing committed"
+  exit 1
+fi
+if [ -f "${GIT_DIR_PATH}/MERGE_HEAD" ]; then
+  log "ERROR: a merge is in progress — refusing to commit"
+  write_status "error" "merge in progress; finish or abort it by hand, nothing committed"
+  exit 1
+fi
+
 # Stage content directories under books/, one pathspec at a time.
 # translation-errors.json and residue-report.<track>.json are regenerated on
 # every inject, so they are always dirty on the production server after a
@@ -236,6 +262,26 @@ if git diff --cached --quiet; then
   write_status "no_changes" "Nothing to commit"
   write_heartbeat
   exit 0
+fi
+
+# Register §C254 D3, second half: a conflict marked resolved with `git add` (by hand, or by an earlier
+# tick) leaves no unmerged entry, but the markers are still in the file. Refuse any staged change that
+# ADDS a marker line. Only the unambiguous opening and closing markers count: a line of `=======` is
+# also a Markdown heading underline, so it is not a marker on its own.
+# ⚠️ NOT `grep -q`: under `set -o pipefail`, -q exits on the first match, `git diff` (still writing a
+# large diff) dies of SIGPIPE with 141, the pipeline reads as false, and the markers would be committed
+# (#792 review, measured). grep must read to the end; its output goes to /dev/null instead.
+MARKER_RE='^\+(<<<<<<<|>>>>>>>)( |$)'
+if git diff --cached -U0 --no-color --no-ext-diff | grep -aE "$MARKER_RE" > /dev/null; then
+  MARKED=""
+  while IFS= read -r f; do
+    if git diff --cached -U0 --no-color --no-ext-diff -- "$f" | grep -aE "$MARKER_RE" > /dev/null; then
+      MARKED="${MARKED}${f} "
+    fi
+  done < <(git diff --cached --name-only)
+  log "ERROR: staged changes add conflict markers — refusing to commit: ${MARKED}"
+  write_status "error" "staged changes add conflict markers; resolve them by hand, nothing committed"
+  exit 1
 fi
 
 # Commit
