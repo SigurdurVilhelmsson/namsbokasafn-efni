@@ -100,6 +100,93 @@ describe('a later boot does not recreate the retired legacy tables (§C250 churn
     expect(boot(sdb).errors).toEqual([]);
   });
 
+  it('a later boot with a registered `efnafraedi` book does not wedge on 015s rename (§C250)', () => {
+    // 015 renamed efnafraedi → efnafraedi-2e once, historically; with no ledger it re-runs every boot.
+    // Once efnafraedi-2e exists, a newly registered `efnafraedi` (a valid slug) made the rename hit
+    // UNIQUE(registered_books.slug), an error the runner does not skip: the server never booted again.
+    // Not asserted here: 016 then merges that book into efnafraedi-2e and deletes it (register §C250).
+    const sdir = fs.mkdtempSync(path.join(os.tmpdir(), 'boot-churn-efna-'));
+    const sdb = new Database(path.join(sdir, 'sessions.db'));
+    expect(boot(sdb).errors).toEqual([]);
+    expect(boot(sdb).errors).toEqual([]);
+    const required = sdb
+      .pragma('table_info(registered_books)')
+      .filter((c) => c.notnull && c.dflt_value === null && !c.pk)
+      .map((c) => c.name);
+    const cols = required.includes('slug') ? required : [...required, 'slug'];
+    sdb
+      .prepare(
+        `INSERT INTO registered_books (${cols.join(', ')}) VALUES (${cols.map(() => '?').join(', ')})`
+      )
+      .run(...cols.map((c) => (c === 'slug' ? 'efnafraedi' : 'x')));
+    expect(boot(sdb).errors).toEqual([]);
+  });
+
+  it('a later boot keeps a newly registered `efnafraedi` book (016 no longer merges and deletes it)', () => {
+    // 016 cleaned up a historical state in which both efnafraedi and efnafraedi-2e existed by merging
+    // the old book into the new one and deleting it. With no ledger it re-ran every boot, so once the
+    // historical rename was done it swallowed any book an admin later registered as `efnafraedi`.
+    // A fresh database never registers `efnafraedi` (019 and 049 register efnafraedi-2e), so once
+    // efnafraedi-2e exists such a row is a deliberate new book, and both are left alone (§C250).
+    const sdir = fs.mkdtempSync(path.join(os.tmpdir(), 'boot-churn-efna-keep-'));
+    const sdb = new Database(path.join(sdir, 'sessions.db'));
+    boot(sdb);
+    boot(sdb);
+    const required = sdb
+      .pragma('table_info(registered_books)')
+      .filter((c) => c.notnull && c.dflt_value === null && !c.pk)
+      .map((c) => c.name);
+    const cols = required.includes('slug') ? required : [...required, 'slug'];
+    sdb
+      .prepare(
+        `INSERT INTO registered_books (${cols.join(', ')}) VALUES (${cols.map(() => '?').join(', ')})`
+      )
+      .run(...cols.map((c) => (c === 'slug' ? 'efnafraedi' : 'x')));
+    const slugs = () =>
+      sdb
+        .prepare(
+          "SELECT slug FROM registered_books WHERE slug IN ('efnafraedi', 'efnafraedi-2e') ORDER BY slug"
+        )
+        .all()
+        .map((r) => r.slug);
+    expect(boot(sdb).errors).toEqual([]);
+    expect(slugs()).toEqual(['efnafraedi', 'efnafraedi-2e']);
+    expect(boot(sdb).errors).toEqual([]);
+    expect(slugs()).toEqual(['efnafraedi', 'efnafraedi-2e']);
+  });
+
+  it('a later boot keeps a newly registered `liffraedi` book (015 no longer deletes it)', () => {
+    // 015 removed the historical liffraedi book (replaced by liffraedi-2e). With no ledger it re-ran on
+    // every boot, so it deleted any book an admin later registered as `liffraedi`, with its chapters
+    // and sections. Once liffraedi-2e exists the removal is done, and such a row is a deliberate new
+    // book (a fresh database never registers `liffraedi`), so it is left alone (§C250).
+    const sdir = fs.mkdtempSync(path.join(os.tmpdir(), 'boot-churn-liff-keep-'));
+    const sdb = new Database(path.join(sdir, 'sessions.db'));
+    boot(sdb);
+    boot(sdb);
+    const required = sdb
+      .pragma('table_info(registered_books)')
+      .filter((c) => c.notnull && c.dflt_value === null && !c.pk)
+      .map((c) => c.name);
+    const cols = required.includes('slug') ? required : [...required, 'slug'];
+    sdb
+      .prepare(
+        `INSERT INTO registered_books (${cols.join(', ')}) VALUES (${cols.map(() => '?').join(', ')})`
+      )
+      .run(...cols.map((c) => (c === 'slug' ? 'liffraedi' : 'x')));
+    const slugs = () =>
+      sdb
+        .prepare(
+          "SELECT slug FROM registered_books WHERE slug IN ('liffraedi', 'liffraedi-2e') ORDER BY slug"
+        )
+        .all()
+        .map((r) => r.slug);
+    expect(boot(sdb).errors).toEqual([]);
+    expect(slugs()).toEqual(['liffraedi', 'liffraedi-2e']);
+    expect(boot(sdb).errors).toEqual([]);
+    expect(slugs()).toEqual(['liffraedi', 'liffraedi-2e']);
+  });
+
   it('the final schema is the same after the later boot', () => {
     const tables = (d) =>
       d
