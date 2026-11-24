@@ -42,28 +42,58 @@ export function buildFableUnit({
   const parsed = unit.base.parsed;
   const occurrenceOf = new Map(parsed.records.map((r) => [r.key, r.occurrence]));
   const selected = new Set(selectedKeys);
-  const runOfRequest = (requestKey) =>
-    runs.find((r) => r.used && r.requestKeys.includes(requestKey))?.runId ?? null;
+  for (const k of selected) {
+    if (!occurrenceOf.has(k)) {
+      throw new Error(`fable-layer: ${unit.stem}: selected key ${k} is not in the unit`);
+    }
+  }
+  for (const f of ['model', 'effort', 'max_tokens', 'harnessCommit', 'anthropicVersion']) {
+    if (runMeta[f] === undefined || runMeta[f] === null || runMeta[f] === '') {
+      throw new Error(`fable-layer: runMeta.${f} is missing`);
+    }
+  }
+  const prompt = runMeta.prompts?.[0];
+  if (!prompt?.path || !prompt?.sha256) {
+    throw new Error('fable-layer: runMeta.prompts[0] (path, sha256) is missing');
+  }
+  if (!runMeta.rulingSet) throw new Error('fable-layer: runMeta.rulingSet is missing');
+  const runOfRequest = (row) => {
+    if (!row.requestKey) {
+      throw new Error(`fable-layer: edited row ${row.key} has no requestKey`);
+    }
+    const run = runs.find((r) => r.used && r.requestKeys.includes(row.requestKey));
+    if (!run) {
+      throw new Error(
+        `fable-layer: edited row ${row.key}: no used run holds request ${row.requestKey}`
+      );
+    }
+    return run.runId;
+  };
 
   const segmentsText = feLayerText(parsed, feBodies);
 
   const lines = rows
     .filter((row) => row.status === 'edited')
+    .map((row) => {
+      if (!occurrenceOf.has(row.key)) {
+        throw new Error(`fable-layer: ${unit.stem}: edited row key ${row.key} is not in the unit`);
+      }
+      return row;
+    })
     .map((row) => ({
       key: row.key,
       segmentId: row.segmentId,
-      occurrence: occurrenceOf.get(row.key) ?? 0,
+      occurrence: occurrenceOf.get(row.key),
       tags: row.tags,
       before: row.mt,
       beforeSha256: sha256(row.mt),
       afterSha256: sha256(row.fe),
-      run: runOfRequest(row.requestKey),
-      requestKey: row.requestKey ?? null,
+      run: runOfRequest(row),
+      requestKey: row.requestKey,
       rerequested: selected.has(row.key),
     }));
   const tagsJsonl = lines.map((l) => JSON.stringify(l)).join('\n') + (lines.length ? '\n' : '');
 
-  const prompt = runMeta.prompts?.[0];
   const provenance = {
     format: FABLE_SCHEMA,
     book,
@@ -73,8 +103,8 @@ export function buildFableUnit({
     model: runMeta.model,
     effort: runMeta.effort,
     max_tokens: runMeta.max_tokens,
-    prompt: { path: prompt?.path ?? null, sha256: prompt?.sha256 ?? null },
-    rulingSet: runMeta.rulingSet ?? null,
+    prompt: { path: prompt.path, sha256: prompt.sha256 },
+    rulingSet: runMeta.rulingSet,
     harnessCommit: runMeta.harnessCommit,
     anthropicVersion: runMeta.anthropicVersion,
     base: {
@@ -83,7 +113,9 @@ export function buildFableUnit({
       overlaySha256: base.overlaySha256,
       enSha256: base.enSha256,
     },
-    rerequested: [...new Set(lines.filter((l) => l.rerequested).map((l) => l.segmentId))],
+    rerequested: [
+      ...new Set(parsed.records.filter((r) => selected.has(r.key)).map((r) => r.segmentId)),
+    ],
     counts: {
       segments: parsed.records.length,
       changed: lines.length,

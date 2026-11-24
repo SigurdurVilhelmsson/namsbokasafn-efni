@@ -70,18 +70,18 @@ const base = {
   enSha256: 'd'.repeat(64),
 };
 
-const build = (u, selectedKeys = []) =>
-  buildFableUnit({
-    chapterDir: 'ch01',
-    unit: u.unit,
-    rows: u.rows,
-    feBodies: u.feBodies,
-    runs,
-    runMeta,
-    selectedKeys,
-    base,
-    writtenBy: 'test',
-  });
+const args = (u, selectedKeys = []) => ({
+  chapterDir: 'ch01',
+  unit: u.unit,
+  rows: u.rows,
+  feBodies: u.feBodies,
+  runs,
+  runMeta,
+  selectedKeys,
+  base,
+  writtenBy: 'test',
+});
+const build = (u, selectedKeys = []) => buildFableUnit(args(u, selectedKeys));
 
 const lineObjs = (o) => o.tagsJsonl.trim().split('\n').map(JSON.parse);
 
@@ -151,6 +151,47 @@ describe('buildFableUnit', () => {
   });
   it('gives an unedited unit an empty tags file', () => {
     expect(build(B).tagsJsonl).toBe('');
+  });
+  it('lists an unedited selected segment in provenance.rerequested', () => {
+    const o = build(A, ['m100:para:p1']);
+    expect(o.provenance.rerequested).toEqual(['m100:para:p1']);
+  });
+  it('lists selected segment ids in document order, once each', () => {
+    const o = build(A, ['m100:para:p2', 'm100:para:p1#1', 'm100:para:p1']);
+    expect(o.provenance.rerequested).toEqual(['m100:para:p1', 'm100:para:p2']);
+  });
+  it('refuses a selected key that is not in the unit', () => {
+    expect(() => build(A, ['m100:para:zzz'])).toThrow(/m100:para:zzz/);
+  });
+  it('refuses an edited row whose key is not in the unit', () => {
+    const rows = [...A.rows, { ...A.rows[1], key: 'm100:para:stale' }];
+    expect(() => buildFableUnit({ ...args(A), rows })).toThrow(/m100:para:stale/);
+  });
+  it('refuses an edited row with no requestKey', () => {
+    const rows = A.rows.map((r) =>
+      r.key === 'm100:para:p2' ? { ...r, requestKey: undefined } : r
+    );
+    expect(() => buildFableUnit({ ...args(A), rows })).toThrow(/requestKey/);
+  });
+  it('refuses an edited row whose request no used run holds', () => {
+    const rows = A.rows.map((r) =>
+      r.key === 'm100:para:p2' ? { ...r, requestKey: 'ch01/m100/099' } : r
+    );
+    expect(() => buildFableUnit({ ...args(A), rows })).toThrow(/ch01\/m100\/099/);
+  });
+  for (const field of ['model', 'effort', 'max_tokens', 'harnessCommit', 'anthropicVersion']) {
+    it(`refuses runMeta without ${field}`, () => {
+      const m = { ...runMeta, [field]: undefined };
+      expect(() => buildFableUnit({ ...args(A), runMeta: m })).toThrow(new RegExp(field));
+    });
+  }
+  it('refuses runMeta without a prompt', () => {
+    const m = { ...runMeta, prompts: [] };
+    expect(() => buildFableUnit({ ...args(A), runMeta: m })).toThrow(/prompt/);
+  });
+  it('refuses runMeta without rulingSet', () => {
+    const m = { ...runMeta, rulingSet: undefined };
+    expect(() => buildFableUnit({ ...args(A), runMeta: m })).toThrow(/rulingSet/);
   });
   it('stamps format, module and base', () => {
     const p = build(B).provenance;
