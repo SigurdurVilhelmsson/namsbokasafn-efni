@@ -471,6 +471,11 @@ router.get(
         myLastDoneAt: lastDoneAt(req.user, req.params.book, req.chapterNum, req.params.moduleId),
       });
     } catch (err) {
+      if (err.code === 'FABLE_LAYER_MISSING') {
+        // Fail closed: the unit is refused, never served from another layer. `detail` is for the log.
+        log.error({ err, detail: err.detail }, 'Fable layer missing for module');
+        return res.status(409).json({ error: 'FABLE_LAYER_MISSING', message: err.message });
+      }
       log.error({ err }, 'Error loading module');
       res.status(err.message.includes('not found') ? 404 : 500).json({ error: err.message });
     }
