@@ -22,6 +22,7 @@ import { makeGit } from '../ai-review/provenance.js';
 import { loadPrompt, PROMPT_PATH, parseUserMessage } from '../ai-review/term-pass-request.js';
 import { loadRulingSet } from '../ai-review/ruling-set.js';
 import { readLedger, reserve, summarizeLedger } from '../ai-review/ledger.js';
+import { CAP_USD } from '../ai-review/config.js';
 import {
   REPO,
   RULING_SET_PATH,
@@ -949,8 +950,8 @@ describe('apply measures coverage against the full plan, and --write refuses a p
       ledgerPath: path.join(S.fx.records, 'ledger.jsonl'),
       runId: 'someone-else',
       use: 'other-use',
-      usd: 99.999,
-      cap: 100,
+      usd: CAP_USD - 0.001,
+      cap: CAP_USD,
       now,
     });
     const r = await main(

@@ -527,8 +527,14 @@ describe('the cap', () => {
   it('refuses the first request when settlements from another use leave no room', async () => {
     const dir = tmp();
     const ledgerPath = path.join(dir, 'ledger.jsonl');
-    const { id } = reserve({ ledgerPath, runId: 'earlier', use: 'glossary-prescreen', usd: 99.99 });
-    settle({ ledgerPath, id, usd: 99.99 });
+    const nearlyAll = CAP_USD - 0.01;
+    const { id } = reserve({
+      ledgerPath,
+      runId: 'earlier',
+      use: 'glossary-prescreen',
+      usd: nearlyAll,
+    });
+    settle({ ledgerPath, id, usd: nearlyAll });
     const t = mockTransport();
     const out = await runInteractive({ ...baseOpts(dir, t), requests: [req('k1'), req('k2')] });
     expect(out.status).toBe('stopped-at-cap');

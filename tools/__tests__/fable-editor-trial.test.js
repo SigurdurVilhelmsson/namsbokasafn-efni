@@ -11,6 +11,7 @@ import { execFileSync } from 'node:child_process';
 import { describe, it, expect, afterEach, beforeEach, vi } from 'vitest';
 import { validateRequestBody } from '../ai-review/harness.js';
 import { loadRulingSet } from '../ai-review/ruling-set.js';
+import { CAP_USD } from '../ai-review/config.js';
 import {
   REPO_ROOT,
   MODEL,
@@ -213,7 +214,7 @@ describe('blind ranking', () => {
 
 describe('the CLI guard rails', () => {
   it('refuses a cap above the shared ceiling and resume outside batch mode', () => {
-    expect(() => parseCli(['--cap-usd', '101'])).toThrow(/cap-usd/);
+    expect(() => parseCli(['--cap-usd', String(CAP_USD + 1)])).toThrow(/cap-usd/);
     expect(() => parseCli(['--resume', 'x'])).toThrow(/batch/);
     expect(() => parseCli(['--bogus'])).toThrow();
   });
