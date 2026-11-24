@@ -19,14 +19,14 @@ the Batch API, 2026-11-23 21:50:36Z → 21:57:44Z. Promoted from the records dir
 
 | Run | USD (`run-end.json`) | ISK |
 |---|---|---|
-| This run (step 3, whole chapter, batch) | 8.765528 | 1,227 |
-| `20261123T214739Z-e202518f` (step 2, m68760 alone, interactive, $5 cap) | 0.27764 | 39 |
+| This run (step 3, whole chapter, batch) | 8.765528 | 1,104 |
+| `20261123T214739Z-e202518f` (step 2, m68760 alone, interactive, $5 cap) | 0.27764 | 35 |
 | `20261123T214636Z-db45ca7c` (an earlier step-2 attempt; refused 400 before any request, as the workspace id was not passed) | 0 | 0 |
-| **Total for the trial's paid steps** | **9.043168** | **1,266** |
+| **Total for the trial's paid steps** | **9.043168** | **1,139** |
 
-ISK at **140 ISK per USD**, the rate the project lead set for this record on 2026-11-24. It is a round
-figure, not the Central Bank mid-rate used for earlier AI-review costs (for example 122.4 on 9 November
-2026), so convert from the USD column if comparing against those. The step-2 run and the refused attempt
+ISK at **126 ISK per USD**, the rate the project lead set for this record on 2026-11-24. Earlier AI-review
+costs used the Central Bank mid-rate of their day (for example 122.4 on 9 November 2026), so convert from
+the USD column if comparing against those. The step-2 run and the refused attempt
 are kept only in the records directory outside the repository; step 3 sends m68760 again, and the
 comparison uses this run alone (plan §5.4). The ledger reserved $15.80 against the $40 cap and released
 the unused $7.03. The account is the project lead's own (plan §5.3).
