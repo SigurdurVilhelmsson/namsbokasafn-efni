@@ -254,7 +254,7 @@ Sigma-tengi (σ) myndast við skörun eftirfarandi: (a) tveggja [[i:s]]-svigrúm
 Sýndar eru þrjár skýringarmyndir merktar „a“, „b“ og „c“. Mynd a sýnir tvö kúlulaga svigrúm sem liggja hlið við hlið og skarast. Mynd b sýnir eitt kúlulaga og eitt hnetulaga svigrúm sem liggja nálægt hvort öðru þannig að kúlulaga svigrúmið skarast við annan enda hnetulaga svigrúmsins. Mynd c sýnir tvö hnetulaga svigrúm sem liggja enda á enda þannig að annar endi hvors svigrúms skarast við hinn.
 
 <!-- SEG:m68744:para:fs-idp92007424 -->
-A [[term:pi bond (π bond)|term-00004]] is a type of covalent bond that results from the side-by-side overlap of two [[i:p]] orbitals, as illustrated in [[xref:CNX_Chem_08_01_pi]]. In a π bond, the regions of orbital overlap lie on opposite sides of the internuclear axis. Along the axis itself, there is a [[term:node|term-00005]], that is, a plane with no probability of finding an electron.
+[[term:Pí-tengi (π-tengi)|term-00004]] er tegund samgilds tengis sem myndast við hliðlæga skörun tveggja [[i:p]]-svigrúma, eins og sýnt er á [[xref:CNX_Chem_08_01_pi]]. Í π-tengi liggja svæði svigrúmaskörunarinnar hvort sínum megin við kjarnaásinn. Á ásnum sjálfum er [[term:nóða|term-00005]], það er að segja plan þar sem engar líkur eru á að finna rafeind.
 
 <!-- SEG:m68744:caption:CNX_Chem_08_01_pi-caption -->
 Pí-tengi (π) myndast við hliðarskörun tveggja [[i:p]]-svigrúma. Punktarnir sýna staðsetningu kjarnanna.
@@ -314,7 +314,7 @@ Tilgreindu hvort hver mynd sýni σ- eða π-tengi:
 Svar:
 
 <!-- SEG:m68744:para:fs-idp204958944 -->
-(a) er π-tengi með nóðu meðfram ásnum sem tengir kjarnana á meðan (b) og (c) eru σ-tengi sem skarast meðfram ásnum.
+(a) er π-tengi með hnúti meðfram ásnum sem tengir kjarnana á meðan (b) og (c) eru σ-tengi sem skarast meðfram ásnum.
 
 <!-- SEG:m68744:title:fs-idp111264480-title -->
 Lykilhugtök og samantekt

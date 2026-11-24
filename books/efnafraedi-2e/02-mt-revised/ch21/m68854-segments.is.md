@@ -56,7 +56,7 @@ Alfasundrun á sér aðallega stað í þungum kjörnum (A > 200, Z > 83). Vegna
 [[term:Beta (β) sundrun|term-00005]] er útgeislun rafeindar úr kjarna. Joð-131 er dæmi um kjarnategund sem gengst undir β-sundrun:
 
 <!-- SEG:m68854:para:fs-idp100287120 -->
-Beta-sundrun, sem má hugsa sér sem umbreytingu nifteindar í róteind og β-ögn, sést í kjarnategundum með hátt n:p hlutfall. Beta-ögnin (rafeindin) sem gefin er út kemur frá atómkjarnanum og er ekki ein af rafeindunum sem umlykja kjarnann. Slíkir kjarnar liggja fyrir ofan stöðugleikabeltið. Útgeislun rafeindar breytir ekki massatölu kjarnategundarinnar en eykur fjölda róteinda hennar og fækkar nifteindum hennar. Þar af leiðandi lækkar n:p hlutfallið og dótturkjarnategundin liggur nær stöðugleikabeltinu en móðurkjarnategundin gerði.
+Betasundrun, sem má hugsa sér sem umbreytingu nifteindar í róteind og β-ögn, sést í kjarnategundum með hátt n:p hlutfall. Beta-ögnin (rafeindin) sem gefin er út kemur frá atómkjarnanum og er ekki ein af rafeindunum sem umlykja kjarnann. Slíkir kjarnar liggja fyrir ofan stöðugleikabeltið. Útgeislun rafeindar breytir ekki massatölu kjarnategundarinnar en eykur fjölda róteinda hennar og fækkar nifteindum hennar. Þar af leiðandi lækkar n:p hlutfallið og dótturkjarnategundin liggur nær stöðugleikabeltinu en móðurkjarnategundin gerði.
 
 <!-- SEG:m68854:para:fs-idp8043424 -->
 [[term:Gammaútgeislun (γ-útgeislun)|term-00006]] sést þegar kjarnategund myndast í örvuðu ástandi og sundrast síðan niður í grunnástand sitt með útgeislun γ-geisla, skammts af háorku rafsegulgeislun. Tilvist kjarna í örvuðu ástandi er oft táknuð með stjörnu (*). Kóbalt-60 gefur frá sér γ-geislun og er notað í mörgum tilgangi, þar á meðal krabbameinsmeðferð:
@@ -191,7 +191,7 @@ Svar:
 Þar sem hver kjarnategund hefur ákveðinn fjölda kjarnaeinda, ákveðið jafnvægi milli fráhrindikrafta og aðdráttarkrafta og sinn eigin stöðugleika, er helmingunartími geislavirkra kjarnategunda mjög mismunandi. Til dæmis: helmingunartími [[MATH:14]] er 1,9 [[MATH:15]] 10[[sup:19]] ár; [[MATH:16]] er 24.000 ár; [[MATH:17]] er 3,82 dagar; og frumefni-111 (Rg fyrir röntgeníum) er 1,5 [[MATH:18]] 10[[sup:–3]] sekúndur. Helmingunartími nokkurra geislavirkra samsætna sem eru mikilvægar í læknisfræði er sýndur í [[xref:fs-idp14399952]] og aðrar eru taldar upp í [[docref:viðauka M|m68871]].
 
 <!-- SEG:m68854:table-summary:fs-idp14399952-summary -->
-Þessi tafla hefur fjóra dálka og sex raðir. Fyrsta röðin er haus og hún merkir hvern dálk: „Tegund,“ „Hröðnunarháttur,“ „Helmingunartími,“ og „Notkun.“ Undir dálkinum „Tegund“ er eftirfarandi: „F - 18,“ „Co - 60,“ „Tc - 99 m,“ „I – 131,“ og „Tl - 201.“ Undir dálkinum „Hröðnunarháttur“ er eftirfarandi: „lágstafur beta hávísir plúsmerki hrörnun,“ „lágstafur beta hrörnun, lágstafur gamma hrörnun,“ „lágstafur gamma hrörnun,“ „lágstafur beta hrörnun,“ og „rafeindarhremming.“ Undir dálkinum „Helmingunartími“ er eftirfarandi: 110 mínútur, 5,27 ár, 8,01 klukkustundir, 8,02 dagar og 73 klukkustundir. Undir dálkinum „Notkun“ er eftirfarandi: PET-skannanir; krabbameinsmeðferð; skannanir á heila, lungum, hjarta, beinum o.s.frv.; skjaldkirtilsskannanir og -meðferð; skannanir á hjarta og slagæðum og hjartaálagspróf.
+Þessi tafla hefur fjóra dálka og sex raðir. Fyrsta röðin er haus og hún merkir hvern dálk: „Tegund,“ „Hröðnunarháttur,“ „Helmingunartími,“ og „Notkun.“ Undir dálkinum „Tegund“ er eftirfarandi: „F - 18,“ „Co - 60,“ „Tc - 99 m,“ „I – 131,“ og „Tl - 201.“ Undir dálkinum „Hröðnunarháttur“ er eftirfarandi: „lágstafur beta hávísir plúsmerki hrörnun,“ „lágstafur betasundrun, lágstafur gamma hrörnun,“ „lágstafur gamma hrörnun,“ „lágstafur betasundrun,“ og „rafeindarhremming.“ Undir dálkinum „Helmingunartími“ er eftirfarandi: 110 mínútur, 5,27 ár, 8,01 klukkustundir, 8,02 dagar og 73 klukkustundir. Undir dálkinum „Notkun“ er eftirfarandi: PET-skannanir; krabbameinsmeðferð; skannanir á heila, lungum, hjarta, beinum o.s.frv.; skjaldkirtilsskannanir og -meðferð; skannanir á hjarta og slagæðum og hjartaálagspróf.
 
 <!-- SEG:m68854:entry:auto-65 -->
 Helmingunartími geislavirkra samsætna sem eru mikilvægar í læknisfræði
@@ -410,7 +410,7 @@ Nokkrar geislasamsætur hafa helmingunartíma og aðra eiginleika sem gera þær
 Lykilhugtök og samantekt
 
 <!-- SEG:m68854:para:fs-idp119462816 -->
-Kjarnar með óstöðugt n:p hlutfall gangast undir sjálfsprottna geislasundrun. Algengustu gerðir geislavirkni eru α-sundrun, β-sundrun, γ-útgeislun, jáeindaútgeislun og rafeindarhremming. Kjarnahvörf fela einnig oft í sér γ-geisla og sumir kjarnar sundrast með rafeindarhremmingu. Hver þessara sundrunarhátta leiðir til myndunar nýs kjarna með stöðugra n:p hlutfalli. Sum efni gangast undir geislasundrunarraðir og fara í gegnum margar sundranir áður en þau enda sem stöðug samsæta. Öll kjarnasundrunarferli fylgja fyrsta stigs hvarfhraða og hver geislasamsæta hefur sinn eigin einkennandi helmingunartíma, þann tíma sem það tekur fyrir helming atóma hennar að sundrast. Vegna mikils munar á stöðugleika milli kjarnategunda er mjög breitt svið helmingunartíma geislavirkra efna. Mörg þessara efna hafa fundið gagnleg not í læknisfræðilegri greiningu og meðferð, aldursákvörðun fornleifa og jarðfræðilegra hluta og fleira.
+Kjarnar með óstöðugt n:p hlutfall gangast undir sjálfsprottna geislasundrun. Algengustu gerðir geislavirkni eru α-sundrun, β-sundrun, γ-geislun, jáeindaútgeislun og rafeindarhremming. Kjarnahvörf fela einnig oft í sér γ-geisla og sumir kjarnar sundrast með rafeindarhremmingu. Hver þessara sundrunarhátta leiðir til myndunar nýs kjarna með stöðugra n:p hlutfalli. Sum efni gangast undir geislasundrunarraðir og fara í gegnum margar sundranir áður en þau enda sem stöðug samsæta. Öll kjarnasundrunarferli fylgja fyrsta stigs hvarfhraða og hver geislasamsæta hefur sinn eigin einkennandi helmingunartíma, þann tíma sem það tekur fyrir helming atóma hennar að sundrast. Vegna mikils munar á stöðugleika milli kjarnategunda er mjög breitt svið helmingunartíma geislavirkra efna. Mörg þessara efna hafa fundið gagnleg not í læknisfræðilegri greiningu og meðferð, aldursákvörðun fornleifa og jarðfræðilegra hluta og fleira.
 
 <!-- SEG:m68854:title:fs-idm2719024-title -->
 Lykiljöfnur
@@ -530,7 +530,7 @@ Eftirfarandi kjarnar liggja ekki í stöðugleikabeltinu. Hvernig má búast vi�
 (e) [[MATH:69]]
 
 <!-- SEG:m68854:solution:fs-idm31409728 -->
-(a) losun jáeinda; (b) α-sundrun; (c) losun jáeinda; (d) β-sundrun; (e) α-sundrun
+(a) jáeindaútgeislun; (b) α-sundrun; (c) jáeindaútgeislun; (d) β-sundrun; (e) α-sundrun
 
 <!-- SEG:m68854:problem:fs-idp10180544 -->
 Spáðu fyrir um með hvaða hætti (hvaða háttum) sjálfkrafa geislasundrunar eftirfarandi óstöðugar samsætur gætu farið fram:
