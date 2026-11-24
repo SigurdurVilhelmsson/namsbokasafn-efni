@@ -125,6 +125,8 @@ function addModule(moduleId, { chapterDir = 'ch01', book = BOOK, ids = null, mt 
     moduleId,
     en: segIds.map((id, i) => [id, `English ${i}.`]),
     mt: mt ? segIds.map((id, i) => [id, `Íslenska ${i}.`]) : null,
+    // A layerless unit still has a (segmentless) Fable file: a Fable-served unit with none is refused.
+    fable: mt ? undefined : '',
   });
 }
 

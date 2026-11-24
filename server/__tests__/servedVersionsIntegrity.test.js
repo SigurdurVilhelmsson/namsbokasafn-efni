@@ -9,9 +9,12 @@
  * classes. (1) Second-occurrence (`#1`) chains of the ids G1.12 de-duplicated: the English now holds
  * each of those ids once, so only occurrence 0 is served, with the FIRST Icelandic copy. The AI pass
  * read the second copy too (layer 2 keeps both chains), so each `#1` chain has no served occurrence
- * left to match. (2) Since the ch08 and ch21 term-pass re-runs of 2026-11-24: `#0` chains built on a
- * layer-1s overlay (02-mt-selected) that the loader does not read, so the AI read Icelandic the editor
- * does not serve. A new member must be classified before it is added here.
+ * left to match. (2) `#0` chains whose segment Fable changed: the editor serves the Fable layer
+ * (02-mt-fable), so the minted `is_sha256` is the hash of Fable's text, and the chain's segment has a
+ * line in that unit's `<m>-tags.jsonl` (same segmentId and occurrence) whose `afterSha256` equals the
+ * minted hash. Fable's base includes the 02-mt-selected overlay, so the chains that once formed a
+ * separate overlay class belong here. An unclassified difference fails the test: a new member must be
+ * classified before it is added.
  *
  * Read-only on books/: the books dir is NOT overridden, and nothing here writes a file. The
  * database is a temp SESSIONS_DB_PATH.
@@ -66,6 +69,35 @@ function firstRecords() {
   return chains;
 }
 
+/** segmentId#occurrence → that unit's tags line, from the committed Fable layer. */
+const tagsCache = new Map();
+function fableTagLine(c) {
+  const file = path.join(BOOKS, BOOK, '02-mt-fable', c.chDir, `${c.module}-tags.jsonl`);
+  if (!tagsCache.has(file)) {
+    const m = new Map();
+    if (fs.existsSync(file)) {
+      for (const line of fs.readFileSync(file, 'utf8').split('\n')) {
+        if (!line) continue;
+        const t = JSON.parse(line);
+        m.set(`${t.segmentId}#${t.occurrence}`, t);
+      }
+    }
+    tagsCache.set(file, m);
+  }
+  return tagsCache.get(file).get(`${c.segmentId}#${c.occurrence}`);
+}
+
+/**
+ * The class of a differing chain, or null when unclassified. `minted` is the is_sha256 the serve
+ * minted (null when no row). Class 'fable-changed' is the predicate of the header's class (2).
+ */
+function classify(c, minted, repeats, tagLine = fableTagLine) {
+  if (repeats.includes(keyOf(c))) return 'g112-repeat';
+  const t = tagLine(c);
+  if (t && minted !== null && minted === t.afterSha256) return 'fable-changed';
+  return null;
+}
+
 /** The 0-based occurrence of each segment among those with its id, counted here, not by the code under test. */
 function withOccurrence(segments) {
   const seen = new Map();
@@ -103,7 +135,7 @@ afterAll(() => {
 
 describe('T1: the committed layer-2 chains against the served versions (spec §10 T1)', () => {
   it(
-    'T1: the chains whose first beforeSha256 differs from G1.1’s is_sha256 are exactly the classified unserved chains (G1.12 repeats; overlay not loaded)',
+    'T1: the chains whose first beforeSha256 differs from G1.1’s is_sha256 are exactly the classified chains (G1.12 repeats; Fable-changed)',
     { timeout: 120_000 },
     async () => {
       // the real tree, not a temp root
@@ -111,6 +143,7 @@ describe('T1: the committed layer-2 chains against the served versions (spec §1
       const chains = firstRecords();
       const allKeys = [...chains.keys()];
       const mismatched = new Set();
+      const mintedOf = new Map(); // key → the is_sha256 the serve minted (null when none)
       const matched = new Set();
       const matchedByRow = new Set(); // through the row the route minted
       const matchedByBuilder = new Set(); // through the row builder on the loader's output
@@ -171,6 +204,7 @@ describe('T1: the committed layer-2 chains against the served versions (spec §1
             isSha256 = row ? row.is_sha256 : null; // a missing row is a mismatch, never a fallback
             if (!entry || entry.seg.baseSha256 !== isSha256) bodyDisagrees.push(keyOf(c));
           }
+          mintedOf.set(keyOf(c), isSha256);
           if (isSha256 !== null && isSha256 === c.beforeSha256) {
             matched.add(keyOf(c));
             (byBuilder ? matchedByBuilder : matchedByRow).add(keyOf(c));
@@ -178,10 +212,8 @@ describe('T1: the committed layer-2 chains against the served versions (spec §1
         }
       }
 
-      // Two classes, each classified before it was added (the header's rule).
       // (1) Second-occurrence chains of ids G1.12 de-duplicated: their occurrence is no longer served
-      // (the English holds the id once), so no minted row exists for them. The ch08 and ch21 ones
-      // left with those chapters' 2026-11-24 term-pass re-runs, which read the de-duplicated English.
+      // (the English holds the id once), so no minted row exists for them.
       const UNSERVED_G112_REPEATS = [
         'ch05/m68726/m68726:para:fs-idm5945296#1',
         'ch05/m68726/m68726:para:fs-idm94618544#1',
@@ -190,22 +222,26 @@ describe('T1: the committed layer-2 chains against the served versions (spec §1
         'ch10/m68768/m68768:para:fs-idm44101792#1',
         'ch10/m68773/m68773:para:fs-idp76470512#1',
       ];
-      // (2) Chains built on a layer-1s overlay the loader does not read. The 2026-11-24 re-runs read
-      // each base through readBase, which applies 02-mt-selected; the loader serves 02-mt-output only
-      // (segmentParser.loadModuleForEditing), and the G1.7 design rules that out for the study
-      // (docs/superpowers/specs/2026-11-19-g17-freeze-and-mt-lock-design.md: "10-10 4.1 is ruled
-      // out"). So for these re-requested segments the AI read the overlay's Icelandic while the editor
-      // serves layer 1's English, and the chain is withheld.
-      const UNSERVED_OVERLAY_NOT_LOADED = [
+      // (2) The five chains that were built on the layer-1s overlay (ch08, ch21) before the editor served
+      // Fable. Measured: the Fable base includes the overlay, so each is a 'fable-changed' chain now.
+      const FORMER_OVERLAY_CHAINS = [
         'ch08/m68744/m68744:para:fs-idp92007424#0',
         'ch21/m68852/m68852:alt:fs-idp74884384-alt#0',
         'ch21/m68852/m68852:para:fs-idm5999248#0',
         'ch21/m68852/m68852:para:fs-idp1433408#0',
         'ch21/m68856/m68856:para:fs-idm211204656#0',
       ];
-      expect([...mismatched].sort()).toEqual(
-        [...UNSERVED_G112_REPEATS, ...UNSERVED_OVERLAY_NOT_LOADED].sort()
-      );
+      const classes = { 'g112-repeat': [], 'fable-changed': [], unclassified: [] };
+      for (const k of mismatched) {
+        classes[
+          classify(chains.get(k), mintedOf.get(k), UNSERVED_G112_REPEATS) ?? 'unclassified'
+        ].push(k);
+      }
+      expect(classes.unclassified.sort()).toEqual([]);
+      expect(classes['g112-repeat'].sort()).toEqual([...UNSERVED_G112_REPEATS].sort());
+      // an expected-non-empty class, so a classifier that classifies nothing cannot pass
+      expect(classes['fable-changed'].length).toBeGreaterThan(0);
+      expect(classes['fable-changed']).toEqual(expect.arrayContaining(FORMER_OVERLAY_CHAINS));
       // Value controls (PR1 review C22; every key is in exactly one of the two sets, so comparing matched with the
       // complement of mismatched could not fail). The rows the route minted decide nearly every chain: a route
       // whose response showed every id duplicated would send them all through the builder, which reads no row,
@@ -226,9 +262,20 @@ describe('T1: the committed layer-2 chains against the served versions (spec §1
         ])
       );
       // the response's own baseSha256 is the minted hash for every served chain; an unserved occurrence
-      // has no entry and no row, so it disagrees — exactly the G1.12 repeats above. The overlay class
+      // has no entry and no row, so it disagrees — exactly the G1.12 repeats above. The Fable-changed class
       // is served: its entry and its row agree with each other, and differ only from what the AI read.
       expect(bodyDisagrees.sort()).toEqual(UNSERVED_G112_REPEATS);
     }
   );
+
+  it('control: the classifier leaves a planted unclassified chain unclassified', () => {
+    const chain = { chDir: 'ch01', module: 'm00001', segmentId: 'm00001:para:x', occurrence: 0 };
+    const withTag = (afterSha256) => () => ({ afterSha256 });
+    // positive: a Fable-changed chain whose minted hash is the tag line's afterSha256
+    expect(classify(chain, 'a'.repeat(64), [], withTag('a'.repeat(64)))).toBe('fable-changed');
+    // negative: minted differs from afterSha256, no tag line, no minted row
+    expect(classify(chain, 'b'.repeat(64), [], withTag('a'.repeat(64)))).toBeNull();
+    expect(classify(chain, 'a'.repeat(64), [], () => undefined)).toBeNull();
+    expect(classify(chain, null, [], withTag('a'.repeat(64)))).toBeNull();
+  });
 });

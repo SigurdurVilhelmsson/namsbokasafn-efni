@@ -11,6 +11,7 @@
  */
 const fs = require('fs');
 const path = require('path');
+const { servedLayerFor } = require('../../lib/servedLayer');
 
 const segFile = (pairs) => pairs.map(([id, text]) => `<!-- SEG:${id} -->\n${text}\n`).join('\n');
 
@@ -19,11 +20,23 @@ function writeRaw(root, rel, text) {
   fs.writeFileSync(path.join(root, rel), text);
 }
 
-/** { book, chapterDir, moduleId, en: [[id, text]], mt?: [[id, text]] | string, faithful?: same } */
-function writeModule(root, { book, chapterDir, moduleId, en, mt = null, faithful = null }) {
+/**
+ * { book, chapterDir, moduleId, en: [[id, text]], mt?: [[id, text]] | string, faithful?: same,
+ *   fable?: same | false }
+ *
+ * A book the served-layer setting serves from Fable gets a 02-mt-fable layer planted beside its MT,
+ * with the MT's own text and an empty tags file, so a fixture cannot forget it (an absent layer
+ * refuses the unit). `fable` overrides the text; `fable: false` plants none.
+ */
+function writeModule(root, { book, chapterDir, moduleId, en, mt = null, faithful = null, fable }) {
   const body = (x) => (typeof x === 'string' ? x : segFile(x));
   writeRaw(root, `${book}/02-for-mt/${chapterDir}/${moduleId}-segments.en.md`, body(en));
   if (mt) writeRaw(root, `${book}/02-mt-output/${chapterDir}/${moduleId}-segments.is.md`, body(mt));
+  const fableBody = fable === undefined ? mt : fable; // '' plants an empty (layerless) file
+  if (fableBody !== null && fableBody !== false && servedLayerFor(book) === 'fable') {
+    writeRaw(root, `${book}/02-mt-fable/${chapterDir}/${moduleId}-segments.is.md`, body(fableBody));
+    writeRaw(root, `${book}/02-mt-fable/${chapterDir}/${moduleId}-tags.jsonl`, '');
+  }
   if (faithful) {
     writeRaw(
       root,
