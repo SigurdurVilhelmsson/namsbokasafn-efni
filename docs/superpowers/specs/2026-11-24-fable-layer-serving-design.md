@@ -14,6 +14,29 @@
 > `docs/decisions/2026-11-03-research-capture-consent-and-retention-rulings.md`, by
 > `docs/decisions/2026-11-24-assign-gate-waits-on-fable-layer.md`.
 
+> ✏️ **AMENDED 2026-11-24, after approval** ([USER] accepted both of Claude's recommendations on the two questions
+> the builder check raised):
+> 1. **Segments that already hold human text when a unit opens keep it as their starting text, with no meaning flag
+>    and no comparison, and the offline analysis leaves them out.** The editor already shows an in-flight edit
+>    (pending, or approved and not applied) in place of the served text (`baselineTextFor` in
+>    `server/public/js/segment-editor.js`); chemistry has such rows by design (the register's 2026-10-25 entry:
+>    122 approved, unapplied rows, plus the June re-entries). Fable edited the MT under them without seeing them,
+>    so a flag there would describe a change to text the editor is not looking at. **The list is G1.23 §6.3a's
+>    snapshot, which already exists:** `module_opening_inflight`, written once at the serve that records the unit's
+>    opening (`moduleOpenings.recordOpening`) and read by `moduleOpenings.readOpening` (occurrence `-1` means every
+>    occurrence of that id). After the opening step in the module GET, a segment in that snapshot gets
+>    `fableMeaning = null`. **Before a unit has an opening recorded, no segment carries a flag** (fail-closed: no
+>    snapshot, no flags). The comparison route (§6.9) refuses a suppressed segment like an unflagged one. When the
+>    apply hold (§C203) lifts, those approved edits replace Fable's text on their segments; that is the intended
+>    outcome (human text wins). The analysis reads the same snapshot, which the research export already carries
+>    as reference data (R3/A1 of `docs/decisions/2026-11-03-research-capture-consent-and-retention-rulings.md`).
+> 2. **Chemistry's `mt-preview` track stays on pure MT.** Rendering and publishing (`publicationService`,
+>    `pipelineService`) keep mapping `mt-preview` to `02-mt-output`. The setting of §6.3 decides only what the
+>    editor serves; "nothing else decides the layer" (§6.3) means nothing else in the editing path. Putting Fable's
+>    text in front of readers is a publication decision, outside this design.
+> 3. **Settled by Claude:** the six `refused-markers` segments that carry a `meaning` tag show the base with no flag,
+>    as §6.1 and §11 already say.
+
 ## 1. What this is for
 
 [USER] ruled on 2026-11-24 that chemistry's editors start from Fable's edit of the frozen MT, that pure MT stays
