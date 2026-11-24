@@ -1,7 +1,7 @@
 # Decision: the paid-AI ceiling CAP_USD is raised from USD 100 to USD 250, for the Fable editor trial's whole-book run
 
 - **Date:** 2026-11-24
-- **Status:** Accepted
+- **Status:** Superseded by `docs/decisions/2026-11-24-cap-usd-back-to-100-after-fable-run.md` (`CAP_USD` back to USD 100 after the run)
 - **Context owners:** [USER] (ruled in chat on 2026-11-24: "Raise CAP_USD to 250 for this run"); [CODE] measured the
   projection and the ledger arithmetic below
 - **Supersedes:** `docs/decisions/2026-10-26-pre-s-week-ai-layer-answers.md`, in part: its decision 1's figure
