@@ -14,6 +14,12 @@
 > no status. If it disagrees with the active register, the register wins. Do not sync it or edit it in place.
 > Supersede it with a new record instead.
 
+> **✏️ AMENDED 2026-11-24: §6's item 22 no longer holds. Ruled by [USER] on 2026-11-24**
+> ([record](../../decisions/2026-11-24-editors-start-from-fable-text.md)): chemistry editors start from Fable's edit of
+> the frozen MT, and the term pass is no longer shown to them. "Every unit starts from pure MT" is now false, so the
+> consent text must say what each unit starts from, and that pure MT is kept unchanged underneath. The served-version
+> rows' base (§5) changes with the loader, in its own design.
+
 > **✏️ AMENDED 2026-11-17: `module-submit` gets a new trigger and detail, `review-complete` has no screen, and §11's
 > "no time of a person" is scoped. All three were ruled by [USER] on 2026-11-17**, in the register's §C222 work. The
 > design is `docs/superpowers/specs/2026-11-17-c222-unit-done-signal-design.md`. The values live in the code and its
