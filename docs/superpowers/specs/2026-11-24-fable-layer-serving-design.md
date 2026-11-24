@@ -37,6 +37,19 @@
 > 3. **Settled by Claude:** the six `refused-markers` segments that carry a `meaning` tag show the base with no flag,
 >    as §6.1 and §11 already say.
 
+> ✏️ **AMENDED 2026-11-24 (PR 1's final review).** Two corrections to §3 and §6.1, measured from the committed layer
+> and the runs' `metrics.json`:
+> 1. **Provenance `counts.segments` counts every segment record in the unit's served file**, including records
+>    Fable was never sent (for example ch00's contributor names). The segments a run sent are the run's
+>    `requests[].keys`; the two are different quantities.
+> 2. **§3's counts are the whole-book runs', and they differ from the layer's.** Measured over the chosen
+>    2026-11-24 chapter runs (ch10 excluded), `metrics.json` sums to 17,410 segments, 7,309 edited, 1,358 tagged
+>    `meaning`; adding ch10 (the trial's step 3, run `20261123T215036Z-63b1603d`) gives 18,464, 7,887 and 1,449.
+>    The 18,816 / 7,517 / 1,388 written in §3 do not reproduce from any combination of those files and are
+>    superseded by the measured values. The layer holds 22,876 records, 7,996 changed and 1,461 `meaning`, because
+>    it adds ch10, takes ch11 m68783 from the re-send (`20261124T160650Z-80e6dd69`), and counts records rather than
+>    sent segments. The 38 `refused-markers` agree between the runs and the layer.
+
 ## 1. What this is for
 
 [USER] ruled on 2026-11-24 that chemistry's editors start from Fable's edit of the frozen MT, that pure MT stays
