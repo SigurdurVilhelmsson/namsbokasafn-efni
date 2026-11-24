@@ -80,7 +80,7 @@ describe('reserve / settle / release', () => {
 
   it('counts open reservations against the cap', () => {
     const p = ledgerPath();
-    reserve({ ledgerPath: p, ...base, usd: 60 });
+    reserve({ ledgerPath: p, ...base, usd: CAP_USD - 40 });
     expect(() => reserve({ ledgerPath: p, ...base, usd: 41 })).toThrow(CapExceededError);
     // control: exactly reaching the cap is allowed
     expect(() => reserve({ ledgerPath: p, ...base, usd: 40 })).not.toThrow();
@@ -88,9 +88,12 @@ describe('reserve / settle / release', () => {
 
   it('counts settlements against the cap, across runs and uses', () => {
     const p = ledgerPath();
-    const { id } = reserve({ ledgerPath: p, runId: 'run-1', use: 'glossary-prescreen', usd: 50 });
-    settle({ ledgerPath: p, id, usd: 50 });
-    expect(() => reserve({ ledgerPath: p, runId: 'run-2', use: 'ai-pass', usd: 50 })).not.toThrow();
+    const half = CAP_USD / 2;
+    const { id } = reserve({ ledgerPath: p, runId: 'run-1', use: 'glossary-prescreen', usd: half });
+    settle({ ledgerPath: p, id, usd: half });
+    expect(() =>
+      reserve({ ledgerPath: p, runId: 'run-2', use: 'ai-pass', usd: half })
+    ).not.toThrow();
     let err;
     try {
       reserve({ ledgerPath: p, runId: 'run-3', use: 'ai-pass', usd: 0.01 });
@@ -103,15 +106,16 @@ describe('reserve / settle / release', () => {
 
   it('frees a released reservation (control: before the release it refuses)', () => {
     const p = ledgerPath();
-    const { id } = reserve({ ledgerPath: p, ...base, usd: 90 });
-    expect(() => reserve({ ledgerPath: p, ...base, usd: 90 })).toThrow(CapExceededError);
-    release({ ledgerPath: p, id, usd: 90 });
-    expect(() => reserve({ ledgerPath: p, ...base, usd: 90 })).not.toThrow();
+    const most = CAP_USD * 0.9;
+    const { id } = reserve({ ledgerPath: p, ...base, usd: most });
+    expect(() => reserve({ ledgerPath: p, ...base, usd: most })).toThrow(CapExceededError);
+    release({ ledgerPath: p, id, usd: most });
+    expect(() => reserve({ ledgerPath: p, ...base, usd: most })).not.toThrow();
   });
 
   it('a refused reservation writes nothing', () => {
     const p = ledgerPath();
-    reserve({ ledgerPath: p, ...base, usd: 99 });
+    reserve({ ledgerPath: p, ...base, usd: CAP_USD - 1 });
     expect(() => reserve({ ledgerPath: p, ...base, usd: 2 })).toThrow(CapExceededError);
     expect(readLedger(p)).toHaveLength(1);
   });

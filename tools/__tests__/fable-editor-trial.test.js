@@ -11,6 +11,7 @@ import { execFileSync } from 'node:child_process';
 import { describe, it, expect, afterEach, beforeEach, vi } from 'vitest';
 import { validateRequestBody } from '../ai-review/harness.js';
 import { loadRulingSet } from '../ai-review/ruling-set.js';
+import { CAP_USD } from '../ai-review/config.js';
 import {
   REPO_ROOT,
   MODEL,
@@ -32,6 +33,9 @@ import {
   readable,
   readPinnedInputs,
   buildRequests,
+  BOOK_DIR,
+  TP_RUNS,
+  TP_RUNS_DIR,
 } from '../../experiments/fable-editor-trial/lib.mjs';
 import {
   main,
@@ -213,7 +217,7 @@ describe('blind ranking', () => {
 
 describe('the CLI guard rails', () => {
   it('refuses a cap above the shared ceiling and resume outside batch mode', () => {
-    expect(() => parseCli(['--cap-usd', '101'])).toThrow(/cap-usd/);
+    expect(() => parseCli(['--cap-usd', String(CAP_USD + 1)])).toThrow(/cap-usd/);
     expect(() => parseCli(['--resume', 'x'])).toThrow(/batch/);
     expect(() => parseCli(['--bogus'])).toThrow();
   });
@@ -263,6 +267,90 @@ describe('ch10 English drift against the real history', () => {
   it.skipIf(!hasCommit)('is only the G1.12 removal of later repeats, in five modules', () => {
     const { enDrift } = readPinnedInputs('ch10');
     expect(enDrift.map((d) => d.stem)).toEqual(['m68761', 'm68764', 'm68768', 'm68769', 'm68773']);
+  });
+});
+
+// ── Every chapter pinned to its own term-pass run (the whole-book run, [USER] 2026-11-24) ──────
+
+const chapterDirsOnDisk = () =>
+  fs
+    .readdirSync(path.join(BOOK_DIR, '02-mt-output'))
+    .filter((d) => /^(ch\d\d|appendices)$/.test(d))
+    .sort();
+const tpRecordOf = (chapterDir) =>
+  JSON.parse(
+    fs.readFileSync(path.join(TP_RUNS_DIR, TP_RUNS[chapterDir], 'term-pass.json'), 'utf8')
+  );
+
+describe('TP_RUNS', () => {
+  it('pins exactly the chapters that have MT, the appendices and ch00 included', () => {
+    expect(Object.keys(TP_RUNS).sort()).toEqual(chapterDirsOnDisk());
+  });
+
+  it('pins, for each chapter, a run whose own record names that chapter', () => {
+    for (const ch of Object.keys(TP_RUNS))
+      expect([ch, tpRecordOf(ch).chapterDir]).toEqual([ch, ch]);
+  });
+
+  it('pins runs that all read layer 1 at the commit the ch10 trial ran on', () => {
+    for (const ch of Object.keys(TP_RUNS)) {
+      expect([ch, tpRecordOf(ch).layer1Commit]).toEqual([ch, LAYER1_COMMIT]);
+    }
+  });
+
+  it('pins the 2 November resends for ch07 and ch08, and keeps the trial run for ch10', () => {
+    expect([TP_RUNS.ch07, TP_RUNS.ch08, TP_RUNS.ch10]).toEqual([
+      '20261102T081209Z-c7a211f6',
+      '20261102T081914Z-12405e17',
+      '20261108T193214Z-76357476',
+    ]);
+  });
+});
+
+/**
+ * ch08 and ch21 wait for a term-pass re-run ([USER] 2026-11-24). Commit 61b1ec511 (2026-11-08)
+ * re-requested 8 segments that came back untranslated in September and added them to three
+ * modules' selected overlays, after the 1-2 November runs had read those files. Until the re-run
+ * is pinned here, the runner refuses both chapters, and exactly for that reason.
+ */
+const AWAITING_TP_RERUN = Object.freeze({
+  ch08: ['m68744: overlaySha256 differs from the term-pass run'],
+  ch21: [
+    'm68852: overlaySha256 differs from the term-pass run',
+    'm68856: overlaySha256 differs from the term-pass run',
+  ],
+});
+const readyChapters = () => chapterDirsOnDisk().filter((ch) => !(ch in AWAITING_TP_RERUN));
+const refusalLines = (ch, opts) => {
+  try {
+    readPinnedInputs(ch, opts);
+  } catch (e) {
+    return e.message
+      .split('\n')
+      .slice(1)
+      .map((l) => l.trim());
+  }
+  return [];
+};
+
+describe('every chapter’s inputs match its pinned term-pass run', () => {
+  // NO_HISTORY so it runs in CI's shallow clone; the next block checks the drift for real.
+  it.each(readyChapters())('%s', (ch) => {
+    expect(() => readPinnedInputs(ch, NO_HISTORY)).not.toThrow();
+  });
+  it.each(Object.keys(AWAITING_TP_RERUN))(
+    '%s is refused only for the 11-08 overlay re-request',
+    (ch) => {
+      expect(refusalLines(ch, NO_HISTORY)).toEqual(AWAITING_TP_RERUN[ch]);
+    }
+  );
+});
+
+describe('every chapter’s English drift against the real history', () => {
+  // A full clone only (where the paid run happens): any drift beyond G1.12's later-repeat removal
+  // makes readPinnedInputs refuse, so this is what the runner itself would check before spending.
+  it.skipIf(!hasCommit).each(readyChapters())('%s drifted only by G1.12, if at all', (ch) => {
+    expect(() => readPinnedInputs(ch)).not.toThrow();
   });
 });
 

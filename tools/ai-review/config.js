@@ -6,7 +6,10 @@
  *
  * `CAP_USD` is an ENFORCEABLE VALUE: [USER] capped all paid AI calls (the AI pass and
  * the glossary pre-screen together) at USD 100 on 2026-10-26
- * (docs/decisions/2026-10-26-pre-s-week-ai-layer-answers.md). It lives here, once, and
+ * (docs/decisions/2026-10-26-pre-s-week-ai-layer-answers.md), and raised it to USD 250 on
+ * 2026-11-24 for the whole-book run of the Fable editor trial
+ * (docs/decisions/2026-11-24-cap-usd-raised-to-250-for-fable-run.md). It is the ceiling for EVERY
+ * ledger, not only the trial's. It lives here, once, and
  * `tools/__tests__/ai-review-config.test.js` pins it. Prose elsewhere points here.
  *
  * The API key is read from `process.env.ANTHROPIC_API_KEY`, else from the repo-root,
@@ -23,7 +26,7 @@ import { fileURLToPath } from 'node:url';
 import { loadEnvFile } from '../api-translate.js';
 
 /** Total paid AI spend permitted across every use sharing one ledger, in USD. */
-export const CAP_USD = 100;
+export const CAP_USD = 250;
 
 /** Repo root, resolved from this file (never from `process.cwd()`). */
 export const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');

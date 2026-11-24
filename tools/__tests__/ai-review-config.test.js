@@ -31,8 +31,8 @@ afterEach(() => {
 });
 
 describe('CAP_USD', () => {
-  it('is USD 100, as [USER] ruled on 2026-10-26', () => {
-    expect(CAP_USD).toBe(100);
+  it('is USD 250, as [USER] ruled on 2026-11-24 for the whole-book Fable run (was 100 from 2026-10-26)', () => {
+    expect(CAP_USD).toBe(250);
   });
 });
 
