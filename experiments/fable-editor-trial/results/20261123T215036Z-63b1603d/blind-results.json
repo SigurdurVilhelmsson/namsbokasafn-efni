@@ -1,0 +1,24 @@
+{
+  "answered": 60,
+  "items": 60,
+  "summary": {
+    "MT": {
+      "rated": 60,
+      "meanRank": 2.183333333333333,
+      "rankedFirst": 6,
+      "acceptRate": 0.21666666666666667
+    },
+    "TP": {
+      "rated": 60,
+      "meanRank": 1.65,
+      "rankedFirst": 21,
+      "acceptRate": 0.4666666666666667
+    },
+    "FE": {
+      "rated": 60,
+      "meanRank": 1.1333333333333333,
+      "rankedFirst": 52,
+      "acceptRate": 0.9166666666666666
+    }
+  }
+}
