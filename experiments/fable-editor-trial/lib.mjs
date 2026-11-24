@@ -31,8 +31,36 @@ export const RULING_SET_PATH =
  * The term-pass run whose inputs a trial run must match, per chapter. The trial refuses a chapter
  * whose layer-1, overlay or English bytes differ from what that run recorded, so MT, TP and FE are
  * always compared on one input.
+ *
+ * Every chapter's run is the term pass's full run of 2026-11-01, except: ch07 and ch08 take that
+ * run's 2 November resends, and ch10 the 2026-11-08 run the ch10 re-buy pinned (the trial's first
+ * chapter). Pinning them all is [USER]'s go for the whole-book run (2026-11-24).
  */
-export const TP_RUNS = Object.freeze({ ch10: '20261108T193214Z-76357476' });
+export const TP_RUNS = Object.freeze({
+  ch00: '20261101T183602Z-201860ac',
+  ch01: '20261101T183910Z-709768a6',
+  ch02: '20261101T184249Z-c57177c3',
+  ch03: '20261101T184721Z-12190f3a',
+  ch04: '20261101T185056Z-0d8181af',
+  ch05: '20261101T185823Z-720e8255',
+  ch06: '20261101T190240Z-672b50b9',
+  ch07: '20261102T081209Z-c7a211f6',
+  ch08: '20261102T081914Z-12405e17',
+  ch09: '20261101T194237Z-09b5327e',
+  ch10: '20261108T193214Z-76357476',
+  ch11: '20261101T194656Z-5b9c7500',
+  ch12: '20261101T195316Z-12880055',
+  ch13: '20261101T195727Z-a4206faa',
+  ch14: '20261101T200038Z-3447d772',
+  ch15: '20261101T200350Z-0c232607',
+  ch16: '20261101T200703Z-2d2a060e',
+  ch17: '20261101T201013Z-5baa955e',
+  ch18: '20261101T201427Z-da4bbbe2',
+  ch19: '20261101T201847Z-738d5a95',
+  ch20: '20261101T202302Z-d968c90b',
+  ch21: '20261101T202718Z-f372da9a',
+  appendices: '20261101T203233Z-04274179',
+});
 export const TP_RUNS_DIR = path.join(BOOK_DIR, 'ai-review', 'runs');
 
 export const TRIAL_RECORD = 'fable-editor.json';
