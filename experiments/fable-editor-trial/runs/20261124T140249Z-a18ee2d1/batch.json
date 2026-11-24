@@ -1,0 +1,26 @@
+{
+  "schema": "ai-review-batch/1",
+  "state": "submitted",
+  "reservationId": "res-f8a61811-790c-4d70-9e4d-774e24f214da",
+  "reservedUsd": 1.337972,
+  "batchId": "msgbatch_019oQmR33wxNoZ3scvkYa3kp",
+  "submittedAt": "2026-11-24T14:02:50.409Z",
+  "submitted": {
+    "id": "msgbatch_019oQmR33wxNoZ3scvkYa3kp",
+    "type": "message_batch",
+    "processing_status": "in_progress",
+    "request_counts": {
+      "processing": 1,
+      "succeeded": 0,
+      "errored": 0,
+      "canceled": 0,
+      "expired": 0
+    },
+    "ended_at": null,
+    "created_at": "2026-11-24T14:02:50.230140+00:00",
+    "expires_at": "2026-11-25T14:02:50.230140+00:00",
+    "archived_at": null,
+    "cancel_initiated_at": null,
+    "results_url": null
+  }
+}

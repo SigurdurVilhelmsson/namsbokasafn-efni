@@ -1,0 +1,46 @@
+{
+  "segments": 810,
+  "answers": {
+    "total": 8,
+    "usable": 7
+  },
+  "outcomes": {
+    "truncated": 1,
+    "succeeded": 7
+  },
+  "status": {
+    "unchanged": 303,
+    "edited": 318,
+    "unanswered": 189
+  },
+  "tpChanged": 216,
+  "feChanged": 318,
+  "bothChanged": 150,
+  "meanDistanceFromMT": {
+    "TP": 8.467592592592593,
+    "FE": 35.75157232704402
+  },
+  "charsChangedShare": {
+    "TP": 0.013774976087726036,
+    "FE": 0.08562476935011334
+  },
+  "tpIntroducedWordsCarriedByFE": {
+    "introduced": 297,
+    "carried": 187
+  },
+  "tags": {
+    "terminology": 260,
+    "grammar": 51,
+    "fluency": 136,
+    "meaning": 66,
+    "register": 2,
+    "punctuation": 31
+  },
+  "usage": {
+    "costUsd": 6.180776000000001,
+    "inputTokens": 249799,
+    "outputTokens": 259079,
+    "thinkingTokens": 183833
+  },
+  "hu": null
+}
