@@ -1,0 +1,3 @@
+{"type":"reserve","id":"res-a6bd7f6f-034d-400d-b0cc-38b321c54206","runId":"20261124T170824Z-28331ac1","use":"fable-editor","usd":14.1174,"at":"2026-11-24T17:08:26.624Z"}
+{"type":"settle","id":"res-a6bd7f6f-034d-400d-b0cc-38b321c54206","runId":"20261124T170824Z-28331ac1","use":"fable-editor","usd":7.086384,"at":"2026-11-24T17:14:31.504Z"}
+{"type":"release","id":"res-a6bd7f6f-034d-400d-b0cc-38b321c54206","runId":"20261124T170824Z-28331ac1","use":"fable-editor","usd":7.031016,"at":"2026-11-24T17:14:31.504Z"}

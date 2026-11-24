@@ -1,0 +1,65 @@
+{
+  "schema": "fable-editor-trial/1",
+  "book": "efnafraedi-2e",
+  "chapterDir": "ch00",
+  "termPassRun": "20261101T183602Z-201860ac",
+  "layer1Commit": "0093d8da4620a2041e583d3f84d39e9b49f055a2",
+  "units": [
+    {
+      "stem": "m68662",
+      "layer1Sha256": "dc339c65d892f60195243e8b1e44bbcf0d76265ef9aadc4cbef1b3b7b9992309",
+      "overlaySha256": null,
+      "enSha256": "a884e6bc1ea203e8f2eefe55a51201bd5763cfa57fef884b794ef05b94bed704"
+    }
+  ],
+  "enDrift": [],
+  "userFormat": "fable-editor-user/1",
+  "charBudget": 30000,
+  "modules": null,
+  "requests": [
+    {
+      "key": "ch00/m68662/001",
+      "stem": "m68662",
+      "keys": [
+        "m68662:title:auto-1",
+        "m68662:para:pref-p-001",
+        "m68662:para:pref-p-002",
+        "m68662:title:pref-sec-003-title",
+        "m68662:title:pref-sub-005-title",
+        "m68662:para:pref-p-006",
+        "m68662:title:pref-sub-007-title",
+        "m68662:para:pref-p-008",
+        "m68662:para:pref-p-009",
+        "m68662:para:pref-p-010",
+        "m68662:para:pref-p-011",
+        "m68662:para:pref-p-012",
+        "m68662:title:pref-sub-013-title",
+        "m68662:para:pref-p-014",
+        "m68662:para:pref-p-015",
+        "m68662:para:pref-p-016",
+        "m68662:para:pref-p-017",
+        "m68662:title:pref-sub-018-title",
+        "m68662:para:pref-p-019",
+        "m68662:title:pref-sub-020-title",
+        "m68662:para:pref-p-021",
+        "m68662:item:pref-list-022-item-1",
+        "m68662:item:pref-list-022-item-2",
+        "m68662:item:pref-list-022-item-3",
+        "m68662:title:pref-sub-023-title",
+        "m68662:para:pref-p-024",
+        "m68662:title:pref-sub-025-title",
+        "m68662:para:pref-p-026",
+        "m68662:para:pref-p-004",
+        "m68662:title:pref-sec-027-title",
+        "m68662:title:pref-sub-028-title",
+        "m68662:para:pref-p-029",
+        "m68662:para:pref-p-030",
+        "m68662:para:pref-p-031",
+        "m68662:title:pref-sub-033-title",
+        "m68662:item:pref-list-034-item-5",
+        "m68662:title:pref-sub-035-title",
+        "m68662:item:pref-list-036-item-3"
+      ]
+    }
+  ]
+}
