@@ -46,20 +46,25 @@ export const LAYER_DIRS = Object.freeze({
   pure: '02-mt-output',
   selected: '02-mt-selected',
   revised: '02-mt-revised',
+  /** An AI model's edit of the MT (spec 2026-11-24-fable-layer-serving-design.md §6.1). */
+  fable: '02-mt-fable',
 });
 
 /** The layer directories this module may write into. Layer 1 is not one of them. */
-const WRITABLE_LAYERS = new Set([LAYER_DIRS.revised, LAYER_DIRS.selected]);
+const WRITABLE_LAYERS = new Set([LAYER_DIRS.revised, LAYER_DIRS.selected, LAYER_DIRS.fable]);
 
 export const CHAPTER_DIR_RE = /^(ch\d\d|appendices)$/;
 export const STEM_RE = /^(m\d+|chapter-metadata)$/;
 export const SAFE_FILENAME_RE =
   /^(m\d+|chapter-metadata)-(segments\.is\.md|revision\.json|changes\.jsonl|segments-links\.json|selected\.json|rerequest\.jsonl)$/;
+/** The only filenames the Fable layer admits (the filename rule is per layer). */
+const FABLE_FILENAME_RE = /^(m\d+|chapter-metadata)-(segments\.is\.md|fable\.json|tags\.jsonl)$/;
 /** A segment id: exactly three `[\w-]` parts (the id-charset rule, CLAUDE.md § SEG marker). */
 export const SEGMENT_ID_RE = /^[\w-]+:[\w-]+:[\w-]+$/;
 
 export const SELECTED_SCHEMA = 'mt-selected/1';
 export const REVISED_SCHEMA = 'mt-revised/1';
+export const FABLE_SCHEMA = 'mt-fable/1';
 /** One line of a module's re-request attempt log (`02-mt-selected/<ch>/<stem>-rerequest.jsonl`). */
 export const REREQUEST_SCHEMA = 'mt-rerequest/1';
 
@@ -351,7 +356,8 @@ function assertStem(stem) {
 
 /**
  * The resolved destination, if `filePath` has one of the SAFE SHAPES:
- * `<bookDir>/(02-mt-revised|02-mt-selected)/<chapterDir>/<SAFE_FILENAME_RE>`, written as an
+ * `<bookDir>/(02-mt-revised|02-mt-selected|02-mt-fable)/<chapterDir>/<filename>`, the filename
+ * rule per layer (`SAFE_FILENAME_RE`; the Fable layer's own three names), written as an
  * absolute path exactly equal to its own `path.resolve` form. Anything else refuses with
  * `unsafe-destination` — including any path under `02-mt-output/` or `01-source/`, a path that
  * escapes or re-enters via `..`, a trailing slash, a wrong filename, a malformed chapter
@@ -377,7 +383,8 @@ export function resolveSafeDestination({ bookDir, chapterDir, filePath }) {
   if (!CHAPTER_DIR_RE.test(chdir) || chdir !== chapterDir) {
     throw unsafe(`chapter directory is not ${chapterDir}`);
   }
-  if (!SAFE_FILENAME_RE.test(name)) throw unsafe('not a layer filename');
+  const filenameRe = layer === LAYER_DIRS.fable ? FABLE_FILENAME_RE : SAFE_FILENAME_RE;
+  if (!filenameRe.test(name)) throw unsafe('not a layer filename');
   return resolved;
 }
 
