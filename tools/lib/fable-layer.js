@@ -52,7 +52,12 @@ export function buildFableUnit({
       throw new Error(`fable-layer: runMeta.${f} is missing`);
     }
   }
-  const prompt = runMeta.prompts?.[0];
+  if (runMeta.prompts?.length !== 1) {
+    throw new Error(
+      `fable-layer: a run must record exactly one prompt, found ${runMeta.prompts?.length ?? 0}`
+    );
+  }
+  const prompt = runMeta.prompts[0];
   if (!prompt?.path || !prompt?.sha256) {
     throw new Error('fable-layer: runMeta.prompts[0] (path, sha256) is missing');
   }

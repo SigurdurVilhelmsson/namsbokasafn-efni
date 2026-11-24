@@ -14,10 +14,15 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { parseArgs } from 'node:util';
+import { parseArgs, isDeepStrictEqual } from 'node:util';
 import { buildRows } from '../experiments/fable-editor-trial/compare.mjs';
 import { REPO_ROOT, TRIAL_DIR, BOOK_DIR } from '../experiments/fable-editor-trial/lib.mjs';
-import { LAYER_DIRS, resolveSafeDestination, readSelectedKeys } from './lib/mt-layers.js';
+import {
+  LAYER_DIRS,
+  resolveSafeDestination,
+  readSelectedKeys,
+  assertNoRedirect,
+} from './lib/mt-layers.js';
 import { buildFableUnit, serializeProvenance } from './lib/fable-layer.js';
 
 const SOURCES_FILE = path.join(REPO_ROOT, TRIAL_DIR, 'layer-sources.json');
@@ -35,21 +40,61 @@ export function readSources(file = SOURCES_FILE) {
   return s;
 }
 
-const gitHead = () =>
-  execFileSync('git', ['rev-parse', 'HEAD'], { cwd: REPO_ROOT, encoding: 'utf8' }).trim();
+/** The files whose uncommitted changes would make `writtenBy.commit` a lie. */
+const TOOL_FILES = [
+  'tools/promote-fable-layer.js',
+  'tools/lib/fable-layer.js',
+  'tools/lib/mt-layers.js',
+  'experiments/fable-editor-trial/layer-sources.json',
+];
+
+const realGit = {
+  head: () =>
+    execFileSync('git', ['rev-parse', 'HEAD'], { cwd: REPO_ROOT, encoding: 'utf8' }).trim(),
+  dirtyFiles: () =>
+    execFileSync('git', ['status', '--porcelain', '--', ...TOOL_FILES], {
+      cwd: REPO_ROOT,
+      encoding: 'utf8',
+    })
+      .split('\n')
+      .filter(Boolean),
+};
+
+/**
+ * Is an existing provenance file the one this run would write, `writtenBy` aside? The existing
+ * bytes must also be exactly the canonical serialisation of themselves, so a hand edit or a
+ * reformat is still refused.
+ */
+function sameProvenanceModuloWrittenBy(existingText, rebuiltText) {
+  let existing;
+  let rebuilt;
+  try {
+    existing = JSON.parse(existingText);
+    rebuilt = JSON.parse(rebuiltText);
+  } catch {
+    return false;
+  }
+  if (serializeProvenance(existing) !== existingText) return false;
+  const e = { ...existing };
+  delete e.writtenBy;
+  const r = { ...rebuilt };
+  delete r.writtenBy;
+  return isDeepStrictEqual(e, r);
+}
 
 /** Load one run through buildRows and refuse anything that is not a complete run of the chapter. */
 function loadRun({ trialRoot, runId, bookDir, chapterDir, cache }) {
-  const hit = cache.get(runId);
-  if (hit) return hit;
-  const built = buildRows({ trialRoot, runId, bookDir });
+  let built = cache.get(runId);
+  if (!built) {
+    built = buildRows({ trialRoot, runId, bookDir });
+    if (built.runEnd?.status !== 'complete') {
+      fail(`run ${runId} did not complete (status ${built.runEnd?.status ?? 'missing'})`);
+    }
+    cache.set(runId, built);
+  }
   if (built.chapterDir !== chapterDir) {
     fail(`run ${runId} is for ${built.chapterDir}, not ${chapterDir}`);
   }
-  if (built.runEnd?.status !== 'complete') {
-    fail(`run ${runId} did not complete (status ${built.runEnd?.status ?? 'missing'})`);
-  }
-  cache.set(runId, built);
   return built;
 }
 
@@ -100,8 +145,12 @@ function planUnit({ built, stem, chapterDir, runs, bookDir, writtenBy, runId }) 
 /**
  * Build (and, unless `dryRun`, write) the Fable layer.
  *
+ * `git` is injectable for tests; when `writtenBy` is not given, a real run refuses unless the
+ * tool's own files are committed, so `writtenBy.commit` names the code that wrote the layer.
+ *
  * @param {{chapters?: string[], dryRun?: boolean, bookDir?: string, trialRoot?: string,
- *   sources?: object, writtenBy?: {tool: string, commit: string}}} [opts]
+ *   sources?: object, writtenBy?: {tool: string, commit: string},
+ *   git?: {head: () => string, dirtyFiles: () => string[]}}} [opts]
  * @returns {{written: string[], unchanged: string[], counts: Record<string, object>}}
  */
 export function promoteFableLayer({
@@ -111,11 +160,21 @@ export function promoteFableLayer({
   trialRoot = path.join(REPO_ROOT, TRIAL_DIR),
   sources = readSources(),
   writtenBy,
+  git = realGit,
 } = {}) {
   const wanted = chapters?.length ? chapters : Object.keys(sources.chapters);
   for (const c of wanted) if (!sources.chapters[c]) fail(`${c}: no run in the chooser table`);
-  const by = writtenBy ?? { tool: WRITER, commit: gitHead() };
+  if (!writtenBy && !dryRun) {
+    const dirty = git.dirtyFiles();
+    if (dirty.length) {
+      fail(
+        `uncommitted changes in the tool's own files, so no commit names the writer:\n${dirty.join('\n')}`
+      );
+    }
+  }
+  const by = writtenBy ?? { tool: WRITER, commit: git.head() };
   const cache = new Map();
+  const usedOverrides = new Set();
   const files = [];
   const counts = {};
 
@@ -130,6 +189,7 @@ export function promoteFableLayer({
       let useId = runId;
       let runs = [{ runId, used: true, requestKeys: requestKeysFor(built.trial, stem) }];
       if (override) {
+        usedOverrides.add(`${chapterDir}/${stem}`);
         src = loadRun({ trialRoot, runId: override.run, bookDir, chapterDir, cache });
         useId = override.run;
         runs = [
@@ -152,12 +212,17 @@ export function promoteFableLayer({
         runId: useId,
       });
       const feFile = path.join(trialRoot, 'results', useId, 'fe-layer', `${stem}-segments.is.md`);
-      if (!fs.existsSync(feFile) || fs.readFileSync(feFile, 'utf8') !== out.segmentsText) {
+      if (!fs.existsSync(feFile)) {
+        fail(`${chapterDir}/${stem}: the run's fe-layer file is missing: ${feFile}`);
+      }
+      if (fs.readFileSync(feFile, 'utf8') !== out.segmentsText) {
         fail(`${chapterDir}/${stem}: rebuilt text differs from ${feFile}`);
       }
       const dir = path.join(bookDir, LAYER_DIRS.fable, chapterDir);
       const add = (suffix, content) =>
         files.push({
+          chapterDir,
+          provenance: suffix === 'fable.json',
           path: resolveSafeDestination({
             bookDir,
             chapterDir,
@@ -175,12 +240,30 @@ export function promoteFableLayer({
     }
   }
 
+  for (const key of Object.keys(sources.modules ?? {})) {
+    const chapterDir = key.split('/')[0];
+    if (!sources.chapters[chapterDir])
+      fail(`override ${key} names a chapter not in the chooser table`);
+    if (wanted.includes(chapterDir) && !usedOverrides.has(key)) {
+      fail(`override ${key} matches no unit of ${chapterDir}`);
+    }
+  }
+
+  // No symlink may redirect a write out of the book's own layer directory.
+  for (const chapterDir of new Set(files.map((f) => f.chapterDir))) {
+    assertNoRedirect(bookDir, LAYER_DIRS.fable, chapterDir);
+  }
+
   // Check every target before writing any: one refusal leaves the tree untouched.
   const written = [];
   const unchanged = [];
   for (const f of files) {
     if (fs.existsSync(f.path)) {
-      if (fs.readFileSync(f.path, 'utf8') !== f.content) {
+      const existing = fs.readFileSync(f.path, 'utf8');
+      const same = f.provenance
+        ? sameProvenanceModuloWrittenBy(existing, f.content)
+        : existing === f.content;
+      if (!same) {
         fail(`${f.path} exists with different bytes; the layer is never overwritten`);
       }
       unchanged.push(f.path);

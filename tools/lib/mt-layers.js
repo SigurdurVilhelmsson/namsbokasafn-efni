@@ -2,7 +2,7 @@
  * mt-layers.js — the reader/writer for the MT text layers (spec
  * docs/superpowers/specs/2026-10-26-ai-layer-scaffolding-design.md, Unit A).
  *
- * Three layers, one directory each under `books/<slug>/` (CLAUDE.md § Purpose, [USER]
+ * Four layers, one directory each under `books/<slug>/` (CLAUDE.md § Purpose, [USER]
  * 2026-10-10):
  *   - layer 1  `02-mt-output`   pure MT as received (plus its committed hand repairs and
  *                               top-ups). READ ONLY: nothing in this module can write there.
@@ -11,6 +11,10 @@
  *   - layer 2  `02-mt-revised`  the AI-reviewed text, COMPLETE PER CHAPTER, because
  *                               `cnxml-inject` reads one literal path per module and
  *                               enumerates modules from `02-structure`.
+ *   - Fable    `02-mt-fable`    an AI model's edit of the MT, written only by
+ *                               `tools/promote-fable-layer.js`. Per unit it holds exactly three
+ *                               files: `<stem>-segments.is.md`, `<stem>-fable.json` (provenance)
+ *                               and `<stem>-tags.jsonl` (`FABLE_FILENAME_RE`).
  *
  * 🔴 THE INVARIANT: A ZERO-CHANGE READ → WRITE IS BYTE-IDENTICAL. Layer 1 files have no
  * trailing newline and 6 chemistry files have irregular whitespace between segments, so a
@@ -20,9 +24,10 @@
  * serialisation yields exactly the intended records. Prior art: `mt-top-up.js` `spliceTopUp`.
  *
  * 🔴 DESTINATIONS ARE CHECKED AGAINST A LIST OF SAFE SHAPES, never against a list of dangerous
- * ones: `<bookDir>/(02-mt-revised|02-mt-selected)/<chdir>/<stem>-<kind>`, then once more on
- * the real (symlink-resolved) path. A layer-2 directory never holds `*-provenance.json`
- * (inject's restore policy and several tools glob that name) or `*.log` (gitignored).
+ * ones: `<bookDir>/(02-mt-revised|02-mt-selected|02-mt-fable)/<chdir>/<file>`, with the filename
+ * rule of its layer, then once more on the real (symlink-resolved) path. A layer-2 directory
+ * never holds `*-provenance.json` (inject's restore policy and several tools glob that name) or
+ * `*.log` (gitignored).
  *
  * 🔴 AN OVERLAY ENTRY NEVER UNDOES A LATER CHANGE TO LAYER 1. Each layer-1s entry carries
  * `beforeSha256`, the sha256 of the layer-1 body it replaces at that exact occurrence, and
@@ -392,7 +397,7 @@ export function resolveSafeDestination({ bookDir, chapterDir, filePath }) {
  * Refuse unless `<book>/<layer>` and `<book>/<layer>/<chapterDir>`, where they exist, are real
  * directories at exactly those real paths (no symlink redirecting a write elsewhere).
  */
-function assertNoRedirect(book, layer, chapterDir) {
+export function assertNoRedirect(book, layer, chapterDir) {
   const realBook = fs.realpathSync(book);
   assertBookDir(realBook);
   for (const rel of [layer, path.join(layer, chapterDir)]) {

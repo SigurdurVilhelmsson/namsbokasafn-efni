@@ -154,11 +154,11 @@ describe('promote-fable-layer', () => {
       noLayer(book);
     });
 
-    it('refuses when the run has no fe-layer file', () => {
+    it('refuses when the run has no fe-layer file, and says it is missing', () => {
       const book = tempBook();
       const trialRoot = tempTrial();
       fs.rmSync(feFile(trialRoot));
-      expect(() => run(book, { trialRoot })).toThrow(/differs from/);
+      expect(() => run(book, { trialRoot })).toThrow(/fe-layer file is missing/);
       noLayer(book);
     });
 
@@ -167,6 +167,97 @@ describe('promote-fable-layer', () => {
       const sources = { ...readSources(), chapters: { ch01: ch00Run }, modules: {} };
       expect(() => run(book, { chapters: ['ch01'], sources })).toThrow(/is for ch00, not ch01/);
       noLayer(book);
+    });
+  });
+
+  describe('re-verification on a later commit (I1)', () => {
+    const at = (commit) => ({ tool: 'tools/promote-fable-layer.js', commit });
+    const provFile = (book) => path.join(book, '02-mt-fable', 'ch00', 'm68662-fable.json');
+
+    it('counts a layer unchanged when only writtenBy.commit differs, dry or real', () => {
+      const book = tempBook();
+      run(book, { writtenBy: at('aaaa') });
+      const before = readTree(path.join(book, '02-mt-fable'));
+      for (const dryRun of [true, false]) {
+        const res = run(book, { writtenBy: at('bbbb'), dryRun });
+        expect(res.written).toEqual([]);
+        expect(res.unchanged.length).toBe(Object.keys(before).length);
+      }
+      expect(readTree(path.join(book, '02-mt-fable'))).toEqual(before);
+      expect(JSON.parse(fs.readFileSync(provFile(book), 'utf8')).writtenBy.commit).toBe('aaaa');
+    });
+
+    it('refuses when a field other than writtenBy differs', () => {
+      const book = tempBook();
+      run(book);
+      const prov = JSON.parse(fs.readFileSync(provFile(book), 'utf8'));
+      prov.effort = 'low';
+      fs.writeFileSync(provFile(book), JSON.stringify(prov, null, 2) + '\n');
+      expect(() => run(book, { writtenBy: at('bbbb') })).toThrow(/different bytes/);
+    });
+
+    it('refuses a reformatted provenance file even when its content is equal', () => {
+      const book = tempBook();
+      run(book);
+      const prov = JSON.parse(fs.readFileSync(provFile(book), 'utf8'));
+      fs.writeFileSync(provFile(book), JSON.stringify(prov));
+      expect(() => run(book)).toThrow(/different bytes/);
+    });
+  });
+
+  describe('chooser and writer guards', () => {
+    it('refuses a chooser table that names one run for two chapters (M5)', () => {
+      const book = tempBook();
+      const sources = {
+        ...readSources(),
+        chapters: { ch00: ch00Run, ch01: ch00Run },
+        modules: {},
+      };
+      expect(() => run(book, { chapters: ['ch00', 'ch01'], sources })).toThrow(
+        /is for ch00, not ch01/
+      );
+    });
+
+    it('refuses when 02-mt-fable is a symlink, and writes nothing at its target (M6)', () => {
+      const book = tempBook();
+      const elsewhere = fs.mkdtempSync(path.join(os.tmpdir(), 'fable-elsewhere-'));
+      temps.push(elsewhere);
+      fs.symlinkSync(elsewhere, path.join(book, '02-mt-fable'));
+      expect(() => run(book)).toThrow(/unsafe-destination|resolves to/);
+      expect(fs.readdirSync(elsewhere)).toEqual([]);
+    });
+
+    it('refuses an override that matches no unit (M8)', () => {
+      const book = tempBook();
+      const base = readSources();
+      const sources = {
+        ...base,
+        modules: { ...base.modules, 'ch00/m99999': { run: ch00Run, reason: 'x' } },
+      };
+      expect(() => run(book, { sources })).toThrow(/ch00\/m99999.*matches no unit/);
+    });
+
+    it('refuses a real run when the tool files are uncommitted (M10)', () => {
+      const book = tempBook();
+      const git = { head: () => 'abc', dirtyFiles: () => [' M tools/lib/fable-layer.js'] };
+      expect(() => promoteFableLayer({ chapters: ['ch00'], bookDir: book, git })).toThrow(
+        /uncommitted/
+      );
+      expect(fs.existsSync(path.join(book, '02-mt-fable'))).toBe(false);
+    });
+
+    it('allows a dry run, and a clean real run, with injected git (M10)', () => {
+      const book = tempBook();
+      const dirty = { head: () => 'abc', dirtyFiles: () => [' M x'] };
+      expect(() =>
+        promoteFableLayer({ chapters: ['ch00'], bookDir: book, git: dirty, dryRun: true })
+      ).not.toThrow();
+      const clean = { head: () => 'abc', dirtyFiles: () => [] };
+      promoteFableLayer({ chapters: ['ch00'], bookDir: book, git: clean });
+      const prov = JSON.parse(
+        fs.readFileSync(path.join(book, '02-mt-fable', 'ch00', 'm68662-fable.json'), 'utf8')
+      );
+      expect(prov.writtenBy.commit).toBe('abc');
     });
   });
 });

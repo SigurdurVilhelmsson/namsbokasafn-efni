@@ -189,6 +189,13 @@ describe('buildFableUnit', () => {
     const m = { ...runMeta, prompts: [] };
     expect(() => buildFableUnit({ ...args(A), runMeta: m })).toThrow(/prompt/);
   });
+  it('refuses runMeta with more than one prompt', () => {
+    const m = {
+      ...runMeta,
+      prompts: [...runMeta.prompts, { path: 'q.md', sha256: 'b'.repeat(64) }],
+    };
+    expect(() => buildFableUnit({ ...args(A), runMeta: m })).toThrow(/exactly one prompt/);
+  });
   it('refuses runMeta without rulingSet', () => {
     const m = { ...runMeta, rulingSet: undefined };
     expect(() => buildFableUnit({ ...args(A), runMeta: m })).toThrow(/rulingSet/);
