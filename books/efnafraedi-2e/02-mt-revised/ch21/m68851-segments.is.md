@@ -254,7 +254,7 @@ Hver er bindiorka á hverja kjarneind í [[MATH:33]] (atómmassi, 18,9984 amu)?
 Svar:
 
 <!-- SEG:m68851:para:fs-idm46993968 -->
-7,810 MeV/kjarnaeind
+7,810 MeV/kjarneind
 
 <!-- SEG:m68851:title:fs-idm22567904-title -->
 Lykilhugtök og samantekt

@@ -120,10 +120,10 @@ Sýnd er skýringarmynd sem sýnir lóðrétta ör sem vísar upp og er vinstra 
 Samsetning bylgjufalla tveggja [[i:p]]-atómvigrúma meðfram ásnum milli kjarnanna myndar tvö sameindasvigrúm, σ[[i:[[sub:p]]]] og [[MATH:4]]
 
 <!-- SEG:m68747:alt:fs-idm189517056-alt -->
-Sýndar eru tvær láréttar raðir af skýringarmyndum. Efri skýringarmyndin sýnir tvö jafnstór hnetulaga svigrúm með plúsmerki á milli þeirra, tengd með ör til hægri við samrunna svigrúmsmynd. Samrunna skýringarmyndin hefur mun stærri sporöskjulaga mynd í miðjunni og mun minni sporöskjulaga svigrúm á jaðrinum. Hún er merkt „sigma neðanskrift p x“. Neðri skýringarmyndin sýnir tvö jafnstór hnetulaga svigrúm með plúsmerki á milli þeirra, tengd með ör til hægri við skipta svigrúmsmynd. Skipta skýringarmyndin hefur mun stærri sporöskjulaga mynd á ytri endunum og mun minni sporöskjulaga svigrúm á innri brúnum. Hún er merkt „sigma neðanskrift p x ofanskrift stjarna“.
+Sýndar eru tvær láréttar raðir af skýringarmyndum. Efri skýringarmyndin sýnir tvö jafnstór hnetulaga svigrúm með plúsmerki á milli þeirra, tengd með ör til hægri við samrunna skýringarmynd af svigrúmi. Samrunna skýringarmyndin hefur mun stærri sporöskjulaga mynd í miðjunni og mun minni sporöskjulaga svigrúm á jaðrinum. Hún er merkt „sigma neðanskrift p x“. Neðri skýringarmyndin sýnir tvö jafnstór hnetulaga svigrúm með plúsmerki á milli þeirra, tengd með ör til hægri við skipta skýringarmynd af svigrúmi. Skipta skýringarmyndin hefur mun stærri sporöskjulaga mynd á ytri endunum og mun minni sporöskjulaga svigrúm á innri brúnum. Hún er merkt „sigma neðanskrift p x ofanskrift stjarna“.
 
 <!-- SEG:m68747:para:fs-idm175046592 -->
-Skörun tveggja [[i:p]]-svigrúma hlið við hlið gefur af sér [[term:pí (π) bindandi sameindasvigrúm|term-00012]] og [[term:π* andbindandi sameindasvigrúm|term-00013]], eins og sýnt er í [[xref:CNX_Chem_08_04_pMOpi]]. Í gildisrafeindatengslakenningunni lýsum við π-tengjum þannig að þau innihaldi hnútplan sem inniheldur ásinn milli kjarnanna og er hornrétt á blaðhluta [[i:p]]-svigrúmanna, með rafeindaþéttleika beggja vegna við nóðuna. Í sameindasvigrúmakenningunni lýsum við π-svigrúminu með þessu sama formi og π-tengi er til staðar þegar þetta svigrúm inniheldur rafeindir. Rafeindir í þessu svigrúmi víxlverka við báða kjarnana og hjálpa til við að halda atómunum tveimur saman, sem gerir það að tengisvigrúmi. Fyrir samsetningu með gagnstæðum fasa myndast tvö hnútplön, annað meðfram ásnum milli kjarnanna og hitt hornrétt á milli kjarnanna.
+Skörun tveggja [[i:p]]-svigrúma hlið við hlið gefur af sér [[term:pí (π) bindandi sameindasvigrúm|term-00012]] og [[term:π* andbindandi sameindasvigrúm|term-00013]], eins og sýnt er í [[xref:CNX_Chem_08_04_pMOpi]]. Í gildisrafeindatengslakenningunni lýsum við π-tengjum þannig að þau innihaldi hnútplan sem inniheldur ásinn milli kjarnanna og er hornrétt á blaðhluta [[i:p]]-svigrúmanna, með rafeindaþéttleika beggja vegna við nóðuna. Í sameindasvigrúmakenningunni lýsum við π-svigrúminu með þessu sama formi og π-tengi er til staðar þegar þetta svigrúm inniheldur rafeindir. Rafeindir í þessu svigrúmi víxlverka við báða kjarnana og hjálpa til við að halda atómunum tveimur saman, sem gerir það að bindandi svigrúmi. Fyrir samsetningu með gagnstæðum fasa myndast tvö hnútplön, annað meðfram ásnum milli kjarnanna og hitt hornrétt á milli kjarnanna.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_pMOpi-caption -->
 Skörun tveggja [[i:p]]-svigrúma hlið við hlið leiðir til myndunar tveggja π-sameindasvigrúma. Samsetning svigrúma með gagnstæðum fasa leiðir til andbindandi sameindasvigrúms með tveimur hnútum. Annar inniheldur ásinn milli kjarnanna og hinn er hornréttur á ásinn. Samsetning svigrúma með sama fasa leiðir til tengisvigrúms. Það er hnútur (blár) sem inniheldur ásinn milli kjarnanna með tveimur blaðhlutum svigrúmsins staðsettum fyrir ofan og neðan þennan hnút.
@@ -159,7 +159,7 @@ Skoðaðu þekkingu þína
 Merktu sameindasvigrúmið sem sýnt er sem [[i:σ]] eða π, bindandi eða andbindandi og gefðu til kynna hvar nóðan er.
 
 <!-- SEG:m68747:para:fs-idm99049568 -->
-Svigrúmið er staðsett meðfram ásnum milli kjarnanna, svo það er σ-svigrúm. Það er hnútur sem sker ásinn milli kjarnanna í tvennt, svo það er andtengisvigrúm.[[BR]]
+Svigrúmið er staðsett meðfram ásnum milli kjarnanna, svo það er σ-svigrúm. Það er nóða sem sker ásinn milli kjarnanna í tvennt, svo það er andtengisvigrúm.[[BR]]
 
 <!-- SEG:m68747:alt:fs-idm110513152-alt -->
 Þrjár skýringarmyndir eru sýndar og merktar „a“, „b“ og „c“. Mynd a sýnir tvö lárétt hnetulaga svigrúm hlið við hlið. Þau eru merkt „3 p neðanskrift x og 3 p neðanskrift x“. Mynd b sýnir eitt lóðrétt og eitt lárétt hnetulaga svigrúm sem eru hornrétt hvort á annað. Þau eru merkt „3 p neðanskrift x og 3 p neðanskrift y“. Mynd c sýnir tvö lóðrétt hnetulaga svigrúm hlið við hlið og merkt „3 p neðanskrift y og 3 p neðanskrift y“.
@@ -171,7 +171,7 @@ Tvö svigrúm eru sýnd liggjandi enda við enda. Hvort um sig hefur eina stækk
 Svar:
 
 <!-- SEG:m68747:para:fs-idm99049568 -->
-Svigrúmið er staðsett meðfram ásnum milli kjarnanna, þannig að það er σ-svigrúm. Það er hnútyfirborð sem sker ásinn milli kjarnanna í tvennt, þannig að það er andtengisvigrúm.[[BR]]
+Svigrúmið er staðsett meðfram ásnum milli kjarnanna, þannig að það er σ-svigrúm. Það er hnútyfirborð sem sker ásinn milli kjarnanna í tvennt, þannig að það er andbindandi svigrúm.[[BR]]
 
 <!-- SEG:m68747:alt:fs-idm152931472-alt -->
 Tvö svigrúm eru sýnd liggjandi enda við enda. Hvort um sig hefur eina stækkaða og eina litla hlið. Litlu hliðarnar snúa hvor að annarri og eru aðskildar með lóðréttri punktalínu.
@@ -414,7 +414,7 @@ N[[sub:2]] hefur tengigráðuna 3 og er þversviðsegulmagnað.
 Svar:
 
 <!-- SEG:m68747:para:fs-idm171143328 -->
-N[[sub:2]] hefur tengigráðuna 3 og er þversviðsegulmagnað.
+N[[sub:2]] hefur tengiröðina 3 og er þversviðsegulmagnað.
 
 <!-- SEG:m68747:caption:CNX_Chem_08_04_O2MO-caption -->
 Orkumynd sameindasvigrúms fyrir O[[sub:2]] spáir fyrir um tvær óparaðar rafeindir.
