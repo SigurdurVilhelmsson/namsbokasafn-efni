@@ -1,7 +1,7 @@
 # Decision: the AI term pass reaches editors only as accept/reject suggestions, with no control arm and no pre-registration
 
 - **Date:** 2026-10-28
-- **Status:** Partly superseded by `docs/decisions/2026-11-01-ai-term-pass-full-run-at-xhigh.md` (decision 5's effort: high becomes xhigh, and the fallback medium becomes high), and by `docs/decisions/2026-11-02-short-look-drops-agreement-with-its-term-groups.md` (decision 4's drop: dropping agreement also removes the term changes in each segment's ruling group that holds an agreement change)
+- **Status:** Partly superseded by `docs/decisions/2026-11-01-ai-term-pass-full-run-at-xhigh.md` (decision 5's effort: high becomes xhigh, and the fallback medium becomes high), and by `docs/decisions/2026-11-02-short-look-drops-agreement-with-its-term-groups.md` (decision 4's drop: dropping agreement also removes the term changes in each segment's ruling group that holds an agreement change), and by `docs/decisions/2026-11-24-editors-start-from-fable-text.md` (editors start from Fable's text, not pure MT, and the term pass is no longer shown to them)
 - **Context owners:** [USER] (ruled 2026-10-28, walking through the proposals of a read-only review of the plans, the
   AI pass and both grants)
 - **Supersedes:**

@@ -232,6 +232,12 @@ server's request log records that a withdrawal was posted, and when, though not 
 reaches the log like any other request (`docs/superpowers/plans/2026-11-03-g11-g12-pr3-event-log.md`, Review Focus
 12). This adds one item to the design's §6 list, which a dated note here may do until G1.4's text exists.*
 
+✏️ *2026-11-24, G1.4 ([record](../decisions/2026-11-24-editors-start-from-fable-text.md)): editors start from Fable's
+edit of the frozen MT, and the term pass is no longer shown, so the 2026-10-28 note above no longer applies. The
+consent text says instead that each unit starts from MT edited by an AI model (Fable), that the unedited MT is kept
+unchanged, and that segments the AI changed in meaning are marked for checking against the English. The design's
+§6 item 22 is replaced by a dated amendment there.*
+
 ✏️ *2026-11-03, G1.12 and G1.13 ([rulings](../decisions/2026-11-03-research-capture-consent-and-retention-rulings.md)): G1.12 lands before any of the 83 duplicate-id modules opens;
 until then a save or accept on a duplicated id that cannot be placed is refused (R4). G1.13 assigns chapters only
 after G1.23 is switched on in production (R6), and only to an editor whose consent decision and signed licence clause
