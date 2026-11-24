@@ -45,7 +45,7 @@
 | `migrate-pipeline-status` | and populates the chapter_pipeline_status table in the database. |
 | `normalize-svg-dimensions` | Make translated figure SVGs render at full figure size in the reader. |
 | `preintake-probe` | Scans a candidate book's raw CNXML and prints a go/no-go fitness checklist: |
-| `promote-fable-layer` | editor trial runs. The layer is exactly the runs' output: this tool never edits  |
+| `promote-fable-layer` | Writes the chemistry Fable layer (02-mt-fable) from the committed trial runs. |
 | `publish-figure-svg` | ⑰ — publish a composed figure into the tree readers actually load. |
 | `remt-battery` | Runs one tier of the battery over one book/chapter/module and reports every |
 | `remt-ctx` | ── WHY THIS FILE IS TOP-LEVEL AND NOT IN `tools/lib/` ── |
