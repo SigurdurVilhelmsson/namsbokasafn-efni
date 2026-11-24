@@ -1,0 +1,49 @@
+{
+  "format": "mt-fable/1",
+  "book": "efnafraedi-2e",
+  "chapter": "ch12",
+  "module": "m68787",
+  "runs": [
+    {
+      "runId": "20261124T161445Z-88573f07",
+      "used": true,
+      "requestKeys": [
+        "ch12/m68787/001"
+      ]
+    }
+  ],
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "max_tokens": 64000,
+  "prompt": {
+    "path": "experiments/fable-editor-trial/prompt-v1.md",
+    "sha256": "095c966d99dacfb39eb929a6e35efdf275cffa2ddbdbf58016af89b4172128f9"
+  },
+  "rulingSet": {
+    "path": "experiments/terminology-consistency/results/2026-11-02/ruling-set-2026-11-02.json",
+    "sha256": "0aa33690ca829be4baa4da2b34fbea1455517d426e939c3544b3a86b3049c3bd"
+  },
+  "harnessCommit": "afb4367bfdcf9354606005461d8a656340540b41",
+  "anthropicVersion": "2026-10-21",
+  "base": {
+    "layer1Sha256": "e56c2a8eb9f9a0898494b67612fc7eb32d694b36a65c654026d5ee3abd8dd7e3",
+    "layer1Commit": "0093d8da4620a2041e583d3f84d39e9b49f055a2",
+    "overlaySha256": null,
+    "enSha256": "3419697f8b5582b87e684228beeeead7cfaaf6017347f0897b2ecdc6319f13d6"
+  },
+  "rerequested": [],
+  "counts": {
+    "segments": 41,
+    "changed": 18,
+    "meaning": 1,
+    "refusedMarkers": 0
+  },
+  "files": {
+    "segmentsSha256": "628d75071ea9e6cec29c9998e1730c1139620dd16b850f4e48442bc45d9fd015",
+    "tagsSha256": "b31c668af7d9a4e17d0330afff864499e60e618ffb7442fd784db65e111f9a73"
+  },
+  "writtenBy": {
+    "tool": "tools/promote-fable-layer.js",
+    "commit": "eb25236bbe01b5f704717c81ad56361b58cb6a33"
+  }
+}

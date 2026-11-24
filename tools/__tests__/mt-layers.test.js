@@ -17,6 +17,7 @@ import { fileURLToPath } from 'node:url';
 import segMarkers from '../lib/seg-markers.cjs';
 import {
   LAYER_DIRS,
+  FABLE_SCHEMA,
   parseLayerFile,
   serializeLayerFile,
   validateBody,
@@ -1144,6 +1145,27 @@ describe('fixture tree', () => {
       ['a safe filename with a trailing slash', '02-mt-revised/ch01/m100-revision.json/'],
     ])('refuses %s', (_label, rel) => {
       expect(dest(rel)).toBe('unsafe-destination');
+    });
+    it.each(['m68776-segments.is.md', 'm68776-fable.json', 'm68776-tags.jsonl'])(
+      'accepts the Fable layer file %s',
+      (name) => {
+        expect(dest(`02-mt-fable/ch11/${name}`, 'ch11')).toBe('no-throw');
+      }
+    );
+    it('FABLE_SCHEMA and the layer directory are registered', () => {
+      expect([LAYER_DIRS.fable, FABLE_SCHEMA]).toEqual(['02-mt-fable', 'mt-fable/1']);
+    });
+    it('still refuses 02-mt-output', () => {
+      expect(dest('02-mt-output/ch11/m68776-segments.is.md', 'ch11')).toBe('unsafe-destination');
+    });
+    it('refuses fable.json under 02-mt-revised (the filename rule is per layer)', () => {
+      expect(dest('02-mt-revised/ch11/m68776-fable.json', 'ch11')).toBe('unsafe-destination');
+    });
+    it('refuses tags.jsonl under 02-mt-selected', () => {
+      expect(dest('02-mt-selected/ch11/m68776-tags.jsonl', 'ch11')).toBe('unsafe-destination');
+    });
+    it('refuses a revised-layer filename under 02-mt-fable', () => {
+      expect(dest('02-mt-fable/ch11/m68776-revision.json', 'ch11')).toBe('unsafe-destination');
     });
     it('refuses an absolute path outside the book', () => {
       expect(
