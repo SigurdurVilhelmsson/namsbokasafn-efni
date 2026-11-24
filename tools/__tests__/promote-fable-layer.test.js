@@ -119,4 +119,54 @@ describe('promote-fable-layer', () => {
     fs.writeFileSync(file, fs.readFileSync(file, 'utf8').replace(/(-->\n)(\S)/, '$1Changed $2'));
     expect(() => run(book)).toThrow(/enSha256 differs/);
   });
+
+  describe('refusals on the run record', () => {
+    /** A temp trial root holding copies of ch00's run and results folders. */
+    function tempTrial() {
+      const root = fs.mkdtempSync(path.join(os.tmpdir(), 'fable-trial-'));
+      temps.push(root);
+      for (const sub of ['runs', 'results']) {
+        fs.cpSync(path.join(TRIAL, sub, ch00Run), path.join(root, sub, ch00Run), {
+          recursive: true,
+        });
+      }
+      return root;
+    }
+    const noLayer = (book) => expect(fs.existsSync(path.join(book, '02-mt-fable'))).toBe(false);
+    const feFile = (root) =>
+      path.join(root, 'results', ch00Run, 'fe-layer', 'm68662-segments.is.md');
+
+    it('refuses a run that did not complete', () => {
+      const book = tempBook();
+      const trialRoot = tempTrial();
+      const f = path.join(trialRoot, 'runs', ch00Run, 'run-end.json');
+      const end = JSON.parse(fs.readFileSync(f, 'utf8'));
+      fs.writeFileSync(f, JSON.stringify({ ...end, status: 'aborted' }));
+      expect(() => run(book, { trialRoot })).toThrow(/did not complete/);
+      noLayer(book);
+    });
+
+    it("refuses text that differs from the run's fe-layer file", () => {
+      const book = tempBook();
+      const trialRoot = tempTrial();
+      fs.writeFileSync(feFile(trialRoot), fs.readFileSync(feFile(trialRoot), 'utf8') + 'x');
+      expect(() => run(book, { trialRoot })).toThrow(/differs from/);
+      noLayer(book);
+    });
+
+    it('refuses when the run has no fe-layer file', () => {
+      const book = tempBook();
+      const trialRoot = tempTrial();
+      fs.rmSync(feFile(trialRoot));
+      expect(() => run(book, { trialRoot })).toThrow(/differs from/);
+      noLayer(book);
+    });
+
+    it('refuses a chooser entry whose run is for another chapter', () => {
+      const book = tempBook();
+      const sources = { ...readSources(), chapters: { ch01: ch00Run }, modules: {} };
+      expect(() => run(book, { chapters: ['ch01'], sources })).toThrow(/is for ch00, not ch01/);
+      noLayer(book);
+    });
+  });
 });
