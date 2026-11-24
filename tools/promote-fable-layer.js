@@ -1,8 +1,12 @@
 #!/usr/bin/env node
 /**
- * promote-fable-layer.js — write `books/efnafraedi-2e/02-mt-fable/` from the committed Fable
- * editor trial runs. The layer is exactly the runs' output: this tool never edits text, and it
- * refuses to overwrite a file whose bytes differ. Spec:
+ * promote-fable-layer.js
+ *
+ * Writes the chemistry Fable layer (02-mt-fable) from the committed trial runs.
+ *
+ * Its output is `books/efnafraedi-2e/02-mt-fable/`, built from the committed Fable editor trial
+ * runs. The layer is exactly the runs' output: this tool never edits text, and it refuses to
+ * overwrite a file whose bytes differ. Spec:
  * docs/superpowers/specs/2026-11-24-fable-layer-serving-design.md §6.2.
  *
  *   node tools/promote-fable-layer.js [--chapter chNN]... [--dry-run]
@@ -83,10 +87,10 @@ function sameProvenanceModuloWrittenBy(existingText, rebuiltText) {
 }
 
 /** Load one run through buildRows and refuse anything that is not a complete run of the chapter. */
-function loadRun({ trialRoot, runId, bookDir, chapterDir, cache }) {
+function loadRun({ trialRoot, runId, bookDir, chapterDir, cache, inputOptions }) {
   let built = cache.get(runId);
   if (!built) {
-    built = buildRows({ trialRoot, runId, bookDir });
+    built = buildRows({ trialRoot, runId, bookDir, inputOptions });
     if (built.runEnd?.status !== 'complete') {
       fail(`run ${runId} did not complete (status ${built.runEnd?.status ?? 'missing'})`);
     }
@@ -148,9 +152,14 @@ function planUnit({ built, stem, chapterDir, runs, bookDir, writtenBy, runId }) 
  * `git` is injectable for tests; when `writtenBy` is not given, a real run refuses unless the
  * tool's own files are committed, so `writtenBy.commit` names the code that wrote the layer.
  *
+ * `inputOptions` is passed to the trial's `readPinnedInputs` (through `buildRows`). Tests pass a
+ * `gitShow` there because CI checks out at depth 1, where the term pass's layer-1 commit is
+ * absent; the CLI never sets it, so a real run checks the English against the real history.
+ *
  * @param {{chapters?: string[], dryRun?: boolean, bookDir?: string, trialRoot?: string,
  *   sources?: object, writtenBy?: {tool: string, commit: string},
- *   git?: {head: () => string, dirtyFiles: () => string[]}}} [opts]
+ *   git?: {head: () => string, dirtyFiles: () => string[]},
+ *   inputOptions?: {gitShow?: (commit: string, repoRel: string) => string}}} [opts]
  * @returns {{written: string[], unchanged: string[], counts: Record<string, object>}}
  */
 export function promoteFableLayer({
@@ -161,6 +170,7 @@ export function promoteFableLayer({
   sources = readSources(),
   writtenBy,
   git = realGit,
+  inputOptions,
 } = {}) {
   const wanted = chapters?.length ? chapters : Object.keys(sources.chapters);
   for (const c of wanted) if (!sources.chapters[c]) fail(`${c}: no run in the chooser table`);
@@ -180,7 +190,7 @@ export function promoteFableLayer({
 
   for (const chapterDir of wanted) {
     const runId = sources.chapters[chapterDir];
-    const built = loadRun({ trialRoot, runId, bookDir, chapterDir, cache });
+    const built = loadRun({ trialRoot, runId, bookDir, chapterDir, cache, inputOptions });
     const c = (counts[chapterDir] = { units: 0, segments: 0, changed: 0, meaning: 0 });
     for (const { unit } of built.units) {
       const stem = unit.stem;
@@ -190,7 +200,7 @@ export function promoteFableLayer({
       let runs = [{ runId, used: true, requestKeys: requestKeysFor(built.trial, stem) }];
       if (override) {
         usedOverrides.add(`${chapterDir}/${stem}`);
-        src = loadRun({ trialRoot, runId: override.run, bookDir, chapterDir, cache });
+        src = loadRun({ trialRoot, runId: override.run, bookDir, chapterDir, cache, inputOptions });
         useId = override.run;
         runs = [
           {

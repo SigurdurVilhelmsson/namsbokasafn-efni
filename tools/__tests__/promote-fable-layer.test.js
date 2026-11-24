@@ -8,6 +8,15 @@ const REPO = path.resolve(import.meta.dirname, '..', '..');
 const REAL_BOOK = path.join(REPO, 'books', 'efnafraedi-2e');
 const TRIAL = path.join(REPO, 'experiments', 'fable-editor-trial');
 const WRITTEN_BY = { tool: 'tools/promote-fable-layer.js', commit: 'test' };
+/**
+ * CI checks out at depth 1, so the term pass's layer-1 commit is not there to `git show`
+ * (measured on PR #814's first push). As in `fable-editor-trial.test.js`, these tests read the
+ * "then" English as the English now; the G1.12 drift check itself is tested there against the
+ * real history wherever the commit is present.
+ */
+const NO_HISTORY = {
+  gitShow: (_commit, repoRel) => fs.readFileSync(path.join(REPO, repoRel), 'utf8'),
+};
 const ch00Run = readSources().chapters.ch00;
 
 const temps = [];
@@ -35,7 +44,13 @@ function tempBook(ch = 'ch00') {
 }
 
 const run = (bookDir, extra = {}) =>
-  promoteFableLayer({ chapters: ['ch00'], bookDir, writtenBy: WRITTEN_BY, ...extra });
+  promoteFableLayer({
+    chapters: ['ch00'],
+    bookDir,
+    writtenBy: WRITTEN_BY,
+    inputOptions: NO_HISTORY,
+    ...extra,
+  });
 
 const readTree = (dir) => {
   const out = {};
@@ -69,7 +84,12 @@ describe('promote-fable-layer', () => {
     const sources = readSources();
     const o = sources.modules['ch11/m68783'];
     const bookDir = tempBook('ch11');
-    promoteFableLayer({ chapters: ['ch11'], bookDir, writtenBy: WRITTEN_BY });
+    promoteFableLayer({
+      chapters: ['ch11'],
+      bookDir,
+      writtenBy: WRITTEN_BY,
+      inputOptions: NO_HISTORY,
+    });
     const prov = JSON.parse(
       fs.readFileSync(path.join(bookDir, '02-mt-fable', 'ch11', 'm68783-fable.json'), 'utf8')
     );
@@ -84,7 +104,13 @@ describe('promote-fable-layer', () => {
   it('refuses a unit with an unanswered segment', () => {
     const sources = { ...readSources(), modules: {} };
     expect(() =>
-      promoteFableLayer({ chapters: ['ch11'], dryRun: true, sources, writtenBy: WRITTEN_BY })
+      promoteFableLayer({
+        chapters: ['ch11'],
+        dryRun: true,
+        sources,
+        writtenBy: WRITTEN_BY,
+        inputOptions: NO_HISTORY,
+      })
     ).toThrow(/m68783.*unanswered/);
   }, 120000);
 
