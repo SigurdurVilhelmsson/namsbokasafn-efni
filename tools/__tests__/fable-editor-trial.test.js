@@ -292,64 +292,45 @@ describe('TP_RUNS', () => {
       expect([ch, tpRecordOf(ch).chapterDir]).toEqual([ch, ch]);
   });
 
-  it('pins runs that all read layer 1 at the commit the ch10 trial ran on', () => {
+  it('pins runs that read layer 1 at the ch10 trial commit, or at the re-run commit for ch08 and ch21', () => {
     for (const ch of Object.keys(TP_RUNS)) {
-      expect([ch, tpRecordOf(ch).layer1Commit]).toEqual([ch, LAYER1_COMMIT]);
+      const expected = ch in RERUN_LAYER1 ? RERUN_LAYER1[ch] : LAYER1_COMMIT;
+      expect([ch, tpRecordOf(ch).layer1Commit]).toEqual([ch, expected]);
     }
   });
 
-  it('pins the 2 November resends for ch07 and ch08, and keeps the trial run for ch10', () => {
-    expect([TP_RUNS.ch07, TP_RUNS.ch08, TP_RUNS.ch10]).toEqual([
+  it('pins the 2 November resend for ch07, the 2026-11-24 re-runs for ch08 and ch21, and the trial run for ch10', () => {
+    expect([TP_RUNS.ch07, TP_RUNS.ch08, TP_RUNS.ch10, TP_RUNS.ch21]).toEqual([
       '20261102T081209Z-c7a211f6',
-      '20261102T081914Z-12405e17',
+      '20261124T103752Z-c0464db1',
       '20261108T193214Z-76357476',
+      '20261124T104507Z-514f3368',
     ]);
   });
 });
 
 /**
- * ch08 and ch21 wait for a term-pass re-run ([USER] 2026-11-24). Commit 61b1ec511 (2026-11-08)
- * re-requested 8 segments that came back untranslated in September and added them to three
- * modules' selected overlays, after the 1-2 November runs had read those files. Until the re-run
- * is pinned here, the runner refuses both chapters, and exactly for that reason.
+ * ch08 and ch21 were re-run on 2026-11-24 ([USER]'s go) because commit 61b1ec511 (2026-11-08) had added
+ * 8 re-requested segments to three of their overlays after the 1-2 November runs read them. The
+ * re-runs read layer 1 at the main checkout's commit then, 69640a624, where those inputs are
+ * byte-identical to the tree's.
  */
-const AWAITING_TP_RERUN = Object.freeze({
-  ch08: ['m68744: overlaySha256 differs from the term-pass run'],
-  ch21: [
-    'm68852: overlaySha256 differs from the term-pass run',
-    'm68856: overlaySha256 differs from the term-pass run',
-  ],
+const RERUN_LAYER1 = Object.freeze({
+  ch08: '69640a624c75ce65396ca204f37cdcb1ad91e678',
+  ch21: '69640a624c75ce65396ca204f37cdcb1ad91e678',
 });
-const readyChapters = () => chapterDirsOnDisk().filter((ch) => !(ch in AWAITING_TP_RERUN));
-const refusalLines = (ch, opts) => {
-  try {
-    readPinnedInputs(ch, opts);
-  } catch (e) {
-    return e.message
-      .split('\n')
-      .slice(1)
-      .map((l) => l.trim());
-  }
-  return [];
-};
 
 describe('every chapter’s inputs match its pinned term-pass run', () => {
   // NO_HISTORY so it runs in CI's shallow clone; the next block checks the drift for real.
-  it.each(readyChapters())('%s', (ch) => {
+  it.each(chapterDirsOnDisk())('%s', (ch) => {
     expect(() => readPinnedInputs(ch, NO_HISTORY)).not.toThrow();
   });
-  it.each(Object.keys(AWAITING_TP_RERUN))(
-    '%s is refused only for the 11-08 overlay re-request',
-    (ch) => {
-      expect(refusalLines(ch, NO_HISTORY)).toEqual(AWAITING_TP_RERUN[ch]);
-    }
-  );
 });
 
 describe('every chapter’s English drift against the real history', () => {
   // A full clone only (where the paid run happens): any drift beyond G1.12's later-repeat removal
   // makes readPinnedInputs refuse, so this is what the runner itself would check before spending.
-  it.skipIf(!hasCommit).each(readyChapters())('%s drifted only by G1.12, if at all', (ch) => {
+  it.skipIf(!hasCommit).each(chapterDirsOnDisk())('%s drifted only by G1.12, if at all', (ch) => {
     expect(() => readPinnedInputs(ch)).not.toThrow();
   });
 });
