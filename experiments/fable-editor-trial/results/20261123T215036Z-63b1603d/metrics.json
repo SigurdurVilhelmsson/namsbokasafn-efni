@@ -1,0 +1,44 @@
+{
+  "segments": 1054,
+  "answers": {
+    "total": 11,
+    "usable": 11
+  },
+  "outcomes": {
+    "succeeded": 11
+  },
+  "status": {
+    "unchanged": 476,
+    "edited": 578
+  },
+  "tpChanged": 262,
+  "feChanged": 578,
+  "bothChanged": 262,
+  "meanDistanceFromMT": {
+    "TP": 10.641221374045802,
+    "FE": 37.82871972318339
+  },
+  "charsChangedShare": {
+    "TP": 0.013281945986117793,
+    "FE": 0.10416418543273513
+  },
+  "tpIntroducedWordsCarriedByFE": {
+    "introduced": 412,
+    "carried": 373
+  },
+  "tags": {
+    "terminology": 437,
+    "grammar": 137,
+    "fluency": 276,
+    "meaning": 91,
+    "register": 15,
+    "punctuation": 50
+  },
+  "usage": {
+    "costUsd": 8.765528,
+    "inputTokens": 390542,
+    "outputTokens": 360168,
+    "thinkingTokens": 243953
+  },
+  "hu": null
+}
