@@ -1,7 +1,7 @@
 # Decision: what research capture takes from each editor, how long its copies live, and the order in which units open
 
 - **Date:** 2026-11-03
-- **Status:** Accepted
+- **Status:** Partly superseded by `docs/decisions/2026-11-24-assign-gate-waits-on-fable-layer.md` (its R6: the assign gate now waits on the Fable layer being served, not on the suggestion view)
 - **Context owners:** [USER] (ruled in the G1.1 + G1.2 brainstorm on 2026-11-03, choosing among the options below,
   then answered three questions the draft raised; approved the design that records them, as written, the same day)
 - **Supersedes:** none. It changes two Skerfur plan rows (a plan, not a decision record): G1.1's per-unit manifest
