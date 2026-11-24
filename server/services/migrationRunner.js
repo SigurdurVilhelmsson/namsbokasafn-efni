@@ -112,6 +112,7 @@ function runPass() {
     require('../migrations/058-book-glossary-layer'),
     require('../migrations/059-retention-runs'),
     require('../migrations/060-editor-licence-clauses'),
+    require('../migrations/061-served-layer-fable'),
   ];
 
   let applied = 0;
