@@ -93,6 +93,7 @@ describe("the vocabularies are the spec's, exactly", () => {
       'mt-accept-revoke',
       'suggestion-reject',
       'suggestion-left-open',
+      'fable-comparison-opened',
       'write-refused',
     ]);
     expect(vocab.EDITING_KINDS).toEqual([

@@ -640,6 +640,31 @@ function emitSuggestionLeftOpen(req, input) {
   }
 }
 
+/**
+ * A consenting editor opened the before/after comparison of a Fable-changed segment (PR 2 Task 10).
+ * No editing row, no items and no detail: the event is the act and the place it happened.
+ *
+ * @param {{user: {id: string}}} req
+ * @param {{ book: string, chapter: number, moduleId: string, segmentId: string, occurrence: number, servedVersionId: number|null }} input
+ * @returns {void}
+ */
+function emitFableComparisonOpened(req, input) {
+  emit(
+    () => headFor(req, 'fable-comparison-opened', input),
+    () => ({
+      ...NONE,
+      segmentId: input.segmentId,
+      occurrence: input.occurrence,
+      servedVersionId: input.servedVersionId ?? null,
+      editingKind: null,
+      items: [],
+      content: null,
+      before: null,
+      detail: {},
+    })
+  );
+}
+
 const REVIEW_DECISIONS = Object.freeze(['edit-approve', 'edit-reject', 'edit-discuss']);
 const rowPlace = (row) => ({ book: row.book, chapter: row.chapter, moduleId: row.module_id });
 /** A segment_edits row as the event's editing reference (the row's own fields; the hash is the server's). */
@@ -962,6 +987,7 @@ module.exports = {
   emitReview,
   emitSuggestionReject,
   emitSuggestionLeftOpen,
+  emitFableComparisonOpened,
   emitDelete,
   emitRevoke,
   emitComment,

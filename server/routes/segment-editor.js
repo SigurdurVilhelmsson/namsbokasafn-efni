@@ -48,7 +48,7 @@ const notifications = require('../services/notifications');
 const servedVersions = require('../services/servedVersions');
 const servedEdit = require('../services/servedEdit');
 const moduleOpenings = require('../services/moduleOpenings');
-const { applyFableFlags } = require('../services/fableFlags');
+const { applyFableFlags, isFlagVisibleNow } = require('../services/fableFlags');
 const suggestionView = require('../services/suggestionView');
 const suggestionLogs = require('../lib/suggestionLogs');
 const researchEmission = require('../services/researchEmission');
@@ -488,6 +488,64 @@ router.get(
       }
       log.error({ err }, 'Error loading module');
       res.status(err.message.includes('not found') ? 404 : 500).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * POST /:book/:chapter/:moduleId/fable-comparison-opened
+ * Records (research event, consenting editors only; record skips the rest) that the editor opened
+ * the before/after comparison of a Fable-changed segment. Body { segmentId, occurrence }. Answers
+ * 400 NOT_FLAGGED unless the segment carries a Fable meaning flag that the unit's opening still
+ * lets this editor see; the flag is re-derived server-side, never taken from the client. The served
+ * version is looked up, not minted: null when the serve recorded none.
+ */
+router.post(
+  '/:book/:chapter/:moduleId/fable-comparison-opened',
+  requireAuth,
+  validateBookChapter,
+  refuseClosedParamBook,
+  requireBookAccess(),
+  validateModule,
+  (req, res) => {
+    const { segmentId, occurrence } = req.body || {};
+    const notFlagged = () => res.status(400).json({ error: 'NOT_FLAGGED' });
+    if (typeof segmentId !== 'string' || !Number.isInteger(occurrence)) return notFlagged();
+    const { book, moduleId } = req.params;
+    try {
+      const data = segmentParser.loadModuleForEditing(book, req.chapterNum, moduleId);
+      const at = data.segments.findIndex((s) => s.segmentId === segmentId);
+      if (at < 0 || !data.segments[at].fableMeaning) return notFlagged();
+      const { occurrences } = servedVersions.countOccurrences(data.segments);
+      if (occurrences[at] !== occurrence) return notFlagged();
+      const conn = segmentEditor.getDb();
+      const place = { book, chapter: req.chapterNum, moduleId };
+      if (!isFlagVisibleNow(conn, place, segmentId, occurrence)) return notFlagged();
+      const seg = data.segments[at];
+      let servedVersionId = null;
+      try {
+        servedVersionId = servedVersions.findVersionId(conn, {
+          ...place,
+          segmentId,
+          occurrence,
+          en: seg.en,
+          is: seg.is,
+          layer: data.isSource,
+        });
+      } catch (err) {
+        log.error({ err, book, moduleId }, 'fable comparison: served version lookup failed');
+      }
+      researchEmission.emitFableComparisonOpened(req, {
+        ...place,
+        segmentId,
+        occurrence,
+        servedVersionId,
+      });
+      return res.status(204).end();
+    } catch (err) {
+      if (err.code === 'FABLE_LAYER_MISSING') return notFlagged();
+      log.error({ err }, 'Error recording Fable comparison');
+      return res.status(500).json({ error: 'Internal error' });
     }
   }
 );

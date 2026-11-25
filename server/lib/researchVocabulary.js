@@ -24,6 +24,7 @@ const EVENT_TYPES = Object.freeze([
   'mt-accept-revoke',
   'suggestion-reject',
   'suggestion-left-open',
+  'fable-comparison-opened',
   'write-refused',
 ]);
 

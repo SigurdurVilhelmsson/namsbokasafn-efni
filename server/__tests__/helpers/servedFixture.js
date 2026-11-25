@@ -71,6 +71,10 @@ function fakeResponse(resolve, reject) {
       this.statusCode = c;
       return this;
     },
+    // A bodyless answer (res.status(204).end()): settles like json, with no body.
+    end() {
+      this.json(undefined);
+    },
     json(body) {
       if (this.headersSent) {
         second = second || { status: this.statusCode };

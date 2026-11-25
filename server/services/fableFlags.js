@@ -55,4 +55,24 @@ function applyFableFlags(conn, { book, chapter, moduleId, segments }) {
   return opening;
 }
 
-module.exports = { suppressFableFlags, isFableFlagVisible, applyFableFlags };
+/**
+ * Whether one segment's flag is visible under the unit's stored opening, for a caller that holds no
+ * opening (a route never names it, T17). Fails closed: a read that throws is logged and answers
+ * false, so the caller refuses as "not flagged" and never answers 500.
+ * @param {object} conn
+ * @param {{ book: string, chapter: number, moduleId: string }} place
+ * @param {string} segmentId
+ * @param {number} occurrence
+ * @returns {boolean}
+ */
+function isFlagVisibleNow(conn, { book, chapter, moduleId }, segmentId, occurrence) {
+  try {
+    const opening = moduleOpenings.readOpening(conn, { book, chapter, moduleId });
+    return isFableFlagVisible(opening, segmentId, occurrence);
+  } catch (err) {
+    log.error({ err, book, moduleId }, 'fable flags: opening unreadable, flag treated as hidden');
+    return false;
+  }
+}
+
+module.exports = { suppressFableFlags, isFableFlagVisible, applyFableFlags, isFlagVisibleNow };
