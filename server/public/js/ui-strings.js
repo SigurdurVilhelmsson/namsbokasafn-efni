@@ -11,6 +11,17 @@
 // "í kafla" (dative singular) for a count of 1, "í köflum" (dative plural) otherwise.
 const inChapters = (n) => (n === 1 ? 'í kafla' : 'í köflum');
 
+// "Engir ósnertir bútar eftir — N bút(ur|ar) … bíð(ur|a) staðfestingar." Icelandic number agreement follows
+// the LAST digit: 21/31/101 take the singular, 11 takes the plural. Noun and verb are both in the switched
+// fragment, so the whole clause agrees together. Shared by the MT and the Fable-unit wording.
+const contestedWaiting = (n) =>
+  'Engir ósnertir bútar eftir — ' +
+  n +
+  (n % 10 === 1 && n % 100 !== 11
+    ? ' bútur með fyrri breytingu bíður'
+    : ' bútar með fyrri breytingu bíða') +
+  ' staðfestingar.';
+
 // eslint-disable-next-line no-unused-vars
 const UI = {
   // ── Common ──────────────────────────────────────────────────
@@ -129,17 +140,7 @@ const UI = {
     // "none left" must not imply the module is done while accept buttons are
     // still on screen.
     noneLeftContested: function (n) {
-      return (
-        'Engir ósnertir bútar eftir — ' +
-        n +
-        // Icelandic number agreement follows the LAST digit: 21/31/101 take the
-        // singular, 11 takes the plural. Noun and verb are both in the switched
-        // fragment, so the whole clause agrees together.
-        (n % 10 === 1 && n % 100 !== 11
-          ? ' bútur með fyrri breytingu bíður'
-          : ' bútar með fyrri breytingu bíða') +
-        ' staðfestingar. Smelltu á „Staðfesta MT" í þeim röðum.'
-      );
+      return contestedWaiting(n) + ' Smelltu á „Staðfesta MT" í þeim röðum.';
     },
     // MTA-R3: a contested row may be attested, but the reason must be ON SCREEN
     // — a title= tooltip is invisible on a keyboard or touch pass, and this is
@@ -154,6 +155,30 @@ const UI = {
       'Textinn er aftur eins og upprunalega — breytingin í bið verður dregin til baka og ' +
       'flokkur/athugasemd falla niður.\n\n' +
       'Ef vélþýðingin er rétt eins og hún er, notaðu „Staðfesta MT".\n\nHalda áfram?',
+  },
+
+  // ── The same labels on a Fable-served unit (chemistry) ─────
+  // Wording approved by [USER] 2026-11-25 (option A), recorded in the serving spec's dated note of that day.
+  // The term is the approved source label's "upphafstexti" (masculine: réttur … hann, óbreyttur). The client
+  // reads these, and the MT ones above, only through editorLabels() in segment-editor.js.
+  fableLabels: {
+    acceptButton: 'Staðfesta upphafstexta',
+    acceptTooltip: 'Staðfesta að upphafstextinn sé réttur eins og hann er (Ctrl+Shift+Enter)',
+    contestedRejected: 'Breytingu var hafnað — upphafstextinn stendur óbreyttur.',
+    contestedSuperseded: 'Fyrri breyting var dregin til baka — upphafstextinn stendur óbreyttur.',
+    noneLeftContested: function (n) {
+      return contestedWaiting(n) + ' Smelltu á „Staðfesta upphafstexta" í þeim röðum.';
+    },
+    unchangedNothingSaved:
+      'Textinn er óbreyttur — engin breyting er vistuð og flokkur/athugasemd fylgja ekki með.\n\n' +
+      'Ef upphafstextinn er réttur eins og hann er, notaðu „Staðfesta upphafstexta".',
+    unchangedWithdrawConfirm:
+      'Textinn er aftur eins og upprunalega — breytingin í bið verður dregin til baka og ' +
+      'flokkur/athugasemd falla niður.\n\n' +
+      'Ef upphafstextinn er réttur eins og hann er, notaðu „Staðfesta upphafstexta".\n\nHalda áfram?',
+    revertTooltip: 'Endurstilla bútinn í síðast vistaða útgáfu (eða upphafstextann)',
+    sourceTypes:
+      'Upphafstexti = vélþýðing yfirfarin af gervigreind · Yfirlesið = mannlegur yfirlestur lokinn · Staðfærð = aðlöguð að Íslandi',
   },
 
   // ── Refused saves (G1.1, spec §5.6, §5.7, §5.18; index decision 12) ──

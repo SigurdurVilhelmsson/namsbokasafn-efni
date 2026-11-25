@@ -98,4 +98,28 @@ test.describe('Fable meaning flag and comparison on m68685', () => {
     // And the flag is not a page-wide artefact: the flagged row still has exactly one.
     await expect(rowOf(page, FLAGGED).locator('.fable-flag')).toHaveCount(1);
   });
+
+  // Wording approved by [USER] 2026-11-25 (serving spec's dated note): on a Fable-served unit the editor names its
+  // starting text "upphafstexti", never "MT". Reads only; nothing is clicked.
+  test('the accept button, its tooltip and the legend name the starting text, not MT', async ({
+    page,
+  }) => {
+    await loginAs(page, 'editor', EDITOR_ID);
+    await openUnit(page);
+    const accept = rowOf(page, CONTROL).locator('.btn-accept');
+    await expect(accept).toHaveCount(1);
+    await expect(accept).toContainText('Staðfesta upphafstexta');
+    await expect(accept).toHaveAttribute(
+      'title',
+      'Staðfesta að upphafstextinn sé réttur eins og hann er (Ctrl+Shift+Enter)'
+    );
+    await expect(page.locator('#module-meta')).toHaveAttribute(
+      'title',
+      'Upphafstexti = vélþýðing yfirfarin af gervigreind · Yfirlesið = mannlegur yfirlestur lokinn · Staðfærð = aðlöguð að Íslandi'
+    );
+    // No accept button anywhere in the unit still says MT.
+    await expect(
+      page.locator('#segments-body .btn-accept', { hasText: 'Staðfesta MT' })
+    ).toHaveCount(0);
+  });
 });

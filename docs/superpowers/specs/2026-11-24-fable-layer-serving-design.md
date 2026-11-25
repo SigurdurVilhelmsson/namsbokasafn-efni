@@ -50,6 +50,28 @@
 >    it adds ch10, takes ch11 m68783 from the re-send (`20261124T160650Z-80e6dd69`), and counts records rather than
 >    sent segments. The 38 `refused-markers` agree between the runs and the layer.
 
+> ✏️ **AMENDED 2026-11-25: the editor's other labels on a Fable-served unit** ([USER] approved option A as
+> drafted). §6.10 changed only the source label; the accept button, its tooltip, the contested-edit notices, the
+> unchanged-text notices, the revert tooltip and the legend still called the starting text MT or *vélþýðing*.
+> Those labels are part of what editors in the study see, so on a unit served from the Fable layer they now use
+> the source label's term, *upphafstexti*. Every other unit keeps the MT wording. The approved strings:
+>
+> | Where | Wording on a Fable-served unit |
+> |---|---|
+> | Accept button | Staðfesta upphafstexta |
+> | Its tooltip | Staðfesta að upphafstextinn sé réttur eins og hann er (Ctrl+Shift+Enter) |
+> | Edit rejected | Breytingu var hafnað — upphafstextinn stendur óbreyttur. |
+> | Edit withdrawn | Fyrri breyting var dregin til baka — upphafstextinn stendur óbreyttur. |
+> | Rows still waiting (last sentence) | Smelltu á „Staðfesta upphafstexta" í þeim röðum. |
+> | Unchanged text (both notices, the shared sentence) | Ef upphafstextinn er réttur eins og hann er, notaðu „Staðfesta upphafstexta". |
+> | Revert tooltip | Endurstilla bútinn í síðast vistaða útgáfu (eða upphafstextann) |
+> | Legend, first item | Upphafstexti = vélþýðing yfirfarin af gervigreind |
+>
+> The rest of each notice is unchanged. The strings live in `UI.fableLabels` (`server/public/js/ui-strings.js`),
+> the client reads them and their MT counterparts only through `editorLabels()`, and a test pins every string byte
+> for byte with the MT wording beside it as a control. The admin page's explanation of the suggestion-view switch
+> still names "Staðfesta MT"; it describes that switch on MT books and is seen only by admins.
+
 ## 1. What this is for
 
 [USER] ruled on 2026-11-24 that chemistry's editors start from Fable's edit of the frozen MT, that pure MT stays
