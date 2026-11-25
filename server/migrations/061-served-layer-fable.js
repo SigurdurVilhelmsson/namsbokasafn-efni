@@ -43,7 +43,10 @@
  * ⚠️ NEVER THROWS (CLAUDE.md § Tech Stack; 048 and 053 are the shape). migrationRunner calls every
  * up() on every server start, and a throw stops the server starting at all. The rebuild is one
  * transaction, so a failure anywhere rolls it all back and warns; the next start tries again. Until
- * it completes, serving a chemistry unit fails on the CHECK, loudly.
+ * it completes, no served version of a chemistry unit can be recorded (the CHECK refuses 'fable'). The
+ * serve itself is fail-soft and still answers with the text; what refuses is a unit's opening, whose
+ * first serve answers 503 OPENING_UNRECORDED. /api/health's checks.schema reports the state
+ * (server/lib/schemaHealth.js, through layerValues below).
  */
 
 const TABLE = 'served_text_versions';
@@ -167,6 +170,8 @@ function migrate(db) {
 
 module.exports = {
   name: '061-served-layer-fable',
+  // Read by server/lib/schemaHealth.js, so health parses the CHECK exactly as this migration does.
+  layerValues,
 
   up(db) {
     try {

@@ -392,3 +392,39 @@ describe('migration 061: served_text_versions admits layer fable', () => {
     });
   });
 });
+
+describe('checks.schema reports a 061 that did not complete (whole-branch review A M-4 / B I2)', () => {
+  const { checkSchema } = require('../lib/schemaHealth');
+  const MISSING = "served_text_versions.layer CHECK 'fable'";
+
+  it('a database 061 refused (a leftover working table) is not ok, and names the CHECK', () => {
+    const db = dbAt060();
+    db.exec('CREATE TABLE served_text_versions_new (x INTEGER)');
+    quiet();
+    m061.up(db);
+    expect(widened(db)).toBe(false); // control: 061 really refused
+    expect(checkSchema(db)).toEqual({ ok: false, missing: [MISSING] });
+  });
+
+  it('a database built by every migration is ok', () => {
+    const { db } = freshMigratedDb();
+    open.push(db);
+    expect(widened(db)).toBe(true); // control: 061 ran
+    expect(checkSchema(db)).toEqual({ ok: true, missing: [] });
+  });
+
+  it('a served_text_versions with no layer CHECK of the known shape is not ok either', () => {
+    const db = dbAt060();
+    db.exec('DROP TABLE served_text_versions');
+    db.exec(
+      'CREATE TABLE served_text_versions (id INTEGER PRIMARY KEY, book TEXT, chapter INTEGER, ' +
+        'module_id TEXT, segment_id TEXT, occurrence INTEGER, en_sha256 TEXT, is_sha256 TEXT, ' +
+        'layer TEXT, en_text TEXT, is_text TEXT)'
+    );
+    db.exec(
+      'CREATE UNIQUE INDEX idx_served_text_versions_key ON served_text_versions (book, chapter, ' +
+        'module_id, segment_id, occurrence, en_sha256, is_sha256, layer)'
+    );
+    expect(checkSchema(db)).toEqual({ ok: false, missing: [MISSING] });
+  });
+});
