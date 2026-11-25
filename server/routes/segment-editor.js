@@ -48,6 +48,7 @@ const notifications = require('../services/notifications');
 const servedVersions = require('../services/servedVersions');
 const servedEdit = require('../services/servedEdit');
 const moduleOpenings = require('../services/moduleOpenings');
+const { applyFableFlags } = require('../services/fableFlags');
 const suggestionView = require('../services/suggestionView');
 const suggestionLogs = require('../lib/suggestionLogs');
 const researchEmission = require('../services/researchEmission');
@@ -447,6 +448,15 @@ router.get(
           detail: moduleOpenings.moduleOpenedDetail(served, step.opening),
         });
       }
+      // Spec amendment 1: no Fable flag where human text was in flight at the opening, and none in a
+      // unit with no opening yet. The service reads the opening (a route never names it, T17) and
+      // fails closed: an unreadable opening clears every flag.
+      applyFableFlags(conn, {
+        book: req.params.book,
+        chapter: req.chapterNum,
+        moduleId: req.params.moduleId,
+        segments: data.segments,
+      });
       // G1.23 (spec §5.4 step 5, index decision 7): the offered term-suggestion groups per segment,
       // from the segments as served above and the edit rows as sent below. Only a segment with a
       // group or a tag carries the key. offeredForModule never throws and returns no time.
