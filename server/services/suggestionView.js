@@ -45,8 +45,9 @@ const SWITCH = 'suggestion-view';
 
 /**
  * Eligibility and the opening it was decided on. R4's order: the book first (pure, touches no
- * table), then the served layer (also pure): a book served from the Fable layer gets no suggestions,
- * because the groups describe the MT text the AI read and the editor sees Fable's, then the switch's first switch-on, its current value, the opening, and the strict time
+ * table), then the served layer (also pure): a book served from the Fable layer gets no
+ * suggestions, because the groups describe the MT text the AI read and the editor sees Fable's.
+ * Then the switch's first switch-on, its current value, the opening, and the strict time
  * comparison. Throws on a damaged database.
  */
 function eligibility(conn, { book, chapter, moduleId }) {
@@ -71,9 +72,10 @@ function eligibility(conn, { book, chapter, moduleId }) {
 
 /**
  * spec §6.2 (index decision 4, in controller ruling R4's order): a module gets suggestions only if
- * its book is a study book not served from the Fable layer, the view's switch was switched on for that book and is on now, and the
- * module opened strictly after the FIRST switch-on (the lowest-id on row, bookSwitches). A non-study
- * book returns before any table is read. Throws on a damaged database.
+ * its book is a study book not served from the Fable layer, the view's switch was switched on for
+ * that book and is on now, and the module opened strictly after the FIRST switch-on (the lowest-id
+ * on row, bookSwitches). A non-study book returns before any table is read. Throws on a damaged
+ * database.
  *
  * @param {import('better-sqlite3').Database} conn sessions.db
  * @param {{ book: string, chapter: number, moduleId: string }} key

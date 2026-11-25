@@ -126,7 +126,7 @@ beforeAll(() => {
           remaining = remaining.filter((g) => g !== v[0].group);
         }
         // Independent replay of the KEPT records, in record order. It starts from the FULL chain's
-        // first `before` (the base text the AI read, which is also the served text), never from the
+        // first `before` (the base text the AI read; the served text is Fable's now), never from the
         // first kept record's `before`: a chain that opens with a dropped record has a later first
         // kept `before` that already holds the dropped change (R9).
         const list = keptByChain.get(key) || [];
