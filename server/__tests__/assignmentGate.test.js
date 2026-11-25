@@ -3,11 +3,11 @@
 // G1.13 (spec §6.5, §6.6; proof T7): every path that creates a user_chapter_assignments row asks the
 // assign gate first, and a refusal writes no row. In a study book an assignment row opens research
 // units, so the gate is what keeps the study's consent basis: a decision on record (either one), a
-// licence clause, and the suggestion view on.
+// licence clause, and the book served from the Fable layer.
 //
 // Each refusal case starts from a fully assignable state and removes one condition, so the reason
 // it asserts is the one that condition produces, not one masked by the order.
-import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, beforeEach, afterEach, vi } from 'vitest';
 import { createRequire } from 'node:module';
 import { rmSync } from 'node:fs';
 import path from 'node:path';
@@ -26,6 +26,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const userService = require('../services/userService');
 const { assignmentRefusal, REFUSAL_MESSAGES } = require('../services/assignmentGate');
+const servedLayer = require('../lib/servedLayer');
 const { plantAssignment, plantAssignable } = require('./helpers/plantAssignment.cjs');
 
 userService._setTestDb(db);
@@ -143,12 +144,15 @@ const CASES = {
     db.prepare('DELETE FROM editor_licence_clauses WHERE user_id = ?').run(ids.editor);
     return { userId: ids.editor, book: CHEM, chapter: 3 };
   },
-  'suggestion-view-off': () => {
+  'served-layer-not-fable': () => {
     plantAssignable(db, { userId: ids.editor, book: CHEM });
-    viewOff(CHEM);
+    // The setting names chemistry's layer 'fable'; stub it back to the pure MT layer.
+    vi.spyOn(servedLayer, 'servedLayerFor').mockReturnValue('mt-output');
     return { userId: ids.editor, book: CHEM, chapter: 3 };
   },
 };
+
+afterEach(() => vi.restoreAllMocks());
 
 describe('T7: the assign gate refuses, and no path writes a row', () => {
   it.each([
@@ -157,7 +161,7 @@ describe('T7: the assign gate refuses, and no path writes a row', () => {
     'bypass-role',
     'no-consent-decision',
     'no-licence-clause',
-    'suggestion-view-off',
+    'served-layer-not-fable',
   ])(
     'refuses with %s, through both routes and setChapterAssignee, writing no row',
     async (reason) => {
@@ -207,6 +211,17 @@ describe('T7: the assign gate refuses, and no path writes a row', () => {
 });
 
 describe('T7: what the gate lets through', () => {
+  it('a study book served from the Fable layer is assignable with the suggestion view off', () => {
+    plantAssignable(db, { userId: ids.editor, book: CHEM });
+    viewOff(CHEM);
+    expect(servedLayer.servedLayerFor(CHEM)).toBe('fable');
+    expect(assignmentRefusal(db, { userId: ids.editor, book: CHEM, chapter: 3 })).toBeNull();
+  });
+
+  it('the superseded suggestion-view reason is gone from the messages', () => {
+    expect(Object.keys(REFUSAL_MESSAGES)).not.toContain('suggestion-view-off');
+  });
+
   it('a declined consent row plus a licence row, view on → assigned', async () => {
     plantAssignable(db, { userId: ids.editor, book: CHEM });
     // control: the decision on record is a decline, and it counts (spec §6.5, from §5.14)

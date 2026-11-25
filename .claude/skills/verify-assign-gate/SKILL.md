@@ -1,6 +1,6 @@
 ---
 name: verify-assign-gate
-description: Model-check G1.13's assign gate and the study-unit opening with TLC (server/verification/assign-gate/). Use when a change touches who can hold a chemistry chapter assignment, the assign gate, consent or licence records, user roles, the suggestion-view switch, or when a study unit opens — before you trust the change.
+description: Model-check G1.13's assign gate and the study-unit opening with TLC (server/verification/assign-gate/). Use when a change touches who can hold a chemistry chapter assignment, the assign gate, consent or licence records, user roles, the served-layer setting, or when a study unit opens — before you trust the change.
 ---
 
 # Verify the assign gate (G1.13)
@@ -9,7 +9,7 @@ description: Model-check G1.13's assign gate and the study-unit opening with TLC
 
 In the study book (`efnafraedi-2e`), a study unit **opens** — its research record starts — at the first serve of
 the module to a user who holds an assignment row for that chapter. `moduleOpenings.openingPredicate` reads only the
-row: not consent, not role, not the licence, not the switch. So everything the study promises about openings rests on
+row: not consent, not role, not the licence, not the served layer. So everything the study promises about openings rests on
 **which sequences of actions can leave a row behind**. Tests check each refusal one at a time; this model checks every
 order of every action, from production's starting state.
 
@@ -18,7 +18,7 @@ The rules the code keeps (the model proves them for every reachable state within
 | Rule (TLA+ name) | In plain words | Harm if broken |
 |---|---|---|
 | `ConsentBeforeOpening` | No unit opens for an editor with no consent decision recorded. | Breaks the study's consent basis (spec §4, first anti-goal). |
-| `OpenedOnlyAfterFirstSwitchOn` | No unit opens before the suggestion view was first switched on. | That unit loses its suggestions for good (ruling R6). |
+| `OpensOnlyWhenFableServed` | No unit opens unless the book is served from the Fable layer. | A unit would open on text the study does not compare (the 2026-11-24 decision, which superseded R6). |
 | `NoChapterZero` | No assignment row for chapter 0; its unit never opens. | A row for a unit nobody can open or edit (spec §6.6). |
 | `RowsCreatedOnlyForEditors` | When a row is created, its holder is a plain editor. | Admins and head editors would open units on a first look. |
 | `RowsCreatedWithLicence` | When a row is created, its holder has a recorded licence clause. | Edits with no proof of their CC BY release. |
@@ -44,7 +44,7 @@ so uncommitted edits count — do not add `HEAD`, which would hide them:
 ```sh
 git diff --stat 22c5f0c01 -- server/services/assignmentGate.js server/services/userService.js \
   server/services/moduleOpenings.js server/services/licenceClauses.js server/services/researchConsent.js \
-  server/services/suggestionSwitch.js server/lib/bookSwitches.js server/lib/researchScope.js \
+  server/lib/servedLayer.js server/lib/researchScope.js \
   server/lib/editorScope.js server/middleware/validateParams.js server/routes/admin.js server/routes/research.js \
   server/migrations
 ```
@@ -113,7 +113,7 @@ action per line.
 ## Scope: what a pass covers, and what it does not
 
 - **Bounds:** two users, chapters `{0, 1}`, one module per chapter, starting from production's state on 2026-11-22
-  (no chemistry assignment row, opening, consent or licence row; any roles; the switch on or off). Within those bounds
+  (no chemistry assignment row, opening, consent or licence row; any roles; the layer fixed per run). Within those bounds
   TLC explores every reachable state; it says nothing beyond them, though no rule compares more than one user or
   chapter at a time.
 - **Left out:** the closed-book reason (the route census and `editorScopeRoutes.test.js` cover it); HTTP, auth and
@@ -138,7 +138,7 @@ between the two, and `RemoveLicence` now says what they do).
 | `SetRole` | `server/services/userService.js` `updateUser`, `assignBookAccess`, `removeBookAccess`; routes `PUT /api/admin/users/:id`, `POST`/`DELETE /api/admin/users/:id/books` |
 | `RecordDecision`, `Withdraw` | `server/services/researchConsent.js` `recordDecision`, `withdraw`; routes in `server/routes/research.js` |
 | `RecordLicence`, `RemoveLicence` | `server/services/licenceClauses.js` `recordClause`, `removeClause` (refuses `HOLDS_CHAPTERS` via `holdsOpenBookChapter`, in its transaction); routes `POST`/`DELETE /api/admin/users/:id/licence-clause` (the DELETE checks `holdsOpenBookChapter` before its log entry) |
-| `SwitchView`, `viewOn`, `everOn` | `server/services/suggestionSwitch.js` `setSuggestionView`; `server/lib/bookSwitches.js` `currentSwitchValue`, `firstSwitchOnMs` |
+| `Layer` (a constant; no action) | `server/lib/servedLayer.js` `servedLayerFor`, read by `assignmentRefusal`; `check.sh` also runs the model with `"mt-output"` |
 | `Serve` | `server/services/moduleOpenings.js` `openingPredicate`, `recordOpening`, `openOnServe`; chapter 0 refused by `server/middleware/validateParams.js` `validateBookChapter` |
 | the study book | `server/lib/researchScope.js` `STUDY_BOOKS`; `server/lib/editorScope.js` `EDITOR_WRITABLE_BOOKS` |
 | `Init` | production read 2026-11-22 (spec AMENDED item 6) |

@@ -60,17 +60,6 @@ function assignLicensedEditor(conn, { userService, licenceClauses }, providerId,
     nowMs: Date.now(),
   });
   steps.push('RecordLicence: licenceClauses.recordClause');
-  const viewRow = conn
-    .prepare("SELECT 1 FROM book_switch_events WHERE book = ? AND switch_name = 'suggestion-view'")
-    .get(BOOK);
-  if (!viewRow) {
-    conn
-      .prepare(
-        `INSERT INTO book_switch_events (book, switch_name, value, switched_at_ms)
-         VALUES (?, 'suggestion-view', 1, ?)`
-      )
-      .run(BOOK, Date.now() - 1000);
-  }
   userService.setChapterAssignee(userId, BOOK, CHAPTER, 'replay-admin');
   steps.push('AssignReplacing: userService.setChapterAssignee (the gate passed)');
   return { userId, clauseId };
