@@ -225,6 +225,55 @@ const echo = (onCall) => ({
   );
 }
 
+// Guard: promoteFableLayer never overwrites a Fable file whose bytes differ, and reads no marker
+// (model: PfWrite). Runs on a temp copy of one chapter's inputs; nothing under books/ is written.
+{
+  const { promoteFableLayer, readSources } = await import(
+    path.join(repo, 'tools/promote-fable-layer.js')
+  );
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'mt-lock-replay-pf-'));
+  roots.push(root);
+  const book = path.join(root, 'books', STUDY_BOOK);
+  const realBook = path.join(repo, 'books', STUDY_BOOK);
+  for (const layer of [
+    '02-for-mt',
+    '02-structure',
+    '02-mt-output',
+    '02-mt-selected',
+    '02-mt-revised',
+    '03-faithful-translation',
+  ]) {
+    const from = path.join(realBook, layer, 'ch00');
+    if (fs.existsSync(from)) fs.cpSync(from, path.join(book, layer, 'ch00'), { recursive: true });
+  }
+  const opts = {
+    chapters: ['ch00'],
+    bookDir: book,
+    writtenBy: { tool: 'tools/promote-fable-layer.js', commit: 'replay' },
+    // CI-style depth-1 clones lack the term pass's commit: read "then" English as English now
+    inputOptions: {
+      gitShow: (_commit, repoRel) => fs.readFileSync(path.join(repo, repoRel), 'utf8'),
+    },
+    sources: readSources(),
+  };
+  promoteFableLayer(opts);
+  const file = path.join(book, '02-mt-fable', 'ch00', 'm68662-segments.is.md');
+  const altered = `${fs.readFileSync(file, 'utf8')}x`;
+  fs.writeFileSync(file, altered);
+  let refused = false;
+  try {
+    promoteFableLayer(opts);
+  } catch (e) {
+    refused = /different bytes/.test(e.message);
+  }
+  record(
+    'guard',
+    'promoteFableLayer refuses a Fable file with different bytes and leaves it as it was',
+    refused && fs.readFileSync(file, 'utf8') === altered,
+    `refused: ${refused}`
+  );
+}
+
 for (const r of roots) fs.rmSync(r, { recursive: true, force: true });
 
 let fail = 0;

@@ -134,6 +134,7 @@ const servedRows = () =>
          FROM served_text_versions WHERE book = ? ORDER BY id`
     )
     .all(BOOK);
+const fablePath = (u) => bookPath('02-mt-fable', u.chapterDir, `${u.moduleId}-segments.is.md`);
 const text = () => out.join('\n');
 
 function buildTree() {
@@ -342,10 +343,12 @@ describe('the header, as spec §6.4', () => {
         'mtSha256',
         'faithfulSha256',
         'changesSha256',
+        'fableSha256',
+        'fableTagsSha256',
         'segments',
         'marker',
       ],
-      ['layer1', 'layer1s', 'layer2', 'layer3'],
+      ['layer1', 'layer1s', 'layer2', 'layer3', 'fable'],
     ]);
   });
   it('a unit carries its file hashes, segment count and marker', () => {
@@ -358,6 +361,8 @@ describe('the header, as spec §6.4', () => {
       mtSha256: sha(readFileSync(mtPath(u))),
       faithfulSha256: null,
       changesSha256: null,
+      fableSha256: sha(readFileSync(fablePath(u))),
+      fableTagsSha256: sha(readFileSync(fablePath(u).replace('-segments.is.md', '-tags.jsonl'))),
       segments: 2,
       marker: 'freeze',
     });
@@ -412,6 +417,32 @@ describe('the header, as spec §6.4', () => {
       revisionRecordsSha256: sha(listing),
     });
   });
+  it('the fable layer record: directory, the chooser table hash, every provenance hash', () => {
+    const rel = (m) => `02-mt-fable/ch01/${m}-fable.json`;
+    writeRaw(root, `${BOOK}/${rel('m95002')}`, '{"schema":"mt-fable/1","m":2}\n');
+    writeRaw(root, `${BOOK}/${rel('m95001')}`, '{"schema":"mt-fable/1","m":1}\n');
+    writeRaw(root, `${BOOK}/02-mt-fable/ch01/m95001-segments.is.md.bak`, 'not provenance\n');
+    const { header: h } = study.buildManifest({ book: BOOK, tag: TAG, git: GIT });
+    const listing = ['m95001', 'm95002']
+      .map((m) => `${rel(m)}\t${sha(readFileSync(bookPath(rel(m))))}\n`)
+      .join('');
+    expect(h.layers.fable).toEqual({
+      dir: '02-mt-fable',
+      sourcesSha256: sha(
+        readFileSync(
+          path.join(
+            __dirname,
+            '..',
+            '..',
+            'experiments',
+            'fable-editor-trial',
+            'layer-sources.json'
+          )
+        )
+      ),
+      provenanceSha256: sha(listing),
+    });
+  });
   it('layer 3 counts faithful files and review-status sidecars', () => {
     expect(header.layers.layer3).toEqual({
       dir: '03-faithful-translation',
@@ -463,6 +494,7 @@ describe('the header with absent or served layer directories', () => {
           revisionRecordsSha256: sha(''),
         },
         layer3: { dir: '03-faithful-translation', faithfulFiles: 0, reviewStatusSidecars: 0 },
+        fable: { dir: '02-mt-fable', sourcesSha256: expect.any(String), provenanceSha256: sha('') },
       },
       {
         path: 'glossary/glossary-unified.json',

@@ -68,9 +68,12 @@ const INPUT_DIRS = [
   '02-mt-output',
   '02-mt-selected',
   '02-mt-revised',
+  '02-mt-fable',
   '03-faithful-translation',
   'glossary',
 ];
+/** The Fable layer's chooser table (which run supplies each chapter), relative to the repo root. */
+const FABLE_SOURCES = 'experiments/fable-editor-trial/layer-sources.json';
 const GLOSSARY = 'glossary/glossary-unified.json';
 /** The book glossary layer's committed record, written by export-terminology.js (book-layer spec §5.4). */
 const BOOK_LAYER = `glossary/${RECORD_FILE}`;
@@ -428,6 +431,22 @@ function layer2Record(book) {
   };
 }
 
+/**
+ * The Fable layer (`02-mt-fable`, fable-layer-serving spec §6.6): the directory, the chooser table's
+ * sha256 (null when absent) and one hash over every unit's provenance file, listed as
+ * `rel\tsha\n` lines like layer 2's. The served files themselves are hashed per unit.
+ */
+function fableRecord(book) {
+  const records = filesUnder(book, '02-mt-fable')
+    .filter((rel) => rel.endsWith('-fable.json'))
+    .map((rel) => `${rel}\t${sha256(fs.readFileSync(path.join(bookDir(book), rel)))}\n`);
+  return {
+    dir: '02-mt-fable',
+    sourcesSha256: fileSha(path.join(REPO_ROOT, FABLE_SOURCES)),
+    provenanceSha256: sha256(records.join('')),
+  };
+}
+
 /** Layer 3 (`03-faithful-translation`): the faithful files and the review-status sidecars. */
 function layer3Record(book) {
   const files = filesUnder(book, '03-faithful-translation');
@@ -469,6 +488,7 @@ function layerRecords(book, base, git) {
     layer1s: layer1sRecord(book, base, git.layer1sFiles),
     layer2: layer2Record(book),
     layer3: layer3Record(book),
+    fable: fableRecord(book),
     glossary: glossaryRecord(book),
   };
 }
@@ -505,6 +525,8 @@ function buildManifest({ book, tag, supersedes = null, git, base = servedBase(bo
       changesSha256: fileSha(
         path.join(bookDir(book), '02-mt-revised', u.chapterDir, `${u.moduleId}-changes.jsonl`)
       ),
+      fableSha256: fileSha(segmentParser.getModulePaths(book, u.chapter, u.moduleId).fable),
+      fableTagsSha256: fileSha(segmentParser.getModulePaths(book, u.chapter, u.moduleId).fableTags),
       segments: u.rows.length,
       marker: u.marker,
     })),
@@ -517,6 +539,7 @@ function buildManifest({ book, tag, supersedes = null, git, base = servedBase(bo
       layer1s: recs.layer1s,
       layer2: recs.layer2,
       layer3: recs.layer3,
+      fable: recs.fable,
     },
     glossary: recs.glossary,
     markers: {
@@ -802,8 +825,15 @@ function compareToManifest({ book, manifestDir, base = servedBase(book) }) {
     const now = current.get(id);
     if (!now) continue;
     result.unitsCompared++;
+    // A manifest cut before the Fable layer was an input has no fable hashes: compare exactly as then.
+    const fablePaths = segmentParser.getModulePaths(book, now.chapter, now.moduleId);
+    const fableChanged =
+      (was.fableSha256 !== undefined && fileSha(fablePaths.fable) !== was.fableSha256) ||
+      (was.fableTagsSha256 !== undefined && fileSha(fablePaths.fableTags) !== was.fableTagsSha256);
     const filesChanged =
-      fileSha(now.enSource) !== was.enSha256 || fileSha(now.mtOutput) !== was.mtSha256;
+      fileSha(now.enSource) !== was.enSha256 ||
+      fileSha(now.mtOutput) !== was.mtSha256 ||
+      fableChanged;
     if (filesChanged) result.inputChanged.push(id);
     if (now.isSource === 'faithful') {
       result.movedToFaithful.push(id);

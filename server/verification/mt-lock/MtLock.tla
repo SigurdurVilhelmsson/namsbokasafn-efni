@@ -30,6 +30,13 @@
                 which can only hide an interleaving, never invent one)
      E2eSweep   mt-lock-sweep.js sweepStrayLocks: unlinks every marker absent from the snapshot,
                 without reading its body
+     PfWrite    tools/promote-fable-layer.js promoteFableLayer: every target is checked before any is
+                written, an existing file with other bytes is refused ("the layer is never
+                overwritten"), a new file is created with flag 'wx'. The unit's Fable files exist
+                whenever it is served (the loader fails closed without them), so the step is either
+                identical bytes (no change) or different bytes (refused). It reads no marker: its
+                protection is the refusal, not the lock. Creating the layer on a unit that has none
+                yet is outside the model: no served unit lacks it, and the manifest's re-cut covers it.
      Pull       a dev tree's `git pull` brings prod's committed marker (scripts/git-backup.sh
                 stages markers); TwoTrees only
      Push       the dev tree's MT commit reaches prod (merge, then deploy's pull); TwoTrees only
@@ -37,7 +44,7 @@
 EXTENDS Integers
 
 CONSTANTS
-  Actors,      \* subset of {"at", "srv", "fz", "e2e"}: which processes run
+  Actors,      \* subset of {"at", "srv", "fz", "e2e", "pf"}: which processes run
   TwoTrees,    \* FALSE: every actor on one tree. TRUE: srv and fz on "prod", the rest on "dev"
   Sequential   \* TRUE: actors run one after another, never overlapping
 
@@ -147,6 +154,19 @@ E2eSweep ==
   /\ pc' = [pc EXCEPT !["e2e"] = "done"] /\ End
   /\ UNCHANGED <<base, frozen, edited, snap>>
 
+\* ── the Fable layer writer (tools/promote-fable-layer.js) ──
+\* TRUE: a target that exists with different bytes is refused. The mutant in check.sh makes it FALSE.
+PfRefusesDifferent == TRUE
+
+PfWrite ==
+  /\ "pf" \in Actors /\ pc["pf"] = "idle" /\ May("pf")
+  /\ \E same \in BOOLEAN :
+       IF same \/ PfRefusesDifferent
+         THEN UNCHANGED base                                       \* identical bytes, or refused
+         ELSE base' = [base EXCEPT !["dev"] = @ + 1]               \* overwritten
+  /\ pc' = [pc EXCEPT !["pf"] = "done"]
+  /\ UNCHANGED <<marker, lockBase, frozen, edited, snap, running>>
+
 \* ── git between the trees ──
 Pull ==
   /\ TwoTrees /\ (~Sequential \/ running = "none")
@@ -163,7 +183,7 @@ Push ==
 
 Next ==
   \/ AtPlan \/ AtWrite \/ SrvSave \/ SrvWrite \/ FzCheck \/ FzCreate
-  \/ E2eSnap \/ E2eSave \/ E2eSweep \/ Pull \/ Push
+  \/ E2eSnap \/ E2eSave \/ E2eSweep \/ PfWrite \/ Pull \/ Push
 
 Spec == Init /\ [][Next]_vars
 
@@ -177,6 +197,9 @@ FreezeKept == \A t \in Trees : frozen[t] => marker[t] = "freeze"
 \* that gap is BaseFixedWhileLocked's business. Holding this rule there too was a modelling error.)
 SrvWriting == "srv" \in Actors /\ pc["srv"] = "write"
 LockedOnceEdited == \A t \in Trees : edited[t] /\ ~SrvWriting => marker[t] # "none"
+
+\* Reachability witness (check.sh expects it violated): the promoter's step can be taken.
+PfNotDone == "pf" \in Actors => pc["pf"] # "done"
 
 TypeOK ==
   /\ marker \in [Trees -> {"none", "editing", "freeze"}]

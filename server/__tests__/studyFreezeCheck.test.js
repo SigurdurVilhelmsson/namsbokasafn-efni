@@ -95,6 +95,57 @@ afterAll(() => {
   rmSync(work, { recursive: true, force: true });
 });
 
+const fablePath = (u, file = 'segments.is.md') =>
+  bookPath('02-mt-fable', u.chapterDir, `${u.moduleId}-${file}`);
+/** Rewrite freeze.json through `edit`, leaving segments.jsonl (and its hash) alone. */
+const editHeader = (edit) => {
+  const headerPath = path.join(manifestDir(), 'freeze.json');
+  const header = JSON.parse(readFileSync(headerPath, 'utf8'));
+  edit(header);
+  writeFileSync(headerPath, `${JSON.stringify(header, null, 2)}\n`);
+};
+
+describe('the Fable layer as a manifest input (fable-layer-serving spec §6.6)', () => {
+  beforeEach(() => {
+    expect(cut()).toBe(0);
+    out.length = 0;
+  });
+
+  it("a changed byte in a unit's Fable file is inputChanged for that unit only", () => {
+    const f = fablePath(UNITS[1]);
+    writeFileSync(f, readFileSync(f, 'utf8').replace('Íslenska', 'Íslensk'));
+    const r = study.compareToManifest({ book: BOOK, manifestDir: manifestDir() });
+    expect([r.pass, r.inputChanged]).toEqual([false, ['ch01/m96002']]);
+  });
+  it('a changed Fable tags file is inputChanged too', () => {
+    writeFileSync(fablePath(UNITS[0], 'tags.jsonl'), '{"segmentId":"x"}\n');
+    const r = study.compareToManifest({ book: BOOK, manifestDir: manifestDir() });
+    expect(r.inputChanged).toEqual(['ch01/m96001']);
+  });
+  it('a deleted Fable file is inputChanged', () => {
+    unlinkSync(fablePath(UNITS[2]));
+    const r = study.compareToManifest({ book: BOOK, manifestDir: manifestDir() });
+    expect(r.inputChanged).toEqual(['appendices/m96003']);
+  });
+  it('control: an unchanged tree is a pass with nothing changed', () => {
+    const r = study.compareToManifest({ book: BOOK, manifestDir: manifestDir() });
+    expect([r.pass, r.inputChanged]).toEqual([true, []]);
+  });
+  it('a manifest without fableSha256 (the 2026-11-22 one) compares exactly as before', () => {
+    editHeader((h) =>
+      h.units.forEach((u) => {
+        delete u.fableSha256;
+        delete u.fableTagsSha256;
+      })
+    );
+    const same = study.compareToManifest({ book: BOOK, manifestDir: manifestDir() });
+    const f = fablePath(UNITS[1]);
+    writeFileSync(f, readFileSync(f, 'utf8').replace('Íslenska', 'Íslensk'));
+    const changed = study.compareToManifest({ book: BOOK, manifestDir: manifestDir() });
+    expect([same.pass, changed.inputChanged, changed.servedChanged.length]).toEqual([true, [], 1]);
+  });
+});
+
 describe('check with a manifest', () => {
   beforeEach(() => {
     expect(cut()).toBe(0);
