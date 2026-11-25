@@ -48,6 +48,15 @@ describe('the comparison on the largest real segment (appendices/m68865 table su
     expect(ms).toBeLessThan(100);
   });
 
+  it('shows the two texts as two plain blocks, before then after, with no del or ins marks', () => {
+    const html = comparisonHtml(seg.fableMeaning.before, seg.is);
+    expect(html).not.toMatch(/<del|<ins/);
+    const blocks = [
+      ...html.matchAll(/<div class="fable-diff-whole fable-diff-(before|after)">/g),
+    ].map((m) => m[1]);
+    expect(blocks).toEqual(['before', 'after']);
+  });
+
   it('keeps the join invariants: same+del is before, same+ins is the served text', () => {
     const ops = wordDiff(seg.fableMeaning.before, seg.is);
     expect(join(ops, ['same', 'del'])).toBe(seg.fableMeaning.before);

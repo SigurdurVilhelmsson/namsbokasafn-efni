@@ -227,19 +227,21 @@ router.get('/reviews/:reviewId', requireAuth, requireRole(ROLES.EDITOR), (req, r
     // Also load the module segments for context
     let moduleData = null;
     try {
-      moduleData = segmentParser.loadModuleForEditing(
+      const loaded = segmentParser.loadModuleForEditing(
         data.review.book,
         data.review.chapter,
         data.review.module_id
       );
       // Spec amendment 1: the same Fable flag rules as the module GET (no flag over in-flight text at the
-      // opening, none in a unit with no opening). Fails closed: an unreadable opening clears every flag.
+      // opening, none in a unit with no opening). Fails closed: an unreadable opening clears every flag,
+      // and the module is attached only after the rules ran, so a throw here sends no module at all.
       applyFableFlags(segmentEditor.getDb(), {
         book: data.review.book,
         chapter: data.review.chapter,
         moduleId: data.review.module_id,
-        segments: moduleData.segments,
+        segments: loaded.segments,
       });
+      moduleData = loaded;
     } catch (e) {
       // Module data is supplementary, don't fail the request
       log.error({ err: e }, 'Could not load module data for review');

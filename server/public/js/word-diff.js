@@ -82,6 +82,15 @@
    *   same+ins texts joined give `after`, same+del texts joined give `before`.
    */
   function wordDiff(before, after) {
+    return diffOps(before, after).ops;
+  }
+
+  /**
+   * wordDiff's work, plus whether the texts were past the budget (then ops is the two texts whole).
+   * @param {string} before @param {string} after
+   * @returns {{ ops: Array<{op: 'same'|'del'|'ins', text: string}>, whole: boolean }}
+   */
+  function diffOps(before, after) {
     const beforeText = String(before == null ? '' : before);
     const afterText = String(after == null ? '' : after);
     const a = tokenize(beforeText);
@@ -110,7 +119,7 @@
       // Too large to mark word by word: the two texts whole.
       push('del', beforeText);
       push('ins', afterText);
-      return ops;
+      return { ops: ops, whole: true };
     }
 
     push('same', a.slice(0, start).join(''));
@@ -142,7 +151,7 @@
     while (i < n) push('del', a[start + i++]);
     while (j < m) push('ins', b[start + j++]);
     push('same', a.slice(endA).join(''));
-    return ops;
+    return { ops: ops, whole: false };
   }
 
   /** @param {string} text */
@@ -169,11 +178,21 @@
 
   /**
    * The comparison panel's HTML for one flagged segment: the diff of `before` against the served text.
-   * Built on demand (the panel's first opening), never on a table render.
+   * Built on demand (the panel's first opening), never on a table render. Past the cell budget it is the
+   * two texts as two plain escaped blocks, before then after (the panel's heading names them), with no
+   * deletion or insertion marks: marking every word would read as a rewrite of the whole segment.
    * @param {string} before @param {string} after @returns {string}
    */
   function comparisonHtml(before, after) {
-    return renderWordDiffHtml(wordDiff(before, after));
+    const d = diffOps(before, after);
+    if (!d.whole) return renderWordDiffHtml(d.ops);
+    return (
+      '<div class="fable-diff-whole fable-diff-before">' +
+      escape(String(before == null ? '' : before)) +
+      '</div><div class="fable-diff-whole fable-diff-after">' +
+      escape(String(after == null ? '' : after)) +
+      '</div>'
+    );
   }
 
   const api = {

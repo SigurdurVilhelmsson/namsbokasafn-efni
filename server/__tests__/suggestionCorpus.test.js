@@ -169,10 +169,12 @@ describe('G1.23 acceptance checks 1-3 over committed layer 2', () => {
     } finally {
       spy.mockRestore();
     }
-    // The reason the rule exists: every module is served from the Fable layer, not the MT the AI read.
-    // Asserted on the layer itself, not on how many chains' texts differ from the MT: that count is a
-    // property of Fable's edits and would move if they came closer to the MT (deferred minor 4).
-    expect([...state.sources]).toEqual(['fable']);
+    // The reason the rule exists: no module is served from the MT the AI read (a unit later approved
+    // into a faithful file is served from that, which is fine), and Fable serves at least one. Asserted
+    // on the layer itself, not on how many chains' texts differ from the MT: that count is a property of
+    // Fable's edits and would move if they came closer to the MT (deferred minor 4).
+    expect(state.sources.has('mt-output')).toBe(false);
+    expect(state.sources.has('fable')).toBe(true);
   });
 
   it('check 3: accepting every shown group in order reproduces the kept chain, byte for byte', () => {

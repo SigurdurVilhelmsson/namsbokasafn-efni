@@ -2,7 +2,12 @@ import { describe, it, expect } from 'vitest';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
-const { wordDiff, renderWordDiffHtml, MAX_CELLS } = require('../public/js/word-diff.js');
+const {
+  wordDiff,
+  renderWordDiffHtml,
+  comparisonHtml,
+  MAX_CELLS,
+} = require('../public/js/word-diff.js');
 
 const join = (ops, keep) =>
   ops
@@ -97,6 +102,20 @@ describe('wordDiff past the cell budget', () => {
       { op: 'del', text: before },
       { op: 'ins', text: after },
     ]);
+  });
+
+  it('comparisonHtml shows them as two plain escaped blocks, not as marks', () => {
+    const html = comparisonHtml(`<b>${before}`, `"${after}`);
+    expect(html).toBe(
+      `<div class="fable-diff-whole fable-diff-before">&lt;b&gt;${before}</div>` +
+        `<div class="fable-diff-whole fable-diff-after">&quot;${after}</div>`
+    );
+  });
+
+  it('comparisonHtml under the budget is the marked diff (control)', () => {
+    expect(comparisonHtml('the red cat', 'the blue cat')).toBe(
+      renderWordDiffHtml(wordDiff('the red cat', 'the blue cat'))
+    );
   });
 
   it('trims a shared prefix and suffix before measuring, so a local edit in long texts is still marked', () => {
