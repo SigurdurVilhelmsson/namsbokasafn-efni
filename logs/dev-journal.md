@@ -1075,3 +1075,34 @@ fb729a9d8 Merge pull request #770 from SigurdurVilhelmsson/feat/c248-g111-marker
 **Why:** —
 
 ---
+
+## 2026-11-23 00:50 - G1.13 scope guards shipped and deployed, with the appendix backfill done; the deploy record (#778) and the statechart view (#779) are open
+
+**Branch:** verify/assign-gate-view
+**Modified:**
+?? HANDOFF.md
+
+**Recent commits:**
+27da2810b test(g113): a /statechart view for the assign-gate model
+9dca06c91 Merge pull request #777 from SigurdurVilhelmsson/feat/g113-scope-guards
+4182b74dd Merge pull request #776 from SigurdurVilhelmsson/docs/register-g17-cut-tagged
+
+**Why:** —
+
+---
+
+## 2026-11-25 16:08 - Fable layer serving shipped: #814–#819 merged and deployed, freeze re-cut tagged, dashboard v116; next is G1.4 consent item 2 then DPO
+
+**Branch:** (detached at origin/main, 90af03ef9)
+**Modified:**
+ M logs/dev-journal.md
+?? HANDOFF.md
+
+**Recent commits:**
+90af03ef9 Merge pull request #819 from SigurdurVilhelmsson/docs/register-816-deployed
+49453a5be docs(register): #816–#818 deployed; the NEXT is the consent text
+b76477055 Merge pull request #818 from SigurdurVilhelmsson/docs/e2e-drop-ledger-citation
+
+**Why:** —
+
+---
