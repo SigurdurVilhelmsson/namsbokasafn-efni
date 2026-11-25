@@ -49,6 +49,32 @@
   });
 
   // ================================================================
+  // LABELS THAT NAME THE STARTING TEXT
+  // ================================================================
+
+  /**
+   * The accept, contested-edit, unchanged-text, revert and legend labels for the open unit. A unit served
+   * from the Fable layer (chemistry) names its starting text "upphafstexti", as its source label does
+   * (serving spec, dated note of 2026-11-25); every other unit keeps the MT wording. Read these strings only
+   * through here.
+   */
+  function editorLabels() {
+    const fable = !!(moduleData && moduleData.isSource === 'fable');
+    if (fable) return UI.fableLabels;
+    return {
+      acceptButton: UI.acceptance.acceptButton,
+      acceptTooltip: UI.acceptance.acceptTooltip,
+      contestedRejected: UI.acceptance.contestedRejected,
+      contestedSuperseded: UI.acceptance.contestedSuperseded,
+      noneLeftContested: UI.acceptance.noneLeftContested,
+      unchangedNothingSaved: UI.acceptance.unchangedNothingSaved,
+      unchangedWithdrawConfirm: UI.acceptance.unchangedWithdrawConfirm,
+      revertTooltip: UI.segmentEditor.revertTooltip,
+      sourceTypes: UI.tooltips.sourceTypes,
+    };
+  }
+
+  // ================================================================
   // SAVE STATUS BAR
   // ================================================================
 
@@ -1616,7 +1642,7 @@
             `<span style="color: var(--warning); font-weight: 600;">${missing} óþýdd(ar)</span>`
           )
         : metaText;
-    metaEl.title = UI.tooltips.sourceTypes;
+    metaEl.title = editorLabels().sourceTypes;
     renderDoneTrace(moduleData.myLastDoneAt); // register §C222: the reader's own last "Merkja sem lokið"
 
     // Update topbar breadcrumb — human title, not the pipeline module id
@@ -2496,13 +2522,13 @@
       // invisible on a keyboard or touch pass, and this is an attestation.
       const contestedHint =
         latestEdit && latestEdit.status === 'rejected'
-          ? `<div class="accept-context-hint">${UI.acceptance.contestedRejected}</div>`
+          ? `<div class="accept-context-hint">${editorLabels().contestedRejected}</div>`
           : latestEdit && latestEdit.status === 'superseded'
-            ? `<div class="accept-context-hint">${UI.acceptance.contestedSuperseded}</div>`
+            ? `<div class="accept-context-hint">${editorLabels().contestedSuperseded}</div>`
             : '';
       actionsHtml += `
           ${contestedHint}
-          <button class="btn btn-sm btn-accept" onclick="acceptSegmentAndAdvance('${seg.segmentId}', 'single')"${stacked} title="${UI.acceptance.acceptTooltip}">&#10003; ${UI.acceptance.acceptButton}</button>
+          <button class="btn btn-sm btn-accept" onclick="acceptSegmentAndAdvance('${seg.segmentId}', 'single')"${stacked} title="${editorLabels().acceptTooltip}">&#10003; ${editorLabels().acceptButton}</button>
         `;
     } else if (blockReason === 'DISCUSS_OPEN') {
       actionsHtml += `<div class="accept-context-hint"${stacked}>${UI.acceptance.discussBlocked}</div>`;
@@ -2572,7 +2598,7 @@
                 <input type="text" id="note-${cssId(seg.segmentId)}" placeholder="Athugasemd (valkvætt)" value="${escapeHtml(ownLatest?.editor_note || '')}">
                 <button class="btn btn-sm btn-primary" onclick="saveEdit('${seg.segmentId}')">Vista</button>
                 <button class="btn btn-sm btn-secondary btn-propagate" onclick="propagateSegment('${seg.segmentId}')" title="${UI.segmentEditor.propagateTooltip}">${UI.segmentEditor.propagateButton}</button>
-                <button class="btn btn-sm btn-secondary btn-revert" onclick="revertEdit('${seg.segmentId}')" title="${UI.segmentEditor.revertTooltip}">&#8617; ${UI.segmentEditor.revertButton}</button>
+                <button class="btn btn-sm btn-secondary btn-revert" onclick="revertEdit('${seg.segmentId}')" title="${editorLabels().revertTooltip}">&#8617; ${UI.segmentEditor.revertButton}</button>
                 <button class="btn btn-sm btn-secondary" onclick="closeEditPanel('${seg.segmentId}')">Hætta við</button>
               </div>
             </div>
@@ -2762,7 +2788,7 @@
       // must not imply the module is done while accept buttons remain (MTA-R3).
       const contested = moduleData.segments.filter(isUnreviewedBacklog).length;
       saveRetry.showToast(
-        contested ? UI.acceptance.noneLeftContested(contested) : UI.acceptance.noneLeft,
+        contested ? editorLabels().noneLeftContested(contested) : UI.acceptance.noneLeft,
         'info'
       );
       return;
@@ -3039,10 +3065,10 @@
     // Explain, and point at Staðfesta MT. Server behavior unchanged.
     if (editedContent === shownIs && (category || editorNote)) {
       if (!hasPendingEdit) {
-        alert(UI.acceptance.unchangedNothingSaved);
+        alert(editorLabels().unchangedNothingSaved);
         return;
       }
-      if (!confirm(UI.acceptance.unchangedWithdrawConfirm)) return;
+      if (!confirm(editorLabels().unchangedWithdrawConfirm)) return;
     }
 
     // Validate before saving
