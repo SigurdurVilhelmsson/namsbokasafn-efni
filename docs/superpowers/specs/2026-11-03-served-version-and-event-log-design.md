@@ -14,6 +14,26 @@
 > no status. If it disagrees with the active register, the register wins. Do not sync it or edit it in place.
 > Supersede it with a new record instead.
 
+> **✏️ AMENDED 2026-11-25: serving the Fable layer changes §5.2's layer, §5.9's event list and the integrity test's
+> classes.** The deciding documents are the serving design (`docs/superpowers/specs/2026-11-24-fable-layer-serving-design.md`,
+> §6.5, §6.6, §6.9) and [the record](../../decisions/2026-11-24-editors-start-from-fable-text.md).
+>
+> - **§5.2, the served-version `layer`:** the value set gains `'fable'`. `served_text_versions`' CHECK is widened by
+>   `server/migrations/061-served-layer-fable.js`. A row minted after the deploy carries `'fable'`; earlier `'mt-output'`
+>   rows stay as they are, because the layer is part of the key. A page loaded before the deploy is refused
+>   `STALE_BASE` on save, as designed.
+> - **§5.9, `EVENT_TYPES`:** the list gains `fable-comparison-opened` (`server/lib/researchVocabulary.js`). It has no
+>   items. Its detail is `segmentId`, `occurrence` and the served version id, which is null when the module has no
+>   matching served row; the event is still recorded then, since refusing would lose the act. It is recorded through
+>   `researchLog` only, so only for consenting editors and under the withdrawal and retention rules. It is sent once per
+>   opening of the comparison: the client sends it on opening the panel.
+> - **The served-text integrity test** (`server/__tests__/servedVersionsIntegrity.test.js`, T1) gains a classified
+>   class for Fable serving: a chain whose segment has a line in the unit's `02-mt-fable` tags file, whose minted
+>   `is_sha256` equals that line's `afterSha256`, and whose tags `beforeSha256` equals the chain's `beforeSha256`
+>   (Fable started from exactly what the AI pass read).
+> - **A Fable-served unit with no Fable file is refused:** `FABLE_LAYER_MISSING` on open; on save, accept and
+>   propagate the existing `NO_LAYER` refusal.
+
 > **✏️ AMENDED 2026-11-24: §6's item 22 no longer holds. Ruled by [USER] on 2026-11-24**
 > ([record](../../decisions/2026-11-24-editors-start-from-fable-text.md)): chemistry editors start from Fable's edit of
 > the frozen MT, and the term pass is no longer shown to them. "Every unit starts from pure MT" is now false, so the

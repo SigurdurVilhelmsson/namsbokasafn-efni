@@ -113,7 +113,15 @@ function refuse(code, { echoedSha256 = null, currentSha256 = null, violations } 
  */
 function placeOnServedBase({ book, chapter, moduleId, segmentId, occurrence }) {
   if (isNotMintedBook(book)) throw refuse('BOOK_NOT_MINTED');
-  const data = segmentParser.loadModuleForEditing(book, chapter, moduleId);
+  let data;
+  try {
+    data = segmentParser.loadModuleForEditing(book, chapter, moduleId);
+  } catch (e) {
+    // A Fable-served unit with no usable Fable layer has no Icelandic text to place on: the same
+    // refusal as a unit with no layer at all, never the loader's raw error (a 500 at the routes).
+    if (e && e.code === 'FABLE_LAYER_MISSING') throw refuse('NO_LAYER');
+    throw e;
+  }
   if (!data.isSource) throw refuse('NO_LAYER');
   const { occurrences, duplicated } = servedVersions.countOccurrences(data.segments);
   const at = data.segments.findIndex((s) => s.segmentId === segmentId);

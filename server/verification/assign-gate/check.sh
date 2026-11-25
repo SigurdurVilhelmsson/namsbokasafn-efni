@@ -55,9 +55,21 @@ else
   sed -n '/^Error:/,$p' "$work/main.out" | head -40
 fi
 
+# 1b. With the layer NOT fable, the real gate refuses every assignment: no row, no opening, rules hold.
+mkdir -p "$work/mtlayer"
+cp "$here/AssignGate.tla" "$work/mtlayer/"
+sed 's/Layer = "fable"/Layer = "mt-output"/' "$here/AssignGate.cfg" > "$work/mtlayer/AssignGate.cfg"
+(cd "$work/mtlayer" && java -XX:+UseParallelGC -cp "$jar" tlc2.TLC -workers 1 -metadir "$work/mtlayer/states" \
+   -config AssignGate.cfg AssignGate.tla > "$work/mtlayer.out" 2>&1) || true
+if grep -q '^Model checking completed. No error has been found.' "$work/mtlayer.out"; then
+  echo "PASS layer not fable: the gate refuses every assignment, nothing opens"
+else
+  fail=1; echo "FAIL layer not fable: rule broken: $(violated mtlayer)"; path mtlayer
+fi
+
 # 2. The known findings still fail, each on its own rule.
 for rule in OnlyEditorsHoldRows OnlyEditorsOpen; do
-  printf 'SPECIFICATION Spec\nCONSTANTS\n  Users = {u1, u2}\n  Chapters = {0, 1}\nINVARIANT %s\n' "$rule" > "$work/$rule.cfg"
+  printf 'SPECIFICATION Spec\nCONSTANTS\n  Users = {u1, u2}\n  Chapters = {0, 1}\n  Layer = "fable"\nINVARIANT %s\n' "$rule" > "$work/$rule.cfg"
   run "$rule" "$rule.cfg" AssignGate.tla
   if [ "$(violated "$rule")" = "$rule" ]; then
     echo "KNOWN FINDING still present: $rule"
@@ -73,7 +85,7 @@ done
 #    comment that ends the guard's line in AssignGate.tla, and the mutant is the model without that line.
 for pair in "gate: chapter-not-editable|NoChapterZero" "gate: bypass-role|RowsCreatedOnlyForEditors" \
             "gate: no-consent-decision|ConsentBeforeOpening" "gate: no-licence-clause|EveryRowHolderHasLicence" \
-            "gate: suggestion-view-off|OpenedOnlyAfterFirstSwitchOn" \
+            "gate: served-layer-not-fable|OpensOnlyWhenFableServed" \
             "removal: holds-chapter|EveryRowHolderHasLicence"; do
   marker=${pair%%|*}; rule=${pair#*|}
   reason=$(printf '%s' "${marker#*: }")
@@ -83,6 +95,10 @@ for pair in "gate: chapter-not-editable|NoChapterZero" "gate: bypass-role|RowsCr
     fail=1; echo "MUTANT $reason: no line marked '$marker' in AssignGate.tla; the model and this script disagree"; continue
   fi
   cp "$here/AssignGate.cfg" "$mdir/"
+  # The layer guard only bites when the layer is not fable, so that mutant runs with "mt-output".
+  if [ "$reason" = "served-layer-not-fable" ]; then
+    sed -i 's/Layer = "fable"/Layer = "mt-output"/' "$mdir/AssignGate.cfg"
+  fi
   (cd "$mdir" && java -XX:+UseParallelGC -cp "$jar" tlc2.TLC -workers 1 -metadir "$mdir/states" \
      -config AssignGate.cfg AssignGate.tla > "$work/mutant-$reason.out" 2>&1) || true
   got=$(violated "mutant-$reason")

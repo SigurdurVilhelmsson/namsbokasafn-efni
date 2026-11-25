@@ -408,12 +408,12 @@ describe('POST /edit — what is stored and what is answered (spec §5.6 step 6,
 
   it('T3: a relabel with identical bytes does not refuse', async () => {
     const page = (await serve(CHEM, 1, M)).body;
-    expect(page.isSource).toBe('mt-output');
+    expect(page.isSource).toBe('fable');
     const H = segOf(page, B).baseSha256;
     const servedAt = db
       .prepare('SELECT * FROM served_text_versions WHERE segment_id = ? AND is_sha256 = ?')
       .all(B, H);
-    expect(servedAt.map((v) => v.layer)).toEqual(['mt-output']);
+    expect(servedAt.map((v) => v.layer)).toEqual(['fable']);
 
     const rel = (layer) => path.join(root, CHEM, layer, 'ch01', `${M}-segments.is.md`);
     mkdirSync(path.dirname(rel('03-faithful-translation')), { recursive: true });
@@ -430,14 +430,11 @@ describe('POST /edit — what is stored and what is answered (spec §5.6 step 6,
 });
 
 describe('POST /edit — placement and scope refusals (spec §5.6 steps 1–3, §5.7, §11)', () => {
-  it('DUPLICATE_ID and NO_LAYER answer 409; nothing is written', async () => {
+  it('DUPLICATE_ID answers 409; nothing is written', async () => {
     const page = (await serve(CHEM, 1, M)).body;
     const dups = page.segments.filter((s) => s.segmentId === D);
     expect(dups).toHaveLength(2);
     expect(dups.every((s) => !('baseSha256' in s))).toBe(true);
-    const layerless = (await serve(CHEM, 1, 'm93002')).body;
-    expect(layerless.isSource).toBe(null);
-    expect('baseSha256' in segOf(layerless, 'm93002:para:a')).toBe(false);
 
     const before = snapshot();
     // As the page sends it (no hash on the row), and with a well-formed hash.
@@ -445,14 +442,6 @@ describe('POST /edit — placement and scope refusals (spec §5.6 steps 1–3, �
       const r = await save({ segmentId: D, editedContent: 'IS d breytt', baseSha256 });
       expect(r.status).toBe(409);
       expect(r.body).toEqual({ error: 'DUPLICATE_ID', message: REFUSAL_MESSAGES.DUPLICATE_ID });
-    }
-    for (const baseSha256 of [undefined, sha256Text('')]) {
-      const r = await save(
-        { segmentId: 'm93002:para:a', editedContent: 'IS a', baseSha256 },
-        { moduleId: 'm93002' }
-      );
-      expect(r.status).toBe(409);
-      expect(r.body).toEqual({ error: 'NO_LAYER', message: REFUSAL_MESSAGES.NO_LAYER });
     }
     expect(snapshot()).toEqual(before);
 
@@ -464,6 +453,25 @@ describe('POST /edit — placement and scope refusals (spec §5.6 steps 1–3, �
     });
     expect(ok.status).toBe(200);
     expect(editRows()).toHaveLength(1);
+  });
+
+  it('a Fable-served unit with no Fable file is refused 409 on the serve (spec §6.4)', async () => {
+    const r = await serve(CHEM, 1, 'm93002');
+    expect(r.status).toBe(409);
+    expect(r.body.error).toBe('FABLE_LAYER_MISSING');
+  });
+
+  it('NO_LAYER answers 409 on a save to a layerless unit; nothing is written', async () => {
+    const before = snapshot();
+    for (const baseSha256 of [undefined, sha256Text('')]) {
+      const r = await save(
+        { segmentId: 'm93002:para:a', editedContent: 'IS a', baseSha256 },
+        { moduleId: 'm93002' }
+      );
+      expect(r.status).toBe(409);
+      expect(r.body).toEqual({ error: 'NO_LAYER', message: REFUSAL_MESSAGES.NO_LAYER });
+    }
+    expect(snapshot()).toEqual(before);
   });
 
   it('T18: an organic save answers 409 BOOK_NOT_MINTED even with a correct hash', async () => {

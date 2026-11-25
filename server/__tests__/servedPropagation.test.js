@@ -290,7 +290,7 @@ describe('POST /propagate (spec §5.6 Propagation targets, §5.7, §11)', () => 
       en_text: EN,
       is_text: served.is,
       is_sha256: served.baseSha256,
-      layer: 'mt-output',
+      layer: 'fable',
     });
     // The serve found the version propagation minted: one version for that target, not two.
     expect(

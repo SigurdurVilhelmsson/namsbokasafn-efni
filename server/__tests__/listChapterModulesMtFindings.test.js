@@ -106,4 +106,37 @@ describe('listChapterModules — per-module MT finding counts', () => {
     // …and a sibling still on mt-preview reads the mt-preview report.
     expect(mods.m00035.mtFindingCount).toBe(1);
   });
+
+  it('reports 0 on a Fable-served unit, which the loader shows without findings (whole-branch review B M2)', () => {
+    // Chemistry is Fable-served (server/lib/servedLayer.js): the mt-preview report describes MT text its
+    // editor is not shown, so the loader attaches no finding and the list must not badge the unit.
+    const CHEM = 'efnafraedi-2e';
+    const chem = (rel, content) => {
+      const p = path.join(booksDir, CHEM, rel);
+      fs.mkdirSync(path.dirname(p), { recursive: true });
+      fs.writeFileSync(p, content);
+    };
+    for (const m of ['m00035', 'm00037']) {
+      chem(`02-for-mt/ch03/${m}-segments.en.md`, EN(m));
+      chem(`02-mt-output/ch03/${m}-segments.is.md`, EN(m));
+      chem(`02-mt-fable/ch03/${m}-segments.is.md`, EN(m));
+      chem(`02-mt-fable/ch03/${m}-tags.jsonl`, '');
+    }
+    chem(`03-faithful-translation/ch03/m00037-segments.is.md`, EN('m00037'));
+    chem(
+      'residue-report.mt-preview.json',
+      JSON.stringify({ modules: { m00035: { exact: ['a', 'b'], warnings: [], tolerated: [] } } })
+    );
+    chem(
+      'residue-report.faithful.json',
+      JSON.stringify({ modules: { m00037: { exact: ['a'], warnings: [], tolerated: [] } } })
+    );
+
+    const mods = byId(segmentParser.listChapterModules(CHEM, 3));
+
+    expect(segmentParser.loadModuleForEditing(CHEM, 3, 'm00035').isSource).toBe('fable'); // control
+    expect(mods.m00035.mtFindingCount).toBe(0);
+    // Control: a faithful unit of the same book still reads its faithful report, as the loader does.
+    expect(mods.m00037.mtFindingCount).toBe(1);
+  });
 });

@@ -1097,6 +1097,14 @@ describe('the worklist', () => {
     const f = path.join(booksRoot, BOOK, rel);
     mkdirSync(path.dirname(f), { recursive: true });
     writeFileSync(f, text);
+    // Chemistry is served from its Fable layer: plant one beside each MT file, with the MT's text.
+    const m = rel.match(/^02-mt-output\/(ch\d+)\/(.+)-segments\.is\.md$/);
+    if (m) {
+      const dir = path.join(booksRoot, BOOK, '02-mt-fable', m[1]);
+      mkdirSync(dir, { recursive: true });
+      writeFileSync(path.join(dir, `${m[2]}-segments.is.md`), text);
+      writeFileSync(path.join(dir, `${m[2]}-tags.jsonl`), '');
+    }
   };
   let changeId;
   let exclusionId;
@@ -1237,7 +1245,7 @@ describe('the worklist', () => {
         err: true,
       });
     } finally {
-      for (const dir of ['02-for-mt', '02-mt-output', '02-structure']) {
+      for (const dir of ['02-for-mt', '02-mt-output', '02-mt-fable', '02-structure']) {
         rmSync(path.join(booksRoot, BOOK, dir, 'ch04'), { recursive: true, force: true });
       }
     }

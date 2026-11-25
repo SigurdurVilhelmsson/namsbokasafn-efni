@@ -23,6 +23,63 @@ const {
 } = require('../../tools/lib/mt-normalize.cjs');
 const { normalizeChapter, chapterDir } = require('../lib/chapterLabel');
 const mtFindings = require('../lib/mtFindings');
+const { servedLayerFor, FABLE_LAYER } = require('../lib/servedLayer');
+
+/** What an editor reads when a Fable-served unit cannot be opened (spec §6.10, approved). */
+const FABLE_LAYER_MISSING_MESSAGE =
+  'Texti gervigreindar fyrir þessa einingu fannst ekki og ekki er hægt að opna hana. Látið umsjónarmann vita.';
+
+/**
+ * The refusal for a Fable-served unit whose layer is missing or corrupt. `message` is the text an
+ * editor reads; `detail` names the file or segment, for logs only.
+ */
+function fableLayerMissing(detail) {
+  return Object.assign(new Error(FABLE_LAYER_MISSING_MESSAGE), {
+    code: 'FABLE_LAYER_MISSING',
+    detail,
+  });
+}
+
+/**
+ * Read a Fable unit's tags file: segmentId → { before } for each segment tagged `meaning` on its
+ * occurrence-0 line. An empty file is valid (no changes). A missing file, any non-JSON line, or a line
+ * with no integer occurrence refuses the unit, so Fable's text is never served without its flags.
+ */
+function readFableMeaning(tagsPath) {
+  if (!fs.existsSync(tagsPath)) throw fableLayerMissing(`tags file missing: ${tagsPath}`);
+  const flags = new Map();
+  const lines = fs.readFileSync(tagsPath, 'utf-8').split('\n');
+  lines.forEach((line, i) => {
+    if (line.trim() === '') return;
+    let rec;
+    try {
+      rec = JSON.parse(line);
+    } catch {
+      throw fableLayerMissing(`tags file line ${i + 1} is not JSON: ${tagsPath}`);
+    }
+    if (rec === null || typeof rec !== 'object' || typeof rec.segmentId !== 'string') {
+      throw fableLayerMissing(`tags file line ${i + 1} has no segmentId: ${tagsPath}`);
+    }
+    // The writer records an integer occurrence on every line; a line without one could silently drop a
+    // flag while the unit serves, so it refuses instead (fail closed).
+    if (!Number.isInteger(rec.occurrence)) {
+      throw fableLayerMissing(`tags file line ${i + 1} has no integer occurrence: ${tagsPath}`);
+    }
+    // Only the first copy of a repeated id is served (G1.12), so only occurrence 0 can flag it.
+    if (rec.occurrence !== 0) return;
+    if (Array.isArray(rec.tags) && rec.tags.includes('meaning')) {
+      // The writer always records `before` on a meaning line; without it the comparison would
+      // show an all-insertion diff, so the unit refuses instead (fail closed).
+      if (typeof rec.before !== 'string') {
+        throw fableLayerMissing(
+          `tags file line ${i + 1} is a meaning line with no before: ${tagsPath}`
+        );
+      }
+      flags.set(rec.segmentId, { before: rec.before });
+    }
+  });
+  return flags;
+}
 
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
 let BOOKS_DIR = path.join(PROJECT_ROOT, 'books');
@@ -82,6 +139,8 @@ function getModulePaths(book, chapter, moduleId) {
   return {
     enSource: path.join(bookDir, '02-for-mt', chDir, `${moduleId}-segments.en.md`),
     mtOutput: path.join(bookDir, '02-mt-output', chDir, `${moduleId}-segments.is.md`),
+    fable: path.join(bookDir, '02-mt-fable', chDir, `${moduleId}-segments.is.md`),
+    fableTags: path.join(bookDir, '02-mt-fable', chDir, `${moduleId}-tags.jsonl`),
     faithful: path.join(bookDir, '03-faithful-translation', chDir, `${moduleId}-segments.is.md`),
     localized: path.join(bookDir, '04-localized-content', chDir, `${moduleId}-segments.is.md`),
     structure: path.join(bookDir, '02-structure', chDir, `${moduleId}-structure.json`),
@@ -112,9 +171,26 @@ function loadModuleForEditing(book, chapter, moduleId) {
   // Load IS translation (from faithful if exists, else mt-output)
   let isSegments = [];
   let isSource = null;
+  let fableMeaning = new Map();
   if (fs.existsSync(paths.faithful)) {
     isSegments = parseSegments(fs.readFileSync(paths.faithful, 'utf-8'));
     isSource = 'faithful';
+  } else if (servedLayerFor(book) === FABLE_LAYER) {
+    // Fail closed (spec §6.4): a Fable-served unit never falls back to 02-mt-output.
+    if (!fs.existsSync(paths.fable)) throw fableLayerMissing(`Fable file missing: ${paths.fable}`);
+    isSegments = parseSegments(fs.readFileSync(paths.fable, 'utf-8'));
+    isSource = 'fable';
+    fableMeaning = readFableMeaning(paths.fableTags);
+    // The writer guarantees a complete file, so a segment the English and the MT both carry but
+    // the Fable file lacks is corruption, not a gap to paper over with ''.
+    if (fs.existsSync(paths.mtOutput)) {
+      const inFable = new Set(isSegments.map((s) => s.segmentId));
+      const inMt = new Set(
+        parseSegments(fs.readFileSync(paths.mtOutput, 'utf-8')).map((s) => s.segmentId)
+      );
+      const absent = enSegments.find((e) => inMt.has(e.segmentId) && !inFable.has(e.segmentId));
+      if (absent) throw fableLayerMissing(`segment absent from Fable file: ${absent.segmentId}`);
+    }
   } else if (fs.existsSync(paths.mtOutput)) {
     isSegments = parseSegments(fs.readFileSync(paths.mtOutput, 'utf-8'));
     isSource = 'mt-output';
@@ -125,7 +201,12 @@ function loadModuleForEditing(book, chapter, moduleId) {
   // overlay is not annotated with the mt-preview baseline's findings.
   // Fail-soft: an absent or corrupt report yields no findings, never a throw —
   // an editor must never be locked out of a module by a derived artifact.
-  const findings = mtFindings.read(book, isSource === 'faithful' ? 'faithful' : 'mt-preview');
+  // A Fable-served unit shows no findings: the mt-preview report describes MT text the editor is
+  // not shown (spec §6.4).
+  const findings =
+    isSource === 'fable'
+      ? { bySegment: new Map(), generatedAt: null }
+      : mtFindings.read(book, isSource === 'faithful' ? 'faithful' : 'mt-preview');
 
   // Build lookup of IS segments by segmentId
   // Unescape MT artifacts so editors see clean markers
@@ -155,20 +236,29 @@ function loadModuleForEditing(book, chapter, moduleId) {
   }
 
   // Pair EN and IS segments
-  const paired = enSegments.map((en) => ({
-    segmentId: en.segmentId,
-    moduleId: en.moduleId,
-    segmentType: en.segmentType,
-    elementId: en.elementId,
-    en: en.content,
-    is: isLookup[en.segmentId]
-      ? normalizeTermMarkers(en.content, isLookup[en.segmentId].content)
-      : '',
-    hasTranslation: !!isLookup[en.segmentId],
-    // null, not undefined: a deleted key is a third state that reads as
-    // `undefined` at every use site, and the client branches on this.
-    mtFinding: findings.bySegment.get(en.segmentId) || null,
-  }));
+  // Occurrence numbering is the served-version code's own (countOccurrences): only the first copy of
+  // a repeated id is served from the layer's pairing, so only it may carry the Fable meaning flag.
+  const seenIds = new Map();
+  const paired = enSegments.map((en) => {
+    const occurrence = seenIds.get(en.segmentId) || 0;
+    seenIds.set(en.segmentId, occurrence + 1);
+    return {
+      segmentId: en.segmentId,
+      moduleId: en.moduleId,
+      segmentType: en.segmentType,
+      elementId: en.elementId,
+      en: en.content,
+      is: isLookup[en.segmentId]
+        ? normalizeTermMarkers(en.content, isLookup[en.segmentId].content)
+        : '',
+      hasTranslation: !!isLookup[en.segmentId],
+      // null, not undefined: a deleted key is a third state that reads as
+      // `undefined` at every use site, and the client branches on this.
+      mtFinding: findings.bySegment.get(en.segmentId) || null,
+      // Same rule: null, never absent. Set only on a Fable-served unit, from the tags file.
+      fableMeaning: (occurrence === 0 && fableMeaning.get(en.segmentId)) || null,
+    };
+  });
 
   const titleSeg = paired.find((s) => s.segmentType === 'title');
   return {
@@ -428,6 +518,9 @@ function listChapterModules(book, chapter) {
     faithful: mtFindings.read(book, 'faithful'),
   };
 
+  // A Fable-served unit (no faithful file) shows no findings in the loader (spec §6.4), so it counts none here.
+  const fableServed = servedLayerFor(book) === FABLE_LAYER;
+
   return files.map((f) => {
     const moduleId = f.replace('-segments.en.md', '');
     const hasFaithful = fs.existsSync(path.join(faithfulDir, `${moduleId}-segments.is.md`));
@@ -442,7 +535,9 @@ function listChapterModules(book, chapter) {
       // a badge only when > 0, and a missing key would read as falsy anyway —
       // an explicit 0 says "checked, clean" instead of "unknown".
       mtFindingCount:
-        findingsByTrack[hasFaithful ? 'faithful' : 'mt-preview'].byModule.get(moduleId) || 0,
+        !hasFaithful && fableServed
+          ? 0
+          : findingsByTrack[hasFaithful ? 'faithful' : 'mt-preview'].byModule.get(moduleId) || 0,
     };
   });
 }

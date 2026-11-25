@@ -48,6 +48,7 @@ const notifications = require('../services/notifications');
 const servedVersions = require('../services/servedVersions');
 const servedEdit = require('../services/servedEdit');
 const moduleOpenings = require('../services/moduleOpenings');
+const { applyFableFlags, isFlagVisibleNow } = require('../services/fableFlags');
 const suggestionView = require('../services/suggestionView');
 const suggestionLogs = require('../lib/suggestionLogs');
 const researchEmission = require('../services/researchEmission');
@@ -226,11 +227,21 @@ router.get('/reviews/:reviewId', requireAuth, requireRole(ROLES.EDITOR), (req, r
     // Also load the module segments for context
     let moduleData = null;
     try {
-      moduleData = segmentParser.loadModuleForEditing(
+      const loaded = segmentParser.loadModuleForEditing(
         data.review.book,
         data.review.chapter,
         data.review.module_id
       );
+      // Spec amendment 1: the same Fable flag rules as the module GET (no flag over in-flight text at the
+      // opening, none in a unit with no opening). Fails closed: an unreadable opening clears every flag,
+      // and the module is attached only after the rules ran, so a throw here sends no module at all.
+      applyFableFlags(segmentEditor.getDb(), {
+        book: data.review.book,
+        chapter: data.review.chapter,
+        moduleId: data.review.module_id,
+        segments: loaded.segments,
+      });
+      moduleData = loaded;
     } catch (e) {
       // Module data is supplementary, don't fail the request
       log.error({ err: e }, 'Could not load module data for review');
@@ -447,6 +458,15 @@ router.get(
           detail: moduleOpenings.moduleOpenedDetail(served, step.opening),
         });
       }
+      // Spec amendment 1: no Fable flag where human text was in flight at the opening, and none in a
+      // unit with no opening yet. The service reads the opening (a route never names it, T17) and
+      // fails closed: an unreadable opening clears every flag.
+      applyFableFlags(conn, {
+        book: req.params.book,
+        chapter: req.chapterNum,
+        moduleId: req.params.moduleId,
+        segments: data.segments,
+      });
       // G1.23 (spec §5.4 step 5, index decision 7): the offered term-suggestion groups per segment,
       // from the segments as served above and the edit rows as sent below. Only a segment with a
       // group or a tag carries the key. offeredForModule never throws and returns no time.
@@ -471,8 +491,83 @@ router.get(
         myLastDoneAt: lastDoneAt(req.user, req.params.book, req.chapterNum, req.params.moduleId),
       });
     } catch (err) {
+      if (err.code === 'FABLE_LAYER_MISSING') {
+        // Fail closed: the unit is refused, never served from another layer. `detail` is for the log.
+        log.error({ err, detail: err.detail }, 'Fable layer missing for module');
+        return res.status(409).json({ error: 'FABLE_LAYER_MISSING', message: err.message });
+      }
       log.error({ err }, 'Error loading module');
       res.status(err.message.includes('not found') ? 404 : 500).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * POST /:book/:chapter/:moduleId/fable-comparison-opened
+ * Records (research event, consenting editors only; record skips the rest) that the editor opened
+ * the before/after comparison of a Fable-changed segment. Body { segmentId, occurrence }. Answers
+ * 400 NOT_FLAGGED unless the segment carries a Fable meaning flag that the unit's opening still
+ * lets this editor see; the flag is re-derived server-side, never taken from the client. The served
+ * version is looked up, not minted: null when the serve recorded none.
+ */
+router.post(
+  '/:book/:chapter/:moduleId/fable-comparison-opened',
+  requireAuth,
+  validateBookChapter,
+  refuseClosedParamBook,
+  requireBookAccess(),
+  validateModule,
+  (req, res) => {
+    const { segmentId, occurrence } = req.body || {};
+    const notFlagged = () => res.status(400).json({ error: 'NOT_FLAGGED' });
+    if (typeof segmentId !== 'string' || !Number.isInteger(occurrence) || occurrence < 0) {
+      return res.status(400).json({ error: 'INVALID_BODY' });
+    }
+    const { book, moduleId } = req.params;
+    try {
+      const data = segmentParser.loadModuleForEditing(book, req.chapterNum, moduleId);
+      // Match (segmentId, occurrence) together, in the served-version code's own numbering, so a
+      // later copy of a repeated id can never be recorded.
+      const { occurrences } = servedVersions.countOccurrences(data.segments);
+      const at = data.segments.findIndex(
+        (s, i) => s.segmentId === segmentId && occurrences[i] === occurrence
+      );
+      if (at < 0 || !data.segments[at].fableMeaning) return notFlagged();
+      const conn = segmentEditor.getDb();
+      const place = { book, chapter: req.chapterNum, moduleId };
+      if (!isFlagVisibleNow(conn, place, segmentId, occurrence)) return notFlagged();
+      const seg = data.segments[at];
+      let servedVersionId = null;
+      try {
+        servedVersionId = servedVersions.findVersionId(conn, {
+          ...place,
+          segmentId,
+          occurrence,
+          en: seg.en,
+          is: seg.is,
+          layer: data.isSource,
+        });
+      } catch (err) {
+        log.error({ err, book, moduleId }, 'fable comparison: served version lookup failed');
+      }
+      researchEmission.emitFableComparisonOpened(req, {
+        ...place,
+        segmentId,
+        occurrence,
+        servedVersionId,
+      });
+      return res.status(204).end();
+    } catch (err) {
+      if (err.code === 'FABLE_LAYER_MISSING') {
+        // Answered like an unflagged segment, but an operator should see the layer vanish mid-session.
+        log.warn(
+          { book, chapter: req.chapterNum, moduleId, code: err.code },
+          'fable comparison: layer missing'
+        );
+        return notFlagged();
+      }
+      log.error({ err }, 'Error recording Fable comparison');
+      return res.status(500).json({ error: 'Internal error' });
     }
   }
 );

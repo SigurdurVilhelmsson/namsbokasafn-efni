@@ -134,6 +134,7 @@ const servedRows = () =>
          FROM served_text_versions WHERE book = ? ORDER BY id`
     )
     .all(BOOK);
+const fablePath = (u) => bookPath('02-mt-fable', u.chapterDir, `${u.moduleId}-segments.is.md`);
 const text = () => out.join('\n');
 
 function buildTree() {
@@ -248,12 +249,16 @@ describe('T3: the manifest joins the served versions the route mints (spec §6.4
     });
   });
 
-  it('control: one changed byte in one MT segment, served again, gives exactly that one row unjoined', async () => {
+  it('control: one changed byte in one served segment, served again, gives exactly that one row unjoined', async () => {
     const lines = linesOf(study.buildManifest({ book: BOOK, tag: TAG, git: GIT }).segmentsJsonl);
     await serveAll();
     const u = UNITS[1];
     const changed = mtText(u, 0).replace('.', '!');
-    writeFileSync(mtPath(u), readFileSync(mtPath(u), 'utf8').replace(mtText(u, 0), changed));
+    // The editor serves the Fable layer, so the changed byte goes into the served file.
+    const served = bookPath('02-mt-fable', u.chapterDir, `${u.moduleId}-segments.is.md`);
+    const before = readFileSync(served, 'utf8');
+    writeFileSync(served, before.replace(mtText(u, 0), changed));
+    expect(readFileSync(served, 'utf8')).not.toBe(before); // control: the byte did change
     expect((await serve(u)).status).toBe(200);
     const keys = new Set(lines.map(joinKey));
     const unjoined = servedRows().filter((r) => !keys.has(joinKey(r)));
@@ -319,7 +324,7 @@ describe('the header, as spec §6.4', () => {
     expect(Object.keys(linesOf(segmentsJsonl)[0])).toEqual([...JOIN, 'layer']);
   });
   it('counts units, segments and segments by layer', () => {
-    expect(header.counts).toEqual({ units: 3, segments: 6, byLayer: { 'mt-output': 6 } });
+    expect(header.counts).toEqual({ units: 3, segments: 6, byLayer: { fable: 6 } });
   });
   it('lists the units in chapter order, appendices last', () => {
     expect(header.units.map((u) => [u.chapter, u.chapterDir, u.moduleId])).toEqual([
@@ -338,10 +343,12 @@ describe('the header, as spec §6.4', () => {
         'mtSha256',
         'faithfulSha256',
         'changesSha256',
+        'fableSha256',
+        'fableTagsSha256',
         'segments',
         'marker',
       ],
-      ['layer1', 'layer1s', 'layer2', 'layer3'],
+      ['layer1', 'layer1s', 'layer2', 'layer3', 'fable'],
     ]);
   });
   it('a unit carries its file hashes, segment count and marker', () => {
@@ -354,6 +361,8 @@ describe('the header, as spec §6.4', () => {
       mtSha256: sha(readFileSync(mtPath(u))),
       faithfulSha256: null,
       changesSha256: null,
+      fableSha256: sha(readFileSync(fablePath(u))),
+      fableTagsSha256: sha(readFileSync(fablePath(u).replace('-segments.is.md', '-tags.jsonl'))),
       segments: 2,
       marker: 'freeze',
     });
@@ -408,6 +417,56 @@ describe('the header, as spec §6.4', () => {
       revisionRecordsSha256: sha(listing),
     });
   });
+  it('the fable layer record: directory, the chooser table hash, every provenance hash', () => {
+    const rel = (m) => `02-mt-fable/ch01/${m}-fable.json`;
+    writeRaw(root, `${BOOK}/${rel('m95002')}`, '{"schema":"mt-fable/1","m":2}\n');
+    writeRaw(root, `${BOOK}/${rel('m95001')}`, '{"schema":"mt-fable/1","m":1}\n');
+    writeRaw(root, `${BOOK}/02-mt-fable/ch01/m95001-segments.is.md.bak`, 'not provenance\n');
+    const { header: h } = study.buildManifest({ book: BOOK, tag: TAG, git: GIT });
+    const listing = ['m95001', 'm95002']
+      .map((m) => `${rel(m)}\t${sha(readFileSync(bookPath(rel(m))))}\n`)
+      .join('');
+    expect(h.layers.fable).toEqual({
+      dir: '02-mt-fable',
+      sourcesSha256: sha(
+        readFileSync(
+          path.join(
+            __dirname,
+            '..',
+            '..',
+            'experiments',
+            'fable-editor-trial',
+            'layer-sources.json'
+          )
+        )
+      ),
+      provenanceSha256: sha(listing),
+    });
+  });
+  it('the fable layer record: an absent chooser table is sourcesSha256 null, never a throw (deferred minor 10)', () => {
+    const nodeFs = require('fs');
+    const table = path.join(
+      __dirname,
+      '..',
+      '..',
+      'experiments',
+      'fable-editor-trial',
+      'layer-sources.json'
+    );
+    expect(nodeFs.existsSync(table)).toBe(true); // control: the real table is there
+    const realExists = nodeFs.existsSync;
+    const spy = vi
+      .spyOn(nodeFs, 'existsSync')
+      .mockImplementation((p) => (path.resolve(String(p)) === table ? false : realExists(p)));
+    try {
+      const { header: h } = study.buildManifest({ book: BOOK, tag: TAG, git: GIT });
+      expect(h.layers.fable.sourcesSha256).toBeNull();
+      expect(spy.mock.calls.some(([p]) => path.resolve(String(p)) === table)).toBe(true);
+    } finally {
+      spy.mockRestore();
+    }
+  });
+
   it('layer 3 counts faithful files and review-status sidecars', () => {
     expect(header.layers.layer3).toEqual({
       dir: '03-faithful-translation',
@@ -459,6 +518,7 @@ describe('the header with absent or served layer directories', () => {
           revisionRecordsSha256: sha(''),
         },
         layer3: { dir: '03-faithful-translation', faithfulFiles: 0, reviewStatusSidecars: 0 },
+        fable: { dir: '02-mt-fable', sourcesSha256: expect.any(String), provenanceSha256: sha('') },
       },
       {
         path: 'glossary/glossary-unified.json',
@@ -524,7 +584,7 @@ describe('the header with absent or served layer directories', () => {
     const { header } = study.buildManifest({ book: BOOK, tag: TAG, git: GIT });
     expect([header.units[0].faithfulSha256, header.counts.byLayer, header.layers.layer3]).toEqual([
       sha(readFileSync(faithful)),
-      { faithful: 2, 'mt-output': 4 },
+      { faithful: 2, fable: 4 },
       { dir: '03-faithful-translation', faithfulFiles: 1, reviewStatusSidecars: 1 },
     ]);
   });

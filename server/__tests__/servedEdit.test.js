@@ -72,6 +72,8 @@ const KNOWN = [
     moduleId: 'm68726',
     segmentId: 'm68726:para:fs-idm94618544',
     markers: ['[[MATH:2]]', '[[MATH:3]]'], // what tells the two raw copies apart, first then last
+    fableServed: '[[MATH:2]]', // the committed Fable file keeps both copies; the first is served
+    fableNot: '[[MATH:3]]',
   },
   {
     chapter: 8,
@@ -79,6 +81,8 @@ const KNOWN = [
     moduleId: 'm68747',
     segmentId: 'm68747:para:fs-idm99049568',
     markers: ['hnútur sem', 'hnútyfirborð'],
+    fableServed: 'Nóða sker', // the committed Fable file keeps both copies; Fable reworded the first
+    fableNot: 'hnútyfirborð', // the second copy, unchanged by Fable
   },
 ];
 
@@ -124,6 +128,12 @@ beforeAll(() => {
       ['02-mt-output', 'is'],
     ]) {
       const rel = path.join(CHEM, layer, k.chapterDir, `${k.moduleId}-segments.${ext}.md`);
+      mkdirSync(path.dirname(path.join(root, rel)), { recursive: true });
+      copyFileSync(path.join(REPO_BOOKS, rel), path.join(root, rel));
+    }
+    // Chemistry is served from its Fable layer: copy the committed one (text and tag lines).
+    for (const f of [`${k.moduleId}-segments.is.md`, `${k.moduleId}-tags.jsonl`]) {
+      const rel = path.join(CHEM, '02-mt-fable', k.chapterDir, f);
       mkdirSync(path.dirname(path.join(root, rel)), { recursive: true });
       copyFileSync(path.join(REPO_BOOKS, rel), path.join(root, rel));
     }
@@ -269,7 +279,7 @@ describe('steps 1–3, in order (spec §5.6)', () => {
     );
   });
 
-  it('NO_LAYER for a module with English only, whatever the segment', () => {
+  it('NO_LAYER for a module with English only, whatever the segment (the loader refuses a Fable-served unit with no Fable file)', () => {
     const err = refusedWith(
       () => save({ moduleId: 'm91002', segmentId: 'm91002:para:a', baseSha256: sha256Text('') }),
       'NO_LAYER'
@@ -280,6 +290,23 @@ describe('steps 1–3, in order (spec §5.6)', () => {
       () => save({ moduleId: 'm91002', segmentId: 'm91002:para:zz', baseSha256: sha256Text('') }),
       'NO_LAYER'
     );
+  });
+
+  it('any other loader error is rethrown unchanged, not turned into NO_LAYER', () => {
+    const real = segmentParser.loadModuleForEditing;
+    const boom = Object.assign(new Error('disk on fire'), { code: 'EIO' });
+    segmentParser.loadModuleForEditing = () => {
+      throw boom;
+    };
+    try {
+      expect(() =>
+        save({ moduleId: 'm91001', segmentId: SEG('a'), baseSha256: sha256Text('x') })
+      ).toThrow(boom);
+    } finally {
+      segmentParser.loadModuleForEditing = real;
+    }
+    // control: restored, the same call reaches the real loader again
+    expect(() => load(CHEM, 1, 'm91001')).not.toThrow();
   });
 
   it('SEGMENT_NOT_FOUND for an id not served, and for an occurrence the id does not have', () => {
@@ -382,8 +409,19 @@ describe('T5, PR1 half: the two known ids, served once since G1.12, on copies of
         expect(raw[0]).toContain(first);
         expect(raw[1]).toContain(last);
         // The served text is the FIRST copy's; the second stays in pure MT, unserved.
-        expect(X).toContain(first);
-        expect(X).not.toContain(last);
+        // The editor serves the Fable layer: the served text is its record for the id, not the MT's first copy.
+        const fableRaw = segmentParser
+          .parseSegments(
+            readFileSync(
+              path.join(root, CHEM, '02-mt-fable', k.chapterDir, `${k.moduleId}-segments.is.md`),
+              'utf8'
+            )
+          )
+          .filter((s) => s.segmentId === k.segmentId)
+          .map((s) => s.content);
+        expect(fableRaw[0]).toContain(k.fableServed);
+        expect(X).toContain(k.fableServed);
+        expect(X).not.toContain(k.fableNot);
       });
     });
   }
@@ -551,7 +589,7 @@ describe('a save that passes (T4 positive controls)', () => {
       servedVersionId: expect.any(Number),
       occurrence: 0,
       baseSha256: base(SEG('a')),
-      layer: 'mt-output',
+      layer: 'fable',
       editedContentSha256: sha256Text('IS a breytt'),
       displayed: { editId: null, sha256: null },
       // PR3 adds these three on purpose (spec §5.9).
@@ -579,7 +617,7 @@ describe('a save that passes (T4 positive controls)', () => {
       en_sha256: sha256Text('EN a'),
       is_text: segA.is,
       is_sha256: base(SEG('a')),
-      layer: 'mt-output',
+      layer: 'fable',
     });
   });
 

@@ -263,6 +263,14 @@ beforeAll(() => {
     seg(`${TRANSLATED}-caption`, CAPTION_IS) + altSeg(`${INLINE}-alt`, ALT_IS)
   );
 
+  // Chemistry is served from its Fable layer: plant one with the MT's text and no tag lines.
+  mkdirSync(path.join(booksDir, BOOK, '02-mt-fable/ch01'), { recursive: true });
+  writeFileSync(
+    path.join(booksDir, BOOK, '02-mt-fable/ch01', `${MODULE}-segments.is.md`),
+    seg(`${TRANSLATED}-caption`, CAPTION_IS) + altSeg(`${INLINE}-alt`, ALT_IS)
+  );
+  writeFileSync(path.join(booksDir, BOOK, '02-mt-fable/ch01', `${MODULE}-tags.jsonl`), '');
+
   segmentParser._setTestBooksDir(booksDir);
   require('../services/segmentEditorService')._setTestBooksDir(booksDir);
 

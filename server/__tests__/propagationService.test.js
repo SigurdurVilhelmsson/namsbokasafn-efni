@@ -790,7 +790,7 @@ describe('findOccurrences reports occurrence, duplicated and layer (G1.1)', () =
           ['m037:para:z', 'IS z'],
         ],
       });
-      // EN only: the module has no Icelandic layer.
+      // EN only: the module has no Icelandic layer, and so no Fable layer.
       writeModule(root, {
         book: BOOK,
         chapterDir: 'ch02',
@@ -816,7 +816,7 @@ describe('findOccurrences reports occurrence, duplicated and layer (G1.1)', () =
           segmentId: 'm037:para:c',
           occurrence: 0,
           duplicated: false,
-          layer: 'mt-output',
+          layer: 'fable',
           en: EN,
         },
         {
@@ -825,7 +825,7 @@ describe('findOccurrences reports occurrence, duplicated and layer (G1.1)', () =
           segmentId: 'm037:para:d',
           occurrence: 0,
           duplicated: true,
-          layer: 'mt-output',
+          layer: 'fable',
           en: EN,
         },
         {
@@ -834,23 +834,16 @@ describe('findOccurrences reports occurrence, duplicated and layer (G1.1)', () =
           segmentId: 'm037:para:d',
           occurrence: 1,
           duplicated: true,
-          layer: 'mt-output',
-          en: EN,
-        },
-        {
-          chapter: 2,
-          moduleId: 'm038',
-          segmentId: 'm038:para:e',
-          occurrence: 0,
-          duplicated: false,
-          layer: null,
+          layer: 'fable',
           en: EN,
         },
       ]);
+      // A Fable-served unit with no Fable file is refused by the loader (spec §6.4), so it has no
+      // occurrence to offer: m038 (English only) is absent, where it once listed with layer null.
+      expect(found.some((f) => f.moduleId === 'm038')).toBe(false);
       // The existing fields are unchanged beside the new ones.
       expect(found[0].currentIs).toBe('IS c');
       expect(found[0].existingEdit).toBeNull();
-      expect(found[3].currentIs).toBe('');
     } finally {
       segmentParser._setTestBooksDir(realBooksDir);
       rmSync(root, { recursive: true, force: true });

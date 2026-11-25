@@ -207,8 +207,38 @@ function recordServe(conn, data, key) {
   }
 }
 
+/**
+ * The id of the served version of one segment's current text, WITHOUT minting: null when no such
+ * row exists (a read, so a request that only reports on a serve never creates one).
+ *
+ * @param {object} conn
+ * @param {{ book: string, chapter: number, moduleId: string, segmentId: string, occurrence: number, en: string, is: string, layer: string }} seg
+ * @returns {number|null}
+ */
+function findVersionId(conn, seg) {
+  const row = buildVersionRow(seg);
+  const found = conn
+    .prepare(
+      `SELECT id FROM served_text_versions
+        WHERE book = ? AND chapter = ? AND module_id = ? AND segment_id = ? AND occurrence = ?
+          AND en_sha256 = ? AND is_sha256 = ? AND layer = ?`
+    )
+    .get(
+      row.book,
+      row.chapter,
+      row.moduleId,
+      row.segmentId,
+      row.occurrence,
+      row.enSha256,
+      row.isSha256,
+      row.layer
+    );
+  return found ? found.id : null;
+}
+
 module.exports = {
   countOccurrences,
+  findVersionId,
   buildVersionRow,
   versionRowsFor,
   annotateServed,

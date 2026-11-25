@@ -172,10 +172,10 @@ describe('read-apply-exposure: a module id shared by chapters (§C209)', () => {
     });
   };
 
-  it('has one title segment per chapter, read from mt-output (precondition, not a finding)', () => {
+  it('has one title segment per chapter, served from the Fable layer (precondition, not a finding)', () => {
     for (const ch of [2, 3, 5]) {
       const m = loadModuleForEditing(BOOK, ch, META);
-      expect(m.isSource).toBe('mt-output');
+      expect(m.isSource).toBe('fable');
       expect(m.segments.map((s) => s.segmentId)).toEqual([`chapter:title:ch0${ch}`]);
     }
   });

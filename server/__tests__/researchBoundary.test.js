@@ -150,6 +150,7 @@ const MODULE_JSON_ALLOWED = Object.freeze({
     'occurrence',
     'baseSha256',
     'suggestions',
+    'fableMeaning', // the Fable loader's per-segment flag (spec §6.4): editor-facing, no research time
   ],
   editRow: [...ALLOWED_COLUMNS.segment_edits, 'contentSha256'],
   acceptanceRow: [...ALLOWED_COLUMNS.segment_acceptances],

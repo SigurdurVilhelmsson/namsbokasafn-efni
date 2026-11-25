@@ -8,9 +8,10 @@
  * efnafraedi-2e's assignments.
  *
  * The assign gate (G1.13 spec §6.5) gives a chemistry chapter only to an editor with a consent decision and a
- * licence clause on record, which seed-fixture.js plants for both, and only while the editors' suggestion view is
- * on for the book. suggestion-view.spec.js switches it on, so this spec runs in playwright.config.js's
- * `chromium-after-switch-on` project, which depends on the project that runs that spec. An editor the gate refuses
+ * licence clause on record, which seed-fixture.js plants for both, and only while the book is served from the Fable
+ * layer (server/lib/servedLayer.js; spec of 2026-11-24, §6.7), which chemistry is. The gate no longer reads the
+ * suggestion view's switch. This spec still runs in playwright.config.js's `chromium-after-switch-on` project, after
+ * the project that runs suggestion-view.spec.js, an ordering kept from when it did. An editor the gate refuses
  * is a disabled line "Name — reason" in the dropdown, so a refusal shows here as a missing label.
  */
 const { test, expect } = require('@playwright/test');

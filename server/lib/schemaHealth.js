@@ -20,6 +20,9 @@
  *              `<table>.<column>`;
  *   - columns: each absent column as `<table>.<column>`, whether or not its table exists;
  *   - indexes: an absent index as `index <name>`;
+ *   - layerChecks: a table whose `layer` CHECK (parsed by migration 061's layerValues) lacks a value,
+ *              or has no CHECK of that shape, as `<table>.layer CHECK '<value>'`. 061 never throws, so a
+ *              refused rebuild shows here (whole-branch review of the Fable layer serving, 2026-11-25);
  * each in the constant's order. Table names are interpolated into a PRAGMA, so they come from the
  * constant (or a test's own argument), never from a request.
  *
@@ -27,6 +30,8 @@
  * answers table_info with its columns and satisfies a migration's CREATE TABLE IF NOT EXISTS, with
  * no table behind it, so it reads as absent here (PR2 review U42).
  */
+
+const { layerValues } = require('../migrations/061-served-layer-fable');
 
 function deepFreeze(value) {
   if (value && typeof value === 'object') {
@@ -172,6 +177,10 @@ const EXPECTED_SCHEMA = deepFreeze({
     'idx_book_glossary_entry_book',
     'idx_book_glossary_change_book',
   ],
+  // A table → the values its `layer` CHECK must admit. Migration 061: the Fable layer.
+  layerChecks: {
+    served_text_versions: ['fable'],
+  },
 });
 
 /**
@@ -222,6 +231,17 @@ function checkSchema(db, expected = EXPECTED_SCHEMA) {
     );
     for (const name of expected.indexes) {
       if (!indexes.has(name)) missing.push(`index ${name}`);
+    }
+
+    for (const [table, values] of Object.entries(expected.layerChecks || {})) {
+      const row = db
+        .prepare("SELECT sql FROM sqlite_master WHERE type = 'table' AND name = ?")
+        .get(table);
+      if (!row) continue; // an absent table is already reported above
+      const admitted = layerValues(row.sql) || [];
+      for (const value of values) {
+        if (!admitted.includes(value)) missing.push(`${table}.layer CHECK '${value}'`);
+      }
     }
 
     return { ok: missing.length === 0, missing };

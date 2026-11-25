@@ -4,7 +4,7 @@
 // (books/efnafraedi-2e/02-mt-revised, every chapter dir, chapter metadata included). The view's code
 // (suggestionLogs, suggestion-placement) runs over the real corpus and is compared with the
 // independent references.json, which was produced without loading any view code.
-import { describe, it, expect, beforeAll } from 'vitest';
+import { describe, it, expect, beforeAll, vi } from 'vitest';
 import { createRequire } from 'module';
 import fs from 'fs';
 import path from 'path';
@@ -26,16 +26,12 @@ const REF = JSON.parse(
 const logs = require('../lib/suggestionLogs');
 const { visibleGroups, placeGroup } = require('../public/js/suggestion-placement');
 const { loadModuleForEditing } = require('../services/segmentParser');
-const { sha256Text } = require('../lib/servedText');
+const servedLayer = require('../lib/servedLayer');
+const SV = require('../services/suggestionView');
+const Database = require('better-sqlite3');
 
 const BOOK = 'efnafraedi-2e';
 const LAYER2 = path.join(repoRoot, 'books', BOOK, '02-mt-revised');
-
-const cmpTuple = (a, b) =>
-  a.chapter - b.chapter ||
-  (a.module < b.module ? -1 : a.module > b.module ? 1 : 0) ||
-  (a.segmentId < b.segmentId ? -1 : a.segmentId > b.segmentId ? 1 : 0) ||
-  a.occurrence - b.occurrence;
 
 /** Plain find-once replace, written here on purpose: not the view's applyOnce. */
 function replaceOnce(text, find, replace) {
@@ -48,7 +44,8 @@ const state = {
   nonOk: [],
   logsRead: 0,
   viewDropped: new Set(),
-  failing: [],
+  sources: new Set(),
+  modules: [],
   mismatches: [],
   chainsChecked: 0,
   openDropped: 0,
@@ -71,6 +68,7 @@ beforeAll(() => {
         continue;
       }
       state.logsRead += 1;
+      state.modules.push({ book: BOOK, chapter, moduleId });
       const { kept, dropped } = logs.dropFilter(log);
       for (const r of dropped) {
         state.viewDropped.add(`${r.module}|${r.segmentId}|${r.occurrence}|${r.opId}`);
@@ -82,33 +80,20 @@ beforeAll(() => {
         keptByChain.get(k).push(r);
       }
       const data = loadModuleForEditing(BOOK, chapter, moduleId);
-      // occurrence = per-id ordinal in served order (servedVersions.countOccurrences)
-      const seen = new Map();
-      const served = new Map(); // "id#occ" -> is
-      for (const seg of data.segments) {
-        const n = seen.get(seg.segmentId) || 0;
-        seen.set(seg.segmentId, n + 1);
-        served.set(`${seg.segmentId}#${n}`, seg.is);
-      }
+      state.sources.add(data.isSource);
       const dropped0 = new Set(dropped.map((r) => r.opId));
       const groupsByChain = logs.keptGroups(log);
       for (const [key, chain] of log.chains) {
         const first = chain[0];
-        const ref = {
-          chapter,
-          module: moduleId,
-          segmentId: first.segmentId,
-          occurrence: first.occurrence,
-        };
-        const actual = logs.firstBeforeSha256(log, first.segmentId, first.occurrence);
-        const is = served.get(key);
-        if (is === undefined || sha256Text(is) !== actual) {
-          state.failing.push(ref);
+        // a duplicated id: not checked
+        if ([...log.chains.keys()].some((k) => k !== key && k.startsWith(`${first.segmentId}#`))) {
           continue;
         }
-        if (seen.get(first.segmentId) > 1) continue; // duplicated id: not checked
+        // Since Fable serving the served text is no longer what the AI read, so the replay starts
+        // from the log's own base and the served text plays no part in it.
+        const base = chain[0].before;
         // the view: accept every shown group, in order
-        let text = is;
+        let text = base;
         let remaining = groupsByChain.get(key) || [];
         for (;;) {
           const v = visibleGroups(text, remaining);
@@ -122,13 +107,9 @@ beforeAll(() => {
           remaining = remaining.filter((g) => g !== v[0].group);
         }
         // Independent replay of the KEPT records, in record order. It starts from the FULL chain's
-        // first `before` (the base text the AI read, which is also the served text), never from the
+        // first `before` (the base text the AI read; the served text is Fable's now), never from the
         // first kept record's `before`: a chain that opens with a dropped record has a later first
         // kept `before` that already holds the dropped change (R9).
-        const base = chain[0].before;
-        if (base !== is) {
-          state.mismatches.push({ module: moduleId, key, reason: 'base differs from served' });
-        }
         const list = keptByChain.get(key) || [];
         let expected = base;
         for (const r of list) {
@@ -171,14 +152,29 @@ describe('G1.23 acceptance checks 1-3 over committed layer 2', () => {
     expect(state.viewDropped.size).toBe(REF.droppedChanges.length);
   });
 
-  it('check 2: the chains failing integrity are exactly the reference ids', () => {
-    const key = (d) => ({
-      chapter: d.chapter,
-      module: d.module,
-      segmentId: d.segmentId,
-      occurrence: d.occurrence,
-    });
-    expect([...state.failing].sort(cmpTuple)).toEqual(REF.integrityFailures.map(key));
+  it('check 2: no chemistry module is eligible, and the served text is not what the AI read', () => {
+    // The corpus is chemistry's, and chemistry is served from the Fable layer. Task 9's rule: a
+    // Fable-served book is offered no suggestions. A closed handle makes the check pure: nothing
+    // but the layer rule can answer before a table is read.
+    const closed = new Database(':memory:');
+    closed.close();
+    expect(state.modules.length).toBe(REF.totals.logs);
+    const eligible = state.modules.filter((k) => SV.isEligible(closed, k).reason !== 'fable-layer');
+    expect(eligible).toEqual([]);
+    // Control: were the book served from the MT layer the same call would go on to read the
+    // switch, and the closed handle throws. A module let through the layer rule would fail above.
+    const spy = vi.spyOn(servedLayer, 'servedLayerFor').mockReturnValue('mt-output');
+    try {
+      expect(() => SV.isEligible(closed, state.modules[0])).toThrow(/not open/);
+    } finally {
+      spy.mockRestore();
+    }
+    // The reason the rule exists: no module is served from the MT the AI read (a unit later approved
+    // into a faithful file is served from that, which is fine), and Fable serves at least one. Asserted
+    // on the layer itself, not on how many chains' texts differ from the MT: that count is a property of
+    // Fable's edits and would move if they came closer to the MT (deferred minor 4).
+    expect(state.sources.has('mt-output')).toBe(false);
+    expect(state.sources.has('fable')).toBe(true);
   });
 
   it('check 3: accepting every shown group in order reproduces the kept chain, byte for byte', () => {

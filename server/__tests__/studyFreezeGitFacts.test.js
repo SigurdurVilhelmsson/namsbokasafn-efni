@@ -147,3 +147,33 @@ describe('layer 1s on a real repository: tracked files only, never a gitignored 
     expect(gitFacts({ book: BOOK, repoRoot: lsRepo }).dirtyPaths).toEqual([]);
   });
 });
+
+describe('an uncommitted change to a 02-mt-fable file blocks a cut (deferred minor 9)', () => {
+  const fableRepo = path.join(work, 'fable');
+  const fableGit = gitIn(fableRepo);
+  const rel = `books/${BOOK}/02-mt-fable/ch01/m1-segments.is.md`;
+  const file = path.join(fableRepo, rel);
+
+  beforeAll(() => {
+    mkdirSync(path.dirname(file), { recursive: true });
+    fableGit('init', '-q');
+    writeFileSync(file, 'fable\n');
+    fableGit('add', '--', rel);
+    fableGit('commit', '-m', 'data(fable): layer');
+  });
+
+  it('control: the committed Fable file leaves the tree clean and the cut unrefused', () => {
+    const clean = gitFacts({ book: BOOK, repoRoot: fableRepo });
+    expect(clean.dirtyPaths).toEqual([]);
+    expect(study.manifestRefusals({ book: BOOK, git: clean, base: [] })).toEqual([]);
+  });
+
+  it('the same file changed and not committed is a dirty input, and the cut is refused', () => {
+    writeFileSync(file, 'fable, edited\n');
+    const dirty = gitFacts({ book: BOOK, repoRoot: fableRepo });
+    expect(dirty.dirtyPaths).toEqual([rel]);
+    expect(study.manifestRefusals({ book: BOOK, git: dirty, base: [] })).toEqual([
+      { reason: 'dirty-input', paths: [rel] },
+    ]);
+  });
+});

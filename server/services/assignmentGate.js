@@ -4,8 +4,9 @@
 // userService.assignChapter and setChapterAssignee, and the two admin routes over them. In a study book
 // an assignment row opens the chapter's research units on the editor's first look, so a row may exist
 // only for an editor the study may capture or knowingly skip (a consent decision on record, either one),
-// who has signed the licence clause, and only while the editors' suggestion view is on (ruling R6:
-// units opened before the view is on lose their suggestions for good).
+// who has signed the licence clause, and only while the book is served to editors from the Fable layer
+// (docs/decisions/2026-11-24-assign-gate-waits-on-fable-layer.md, which supersedes ruling R6: a unit
+// opened before the layer is served would open on text the study does not compare).
 //
 // Removing an assignment is not gated. Rows written before the gate are untouched.
 //
@@ -15,11 +16,11 @@
 const { ROLES } = require('../constants');
 const { isEditorWritableBook, BOOK_CLOSED_MESSAGE } = require('../lib/editorScope');
 const { isStudyBook } = require('../lib/researchScope');
-const { currentSwitchValue } = require('../lib/bookSwitches');
+const servedLayer = require('../lib/servedLayer');
 const { hasClause } = require('./licenceClauses');
 
 /**
- * @typedef {'book-closed'|'chapter-not-editable'|'bypass-role'|'no-consent-decision'|'no-licence-clause'|'suggestion-view-off'} Reason
+ * @typedef {'book-closed'|'chapter-not-editable'|'bypass-role'|'no-consent-decision'|'no-licence-clause'|'served-layer-not-fable'} Reason
  */
 
 /** What the assignments page and a refused assign say, per reason. */
@@ -31,8 +32,8 @@ const REFUSAL_MESSAGES = Object.freeze({
     'Stjórnendur og aðalritstjórar bókarinnar þurfa enga úthlutun: þeir hafa aðgang að öllum köflum.',
   'no-consent-decision': 'Notandinn hefur ekki enn tekið afstöðu til þátttöku í rannsókninni.',
   'no-licence-clause': 'Ekkert undirritað leyfisákvæði er skráð fyrir notandann.',
-  'suggestion-view-off':
-    'Tillögur gervigreindar í ritli eru ekki virkar fyrir bókina; kveikja þarf á þeim áður en úthlutað er.',
+  'served-layer-not-fable':
+    'Ritillinn sýnir ekki enn texta gervigreindar fyrir bókina; ekki er hægt að úthluta köflum fyrr en hann gerir það.',
 });
 
 /**
@@ -73,7 +74,8 @@ function assignmentRefusal(conn, { userId, book, chapter }) {
   if (isBypassRole(conn, userId, book)) return 'bypass-role';
   if (study && !hasConsentDecision(conn, userId)) return 'no-consent-decision';
   if (!hasClause(conn, userId)) return 'no-licence-clause';
-  if (study && !currentSwitchValue(conn, book, 'suggestion-view')) return 'suggestion-view-off';
+  if (study && servedLayer.servedLayerFor(book) !== servedLayer.FABLE_LAYER)
+    return 'served-layer-not-fable';
   return null;
 }
 

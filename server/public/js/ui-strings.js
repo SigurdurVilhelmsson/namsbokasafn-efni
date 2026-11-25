@@ -231,6 +231,14 @@ const UI = {
     'mt-output': 'MT — vélþýðing',
     faithful: 'Ritstýrt — bein þýðing',
     localized: 'Staðfærð — aðlöguð að íslensku samhengi',
+    fable: 'Upphafstexti, yfirfarinn af gervigreind',
+  },
+
+  // ── Fable meaning flag and comparison (spec of 2026-11-24, §6.10) ──
+  fableFlag: {
+    line: 'Gervigreindin breytti merkingu þessa bútar. Berðu hann saman við enska textann.',
+    button: 'Sýna hvað breyttist',
+    heading: 'Fyrir yfirferð gervigreindar → eftir yfirferð',
   },
 
   // ── Pipeline status ─────────────────────────────────────────

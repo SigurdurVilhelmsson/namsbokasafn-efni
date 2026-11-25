@@ -25,7 +25,7 @@ fi
 work=$(mktemp -d)
 trap 'rm -rf "$work"' EXIT
 fail=0
-ALL='{"at", "srv", "fz", "e2e"}'
+ALL='{"at", "srv", "fz", "e2e", "pf"}'
 
 # cfg FILE ACTORS TWOTREES SEQUENTIAL: write a config checking every rule
 cfg() {
@@ -77,6 +77,16 @@ finding F3-sweep-deletes-freeze FreezeKept           '{"fz", "e2e"}' FALSE FALSE
 finding F3-via-git-pull         FreezeKept           '{"fz", "e2e"}' TRUE  FALSE
 finding F4-other-tree-lock      BaseFixedWhileLocked '{"at", "srv"}' TRUE  TRUE
 
+# 2b. reachability: the Fable layer writer's step is taken (a witness, not a finding)
+{ echo 'SPECIFICATION Spec'; echo 'CONSTANT Actors = {"pf", "srv"}'; echo 'CONSTANT TwoTrees = FALSE'
+  echo 'CONSTANT Sequential = FALSE'; echo 'INVARIANT PfNotDone'; } > "$work/base/reach-pf.cfg"
+run reach-pf base
+if [ "$(violated reach-pf)" = "PfNotDone" ]; then
+  echo "reachable: the Fable layer writer's step (PfWrite), shortest path:"; path reach-pf
+else
+  echo "UNREACHABLE: PfWrite is never taken, so the model says nothing about the Fable layer writer"; fail=1
+fi
+
 # 3. model mutants, in the passing configuration: NAME RULE FROM TO (FROM must occur on exactly one line)
 mutant() {
   name=$1; rule=$2; from=$3; to=$4
@@ -101,6 +111,7 @@ mutant() {
 mutant at-ignores-lock          BaseFixedWhileLocked 'IF IsMtLocked("dev")' 'IF FALSE'
 mutant writemtlock-no-exists    FreezeKept           'IF marker[t] # "none"' 'IF FALSE'
 # (it breaks FreezeKept too; TLC's breadth-first search reports the shorter path, a person's lock deleted)
+mutant pf-overwrites-different  BaseFixedWhileLocked 'PfRefusesDifferent == TRUE' 'PfRefusesDifferent == FALSE'
 mutant sweep-ignores-snapshot   LockedOnceEdited     'marker["dev"] # "none" /\ ~snap' 'marker["dev"] # "none"'
 
 # 4. the real code

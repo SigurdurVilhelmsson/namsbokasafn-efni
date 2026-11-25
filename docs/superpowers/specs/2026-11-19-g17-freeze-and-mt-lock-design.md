@@ -10,6 +10,22 @@
 > §5.19 and R5 (`docs/superpowers/specs/2026-11-03-served-version-and-event-log-design.md`); and the open
 > "properly safe format" question in register §C111.
 
+> **✏️ AMENDED 2026-11-25: the Fable layer joins §6.4's inputs and the MT-lock writers, and serving it needs a
+> re-cut (§6.6).** The deciding documents are the serving design
+> (`docs/superpowers/specs/2026-11-24-fable-layer-serving-design.md`, §6.6) and
+> [the record](../../decisions/2026-11-24-editors-start-from-fable-text.md).
+>
+> - **Manifest inputs (§6.4):** each unit gains `fableSha256` and `fableTagsSha256`. `layers` gains
+>   `fable = { dir: '02-mt-fable', sourcesSha256, provenanceSha256 }`: the chooser table's hash, and one hash over a
+>   sorted `rel\tsha` list of every `-fable.json`. `02-mt-fable` joins `INPUT_DIRS`, so a dirty Fable file blocks a cut.
+>   `compareToManifest` reports a changed Fable or tags file as `inputChanged`; a manifest cut before these fields
+>   compares exactly as before.
+> - **MT-lock model (§6.2):** the Fable layer writer, `tools/promote-fable-layer.js`, is a writer of a unit in the
+>   model. It refuses to overwrite different bytes and reads no marker.
+> - **Re-cut (§6.6):** serving the Fable layer changes the served text of every chemistry unit, so the design requires
+>   a re-cut under §6.6, with `supersedes: freeze-efnafraedi-2e-2026-11-22`. [USER] authorized the re-cut on
+>   2026-11-24.
+
 ## 1. What this is for
 
 Before any chemistry unit opens for editing, three things must hold.

@@ -401,12 +401,25 @@ describe('T6, opened time, through the route (spec §5.5, §10)', () => {
     expect(versions().length).toBeGreaterThan(0);
   });
 
-  it('a layerless study module opens like any other: nothing to mint, nothing refused at the serve', async () => {
+  // A Fable-served unit with no Fable file is refused (spec §6.4), whatever its MT. The refusal comes
+  // from the loader, before the serve mints or records anything. The old "a layerless study module
+  // opens like any other" case has no non-Fable study book to move to (STUDY_BOOKS holds only
+  // efnafraedi-2e, which is Fable-served), so that coverage is dropped, not relocated.
+  it('a Fable-served unit with no Fable file is refused 409 and records no opening and no served version', async () => {
     const r = await serve(asUser(ed1), 'm94005');
-    expect(r.status).toBe(200);
-    expect(r.body.segments.length).toBeGreaterThan(0);
-    expect(r.body.segments.filter((s) => 'baseSha256' in s)).toEqual([]);
-    expect(opening('m94005').inflight_count).toBe(0);
+    expect(r.status).toBe(409);
+    expect(r.body.error).toBe('FABLE_LAYER_MISSING');
+    expect(opening('m94005')).toBeUndefined();
+    expect(
+      db.prepare('SELECT COUNT(*) AS n FROM served_text_versions WHERE module_id = ?').get('m94005')
+        .n
+    ).toBe(0);
+    // control: a Fable-served unit that has its layer opens and mints in the same tables
+    expect((await serve(asUser(ed1), 'm94001')).status).toBe(200);
+    expect(
+      db.prepare('SELECT COUNT(*) AS n FROM served_text_versions WHERE module_id = ?').get('m94001')
+        .n
+    ).toBeGreaterThan(0);
   });
 
   it('a book off the study allowlist never opens', async () => {

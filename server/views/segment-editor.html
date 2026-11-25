@@ -1093,6 +1093,48 @@
         color: var(--warning);
       }
 
+      /* Spec of 2026-11-24, §6.8: Fable changed the meaning of this segment. Same amber warning as mt-finding. */
+      .term-issue.fable-flag {
+        background: var(--warning-subtle);
+        border-left: 3px solid var(--warning);
+        color: var(--warning);
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .fable-flag-btn {
+        font-size: var(--text-xs);
+        padding: 0.1rem 0.5rem;
+        cursor: pointer;
+      }
+      .fable-comparison {
+        margin-top: 0.35rem;
+        padding: 0.5rem;
+        border: 1px solid var(--border-default, #ccc);
+        border-radius: var(--radius-md);
+        font-size: var(--text-sm);
+        line-height: 1.5;
+        white-space: pre-wrap;
+      }
+      .fable-comparison[hidden] {
+        display: none;
+      }
+      .fable-comparison-heading {
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+      }
+      .fable-comparison-en {
+        color: var(--text-muted);
+        margin-bottom: 0.4rem;
+      }
+      .fable-comparison del {
+        background: var(--danger-subtle, #fdd);
+        text-decoration: line-through;
+      }
+      .fable-comparison ins {
+        background: var(--success-subtle, #dfd);
+        text-decoration: none;
+      }
+
       .term-issue.missing {
         background: var(--bg-elevated);
         border-left: 3px solid var(--text-muted);
@@ -2185,6 +2227,7 @@
     <script src="/js/marker-types.js"></script>
     <script src="/js/marker-integrity.js"></script>
     <script src="/js/segment-validation.js"></script>
+    <script src="/js/word-diff.js"></script>
     <script src="/js/accept-eligibility.js"></script>
     <!-- Before segment-editor.js: the figure card reads window.figureDrafts on
        every rebuild, and a missing tag would lose editor text silently. -->

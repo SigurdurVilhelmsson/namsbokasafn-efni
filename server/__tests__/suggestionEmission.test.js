@@ -23,6 +23,7 @@ process.env.JWT_SECRET = process.env.JWT_SECRET || 'prufa-leyndarmal';
 const { sha256Text } = require('../lib/servedText');
 const { writeModule } = require('./helpers/servedFixture');
 const L = require('../lib/suggestionLogs');
+const servedLayer = require('../lib/servedLayer');
 
 const BOOK = 'efnafraedi-2e';
 const MODULE = 'm95020';
@@ -143,6 +144,9 @@ afterAll(() => {
 });
 
 beforeEach(() => {
+  // Chemistry, the only study book, is served from the Fable layer and so is never eligible. G1.23's
+  // code stays live for a future non-Fable study book, so this file gives the book the MT layer.
+  vi.spyOn(servedLayer, 'servedLayerFor').mockReturnValue('mt-output');
   plantLog();
   L._setTestRoots({ booksRoot: root, repoRoot: work });
   db.exec(

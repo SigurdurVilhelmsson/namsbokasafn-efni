@@ -713,6 +713,7 @@
       leaveModule();
     }
     _loadingModuleId = moduleId;
+    if (moduleId !== currentModuleId) resetFableComparisons();
     currentModuleId = moduleId;
 
     // Show loading spinner immediately to prevent double-clicks
@@ -781,7 +782,20 @@
         if (!saveDraft()) keepUnwritten(draftPrefix(), draftEntries());
         leaveModule();
       }
-      alert(unrecorded ? UI.segmentEditor.openingUnrecorded : UI.common.errorLoading + err.message);
+      // Spec of 2026-11-24, §6.4: a unit whose Fable layer is missing or incomplete answers 409 FABLE_LAYER_MISSING
+      // with the §6.10 refusal as its message; err.message is the bare code, so the text comes from err.data.
+      const fableMissing =
+        err.status === 409 &&
+        err.data &&
+        err.data.error === 'FABLE_LAYER_MISSING' &&
+        err.data.message;
+      alert(
+        unrecorded
+          ? UI.segmentEditor.openingUnrecorded
+          : fableMissing
+            ? err.data.message
+            : UI.common.errorLoading + err.message
+      );
     } finally {
       _loadingModuleId = null;
     }
@@ -2321,6 +2335,29 @@
         `;
     }
 
+    // Spec of 2026-11-24, §6.8: Fable changed this segment's meaning. A flag line and a button that opens
+    // a read-only before/after comparison. The server sends fableMeaning only on a flag the unit's opening
+    // lets this editor see. Every token of editor text is escaped by renderWordDiffHtml / escapeHtml.
+    let fableFlagHtml = '';
+    if (seg.fableMeaning && typeof seg.fableMeaning.before === 'string') {
+      const open = fableComparisonOpen.has(seg.segmentId);
+      // The diff is built when the panel is first opened (toggleFableComparison), never on a table render: an
+      // appendix table summary is a diff of thousands of words. A re-render of an open panel reuses the cache.
+      const diffHtml = open ? fableComparisonDiffHtml(seg) : '';
+      fableFlagHtml = `
+          <div class="term-issue fable-flag" data-fable-flag="1">
+            <span class="term-issue-icon">&#9888;</span>
+            <span>${escapeHtml(UI.fableFlag.line)}</span>
+            <button type="button" class="btn btn-secondary fable-flag-btn" aria-expanded="${open ? 'true' : 'false'}" onclick="toggleFableComparison(this.closest('tr').dataset.segmentId)">${escapeHtml(UI.fableFlag.button)}</button>
+          </div>
+          <div class="fable-comparison" data-fable-comparison="1"${open ? '' : ' hidden'}>
+            <div class="fable-comparison-en">${escapeHtml(seg.en || '')}</div>
+            <div class="fable-comparison-heading">${escapeHtml(UI.fableFlag.heading)}</div>
+            <div class="fable-comparison-diff">${diffHtml}</div>
+          </div>
+        `;
+    }
+
     // Build exact-match repetition hint (an approved translation of the same
     // EN sentence elsewhere — outranks the MT draft).
     let repetitionHint = '';
@@ -2506,6 +2543,7 @@
             <div class="segment-content" id="is-${cssId(seg.segmentId)}">${isHtml || '<em class="text-muted">Engin þýðing</em>'}</div>${seg.suggestions ? `<div class="sugg-rulings" id="sugg-${cssId(seg.segmentId)}">${suggestionView.rulingsHtml}</div>` : ''}
             ${originalHint}
             ${mtFindingHtml}
+            ${fableFlagHtml}
             ${termIssuesHtml}
             ${repetitionHint}
             <div class="edit-panel" id="edit-${cssId(seg.segmentId)}">
@@ -3587,6 +3625,8 @@
     dirtyEdits.clear();
     heldDrafts.clear();
     paneState.clear();
+    // A unit opened again starts with its comparisons closed, so opening one records it again.
+    resetFableComparisons();
     lastFocusedTextarea = null;
     if (draftTimer) clearInterval(draftTimer);
     tabGuard.release();
@@ -3828,6 +3868,73 @@
   function cssId(segmentId) {
     return segmentId.replace(/[^a-zA-Z0-9-]/g, '_');
   }
+
+  // Segments whose Fable comparison is open (it survives a table re-render, which must not re-record it),
+  // and those whose recording POST is still in flight (a second click meanwhile does nothing).
+  const fableComparisonOpen = new Set();
+  const fableComparisonPosting = new Set();
+  // The comparison's HTML per segment for this page load, kept with the two texts it was built from.
+  const fableComparisonCache = new Map();
+
+  /** Another unit (or none) is on screen: no panel of it is open and no recording of it is awaited. */
+  function resetFableComparisons() {
+    fableComparisonOpen.clear();
+    fableComparisonPosting.clear();
+  }
+
+  /**
+   * The comparison HTML of a flagged segment, built once per page load (word-diff.js escapes every token).
+   * @param {{segmentId: string, is?: string, fableMeaning: {before: string}}} seg
+   */
+  function fableComparisonDiffHtml(seg) {
+    const before = seg.fableMeaning.before;
+    const after = seg.is || '';
+    const hit = fableComparisonCache.get(seg.segmentId);
+    if (hit && hit.before === before && hit.after === after) return hit.html;
+    const html = window.wordDiffLib.comparisonHtml(before, after);
+    fableComparisonCache.set(seg.segmentId, { before, after, html });
+    return html;
+  }
+
+  /**
+   * Opens or closes a row's read-only comparison. The research event is sent ONCE per opening, never on a
+   * re-render and never twice for a double click; a failed send is silent (research capture, not a gate).
+   * @param {string} segmentId
+   */
+  function toggleFableComparison(segmentId) {
+    if (fableComparisonPosting.has(segmentId)) return;
+    const row = document.getElementById('row-' + cssId(segmentId));
+    const panel = row && row.querySelector('[data-fable-comparison]');
+    const button = row && row.querySelector('.fable-flag-btn');
+    if (!panel) return;
+    if (fableComparisonOpen.has(segmentId)) {
+      fableComparisonOpen.delete(segmentId);
+      panel.hidden = true;
+      if (button) button.setAttribute('aria-expanded', 'false');
+      return;
+    }
+    const seg = moduleData && moduleData.segments.find((s) => s.segmentId === segmentId);
+    if (!seg || !seg.fableMeaning) return;
+    const diff = panel.querySelector('.fable-comparison-diff');
+    if (diff) diff.innerHTML = fableComparisonDiffHtml(seg);
+    fableComparisonOpen.add(segmentId);
+    panel.hidden = false;
+    if (button) button.setAttribute('aria-expanded', 'true');
+    fableComparisonPosting.add(segmentId);
+    fetch(
+      `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/fable-comparison-opened`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        // A flag sits on the first copy of a repeated id only (Task 6b), so the occurrence is 0.
+        body: JSON.stringify({ segmentId, occurrence: 0 }),
+      }
+    )
+      .catch(() => {})
+      .finally(() => fableComparisonPosting.delete(segmentId));
+  }
+  window.toggleFableComparison = toggleFableComparison;
 
   // ================================================================
   // WORD-LEVEL INLINE DIFF

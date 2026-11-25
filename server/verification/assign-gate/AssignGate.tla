@@ -13,7 +13,11 @@
 (***************************************************************************)
 EXTENDS FiniteSets
 
-CONSTANTS Users, Chapters
+CONSTANTS Users, Chapters, Layer
+
+\* servedLayer.servedLayerFor("efnafraedi-2e"): "fable" in production. A constant, because the code
+\* reads a frozen map, not a state; check.sh also runs the model with "mt-output".
+ASSUME Layer \in {"fable", "mt-output"}
 
 \* users.role as the gate and the token see it, for efnafraedi-2e:
 \*   "editor" - needs an assignment row (includes a users.role head-editor who has no
@@ -30,32 +34,26 @@ VARIABLES
   role,      \* [Users -> Roles]
   consent,   \* [Users -> Decisions]
   licence,   \* [Users -> BOOLEAN]: at least one editor_licence_clauses row
-  viewOn,    \* the suggestion-view switch now (bookSwitches.currentSwitchValue)
-  everOn,    \* it has been switched on at least once (bookSwitches.firstSwitchOnMs # null)
   rows,      \* user_chapter_assignments rows for the study book, as <<user, chapter>>
   opened,    \* module_openings: the chapters whose unit has opened
   openings   \* what was true of the opener at each opening (the record the invariants read)
 
-vars == <<role, consent, licence, viewOn, everOn, rows, opened, openings>>
+vars == <<role, consent, licence, rows, opened, openings>>
 
 TypeOK ==
   /\ role \in [Users -> Roles]
   /\ consent \in [Users -> Decisions]
   /\ licence \in [Users -> BOOLEAN]
-  /\ viewOn \in BOOLEAN
-  /\ everOn \in BOOLEAN
   /\ rows \subseteq Users \X Chapters
   /\ opened \subseteq Chapters
   /\ \A o \in openings : o.unit \in Chapters /\ o.user \in Users
 
 \* Production on 2026-11-22: no chemistry assignment row, no opening, no consent row,
-\* no licence row (the table is new). Roles and the switch start anywhere.
+\* no licence row (the table is new). Roles start anywhere.
 Init ==
   /\ role \in [Users -> Roles]
   /\ consent = [u \in Users |-> "none"]
   /\ licence = [u \in Users |-> FALSE]
-  /\ viewOn \in BOOLEAN
-  /\ everOn = viewOn
   /\ rows = {}
   /\ opened = {}
   /\ openings = {}
@@ -68,7 +66,7 @@ GateAllows(u, c) ==
   /\ role[u] = "editor"       \* gate: bypass-role
   /\ consent[u] # "none"      \* gate: no-consent-decision
   /\ licence[u]               \* gate: no-licence-clause
-  /\ viewOn                   \* gate: suggestion-view-off
+  /\ Layer = "fable"          \* gate: served-layer-not-fable
 
 \* userService.setChapterAssignee: the gate, then delete the chapter's other holders and
 \* insert this one, in one transaction (POST /api/admin/assignments/:book/:chapter and
@@ -76,50 +74,50 @@ GateAllows(u, c) ==
 AssignReplacing(u, c) ==
   /\ GateAllows(u, c)
   /\ rows' = {r \in rows : r[2] # c} \cup {<<u, c>>}
-  /\ UNCHANGED <<role, consent, licence, viewOn, everOn, opened, openings>>
+  /\ UNCHANGED <<role, consent, licence, opened, openings>>
 
 \* userService.assignChapter: the gate, then INSERT OR IGNORE one row (no route calls it;
 \* it stays for fixtures and is gated all the same).
 AssignAdding(u, c) ==
   /\ GateAllows(u, c)
   /\ rows' = rows \cup {<<u, c>>}
-  /\ UNCHANGED <<role, consent, licence, viewOn, everOn, opened, openings>>
+  /\ UNCHANGED <<role, consent, licence, opened, openings>>
 
 \* userService.removeChapterAssignment (DELETE /api/admin/users/:id/chapters/:book/:chapter).
 RemoveRow(u, c) ==
   /\ <<u, c>> \in rows
   /\ rows' = rows \ {<<u, c>>}
-  /\ UNCHANGED <<role, consent, licence, viewOn, everOn, opened, openings>>
+  /\ UNCHANGED <<role, consent, licence, opened, openings>>
 
 \* userService.clearChapterAssignees (DELETE /api/admin/assignments/:book/:chapter).
 ClearChapter(c) ==
   /\ \E r \in rows : r[2] = c
   /\ rows' = {r \in rows : r[2] # c}
-  /\ UNCHANGED <<role, consent, licence, viewOn, everOn, opened, openings>>
+  /\ UNCHANGED <<role, consent, licence, opened, openings>>
 
 \* PUT /api/admin/users/:id (role) and POST/DELETE /api/admin/users/:id/books (head-editor
 \* grant): neither reads or touches assignment rows.
 SetRole(u, r) ==
   /\ role[u] # r
   /\ role' = [role EXCEPT ![u] = r]
-  /\ UNCHANGED <<consent, licence, viewOn, everOn, rows, opened, openings>>
+  /\ UNCHANGED <<consent, licence, rows, opened, openings>>
 
 \* researchConsent.recordDecision (POST /api/research/consent), by the editor. Only
 \* the 2030 retention step deletes research_consent rows; it is outside this model.
 RecordDecision(u, d) ==
   /\ consent' = [consent EXCEPT ![u] = d]
-  /\ UNCHANGED <<role, licence, viewOn, everOn, rows, opened, openings>>
+  /\ UNCHANGED <<role, licence, rows, opened, openings>>
 
 \* researchConsent.withdraw (POST /api/research/consent/withdraw): the row stays.
 Withdraw(u) ==
   /\ consent[u] = "consented"
   /\ consent' = [consent EXCEPT ![u] = "withdrawn"]
-  /\ UNCHANGED <<role, licence, viewOn, everOn, rows, opened, openings>>
+  /\ UNCHANGED <<role, licence, rows, opened, openings>>
 
 \* licenceClauses.recordClause (POST /api/admin/users/:id/licence-clause).
 RecordLicence(u) ==
   /\ licence' = [licence EXCEPT ![u] = TRUE]
-  /\ UNCHANGED <<role, consent, viewOn, everOn, rows, opened, openings>>
+  /\ UNCHANGED <<role, consent, rows, opened, openings>>
 
 \* licenceClauses.removeClause (DELETE /api/admin/users/:id/licence-clause/:rowId), taking
 \* the user's last row. It refuses (409 HOLDS_CHAPTERS) while the user holds a chapter in a
@@ -128,20 +126,12 @@ RemoveLicence(u) ==
   /\ licence[u]
   /\ ~\E c \in Chapters : <<u, c>> \in rows    \* removal: holds-chapter
   /\ licence' = [licence EXCEPT ![u] = FALSE]
-  /\ UNCHANGED <<role, consent, viewOn, everOn, rows, opened, openings>>
-
-\* suggestionSwitch.setSuggestionView (POST /api/admin/books/:book/suggestion-view).
-\* After the first switch-on, off and on again are both allowed (the kill switch).
-SwitchView(b) ==
-  /\ viewOn # b
-  /\ viewOn' = b
-  /\ everOn' = (everOn \/ b)
-  /\ UNCHANGED <<role, consent, licence, rows, opened, openings>>
+  /\ UNCHANGED <<role, consent, rows, opened, openings>>
 
 \* A serve of the chapter's module (GET /api/segment-editor/:book/:chapter/:moduleId)
 \* reaching moduleOpenings.openOnServe: openingPredicate (a row for this user and chapter,
 \* not yet opened) then recordOpening. validateBookChapter refuses chapter 0 before it.
-\* The predicate reads neither role, consent, licence nor the switch: "the row decides".
+\* The predicate reads neither role, consent, licence nor the served layer: "the row decides".
 Serve(u, c) ==
   /\ c # 0
   /\ <<u, c>> \in rows
@@ -149,8 +139,8 @@ Serve(u, c) ==
   /\ opened' = opened \cup {c}
   /\ openings' = openings \cup
        {[unit |-> c, user |-> u, consentAt |-> consent[u], licenceAt |-> licence[u],
-         roleAt |-> role[u], everOnAt |-> everOn]}
-  /\ UNCHANGED <<role, consent, licence, viewOn, everOn, rows>>
+         roleAt |-> role[u]]}
+  /\ UNCHANGED <<role, consent, licence, rows>>
 
 Next ==
   \/ \E u \in Users, c \in Chapters : AssignReplacing(u, c)
@@ -162,20 +152,20 @@ Next ==
   \/ \E u \in Users : Withdraw(u)
   \/ \E u \in Users : RecordLicence(u)
   \/ \E u \in Users : RemoveLicence(u)
-  \/ \E b \in BOOLEAN : SwitchView(b)
   \/ \E u \in Users, c \in Chapters : Serve(u, c)
 
 Spec == Init /\ [][Next]_vars
 
 -----------------------------------------------------------------------------
-\* The rules the code must keep (AssignGate.cfg). Spec §4's first anti-goal and R6.
+\* The rules the code must keep (AssignGate.cfg). Spec §4's first anti-goal and the served-layer decision.
 
 \* No study unit opens for an editor who has no consent decision recorded.
 ConsentBeforeOpening == \A o \in openings : o.consentAt # "none"
 
-\* No study unit opens before the suggestion view has first been switched on (R6:
-\* a unit opened before that loses its suggestions for good).
-OpenedOnlyAfterFirstSwitchOn == \A o \in openings : o.everOnAt
+\* No study unit opens unless the book is served from the Fable layer (the decision
+\* 2026-11-24-assign-gate-waits-on-fable-layer.md; supersedes R6). Held by the gate, which
+\* refuses every assignment while the layer is not fable, and a unit opens only for a row.
+OpensOnlyWhenFableServed == opened # {} => Layer = "fable"
 
 \* No assignment row for chapter 0, and its unit never opens (spec §6.6).
 NoChapterZero == /\ \A r \in rows : r[2] # 0
