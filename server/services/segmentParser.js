@@ -231,22 +231,29 @@ function loadModuleForEditing(book, chapter, moduleId) {
   }
 
   // Pair EN and IS segments
-  const paired = enSegments.map((en) => ({
-    segmentId: en.segmentId,
-    moduleId: en.moduleId,
-    segmentType: en.segmentType,
-    elementId: en.elementId,
-    en: en.content,
-    is: isLookup[en.segmentId]
-      ? normalizeTermMarkers(en.content, isLookup[en.segmentId].content)
-      : '',
-    hasTranslation: !!isLookup[en.segmentId],
-    // null, not undefined: a deleted key is a third state that reads as
-    // `undefined` at every use site, and the client branches on this.
-    mtFinding: findings.bySegment.get(en.segmentId) || null,
-    // Same rule: null, never absent. Set only on a Fable-served unit, from the tags file.
-    fableMeaning: fableMeaning.get(en.segmentId) || null,
-  }));
+  // Occurrence numbering is the served-version code's own (countOccurrences): only the first copy of
+  // a repeated id is served from the layer's pairing, so only it may carry the Fable meaning flag.
+  const seenIds = new Map();
+  const paired = enSegments.map((en) => {
+    const occurrence = seenIds.get(en.segmentId) || 0;
+    seenIds.set(en.segmentId, occurrence + 1);
+    return {
+      segmentId: en.segmentId,
+      moduleId: en.moduleId,
+      segmentType: en.segmentType,
+      elementId: en.elementId,
+      en: en.content,
+      is: isLookup[en.segmentId]
+        ? normalizeTermMarkers(en.content, isLookup[en.segmentId].content)
+        : '',
+      hasTranslation: !!isLookup[en.segmentId],
+      // null, not undefined: a deleted key is a third state that reads as
+      // `undefined` at every use site, and the client branches on this.
+      mtFinding: findings.bySegment.get(en.segmentId) || null,
+      // Same rule: null, never absent. Set only on a Fable-served unit, from the tags file.
+      fableMeaning: (occurrence === 0 && fableMeaning.get(en.segmentId)) || null,
+    };
+  });
 
   const titleSeg = paired.find((s) => s.segmentType === 'title');
   return {

@@ -193,16 +193,32 @@ describe('the Fable comparison being opened is recorded', () => {
     expect(eventsSince(mark)).toHaveLength(0);
   });
 
-  it('an unknown segment, a wrong occurrence and a malformed body: 400 and no row', async () => {
+  it('an unknown segment and a wrong occurrence: 400 NOT_FLAGGED and no row', async () => {
     const mark = eventMark();
     for (const body of [
       { segmentId: 'nope', occurrence: 0 },
       { segmentId: A, occurrence: 1 },
+    ]) {
+      const r = await post(asUser('p-con'), body);
+      expect(r.status).toBe(400);
+      expect(r.body).toEqual({ error: 'NOT_FLAGGED' });
+    }
+    expect(eventsSince(mark)).toHaveLength(0);
+  });
+
+  it('a malformed body: 400 INVALID_BODY and no row', async () => {
+    const mark = eventMark();
+    for (const body of [
       { segmentId: A },
       { segmentId: A, occurrence: '0' },
+      { segmentId: A, occurrence: -1 },
+      { segmentId: A, occurrence: 1.5 },
+      { segmentId: 7, occurrence: 0 },
       {},
     ]) {
-      expect((await post(asUser('p-con'), body)).status).toBe(400);
+      const r = await post(asUser('p-con'), body);
+      expect(r.status).toBe(400);
+      expect(r.body).toEqual({ error: 'INVALID_BODY' });
     }
     expect(eventsSince(mark)).toHaveLength(0);
   });

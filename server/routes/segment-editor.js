@@ -510,14 +510,19 @@ router.post(
   (req, res) => {
     const { segmentId, occurrence } = req.body || {};
     const notFlagged = () => res.status(400).json({ error: 'NOT_FLAGGED' });
-    if (typeof segmentId !== 'string' || !Number.isInteger(occurrence)) return notFlagged();
+    if (typeof segmentId !== 'string' || !Number.isInteger(occurrence) || occurrence < 0) {
+      return res.status(400).json({ error: 'INVALID_BODY' });
+    }
     const { book, moduleId } = req.params;
     try {
       const data = segmentParser.loadModuleForEditing(book, req.chapterNum, moduleId);
-      const at = data.segments.findIndex((s) => s.segmentId === segmentId);
-      if (at < 0 || !data.segments[at].fableMeaning) return notFlagged();
+      // Match (segmentId, occurrence) together, in the served-version code's own numbering, so a
+      // later copy of a repeated id can never be recorded.
       const { occurrences } = servedVersions.countOccurrences(data.segments);
-      if (occurrences[at] !== occurrence) return notFlagged();
+      const at = data.segments.findIndex(
+        (s, i) => s.segmentId === segmentId && occurrences[i] === occurrence
+      );
+      if (at < 0 || !data.segments[at].fableMeaning) return notFlagged();
       const conn = segmentEditor.getDb();
       const place = { book, chapter: req.chapterNum, moduleId };
       if (!isFlagVisibleNow(conn, place, segmentId, occurrence)) return notFlagged();
@@ -543,7 +548,14 @@ router.post(
       });
       return res.status(204).end();
     } catch (err) {
-      if (err.code === 'FABLE_LAYER_MISSING') return notFlagged();
+      if (err.code === 'FABLE_LAYER_MISSING') {
+        // Answered like an unflagged segment, but an operator should see the layer vanish mid-session.
+        log.warn(
+          { book, chapter: req.chapterNum, moduleId, code: err.code },
+          'fable comparison: layer missing'
+        );
+        return notFlagged();
+      }
       log.error({ err }, 'Error recording Fable comparison');
       return res.status(500).json({ error: 'Internal error' });
     }

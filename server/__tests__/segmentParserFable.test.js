@@ -255,6 +255,37 @@ describe('loadModuleForEditing — a repeated segment id (Review Focus 2)', () =
     const data = segmentParser.loadModuleForEditing(FABLE_BOOK, 3, MODULE);
     expect(seg(data, 'para-00003').fableMeaning).toEqual({ before: 'before para-00003' });
   });
+
+  it('puts the flag on the first copy only, never on the later copy', () => {
+    seedRepeated(tagLine('para-00003', ['meaning'], { occurrence: 0 }));
+    const data = segmentParser.loadModuleForEditing(FABLE_BOOK, 3, MODULE);
+    const copies = data.segments.filter((s) => s.segmentId === `${MODULE}:para:para-00003`);
+    expect(copies.map((s) => s.fableMeaning)).toEqual([{ before: 'before para-00003' }, null]);
+  });
+
+  it('real tree: ch08/m68747 repeats ids in the Fable file, and no id is flagged more than once', () => {
+    // Read-only: the real tree, found from this file's location, never written.
+    const books = path.resolve(import.meta.dirname, '../../books');
+    segmentParser._setTestBooksDir(books);
+    const fableFile = fs.readFileSync(
+      path.join(books, FABLE_BOOK, '02-mt-fable/ch08/m68747-segments.is.md'),
+      'utf-8'
+    );
+    const ids = segmentParser.parseSegments(fableFile).map((s) => s.segmentId);
+    const repeated = new Set(ids.filter((id, i) => ids.indexOf(id) !== i));
+    // Control: the layer really repeats ids (the English drives the loader, which serves each once).
+    expect(repeated.size).toBeGreaterThan(0);
+    const data = segmentParser.loadModuleForEditing(FABLE_BOOK, 8, 'm68747');
+    const flagged = data.segments.filter((s) => s.fableMeaning);
+    for (const id of new Set(flagged.map((s) => s.segmentId))) {
+      expect(flagged.filter((s) => s.segmentId === id)).toHaveLength(1);
+    }
+    for (const id of repeated) {
+      expect(data.segments.filter((s) => s.segmentId === id && s.fableMeaning).length).toBeLessThan(
+        2
+      );
+    }
+  });
 });
 
 describe('loadModuleForEditing — faithful wins (Review Focus 3)', () => {
