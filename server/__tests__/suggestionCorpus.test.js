@@ -26,7 +26,6 @@ const REF = JSON.parse(
 const logs = require('../lib/suggestionLogs');
 const { visibleGroups, placeGroup } = require('../public/js/suggestion-placement');
 const { loadModuleForEditing } = require('../services/segmentParser');
-const { sha256Text } = require('../lib/servedText');
 const servedLayer = require('../lib/servedLayer');
 const SV = require('../services/suggestionView');
 const Database = require('better-sqlite3');
@@ -45,7 +44,7 @@ const state = {
   nonOk: [],
   logsRead: 0,
   viewDropped: new Set(),
-  failing: [],
+  sources: new Set(),
   modules: [],
   mismatches: [],
   chainsChecked: 0,
@@ -81,29 +80,11 @@ beforeAll(() => {
         keptByChain.get(k).push(r);
       }
       const data = loadModuleForEditing(BOOK, chapter, moduleId);
-      // occurrence = per-id ordinal in served order (servedVersions.countOccurrences)
-      const seen = new Map();
-      const served = new Map(); // "id#occ" -> is
-      for (const seg of data.segments) {
-        const n = seen.get(seg.segmentId) || 0;
-        seen.set(seg.segmentId, n + 1);
-        served.set(`${seg.segmentId}#${n}`, seg.is);
-      }
+      state.sources.add(data.isSource);
       const dropped0 = new Set(dropped.map((r) => r.opId));
       const groupsByChain = logs.keptGroups(log);
       for (const [key, chain] of log.chains) {
         const first = chain[0];
-        const ref = {
-          chapter,
-          module: moduleId,
-          segmentId: first.segmentId,
-          occurrence: first.occurrence,
-        };
-        // Served text vs the text the AI read (the log's first `before`). Under Fable serving they
-        // differ, which is why no chemistry module is offered suggestions (check 2).
-        const actual = logs.firstBeforeSha256(log, first.segmentId, first.occurrence);
-        const is = served.get(key);
-        if (is === undefined || sha256Text(is) !== actual) state.failing.push(ref);
         // a duplicated id: not checked
         if ([...log.chains.keys()].some((k) => k !== key && k.startsWith(`${first.segmentId}#`))) {
           continue;
@@ -188,9 +169,10 @@ describe('G1.23 acceptance checks 1-3 over committed layer 2', () => {
     } finally {
       spy.mockRestore();
     }
-    // The reason the rule exists: the served text is no longer the text the AI read, for chains
-    // well beyond the reference's integrity failures.
-    expect(state.failing.length).toBeGreaterThan(REF.integrityFailures.length);
+    // The reason the rule exists: every module is served from the Fable layer, not the MT the AI read.
+    // Asserted on the layer itself, not on how many chains' texts differ from the MT: that count is a
+    // property of Fable's edits and would move if they came closer to the MT (deferred minor 4).
+    expect([...state.sources]).toEqual(['fable']);
   });
 
   it('check 3: accepting every shown group in order reproduces the kept chain, byte for byte', () => {

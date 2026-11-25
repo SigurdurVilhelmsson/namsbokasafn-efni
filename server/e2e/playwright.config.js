@@ -44,11 +44,11 @@ module.exports = defineConfig({
     stdout: 'pipe',
     stderr: 'pipe',
   },
-  // Two projects, because of one ordering in the shared database. The assign gate (G1.13 spec §6.5) refuses
-  // a chemistry assignment while the editors' suggestion view is off, and suggestion-view.spec.js needs the
-  // view off until its own step (2) switches it on, and never switches it off. So assignments.spec.js runs
-  // in a second project that starts after every test of the first has finished. A failure anywhere in the
-  // first project means the second does not run.
+  // Two projects, an ordering kept from when the assign gate (G1.13 spec §6.5) refused a chemistry assignment
+  // while the editors' suggestion view was off. Since the spec of 2026-11-24 (§6.7) the gate keys on the served
+  // layer (server/lib/servedLayer.js) and no longer reads that switch, which suggestion-view.spec.js still
+  // turns on in its step (2). assignments.spec.js runs in a second project that starts after every test of the
+  // first has finished. A failure anywhere in the first project means the second does not run.
   projects: [
     { name: 'chromium', use: { browserName: 'chromium' }, testIgnore: 'assignments.spec.js' },
     {

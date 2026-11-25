@@ -2,7 +2,12 @@ import { describe, it, expect } from 'vitest';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
-const { SERVED_LAYER_BY_BOOK, servedLayerFor, FABLE_LAYER } = require('../lib/servedLayer');
+const {
+  SERVED_LAYER_BY_BOOK,
+  servedLayerFor,
+  FABLE_LAYER,
+  MT_OUTPUT_LAYER,
+} = require('../lib/servedLayer');
 
 describe('servedLayer', () => {
   it('serves chemistry from the Fable layer', () => {
@@ -21,6 +26,11 @@ describe('servedLayer', () => {
 
   it('exports the layer name as a constant', () => {
     expect(FABLE_LAYER).toBe('fable');
+  });
+
+  it('exports the default layer as a constant, the value an unnamed book gets', () => {
+    expect(MT_OUTPUT_LAYER).toBe('mt-output');
+    expect(servedLayerFor('liffraedi-2e')).toBe(MT_OUTPUT_LAYER);
   });
 
   it('freezes the map', () => {

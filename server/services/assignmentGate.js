@@ -74,7 +74,8 @@ function assignmentRefusal(conn, { userId, book, chapter }) {
   if (isBypassRole(conn, userId, book)) return 'bypass-role';
   if (study && !hasConsentDecision(conn, userId)) return 'no-consent-decision';
   if (!hasClause(conn, userId)) return 'no-licence-clause';
-  if (study && servedLayer.servedLayerFor(book) !== 'fable') return 'served-layer-not-fable';
+  if (study && servedLayer.servedLayerFor(book) !== servedLayer.FABLE_LAYER)
+    return 'served-layer-not-fable';
   return null;
 }
 

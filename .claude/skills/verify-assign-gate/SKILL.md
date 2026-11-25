@@ -104,7 +104,7 @@ action per line.
    breaks when that conjunct is removed (it may share the rule with another guard: both licence guards are caught by
    `EveryRowHolderHasLicence`), and a `"<marker>|<Rule>"` pair to the mutant loop in `check.sh`. Check that the new
    mutant is reported on the rule you named.
-3. A **new path that writes a row, a role, consent, a licence or the switch**: add an action to `Next` and a row to the
+3. A **new path that writes a row, a role, consent or a licence**: add an action to `Next` and a row to the
    coverage table.
 4. Run `check.sh` and `replay-findings.js`. Then move the sync commit (below and in the `git diff` command above)
    forward to the new HEAD — **only after you have confirmed, function by function, that the model describes the code

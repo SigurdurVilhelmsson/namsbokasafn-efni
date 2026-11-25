@@ -31,4 +31,4 @@ function servedLayerFor(book) {
   return MT_OUTPUT_LAYER;
 }
 
-module.exports = { SERVED_LAYER_BY_BOOK, servedLayerFor, FABLE_LAYER };
+module.exports = { SERVED_LAYER_BY_BOOK, servedLayerFor, FABLE_LAYER, MT_OUTPUT_LAYER };

@@ -443,6 +443,30 @@ describe('the header, as spec §6.4', () => {
       provenanceSha256: sha(listing),
     });
   });
+  it('the fable layer record: an absent chooser table is sourcesSha256 null, never a throw (deferred minor 10)', () => {
+    const nodeFs = require('fs');
+    const table = path.join(
+      __dirname,
+      '..',
+      '..',
+      'experiments',
+      'fable-editor-trial',
+      'layer-sources.json'
+    );
+    expect(nodeFs.existsSync(table)).toBe(true); // control: the real table is there
+    const realExists = nodeFs.existsSync;
+    const spy = vi
+      .spyOn(nodeFs, 'existsSync')
+      .mockImplementation((p) => (path.resolve(String(p)) === table ? false : realExists(p)));
+    try {
+      const { header: h } = study.buildManifest({ book: BOOK, tag: TAG, git: GIT });
+      expect(h.layers.fable.sourcesSha256).toBeNull();
+      expect(spy.mock.calls.some(([p]) => path.resolve(String(p)) === table)).toBe(true);
+    } finally {
+      spy.mockRestore();
+    }
+  });
+
   it('layer 3 counts faithful files and review-status sidecars', () => {
     expect(header.layers.layer3).toEqual({
       dir: '03-faithful-translation',

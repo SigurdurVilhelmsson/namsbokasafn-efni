@@ -222,7 +222,7 @@ describe('T7: what the gate lets through', () => {
     expect(Object.keys(REFUSAL_MESSAGES)).not.toContain('suggestion-view-off');
   });
 
-  it('a declined consent row plus a licence row, view on → assigned', async () => {
+  it('a declined consent row plus a licence row, Fable-served book → assigned', async () => {
     plantAssignable(db, { userId: ids.editor, book: CHEM });
     // control: the decision on record is a decline, and it counts (spec §6.5, from §5.14)
     expect(
