@@ -25,6 +25,7 @@ const { sha256Text } = require('../lib/servedText');
 const { writeModule } = require('./helpers/servedFixture');
 const log = require('../lib/logger');
 const L = require('../lib/suggestionLogs');
+const servedLayer = require('../lib/servedLayer');
 const moduleOpenings = require('../services/moduleOpenings');
 
 const BOOK = 'efnafraedi-2e';
@@ -154,6 +155,9 @@ afterAll(() => {
 });
 
 beforeEach(() => {
+  // Chemistry, the only study book, is served from the Fable layer and so is never eligible. G1.23's
+  // code stays live for a future non-Fable study book, so this file gives the book the MT layer.
+  vi.spyOn(servedLayer, 'servedLayerFor').mockReturnValue('mt-output');
   plantLog();
   L._setTestRoots({ booksRoot: root, repoRoot: work });
   db.exec('DELETE FROM segment_acceptances; DELETE FROM segment_edits;');

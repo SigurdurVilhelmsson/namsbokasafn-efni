@@ -10,7 +10,7 @@
 // so a run never creates pipeline-output/sessions.db. Every edit row is seeded by SQL, so no
 // first-edit hook writes an MT lock and nothing reaches books/. The switch row is seeded by SQL too:
 // nothing else writes it yet.
-import { describe, it, expect, beforeAll, afterAll, afterEach, vi } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, beforeEach, afterEach, vi } from 'vitest';
 import { createRequire } from 'module';
 import crypto from 'crypto';
 import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'fs';
@@ -33,6 +33,7 @@ const researchDb = require('../services/researchDb');
 const researchConsentText = require('../lib/researchConsentText');
 const serverCommit = require('../lib/serverCommit');
 const L = require('../lib/suggestionLogs');
+const servedLayer = require('../lib/servedLayer');
 const { sha256Text } = require('../lib/servedText');
 const { writeModule, handlerFor, invoke } = require('./helpers/servedFixture');
 const { plantAssignment } = require('./helpers/plantAssignment.cjs');
@@ -209,6 +210,12 @@ beforeAll(() => {
   ).run(BOOK, SWITCH_AT);
 });
 
+beforeEach(() => {
+  // Chemistry, the only study book, is served from the Fable layer and so is never eligible. G1.23's
+  // code stays live for a future non-Fable study book, so this file gives the book the MT layer.
+  vi.spyOn(servedLayer, 'servedLayerFor').mockReturnValue('mt-output');
+});
+
 afterEach(() => {
   moduleOpenings._setTestClock(null);
   vi.restoreAllMocks();
@@ -222,6 +229,22 @@ afterAll(() => {
   L._setTestRoots(null);
   segmentParser._setTestBooksDir(realBooksDir);
   rmSync(work, { recursive: true, force: true });
+});
+
+describe('a Fable-served book (Task 9)', () => {
+  it('the real setting: a chemistry module carries no suggestions key anywhere, switch on and opened after it', async () => {
+    servedLayer.servedLayerFor.mockRestore(); // chemistry's real setting is 'fable'
+    plant('m96090');
+    at(AFTER_SWITCH);
+    const r = await serve('m96090');
+    expect(r.status).toBe(200);
+    expect(r.body.segments.length).toBe(3);
+    expect(withSuggestions(r.body)).toEqual({});
+    // Control: the same module under the MT layer does carry them.
+    vi.spyOn(servedLayer, 'servedLayerFor').mockReturnValue('mt-output');
+    const again = await serve('m96090');
+    expect(Object.keys(withSuggestions(again.body)).length).toBeGreaterThan(0);
+  });
 });
 
 describe('step 5 of the module route (spec §5.4 step 5)', () => {

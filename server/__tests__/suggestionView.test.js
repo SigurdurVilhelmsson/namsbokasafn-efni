@@ -26,6 +26,7 @@ const log = require('../lib/logger');
 const L = require('../lib/suggestionLogs');
 const { sha256Text } = require('../lib/servedText');
 const SV = require('../services/suggestionView');
+const servedLayer = require('../lib/servedLayer');
 
 const BOOK = 'efnafraedi-2e';
 const MODULE = 'm95010';
@@ -181,6 +182,10 @@ beforeEach(() => {
   changesPath = plantModule(MODULE);
   L._setTestRoots({ booksRoot: path.join(tmp, 'books'), repoRoot: tmp });
   warn = vi.spyOn(log, 'warn').mockImplementation(() => {});
+  // Chemistry, the only study book, is served from the Fable layer and so is never eligible. G1.23's
+  // code stays live for a future non-Fable study book, so these tests give the book the MT layer;
+  // the 'fable-layer' tests below put the real setting back.
+  vi.spyOn(servedLayer, 'servedLayerFor').mockReturnValue('mt-output');
 });
 afterEach(() => {
   vi.restoreAllMocks();
@@ -317,6 +322,38 @@ describe('isEligible (spec §6.2; index decision 4, reason order R4)', () => {
     });
     // Control: the study book reads the switch on that handle, and the closed handle throws.
     expect(() => SV.isEligible(closed, KEY)).toThrow(/not open/);
+  });
+});
+
+describe('a Fable-served book gets no suggestions (Task 9)', () => {
+  beforeEach(() => {
+    vi.mocked(servedLayer.servedLayerFor).mockRestore(); // the real setting: chemistry is 'fable'
+  });
+
+  it('chemistry is not eligible even with the switch on and an opening after it', () => {
+    eligibleModule([]);
+    expect(SV.isEligible(db, KEY)).toEqual({ eligible: false, reason: 'fable-layer' });
+  });
+
+  it('moduleContext reads no log and no closed table for it', () => {
+    eligibleModule([]);
+    const read = vi.spyOn(L, 'readModuleLog');
+    const ctx = SV.moduleContext(db, KEY);
+    expect(ctx.eligible).toBe(false);
+    expect(ctx.reason).toBe('fable-layer');
+    expect(read).not.toHaveBeenCalled();
+  });
+
+  it('the layer check touches no table: a closed handle', () => {
+    const closed = new Database(':memory:');
+    closed.close();
+    expect(SV.isEligible(closed, KEY)).toEqual({ eligible: false, reason: 'fable-layer' });
+  });
+
+  it('control: the same module is eligible once its book is served from the MT layer', () => {
+    eligibleModule([]);
+    vi.spyOn(servedLayer, 'servedLayerFor').mockReturnValue('mt-output');
+    expect(SV.isEligible(db, KEY).reason).toBe('eligible');
   });
 });
 
