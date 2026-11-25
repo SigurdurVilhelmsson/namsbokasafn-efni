@@ -141,7 +141,6 @@ describe('T1: the committed layer-2 chains against the served versions (spec §1
       // the real tree, not a temp root
       expect(path.resolve(realBooksDirAtStart)).toBe(path.resolve(BOOKS));
       const chains = firstRecords();
-      const allKeys = [...chains.keys()];
       const mismatched = new Set();
       const mintedOf = new Map(); // key → the is_sha256 the serve minted (null when none)
       const matched = new Set();
@@ -242,25 +241,41 @@ describe('T1: the committed layer-2 chains against the served versions (spec §1
       // an expected-non-empty class, so a classifier that classifies nothing cannot pass
       expect(classes['fable-changed'].length).toBeGreaterThan(0);
       expect(classes['fable-changed']).toEqual(expect.arrayContaining(FORMER_OVERLAY_CHAINS));
-      // Value controls (PR1 review C22; every key is in exactly one of the two sets, so comparing matched with the
-      // complement of mismatched could not fail). The rows the route minted decide nearly every chain: a route
-      // whose response showed every id duplicated would send them all through the builder, which reads no row,
-      // and fail here. Since G1.12 no chemistry id is duplicated, so the builder decides only ch00.
-      expect(matchedByRow.size).toBeGreaterThan(allKeys.length * 0.9);
-      expect(matchedByBuilder.size).toBeGreaterThan(0);
+      // Value controls, read from the DB rows the route minted, never from the builder. Every
+      // Fable-changed chain's row must equal its tags line's afterSha256 (what the editor serves),
+      // and every chain matched through a row must equal its beforeSha256 (what the AI read). Both
+      // populations are non-empty, so a route that mints nothing, or hashes the MT text, goes red.
+      const rowOf = (k) => {
+        const c = chains.get(k);
+        return rowFor.get(BOOK, chapterOf(c.chDir), c.module, c.segmentId, c.occurrence)?.is_sha256;
+      };
+      // (ch00 is never served by the route, so it has no row to read; it is the builder's.)
+      const fableRows = classes['fable-changed'].filter((k) => !k.startsWith('ch00/'));
+      expect(fableRows.length).toBeGreaterThan(0);
+      expect(matchedByRow.size).toBeGreaterThan(0);
+      for (const k of fableRows) {
+        expect(rowOf(k), k).toBe(fableTagLine(chains.get(k)).afterSha256);
+      }
+      for (const k of matchedByRow) {
+        expect(rowOf(k), k).toBe(chains.get(k).beforeSha256);
+      }
+      // The builder decides only ch00; its chains classify through the builder's own Fable hash.
       expect([...matchedByBuilder].filter((k) => !k.startsWith('ch00/'))).toEqual([]);
-      // Each G1.12 repeat's #0 sibling is served, minted and matched (the first copy, G1.12).
-      expect([...matchedByRow]).toEqual(
-        expect.arrayContaining(UNSERVED_G112_REPEATS.map((k) => k.replace(/#1$/, '#0')))
-      );
-      // the matched set includes chapter metadata, an appendix and ch00
-      expect([...matched]).toEqual(
-        expect.arrayContaining([
-          'ch02/chapter-metadata/chapter:title:ch02#0',
-          'appendices/m68860/m68860:para:fs-idm37591248#0',
-          'ch00/m68662/m68662:para:pref-p-009#0',
-        ])
-      );
+      expect(classes['fable-changed'].some((k) => k.startsWith('ch00/'))).toBe(true);
+      // Each G1.12 repeat's #0 sibling is served and minted (the first copy, G1.12): it has a row, and it
+      // is either matched or Fable-changed, never unclassified.
+      for (const k of UNSERVED_G112_REPEATS.map((r) => r.replace(/#1$/, '#0'))) {
+        expect(rowOf(k), k).toBeTruthy();
+        expect(matched.has(k) || classes['fable-changed'].includes(k), k).toBe(true);
+      }
+      // the chains include chapter metadata, an appendix and ch00, each matched or Fable-changed
+      for (const k of [
+        'ch02/chapter-metadata/chapter:title:ch02#0',
+        'appendices/m68860/m68860:para:fs-idm37591248#0',
+        'ch00/m68662/m68662:para:pref-p-009#0',
+      ]) {
+        expect(matched.has(k) || classes['fable-changed'].includes(k), k).toBe(true);
+      }
       // the response's own baseSha256 is the minted hash for every served chain; an unserved occurrence
       // has no entry and no row, so it disagrees — exactly the G1.12 repeats above. The Fable-changed class
       // is served: its entry and its row agree with each other, and differ only from what the AI read.

@@ -32,7 +32,7 @@ function writeModule(root, { book, chapterDir, moduleId, en, mt = null, faithful
   const body = (x) => (typeof x === 'string' ? x : segFile(x));
   writeRaw(root, `${book}/02-for-mt/${chapterDir}/${moduleId}-segments.en.md`, body(en));
   if (mt) writeRaw(root, `${book}/02-mt-output/${chapterDir}/${moduleId}-segments.is.md`, body(mt));
-  const fableBody = fable === undefined ? mt : fable; // '' plants an empty (layerless) file
+  const fableBody = fable === undefined ? mt : fable;
   if (fableBody !== null && fableBody !== false && servedLayerFor(book) === 'fable') {
     writeRaw(root, `${book}/02-mt-fable/${chapterDir}/${moduleId}-segments.is.md`, body(fableBody));
     writeRaw(root, `${book}/02-mt-fable/${chapterDir}/${moduleId}-tags.jsonl`, '');
