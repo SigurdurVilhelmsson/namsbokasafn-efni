@@ -245,7 +245,8 @@ function servedBase(book) {
           `${u.unit}: a 02-structure file (structure, equations or extraction manifest) is not valid JSON`
         );
       }
-      if (e.code !== 'NO_LAYER') throw e;
+      // A Fable-served unit with no Fable file is a unit with no layer here too.
+      if (e.code !== 'NO_LAYER' && e.code !== 'FABLE_LAYER_MISSING') throw e;
       return { ...u, marker, rows: null, duplicatedIds: [], isSource: null };
     }
   });

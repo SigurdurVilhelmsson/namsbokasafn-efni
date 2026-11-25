@@ -279,24 +279,34 @@ describe('steps 1–3, in order (spec §5.6)', () => {
     );
   });
 
-  it('a Fable-served module with English only is refused by the loader, whatever the segment (spec §6.4)', () => {
-    // NO_LAYER (a module with no Icelandic layer) cannot arise for chemistry any more: the loader throws
-    // FABLE_LAYER_MISSING before the service reaches its own placement step. Nothing is written.
-    const refusedByLoader = (segmentId) => {
-      const before = snap();
-      let err = null;
-      try {
-        save({ moduleId: 'm91002', segmentId, baseSha256: sha256Text('') });
-      } catch (e) {
-        err = e;
-      }
-      expect(err, 'expected the loader to refuse').toBeInstanceOf(Error);
-      expect(err.code).toBe('FABLE_LAYER_MISSING');
-      expect(snap()).toEqual(before);
+  it('NO_LAYER for a module with English only, whatever the segment (the loader refuses a Fable-served unit with no Fable file)', () => {
+    const err = refusedWith(
+      () => save({ moduleId: 'm91002', segmentId: 'm91002:para:a', baseSha256: sha256Text('') }),
+      'NO_LAYER'
+    );
+    expect(err.refusal).toEqual(PLACEMENT_REFUSAL('NO_LAYER'));
+    // Step 2 comes before step 3: an id that is not there is still NO_LAYER.
+    refusedWith(
+      () => save({ moduleId: 'm91002', segmentId: 'm91002:para:zz', baseSha256: sha256Text('') }),
+      'NO_LAYER'
+    );
+  });
+
+  it('any other loader error is rethrown unchanged, not turned into NO_LAYER', () => {
+    const real = segmentParser.loadModuleForEditing;
+    const boom = Object.assign(new Error('disk on fire'), { code: 'EIO' });
+    segmentParser.loadModuleForEditing = () => {
+      throw boom;
     };
-    refusedByLoader('m91002:para:a');
-    // An id that is not there is refused the same way: the unit is refused before any id is looked up.
-    refusedByLoader('m91002:para:zz');
+    try {
+      expect(() =>
+        save({ moduleId: 'm91001', segmentId: SEG('a'), baseSha256: sha256Text('x') })
+      ).toThrow(boom);
+    } finally {
+      segmentParser.loadModuleForEditing = real;
+    }
+    // control: restored, the same call reaches the real loader again
+    expect(() => load(CHEM, 1, 'm91001')).not.toThrow();
   });
 
   it('SEGMENT_NOT_FOUND for an id not served, and for an occurrence the id does not have', () => {
