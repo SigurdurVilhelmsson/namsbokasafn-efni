@@ -713,6 +713,7 @@
       leaveModule();
     }
     _loadingModuleId = moduleId;
+    if (moduleId !== currentModuleId) resetFableComparisons();
     currentModuleId = moduleId;
 
     // Show loading spinner immediately to prevent double-clicks
@@ -781,7 +782,20 @@
         if (!saveDraft()) keepUnwritten(draftPrefix(), draftEntries());
         leaveModule();
       }
-      alert(unrecorded ? UI.segmentEditor.openingUnrecorded : UI.common.errorLoading + err.message);
+      // Spec of 2026-11-24, §6.4: a unit whose Fable layer is missing or incomplete answers 409 FABLE_LAYER_MISSING
+      // with the §6.10 refusal as its message; err.message is the bare code, so the text comes from err.data.
+      const fableMissing =
+        err.status === 409 &&
+        err.data &&
+        err.data.error === 'FABLE_LAYER_MISSING' &&
+        err.data.message;
+      alert(
+        unrecorded
+          ? UI.segmentEditor.openingUnrecorded
+          : fableMissing
+            ? err.data.message
+            : UI.common.errorLoading + err.message
+      );
     } finally {
       _loadingModuleId = null;
     }
@@ -2327,9 +2341,9 @@
     let fableFlagHtml = '';
     if (seg.fableMeaning && typeof seg.fableMeaning.before === 'string') {
       const open = fableComparisonOpen.has(seg.segmentId);
-      const diffHtml = window.wordDiffLib.renderWordDiffHtml(
-        window.wordDiffLib.wordDiff(seg.fableMeaning.before, seg.is || '')
-      );
+      // The diff is built when the panel is first opened (toggleFableComparison), never on a table render: an
+      // appendix table summary is a diff of thousands of words. A re-render of an open panel reuses the cache.
+      const diffHtml = open ? fableComparisonDiffHtml(seg) : '';
       fableFlagHtml = `
           <div class="term-issue fable-flag" data-fable-flag="1">
             <span class="term-issue-icon">&#9888;</span>
@@ -3611,6 +3625,8 @@
     dirtyEdits.clear();
     heldDrafts.clear();
     paneState.clear();
+    // A unit opened again starts with its comparisons closed, so opening one records it again.
+    resetFableComparisons();
     lastFocusedTextarea = null;
     if (draftTimer) clearInterval(draftTimer);
     tabGuard.release();
@@ -3857,6 +3873,28 @@
   // and those whose recording POST is still in flight (a second click meanwhile does nothing).
   const fableComparisonOpen = new Set();
   const fableComparisonPosting = new Set();
+  // The comparison's HTML per segment for this page load, kept with the two texts it was built from.
+  const fableComparisonCache = new Map();
+
+  /** Another unit (or none) is on screen: no panel of it is open and no recording of it is awaited. */
+  function resetFableComparisons() {
+    fableComparisonOpen.clear();
+    fableComparisonPosting.clear();
+  }
+
+  /**
+   * The comparison HTML of a flagged segment, built once per page load (word-diff.js escapes every token).
+   * @param {{segmentId: string, is?: string, fableMeaning: {before: string}}} seg
+   */
+  function fableComparisonDiffHtml(seg) {
+    const before = seg.fableMeaning.before;
+    const after = seg.is || '';
+    const hit = fableComparisonCache.get(seg.segmentId);
+    if (hit && hit.before === before && hit.after === after) return hit.html;
+    const html = window.wordDiffLib.comparisonHtml(before, after);
+    fableComparisonCache.set(seg.segmentId, { before, after, html });
+    return html;
+  }
 
   /**
    * Opens or closes a row's read-only comparison. The research event is sent ONCE per opening, never on a
@@ -3875,6 +3913,10 @@
       if (button) button.setAttribute('aria-expanded', 'false');
       return;
     }
+    const seg = moduleData && moduleData.segments.find((s) => s.segmentId === segmentId);
+    if (!seg || !seg.fableMeaning) return;
+    const diff = panel.querySelector('.fable-comparison-diff');
+    if (diff) diff.innerHTML = fableComparisonDiffHtml(seg);
     fableComparisonOpen.add(segmentId);
     panel.hidden = false;
     if (button) button.setAttribute('aria-expanded', 'true');

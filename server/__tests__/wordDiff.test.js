@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
-const { wordDiff, renderWordDiffHtml } = require('../public/js/word-diff.js');
+const { wordDiff, renderWordDiffHtml, MAX_CELLS } = require('../public/js/word-diff.js');
 
 const join = (ops, keep) =>
   ops
@@ -53,6 +53,59 @@ describe('wordDiff', () => {
     const ops = wordDiff('a [[term:x|term-00001]] b', 'a [[term:y|term-00002]] b');
     expect(ops.find((o) => o.op === 'del').text).toBe('[[term:x|term-00001]]');
     expect(ops.find((o) => o.op === 'ins').text).toBe('[[term:y|term-00002]]');
+  });
+});
+
+describe('wordDiff edges (deferred minors 5 and 7)', () => {
+  it('an empty before is one insertion of the whole after', () => {
+    expect(wordDiff('', 'nýr texti')).toEqual([{ op: 'ins', text: 'nýr texti' }]);
+  });
+
+  it('an empty after is one deletion of the whole before', () => {
+    expect(wordDiff('gamall texti', '')).toEqual([{ op: 'del', text: 'gamall texti' }]);
+  });
+
+  it('keeps a nested marker whole, up to the ]] that closes the outer one', () => {
+    const nested = '10[[sup:[[i:x]]]]';
+    const ops = wordDiff(`reikna ${nested} nú`, `reikna ${nested} þá`);
+    expect(ops[0]).toEqual({ op: 'same', text: `reikna ${nested} ` });
+  });
+
+  it('shows a changed nested marker as one whole del and one whole ins', () => {
+    const ops = wordDiff('a [[fn:sjá [[i:W]] hér]] b', 'a [[fn:sjá [[i:m]] hér]] b');
+    expect(ops.filter((o) => o.op !== 'same')).toEqual([
+      { op: 'del', text: '[[fn:sjá [[i:W]] hér]]' },
+      { op: 'ins', text: '[[fn:sjá [[i:m]] hér]]' },
+    ]);
+  });
+
+  it('ends an unclosed nested opener at the first ]], as before, and keeps the join', () => {
+    const before = 'x [[a [[b]] y';
+    const after = 'x [[a [[b]] z';
+    expect(join(wordDiff(before, after), ['same', 'del'])).toBe(before);
+  });
+});
+
+describe('wordDiff past the cell budget', () => {
+  // Two texts that share no token at either end and whose middles exceed MAX_CELLS.
+  const side = Math.ceil(Math.sqrt(MAX_CELLS)) + 10;
+  const before = Array.from({ length: side }, (_, k) => `a${k}`).join(' ');
+  const after = Array.from({ length: side }, (_, k) => `b${k}`).join(' ');
+
+  it('returns the whole before as one del and the whole after as one ins', () => {
+    expect(wordDiff(before, after)).toEqual([
+      { op: 'del', text: before },
+      { op: 'ins', text: after },
+    ]);
+  });
+
+  it('trims a shared prefix and suffix before measuring, so a local edit in long texts is still marked', () => {
+    const long = Array.from({ length: side * 2 }, (_, k) => `w${k}`).join(' ');
+    const ops = wordDiff(`${long} rauður ${long}`, `${long} blár ${long}`);
+    expect(ops.filter((o) => o.op !== 'same')).toEqual([
+      { op: 'del', text: 'rauður' },
+      { op: 'ins', text: 'blár' },
+    ]);
   });
 });
 
