@@ -71,7 +71,7 @@ const mathTokens = (s) => new Set(s.match(/\[\[MATH:\d+\]\]/g) || []);
 /**
  * Stage one module's English file, Icelandic file and structure sidecars under `bookTmp`, so a
  * loader test never reads the live tree (the first apply on a live module writes a faithful file,
- * which would turn a test that expects isSource 'mt-output' red for an unrelated reason).
+ * which would turn a test that expects isSource 'fable' red for an unrelated reason).
  */
 function stageModule(mod, bookTmp, isText) {
   const enSrc = join(BOOK_DIR, '02-for-mt', mod.chDir, `${mod.moduleId}-segments.en.md`);
@@ -79,6 +79,10 @@ function stageModule(mod, bookTmp, isText) {
   copyFileSync(enSrc, join(bookTmp, '02-for-mt', mod.chDir, `${mod.moduleId}-segments.en.md`));
   mkdirSync(join(bookTmp, '02-mt-output', mod.chDir), { recursive: true });
   writeFileSync(join(bookTmp, '02-mt-output', mod.chDir, `${mod.moduleId}-segments.is.md`), isText);
+  // Chemistry is served from its Fable layer: plant one carrying the same text, with no tag lines.
+  mkdirSync(join(bookTmp, '02-mt-fable', mod.chDir), { recursive: true });
+  writeFileSync(join(bookTmp, '02-mt-fable', mod.chDir, `${mod.moduleId}-segments.is.md`), isText);
+  writeFileSync(join(bookTmp, '02-mt-fable', mod.chDir, `${mod.moduleId}-tags.jsonl`), '');
   for (const f of ['structure', 'equations', 'manifest']) {
     const p = join(BOOK_DIR, '02-structure', mod.chDir, `${mod.moduleId}-${f}.json`);
     if (existsSync(p)) {
@@ -128,7 +132,7 @@ describe('G1.12 loader on the real chemistry corpus', () => {
       let checked = 0;
       for (const mod of MODS) {
         const data = segmentParser.loadModuleForEditing(BOOK, mod.chapter, mod.moduleId);
-        if (data.isSource !== 'mt-output') bad.push(`${mod.moduleId}: isSource ${data.isSource}`);
+        if (data.isSource !== 'fable') bad.push(`${mod.moduleId}: isSource ${data.isSource}`);
         const versions = servedVersions.versionRowsFor(data, {
           book: BOOK,
           chapter: mod.chapter,

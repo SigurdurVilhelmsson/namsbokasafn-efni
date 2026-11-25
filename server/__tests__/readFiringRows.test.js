@@ -51,12 +51,19 @@ function makeBooksDir(copies) {
   const chDir = path.join(root, BOOK, '02-for-mt', 'ch01');
   mkdirSync(chDir, { recursive: true });
   let body = '';
+  let fableBody = '';
   for (let c = 0; c < copies; c++) {
     segments.forEach((s, i) => {
       body += `<!-- SEG:m001:para:fs-c${c}-${i} -->\n${s.enContent}\n\n`;
+      fableBody += `<!-- SEG:m001:para:fs-c${c}-${i} -->\n${s.isContent || 'x'}\n\n`;
     });
   }
   writeFileSync(path.join(chDir, 'm001-segments.en.md'), body);
+  // Chemistry is served from its Fable layer, and the loader refuses a unit without one.
+  const fableDir = path.join(root, BOOK, '02-mt-fable', 'ch01');
+  mkdirSync(fableDir, { recursive: true });
+  writeFileSync(path.join(fableDir, 'm001-segments.is.md'), fableBody);
+  writeFileSync(path.join(fableDir, 'm001-tags.jsonl'), '');
   return root;
 }
 

@@ -441,7 +441,7 @@ describe('writers that name no list leave the column alone', () => {
           segmentId: SEG,
           currentIs: BASE,
           en: 'EN a',
-          layer: 'mt-output',
+          layer: 'fable',
           occurrence: 0,
           duplicated: false,
         },

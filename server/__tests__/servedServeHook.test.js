@@ -138,6 +138,13 @@ describe('T2, route half: each normalisation step is hashed after it, from the r
       `${CHEM}/02-mt-output/ch01/m90001-segments.is.md`,
       CASES.map(([id, , slice]) => `<!-- SEG:${id} -->${slice}`).join('')
     );
+    // The same exact bytes as the Fable layer, which is what chemistry is served from
+    writeRaw(
+      root,
+      `${CHEM}/02-mt-fable/ch01/m90001-segments.is.md`,
+      CASES.map(([id, , slice]) => `<!-- SEG:${id} -->${slice}`).join('')
+    );
+    writeRaw(root, `${CHEM}/02-mt-fable/ch01/m90001-tags.jsonl`, '');
     const out = await serve(CHEM, 1, 'm90001');
     expect(out.status).toBe(200);
     body = out.body;
@@ -228,7 +235,7 @@ describe('T3, serve half (spec §5.2)', () => {
 
   it('changing only the layer adds one row per segment, with the same is_sha256', async () => {
     const mt = await serve(CHEM, 1, 'm90003');
-    expect(mt.body.isSource).toBe('mt-output');
+    expect(mt.body.isSource).toBe('fable');
     const before = idsOf('m90003');
     const faithful = path.join(root, CHEM, '03-faithful-translation/ch01/m90003-segments.is.md');
     mkdirSync(path.dirname(faithful), { recursive: true });
@@ -243,7 +250,7 @@ describe('T3, serve half (spec §5.2)', () => {
     for (const id of ['m90003:para:a', 'm90003:para:b']) {
       const mtSeg = segOf(mt.body, id);
       const [mtRow] = rows(
-        "module_id = 'm90003' AND segment_id = ? AND layer = 'mt-output' AND is_sha256 = ? AND en_sha256 = ?",
+        "module_id = 'm90003' AND segment_id = ? AND layer = 'fable' AND is_sha256 = ? AND en_sha256 = ?",
         id,
         mtSeg.baseSha256,
         sha256Text(mtSeg.en)
@@ -272,11 +279,10 @@ describe('T3, serve half (spec §5.2)', () => {
         ['m90002:para:y', 'Why.'],
       ],
     });
+    // A chemistry unit with no Fable file is refused (spec §6.4): nothing is served, so nothing is minted.
     const layerless = await serve(CHEM, 1, 'm90002');
-    expect(layerless.status).toBe(200);
-    expect(layerless.body.isSource).toBeNull();
-    expect(layerless.body.segments.map((s) => s.occurrence)).toEqual([0, 0]);
-    expect(layerless.body.segments.filter((s) => 'baseSha256' in s)).toEqual([]);
+    expect(layerless.status).toBe(409);
+    expect(layerless.body.error).toBe('FABLE_LAYER_MISSING');
     expect(rows('module_id = ?', 'm90002')).toEqual([]);
 
     // control: a second module served in the same test gains rows for exactly its segment ids

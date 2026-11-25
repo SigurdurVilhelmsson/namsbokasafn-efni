@@ -248,12 +248,16 @@ describe('T3: the manifest joins the served versions the route mints (spec §6.4
     });
   });
 
-  it('control: one changed byte in one MT segment, served again, gives exactly that one row unjoined', async () => {
+  it('control: one changed byte in one served segment, served again, gives exactly that one row unjoined', async () => {
     const lines = linesOf(study.buildManifest({ book: BOOK, tag: TAG, git: GIT }).segmentsJsonl);
     await serveAll();
     const u = UNITS[1];
     const changed = mtText(u, 0).replace('.', '!');
-    writeFileSync(mtPath(u), readFileSync(mtPath(u), 'utf8').replace(mtText(u, 0), changed));
+    // The editor serves the Fable layer, so the changed byte goes into the served file.
+    const served = bookPath('02-mt-fable', u.chapterDir, `${u.moduleId}-segments.is.md`);
+    const before = readFileSync(served, 'utf8');
+    writeFileSync(served, before.replace(mtText(u, 0), changed));
+    expect(readFileSync(served, 'utf8')).not.toBe(before); // control: the byte did change
     expect((await serve(u)).status).toBe(200);
     const keys = new Set(lines.map(joinKey));
     const unjoined = servedRows().filter((r) => !keys.has(joinKey(r)));
@@ -319,7 +323,7 @@ describe('the header, as spec §6.4', () => {
     expect(Object.keys(linesOf(segmentsJsonl)[0])).toEqual([...JOIN, 'layer']);
   });
   it('counts units, segments and segments by layer', () => {
-    expect(header.counts).toEqual({ units: 3, segments: 6, byLayer: { 'mt-output': 6 } });
+    expect(header.counts).toEqual({ units: 3, segments: 6, byLayer: { fable: 6 } });
   });
   it('lists the units in chapter order, appendices last', () => {
     expect(header.units.map((u) => [u.chapter, u.chapterDir, u.moduleId])).toEqual([
@@ -524,7 +528,7 @@ describe('the header with absent or served layer directories', () => {
     const { header } = study.buildManifest({ book: BOOK, tag: TAG, git: GIT });
     expect([header.units[0].faithfulSha256, header.counts.byLayer, header.layers.layer3]).toEqual([
       sha(readFileSync(faithful)),
-      { faithful: 2, 'mt-output': 4 },
+      { faithful: 2, fable: 4 },
       { dir: '03-faithful-translation', faithfulFiles: 1, reviewStatusSidecars: 1 },
     ]);
   });

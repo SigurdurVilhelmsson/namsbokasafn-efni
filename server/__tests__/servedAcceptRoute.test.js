@@ -60,6 +60,8 @@ const KNOWN = [
     moduleId: 'm68726',
     segmentId: 'm68726:para:fs-idm94618544',
     markers: ['[[MATH:2]]', '[[MATH:3]]'], // what tells the two raw copies apart, first then second
+    fableServed: '[[MATH:2]]', // the committed Fable file keeps both copies; the first is served
+    fableNot: '[[MATH:3]]',
   },
   {
     chapter: 8,
@@ -67,6 +69,8 @@ const KNOWN = [
     moduleId: 'm68747',
     segmentId: 'm68747:para:fs-idm99049568',
     markers: ['hnútur sem', 'hnútyfirborð'],
+    fableServed: 'Nóða sker', // the committed Fable file keeps both copies; Fable reworded the first
+    fableNot: 'hnútyfirborð', // the second copy, unchanged by Fable
   },
 ];
 
@@ -128,6 +132,12 @@ beforeAll(() => {
       ['02-mt-output', 'is'],
     ]) {
       const rel = path.join(CHEM, layer, k.chapterDir, `${k.moduleId}-segments.${ext}.md`);
+      mkdirSync(path.dirname(path.join(root, rel)), { recursive: true });
+      copyFileSync(path.join(REPO_BOOKS, rel), path.join(root, rel));
+    }
+    // Chemistry is served from its Fable layer: copy the committed one (text and tag lines).
+    for (const f of [`${k.moduleId}-segments.is.md`, `${k.moduleId}-tags.jsonl`]) {
+      const rel = path.join(CHEM, '02-mt-fable', k.chapterDir, f);
       mkdirSync(path.dirname(path.join(root, rel)), { recursive: true });
       copyFileSync(path.join(REPO_BOOKS, rel), path.join(root, rel));
     }
@@ -213,7 +223,7 @@ describe('POST /accept — what is stored (spec §5.6 Accept, §5.8)', () => {
       module_id: M,
       segment_id: A,
       occurrence: 0,
-      layer: 'mt-output',
+      layer: 'fable',
       en_text: 'EN a',
       is_text: 'IS a',
     });
@@ -402,8 +412,19 @@ describe('POST /accept — placement and scope refusals (spec §5.6 steps 1–3,
       const [first, last] = k.markers;
       expect(raw[0]).toContain(first);
       expect(raw[1]).toContain(last);
-      expect(X).toContain(first);
-      expect(X).not.toContain(last);
+      // The editor serves the Fable layer: the served text is its record for the id, not the MT's first copy.
+      const fableRaw = segmentParser
+        .parseSegments(
+          readFileSync(
+            path.join(root, CHEM, '02-mt-fable', k.chapterDir, `${k.moduleId}-segments.is.md`),
+            'utf8'
+          )
+        )
+        .filter((s) => s.segmentId === k.segmentId)
+        .map((s) => s.content);
+      expect(fableRaw[0]).toContain(k.fableServed);
+      expect(X).toContain(k.fableServed);
+      expect(X).not.toContain(k.fableNot);
 
       const r = await post(
         { segmentId: k.segmentId, acceptedContent: X },

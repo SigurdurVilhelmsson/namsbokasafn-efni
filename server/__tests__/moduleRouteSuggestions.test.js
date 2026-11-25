@@ -313,12 +313,14 @@ describe('step 5 of the module route (spec §5.4 step 5)', () => {
       replace: 'ZETA',
       rulingId: 'r-c',
     });
-    // the segment itself gains only the one key
+    // the segment itself gains only the one key (plus fableMeaning, which the Fable loader puts on every
+    // chemistry segment, null where no tag line says the meaning changed)
     expect(sorted(a)).toEqual(
       [
         'baseSha256',
         'elementId',
         'en',
+        'fableMeaning',
         'hasTranslation',
         'is',
         'moduleId',
