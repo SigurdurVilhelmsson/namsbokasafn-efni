@@ -6,7 +6,9 @@ const { loginAs } = require('./helpers/auth');
 
 /**
  * G1.23, the editors' AI suggestion view, on the real efnafraedi-2e chapter 2 content (helpers/segments.js),
- * as it behaves since chemistry serves the Fable layer (spec of 2026-11-24, Task 9, Ruling 18).
+ * as it behaves since chemistry serves the Fable layer (docs/superpowers/specs/2026-11-24-fable-layer-serving-design.md
+ * §6.9; plan docs/superpowers/plans/2026-11-24-fable-layer-serving.md, Task 9). Why the old tests were rewritten
+ * rather than kept behind a layer override is the next paragraph.
  *
  * WHY THIS SPEC NO LONGER EXPECTS SUGGESTIONS: the suggestion groups describe the MT text the AI read, and a
  * Fable-served book (servedLayer.js; efnafraedi-2e is the only study book) shows its editors Fable's text, not
