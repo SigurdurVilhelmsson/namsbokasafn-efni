@@ -63,6 +63,13 @@ describe('suppressFableFlags and isFableFlagVisible (pure rule)', () => {
     expect(segs[0].fableMeaning).toEqual({ before: 'áður' });
   });
 
+  it('an opening with nothing in flight keeps every flag', () => {
+    const segs = [flagged('a', 0), flagged('b')];
+    suppressFableFlags(open(), segs);
+    expect(flags(segs)).toEqual([{ before: 'áður' }, { before: 'áður' }]);
+    expect(isFableFlagVisible(open(), 'a', 0)).toBe(true);
+  });
+
   it('isFableFlagVisible agrees with suppressFableFlags on every case', () => {
     const snaps = [
       null,
