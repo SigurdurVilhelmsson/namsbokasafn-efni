@@ -461,8 +461,6 @@ describe('POST /edit — placement and scope refusals (spec §5.6 steps 1–3, �
     expect(r.body.error).toBe('FABLE_LAYER_MISSING');
   });
 
-  // Left RED for the lead (production gap, see the fix round 3 report): POST /edit on such a unit used to
-  // answer 409 NO_LAYER and now answers 500, because only the module GET maps FABLE_LAYER_MISSING.
   it('NO_LAYER answers 409 on a save to a layerless unit; nothing is written', async () => {
     const before = snapshot();
     for (const baseSha256 of [undefined, sha256Text('')]) {
@@ -471,6 +469,7 @@ describe('POST /edit — placement and scope refusals (spec §5.6 steps 1–3, �
         { moduleId: 'm93002' }
       );
       expect(r.status).toBe(409);
+      expect(r.body).toEqual({ error: 'NO_LAYER', message: REFUSAL_MESSAGES.NO_LAYER });
     }
     expect(snapshot()).toEqual(before);
   });

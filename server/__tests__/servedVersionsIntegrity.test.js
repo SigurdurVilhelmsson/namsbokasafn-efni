@@ -12,7 +12,8 @@
  * left to match. (2) `#0` chains whose segment Fable changed: the editor serves the Fable layer
  * (02-mt-fable), so the minted `is_sha256` is the hash of Fable's text, and the chain's segment has a
  * line in that unit's `<m>-tags.jsonl` (same segmentId and occurrence) whose `afterSha256` equals the
- * minted hash. Fable's base includes the 02-mt-selected overlay, so the chains that once formed a
+ * minted hash, and whose `beforeSha256` equals the chain's first `beforeSha256` (Fable started from
+ * exactly the text the AI read). Fable's base includes the 02-mt-selected overlay, so the chains that once formed a
  * separate overlay class belong here. An unclassified difference fails the test: a new member must be
  * classified before it is added.
  *
@@ -94,7 +95,10 @@ function fableTagLine(c) {
 function classify(c, minted, repeats, tagLine = fableTagLine) {
   if (repeats.includes(keyOf(c))) return 'g112-repeat';
   const t = tagLine(c);
-  if (t && minted !== null && minted === t.afterSha256) return 'fable-changed';
+  // Fable started from exactly what the AI read (before), and the route minted Fable's text (after).
+  if (t && t.beforeSha256 === c.beforeSha256 && minted !== null && minted === t.afterSha256) {
+    return 'fable-changed';
+  }
   return null;
 }
 
@@ -241,10 +245,10 @@ describe('T1: the committed layer-2 chains against the served versions (spec §1
       // an expected-non-empty class, so a classifier that classifies nothing cannot pass
       expect(classes['fable-changed'].length).toBeGreaterThan(0);
       expect(classes['fable-changed']).toEqual(expect.arrayContaining(FORMER_OVERLAY_CHAINS));
-      // Value controls, read from the DB rows the route minted, never from the builder. Every
-      // Fable-changed chain's row must equal its tags line's afterSha256 (what the editor serves),
-      // and every chain matched through a row must equal its beforeSha256 (what the AI read). Both
-      // populations are non-empty, so a route that mints nothing, or hashes the MT text, goes red.
+      // Population controls: both the route-served Fable-changed chains and the chains matched
+      // through a minted row are non-empty, so a route that mints nothing (null → unclassified)
+      // cannot pass. Their row VALUES are already checked by classify() and by the matching above,
+      // so they are not restated here.
       const rowOf = (k) => {
         const c = chains.get(k);
         return rowFor.get(BOOK, chapterOf(c.chDir), c.module, c.segmentId, c.occurrence)?.is_sha256;
@@ -253,12 +257,6 @@ describe('T1: the committed layer-2 chains against the served versions (spec §1
       const fableRows = classes['fable-changed'].filter((k) => !k.startsWith('ch00/'));
       expect(fableRows.length).toBeGreaterThan(0);
       expect(matchedByRow.size).toBeGreaterThan(0);
-      for (const k of fableRows) {
-        expect(rowOf(k), k).toBe(fableTagLine(chains.get(k)).afterSha256);
-      }
-      for (const k of matchedByRow) {
-        expect(rowOf(k), k).toBe(chains.get(k).beforeSha256);
-      }
       // The builder decides only ch00; its chains classify through the builder's own Fable hash.
       expect([...matchedByBuilder].filter((k) => !k.startsWith('ch00/'))).toEqual([]);
       expect(classes['fable-changed'].some((k) => k.startsWith('ch00/'))).toBe(true);
@@ -285,12 +283,20 @@ describe('T1: the committed layer-2 chains against the served versions (spec §1
 
   it('control: the classifier leaves a planted unclassified chain unclassified', () => {
     const chain = { chDir: 'ch01', module: 'm00001', segmentId: 'm00001:para:x', occurrence: 0 };
-    const withTag = (afterSha256) => () => ({ afterSha256 });
-    // positive: a Fable-changed chain whose minted hash is the tag line's afterSha256
-    expect(classify(chain, 'a'.repeat(64), [], withTag('a'.repeat(64)))).toBe('fable-changed');
+    const read = 'c'.repeat(64); // what the AI read: the chain's first beforeSha256
+    const chainRead = { ...chain, beforeSha256: read };
+    const withTag =
+      (afterSha256, beforeSha256 = read) =>
+      () => ({ afterSha256, beforeSha256 });
+    // positive: Fable started from what the AI read, and the minted hash is the tag line's afterSha256
+    expect(classify(chainRead, 'a'.repeat(64), [], withTag('a'.repeat(64)))).toBe('fable-changed');
     // negative: minted differs from afterSha256, no tag line, no minted row
-    expect(classify(chain, 'b'.repeat(64), [], withTag('a'.repeat(64)))).toBeNull();
-    expect(classify(chain, 'a'.repeat(64), [], () => undefined)).toBeNull();
-    expect(classify(chain, null, [], withTag('a'.repeat(64)))).toBeNull();
+    expect(classify(chainRead, 'b'.repeat(64), [], withTag('a'.repeat(64)))).toBeNull();
+    expect(classify(chainRead, 'a'.repeat(64), [], () => undefined)).toBeNull();
+    expect(classify(chainRead, null, [], withTag('a'.repeat(64)))).toBeNull();
+    // negative: the after matches, but Fable started from text other than what the AI read
+    expect(
+      classify(chainRead, 'a'.repeat(64), [], withTag('a'.repeat(64), 'd'.repeat(64)))
+    ).toBeNull();
   });
 });

@@ -63,7 +63,14 @@ function readFableMeaning(tagsPath) {
     // Only the first copy of a repeated id is served (G1.12), so only occurrence 0 can flag it.
     if (rec.occurrence !== 0) return;
     if (Array.isArray(rec.tags) && rec.tags.includes('meaning')) {
-      flags.set(rec.segmentId, { before: typeof rec.before === 'string' ? rec.before : '' });
+      // The writer always records `before` on a meaning line; without it the comparison would
+      // show an all-insertion diff, so the unit refuses instead (fail closed).
+      if (typeof rec.before !== 'string') {
+        throw fableLayerMissing(
+          `tags file line ${i + 1} is a meaning line with no before: ${tagsPath}`
+        );
+      }
+      flags.set(rec.segmentId, { before: rec.before });
     }
   });
   return flags;

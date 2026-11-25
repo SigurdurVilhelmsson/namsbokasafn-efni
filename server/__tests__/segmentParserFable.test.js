@@ -154,6 +154,20 @@ describe('loadModuleForEditing — a Fable-served book', () => {
     expect(err && err.code).toBe(CODE);
   });
 
+  it('refuses a meaning tags line with no before string (Review Focus 1)', () => {
+    for (const before of [undefined, 42, null]) {
+      seedFable(FABLE_BOOK, { tags: tagLine('para-00003', ['meaning'], { before }) });
+      const err = refusal(() => segmentParser.loadModuleForEditing(FABLE_BOOK, 3, MODULE));
+      expect(err && err.code, String(before)).toBe(CODE);
+    }
+  });
+
+  it('control: a fluency tags line with no before string still serves', () => {
+    seedFable(FABLE_BOOK, { tags: tagLine('para-00003', ['fluency'], { before: undefined }) });
+    const data = segmentParser.loadModuleForEditing(FABLE_BOOK, 3, MODULE);
+    expect(seg(data, 'para-00003').fableMeaning).toBeNull();
+  });
+
   it('refuses when a tags line is not JSON (Review Focus 1)', () => {
     seedFable(FABLE_BOOK, { tags: `${tagLine('para-00003', ['meaning'])}\nnot json\n` });
     const err = refusal(() => segmentParser.loadModuleForEditing(FABLE_BOOK, 3, MODULE));
