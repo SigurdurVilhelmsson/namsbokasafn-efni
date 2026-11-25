@@ -42,8 +42,8 @@ function fableLayerMissing(detail) {
 
 /**
  * Read a Fable unit's tags file: segmentId → { before } for each segment tagged `meaning` on its
- * occurrence-0 line. An empty file is valid (no changes). A missing file or any non-JSON line
- * refuses the unit, so Fable's text is never served without its flags.
+ * occurrence-0 line. An empty file is valid (no changes). A missing file, any non-JSON line, or a line
+ * with no integer occurrence refuses the unit, so Fable's text is never served without its flags.
  */
 function readFableMeaning(tagsPath) {
   if (!fs.existsSync(tagsPath)) throw fableLayerMissing(`tags file missing: ${tagsPath}`);
@@ -59,6 +59,11 @@ function readFableMeaning(tagsPath) {
     }
     if (rec === null || typeof rec !== 'object' || typeof rec.segmentId !== 'string') {
       throw fableLayerMissing(`tags file line ${i + 1} has no segmentId: ${tagsPath}`);
+    }
+    // The writer records an integer occurrence on every line; a line without one could silently drop a
+    // flag while the unit serves, so it refuses instead (fail closed).
+    if (!Number.isInteger(rec.occurrence)) {
+      throw fableLayerMissing(`tags file line ${i + 1} has no integer occurrence: ${tagsPath}`);
     }
     // Only the first copy of a repeated id is served (G1.12), so only occurrence 0 can flag it.
     if (rec.occurrence !== 0) return;
@@ -513,6 +518,9 @@ function listChapterModules(book, chapter) {
     faithful: mtFindings.read(book, 'faithful'),
   };
 
+  // A Fable-served unit (no faithful file) shows no findings in the loader (spec §6.4), so it counts none here.
+  const fableServed = servedLayerFor(book) === FABLE_LAYER;
+
   return files.map((f) => {
     const moduleId = f.replace('-segments.en.md', '');
     const hasFaithful = fs.existsSync(path.join(faithfulDir, `${moduleId}-segments.is.md`));
@@ -527,7 +535,9 @@ function listChapterModules(book, chapter) {
       // a badge only when > 0, and a missing key would read as falsy anyway —
       // an explicit 0 says "checked, clean" instead of "unknown".
       mtFindingCount:
-        findingsByTrack[hasFaithful ? 'faithful' : 'mt-preview'].byModule.get(moduleId) || 0,
+        !hasFaithful && fableServed
+          ? 0
+          : findingsByTrack[hasFaithful ? 'faithful' : 'mt-preview'].byModule.get(moduleId) || 0,
     };
   });
 }

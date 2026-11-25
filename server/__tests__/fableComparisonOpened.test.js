@@ -234,3 +234,111 @@ describe('the Fable comparison being opened is recorded', () => {
     expect(eventsSince(mark)).toHaveLength(0);
   });
 });
+
+describe('GET /reviews/:reviewId applies the same flag rules (whole-branch review A M-1 / B M1)', () => {
+  const M2 = 'm97702'; // a Fable-served unit with a meaning tag and no opening
+  const A2 = `${M2}:para:a`;
+  const review = (moduleId) =>
+    db
+      .prepare(
+        `INSERT INTO module_reviews (book, chapter, module_id, submitted_by, submitted_by_username)
+         VALUES (?, 1, ?, 'p-con', 'p-con')`
+      )
+      .run(CHEM, moduleId).lastInsertRowid;
+  const getReview = (reviewId) =>
+    invokeChain(router, 'get', '/reviews/:reviewId', {
+      params: { reviewId: String(reviewId) },
+      headers: bearer(asUser('p-con', [CHEM])),
+      cookies: {},
+    });
+  const flagOf = (body, segmentId) =>
+    body.module.segments.find((s) => s.segmentId === segmentId).fableMeaning;
+
+  beforeAll(() => {
+    const root = path.join(work, 'books');
+    writeModule(root, {
+      book: CHEM,
+      chapterDir: 'ch01',
+      moduleId: M2,
+      en: [[A2, 'EN a']],
+      mt: [[A2, 'MT a']],
+      fable: [[A2, 'FABLE a']],
+    });
+    writeRaw(
+      root,
+      `${CHEM}/02-mt-fable/ch01/${M2}-tags.jsonl`,
+      `${JSON.stringify({ segmentId: A2, occurrence: 0, tags: ['meaning'], before: 'MT a' })}\n`
+    );
+  });
+
+  it('an opened unit: a visible flag stays, a flag the opening snapshot suppresses is withheld', async () => {
+    const r = await getReview(review(M));
+    expect(r.status).toBe(200);
+    expect(flagOf(r.body, A)).toEqual({ before: `MT ${A}` });
+    expect(flagOf(r.body, C)).toBeNull();
+  });
+
+  it('a unit with no opening: every flag is withheld (control: the loader itself carries it)', async () => {
+    expect(
+      segmentParser.loadModuleForEditing(CHEM, 1, M2).segments.find((s) => s.segmentId === A2)
+        .fableMeaning
+    ).toEqual({ before: 'MT a' });
+    const r = await getReview(review(M2));
+    expect(r.status).toBe(200);
+    expect(flagOf(r.body, A2)).toBeNull();
+  });
+});
+
+describe('withdrawal deletes a recorded fable-comparison-opened row (spec §8; whole-branch review A M-7 / B M5)', () => {
+  // Runs last: p-wd recorded one opening above, then withdrew. The real deletion step of
+  // server/scripts/research-withdrawal.js runs on this test's own sessions.db and research file.
+  const { runWithdrawal } = require('../scripts/research-withdrawal');
+  const { resolveResearchDbPath } = require('../lib/researchDbPath');
+  const { readResearch } = require('./helpers/researchFixture.cjs');
+  const keyOf = (providerId) => {
+    const interval = db
+      .prepare(
+        "SELECT id FROM research_consent WHERE user_id = ? AND decision = 'consented' ORDER BY id DESC"
+      )
+      .get(users[providerId]).id;
+    const r = readResearch();
+    try {
+      return r.prepare('SELECT editor_key FROM editor_keys WHERE interval_id = ?').get(interval)
+        ?.editor_key;
+    } finally {
+      r.close();
+    }
+  };
+  const openingsOf = (key) => {
+    const r = readResearch();
+    try {
+      return r
+        .prepare(
+          "SELECT id FROM research_events WHERE editor_key = ? AND event_type = 'fable-comparison-opened'"
+        )
+        .all(key);
+    } finally {
+      r.close();
+    }
+  };
+  const run = (write) =>
+    runWithdrawal({
+      researchPath: resolveResearchDbPath().researchPath,
+      sessionsPath: dbPath,
+      write,
+      busyTimeoutMs: 100,
+    });
+
+  it("the withdrawn editor's opening is there before, and gone after the deletion step", () => {
+    const wd = keyOf('p-wd');
+    const con = keyOf('p-con');
+    expect(openingsOf(wd)).toHaveLength(1); // positive control: the row exists
+    expect(run(false).ok).toBe(true); // a dry run deletes nothing
+    expect(openingsOf(wd)).toHaveLength(1);
+    const report = run(true);
+    expect(report.ok).toBe(true);
+    expect(openingsOf(wd)).toHaveLength(0);
+    // Control: a consenting editor's opening is left alone.
+    expect(openingsOf(con).length).toBeGreaterThan(0);
+  });
+});

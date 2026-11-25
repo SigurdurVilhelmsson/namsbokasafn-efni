@@ -232,6 +232,14 @@ router.get('/reviews/:reviewId', requireAuth, requireRole(ROLES.EDITOR), (req, r
         data.review.chapter,
         data.review.module_id
       );
+      // Spec amendment 1: the same Fable flag rules as the module GET (no flag over in-flight text at the
+      // opening, none in a unit with no opening). Fails closed: an unreadable opening clears every flag.
+      applyFableFlags(segmentEditor.getDb(), {
+        book: data.review.book,
+        chapter: data.review.chapter,
+        moduleId: data.review.module_id,
+        segments: moduleData.segments,
+      });
     } catch (e) {
       // Module data is supplementary, don't fail the request
       log.error({ err: e }, 'Could not load module data for review');

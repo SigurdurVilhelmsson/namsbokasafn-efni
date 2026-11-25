@@ -168,6 +168,22 @@ describe('loadModuleForEditing — a Fable-served book', () => {
     expect(seg(data, 'para-00003').fableMeaning).toBeNull();
   });
 
+  it('refuses a tags line whose occurrence is not an integer (whole-branch review B M4)', () => {
+    for (const tags of [['meaning'], ['fluency']]) {
+      for (const occurrence of [undefined, null, '0', 1.5]) {
+        seedFable(FABLE_BOOK, { tags: tagLine('para-00003', tags, { occurrence }) });
+        const err = refusal(() => segmentParser.loadModuleForEditing(FABLE_BOOK, 3, MODULE));
+        expect(err && err.code, `${tags} ${JSON.stringify(occurrence)}`).toBe(CODE);
+      }
+    }
+  });
+
+  it('control: a tags line on a later occurrence (an integer) still serves, unflagged', () => {
+    seedFable(FABLE_BOOK, { tags: tagLine('para-00003', ['meaning'], { occurrence: 1 }) });
+    const data = segmentParser.loadModuleForEditing(FABLE_BOOK, 3, MODULE);
+    expect(seg(data, 'para-00003').fableMeaning).toBeNull();
+  });
+
   it('refuses when a tags line is not JSON (Review Focus 1)', () => {
     seedFable(FABLE_BOOK, { tags: `${tagLine('para-00003', ['meaning'])}\nnot json\n` });
     const err = refusal(() => segmentParser.loadModuleForEditing(FABLE_BOOK, 3, MODULE));
