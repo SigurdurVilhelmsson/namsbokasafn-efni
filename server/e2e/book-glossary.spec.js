@@ -55,6 +55,23 @@ function entry(over) {
   };
 }
 
+/** A worklist answer with no rows, for a stubbed change whose worklist the page opens. */
+function emptyWorklist(/** @type {number} */ changeId) {
+  return {
+    changeId,
+    action: 'entry-change',
+    kind: 'change',
+    reason: null,
+    english: [SALT],
+    old: [{ icelandic: SALT_IS, inflected: false }],
+    newIcelandic: 'jónabrú-e2e',
+    units: 1,
+    unreadable: [],
+    chapters: [],
+    total: 0,
+  };
+}
+
 /**
  * Fulfil GET requests whose pathname is a key of `answers` (a value, or a function returning one);
  * let every other request through to the server.
@@ -270,6 +287,327 @@ test.describe('the book glossary page', () => {
     await expect(page.locator('#bg-readonly')).toBeHidden();
   });
 
+  // ── §C244 pile D: committed tests for behaviour that was checked once by hand ──
+
+  // §C244 M14: the look-up panel honours the read-only rule (Q13) too, not only the layer.
+  test('the look-up offers no write action for a read-only book', async ({ page }) => {
+    await loginAs(page, 'head-editor');
+    await cleanSaltBridge(page);
+    let writable = false;
+    await stub(page, { [LAYER]: () => layerAnswer({ writable }) });
+    const result = page.locator('#bg-lookup-result');
+    const writes = result.locator(
+      '.bg-actions [data-action]:not([data-action="history"]):not([data-action="worklist"])'
+    );
+
+    await page.goto(PAGE);
+    await lookUp(page, SALT);
+    await expect(winnerText(page)).toHaveText(SALT_IS);
+    await expect(writes).toHaveCount(0);
+
+    // Control: a writable book's look-up offers Setja þýðingu bókar.
+    writable = true;
+    await page.reload();
+    await lookUp(page, SALT);
+    await expect(winnerText(page)).toHaveText(SALT_IS);
+    await expect(result.locator('[data-action="set-icelandic"]')).toHaveCount(1);
+  });
+
+  // §C244 T5d: a whole-headword exclusion and a one-row exclusion, as the layer shows them.
+  test('exclusion rows say what they exclude', async ({ page }) => {
+    await loginAs(page, 'head-editor');
+    const exclusion = (/** @type {object} */ over) => ({
+      id: 1,
+      english: SALT,
+      conceptId: 0,
+      icelandic: null,
+      claimedBy: null,
+      reason: 'prófun',
+      source: null,
+      createdBy: 'Test Head-editor',
+      createdAt: '2026-11-20T14:02:00Z',
+      ...over,
+    });
+    await stub(page, {
+      [LAYER]: layerAnswer({
+        exclusions: [
+          exclusion({ id: 1 }),
+          exclusion({ id: 2, english: 'zrow', conceptId: 4242, icelandic: 'zröð' }),
+        ],
+      }),
+    });
+    await page.goto(PAGE);
+    await layerRendered(page);
+    const [excluded, whole] = /** @type {string[]} */ (
+      await page.evaluate('[UI.bookGlossary.excluded, UI.bookGlossary.wholeHeadword]')
+    );
+    await expect(page.locator('#bg-layer [data-exclusion-id="1"] > .bg-head')).toHaveText(
+      `${SALT} — ${excluded}${whole}`
+    );
+    await expect(page.locator('#bg-layer [data-exclusion-id="2"] > .bg-head')).toHaveText(
+      `zrow — ${excluded}: zröð`
+    );
+  });
+
+  // §C244 T5d: the banner also says when the committed record could not be written.
+  test('the banner says when the record could not be written', async ({ page }) => {
+    await loginAs(page, 'head-editor');
+    await stub(page, {
+      [LAYER]: layerAnswer({ hold: { held: false, since: null, recordError: true } }),
+    });
+    await page.goto(PAGE);
+    await layerRendered(page);
+    await expect(page.locator('#bg-hold-banner')).toHaveText(
+      String(await page.evaluate('UI.bookGlossary.recordError'))
+    );
+  });
+
+  // §C244 T5d: plan ruling Q11 opens ?book= only on a book the user holds.
+  test('?book= naming a book the user does not hold opens a held book instead', async ({
+    page,
+  }) => {
+    await loginAs(page, 'head-editor');
+    /** @type {string[]} */
+    const asked = [];
+    page.on('request', (r) => {
+      const { pathname } = new URL(r.url());
+      if (pathname.startsWith('/api/book-glossary/')) asked.push(pathname);
+    });
+    await page.goto('/book-glossary?book=liffraedi-2e');
+    // Control: a held book's layer was read and shown.
+    await expect(page.locator('#bg-layer')).toHaveAttribute('data-loaded-book', /.+/);
+    await expect(page.locator('#bg-book-select')).not.toHaveValue('liffraedi-2e');
+    expect(asked.filter((p) => p.startsWith('/api/book-glossary/liffraedi-2e'))).toEqual([]);
+  });
+
+  // §C244 T6d: a change with nothing edited says so and sends nothing.
+  test('a change with no edit sends nothing', async ({ page }) => {
+    await loginAs(page, 'head-editor');
+    await stub(page, { [LAYER]: layerAnswer({ entries: [entry()] }) });
+    let posts = 0;
+    await page.route('**/api/book-glossary/**', (route) => {
+      if (route.request().method() === 'POST') posts += 1;
+      return route.fallback();
+    });
+    await page.goto(PAGE);
+    await page
+      .locator('#bg-layer [data-concept-id="990001"] > .bg-actions [data-action="change-entry"]')
+      .click();
+    await page.locator('#bg-reason').fill('E2E: engin breyting');
+    await page.locator('#bg-submit').click();
+    await expect(page.locator('#bg-action-error')).toHaveText(
+      String(await page.evaluate('UI.bookGlossary.unchanged'))
+    );
+    expect(posts).toBe(0);
+  });
+
+  // §C244 T6d (design G2): the worklist opens for a change of Icelandic, not for a forms-only one.
+  test('an Icelandic change opens its worklist and a forms-only change does not', async ({
+    page,
+  }) => {
+    await loginAs(page, 'head-editor');
+    await stub(page, {
+      [LAYER]: layerAnswer({ entries: [entry()] }),
+      [`${LAYER}/worklist`]: emptyWorklist(5),
+    });
+    await page.route('**/api/book-glossary/**', (route) => {
+      const request = route.request();
+      const { pathname } = new URL(request.url());
+      if (request.method() !== 'POST' || pathname !== `${LAYER}/entries/990001/change`) {
+        return route.fallback();
+      }
+      const icelandicChanged = request.postDataJSON().icelandic != null;
+      return route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({
+          status: 'changed',
+          conceptId: 990001,
+          icelandicChanged,
+          changeId: icelandicChanged ? 5 : 6,
+        }),
+      });
+    });
+    const actions = page.locator('#bg-layer [data-concept-id="990001"] > .bg-actions');
+    const worklist = page.locator('#bg-worklist');
+    await page.goto(PAGE);
+    const savedText = String(await page.evaluate('UI.bookGlossary.saved'));
+
+    await actions.locator('[data-action="change-entry"]').click();
+    await page.locator('#bg-forms').fill('salt bridge\nsalt bridges');
+    await page.locator('#bg-reason').fill('E2E: aðeins form');
+    await page.locator('#bg-submit').click();
+    // Control: the write was answered and the layer read again (the worklist would open first).
+    await expect(page.locator('#bg-status')).toHaveText(savedText);
+    await expect(worklist).toBeHidden();
+
+    await actions.locator('[data-action="change-entry"]').click();
+    await page.locator('#bg-icelandic').fill('jónabrú-e2e');
+    await page.locator('#bg-reason').fill('E2E: íslenska breytt');
+    await page.locator('#bg-submit').click();
+    await expect(worklist).toBeVisible();
+  });
+
+  // §C244 T6d (design G2): an add alongside replaces nothing, so it opens no worklist.
+  test('an add alongside opens no worklist', async ({ page }) => {
+    await loginAs(page, 'head-editor');
+    await cleanSaltBridge(page);
+    await stub(page, { [`${LAYER}/worklist`]: emptyWorklist(7) });
+    await page.route('**/api/book-glossary/**', (route) => {
+      const request = route.request();
+      const { pathname } = new URL(request.url());
+      if (request.method() !== 'POST' || pathname !== `${LAYER}/entries`) return route.fallback();
+      return route.fulfill({
+        status: 201,
+        contentType: 'application/json',
+        body: JSON.stringify({ status: 'added', conceptId: 1, changeId: 7 }),
+      });
+    });
+    await page.goto(PAGE);
+    const savedText = String(await page.evaluate('UI.bookGlossary.saved'));
+    await lookUp(page, SALT);
+    await expect(winnerText(page)).toHaveText(SALT_IS);
+    await page.locator('#bg-lookup-result [data-action="set-icelandic"]').click();
+    await page.locator('#bg-action-dialog input[name="bg-mode"][value="add"]').check();
+    await page.locator('#bg-icelandic').fill('jónabrú-e2e');
+    await page.locator('#bg-reason').fill('E2E: til hliðar');
+    await page.locator('#bg-submit').click();
+    // Control: the write was answered and the layer read again.
+    await expect(page.locator('#bg-status')).toHaveText(savedText);
+    await expect(page.locator('#bg-worklist')).toBeHidden();
+  });
+
+  // §C244 T6d: editing the dialog makes a body waiting for confirmation stale, so it is dropped.
+  test('an edit drops a pending house-style confirmation', async ({ page }) => {
+    await loginAs(page, 'head-editor');
+    await cleanSaltBridge(page);
+    await page.route('**/api/book-glossary/**', (route) => {
+      const request = route.request();
+      const { pathname } = new URL(request.url());
+      if (request.method() !== 'POST' || pathname !== `${LAYER}/entries`) return route.fallback();
+      return route.fulfill({
+        status: 409,
+        contentType: 'application/json',
+        body: JSON.stringify({
+          error: NEEDS_CONFIRM,
+          refusal: 'needs-confirm',
+          houseStyle: [{ conceptId: 1, english: SALT, icelandic: 'zhús' }],
+        }),
+      });
+    });
+    const confirm = page.locator('#bg-confirm-house-style');
+    await page.goto(PAGE);
+    await lookUp(page, SALT);
+    await expect(winnerText(page)).toHaveText(SALT_IS);
+    await page.locator('#bg-lookup-result [data-action="set-icelandic"]').click();
+    await page.locator('#bg-icelandic').fill('jónabrú-e2e');
+    await page.locator('#bg-reason').fill('E2E: staðfesting');
+    await page.locator('#bg-submit').click();
+    // Control: the answer armed the confirmation.
+    await expect(confirm).toBeVisible();
+
+    await page.locator('#bg-reason').fill('E2E: staðfesting, breytt');
+    await expect(confirm).toBeHidden();
+    await expect(page.locator('#bg-house-style')).toBeHidden();
+  });
+
+  // §C244 T6f: an answer that wrote nothing, arriving after its dialog was given up, says nothing
+  // in the dialog open now.
+  test('a late unchanged answer leaves a later dialog alone', async ({ page }) => {
+    const held = await holdFirstEntryWrite(page, { status: 200, body: { status: 'unchanged' } });
+    await abandonForAnother(page, held);
+
+    held.release();
+    await expect(page.locator('#bg-submit')).toBeEnabled();
+    await expect(page.locator('#bg-action-title')).toHaveText(await excludeHeadwordTitle(page));
+    await expect(page.locator('#bg-action-error')).toHaveText('');
+  });
+
+  // §C244 T6f: a write whose book was switched away from while it ran refreshes nothing on the
+  // book now shown.
+  test('a write answered after a book switch refreshes nothing', async ({ page }) => {
+    const held = await holdFirstEntryWrite(page, {
+      status: 201,
+      body: { status: 'added', conceptId: 1, changeId: 1 },
+    });
+    await page.goto(PAGE);
+    await lookUp(page, SALT);
+    await expect(winnerText(page)).toHaveText(SALT_IS);
+    await page.locator('#bg-lookup-result [data-action="set-icelandic"]').click();
+    await page.locator('#bg-icelandic').fill('jónabrú-e2e');
+    await page.locator('#bg-reason').fill('E2E: bók skipt');
+    await page.locator('#bg-submit').click();
+    await expect.poll(() => held.posts).toBe(1);
+
+    await page.locator('#bg-book-select').selectOption('__e2e-fixture__');
+    await expect(page.locator('#bg-layer')).toHaveAttribute('data-loaded-book', '__e2e-fixture__');
+    /** @type {string[]} */
+    const reads = [];
+    page.on('request', (r) => {
+      if (r.method() === 'GET' && new URL(r.url()).pathname.startsWith('/api/book-glossary/')) {
+        reads.push(new URL(r.url()).pathname);
+      }
+    });
+    const answered = page.waitForResponse(
+      (r) => r.request().method() === 'POST' && new URL(r.url()).pathname === `${LAYER}/entries`
+    );
+    held.release();
+    await answered;
+    // The page handles the answer within a few ticks; a refresh would be requested in that time.
+    await page.waitForTimeout(500);
+    expect(reads).toEqual([]);
+    await expect(page.locator('#bg-status')).toHaveText('');
+  });
+
+  // §C244 M16/T6c: Útiloka orðið, Útiloka línu and Afturkalla, against the real server. (The retry
+  // has its own tests below, on a stubbed lookup.)
+  test('exclude the headword, exclude one row, and undo each', async ({ page }) => {
+    await loginAs(page, 'head-editor');
+    await cleanSaltBridge(page);
+    await page.goto(PAGE);
+    const exclusionAdded = () =>
+      page.waitForResponse(
+        (r) =>
+          r.request().method() === 'POST' && new URL(r.url()).pathname === `${LAYER}/exclusions`
+      );
+    /** Undo the exclusion with this id through its own row, and see the row go. */
+    const undo = async (/** @type {number} */ id) => {
+      const row = page.locator(`#bg-layer [data-exclusion-id="${id}"]`);
+      await row.locator(':scope > .bg-actions [data-action="undo-exclusion"]').click();
+      await page.locator('#bg-reason').fill('E2E: tekið til baka');
+      await page.locator('#bg-submit').click();
+      await expect(row).toHaveCount(0);
+    };
+
+    // Útiloka orðið: the whole headword.
+    await lookUp(page, SALT);
+    await expect(winnerText(page)).toHaveText(SALT_IS);
+    await page.locator('#bg-lookup-result [data-action="exclude-headword"]').click();
+    await page.locator('#bg-reason').fill('E2E: allt orðið útilokað');
+    let answered = exclusionAdded();
+    await page.locator('#bg-submit').click();
+    const whole = await (await answered).json();
+    expect(whole.status).toBe('added');
+    await expect(
+      page.locator(`#bg-layer [data-exclusion-id="${whole.id}"] > .bg-head .bg-whole`)
+    ).toBeVisible();
+    await undo(whole.id);
+
+    // Útiloka línu: the seeded concept's row only.
+    await lookUp(page, SALT);
+    await expect(winnerText(page)).toHaveText(SALT_IS);
+    await page.locator('#bg-lookup-result [data-action="exclude-row"]').first().click();
+    await page.locator('#bg-reason').fill('E2E: ein lína útilokuð');
+    answered = exclusionAdded();
+    await page.locator('#bg-submit').click();
+    const one = await (await answered).json();
+    expect(one.status).toBe('added');
+    await expect(
+      page.locator(`#bg-layer [data-exclusion-id="${one.id}"] > .bg-head .bg-is`)
+    ).toHaveText(SALT_IS);
+    await undo(one.id);
+  });
+
   test('look up, replace, see the worklist row, undo', async ({ page }) => {
     await loginAs(page, 'head-editor');
     await cleanSaltBridge(page);
@@ -333,12 +671,15 @@ test.describe('the book glossary page', () => {
   test('a house-style override is sent only after confirmation', async ({ page }) => {
     await loginAs(page, 'head-editor');
     await cleanSaltBridge(page);
+    // §C244 T6e: the stubbed 201 below is a replacement, so the page opens its worklist; answer
+    // that from a stub too, never from the real server's change 1.
+    await stub(page, { [`${LAYER}/worklist`]: emptyWorklist(1) });
     /** @type {any[]} */
     const bodies = [];
     await page.route('**/api/book-glossary/**', (route) => {
       const request = route.request();
       const { pathname } = new URL(request.url());
-      if (request.method() !== 'POST' || pathname !== `${LAYER}/entries`) return route.continue();
+      if (request.method() !== 'POST' || pathname !== `${LAYER}/entries`) return route.fallback();
       bodies.push(request.postDataJSON());
       const first = bodies.length === 1;
       return route.fulfill({
@@ -372,6 +713,8 @@ test.describe('the book glossary page', () => {
     await page.locator('#bg-submit').click();
 
     await expect(confirm).toBeVisible();
+    // §C244 T6d: the dialog says why it asks.
+    await expect(page.locator('#bg-action-error')).toHaveText(NEEDS_CONFIRM);
     await expect(page.locator('#bg-house-style .bg-is')).toHaveText('zhús');
     expect(bodies).toHaveLength(1);
     expect(bodies[0].confirmHouseStyle).not.toBe(true);
