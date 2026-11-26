@@ -313,6 +313,48 @@ test.describe('the book glossary page', () => {
     await expect(result.locator('[data-action="set-icelandic"]')).toHaveCount(1);
   });
 
+  // §C244 M13: every place the page names a concept's subject area shows its Icelandic name; a code
+  // the page has no name for shows as itself.
+  test('subject areas show by their Icelandic names', async ({ page }) => {
+    await loginAs(page, 'head-editor');
+    const concept = (conceptId, text, domain) => ({ conceptId, text, domain });
+    await stub(page, {
+      [LAYER]: () => layerAnswer(),
+      [LAYER + '/lookup']: () => ({
+        resolution: {
+          reason: 'priority',
+          winner: concept(990101, 'saltbrú', 'chemistry'),
+          tied: [],
+          alsoInScope: [concept(990102, 'saltbrúin', 'physics')],
+          outOfScope: [
+            concept(990103, 'saltbrúa', 'astronomy'),
+            concept(990104, 'saltbrúm', 'not-a-domain'),
+          ],
+        },
+        layer: { exclusions: [], entries: [] },
+        houseStyle: [],
+        preferences: [],
+      }),
+    });
+    const result = page.locator('#bg-lookup-result');
+
+    await page.goto(PAGE);
+    await lookUp(page, SALT);
+    await expect(result.locator('.bg-winner')).toHaveText('Bókin notar nú: saltbrú (Efnafræði)');
+    await expect(result).toContainText('saltbrúin (Eðlisfræði)');
+    await expect(result).toContainText('saltbrúa (Stjörnufræði)');
+    await expect(result).toContainText('saltbrúm (not-a-domain)');
+    await expect(result.locator('[data-action="exclude-row"]')).toHaveText([
+      /saltbrú \(Efnafræði\)$/,
+      /saltbrúin \(Eðlisfræði\)$/,
+    ]);
+    await expect(result).not.toContainText('chemistry');
+
+    await result.locator('[data-action="set-icelandic"]').click();
+    const choices = page.locator('#bg-action-fields .bg-sub');
+    await expect(choices).toHaveText([/saltbrú \(Efnafræði\)/, /saltbrúin \(Eðlisfræði\)/]);
+  });
+
   // §C244 T5d: a whole-headword exclusion and a one-row exclusion, as the layer shows them.
   test('exclusion rows say what they exclude', async ({ page }) => {
     await loginAs(page, 'head-editor');
@@ -828,6 +870,72 @@ test.describe('the book glossary page', () => {
     await expect(page.locator('#bg-action-error')).toHaveText('');
   });
 
+  // §C244 T6g ([USER] ruling 2026-11-26): a refusal for a dialog already closed reaches the status
+  // line, so the head editor learns nothing was saved.
+  test('a refusal that arrives after the dialog was closed says it was not saved', async ({
+    page,
+  }) => {
+    const held = await holdFirstEntryWrite(page, {
+      status: 409,
+      body: { error: PREFERENCE, refusal: 'preference' },
+    });
+    const status = page.locator('#bg-status');
+    await page.goto(PAGE);
+    await lookUp(page, SALT);
+    await expect(winnerText(page)).toHaveText(SALT_IS);
+    await page.locator('#bg-lookup-result [data-action="set-icelandic"]').click();
+    await page.locator('#bg-icelandic').fill('jónabrú-e2e');
+    await page.locator('#bg-reason').fill('E2E: höfnun sem berst seint');
+    await page.locator('#bg-submit').click();
+    await expect.poll(() => held.posts).toBe(1);
+    await page.locator('#bg-reason').press('Escape');
+    await expect(page.locator('#bg-action-dialog')).toBeHidden();
+    // Control: nothing is said before the answer arrives.
+    await expect(status).toHaveText('');
+
+    held.release();
+    await expect(status).toHaveText('Ekki vistað: ' + PREFERENCE);
+  });
+
+  // §C244 T6g's two limits; the test above, the same steps with a 409 on the same book, is their
+  // positive control. A 500 does not say whether the write happened, and a refusal for a book no
+  // longer shown would describe another book's page.
+  for (const [name, answer, otherBook] of [
+    ['a late server error says nothing', { status: 500, body: { error: 'villa' } }, false],
+    [
+      'a late refusal after a book switch says nothing',
+      { status: 409, body: { error: PREFERENCE, refusal: 'preference' } },
+      true,
+    ],
+  ]) {
+    test(/** @type {string} */ (name), async ({ page }) => {
+      const held = await holdFirstEntryWrite(page, answer);
+      await page.goto(PAGE);
+      await lookUp(page, SALT);
+      await expect(winnerText(page)).toHaveText(SALT_IS);
+      await page.locator('#bg-lookup-result [data-action="set-icelandic"]').click();
+      await page.locator('#bg-icelandic').fill('jónabrú-e2e');
+      await page.locator('#bg-reason').fill('E2E: svar sem berst seint');
+      await page.locator('#bg-submit').click();
+      await expect.poll(() => held.posts).toBe(1);
+      if (otherBook) {
+        await page.locator('#bg-book-select').selectOption('__e2e-fixture__');
+        await expect(page.locator('#bg-layer')).toHaveAttribute(
+          'data-loaded-book',
+          '__e2e-fixture__'
+        );
+      } else {
+        await page.locator('#bg-reason').press('Escape');
+      }
+      await expect(page.locator('#bg-action-dialog')).toBeHidden();
+
+      held.release();
+      // The answer has been handled once the request's buttons are enabled again.
+      await expect(page.locator('#bg-submit')).toBeEnabled();
+      await expect(page.locator('#bg-status')).toHaveText('');
+    });
+  }
+
   test('a late success refreshes the layer and leaves a later dialog open', async ({ page }) => {
     const held = await holdFirstEntryWrite(page, {
       status: 201,
@@ -934,6 +1042,48 @@ test.describe('the book glossary page', () => {
     // Control: the first answer, pending, is the one shown.
     await expect(line).toContainText(await label({ state: 'pending' }));
     await expect(line).toContainText(await label({ state: 'forms', count: 2 }));
+  });
+
+  // §C244 N6 ([USER] ruling 2026-11-26: fix both halves). A quiet re-read must not replace an
+  // unchanged look-up answer (#bg-lookup-result is aria-live, so a replaced node is read out
+  // again), and a redraw must give focus back to the same control.
+  test('a quiet re-read leaves an unchanged look-up answer in place', async ({ page }) => {
+    const scene = await quietRedrawScene(page, [lookupAnswer([])]);
+    await markWinnerNode(page);
+    await scene.settle();
+    expect(await winnerNodeMarked(page)).toBe(true);
+  });
+
+  // Control for the test above: the same wait sees a changed answer replace the node.
+  test('a quiet re-read replaces a changed look-up answer', async ({ page }) => {
+    const changed = lookupAnswer([{ conceptId: 990102, text: 'saltbrúin', domain: 'physics' }]);
+    const scene = await quietRedrawScene(page, [lookupAnswer([]), changed]);
+    await markWinnerNode(page);
+    await scene.settle();
+    expect(await winnerNodeMarked(page)).toBe(false);
+    await expect(page.locator('#bg-lookup-result')).toContainText('saltbrúin');
+  });
+
+  test('a quiet redraw of the layer keeps focus on the same button', async ({ page }) => {
+    const scene = await quietRedrawScene(page, [lookupAnswer([])]);
+    const button = page.locator(
+      '#bg-layer [data-concept-id="990001"] [data-action="change-entry"]'
+    );
+    await button.focus();
+    await expect(button).toBeFocused();
+    await scene.settle();
+    await expect(button).toBeFocused();
+  });
+
+  test('a quiet redraw of the look-up keeps focus on the same button', async ({ page }) => {
+    const changed = lookupAnswer([{ conceptId: 990102, text: 'saltbrúin', domain: 'physics' }]);
+    const scene = await quietRedrawScene(page, [lookupAnswer([]), changed]);
+    const button = page.locator('#bg-lookup-result [data-action="history"]');
+    await button.focus();
+    await expect(button).toBeFocused();
+    await scene.settle();
+    await expect(page.locator('#bg-lookup-result')).toContainText('saltbrúin');
+    await expect(button).toBeFocused();
   });
 
   // §C244 M6: the new history row used to appear only when Saga was clicked again.
@@ -1122,5 +1272,81 @@ async function abandonForAnother(page, held) {
 async function excludeHeadwordTitle(page) {
   return String(
     await page.evaluate(`UI.bookGlossary.excludeHeadwordTitle(${JSON.stringify(SALT)})`)
+  );
+}
+
+/** A stubbed look-up answer for SALT: the seeded concept wins, `alsoInScope` beside it. */
+function lookupAnswer(/** @type {object[]} */ alsoInScope) {
+  return {
+    resolution: {
+      reason: 'priority',
+      winner: { conceptId: 990101, text: SALT_IS, domain: 'chemistry' },
+      tied: [],
+      alsoInScope,
+      outOfScope: [],
+    },
+    layer: { exclusions: [], entries: [] },
+    houseStyle: [],
+    preferences: [],
+  };
+}
+
+/**
+ * §C244 N6's scene: one entry pending until `settle()`, SALT looked up on a stubbed look-up that
+ * answers `answers` in turn (the last one repeating), and the page's clock installed so the next
+ * re-read comes on demand. `settle()` resolves once the redrawn layer and the quiet look-up it
+ * starts have both been answered.
+ */
+async function quietRedrawScene(page, /** @type {object[]} */ answers) {
+  await loginAs(page, 'head-editor');
+  let settled = false;
+  let lookups = 0;
+  await stub(page, {
+    [LAYER]: () =>
+      layerAnswer({
+        entries: [
+          entry({ inflections: settled ? { state: 'forms', count: 2 } : { state: 'pending' } }),
+        ],
+      }),
+    [LAYER + '/lookup']: () => answers[Math.min(lookups++, answers.length - 1)],
+  });
+  await page.clock.install();
+  await page.goto(PAGE);
+  await lookUp(page, SALT);
+  await expect(winnerText(page)).toHaveText(SALT_IS);
+  const forms = String(
+    await page.evaluate(
+      `UI.bookGlossary.inflections + bookGlossaryView.inflectionLabel({state: 'forms', count: 2})`
+    )
+  );
+  return {
+    async settle() {
+      settled = true;
+      const quietLookUp = page.waitForResponse(
+        (r) => new URL(r.url()).pathname === `${LAYER}/lookup` && lookups >= 2
+      );
+      await page.clock.fastForward(16000);
+      await expect(
+        page.locator('#bg-layer [data-concept-id="990001"] .bg-inflections')
+      ).toContainText(forms);
+      await quietLookUp;
+      // The page draws a look-up answer within a few ticks of receiving it (the same wait as the
+      // book-switch test above); the changed-answer control shows this is long enough.
+      await page.waitForTimeout(500);
+    },
+  };
+}
+
+/** Tag the look-up's winner node, so a test can tell the same node from a redrawn one. */
+async function markWinnerNode(page) {
+  await page.evaluate(() => {
+    /** @type {any} */ (document.querySelector('#bg-lookup-result .bg-winner')).__n6 = true;
+  });
+}
+
+/** Whether the look-up's winner node is still the one markWinnerNode tagged. */
+async function winnerNodeMarked(page) {
+  return page.evaluate(
+    () => /** @type {any} */ (document.querySelector('#bg-lookup-result .bg-winner'))?.__n6 === true
   );
 }

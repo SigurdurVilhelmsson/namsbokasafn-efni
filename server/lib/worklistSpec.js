@@ -121,7 +121,9 @@ function worklistSpec(db, bookSlug, row) {
   // A side that did not parse arrives as its raw string (readChange); nothing in it can be searched.
   if (typeof before === 'string' || typeof after === 'string') return NONE('not-applicable');
   if (action === 'entry-add') {
-    if (!after || !(after.replaces || []).length) return NONE('add-alongside');
+    // An add always writes `after`; a row without one says nothing about the old word (§C244 T2d).
+    if (!after) return NONE('not-applicable');
+    if (!(after.replaces || []).length) return NONE('add-alongside');
     const { rows, words } = replacedWords(db, bookSlug, after);
     if (rows === 0) return NONE('exclusion-undone');
     return finish('replacement', after.english, words, after.icelandic);

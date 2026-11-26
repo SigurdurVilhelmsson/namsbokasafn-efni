@@ -268,6 +268,33 @@
     return entries.length + unclaimed.length > 0;
   }
 
+  /**
+   * What identifies a control across a redraw: its tag and data attributes, and those of the row
+   * it sits in (rows carry data-concept-id or data-exclusion-id). §C244 N6.
+   */
+  function focusSignature(node) {
+    const row = node.closest('[data-exclusion-id], [data-concept-id]');
+    return JSON.stringify([node.tagName, { ...node.dataset }, row ? { ...row.dataset } : null]);
+  }
+
+  /**
+   * Run `draw`, which rebuilds `container`, and give focus back to the control that matches the
+   * one focused inside it before (§C244 N6). If none matches, focus stays where the redraw left it.
+   */
+  function keepingFocus(container, draw) {
+    const active = document.activeElement;
+    const signature =
+      active && active !== container && container.contains(active) ? focusSignature(active) : null;
+    draw();
+    if (signature === null) return;
+    for (const node of container.querySelectorAll('button, a, input, select, textarea')) {
+      if (focusSignature(node) === signature) {
+        node.focus();
+        return;
+      }
+    }
+  }
+
   function renderLayer(data) {
     clear(layerPanel);
     layerPanel.appendChild(el('h2', 'card-title', T.layerTitle));
@@ -313,7 +340,7 @@
       // Q13: the line says why nothing can be changed; an answer without `writable` claims nothing.
       readOnlyLine.textContent = T.readOnly;
       readOnlyLine.hidden = data.writable !== false;
-      renderLayer(data);
+      keepingFocus(layerPanel, () => renderLayer(data));
       lookupPanel.hidden = false;
       if (!quiet) statusLine.textContent = typeof note === 'string' ? note : '';
       // The shown look-up lists the headword's entries with the same inflection labels.
@@ -553,7 +580,7 @@
     answers.forEach(function (c, i) {
       if (i > 0) line.appendChild(txt(' · '));
       line.appendChild(el('span', 'bg-is', c.text));
-      line.appendChild(txt(' (' + c.domain + ')'));
+      line.appendChild(txt(' (' + view.domainLabel(c.domain) + ')'));
     });
     return line;
   }
@@ -580,7 +607,9 @@
       winner.dataset.reason = String(r.reason);
       winner.appendChild(txt(T.winner));
       winner.appendChild(el('span', 'bg-is', r.winner.text));
-      winner.appendChild(txt(' (' + r.winner.domain + (own ? ', ' + T.bookItself : '') + ')'));
+      winner.appendChild(
+        txt(' (' + view.domainLabel(r.winner.domain) + (own ? ', ' + T.bookItself : '') + ')')
+      );
     } else {
       winner.textContent = r.tied.length > 0 ? T.tiedNone : T.noWinner;
     }
@@ -609,7 +638,7 @@
       const ownIds = new Set(data.layer.entries.map((e) => e.conceptId));
       for (const c of own ? r.alsoInScope : view.replaceCandidates(r)) {
         if (ownIds.has(c.conceptId)) continue;
-        const label = T.excludeRow + ': ' + c.text + ' (' + c.domain + ')';
+        const label = T.excludeRow + ': ' + c.text + ' (' + view.domainLabel(c.domain) + ')';
         actions.appendChild(actionButton(label, 'exclude-row', { conceptId: c.conceptId }));
       }
     }
@@ -641,8 +670,18 @@
       );
       if (ticket !== latest.lookup) return;
       lookupBusy = false;
+      // §C244 N6: the look-up panel is aria-live, so redrawing an unchanged answer reads it out
+      // again. A quiet look-up leaves an answer that has not changed as it is.
+      if (
+        quiet &&
+        looked &&
+        looked.english === english &&
+        JSON.stringify(data) === JSON.stringify(looked.data)
+      ) {
+        return;
+      }
       looked = { english: english, data: data };
-      renderLookup(english, data);
+      keepingFocus(lookupResult, () => renderLookup(english, data));
     } catch (err) {
       if (ticket !== latest.lookup) return;
       lookupBusy = false;
@@ -827,7 +866,15 @@
         openWorklist(answer.changeId, slug);
       }
     } catch (err) {
-      if (!ours()) return;
+      if (!ours()) {
+        // §C244 T6g: a refusal (a 4xx: nothing was written) for a dialog already closed still says
+        // so while its book is shown. A network error or a 5xx stays silent: whether the write
+        // happened is not known.
+        if (slug === book && err.status >= 400 && err.status < 500) {
+          statusLine.textContent = T.notSaved + err.message;
+        }
+        return;
+      }
       // 400 and 409 carry the server's Icelandic message; a preference refusal offers nothing more.
       showMessage(err.message);
       const data = err.data || {};
@@ -879,7 +926,7 @@
         if (candidates.length > 0) {
           modes.appendChild(choice('radio', 'bg-mode', 'replace', T.modeReplace, true));
           for (const c of candidates) {
-            const label = c.text + ' (' + c.domain + ')';
+            const label = c.text + ' (' + view.domainLabel(c.domain) + ')';
             modes.appendChild(
               choice('checkbox', 'bg-replaces', c.conceptId, label, c.checked, 'bg-sub')
             );

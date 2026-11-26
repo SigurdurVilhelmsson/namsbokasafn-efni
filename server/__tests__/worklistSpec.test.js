@@ -201,6 +201,14 @@ describe('worklistSpec', () => {
     });
   });
 
+  // §C244 T2d: an add row with no `after` side is not an add alongside; saying so would tell the
+  // head editor the old word is still allowed. The add-alongside test above is the control.
+  it('an entry-add row with no after side is not called an add alongside', () => {
+    expect(
+      worklistSpec(db, BOOK, { action: 'entry-add', before: null, after: null })
+    ).toMatchObject({ kind: null, reason: 'not-applicable', oldForms: [] });
+  });
+
   it('exclude and unexclude rows have no worklist', () => {
     const old = concept('chemistry', 'zcell', 'zker');
     const ex = addExclusion(db, { ...base, english: 'zcell', conceptId: old });

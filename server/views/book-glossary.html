@@ -159,7 +159,7 @@
   <body>
     <main id="bg-page" class="page-content" data-title="Orðasafn bókar">
       <div class="controls-row">
-        <!-- No book-select class: the list holds the books the user may change, known only once the user is -->
+        <!-- No book-select class: the list holds the books the user may change, known only once the user is known (book-glossary.js fills it). -->
         <select id="bg-book-select" class="form-select" aria-label="Bók"></select>
       </div>
 
@@ -172,7 +172,12 @@
         <h2 id="bg-lookup-title" class="card-title"></h2>
         <div class="bg-lookup-row">
           <input id="bg-lookup-input" class="form-input" type="text" autocomplete="off" />
-          <button id="bg-lookup-button" class="btn btn-primary" type="button" data-action="lookup"></button>
+          <button
+            id="bg-lookup-button"
+            class="btn btn-primary"
+            type="button"
+            data-action="lookup"
+          ></button>
         </div>
         <div id="bg-lookup-result" aria-live="polite"></div>
       </section>
@@ -197,9 +202,25 @@
         <p id="bg-action-error" role="alert"></p>
         <div id="bg-house-style" class="alert alert-warning" hidden></div>
         <div class="bg-dialog-buttons">
-          <button id="bg-cancel" class="btn btn-secondary" type="button" data-action="cancel"></button>
-          <button id="bg-confirm-house-style" class="btn btn-primary" type="button" data-action="confirm-house-style" hidden></button>
-          <button id="bg-submit" class="btn btn-primary" type="button" data-action="submit"></button>
+          <button
+            id="bg-cancel"
+            class="btn btn-secondary"
+            type="button"
+            data-action="cancel"
+          ></button>
+          <button
+            id="bg-confirm-house-style"
+            class="btn btn-primary"
+            type="button"
+            data-action="confirm-house-style"
+            hidden
+          ></button>
+          <button
+            id="bg-submit"
+            class="btn btn-primary"
+            type="button"
+            data-action="submit"
+          ></button>
         </div>
       </dialog>
     </main>
