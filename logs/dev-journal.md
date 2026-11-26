@@ -1121,3 +1121,18 @@ c14199b80 Merge pull request #802 from SigurdurVilhelmsson/dependabot/npm_and_ya
 **Why:** —
 
 ---
+
+## 2026-11-26 14:49 - G1.4 consent v3: checked against Act 90/2018, floor of three, item 19 dated, controller filled, Word export ready; waiting on the DPO's name and email
+
+**Branch:** main
+**Modified:**
+ M logs/dev-journal.md
+
+**Recent commits:**
+1e3c2430f Merge pull request #823 from SigurdurVilhelmsson/docs/register-c255-derived-dataset-deletion
+5925f968a docs(register): §C255, the derived dataset's 2030 deletion has no owner in code
+a896104bd Merge pull request #822 from SigurdurVilhelmsson/docs/sd6-three-editor-floor
+
+**Why:** Same-day rulings while checking the draft against the act: no-AI-reads rule (#821), SD6 cell floor of three (#822), derived dataset aggregate-only and deleted 31 Dec 2030 with §C255 owning the manual deletion (#823), double role stated in item 9, objection clause narrowed to (e) for a public controller. Next: fill the DPO in both section 6 lines, rebuild with `node docs/grants/build-consent-docx.cjs`, send to the DPO.
+
+---
