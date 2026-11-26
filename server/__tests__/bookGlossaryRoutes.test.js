@@ -249,8 +249,13 @@ describe('GET /', () => {
     });
     const e = seedEntry('zpend', 'zbið');
     inflections.schedule(e.conceptId, { book: BOOK, userId: 'u', username: 'u' });
-    const pending = (await get(`/api/book-glossary/${BOOK}`)).body.entries[0].inflections;
-    release();
+    let pending;
+    try {
+      pending = (await get(`/api/book-glossary/${BOOK}`)).body.entries[0].inflections;
+    } finally {
+      // §C244 T4d: released even if the read throws, or afterEach's _idle() would wait forever.
+      release();
+    }
     await inflections._idle();
     db.prepare('UPDATE concept_term SET inflections = \'["a","b"]\' WHERE id = ?').run(
       isTermId(e.conceptId)
@@ -1107,7 +1112,6 @@ describe('the worklist', () => {
     }
   };
   let changeId;
-  let exclusionId;
 
   beforeAll(() => {
     put(
@@ -1134,6 +1138,9 @@ describe('the worklist', () => {
   });
 
   beforeEach(async () => {
+    // The unreadable ch03 fixture makes every scan warn (§C244 N5); a test that reads the warning
+    // spies on it again.
+    vi.spyOn(logger, 'warn').mockImplementation(() => {});
     const old = addPair('chemistry', 'zcell', 'zker');
     db.prepare('UPDATE concept_term SET inflections = ? WHERE id = ?').run(
       '["zkerið","zkersins"]',
@@ -1147,10 +1154,6 @@ describe('the worklist', () => {
       reason: 'r',
     });
     changeId = res.body.changeId;
-    exclusionId = db
-      .prepare('SELECT id FROM book_glossary_change WHERE action = ?')
-      .all('exclude')
-      .map((r) => r.id)[0];
   });
 
   const list = (id = changeId, cookie) =>
@@ -1212,6 +1215,25 @@ describe('the worklist', () => {
     ).run(BOOK, 'm00001', 'm00001:para:p1', 'Rafhlaðan er full.');
     const { body } = await list();
     expect(ids(body, 1)).toEqual(['m00001:para:p2']);
+  });
+
+  // §C244 T3d: the scan reads the effective text, so an edit that ADDS the old word lists a
+  // segment whose MT never held it (the test above covers an edit that removes it).
+  it('a live edit that added the old word lists the segment', async () => {
+    put('02-for-mt/ch05/m00005-segments.en.md', seg('m00005:para:t1', 'A zcell, fifth.'));
+    put('02-mt-output/ch05/m00005-segments.is.md', seg('m00005:para:t1', 'Ekkert orð hér.'));
+    try {
+      // Control: neither word in the MT, so the segment is not listed.
+      expect(ids((await list()).body, 5)).toEqual([]);
+      db.prepare(
+        "INSERT INTO segment_edits (book, chapter, module_id, segment_id, original_content, edited_content, editor_id, editor_username, status) VALUES (?, 5, ?, ?, 'x', ?, 'u2', 'editor2', 'pending')"
+      ).run(BOOK, 'm00005', 'm00005:para:t1', 'Eitt zker hér.');
+      expect(ids((await list()).body, 5)).toEqual(['m00005:para:t1']);
+    } finally {
+      for (const dir of ['02-for-mt', '02-mt-output', '02-mt-fable']) {
+        rmSync(path.join(booksRoot, BOOK, dir, 'ch05'), { recursive: true, force: true });
+      }
+    }
   });
 
   it('an unreadable unit is named and the other units are still listed', async () => {
@@ -1298,6 +1320,16 @@ describe('the worklist', () => {
       status: 404,
       refusal: 'not-found',
     });
+    // §C244 M15, the control: the same id answers under its own book, so the 404 above is about the
+    // book, not an id that does not exist.
+    const own = await get(
+      `/api/book-glossary/edlisfraedi-2e/worklist?changeId=${other.changeId}`,
+      cookieFor('admin')
+    );
+    expect({ status: own.status, changeId: own.body?.changeId }).toEqual({
+      status: 200,
+      changeId: other.changeId,
+    });
     expect((await list('abc')).status).toBe(400);
     expect((await list(0)).status).toBe(400);
     expect((await list(changeId, cookieFor('editor'))).status).toBe(403);
@@ -1310,7 +1342,6 @@ describe('the worklist', () => {
       add: true,
       exclude: false,
     });
-    expect(exclusionId).toBeDefined();
   });
 
   // §C244 N4: the warning carries one error, so it names the unit that error came from.

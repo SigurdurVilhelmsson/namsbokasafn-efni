@@ -82,6 +82,25 @@ describe('worklistSpec', () => {
     expect(s.newIcelandic).toBe('zrafhlada');
   });
 
+  // §C244 T2c: a word with no stored inflections is searched by its base form and says so.
+  it('a replaced word with no stored inflections is searched by its base form, not inflected', () => {
+    const old = concept('chemistry', 'zcell', 'zker');
+    const { changeId } = addedChange(['zcell'], 'zrafhlada', [old]);
+    const s = specOf(changeId);
+    expect({ old: s.old, oldForms: s.oldForms }).toEqual({
+      old: [{ icelandic: 'zker', inflected: false }],
+      oldForms: ['zker'],
+    });
+  });
+
+  // §C244 T2c: the replaced words are found by match key, so an entry form written in another case
+  // than the exclusion's key still finds them.
+  it('an entry form in another case still finds the replaced word', () => {
+    const old = concept('chemistry', 'zcell', 'zker');
+    const { changeId } = addedChange(['Zcell'], 'zrafhlada', [old]);
+    expect(specOf(changeId)).toMatchObject({ kind: 'replacement', oldForms: ['zker'] });
+  });
+
   it('an add alongside has no worklist', () => {
     const { changeId } = addedChange(['zcell'], 'zrafhlada');
     expect(specOf(changeId)).toMatchObject({ kind: null, reason: 'add-alongside', oldForms: [] });

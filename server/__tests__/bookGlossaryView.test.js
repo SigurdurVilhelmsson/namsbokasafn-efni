@@ -51,6 +51,13 @@ describe('editorOnlyForms', () => {
       'standard cell potential',
     ]);
   });
+
+  // §C244 T4c: words are counted across any run of whitespace, and edge whitespace adds none.
+  it('counts words across irregular whitespace', () => {
+    expect(
+      view.editorOnlyForms(['salt  bridge', 'standard\tcell\tpotential', ' salt bridge '])
+    ).toEqual(['standard\tcell\tpotential']);
+  });
 });
 
 describe('actionLabel', () => {
@@ -155,6 +162,16 @@ describe('excerptParts', () => {
         cutAfter: false,
       })
     ).toEqual({ before: 'abc', match: 'XYZ', after: 'def' });
+  });
+
+  // §C244 T4c: each side's ellipsis follows its own cut flag.
+  it.each([
+    [true, false, { before: '…abc', match: 'XYZ', after: 'def' }],
+    [false, true, { before: 'abc', match: 'XYZ', after: 'def…' }],
+  ])('marks only the side that was cut (before %s, after %s)', (cutBefore, cutAfter, parts) => {
+    expect(
+      view.excerptParts({ text: 'abcXYZdef', start: 3, length: 3, cutBefore, cutAfter })
+    ).toEqual(parts);
   });
 });
 
