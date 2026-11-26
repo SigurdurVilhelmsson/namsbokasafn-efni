@@ -553,7 +553,7 @@
     answers.forEach(function (c, i) {
       if (i > 0) line.appendChild(txt(' · '));
       line.appendChild(el('span', 'bg-is', c.text));
-      line.appendChild(txt(' (' + c.domain + ')'));
+      line.appendChild(txt(' (' + view.domainLabel(c.domain) + ')'));
     });
     return line;
   }
@@ -580,7 +580,9 @@
       winner.dataset.reason = String(r.reason);
       winner.appendChild(txt(T.winner));
       winner.appendChild(el('span', 'bg-is', r.winner.text));
-      winner.appendChild(txt(' (' + r.winner.domain + (own ? ', ' + T.bookItself : '') + ')'));
+      winner.appendChild(
+        txt(' (' + view.domainLabel(r.winner.domain) + (own ? ', ' + T.bookItself : '') + ')')
+      );
     } else {
       winner.textContent = r.tied.length > 0 ? T.tiedNone : T.noWinner;
     }
@@ -609,7 +611,7 @@
       const ownIds = new Set(data.layer.entries.map((e) => e.conceptId));
       for (const c of own ? r.alsoInScope : view.replaceCandidates(r)) {
         if (ownIds.has(c.conceptId)) continue;
-        const label = T.excludeRow + ': ' + c.text + ' (' + c.domain + ')';
+        const label = T.excludeRow + ': ' + c.text + ' (' + view.domainLabel(c.domain) + ')';
         actions.appendChild(actionButton(label, 'exclude-row', { conceptId: c.conceptId }));
       }
     }
@@ -879,7 +881,7 @@
         if (candidates.length > 0) {
           modes.appendChild(choice('radio', 'bg-mode', 'replace', T.modeReplace, true));
           for (const c of candidates) {
-            const label = c.text + ' (' + c.domain + ')';
+            const label = c.text + ' (' + view.domainLabel(c.domain) + ')';
             modes.appendChild(
               choice('checkbox', 'bg-replaces', c.conceptId, label, c.checked, 'bg-sub')
             );

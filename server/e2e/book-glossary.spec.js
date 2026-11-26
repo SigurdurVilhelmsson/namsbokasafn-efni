@@ -313,6 +313,48 @@ test.describe('the book glossary page', () => {
     await expect(result.locator('[data-action="set-icelandic"]')).toHaveCount(1);
   });
 
+  // §C244 M13: every place the page names a concept's subject area shows its Icelandic name; a code
+  // the page has no name for shows as itself.
+  test('subject areas show by their Icelandic names', async ({ page }) => {
+    await loginAs(page, 'head-editor');
+    const concept = (conceptId, text, domain) => ({ conceptId, text, domain });
+    await stub(page, {
+      [LAYER]: () => layerAnswer(),
+      [LAYER + '/lookup']: () => ({
+        resolution: {
+          reason: 'priority',
+          winner: concept(990101, 'saltbrú', 'chemistry'),
+          tied: [],
+          alsoInScope: [concept(990102, 'saltbrúin', 'physics')],
+          outOfScope: [
+            concept(990103, 'saltbrúa', 'astronomy'),
+            concept(990104, 'saltbrúm', 'not-a-domain'),
+          ],
+        },
+        layer: { exclusions: [], entries: [] },
+        houseStyle: [],
+        preferences: [],
+      }),
+    });
+    const result = page.locator('#bg-lookup-result');
+
+    await page.goto(PAGE);
+    await lookUp(page, SALT);
+    await expect(result.locator('.bg-winner')).toHaveText('Bókin notar nú: saltbrú (Efnafræði)');
+    await expect(result).toContainText('saltbrúin (Eðlisfræði)');
+    await expect(result).toContainText('saltbrúa (Stjörnufræði)');
+    await expect(result).toContainText('saltbrúm (not-a-domain)');
+    await expect(result.locator('[data-action="exclude-row"]')).toHaveText([
+      /saltbrú \(Efnafræði\)$/,
+      /saltbrúin \(Eðlisfræði\)$/,
+    ]);
+    await expect(result).not.toContainText('chemistry');
+
+    await result.locator('[data-action="set-icelandic"]').click();
+    const choices = page.locator('#bg-action-fields .bg-sub');
+    await expect(choices).toHaveText([/saltbrú \(Efnafræði\)/, /saltbrúin \(Eðlisfræði\)/]);
+  });
+
   // §C244 T5d: a whole-headword exclusion and a one-row exclusion, as the layer shows them.
   test('exclusion rows say what they exclude', async ({ page }) => {
     await loginAs(page, 'head-editor');

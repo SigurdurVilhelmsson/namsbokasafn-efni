@@ -40,6 +40,18 @@
     'nothing-to-search': 'Ekkert er til að leita að.',
   });
 
+  // Keys are exactly server/lib/domains.js DOMAINS (pinned by bookGlossaryView.test.js). The first
+  // four are the segment editor's names; [USER] approved all seven on 2026-11-26 (§C244 M13).
+  const DOMAIN_LABELS = Object.freeze({
+    chemistry: 'Efnafræði',
+    physics: 'Eðlisfræði',
+    biology: 'Líffræði',
+    mathematics: 'Stærðfræði',
+    astronomy: 'Stjörnufræði',
+    'anatomy-physiology': 'Líffæra- og lífeðlisfræði',
+    'earth-science': 'Jarðvísindi',
+  });
+
   /**
    * A map's label for a code, or the code itself when the map has none (a code that reached the
    * server before the page learned it), so the page never prints "undefined" (§C244 T4b).
@@ -50,6 +62,16 @@
    */
   function labelOr(labels, code) {
     return Object.prototype.hasOwnProperty.call(labels, code) ? labels[code] : String(code);
+  }
+
+  /**
+   * A concept's subject area by its Icelandic name, or the code when there is none.
+   *
+   * @param {string} code a `concept.domain` value
+   * @returns {string}
+   */
+  function domainLabel(code) {
+    return labelOr(DOMAIN_LABELS, code);
   }
 
   /**
@@ -261,6 +283,8 @@
 
   const api = {
     INFLECTION_RESULT_LABELS: INFLECTION_RESULT_LABELS,
+    DOMAIN_LABELS: DOMAIN_LABELS,
+    domainLabel: domainLabel,
     inflectionLabel: inflectionLabel,
     editorOnlyForms: editorOnlyForms,
     actionLabel: actionLabel,

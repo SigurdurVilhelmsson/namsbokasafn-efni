@@ -8,6 +8,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const view = require('../public/js/book-glossary-view');
 const { RESULTS } = require('../services/bookGlossaryInflections');
+const { DOMAINS } = require('../lib/domains');
 
 describe('inflection labels', () => {
   it("the labels cover exactly the lookup's results", () => {
@@ -311,5 +312,28 @@ describe('a code with no label', () => {
     expect(view.worklistSummary({ kind: null, reason: 'ny-astaeda', units: 0, total: 0 })).toBe(
       'ny-astaeda'
     );
+  });
+});
+
+// §C244 M13: subject areas by their Icelandic names ([USER] ruling 2026-11-26: all seven).
+describe('domainLabel', () => {
+  it("the names cover exactly the concept model's domains", () => {
+    expect(Object.keys(view.DOMAIN_LABELS).sort()).toEqual([...DOMAINS].sort());
+  });
+
+  it.each([
+    ['chemistry', 'Efnafræði'],
+    ['physics', 'Eðlisfræði'],
+    ['biology', 'Líffræði'],
+    ['mathematics', 'Stærðfræði'],
+    ['astronomy', 'Stjörnufræði'],
+    ['anatomy-physiology', 'Líffæra- og lífeðlisfræði'],
+    ['earth-science', 'Jarðvísindi'],
+  ])('names %s', (code, name) => {
+    expect(view.domainLabel(code)).toBe(name);
+  });
+
+  it('shows a code it has no name for as itself', () => {
+    expect(view.domainLabel('not-a-domain')).toBe('not-a-domain');
   });
 });
