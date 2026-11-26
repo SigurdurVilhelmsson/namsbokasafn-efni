@@ -51,6 +51,8 @@
   // exclusions and the resolution from them.
   let layerData = null;
   let looked = null;
+  // The headword the history panel shows while it is open, else null; a write reads it again.
+  let historyEnglish = null;
   // True while the latest look-up request has not answered.
   let lookupBusy = false;
   // The open dialog's action ({request}), and a body waiting for house-style confirmation.
@@ -158,6 +160,7 @@
 
   function closePanel(panel, ticketKey) {
     latest[ticketKey] += 1;
+    if (ticketKey === 'history') historyEnglish = null;
     clear(panel);
     panel.hidden = true;
   }
@@ -290,9 +293,10 @@
    * read (the pending re-reads below) leaves the status line alone and redraws the layer only when
    * the answer differs from the one shown, or when `redraw` is set (a retry's first re-read, which
    * rebuilds the button it disabled). Resolves true when the answer is the one now shown, false
-   * when it was dropped for a newer request or failed.
+   * when it was dropped for a newer request or failed. A quiet read shows no error itself, so
+   * `onFail`, when given, is called with the error of a quiet read that failed (not one dropped).
    */
-  async function loadLayer(note, quiet, redraw) {
+  async function loadLayer(note, quiet, redraw, onFail) {
     const slug = book;
     const ticket = ++latest.layer;
     if (!slug) return false;
@@ -318,12 +322,14 @@
     } catch (err) {
       if (ticket !== latest.layer) return false;
       if (!quiet) statusLine.textContent = T.loadError + err.message;
+      else if (onFail) onFail(err);
       return false;
     }
   }
 
   // After a write or a retry the inflection lookup runs in the background, one pass over the BÍN
-  // file, so the layer's first answer usually still says "sæki…". The layer is read again while an
+  // file, so the layer's first answer usually still says "sæki…"; a book can also be opened while
+  // one runs (§C244 N2), so opening one watches it the same way. The layer is read again while an
   // entry is pending, once after each delay in turn, and then no more; a read that redraws the
   // layer also re-reads the shown look-up. A retry's first read redraws even an unchanged answer
   // (§C244 N1: a result fixed before the BÍN pass, "several-words" say, is never pending), so the
@@ -364,6 +370,12 @@
     const end = function () {
       if (retryText && statusLine.textContent === retryText) statusLine.textContent = '';
     };
+    // A failed re-read ends the chain and says so (§C244 N7): the entry may still read "sæki…",
+    // and a retry's button, disabled until a redraw, is given back by redrawing what is shown.
+    const fail = function (err) {
+      statusLine.textContent = T.loadError + err.message;
+      if (retryText && layerData) renderLayer(layerData);
+    };
     const next = function (i) {
       if (i >= PENDING_DELAYS.length) {
         end();
@@ -372,8 +384,15 @@
       watchTimer = setTimeout(async function () {
         watchTimer = null;
         if (!ours()) return;
-        const shown = await loadLayer(null, true, Boolean(retryText) && i === 0);
+        let failed = null;
+        const shown = await loadLayer(null, true, Boolean(retryText) && i === 0, function (err) {
+          failed = err;
+        });
         if (!ours()) return;
+        if (failed) {
+          fail(failed);
+          return;
+        }
         if (shown && anyPending(layerData)) next(i + 1);
         else end();
       }, PENDING_DELAYS[i]);
@@ -395,7 +414,12 @@
     layerPanel.hidden = true;
     lookupPanel.hidden = true;
     statusLine.textContent = '';
-    return loadLayer();
+    // An entry can be pending when a book is opened (a write just before, on this page or
+    // another), so its layer is watched like a write's (§C244 N2).
+    return loadLayer().then(function (shown) {
+      if (shown && anyPending(layerData)) watchPending();
+      return shown;
+    });
   }
 
   // ── History ─────────────────────────────────────────────────
@@ -436,6 +460,7 @@
     const slug = book;
     const ticket = ++latest.history;
     const body = openPanel(historyPanel, T.historyTitle(english), 'history');
+    historyEnglish = english;
     try {
       const data = await fetchJson(
         apiPath(slug) + '/history?english=' + encodeURIComponent(english)
@@ -744,7 +769,8 @@
 
   /**
    * After a write the layer and the shown look-up are read again, and the layer again while an
-   * added or changed entry's inflection lookup is pending.
+   * added or changed entry's inflection lookup is pending. An open history panel is read again
+   * too, so the write's own row appears without Saga being clicked again (§C244 M6).
    */
   function afterWrite() {
     stopWatching();
@@ -752,6 +778,7 @@
       if (shown && anyPending(layerData)) watchPending();
     });
     if (looked) lookUp(looked.english);
+    if (historyEnglish !== null) openHistory(historyEnglish);
   }
 
   /**
