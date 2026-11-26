@@ -1151,3 +1151,18 @@ a896104bd Merge pull request #822 from SigurdurVilhelmsson/docs/sd6-three-editor
 **Why:** The DPO is named in both section 6 lines (also the controller's contact) and the Word file rebuilt with `docs/grants/build-consent-docx.cjs`; only the two legal-basis brackets stay highlighted. The cover email asks those two plus the impact assessment (29. gr.) and recital 43, which closes the evaluation's "Ask the DPO" list. When the answer comes: fill the brackets, align the objection sentence, rebuild, record the answers in the notes.
 
 ---
+
+## 2026-11-26 15:57 - Session wrap-up: consent text sent to the DPO, prod deployed at #825, c19 pre-screen verified finished and §C239 corrected, #826 merging; next session starts from the g14-consent list
+
+**Branch:** main
+**Modified:**
+(clean)
+
+**Recent commits:**
+5cc033d08 Merge pull request #825 from SigurdurVilhelmsson/docs/journal-2026-11-26-dpo-ready
+fba0d7fd9 docs(journal): 2026-11-26 consent v3 ready for the DPO snapshot
+99663a8f5 Merge pull request #824 from SigurdurVilhelmsson/docs/journal-2026-11-26-consent
+
+**Why:** —
+
+---
