@@ -576,6 +576,11 @@ function removeEntry(db, a) {
 
 const RECORD_FILE = 'book-glossary.json';
 
+/**
+ * A history row's stored JSON, parsed; a value that does not parse comes back as the raw string.
+ * The one parse for these rows: historyFor and the worklist (worklistSpec.readChange) both use it,
+ * so the history's worklist flag and the worklist route cannot disagree (register §C244 M12).
+ */
 const parseJson = (s) => {
   if (s === null || s === undefined) return null;
   try {
@@ -962,6 +967,7 @@ module.exports = {
   changeEntry,
   removeEntry,
   historyFor,
+  parseJson,
   buildBookGlossaryRecord,
   displayNameFor,
   recordLabelFor,

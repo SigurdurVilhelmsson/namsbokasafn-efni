@@ -4,6 +4,7 @@
  * segment editor's connection.
  */
 const { matchKey } = require('./conceptResolver');
+const { parseJson } = require('./bookGlossaryLayer');
 
 const fold = (s) => String(s).toLocaleLowerCase('is');
 const NONE = (reason) => ({
@@ -16,8 +17,10 @@ const NONE = (reason) => ({
 });
 
 /**
- * One history row of this book, JSON parsed; null when the id is not this book's.
- * @returns {{id:number, action:string, before:object|null, after:object|null}|null}
+ * One history row of this book, JSON parsed; null when the id is not this book's. A side whose
+ * JSON does not parse comes back as its raw string, which worklistSpec answers with no list
+ * ('not-applicable').
+ * @returns {{id:number, action:string, before:object|string|null, after:object|string|null}|null}
  */
 function readChange(db, bookSlug, changeId) {
   const row = db
@@ -29,12 +32,12 @@ function readChange(db, bookSlug, changeId) {
     )
     .get(changeId, bookSlug);
   if (!row) return null;
-  const parse = (j) => (j == null ? null : JSON.parse(j));
+  // The history's own parse, so a malformed row gets the same answer here as in its worklist flag.
   return {
     id: row.id,
     action: row.action,
-    before: parse(row.before_json),
-    after: parse(row.after_json),
+    before: parseJson(row.before_json),
+    after: parseJson(row.after_json),
   };
 }
 
@@ -109,12 +112,14 @@ function finish(kind, english, words, newIcelandic) {
  * What the worklist must search for, derived from one history row.
  * @param {object} db
  * @param {string} bookSlug
- * @param {{action:string, before:object|null, after:object|null}} row
+ * @param {{action:string, before:object|string|null, after:object|string|null}} row
  * @returns {{kind:'replacement'|'change'|'removal'|null, reason:string|null, english:string[],
  *   old:Array<{icelandic:string, inflected:boolean}>, oldForms:string[], newIcelandic:string|null}}
  */
 function worklistSpec(db, bookSlug, row) {
   const { action, before, after } = row;
+  // A side that did not parse arrives as its raw string (readChange); nothing in it can be searched.
+  if (typeof before === 'string' || typeof after === 'string') return NONE('not-applicable');
   if (action === 'entry-add') {
     if (!after || !(after.replaces || []).length) return NONE('add-alongside');
     const { rows, words } = replacedWords(db, bookSlug, after);

@@ -41,6 +41,18 @@
   });
 
   /**
+   * A map's label for a code, or the code itself when the map has none (a code that reached the
+   * server before the page learned it), so the page never prints "undefined" (§C244 T4b).
+   *
+   * @param {Object<string, string>} labels
+   * @param {string} code
+   * @returns {string}
+   */
+  function labelOr(labels, code) {
+    return Object.prototype.hasOwnProperty.call(labels, code) ? labels[code] : String(code);
+  }
+
+  /**
    * Icelandic number agreement: a count ending in 1 takes the singular, except one ending in 11
    * (1, 21, 31 … but not 11, 111).
    *
@@ -65,7 +77,7 @@
     if (state.reason == null) {
       return 'aðeins rithátturinn — engin leit skráð (t.d. eftir endurræsingu)';
     }
-    return 'aðeins rithátturinn — ' + INFLECTION_RESULT_LABELS[state.reason];
+    return 'aðeins rithátturinn — ' + labelOr(INFLECTION_RESULT_LABELS, state.reason);
   }
 
   /**
@@ -81,7 +93,7 @@
 
   /** @param {string} action a book_glossary_change action */
   function actionLabel(action) {
-    return ACTION_LABELS[action];
+    return labelOr(ACTION_LABELS, action);
   }
 
   /**
@@ -106,7 +118,7 @@
    * @returns {string}
    */
   function worklistSummary(w) {
-    if (w.kind === null) return EMPTY_REASONS[w.reason];
+    if (w.kind === null) return labelOr(EMPTY_REASONS, w.reason);
     if (w.units === 0) return 'Bókin hefur engar einingar til að leita í.';
     if (w.total === 0) return 'Enginn bútur notar lengur gamla orðið.';
     return w.total + (singular(w.total) ? ' bútur notar' : ' bútar nota') + ' enn gamla orðið.';
