@@ -1136,3 +1136,18 @@ a896104bd Merge pull request #822 from SigurdurVilhelmsson/docs/sd6-three-editor
 **Why:** Same-day rulings while checking the draft against the act: no-AI-reads rule (#821), SD6 cell floor of three (#822), derived dataset aggregate-only and deleted 31 Dec 2030 with §C255 owning the manual deletion (#823), double role stated in item 9, objection clause narrowed to (e) for a public controller. Next: fill the DPO in both section 6 lines, rebuild with `node docs/grants/build-consent-docx.cjs`, send to the DPO.
 
 ---
+
+## 2026-11-26 15:21 - G1.4 consent v3 and cover email ready for the school's data protection officer; waiting on the answer on the two legal-basis brackets, the impact assessment and recital 43
+
+**Branch:** main
+**Modified:**
+(clean; the draft, Word file, cover email and notes are in git-excluded docs/grants/)
+
+**Recent commits:**
+99663a8f5 Merge pull request #824 from SigurdurVilhelmsson/docs/journal-2026-11-26-consent
+49ab13527 docs(journal): 2026-11-26 G1.4 consent v3 snapshot
+1e3c2430f Merge pull request #823 from SigurdurVilhelmsson/docs/register-c255-derived-dataset-deletion
+
+**Why:** The DPO is named in both section 6 lines (also the controller's contact) and the Word file rebuilt with `docs/grants/build-consent-docx.cjs`; only the two legal-basis brackets stay highlighted. The cover email asks those two plus the impact assessment (29. gr.) and recital 43, which closes the evaluation's "Ask the DPO" list. When the answer comes: fill the brackets, align the objection sentence, rebuild, record the answers in the notes.
+
+---
