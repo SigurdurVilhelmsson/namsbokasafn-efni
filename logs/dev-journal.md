@@ -1166,3 +1166,18 @@ fba0d7fd9 docs(journal): 2026-11-26 consent v3 ready for the DPO snapshot
 **Why:** —
 
 ---
+
+## 2026-11-26 21:09 - Closed §C244's deferred minors from #753: server fixes (#829), page behaviour (#830) and test minors (#831), all merged; the 8 rulings (M9, M11, M13, N6, T6g, T2d, R6, T4a) and T1b remain
+
+**Branch:** test/c244-pile-d (merged as #831; main = 10bfe1500)
+**Modified:**
+(clean)
+
+**Recent commits:**
+a079e8d17 docs(register): §C244 — the test minors closed (a8cb03f87, 078de5266, 8937696bc)
+8937696bc test(book-glossary): §C244 pile D, E2E half — M14, M16, T5d, T6d, T6e, T6f
+078de5266 test(book-glossary): §C244 M8c — put the unfixed sentence first, so the test can tell the whole-segment rule from a nearby-only one
+
+**Why:** Split by kind (server, page, tests, rulings) so each PR stayed small and the register heading edits merged in order. A test that passed on arrival counts only if a golden-copy mutant turns it red while the older tests stay green. Next: deploy (#828–#831 merged, not deployed; prod at 8f1b34806, #827's merge, deployed 16:17Z with #826), then the pile C rulings.
+
+---
