@@ -870,6 +870,72 @@ test.describe('the book glossary page', () => {
     await expect(page.locator('#bg-action-error')).toHaveText('');
   });
 
+  // §C244 T6g ([USER] ruling 2026-11-26): a refusal for a dialog already closed reaches the status
+  // line, so the head editor learns nothing was saved.
+  test('a refusal that arrives after the dialog was closed says it was not saved', async ({
+    page,
+  }) => {
+    const held = await holdFirstEntryWrite(page, {
+      status: 409,
+      body: { error: PREFERENCE, refusal: 'preference' },
+    });
+    const status = page.locator('#bg-status');
+    await page.goto(PAGE);
+    await lookUp(page, SALT);
+    await expect(winnerText(page)).toHaveText(SALT_IS);
+    await page.locator('#bg-lookup-result [data-action="set-icelandic"]').click();
+    await page.locator('#bg-icelandic').fill('jónabrú-e2e');
+    await page.locator('#bg-reason').fill('E2E: höfnun sem berst seint');
+    await page.locator('#bg-submit').click();
+    await expect.poll(() => held.posts).toBe(1);
+    await page.locator('#bg-reason').press('Escape');
+    await expect(page.locator('#bg-action-dialog')).toBeHidden();
+    // Control: nothing is said before the answer arrives.
+    await expect(status).toHaveText('');
+
+    held.release();
+    await expect(status).toHaveText('Ekki vistað: ' + PREFERENCE);
+  });
+
+  // §C244 T6g's two limits; the test above, the same steps with a 409 on the same book, is their
+  // positive control. A 500 does not say whether the write happened, and a refusal for a book no
+  // longer shown would describe another book's page.
+  for (const [name, answer, otherBook] of [
+    ['a late server error says nothing', { status: 500, body: { error: 'villa' } }, false],
+    [
+      'a late refusal after a book switch says nothing',
+      { status: 409, body: { error: PREFERENCE, refusal: 'preference' } },
+      true,
+    ],
+  ]) {
+    test(/** @type {string} */ (name), async ({ page }) => {
+      const held = await holdFirstEntryWrite(page, answer);
+      await page.goto(PAGE);
+      await lookUp(page, SALT);
+      await expect(winnerText(page)).toHaveText(SALT_IS);
+      await page.locator('#bg-lookup-result [data-action="set-icelandic"]').click();
+      await page.locator('#bg-icelandic').fill('jónabrú-e2e');
+      await page.locator('#bg-reason').fill('E2E: svar sem berst seint');
+      await page.locator('#bg-submit').click();
+      await expect.poll(() => held.posts).toBe(1);
+      if (otherBook) {
+        await page.locator('#bg-book-select').selectOption('__e2e-fixture__');
+        await expect(page.locator('#bg-layer')).toHaveAttribute(
+          'data-loaded-book',
+          '__e2e-fixture__'
+        );
+      } else {
+        await page.locator('#bg-reason').press('Escape');
+      }
+      await expect(page.locator('#bg-action-dialog')).toBeHidden();
+
+      held.release();
+      // The answer has been handled once the request's buttons are enabled again.
+      await expect(page.locator('#bg-submit')).toBeEnabled();
+      await expect(page.locator('#bg-status')).toHaveText('');
+    });
+  }
+
   test('a late success refreshes the layer and leaves a later dialog open', async ({ page }) => {
     const held = await holdFirstEntryWrite(page, {
       status: 201,

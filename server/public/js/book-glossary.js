@@ -829,7 +829,15 @@
         openWorklist(answer.changeId, slug);
       }
     } catch (err) {
-      if (!ours()) return;
+      if (!ours()) {
+        // §C244 T6g: a refusal (a 4xx: nothing was written) for a dialog already closed still says
+        // so while its book is shown. A network error or a 5xx stays silent: whether the write
+        // happened is not known.
+        if (slug === book && err.status >= 400 && err.status < 500) {
+          statusLine.textContent = T.notSaved + err.message;
+        }
+        return;
+      }
       // 400 and 409 carry the server's Icelandic message; a preference refusal offers nothing more.
       showMessage(err.message);
       const data = err.data || {};

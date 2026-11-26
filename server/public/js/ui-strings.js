@@ -685,6 +685,8 @@ const UI = {
     loadError: 'Ekki tókst að sækja orðasafn bókarinnar: ',
     historyError: 'Ekki tókst að sækja söguna: ',
     worklistError: 'Ekki tókst að sækja verkefnalistann: ',
+    // §C244 T6g, wording approved by [USER] 2026-11-26: a refusal for a dialog already closed.
+    notSaved: 'Ekki vistað: ',
     // Design §5.6: shown only while the export is held, or after the record failed to write.
     held: (time) => '⏸ Útflutningur orðasafns bíður forritara' + (time ? ' síðan ' + time : ''),
     recordError:
