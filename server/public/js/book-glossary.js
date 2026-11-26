@@ -268,6 +268,33 @@
     return entries.length + unclaimed.length > 0;
   }
 
+  /**
+   * What identifies a control across a redraw: its tag and data attributes, and those of the row
+   * it sits in (rows carry data-concept-id or data-exclusion-id). §C244 N6.
+   */
+  function focusSignature(node) {
+    const row = node.closest('[data-exclusion-id], [data-concept-id]');
+    return JSON.stringify([node.tagName, { ...node.dataset }, row ? { ...row.dataset } : null]);
+  }
+
+  /**
+   * Run `draw`, which rebuilds `container`, and give focus back to the control that matches the
+   * one focused inside it before (§C244 N6). If none matches, focus stays where the redraw left it.
+   */
+  function keepingFocus(container, draw) {
+    const active = document.activeElement;
+    const signature =
+      active && active !== container && container.contains(active) ? focusSignature(active) : null;
+    draw();
+    if (signature === null) return;
+    for (const node of container.querySelectorAll('button, a, input, select, textarea')) {
+      if (focusSignature(node) === signature) {
+        node.focus();
+        return;
+      }
+    }
+  }
+
   function renderLayer(data) {
     clear(layerPanel);
     layerPanel.appendChild(el('h2', 'card-title', T.layerTitle));
@@ -313,7 +340,7 @@
       // Q13: the line says why nothing can be changed; an answer without `writable` claims nothing.
       readOnlyLine.textContent = T.readOnly;
       readOnlyLine.hidden = data.writable !== false;
-      renderLayer(data);
+      keepingFocus(layerPanel, () => renderLayer(data));
       lookupPanel.hidden = false;
       if (!quiet) statusLine.textContent = typeof note === 'string' ? note : '';
       // The shown look-up lists the headword's entries with the same inflection labels.
@@ -643,8 +670,18 @@
       );
       if (ticket !== latest.lookup) return;
       lookupBusy = false;
+      // §C244 N6: the look-up panel is aria-live, so redrawing an unchanged answer reads it out
+      // again. A quiet look-up leaves an answer that has not changed as it is.
+      if (
+        quiet &&
+        looked &&
+        looked.english === english &&
+        JSON.stringify(data) === JSON.stringify(looked.data)
+      ) {
+        return;
+      }
       looked = { english: english, data: data };
-      renderLookup(english, data);
+      keepingFocus(lookupResult, () => renderLookup(english, data));
     } catch (err) {
       if (ticket !== latest.lookup) return;
       lookupBusy = false;

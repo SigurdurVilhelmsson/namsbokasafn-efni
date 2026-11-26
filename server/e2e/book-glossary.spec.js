@@ -1044,6 +1044,48 @@ test.describe('the book glossary page', () => {
     await expect(line).toContainText(await label({ state: 'forms', count: 2 }));
   });
 
+  // §C244 N6 ([USER] ruling 2026-11-26: fix both halves). A quiet re-read must not replace an
+  // unchanged look-up answer (#bg-lookup-result is aria-live, so a replaced node is read out
+  // again), and a redraw must give focus back to the same control.
+  test('a quiet re-read leaves an unchanged look-up answer in place', async ({ page }) => {
+    const scene = await quietRedrawScene(page, [lookupAnswer([])]);
+    await markWinnerNode(page);
+    await scene.settle();
+    expect(await winnerNodeMarked(page)).toBe(true);
+  });
+
+  // Control for the test above: the same wait sees a changed answer replace the node.
+  test('a quiet re-read replaces a changed look-up answer', async ({ page }) => {
+    const changed = lookupAnswer([{ conceptId: 990102, text: 'saltbrúin', domain: 'physics' }]);
+    const scene = await quietRedrawScene(page, [lookupAnswer([]), changed]);
+    await markWinnerNode(page);
+    await scene.settle();
+    expect(await winnerNodeMarked(page)).toBe(false);
+    await expect(page.locator('#bg-lookup-result')).toContainText('saltbrúin');
+  });
+
+  test('a quiet redraw of the layer keeps focus on the same button', async ({ page }) => {
+    const scene = await quietRedrawScene(page, [lookupAnswer([])]);
+    const button = page.locator(
+      '#bg-layer [data-concept-id="990001"] [data-action="change-entry"]'
+    );
+    await button.focus();
+    await expect(button).toBeFocused();
+    await scene.settle();
+    await expect(button).toBeFocused();
+  });
+
+  test('a quiet redraw of the look-up keeps focus on the same button', async ({ page }) => {
+    const changed = lookupAnswer([{ conceptId: 990102, text: 'saltbrúin', domain: 'physics' }]);
+    const scene = await quietRedrawScene(page, [lookupAnswer([]), changed]);
+    const button = page.locator('#bg-lookup-result [data-action="history"]');
+    await button.focus();
+    await expect(button).toBeFocused();
+    await scene.settle();
+    await expect(page.locator('#bg-lookup-result')).toContainText('saltbrúin');
+    await expect(button).toBeFocused();
+  });
+
   // §C244 M6: the new history row used to appear only when Saga was clicked again.
   test('an open history panel is read again after a write', async ({ page }) => {
     await loginAs(page, 'head-editor');
@@ -1230,5 +1272,81 @@ async function abandonForAnother(page, held) {
 async function excludeHeadwordTitle(page) {
   return String(
     await page.evaluate(`UI.bookGlossary.excludeHeadwordTitle(${JSON.stringify(SALT)})`)
+  );
+}
+
+/** A stubbed look-up answer for SALT: the seeded concept wins, `alsoInScope` beside it. */
+function lookupAnswer(/** @type {object[]} */ alsoInScope) {
+  return {
+    resolution: {
+      reason: 'priority',
+      winner: { conceptId: 990101, text: SALT_IS, domain: 'chemistry' },
+      tied: [],
+      alsoInScope,
+      outOfScope: [],
+    },
+    layer: { exclusions: [], entries: [] },
+    houseStyle: [],
+    preferences: [],
+  };
+}
+
+/**
+ * §C244 N6's scene: one entry pending until `settle()`, SALT looked up on a stubbed look-up that
+ * answers `answers` in turn (the last one repeating), and the page's clock installed so the next
+ * re-read comes on demand. `settle()` resolves once the redrawn layer and the quiet look-up it
+ * starts have both been answered.
+ */
+async function quietRedrawScene(page, /** @type {object[]} */ answers) {
+  await loginAs(page, 'head-editor');
+  let settled = false;
+  let lookups = 0;
+  await stub(page, {
+    [LAYER]: () =>
+      layerAnswer({
+        entries: [
+          entry({ inflections: settled ? { state: 'forms', count: 2 } : { state: 'pending' } }),
+        ],
+      }),
+    [LAYER + '/lookup']: () => answers[Math.min(lookups++, answers.length - 1)],
+  });
+  await page.clock.install();
+  await page.goto(PAGE);
+  await lookUp(page, SALT);
+  await expect(winnerText(page)).toHaveText(SALT_IS);
+  const forms = String(
+    await page.evaluate(
+      `UI.bookGlossary.inflections + bookGlossaryView.inflectionLabel({state: 'forms', count: 2})`
+    )
+  );
+  return {
+    async settle() {
+      settled = true;
+      const quietLookUp = page.waitForResponse(
+        (r) => new URL(r.url()).pathname === `${LAYER}/lookup` && lookups >= 2
+      );
+      await page.clock.fastForward(16000);
+      await expect(
+        page.locator('#bg-layer [data-concept-id="990001"] .bg-inflections')
+      ).toContainText(forms);
+      await quietLookUp;
+      // The page draws a look-up answer within a few ticks of receiving it (the same wait as the
+      // book-switch test above); the changed-answer control shows this is long enough.
+      await page.waitForTimeout(500);
+    },
+  };
+}
+
+/** Tag the look-up's winner node, so a test can tell the same node from a redrawn one. */
+async function markWinnerNode(page) {
+  await page.evaluate(() => {
+    /** @type {any} */ (document.querySelector('#bg-lookup-result .bg-winner')).__n6 = true;
+  });
+}
+
+/** Whether the look-up's winner node is still the one markWinnerNode tagged. */
+async function winnerNodeMarked(page) {
+  return page.evaluate(
+    () => /** @type {any} */ (document.querySelector('#bg-lookup-result .bg-winner'))?.__n6 === true
   );
 }
