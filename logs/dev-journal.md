@@ -1106,3 +1106,18 @@ b76477055 Merge pull request #818 from SigurdurVilhelmsson/docs/e2e-drop-ledger-
 **Why:** —
 
 ---
+
+## 2026-11-26 10:12 - Maintenance close-out: Dependabot #799–#802 merged and deployed, journal #820 merged and deployed, prod level with main; next is G1.4 consent review
+
+**Branch:** main
+**Modified:**
+(clean)
+
+**Recent commits:**
+0f4e782d9 Merge pull request #820 from SigurdurVilhelmsson/docs/journal-2026-11-25
+cf5a0d086 docs(journal): 2026-11-23 and 2026-11-25 snapshots
+c14199b80 Merge pull request #802 from SigurdurVilhelmsson/dependabot/npm_and_yarn/server/better-sqlite3-13.2.0
+
+**Why:** —
+
+---
