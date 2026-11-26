@@ -41,6 +41,21 @@ describe('findWholeWord', () => {
   it('matches its own case only when exactCase is set', () => {
     expect(findWholeWord('si', ['SI'], { exactCase: true })).toBeNull();
   });
+
+  // §C244 T1d: an empty list finds nothing (an `every`-style refactor would find everything).
+  it('finds nothing for an empty word list', () => {
+    expect(findWholeWord('ker og kerið', [], ci)).toBeNull();
+  });
+
+  // §C244 T1a: after a match that is not a whole word, the search restarts one UTF-16 unit on,
+  // which for a letter outside the BMP is between the halves of its surrogate pair. Under the `u`
+  // flag the next exec simply carries on from there; it neither loops on the same match nor
+  // misses the next one. Measured 2026-11-26 in Node 22.
+  it('restarts safely inside a surrogate pair after a match that is not a whole word', () => {
+    const alpha = '\u{1D6FC}'; // MATHEMATICAL ITALIC SMALL ALPHA: a letter, two UTF-16 units
+    const text = alpha + alpha + ' ' + alpha;
+    expect(findWholeWord(text, [alpha], { exactCase: true })).toEqual({ index: 5, length: 2 });
+  });
 });
 
 describe('englishHit', () => {
@@ -54,6 +69,11 @@ describe('englishHit', () => {
 
   it('a longer form folds case', () => {
     expect(englishHit('A Salt bridge forms', ['salt bridge'])).toBe('salt bridge');
+  });
+
+  // §C244 T1d
+  it('an empty form list has no hit', () => {
+    expect(englishHit('A salt bridge forms', [])).toBeNull();
   });
 });
 
@@ -89,6 +109,18 @@ describe('matchSegment, new word (§C244 M8)', () => {
   it('a new word in another case still skips the segment', () => {
     expect(
       matchSegment({ enContent: 'A zcell.', isContent: 'Eitt Galvanískt Zker.' }, words)
+    ).toBeNull();
+  });
+
+  // §C244 M8c: the rule looks at the whole segment, not at the old word's neighbourhood, so a
+  // segment holding the new word in one sentence and the old, unfixed word in another is skipped
+  // too (the M8 ruling accepts this). Route fixture p4 covers it; this names it.
+  it('a new word in one sentence skips the segment even where another sentence keeps the old word', () => {
+    expect(
+      matchSegment(
+        { enContent: 'A zcell. Another zcell.', isContent: 'Galvanískt zker hér. Eitt zker þar.' },
+        words
+      )
     ).toBeNull();
   });
 
