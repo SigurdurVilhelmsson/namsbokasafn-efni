@@ -114,11 +114,12 @@ describe('matchSegment, new word (§C244 M8)', () => {
 
   // §C244 M8c: the rule looks at the whole segment, not at the old word's neighbourhood, so a
   // segment holding the new word in one sentence and the old, unfixed word in another is skipped
-  // too (the M8 ruling accepts this). Route fixture p4 covers it; this names it.
+  // too (the M8 ruling accepts this). Route fixture p4 covers it; this names it. The unfixed
+  // sentence comes FIRST, so the earliest old word lies outside the new word.
   it('a new word in one sentence skips the segment even where another sentence keeps the old word', () => {
     expect(
       matchSegment(
-        { enContent: 'A zcell. Another zcell.', isContent: 'Galvanískt zker hér. Eitt zker þar.' },
+        { enContent: 'A zcell. Another zcell.', isContent: 'Eitt zker hér. Galvanískt zker þar.' },
         words
       )
     ).toBeNull();
