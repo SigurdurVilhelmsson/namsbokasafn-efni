@@ -503,7 +503,9 @@ test.describe('the book glossary page', () => {
     await expect(page.locator('#bg-worklist')).toBeHidden();
   });
 
-  test('a retry that finds nothing new re-enables the button and clears the status', async ({
+  // §C244 N8: this is the CHANGED-answer case (null → several-words); the unchanged case, the one
+  // that caught N1, is the next test.
+  test('a retry whose answer changes re-enables the button and clears the status', async ({
     page,
   }) => {
     const scene = await retryScene(page, null);
@@ -514,7 +516,8 @@ test.describe('the book glossary page', () => {
     await scene.retry();
     await expect(scene.inflections).toContainText(await scene.label('several-words'));
     await expect(scene.button).toBeEnabled();
-    await expect(page.locator('#bg-status')).not.toHaveText(scene.started);
+    // §C244 N9: empty, not merely "not the retry's text", which an error message would also pass.
+    await expect(page.locator('#bg-status')).toHaveText('');
   });
 
   test('a retry whose answer is the one already shown re-enables the button and clears the status', async ({
@@ -530,9 +533,132 @@ test.describe('the book glossary page', () => {
     await expect.poll(() => scene.reads).toBeGreaterThan(reads);
     await expect(scene.button).toBeEnabled();
     await expect(scene.inflections).toContainText(await scene.label('several-words'));
-    await expect(page.locator('#bg-status')).not.toHaveText(scene.started);
+    // §C244 N9: empty, not merely "not the retry's text".
+    await expect(page.locator('#bg-status')).toHaveText('');
+  });
+
+  // §C244 N7: a failed re-read used to end the chain silently, leaving the retry button disabled
+  // and the status line blank.
+  test('a retry whose re-read fails re-enables the button and says the read failed', async ({
+    page,
+  }) => {
+    const scene = await retryScene(page, 'several-words');
+    let failing = false;
+    let failed = 0;
+    // Registered last, so it runs first: while `failing`, the layer read answers 500.
+    await page.route('**/api/book-glossary/**', (route) => {
+      const request = route.request();
+      const { pathname } = new URL(request.url());
+      if (!failing || request.method() !== 'GET' || pathname !== LAYER) return route.fallback();
+      failed += 1;
+      return route.fulfill({
+        status: 500,
+        contentType: 'application/json',
+        body: JSON.stringify({ error: 'Villa á þjóni' }),
+      });
+    });
+
+    failing = true;
+    await scene.retry();
+    // Control: the re-read happened and failed.
+    await expect.poll(() => failed).toBeGreaterThan(0);
+    const loadError = String(await page.evaluate('UI.bookGlossary.loadError'));
+    await expect(page.locator('#bg-status')).toHaveText(loadError + 'Villa á þjóni');
+    await expect(scene.button).toBeEnabled();
+  });
+
+  // §C244 N2: the page opens with an entry whose lookup is still running (a write just before, or
+  // a book switch); the layer is read again until it settles, as after a write.
+  test('an entry pending when the page opens is read again until it settles', async ({ page }) => {
+    await loginAs(page, 'head-editor');
+    let reads = 0;
+    await stub(page, {
+      [LAYER]: () => {
+        reads += 1;
+        const inflections = reads === 1 ? { state: 'pending' } : { state: 'forms', count: 2 };
+        return layerAnswer({ entries: [entry({ inflections })] });
+      },
+    });
+    const line = page.locator('#bg-layer [data-concept-id="990001"] .bg-inflections');
+    const label = async (/** @type {object} */ state) =>
+      String(
+        await page.evaluate(
+          `UI.bookGlossary.inflections + bookGlossaryView.inflectionLabel(${JSON.stringify(state)})`
+        )
+      );
+
+    await page.goto(PAGE);
+    // Control: the first answer, pending, is the one shown.
+    await expect(line).toContainText(await label({ state: 'pending' }));
+    await expect(line).toContainText(await label({ state: 'forms', count: 2 }));
+  });
+
+  // §C244 M6: the new history row used to appear only when Saga was clicked again.
+  test('an open history panel is read again after a write', async ({ page }) => {
+    await loginAs(page, 'head-editor');
+    const rows = [historyRow(1, 'entry-add')];
+    await stub(page, {
+      [LAYER]: layerAnswer({ entries: [entry()] }),
+      [`${LAYER}/history`]: () => ({ history: [...rows].reverse() }),
+    });
+    await page.route('**/api/book-glossary/**', (route) => {
+      const request = route.request();
+      const { pathname } = new URL(request.url());
+      if (request.method() !== 'POST' || pathname !== `${LAYER}/entries/990001/change`) {
+        return route.fallback();
+      }
+      rows.push(historyRow(2, 'entry-change'));
+      return route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({
+          status: 'changed',
+          conceptId: 990001,
+          icelandicChanged: false,
+          changeId: 2,
+        }),
+      });
+    });
+    const actions = page.locator('#bg-layer [data-concept-id="990001"] > .bg-actions');
+
+    await page.goto(PAGE);
+    await actions.locator('[data-action="history"]').click();
+    // Control: the panel shows the history as it was.
+    await expect(page.locator('#bg-history [data-change-id="1"]')).toBeVisible();
+
+    await actions.locator('[data-action="change-entry"]').click();
+    await page.locator('#bg-forms').fill('salt bridge\nsalt bridges');
+    await page.locator('#bg-reason').fill('E2E: sagan lesin aftur');
+    await page.locator('#bg-submit').click();
+    // Control: the write was answered (the dialog closes only then).
+    await expect(page.locator('#bg-action-dialog')).toBeHidden();
+    await expect(page.locator('#bg-history [data-change-id="2"]')).toBeVisible();
   });
 });
+
+/**
+ * One history row as GET …/history answers it, for the seeded 'salt bridge' entry.
+ *
+ * @param {number} id
+ * @param {'entry-add'|'entry-change'} action
+ */
+function historyRow(id, action) {
+  return {
+    id,
+    at: `2026-11-26T1${id}:00:00Z`,
+    by: 'Test Head-editor',
+    action,
+    english: SALT,
+    before: action === 'entry-add' ? null : { english: [SALT], icelandic: SALT_IS },
+    after: {
+      english: action === 'entry-add' ? [SALT] : [SALT, 'salt bridges'],
+      icelandic: SALT_IS,
+    },
+    reason: 'prófun',
+    source: null,
+    worklist: false,
+  };
+}
 
 /**
  * Log in and open PAGE on one entry whose inflection state is exact-only with `scene.reason`, read
