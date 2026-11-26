@@ -113,6 +113,8 @@ It uses the same heartbeat inversion as the DB backup: `pipeline-output/.last-co
 
 **What makes "within 7 days" true:** the job runs (its heartbeat: `/api/health`'s `checks.research_db` reads `backup-stale` otherwise, and `./scripts/deploy.sh` names `research_db` among the not-ok checks without its reason — `curl -s http://localhost:3000/api/health` shows the reason); nothing else copies the file (G-1a); the bucket keeps no deleted versions (G-1b). Expect `backup-stale` from a deploy until the job's first full run.
 
+**Who may read it.** Once a consent text is approved, no Claude Code session reads `research.db`, the `research_*` tables, named editing rows, or the access logs and service journal, and that includes a restored or downloaded copy. The rule and what it covers → CLAUDE.md § Purpose, *"No Claude Code session reads the research database, named editing rows or logs that name editors"*. A human operator runs those reads and passes on counts only.
+
 ### Restore runbook (research file)
 
 1. Stop the service (`research-restore.js` refuses while it runs).
