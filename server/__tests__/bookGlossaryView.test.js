@@ -276,3 +276,23 @@ describe('replaceCandidates', () => {
     });
   });
 });
+
+// §C244 T4b: a code the label maps do not know (a new lookup result, action or empty-list reason
+// that reached the server before the page) shows as itself, never as the word "undefined".
+describe('a code with no label', () => {
+  it('inflectionLabel shows an unknown lookup result as its code', () => {
+    expect(view.inflectionLabel({ state: 'none', reason: 'nytt-svar' })).toBe(
+      'aðeins rithátturinn — nytt-svar'
+    );
+  });
+
+  it('actionLabel shows an unknown action as its code', () => {
+    expect(view.actionLabel('ny-adgerd')).toBe('ny-adgerd');
+  });
+
+  it('worklistSummary shows an unknown empty-list reason as its code', () => {
+    expect(view.worklistSummary({ kind: null, reason: 'ny-astaeda', units: 0, total: 0 })).toBe(
+      'ny-astaeda'
+    );
+  });
+});

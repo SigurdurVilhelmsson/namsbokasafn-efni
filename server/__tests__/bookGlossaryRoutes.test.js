@@ -1312,4 +1312,75 @@ describe('the worklist', () => {
     });
     expect(exclusionId).toBeDefined();
   });
+
+  // §C244 N4: the warning carries one error, so it names the unit that error came from.
+  it('the unreadable-units warning names the unit its error came from', async () => {
+    const warned = vi.spyOn(logger, 'warn').mockImplementation(() => {});
+    await list();
+    const call = warned.mock.calls.find(
+      ([, message]) => message === 'book glossary worklist: units could not be read'
+    );
+    expect(call?.[0].unit).toBe('ch03/m00003');
+  });
+
+  // §C244 M10: a fault while matching one unit's segments makes that unit unreadable, like a fault
+  // while reading it, instead of answering 500 for the whole list.
+  it('a unit whose segments fail to match is named unreadable, without its partial hits', async () => {
+    const editor = require('../services/segmentEditorService');
+    const real = editor.buildEffectiveSegments;
+    vi.spyOn(editor, 'buildEffectiveSegments').mockImplementation((book, chapter, moduleId) => {
+      if (moduleId !== 'm00002') return real(book, chapter, moduleId);
+      const listed = {
+        segmentId: 'm00002:para:q1',
+        enContent: 'A zcell.',
+        isContent: 'Eitt zker.',
+      };
+      const broken = {
+        segmentId: 'm00002:para:q2',
+        get enContent() {
+          throw new Error('broken segment');
+        },
+        isContent: '',
+      };
+      return [listed, broken];
+    });
+    vi.spyOn(logger, 'warn').mockImplementation(() => {});
+    const { status, body } = await list();
+    expect({
+      status,
+      unreadable: body?.unreadable,
+      chapters: body?.chapters?.map((c) => c.chapter),
+    }).toEqual({ status: 200, unreadable: ['ch02/m00002', 'ch03/m00003'], chapters: [1] });
+  });
+
+  // §C244 M12/T2a: only the layer writes these rows, but a malformed one must not make the history
+  // flag and the worklist route disagree. The history parses it tolerantly, so the route must too.
+  it('a malformed history row gets the same answer from the history flag and the worklist', async () => {
+    const bad = Number(
+      db
+        .prepare(
+          "INSERT INTO book_glossary_change (book_id, at, by, action, english, before_json, after_json, reason, source) VALUES (?, datetime('now'), 't', 'entry-add', 'zcell', NULL, '{', 'r', '')"
+        )
+        .run(bookId).lastInsertRowid
+    );
+    const history = await get(`/api/book-glossary/${BOOK}/history?english=zcell`);
+    const row = history.body.history.find((h) => h.id === bad);
+    const route = await list(bad);
+    expect({ flag: row?.worklist, status: route.status, kind: route.body?.kind }).toEqual({
+      flag: false,
+      status: 200,
+      kind: null,
+    });
+  });
+
+  // §C244 T3b: a fault while building the history answers the router's JSON 500, like every other
+  // read route, not Express's default HTML error page.
+  it('GET /history answers a JSON 500 when the read fails', async () => {
+    vi.spyOn(layer, 'historyFor').mockImplementation(() => {
+      throw new Error('history read failed');
+    });
+    vi.spyOn(logger, 'error').mockImplementation(() => {});
+    const { status, body } = await get(`/api/book-glossary/${BOOK}/history?english=zcell`);
+    expect({ status, error: body?.error }).toEqual({ status: 500, error: 'Villa á þjóni' });
+  });
 });

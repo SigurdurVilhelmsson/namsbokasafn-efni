@@ -168,6 +168,20 @@ describe('worklistSpec', () => {
     expect(specOf(changeId)).toMatchObject({ kind: null, reason: 'nothing-to-search' });
   });
 
+  // §C244 M12: readChange hands back a side whose JSON did not parse as its raw string. A change
+  // row with a good `before` and a broken `after` used to reach `[...after.english]` and throw.
+  it.each([
+    ['entry-change', { english: ['zcell'], icelandic: 'zker' }, '{'],
+    ['entry-change', '{', { english: ['zcell'], icelandic: 'zrafhlada' }],
+    ['entry-add', null, '{'],
+    ['entry-remove', '{', null],
+  ])('a %s row with a side that did not parse has no worklist', (action, before, after) => {
+    expect(worklistSpec(db, BOOK, { action, before, after })).toMatchObject({
+      kind: null,
+      reason: 'not-applicable',
+    });
+  });
+
   it('exclude and unexclude rows have no worklist', () => {
     const old = concept('chemistry', 'zcell', 'zker');
     const ex = addExclusion(db, { ...base, english: 'zcell', conceptId: old });

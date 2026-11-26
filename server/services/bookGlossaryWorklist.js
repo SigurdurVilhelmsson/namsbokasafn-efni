@@ -52,39 +52,50 @@ function buildWorklist(db, bookSlug, changeId) {
   const units = unitsOf(bookSlug);
   const unreadable = [];
   let firstError = null;
+  let firstErrorUnit = null;
   const byChapter = new Map();
   let total = 0;
   for (const u of units) {
-    let segments;
+    // Reading AND matching one unit sit in one try, and its hits are kept only if the whole unit
+    // finished: a fault in either makes the unit unreadable, never the whole list a 500 (§C244 M10).
+    let items;
     try {
-      segments = segmentEditorService.buildEffectiveSegments(bookSlug, u.chapter, u.moduleId);
+      items = segmentEditorService
+        .buildEffectiveSegments(bookSlug, u.chapter, u.moduleId)
+        .flatMap((s) => {
+          const hit = matchSegment(
+            { enContent: s.enContent, isContent: s.isContent },
+            { english: spec.english, oldForms: spec.oldForms, newIcelandic: spec.newIcelandic }
+          );
+          if (!hit) return [];
+          return [
+            {
+              moduleId: u.moduleId,
+              segmentId: s.segmentId,
+              english: hit.english,
+              excerpt: excerptOf(s.isContent, hit.index, hit.length),
+              link: linkFor(bookSlug, u.chapter, u.moduleId, s.segmentId),
+            },
+          ];
+        });
     } catch (err) {
       unreadable.push(u.unit);
-      if (firstError === null) firstError = err;
+      if (firstError === null) {
+        firstError = err;
+        firstErrorUnit = u.unit;
+      }
       continue;
     }
-    for (const s of segments) {
-      const hit = matchSegment(
-        { enContent: s.enContent, isContent: s.isContent },
-        { english: spec.english, oldForms: spec.oldForms, newIcelandic: spec.newIcelandic }
-      );
-      if (!hit) continue;
-      if (!byChapter.has(u.chapter)) byChapter.set(u.chapter, []);
-      byChapter.get(u.chapter).push({
-        moduleId: u.moduleId,
-        segmentId: s.segmentId,
-        english: hit.english,
-        excerpt: excerptOf(s.isContent, hit.index, hit.length),
-        link: linkFor(bookSlug, u.chapter, u.moduleId, s.segmentId),
-      });
-      total += 1;
-    }
+    if (items.length === 0) continue;
+    if (!byChapter.has(u.chapter)) byChapter.set(u.chapter, []);
+    byChapter.get(u.chapter).push(...items);
+    total += items.length;
   }
   // Once per request, not per unit: a database fault would otherwise log once for every unit.
-  // The page names the units; the log keeps the cause.
+  // The page names the units; the log keeps the cause and the unit it came from (§C244 N4).
   if (unreadable.length > 0) {
     log.warn(
-      { err: firstError, book: bookSlug, units: unreadable.length },
+      { err: firstError, unit: firstErrorUnit, book: bookSlug, units: unreadable.length },
       'book glossary worklist: units could not be read'
     );
   }

@@ -251,13 +251,17 @@ router.get('/:book/history', ...guard, (req, res) => {
   const english = cleanEnglish(req.query.english);
   if (!english) return invalid(res, 'english');
   const db = getDb();
-  const history = layer.historyFor(db, req.params.book, english).map((h) => ({
-    ...h,
-    by: layer.displayNameFor(db, h.by),
-    // Plan ruling Q6: the page offers the worklist button exactly where the route answers with a list.
-    worklist: worklistSpec(db, req.params.book, h).kind !== null,
-  }));
-  res.json({ history });
+  try {
+    const history = layer.historyFor(db, req.params.book, english).map((h) => ({
+      ...h,
+      by: layer.displayNameFor(db, h.by),
+      // Plan ruling Q6: the page offers the worklist button exactly where the route answers with a list.
+      worklist: worklistSpec(db, req.params.book, h).kind !== null,
+    }));
+    return res.json({ history });
+  } catch (err) {
+    return serverError(req, res, err);
+  }
 });
 
 router.get('/:book/worklist', ...guard, (req, res) => {
