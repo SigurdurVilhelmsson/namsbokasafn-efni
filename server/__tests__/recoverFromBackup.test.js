@@ -169,9 +169,52 @@ describe('main', () => {
     expect(code).toBe(0);
     expect(out.text.match(/WORD-A/g)).toHaveLength(1);
     expect(out.text.match(/WORD-B/g)).toHaveLength(1);
-    expect(out.text).toContain('sessions.2027-01-01-000000.db.gz');
-    expect(out.text).toContain('sessions.2027-01-02-000000.db.gz');
-    expect(out.text).toContain('sessions.2027-01-03-000000.db.gz');
+    const entries = out.text.split('\n').filter((l) => l.startsWith('  first '));
+    expect(entries).toHaveLength(2);
+    const c = (d) => `sessions.2027-01-0${d}-000000.db.gz`;
+    const [a, b] = out.text.split(/\n(?=edit )/);
+    expect(a).toContain('WORD-A');
+    expect(a).toContain(`first ${c(1)}  last ${c(1)}`);
+    expect(b).toContain('WORD-B');
+    expect(b).toContain(`first ${c(2)}  last ${c(3)}`);
+  });
+
+  it('--file reads a local plain copy and prints the row', () => {
+    const f = path.join(tmp, 'plain.db');
+    makeCopy(f, { edits: [{ id: 1, text: 'FILE-WORD' }] });
+    const out = sink();
+    const code = main(
+      ['segment', '--book', 'b', '--module', 'm1', '--segment', 's1', '--file', f],
+      { out, err: sink(), env }
+    );
+    expect(code).toBe(0);
+    expect(out.text).toContain('FILE-WORD');
+  });
+
+  it('a corrupt --file exits 1, leaves no temp dir and its bytes unchanged', () => {
+    const f = path.join(tmp, 'corrupt.db');
+    fs.writeFileSync(f, 'this is not a database');
+    const before = recoverDirs();
+    const code = main(
+      ['segment', '--book', 'b', '--module', 'm1', '--segment', 's1', '--file', f],
+      { out: sink(), err: sink(), env }
+    );
+    expect(code).toBe(1);
+    expect(recoverDirs()).toEqual(before);
+    expect(fs.readFileSync(f, 'utf8')).toBe('this is not a database');
+  });
+
+  it('--at without a timezone is UTC: it picks the same copy as with Z', () => {
+    putCopy('2027-01-02-000000', { versions: [{ seg: 's1', version: 1, text: 'AT-TWO' }] });
+    putCopy('2027-01-02-040000', { versions: [{ seg: 's1', version: 1, text: 'AT-FOUR' }] });
+    const run = (at) => {
+      const out = sink();
+      main(['module', '--book', 'b', '--module', 'm1', '--at', at], { out, err: sink(), env });
+      return out.text;
+    };
+    const bare = run('2027-01-02T03:04:05');
+    expect(bare).toBe(run('2027-01-02T03:04:05Z'));
+    expect(bare).toContain('AT-TWO');
   });
 
   it('module mode prints every segment of the module from the copy at the time', () => {

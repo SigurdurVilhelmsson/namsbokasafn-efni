@@ -29,6 +29,7 @@ const COPY_RE = /^sessions\.(\d{4})-(\d{2})-(\d{2})-(\d{2})(\d{2})(\d{2})\.db(\.
 const USAGE = `usage:
   recover-from-backup segment --book B --module M --segment S (--from YYYY-MM-DD --to YYYY-MM-DD [--every] | --file F) [--as-of ISO] [--remote R]
   recover-from-backup module --book B --module M (--at ISO | --file F) [--as-of ISO] [--remote R]
+ISO times (--at, --as-of) without Z or +HH:MM are read as UTC, like the copy names.
 `;
 
 /** @param {string} name @returns {number|null} UTC ms of the copy's stamp */
@@ -145,6 +146,9 @@ function parseArgs(argv) {
   return opts;
 }
 
+/** An ISO time with no timezone suffix is UTC, like the copy stamps (Date.parse would say local). */
+const utcIso = (s) => (/T\d{2}:\d{2}(:\d{2}(\.\d+)?)?$/.test(s || '') ? `${s}Z` : s);
+
 const parseDay = (s) => (/^\d{4}-\d{2}-\d{2}$/.test(s || '') ? Date.parse(`${s}T00:00:00Z`) : NaN);
 
 function realOrResolved(p) {
@@ -191,14 +195,14 @@ function main(argv, { out, err, env }) {
     if (Number.isNaN(fromMs) || Number.isNaN(toMs))
       return usage('--from and --to must be YYYY-MM-DD');
   } else {
-    atMs = Date.parse(o.at);
+    atMs = Date.parse(utcIso(o.at));
     if (Number.isNaN(atMs)) return usage('--at must be an ISO time');
   }
   const remote = o.remote || env.LOCKED_BACKUP_REMOTE;
   if (!o.file && !remote) return usage('no remote: pass --remote or set LOCKED_BACKUP_REMOTE');
-  if (o['as-of'] && Number.isNaN(Date.parse(o['as-of'])))
-    return usage('--as-of must be an ISO time');
-  const asOf = o['as-of'] ? ['--s3-version-at', o['as-of']] : [];
+  const asOfIso = o['as-of'] ? utcIso(o['as-of']) : null;
+  if (asOfIso && Number.isNaN(Date.parse(asOfIso))) return usage('--as-of must be an ISO time');
+  const asOf = asOfIso ? ['--s3-version-at', asOfIso] : [];
 
   const read = (p) =>
     o.mode === 'segment'
@@ -234,6 +238,7 @@ function main(argv, { out, err, env }) {
           env,
           stdio: 'ignore',
         });
+        fs.chmodSync(fetched, 0o600);
         let dbFile = fetched;
         if (name.endsWith('.gz')) {
           dbFile = fetched.slice(0, -3);
