@@ -461,17 +461,21 @@ To recover `sessions.db` onto a fresh box (the Paris remote; London's `secret:` 
 4. Stop the service. Restore the **newest** copy into place:
 
    ```bash
-   T=$(mktemp -d)
+   T="$(mktemp -d -p pipeline-output)"            # on the same filesystem as the live file (/tmp may be a small RAM disk)
    NAME=$(rclone lsf --files-only locked-secret: | grep '^sessions\.' | sort -r | head -1)
-   echo "$NAME"                                   # check it is the copy you expect
-   rclone copyto "locked-secret:$NAME" "$T/$NAME"   # the crypt remote decrypts on read
-   gunzip -c "$T/$NAME" > "$T/sessions.db"          # if this fails, STOP: nothing has been touched yet
-   rm -f pipeline-output/sessions.db-wal pipeline-output/sessions.db-shm   # stale side files of the lost file
-   mv "$T/sessions.db" pipeline-output/sessions.db
+   echo "$NAME"                                   # check it is the copy you expect, then run the next command
+   rclone copyto "locked-secret:$NAME" "$T/$NAME" \
+     && gunzip -c "$T/$NAME" > "$T/sessions.db" \
+     && rm -f pipeline-output/sessions.db-wal pipeline-output/sessions.db-shm \
+     && mv "$T/sessions.db" pipeline-output/sessions.db \
+     && echo "RESTORED" \
+     || echo "FAILED: stop. If the download or unzip failed, the live file and its side files are untouched."
    rm -rf "$T"
    ```
 
-   `lsf` lists current copies only. If the newest copy you expect is not there (a delete marker may hide it), or the file will not unzip, **stop** before the `mv`: reading an older or hidden copy is for the recovery tool, and putting an older whole copy in place is the owner's decision (below).
+   Run the block from the repository root. The chain is mechanical: the side files are removed and the file moved only if the download **and** the unzip both succeeded (the crypt remote decrypts on read). Read the last line: `RESTORED`, or `FAILED`.
+
+   `lsf` lists current copies only. If the newest copy you expect is not there (a delete marker may hide it), or the block prints `FAILED`, **stop**: reading an older or hidden copy is for the recovery tool, and putting an older whole copy in place is the owner's decision (below).
 5. Restart the server; `/api/health` should return `"ok"` once the next backup writes a fresh heartbeat.
 
 `verify-db-backup.sh` fails loud on every bad outcome — no off-box backup found, download error, `PRAGMA integrity_check` non-ok (openable-but-corrupt *and* structurally corrupt), or a missing core table — each prints a grep-able `RESTORE VERIFY: FAIL (...)` line and exits non-zero. Wire its monthly run into monitoring so a silently-rotting backup is caught before you need it.
