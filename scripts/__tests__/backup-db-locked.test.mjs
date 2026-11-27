@@ -17,6 +17,8 @@ const freshMigratedDb = require(path.join(REPO, 'server', '__tests__', 'helpers'
 
 const FAKE_RCLONE = `#!/usr/bin/env bash
 printf '%s\\n' "$*" >> "$FAKE_LOG"
+# Every argument of every call, separated by US (0x1f), one call per line: lets a test pin an argument list exactly
+[ -z "\${FAKE_ARGV_LOG:-}" ] || { printf '%s\\037' "$@"; printf '\\n'; } >> "$FAKE_ARGV_LOG"
 [ "\${FAKE_FAIL:-}" = "$1" ] && exit 1
 case "$1" in
   version) echo "rclone v1.75.0" ;;
@@ -60,9 +62,14 @@ function setup(listing = recent(1)) {
   const lsjson = path.join(dir, 'lsjson.json');
   writeFileSync(lsjson, JSON.stringify(listing));
   writeFileSync(path.join(dir, 'rclone.conf'), '');
-  return { dir, bin, store, dbPath, lsjson, log: path.join(dir, 'rclone.log'), n: 0 };
+  return { dir, bin, store, dbPath, lsjson, log: path.join(dir, 'rclone.log'), argvLog: path.join(dir, 'argv.log'), n: 0 };
 }
 const logLines = (s) => (existsSync(s.log) ? readFileSync(s.log, 'utf8').split('\n').filter(Boolean) : []);
+/** Every call's exact argument list, from the fake's US-separated log. */
+const argvCalls = (s) =>
+  existsSync(s.argvLog)
+    ? readFileSync(s.argvLog, 'utf8').split('\n').filter(Boolean).map((l) => l.split('\x1f').slice(0, -1))
+    : [];
 
 /** Run the script into a fresh backups directory (two runs in one second would collide on the copy name). */
 function run(s, env = {}) {
@@ -78,6 +85,7 @@ function run(s, env = {}) {
       RETENTION_NODE: process.execPath,
       RCLONE_CONFIG: path.join(s.dir, 'rclone.conf'),
       FAKE_LOG: s.log,
+      FAKE_ARGV_LOG: s.argvLog,
       FAKE_LSJSON: s.lsjson,
       FAKE_STORE: s.store,
       ...env,
@@ -145,6 +153,23 @@ describe('backup-db.sh and the locked remote', () => {
     expect(status.uploaded_seen).toBe(true);
   });
 
+  it('the locked upload is exactly `copyto <tmp>/<name>.gz locked-secret:<name>.gz`, no other argument', () => {
+    const s = setup();
+    const t = path.join(s.dir, 'tmp');
+    mkdirSync(t);
+    const r = run(s, { ...PARIS, TMPDIR: t });
+    expect(r.status).toBe(0);
+    const local = readdirSync(r.backups).filter((f) => /^sessions\.\d{4}-\d{2}-\d{2}-\d{6}\.db$/.test(f));
+    expect(local).toHaveLength(1);
+    const name = `${local[0]}.gz`;
+    const calls = argvCalls(s).filter((a) => a[0] === 'copyto');
+    expect(calls).toHaveLength(1);
+    const [cmd, src, dest, ...more] = calls[0];
+    expect([cmd, dest, more]).toEqual(['copyto', `locked-secret:${name}`, []]);
+    expect(path.basename(src)).toBe(name);
+    expect(path.dirname(path.dirname(src))).toBe(t); // inside the private mktemp -d directory
+  });
+
   it('pauses the locked upload while a retention step is due', () => {
     const s = setup();
     const wrap = path.join(s.dir, 'node-wrap.sh');
@@ -190,6 +215,24 @@ describe('backup-db.sh and the locked remote', () => {
     expect(deletes(s).join('\n')).not.toContain('young');
   });
 
+  it('a listing with no fresh copy (newest 2 h old: a skewed clock) deletes nothing; status no-fresh-copy, exit 8', () => {
+    const s = setup([entry('sessions.x.db.gz-v1', 2 / 24), entry('old-v2026', 357)]);
+    const r = run(s, PARIS);
+    expect(r.status).toBe(8);
+    expect(copytos(s)).toHaveLength(1);
+    expect(deletes(s)).toHaveLength(0);
+    expect(r.stderr).toContain('no fresh copy in the listing; refusing to delete');
+    const status = JSON.parse(readFileSync(path.join(r.backups, '.offbox-locked-status.json'), 'utf8'));
+    expect(status.reasons).toEqual(['no-fresh-copy']);
+  });
+
+  it('control: the same old copy beside a fresh one is deleted', () => {
+    const s = setup([entry('sessions.x.db.gz-v1', 0.2 / 24), entry('old-v2026', 357)]);
+    const r = run(s, PARIS);
+    expect(r.status).toBe(0);
+    expect(deletes(s)).toEqual(['deletefile --s3-versions locked-s3:bkt/old-v2026']);
+  });
+
   it('an unseen upload makes the status not ok and exits 8, heartbeat still written', () => {
     const s = setup();
     const r = run(s, { ...PARIS, FAKE_DROP: '1' });
@@ -213,9 +256,17 @@ describe('backup-db.sh and the locked remote', () => {
       'a locked remote without a trailing : or /': { LOCKED_BACKUP_REMOTE: 'locked-secret', LOCKED_BACKUP_S3: 'locked-s3:bkt/' },
       'a missing LOCKED_BACKUP_S3': { LOCKED_BACKUP_REMOTE: 'locked-secret:' },
       'a LOCKED_BACKUP_S3 without a trailing : or /': { LOCKED_BACKUP_REMOTE: 'locked-secret:', LOCKED_BACKUP_S3: 'locked-s3:bkt' },
+      // a real s3 remote, so only the locked* prefix rule can refuse it, not the type check
+      'a LOCKED_BACKUP_S3 not named locked*': {
+        LOCKED_BACKUP_REMOTE: 'locked-secret:',
+        LOCKED_BACKUP_S3: 'linode-s3:bkt/',
+        FAKE_REMOTES: 'locked-secret:  crypt\\nlinode-s3:  s3\\n',
+      },
       'BACKUP_REMOTE naming a locked remote': { ...PARIS, BACKUP_REMOTE: 'locked-other:' },
       'BACKUP_REMOTE equal to the locked remote': { ...PARIS, BACKUP_REMOTE: 'locked-secret:' },
       'BACKUP_REMOTE locked with no locked remote set': { BACKUP_REMOTE: 'locked-secret:' },
+      // a typo in the Paris variable that makes it London's: London-protecting, so the whole run stops
+      'BACKUP_REMOTE equal to a mistyped locked remote': { BACKUP_REMOTE: 'secret:', LOCKED_BACKUP_REMOTE: 'secret:', LOCKED_BACKUP_S3: 'locked-s3:bkt/' },
     };
     for (const [name, env] of Object.entries(cases)) {
       it(name, () => {
@@ -225,6 +276,48 @@ describe('backup-db.sh and the locked remote', () => {
         expect(r.stderr).toContain('ERROR');
         expect(copytos(s)).toHaveLength(0);
         expect(deletes(s)).toHaveLength(0);
+      });
+    }
+  });
+
+  it("names the S3 path's locked prefix rule when it refuses one", () => {
+    const s = setup();
+    const r = run(s, { LOCKED_BACKUP_REMOTE: 'locked-secret:', LOCKED_BACKUP_S3: 'linode-s3:bkt/', FAKE_REMOTES: 'locked-secret:  crypt\\nlinode-s3:  s3\\n' });
+    expect(r.status).toBe(5);
+    expect(r.stderr).toContain("LOCKED_BACKUP_S3 must begin with 'locked'");
+  });
+
+  // R12: a Paris-only misconfiguration skips Paris with exit 5, and London runs as usual. The heartbeat is Paris's
+  // whenever LOCKED_BACKUP_REMOTE is set, so London writes none and checks.offbox_backup goes stale: visible.
+  describe('a Paris-only misconfiguration skips Paris and London still runs', () => {
+    const cases = {
+      'a locked remote not named locked*': { LOCKED_BACKUP_REMOTE: 'lcoked-secret:', LOCKED_BACKUP_S3: 'locked-s3:bkt/' },
+      'a locked remote without a trailing : or /': { LOCKED_BACKUP_REMOTE: 'locked-secret', LOCKED_BACKUP_S3: 'locked-s3:bkt/' },
+      'a missing LOCKED_BACKUP_S3': { LOCKED_BACKUP_REMOTE: 'locked-secret:' },
+      'a LOCKED_BACKUP_S3 without a trailing : or /': { LOCKED_BACKUP_REMOTE: 'locked-secret:', LOCKED_BACKUP_S3: 'locked-s3:bkt' },
+      'a LOCKED_BACKUP_S3 not named locked*': {
+        LOCKED_BACKUP_REMOTE: 'locked-secret:',
+        LOCKED_BACKUP_S3: 'linode-s3:bkt/',
+        FAKE_REMOTES: 'locked-secret:  crypt\\nlinode-s3:  s3\\nsecret:  crypt\\n',
+      },
+      'the same remote for the crypt and the S3 path': { LOCKED_BACKUP_REMOTE: 'locked-s3:', LOCKED_BACKUP_S3: 'locked-s3:bkt/' },
+      'a swapped pair (refused by type)': { LOCKED_BACKUP_REMOTE: 'locked-s3:bkt/', LOCKED_BACKUP_S3: 'locked-secret:' },
+      'a crypt remote whose type is s3': { ...PARIS, FAKE_REMOTES: 'locked-secret:  s3\\nlocked-s3:  s3\\nsecret:  crypt\\n' },
+      'remotes that cannot be listed': { ...PARIS, FAKE_FAIL: 'listremotes' },
+    };
+    for (const [name, env] of Object.entries(cases)) {
+      it(name, () => {
+        const s = setup([...recent(1), entry('old-v2026', 400)]);
+        const r = run(s, { ...env, BACKUP_REMOTE: 'secret:' });
+        expect(r.status).toBe(5);
+        expect(r.stderr).toContain('ERROR');
+        const ups = copytos(s);
+        expect(ups).toHaveLength(1);
+        expect(ups[0]).toMatch(/ secret:sessions\.[^ ]+\.db$/); // London's upload, and only London's
+        expect(deletes(s).filter((l) => l.includes('locked'))).toHaveLength(0);
+        expect(logLines(s).some((l) => l.startsWith('lsjson'))).toBe(false); // the Paris block never ran
+        expect(existsSync(path.join(r.backups, '.last-offbox-backup'))).toBe(false);
+        expect(existsSync(path.join(r.backups, '.offbox-locked-status.json'))).toBe(false);
       });
     }
   });

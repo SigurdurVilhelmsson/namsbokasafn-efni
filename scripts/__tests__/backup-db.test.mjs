@@ -213,6 +213,31 @@ describe('backup-db.sh local copy', () => {
     expect(readFileSync(path.join(backups, copies[0])).includes(Buffer.from(TOKEN))).toBe(false);
     rmSync(work, { recursive: true, force: true });
   });
+
+  it('a failed local copy exits 1 and names the remedy for a driver that cannot load', () => {
+    const work = mkdtempSync(path.join(tmpdir(), 'bkup-fail-'));
+    try {
+      const db = path.join(work, 'sessions.db');
+      makeTestDb(db);
+      const failing = path.join(work, 'node-fails.sh');
+      writeFileSync(failing, '#!/bin/sh\nexit 1\n');
+      chmodSync(failing, 0o755);
+      let error;
+      try {
+        execFileSync('bash', [SCRIPT, path.join(work, 'backups')], {
+          env: { ...process.env, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath, BACKUP_NODE: failing, BACKUP_REMOTE: '' },
+          encoding: 'utf8',
+          stdio: 'pipe',
+        });
+      } catch (e) {
+        error = e;
+      }
+      expect(error?.status).toBe(1);
+      expect(error.stderr).toContain('ERROR: local copy failed (if better-sqlite3 cannot load, run: cd server && npm ci)');
+    } finally {
+      rmSync(work, { recursive: true, force: true });
+    }
+  });
 });
 
 // A backup that anything opens in WAL mode (an inspection, a restore test) gains

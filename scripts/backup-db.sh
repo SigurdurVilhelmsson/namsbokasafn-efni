@@ -16,7 +16,8 @@
 #   2. Keeps the most recent 30 backups (prunes older ones, with their
 #      -shm/-wal side files, and sweeps side files whose backup is gone)
 #   3. Uploads to the off-box remotes (see "Off-box upload" below: London BACKUP_REMOTE, locked Paris
-#      LOCKED_BACKUP_REMOTE) and exits 3-8 on the failures documented there
+#      LOCKED_BACKUP_REMOTE) and exits 3-8 on the failures documented there; a Paris-only misconfiguration skips
+#      Paris (exit 5) and London still runs
 #   4. Exits with Paris's code if non-zero, else London's, else 0
 #
 
@@ -65,7 +66,7 @@ if [ -z "$BACKUP_NODE" ]; then
   exit 1
 fi
 BACKUP_FILE="$("$BACKUP_NODE" "${PROJECT_ROOT}/server/scripts/editorial-backup.js" copy "$DB_PATH" "$BACKUP_DIR")" || {
-  echo "ERROR: local copy failed" >&2
+  echo "ERROR: local copy failed (if better-sqlite3 cannot load, run: cd server && npm ci)" >&2
   exit 1
 }
 
@@ -107,29 +108,21 @@ fi
 #                         that crypt remote, for version listings and deletes. G1.20 spec §4.2, §4.3, §4.7.
 # Exit codes: 3 rclone missing, 4 an upload failed, 5 a malformed or forbidden remote setting, 6 paused (an editorial
 # retention step is due, nothing sent to Paris), 7 rate guard refused or the pre-upload listing failed, 8 the status
-# check is not ok. Paris's codes outrank London's. (5 also covers a Paris pair whose remotes are not crypt + s3.)
+# check is not ok. Paris's codes outrank London's.
+# Two kinds of 5 (G1.20 final review, ruling R12):
+#   - a London setting that could point London's count-based prune at the locked bucket (or a malformed London
+#     path) stops the WHOLE run before anything is uploaded or deleted;
+#   - a Paris-only misconfiguration (a Paris variable's name, separator or rclone type) skips Paris alone. London
+#     runs as usual and the run exits 5. With LOCKED_BACKUP_REMOTE set the heartbeat is Paris's, so London writes
+#     none and checks.offbox_backup goes stale: the skip is visible.
 REMOTE_KEEP="${BACKUP_REMOTE_KEEP:-30}"
 HEARTBEAT="${BACKUP_DIR}/.last-offbox-backup"
 LOCKED_STATUS="${BACKUP_DIR}/.offbox-locked-status.json"
 LONDON_RC=0
 LOCKED_RC=0
+PARIS_OK=no   # yes once every Paris guard (1b) has passed; LOCKED_BACKUP_REMOTE itself is never unset
 
-# 1. Guards, before anything is uploaded or deleted.
-if [ -n "${LOCKED_BACKUP_REMOTE:-}" ]; then
-  case "$LOCKED_BACKUP_REMOTE" in
-    locked*:  | locked*/) ;;
-    *) echo "ERROR: LOCKED_BACKUP_REMOTE must begin with 'locked' and end in ':' or '/' (got '$LOCKED_BACKUP_REMOTE')" >&2; exit 5 ;;
-  esac
-  case "${LOCKED_BACKUP_S3:-}" in
-    *: | */) ;;
-    *) echo "ERROR: LOCKED_BACKUP_S3 must be set and end in ':' or '/' when LOCKED_BACKUP_REMOTE is set (got '${LOCKED_BACKUP_S3:-}')" >&2; exit 5 ;;
-  esac
-  # The two must at least be different remotes. What stops the S3 remote being pasted into the crypt variable (an
-  # UNENCRYPTED upload into the COMPLIANCE bucket) is the type check below (1b), not this name comparison.
-  if [ "${LOCKED_BACKUP_REMOTE%%:*}" = "${LOCKED_BACKUP_S3%%:*}" ]; then
-    echo "ERROR: LOCKED_BACKUP_REMOTE and LOCKED_BACKUP_S3 must name different remotes (crypt vs raw S3)" >&2; exit 5
-  fi
-fi
+# 1a. London-protecting guards: exit 5 before anything is uploaded or deleted.
 if [ -n "${BACKUP_REMOTE:-}" ]; then
   case "$BACKUP_REMOTE" in
     locked*) echo "ERROR: BACKUP_REMOTE must not begin with 'locked' (got '$BACKUP_REMOTE'): the count-based prune must never reach the locked remote" >&2; exit 5 ;;
@@ -150,21 +143,47 @@ if ! command -v rclone >/dev/null 2>&1; then
   echo "ERROR: a backup remote is set but rclone not installed" >&2
   exit 3
 fi
-# 1b. A swapped or mistyped pair is refused by each remote's TYPE (rclone's own config), before anything is
-# uploaded or deleted: the crypt remote must be crypt and the S3 path's remote must be s3. The names alone cannot
-# tell (a plain remote named locked-* would pass the prefix test), and the S3 remote in the crypt variable would
-# upload UNENCRYPTED into a bucket where nothing can be removed.
+
+# 1b. Paris guards. Each failure skips Paris only (LOCKED_RC=5); London still runs (R12). Checked in order; the
+# first failure stops the checks.
+paris_refuse() {
+  echo "ERROR: $1 (Paris skipped; London continues)" >&2
+  LOCKED_RC=5
+}
 if [ -n "${LOCKED_BACKUP_REMOTE:-}" ]; then
-  if ! REMOTES_LONG="$(rclone listremotes --long)"; then
-    echo "ERROR: could not read rclone's remotes to check the types of LOCKED_BACKUP_REMOTE and LOCKED_BACKUP_S3" >&2; exit 5
-  fi
-  remote_type() { awk -v n="$1:" '$1 == n { print $2; exit }' <<< "$REMOTES_LONG"; }
-  if [ "$(remote_type "${LOCKED_BACKUP_REMOTE%%:*}")" != "crypt" ]; then
-    echo "ERROR: LOCKED_BACKUP_REMOTE '${LOCKED_BACKUP_REMOTE}' must be an rclone remote of type crypt" >&2; exit 5
-  fi
-  if [ "$(remote_type "${LOCKED_BACKUP_S3%%:*}")" != "s3" ]; then
-    echo "ERROR: LOCKED_BACKUP_S3 '${LOCKED_BACKUP_S3}' must be an rclone remote of type s3" >&2; exit 5
-  fi
+  while :; do  # runs once; `break` ends the checks
+    case "$LOCKED_BACKUP_REMOTE" in
+      locked*: | locked*/) ;;
+      *) paris_refuse "LOCKED_BACKUP_REMOTE must begin with 'locked' and end in ':' or '/' (got '$LOCKED_BACKUP_REMOTE')"; break ;;
+    esac
+    # The S3 path is where the job deletes, so it carries the locked* prefix too: a bucket reached by another name is
+    # not the one the upload went to. (The fresh-copy rule in editorialBackupPolicy.js ties the listing to the upload.)
+    case "${LOCKED_BACKUP_S3:-}" in
+      locked*: | locked*/) ;;
+      *) paris_refuse "LOCKED_BACKUP_S3 must begin with 'locked', be set, and end in ':' or '/' when LOCKED_BACKUP_REMOTE is set (got '${LOCKED_BACKUP_S3:-}')"; break ;;
+    esac
+    # The two must at least be different remotes. What stops the S3 remote being pasted into the crypt variable (an
+    # UNENCRYPTED upload into the COMPLIANCE bucket) is the type check below, not this name comparison.
+    if [ "${LOCKED_BACKUP_REMOTE%%:*}" = "${LOCKED_BACKUP_S3%%:*}" ]; then
+      paris_refuse "LOCKED_BACKUP_REMOTE and LOCKED_BACKUP_S3 must name different remotes (crypt vs raw S3)"; break
+    fi
+    # A swapped or mistyped pair is refused by each remote's TYPE (rclone's own config), before anything is uploaded
+    # or deleted: the crypt remote must be crypt and the S3 path's remote must be s3. The names alone cannot tell (a
+    # plain remote named locked-* would pass the prefix test), and the S3 remote in the crypt variable would upload
+    # UNENCRYPTED into a bucket where nothing can be removed.
+    if ! REMOTES_LONG="$(rclone listremotes --long)"; then
+      paris_refuse "could not read rclone's remotes to check the types of LOCKED_BACKUP_REMOTE and LOCKED_BACKUP_S3"; break
+    fi
+    remote_type() { awk -v n="$1:" '$1 == n { print $2; exit }' <<< "$REMOTES_LONG"; }
+    if [ "$(remote_type "${LOCKED_BACKUP_REMOTE%%:*}")" != "crypt" ]; then
+      paris_refuse "LOCKED_BACKUP_REMOTE '${LOCKED_BACKUP_REMOTE}' must be an rclone remote of type crypt"; break
+    fi
+    if [ "$(remote_type "${LOCKED_BACKUP_S3%%:*}")" != "s3" ]; then
+      paris_refuse "LOCKED_BACKUP_S3 '${LOCKED_BACKUP_S3}' must be an rclone remote of type s3"; break
+    fi
+    PARIS_OK=yes
+    break
+  done
 fi
 
 # 2. London: upload, heartbeat, count-based prune. A failed upload no longer stops the run: Paris still goes.
@@ -188,8 +207,8 @@ if [ -n "${BACKUP_REMOTE:-}" ]; then
   fi
 fi
 
-# 3. Paris: the locked remote.
-if [ -n "${LOCKED_BACKUP_REMOTE:-}" ]; then
+# 3. Paris: the locked remote, only when every Paris guard passed.
+if [ "$PARIS_OK" = yes ]; then
   EB="${PROJECT_ROOT}/server/scripts/editorial-backup.js"
   LIST_ARGS=(lsjson --s3-versions --s3-version-deleted --use-server-modtime "$LOCKED_BACKUP_S3")
   LOCKED_NAME="$(basename "$BACKUP_FILE").gz"
@@ -221,7 +240,9 @@ if [ -n "${LOCKED_BACKUP_REMOTE:-}" ]; then
     date -u +%Y-%m-%dT%H:%M:%SZ > "$HEARTBEAT"
     echo "Locked off-box upload OK; heartbeat: $HEARTBEAT"
     # 3.5 Delete data versions past the server's delete age, by versioned name. Best-effort. Only the S3 path is
-    # ever addressed here: the crypt remote is never given to deletefile.
+    # ever addressed here: the crypt remote is never given to deletefile. `expired` prints nothing and fails unless
+    # the listing holds a fresh copy (the one just uploaded, within an hour of now), so a wrong box clock or a
+    # listing of some other bucket deletes nothing.
     if listing="$(rclone "${LIST_ARGS[@]}")" && expired="$(printf '%s' "$listing" | "$BACKUP_NODE" "$EB" expired)"; then
       while IFS= read -r vpath; do
         [ -n "$vpath" ] || continue
@@ -229,9 +250,10 @@ if [ -n "${LOCKED_BACKUP_REMOTE:-}" ]; then
           || echo "WARNING: could not delete expired version" >&2
       done <<< "$expired"
     else
-      echo "WARNING: could not list expired versions" >&2
+      echo "WARNING: no expired versions deleted: the listing failed or held no fresh copy" >&2
     fi
-    # 3.6 Status from a fresh listing, and whether this upload is visible through the crypt remote. Fails closed.
+    # 3.6 Status from a new listing, and whether this upload is visible through the crypt remote. Fails closed;
+    # editorialBackupPolicy.js summarize() also requires a fresh copy in this listing (no-fresh-copy).
     seen=no
     # Capture first, then match: `grep -q` exits at its first hit, rclone then dies of SIGPIPE, and under pipefail a
     # PRESENT upload would read as unseen.

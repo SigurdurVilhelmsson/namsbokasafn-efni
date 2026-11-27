@@ -9,7 +9,10 @@
  *                                     when it cannot tell (fail closed)
  *   rate-ok                           stdin: listing. exit 0 under the 24 h copy limit; exit 1 at or over it
  *                                     or when the listing is unreadable
- *   expired                           stdin: listing. print each data version past the server's delete age
+ *   expired                           stdin: listing. print each data version past the server's delete age.
+ *                                     Prints nothing and exits 1 unless the listing holds a FRESH copy (a data
+ *                                     version within FRESH_WINDOW_MS of now): the delete trusts the box clock,
+ *                                     and the copy just uploaded is what proves the clock (G1.20 final review I3)
  *   status --uploaded-seen yes|no --out <file>
  *                                     stdin: listing. write the status file atomically (always, even for an
  *                                     unreadable listing); exit 0 only when ok
@@ -33,6 +36,7 @@ const {
   readListing,
   expiredPaths,
   recentCopies,
+  hasFreshCopy,
   summarize,
 } = require('../lib/editorialBackupPolicy');
 
@@ -183,6 +187,10 @@ async function listingCommand(cmd, rest, { stdin, out, err, now }) {
     case 'expired': {
       if (!items) {
         err.write('editorial-backup: listing-invalid\n');
+        return 1;
+      }
+      if (!hasFreshCopy(items)) {
+        err.write('editorial-backup: no fresh copy in the listing; refusing to delete\n');
         return 1;
       }
       for (const p of expiredPaths(items)) out.write(`${p}\n`);

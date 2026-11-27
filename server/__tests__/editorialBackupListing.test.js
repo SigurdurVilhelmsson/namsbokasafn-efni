@@ -69,13 +69,36 @@ describe('rate-ok', () => {
 });
 
 describe('expired', () => {
+  const HOUR = 1 / 24; // in days
   it('prints exactly the copy older than 356 days (355.99 days is the control)', async () => {
     const text = JSON.stringify([
       item('old.gz', 356.01),
       item('edge.gz', 355.99),
-      item('new.gz', 1),
+      item('new.gz', 0.1 * HOUR),
     ]);
     const r = await run(['expired'], text);
+    expect(r.code).toBe(0);
+    expect(r.out).toBe('old.gz\n');
+  });
+  it('refuses to delete when the newest copy is 2 hours old (a skewed clock): no paths, exit 1', async () => {
+    const r = await run(
+      ['expired'],
+      JSON.stringify([item('old.gz', 357), item('new.gz', 2 * HOUR)])
+    );
+    expect(r.code).toBe(1);
+    expect(r.out).toBe('');
+    expect(r.err).toContain('editorial-backup: no fresh copy in the listing; refusing to delete');
+  });
+  it('refuses when the only fresh-looking entry is a delete marker', async () => {
+    const r = await run(['expired'], JSON.stringify([item('old.gz', 357), item('mk', 0, 0)]));
+    expect(r.code).toBe(1);
+    expect(r.out).toBe('');
+  });
+  it('control: a fresh copy beside a 357-day copy prints the old path', async () => {
+    const r = await run(
+      ['expired'],
+      JSON.stringify([item('old.gz', 357), item('new.gz', 0.5 * HOUR)])
+    );
     expect(r.code).toBe(0);
     expect(r.out).toBe('old.gz\n');
   });
@@ -89,7 +112,7 @@ describe('expired', () => {
 describe('status', () => {
   const file = () => path.join(tmp, 'status.json');
   const read = () => JSON.parse(fs.readFileSync(file(), 'utf8'));
-  const good = JSON.stringify([item('a.gz', 1), item('b.gz', 5)]);
+  const good = JSON.stringify([item('a.gz', 0.01), item('b.gz', 5)]);
 
   it('writes ok:true for a good listing, stamped with the injected now', async () => {
     const r = await run(['status', '--uploaded-seen', 'yes', '--out', file()], good);
@@ -102,6 +125,12 @@ describe('status', () => {
     expect(r.code).toBe(1);
     expect(r.out).toContain('status not ok (');
     expect(read().reasons).toContain('uploaded-not-seen');
+  });
+  it('reports no-fresh-copy when the newest copy is 2 hours old', async () => {
+    const stale = JSON.stringify([item('a.gz', 2 / 24), item('b.gz', 5)]);
+    const r = await run(['status', '--uploaded-seen', 'yes', '--out', file()], stale);
+    expect(r.code).toBe(1);
+    expect(read()).toMatchObject({ ok: false, reasons: ['no-fresh-copy'] });
   });
   it('still writes the file for an unreadable listing', async () => {
     const r = await run(['status', '--uploaded-seen', 'yes', '--out', file()], '');
