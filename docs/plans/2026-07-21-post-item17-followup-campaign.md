@@ -4,6 +4,150 @@
 
 ## ⏩ RESUME — state as of **2026-10-09 — ✅ '6' PR-B IS MERGED ([#546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546)) AND DEPLOYED, with the 7 Dependabot PRs; R-22's condition is met and the LIVE-RUN HOLD's condition is met on `main`. ⏹ The whole-book re-render and the chemistry sync are HELD for [USER]. ▶ [CODE] in parallel: the ② code batch (end of this block)** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence) ✏️ *Heading re-dated 2026-10-09; it had said PR-B was BUILT and UNPUSHED, with step 2b and the LIVE-RUN HOLD outstanding, after all three had changed. The bullets directly under the SINGLE NEXT ACTION are PR-B's record.*
 
+### ⏭ 2026-11-27 (deploy: #828–#832 live; every §C244 fix in production) — RECORDS A DEPLOY; IT DOES NOT CHANGE THE OTHER ENTRIES OR THEIR NEXT
+- **[USER] ran `./scripts/deploy.sh` on 2026-11-27. Checked read-only over ssh the same morning:**
+  - production's `HEAD` is `33f7b662a` (#832's merge), and `pipeline-output/.deployed-commit` names it;
+  - the reflog shows `rebase (start)` and `rebase (finish)` at 10:52:21Z; `ritstjorn` is active since 10:53:50Z;
+  - `/api/health` reads `status: ok` with every check ok (migrations 61; off-box and content backups fresh;
+    retention nothing due; research_db ok);
+  - 0 ahead and 0 behind `origin/main`, clean tree.
+- **What it shipped** (all merged 2026-11-26, as merge commits):
+  - #828 `c5a72fd22`: register, §C247's three minors closed;
+  - #829 `22a9baff0`: book glossary, §C244 M10, M12/T2a/T3b, N4, T4b;
+  - #830 `1f647e0d5`: book glossary, §C244 N2, M6, N7 (with N8, N9);
+  - #831 `10bfe1500`: book glossary, §C244's test minors;
+  - #832 `33f7b662a`: book glossary, §C244's last nine (T2d, M13, T6g and N6 fixed; T5e polished).
+- **So every §C244 fix is live,** and the book glossary page that head editors meet at its first real use carries
+  them. The previous deploy was `8f1b34806` (#827), 2026-11-26 16:17Z.
+
+### ⏭ 2026-11-27 (G1.20's editorial half designed, approved and built; new items §C256, §C258, §C259; the restore gap it found is §C252's) — ADDS TO G1.20 AND G1.4'S PRECONDITION 3; IT DOES NOT CHANGE THE OTHER ENTRIES OR THEIR NEXT
+- **✅ [USER] approved the design 2026-11-27, as written:**
+  [`docs/superpowers/specs/2026-11-27-g120-editorial-backups-design.md`](../superpowers/specs/2026-11-27-g120-editorial-backups-design.md).
+  It is on branch `docs/g120-editorial-backups-design`, not pushed.
+  - **The layout, chosen by [USER] ("B"):** every 6-hourly copy of `sessions.db` is kept for about 12 months in a new
+    Paris editorial bucket created with Object Lock.
+    - The bucket's default retention locks each copy in **COMPLIANCE** mode: 3 days for the probe, **30 days**
+      until the consent text is listed, then 350 days.
+    - A lifecycle rule deletes copies at 355 days. The server deletes copies whose lock has ended from day 356, and
+      a fail-closed check goes red at 358.
+    - Copies are made with `VACUUM INTO`, gzipped and encrypted.
+  - **[USER]'s three builder-check answers:** Paris uploads pause while an editorial retention step is overdue; a
+    read-only recovery tool reads a segment across a date range and a module at a chosen time; the server also
+    deletes copies whose lock has ended.
+  - **Why backups matter more than they seemed:** chemistry's faithful writes are held (§C203), so the tool keeps no
+    snapshots and nothing reaches git, and re-saving a pending edit overwrites it.
+    - Production, 2026-11-27: 163 `segment_edits` rows, 83 `content_versions` rows (all from before the hold),
+      `sessions.db` 54.6 MB (16.6 MB gzipped), rclone v1.75.0.
+  - **Cost:** about 24 GB once full, inside the 250 GB the account's Object Storage plan already includes.
+- **What it means for s04 (G1.4 precondition 1):** the editorial bucket must be created with Object Lock enabled.
+  - That is done through the S3 API (`aws s3api create-bucket --object-lock-enabled-for-bucket`) from [USER]'s
+    computer, because Cloud Manager cannot do it and production has only rclone.
+  - The research bucket stays separate and unversioned. G-1b is re-read on it afterwards.
+  - The settings and the go/no-go live probe are design §4.1 and §4.6.
+- **Precondition 3 is discharged** when the design's §7 conditions hold: built, merged, deployed, the bucket set up as
+  in §4.1, and the check ok.
+- **Next:** ~~the implementation plan (superpowers:writing-plans), then the build.~~ ✏️ *2026-11-27: the plan is
+  written ([`docs/superpowers/plans/2026-11-27-g120-editorial-backups.md`](../superpowers/plans/2026-11-27-g120-editorial-backups.md),
+  ten tasks), and the build is under way on branch `feat/g120-editorial-backups`, one reviewed task at a time: tasks
+  1–5 are done. Once the final review is clean, the branch is pushed, opened as a PR and merged when CI is green
+  ([USER]'s go, 2026-11-27).* [USER] runs every bucket setting, the probe, the deploy and the recovery tool.
+  - ✏️ *2026-11-27, later: **BUILT, and merged as [#833](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/833) on [USER]'s go once CI was green; NOT deployed.***
+    - **All ten tasks built,** each with its own task review (fix rounds where a review found something). Then a
+      whole-branch review, one fix wave and its scoped re-review: no Critical or Important finding left open.
+    - **What landed:**
+      - `scripts/backup-db.sh` makes the local copy with `VACUUM INTO` (`server/scripts/editorial-backup.js`).
+      - It uploads to the locked remote (`LOCKED_BACKUP_REMOTE`, `LOCKED_BACKUP_S3`): pause while a retention step
+        is due; rate guard; gzip; no lock flag.
+      - It deletes data versions past the server limit only when the listing holds a fresh copy of this run.
+      - It writes a fail-closed status file.
+      - `/api/health` gains `checks.offbox_backup_cap` (`server/lib/lockedBackupHealth.js`).
+      - `scripts/verify-db-backup.sh` reads `.db.gz`.
+      - New read-only recovery tool: `server/scripts/recover-from-backup.js`.
+      - New runbook section, "The editorial bucket in Paris (G1.20)", in `docs/technical/backup-and-restore.md`.
+      - The values live in `server/lib/editorialBackupPolicy.js` and its test.
+    - **Guards beyond the plan, ruled during the build:**
+      - Each Paris remote is refused unless `rclone listremotes --long` shows the right type (crypt for the upload
+        remote, s3 for the listing remote). The `locked` prefix could not tell a swapped pair apart, and a swapped pair
+        would have uploaded unencrypted into the COMPLIANCE bucket.
+      - A Paris-only misconfiguration skips Paris and leaves London running. The heartbeat then goes stale.
+      - The copy just uploaded must show in the bucket's listing as a version under an hour old. That ties the check
+        to the right bucket and bounds the box clock for the delete.
+    - **Checks run:**
+      - `npm test` green;
+      - lint and format clean;
+      - the `verify-research-withdrawal` TLA+ check passes with §C252's finding still pinned (the skill's sync commit
+        moved forward).
+    - **What only a real bucket can prove is left to the live probe** (runbook step 6): Akamai's lock-versus-lifecycle
+      behaviour, the limited key's permissions, rclone's version naming.
+    - **Next, all [USER]'s:**
+      1. deploy (with only `BACKUP_REMOTE` on the cron line, behaviour stays London's, with the new copy method);
+      2. s04 with runbook steps 1–5, then the probe and its go/no-go;
+      3. step 7, then the move (step 8);
+      4. the 350-day lock once the consent text is listed (step 9), which discharges precondition 3.
+
+#### §C256 (NEW, 2026-11-27) — every save of a pending edit kept as its own version, with a page that shows a segment's earlier wordings
+- **Found while designing G1.20.** `segmentEditorService.saveSegmentEdit` updates an editor's pending row in place,
+  so an earlier wording of a pending edit survives only in a backup.
+  - The server has a per-segment history route (`contentVersionService.getSegmentHistory`), but no page calls it.
+  - `content_versions` takes snapshots only at apply, which chemistry's hold (§C203) blocks.
+- **Why it matters:** [USER]'s case, "a particular segment from a while back", would then take a few clicks instead
+  of a backup search (G1.20 design §2, non-goals).
+- **Open:** whether it is wanted, and its consent fit. The draft consent text lists each saved edit with its time
+  among the editing records, so keeping each save looks covered, but that is for [USER] to confirm.
+
+#### §C257 (2026-11-27) — folded into §C252 the same day
+- A duplicate: the gap where a `sessions.db` restore predates a withdrawal is §C252 (2026-11-23). The note on
+  what G1.20 changes for it is there.
+
+#### §C258 (NEW, 2026-11-27) — the research backup's remote guard is its name prefix alone
+- **Found by G1.20's reviews.** `scripts/research-backup.sh` refuses any `RESEARCH_REMOTE` that does not begin with
+  `research`, and the runbook calls that prefix the whole guard. But a raw S3 remote named `research-…` passes it, so a
+  mis-set remote would upload research copies unencrypted.
+- **G1.20 closed the same hole for the editorial tier:** `scripts/backup-db.sh` checks each remote's rclone type with
+  `rclone listremotes --long` (crypt for the upload remote).
+- **Lower stakes:** the research bucket is unversioned and its copies live 7 days. The same type check would still
+  close it.
+- **Done when:** the research job refuses an upload remote whose type is not `crypt`, with its own test.
+
+#### §C259 (NEW, 2026-11-27) — G1.20's deferred minors (all judged can-wait by the final review)
+**Recovery tool** (`server/scripts/recover-from-backup.js`):
+- The yield after a copy's synchronous read does not let a signal through. A Ctrl-C that lands in the last copy's
+  read (or in a `module`/`--file` run) exits 0 after printing. The temp copies are still removed, so nothing leaks.
+- SIGHUP is not handled: a dropped SSH session during a scan leaves the decrypted copy in its `recover-*` temp
+  directory. Until fixed, run it inside `tmux`/`screen`, or remove `/tmp/recover-*` by hand after a drop.
+- A `--remote` value starting with a single `-` is not rejected.
+- The failure-path tests do not assert exit 1.
+
+**`scripts/backup-db.sh`:**
+- `paris_refuse` always prints "London continues", even after the move, when no London remains.
+- The exit codes are listed in the off-box comment, not in the header.
+- The ERROR line for a failed copy names the remedy but not the reason; Node's stderr carries the reason.
+
+**Listing policy:**
+- `Size` accepts negative values: rclone's "unknown" would count as data.
+- `Math.max(...ages)` spreads the whole array.
+- No tests for an `IsDir` item or a non-object item.
+
+**Copy** (`editorial-backup.js`):
+- The integrity and journal-mode failure branches have no test; they cannot be forced on a `VACUUM INTO` output.
+- A stdin read error in `status` writes no file; health keeps the previous status until it is stale.
+- A failed rename can leave `<file>.tmp` behind.
+
+**Tests:**
+- The isolation test pins a literal source string.
+- `backup-db.test.mjs` and `backup-db-retention.test.mjs` are not prettier-clean. `.mjs` files are outside
+  `format:check`, and they were already like this.
+- The real-rclone gz test skips only when rclone is missing, not when sqlite3 is.
+- No test mixes `.db` and `.db.gz` names to pin that the newest wins.
+- The fake `listremotes` format has not been checked against rclone 1.75. A different format fails closed, and runbook
+  step 5's read-back shows the real one.
+
+**Runbook:**
+- The go/no-go window's lower bound (about 00:30) may come before Akamai's nightly run. Reading later in the window
+  costs nothing.
+- The restore block does not guard an empty `$T` or `$NAME`. Both fail before the live file is touched.
+- The LICENSE entry could note that the retention call is warn-only while the copy call is required.
+
 ### ⏭ 2026-11-26 (consent text against the data protection act: the no-AI-reads rule merged as #821, the SD6 cell floor raised to three as #822, and the derived dataset given contents and an end date; one new item, §C255) — ADDS ONE ITEM; IT DOES NOT CHANGE THE OTHER ENTRIES OR THEIR NEXT
 - **Merged 2026-11-26 and DEPLOYED (docs only; prod at `5cc033d08`, #825's merge: `rebase (finish)` 15:37:16Z, restart 15:38:34Z, `/api/health` ok, 0 ahead / 0 behind; with #823–#825):** [#821](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/821) (`e54ce602d`), CLAUDE.md § Purpose's rule that no Claude Code session reads the research database, named editing rows or logs that name editors, in force once a consent text is approved; [#822](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/822) (`a896104bd`), SD6 and the cell rule in the Skerfur plan now say at least **three** editors ([USER] ruling 2026-11-26).
 - **The private consent draft (G1.4), as ruled 2026-11-26:** item 5 publishes only aggregate figures in groups of at least three editors; item 19 deletes raw research rows on 31 December 2029 (G1.15(b)'s date) and keeps only a derived dataset of aggregate figures, in item 5's groups, with nothing about individual editors, **deleted 31 December 2030**. Still open in the draft, for [USER]: who holds decisions, signed sheets and withdrawals; the controller and the data protection officer. Then it goes to the officer. ✏️ *Later on 2026-11-26 ([USER]): both settled (Sigurður Vilhelmsson holds decisions, sheets and withdrawals, and item 9 now states the double role; the school is the controller, its data protection officer also the contact), the objection clause narrowed to (e) for a public controller, and the text **sent to the officer** with a cover email. ▶ **NEXT: waiting on the officer's answer** on the two legal-basis brackets (editing records; further use of decliners' data), whether an impact assessment is needed (29. gr.), and recital 43. Then fill the brackets, align the objection sentence, rebuild the Word file, and the five preconditions follow.*
@@ -222,6 +366,11 @@
 - **Found by** `server/verification/research-withdrawal/check.sh` (TLA+, TLC): one editor, two intervals, every order of consent, the withdraw route's two commits, capture and loss, the withdrawal script's commits with crashes, both copies and both restores. Shortest path: consent → `backup-db.sh` copy → withdraw → restore. **With the sessions.db restore left out, every rule holds** (the research copy modelled as the code takes it: copy, then re-check; `check.sh` prints the state count). Four model mutants are each caught. `server/__tests__/researchSessionsRestore.test.js` proves the precondition on the real functions (each beside its control: on a pre-withdrawal copy capture resumes, and the interval stops being due so its key row stays). It cannot detect a fix: the restore is a manual runbook step with no code to run.
 - **Not live today:** no consent text is approved in the repo, so no one can consent yet. It becomes live when the study opens.
 - **A fix is a product change for [USER]** (for example, reconcile `research_consent` after a `sessions.db` restore, or refuse a restore older than the newest withdrawal); **the fix must bring its own test** that runs the new step on such a copy; then the model's `SessionsRestore` is updated and the finding leaves `check.sh`. Skill: `.claude/skills/verify-research-withdrawal/`.
+- ✏️ *2026-11-27: G1.20's design (approved 2026-11-27) keeps editorial copies for about 12 months, but lets only
+  the newest copy into place ([design](../superpowers/specs/2026-11-27-g120-editorial-backups-design.md) §4.4, §4.5),
+  so it does not widen this gap. Putting an older copy in place is a stop for [USER], and any withdrawal made since
+  that copy must be applied again before the server opens it. The fix this item asks for is still open. A duplicate
+  logged that morning as §C257 was folded here the same day.*
 
 #### §C250 (NEW, 2026-11-23) — a crash during a migration's first run can strand it for good: four migrations never finish, and a fresh database's first boot is short; found by the new exhaustive check
 **✅ DEPLOYED 2026-11-23: the every-boot churn fix ([#784](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/784), `39520c148`) and the 015/016 fixes ([#785](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/785), `f850deee3`).** Prod pulled `f5541d568` at 13:08:23Z and `ritstjorn` restarted at 13:08:35Z (read-only prod read, the same day). **That boot's journal shows none of the churn lines** — no `Migration 021: dropped …`, `Applying migration 026`, `Applying migration 028` or `idordabanki_id column added` — where the previous restart (11:07Z) printed all four; 021 now logs `tables already dropped or never existed`. Migrations `applied: 57, skipped: 3`, no warning or error in the journal since, all six books loaded, `/api/health` `ok` with no failing check. **[USER] ruled 2026-11-23 on what was left: option B for both.** (1) 024 and 026 each run their table rebuild in one `db.transaction` that first drops an EMPTY leftover `*_new`, so a crash leaves all or nothing and a database an older crash stranded before its `DROP` finishes on its next start; a leftover holding rows (an older crash after the `DROP`, where 004 recreates the original empty) is left untouched and logged, since dropping it would delete the only copy (found by the #788 review and measured; unreachable on prod, which has run 032); (2) `migrationRunner` runs a second pass when it has just created `sessions.db`, so a fresh database's first start reaches the full schema (022's `users` indexes and trigger, 032's `book_subject_mapping` rows for 049's books). **Built test-first, MERGED 2026-11-23 as [#788](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/788) (`2b99e0772`), DEPLOYED 2026-11-23** (prod pulled `27791aa2c` (which contains #788, #792 and #793) at 20:34:04Z and `ritstjorn` restarted at 20:34:33Z (read-only prod read at 20:42Z the same day); the boot logged `Migrations applied` (57 applied, 3 skipped) and `Server started`, with no warning or error since; 024 took its normal `terminology_discussions FK already correct` path; the second migration pass did not run, as designed, since prod's database already existed; `/api/health` `ok`, every check ok)**:** `server/__tests__/migrationCrashSafeFirstBoot.test.js` was red first on all six cases (`… already exists` from both rebuilds; the second start changing the five pinned items); the check's last pins are removed (`KNOWN_CRASH_FINDINGS = {}`, `KNOWN_FIRST_BOOT_DIFFS = []`), and `mutate.js` gains BREAK changes for 024's transaction and the second pass. Prod had neither leftover (read-only read, 2026-11-23: no `*_new` table, both `users` indexes and the trigger present).

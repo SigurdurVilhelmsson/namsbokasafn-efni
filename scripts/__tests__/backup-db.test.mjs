@@ -4,10 +4,13 @@ import { mkdtempSync, mkdirSync, existsSync, readdirSync, rmSync, symlinkSync, r
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { createRequire } from 'node:module';
+import { gzipSync } from 'node:zlib';
+import { chmodSync, copyFileSync } from 'node:fs';
 
 const require = createRequire(import.meta.url);
 const REPO = path.resolve(import.meta.dirname, '..', '..');
 const SCRIPT = path.join(REPO, 'scripts', 'backup-db.sh');
+const hasSqlite3 = (() => { try { execFileSync('sqlite3', ['-version']); return true; } catch { return false; } })();
 const hasRclone = (() => { try { execFileSync('rclone', ['version']); return true; } catch { return false; } })();
 
 // Build a real SQLite file via better-sqlite3 (a repo dependency) so the test does
@@ -62,7 +65,7 @@ describe('backup-db.sh off-box upload', () => {
     const db = path.join(work, 'sessions.db');
     makeTestDb(db);
     const out = execFileSync('bash', [SCRIPT, path.join(work, 'backups')], {
-      env: { ...process.env, DB_PATH_OVERRIDE: db, BACKUP_REMOTE: '' }, encoding: 'utf8',
+      env: { ...process.env, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath, BACKUP_NODE: process.execPath, BACKUP_REMOTE: '' }, encoding: 'utf8',
     });
     expect(out).toMatch(/BACKUP_REMOTE not set.*skipping off-box/i);
     rmSync(work, { recursive: true, force: true });
@@ -76,7 +79,7 @@ describe('backup-db.sh off-box upload', () => {
     makeTestDb(db);
     // rclone config via env: a crypt remote wrapping a local remote.
     const env = {
-      ...process.env, DB_PATH_OVERRIDE: db,
+      ...process.env, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath, BACKUP_NODE: process.execPath,
       RCLONE_CONFIG_LOCALBK_TYPE: 'local',
       RCLONE_CONFIG_SECRET_TYPE: 'crypt',
       RCLONE_CONFIG_SECRET_REMOTE: `localbk:${remoteDir}`,
@@ -102,7 +105,7 @@ describe('backup-db.sh off-box upload', () => {
     makeTestDb(db);
     // A syntactically valid remote reference (trailing ':') that isn't configured —
     // rclone fails fast with "didn't find section in config file"; no network I/O.
-    const env = { ...process.env, DB_PATH_OVERRIDE: db, BACKUP_REMOTE: 'no-such-remote-xyz:' };
+    const env = { ...process.env, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath, BACKUP_NODE: process.execPath, BACKUP_REMOTE: 'no-such-remote-xyz:' };
     let error;
     try {
       execFileSync('bash', [SCRIPT, backups], { env, encoding: 'utf8' });
@@ -128,8 +131,7 @@ describe('backup-db.sh off-box upload', () => {
 
     // Symlink every external backup-db.sh needs EXCEPT rclone into an isolated bin
     // dir, then run with PATH restricted to only that dir. sqlite3 is deliberately
-    // left out too — the script tolerates a missing sqlite3 CLI via its WAL-checkpoint
-    // fallback (`sqlite3 ... || { ... }`), so excluding it isn't a new dependency.
+    // left out too — the script no longer uses the sqlite3 CLI (the copy is Node's VACUUM INTO).
     const binDir = mkdtempSync(path.join(tmpdir(), 'bkup-bin-'));
     const needed = ['bash', 'cp', 'du', 'cut', 'ls', 'wc', 'tail', 'xargs', 'rm', 'mkdir', 'date', 'basename', 'grep', 'sort', 'dirname', 'cat'];
     for (const bin of needed) {
@@ -142,7 +144,9 @@ describe('backup-db.sh off-box upload', () => {
       if (real) symlinkSync(real, path.join(binDir, bin));
     }
 
-    const env = { PATH: binDir, DB_PATH_OVERRIDE: db, BACKUP_REMOTE: 'secret:' };
+    // BACKUP_NODE is the seam for the node the copy needs: the restricted PATH has none,
+    // and /usr/bin/node may be absent or built for another ABI than server/node_modules.
+    const env = { PATH: binDir, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath, BACKUP_NODE: process.execPath, BACKUP_REMOTE: 'secret:' };
     let error;
     try {
       execFileSync('bash', [SCRIPT, backups], { env, encoding: 'utf8' });
@@ -169,7 +173,7 @@ describe('backup-db.sh off-box upload', () => {
     // separator-less BACKUP_REMOTE as a *local relative path* and silently writes a
     // stray file into the process cwd (confirmed empirically); pinning cwd to the
     // disposable temp dir keeps any such regression from littering the repo root.
-    const env = { ...process.env, DB_PATH_OVERRIDE: db, BACKUP_REMOTE: 'secret' };
+    const env = { ...process.env, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath, BACKUP_NODE: process.execPath, BACKUP_REMOTE: 'secret' };
     let error;
     try {
       execFileSync('bash', [SCRIPT, backups], { env, cwd: work, encoding: 'utf8' });
@@ -180,6 +184,59 @@ describe('backup-db.sh off-box upload', () => {
     expect(error.status).toBe(5);
     expect(existsSync(path.join(backups, '.last-offbox-backup'))).toBe(false);
     rmSync(work, { recursive: true, force: true });
+  });
+});
+
+// G1.20: the local copy is made by VACUUM INTO (editorial-backup.js copy), so the bytes of a
+// deleted row are not carried into a copy that is kept for up to a year.
+describe('backup-db.sh local copy', () => {
+  const TOKEN = 'zq-sentinel-7f3a91';
+
+  it("the local copy is made with VACUUM INTO: a deleted row's token is absent", () => {
+    const work = mkdtempSync(path.join(tmpdir(), 'bkup-vac-'));
+    const db = path.join(work, 'sessions.db');
+    const backups = path.join(work, 'backups');
+    const Database = require(path.join(REPO, 'server', 'node_modules', 'better-sqlite3'));
+    const d = new Database(db);
+    d.exec('CREATE TABLE t(id INTEGER PRIMARY KEY, v TEXT)');
+    const ins = d.prepare('INSERT INTO t(v) VALUES (?)');
+    for (let i = 0; i < 200; i++) ins.run(i === 100 ? TOKEN.repeat(120) : `row ${i}`);
+    d.prepare('DELETE FROM t WHERE id = 101').run();
+    d.close();
+    execFileSync('bash', [SCRIPT, backups], {
+      env: { ...process.env, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath, BACKUP_NODE: process.execPath, BACKUP_REMOTE: '' },
+      encoding: 'utf8',
+    });
+    const copies = readdirSync(backups).filter((f) => /^sessions\..*\.db$/.test(f));
+    expect(copies).toHaveLength(1);
+    expect(readFileSync(db).includes(Buffer.from(TOKEN))).toBe(true); // control: the live file holds it
+    expect(readFileSync(path.join(backups, copies[0])).includes(Buffer.from(TOKEN))).toBe(false);
+    rmSync(work, { recursive: true, force: true });
+  });
+
+  it('a failed local copy exits 1 and names the remedy for a driver that cannot load', () => {
+    const work = mkdtempSync(path.join(tmpdir(), 'bkup-fail-'));
+    try {
+      const db = path.join(work, 'sessions.db');
+      makeTestDb(db);
+      const failing = path.join(work, 'node-fails.sh');
+      writeFileSync(failing, '#!/bin/sh\nexit 1\n');
+      chmodSync(failing, 0o755);
+      let error;
+      try {
+        execFileSync('bash', [SCRIPT, path.join(work, 'backups')], {
+          env: { ...process.env, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath, BACKUP_NODE: failing, BACKUP_REMOTE: '' },
+          encoding: 'utf8',
+          stdio: 'pipe',
+        });
+      } catch (e) {
+        error = e;
+      }
+      expect(error?.status).toBe(1);
+      expect(error.stderr).toContain('ERROR: local copy failed (if better-sqlite3 cannot load, run: cd server && npm ci)');
+    } finally {
+      rmSync(work, { recursive: true, force: true });
+    }
   });
 });
 
@@ -220,7 +277,7 @@ describe('backup-db.sh pruning removes side files with their backup', () => {
     touch('sessions.2019-12-31-235959.db-shm', 0); // left by an earlier prune: no .db
     touch('sessions.2019-12-31-235959.db-wal', 0);
     out = execFileSync('bash', [SCRIPT, backups], {
-      env: { ...process.env, DB_PATH_OVERRIDE: db, BACKUP_REMOTE: '' },
+      env: { ...process.env, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath, BACKUP_NODE: process.execPath, BACKUP_REMOTE: '' },
       encoding: 'utf8',
     });
   });
@@ -276,12 +333,12 @@ describe('install-cron.sh template is executable as printed', () => {
     });
   }
 
-  /** BACKUP_REMOTE values on real cron entries only — not the ones named in comments. */
+  /** BACKUP_REMOTE values on the real backup-db.sh cron entry only — not the ones named in comments, and not the verify lines. */
   function printedRemotes() {
     return printedCrontab()
       .split('\n')
-      .filter((line) => /^[\d*]/.test(line))
-      .flatMap((line) => [...line.matchAll(/BACKUP_REMOTE=(\S+)/g)].map((m) => m[1]));
+      .filter((line) => /^[\d*]/.test(line) && line.includes('/backup-db.sh'))
+      .flatMap((line) => [...line.matchAll(/(?<![A-Z_])BACKUP_REMOTE=(\S+)/g)].map((m) => m[1]));
   }
 
   it('prints at least one BACKUP_REMOTE cron entry', () => {
@@ -296,11 +353,12 @@ describe('install-cron.sh template is executable as printed', () => {
     const db = path.join(work, 'sessions.db');
     makeTestDb(db);
 
-    for (const remote of printedRemotes()) {
+    for (const [i, remote] of printedRemotes().entries()) {
       let status = 0;
       try {
-        execFileSync('bash', [SCRIPT, path.join(work, 'backups')], {
-          env: { ...process.env, DB_PATH_OVERRIDE: db, BACKUP_REMOTE: remote },
+        // A directory per run: two copies in one second would collide (name-taken) before the remote guard.
+        execFileSync('bash', [SCRIPT, path.join(work, `backups-${i}`)], {
+          env: { ...process.env, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath, BACKUP_NODE: process.execPath, BACKUP_REMOTE: remote },
           cwd: work,
           encoding: 'utf8',
         });
@@ -312,6 +370,63 @@ describe('install-cron.sh template is executable as printed', () => {
       expect(status, `install-cron.sh printed BACKUP_REMOTE=${remote}`).not.toBe(5);
     }
     rmSync(work, { recursive: true, force: true });
+  });
+
+  /** One printed variable's value on the real backup-db.sh cron entry. */
+  function printedLockedValue(name) {
+    const line = printedCrontab()
+      .split('\n')
+      .find((l) => /^[\d*]/.test(l) && l.includes('backup-db.sh'));
+    const m = new RegExp(`(?<![A-Z_])${name}=(\\S+)`).exec(line ?? '');
+    return m ? m[1] : undefined;
+  }
+
+  /** Runs the real guards with a fake rclone that knows its two remotes and fails every other call (so nothing can reach a network). */
+  function runWithLocked(locked, s3) {
+    const work = mkdtempSync(path.join(tmpdir(), 'bkup-'));
+    const db = path.join(work, 'sessions.db');
+    makeTestDb(db);
+    const bin = path.join(work, 'bin');
+    mkdirSync(bin);
+    writeFileSync(path.join(bin, 'rclone'), '#!/usr/bin/env bash\n[ "$1" = listremotes ] && { printf "locked-secret:  crypt\\nlocked-s3:  s3\\n"; exit 0; }\nexit 4\n');
+    chmodSync(path.join(bin, 'rclone'), 0o755);
+    const env = { ...process.env, PATH: `${bin}:${process.env.PATH}`, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath, BACKUP_NODE: process.execPath, LOCKED_BACKUP_REMOTE: locked, LOCKED_BACKUP_S3: s3 };
+    delete env.BACKUP_REMOTE;
+    let status = 0;
+    try {
+      execFileSync('bash', [SCRIPT, path.join(work, 'backups')], { env, cwd: work, encoding: 'utf8', stdio: 'pipe' });
+    } catch (e) {
+      status = e.status;
+    }
+    rmSync(work, { recursive: true, force: true });
+    return status;
+  }
+
+  it('prints LOCKED_BACKUP_REMOTE and LOCKED_BACKUP_S3 beside BACKUP_REMOTE on the backup line', () => {
+    expect(printedLockedValue('LOCKED_BACKUP_REMOTE')).toBeDefined();
+    expect(printedLockedValue('LOCKED_BACKUP_S3')).toBeDefined();
+  });
+
+  it('prints locked values that backup-db.sh accepts (never exit 5)', () => {
+    const status = runWithLocked(printedLockedValue('LOCKED_BACKUP_REMOTE'), printedLockedValue('LOCKED_BACKUP_S3'));
+    expect(status).not.toBe(5);
+  });
+
+  it('control: the printed crypt value with the locked prefix removed is refused with exit 5', () => {
+    const crypt = printedLockedValue('LOCKED_BACKUP_REMOTE');
+    expect(runWithLocked(crypt.replace(/^locked-?/, ''), printedLockedValue('LOCKED_BACKUP_S3'))).toBe(5);
+  });
+
+  it('control: the printed S3 value with its trailing separator removed is refused with exit 5', () => {
+    const s3 = printedLockedValue('LOCKED_BACKUP_S3');
+    expect(runWithLocked(printedLockedValue('LOCKED_BACKUP_REMOTE'), s3.replace(/[:/]$/, ''))).toBe(5);
+  });
+
+  it('prints a monthly verify line for the locked remote too', () => {
+    const verify = printedCrontab()
+      .split('\n')
+      .filter((l) => /^[\d*]/.test(l) && l.includes('verify-db-backup.sh'));
+    expect(verify.some((l) => /(?<![A-Z_])BACKUP_REMOTE=locked-secret:/.test(l))).toBe(true);
   });
 
   it('sets a cron PATH that includes /usr/local/bin, where rclone installs', () => {
@@ -334,7 +449,7 @@ describe('verify-db-backup.sh', () => {
     makeTestDb(db);
     addRequiredTables(db);
     const env = {
-      ...process.env, DB_PATH_OVERRIDE: db,
+      ...process.env, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath, BACKUP_NODE: process.execPath,
       RCLONE_CONFIG_LOCALBK_TYPE: 'local',
       RCLONE_CONFIG_SECRET_TYPE: 'crypt',
       RCLONE_CONFIG_SECRET_REMOTE: `localbk:${remoteDir}`,
@@ -385,7 +500,7 @@ describe('verify-db-backup.sh', () => {
     const backups = path.join(work, 'backups');
     makeTestDb(db); // deliberately WITHOUT addRequiredTables — only table `t` exists
     const env = {
-      ...process.env, DB_PATH_OVERRIDE: db,
+      ...process.env, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath, BACKUP_NODE: process.execPath,
       RCLONE_CONFIG_LOCALBK_TYPE: 'local',
       RCLONE_CONFIG_SECRET_TYPE: 'crypt',
       RCLONE_CONFIG_SECRET_REMOTE: `localbk:${remoteDir}`,
@@ -420,20 +535,21 @@ describe('verify-db-backup.sh', () => {
     const work = mkdtempSync(path.join(tmpdir(), 'bkup-'));
     const db = path.join(work, 'sessions.db');
     const remoteDir = path.join(work, 'remote');
-    const backups = path.join(work, 'backups');
     makeTestDb(db);
     addRequiredTables(db);
     corruptDb(db);
     const env = {
-      ...process.env, DB_PATH_OVERRIDE: db,
+      ...process.env, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath, BACKUP_NODE: process.execPath,
       RCLONE_CONFIG_LOCALBK_TYPE: 'local',
       RCLONE_CONFIG_SECRET_TYPE: 'crypt',
       RCLONE_CONFIG_SECRET_REMOTE: `localbk:${remoteDir}`,
       RCLONE_CONFIG_SECRET_PASSWORD: execFileSync('rclone', ['obscure', 'testpass'], { encoding: 'utf8' }).trim(),
       BACKUP_REMOTE: 'secret:',
     };
-    // Arrange: upload the already-corrupt DB as the off-box backup (same recipe as above).
-    execFileSync('bash', [SCRIPT, backups], { env, encoding: 'utf8' });
+    // Arrange: upload the already-corrupt DB as the off-box backup. backup-db.sh no longer can
+    // (its VACUUM INTO copy refuses a corrupt database, fail-closed), so put the file on the
+    // crypt remote directly under a backup name.
+    execFileSync('rclone', ['copyto', db, 'secret:sessions.2020-01-01-000000.db'], { env, encoding: 'utf8' });
 
     let error;
     try {
@@ -445,5 +561,105 @@ describe('verify-db-backup.sh', () => {
     expect(error.status).not.toBe(0);
     expect(error.stdout).toMatch(/RESTORE VERIFY: FAIL/);
     rmSync(work, { recursive: true, force: true });
+  });
+
+  // G1.20: the locked Paris remote holds gzipped copies (sessions.<stamp>.db.gz); the restore
+  // test must gunzip the newest one before checking it.
+  it.skipIf(!hasRclone)('verifies a gzipped copy: RESTORE VERIFY: PASS', () => {
+    const work = mkdtempSync(path.join(tmpdir(), 'bkup-'));
+    try {
+      const db = path.join(work, 'sessions.db');
+      const remoteDir = path.join(work, 'remote');
+      makeTestDb(db);
+      addRequiredTables(db);
+      writeFileSync(`${db}.gz`, gzipSync(readFileSync(db)));
+      const env = {
+        ...process.env,
+        RCLONE_CONFIG_LOCALBK_TYPE: 'local',
+        RCLONE_CONFIG_SECRET_TYPE: 'crypt',
+        RCLONE_CONFIG_SECRET_REMOTE: `localbk:${remoteDir}`,
+        RCLONE_CONFIG_SECRET_PASSWORD: execFileSync('rclone', ['obscure', 'testpass'], { encoding: 'utf8' }).trim(),
+        BACKUP_REMOTE: 'secret:',
+      };
+      execFileSync('rclone', ['copyto', `${db}.gz`, 'secret:sessions.2020-01-01-000000.db.gz'], { env, encoding: 'utf8' });
+      const out = execFileSync('bash', [VERIFY], { env, encoding: 'utf8' });
+      expect(out).toMatch(/Restoring sessions\.2020-01-01-000000\.db\.gz/);
+      expect(out).toMatch(/RESTORE VERIFY: PASS/);
+    } finally {
+      rmSync(work, { recursive: true, force: true });
+    }
+  });
+
+  // Fake rclone for CI without a real rclone: `lsf` lists $FAKE_STORE, `copyto <remote><name> <dest>`
+  // copies $FAKE_STORE/<name after the last : or /> to <dest> (verify DOWNLOADS, unlike the upload fake).
+  describe('with a fake rclone', () => {
+    let work;
+    let store;
+    let env;
+    beforeAll(() => {
+      work = mkdtempSync(path.join(tmpdir(), 'bkup-fake-'));
+      store = path.join(work, 'store');
+      mkdirSync(store);
+      mkdirSync(path.join(work, 'bin'));
+      const fake = path.join(work, 'bin', 'rclone');
+      writeFileSync(fake, `#!/usr/bin/env bash
+case "$1" in
+  lsf) ls "$FAKE_STORE" ;;
+  copyto) name="\${2##*[:/]}"; cp "$FAKE_STORE/$name" "$3" ;;
+  *) exit 0 ;;
+esac
+`);
+      chmodSync(fake, 0o755);
+      writeFileSync(path.join(work, 'empty.conf'), '');
+      env = {
+        ...process.env,
+        PATH: `${path.join(work, 'bin')}:${process.env.PATH}`,
+        RCLONE_CONFIG: path.join(work, 'empty.conf'),
+        FAKE_STORE: store,
+        BACKUP_REMOTE: 'fakeremote:',
+      };
+    });
+    afterAll(() => rmSync(work, { recursive: true, force: true }));
+
+    function run() {
+      try {
+        return { status: 0, stdout: execFileSync('bash', [VERIFY], { env, encoding: 'utf8' }) };
+      } catch (e) {
+        return { status: e.status, stdout: e.stdout };
+      }
+    }
+    function clearStore() {
+      for (const f of readdirSync(store)) rmSync(path.join(store, f));
+    }
+
+    it.skipIf(!hasSqlite3)('verifies a gzipped copy: RESTORE VERIFY: PASS', () => {
+      clearStore();
+      const db = path.join(work, 'good.db');
+      makeTestDb(db);
+      addRequiredTables(db);
+      writeFileSync(path.join(store, 'sessions.2020-01-01-000000.db.gz'), gzipSync(readFileSync(db)));
+      const r = run();
+      expect(r.status).toBe(0);
+      expect(r.stdout).toMatch(/RESTORE VERIFY: PASS/);
+    });
+
+    it.skipIf(!hasSqlite3)('a corrupt .gz fails with gunzip errored', () => {
+      clearStore();
+      writeFileSync(path.join(store, 'sessions.2020-01-01-000000.db.gz'), 'this is not gzip data');
+      const r = run();
+      expect(r.status).toBe(1);
+      expect(r.stdout).toMatch(/RESTORE VERIFY: FAIL \(gunzip errored\)/);
+    });
+
+    it.skipIf(!hasSqlite3)('still verifies a plain London .db copy', () => {
+      clearStore();
+      const db = path.join(work, 'plain.db');
+      makeTestDb(db);
+      addRequiredTables(db);
+      copyFileSync(db, path.join(store, 'sessions.2020-01-01-000000.db'));
+      const r = run();
+      expect(r.status).toBe(0);
+      expect(r.stdout).toMatch(/RESTORE VERIFY: PASS/);
+    });
   });
 });

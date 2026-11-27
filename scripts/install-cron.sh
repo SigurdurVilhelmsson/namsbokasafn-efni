@@ -35,12 +35,23 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 # already points at the bucket, so 'secret:' IS the bucket root; a subpath would
 # only nest an encrypted-name directory inside it for no reason.
 # See docs/technical/backup-and-restore.md.
-30 */6 * * * BACKUP_REMOTE=${BACKUP_REMOTE:-secret:} ${DEPLOY_PATH}/scripts/backup-db.sh >> ${DEPLOY_PATH}/pipeline-output/backup-db.log 2>&1
+#
+# The locked Paris bucket (G1.20): LOCKED_BACKUP_REMOTE is its rclone crypt remote (it MUST begin with 'locked' and
+# end in ':' or '/'), LOCKED_BACKUP_S3 is the raw S3 remote and bucket under it, used for version listings and
+# deletes (it too must begin with 'locked', end in ':' or '/' and name a DIFFERENT remote). The job also checks
+# rclone's config: the first must be a remote of type crypt and the second of type s3. A Paris setting it refuses
+# skips Paris (nothing uploaded there or deleted) with exit 5, while London, if set, still runs; a BACKUP_REMOTE
+# beginning with 'locked' or equal to LOCKED_BACKUP_REMOTE stops the whole run first. BUCKET below is [USER]'s Paris bucket name:
+# replace it before installing. During the move from London BOTH BACKUP_REMOTE and the two locked variables are
+# set; after the move BACKUP_REMOTE is dropped from this line. See docs/technical/backup-and-restore.md.
+30 */6 * * * BACKUP_REMOTE=${BACKUP_REMOTE:-secret:} LOCKED_BACKUP_REMOTE=${LOCKED_BACKUP_REMOTE:-locked-secret:} LOCKED_BACKUP_S3=${LOCKED_BACKUP_S3:-locked-s3:BUCKET/} ${DEPLOY_PATH}/scripts/backup-db.sh >> ${DEPLOY_PATH}/pipeline-output/backup-db.log 2>&1
 
 # Monthly restore-test: prove an off-box backup actually round-trips (RESTORE VERIFY: PASS).
 # A backup that uploads but cannot be restored is worth nothing; this is the check
 # that distinguishes the two.
 0 4 1 * * BACKUP_REMOTE=${BACKUP_REMOTE:-secret:} ${DEPLOY_PATH}/scripts/verify-db-backup.sh >> ${DEPLOY_PATH}/pipeline-output/verify-db-backup.log 2>&1
+# The same test for the locked Paris remote (it reads the newest .db.gz copy). Drop the line above after the move.
+15 4 1 * * BACKUP_REMOTE=${LOCKED_BACKUP_REMOTE:-locked-secret:} ${DEPLOY_PATH}/scripts/verify-db-backup.sh >> ${DEPLOY_PATH}/pipeline-output/verify-db-backup.log 2>&1
 
 # Research file backup (spec §5.17): its OWN job, with its own rclone crypt remote over its own bucket
 # (versioning off). Order: prune both tiers by age, run the withdrawal and retention deletions with --write

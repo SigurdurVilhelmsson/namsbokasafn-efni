@@ -1181,3 +1181,12 @@ a079e8d17 docs(register): §C244 — the test minors closed (a8cb03f87, 078de526
 **Why:** Split by kind (server, page, tests, rulings) so each PR stayed small and the register heading edits merged in order. A test that passed on arrival counts only if a golden-copy mutant turns it red while the older tests stay green. Next: deploy (#828–#831 merged, not deployed; prod at 8f1b34806, #827's merge, deployed 16:17Z with #826), then the pile C rulings.
 
 ---
+
+## 2026-11-27 - G1.20 editorial long-lived backups: designed, approved, built (subagent-driven, 10 tasks), final review clean; prod deployed at #832
+
+**Branch:** feat/g120-editorial-backups (PR to open; merge on CI green per [USER]'s go)
+**Modified:** scripts/backup-db.sh, scripts/verify-db-backup.sh, scripts/install-cron.sh, server/scripts/editorial-backup.js (new), server/scripts/recover-from-backup.js (new), server/lib/editorialBackupPolicy.js (new), server/lib/lockedBackupHealth.js (new), server/index.js, docs/technical/backup-and-restore.md, LICENSE, register, spec + plan
+
+**Why:** [USER] wants backups that survive accidental changes, deletions and server incidents, and a way to get a segment back from a while back. For chemistry the editors' work lives only in sessions.db (faithful writes are held, §C203; a re-saved pending edit overwrites its row), so the copies are the only history. Chose layout B: every 6-hourly copy kept ~12 months in a COMPLIANCE-locked Paris bucket (lock set by the bucket, never by code), a lifecycle rule plus a server-side delete as the cap, a fail-closed health check. Reviews added three guards the plan lacked (remote TYPE check against an unencrypted swapped pair; Paris-only typos skip Paris not London; "fresh copy" proof ties the listing to the upload and bounds the clock). §C257 was a duplicate of §C252 and was folded. Prod deployed at 33f7b662a (#828–#832) mid-session. Next is [USER]'s: deploy, s04 + the live probe (runbook step 6), the move, the 350-day lock when the consent text is listed.
+
+---

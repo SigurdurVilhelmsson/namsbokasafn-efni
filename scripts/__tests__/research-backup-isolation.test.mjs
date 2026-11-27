@@ -77,7 +77,12 @@ describe('T19: the editorial tier never picks up a research copy', () => {
     touch(`${research}-wal`, base - 60, 'research wal bytes');
 
     const r = spawnSync('bash', [BACKUP_DB, backups], {
-      env: { ...process.env, DB_PATH_OVERRIDE: db, BACKUP_REMOTE: '' },
+      env: {
+        ...process.env,
+        DB_PATH_OVERRIDE: db,
+        BACKUP_NODE: process.execPath,
+        BACKUP_REMOTE: '',
+      },
       encoding: 'utf8',
     });
     expect(r.status, r.stdout + r.stderr).toBe(0);
@@ -110,6 +115,7 @@ describe('T19: the editorial tier never picks up a research copy', () => {
         ...fake.env(),
         PATH: `${fake.binDir}:${process.env.PATH}`,
         DB_PATH_OVERRIDE: db,
+        BACKUP_NODE: process.execPath,
         BACKUP_REMOTE: 'secret:',
         BACKUP_REMOTE_KEEP: '1',
       },
@@ -159,7 +165,6 @@ describe('T19: the editorial tier never picks up a research copy', () => {
     const verifyDb = readFileSync(VERIFY_DB, 'utf8');
     for (const s of [
       'pipeline-output/sessions.db',
-      'sessions.${TIMESTAMP}.db',
       '"$BACKUP_DIR"/sessions.*.db',
       'sessions.*.db-shm',
       'sessions.*.db-wal',
@@ -168,6 +173,10 @@ describe('T19: the editorial tier never picks up a research copy', () => {
       expect(backupDb, s).toContain(s);
     }
     expect(verifyDb).toContain("grep '^sessions\\.'");
+    // The copy's name is built in Node now (the copy moved out of backup-db.sh): still sessions.<stamp>.db.
+    expect(
+      readFileSync(path.join(REPO, 'server', 'scripts', 'editorial-backup.js'), 'utf8')
+    ).toContain('return `sessions.${stamp}.db`');
     expect(backupDb).not.toMatch(/research/);
     expect(verifyDb).not.toMatch(/research/);
     // Control: the same pattern, read the same way, does fire on the research scripts. (research-backup.sh never

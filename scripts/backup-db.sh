@@ -11,10 +11,14 @@
 #
 # The script:
 #   0. Runs the editorial retention (server/scripts/editorial-retention.js --write) before anything is copied
-#   1. Checkpoints the WAL to ensure all data is in the main DB file
-#   2. Copies the DB file with a timestamp
-#   3. Keeps the most recent 30 backups (prunes older ones, with their
+#   1. Makes a timestamped copy with VACUUM INTO (server/scripts/editorial-backup.js copy): a consistent snapshot
+#      of live rows only, so the bytes of deleted rows are not carried into a copy that is kept for months
+#   2. Keeps the most recent 30 backups (prunes older ones, with their
 #      -shm/-wal side files, and sweeps side files whose backup is gone)
+#   3. Uploads to the off-box remotes (see "Off-box upload" below: London BACKUP_REMOTE, locked Paris
+#      LOCKED_BACKUP_REMOTE) and exits 3-8 on the failures documented there; a Paris-only misconfiguration skips
+#      Paris (exit 5) and London still runs
+#   4. Exits with Paris's code if non-zero, else London's, else 0
 #
 
 set -euo pipefail
@@ -43,23 +47,28 @@ mkdir -p "$BACKUP_DIR"
 # failure's reason (an error code and message, never a row's value), stays in this log, so a retention that cannot
 # run is diagnosable before the health check would show it (final review I-3).
 # /usr/bin first: better-sqlite3's binary is built for the service's /usr/bin/node.
-# RETENTION_NODE is a test seam (scripts/__tests__); cron never sets it.
-RETENTION_NODE="${RETENTION_NODE:-$(PATH="/usr/bin:$PATH" command -v node || true)}"
+# Two test seams (scripts/__tests__); cron sets neither. RETENTION_NODE is the node for the editorial-retention call
+# only; BACKUP_NODE is the node for every server/scripts/editorial-backup.js call (today the copy). Both default to
+# the same /usr/bin-first node.
+DEFAULT_NODE="$(PATH="/usr/bin:$PATH" command -v node || true)"
+RETENTION_NODE="${RETENTION_NODE:-$DEFAULT_NODE}"
+BACKUP_NODE="${BACKUP_NODE:-$DEFAULT_NODE}"
 if [ -z "$RETENTION_NODE" ]; then
   echo "WARNING: editorial retention did not complete: node not found" >&2
 elif ! SESSIONS_DB_PATH="$DB_PATH" "$RETENTION_NODE" "${PROJECT_ROOT}/server/scripts/editorial-retention.js" --write >/dev/null; then
   echo "WARNING: editorial retention did not complete; see checks.retention in /api/health" >&2
 fi
 
-# Checkpoint WAL to flush pending writes into the main DB file
-sqlite3 "$DB_PATH" "PRAGMA wal_checkpoint(TRUNCATE);" 2>/dev/null || {
-  echo "WARNING: WAL checkpoint failed (sqlite3 not installed?). Proceeding with file copy." >&2
+# Local copy through Node (VACUUM INTO, mode 0600). It prints the copy's path and leaves no partial file on failure.
+# No cp fallback: a plain copy would carry deleted rows' bytes into a long-kept backup.
+if [ -z "$BACKUP_NODE" ]; then
+  echo "ERROR: local copy failed: node not found" >&2
+  exit 1
+fi
+BACKUP_FILE="$("$BACKUP_NODE" "${PROJECT_ROOT}/server/scripts/editorial-backup.js" copy "$DB_PATH" "$BACKUP_DIR")" || {
+  echo "ERROR: local copy failed (if better-sqlite3 cannot load, run: cd server && npm ci)" >&2
+  exit 1
 }
-
-# Create timestamped backup
-TIMESTAMP="$(date +%Y-%m-%d-%H%M%S)"
-BACKUP_FILE="${BACKUP_DIR}/sessions.${TIMESTAMP}.db"
-cp "$DB_PATH" "$BACKUP_FILE"
 
 echo "Backup created: $BACKUP_FILE ($(du -h "$BACKUP_FILE" | cut -f1))"
 
@@ -91,32 +100,174 @@ if [ "$ORPHANS" -gt 0 ]; then
 fi
 
 # --- Off-box upload (encrypted) -------------------------------------------
-# Uploads the just-created backup to BACKUP_REMOTE via rclone. The remote is a
-# client-side-encrypted (crypt) remote, so plaintext never leaves this box.
-# Unset BACKUP_REMOTE => skip (local-only backup still valid; dev/CI unaffected).
+# Two remotes, both client-side-encrypted (crypt) so plaintext never leaves this box. Both unset => skip (the local
+# backup is still valid; dev/CI unaffected). Both may be set at once, during the move.
+#   BACKUP_REMOTE         London. Uploads the plain copy; keeps the newest BACKUP_REMOTE_KEEP by count. Unchanged.
+#   LOCKED_BACKUP_REMOTE  Paris, a crypt remote named locked*. Uploads the gzipped copy; the BUCKET sets the
+#                         Object Lock, so NO upload here carries a lock flag. LOCKED_BACKUP_S3 is the S3 path under
+#                         that crypt remote, for version listings and deletes. G1.20 spec §4.2, §4.3, §4.7.
+# Exit codes: 3 rclone missing, 4 an upload failed, 5 a malformed or forbidden remote setting, 6 paused (an editorial
+# retention step is due, nothing sent to Paris), 7 rate guard refused or the pre-upload listing failed, 8 the status
+# check is not ok. Paris's codes outrank London's.
+# Two kinds of 5 (G1.20 final review, ruling R12):
+#   - a London setting that could point London's count-based prune at the locked bucket (or a malformed London
+#     path) stops the WHOLE run before anything is uploaded or deleted;
+#   - a Paris-only misconfiguration (a Paris variable's name, separator or rclone type) skips Paris alone. London
+#     runs as usual and the run exits 5. With LOCKED_BACKUP_REMOTE set the heartbeat is Paris's, so London writes
+#     none and checks.offbox_backup goes stale: the skip is visible.
 REMOTE_KEEP="${BACKUP_REMOTE_KEEP:-30}"
 HEARTBEAT="${BACKUP_DIR}/.last-offbox-backup"
+LOCKED_STATUS="${BACKUP_DIR}/.offbox-locked-status.json"
+LONDON_RC=0
+LOCKED_RC=0
+PARIS_OK=no   # yes once every Paris guard (1b) has passed; LOCKED_BACKUP_REMOTE itself is never unset
 
-if [ -z "${BACKUP_REMOTE:-}" ]; then
-  echo "BACKUP_REMOTE not set — skipping off-box upload (local backup only)."
-else
+# 1a. London-protecting guards: exit 5 before anything is uploaded or deleted.
+if [ -n "${BACKUP_REMOTE:-}" ]; then
+  case "$BACKUP_REMOTE" in
+    locked*) echo "ERROR: BACKUP_REMOTE must not begin with 'locked' (got '$BACKUP_REMOTE'): the count-based prune must never reach the locked remote" >&2; exit 5 ;;
+  esac
+  if [ -n "${LOCKED_BACKUP_REMOTE:-}" ] && [ "$BACKUP_REMOTE" = "$LOCKED_BACKUP_REMOTE" ]; then
+    echo "ERROR: BACKUP_REMOTE and LOCKED_BACKUP_REMOTE must differ" >&2; exit 5
+  fi
   case "$BACKUP_REMOTE" in
     *: | */) ;;  # a proper rclone remote path ends in ':' or '/'
     *) echo "ERROR: BACKUP_REMOTE must end in ':' or '/' (got '$BACKUP_REMOTE') — else the object name is munged and retention breaks" >&2; exit 5 ;;
   esac
-  if ! command -v rclone >/dev/null 2>&1; then
-    echo "ERROR: BACKUP_REMOTE set but rclone not installed" >&2
-    exit 3
-  fi
+fi
+if [ -z "${BACKUP_REMOTE:-}" ] && [ -z "${LOCKED_BACKUP_REMOTE:-}" ]; then
+  echo "BACKUP_REMOTE not set — skipping off-box upload (local backup only)."
+  exit 0
+fi
+if ! command -v rclone >/dev/null 2>&1; then
+  echo "ERROR: a backup remote is set but rclone not installed" >&2
+  exit 3
+fi
+
+# 1b. Paris guards. Each failure skips Paris only (LOCKED_RC=5); London still runs (R12). Checked in order; the
+# first failure stops the checks.
+paris_refuse() {
+  echo "ERROR: $1 (Paris skipped; London continues)" >&2
+  LOCKED_RC=5
+}
+if [ -n "${LOCKED_BACKUP_REMOTE:-}" ]; then
+  while :; do  # runs once; `break` ends the checks
+    case "$LOCKED_BACKUP_REMOTE" in
+      locked*: | locked*/) ;;
+      *) paris_refuse "LOCKED_BACKUP_REMOTE must begin with 'locked' and end in ':' or '/' (got '$LOCKED_BACKUP_REMOTE')"; break ;;
+    esac
+    # The S3 path is where the job deletes, so it carries the locked* prefix too: a bucket reached by another name is
+    # not the one the upload went to. (The fresh-copy rule in editorialBackupPolicy.js ties the listing to the upload.)
+    case "${LOCKED_BACKUP_S3:-}" in
+      locked*: | locked*/) ;;
+      *) paris_refuse "LOCKED_BACKUP_S3 must begin with 'locked', be set, and end in ':' or '/' when LOCKED_BACKUP_REMOTE is set (got '${LOCKED_BACKUP_S3:-}')"; break ;;
+    esac
+    # The two must at least be different remotes. What stops the S3 remote being pasted into the crypt variable (an
+    # UNENCRYPTED upload into the COMPLIANCE bucket) is the type check below, not this name comparison.
+    if [ "${LOCKED_BACKUP_REMOTE%%:*}" = "${LOCKED_BACKUP_S3%%:*}" ]; then
+      paris_refuse "LOCKED_BACKUP_REMOTE and LOCKED_BACKUP_S3 must name different remotes (crypt vs raw S3)"; break
+    fi
+    # A swapped or mistyped pair is refused by each remote's TYPE (rclone's own config), before anything is uploaded
+    # or deleted: the crypt remote must be crypt and the S3 path's remote must be s3. The names alone cannot tell (a
+    # plain remote named locked-* would pass the prefix test), and the S3 remote in the crypt variable would upload
+    # UNENCRYPTED into a bucket where nothing can be removed.
+    if ! REMOTES_LONG="$(rclone listremotes --long)"; then
+      paris_refuse "could not read rclone's remotes to check the types of LOCKED_BACKUP_REMOTE and LOCKED_BACKUP_S3"; break
+    fi
+    remote_type() { awk -v n="$1:" '$1 == n { print $2; exit }' <<< "$REMOTES_LONG"; }
+    if [ "$(remote_type "${LOCKED_BACKUP_REMOTE%%:*}")" != "crypt" ]; then
+      paris_refuse "LOCKED_BACKUP_REMOTE '${LOCKED_BACKUP_REMOTE}' must be an rclone remote of type crypt"; break
+    fi
+    if [ "$(remote_type "${LOCKED_BACKUP_S3%%:*}")" != "s3" ]; then
+      paris_refuse "LOCKED_BACKUP_S3 '${LOCKED_BACKUP_S3}' must be an rclone remote of type s3"; break
+    fi
+    PARIS_OK=yes
+    break
+  done
+fi
+
+# 2. London: upload, heartbeat, count-based prune. A failed upload no longer stops the run: Paris still goes.
+if [ -n "${BACKUP_REMOTE:-}" ]; then
   echo "Uploading encrypted backup to ${BACKUP_REMOTE} ..."
   if ! rclone copyto "$BACKUP_FILE" "${BACKUP_REMOTE}$(basename "$BACKUP_FILE")"; then
     echo "ERROR: off-box upload failed" >&2   # loud + non-zero; heartbeat NOT written
-    exit 4
+    LONDON_RC=4
+  else
+    # With Paris set, the heartbeat is Paris's: London's success must not mask a Paris failure.
+    if [ -z "${LOCKED_BACKUP_REMOTE:-}" ]; then
+      date -u +%Y-%m-%dT%H:%M:%SZ > "$HEARTBEAT"
+      echo "Off-box upload OK; heartbeat: $HEARTBEAT"
+    else
+      echo "Off-box upload OK (London)"
+    fi
+    # Prune remote to the most recent $REMOTE_KEEP (best-effort; upload already succeeded).
+    mapfile -t REMOTE_OLD < <(rclone lsf "$BACKUP_REMOTE" --files-only 2>/dev/null \
+      | grep '^sessions\.' | sort -r | tail -n +"$((REMOTE_KEEP + 1))")
+    for f in "${REMOTE_OLD[@]:-}"; do [ -n "$f" ] && rclone deletefile "${BACKUP_REMOTE}${f}" 2>/dev/null || true; done
   fi
-  date -u +%Y-%m-%dT%H:%M:%SZ > "$HEARTBEAT"
-  echo "Off-box upload OK; heartbeat: $HEARTBEAT"
-  # Prune remote to the most recent $REMOTE_KEEP (best-effort; upload already succeeded).
-  mapfile -t REMOTE_OLD < <(rclone lsf "$BACKUP_REMOTE" --files-only 2>/dev/null \
-    | grep '^sessions\.' | sort -r | tail -n +"$((REMOTE_KEEP + 1))")
-  for f in "${REMOTE_OLD[@]:-}"; do [ -n "$f" ] && rclone deletefile "${BACKUP_REMOTE}${f}" 2>/dev/null || true; done
 fi
+
+# 3. Paris: the locked remote, only when every Paris guard passed.
+if [ "$PARIS_OK" = yes ]; then
+  EB="${PROJECT_ROOT}/server/scripts/editorial-backup.js"
+  LIST_ARGS=(lsjson --s3-versions --s3-version-deleted --use-server-modtime "$LOCKED_BACKUP_S3")
+  LOCKED_NAME="$(basename "$BACKUP_FILE").gz"
+  while :; do  # runs once; `break` skips the rest of Paris
+    # 3.1 Pause while an editorial retention step is due: a copy made now would hold what the step must remove,
+    # and a locked copy cannot be deleted. Fails closed: "cannot tell" is "due".
+    if ! "$BACKUP_NODE" "$EB" retention-due "$DB_PATH"; then
+      echo "PAUSED: an editorial retention step is due; nothing uploaded to the locked remote" >&2
+      LOCKED_RC=6; break
+    fi
+    # 3.2 Rate guard from a listing taken before the upload. A listing that cannot be read refuses too.
+    if ! listing="$(rclone "${LIST_ARGS[@]}")" || ! printf '%s' "$listing" | "$BACKUP_NODE" "$EB" rate-ok; then
+      echo "ERROR: locked upload refused: rate guard, or the pre-upload listing failed" >&2
+      LOCKED_RC=7; break
+    fi
+    # 3.3 Gzip into a private temp directory and upload. NO lock flags: the bucket's settings lock each copy.
+    LOCKED_TMP="$(mktemp -d)" || { echo "ERROR: could not create a temp directory" >&2; LOCKED_RC=4; break; }
+    trap 'rm -rf -- "$LOCKED_TMP"' EXIT
+    if ! gzip -c "$BACKUP_FILE" > "$LOCKED_TMP/$LOCKED_NAME"; then
+      echo "ERROR: gzip of the backup failed" >&2
+      LOCKED_RC=4; break
+    fi
+    echo "Uploading encrypted backup to ${LOCKED_BACKUP_REMOTE} ..."
+    if ! rclone copyto "$LOCKED_TMP/$LOCKED_NAME" "${LOCKED_BACKUP_REMOTE}${LOCKED_NAME}"; then
+      echo "ERROR: locked off-box upload failed" >&2   # heartbeat NOT written
+      LOCKED_RC=4; break
+    fi
+    # 3.4 The upload succeeded: heartbeat.
+    date -u +%Y-%m-%dT%H:%M:%SZ > "$HEARTBEAT"
+    echo "Locked off-box upload OK; heartbeat: $HEARTBEAT"
+    # 3.5 Delete data versions past the server's delete age, by versioned name. Best-effort. Only the S3 path is
+    # ever addressed here: the crypt remote is never given to deletefile. `expired` prints nothing and fails unless
+    # the listing holds a fresh copy (the one just uploaded, within an hour of now), so a wrong box clock or a
+    # listing of some other bucket deletes nothing.
+    if listing="$(rclone "${LIST_ARGS[@]}")" && expired="$(printf '%s' "$listing" | "$BACKUP_NODE" "$EB" expired)"; then
+      while IFS= read -r vpath; do
+        [ -n "$vpath" ] || continue
+        rclone deletefile --s3-versions "${LOCKED_BACKUP_S3}${vpath}" </dev/null \
+          || echo "WARNING: could not delete expired version" >&2
+      done <<< "$expired"
+    else
+      echo "WARNING: no expired versions deleted: the listing failed or held no fresh copy" >&2
+    fi
+    # 3.6 Status from a new listing, and whether this upload is visible through the crypt remote. Fails closed;
+    # editorialBackupPolicy.js summarize() also requires a fresh copy in this listing (no-fresh-copy).
+    seen=no
+    # Capture first, then match: `grep -q` exits at its first hit, rclone then dies of SIGPIPE, and under pipefail a
+    # PRESENT upload would read as unseen.
+    names="$(rclone lsf --files-only "$LOCKED_BACKUP_REMOTE")" || names=""
+    if grep -qxF -- "$LOCKED_NAME" <<< "$names"; then seen=yes; fi
+    if ! listing="$(rclone "${LIST_ARGS[@]}")"; then listing=""; fi
+    if ! printf '%s' "$listing" | "$BACKUP_NODE" "$EB" status --uploaded-seen "$seen" --out "$LOCKED_STATUS"; then
+      echo "ERROR: locked backup status is not ok (see $LOCKED_STATUS)" >&2
+      LOCKED_RC=8
+    fi
+    break
+  done
+fi
+
+# 4. Exit: Paris's verdict first, then London's.
+if [ "$LOCKED_RC" -ne 0 ]; then exit "$LOCKED_RC"; fi
+exit "$LONDON_RC"
