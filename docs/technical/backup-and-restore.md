@@ -5,7 +5,7 @@ The research file (`research.db`) has its own job, its own remote and its own ru
 **What this protects.** `pipeline-output/sessions.db` holds the editorial work that lives **only** in the database: segment edits, the per-segment version history (`content_versions`), review/approval state, and the **entire terminology glossary**. It is gitignored — the 2-hourly `git-backup.sh` cron backs up rendered *content* under `books/`, but **not** the DB. (`content_versions` holds no snapshots while chemistry's writes are held, register §C203, so the work in that period lives in `segment_edits`.) If `sessions.db` is lost and there is no off-box copy, that human-verified intellectual work is gone. `sessions.db` also contains **PII** (editor emails / display names in `users`), so off-box copies are **client-side encrypted**.
 
 There are two layers (a third, long-lived and locked, is added by [The editorial bucket in Paris](#the-editorial-bucket-in-paris-g120)):
-1. **Local** (`scripts/backup-db.sh`, always on): WAL-checkpoint → timestamped copy under `pipeline-output/backups/` → keep the most recent `MAX_BACKUPS` (set in `scripts/backup-db.sh`). Protects against accidental corruption/deletion, but **not** disk/instance loss.
+1. **Local** (`scripts/backup-db.sh`, always on): a timestamped copy under `pipeline-output/backups/`, made with `VACUUM INTO` (live rows only, so deleted rows' bytes are not carried forward; mode `0600`; kept only if `PRAGMA integrity_check` passes) → keep the most recent `MAX_BACKUPS` (set in `scripts/backup-db.sh`). Protects against accidental corruption/deletion, but **not** disk/instance loss.
 2. **Off-box** (same script, when `BACKUP_REMOTE` is set): encrypt-and-upload each backup to Linode Object Storage via `rclone`. Protects against losing the box.
 
 The Paris tier (`LOCKED_BACKUP_REMOTE`) adds gzipped copies that Object Lock keeps from the server's own key and that expire before 12 months: see [The editorial bucket in Paris](#the-editorial-bucket-in-paris-g120).
@@ -16,8 +16,8 @@ The Paris tier (`LOCKED_BACKUP_REMOTE`) adds gzipped copies that Object Lock kee
 |---|---|---|---|
 | `BACKUP_REMOTE` | `backup-db.sh`, `verify-db-backup.sh` | *(unset → off-box skipped)* | An `rclone` **crypt** remote path, e.g. `secret:`. **Must end in `:` or `/`** — the script fails loud (`exit 5`) otherwise, because a missing separator munges the object name and silently breaks retention. Since the crypt remote already points at the bucket, `secret:` *is* the bucket root; a subpath form must still carry the trailing slash (`secret:sub/`). |
 | `BACKUP_REMOTE_KEEP` | `backup-db.sh` | `BACKUP_REMOTE_KEEP`'s fallback in `scripts/backup-db.sh` | How many most-recent objects to keep off-box (older ones pruned). |
-| `LOCKED_BACKUP_REMOTE` | `backup-db.sh`, `recover-from-backup.js` | *(unset → Paris skipped)* | The Paris **crypt** remote (`locked-secret:`). **Must begin with `locked`, end in `:` or `/`, and be an rclone remote of type `crypt`** (checked against rclone's config), else `exit 5`. The type check is what stops the S3 remote being pasted here, which would upload unencrypted into a bucket where nothing can be removed. Uploads the gzipped copy; the bucket's settings, never a flag, lock it. London's `BACKUP_REMOTE` must **not** begin with `locked`. |
-| `LOCKED_BACKUP_S3` | `backup-db.sh` | *(required when `LOCKED_BACKUP_REMOTE` is set)* | The raw S3 path under that crypt remote (`locked-s3:<bucket>/`), for version listings and deletes. **Must end in `:` or `/` and be an rclone remote of type `s3`**, different from `LOCKED_BACKUP_REMOTE`, else `exit 5`. |
+| `LOCKED_BACKUP_REMOTE` | `backup-db.sh`, `recover-from-backup.js` | *(unset → Paris skipped)* | The Paris **crypt** remote (`locked-secret:`). **Must begin with `locked`, end in `:` or `/`, and be an rclone remote of type `crypt`** (checked against rclone's config). Otherwise Paris is skipped (nothing is uploaded to it or deleted from it) and the run exits 5, while London, if set, still runs. The type check is what stops the S3 remote being pasted here, which would upload unencrypted into a bucket where nothing can be removed. Uploads the gzipped copy; the bucket's settings, never a flag, lock it. London's `BACKUP_REMOTE` must **not** begin with `locked` nor equal this value: either stops the whole run with `exit 5` before anything is sent. |
+| `LOCKED_BACKUP_S3` | `backup-db.sh` | *(required when `LOCKED_BACKUP_REMOTE` is set)* | The raw S3 path under that crypt remote (`locked-s3:<bucket>/`), for version listings and deletes. **Must begin with `locked`, end in `:` or `/` and be an rclone remote of type `s3`**, different from `LOCKED_BACKUP_REMOTE`. Otherwise Paris is skipped with `exit 5`, as above. |
 | `OFFBOX_BACKUP_STALE_HOURS` | the server (`/api/health`) | `DEFAULT_STALE_HOURS` in `server/lib/offboxBackupHealth.js` | Age past which `/api/health` flags the off-box backup `stale` (derived from the cron period: see the comment above `DEFAULT_STALE_HOURS`); it also bounds how old the Paris status file may be (`checks.offbox_backup_cap`). |
 | `CONTENT_BACKUP_STALE_HOURS` | the server (`/api/health`) | `DEFAULT_STALE_HOURS` in `server/lib/contentBackupHealth.js` | Age past which `/api/health` flags the **content** backup `stale` (derived from the cron period: see the comment above `DEFAULT_STALE_HOURS`). |
 
@@ -51,7 +51,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 0 4 1 * *   BACKUP_REMOTE=secret: <repo>/scripts/verify-db-backup.sh
 ```
 
-During the move to Paris the backup line also carries `LOCKED_BACKUP_REMOTE=locked-secret: LOCKED_BACKUP_S3=locked-s3:<bucket>/`, and a second monthly line tests `BACKUP_REMOTE=locked-secret:`. After the move `BACKUP_REMOTE` is dropped (Step 8 of the Paris section). ⚠️ **Do not install the newly printed backup line before Step 8:** with `LOCKED_BACKUP_REMOTE` set, London stops writing the heartbeat, so an installed line whose Paris half is not yet working leaves `/api/health` reporting the backup stale. The values printed by `install-cron.sh` are pinned against the real guards by `scripts/__tests__/backup-db.test.mjs`.
+During the move to Paris the backup line also carries `LOCKED_BACKUP_REMOTE=locked-secret: LOCKED_BACKUP_S3=locked-s3:<bucket>/`, and a second monthly line tests `BACKUP_REMOTE=locked-secret:`. After the move `BACKUP_REMOTE` is dropped (Step 8 of the Paris section). ⚠️ **Do not install the newly printed backup line before Step 8.4** (after the hand run, the restore test and the health read): with `LOCKED_BACKUP_REMOTE` set, London stops writing the heartbeat, so an installed line whose Paris half is not yet working leaves `/api/health` reporting the backup stale. A Paris setting the job refuses (a name, separator or rclone type) skips Paris with exit 5 while London still uploads, and shows the same way: `checks.offbox_backup` goes stale. The values printed by `install-cron.sh` are pinned against the real guards by `scripts/__tests__/backup-db.test.mjs`.
 
 ⚠️ **The `PATH=` line is load-bearing.** cron gives a user crontab `PATH=/usr/bin:/bin`, but rclone's official installer puts the binary in `/usr/local/bin`. Without the line, every cron run dies at `exit 3` ("rclone not installed") — while the same command run by hand succeeds, because a *login* shell does have `/usr/local/bin`. That asymmetry is what makes it dangerous: the setup test passes and the thing it tested never runs. There is no `MAILTO`, so the only signal is `/api/health` going stale.
 
@@ -171,6 +171,8 @@ aws s3api get-object-lock-configuration --bucket <bucket> --profile locked-admin
 
 The read-back must show `"Mode": "COMPLIANCE"` and `"Days": 3`. Three days is longer than the probe's lifecycle window below, which the probe needs. Record the read-back in the register.
 
+If this or any `aws` command here is refused with an error about a checksum, the AWS CLI's newer default checksums may be the cause: retry it with `AWS_REQUEST_CHECKSUM_CALCULATION=when_required` in front of the command. (Not verified against Akamai: a hint, not a known fix.)
+
 ### Step 3. The probe lifecycle (1 day)
 
 Save this as `probe-lifecycle.json` on your computer. It has two rules: one expires current copies after 1 day and noncurrent versions 1 day after that, and one removes delete markers once nothing lies behind them (an object cannot take both clauses in one rule).
@@ -204,7 +206,7 @@ As the **service user** (so the remotes land in the `rclone.conf` the cron reads
 - a plain **s3** remote **`locked-s3`**: provider Linode (or Other), the **limited** key from step 4, endpoint `fr-par-1.linodeobjects.com`;
 - a **crypt** remote **`locked-secret`** wrapping it: `remote = locked-s3:<bucket>`.
 
-**Both Paris remotes begin with `locked`**, and London's `BACKUP_REMOTE` must **not** (the job refuses it, exit 5: that is what keeps London's count-based prune away from this bucket). The job also checks each remote's **type** against rclone's config, so a swapped pair (the S3 remote in the crypt variable would upload unencrypted into a bucket where nothing can be removed) or a wrongly typed remote is refused with exit 5 before anything is uploaded or deleted.
+**Both Paris remotes begin with `locked`**, and London's `BACKUP_REMOTE` must **not** (the job refuses it and stops the whole run, exit 5: that is what keeps London's count-based prune away from this bucket). The job also checks each remote's **type** against rclone's config, so a swapped pair (the S3 remote in the crypt variable would upload unencrypted into a bucket where nothing can be removed) or a wrongly typed remote is refused before anything is uploaded to Paris or deleted there. A refused Paris setting skips Paris only, with exit 5: London, while it is still set, runs as usual, and `checks.offbox_backup` goes stale because the heartbeat is Paris's.
 
 🔴 **The passphrase goes into the password manager BEFORE any upload.** This is the same gate as for the other remotes, and sharper here: a copy nobody can decrypt is still locked, and still billed, for its whole life. The crypt remote takes **two** secrets, the passphrase (`password`) and the salt (`password2`): **both are needed to decrypt.** Generate both in the password manager first, then answer "type my own" at both prompts. Then run `chmod 600` on `rclone.conf` (`rclone config file` prints where it is).
 
@@ -296,17 +298,19 @@ Read back at once:
 ```bash
 rclone lsf locked-secret:                                           # B is not listed: hidden behind a delete marker
 rclone lsf --s3-version-at <before-delete> locked-secret:           # B is listed: still there
+rclone cat --s3-version-at <before-delete> locked-secret:probe-B.txt   # prints probe-B: the hidden copy can be READ
 ```
 
-If the second command does **not** list B, that is a problem with the instrument, not a verdict: check that `<before-delete>` is after B's upload and before the delete, retry with a time a few seconds after the upload, and look at `rclone lsjson --s3-versions --s3-version-deleted locked-s3:<bucket>/` for B's version and its marker. Do not go on until B can be listed at that time.
+The last command is the download proof: the recovery tool's `--as-of` needs to read a hidden copy, not only list it. If the second command does **not** list B, or the third does not print `probe-B`, that is a problem with the instrument, not a verdict: check that `<before-delete>` is after B's upload and before the delete, retry with a time a few seconds after the upload, and look at `rclone lsjson --s3-versions --s3-version-deleted locked-s3:<bucket>/` for B's version and its marker. Do not go on until B can be listed at that time.
 
 Now wait. B's noncurrent version (it became noncurrent at the delete) is first eligible for the 1-day lifecycle rule at the **second** midnight after the upload, so read it **after the THIRD midnight**: by then the rule has had two runs at it. The lock ends 72 hours after B's upload, so read **before that**. With a morning upload the third midnight falls about 63 hours after it, so the early hours of day 4 fit (an upload at 09:00 on day 1: read between about 00:30 and 08:30 on day 4). Then:
 
 ```bash
 rclone lsf --s3-version-at <before-delete> locked-secret:
+rclone cat --s3-version-at <before-delete> locked-secret:probe-B.txt
 ```
 
-🔴 **B must still be listed.** If it is, the plain delete hid B, the lifecycle did not destroy it, and the layout is sound: go on. **If B is gone, STOP.** Akamai's lifecycle ignored the lock, so this layout does not survive a bad script. Do not upload a real copy and do not go on to step 7: the decision is yours, and the next step is a new design.
+🔴 **B must still be listed, and the `cat` must still print `probe-B`.** If it is, the plain delete hid B, the lifecycle did not destroy it, and the layout is sound: go on. **If B is gone, STOP.** Akamai's lifecycle ignored the lock, so this layout does not survive a bad script. Do not upload a real copy and do not go on to step 7: the decision is yours, and the next step is a new design.
 
 **6.6 Confirm the job's own listing sees all of it.** This is the exact listing `scripts/backup-db.sh` takes; it must show hidden versions too. Run it right after the 6.5 read, still before the locks end:
 
@@ -335,6 +339,8 @@ rclone lsjson --s3-versions --s3-version-deleted locked-s3:<bucket>/
 It must be empty, or hold only delete markers (size 0). That proves the rule deletes on this bucket. Do not upload a real copy before it is empty.
 
 ### Step 7. After the probe: the real settings
+
+⚠️ **Timing, here and in step 9 (and for any later change to the default lock):** type these well away from the backup cron's `:30` slots (00:30, 06:30, 12:30 and 18:30 UTC), so that no cron upload lands under a mistyped lock before you have read it back. A copy takes the lock in force when it is uploaded, and that lock cannot be shortened.
 
 Set the lifecycle to the real rule (current copies at **355** days, noncurrent versions after **1** day, expired delete markers removed). Save it as `lifecycle.json`:
 
@@ -367,14 +373,15 @@ The read-back must show `"Days": 30`. Record both read-backs in the register.
 
 ### Step 8. Switch the cron from London to Paris
 
-1. **Set both remotes.** `scripts/install-cron.sh` prints the backup line with `BACKUP_REMOTE`, `LOCKED_BACKUP_REMOTE` and `LOCKED_BACKUP_S3`. Replace `BUCKET` in `LOCKED_BACKUP_S3` with `<bucket>` (the value must still end in `/`). Install it with `crontab -e` and read it back with `crontab -l`. (With `LOCKED_BACKUP_REMOTE` set, London no longer writes the heartbeat: it is Paris's, so `checks.offbox_backup` waits for the first successful Paris upload.)
-2. **A hand run.** From the repository root, as the service user, with the same three values:
+The order is the design's (§4.7): a watched hand run, the restore test, health reading ok, and only then the crontab. Until 8.4 the crontab keeps its London-only line, which keeps writing the heartbeat.
+
+1. **A watched hand run, with both remotes set.** From the repository root, as the service user:
 
    ```bash
    BACKUP_REMOTE=secret: LOCKED_BACKUP_REMOTE=locked-secret: LOCKED_BACKUP_S3=locked-s3:<bucket>/ scripts/backup-db.sh; echo "exit $?"
    ```
 
-   Expect `Locked off-box upload OK; heartbeat: …` and `exit 0`. The exit codes, if not: 3 rclone missing, 4 an upload failed, 5 a setting is malformed or forbidden (including a Paris remote of the wrong type), 6 paused because an editorial retention step is due (nothing was sent to Paris), 7 the rate guard (8 copies in 24 hours) refused or the listing before the upload failed, 8 the status check is not ok. Then read the status file, which holds ages and counts only:
+   Expect `Locked off-box upload OK; heartbeat: …` and `exit 0`. The exit codes, if not: 3 rclone missing; 4 an upload failed; 5 a setting is malformed or forbidden, in one of two ways: a London setting that could reach the locked bucket stops the whole run before anything is sent, while a Paris setting the job refuses (a name, separator or rclone type) skips Paris only, so London still uploads and `checks.offbox_backup` goes stale; 6 paused because an editorial retention step is due (nothing was sent to Paris); 7 the rate guard (`MAX_COPIES_PER_24H` copies in 24 hours, in `server/lib/editorialBackupPolicy.js`) refused or the listing before the upload failed; 8 the status check is not ok. Then read the status file, which holds ages and counts only:
 
    ```bash
    cat pipeline-output/backups/.offbox-locked-status.json
@@ -382,20 +389,32 @@ The read-back must show `"Days": 30`. Record both read-backs in the register.
    ```
 
    The new `sessions.<stamp>.db.gz` must be listed.
-3. **The restore test against Paris.**
+2. **The restore test against Paris.**
 
    ```bash
    BACKUP_REMOTE=locked-secret: scripts/verify-db-backup.sh
    ```
 
    Expect `RESTORE VERIFY: PASS` (it reads the newest `.db.gz` copy, unzips and integrity-checks it).
-4. **Health reads ok.**
+3. **Health reads ok.**
 
    ```bash
    curl -s http://localhost:3000/api/health
    ```
 
-   `checks.offbox_backup_cap` must read `"ok":true,"state":"ok"`. ⚠️ **`"state":"not-configured"` also reads `ok:true`**; it means the status file does not exist, so it is *not* a pass here. The states are: `ok`; `stale` (the job has not written the status file within `OFFBOX_BACKUP_STALE_HOURS`); `unreadable` (the file is malformed); `unavailable` (the check itself could not run); `listing-invalid`, `listing-empty` (the bucket's listing could not be read, or was empty); `uploaded-not-seen` (the copy just uploaded was not in the listing); `over-cap` (a copy is older than **358 days**, so both the lifecycle rule and the job's own delete failed). A failing state names what to look at: the status file above, and `pipeline-output/backup-db.log`. `checks.offbox_backup` is the heartbeat of the last successful locked upload.
+   `checks.offbox_backup_cap` must read `"ok":true,"state":"ok"`. ⚠️ **`"state":"not-configured"` also reads `ok:true`**; it means the status file does not exist, so it is *not* a pass here. The states are:
+   - `ok`;
+   - `stale`: the job has not written the status file within `OFFBOX_BACKUP_STALE_HOURS`;
+   - `unreadable`: the file is malformed, or it exists and the server cannot read it (its permissions, say);
+   - `unavailable`: the check itself could not run;
+   - `listing-invalid`: the bucket's listing could not be read;
+   - `listing-empty`: the listing holds no copy (delete markers alone count as empty);
+   - `uploaded-not-seen`: the copy just uploaded is not listed through the crypt remote;
+   - `no-fresh-copy`: no copy in the S3 listing is within `FRESH_WINDOW_MS` of now, so either `LOCKED_BACKUP_S3` lists a different bucket from the one the copy went to, or the server's clock is wrong. The job's own delete refuses to run while this holds;
+   - `over-cap`: a copy is older than `CAP_ALARM_AFTER_DAYS`, so both the lifecycle rule and the job's own delete (`SERVER_DELETE_AFTER_DAYS`) failed.
+
+   The values named here are constants in `server/lib/editorialBackupPolicy.js`. A failing state names what to look at: the status file above, and `pipeline-output/backup-db.log`. `checks.offbox_backup` is the heartbeat of the last successful locked upload.
+4. **Only now, install the crontab line with both remotes.** `scripts/install-cron.sh` prints the backup line with `BACKUP_REMOTE`, `LOCKED_BACKUP_REMOTE` and `LOCKED_BACKUP_S3`, and a monthly verify line for `BACKUP_REMOTE=locked-secret:`. Replace `BUCKET` in `LOCKED_BACKUP_S3` with `<bucket>` (the value must still end in `/`). Install both with `crontab -e` and read them back with `crontab -l`. (With `LOCKED_BACKUP_REMOTE` set, London no longer writes the heartbeat: it is Paris's. If a later Paris run is refused or fails, London keeps uploading and `checks.offbox_backup` goes stale.)
 5. **Drop London.** Edit the crontab so that the backup line is exactly the Paris one, and the London monthly verify line (the one with `BACKUP_REMOTE=secret:`) is **removed whole**:
 
    ```cron
@@ -414,7 +433,7 @@ The read-back must show `"Days": 30`. Record both read-backs in the register.
 
 ### Step 9. When the consent text is listed: the full lock (350 days)
 
-Do this when, and only when, a consent text is listed in `APPROVED_CONSENT_TEXTS` (`server/lib/researchConsentText.js`) on `main`. It applies to new copies only; the copies already there keep their 30-day locks. It runs on your computer, with `--profile locked-admin`.
+Do this when, and only when, a consent text is listed in `APPROVED_CONSENT_TEXTS` (`server/lib/researchConsentText.js`) on `main`. It applies to new copies only; the copies already there keep their 30-day locks. It runs on your computer, with `--profile locked-admin`, well away from the cron's `:30` slots (00:30, 06:30, 12:30 and 18:30 UTC): see the timing note in step 7.
 
 First read that the lifecycle is still the real one (355 and 1), because the lock must stay shorter than it:
 
@@ -447,7 +466,7 @@ node server/scripts/recover-from-backup.js segment --book <book> --module <modul
 node server/scripts/recover-from-backup.js module --book <book> --module <module> --at 2026-11-15T12:00:00
 ```
 
-It takes the remote from `--remote`, or from `LOCKED_BACKUP_REMOTE`. `--file <copy>` reads a local copy instead. Times without a timezone are UTC, like the copies' names. A copy a plain delete has hidden behind a delete marker is still recoverable: add `--as-of <a time before the delete>` and the bucket is read as it was then. Exit 0 means rows were printed; 1 means no copy in range or no rows; 2 means a usage error, or `--file` was the live database.
+It takes the remote from `--remote`, or from `LOCKED_BACKUP_REMOTE`. `--file <copy>` reads a local copy instead, plain or gzipped (`.db.gz`, unzipped into the private directory first). Times without a timezone are UTC, like the copies' names. A copy a plain delete has hidden behind a delete marker is still recoverable: add `--as-of <a time before the delete>` and the bucket is read as it was then. Exit 0 means rows were printed; 1 means no copy in range or no rows; 2 means a usage error, or `--file` was the live database. Ctrl-C (or SIGTERM) stops it: it kills the download, removes its temporary directory, prints nothing more and exits 130 (143). It prints that directory's path to stderr when it starts, so if the run is killed in a way no program can catch (`kill -9`, a lost machine), delete that directory by hand.
 
 Put recovered wording back through the editor as an ordinary edit, so it is reviewed and recorded like any other.
 
@@ -462,18 +481,22 @@ To recover `sessions.db` onto a fresh box (the Paris remote; London's `secret:` 
 
    ```bash
    T="$(mktemp -d -p pipeline-output)"            # on the same filesystem as the live file (/tmp may be a small RAM disk)
+   S="$(date -u +%Y%m%dT%H%M%SZ)"                 # the UTC stamp the broken file is set aside under
    NAME=$(rclone lsf --files-only locked-secret: | grep '^sessions\.' | sort -r | head -1)
    echo "$NAME"                                   # check it is the copy you expect, then run the next command
    rclone copyto "locked-secret:$NAME" "$T/$NAME" \
      && gunzip -c "$T/$NAME" > "$T/sessions.db" \
-     && rm -f pipeline-output/sessions.db-wal pipeline-output/sessions.db-shm \
+     && chmod 600 "$T/sessions.db" \
+     && { [ ! -e pipeline-output/sessions.db ] || mv pipeline-output/sessions.db "pipeline-output/sessions.db.broken-$S"; } \
+     && { [ ! -e pipeline-output/sessions.db-wal ] || mv pipeline-output/sessions.db-wal "pipeline-output/sessions.db.broken-$S-wal"; } \
+     && { [ ! -e pipeline-output/sessions.db-shm ] || mv pipeline-output/sessions.db-shm "pipeline-output/sessions.db.broken-$S-shm"; } \
      && mv "$T/sessions.db" pipeline-output/sessions.db \
      && echo "RESTORED" \
-     || echo "FAILED: stop. If the download or unzip failed, the live file and its side files are untouched."
+     || echo "FAILED: stop. If the download or unzip failed, the live file is untouched; otherwise look for pipeline-output/sessions.db.broken-$S*."
    rm -rf "$T"
    ```
 
-   Run the block from the repository root. The chain is mechanical: the side files are removed and the file moved only if the download **and** the unzip both succeeded (the crypt remote decrypts on read). Read the last line: `RESTORED`, or `FAILED`.
+   Run the block from the repository root. The chain is mechanical: the broken live file and its side files are set aside (renamed, never deleted, under the names SQLite pairs together) and the restored file moved in only if the download **and** the unzip both succeeded (the crypt remote decrypts on read). On a fresh box with no live file there is nothing to set aside. Read the last line: `RESTORED`, or `FAILED`. The restored file is `0600`. Once the restored server is confirmed, delete the `sessions.db.broken-*` files: they hold the same editors' data as the live file.
 
    `lsf` lists current copies only. If the newest copy you expect is not there (a delete marker may hide it), or the block prints `FAILED`, **stop**: reading an older or hidden copy is for the recovery tool, and putting an older whole copy in place is the owner's decision (below).
 5. Restart the server; `/api/health` should return `"ok"` once the next backup writes a fresh heartbeat.
