@@ -51,7 +51,7 @@
   ten tasks), and the build is under way on branch `feat/g120-editorial-backups`, one reviewed task at a time: tasks
   1–5 are done. Once the final review is clean, the branch is pushed, opened as a PR and merged when CI is green
   ([USER]'s go, 2026-11-27).* [USER] runs every bucket setting, the probe, the deploy and the recovery tool.
-  - ✏️ *2026-11-27, later: **BUILT, and merged on [USER]'s go once CI was green; NOT deployed.***
+  - ✏️ *2026-11-27, later: **BUILT, and merged as [#833](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/833) on [USER]'s go once CI was green; NOT deployed.***
     - **All ten tasks built,** each with its own task review (fix rounds where a review found something). Then a
       whole-branch review, one fix wave and its scoped re-review: no Critical or Important finding left open.
     - **What landed:**
