@@ -147,7 +147,10 @@ function parseArgs(argv) {
 }
 
 /** An ISO time with no timezone suffix is UTC, like the copy stamps (Date.parse would say local). */
-const utcIso = (s) => (/T\d{2}:\d{2}(:\d{2}(\.\d+)?)?$/.test(s || '') ? `${s}Z` : s);
+const utcIso = (s) =>
+  /^\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}(:\d{2}(\.\d+)?)?$/.test(s || '')
+    ? `${s.replace(' ', 'T')}Z`
+    : s;
 
 const parseDay = (s) => (/^\d{4}-\d{2}-\d{2}$/.test(s || '') ? Date.parse(`${s}T00:00:00Z`) : NaN);
 

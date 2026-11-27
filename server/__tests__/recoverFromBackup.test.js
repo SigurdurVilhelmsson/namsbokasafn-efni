@@ -204,17 +204,25 @@ describe('main', () => {
     expect(fs.readFileSync(f, 'utf8')).toBe('this is not a database');
   });
 
-  it('--at without a timezone is UTC: it picks the same copy as with Z', () => {
+  it('--at without a timezone, T or space separated, is UTC: the same copy as with Z', () => {
     putCopy('2027-01-02-000000', { versions: [{ seg: 's1', version: 1, text: 'AT-TWO' }] });
     putCopy('2027-01-02-040000', { versions: [{ seg: 's1', version: 1, text: 'AT-FOUR' }] });
-    const run = (at) => {
-      const out = sink();
-      main(['module', '--book', 'b', '--module', 'm1', '--at', at], { out, err: sink(), env });
-      return out.text;
-    };
-    const bare = run('2027-01-02T03:04:05');
-    expect(bare).toBe(run('2027-01-02T03:04:05Z'));
-    expect(bare).toContain('AT-TWO');
+    const prevTz = process.env.TZ;
+    process.env.TZ = 'Asia/Tokyo'; // a non-UTC zone, so a local-time reading picks another copy
+    try {
+      const run = (at) => {
+        const out = sink();
+        main(['module', '--book', 'b', '--module', 'm1', '--at', at], { out, err: sink(), env });
+        return out.text;
+      };
+      const withZ = run('2027-01-02T03:04:05Z');
+      expect(withZ).toContain('AT-TWO');
+      expect(run('2027-01-02T03:04:05')).toBe(withZ);
+      expect(run('2027-01-02 03:04:05')).toBe(withZ);
+    } finally {
+      if (prevTz === undefined) delete process.env.TZ;
+      else process.env.TZ = prevTz;
+    }
   });
 
   it('module mode prints every segment of the module from the copy at the time', () => {
