@@ -47,19 +47,18 @@ function stub(dir) {
 function backup({ dbPath, backups }, env) {
   const clean = { ...process.env };
   delete clean.BACKUP_REMOTE;
-  return spawnSync('bash', [SCRIPT, backups], { env: { ...clean, DB_PATH_OVERRIDE: dbPath, ...env }, encoding: 'utf8' });
+  return spawnSync('bash', [SCRIPT, backups], { env: { ...clean, DB_PATH_OVERRIDE: dbPath, BACKUP_NODE: process.execPath, ...env }, encoding: 'utf8' });
 }
 const backupFiles = (backups) => (existsSync(backups) ? readdirSync(backups).filter((f) => /^sessions\..*\.db$/.test(f)) : []);
 
 describe('backup-db.sh and the editorial retention', () => {
-  it('runs the retention before the checkpoint and the copy', () => {
+  it('runs the retention before the copy', () => {
     const src = readFileSync(SCRIPT, 'utf8');
-    const retention = src.indexOf('editorial-retention.js');
-    const checkpoint = src.indexOf('PRAGMA wal_checkpoint(TRUNCATE)');
-    const copy = src.indexOf('cp "$DB_PATH" "$BACKUP_FILE"');
+    const retention = src.indexOf('editorial-retention.js" --write');
+    const copy = src.indexOf('editorial-backup.js" copy');
     expect(retention).toBeGreaterThan(0);
-    expect(retention).toBeLessThan(checkpoint);
-    expect(checkpoint).toBeLessThan(copy);
+    expect(copy).toBeGreaterThan(0);
+    expect(retention).toBeLessThan(copy);
   });
 
   it('calls it with --write on the database it is about to copy', () => {

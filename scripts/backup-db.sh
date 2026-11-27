@@ -43,22 +43,25 @@ mkdir -p "$BACKUP_DIR"
 # failure's reason (an error code and message, never a row's value), stays in this log, so a retention that cannot
 # run is diagnosable before the health check would show it (final review I-3).
 # /usr/bin first: better-sqlite3's binary is built for the service's /usr/bin/node.
-# RETENTION_NODE is a test seam (scripts/__tests__) that sets NODE; cron never sets it. The local copy below uses the
-# same node.
-NODE="${RETENTION_NODE:-$(PATH="/usr/bin:$PATH" command -v node || true)}"
-if [ -z "$NODE" ]; then
+# Two test seams (scripts/__tests__); cron sets neither. RETENTION_NODE is the node for the editorial-retention call
+# only; BACKUP_NODE is the node for every server/scripts/editorial-backup.js call (today the copy). Both default to
+# the same /usr/bin-first node.
+DEFAULT_NODE="$(PATH="/usr/bin:$PATH" command -v node || true)"
+RETENTION_NODE="${RETENTION_NODE:-$DEFAULT_NODE}"
+BACKUP_NODE="${BACKUP_NODE:-$DEFAULT_NODE}"
+if [ -z "$RETENTION_NODE" ]; then
   echo "WARNING: editorial retention did not complete: node not found" >&2
-elif ! SESSIONS_DB_PATH="$DB_PATH" "$NODE" "${PROJECT_ROOT}/server/scripts/editorial-retention.js" --write >/dev/null; then
+elif ! SESSIONS_DB_PATH="$DB_PATH" "$RETENTION_NODE" "${PROJECT_ROOT}/server/scripts/editorial-retention.js" --write >/dev/null; then
   echo "WARNING: editorial retention did not complete; see checks.retention in /api/health" >&2
 fi
 
 # Local copy through Node (VACUUM INTO, mode 0600). It prints the copy's path and leaves no partial file on failure.
 # No cp fallback: a plain copy would carry deleted rows' bytes into a long-kept backup.
-if [ -z "$NODE" ]; then
+if [ -z "$BACKUP_NODE" ]; then
   echo "ERROR: local copy failed: node not found" >&2
   exit 1
 fi
-BACKUP_FILE="$("$NODE" "${PROJECT_ROOT}/server/scripts/editorial-backup.js" copy "$DB_PATH" "$BACKUP_DIR")" || {
+BACKUP_FILE="$("$BACKUP_NODE" "${PROJECT_ROOT}/server/scripts/editorial-backup.js" copy "$DB_PATH" "$BACKUP_DIR")" || {
   echo "ERROR: local copy failed" >&2
   exit 1
 }
