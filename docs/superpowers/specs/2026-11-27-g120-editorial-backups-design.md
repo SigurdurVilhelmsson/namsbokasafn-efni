@@ -142,12 +142,20 @@ reaches ~170 MB, about ten times today's database. Restores draw on the account'
 
   | Phase | Default retention | Until |
   |---|---|---|
-  | Probe | 1 day | the live probe (§4.6) passes |
-  | Interim | 30 days | the consent text is listed in `APPROVED_CONSENT_TEXTS` (`server/lib/researchConsentText.js`) |
+  | Probe | 3 days | the live probe (§4.6) passes |
+  | Interim | 30 days (draft; [USER] chooses) | the consent text is listed in `APPROVED_CONSENT_TEXTS` (`server/lib/researchConsentText.js`) |
   | Full | 350 days | for good |
 
   The interim lock keeps one door open. If the data protection officer settles on a cap shorter than 12 months,
   copies already uploaded can still be removed in time, by shortening the lifecycle rule.
+
+  **The price of that door:** during the interim, only each copy's first 30 days are protected from the server. Once
+  a copy's lock ends, anything holding the server's key can remove it. Deleting it by version removes it at once. A
+  plain delete hides it, and the lifecycle's 1-day noncurrent clause then removes it. Survival of server incidents
+  is therefore full only in the full phase.
+  - The interim length is [USER]'s choice. Longer protects more now, but leaves less room if the final cap is
+    shorter.
+  - It must not exceed the cap the data protection officer might set. 30 days is the draft value.
 - **The lifecycle rule:**
   - current versions expire at **355 days**;
   - noncurrent versions are deleted after **1 day**;
@@ -217,11 +225,14 @@ reaches ~170 MB, about ten times today's database. Restores draw on the account'
   - The lock ended at 350 days, so this can only remove what the lifecycle rule should already have removed.
   - It is a second line behind the lifecycle rule, for a rule that is missing, changed or partly run. The rule stays
     the line that works when the server is dead.
-  - It never reaches a younger copy, for two reasons:
-    - its age test, pinned by a test with copies on both sides of the line;
-    - the lock itself, which refuses the server's key.
+  - It never reaches a younger copy:
+    - **always**, through its age test, pinned by a test with copies on both sides of the line;
+    - **in the full phase**, also through the lock, which refuses the server's key for the first 350 days. During
+      the interim phase the lock covers only each copy's first 30 days (§4.1).
   - It is best-effort, like today's remote prune: a failed delete is logged and leaves the copy for §4.3's check to
     report.
+  - **Today's count-based prune never runs against the locked remote** (pinned by a test), and is removed at the
+    switch (§4.7). Pointed at Paris during the interim, it would remove every copy older than 30 days.
   - The 356-day limit is an enforceable value: a constant in a `server/lib/` file, pinned by a test, beside the
     check's threshold.
 - **What the job records.** After the delete it lists **every version** in the bucket, noncurrent versions included.
@@ -265,10 +276,14 @@ reaches ~170 MB, about ten times today's database. Restores draw on the account'
   - **How it handles copies.** It fetches and decrypts copies itself through the crypt remote, or reads a local copy.
     Each is decompressed into a `0700` temp directory, opened read-only, and deleted as soon as it has been read.
     A year at one copy a day is ~6 GB of transfer, inside the account's free 1 TB a month.
+  - **It also reads copies hidden behind a delete marker.** A plain delete from the server only hides a locked copy,
+    and the copy is still there to recover.
   - **It never opens the live database and writes nothing to it.**
-- **[USER] runs it.** It prints editors' text and names, which no Claude Code session may read (CLAUDE.md § Purpose).
-  The recovered wording goes back through the editor as an ordinary edit, so it is reviewed and recorded like any
-  other.
+- **[USER] runs it, in a plain terminal on the server.**
+  - Never through a Claude Code session's `!` prefix, which puts the output into the conversation.
+  - It prints editors' text and names, which no Claude Code session may read (CLAUDE.md § Purpose).
+  - The recovered wording goes back through the editor as an ordinary edit, so it is reviewed and recorded like any
+    other.
 - **The monthly restore test** (`scripts/verify-db-backup.sh`) learns the `.gz` name and the new remote. It still
   runs monthly.
 
@@ -280,25 +295,33 @@ This gap exists today and is no wider under this design, given the rule in §4.4
 ### 4.6 The live probe (before the first real copy)
 
 Local tests cannot prove a lock, because rclone's local remote has none. And a test copy locked for months cannot be
-removed. So, with default retention at **1 day** and a **temporary lifecycle rule of 1 day** (current) and 1 day
-(noncurrent), run as [USER] or on their instruction:
+removed. Run as [USER] or on their instruction. The probe uses:
+- default retention of **3 days**, longer than the probe lifecycle's noncurrent window;
+- a **temporary lifecycle rule of 1 day** (current) and 1 day (noncurrent).
 
-1. Upload one test object with the server's key, **through the crypt remote**. That also proves rclone's encrypted
+1. Upload test object A with the server's key, **through the crypt remote**. That also proves rclone's encrypted
    upload is accepted: an Object Lock bucket requires a checksum on every upload.
-2. **Try to delete that version with the server's key. Expect a refusal.**
-3. Upload it again under the same name. Expect a new version, with the first still listed.
+2. **Try to delete A's version by id with the server's key. Expect a refusal.**
+3. Upload A again under the same name. Expect a new version, with the first still listed.
 4. With the server's key, try to change the lock configuration and the lifecycle rule. Record whether each is
    refused. If either is allowed, the register records it as a residual risk. §4.3's delete and check are its
    detectors.
-5. Confirm §4.3's listing sees all of the above.
-6. **After the lock ends, delete one version with the server's key. Expect success.** That proves §4.3's delete can
-   work.
-7. **Leave another version to the lifecycle rule. Confirm it is gone within about three days.** That proves the rule
+5. **Go/no-go: a plain delete must not destroy a locked copy.**
+   - Upload object B, then plain-delete it with the server's key. That adds a delete marker, so B becomes
+     noncurrent.
+   - Wait past two midnight lifecycle runs: longer than the noncurrent window, shorter than B's lock.
+   - **B's version must still be listed.**
+   - If it is gone, Akamai's lifecycle ignores the lock, and layout B does not survive a bad script. Stop: [USER]
+     decides again before any real copy goes up.
+6. Confirm §4.3's listing sees all of the above, hidden versions included.
+7. **After the 3-day locks end, delete one version by id with the server's key. Expect success.** That proves §4.3's
+   delete can work.
+8. **Leave the rest to the lifecycle rule. Confirm it is all gone within about two days.** That proves the rule
    deletes on this bucket.
-8. Set the 355-day lifecycle rule and raise default retention to 30 days. Then run the first real copy and the
-   restore test.
+9. Set the 355-day lifecycle rule and set default retention to the interim length. Then run the first real copy and
+   the restore test.
 
-London keeps running throughout, so the days the probe waits cost no protection.
+London keeps running throughout, so the probe's week of waiting costs no protection.
 
 ### 4.7 Moving from London
 
@@ -357,6 +380,8 @@ The old "One-time setup" section's console-only instructions no longer apply to 
   read-only answer from it is the obvious route.
 - How the script marks a remote as the locked one (§4.7), and how rclone deletes one version by id.
 - The recovery tool's command-line shape and output format, within §4.4.
+- If the job gains a new call from `scripts/` (MIT) into `server/` (AGPL-3.0), the root `LICENSE` edge list is updated
+  with it.
 
 ## 7. Verification
 
@@ -370,6 +395,9 @@ The old "One-time setup" section's console-only instructions no longer apply to 
   - the check failing on an empty listing, a failed listing, a missing new copy and a too-old data version, with a
     passing control, and skipping delete markers;
   - the upload carrying no lock flags;
+  - today's count-based prune never running against the locked remote;
+  - a `VACUUM INTO` copy equal to its source **by value**, table by table. Rowids can be renumbered in a table with
+    no explicit integer key, so a count is not enough;
   - the recovery tool never opening the live path, and deleting every temp copy it made, even on failure.
 - **The `verify-research-withdrawal` skill**, because the change touches the `sessions.db` backup and its runbook.
 - **The live probe (§4.6)**, the restore test, and **G-1b re-read on the research bucket**: it must still read
