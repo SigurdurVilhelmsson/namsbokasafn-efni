@@ -4,7 +4,23 @@
 
 ## ⏩ RESUME — state as of **2026-10-09 — ✅ '6' PR-B IS MERGED ([#546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546)) AND DEPLOYED, with the 7 Dependabot PRs; R-22's condition is met and the LIVE-RUN HOLD's condition is met on `main`. ⏹ The whole-book re-render and the chemistry sync are HELD for [USER]. ▶ [CODE] in parallel: the ② code batch (end of this block)** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence) ✏️ *Heading re-dated 2026-10-09; it had said PR-B was BUILT and UNPUSHED, with step 2b and the LIVE-RUN HOLD outstanding, after all three had changed. The bullets directly under the SINGLE NEXT ACTION are PR-B's record.*
 
-### ⏭ 2026-11-27 (G1.20's editorial half designed and approved; two new items, §C256 and §C257) — ADDS TO G1.20 AND G1.4'S PRECONDITION 3; IT DOES NOT CHANGE THE OTHER ENTRIES OR THEIR NEXT
+### ⏭ 2026-11-27 (deploy: #828–#832 live; every §C244 fix in production) — RECORDS A DEPLOY; IT DOES NOT CHANGE THE OTHER ENTRIES OR THEIR NEXT
+- **[USER] ran `./scripts/deploy.sh` on 2026-11-27. Checked read-only over ssh the same morning:**
+  - production's `HEAD` is `33f7b662a` (#832's merge), and `pipeline-output/.deployed-commit` names it;
+  - the reflog shows `rebase (start)` and `rebase (finish)` at 10:52:21Z; `ritstjorn` is active since 10:53:50Z;
+  - `/api/health` reads `status: ok` with every check ok (migrations 61; off-box and content backups fresh;
+    retention nothing due; research_db ok);
+  - 0 ahead and 0 behind `origin/main`, clean tree.
+- **What it shipped** (all merged 2026-11-26, as merge commits):
+  - #828 `c5a72fd22`: register, §C247's three minors closed;
+  - #829 `22a9baff0`: book glossary, §C244 M10, M12/T2a/T3b, N4, T4b;
+  - #830 `1f647e0d5`: book glossary, §C244 N2, M6, N7 (with N8, N9);
+  - #831 `10bfe1500`: book glossary, §C244's test minors;
+  - #832 `33f7b662a`: book glossary, §C244's last nine (T2d, M13, T6g and N6 fixed; T5e polished).
+- **So every §C244 fix is live,** and the book glossary page that head editors meet at its first real use carries
+  them. The previous deploy was `8f1b34806` (#827), 2026-11-26 16:17Z.
+
+### ⏭ 2026-11-27 (G1.20's editorial half designed and approved; one new item, §C256; the restore gap it found is §C252's) — ADDS TO G1.20 AND G1.4'S PRECONDITION 3; IT DOES NOT CHANGE THE OTHER ENTRIES OR THEIR NEXT
 - **✅ [USER] approved the design 2026-11-27, as written:**
   [`docs/superpowers/specs/2026-11-27-g120-editorial-backups-design.md`](../superpowers/specs/2026-11-27-g120-editorial-backups-design.md).
   It is on branch `docs/g120-editorial-backups-design`, not pushed.
@@ -30,8 +46,11 @@
   - The settings and the go/no-go live probe are design §4.1 and §4.6.
 - **Precondition 3 is discharged** when the design's §7 conditions hold: built, merged, deployed, the bucket set up as
   in §4.1, and the check ok.
-- **Next:** the implementation plan (superpowers:writing-plans), then the build. [USER] runs every bucket setting,
-  the probe, the deploy and the recovery tool.
+- **Next:** ~~the implementation plan (superpowers:writing-plans), then the build.~~ ✏️ *2026-11-27: the plan is
+  written ([`docs/superpowers/plans/2026-11-27-g120-editorial-backups.md`](../superpowers/plans/2026-11-27-g120-editorial-backups.md),
+  ten tasks), and the build is under way on branch `feat/g120-editorial-backups`, one reviewed task at a time: tasks
+  1–5 are done. Once the final review is clean, the branch is pushed, opened as a PR and merged when CI is green
+  ([USER]'s go, 2026-11-27).* [USER] runs every bucket setting, the probe, the deploy and the recovery tool.
 
 #### §C256 (NEW, 2026-11-27) — every save of a pending edit kept as its own version, with a page that shows a segment's earlier wordings
 - **Found while designing G1.20.** `segmentEditorService.saveSegmentEdit` updates an editor's pending row in place,
@@ -43,14 +62,9 @@
 - **Open:** whether it is wanted, and its consent fit. The draft consent text lists each saved edit with its time
   among the editing records, so keeping each save looks covered, but that is for [USER] to confirm.
 
-#### §C257 (NEW, 2026-11-27) — a whole-file restore of `sessions.db` can predate a withdrawal and bring back that consent
-- **The gap:** the research consent records (`research_consent`, `research_deletions`, `research_capture_losses`)
-  live in `sessions.db`. Even its newest backup can predate a withdrawal made within the last 6 hours. Restoring it
-  would show that editor as consenting again, while `research.db` has already lost their key.
-- **Exists today; G1.20 does not widen it:** its design allows only the newest copy into place, and makes any older
-  copy a stop for [USER] (design §4.4, §4.5).
-- **Done when:** the `sessions.db` restore runbook re-applies, before the server opens the file, every withdrawal
-  recorded after the copy was taken, or names where that record lives if it is not in the copy.
+#### §C257 (2026-11-27) — folded into §C252 the same day
+- A duplicate: the gap where a `sessions.db` restore predates a withdrawal is §C252 (2026-11-23). The note on
+  what G1.20 changes for it is there.
 
 ### ⏭ 2026-11-26 (consent text against the data protection act: the no-AI-reads rule merged as #821, the SD6 cell floor raised to three as #822, and the derived dataset given contents and an end date; one new item, §C255) — ADDS ONE ITEM; IT DOES NOT CHANGE THE OTHER ENTRIES OR THEIR NEXT
 - **Merged 2026-11-26 and DEPLOYED (docs only; prod at `5cc033d08`, #825's merge: `rebase (finish)` 15:37:16Z, restart 15:38:34Z, `/api/health` ok, 0 ahead / 0 behind; with #823–#825):** [#821](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/821) (`e54ce602d`), CLAUDE.md § Purpose's rule that no Claude Code session reads the research database, named editing rows or logs that name editors, in force once a consent text is approved; [#822](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/822) (`a896104bd`), SD6 and the cell rule in the Skerfur plan now say at least **three** editors ([USER] ruling 2026-11-26).
@@ -270,6 +284,11 @@
 - **Found by** `server/verification/research-withdrawal/check.sh` (TLA+, TLC): one editor, two intervals, every order of consent, the withdraw route's two commits, capture and loss, the withdrawal script's commits with crashes, both copies and both restores. Shortest path: consent → `backup-db.sh` copy → withdraw → restore. **With the sessions.db restore left out, every rule holds** (the research copy modelled as the code takes it: copy, then re-check; `check.sh` prints the state count). Four model mutants are each caught. `server/__tests__/researchSessionsRestore.test.js` proves the precondition on the real functions (each beside its control: on a pre-withdrawal copy capture resumes, and the interval stops being due so its key row stays). It cannot detect a fix: the restore is a manual runbook step with no code to run.
 - **Not live today:** no consent text is approved in the repo, so no one can consent yet. It becomes live when the study opens.
 - **A fix is a product change for [USER]** (for example, reconcile `research_consent` after a `sessions.db` restore, or refuse a restore older than the newest withdrawal); **the fix must bring its own test** that runs the new step on such a copy; then the model's `SessionsRestore` is updated and the finding leaves `check.sh`. Skill: `.claude/skills/verify-research-withdrawal/`.
+- ✏️ *2026-11-27: G1.20's design (approved 2026-11-27) keeps editorial copies for about 12 months, but lets only
+  the newest copy into place ([design](../superpowers/specs/2026-11-27-g120-editorial-backups-design.md) §4.4, §4.5),
+  so it does not widen this gap. Putting an older copy in place is a stop for [USER], and any withdrawal made since
+  that copy must be applied again before the server opens it. The fix this item asks for is still open. A duplicate
+  logged that morning as §C257 was folded here the same day.*
 
 #### §C250 (NEW, 2026-11-23) — a crash during a migration's first run can strand it for good: four migrations never finish, and a fresh database's first boot is short; found by the new exhaustive check
 **✅ DEPLOYED 2026-11-23: the every-boot churn fix ([#784](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/784), `39520c148`) and the 015/016 fixes ([#785](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/785), `f850deee3`).** Prod pulled `f5541d568` at 13:08:23Z and `ritstjorn` restarted at 13:08:35Z (read-only prod read, the same day). **That boot's journal shows none of the churn lines** — no `Migration 021: dropped …`, `Applying migration 026`, `Applying migration 028` or `idordabanki_id column added` — where the previous restart (11:07Z) printed all four; 021 now logs `tables already dropped or never existed`. Migrations `applied: 57, skipped: 3`, no warning or error in the journal since, all six books loaded, `/api/health` `ok` with no failing check. **[USER] ruled 2026-11-23 on what was left: option B for both.** (1) 024 and 026 each run their table rebuild in one `db.transaction` that first drops an EMPTY leftover `*_new`, so a crash leaves all or nothing and a database an older crash stranded before its `DROP` finishes on its next start; a leftover holding rows (an older crash after the `DROP`, where 004 recreates the original empty) is left untouched and logged, since dropping it would delete the only copy (found by the #788 review and measured; unreachable on prod, which has run 032); (2) `migrationRunner` runs a second pass when it has just created `sessions.db`, so a fresh database's first start reaches the full schema (022's `users` indexes and trigger, 032's `book_subject_mapping` rows for 049's books). **Built test-first, MERGED 2026-11-23 as [#788](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/788) (`2b99e0772`), DEPLOYED 2026-11-23** (prod pulled `27791aa2c` (which contains #788, #792 and #793) at 20:34:04Z and `ritstjorn` restarted at 20:34:33Z (read-only prod read at 20:42Z the same day); the boot logged `Migrations applied` (57 applied, 3 skipped) and `Server started`, with no warning or error since; 024 took its normal `terminology_discussions FK already correct` path; the second migration pass did not run, as designed, since prod's database already existed; `/api/health` `ok`, every check ok)**:** `server/__tests__/migrationCrashSafeFirstBoot.test.js` was red first on all six cases (`… already exists` from both rebuilds; the second start changing the five pinned items); the check's last pins are removed (`KNOWN_CRASH_FINDINGS = {}`, `KNOWN_FIRST_BOOT_DIFFS = []`), and `mutate.js` gains BREAK changes for 024's transaction and the second pass. Prod had neither leftover (read-only read, 2026-11-23: no `*_new` table, both `users` indexes and the trigger present).
