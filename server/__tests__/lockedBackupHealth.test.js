@@ -1,8 +1,11 @@
 // server/__tests__/lockedBackupHealth.test.js
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import fs from 'fs';
+import os from 'os';
+import path from 'path';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
-const { readLockedBackupHealth } = require('../lib/lockedBackupHealth');
+const { readLockedBackupHealth, readLockedBackupHealthFile } = require('../lib/lockedBackupHealth');
 const { CAP_ALARM_AFTER_DAYS, DAY_MS } = require('../lib/editorialBackupPolicy');
 
 const NOW = Date.parse('2027-12-01T00:00:00Z');
@@ -35,7 +38,7 @@ describe('readLockedBackupHealth', () => {
   it('is stale when the file has no mtime', () => {
     expect(read(status(), null).state).toBe('stale');
   });
-  it.each(['listing-invalid', 'listing-empty', 'uploaded-not-seen', 'over-cap'])(
+  it.each(['listing-invalid', 'listing-empty', 'uploaded-not-seen', 'no-fresh-copy', 'over-cap'])(
     'reports the first reason %s when the status says not ok',
     (reason) => {
       const r = read(status({ ok: false, reasons: [reason, 'listing-empty'] }));
@@ -76,4 +79,42 @@ describe('readLockedBackupHealth', () => {
       );
     }
   });
+});
+
+// The file read that /api/health does (server/index.js calls this helper). Only a missing file is not-configured;
+// a file that exists and cannot be read is unreadable, never a healthy reading (final review I2).
+describe('readLockedBackupHealthFile', () => {
+  let dir;
+  beforeEach(() => {
+    dir = fs.mkdtempSync(path.join(os.tmpdir(), 'locked-health-'));
+  });
+  afterEach(() => {
+    for (const f of fs.readdirSync(dir)) fs.chmodSync(path.join(dir, f), 0o700);
+    fs.rmSync(dir, { recursive: true, force: true });
+  });
+  const readFile = (statusFile) =>
+    readLockedBackupHealthFile({ statusFile, nowMs: Date.now(), staleHours: STALE_HOURS });
+
+  it('a missing file is not-configured', () => {
+    expect(readFile(path.join(dir, 'absent.json'))).toEqual({ ok: true, state: 'not-configured' });
+  });
+  it('control: a fresh, good file reads ok', () => {
+    const f = path.join(dir, 'status.json');
+    fs.writeFileSync(f, status());
+    expect(readFile(f)).toEqual({ ok: true, state: 'ok', oldest_age_days: 100 });
+  });
+  it('a directory at the path (EISDIR) is unreadable, not not-configured', () => {
+    const f = path.join(dir, 'status.json');
+    fs.mkdirSync(f);
+    expect(readFile(f)).toEqual({ ok: false, state: 'unreadable' });
+  });
+  it.skipIf(typeof process.getuid === 'function' && process.getuid() === 0)(
+    'a file it may not read (EACCES, mode 0000) is unreadable',
+    () => {
+      const f = path.join(dir, 'status.json');
+      fs.writeFileSync(f, status());
+      fs.chmodSync(f, 0o000);
+      expect(readFile(f)).toEqual({ ok: false, state: 'unreadable' });
+    }
+  );
 });

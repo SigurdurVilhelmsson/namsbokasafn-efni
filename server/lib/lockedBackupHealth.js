@@ -12,6 +12,7 @@
  * @param {{statusText: string|null, statusMtimeMs: number|null, nowMs: number, staleHours: number}} p
  * @returns {{ok: boolean, state: string, oldest_age_days?: number}}
  */
+const fs = require('fs');
 const { CAP_ALARM_AFTER_DAYS, DAY_MS } = require('./editorialBackupPolicy');
 
 function readLockedBackupHealth({ statusText, statusMtimeMs, nowMs, staleHours }) {
@@ -42,4 +43,26 @@ function readLockedBackupHealth({ statusText, statusMtimeMs, nowMs, staleHours }
   }
 }
 
-module.exports = { readLockedBackupHealth };
+/**
+ * Read the status file and judge it. Only a MISSING file (ENOENT) is not-configured: a file that exists and cannot
+ * be stat'ed or read (EACCES, EISDIR, EIO, ...) is unreadable, never a healthy not-configured (G1.20 final review
+ * I2). server/index.js calls this, so the tested read is the shipped one. Never throws.
+ *
+ * @param {{statusFile: string, nowMs: number, staleHours: number}} p
+ * @returns {{ok: boolean, state: string, oldest_age_days?: number}}
+ */
+function readLockedBackupHealthFile({ statusFile, nowMs, staleHours }) {
+  let statusText = null;
+  let statusMtimeMs = null;
+  try {
+    statusMtimeMs = fs.statSync(statusFile).mtimeMs;
+    statusText = fs.readFileSync(statusFile, 'utf8');
+  } catch (err) {
+    if (!err || err.code !== 'ENOENT') return { ok: false, state: 'unreadable' };
+    statusText = null;
+    statusMtimeMs = null;
+  }
+  return readLockedBackupHealth({ statusText, statusMtimeMs, nowMs, staleHours });
+}
+
+module.exports = { readLockedBackupHealth, readLockedBackupHealthFile };

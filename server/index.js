@@ -295,29 +295,18 @@ app.get('/api/health', (req, res) => {
   // Locked off-box copies (G1.20): is the oldest copy still inside the 12-month
   // lock? Missing status file => not-configured (ok) until the locked remote is
   // set up. Public endpoint: state only, never an error message.
+  // Only a missing file is not-configured; one that exists and cannot be read is unreadable (the helper decides).
   try {
-    const { readLockedBackupHealth } = require('./lib/lockedBackupHealth');
+    const { readLockedBackupHealthFile } = require('./lib/lockedBackupHealth');
     const { DEFAULT_STALE_HOURS: LOCKED_DEFAULT_STALE_HOURS } = require('./lib/offboxBackupHealth');
-    const fs = require('fs');
-    const statusFile = path.join(
-      __dirname,
-      '..',
-      'pipeline-output',
-      'backups',
-      '.offbox-locked-status.json'
-    );
-    let statusText = null;
-    let statusMtimeMs = null;
-    try {
-      statusMtimeMs = fs.statSync(statusFile).mtimeMs;
-      statusText = fs.readFileSync(statusFile, 'utf8');
-    } catch {
-      statusText = null;
-      statusMtimeMs = null;
-    }
-    checks.offbox_backup_cap = readLockedBackupHealth({
-      statusText,
-      statusMtimeMs,
+    checks.offbox_backup_cap = readLockedBackupHealthFile({
+      statusFile: path.join(
+        __dirname,
+        '..',
+        'pipeline-output',
+        'backups',
+        '.offbox-locked-status.json'
+      ),
       nowMs: Date.now(),
       staleHours: Number(process.env.OFFBOX_BACKUP_STALE_HOURS) || LOCKED_DEFAULT_STALE_HOURS,
     });
