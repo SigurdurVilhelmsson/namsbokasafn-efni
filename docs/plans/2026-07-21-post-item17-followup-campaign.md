@@ -84,6 +84,16 @@
       2. s04 with runbook steps 1–5, then the probe and its go/no-go;
       3. step 7, then the move (step 8);
       4. the 350-day lock once the consent text is listed (step 9), which discharges precondition 3.
+  - ✏️ *2026-11-27 14:30Z: **DEPLOYED.** [USER] ran `./scripts/deploy.sh`. Checked read-only over ssh the same hour:*
+    - *production's `HEAD` is `2af4ccdd2` (#833's merge), and `pipeline-output/.deployed-commit` names it;*
+    - *`rebase (finish)` at 14:29:59Z; `ritstjorn` active since 14:30:10Z;*
+    - *`/api/health` reads `status: ok` with every check ok, and `checks.offbox_backup_cap` reads `not-configured`: the
+      cron line carries no Paris variables yet, as designed;*
+    - *0 ahead and 0 behind `origin/main`, clean tree.*
+    - *`deploy.sh`'s own pre-deploy copy (14:29:57Z) ran before the pull, so it used the old `cp`. The first `VACUUM
+      INTO` copy is the 18:30Z cron's. Checked in advance: better-sqlite3 loads under the cron's `/usr/bin/node`
+      (v22.23.5), and `server/scripts/editorial-backup.js` answers.*
+    - *Next, [USER]'s: s04 (runbook steps 1–5), then the live probe (step 6).*
 
 #### §C256 (NEW, 2026-11-27) — every save of a pending edit kept as its own version, with a page that shows a segment's earlier wordings
 - **Found while designing G1.20.** `segmentEditorService.saveSegmentEdit` updates an editor's pending row in place,
