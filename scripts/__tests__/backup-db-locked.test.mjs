@@ -24,6 +24,7 @@ case "$1" in
   lsf)     ls -1 "$FAKE_STORE"; [ -z "\${FAKE_LSF_EXTRA:-}" ] || cat "$FAKE_LSF_EXTRA" ;;
   copyto)  [ -n "\${FAKE_DROP:-}" ] || cp "$2" "$FAKE_STORE/\${3##*[:/]}" ;;
   deletefile) : ;;
+  listremotes) if [ -n "\${FAKE_REMOTES:-}" ]; then printf '%b' "$FAKE_REMOTES"; else printf 'locked-secret:  crypt\\nlocked-s3:  s3\\nsecret:  crypt\\n'; fi ;;
 esac
 `;
 
@@ -88,6 +89,44 @@ function run(s, env = {}) {
 const PARIS = { LOCKED_BACKUP_REMOTE: 'locked-secret:', LOCKED_BACKUP_S3: 'locked-s3:bkt/' };
 const copytos = (s) => logLines(s).filter((l) => l.startsWith('copyto '));
 const deletes = (s) => logLines(s).filter((l) => l.startsWith('deletefile '));
+
+describe('backup-db.sh refuses Paris remotes by type', () => {
+  it('refuses a swapped pair, with no upload and no delete', () => {
+    const s = setup();
+    const r = run(s, { LOCKED_BACKUP_REMOTE: 'locked-s3:bkt/', LOCKED_BACKUP_S3: 'locked-secret:' });
+    expect(r.status).toBe(5);
+    expect(copytos(s)).toHaveLength(0);
+    expect(deletes(s)).toHaveLength(0);
+  });
+
+  it('refuses a crypt remote whose type is s3', () => {
+    const s = setup();
+    const r = run(s, { ...PARIS, FAKE_REMOTES: 'locked-secret:  s3\\nlocked-s3:  s3\\n' });
+    expect(r.status).toBe(5);
+    expect(copytos(s)).toHaveLength(0);
+  });
+
+  it('refuses an S3 remote whose type is crypt', () => {
+    const s = setup();
+    const r = run(s, { ...PARIS, FAKE_REMOTES: 'locked-secret:  crypt\\nlocked-s3:  crypt\\n' });
+    expect(r.status).toBe(5);
+    expect(copytos(s)).toHaveLength(0);
+  });
+
+  it('refuses when the remotes cannot be listed', () => {
+    const s = setup();
+    const r = run(s, { ...PARIS, FAKE_FAIL: 'listremotes' });
+    expect(r.status).toBe(5);
+    expect(copytos(s)).toHaveLength(0);
+  });
+
+  it('control: the normal pair still uploads', () => {
+    const s = setup();
+    const r = run(s, PARIS);
+    expect(r.status).toBe(0);
+    expect(copytos(s)).toHaveLength(1);
+  });
+});
 
 describe('backup-db.sh and the locked remote', () => {
   it('uploads a gzipped copy with no lock flags, writes the heartbeat and an ok status', () => {

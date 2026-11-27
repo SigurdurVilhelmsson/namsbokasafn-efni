@@ -107,7 +107,7 @@ fi
 #                         that crypt remote, for version listings and deletes. G1.20 spec §4.2, §4.3, §4.7.
 # Exit codes: 3 rclone missing, 4 an upload failed, 5 a malformed or forbidden remote setting, 6 paused (an editorial
 # retention step is due, nothing sent to Paris), 7 rate guard refused or the pre-upload listing failed, 8 the status
-# check is not ok. Paris's codes outrank London's.
+# check is not ok. Paris's codes outrank London's. (5 also covers a Paris pair whose remotes are not crypt + s3.)
 REMOTE_KEEP="${BACKUP_REMOTE_KEEP:-30}"
 HEARTBEAT="${BACKUP_DIR}/.last-offbox-backup"
 LOCKED_STATUS="${BACKUP_DIR}/.offbox-locked-status.json"
@@ -149,6 +149,22 @@ fi
 if ! command -v rclone >/dev/null 2>&1; then
   echo "ERROR: a backup remote is set but rclone not installed" >&2
   exit 3
+fi
+# 1b. A swapped or mistyped pair is refused by each remote's TYPE (rclone's own config), before anything is
+# uploaded or deleted: the crypt remote must be crypt and the S3 path's remote must be s3. The names alone cannot
+# tell (a plain remote named locked-* would pass the prefix test), and the S3 remote in the crypt variable would
+# upload UNENCRYPTED into a bucket where nothing can be removed.
+if [ -n "${LOCKED_BACKUP_REMOTE:-}" ]; then
+  if ! REMOTES_LONG="$(rclone listremotes --long)"; then
+    echo "ERROR: could not read rclone's remotes to check the types of LOCKED_BACKUP_REMOTE and LOCKED_BACKUP_S3" >&2; exit 5
+  fi
+  remote_type() { awk -v n="$1:" '$1 == n { print $2; exit }' <<< "$REMOTES_LONG"; }
+  if [ "$(remote_type "${LOCKED_BACKUP_REMOTE%%:*}")" != "crypt" ]; then
+    echo "ERROR: LOCKED_BACKUP_REMOTE '${LOCKED_BACKUP_REMOTE}' must be an rclone remote of type crypt" >&2; exit 5
+  fi
+  if [ "$(remote_type "${LOCKED_BACKUP_S3%%:*}")" != "s3" ]; then
+    echo "ERROR: LOCKED_BACKUP_S3 '${LOCKED_BACKUP_S3}' must be an rclone remote of type s3" >&2; exit 5
+  fi
 fi
 
 # 2. London: upload, heartbeat, count-based prune. A failed upload no longer stops the run: Paris still goes.

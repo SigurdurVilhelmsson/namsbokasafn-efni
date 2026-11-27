@@ -356,14 +356,14 @@ describe('install-cron.sh template is executable as printed', () => {
     return m ? m[1] : undefined;
   }
 
-  /** Runs the real guards with a fake rclone that fails every call (so nothing can reach a network). */
+  /** Runs the real guards with a fake rclone that knows its two remotes and fails every other call (so nothing can reach a network). */
   function runWithLocked(locked, s3) {
     const work = mkdtempSync(path.join(tmpdir(), 'bkup-'));
     const db = path.join(work, 'sessions.db');
     makeTestDb(db);
     const bin = path.join(work, 'bin');
     mkdirSync(bin);
-    writeFileSync(path.join(bin, 'rclone'), '#!/usr/bin/env bash\nexit 4\n');
+    writeFileSync(path.join(bin, 'rclone'), '#!/usr/bin/env bash\n[ "$1" = listremotes ] && { printf "locked-secret:  crypt\\nlocked-s3:  s3\\n"; exit 0; }\nexit 4\n');
     chmodSync(path.join(bin, 'rclone'), 0o755);
     const env = { ...process.env, PATH: `${bin}:${process.env.PATH}`, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath, BACKUP_NODE: process.execPath, LOCKED_BACKUP_REMOTE: locked, LOCKED_BACKUP_S3: s3 };
     delete env.BACKUP_REMOTE;
