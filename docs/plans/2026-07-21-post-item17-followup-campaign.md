@@ -4,6 +4,54 @@
 
 ## ⏩ RESUME — state as of **2026-10-09 — ✅ '6' PR-B IS MERGED ([#546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546)) AND DEPLOYED, with the 7 Dependabot PRs; R-22's condition is met and the LIVE-RUN HOLD's condition is met on `main`. ⏹ The whole-book re-render and the chemistry sync are HELD for [USER]. ▶ [CODE] in parallel: the ② code batch (end of this block)** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence) ✏️ *Heading re-dated 2026-10-09; it had said PR-B was BUILT and UNPUSHED, with step 2b and the LIVE-RUN HOLD outstanding, after all three had changed. The bullets directly under the SINGLE NEXT ACTION are PR-B's record.*
 
+### ⏭ 2026-11-27 (G1.20's editorial half designed and approved; two new items, §C256 and §C257) — ADDS TO G1.20 AND G1.4'S PRECONDITION 3; IT DOES NOT CHANGE THE OTHER ENTRIES OR THEIR NEXT
+- **✅ [USER] approved the design 2026-11-27, as written:**
+  [`docs/superpowers/specs/2026-11-27-g120-editorial-backups-design.md`](../superpowers/specs/2026-11-27-g120-editorial-backups-design.md).
+  It is on branch `docs/g120-editorial-backups-design`, not pushed.
+  - **The layout, chosen by [USER] ("B"):** every 6-hourly copy of `sessions.db` is kept for about 12 months in a new
+    Paris editorial bucket created with Object Lock.
+    - The bucket's default retention locks each copy in **COMPLIANCE** mode: 3 days for the probe, **30 days**
+      until the consent text is listed, then 350 days.
+    - A lifecycle rule deletes copies at 355 days. The server deletes copies whose lock has ended from day 356, and
+      a fail-closed check goes red at 358.
+    - Copies are made with `VACUUM INTO`, gzipped and encrypted.
+  - **[USER]'s three builder-check answers:** Paris uploads pause while an editorial retention step is overdue; a
+    read-only recovery tool reads a segment across a date range and a module at a chosen time; the server also
+    deletes copies whose lock has ended.
+  - **Why backups matter more than they seemed:** chemistry's faithful writes are held (§C203), so the tool keeps no
+    snapshots and nothing reaches git, and re-saving a pending edit overwrites it.
+    - Production, 2026-11-27: 163 `segment_edits` rows, 83 `content_versions` rows (all from before the hold),
+      `sessions.db` 54.6 MB (16.6 MB gzipped), rclone v1.75.0.
+  - **Cost:** about 24 GB once full, inside the 250 GB the account's Object Storage plan already includes.
+- **What it means for s04 (G1.4 precondition 1):** the editorial bucket must be created with Object Lock enabled.
+  - That is done through the S3 API (`aws s3api create-bucket --object-lock-enabled-for-bucket`) from [USER]'s
+    computer, because Cloud Manager cannot do it and production has only rclone.
+  - The research bucket stays separate and unversioned. G-1b is re-read on it afterwards.
+  - The settings and the go/no-go live probe are design §4.1 and §4.6.
+- **Precondition 3 is discharged** when the design's §7 conditions hold: built, merged, deployed, the bucket set up as
+  in §4.1, and the check ok.
+- **Next:** the implementation plan (superpowers:writing-plans), then the build. [USER] runs every bucket setting,
+  the probe, the deploy and the recovery tool.
+
+#### §C256 (NEW, 2026-11-27) — every save of a pending edit kept as its own version, with a page that shows a segment's earlier wordings
+- **Found while designing G1.20.** `segmentEditorService.saveSegmentEdit` updates an editor's pending row in place,
+  so an earlier wording of a pending edit survives only in a backup.
+  - The server has a per-segment history route (`contentVersionService.getSegmentHistory`), but no page calls it.
+  - `content_versions` takes snapshots only at apply, which chemistry's hold (§C203) blocks.
+- **Why it matters:** [USER]'s case, "a particular segment from a while back", would then take a few clicks instead
+  of a backup search (G1.20 design §2, non-goals).
+- **Open:** whether it is wanted, and its consent fit. The draft consent text lists each saved edit with its time
+  among the editing records, so keeping each save looks covered, but that is for [USER] to confirm.
+
+#### §C257 (NEW, 2026-11-27) — a whole-file restore of `sessions.db` can predate a withdrawal and bring back that consent
+- **The gap:** the research consent records (`research_consent`, `research_deletions`, `research_capture_losses`)
+  live in `sessions.db`. Even its newest backup can predate a withdrawal made within the last 6 hours. Restoring it
+  would show that editor as consenting again, while `research.db` has already lost their key.
+- **Exists today; G1.20 does not widen it:** its design allows only the newest copy into place, and makes any older
+  copy a stop for [USER] (design §4.4, §4.5).
+- **Done when:** the `sessions.db` restore runbook re-applies, before the server opens the file, every withdrawal
+  recorded after the copy was taken, or names where that record lives if it is not in the copy.
+
 ### ⏭ 2026-11-26 (consent text against the data protection act: the no-AI-reads rule merged as #821, the SD6 cell floor raised to three as #822, and the derived dataset given contents and an end date; one new item, §C255) — ADDS ONE ITEM; IT DOES NOT CHANGE THE OTHER ENTRIES OR THEIR NEXT
 - **Merged 2026-11-26 and DEPLOYED (docs only; prod at `5cc033d08`, #825's merge: `rebase (finish)` 15:37:16Z, restart 15:38:34Z, `/api/health` ok, 0 ahead / 0 behind; with #823–#825):** [#821](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/821) (`e54ce602d`), CLAUDE.md § Purpose's rule that no Claude Code session reads the research database, named editing rows or logs that name editors, in force once a consent text is approved; [#822](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/822) (`a896104bd`), SD6 and the cell rule in the Skerfur plan now say at least **three** editors ([USER] ruling 2026-11-26).
 - **The private consent draft (G1.4), as ruled 2026-11-26:** item 5 publishes only aggregate figures in groups of at least three editors; item 19 deletes raw research rows on 31 December 2029 (G1.15(b)'s date) and keeps only a derived dataset of aggregate figures, in item 5's groups, with nothing about individual editors, **deleted 31 December 2030**. Still open in the draft, for [USER]: who holds decisions, signed sheets and withdrawals; the controller and the data protection officer. Then it goes to the officer. ✏️ *Later on 2026-11-26 ([USER]): both settled (Sigurður Vilhelmsson holds decisions, sheets and withdrawals, and item 9 now states the double role; the school is the controller, its data protection officer also the contact), the objection clause narrowed to (e) for a public controller, and the text **sent to the officer** with a cover email. ▶ **NEXT: waiting on the officer's answer** on the two legal-basis brackets (editing records; further use of decliners' data), whether an impact assessment is needed (29. gr.), and recital 43. Then fill the brackets, align the objection sentence, rebuild the Word file, and the five preconditions follow.*

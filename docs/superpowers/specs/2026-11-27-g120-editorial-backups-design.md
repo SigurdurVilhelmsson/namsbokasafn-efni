@@ -1,7 +1,9 @@
-# G1.20 — the editorial database's long-lived backups: design (DRAFT 2026-11-27)
+# G1.20 — the editorial database's long-lived backups: design (APPROVED 2026-11-27)
 
-> 📝 **DRAFT, awaiting [USER]'s approval.** Banner-frozen from approval: amended only by dated notes.
-> Not status: open work and its state live in the active register.
+> ✅ **DESIGN, APPROVED BY [USER] 2026-11-27, as written**, after the builder check's three questions were answered (§0).
+> [USER] gave no interim lock length, so the draft value stands: **30 days** (§4.1).
+> **Banner-frozen from approval: amended only by dated notes.** Not status: open work and its state live in the active
+> register.
 
 **Register:** the Skerfur plan's G1.20 row (`docs/plans/2026-10-23-skerfur-development-plan.md`, §3.1), the register's
 2026-11-19 census entry (G1.20 "partly built": the research half shipped with PR4, #651), and G1.4's five consent
