@@ -124,6 +124,11 @@ if [ -n "${LOCKED_BACKUP_REMOTE:-}" ]; then
     *: | */) ;;
     *) echo "ERROR: LOCKED_BACKUP_S3 must be set and end in ':' or '/' when LOCKED_BACKUP_REMOTE is set (got '${LOCKED_BACKUP_S3:-}')" >&2; exit 5 ;;
   esac
+  # The crypt remote and the S3 remote must be different remotes: the S3 value pasted into the crypt variable would
+  # upload UNENCRYPTED into the COMPLIANCE bucket.
+  if [ "${LOCKED_BACKUP_REMOTE%%:*}" = "${LOCKED_BACKUP_S3%%:*}" ]; then
+    echo "ERROR: LOCKED_BACKUP_REMOTE and LOCKED_BACKUP_S3 must name different remotes (crypt vs raw S3)" >&2; exit 5
+  fi
 fi
 if [ -n "${BACKUP_REMOTE:-}" ]; then
   case "$BACKUP_REMOTE" in
@@ -204,7 +209,7 @@ if [ -n "${LOCKED_BACKUP_REMOTE:-}" ]; then
     if listing="$(rclone "${LIST_ARGS[@]}")" && expired="$(printf '%s' "$listing" | "$BACKUP_NODE" "$EB" expired)"; then
       while IFS= read -r vpath; do
         [ -n "$vpath" ] || continue
-        rclone deletefile --s3-versions "${LOCKED_BACKUP_S3}${vpath}" \
+        rclone deletefile --s3-versions "${LOCKED_BACKUP_S3}${vpath}" </dev/null \
           || echo "WARNING: could not delete expired version" >&2
       done <<< "$expired"
     else
@@ -212,7 +217,10 @@ if [ -n "${LOCKED_BACKUP_REMOTE:-}" ]; then
     fi
     # 3.6 Status from a fresh listing, and whether this upload is visible through the crypt remote. Fails closed.
     seen=no
-    if rclone lsf --files-only "$LOCKED_BACKUP_REMOTE" | grep -qxF "$LOCKED_NAME"; then seen=yes; fi
+    # Capture first, then match: `grep -q` exits at its first hit, rclone then dies of SIGPIPE, and under pipefail a
+    # PRESENT upload would read as unseen.
+    names="$(rclone lsf --files-only "$LOCKED_BACKUP_REMOTE")" || names=""
+    if grep -qxF -- "$LOCKED_NAME" <<< "$names"; then seen=yes; fi
     if ! listing="$(rclone "${LIST_ARGS[@]}")"; then listing=""; fi
     if ! printf '%s' "$listing" | "$BACKUP_NODE" "$EB" status --uploaded-seen "$seen" --out "$LOCKED_STATUS"; then
       echo "ERROR: locked backup status is not ok (see $LOCKED_STATUS)" >&2
