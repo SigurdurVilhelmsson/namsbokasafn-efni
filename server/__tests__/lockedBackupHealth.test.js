@@ -118,3 +118,14 @@ describe('readLockedBackupHealthFile', () => {
     }
   );
 });
+
+// The /api/health handler cannot be required in a unit test (startup.test.js says why), and its outer catch turns a
+// wiring mistake into a quiet `unavailable`, so the call is pinned against the source, as schemaHealth.test.js does.
+describe('index.js wires the file helper into /api/health', () => {
+  const indexSource = fs.readFileSync(path.join(import.meta.dirname, '..', 'index.js'), 'utf-8');
+  it('checks.offbox_backup_cap comes from readLockedBackupHealthFile, not a hand-rolled read', () => {
+    expect(indexSource).toMatch(/checks\.offbox_backup_cap\s*=\s*readLockedBackupHealthFile\(/);
+    expect(indexSource).toContain("'.offbox-locked-status.json'");
+    expect(indexSource).not.toMatch(/readLockedBackupHealth\(\{/);
+  });
+});
