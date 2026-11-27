@@ -96,6 +96,42 @@ describe('takeCopy', () => {
     expect(sha()).toBe(before);
   });
 
+  it('a copy that fails AFTER its partial exists removes the partial and its side files', () => {
+    const db = new Database(live);
+    db.exec('CREATE TABLE t(id INTEGER PRIMARY KEY, v TEXT)');
+    const ins = db.prepare('INSERT INTO t(v) VALUES (?)');
+    for (let i = 0; i < 2000; i++) ins.run(`row ${i} `.repeat(20));
+    db.close();
+    // damage every page after the first two: the schema still opens, the VACUUM read does not
+    const buf = fs.readFileSync(live);
+    buf.fill(0xff, 8192);
+    fs.writeFileSync(live, buf);
+    const r = takeCopy({ sessionsPath: live, dir, nowMs: NOW });
+    expect(r.ok).toBe(false);
+    expect(r.reason).not.toBe('name-taken');
+    expect(fs.readdirSync(dir)).toEqual([]);
+  });
+
+  it('a partial another run created is left untouched: name-taken, same bytes', () => {
+    const db = new Database(live);
+    db.exec('CREATE TABLE t(x)');
+    db.close();
+    fs.mkdirSync(dir, { recursive: true });
+    const other = path.join(dir, 'sessions.2027-01-02-030405.db.partial');
+    fs.writeFileSync(other, 'another run in flight');
+    expect(takeCopy({ sessionsPath: live, dir, nowMs: NOW })).toEqual({
+      ok: false,
+      reason: 'name-taken',
+    });
+    expect(fs.readFileSync(other, 'utf8')).toBe('another run in flight');
+  });
+
+  it('an unusable backup directory is a failed copy, not a throw', () => {
+    fs.writeFileSync(dir, 'a file where the directory should be');
+    const r = takeCopy({ sessionsPath: live, dir, nowMs: NOW });
+    expect(r.ok).toBe(false);
+  });
+
   it('a failed copy leaves no partial file', () => {
     const r = takeCopy({ sessionsPath: path.join(dir, 'missing.db'), dir, nowMs: NOW });
     expect(r.ok).toBe(false);

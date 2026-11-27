@@ -41,36 +41,46 @@ function copyName(nowMs) {
  * @returns {{ ok: true, path: string } | { ok: false, reason: string }} leaves no partial behind
  */
 function takeCopy({ sessionsPath, dir, nowMs }) {
-  fs.mkdirSync(dir, { recursive: true, mode: 0o700 });
-  fs.chmodSync(dir, 0o700); // mkdir's mode is masked by the umask
   const final = path.join(dir, copyName(nowMs));
   const partial = `${final}.partial`;
-  if (fs.existsSync(final) || fs.existsSync(partial)) return { ok: false, reason: 'name-taken' };
+  let created = false; // only a partial THIS call created is ever removed: another run's is not ours
   const discard = () => {
+    if (!created) return;
     for (const p of [partial, `${partial}-wal`, `${partial}-shm`, `${partial}-journal`]) {
       fs.rmSync(p, { force: true });
     }
   };
   let src = null;
   try {
+    fs.mkdirSync(dir, { recursive: true, mode: 0o700 });
+    fs.chmodSync(dir, 0o700); // mkdir's mode is masked by the umask
+    if (fs.existsSync(final)) return { ok: false, reason: 'name-taken' };
+    try {
+      // VACUUM INTO needs an empty file, and a fresh destination would be 0644: 'wx' gives both, atomically
+      fs.closeSync(fs.openSync(partial, 'wx', 0o600));
+      created = true;
+    } catch (err) {
+      return { ok: false, reason: err.code === 'EEXIST' ? 'name-taken' : err.code || err.name };
+    }
     src = new Database(sessionsPath, {
       readonly: true,
       fileMustExist: true,
       timeout: SCRIPT_BUSY_TIMEOUT_MS,
     });
-    fs.closeSync(fs.openSync(partial, 'wx', 0o600)); // VACUUM INTO needs an empty file; 'wx' guarantees it
     src.prepare('VACUUM INTO ?').run(partial);
     const copy = new Database(partial, { fileMustExist: true });
+    let mode;
     let integrity;
     try {
-      copy.pragma('journal_mode = DELETE');
+      mode = copy.pragma('journal_mode = DELETE', { simple: true });
       integrity = copy.pragma('integrity_check', { simple: true });
     } finally {
       copy.close();
     }
-    if (integrity !== 'ok') {
+    const reason = mode !== 'delete' ? 'journal-mode' : integrity !== 'ok' ? 'integrity' : null;
+    if (reason) {
       discard();
-      return { ok: false, reason: 'integrity' };
+      return { ok: false, reason };
     }
     fs.chmodSync(partial, 0o600);
     fs.renameSync(partial, final);
