@@ -20,7 +20,7 @@
 - **So every §C244 fix is live,** and the book glossary page that head editors meet at its first real use carries
   them. The previous deploy was `8f1b34806` (#827), 2026-11-26 16:17Z.
 
-### ⏭ 2026-11-27 (G1.20's editorial half designed and approved; one new item, §C256; the restore gap it found is §C252's) — ADDS TO G1.20 AND G1.4'S PRECONDITION 3; IT DOES NOT CHANGE THE OTHER ENTRIES OR THEIR NEXT
+### ⏭ 2026-11-27 (G1.20's editorial half designed, approved and built; new items §C256, §C258, §C259; the restore gap it found is §C252's) — ADDS TO G1.20 AND G1.4'S PRECONDITION 3; IT DOES NOT CHANGE THE OTHER ENTRIES OR THEIR NEXT
 - **✅ [USER] approved the design 2026-11-27, as written:**
   [`docs/superpowers/specs/2026-11-27-g120-editorial-backups-design.md`](../superpowers/specs/2026-11-27-g120-editorial-backups-design.md).
   It is on branch `docs/g120-editorial-backups-design`, not pushed.
@@ -51,6 +51,39 @@
   ten tasks), and the build is under way on branch `feat/g120-editorial-backups`, one reviewed task at a time: tasks
   1–5 are done. Once the final review is clean, the branch is pushed, opened as a PR and merged when CI is green
   ([USER]'s go, 2026-11-27).* [USER] runs every bucket setting, the probe, the deploy and the recovery tool.
+  - ✏️ *2026-11-27, later: **BUILT, and merged on [USER]'s go once CI was green; NOT deployed.***
+    - **All ten tasks built,** each with its own task review (fix rounds where a review found something). Then a
+      whole-branch review, one fix wave and its scoped re-review: no Critical or Important finding left open.
+    - **What landed:**
+      - `scripts/backup-db.sh` makes the local copy with `VACUUM INTO` (`server/scripts/editorial-backup.js`).
+      - It uploads to the locked remote (`LOCKED_BACKUP_REMOTE`, `LOCKED_BACKUP_S3`): pause while a retention step
+        is due; rate guard; gzip; no lock flag.
+      - It deletes data versions past the server limit only when the listing holds a fresh copy of this run.
+      - It writes a fail-closed status file.
+      - `/api/health` gains `checks.offbox_backup_cap` (`server/lib/lockedBackupHealth.js`).
+      - `scripts/verify-db-backup.sh` reads `.db.gz`.
+      - New read-only recovery tool: `server/scripts/recover-from-backup.js`.
+      - New runbook section, "The editorial bucket in Paris (G1.20)", in `docs/technical/backup-and-restore.md`.
+      - The values live in `server/lib/editorialBackupPolicy.js` and its test.
+    - **Guards beyond the plan, ruled during the build:**
+      - Each Paris remote is refused unless `rclone listremotes --long` shows the right type (crypt for the upload
+        remote, s3 for the listing remote). The `locked` prefix could not tell a swapped pair apart, and a swapped pair
+        would have uploaded unencrypted into the COMPLIANCE bucket.
+      - A Paris-only misconfiguration skips Paris and leaves London running. The heartbeat then goes stale.
+      - The copy just uploaded must show in the bucket's listing as a version under an hour old. That ties the check
+        to the right bucket and bounds the box clock for the delete.
+    - **Checks run:**
+      - `npm test` green;
+      - lint and format clean;
+      - the `verify-research-withdrawal` TLA+ check passes with §C252's finding still pinned (the skill's sync commit
+        moved forward).
+    - **What only a real bucket can prove is left to the live probe** (runbook step 6): Akamai's lock-versus-lifecycle
+      behaviour, the limited key's permissions, rclone's version naming.
+    - **Next, all [USER]'s:**
+      1. deploy (with only `BACKUP_REMOTE` on the cron line, behaviour stays London's, with the new copy method);
+      2. s04 with runbook steps 1–5, then the probe and its go/no-go;
+      3. step 7, then the move (step 8);
+      4. the 350-day lock once the consent text is listed (step 9), which discharges precondition 3.
 
 #### §C256 (NEW, 2026-11-27) — every save of a pending edit kept as its own version, with a page that shows a segment's earlier wordings
 - **Found while designing G1.20.** `segmentEditorService.saveSegmentEdit` updates an editor's pending row in place,
@@ -65,6 +98,55 @@
 #### §C257 (2026-11-27) — folded into §C252 the same day
 - A duplicate: the gap where a `sessions.db` restore predates a withdrawal is §C252 (2026-11-23). The note on
   what G1.20 changes for it is there.
+
+#### §C258 (NEW, 2026-11-27) — the research backup's remote guard is its name prefix alone
+- **Found by G1.20's reviews.** `scripts/research-backup.sh` refuses any `RESEARCH_REMOTE` that does not begin with
+  `research`, and the runbook calls that prefix the whole guard. But a raw S3 remote named `research-…` passes it, so a
+  mis-set remote would upload research copies unencrypted.
+- **G1.20 closed the same hole for the editorial tier:** `scripts/backup-db.sh` checks each remote's rclone type with
+  `rclone listremotes --long` (crypt for the upload remote).
+- **Lower stakes:** the research bucket is unversioned and its copies live 7 days. The same type check would still
+  close it.
+- **Done when:** the research job refuses an upload remote whose type is not `crypt`, with its own test.
+
+#### §C259 (NEW, 2026-11-27) — G1.20's deferred minors (all judged can-wait by the final review)
+**Recovery tool** (`server/scripts/recover-from-backup.js`):
+- The yield after a copy's synchronous read does not let a signal through. A Ctrl-C that lands in the last copy's
+  read (or in a `module`/`--file` run) exits 0 after printing. The temp copies are still removed, so nothing leaks.
+- SIGHUP is not handled: a dropped SSH session during a scan leaves the decrypted copy in its `recover-*` temp
+  directory. Until fixed, run it inside `tmux`/`screen`, or remove `/tmp/recover-*` by hand after a drop.
+- A `--remote` value starting with a single `-` is not rejected.
+- The failure-path tests do not assert exit 1.
+
+**`scripts/backup-db.sh`:**
+- `paris_refuse` always prints "London continues", even after the move, when no London remains.
+- The exit codes are listed in the off-box comment, not in the header.
+- The ERROR line for a failed copy names the remedy but not the reason; Node's stderr carries the reason.
+
+**Listing policy:**
+- `Size` accepts negative values: rclone's "unknown" would count as data.
+- `Math.max(...ages)` spreads the whole array.
+- No tests for an `IsDir` item or a non-object item.
+
+**Copy** (`editorial-backup.js`):
+- The integrity and journal-mode failure branches have no test; they cannot be forced on a `VACUUM INTO` output.
+- A stdin read error in `status` writes no file; health keeps the previous status until it is stale.
+- A failed rename can leave `<file>.tmp` behind.
+
+**Tests:**
+- The isolation test pins a literal source string.
+- `backup-db.test.mjs` and `backup-db-retention.test.mjs` are not prettier-clean. `.mjs` files are outside
+  `format:check`, and they were already like this.
+- The real-rclone gz test skips only when rclone is missing, not when sqlite3 is.
+- No test mixes `.db` and `.db.gz` names to pin that the newest wins.
+- The fake `listremotes` format has not been checked against rclone 1.75. A different format fails closed, and runbook
+  step 5's read-back shows the real one.
+
+**Runbook:**
+- The go/no-go window's lower bound (about 00:30) may come before Akamai's nightly run. Reading later in the window
+  costs nothing.
+- The restore block does not guard an empty `$T` or `$NAME`. Both fail before the live file is touched.
+- The LICENSE entry could note that the retention call is warn-only while the copy call is required.
 
 ### ⏭ 2026-11-26 (consent text against the data protection act: the no-AI-reads rule merged as #821, the SD6 cell floor raised to three as #822, and the derived dataset given contents and an end date; one new item, §C255) — ADDS ONE ITEM; IT DOES NOT CHANGE THE OTHER ENTRIES OR THEIR NEXT
 - **Merged 2026-11-26 and DEPLOYED (docs only; prod at `5cc033d08`, #825's merge: `rebase (finish)` 15:37:16Z, restart 15:38:34Z, `/api/health` ok, 0 ahead / 0 behind; with #823–#825):** [#821](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/821) (`e54ce602d`), CLAUDE.md § Purpose's rule that no Claude Code session reads the research database, named editing rows or logs that name editors, in force once a consent text is approved; [#822](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/822) (`a896104bd`), SD6 and the cell rule in the Skerfur plan now say at least **three** editors ([USER] ruling 2026-11-26).
