@@ -62,7 +62,7 @@ describe('backup-db.sh off-box upload', () => {
     const db = path.join(work, 'sessions.db');
     makeTestDb(db);
     const out = execFileSync('bash', [SCRIPT, path.join(work, 'backups')], {
-      env: { ...process.env, DB_PATH_OVERRIDE: db, BACKUP_REMOTE: '' }, encoding: 'utf8',
+      env: { ...process.env, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath, BACKUP_REMOTE: '' }, encoding: 'utf8',
     });
     expect(out).toMatch(/BACKUP_REMOTE not set.*skipping off-box/i);
     rmSync(work, { recursive: true, force: true });
@@ -76,7 +76,7 @@ describe('backup-db.sh off-box upload', () => {
     makeTestDb(db);
     // rclone config via env: a crypt remote wrapping a local remote.
     const env = {
-      ...process.env, DB_PATH_OVERRIDE: db,
+      ...process.env, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath,
       RCLONE_CONFIG_LOCALBK_TYPE: 'local',
       RCLONE_CONFIG_SECRET_TYPE: 'crypt',
       RCLONE_CONFIG_SECRET_REMOTE: `localbk:${remoteDir}`,
@@ -102,7 +102,7 @@ describe('backup-db.sh off-box upload', () => {
     makeTestDb(db);
     // A syntactically valid remote reference (trailing ':') that isn't configured —
     // rclone fails fast with "didn't find section in config file"; no network I/O.
-    const env = { ...process.env, DB_PATH_OVERRIDE: db, BACKUP_REMOTE: 'no-such-remote-xyz:' };
+    const env = { ...process.env, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath, BACKUP_REMOTE: 'no-such-remote-xyz:' };
     let error;
     try {
       execFileSync('bash', [SCRIPT, backups], { env, encoding: 'utf8' });
@@ -144,7 +144,7 @@ describe('backup-db.sh off-box upload', () => {
 
     // RETENTION_NODE is the seam for node, which the copy needs: the restricted PATH has none,
     // and /usr/bin/node may be absent or built for another ABI than server/node_modules.
-    const env = { PATH: binDir, DB_PATH_OVERRIDE: db, BACKUP_REMOTE: 'secret:', RETENTION_NODE: process.execPath };
+    const env = { PATH: binDir, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath, BACKUP_REMOTE: 'secret:' };
     let error;
     try {
       execFileSync('bash', [SCRIPT, backups], { env, encoding: 'utf8' });
@@ -171,7 +171,7 @@ describe('backup-db.sh off-box upload', () => {
     // separator-less BACKUP_REMOTE as a *local relative path* and silently writes a
     // stray file into the process cwd (confirmed empirically); pinning cwd to the
     // disposable temp dir keeps any such regression from littering the repo root.
-    const env = { ...process.env, DB_PATH_OVERRIDE: db, BACKUP_REMOTE: 'secret' };
+    const env = { ...process.env, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath, BACKUP_REMOTE: 'secret' };
     let error;
     try {
       execFileSync('bash', [SCRIPT, backups], { env, cwd: work, encoding: 'utf8' });
@@ -202,7 +202,7 @@ describe('backup-db.sh local copy', () => {
     d.prepare('DELETE FROM t WHERE id = 101').run();
     d.close();
     execFileSync('bash', [SCRIPT, backups], {
-      env: { ...process.env, DB_PATH_OVERRIDE: db, BACKUP_REMOTE: '' },
+      env: { ...process.env, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath, BACKUP_REMOTE: '' },
       encoding: 'utf8',
     });
     const copies = readdirSync(backups).filter((f) => /^sessions\..*\.db$/.test(f));
@@ -250,7 +250,7 @@ describe('backup-db.sh pruning removes side files with their backup', () => {
     touch('sessions.2019-12-31-235959.db-shm', 0); // left by an earlier prune: no .db
     touch('sessions.2019-12-31-235959.db-wal', 0);
     out = execFileSync('bash', [SCRIPT, backups], {
-      env: { ...process.env, DB_PATH_OVERRIDE: db, BACKUP_REMOTE: '' },
+      env: { ...process.env, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath, BACKUP_REMOTE: '' },
       encoding: 'utf8',
     });
   });
@@ -330,7 +330,7 @@ describe('install-cron.sh template is executable as printed', () => {
       let status = 0;
       try {
         execFileSync('bash', [SCRIPT, path.join(work, 'backups')], {
-          env: { ...process.env, DB_PATH_OVERRIDE: db, BACKUP_REMOTE: remote },
+          env: { ...process.env, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath, BACKUP_REMOTE: remote },
           cwd: work,
           encoding: 'utf8',
         });
@@ -364,7 +364,7 @@ describe('verify-db-backup.sh', () => {
     makeTestDb(db);
     addRequiredTables(db);
     const env = {
-      ...process.env, DB_PATH_OVERRIDE: db,
+      ...process.env, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath,
       RCLONE_CONFIG_LOCALBK_TYPE: 'local',
       RCLONE_CONFIG_SECRET_TYPE: 'crypt',
       RCLONE_CONFIG_SECRET_REMOTE: `localbk:${remoteDir}`,
@@ -415,7 +415,7 @@ describe('verify-db-backup.sh', () => {
     const backups = path.join(work, 'backups');
     makeTestDb(db); // deliberately WITHOUT addRequiredTables — only table `t` exists
     const env = {
-      ...process.env, DB_PATH_OVERRIDE: db,
+      ...process.env, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath,
       RCLONE_CONFIG_LOCALBK_TYPE: 'local',
       RCLONE_CONFIG_SECRET_TYPE: 'crypt',
       RCLONE_CONFIG_SECRET_REMOTE: `localbk:${remoteDir}`,
@@ -454,7 +454,7 @@ describe('verify-db-backup.sh', () => {
     addRequiredTables(db);
     corruptDb(db);
     const env = {
-      ...process.env, DB_PATH_OVERRIDE: db,
+      ...process.env, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath,
       RCLONE_CONFIG_LOCALBK_TYPE: 'local',
       RCLONE_CONFIG_SECRET_TYPE: 'crypt',
       RCLONE_CONFIG_SECRET_REMOTE: `localbk:${remoteDir}`,
