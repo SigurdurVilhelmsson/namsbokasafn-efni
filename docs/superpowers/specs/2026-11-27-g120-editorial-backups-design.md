@@ -15,7 +15,23 @@ document owns the design.**
 - Akamai's Object Storage documentation, read the same day: pricing, Object Lock, lifecycle policies, versioning and
   endpoint types.
 
-No row, name or editing text was read.
+No row, name or editing text was read. A builder check (a fresh reader with the code and this document) asked three
+questions. [USER] answered them on 2026-11-27 (§0), and the rest were settled as Claude's calls, marked where they
+stand.
+
+## 0. [USER]'s answers to the builder check (2026-11-27)
+
+1. **While an editorial retention step is due and unrecorded, uploads to Paris pause.** Local copies continue. The
+   consent's "gone by" dates then hold, because no locked copy is taken while overdue data is still in the file
+   (§4.2).
+   - *Not chosen:* uploading anyway, which lets the date slip by however long the step stays overdue; and a grace
+     period before the pause.
+2. **The recovery tool reads a segment across a date range, and a whole module at a chosen time** (§4.4). It never
+   writes; text goes back through the editor.
+   - *Not chosen:* one segment from one copy; or also writing old text back as edits awaiting review.
+3. **The server also deletes copies whose lock has ended**, from day 356, as a second line behind the bucket's
+   lifecycle rule (§4.3). The lock means it can never delete a younger copy.
+   - *Not chosen:* the bucket rule and the alarm alone.
 
 ## 1. Intent
 
@@ -53,7 +69,8 @@ accident. Precondition 3 asks for a design that fits it on purpose.
   the server's own key.
 - The 12-month cap holds even if the server is dead, and a check on the server proves it.
 - A copy holds live rows only.
-- One segment can be recovered from an old copy without replacing the live database.
+- A segment's earlier wordings, or a whole module as it stood at a chosen time, can be read from old copies without
+  replacing the live database.
 
 **Non-goals**
 - Keeping every save of a pending edit as its own version inside the tool. That would serve the "segment from a
@@ -66,8 +83,9 @@ accident. Precondition 3 asks for a design that fits it on purpose.
 **Anti-goals** (each would make this a failure even if it ran)
 - A copy that outlives the consent's cap.
 - A lock date computed by the script. Under compliance mode a wrong date is permanent.
-- A whole-file restore of an old copy.
+- A whole-file restore of any copy but the newest, unless [USER] decides it at the time (§4.4).
 - A check that reads an empty or failed listing as healthy.
+- A delete path on the server that can reach a copy younger than its lock.
 
 ## 3. Approaches
 
@@ -80,10 +98,12 @@ or overwrite it, including the server's own key. Two layouts were weighed:
     points. A pending wording overwritten three months back is recoverable only if it existed on the 1st of that
     month.
 - **B. Every copy kept and locked for about 12 months** (**chosen by [USER], 2026-11-27**). Each copy gets the same
-  lock from the bucket's default. The server does no thinning and no clean-up. A bucket lifecycle rule deletes each
+  lock from the bucket's default. The server does no thinning. A bucket lifecycle rule deletes each
   copy at the end of its life. That is about 1,460 copies a year, ~24 GB at today's size.
   - Why chosen: it gives the finest restore points (every 6 hours, back a year), which is what [USER] wants the
     backups for. And it is the least code, so it has the fewest ways to fail without anyone noticing.
+  - After the builder check, [USER] added one server-side delete as a safety net: copies whose lock has ended
+    (§0 answer 3, §4.3). There is still no thinning.
 
 **Dropped**
 - **Versioning without a lock.** The server's key can still delete old versions. It survives a bad script, not a
@@ -128,16 +148,20 @@ reaches ~170 MB, about ten times today's database. Restores draw on the account'
 
   The interim lock keeps one door open. If the data protection officer settles on a cap shorter than 12 months,
   copies already uploaded can still be removed in time, by shortening the lifecycle rule.
-- **The lifecycle rule** is set once, before the first copy:
+- **The lifecycle rule:**
   - current versions expire at **355 days**;
-  - noncurrent versions are deleted after **1 day**.
+  - noncurrent versions are deleted after **1 day**;
+  - expired delete markers are removed, if Akamai accepts that clause. The read-back shows whether it did. Kept
+    markers are harmless: no bytes, an encrypted name, and §4.3's age test skips them.
 
   Akamai runs lifecycle rules at midnight, bucket-local time, and says a first run may not finish a large bucket. So
-  a copy is gone by about day 358, inside the 12-month cap.
+  a copy is gone by about day 357. The server's own delete (§4.3) covers a run that leaves something behind.
   - Akamai documents s3cmd for lifecycle. The AWS CLI's `put-bucket-lifecycle-configuration` is the same S3 call.
   - Each setting is read back with its `get-` command and recorded in the register.
-  - *(Claude's call: the three numbers 350 / 355 / 361, the last in §4.3. The lock always ends before the lifecycle
-    acts, and every margin stays inside 365 days.)*
+  - The probe sets a short rule first, to prove the rule deletes on this bucket (§4.6). The 355-day rule is set
+    after it passes.
+  - *(Claude's call: the numbers 350 / 355 / 356 / 358. The lock ends at 350 days; the lifecycle acts at 355; the
+    server deletes from 356; the check fails at 358, a week before 365.)*
 - **Keys.**
   - The server gets a **limited read_write key for this bucket only.** Akamai's permission table: under compliance
     such a key can add versions and cannot delete one during its retention.
@@ -151,6 +175,17 @@ reaches ~170 MB, about ten times today's database. Restores draw on the account'
 ### 4.2 The copy (`scripts/backup-db.sh`)
 
 - **Order unchanged:** the editorial retention runs first, then the copy.
+- **Pause while a retention step is overdue** (§0 answer 1).
+  - After the retention run, the job asks whether any editorial retention step is due and unrecorded. That covers a
+    run that failed, and a step refused until a person decides (`server/scripts/editorial-retention.js`).
+  - If one is, the job still takes the local copy, but it **uploads nothing**, writes no heartbeat and says why on
+    stderr. The stale heartbeat and `checks.retention` both show it.
+  - The research job takes the same line: it takes no copy while a retention is due
+    (`server/scripts/research-backup.js`).
+  - The local copy is unlocked and ages out in about 7.5 days, so it cannot carry overdue data past the consent's
+    date.
+  - Until 31 December 2028 no step is due, so this never fires.
+  - A due-check that cannot answer counts as due. It fails closed.
 - **The copy is made with `VACUUM INTO`, not `cp` and not the online backup API.**
   - `VACUUM INTO` writes the live rows only. So a deleted row's bytes never ride forward into later copies.
   - The research half measured that better-sqlite3's online backup carries deleted bytes, both in free pages and
@@ -167,30 +202,47 @@ reaches ~170 MB, about ten times today's database. Restores draw on the account'
   - The copy is gzipped (one copy measured 54.6 MB → 16.6 MB) and uploaded as `sessions.<stamp>.db.gz` with
     `rclone copyto` to the new crypt remote.
   - No lock flags: the bucket's default does that.
-  - **No remote prune** on this remote. The lifecycle rule owns deletion, and a delete would only add a delete marker.
+  - **No thinning prune** on this remote. The only delete is §4.3's removal of copies whose lock has ended.
 - **Rate guard.** The upload refuses when the bucket already holds **8 or more copies from the last 24 hours** (twice
   the cron's 4).
   - The refusal is loud and writes no heartbeat.
   - Why: a runaway job's copies cannot be removed for a year.
 - **The heartbeat** keeps its meaning: written only after a successful upload.
 
-### 4.3 The oldest-copy check
+### 4.3 Expired copies and the oldest-copy check
 
-- **What the job records.** After each upload it lists **every version** in the bucket, noncurrent versions and
-  delete markers included. It writes a status file holding:
-  - the oldest version's age;
-  - the newest version's age;
-  - the number of versions;
+- **The server's own delete** (§0 answer 3).
+  - After each upload, the job permanently deletes **every data version older than 356 days**, by version id, so
+    nothing is merely hidden behind a delete marker.
+  - The lock ended at 350 days, so this can only remove what the lifecycle rule should already have removed.
+  - It is a second line behind the lifecycle rule, for a rule that is missing, changed or partly run. The rule stays
+    the line that works when the server is dead.
+  - It never reaches a younger copy, for two reasons:
+    - its age test, pinned by a test with copies on both sides of the line;
+    - the lock itself, which refuses the server's key.
+  - It is best-effort, like today's remote prune: a failed delete is logged and leaves the copy for §4.3's check to
+    report.
+  - The 356-day limit is an enforceable value: a constant in a `server/lib/` file, pinned by a test, beside the
+    check's threshold.
+- **What the job records.** After the delete it lists **every version** in the bucket, noncurrent versions included.
+  It writes a status file holding:
+  - the oldest data version's age;
+  - the newest data version's age;
+  - the number of data versions, and of delete markers;
   - whether the copy it just uploaded is in the listing.
+
+  Delete markers hold no data, so the age test skips them; they are only counted.
 - **Fail closed.** The check is not ok when:
   - the listing failed or is empty;
   - the listing lacks the copy just uploaded;
-  - any version is **older than 361 days**.
+  - any data version is **older than 358 days**, which means both the lifecycle rule and the server's delete
+    failed.
 
   The threshold is an enforceable value: a constant in a `server/lib/` file, pinned by a test.
 - **Where it shows.** `/api/health` reads the status file and turns `degraded`, and `./scripts/deploy.sh` prints it.
-- **Why it matters.** Production cannot read a lifecycle rule (rclone has no command for it). So this check is the
-  **only detector of a missing, changed or failed lifecycle rule**.
+- **Why it matters.** Production cannot read a lifecycle rule (rclone has no command for it), and nothing polls
+  `/api/health` day to day. So the check is the last detector, and the server's delete keeps the cap even when
+  nobody looks.
 
 ### 4.4 Restore
 
@@ -199,12 +251,21 @@ reaches ~170 MB, about ten times today's database. Restores draw on the account'
   - Why: `sessions.db` holds the research consent records (`research_consent`, `research_deletions`,
     `research_capture_losses`). Putting an older copy in place could bring back a consent that was later withdrawn.
   - Today's copies are at most ~7.5 days old. 12-month copies would widen that window from days to a year.
-- **One segment from an old copy: a new script in `server/scripts/`.**
-  - Given a copy (gzipped or not), a book, a module and a segment id, it decompresses into a `0700` temp directory and
-    opens the copy read-only.
-  - It prints that segment's rows from `segment_edits` (status, times, editor, text) and `content_versions`, then
-    deletes the temp copy.
-  - It never opens the live database.
+  - If an older copy ever has to go in place, it is a **stop for [USER], decided at the time.** For example: the live
+    file is lost and the newest copy is broken, or a script has damaged too much to re-enter by hand. Any
+    withdrawal made since that copy must be applied again before the server opens it. *(Claude's call: this design
+    builds no tool for it.)*
+- **The recovery tool: a new read-only script in `server/scripts/`** (§0 answer 2). It has two modes:
+  - **A segment across a date range.** Given a book, a module, a segment id and a range of dates, it takes the copies
+    in that range (by default one a day; on request every copy). It prints each distinct wording of the segment with
+    the first and last copy it appears in, drawn from `segment_edits` (status, times, editor, text) and
+    `content_versions`. So "when did this change?" needs no copy-by-copy search.
+  - **A module at a chosen time.** Given a book, a module and a date and time, it takes the newest copy at or before
+    it, and prints every segment's rows from those two tables.
+  - **How it handles copies.** It fetches and decrypts copies itself through the crypt remote, or reads a local copy.
+    Each is decompressed into a `0700` temp directory, opened read-only, and deleted as soon as it has been read.
+    A year at one copy a day is ~6 GB of transfer, inside the account's free 1 TB a month.
+  - **It never opens the live database and writes nothing to it.**
 - **[USER] runs it.** It prints editors' text and names, which no Claude Code session may read (CLAUDE.md § Purpose).
   The recovered wording goes back through the editor as an ordinary edit, so it is reviewed and recorded like any
   other.
@@ -219,15 +280,25 @@ This gap exists today and is no wider under this design, given the rule in §4.4
 ### 4.6 The live probe (before the first real copy)
 
 Local tests cannot prove a lock, because rclone's local remote has none. And a test copy locked for months cannot be
-removed. So, with default retention at **1 day**, run as [USER] or on their instruction:
+removed. So, with default retention at **1 day** and a **temporary lifecycle rule of 1 day** (current) and 1 day
+(noncurrent), run as [USER] or on their instruction:
 
-1. Upload one test object with the server's key.
+1. Upload one test object with the server's key, **through the crypt remote**. That also proves rclone's encrypted
+   upload is accepted: an Object Lock bucket requires a checksum on every upload.
 2. **Try to delete that version with the server's key. Expect a refusal.**
 3. Upload it again under the same name. Expect a new version, with the first still listed.
 4. With the server's key, try to change the lock configuration and the lifecycle rule. Record whether each is
-   refused. If either is allowed, the register records it as a residual risk, and §4.3's check is its only detector.
+   refused. If either is allowed, the register records it as a residual risk. §4.3's delete and check are its
+   detectors.
 5. Confirm §4.3's listing sees all of the above.
-6. Raise default retention to 30 days. Then run the first real copy and the restore test.
+6. **After the lock ends, delete one version with the server's key. Expect success.** That proves §4.3's delete can
+   work.
+7. **Leave another version to the lifecycle rule. Confirm it is gone within about three days.** That proves the rule
+   deletes on this bucket.
+8. Set the 355-day lifecycle rule and raise default retention to 30 days. Then run the first real copy and the
+   restore test.
+
+London keeps running throughout, so the days the probe waits cost no protection.
 
 ### 4.7 Moving from London
 
@@ -238,6 +309,11 @@ removed. So, with default retention at **1 day**, run as [USER] or on their inst
 5. The London editorial bucket is deleted (precondition 1). Its copies are at most ~7.5 days old, so nothing needs
    carrying over.
 
+Until the switch, the London remote keeps today's behaviour, prune included. The locked-bucket behaviour applies only
+to the new remote: no thinning, §4.3's delete, the rate guard and the status file. The script tells the two apart
+explicitly, never by guessing from the remote's name *(Claude's call)*. `./scripts/deploy.sh`'s own pre-deploy copy
+stays local-only, as today.
+
 ### 4.8 The runbook
 
 `docs/technical/backup-and-restore.md` gains every command [USER] runs, each followed by the read-back that proves it:
@@ -247,9 +323,9 @@ removed. So, with default retention at **1 day**, run as [USER] or on their inst
 - the lifecycle rule;
 - the limited key and the crypt remote;
 - the escrow gate;
-- the live probe;
+- the live probe, with its temporary lifecycle rule;
 - the move from London;
-- the restore rule and the one-segment script.
+- the restore rule and the recovery tool.
 
 The old "One-time setup" section's console-only instructions no longer apply to the editorial bucket.
 
@@ -262,9 +338,11 @@ The old "One-time setup" section's console-only instructions no longer apply to 
   Object Lock or lifecycle. So every bucket setting is made from [USER]'s computer.
 - **The research file is never copied by this job.** `backup-db.sh` copies `sessions.db` only.
 - **The 12-month cap:**
-  - lock 350 days, lifecycle 355 days (current) + 1 day (noncurrent), check at 361 days, all inside 365;
+  - lock 350 days, lifecycle 355 days (current) + 1 day (noncurrent), the server's delete from 356 days, check at
+    358 days, all inside 365;
   - a copy taken before a retention step holds what that step removes until the copy expires. That fits the consent
-    text's "last copies gone by" date for named data (31 December 2031 = the 2030 step + 12 months).
+    text's "last copies gone by" date for named data (31 December 2031 = the 2030 step + 12 months). It holds
+    because no copy is uploaded while a step is overdue (§4.2).
 
 ## 6. Left to the builder
 
@@ -275,16 +353,24 @@ The old "One-time setup" section's console-only instructions no longer apply to 
 - Names, the gzip level and the test harness. The existing tests use a crypt remote over a local one; a fake rclone on
   `PATH` can record the arguments.
 - How the rate guard counts: a remote listing or a local record.
+- How the job asks whether a retention step is due. `server/lib/editorialRetention.js` already plans steps; a
+  read-only answer from it is the obvious route.
+- How the script marks a remote as the locked one (§4.7), and how rclone deletes one version by id.
+- The recovery tool's command-line shape and output format, within §4.4.
 
 ## 7. Verification
 
 - **Unit and script tests:**
   - the sentinel (§4.2) with its control;
   - the rate guard refusing at 8;
-  - the check failing on an empty listing, a failed listing, a missing new copy and a too-old version, with a passing
-    control;
+  - the upload pausing while a retention step is due, with a control that uploads when none is, and a due-check that
+    fails counting as due;
+  - the server's delete removing versions older than 356 days and never one younger, with copies on both sides of
+    the line;
+  - the check failing on an empty listing, a failed listing, a missing new copy and a too-old data version, with a
+    passing control, and skipping delete markers;
   - the upload carrying no lock flags;
-  - the one-segment script never opening the live path.
+  - the recovery tool never opening the live path, and deleting every temp copy it made, even on failure.
 - **The `verify-research-withdrawal` skill**, because the change touches the `sessions.db` backup and its runbook.
 - **The live probe (§4.6)**, the restore test, and **G-1b re-read on the research bucket**: it must still read
   `"Unversioned"`. The register asks for this once G1.20 turns versioning on for the editorial bucket.
