@@ -12,14 +12,23 @@
  *   module  --book B --module M (--at ISO | --file F) [--as-of ISO] [--remote R]
  *
  * --as-of maps to rclone's --s3-version-at: the bucket is listed and read as it was at that time,
- * so a copy hidden behind a delete marker is still recovered.
- * Exit codes: 0 rows printed; 1 no copies in range or no rows; 2 usage, or --file is the live database.
+ * so a copy hidden behind a delete marker is still recovered. --file may name a plain copy or a
+ * gzipped one (.db.gz), which is unzipped into the private temp directory first.
+ * Exit codes: 0 rows printed; 1 no copies in range or no rows; 2 usage, or --file is the live database;
+ * 130 / 143 interrupted by SIGINT / SIGTERM (the temp directory is removed and nothing more is printed).
+ *
+ * INTERRUPTS. A decrypted copy must not outlive a Ctrl-C. The handlers (installed only when run as a
+ * command) record the signal and kill the running rclone, whose download is awaited, never run
+ * synchronously: a JS signal handler cannot run while execFileSync blocks. After each copy the scan
+ * yields to the event loop and checks the signal, so one that lands during the synchronous read is
+ * honoured before the next download. The temp directory's path is printed at the start, so a run
+ * killed by something no handler can catch (SIGKILL) can be cleaned by hand.
  */
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const zlib = require('zlib');
-const { execFileSync } = require('child_process');
+const { spawn } = require('child_process');
 const Database = require('better-sqlite3');
 const resolveDbPath = require('../lib/dbPath');
 const { DAY_MS } = require('../lib/editorialBackupPolicy');
@@ -162,6 +171,56 @@ function realOrResolved(p) {
   }
 }
 
+/**
+ * Run rclone without blocking the event loop, so a signal handler can kill it. The running child is
+ * kept in state.child.
+ * @param {string[]} args
+ * @param {{env: object, capture?: boolean, state: {child: object|null}}} opts
+ * @returns {Promise<string>} stdout when capture is set, else ''
+ */
+function runRclone(args, { env, capture = false, state }) {
+  return new Promise((resolve, reject) => {
+    let stdout = '';
+    const child = spawn('rclone', args, {
+      env,
+      stdio: ['ignore', capture ? 'pipe' : 'ignore', capture ? 'inherit' : 'ignore'],
+    });
+    state.child = child;
+    if (capture) {
+      child.stdout.setEncoding('utf8');
+      child.stdout.on('data', (c) => (stdout += c));
+    }
+    child.on('error', (e) => {
+      state.child = null;
+      reject(e);
+    });
+    child.on('close', (code, signal) => {
+      state.child = null;
+      if (code === 0) resolve(stdout);
+      else
+        reject(new Error(`rclone ${args[0]} ${signal ? `killed by ${signal}` : `exited ${code}`}`));
+    });
+  });
+}
+
+/** A private 0700 temp directory, its path printed to stderr so a killed run can be cleaned by hand. */
+function makeTmpDir(err) {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'recover-'));
+  fs.chmodSync(dir, 0o700);
+  err.write(
+    `recover-from-backup: temporary directory ${dir} (removed at the end; delete it by hand if this run is killed)\n`
+  );
+  return dir;
+}
+
+/** Unzip a .gz copy to dbFile (0600); the caller removes both. @returns {string} the database path */
+function gunzipInto(gzFile, dbFile) {
+  fs.writeFileSync(dbFile, zlib.gunzipSync(fs.readFileSync(gzFile)), { mode: 0o600 });
+  return dbFile;
+}
+
+const signalExit = (sig) => 128 + (os.constants.signals[sig] || 0);
+
 function printRows(out, label, rows) {
   for (const r of rows) {
     const { segment_id: seg, ...rest } = r;
@@ -171,10 +230,11 @@ function printRows(out, label, rows) {
 
 /**
  * @param {string[]} argv arguments after the script name
- * @param {{out: {write: Function}, err: {write: Function}, env: object}} io
- * @returns {number} exit code
+ * @param {{out: {write: Function}, err: {write: Function}, env: object,
+ *   state?: {signal: string|null, child: object|null}}} io  state is shared with the signal handlers
+ * @returns {Promise<number>} exit code
  */
-function main(argv, { out, err, env }) {
+async function main(argv, { out, err, env, state = { signal: null, child: null } }) {
   const o = parseArgs(argv);
   const usage = (msg) => {
     err.write(`${msg ? `${msg}\n` : ''}${USAGE}`);
@@ -212,16 +272,27 @@ function main(argv, { out, err, env }) {
       ? readSegment(p, { book: o.book, module: o.module, segment: o.segment })
       : readModule(p, { book: o.book, module: o.module });
 
+  const interrupted = () => {
+    err.write(`recover-from-backup: interrupted (${state.signal}); temporary directory removed\n`);
+    return signalExit(state.signal);
+  };
   let tmpDir = null;
   try {
     const perCopy = [];
-    if (o.file) {
+    if (o.file && o.file.endsWith('.gz')) {
+      tmpDir = makeTmpDir(err);
+      const dbFile = gunzipInto(o.file, path.join(tmpDir, path.basename(o.file).slice(0, -3)));
+      perCopy.push({ copy: path.basename(o.file), ...read(dbFile) });
+    } else if (o.file) {
       perCopy.push({ copy: path.basename(o.file), ...read(o.file) });
     } else {
-      const names = execFileSync('rclone', ['lsf', '--files-only', ...asOf, remote], {
+      const listing = await runRclone(['lsf', '--files-only', ...asOf, remote], {
         env,
-        encoding: 'utf8',
-      })
+        capture: true,
+        state,
+      });
+      if (state.signal) return interrupted();
+      const names = listing
         .split('\n')
         .map((s) => s.trim())
         .filter(Boolean);
@@ -233,28 +304,28 @@ function main(argv, { out, err, env }) {
         err.write('recover-from-backup: no copies in range\n');
         return 1;
       }
-      tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'recover-'));
-      fs.chmodSync(tmpDir, 0o700);
+      tmpDir = makeTmpDir(err);
       for (const name of chosen) {
         const fetched = path.join(tmpDir, name);
-        execFileSync('rclone', ['copyto', ...asOf, `${remote}${name}`, fetched], {
-          env,
-          stdio: 'ignore',
-        });
+        await runRclone(['copyto', ...asOf, `${remote}${name}`, fetched], { env, state });
+        if (state.signal) return interrupted();
         fs.chmodSync(fetched, 0o600);
         let dbFile = fetched;
         if (name.endsWith('.gz')) {
-          dbFile = fetched.slice(0, -3);
-          fs.writeFileSync(dbFile, zlib.gunzipSync(fs.readFileSync(fetched)), { mode: 0o600 });
+          dbFile = gunzipInto(fetched, fetched.slice(0, -3));
           fs.rmSync(fetched);
-        } else fs.chmodSync(dbFile, 0o600);
+        }
         try {
           perCopy.push({ copy: name, ...read(dbFile) });
         } finally {
           fs.rmSync(dbFile, { force: true });
         }
+        // The gunzip and the read are synchronous: let a signal that arrived meanwhile be handled now
+        await new Promise(setImmediate);
+        if (state.signal) return interrupted();
       }
     }
+    if (state.signal) return interrupted();
     if (o.mode === 'module') {
       const { copy, edits, versions } = perCopy[0];
       if (!edits.length && !versions.length) {
@@ -278,6 +349,7 @@ function main(argv, { out, err, env }) {
     }
     return 0;
   } catch (e) {
+    if (state.signal) return interrupted(); // a download killed by the handler lands here
     err.write(`recover-from-backup: ${e.code || e.name}: ${e.message}\n`);
     return 1;
   } finally {
@@ -287,11 +359,28 @@ function main(argv, { out, err, env }) {
 
 if (require.main === module) {
   process.exitCode = 1; // only a verdict overwrites this
-  process.exitCode = main(process.argv.slice(2), {
+  const state = { signal: null, child: null };
+  const onSignal = (sig) => {
+    if (!state.signal) state.signal = sig;
+    process.exitCode = signalExit(state.signal);
+    if (state.child) state.child.kill('SIGTERM');
+  };
+  process.on('SIGINT', onSignal);
+  process.on('SIGTERM', onSignal);
+  main(process.argv.slice(2), {
     out: process.stdout,
     err: process.stderr,
     env: process.env,
-  });
+    state,
+  }).then(
+    (code) => {
+      process.exitCode = state.signal ? signalExit(state.signal) : code;
+    },
+    (e) => {
+      process.stderr.write(`recover-from-backup: ${e.code || e.name}: ${e.message}\n`);
+      process.exitCode = state.signal ? signalExit(state.signal) : 1;
+    }
+  );
 }
 
 module.exports = {
