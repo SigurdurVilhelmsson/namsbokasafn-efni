@@ -308,12 +308,12 @@ describe('install-cron.sh template is executable as printed', () => {
     });
   }
 
-  /** BACKUP_REMOTE values on real cron entries only — not the ones named in comments. */
+  /** BACKUP_REMOTE values on the real backup-db.sh cron entry only — not the ones named in comments, and not the verify lines. */
   function printedRemotes() {
     return printedCrontab()
       .split('\n')
-      .filter((line) => /^[\d*]/.test(line))
-      .flatMap((line) => [...line.matchAll(/BACKUP_REMOTE=(\S+)/g)].map((m) => m[1]));
+      .filter((line) => /^[\d*]/.test(line) && line.includes('/backup-db.sh'))
+      .flatMap((line) => [...line.matchAll(/(?<![A-Z_])BACKUP_REMOTE=(\S+)/g)].map((m) => m[1]));
   }
 
   it('prints at least one BACKUP_REMOTE cron entry', () => {
@@ -345,6 +345,63 @@ describe('install-cron.sh template is executable as printed', () => {
       expect(status, `install-cron.sh printed BACKUP_REMOTE=${remote}`).not.toBe(5);
     }
     rmSync(work, { recursive: true, force: true });
+  });
+
+  /** One printed variable's value on the real backup-db.sh cron entry. */
+  function printedLockedValue(name) {
+    const line = printedCrontab()
+      .split('\n')
+      .find((l) => /^[\d*]/.test(l) && l.includes('backup-db.sh'));
+    const m = new RegExp(`(?<![A-Z_])${name}=(\\S+)`).exec(line ?? '');
+    return m ? m[1] : undefined;
+  }
+
+  /** Runs the real guards with a fake rclone that fails every call (so nothing can reach a network). */
+  function runWithLocked(locked, s3) {
+    const work = mkdtempSync(path.join(tmpdir(), 'bkup-'));
+    const db = path.join(work, 'sessions.db');
+    makeTestDb(db);
+    const bin = path.join(work, 'bin');
+    mkdirSync(bin);
+    writeFileSync(path.join(bin, 'rclone'), '#!/usr/bin/env bash\nexit 4\n');
+    chmodSync(path.join(bin, 'rclone'), 0o755);
+    const env = { ...process.env, PATH: `${bin}:${process.env.PATH}`, DB_PATH_OVERRIDE: db, RETENTION_NODE: process.execPath, BACKUP_NODE: process.execPath, LOCKED_BACKUP_REMOTE: locked, LOCKED_BACKUP_S3: s3 };
+    delete env.BACKUP_REMOTE;
+    let status = 0;
+    try {
+      execFileSync('bash', [SCRIPT, path.join(work, 'backups')], { env, cwd: work, encoding: 'utf8', stdio: 'pipe' });
+    } catch (e) {
+      status = e.status;
+    }
+    rmSync(work, { recursive: true, force: true });
+    return status;
+  }
+
+  it('prints LOCKED_BACKUP_REMOTE and LOCKED_BACKUP_S3 beside BACKUP_REMOTE on the backup line', () => {
+    expect(printedLockedValue('LOCKED_BACKUP_REMOTE')).toBeDefined();
+    expect(printedLockedValue('LOCKED_BACKUP_S3')).toBeDefined();
+  });
+
+  it('prints locked values that backup-db.sh accepts (never exit 5)', () => {
+    const status = runWithLocked(printedLockedValue('LOCKED_BACKUP_REMOTE'), printedLockedValue('LOCKED_BACKUP_S3'));
+    expect(status).not.toBe(5);
+  });
+
+  it('control: the printed crypt value with the locked prefix removed is refused with exit 5', () => {
+    const crypt = printedLockedValue('LOCKED_BACKUP_REMOTE');
+    expect(runWithLocked(crypt.replace(/^locked-?/, ''), printedLockedValue('LOCKED_BACKUP_S3'))).toBe(5);
+  });
+
+  it('control: the printed S3 value with its trailing separator removed is refused with exit 5', () => {
+    const s3 = printedLockedValue('LOCKED_BACKUP_S3');
+    expect(runWithLocked(printedLockedValue('LOCKED_BACKUP_REMOTE'), s3.replace(/[:/]$/, ''))).toBe(5);
+  });
+
+  it('prints a monthly verify line for the locked remote too', () => {
+    const verify = printedCrontab()
+      .split('\n')
+      .filter((l) => /^[\d*]/.test(l) && l.includes('verify-db-backup.sh'));
+    expect(verify.some((l) => /(?<![A-Z_])BACKUP_REMOTE=locked-secret:/.test(l))).toBe(true);
   });
 
   it('sets a cron PATH that includes /usr/local/bin, where rclone installs', () => {

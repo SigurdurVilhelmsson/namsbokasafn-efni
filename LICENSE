@@ -287,6 +287,13 @@ published.)*
 >      (`where`, `verify`) as its own Node process and reads its stdout (the
 >      research file's monthly restore test). Found the same way. *(Added
 >      2026-11-08.)*
+>    - `scripts/backup-db.sh` runs `server/scripts/editorial-retention.js`
+>      (an edge that exists today and was never listed) and
+>      `server/scripts/editorial-backup.js` (`copy`, `retention-due`,
+>      `rate-ok`, `expired`, `status`), each as its own Node process, and reads
+>      `editorial-backup.js`'s stdout. It cannot make a backup without
+>      `server/` present. Its paths are interpolated, so the fifth search
+>      shape finds it. *(Added 2026-11-27, with G1.20.)*
 >
 > This list is the authoritative enumeration — update it here when an edge is
 > added or removed, and re-derive rather than trusting it. **Six** search shapes
