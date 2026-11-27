@@ -142,7 +142,9 @@ describe('backup-db.sh off-box upload', () => {
       if (real) symlinkSync(real, path.join(binDir, bin));
     }
 
-    const env = { PATH: binDir, DB_PATH_OVERRIDE: db, BACKUP_REMOTE: 'secret:' };
+    // RETENTION_NODE is the seam for node, which the copy needs: the restricted PATH has none,
+    // and /usr/bin/node may be absent or built for another ABI than server/node_modules.
+    const env = { PATH: binDir, DB_PATH_OVERRIDE: db, BACKUP_REMOTE: 'secret:', RETENTION_NODE: process.execPath };
     let error;
     try {
       execFileSync('bash', [SCRIPT, backups], { env, encoding: 'utf8' });
@@ -179,6 +181,34 @@ describe('backup-db.sh off-box upload', () => {
     expect(error).toBeDefined();
     expect(error.status).toBe(5);
     expect(existsSync(path.join(backups, '.last-offbox-backup'))).toBe(false);
+    rmSync(work, { recursive: true, force: true });
+  });
+});
+
+// G1.20: the local copy is made by VACUUM INTO (editorial-backup.js copy), so the bytes of a
+// deleted row are not carried into a copy that is kept for up to a year.
+describe('backup-db.sh local copy', () => {
+  const TOKEN = 'zq-sentinel-7f3a91';
+
+  it("the local copy is made with VACUUM INTO: a deleted row's token is absent", () => {
+    const work = mkdtempSync(path.join(tmpdir(), 'bkup-vac-'));
+    const db = path.join(work, 'sessions.db');
+    const backups = path.join(work, 'backups');
+    const Database = require(path.join(REPO, 'server', 'node_modules', 'better-sqlite3'));
+    const d = new Database(db);
+    d.exec('CREATE TABLE t(id INTEGER PRIMARY KEY, v TEXT)');
+    const ins = d.prepare('INSERT INTO t(v) VALUES (?)');
+    for (let i = 0; i < 200; i++) ins.run(i === 100 ? TOKEN.repeat(120) : `row ${i}`);
+    d.prepare('DELETE FROM t WHERE id = 101').run();
+    d.close();
+    execFileSync('bash', [SCRIPT, backups], {
+      env: { ...process.env, DB_PATH_OVERRIDE: db, BACKUP_REMOTE: '' },
+      encoding: 'utf8',
+    });
+    const copies = readdirSync(backups).filter((f) => /^sessions\..*\.db$/.test(f));
+    expect(copies).toHaveLength(1);
+    expect(readFileSync(db).includes(Buffer.from(TOKEN))).toBe(true); // control: the live file holds it
+    expect(readFileSync(path.join(backups, copies[0])).includes(Buffer.from(TOKEN))).toBe(false);
     rmSync(work, { recursive: true, force: true });
   });
 });
@@ -420,7 +450,6 @@ describe('verify-db-backup.sh', () => {
     const work = mkdtempSync(path.join(tmpdir(), 'bkup-'));
     const db = path.join(work, 'sessions.db');
     const remoteDir = path.join(work, 'remote');
-    const backups = path.join(work, 'backups');
     makeTestDb(db);
     addRequiredTables(db);
     corruptDb(db);
@@ -432,8 +461,10 @@ describe('verify-db-backup.sh', () => {
       RCLONE_CONFIG_SECRET_PASSWORD: execFileSync('rclone', ['obscure', 'testpass'], { encoding: 'utf8' }).trim(),
       BACKUP_REMOTE: 'secret:',
     };
-    // Arrange: upload the already-corrupt DB as the off-box backup (same recipe as above).
-    execFileSync('bash', [SCRIPT, backups], { env, encoding: 'utf8' });
+    // Arrange: upload the already-corrupt DB as the off-box backup. backup-db.sh no longer can
+    // (its VACUUM INTO copy refuses a corrupt database, fail-closed), so put the file on the
+    // crypt remote directly under a backup name.
+    execFileSync('rclone', ['copyto', db, 'secret:sessions.2020-01-01-000000.db'], { env, encoding: 'utf8' });
 
     let error;
     try {

@@ -11,9 +11,9 @@
 #
 # The script:
 #   0. Runs the editorial retention (server/scripts/editorial-retention.js --write) before anything is copied
-#   1. Checkpoints the WAL to ensure all data is in the main DB file
-#   2. Copies the DB file with a timestamp
-#   3. Keeps the most recent 30 backups (prunes older ones, with their
+#   1. Makes a timestamped copy with VACUUM INTO (server/scripts/editorial-backup.js copy): a consistent snapshot
+#      of live rows only, so the bytes of deleted rows are not carried into a copy that is kept for months
+#   2. Keeps the most recent 30 backups (prunes older ones, with their
 #      -shm/-wal side files, and sweeps side files whose backup is gone)
 #
 
@@ -43,23 +43,25 @@ mkdir -p "$BACKUP_DIR"
 # failure's reason (an error code and message, never a row's value), stays in this log, so a retention that cannot
 # run is diagnosable before the health check would show it (final review I-3).
 # /usr/bin first: better-sqlite3's binary is built for the service's /usr/bin/node.
-# RETENTION_NODE is a test seam (scripts/__tests__); cron never sets it.
-RETENTION_NODE="${RETENTION_NODE:-$(PATH="/usr/bin:$PATH" command -v node || true)}"
-if [ -z "$RETENTION_NODE" ]; then
+# RETENTION_NODE is a test seam (scripts/__tests__) that sets NODE; cron never sets it. The local copy below uses the
+# same node.
+NODE="${RETENTION_NODE:-$(PATH="/usr/bin:$PATH" command -v node || true)}"
+if [ -z "$NODE" ]; then
   echo "WARNING: editorial retention did not complete: node not found" >&2
-elif ! SESSIONS_DB_PATH="$DB_PATH" "$RETENTION_NODE" "${PROJECT_ROOT}/server/scripts/editorial-retention.js" --write >/dev/null; then
+elif ! SESSIONS_DB_PATH="$DB_PATH" "$NODE" "${PROJECT_ROOT}/server/scripts/editorial-retention.js" --write >/dev/null; then
   echo "WARNING: editorial retention did not complete; see checks.retention in /api/health" >&2
 fi
 
-# Checkpoint WAL to flush pending writes into the main DB file
-sqlite3 "$DB_PATH" "PRAGMA wal_checkpoint(TRUNCATE);" 2>/dev/null || {
-  echo "WARNING: WAL checkpoint failed (sqlite3 not installed?). Proceeding with file copy." >&2
+# Local copy through Node (VACUUM INTO, mode 0600). It prints the copy's path and leaves no partial file on failure.
+# No cp fallback: a plain copy would carry deleted rows' bytes into a long-kept backup.
+if [ -z "$NODE" ]; then
+  echo "ERROR: local copy failed: node not found" >&2
+  exit 1
+fi
+BACKUP_FILE="$("$NODE" "${PROJECT_ROOT}/server/scripts/editorial-backup.js" copy "$DB_PATH" "$BACKUP_DIR")" || {
+  echo "ERROR: local copy failed" >&2
+  exit 1
 }
-
-# Create timestamped backup
-TIMESTAMP="$(date +%Y-%m-%d-%H%M%S)"
-BACKUP_FILE="${BACKUP_DIR}/sessions.${TIMESTAMP}.db"
-cp "$DB_PATH" "$BACKUP_FILE"
 
 echo "Backup created: $BACKUP_FILE ($(du -h "$BACKUP_FILE" | cut -f1))"
 
