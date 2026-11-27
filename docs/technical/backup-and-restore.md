@@ -373,7 +373,7 @@ The read-back must show `"Days": 30`. Record both read-backs in the register.
 
 ### Step 8. Switch the cron from London to Paris
 
-The order is the design's (§4.7): a watched hand run, the restore test, health reading ok, and only then the crontab. Until 8.4 the crontab keeps its London-only line, which keeps writing the heartbeat.
+The order is the design's (§4.7): a watched hand run, the restore test, health reading ok, and only then the crontab. Until 8.4 the crontab keeps its London-only line, which keeps writing the heartbeat. **Do 8.1 to 8.4 in one sitting:** the London-only line never refreshes the Paris status file that 8.1 writes, so once that file is older than `OFFBOX_BACKUP_STALE_HOURS`, `checks.offbox_backup_cap` reads `stale` and health reads degraded until 8.4's line has run.
 
 1. **A watched hand run, with both remotes set.** From the repository root, as the service user:
 
