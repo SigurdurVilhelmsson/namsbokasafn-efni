@@ -16,8 +16,8 @@ The Paris tier (`LOCKED_BACKUP_REMOTE`) adds gzipped copies that Object Lock kee
 |---|---|---|---|
 | `BACKUP_REMOTE` | `backup-db.sh`, `verify-db-backup.sh` | *(unset → off-box skipped)* | An `rclone` **crypt** remote path, e.g. `secret:`. **Must end in `:` or `/`** — the script fails loud (`exit 5`) otherwise, because a missing separator munges the object name and silently breaks retention. Since the crypt remote already points at the bucket, `secret:` *is* the bucket root; a subpath form must still carry the trailing slash (`secret:sub/`). |
 | `BACKUP_REMOTE_KEEP` | `backup-db.sh` | `BACKUP_REMOTE_KEEP`'s fallback in `scripts/backup-db.sh` | How many most-recent objects to keep off-box (older ones pruned). |
-| `LOCKED_BACKUP_REMOTE` | `backup-db.sh`, `recover-from-backup.js` | *(unset → Paris skipped)* | The Paris **crypt** remote (`locked-secret:`). **Must begin with `locked`, end in `:` or `/`, and be an rclone remote of type `crypt`** (checked against rclone's config), else `exit 5`. Uploads the gzipped copy; the bucket's settings, never a flag, lock it. London's `BACKUP_REMOTE` must **not** begin with `locked`. |
-| `LOCKED_BACKUP_S3` | `backup-db.sh` | *(required when `LOCKED_BACKUP_REMOTE` is set)* | The raw S3 path under that crypt remote (`locked-s3:<bucket>/`), for version listings and deletes. **Must end in `:` or `/` and be an rclone remote of type `s3`**, different from `LOCKED_BACKUP_REMOTE`, else `exit 5`. The mistake it guards against is the S3 value pasted into the *crypt* variable, which would upload unencrypted into a bucket where nothing can be removed. |
+| `LOCKED_BACKUP_REMOTE` | `backup-db.sh`, `recover-from-backup.js` | *(unset → Paris skipped)* | The Paris **crypt** remote (`locked-secret:`). **Must begin with `locked`, end in `:` or `/`, and be an rclone remote of type `crypt`** (checked against rclone's config), else `exit 5`. The type check is what stops the S3 remote being pasted here, which would upload unencrypted into a bucket where nothing can be removed. Uploads the gzipped copy; the bucket's settings, never a flag, lock it. London's `BACKUP_REMOTE` must **not** begin with `locked`. |
+| `LOCKED_BACKUP_S3` | `backup-db.sh` | *(required when `LOCKED_BACKUP_REMOTE` is set)* | The raw S3 path under that crypt remote (`locked-s3:<bucket>/`), for version listings and deletes. **Must end in `:` or `/` and be an rclone remote of type `s3`**, different from `LOCKED_BACKUP_REMOTE`, else `exit 5`. |
 | `OFFBOX_BACKUP_STALE_HOURS` | the server (`/api/health`) | `DEFAULT_STALE_HOURS` in `server/lib/offboxBackupHealth.js` | Age past which `/api/health` flags the off-box backup `stale` (derived from the cron period: see the comment above `DEFAULT_STALE_HOURS`); it also bounds how old the Paris status file may be (`checks.offbox_backup_cap`). |
 | `CONTENT_BACKUP_STALE_HOURS` | the server (`/api/health`) | `DEFAULT_STALE_HOURS` in `server/lib/contentBackupHealth.js` | Age past which `/api/health` flags the **content** backup `stale` (derived from the cron period: see the comment above `DEFAULT_STALE_HOURS`). |
 
@@ -403,7 +403,7 @@ The read-back must show `"Days": 30`. Record both read-backs in the register.
    15 4 1 * * BACKUP_REMOTE=locked-secret: <repo>/scripts/verify-db-backup.sh >> <repo>/pipeline-output/verify-db-backup.log 2>&1
    ```
 
-   Read it back with `crontab -l`: no line may still mention `secret:` without the `locked-` in front. Then delete the London editorial bucket (precondition 1), and remove the `secret` remote from `rclone config`. Its copies are at most about 7.5 days old, so nothing needs carrying over.
+   Read it back with `crontab -l`: no line may still carry `BACKUP_REMOTE=secret:` (the `LOCKED_BACKUP_REMOTE=locked-secret:` and `BACKUP_REMOTE=locked-secret:` forms are the Paris ones and stay). The `RESEARCH_REMOTE=research-secret:` lines for the research job and its restore test are a different job and **stay untouched**. Then delete the London editorial bucket (precondition 1), and remove the `secret` remote from `rclone config`. Its copies are at most about 7.5 days old, so nothing needs carrying over.
 6. **Re-read the research bucket (G-1b).** G1.20 is what turned versioning on for the editorial bucket, so confirm the research bucket still reads unversioned:
 
    ```bash
@@ -456,7 +456,7 @@ Put recovered wording back through the editor as an ordinary edit, so it is revi
 To recover `sessions.db` onto a fresh box (the Paris remote; London's `secret:` works the same way, minus the unzip, until it is retired in Step 8 of the Paris section):
 
 1. Install `rclone` + `sqlite3`.
-2. As the service user, `rclone config` the same two remotes, over the same bucket, with the server's limited key: a plain s3 remote `locked-s3` (endpoint `fr-par-1.linodeobjects.com`) and a crypt remote `locked-secret` with `remote = locked-s3:<bucket>`. **The crypt remote needs BOTH escrowed secrets from the password manager**, the passphrase (`password`) and the salt (`password2`): answer "type my own" at both prompts. Without both, nothing decrypts.
+2. As the service user, `rclone config` the same two remotes, over the same bucket, with a limited key for this bucket (the `locked-server` credentials you kept on your computer from step 4, or a new limited key made in Cloud Manager): a plain s3 remote `locked-s3` (endpoint `fr-par-1.linodeobjects.com`) and a crypt remote `locked-secret` with `remote = locked-s3:<bucket>`. **The crypt remote needs BOTH escrowed secrets from the password manager**, the passphrase (`password`) and the salt (`password2`): answer "type my own" at both prompts. Without both, nothing decrypts. Leave the crypt remote's filename-encryption options at the defaults step 5 used: they must match the original, or the listing shows nothing decodable.
 3. Confirm the off-box backup is intact: `BACKUP_REMOTE=locked-secret: scripts/verify-db-backup.sh` → expect `RESTORE VERIFY: PASS`.
 4. Stop the service. Restore the **newest** copy into place:
 
@@ -465,11 +465,13 @@ To recover `sessions.db` onto a fresh box (the Paris remote; London's `secret:` 
    NAME=$(rclone lsf --files-only locked-secret: | grep '^sessions\.' | sort -r | head -1)
    echo "$NAME"                                   # check it is the copy you expect
    rclone copyto "locked-secret:$NAME" "$T/$NAME"   # the crypt remote decrypts on read
-   gunzip -c "$T/$NAME" > pipeline-output/sessions.db
+   gunzip -c "$T/$NAME" > "$T/sessions.db"          # if this fails, STOP: nothing has been touched yet
+   rm -f pipeline-output/sessions.db-wal pipeline-output/sessions.db-shm   # stale side files of the lost file
+   mv "$T/sessions.db" pipeline-output/sessions.db
    rm -rf "$T"
    ```
 
-   `lsf` lists current copies only. If the newest copy you expect is not there (a delete marker may hide it), or the file will not unzip, **stop**: reading an older or hidden copy is for the recovery tool, and putting an older whole copy in place is the owner's decision (below).
+   `lsf` lists current copies only. If the newest copy you expect is not there (a delete marker may hide it), or the file will not unzip, **stop** before the `mv`: reading an older or hidden copy is for the recovery tool, and putting an older whole copy in place is the owner's decision (below).
 5. Restart the server; `/api/health` should return `"ok"` once the next backup writes a fresh heartbeat.
 
 `verify-db-backup.sh` fails loud on every bad outcome — no off-box backup found, download error, `PRAGMA integrity_check` non-ok (openable-but-corrupt *and* structurally corrupt), or a missing core table — each prints a grep-able `RESTORE VERIFY: FAIL (...)` line and exits non-zero. Wire its monthly run into monitoring so a silently-rotting backup is caught before you need it.

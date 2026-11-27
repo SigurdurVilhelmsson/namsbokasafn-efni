@@ -38,7 +38,8 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 #
 # The locked Paris bucket (G1.20): LOCKED_BACKUP_REMOTE is its rclone crypt remote (it MUST begin with 'locked' and
 # end in ':' or '/'), LOCKED_BACKUP_S3 is the raw S3 remote and bucket under it, used for version listings and
-# deletes (it must end in ':' or '/' and name a DIFFERENT remote). BUCKET below is [USER]'s Paris bucket name:
+# deletes (it must end in ':' or '/' and name a DIFFERENT remote). The job also checks rclone's config: the first must
+# be a remote of type crypt and the second of type s3, else it exits 5 before uploading anything. BUCKET below is [USER]'s Paris bucket name:
 # replace it before installing. During the move from London BOTH BACKUP_REMOTE and the two locked variables are
 # set; after the move BACKUP_REMOTE is dropped from this line. See docs/technical/backup-and-restore.md.
 30 */6 * * * BACKUP_REMOTE=${BACKUP_REMOTE:-secret:} LOCKED_BACKUP_REMOTE=${LOCKED_BACKUP_REMOTE:-locked-secret:} LOCKED_BACKUP_S3=${LOCKED_BACKUP_S3:-locked-s3:BUCKET/} ${DEPLOY_PATH}/scripts/backup-db.sh >> ${DEPLOY_PATH}/pipeline-output/backup-db.log 2>&1

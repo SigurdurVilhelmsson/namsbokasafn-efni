@@ -124,8 +124,8 @@ if [ -n "${LOCKED_BACKUP_REMOTE:-}" ]; then
     *: | */) ;;
     *) echo "ERROR: LOCKED_BACKUP_S3 must be set and end in ':' or '/' when LOCKED_BACKUP_REMOTE is set (got '${LOCKED_BACKUP_S3:-}')" >&2; exit 5 ;;
   esac
-  # The crypt remote and the S3 remote must be different remotes: the S3 value pasted into the crypt variable would
-  # upload UNENCRYPTED into the COMPLIANCE bucket.
+  # The two must at least be different remotes. What stops the S3 remote being pasted into the crypt variable (an
+  # UNENCRYPTED upload into the COMPLIANCE bucket) is the type check below (1b), not this name comparison.
   if [ "${LOCKED_BACKUP_REMOTE%%:*}" = "${LOCKED_BACKUP_S3%%:*}" ]; then
     echo "ERROR: LOCKED_BACKUP_REMOTE and LOCKED_BACKUP_S3 must name different remotes (crypt vs raw S3)" >&2; exit 5
   fi
