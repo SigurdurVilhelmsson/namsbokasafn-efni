@@ -22,9 +22,22 @@ echo "Restoring $LATEST ..."
 # crypt remote decrypts on read. Guarded like the LATEST lookup above: under `set -e`,
 # an unguarded failure here would abort with rclone's raw error and exit code instead
 # of a grep-able FAIL line.
-if ! rclone copyto "${BACKUP_REMOTE}${LATEST}" "${TMP}/restored.db"; then
+# The locked Paris remote holds gzipped copies (sessions.<stamp>.db.gz); London's are plain.
+case "$LATEST" in
+  *.gz) DL="${TMP}/restored.db.gz" ;;
+  *)    DL="${TMP}/restored.db" ;;
+esac
+if ! rclone copyto "${BACKUP_REMOTE}${LATEST}" "$DL"; then
   echo "RESTORE VERIFY: FAIL (download errored)"
   exit 1
+fi
+if [ "$DL" != "${TMP}/restored.db" ]; then
+  # Guarded like the download: under `set -e` a bad .gz would otherwise abort with
+  # gzip's raw error instead of a grep-able FAIL line.
+  if ! gunzip -c "$DL" > "${TMP}/restored.db"; then
+    echo "RESTORE VERIFY: FAIL (gunzip errored)"
+    exit 1
+  fi
 fi
 
 # Guarded the same way: a structurally corrupt backup can make sqlite3 itself error

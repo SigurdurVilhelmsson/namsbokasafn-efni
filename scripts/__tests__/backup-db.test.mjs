@@ -4,10 +4,13 @@ import { mkdtempSync, mkdirSync, existsSync, readdirSync, rmSync, symlinkSync, r
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { createRequire } from 'node:module';
+import { gzipSync } from 'node:zlib';
+import { chmodSync, copyFileSync } from 'node:fs';
 
 const require = createRequire(import.meta.url);
 const REPO = path.resolve(import.meta.dirname, '..', '..');
 const SCRIPT = path.join(REPO, 'scripts', 'backup-db.sh');
+const hasSqlite3 = (() => { try { execFileSync('sqlite3', ['-version']); return true; } catch { return false; } })();
 const hasRclone = (() => { try { execFileSync('rclone', ['version']); return true; } catch { return false; } })();
 
 // Build a real SQLite file via better-sqlite3 (a repo dependency) so the test does
@@ -476,5 +479,105 @@ describe('verify-db-backup.sh', () => {
     expect(error.status).not.toBe(0);
     expect(error.stdout).toMatch(/RESTORE VERIFY: FAIL/);
     rmSync(work, { recursive: true, force: true });
+  });
+
+  // G1.20: the locked Paris remote holds gzipped copies (sessions.<stamp>.db.gz); the restore
+  // test must gunzip the newest one before checking it.
+  it.skipIf(!hasRclone)('verifies a gzipped copy: RESTORE VERIFY: PASS', () => {
+    const work = mkdtempSync(path.join(tmpdir(), 'bkup-'));
+    try {
+      const db = path.join(work, 'sessions.db');
+      const remoteDir = path.join(work, 'remote');
+      makeTestDb(db);
+      addRequiredTables(db);
+      writeFileSync(`${db}.gz`, gzipSync(readFileSync(db)));
+      const env = {
+        ...process.env,
+        RCLONE_CONFIG_LOCALBK_TYPE: 'local',
+        RCLONE_CONFIG_SECRET_TYPE: 'crypt',
+        RCLONE_CONFIG_SECRET_REMOTE: `localbk:${remoteDir}`,
+        RCLONE_CONFIG_SECRET_PASSWORD: execFileSync('rclone', ['obscure', 'testpass'], { encoding: 'utf8' }).trim(),
+        BACKUP_REMOTE: 'secret:',
+      };
+      execFileSync('rclone', ['copyto', `${db}.gz`, 'secret:sessions.2020-01-01-000000.db.gz'], { env, encoding: 'utf8' });
+      const out = execFileSync('bash', [VERIFY], { env, encoding: 'utf8' });
+      expect(out).toMatch(/Restoring sessions\.2020-01-01-000000\.db\.gz/);
+      expect(out).toMatch(/RESTORE VERIFY: PASS/);
+    } finally {
+      rmSync(work, { recursive: true, force: true });
+    }
+  });
+
+  // Fake rclone for CI without a real rclone: `lsf` lists $FAKE_STORE, `copyto <remote><name> <dest>`
+  // copies $FAKE_STORE/<name after the last : or /> to <dest> (verify DOWNLOADS, unlike the upload fake).
+  describe('with a fake rclone', () => {
+    let work;
+    let store;
+    let env;
+    beforeAll(() => {
+      work = mkdtempSync(path.join(tmpdir(), 'bkup-fake-'));
+      store = path.join(work, 'store');
+      mkdirSync(store);
+      mkdirSync(path.join(work, 'bin'));
+      const fake = path.join(work, 'bin', 'rclone');
+      writeFileSync(fake, `#!/usr/bin/env bash
+case "$1" in
+  lsf) ls "$FAKE_STORE" ;;
+  copyto) name="\${2##*[:/]}"; cp "$FAKE_STORE/$name" "$3" ;;
+  *) exit 0 ;;
+esac
+`);
+      chmodSync(fake, 0o755);
+      writeFileSync(path.join(work, 'empty.conf'), '');
+      env = {
+        ...process.env,
+        PATH: `${path.join(work, 'bin')}:${process.env.PATH}`,
+        RCLONE_CONFIG: path.join(work, 'empty.conf'),
+        FAKE_STORE: store,
+        BACKUP_REMOTE: 'fakeremote:',
+      };
+    });
+    afterAll(() => rmSync(work, { recursive: true, force: true }));
+
+    function run() {
+      try {
+        return { status: 0, stdout: execFileSync('bash', [VERIFY], { env, encoding: 'utf8' }) };
+      } catch (e) {
+        return { status: e.status, stdout: e.stdout };
+      }
+    }
+    function clearStore() {
+      for (const f of readdirSync(store)) rmSync(path.join(store, f));
+    }
+
+    it.skipIf(!hasSqlite3)('verifies a gzipped copy: RESTORE VERIFY: PASS', () => {
+      clearStore();
+      const db = path.join(work, 'good.db');
+      makeTestDb(db);
+      addRequiredTables(db);
+      writeFileSync(path.join(store, 'sessions.2020-01-01-000000.db.gz'), gzipSync(readFileSync(db)));
+      const r = run();
+      expect(r.status).toBe(0);
+      expect(r.stdout).toMatch(/RESTORE VERIFY: PASS/);
+    });
+
+    it.skipIf(!hasSqlite3)('a corrupt .gz fails with gunzip errored', () => {
+      clearStore();
+      writeFileSync(path.join(store, 'sessions.2020-01-01-000000.db.gz'), 'this is not gzip data');
+      const r = run();
+      expect(r.status).toBe(1);
+      expect(r.stdout).toMatch(/RESTORE VERIFY: FAIL \(gunzip errored\)/);
+    });
+
+    it.skipIf(!hasSqlite3)('still verifies a plain London .db copy', () => {
+      clearStore();
+      const db = path.join(work, 'plain.db');
+      makeTestDb(db);
+      addRequiredTables(db);
+      copyFileSync(db, path.join(store, 'sessions.2020-01-01-000000.db'));
+      const r = run();
+      expect(r.status).toBe(0);
+      expect(r.stdout).toMatch(/RESTORE VERIFY: PASS/);
+    });
   });
 });
