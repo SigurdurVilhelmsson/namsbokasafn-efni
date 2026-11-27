@@ -292,6 +292,39 @@ app.get('/api/health', (req, res) => {
     checks.offbox_backup = { ok: false, error: err.message };
   }
 
+  // Locked off-box copies (G1.20): is the oldest copy still inside the 12-month
+  // lock? Missing status file => not-configured (ok) until the locked remote is
+  // set up. Public endpoint: state only, never an error message.
+  try {
+    const { readLockedBackupHealth } = require('./lib/lockedBackupHealth');
+    const { DEFAULT_STALE_HOURS: LOCKED_DEFAULT_STALE_HOURS } = require('./lib/offboxBackupHealth');
+    const fs = require('fs');
+    const statusFile = path.join(
+      __dirname,
+      '..',
+      'pipeline-output',
+      'backups',
+      '.offbox-locked-status.json'
+    );
+    let statusText = null;
+    let statusMtimeMs = null;
+    try {
+      statusMtimeMs = fs.statSync(statusFile).mtimeMs;
+      statusText = fs.readFileSync(statusFile, 'utf8');
+    } catch {
+      statusText = null;
+      statusMtimeMs = null;
+    }
+    checks.offbox_backup_cap = readLockedBackupHealth({
+      statusText,
+      statusMtimeMs,
+      nowMs: Date.now(),
+      staleHours: Number(process.env.OFFBOX_BACKUP_STALE_HOURS) || LOCKED_DEFAULT_STALE_HOURS,
+    });
+  } catch {
+    checks.offbox_backup_cap = { ok: false, state: 'unavailable' };
+  }
+
   // Check content-backup heartbeat (register C11(b)). scripts/git-backup.sh
   // is the ONLY route by which reviewed translations reach GitHub, and its
   // failures were previously invisible: it wrote `error` into a gitignored
