@@ -59,6 +59,7 @@ function setup(listing = recent(1)) {
   const dbPath = path.join(dir, 'sessions.db');
   copyFileSync(fresh.path, dbPath);
   fresh.db.close();
+  rmSync(path.dirname(fresh.path), { recursive: true, force: true }); // the helper's fresh-clone-* dir: not left in /tmp
   const lsjson = path.join(dir, 'lsjson.json');
   writeFileSync(lsjson, JSON.stringify(listing));
   writeFileSync(path.join(dir, 'rclone.conf'), '');
