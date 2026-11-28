@@ -176,6 +176,7 @@ describe('research-backup.sh', () => {
     expect(c.remote()).toContain(fresh[0]);
     expect(existsSync(c.files.heartbeatPath)).toBe(true);
     expect(c.fake.calls()).toEqual([
+      'listremotes --long', // §C258: the remote's type is checked before anything touches it
       'lsf research-secret:',
       `deletefile research-secret:${c.oldName}`,
       `copyto ${copyPath} research-secret:${fresh[0]}`,
@@ -200,6 +201,29 @@ describe('research-backup.sh', () => {
       expect(c.remote()).toEqual([c.oldName, c.youngName].sort());
       c.checkReal();
     }
+  });
+
+  // §C258: the name prefix cannot tell a crypt remote from a raw one, so a raw S3 remote named research-… passed every
+  // guard and would have received the copy unencrypted. The remote must be listed by rclone as type crypt.
+  it.each([
+    ['a raw S3 remote named research-…', { FAKE_REMOTES: 'research-secret:   s3' }],
+    ['a remote rclone does not list', { FAKE_REMOTES: 'other-secret:   crypt' }],
+    ['an unreadable remotes listing', { FAKE_FAIL_LISTREMOTES: '1' }],
+    [
+      'a crypt remote whose name only shares the prefix',
+      { FAKE_REMOTES: 'research-secret-old:   crypt\\nresearch-secret:   s3' },
+    ],
+  ])('§C258: %s is refused before any prune or upload, after the local prune', (_label, over) => {
+    const c = setup();
+    const r = c.run(over);
+    expect(r.status, r.stdout + r.stderr).toBe(2);
+    expect(c.fake.calls()).toEqual(['listremotes --long']);
+    expect(c.newCopies()).toEqual([]);
+    expect(existsSync(c.files.heartbeatPath)).toBe(false);
+    expect(c.local()).not.toContain(c.oldName); // the local prune ran first (decision 27)
+    expect(c.remote()).toEqual([c.oldName, c.youngName].sort());
+    expect((r.stdout + r.stderr).endsWith('research-backup: failed: remote\n')).toBe(true);
+    c.checkReal();
   });
 
   it('T19: a failing upload still prunes', () => {

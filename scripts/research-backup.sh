@@ -16,7 +16,8 @@
 # (server/lib/researchFiles.js), so this script names no path of its own. The age arithmetic lives in
 # server/lib/researchBackupPolicy.js.
 #
-# Exit codes: 0 done; 1 the copy or the heartbeat failed; 2 RESEARCH_REMOTE unset or not a research remote;
+# Exit codes: 0 done; 1 the copy or the heartbeat failed; 2 RESEARCH_REMOTE unset, not a research remote, or not an
+# rclone crypt remote (§C258);
 # 3 rclone or node missing; 4 the upload failed; 5 RESEARCH_REMOTE malformed; 6 a deletion step failed (no copy taken);
 # 7 a prune failed (the copy was taken and uploaded; no heartbeat). Exits 2, 3 and 5 come after the local prune.
 #
@@ -71,6 +72,13 @@ case "$REMOTE" in
   *) fail remote; exit 2 ;;
 esac
 if ! command -v rclone >/dev/null 2>&1; then fail rclone; exit 3; fi
+# The remote must be an rclone CRYPT remote (§C258). The prefix above cannot tell a crypt remote from a raw one, and a
+# raw S3 remote named research-… would receive the copy unencrypted. Exact name match ($1 == "name:"), so a remote whose
+# name only shares the prefix never stands in; an unreadable listing is refused too. Checked before any rclone call
+# that touches the remote (the prune and the upload).
+if ! remotes_long="$(rclone listremotes --long 2>/dev/null)"; then fail remote; exit 2; fi
+remote_type="$(awk -v n="${REMOTE%%:*}:" '$1 == n { print $2; exit }' <<< "$remotes_long")"
+if [ "$remote_type" != "crypt" ]; then fail remote; exit 2; fi
 
 # (1b) The remote prune: a listing that fails, a deletion that fails, or a name the job did not make (never deleted).
 remote_prune_failed=0

@@ -22,6 +22,9 @@ case "$1" in
   copyto) [ -n "\${FAKE_FAIL_COPYTO:-}" ] && exit 1
     case "$2" in /*) cp -- "$2" "$FAKE_REMOTE/\${3#*:}" ;; *) cp -- "$FAKE_REMOTE/\${2#*:}" "$3" ;; esac ;;
   deletefile) [ -n "\${FAKE_FAIL_DELETE:-}" ] && exit 1; rm -f -- "$FAKE_REMOTE/\${2#*:}" ;;
+  # As \`rclone listremotes --long\`: one "name: type" line per remote. The default lists the research crypt remote.
+  listremotes) [ -n "\${FAKE_FAIL_LISTREMOTES:-}" ] && exit 1
+    printf '%b\\n' "\${FAKE_REMOTES:-research-secret:   crypt}" ;;
   *) exit 9 ;;
 esac
 `;
