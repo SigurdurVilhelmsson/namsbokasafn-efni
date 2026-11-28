@@ -94,6 +94,14 @@
       INTO` copy is the 18:30Z cron's. Checked in advance: better-sqlite3 loads under the cron's `/usr/bin/node`
       (v22.23.5), and `server/scripts/editorial-backup.js` answers.*
     - *Next, [USER]'s: s04 (runbook steps 1–5), then the live probe (step 6).*
+    - ✏️ *2026-11-28 12:10Z: **the first `VACUUM INTO` copies are confirmed** (read-only over ssh).*
+      - *The 18:30Z, 00:30Z and 06:30Z crons each wrote a copy of 50,249,728 bytes, mode 0600, named in UTC. The old `cp`
+        copies were 54,624,256 bytes; the difference is the free pages the new method leaves out.*
+      - *The newest copy reads `integrity_check` ok, `journal_mode` delete and `freelist_count` 0, with no side
+        files.*
+      - *`backup-db.log` shows no ERROR or WARNING. Each run reads "Off-box upload OK" (London).*
+      - *The heartbeat was written at 06:30:04Z. `/api/health` reads ok, and `offbox_backup_cap` still reads
+        `not-configured`.*
 
 #### §C256 (NEW, 2026-11-27) — every save of a pending edit kept as its own version, with a page that shows a segment's earlier wordings
 - **Found while designing G1.20.** `segmentEditorService.saveSegmentEdit` updates an editor's pending row in place,
