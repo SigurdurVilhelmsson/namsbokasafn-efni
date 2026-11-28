@@ -84,6 +84,24 @@
       2. s04 with runbook steps 1–5, then the probe and its go/no-go;
       3. step 7, then the move (step 8);
       4. the 350-day lock once the consent text is listed (step 9), which discharges precondition 3.
+  - ✏️ *2026-11-27 14:30Z: **DEPLOYED.** [USER] ran `./scripts/deploy.sh`. Checked read-only over ssh the same hour:*
+    - *production's `HEAD` is `2af4ccdd2` (#833's merge), and `pipeline-output/.deployed-commit` names it;*
+    - *`rebase (finish)` at 14:29:59Z; `ritstjorn` active since 14:30:10Z;*
+    - *`/api/health` reads `status: ok` with every check ok, and `checks.offbox_backup_cap` reads `not-configured`: the
+      cron line carries no Paris variables yet, as designed;*
+    - *0 ahead and 0 behind `origin/main`, clean tree.*
+    - *`deploy.sh`'s own pre-deploy copy (14:29:57Z) ran before the pull, so it used the old `cp`. The first `VACUUM
+      INTO` copy is the 18:30Z cron's. Checked in advance: better-sqlite3 loads under the cron's `/usr/bin/node`
+      (v22.23.5), and `server/scripts/editorial-backup.js` answers.*
+    - *Next, [USER]'s: s04 (runbook steps 1–5), then the live probe (step 6).*
+    - ✏️ *2026-11-28 12:10Z: **the first `VACUUM INTO` copies are confirmed** (read-only over ssh).*
+      - *The 18:30Z, 00:30Z and 06:30Z crons each wrote a copy of 50,249,728 bytes, mode 0600, named in UTC. The old `cp`
+        copies were 54,624,256 bytes; the difference is the free pages the new method leaves out.*
+      - *The newest copy reads `integrity_check` ok, `journal_mode` delete and `freelist_count` 0, with no side
+        files.*
+      - *`backup-db.log` shows no ERROR or WARNING. Each run reads "Off-box upload OK" (London).*
+      - *The heartbeat was written at 06:30:04Z. `/api/health` reads ok, and `offbox_backup_cap` still reads
+        `not-configured`.*
 
 #### §C256 (NEW, 2026-11-27) — every save of a pending edit kept as its own version, with a page that shows a segment's earlier wordings
 - **Found while designing G1.20.** `segmentEditorService.saveSegmentEdit` updates an editor's pending row in place,
@@ -100,6 +118,21 @@
   what G1.20 changes for it is there.
 
 #### §C258 (NEW, 2026-11-27) — the research backup's remote guard is its name prefix alone
+**✅ FIXED 2026-11-28 (`c90b20bed`), merged as [#835](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/835) on [USER]'s go once CI was green; not deployed.**
+- `scripts/research-backup.sh` reads `rclone listremotes --long` and requires `RESEARCH_REMOTE`'s remote to be of type
+  `crypt`. It matches the name exactly; an unreadable listing is refused too. A refusal exits 2 (`failed: remote`) before
+  the remote prune or the upload, and after the local prune.
+- **Tests:** four in `scripts/__tests__/research-backup.test.mjs` (a raw S3 remote named `research-…`; a remote rclone
+  does not list; an unreadable listing; a crypt remote that only shares the prefix). They were RED first: the job ran to
+  `research-backup: ok` on a raw remote. A prefix-match mutant fails the last test. The shared fake rclone
+  (`scripts/__tests__/helpers/fakeBins.mjs`) learns `listremotes`.
+- **Gates:** scripts tests 18 files / 276 passed; lint and format clean.
+- **`verify-research-withdrawal`:** `check.sh` passes (rules hold, §C252 pinned, every mutant caught). The new refusal
+  comes before every action the model names, so its sync commit moves to `c90b20bed`.
+- **Docs:** the runbook's research setup no longer calls the prefix the whole guard and adds a type read-back; the cron
+  comment says the same.
+- **Live after merge and deploy.** Production's research remote is a crypt remote, so the next run should pass the
+  check unchanged. Confirm after the deploy with a read-only `rclone listremotes --long` and the job's next `ok` line.
 - **Found by G1.20's reviews.** `scripts/research-backup.sh` refuses any `RESEARCH_REMOTE` that does not begin with
   `research`, and the runbook calls that prefix the whole guard. But a raw S3 remote named `research-…` passes it, so a
   mis-set remote would upload research copies unencrypted.

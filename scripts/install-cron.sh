@@ -57,7 +57,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 # (versioning off). Order: prune both tiers by age, run the withdrawal and retention deletions with --write
 # (a failure takes no copy), copy, upload, heartbeat (/api/health: checks.research_db reason backup-stale).
 # Its period is pinned: the prune cut-off and the health threshold are derived from it in
-# server/lib/researchBackupPolicy.js. RESEARCH_REMOTE must begin "research" (the job refuses any other: exit 2).
+# server/lib/researchBackupPolicy.js. RESEARCH_REMOTE must begin "research" and be an rclone crypt remote (the job refuses any other: exit 2).
 # Its log holds one verdict line per run (the time, ok or failed, and the failing steps' names), never an interval
 # id or a count. See docs/technical/backup-and-restore.md.
 45 */6 * * * RESEARCH_REMOTE=${RESEARCH_REMOTE:-research-secret:} ${DEPLOY_PATH}/scripts/research-backup.sh >> ${DEPLOY_PATH}/pipeline-output/research-backup.log 2>&1
