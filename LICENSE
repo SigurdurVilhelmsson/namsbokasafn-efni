@@ -6,7 +6,7 @@ on where a file lives:
 | Path | Licence | Where |
 |---|---|---|
 | `tools/`, `scripts/`, `experiments/` — pipeline, tooling & experiments | **MIT** | below |
-| `server/` — Ritstjóri editorial server (incl. `greynir-sidecar/`) | **AGPL-3.0** | [`server/LICENSE`](server/LICENSE) |
+| `server/` — Ritstjóri editorial server | **AGPL-3.0** | [`server/LICENSE`](server/LICENSE) |
 | `books/` — translated content | **per-book Creative Commons** | below |
 
 Repository-root configuration files (`package.json`, `eslint.config.js`,
@@ -387,7 +387,7 @@ SOFTWARE.
 
 ## Ritstjóri editorial server (`server/`) — AGPL-3.0
 
-Everything under `server/`, including `greynir-sidecar/`, is licensed under the
+Everything under `server/` is licensed under the
 **GNU Affero General Public License, version 3 or later**.
 
 Copyright (C) 2025–2026 Sigurður E. Vilhelmsson

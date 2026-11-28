@@ -34,7 +34,6 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 │  - Terminology manager + concordance search + term mining       │
 │  - Editorial progress dashboard, live CNXML→HTML preview        │
 │  - Content versioning (per-segment snapshots, in-app restore)   │
-│  - GreynirCorrect proofreading sidecar (Icelandic QA)           │
 ├─────────────────────────────────────────────────────────────────┤
 │  CLI Tools (tools/)                                             │
 │  - Extract-Inject-Render pipeline (cnxml-extract/inject/render) │

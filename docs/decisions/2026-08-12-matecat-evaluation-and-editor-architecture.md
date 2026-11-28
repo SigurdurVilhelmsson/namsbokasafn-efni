@@ -1,7 +1,7 @@
 # Decision: Reuse no Matecat code; keep the editor in vanilla JS; carry forward one Matecat *design* — a per-term list of acceptable target forms
 
 - **Date:** 2026-08-12
-- **Status:** Accepted
+- **Status:** Accepted; **superseded IN PART by [`2026-11-28-sd9-python-offline-only-sidecar-deleted.md`](2026-11-28-sd9-python-offline-only-sidecar-deleted.md)**, on one figure only: the compounder's "roughly 3% yield" is the forms-indexing alternative's figure (`test-results/b4b-matcher-cutover-2026-08.md` B11.5), not the compounder's (B11.3–B11.4)
 - **Context owners:** lead + pipeline
 - **Supersedes:** none
 - **Related:** active register `docs/plans/2026-07-21-post-item17-followup-campaign.md` §C53 · §C54 · §C50 · §C44 · §C36 B4c · [2026-08-06-bin-licensing-corrected-and-malstadur-integration.md](2026-08-06-bin-licensing-corrected-and-malstadur-integration.md) · [2026-08-06-mideind-toolchain-evaluation.md](2026-08-06-mideind-toolchain-evaluation.md)

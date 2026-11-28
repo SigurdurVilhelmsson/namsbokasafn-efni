@@ -27,7 +27,7 @@ const {
 
 const SERVER_ROOT = path.join(__dirname, '..');
 const CHEM = 'efnafraedi-2e';
-const ENV_KEYS = ['GREYNIR_URL', 'SMTP_HOST', 'SMTP_USER', 'SMTP_PASS', 'AUTO_CREATE_USERS'];
+const ENV_KEYS = ['SMTP_HOST', 'SMTP_USER', 'SMTP_PASS', 'AUTO_CREATE_USERS'];
 let saved;
 let conn;
 
@@ -64,7 +64,6 @@ describe('the flag registry (spec §5.13)', () => {
       'enforce-assignments': true,
       'enforce-localization-review': false,
       'figure-review-closed': true,
-      greynir: false,
       'not-minted': false,
       'pipeline-hold': true,
       'study-capture': true,
@@ -96,15 +95,14 @@ describe('the flag registry (spec §5.13)', () => {
   });
 
   it('a configured service reads as a boolean, never its value', () => {
-    process.env.GREYNIR_URL = 'http://greynir.internal:8123';
     process.env.SMTP_HOST = 'smtp.leynd';
     process.env.SMTP_USER = 'u';
     process.env.SMTP_PASS = 'LEYNIORD-9';
     process.env.AUTO_CREATE_USERS = 'true';
     const snap = flagSnapshot(CHEM, { conn });
-    expect([snap.greynir, snap.email, snap['auto-create-users']]).toEqual([true, true, 'create']);
+    expect([snap.email, snap['auto-create-users']]).toEqual([true, 'create']);
     const json = flagSnapshotJson(CHEM, { conn });
-    for (const secret of ['greynir.internal', 'smtp.leynd', 'LEYNIORD-9']) {
+    for (const secret of ['smtp.leynd', 'LEYNIORD-9']) {
       expect(json).not.toContain(secret);
     }
   });
@@ -130,7 +128,7 @@ describe('the flag registry (spec §5.13)', () => {
     const findings = scanEnvReads(SERVER_ROOT, ENV_SCAN_FILES);
     const known = [...FLAGS.flatMap((f) => f.envNames || []), ...Object.keys(NOT_A_FLAG.env)];
     expect(findings.filter((f) => !known.includes(f.name))).toEqual([]);
-    expect(findings).toContainEqual({ file: 'services/greynirEngine.js', name: 'GREYNIR_URL' });
+    expect(findings).toContainEqual({ file: 'services/notifications.js', name: 'SMTP_HOST' });
   });
 
   it('control: a planted read in a temporary root is found, including the shapes it cannot name', () => {

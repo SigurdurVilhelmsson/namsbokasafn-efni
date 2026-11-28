@@ -8,7 +8,8 @@ export default [
     ignores: [
       'node_modules/',
       'server/node_modules/',
-      // 🔴 THE PYTHON VIRTUALENV FOR greynir-sidecar, AND IT IS 8,262 OF THE 8,263
+      // 🔴 THE PYTHON VIRTUALENV FOR greynir-sidecar (code deleted 2026-11-28 under SD9; the
+      // gitignored venv can outlive it on a dev box), AND IT IS 8,262 OF THE 8,263
       // ESLINT ERRORS UNDER server/. It is gitignored (.gitignore:6), 151 MB, and full
       // of vendored third-party JavaScript shipped inside pip packages — 5,230 `no-var`
       // alone, the fingerprint of old vendor code rather than of a tree every commit

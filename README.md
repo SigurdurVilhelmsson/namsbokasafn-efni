@@ -310,7 +310,7 @@ Three licences apply, depending on where a file lives:
 | Path | Licence | |
 |------|---------|---|
 | `tools/`, `scripts/`, `experiments/` — the CNXML extract → MT → inject → render pipeline, plus root config | **MIT** | [LICENSE](LICENSE) |
-| `server/` — Ritstjóri, the editorial workflow server (incl. `greynir-sidecar/`) | **AGPL-3.0** | [server/LICENSE](server/LICENSE) |
+| `server/` — Ritstjóri, the editorial workflow server | **AGPL-3.0** | [server/LICENSE](server/LICENSE) |
 | `books/` — translated content | **per-book Creative Commons** | [below](#content-licensing-is-per-book) |
 
 Ritstjóri is AGPL-3.0 because it is normally operated as a network service: if

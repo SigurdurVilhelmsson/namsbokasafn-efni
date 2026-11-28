@@ -137,7 +137,7 @@ remediation shipped first (efni `ba5e9a89`…`cb919966`); full record in memory
 | Path | Licence | File |
 |---|---|---|
 | `tools/`, `scripts/`, `experiments/`, root config | **MIT** | root `LICENSE` |
-| `server/` incl. `greynir-sidecar/` — Ritstjóri | **AGPL-3.0** | `server/LICENSE` |
+| `server/` — Ritstjóri | **AGPL-3.0** | `server/LICENSE` |
 | `books/` | **per-book Creative Commons** | `books/<slug>/book-config.json` is authoritative |
 
 - **Never make a blanket "all content is CC BY 4.0" claim.** Organic Chemistry and
@@ -204,7 +204,8 @@ remediation shipped first (efni `ba5e9a89`…`cb919966`); full record in memory
   `format:check` scripts, and `.github/workflows/lint.yml`, which runs exactly those
   two. Read it there.
   - ⚠️ **`server/.venv/` must stay in the ESLint ignores (`eslint.config.js`).** It is
-    the greynir-sidecar Python virtualenv — vendored JS inside pip packages,
+    the Python virtualenv the deleted greynir-sidecar used (it can outlive the code on a
+    dev box) — vendored JS inside pip packages,
     gitignored and not in the repo — and without that entry a lint over `server/`
     reports thousands of phantom errors. The tell is the rule mix: thousands of
     `no-var`, the fingerprint of old third-party code, not of a tree prettier formats

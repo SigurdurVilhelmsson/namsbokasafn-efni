@@ -792,6 +792,11 @@ stays "if editors ask". If it is built, it arrives through G1.23's view. Before 
 MT provider whether its production translation already applies its correction step. A hosted grammar check is used
 only behind a fail-closed marker mask, and only after a blind sample shows its precision is worth its cost.*
 
+✏️ *2026-11-28, SD9: written, on [USER]'s word, as
+[`2026-11-28-sd9-python-offline-only-sidecar-deleted.md`](../decisions/2026-11-28-sd9-python-offline-only-sidecar-deleted.md), with the
+sidecar's deletion in the same change. It carries the "roughly 3%" correction and supersedes the assistant plan's line.
+Whether it is merged is the register's to say.*
+
 ✏️ *2026-10-28, SD10: the letters go in **week 2**, not before S; nothing before then waits on the answers. (b) Record the
 AI provider's output terms **in the same commit as the first public AI log**. (c) The SÁM letter gains three
 questions:*

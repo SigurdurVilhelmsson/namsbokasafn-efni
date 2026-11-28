@@ -99,7 +99,6 @@ variable is read.
 | `AUTO_CREATE_USERS` | What happens when a sign-in matches no account — see `signInPolicy` | `services/auth.js` |
 | `ADMIN_EMAIL` | Recipient of feedback notifications | `services/notifications.js` |
 | `SMTP_HOST` · `SMTP_PORT` · `SMTP_SECURE` · `SMTP_USER` · `SMTP_PASS` · `SMTP_FROM` | Outgoing mail. Mail is off unless host, user and password are all set (`isEmailConfigured`) | `services/notifications.js` |
-| `GREYNIR_URL` | Optional Icelandic grammar sidecar ([greynir-sidecar/](greynir-sidecar/README.md)); unset means no grammar findings | `services/greynirEngine.js` |
 | `SESSIONS_DB_PATH` | Overrides the database location. Do not set it in `.env` on a real install: the cron jobs do not load `.env`, so they would keep using the default database | `lib/dbPath.js` |
 | `LOG_LEVEL` | Log level (`debug`, `info`, `warn`, `error`) | `lib/logger.js` |
 | `RATE_LIMIT_WINDOW_MS` · `RATE_LIMIT_MAX` · `RATE_LIMIT_AUTH_MAX` | Request rate limits | `config.js` |
@@ -155,7 +154,6 @@ server/
 ├── migrations/           # SQLite migrations, run in order on every start
 ├── scripts/              # Operational and measurement scripts (terminology export, concept import, gate checks, one-off fixes)
 ├── public/               # Static assets (JS, CSS)
-├── greynir-sidecar/      # Optional Python grammar checker (see its README)
 ├── e2e/                  # Playwright E2E tests (npm run test:e2e)
 ├── __tests__/            # Vitest unit tests (run from the repo root with npm test)
 └── data/                 # Book module mappings (JSON)
