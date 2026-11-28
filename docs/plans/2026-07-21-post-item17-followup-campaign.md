@@ -118,7 +118,7 @@
   what G1.20 changes for it is there.
 
 #### §C258 (NEW, 2026-11-27) — the research backup's remote guard is its name prefix alone
-**✅ FIXED 2026-11-28 on branch `fix/c258-research-remote-type` (`c90b20bed`), not yet merged.**
+**✅ FIXED 2026-11-28 (`c90b20bed`), merged as [#835](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/835) on [USER]'s go once CI was green; not deployed.**
 - `scripts/research-backup.sh` reads `rclone listremotes --long` and requires `RESEARCH_REMOTE`'s remote to be of type
   `crypt`. It matches the name exactly; an unreadable listing is refused too. A refusal exits 2 (`failed: remote`) before
   the remote prune or the upload, and after the local prune.
