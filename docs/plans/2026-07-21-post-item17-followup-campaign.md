@@ -4,6 +4,34 @@
 
 ## ⏩ RESUME — state as of **2026-10-09 — ✅ '6' PR-B IS MERGED ([#546](https://github.com/SigurdurVilhelmsson/namsbokasafn-efni/pull/546)) AND DEPLOYED, with the 7 Dependabot PRs; R-22's condition is met and the LIVE-RUN HOLD's condition is met on `main`. ⏹ The whole-book re-render and the chemistry sync are HELD for [USER]. ▶ [CODE] in parallel: the ② code batch (end of this block)** (supersedes the 2026-10-07 block for its SINGLE NEXT ACTION; that block's step list stays the procedure, and each step there carries its own ✅ line with the evidence) ✏️ *Heading re-dated 2026-10-09; it had said PR-B was BUILT and UNPUSHED, with step 2b and the LIVE-RUN HOLD outstanding, after all three had changed. The bullets directly under the SINGLE NEXT ACTION are PR-B's record.*
 
+### ⏭ 2026-11-28 (Miðeind's open-source tools checked against packages B1–B3 and C; SD9's record found never written) — ADDS EVIDENCE AND TWO PROPOSED SPIKES; IT DOES NOT CHANGE THE OTHER ENTRIES OR THEIR NEXT
+- **Why:** Miðeind republished its open-source list (*Opinn hugbúnaður*, read 2026-11-28), and GreynirEngine has had a major upgrade. [USER] asked whether the follow-on grant's plan ([`2026-10-23-skerfur-development-plan.md`](2026-10-23-skerfur-development-plan.md)) should change. **Answer: no contract or package change.** Two short spikes are proposed inside existing packages. Neither is ruled, and both would run as offline batches only.
+- **What was verified, 2026-11-28** (PyPI metadata; a clone of `mideind/GreynirEngine`; the GitHub API was closed to the session for every other Miðeind repo):
+  - **Six Python packages. Every one is MIT in its PyPI metadata,** and GreynirEngine also in `LICENSE.txt`: `tokenizer` 3.7.0, `islenska` (BinPackage) 2.1.0, `reynir` (Greynir) **4.2.0 (2026-11-26)**, `reynir-correct` 4.3.1 (2026-11-27), `icegrams` 2.3.0, and IceBERT-PoS (git install only).
+  - **The upgrade is real.** GreynirEngine now carries a `CLAUDE.md`. Its 4.0.0 (2026-11-10) made the C++ Earley core 4–5× faster and then 4× faster again, "with identical output" (commit messages). 4.1.0 added free-threaded Python, and 4.2.0 brought grammar fixes.
+  - **⚠️ The licence position is unchanged.** `islenska`'s own description says the BÍN data is **CC BY-SA 4.0**, so every lemma or form these tools produce is BÍN-derived, exactly like Nefnir's rules. SD10(c) and G3.4 already cover it. Nothing new arises, and nothing escapes the existing constraint.
+  - **Not verified:** the licence of IceBERT-PoS's model weights and training data (only the page's collection-wide "MIT" covers it). Also not verified: that it really emits the IFD tagset Nefnir reads. The page says it uses *Íslensk orðtíðnibók*'s tagset, and that is the page's claim, not a measurement.
+- **Per package:**
+  - **B1: no change.** A tokenizer that knows abbreviations would barely move a character- or word-level edit distance.
+  - **B2: proposed spike, IceBERT-PoS as arm 3 of the three-arm spike** (dev plan §4.2, "Nefnir with a simpler, maintained tagger"). It is maintained, and it avoids the "isolated old-Python environment" that arm 2 needs.
+    - **Keep Nefnir.** Greynir lemmatises only what it can parse, and the 2026-08-06 record measured the chemistry coinages as BinPackage's blind spot.
+    - Check the weights' licence before the spike.
+  - **B3: proposed spike, Greynir's noun-phrase inflection on the multi-word house-style terms.**
+    - Why: the 2026-08-06 record found 171 of 756 glossary terms multi-word, and BinPackage does not make adjectives agree. Greynir inflects a whole noun phrase with agreement.
+    - Method: count correct paradigms, with known-wrong inputs as the control.
+    - If coinages fail, B3 keeps its current design.
+  - **C: no change.** The page lists no TTS, G2P or normalisation tool, so the chain stays Regína, IceG2P and Talrómur or Piper.
+  - **GreynirCorrect stays out.** 4.3.1 is newer than the 4.1.3 that lost the 2026-08-06 head-to-head, so that measurement is dated. But grammar help is "if editors ask" (SD9 note, 2026-10-28), and re-testing it is new scope.
+- **Later or out of scope:** Greynir parse trees for syntactic edit categories beyond B2's pre-registered ones (a research follow-up); Icegrams fluency scores (beyond D); Greynir case resolution for B3's syncretic slots (only if B3's POS-tag approach fails).
+- **🔴 SD9's record does not exist.** Searched 2026-11-28 by id and by content (`SD9`, "hosted API", "not a port", "offline batch", "development box"): `docs/decisions/`, every plan, every branch on origin, and `git log --all --grep`.
+  - What exists is the recommendation in the dev plan's §8, and its ✏️ 2026-10-28 note, which rules only the sidecar's deletion and grammar help "if editors ask".
+  - The pre-S week plan listed "a draft of SD9's record" as Tier 3, "if time allows". No draft is in the tree.
+  - **Two consequences:**
+    - B2's offline index and C's chain still rest on an unscoped exception to the 2026-08-06 hosted-API decision, and both spikes above are Python too.
+    - `server/greynir-sidecar/` is still in the tree, while the 2026-10-28 note says it goes **before the first unit opens**. The NEXT above puts the first unit close.
+  - ▶ **[USER]: say whether SD9's record should be written now** (with `/decision-record`, carrying the dev plan's SD9 text). The sidecar deletion follows it.
+- Working note (off-repo, project files): `notes/2026-11-28-mideind-tools-vs-skerfur-plan.md`.
+
 ### ⏭ 2026-11-27 (deploy: #828–#832 live; every §C244 fix in production) — RECORDS A DEPLOY; IT DOES NOT CHANGE THE OTHER ENTRIES OR THEIR NEXT
 - **[USER] ran `./scripts/deploy.sh` on 2026-11-27. Checked read-only over ssh the same morning:**
   - production's `HEAD` is `33f7b662a` (#832's merge), and `pipeline-output/.deployed-commit` names it;
