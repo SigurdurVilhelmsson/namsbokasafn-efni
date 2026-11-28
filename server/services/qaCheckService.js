@@ -9,7 +9,7 @@
  *     (tolerant of decimal-comma 3.5→3,5, thousands separators, and [[MATH:N]]).
  *   - en-residue: IS prose carrying English function words — the MT failure
  *     where a sentence comes back partly/wholly untranslated.
- *   - spelling: delegated to a pluggable engine (hunspell-is / GreynirCorrect),
+ *   - spelling: delegated to a pluggable engine (none is wired today; see docs/decisions/2026-11-28-sd9-python-offline-only-sidecar-deleted.md),
  *     injected via `runChecks(..., { spellEngine })`. Absent engine = no
  *     spelling findings; QA disabled never breaks a save.
  *
@@ -193,7 +193,7 @@ function runChecks(enContent, isContent, { spellEngine } = {}) {
 
 /**
  * Async variant: the engine-free checks plus an **async** spelling/grammar
- * engine (e.g. the Greynir sidecar) whose findings are awaited. A throwing or
+ * engine (e.g. a hosted grammar service) whose findings are awaited. A throwing or
  * slow engine degrades to the engine-free findings (engine handles its own
  * timeout); QA never breaks a caller.
  *

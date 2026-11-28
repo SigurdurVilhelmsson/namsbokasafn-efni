@@ -17,7 +17,6 @@ const tmService = require('./tmService');
 const concordanceService = require('./concordanceService');
 const terminologyService = require('./terminologyService');
 const qaCheckService = require('./qaCheckService');
-const greynirEngine = require('./greynirEngine');
 
 let BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 const resolveDbPath = require('../lib/dbPath');
@@ -394,26 +393,6 @@ function getSegmentQaFindings(book, chapter, moduleId, segmentId, editedContent)
     return [];
   }
   return qaCheckService.runChecks(enContent, editedContent);
-}
-
-/**
- * On-demand Icelandic proofreading for a module via the Greynir sidecar
- * (Unit 4.2). Off the save path (network round-trip); the editor triggers it.
- * Returns per-segment grammar/spelling findings; `{ enabled:false }` when the
- * sidecar isn't configured.
- *
- * @returns {Promise<{ enabled: boolean, segments?: Array }>}
- */
-async function getModuleSpellFindings(book, chapter, moduleId) {
-  if (!greynirEngine.isEnabled()) return { enabled: false, segments: [] };
-  const segments = buildEffectiveSegments(book, chapter, moduleId);
-  const out = [];
-  for (const seg of segments) {
-    if (!seg.isContent) continue;
-    const findings = await greynirEngine.check(qaCheckService.stripMarkers(seg.isContent));
-    if (findings.length) out.push({ segmentId: seg.segmentId, findings });
-  }
-  return { enabled: true, segments: out };
 }
 
 /**
@@ -1902,7 +1881,6 @@ module.exports = {
   getModuleTerminologyReport,
   // Mechanical QA (Unit 4)
   getSegmentQaFindings,
-  getModuleSpellFindings,
   // Statistics
   getModuleStats,
   getGlobalEditStats,

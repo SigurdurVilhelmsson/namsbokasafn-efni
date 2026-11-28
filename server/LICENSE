@@ -3,7 +3,7 @@ Ritstjóri — editorial workflow server for Námsbókasafn
 Copyright (C) 2025–2026 Sigurður E. Vilhelmsson
 
 This licence covers everything in this directory (`server/`) and all of its
-subdirectories, including `greynir-sidecar/`. It does NOT cover the rest of the
+subdirectories. It does NOT cover the rest of the
 repository: the pipeline tooling in `tools/` and `scripts/` is MIT-licensed, and
 the translated content in `books/` carries a per-book Creative Commons licence.
 See the repository root LICENSE for both.

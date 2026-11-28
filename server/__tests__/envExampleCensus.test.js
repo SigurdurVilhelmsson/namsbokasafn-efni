@@ -31,7 +31,6 @@ const NOT_SERVER = new Set([
   '__tests__',
   'e2e',
   'scripts',
-  'greynir-sidecar',
   'test-results',
   // Verification harnesses (server/verification/*): run by hand, never load .env, and their
   // variables (the migration check's MIG_CRASH_AT and friends) steer the harness, not the server.

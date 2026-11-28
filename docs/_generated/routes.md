@@ -258,7 +258,6 @@
 | GET | `/:book/:chapter/:moduleId/propagation-preview` |
 | POST | `/:book/:chapter/:moduleId/propagate` |
 | GET | `/:book/:chapter/:moduleId/terminology-report` |
-| GET | `/:book/:chapter/:moduleId/spellcheck` |
 | GET | `/:book/:chapter/:moduleId/stats` |
 | GET | `/:book/:chapter/:moduleId/apply-status` |
 | POST | `/:book/:chapter/:moduleId/apply` |

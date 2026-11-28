@@ -52,12 +52,6 @@ const FLAGS = Object.freeze([
     read: () => lazy('../services/auth')().signInPolicy(process.env.AUTO_CREATE_USERS),
   },
   {
-    name: 'greynir',
-    source: 'services/greynirEngine.isEnabled',
-    envNames: ['GREYNIR_URL'],
-    read: () => require('../services/greynirEngine').isEnabled(),
-  },
-  {
     name: 'email',
     source: 'services/notifications.isEmailConfigured',
     envNames: ['SMTP_HOST', 'SMTP_USER', 'SMTP_PASS'],
@@ -106,7 +100,6 @@ const ENV_SCAN_FILES = Object.freeze([
   'lib/applyHold.js',
   'lib/heldBookWrites.js',
   // where the registered flags' reads live
-  'services/greynirEngine.js',
   'services/notifications.js',
   // PR2's handoff: reads nothing today; listing it guards a future read
   'services/moduleOpenings.js',

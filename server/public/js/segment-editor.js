@@ -1475,15 +1475,13 @@
   }
 
   // ================================================================
-  // REVIEW SUMMARY (head-editor): terminology violations + proofreading
+  // REVIEW SUMMARY (head-editor): terminology violations + repeated sentences
   // ================================================================
   function showReviewSummary() {
     const isHeadEditor = ['head-editor', 'admin'].includes(getEffectiveRole());
     const panel = document.getElementById('review-summary-panel');
     if (!panel) return;
     panel.style.display = isHeadEditor ? 'block' : 'none';
-    const spellEl = document.getElementById('review-summary-spell');
-    if (spellEl) spellEl.innerHTML = '';
     if (isHeadEditor) loadTerminologyReport();
   }
 
@@ -1516,7 +1514,7 @@
             // U2: buildModuleTerminologyReport has always returned `segments` per
             // violation and this panel always dropped it, so a head editor was told
             // a term was wrong N times with no way to reach the N. Rendering them
-            // uses the same .rs-seg shape as the spellcheck and repetition reports.
+            // uses the same .rs-seg shape as the repetition report.
             // Capped: chemistry measures ~2.8 terminology issues per segment and
             // biology 4.8, so an uncapped list is hundreds of focusable buttons
             // sitting ahead of the filter bar and the table in tab order.
@@ -1541,40 +1539,6 @@
       );
     } catch {
       el.innerHTML = '';
-    }
-  }
-
-  async function runSpellcheck() {
-    const el = document.getElementById('review-summary-spell');
-    if (!el || !currentModuleId) return;
-    el.innerHTML = '<div class="text-muted">Yfirles…</div>';
-    try {
-      const data = await fetchJson(
-        `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/spellcheck`,
-        { credentials: 'include' }
-      );
-      if (!data.enabled) {
-        el.innerHTML =
-          '<div class="text-muted">Yfirlestur er ekki virkur (GREYNIR_URL vantar á þjóni).</div>';
-        return;
-      }
-      const segs = data.segments || [];
-      if (!segs.length) {
-        el.innerHTML =
-          '<div class="rs-label">Yfirlestur</div><div class="text-muted">Engar ábendingar.</div>';
-        return;
-      }
-      el.innerHTML =
-        '<div class="rs-label">Yfirlestur</div>' +
-        segs
-          .map((s) => {
-            const shortId = escapeHtml(s.segmentId.split(':').slice(1).join(':'));
-            const msgs = s.findings.map((f) => escapeHtml(f.message)).join('; ');
-            return `<div class="rs-seg"><code>${shortId}</code>: ${msgs}</div>`;
-          })
-          .join('');
-    } catch (err) {
-      el.innerHTML = `<div class="text-muted">Yfirlestur mistókst: ${escapeHtml(err.message || '')}</div>`;
     }
   }
 
@@ -3672,8 +3636,6 @@
     if (concInput) concInput.value = '';
     const rsTerms = document.getElementById('review-summary-terms');
     if (rsTerms) rsTerms.innerHTML = '';
-    const rsSpell = document.getElementById('review-summary-spell');
-    if (rsSpell) rsSpell.innerHTML = '';
     const rsRep = document.getElementById('review-summary-repetition');
     if (rsRep) rsRep.innerHTML = '';
 
@@ -3717,10 +3679,6 @@
         searchConcordance();
       }
     });
-  }
-  const spellcheckBtn = document.getElementById('btn-spellcheck');
-  if (spellcheckBtn) {
-    spellcheckBtn.addEventListener('click', runSpellcheck);
   }
   const repetitionBtn = document.getElementById('btn-repetition-report');
   if (repetitionBtn) {

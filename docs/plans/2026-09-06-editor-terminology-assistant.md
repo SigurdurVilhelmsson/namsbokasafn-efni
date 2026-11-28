@@ -116,6 +116,8 @@
 ## Decisions already made — do not re-litigate
 
 **Morphology is not the primary route** (`docs/decisions/2026-08-12-matecat-evaluation-and-editor-architecture.md:146-149`):
+
+✏️ *SUPERSEDED 2026-11-28 by [SD9](../decisions/2026-11-28-sd9-python-offline-only-sidecar-deleted.md) so far as it rests on the "roughly 3%" figure: that 3% is the forms-indexing alternative (`test-results/b4b-matcher-cutover-2026-08.md` B11.5), not the compounder, whose proxies give 45.1–70.5% upper bounds (B11.3–B11.4). The "hosted API, not a port" line below is scoped to the production box by the same record.*
 > *"Solve the target-form problem with morphology instead (compound decomposition, wider BÍN coverage) — rejected as the primary route. The compounder work was already measured at roughly 3% yield, and it cannot reach the paraphrase population at all. Morphology remains useful for auto-seeding an acceptable-forms list, not as a replacement for one."*
 
 **The adopted mechanism needs no morphology** (same file, `:82-85`):
