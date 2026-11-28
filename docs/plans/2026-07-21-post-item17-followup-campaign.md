@@ -118,6 +118,21 @@
   what G1.20 changes for it is there.
 
 #### §C258 (NEW, 2026-11-27) — the research backup's remote guard is its name prefix alone
+**✅ FIXED 2026-11-28 on branch `fix/c258-research-remote-type` (`c90b20bed`), not yet merged.**
+- `scripts/research-backup.sh` reads `rclone listremotes --long` and requires `RESEARCH_REMOTE`'s remote to be of type
+  `crypt`. It matches the name exactly; an unreadable listing is refused too. A refusal exits 2 (`failed: remote`) before
+  the remote prune or the upload, and after the local prune.
+- **Tests:** four in `scripts/__tests__/research-backup.test.mjs` (a raw S3 remote named `research-…`; a remote rclone
+  does not list; an unreadable listing; a crypt remote that only shares the prefix). They were RED first: the job ran to
+  `research-backup: ok` on a raw remote. A prefix-match mutant fails the last test. The shared fake rclone
+  (`scripts/__tests__/helpers/fakeBins.mjs`) learns `listremotes`.
+- **Gates:** scripts tests 18 files / 276 passed; lint and format clean.
+- **`verify-research-withdrawal`:** `check.sh` passes (rules hold, §C252 pinned, every mutant caught). The new refusal
+  comes before every action the model names, so its sync commit moves to `c90b20bed`.
+- **Docs:** the runbook's research setup no longer calls the prefix the whole guard and adds a type read-back; the cron
+  comment says the same.
+- **Live after merge and deploy.** Production's research remote is a crypt remote, so the next run should pass the
+  check unchanged. Confirm after the deploy with a read-only `rclone listremotes --long` and the job's next `ok` line.
 - **Found by G1.20's reviews.** `scripts/research-backup.sh` refuses any `RESEARCH_REMOTE` that does not begin with
   `research`, and the runbook calls that prefix the whole guard. But a raw S3 remote named `research-…` passes it, so a
   mis-set remote would upload research copies unencrypted.

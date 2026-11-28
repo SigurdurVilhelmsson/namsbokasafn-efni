@@ -61,7 +61,7 @@ With the restore left out (`SessionsRestoreOn = FALSE`), every rule holds; `chec
 ## Does your change touch the verified code?
 
 ```sh
-git diff --stat 0435a0230 -- server/services/researchConsent.js server/services/researchDeletion.js \
+git diff --stat c90b20bed -- server/services/researchConsent.js server/services/researchDeletion.js \
   server/services/researchLog.js server/scripts/research-withdrawal.js server/scripts/research-restore.js \
   server/scripts/research-backup.js server/scripts/lib/researchPurge.js scripts/research-backup.sh \
   scripts/backup-db.sh server/routes/research.js docs/technical/backup-and-restore.md
@@ -127,7 +127,7 @@ restore path needs its own action and a rule that it keeps the promise.
 
 ## Coverage record
 
-**Sync commit: `0435a0230`.** The model was last confirmed to describe the code below at this commit (G1.20, 2026-11-27: `backup-db.sh` still copies `sessions.db` only, and the runbook still restores the newest copy).
+**Sync commit: `c90b20bed`.** The model was last confirmed to describe the code below at this commit (§C258, 2026-11-28: `research-backup.sh` refuses a non-crypt remote before any action the model names; G1.20 before it: `backup-db.sh` copies `sessions.db` only, the runbook restores the newest copy).
 
 | Model part | Code (open it to check) |
 |---|---|
