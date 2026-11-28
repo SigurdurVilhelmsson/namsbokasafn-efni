@@ -30,6 +30,13 @@
     - B2's offline index and C's chain still rest on an unscoped exception to the 2026-08-06 hosted-API decision, and both spikes above are Python too.
     - `server/greynir-sidecar/` is still in the tree, while the 2026-10-28 note says it goes **before the first unit opens**. The NEXT above puts the first unit close.
   - ▶ **[USER]: say whether SD9's record should be written now** (with `/decision-record`, carrying the dev plan's SD9 text). The sidecar deletion follows it.
+- **The sidecar against today's GreynirCorrect, measured 2026-11-28** (`reynir-correct` 4.3.1 with `reynir` 4.2.0, Python 3.13, in a scratch venv; the input was 150 prose segments of `02-mt-fable/ch01`, 60,215 characters, markers stripped):
+  - **`server/greynir-sidecar/app.py` still cannot answer.** `POST /correct` returned 500 on **150 of 150**, with the 2026-08-06 defect unchanged (`check()` yields paragraphs, so `result.paragraphs` raises `AttributeError`). `sentences` is also a method now, not a list.
+  - **Called directly, the checker still damages chemistry terms.** On 4.3.1 it rewrote `stórsæja` → `stórbæja` (the file holds 0 × `stórbæ` in ch01) and `óeðlum` → `seðlum`. On the 2026-08-06 control sentence it still turns `stórsæ` → `stórs` and still misses `mikla hund`.
+  - **The volume is noise-dominated.** There were 281 annotations, on 107 of 150 segments. 89 of them are whole-sentence `E00x` codes (no parse, or the sentence is too long) and 34 are `U001` single letters such as the `(s)`/`(l)` state symbols.
+  - **Cost:** peak RSS 439 MB; 1.7 s for the first call, then 19.8 s for the 150 segments.
+  - **What still depends on the sidecar:** the `/spellcheck` route, `getModuleSpellFindings`, the `greynir` row in `featureFlags.js` and the editor's **Yfirlestur** button. With `GREYNIR_URL` unset, that button tells editors the feature is not active.
+  - **Neither proposed spike needs it.** B3's test uses `reynir` (Greynir), not GreynirCorrect, as an offline batch. B2's arm 3 uses IceBERT-PoS.
 - Working note (off-repo, project files): `notes/2026-11-28-mideind-tools-vs-skerfur-plan.md`.
 
 ### ⏭ 2026-11-27 (deploy: #828–#832 live; every §C244 fix in production) — RECORDS A DEPLOY; IT DOES NOT CHANGE THE OTHER ENTRIES OR THEIR NEXT
